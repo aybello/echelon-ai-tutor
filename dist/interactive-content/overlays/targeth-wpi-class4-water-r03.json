@@ -1,0 +1,632 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 11 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-01",
+    "prompt": "Classify groundwater and surface water source terms by their hydrogeologic definitions.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Confined aquifer",
+      "right": "Water-bearing formation bounded by impermeable layers"
+     },
+     {
+      "id": "p2",
+      "left": "Unconfined aquifer",
+      "right": "Water-table formation open to local surface infiltration"
+     },
+     {
+      "id": "p3",
+      "left": "Water table",
+      "right": "Upper surface of the groundwater zone of saturation"
+     },
+     {
+      "id": "p4",
+      "left": "Spring",
+      "right": "Natural restricted outflow of groundwater onto land"
+     },
+     {
+      "id": "p5",
+      "left": "Drainage basin",
+      "right": "Land area channeling runoff or recharge to one system"
+     },
+     {
+      "id": "p6",
+      "left": "Surface runoff",
+      "right": "Rainfall portion flowing overland across the Earth's surface"
+     }
+    ],
+    "explanation": "Hydrogeologic terms distinguish confined and unconfined aquifers, the water table, natural springs, drainage basins, and overland surface runoff."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "9d923e454794afdcd29e836625a0ed636dc683bf7be39dcee9d16b2ac461ca2b",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-02",
+    "prompt": "Distinguish well-hydraulics and construction terms by their physical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Annular space",
+      "right": "Gap between the well casing and borehole wall"
+     },
+     {
+      "id": "p2",
+      "left": "Caisson",
+      "right": "Large pipe installed in a vertical position"
+     },
+     {
+      "id": "p3",
+      "left": "Static level",
+      "right": "Water height in a well when the pump is off"
+     },
+     {
+      "id": "p4",
+      "left": "Drawdown",
+      "right": "Vertical drop between static level and pumping level"
+     },
+     {
+      "id": "p5",
+      "left": "Specific yield",
+      "right": "Aquifer production expressed per unit of drawdown"
+     },
+     {
+      "id": "p6",
+      "left": "Cone of depression",
+      "right": "Curved water-table sag draining toward a pumped well"
+     }
+    ],
+    "explanation": "Well hydraulics and construction rely on precise definitions for casing geometry, static and pumping water levels, drawdown, and aquifer yield."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "998cb4a5af52cc114979352c69ad1ed74bf0858b6673d3decc0d9b71ff4025ee",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-03",
+    "prompt": "Contrast water-cycle pathways and land-cover effects on precipitation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Forest canopy",
+      "right": "Breaks the falling force of raindrops"
+     },
+     {
+      "id": "p2",
+      "left": "Forest floor litter",
+      "right": "Prevents soil splash erosion during infiltration"
+     },
+     {
+      "id": "p3",
+      "left": "Urban asphalt",
+      "right": "Drives rapid evaporation or swift storm-drain runoff"
+     },
+     {
+      "id": "p4",
+      "left": "Evapotranspiration",
+      "right": "Water soaked into soil and released by plants"
+     },
+     {
+      "id": "p5",
+      "left": "Groundwater seepage",
+      "right": "Water percolating downward into subsurface formations"
+     },
+     {
+      "id": "p6",
+      "left": "Overland runoff",
+      "right": "Precipitation flowing across land into surface streams"
+     }
+    ],
+    "explanation": "Land cover shapes whether precipitation evaporates, runs off rapidly over pavement, or infiltrates gently through forest litter into groundwater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "f18081df4e9d04685944280731a348c8e88176a96c39e8d318df0b24382472c8",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-04",
+    "prompt": "Connect hardness and alkalinity properties to their chemical and operational impacts.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Carbonate hardness",
+      "right": "Temporary hardness equal to the water's alkalinity"
+     },
+     {
+      "id": "p2",
+      "left": "Noncarbonate hardness",
+      "right": "Permanent hardness fraction including chlorides and nitrates"
+     },
+     {
+      "id": "p3",
+      "left": "Heated carbonate water",
+      "right": "Precipitates rock-hard scale inside boilers and pipes"
+     },
+     {
+      "id": "p4",
+      "left": "Magnesium sulfate hardness",
+      "right": "Can cause a laxative effect in new consumers"
+     },
+     {
+      "id": "p5",
+      "left": "Hard water advantage",
+      "right": "Reduces toxicity of lead oxide from lead pipes"
+     },
+     {
+      "id": "p6",
+      "left": "Alkalinity buffering",
+      "right": "Protects aquatic life against rapid pH swings"
+     }
+    ],
+    "explanation": "Hardness and alkalinity govern scaling, buffering, coagulation efficiency, and physiological or plumbing effects in drinking water systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "2bc4331c255db422a86f4c21e88d9191ef5f1995599abd96fbb0d32a2953a77d",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-05",
+    "prompt": "Classify detergent and suspended-solids effects on water and wastewater processes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Suspended solids",
+      "right": "Shield attached microbes from chlorine disinfection"
+     },
+     {
+      "id": "p2",
+      "left": "Colloidal solids",
+      "right": "Fine particles not fully removed by plain filtration"
+     },
+     {
+      "id": "p3",
+      "left": "Detergent surface tension",
+      "right": "Increases water's ability to wet contacted surfaces"
+     },
+     {
+      "id": "p4",
+      "left": "Detergent emulsification",
+      "right": "Disperses grease and oil while deflocculating colloids"
+     },
+     {
+      "id": "p5",
+      "left": "Detergent foaming",
+      "right": "Induces flotation of solids in treatment basins"
+     },
+     {
+      "id": "p6",
+      "left": "Chloride in streams",
+      "right": "Persistent dietary salt indicating waste disposal"
+     }
+    ],
+    "explanation": "Suspended solids, colloids, detergents, and conservative chloride ions each alter physical separation, disinfection, or waste-tracking behavior."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "7062f9a7f04fd4dc9631b8d6a020b2fa5b24f5b9ccaf70b81cebd954b7f74ef1",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-06",
+    "prompt": "Distinguish bacterial metabolic types and pathogen characteristics in water systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Autotrophic bacteria",
+      "right": "Use carbon dioxide as their carbon source"
+     },
+     {
+      "id": "p2",
+      "left": "Heterotrophic bacteria",
+      "right": "Obtain carbon from dead vegetation or sewage"
+     },
+     {
+      "id": "p3",
+      "left": "Photosynthetic bacteria",
+      "right": "Derive cellular energy directly from sunlight"
+     },
+     {
+      "id": "p4",
+      "left": "Chemosynthetic bacteria",
+      "right": "Derive cellular energy from chemical reactions"
+     },
+     {
+      "id": "p5",
+      "left": "Binary fission",
+      "right": "Reproductive splitting of one bacterium into two"
+     },
+     {
+      "id": "p6",
+      "left": "Waterborne pathogens",
+      "right": "Non-native organisms requiring an animal host"
+     }
+    ],
+    "explanation": "Bacteria differ in carbon and energy sources, multiply by binary fission, and include non-native pathogens that require animal hosts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "4d2ab2bb19941745d11673d9e88c7d5b4eb5e365040459b246174bebcb1145e8",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-07",
+    "prompt": "Relate organic matter oxidation, reduction, and decomposition products to oxygen availability.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Organic oxidation",
+      "right": "Adds oxygen or removes hydrogen from organic molecules"
+     },
+     {
+      "id": "p2",
+      "left": "Organic reduction",
+      "right": "Adds hydrogen or removes oxygen from organic molecules"
+     },
+     {
+      "id": "p3",
+      "left": "Aerobic decomposition",
+      "right": "Yields stable, acceptable end products efficiently"
+     },
+     {
+      "id": "p4",
+      "left": "Anaerobic decomposition",
+      "right": "Produces unstable, objectionable, foul-smelling compounds"
+     },
+     {
+      "id": "p5",
+      "left": "Biodegradable organics",
+      "right": "Alcohols, starches, fats, and proteins degraded by microbes"
+     },
+     {
+      "id": "p6",
+      "left": "Biochemical oxygen demand",
+      "right": "Measure of oxygen-consuming organics in water"
+     }
+    ],
+    "explanation": "Oxygen availability determines whether microbial degradation proceeds via efficient aerobic oxidation or anaerobic reduction producing foul end products."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "5c26724d9b6950b2d694bd8645baafb848da602f6d2e0c003b24ee2d2f996043",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-08",
+    "prompt": "Connect phosphorus and sulfur cycle transformations to environmental and system impacts.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sedimentary rock erosion",
+      "right": "Primary natural source releasing phosphorus to ecosystems"
+     },
+     {
+      "id": "p2",
+      "left": "Guano deposits",
+      "right": "Bird excreta returning phosphorus to land and water"
+     },
+     {
+      "id": "p3",
+      "left": "Deep ocean sediments",
+      "right": "Long-term sink for eroded terrestrial phosphorus"
+     },
+     {
+      "id": "p4",
+      "left": "Anaerobic protein decay",
+      "right": "Liberates sulfur as hydrogen sulfide gas"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide in sewers",
+      "right": "Causes severe corrosion of pipes and appurtenances"
+     },
+     {
+      "id": "p6",
+      "left": "Phosphorus runoff",
+      "right": "Drives excessive algal growth and lake eutrophication"
+     }
+    ],
+    "explanation": "Phosphorus cycles from sedimentary rock and guano into aquatic ecosystems, while anaerobic sulfur reduction generates corrosive hydrogen sulfide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "a16f1e80a207c0cf3288f9b64f464f368b9eb1a38609d42d321e7a9c508ed86d",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-09",
+    "prompt": "Classify toxic metals and priority inorganic pollutants by their environmental behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cumulative food-chain toxins",
+      "right": "Arsenic, cadmium, lead, and mercury"
+     },
+     {
+      "id": "p2",
+      "left": "Hard-water metal effect",
+      "right": "Calcium and magnesium reduce toxic metal uptake"
+     },
+     {
+      "id": "p3",
+      "left": "Soft, acidic water",
+      "right": "Increases toxicity of dissolved trace metals"
+     },
+     {
+      "id": "p4",
+      "left": "Priority inorganic pollutants",
+      "right": "Copper, silver, boron, and chromium"
+     },
+     {
+      "id": "p5",
+      "left": "Biological process toxicity",
+      "right": "Heavy metals kill treatment microbes and halt treatment"
+     },
+     {
+      "id": "p6",
+      "left": "Nontoxic trace metals",
+      "right": "Cause taste problems well before toxic levels"
+     }
+    ],
+    "explanation": "Water hardness and pH alter metal toxicity, while cumulative toxins and priority heavy metals threaten both food chains and biological treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "82f80741d0110188ebbe2187361cfaf9ff10db6cd8a30c6a45d4f99ac711d50d",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m1-10",
+    "prompt": "Distinguish nitrogen, protein, and grease behavior in water and wastewater.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Protein hydrolysis",
+      "right": "Breaks proteins into amino acids during decay"
+     },
+     {
+      "id": "p2",
+      "left": "Amino acid degradation",
+      "right": "Releases ammonia, hydrogen sulfide, and simple organics"
+     },
+     {
+      "id": "p3",
+      "left": "Grease and fats",
+      "right": "Insoluble in water but dissolve in organic solvents"
+     },
+     {
+      "id": "p4",
+      "left": "Fats chemical structure",
+      "right": "Stable compounds of alcohol and glycerol resisting decay"
+     },
+     {
+      "id": "p5",
+      "left": "Carbon nutrient supply",
+      "right": "Readily available from alkalinity and dissolved CO2"
+     },
+     {
+      "id": "p6",
+      "left": "Freshwater limiting nutrient",
+      "right": "Phosphorus most often restricts aquatic plant growth"
+     }
+    ],
+    "explanation": "Proteins hydrolyze into odorous compounds, fats resist rapid bacterial decay, and phosphorus typically limits freshwater plant productivity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "725973df34851a45f49dfba16e9474b81d10eb2bf9c82e2bebb86908281f7517",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r03-m3-01",
+    "prompt": "Assume suspended solids are removed from raw water by filtration prior to chlorination, leaving fewer adsorption sites for attached microorganisms while chlorine dose and contact time stay constant. What happens to the vulnerability of the remaining microorganisms to chlorine?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Removing suspended solids eliminates adsorption sites that shield attached microorganisms, increasing their vulnerability to chlorine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+    "notes": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+    "registeredAt": "2026-11-19T03:27:08.968Z",
+    "payloadSha256": "59d85a24130ddf2df203853a39881419dd0991587825f64d5ea920131751506c",
+    "builderResultsSha256": "591595b9da3d7ac08491747a0e70f736d7ba280487a9866a877388a11959b0a0"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:26:11.707660+00:00",
+   "attestation": "Self-reviewed all 11 items in targeth-wpi-class4-water-r03 against supplied source pages and collision candidates; accepted all 11 items.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-r03-m1-01": "9d923e454794afdcd29e836625a0ed636dc683bf7be39dcee9d16b2ac461ca2b",
+    "targeth-ht261118-wpi-class4-water-r03-m1-02": "998cb4a5af52cc114979352c69ad1ed74bf0858b6673d3decc0d9b71ff4025ee",
+    "targeth-ht261118-wpi-class4-water-r03-m1-03": "f18081df4e9d04685944280731a348c8e88176a96c39e8d318df0b24382472c8",
+    "targeth-ht261118-wpi-class4-water-r03-m1-04": "2bc4331c255db422a86f4c21e88d9191ef5f1995599abd96fbb0d32a2953a77d",
+    "targeth-ht261118-wpi-class4-water-r03-m1-05": "7062f9a7f04fd4dc9631b8d6a020b2fa5b24f5b9ccaf70b81cebd954b7f74ef1",
+    "targeth-ht261118-wpi-class4-water-r03-m1-06": "4d2ab2bb19941745d11673d9e88c7d5b4eb5e365040459b246174bebcb1145e8",
+    "targeth-ht261118-wpi-class4-water-r03-m1-07": "5c26724d9b6950b2d694bd8645baafb848da602f6d2e0c003b24ee2d2f996043",
+    "targeth-ht261118-wpi-class4-water-r03-m1-08": "a16f1e80a207c0cf3288f9b64f464f368b9eb1a38609d42d321e7a9c508ed86d",
+    "targeth-ht261118-wpi-class4-water-r03-m1-09": "82f80741d0110188ebbe2187361cfaf9ff10db6cd8a30c6a45d4f99ac711d50d",
+    "targeth-ht261118-wpi-class4-water-r03-m1-10": "725973df34851a45f49dfba16e9474b81d10eb2bf9c82e2bebb86908281f7517",
+    "targeth-ht261118-wpi-class4-water-r03-m3-01": "59d85a24130ddf2df203853a39881419dd0991587825f64d5ea920131751506c"
+   }
+  },
+  "registeredAt": "2026-11-19T03:27:08.968Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 1,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 1
+   },
+   "batchSha256": "099283b1a483bbfcabf9856502957c83434effb09783d891ddf3a3f21b426e6f"
+  }
+ }
+}

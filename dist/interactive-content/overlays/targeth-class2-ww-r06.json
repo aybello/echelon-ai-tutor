@@ -1,0 +1,2790 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class2-ww-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 78 items.",
+ "additions": [
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-01",
+    "prompt": "Water can behave as both an acid and a base under certain conditions.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Water is amphoteric, meaning it can act as either an acid or a base in chemical reactions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "09485e2282e823c2a9fc7014414b37a73c41546a4a16f757dc9dd67742cd135d",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-02",
+    "prompt": "Potassium permanganate is effective for treating earthy or musty odors from blue-green algae.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Oxidants such as potassium permanganate oxidize nonvolatile metabolic products of actinomycetes and blue-green algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "3be9ddd209cd04cdf0b273e52251ab6f3edb504f0540a323676332552d586a4d",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-03",
+    "prompt": "Tastes and odors from dissolved gases are typically removed by oxygen in aeration processes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Aeration strips volatile organic materials and dissolved gases while supplying oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "14658c8eee8e07c8091d262a6913b99bbe29e0ce0809494a7a550a9e57115b8c",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-04",
+    "prompt": "Excessive mineral scaling increases the efficiency of heat transfer in boilers.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Excessive scaling reduces pipeline capacity and lowers heat transfer efficiency in boilers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "eed3d64970ca148099bd85a8081b220f361ee3da0599ab7716a835f9b8ec8d29",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-05",
+    "prompt": "Refractory organic compounds such as tannin and cellulose are readily broken down by bacteria.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Refractory organics like tannin, lignic acids, and cellulose resist biological degradation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "b4a59e128d8e42d7fb9613c1b7bb3fd941950cbebfc271a295068b32d90a98a5",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-06",
+    "prompt": "Chemical oxygen demand (COD) measures total oxygen depletion by both biodegradable and nonbiodegradable chemicals.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "COD is a more complete measurement of total oxygen depletion than BOD because it includes nonbiodegradable chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "94a8b02f2f94ea85e50e0169059c44374f9cf8471e89a1a4b5957203085d43f8",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-07",
+    "prompt": "High total dissolved solids (TDS) in water lowers its electrical conductivity.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "High TDS increases electrical conductivity and ionization in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "fac692702037cf76e6aed9b9da32848f9ee6a565c9ea1af2bd3d2234dbb54518",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-08",
+    "prompt": "Trace heavy metals in surface water are classified as toxic when harmful in relatively small amounts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Heavy metals harmful in relatively small amounts are labeled toxic, while others are nontoxic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "1200561c7c99b359ff06f46943f69fe336d6984cce9326dd1a7ccb214fa25834",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-09",
+    "prompt": "In binomial nomenclature, the species name is written before the capitalized genus name.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The capitalized genus name is written first, followed by the species name in lowercase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "40d0012d12f906d003b22a264389d5b7c14c376834984de47a3bedcaba9caf95",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-10",
+    "prompt": "Prokaryotic bacterial cells contain a distinct membrane-bound nucleus.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Prokaryotic cells lack a distinct nucleus; their DNA is packaged in a nucleoid region."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ea1a76a35fa9a7453a2b4b9b902f1cb73ef5a4e8d7c52dd5e47a0adfaeebe279",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-11",
+    "prompt": "Bacterial ribosomes are made of RNA and serve as sites for protein synthesis.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Ribosomes are RNA bodies loosely attached to the plasma membrane where protein synthesis occurs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "841364c2392bfb333b29f05200092e6718185c89392e29521bb281cddb10ac68",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-12",
+    "prompt": "Bacterial slime layers are organized, thick accumulations easily seen under an ordinary light microscope.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Slime layers are unorganized accumulations; organized thick layers are called capsules."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "b4776cc3f67ab616ba9ea3556fccbf4b08e332903e076df7eb0f11fd6ed28f30",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-13",
+    "prompt": "The rigid bacterial cell wall helps protect the delicate protoplast from osmotic bursting.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "The rigid cell wall provides structural protection against osmotic lysis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "e6bcba713794124c87a6baa0545bc1a3e6ef8190c92252e05b2a1ae1df52bfe7",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-14",
+    "prompt": "A river of good baseline quality shows its lowest bacterial numbers during rainy periods.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A good-quality river shows its highest bacterial numbers during rainy periods due to surface runoff."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "56d7031b4e69c220a17db2d27a0b03f0545a545d1c654442e90d90510b3fc756",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m0-15",
+    "prompt": "Simple freshwater algae convert inorganic constituents in water into organic cellular constituents.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Chlorophyll-bearing algae use photosynthesis to turn inorganic water constituents into organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "e3175c161b43cb28b841d7a9a2ce18868d28a48f904fc9cf896765f9bbe73f05",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-01",
+    "prompt": "Distinguish each ion-exchange softening component or medium by its role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sodium ions",
+      "right": "Nonhardness cations released into treated water"
+     },
+     {
+      "id": "p2",
+      "left": "Calcium and magnesium",
+      "right": "Hardness ions removed from solution"
+     },
+     {
+      "id": "p3",
+      "left": "Greensand",
+      "right": "Natural exchange medium colored by glauconite"
+     },
+     {
+      "id": "p4",
+      "left": "Synthetic organic resin",
+      "right": "Clear sphere-shaped beads with many exchange sites"
+     },
+     {
+      "id": "p5",
+      "left": "Flow distributor",
+      "right": "Spreads incoming water across the granular bed"
+     },
+     {
+      "id": "p6",
+      "left": "Breakthrough",
+      "right": "Hardness appearing when exchange sites are used up"
+     }
+    ],
+    "explanation": "Ion exchange swaps hardness ions for sodium until exchange sites are exhausted."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "57c9a9d3431fae8cbd31a2882b2a70d4655ddfb293ea1656cbaf3262b50f204c",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-02",
+    "prompt": "Distinguish each bacterial cell structure by its primary function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall",
+      "right": "Rigid layer protecting against osmotic bursting"
+     },
+     {
+      "id": "p2",
+      "left": "Plasma membrane",
+      "right": "Lipoprotein barrier separating inside from outside"
+     },
+     {
+      "id": "p3",
+      "left": "Nucleoid",
+      "right": "Region holding a single long strand of DNA"
+     },
+     {
+      "id": "p4",
+      "left": "Ribosomes",
+      "right": "RNA bodies serving as protein synthesis sites"
+     },
+     {
+      "id": "p5",
+      "left": "Inclusions",
+      "right": "Storage granules inside the bacterial cell"
+     },
+     {
+      "id": "p6",
+      "left": "Flagella",
+      "right": "Structures that help cells flee harmful areas"
+     }
+    ],
+    "explanation": "Each bacterial structure performs a distinct protective, genetic, metabolic, or motile role."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "069fe99c2f20bab4d07518053b57f9d126b2592d2b743df5506a75e0ecd40c31",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-03",
+    "prompt": "Distinguish each waterborne pathogen or indicator by its scientific name.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Escherichia coli",
+      "right": "Coliform indicator bacterium"
+     },
+     {
+      "id": "p2",
+      "left": "Salmonella typhi",
+      "right": "Typhoid bacillus bacterium"
+     },
+     {
+      "id": "p3",
+      "left": "Giardia lamblia",
+      "right": "Flagellated protozoan parasite"
+     },
+     {
+      "id": "p4",
+      "left": "Vibrio cholerae",
+      "right": "Bacterium causing cholera"
+     },
+     {
+      "id": "p5",
+      "left": "Entamoeba histolytica",
+      "right": "Amoebic protozoan pathogen"
+     },
+     {
+      "id": "p6",
+      "left": "Cryptosporidium",
+      "right": "Protozoan forming resistant oocysts"
+     }
+    ],
+    "explanation": "Binomial names identify specific bacteria and protozoa of concern in water and wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "6cfc36d009987264f4a4f8c71fcd5794eb294662cbf9fc598aac4aafb4aafede",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-04",
+    "prompt": "Distinguish each organic matter category or effect by its behavior in water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Biodegradable organics",
+      "right": "Broken down by microbes for energy and growth"
+     },
+     {
+      "id": "p2",
+      "left": "Refractory organics",
+      "right": "Plant compounds that resist biological decay"
+     },
+     {
+      "id": "p3",
+      "left": "Petroleum products",
+      "right": "Prime contributors to taste and odor problems"
+     },
+     {
+      "id": "p4",
+      "left": "Halogenated compounds",
+      "right": "Formed when chlorine reacts with organic matter"
+     },
+     {
+      "id": "p5",
+      "left": "Oxygen depletion",
+      "right": "Stream effect from microbial decay of organics"
+     },
+     {
+      "id": "p6",
+      "left": "Benzene",
+      "right": "Ringed hydrocarbon resistant to biodegradation"
+     }
+    ],
+    "explanation": "Organic compounds differ in biodegradability and in how they affect water quality."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "80248e33562f44dfb85abfe296e19639f3ac82153e96edf534c70c714663fc30",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-05",
+    "prompt": "Distinguish each heavy metal phase or factor by its behavior in surface water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dissolved phase",
+      "right": "Ions or soluble organometallic complexes"
+     },
+     {
+      "id": "p2",
+      "left": "Particulate phase",
+      "right": "Metals adsorbed to clay, silica, or organics"
+     },
+     {
+      "id": "p3",
+      "left": "Water pH",
+      "right": "Primary factor controlling trace metal solubility"
+     },
+     {
+      "id": "p4",
+      "left": "Toxic heavy metals",
+      "right": "Metals harmful in relatively small amounts"
+     },
+     {
+      "id": "p5",
+      "left": "Essential metals",
+      "right": "Trace elements needed by organisms at low levels"
+     },
+     {
+      "id": "p6",
+      "left": "Hydroxides and sulfides",
+      "right": "Insoluble mineral forms of colloidal metals"
+     }
+    ],
+    "explanation": "Heavy metals partition between dissolved and particulate phases depending on pH and chemistry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "fd0a351f7d65eb1b46d0e5fbe32d6b01f86ae7aee426b185d13d2146323613ce",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-06",
+    "prompt": "Distinguish each requirement for aerobic biological oxidation by its role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Free dissolved oxygen",
+      "right": "Electron acceptor for aerobic respiration"
+     },
+     {
+      "id": "p2",
+      "left": "Organic matter",
+      "right": "Carbon food source for heterotrophs"
+     },
+     {
+      "id": "p3",
+      "left": "Nitrogen and phosphorus",
+      "right": "Essential nutrients for carbon oxidation"
+     },
+     {
+      "id": "p4",
+      "left": "Proper pH",
+      "right": "Maintained between 6.5 and 9.0"
+     },
+     {
+      "id": "p5",
+      "left": "Lack of toxic materials",
+      "right": "Prevents inhibition of microbial enzymes"
+     },
+     {
+      "id": "p6",
+      "left": "Sufficient water",
+      "right": "Medium required for cellular reactions"
+     }
+    ],
+    "explanation": "Aerobic treatment requires oxygen, food, nutrients, water, suitable pH, and no toxins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "38d56fd8d1c2a9864e4bea638222244a13066d2cc4243eeb954a62f8d3fa9a89",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-07",
+    "prompt": "Distinguish each taxonomic rank in biological classification by its hierarchy.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Kingdom",
+      "right": "Largest, most inclusive classification category"
+     },
+     {
+      "id": "p2",
+      "left": "Phylum",
+      "right": "Major division directly below kingdom"
+     },
+     {
+      "id": "p3",
+      "left": "Class",
+      "right": "Group within a phylum containing orders"
+     },
+     {
+      "id": "p4",
+      "left": "Order",
+      "right": "Category above family and below class"
+     },
+     {
+      "id": "p5",
+      "left": "Genus",
+      "right": "Capitalized first word in binomial naming"
+     },
+     {
+      "id": "p6",
+      "left": "Species",
+      "right": "Second word in binomial naming"
+     }
+    ],
+    "explanation": "Linnaean taxonomy organizes organisms from broad kingdoms down to specific species."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "b58acc63e23ccc355445f17c4fd0dfb445b55884b79ddbd3bac706361650d425",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-08",
+    "prompt": "Distinguish each taste and odor cause or control by its mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Actinomycetes",
+      "right": "Produce nonvolatile earthy-musty metabolites"
+     },
+     {
+      "id": "p2",
+      "left": "Blue-green algae",
+      "right": "Release oily substances altering taste and odor"
+     },
+     {
+      "id": "p3",
+      "left": "Potassium permanganate",
+      "right": "Oxidant effective against earthy-musty odors"
+     },
+     {
+      "id": "p4",
+      "left": "Aeration",
+      "right": "Removes dissolved gases and volatile organics"
+     },
+     {
+      "id": "p5",
+      "left": "Chlorine synergy",
+      "right": "Mixing chlorine with organics worsens odor"
+     },
+     {
+      "id": "p6",
+      "left": "Biological decay",
+      "right": "Decomposing organics in surface water"
+     }
+    ],
+    "explanation": "Different taste and odor sources require targeted oxidation or aeration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "f5facf8040d4bc9fa1de5afab07a2260a944e571a355a990b665baac600ca710",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-09",
+    "prompt": "Distinguish each nitrogen and nitrate health or environmental fact by its feature.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nitrate (NO3)",
+      "right": "Form indicating possible sewage contamination"
+     },
+     {
+      "id": "p2",
+      "left": "Nitrite (NO2)",
+      "right": "Converted from nitrate in infant intestines"
+     },
+     {
+      "id": "p3",
+      "left": "Blue baby syndrome",
+      "right": "Oxygen starvation caused by nitrite in blood"
+     },
+     {
+      "id": "p4",
+      "left": "Feedlot runoff",
+      "right": "Major agricultural source of surface nitrogen"
+     },
+     {
+      "id": "p5",
+      "left": "Atmospheric fixation",
+      "right": "Blue-green algae obtaining nitrogen from air"
+     },
+     {
+      "id": "p6",
+      "left": "Acid rain",
+      "right": "Precipitation that can add nitrogen to water"
+     }
+    ],
+    "explanation": "Nitrogen enters water from many sources and poses infant health risks when reduced to nitrite."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "81cada43358b5396c41e60b956d38987965a44cc54ff35fad33cd514d56bd6e3",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m1-10",
+    "prompt": "Distinguish each microbial group or property by its defining characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteriology",
+      "right": "Branch of science studying bacteria"
+     },
+     {
+      "id": "p2",
+      "left": "Autotrophic",
+      "right": "Organisms producing food from inorganic matter"
+     },
+     {
+      "id": "p3",
+      "left": "Anaerobic",
+      "right": "Able to live and grow without free oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Simple algae",
+      "right": "Microscopic chlorophyll-bearing plants"
+     },
+     {
+      "id": "p5",
+      "left": "Pathogens",
+      "right": "Microorganisms that cause waterborne disease"
+     },
+     {
+      "id": "p6",
+      "left": "Capsule",
+      "right": "Organized gelatinous layer on a cell wall"
+     }
+    ],
+    "explanation": "Microbiology terms classify organisms by metabolism, structure, and disease potential."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "d01f5cae4dd7a87839a4c3decfb68511679d9816a9842525f6c484002ddff8c9",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-01",
+    "prompt": "Three of these are nonessential heavy metals of particular concern in surface water; which one is an essential trace element?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cadmium"
+     },
+     {
+      "id": "b",
+      "label": "Mercury"
+     },
+     {
+      "id": "c",
+      "label": "Zinc"
+     },
+     {
+      "id": "d",
+      "label": "Lead"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Zinc is an essential trace element, whereas cadmium, mercury, and lead are nonessential heavy metals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "11da7ecf8e76dda10743bcf4ea9bb9ae1fe689b85138b1654f2e8529ead329c8",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-02",
+    "prompt": "Three of these are chemical oxidants used to treat taste and odor in water; which one is a physical gas-transfer process?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Chlorine dioxide"
+     },
+     {
+      "id": "b",
+      "label": "Ozone"
+     },
+     {
+      "id": "c",
+      "label": "Potassium permanganate"
+     },
+     {
+      "id": "d",
+      "label": "Aeration"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Aeration is a physical gas-transfer process, while the others are chemical oxidants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "d5c1eb5bb26f3f4280f8a383e421a66b81d1d04706bc094e86cf115f32295264",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-03",
+    "prompt": "Three of these are refractory organic compounds from woody plants; which one is a synthetic aromatic hydrocarbon?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Tannin"
+     },
+     {
+      "id": "b",
+      "label": "Lignic acid"
+     },
+     {
+      "id": "c",
+      "label": "Cellulose"
+     },
+     {
+      "id": "d",
+      "label": "Benzene"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Benzene is a petroleum-derived ringed hydrocarbon, whereas tannin, lignic acid, and cellulose come from woody plants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "797763be58e6550649f75e2ce76e36d89b5821f7ba5c843e9a448ddd87532363",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-04",
+    "prompt": "Three of these are bacterial pathogens; which one is a protozoan parasite?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Salmonella typhi"
+     },
+     {
+      "id": "b",
+      "label": "Vibrio cholerae"
+     },
+     {
+      "id": "c",
+      "label": "Giardia lamblia"
+     },
+     {
+      "id": "d",
+      "label": "Shigella spp."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Giardia lamblia is a protozoan, while Salmonella, Vibrio, and Shigella are bacteria."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "cf216cf8413c61956b6127324ef37a5bbec5af1390c1044c11376b57903eea92",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-05",
+    "prompt": "Three of these are structures found inside or surrounding a bacterial cell; which one is a membrane-bound eukaryotic organelle?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nucleoid"
+     },
+     {
+      "id": "b",
+      "label": "Ribosome"
+     },
+     {
+      "id": "c",
+      "label": "Distinct nucleus"
+     },
+     {
+      "id": "d",
+      "label": "Plasma membrane"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Prokaryotic bacteria lack a distinct membrane-bound nucleus, using a nucleoid instead."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "db57731b52d5727ea9d299aa0e8040c1e4aeeb0ecee1366175b3b0ec3edb589e",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-06",
+    "prompt": "Three of these are granular ion-exchange media used in water softening; which one is a dissolved hardness cation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Greensand"
+     },
+     {
+      "id": "b",
+      "label": "Bentonite clay"
+     },
+     {
+      "id": "c",
+      "label": "Sulfonated coal"
+     },
+     {
+      "id": "d",
+      "label": "Magnesium"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Magnesium is a dissolved hardness ion removed by ion exchange, not an exchange medium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "989a92a6f83bc5efcfd4cb01fdff5f0a5fa6ccc21f9f9d389433660451d25022",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-07",
+    "prompt": "Three of these are chemical factors that contribute to iron corrosion; which one is a physical flow condition?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Dissolved oxygen"
+     },
+     {
+      "id": "b",
+      "label": "Carbon dioxide"
+     },
+     {
+      "id": "c",
+      "label": "Alkalinity"
+     },
+     {
+      "id": "d",
+      "label": "Water velocity"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Water velocity is a physical factor that accelerates corrosion, whereas the others are chemical factors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "55b2f8429a889297b6c7968261d4b1d412fd4ea4be49235efdd8f8970f49c80a",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m2-08",
+    "prompt": "Three of these are intermediate ranks in biological taxonomy; which one is the broadest, most inclusive category?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Phylum"
+     },
+     {
+      "id": "b",
+      "label": "Order"
+     },
+     {
+      "id": "c",
+      "label": "Family"
+     },
+     {
+      "id": "d",
+      "label": "Kingdom"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Kingdom is the largest, most inclusive taxonomic category."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "44a97dc091eb9afad1fd47c14b8a304f5639a9b6dc7cafe5da9c09652b4d7932",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-01",
+    "prompt": "In an ion-exchange softener, all available sodium exchange sites on the resin beads become completely occupied by calcium and magnesium while hard water continues to flow. What happens to the hardness concentration in the effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Once exchange sites are exhausted, hardness breaks through into the effluent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "eac451bfe99443f72238c7b111c3ec52d06e2cee8871135ccecfa5e35188da61",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-02",
+    "prompt": "Mineral scale builds up thickly inside a water pipeline while the driving pressure remains constant. What happens to the flow capacity of the pipeline?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Excessive scaling narrows the pipe interior and reduces flow capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "e0404d7d055318c59f87d6274e602a78d84c099f46a487a359e396c07682df7e",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-03",
+    "prompt": "An unprotected steel pipe carries oxygenated water with carbon dioxide, and both water temperature and flow velocity increase. What happens to the rate of iron corrosion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher water temperature and flow velocity significantly increase corrosive tendencies."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "6b9fa6ec06c9d58ec92b60be1dcb5ed8b24692ab01d62ba956a106dc16596437",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-04",
+    "prompt": "A water sample with high total dissolved solids is compared with a low-TDS sample at the same temperature. What happens to the likelihood of forming a protective mineral coating?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "High TDS suggests a greater likelihood of forming a protective coating."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "4c1676576c49150b18ab5e7f7d4ee7116789bdb95d3cd48d6b34258436d232d0",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-05",
+    "prompt": "A wastewater stream receives an influx of nonbiodegradable organic chemicals that react chemically with oxygen while biodegradable organics stay constant. What happens to the chemical oxygen demand (COD)?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "COD measures oxygen depletion from both biodegradable and nonbiodegradable oxidizable chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "e248e812f67574ad3b0af210f58928cba463150b87e574e944f15b2e501865ae",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-06",
+    "prompt": "In an aerobic treatment basin, pH drops from 7.2 to 4.5 while oxygen, food, and nutrients remain ample. What happens to the rate of aerobic microbial oxidation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Aerobic oxidation requires a proper pH between 6.5 and 9.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ea6ba78a3c914168040f2699091e9a8a7387dce22f9948dcf2410cbb1611c569",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-07",
+    "prompt": "A bacterial cell loses its flagella due to an environmental stress while remaining otherwise viable. What happens to the cell's ability to flee from harmful areas?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Flagella provide motility that helps bacteria move away from harmful conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "6f5f475f34efd3618a7cd018202e6362d6e3e1b8369b2b21bc2c0b5feba1b117",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-08",
+    "prompt": "A heavily polluted stream with a constant daily pollutant load enters a dry-weather low-flow period. What happens to the bacterial concentration per unit volume in the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Less dilution water during low flow concentrates the constant pollutant and bacterial load."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ae27f2e6d47323721213c4d21a13fb2836df13d2a166c5d1357f0ed5871a4aee",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-09",
+    "prompt": "A river of good baseline quality experiences a rainstorm that washes surface impurities into the channel. What happens to the bacterial numbers in the river during the initial runoff?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Initial rain runoff washes ground-surface bacteria into a clean river, raising bacterial counts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "7fce005b6d80a1312c7457d716af495f2152fb8a8e621e2c1c0769b77ad8c475",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-10",
+    "prompt": "Water containing dissolved gases and volatile organic compounds passes through an open aeration unit. What happens to the concentration of those volatile gases in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Aeration strips volatile organic materials and dissolved gases from the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ffe42a3aa8e8c7ca8393ef16137b72cd3494a5d357725980507aa82364d68611",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-11",
+    "prompt": "A water sample containing suspended solids is passed through a laboratory filter, and the filtrate is collected. What happens to the mass of suspended solids in the filtrate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Suspended solids are retained on top of the filter, leaving dissolved solids in the filtrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "fcc6cdbc63826f7aac9d72003990e6756809c0585c14adde43ef23b0e9db1376",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-12",
+    "prompt": "Blue-green algae bloom in a surface water reservoir and release oily metabolic substances. What happens to the taste and odor intensity of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Oily substances from certain algae alter water taste and increase odor problems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "f0dfe8058fd4d61b3313adeab5f182a408aa479d5fc2da318a08a5b3c019ff25",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-13",
+    "prompt": "Groundwater with elevated nitrate is consumed by an infant, and intestinal bacteria convert nitrate to nitrite. What happens to the oxygen-carrying capacity of the infant's bloodstream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Nitrite replaces oxygen in the bloodstream, causing oxygen starvation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "859c2f59149622580c62602a405a09e4ac6af0626fd3f83239ca996dbcef772e",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-14",
+    "prompt": "A wastewater operator increases the organic matter load to an active aerobic basin that has ample oxygen and nutrients. What happens to the biochemical oxygen demand exerted by the microbes?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "More biodegradable organic material increases the BOD exerted by microorganisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ea495e3860c5099507f43b29ecab31b0917cc80ddc8af385b0ad2a5e0d7a6cd3",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m3-15",
+    "prompt": "In a bacterial cell, ribosomes are inhibited by an antibiotic while DNA remains intact. What happens to the rate of cellular protein synthesis?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Ribosomes are the sites of protein synthesis, so inhibiting them reduces protein production."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "8edd7322f882bf5dad0ea9748eaedb14bf29a34aa4f860413d8f64eb1c6c7e76",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-01",
+    "prompt": "A trainee reviews notes on sodium-cycle ion-exchange softening. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sodium ions on the resin are exchanged for calcium and magnesium."
+     },
+     {
+      "id": "b",
+      "label": "Synthetic organic resins provide a large number of exchange sites."
+     },
+     {
+      "id": "c",
+      "label": "Breakthrough occurs before exchange sites on the resin are utilized."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Breakthrough occurs after exchange sites are utilized, not before."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "50d85de27f982436dab67818fc4ae77e7691762ad45c64a79c282e72a8f0d0e0",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-02",
+    "prompt": "An operator compares biodegradable and refractory organics in surface water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Decay of organic matter can deplete dissolved oxygen in streams."
+     },
+     {
+      "id": "b",
+      "label": "Chlorine added to organic-bearing water can form halogenated compounds."
+     },
+     {
+      "id": "c",
+      "label": "Refractory plant compounds like tannin are rapidly degraded by bacteria."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Refractory compounds such as tannin and cellulose resist biological degradation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "659e359733950e5d1454c32ec939074c83e25235b2332deb2e868216178affcd",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-03",
+    "prompt": "Which statement about bacterial cell structure is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The rigid cell wall helps protect the protoplast from osmotic bursting."
+     },
+     {
+      "id": "b",
+      "label": "Bacterial DNA is packaged in a nucleoid attached to the plasma membrane."
+     },
+     {
+      "id": "c",
+      "label": "Ribosomes are stored inside a distinct membrane-bound nucleus."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Prokaryotic bacteria lack a distinct nucleus; ribosomes are in the cytoplasm."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "7ff72335ba417c5b8f119097c81e7b137b272646447c5b425b501b0b6035ec93",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-04",
+    "prompt": "A study group discusses trace heavy metals in natural surface water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Trace metal solubility is strongly controlled by water pH."
+     },
+     {
+      "id": "b",
+      "label": "Colloidal metals may adsorb to clay, silica, or organic matter."
+     },
+     {
+      "id": "c",
+      "label": "Dissolved concentrations of heavy metals are typically much higher than particulate phases."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dissolved heavy metal concentrations in surface waters are generally low."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "616e36b2fca3ad2ada386018eddfb35a3dce75b52ba8ec4d218c645d4ac2baf6",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-05",
+    "prompt": "A student reviews how binomial nomenclature is written for waterborne microbes. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Organisms are described by a two-word Latin name for genus and species."
+     },
+     {
+      "id": "b",
+      "label": "The first letter of the genus name is normally capitalized."
+     },
+     {
+      "id": "c",
+      "label": "The species name is written before the genus name in scientific text."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Genus is written first and capitalized, followed by the species epithet."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "3743fd6a324c667cc3394db22b3f5f3163b266750dae6829f05a3b75824eb450",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-06",
+    "prompt": "A lab technician reviews total dissolved solids (TDS) behavior in water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Dissolved solids pass through a laboratory filter with the water."
+     },
+     {
+      "id": "b",
+      "label": "Evaporating the filtered water leaves TDS as a residue in the dish."
+     },
+     {
+      "id": "c",
+      "label": "High TDS lowers electrical conductivity during corrosion control."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "High TDS means higher electrical conductivity and ionization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "c96d52ed815ca88cd4196f4e1dfe2be5b339bd149daa18ba859a175b2aef103e",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-07",
+    "prompt": "Which statement about taste and odor in water is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Petroleum products are prime contributors to taste and odor problems."
+     },
+     {
+      "id": "b",
+      "label": "Potassium permanganate is effective against earthy-musty algal odors."
+     },
+     {
+      "id": "c",
+      "label": "Aeration is ineffective for removing dissolved gases and volatile organics."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Aeration normally removes dissolved gases and volatile organic materials."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "adca56d7123e719378f3f00290a2f0df93f449d31d766ccf577a708196f8e563",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-08",
+    "prompt": "Which statement about nitrogen in water is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nitrate in drinking water can be converted to nitrite by infant intestinal bacteria."
+     },
+     {
+      "id": "b",
+      "label": "Nitrite can replace oxygen in the bloodstream and cause oxygen starvation."
+     },
+     {
+      "id": "c",
+      "label": "Lakes and reservoirs normally contain higher nitrate levels than groundwater."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Lakes and reservoirs usually have less than 2 mg/L nitrate-N, while groundwater can reach 20 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "e5d71ef5e2c9b0761c940f6e97691adc15c8d94a25a0c32626bdff90ccfce5d3",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-09",
+    "prompt": "Which statement about bacterial capsules and slime layers is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Capsules are organized accumulations of gelatinous material on cell walls."
+     },
+     {
+      "id": "b",
+      "label": "Slime layers are unorganized accumulations that adhere loosely to the cell wall."
+     },
+     {
+      "id": "c",
+      "label": "Thin microcapsules are easily seen under an ordinary light microscope."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Thin microcapsules can be detected by electron microscopy, not ordinary light microscopes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "6f4f2cd67aa193893f55f867f7df7c43d29b4b236002e7a3c7fc2720457583b9",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-10",
+    "prompt": "Which statement about wastewater microbiology is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Operators control microbial growth to break down organic waste."
+     },
+     {
+      "id": "b",
+      "label": "Viable pathogenic microorganisms should be prevented from leaving in effluent."
+     },
+     {
+      "id": "c",
+      "label": "Simple algae break down organic waste without needing sunlight or chlorophyll."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Simple algae contain chlorophyll and convert inorganic constituents using photosynthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "1588163daf71524d7e9c5aad4b2f10ed828a625c0149c03f392f8598604b3a1f",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-11",
+    "prompt": "Which statement about iron corrosion is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alkalinity, pH, dissolved oxygen, and carbon dioxide influence corrosion."
+     },
+     {
+      "id": "b",
+      "label": "Higher water temperature and flow velocity increase corrosive tendencies."
+     },
+     {
+      "id": "c",
+      "label": "Excessive scaling inside pipelines improves heat transfer in boilers."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Excessive scaling reduces pipeline capacity and heat transfer efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "27d760fe0f08069f225ddc62e34201f94cee5ce588c87efc5bc77cff9f3565a6",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-12",
+    "prompt": "Which statement about bacterial differentiation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Differentiation among higher life forms relies mostly on morphology."
+     },
+     {
+      "id": "b",
+      "label": "Single-celled bacteria often show few visible structural differences."
+     },
+     {
+      "id": "c",
+      "label": "Smaller bacterial groups are separated mainly by visual shape rather than chemistry."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Differentiation among smaller bacterial groups is based almost entirely on chemical differences."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "6d581d1ef74a68512955fb0ecf5e32de965e2d2d4ec96f3e20f4448872dbd6f8",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-13",
+    "prompt": "Which statement about aerobic biological oxidation requirements is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Microbes need free oxygen, organic food, and sufficient water."
+     },
+     {
+      "id": "b",
+      "label": "Nitrogen and phosphorus are needed to permit carbon oxidation."
+     },
+     {
+      "id": "c",
+      "label": "Aerobic oxidation proceeds best when pH is held below 5.0."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Proper pH for aerobic biological oxidation is between 6.5 and 9.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "41a437d65ec88f9e7c3c5cc0e8848a4340eb5c68acddd8ea702a7daeb00fdc9a",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-14",
+    "prompt": "Which statement about stream bacterial counts is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Rainy runoff washes surface material and bacteria into a clean river."
+     },
+     {
+      "id": "b",
+      "label": "After initial ground washing, fewer impurities remain to enter the stream."
+     },
+     {
+      "id": "c",
+      "label": "A heavily polluted stream shows its lowest bacterial counts during low flows."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A polluted stream with constant pollutant influx shows its highest bacterial numbers during low flows."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "dc63bc30080707ff72e8682ad28d16ccfcd3174613707a7aab76e1ed3862db8f",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m4-15",
+    "prompt": "Which statement about BOD and COD is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Microbes break down biodegradable organics and use the energy for growth."
+     },
+     {
+      "id": "b",
+      "label": "COD measures oxygen depletion from both biodegradable and nonbiodegradable matter."
+     },
+     {
+      "id": "c",
+      "label": "A BOD test is routinely required for monitoring finished drinking water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A BOD test is not required for monitoring drinking water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "8a129136449da2cc6a6116b2aff671da5fa6c6c77fc9c3d8d20171d80a8f4bcb",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-01",
+    "prompt": "In the ion-exchange softening cycle of a resin bed, does calcium and magnesium exchange with sodium occur before or after hardness breakthrough appears in the effluent?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Resin sites exchange sodium for hardness ions until they are exhausted, which causes breakthrough."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "8cec71562c372838c3dc9888985c668f9ec74f5533d7f824d8ca58e87b42e786",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-02",
+    "prompt": "In the laboratory total dissolved solids (TDS) test, does evaporating the filtered liquid in a dish occur before or after passing the water sample through the filter?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The sample is filtered first to remove suspended solids, and the filtrate is evaporated to measure TDS."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ba695dcb945299a9b48bdf59c085ed6a5fa967d1ab0097c97cf17e1f50ff7e62",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-03",
+    "prompt": "In infant methemoglobinemia from nitrate-contaminated water, does nitrite replacing oxygen in the bloodstream occur before or after intestinal bacteria convert nitrate to nitrite?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Intestinal bacteria first reduce nitrate to nitrite, which then enters the blood and displaces oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "0accf65c4c106e2815f3da172116614491f7830351da1736a3fafba1af784565",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-04",
+    "prompt": "In a wastewater treatment plant, does microbial degradation of organic waste occur before or after discharging treated effluent to the receiving body?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microorganisms degrade organic waste during treatment prior to effluent discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "d17f1ada6d862827957e4d35b338c9a7c8c75b07178961f7218b6d1ffbf6a8c3",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-05",
+    "prompt": "In prokaryotic bacterial cell division, does duplication of genetic material occur before or after a cell can contain more than one nucleoid?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A cell can have more than one nucleoid after its genetic material has been duplicated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "ff0dad63d099572da7da6dc8902f5ef2bbd77268e2ff55ab8bfd8ae4eb4b3bfc",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-06",
+    "prompt": "In a rainstorm over a watershed with a clean river, does the initial ground-washing runoff occur before or after the river carries relatively clean water again?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Initial rain washes surface impurities into the stream; afterward, few impurities remain to wash in."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "152217418b4a389fd214b01ca44dad7e93cdd47055c569e5c74a70662e4de07b",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-07",
+    "prompt": "In chemical taste and odor treatment, does adding an oxidant like potassium permanganate occur before or after earthy-musty algal metabolites are oxidized?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The oxidant must be added to the water so it can react with and oxidize the odor compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "363eb37570ed2a601121a75d668de194a0eb80c7e6d27742d454b05a49016623",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-08",
+    "prompt": "In aerobic microbial metabolism, does breaking down biodegradable organics into simpler compounds occur before or after microbes use the released energy for growth?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microbes break down organics to release chemical energy, which they then use for growth and reproduction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "803102e0f3128e3cea8f4d83dca5297c0b892d40255cbfe67eca4b26d59ef504",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-09",
+    "prompt": "In the hierarchy of biological taxonomy, does the Kingdom level appear before or after the Species level when moving from broadest to narrowest?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Kingdom is the broadest category at the top of the hierarchy, while Species is the narrowest."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "c264bc9c88068367d1107aa61f5e53b460cc3636c176bf992041dce44b96b6d1",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-10",
+    "prompt": "In chlorine disinfection of water containing dissolved organics, does chlorine addition occur before or after halogenated organic compounds form?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Halogenated compounds form when chlorine is added to water containing organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "4ae80550480f98906d3ae15a985bd0debdd2adad3e29eb7331c3717194939dce",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-11",
+    "prompt": "In a waterborne disease transmission cycle, does ingestion of contaminated water by a host occur before or after the pathogen finds its resting place in the host?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Pathogens wait in water until ingested by an unsuspecting host."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "548ae802b2b9a9c1a7abb779890434da2024180a95232dca0d443e9cdc9de55a",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-12",
+    "prompt": "In the manufacture of synthetic plastics from fossil carbon, does prehistoric plant and animal matter forming petroleum occur before or after petroleum is refined into plastics?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Petroleum formed from ancient plant and animal matter before it could be refined into plastics."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "565c8f3c9b26b960565c83a340fc9e4b1231fed5ea50f31928b2b94ef721e940",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-13",
+    "prompt": "In boiler operation, does mineral scale buildup on heat-transfer surfaces occur before or after heat-transfer efficiency declines?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Scale accumulates on the tube wall first, which then reduces heat-transfer efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "d61aae706c8ad67a56c4db70c48d9a66ebd165401e38413ca1caa44991934add",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-14",
+    "prompt": "In a freshwater ecosystem, does photosynthetic uptake of inorganic nutrients by simple algae occur before or after those nutrients become organic cellular constituents?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Algae take up inorganic constituents and convert them into organic cellular matter via photosynthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "9083d0e36efce0982d39751abc827f097f32eb7cad298a41e7e2cc3090bf30a7",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class2-ww-r06-m5-15",
+    "prompt": "In a conventional ion-exchange softening vessel, does incoming hard water pass through the flow distributor before or after collecting in the effluent vessel?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Water enters through the flow distributor, passes through the resin bed, and collects in the effluent vessel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+    "notes": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:27:54.148Z",
+    "payloadSha256": "b9f3a91d14664d7cdea56df72ff1c6364e41db9dd15dcaf35295db46ac579e13",
+    "builderResultsSha256": "9699e93a2d333b2d61c7842da5655f900a4c65094d8c7a4ee5cd528bb72b8206"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:25:47.197315+00:00",
+   "attestation": "Strict AI self-review of 78 authored native game payloads for class2-ww (targeth-class2-ww-r06) against supplied source pages and collision candidates; 78 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class2-ww-r06-m0-01": "09485e2282e823c2a9fc7014414b37a73c41546a4a16f757dc9dd67742cd135d",
+    "targeth-ht261118-class2-ww-r06-m0-02": "3be9ddd209cd04cdf0b273e52251ab6f3edb504f0540a323676332552d586a4d",
+    "targeth-ht261118-class2-ww-r06-m0-03": "14658c8eee8e07c8091d262a6913b99bbe29e0ce0809494a7a550a9e57115b8c",
+    "targeth-ht261118-class2-ww-r06-m0-04": "eed3d64970ca148099bd85a8081b220f361ee3da0599ab7716a835f9b8ec8d29",
+    "targeth-ht261118-class2-ww-r06-m0-05": "b4a59e128d8e42d7fb9613c1b7bb3fd941950cbebfc271a295068b32d90a98a5",
+    "targeth-ht261118-class2-ww-r06-m0-06": "94a8b02f2f94ea85e50e0169059c44374f9cf8471e89a1a4b5957203085d43f8",
+    "targeth-ht261118-class2-ww-r06-m0-07": "fac692702037cf76e6aed9b9da32848f9ee6a565c9ea1af2bd3d2234dbb54518",
+    "targeth-ht261118-class2-ww-r06-m0-08": "1200561c7c99b359ff06f46943f69fe336d6984cce9326dd1a7ccb214fa25834",
+    "targeth-ht261118-class2-ww-r06-m0-09": "40d0012d12f906d003b22a264389d5b7c14c376834984de47a3bedcaba9caf95",
+    "targeth-ht261118-class2-ww-r06-m0-10": "ea1a76a35fa9a7453a2b4b9b902f1cb73ef5a4e8d7c52dd5e47a0adfaeebe279",
+    "targeth-ht261118-class2-ww-r06-m0-11": "841364c2392bfb333b29f05200092e6718185c89392e29521bb281cddb10ac68",
+    "targeth-ht261118-class2-ww-r06-m0-12": "b4776cc3f67ab616ba9ea3556fccbf4b08e332903e076df7eb0f11fd6ed28f30",
+    "targeth-ht261118-class2-ww-r06-m0-13": "e6bcba713794124c87a6baa0545bc1a3e6ef8190c92252e05b2a1ae1df52bfe7",
+    "targeth-ht261118-class2-ww-r06-m0-14": "56d7031b4e69c220a17db2d27a0b03f0545a545d1c654442e90d90510b3fc756",
+    "targeth-ht261118-class2-ww-r06-m0-15": "e3175c161b43cb28b841d7a9a2ce18868d28a48f904fc9cf896765f9bbe73f05",
+    "targeth-ht261118-class2-ww-r06-m1-01": "57c9a9d3431fae8cbd31a2882b2a70d4655ddfb293ea1656cbaf3262b50f204c",
+    "targeth-ht261118-class2-ww-r06-m1-02": "069fe99c2f20bab4d07518053b57f9d126b2592d2b743df5506a75e0ecd40c31",
+    "targeth-ht261118-class2-ww-r06-m1-03": "6cfc36d009987264f4a4f8c71fcd5794eb294662cbf9fc598aac4aafb4aafede",
+    "targeth-ht261118-class2-ww-r06-m1-04": "80248e33562f44dfb85abfe296e19639f3ac82153e96edf534c70c714663fc30",
+    "targeth-ht261118-class2-ww-r06-m1-05": "fd0a351f7d65eb1b46d0e5fbe32d6b01f86ae7aee426b185d13d2146323613ce",
+    "targeth-ht261118-class2-ww-r06-m1-06": "38d56fd8d1c2a9864e4bea638222244a13066d2cc4243eeb954a62f8d3fa9a89",
+    "targeth-ht261118-class2-ww-r06-m1-07": "b58acc63e23ccc355445f17c4fd0dfb445b55884b79ddbd3bac706361650d425",
+    "targeth-ht261118-class2-ww-r06-m1-08": "f5facf8040d4bc9fa1de5afab07a2260a944e571a355a990b665baac600ca710",
+    "targeth-ht261118-class2-ww-r06-m1-09": "81cada43358b5396c41e60b956d38987965a44cc54ff35fad33cd514d56bd6e3",
+    "targeth-ht261118-class2-ww-r06-m1-10": "d01f5cae4dd7a87839a4c3decfb68511679d9816a9842525f6c484002ddff8c9",
+    "targeth-ht261118-class2-ww-r06-m2-01": "11da7ecf8e76dda10743bcf4ea9bb9ae1fe689b85138b1654f2e8529ead329c8",
+    "targeth-ht261118-class2-ww-r06-m2-02": "d5c1eb5bb26f3f4280f8a383e421a66b81d1d04706bc094e86cf115f32295264",
+    "targeth-ht261118-class2-ww-r06-m2-03": "797763be58e6550649f75e2ce76e36d89b5821f7ba5c843e9a448ddd87532363",
+    "targeth-ht261118-class2-ww-r06-m2-04": "cf216cf8413c61956b6127324ef37a5bbec5af1390c1044c11376b57903eea92",
+    "targeth-ht261118-class2-ww-r06-m2-05": "db57731b52d5727ea9d299aa0e8040c1e4aeeb0ecee1366175b3b0ec3edb589e",
+    "targeth-ht261118-class2-ww-r06-m2-06": "989a92a6f83bc5efcfd4cb01fdff5f0a5fa6ccc21f9f9d389433660451d25022",
+    "targeth-ht261118-class2-ww-r06-m2-07": "55b2f8429a889297b6c7968261d4b1d412fd4ea4be49235efdd8f8970f49c80a",
+    "targeth-ht261118-class2-ww-r06-m2-08": "44a97dc091eb9afad1fd47c14b8a304f5639a9b6dc7cafe5da9c09652b4d7932",
+    "targeth-ht261118-class2-ww-r06-m3-01": "eac451bfe99443f72238c7b111c3ec52d06e2cee8871135ccecfa5e35188da61",
+    "targeth-ht261118-class2-ww-r06-m3-02": "e0404d7d055318c59f87d6274e602a78d84c099f46a487a359e396c07682df7e",
+    "targeth-ht261118-class2-ww-r06-m3-03": "6b9fa6ec06c9d58ec92b60be1dcb5ed8b24692ab01d62ba956a106dc16596437",
+    "targeth-ht261118-class2-ww-r06-m3-04": "4c1676576c49150b18ab5e7f7d4ee7116789bdb95d3cd48d6b34258436d232d0",
+    "targeth-ht261118-class2-ww-r06-m3-05": "e248e812f67574ad3b0af210f58928cba463150b87e574e944f15b2e501865ae",
+    "targeth-ht261118-class2-ww-r06-m3-06": "ea6ba78a3c914168040f2699091e9a8a7387dce22f9948dcf2410cbb1611c569",
+    "targeth-ht261118-class2-ww-r06-m3-07": "6f5f475f34efd3618a7cd018202e6362d6e3e1b8369b2b21bc2c0b5feba1b117",
+    "targeth-ht261118-class2-ww-r06-m3-08": "ae27f2e6d47323721213c4d21a13fb2836df13d2a166c5d1357f0ed5871a4aee",
+    "targeth-ht261118-class2-ww-r06-m3-09": "7fce005b6d80a1312c7457d716af495f2152fb8a8e621e2c1c0769b77ad8c475",
+    "targeth-ht261118-class2-ww-r06-m3-10": "ffe42a3aa8e8c7ca8393ef16137b72cd3494a5d357725980507aa82364d68611",
+    "targeth-ht261118-class2-ww-r06-m3-11": "fcc6cdbc63826f7aac9d72003990e6756809c0585c14adde43ef23b0e9db1376",
+    "targeth-ht261118-class2-ww-r06-m3-12": "f0dfe8058fd4d61b3313adeab5f182a408aa479d5fc2da318a08a5b3c019ff25",
+    "targeth-ht261118-class2-ww-r06-m3-13": "859c2f59149622580c62602a405a09e4ac6af0626fd3f83239ca996dbcef772e",
+    "targeth-ht261118-class2-ww-r06-m3-14": "ea495e3860c5099507f43b29ecab31b0917cc80ddc8af385b0ad2a5e0d7a6cd3",
+    "targeth-ht261118-class2-ww-r06-m3-15": "8edd7322f882bf5dad0ea9748eaedb14bf29a34aa4f860413d8f64eb1c6c7e76",
+    "targeth-ht261118-class2-ww-r06-m4-01": "50d85de27f982436dab67818fc4ae77e7691762ad45c64a79c282e72a8f0d0e0",
+    "targeth-ht261118-class2-ww-r06-m4-02": "659e359733950e5d1454c32ec939074c83e25235b2332deb2e868216178affcd",
+    "targeth-ht261118-class2-ww-r06-m4-03": "7ff72335ba417c5b8f119097c81e7b137b272646447c5b425b501b0b6035ec93",
+    "targeth-ht261118-class2-ww-r06-m4-04": "616e36b2fca3ad2ada386018eddfb35a3dce75b52ba8ec4d218c645d4ac2baf6",
+    "targeth-ht261118-class2-ww-r06-m4-05": "3743fd6a324c667cc3394db22b3f5f3163b266750dae6829f05a3b75824eb450",
+    "targeth-ht261118-class2-ww-r06-m4-06": "c96d52ed815ca88cd4196f4e1dfe2be5b339bd149daa18ba859a175b2aef103e",
+    "targeth-ht261118-class2-ww-r06-m4-07": "adca56d7123e719378f3f00290a2f0df93f449d31d766ccf577a708196f8e563",
+    "targeth-ht261118-class2-ww-r06-m4-08": "e5d71ef5e2c9b0761c940f6e97691adc15c8d94a25a0c32626bdff90ccfce5d3",
+    "targeth-ht261118-class2-ww-r06-m4-09": "6f4f2cd67aa193893f55f867f7df7c43d29b4b236002e7a3c7fc2720457583b9",
+    "targeth-ht261118-class2-ww-r06-m4-10": "1588163daf71524d7e9c5aad4b2f10ed828a625c0149c03f392f8598604b3a1f",
+    "targeth-ht261118-class2-ww-r06-m4-11": "27d760fe0f08069f225ddc62e34201f94cee5ce588c87efc5bc77cff9f3565a6",
+    "targeth-ht261118-class2-ww-r06-m4-12": "6d581d1ef74a68512955fb0ecf5e32de965e2d2d4ec96f3e20f4448872dbd6f8",
+    "targeth-ht261118-class2-ww-r06-m4-13": "41a437d65ec88f9e7c3c5cc0e8848a4340eb5c68acddd8ea702a7daeb00fdc9a",
+    "targeth-ht261118-class2-ww-r06-m4-14": "dc63bc30080707ff72e8682ad28d16ccfcd3174613707a7aab76e1ed3862db8f",
+    "targeth-ht261118-class2-ww-r06-m4-15": "8a129136449da2cc6a6116b2aff671da5fa6c6c77fc9c3d8d20171d80a8f4bcb",
+    "targeth-ht261118-class2-ww-r06-m5-01": "8cec71562c372838c3dc9888985c668f9ec74f5533d7f824d8ca58e87b42e786",
+    "targeth-ht261118-class2-ww-r06-m5-02": "ba695dcb945299a9b48bdf59c085ed6a5fa967d1ab0097c97cf17e1f50ff7e62",
+    "targeth-ht261118-class2-ww-r06-m5-03": "0accf65c4c106e2815f3da172116614491f7830351da1736a3fafba1af784565",
+    "targeth-ht261118-class2-ww-r06-m5-04": "d17f1ada6d862827957e4d35b338c9a7c8c75b07178961f7218b6d1ffbf6a8c3",
+    "targeth-ht261118-class2-ww-r06-m5-05": "ff0dad63d099572da7da6dc8902f5ef2bbd77268e2ff55ab8bfd8ae4eb4b3bfc",
+    "targeth-ht261118-class2-ww-r06-m5-06": "152217418b4a389fd214b01ca44dad7e93cdd47055c569e5c74a70662e4de07b",
+    "targeth-ht261118-class2-ww-r06-m5-07": "363eb37570ed2a601121a75d668de194a0eb80c7e6d27742d454b05a49016623",
+    "targeth-ht261118-class2-ww-r06-m5-08": "803102e0f3128e3cea8f4d83dca5297c0b892d40255cbfe67eca4b26d59ef504",
+    "targeth-ht261118-class2-ww-r06-m5-09": "c264bc9c88068367d1107aa61f5e53b460cc3636c176bf992041dce44b96b6d1",
+    "targeth-ht261118-class2-ww-r06-m5-10": "4ae80550480f98906d3ae15a985bd0debdd2adad3e29eb7331c3717194939dce",
+    "targeth-ht261118-class2-ww-r06-m5-11": "548ae802b2b9a9c1a7abb779890434da2024180a95232dca0d443e9cdc9de55a",
+    "targeth-ht261118-class2-ww-r06-m5-12": "565c8f3c9b26b960565c83a340fc9e4b1231fed5ea50f31928b2b94ef721e940",
+    "targeth-ht261118-class2-ww-r06-m5-13": "d61aae706c8ad67a56c4db70c48d9a66ebd165401e38413ca1caa44991934add",
+    "targeth-ht261118-class2-ww-r06-m5-14": "9083d0e36efce0982d39751abc827f097f32eb7cad298a41e7e2cc3090bf30a7",
+    "targeth-ht261118-class2-ww-r06-m5-15": "b9f3a91d14664d7cdea56df72ff1c6364e41db9dd15dcaf35295db46ac579e13"
+   }
+  },
+  "registeredAt": "2026-11-19T04:27:54.148Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 7,
+     "unchanged": 0
+    },
+    "longest": 9,
+    "options": 38
+   },
+   "batchSha256": "5565e9de35c1c6fbb7e0158821474b49f0ba48837efc9aa2c347528c6e35d38e"
+  }
+ }
+}

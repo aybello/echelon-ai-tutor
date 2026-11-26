@@ -1,0 +1,1790 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 47 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-01",
+    "prompt": "Chemical oxygen demand measures total dissolved oxygen depletion, including reactions with nonbiodegradable chemicals.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "COD captures oxygen demand from both biodegradable and nonbiodegradable reactants, unlike BOD."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "2a87926c572fb182193745089b08cb060ff6f2b0ac437389d4cb6d17388f3b91",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-02",
+    "prompt": "High total dissolved solids in distribution water lower electrical conductivity and prevent protective scale formation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "High TDS raises conductivity, which increases ionization, though it also makes protective coating formation more likely."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "68f711a371e144ac4f9318af5bbbbb46fea2232c32886baa36185d7fcc9391d9",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-03",
+    "prompt": "In surface waters, trace heavy metals occur mainly in dissolved ionic form rather than colloidal or particulate phases.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Dissolved heavy metal concentrations are generally low; metals commonly exist in colloidal and particulate phases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "9176def304783fcfe797feaf3c41ec06664df0f428e0c555024ae95a25a930ee",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-04",
+    "prompt": "Essential heavy metals such as zinc can still harm organisms when present at excessive concentrations.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Even essential trace metals become detrimental to organisms if concentrations rise to excessive levels."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "925efb7661c282f863d3398306a2c4528bcba21a6c641a5ed3726a80cfce7db6",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-05",
+    "prompt": "Nitrate levels in lakes and reservoirs are typically higher than those found in contaminated groundwater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Lakes and reservoirs usually have less than 2 mg/L nitrate as nitrogen, whereas groundwater can reach 20 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "45c229dc43a00b6ceeef1197c9d89da428a5379e76b8aaf3e3bccc024987aa6a",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-06",
+    "prompt": "Differentiating among smaller groups of bacteria relies primarily on chemical differences rather than visible shape.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Single-celled bacteria show few visible structural differences, so chemical, physiological, and cultural traits are used."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "721f55ca336eec3479bbfd2a133d3936dc64113b26cfa87952738c33909f829f",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-07",
+    "prompt": "In binomial nomenclature, the first letter of the species name is capitalized while the genus name is lowercase.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The genus name is capitalized and the species name is lowercase, as in Escherichia coli."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "42634ea405bf69a77a3e90ea93ea083e63bd033966df38fe7d6926b5451b30b1",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-08",
+    "prompt": "The bacterial cell wall helps regulate ion intake and excludes large molecules and various antibiotics.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Besides preventing osmotic bursting and giving shape, the cell wall acts as a selective permeability barrier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "0c20ec7b47aa43aa4ae101dd4eb233e8df8a7d650dfb84a60e2bd040d05c2e54",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-09",
+    "prompt": "A bacterial cell can contain more than one nucleoid after genetic material duplicates during cell division.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "When DNA duplicates prior to division, a prokaryotic cell can temporarily hold multiple nucleoids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "5eb9588857314571f040ae25c10ee449cf0497a5868b891f2a1e98281da67337",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-10",
+    "prompt": "Bacterial ribosomes are composed primarily of lipids and account for roughly 5 percent of a cell's dry weight.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ribosomes are made of RNA and account for about 40 percent of a bacterium's dry weight."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "3d30b8ac5c36506529e022a4d9c64345454ec2ec490f515a4f451771db87d800",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-11",
+    "prompt": "Freshwater algae are nonpathogenic, yet they can plug plant intakes and release taste and odor compounds.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Algae do not cause disease directly, but heavy blooms foul screens, basin walls, and water aesthetics."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "ef19f114d47ea5c931fe6e06b4f565dddd1cfd7ea3c34b211340ebae92506f69",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-12",
+    "prompt": "Aquatic fungi are critical to routine drinking water clarification processes rather than biosolids composting.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Fungi play a minor role in water treatment operations, though they are critical in biosolids composting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "286ef9f64043700dc97329fe4d614c9bd8b5c1fea9bac0c46ba1062aae064e9d",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-13",
+    "prompt": "Flagella benefit motile bacteria primarily by helping them flee from harmful environmental conditions.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Flagella provide motility that lets bacteria move away from adverse areas and disperse to new sites."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "b9ffb0c525e02be2ed66194f3107cbf2d8ecb6826080ab063fab45aac50c2e1a",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-14",
+    "prompt": "A river of good quality typically shows its lowest bacterial numbers during rainy periods.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Clean rivers show their highest bacterial counts during rainy periods from initial surface runoff."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "74619ead0e04312951a428ab0167287ac2907f9c1a229c574233e65d75028cb5",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m0-15",
+    "prompt": "With the exception of disinfection, other conventional water treatment unit processes do not specifically target pathogen destruction.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Processes like coagulation and filtration remove particles, while disinfection specifically targets pathogen inactivation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "944bc1963eb08ea859641f5fed10ede1b6fafdc8746d91a8d38b7be860cddf9c",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-01",
+    "prompt": "Distinguish organic matter degradability and oxygen-demand concepts in natural water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Biodegradable organics",
+      "right": "Broken down by microbes for growth and reproduction"
+     },
+     {
+      "id": "p2",
+      "left": "Tannins and lignic acids",
+      "right": "Refractory woody plant constituents resisting decay"
+     },
+     {
+      "id": "p3",
+      "left": "Benzene",
+      "right": "Ringed petroleum compound resisting biodegradation"
+     },
+     {
+      "id": "p4",
+      "left": "Biochemical oxygen demand",
+      "right": "Oxygen exerted by microbes oxidizing organic food"
+     },
+     {
+      "id": "p5",
+      "left": "Chemical oxygen demand",
+      "right": "Total oxygen depletion including nonbiodegradable reactants"
+     },
+     {
+      "id": "p6",
+      "left": "Total dissolved solids",
+      "right": "Evaporated filtrate residue from a filtered sample"
+     }
+    ],
+    "explanation": "Organic compounds differ in biodegradability, which separates BOD from COD and dissolved solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "5dbc1fbe641e0ca5c296e37f0d6ace3549aa3698d734551ab38f47f07a74d332",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-02",
+    "prompt": "Classify trace heavy metal categories and their chemical phases in surface water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nonessential toxic metals",
+      "right": "Cadmium, mercury, lead, arsenic, and antimony"
+     },
+     {
+      "id": "p2",
+      "left": "Essential trace metals",
+      "right": "Zinc and vanadium, harmful only in excess"
+     },
+     {
+      "id": "p3",
+      "left": "Particulate metal phase",
+      "right": "Bound in oxides, sulfides, or adsorbed to clay"
+     },
+     {
+      "id": "p4",
+      "left": "Soluble metal phase",
+      "right": "Free ions or unionized organometallic chelates"
+     },
+     {
+      "id": "p5",
+      "left": "Solubility controls",
+      "right": "Water pH, redox environment, and adsorbing surfaces"
+     },
+     {
+      "id": "p6",
+      "left": "Natural metal sources",
+      "right": "Mineral deposit dissolution and industrial discharges"
+     }
+    ],
+    "explanation": "Heavy metals are grouped by toxicity and partition between soluble ions and particulate complexes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "7799e4a0f7665e998ed0c846ef70b4c8d26218d47c2c8cf4e97f22128e5580a5",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-03",
+    "prompt": "Relate bacterial growth requirements to their role in biological water processes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Oxygen",
+      "right": "Required electron acceptor for aerobic microbes"
+     },
+     {
+      "id": "p2",
+      "left": "Organic matter",
+      "right": "Provides food and energy for heterotrophs"
+     },
+     {
+      "id": "p3",
+      "left": "Nitrogen and phosphorus",
+      "right": "Nutrients needed to oxidize available carbon"
+     },
+     {
+      "id": "p4",
+      "left": "Proper pH (6.5 to 9.0)",
+      "right": "Maintains enzyme activity and cell stability"
+     },
+     {
+      "id": "p5",
+      "left": "Lack of toxic materials",
+      "right": "Prevents inhibition or death of treatment microbes"
+     },
+     {
+      "id": "p6",
+      "left": "Sufficient water",
+      "right": "Essential medium for cellular transport and reactions"
+     }
+    ],
+    "explanation": "Biological activity depends on balanced nutrients, moisture, pH, oxygen, and absence of toxins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "9f4491871bb8a65ba685aee076c3789b7a52fefe9bbf56f280bdd952cac24303",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-04",
+    "prompt": "Order taxonomic hierarchy ranks from broadest classification to most specific.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Kingdom",
+      "right": "Largest, most inclusive taxonomic category"
+     },
+     {
+      "id": "p2",
+      "left": "Phylum",
+      "right": "Major division directly below kingdom"
+     },
+     {
+      "id": "p3",
+      "left": "Class",
+      "right": "Taxonomic rank grouping related orders"
+     },
+     {
+      "id": "p4",
+      "left": "Family",
+      "right": "Rank grouping closely related genera"
+     },
+     {
+      "id": "p5",
+      "left": "Genus",
+      "right": "Capitalized first word in binomial nomenclature"
+     },
+     {
+      "id": "p6",
+      "left": "Species",
+      "right": "Lowercase second word identifying a specific organism"
+     }
+    ],
+    "explanation": "Linnaean taxonomy nests organisms from kingdom down to genus and species."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "350c522b7c72a5f8b61513d7054255139b9edf42c6a38459e5463d2bce4163f5",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-05",
+    "prompt": "Distinguish prokaryotic cell structures by composition and dry-weight share.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall",
+      "right": "Rigid outer layer comprising 20 to 40 percent dry weight"
+     },
+     {
+      "id": "p2",
+      "left": "Plasma membrane",
+      "right": "Lipoprotein barrier comprising 10 to 20 percent dry weight"
+     },
+     {
+      "id": "p3",
+      "left": "Ribosomes",
+      "right": "RNA-rich bodies comprising about 40 percent dry weight"
+     },
+     {
+      "id": "p4",
+      "left": "Nucleoid",
+      "right": "Double-stranded DNA region attached to plasma membrane"
+     },
+     {
+      "id": "p5",
+      "left": "Macrocapsule",
+      "right": "Organized gelatinous coat visible by light microscopy"
+     },
+     {
+      "id": "p6",
+      "left": "Slime layer",
+      "right": "Unorganized loose secretion diffusing into the cell"
+     }
+    ],
+    "explanation": "Each prokaryotic structure has a distinct chemical makeup, visibility, and cellular role."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "7f265ef8d0acca7981e79fa783f6952c310ae87378461fc1f10ccac5bd929385",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-06",
+    "prompt": "Connect waterborne pathogens of concern to their biological group.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Escherichia coli",
+      "right": "Coliform bacterium"
+     },
+     {
+      "id": "p2",
+      "left": "Salmonella typhi",
+      "right": "Typhoid bacillus bacterium"
+     },
+     {
+      "id": "p3",
+      "left": "Giardia lamblia",
+      "right": "Flagellated protozoan"
+     },
+     {
+      "id": "p4",
+      "left": "Cryptosporidium",
+      "right": "Waterborne protozoan parasite"
+     },
+     {
+      "id": "p5",
+      "left": "Vibrio cholerae",
+      "right": "Waterborne bacterial pathogen"
+     },
+     {
+      "id": "p6",
+      "left": "Entamoeba histolytica",
+      "right": "Pathogenic amoebic protozoan"
+     }
+    ],
+    "explanation": "Operators track both bacterial and protozoan pathogens using binomial names."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "ba8876b7fd88db0e001027a385c0b913ef5ef6c1559d955b0ffdb246c6e60841",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-07",
+    "prompt": "Distinguish aquatic microorganisms by morphology and ecological niche.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Freshwater algae",
+      "right": "Chlorophyll-bearing plants classified by color"
+     },
+     {
+      "id": "p2",
+      "left": "Filamentous fungi",
+      "right": "Mold-like protists feeding on organic matter"
+     },
+     {
+      "id": "p3",
+      "left": "Yeast-like fungi",
+      "right": "Single-celled fungi acting as saprophytes or parasites"
+     },
+     {
+      "id": "p4",
+      "left": "Nematodes",
+      "right": "Cuticle-covered nonsegmented worms in biological slimes"
+     },
+     {
+      "id": "p5",
+      "left": "Tubificid worms",
+      "right": "Slime-dwelling worms sensitive to rising temperature"
+     },
+     {
+      "id": "p6",
+      "left": "Philodina",
+      "right": "Common microscopic rotifer in aquatic systems"
+     }
+    ],
+    "explanation": "Nonbacterial organisms in water systems span photosynthetic algae, decomposers, worms, and rotifers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "ae2b92db914cfaf402a84bb79357ce3f3fe6acde52b06f9d154d4d3ff15b2d16",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-08",
+    "prompt": "Contrast stream bacterial behavior and sampling conditions across flow regimes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Clean river, initial rain",
+      "right": "Peak bacterial counts from surface wash"
+     },
+     {
+      "id": "p2",
+      "left": "Clean river, post-wash",
+      "right": "Relatively clean water after impurities flush"
+     },
+     {
+      "id": "p3",
+      "left": "Polluted stream, low flow",
+      "right": "Highest bacterial numbers due to constant waste influx"
+     },
+     {
+      "id": "p4",
+      "left": "Fecal contamination",
+      "right": "Primary route for waterborne pathogens into supplies"
+     },
+     {
+      "id": "p5",
+      "left": "Protected groundwater",
+      "right": "May need disinfection alone without full clarification"
+     },
+     {
+      "id": "p6",
+      "left": "Surface water supply",
+      "right": "Generally requires multi-stage clarification and disinfection"
+     }
+    ],
+    "explanation": "Hydrology and pollution sources govern bacterial loading and treatment complexity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "a7d32a51cf149c1380922b4acbd99ba9e2c452c932348e70a689f2db0361da2a",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-09",
+    "prompt": "Match foundational microbiology terms to their definitions.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Microbiology",
+      "right": "Study of organisms requiring a microscope"
+     },
+     {
+      "id": "p2",
+      "left": "Bacteriology",
+      "right": "Science and study of bacteria"
+     },
+     {
+      "id": "p3",
+      "left": "Anaerobic",
+      "right": "Able to live and grow without free oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Autotrophic",
+      "right": "Produces cellular food from inorganic substances"
+     },
+     {
+      "id": "p5",
+      "left": "Eutrophication",
+      "right": "Nutrient enrichment driving excessive algal growth"
+     },
+     {
+      "id": "p6",
+      "left": "Algal bloom",
+      "right": "Sudden spurt of algal growth degrading water quality"
+     }
+    ],
+    "explanation": "Core microbiological vocabulary defines metabolic modes, study fields, and nuisance blooms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "1ca11e967fe1b19f54d7a1181d4a35884ed28f852ceae2aca2a60bbb4dd377ae",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m1-10",
+    "prompt": "Connect water treatment unit processes to their primary purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Raw water storage",
+      "right": "Buffers source water ahead of plant treatment"
+     },
+     {
+      "id": "p2",
+      "left": "Prechlorination",
+      "right": "Early oxidant addition at the head of the plant"
+     },
+     {
+      "id": "p3",
+      "left": "Coagulation-flocculation",
+      "right": "Aggregates fine particles for easier removal"
+     },
+     {
+      "id": "p4",
+      "left": "Water softening",
+      "right": "Reduces hardness minerals in the water"
+     },
+     {
+      "id": "p5",
+      "left": "Filtration",
+      "right": "Removes suspended turbidity and particles"
+     },
+     {
+      "id": "p6",
+      "left": "Disinfection",
+      "right": "Specifically targets destruction of waterborne pathogens"
+     }
+    ],
+    "explanation": "Each unit process in a conventional train addresses distinct physical, chemical, or microbial goals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "249dc13e0edd057395c08ef8f56c656c92a7f914a785b4280207a07a73d15567",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-01",
+    "prompt": "Assume dissolved mineral salts increase in a water sample while suspended solids are removed by filtration before evaporating a fixed filtrate volume. What happens to the electrical conductivity of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher total dissolved solids raise the electrical conductivity of water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "7ef900e16eab7273b2c4e9a770652d365728d27a98650b1199687d88aeb90852",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-05",
+    "prompt": "Assume inorganic phosphorus and nitrogen enrichment increases in a sunlit freshwater lake. What happens to algal growth?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Nutrient enrichment drives eutrophication, causing excessive algal growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "c3300e7ebcf3cd0d1ae93e20c35440402da192f2187ae75837ca6ad954b602ea",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-10",
+    "prompt": "Assume a bacterium duplicates its genetic material just prior to cell division. What happens to the number of nucleoids in the cell?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "A bacterial cell can have more than one nucleoid when DNA duplicates before division."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "149da24f63e64600301ab7249274cdac22e6f2936b581a63f1a260b0e6e0866b",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-11",
+    "prompt": "Assume a utility switches from a protected groundwater source to a surface water source. What happens to the number of unit treatment processes needed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Surface waters generally require more treatment processes than protected groundwaters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "a3e439366908d748d875d31720efac5a41e273c1bde9b1fc8f90b923b2033cc5",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-12",
+    "prompt": "Assume high total dissolved solids in distribution water increase water conductivity during corrosion control. What happens to ionization in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "High TDS raises conductivity, which leads to higher ionization during corrosion control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "5130cacda2656a1b12acad5669daeff7252fa0fa563952bde8828854f21ab177",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-13",
+    "prompt": "Assume an essential trace metal such as zinc rises from trace nutritional levels to excessive concentrations in surface water. What happens to the harm to aquatic organisms?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Excessive levels of essential metals become detrimental to organisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "16ae16eb71f196b5f64d9e54081b58c09506f2c52a7d50a62977644690d4e012",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m3-14",
+    "prompt": "Assume toxic materials enter an active biological treatment basin while pH and nutrients stay unchanged. What happens to the growth of treatment microbes?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Microbial growth requires a lack of toxic materials; toxins inhibit or kill treatment microbes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "8f45c7efe25d687c04fd69cfd91cb46f43a35720e991de6de7d0180aacac49d4",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-01",
+    "prompt": "An operator reviews organic matter and oxygen demand in raw surface water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Biodegradable organics are broken down by microbes for growth and reproduction."
+     },
+     {
+      "id": "b",
+      "label": "Refractory woody compounds such as tannins resist biological degradation."
+     },
+     {
+      "id": "c",
+      "label": "Biochemical oxygen demand is required for routine drinking water monitoring."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A BOD test is not required for monitoring drinking water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "d002216254dc5637fc5eb3dd8f5ccb4075b0632ab16be13fdb56d3681bbb90e1",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-02",
+    "prompt": "A chemist evaluates heavy metal behavior in surface water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Heavy metals exist in colloidal, particulate, and dissolved phases in surface water."
+     },
+     {
+      "id": "b",
+      "label": "Trace metal solubility depends strongly on water pH and redox conditions."
+     },
+     {
+      "id": "c",
+      "label": "Dissolved heavy metal concentrations are typically higher than particulate phases."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Dissolved heavy metal concentrations in surface waters are generally low."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "d2f19ad79cf06e015a48f476aa8fadad25ff15c451f60202b543b00af449db74",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-03",
+    "prompt": "A watershed specialist reviews nitrogen sources and infant health risks. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Certain blue-green algae and bacteria obtain nitrogen directly from the atmosphere."
+     },
+     {
+      "id": "b",
+      "label": "Lakes and reservoirs usually contain higher nitrate levels than contaminated groundwater."
+     },
+     {
+      "id": "c",
+      "label": "Intestinal bacteria in infants can convert ingested nitrate into toxic nitrite."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Lakes and reservoirs usually have less than 2 mg/L nitrate as nitrogen, whereas groundwater can reach 20 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "305d8377f90c80cb1b1dc09d729933e6af5051cf326bb718583683c3f37950bd",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-04",
+    "prompt": "An operator reviews prokaryotic bacterial cell structures. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The rigid cell wall protects the protoplast against osmotic bursting."
+     },
+     {
+      "id": "b",
+      "label": "Ribosomes are RNA-rich bodies that serve as sites for protein synthesis."
+     },
+     {
+      "id": "c",
+      "label": "The bacterial nucleoid is enclosed inside a distinct nuclear membrane."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Prokaryotic cells lack a distinct nuclear membrane; DNA is packaged in a nucleoid attached to the plasma membrane."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "0e2315bba5bfd65a497040e23dd6020f0e2421bec849fe8c239c6264d92d4699",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-05",
+    "prompt": "A laboratory technician reviews binomial nomenclature rules. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Under the binomial system, organisms have a two-word genus and species name."
+     },
+     {
+      "id": "b",
+      "label": "The genus name is capitalized and the species name is written in lowercase."
+     },
+     {
+      "id": "c",
+      "label": "The species category is larger and more inclusive than the kingdom category."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Kingdom is the largest, most inclusive category, whereas species is the most specific."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "07aa67c50d6b3a3b26c996a2eaef8bd330eddf17cfa3c4ad48bcc8a03f3ac6ad",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-06",
+    "prompt": "An operator reviews bacterial capsules and slime layers. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Bacterial capsules are organized gelatinous accumulations on cell walls."
+     },
+     {
+      "id": "b",
+      "label": "Slime layers are unorganized secretions that adhere loosely to the cell wall."
+     },
+     {
+      "id": "c",
+      "label": "Microcapsules are thick enough to be seen clearly under ordinary light microscopes."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Macrocapsules are visible by light microscopy, whereas thinner microcapsules require electron microscopy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "e8a0c0bb3271cedc74aeef8a5229a737a19cb349a657dfcdad377290fdebeadc",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-07",
+    "prompt": "A plant biologist reviews freshwater algae characteristics. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Algae contain chlorophyll and convert inorganic constituents into organic matter."
+     },
+     {
+      "id": "b",
+      "label": "Heavy algal growth can plug intakes and release taste and odor compounds."
+     },
+     {
+      "id": "c",
+      "label": "Freshwater algae are major human pathogens transmitted through drinking water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Algae are not pathogenic, though they cause operational and aesthetic problems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "c52f35f64bd711bce2044a2580465d8fb094a79ff08cd686d73102f6bf1d5947",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-08",
+    "prompt": "An analyst reviews fungal and nematode roles in water systems. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nematodes are microscopic, nonsegmented worms covered by a protective cuticle."
+     },
+     {
+      "id": "b",
+      "label": "Aquatic fungi grow as filamentous mold-like forms or single-celled yeasts."
+     },
+     {
+      "id": "c",
+      "label": "Fungi are critical to routine rapid sand filtration in drinking water plants."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Fungi are of minor importance in water operations, except in biosolids composting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "b6ce3f75a086bd9401c6c2b24d7c4061129440c842ed645152fdf350b0128500",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-09",
+    "prompt": "A hydrologist compares bacterial counts in clean and polluted streams. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A clean river shows its highest bacterial numbers during rainy periods."
+     },
+     {
+      "id": "b",
+      "label": "A heavily polluted stream shows its highest bacterial numbers during low flows."
+     },
+     {
+      "id": "c",
+      "label": "After initial rain washing, streams carry higher impurity loads than before rain."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "After initial washing flushes surface impurities, few impurities remain and the stream carries relatively clean water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "8dcca3e4508f93fa6805305fec9f510eeb1021352385ec39997ab5e5438d6d1a",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-10",
+    "prompt": "An operator reviews general water treatment train principles. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Surface waters generally require more treatment processes than protected groundwaters."
+     },
+     {
+      "id": "b",
+      "label": "Disinfection specifically addresses the destruction of waterborne pathogens."
+     },
+     {
+      "id": "c",
+      "label": "Coagulation and filtration specifically target the chemical destruction of viruses."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Except for disinfection, other unit processes do not specifically address pathogen destruction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "06313ae9efc0e538ce1a50cb01cfdcf1a0973c648dc08a9f418d5a381dc12484",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-11",
+    "prompt": "A microbiologist reviews requirements for active microbial growth. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Microbes require sufficient organic food, water, nitrogen, and phosphorus."
+     },
+     {
+      "id": "b",
+      "label": "Microbial growth is favored by a pH range between 6.5 and 9.0."
+     },
+     {
+      "id": "c",
+      "label": "Microbes thrive best when toxic materials are present in the water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Microbial growth requires a lack of toxic materials."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "5009681ca2dca35fc5bf546ebb41d279ac3becdb354be3f471cdeb6a593301fc",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-12",
+    "prompt": "A specialist reviews total dissolved solids (TDS) in water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Dissolved solids pass through a laboratory filter with the water."
+     },
+     {
+      "id": "b",
+      "label": "Evaporating the filtered portion leaves TDS residue in the dish."
+     },
+     {
+      "id": "c",
+      "label": "High TDS lowers water conductivity and prevents ionization."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "High TDS means high conductivity with consequently higher ionization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "97456bc5cea4269d6927dae2948d379feb1a6e51023ceaca41e14dc17d2c690f",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-13",
+    "prompt": "An operator reviews bacterial differentiation methods. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Higher forms of life are differentiated mostly by morphological differences."
+     },
+     {
+      "id": "b",
+      "label": "Single-celled microbes show very few visible structural differences."
+     },
+     {
+      "id": "c",
+      "label": "Smaller bacterial groups are differentiated by visible morphology alone."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Differentiation among smaller bacterial groups is based almost entirely on chemical differences."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "7e44b0038ce4d6c7afb136a25d61a0c84039ea732c17d813bf433df926877257",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-14",
+    "prompt": "A biologist reviews tubificid worms in biological slimes. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Tubificid worms are effective indicators of changes in wastewater strength."
+     },
+     {
+      "id": "b",
+      "label": "Temperature fluctuations directly affect tubificid worm growth and survival."
+     },
+     {
+      "id": "c",
+      "label": "Tubificid worm populations increase rapidly when water temperatures rise."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Tubificid worm populations decrease when water temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "c6e1e9fd6624cc751326c91d6ac06ad0a8995a1ed0e230d553072ca6c1abd9a5",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-r01-m4-15",
+    "prompt": "An analyst reviews the bacterial plasma membrane. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The plasma membrane is surrounded externally by the rigid cell wall."
+     },
+     {
+      "id": "b",
+      "label": "The plasma membrane is composed of a lipoprotein complex."
+     },
+     {
+      "id": "c",
+      "label": "The plasma membrane accounts for 60 to 80 percent of bacterial dry weight."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The plasma membrane comprises 10 to 20 percent of the dry weight of a bacterium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+    "notes": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+    "registeredAt": "2026-11-19T02:45:56.812Z",
+    "payloadSha256": "f116eed8b8f6624d10342a13737692815b94c2639449698e28cff968f7b092e2",
+    "builderResultsSha256": "1c4c7efa45e36242604d24b7c535f33ee66a2585ff06d508140af68b349106b1"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:45:01.887505+00:00",
+   "attestation": "Strict Hydrogen self-review of 55 wpi-class4-water items against supplied source pages and collision candidates; 47 items accepted, 8 same-mode paraphrases rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-r01-m0-01": "2a87926c572fb182193745089b08cb060ff6f2b0ac437389d4cb6d17388f3b91",
+    "targeth-ht261118-wpi-class4-water-r01-m0-02": "68f711a371e144ac4f9318af5bbbbb46fea2232c32886baa36185d7fcc9391d9",
+    "targeth-ht261118-wpi-class4-water-r01-m0-03": "9176def304783fcfe797feaf3c41ec06664df0f428e0c555024ae95a25a930ee",
+    "targeth-ht261118-wpi-class4-water-r01-m0-04": "925efb7661c282f863d3398306a2c4528bcba21a6c641a5ed3726a80cfce7db6",
+    "targeth-ht261118-wpi-class4-water-r01-m0-05": "45c229dc43a00b6ceeef1197c9d89da428a5379e76b8aaf3e3bccc024987aa6a",
+    "targeth-ht261118-wpi-class4-water-r01-m0-06": "721f55ca336eec3479bbfd2a133d3936dc64113b26cfa87952738c33909f829f",
+    "targeth-ht261118-wpi-class4-water-r01-m0-07": "42634ea405bf69a77a3e90ea93ea083e63bd033966df38fe7d6926b5451b30b1",
+    "targeth-ht261118-wpi-class4-water-r01-m0-08": "0c20ec7b47aa43aa4ae101dd4eb233e8df8a7d650dfb84a60e2bd040d05c2e54",
+    "targeth-ht261118-wpi-class4-water-r01-m0-09": "5eb9588857314571f040ae25c10ee449cf0497a5868b891f2a1e98281da67337",
+    "targeth-ht261118-wpi-class4-water-r01-m0-10": "3d30b8ac5c36506529e022a4d9c64345454ec2ec490f515a4f451771db87d800",
+    "targeth-ht261118-wpi-class4-water-r01-m0-11": "ef19f114d47ea5c931fe6e06b4f565dddd1cfd7ea3c34b211340ebae92506f69",
+    "targeth-ht261118-wpi-class4-water-r01-m0-12": "286ef9f64043700dc97329fe4d614c9bd8b5c1fea9bac0c46ba1062aae064e9d",
+    "targeth-ht261118-wpi-class4-water-r01-m0-13": "b9ffb0c525e02be2ed66194f3107cbf2d8ecb6826080ab063fab45aac50c2e1a",
+    "targeth-ht261118-wpi-class4-water-r01-m0-14": "74619ead0e04312951a428ab0167287ac2907f9c1a229c574233e65d75028cb5",
+    "targeth-ht261118-wpi-class4-water-r01-m0-15": "944bc1963eb08ea859641f5fed10ede1b6fafdc8746d91a8d38b7be860cddf9c",
+    "targeth-ht261118-wpi-class4-water-r01-m1-01": "5dbc1fbe641e0ca5c296e37f0d6ace3549aa3698d734551ab38f47f07a74d332",
+    "targeth-ht261118-wpi-class4-water-r01-m1-02": "7799e4a0f7665e998ed0c846ef70b4c8d26218d47c2c8cf4e97f22128e5580a5",
+    "targeth-ht261118-wpi-class4-water-r01-m1-03": "9f4491871bb8a65ba685aee076c3789b7a52fefe9bbf56f280bdd952cac24303",
+    "targeth-ht261118-wpi-class4-water-r01-m1-04": "350c522b7c72a5f8b61513d7054255139b9edf42c6a38459e5463d2bce4163f5",
+    "targeth-ht261118-wpi-class4-water-r01-m1-05": "7f265ef8d0acca7981e79fa783f6952c310ae87378461fc1f10ccac5bd929385",
+    "targeth-ht261118-wpi-class4-water-r01-m1-06": "ba8876b7fd88db0e001027a385c0b913ef5ef6c1559d955b0ffdb246c6e60841",
+    "targeth-ht261118-wpi-class4-water-r01-m1-07": "ae2b92db914cfaf402a84bb79357ce3f3fe6acde52b06f9d154d4d3ff15b2d16",
+    "targeth-ht261118-wpi-class4-water-r01-m1-08": "a7d32a51cf149c1380922b4acbd99ba9e2c452c932348e70a689f2db0361da2a",
+    "targeth-ht261118-wpi-class4-water-r01-m1-09": "1ca11e967fe1b19f54d7a1181d4a35884ed28f852ceae2aca2a60bbb4dd377ae",
+    "targeth-ht261118-wpi-class4-water-r01-m1-10": "249dc13e0edd057395c08ef8f56c656c92a7f914a785b4280207a07a73d15567",
+    "targeth-ht261118-wpi-class4-water-r01-m3-01": "7ef900e16eab7273b2c4e9a770652d365728d27a98650b1199687d88aeb90852",
+    "targeth-ht261118-wpi-class4-water-r01-m3-05": "c3300e7ebcf3cd0d1ae93e20c35440402da192f2187ae75837ca6ad954b602ea",
+    "targeth-ht261118-wpi-class4-water-r01-m3-10": "149da24f63e64600301ab7249274cdac22e6f2936b581a63f1a260b0e6e0866b",
+    "targeth-ht261118-wpi-class4-water-r01-m3-11": "a3e439366908d748d875d31720efac5a41e273c1bde9b1fc8f90b923b2033cc5",
+    "targeth-ht261118-wpi-class4-water-r01-m3-12": "5130cacda2656a1b12acad5669daeff7252fa0fa563952bde8828854f21ab177",
+    "targeth-ht261118-wpi-class4-water-r01-m3-13": "16ae16eb71f196b5f64d9e54081b58c09506f2c52a7d50a62977644690d4e012",
+    "targeth-ht261118-wpi-class4-water-r01-m3-14": "8f45c7efe25d687c04fd69cfd91cb46f43a35720e991de6de7d0180aacac49d4",
+    "targeth-ht261118-wpi-class4-water-r01-m4-01": "d002216254dc5637fc5eb3dd8f5ccb4075b0632ab16be13fdb56d3681bbb90e1",
+    "targeth-ht261118-wpi-class4-water-r01-m4-02": "d2f19ad79cf06e015a48f476aa8fadad25ff15c451f60202b543b00af449db74",
+    "targeth-ht261118-wpi-class4-water-r01-m4-03": "305d8377f90c80cb1b1dc09d729933e6af5051cf326bb718583683c3f37950bd",
+    "targeth-ht261118-wpi-class4-water-r01-m4-04": "0e2315bba5bfd65a497040e23dd6020f0e2421bec849fe8c239c6264d92d4699",
+    "targeth-ht261118-wpi-class4-water-r01-m4-05": "07aa67c50d6b3a3b26c996a2eaef8bd330eddf17cfa3c4ad48bcc8a03f3ac6ad",
+    "targeth-ht261118-wpi-class4-water-r01-m4-06": "e8a0c0bb3271cedc74aeef8a5229a737a19cb349a657dfcdad377290fdebeadc",
+    "targeth-ht261118-wpi-class4-water-r01-m4-07": "c52f35f64bd711bce2044a2580465d8fb094a79ff08cd686d73102f6bf1d5947",
+    "targeth-ht261118-wpi-class4-water-r01-m4-08": "b6ce3f75a086bd9401c6c2b24d7c4061129440c842ed645152fdf350b0128500",
+    "targeth-ht261118-wpi-class4-water-r01-m4-09": "8dcca3e4508f93fa6805305fec9f510eeb1021352385ec39997ab5e5438d6d1a",
+    "targeth-ht261118-wpi-class4-water-r01-m4-10": "06313ae9efc0e538ce1a50cb01cfdcf1a0973c648dc08a9f418d5a381dc12484",
+    "targeth-ht261118-wpi-class4-water-r01-m4-11": "5009681ca2dca35fc5bf546ebb41d279ac3becdb354be3f471cdeb6a593301fc",
+    "targeth-ht261118-wpi-class4-water-r01-m4-12": "97456bc5cea4269d6927dae2948d379feb1a6e51023ceaca41e14dc17d2c690f",
+    "targeth-ht261118-wpi-class4-water-r01-m4-13": "7e44b0038ce4d6c7afb136a25d61a0c84039ea732c17d813bf433df926877257",
+    "targeth-ht261118-wpi-class4-water-r01-m4-14": "c6e1e9fd6624cc751326c91d6ac06ad0a8995a1ed0e230d553072ca6c1abd9a5",
+    "targeth-ht261118-wpi-class4-water-r01-m4-15": "f116eed8b8f6624d10342a13737692815b94c2639449698e28cff968f7b092e2"
+   }
+  },
+  "registeredAt": "2026-11-19T02:45:56.812Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 1,
+     "unchanged": 0
+    },
+    "longest": 5,
+    "options": 22
+   },
+   "batchSha256": "5981b80ecdf20817fd3520501d0d47aff57dbcdb440e304f5fee074b8cc9c700"
+  }
+ }
+}

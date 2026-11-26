@@ -1,0 +1,1614 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class3-ww-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 42 items.",
+ "additions": [
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-01",
+    "prompt": "Bacterial slime layers are unorganized watery secretions that adhere loosely to the cell wall, whereas capsules are organized gelatinous coatings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Capsules are organized gelatinous accumulations on cell walls, while slime layers are unorganized watery secretions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "1bb25a5d217386766de05a705ea3bbd2b7b0b192e75a3713220a0d798fd50999",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-02",
+    "prompt": "Prokaryotic bacterial cells enclose their genetic material inside a distinct membrane-bound nucleus similar to eukaryotic cells.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Prokaryotic cells lack a distinct nucleus; their DNA is packaged within a nucleoid attached to the plasma membrane."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "ca0195f553658c4a97d2a8c32f7d1826c7d2e9080540de0ed487259fdb33242a",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-03",
+    "prompt": "Bacterial ribosomes are rounded RNA structures loosely attached to the plasma membrane where protein synthesis takes place.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Ribosomes are minute rounded RNA bodies loosely attached to the plasma membrane that serve as sites for protein synthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "8fee8fe61f9228effc44eb9f78d8e4b4e2eff8657bfdeeca256a4473b319ffed",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-04",
+    "prompt": "The rigid bacterial cell wall makes up less than five percent of a bacterium's dry weight and lies inside the plasma membrane.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The rigid cell wall surrounds the plasma membrane externally and accounts for about 20 to 40 percent of dry weight."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "9835a62089fec0345385732587f01eed0776d8c89df6d669bff583233f17b29f",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-05",
+    "prompt": "A heavily polluted stream often shows its highest bacterial numbers during low-flow periods when dilution of constant pollutant inputs is minimal.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A much-polluted stream shows highest bacterial numbers during low flows because of the constant influx of pollutants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "5c7991a102daf6a69e13016fb4209282c5762e8b22434cb55a9e56a3aa6b1c48",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-06",
+    "prompt": "Algae in wastewater basins are major human waterborne pathogens that cause intestinal infections when ingested.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Algae are not pathogenic, though they cause operational problems such as plugging intakes and producing tastes and odors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "e399ed5fb1aa0b04b98963a5d26954510a95a549bee1e3333640464721c3ea83",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-07",
+    "prompt": "Excessive inorganic phosphorus and nitrogen enrichment in surface waters drives eutrophication and heavy algal growth.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Eutrophication is enrichment of an environment with inorganic nutrients like phosphorus and nitrogen, causing excessive algae growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "7b810f736a9f9609a6d9b96a1f6aa2c01b9cf7c0d1953bcc1c09a9d622196ef8",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-08",
+    "prompt": "Tubificid worm populations in biological slimes typically increase as wastewater temperatures climb steadily.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Temperature fluctuations directly affect tubificid worms, and their population decreases when temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "a0ddd247f6fa967ba1f94892bc4cc394abc7dfbef5eb1c6e7ebef567889bf93b",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-09",
+    "prompt": "Giardia lamblia exists in two distinct forms: an active motile trophozoite and a dormant environmental cyst.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Two forms of the Giardia parasite exist: the active trophozoite and the dormant cyst."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "8daf95c8e695f2e13ee97cb9df74b37daeb2f476a3d3576644c757b5de60ff4a",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-10",
+    "prompt": "Routine municipal chlorination residuals are consistently effective at inactivating Giardia cysts in cold surface water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Routine chlorine levels used in municipal water treatment are not effective against Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "3167203a6bde7eb06e2e47805c0598d11ba7b4180eefd9dd81c6be3fd9f0ef36",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-12",
+    "prompt": "Cryptosporidium parvum infects human hosts during infancy, while older adults are naturally immune without prior exposure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Humans can be seriously infected at any time in their lives; immunity results from previous exposure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "3e96d566379d56deece6d95127003ec2e67a9c8d9d6b8b5501772ddf3f573946",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-13",
+    "prompt": "Heavy rains that wash animal wastes from land or overload sewage plants increase Cryptosporidium oocyst levels in surface waters.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Oocysts are more prevalent in surface waters when heavy rains increase runoff or when sewage plants break down."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "9fb358ef847b0618972f21e5dabba178b904873d48479db19514199c1e1d0d0b",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-14",
+    "prompt": "The bacterial plasma membrane is a lipoprotein barrier that separates the interior of the cell from its external environment.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Composed of a lipoprotein complex, the plasma membrane is the critical barrier separating inside from outside the cell."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "a30223a00f0e8538d217517a4389c47533186e5ea2dcc34751d8e7e419fb3d24",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m0-15",
+    "prompt": "Human infection with Giardia lamblia requires ingesting thousands of cysts, because fewer than one hundred cysts fail to establish.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Infection from a single cyst is theoretically possible, and 10 cysts have been shown to infect humans experimentally."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "81e066b6e42434fef0ee2fa45a248c8995d04975532c2153334f58f2d393dbc2",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-01",
+    "prompt": "Match each bacterial cell component to its structural role or composition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall",
+      "right": "Rigid outer layer protecting against osmotic bursting"
+     },
+     {
+      "id": "p2",
+      "left": "Plasma membrane",
+      "right": "Lipoprotein barrier separating cell interior from outside"
+     },
+     {
+      "id": "p3",
+      "left": "Nucleoid",
+      "right": "Packaged double-stranded DNA region lacking a distinct membrane"
+     },
+     {
+      "id": "p4",
+      "left": "Ribosome",
+      "right": "Rounded RNA body serving as protein synthesis site"
+     },
+     {
+      "id": "p5",
+      "left": "Flagella",
+      "right": "Motility structures anchored to the rigid cell wall"
+     },
+     {
+      "id": "p6",
+      "left": "Inclusion",
+      "right": "Internal storage granule visible inside bacterial cytoplasm"
+     }
+    ],
+    "explanation": "Each prokaryotic cell component performs a distinct structural, genetic, or metabolic role."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "2c499d863212033557caa7bd4dcd0ed792655d3f7ab6284f2d6530c7a2af5842",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-02",
+    "prompt": "Match each bacterial outer-layer or classification feature to its microscopic or chemical trait.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Macrocapsule",
+      "right": "Organized gelatinous coat visible under ordinary light microscopy"
+     },
+     {
+      "id": "p2",
+      "left": "Microcapsule",
+      "right": "Thin organized coat detectable via electron microscopy"
+     },
+     {
+      "id": "p3",
+      "left": "Slime layer",
+      "right": "Unorganized watery secretion loosely adhering to cell wall"
+     },
+     {
+      "id": "p4",
+      "left": "Morphological differentiation",
+      "right": "Classification based on visible form and structure"
+     },
+     {
+      "id": "p5",
+      "left": "Chemical differentiation",
+      "right": "Primary basis for separating smaller bacterial groups"
+     },
+     {
+      "id": "p6",
+      "left": "Generalized bacterium",
+      "right": "Reference model since no single typical bacterium exists"
+     }
+    ],
+    "explanation": "Bacterial outer coatings and classification rely on microscopy resolution and chemical differences."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "8b7407a5a7b8af8b758d4b25439bb39a090a45459f8952d455d4ad084fa05176",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-03",
+    "prompt": "Match each waterborne protozoan parasite feature to its biological or environmental characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardia cyst",
+      "right": "Dormant environmental stage surviving months in cold water"
+     },
+     {
+      "id": "p2",
+      "left": "Giardia trophozoite",
+      "right": "Active intestinal stage dividing by binary fission"
+     },
+     {
+      "id": "p3",
+      "left": "Cryptosporidium parvum",
+      "right": "Coccidian parasite infecting human gastrointestinal tracts"
+     },
+     {
+      "id": "p4",
+      "left": "Boiling at 100 C",
+      "right": "Thermal treatment that kills Giardia cysts instantaneously"
+     },
+     {
+      "id": "p5",
+      "left": "Stomach acid",
+      "right": "Digestive trigger liberating trophozoites from swallowed cysts"
+     },
+     {
+      "id": "p6",
+      "left": "Heavy rain runoff",
+      "right": "Weather event increasing oocyst prevalence in surface water"
+     }
+    ],
+    "explanation": "Giardia and Cryptosporidium have distinct life stages, environmental survival traits, and inactivation triggers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "6af70ac8c99c05f21998f2e6820ac449c4a69770ee6b3ba0736e0a3fe40c40c1",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-04",
+    "prompt": "Match each nuisance or indicator organism in wastewater to its operational or ecological role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Algae",
+      "right": "Nonpathogenic aquatic plants that can plug intakes and screens"
+     },
+     {
+      "id": "p2",
+      "left": "Eutrophication",
+      "right": "Nutrient enrichment driving excessive algal growth and aging"
+     },
+     {
+      "id": "p3",
+      "left": "Aquatic fungi",
+      "right": "Filamentous or yeast-like organisms feeding on organic matter"
+     },
+     {
+      "id": "p4",
+      "left": "Tubificid worms",
+      "right": "Slime inhabitants indicating wastewater strength and composition"
+     },
+     {
+      "id": "p5",
+      "left": "Philodina",
+      "right": "Common rotifer found in biological treatment environments"
+     },
+     {
+      "id": "p6",
+      "left": "Cladophora",
+      "right": "Filamentous algae that breaks loose and washes ashore"
+     }
+    ],
+    "explanation": "Nonpathogenic algae, fungi, rotifers, and worms serve as nuisance organisms or process indicators."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "ffb342f4ce12caa3d9d91f1794cf8a0eb4e1dfe7bcfc215956db45da8a14cf08",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-05",
+    "prompt": "Match each stream-flow or contamination condition to its effect on microbial water quality.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Initial storm runoff",
+      "right": "Washes ground-surface contaminants into clean rivers"
+     },
+     {
+      "id": "p2",
+      "left": "Post-washout stream flow",
+      "right": "Carries relatively clean water after surface impurities clear"
+     },
+     {
+      "id": "p3",
+      "left": "Polluted stream low flow",
+      "right": "Concentrates bacterial numbers from constant pollutant influx"
+     },
+     {
+      "id": "p4",
+      "left": "Fecal contamination",
+      "right": "Primary pathway introducing bacterial pathogens to source water"
+     },
+     {
+      "id": "p5",
+      "left": "Good-quality river rain",
+      "right": "Period when baseline rivers show peak bacterial numbers"
+     },
+     {
+      "id": "p6",
+      "left": "Certified lab testing",
+      "right": "Routine bacteriological examination of public water supplies"
+     }
+    ],
+    "explanation": "Stream bacterial counts respond differently to storm runoff and low-flow dilution depending on baseline pollution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "eb09c250cd2d22410fe9c621bcf7a68ca712032464557ad0a0c17aa79d951a31",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-06",
+    "prompt": "Match each Giardia transmission pathway or control factor to its role in waterborne outbreaks.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Untreated human sewage",
+      "right": "Plausible source introducing Giardia cysts into streams"
+     },
+     {
+      "id": "p2",
+      "left": "Defective filtration",
+      "right": "Treatment failure allowing cysts into finished water"
+     },
+     {
+      "id": "p3",
+      "left": "Cross-connection",
+      "right": "Accidental link between water and sewage lines"
+     },
+     {
+      "id": "p4",
+      "left": "Cold water at 4 C",
+      "right": "Condition supporting cyst survival for at least two months"
+     },
+     {
+      "id": "p5",
+      "left": "Routine chlorination",
+      "right": "Disinfection level often ineffective against Giardia cysts"
+     },
+     {
+      "id": "p6",
+      "left": "Binary fission",
+      "right": "Reproductive division occurring roughly every twelve hours"
+     }
+    ],
+    "explanation": "Giardia outbreaks require cyst entry into source water combined with a treatment or distribution failure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "5fb4307c69a700d10c3c2c4a325d51f673b2ac5e296f4cf940e940cc8b2c9f75",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-07",
+    "prompt": "Match each Cryptosporidium characteristic to its epidemiological or environmental context.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Apicomplexa",
+      "right": "Protozoan phylum developing in vertebrate gastrointestinal tracts"
+     },
+     {
+      "id": "p2",
+      "left": "Neonate mammals",
+      "right": "Primary animal hosts for C. parvum outside humans"
+     },
+     {
+      "id": "p3",
+      "left": "Immunocompromised hosts",
+      "right": "Group experiencing severe protracted diarrhea from infection"
+     },
+     {
+      "id": "p4",
+      "left": "Milwaukee 1993",
+      "right": "Major waterborne outbreak affecting over 400,000 people"
+     },
+     {
+      "id": "p5",
+      "left": "Sewage plant breakdown",
+      "right": "Operational failure elevating surface water oocyst counts"
+     },
+     {
+      "id": "p6",
+      "left": "Specialized microscopy",
+      "right": "Method used to confirm oocyst viability and species"
+     }
+    ],
+    "explanation": "Cryptosporidium parvum infects vertebrate intestines and spreads via oocysts in surface waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "464b129156c7c687d130680dbdf5984c8b84cddf21a57c66750631f582e88e69",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-08",
+    "prompt": "Match each prokaryotic cell weight or size metric to its corresponding bacterial structure.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "20 to 40 percent dry weight",
+      "right": "Share accounted for by the rigid cell wall"
+     },
+     {
+      "id": "p2",
+      "left": "10 to 20 percent dry weight",
+      "right": "Share accounted for by the plasma membrane"
+     },
+     {
+      "id": "p3",
+      "left": "About 40 percent dry weight",
+      "right": "Share accounted for by bacterial ribosomes"
+     },
+     {
+      "id": "p4",
+      "left": "7 to 8 nanometers thick",
+      "right": "Typical thickness of the plasma membrane"
+     },
+     {
+      "id": "p5",
+      "left": "Up to 10,000 per cell",
+      "right": "Approximate ribosome count in a single bacterium"
+     },
+     {
+      "id": "p6",
+      "left": "Single double strand",
+      "right": "Packaging of DNA within the prokaryotic nucleoid"
+     }
+    ],
+    "explanation": "Bacterial cell structures have characteristic dry-weight proportions and physical dimensions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "034398a049ca968b3851432e47d82ef739d504f5a0e73b807fc622164a49ce5e",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-09",
+    "prompt": "Match each water treatment unit process to its general role in pathogen and contaminant control.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Protected raw source",
+      "right": "Condition where disinfection alone may be sufficient"
+     },
+     {
+      "id": "p2",
+      "left": "Surface water source",
+      "right": "Supply typically requiring more extensive treatment trains"
+     },
+     {
+      "id": "p3",
+      "left": "Coagulation-flocculation",
+      "right": "Process preparing particles for removal before filtration"
+     },
+     {
+      "id": "p4",
+      "left": "Filtration",
+      "right": "Physical barrier step paired with disinfection for surface water"
+     },
+     {
+      "id": "p5",
+      "left": "Disinfection",
+      "right": "Unit process specifically targeting pathogen destruction"
+     },
+     {
+      "id": "p6",
+      "left": "Water softening",
+      "right": "Unit process addressing mineral hardness rather than pathogens"
+     }
+    ],
+    "explanation": "Treatment trains combine physical removal and disinfection depending on raw water source quality."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "7b475385fa4e397becf3dd39ab7d94e83ca4d7b30754de7789591b6a1d19c677",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m1-10",
+    "prompt": "Match each worm or fungal characteristic to its biological description in treatment slimes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cuticle",
+      "right": "Outer body covering of microscopic wastewater worms"
+     },
+     {
+      "id": "p2",
+      "left": "0.5 to 3 mm length",
+      "right": "Typical size range of microscopic slime worms"
+     },
+     {
+      "id": "p3",
+      "left": "Biological slimes",
+      "right": "Habitat where worms inhabit activated sludge and trickling filters"
+     },
+     {
+      "id": "p4",
+      "left": "Rising water temperature",
+      "right": "Condition causing tubificid worm populations to decrease"
+     },
+     {
+      "id": "p5",
+      "left": "Biosolids composting",
+      "right": "Wastewater operation where fungi play a critical role"
+     },
+     {
+      "id": "p6",
+      "left": "Saprophytic fungi",
+      "right": "Aquatic fungi feeding on dead organic material"
+     }
+    ],
+    "explanation": "Microscopic worms and fungi occupy specific niches and respond to temperature and organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "5e66418edccc9088cf0844b232a5816d23aaa74fb8d212e6afeac8ee4ae161a6",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-01",
+    "prompt": "A prokaryotic bacterial cell duplicates its genetic material and undergoes cell division. What happens to the number of nucleoids in the dividing cell?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "A bacterial cell can have more than one nucleoid when cell division occurs after genetic material is duplicated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "2b2a76b4cef5781b924c5de08b79c945ed1c19ba4044ed75d115df27c8906f9f",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-02",
+    "prompt": "A river of generally good baseline water quality experiences heavy rain after a dry spell, washing ground-surface material into the channel. After the initial ground washing finishes and few impurities remain on the land, what happens to the bacterial concentration in the river?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "After initial ground washing, few impurities remain to be washed in, so the river carries relatively clean water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "9c43523405d2cf7f4d718f38471f05b7c7a26529a2c0525f62336d26047314b9",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-03",
+    "prompt": "Inorganic phosphorus and nitrogen concentrations rise steadily in a sunlit surface impoundment. What happens to the rate of eutrophication in the water body?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Enrichment with inorganic phosphorus and nitrogen drives eutrophication, excessive algae growth, and premature aging."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "db7aff56b4dc74149f80bf45e67a50500f14ca6b2b029852dd4d88372d74eb2d",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-04",
+    "prompt": "Contaminated water containing viable Giardia lamblia cysts is heated to a rolling boil at 100 degrees Celsius. What happens to the viability of the Giardia cysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Giardia cysts are killed instantaneously by boiling water at 100 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "301ed76224ed4b4b39047fa1c95912478c41b047a7f53df3238c3815fab5e4bb",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-05",
+    "prompt": "A Giardia lamblia cyst is swallowed by a human host and encounters stomach acid and digestive enzymes in the gastrointestinal tract. What happens to the release of the active trophozoite form?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Stomach acid and digestive enzymes liberate the trophozoite from the swallowed cyst so it can establish in the small intestine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "6a0291f77db4369e8f2692a411a3a39114976aa7eb79a548767c202bc02cc883",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-06",
+    "prompt": "Heavy rains fall across a watershed with wild and domestic animals, increasing surface runoff into a river that supplies a treatment plant. What happens to the concentration of Cryptosporidium oocysts in the raw river water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Oocysts become more prevalent in surface waters when heavy rains increase runoff of animal wastes from land."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "593ba8c5c9bd4acf6bed970d578687ef9a730b3dcfb86f7343c1b4d797ebee20",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-07",
+    "prompt": "A municipal sewage treatment plant experiences an operational breakdown and discharges inadequately treated wastewater into a receiving river. What happens to the prevalence of Cryptosporidium oocysts downstream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Cryptosporidium oocysts are more prevalent in surface waters when sewage treatment plants are overloaded or break down."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "a562b44dce0d99a57c22b5a7cfe0a67a4fe71c18f3802f38f0d1543fe2d80427",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-08",
+    "prompt": "Filamentous algae such as Cladophora grow heavily on the walls of open treatment troughs and basins without cleaning. What happens to the likelihood of intake and screen plugging?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Algae grow easily on trough and basin walls, and heavy growth can plug intakes and screens."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "a233fd024e6986675e7cfcf2122cb314a5a903021cb422faf83af2fd37528c40",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-09",
+    "prompt": "A bacterial cell's rigid cell wall is exposed to an agent that disrupts its permeability layer. What happens to the cell's ability to exclude large molecules and antibiotics?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "The rigid cell wall acts as a permeability layer that excludes large molecules and various antibiotics."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "0f0ae9ee84d6c640ca75c0e884c8ea9f3331d11abc4c97ed23739e5497120d84",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-10",
+    "prompt": "Flagellated bacteria in a liquid medium encounter a localized harmful chemical zone and actively use their flagella. What happens to their ability to flee from the harmful area?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "The main benefit of flagella to organisms is their increased ability to flee from areas that might be harmful."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "1362e432a7ab7acca4e6cc27c4e34615e03bc85ffd789722c5900f7c85ae4288",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-11",
+    "prompt": "During a waterborne giardiasis outbreak, a utility raises the chlorine residual at the consumer tap from 0.5 mg/L to 2 mg/L and extends contact time. What happens to the risk of Giardia transmission?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Increasing chlorine residual and contact time during an outbreak reduces the risk of Giardia transmission."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "7f590920b98031bffa3d826819c8f9558226bffede3c66470262309511051244",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-12",
+    "prompt": "A human host experiences a prior Cryptosporidium parvum infection and develops partial immunity, then encounters a subsequent challenge exposure. What happens to the severity of the new infection?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Previous exposure to Cryptosporidium parvum results in either full or partial immunity to challenge infections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "aaba8dd6bb60dffd74ff297fb3111a04289e659f4b4a27cbfede2033613f44ef",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-13",
+    "prompt": "A water treatment plant relying on surface water installs properly maintained filtration ahead of disinfection. What happens to the removal of Giardia cysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Properly constructed, operated, and maintained filtration provides effective physical removal of Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "50e8ee30365c45ca306478f830233d39563f297cd076fb11f3b5769b55fbf2e9",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-14",
+    "prompt": "Environmental conditions around a bacterial culture shift to favor capsule synthesis alongside genetic expression. What happens to the thickness of the gelatinous capsule on the cell wall?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Production of bacterial capsules is determined by genetics as well as surrounding environmental conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "703b659c7827615e8cb2597ac8076a366c1f8f2d4ce38254413fecc3e43c0ed9",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m3-15",
+    "prompt": "A drinking water utility switches from a protected groundwater source to an unprotected surface water source. What happens to the number of treatment unit processes required?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt-1",
+    "explanation": "Surface waters generally require more treatment processes than protected groundwaters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "c397ea0d0820c48405b96b0a361f5a0344415a25497a5eeefed15782eb607771",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m4-01",
+    "prompt": "A microbiology study group reviews bacterial cell structures. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "The rigid cell wall protects the delicate protoplast from osmotic bursting and determines cell shape."
+     },
+     {
+      "id": "opt-2",
+      "label": "Bacterial ribosomes are rounded RNA bodies loosely attached to the plasma membrane for protein synthesis."
+     },
+     {
+      "id": "opt-3",
+      "label": "Prokaryotic bacteria enclose their DNA inside a distinct membrane-bound nucleus separate from the cytoplasm."
+     }
+    ],
+    "correctOptionId": "opt-3",
+    "explanation": "Prokaryotic cells lack a distinct membrane-bound nucleus; their DNA is packaged within a nucleoid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "eff88403d18b0490b7efae5540f581e33b48b16dcb8a64300ddfba15bd8ecf8d",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m4-02",
+    "prompt": "Operators review the role of algae in water and wastewater treatment. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Excessive phosphorus and nitrogen enrichment causes eutrophication and heavy algal growth in surface waters."
+     },
+     {
+      "id": "opt-2",
+      "label": "Algae are major human waterborne pathogens that cause severe intestinal infections when ingested."
+     },
+     {
+      "id": "opt-3",
+      "label": "Heavy algal growth on basin walls can break loose and plug downstream intakes and screens."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Algae are not pathogenic, though they cause operational plugging and taste or odor issues."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "1671dfc214205a100fccdf5e2d4c83c114960d3a8c8aa72986f21b24e3ac6804",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r03-m4-03",
+    "prompt": "A treatment team reviews Giardia lamblia biology and control. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt-1",
+      "label": "Giardia cysts can survive in cold water at 4 degrees Celsius for at least two months."
+     },
+     {
+      "id": "opt-2",
+      "label": "Routine municipal chlorination residuals reliably inactivate Giardia cysts without filtration."
+     },
+     {
+      "id": "opt-3",
+      "label": "Boiling contaminated water at 100 degrees Celsius kills Giardia cysts instantaneously."
+     }
+    ],
+    "correctOptionId": "opt-2",
+    "explanation": "Routine chlorine levels used in municipal water treatment are not effective against Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+    "notes": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:28:19.485Z",
+    "payloadSha256": "a221f595b22f516c2988528dae61ee02dc9f1725455d8576f5883778151d2526",
+    "builderResultsSha256": "c02daf6bd99b5c5eaf0e0edd9f4d48a1c4e82e5a7fe73c4624b87bddb511208d"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:27:18.395563+00:00",
+   "attestation": "Strict Hydrogen self-review of all 42 items in targeth-class3-ww-r03 against supplied source pages (pdfPage 525-537), course/level (class3-ww), and collision candidates; 42 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class3-ww-r03-m0-01": "1bb25a5d217386766de05a705ea3bbd2b7b0b192e75a3713220a0d798fd50999",
+    "targeth-ht261118-class3-ww-r03-m0-02": "ca0195f553658c4a97d2a8c32f7d1826c7d2e9080540de0ed487259fdb33242a",
+    "targeth-ht261118-class3-ww-r03-m0-03": "8fee8fe61f9228effc44eb9f78d8e4b4e2eff8657bfdeeca256a4473b319ffed",
+    "targeth-ht261118-class3-ww-r03-m0-04": "9835a62089fec0345385732587f01eed0776d8c89df6d669bff583233f17b29f",
+    "targeth-ht261118-class3-ww-r03-m0-05": "5c7991a102daf6a69e13016fb4209282c5762e8b22434cb55a9e56a3aa6b1c48",
+    "targeth-ht261118-class3-ww-r03-m0-06": "e399ed5fb1aa0b04b98963a5d26954510a95a549bee1e3333640464721c3ea83",
+    "targeth-ht261118-class3-ww-r03-m0-07": "7b810f736a9f9609a6d9b96a1f6aa2c01b9cf7c0d1953bcc1c09a9d622196ef8",
+    "targeth-ht261118-class3-ww-r03-m0-08": "a0ddd247f6fa967ba1f94892bc4cc394abc7dfbef5eb1c6e7ebef567889bf93b",
+    "targeth-ht261118-class3-ww-r03-m0-09": "8daf95c8e695f2e13ee97cb9df74b37daeb2f476a3d3576644c757b5de60ff4a",
+    "targeth-ht261118-class3-ww-r03-m0-10": "3167203a6bde7eb06e2e47805c0598d11ba7b4180eefd9dd81c6be3fd9f0ef36",
+    "targeth-ht261118-class3-ww-r03-m0-12": "3e96d566379d56deece6d95127003ec2e67a9c8d9d6b8b5501772ddf3f573946",
+    "targeth-ht261118-class3-ww-r03-m0-13": "9fb358ef847b0618972f21e5dabba178b904873d48479db19514199c1e1d0d0b",
+    "targeth-ht261118-class3-ww-r03-m0-14": "a30223a00f0e8538d217517a4389c47533186e5ea2dcc34751d8e7e419fb3d24",
+    "targeth-ht261118-class3-ww-r03-m0-15": "81e066b6e42434fef0ee2fa45a248c8995d04975532c2153334f58f2d393dbc2",
+    "targeth-ht261118-class3-ww-r03-m1-01": "2c499d863212033557caa7bd4dcd0ed792655d3f7ab6284f2d6530c7a2af5842",
+    "targeth-ht261118-class3-ww-r03-m1-02": "8b7407a5a7b8af8b758d4b25439bb39a090a45459f8952d455d4ad084fa05176",
+    "targeth-ht261118-class3-ww-r03-m1-03": "6af70ac8c99c05f21998f2e6820ac449c4a69770ee6b3ba0736e0a3fe40c40c1",
+    "targeth-ht261118-class3-ww-r03-m1-04": "ffb342f4ce12caa3d9d91f1794cf8a0eb4e1dfe7bcfc215956db45da8a14cf08",
+    "targeth-ht261118-class3-ww-r03-m1-05": "eb09c250cd2d22410fe9c621bcf7a68ca712032464557ad0a0c17aa79d951a31",
+    "targeth-ht261118-class3-ww-r03-m1-06": "5fb4307c69a700d10c3c2c4a325d51f673b2ac5e296f4cf940e940cc8b2c9f75",
+    "targeth-ht261118-class3-ww-r03-m1-07": "464b129156c7c687d130680dbdf5984c8b84cddf21a57c66750631f582e88e69",
+    "targeth-ht261118-class3-ww-r03-m1-08": "034398a049ca968b3851432e47d82ef739d504f5a0e73b807fc622164a49ce5e",
+    "targeth-ht261118-class3-ww-r03-m1-09": "7b475385fa4e397becf3dd39ab7d94e83ca4d7b30754de7789591b6a1d19c677",
+    "targeth-ht261118-class3-ww-r03-m1-10": "5e66418edccc9088cf0844b232a5816d23aaa74fb8d212e6afeac8ee4ae161a6",
+    "targeth-ht261118-class3-ww-r03-m3-01": "2b2a76b4cef5781b924c5de08b79c945ed1c19ba4044ed75d115df27c8906f9f",
+    "targeth-ht261118-class3-ww-r03-m3-02": "9c43523405d2cf7f4d718f38471f05b7c7a26529a2c0525f62336d26047314b9",
+    "targeth-ht261118-class3-ww-r03-m3-03": "db7aff56b4dc74149f80bf45e67a50500f14ca6b2b029852dd4d88372d74eb2d",
+    "targeth-ht261118-class3-ww-r03-m3-04": "301ed76224ed4b4b39047fa1c95912478c41b047a7f53df3238c3815fab5e4bb",
+    "targeth-ht261118-class3-ww-r03-m3-05": "6a0291f77db4369e8f2692a411a3a39114976aa7eb79a548767c202bc02cc883",
+    "targeth-ht261118-class3-ww-r03-m3-06": "593ba8c5c9bd4acf6bed970d578687ef9a730b3dcfb86f7343c1b4d797ebee20",
+    "targeth-ht261118-class3-ww-r03-m3-07": "a562b44dce0d99a57c22b5a7cfe0a67a4fe71c18f3802f38f0d1543fe2d80427",
+    "targeth-ht261118-class3-ww-r03-m3-08": "a233fd024e6986675e7cfcf2122cb314a5a903021cb422faf83af2fd37528c40",
+    "targeth-ht261118-class3-ww-r03-m3-09": "0f0ae9ee84d6c640ca75c0e884c8ea9f3331d11abc4c97ed23739e5497120d84",
+    "targeth-ht261118-class3-ww-r03-m3-10": "1362e432a7ab7acca4e6cc27c4e34615e03bc85ffd789722c5900f7c85ae4288",
+    "targeth-ht261118-class3-ww-r03-m3-11": "7f590920b98031bffa3d826819c8f9558226bffede3c66470262309511051244",
+    "targeth-ht261118-class3-ww-r03-m3-12": "aaba8dd6bb60dffd74ff297fb3111a04289e659f4b4a27cbfede2033613f44ef",
+    "targeth-ht261118-class3-ww-r03-m3-13": "50e8ee30365c45ca306478f830233d39563f297cd076fb11f3b5769b55fbf2e9",
+    "targeth-ht261118-class3-ww-r03-m3-14": "703b659c7827615e8cb2597ac8076a366c1f8f2d4ce38254413fecc3e43c0ed9",
+    "targeth-ht261118-class3-ww-r03-m3-15": "c397ea0d0820c48405b96b0a361f5a0344415a25497a5eeefed15782eb607771",
+    "targeth-ht261118-class3-ww-r03-m4-01": "eff88403d18b0490b7efae5540f581e33b48b16dcb8a64300ddfba15bd8ecf8d",
+    "targeth-ht261118-class3-ww-r03-m4-02": "1671dfc214205a100fccdf5e2d4c83c114960d3a8c8aa72986f21b24e3ac6804",
+    "targeth-ht261118-class3-ww-r03-m4-03": "a221f595b22f516c2988528dae61ee02dc9f1725455d8576f5883778151d2526"
+   }
+  },
+  "registeredAt": "2026-11-19T03:28:19.485Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 10,
+     "decrease": 5,
+     "unchanged": 0
+    },
+    "longest": 2,
+    "options": 18
+   },
+   "batchSha256": "7294ffd47c2630da0465c27b7d42e06ad9f145de6b72ee7f407791bb77253be4"
+  }
+ }
+}

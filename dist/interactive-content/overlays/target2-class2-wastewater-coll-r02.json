@@ -1,0 +1,116 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-class2-wastewater-coll-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 3 items.",
+ "additions": [
+  {
+   "courseKey": "class2-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class2-wastewater-coll-r02-m0-01",
+    "prompt": "Flexible camel hose is used in wastewater collection work to clean interceptor lines and pump liquid out of repair excavations.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Flexible camel hose bends easily where rigid piping is impractical, making it suited to interceptor cleaning and dewatering repair excavations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:12:27.361588+00:00",
+    "notes": "Strict AI self-review by gemini-4-carbon of 4 rapid-swipe candidates for class2-wastewater-coll against provided source pages and collision candidates; 3 items accepted and 1 item rejected.",
+    "registeredAt": "2026-11-19T02:12:41.237Z",
+    "payloadSha256": "ac83f13d30d736b14501d9b7bac6ba9a8d58113995c08007bf0e5bf308a27718",
+    "builderResultsSha256": "74f8e697ed3a5be26f4158aaacbc192e0fbb976d4ad7a33602b1db29451a57d6"
+   }
+  },
+  {
+   "courseKey": "class2-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class2-wastewater-coll-r02-m0-02",
+    "prompt": "Rigid metal piping withstands continuous vibration from a pneumatic jackhammer better than flexible industrial hose.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Industrial hose dampens tool vibration, whereas rigid piping and tubing fail quickly under severe mechanical shaking from tools like jackhammers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:12:27.361588+00:00",
+    "notes": "Strict AI self-review by gemini-4-carbon of 4 rapid-swipe candidates for class2-wastewater-coll against provided source pages and collision candidates; 3 items accepted and 1 item rejected.",
+    "registeredAt": "2026-11-19T02:12:41.237Z",
+    "payloadSha256": "8ddf45d0d9053d1bc2afda05c3f407b0679d235a2bd65ab98a61cc9520833db4",
+    "builderResultsSha256": "74f8e697ed3a5be26f4158aaacbc192e0fbb976d4ad7a33602b1db29451a57d6"
+   }
+  },
+  {
+   "courseKey": "class2-wastewater-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class2-wastewater-coll-r02-m0-03",
+    "prompt": "Aluminum tubing is commonly installed in water and wastewater facilities as raceways to enclose electrical wiring.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Facilities frequently use aluminum tubing as protective raceways or containers for electrical wires, while steel or stainless steel serves pressurized fluid duties."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:12:27.361588+00:00",
+    "notes": "Strict AI self-review by gemini-4-carbon of 4 rapid-swipe candidates for class2-wastewater-coll against provided source pages and collision candidates; 3 items accepted and 1 item rejected.",
+    "registeredAt": "2026-11-19T02:12:41.237Z",
+    "payloadSha256": "eebe934ffc7bac85160d2ce16c74acb1d5923f3bd0401c67df2d7c03cbbf4831",
+    "builderResultsSha256": "74f8e697ed3a5be26f4158aaacbc192e0fbb976d4ad7a33602b1db29451a57d6"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T02:12:27.361588+00:00",
+   "attestation": "Strict AI self-review by gemini-4-carbon of 4 rapid-swipe candidates for class2-wastewater-coll against provided source pages and collision candidates; 3 items accepted and 1 item rejected.",
+   "payloadSha256": {
+    "target2-ct261118-class2-wastewater-coll-r02-m0-01": "ac83f13d30d736b14501d9b7bac6ba9a8d58113995c08007bf0e5bf308a27718",
+    "target2-ct261118-class2-wastewater-coll-r02-m0-02": "8ddf45d0d9053d1bc2afda05c3f407b0679d235a2bd65ab98a61cc9520833db4",
+    "target2-ct261118-class2-wastewater-coll-r02-m0-03": "eebe934ffc7bac85160d2ce16c74acb1d5923f3bd0401c67df2d7c03cbbf4831"
+   }
+  },
+  "registeredAt": "2026-11-19T02:12:41.237Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 2,
+     "f": 1
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "c18009b8586923604d4d4c6c00885789677eae58dc5df0ae10e93c943f692f99"
+  }
+ }
+}

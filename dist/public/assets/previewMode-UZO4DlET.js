@@ -1,0 +1,1 @@
+const t="d200f5c012ca384309b488e742d725e0",e="echelon_preview_mode";function c(){try{return localStorage.getItem(e)==="1"}catch{return!1}}function o(){try{localStorage.setItem(e,"1")}catch{}}function a(){try{localStorage.removeItem(e)}catch{}}export{t as P,a as d,o as e,c as i};

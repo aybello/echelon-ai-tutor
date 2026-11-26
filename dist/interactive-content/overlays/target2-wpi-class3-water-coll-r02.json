@@ -1,0 +1,738 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-wpi-class3-water-coll-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 20 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-01",
+    "prompt": "Pump station discharge lines inside a predominantly gravity sewer network are classified as force mains because their contents travel under pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Even within a gravity collection system, pressurized discharge piping from a pumping station operates as a force main."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "31ff6af2f04c374a7acb73472948b07cff6923fc7d173d01fa797edf7f1d91b8",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-02",
+    "prompt": "Diurnal flow variation describes seasonal shifts in groundwater infiltration from winter to summer rather than daily flow swings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Diurnal means daily, referring to flow variations occurring within each day around the average daily rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "133beeb7d0ef956ac7a863a157a9f6d4f4a925a7aab619a133cb49432e3587f5",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-03",
+    "prompt": "Separate stormwater collection piping conveys street debris, road salt, and grit without carrying domestic sanitary waste.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A separate storm system is dedicated to surface runoff carrying grit, salt, and street debris, excluding sanitary sewage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "bf35cd84ed8e59e4dbf7c31cadf766a9c516798630bc6c46e93a0b23801b612b",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-04",
+    "prompt": "In a pneumatic pumping station, compressed air pressurizes the wet well tank while the influent valve stays open to incoming sewage.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "When wastewater reaches the trigger level in a pneumatic station, an automatic valve closes the influent line before tank pressurization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "11fdd6b5a86bafea0bd6f867429d76ea9c52f54a5a1a491bdc439e09b19cbdcb",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-05",
+    "prompt": "Hydraulic energy head expressed in feet of water is equivalent to foot-pounds of mechanical energy per pound of water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Dividing mechanical energy in foot-pounds by fluid weight in pounds yields energy head measured in feet of water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "0bd7d959563485993e838ccc5c966c0b35e979470fae82eda9189768c119e96f",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-06",
+    "prompt": "In hydraulic systems, potential energy exists due to fluid velocity whereas kinetic energy exists due to elevation and pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Potential energy stems from elevation and pressure, whereas kinetic energy is the mechanical energy associated with fluid velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "8d74ad0cd3cf009b253f4c1dfce6dd5685a63f58f53a413807896b0ffd3d5610",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m0-08",
+    "prompt": "A force main system relies on steep downward pipe slopes to maintain desired transport velocity over long distances.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Force mains move wastewater under pump pressure, achieving desired velocities over long distances without needing sloped lines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "3466501c7c908ef0bfda9e5fcc6952fd639aa3d288af4bd80105c003bbed13b9",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m1-01",
+    "prompt": "Match each wastewater source or conveyance category to its defining characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Human and animal wastes",
+      "right": "Primary health hazard from pathogenic bacteria and viruses"
+     },
+     {
+      "id": "p2",
+      "left": "Separate stormwater",
+      "right": "Carries street debris, road salt, and grit without sanitary sewage"
+     },
+     {
+      "id": "p3",
+      "left": "Combined wastewater",
+      "right": "Conveys sanitary sewage and surface runoff in a single pipe network"
+     },
+     {
+      "id": "p4",
+      "left": "Industrial wastewater",
+      "right": "Manufacturing waste often treated independently for safety and economy"
+     },
+     {
+      "id": "p5",
+      "left": "Diurnal flow variation",
+      "right": "Daily rise and fall of wastewater flow rate through each day"
+     },
+     {
+      "id": "p6",
+      "left": "Preliminary treatment",
+      "right": "Early removal of trash and grit to prevent equipment jams and wear"
+     }
+    ],
+    "explanation": "Different collection streams and preliminary steps are defined by their waste origins, daily flow swings, and equipment protection roles."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "4081e67b58bcbd4f509ea1d10de3aa64a3ba43dce8ab64fef8cdc353730e365a",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m1-02",
+    "prompt": "Match each hydraulic or pumping concept to its physical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Elevation head",
+      "right": "Potential mechanical energy due to vertical position"
+     },
+     {
+      "id": "p2",
+      "left": "Pressure head",
+      "right": "Potential mechanical energy due to fluid pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Velocity head",
+      "right": "Kinetic mechanical energy due to fluid motion"
+     },
+     {
+      "id": "p4",
+      "left": "Energy head unit",
+      "right": "Foot-pounds of energy per pound of water, expressed in feet"
+     },
+     {
+      "id": "p5",
+      "left": "Atmospheric blanket",
+      "right": "Air column exerting pressure that varies with thickness above a point"
+     },
+     {
+      "id": "p6",
+      "left": "Submersible wet-well station",
+      "right": "Single collection compartment housing a submerged centrifugal pump"
+     }
+    ],
+    "explanation": "Hydraulic systems store mechanical energy as elevation, pressure, or velocity head, while wet-well stations apply centrifugal energy directly in one compartment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "c566e90e9558296b7cbdab6bf53f23687f8ab664456eb0eb92dbb5403030132a",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m2-01",
+    "prompt": "Three of these are major wastewater generation sources entering a collection system. Which one is an in-plant unit performance metric?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Human and animal wastes"
+     },
+     {
+      "id": "o2",
+      "label": "Groundwater infiltration"
+     },
+     {
+      "id": "o3",
+      "label": "Stormwater runoff"
+     },
+     {
+      "id": "o4",
+      "label": "Percent removal efficiency"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Human wastes, infiltration, and runoff generate wastewater flow, whereas percent removal evaluates treatment unit efficiency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "548ddea4cf3f9e437b20c6bfb7d2c8be92a6010599536277c02428dc5cdd083a",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m2-03",
+    "prompt": "Three of these are volumetric flow rate units used for sewer or plant discharge. Which one is a unit of mechanical energy?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Cubic feet per second"
+     },
+     {
+      "id": "o2",
+      "label": "Gallons per minute"
+     },
+     {
+      "id": "o3",
+      "label": "Million gallons per day"
+     },
+     {
+      "id": "o4",
+      "label": "Foot-pounds"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Cubic feet per second, gallons per minute, and million gallons per day measure flow rate; foot-pounds measure mechanical energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "a4a404cd6c2ffabb94cf6686bc1d69f71d446c932097ac1b25f1ebbb2b6ffdc7",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m2-05",
+    "prompt": "Three of these are design purposes of a municipal wastewater treatment plant. Which one describes untreated combined conveyance?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Protecting public health and water supplies"
+     },
+     {
+      "id": "o2",
+      "label": "Protecting aquatic life in receiving waters"
+     },
+     {
+      "id": "o3",
+      "label": "Preserving best water uses and adjacent lands"
+     },
+     {
+      "id": "o4",
+      "label": "Carrying sanitary waste and storm runoff together"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Treatment plants protect health, supplies, aquatic life, and adjacent lands; carrying sanitary and storm flow together defines a combined sewer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "0607e52c7fc9a3de46b81e1f3491fd12f872f9d086f6f51dfe3a2ad351543310",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m3-01",
+    "prompt": "A measurement point on Earth is relocated to a higher elevation where the overlying atmospheric air blanket is thinner. Assuming standard weather conditions, what happens to the atmospheric pressure exerted on a square inch of surface?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Atmospheric pressure comes from the weight of the overlying air blanket, so a thinner air column at higher elevation exerts lower pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "2f8f4712421c7cdd99e31c222b0a3eb9c1d9d8b0a2ce98f1a2690420d628b8e8",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m3-02",
+    "prompt": "Steady incompressible wastewater flows full through a pipe that narrows to a smaller cross-sectional area downstream with no side branches. By hydraulic continuity, what happens to the average fluid velocity in the narrower section?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Under the continuity equation (Q = A x V), keeping volumetric flow constant through a smaller area requires velocity to rise."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "85fba6609b0fdee5218ed820e46fb97b7661c673e0e3ce99d9d92a03b1f94eaf",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m3-04",
+    "prompt": "A wider storage vessel replaces a narrow vessel, and both are filled with fresh water of identical density to the exact same vertical depth. What happens to the hydrostatic pressure in pounds per square foot at the tank floor?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Hydrostatic bottom pressure depends on fluid density and vertical depth (p = w x h), not on total horizontal tank volume."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "feb3d7ca595b4399336e52edb9df05441137a2cdcdf3950d5a839b6fe65eb2d7",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m3-05",
+    "prompt": "In an open static wet well containing uniform-density water, a pressure sensor is lowered to a greater vertical depth below the free surface. What happens to the hydrostatic pressure acting on the sensor?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Hydrostatic pressure equals fluid density multiplied by vertical depth, so deeper submergence raises pressure linearly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "a8e5cb717cf74cd7ef86cee01ef2c7c99ba8f1397fd300c21671ed4fd425f2c3",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m3-07",
+    "prompt": "Preliminary grit removal and coarse screening at a headworks are bypassed during a mechanical outage while raw collection flow continues unchanged. What happens to mechanical wear and clogging potential on downstream plant machinery?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Preliminary treatment removes trash, rags, and abrasive grit; bypassing it exposes downstream pumps and equipment to clogs, jams, and wear."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "cd6a288a8fb788f3ef2bdb632abcb53b43b1e5fae8ac29f4e89e99da697fefa8",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m4-02",
+    "prompt": "An operator compares pneumatic pumping stations and wet-well pump testing. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A pneumatic pumping station uses compressed air and controlled inlet and outlet valves to push wastewater forward."
+     },
+     {
+      "id": "o2",
+      "label": "When liquid reaches the set level in a pneumatic station, an automatic valve closes the influent line before pressurization."
+     },
+     {
+      "id": "o3",
+      "label": "Converting wet-well test volume from cubic feet to US gallons requires dividing cubic feet by 7.48."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "One cubic foot holds 7.48 US gallons, so cubic feet are multiplied by 7.48 to obtain gallons, not divided."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "8e7eb0adf1d91dfed8932741dcc48cc49607eb7fce575b48c6143f8f7fedf76b",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m4-05",
+    "prompt": "A supervisor reviews preliminary treatment and treatment plant objectives. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Wastewater treatment plants speed up natural stream purification processes inside a controlled facility environment."
+     },
+     {
+      "id": "o2",
+      "label": "Preliminary screening and grit removal save downstream plant space and protect machinery from jams and excessive wear."
+     },
+     {
+      "id": "o3",
+      "label": "Hydraulic detention time for a tank increases when daily volumetric flow rises while tank volume stays fixed."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Detention time equals tank volume divided by flow rate, so higher flow through a fixed tank shortens detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "a1cfb8c5d50d111c2dde22d79eb7f4d5052b56c988d665ff733002cd27c66ae8",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-coll-r02-m5-02",
+    "prompt": "In a conventional municipal wastewater treatment train, does preliminary trash and grit removal take place before or after primary and secondary biological treatment units?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Preliminary treatment sits at the beginning of the plant to remove coarse trash and grit ahead of downstream treatment units."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+    "notes": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+    "registeredAt": "2026-11-19T02:20:48.872Z",
+    "payloadSha256": "20cbea736c81ea794799a8fdada92ca7fd519d27dbb955b9c58e469568a2240b",
+    "builderResultsSha256": "cb31d464ce87e9886778c99a53a5ce7e4d33a531daee83d0ec0f3166f5f05220"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T02:19:42.413118+00:00",
+   "attestation": "Strict Carbon self-review of overlay target2-wpi-class3-water-coll-r02 against supplied textbook pages, existing course/cross-course collision candidates, and intra-batch overlap; accepted 20 of 31 items and rejected 11 for same-batch redundancy, collision with existing tasks, weak distractor, terminology slip, or non-fixed calculation order.",
+   "payloadSha256": {
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-01": "31ff6af2f04c374a7acb73472948b07cff6923fc7d173d01fa797edf7f1d91b8",
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-02": "133beeb7d0ef956ac7a863a157a9f6d4f4a925a7aab619a133cb49432e3587f5",
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-03": "bf35cd84ed8e59e4dbf7c31cadf766a9c516798630bc6c46e93a0b23801b612b",
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-04": "11fdd6b5a86bafea0bd6f867429d76ea9c52f54a5a1a491bdc439e09b19cbdcb",
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-05": "0bd7d959563485993e838ccc5c966c0b35e979470fae82eda9189768c119e96f",
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-06": "8d74ad0cd3cf009b253f4c1dfce6dd5685a63f58f53a413807896b0ffd3d5610",
+    "target2-ct261118-wpi-class3-water-coll-r02-m0-08": "3466501c7c908ef0bfda9e5fcc6952fd639aa3d288af4bd80105c003bbed13b9",
+    "target2-ct261118-wpi-class3-water-coll-r02-m1-01": "4081e67b58bcbd4f509ea1d10de3aa64a3ba43dce8ab64fef8cdc353730e365a",
+    "target2-ct261118-wpi-class3-water-coll-r02-m1-02": "c566e90e9558296b7cbdab6bf53f23687f8ab664456eb0eb92dbb5403030132a",
+    "target2-ct261118-wpi-class3-water-coll-r02-m2-01": "548ddea4cf3f9e437b20c6bfb7d2c8be92a6010599536277c02428dc5cdd083a",
+    "target2-ct261118-wpi-class3-water-coll-r02-m2-03": "a4a404cd6c2ffabb94cf6686bc1d69f71d446c932097ac1b25f1ebbb2b6ffdc7",
+    "target2-ct261118-wpi-class3-water-coll-r02-m2-05": "0607e52c7fc9a3de46b81e1f3491fd12f872f9d086f6f51dfe3a2ad351543310",
+    "target2-ct261118-wpi-class3-water-coll-r02-m3-01": "2f8f4712421c7cdd99e31c222b0a3eb9c1d9d8b0a2ce98f1a2690420d628b8e8",
+    "target2-ct261118-wpi-class3-water-coll-r02-m3-02": "85fba6609b0fdee5218ed820e46fb97b7661c673e0e3ce99d9d92a03b1f94eaf",
+    "target2-ct261118-wpi-class3-water-coll-r02-m3-04": "feb3d7ca595b4399336e52edb9df05441137a2cdcdf3950d5a839b6fe65eb2d7",
+    "target2-ct261118-wpi-class3-water-coll-r02-m3-05": "a8e5cb717cf74cd7ef86cee01ef2c7c99ba8f1397fd300c21671ed4fd425f2c3",
+    "target2-ct261118-wpi-class3-water-coll-r02-m3-07": "cd6a288a8fb788f3ef2bdb632abcb53b43b1e5fae8ac29f4e89e99da697fefa8",
+    "target2-ct261118-wpi-class3-water-coll-r02-m4-02": "8e7eb0adf1d91dfed8932741dcc48cc49607eb7fce575b48c6143f8f7fedf76b",
+    "target2-ct261118-wpi-class3-water-coll-r02-m4-05": "a1cfb8c5d50d111c2dde22d79eb7f4d5052b56c988d665ff733002cd27c66ae8",
+    "target2-ct261118-wpi-class3-water-coll-r02-m5-02": "20cbea736c81ea794799a8fdada92ca7fd519d27dbb955b9c58e469568a2240b"
+   }
+  },
+  "registeredAt": "2026-11-19T02:20:48.872Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 3,
+     "f": 4
+    },
+    "dirs": {
+     "increase": 3,
+     "decrease": 1,
+     "unchanged": 1
+    },
+    "longest": 3,
+    "options": 10
+   },
+   "batchSha256": "9f35a85f5d09ca3ccbed4b66b80dbf735eb59f65657b11b421c804c17b123ebc"
+  }
+ }
+}

@@ -1,0 +1,1286 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class3-ww-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 33 items.",
+ "additions": [
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-01",
+    "prompt": "Cyclospora oocysts excreted in human feces require days to weeks in the environment to sporulate before becoming infectious.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Freshly excreted Cyclospora oocysts are not immediately infectious and need days to weeks under suitable conditions to sporulate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "f02797813d301f20f74b20343b2ea721124564708fec8e6e1cec9646b4d3df7d",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-02",
+    "prompt": "In most mammals, Cryptosporidium parvum primarily infects older adult animals rather than neonates.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In most mammals, C. parvum is predominantly a parasite of newborn (neonate) animals, while older animals usually develop poor infections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "683a9d98b1678d374839adea048fdf963c54586f6067d928753808e9def18a85",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-03",
+    "prompt": "People with normal immune systems typically recover from cryptosporidiosis within one to two weeks without antiparasitic medication.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "In healthy individuals, cryptosporidiosis symptoms usually last one to two weeks before the immune system clears the infection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "8c866bc0717128feaa1b651dbcc6e9954285b39282bd718bf5243609fe9f5e3c",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-04",
+    "prompt": "Standard coliform bacteria tests reliably predict the presence of Cryptosporidium oocysts in surface water supplies.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "No standard water quality indicator, including coliform bacteria or turbidity, can reliably predict the occurrence of Cryptosporidium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "75839bfc445adfb59718716c2b38749baff30b2250afc5503a0cef250072d865",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-05",
+    "prompt": "During endogenous respiration, bacterial populations decline as cells consume their own stored reserves.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "In the endogenous respiration phase, external food is depleted and bacteria metabolize internal cell reserves, causing population decline."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "35b2b9d356dbdceb148a6fd6b4da231a30839834a303139f7c16ea0b3400013e",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-06",
+    "prompt": "Symbiotic nitrogen-fixing bacteria in legume root nodules convert nitrate into atmospheric nitrogen gas.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Symbiotic root-nodule bacteria take nitrogen gas from the air and convert it into nitrates that plants can use."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "7dfe831a484529e65541e4ede78d22a3171849935a1e0b0bccd6eb8ced948468",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-07",
+    "prompt": "Urea in raw domestic wastewater is transformed into ammonia nitrogen during wastewater treatment.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Nitrogen enters wastewater largely as urea, which is biologically transformed into ammonia nitrogen during treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "e49fb99ccaf577372d07832002f1ca526e1890a7be9d27b96033d49c4c6f4922",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-08",
+    "prompt": "Unlike the carbon and nitrogen cycles, the phosphorus cycle relies primarily on atmospheric gas reservoirs.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Phosphorus is found in sedimentary rock rather than the atmosphere, entering ecosystems through erosion and biological cycling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "b93d73a91e899f292da4f6463fc6d63fae9947293b51881d5e1fac8100280a0d",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-09",
+    "prompt": "In a primary sedimentation tank, wastewater horizontal velocity is slowed to roughly one foot per minute to allow settling.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Reducing horizontal velocity to approximately one foot per minute allows heavier solids to settle and lighter solids to float."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "a3723031558f54545d4dac6f5164e1672e2fa4c2185f315d144bc32220202306",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-10",
+    "prompt": "Continuous sludge removal from a primary clarifier typically produces thicker sludge than intermittent sludge removal.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Continuous removal yields thinner sludge under two to three percent solids, whereas intermittent removal achieves four to eight percent solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "d248cf6486f33c2ee5fde2f8ea5185fe380c607549a5fc83c87181691b61deb4",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-11",
+    "prompt": "A properly operating primary clarifier typically removes a higher percentage of settleable solids than of five-day BOD.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Primary clarifiers typically remove 90 to 95 percent of settleable solids compared to 25 to 35 percent of five-day BOD."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "74e64cfeb791600ed0888d18ebc1c700ccd544a6ee165ec971f12d8b5b33eba5",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-12",
+    "prompt": "Biological slime on trickling filter media consists strictly of bacteria, excluding protozoa, fungi, and worms.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "While mainly bacteria, trickling filter slime also contains algae, protozoa, worms, snails, fungi, and insect larvae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "a0fb15a67333f1a9e0d2cfc28bb2d49ca17e7d714afd9391d7ce2247ae78986b",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m0-13",
+    "prompt": "Trickling filter performance depends on hydraulic loading, organic loading, temperature, and recirculation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Overall trickling filter performance is governed by hydraulic and organic loading rates, wastewater temperature, and recirculation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "1eeca3976a2e3fc3ccb3e7cf2d3804cb77c2911e5746f75970372eda5684adbd",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-01",
+    "prompt": "Match each protozoan parasite characteristic to its specific transmission or host feature.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cryptosporidium oocyst",
+      "right": "Dormant stage shed in feces of infected hosts"
+     },
+     {
+      "id": "p2",
+      "left": "C. parvum in mammals",
+      "right": "Primarily infects neonate rather than older animals"
+     },
+     {
+      "id": "p3",
+      "left": "Immunocompromised host",
+      "right": "Risk group facing life-threatening cryptosporidiosis"
+     },
+     {
+      "id": "p4",
+      "left": "Cyclospora oocyst",
+      "right": "Requires days to weeks to sporulate after excretion"
+     },
+     {
+      "id": "p5",
+      "left": "Heavy rain runoff",
+      "right": "Weather factor increasing surface water oocyst counts"
+     },
+     {
+      "id": "p6",
+      "left": "Turbidity and coliforms",
+      "right": "Indicators that fail to reliably predict Cryptosporidium"
+     }
+    ],
+    "explanation": "Cryptosporidium and Cyclospora differ in sporulation timing, host susceptibility, and environmental detection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "f3230f2589070389075179481b202166bc978e96df9de94c0181e315afec19fe",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-02",
+    "prompt": "Match each microbial growth or anaerobic phase to its metabolic role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Log growth phase",
+      "right": "Rapid bacterial multiplication with abundant food"
+     },
+     {
+      "id": "p2",
+      "left": "Declining growth phase",
+      "right": "Slowing reproduction as food becomes limiting"
+     },
+     {
+      "id": "p3",
+      "left": "Endogenous respiration",
+      "right": "Cells consume internal reserves as food runs out"
+     },
+     {
+      "id": "p4",
+      "left": "Volatile acids",
+      "right": "Intermediate organic acids consumed by anaerobic bacteria"
+     },
+     {
+      "id": "p5",
+      "left": "Methane gas",
+      "right": "Stable gaseous end product of anaerobic digestion"
+     },
+     {
+      "id": "p6",
+      "left": "Cellular respiration",
+      "right": "Process releasing carbon dioxide back to the atmosphere"
+     }
+    ],
+    "explanation": "Microbial populations shift through growth phases based on food availability while anaerobic bacteria convert volatile acids to methane."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "09f98eb81e91d466a9079d98c223a53bc1b8c4a5ac65182da5c48fb1ed9e109a",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-03",
+    "prompt": "Match each biogeochemical cycle step to its chemical transformation.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nitrogen fixation",
+      "right": "Converts atmospheric nitrogen gas into usable nitrates"
+     },
+     {
+      "id": "p2",
+      "left": "Urea hydrolysis",
+      "right": "Transforms wastewater urea into ammonia nitrogen"
+     },
+     {
+      "id": "p3",
+      "left": "Nitrification",
+      "right": "Aerobic conversion of ammonia to nitrate"
+     },
+     {
+      "id": "p4",
+      "left": "Denitrification",
+      "right": "Converts nitrate into nitrogen gas released to air"
+     },
+     {
+      "id": "p5",
+      "left": "Phosphorus erosion",
+      "right": "Releases mineral phosphorus from sedimentary rock"
+     },
+     {
+      "id": "p6",
+      "left": "Guano deposition",
+      "right": "Returns organic phosphorus from marine birds to land"
+     }
+    ],
+    "explanation": "Nitrogen cycles through atmospheric gas and biological oxidation-reduction, whereas phosphorus cycles through sedimentary rock and organisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "82daca600ee5bf4cf288ef4b819283d41eb5becdb12976173ae973fdf46b3eb0",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-04",
+    "prompt": "Match each primary clarifier component or stream to its physical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Mechanical scraper",
+      "right": "Pushes settled primary solids into the hopper"
+     },
+     {
+      "id": "p2",
+      "left": "Sludge hopper",
+      "right": "Collects concentrated bottom solids for pumping"
+     },
+     {
+      "id": "p3",
+      "left": "Surface skimmer",
+      "right": "Removes floating oil, grease, and scum"
+     },
+     {
+      "id": "p4",
+      "left": "Effluent weir",
+      "right": "Discharges clarified liquid into the collection trough"
+     },
+     {
+      "id": "p5",
+      "left": "Baffle",
+      "right": "Prevents floatable solids and scum from escaping"
+     },
+     {
+      "id": "p6",
+      "left": "Primary sludge",
+      "right": "Heavier solids settled from the wastewater flow"
+     }
+    ],
+    "explanation": "Primary clarifiers use scrapers, hoppers, skimmers, baffles, and weirs to separate settling sludge from floating scum and clarified effluent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "e0fcb1a22b7ab67f2d28c206a436b3df1d9563b2524c0d4f74a867e82b1b64f9",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-05",
+    "prompt": "Match each primary clarification parameter to its operational significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Continuous sludge removal",
+      "right": "Yields thinner sludge below three percent solids"
+     },
+     {
+      "id": "p2",
+      "left": "Intermittent sludge removal",
+      "right": "Allows compaction to four to eight percent solids"
+     },
+     {
+      "id": "p3",
+      "left": "Detention time",
+      "right": "Hours wastewater remains in the settling basin"
+     },
+     {
+      "id": "p4",
+      "left": "Surface loading rate",
+      "right": "Flow rate divided by clarifier surface area"
+     },
+     {
+      "id": "p5",
+      "left": "Weir overflow rate",
+      "right": "Flow rate divided by linear weir length"
+     },
+     {
+      "id": "p6",
+      "left": "Short-circuiting",
+      "right": "Uneven flow distribution bypassing full tank volume"
+     }
+    ],
+    "explanation": "Primary clarifier performance depends on hydraulic loading rates, detention time, uniform flow distribution, and sludge withdrawal schedules."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "2cb0ac838ac8fa8c199b07fa98b54cbdaca72adffc0138ab44ddfc256d2ce511",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-06",
+    "prompt": "Match each primary clarifier performance metric to its expected removal or range.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Settleable solids removal",
+      "right": "Highest typical primary removal at ninety to ninety-five percent"
+     },
+     {
+      "id": "p2",
+      "left": "Suspended solids removal",
+      "right": "Moderate primary removal at forty to sixty percent"
+     },
+     {
+      "id": "p3",
+      "left": "Five-day BOD removal",
+      "right": "Lower primary removal at twenty-five to thirty-five percent"
+     },
+     {
+      "id": "p4",
+      "left": "Normal primary pH",
+      "right": "Expected operating range between six point five and nine"
+     },
+     {
+      "id": "p5",
+      "left": "Normal primary DO",
+      "right": "Low dissolved oxygen typically below one milligram per liter"
+     },
+     {
+      "id": "p6",
+      "left": "Coning",
+      "right": "Hydraulic channeling during excessive sludge pumping"
+     }
+    ],
+    "explanation": "Primary clarification removes most settleable solids and roughly half of suspended solids while maintaining near-neutral pH and low DO."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "8f056ab100c05c415cee56bede61fa55fd3c0aa70bbd4cf22ff8e621c0f2343b",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-07",
+    "prompt": "Match each trickling filter biological or operational feature to its role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Biological slime",
+      "right": "Microbial film absorbing and consuming organic wastes"
+     },
+     {
+      "id": "p2",
+      "left": "Sloughing",
+      "right": "Periodic detachment of excess slime from media"
+     },
+     {
+      "id": "p3",
+      "left": "Secondary settling tank",
+      "right": "Basin capturing detached slime carried from the filter"
+     },
+     {
+      "id": "p4",
+      "left": "Hydraulic loading",
+      "right": "Volume of wastewater applied per unit filter area"
+     },
+     {
+      "id": "p5",
+      "left": "Organic loading",
+      "right": "Mass of BOD applied to the filter media"
+     },
+     {
+      "id": "p6",
+      "left": "Recirculation",
+      "right": "Returning filter effluent to improve performance"
+     }
+    ],
+    "explanation": "Trickling filters rely on attached biological slime that sloughs off for downstream settling, controlled by loading rates and recirculation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "2867056c99d369f59521a3b54c4b29cc411d059fad61313648128144c525e916",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-08",
+    "prompt": "Match each stabilization pond maintenance issue to its physical impact.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rooted aquatic weeds",
+      "right": "Cattails and plants obstructing shallow pond edges"
+     },
+     {
+      "id": "p2",
+      "left": "Blue-green algae",
+      "right": "Floating mats blocking light and degrading effluent"
+     },
+     {
+      "id": "p3",
+      "left": "Burrowing animals",
+      "right": "Muskrats and turtles damaging earthen pond dikes"
+     },
+     {
+      "id": "p4",
+      "left": "Duckweed",
+      "right": "Small floating plants covering the water surface"
+     },
+     {
+      "id": "p5",
+      "left": "Dike erosion",
+      "right": "Wave action wearing away riprap and banks"
+     },
+     {
+      "id": "p6",
+      "left": "Woody dike plants",
+      "right": "Trees and shrubs whose roots threaten dike integrity"
+     }
+    ],
+    "explanation": "Pond maintenance addresses aquatic vegetation, floating algae or duckweed mats, burrowing animals, and dike erosion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "f855641bd089ec0c591fa0ffa1516bef2da7ab59cf56ced69d3a96f00abd617f",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-09",
+    "prompt": "Match each environmental factor to its biological effect in wastewater.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Free elemental oxygen",
+      "right": "Electron acceptor required for aerobic treatment"
+     },
+     {
+      "id": "p2",
+      "left": "Warm summer sunlight",
+      "right": "Conditions favoring rapid surface algal blooms"
+     },
+     {
+      "id": "p3",
+      "left": "Ammonia in effluent",
+      "right": "Compound exerting both BOD and chlorine demand"
+     },
+     {
+      "id": "p4",
+      "left": "Symbiotic pea bacteria",
+      "right": "Root-nodule microbes fixing atmospheric nitrogen"
+     },
+     {
+      "id": "p5",
+      "left": "Heterotrophic anaerobes",
+      "right": "Bacteria liberating hydrogen sulfide from proteins"
+     },
+     {
+      "id": "p6",
+      "left": "Limiting nutrients",
+      "right": "Nitrogen and phosphorus controlling aquatic productivity"
+     }
+    ],
+    "explanation": "Oxygen, light, temperature, and nutrient forms govern microbial activity and water quality impacts in treatment and receiving waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "d8ad3df6878ffb7532a3276f8f058e7e82adda6a7af565a8a4d09b4b46ca5734",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m1-10",
+    "prompt": "Match each grit channel or trickling filter organism to its process context.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Grit settling velocity",
+      "right": "Rate at which sand particles fall toward the channel floor"
+     },
+     {
+      "id": "p2",
+      "left": "Grit channel length",
+      "right": "Distance required for target sand to reach bottom"
+     },
+     {
+      "id": "p3",
+      "left": "Trickling filter bacteria",
+      "right": "Primary decomposers forming the bulk of filter slime"
+     },
+     {
+      "id": "p4",
+      "left": "Trickling filter protozoa",
+      "right": "Single-celled organisms grazing within the biofilm"
+     },
+     {
+      "id": "p5",
+      "left": "Trickling filter worms",
+      "right": "Microscopic invertebrates inhabiting the biological slime"
+     },
+     {
+      "id": "p6",
+      "left": "Insect larvae",
+      "right": "Macroinvertebrates living within trickling filter media"
+     }
+    ],
+    "explanation": "Grit channels rely on physical settling velocity and channel length, whereas trickling filters host diverse microbial and invertebrate communities."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "dd787ae0847fb4afea819f62f0edd4e65815e13b185a47942432b60222eafb3d",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-01",
+    "prompt": "Freshly excreted Cyclospora oocysts enter a moist, warm environment and remain there for several weeks without disinfection. What happens to the infectivity of the oocysts?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Cyclospora oocysts are not infectious when excreted and become infectious after sporulating over days to weeks in the environment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "53eba30dafc3797a253b5c5fd4b6c09b3492b8a9b377fc23a6bf11ad426be087",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-02",
+    "prompt": "In a wastewater treatment plant, raw sewage containing urea undergoes biological treatment without nitrification, converting urea into ammonia nitrogen. What happens to the chlorine demand of the wastewater?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Ammonia nitrogen exerts both biochemical oxygen demand and chlorine demand when present in wastewater effluents."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "d25f9f274ac9ccc1127360fc410e997c5354dd333a36b4123fdbcb7b7dd4839a",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-03",
+    "prompt": "Secondary effluent containing nitrate enters an anoxic denitrification zone where heterotrophic bacteria convert nitrate into nitrogen gas that escapes to the atmosphere. What happens to the total nitrogen concentration in the effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Denitrification converts dissolved nitrate into nitrogen gas, which leaves the wastewater to the atmosphere and lowers effluent total nitrogen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "14a58fe358000f498c7220467b80be5e19d14c606d928acf51847ec7176445a7",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-04",
+    "prompt": "In a primary sedimentation tank operating at steady flow, the horizontal velocity of the wastewater is reduced from 60 feet per minute to 1 foot per minute. What happens to the settling of heavier-than-water solids?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Slowing wastewater velocity to about one foot per minute gives heavier solids time to settle to the tank bottom."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "486f0b5c87b8534d0c6f38914046c58afc40a0ba97a248a3bf2cde45626c1064",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-05",
+    "prompt": "A primary clarifier switches from continuous sludge withdrawal to intermittent sludge withdrawal while keeping influent solids loading constant. What happens to the percent solids concentration in the withdrawn sludge?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Intermittent withdrawal allows settled sludge to compact in the hopper, raising percent solids from under 2-3% to 4-8%."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "2a49db0b1695276c1a36b224466f7e1f64b12ce09234c012144323184a1d8297",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-06",
+    "prompt": "In a primary clarifier, the surface skimmer is shut off for several days while influent grease and floating solids continue entering the tank. What happens to the amount of scum carried over into the effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Without regular skimming, floating grease and solids accumulate on the surface and eventually carry over into the effluent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "d80d527c779606b375a3d5fec54a6a6db0bddc2520610fcee68138b9a506632b",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-07",
+    "prompt": "In a primary clarifier operating at steady influent flow, short-circuiting develops so that incoming wastewater bypasses much of the tank volume. What happens to the effective hydraulic detention time?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Short-circuiting channels flow rapidly toward the outlet, reducing the effective time water spends in the settling tank."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "e6243678cc755a507667c5df16f58459874c97b3495b47b71f36cedbabbc1c8e",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-08",
+    "prompt": "In a trickling filter, biological slime grows thicker on the media until pieces detach and wash out with the treated effluent. What happens to the suspended solids concentration entering the secondary settling tank?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Sloughing detaches accumulated biofilm from the media, increasing the suspended solids carried to the secondary clarifier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "96162a5055d7028321d812c3c00eacbab24e5f51c4366be6f283f898ab631489",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-09",
+    "prompt": "An anaerobic digester receives a steady feed of volatile acids and nutrients while active anaerobic bacteria are present at optimal temperature. What happens to the production of methane gas?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Anaerobic bacteria convert volatile acids and nutrients into stable solids and methane gas, increasing methane output."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "59e2108b36e5cd56137e7d0eac37ecdb9b8e376f3d1dc87267c57e7bed35cc9b",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-ww-r04-m3-10",
+    "prompt": "Aerobic microorganisms in a wastewater basin oxidize organic carbon in the presence of ample dissolved oxygen. What happens to the amount of carbon dioxide released by cellular respiration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Cellular respiration oxidizes organic carbon and releases carbon dioxide into the water and atmosphere."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+    "notes": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:44:51.560Z",
+    "payloadSha256": "35fa37c1122bc95322b11ecdc040da8ff5e252dee2f1d653eceecaeffaffc099",
+    "builderResultsSha256": "9bcc4b295e1554779e77887352745c9cc2d4525d22ac663dabfa3b19487402c8"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:44:07.276699+00:00",
+   "attestation": "Strict Hydrogen self-review of 33 native game payloads for class3-ww against supplied source pages and collision candidates; 33 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class3-ww-r04-m0-01": "f02797813d301f20f74b20343b2ea721124564708fec8e6e1cec9646b4d3df7d",
+    "targeth-ht261118-class3-ww-r04-m0-02": "683a9d98b1678d374839adea048fdf963c54586f6067d928753808e9def18a85",
+    "targeth-ht261118-class3-ww-r04-m0-03": "8c866bc0717128feaa1b651dbcc6e9954285b39282bd718bf5243609fe9f5e3c",
+    "targeth-ht261118-class3-ww-r04-m0-04": "75839bfc445adfb59718716c2b38749baff30b2250afc5503a0cef250072d865",
+    "targeth-ht261118-class3-ww-r04-m0-05": "35b2b9d356dbdceb148a6fd6b4da231a30839834a303139f7c16ea0b3400013e",
+    "targeth-ht261118-class3-ww-r04-m0-06": "7dfe831a484529e65541e4ede78d22a3171849935a1e0b0bccd6eb8ced948468",
+    "targeth-ht261118-class3-ww-r04-m0-07": "e49fb99ccaf577372d07832002f1ca526e1890a7be9d27b96033d49c4c6f4922",
+    "targeth-ht261118-class3-ww-r04-m0-08": "b93d73a91e899f292da4f6463fc6d63fae9947293b51881d5e1fac8100280a0d",
+    "targeth-ht261118-class3-ww-r04-m0-09": "a3723031558f54545d4dac6f5164e1672e2fa4c2185f315d144bc32220202306",
+    "targeth-ht261118-class3-ww-r04-m0-10": "d248cf6486f33c2ee5fde2f8ea5185fe380c607549a5fc83c87181691b61deb4",
+    "targeth-ht261118-class3-ww-r04-m0-11": "74e64cfeb791600ed0888d18ebc1c700ccd544a6ee165ec971f12d8b5b33eba5",
+    "targeth-ht261118-class3-ww-r04-m0-12": "a0fb15a67333f1a9e0d2cfc28bb2d49ca17e7d714afd9391d7ce2247ae78986b",
+    "targeth-ht261118-class3-ww-r04-m0-13": "1eeca3976a2e3fc3ccb3e7cf2d3804cb77c2911e5746f75970372eda5684adbd",
+    "targeth-ht261118-class3-ww-r04-m1-01": "f3230f2589070389075179481b202166bc978e96df9de94c0181e315afec19fe",
+    "targeth-ht261118-class3-ww-r04-m1-02": "09f98eb81e91d466a9079d98c223a53bc1b8c4a5ac65182da5c48fb1ed9e109a",
+    "targeth-ht261118-class3-ww-r04-m1-03": "82daca600ee5bf4cf288ef4b819283d41eb5becdb12976173ae973fdf46b3eb0",
+    "targeth-ht261118-class3-ww-r04-m1-04": "e0fcb1a22b7ab67f2d28c206a436b3df1d9563b2524c0d4f74a867e82b1b64f9",
+    "targeth-ht261118-class3-ww-r04-m1-05": "2cb0ac838ac8fa8c199b07fa98b54cbdaca72adffc0138ab44ddfc256d2ce511",
+    "targeth-ht261118-class3-ww-r04-m1-06": "8f056ab100c05c415cee56bede61fa55fd3c0aa70bbd4cf22ff8e621c0f2343b",
+    "targeth-ht261118-class3-ww-r04-m1-07": "2867056c99d369f59521a3b54c4b29cc411d059fad61313648128144c525e916",
+    "targeth-ht261118-class3-ww-r04-m1-08": "f855641bd089ec0c591fa0ffa1516bef2da7ab59cf56ced69d3a96f00abd617f",
+    "targeth-ht261118-class3-ww-r04-m1-09": "d8ad3df6878ffb7532a3276f8f058e7e82adda6a7af565a8a4d09b4b46ca5734",
+    "targeth-ht261118-class3-ww-r04-m1-10": "dd787ae0847fb4afea819f62f0edd4e65815e13b185a47942432b60222eafb3d",
+    "targeth-ht261118-class3-ww-r04-m3-01": "53eba30dafc3797a253b5c5fd4b6c09b3492b8a9b377fc23a6bf11ad426be087",
+    "targeth-ht261118-class3-ww-r04-m3-02": "d25f9f274ac9ccc1127360fc410e997c5354dd333a36b4123fdbcb7b7dd4839a",
+    "targeth-ht261118-class3-ww-r04-m3-03": "14a58fe358000f498c7220467b80be5e19d14c606d928acf51847ec7176445a7",
+    "targeth-ht261118-class3-ww-r04-m3-04": "486f0b5c87b8534d0c6f38914046c58afc40a0ba97a248a3bf2cde45626c1064",
+    "targeth-ht261118-class3-ww-r04-m3-05": "2a49db0b1695276c1a36b224466f7e1f64b12ce09234c012144323184a1d8297",
+    "targeth-ht261118-class3-ww-r04-m3-06": "d80d527c779606b375a3d5fec54a6a6db0bddc2520610fcee68138b9a506632b",
+    "targeth-ht261118-class3-ww-r04-m3-07": "e6243678cc755a507667c5df16f58459874c97b3495b47b71f36cedbabbc1c8e",
+    "targeth-ht261118-class3-ww-r04-m3-08": "96162a5055d7028321d812c3c00eacbab24e5f51c4366be6f283f898ab631489",
+    "targeth-ht261118-class3-ww-r04-m3-09": "59e2108b36e5cd56137e7d0eac37ecdb9b8e376f3d1dc87267c57e7bed35cc9b",
+    "targeth-ht261118-class3-ww-r04-m3-10": "35fa37c1122bc95322b11ecdc040da8ff5e252dee2f1d653eceecaeffaffc099"
+   }
+  },
+  "registeredAt": "2026-11-19T03:44:51.560Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 2,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 10
+   },
+   "batchSha256": "0fdbc4a1dc504814cc79254a3b3e8625ffdeef8a05c5b19f55b2609c11d5b6a9"
+  }
+ }
+}

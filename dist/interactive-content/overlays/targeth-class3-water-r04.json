@@ -1,0 +1,2094 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class3-water-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 55 items.",
+ "additions": [
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-01",
+    "prompt": "A bulk physical property measurement, such as temperature or mass, requires calibrating an instrument rather than determining chemical composition.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Bulk physical tests measure properties like volume, temperature, or mass using calibrated instruments, whereas chemical analyses determine how much of a substance is present."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "df150b2efa59f05609d929c69156381549157c1230132fd2b1e346c6ae5fd261",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-02",
+    "prompt": "In a saturated aqueous solution at constant temperature, stirring in extra solute raises the dissolved concentration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A saturated solution has reached its limit and will not dissolve additional solute at that temperature."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "de272f534fed399f5458eb05ee83a01e809bf818f9d4a2a56c2cf6eb89599281",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-03",
+    "prompt": "Because 1 kilogram of dilute aqueous solution has a volume near 1 liter, 1 ppm is approximately equal to 1 mg/L.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "With water as the solvent, 1 kg of solution occupies roughly 1 L, making 1 ppm approximately equal to 1 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "bc8260cdd6005fec39364dd491c48400d7fa79bb8dc6d45f373802cc1d782c7c",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-04",
+    "prompt": "When two water molecules undergo self-ionization, the molecule that gains a hydrogen ion becomes a negatively charged hydroxide ion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The molecule that gains a hydrogen ion becomes a positively charged hydronium ion, while the one that loses it becomes hydroxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "969b62a66761f522b7893c74b99c8f6fda8a423aa981a8c63bedd6331d27156a",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-05",
+    "prompt": "Chemical reactions between atoms involve planetary electrons, leaving the atomic nuclei unchanged.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Chemists focus on planetary electrons because chemical reactions involve electron activity without altering the protons or neutrons in the nucleus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "e6c5006155e2b1e27d6fed075fb14a7d42193d71c304c57a1d66316531a75c3b",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-06",
+    "prompt": "Apparent color in a water sample is caused by dissolved organics that remain after laboratory filtration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Apparent color comes from suspended or colloidal matter, whereas true color is caused by dissolved chemicals that pass through a filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "f263d962964470f9a24afba9a42083b706eedfdda56ce6485ea7a20db50eab66",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-07",
+    "prompt": "Dissolved oxygen breathed by aquatic organisms is distinct from the oxygen atoms chemically bound inside water molecules.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Fish and zooplankton rely on molecular oxygen dissolved in water, not the oxygen atoms bonded to hydrogen in H2O."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "79445b0b58e19fc6c41edb2efb595a43c71fcd16814764965df12a17c20ada75",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-08",
+    "prompt": "Copper sulfate is a salt used in waterworks operations to control algae growth.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Copper sulfate is a common salt intentionally added in waterworks operations to kill algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "898946bf5f802a76c06bbf4e76b3700d076b4a63d61c0a9e94d7f2108ca8a489",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-09",
+    "prompt": "Rainwater typically has a lower specific conductance than distilled water because it absorbs atmospheric gases and dust.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Dissolved gases and dust add ions to rainwater, giving it a higher specific conductance than pure distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "febda158ab84e4c122f7c9f9d2831edb54534a4b206cb881cd240ec74a78fc15",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-10",
+    "prompt": "Alkalinity measures the capacity of water to accept protons and neutralize acids.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Alkalinity is defined as water's acid-neutralizing capacity, driven mainly by bicarbonates, carbonates, and hydroxide ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "8fa973f96ad1e45452f5582faccc8fb5b49e50d0ab293ad28f94eb6ee846574b",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-11",
+    "prompt": "Adding alum to water tends to raise the pH, whereas adding lime tends to lower the pH.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Alum is acidic and lowers pH, while lime is an alkali that raises pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "0ffa094374ffb42454774b984ceb0e5ab1cc16f79f9782448926de8e495ff5d9",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-12",
+    "prompt": "Aeration is generally effective for stripping dissolved gases and volatile organics that cause taste and odor.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Aeration removes dissolved gases and volatile organic compounds, whereas nonvolatile algal odors often require oxidants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "fe674fd132863296ee311cf5c0502e78bd4509e37755ce60262bfd5669def373",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-13",
+    "prompt": "Excessive mineral scaling inside pipelines improves heat transfer efficiency in boilers.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Excessive scaling reduces pipeline capacity and lowers heat transfer efficiency in boilers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "bcaf7cf3cf9462de34c2274df1256dcac4611d159ad3cca32ed15fa39a53eecd",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-14",
+    "prompt": "Greensand is a natural ion exchange medium colored dark green by grains of glauconite.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Greensand is a natural sediment exchange medium given a dark greenish color by grains of glauconite."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "a685ba533650d627c24fe3909814ac57aeaac80278571d3b33953ff9b8cf50d1",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m0-15",
+    "prompt": "Natural organic matter in surface water is harmless to treatment processes and does not form byproducts with chlorine.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Organic matter causes color, taste and odor, oxygen depletion, treatment interference, and halogenated byproducts when chlorinated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "0def2a8235eaa1790c9865493e8d2e3c860f12ab3f60c77638217ada86e22fc6",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-01",
+    "prompt": "Distinguish solution components and solids classifications.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solvent",
+      "right": "Component of a solution that does the dissolving"
+     },
+     {
+      "id": "p2",
+      "left": "Solute",
+      "right": "Substance dissolved by the solvent"
+     },
+     {
+      "id": "p3",
+      "left": "Colloidal solids",
+      "right": "Fine particles under 1 micron dispersed in water"
+     },
+     {
+      "id": "p4",
+      "left": "Saturated solution",
+      "right": "State where no more solute will dissolve"
+     },
+     {
+      "id": "p5",
+      "left": "Precipitate",
+      "right": "Solid separated from solution by reaction or pH shift"
+     },
+     {
+      "id": "p6",
+      "left": "Total solids",
+      "right": "Suspended, colloidal, and dissolved solids combined"
+     }
+    ],
+    "explanation": "These definitions separate solution phases from suspended, colloidal, and precipitated solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "b92969f63b0bef2278e9ebcf466e5e25ff0027230555dc697d8142b50b6a63cb",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-02",
+    "prompt": "Distinguish atomic structure terms and water self-ionization species.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Proton",
+      "right": "Positively charged particle in the atomic nucleus"
+     },
+     {
+      "id": "p2",
+      "left": "Neutron",
+      "right": "Uncharged particle in the atomic nucleus"
+     },
+     {
+      "id": "p3",
+      "left": "Planetary electron",
+      "right": "Negatively charged particle involved in chemical reactions"
+     },
+     {
+      "id": "p4",
+      "left": "Atomic weight",
+      "right": "Total number of protons and neutrons in the nucleus"
+     },
+     {
+      "id": "p5",
+      "left": "Hydronium ion",
+      "right": "Positively charged ion formed when water gains H+"
+     },
+     {
+      "id": "p6",
+      "left": "Hydroxide ion",
+      "right": "Negatively charged ion formed when water loses H+"
+     }
+    ],
+    "explanation": "Nucleons determine atomic weight, while electrons govern bonding and self-ionization forms hydronium and hydroxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "295f3039c955e89e579ce0fda5b29dfafaf5194d8103fe3aa924ecba06b82841",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-03",
+    "prompt": "Distinguish physical states of matter by shape and volume behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solid",
+      "right": "Maintains both definite shape and definite volume"
+     },
+     {
+      "id": "p2",
+      "left": "Liquid",
+      "right": "Maintains constant volume but takes container shape"
+     },
+     {
+      "id": "p3",
+      "left": "Gas",
+      "right": "Expands or compresses to fill any container"
+     },
+     {
+      "id": "p4",
+      "left": "Cation",
+      "right": "Positively charged ion such as sodium"
+     },
+     {
+      "id": "p5",
+      "left": "Anion",
+      "right": "Negatively charged ion such as chloride"
+     },
+     {
+      "id": "p6",
+      "left": "Inorganic substance",
+      "right": "Chemical substance of mineral origin"
+     }
+    ],
+    "explanation": "States of matter differ in shape and volume retention, while ions carry positive or negative charges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "3146e9b278905f148701d3104668e1f6d67081a6da91625c66c0ce96a5518f20",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-04",
+    "prompt": "Distinguish specific conductance across natural and treated waters.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Distilled water",
+      "right": "Very low specific conductance due to minimal ions"
+     },
+     {
+      "id": "p2",
+      "left": "Rainwater",
+      "right": "Higher conductance than distilled water from airborne dust"
+     },
+     {
+      "id": "p3",
+      "left": "Seawater",
+      "right": "Very high specific conductance from dissolved salts"
+     },
+     {
+      "id": "p4",
+      "left": "Specific conductance",
+      "right": "Ability of water to conduct an electrical current"
+     },
+     {
+      "id": "p5",
+      "left": "Alkalinity",
+      "right": "Capacity of water to accept protons and neutralize acid"
+     },
+     {
+      "id": "p6",
+      "left": "Hardness",
+      "right": "Total calcium and magnesium reported as CaCO3"
+     }
+    ],
+    "explanation": "Conductance reflects dissolved ion content, whereas alkalinity and hardness measure acid buffering and divalent cations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "ab51b8e9da90a162cf304ddbbab4dfac70870eee0d3e755da1101d087605333b",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-05",
+    "prompt": "Distinguish taste and odor sources and their treatment methods.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Petroleum products",
+      "right": "Prime human-made organic contributors to taste and odor"
+     },
+     {
+      "id": "p2",
+      "left": "Actinomycetes and blue-green algae",
+      "right": "Produce nonvolatile earthy or musty metabolic odors"
+     },
+     {
+      "id": "p3",
+      "left": "Dissolved gases",
+      "right": "Volatile odorants normally removed by aeration"
+     },
+     {
+      "id": "p4",
+      "left": "Potassium permanganate",
+      "right": "Chemical oxidant effective on earthy algal odors"
+     },
+     {
+      "id": "p5",
+      "left": "Sodium hydroxide",
+      "right": "Scrubbing solution used when hydrogen sulfide is high"
+     },
+     {
+      "id": "p6",
+      "left": "Activated carbon",
+      "right": "Physical adsorption medium for odor control"
+     }
+    ],
+    "explanation": "Volatile gases strip by aeration, whereas nonvolatile algal metabolites respond to oxidants or adsorption."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "6c03961327ece4b57efda89b8f7f971c2ef7b9eb4e6525d60c6c5289e82002db",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-06",
+    "prompt": "Distinguish coagulation chemicals and target contaminants.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alum",
+      "right": "Most common coagulant, effective at pH 5.0 to 7.5"
+     },
+     {
+      "id": "p2",
+      "left": "Ferric chloride",
+      "right": "Metallic salt coagulant effective down to pH 4.5"
+     },
+     {
+      "id": "p3",
+      "left": "Polymer aid",
+      "right": "Added with alum to form larger, faster-settling floc"
+     },
+     {
+      "id": "p4",
+      "left": "Particles under 50 mm",
+      "right": "Size range where normal sedimentation struggles without coagulation"
+     },
+     {
+      "id": "p5",
+      "left": "Agglomeration",
+      "right": "Combining fine particles into larger masses for settling"
+     },
+     {
+      "id": "p6",
+      "left": "Coagulation targets",
+      "right": "Turbidity, color, bacteria, iron, and organic pollutants"
+     }
+    ],
+    "explanation": "Coagulants destabilize fine particles so they agglomerate and settle efficiently."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "f05beeb57262c8390f13114c89c1fc101ba0f5e552a1314313d5914d59ed7346",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-07",
+    "prompt": "Distinguish ion exchange softening media and operating events.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Synthetic organic resin",
+      "right": "Clear BB-sized spheres offering high exchange capacity"
+     },
+     {
+      "id": "p2",
+      "left": "Greensand",
+      "right": "Natural dark greenish glauconite exchange medium"
+     },
+     {
+      "id": "p3",
+      "left": "Sodium ion",
+      "right": "Nonhardness cation released in exchange for calcium"
+     },
+     {
+      "id": "p4",
+      "left": "Calcium and magnesium",
+      "right": "Hardness cations captured on resin exchange sites"
+     },
+     {
+      "id": "p5",
+      "left": "Breakthrough",
+      "right": "Hardness appearing in effluent after sites are exhausted"
+     },
+     {
+      "id": "p6",
+      "left": "Ion exchanger vessel",
+      "right": "Contains granular bed, flow distributor, and collector"
+     }
+    ],
+    "explanation": "Ion exchange swaps hardness cations for sodium until exchange sites saturate at breakthrough."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "bd347891900718a08cd49e6d656c58a35b4a713f042cc6eb9a951a8181441d3f",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-08",
+    "prompt": "Distinguish impacts of natural and synthetic organic matter in water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Decaying vegetation",
+      "right": "Natural source of organic color and tannins"
+     },
+     {
+      "id": "p2",
+      "left": "Synthetic organics",
+      "right": "Manufactured fuels, pesticides, and pharmaceuticals"
+     },
+     {
+      "id": "p3",
+      "left": "Stream oxygen depletion",
+      "right": "Result of biological breakdown of organic matter"
+     },
+     {
+      "id": "p4",
+      "left": "Halogenated compounds",
+      "right": "Formed when chlorine reacts with organic matter"
+     },
+     {
+      "id": "p5",
+      "left": "Treatment interference",
+      "right": "Operational problem caused by soluble organics"
+     },
+     {
+      "id": "p6",
+      "left": "Organic carbon structure",
+      "right": "Defining chemical feature of organic substances"
+     }
+    ],
+    "explanation": "Organics affect aesthetics, stream oxygen, treatment efficiency, and disinfection byproduct formation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "1b34f89562b8feda4e0cc46a5136891718cb5cfcaa5b18b67529399b6a7673fb",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-09",
+    "prompt": "Distinguish dissolved gases and their roles in natural water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Dissolved oxygen",
+      "right": "Gas breathed by fish and zooplankton"
+     },
+     {
+      "id": "p2",
+      "left": "Carbon dioxide",
+      "right": "Dissolved gas influencing pH and alkalinity"
+     },
+     {
+      "id": "p3",
+      "left": "Hydrogen sulfide",
+      "right": "Dissolved gas causing rotten-egg odor"
+     },
+     {
+      "id": "p4",
+      "left": "Apparent color",
+      "right": "Color caused by suspended or colloidal matter"
+     },
+     {
+      "id": "p5",
+      "left": "True color",
+      "right": "Color remaining after sample filtration"
+     },
+     {
+      "id": "p6",
+      "left": "Turbidity",
+      "right": "Light scattering and absorption by suspended matter"
+     }
+    ],
+    "explanation": "Dissolved gases affect aquatic life, pH, and odor, while color and turbidity relate to dissolved versus suspended matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "8fe08a9eca57a88b1cffefa8d329a392b0f25665ec28a524da15d2b2fa94fd28",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m1-10",
+    "prompt": "Distinguish pH influences and corrosion-scale mechanisms.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alum addition",
+      "right": "Lowers pH because the coagulant is acidic"
+     },
+     {
+      "id": "p2",
+      "left": "Lime addition",
+      "right": "Raises pH because the chemical is alkaline"
+     },
+     {
+      "id": "p3",
+      "left": "Mine drainage",
+      "right": "Extremely acidic discharge near pH 2"
+     },
+     {
+      "id": "p4",
+      "left": "Corrosion",
+      "right": "Oxidation of unprotected metal surfaces such as iron"
+     },
+     {
+      "id": "p5",
+      "left": "Excessive scaling",
+      "right": "Reduces pipe capacity and boiler heat transfer"
+     },
+     {
+      "id": "p6",
+      "left": "Higher temperature and flow",
+      "right": "Significantly increases corrosive tendencies"
+     }
+    ],
+    "explanation": "Treatment chemicals and pollution shift pH, while water chemistry, temperature, and flow govern corrosion and scaling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "2cee9d932bbd84d780d75c9628f7674a4ab8dcd7421789a2595f50aa5147bac1",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-01",
+    "prompt": "Assume more alum is added to raw water during coagulation while no alkali is fed. What happens to the pH of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Alum is acidic and consumes alkalinity, so adding more alum without an alkali lowers the water's pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "af6722f26dc74a0416f63cff29a85b4e7cb9ee619deaee09c3eb82180e5d5190",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-02",
+    "prompt": "Assume suspended matter is removed from a turbid water sample by filtration while dissolved organics remain unchanged. What happens to the apparent color of the sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Apparent color includes color from suspended and colloidal matter, so filtering out suspended particles reduces apparent color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "e2acf0e96683ab2b113a0345ed3ee683cf713cf77d5d4f4ab41b09f8f005c106",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-03",
+    "prompt": "Assume dissolved salt concentration increases in a beaker of distilled water at constant temperature. What happens to the electrical conductivity of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Dissolved salts release ions that carry electrical charge, increasing the water's specific conductance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "007117067939142d8dcc3c3acbab1b40e26d83270d2c2a03144e0a9c9214dcb3",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-04",
+    "prompt": "Assume excessive mineral scale builds up on the interior walls of a water pipeline at constant head. What happens to the carrying capacity of the pipeline?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Scale narrows the internal diameter and roughens the pipe wall, reducing pipeline carrying capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "4886040cfcd5f1794c49a8ec811c24f266a5c26b03dd0f8c4ee2dfbd60744368",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-05",
+    "prompt": "Assume water temperature and flow velocity both decrease inside an unprotected iron pipe while dissolved oxygen stays constant. What happens to the corrosion tendency of the iron?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Higher temperature and flow increase corrosive tendencies, so lowering both reduces the corrosion rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "a2a2466bce4bf81eaa66d06a910b83a9c56bfa4b62114222cf200ea6bef88ab7",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-06",
+    "prompt": "Assume a polymer coagulant aid is added alongside alum to form larger floc masses during treatment. What happens to the settling velocity of the floc?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Agglomerating small floc into larger, denser masses increases their settling velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "8b1c07372f5f4ff2873c6a13665e21b7ddf58050ca30a9154cae869e946e8f8a",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-07",
+    "prompt": "Assume biodegradable organic matter is discharged into a surface stream while reaeration remains constant. What happens to the dissolved oxygen concentration in the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Microorganisms consume dissolved oxygen as they decompose organic matter, depleting stream oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "ef55b25fde7c74ceb38de3cab167b7c48719c05cf41afa0e235eac8c9ad351e2",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-08",
+    "prompt": "Assume a gas sample is transferred from a small rigid cylinder into a much larger sealed tank at constant temperature. What happens to the volume occupied by the gas?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Gases have no fixed volume and expand to fill the entire container they occupy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "cee177114cded2a1aa6ecc2fc6b9f1ccb282642431383fd2fe42fb1a0992cc8e",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-09",
+    "prompt": "Assume a neutral water molecule gains a single hydrogen ion during self-ionization. What happens to its net electrical charge?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Gaining a positively charged hydrogen ion turns neutral H2O into a positively charged hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "aa67e5abaf7116d4d8faead5da44fc03789e7debb746418af42904f9f87f05fd",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-10",
+    "prompt": "Assume hard water passes through a synthetic sodium-form ion exchange resin bed before breakthrough occurs. What happens to the total hardness of the effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "The resin exchanges calcium and magnesium ions for sodium, removing hardness until exchange sites are exhausted."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "aeb05efebd81501d6716448359d9e313238c53130cf9272cf845e1e166b49aa4",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-11",
+    "prompt": "Assume dissolved carbon dioxide is stripped from groundwater by aeration while no acid is added. What happens to the pH of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Removing acidic dissolved carbon dioxide shifts the carbonate equilibrium and raises the pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "bd4282456ceb2596ab939897b71629ca23eef0cedb254f2ab3e9f6581afd15e7",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-12",
+    "prompt": "Assume raw water pH drops from 5.2 to 4.6 while alum is the sole coagulant at a fixed dose. What happens to the effectiveness of alum coagulation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Alum is most effective between pH 5.0 and 7.5, so dropping below 5.0 reduces its coagulation effectiveness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "f622599e07aad50726a20b4eff414f83339ae0a0f8034faca523a8c78c2d5e54",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-13",
+    "prompt": "Assume a solid block of ice is kept frozen at constant temperature and pressure without melting. What happens to its volume?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Solids maintain a definite shape and definite volume at constant temperature and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "3df9bd116c85318f972fb188dbf97732aaf006dcd91a0f87f85aeae5314954fd",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-14",
+    "prompt": "Assume a water sample is filtered through a standard suspended-solids filter to remove silt while colloidal and dissolved solids pass through. What happens to the total dissolved solids in the filtrate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Dissolved solids pass through the suspended-solids filter unchanged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "bcff1381aec6b53382c14f8ad05e935d292020ab19b138db66c9a888b9549058",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m3-15",
+    "prompt": "Assume copper sulfate is added to a raw water reservoir to control an algal bloom. What happens to the viable algae population in the reservoir?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Copper sulfate is an algicidal salt used in waterworks to kill algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "be5600e70034c8a0ed55a37db72b022c8ae696891a5a621768cd75a3becbdba6",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-01",
+    "prompt": "A student reviews basic miscibility and solution concepts. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Water and alcohol mix uniformly with each other in wide proportions."
+     },
+     {
+      "id": "o2",
+      "label": "Water and liquid mercury are miscible liquids that form one uniform phase."
+     },
+     {
+      "id": "o3",
+      "label": "Small amounts of soluble contaminants are often expressed in parts per million."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Water and liquid mercury are immiscible liquids that do not mix uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "387b9b4673523c919c5049b422262a4a12ad321038aed9aa510d3ffd17a8699f",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-02",
+    "prompt": "An operator reviews atomic structure and chemical reactions. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Atomic weight equals the sum of protons and neutrons in the nucleus."
+     },
+     {
+      "id": "o2",
+      "label": "Chemical reactions alter the protons inside the nucleus of each atom."
+     },
+     {
+      "id": "o3",
+      "label": "Negatively charged electrons orbit the positively charged atomic nucleus."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Chemical reactions involve planetary electrons, leaving the atomic nucleus unchanged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "b383285d513e8ff053c05191f69e196b6f57636dd120c90c9ed26d290a46957a",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-03",
+    "prompt": "A trainee summarizes solids, color, and turbidity in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "True color is measured after filtering out suspended and colloidal matter."
+     },
+     {
+      "id": "o2",
+      "label": "Turbidity is caused by suspended matter that scatters and absorbs light."
+     },
+     {
+      "id": "o3",
+      "label": "Colloidal solids are large particles greater than 50 microns in diameter."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Colloidal solids are finely divided particles less than 1 micron in diameter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "9c346d64a73fd1a6f450d8fd0c54b9c98b836e1705066ad66c45bdb70d07d2ee",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-04",
+    "prompt": "A student compares specific conductance across different water types. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Distilled water has a very low specific conductance because few ions are present."
+     },
+     {
+      "id": "o2",
+      "label": "Seawater has a lower specific conductance than rainwater due to dissolved salt."
+     },
+     {
+      "id": "o3",
+      "label": "Rainwater dissolves airborne dust and gases, raising its specific conductance."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Seawater has a very high specific conductance because of its high dissolved salt content."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "1bd1953311458d6f795659c9f936e8f0000f8c65a6712e0a54232481fdd1bc2b",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-05",
+    "prompt": "An operator reviews coagulant pH ranges and floc formation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Alum is most effective for coagulation between pH 5.0 and 7.5."
+     },
+     {
+      "id": "o2",
+      "label": "Ferric chloride can remain effective as a coagulant down to pH 4.5."
+     },
+     {
+      "id": "o3",
+      "label": "Adding alum raises water pH, while adding lime lowers water pH."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Alum is acidic and lowers pH, whereas lime is an alkali that raises pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "51b1deb3d5bc26913c8c7d3f3c72b2fa45f3ff1bbcf67d2dc5477126b4ac8550",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-06",
+    "prompt": "A trainee reviews taste and odor control methods. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Aeration is typically used to strip dissolved gases and volatile organics."
+     },
+     {
+      "id": "o2",
+      "label": "Oxidants like potassium permanganate help treat earthy algal odors."
+     },
+     {
+      "id": "o3",
+      "label": "Nonvolatile metabolic odors from blue-green algae are easily stripped by aeration."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Nonvolatile algal metabolites resist aeration and are treated with oxidants or activated carbon."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "e893be716b4c2d5c97dd4cdbc508d589bd42ae95cdaf804b3a5ca52f0c4b37ad",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-07",
+    "prompt": "An operator summarizes ion exchange water softening. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Ion exchange resins swap calcium and magnesium ions for sodium ions."
+     },
+     {
+      "id": "o2",
+      "label": "Breakthrough occurs when hardness appears in the effluent after sites fill."
+     },
+     {
+      "id": "o3",
+      "label": "Sodium-form resin removes carbonate alkalinity along with calcium hardness."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Sodium-form cation exchange resin removes hardness cations, not carbonate alkalinity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "e4e0eb571e1dfb9b27a8d6fe36f7f1658e90fe8b1fcc459c3ab1ac566b0b322d",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-08",
+    "prompt": "A corrosion specialist reviews scaling and metal oxidation in pipes. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Excessive scaling reduces pipeline capacity and boiler heat transfer efficiency."
+     },
+     {
+      "id": "o2",
+      "label": "Lower water temperature and slower flow increase the corrosion rate of iron."
+     },
+     {
+      "id": "o3",
+      "label": "Alkalinity, pH, dissolved oxygen, and carbon dioxide influence iron corrosion."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Higher water temperature and higher flow velocity increase corrosive tendencies."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "9cae2f5ee09808c171149ea16307b2b1b099aeedf67688c09d36519fbf9dccae",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-09",
+    "prompt": "A student reviews organic matter impacts in drinking water sources. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Organic matter can cause color formation and taste and odor problems."
+     },
+     {
+      "id": "o2",
+      "label": "Chlorinating water with organic matter can form halogenated compounds."
+     },
+     {
+      "id": "o3",
+      "label": "Natural organic matter increases dissolved oxygen levels when it decays."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Biological decomposition of organic matter consumes dissolved oxygen and depletes stream oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "006713990378d74622d85394cb4ef94ab78571d5fd59fac18c7a2cf87e425932",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-10",
+    "prompt": "A trainee reviews states of matter for water treatment chemicals. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Solids keep a definite shape and a definite volume under steady conditions."
+     },
+     {
+      "id": "o2",
+      "label": "Liquids change shape to fit their container while keeping a constant volume."
+     },
+     {
+      "id": "o3",
+      "label": "Gases maintain a fixed volume even when moved to a larger tank."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Gases have no fixed volume and expand to fill the container."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "9e3786f367662765ecd56e27e15d81ccba44b48075ca75c5c4f2651e40bb94d1",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-11",
+    "prompt": "A student reviews alkalinity and pH concepts. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Alkalinity is the capacity of water to accept protons and neutralize acid."
+     },
+     {
+      "id": "o2",
+      "label": "Bicarbonates and carbonates are major contributors to natural alkalinity."
+     },
+     {
+      "id": "o3",
+      "label": "Seawater is typically much more acidic than neutral freshwater."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Seawater is slightly more basic than most natural freshwater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "c3d6847a78572f0fb4049ae1b8698cb0a7261e2040dff8a113386b1a31f11c5b",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-12",
+    "prompt": "An operator reviews dissolved gases in natural water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Fish breathe molecular oxygen that is dissolved in the water."
+     },
+     {
+      "id": "o2",
+      "label": "Aquatic organisms breathe the oxygen atoms bonded inside H2O molecules."
+     },
+     {
+      "id": "o3",
+      "label": "Dissolved carbon dioxide plays an important role in pH and alkalinity."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Aquatic organisms rely on dissolved O2 gas, not the oxygen chemically bound in water molecules."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "f71b51af4a098f5c11566f41dc268830935bb994321aaf8bd7d9df3e24bc5dd7",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-13",
+    "prompt": "A trainee reviews chemical testing and concentration units. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Bulk physical tests measure properties like temperature or mass with an instrument."
+     },
+     {
+      "id": "o2",
+      "label": "Chemical analyses determine how much of a specific substance is present."
+     },
+     {
+      "id": "o3",
+      "label": "One part per million in water is approximately equal to one gram per liter."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "In dilute aqueous solutions, 1 ppm is approximately equal to 1 mg/L, not 1 g/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "c2a83e362af3c1116e3bab2badffc9da2ccfa995f4a5cc2d854971097b74f424",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-14",
+    "prompt": "An operator reviews salts and neutralization reactions. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Neutralizing an acid with a base produces water and a salt."
+     },
+     {
+      "id": "o2",
+      "label": "Copper sulfate is a salt used in waterworks to control algae."
+     },
+     {
+      "id": "o3",
+      "label": "Salts form a minor group of inorganic compounds compared with acids."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Salts constitute by far the largest group of inorganic compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "0f05f4716926861426b167a3daf608cf09f5cf59c92672f677b32ef54aa2e85f",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r04-m4-15",
+    "prompt": "A student reviews water's self-ionization and amphoteric behavior. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Water can behave as either an acid or a base depending on conditions."
+     },
+     {
+      "id": "o2",
+      "label": "Losing a hydrogen ion turns a water molecule into a hydroxide ion."
+     },
+     {
+      "id": "o3",
+      "label": "Gaining a hydrogen ion turns a water molecule into a negatively charged ion."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Gaining a hydrogen ion forms a positively charged hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+    "notes": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+    "registeredAt": "2026-11-19T03:40:53.021Z",
+    "payloadSha256": "fc874251c889e9ec20f1267c03414a8bce55009e9505e39d4998b7a05b6aa11f",
+    "builderResultsSha256": "c6c463b5a2c6c822723699df7a53cf5f1ead742e86c3bba5f78922d3355efb23"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:39:44.168951+00:00",
+   "attestation": "Reviewed all 55 authored native game payloads in targeth-class3-water-r04 against supplied Chapter 13 source pages (pdf 504-517) and collision candidates; accepted 55 items.",
+   "payloadSha256": {
+    "targeth-ht261118-class3-water-r04-m0-01": "df150b2efa59f05609d929c69156381549157c1230132fd2b1e346c6ae5fd261",
+    "targeth-ht261118-class3-water-r04-m0-02": "de272f534fed399f5458eb05ee83a01e809bf818f9d4a2a56c2cf6eb89599281",
+    "targeth-ht261118-class3-water-r04-m0-03": "bc8260cdd6005fec39364dd491c48400d7fa79bb8dc6d45f373802cc1d782c7c",
+    "targeth-ht261118-class3-water-r04-m0-04": "969b62a66761f522b7893c74b99c8f6fda8a423aa981a8c63bedd6331d27156a",
+    "targeth-ht261118-class3-water-r04-m0-05": "e6c5006155e2b1e27d6fed075fb14a7d42193d71c304c57a1d66316531a75c3b",
+    "targeth-ht261118-class3-water-r04-m0-06": "f263d962964470f9a24afba9a42083b706eedfdda56ce6485ea7a20db50eab66",
+    "targeth-ht261118-class3-water-r04-m0-07": "79445b0b58e19fc6c41edb2efb595a43c71fcd16814764965df12a17c20ada75",
+    "targeth-ht261118-class3-water-r04-m0-08": "898946bf5f802a76c06bbf4e76b3700d076b4a63d61c0a9e94d7f2108ca8a489",
+    "targeth-ht261118-class3-water-r04-m0-09": "febda158ab84e4c122f7c9f9d2831edb54534a4b206cb881cd240ec74a78fc15",
+    "targeth-ht261118-class3-water-r04-m0-10": "8fa973f96ad1e45452f5582faccc8fb5b49e50d0ab293ad28f94eb6ee846574b",
+    "targeth-ht261118-class3-water-r04-m0-11": "0ffa094374ffb42454774b984ceb0e5ab1cc16f79f9782448926de8e495ff5d9",
+    "targeth-ht261118-class3-water-r04-m0-12": "fe674fd132863296ee311cf5c0502e78bd4509e37755ce60262bfd5669def373",
+    "targeth-ht261118-class3-water-r04-m0-13": "bcaf7cf3cf9462de34c2274df1256dcac4611d159ad3cca32ed15fa39a53eecd",
+    "targeth-ht261118-class3-water-r04-m0-14": "a685ba533650d627c24fe3909814ac57aeaac80278571d3b33953ff9b8cf50d1",
+    "targeth-ht261118-class3-water-r04-m0-15": "0def2a8235eaa1790c9865493e8d2e3c860f12ab3f60c77638217ada86e22fc6",
+    "targeth-ht261118-class3-water-r04-m1-01": "b92969f63b0bef2278e9ebcf466e5e25ff0027230555dc697d8142b50b6a63cb",
+    "targeth-ht261118-class3-water-r04-m1-02": "295f3039c955e89e579ce0fda5b29dfafaf5194d8103fe3aa924ecba06b82841",
+    "targeth-ht261118-class3-water-r04-m1-03": "3146e9b278905f148701d3104668e1f6d67081a6da91625c66c0ce96a5518f20",
+    "targeth-ht261118-class3-water-r04-m1-04": "ab51b8e9da90a162cf304ddbbab4dfac70870eee0d3e755da1101d087605333b",
+    "targeth-ht261118-class3-water-r04-m1-05": "6c03961327ece4b57efda89b8f7f971c2ef7b9eb4e6525d60c6c5289e82002db",
+    "targeth-ht261118-class3-water-r04-m1-06": "f05beeb57262c8390f13114c89c1fc101ba0f5e552a1314313d5914d59ed7346",
+    "targeth-ht261118-class3-water-r04-m1-07": "bd347891900718a08cd49e6d656c58a35b4a713f042cc6eb9a951a8181441d3f",
+    "targeth-ht261118-class3-water-r04-m1-08": "1b34f89562b8feda4e0cc46a5136891718cb5cfcaa5b18b67529399b6a7673fb",
+    "targeth-ht261118-class3-water-r04-m1-09": "8fe08a9eca57a88b1cffefa8d329a392b0f25665ec28a524da15d2b2fa94fd28",
+    "targeth-ht261118-class3-water-r04-m1-10": "2cee9d932bbd84d780d75c9628f7674a4ab8dcd7421789a2595f50aa5147bac1",
+    "targeth-ht261118-class3-water-r04-m3-01": "af6722f26dc74a0416f63cff29a85b4e7cb9ee619deaee09c3eb82180e5d5190",
+    "targeth-ht261118-class3-water-r04-m3-02": "e2acf0e96683ab2b113a0345ed3ee683cf713cf77d5d4f4ab41b09f8f005c106",
+    "targeth-ht261118-class3-water-r04-m3-03": "007117067939142d8dcc3c3acbab1b40e26d83270d2c2a03144e0a9c9214dcb3",
+    "targeth-ht261118-class3-water-r04-m3-04": "4886040cfcd5f1794c49a8ec811c24f266a5c26b03dd0f8c4ee2dfbd60744368",
+    "targeth-ht261118-class3-water-r04-m3-05": "a2a2466bce4bf81eaa66d06a910b83a9c56bfa4b62114222cf200ea6bef88ab7",
+    "targeth-ht261118-class3-water-r04-m3-06": "8b1c07372f5f4ff2873c6a13665e21b7ddf58050ca30a9154cae869e946e8f8a",
+    "targeth-ht261118-class3-water-r04-m3-07": "ef55b25fde7c74ceb38de3cab167b7c48719c05cf41afa0e235eac8c9ad351e2",
+    "targeth-ht261118-class3-water-r04-m3-08": "cee177114cded2a1aa6ecc2fc6b9f1ccb282642431383fd2fe42fb1a0992cc8e",
+    "targeth-ht261118-class3-water-r04-m3-09": "aa67e5abaf7116d4d8faead5da44fc03789e7debb746418af42904f9f87f05fd",
+    "targeth-ht261118-class3-water-r04-m3-10": "aeb05efebd81501d6716448359d9e313238c53130cf9272cf845e1e166b49aa4",
+    "targeth-ht261118-class3-water-r04-m3-11": "bd4282456ceb2596ab939897b71629ca23eef0cedb254f2ab3e9f6581afd15e7",
+    "targeth-ht261118-class3-water-r04-m3-12": "f622599e07aad50726a20b4eff414f83339ae0a0f8034faca523a8c78c2d5e54",
+    "targeth-ht261118-class3-water-r04-m3-13": "3df9bd116c85318f972fb188dbf97732aaf006dcd91a0f87f85aeae5314954fd",
+    "targeth-ht261118-class3-water-r04-m3-14": "bcff1381aec6b53382c14f8ad05e935d292020ab19b138db66c9a888b9549058",
+    "targeth-ht261118-class3-water-r04-m3-15": "be5600e70034c8a0ed55a37db72b022c8ae696891a5a621768cd75a3becbdba6",
+    "targeth-ht261118-class3-water-r04-m4-01": "387b9b4673523c919c5049b422262a4a12ad321038aed9aa510d3ffd17a8699f",
+    "targeth-ht261118-class3-water-r04-m4-02": "b383285d513e8ff053c05191f69e196b6f57636dd120c90c9ed26d290a46957a",
+    "targeth-ht261118-class3-water-r04-m4-03": "9c346d64a73fd1a6f450d8fd0c54b9c98b836e1705066ad66c45bdb70d07d2ee",
+    "targeth-ht261118-class3-water-r04-m4-04": "1bd1953311458d6f795659c9f936e8f0000f8c65a6712e0a54232481fdd1bc2b",
+    "targeth-ht261118-class3-water-r04-m4-05": "51b1deb3d5bc26913c8c7d3f3c72b2fa45f3ff1bbcf67d2dc5477126b4ac8550",
+    "targeth-ht261118-class3-water-r04-m4-06": "e893be716b4c2d5c97dd4cdbc508d589bd42ae95cdaf804b3a5ca52f0c4b37ad",
+    "targeth-ht261118-class3-water-r04-m4-07": "e4e0eb571e1dfb9b27a8d6fe36f7f1658e90fe8b1fcc459c3ab1ac566b0b322d",
+    "targeth-ht261118-class3-water-r04-m4-08": "9cae2f5ee09808c171149ea16307b2b1b099aeedf67688c09d36519fbf9dccae",
+    "targeth-ht261118-class3-water-r04-m4-09": "006713990378d74622d85394cb4ef94ab78571d5fd59fac18c7a2cf87e425932",
+    "targeth-ht261118-class3-water-r04-m4-10": "9e3786f367662765ecd56e27e15d81ccba44b48075ca75c5c4f2651e40bb94d1",
+    "targeth-ht261118-class3-water-r04-m4-11": "c3d6847a78572f0fb4049ae1b8698cb0a7261e2040dff8a113386b1a31f11c5b",
+    "targeth-ht261118-class3-water-r04-m4-12": "f71b51af4a098f5c11566f41dc268830935bb994321aaf8bd7d9df3e24bc5dd7",
+    "targeth-ht261118-class3-water-r04-m4-13": "c2a83e362af3c1116e3bab2badffc9da2ccfa995f4a5cc2d854971097b74f424",
+    "targeth-ht261118-class3-water-r04-m4-14": "0f05f4716926861426b167a3daf608cf09f5cf59c92672f677b32ef54aa2e85f",
+    "targeth-ht261118-class3-water-r04-m4-15": "fc874251c889e9ec20f1267c03414a8bce55009e9505e39d4998b7a05b6aa11f"
+   }
+  },
+  "registeredAt": "2026-11-19T03:40:53.021Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 5,
+     "decrease": 8,
+     "unchanged": 2
+    },
+    "longest": 8,
+    "options": 30
+   },
+   "batchSha256": "1358ef4879d53e6679b780131eb3ab22964b1235886208c8034640c370aba22e"
+  }
+ }
+}

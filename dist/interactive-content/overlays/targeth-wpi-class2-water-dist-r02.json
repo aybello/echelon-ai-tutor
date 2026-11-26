@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-water-dist-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-01",
+    "prompt": "Screwed or threaded joints are typically used on large-diameter, high-pressure distribution mains.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Screwed joints are used for smaller-diameter, low-pressure piping from 1/8 inch up to 8 inches."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "836f05e9f1c33b55d67934b18d2367832b942e1a44a59f68cfda4dce7c5c5370",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-02",
+    "prompt": "Most pipe couplings used in screwed connections have threads cut on their inside surface.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Couplings typically feature internal threads to join externally threaded pipe ends."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "d059ba3c38a842c8e315fbe8ddad92ea76d883cf72d34d3daadb94ed511f3f1b",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-03",
+    "prompt": "The classification of a tubular product as piping or tubing is determined by its end use.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Even though piping and tubing are geometrically similar, their end use determines their classification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "cabd7fdab81a722c46990b715d29deb1cb8b11186637d52c7c6cf77f1c5965d5",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-04",
+    "prompt": "Tubing walls are generally thicker than piping walls, so wall thickness tolerance is less critical in tubing.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Tubing walls are generally much thinner than piping walls, so wall thickness tolerance is held closely."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "dccd1e831f74323c6c26649fd936c5bb82cacf70a7e554afab697e78c353bd97",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-05",
+    "prompt": "Flexible tubing absorbs vibration and shock better than rigid iron piping, reducing wear on fittings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Flexible tubing absorbs dynamic stresses and vibration, resulting in less wear and tear on fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "2a613b6a7321480734e914e555da98ee85f1f8c8ee73775c0098daadafedfbab",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-06",
+    "prompt": "Cutting threads into a pipe wall increases its structural strength at the joint.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Threading a pipe weakens the pipe wall at the threaded section."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "1d9759c14ccdf90c1735375f963df352200aaf484dd725d1e4d761da6f232dee",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-07",
+    "prompt": "Tubing generally has a smoother inner-wall surface than iron piping, which helps reduce turbulent flow.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A smoother inner wall in tubing reduces turbulence, wasted energy, and pressure loss."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "e8401fd66b8d4c09cfea2786a69ef794dfff3bcf1c3ab2a0e562be66fb4b3809",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-08",
+    "prompt": "During tubing soldering, flux is applied to speed up oxide formation on the metal surfaces.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Flux is applied to prevent or inhibit oxide formation during the soldering process."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "492efad146f3b427663e836b45f7a040644427d626ba80a05b3129ed7d6432b6",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-09",
+    "prompt": "To produce smaller tubing with thinner walls and closer tolerances, extruded tubing is drawn through another die.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Reworking extruded tubing by drawing it through another die yields smaller sizes and thinner walls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "3a0d503f8e12f12bc696c5a27be318f61ed2686834a4e60d4db373e697f82c73",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-10",
+    "prompt": "A hose with a maximum rated working pressure of 200 psi is designed to burst at 200 psi.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Working pressure is typically limited to 25% of burst pressure, so a 200 psi hose bursts near 800 psi."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "1b97fe43d1ce501b65843e7ae3fb2b03dbf89e6de77cf4515ba9f3cf9a35e737",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-11",
+    "prompt": "Modern hoses are typically built in layers, including an inner lining, a braided carcass, and an outer cover.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Hoses use multiple layers of different materials for strength and pressure resistance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "a9c20ddf021582caac2c91bbc5a729af9b4d7c72296dccd6c0fddf7b666c68c2",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-12",
+    "prompt": "Cotton duck ventilation hoses are preferred for high-temperature portable heater exhaust.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Cotton duck is for light-duty applications; glass fabric is used for hot air and fumes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "fe6c73ef3f97deb3156b2e59aeb64c7e49eab79d91c94c4548af4f0394857dbc",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-13",
+    "prompt": "Quick-connect hose couplings are well suited for highly corrosive chemical lines.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Quick-connect couplings are not used where highly corrosive materials are involved."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "43fb717f61a0a64eff3a80c923c58c42be56b8f944d5cdf7225ad814f3e8cdf8",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-14",
+    "prompt": "Teflon hoses sheathed in braided metal resist both corrosive fluids and external abrasion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Teflon handles corrosive fluids and wide temperatures, while braided metal protects against abrasion and pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "0d3a365720503d0a1b36f61a6f4d45e3f945be1a21670b55c77ef9bed0c771d3",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m0-15",
+    "prompt": "Quick-acting, self-closing connectors still require manual pressure bleeding before disconnection.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Pressure is released before breaking connections unless quick-acting, self-closing connectors are used."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "c093c99fc27f38046c74354d9e2d59142195a0ff9d23b0bfa9d337e3041522d2",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-01",
+    "prompt": "Distinguish each tubing material by its typical plant application.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Steel tubing",
+      "right": "High-pressure hydraulic systems"
+     },
+     {
+      "id": "p2",
+      "left": "Stainless steel tubing",
+      "right": "Chemical feed and process systems"
+     },
+     {
+      "id": "p3",
+      "left": "Aluminum tubing",
+      "right": "Raceways or containers for electrical wires"
+     },
+     {
+      "id": "p4",
+      "left": "Flexible metal tubing",
+      "right": "Vibrating equipment like air compressors"
+     },
+     {
+      "id": "p5",
+      "left": "Heavy-duty tubing",
+      "right": "Underground gas, steam, and oil services"
+     },
+     {
+      "id": "p6",
+      "left": "Camel hose",
+      "right": "Cleaning interceptor lines and dewatering excavations"
+     }
+    ],
+    "explanation": "Each tubing or hose material is selected based on pressure, chemical compatibility, and flexibility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "091b6c2896accf33c740451dc4fe20874ec3fc8ade91e30167ee901b550143b5",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-02",
+    "prompt": "Distinguish each hose material by its operating environment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Teflon with metal braid",
+      "right": "Corrosive fluids and extreme temperatures"
+     },
+     {
+      "id": "p2",
+      "left": "Small-diameter nylon hose",
+      "right": "Compressed air for pneumatic tools"
+     },
+     {
+      "id": "p3",
+      "left": "Cotton duck plastic hose",
+      "right": "Light-duty manhole ventilation"
+     },
+     {
+      "id": "p4",
+      "left": "Glass fabric plastic hose",
+      "right": "Portable heaters carrying hot air and fumes"
+     },
+     {
+      "id": "p5",
+      "left": "Industrial hydraulic hose",
+      "right": "Supplying pressurized fluid on forklifts"
+     },
+     {
+      "id": "p6",
+      "left": "Rubber-lined braided hose",
+      "right": "General layered pressure resistance"
+     }
+    ],
+    "explanation": "Hose materials are matched to temperature, fluid corrosiveness, and mechanical duty."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "9dea5634e60032aa7a5758a5c07d06c78eca5c7bbef689d2c2dac044df65dd4e",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-03",
+    "prompt": "Distinguish each tubing connection tool or material by its function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Soldering flux",
+      "right": "Inhibits oxide formation during heating"
+     },
+     {
+      "id": "p2",
+      "left": "Tube cutter",
+      "right": "Cuts tubing cleanly to length"
+     },
+     {
+      "id": "p3",
+      "left": "Burring tool",
+      "right": "Removes sharp internal edges after cutting"
+     },
+     {
+      "id": "p4",
+      "left": "Flaring tool",
+      "right": "Shapes tubing ends for flared fittings"
+     },
+     {
+      "id": "p5",
+      "left": "Sleeve",
+      "right": "Joins two tubing ends from opposite sides"
+     },
+     {
+      "id": "p6",
+      "left": "Tinning",
+      "right": "Adding solder as flux begins to spread"
+     }
+    ],
+    "explanation": "Proper tubing connections rely on clean cuts, oxide prevention, and controlled solder flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "ffa9677c25ee42f9e708872220bac1d97c58735bb64065f44164f2c6e0fdd80c",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-04",
+    "prompt": "Distinguish each piping and tubing characteristic by its physical effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Smoother tubing inner wall",
+      "right": "Reduces turbulent flow and energy loss"
+     },
+     {
+      "id": "p2",
+      "left": "Thinner tubing wall",
+      "right": "Requires closely held thickness tolerance"
+     },
+     {
+      "id": "p3",
+      "left": "Pipe threading",
+      "right": "Weakens the pipe wall at the joint"
+     },
+     {
+      "id": "p4",
+      "left": "Flexible tubing",
+      "right": "Absorbs shock and reduces fitting wear"
+     },
+     {
+      "id": "p5",
+      "left": "Rigid metal pipe",
+      "right": "Impractical on vibrating machinery"
+     },
+     {
+      "id": "p6",
+      "left": "Secondary die drawing",
+      "right": "Produces smaller tubing with thinner walls"
+     }
+    ],
+    "explanation": "Physical geometry and flexibility govern how piping and tubing perform under flow and vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "230478bb7a30b1c52c34a8243ee949b3d3aaea50e67ab64831208b64381e8f66",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-05",
+    "prompt": "Distinguish each hose construction layer or rating by its structural role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Inner tube or lining",
+      "right": "Contacts the conveyed fluid directly"
+     },
+     {
+      "id": "p2",
+      "left": "Braided carcass",
+      "right": "Provides strength and pressure resistance"
+     },
+     {
+      "id": "p3",
+      "left": "Outer cover",
+      "right": "Protects the carcass from external damage"
+     },
+     {
+      "id": "p4",
+      "left": "Working pressure",
+      "right": "Limited to 25% of burst pressure"
+     },
+     {
+      "id": "p5",
+      "left": "Burst pressure",
+      "right": "Four times the rated working pressure"
+     },
+     {
+      "id": "p6",
+      "left": "Quick-disconnect coupling",
+      "right": "Allows rapid tool or hose changes"
+     }
+    ],
+    "explanation": "Layered hose construction and a 4-to-1 burst margin protect equipment and personnel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "6ed9298f4744ac507521f2f6ca4ae5214ca117dceae5c90ee5ecec5d6b33ba34",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-06",
+    "prompt": "Distinguish each screwed-joint feature by its mechanical limitation or use.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "1/8 in. to 8 in. range",
+      "right": "Typical diameter span for threaded pipe"
+     },
+     {
+      "id": "p2",
+      "left": "Internal coupling threads",
+      "right": "Engage external threads on pipe ends"
+     },
+     {
+      "id": "p3",
+      "left": "Disassembly and reassembly",
+      "right": "Maintenance advantage of screwed joints"
+     },
+     {
+      "id": "p4",
+      "left": "Low pressure and temperature",
+      "right": "Operating condition for tight screwed seals"
+     },
+     {
+      "id": "p5",
+      "left": "Domestic water and cooling",
+      "right": "Noncritical applications for threaded pipe"
+     },
+     {
+      "id": "p6",
+      "left": "Absence of vibration",
+      "right": "Condition needed to maintain joint tightness"
+     }
+    ],
+    "explanation": "Screwed joints offer easy disassembly in small, low-pressure, vibration-free systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "6cf697934407e245f5cb479cd35a081f873e22612687c5fa95eaff9429d4a7a9",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-07",
+    "prompt": "Distinguish each hose coupling type or practice by its operational purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fire hose coupling",
+      "right": "Rapidly joins hose lengths to hydrants"
+     },
+     {
+      "id": "p2",
+      "left": "Self-closing connector",
+      "right": "Permits disconnection without prior depressurization"
+     },
+     {
+      "id": "p3",
+      "left": "Reusable coupling",
+      "right": "Can be detached and installed on new hose"
+     },
+     {
+      "id": "p4",
+      "left": "Permanent coupling",
+      "right": "Fixed to the hose end for its service life"
+     },
+     {
+      "id": "p5",
+      "left": "Compressed-air quick-connect",
+      "right": "Swaps pneumatic tools on a single line"
+     },
+     {
+      "id": "p6",
+      "left": "Corrosive fluid exclusion",
+      "right": "Avoids quick-connect couplings on harsh chemicals"
+     }
+    ],
+    "explanation": "Hose couplings vary by speed of connection, reusability, and chemical safety."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "1282fd99ec2ab592cc968434dea995b388947fe4b98505ac7bee770532dc61db",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-08",
+    "prompt": "Distinguish each tubing joining method by its physical mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Soldering",
+      "right": "Capillary action draws molten filler into the joint"
+     },
+     {
+      "id": "p2",
+      "left": "Compression connection",
+      "right": "Joint sections are mechanically pressed together"
+     },
+     {
+      "id": "p3",
+      "left": "Even circumferential heating",
+      "right": "Ensures a continuous line of solder"
+     },
+     {
+      "id": "p4",
+      "left": "Presetting tool",
+      "right": "Prepares flareless fittings for assembly"
+     },
+     {
+      "id": "p5",
+      "left": "Snug sleeve fit",
+      "right": "Maintains tight clearance for solder penetration"
+     },
+     {
+      "id": "p6",
+      "left": "Scraper and flat file",
+      "right": "Clean and smooth tubing ends before assembly"
+     }
+    ],
+    "explanation": "Soldering relies on capillary action and clean surfaces, while compression uses mechanical force."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "70429eb2d887ad4bd1ab670b07e8cb5f959f62fdc7370360d3f7590fffa3959a",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-09",
+    "prompt": "Distinguish each piping fitting by its geometric connection role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Union",
+      "right": "Joins two pipes for easy disconnection"
+     },
+     {
+      "id": "p2",
+      "left": "Cross",
+      "right": "Connects four pipe branches at right angles"
+     },
+     {
+      "id": "p3",
+      "left": "Y-fitting",
+      "right": "Splits or combines flow at an acute angle"
+     },
+     {
+      "id": "p4",
+      "left": "Reducing coupling",
+      "right": "Connects two pipes of different diameters"
+     },
+     {
+      "id": "p5",
+      "left": "Plug",
+      "right": "Closes off a threaded female opening"
+     },
+     {
+      "id": "p6",
+      "left": "Gate valve",
+      "right": "Controls on-off flow through a pipeline"
+     }
+    ],
+    "explanation": "Standard fittings route, branch, reduce, or seal fluid paths in piping systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "dbdaadd459d908b954d7507af46f6f2ce4118c7a90fdfaab2562350b2d315cd0",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m1-10",
+    "prompt": "Distinguish each hose application by its mechanical advantage.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Jackhammer air hose",
+      "right": "Dampens intense tool vibration"
+     },
+     {
+      "id": "p2",
+      "left": "Manhole ventilation hose",
+      "right": "Delivers fresh air through large flexible ducting"
+     },
+     {
+      "id": "p3",
+      "left": "Excavation dewatering hose",
+      "right": "Bends easily into trenches for repair"
+     },
+     {
+      "id": "p4",
+      "left": "Process blending hose",
+      "right": "Routes fluids from one source to multiple vats"
+     },
+     {
+      "id": "p5",
+      "left": "Vertical braided carcass",
+      "right": "Reinforces hose against internal pressure"
+     },
+     {
+      "id": "p6",
+      "left": "Braided metal sheath",
+      "right": "Shields Teflon hose from external abrasion"
+     }
+    ],
+    "explanation": "Hoses combine flexibility with targeted reinforcement to handle vibration, routing, and abrasion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "ef93b8ebbc1ae7efa62c9e65f7f096cbc357d968a03bc4baf949f4b2d0170fe7",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-01",
+    "prompt": "Rigid iron piping on a vibrating air compressor is replaced with flexible tubing of the same internal diameter. What happens to the wear and tear on the attached fittings?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Flexible tubing absorbs vibration and shock, reducing wear and tear on fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "35ee1f719b146f5bf8df8de1b8a82c9f7c461ea2cb8d4edbb4ead8fa8158f8ed",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-02",
+    "prompt": "A rough-walled iron pipe is replaced by smooth-walled tubing of the same internal diameter at the same flow rate. What happens to turbulent flow inside the conduit?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "The smoother inner-wall surface of tubing reduces turbulent flow and wasted energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "3601dd7c3263f50c497b144e25705627c09cdcad5b94c80f42fd7060e1240104",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-03",
+    "prompt": "Threads are cut into the outer wall of a metal pipe to prepare a screwed joint. What happens to the structural strength of the pipe at the threaded section?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Cutting threads removes wall thickness and weakens the pipe at that location."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "65c2f9f4d48cce2423a3b7c3e892db145e41273fd50c16e79ab35734e23357fb",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-04",
+    "prompt": "Soldering flux is applied to clean copper tubing and fitting surfaces before heating. What happens to oxide formation on the heated metal?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Flux prevents or inhibits oxide formation during the soldering process."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "03c07fe4110a0231f5416970fd4c22cc8a82ba36e72a5e98823a5603a96f3f36",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-05",
+    "prompt": "Extruded metal tubing is reworked by drawing it through a smaller secondary die. What happens to the wall thickness of the tubing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Drawing extruded tubing through another die produces smaller tubing with thinner walls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "338932d2d1ac987221bb51a6e9019d2de6fa192fc0aa5c181d61e7d39b87a2e2",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-06",
+    "prompt": "A hose's rated working pressure is increased while maintaining the standard 25% working-to-burst pressure ratio. What happens to the required burst pressure of the hose?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Because working pressure is 25% of burst pressure, a higher working rating requires a higher burst pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "cd35bde0ddcf40e67b1a5984b5861f964e0cfacd6c9b6fda44d578c3d98a4a5f",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-07",
+    "prompt": "A Teflon hose is sheathed in a flexible, braided metal covering. What happens to the hose's resistance to external abrasion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "The braided metal covering protects the Teflon hose against abrasion and adds pressure resistance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "c2ef1c86e9f620c45dd8778036a7c41a48e10f72ca86ba1f74b05f54f42bbf10",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-08",
+    "prompt": "A pneumatic tool is switched from a rigid metal pipe supply to an industrial flexible hose. What happens to the vibration transmitted from the tool?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Industrial hose has a dampening effect on vibration from vibrating tools."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "b329a5a3cc762efa088f751b0a0065385c3e53861f4331b5b71a38f5877a4389",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-09",
+    "prompt": "A smooth-walled tubing line is painted a different color on the outside without changing its internal dimensions or flow rate. What happens to turbulent flow inside the tubing?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "External paint does not alter the inner-wall smoothness or hydraulic flow conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "3ef162b361197f9964790adbed0622ce34134780363c880b2d2922f225457239",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-10",
+    "prompt": "Quick-connect couplings are installed on a compressed-air line that serves multiple pneumatic tools. What happens to the time required to swap tools?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Quick-connect, quick-disconnect couplings allow rapid connection and disconnection between tools and the air line."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "492c3c032106bcc6222fd90db31059e35b1670554b0fe1f177bd177a78ebe7a1",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-11",
+    "prompt": "A braided carcass layer is added around a synthetic hose inner lining. What happens to the hose's ability to resist internal pressure?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "The braided carcass reinforces the hose for strength and resistance to internal pressure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "1ff2d3f514ae871489711e2e460816b373c402d3ec24916c358dfc0d770ec481",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-12",
+    "prompt": "A tubing joint is heated evenly around its circumference while solder is applied. What happens to the uniformity of the solder line around the fitting?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Even heating draws solder uniformly into the joint, forming a continuous line around the fitting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "be3bfd3d3050973511e530a5ce4a2612895570d5bf890fe76ee4b389c5af63c9",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-13",
+    "prompt": "A smooth-walled tubing system replaces a rough-walled iron piping system at the same flow rate. What happens to the energy wasted by internal turbulence?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Smoother inner walls reduce turbulent flow, which decreases wasted energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "77462ca769bb9a4b8a43337c108980d9c252e757c685ee792a341f20888df450",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-14",
+    "prompt": "A screwed pipe joint is used in a low-pressure domestic water line where vibration is absent. What happens to the ease of disassembling the joint for maintenance compared with a welded joint?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Screwed joints provide ease of disassembly and reassembly to accommodate maintenance needs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "88ce551bb20cceb007026e81deee487512597673674ae5cd89bf774cb0432573",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m3-15",
+    "prompt": "A reusable hose coupling is installed on a low-pressure hose instead of a permanent crimped coupling. What happens to the ability to reuse the coupling when the hose is replaced?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Reusable couplings can be detached and reused, unlike permanent couplings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "0b1774e3005b8ee73f037ccc9dcd93380525d71d32685e918e6244abec90e5cf",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-01",
+    "prompt": "Which statement about tubing versus piping is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Tubing walls are generally much thinner than piping walls, so wall thickness tolerance is held closely."
+     },
+     {
+      "id": "o2",
+      "label": "Tubing is classified by its end use rather than by geometric shape alone."
+     },
+     {
+      "id": "o3",
+      "label": "Tubing is typically joined by threading rather than soldering, brazing, or welding."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Tubing is typically connected by soldering, brazing, or welding rather than threaded joints."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "30f997bf7a2cb9249a0ff1a2305987805e1997dbfa75f39e36fe00e90ef2bf6f",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-02",
+    "prompt": "Which statement about soldering tubing is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Flux is applied to the tubing outside and fitting inside to inhibit oxide formation."
+     },
+     {
+      "id": "o2",
+      "label": "The fitting is heated first, and the tubing is left cool to draw solder outward."
+     },
+     {
+      "id": "o3",
+      "label": "Heat is applied evenly around the tubing so a continuous line of solder forms."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Heat is applied to the tubing next to the fitting first, then to the fitting itself."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "0a20bbbd4cfbcdca29d3a6cd29fb915a51cc54e8bb9abf64e7d04a8414d57b91",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-03",
+    "prompt": "Which statement about hose pressure ratings is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A hose with a 200 psi working rating is designed to resist bursting up to about 800 psi."
+     },
+     {
+      "id": "o2",
+      "label": "The working pressure of a hose is typically limited to 25% of its burst pressure."
+     },
+     {
+      "id": "o3",
+      "label": "Modern hoses are made from a single solid layer of rubber without internal braiding."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Current practice uses multiple layers, including an inner tube, a braided carcass, and a cover."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "ee0355c5963658010e799d091e46b66274bc1cb92474f740ed3bc97e3875aeda",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-04",
+    "prompt": "Which statement about tubing applications is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Steel tubing is used in high-pressure hydraulic systems."
+     },
+     {
+      "id": "o2",
+      "label": "Stainless steel tubing is used in many chemical systems."
+     },
+     {
+      "id": "o3",
+      "label": "Aluminum tubing is used for high-pressure steam mains."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Aluminum tubing is used as raceways or containers for electrical wires, not high-pressure steam."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "384fd132ebb08070b464673be2719ce7ea29c7993c5e0d2673d63755de5273e5",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-05",
+    "prompt": "Which statement about hose materials is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Teflon hoses are sheathed in braided metal for abrasion and pressure resistance."
+     },
+     {
+      "id": "o2",
+      "label": "Small-diameter nylon hoses are commonly used to supply compressed air to pneumatic tools."
+     },
+     {
+      "id": "o3",
+      "label": "Cotton duck ventilation hoses are designed for hot air and fumes from portable heaters."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Cotton duck is for light-duty use; glass fabric is used for hot air and fumes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "750ae304a57a92998ed6478775124f82e33588a77052db1d529f4234f34edefc",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-06",
+    "prompt": "Which statement about quick-connect hose couplings is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Quick-disconnect couplings allow rapid connection between fire hoses and hydrants."
+     },
+     {
+      "id": "o2",
+      "label": "Quick-connect couplings are ideal for routing highly corrosive chemicals."
+     },
+     {
+      "id": "o3",
+      "label": "Quick-connect couplings can be used when pumping out excavations and manholes."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Quick-connect couplings are not used where highly corrosive materials are involved."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "9ee87250d65b9b17d0d98c24070c49e816a213e96f442347839f94399a51c351",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-07",
+    "prompt": "A technician is evaluating threaded pipe connections for a plant utility line. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Threaded connections can join ferrous or nonferrous pipes from 1/8 inch up to 8 inches in diameter."
+     },
+     {
+      "id": "o2",
+      "label": "Threaded connections maintain high leakage integrity at low pressure when vibration is absent."
+     },
+     {
+      "id": "o3",
+      "label": "Threaded connections are preferred for large-diameter, high-pressure transmission mains."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Screwed or threaded joints are used on smaller-diameter, low-pressure pipe from 1/8 inch up to 8 inches."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "6003804ec77ee66906e4bef262b186355bf61110055346f3f6ddfdf68e2af2be",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-08",
+    "prompt": "Which statement about pipe and tubing hydraulics is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Tubing generally has a smoother inner-wall surface than iron piping."
+     },
+     {
+      "id": "o2",
+      "label": "A smoother inner-wall surface increases turbulent flow and wasted energy."
+     },
+     {
+      "id": "o3",
+      "label": "Flexible tubing absorbs vibration and shock on noisy mechanical devices."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "A smoother inner-wall surface reduces turbulent flow and wasted energy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "289b11bf8005bcff269d0abb3a1296a145f28da6827d5225ff66ac66f9f089b9",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-09",
+    "prompt": "Which statement about tubing manufacturing is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Passing metal through a die extrudes tubing in larger sizes and wall thicknesses."
+     },
+     {
+      "id": "o2",
+      "label": "Drawing extruded tubing through another die produces thicker walls and looser tolerances."
+     },
+     {
+      "id": "o3",
+      "label": "Tubular products are made to specific inside or outside diameters in even inches or fractions."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Drawing extruded tubing through another die produces smaller tubing with thinner walls and closer tolerances."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "2c0878948db5f536dff243dc3f2160670beeda9de61fe2fde17a1953cf6b75d3",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-10",
+    "prompt": "Which statement about disconnecting hose couplings is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Pressure is released before breaking standard hose connections."
+     },
+     {
+      "id": "o2",
+      "label": "Quick-acting, self-closing connectors allow disconnection without prior pressure release."
+     },
+     {
+      "id": "o3",
+      "label": "Standard low-pressure couplings are broken under full line pressure to flush debris."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Pressure must be released before breaking connections unless self-closing connectors are used."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "d960b8a1edf078797f1337220d2eeddb5747f5e3633b54e37f46ad5aaf043113",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-11",
+    "prompt": "Which statement about hose flexibility is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Camel hose bends easily to clean out interceptor lines and dewater excavations."
+     },
+     {
+      "id": "o2",
+      "label": "Industrial hose dampens vibration on power hammers and jackhammers."
+     },
+     {
+      "id": "o3",
+      "label": "Rigid metal piping is preferred over hose for supplying hydraulic fluid on forklifts."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Rigid piping is impractical for forklift hydraulic lines, which require flexible hose."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "c9719905e7e03f7271f99f0ca593ffa412ac023879d70fd9fe56ceafb4c2d947",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-12",
+    "prompt": "Which statement about tubing connection tools is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A burring tool removes internal burrs left after cutting tubing."
+     },
+     {
+      "id": "o2",
+      "label": "A flaring tool is used to prepare tubing for flareless fittings."
+     },
+     {
+      "id": "o3",
+      "label": "A hacksaw or tube cutter can be used to cut tubing to length."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "A presetting tool is used for flareless fittings, while a flaring tool is for flared fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "9fb95216cfdcfefe7fd8380814b77814021b60ebf0be6a4ae76f14d452d00230",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-13",
+    "prompt": "Which statement about piping fittings is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A reducing coupling connects two pipes of different diameters."
+     },
+     {
+      "id": "o2",
+      "label": "A cross fitting joins four pipe ends at a single junction."
+     },
+     {
+      "id": "o3",
+      "label": "A plug is used to split a single flow into two equal branches."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "A plug closes off a pipe opening, whereas a Y-fitting or tee splits flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "e0ea34a5a844a7f7b413cfcc30e8acb8681c66e497a2343e476aa6ff89e406e0",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-14",
+    "prompt": "Which statement about threading pipe is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Threading a pipe weakens the pipe wall at the threaded section."
+     },
+     {
+      "id": "o2",
+      "label": "Pipe wall thickness is an important consideration when threading is required."
+     },
+     {
+      "id": "o3",
+      "label": "Most screwed couplings have threads cut on their outside surface."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Most couplings have threads cut on their inside surface to receive externally threaded pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "047d13ae9cdc244b5515bbd1033bff9b6230842f8d091375dc77366bc4d272b5",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m4-15",
+    "prompt": "Which statement about Teflon hose is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Teflon hose can carry corrosive fluids at temperatures up to 230°C."
+     },
+     {
+      "id": "o2",
+      "label": "Teflon hose can operate at temperatures as low as -55°C."
+     },
+     {
+      "id": "o3",
+      "label": "Teflon hose is limited to room-temperature water service."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Teflon hose handles corrosive fluids across a wide temperature range from -55°C to 230°C."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "02060962743c74369ee02ea091de7109b482dca86f0f54b8752b0174e68b1a1c",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-01",
+    "prompt": "In the soldered tubing connection process, does fitting the fluxed tubing ends into the sleeve occur before or after heating the joint?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Both ends are coated with flux and fitted snugly into the sleeve before heat is applied."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "2f2fc1fcef319f821a2f8044af9d1b8c784bce1f17f238c2d949970f0e45fdff",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-02",
+    "prompt": "During the heating stage of tubing soldering, does heating the tubing next to the fitting occur before or after heating the fitting itself?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The tubing next to the fitting is heated first, and the fitting itself is heated second."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "3f30dfb55ffebd440f82d4adae6a0bcbf5b7d06ca8452b84efb4ccd0e8d218c3",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-03",
+    "prompt": "In the tinning step of tubing soldering, does the flux beginning to spread occur before or after adding solder?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solder is added when the heated flux begins to spread."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "e6e67b7c08f8de073c977e92aef1084f506cd02de39190bae5f12a5219e97137",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-04",
+    "prompt": "In manufacturing smaller, thin-walled tubing, does extruding the tubing through the initial die occur before or after drawing it through a second die?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Tubing is extruded first, and then reworked by drawing through another die for thinner walls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "a920af10a090f4afae92b8fddaca90cdf639fca274de8006384dbce97a66686e",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-05",
+    "prompt": "When disconnecting a standard pressurized hose coupling, does releasing line pressure occur before or after breaking the connection?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Pressure must be released before breaking standard hose connections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "d6d390454b27bcf1eec1f33a7be79bc180a27bc162d06408f5d8e5da4899186a",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-06",
+    "prompt": "In installing a hand-applied low-pressure hose coupling, does cutting the hose to length occur before or after attaching the coupling?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The hose is cut to the required length first, before the coupling is placed on by hand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "37253f2c6aaf91c15d4cfb8c299f60f265fbda3b75833d7d8235d6280edc2531",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-07",
+    "prompt": "In the operation of a hose under increasing internal pressure, does reaching its rated working pressure occur before or after reaching its burst pressure?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Working pressure is 25% of burst pressure, so it is reached well before the burst limit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "fd36ff78dc99055098b15a961ee9ed50bf9593f6455e36615f462ee4aec44ef5",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-08",
+    "prompt": "In preparing a cut tube end for a soldered joint, does removing burrs occur before or after applying soldering flux?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Cutting and deburring prepare the tube surface before flux is applied."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "c4dba41525a97cd7c97294f0106f0e455f387b01227bdb39dd6c532aaad2d50b",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-09",
+    "prompt": "In the final stage of tubing soldering, does initial tinning occur before or after heating the fitting on and off to achieve full solder penetration?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Initial tinning happens as flux spreads, and further heating draws solder in until fully penetrated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "ad0e72e21742b2e5191f6040b182aaf76cffe8a987db86ea047e372bf966884b",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-10",
+    "prompt": "In assembling a screwed pipe joint, does cutting threads on the pipe end occur before or after screwing it into the coupling?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "External threads are cut on the pipe end before it is threaded into the internal coupling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "27f2b38585c2c1c9fe977cdb8d1297ce6d060998199b6b7413a4c6dcb0301ef0",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-11",
+    "prompt": "In a plant compressed-air system using quick-connect couplings, does disconnecting one pneumatic tool occur before or after connecting the next tool?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Changing tools on a single air line involves disconnecting one section before connecting another."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "ec8d4b895aa3ff73d0c17f478006a77542eea4f58610842a114c875a83730525",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-12",
+    "prompt": "In constructing a braided hose, does forming the inner synthetic lining occur before or after applying the braided carcass?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The inner tube or lining is surrounded by the braided carcass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "dd1d1a7f5cf4e8835d8926d55b711cece7778de82ade16f92c391e55bcc877f1",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-13",
+    "prompt": "In a flareless tubing connection, does using the presetting tool occur before or after final assembly of the fitting?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The presetting tool prepares the flareless fitting prior to final assembly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "d10cacc6dc4eb9a9416fd6f400d75f3f3c0a6851cf8f1c40e90d142eea67604a",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-14",
+    "prompt": "In using a camel hose to dewater an excavation, does routing the flexible hose into the trench occur before or after pumping out the liquid?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The flexible hose is positioned in the excavation before liquid is pumped out."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "fd563a6fdac976edfd3bd8f43c01b1b11b978ce030adc6173afe492043f6bd7b",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-dist-r02-m5-15",
+    "prompt": "In maintaining a screwed domestic water joint, does disassembling the threaded connection occur before or after reassembling it?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Screwed joints are disassembled for maintenance and then reassembled."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+    "notes": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:00:07.347Z",
+    "payloadSha256": "7af317e5887c1a92cc62996e7d0741da6e617292c422c25d193d285a59a8f170",
+    "builderResultsSha256": "94adfc73b9bebc7a01762060b9847ecf6802a55da0b812b9d9385b8182cfffb4"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:59:00.544518+00:00",
+   "attestation": "Strict final AI self-review of all 70 authored native game payloads for wpi-class2-water-dist (targeth-wpi-class2-water-dist-r02) against supplied source pages (pp. 422-437) and collision candidates; 70 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-01": "836f05e9f1c33b55d67934b18d2367832b942e1a44a59f68cfda4dce7c5c5370",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-02": "d059ba3c38a842c8e315fbe8ddad92ea76d883cf72d34d3daadb94ed511f3f1b",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-03": "cabd7fdab81a722c46990b715d29deb1cb8b11186637d52c7c6cf77f1c5965d5",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-04": "dccd1e831f74323c6c26649fd936c5bb82cacf70a7e554afab697e78c353bd97",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-05": "2a613b6a7321480734e914e555da98ee85f1f8c8ee73775c0098daadafedfbab",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-06": "1d9759c14ccdf90c1735375f963df352200aaf484dd725d1e4d761da6f232dee",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-07": "e8401fd66b8d4c09cfea2786a69ef794dfff3bcf1c3ab2a0e562be66fb4b3809",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-08": "492efad146f3b427663e836b45f7a040644427d626ba80a05b3129ed7d6432b6",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-09": "3a0d503f8e12f12bc696c5a27be318f61ed2686834a4e60d4db373e697f82c73",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-10": "1b97fe43d1ce501b65843e7ae3fb2b03dbf89e6de77cf4515ba9f3cf9a35e737",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-11": "a9c20ddf021582caac2c91bbc5a729af9b4d7c72296dccd6c0fddf7b666c68c2",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-12": "fe6c73ef3f97deb3156b2e59aeb64c7e49eab79d91c94c4548af4f0394857dbc",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-13": "43fb717f61a0a64eff3a80c923c58c42be56b8f944d5cdf7225ad814f3e8cdf8",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-14": "0d3a365720503d0a1b36f61a6f4d45e3f945be1a21670b55c77ef9bed0c771d3",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m0-15": "c093c99fc27f38046c74354d9e2d59142195a0ff9d23b0bfa9d337e3041522d2",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-01": "091b6c2896accf33c740451dc4fe20874ec3fc8ade91e30167ee901b550143b5",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-02": "9dea5634e60032aa7a5758a5c07d06c78eca5c7bbef689d2c2dac044df65dd4e",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-03": "ffa9677c25ee42f9e708872220bac1d97c58735bb64065f44164f2c6e0fdd80c",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-04": "230478bb7a30b1c52c34a8243ee949b3d3aaea50e67ab64831208b64381e8f66",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-05": "6ed9298f4744ac507521f2f6ca4ae5214ca117dceae5c90ee5ecec5d6b33ba34",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-06": "6cf697934407e245f5cb479cd35a081f873e22612687c5fa95eaff9429d4a7a9",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-07": "1282fd99ec2ab592cc968434dea995b388947fe4b98505ac7bee770532dc61db",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-08": "70429eb2d887ad4bd1ab670b07e8cb5f959f62fdc7370360d3f7590fffa3959a",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-09": "dbdaadd459d908b954d7507af46f6f2ce4118c7a90fdfaab2562350b2d315cd0",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m1-10": "ef93b8ebbc1ae7efa62c9e65f7f096cbc357d968a03bc4baf949f4b2d0170fe7",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-01": "35ee1f719b146f5bf8df8de1b8a82c9f7c461ea2cb8d4edbb4ead8fa8158f8ed",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-02": "3601dd7c3263f50c497b144e25705627c09cdcad5b94c80f42fd7060e1240104",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-03": "65c2f9f4d48cce2423a3b7c3e892db145e41273fd50c16e79ab35734e23357fb",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-04": "03c07fe4110a0231f5416970fd4c22cc8a82ba36e72a5e98823a5603a96f3f36",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-05": "338932d2d1ac987221bb51a6e9019d2de6fa192fc0aa5c181d61e7d39b87a2e2",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-06": "cd35bde0ddcf40e67b1a5984b5861f964e0cfacd6c9b6fda44d578c3d98a4a5f",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-07": "c2ef1c86e9f620c45dd8778036a7c41a48e10f72ca86ba1f74b05f54f42bbf10",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-08": "b329a5a3cc762efa088f751b0a0065385c3e53861f4331b5b71a38f5877a4389",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-09": "3ef162b361197f9964790adbed0622ce34134780363c880b2d2922f225457239",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-10": "492c3c032106bcc6222fd90db31059e35b1670554b0fe1f177bd177a78ebe7a1",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-11": "1ff2d3f514ae871489711e2e460816b373c402d3ec24916c358dfc0d770ec481",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-12": "be3bfd3d3050973511e530a5ce4a2612895570d5bf890fe76ee4b389c5af63c9",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-13": "77462ca769bb9a4b8a43337c108980d9c252e757c685ee792a341f20888df450",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-14": "88ce551bb20cceb007026e81deee487512597673674ae5cd89bf774cb0432573",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m3-15": "0b1774e3005b8ee73f037ccc9dcd93380525d71d32685e918e6244abec90e5cf",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-01": "30f997bf7a2cb9249a0ff1a2305987805e1997dbfa75f39e36fe00e90ef2bf6f",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-02": "0a20bbbd4cfbcdca29d3a6cd29fb915a51cc54e8bb9abf64e7d04a8414d57b91",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-03": "ee0355c5963658010e799d091e46b66274bc1cb92474f740ed3bc97e3875aeda",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-04": "384fd132ebb08070b464673be2719ce7ea29c7993c5e0d2673d63755de5273e5",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-05": "750ae304a57a92998ed6478775124f82e33588a77052db1d529f4234f34edefc",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-06": "9ee87250d65b9b17d0d98c24070c49e816a213e96f442347839f94399a51c351",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-07": "6003804ec77ee66906e4bef262b186355bf61110055346f3f6ddfdf68e2af2be",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-08": "289b11bf8005bcff269d0abb3a1296a145f28da6827d5225ff66ac66f9f089b9",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-09": "2c0878948db5f536dff243dc3f2160670beeda9de61fe2fde17a1953cf6b75d3",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-10": "d960b8a1edf078797f1337220d2eeddb5747f5e3633b54e37f46ad5aaf043113",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-11": "c9719905e7e03f7271f99f0ca593ffa412ac023879d70fd9fe56ceafb4c2d947",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-12": "9fb95216cfdcfefe7fd8380814b77814021b60ebf0be6a4ae76f14d452d00230",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-13": "e0ea34a5a844a7f7b413cfcc30e8acb8681c66e497a2343e476aa6ff89e406e0",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-14": "047d13ae9cdc244b5515bbd1033bff9b6230842f8d091375dc77366bc4d272b5",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m4-15": "02060962743c74369ee02ea091de7109b482dca86f0f54b8752b0174e68b1a1c",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-01": "2f2fc1fcef319f821a2f8044af9d1b8c784bce1f17f238c2d949970f0e45fdff",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-02": "3f30dfb55ffebd440f82d4adae6a0bcbf5b7d06ca8452b84efb4ccd0e8d218c3",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-03": "e6e67b7c08f8de073c977e92aef1084f506cd02de39190bae5f12a5219e97137",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-04": "a920af10a090f4afae92b8fddaca90cdf639fca274de8006384dbce97a66686e",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-05": "d6d390454b27bcf1eec1f33a7be79bc180a27bc162d06408f5d8e5da4899186a",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-06": "37253f2c6aaf91c15d4cfb8c299f60f265fbda3b75833d7d8235d6280edc2531",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-07": "fd36ff78dc99055098b15a961ee9ed50bf9593f6455e36615f462ee4aec44ef5",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-08": "c4dba41525a97cd7c97294f0106f0e455f387b01227bdb39dd6c532aaad2d50b",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-09": "ad0e72e21742b2e5191f6040b182aaf76cffe8a987db86ea047e372bf966884b",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-10": "27f2b38585c2c1c9fe977cdb8d1297ce6d060998199b6b7413a4c6dcb0301ef0",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-11": "ec8d4b895aa3ff73d0c17f478006a77542eea4f58610842a114c875a83730525",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-12": "dd1d1a7f5cf4e8835d8926d55b711cece7778de82ade16f92c391e55bcc877f1",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-13": "d10cacc6dc4eb9a9416fd6f400d75f3f3c0a6851cf8f1c40e90d142eea67604a",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-14": "fd563a6fdac976edfd3bd8f43c01b1b11b978ce030adc6173afe492043f6bd7b",
+    "targeth-ht261118-wpi-class2-water-dist-r02-m5-15": "7af317e5887c1a92cc62996e7d0741da6e617292c422c25d193d285a59a8f170"
+   }
+  },
+  "registeredAt": "2026-11-19T03:00:07.347Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 8
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 8,
+     "unchanged": 1
+    },
+    "longest": 5,
+    "options": 30
+   },
+   "batchSha256": "dfd64df5d0900da6e178e96c76aef32100561b63cbf310402b6ff4717ece2837"
+  }
+ }
+}

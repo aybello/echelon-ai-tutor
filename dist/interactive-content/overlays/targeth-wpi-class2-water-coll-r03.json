@@ -1,0 +1,1557 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-water-coll-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 42 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-01",
+    "prompt": "Wastewater operators aim to control the growth of microorganisms so they break down components in the wastewater stream.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Wastewater treatment processes control microbial growth and put microorganisms to work degrading organic waste."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "3fb6be94b9a9c1e3d483d6f510c858c7dc057cb9d5a782fc8b945ee23141455d",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-02",
+    "prompt": "Freshwater algae are pathogenic organisms that directly cause waterborne infections in humans.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Algae are not pathogenic, though heavy growth can plug intakes and release taste-and-odor chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "5a155777f5574ea68445b80a0a04ff1a0b8b473955089e5431f9b854074e17be",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-03",
+    "prompt": "Under binomial nomenclature, the first letter of the genus name is capitalized while the species name follows.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Linnaeus's binomial system uses a capitalized genus name followed by the species name, such as Escherichia coli."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "f183c3207d515e3c8acefab0e953a5b58ab62392d38a3d59a689c52c7214aae6",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-04",
+    "prompt": "Differentiation among small groups of bacteria relies primarily on visible structural differences rather than chemical differences.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Small bacterial groups present few visible structural differences, so differentiation relies almost entirely on chemical differences."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "4fe8eca8c36888530aae6052584e11bb00bcdd0e1619288f562011409828af25",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-05",
+    "prompt": "The rigid bacterial cell wall protects the delicate protoplast from bursting due to osmotic lysis.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "A key function of the rigid prokaryotic cell wall is protecting the protoplast from osmotic lysis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "6b6d2621076da7396c08a7563aa7036b0df0095c3bcfd2a7527784502be97fe2",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-06",
+    "prompt": "Bacterial ribosomes are composed of DNA and serve primarily as the rigid outer support for flagella.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ribosomes are minute bodies made of RNA that serve as sites for protein synthesis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "69046fb4155ecc401b0ce4e7b743e5c50b25cc234837318c46e2358d02c53e7f",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-07",
+    "prompt": "Autotrophic organisms are capable of producing their own food from inorganic substances.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "By definition, autotrophic organisms synthesize food from inorganic substances."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "8883824d23b96d1e64a241c71fd202947c4ff9e8830d9f3ca1ec88f9424eafa7",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-08",
+    "prompt": "Fungi are unicellular prokaryotic organisms that do not feed on organic material.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Fungi are multicellular, autotrophic, photosynthetic protists that feed on organic material as mold-like or yeast-like forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "01e5ff805b999bc8cca5765a7bcd312d1099382548cf2f588d343d46bfa576e0",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m0-10",
+    "prompt": "Disinfection of raw surface water is sufficient by itself even when the source is unprotected.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Disinfection alone is sufficient only for protected sources; surface waters commonly require coagulation, flocculation, and filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "920c6f0939617aa24693ca3026b5847b2f9f723c7f5acfa8fcbad3e65d04578c",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m1-01",
+    "prompt": "Match each bacterial cell structure with its primary physiological or protective role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell wall",
+      "right": "Protects the protoplast from osmotic lysis"
+     },
+     {
+      "id": "p2",
+      "left": "Plasma membrane",
+      "right": "Lipoprotein barrier separating cell interior from exterior"
+     },
+     {
+      "id": "p3",
+      "left": "Nucleoid",
+      "right": "Region holding a single double strand of DNA"
+     },
+     {
+      "id": "p4",
+      "left": "Ribosomes",
+      "right": "RNA bodies serving as sites for protein synthesis"
+     },
+     {
+      "id": "p5",
+      "left": "Capsule",
+      "right": "Organized gelatinous accumulation on the cell wall"
+     },
+     {
+      "id": "p6",
+      "left": "Flagella",
+      "right": "Propulsion structures helping organisms flee harmful areas"
+     }
+    ],
+    "explanation": "Each prokaryotic structure performs a distinct role in protection, transport, genetics, protein synthesis, or motility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "789954218bdb89789fe34c660ef29b62504fa8a796c0fdf8d833204ed3d970b0",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m1-02",
+    "prompt": "Match each microbiological term with its scientific definition in water and wastewater operations.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteriology",
+      "right": "Science and study of bacteria"
+     },
+     {
+      "id": "p2",
+      "left": "Anaerobic",
+      "right": "Able to live and grow without free oxygen"
+     },
+     {
+      "id": "p3",
+      "left": "Autotrophic",
+      "right": "Produces food from inorganic substances"
+     },
+     {
+      "id": "p4",
+      "left": "Algal bloom",
+      "right": "Sudden spurt of algal growth affecting water quality"
+     },
+     {
+      "id": "p5",
+      "left": "Eutrophication",
+      "right": "Nutrient enrichment causing excessive algae and aging"
+     },
+     {
+      "id": "p6",
+      "left": "Waterborne pathogen",
+      "right": "Microorganism capable of causing disease via water"
+     }
+    ],
+    "explanation": "Clear definitions distinguish microbial metabolism, growth events, and disease-causing agents."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "704173a0176daab352796344fef5d6c0dc8bd5cf3d0268bfadd783d3b5a4cd63",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m1-03",
+    "prompt": "Match each taxonomic rank in Linnaeus's hierarchy with its relative position or example.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Kingdom",
+      "right": "Largest, most inclusive classification category"
+     },
+     {
+      "id": "p2",
+      "left": "Genus",
+      "right": "Capitalized first word in binomial nomenclature"
+     },
+     {
+      "id": "p3",
+      "left": "Species",
+      "right": "Second word in a two-word scientific name"
+     },
+     {
+      "id": "p4",
+      "left": "Escherichia coli",
+      "right": "Coliform bacterium commonly abbreviated E. coli"
+     },
+     {
+      "id": "p5",
+      "left": "Giardia lamblia",
+      "right": "Protozoan parasite often called by its genus"
+     },
+     {
+      "id": "p6",
+      "left": "Salmonella typhi",
+      "right": "Typhoid bacillus of waterborne concern"
+     }
+    ],
+    "explanation": "Binomial nomenclature places organisms into a nested hierarchy from kingdom down to genus and species."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "277de3c46166bd3c16e9984aea7d808437b9ea7dc420bc5698cb9467f39fb57e",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m1-04",
+    "prompt": "Match each wastewater organism group with its characteristic habitat or operational significance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Simple algae",
+      "right": "Convert inorganic constituents into organic matter"
+     },
+     {
+      "id": "p2",
+      "left": "Fungi",
+      "right": "Critical in biosolids composting operations"
+     },
+     {
+      "id": "p3",
+      "left": "Tubificid worms",
+      "right": "Inhabit biological slimes and indicate strength"
+     },
+     {
+      "id": "p4",
+      "left": "Bacteria",
+      "right": "Single-celled organisms with rigid cell walls"
+     },
+     {
+      "id": "p5",
+      "left": "Protozoa",
+      "right": "Include flagellates, amoebae, and ciliates"
+     },
+     {
+      "id": "p6",
+      "left": "Rotifers",
+      "right": "Microscopic animals such as Philodina"
+     }
+    ],
+    "explanation": "Different microbial and microscopic groups occupy distinct niches in water and wastewater treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "ead714cd70dd8a119d85f3432d1326b5ae16bfd990935e48411297167773f99e",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m1-05",
+    "prompt": "Match each Giardia lamblia biological or epidemiological feature with its description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cyst",
+      "right": "Environmental survival form swallowed by hosts"
+     },
+     {
+      "id": "p2",
+      "left": "Trophozoite",
+      "right": "Active intestinal form dividing by binary fission"
+     },
+     {
+      "id": "p3",
+      "left": "Stomach acid",
+      "right": "Liberates the trophozoite from the swallowed cyst"
+     },
+     {
+      "id": "p4",
+      "left": "Small intestine",
+      "right": "Site where trophozoites establish and multiply"
+     },
+     {
+      "id": "p5",
+      "left": "Ten cysts",
+      "right": "Minimum experimental dose shown to infect humans"
+     },
+     {
+      "id": "p6",
+      "left": "Twelve hours",
+      "right": "Approximate doubling time for trophozoite fission"
+     }
+    ],
+    "explanation": "Understanding Giardia's two life stages and infection dynamics guides waterborne disease control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "7b8bc2882abc3f8d1c2f211270f56b8da66bc1617edc426e90e633832cfc4106",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-01",
+    "prompt": "Three of these are waterborne bacterial pathogens listed in water microbiology. Which one is a protozoan parasite?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Salmonella typhi"
+     },
+     {
+      "id": "b",
+      "label": "Vibrio cholerae"
+     },
+     {
+      "id": "c",
+      "label": "Shigella spp."
+     },
+     {
+      "id": "d",
+      "label": "Giardia lamblia"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Giardia lamblia is a protozoan, whereas Salmonella typhi, Vibrio cholerae, and Shigella spp. are bacteria."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "47db93c1d8abdcbc79d8edf2370c38985084590ae9e17466bf3c3972cd011f5e",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-02",
+    "prompt": "Three of these are internal or surface structures of a generalized bacterial cell. Which one is a multicellular worm?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Nucleoid"
+     },
+     {
+      "id": "b",
+      "label": "Ribosome"
+     },
+     {
+      "id": "c",
+      "label": "Capsule"
+     },
+     {
+      "id": "d",
+      "label": "Tubificid"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Tubificid is a worm inhabiting biological slimes, while nucleoid, ribosome, and capsule are bacterial cell structures."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "ee546bdfd37a7cae4be3b80eaf74a5a759cf3d7f62274862d88c121a8aa42bfe",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-03",
+    "prompt": "Three of these are functions of the rigid bacterial cell wall. Which one is a function of bacterial ribosomes?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Preventing osmotic lysis"
+     },
+     {
+      "id": "b",
+      "label": "Determining cell shape"
+     },
+     {
+      "id": "c",
+      "label": "Supporting flagella"
+     },
+     {
+      "id": "d",
+      "label": "Synthesizing proteins"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Ribosomes are the sites of protein synthesis, whereas the cell wall protects, shapes, and supports flagella."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "19ca84bd0152d3d627f88049c6cb1c222f26fd15058351a8c744e2707f1547a0",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-04",
+    "prompt": "Three of these are symptoms commonly associated with giardiasis. Which one is a unit process in water treatment?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Abdominal cramps"
+     },
+     {
+      "id": "b",
+      "label": "Diarrhea"
+     },
+     {
+      "id": "c",
+      "label": "Fatigue"
+     },
+     {
+      "id": "d",
+      "label": "Flocculation"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Flocculation is a water treatment process, whereas cramps, diarrhea, and fatigue are symptoms of giardiasis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "4da726054fdfbe024c20f632f1ab00b7b2bb918458e8a16bf7039bb4ef3007a2",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-05",
+    "prompt": "Three of these are gases tested in Stanley Miller's primordial Earth experiment. Which one is an organic product formed in the seawater?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ammonia"
+     },
+     {
+      "id": "b",
+      "label": "Methane"
+     },
+     {
+      "id": "c",
+      "label": "Hydrogen"
+     },
+     {
+      "id": "d",
+      "label": "Amino acids"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Amino acids were formed in the seawater during the experiment, while ammonia, methane, and hydrogen were input gases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "54987207175f97f24351aacd26a790ce6cb3c6d22eb232d361983e75918f04ae",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-06",
+    "prompt": "Three of these are high-risk groups for Giardia infection identified in epidemiological surveys. Which one is a taxonomic rank?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hikers and campers"
+     },
+     {
+      "id": "b",
+      "label": "International travelers"
+     },
+     {
+      "id": "c",
+      "label": "Daycare children"
+     },
+     {
+      "id": "d",
+      "label": "Phylum"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Phylum is a taxonomic classification rank, whereas the others are high-risk groups for Giardia infection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "49c5cae5f112178da1c9e915f20e6e3e561ee9cbc18bf8ab5e2f964dd1881a59",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m2-08",
+    "prompt": "Three of these are physical characteristics of microscopic nematodes and flatworms. Which one is a bacterial cell-wall secretion?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Cuticle-covered body"
+     },
+     {
+      "id": "b",
+      "label": "Nonsegmented cylinder"
+     },
+     {
+      "id": "c",
+      "label": "Tapered at both ends"
+     },
+     {
+      "id": "d",
+      "label": "Slime layer"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "A slime layer is an unorganized bacterial secretion, whereas the others describe microscopic worms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "1419ce786dcc0ce68675da89d01c1387553331a243aa73cca1b3ce7dd9bdd351",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-01",
+    "prompt": "Aerobic microorganisms in a treatment basin experience a sudden drop in available nitrogen and phosphorus while organic carbon remains abundant. What happens to the rate of carbon oxidation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Sufficient nitrogen and phosphorus nutrients are required to permit microbial oxidation of available carbon materials."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "4c37ca402b0754d96e2de13755be0ffeb5b6b92e9c8b47b13d15d2adab4a475e",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-02",
+    "prompt": "A bacterial cell loses the structural integrity of its rigid cell wall while suspended in a dilute aqueous solution. What happens to the risk of osmotic lysis?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "The rigid cell wall protects the delicate protoplast from bursting due to osmotic lysis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "9f098659327708ed77c056224ada209851d00bf7c8af039ce366aaf816ed8b1e",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-03",
+    "prompt": "Heavy algal growth develops on treatment basin walls and intakes without periodic cleaning. What happens to the open flow area through screens and intakes?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Heavy algal growth plugs intakes and screens, reducing the open flow area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "b2be4c0bd7663ac2d855a0b2ec0e007fd8bdeeaa68ff9c27a270dbd341086589",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-04",
+    "prompt": "A surface water plant experiences a filter media defect while Giardia cysts are present in the raw water. What happens to the number of cysts passing into the filtered water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Defects in filter construction or maintenance reduce cyst removal and allow more cysts to pass through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "56aa67966cff3a2a89a37902570f83838ffc63663957fc771a4e73be01b53b6a",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-05",
+    "prompt": "A flagellated microorganism loses its flagella while remaining in a chemical environment that is becoming harmful. What happens to its ability to flee the harmful area?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "The main benefit of flagella is the organism's increased ability to flee from harmful areas."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "a763aef903477ad2e17e98d56a51e18f9d657881f73ade33810167aa19b7f854",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-06",
+    "prompt": "A person ingests 10 viable Giardia cysts instead of 1 cyst, and stomach acid liberates trophozoites in the small intestine. What happens to the likelihood of establishing an infection?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Ten cysts is the minimum experimental dose shown to infect humans, raising infection likelihood over a single cyst."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "85bd860f90c9dcf1e28398613b91dcd753fc9466072d2cfb5ef8272436ff5019",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-07",
+    "prompt": "A toxic industrial discharge enters an aerobic biological treatment unit, lowering the pH well below 6.5. What happens to the activity of the treatment microorganisms?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Microorganisms require proper pH (6.5 to 9.0) and a lack of toxic materials to oxidize organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "6455d9f6ac6ae323525f66c04010aab982b05265563bb12bddf31b9188deef3d",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m3-08",
+    "prompt": "A wastewater treatment plant ensures viable pathogenic microorganisms are removed or inactivated before effluent is discharged. What happens to the public health risk downstream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Preventing viable pathogens from leaving in treated effluent protects downstream consumers and animals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "8e7cfbc310320961cb9add70a5f0cb40b9308e38edd7710049ed42db1b2c6018",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-01",
+    "prompt": "An operator reviews prokaryotic cell structures. Which statement is inaccurate?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The rigid cell wall protects the protoplast from osmotic lysis."
+     },
+     {
+      "id": "b",
+      "label": "Prokaryotic cells carry a distinct membrane-bound nucleus."
+     },
+     {
+      "id": "c",
+      "label": "Ribosomes are minute RNA bodies that synthesize proteins."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Prokaryotic cells lack a distinct nucleus; their DNA is packaged within the nucleoid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "61b20e90343efff28abda82e065bc21aead9c9d212afcd9ccc337dbf6e7befd1",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-02",
+    "prompt": "A trainee summarizes algae in water and wastewater systems. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Algae are aquatic plants commonly classified by color."
+     },
+     {
+      "id": "b",
+      "label": "Heavy algal growth can plug treatment plant intakes and screens."
+     },
+     {
+      "id": "c",
+      "label": "Freshwater algae are major waterborne pathogens in humans."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Algae are not pathogenic, though they cause operational nuisances and taste-and-odor problems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "1840072f5158b04fd7db1da649c00429a232bc0b7250898c826d65fa6010cb7a",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-03",
+    "prompt": "A technician reviews binomial nomenclature rules. Which statement contains an error?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The first letter of the genus name is usually capitalized."
+     },
+     {
+      "id": "b",
+      "label": "Genus and species names are usually printed in italics."
+     },
+     {
+      "id": "c",
+      "label": "Species is the largest, most inclusive taxonomic category."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Kingdom is the largest, most inclusive category, whereas species is the most specific."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "2eab02579eebe19aba6f5ba309fc87bff1b4b88502a66979badb9f6e88dc4c1a",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-04",
+    "prompt": "A supervisor reviews Giardia transmission and outbreaks. Which statement is inaccurate?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hand-to-mouth transfer of cysts from feces is a common route."
+     },
+     {
+      "id": "b",
+      "label": "Beavers are the primary originators introducing Giardia into new areas."
+     },
+     {
+      "id": "c",
+      "label": "Accidental cross-connections between water and sewage can cause outbreaks."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Beavers are unlikely originators; they are more likely victims of cysts from human sewage or campers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "38ef51921ab2e1d317ec3c0d63c2f962bf603da664c6d92888acead6bf653bb1",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-05",
+    "prompt": "An operator reviews bacterial capsules and slime layers. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Capsules are organized accumulations of gelatinous material on cell walls."
+     },
+     {
+      "id": "b",
+      "label": "Slime layers adhere loosely to the cell wall as unorganized accumulations."
+     },
+     {
+      "id": "c",
+      "label": "Thin microcapsules are easily seen under an ordinary light microscope."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Thinner microcapsules can be detected only by electron microscopy, not an ordinary light microscope."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "25c2691b3c941310b679d53049164a5e31a24d29a55c2f23b9f960a427ecf913",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-06",
+    "prompt": "A student reviews fungi in wastewater operations. Which statement is inaccurate?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Fungi are critical in biosolids composting operations."
+     },
+     {
+      "id": "b",
+      "label": "Fungi grow as filamentous mold-like or yeast-like forms."
+     },
+     {
+      "id": "c",
+      "label": "Fungi are single-celled prokaryotes that lack cell walls."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Fungi are multicellular, autotrophic, photosynthetic protists that feed on organic material."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "649f6632af3a85db5c8a620e80e8ad5e2f185426a3f015f8a259517905b11319",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-07",
+    "prompt": "A technician reviews surface water treatment rules for Giardia and Cryptosporidium. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The Surface Water Treatment Rule targets 99.9% Giardia removal or inactivation."
+     },
+     {
+      "id": "b",
+      "label": "Surface water systems generally require both filtration and disinfection."
+     },
+     {
+      "id": "c",
+      "label": "Cryptosporidium was excluded from the 1996 Enhanced Surface Water Treatment Rule."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The 1996 Enhanced Surface Water Treatment Rule included Cryptosporidium and further regulated Giardia."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "2d5758cde2a2f5494c88229164de5599e035f6e746a42962bd2fcb875014deb1",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m4-08",
+    "prompt": "An operator reviews the plasma membrane of a bacterial cell. Which statement is inaccurate?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The plasma membrane is surrounded externally by the cell wall."
+     },
+     {
+      "id": "b",
+      "label": "It is composed of a lipoprotein complex about 7 to 8 nm thick."
+     },
+     {
+      "id": "c",
+      "label": "It accounts for about 20 to 40% of a bacterium's dry weight."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The plasma membrane accounts for 10 to 20% of dry weight, whereas the cell wall accounts for 20 to 40%."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "f053e61b4cfe0ec80408ef67379e1b1decea465cbacc9ef12788d088370ed969",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m5-01",
+    "prompt": "In the infection cycle of Giardia lamblia, does a person swallow the cyst before or after the trophozoite becomes established in the small intestine?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The cyst is swallowed first, and stomach acid liberates the trophozoite to establish in the small intestine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "46af2f7a61b36d1fc3f0dc1c0aebbb79500059dc2f69e5958385924392bae1e1",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m5-02",
+    "prompt": "In a conventional surface water treatment train, does prechlorination occur before or after filtration?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Prechlorination is an early unit process applied prior to coagulation-flocculation and filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "f043624dafbba358818af84362d5537a4b8dc07dd21ab26d5270d1b92cdd5721",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m5-03",
+    "prompt": "In Stanley Miller's laboratory experiment on primordial Earth conditions, did passing vapor through electrical discharges occur before or after amino acids were detected in the seawater?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Electrical discharges through the vapor mixture produced condensed rain that returned to the seawater, forming amino acids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "05e2b430a988282a223605d1ad87ac8821c4f91bfe8f92af27fe40b171d2b5fe",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m5-04",
+    "prompt": "In a wastewater treatment plant, do operators determine which microorganisms are present and how they function before or after putting them to work degrading organic waste?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Understanding which microorganisms are present and how they function is needed to control and operate the treatment process."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "ae3c8822f8476b9ac2cc015769ba9f5989ad763284470ebba592389d9810eb49",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-water-coll-r03-m5-05",
+    "prompt": "In a conventional surface water treatment train, does raw water storage occur before or after final disinfection?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Raw water storage is the first step in the treatment train, while disinfection is the final step."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+    "notes": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+    "registeredAt": "2026-11-19T03:17:40.021Z",
+    "payloadSha256": "aacc5ba63c699d08ecdb70d60779d7d1c9ee8de0110f67c9538f4fd3b9b77b64",
+    "builderResultsSha256": "1fb10d6950169847cef0c08feb552af626a59e557888158ed66126399b63bb54"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:16:49.128109+00:00",
+   "attestation": "Strict AI self-review of 45 items in targeth-wpi-class2-water-coll-r03 against provided source pages and collision candidates; 42 items accepted, 3 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-01": "3fb6be94b9a9c1e3d483d6f510c858c7dc057cb9d5a782fc8b945ee23141455d",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-02": "5a155777f5574ea68445b80a0a04ff1a0b8b473955089e5431f9b854074e17be",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-03": "f183c3207d515e3c8acefab0e953a5b58ab62392d38a3d59a689c52c7214aae6",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-04": "4fe8eca8c36888530aae6052584e11bb00bcdd0e1619288f562011409828af25",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-05": "6b6d2621076da7396c08a7563aa7036b0df0095c3bcfd2a7527784502be97fe2",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-06": "69046fb4155ecc401b0ce4e7b743e5c50b25cc234837318c46e2358d02c53e7f",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-07": "8883824d23b96d1e64a241c71fd202947c4ff9e8830d9f3ca1ec88f9424eafa7",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-08": "01e5ff805b999bc8cca5765a7bcd312d1099382548cf2f588d343d46bfa576e0",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m0-10": "920c6f0939617aa24693ca3026b5847b2f9f723c7f5acfa8fcbad3e65d04578c",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m1-01": "789954218bdb89789fe34c660ef29b62504fa8a796c0fdf8d833204ed3d970b0",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m1-02": "704173a0176daab352796344fef5d6c0dc8bd5cf3d0268bfadd783d3b5a4cd63",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m1-03": "277de3c46166bd3c16e9984aea7d808437b9ea7dc420bc5698cb9467f39fb57e",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m1-04": "ead714cd70dd8a119d85f3432d1326b5ae16bfd990935e48411297167773f99e",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m1-05": "7b8bc2882abc3f8d1c2f211270f56b8da66bc1617edc426e90e633832cfc4106",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-01": "47db93c1d8abdcbc79d8edf2370c38985084590ae9e17466bf3c3972cd011f5e",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-02": "ee546bdfd37a7cae4be3b80eaf74a5a759cf3d7f62274862d88c121a8aa42bfe",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-03": "19ca84bd0152d3d627f88049c6cb1c222f26fd15058351a8c744e2707f1547a0",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-04": "4da726054fdfbe024c20f632f1ab00b7b2bb918458e8a16bf7039bb4ef3007a2",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-05": "54987207175f97f24351aacd26a790ce6cb3c6d22eb232d361983e75918f04ae",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-06": "49c5cae5f112178da1c9e915f20e6e3e561ee9cbc18bf8ab5e2f964dd1881a59",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m2-08": "1419ce786dcc0ce68675da89d01c1387553331a243aa73cca1b3ce7dd9bdd351",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-01": "4c37ca402b0754d96e2de13755be0ffeb5b6b92e9c8b47b13d15d2adab4a475e",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-02": "9f098659327708ed77c056224ada209851d00bf7c8af039ce366aaf816ed8b1e",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-03": "b2be4c0bd7663ac2d855a0b2ec0e007fd8bdeeaa68ff9c27a270dbd341086589",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-04": "56aa67966cff3a2a89a37902570f83838ffc63663957fc771a4e73be01b53b6a",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-05": "a763aef903477ad2e17e98d56a51e18f9d657881f73ade33810167aa19b7f854",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-06": "85bd860f90c9dcf1e28398613b91dcd753fc9466072d2cfb5ef8272436ff5019",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-07": "6455d9f6ac6ae323525f66c04010aab982b05265563bb12bddf31b9188deef3d",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m3-08": "8e7cfbc310320961cb9add70a5f0cb40b9308e38edd7710049ed42db1b2c6018",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-01": "61b20e90343efff28abda82e065bc21aead9c9d212afcd9ccc337dbf6e7befd1",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-02": "1840072f5158b04fd7db1da649c00429a232bc0b7250898c826d65fa6010cb7a",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-03": "2eab02579eebe19aba6f5ba309fc87bff1b4b88502a66979badb9f6e88dc4c1a",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-04": "38ef51921ab2e1d317ec3c0d63c2f962bf603da664c6d92888acead6bf653bb1",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-05": "25c2691b3c941310b679d53049164a5e31a24d29a55c2f23b9f960a427ecf913",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-06": "649f6632af3a85db5c8a620e80e8ad5e2f185426a3f015f8a259517905b11319",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-07": "2d5758cde2a2f5494c88229164de5599e035f6e746a42962bd2fcb875014deb1",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m4-08": "f053e61b4cfe0ec80408ef67379e1b1decea465cbacc9ef12788d088370ed969",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m5-01": "46af2f7a61b36d1fc3f0dc1c0aebbb79500059dc2f69e5958385924392bae1e1",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m5-02": "f043624dafbba358818af84362d5537a4b8dc07dd21ab26d5270d1b92cdd5721",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m5-03": "05e2b430a988282a223605d1ad87ac8821c4f91bfe8f92af27fe40b171d2b5fe",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m5-04": "ae3c8822f8476b9ac2cc015769ba9f5989ad763284470ebba592389d9810eb49",
+    "targeth-ht261118-wpi-class2-water-coll-r03-m5-05": "aacc5ba63c699d08ecdb70d60779d7d1c9ee8de0110f67c9538f4fd3b9b77b64"
+   }
+  },
+  "registeredAt": "2026-11-19T03:17:40.021Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 4,
+     "f": 5
+    },
+    "dirs": {
+     "increase": 3,
+     "decrease": 5,
+     "unchanged": 0
+    },
+    "longest": 5,
+    "options": 23
+   },
+   "batchSha256": "de5af86ce299715fb238e85f1e2af4e620aeebd508b5d591f0b5ecd93c1c1f3e"
+  }
+ }
+}

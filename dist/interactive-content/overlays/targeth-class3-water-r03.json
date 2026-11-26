@@ -1,0 +1,2136 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class3-water-r03",
+ "scope": "Owner-authorized AI-reviewed game activities: 56 items.",
+ "additions": [
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-01",
+    "prompt": "Sterilization aims to eliminate living organisms broadly, whereas drinking water disinfection targets destroying disease-causing organisms.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Disinfection destroys pathogenic organisms to prevent disease, whereas sterilization kills all living organisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "73324d09e2900fbd04eac98929a804cf388e9070423adfae184e9b4d3466771e",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-02",
+    "prompt": "Disinfection in drinking water treatment is used exclusively for pathogen inactivation and plays no role in controlling nuisance organisms like zebra mussels.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Disinfectants are also used for nuisance control such as zebra mussels and Asiatic clams, as well as compound oxidation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "1f30a394708c5feaddedb21ff0e7b586c8318a68b36f171d6fcc0e556c853b91",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-03",
+    "prompt": "Natural organic matter, including humic and nonhumic substances, is the principal precursor of organic disinfection byproducts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Natural organic matter reacts with chlorine and ozone to form organic disinfection byproducts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "8bed3489f5caf60582a4b14c6f016d3a82cb7f671f6c7e7466056db60d678e9f",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-04",
+    "prompt": "Increasing the ratio of bromide ion to chlorine dose shifts trihalomethane speciation away from brominated forms toward chloroform.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Increasing the bromide-to-chlorine ratio shifts trihalomethane speciation toward more brominated forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "3af46365f3c323c8f9d9192e1d1dc416c8bdba102f1ccdf27f81bfcd41542b6d",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-05",
+    "prompt": "Nanofiltration membrane permeate can still form higher bromoform levels upon chlorination than raw water if the bromide-to-chlorine ratio rises.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Although total trihalomethanes drop in nanofiltration permeate, a shift toward brominated species can raise bromoform."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "3f0fb452d672b041b2ab9b62ea19cf0219edb273dc5d9728e66662a8a5a75978",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-06",
+    "prompt": "Ultraviolet light disinfection works effectively in highly turbid water because suspended particles scatter the light evenly through the reactor.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "UV light is absorbed rapidly, so UV disinfection is limited to nonturbid waters close to the light source."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "878e5c9a5ff4b8ea3518449bac8b3714a09a6840a7c04c4150c55d157b321970",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-07",
+    "prompt": "Chlorine can be used in water treatment to bleach certain organic colors and to oxidize hydrogen sulfide.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because of its oxidizing power, chlorine destroys hydrogen sulfide, bleaches organic colors, and controls slime growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "36be7220b6a2104217a4eae600a465f95e5ac9d326a00f4be2f6134774815fd8",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-08",
+    "prompt": "Among the environmental factors influencing chlorine disinfection, turbidity and mixing have a greater impact on pathogen inactivation than pH and temperature.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Of the environmental factors affecting chlorine disinfection, pH and temperature have the greatest impact on pathogen inactivation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "310d4b120e5b28442d261e7a4a2b65a32a8d9d02abce1a57071db22f24668f39",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-09",
+    "prompt": "In enteric virus chlorination tests at cold temperature, poliovirus required a much longer contact time for four-log inactivation than reovirus.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "At 2 degrees Celsius and pH 7.8, reovirus needed 2.7 minutes while poliovirus needed over 60 minutes for 4-log inactivation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "0918f51de25ff2edff9c541b3f9835f4851dc99708327e7f1e81edcd03980ff1",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-10",
+    "prompt": "Manganese precipitation is more effective at co-removing arsenate than iron precipitation under comparable influent arsenate levels.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Arsenic removal during manganese precipitation is relatively ineffective compared with iron precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "98e713924c461b4c449228f2d4fa435709029fb55b4f35a62b0204987d8fcda1",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-11",
+    "prompt": "Coagulation-assisted microfiltration can capture smaller floc particles than conventional gravity filtration, which reduces the coagulant dose needed.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Microfiltration removes smaller floc sizes, so smaller amounts of coagulant are required compared with conventional gravity filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "dc3fede1559976e5ed00ad4e9df16de44c9770ee142c13dbcbbc379868476d3b",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-12",
+    "prompt": "Sulfate competes strongly with arsenate for adsorption sites on granular ferric hydroxide, whereas phosphate shows minimal competition.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Phosphate competes strongly with arsenate on granular ferric hydroxide, whereas sulfate competition is not very strong."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "a36b2da97da110ec84a4ac3801a7f59d193ef2013f88b4153d97f72eb3639913",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-13",
+    "prompt": "At high pH values, granular ferric hydroxide outperforms activated alumina for arsenate adsorption, while their performance is comparable below pH 7.6.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Granular ferric hydroxide outperforms activated alumina at high pH, while both perform comparably below pH 7.6."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d1deb735ad8f6c6ab20895dc6a55219448b2a02a8f918bde5bd9a63643ad9cb2",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-14",
+    "prompt": "Regenerating spent granular ferric hydroxide with an alkaline leach solution produces a clean, reusable brine that needs no further treatment.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Alkaline regeneration generates a high-arsenate solution requiring further treatment, so direct disposal of spent media is favored."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "66ed6fa9610842551e2e37cf1ff5786bb2e9d682e66c61a55747ea366d1f0a26",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m0-15",
+    "prompt": "Water and alcohol are miscible liquids that disperse uniformly in one another, whereas water and liquid mercury are immiscible.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Water and alcohol mix uniformly in all proportions, whereas water and liquid mercury do not mix."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "0578f139a8b49703286a0086b5e9f303acef492852cf1ec88f02dda4d1be9436",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-01",
+    "prompt": "Distinguish disinfection methods and non-disinfection chlorine applications.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Boiling water",
+      "right": "Heat disinfection suited only to household quantities"
+     },
+     {
+      "id": "p2",
+      "left": "Ultraviolet light",
+      "right": "Practical for large flows but limited to nonturbid water"
+     },
+     {
+      "id": "p3",
+      "left": "Silver or copper",
+      "right": "Metal ions used as disinfecting agents"
+     },
+     {
+      "id": "p4",
+      "left": "Slime growth control",
+      "right": "Chlorine use that maintains distribution water quality"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide destruction",
+      "right": "Chlorine oxidation of a dissolved gas"
+     },
+     {
+      "id": "p6",
+      "left": "Organic color bleaching",
+      "right": "Aesthetic improvement achieved by chlorine oxidation"
+     }
+    ],
+    "explanation": "Disinfection methods include heat, UV, and metal ions, while chlorine also serves non-disinfection oxidation roles."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "0cd421b7e495caf72569349206ddd27ff53cb8847a06e06f85300bf437638293",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-02",
+    "prompt": "Distinguish disinfection byproduct precursors, oxidants, and resulting compounds.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Natural organic matter",
+      "right": "Principal precursor of organic disinfection byproducts"
+     },
+     {
+      "id": "p2",
+      "left": "Bromide ion",
+      "right": "Source water ion oxidized to hypobromous acid"
+     },
+     {
+      "id": "p3",
+      "left": "Hypobromous acid",
+      "right": "Intermediate that reacts with organics to form bromoform"
+     },
+     {
+      "id": "p4",
+      "left": "Bromate ion",
+      "right": "Byproduct formed when ozone reacts with hypobromite"
+     },
+     {
+      "id": "p5",
+      "left": "Haloacetic acids",
+      "right": "Organic byproducts formed when chlorine reacts with organics"
+     },
+     {
+      "id": "p6",
+      "left": "Aldehydes and keto-acids",
+      "right": "Byproducts formed when ozone reacts with organics"
+     }
+    ],
+    "explanation": "Organic matter and bromide react with chlorine or ozone through distinct pathways to form specific byproducts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "78d7d14ffdacc266378598b69e98e5a6b6f67d048796e9d099385091235fca29",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-03",
+    "prompt": "Distinguish environmental factors affecting free chlorine disinfection.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Low pH",
+      "right": "Favors hypochlorous acid over hypochlorite ion"
+     },
+     {
+      "id": "p2",
+      "left": "High pH",
+      "right": "Shifts free chlorine toward weaker hypochlorite ion"
+     },
+     {
+      "id": "p3",
+      "left": "High water temperature",
+      "right": "Supports higher levels of pathogen inactivation"
+     },
+     {
+      "id": "p4",
+      "left": "High turbidity",
+      "right": "Interferes with chlorine reaching target microbes"
+     },
+     {
+      "id": "p5",
+      "left": "Reovirus",
+      "right": "Least chlorine-resistant enteric virus in cold estuary tests"
+     },
+     {
+      "id": "p6",
+      "left": "Poliovirus",
+      "right": "Most chlorine-resistant enteric virus in cold estuary tests"
+     }
+    ],
+    "explanation": "Free chlorine effectiveness depends strongly on pH, temperature, turbidity, and the specific organism."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d3589704042bea9290062e57162fff47a480bffb44266847602ee7b8bbca24f2",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-04",
+    "prompt": "Distinguish arsenic removal technology categories and specific media.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Prescriptive processes",
+      "right": "Traditional treatments tailored for arsenic removal"
+     },
+     {
+      "id": "p2",
+      "left": "Adsorption processes",
+      "right": "Media such as activated alumina or ferric hydroxide"
+     },
+     {
+      "id": "p3",
+      "left": "Ion exchange processes",
+      "right": "Resin-based exchange of arsenate ions"
+     },
+     {
+      "id": "p4",
+      "left": "Separation processes",
+      "right": "Membrane-based physical barrier technologies"
+     },
+     {
+      "id": "p5",
+      "left": "Greensand filtration",
+      "right": "Oxidation-filtration using iron-rich glauconite"
+     },
+     {
+      "id": "p6",
+      "left": "Manganese precipitation",
+      "right": "Relatively ineffective for arsenate compared with iron"
+     }
+    ],
+    "explanation": "Arsenic removal spans four broad categories, with greensand and iron precipitation offering stronger performance than manganese."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d909d0df21ffeed30d838d3b2c9a2d39b3661154b3922ec0dc450eaf1dabf1fe",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-05",
+    "prompt": "Distinguish coagulation and membrane options for arsenic and DBP control.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Coagulation-assisted microfiltration",
+      "right": "Captures smaller floc and lowers coagulant demand"
+     },
+     {
+      "id": "p2",
+      "left": "Ferric chloride coagulation",
+      "right": "Effective for arsenate between pH 5.5 and 7.0"
+     },
+     {
+      "id": "p3",
+      "left": "Alum coagulation",
+      "right": "Improves arsenate removal when pH is lowered"
+     },
+     {
+      "id": "p4",
+      "left": "Posttreatment pH adjustment",
+      "right": "Needed for corrosion control after low-pH coagulation"
+     },
+     {
+      "id": "p5",
+      "left": "Nanofiltration membrane",
+      "right": "Lowers total THMs but can shift speciation to bromoform"
+     },
+     {
+      "id": "p6",
+      "left": "Waste brine disposal",
+      "right": "Key limitation of membrane treatment systems"
+     }
+    ],
+    "explanation": "Coagulation and membrane processes differ in pH sensitivity, floc size requirements, and residual handling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "ddbb9ae3f063d555be2287b19a86bfe82d96810990c598857b53172629ebe0b4",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-06",
+    "prompt": "Distinguish granular ferric hydroxide and sulfur-modified iron arsenic removal traits.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sulfur-modified iron at pH 7",
+      "right": "Higher arsenic removal per gram of iron"
+     },
+     {
+      "id": "p2",
+      "left": "Sulfur-modified iron at pH 8",
+      "right": "Lower arsenic removal per gram of iron"
+     },
+     {
+      "id": "p3",
+      "left": "Phosphate ion",
+      "right": "Competes strongly with arsenate on granular ferric hydroxide"
+     },
+     {
+      "id": "p4",
+      "left": "Sulfate ion",
+      "right": "Shows weak competition with arsenate on ferric hydroxide"
+     },
+     {
+      "id": "p5",
+      "left": "GFH above pH 7.6",
+      "right": "Outperforms activated alumina for arsenate adsorption"
+     },
+     {
+      "id": "p6",
+      "left": "GFH below pH 7.6",
+      "right": "Performs comparably to activated alumina"
+     }
+    ],
+    "explanation": "Iron-based media performance depends on pH and competing anions such as phosphate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "bb8c479b74687cc57b96789a2340c0ef4a26958e4503ea23e3a97290f9f925e0",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-07",
+    "prompt": "Distinguish iron-based and experimental arsenic treatment residuals and mechanisms.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Direct GFH disposal",
+      "right": "Favored over regeneration to avoid liquid arsenate waste"
+     },
+     {
+      "id": "p2",
+      "left": "Alkaline GFH regeneration",
+      "right": "Generates high-arsenate solution needing further treatment"
+     },
+     {
+      "id": "p3",
+      "left": "Iron filings and sand",
+      "right": "Reduces inorganic arsenic into iron coprecipitates"
+     },
+     {
+      "id": "p4",
+      "left": "Sulfate in iron filings bed",
+      "right": "Introduced to encourage arsenopyrite precipitation"
+     },
+     {
+      "id": "p5",
+      "left": "Photooxidation coprecipitation",
+      "right": "Experimental process yielding stable residuals"
+     },
+     {
+      "id": "p6",
+      "left": "TCLP test",
+      "right": "Evaluates whether residuals qualify as nonhazardous waste"
+     }
+    ],
+    "explanation": "Arsenic media and experimental processes differ in how they form precipitates and manage spent residuals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "09e5f76e9dbcb3af1a6d54ffc50659e959a481dd2e286ceed04020c567a4c223",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-08",
+    "prompt": "Distinguish bulk physical measurements from chemical composition analyses and miscibility terms.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bulk physical property",
+      "right": "Volume, temperature, or mass measured with an instrument"
+     },
+     {
+      "id": "p2",
+      "left": "Chemical property analysis",
+      "right": "Determines how much of a substance is present"
+     },
+     {
+      "id": "p3",
+      "left": "Completely miscible",
+      "right": "Substances that disperse uniformly in all proportions"
+     },
+     {
+      "id": "p4",
+      "left": "Immiscible liquids",
+      "right": "Liquids such as water and mercury that do not mix"
+     },
+     {
+      "id": "p5",
+      "left": "Solubility range",
+      "right": "Partial mixing up to a specific limit"
+     },
+     {
+      "id": "p6",
+      "left": "Parts per million",
+      "right": "Common unit for small amounts of soluble contaminants"
+     }
+    ],
+    "explanation": "Water chemistry distinguishes physical bulk measurements from chemical composition and defines miscibility limits."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "5322250300da02f5dc2d32ea6f931d1b753900a714f343676b0730bec2a960f8",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-09",
+    "prompt": "Distinguish desired disinfectant characteristics and waterborne disease concepts.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Disinfection goal",
+      "right": "Destroy disease-causing organisms in water"
+     },
+     {
+      "id": "p2",
+      "left": "Sterilization goal",
+      "right": "Kill all living organisms completely"
+     },
+     {
+      "id": "p3",
+      "left": "Disinfectant persistence",
+      "right": "Maintains a measurable residual in treated water"
+     },
+     {
+      "id": "p4",
+      "left": "Analytical ease",
+      "right": "Allows quick concentration checks in treated water"
+     },
+     {
+      "id": "p5",
+      "left": "Vibrio cholerae",
+      "right": "Bacterium causing acute diarrheal illness from contaminated water"
+     },
+     {
+      "id": "p6",
+      "left": "Nuisance control",
+      "right": "Secondary disinfectant use against clams and mussels"
+     }
+    ],
+    "explanation": "Effective disinfectants target pathogens, persist in treated water, and are easy to measure."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "0d2a0c0f2b9387a893e3f9b120856ca1bc1f6f24b609aa533dca325bc2b44231",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m1-10",
+    "prompt": "Distinguish DBP control strategies across a treatment train.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Enhanced coagulation",
+      "right": "Removes organic precursors before disinfection"
+     },
+     {
+      "id": "p2",
+      "left": "Moving chlorination point",
+      "right": "Delays chlorine addition until precursors are reduced"
+     },
+     {
+      "id": "p3",
+      "left": "Chloramines or chlorine dioxide",
+      "right": "Alternative disinfectants that form fewer DBPs"
+     },
+     {
+      "id": "p4",
+      "left": "Powdered activated carbon",
+      "right": "Added seasonally to reduce THM precursors"
+     },
+     {
+      "id": "p5",
+      "left": "Two-oxidant strategy",
+      "right": "Applies different oxidants where precursors vary"
+     },
+     {
+      "id": "p6",
+      "left": "Spiral-wound NF (200 to 300 Da)",
+      "right": "Membrane size used to control brominated THMs"
+     }
+    ],
+    "explanation": "Utilities control disinfection byproducts by removing precursors, shifting application points, or using alternative oxidants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "741c2a639a6216830f1f0c3a2e76ea03411bad7d34959bfcbb7103c141c57a4c",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m2-01",
+    "prompt": "Three of these are listed non-disinfection uses of chlorine in water treatment. Which physical heat method is the outsider?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Destruction of hydrogen sulfide"
+     },
+     {
+      "id": "b",
+      "label": "Bleaching of organic colors"
+     },
+     {
+      "id": "c",
+      "label": "Control of distribution slime growth"
+     },
+     {
+      "id": "d",
+      "label": "Boiling water for five minutes"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Boiling water is a heat disinfection method, whereas the others are non-disinfection oxidation uses of chlorine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "e817b6fc5c90fd7b2fb123ff700d216ebb9278119d56496163cdec294f012fa6",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-01",
+    "prompt": "Assume source water temperature rises from winter to summer while organic precursors and chlorine dose stay constant. What happens to the rate of disinfection byproduct formation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher water temperatures accelerate chemical reactions, increasing the rate of disinfection byproduct formation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "691577bd06ea9fc4733d7ffd1383107e595a82890cd2a5116529aff3194c3aca",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-02",
+    "prompt": "Assume raw water bromide ion concentration rises while applied ozone dose and pH stay constant. What happens to the potential for bromate ion formation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Ozone oxidizes bromide to hypobromite and can further react with hypobromite to form bromate ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "88329551f252127ee6c50c4e03defa7bca4971aef6f1dd885565c35898245bc5",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-03",
+    "prompt": "Assume a treatment plant moves its chlorination point downstream after coagulation and settling while raw water quality stays constant. What happens to the trihalomethane formation in the plant?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Moving chlorination downstream reduces contact between free chlorine and organic precursors already removed during clarification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "bb3816adc1577b35bff2a69b9e02e7de51ed7fe9485e59ea95a77c59053c83c0",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-04",
+    "prompt": "Assume water turbidity increases sharply ahead of an ultraviolet light disinfection reactor while lamp power and flow stay constant. What happens to the transmission of UV light through the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "UV light is absorbed rapidly, so higher turbidity limits UV light penetration through the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d069438a8721161569babe6bdbc1c08221cd2e4b84bcec6b9e0f142c72421545",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-05",
+    "prompt": "Assume free chlorine is applied at pH 6.5 instead of pH 8.5 while temperature and total chlorine residual stay constant. What happens to the germicidal efficiency of the free chlorine?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lower pH favors hypochlorous acid, which has much higher germicidal efficiency than hypochlorite ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d97c2aa83331922174b5452e6a0f58deb1973f57385616411169e1320972ab57",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-06",
+    "prompt": "Assume a plant switches from manganese precipitation to iron precipitation for arsenate co-removal under comparable influent arsenate levels. What happens to the arsenate removal efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Iron precipitation is substantially more effective at co-removing arsenate than manganese precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "1585c11e185595e55cc228f8837c76e3fe2083c129341de612364109e5392ecd",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-07",
+    "prompt": "Assume raw water pH is lowered during alum coagulation of arsenate-bearing water at a constant alum dose. What happens to the arsenate removal efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Lowering pH during enhanced alum coagulation improves arsenate removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "48288c54e548914b42ba6ff6004b38aa8d3b46e913d171bc35a9c75bdc8d5fca",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-08",
+    "prompt": "Assume raw water pH shifts from 6.0 to 6.8 during ferric chloride coagulation for arsenate removal at a constant dose. What happens to the arsenate removal efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "With ferric coagulation, pH does not have a significant effect on arsenate removal between pH 5.5 and 7.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "73ded33430b4fae27772c33117581ddf29dff9e8ec877aec9d18eb4ba627a7bc",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-09",
+    "prompt": "Assume feed water pH increases from 7.0 to 8.0 in a sulfur-modified iron packed bed at a fixed iron-to-arsenic ratio. What happens to the mass of arsenic removed per gram of iron?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Sulfur-modified iron removes more arsenic per gram of iron at pH 7 than at pH 8."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "4c99f8ea0e774f32ae2918f55e072fefa4ceb361d17249a99a73c7b98862938a",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-10",
+    "prompt": "Assume dissolved phosphate concentration increases in raw water entering a granular ferric hydroxide adsorber at constant pH and flow. What happens to the arsenate adsorption capacity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Phosphate competes strongly with arsenate for adsorption sites on granular ferric hydroxide, reducing arsenate removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "826676e83b0b0a43d039eb5de0b6402f6ddd81cdbfeefc8952cbc2002320a762",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-11",
+    "prompt": "Assume a plant replaces granular ferric hydroxide with activated alumina at pH 8.5 while influent arsenate and flow stay constant. What happens to the arsenate removal performance?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "At high pH values, granular ferric hydroxide outperforms activated alumina for arsenate removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "06d69d392885eeeef161339b586c495d9371d9734140fe364b663fcf8f44c56d",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-12",
+    "prompt": "Assume a fixed volume of water is mixed with alcohol in a laboratory flask at constant temperature and pressure. What happens to the uniformity of the liquid mixture?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Water and alcohol are completely miscible and disperse uniformly into a homogeneous mixture."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "b76bc60278e86db09c5371c4905fa5618cfa5fccd8811883ce53235446c361d6",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-13",
+    "prompt": "Assume a plant replaces free chlorine with chloramines as its secondary disinfectant while organic precursors and temperature stay constant. What happens to the formation of trihalomethanes?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Chloramines are alternative disinfectants that produce fewer trihalomethanes than free chlorine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "c5bb5434e030d27ccf9177d3a064cdc4f786b6e7b95ed5701032d39c003170cd",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-14",
+    "prompt": "Assume water temperature rises during chlorination while pH, contact time, and free chlorine residual stay constant. What happens to the pathogen inactivation efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher water temperatures support higher levels of pathogen inactivation during chlorination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "95e66e7f14ab30c185048217b1a16c50f4885d8324de2fbc891f36b57bb8127d",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m3-15",
+    "prompt": "Assume a plant switches from conventional gravity filtration to coagulation-assisted microfiltration on the same source water. What happens to the microorganism barrier effectiveness during coagulation upsets?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Coagulation-assisted microfiltration provides a more effective microorganism barrier during coagulation process upsets."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "995cca2546fc1020a01da003eb859abe337ba92de31ff7a0a2bbf369dee0f6ae",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-01",
+    "prompt": "An operator reviews disinfection versus sterilization concepts. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Disinfection targets destroying disease-causing organisms in water."
+     },
+     {
+      "id": "b",
+      "label": "Sterilization aims to kill living organisms across the entire sample."
+     },
+     {
+      "id": "c",
+      "label": "Waterworks operators routinely sterilize drinking water to remove microbes."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Waterworks operators disinfect water to destroy dangerous pathogens; they do not attempt to sterilize drinking water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "3f78bcfe685d50f935f8422d094f120b8a6c350ad2877d739be380d468be4466",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-02",
+    "prompt": "A trainee summarizes desired characteristics of a drinking water disinfectant. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "A disinfectant should be nontoxic and avoid adding unpleasant taste or odor."
+     },
+     {
+      "id": "b",
+      "label": "A disinfectant should persist in treated water and be easy to measure."
+     },
+     {
+      "id": "c",
+      "label": "A disinfectant should work poorly when water pH or temperature shifts."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A desired disinfectant should destroy pathogens within expected temperature ranges and despite changes in water character such as pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "96ca65c8df8af3ae89ebe110a1174724e21b9d9822c4c431998908f03a96172c",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-03",
+    "prompt": "A specialist reviews bromide and natural organic matter in DBP formation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Natural organic matter is the principal precursor of organic byproducts."
+     },
+     {
+      "id": "b",
+      "label": "Ozone or free chlorine can oxidize bromide ion to hypobromous acid."
+     },
+     {
+      "id": "c",
+      "label": "Raising the bromide-to-chlorine ratio shifts THMs toward chlorinated forms."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Increasing the bromide-to-chlorine dose ratio shifts trihalomethane speciation toward more brominated forms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "fcfd4505697fe500209002d5c8331872cc942e16e084f5858be7199638e10604",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-04",
+    "prompt": "An engineer evaluates nanofiltration for DBP precursor control. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Chlorinating nanofiltration permeate lowers total trihalomethanes compared with raw water."
+     },
+     {
+      "id": "b",
+      "label": "Nanofiltration permeate can still show higher bromoform after chlorination."
+     },
+     {
+      "id": "c",
+      "label": "Nanofiltration membranes operate without generating waste brine or fouling issues."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Significant limitations of membrane use include waste brine disposal, membrane fouling, replacement cost, and energy cost."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "357bd29d9bb089be6b4986c8e6892457234d6c1a67338622e1b45916f4b93c9d",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-05",
+    "prompt": "A plant team reviews strategies to lower disinfection byproduct formation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Enhanced coagulation removes organic precursors before disinfection occurs."
+     },
+     {
+      "id": "b",
+      "label": "Moving chlorination downstream reduces contact between chlorine and precursors."
+     },
+     {
+      "id": "c",
+      "label": "Using free chlorine as a preoxidant ahead of settling minimizes THM formation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Substituting chloramines, chlorine dioxide, or potassium permanganate for chlorine as a preoxidant helps reduce THM formation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "57a6ed213eff22f846c7e805b69ee72986647a5bbbb8b2b392e0a2217a848e6e",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-06",
+    "prompt": "An operator compares physical and chemical disinfection methods. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ultraviolet light is most effective in nonturbid water close to the lamp."
+     },
+     {
+      "id": "b",
+      "label": "Boiling water for several minutes is practical mainly for household quantities."
+     },
+     {
+      "id": "c",
+      "label": "Ultraviolet light leaves a long-lasting residual that protects distribution mains."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Ultraviolet light is a physical disinfection method that leaves no chemical residual in treated water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "095b61769d79c6f9b9aaa6c384b68c4af0dd40752aa803e10ce4a750826402c4",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-07",
+    "prompt": "A student reviews environmental factors affecting free chlorine disinfection. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hypochlorous acid has much higher germicidal efficiency than hypochlorite ion."
+     },
+     {
+      "id": "b",
+      "label": "Low pH favors hypochlorous acid and improves pathogen inactivation."
+     },
+     {
+      "id": "c",
+      "label": "High turbidity helps chlorine reach pathogens faster inside the basin."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "High turbidity interferes with chlorine disinfection; highest inactivation is achieved with low turbidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "c3f735c0cbf407c0d5f4e12580f9f74bc2db44b688c862fe5b786d5283861168",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-08",
+    "prompt": "A microbiologist compares enteric virus resistance to free chlorine. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "In cold Potomac estuary water tests, reovirus was the least resistant virus."
+     },
+     {
+      "id": "b",
+      "label": "Poliovirus required more than sixty minutes for four-log inactivation."
+     },
+     {
+      "id": "c",
+      "label": "Reovirus required a longer contact time than poliovirus for four-log removal."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Reovirus needed 2.7 minutes for 4-log inactivation, whereas poliovirus was most resistant and needed over 60 minutes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "c96744f2670b101790f751d5cacefbfe52e92f7a489530946b6037555723217b",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-09",
+    "prompt": "An engineer reviews arsenic removal technology categories and iron vs manganese. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Arsenic technologies are grouped into prescriptive, adsorption, ion exchange, and separation."
+     },
+     {
+      "id": "b",
+      "label": "Greensand filtration uses glauconite, an iron-rich clay-like material, to remove arsenic."
+     },
+     {
+      "id": "c",
+      "label": "Manganese precipitation removes arsenate more effectively than iron precipitation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Arsenic removal during manganese precipitation is relatively ineffective compared with iron precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "efd42782d0f1606169a059a2bdb648c41e4ee78e9217a8a9a1eb77ae33f1d301",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-10",
+    "prompt": "A trainee compares alum and ferric chloride for arsenate coagulation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Ferric chloride achieved high arsenate removal without needing acid addition."
+     },
+     {
+      "id": "b",
+      "label": "Lowering pH during enhanced coagulation improved arsenate removal by alum."
+     },
+     {
+      "id": "c",
+      "label": "Ferric coagulation shows major arsenate removal swings between pH 5.5 and 7.0."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "With ferric coagulation, pH does not have a significant effect on arsenate removal between pH 5.5 and 7.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "31c1913b0dc30cd79a885bd051e7d4664699f171819c1863dfa48f745997d8f8",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-11",
+    "prompt": "An operator reviews advantages of coagulation-assisted microfiltration. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Microfiltration provides a stronger microorganism barrier during coagulation upsets."
+     },
+     {
+      "id": "b",
+      "label": "Microfiltration captures smaller floc particles, reducing coagulant demand."
+     },
+     {
+      "id": "c",
+      "label": "Microfiltration requires larger floc sizes than conventional gravity filtration."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Coagulation-assisted microfiltration removes smaller floc sizes than conventional gravity filtration, reducing coagulant requirements."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "5398a4b7252fb976232d5babd900f3afbb9079b87208fb6f23cff90eb6d2a9de",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-12",
+    "prompt": "A specialist reviews sulfur-modified iron for arsenic removal. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sulfur-modified iron removed more arsenic per gram of iron at pH 7 than pH 8."
+     },
+     {
+      "id": "b",
+      "label": "Reduced flow rates in partially plugged columns improved arsenic removal."
+     },
+     {
+      "id": "c",
+      "label": "Spent sulfur-modified iron media was classified as hazardous chemical waste."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Spent media from the sulfur-modified iron column tests was classified as nonhazardous waste."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "b16d0f9a231f660ead1619f35b0a57966781d04d7689d91c66f0e037c7f247e9",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-13",
+    "prompt": "A designer evaluates granular ferric hydroxide (GFH) adsorption. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Phosphate competed strongly with arsenate for adsorption sites on GFH."
+     },
+     {
+      "id": "b",
+      "label": "At high pH values, GFH outperformed activated alumina for arsenate removal."
+     },
+     {
+      "id": "c",
+      "label": "Sulfate competed more strongly than phosphate for arsenate sites on GFH."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Phosphate competed strongly with arsenate on GFH, whereas sulfate competition was not very strong."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "131c1e879ab7594c327dac1591e6010733585a65f93d90b055a0d27a41daa46b",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-14",
+    "prompt": "An operator reviews iron filings and GFH residual management. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Iron filings and sand can reduce arsenic species into iron coprecipitates."
+     },
+     {
+      "id": "b",
+      "label": "Direct disposal of spent GFH media is favored over alkaline regeneration."
+     },
+     {
+      "id": "c",
+      "label": "Sulfate is excluded from iron filings beds to prevent arsenopyrite formation."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sulfate is introduced in the sand and iron filings process to encourage arsenopyrite precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d7a62c37841b2ba53311e0a59b6a4d879a3438cdcbafa8eebb77efa096b7f947",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r03-m4-15",
+    "prompt": "A student reviews basic water chemistry concepts on miscibility and testing. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Bulk physical properties like volume and mass are measured with calibrated instruments."
+     },
+     {
+      "id": "b",
+      "label": "Water and alcohol are miscible liquids that disperse uniformly together."
+     },
+     {
+      "id": "c",
+      "label": "Water and liquid mercury are miscible liquids in equal proportions."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Water and liquid mercury are immiscible liquids that do not mix uniformly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+    "notes": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+    "registeredAt": "2026-11-19T03:22:04.914Z",
+    "payloadSha256": "d50bb9bca3594a65e08d71b8ae952610436eef8a0dc283dd835ee7b818688c65",
+    "builderResultsSha256": "ec6e192c10373248b67abb10606cfe023cbd8646a2ba7ea79ba244383ca73409"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:20:46.483782+00:00",
+   "attestation": "Strict final AI self-review of all 56 items in targeth-class3-water-r03 against supplied source pages, collision candidates, and mode rules; all 56 items accepted.",
+   "payloadSha256": {
+    "targeth-ht261118-class3-water-r03-m0-01": "73324d09e2900fbd04eac98929a804cf388e9070423adfae184e9b4d3466771e",
+    "targeth-ht261118-class3-water-r03-m0-02": "1f30a394708c5feaddedb21ff0e7b586c8318a68b36f171d6fcc0e556c853b91",
+    "targeth-ht261118-class3-water-r03-m0-03": "8bed3489f5caf60582a4b14c6f016d3a82cb7f671f6c7e7466056db60d678e9f",
+    "targeth-ht261118-class3-water-r03-m0-04": "3af46365f3c323c8f9d9192e1d1dc416c8bdba102f1ccdf27f81bfcd41542b6d",
+    "targeth-ht261118-class3-water-r03-m0-05": "3f0fb452d672b041b2ab9b62ea19cf0219edb273dc5d9728e66662a8a5a75978",
+    "targeth-ht261118-class3-water-r03-m0-06": "878e5c9a5ff4b8ea3518449bac8b3714a09a6840a7c04c4150c55d157b321970",
+    "targeth-ht261118-class3-water-r03-m0-07": "36be7220b6a2104217a4eae600a465f95e5ac9d326a00f4be2f6134774815fd8",
+    "targeth-ht261118-class3-water-r03-m0-08": "310d4b120e5b28442d261e7a4a2b65a32a8d9d02abce1a57071db22f24668f39",
+    "targeth-ht261118-class3-water-r03-m0-09": "0918f51de25ff2edff9c541b3f9835f4851dc99708327e7f1e81edcd03980ff1",
+    "targeth-ht261118-class3-water-r03-m0-10": "98e713924c461b4c449228f2d4fa435709029fb55b4f35a62b0204987d8fcda1",
+    "targeth-ht261118-class3-water-r03-m0-11": "dc3fede1559976e5ed00ad4e9df16de44c9770ee142c13dbcbbc379868476d3b",
+    "targeth-ht261118-class3-water-r03-m0-12": "a36b2da97da110ec84a4ac3801a7f59d193ef2013f88b4153d97f72eb3639913",
+    "targeth-ht261118-class3-water-r03-m0-13": "d1deb735ad8f6c6ab20895dc6a55219448b2a02a8f918bde5bd9a63643ad9cb2",
+    "targeth-ht261118-class3-water-r03-m0-14": "66ed6fa9610842551e2e37cf1ff5786bb2e9d682e66c61a55747ea366d1f0a26",
+    "targeth-ht261118-class3-water-r03-m0-15": "0578f139a8b49703286a0086b5e9f303acef492852cf1ec88f02dda4d1be9436",
+    "targeth-ht261118-class3-water-r03-m1-01": "0cd421b7e495caf72569349206ddd27ff53cb8847a06e06f85300bf437638293",
+    "targeth-ht261118-class3-water-r03-m1-02": "78d7d14ffdacc266378598b69e98e5a6b6f67d048796e9d099385091235fca29",
+    "targeth-ht261118-class3-water-r03-m1-03": "d3589704042bea9290062e57162fff47a480bffb44266847602ee7b8bbca24f2",
+    "targeth-ht261118-class3-water-r03-m1-04": "d909d0df21ffeed30d838d3b2c9a2d39b3661154b3922ec0dc450eaf1dabf1fe",
+    "targeth-ht261118-class3-water-r03-m1-05": "ddbb9ae3f063d555be2287b19a86bfe82d96810990c598857b53172629ebe0b4",
+    "targeth-ht261118-class3-water-r03-m1-06": "bb8c479b74687cc57b96789a2340c0ef4a26958e4503ea23e3a97290f9f925e0",
+    "targeth-ht261118-class3-water-r03-m1-07": "09e5f76e9dbcb3af1a6d54ffc50659e959a481dd2e286ceed04020c567a4c223",
+    "targeth-ht261118-class3-water-r03-m1-08": "5322250300da02f5dc2d32ea6f931d1b753900a714f343676b0730bec2a960f8",
+    "targeth-ht261118-class3-water-r03-m1-09": "0d2a0c0f2b9387a893e3f9b120856ca1bc1f6f24b609aa533dca325bc2b44231",
+    "targeth-ht261118-class3-water-r03-m1-10": "741c2a639a6216830f1f0c3a2e76ea03411bad7d34959bfcbb7103c141c57a4c",
+    "targeth-ht261118-class3-water-r03-m2-01": "e817b6fc5c90fd7b2fb123ff700d216ebb9278119d56496163cdec294f012fa6",
+    "targeth-ht261118-class3-water-r03-m3-01": "691577bd06ea9fc4733d7ffd1383107e595a82890cd2a5116529aff3194c3aca",
+    "targeth-ht261118-class3-water-r03-m3-02": "88329551f252127ee6c50c4e03defa7bca4971aef6f1dd885565c35898245bc5",
+    "targeth-ht261118-class3-water-r03-m3-03": "bb3816adc1577b35bff2a69b9e02e7de51ed7fe9485e59ea95a77c59053c83c0",
+    "targeth-ht261118-class3-water-r03-m3-04": "d069438a8721161569babe6bdbc1c08221cd2e4b84bcec6b9e0f142c72421545",
+    "targeth-ht261118-class3-water-r03-m3-05": "d97c2aa83331922174b5452e6a0f58deb1973f57385616411169e1320972ab57",
+    "targeth-ht261118-class3-water-r03-m3-06": "1585c11e185595e55cc228f8837c76e3fe2083c129341de612364109e5392ecd",
+    "targeth-ht261118-class3-water-r03-m3-07": "48288c54e548914b42ba6ff6004b38aa8d3b46e913d171bc35a9c75bdc8d5fca",
+    "targeth-ht261118-class3-water-r03-m3-08": "73ded33430b4fae27772c33117581ddf29dff9e8ec877aec9d18eb4ba627a7bc",
+    "targeth-ht261118-class3-water-r03-m3-09": "4c99f8ea0e774f32ae2918f55e072fefa4ceb361d17249a99a73c7b98862938a",
+    "targeth-ht261118-class3-water-r03-m3-10": "826676e83b0b0a43d039eb5de0b6402f6ddd81cdbfeefc8952cbc2002320a762",
+    "targeth-ht261118-class3-water-r03-m3-11": "06d69d392885eeeef161339b586c495d9371d9734140fe364b663fcf8f44c56d",
+    "targeth-ht261118-class3-water-r03-m3-12": "b76bc60278e86db09c5371c4905fa5618cfa5fccd8811883ce53235446c361d6",
+    "targeth-ht261118-class3-water-r03-m3-13": "c5bb5434e030d27ccf9177d3a064cdc4f786b6e7b95ed5701032d39c003170cd",
+    "targeth-ht261118-class3-water-r03-m3-14": "95e66e7f14ab30c185048217b1a16c50f4885d8324de2fbc891f36b57bb8127d",
+    "targeth-ht261118-class3-water-r03-m3-15": "995cca2546fc1020a01da003eb859abe337ba92de31ff7a0a2bbf369dee0f6ae",
+    "targeth-ht261118-class3-water-r03-m4-01": "3f78bcfe685d50f935f8422d094f120b8a6c350ad2877d739be380d468be4466",
+    "targeth-ht261118-class3-water-r03-m4-02": "96ca65c8df8af3ae89ebe110a1174724e21b9d9822c4c431998908f03a96172c",
+    "targeth-ht261118-class3-water-r03-m4-03": "fcfd4505697fe500209002d5c8331872cc942e16e084f5858be7199638e10604",
+    "targeth-ht261118-class3-water-r03-m4-04": "357bd29d9bb089be6b4986c8e6892457234d6c1a67338622e1b45916f4b93c9d",
+    "targeth-ht261118-class3-water-r03-m4-05": "57a6ed213eff22f846c7e805b69ee72986647a5bbbb8b2b392e0a2217a848e6e",
+    "targeth-ht261118-class3-water-r03-m4-06": "095b61769d79c6f9b9aaa6c384b68c4af0dd40752aa803e10ce4a750826402c4",
+    "targeth-ht261118-class3-water-r03-m4-07": "c3f735c0cbf407c0d5f4e12580f9f74bc2db44b688c862fe5b786d5283861168",
+    "targeth-ht261118-class3-water-r03-m4-08": "c96744f2670b101790f751d5cacefbfe52e92f7a489530946b6037555723217b",
+    "targeth-ht261118-class3-water-r03-m4-09": "efd42782d0f1606169a059a2bdb648c41e4ee78e9217a8a9a1eb77ae33f1d301",
+    "targeth-ht261118-class3-water-r03-m4-10": "31c1913b0dc30cd79a885bd051e7d4664699f171819c1863dfa48f745997d8f8",
+    "targeth-ht261118-class3-water-r03-m4-11": "5398a4b7252fb976232d5babd900f3afbb9079b87208fb6f23cff90eb6d2a9de",
+    "targeth-ht261118-class3-water-r03-m4-12": "b16d0f9a231f660ead1619f35b0a57966781d04d7689d91c66f0e037c7f247e9",
+    "targeth-ht261118-class3-water-r03-m4-13": "131c1e879ab7594c327dac1591e6010733585a65f93d90b055a0d27a41daa46b",
+    "targeth-ht261118-class3-water-r03-m4-14": "d7a62c37841b2ba53311e0a59b6a4d879a3438cdcbafa8eebb77efa096b7f947",
+    "targeth-ht261118-class3-water-r03-m4-15": "d50bb9bca3594a65e08d71b8ae952610436eef8a0dc283dd835ee7b818688c65"
+   }
+  },
+  "registeredAt": "2026-11-19T03:22:04.914Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 8,
+     "decrease": 6,
+     "unchanged": 1
+    },
+    "longest": 7,
+    "options": 31
+   },
+   "batchSha256": "ec2dd25c56a9c429cff1e4c4eff75f07de6dd6d2c2ac94e79e9f7a7ba97e9b36"
+  }
+ }
+}

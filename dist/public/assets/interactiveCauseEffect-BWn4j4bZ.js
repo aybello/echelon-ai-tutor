@@ -1,0 +1,1 @@
+const r=["increase","decrease","unchanged","depends"],a={increase:"Increases",decrease:"Decreases",unchanged:"No change",depends:"Depends / not enough information"};function o(n,s){const c=n.map(e=>({id:e.id,correct:s[e.id]===e.direction}));return{correct:c.length>0&&c.every(e=>e.correct),results:c}}export{a as C,r as c,o as s};

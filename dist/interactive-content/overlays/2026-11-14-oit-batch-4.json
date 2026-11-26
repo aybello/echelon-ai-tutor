@@ -1,0 +1,4664 @@
+{
+  "format": "interactive-overlay-v1",
+  "overlayId": "og-oit-4",
+  "scope": "Reviewed original game activities for oit: 164 items from authoring tables.",
+  "additions": [
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0001",
+        "prompt": "Bacteria are single-celled organisms, and some can cause disease.",
+        "correctAnswer": true,
+        "explanation": "Bacteria are microscopic single-celled organisms, and a few types are pathogens.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0002",
+        "prompt": "Bacteria are large organisms that can be seen easily in a glass of water.",
+        "correctAnswer": false,
+        "explanation": "Bacteria are microscopic and cannot be seen without a microscope.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0003",
+        "prompt": "Viruses are smaller than bacteria.",
+        "correctAnswer": true,
+        "explanation": "Viruses are generally much smaller than bacteria.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0004",
+        "prompt": "Protozoa such as Giardia can resist some disinfectants.",
+        "correctAnswer": true,
+        "explanation": "Some protozoan cysts are hard to inactivate with common disinfectants and are removed by filtration.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0005",
+        "prompt": "A cross-connection is a link between a drinking water line and an unsafe source.",
+        "correctAnswer": true,
+        "explanation": "Such links can allow contaminated water into the drinking supply.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0006",
+        "prompt": "A cross-connection is a pipe that joins two clean water mains for safety.",
+        "correctAnswer": false,
+        "explanation": "A cross-connection links drinking water to a possible source of contamination.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0007",
+        "prompt": "Water meters help utilities bill customers and track water use.",
+        "correctAnswer": true,
+        "explanation": "Meters measure the volume delivered.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0008",
+        "prompt": "An operator certification shows that a person has met set requirements.",
+        "correctAnswer": true,
+        "explanation": "Certification indicates that the requirements applicable to the particular certificate have been met. Requirements differ by certificate and jurisdiction.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:43.427300+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0009",
+        "prompt": "Working alone in a remote area is safer when no one knows where you are.",
+        "correctAnswer": false,
+        "explanation": "Others should know where you are so help can be sent if needed.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0010",
+        "prompt": "A clean work area helps reduce slips, trips and falls.",
+        "correctAnswer": true,
+        "explanation": "Good housekeeping lowers accident risk.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0011",
+        "prompt": "Disinfection byproducts can form when chlorine reacts with organic matter.",
+        "correctAnswer": true,
+        "explanation": "Natural organic material and chlorine can form byproducts such as trihalomethanes.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0012",
+        "prompt": "Disinfection byproducts form when chlorine is added to perfectly pure water.",
+        "correctAnswer": false,
+        "explanation": "Byproducts need organic matter or similar precursors to react with the disinfectant.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0013",
+        "prompt": "Removing organic matter before disinfection can reduce byproduct formation.",
+        "correctAnswer": true,
+        "explanation": "Fewer precursors means fewer byproducts.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0014",
+        "prompt": "A coliform test is used as an indicator that disease organisms may be present.",
+        "correctAnswer": true,
+        "explanation": "Coliforms act as an indicator of possible contamination.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0015",
+        "prompt": "A positive coliform result is a sign that treatment can be ignored.",
+        "correctAnswer": false,
+        "explanation": "A positive result calls for follow-up and action.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0016",
+        "prompt": "Ozone is a strong disinfectant that is made on site.",
+        "correctAnswer": true,
+        "explanation": "Ozone is unstable and is generated where it is used.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0017",
+        "prompt": "Ultraviolet light inactivates microbes by damaging their genetic material.",
+        "correctAnswer": true,
+        "explanation": "UV light prevents organisms from reproducing.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0018",
+        "prompt": "Ultraviolet light leaves a lasting disinfectant residual in the pipes.",
+        "correctAnswer": false,
+        "explanation": "UV does not leave a residual, so a secondary disinfectant is often added.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0019",
+        "prompt": "Microfiltration and ultrafiltration membranes can remove particles through size-based separation.",
+        "correctAnswer": true,
+        "explanation": "These porous membranes act as barriers to particles. Reverse osmosis uses a different membrane separation mechanism.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:44.924813+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0020",
+        "prompt": "Ion exchange can be used to soften hard water.",
+        "correctAnswer": true,
+        "explanation": "Ion exchange swaps hardness ions for sodium or another ion.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0021",
+        "prompt": "Aeration can help remove some dissolved gases from water.",
+        "correctAnswer": true,
+        "explanation": "Moving air through water helps strip gases such as hydrogen sulfide.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0022",
+        "prompt": "Aeration is used to add hardness to water.",
+        "correctAnswer": false,
+        "explanation": "Aeration helps strip gases and oxidize some metals. It does not add hardness.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0023",
+        "prompt": "Chloramine is generally slower to inactivate microbes than free chlorine.",
+        "correctAnswer": true,
+        "explanation": "Chloramines are weaker, though they last longer in a system.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0024",
+        "prompt": "Chloramine is generally faster to inactivate microbes than free chlorine.",
+        "correctAnswer": false,
+        "explanation": "Free chlorine is the faster disinfectant.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0025",
+        "prompt": "Chloramine residual tends to last longer in a distribution system than free chlorine.",
+        "correctAnswer": true,
+        "explanation": "Chloramines break down more slowly.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0026",
+        "prompt": "Nitrification can occur in systems that use chloramine.",
+        "correctAnswer": true,
+        "explanation": "Bacteria can convert ammonia to nitrite and nitrate, which can lower the residual.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0027",
+        "prompt": "Nitrification is a process that raises the chloramine residual.",
+        "correctAnswer": false,
+        "explanation": "Nitrification tends to lower the residual.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0028",
+        "prompt": "Turbidity of filtered water is monitored because it can reflect how well particles are being removed.",
+        "correctAnswer": true,
+        "explanation": "Low filtered turbidity suggests good particle removal.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0029",
+        "prompt": "For chemical disinfection, CT is the disinfectant residual concentration multiplied by effective contact time.",
+        "correctAnswer": true,
+        "explanation": "CT uses the measured disinfectant residual concentration and effective contact time, not the disinfectant dose alone.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:27.757826+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0030",
+        "prompt": "Ct is the ratio of pH to temperature.",
+        "correctAnswer": false,
+        "explanation": "Ct is concentration multiplied by time.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0031",
+        "prompt": "A tracer study can help show how long water really spends in a basin.",
+        "correctAnswer": true,
+        "explanation": "A tracer shows the actual flow pattern and time.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0032",
+        "prompt": "A tracer study measures the hardness of the water leaving a basin.",
+        "correctAnswer": false,
+        "explanation": "A tracer study follows how a substance moves through a basin to show flow behavior.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0033",
+        "prompt": "A weekend is a good time to skip routine checks to save effort.",
+        "correctAnswer": false,
+        "explanation": "Plants and systems need regular checks every day.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0034",
+        "prompt": "Reading the label before using a chemical helps protect you.",
+        "correctAnswer": true,
+        "explanation": "Labels give hazards and handling information.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0035",
+        "prompt": "A meter reader is the person who repairs broken pumps.",
+        "correctAnswer": false,
+        "explanation": "A meter reader records water use. Maintenance workers repair pumps.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0036",
+        "prompt": "An exit sign marks where chemicals are stored.",
+        "correctAnswer": false,
+        "explanation": "An exit sign shows the way out of a building.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0037",
+        "prompt": "Fungi are a group of metals found in pipes.",
+        "correctAnswer": false,
+        "explanation": "Fungi are living organisms, not metals.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0038",
+        "prompt": "Ozone leaves a long lasting residual in the pipes.",
+        "correctAnswer": false,
+        "explanation": "Ozone breaks down quickly, so it does not leave a lasting residual.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0039",
+        "prompt": "Reverse osmosis works by adding salt to the water.",
+        "correctAnswer": false,
+        "explanation": "Reverse osmosis pushes water through a membrane that holds back dissolved salts.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0040",
+        "prompt": "Overflow rate compares chemical dose to contact time.",
+        "correctAnswer": false,
+        "explanation": "Overflow rate compares flow to the surface area of a basin.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0041",
+        "prompt": "Lake turnover tends to bring cleaner water to the surface.",
+        "correctAnswer": false,
+        "explanation": "Turnover mixes poorer quality bottom water upward.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0042",
+        "prompt": "Breakpoint chlorination means that no chlorine remains in the water.",
+        "correctAnswer": false,
+        "explanation": "At the breakpoint, chlorine demand from ammonia is met and free chlorine begins to rise.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0043",
+        "prompt": "A pilot test is a full scale test using the whole plant flow.",
+        "correctAnswer": false,
+        "explanation": "A pilot test is a small scale trial of a process.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-rapid-swipe-0044",
+        "prompt": "Residual loss in pipes is a sign the disinfectant is getting stronger.",
+        "correctAnswer": false,
+        "explanation": "Residual loss means the disinfectant is breaking down or being consumed.",
+        "mode": "rapid-swipe"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-speed-match-0045",
+        "prompt": "Match each microorganism group to its feature.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Bacteria",
+            "right": "Single-celled and microscopic"
+          },
+          {
+            "id": "p2",
+            "left": "Virus",
+            "right": "Smaller than bacteria"
+          },
+          {
+            "id": "p3",
+            "left": "Protozoa",
+            "right": "Single-celled animal-like organisms"
+          },
+          {
+            "id": "p4",
+            "left": "Algae",
+            "right": "Plant-like organisms that make food from light"
+          },
+          {
+            "id": "p5",
+            "left": "Coliform",
+            "right": "Indicator group"
+          },
+          {
+            "id": "p6",
+            "left": "Pathogen",
+            "right": "Organism that causes disease"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-speed-match-0046",
+        "prompt": "Match each person or role to the job.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Operator",
+            "right": "Runs and monitors the plant"
+          },
+          {
+            "id": "p2",
+            "left": "Lab analyst",
+            "right": "Performs water tests"
+          },
+          {
+            "id": "p3",
+            "left": "Maintenance worker",
+            "right": "Repairs equipment"
+          },
+          {
+            "id": "p4",
+            "left": "Supervisor",
+            "right": "Directs the work"
+          },
+          {
+            "id": "p5",
+            "left": "Meter reader",
+            "right": "Records water use"
+          },
+          {
+            "id": "p6",
+            "left": "Safety officer",
+            "right": "Promotes safe work"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-speed-match-0047",
+        "prompt": "Match each safety sign or label to its meaning.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Hazard label",
+            "right": "Warns about a chemical danger"
+          },
+          {
+            "id": "p2",
+            "left": "No entry sign",
+            "right": "Keeps people out"
+          },
+          {
+            "id": "p3",
+            "left": "Exit sign",
+            "right": "Shows the way out"
+          },
+          {
+            "id": "p4",
+            "left": "Eyewash sign",
+            "right": "Shows where to rinse eyes"
+          },
+          {
+            "id": "p5",
+            "left": "Wet floor sign",
+            "right": "Warns of a slip risk"
+          },
+          {
+            "id": "p6",
+            "left": "Authorized only sign",
+            "right": "Limits access to trained staff"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-speed-match-0048",
+        "prompt": "Match each disinfectant to a known trait.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Free chlorine",
+            "right": "Fast acting"
+          },
+          {
+            "id": "p2",
+            "left": "Chloramine",
+            "right": "Longer lasting in pipes"
+          },
+          {
+            "id": "p3",
+            "left": "Ozone",
+            "right": "Made on site"
+          },
+          {
+            "id": "p4",
+            "left": "Ultraviolet light",
+            "right": "No lasting residual"
+          },
+          {
+            "id": "p5",
+            "left": "Chlorine dioxide",
+            "right": "Used for some taste and odor control"
+          },
+          {
+            "id": "p6",
+            "left": "Hypochlorite",
+            "right": "A liquid or solid form of chlorine"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-speed-match-0049",
+        "prompt": "Match each advanced treatment to what it does.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Ion exchange",
+            "right": "Softens hard water"
+          },
+          {
+            "id": "p2",
+            "left": "Aeration",
+            "right": "Strips dissolved gases"
+          },
+          {
+            "id": "p3",
+            "left": "Membrane filtration",
+            "right": "Separates by pore size"
+          },
+          {
+            "id": "p4",
+            "left": "Activated carbon",
+            "right": "Adsorbs organic compounds"
+          },
+          {
+            "id": "p5",
+            "left": "Reverse osmosis",
+            "right": "Removes dissolved salts with pressure"
+          },
+          {
+            "id": "p6",
+            "left": "Softening with lime",
+            "right": "Precipitates hardness"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-speed-match-0050",
+        "prompt": "Match each monitoring item to why it is watched.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Filtered turbidity",
+            "right": "Particle removal"
+          },
+          {
+            "id": "p2",
+            "left": "Chlorine residual",
+            "right": "Disinfection in the system"
+          },
+          {
+            "id": "p3",
+            "left": "Coliform results",
+            "right": "Possible contamination"
+          },
+          {
+            "id": "p4",
+            "left": "Fluoride level",
+            "right": "Dental health target"
+          },
+          {
+            "id": "p5",
+            "left": "pH",
+            "right": "Treatment and corrosion control"
+          },
+          {
+            "id": "p6",
+            "left": "Temperature",
+            "right": "Reaction and settling speed"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-speed-match-0051",
+        "prompt": "Match each term to what it combines or compares.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Ct",
+            "right": "Concentration and time"
+          },
+          {
+            "id": "p2",
+            "left": "Detention time",
+            "right": "Volume and flow"
+          },
+          {
+            "id": "p3",
+            "left": "Dose",
+            "right": "Chemical per volume of water"
+          },
+          {
+            "id": "p4",
+            "left": "Demand",
+            "right": "Dose minus residual"
+          },
+          {
+            "id": "p5",
+            "left": "Overflow rate",
+            "right": "Flow per surface area"
+          },
+          {
+            "id": "p6",
+            "left": "Loading rate",
+            "right": "Flow per filter area"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-speed-match-0052",
+        "prompt": "Match each source water change to a likely effect.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Heavy rain",
+            "right": "More particles in raw water"
+          },
+          {
+            "id": "p2",
+            "left": "Warm weather",
+            "right": "More algae growth"
+          },
+          {
+            "id": "p3",
+            "left": "Snowmelt",
+            "right": "Colder water"
+          },
+          {
+            "id": "p4",
+            "left": "Drought",
+            "right": "Higher mineral concentration"
+          },
+          {
+            "id": "p5",
+            "left": "Lake turnover",
+            "right": "Mixing of poor quality water upward"
+          },
+          {
+            "id": "p6",
+            "left": "Agricultural runoff",
+            "right": "More nutrients"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-speed-match-0053",
+        "prompt": "Match each chloramine issue to its meaning.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Nitrification",
+            "right": "Bacteria use ammonia and lower residual"
+          },
+          {
+            "id": "p2",
+            "left": "Free ammonia",
+            "right": "Extra ammonia left over"
+          },
+          {
+            "id": "p3",
+            "left": "Breakpoint",
+            "right": "Point where free chlorine rises"
+          },
+          {
+            "id": "p4",
+            "left": "Monochloramine",
+            "right": "Preferred chloramine form"
+          },
+          {
+            "id": "p5",
+            "left": "Residual loss",
+            "right": "Disinfectant falling over time"
+          },
+          {
+            "id": "p6",
+            "left": "Chlorine to ammonia ratio",
+            "right": "Controls the chloramine form"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-speed-match-0054",
+        "prompt": "Match each study or test to what it shows.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Tracer study",
+            "right": "Real flow pattern in a basin"
+          },
+          {
+            "id": "p2",
+            "left": "Jar test",
+            "right": "Coagulant dose selection"
+          },
+          {
+            "id": "p3",
+            "left": "Breakpoint test",
+            "right": "Chlorine demand behavior"
+          },
+          {
+            "id": "p4",
+            "left": "Particle count",
+            "right": "Filter performance detail"
+          },
+          {
+            "id": "p5",
+            "left": "Residual profile",
+            "right": "Disinfectant decay in a system"
+          },
+          {
+            "id": "p6",
+            "left": "Pilot test",
+            "right": "Small scale process trial"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-speed-match-0055",
+        "prompt": "Match each observation to a likely explanation.",
+        "pairs": [
+          {
+            "id": "p1",
+            "left": "Residual falls in warm months",
+            "right": "Faster decay and higher demand"
+          },
+          {
+            "id": "p2",
+            "left": "Turbidity rises after rain",
+            "right": "Higher raw water particles"
+          },
+          {
+            "id": "p3",
+            "left": "Taste complaints in summer",
+            "right": "Algae in the source"
+          },
+          {
+            "id": "p4",
+            "left": "Floc settles slowly in winter",
+            "right": "Colder water"
+          },
+          {
+            "id": "p5",
+            "left": "Rising headloss quickly",
+            "right": "Heavy filter loading"
+          },
+          {
+            "id": "p6",
+            "left": "Dead end complaints",
+            "right": "Old water"
+          }
+        ],
+        "mode": "speed-match"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0056",
+        "prompt": "Which is not a type of microorganism?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Bacteria"
+          },
+          {
+            "id": "option-2",
+            "label": "Algae"
+          },
+          {
+            "id": "option-3",
+            "label": "Protozoa"
+          },
+          {
+            "id": "option-4",
+            "label": "Alum"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Alum is not a microorganism.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0057",
+        "prompt": "Which is not a type of microorganism?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Sand"
+          },
+          {
+            "id": "option-2",
+            "label": "Fungi"
+          },
+          {
+            "id": "option-3",
+            "label": "Bacteria"
+          },
+          {
+            "id": "option-4",
+            "label": "Protozoa"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Sand is not a microorganism.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0058",
+        "prompt": "Which is not a type of microorganism?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Bacteria"
+          },
+          {
+            "id": "option-2",
+            "label": "Algae"
+          },
+          {
+            "id": "option-3",
+            "label": "Fungi"
+          },
+          {
+            "id": "option-4",
+            "label": "Rust"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Rust is not a microorganism.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0059",
+        "prompt": "Which is not a type of microorganism?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Fungi"
+          },
+          {
+            "id": "option-2",
+            "label": "Silt"
+          },
+          {
+            "id": "option-3",
+            "label": "Bacteria"
+          },
+          {
+            "id": "option-4",
+            "label": "Virus"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Silt is not a microorganism.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0060",
+        "prompt": "Which is not a type of microorganism?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Algae"
+          },
+          {
+            "id": "option-2",
+            "label": "Protozoa"
+          },
+          {
+            "id": "option-3",
+            "label": "Alum"
+          },
+          {
+            "id": "option-4",
+            "label": "Fungi"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Alum is not a microorganism.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0061",
+        "prompt": "Which is not a type of microorganism?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Virus"
+          },
+          {
+            "id": "option-2",
+            "label": "Sand"
+          },
+          {
+            "id": "option-3",
+            "label": "Bacteria"
+          },
+          {
+            "id": "option-4",
+            "label": "Algae"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Sand is not a microorganism.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0062",
+        "prompt": "Which is not a person who works at a treatment plant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Operator"
+          },
+          {
+            "id": "option-2",
+            "label": "Electrician"
+          },
+          {
+            "id": "option-3",
+            "label": "Pump"
+          },
+          {
+            "id": "option-4",
+            "label": "Supervisor"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Pump is equipment, not a person.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0063",
+        "prompt": "Which is not a person who works at a treatment plant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Operator"
+          },
+          {
+            "id": "option-2",
+            "label": "Lab analyst"
+          },
+          {
+            "id": "option-3",
+            "label": "Basin"
+          },
+          {
+            "id": "option-4",
+            "label": "Mechanic"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Basin is equipment, not a person.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0064",
+        "prompt": "Which is not a person who works at a treatment plant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Mechanic"
+          },
+          {
+            "id": "option-2",
+            "label": "Lab analyst"
+          },
+          {
+            "id": "option-3",
+            "label": "Supervisor"
+          },
+          {
+            "id": "option-4",
+            "label": "Meter"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Meter is equipment, not a person.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0065",
+        "prompt": "Which is not a person who works at a treatment plant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Pump"
+          },
+          {
+            "id": "option-2",
+            "label": "Lab analyst"
+          },
+          {
+            "id": "option-3",
+            "label": "Electrician"
+          },
+          {
+            "id": "option-4",
+            "label": "Mechanic"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Pump is equipment, not a person.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0066",
+        "prompt": "Which is not a person who works at a treatment plant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Operator"
+          },
+          {
+            "id": "option-2",
+            "label": "Lab analyst"
+          },
+          {
+            "id": "option-3",
+            "label": "Basin"
+          },
+          {
+            "id": "option-4",
+            "label": "Electrician"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Basin is equipment, not a person.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0067",
+        "prompt": "Which is not a person who works at a treatment plant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Supervisor"
+          },
+          {
+            "id": "option-2",
+            "label": "Operator"
+          },
+          {
+            "id": "option-3",
+            "label": "Lab analyst"
+          },
+          {
+            "id": "option-4",
+            "label": "Meter"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Meter is equipment, not a person.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0068",
+        "prompt": "Which is not a disinfectant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Chlorine dioxide"
+          },
+          {
+            "id": "option-2",
+            "label": "Chlorine"
+          },
+          {
+            "id": "option-3",
+            "label": "Alum"
+          },
+          {
+            "id": "option-4",
+            "label": "Ozone"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Alum is not used as a disinfectant.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0069",
+        "prompt": "Which is not a disinfectant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Lime"
+          },
+          {
+            "id": "option-2",
+            "label": "Ultraviolet light"
+          },
+          {
+            "id": "option-3",
+            "label": "Chlorine"
+          },
+          {
+            "id": "option-4",
+            "label": "Ozone"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Lime is not used as a disinfectant.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0070",
+        "prompt": "Which is not a disinfectant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Chlorine"
+          },
+          {
+            "id": "option-2",
+            "label": "Ultraviolet light"
+          },
+          {
+            "id": "option-3",
+            "label": "Chloramine"
+          },
+          {
+            "id": "option-4",
+            "label": "Polymer"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Polymer is not used as a disinfectant.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0071",
+        "prompt": "Which is not a disinfectant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Carbon"
+          },
+          {
+            "id": "option-2",
+            "label": "Ozone"
+          },
+          {
+            "id": "option-3",
+            "label": "Chlorine dioxide"
+          },
+          {
+            "id": "option-4",
+            "label": "Ultraviolet light"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Carbon is not used as a disinfectant.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0072",
+        "prompt": "Which is not a disinfectant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Alum"
+          },
+          {
+            "id": "option-2",
+            "label": "Ozone"
+          },
+          {
+            "id": "option-3",
+            "label": "Chloramine"
+          },
+          {
+            "id": "option-4",
+            "label": "Chlorine dioxide"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Alum is not used as a disinfectant.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0073",
+        "prompt": "Which is not a disinfectant?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Ultraviolet light"
+          },
+          {
+            "id": "option-2",
+            "label": "Chlorine"
+          },
+          {
+            "id": "option-3",
+            "label": "Chlorine dioxide"
+          },
+          {
+            "id": "option-4",
+            "label": "Lime"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Lime is not used as a disinfectant.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0074",
+        "prompt": "Which is not an advanced treatment process?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Membrane filtration"
+          },
+          {
+            "id": "option-2",
+            "label": "Screening"
+          },
+          {
+            "id": "option-3",
+            "label": "Ion exchange"
+          },
+          {
+            "id": "option-4",
+            "label": "Carbon adsorption"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Screening is not an advanced treatment process.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0075",
+        "prompt": "Which is not an advanced treatment process?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Aeration"
+          },
+          {
+            "id": "option-2",
+            "label": "Membrane filtration"
+          },
+          {
+            "id": "option-3",
+            "label": "Logging"
+          },
+          {
+            "id": "option-4",
+            "label": "Ion exchange"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Logging is not an advanced treatment process.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0076",
+        "prompt": "Which is not an advanced treatment process?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Carbon adsorption"
+          },
+          {
+            "id": "option-2",
+            "label": "Flushing"
+          },
+          {
+            "id": "option-3",
+            "label": "Reverse osmosis"
+          },
+          {
+            "id": "option-4",
+            "label": "Membrane filtration"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Flushing is not an advanced treatment process.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0077",
+        "prompt": "Which is not an advanced treatment process?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Reverse osmosis"
+          },
+          {
+            "id": "option-2",
+            "label": "Screening"
+          },
+          {
+            "id": "option-3",
+            "label": "Ion exchange"
+          },
+          {
+            "id": "option-4",
+            "label": "Membrane filtration"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Screening is not an advanced treatment process.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0078",
+        "prompt": "Which is not an advanced treatment process?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Reverse osmosis"
+          },
+          {
+            "id": "option-2",
+            "label": "Aeration"
+          },
+          {
+            "id": "option-3",
+            "label": "Logging"
+          },
+          {
+            "id": "option-4",
+            "label": "Carbon adsorption"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Logging is not an advanced treatment process.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0079",
+        "prompt": "Which is not an advanced treatment process?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Ion exchange"
+          },
+          {
+            "id": "option-2",
+            "label": "Flushing"
+          },
+          {
+            "id": "option-3",
+            "label": "Aeration"
+          },
+          {
+            "id": "option-4",
+            "label": "Reverse osmosis"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Flushing is not an advanced treatment process.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0080",
+        "prompt": "Which is not a cause of rising raw water turbidity?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Heavy rain"
+          },
+          {
+            "id": "option-2",
+            "label": "Lake turnover"
+          },
+          {
+            "id": "option-3",
+            "label": "Dry spell"
+          },
+          {
+            "id": "option-4",
+            "label": "Snowmelt runoff"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Dry spell does not tend to raise raw water turbidity.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0081",
+        "prompt": "Which is not a cause of rising raw water turbidity?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Algae bloom"
+          },
+          {
+            "id": "option-2",
+            "label": "Snowmelt runoff"
+          },
+          {
+            "id": "option-3",
+            "label": "Clean well"
+          },
+          {
+            "id": "option-4",
+            "label": "Lake turnover"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Clean well does not tend to raise raw water turbidity.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0082",
+        "prompt": "Which is not a cause of rising raw water turbidity?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Algae bloom"
+          },
+          {
+            "id": "option-2",
+            "label": "Dry spell"
+          },
+          {
+            "id": "option-3",
+            "label": "Lake turnover"
+          },
+          {
+            "id": "option-4",
+            "label": "Heavy rain"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Dry spell does not tend to raise raw water turbidity.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0083",
+        "prompt": "Which is not a cause of rising raw water turbidity?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Clean well"
+          },
+          {
+            "id": "option-2",
+            "label": "Snowmelt runoff"
+          },
+          {
+            "id": "option-3",
+            "label": "Algae bloom"
+          },
+          {
+            "id": "option-4",
+            "label": "Heavy rain"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Clean well does not tend to raise raw water turbidity.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0084",
+        "prompt": "Which is not a way to lower chloramine residual in a system?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Nitrification"
+          },
+          {
+            "id": "option-2",
+            "label": "High demand"
+          },
+          {
+            "id": "option-3",
+            "label": "Long water age"
+          },
+          {
+            "id": "option-4",
+            "label": "Fresh water"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Fresh water would tend to keep the residual higher.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0085",
+        "prompt": "Which is not a way to lower chloramine residual in a system?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Long water age"
+          },
+          {
+            "id": "option-2",
+            "label": "Nitrification"
+          },
+          {
+            "id": "option-3",
+            "label": "Warm water"
+          },
+          {
+            "id": "option-4",
+            "label": "Cold storage"
+          }
+        ],
+        "correctOptionId": "option-4",
+        "explanation": "Cold storage would tend to keep the residual higher.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0086",
+        "prompt": "Which is not a way to lower chloramine residual in a system?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Fresh water"
+          },
+          {
+            "id": "option-2",
+            "label": "Warm water"
+          },
+          {
+            "id": "option-3",
+            "label": "Long water age"
+          },
+          {
+            "id": "option-4",
+            "label": "High demand"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Fresh water would tend to keep the residual higher.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0087",
+        "prompt": "Which is not a way to lower chloramine residual in a system?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "High demand"
+          },
+          {
+            "id": "option-2",
+            "label": "Cold storage"
+          },
+          {
+            "id": "option-3",
+            "label": "Nitrification"
+          },
+          {
+            "id": "option-4",
+            "label": "Warm water"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Cold storage would tend to keep the residual higher.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0088",
+        "prompt": "Which is not a way to reduce disinfection byproducts?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Lowering contact with excess chlorine"
+          },
+          {
+            "id": "option-2",
+            "label": "Adding more organics"
+          },
+          {
+            "id": "option-3",
+            "label": "Removing organic matter first"
+          },
+          {
+            "id": "option-4",
+            "label": "Using a different disinfectant"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Adding more organics would not reduce byproduct formation.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0089",
+        "prompt": "Which is not a way to reduce disinfection byproducts?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Removing organic matter first"
+          },
+          {
+            "id": "option-2",
+            "label": "Improving coagulation"
+          },
+          {
+            "id": "option-3",
+            "label": "Skipping filtration"
+          },
+          {
+            "id": "option-4",
+            "label": "Lowering contact with excess chlorine"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Skipping filtration would not reduce byproduct formation.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0090",
+        "prompt": "Which is not a way to reduce disinfection byproducts?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Removing organic matter first"
+          },
+          {
+            "id": "option-2",
+            "label": "Adding more organics"
+          },
+          {
+            "id": "option-3",
+            "label": "Improving coagulation"
+          },
+          {
+            "id": "option-4",
+            "label": "Using a different disinfectant"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Adding more organics would not reduce byproduct formation.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-odd-one-out-0091",
+        "prompt": "Which is not a way to reduce disinfection byproducts?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Lowering contact with excess chlorine"
+          },
+          {
+            "id": "option-2",
+            "label": "Skipping filtration"
+          },
+          {
+            "id": "option-3",
+            "label": "Using a different disinfectant"
+          },
+          {
+            "id": "option-4",
+            "label": "Improving coagulation"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Skipping filtration would not reduce byproduct formation.",
+        "mode": "odd-one-out"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-before-after-0092",
+        "prompt": "In reporting a safety concern, which step comes earlier?",
+        "options": [
+          "Keep others away",
+          "Notice the hazard"
+        ],
+        "correctAnswer": "Notice the hazard",
+        "explanation": "People are protected first, then the issue is reported and documented. Notice the hazard comes before Keep others away.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-before-after-0093",
+        "prompt": "In reporting a safety concern, which step comes later?",
+        "options": [
+          "Notice the hazard",
+          "Tell the supervisor"
+        ],
+        "correctAnswer": "Tell the supervisor",
+        "explanation": "People are protected first, then the issue is reported and documented. Notice the hazard comes before Tell the supervisor.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-before-after-0094",
+        "prompt": "In reporting a safety concern, which step comes earlier?",
+        "options": [
+          "Complete the report",
+          "Keep others away"
+        ],
+        "correctAnswer": "Keep others away",
+        "explanation": "People are protected first, then the issue is reported and documented. Keep others away comes before Complete the report.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-before-after-0095",
+        "prompt": "In reporting a safety concern, which step comes later?",
+        "options": [
+          "Tell the supervisor",
+          "Complete the report"
+        ],
+        "correctAnswer": "Complete the report",
+        "explanation": "People are protected first, then the issue is reported and documented. Tell the supervisor comes before Complete the report.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-before-after-0096",
+        "prompt": "In reporting a safety concern, which step comes earlier?",
+        "options": [
+          "Keep others away",
+          "Tell the supervisor"
+        ],
+        "correctAnswer": "Keep others away",
+        "explanation": "People are protected first, then the issue is reported and documented. Keep others away comes before Tell the supervisor.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-before-after-0097",
+        "prompt": "In reporting a safety concern, which step comes later?",
+        "options": [
+          "Notice the hazard",
+          "Complete the report"
+        ],
+        "correctAnswer": "Complete the report",
+        "explanation": "People are protected first, then the issue is reported and documented. Notice the hazard comes before Complete the report.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0098",
+        "prompt": "In a coliform follow-up, which step comes earlier?",
+        "options": [
+          "Document the action",
+          "Notify the supervisor"
+        ],
+        "correctAnswer": "Notify the supervisor",
+        "explanation": "Results are shared and checked before the response is documented. Notify the supervisor comes before Document the action.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0099",
+        "prompt": "In a coliform follow-up, which step comes later?",
+        "options": [
+          "Receive the result",
+          "Collect repeat samples"
+        ],
+        "correctAnswer": "Collect repeat samples",
+        "explanation": "Results are shared and checked before the response is documented. Receive the result comes before Collect repeat samples.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0100",
+        "prompt": "In a coliform follow-up, which step comes earlier?",
+        "options": [
+          "Review the system",
+          "Receive the result"
+        ],
+        "correctAnswer": "Receive the result",
+        "explanation": "Results are shared and checked before the response is documented. Receive the result comes before Review the system.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0101",
+        "prompt": "In a coliform follow-up, which step comes later?",
+        "options": [
+          "Notify the supervisor",
+          "Collect repeat samples"
+        ],
+        "correctAnswer": "Collect repeat samples",
+        "explanation": "Results are shared and checked before the response is documented. Notify the supervisor comes before Collect repeat samples.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0102",
+        "prompt": "In a coliform follow-up, which step comes earlier?",
+        "options": [
+          "Notify the supervisor",
+          "Review the system"
+        ],
+        "correctAnswer": "Notify the supervisor",
+        "explanation": "Results are shared and checked before the response is documented. Notify the supervisor comes before Review the system.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0103",
+        "prompt": "In a coliform follow-up, which step comes later?",
+        "options": [
+          "Receive the result",
+          "Notify the supervisor"
+        ],
+        "correctAnswer": "Notify the supervisor",
+        "explanation": "Results are shared and checked before the response is documented. Receive the result comes before Notify the supervisor.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0104",
+        "prompt": "In a coliform follow-up, which step comes earlier?",
+        "options": [
+          "Document the action",
+          "Review the system"
+        ],
+        "correctAnswer": "Review the system",
+        "explanation": "Results are shared and checked before the response is documented. Review the system comes before Document the action.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0105",
+        "prompt": "In a coliform follow-up, which step comes later?",
+        "options": [
+          "Review the system",
+          "Collect repeat samples"
+        ],
+        "correctAnswer": "Review the system",
+        "explanation": "Results are shared and checked before the response is documented. Collect repeat samples comes before Review the system.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0106",
+        "prompt": "In a coliform follow-up, which step comes earlier?",
+        "options": [
+          "Collect repeat samples",
+          "Document the action"
+        ],
+        "correctAnswer": "Collect repeat samples",
+        "explanation": "Results are shared and checked before the response is documented. Collect repeat samples comes before Document the action.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0107",
+        "prompt": "In a coliform follow-up, which step comes later?",
+        "options": [
+          "Receive the result",
+          "Document the action"
+        ],
+        "correctAnswer": "Document the action",
+        "explanation": "Results are shared and checked before the response is documented. Receive the result comes before Document the action.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0108",
+        "prompt": "In starting a chemical feed, which step comes earlier?",
+        "options": [
+          "Read the safety data sheet",
+          "Check the tank and line"
+        ],
+        "correctAnswer": "Read the safety data sheet",
+        "explanation": "Safety and checks come before starting the feed. Read the safety data sheet comes before Check the tank and line.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0109",
+        "prompt": "In starting a chemical feed, which step comes later?",
+        "options": [
+          "Put on protection",
+          "Check the residual"
+        ],
+        "correctAnswer": "Check the residual",
+        "explanation": "Safety and checks come before starting the feed. Put on protection comes before Check the residual.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0110",
+        "prompt": "In starting a chemical feed, which step comes earlier?",
+        "options": [
+          "Start the feed",
+          "Put on protection"
+        ],
+        "correctAnswer": "Put on protection",
+        "explanation": "Safety and checks come before starting the feed. Put on protection comes before Start the feed.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0111",
+        "prompt": "In starting a chemical feed, which step comes later?",
+        "options": [
+          "Check the residual",
+          "Check the tank and line"
+        ],
+        "correctAnswer": "Check the residual",
+        "explanation": "Safety and checks come before starting the feed. Check the tank and line comes before Check the residual.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0112",
+        "prompt": "In starting a chemical feed, which step comes earlier?",
+        "options": [
+          "Read the safety data sheet",
+          "Check the residual"
+        ],
+        "correctAnswer": "Read the safety data sheet",
+        "explanation": "Safety and checks come before starting the feed. Read the safety data sheet comes before Check the residual.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0113",
+        "prompt": "In starting a chemical feed, which step comes later?",
+        "options": [
+          "Start the feed",
+          "Read the safety data sheet"
+        ],
+        "correctAnswer": "Start the feed",
+        "explanation": "Safety and checks come before starting the feed. Read the safety data sheet comes before Start the feed.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0114",
+        "prompt": "In starting a chemical feed, which step comes earlier?",
+        "options": [
+          "Check the tank and line",
+          "Put on protection"
+        ],
+        "correctAnswer": "Put on protection",
+        "explanation": "Safety and checks come before starting the feed. Put on protection comes before Check the tank and line.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0115",
+        "prompt": "In starting a chemical feed, which step comes later?",
+        "options": [
+          "Read the safety data sheet",
+          "Put on protection"
+        ],
+        "correctAnswer": "Put on protection",
+        "explanation": "Safety and checks come before starting the feed. Read the safety data sheet comes before Put on protection.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0116",
+        "prompt": "In starting a chemical feed, which step comes earlier?",
+        "options": [
+          "Start the feed",
+          "Check the tank and line"
+        ],
+        "correctAnswer": "Check the tank and line",
+        "explanation": "Safety and checks come before starting the feed. Check the tank and line comes before Start the feed.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-before-after-0117",
+        "prompt": "In starting a chemical feed, which step comes later?",
+        "options": [
+          "Start the feed",
+          "Check the residual"
+        ],
+        "correctAnswer": "Check the residual",
+        "explanation": "Safety and checks come before starting the feed. Start the feed comes before Check the residual.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0118",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes earlier?",
+        "options": [
+          "Final disinfection stage",
+          "Floc forms"
+        ],
+        "correctAnswer": "Floc forms",
+        "explanation": "In this example treatment train, floc forms comes before final disinfection stage. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:27.757826+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0119",
+        "prompt": "For the same water moving through a conventional sedimentation and filtration train, which step comes later?",
+        "options": [
+          "Floc settles",
+          "Filters polish the water"
+        ],
+        "correctAnswer": "Filters polish the water",
+        "explanation": "In this conventional train, floc settles in sedimentation before the settled water passes through the filters.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:44:03.648635+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Author-checked references and provider receipt are recorded separately in PR 63 repair-round4 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0120",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes earlier?",
+        "options": [
+          "Coagulant is mixed in",
+          "Raw water enters"
+        ],
+        "correctAnswer": "Raw water enters",
+        "explanation": "In this example treatment train, raw water enters comes before Coagulant is mixed in. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:27.757826+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0121",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes later?",
+        "options": [
+          "Floc forms",
+          "Floc settles"
+        ],
+        "correctAnswer": "Floc settles",
+        "explanation": "In this example treatment train, floc forms comes before Floc settles. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0122",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes earlier?",
+        "options": [
+          "Filters polish the water",
+          "Coagulant is mixed in"
+        ],
+        "correctAnswer": "Coagulant is mixed in",
+        "explanation": "In this example treatment train, coagulant is mixed in comes before Filters polish the water. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0123",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes later?",
+        "options": [
+          "Coagulant is mixed in",
+          "Floc forms"
+        ],
+        "correctAnswer": "Floc forms",
+        "explanation": "In this example treatment train, coagulant is mixed in comes before Floc forms. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0124",
+        "prompt": "For the same water moving through a conventional plant with post-filtration disinfection, which step comes earlier?",
+        "options": [
+          "Filters polish the water",
+          "Post-filtration disinfectant is added"
+        ],
+        "correctAnswer": "Filters polish the water",
+        "explanation": "In the specified configuration, the water passes through the filters before disinfectant is added at the post-filtration point. Disinfectant may also be added upstream in other configurations.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:44:05.185543+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Author-checked references and provider receipt are recorded separately in PR 63 repair-round4 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0125",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes later?",
+        "options": [
+          "Raw water enters",
+          "Filters polish the water"
+        ],
+        "correctAnswer": "Filters polish the water",
+        "explanation": "In this example treatment train, raw water enters comes before Filters polish the water. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0126",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes earlier?",
+        "options": [
+          "Raw water enters",
+          "Floc forms"
+        ],
+        "correctAnswer": "Raw water enters",
+        "explanation": "In this example treatment train, raw water enters comes before Floc forms. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0127",
+        "prompt": "In an example plant applying its final disinfectant after filters, which step comes later?",
+        "options": [
+          "Coagulant is mixed in",
+          "Final disinfection stage"
+        ],
+        "correctAnswer": "Final disinfection stage",
+        "explanation": "In this example treatment train, coagulant is mixed in comes before final disinfection stage. Other plants may apply disinfection upstream.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0128",
+        "prompt": "In a membrane filtration cycle, which step comes earlier?",
+        "options": [
+          "Cleaning is started",
+          "Water is filtered"
+        ],
+        "correctAnswer": "Water is filtered",
+        "explanation": "Production is followed by cleaning and return to service. Water is filtered comes before Cleaning is started.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0129",
+        "prompt": "In a membrane filtration cycle, which step comes later?",
+        "options": [
+          "Pressure rises",
+          "Membrane is rinsed"
+        ],
+        "correctAnswer": "Membrane is rinsed",
+        "explanation": "Production is followed by cleaning and return to service. Pressure rises comes before Membrane is rinsed.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0130",
+        "prompt": "During a run with fouling-triggered cleaning, which event comes earlier?",
+        "options": [
+          "Fouling-related transmembrane pressure rise",
+          "Start of the resulting cleaning"
+        ],
+        "correctAnswer": "Fouling-related transmembrane pressure rise",
+        "explanation": "In this specified example, the fouling-related pressure rise triggers the cleaning. Other cleaning schedules may use different criteria.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:07.490725+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0131",
+        "prompt": "For a membrane run and its subsequent cleaning, which event comes later?",
+        "options": [
+          "Post-cleaning rinse",
+          "Production during that run"
+        ],
+        "correctAnswer": "Post-cleaning rinse",
+        "explanation": "The specified rinse takes place after cleaning, which follows that production run. A different rinse may occur at another stage.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:07.170226+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0132",
+        "prompt": "In a membrane filtration cycle, which step comes earlier?",
+        "options": [
+          "Membrane is rinsed",
+          "Filtration resumes"
+        ],
+        "correctAnswer": "Membrane is rinsed",
+        "explanation": "Production is followed by cleaning and return to service. Membrane is rinsed comes before Filtration resumes.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0133",
+        "prompt": "In a membrane filtration cycle, which step comes later?",
+        "options": [
+          "Filtration resumes",
+          "Cleaning is started"
+        ],
+        "correctAnswer": "Filtration resumes",
+        "explanation": "Production is followed by cleaning and return to service. Cleaning is started comes before Filtration resumes.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0134",
+        "prompt": "For a membrane run with fouling-triggered cleaning, which event comes earlier?",
+        "options": [
+          "Resumption after that cleaning",
+          "Fouling-related pressure rise in the run"
+        ],
+        "correctAnswer": "Fouling-related pressure rise in the run",
+        "explanation": "This comparison concerns a fouling-related rise during the earlier run and resumption after its resulting cleaning.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:10.754103+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0135",
+        "prompt": "In a membrane filtration cycle, which step comes later?",
+        "options": [
+          "Filtration resumes",
+          "Water is filtered"
+        ],
+        "correctAnswer": "Filtration resumes",
+        "explanation": "Production is followed by cleaning and return to service. Water is filtered comes before Filtration resumes.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0136",
+        "prompt": "In a constant-flux membrane run with progressive fouling, which event comes earlier?",
+        "options": [
+          "Fouling-related pressure increase during the run",
+          "Start of production in that run"
+        ],
+        "correctAnswer": "Start of production in that run",
+        "explanation": "This refers to an increase caused by fouling during the run, not to initial pressurization. Constant-pressure systems may instead show declining flux.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:18.221777+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-before-after-0137",
+        "prompt": "In a membrane filtration cycle, which step comes later?",
+        "options": [
+          "Membrane is rinsed",
+          "Cleaning is started"
+        ],
+        "correctAnswer": "Membrane is rinsed",
+        "explanation": "Production is followed by cleaning and return to service. Cleaning is started comes before Membrane is rinsed.",
+        "mode": "before-after"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0138",
+        "prompt": "Heavy rain washes soil into a river source. What happens to the raw water turbidity?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Runoff carries particles into the source.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0139",
+        "prompt": "A reservoir has a long dry spell with little runoff. What happens to the raw water turbidity?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Less runoff brings fewer particles.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0140",
+        "prompt": "More organic matter is in the raw water. What happens to the chlorine demand?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Organic matter reacts with chlorine.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0141",
+        "prompt": "A pipe has no change in demand or supply. What happens to the system pressure?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Without a change, pressure stays steady.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0142",
+        "prompt": "Organic matter is removed before chlorination. What happens to the formation of disinfection byproducts?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Fewer precursors means fewer byproducts.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0143",
+        "prompt": "Water stays in a system for longer. What happens to the chlorine residual?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Longer water age allows more decay.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0144",
+        "prompt": "Two water samples receive chlorine doses of 2 and 3 mg/L. At the same specified contact time, each has a chlorine demand of 1 mg/L. How does the total chlorine residual in the second sample compare with the first?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It is 1 mg/L higher"
+          },
+          {
+            "id": "option-2",
+            "label": "It is 1 mg/L lower"
+          },
+          {
+            "id": "option-3",
+            "label": "It is the same"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "For each sample, total residual equals dose minus demand at the specified time. The residuals are 1 and 2 mg/L, respectively. A measured residual, not dose alone, is needed for a CT assessment.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:44:07.598609+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Author-checked references and provider receipt are recorded separately in PR 63 repair-round4 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0145",
+        "prompt": "Water temperature falls in a settling basin. What happens to the speed of particle settling?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Colder water is more viscous.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0146",
+        "prompt": "A reverse osmosis system is operated at normal pressure. What happens to the dissolved salts in the product water?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "The membrane rejects most dissolved salts.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0147",
+        "prompt": "Nitrification occurs in a chloramine system. What happens to the chloramine residual?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Bacteria use ammonia, which breaks down the chloramine.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0148",
+        "prompt": "A tracer study shows short-circuiting in a basin. What happens to the effective contact time?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Some water leaves faster than the design time.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0149",
+        "prompt": "Disinfectant concentration is doubled and contact time is held steady. What happens to the Ct value?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Ct is concentration multiplied by time.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0150",
+        "prompt": "Contact time is cut in half and concentration is held steady. What happens to the Ct value?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Ct is concentration multiplied by time.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0151",
+        "prompt": "Warmer water speeds chlorine decay in the pipes. What happens to the residual at the far end?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Faster decay leaves less residual.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0152",
+        "prompt": "Fouling increases membrane resistance during filtration. If flux and other conditions are held constant, what happens to the transmembrane pressure needed?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "More hydraulic resistance requires greater pressure to maintain the same flux. At fixed pressure, flux may instead decline.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:35.218965+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0153",
+        "prompt": "Cleaning effectively removes some membrane fouling. At the same flux and other conditions, what happens to the transmembrane pressure needed?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Removing fouling reduces resistance and the pressure needed for the same flux. An approved cleaning does not always remove fouling effectively.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:37.134084+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0154",
+        "prompt": "Ion exchange softening is working properly. What happens to the hardness of the treated water?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Hardness ions are swapped out.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-cause-effect-0155",
+        "prompt": "With steady feed hardness, a softening ion-exchange bed progresses from effective operation to hardness breakthrough as it approaches exhaustion. How does effluent hardness change compared with its earlier softened effluent?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "It increases"
+          },
+          {
+            "id": "option-2",
+            "label": "It decreases"
+          },
+          {
+            "id": "option-3",
+            "label": "It stays the same"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "As the bed approaches exhaustion, hardness removal declines and effluent hardness rises toward feed hardness. Once fully exhausted, it can remain roughly steady.",
+        "mode": "cause-effect"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:49:36.592730+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; source status unverified. No human technical approval or source verification is claimed. Exact request and provider receipt are recorded in PR 63 repair-round5 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0156",
+        "prompt": "Which statement about microbes is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Bacteria are microscopic"
+          },
+          {
+            "id": "option-2",
+            "label": "Bacteria are easy to see"
+          },
+          {
+            "id": "option-3",
+            "label": "Viruses are smaller than bacteria"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Bacteria are microscopic and need a microscope to be seen.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0157",
+        "prompt": "Which statement about cross-connections is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "They can allow contamination into drinking water"
+          },
+          {
+            "id": "option-2",
+            "label": "Backflow preventers help control them"
+          },
+          {
+            "id": "option-3",
+            "label": "They improve water safety"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Cross-connections create a risk of contamination.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "easy",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0158",
+        "prompt": "Which statement about working safely is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Tell others where you are working"
+          },
+          {
+            "id": "option-2",
+            "label": "Skip labels if rushed"
+          },
+          {
+            "id": "option-3",
+            "label": "Keep walkways clear"
+          }
+        ],
+        "correctOptionId": "option-2",
+        "explanation": "Labels give hazard and handling information and should be read.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0159",
+        "prompt": "Which statement about disinfection is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Ozone is made on site"
+          },
+          {
+            "id": "option-2",
+            "label": "UV damages genetic material"
+          },
+          {
+            "id": "option-3",
+            "label": "UV leaves a residual"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "UV does not leave a residual in the pipes.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0160",
+        "prompt": "Which statement about drinking-water disinfection by-products is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Some by-products can form when disinfectants react with organic matter"
+          },
+          {
+            "id": "option-2",
+            "label": "Bromate can form when ozone reacts with bromide in water"
+          },
+          {
+            "id": "option-3",
+            "label": "Every disinfection by-product requires an organic precursor"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "Some by-products form from reactions involving organic matter, but bromate can form when ozone oxidizes bromide, an inorganic precursor. Do not compromise effective disinfection to manage by-products.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:39:08.436210+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Author-checked references and provider receipt are recorded separately in PR 63 repair-round3 evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "medium",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0161",
+        "prompt": "Which statement about coliform results is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Repeat samples may be collected"
+          },
+          {
+            "id": "option-2",
+            "label": "A positive needs follow-up"
+          },
+          {
+            "id": "option-3",
+            "label": "A positive can be ignored"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "A positive result calls for follow-up action.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0162",
+        "prompt": "Which statement about chloramine is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "Chloramine acts faster than chlorine"
+          },
+          {
+            "id": "option-2",
+            "label": "Chlorine acts faster than chloramine"
+          },
+          {
+            "id": "option-3",
+            "label": "Nitrification can lower the residual"
+          }
+        ],
+        "correctOptionId": "option-1",
+        "explanation": "Free chlorine is faster. Chloramine is slower but lasts longer.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0163",
+        "prompt": "Which statement about Ct is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "A higher residual can raise CT"
+          },
+          {
+            "id": "option-2",
+            "label": "More contact time can raise CT"
+          },
+          {
+            "id": "option-3",
+            "label": "Ct is pH over temperature"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "CT is disinfectant residual concentration multiplied by effective contact time; pH and temperature affect the CT required for disinfection.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "gpt-6.1-sol",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:23:29.794224+00:00",
+        "notes": "Independent AI review of exact changed payload found no material issue; not human technical approval. Reviewer source status unverified. Source references and provider receipt are recorded separately in the PR 63 repair evidence."
+      }
+    },
+    {
+      "courseKey": "oit",
+      "topicId": "unclassified",
+      "difficulty": "hard",
+      "example": {
+        "id": "og-oit-b4-tap-the-flaw-0164",
+        "prompt": "Which statement about tracer studies is wrong?",
+        "options": [
+          {
+            "id": "option-1",
+            "label": "They can reveal short-circuiting"
+          },
+          {
+            "id": "option-2",
+            "label": "They can show the real contact time"
+          },
+          {
+            "id": "option-3",
+            "label": "They measure water hardness"
+          }
+        ],
+        "correctOptionId": "option-3",
+        "explanation": "A tracer study tracks flow behavior, not hardness.",
+        "mode": "tap-the-flaw"
+      },
+      "review": {
+        "verdict": "approved",
+        "reviewer": "claude-sonnet-5-5",
+        "reviewAuthority": "owner-authorized-ai-review",
+        "reviewedAt": "2026-11-14T00:00:00Z",
+        "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+      }
+    }
+  ],
+  "replacements": []
+}

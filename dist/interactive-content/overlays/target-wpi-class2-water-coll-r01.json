@@ -1,0 +1,1681 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target-wpi-class2-water-coll-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 44 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m1-01",
+    "prompt": "Match each closed-pipe flowmeter design to its operating principle or physical requirement.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Magnetic flowmeter",
+      "right": "Measures voltage induced across an electrically conductive liquid"
+     },
+     {
+      "id": "p2",
+      "left": "Doppler ultrasonic meter",
+      "right": "Uses frequency shifts reflected from suspended solids or bubbles"
+     },
+     {
+      "id": "p3",
+      "left": "Time-of-flight ultrasonic meter",
+      "right": "Sends sound beams between transceivers with critical alignment"
+     },
+     {
+      "id": "p4",
+      "left": "Turbine flowmeter",
+      "right": "Spins an internal rotor at a speed proportional to fluid velocity"
+     },
+     {
+      "id": "p5",
+      "left": "Positive displacement meter",
+      "right": "Isolates exact fluid volumes inside a measuring chamber"
+     },
+     {
+      "id": "p6",
+      "left": "Clamp-on ultrasonic sensor",
+      "right": "Requires pipe walls capable of passing acoustic pulses"
+     }
+    ],
+    "explanation": "Closed-pipe meters determine flow through electromagnetic induction, acoustic travel time, acoustic reflection from particles, rotor spin, or mechanical chamber displacement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "19b5f9cc4906887cb3078412d4049b5ec964c1e718bf0fa143601f66198a1e7f",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m1-03",
+    "prompt": "Match each pump monitoring or electronic control subsystem to its specific function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flow equalization controller",
+      "right": "Adjusts pump speeds to balance loads across running units"
+     },
+     {
+      "id": "p2",
+      "left": "Resistance temperature detector",
+      "right": "Compact sensor placed near a point to log temperature"
+     },
+     {
+      "id": "p3",
+      "left": "Dial thermometer on bearing",
+      "right": "Monitors temperature of oil thrown from rotating bearings"
+     },
+     {
+      "id": "p4",
+      "left": "Jacket temperature detector",
+      "right": "Warns of cooling-water supply loss on water-cooled bearings"
+     },
+     {
+      "id": "p5",
+      "left": "X-Y proximator probe",
+      "right": "Measures shaft vibration directly where bearing supports are stiff"
+     },
+     {
+      "id": "p6",
+      "left": "Seismic housing pickup",
+      "right": "Detects vibration on the outboard housing using set points"
+     }
+    ],
+    "explanation": "Electronic pump instrumentation balances multi-pump flow, tracks bearing and cooling-jacket temperatures, and measures housing or direct shaft vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "68ba21934794e3ada11cd7f36e68e9cc3683cdcc6ca5f275293bec9535c37158",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m1-05",
+    "prompt": "Match each conveyance pressure or flow term to its physical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Gauge pressure",
+      "right": "Amount by which total absolute pressure exceeds ambient atmospheric pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Backsiphonage",
+      "right": "Reverse contaminant entry caused by sub-atmospheric line pressure"
+     },
+     {
+      "id": "p3",
+      "left": "Water hammer",
+      "right": "Concussion against pipe walls from an abrupt change in flow rate"
+     },
+     {
+      "id": "p4",
+      "left": "Viscosity",
+      "right": "Internal thickness or resistance to flow exhibited by a liquid"
+     },
+     {
+      "id": "p5",
+      "left": "Laminar flow",
+      "right": "Fluid movement arranged smoothly in thin parallel layers"
+     },
+     {
+      "id": "p6",
+      "left": "Bourdon tube",
+      "right": "Semicircular elliptical tube that flexes to sense pressure changes"
+     }
+    ],
+    "explanation": "Conveyance hydraulics relies on distinct concepts for pressure reference, transient shock, flow regime, internal fluid resistance, and mechanical pressure sensing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "8fa71501550f3c5aa2ec0c0968b4629bdfe43018411a1451939bd389fcc53f17",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m0-07",
+    "prompt": "A centrifugal pump rotating backward can look and sound normal during casual observation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Reverse rotation in a centrifugal pump can be difficult to detect by sight or sound because the unit appears and sounds normal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "450b9822744037d08ea813616da1234aaeac423ed58c209896390ff135b76672",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m0-09",
+    "prompt": "Downstream piping and valves after a vortex pump need clear passages large enough for the solids that pass through the pump.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because vortex pumps pass large objects without clogging, downstream pipes and valves need matching clearance or obstructions form in less accessible spots."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "869a63ef38d248f21a094fe05a8c027dde34e6a9e60b1d4fa2a3c42db815eb32",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m0-15",
+    "prompt": "Dry cutting, grinding, or sanding of asbestos-cement pipe separates fibers from their matrix and creates an airborne inhalation hazard.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Undamaged asbestos-cement pipe is nonfriable, whereas dry abrasive cutting or sanding releases friable airborne fibers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "8fe111e36cb395b428adfaf1458fa3363c968aaef89bf11d5637f42805dc8652",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-01",
+    "prompt": "Three of these mechanisms belong to positive-displacement flowmeters. Which one belongs to a velocity turbine meter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Nutating disc"
+     },
+     {
+      "id": "o2",
+      "label": "Oscillating piston"
+     },
+     {
+      "id": "o3",
+      "label": "Oval gear"
+     },
+     {
+      "id": "o4",
+      "label": "Bladed inline rotor"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Nutating discs, oscillating pistons, and oval gears isolate fixed volumes in positive-displacement meters, whereas a bladed rotor spins with fluid velocity in a turbine meter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "3565faaa767e622ae9f5fa5a60371f3ec28aaa29b793862bbf9c18952a27cf93",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-02",
+    "prompt": "Three of these properties are operational advantages of a line-size magnetic flowmeter. Which one is a limitation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Minimal hydraulic head loss"
+     },
+     {
+      "id": "o2",
+      "label": "Bidirectional flow measurement"
+     },
+     {
+      "id": "o3",
+      "label": "Unobstructed flow profile"
+     },
+     {
+      "id": "o4",
+      "label": "Unpredictable output with entrained gas"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Magnetic flowmeters offer minimal head loss, no obstruction, and bidirectional reading, but gas mixed into the liquid makes readings unpredictable."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "7ecb9cd8dba02bd91f8dfd0958285ff8ec0e6a703d0f9c33a1e1b7c935b9f039",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-03",
+    "prompt": "Three of these parts belong to a pump stuffing-box sealing assembly. Which one is a bearing component?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Packing rings"
+     },
+     {
+      "id": "o2",
+      "label": "Lantern ring"
+     },
+     {
+      "id": "o3",
+      "label": "Packing gland"
+     },
+     {
+      "id": "o4",
+      "label": "Thrust bearing"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Packing rings, the lantern ring, and the packing gland seal and lubricate the stuffing box, while the thrust bearing supports axial shaft load near the motor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "d5f9990b4925fe7af2afe4a0f660d4c0f347dd8772405f972a81aa609ba79993",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-04",
+    "prompt": "Three of these variables appear in the net positive suction head available (NPSHA) relationship for a pump. Which one is an electrical parameter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Absolute atmospheric pressure"
+     },
+     {
+      "id": "o2",
+      "label": "Liquid vapor pressure"
+     },
+     {
+      "id": "o3",
+      "label": "Suction line friction loss"
+     },
+     {
+      "id": "o4",
+      "label": "Three-phase supply frequency"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "NPSHA depends on atmospheric pressure, static liquid column, vapor pressure, entrance loss, and suction friction loss, not electrical supply frequency."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "f307396ef6db0ff7cafa3121b8b58b94ebe9569fcc5c44d9fbbf307419eb17b4",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-06",
+    "prompt": "Three of these hardware items are structural pipe hangers or supports. Which one is a pressure-sensing element?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Anchor chair"
+     },
+     {
+      "id": "o2",
+      "label": "Adjustable clevis hanger"
+     },
+     {
+      "id": "o3",
+      "label": "Swivel pipe roll"
+     },
+     {
+      "id": "o4",
+      "label": "Bourdon tube"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Anchor chairs, clevis hangers, and swivel pipe rolls support piping loads, whereas a Bourdon tube senses fluid pressure inside a gauge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "cdbe7236ddfb02cd755831eb6e6293df284ce4b649111e6743c83f1f13d4f132",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-07",
+    "prompt": "Three of these materials are nonmetallic conveyance pipes. Which one belongs to the ferrous cast-iron alloy family?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Vitrified clay pipe"
+     },
+     {
+      "id": "o2",
+      "label": "Asbestos-cement pipe"
+     },
+     {
+      "id": "o3",
+      "label": "Extruded PVC pipe"
+     },
+     {
+      "id": "o4",
+      "label": "Malleable iron pipe"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Vitrified clay, asbestos-cement, and PVC are nonmetallic pipes, while malleable iron is a high carbon-silicon-iron casting alloy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "213bc2d731144b810b6dc1ca3e834a7bcf30ede5c2c7aeff0f02e9ef389a4213",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-08",
+    "prompt": "Three of these valves take their names from the shape of their internal flow-closing element. Which one is named for its protective function?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Ball valve"
+     },
+     {
+      "id": "o2",
+      "label": "Gate valve"
+     },
+     {
+      "id": "o3",
+      "label": "Butterfly valve"
+     },
+     {
+      "id": "o4",
+      "label": "Relief valve"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Ball, gate, and butterfly valves are named for the internal closing element, whereas relief valves are named for their pressure-relieving function."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "ae980173e130b9968687cf5f15ffa49da84257f67421c2e9af245ed4e1f27049",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m1-14",
+    "prompt": "Match each conveyance material or fabrication term to its technical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hose carcass",
+      "right": "Reinforcement plies situated between the inner tube and outer cover"
+     },
+     {
+      "id": "p2",
+      "left": "Neoprene",
+      "right": "Synthetic elastomer resistant to oil, flame, chemicals, and weather"
+     },
+     {
+      "id": "p3",
+      "left": "Nonferrous alloy",
+      "right": "Metallic composition that contains no iron"
+     },
+     {
+      "id": "p4",
+      "left": "Bimetallic element",
+      "right": "Sensing strip bonded from two distinct metals for thermal gauges"
+     },
+     {
+      "id": "p5",
+      "left": "Asbestos",
+      "right": "Fibrous mineral form of magnesium silicate"
+     },
+     {
+      "id": "p6",
+      "left": "Metallurgy",
+      "right": "Scientific study of the properties and behavior of metals"
+     }
+    ],
+    "explanation": "Conveyance specifications distinguish metallic compositions, mineral fibers, synthetic elastomers, and layered hose reinforcements according to material science definitions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "d3d43ce82d3322e8db5068c0bffd4378081aee0c8f540cf0f2a7ef2a3f16c5ad",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m1-17",
+    "prompt": "Match each pipe support, gauge, or joint-preparation item to its mechanical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bellows gauge",
+      "right": "Measures fluid pressure via expansion of a pleated chamber"
+     },
+     {
+      "id": "p2",
+      "left": "Brazing flux",
+      "right": "Coats cleaned hot metal to block oxide formation during joining"
+     },
+     {
+      "id": "p3",
+      "left": "Adjustable pipe roll stand",
+      "right": "Supports horizontal piping while permitting axial movement"
+     },
+     {
+      "id": "p4",
+      "left": "Standard ring and bolt hanger",
+      "right": "Suspends overhead station piping from structural framing"
+     },
+     {
+      "id": "p5",
+      "left": "Internal ball swing check",
+      "right": "Adds one-way backflow prevention inside a specialized ball valve"
+     },
+     {
+      "id": "p6",
+      "left": "Compressed-air receiver",
+      "right": "Stores pressurized air for delivery on demand in station systems"
+     }
+    ],
+    "explanation": "Piping networks rely on hangers and rollers for structural support, fluxes for oxide-free brazing, bellows for pressure sensing, and receivers for air storage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "8d642ad747a2813f67d3b0a32783ea81f7e703271342eb9afb1451c7b96b3563",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-11",
+    "prompt": "Three of these conditions are operational disadvantages of a time-of-flight ultrasonic flowmeter. Which one is an advantage?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Sensitivity to flow profile disturbances"
+     },
+     {
+      "id": "o2",
+      "label": "Critical transducer alignment requirement"
+     },
+     {
+      "id": "o3",
+      "label": "Signal interference from bubbles"
+     },
+     {
+      "id": "o4",
+      "label": "Zero moving parts in the flow stream"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Time-of-flight ultrasonic meters suffer from bubble interference, flow-disturbance sensitivity, and strict alignment needs, whereas having no moving parts is an advantage."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "757bd3661d7e386467262eb2a3c6e2f80084c8c86832f24b75e962e438728858",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-13",
+    "prompt": "Three of these designs are types of mechanical shaft bearings in centrifugal pumps. Which one is a shaft-sealing cage inside the stuffing box?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Sleeve bearing"
+     },
+     {
+      "id": "o2",
+      "label": "Roller bearing"
+     },
+     {
+      "id": "o3",
+      "label": "Ball bearing"
+     },
+     {
+      "id": "o4",
+      "label": "Lantern ring"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Sleeve, roller, and ball bearings reduce rotational shaft friction, whereas a lantern ring introduces lubricant between packing rings in a stuffing box."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "28d25088d161c34a834db5595e6143017a049d04d2fb71e697d3d8dbe50f29dc",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-14",
+    "prompt": "Three of these traits are advantages of a standard centrifugal pump over reciprocating units. Which one is an operational limitation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Compact installation footprint"
+     },
+     {
+      "id": "o2",
+      "label": "Rotary motion with fewer moving parts"
+     },
+     {
+      "id": "o3",
+      "label": "Wide choice of corrosion-resistant materials"
+     },
+     {
+      "id": "o4",
+      "label": "Inability to self-prime when dry"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Small space needs, fewer moving parts, and diverse material options are centrifugal pump advantages, while inability to draw water into a dry casing is a limitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "dcb64570914b02e84098390a282f59412e4069a532df4ee90575cb6fa49ffc6e",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-16",
+    "prompt": "Three of these metals belong to the ferrous cast-iron casting alloy family. Which one is a nonferrous joining filler process?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Gray iron"
+     },
+     {
+      "id": "o2",
+      "label": "White iron"
+     },
+     {
+      "id": "o3",
+      "label": "Ductile iron"
+     },
+     {
+      "id": "o4",
+      "label": "Brazing alloy"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "Gray, white, and ductile iron are carbon-silicon-iron casting alloys in the cast-iron family, whereas brazing uses a nonferrous filler alloy."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "d110b090104cb40ca79f46ad9c42f469986698092fed531a740b43de247b25c0",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m2-17",
+    "prompt": "Three of these methods are used to join sections of thermoplastic PVC pipe. Which one is a prestressing reinforcement method for high-pressure concrete pipe?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Solvent welding"
+     },
+     {
+      "id": "o2",
+      "label": "Heat fusion welding"
+     },
+     {
+      "id": "o3",
+      "label": "Fillet welding"
+     },
+     {
+      "id": "o4",
+      "label": "Tensioned steel wire winding"
+     }
+    ],
+    "correctOptionId": "o4",
+    "explanation": "PVC pipe sections can be joined by solvent, fusion, or fillet welding, whereas tensioned steel wire winding compresses prestressed concrete pressure pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "346448214a7fcf366aba46fbd382aa8fb56124b8f6a358c88f584ab498f7166f",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-01",
+    "prompt": "Conductive wastewater flows completely full through an unobstructed magnetic flowmeter with constant magnetic field strength and fixed electrode spacing, and liquid velocity rises. What happens to the voltage induced across the electrodes?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Under Faraday's law of electromagnetic induction, holding field strength and electrode distance constant makes induced electrode voltage rise proportionally with fluid velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "d02e9f519a1fe887e57a21fb7d465d5cfd6c7855a6b1707c49e52600297876e9",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-02",
+    "prompt": "Clean liquid flows through a time-of-flight ultrasonic flowmeter, and a surge of suspended solids enters the pipe and scatters the acoustic pulses. Assuming transducer alignment is unchanged, what happens to the ultrasonic beam penetration across the flow stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Higher particle or bubble concentrations interfere with ultrasonic sound pulses, shifting acoustic transmission from full penetration toward partial or poor penetration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "ce6abd624b0390554a6446ed6c6021f1c3635f30c4fd5d5e011e6b0c0042f494",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-03",
+    "prompt": "Clean water passes through an inline turbine flowmeter whose rotor spins freely without mechanical drag, and the volumetric flow rate rises. What happens to the pulse frequency generated by the blade-passage sensor?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Rotor rotational speed and the resulting electronic blade-passage pulse frequency increase in direct proportion to volumetric flow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "28beb9070966ef42e36f1357e9936b6fa59d873945366d42fb5a6d6554ecd79d",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-04",
+    "prompt": "A centrifugal pump draws water from an open atmospheric tank at constant liquid level, atmospheric pressure, and suction friction loss, while the water warms significantly. Because warmer water has higher absolute vapor pressure, what happens to the net positive suction head available?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Vapor pressure subtracts from atmospheric and static heads in the NPSHA relationship, so higher vapor pressure reduces net positive suction head available."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "7e7529f5e62d5d92c277f0024184bb4698f408ab7dc2dff05af5853036914999",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-08",
+    "prompt": "A centrifugal pump is driven by a step-speed electronic motor controller linked to a wet-well level sensor, and the pump is currently running below its maximum design speed. As incoming wastewater causes the wet-well depth to rise across a control step, what happens to the motor rotational speed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Step-speed motor controllers raise motor speed in predetermined increments toward maximum design speed as wet-well water depth increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "53f50feabf688d65f01240e2cc42648f6e556deecde14bd01237842c880bdecc",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-11",
+    "prompt": "Sodium hypochlorite stabilized with excess caustic is diluted with hard water containing dissolved calcium and carbon dioxide, raising the solution pH above nine as it passes through turbulent valves. Over months of continuous feeding without cleaning, what happens to the open internal bore diameter of the feed pipe?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "High-pH dilution water precipitates calcium carbonate scale on pipe walls and turbulent fittings, progressively narrowing the open bore."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "3b230ab024c20c167b1499c07bb3acdfa5821bf56711ae706dca233597539f68",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-12",
+    "prompt": "Thermal pipe insulation of proper thickness is wrapped around an exposed station pipeline carrying warm fluid through a cold room at steady flow. Compared with the bare pipe, what happens to the rate of heat loss from the warm fluid to the room air?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Thermal insulation slows heat transfer from a warm surface to cooler surroundings, keeping the conveyed fluid from cooling rapidly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "f20528f155ab0d660b8c24efdcbf46ae9bb208ad9b9eba47e3ef70ae21d24eed",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-13",
+    "prompt": "A common gravity sewer is constructed without factory wye or tee branches, and contractors later break directly into the pipe wall to add building connections with makeshift seals below the water table. What happens to groundwater infiltration entering that sewer reach?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Pipe break-ins made where wyes and tees were omitted are seldom sealed properly and act as major entry points for groundwater infiltration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "6cc91f2a3aa79b75d35128c4c63e86ccf8805513d25fa3a19360ee0cb8cf3fc1",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-14",
+    "prompt": "An extruded thermoplastic PVC pipeline carries industrial wastewater, and a process change raises the temperature of the conveyed liquid substantially while staying below melting. What happens to the mechanical wall strength of the PVC piping?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Thermoplastic piping loses mechanical strength as the temperature of the conveyed fluid rises."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "29794ed4fabbaf6111f92888a2bbd3aec514ba8eaa737cb2574be3f886400b1a",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-16",
+    "prompt": "A large quarter-turn ball valve is retrofitted with a planetary gear operator so an operator can turn a smaller handwheel with less manual force. Assuming steady handwheel turning speed, what happens to the total operating time required to close the valve?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Planetary gearing reduces the required handwheel size and operating force on a ball valve while increasing the operating time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "e4801d1ee1c8eac1fbab9ef043b6c069552cc773aa6938aff80b48c771984e4a",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m3-18",
+    "prompt": "Fluid pressure in a hydraulic line exceeds the preset threshold of an automatic system relief valve and continues rising toward a twenty-percent overpressure before reaching maximum travel. What happens to the valve opening travel as overpressure rises within that range?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "System relief valves start opening at preset pressure and open progressively wider as overpressure rises until reaching maximum travel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "b879d4f5800931795d546c9cb53c1d7eed038aa01794f9376dacde6b41d6cedd",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m4-03",
+    "prompt": "A technician reviews inline turbine and positive-displacement flowmeters used on clean station water lines. Which statement is inaccurate?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A turbine rotor spins at a speed proportional to the velocity of the flowing fluid."
+     },
+     {
+      "id": "o2",
+      "label": "Positive-displacement gear trains use a rotary shaft seal where the shaft exits the housing."
+     },
+     {
+      "id": "o3",
+      "label": "Oval-gear positive-displacement meters calculate flow from voltage induced across wall electrodes."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Oval-gear meters mechanically isolate exact fluid volumes and transmit motion through a counter drive train, whereas magnetic meters use wall electrodes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "4a05dcc837c83bfe98b0ea022c87774a7f904303efa71d34155d8010e0221c9d",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m4-09",
+    "prompt": "An instrumentation specialist reviews temperature and vibration sensors on large pumping units. Which sensor application statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Dial thermometers on bearings monitor the temperature of oil thrown from rotating parts."
+     },
+     {
+      "id": "o2",
+      "label": "Stiff bearing supports transfer full shaft motion to bearing caps, making shaft probes redundant."
+     },
+     {
+      "id": "o3",
+      "label": "Compact resistance temperature detectors offer flexible placement near local measuring points."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "On machines with stiff bearing supports, bearing-cap vibration is a small fraction of actual shaft motion, so direct shaft probes are preferred."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "482a4c4ec9b625035ba86310c4362ffde02ec80dc90ede13f4eebb68e704a06b",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m4-12",
+    "prompt": "A pipefitter compares flanged, welded, and brazed metallic pipe joints for station and buried service. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Flanged joints suit exposed station piping because rigid bolted faces do not flex with ground movement."
+     },
+     {
+      "id": "o2",
+      "label": "Welded metal joints heat the pipe ends until the parent metal melts and blends into one continuous piece."
+     },
+     {
+      "id": "o3",
+      "label": "Brazing melts the parent steel pipe walls together without flux or capillary filler metal."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "In brazed joints, the parent metal does not melt; flux prevents oxides while capillary action draws molten nonferrous filler into the gap."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "90712241eb351eddd2a6b47a57830dd59da3aa22cc1e5aee185084cf97521dce",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m4-13",
+    "prompt": "An inspector reviews clay and concrete sewer pipe properties for nonpressurized and pressurized conveyance. Which statement is inaccurate?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Vitrified clay pipe has a kiln-glazed surface that strongly resists chemical corrosion in open-channel flow."
+     },
+     {
+      "id": "o2",
+      "label": "Unglazed clay pipe resists soil contaminants and ground moisture without external protection."
+     },
+     {
+      "id": "o3",
+      "label": "Prestressed concrete pressure pipe uses tensioned wire or rods to place the concrete core in compression."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Unlike vitrified clay, unglazed clay pipe lacks a glass-like seal and needs protection against soil contaminants and ground moisture."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "234e53a234ed1dc4e5454583c66d3ff884a8019db7feca03c9bd35b4c57be193",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-01",
+    "prompt": "In the signal-generation sequence of an inline magnetic flowmeter system, does induced voltage appear across the pipe electrodes before or after the signal conditioner outputs a direct-current milliamp signal?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Conductive liquid moving through the magnetic field induces electrode voltage first, and the signal conditioner converts that voltage into a milliamp output."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "cabadc56cb10f0f75740c905fee817ef9d2e47f240aa302884429283ee2c687c",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-02",
+    "prompt": "In the acoustic measurement mechanism of a Doppler ultrasonic flowmeter, does the transducer detect the frequency-shifted sound wave before or after the transmitted beam scatters off moving particles in the wastewater?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The transmitted ultrasonic wave hits suspended solids or bubbles and scatters with a Doppler frequency shift prior to returning to the receiver."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "d4fba3e860d7ad1d07ad0800bef6189b7a448a9c975e7d877f128e8d62c02c20",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-04",
+    "prompt": "In the mechanical transmission sequence of a positive-displacement flowmeter, does the counter drive train produce the external output reading before or after the internal measuring chamber isolates a volume of liquid?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Fluid enters and moves the displacement element in the measuring chamber first, driving the counter gear train that produces the output reading."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "4d2d8edf21c8a452dbd2b065920e3d41be929560e320b3f434d0b86839f9f7ec",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-08",
+    "prompt": "During a complete pumping cycle controlled by a two-probe electrode system in a storage well, does the rising liquid submerge the upper start electrode before or after falling below the deeper stop electrode to end that cycle?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Rising water submerges the upper probe to start the pump first, and pumping draws the level down past the deeper probe to open the circuit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "4d8e9f85f2b0d5d5874cd4db8c1a85a3fa8ca01cb659e5c58e3f441f97acd2eb",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-09",
+    "prompt": "In an electronic step-speed motor controller responding to steadily rising water depth in a wet well, does the controller activate an additional lag pump before or after stepping the lead pump motor up to its maximum design speed?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "As depth increases, the sensor raises the lead motor speed in predetermined steps to maximum design speed prior to starting an additional pump."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "8bf9f52bcb738b2e3f141c107077d0ae4f981d955c41f948d13db58b878a2ccb",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-14",
+    "prompt": "In the manufacturing process of wire-wound prestressed concrete pressure pipe, is the outer protective concrete coating placed before or after steel wire is wound tightly around the core to create built-in compression?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "High-tensile wire is wound tightly around the pipe core to prestress it in compression prior to covering the wire with an outer concrete coating."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "52e1b4021d77c59bb325ca4c7ab887076b923c906edf2390c7803784ab5b5bab",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-15",
+    "prompt": "In a standard hydraulic fluid-power piping layout protected by a main system relief valve, is the relief valve positioned before or after the first system isolation valve along the discharge path from the pump?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Main system relief valves are installed between the pressure source and the first isolation valve so isolation cannot block overpressure relief."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "8cfe3507dca4a4697ff1371d2830fe5bec8b60b841160f5a36103926f33b3b68",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-16",
+    "prompt": "In the automatic recharge cycle of a plant compressed-air accumulator system experiencing heavy air draw, does the internal sensor signal the air compressor to start before or after fresh compressed air recharges the accumulator?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "When air draw lowers accumulator state, the sensing device sends a start signal to the compressor first so compressed air can recharge the vessel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "4054581d7262ae2103c2bfcda39a1b115f3cba67250f9112a32a55cacfedc0a6",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-water-coll",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "ct261118-wpi-class2-water-coll-r01-m5-17",
+    "prompt": "In the mechanical cycle of a spring-loaded ball vacuum breaker during a temporary pipeline vacuum event, does the spring return the ball to reseal its seat before or after outside air enters the line to break the vacuum?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Sub-atmospheric pressure pulls the ball into the retainer tube so air fills the vacuum first, and the spring reseals the ball once vacuum clears."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+    "notes": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+    "registeredAt": "2026-11-19T01:36:20.376Z",
+    "payloadSha256": "baa19710a59cab74bf1d0c94e09ad219808a0a9e108023f24b8a5af6c9ecc34d",
+    "builderResultsSha256": "3a1f1c55365143330dc387d68798d07c3f2bad8e6790c360faf1245f5f79a5bc"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T01:34:04.882380+00:00",
+   "attestation": "Strict final Carbon self-review completed against supplied source pages, WPI Class II Wastewater Collection scope, 1,283 existing course tasks, and intra-batch overlap; 42 exact items accepted and 55 rejected.",
+   "payloadSha256": {
+    "ct261118-wpi-class2-water-coll-r01-m1-01": "19b5f9cc4906887cb3078412d4049b5ec964c1e718bf0fa143601f66198a1e7f",
+    "ct261118-wpi-class2-water-coll-r01-m1-03": "68ba21934794e3ada11cd7f36e68e9cc3683cdcc6ca5f275293bec9535c37158",
+    "ct261118-wpi-class2-water-coll-r01-m1-05": "8fa71501550f3c5aa2ec0c0968b4629bdfe43018411a1451939bd389fcc53f17",
+    "ct261118-wpi-class2-water-coll-r01-m0-07": "450b9822744037d08ea813616da1234aaeac423ed58c209896390ff135b76672",
+    "ct261118-wpi-class2-water-coll-r01-m0-09": "869a63ef38d248f21a094fe05a8c027dde34e6a9e60b1d4fa2a3c42db815eb32",
+    "ct261118-wpi-class2-water-coll-r01-m0-15": "8fe111e36cb395b428adfaf1458fa3363c968aaef89bf11d5637f42805dc8652",
+    "ct261118-wpi-class2-water-coll-r01-m2-01": "3565faaa767e622ae9f5fa5a60371f3ec28aaa29b793862bbf9c18952a27cf93",
+    "ct261118-wpi-class2-water-coll-r01-m2-02": "7ecb9cd8dba02bd91f8dfd0958285ff8ec0e6a703d0f9c33a1e1b7c935b9f039",
+    "ct261118-wpi-class2-water-coll-r01-m2-03": "d5f9990b4925fe7af2afe4a0f660d4c0f347dd8772405f972a81aa609ba79993",
+    "ct261118-wpi-class2-water-coll-r01-m2-04": "f307396ef6db0ff7cafa3121b8b58b94ebe9569fcc5c44d9fbbf307419eb17b4",
+    "ct261118-wpi-class2-water-coll-r01-m2-06": "cdbe7236ddfb02cd755831eb6e6293df284ce4b649111e6743c83f1f13d4f132",
+    "ct261118-wpi-class2-water-coll-r01-m2-07": "213bc2d731144b810b6dc1ca3e834a7bcf30ede5c2c7aeff0f02e9ef389a4213",
+    "ct261118-wpi-class2-water-coll-r01-m2-08": "ae980173e130b9968687cf5f15ffa49da84257f67421c2e9af245ed4e1f27049",
+    "ct261118-wpi-class2-water-coll-r01-m1-14": "d3d43ce82d3322e8db5068c0bffd4378081aee0c8f540cf0f2a7ef2a3f16c5ad",
+    "ct261118-wpi-class2-water-coll-r01-m1-17": "8d642ad747a2813f67d3b0a32783ea81f7e703271342eb9afb1451c7b96b3563",
+    "ct261118-wpi-class2-water-coll-r01-m2-11": "757bd3661d7e386467262eb2a3c6e2f80084c8c86832f24b75e962e438728858",
+    "ct261118-wpi-class2-water-coll-r01-m2-13": "28d25088d161c34a834db5595e6143017a049d04d2fb71e697d3d8dbe50f29dc",
+    "ct261118-wpi-class2-water-coll-r01-m2-14": "dcb64570914b02e84098390a282f59412e4069a532df4ee90575cb6fa49ffc6e",
+    "ct261118-wpi-class2-water-coll-r01-m2-16": "d110b090104cb40ca79f46ad9c42f469986698092fed531a740b43de247b25c0",
+    "ct261118-wpi-class2-water-coll-r01-m2-17": "346448214a7fcf366aba46fbd382aa8fb56124b8f6a358c88f584ab498f7166f",
+    "ct261118-wpi-class2-water-coll-r01-m3-01": "d02e9f519a1fe887e57a21fb7d465d5cfd6c7855a6b1707c49e52600297876e9",
+    "ct261118-wpi-class2-water-coll-r01-m3-02": "ce6abd624b0390554a6446ed6c6021f1c3635f30c4fd5d5e011e6b0c0042f494",
+    "ct261118-wpi-class2-water-coll-r01-m3-03": "28beb9070966ef42e36f1357e9936b6fa59d873945366d42fb5a6d6554ecd79d",
+    "ct261118-wpi-class2-water-coll-r01-m3-04": "7e7529f5e62d5d92c277f0024184bb4698f408ab7dc2dff05af5853036914999",
+    "ct261118-wpi-class2-water-coll-r01-m3-08": "53f50feabf688d65f01240e2cc42648f6e556deecde14bd01237842c880bdecc",
+    "ct261118-wpi-class2-water-coll-r01-m3-11": "3b230ab024c20c167b1499c07bb3acdfa5821bf56711ae706dca233597539f68",
+    "ct261118-wpi-class2-water-coll-r01-m3-12": "f20528f155ab0d660b8c24efdcbf46ae9bb208ad9b9eba47e3ef70ae21d24eed",
+    "ct261118-wpi-class2-water-coll-r01-m3-13": "6cc91f2a3aa79b75d35128c4c63e86ccf8805513d25fa3a19360ee0cb8cf3fc1",
+    "ct261118-wpi-class2-water-coll-r01-m3-14": "29794ed4fabbaf6111f92888a2bbd3aec514ba8eaa737cb2574be3f886400b1a",
+    "ct261118-wpi-class2-water-coll-r01-m3-16": "e4801d1ee1c8eac1fbab9ef043b6c069552cc773aa6938aff80b48c771984e4a",
+    "ct261118-wpi-class2-water-coll-r01-m3-18": "b879d4f5800931795d546c9cb53c1d7eed038aa01794f9376dacde6b41d6cedd",
+    "ct261118-wpi-class2-water-coll-r01-m4-03": "4a05dcc837c83bfe98b0ea022c87774a7f904303efa71d34155d8010e0221c9d",
+    "ct261118-wpi-class2-water-coll-r01-m4-09": "482a4c4ec9b625035ba86310c4362ffde02ec80dc90ede13f4eebb68e704a06b",
+    "ct261118-wpi-class2-water-coll-r01-m4-12": "90712241eb351eddd2a6b47a57830dd59da3aa22cc1e5aee185084cf97521dce",
+    "ct261118-wpi-class2-water-coll-r01-m4-13": "234e53a234ed1dc4e5454583c66d3ff884a8019db7feca03c9bd35b4c57be193",
+    "ct261118-wpi-class2-water-coll-r01-m5-01": "cabadc56cb10f0f75740c905fee817ef9d2e47f240aa302884429283ee2c687c",
+    "ct261118-wpi-class2-water-coll-r01-m5-02": "d4fba3e860d7ad1d07ad0800bef6189b7a448a9c975e7d877f128e8d62c02c20",
+    "ct261118-wpi-class2-water-coll-r01-m5-04": "4d2d8edf21c8a452dbd2b065920e3d41be929560e320b3f434d0b86839f9f7ec",
+    "ct261118-wpi-class2-water-coll-r01-m5-08": "4d8e9f85f2b0d5d5874cd4db8c1a85a3fa8ca01cb659e5c58e3f441f97acd2eb",
+    "ct261118-wpi-class2-water-coll-r01-m5-09": "8bf9f52bcb738b2e3f141c107077d0ae4f981d955c41f948d13db58b878a2ccb",
+    "ct261118-wpi-class2-water-coll-r01-m5-14": "52e1b4021d77c59bb325ca4c7ab887076b923c906edf2390c7803784ab5b5bab",
+    "ct261118-wpi-class2-water-coll-r01-m5-15": "8cfe3507dca4a4697ff1371d2830fe5bec8b60b841160f5a36103926f33b3b68",
+    "ct261118-wpi-class2-water-coll-r01-m5-16": "4054581d7262ae2103c2bfcda39a1b115f3cba67250f9112a32a55cacfedc0a6",
+    "ct261118-wpi-class2-water-coll-r01-m5-17": "baa19710a59cab74bf1d0c94e09ad219808a0a9e108023f24b8a5af6c9ecc34d"
+   }
+  },
+  "registeredAt": "2026-11-19T01:36:20.376Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 3,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 5,
+     "unchanged": 0
+    },
+    "longest": 7,
+    "options": 27
+   },
+   "batchSha256": "ff65e8d0a0df10af483d8ec5b25bf98349a6e5e07f46fdb085a372d9f5498ba2"
+  }
+ }
+}

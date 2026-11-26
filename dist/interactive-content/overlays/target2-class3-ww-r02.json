@@ -1,0 +1,2007 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-class3-ww-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 55 items.",
+ "additions": [
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-01",
+    "prompt": "Water is amphoteric and under suitable chemical conditions reacts either as an acid or as a base.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Water is one of the few chemical substances capable of behaving both as an acid and as a base depending on reaction conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "c95bc33485af521cff1aa101c8cd1f175ce4db137e633cf4d846f5f44c43030a",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-02",
+    "prompt": "Earthy and musty odors produced by nonvolatile metabolites of actinomycetes and blue-green algae are primarily stripped by simple air bubbling rather than chemical oxidants.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nonvolatile earthy or musty algal and actinomycete byproducts respond effectively to chemical oxidants like ozone, chlorine dioxide, or permanganate, whereas aeration targets volatile gases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "ee4e789acbca63ae0c7f026ef4fcf97f5874edee4e1a07e9567e59c2d509a94b",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-03",
+    "prompt": "Ferric chloride functions effectively as a chemical coagulant down to a lower pH than aluminum sulfate.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Ferric chloride remains an effective coagulant down to lower acidic pH values than alum, which performs best in a slightly higher pH window."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "4076cab303ae1bde7af684c38c8d0b6e9ef3696e5b2bfb8aeb1910b025b8fb16",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-04",
+    "prompt": "Elevated total dissolved solids in plant water lowers electrical conductivity while eliminating the chance of forming a protective pipe coating.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "High total dissolved solids increases electrical conductivity and ionization, yet it can also favor formation of a protective mineral coating on pipe walls."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "fdf94b561c41c3cf26555ab658bb7d4a91235696e3c863a4c838d5d8b308e3c8",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-05",
+    "prompt": "Benzene and strongly bonded polysaccharides resist microbial attack, so chemical oxygen demand captures their oxygen-depleting potential better than a BOD test.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Ringed compounds such as benzene are essentially nonbiodegradable, whereas chemical oxygen demand measures chemical oxidation of broader organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "df2e13336ae0a9cbb6d4f4f8d709a79b77eda77b50cbce3082e107b07bb70cdc",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-09",
+    "prompt": "Chlorophyll-bearing freshwater algae serve as a primary biological link converting inorganic water constituents into organic cellular matter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Simple microscopic algae contain chlorophyll and convert inorganic constituents in water into organic constituents."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "16b501fbc2a4ac25caf30dbc8abd98794c1ddfa4a7dd541a013bff0ec594d137",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-10",
+    "prompt": "Seawater generally exhibits a lower pH and lower specific conductance than typical natural freshwater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Seawater is slightly more basic with a higher pH than most natural freshwater and has high specific conductance due to dissolved salts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "f73570a3d0c7ef3957bf229ba4777a014b67eef17f2fc6c1f8c9c338a14c7d22",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-12",
+    "prompt": "Soluble trace metals in surface waters occur as solid clay-bound precipitates rather than free ions or organometallic chelates.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Soluble metal forms in water are typically ions or unionized organometallic chelates and complexes, whereas clay-adsorbed metals are particulate or colloidal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "5910f33b869c55c0cdb05f09cade68af9b4302c0d7df5440a7362d7ac44d0efd",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-13",
+    "prompt": "Certain bacteria and blue-green algae fix nitrogen directly from the atmosphere, adding to aquatic nitrogen inputs alongside agricultural and municipal discharges.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Atmospheric nitrogen fixation by specific bacteria and blue-green algae is a recognized source of aquatic nitrogen along with runoff and wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "a4feaa9213264a5a11fe5d936acdac0e6a000eaa0d16308a3fc101cb0389860d",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m0-14",
+    "prompt": "Bacterial capsules form from fixed genetic traits without influence from surrounding environmental conditions.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Capsule production in bacteria depends on surrounding environmental conditions as well as genetic factors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "732d728d05c66c184979f536e037b1de57e68ab81b395ccefec78fa7f695f8de",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-01",
+    "prompt": "Match each taxonomic level or nomenclature element to its structural place in biological classification.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Kingdom",
+      "right": "Largest and most inclusive rank in organism classification"
+     },
+     {
+      "id": "p2",
+      "left": "Phylum",
+      "right": "Major division directly beneath kingdom and above class"
+     },
+     {
+      "id": "p3",
+      "left": "Order",
+      "right": "Taxonomic grouping positioned between class and family"
+     },
+     {
+      "id": "p4",
+      "left": "Genus",
+      "right": "Capitalized first Latin word shared by closely related species"
+     },
+     {
+      "id": "p5",
+      "left": "Species",
+      "right": "Lowercase second Latin word pinpointing the specific organism"
+     },
+     {
+      "id": "p6",
+      "left": "Bacteriology",
+      "right": "Specialized branch of microbiology focused on single-celled bacteria"
+     }
+    ],
+    "explanation": "Biological classification arranges organisms from broad kingdom down to genus and species, while bacteriology focuses specifically on bacteria."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "a52d57caa59bda643a4cd4085053944966410daf5d0f69f8d2f0ea78b8444ffa",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-02",
+    "prompt": "Match each bacterial or cellular structure to its microscopic and physical characteristics.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cell membrane",
+      "right": "Boundary enclosing the protoplasm and nuclear material"
+     },
+     {
+      "id": "p2",
+      "left": "Rigid cell wall",
+      "right": "Structural outer support possessed by single-celled bacteria"
+     },
+     {
+      "id": "p3",
+      "left": "Macrocapsule",
+      "right": "Organized gelatinous coating thick enough for light microscopy"
+     },
+     {
+      "id": "p4",
+      "left": "Microcapsule",
+      "right": "Thin organized coating detectable via electron microscopy"
+     },
+     {
+      "id": "p5",
+      "left": "Slime layer",
+      "right": "Unorganized watery secretion adhering loosely to the cell wall"
+     },
+     {
+      "id": "p6",
+      "left": "Chemical profile",
+      "right": "Primary basis for differentiating smaller bacterial groups"
+     }
+    ],
+    "explanation": "Bacterial envelopes include rigid walls, organized macro- or microcapsules, and loose slime layers, while fine bacterial differentiation relies on chemistry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "c30f86bbbffdad9fbaff81c4d7f1ffd0debf2217410fa59e610c6bb1e85deb8d",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-03",
+    "prompt": "Match each aqueous metal or nitrogen species to its environmental form or health mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Particulate heavy metal",
+      "right": "Fraction adsorbed onto clay, silica, or organic solids"
+     },
+     {
+      "id": "p2",
+      "left": "Soluble trace metal",
+      "right": "Free aqueous ion or unionized organometallic chelate"
+     },
+     {
+      "id": "p3",
+      "left": "Cadmium or mercury",
+      "right": "Nonessential heavy metal harmful at low concentrations"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrate ion",
+      "right": "Oxidized nitrogen form linked to sewage or fertilizer inputs"
+     },
+     {
+      "id": "p5",
+      "left": "Nitrite ion",
+      "right": "Reduced nitrogen species that displaces oxygen in infant blood"
+     },
+     {
+      "id": "p6",
+      "left": "Atmospheric nitrogen",
+      "right": "Gaseous source captured directly by certain blue-green algae"
+     }
+    ],
+    "explanation": "Metals partition between solid-adsorbed particulates and soluble chelates, while nitrogen cycles among atmospheric gas, nitrate, and oxygen-displacing nitrite."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "66991d1215978ea92dd8c261202dfb40c5a175ee8be3d7a6555b80639e2f5789",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-04",
+    "prompt": "Match each organic constituent class or oxygen-demand concept to its behavior in water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Biodegradable organics",
+      "right": "Broken down by microbes for growth energy while exerting BOD"
+     },
+     {
+      "id": "p2",
+      "left": "Tannins and lignic acids",
+      "right": "Natural woody plant extracts resistant to microbial decay"
+     },
+     {
+      "id": "p3",
+      "left": "Benzene",
+      "right": "Ring-structured petroleum compound essentially nonbiodegradable"
+     },
+     {
+      "id": "p4",
+      "left": "Synthetic organics",
+      "right": "Manufactured compounds such as herbicides, dyes, and plastics"
+     },
+     {
+      "id": "p5",
+      "left": "Halogenated organics",
+      "right": "Byproducts formed when chlorine reacts with aquatic organic matter"
+     },
+     {
+      "id": "p6",
+      "left": "Chemical oxygen demand",
+      "right": "Measures dissolved oxygen depletion including chemically oxidizable refractories"
+     }
+    ],
+    "explanation": "Aquatic organics span readily biodegradable substrates, natural woody refractories, synthetic chemicals, and chlorinated byproducts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "90b43cd703fbc89ca4f0b9c9571aebcdba4f0c05fbef9230f02e311b949f4715",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-05",
+    "prompt": "Match each ion-exchange or coagulation material to its composition or treatment mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Greensand",
+      "right": "Glauconite-tinted granular mineral medium used for cation exchange"
+     },
+     {
+      "id": "p2",
+      "left": "Synthetic organic resin",
+      "right": "BB-sized clear spheres offering dense sodium exchange sites"
+     },
+     {
+      "id": "p3",
+      "left": "Breakthrough",
+      "right": "Appearance of hardness ions once resin exchange sites fill"
+     },
+     {
+      "id": "p4",
+      "left": "Aluminum sulfate",
+      "right": "Acidic metallic salt coagulant lowering water pH upon addition"
+     },
+     {
+      "id": "p5",
+      "left": "Coagulant polymer aid",
+      "right": "Binds small alum floc into larger masses for faster settling"
+     },
+     {
+      "id": "p6",
+      "left": "Lime alkali",
+      "right": "Basic chemical input that raises pH during coagulation control"
+     }
+    ],
+    "explanation": "Ion exchange swaps hardness cations on greensand or resin beads until breakthrough, whereas coagulation adjusts pH and floc size with salts, polymer, and lime."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "b7693324a4d842da0d2448373e5320d5ca3abf79eb42303a71301981463a9baf",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-06",
+    "prompt": "Match each taste, odor, or plant gas issue to its specific origin or removal chemistry.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Actinomycete metabolites",
+      "right": "Nonvolatile compounds causing earthy-musty odors destroyed by oxidants"
+     },
+     {
+      "id": "p2",
+      "left": "Algal oily secretions",
+      "right": "Biological products altering both taste and odor in surface waters"
+     },
+     {
+      "id": "p3",
+      "left": "Dissolved volatile gases",
+      "right": "Odorous constituents stripped or oxidized by aeration oxygen"
+     },
+     {
+      "id": "p4",
+      "left": "Cool waste-gas burner",
+      "right": "Sub-optimum combustion temperature releasing unburned plant odors"
+     },
+     {
+      "id": "p5",
+      "left": "Sodium hydroxide scrub",
+      "right": "Alkaline tower solution absorbing heavy hydrogen sulfide loads"
+     },
+     {
+      "id": "p6",
+      "left": "Permanganate scrub",
+      "right": "Oxidizing chemical solution reacting with foul gases in a tower"
+     }
+    ],
+    "explanation": "Odor sources differ in volatility and chemistry, dictating whether aeration, oxidizing scrubbers, or caustic H2S absorption is effective."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "27b66835a91ce904b0716efb8b9f5174671a9407904e77880940c740c3a1d65f",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-07",
+    "prompt": "Match each fundamental water chemistry parameter to the ionic or molecular property it reflects.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "pH value",
+      "right": "Logarithmic reflection of hydrogen ion concentration"
+     },
+     {
+      "id": "p2",
+      "left": "Alkalinity",
+      "right": "Proton-accepting capacity dominated by bicarbonates and carbonates"
+     },
+     {
+      "id": "p3",
+      "left": "Specific conductance",
+      "right": "Ability to carry electrical current via dissolved ionic solids"
+     },
+     {
+      "id": "p4",
+      "left": "Hardness",
+      "right": "Combined dissolved calcium and magnesium expressed as CaCO3"
+     },
+     {
+      "id": "p5",
+      "left": "Total dissolved solids",
+      "right": "Evaporated residue from water that passed through a filter"
+     },
+     {
+      "id": "p6",
+      "left": "Amphoteric behavior",
+      "right": "Capacity of water molecules to react as either acid or base"
+     }
+    ],
+    "explanation": "Core water parameters track proton activity, acid-neutralizing capacity, ionic current transport, divalent cations, filterable residue, and water reactivity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "882c84489a91afecabfe21361258577788c9debea7f36a7dd5efd63c0e7c70ac",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-09",
+    "prompt": "Match each pipe wall or biological growth factor to its operational effect in water systems.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Mineral scaling",
+      "right": "Deposits that constrict pipe capacity and insulate boiler tubes"
+     },
+     {
+      "id": "p2",
+      "left": "Iron oxidation",
+      "right": "Electrochemical attack on unprotected steel forming rust"
+     },
+     {
+      "id": "p3",
+      "left": "Elevated flow and heat",
+      "right": "Physical conditions accelerating corrosion from DO and CO2"
+     },
+     {
+      "id": "p4",
+      "left": "Nitrogen and phosphorus",
+      "right": "Essential nutrients enabling microbial oxidation of carbon food"
+     },
+     {
+      "id": "p5",
+      "left": "Near-neutral pH window",
+      "right": "Favorable hydrogen ion range supporting biological oxidation"
+     },
+     {
+      "id": "p6",
+      "left": "Toxic substance absence",
+      "right": "Condition preventing inhibition of biological treatment microbes"
+     }
+    ],
+    "explanation": "Physical-chemical conditions drive scaling and steel corrosion in pipes, whereas balanced nutrients, suitable pH, and non-toxic water sustain biological oxidation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "b947926fe651860d8c227c01b0d63747df0c27100038acc62f70b29317a48df4",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m1-10",
+    "prompt": "Match each natural or engineered water type to its expected conductivity or pH profile.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Distilled water",
+      "right": "Minimal dissolved ions and negligible electrical conductance"
+     },
+     {
+      "id": "p2",
+      "left": "Rainwater",
+      "right": "Absorbs airborne dust and gases, raising conductance above pure water"
+     },
+     {
+      "id": "p3",
+      "left": "Seawater",
+      "right": "High saline conductance and slightly higher pH than freshwater"
+     },
+     {
+      "id": "p4",
+      "left": "Coal-mine drainage",
+      "right": "Strongly acidic discharge harmful to aquatic plants and fish"
+     },
+     {
+      "id": "p5",
+      "left": "High-TDS distribution water",
+      "right": "Elevated ionic conductivity paired with protective scale potential"
+     },
+     {
+      "id": "p6",
+      "left": "Sudden river pH shift",
+      "right": "Stronger warning of upstream pollution than a steady baseline value"
+     }
+    ],
+    "explanation": "Dissolved gases, salts, and pollutants establish distinct conductivity and pH signatures across distilled, meteoric, marine, and impacted waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "969d97bbae5ff6731a4aea0d9b00954c73ad3d52eeba4e70cb40c42e97f782d4",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-01",
+    "prompt": "In a chemical coagulation basin operating with aluminum sulfate at steady flow, raw water, and alum dose, polymer coagulant aid is introduced to bind small floc into larger rounded masses. What happens to the settling velocity of the agglomerated floc?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Polymer added with alum helps gather small floc into larger rounded masses, and increased mass size yields increased settling velocity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "af6a1709a353050303fd0740283914febbd012153b413157cfede893be8e60fb",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-02",
+    "prompt": "A plant waste-gas burner handling odorous biosolids off-gas experiences a burner drop from its optimum combustion temperature to a much lower temperature while gas flow continues unchanged. What happens to odor emissions from the waste-gas burning operation?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Operating waste-gas burners below optimum combustion temperatures fails to destroy odorous compounds completely, making the unit a primary odor source."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "d2fdf9e7ee39b5b470f0821cf8127e0360ec617e10ede1cdd50bd3050625aec3",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-03",
+    "prompt": "Water containing dissolved organic decay products from vegetation receives free chlorine disinfection at constant temperature and pH instead of remaining unchlorinated. What happens to the concentration of halogenated organic compounds in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "When chlorine is added to water containing soluble organic matter, chemical reactions form halogenated organic compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "8330b63d23f948d5f17401b3750439b74059897d1785f413a572a658814e8002",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-04",
+    "prompt": "Pure benzene with an intact nonbiodegradable ring structure enters an aerated water sample in small non-toxic amounts while biodegradable organic matter stays constant. What happens to the chemical oxygen demand of the sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Even nonbiodegradable organic chemicals react during chemical oxidation, raising the measured chemical oxygen demand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "e58dbd6b4cb39e22f320ceb1d9b1b10698e1766db70a62466270930a8147ec3c",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-05",
+    "prompt": "Water with elevated nitrate enters an infant's intestinal tract where resident bacteria reduce nitrate into nitrite that enters the bloodstream. What happens to the oxygen-carrying capacity of the bloodstream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Nitrite replaces oxygen in the bloodstream, reducing oxygen transport and causing oxygen starvation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "8380f18d34f72231a68b6c736a9c1c1355d1a6e5723180c35e7ea97e13b659d4",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-06",
+    "prompt": "During a total dissolved solids determination on filtered water containing dissolved minerals, the filtrate is heated in an evaporating dish until the liquid water evaporates without spattering. What happens to the mass of nonvolatile mineral solids remaining in the dish?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Evaporating the filtered water drives off the solvent while leaving the dissolved mineral solids behind in the dish as constant-mass residue."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "099bd3a9e2888b5fba8bb2c1f3277e8268f10c2bedd094235b2dfd6544c25a3d",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-07",
+    "prompt": "Pure water vapor condenses high in the atmosphere and falls as rain through dusty, gas-laden air before reaching a clean collector at constant temperature. What happens to the specific conductance of that water during its fall?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Falling rainwater dissolves airborne dust and gases, introducing ions that raise its specific conductance above pure condensed water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "b7417e5bc2378197ab14fe3c6d7adc74c856addf58c54d17d648f0370e48873f",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-08",
+    "prompt": "Hard water containing dissolved calcium and magnesium passes through a fresh synthetic organic resin softener loaded with abundant active sodium exchange sites at steady flow. What happens to the hardness concentration of the water exiting the resin bed?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "While sodium exchange sites remain available on the resin spheres, calcium and magnesium ions are rapidly removed from solution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "744d2e1834dd085c20ae70257bbe2f5124a45316f3d24793ef01832aba784246",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-09",
+    "prompt": "Surface water carrying nonvolatile earthy-musty metabolites from actinomycetes and blue-green algae is dosed with potassium permanganate at an effective contact time. What happens to the earthy-musty odor intensity of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Chemical oxidants such as potassium permanganate, ozone, and chlorine dioxide effectively destroy earthy-musty odors from actinomycetes and blue-green algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "81279832c8ac09220a9ddb45bd0c21e63d9a7ec3268132f74e18467a77c10a68",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-10",
+    "prompt": "Sunlit freshwater containing dissolved inorganic nutrients supports active photosynthetic growth of chlorophyll-bearing simple algae without grazing or decay losses. What happens to the mass of organic cellular constituents formed from inorganic water constituents?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt1",
+    "explanation": "Chlorophyll-bearing algae serve as the primary biological link converting inorganic constituents in water into organic cellular constituents."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "b2142c23a09b8b5b665999034060a4731e727d0a2309d8c498981ba9f788df58",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-11",
+    "prompt": "In an aerobic biological treatment unit with ample oxygen, carbon food, and favorable pH, nitrogen and phosphorus drop to zero while carbon load continues. What happens to the microbial oxidation of the available carbon materials?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Microorganisms require sufficient nitrogen and phosphorus nutrients to oxidize available carbon materials effectively."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "ad58f7c8b5a229f47839cbb6c15cb69e0fe33df1dbce25d93237afcb7968d3bb",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-12",
+    "prompt": "Foul plant air carrying high concentrations of hydrogen sulfide passes upward through a wet chemical scrubbing tower irrigated with fresh sodium hydroxide solution at design flow. What happens to the hydrogen sulfide concentration in the air leaving the scrubber?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Sodium hydroxide scrubbing solution reacts with and removes high concentrations of odorous hydrogen sulfide from air streams."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "8d21da55f33ca17439d74f904bf30f8aaa1a7b65b28ac587425e13bbd038b819",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-13",
+    "prompt": "Abundant fine clay and organic particulates enter a neutral surface water containing dissolved trace heavy metals under conditions favoring surface adsorption without pH drop. What happens to the dissolved concentration of those trace metals?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Trace heavy metals readily adsorb onto clay, silica, and organic particulates, shifting metal mass out of the dissolved phase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "b788cdda8f6f2c6e5a534c998d99dd736cf52bce42890b85d94394940b894883",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m3-14",
+    "prompt": "Biodegradable organic matter breaks down into simpler compounds in a stream reach populated by active aerobic heterotrophic microbes with limited surface reaeration. What happens to the dissolved oxygen concentration in the stream water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "It increases"
+     },
+     {
+      "id": "opt2",
+      "label": "It decreases"
+     },
+     {
+      "id": "opt3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Organic matter degraded by microbes exerts biochemical oxygen demand and causes oxygen depletion in receiving streams."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "e8c344a9412cc0c909467da16236b184281278ffa1d7aa3ccc288268637700cd",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-01",
+    "prompt": "A treatment study group reviews wastewater odor sources and scrubbing methods. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Septic sewage, screenings, thickened biosolids, and poorly heated waste-gas burners generate foul plant odors."
+     },
+     {
+      "id": "opt2",
+      "label": "Chemical scrubbing towers pass foul air through reactive solutions such as chlorine, permanganate, or caustic soda."
+     },
+     {
+      "id": "opt3",
+      "label": "Activated carbon removes odorous gases primarily by oxidizing sulfide into sulfate within a liquid chemical bath."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Activated carbon is a physical adsorption medium rather than a liquid chemical oxidation bath."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "755e009bf0adc5b5ba75c41e68c1754159a22e7a87e2aac251618ce6001e5073",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-03",
+    "prompt": "A bench note summarizes ion-exchange water softening principles. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Synthetic organic resin beads, greensand, sulfonated coal, and aluminum silicates serve as granular ion-exchange media."
+     },
+     {
+      "id": "opt2",
+      "label": "While active exchange sites remain open, calcium and magnesium swap rapidly with sodium ions on the resin."
+     },
+     {
+      "id": "opt3",
+      "label": "Hardness breakthrough describes the initial startup rinse before calcium and magnesium reach the resin matrix."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Breakthrough occurs at the end of a service run after the available sodium exchange sites have been utilized and hardness passes through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "bd74b9aa8a1de635766bf13dabf0201d1edcc775b5a5f91f8e96605ffcd90428",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-04",
+    "prompt": "An engineering refresher covers scaling and metal corrosion in plant piping. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Uncontrolled mineral scale constricts pipeline carrying capacity and lowers heat-transfer efficiency inside boilers."
+     },
+     {
+      "id": "opt2",
+      "label": "Dissolved oxygen, carbon dioxide, pH, and alkalinity influence the oxidation of unprotected iron and steel surfaces."
+     },
+     {
+      "id": "opt3",
+      "label": "Raising water temperature and flow velocity slows the corrosive action of dissolved gases on bare steel pipes."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Higher water temperature and increased flow velocity substantially accelerate corrosion tendencies rather than slowing them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "b22a20d304696d5003697f8c92b504ff280af15324773cdf48b59ebcfee23d82",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-05",
+    "prompt": "A chemistry review compares biodegradable and refractory organic compounds in water. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Microorganisms break biodegradable organics into simpler molecules and capture the released energy for reproduction."
+     },
+     {
+      "id": "opt2",
+      "label": "Tannins, lignic acids, phenols, cellulose, and ringed benzene degrade rapidly during a standard five-day BOD test."
+     },
+     {
+      "id": "opt3",
+      "label": "Chemical oxygen demand captures oxygen depletion from chemically oxidizable organics that resist microbial breakdown."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Woody plant constituents such as tannins, lignic acids, phenols, cellulose, and ringed benzene are refractory or nonbiodegradable rather than rapidly degraded in BOD tests."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "0d376ed7028ed2a9e46b09a47c5de5e2a907d74bdb65166230bf77a92389dc3f",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-07",
+    "prompt": "A microbiology study card summarizes Linnaean taxonomy and microbe names. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Under binomial nomenclature, Escherichia coli pairs a capitalized genus name with a lowercase species name."
+     },
+     {
+      "id": "opt2",
+      "label": "In the taxonomic hierarchy from kingdom down to species, genus represents a broader group than family."
+     },
+     {
+      "id": "opt3",
+      "label": "Giardia lamblia is a waterborne protozoan, whereas Salmonella typhi is the bacterial typhoid bacillus."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Family sits above genus in the taxonomic hierarchy, so family is broader and more inclusive than genus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "85582f3dcce10274614e6157ec76f9d0c84e37bae86377fd31274f1df409d332",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-08",
+    "prompt": "A laboratory handout describes bacterial cell structure and classification. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Smaller bacterial groups are differentiated largely through chemical, physiological, and cultural traits rather than shape."
+     },
+     {
+      "id": "opt2",
+      "label": "Macrocapsules are organized gelatinous layers visible by light microscopy, while microcapsules require electron microscopy."
+     },
+     {
+      "id": "opt3",
+      "label": "Slime layers are rigid structural cell walls that keep distinct bacterial species uniform in chemical composition."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Slime layers are loose, unorganized watery secretions rather than rigid cell walls, and bacterial species vary widely in structure and chemical composition."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "78699715859fd94e7d16f79c527e6c109ae3072a7ed50af1b0f04d2b3f14b140",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-09",
+    "prompt": "Operators review environmental conditions supporting aerobic biological treatment microbes. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Active biological oxidation of organic carbon requires dissolved oxygen, water, and freedom from toxic inhibitors."
+     },
+     {
+      "id": "opt2",
+      "label": "Microorganisms oxidize carbon substrates readily without nitrogen or phosphorus when water pH sits near two."
+     },
+     {
+      "id": "opt3",
+      "label": "Before treated effluent leaves the outfall, disinfection prevents viable waterborne pathogens from entering receiving waters."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Biological carbon oxidation requires sufficient nitrogen and phosphorus nutrients plus a moderate near-neutral to slightly alkaline pH rather than strong acid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "34d5f1588d21122dc746b4451fd7f1aeb335112b630be82bac5063fd8f96561a",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-10",
+    "prompt": "A study group discusses specific conductance and dissolved ions in water. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Specific conductance tracks dissolved ionic solids because free ions enable water to carry an electrical current."
+     },
+     {
+      "id": "opt2",
+      "label": "Rainwater picks up airborne dust and gases, giving it higher specific conductance than pure distilled water."
+     },
+     {
+      "id": "opt3",
+      "label": "Distilled water conducts electricity much more strongly than seawater because salt blocks electron movement."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Distilled water has very low specific conductance, whereas saline seawater conducts electricity strongly due to abundant dissolved salt ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "64b2b1dcde25205e48deb7161a1dd4d71736063be8ab781bb5915cfd62944e59",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-11",
+    "prompt": "Three operators discuss pH monitoring and chemical coagulation behavior. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Tracking an unexpected shift from a river's baseline pH reveals water-quality disturbances better than one isolated reading."
+     },
+     {
+      "id": "opt2",
+      "label": "Adding acidic alum lowers water pH, whereas adding alkaline lime raises pH during coagulation control."
+     },
+     {
+      "id": "opt3",
+      "label": "Abandoned coal-mine drainage is strongly alkaline and raises stream pH well above seawater."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Drainage from abandoned coal mines can be extremely acidic with very low pH rather than alkaline."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "85fbbe36083fcfc90f196db6765db386823e2dbf627cde07d96d444b9cd8bd7f",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-12",
+    "prompt": "A review card covers synthetic and natural organic contaminants in water supplies. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Commercial synthetic organics include herbicides, pesticides, fuels, plastics, dyes, preservatives, and pharmaceuticals."
+     },
+     {
+      "id": "opt2",
+      "label": "Organic matter in water causes color, taste, odor, stream oxygen depletion, and treatment interference."
+     },
+     {
+      "id": "opt3",
+      "label": "Chlorinating water rich in dissolved organic matter prevents halogenated organic compounds from forming."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Adding chlorine to water containing organic matter causes halogenated compounds to form rather than preventing them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "4f0074f04529a48db0c839592092953c05f8b79dadf0f73949f4e5468db6d68e",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-13",
+    "prompt": "A study sheet defines microorganisms encountered in water and wastewater treatment. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Freshwater algae contain chlorophyll and convert inorganic water constituents into organic cellular matter."
+     },
+     {
+      "id": "opt2",
+      "label": "Autotrophic organisms require complex decaying animal tissue as their organic carbon food source."
+     },
+     {
+      "id": "opt3",
+      "label": "Single-celled bacteria possess rigid cell walls and include aerobic, anaerobic, and facultative forms."
+     }
+    ],
+    "correctOptionId": "opt2",
+    "explanation": "Autotrophic organisms produce food from inorganic substances rather than relying on decaying organic tissue."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "7717fb675c09c9753d827cdd89f3b6aa151177b9f7977f7e2d9a4109294a53b1",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m4-14",
+    "prompt": "A water chemistry note contrasts alkalinity, hardness, and water reactivity. Which statement contains a flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "opt1",
+      "label": "Water is amphoteric and under suitable conditions reacts chemically either as an acid or as a base."
+     },
+     {
+      "id": "opt2",
+      "label": "Bicarbonates formed when carbon dioxide acts on basic soil materials are major contributors to alkalinity."
+     },
+     {
+      "id": "opt3",
+      "label": "Water hardness measures the proton-accepting capacity of sodium and potassium ions expressed as sodium chloride."
+     }
+    ],
+    "correctOptionId": "opt3",
+    "explanation": "Hardness represents dissolved calcium and magnesium ions expressed as calcium carbonate, whereas alkalinity measures proton-accepting acid neutralization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "2fcb9610ba1da676b94c5643e59fd3b0e80ce8b5309bfb4860ab46b70e7b3527",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-01",
+    "prompt": "In the Linnaean taxonomic hierarchy proceeding from broadest rank to most specific rank, is the Class rank positioned before or after the Order rank?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Proceeding from Kingdom down to Species, Class sits directly above Order and therefore comes before Order."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "64b48dd8fbed1e993aae574e309dbe6bbf5a0a2472f7646e2b879776546320a1",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-03",
+    "prompt": "In standard binomial scientific nomenclature written left to right, such as Salmonella typhi, does the species epithet appear before or after the capitalized genus name?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "In binomial nomenclature, the capitalized genus name is written first and the lowercase species name appears after it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "9fa4e18b5438810aef6b3cfe25d8a7ad36429450dbc3224f16c675b47dcf2f10",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-04",
+    "prompt": "Along the liquid treatment path of a conventional municipal wastewater plant discharging to a receiving stream, does microbial degradation of organic waste in biological treatment occur before or after final outfall discharge of the treated effluent?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microorganisms degrade organic waste inside the biological treatment process before the treated and disinfected effluent is discharged at the outfall."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "cb49391fff9bd82e3b8f5ccd7b819c74ce2366cda40ad5bc842b56fa89c6cee3",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-05",
+    "prompt": "Along the pathway of infant methemoglobinemia caused by nitrate-contaminated drinking water, does bacterial conversion of nitrate to nitrite in the intestinal tract occur before or after nitrite displaces oxygen in the bloodstream?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Intestinal bacteria first reduce ingested nitrate into toxic nitrite before that nitrite enters the blood and replaces oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "9ad4d9fca7259f791aa01c7ba92e8312f4663f54897375379db03bddb5d946f5",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-09",
+    "prompt": "In natural rainwater chemistry as precipitation moves from cloud vapor to ground runoff, does atmospheric water pick up airborne gases and dust before or after reaching soil surfaces?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Rainwater dissolves airborne gases and dust while falling through the air before contacting soil and ground surfaces."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "838fc21ad3f25cca893954f2bd845fbd599ea2a77b01fc61f3674d1c8f9a96b1",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-10",
+    "prompt": "In the commercial manufacture of synthetic plastic materials from fossil carbon origins, does petroleum refining into synthetic organic chemicals occur before or after prehistoric plant and animal matter forms petroleum?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Prehistoric plant and animal matter forms petroleum first, and synthetic organic plastics are manufactured from that petroleum afterward."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "15798e1bcb767d94081a68367b18d2c2d5349b9e629113659bb26ae5a4a59c22",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-11",
+    "prompt": "During chlorine disinfection of raw surface water containing dissolved humic organics from decaying vegetation, does formation of halogenated organic byproducts occur before or after chlorine addition to the organic-bearing water?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Halogenated organic compounds form after chlorine is introduced and reacts with the dissolved organic matter in the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "3dfec4b54efd01583f8d3dc565763829c34f6428f89066a476b8da9141a04061",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-13",
+    "prompt": "In jar-test pH control for chemical coagulation of a steady raw water supply, is the target operating pH held constant in the plant before or after identifying the pH that produces good floc in the coagulation test?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Operators form good floc in the coagulation test and determine that effective pH value first, maintaining it afterward until raw water quality changes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "ed02a66a50a02116e2979fe8bdfb336e14374761835ce39955e922d8c33026e1",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-14",
+    "prompt": "In aerobic microbial metabolism of biodegradable organic matter in wastewater, do microbes release chemical energy by breaking complex organics into simpler compounds before or after using that energy for cell reproduction?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microorganisms break biodegradable organics down into simpler compounds to release energy before utilizing that energy for growth and reproduction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "0a58bfaa0ffc62678aa92f19ef46166c3c192b8ac62bafd169037e40b9a6c4c6",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  },
+  {
+   "courseKey": "class3-ww",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-class3-ww-r02-m5-15",
+    "prompt": "Moving outward from the interior of an encapsulated bacterial cell into the surrounding water, is the cell membrane encountered before or after the external gelatinous capsule on the cell wall?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The internal protoplasm and nucleus sit inside the cell membrane, which lies beneath the outer cell wall and its external gelatinous capsule."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+    "notes": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+    "registeredAt": "2026-11-19T02:32:09.294Z",
+    "payloadSha256": "3305c3f11c129d98182a658889f6f3ebba57f4325e8ba1327fdee4925b90c07a",
+    "builderResultsSha256": "097a0d66c8a680674cebeac3e4f98a302ff62494ae14790600338c2bb693878b"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T02:29:40.734635+00:00",
+   "attestation": "Strict Carbon self-review completed for target2-class3-ww-r02 against supplied Handbook pages 462-474 (PDF 513-525), existing cross-course collision candidates, and intra-batch items: 55 exact items accepted and 15 items rejected for cross-course/intra-batch cloning, unsupported anatomical detail, or corrupted source-text reliance.",
+   "payloadSha256": {
+    "target2-ct261118-class3-ww-r02-m0-01": "c95bc33485af521cff1aa101c8cd1f175ce4db137e633cf4d846f5f44c43030a",
+    "target2-ct261118-class3-ww-r02-m0-02": "ee4e789acbca63ae0c7f026ef4fcf97f5874edee4e1a07e9567e59c2d509a94b",
+    "target2-ct261118-class3-ww-r02-m0-03": "4076cab303ae1bde7af684c38c8d0b6e9ef3696e5b2bfb8aeb1910b025b8fb16",
+    "target2-ct261118-class3-ww-r02-m0-04": "fdf94b561c41c3cf26555ab658bb7d4a91235696e3c863a4c838d5d8b308e3c8",
+    "target2-ct261118-class3-ww-r02-m0-05": "df2e13336ae0a9cbb6d4f4f8d709a79b77eda77b50cbce3082e107b07bb70cdc",
+    "target2-ct261118-class3-ww-r02-m0-09": "16b501fbc2a4ac25caf30dbc8abd98794c1ddfa4a7dd541a013bff0ec594d137",
+    "target2-ct261118-class3-ww-r02-m0-10": "f73570a3d0c7ef3957bf229ba4777a014b67eef17f2fc6c1f8c9c338a14c7d22",
+    "target2-ct261118-class3-ww-r02-m0-12": "5910f33b869c55c0cdb05f09cade68af9b4302c0d7df5440a7362d7ac44d0efd",
+    "target2-ct261118-class3-ww-r02-m0-13": "a4feaa9213264a5a11fe5d936acdac0e6a000eaa0d16308a3fc101cb0389860d",
+    "target2-ct261118-class3-ww-r02-m0-14": "732d728d05c66c184979f536e037b1de57e68ab81b395ccefec78fa7f695f8de",
+    "target2-ct261118-class3-ww-r02-m1-01": "a52d57caa59bda643a4cd4085053944966410daf5d0f69f8d2f0ea78b8444ffa",
+    "target2-ct261118-class3-ww-r02-m1-02": "c30f86bbbffdad9fbaff81c4d7f1ffd0debf2217410fa59e610c6bb1e85deb8d",
+    "target2-ct261118-class3-ww-r02-m1-03": "66991d1215978ea92dd8c261202dfb40c5a175ee8be3d7a6555b80639e2f5789",
+    "target2-ct261118-class3-ww-r02-m1-04": "90b43cd703fbc89ca4f0b9c9571aebcdba4f0c05fbef9230f02e311b949f4715",
+    "target2-ct261118-class3-ww-r02-m1-05": "b7693324a4d842da0d2448373e5320d5ca3abf79eb42303a71301981463a9baf",
+    "target2-ct261118-class3-ww-r02-m1-06": "27b66835a91ce904b0716efb8b9f5174671a9407904e77880940c740c3a1d65f",
+    "target2-ct261118-class3-ww-r02-m1-07": "882c84489a91afecabfe21361258577788c9debea7f36a7dd5efd63c0e7c70ac",
+    "target2-ct261118-class3-ww-r02-m1-09": "b947926fe651860d8c227c01b0d63747df0c27100038acc62f70b29317a48df4",
+    "target2-ct261118-class3-ww-r02-m1-10": "969d97bbae5ff6731a4aea0d9b00954c73ad3d52eeba4e70cb40c42e97f782d4",
+    "target2-ct261118-class3-ww-r02-m3-01": "af6a1709a353050303fd0740283914febbd012153b413157cfede893be8e60fb",
+    "target2-ct261118-class3-ww-r02-m3-02": "d2fdf9e7ee39b5b470f0821cf8127e0360ec617e10ede1cdd50bd3050625aec3",
+    "target2-ct261118-class3-ww-r02-m3-03": "8330b63d23f948d5f17401b3750439b74059897d1785f413a572a658814e8002",
+    "target2-ct261118-class3-ww-r02-m3-04": "e58dbd6b4cb39e22f320ceb1d9b1b10698e1766db70a62466270930a8147ec3c",
+    "target2-ct261118-class3-ww-r02-m3-05": "8380f18d34f72231a68b6c736a9c1c1355d1a6e5723180c35e7ea97e13b659d4",
+    "target2-ct261118-class3-ww-r02-m3-06": "099bd3a9e2888b5fba8bb2c1f3277e8268f10c2bedd094235b2dfd6544c25a3d",
+    "target2-ct261118-class3-ww-r02-m3-07": "b7417e5bc2378197ab14fe3c6d7adc74c856addf58c54d17d648f0370e48873f",
+    "target2-ct261118-class3-ww-r02-m3-08": "744d2e1834dd085c20ae70257bbe2f5124a45316f3d24793ef01832aba784246",
+    "target2-ct261118-class3-ww-r02-m3-09": "81279832c8ac09220a9ddb45bd0c21e63d9a7ec3268132f74e18467a77c10a68",
+    "target2-ct261118-class3-ww-r02-m3-10": "b2142c23a09b8b5b665999034060a4731e727d0a2309d8c498981ba9f788df58",
+    "target2-ct261118-class3-ww-r02-m3-11": "ad58f7c8b5a229f47839cbb6c15cb69e0fe33df1dbce25d93237afcb7968d3bb",
+    "target2-ct261118-class3-ww-r02-m3-12": "8d21da55f33ca17439d74f904bf30f8aaa1a7b65b28ac587425e13bbd038b819",
+    "target2-ct261118-class3-ww-r02-m3-13": "b788cdda8f6f2c6e5a534c998d99dd736cf52bce42890b85d94394940b894883",
+    "target2-ct261118-class3-ww-r02-m3-14": "e8c344a9412cc0c909467da16236b184281278ffa1d7aa3ccc288268637700cd",
+    "target2-ct261118-class3-ww-r02-m4-01": "755e009bf0adc5b5ba75c41e68c1754159a22e7a87e2aac251618ce6001e5073",
+    "target2-ct261118-class3-ww-r02-m4-03": "bd74b9aa8a1de635766bf13dabf0201d1edcc775b5a5f91f8e96605ffcd90428",
+    "target2-ct261118-class3-ww-r02-m4-04": "b22a20d304696d5003697f8c92b504ff280af15324773cdf48b59ebcfee23d82",
+    "target2-ct261118-class3-ww-r02-m4-05": "0d376ed7028ed2a9e46b09a47c5de5e2a907d74bdb65166230bf77a92389dc3f",
+    "target2-ct261118-class3-ww-r02-m4-07": "85582f3dcce10274614e6157ec76f9d0c84e37bae86377fd31274f1df409d332",
+    "target2-ct261118-class3-ww-r02-m4-08": "78699715859fd94e7d16f79c527e6c109ae3072a7ed50af1b0f04d2b3f14b140",
+    "target2-ct261118-class3-ww-r02-m4-09": "34d5f1588d21122dc746b4451fd7f1aeb335112b630be82bac5063fd8f96561a",
+    "target2-ct261118-class3-ww-r02-m4-10": "64b2b1dcde25205e48deb7161a1dd4d71736063be8ab781bb5915cfd62944e59",
+    "target2-ct261118-class3-ww-r02-m4-11": "85fbbe36083fcfc90f196db6765db386823e2dbf627cde07d96d444b9cd8bd7f",
+    "target2-ct261118-class3-ww-r02-m4-12": "4f0074f04529a48db0c839592092953c05f8b79dadf0f73949f4e5468db6d68e",
+    "target2-ct261118-class3-ww-r02-m4-13": "7717fb675c09c9753d827cdd89f3b6aa151177b9f7977f7e2d9a4109294a53b1",
+    "target2-ct261118-class3-ww-r02-m4-14": "2fcb9610ba1da676b94c5643e59fd3b0e80ce8b5309bfb4860ab46b70e7b3527",
+    "target2-ct261118-class3-ww-r02-m5-01": "64b48dd8fbed1e993aae574e309dbe6bbf5a0a2472f7646e2b879776546320a1",
+    "target2-ct261118-class3-ww-r02-m5-03": "9fa4e18b5438810aef6b3cfe25d8a7ad36429450dbc3224f16c675b47dcf2f10",
+    "target2-ct261118-class3-ww-r02-m5-04": "cb49391fff9bd82e3b8f5ccd7b819c74ce2366cda40ad5bc842b56fa89c6cee3",
+    "target2-ct261118-class3-ww-r02-m5-05": "9ad4d9fca7259f791aa01c7ba92e8312f4663f54897375379db03bddb5d946f5",
+    "target2-ct261118-class3-ww-r02-m5-09": "838fc21ad3f25cca893954f2bd845fbd599ea2a77b01fc61f3674d1c8f9a96b1",
+    "target2-ct261118-class3-ww-r02-m5-10": "15798e1bcb767d94081a68367b18d2c2d5349b9e629113659bb26ae5a4a59c22",
+    "target2-ct261118-class3-ww-r02-m5-11": "3dfec4b54efd01583f8d3dc565763829c34f6428f89066a476b8da9141a04061",
+    "target2-ct261118-class3-ww-r02-m5-13": "ed02a66a50a02116e2979fe8bdfb336e14374761835ce39955e922d8c33026e1",
+    "target2-ct261118-class3-ww-r02-m5-14": "0a58bfaa0ffc62678aa92f19ef46166c3c192b8ac62bafd169037e40b9a6c4c6",
+    "target2-ct261118-class3-ww-r02-m5-15": "3305c3f11c129d98182a658889f6f3ebba57f4325e8ba1327fdee4925b90c07a"
+   }
+  },
+  "registeredAt": "2026-11-19T02:32:09.294Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 5,
+     "f": 5
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 7,
+     "unchanged": 1
+    },
+    "longest": 2,
+    "options": 26
+   },
+   "batchSha256": "86754a9c9d553fd03a74310c051e3bdf5583f5565a81ef47acc4c94df3b4e096"
+  }
+ }
+}

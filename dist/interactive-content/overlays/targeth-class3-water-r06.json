@@ -1,0 +1,1380 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class3-water-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 34 items.",
+ "additions": [
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-02",
+    "prompt": "Giardia cysts are inactivated instantaneously in cold water at 4 degrees Celsius.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Giardia cysts can survive in cold water at 4 degrees Celsius for at least two months; boiling kills them instantaneously."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "d7574b5bdb4c63bf10d4019dddabce5af1c90b79232dff3aa4d2f37ba88c0e88",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-03",
+    "prompt": "In the Giardia life cycle, stomach acid and digestive enzymes trigger the release of trophozoites from ingested cysts.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "After a cyst is swallowed, stomach acid and digestive enzymes liberate the active trophozoite in the small intestine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "baba1feba82071179a58295822e0e59d7ac638e32d64119bf8347841902bea68",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-04",
+    "prompt": "Tubificid worm populations in biological treatment systems increase rapidly as water temperatures rise.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Temperature fluctuations directly affect tubificid worms, and their population decreases when water temperatures increase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "2c6846138a3b614db954bd3bc9fbc59e8204db9bfa77352a6b7b0f9948e59658",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-05",
+    "prompt": "Heavy rainfall can increase Cryptosporidium oocyst levels in surface water by washing animal wastes into the supply.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Heavy rains increase runoff of wild and domestic animal wastes, making oocysts more prevalent in surface waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "4c7b752393b6dedd1e913cfea4f1abb4b0fdec651369ba9392e3cec218917519",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-06",
+    "prompt": "Most mammals other than humans develop severe Cryptosporidium parvum infections throughout adulthood rather than primarily as newborns.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In most mammals, C. parvum is predominantly a parasite of newborn animals, whereas humans can be seriously infected at any age."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "965084e3add1784c0c30e48d140613c5f59eb1f4764e5b4c18173cf6da328b22",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-07",
+    "prompt": "Nematodes found in biological slimes have cylindrical, nonsegmented bodies tapered at both ends.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Microscopic worms in biological slimes have a cuticle-covered body that is cylindrical, nonsegmented, and tapered at both ends."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "64f17cc2a26099b78192962dbff5dee07b0959f4739646fcd1fc1bd1abc6453e",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-08",
+    "prompt": "In anaerobic digestion, bacteria convert volatile acids and nutrients directly into free elemental oxygen.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Anaerobic bacteria convert volatile acids and nutrients into stable solids, settleable solids, and methane, not free oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "621821d3a96d484e859a1e2a74b6527150fd83a34baf8d6957d7139cffa28737",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-09",
+    "prompt": "A waterborne giardiasis outbreak requires both cysts in the source water and a failure of treatment to kill or remove them.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Outbreaks occur when Giardia cysts are present in untreated source water and the purification process fails to remove or inactivate them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "22aadaffbc50a72e932ae381b1f5d7341222f6217f51556f23c687f675a263a5",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m0-10",
+    "prompt": "In healthy individuals, cryptosporidiosis typically requires specialized antiparasitic drugs because the immune system fails to clear it.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "People with normal immune systems usually recover in one to two weeks without antiparasitic drugs, using fluids and rest."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "17d283fc0d7c750ede6d212631dd4a062bc0abd0589bcd0875977f59ab6b59b2",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-01",
+    "prompt": "Distinguish Giardia biological forms, transmission factors, and survival traits.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Trophozoite",
+      "right": "Active intestinal form that divides by binary fission"
+     },
+     {
+      "id": "p2",
+      "left": "Cyst",
+      "right": "Dormant environmental form swallowed by a host"
+     },
+     {
+      "id": "p3",
+      "left": "Boiling at 100 C",
+      "right": "Kills Giardia cysts instantaneously"
+     },
+     {
+      "id": "p4",
+      "left": "Cold water at 4 C",
+      "right": "Allows Giardia cysts to survive at least two months"
+     },
+     {
+      "id": "p5",
+      "left": "10 cysts",
+      "right": "Minimum experimental dose shown to infect a human"
+     },
+     {
+      "id": "p6",
+      "left": "12 hours",
+      "right": "Approximate doubling time of trophozoites in the intestine"
+     }
+    ],
+    "explanation": "Understanding Giardia forms, survival temperatures, and reproduction rates explains why filtration and boiling are key barriers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "61acfe18a93514cea3a40454347440f61c49903a9663afd5ad2a31706f5d1293",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-02",
+    "prompt": "Distinguish Cryptosporidium host susceptibility, environmental prevalence, and illness traits.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Neonate animals",
+      "right": "Primary nonhuman mammal group infected by C. parvum"
+     },
+     {
+      "id": "p2",
+      "left": "Human hosts",
+      "right": "Can be seriously infected at any age"
+     },
+     {
+      "id": "p3",
+      "left": "Previous exposure",
+      "right": "Provides full or partial immunity to challenge infection"
+     },
+     {
+      "id": "p4",
+      "left": "Heavy rain runoff",
+      "right": "Washes animal wastes and oocysts into surface water"
+     },
+     {
+      "id": "p5",
+      "left": "Normal immune system",
+      "right": "Clears cryptosporidiosis in one to two weeks"
+     },
+     {
+      "id": "p6",
+      "left": "Suppressed immune system",
+      "right": "Faces severe, potentially life-threatening infection"
+     }
+    ],
+    "explanation": "Cryptosporidium affects hosts differently by age and immunity, while runoff drives raw water oocyst spikes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "fce65bfa37e86a5a43418c207b726187ec14a4e4f22d90dfe1a7f6102b04f2af",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-03",
+    "prompt": "Distinguish waterborne protozoan parasites by their key biological characteristics.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Giardia lamblia",
+      "right": "Liberates trophozoites via stomach acid and enzymes"
+     },
+     {
+      "id": "p2",
+      "left": "Cryptosporidium parvum",
+      "right": "Coccidian protozoan in the phylum Apicomplexa"
+     },
+     {
+      "id": "p3",
+      "left": "Cyclospora",
+      "right": "Excreted oocysts need days or weeks to sporulate"
+     },
+     {
+      "id": "p4",
+      "left": "Microscopy",
+      "right": "Used to check if recovered C. parvum oocysts are alive"
+     },
+     {
+      "id": "p5",
+      "left": "Fluids and rest",
+      "right": "Recommended supportive care for cryptosporidiosis"
+     },
+     {
+      "id": "p6",
+      "left": "Boiling for 1 minute",
+      "right": "Public advisory measure during Cryptosporidium outbreaks"
+     }
+    ],
+    "explanation": "Each protozoan parasite has distinct life-cycle timing, laboratory identification, and public health response traits."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "12a02b1eb6124f889c8cd45eacb71a32d2f568f85673ccf4e1cc07c22b49d4ba",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-04",
+    "prompt": "Distinguish nuisance algae, aquatic fungi, and sludge worm characteristics.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Algae classification",
+      "right": "Grouped by color and cellular properties"
+     },
+     {
+      "id": "p2",
+      "left": "Eutrophication",
+      "right": "Nutrient enrichment causing excessive algae and aging"
+     },
+     {
+      "id": "p3",
+      "left": "Aquatic fungi",
+      "right": "Grow as filamentous molds or single-celled yeasts"
+     },
+     {
+      "id": "p4",
+      "left": "Biosolids composting",
+      "right": "Operation where fungi play a critical role"
+     },
+     {
+      "id": "p5",
+      "left": "Nematodes",
+      "right": "Cuticle-covered worms 0.5 to 3 mm long in slimes"
+     },
+     {
+      "id": "p6",
+      "left": "Tubificid worms",
+      "right": "Indicate wastewater strength and composition shifts"
+     }
+    ],
+    "explanation": "Algae, fungi, and worms occupy different niches and serve distinct indicator or nuisance roles in water systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "13a7d3d80075bf035cbe6e13298060049ef52f5d787c6c3ec02d343c593e9e1d",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-05",
+    "prompt": "Distinguish water treatment unit processes by their primary roles.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Disinfection alone",
+      "right": "Sufficient only when raw water comes from a protected source"
+     },
+     {
+      "id": "p2",
+      "left": "Surface water treatment",
+      "right": "Generally requires more unit processes than groundwater"
+     },
+     {
+      "id": "p3",
+      "left": "Coagulation-flocculation",
+      "right": "Unit process that clumps fine particles before settling"
+     },
+     {
+      "id": "p4",
+      "left": "Filtration",
+      "right": "Physical barrier that removes turbidity and parasites"
+     },
+     {
+      "id": "p5",
+      "left": "Disinfection",
+      "right": "Unit process specifically targeting pathogen destruction"
+     },
+     {
+      "id": "p6",
+      "left": "Raw water storage",
+      "right": "Initial unit process listed in a water treatment train"
+     }
+    ],
+    "explanation": "Each unit process in a drinking water train contributes to producing safe, aesthetically pleasing water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "676a873f03e5a63479ece687933aab906413c23da1ea7171befe99b697c537f7",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-06",
+    "prompt": "Distinguish aerobic, anaerobic, and microbial growth phases in wastewater treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aerobic process",
+      "right": "Microbes use free elemental oxygen to degrade organics"
+     },
+     {
+      "id": "p2",
+      "left": "Anaerobic bacteria",
+      "right": "Convert volatile acids and nutrients into methane"
+     },
+     {
+      "id": "p3",
+      "left": "Log growth",
+      "right": "Rapid microbial multiplication phase"
+     },
+     {
+      "id": "p4",
+      "left": "Declining growth",
+      "right": "Phase where microbial growth rate slows down"
+     },
+     {
+      "id": "p5",
+      "left": "Endogenous respiration",
+      "right": "Late phase following declining growth"
+     },
+     {
+      "id": "p6",
+      "left": "Environment control",
+      "right": "Speeds waste decomposition in biological treatment"
+     }
+    ],
+    "explanation": "Biological wastewater treatment models natural processes by controlling oxygen and growth conditions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "9f30a39c0ad58a05260b292ac7309733f0987cb36dc1c67bfda965d7bc463ca1",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-07",
+    "prompt": "Distinguish carbon cycle reservoirs and atmospheric heat-trapping mechanisms.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cellular respiration",
+      "right": "Releases carbon dioxide from living organisms to air"
+     },
+     {
+      "id": "p2",
+      "left": "Fossil fuels",
+      "right": "Buried coal, oil, and natural gas storing ancient carbon"
+     },
+     {
+      "id": "p3",
+      "left": "Combustion",
+      "right": "Combines stored carbon with oxygen to form carbon dioxide"
+     },
+     {
+      "id": "p4",
+      "left": "Atmospheric heat screen",
+      "right": "Carbon dioxide trapping Earth's outgoing heat radiation"
+     },
+     {
+      "id": "p5",
+      "left": "Green belt",
+      "right": "Vegetation providing carbon dioxide removal capacity"
+     },
+     {
+      "id": "p6",
+      "left": "Global warming",
+      "right": "Climatic risk from excessive atmospheric carbon dioxide"
+     }
+    ],
+    "explanation": "The carbon cycle balances respiration and vegetation uptake against fossil fuel emissions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "b8c3aea2305a13fc04a69f96c0944d805aec3a933d2817dc7413403ef684f135",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-08",
+    "prompt": "Distinguish nitrogen cycle pathways and microbial fixation roles.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nitrogen fixation",
+      "right": "Conversion of atmospheric nitrogen gas into nitrates"
+     },
+     {
+      "id": "p2",
+      "left": "Symbiotic relationship",
+      "right": "Close association where both species benefit"
+     },
+     {
+      "id": "p3",
+      "left": "Pea root nodules",
+      "right": "Swellings housing millions of nitrogen-fixing bacteria"
+     },
+     {
+      "id": "p4",
+      "left": "Free-living soil bacteria",
+      "right": "Convert nitrogen to ammonia, nitrite, and nitrate"
+     },
+     {
+      "id": "p5",
+      "left": "Lightning",
+      "right": "Natural non-biological process that fixes atmospheric nitrogen"
+     },
+     {
+      "id": "p6",
+      "left": "Nitrogen cycle",
+      "right": "Complete chemical cycle bridging air and biological communities"
+     }
+    ],
+    "explanation": "Biological and physical processes convert atmospheric nitrogen into forms usable by plants."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "a3be6d0c72b8ae80afb452bb0b703410673fce521ad4e1c1eeefbe0297dacc3b",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-09",
+    "prompt": "Distinguish Giardia outbreak ingredients and non-municipal transmission routes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Daycare centers",
+      "right": "Setting with high Giardia rates among diapered children"
+     },
+     {
+      "id": "p2",
+      "left": "Hand-to-mouth transfer",
+      "right": "Direct fecal-oral route from infected individuals"
+     },
+     {
+      "id": "p3",
+      "left": "Beavers",
+      "right": "Often victims of human sewage rather than primary introducers"
+     },
+     {
+      "id": "p4",
+      "left": "Filter construction defects",
+      "right": "Treatment failure allowing cysts into finished water"
+     },
+     {
+      "id": "p5",
+      "left": "Cross-connections",
+      "right": "Accidental links between water and sewage systems"
+     },
+     {
+      "id": "p6",
+      "left": "Untreated stream water",
+      "right": "Non-municipal source linked to hikers and campers"
+     }
+    ],
+    "explanation": "Recognizing both municipal treatment failures and non-municipal routes prevents misidentifying outbreak sources."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "55954ec2b91553e3c26d7ee0cdb18dfe887bff4dfe7cff9692be668c5e22b50b",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m1-10",
+    "prompt": "Distinguish Cryptosporidium detection challenges and public health prevention steps.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sample filter recovery",
+      "right": "Difficult step when trapping oocysts from raw water"
+     },
+     {
+      "id": "p2",
+      "left": "Turbidity and coliforms",
+      "right": "Monitored indicators that cannot reliably predict oocysts"
+     },
+     {
+      "id": "p3",
+      "left": "Specialized laboratories",
+      "right": "Required to detect Cryptosporidium oocysts in water"
+     },
+     {
+      "id": "p4",
+      "left": "Handwashing with soap",
+      "right": "Key prevention step after toilet use or diaper changes"
+     },
+     {
+      "id": "p5",
+      "left": "Overloaded sewage plants",
+      "right": "Event that increases oocyst levels in surface water"
+     },
+     {
+      "id": "p6",
+      "left": "Collaborative prevention",
+      "right": "Joint effort of utilities, agencies, doctors, and public"
+     }
+    ],
+    "explanation": "Because oocyst detection is difficult and indicators are imperfect, prevention relies on barriers and hygiene."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "4b357c132c64536379742fcbb344160ce97beacb1eb0ae2f845332d8116eb06f",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-01",
+    "prompt": "An operator reviews Giardia cyst survival and inactivation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Giardia cysts can survive in cold water at 4 degrees Celsius for at least two months."
+     },
+     {
+      "id": "b",
+      "label": "Boiling contaminated water at 100 degrees Celsius kills Giardia cysts instantaneously."
+     },
+     {
+      "id": "c",
+      "label": "Routine municipal chlorine doses consistently inactivate Giardia cysts across water types."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Routine municipal chlorination is not consistently effective against Giardia cysts."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "30f82dde351b486a17b93f0d9bbad86b3ff94043f37ab964b63b2a99206286a3",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-02",
+    "prompt": "A trainee reviews Giardia reproduction and infection dynamics. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Stomach acid and digestive enzymes release trophozoites from swallowed Giardia cysts."
+     },
+     {
+      "id": "b",
+      "label": "Trophozoites divide by binary fission at roughly 12-hour intervals in the small intestine."
+     },
+     {
+      "id": "c",
+      "label": "Giardia trophozoites routinely invade tissues outside the gastrointestinal tract."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Giardia symptoms are related to gastrointestinal dysfunction, and the parasite rarely invades other parts of the body."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "cdfba8f6179a45c12573f8bfbd02c489502da7c5cd413fc5c85b7fab9be522da",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-03",
+    "prompt": "An operator reviews Cryptosporidium host susceptibility and immunity. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Humans can be seriously infected by Cryptosporidium parvum throughout their lives."
+     },
+     {
+      "id": "b",
+      "label": "Previous exposure to Cryptosporidium parvum gives full or partial immunity to reinfection."
+     },
+     {
+      "id": "c",
+      "label": "Older nonhuman mammals develop severe infections even without prior exposure."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In most mammals, C. parvum is predominantly a parasite of newborns, and older animals generally develop poor infections."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "b11a837751a6a099598a9ac5a1aa467e88d50de0b6bbb97328da3c8292bc2a16",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-04",
+    "prompt": "A student reviews Cryptosporidium oocyst detection and prevalence. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Oocysts become more prevalent in surface waters after heavy rainfall washes animal waste."
+     },
+     {
+      "id": "b",
+      "label": "Recovering oocysts trapped on water sample filters is difficult with current methods."
+     },
+     {
+      "id": "c",
+      "label": "Standard turbidity and coliform tests reliably predict Cryptosporidium oocyst levels."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "No water quality indicators, including turbidity and coliforms, can reliably predict the occurrence of cryptosporidiosis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "4990b64d74dd3732aa81a3cc70a61550e800865d4fafbe026dce5e32bddfa72c",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-05",
+    "prompt": "A trainee reviews cryptosporidiosis symptoms and medical care. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Healthy people usually recover from cryptosporidiosis within one to two weeks."
+     },
+     {
+      "id": "b",
+      "label": "Recommended care for diarrheal illness includes drinking fluids and getting extra rest."
+     },
+     {
+      "id": "c",
+      "label": "Specialized antiparasitic drugs provide a fast, reliable cure for cryptosporidiosis."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Currently, no safe and effective antiparasitic cure exists for cryptosporidiosis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "f19b82b3b393efa92db3a2ff90c744ff539776b4640719c35c4f69720683e95a",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-06",
+    "prompt": "An operator reviews Cyclospora transmission and sporulation. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Excreted Cyclospora oocysts require days to weeks to sporulate and become infectious."
+     },
+     {
+      "id": "b",
+      "label": "Indirect transmission can occur through ingestion of contaminated water or fresh produce."
+     },
+     {
+      "id": "c",
+      "label": "Cyclospora organisms are routinely grown in laboratory animal models for testing."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Cyclospora organisms have not yet been grown in tissue cultures or laboratory animal models."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "1e8f3c554b4a6799bc6c4ca151585067a7ed8e97137b72fbacfd10ee1c802db0",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-07",
+    "prompt": "A trainee reviews algae classification and operational impacts. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Algae are commonly classified by their color and by their cellular characteristics."
+     },
+     {
+      "id": "b",
+      "label": "Heavy algal growth can plug intakes and screens and coat basin walls."
+     },
+     {
+      "id": "c",
+      "label": "Eutrophication occurs when nutrient-poor water inhibits aquatic plant growth."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Eutrophication is enrichment with inorganic nutrients like phosphorus and nitrogen, causing excessive algae growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "67fde1fec5da017460dd305a4296fccbf0edd6511764ba1694eee6da8a012943",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-08",
+    "prompt": "An operator reviews aquatic fungi and nematodes in treatment systems. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Fungi can grow as filamentous mold-like forms or as single-celled yeasts."
+     },
+     {
+      "id": "b",
+      "label": "Nematodes inhabit organic mud, activated sludge, and trickling filter slimes."
+     },
+     {
+      "id": "c",
+      "label": "Nematodes are segmented worms measuring several centimeters in length."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Nematodes are microscopic, nonsegmented worms measuring 0.5 to 3 mm in length."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "001be7c45597bb40673bae221466d973ea1463da052322749bbf7ee1cd378841",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-09",
+    "prompt": "A student compares raw water sources and unit treatment processes. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Surface waters generally require more treatment steps than groundwater sources."
+     },
+     {
+      "id": "b",
+      "label": "Disinfection is sufficient by itself when raw water comes from a protected source."
+     },
+     {
+      "id": "c",
+      "label": "Coagulation and softening specifically target the destruction of microbial pathogens."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "With the exception of disinfection, other unit processes in the treatment train do not specifically address pathogen destruction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "e9e61767506c30458a7236e74517c27eac4ebad7b3332b38584d830545579d87",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-10",
+    "prompt": "A trainee reviews biological wastewater treatment principles. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Biological wastewater treatment processes are modeled from processes occurring in nature."
+     },
+     {
+      "id": "b",
+      "label": "Controlling the microbial environment speeds up the decomposition of organic wastes."
+     },
+     {
+      "id": "c",
+      "label": "Aerobic treatment organisms rely on anaerobic fermentation rather than free oxygen."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "In aerobic treatment processes, organisms use free, elemental oxygen to decompose organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "cb82e0b0cd8813abecb48151b1af1456436caea451db90effe98921daacc0102",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-11",
+    "prompt": "An operator reviews anaerobic digestion products and growth phases. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Anaerobic bacteria convert volatile acids and nutrients into methane and stable solids."
+     },
+     {
+      "id": "b",
+      "label": "Microbial growth curves progress from log growth through declining growth to endogenous respiration."
+     },
+     {
+      "id": "c",
+      "label": "Endogenous respiration occurs at the very beginning of the microbial growth curve."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Endogenous respiration is the late phase following log growth and declining growth."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "2983835554c7147c31b65a73c331dac35badffd6e17eda86850af7754ced1226",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-12",
+    "prompt": "A student reviews the carbon cycle and fossil fuel combustion. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Living organisms release carbon dioxide back to the atmosphere through cellular respiration."
+     },
+     {
+      "id": "b",
+      "label": "Atmospheric carbon dioxide acts as a heat screen by trapping outgoing radiation."
+     },
+     {
+      "id": "c",
+      "label": "Expanding green-belt vegetation increases atmospheric carbon dioxide by blocking photosynthesis."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Green-belt vegetation provides carbon dioxide removal capacity; decreasing it contributes to rising atmospheric carbon dioxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "7f092c88cb32bba692d8e9e81b79827df4a2d24436830a8be22d2c4b8351efea",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-13",
+    "prompt": "A trainee reviews nitrogen fixation and symbiotic bacteria. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Symbiotic bacteria in pea root nodules convert atmospheric nitrogen gas into nitrates."
+     },
+     {
+      "id": "b",
+      "label": "Lightning and soil bacteria also convert atmospheric nitrogen into usable forms."
+     },
+     {
+      "id": "c",
+      "label": "Symbiotic relationships benefit one organism while harming the host plant."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "A symbiotic relationship is a close association between two species where both partners benefit."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "845b0dbb65beed3f818731afb659adc1358017a95b4942d450c49a96466cf6f3",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-14",
+    "prompt": "An operator reviews Giardia prevalence in surface water studies. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "LeChevallier found Giardia or Cryptosporidium in 97 percent of raw surface water samples."
+     },
+     {
+      "id": "b",
+      "label": "Giardiasis symptoms like diarrhea and cramps usually last a week or more."
+     },
+     {
+      "id": "c",
+      "label": "Vomiting and fever are the most commonly reported symptoms in US waterborne Giardia outbreaks."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "People involved in waterborne Giardia outbreaks in the United States have not commonly reported vomiting and fever."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "bd267e44e0089711e5942855dce827c409c92b15105981327a6124537b6bafd1",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  },
+  {
+   "courseKey": "class3-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class3-water-r06-m4-15",
+    "prompt": "A trainee reviews non-municipal sources of Giardia infection. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Daycare centers often show high Giardia infection rates among diapered children."
+     },
+     {
+      "id": "b",
+      "label": "Hikers and international travelers are among the groups at higher risk for giardiasis."
+     },
+     {
+      "id": "c",
+      "label": "Municipal drinking water is the sole source of Giardia infection in communities."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sources of Giardia infection other than municipal drinking water exist, including daycare centers, untreated streams, and travel."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+    "notes": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+    "registeredAt": "2026-11-19T04:28:22.986Z",
+    "payloadSha256": "dc47c6f715591215e27eba3f61106faf28a31876492f8fbd269ae043d6975d5d",
+    "builderResultsSha256": "a1f318d0fcf94ff5bf69471b30c023f017a9f47f51a0c054c65b531db6492cab"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:26:57.302734+00:00",
+   "attestation": "Strict Hydrogen self-review of targeth-class3-water-r06 against supplied source pages and collision candidates: 34 accepted, 1 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class3-water-r06-m0-02": "d7574b5bdb4c63bf10d4019dddabce5af1c90b79232dff3aa4d2f37ba88c0e88",
+    "targeth-ht261118-class3-water-r06-m0-03": "baba1feba82071179a58295822e0e59d7ac638e32d64119bf8347841902bea68",
+    "targeth-ht261118-class3-water-r06-m0-04": "2c6846138a3b614db954bd3bc9fbc59e8204db9bfa77352a6b7b0f9948e59658",
+    "targeth-ht261118-class3-water-r06-m0-05": "4c7b752393b6dedd1e913cfea4f1abb4b0fdec651369ba9392e3cec218917519",
+    "targeth-ht261118-class3-water-r06-m0-06": "965084e3add1784c0c30e48d140613c5f59eb1f4764e5b4c18173cf6da328b22",
+    "targeth-ht261118-class3-water-r06-m0-07": "64f17cc2a26099b78192962dbff5dee07b0959f4739646fcd1fc1bd1abc6453e",
+    "targeth-ht261118-class3-water-r06-m0-08": "621821d3a96d484e859a1e2a74b6527150fd83a34baf8d6957d7139cffa28737",
+    "targeth-ht261118-class3-water-r06-m0-09": "22aadaffbc50a72e932ae381b1f5d7341222f6217f51556f23c687f675a263a5",
+    "targeth-ht261118-class3-water-r06-m0-10": "17d283fc0d7c750ede6d212631dd4a062bc0abd0589bcd0875977f59ab6b59b2",
+    "targeth-ht261118-class3-water-r06-m1-01": "61acfe18a93514cea3a40454347440f61c49903a9663afd5ad2a31706f5d1293",
+    "targeth-ht261118-class3-water-r06-m1-02": "fce65bfa37e86a5a43418c207b726187ec14a4e4f22d90dfe1a7f6102b04f2af",
+    "targeth-ht261118-class3-water-r06-m1-03": "12a02b1eb6124f889c8cd45eacb71a32d2f568f85673ccf4e1cc07c22b49d4ba",
+    "targeth-ht261118-class3-water-r06-m1-04": "13a7d3d80075bf035cbe6e13298060049ef52f5d787c6c3ec02d343c593e9e1d",
+    "targeth-ht261118-class3-water-r06-m1-05": "676a873f03e5a63479ece687933aab906413c23da1ea7171befe99b697c537f7",
+    "targeth-ht261118-class3-water-r06-m1-06": "9f30a39c0ad58a05260b292ac7309733f0987cb36dc1c67bfda965d7bc463ca1",
+    "targeth-ht261118-class3-water-r06-m1-07": "b8c3aea2305a13fc04a69f96c0944d805aec3a933d2817dc7413403ef684f135",
+    "targeth-ht261118-class3-water-r06-m1-08": "a3be6d0c72b8ae80afb452bb0b703410673fce521ad4e1c1eeefbe0297dacc3b",
+    "targeth-ht261118-class3-water-r06-m1-09": "55954ec2b91553e3c26d7ee0cdb18dfe887bff4dfe7cff9692be668c5e22b50b",
+    "targeth-ht261118-class3-water-r06-m1-10": "4b357c132c64536379742fcbb344160ce97beacb1eb0ae2f845332d8116eb06f",
+    "targeth-ht261118-class3-water-r06-m4-01": "30f82dde351b486a17b93f0d9bbad86b3ff94043f37ab964b63b2a99206286a3",
+    "targeth-ht261118-class3-water-r06-m4-02": "cdfba8f6179a45c12573f8bfbd02c489502da7c5cd413fc5c85b7fab9be522da",
+    "targeth-ht261118-class3-water-r06-m4-03": "b11a837751a6a099598a9ac5a1aa467e88d50de0b6bbb97328da3c8292bc2a16",
+    "targeth-ht261118-class3-water-r06-m4-04": "4990b64d74dd3732aa81a3cc70a61550e800865d4fafbe026dce5e32bddfa72c",
+    "targeth-ht261118-class3-water-r06-m4-05": "f19b82b3b393efa92db3a2ff90c744ff539776b4640719c35c4f69720683e95a",
+    "targeth-ht261118-class3-water-r06-m4-06": "1e8f3c554b4a6799bc6c4ca151585067a7ed8e97137b72fbacfd10ee1c802db0",
+    "targeth-ht261118-class3-water-r06-m4-07": "67fde1fec5da017460dd305a4296fccbf0edd6511764ba1694eee6da8a012943",
+    "targeth-ht261118-class3-water-r06-m4-08": "001be7c45597bb40673bae221466d973ea1463da052322749bbf7ee1cd378841",
+    "targeth-ht261118-class3-water-r06-m4-09": "e9e61767506c30458a7236e74517c27eac4ebad7b3332b38584d830545579d87",
+    "targeth-ht261118-class3-water-r06-m4-10": "cb82e0b0cd8813abecb48151b1af1456436caea451db90effe98921daacc0102",
+    "targeth-ht261118-class3-water-r06-m4-11": "2983835554c7147c31b65a73c331dac35badffd6e17eda86850af7754ced1226",
+    "targeth-ht261118-class3-water-r06-m4-12": "7f092c88cb32bba692d8e9e81b79827df4a2d24436830a8be22d2c4b8351efea",
+    "targeth-ht261118-class3-water-r06-m4-13": "845b0dbb65beed3f818731afb659adc1358017a95b4942d450c49a96466cf6f3",
+    "targeth-ht261118-class3-water-r06-m4-14": "bd267e44e0089711e5942855dce827c409c92b15105981327a6124537b6bafd1",
+    "targeth-ht261118-class3-water-r06-m4-15": "dc47c6f715591215e27eba3f61106faf28a31876492f8fbd269ae043d6975d5d"
+   }
+  },
+  "registeredAt": "2026-11-19T04:28:22.986Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 4,
+     "f": 5
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 4,
+    "options": 15
+   },
+   "batchSha256": "d919c239f2317584d4c63246ba98dfedf07a9b96b88db743ff85b4e8cef6ab7a"
+  }
+ }
+}

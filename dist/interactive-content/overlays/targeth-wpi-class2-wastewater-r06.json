@@ -1,0 +1,2430 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class2-wastewater-r06",
+ "scope": "Owner-authorized AI-reviewed game activities: 69 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-02",
+    "prompt": "A grab sample is formed by mixing equal portions collected over a 24-hour period.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A grab sample is a single individual sample collected at one randomly selected time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "b126a7e86a9b2f1e13689326ae106e8cb168fb3734d58ac15a887c49b60e51d4",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-03",
+    "prompt": "Grit consists of heavy inorganic solids such as sand, gravel, eggshells, or metal filings.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Grit is made of dense, non-biodegradable inorganic particles."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "7c0ff249005670d0083ba66a06df552193fe035cf78bce4a4c39361723707d9e",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-04",
+    "prompt": "Nitrogenous oxygen demand measures the oxygen required to oxidize carbonaceous organic matter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nitrogenous oxygen demand measures the oxygen required to biologically oxidize nitrogen compounds."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "49eb15bbf6a96bce45e7b8b18ebbaae44990f9df26aeca2a87365a6c7f0d9344",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-05",
+    "prompt": "Supernatant in a digester refers to the amber-colored liquid layer above the sludge.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Supernatant is the separated liquid layer sitting above settled digester solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "ee0128ad7caf37bf92f97e1ca989d47fd17099a5f0c8432eb21faed22295ca9e",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-06",
+    "prompt": "A storm sewer is designed to carry sanitary wastewater together with stormwater runoff.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "A storm sewer carries stormwater runoff separately from sanitary wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "6a6e986fdf6dd36d0d537e1919fb56d0aecc1d9ae7d87c8f31ee6b4772d602f5",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-07",
+    "prompt": "Wastewater treatment plants use controlled tanks to speed up natural stream self-purification processes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Treatment plants concentrate and accelerate natural purification inside engineered basins."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "1a8128af2d8aa6bb509f62d496ce97defea388962acbb290a7e41f62ed58cadb",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-08",
+    "prompt": "Diurnal flow variation means the daily wastewater flow stays flat from morning until night.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Diurnal flow varies throughout the day, often swinging from 50 to 200 percent of average flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "edbfa71cd8709d0616baf101a2f7d524357873d40346c35fac410c5a76a90269",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-09",
+    "prompt": "Pump station discharge lines in a gravity collection system operate as force mains under pressure.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because pumps pressurize the discharge pipe, those lines function as force mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "f495389136aaf04ef83b8466f0f5403af457b10d309d516563a05dc969c6d0fd",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-10",
+    "prompt": "In a wet well pumping station, the submersible centrifugal pump sits in a dry room beside the wet well.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "In a wet well station, the submersible pump is submerged directly in the wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "bae8f5de6e95931b55d75f5b049809735d4b6b4b41aac273a6b80b4e28a2a63e",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-11",
+    "prompt": "Preliminary treatment removes trash and debris early to protect downstream equipment from clogs and wear.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Removing large debris and grit early prevents jams, excessive wear, and lost tank space."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "a82ab537e1b72bc04715dfa1b220e5998f3935dc215be8cae76cd69634291427",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-12",
+    "prompt": "Primary effluent is typically crystal clear and free of dissolved nutrients.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Primary effluent is usually cloudy and gray, still containing dissolved food and nutrients."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "ae19d4326d2a29508461e61c36a2738a1c6219de96d3d450757f7c895bc16295",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-13",
+    "prompt": "Secondary biological treatment processes produce additional solids that require a downstream settling or filtration step.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Biological decomposition generates new biomass solids that must be separated before discharge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "551a0e02215fd4b7602a656f4653522dcdf0e7512ef8f712a4e19ae6300a9eea",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-14",
+    "prompt": "Activated sludge systems are more temperature sensitive and remove less BOD than trickling filters.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ponds, trickling filters, and RBCs are more temperature sensitive and remove less BOD than activated sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "21dd555d2b18b5dff1ad2e9fcca9898d94803a3d5b12503470b48e1b68781efe",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m0-15",
+    "prompt": "Infiltration enters a sewer collection system through cracks, joints, or breaks in the piping.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Groundwater seeps into collection pipes through structural defects such as cracks and joints."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "6aeb1f452b0d78c93e28f61d9e594a4c880def03b638bbdd441cd5dcd4273a9b",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-01",
+    "prompt": "Distinguish each wastewater glossary term by its physical or process definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Buffer",
+      "right": "Resists changes in pH"
+     },
+     {
+      "id": "p2",
+      "left": "Floc",
+      "right": "Solids joined into larger settling particles"
+     },
+     {
+      "id": "p3",
+      "left": "Flume",
+      "right": "Flow rate measurement device"
+     },
+     {
+      "id": "p4",
+      "left": "Grit",
+      "right": "Heavy inorganic solids like sand"
+     },
+     {
+      "id": "p5",
+      "left": "Clarifier",
+      "right": "Tank allowing solids to settle or rise"
+     },
+     {
+      "id": "p6",
+      "left": "Grab sample",
+      "right": "Single sample taken at one time"
+     }
+    ],
+    "explanation": "Each term defines a distinct chemical property, physical solid, or unit device."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "0720b7affe1a92bd7bdd31299af2be932cf7d7b4b17b8a17dcce60270234f2be",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-02",
+    "prompt": "Distinguish each wastewater solids or oxygen-demand term by what it measures.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "MLVSS",
+      "right": "Organic matter concentration in mixed liquor"
+     },
+     {
+      "id": "p2",
+      "left": "NOD",
+      "right": "Oxygen to biologically oxidize nitrogen"
+     },
+     {
+      "id": "p3",
+      "left": "SVI",
+      "right": "Evaluates activated sludge settling quality"
+     },
+     {
+      "id": "p4",
+      "left": "WASS",
+      "right": "Solids concentration in waste activated sludge"
+     },
+     {
+      "id": "p5",
+      "left": "Supernatant",
+      "right": "Amber-colored liquid above digester sludge"
+     },
+     {
+      "id": "p6",
+      "left": "Sludge",
+      "right": "Settleable solids and water removed from bottom"
+     }
+    ],
+    "explanation": "Each parameter tracks a specific solids fraction, liquid layer, or oxygen demand."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "e6efe215ff7e7e8a8dd511e332982a1d263c3e86baec5c9d966718670b5a14cf",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-03",
+    "prompt": "Distinguish each wastewater collection stream by its source or contents.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Human and animal wastes",
+      "right": "Carry bacteria, viruses, and pathogens"
+     },
+     {
+      "id": "p2",
+      "left": "Industrial wastewater",
+      "right": "Wastes from manufacturing processes"
+     },
+     {
+      "id": "p3",
+      "left": "Combined wastewater",
+      "right": "Sanitary flow mixed with stormwater runoff"
+     },
+     {
+      "id": "p4",
+      "left": "Stormwater",
+      "right": "Runoff from rain and snowmelt"
+     },
+     {
+      "id": "p5",
+      "left": "Infiltration",
+      "right": "Groundwater entering through pipe cracks"
+     },
+     {
+      "id": "p6",
+      "left": "Diurnal flow variation",
+      "right": "Daily swing from 50 to 200 percent"
+     }
+    ],
+    "explanation": "Wastewater characteristics depend on the specific sources and flow patterns entering the sewer."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "0c205d63efc421674614fc691850748671642cebfbddf8366130085a162d6e64",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-04",
+    "prompt": "Distinguish each collection or pumping system feature by how it operates.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Force main",
+      "right": "Conveys wastewater under pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Wet well station",
+      "right": "Single compartment holding submerged pump"
+     },
+     {
+      "id": "p3",
+      "left": "Pneumatic station",
+      "right": "Uses compressed air to push wastewater"
+     },
+     {
+      "id": "p4",
+      "left": "Inlet valve",
+      "right": "Closes when wet well reaches high level"
+     },
+     {
+      "id": "p5",
+      "left": "Gravity discharge line",
+      "right": "Operates under pressure after pump station"
+     },
+     {
+      "id": "p6",
+      "left": "Submersible centrifugal pump",
+      "right": "Sits directly inside the wastewater"
+     }
+    ],
+    "explanation": "Pumping stations use pressurized pipes, submerged pumps, or air pressure to move wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "e6407e47f1c63df283732441d0773986be09fa43dc23e74e90bd7257892d155f",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-05",
+    "prompt": "Distinguish each preliminary treatment step or disposal option by its function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Screening",
+      "right": "Removes large trash and debris"
+     },
+     {
+      "id": "p2",
+      "left": "Grit removal",
+      "right": "Separates heavy inorganic sand and gravel"
+     },
+     {
+      "id": "p3",
+      "left": "Shredding",
+      "right": "Cuts screenings into smaller particles"
+     },
+     {
+      "id": "p4",
+      "left": "Flow equalization",
+      "right": "Smooths out incoming flow variations"
+     },
+     {
+      "id": "p5",
+      "left": "Preaeration",
+      "right": "Adds air ahead of primary settling"
+     },
+     {
+      "id": "p6",
+      "left": "Landfill disposal",
+      "right": "Final destination for hauled screenings"
+     }
+    ],
+    "explanation": "Preliminary units protect downstream machinery and stabilize flow before primary settling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "e9943a661d20bb23ad702779930256a54cdb953a2f8e7df71e84279ce4bb099e",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-06",
+    "prompt": "Distinguish each primary treatment troubleshooting factor by its role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Too-long sludge retention",
+      "right": "Causes high primary sludge solids"
+     },
+     {
+      "id": "p2",
+      "left": "Plugged withdrawal line",
+      "right": "Traps sludge on tank floor"
+     },
+     {
+      "id": "p3",
+      "left": "Pump malfunction",
+      "right": "Prevents normal primary sludge removal"
+     },
+     {
+      "id": "p4",
+      "left": "Primary effluent",
+      "right": "Cloudy gray liquid with dissolved food"
+     },
+     {
+      "id": "p5",
+      "left": "Problem analysis",
+      "right": "Identifies causes and prevents recurrence"
+     },
+     {
+      "id": "p6",
+      "left": "Excessive grit",
+      "right": "Compacts and raises primary sludge solids"
+     }
+    ],
+    "explanation": "Primary troubleshooting links sludge concentration changes to mechanical or operational causes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "7f923e5397e35d292534140e73ffe2e484cdd01bdb1ab5772f1ec9016500f1ed",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-07",
+    "prompt": "Distinguish each secondary treatment concept by its biological mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fixed-film system",
+      "right": "Biomass attached to media surface"
+     },
+     {
+      "id": "p2",
+      "left": "Suspended-growth system",
+      "right": "Microorganisms mixed in liquid"
+     },
+     {
+      "id": "p3",
+      "left": "Aerobic decomposition",
+      "right": "Produces carbon dioxide and stable solids"
+     },
+     {
+      "id": "p4",
+      "left": "Secondary settling tank",
+      "right": "Removes solids grown during treatment"
+     },
+     {
+      "id": "p5",
+      "left": "Stabilization pond",
+      "right": "Degree of treatment depends on pond count"
+     },
+     {
+      "id": "p6",
+      "left": "Biomass slime",
+      "right": "Attached growth contacting passing wastewater"
+     }
+    ],
+    "explanation": "Secondary treatment relies on attached or suspended microbes followed by solids separation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "70b959950b8a7e1c3d8238e9634b17345e8778290ddc69c3a8d1c9cad14e0652",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-08",
+    "prompt": "Distinguish each biological system comparison by its performance or cost trait.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "RBC total media area",
+      "right": "Sum of all individual stage areas"
+     },
+     {
+      "id": "p2",
+      "left": "RBC organic loading",
+      "right": "Based on soluble BOD concentration"
+     },
+     {
+      "id": "p3",
+      "left": "Activated sludge",
+      "right": "Lower capital cost than trickling filters"
+     },
+     {
+      "id": "p4",
+      "left": "Trickling filter",
+      "right": "More temperature sensitive than activated sludge"
+     },
+     {
+      "id": "p5",
+      "left": "Rotating biological contactor",
+      "right": "Removes less BOD than activated sludge"
+     },
+     {
+      "id": "p6",
+      "left": "Ponds",
+      "right": "Temperature-sensitive biological treatment option"
+     }
+    ],
+    "explanation": "Fixed-film and pond systems differ from activated sludge in temperature sensitivity and capital cost."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "ba3304d96f7cc04c4adcd87ddcbfc58686ab65581ce7a87ba093246c04c317ac",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-09",
+    "prompt": "Distinguish each process control parameter by the variables it relates.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Percent removal",
+      "right": "Concentration drop divided by influent concentration"
+     },
+     {
+      "id": "p2",
+      "left": "Hydraulic detention time",
+      "right": "Tank volume divided by daily flow"
+     },
+     {
+      "id": "p3",
+      "left": "Surface overflow rate",
+      "right": "Daily flow divided by tank area"
+     },
+     {
+      "id": "p4",
+      "left": "Volatile solids load",
+      "right": "Flow, percent solids, and volatile fraction"
+     },
+     {
+      "id": "p5",
+      "left": "Circular tank area",
+      "right": "Calculated from tank diameter squared"
+     },
+     {
+      "id": "p6",
+      "left": "Effluent concentration",
+      "right": "Concentration leaving a unit process"
+     }
+    ],
+    "explanation": "Process control formulas relate flow, tank dimensions, and solids concentrations."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "048019b2eb0a1e9cb168e24312034ad63d3597f8f92229c5cdddef164d33e90b",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m1-10",
+    "prompt": "Distinguish each water quality or chemical term by its meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Buffer",
+      "right": "Solution resisting pH shifts"
+     },
+     {
+      "id": "p2",
+      "left": "Nutrients",
+      "right": "Nitrogen, phosphorus, iron, trace metals"
+     },
+     {
+      "id": "p3",
+      "left": "Organic compounds",
+      "right": "Carbon, hydrogen, oxygen, sulfur, nitrogen"
+     },
+     {
+      "id": "p4",
+      "left": "Milligrams per liter",
+      "right": "Concentration unit equivalent to ppm"
+     },
+     {
+      "id": "p5",
+      "left": "CBOD5",
+      "right": "Oxygen demand from carbonaceous material"
+     },
+     {
+      "id": "p6",
+      "left": "COD",
+      "right": "Chemically oxidizable matter in wastewater"
+     }
+    ],
+    "explanation": "These terms define chemical composition, concentration units, and oxygen demand tests."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "76e0b1b13beb1ba8c7bc18044cb21a4812933dd1b658a66e43b27d068b69f7cf",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-01",
+    "prompt": "In a unit process receiving a steady influent concentration, improved treatment lowers the effluent concentration while influent concentration stays constant. What happens to the percent removal efficiency?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "A lower effluent concentration widens the difference from influent concentration, raising percent removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "ef7aa8886d02dbf569ffd824557ee7fd8f52d7ce633c4e38092670fae77fb3cf",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-02",
+    "prompt": "A wastewater stream with low buffering capacity receives an acidic industrial discharge while flow stays steady. What happens to the pH of the wastewater?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Without enough buffer to resist pH change, added acid lowers the wastewater pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "c21f8c25411f79ce7aec173b76e7aacece573cdef937383a6b3840c5725d06ec",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-03",
+    "prompt": "In an activated sludge plant, the 30-minute settled sludge volume increases while the mixed liquor suspended solids concentration stays constant. What happens to the sludge volume index?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "SVI rises when settled volume increases at a constant MLSS concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "9998aa8389ff636b751ffcf254e225450058b8f75e897dc5253b9fb89b5cb170",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-04",
+    "prompt": "In an activated sludge plant, the mixed liquor suspended solids concentration increases while the 30-minute settled sludge volume stays constant. What happens to the sludge volume index?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Higher MLSS with the same settled volume means each gram occupies less space, lowering SVI."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "807f9afe2c9d4d47c7c1a3d8237ea93ea85e7b152377d013ef6505bfbb4f9720",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-05",
+    "prompt": "Groundwater infiltration into a sanitary sewer system increases during wet weather while the domestic waste flow stays constant. What happens to the total wastewater flow reaching the plant?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Extraneous groundwater entering through cracks and joints adds directly to total plant flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "aa82eeb9d95ecb7e5c81c7fc2c6373b6bbdecc4b30575a32d2d01b26de90caa8",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-06",
+    "prompt": "Preliminary treatment removes rags, trash, and heavy grit ahead of downstream basins while plant flow stays steady. What happens to the frequency of downstream pump clogs?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Removing trash and grit early protects downstream machinery from jams and clogs."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "86fc6e9ee45857ce16626100d0ed0eabd76544dcdb358776f74f6cd95c560422",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-07",
+    "prompt": "Screenings captured on a mechanically cleaned bar screen are ground into smaller particles and returned to the wastewater channel instead of being hauled away. What happens to the total solids load moving downstream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Returning ground screenings puts that solid mass back into the downstream flow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "550d749910dca924e21e1fcaa88bdf6d4ae70b2cab06bbfe9baf208775973726",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-08",
+    "prompt": "In a circular clarifier with steady daily flow, a second identical clarifier is placed into service, doubling the total surface area. What happens to the surface overflow rate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Surface overflow rate equals flow divided by area, so doubling area halves the overflow rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "71284aca8704496cc15882f41700f5d88967227af82c658378e3b75b2ea92065",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-09",
+    "prompt": "In a primary sludge line pumping at a steady flow rate and steady percent total solids, the volatile fraction of the solids increases. What happens to the daily mass of volatile solids pumped?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Volatile solids mass is proportional to the volatile fraction when flow and total solids are steady."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "9fad6b0f512fdfafae16cafe0da5c00d0c91512a43c798777a72dd0afb7fe2d0",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-10",
+    "prompt": "A primary clarifier's sludge withdrawal line becomes partially plugged, lengthening sludge retention on the tank floor without washout. What happens to the primary sludge solids concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Longer floor retention compacts the settled sludge, raising its solids concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "ffc84a31665c988cc338978b63265013861c1a89dd9add260d6e90f097aea5a4",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-11",
+    "prompt": "Aerobic bacteria in a secondary treatment basin oxidize dissolved organic matter with ample oxygen and nutrients. What happens to the mass of biological solids produced?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Aerobic decomposition converts dissolved organics into carbon dioxide, stable solids, and more organisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "71cc043484e6152df7f49039f4ce4bf081700d02bd6b8af97babd7a229ad1dc7",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-12",
+    "prompt": "In a multi-stage rotating biological contactor train, an additional stage is placed into service while the daily soluble BOD load stays constant. What happens to the organic loading rate per unit media area?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Adding a stage increases total media area, reducing the organic load per unit area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "65bf00bd91428d113ed69e1ee05c9b25589d033484047cddb1c92e9aec29b638",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-13",
+    "prompt": "In a rotating biological contactor train with fixed total media area, the influent soluble BOD concentration increases while flow stays steady. What happens to the organic loading rate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Higher soluble BOD at steady flow raises the daily organic load applied to the fixed media area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "be42d598530ed3d259b6480f3ebc88f904aeb3e5b4bf61c4a9ddf5a896ef4481",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-14",
+    "prompt": "In an activated sludge basin with constant MLVSS, the incoming BOD5 mass load decreases while flow stays steady. What happens to the food-to-microorganism ratio?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Less BOD5 food available per unit of MLVSS lowers the F/M ratio."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "4a06c1e96dc4a1f1ffc92dd1600b09c92621dbe61d4c9ec71d29f9344a0a1f42",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m3-15",
+    "prompt": "In a tank with a fixed liquid volume, the daily wastewater flow rate is cut in half while all other conditions stay steady. What happens to the hydraulic detention time?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Hydraulic detention time equals tank volume divided by flow, so halving flow doubles detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "e62e786d82af9f09cb279b7b89f5dafdddc35107af391f98f9b0c0ab286decb2",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-01",
+    "prompt": "Three trainees review wastewater glossary terms. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A buffer is a substance or solution that resists changes in pH."
+     },
+     {
+      "id": "o2",
+      "label": "A flume is a device used to measure the wastewater flow rate."
+     },
+     {
+      "id": "o3",
+      "label": "Grit consists of light organic fibers that float on the surface."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Grit consists of heavy inorganic solids such as sand, gravel, and eggshells."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "57893fd38dcaf862b05c2d6856ff9dedccacfec5568f5a8d9c4e622a9ea769d2",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-02",
+    "prompt": "Operators review oxygen demand and solids terms. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Nitrogenous oxygen demand measures oxygen needed to oxidize nitrogen compounds."
+     },
+     {
+      "id": "o2",
+      "label": "Supernatant is the amber-colored liquid layer above digester sludge."
+     },
+     {
+      "id": "o3",
+      "label": "Storm sewers carry sanitary wastewater and stormwater in the same pipe."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Storm sewers carry stormwater runoff separately, whereas combined sewers carry both."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "e9aae45b05a901e3a357da8ac44850dae70d02d5c57209828485f2a160c94c57",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-03",
+    "prompt": "Three operators discuss wastewater sources and treatment goals. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Wastewater treatment plants speed up natural stream purification in controlled tanks."
+     },
+     {
+      "id": "o2",
+      "label": "Human and animal wastes carry bacteria and viruses that threaten public health."
+     },
+     {
+      "id": "o3",
+      "label": "Stormwater runoff from streets is free of grit, debris, and road salt."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Stormwater runoff carries street debris, road salt, and grit into collection systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "a0c7ea2cd0556ab12ace78a3d8bbb1474d5e9012157c698e324727927d749884",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-04",
+    "prompt": "A study group reviews diurnal flow variation. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Diurnal flow variation describes daily changes in wastewater flow rate."
+     },
+     {
+      "id": "o2",
+      "label": "Daily flow can swing from 50 to 200 percent of average flow."
+     },
+     {
+      "id": "o3",
+      "label": "Diurnal variation means wastewater flow stays constant throughout the day."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Diurnal variation refers to daily fluctuations in flow rather than a constant rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "76e3d81e5057a800c800d6cfb7fcc27d22a50d8b66899a1abc64ce18a0b2ca6d",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-05",
+    "prompt": "Trainees compare pumping station designs. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Force mains convey wastewater under pressure over long distances."
+     },
+     {
+      "id": "o2",
+      "label": "A wet well station places a submersible pump inside the wastewater."
+     },
+     {
+      "id": "o3",
+      "label": "Gravity system pump discharge lines operate without internal pressure."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Pump station discharge lines in gravity systems are pressurized and act as force mains."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "4b14afb000a952fc6892ed73c05c8ece29b2dfd7f3a877153c5bf3f4e084e79f",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-06",
+    "prompt": "Operators review pneumatic pumping stations. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A pneumatic station uses pressurized air to push wastewater out."
+     },
+     {
+      "id": "o2",
+      "label": "An automatic valve closes the influent line at high level."
+     },
+     {
+      "id": "o3",
+      "label": "Pressurized air enters the wet well before the influent valve closes."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "The automatic influent valve closes first at high level, then the tank is pressurized."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "15fd0e46769478fab596d39792beb0700219d67aa4a4cd91ab6eaa525f3417a2",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-07",
+    "prompt": "Three operators discuss preliminary treatment. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Preliminary treatment removes trash to protect downstream plant machinery."
+     },
+     {
+      "id": "o2",
+      "label": "Removing debris early saves valuable space in downstream treatment tanks."
+     },
+     {
+      "id": "o3",
+      "label": "Preliminary treatment is designed to remove dissolved organic BOD."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Preliminary treatment removes trash, debris, and grit, not dissolved organic BOD."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "9f7dbb8caafa02ebdde3e52d034281700abc58fb9dd2d19b60b3a172160969fd",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-08",
+    "prompt": "Operators review mechanically operated bar screens. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "The area around a mechanical screen requires frequent cleaning."
+     },
+     {
+      "id": "o2",
+      "label": "Screenings from mechanical bar screens can be hauled to a landfill."
+     },
+     {
+      "id": "o3",
+      "label": "Mechanical bar screens require very little operator maintenance or lubrication."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Mechanical bar screens require operator vigilance, routine lubrication, and O&M maintenance."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "b6af72305a23d547287e8914b5e9e619a1af8715f77edef532cd2ef0a4b31bd2",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-09",
+    "prompt": "A team reviews primary clarifier troubleshooting. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A plugged sludge withdrawal line can raise primary sludge solids."
+     },
+     {
+      "id": "o2",
+      "label": "Long sludge retention time on the floor raises sludge concentration."
+     },
+     {
+      "id": "o3",
+      "label": "Primary effluent is clear water free of dissolved food and nutrients."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Primary effluent is cloudy and gray, still containing dissolved food and nutrients."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "18ab2bf3496d2824993291e707028abaea8659a787034fecb834c3dada062061",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-10",
+    "prompt": "Trainees review secondary treatment principles. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Fixed-film systems grow biological slime attached to solid media."
+     },
+     {
+      "id": "o2",
+      "label": "Aerobic secondary processes produce carbon dioxide and stable solids."
+     },
+     {
+      "id": "o3",
+      "label": "Biological secondary processes require little downstream solids removal."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Because biological treatment produces solids, a downstream settling or filtration step is needed."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "32466bd7ca5c5f85398c20214c1e59864ce1dbba5d306445c6adee05f4606110",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-11",
+    "prompt": "Operators compare biological treatment systems. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Trickling filters and RBCs are more temperature sensitive than activated sludge."
+     },
+     {
+      "id": "o2",
+      "label": "Activated sludge systems generally cost less to build than trickling filters."
+     },
+     {
+      "id": "o3",
+      "label": "Activated sludge systems remove less BOD than stabilization ponds."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Ponds, trickling filters, and RBCs remove less BOD than activated sludge systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "3f5be78a0abde8b69feafa5e53b1ad29793c249f5043c54d33f086b08b336f82",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-12",
+    "prompt": "Trainees review RBC loading calculations. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Total RBC media area equals the sum of individual stage areas."
+     },
+     {
+      "id": "o2",
+      "label": "RBC organic loading is calculated using soluble BOD concentration."
+     },
+     {
+      "id": "o3",
+      "label": "RBC organic loading is calculated using total suspended solids."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "RBC organic loading rate is based on soluble BOD concentration, not total suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "554c1ee98efcf34057a157119e76d0db35941d83b317c70b86ca6820cf2a02c1",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-13",
+    "prompt": "A class reviews unit process efficiency and detention time. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Percent removal compares the concentration drop against the influent concentration."
+     },
+     {
+      "id": "o2",
+      "label": "Hydraulic detention time in a sedimentation tank is measured in minutes."
+     },
+     {
+      "id": "o3",
+      "label": "Hydraulic detention time increases when tank flow rate increases."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Increasing flow rate through a fixed tank volume decreases hydraulic detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "d6f117d9557912fdff64202f866bd320ceba62f06f2f50651d9edc4b4e380ea0",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-14",
+    "prompt": "Operators review circular clarifier calculations. Which statement is incorrect?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Surface overflow rate equals daily flow divided by tank surface area."
+     },
+     {
+      "id": "o2",
+      "label": "Volatile solids mass depends on flow, percent solids, and volatile fraction."
+     },
+     {
+      "id": "o3",
+      "label": "Surface overflow rate increases when active clarifier area doubles."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Doubling clarifier surface area at steady flow cuts the surface overflow rate in half."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "916e2c52c58efe08ad15d23861dd630d9c1432a852a123192a074e42122c6033",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m4-15",
+    "prompt": "Trainees review biosolids and sewer terminology. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Biosolids are treated solids suitable for beneficial reuse."
+     },
+     {
+      "id": "o2",
+      "label": "Floc forms when solids join together into larger settling particles."
+     },
+     {
+      "id": "o3",
+      "label": "Infiltration enters sewers through roof drains and street catch basins."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Infiltration enters through cracks, joints, or breaks; roof drains and catch basins cause inflow."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "0a905c1770af86f1c5a6082a49eeff0b21bc3bcf77ae94d5fbe180255b3ebaca",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-01",
+    "prompt": "In a conventional municipal wastewater plant, does preliminary screening occur before or after primary clarification?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Preliminary screening removes large trash at the headworks before primary clarification."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "686388501d4ede6bf11c6eab994f602018990b9dd7b446b69bb831881e840382",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-02",
+    "prompt": "In a conventional municipal wastewater plant, does grit removal occur before or after secondary biological treatment?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Grit removal is part of preliminary treatment ahead of primary and secondary units."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "9fb01a381fa67933d0f80a24838c7ccf47175bb18678affa6ed57abdac079850",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-03",
+    "prompt": "In a conventional wastewater plant with primary settling, does primary effluent leave the settling tank before or after entering secondary treatment?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Primary effluent exits primary settling and moves into secondary biological treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "5fad060a73d9c99435a8e6b041e47b12a233428ed91d26cf02648653f62126bf",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-04",
+    "prompt": "In a conventional fixed-film secondary treatment train, does final settling of sloughed solids occur before or after wastewater passes over the biological slime?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Wastewater contacts the attached slime first, and sloughed solids are removed in final settling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "2f8cb47e2d5e29ed5e684467eabcab441df1c69337922771e9eff46f4d378549",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-05",
+    "prompt": "In a pneumatic pumping station's normal cycle, does wastewater ejecting from the tank occur before or after the wet well reaches its predetermined high level?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The wet well fills to the high level first, triggering valve closure and air-driven ejection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "44f664c04e70c3683483f18d114c78e9c7edbdb92a1de7326846a7c3fa04d74a",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-06",
+    "prompt": "In a mechanically cleaned bar screen operation, does capturing large debris on the screen occur before or after hauling screenings to a landfill?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Debris is captured from the wastewater flow first, then collected and hauled for disposal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "1507bf11f05c0371c762d70bba2148ef724e70aca6815d2f6163780c9a7f2c95",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-07",
+    "prompt": "In calculating unit process percent removal, does measuring influent and effluent concentrations occur before or after computing the percentage reduction?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Both influent and effluent concentrations must be known before computing percent removal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "e6cef987f9f3e5be3704b1d411b7808d95031256fa1103b71a82966a3aed1479",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-08",
+    "prompt": "In calculating hydraulic detention time in days for a rectangular tank, does converting tank volume from cubic feet to gallons occur before or after dividing by daily flow?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Tank volume in cubic feet is multiplied by 7.48 gal/ft3 so units match daily flow in gallons."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "a7fcdf75f21faf171d7a36a09f40d7b276b8b16b7a07b468f3d712a5d1b20e90",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-09",
+    "prompt": "In calculating surface overflow rate for a circular clarifier, does dividing daily flow by tank surface area occur before or after determining the tank's surface area?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The circular tank's surface area must be calculated first before dividing flow by area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "566b5804e4d4575039bb2662452b5d47ea43d17e3bec26c7c67a5eff433b4739",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-10",
+    "prompt": "In calculating the organic loading rate on a multi-stage RBC train, does dividing the soluble BOD load by total media area occur before or after summing the individual stage areas?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Individual stage areas are summed first to obtain total train area for the loading calculation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "c48f5ab899056ef6293ca50cb9841ba209f8a7cd53afc1d697514f05294df0bf",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-11",
+    "prompt": "In a conventional wastewater treatment train, does flocculation of fine solids into larger particles occur before or after those larger particles settle in a clarifier?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solids join into larger floc particles first so they can settle effectively in the clarifier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "65d693ba81659c2cb47c34cdcbef666391e450ef7d756e6e92821e53378ed13a",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-12",
+    "prompt": "In an anaerobic digester, does solids settling to the bottom occur before or after amber-colored supernatant is drawn from above the sludge?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solids settle to form a lower layer, leaving the amber-colored supernatant above for withdrawal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "1c3a7431c7c01637cb40a69950e748ba2911f6cf6dd858229dfe73308033b44d",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-13",
+    "prompt": "In a combined sewer system during a storm, does stormwater runoff enter the collection pipe before or after the combined flow reaches the treatment plant?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Stormwater mixes with sanitary wastewater in the collection system before arriving at the plant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "2542ca4d017dab4a42e0d66c8dc436b35c8f455139797d8384ff965f19204316",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-14",
+    "prompt": "In troubleshooting a primary clarifier malfunction, does developing a long-term solution occur before or after identifying the cause of the malfunction?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Operators must identify the cause of a process malfunction first before developing a lasting solution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "551413e2c21fafbe4d694e16b02109c077fdeb104763992d6732b03f491ce9d2",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  },
+  {
+   "courseKey": "wpi-class2-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class2-wastewater-r06-m5-15",
+    "prompt": "In an activated sludge process, does wasting excess biological solids occur before or after those solids are produced by microbial growth?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Microorganisms grow and generate excess biomass first, which is then removed as waste activated sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+    "notes": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:31:18.471Z",
+    "payloadSha256": "b4332c7037c3baf5d4191862b70f5d02e44f985f366c11a388ef641770a35082",
+    "builderResultsSha256": "ac1949df5d936090a091fe3b519f865c80ca5c7aefdc4da22b454614d4bfe040"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:30:03.510582+00:00",
+   "attestation": "Strict Hydrogen self-review of all 69 authored items in targeth-wpi-class2-wastewater-r06 against supplied source pages, evidence, and collision candidates; 69 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-02": "b126a7e86a9b2f1e13689326ae106e8cb168fb3734d58ac15a887c49b60e51d4",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-03": "7c0ff249005670d0083ba66a06df552193fe035cf78bce4a4c39361723707d9e",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-04": "49eb15bbf6a96bce45e7b8b18ebbaae44990f9df26aeca2a87365a6c7f0d9344",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-05": "ee0128ad7caf37bf92f97e1ca989d47fd17099a5f0c8432eb21faed22295ca9e",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-06": "6a6e986fdf6dd36d0d537e1919fb56d0aecc1d9ae7d87c8f31ee6b4772d602f5",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-07": "1a8128af2d8aa6bb509f62d496ce97defea388962acbb290a7e41f62ed58cadb",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-08": "edbfa71cd8709d0616baf101a2f7d524357873d40346c35fac410c5a76a90269",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-09": "f495389136aaf04ef83b8466f0f5403af457b10d309d516563a05dc969c6d0fd",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-10": "bae8f5de6e95931b55d75f5b049809735d4b6b4b41aac273a6b80b4e28a2a63e",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-11": "a82ab537e1b72bc04715dfa1b220e5998f3935dc215be8cae76cd69634291427",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-12": "ae19d4326d2a29508461e61c36a2738a1c6219de96d3d450757f7c895bc16295",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-13": "551a0e02215fd4b7602a656f4653522dcdf0e7512ef8f712a4e19ae6300a9eea",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-14": "21dd555d2b18b5dff1ad2e9fcca9898d94803a3d5b12503470b48e1b68781efe",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m0-15": "6aeb1f452b0d78c93e28f61d9e594a4c880def03b638bbdd441cd5dcd4273a9b",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-01": "0720b7affe1a92bd7bdd31299af2be932cf7d7b4b17b8a17dcce60270234f2be",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-02": "e6efe215ff7e7e8a8dd511e332982a1d263c3e86baec5c9d966718670b5a14cf",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-03": "0c205d63efc421674614fc691850748671642cebfbddf8366130085a162d6e64",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-04": "e6407e47f1c63df283732441d0773986be09fa43dc23e74e90bd7257892d155f",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-05": "e9943a661d20bb23ad702779930256a54cdb953a2f8e7df71e84279ce4bb099e",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-06": "7f923e5397e35d292534140e73ffe2e484cdd01bdb1ab5772f1ec9016500f1ed",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-07": "70b959950b8a7e1c3d8238e9634b17345e8778290ddc69c3a8d1c9cad14e0652",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-08": "ba3304d96f7cc04c4adcd87ddcbfc58686ab65581ce7a87ba093246c04c317ac",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-09": "048019b2eb0a1e9cb168e24312034ad63d3597f8f92229c5cdddef164d33e90b",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m1-10": "76e0b1b13beb1ba8c7bc18044cb21a4812933dd1b658a66e43b27d068b69f7cf",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-01": "ef7aa8886d02dbf569ffd824557ee7fd8f52d7ce633c4e38092670fae77fb3cf",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-02": "c21f8c25411f79ce7aec173b76e7aacece573cdef937383a6b3840c5725d06ec",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-03": "9998aa8389ff636b751ffcf254e225450058b8f75e897dc5253b9fb89b5cb170",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-04": "807f9afe2c9d4d47c7c1a3d8237ea93ea85e7b152377d013ef6505bfbb4f9720",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-05": "aa82eeb9d95ecb7e5c81c7fc2c6373b6bbdecc4b30575a32d2d01b26de90caa8",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-06": "86fc6e9ee45857ce16626100d0ed0eabd76544dcdb358776f74f6cd95c560422",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-07": "550d749910dca924e21e1fcaa88bdf6d4ae70b2cab06bbfe9baf208775973726",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-08": "71284aca8704496cc15882f41700f5d88967227af82c658378e3b75b2ea92065",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-09": "9fad6b0f512fdfafae16cafe0da5c00d0c91512a43c798777a72dd0afb7fe2d0",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-10": "ffc84a31665c988cc338978b63265013861c1a89dd9add260d6e90f097aea5a4",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-11": "71cc043484e6152df7f49039f4ce4bf081700d02bd6b8af97babd7a229ad1dc7",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-12": "65bf00bd91428d113ed69e1ee05c9b25589d033484047cddb1c92e9aec29b638",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-13": "be42d598530ed3d259b6480f3ebc88f904aeb3e5b4bf61c4a9ddf5a896ef4481",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-14": "4a06c1e96dc4a1f1ffc92dd1600b09c92621dbe61d4c9ec71d29f9344a0a1f42",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m3-15": "e62e786d82af9f09cb279b7b89f5dafdddc35107af391f98f9b0c0ab286decb2",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-01": "57893fd38dcaf862b05c2d6856ff9dedccacfec5568f5a8d9c4e622a9ea769d2",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-02": "e9aae45b05a901e3a357da8ac44850dae70d02d5c57209828485f2a160c94c57",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-03": "a0c7ea2cd0556ab12ace78a3d8bbb1474d5e9012157c698e324727927d749884",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-04": "76e3d81e5057a800c800d6cfb7fcc27d22a50d8b66899a1abc64ce18a0b2ca6d",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-05": "4b14afb000a952fc6892ed73c05c8ece29b2dfd7f3a877153c5bf3f4e084e79f",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-06": "15fd0e46769478fab596d39792beb0700219d67aa4a4cd91ab6eaa525f3417a2",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-07": "9f7dbb8caafa02ebdde3e52d034281700abc58fb9dd2d19b60b3a172160969fd",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-08": "b6af72305a23d547287e8914b5e9e619a1af8715f77edef532cd2ef0a4b31bd2",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-09": "18ab2bf3496d2824993291e707028abaea8659a787034fecb834c3dada062061",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-10": "32466bd7ca5c5f85398c20214c1e59864ce1dbba5d306445c6adee05f4606110",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-11": "3f5be78a0abde8b69feafa5e53b1ad29793c249f5043c54d33f086b08b336f82",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-12": "554c1ee98efcf34057a157119e76d0db35941d83b317c70b86ca6820cf2a02c1",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-13": "d6f117d9557912fdff64202f866bd320ceba62f06f2f50651d9edc4b4e380ea0",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-14": "916e2c52c58efe08ad15d23861dd630d9c1432a852a123192a074e42122c6033",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m4-15": "0a905c1770af86f1c5a6082a49eeff0b21bc3bcf77ae94d5fbe180255b3ebaca",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-01": "686388501d4ede6bf11c6eab994f602018990b9dd7b446b69bb831881e840382",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-02": "9fb01a381fa67933d0f80a24838c7ccf47175bb18678affa6ed57abdac079850",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-03": "5fad060a73d9c99435a8e6b041e47b12a233428ed91d26cf02648653f62126bf",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-04": "2f8cb47e2d5e29ed5e684467eabcab441df1c69337922771e9eff46f4d378549",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-05": "44f664c04e70c3683483f18d114c78e9c7edbdb92a1de7326846a7c3fa04d74a",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-06": "1507bf11f05c0371c762d70bba2148ef724e70aca6815d2f6163780c9a7f2c95",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-07": "e6cef987f9f3e5be3704b1d411b7808d95031256fa1103b71a82966a3aed1479",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-08": "a7fcdf75f21faf171d7a36a09f40d7b276b8b16b7a07b468f3d712a5d1b20e90",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-09": "566b5804e4d4575039bb2662452b5d47ea43d17e3bec26c7c67a5eff433b4739",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-10": "c48f5ab899056ef6293ca50cb9841ba209f8a7cd53afc1d697514f05294df0bf",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-11": "65d693ba81659c2cb47c34cdcbef666391e450ef7d756e6e92821e53378ed13a",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-12": "1c3a7431c7c01637cb40a69950e748ba2911f6cf6dd858229dfe73308033b44d",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-13": "2542ca4d017dab4a42e0d66c8dc436b35c8f455139797d8384ff965f19204316",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-14": "551413e2c21fafbe4d694e16b02109c077fdeb104763992d6732b03f491ce9d2",
+    "targeth-ht261118-wpi-class2-wastewater-r06-m5-15": "b4332c7037c3baf5d4191862b70f5d02e44f985f366c11a388ef641770a35082"
+   }
+  },
+  "registeredAt": "2026-11-19T04:31:18.471Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 9,
+     "decrease": 6,
+     "unchanged": 0
+    },
+    "longest": 8,
+    "options": 30
+   },
+   "batchSha256": "063f493570fd357d64a05289e37103fd53a9498e038df6f2c59661a24d8a16b7"
+  }
+ }
+}

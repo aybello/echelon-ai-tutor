@@ -1,0 +1,1 @@
+function n(o,a,e){return{role:"button",tabIndex:0,"aria-label":o,"aria-pressed":a,className:"process-label-button",onClick:e,onKeyDown(r){r.key!=="Enter"&&r.key!==" "||(r.preventDefault(),r.repeat||e())}}}export{n as s};

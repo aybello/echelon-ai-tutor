@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-wastewater-r05",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-01",
+    "prompt": "Match each enhanced biological nutrient removal outcome to its water quality or process advantage.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Reduced chemical dosing",
+      "right": "Cuts phosphorus precipitation chemical use roughly in half"
+     },
+     {
+      "id": "p2",
+      "left": "Very low effluent turbidity",
+      "right": "Enables effective ultraviolet light disinfection"
+     },
+     {
+      "id": "p3",
+      "left": "Low effluent BOD and TSS",
+      "right": "Routinely achieves concentrations below 2 mg/L"
+     },
+     {
+      "id": "p4",
+      "left": "Low fecal coliform count",
+      "right": "Reduces indicator bacteria below 10 cfu/100 mL"
+     },
+     {
+      "id": "p5",
+      "left": "Pharmaceuticals and healthcare products",
+      "right": "Removed more effectively than in conventional secondary treatment"
+     },
+     {
+      "id": "p6",
+      "left": "Tertiary process efficiency",
+      "right": "Improved when paired with upstream biological nutrient removal"
+     }
+    ],
+    "explanation": "Enhanced biological nutrient removal lowers chemical demand, improves tertiary performance, and produces low-turbidity effluent suited for UV disinfection."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "818a5a62bfab7e4e60168fb77a87f568c74b85f9945c47cc5c57a25a5eaee5b4",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-02",
+    "prompt": "Match each tertiary phosphorus removal unit or chemical to its specific function in advanced treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Continuous backwash upflow filter",
+      "right": "Deep-bed granular media filter cleaned without stopping flow"
+     },
+     {
+      "id": "p2",
+      "left": "Chlorine at filter influent",
+      "right": "Controls biological growth inside granular media filters"
+     },
+     {
+      "id": "p3",
+      "left": "Tube settlers",
+      "right": "Provide tertiary clarification ahead of mixed-media filtration"
+     },
+     {
+      "id": "p4",
+      "left": "Aluminum chloride",
+      "right": "Flocculant added at secondary clarifiers and filter headers"
+     },
+     {
+      "id": "p5",
+      "left": "Mono-media anthracite filter",
+      "right": "Gravity-flow bed paired with conical tertiary clarifiers"
+     },
+     {
+      "id": "p6",
+      "left": "Cascading outfall",
+      "right": "Reaerates treated effluent prior to receiving water mixing"
+     }
+    ],
+    "explanation": "Advanced phosphorus removal combines chemical flocculation, specialized tertiary clarifiers, and granular media filtration to achieve consistently low effluent limits."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "4e2bb983189578c69f7d36d75211c71e08e66aa7130d2d35e966fad8c6364b5d",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-03",
+    "prompt": "Match each chemical or substrate addition point in an advanced BNR plant to its treatment purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Ferric chloride at primary settling",
+      "right": "Enhances early phosphorus and solids removal"
+     },
+     {
+      "id": "p2",
+      "left": "Methanol or volatile fatty acids",
+      "right": "Supplies carbon to biological reactor basins for BNR"
+     },
+     {
+      "id": "p3",
+      "left": "Ferric chloride before secondary settling",
+      "right": "Precipitates remaining phosphorus prior to clarification"
+     },
+     {
+      "id": "p4",
+      "left": "Alum before tertiary clarification",
+      "right": "Coagulates fine solids ahead of inclined plate settlers"
+     },
+     {
+      "id": "p5",
+      "left": "Inclined plate settlers",
+      "right": "Clarify chemically treated effluent before dual-media filtration"
+     },
+     {
+      "id": "p6",
+      "left": "Post aeration",
+      "right": "Raises dissolved oxygen after UV disinfection"
+     }
+    ],
+    "explanation": "Multi-point chemical dosing and supplemental carbon addition support biological nutrient removal and tertiary solids separation across the treatment train."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "84c0c8b73e1b4cdf9d6abca74d75230e63ee23ec0eb9b029bf05f5f542e3ccbe",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-04",
+    "prompt": "Match each wastewater solids management term to its defining concept.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sludge",
+      "right": "Concentrated wastewater solids managed primarily for disposal"
+     },
+     {
+      "id": "p2",
+      "left": "Biosolids",
+      "right": "Treated wastewater solids managed for beneficial reuse"
+     },
+     {
+      "id": "p3",
+      "left": "Thickening",
+      "right": "Concentrates removed suspended solids to reduce volume"
+     },
+     {
+      "id": "p4",
+      "left": "Stabilization",
+      "right": "Reduces pathogens, odor, and volatile organic content"
+     },
+     {
+      "id": "p5",
+      "left": "Dewatering",
+      "right": "Removes water from stabilized solids for handling"
+     },
+     {
+      "id": "p6",
+      "left": "Land application",
+      "right": "Beneficial reuse of biosolids as a soil amendment"
+     }
+    ],
+    "explanation": "Sludge and biosolids refer to the same concentrated wastewater solids, distinguished by whether they are disposed of or beneficially reused."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "a07a5bee77f1e7760f0b416c2f20aa45c58d08a5589ef75447996a848f11d93f",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-05",
+    "prompt": "Match each sludge stabilization method to its primary treatment mechanism.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aerobic digestion",
+      "right": "Uses air to biologically oxidize volatile solids"
+     },
+     {
+      "id": "p2",
+      "left": "Anaerobic digestion",
+      "right": "Breaks down volatile solids in the absence of free oxygen"
+     },
+     {
+      "id": "p3",
+      "left": "Lime stabilization",
+      "right": "Raises pH to inhibit biological activity and pathogens"
+     },
+     {
+      "id": "p4",
+      "left": "Wet air oxidation",
+      "right": "Uses heat and pressure to oxidize organic solids"
+     },
+     {
+      "id": "p5",
+      "left": "Chemical oxidation",
+      "right": "Uses chlorine to chemically oxidize sludge solids"
+     },
+     {
+      "id": "p6",
+      "left": "Volatile solids loading",
+      "right": "Mass of volatile solids fed daily per unit digester volume"
+     }
+    ],
+    "explanation": "Sludge stabilization relies on biological, chemical, or thermal processes to reduce volatile solids, odors, and pathogens."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "cf5c0df5c0202d5de2444452ec889b0d2432f924bb0256fa95e0c9fb96310feb",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-06",
+    "prompt": "Match each aerated static pile composting component to its operational or biological role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aeration airflow",
+      "right": "Supplies oxygen while removing excess heat and moisture"
+     },
+     {
+      "id": "p2",
+      "left": "Thermal probes",
+      "right": "Monitor pile temperatures for process control"
+     },
+     {
+      "id": "p3",
+      "left": "Sloped aeration piping",
+      "right": "Drains water and leachate away from the center"
+     },
+     {
+      "id": "p4",
+      "left": "Pipe drain caps",
+      "right": "Allow manual clearing of debris and moisture buildup"
+     },
+     {
+      "id": "p5",
+      "left": "Wood chips base layer",
+      "right": "Supports the compost pile above the aeration pad"
+     },
+     {
+      "id": "p6",
+      "left": "Variable-speed blowers",
+      "right": "Adjust airflow automatically using temperature feedback"
+     }
+    ],
+    "explanation": "Aerated static pile composting depends on controlled airflow, temperature monitoring, and proper leachate drainage to sustain aerobic degradation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "1ccae0962a48f6659192d32dbf9691c88c5427740658d80a856eb73c19871cf1",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-07",
+    "prompt": "Match each compost pile construction practice to its physical or odor-control purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Cured compost blanket",
+      "right": "Insulates the pile and prevents odorous gas escape"
+     },
+     {
+      "id": "p2",
+      "left": "Hand raking pile surfaces",
+      "right": "Smooths tops and sides to prevent water pockets"
+     },
+     {
+      "id": "p3",
+      "left": "Overnight dusting layer",
+      "right": "Covers active faces with bulking agent for odor control"
+     },
+     {
+      "id": "p4",
+      "left": "Extended trapezoidal pile",
+      "right": "Builds parallel piles against existing ones to save space"
+     },
+     {
+      "id": "p5",
+      "left": "Closed aeration dampers",
+      "right": "Prevents air loss through troughs without compost piles"
+     },
+     {
+      "id": "p6",
+      "left": "Pile dating signs",
+      "right": "Track start and takedown dates over the composting cycle"
+     }
+    ],
+    "explanation": "Proper pile blanketing, surface grading, and damper control maintain thermal insulation, prevent ponding, and contain odors during composting."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "cc9922ee3dfe11cf614cabe937e5602f1762d988bfc3b352e5156d6f3579659e",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-08",
+    "prompt": "Match each biosolids composting benefit to its economic or ecological outcome.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Escalating landfill tipping fees",
+      "right": "Makes composting more economically favorable than disposal"
+     },
+     {
+      "id": "p2",
+      "left": "Soil nutrient enrichment",
+      "right": "Increases nitrogen, phosphorus, potassium, and organic carbon"
+     },
+     {
+      "id": "p3",
+      "left": "Wetland restoration substrate",
+      "right": "Mimics wetland soils while absorbing ammonium"
+     },
+     {
+      "id": "p4",
+      "left": "Low nitrogen in finished compost",
+      "right": "Prevents nitrogen overloading in sensitive wetland applications"
+     },
+     {
+      "id": "p5",
+      "left": "Strip-mine spoil amendment",
+      "right": "Supports sustainable grass cover unlike inorganic-only amendments"
+     },
+     {
+      "id": "p6",
+      "left": "Storage and handling ease",
+      "right": "Simplifies transport and application of the stabilized product"
+     }
+    ],
+    "explanation": "Biosolids composting reduces landfill reliance while producing a stable, nutrient-rich organic amendment for agriculture, wetlands, and mine reclamation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "fff21f4d4b160a451d2e8e48c4bdce03483778a675a6bcc0d00d2879ee753246",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-09",
+    "prompt": "Match each unit process in a multi-stage BNR plant train to its primary treatment role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Equalization basin",
+      "right": "Dampens flow and load variations ahead of biological cells"
+     },
+     {
+      "id": "p2",
+      "left": "11-cell bioreactor in series",
+      "right": "Provides staged zones for biological nutrient removal"
+     },
+     {
+      "id": "p3",
+      "left": "Primary clarifier",
+      "right": "Settles raw solids and skims scum before biological treatment"
+     },
+     {
+      "id": "p4",
+      "left": "Sand filter",
+      "right": "Polishes final clarifier effluent by removing fine suspended solids"
+     },
+     {
+      "id": "p5",
+      "left": "UV disinfection",
+      "right": "Inactivates pathogens in low-turbidity filtered effluent"
+     },
+     {
+      "id": "p6",
+      "left": "Post-filter aeration basin",
+      "right": "Increases dissolved oxygen before final effluent discharge"
+     }
+    ],
+    "explanation": "A multi-stage BNR train sequences equalization, primary settling, staged bioreactors, filtration, UV disinfection, and post-aeration to meet strict effluent goals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "30f447fe9633981dea2cfdb4a63b16895fc8a55dd5057240a5c40f3e2de6e1cd",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-wastewater-r05-m1-10",
+    "prompt": "Match each tertiary disinfection or dechlorination method to its role in advanced nutrient-removal plants.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Chlorine disinfection",
+      "right": "Inactivates pathogens after two-stage filtration"
+     },
+     {
+      "id": "p2",
+      "left": "Sulfur dioxide",
+      "right": "Dechlorinates chlorinated effluent prior to discharge"
+     },
+     {
+      "id": "p3",
+      "left": "Sodium bisulfite",
+      "right": "Liquid chemical used for effluent dechlorination"
+     },
+     {
+      "id": "p4",
+      "left": "Ultraviolet disinfection",
+      "right": "Physical pathogen inactivation following traveling-bed filtration"
+     },
+     {
+      "id": "p5",
+      "left": "Pre-filter chlorination",
+      "right": "Prevents biological fouling inside granular media filters"
+     },
+     {
+      "id": "p6",
+      "left": "Effluent reclamation",
+      "right": "Reuses consistently high-quality tertiary effluent for irrigation"
+     }
+    ],
+    "explanation": "Advanced nutrient-removal plants pair filtration with UV or chlorine disinfection and dechlorination to protect receiving waters or support reuse."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+    "notes": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T04:13:57.898Z",
+    "payloadSha256": "be530a044291deab06cec6b56bbae30405b70e9e72eaffa46ccb7b8e5bcddb55",
+    "builderResultsSha256": "b17929fd38024d0d4be22f2aa0652978a84985d7485d10e18d9af842a9e0398c"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T04:12:48.613341+00:00",
+   "attestation": "Strict final AI self-review of 10 authored speed-match payloads for wpi-class4-wastewater against provided source pages and collision candidates; 10 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-01": "818a5a62bfab7e4e60168fb77a87f568c74b85f9945c47cc5c57a25a5eaee5b4",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-02": "4e2bb983189578c69f7d36d75211c71e08e66aa7130d2d35e966fad8c6364b5d",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-03": "84c0c8b73e1b4cdf9d6abca74d75230e63ee23ec0eb9b029bf05f5f542e3ccbe",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-04": "a07a5bee77f1e7760f0b416c2f20aa45c58d08a5589ef75447996a848f11d93f",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-05": "cf5c0df5c0202d5de2444452ec889b0d2432f924bb0256fa95e0c9fb96310feb",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-06": "1ccae0962a48f6659192d32dbf9691c88c5427740658d80a856eb73c19871cf1",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-07": "cc9922ee3dfe11cf614cabe937e5602f1762d988bfc3b352e5156d6f3579659e",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-08": "fff21f4d4b160a451d2e8e48c4bdce03483778a675a6bcc0d00d2879ee753246",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-09": "30f447fe9633981dea2cfdb4a63b16895fc8a55dd5057240a5c40f3e2de6e1cd",
+    "targeth-ht261118-wpi-class4-wastewater-r05-m1-10": "be530a044291deab06cec6b56bbae30405b70e9e72eaffa46ccb7b8e5bcddb55"
+   }
+  },
+  "registeredAt": "2026-11-19T04:13:57.898Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "ce7fe4611574b40ca4fc36c9c1e6b5200e2fa78f56a12a1661a79db40593aadd"
+  }
+ }
+}

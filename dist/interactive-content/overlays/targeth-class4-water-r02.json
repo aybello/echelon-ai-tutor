@@ -1,0 +1,773 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-class4-water-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 17 items.",
+ "additions": [
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m0-01",
+    "prompt": "True or false: In ion exchange softening, synthetic organic resins exchange sodium ions for calcium and magnesium ions in solution.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Synthetic organic resins release sodium ions into the water in exchange for dissolved calcium and magnesium ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "5a515930dff65fa99f766125f72ad8fc12294f3906a9862b8a0378274ada1a8f",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m0-02",
+    "prompt": "True or false: Nonbiodegradable organics such as tannin and lignic acids break down rapidly in a standard five-day biochemical oxygen demand test.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Tannin and lignic acids are refractory organics that resist biological degradation, unlike readily biodegradable matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "9cb9595c6cc605e39507584d3bc77b8e3ce5fc9320b3dfc6fad52e86dd4e715c",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m0-03",
+    "prompt": "True or false: High total dissolved solids in distribution water increase electrical conductivity, which can affect ionization during corrosion control.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "High TDS raises water conductivity and ionization, though it can also promote a protective pipe coating."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "2180bcaa6e59d0f3b96ec4c2835a1531a741a68efa1f4809cbda0261c981626f",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m0-04",
+    "prompt": "True or false: Nitrate is converted to nitrite in the infant intestinal tract, which increases the oxygen-carrying capacity of the blood.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Nitrite replaces oxygen in the bloodstream, causing oxygen starvation rather than increasing oxygen-carrying capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "f677bec2eb21a7ba91b8ae196b99648811a17ecbecbd6f2a84d6ab8421135b6a",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m0-05",
+    "prompt": "True or false: Excessive levels of essential trace metals such as zinc can be detrimental to aquatic organisms.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "While trace amounts of essential metals are needed by organisms, excessive concentrations become harmful."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "094983c1c10b76c7a5526e865536247430762938f83e6da16cde02202ed13296",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-01",
+    "prompt": "Match each solid or color classification to its defining characteristic in water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Total solids",
+      "right": "Suspended and dissolved solids remaining after evaporation"
+     },
+     {
+      "id": "p2",
+      "left": "Suspended solids",
+      "right": "Particles retained by a standard laboratory filter"
+     },
+     {
+      "id": "p3",
+      "left": "Undissolved silt",
+      "right": "Nonpolar, relatively large particles that resist dissolving"
+     },
+     {
+      "id": "p4",
+      "left": "Apparent color",
+      "right": "Color caused by colloidal suspensions or iron"
+     },
+     {
+      "id": "p5",
+      "left": "True color",
+      "right": "Color from dissolved chemicals that pass a filter"
+     },
+     {
+      "id": "p6",
+      "left": "Dissolved oxygen",
+      "right": "Gas breathed by fish and zooplankton in water"
+     }
+    ],
+    "explanation": "Solids are classified by size and filterability, while true color is distinguished from apparent color by filtration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "4ae6ea4bc61b9332bef0021e3059a8b2f32a70c278b46b221ec05e5c4b207476",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-02",
+    "prompt": "Match each water parameter to the physical or chemical property it measures.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Alkalinity",
+      "right": "Capacity of water to accept protons and neutralize acid"
+     },
+     {
+      "id": "p2",
+      "left": "Specific conductance",
+      "right": "Ability of water to conduct an electrical current"
+     },
+     {
+      "id": "p3",
+      "left": "Hardness",
+      "right": "Total concentration of calcium and magnesium ions"
+     },
+     {
+      "id": "p4",
+      "left": "Bicarbonates",
+      "right": "Major alkalinity component from carbon dioxide on soil"
+     },
+     {
+      "id": "p5",
+      "left": "Distilled water",
+      "right": "Pure water exhibiting very low specific conductance"
+     },
+     {
+      "id": "p6",
+      "left": "Saline water",
+      "right": "Water conducting current due to dissolved salt ions"
+     }
+    ],
+    "explanation": "Alkalinity measures acid-neutralizing capacity, specific conductance reflects dissolved ions, and hardness measures calcium and magnesium."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "ae1fce46bfdbfec39ce780b636b51dec39b71f2f97d7ebb5013b0e509652fb02",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-03",
+    "prompt": "Match each coagulation or softening material to its chemical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aluminum sulfate",
+      "right": "Common coagulant most effective between pH 5.0 and 7.5"
+     },
+     {
+      "id": "p2",
+      "left": "Ferric chloride",
+      "right": "Coagulant effective down to a pH of 4.5"
+     },
+     {
+      "id": "p3",
+      "left": "Polymer",
+      "right": "Additive used with alum to form faster-settling floc"
+     },
+     {
+      "id": "p4",
+      "left": "Synthetic organic resin",
+      "right": "BB-sized spheres offering high exchange-site capacity"
+     },
+     {
+      "id": "p5",
+      "left": "Sodium ion",
+      "right": "Nonhardness cation released into water during softening"
+     },
+     {
+      "id": "p6",
+      "left": "Greensand",
+      "right": "Dark greenish glauconite sediment used as exchange media"
+     }
+    ],
+    "explanation": "Metallic coagulants destabilize colloids across specific pH ranges, while ion exchange media swap sodium for hardness ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "b30ebbc94c1f8bbc8a018029090c27d74832fb27ade5bbaf64a5f3c2175cd4af",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-04",
+    "prompt": "Match each organic matter category or impact to its description in water.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Natural organic matter",
+      "right": "Decaying vegetation compounds that rarely pose health risks"
+     },
+     {
+      "id": "p2",
+      "left": "Synthetic organic chemicals",
+      "right": "Manufactured compounds like pesticides, fuels, and dyes"
+     },
+     {
+      "id": "p3",
+      "left": "Halogenated compounds",
+      "right": "Byproducts formed when chlorine disinfects organic-rich water"
+     },
+     {
+      "id": "p4",
+      "left": "Refractory organics",
+      "right": "Woody plant compounds like tannin that resist biodegradation"
+     },
+     {
+      "id": "p5",
+      "left": "Chemical oxygen demand",
+      "right": "Measure of total oxygen depletion including nonbiodegradables"
+     },
+     {
+      "id": "p6",
+      "left": "Biodegradable organics",
+      "right": "Substances broken down by microbes for growth energy"
+     }
+    ],
+    "explanation": "Organics differ in origin and biodegradability, with synthetic and halogenated compounds posing greater treatment and health concerns."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "1cc5819f1125eef93b7e49f4964f2bb5f2df929513fd1854b3218aaa6fbda04c",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-05",
+    "prompt": "Match each heavy metal or nitrogen form to its environmental or health behaviour.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nonessential heavy metals",
+      "right": "Toxic elements such as mercury, lead, and cadmium"
+     },
+     {
+      "id": "p2",
+      "left": "Essential trace metals",
+      "right": "Nutrients like zinc that harm organisms at excess levels"
+     },
+     {
+      "id": "p3",
+      "left": "Colloidal metal phase",
+      "right": "Metals bound as hydroxides, oxides, or adsorbed to clay"
+     },
+     {
+      "id": "p4",
+      "left": "Soluble metal phase",
+      "right": "Dissolved ions or unionized organometallic complexes"
+     },
+     {
+      "id": "p5",
+      "left": "Nitrate",
+      "right": "Nitrogen form indicating potential sewage or fertilizer runoff"
+     },
+     {
+      "id": "p6",
+      "left": "Nitrite",
+      "right": "Reduced nitrogen form that impairs infant blood oxygen"
+     }
+    ],
+    "explanation": "Heavy metals partition between particulate and soluble phases, while nitrate converts to toxic nitrite in infant intestines."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "6e45185c7736c4a4739b96bcfbd9ffcb6f04650c4dfe30a9283132b5cb354b5c",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-06",
+    "prompt": "Match each odor-control method or oxidant to its application.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Chemical scrubbing tower",
+      "right": "Passes odorous gases through chlorine or permanganate"
+     },
+     {
+      "id": "p2",
+      "left": "Sodium hydroxide scrubber",
+      "right": "Used when hydrogen sulfide gas concentrations are high"
+     },
+     {
+      "id": "p3",
+      "left": "Aeration",
+      "right": "Uses oxygen to strip dissolved gases and volatile organics"
+     },
+     {
+      "id": "p4",
+      "left": "Oxidant treatment",
+      "right": "Targets earthy or musty odors from blue-green algae"
+     },
+     {
+      "id": "p5",
+      "left": "Activated carbon",
+      "right": "Physical adsorption medium for removing odorous compounds"
+     },
+     {
+      "id": "p6",
+      "left": "Petroleum-based products",
+      "right": "Prime human-made contributors to water taste and odor"
+     }
+    ],
+    "explanation": "Odor control uses physical methods like aeration and carbon adsorption alongside chemical scrubbing and oxidation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "c24efd6344aaf8102be7be0a897d881d97a7fa6dfd66e5fcfa58ee87bbb07b63",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-08",
+    "prompt": "Match each atomic or chemical-formula concept to its scientific meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Element symbol",
+      "right": "Represents a single atom of a chemical element"
+     },
+     {
+      "id": "p2",
+      "left": "Formula subscript",
+      "right": "Indicates the number of atoms in a molecule"
+     },
+     {
+      "id": "p3",
+      "left": "Atomic nucleus",
+      "right": "Center of the atom containing protons and neutrons"
+     },
+     {
+      "id": "p4",
+      "left": "Orbital electrons",
+      "right": "Negatively charged particles governing chemical reactions"
+     },
+     {
+      "id": "p5",
+      "left": "Atomic weight",
+      "right": "Sum of protons and neutrons in the nucleus"
+     },
+     {
+      "id": "p6",
+      "left": "Halogen family",
+      "right": "Group including chlorine, bromine, and iodine"
+     }
+    ],
+    "explanation": "Chemical reactions involve orbital electrons, whereas atomic weight is determined by protons and neutrons in the nucleus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "46bec452996e91f935b972a4a29c2cabbd4e9a9e3aff70d9e873d3a4ddfd34ce",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-09",
+    "prompt": "Match each salt or acid-base interaction to its waterworks role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Neutralization",
+      "right": "Chemical interaction between acids and bases"
+     },
+     {
+      "id": "p2",
+      "left": "Salt",
+      "right": "Inorganic compound other than water formed by neutralization"
+     },
+     {
+      "id": "p3",
+      "left": "Copper sulfate",
+      "right": "Common waterworks salt applied to kill algae"
+     },
+     {
+      "id": "p4",
+      "left": "Alum addition",
+      "right": "Acidic coagulant that lowers water pH"
+     },
+     {
+      "id": "p5",
+      "left": "Lime addition",
+      "right": "Alkaline chemical that raises water pH"
+     },
+     {
+      "id": "p6",
+      "left": "Mine drainage",
+      "right": "Acidic discharge with pH near 2 that harms fish"
+     }
+    ],
+    "explanation": "Acids and bases neutralize to form salts, while coagulants and alkalis shift pH during treatment."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "34d1dc36dbf51e1581923df5fdc0ecc7bb6da14a10389abd8802dafcf573dade",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m1-10",
+    "prompt": "Match each trace-metal solubility control or phase to its description.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Water pH",
+      "right": "Primary factor controlling trace-metal solubility"
+     },
+     {
+      "id": "p2",
+      "left": "Redox environment",
+      "right": "Oxidation-reduction state affecting metal behaviour"
+     },
+     {
+      "id": "p3",
+      "left": "Adsorbent solids",
+      "right": "Clay, silica, or organic matter binding particulate metals"
+     },
+     {
+      "id": "p4",
+      "left": "Organometallic complexes",
+      "right": "Unionized soluble forms of heavy metals"
+     },
+     {
+      "id": "p5",
+      "left": "Natural mineral deposits",
+      "right": "Geological source of metals in surface waters"
+     },
+     {
+      "id": "p6",
+      "left": "Wastewater discharges",
+      "right": "Domestic or industrial source of heavy metals"
+     }
+    ],
+    "explanation": "Trace-metal solubility is governed by pH, redox conditions, and adsorption onto suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "bb65a3b64242dc92f2dc2ba4e3d544cff5785e54be2ee295f9df2644223ad6b9",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m4-01",
+    "prompt": "A study group reviews solids and color classifications in natural water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "True color results from dissolved chemicals that pass through a laboratory filter."
+     },
+     {
+      "id": "b",
+      "label": "Apparent color is often caused by colloidal suspensions such as iron or tannin."
+     },
+     {
+      "id": "c",
+      "label": "Total solids represent the suspended solids that evaporate when water is boiled."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Total solids are the suspended and dissolved solids that remain behind after water is evaporated."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "eb01eabb017bcf019dd8535834e8583ed9f868f7eccc84eb8312a7b61345e4ef",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m4-02",
+    "prompt": "Operators review ion exchange softening and coagulant pH ranges. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alum is most effective as a coagulant within a pH range of 5.0 to 7.5."
+     },
+     {
+      "id": "b",
+      "label": "Ferric chloride can remain effective as a coagulant down to a pH of 4.5."
+     },
+     {
+      "id": "c",
+      "label": "Ion exchange softening replaces sodium ions in water with calcium and magnesium."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Ion exchange softening removes calcium and magnesium from water by exchanging them for sodium ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "772c189b6addbd851af77aacbee0f5d898faced58120f4834f59a3e80423c452",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  },
+  {
+   "courseKey": "class4-water",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-class4-water-r02-m4-03",
+    "prompt": "A class reviews organic matter, oxygen demand, and nitrate in water. Tap the flawed statement.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Chemical oxygen demand measures total oxygen depletion, including nonbiodegradable organics."
+     },
+     {
+      "id": "b",
+      "label": "Refractory organics such as tannin and lignic acids break down rapidly by microbes."
+     },
+     {
+      "id": "c",
+      "label": "Nitrate converted to nitrite in an infant's gut can impair blood oxygen transport."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Refractory organics such as tannin and lignic acids resist biological degradation by microorganisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+    "notes": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:08:20.100Z",
+    "payloadSha256": "ecf60729b2ef1cad2a8b594bf0be05faddecd068c2901e2eeae1329e6199b39e",
+    "builderResultsSha256": "fd1bbe17dfd59d7aa32e8799884577d9ecf737bfe2a9ac2e0d7be465b3445158"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:07:41.544808+00:00",
+   "attestation": "Strict final AI self-review of 17 authored native game payloads for class4-water against provided source pages and collision candidates; 17 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-class4-water-r02-m0-01": "5a515930dff65fa99f766125f72ad8fc12294f3906a9862b8a0378274ada1a8f",
+    "targeth-ht261118-class4-water-r02-m0-02": "9cb9595c6cc605e39507584d3bc77b8e3ce5fc9320b3dfc6fad52e86dd4e715c",
+    "targeth-ht261118-class4-water-r02-m0-03": "2180bcaa6e59d0f3b96ec4c2835a1531a741a68efa1f4809cbda0261c981626f",
+    "targeth-ht261118-class4-water-r02-m0-04": "f677bec2eb21a7ba91b8ae196b99648811a17ecbecbd6f2a84d6ab8421135b6a",
+    "targeth-ht261118-class4-water-r02-m0-05": "094983c1c10b76c7a5526e865536247430762938f83e6da16cde02202ed13296",
+    "targeth-ht261118-class4-water-r02-m1-01": "4ae6ea4bc61b9332bef0021e3059a8b2f32a70c278b46b221ec05e5c4b207476",
+    "targeth-ht261118-class4-water-r02-m1-02": "ae1fce46bfdbfec39ce780b636b51dec39b71f2f97d7ebb5013b0e509652fb02",
+    "targeth-ht261118-class4-water-r02-m1-03": "b30ebbc94c1f8bbc8a018029090c27d74832fb27ade5bbaf64a5f3c2175cd4af",
+    "targeth-ht261118-class4-water-r02-m1-04": "1cc5819f1125eef93b7e49f4964f2bb5f2df929513fd1854b3218aaa6fbda04c",
+    "targeth-ht261118-class4-water-r02-m1-05": "6e45185c7736c4a4739b96bcfbd9ffcb6f04650c4dfe30a9283132b5cb354b5c",
+    "targeth-ht261118-class4-water-r02-m1-06": "c24efd6344aaf8102be7be0a897d881d97a7fa6dfd66e5fcfa58ee87bbb07b63",
+    "targeth-ht261118-class4-water-r02-m1-08": "46bec452996e91f935b972a4a29c2cabbd4e9a9e3aff70d9e873d3a4ddfd34ce",
+    "targeth-ht261118-class4-water-r02-m1-09": "34d1dc36dbf51e1581923df5fdc0ecc7bb6da14a10389abd8802dafcf573dade",
+    "targeth-ht261118-class4-water-r02-m1-10": "bb65a3b64242dc92f2dc2ba4e3d544cff5785e54be2ee295f9df2644223ad6b9",
+    "targeth-ht261118-class4-water-r02-m4-01": "eb01eabb017bcf019dd8535834e8583ed9f868f7eccc84eb8312a7b61345e4ef",
+    "targeth-ht261118-class4-water-r02-m4-02": "772c189b6addbd851af77aacbee0f5d898faced58120f4834f59a3e80423c452",
+    "targeth-ht261118-class4-water-r02-m4-03": "ecf60729b2ef1cad2a8b594bf0be05faddecd068c2901e2eeae1329e6199b39e"
+   }
+  },
+  "registeredAt": "2026-11-19T03:08:20.100Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 3,
+     "f": 2
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 1,
+    "options": 3
+   },
+   "batchSha256": "7e2e9a2c8855ac686572e9ea0df0916919821375e04753d05f4754b07860d632"
+  }
+ }
+}

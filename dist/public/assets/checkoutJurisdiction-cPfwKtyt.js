@@ -1,0 +1,1 @@
+import{P as n}from"./index-D62pM2Dj.js";const i=["ON","BC","AB","SK","MB","NS"];function e(t){const o=t?.trim().toUpperCase();return i.find(r=>r===o)}function a(t,o){const r=e(new URLSearchParams(t).get("province"));if(r)return r;try{return e(window.localStorage.getItem(n))}catch{return}}export{a as r};

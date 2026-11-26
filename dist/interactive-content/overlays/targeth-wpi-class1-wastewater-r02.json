@@ -1,0 +1,2238 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class1-wastewater-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 61 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m0-01",
+    "prompt": "Purple sulfur bacteria in a pond convert odorous sulfide compounds into elemental sulfur or sulfate when light and nutrients are available.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Purple sulfur bacteria grow in the anaerobic layer where light penetrates and convert odorous sulfides to elemental sulfur or sulfate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "512a237773eb121bf5dd7816a1851985db0ba71d0056d8f18f03f433de7e22d5",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m0-02",
+    "prompt": "Anoxygenic photosynthesis in wastewater ponds produces dissolved oxygen for aerobic bacteria.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Anoxygenic photosynthesis occurs in the absence of oxygen and does not produce dissolved oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "24d13b206c5627ffc936b7c483d7470ce75d3d409e0f74a01c3f9e157f8b667e",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m0-03",
+    "prompt": "Algal cells formed in a stabilization pond can raise the effluent total suspended solids concentration and contribute to turbidity.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "New organic compounds synthesized as algal cells add to pond effluent TSS and turbidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "805cacc4306b585419de6b2034486de992259b42c539c5f56dbba8e3076955f2",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m0-04",
+    "prompt": "In a stabilization pond, anaerobic bacteria at the bottom become more active when temperatures drop below 15 degrees Celsius.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Anaerobic degradation bacteria are active from 15 to 65 degrees Celsius, so lower temperatures reduce their activity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "1bddff0d1454634e1a8e1088ae9a387fc6c2840f1e2a62722578c6a67cabc694",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m0-05",
+    "prompt": "Nonsettleable solids in wastewater are finely divided suspended solids that stay in suspension for a long period and are also called colloidal solids.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Colloidal or nonsettleable solids are finely divided suspended particles that do not settle in still water within two hours."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "b4ad2a97c4d8375fa7d7ac83441f51fcbd06e5e888918120c4e5647aa0913321",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m0-06",
+    "prompt": "Chlorine entering an activated sludge aeration basin selectively targets filamentous organisms without harming beneficial treatment microbes.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Chlorine is a nonselective toxicant that can injure or kill the beneficial organisms needed in activated sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "98d9a6710b3d97ec7aaacf88b2203370c4a65797c66e3d2c72dd3043ae79d944",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-01",
+    "prompt": "Match each stabilization pond process or organism to its specific biochemical or physical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Aerobic bacteria",
+      "right": "Primary consumers degrading complex organic waste"
+     },
+     {
+      "id": "p2",
+      "left": "Oxygenic algae",
+      "right": "Convert carbon dioxide to organics and oxygen"
+     },
+     {
+      "id": "p3",
+      "left": "Purple sulfur bacteria",
+      "right": "Convert odorous sulfide to sulfur or sulfate"
+     },
+     {
+      "id": "p4",
+      "left": "Cladocera and Chironomidae",
+      "right": "Invertebrates that help stabilize organic material"
+     },
+     {
+      "id": "p5",
+      "left": "Algal TSS",
+      "right": "Increases effluent turbidity if not removed"
+     },
+     {
+      "id": "p6",
+      "left": "Pond bottom sludge",
+      "right": "Decomposes anaerobically and reduces volume"
+     }
+    ],
+    "explanation": "Each pond component plays a distinct role in oxygen production, waste breakdown, odor control, or solids accumulation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "772978be13154b49757a32f687ac6ba8c45cb791483cf5479e6cbc901ffa1c49",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-02",
+    "prompt": "Match each wastewater solids fraction to its laboratory or physical behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Total solids",
+      "right": "Includes both suspended and dissolved solids"
+     },
+     {
+      "id": "p2",
+      "left": "Suspended solids",
+      "right": "Retained on a glass-fiber filter"
+     },
+     {
+      "id": "p3",
+      "left": "Nonsettleable solids",
+      "right": "Colloidal particles that stay suspended"
+     },
+     {
+      "id": "p4",
+      "left": "Floatable solids",
+      "right": "Grease, oils, and light plastics at the surface"
+     },
+     {
+      "id": "p5",
+      "left": "Volatile solids",
+      "right": "Organic fraction lost on ignition at 550 C"
+     },
+     {
+      "id": "p6",
+      "left": "MLVSS",
+      "right": "Organic matter in mixed liquor suspended solids"
+     }
+    ],
+    "explanation": "Standard solids fractions are defined by filtration, settling, flotation, and ignition at 550 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "9bd9341bb08b20e4cc3eca319319d00d803b043e9fef3d9ef547226f66557c84",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-03",
+    "prompt": "Match each activated sludge process term to its operational meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Activated sludge",
+      "right": "Floc of organisms and accumulated food"
+     },
+     {
+      "id": "p2",
+      "left": "Diffuser",
+      "right": "Porous plate or tube dividing air into bubbles"
+     },
+     {
+      "id": "p3",
+      "left": "Return activated sludge",
+      "right": "Settled solids sent back to aeration head"
+     },
+     {
+      "id": "p4",
+      "left": "Waste activated sludge",
+      "right": "Excess biological solids removed from system"
+     },
+     {
+      "id": "p5",
+      "left": "Flocculation",
+      "right": "Gathering of fine particles into larger clusters"
+     },
+     {
+      "id": "p6",
+      "left": "Absorption",
+      "right": "Taking one substance into the body of another"
+     }
+    ],
+    "explanation": "These core terms describe how air, microorganisms, and solids are managed in activated sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "c97cf13ab6dced85b605b89baa43f4010142cd0344cffb9a7e1aaad502d958b8",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-04",
+    "prompt": "Match each pond physical factor to its effect on pond performance.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Light intensity",
+      "right": "Drives photosynthesis up to light saturation"
+     },
+     {
+      "id": "p2",
+      "left": "Solar radiation",
+      "right": "Creates a temperature gradient with depth"
+     },
+     {
+      "id": "p3",
+      "left": "Influent wastewater heat",
+      "right": "Often warmer than pond contents without I/I"
+     },
+     {
+      "id": "p4",
+      "left": "Prevailing wind",
+      "right": "Can cause short-circuiting and berm erosion"
+     },
+     {
+      "id": "p5",
+      "left": "Protective berm material",
+      "right": "Stabilizes earthen banks against wave action"
+     },
+     {
+      "id": "p6",
+      "left": "Cold bottom temperature",
+      "right": "Slows anaerobic decomposition of settled solids"
+     }
+    ],
+    "explanation": "Light, temperature, and wind directly govern biological rates, hydraulic detention, and embankment stability."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "1257172bb3f1db8703a3a71f2429c9558add6c7039d94ef8a5176f2609ce49d2",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-05",
+    "prompt": "Match each pond nutrient or chemical factor to its behavior in treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Phosphorus",
+      "right": "Often the growth-limiting nutrient in water"
+     },
+     {
+      "id": "p2",
+      "left": "BOD5",
+      "right": "Index of decomposable organic carbon content"
+     },
+     {
+      "id": "p3",
+      "left": "Bicarbonate alkalinity",
+      "right": "Decreases during active photosynthesis"
+     },
+     {
+      "id": "p4",
+      "left": "Gaseous ammonia",
+      "right": "Can strip to air under favorable conditions"
+     },
+     {
+      "id": "p5",
+      "left": "Hydrogen sulfide",
+      "right": "Odorous gas formed in anaerobic ponds"
+     },
+     {
+      "id": "p6",
+      "left": "Carbonate hardness",
+      "right": "Drops when photosynthesis lowers alkalinity"
+     }
+    ],
+    "explanation": "Nutrients, carbon, alkalinity, and sulfide reactions link biological activity to water chemistry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ebb787299332a1beb25239439a78d8665e8f53c16b040ae46eac115cacd7806b",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-06",
+    "prompt": "Match each activated sludge organism group to its characteristic.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteria",
+      "right": "Primary consumers of organic waste"
+     },
+     {
+      "id": "p2",
+      "left": "Protozoa",
+      "right": "Single-cell animals feeding on bacteria and algae"
+     },
+     {
+      "id": "p3",
+      "left": "Nematodes",
+      "right": "Microscopic worms in biological treatment"
+     },
+     {
+      "id": "p4",
+      "left": "Fungi",
+      "right": "Organisms present alongside bacteria in floc"
+     },
+     {
+      "id": "p5",
+      "left": "Rotifers",
+      "right": "Multicellular animals in activated sludge"
+     },
+     {
+      "id": "p6",
+      "left": "Facultative bacteria",
+      "right": "Can function with or without free oxygen"
+     }
+    ],
+    "explanation": "Activated sludge relies on a food web of bacteria, fungi, protozoa, rotifers, and nematodes."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "bd4fabf6e92b16b03e89f5b072e2aa003961cdd4d85a789fe684c452fe77dd83",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-07",
+    "prompt": "Match each polishing or aerated pond feature to its operational detail.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Polishing pond",
+      "right": "Receives flow from secondary treatment systems"
+     },
+     {
+      "id": "p2",
+      "left": "Excessive polishing detention",
+      "right": "Encourages algae growth and higher TSS"
+     },
+     {
+      "id": "p3",
+      "left": "Aerobic pond",
+      "right": "Maintains dissolved oxygen throughout the basin"
+     },
+     {
+      "id": "p4",
+      "left": "Mechanically aerated pond",
+      "right": "Needs less land but uses more energy"
+     },
+     {
+      "id": "p5",
+      "left": "Downstream recirculation",
+      "right": "Reduces odors in anaerobic ponds"
+     },
+     {
+      "id": "p6",
+      "left": "Cold climate aeration",
+      "right": "Requires longer detention than warm climates"
+     }
+    ],
+    "explanation": "Pond design and operation balance land area, energy use, detention time, and odor control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "b0a881541ebf15b628da2461ceb58d6650ecf5c2f0575c5171772f0d9fad7e4f",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-08",
+    "prompt": "Match each activated sludge mechanism or control factor to its effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Conversion",
+      "right": "Turns food into cell matter, CO2, and water"
+     },
+     {
+      "id": "p2",
+      "left": "Flocculation",
+      "right": "Enables biofloc to settle in final clarifier"
+     },
+     {
+      "id": "p3",
+      "left": "Rising temperature",
+      "right": "Increases bacterial activity in mixed liquor"
+     },
+     {
+      "id": "p4",
+      "left": "Cyanides and heavy metals",
+      "right": "Toxic wastes that can kill treatment microbes"
+     },
+     {
+      "id": "p5",
+      "left": "Prechlorination",
+      "right": "Can nonselectively kill activated sludge organisms"
+     },
+     {
+      "id": "p6",
+      "left": "Rising sludge",
+      "right": "Compacted clarifier sludge floats to surface"
+     }
+    ],
+    "explanation": "Biological conversion, flocculation, temperature, and toxicity control activated sludge stability."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ac439cb5c8d525fb82c092015c5ea995c13f8314dbc2b790b1b84357fcc006c9",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-09",
+    "prompt": "Match each stabilization pond temperature range to the organism group it supports.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "5 to 40 C",
+      "right": "Overall survival range for pond algae"
+     },
+     {
+      "id": "p2",
+      "left": "30 to 35 C",
+      "right": "Most efficient growth for green algae"
+     },
+     {
+      "id": "p3",
+      "left": "10 to 40 C",
+      "right": "Viable range for aerobic pond bacteria"
+     },
+     {
+      "id": "p4",
+      "left": "35 to 40 C",
+      "right": "Optimum range for cyanobacteria"
+     },
+     {
+      "id": "p5",
+      "left": "15 to 65 C",
+      "right": "Active range for anaerobic bottom bacteria"
+     },
+     {
+      "id": "p6",
+      "left": "Below 15 C",
+      "right": "Reduced activity for anaerobic sludge bacteria"
+     }
+    ],
+    "explanation": "Each microbial group in a pond has a distinct viable and optimum temperature range."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "9f7ea723548f43a016790b3d55053828555366de05050f49cc479562c3e73776",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m1-10",
+    "prompt": "Match each wastewater constituent or equipment item to its role in treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Nutrients",
+      "right": "Carbon, hydrogen, oxygen, sulfur, nitrogen, phosphorus"
+     },
+     {
+      "id": "p2",
+      "left": "Dissolved oxygen",
+      "right": "Atmospheric oxygen dissolved in wastewater"
+     },
+     {
+      "id": "p3",
+      "left": "Diffused air aeration",
+      "right": "Compresses air and releases it below water"
+     },
+     {
+      "id": "p4",
+      "left": "Decomposition",
+      "right": "Breaks waste into simpler, stable forms"
+     },
+     {
+      "id": "p5",
+      "left": "Sludge blanket",
+      "right": "Concentrated biofloc settled in final clarifier"
+     },
+     {
+      "id": "p6",
+      "left": "Variable speed drive",
+      "right": "Adjusts separate waste activated sludge pumping"
+     }
+    ],
+    "explanation": "Equipment and chemical constituents work together to sustain aerobic decomposition and solids control."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "400d4f30e4864230348e0e68b9814a7d1729f526b4a03d40ebe83a8022d25f0a",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-01",
+    "prompt": "In a stabilization pond, incoming wastewater solids and biologically produced solids settle to the bottom over many years without pond cleaning. What happens to the pond's effective volume?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Accumulating sludge occupies space on the pond bottom, reducing the available water volume and detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "eb6ee65fb45ef602ee59eabfe93995fe01e8a72c0f3968493ed38689d64cdc3a",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-02",
+    "prompt": "A polishing pond is operated at a shallower depth and longer detention time than designed during warm weather. What happens to algae growth in the pond?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Excessive detention time and shallow depth allow more light penetration and time for algae to multiply."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "9a9e9c4955ee653e1e51c2b80afe46b81c34f1442efec9ce1e520b6f25289542",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-03",
+    "prompt": "In a stabilization pond, photosynthetic activity by algae increases and consumes bicarbonate alkalinity while other inputs remain steady. What happens to the total alkalinity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Algal photosynthesis consumes bicarbonate ions, which shifts carbonate equilibria and lowers total alkalinity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "455eee4762c55fdd41b0f0c199aa0f4bad75fabb5f4d40cb9ec0708c66abfab7",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-04",
+    "prompt": "In an activated sludge aeration basin, the mixed liquor temperature rises within the viable bacterial range while food and oxygen remain ample. What happens to bacterial activity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Within the viable temperature range, higher temperatures speed up bacterial metabolism and activity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "e3a6eda1d3e0c31f3aa38394894ecb3e0880c7ac06ae0444d2d2b0478f87c16d",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-05",
+    "prompt": "In a stabilization pond, strong prevailing winds blow directly along the inlet-to-outlet axis while inflow rate stays constant. What happens to hydraulic detention time?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Wind aligned with the inlet-to-outlet axis pushes water across the surface, causing short-circuiting and shorter detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "cba755edfe1e612a9a9fcd07f161285145ac7ac776030d3088990aae700aa24c",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-06",
+    "prompt": "In an activated sludge plant, individual microorganisms grow and flocculate into larger biofloc particles while clarifier flow stays steady. What happens to their settling ability in the secondary clarifier?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Larger flocculated clusters settle much more readily by gravity than dispersed individual cells."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "5ef4884d4bc3904468d3a83ea07a52bdcf040c46492981c83fcc7fb0ca628404",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-07",
+    "prompt": "A stabilization pond has a fixed volume, and the daily influent flow rate increases while pond volume remains unchanged. What happens to the hydraulic detention time?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Detention time equals pond volume divided by influent flow, so higher flow reduces detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "fe3a94a7ca22ed1c73e84dce7fa5a0e30f3c798e8684a318372eb8ee5ee84a24",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-08",
+    "prompt": "Heavy chlorine is added ahead of an activated sludge aeration basin and enters the mixed liquor. What happens to the population of viable treatment microorganisms?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Chlorine is a nonselective toxicant that damages or kills beneficial activated sludge microorganisms."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "81cc12093d088d386e551081a863adab788fedd0ecdd8e1fd82ac6eb998f346a",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-09",
+    "prompt": "In a stabilization pond, algal cell synthesis increases and algal cells remain suspended in the effluent. What happens to the effluent turbidity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Suspended algal cells add to total suspended solids and scatter light, increasing effluent turbidity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "e05bf597382c554416e5505848c332292d22511c64cccec70038301521cccfe1",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-10",
+    "prompt": "In a facultative pond, light of the required wavelength penetrates to the anaerobic layer where purple sulfur bacteria have carbon dioxide and nitrogen. What happens to the odorous hydrogen sulfide concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Purple sulfur bacteria biochemically convert odorous hydrogen sulfide into elemental sulfur or sulfate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "464dbdc1cbd776502eadf8f3c3bcfef027b356a0aa31589dd2c615c287562e1f",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-11",
+    "prompt": "In a stabilization pond, light intensity increases from low levels toward the light saturation point while nutrients and temperature remain steady. What happens to photosynthetic activity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Photosynthetic microbial activity rises with increasing light intensity until the system reaches light saturation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "33ccec6990bcf93ef1ac8d6390e92a3996175540e43afd1a826f323e194175cc",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-12",
+    "prompt": "In an anaerobic pond, water from a downstream aerobic cell is recirculated back into the pond while organic loading stays constant. What happens to hydrogen sulfide odors?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Recirculating downstream water is a standard practice to dilute and reduce hydrogen sulfide odors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ae4a664971976876f86957202497cc7a0473b0cd6d802b7e1b681e8ce12971d1",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-13",
+    "prompt": "A dry sample of wastewater solids is ignited at 550 degrees Celsius in a laboratory furnace. What happens to the mass of volatile solids in the sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Volatile organic solids burn off and are lost on ignition at 550 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "6bc1390a0c37ebf5d8a7fbe792164b9bb68222c38d066623ae4d43f8ec920ae7",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-14",
+    "prompt": "Mechanical aeration is added to a stabilization pond of fixed surface area to supplement natural oxygen production. What happens to the acceptable organic loading level?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Supplemental mechanical aeration supplies more oxygen, allowing higher organic loading on the same land area."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "82a21dacd8408197217a3fb54f5675236d1491ece84395bb342617b010742018",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m3-15",
+    "prompt": "In a stabilization pond, the temperature of settled bottom sludge drops well below 15 degrees Celsius while organic solids remain present. What happens to anaerobic bacterial activity?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Anaerobic bacteria are active between 15 and 65 degrees Celsius, so colder temperatures reduce their activity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "95613daf4c263a7fe3287d28e12a9ebd94c4dfae8ead1ebf0b95afd151f242ee",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-01",
+    "prompt": "Review these statements about stabilization pond processes. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Incoming solids and biologically produced solids settle to the pond bottom over time."
+     },
+     {
+      "id": "o2",
+      "label": "Aerobic bacteria use oxygen and nutrients to break down organic matter."
+     },
+     {
+      "id": "o3",
+      "label": "Sludge accumulation on the bottom increases the pond detention time over decades."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Sludge buildup reduces pond volume and detention time, eventually requiring cleaning or replacement."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "43014d0dd83415da44545795de888b9304c78692267818e521cc4d4fb716354d",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-02",
+    "prompt": "Compare these statements about polishing ponds. Which statement is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Polishing ponds receive flow from oxidation ponds or other secondary systems."
+     },
+     {
+      "id": "o2",
+      "label": "Polishing ponds remove additional BOD5, solids, fecal coliform, and nutrients."
+     },
+     {
+      "id": "o3",
+      "label": "Shallow depth and long detention time prevent algae growth in polishing ponds."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Too shallow a depth or excessive detention time encourages algae growth, raising effluent suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "9c6719c8a0d44179c327063fb2be78bd4f41fab2d02ce76defd072a264e91777",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-03",
+    "prompt": "Which statement about purple sulfur bacteria in wastewater ponds is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Purple sulfur bacteria occupy the anaerobic layer below algae and aerobic bacteria."
+     },
+     {
+      "id": "o2",
+      "label": "They convert odorous sulfide compounds into elemental sulfur or sulfate."
+     },
+     {
+      "id": "o3",
+      "label": "They require high dissolved oxygen levels to perform anoxygenic photosynthesis."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Purple sulfur bacteria live in the anaerobic layer and perform anoxygenic photosynthesis without oxygen."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "1abeb142fdbb8259b6713bd321f595bb310cbdc9db2542d8fb504719d0631517",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-04",
+    "prompt": "Three notes describe pond invertebrates and algae. Which note is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Algal cells formed in a pond can raise effluent total suspended solids and turbidity."
+     },
+     {
+      "id": "o2",
+      "label": "Planktonic cladocerans and benthic chironomids help stabilize organic material."
+     },
+     {
+      "id": "o3",
+      "label": "Algal suspended solids contain the exact same constituents as raw influent solids."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Algal TSS consists of newly synthesized organic algal cells, not the same constituents as influent TSS."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ef5d7bcbbcba915fea361791cab1924f7bdc980b5ee5e0c13170d6f02155e0fb",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-05",
+    "prompt": "Which statement about pond temperature and light is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Microbial photosynthetic activity rises with light intensity until light saturation."
+     },
+     {
+      "id": "o2",
+      "label": "Solar radiation can create a temperature gradient with depth in a pond."
+     },
+     {
+      "id": "o3",
+      "label": "Green algae achieve their most efficient growth below 5 degrees Celsius."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Green algae grow most efficiently at 30 to 35 degrees Celsius and survive from 5 to 40 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ac0949fe1917cadb87c147828c3285aef1baec252ee1db523721fb1a0d2adba9",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-06",
+    "prompt": "Review these statements about wind effects on stabilization ponds. Which one is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Positioning the inlet and outlet perpendicular to prevailing winds helps reduce short-circuiting."
+     },
+     {
+      "id": "o2",
+      "label": "Strong wind-driven waves can erode or overtop earthen pond embankments."
+     },
+     {
+      "id": "o3",
+      "label": "Strong winds along the pond axis lengthen the hydraulic detention time."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Wind effects can cause short-circuiting and reduce hydraulic detention time."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "14e87c41bcca03b555825d837d6cbd9215dc5e79c64b3793d6ccb751b611cf2d",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-07",
+    "prompt": "Three statements describe activated sludge terminology. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Activated sludge is a floc of microorganisms and accumulated food."
+     },
+     {
+      "id": "o2",
+      "label": "Diffusers divide compressed air into tiny bubbles below the water surface."
+     },
+     {
+      "id": "o3",
+      "label": "Dissolved oxygen in an activated sludge tank comes from anaerobic decomposition."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Dissolved oxygen is atmospheric oxygen dissolved in water, supplied by aeration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "a9e56a0d361db1c86eaf57561d05cc44e9a8826d436c59d84aedd60a526637dd",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-08",
+    "prompt": "Which statement about wastewater solids definitions is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Suspended solids are the solids retained on a glass-fiber filter."
+     },
+     {
+      "id": "o2",
+      "label": "Volatile solids represent the organic fraction lost on ignition at 550 degrees Celsius."
+     },
+     {
+      "id": "o3",
+      "label": "Colloidal solids settle rapidly to the bottom of still water within two hours."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Colloidal or nonsettleable solids are finely divided particles that will not settle in two hours."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "299cafa1fd34b211007d26bb89288c1153fff8ff20b2fe4c413f36d0e89096c9",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-09",
+    "prompt": "Examine these statements about activated sludge organisms. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Protozoa are single-cell animals that feed on bacteria and algae."
+     },
+     {
+      "id": "o2",
+      "label": "Activated sludge contains organic solids, bacteria, fungi, protozoa, rotifers, and nematodes."
+     },
+     {
+      "id": "o3",
+      "label": "Nematodes are large fish that graze on floating scum in clarifiers."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Nematodes are microscopic worms that may appear in biological waste treatment systems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "bbc7b94248d4bdcf2113e0957cb9a5d530ae4054d6f79771190b3646bd469d93",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-10",
+    "prompt": "Which statement about waste activated sludge and return sludge is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Return activated sludge sends settled solids back to the head of the aeration tank."
+     },
+     {
+      "id": "o2",
+      "label": "A separate waste sludge system can use pumps, a timer, and flow measurement."
+     },
+     {
+      "id": "o3",
+      "label": "Waste activated sludge is returned to the aeration tank to increase mixed liquor."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Waste activated sludge is removed from the process, whereas return activated sludge is sent back to aeration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ff8c0121783db76f665809c36c209c15578b89638b765c0cb6f7d08dded620c2",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-11",
+    "prompt": "Which statement about toxicity in activated sludge is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Cyanides and heavy metals in high concentrations can kill treatment microorganisms."
+     },
+     {
+      "id": "o2",
+      "label": "Chlorine entering the aeration basin can damage beneficial treatment organisms."
+     },
+     {
+      "id": "o3",
+      "label": "Prechlorination in the aeration tank selectively removes filaments while sparing floc formers."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Chlorine is nonselective and can kill the beneficial organisms that should be retained."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "962c2c52847a1b4def029bca6f811278811694d1864fbe5b872535f637f42285",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-12",
+    "prompt": "Review these statements about pond chemistry and nutrients. Which one is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Phosphorus is often the growth-limiting nutrient in aquatic environments."
+     },
+     {
+      "id": "o2",
+      "label": "BOD5 serves as an index of decomposable organic carbon content."
+     },
+     {
+      "id": "o3",
+      "label": "Active photosynthesis increases bicarbonate alkalinity and carbonate hardness."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Photosynthesis consumes bicarbonate, which decreases total alkalinity and carbonate hardness."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "8ff39e2f89feee48744f65a138c3002a49d6248dc18e77c9d4404f652c186f57",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-13",
+    "prompt": "Which statement about mechanically aerated ponds is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Mechanically aerated ponds generally require less land area than natural ponds."
+     },
+     {
+      "id": "o2",
+      "label": "Cold climates require longer detention times than warm climates for aerated ponds."
+     },
+     {
+      "id": "o3",
+      "label": "Adding mechanical aeration lowers the energy requirement of a pond system."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Mechanically aerated ponds require less land area but have greater energy requirements."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "bb84d90b2cebc7025804f11c104282871f043a98454b06adcfea3cd260b120ef",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-14",
+    "prompt": "Three statements describe activated sludge flocculation and conversion. Which one is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Conversion turns food matter into cell matter, carbon dioxide, water, and stable waste."
+     },
+     {
+      "id": "o2",
+      "label": "Flocculation gathers fine particles into larger clusters that settle in the final clarifier."
+     },
+     {
+      "id": "o3",
+      "label": "Flocculation prevents organisms from settling so they stay suspended in the effluent."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Flocculation helps microorganisms clump together so they settle readily in the secondary clarifier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "fda4e60b42cb4de8a86474903b7f268b807745d24e5187426544a3bd09170cc3",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m4-15",
+    "prompt": "Which statement about aerobic ponds is wrong?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Aerobic ponds have dissolved oxygen present throughout the pond."
+     },
+     {
+      "id": "o2",
+      "label": "Aerobic ponds are also known as oxidation ponds or high-rate aerobic ponds."
+     },
+     {
+      "id": "o3",
+      "label": "Aerobic ponds rely on anaerobic decomposition as their main treatment process."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "All biological activity in an aerobic pond is aerobic because oxygen is present throughout."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "ce81bbf841dd487590ce93c7bb5b53b1b0fef9fc968b386cce480200d613beb2",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-01",
+    "prompt": "In a stabilization pond system with a polishing pond, does wastewater pass through the oxidation pond before or after entering the polishing pond?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A polishing pond receives flow from an oxidation pond or other secondary treatment system."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "8e3c34ab4c2a5009b15060e948dce5c7b67da32911a3c7c705d95bdb9dac0744",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-02",
+    "prompt": "In a stabilization pond where algae cause high effluent suspended solids, does removing algal TSS occur before or after discharging the effluent?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Algal TSS contributes to turbidity and must be removed before the effluent is discharged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "b414062c734e769ab003c7425d1fb8847c83c01a52ff4745ac359a82569c3691",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-03",
+    "prompt": "In a diffused-air activated sludge system, does compressing the air happen before or after discharging it through diffusers below the water surface?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A diffused-air plant takes air, compresses it, and then discharges it below the water surface through diffusers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "afb1505c12cc83e9a00ec27dc8faca4a247a78c9ef6ceb2d0c0df3d990bc2e17",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-04",
+    "prompt": "In a secondary clarifier experiencing rising sludge, does sludge settling and compaction on the bottom occur before or after the sludge rises to the surface?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Rising sludge occurs when sludge settles to the bottom, compacts, and then rises to the surface."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "0420657ed0d0a8d1b2f0d83d890bced8a3c44ff6a60d55d02bf9634543c788c9",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-05",
+    "prompt": "In an activated sludge plant, does mixing microorganisms with incoming organic matter in the aeration tank occur before or after separating biological solids in the clarifier?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microorganisms are mixed and aerated with wastewater first, and then separated in the secondary clarifier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "4b270124900adfa9069e795f6467369592629e2d722e4e7d671090cebeb60a67",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-06",
+    "prompt": "In the activated sludge process, does flocculation of individual organisms in the aeration tank occur before or after their settling in the final clarifier?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Flocculation begins in the aeration tank so the larger biofloc can settle in the final clarifier."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "0ba1acd8c69f4442a02a6691b022e332390d751414ea833f93256e504dbceae4",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-07",
+    "prompt": "In a facultative pond, does sunlight-driven oxygenic photosynthesis by algae produce oxygen before or after aerobic bacteria use that oxygen to degrade organic waste?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Algae produce dissolved oxygen by photosynthesis, which aerobic bacteria then use to degrade organic matter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "a66819f1845cbfacf144b321ced65d604b659edfe80f62e1f4baec0cf70731d9",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-08",
+    "prompt": "In a stabilization pond, does settling of incoming and biological solids to the bottom occur before or after long-term loss of detention time requires pond cleaning?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solids settle and accumulate on the pond bottom over years, eventually reducing detention time and requiring cleaning."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "191ccd34f06bf238047b9a6d5430c4bb2e7108898d38dc3564db233d36d97107",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-09",
+    "prompt": "In a pond nitrogen cycle, does oxidation of organic nitrogen to ammonia occur before or after oxidation of ammonia to nitrite and nitrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Organic nitrogen is oxidized to ammonia first, and ammonia is then oxidized to nitrite and nitrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "75fd637aa29089b77ccb7806dd5ba4cd9f127a3f88e49a9dc4c9ff36393917ed",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-10",
+    "prompt": "In an activated sludge plant, does returning settled sludge from the clarifier to the aeration tank occur before or after that sludge settles in the clarifier?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Biological solids must settle in the secondary clarifier before being pumped back as return activated sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "b9f1b6fde8d8657a8b6a2a13c489b8e31abbce4965224e935a774228b565e9ea",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-11",
+    "prompt": "In a stabilization pond where algal TSS is harvested for agricultural use, does concentrating the algal solids occur before or after reusing them?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Algal TSS is concentrated and removed from the effluent before it can be used as an agricultural nutrient."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "75c485faa870dbd2ef86d8db5dcaac1657ada6a837e74553b2b8d67342eeaf46",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-12",
+    "prompt": "In an activated sludge aeration tank, does food conversion into new cell matter occur before or after excess cells are wasted as waste activated sludge?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Microorganisms consume food to grow new cells in the aeration tank before excess solids are wasted."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "c0090175a1f78c8477a8fa83c63418df9ca0f4dd3e78fd4570a229181a8309ee",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-13",
+    "prompt": "In a stabilization pond, does anaerobic production of hydrogen sulfide occur before or after purple sulfur bacteria convert that sulfide to elemental sulfur?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Anaerobic reactions produce hydrogen sulfide, which purple sulfur bacteria then convert to elemental sulfur or sulfate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "2f03e87b36bebe39e0af4095b785aeca2777c197cc5cec2155cf89e33d5ccc2c",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-14",
+    "prompt": "In a laboratory volatile solids test, does drying the solids sample occur after or before igniting the dry solids at 550 degrees Celsius?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Volatile solids are measured as the solids lost on ignition of the dry solids at 550 degrees Celsius."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "03eab8c81838711ba6b3de8db51f09711ea74d811ca535be9ed20d5cc5764321",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  },
+  {
+   "courseKey": "wpi-class1-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class1-wastewater-r02-m5-15",
+    "prompt": "In a polishing pond operated for seasonal discharge, does waiting for algae levels to drop after the first fall frost occur before or after drawing down the pond?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A pond is drawn down in fall after the first frost when algae concentration drops and stream oxygen is high."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+    "notes": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:05:27.296Z",
+    "payloadSha256": "8e6af53f954aab18a71d4032e785197c92dc177c3dd49a752f4bd51e3a4e5506",
+    "builderResultsSha256": "70649bd652c895da7618194f7e197fd5aaeb6d23ee38a1c1b289a24f0ff58288"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:04:32.846385+00:00",
+   "attestation": "Strict Hydrogen self-review of 61 authored items in targeth-wpi-class1-wastewater-r02 against supplied source pages, course level, and collision candidates; 61 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class1-wastewater-r02-m0-01": "512a237773eb121bf5dd7816a1851985db0ba71d0056d8f18f03f433de7e22d5",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m0-02": "24d13b206c5627ffc936b7c483d7470ce75d3d409e0f74a01c3f9e157f8b667e",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m0-03": "805cacc4306b585419de6b2034486de992259b42c539c5f56dbba8e3076955f2",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m0-04": "1bddff0d1454634e1a8e1088ae9a387fc6c2840f1e2a62722578c6a67cabc694",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m0-05": "b4ad2a97c4d8375fa7d7ac83441f51fcbd06e5e888918120c4e5647aa0913321",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m0-06": "98d9a6710b3d97ec7aaacf88b2203370c4a65797c66e3d2c72dd3043ae79d944",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-01": "772978be13154b49757a32f687ac6ba8c45cb791483cf5479e6cbc901ffa1c49",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-02": "9bd9341bb08b20e4cc3eca319319d00d803b043e9fef3d9ef547226f66557c84",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-03": "c97cf13ab6dced85b605b89baa43f4010142cd0344cffb9a7e1aaad502d958b8",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-04": "1257172bb3f1db8703a3a71f2429c9558add6c7039d94ef8a5176f2609ce49d2",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-05": "ebb787299332a1beb25239439a78d8665e8f53c16b040ae46eac115cacd7806b",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-06": "bd4fabf6e92b16b03e89f5b072e2aa003961cdd4d85a789fe684c452fe77dd83",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-07": "b0a881541ebf15b628da2461ceb58d6650ecf5c2f0575c5171772f0d9fad7e4f",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-08": "ac439cb5c8d525fb82c092015c5ea995c13f8314dbc2b790b1b84357fcc006c9",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-09": "9f7ea723548f43a016790b3d55053828555366de05050f49cc479562c3e73776",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m1-10": "400d4f30e4864230348e0e68b9814a7d1729f526b4a03d40ebe83a8022d25f0a",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-01": "eb6ee65fb45ef602ee59eabfe93995fe01e8a72c0f3968493ed38689d64cdc3a",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-02": "9a9e9c4955ee653e1e51c2b80afe46b81c34f1442efec9ce1e520b6f25289542",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-03": "455eee4762c55fdd41b0f0c199aa0f4bad75fabb5f4d40cb9ec0708c66abfab7",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-04": "e3a6eda1d3e0c31f3aa38394894ecb3e0880c7ac06ae0444d2d2b0478f87c16d",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-05": "cba755edfe1e612a9a9fcd07f161285145ac7ac776030d3088990aae700aa24c",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-06": "5ef4884d4bc3904468d3a83ea07a52bdcf040c46492981c83fcc7fb0ca628404",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-07": "fe3a94a7ca22ed1c73e84dce7fa5a0e30f3c798e8684a318372eb8ee5ee84a24",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-08": "81cc12093d088d386e551081a863adab788fedd0ecdd8e1fd82ac6eb998f346a",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-09": "e05bf597382c554416e5505848c332292d22511c64cccec70038301521cccfe1",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-10": "464dbdc1cbd776502eadf8f3c3bcfef027b356a0aa31589dd2c615c287562e1f",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-11": "33ccec6990bcf93ef1ac8d6390e92a3996175540e43afd1a826f323e194175cc",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-12": "ae4a664971976876f86957202497cc7a0473b0cd6d802b7e1b681e8ce12971d1",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-13": "6bc1390a0c37ebf5d8a7fbe792164b9bb68222c38d066623ae4d43f8ec920ae7",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-14": "82a21dacd8408197217a3fb54f5675236d1491ece84395bb342617b010742018",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m3-15": "95613daf4c263a7fe3287d28e12a9ebd94c4dfae8ead1ebf0b95afd151f242ee",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-01": "43014d0dd83415da44545795de888b9304c78692267818e521cc4d4fb716354d",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-02": "9c6719c8a0d44179c327063fb2be78bd4f41fab2d02ce76defd072a264e91777",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-03": "1abeb142fdbb8259b6713bd321f595bb310cbdc9db2542d8fb504719d0631517",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-04": "ef5d7bcbbcba915fea361791cab1924f7bdc980b5ee5e0c13170d6f02155e0fb",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-05": "ac0949fe1917cadb87c147828c3285aef1baec252ee1db523721fb1a0d2adba9",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-06": "14e87c41bcca03b555825d837d6cbd9215dc5e79c64b3793d6ccb751b611cf2d",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-07": "a9e56a0d361db1c86eaf57561d05cc44e9a8826d436c59d84aedd60a526637dd",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-08": "299cafa1fd34b211007d26bb89288c1153fff8ff20b2fe4c413f36d0e89096c9",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-09": "bbc7b94248d4bdcf2113e0957cb9a5d530ae4054d6f79771190b3646bd469d93",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-10": "ff8c0121783db76f665809c36c209c15578b89638b765c0cb6f7d08dded620c2",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-11": "962c2c52847a1b4def029bca6f811278811694d1864fbe5b872535f637f42285",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-12": "8ff39e2f89feee48744f65a138c3002a49d6248dc18e77c9d4404f652c186f57",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-13": "bb84d90b2cebc7025804f11c104282871f043a98454b06adcfea3cd260b120ef",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-14": "fda4e60b42cb4de8a86474903b7f268b807745d24e5187426544a3bd09170cc3",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m4-15": "ce81bbf841dd487590ce93c7bb5b53b1b0fef9fc968b386cce480200d613beb2",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-01": "8e3c34ab4c2a5009b15060e948dce5c7b67da32911a3c7c705d95bdb9dac0744",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-02": "b414062c734e769ab003c7425d1fb8847c83c01a52ff4745ac359a82569c3691",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-03": "afb1505c12cc83e9a00ec27dc8faca4a247a78c9ef6ceb2d0c0df3d990bc2e17",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-04": "0420657ed0d0a8d1b2f0d83d890bced8a3c44ff6a60d55d02bf9634543c788c9",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-05": "4b270124900adfa9069e795f6467369592629e2d722e4e7d671090cebeb60a67",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-06": "0ba1acd8c69f4442a02a6691b022e332390d751414ea833f93256e504dbceae4",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-07": "a66819f1845cbfacf144b321ced65d604b659edfe80f62e1f4baec0cf70731d9",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-08": "191ccd34f06bf238047b9a6d5430c4bb2e7108898d38dc3564db233d36d97107",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-09": "75fd637aa29089b77ccb7806dd5ba4cd9f127a3f88e49a9dc4c9ff36393917ed",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-10": "b9f1b6fde8d8657a8b6a2a13c489b8e31abbce4965224e935a774228b565e9ea",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-11": "75c485faa870dbd2ef86d8db5dcaac1657ada6a837e74553b2b8d67342eeaf46",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-12": "c0090175a1f78c8477a8fa83c63418df9ca0f4dd3e78fd4570a229181a8309ee",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-13": "2f03e87b36bebe39e0af4095b785aeca2777c197cc5cec2155cf89e33d5ccc2c",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-14": "03eab8c81838711ba6b3de8db51f09711ea74d811ca535be9ed20d5cc5764321",
+    "targeth-ht261118-wpi-class1-wastewater-r02-m5-15": "8e6af53f954aab18a71d4032e785197c92dc177c3dd49a752f4bd51e3a4e5506"
+   }
+  },
+  "registeredAt": "2026-11-19T03:05:27.296Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 3,
+     "f": 3
+    },
+    "dirs": {
+     "increase": 6,
+     "decrease": 9,
+     "unchanged": 0
+    },
+    "longest": 5,
+    "options": 30
+   },
+   "batchSha256": "e119af59da14de82b001e2bf0bd570208ff13965258c552bba44291591e58f75"
+  }
+ }
+}

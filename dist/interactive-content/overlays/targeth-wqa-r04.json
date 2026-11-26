@@ -1,0 +1,3084 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wqa-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 85 items.",
+ "additions": [
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-01",
+    "prompt": "Total alkalinity measures the ability of water to resist a pH change when acid is added.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Alkalinity reflects the acid-neutralizing or pH buffering capacity of water, primarily from bicarbonates, carbonates, and hydroxides."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "caecb6247f8c3918ef55c17e4df4285755f7fbbfc518e7c5a48e802abebd7f4a",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-02",
+    "prompt": "Alkaline compounds such as bicarbonates and hydroxides lower pH by releasing hydrogen ions into solution.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Alkaline compounds remove free hydrogen ions by combining with them to form new compounds, which raises pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "81076635df66d76c464cb40f88e3c03cf5c93aa08875ea3cf29cfdeb1340e9df",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-03",
+    "prompt": "A hot-air sterilizer is suitable for sterilizing liquid culture media and dilution water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Hot-air sterilization is used for dry glassware and wrapped equipment, whereas liquids require an autoclave."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "40afd28d1fbb0a234487a38f88219725b2485b1cf084470daa401e50e8bc17b5",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-04",
+    "prompt": "Natural bacteria levels in streams are strongly correlated with rainfall events.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Rainfall runoff washes bacteria into streams, causing natural bacterial counts to vary significantly with precipitation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "502589fbabbb30e324a4debddc65578b4b183aca78f483685595e1074c40a168",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-05",
+    "prompt": "In the fecal coliform MPN presumptive test, gas production in a fermentation tube indicates a positive result.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Tubes showing gas after incubation are recorded as presumptive positives and transferred for confirmation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "fe1ff0e50f8056c4f749239b34af8bd13b57b75d6f3ed517f6ea0473b6372bdd",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-06",
+    "prompt": "On a membrane filter incubated for fecal coliforms, nonfecal coliform colonies appear bright blue.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Fecal coliform colonies appear blue, whereas nonfecal coliform colonies appear gray or cream colored."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "9ff6d535b55b1580b42b2e7488fec838f207da633339cc15a6a4e67cde101f7c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-07",
+    "prompt": "The desired colony count range on a membrane filter for a valid fecal coliform determination is 20 to 60 colonies.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Filters with 20 to 60 fecal coliform colonies provide the most statistically valid count per 100 mL."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "54a8785de64e07c2a52071c0618244b1856891228d55f71160034b2e61dee766",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-08",
+    "prompt": "True color in water is caused by suspended particles that are easily trapped by standard filtration.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "True color is dissolved; suspended material causes apparent color, which filtration can trap."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "b526bdfa9d24cbcc5832c37454ce46c7dfc07ed61aa9361aa9d926071519470e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-09",
+    "prompt": "Particulate oxidized iron is a common cause of apparent color in water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Suspended particles such as oxidized iron create apparent color rather than dissolved true color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "6b8614debfce3ad1b878017c2de055e7478b4746e77086cf044a52833d90f66e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-10",
+    "prompt": "Threshold odor number (TON) testing relies on an electronic sensor rather than human smell.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "The human nose remains the primary detection device for odor analysis and TON determination."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "7673dee29ce4f9af1781546bcf059f0ae8c4a484c27487727a538356413a1baa",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-11",
+    "prompt": "Free chlorine residual is the combined concentration of hypochlorous acid and hypochlorite ion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "When chlorine dissolves in pure water, the resulting HOCl and OCl- together constitute free chlorine residual."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "98b1f9ad63d0b58403ff6dae5bc4e8881bbf64594da5af7ad5a5ef7770e532b9",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-12",
+    "prompt": "In the DPD-FAS titration for total residual chlorine, ferrous ammonium sulfate is added to deepen the red color.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ferrous ammonium sulfate is the titrant used to just remove the red color formed by DPD indicator."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "a289f6d6e25eac2a887931f5ca11b8fcee34f2a0b72a2a0bd2b666c4532e1b9b",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-13",
+    "prompt": "Amperometric direct titration for total residual chlorine uses phenylarsine oxide as the titrant.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Phenylarsine oxide is added to the treated sample in amperometric titration to determine the endpoint."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "2c0b4119abd8a27ce9136cefe7502fa12964f8cc4b935dee036478dccfb0cb4a",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-14",
+    "prompt": "In the colorimetric fluoride test, fluoride ions react with zirconium to intensify an organic red dye.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Fluoride forms zirconium fluoride, which bleaches the organic red dye in proportion to fluoride concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "385a44ace3870186d4e8e56cba63f6557808faf09d2ef95b54b01548b2698505",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m0-15",
+    "prompt": "Hydrofluosilicic acid is the most widely used fluoridation chemical in potable water treatment.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "While sodium fluoride and sodium silicofluoride are also used, hydrofluosilicic acid is the most common."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "eeda20a3d7d7360e5f20bad7806fa9be5cb9fe818ba9836ef13a73d46e4c497d",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-01",
+    "prompt": "Distinguish each alkalinity titration device or concept by its analytical role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Total alkalinity",
+      "right": "Acid-neutralizing capacity resisting pH drop"
+     },
+     {
+      "id": "pair-2",
+      "left": "Bicarbonates and carbonates",
+      "right": "Compounds combining with hydrogen ions"
+     },
+     {
+      "id": "pair-3",
+      "left": "Buret",
+      "right": "Graduated glass tube with tapered tip and valve"
+     },
+     {
+      "id": "pair-4",
+      "left": "Manual titrator",
+      "right": "Forcefully expels reagent via a plunger"
+     },
+     {
+      "id": "pair-5",
+      "left": "Digital titrator",
+      "right": "Displays reagent volume on a mechanical counter"
+     },
+     {
+      "id": "pair-6",
+      "left": "Sulfuric acid",
+      "right": "Titrant used to reach the alkalinity endpoint"
+     }
+    ],
+    "explanation": "Alkalinity measures buffering capacity using burets, plunger titrators, or digital titrators with acid."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "fa85d4f0c651be7f1bdda959da93a650575d5b53d9599f869e3c9c938c2f4c56",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-02",
+    "prompt": "Distinguish each microbiological sterilization or preparation item by its laboratory requirement.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Autoclave",
+      "right": "Sterilizes liquids, media, and bottles at 121 C"
+     },
+     {
+      "id": "pair-2",
+      "left": "Hot-air sterilizer",
+      "right": "Sterilizes dry glassware at 170 C"
+     },
+     {
+      "id": "pair-3",
+      "left": "Kraft paper wrapping",
+      "right": "Protects glassware prior to hot-air sterilization"
+     },
+     {
+      "id": "pair-4",
+      "left": "Metal containers",
+      "right": "Require at least 2 hours in hot-air sterilizer"
+     },
+     {
+      "id": "pair-5",
+      "left": "Stock buffer solution",
+      "right": "Added at 1.25 mL per litre of dilution water"
+     },
+     {
+      "id": "pair-6",
+      "left": "Magnesium chloride",
+      "right": "Added at 5.0 mL per litre of dilution water"
+     }
+    ],
+    "explanation": "Proper sterilization and buffered dilution water preparation prevent contamination and osmotic shock."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "291b182aef3ce4ac2edfab9cfa68b08420fde2abd8953e346e16b0921182ac2e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-03",
+    "prompt": "Distinguish each fecal coliform MPN and MF testing parameter by its analytical specification.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Presumptive incubation",
+      "right": "24 hours at 35 C for gas detection"
+     },
+     {
+      "id": "pair-2",
+      "left": "MF water bath",
+      "right": "24 hours at 44.5 C for fecal coliforms"
+     },
+     {
+      "id": "pair-3",
+      "left": "Blue colonies",
+      "right": "Fecal coliform growth on membrane filter"
+     },
+     {
+      "id": "pair-4",
+      "left": "Gray or cream colonies",
+      "right": "Nonfecal coliform growth on membrane filter"
+     },
+     {
+      "id": "pair-5",
+      "left": "Dissecting microscope",
+      "right": "10x to 15x wide-field scan of filter"
+     },
+     {
+      "id": "pair-6",
+      "left": "Valid filter range",
+      "right": "20 to 60 colonies per membrane filter"
+     }
+    ],
+    "explanation": "MPN and membrane filtration rely on distinct temperatures, colony colors, and count ranges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "a25822962ce27f04f137155347f77e51284ee5559cb7c037f31e4858182bfa57",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-04",
+    "prompt": "Distinguish each water color or odor concept by its physical cause or treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "True color",
+      "right": "Dissolved organic or inorganic colorants"
+     },
+     {
+      "id": "pair-2",
+      "left": "Apparent color",
+      "right": "Suspended turbidity such as oxidized iron"
+     },
+     {
+      "id": "pair-3",
+      "left": "Activated carbon",
+      "right": "Adsorbs dissolved organics causing color"
+     },
+     {
+      "id": "pair-4",
+      "left": "Filtration",
+      "right": "Traps suspended particles causing apparent color"
+     },
+     {
+      "id": "pair-5",
+      "left": "60 C sample heating",
+      "right": "Preparation step for potable threshold odor test"
+     },
+     {
+      "id": "pair-6",
+      "left": "Threshold odor number",
+      "right": "Ratio of total volume to lowest odorous volume"
+     }
+    ],
+    "explanation": "Dissolved true color and suspended apparent color require different removal and testing approaches."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "8447771accca219d968c6397c7dee6f66ef1757aadbc979864c82e704432f11b",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-05",
+    "prompt": "Distinguish each chlorine residual testing chemical or instrument by its analytical function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "HOCl and OCl-",
+      "right": "Species comprising free chlorine residual"
+     },
+     {
+      "id": "pair-2",
+      "left": "515 nm wavelength",
+      "right": "Spectrophotometer setting for DPD color"
+     },
+     {
+      "id": "pair-3",
+      "left": "DPD indicator",
+      "right": "Produces red color proportional to chlorine"
+     },
+     {
+      "id": "pair-4",
+      "left": "Ferrous ammonium sulfate",
+      "right": "Titrant removing red color in DPD-FAS"
+     },
+     {
+      "id": "pair-5",
+      "left": "Phenylarsine oxide",
+      "right": "Titrant used in amperometric direct titration"
+     },
+     {
+      "id": "pair-6",
+      "left": "pH 4.0 acetate buffer",
+      "right": "Buffer used in amperometric chlorine titration"
+     }
+    ],
+    "explanation": "Colorimetric DPD, DPD-FAS titration, and amperometric titration use specific reagents and wavelengths."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "6c35b9976232904b8b4f4ae7e3601f12b018a8a8e2ff99d0e66df3a66dcf25ac",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-06",
+    "prompt": "Distinguish each fluoride chemical or analytical component by its role in water treatment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Hydrofluosilicic acid",
+      "right": "Most widely used liquid fluoridation chemical"
+     },
+     {
+      "id": "pair-2",
+      "left": "Sodium fluoride",
+      "right": "Solid fluoridation chemical (NaF)"
+     },
+     {
+      "id": "pair-3",
+      "left": "Sodium silicofluoride",
+      "right": "Solid fluoridation chemical (Na2SiF6)"
+     },
+     {
+      "id": "pair-4",
+      "left": "Zirconium ion",
+      "right": "Reacts with fluoride to form zirconium fluoride"
+     },
+     {
+      "id": "pair-5",
+      "left": "Organic red dye",
+      "right": "Bleached in proportion to fluoride concentration"
+     },
+     {
+      "id": "pair-6",
+      "left": "Colorimetric standards",
+      "right": "Reference solutions compared against bleached sample"
+     }
+    ],
+    "explanation": "Fluoride compounds and colorimetric zirconium-dye reactions are standard in drinking water analysis."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "37a9a9a4eb56b098f6c145f1cf0354176c3045cdd3ff33d459f3892faceeff8e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-07",
+    "prompt": "Distinguish each bacteriological sample handling rule by its preservation or collection purpose.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "100 mL minimum",
+      "right": "Smallest volume collected in a three-quarters full bottle"
+     },
+     {
+      "id": "pair-2",
+      "left": "One-hour limit",
+      "right": "Window to begin testing before icing is required"
+     },
+     {
+      "id": "pair-3",
+      "left": "4 C refrigeration",
+      "right": "Storage temperature when testing is delayed"
+     },
+     {
+      "id": "pair-4",
+      "left": "Six-hour holding time",
+      "right": "Maximum recommended delay for wastewater fecal coliforms"
+     },
+     {
+      "id": "pair-5",
+      "left": "Aseptic capping",
+      "right": "Prevents contamination when closing sample bottle"
+     },
+     {
+      "id": "pair-6",
+      "left": "Phosphate-free detergent",
+      "right": "Used to wash glass or polyethylene sample bottles"
+     }
+    ],
+    "explanation": "Strict volume, temperature, and holding-time controls preserve microbiological sample integrity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "d335d046df9975b1606cdce9a70fd310cd43f5c6ebd6664ce15cf234898341fb",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-08",
+    "prompt": "Distinguish each MPN dilution-series rule by how it selects valid positive tubes.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Three consecutive dilutions",
+      "right": "Basis for reading the MPN reference chart"
+     },
+     {
+      "id": "pair-2",
+      "left": "Highest all-positive dilution",
+      "right": "Starting dilution when lower dilutions are all positive"
+     },
+     {
+      "id": "pair-3",
+      "left": "Single positive dilution",
+      "right": "Placed in the middle of the selected series"
+     },
+     {
+      "id": "pair-4",
+      "left": "Higher-dilution positive",
+      "right": "Incorporated into the highest dilution of the series"
+     },
+     {
+      "id": "pair-5",
+      "left": "A-1 medium",
+      "right": "Single-medium 24-hour alternative for fecal coliforms"
+     },
+     {
+      "id": "pair-6",
+      "left": "Confirming test",
+      "right": "Second 24-hour incubation verifying presumptive positives"
+     }
+    ],
+    "explanation": "MPN calculations follow standardized rules to select three consecutive dilutions for statistical lookup."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "45ea8e6fae8fd543b11ea11644cd4383da120dafd31b413ad16d3c2f86e4973e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-09",
+    "prompt": "Distinguish each membrane filtration limitation or step by its analytical impact.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Uniformly sized pores",
+      "right": "Retain bacteria on the filter surface"
+     },
+     {
+      "id": "pair-2",
+      "left": "Grid-up placement",
+      "right": "Orientation of filter on the absorbent pad"
+     },
+     {
+      "id": "pair-3",
+      "left": "Weighted plastic bag",
+      "right": "Seals culture dishes during water-bath incubation"
+     },
+     {
+      "id": "pair-4",
+      "left": "Toxic metals or phenols",
+      "right": "Wastewater constituents unsuitable for membrane filtration"
+     },
+     {
+      "id": "pair-5",
+      "left": "Chlorinated effluent",
+      "right": "Requires MPN verification of membrane filtration results"
+     },
+     {
+      "id": "pair-6",
+      "left": "Pooled low-count filters",
+      "right": "Totaled across dilutions when none reach 20 colonies"
+     }
+    ],
+    "explanation": "Membrane filtration has specific procedural steps and limitations in chlorinated or toxic wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "6d9c077cf47286848f516c71c786e8e280a0421453132930432b722a00572a42",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m1-10",
+    "prompt": "Distinguish each natural or treatment factor affecting stream alkalinity and color.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "pair-1",
+      "left": "Rocks and soils",
+      "right": "Natural geological sources of stream alkalinity"
+     },
+     {
+      "id": "pair-2",
+      "left": "Acidic rainfall",
+      "right": "Input neutralized by stream buffering capacity"
+     },
+     {
+      "id": "pair-3",
+      "left": "Biodegrading algae",
+      "right": "Biological source of significant water color"
+     },
+     {
+      "id": "pair-4",
+      "left": "Excess permanganate",
+      "right": "Treatment chemical causing inorganic water color"
+     },
+     {
+      "id": "pair-5",
+      "left": "Forel-Ule scale",
+      "right": "Visual standard for comparing water color"
+     },
+     {
+      "id": "pair-6",
+      "left": "Decomposing vegetation",
+      "right": "Natural source of taste and odor in raw water"
+     }
+    ],
+    "explanation": "Geological, biological, and treatment factors all influence stream alkalinity, color, and odor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "e5ff02ae75b433db158eb95f78acf6e7d6399c2670f3f5593c6f4646b0c35239",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-01",
+    "prompt": "Which compound is NOT one of the primary alkaline constituents contributing to total alkalinity in natural water?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Bicarbonates"
+     },
+     {
+      "id": "b",
+      "label": "Carbonates"
+     },
+     {
+      "id": "c",
+      "label": "Hydroxides"
+     },
+     {
+      "id": "d",
+      "label": "Chlorides"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Bicarbonates, carbonates, and hydroxides neutralize hydrogen ions, whereas chlorides do not provide alkalinity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "185abd1398fc8df892b324a2792400b4d1e752f971d9c625f3119b8e7709f043",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-02",
+    "prompt": "Which item is NOT one of the three titration delivery devices described for measuring total alkalinity?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Graduated glass buret"
+     },
+     {
+      "id": "b",
+      "label": "Manual plunger titrator"
+     },
+     {
+      "id": "c",
+      "label": "Digital counter titrator"
+     },
+     {
+      "id": "d",
+      "label": "Nephelometric turbidimeter"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Burets, plunger titrators, and digital titrators deliver acid titrant; a turbidimeter measures light scattering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "402ea651beb2617788614c69f9be4834742b1ff8ea5fb7b8d375261f2dc9d3e8",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-03",
+    "prompt": "Which item CANNOT be sterilized using a dry hot-air sterilizer?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Kraft-wrapped glass pipets"
+     },
+     {
+      "id": "b",
+      "label": "Glassware in metal containers"
+     },
+     {
+      "id": "c",
+      "label": "Empty glass sample bottles"
+     },
+     {
+      "id": "d",
+      "label": "Liquid culture media"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Hot-air sterilization cannot be used for liquids, which must be sterilized in an autoclave."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "52fa12edf8451e35cda2c8b2cb2e6dc3f8cdc9c5db3613f68e88ac6a47cf3932",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-04",
+    "prompt": "Which wastewater type is NOT suitable for fecal coliform testing by the membrane filtration technique?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Unchlorinated primary effluent"
+     },
+     {
+      "id": "b",
+      "label": "Chlorinated secondary effluent"
+     },
+     {
+      "id": "c",
+      "label": "Chlorinated tertiary effluent"
+     },
+     {
+      "id": "d",
+      "label": "Diluted river water"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Membrane filtration is not recommended for unchlorinated primary treated wastewater or samples with toxic metals or phenols."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "791aae79746a0c88626cd9eb6af67bc381743ff5be6b048459326b6486fe3e68",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-05",
+    "prompt": "Which ingredient is NOT added when preparing standard sterile dilution water for microbiological serial dilutions?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Distilled or deionized water"
+     },
+     {
+      "id": "b",
+      "label": "Stock buffer solution"
+     },
+     {
+      "id": "c",
+      "label": "Magnesium chloride solution"
+     },
+     {
+      "id": "d",
+      "label": "Concentrated sulfuric acid"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Sterile dilution water uses distilled water, stock buffer, and magnesium chloride; sulfuric acid would kill bacteria."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "0148db74a26d42ab46115bc5af2774813bf2c4d08e360514266ab247c0078db0",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-06",
+    "prompt": "Which source is NOT an inorganic cause of color in water?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Iron salts"
+     },
+     {
+      "id": "b",
+      "label": "Copper salts"
+     },
+     {
+      "id": "c",
+      "label": "Excess potassium permanganate"
+     },
+     {
+      "id": "d",
+      "label": "Biodegrading algae"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Biodegrading algae are a biological/organic source of color, whereas iron, copper, and permanganate are inorganic."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "fb2fcd64f70648b32675960a86c3e1208beb51d1838335913dcfc42e0ff5dde9",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-07",
+    "prompt": "Which chemical is NOT one of the three fluoridation compounds commonly added to potable water?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sodium fluoride (NaF)"
+     },
+     {
+      "id": "b",
+      "label": "Sodium silicofluoride (Na2SiF6)"
+     },
+     {
+      "id": "c",
+      "label": "Hydrofluosilicic acid (H2SiF6)"
+     },
+     {
+      "id": "d",
+      "label": "Calcium hypochlorite (Ca(OCl)2)"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Calcium hypochlorite is a chlorine disinfectant, whereas the other three are fluoridation chemicals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "03f20bd619a6ddabb04ae4d263a0e851ececbb5d423dbf3cb28d197c7be42761",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-08",
+    "prompt": "Which reagent is NOT used in the titrimetric-amperometric direct titration for total residual chlorine?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Phenylarsine oxide solution"
+     },
+     {
+      "id": "b",
+      "label": "Potassium iodide solution"
+     },
+     {
+      "id": "c",
+      "label": "Acetate buffer (pH 4.0)"
+     },
+     {
+      "id": "d",
+      "label": "DPD prepared indicator"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "DPD indicator is used in colorimetric and DPD-FAS methods, not in amperometric direct titration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "3421b5386316b9c7952e02cbb93c080fef535ab6936f14b584d8f9e5329ec71e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-09",
+    "prompt": "Which species is NOT formed when chlorine gas dissolves into pure water?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hypochlorous acid (HOCl)"
+     },
+     {
+      "id": "b",
+      "label": "Hypochlorite ion (OCl-)"
+     },
+     {
+      "id": "c",
+      "label": "Hydrogen chloride (HCl)"
+     },
+     {
+      "id": "d",
+      "label": "Zirconium fluoride (ZrF4)"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Chlorine gas forms HOCl, OCl-, and HCl in water; zirconium fluoride is part of fluoride testing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "25273d84b283ef53ad8e00e3424d71387877030a8984af179ac550c5092b9ccf",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-10",
+    "prompt": "Which colony appearance is NOT expected on a membrane filter after fecal coliform incubation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Blue fecal coliform colonies"
+     },
+     {
+      "id": "b",
+      "label": "Gray nonfecal colonies"
+     },
+     {
+      "id": "c",
+      "label": "Cream-colored nonfecal colonies"
+     },
+     {
+      "id": "d",
+      "label": "Fluorescent green colonies"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Fecal coliforms appear blue and nonfecal coliforms appear gray or cream colored."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "d6e1fc4da868efac1e4c29684a51c8a652d47edf9bf3307d7c349de597f64dd5",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-11",
+    "prompt": "Which factor is NOT listed as an influence on stream alkalinity?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Rocks and soils"
+     },
+     {
+      "id": "b",
+      "label": "Natural salts"
+     },
+     {
+      "id": "c",
+      "label": "Industrial wastewater discharges"
+     },
+     {
+      "id": "d",
+      "label": "Barometric air pressure"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Rocks, soils, salts, plant activities, and industrial discharges influence alkalinity; barometric pressure does not."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "56dc25ab59135495c176c4bc1646c93c36909eb11b0271d83a2150fef78a7cc3",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-12",
+    "prompt": "Which impact is NOT caused by objectionable odor in water supplies?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Reduced drinking water acceptability"
+     },
+     {
+      "id": "b",
+      "label": "Degraded recreation water aesthetics"
+     },
+     {
+      "id": "c",
+      "label": "Off-flavor in aquatic foodstuffs"
+     },
+     {
+      "id": "d",
+      "label": "Increased total dissolved solids"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Odor affects drinking water acceptability, recreation aesthetics, and aquatic food taste, not dissolved solids mass."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "078f1872f70ae13a5d494e3ec8bd413c4682056825ad9ad21d9d5e2d3366b6fa",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-13",
+    "prompt": "Which item is NOT required when counting fecal coliform colonies on a membrane filter?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "10x to 15x dissecting microscope"
+     },
+     {
+      "id": "b",
+      "label": "Laboratory data sheet"
+     },
+     {
+      "id": "c",
+      "label": "Incubated filter on absorbent pad"
+     },
+     {
+      "id": "d",
+      "label": "Amperometric titrator"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Colony counting uses a dissecting microscope, incubated filter, and data sheet; an amperometric titrator measures chlorine."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "0cb2d6f87cd66682604435780cdea7803e2c8093fe6e236981b54b6a7b7c40ad",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-14",
+    "prompt": "Which material is NOT recommended for sample bottles washed with phosphate-free detergent?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "Glass bottle"
+     },
+     {
+      "id": "b",
+      "label": "Polyethylene bottle"
+     },
+     {
+      "id": "c",
+      "label": "Factory-prepared Whirl-Pak bag"
+     },
+     {
+      "id": "d",
+      "label": "Unwashed metal can"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Glass, polyethylene, or Whirl-Pak bags are recommended; unwashed metal cans contaminate samples."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "684d69b2f12f2582bb0b3eba5bbe94cfde62ede9d32cf9ad35ba13dce77de995",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m2-15",
+    "prompt": "Which method is NOT an approved procedure for determining total residual chlorine?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "a",
+      "label": "DPD colorimetric method"
+     },
+     {
+      "id": "b",
+      "label": "DPD-FAS titration"
+     },
+     {
+      "id": "c",
+      "label": "Titrimetric-amperometric direct titration"
+     },
+     {
+      "id": "d",
+      "label": "Multiple-tube fermentation"
+     }
+    ],
+    "correctOptionId": "d",
+    "explanation": "Multiple-tube fermentation is a microbiological method for fecal coliforms, not a chlorine residual test."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "ddd53762c170a34a7f088da301417d2c12abed12b54736fef8f081a9e397c88c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-01",
+    "prompt": "A stream with high bicarbonate alkalinity receives a small input of acidic rainfall while temperature and flow remain constant. Compared to a stream with near-zero alkalinity, what happens to the magnitude of the immediate pH drop?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Alkaline compounds neutralize added hydrogen ions, reducing the immediate pH drop."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "96b0471875fe3eec1c59a1cc301ff701015c1b630d247f1adfac0df4885e7a8c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-02",
+    "prompt": "In a stream receiving a constant background input, heavy rainfall washes surface runoff into the channel while temperature stays constant. What happens to the natural bacteria concentration in the stream?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Stream bacteria levels are strongly correlated with rainfall runoff, which carries bacteria into the water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "86eee01b19fd623ce8daaad34e086c26ff981f00fdde354cd79139b9f04642d9",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-03",
+    "prompt": "In the colorimetric fluoride test, the fluoride ion concentration in a water sample increases while zirconium and organic red dye additions remain constant. What happens to the intensity of the red dye color?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "More fluoride forms more zirconium fluoride, which bleaches the organic red dye in direct proportion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "b5b8b8e5b86e859943d37f9186b215a056b47483adbd71c7cbdb587be439d8e1",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-04",
+    "prompt": "In a DPD-FAS titration for total residual chlorine, the chlorine concentration in the sample is higher while sample volume and DPD reagent remain constant. What happens to the volume of ferrous ammonium sulfate titrant required to remove the red color?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Total residual chlorine in mg/L equals the mL of FAS used, so higher chlorine requires more titrant."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "158536ce9e83bd4c03c6e7379e2b2d94e6309c5402d5898c12c748c58aeb5f3c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-05",
+    "prompt": "A potable water sample with a fixed total volume requires a smaller lowest sample volume to still detect an odor at 60 C. What happens to the calculated threshold odor number (TON)?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "TON equals total volume divided by lowest odorous volume, so a smaller denominator increases TON."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "1fc74708a59d3025965ac675f3ddf8bad081a3e2c470d0fe6cc48bb8ec8748bf",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-06",
+    "prompt": "Water containing particulate oxidized iron passes through an effective media filter while dissolved constituents remain unchanged. What happens to the apparent color of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Filtration traps suspended colored particles such as oxidized iron, reducing apparent color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "70712dc1e25a9a07f9755c64292d646db1617b648710e49f46e21ba2a19e70e3",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-07",
+    "prompt": "Water containing dissolved organic color compounds passes through activated carbon treatment while flow rate stays constant. What happens to the dissolved organic color concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Activated carbon adsorbs dissolved organic compounds that cause true color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "57740c000bd0eaabf78dc25bc8b4418844e5f26038969010d736be46c71c9291",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-08",
+    "prompt": "In a total alkalinity titration, the concentration of carbonate and bicarbonate ions in a water sample increases while sample volume remains fixed. What happens to the volume of sulfuric acid needed to reach the endpoint?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "More alkaline ions require more acid titrant to neutralize them to the endpoint pH."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "8b03c46ed9efee39f398a99ec19323d7cb9874a0dfcf3041fb267b42c551236e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-09",
+    "prompt": "In a membrane filtration test, a higher volume of uniform effluent is filtered while bacterial density in the water remains constant. What happens to the number of fecal coliform colonies growing on the filter?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Filtering a larger volume of uniform sample deposits more bacteria onto the membrane filter."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "c33a99dc213c07930371b16073407297fe3da73fc3803142c5389aefbcd255c7",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-10",
+    "prompt": "In a DPD colorimetric chlorine test, the total residual chlorine concentration in the cuvette increases while reagent amounts stay constant. What happens to the intensity of the red color measured at 515 nm?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Higher chlorine residual produces a deeper red color with DPD indicator."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "a75c765412bfb16064e76e8d1080ac090978524a2d26bd196133a2a8c21cbfee",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-11",
+    "prompt": "A freshly collected wastewater fecal coliform sample is placed on ice at 4 C after 30 minutes instead of sitting uncooled at 25 C. What happens to bacterial die-off or overgrowth before analysis?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Cooling to 4 C or less slows biological activity, reducing changes in bacterial counts during holding."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "6e0d6831539564ee1c306d960df1255e91d5fb980d192886866719c8eddd6f3f",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-12",
+    "prompt": "An analyst switches from an eyedropper to a graduated glass buret for a microscale alkalinity titration while using the same acid. What happens to the uniformity of titrant drop delivery?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Burets have a tapered tip and valve that provide much greater precision and uniformity than eyedroppers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "3d94e0e69b107b6034fea3d8ae808fd9a85d6f58ffb61ab05d42a3d3a212c271",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-13",
+    "prompt": "Chlorine gas dissolves into pure water, raising the concentration of hypochlorous acid and hypochlorite ion while other ions stay constant. What happens to the free chlorine residual?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Free chlorine residual is defined as the total concentration of HOCl and OCl-."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "04f6d82ed9e084a11075b6b89f9a23f7c40a6c3eeac1056a51b7546401f72635",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-14",
+    "prompt": "Glassware is placed inside metal containers rather than wrapped in Kraft paper inside a 170 C hot-air sterilizer. What happens to the minimum sterilization time required?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Standard glassware requires 60 minutes at 170 C, whereas glassware in metal containers requires at least 2 hours."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "d2c07072a02d6a50ffc8562092a84b25945094cdc03300dc6c082988a95af149",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m3-15",
+    "prompt": "In a stream experiencing a recent algal bloom, the algae begin to biodegrade while flow remains low. What happens to the dissolved color of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "a",
+      "label": "It increases"
+     },
+     {
+      "id": "b",
+      "label": "It decreases"
+     },
+     {
+      "id": "c",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "a",
+    "explanation": "Biodegrading algae from a recent bloom release color compounds that significantly increase water color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "7fa323dea9dda27e04338087f466766d83bf4d72642bfc4f23d7884d47c8074b",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-01",
+    "prompt": "A trainee summarizes total alkalinity and titration equipment. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Alkalinity measures the capacity of water to neutralize added acid."
+     },
+     {
+      "id": "b",
+      "label": "Digital titrators use a mechanical counter to track reagent volume."
+     },
+     {
+      "id": "c",
+      "label": "Bicarbonates lower water pH by releasing free hydrogen ions."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Bicarbonates remove hydrogen ions and raise pH, rather than releasing them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "78687a8dc4a6bfbc397e31f5def07f0e8818db86d1b7b9d7549282a0892778ac",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-02",
+    "prompt": "A lab technician reviews sterilization procedures for microbiological glassware and media. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "An autoclave sterilizes culture media and dilution water at 121 C."
+     },
+     {
+      "id": "b",
+      "label": "A hot-air sterilizer is ideal for sterilizing liquid media in flasks."
+     },
+     {
+      "id": "c",
+      "label": "Glassware in metal containers needs at least two hours in hot air."
+     }
+    ],
+    "correctOptionId": "b",
+    "explanation": "Hot-air sterilization cannot be used for liquids; liquids require an autoclave."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "93d485b57fba675dd0963439bb2bc1f847ee105c4441d154b738e303c41b7a58",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-03",
+    "prompt": "A sampler reviews fecal coliform sample collection and holding rules. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Sample bottles should be filled three-quarters full with at least 100 mL."
+     },
+     {
+      "id": "b",
+      "label": "Samples delayed over one hour should be iced or refrigerated at 4 C."
+     },
+     {
+      "id": "c",
+      "label": "Wastewater fecal coliform samples can be held uncooled for 24 hours."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Wastewater fecal coliform samples have a maximum recommended holding time of 6 hours and require cooling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "cbe796c17f085955dc81b8b37d1ece9a6a329d0b153fc765e2f747e317de06c0",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-04",
+    "prompt": "An analyst explains membrane filtration colony counting for fecal coliforms. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Fecal coliform colonies appear blue while nonfecal colonies appear gray."
+     },
+     {
+      "id": "b",
+      "label": "Filters are scanned under a 10x to 15x wide-field dissecting microscope."
+     },
+     {
+      "id": "c",
+      "label": "The most valid colony count range is 200 to 600 colonies per filter."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The desired valid range is 20 to 60 colonies per filter, not 200 to 600."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "a8b7261ce68581552c8a32b8dcf01ddc507ca1665110edc4b4c633f0da43316a",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-05",
+    "prompt": "A water quality analyst summarizes true color versus apparent color. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "True color is caused by dissolved substances in the water."
+     },
+     {
+      "id": "b",
+      "label": "Apparent color is caused by suspended material such as oxidized iron."
+     },
+     {
+      "id": "c",
+      "label": "Standard filtration traps dissolved true color more easily than particles."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Filtration traps suspended particles causing apparent color, whereas dissolved true color passes through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "ac345bba25fbf95453f61b0e4311a6396a3b00007e7ab02bb6b21789bd546096",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-06",
+    "prompt": "A technician describes odor analysis and threshold odor number (TON) testing. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Decomposing vegetable matter and microbes can cause raw-water odors."
+     },
+     {
+      "id": "b",
+      "label": "Potable water samples are generally heated to 60 C for odor testing."
+     },
+     {
+      "id": "c",
+      "label": "Electronic sensors have replaced the human nose for TON testing."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The human nose remains the primary odor-detection device; no scientific sensor replaces it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "94261baeea89ca23f707d7592c9d8bd514c694a8e10c20b4a6cdd670b8930dba",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-07",
+    "prompt": "A trainee reviews chlorine residual chemistry and DPD testing. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Free chlorine residual equals the sum of HOCl and OCl-."
+     },
+     {
+      "id": "b",
+      "label": "DPD spectrophotometric analysis measures absorbance at 515 nm."
+     },
+     {
+      "id": "c",
+      "label": "In DPD-FAS titration, FAS is added to deepen the red color."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Ferrous ammonium sulfate (FAS) is titrated until the red color first disappears."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "32c514a2bcb67ff5ca9701099b6233695b6b8ca13a02925bf085db2d44d99eee",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-08",
+    "prompt": "A chemist compares titrimetric methods for total residual chlorine. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Amperometric titration uses phenylarsine oxide as the titrant."
+     },
+     {
+      "id": "b",
+      "label": "Amperometric titration uses an acetate buffer at pH 4.0."
+     },
+     {
+      "id": "c",
+      "label": "DPD-FAS titration uses phenylarsine oxide to remove the red color."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "DPD-FAS titration uses ferrous ammonium sulfate, whereas amperometric titration uses phenylarsine oxide."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "a60b9da8f0bde135c9ccd7ffe0c69d85e8360c4e9be7d7c4a63d35e4465b2078",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-09",
+    "prompt": "An analyst summarizes potable water fluoridation chemicals and testing. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Hydrofluosilicic acid is the most widely used fluoridation chemical."
+     },
+     {
+      "id": "b",
+      "label": "Fluoride reacts with zirconium ion to form zirconium fluoride."
+     },
+     {
+      "id": "c",
+      "label": "Zirconium fluoride darkens an organic red dye in proportion to fluoride."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Zirconium fluoride bleaches the organic red dye in direct proportion to fluoride concentration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "4f08c9700f5f569879a3261c527e7a3be9eee7637e2019d4ca2c7fd031386dc7",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-10",
+    "prompt": "A microbiologist reviews the MPN presumptive and A-1 test procedures. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "The presumptive test inoculates five fermentation tubes per dilution."
+     },
+     {
+      "id": "b",
+      "label": "Presumptive tubes are incubated at 35 C and checked for gas."
+     },
+     {
+      "id": "c",
+      "label": "A-1 medium requires 48 hours at 35 C without a temperature shift."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "The A-1 procedure incubates for 3 hours at 35 C followed by 20 hours at 44.5 C."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "1c220c5e2e6a4e9477b5c5205fd57e554ba02f0b4d61575044ddf2ec161c9682",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-11",
+    "prompt": "A technician explains when membrane filtration is appropriate for wastewater. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Membrane filtration uses uniformly sized pores to retain bacteria."
+     },
+     {
+      "id": "b",
+      "label": "Chlorinated secondary effluents tested by MF need MPN verification."
+     },
+     {
+      "id": "c",
+      "label": "Unchlorinated primary effluent is ideal for membrane filtration."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Membrane filtration is not suitable for unchlorinated primary treated wastewater."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "bba8a85bdf21a78ee0fcc006ce7e4de2c2e9d1849e09477ab8142a3b7194b7a0",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-12",
+    "prompt": "A student summarizes factors affecting stream bacteria and alkalinity. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Natural bacteria levels in streams correlate strongly with rainfall."
+     },
+     {
+      "id": "b",
+      "label": "Rocks, soils, and salts influence stream alkalinity."
+     },
+     {
+      "id": "c",
+      "label": "Alkalinity measures the exact hydrogen ion concentration in water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "pH measures hydrogen ion concentration, whereas alkalinity measures acid-neutralizing capacity."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "ec2af2e0db70334888465e97daca9f08665669f1b7f412420b62719c2107f366",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-13",
+    "prompt": "A lab assistant prepares sterile dilution water for serial dilutions. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Stock buffer and magnesium chloride are added to distilled water."
+     },
+     {
+      "id": "b",
+      "label": "Dilution water is dispensed to yield 9 or 99 mL after sterilization."
+     },
+     {
+      "id": "c",
+      "label": "Tap water is used instead of distilled or deionized water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Sterile dilution water must be prepared using distilled or deionized water, not tap water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "acb5b5693029b17301edd1f715778410e7ba55676d416f1ac1593f8b95a1cc8c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-14",
+    "prompt": "A trainee reviews bottle washing and sample collection for water quality. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Glass or polyethylene bottles are washed in phosphate-free detergent."
+     },
+     {
+      "id": "b",
+      "label": "Factory-prepared Whirl-Pak bags may be used for sample collection."
+     },
+     {
+      "id": "c",
+      "label": "Glassware is rinsed once with tap water without using distilled water."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Washed glassware must be rinsed thoroughly with both tap water and distilled water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "1ec0a61cac3624656e3d8238c237d1960659bd039da0621afa070900f94b278b",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m4-15",
+    "prompt": "A water analyst reviews color standards and treatment options. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "a",
+      "label": "Standardized color scales allow results from different areas to be compared."
+     },
+     {
+      "id": "b",
+      "label": "Activated carbon can adsorb some dissolved organics causing color."
+     },
+     {
+      "id": "c",
+      "label": "Excess potassium permanganate is an organic source of true color."
+     }
+    ],
+    "correctOptionId": "c",
+    "explanation": "Potassium permanganate is an inorganic salt, not an organic source of color."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "05e94bed56c7df5e40575689366defee8e1d5c487287372f041758e5a637b59c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-01",
+    "prompt": "In the hot-air sterilization procedure for microbiological glassware, is wrapping equipment in Kraft paper performed before or after placing it in the 170 C sterilizer?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Equipment is wrapped in Kraft paper or placed in containers prior to hot-air sterilization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "441f891760695e3fe8cd54c08e553e75664650e0222fc89ca45787e5ff333526",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-02",
+    "prompt": "In the fecal coliform MPN procedure, is the 24-hour presumptive test at 35 C performed before or after the confirming test?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Presumptive positives showing gas are transferred to the confirming test."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "101b0f34d31ba589b2bafbd00a56e3bb1335d2c1450d424a239641d78dc707d5",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-03",
+    "prompt": "In the membrane filtration fecal coliform procedure, is placing the filter grid-up on the absorbent pad performed before or after incubating the sealed dish at 44.5 C?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The filter is placed on the absorbent pad and sealed in a bag prior to incubation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "1073efd94c7a0bde8dbd465176c04be01d429491d8682a56f7ef79e5fc8e3c1c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-04",
+    "prompt": "In the membrane filtration fecal coliform procedure, is scanning the filter with a 10x to 15x dissecting microscope performed before or after the 24-hour incubation at 44.5 C?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Colony counting under the microscope occurs upon completion of the 24-hour incubation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "3cb6f750fae097ff5de65ce340325302d38a016c5ec0289ada5c7d56e8e2864c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-05",
+    "prompt": "In the A-1 medium fecal coliform procedure, is the 3-hour incubation at 35 C performed before or after the 20-hour incubation at 44.5 C?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A-1 medium tubes are incubated first at 35 C for 3 hours, then at 44.5 C for 20 hours."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "9d5cf6f95adb43d5126c40e2f0858a82702c54afdead14cac0476f1ae76da7cd",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-06",
+    "prompt": "In the DPD colorimetric total residual chlorine test, is setting 0%T with a laboratory-grade water blank performed before or after reading %T of the sample cuvette?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The instrument wavelength and 0%T blank are verified before reading the sample cuvette."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "d02840cd6f8f130d008b1b6b88093fc30a459cba418811003192721e3dca05af",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-07",
+    "prompt": "In the DPD-FAS titration for total residual chlorine, is letting the flask stand for 2 minutes performed before or after titrating with ferrous ammonium sulfate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The treated sample stands for 2 minutes for color development prior to FAS titration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "8f5d4111bcfe6d1231705e80450da46b840c0093eb99f74bc74af82bbcbe1e5f",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-08",
+    "prompt": "In the potable water odor analysis procedure, is waving off the air above the sample with your hand performed before or after smelling the sample?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Air above the sample is waved off by hand prior to smelling and recording the odor."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "ce1f272534f98b5adc1bdc0bcc3bb685778aa66e8e1ef684b43516f4b9cc46bf",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-09",
+    "prompt": "In the potable water threshold odor number (TON) test, is heating the sample to 60 C performed before or after observing and recording the odor?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The sample is generally heated to 60 C prior to observing and assigning the TON."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "8768d37e9eee572741174720ae533ebd4f7c7a9106af705e12a4acbf62f1c358",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-10",
+    "prompt": "In the sterile dilution water preparation procedure, is adding stock buffer and magnesium chloride to distilled water performed before or after autoclaving the dilution bottles?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Reagents are mixed into distilled water and dispensed into bottles prior to sterilization."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "264920e2fd4461d640c1ee1d7455113b9b395ac41e749d4b5a0ec8d64c60d56e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-11",
+    "prompt": "In the total alkalinity titration procedure, is subtracting the remaining buret volume from the original volume performed before or after reaching the endpoint?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "The final buret reading is recorded and subtracted only after the endpoint is reached."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "46aa00b80216d42fe2d8686c41bf7068842708d925ecfffa9d3e56634ba66cb3",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-12",
+    "prompt": "In the MPN/100 mL calculation procedure, is selecting a valid series of three consecutive dilutions performed before or after reading the MPN value from the reference table?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A valid three-dilution series must be selected first to look up the MPN value."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "1f7c2926a13dba095c62e9acbc2de90e307a3caa49a5b430a06e700cd215ce1a",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-13",
+    "prompt": "In the colorimetric fluoride test, does fluoride ion react with zirconium ion to form zirconium fluoride before or after the organic red dye is bleached?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Fluoride reacts with zirconium to form zirconium fluoride, which causes the dye bleaching."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "62379bee3b46c321ba8123b7270ab9f214f8b325e9adc41722150b3f7ee14f6d",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-14",
+    "prompt": "In microbiological glassware washing, are the two tap water rinses performed before or after the five distilled water rinses?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Glassware is rinsed twice with tap water, followed by five distilled water rinses."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "d64aa3851aa081b550ca9f27607825b84117699ae5a51d5027576c12019ab98e",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  },
+  {
+   "courseKey": "wqa",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wqa-r04-m5-15",
+    "prompt": "In the DPD colorimetric total residual chlorine procedure, is adding potassium iodide crystals to the clean cuvette performed before or after swirling the stoppered sample?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Potassium iodide crystals are added to the cuvette prior to adding sample and swirling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+    "notes": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+    "registeredAt": "2026-11-19T03:33:43.142Z",
+    "payloadSha256": "119a7c545a8154c13e1973aa5678a95166061da47a30ecca909a50f4e573ed2c",
+    "builderResultsSha256": "7ba910d08e998cad8b582787ef96b0e5b6e47f9fb804d3744df3801a23c94536"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:32:47.329058+00:00",
+   "attestation": "Strict AI self-review of 85 authored wqa items against supplied Handbook of Water and Wastewater Treatment Plant Operations (3rd ed.) pages 581-594 and existing collision candidates; 85 accepted, 0 rejected.",
+   "payloadSha256": {
+    "targeth-ht261118-wqa-r04-m0-01": "caecb6247f8c3918ef55c17e4df4285755f7fbbfc518e7c5a48e802abebd7f4a",
+    "targeth-ht261118-wqa-r04-m0-02": "81076635df66d76c464cb40f88e3c03cf5c93aa08875ea3cf29cfdeb1340e9df",
+    "targeth-ht261118-wqa-r04-m0-03": "40afd28d1fbb0a234487a38f88219725b2485b1cf084470daa401e50e8bc17b5",
+    "targeth-ht261118-wqa-r04-m0-04": "502589fbabbb30e324a4debddc65578b4b183aca78f483685595e1074c40a168",
+    "targeth-ht261118-wqa-r04-m0-05": "fe1ff0e50f8056c4f749239b34af8bd13b57b75d6f3ed517f6ea0473b6372bdd",
+    "targeth-ht261118-wqa-r04-m0-06": "9ff6d535b55b1580b42b2e7488fec838f207da633339cc15a6a4e67cde101f7c",
+    "targeth-ht261118-wqa-r04-m0-07": "54a8785de64e07c2a52071c0618244b1856891228d55f71160034b2e61dee766",
+    "targeth-ht261118-wqa-r04-m0-08": "b526bdfa9d24cbcc5832c37454ce46c7dfc07ed61aa9361aa9d926071519470e",
+    "targeth-ht261118-wqa-r04-m0-09": "6b8614debfce3ad1b878017c2de055e7478b4746e77086cf044a52833d90f66e",
+    "targeth-ht261118-wqa-r04-m0-10": "7673dee29ce4f9af1781546bcf059f0ae8c4a484c27487727a538356413a1baa",
+    "targeth-ht261118-wqa-r04-m0-11": "98b1f9ad63d0b58403ff6dae5bc4e8881bbf64594da5af7ad5a5ef7770e532b9",
+    "targeth-ht261118-wqa-r04-m0-12": "a289f6d6e25eac2a887931f5ca11b8fcee34f2a0b72a2a0bd2b666c4532e1b9b",
+    "targeth-ht261118-wqa-r04-m0-13": "2c0b4119abd8a27ce9136cefe7502fa12964f8cc4b935dee036478dccfb0cb4a",
+    "targeth-ht261118-wqa-r04-m0-14": "385a44ace3870186d4e8e56cba63f6557808faf09d2ef95b54b01548b2698505",
+    "targeth-ht261118-wqa-r04-m0-15": "eeda20a3d7d7360e5f20bad7806fa9be5cb9fe818ba9836ef13a73d46e4c497d",
+    "targeth-ht261118-wqa-r04-m1-01": "fa85d4f0c651be7f1bdda959da93a650575d5b53d9599f869e3c9c938c2f4c56",
+    "targeth-ht261118-wqa-r04-m1-02": "291b182aef3ce4ac2edfab9cfa68b08420fde2abd8953e346e16b0921182ac2e",
+    "targeth-ht261118-wqa-r04-m1-03": "a25822962ce27f04f137155347f77e51284ee5559cb7c037f31e4858182bfa57",
+    "targeth-ht261118-wqa-r04-m1-04": "8447771accca219d968c6397c7dee6f66ef1757aadbc979864c82e704432f11b",
+    "targeth-ht261118-wqa-r04-m1-05": "6c35b9976232904b8b4f4ae7e3601f12b018a8a8e2ff99d0e66df3a66dcf25ac",
+    "targeth-ht261118-wqa-r04-m1-06": "37a9a9a4eb56b098f6c145f1cf0354176c3045cdd3ff33d459f3892faceeff8e",
+    "targeth-ht261118-wqa-r04-m1-07": "d335d046df9975b1606cdce9a70fd310cd43f5c6ebd6664ce15cf234898341fb",
+    "targeth-ht261118-wqa-r04-m1-08": "45ea8e6fae8fd543b11ea11644cd4383da120dafd31b413ad16d3c2f86e4973e",
+    "targeth-ht261118-wqa-r04-m1-09": "6d9c077cf47286848f516c71c786e8e280a0421453132930432b722a00572a42",
+    "targeth-ht261118-wqa-r04-m1-10": "e5ff02ae75b433db158eb95f78acf6e7d6399c2670f3f5593c6f4646b0c35239",
+    "targeth-ht261118-wqa-r04-m2-01": "185abd1398fc8df892b324a2792400b4d1e752f971d9c625f3119b8e7709f043",
+    "targeth-ht261118-wqa-r04-m2-02": "402ea651beb2617788614c69f9be4834742b1ff8ea5fb7b8d375261f2dc9d3e8",
+    "targeth-ht261118-wqa-r04-m2-03": "52fa12edf8451e35cda2c8b2cb2e6dc3f8cdc9c5db3613f68e88ac6a47cf3932",
+    "targeth-ht261118-wqa-r04-m2-04": "791aae79746a0c88626cd9eb6af67bc381743ff5be6b048459326b6486fe3e68",
+    "targeth-ht261118-wqa-r04-m2-05": "0148db74a26d42ab46115bc5af2774813bf2c4d08e360514266ab247c0078db0",
+    "targeth-ht261118-wqa-r04-m2-06": "fb2fcd64f70648b32675960a86c3e1208beb51d1838335913dcfc42e0ff5dde9",
+    "targeth-ht261118-wqa-r04-m2-07": "03f20bd619a6ddabb04ae4d263a0e851ececbb5d423dbf3cb28d197c7be42761",
+    "targeth-ht261118-wqa-r04-m2-08": "3421b5386316b9c7952e02cbb93c080fef535ab6936f14b584d8f9e5329ec71e",
+    "targeth-ht261118-wqa-r04-m2-09": "25273d84b283ef53ad8e00e3424d71387877030a8984af179ac550c5092b9ccf",
+    "targeth-ht261118-wqa-r04-m2-10": "d6e1fc4da868efac1e4c29684a51c8a652d47edf9bf3307d7c349de597f64dd5",
+    "targeth-ht261118-wqa-r04-m2-11": "56dc25ab59135495c176c4bc1646c93c36909eb11b0271d83a2150fef78a7cc3",
+    "targeth-ht261118-wqa-r04-m2-12": "078f1872f70ae13a5d494e3ec8bd413c4682056825ad9ad21d9d5e2d3366b6fa",
+    "targeth-ht261118-wqa-r04-m2-13": "0cb2d6f87cd66682604435780cdea7803e2c8093fe6e236981b54b6a7b7c40ad",
+    "targeth-ht261118-wqa-r04-m2-14": "684d69b2f12f2582bb0b3eba5bbe94cfde62ede9d32cf9ad35ba13dce77de995",
+    "targeth-ht261118-wqa-r04-m2-15": "ddd53762c170a34a7f088da301417d2c12abed12b54736fef8f081a9e397c88c",
+    "targeth-ht261118-wqa-r04-m3-01": "96b0471875fe3eec1c59a1cc301ff701015c1b630d247f1adfac0df4885e7a8c",
+    "targeth-ht261118-wqa-r04-m3-02": "86eee01b19fd623ce8daaad34e086c26ff981f00fdde354cd79139b9f04642d9",
+    "targeth-ht261118-wqa-r04-m3-03": "b5b8b8e5b86e859943d37f9186b215a056b47483adbd71c7cbdb587be439d8e1",
+    "targeth-ht261118-wqa-r04-m3-04": "158536ce9e83bd4c03c6e7379e2b2d94e6309c5402d5898c12c748c58aeb5f3c",
+    "targeth-ht261118-wqa-r04-m3-05": "1fc74708a59d3025965ac675f3ddf8bad081a3e2c470d0fe6cc48bb8ec8748bf",
+    "targeth-ht261118-wqa-r04-m3-06": "70712dc1e25a9a07f9755c64292d646db1617b648710e49f46e21ba2a19e70e3",
+    "targeth-ht261118-wqa-r04-m3-07": "57740c000bd0eaabf78dc25bc8b4418844e5f26038969010d736be46c71c9291",
+    "targeth-ht261118-wqa-r04-m3-08": "8b03c46ed9efee39f398a99ec19323d7cb9874a0dfcf3041fb267b42c551236e",
+    "targeth-ht261118-wqa-r04-m3-09": "c33a99dc213c07930371b16073407297fe3da73fc3803142c5389aefbcd255c7",
+    "targeth-ht261118-wqa-r04-m3-10": "a75c765412bfb16064e76e8d1080ac090978524a2d26bd196133a2a8c21cbfee",
+    "targeth-ht261118-wqa-r04-m3-11": "6e0d6831539564ee1c306d960df1255e91d5fb980d192886866719c8eddd6f3f",
+    "targeth-ht261118-wqa-r04-m3-12": "3d94e0e69b107b6034fea3d8ae808fd9a85d6f58ffb61ab05d42a3d3a212c271",
+    "targeth-ht261118-wqa-r04-m3-13": "04f6d82ed9e084a11075b6b89f9a23f7c40a6c3eeac1056a51b7546401f72635",
+    "targeth-ht261118-wqa-r04-m3-14": "d2c07072a02d6a50ffc8562092a84b25945094cdc03300dc6c082988a95af149",
+    "targeth-ht261118-wqa-r04-m3-15": "7fa323dea9dda27e04338087f466766d83bf4d72642bfc4f23d7884d47c8074b",
+    "targeth-ht261118-wqa-r04-m4-01": "78687a8dc4a6bfbc397e31f5def07f0e8818db86d1b7b9d7549282a0892778ac",
+    "targeth-ht261118-wqa-r04-m4-02": "93d485b57fba675dd0963439bb2bc1f847ee105c4441d154b738e303c41b7a58",
+    "targeth-ht261118-wqa-r04-m4-03": "cbe796c17f085955dc81b8b37d1ece9a6a329d0b153fc765e2f747e317de06c0",
+    "targeth-ht261118-wqa-r04-m4-04": "a8b7261ce68581552c8a32b8dcf01ddc507ca1665110edc4b4c633f0da43316a",
+    "targeth-ht261118-wqa-r04-m4-05": "ac345bba25fbf95453f61b0e4311a6396a3b00007e7ab02bb6b21789bd546096",
+    "targeth-ht261118-wqa-r04-m4-06": "94261baeea89ca23f707d7592c9d8bd514c694a8e10c20b4a6cdd670b8930dba",
+    "targeth-ht261118-wqa-r04-m4-07": "32c514a2bcb67ff5ca9701099b6233695b6b8ca13a02925bf085db2d44d99eee",
+    "targeth-ht261118-wqa-r04-m4-08": "a60b9da8f0bde135c9ccd7ffe0c69d85e8360c4e9be7d7c4a63d35e4465b2078",
+    "targeth-ht261118-wqa-r04-m4-09": "4f08c9700f5f569879a3261c527e7a3be9eee7637e2019d4ca2c7fd031386dc7",
+    "targeth-ht261118-wqa-r04-m4-10": "1c220c5e2e6a4e9477b5c5205fd57e554ba02f0b4d61575044ddf2ec161c9682",
+    "targeth-ht261118-wqa-r04-m4-11": "bba8a85bdf21a78ee0fcc006ce7e4de2c2e9d1849e09477ab8142a3b7194b7a0",
+    "targeth-ht261118-wqa-r04-m4-12": "ec2af2e0db70334888465e97daca9f08665669f1b7f412420b62719c2107f366",
+    "targeth-ht261118-wqa-r04-m4-13": "acb5b5693029b17301edd1f715778410e7ba55676d416f1ac1593f8b95a1cc8c",
+    "targeth-ht261118-wqa-r04-m4-14": "1ec0a61cac3624656e3d8238c237d1960659bd039da0621afa070900f94b278b",
+    "targeth-ht261118-wqa-r04-m4-15": "05e94bed56c7df5e40575689366defee8e1d5c487287372f041758e5a637b59c",
+    "targeth-ht261118-wqa-r04-m5-01": "441f891760695e3fe8cd54c08e553e75664650e0222fc89ca45787e5ff333526",
+    "targeth-ht261118-wqa-r04-m5-02": "101b0f34d31ba589b2bafbd00a56e3bb1335d2c1450d424a239641d78dc707d5",
+    "targeth-ht261118-wqa-r04-m5-03": "1073efd94c7a0bde8dbd465176c04be01d429491d8682a56f7ef79e5fc8e3c1c",
+    "targeth-ht261118-wqa-r04-m5-04": "3cb6f750fae097ff5de65ce340325302d38a016c5ec0289ada5c7d56e8e2864c",
+    "targeth-ht261118-wqa-r04-m5-05": "9d5cf6f95adb43d5126c40e2f0858a82702c54afdead14cac0476f1ae76da7cd",
+    "targeth-ht261118-wqa-r04-m5-06": "d02840cd6f8f130d008b1b6b88093fc30a459cba418811003192721e3dca05af",
+    "targeth-ht261118-wqa-r04-m5-07": "8f5d4111bcfe6d1231705e80450da46b840c0093eb99f74bc74af82bbcbe1e5f",
+    "targeth-ht261118-wqa-r04-m5-08": "ce1f272534f98b5adc1bdc0bcc3bb685778aa66e8e1ef684b43516f4b9cc46bf",
+    "targeth-ht261118-wqa-r04-m5-09": "8768d37e9eee572741174720ae533ebd4f7c7a9106af705e12a4acbf62f1c358",
+    "targeth-ht261118-wqa-r04-m5-10": "264920e2fd4461d640c1ee1d7455113b9b395ac41e749d4b5a0ec8d64c60d56e",
+    "targeth-ht261118-wqa-r04-m5-11": "46aa00b80216d42fe2d8686c41bf7068842708d925ecfffa9d3e56634ba66cb3",
+    "targeth-ht261118-wqa-r04-m5-12": "1f7c2926a13dba095c62e9acbc2de90e307a3caa49a5b430a06e700cd215ce1a",
+    "targeth-ht261118-wqa-r04-m5-13": "62379bee3b46c321ba8123b7270ab9f214f8b325e9adc41722150b3f7ee14f6d",
+    "targeth-ht261118-wqa-r04-m5-14": "d64aa3851aa081b550ca9f27607825b84117699ae5a51d5027576c12019ab98e",
+    "targeth-ht261118-wqa-r04-m5-15": "119a7c545a8154c13e1973aa5678a95166061da47a30ecca909a50f4e573ed2c"
+   }
+  },
+  "registeredAt": "2026-11-19T03:33:43.142Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 10,
+     "decrease": 5,
+     "unchanged": 0
+    },
+    "longest": 9,
+    "options": 45
+   },
+   "batchSha256": "e9877af3f29a031dc176e85793b4baceff32dc14499254176b47dd3b9fbd327e"
+  }
+ }
+}

@@ -1,0 +1,2454 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class3-wastewater-r01",
+ "scope": "Owner-authorized AI-reviewed game activities: 70 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-01",
+    "prompt": "Chemical addition before sedimentation increases solids capture by forming heavier solids that trap colloidal matter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Coagulants form heavier solids that trap colloidal particles and convert dissolved matter into settleable solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "94efbd2b55b3c9cc336ccdfc1ee88c73a12c0940887fd08f64eb7225bbd670bc",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-02",
+    "prompt": "Chemical sludges typically dewater more easily and contain higher percentages of solids than primary sludges.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Chemical sludges are difficult to process, do not dewater well, and contain lower percentages of solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "291fb5085f7aa3304303166bf94d712b70de6799ff4f18802ba253772f9bb062",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-03",
+    "prompt": "Free water in sludge is unattached to solids and separates through simple gravitational settling.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Free water is not attached to sludge solids and can be removed by simple gravitational settling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "283f73df0842c8735462da3e5afbcd56b2fc759a9eb28b1831c470c3cd4cafbb",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-04",
+    "prompt": "Floc water is chemically bound to individual sludge particles and resists mechanical dewatering.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Floc water is trapped within the floc and can be removed by mechanical dewatering; particle water is chemically bound."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "91506ab1659c64af2060ace19f2059804979b43842d8e059d527605c2da7edd5",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-05",
+    "prompt": "Untreated primary sewage sludge carries higher pathogen concentrations than the incoming raw wastewater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Pathogens associate with insoluble solids, and primary treatment concentrates those solids into raw primary sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "4beb531aad4fb4684dcac62cd0cadc5c125661e4fa53a63696f0e96cda53cbb8",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-06",
+    "prompt": "Biological treatment processes such as activated sludge eliminate pathogens from wastewater sludge so no public health concern remains.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Biological treatment reduces pathogen numbers, but resulting biological sludges may still contain sufficient pathogens to pose a concern."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "649a4433cc414da8da483c1f4055ba1f149dfa17e03ef4f1f6864bfd353f72c3",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-07",
+    "prompt": "When sludge treatment capacity falls behind solids accumulation, excess solids can discharge to receiving waters.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Failing to remove and process solids as fast as they accumulate can discharge large quantities of solids to receiving waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "1b36123d47d4a6b077cfc4f768e58fe588aff2e92ef51cb3bf48871877ed6d08",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-08",
+    "prompt": "Gravity thickeners typically concentrate waste activated sludge to a higher percent solids than trickling filter residuals.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Gravity thickeners typically reach 2 to 4 percent solids for waste activated sludge versus 7 to 9 percent for trickling filter residuals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "370d7a288686470894adf9d8b1af5075081b1d49bbb6d747d94466e05fe2a346",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-09",
+    "prompt": "A decreasing SVI indicates that activated sludge is becoming older, denser, and faster to settle.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Decreasing SVI reflects denser, older sludge that settles and compacts more rapidly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "9dee7c8282be885cba32505e7c295d0bf42b73877088e893129817f68bed032a",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-10",
+    "prompt": "Oxidation ditch processes typically operate in a higher F/M ratio range than pure oxygen activated sludge systems.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Oxidation ditches typically run at 0.05 to 0.15 lb BOD5 per lb MLVSS, lower than pure oxygen systems at 0.25 to 1.0."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "03de197c2b721e5b514457eef9d885d09b84d6fadd44be20e1b941c40ab90690",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-11",
+    "prompt": "In the self-ionization of water, the molecule that loses a hydrogen ion becomes a negatively charged hydroxide ion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Losing a positively charged hydrogen ion leaves a negatively charged hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "247941ee986452f8f392a165a58784f3fe3ca75543feb5d50f98ade0dd986c0a",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-12",
+    "prompt": "Chemical reactions between atoms or molecules involve changes inside the atomic nucleus rather than the orbiting electrons.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Chemical reactions between atoms or molecules involve only the orbiting electrons, with no changes in the nuclei."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "23c4032c9c56066cbcc1d21c0a140c143125f9cf29701303d55c3285981d50f1",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-13",
+    "prompt": "Colloidal solids are uniformly dispersed in solution and pass through a standard laboratory filter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Colloidal and dissolved solids pass through a standard filter, while suspended solids are largely retained."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "734cf43488f2e36f8a9fc280fadf2e3646b59930bb16863efc3eea9da575b425",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-14",
+    "prompt": "Water and liquid mercury are miscible liquids that disperse uniformly in one another.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Water and liquid mercury are immiscible liquids and do not disperse uniformly in all proportions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "57424abcf8f7b413bde609578154f31dea5f01914c734b4c0e7b347c5ca932f6",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m0-15",
+    "prompt": "Turbidity in water scatters and absorbs light rays because of suspended matter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Suspended matter causes turbidity, which results in the scattering and absorption of light rays."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "ba2de23ea7d12f57b13c95fe5e5e27e1c594f186743fc9d4b47b9d350d967763",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-01",
+    "prompt": "Match each sludge water fraction to how it is held or removed.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Free water",
+      "right": "Unattached to solids and removed by simple gravity settling"
+     },
+     {
+      "id": "p2",
+      "left": "Floc water",
+      "right": "Trapped inside floc and removed by mechanical dewatering"
+     },
+     {
+      "id": "p3",
+      "left": "Capillary water",
+      "right": "Adheres to particles and can be squeezed out by compaction"
+     },
+     {
+      "id": "p4",
+      "left": "Particle water",
+      "right": "Chemically bound to individual particles"
+     },
+     {
+      "id": "p5",
+      "left": "Sludge solids fraction",
+      "right": "Represents 1 to 8 percent of total sludge mixture"
+     },
+     {
+      "id": "p6",
+      "left": "Wastewater solids origin",
+      "right": "Classified into organic and inorganic categories"
+     }
+    ],
+    "explanation": "Sludge water fractions differ in how tightly they bind to solids and which separation method removes them."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "f408550659b064a572da00110eb3427f40ea8468425482393dcf7fa5e198af1b",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-02",
+    "prompt": "Match each gravity thickener feed type to its typical underflow solids range.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Primary underflow",
+      "right": "8 to 10 percent solids"
+     },
+     {
+      "id": "p2",
+      "left": "Waste activated sludge",
+      "right": "2 to 4 percent solids"
+     },
+     {
+      "id": "p3",
+      "left": "Trickling filter residuals",
+      "right": "7 to 9 percent solids"
+     },
+     {
+      "id": "p4",
+      "left": "Combined primary and secondary",
+      "right": "4 to 9 percent solids"
+     },
+     {
+      "id": "p5",
+      "left": "Thickener underflow pumping",
+      "right": "Withdraws concentrated solids from the bottom"
+     },
+     {
+      "id": "p6",
+      "left": "Thickener blanket depth",
+      "right": "Operating factor governing gravity thickening performance"
+     }
+    ],
+    "explanation": "Gravity thickeners achieve higher underflow solids on primary and trickling filter sludges than on waste activated sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "9fca4a0c3d69a63a827142628d3e164f874950bd32b5772b9d7fb8f0778c8f33",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-03",
+    "prompt": "Match each activated sludge process to its typical BOD5-based F/M ratio range.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Conventional",
+      "right": "0.2 to 0.4 lb BOD5 per lb MLVSS"
+     },
+     {
+      "id": "p2",
+      "left": "Contact stabilization",
+      "right": "0.2 to 0.6 lb BOD5 per lb MLVSS"
+     },
+     {
+      "id": "p3",
+      "left": "Extended aeration",
+      "right": "0.05 to 0.15 lb BOD5 per lb MLVSS"
+     },
+     {
+      "id": "p4",
+      "left": "Oxidation ditch",
+      "right": "0.05 to 0.15 lb BOD5 per lb MLVSS (looped)"
+     },
+     {
+      "id": "p5",
+      "left": "Pure oxygen",
+      "right": "0.25 to 1.0 lb BOD5 per lb MLVSS"
+     },
+     {
+      "id": "p6",
+      "left": "Low MLSS in aerator",
+      "right": "Commonly raises F/M and risks solids loss"
+     }
+    ],
+    "explanation": "Extended aeration and oxidation ditches run at low F/M, whereas pure oxygen and contact stabilization run higher."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "f2d956b99009b308eaf85b05f684b4544bdca395c3ca594353f55ff2b9827d9e",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-04",
+    "prompt": "Match each SVI trend to its sludge settling behavior and process adjustment.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Increasing SVI",
+      "right": "Sludge becomes less dense and settles more slowly"
+     },
+     {
+      "id": "p2",
+      "left": "Decreasing SVI",
+      "right": "Sludge becomes older and compacts more"
+     },
+     {
+      "id": "p3",
+      "left": "Holding SVI constant",
+      "right": "No process changes indicated"
+     },
+     {
+      "id": "p4",
+      "left": "Adjustment for increasing SVI",
+      "right": "Decrease waste rate and increase return rate"
+     },
+     {
+      "id": "p5",
+      "left": "Adjustment for decreasing SVI",
+      "right": "Increase waste rate and decrease return rate"
+     },
+     {
+      "id": "p6",
+      "left": "Settled sludge (mL/L)",
+      "right": "Settled volume in mL divided by sample volume in L"
+     }
+    ],
+    "explanation": "SVI trends indicate changes in sludge density and settling speed, guiding waste and return rate adjustments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "bbe1f071187a29fd8f5136a61b649f2ce8899087a8b1ef3aa73925b35cf24446",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-05",
+    "prompt": "Match each sludge category to its characteristic dewatering and solids behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Secondary sludge",
+      "right": "Light, fluffy, and harder to dewater than primary"
+     },
+     {
+      "id": "p2",
+      "left": "Chemical sludge",
+      "right": "Heavier solids that trap colloids and dewater poorly"
+     },
+     {
+      "id": "p3",
+      "left": "Higher chemical usage",
+      "right": "Increases total quantity of sludge requiring disposal"
+     },
+     {
+      "id": "p4",
+      "left": "Raw primary sludge",
+      "right": "Concentrates insoluble solids and associated pathogens"
+     },
+     {
+      "id": "p5",
+      "left": "Biological sludge",
+      "right": "Pathogens reduced but still present in biosolids"
+     },
+     {
+      "id": "p6",
+      "left": "Inadequate sludge removal",
+      "right": "Causes large solids discharges to receiving waters"
+     }
+    ],
+    "explanation": "Secondary and chemical sludges are harder to dewater than primary sludge, and chemical dosing increases sludge volume."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "a9a5a0ed69f64abf6b2e2fe0e388b092f18aa32187d6a4e3c83e676c6ac22bcf",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-06",
+    "prompt": "Match each gravity thickening control factor to what it represents.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Type of sludge",
+      "right": "Primary, waste activated, or trickling filter origin"
+     },
+     {
+      "id": "p2",
+      "left": "Solids loading",
+      "right": "Mass of solids applied per unit thickener area"
+     },
+     {
+      "id": "p3",
+      "left": "Hydraulic loading",
+      "right": "Flow rate applied per unit thickener area"
+     },
+     {
+      "id": "p4",
+      "left": "Blanket depth",
+      "right": "Thickness of the settled sludge layer"
+     },
+     {
+      "id": "p5",
+      "left": "Solids retention time",
+      "right": "Average time solids remain in the thickener"
+     },
+     {
+      "id": "p6",
+      "left": "Hydraulic detention time",
+      "right": "Average time liquid remains in the thickener"
+     }
+    ],
+    "explanation": "Gravity thickener performance depends on sludge characteristics, loading rates, blanket depth, and retention times."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "eb3c54faf97ede50c13ac7430703d7f4b79c1f0f5ebef27afbbade8e3988894d",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-07",
+    "prompt": "Match each solution chemistry term to its physical meaning.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solvent",
+      "right": "Component of a solution that does the dissolving"
+     },
+     {
+      "id": "p2",
+      "left": "Solute",
+      "right": "Component of a solution that is dissolved"
+     },
+     {
+      "id": "p3",
+      "left": "Saturated solution",
+      "right": "State where no more solute will dissolve"
+     },
+     {
+      "id": "p4",
+      "left": "Precipitate",
+      "right": "Solid separated from solution by reaction or pH change"
+     },
+     {
+      "id": "p5",
+      "left": "Colloidal solids",
+      "right": "Fine particles under 1 micron dispersed in solution"
+     },
+     {
+      "id": "p6",
+      "left": "Turbidity",
+      "right": "Scattering and absorption of light by suspended matter"
+     }
+    ],
+    "explanation": "Solution chemistry terms distinguish dissolved solutes, dispersing solvents, saturated states, precipitates, and colloids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "d64ece862a2d449ebac8cd9e6d5c04ec479a10bef6f127167e84a6ab03110e49",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-08",
+    "prompt": "Match each state of matter to its volume and shape behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solid",
+      "right": "Keeps both its own shape and definite volume"
+     },
+     {
+      "id": "p2",
+      "left": "Liquid",
+      "right": "Maintains constant volume but takes container shape"
+     },
+     {
+      "id": "p3",
+      "left": "Gas",
+      "right": "Has no fixed shape and expands to fill containers"
+     },
+     {
+      "id": "p4",
+      "left": "All gases",
+      "right": "Completely miscible with one another"
+     },
+     {
+      "id": "p5",
+      "left": "Water and alcohol",
+      "right": "Completely miscible liquids"
+     },
+     {
+      "id": "p6",
+      "left": "Water and mercury",
+      "right": "Immiscible liquids that do not mix uniformly"
+     }
+    ],
+    "explanation": "Solids, liquids, and gases differ in shape retention, volume stability, and miscibility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "fc19cd5beba338aa7606f30ecfd348a6e90e033b24187ad94dcdf3c23bbc32f0",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-09",
+    "prompt": "Match each subatomic or ionic term to its charge and role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Proton",
+      "right": "Positively charged particle in the atomic nucleus"
+     },
+     {
+      "id": "p2",
+      "left": "Neutron",
+      "right": "Neutral particle in the atomic nucleus"
+     },
+     {
+      "id": "p3",
+      "left": "Electron",
+      "right": "Negatively charged particle involved in chemical reactions"
+     },
+     {
+      "id": "p4",
+      "left": "Cation",
+      "right": "Positively charged ion such as sodium"
+     },
+     {
+      "id": "p5",
+      "left": "Anion",
+      "right": "Negatively charged ion such as chloride"
+     },
+     {
+      "id": "p6",
+      "left": "Hydronium ion",
+      "right": "Positively charged ion formed when water gains hydrogen"
+     }
+    ],
+    "explanation": "Subatomic particles determine nuclear mass and electron reactions, while ions carry positive or negative charges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "1f359d66d5a5f5efe1b52409833a26670c1c5acc8fcd855a802bde9fb198b22a",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m1-10",
+    "prompt": "Match each pathogen group or vector to its role in sewage sludge transmission.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bacteria",
+      "right": "Single-celled human pathogens found in domestic sewage"
+     },
+     {
+      "id": "p2",
+      "left": "Viruses",
+      "right": "Major human pathogenic group present in domestic sewage"
+     },
+     {
+      "id": "p3",
+      "left": "Protozoa",
+      "right": "Eukaryotic single-celled pathogens in domestic sewage"
+     },
+     {
+      "id": "p4",
+      "left": "Helminths",
+      "right": "Parasitic worms among the four major sewage pathogens"
+     },
+     {
+      "id": "p5",
+      "left": "Insects and rodents",
+      "right": "Vectors attracted to sludge that transport pathogens"
+     },
+     {
+      "id": "p6",
+      "left": "Insoluble sewage solids",
+      "right": "Carry most pathogens into raw primary sludge"
+     }
+    ],
+    "explanation": "Domestic sewage can contain bacteria, viruses, protozoa, and helminths, which concentrate in solids and spread via vectors."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "31e635630d511888b4d7621e24f4aecaa67cff9728c8aa213ad239cf65c930bc",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-01",
+    "prompt": "In an activated sludge system, the SVI value steadily decreases over several days while other conditions remain constant. What happens to the settling rate of the sludge?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "A decreasing SVI means the sludge is becoming denser and older, so it settles more rapidly."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "707fa1a675ee1e4c37034b1acd22b5c8817e54f2aba251b61507d1691e258798",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-02",
+    "prompt": "In an activated sludge system, the SVI value steadily increases while MLSS and flow remain constant. What happens to the compaction of the settled sludge?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "An increasing SVI indicates less dense sludge that settles more slowly and compacts less."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "931d3f1473bd53fdf5fb9a3d3cb90dc7915da322e6a998ab01b1922689609911",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-03",
+    "prompt": "Chemical coagulants are added ahead of a primary clarifier at steady flow to capture colloidal solids. What happens to the ease of dewatering the resulting sludge?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Chemical sludges are difficult to process, do not dewater well, and contain lower percentages of solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "b80efe9064595b650918ceae8cfb1e9365cc944dc163d023b9af7782fcf5ad20",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-04",
+    "prompt": "A wastewater plant's sludge processing equipment removes solids more slowly than they accumulate in the system while influent loading continues. What happens to the solids discharged to the receiving water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Inability to remove and process solids as fast as they accumulate leads to large solids discharges to receiving waters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "b59a70a3b1a3c6b27154f1d4108e2cd3fe073e2e2a66e34ebb57b3d5c78f4c85",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-05",
+    "prompt": "A gravity thickener switches from thickening primary sludge alone to thickening combined primary and secondary residuals under comparable conditions. What happens to the typical percent solids in the underflow?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Gravity thickeners typically reach 8 to 10 percent solids on primary underflow alone versus 4 to 9 percent on combined residuals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "06a77b6a25a80a024e15433a4c1371e9f98ab1f10717525ac3d043387167c41a",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-06",
+    "prompt": "Aeration basin mixed liquor suspended solids drop well below target while organic loading remains steady. What happens to the food-to-microorganism ratio?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "With fewer microorganisms for the same organic food load, the food-to-microorganism ratio increases."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "2c982536a8a3d565765be5a21e4496906f539746eb2f81478cb9c65cb70530fc",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-07",
+    "prompt": "Domestic wastewater enters primary sedimentation where insoluble solids settle and concentrate into raw primary sludge. What happens to the pathogen concentration in the resulting sludge?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Pathogens are primarily associated with insoluble solids, which primary treatment concentrates into raw primary sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "43f9f27fa75edfb726571758dc8f96f5dbb554859d9f356b7247f2a246ffd667",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-08",
+    "prompt": "Biological wastewater treatment such as activated sludge treats domestic sewage under normal operating conditions. What happens to the number of pathogens in the treated liquid effluent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Biological treatment processes substantially reduce pathogen numbers in wastewater by creating adverse conditions for survival."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "029640f6a38819cdffddc8690fd6a0c26fcbf4503c93c0c7154072722780bb6e",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-09",
+    "prompt": "At steady influent flow and steady influent TSS, a primary clarifier's underflow percent solids increases while effluent TSS stays constant. What happens to the required volumetric sludge pumping rate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "In the sludge pumping equation, percent solids is in the denominator, so higher solids concentration lowers the required pump rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "c5f805dc5c30a25f4da3b24a887352b947dc4222983a9ff66d8fa20a8dcf2032",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-10",
+    "prompt": "Fine colloidal particles are added to clear water in a sample cell at constant temperature. What happens to the light scattering through the sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Suspended and colloidal matter causes turbidity, which increases the scattering and absorption of light rays."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "3136eb7e6518eea0b5676c17e2ce57680e809c0f64034a55eaa664185b539362",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-11",
+    "prompt": "A fixed mass of gas is transferred from a small cylinder into a larger sealed container at constant temperature. What happens to the volume occupied by the gas?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Gases have no fixed shape or volume and expand to fill containers of any size."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "10c74270312292a67c3ed8c460f8ebf6d77effce3bbe7460519b49fc80471950",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-12",
+    "prompt": "Additional solid solute is stirred into an already saturated aqueous solution held at constant temperature. What happens to the dissolved solute concentration?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "A saturated solution is in a physical state where it will no longer dissolve additional solute."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "60b5e6d81e1b8464d96ca4eeff7a8abda65728702ad9367de370fff9d3cb48fa",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-13",
+    "prompt": "A water sample is filtered through a standard laboratory glass-fiber filter. What happens to the mass of colloidal solids in the filtrate compared with the unfiltered sample?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Colloidal and dissolved solids pass through a standard laboratory filter rather than being retained."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "045fa958e08c268688ccef10a71e506f58c5a04309ebc90840aafeb2e80e9e23",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-14",
+    "prompt": "A water molecule loses a hydrogen ion during the self-ionization of water. What happens to the net electrical charge of that molecule?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Losing a positively charged hydrogen ion turns the neutral water molecule into a negatively charged hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "ae64987423a8432ea77f28842da1fcb316bce2b8df121349769ff6404ebec160",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m3-15",
+    "prompt": "In a 1-liter settling test, the settled sludge volume after 30 minutes rises from 200 mL to 350 mL while sample volume stays 1 liter. What happens to the calculated settled sludge concentration in mL/L?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Settled sludge concentration equals settled volume in mL divided by sample volume in liters, so higher settled volume increases it."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "7c2be0563ea4f5f0aafd6b482356c5191c166a1bc0005f5414eaa2442d5b2d57",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-01",
+    "prompt": "Which statement about interpreting SVI trends in activated sludge is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "An increasing SVI indicates the sludge is becoming less dense and settles slowly."
+     },
+     {
+      "id": "o2",
+      "label": "A decreasing SVI indicates the sludge is becoming older and compacts more."
+     },
+     {
+      "id": "o3",
+      "label": "An increasing SVI calls for increasing the waste rate and decreasing return."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "When SVI is increasing, the adjustment is to decrease the waste rate and increase the return rate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "5d4424c4fb5e8df38f2aceb3276254f99ec13221549f91a4add78139c4d9edff",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-02",
+    "prompt": "Which statement about F/M ratios in activated sludge processes is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Extended aeration and oxidation ditches typically run at 0.05 to 0.15 lb BOD5 per lb MLVSS."
+     },
+     {
+      "id": "o2",
+      "label": "Conventional activated sludge typically runs at 0.2 to 0.4 lb BOD5 per lb MLVSS."
+     },
+     {
+      "id": "o3",
+      "label": "Pure oxygen systems typically run at a lower F/M ratio than extended aeration."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Pure oxygen systems run at 0.25 to 1.0 lb BOD5 per lb MLVSS, much higher than extended aeration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "6f50a7ac0e61f45f5db2dfa1f255fb1a89a8fc377de504b00a13ba10ea9d0305",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-03",
+    "prompt": "Which statement about secondary and chemical sludges is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Secondary sludges are light and fluffy and harder to process than primary sludges."
+     },
+     {
+      "id": "o2",
+      "label": "Chemical sludges form heavier solids that trap colloids and dewater very easily."
+     },
+     {
+      "id": "o3",
+      "label": "Increasing chemical usage ahead of clarification increases total sludge quantity."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Chemical sludges are very difficult to process, do not dewater well, and contain lower percentages of solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "d15dac2b8bbcd543f33a2cf2a10d2ed0e2efcdc8ac26f8a7be0461d9e153b2cb",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-04",
+    "prompt": "Which statement about water fractions in wastewater sludge is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Free water is unattached to solids and separates by simple gravitational settling."
+     },
+     {
+      "id": "o2",
+      "label": "Floc water is trapped within the floc and can be removed by mechanical dewatering."
+     },
+     {
+      "id": "o3",
+      "label": "Particle water is unattached to solids and drains freely by gravity settling."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Particle water is chemically bound to individual particles and cannot be removed by simple gravity settling."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "a294858e6f0c4faca8e387209cea0bc644c7a4159a5585be02a29c988c685671",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-05",
+    "prompt": "Which statement about pathogens in domestic sewage and sludge is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Pathogens in domestic sewage are primarily associated with insoluble solids."
+     },
+     {
+      "id": "o2",
+      "label": "Raw primary sludge has higher pathogen levels than the incoming wastewater."
+     },
+     {
+      "id": "o3",
+      "label": "Biological treatment removes pathogens so biosolids pose zero health concern."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Biological treatment reduces pathogens, but resulting biological sludges may still contain sufficient pathogens to pose a concern."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "cb2bf3f2677636e0a415d3fa8ffcfe901a7ad6df7373ef3ad88c6ffcb6b2fc83",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-06",
+    "prompt": "Which statement about gravity sludge thickener performance is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Primary underflow typically thickens to 8 to 10 percent solids in a gravity thickener."
+     },
+     {
+      "id": "o2",
+      "label": "Waste activated sludge typically thickens to 7 to 9 percent solids by gravity."
+     },
+     {
+      "id": "o3",
+      "label": "Gravity thickening depends on blanket depth, temperature, and solids loading."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Waste activated sludge typically thickens to 2 to 4 percent solids in a gravity thickener, not 7 to 9 percent."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "45671a90e1767839309b633dfa914094e3a405ed0062f8d9957f56c3a4247388",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-07",
+    "prompt": "Which statement about solids handling in a wastewater plant is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Sludge treatment includes thickening, stabilization, dewatering, and disposal."
+     },
+     {
+      "id": "o2",
+      "label": "Failing to process solids as fast as they accumulate can discharge solids to receiving waters."
+     },
+     {
+      "id": "o3",
+      "label": "Sludge treatment inadequacies have little effect on overall plant effluent quality."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Inadequacies in sludge treatment can severely affect overall plant performance and cause large solids discharges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "a546c7b776a86084d2ae32448d33363c60c6c4cebbcd61b406b7ef0b79bdbcc8",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-08",
+    "prompt": "Which statement about settled sludge concentration is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Settled sludge in mL/L equals settled sludge volume in mL divided by sample volume in L."
+     },
+     {
+      "id": "o2",
+      "label": "One liter is equal to 1,000 milliliters when converting sample volume."
+     },
+     {
+      "id": "o3",
+      "label": "Settled sludge in mL/L is calculated by multiplying settled volume by sample volume."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Settled sludge concentration is calculated by dividing settled sludge volume (mL) by sample volume (L)."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "c05d3a17e0885eb86dbb739247303469a2a98ee8e2d8dceb1fbadc49aee42e40",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-09",
+    "prompt": "Which statement about miscibility and solubility is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Water and alcohol are miscible liquids that disperse uniformly together."
+     },
+     {
+      "id": "o2",
+      "label": "Water and liquid mercury are miscible liquids that disperse uniformly together."
+     },
+     {
+      "id": "o3",
+      "label": "Gases are miscible with one another and disperse uniformly."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Water and liquid mercury are immiscible liquids that do not disperse uniformly in one another."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "bd5dff3ca2203a200a3bfcb959d580b0947fced7454965fa9f2bee34faaad2d6",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-10",
+    "prompt": "Which statement about mass concentration in dilute water solutions is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Parts per million equals mass of substance divided by mass of solution."
+     },
+     {
+      "id": "o2",
+      "label": "One kilogram of dilute aqueous solution has a volume of about 1 liter."
+     },
+     {
+      "id": "o3",
+      "label": "One part per million is approximately equal to 1,000 milligrams per liter."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Because 1 kg of water is about 1 liter, 1 ppm is approximately equal to 1 mg/L, not 1,000 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "202e60dd1e4542d343bb50ce991358f7024ebce119f3b4708e963874db547976",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-11",
+    "prompt": "Which statement about total solids fractions is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Suspended solids are largely removable by a standard laboratory filter."
+     },
+     {
+      "id": "o2",
+      "label": "Colloidal solids are uniformly dispersed and pass through the filter."
+     },
+     {
+      "id": "o3",
+      "label": "Dissolved solids are retained on the filter while suspended solids pass through."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Dissolved and colloidal solids pass through the filter, while suspended solids are largely retained."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "077300667b5c6afced62cad6922c66318dbeb0d8bc4b448e82364cae03774d3b",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-12",
+    "prompt": "Which statement about the self-ionization of water is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A water molecule that loses a hydrogen ion becomes a hydroxide ion."
+     },
+     {
+      "id": "o2",
+      "label": "A water molecule that gains a hydrogen ion becomes a hydronium ion."
+     },
+     {
+      "id": "o3",
+      "label": "A hydroxide ion carries a positive charge while a hydronium ion is negative."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Hydroxide ions are negatively charged and hydronium ions are positively charged."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "84eaba3864f8e31c2721b207498ae28ae3b82b54a5e65ef43e15ebdb46cd5fce",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-13",
+    "prompt": "Which statement about states of matter is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Solids keep both their shape and a definite volume at constant temperature."
+     },
+     {
+      "id": "o2",
+      "label": "Liquids keep a constant volume and take the shape of their container."
+     },
+     {
+      "id": "o3",
+      "label": "Gases keep a fixed volume and resist expanding to fill larger containers."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Gases have no definite fixed shape or volume and expand or compress to fill containers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "180a03fda55eb50cd4c01efcbd3fb8457b90436759841d0d5d3a3193515cc7ea",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-14",
+    "prompt": "Which statement about atomic structure is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Atomic weight equals the total number of protons and neutrons in the nucleus."
+     },
+     {
+      "id": "o2",
+      "label": "Electrons have less than 0.02 percent of the mass of a proton."
+     },
+     {
+      "id": "o3",
+      "label": "Chemical reactions between molecules involve changes inside the atomic nuclei."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Chemical reactions between atoms or molecules involve only the orbiting electrons, with no changes in the nuclei."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "62c04f40fd173f6e487254141ecbb59dbf401ddbed6f0673cc44bd61fe9d6faa",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m4-15",
+    "prompt": "Which statement about chemical formulas and element properties is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A water molecule contains two hydrogen atoms and one oxygen atom."
+     },
+     {
+      "id": "o2",
+      "label": "Bromine, chlorine, and iodine share similar chemical properties."
+     },
+     {
+      "id": "o3",
+      "label": "A subscript in a chemical formula indicates the atomic weight of the element."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "A subscript following an element symbol indicates the number of atoms of that element in the molecule."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "b61ab8b66efc1df210bafdfda0f8ce3b47151359fdec981e5148c4c452e2bf50",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-01",
+    "prompt": "In a conventional wastewater plant using chemical coagulation ahead of primary clarification, does chemical addition occur before or after the formation of heavier settleable solids?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Chemicals are added prior to sedimentation to form heavier solids that trap colloids and settle."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "3e917fb4fb63ffbe0a099c53809af84de39d81d3114ec8030991a83078ef7aa3",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-02",
+    "prompt": "In a conventional sludge dewatering train, is free water removed by simple gravitational settling before or after floc water is removed by mechanical dewatering?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Free water separates by simple gravity settling first, whereas floc water requires mechanical dewatering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "541cb6c03e5d14d11fac91554f201435b51dc022eb03de5b187f2d9fd3bccad4",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-03",
+    "prompt": "In a conventional municipal wastewater plant, does primary sedimentation concentrate pathogens into raw primary sludge before or after biological treatment reduces pathogens in the liquid stream?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Primary sedimentation precedes biological treatment and concentrates insoluble solids and pathogens into raw primary sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "4ece85966ef69faed1cade958e7bcbd69b0b26d0de2a76e7db3ddff555c7109c",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-04",
+    "prompt": "In a conventional biosolids handling train, does sludge thickening occur before or after mechanical dewatering?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Sludge thickening concentrates solids early in the solids train, ahead of stabilization and mechanical dewatering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "e7069ec41833bc75fc6e70e58707d4591ad2916862b59e87946b7f248778263e",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-05",
+    "prompt": "In a conventional sludge treatment train that ends with land application, does sludge stabilization occur before or after land application?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Sludge is stabilized before land application to reduce pathogens and vector attraction."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "92d598dd3dbca4895fc31471f56e0d1377418a329ee479b08c4efbb6a34fb36f",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-06",
+    "prompt": "In a gravity thickener receiving primary underflow, does solids settling in the sludge blanket occur before or after thickened sludge is withdrawn by the underflow pump?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solids settle and compact in the thickener blanket before underflow pumping withdraws the thickened sludge."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "8710c4d1986ed2c55db38eea1d62e1138a69d70904408cf173bbb26b4daa876e",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-07",
+    "prompt": "In an activated sludge settling test for SVI, does reading the settled sludge volume occur before or after dividing by the sample volume in liters?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The settled sludge volume in mL is measured first and then divided by the sample volume in liters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "8f047284d9454bc50e038d88f756259d876c3d44fa75466ad3502a8f618a3647",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-08",
+    "prompt": "In a conventional activated sludge plant, does an increasing SVI trend appear in the settling test before or after an operator adjusts the waste or return sludge rate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The SVI trend is observed first and used to guide waste and return sludge rate adjustments."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "37559eec334ddc040a9ba3848683bcecda2630a9c8a101bd45d7085e0a955dab",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-09",
+    "prompt": "In preparing a saturated aqueous salt solution at constant temperature, does dissolving solute into the solvent occur before or after the solution reaches saturation?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solute dissolves into the solvent until the solution reaches saturation, where no more solute can dissolve."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "a552ad8849c0523092d84fbfcdefdea7dca415878e295ccb047ccf285d0dd437",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-10",
+    "prompt": "In chemical precipitation of a dissolved substance, does the change in pH or temperature occur before or after the solid precipitate separates from solution?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A chemical reaction or change in pH or temperature causes the dissolved substance to separate as a solid precipitate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "3559d885944a0ea93eed4a4afc92d69b63b7aed7813efc2f73b4187f93b35e14",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-11",
+    "prompt": "In laboratory filtration of a wastewater sample, does passing the sample through the filter occur before or after collecting the dissolved and colloidal solids in the filtrate?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "The sample passes through the filter first, leaving suspended solids on the filter and dissolved and colloidal solids in the filtrate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "3d7355e969bda65c3b15eca93de3d687e3c84c13ba3d9cc803ed07997574b93a",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-12",
+    "prompt": "In the self-ionization of water, does a water molecule losing a hydrogen ion occur before or after forming a negatively charged hydroxide ion?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Losing a positively charged hydrogen ion produces the negatively charged hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "397e52442d2fdf4dcad6dc1fa81a926e51bf3da44b93cacbce0bd8869d97c25c",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-13",
+    "prompt": "In forming a sodium chloride solution, does solid table salt dissolve in water before or after separating into sodium cations and chloride anions?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Table salt dissolves in water and dissociates into positively charged sodium ions and negatively charged chloride ions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "f795453bf2ee7f97372cc4b9d8bad858e0ec4dda982d7f003360c18fc5bb0023",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-14",
+    "prompt": "In a conventional wastewater plant, does sludge dewatering occur before or after sludge thickening?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Sludge thickening precedes dewatering in the conventional solids handling sequence."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "d0b076ecc801f63ac9e6ede97fb3dc05abd1a7c338f0222566735f1cc9a828b8",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-wastewater",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class3-wastewater-r01-m5-15",
+    "prompt": "In a conventional wastewater plant, does land application of stabilized biosolids occur before or after sludge thickening?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Land application is the final end-use step, occurring after thickening, stabilization, and dewatering."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+    "notes": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+    "registeredAt": "2026-11-19T02:44:18.794Z",
+    "payloadSha256": "ea3a1c1788abaf8d342ef0e991942d4e2a956c450207ceb973bdeb9727ea3fde",
+    "builderResultsSha256": "a75c0bb6f2dec7237c018f7c46ddd37975a6f7755ac6b1b6dc1caaabdf32e2f7"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T02:43:10.941714+00:00",
+   "attestation": "Strict AI self-review of all 70 authored native game payloads for wpi-class3-wastewater against supplied source pages, evidence, and collision candidates; all 70 items accepted.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-01": "94efbd2b55b3c9cc336ccdfc1ee88c73a12c0940887fd08f64eb7225bbd670bc",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-02": "291fb5085f7aa3304303166bf94d712b70de6799ff4f18802ba253772f9bb062",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-03": "283f73df0842c8735462da3e5afbcd56b2fc759a9eb28b1831c470c3cd4cafbb",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-04": "91506ab1659c64af2060ace19f2059804979b43842d8e059d527605c2da7edd5",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-05": "4beb531aad4fb4684dcac62cd0cadc5c125661e4fa53a63696f0e96cda53cbb8",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-06": "649a4433cc414da8da483c1f4055ba1f149dfa17e03ef4f1f6864bfd353f72c3",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-07": "1b36123d47d4a6b077cfc4f768e58fe588aff2e92ef51cb3bf48871877ed6d08",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-08": "370d7a288686470894adf9d8b1af5075081b1d49bbb6d747d94466e05fe2a346",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-09": "9dee7c8282be885cba32505e7c295d0bf42b73877088e893129817f68bed032a",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-10": "03de197c2b721e5b514457eef9d885d09b84d6fadd44be20e1b941c40ab90690",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-11": "247941ee986452f8f392a165a58784f3fe3ca75543feb5d50f98ade0dd986c0a",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-12": "23c4032c9c56066cbcc1d21c0a140c143125f9cf29701303d55c3285981d50f1",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-13": "734cf43488f2e36f8a9fc280fadf2e3646b59930bb16863efc3eea9da575b425",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-14": "57424abcf8f7b413bde609578154f31dea5f01914c734b4c0e7b347c5ca932f6",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m0-15": "ba2de23ea7d12f57b13c95fe5e5e27e1c594f186743fc9d4b47b9d350d967763",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-01": "f408550659b064a572da00110eb3427f40ea8468425482393dcf7fa5e198af1b",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-02": "9fca4a0c3d69a63a827142628d3e164f874950bd32b5772b9d7fb8f0778c8f33",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-03": "f2d956b99009b308eaf85b05f684b4544bdca395c3ca594353f55ff2b9827d9e",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-04": "bbe1f071187a29fd8f5136a61b649f2ce8899087a8b1ef3aa73925b35cf24446",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-05": "a9a5a0ed69f64abf6b2e2fe0e388b092f18aa32187d6a4e3c83e676c6ac22bcf",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-06": "eb3c54faf97ede50c13ac7430703d7f4b79c1f0f5ebef27afbbade8e3988894d",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-07": "d64ece862a2d449ebac8cd9e6d5c04ec479a10bef6f127167e84a6ab03110e49",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-08": "fc19cd5beba338aa7606f30ecfd348a6e90e033b24187ad94dcdf3c23bbc32f0",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-09": "1f359d66d5a5f5efe1b52409833a26670c1c5acc8fcd855a802bde9fb198b22a",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m1-10": "31e635630d511888b4d7621e24f4aecaa67cff9728c8aa213ad239cf65c930bc",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-01": "707fa1a675ee1e4c37034b1acd22b5c8817e54f2aba251b61507d1691e258798",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-02": "931d3f1473bd53fdf5fb9a3d3cb90dc7915da322e6a998ab01b1922689609911",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-03": "b80efe9064595b650918ceae8cfb1e9365cc944dc163d023b9af7782fcf5ad20",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-04": "b59a70a3b1a3c6b27154f1d4108e2cd3fe073e2e2a66e34ebb57b3d5c78f4c85",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-05": "06a77b6a25a80a024e15433a4c1371e9f98ab1f10717525ac3d043387167c41a",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-06": "2c982536a8a3d565765be5a21e4496906f539746eb2f81478cb9c65cb70530fc",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-07": "43f9f27fa75edfb726571758dc8f96f5dbb554859d9f356b7247f2a246ffd667",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-08": "029640f6a38819cdffddc8690fd6a0c26fcbf4503c93c0c7154072722780bb6e",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-09": "c5f805dc5c30a25f4da3b24a887352b947dc4222983a9ff66d8fa20a8dcf2032",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-10": "3136eb7e6518eea0b5676c17e2ce57680e809c0f64034a55eaa664185b539362",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-11": "10c74270312292a67c3ed8c460f8ebf6d77effce3bbe7460519b49fc80471950",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-12": "60b5e6d81e1b8464d96ca4eeff7a8abda65728702ad9367de370fff9d3cb48fa",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-13": "045fa958e08c268688ccef10a71e506f58c5a04309ebc90840aafeb2e80e9e23",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-14": "ae64987423a8432ea77f28842da1fcb316bce2b8df121349769ff6404ebec160",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m3-15": "7c2be0563ea4f5f0aafd6b482356c5191c166a1bc0005f5414eaa2442d5b2d57",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-01": "5d4424c4fb5e8df38f2aceb3276254f99ec13221549f91a4add78139c4d9edff",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-02": "6f50a7ac0e61f45f5db2dfa1f255fb1a89a8fc377de504b00a13ba10ea9d0305",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-03": "d15dac2b8bbcd543f33a2cf2a10d2ed0e2efcdc8ac26f8a7be0461d9e153b2cb",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-04": "a294858e6f0c4faca8e387209cea0bc644c7a4159a5585be02a29c988c685671",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-05": "cb2bf3f2677636e0a415d3fa8ffcfe901a7ad6df7373ef3ad88c6ffcb6b2fc83",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-06": "45671a90e1767839309b633dfa914094e3a405ed0062f8d9957f56c3a4247388",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-07": "a546c7b776a86084d2ae32448d33363c60c6c4cebbcd61b406b7ef0b79bdbcc8",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-08": "c05d3a17e0885eb86dbb739247303469a2a98ee8e2d8dceb1fbadc49aee42e40",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-09": "bd5dff3ca2203a200a3bfcb959d580b0947fced7454965fa9f2bee34faaad2d6",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-10": "202e60dd1e4542d343bb50ce991358f7024ebce119f3b4708e963874db547976",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-11": "077300667b5c6afced62cad6922c66318dbeb0d8bc4b448e82364cae03774d3b",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-12": "84eaba3864f8e31c2721b207498ae28ae3b82b54a5e65ef43e15ebdb46cd5fce",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-13": "180a03fda55eb50cd4c01efcbd3fb8457b90436759841d0d5d3a3193515cc7ea",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-14": "62c04f40fd173f6e487254141ecbb59dbf401ddbed6f0673cc44bd61fe9d6faa",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m4-15": "b61ab8b66efc1df210bafdfda0f8ce3b47151359fdec981e5148c4c452e2bf50",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-01": "3e917fb4fb63ffbe0a099c53809af84de39d81d3114ec8030991a83078ef7aa3",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-02": "541cb6c03e5d14d11fac91554f201435b51dc022eb03de5b187f2d9fd3bccad4",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-03": "4ece85966ef69faed1cade958e7bcbd69b0b26d0de2a76e7db3ddff555c7109c",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-04": "e7069ec41833bc75fc6e70e58707d4591ad2916862b59e87946b7f248778263e",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-05": "92d598dd3dbca4895fc31471f56e0d1377418a329ee479b08c4efbb6a34fb36f",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-06": "8710c4d1986ed2c55db38eea1d62e1138a69d70904408cf173bbb26b4daa876e",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-07": "8f047284d9454bc50e038d88f756259d876c3d44fa75466ad3502a8f618a3647",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-08": "37559eec334ddc040a9ba3848683bcecda2630a9c8a101bd45d7085e0a955dab",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-09": "a552ad8849c0523092d84fbfcdefdea7dca415878e295ccb047ccf285d0dd437",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-10": "3559d885944a0ea93eed4a4afc92d69b63b7aed7813efc2f73b4187f93b35e14",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-11": "3d7355e969bda65c3b15eca93de3d687e3c84c13ba3d9cc803ed07997574b93a",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-12": "397e52442d2fdf4dcad6dc1fa81a926e51bf3da44b93cacbce0bd8869d97c25c",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-13": "f795453bf2ee7f97372cc4b9d8bad858e0ec4dda982d7f003360c18fc5bb0023",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-14": "d0b076ecc801f63ac9e6ede97fb3dc05abd1a7c338f0222566735f1cc9a828b8",
+    "targeth-ht261118-wpi-class3-wastewater-r01-m5-15": "ea3a1c1788abaf8d342ef0e991942d4e2a956c450207ceb973bdeb9727ea3fde"
+   }
+  },
+  "registeredAt": "2026-11-19T02:44:18.794Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 8,
+     "f": 7
+    },
+    "dirs": {
+     "increase": 7,
+     "decrease": 6,
+     "unchanged": 2
+    },
+    "longest": 9,
+    "options": 30
+   },
+   "batchSha256": "01e8b897807d98945319dcd271460676c3ad700f8cdc940db4b52a4558d01c5a"
+  }
+ }
+}

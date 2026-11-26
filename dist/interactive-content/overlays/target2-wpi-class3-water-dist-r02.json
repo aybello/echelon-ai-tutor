@@ -1,0 +1,1290 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "target2-wpi-class3-water-dist-r02",
+ "scope": "Owner-authorized AI-reviewed game activities: 38 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-01",
+    "prompt": "A wafer-style butterfly valve is designed to fit directly between pipeline flanges.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Butterfly valves come in flanged or wafer designs, and the wafer style fits directly between opposing pipeline flanges."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "eebeca9f234eda251e280d955d8d0a5c6af9049af9e7510a874f10bbb8bfea4c",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-02",
+    "prompt": "A diaphragm valve uses a packed stem gland to isolate fluid from the external bonnet.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Diaphragm valves are glandless designs that rely on a flexible elastomeric diaphragm as the closing member."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "34f50cc8ad42381c43865599c508caee78df60ce99d2cab401c6918bf0d7feae",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-03",
+    "prompt": "Check valves are commonly referred to as nonreturn or reflux valves in piping systems.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because they open with forward flow and close under reverse flow, check valves are also called nonreturn or reflux valves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "eb78b95881298287c63f808d9ece0beff6a03c3d50fbab839f54616a744a5c47",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-04",
+    "prompt": "A butterfly valve restricts flow to one pipeline direction and fails to control reverse flow.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Butterfly valves are compact bidirectional valves capable of controlling flow in either direction along a pipeline."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "7552347fd5bd83540232bc4853aa4b31ba6e66ea90b84714d74b2ae1e2f7095f",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-05",
+    "prompt": "When sodium chloride dissolves in water, the resulting sodium ion is a positively charged cation.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Dissolved table salt forms positively charged sodium cations and negatively charged chloride anions."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "81cddc234aa4d79bad1ebe5c1542616a98107d32b1230548059f56e453d777b8",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-06",
+    "prompt": "During self-ionization of water, the water molecule that loses a hydrogen ion becomes a positively charged hydronium ion.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Losing a hydrogen ion leaves a negatively charged hydroxide ion, whereas gaining a hydrogen ion forms a hydronium ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "5ff330207c61b5d4053af0b57eb0cf21b1987c70cf154a6d4c222eac93444cab",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-07",
+    "prompt": "Colloidal particles in water are smaller than one micron in diameter and pass through a standard suspended-solids filter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Colloids are finely divided solids under one micron that remain dispersed and pass through standard laboratory filters."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "2860617776094c3387ea010958747a97539f7847cffb02f2ec26c5b536f6484f",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-08",
+    "prompt": "Chemical reactions between water molecules and added treatment chemicals alter the protons inside atomic nuclei.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Ordinary chemical reactions involve outer electrons without changing atomic nuclei."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "21a036d8b48a2d170a5a404e8c61a73836ade8e3dc45c6f75466b5a3de58ae8e",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-09",
+    "prompt": "Copper sulfate is an inorganic salt applied in waterworks operations to control algae in water.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Copper sulfate is a common inorganic salt intentionally added in waterworks operations to kill algae."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "ed1f7aae0a8eba289c60f89a7799a8f0996ce25c7616e9f71fc37360cdc9c42f",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-11",
+    "prompt": "Neutralization between an acid and a base produces water along with an inorganic compound classified as a salt.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Acids and bases neutralize each other to yield water and a salt."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "e1aeb46303904f6b4f2114c718da300a8974f3fa39fd3d9f1f2205cfd251d9f6",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-12",
+    "prompt": "Seawater is slightly more acidic and has a lower pH than typical natural freshwater.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Seawater is slightly more basic than most natural freshwater, giving it a higher pH value."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "ca74f0a7dec028d78267fce4b3e4e133c52a7930f522216eb5bee85e8ae5ab97",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-13",
+    "prompt": "In dilute aqueous solutions, one part per million by mass is approximately equal to one milligram per liter.",
+    "mode": "rapid-swipe",
+    "correctAnswer": true,
+    "explanation": "Because one liter of dilute water solution has a mass near one kilogram, 1 ppm approximates 1 mg/L."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "562d207dd05bcaa90305c49d06e91d442175ecc6cce4ba846b425fb9142e531d",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m0-14",
+    "prompt": "A liquid expands or compresses freely to fill containers of variable volume when transferred.",
+    "mode": "rapid-swipe",
+    "correctAnswer": false,
+    "explanation": "Liquids take the shape of their container up to their liquid level while keeping a definite volume at fixed temperature and pressure; gases expand to fill containers."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "41ed3a07e59e0668ec0cb1cca5ff444181be8d6377d0a7cfd9ba3ee2895da4c6",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m1-01",
+    "prompt": "Match each valve category or component to its mechanical design principle.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Butterfly valve disk",
+      "right": "Rotates parallel to pipe axis when open and stays in the flow path"
+     },
+     {
+      "id": "p2",
+      "left": "Wafer valve body",
+      "right": "Clamped directly between opposing pipeline flanges"
+     },
+     {
+      "id": "p3",
+      "left": "Reflux valve",
+      "right": "Opens by forward flow pressure and closes on flow reversal"
+     },
+     {
+      "id": "p4",
+      "left": "Quick-opening valve",
+      "right": "Uses a lever instead of a threaded stem for rapid on-off action"
+     },
+     {
+      "id": "p5",
+      "left": "Diaphragm valve",
+      "right": "Glandless body closed by a flexible elastomeric disk"
+     },
+     {
+      "id": "p6",
+      "left": "Ball-type vacuum breaker",
+      "right": "Spring-held ball drops into a retainer tube to admit air under vacuum"
+     }
+    ],
+    "explanation": "Conveyance valves differ by whether closure uses a rotating disk, flexible diaphragm, flow-driven check, lever stem, or spring-loaded vacuum ball."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "4e8476f934acf1c058d307ef9d8ef35ad130fbea071e181600ab9dd8201a457c",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m1-02",
+    "prompt": "Match each aqueous solution chemistry term to its physical definition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solvent",
+      "right": "Liquid component that dissolves another substance"
+     },
+     {
+      "id": "p2",
+      "left": "Solute",
+      "right": "Substance dissolved into a dispersing medium"
+     },
+     {
+      "id": "p3",
+      "left": "Saturated solution",
+      "right": "Liquid state unable to dissolve additional solute"
+     },
+     {
+      "id": "p4",
+      "left": "Precipitate",
+      "right": "Formerly dissolved solid separated by chemical or physical change"
+     },
+     {
+      "id": "p5",
+      "left": "Miscible pair",
+      "right": "Substances dispersing uniformly in each other in arbitrary proportions"
+     },
+     {
+      "id": "p6",
+      "left": "Immiscible pair",
+      "right": "Liquids such as water and mercury that remain separate phases"
+     }
+    ],
+    "explanation": "Solution behavior depends on solvent capacity, saturation limits, phase separation, and miscibility."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "817f7d3aeef9724655d9808c2474b7d85b7353de99e7b176172c7361723f7efa",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m1-04",
+    "prompt": "Match each subatomic or ionic species to its charge or structural role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Proton",
+      "right": "Positively charged particle contributing mass inside the nucleus"
+     },
+     {
+      "id": "p2",
+      "left": "Neutron",
+      "right": "Uncharged nuclear particle contributing to atomic weight"
+     },
+     {
+      "id": "p3",
+      "left": "Electron",
+      "right": "Negatively charged orbiting particle active in chemical bonding"
+     },
+     {
+      "id": "p4",
+      "left": "Cation",
+      "right": "Positively charged ion such as dissolved calcium or sodium"
+     },
+     {
+      "id": "p5",
+      "left": "Hydronium ion",
+      "right": "Positively charged species formed when water gains a hydrogen ion"
+     },
+     {
+      "id": "p6",
+      "left": "Hydroxide ion",
+      "right": "Negatively charged species left when water loses a hydrogen ion"
+     }
+    ],
+    "explanation": "Atomic mass resides in nuclear protons and neutrons, while electron transfer and proton exchange form ions in water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "285e0dc31a0bfd26e1c2beea0c78c03fd00a927a52b01118284bc48c3bf7544f",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m1-05",
+    "prompt": "Match each state of matter or chemical class to its behavior in water chemistry.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Solid state",
+      "right": "Maintains both fixed shape and definite volume"
+     },
+     {
+      "id": "p2",
+      "left": "Liquid state",
+      "right": "Maintains definite volume while taking its container shape"
+     },
+     {
+      "id": "p3",
+      "left": "Gaseous state",
+      "right": "Expands or compresses freely with no fixed shape or volume"
+     },
+     {
+      "id": "p4",
+      "left": "Organic substance",
+      "right": "Carbon-structured compound of animal or plant origin"
+     },
+     {
+      "id": "p5",
+      "left": "Inorganic salt",
+      "right": "Mineral compound formed when an acid neutralizes a base"
+     },
+     {
+      "id": "p6",
+      "left": "Dissolved carbon dioxide",
+      "right": "Aqueous gas released by microbes that influences pH and alkalinity"
+     }
+    ],
+    "explanation": "Physical states govern volume and shape, whereas carbon structure, acid-base neutralization, and dissolved gases govern water chemistry."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "7f45b4a78a5efed52504fc0689a211502a0e69628df58b68256eca6aabf86ca1",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-01",
+    "prompt": "In a straight water main at constant volumetric flow rate, a full-port gate valve is replaced by a butterfly valve of matching nominal diameter, leaving a rotating disk in the open flow path. What happens to the pressure loss across the valve location?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Because a butterfly valve disk remains in the fluid stream when fully open, it creates greater turbulence and pressure loss than a gate valve."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "d61d1924fbdb38ff79a92125826b27f83d1f0109599d658bde29e62fcb8ef9ea",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-02",
+    "prompt": "Inside a pipeline protected by a spring-loaded ball vacuum breaker, line pressure drops below atmospheric pressure and creates a partial vacuum above the retainer tube. What happens to the air flow entering the piping from outside?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "A partial vacuum pulls the ball down against its spring into the retainer tube, opening the port so atmospheric air flows into the pipe."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "a49b6631e5a4775462834656e567515cfb2db9264c1791425478a9f6daa2dee7",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-03",
+    "prompt": "Additional crystalline salt is stirred into an already saturated aqueous salt solution held at constant temperature and pressure with no chemical reaction. What happens to the dissolved solute concentration of the liquid phase?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "A saturated solution has reached its solubility limit at those conditions and will not dissolve further solute."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "3ad547cf2461733127bf0dee57acf40fc0b7f9927dcaded9f77f7c6641643c87",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-04",
+    "prompt": "Fine suspended silt enters a clear water line while dissolved mineral concentration remains unchanged. What happens to the scattering and absorption of light rays passing through a sample of the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Suspended matter causes turbidity, which directly increases the scattering and absorption of light rays."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "73ae8005a497bcbf9b29d934745a09f4ca133ef4920932ab992bd4a099a65832",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-05",
+    "prompt": "A chemical shift in water pH causes a portion of a dissolved mineral to separate out of solution as a solid precipitate in a closed vessel. What happens to the mass of that mineral remaining dissolved in the liquid phase?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Precipitation converts formerly dissolved solute into a separate solid phase, lowering the dissolved mass remaining in solution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "86168a24bf715b9f722c346f8592341111209e583a71a124c7c9944f5d676ff7",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-08",
+    "prompt": "Acidic drainage from an abandoned coal mine enters a neutral freshwater stream without buffering. What happens to the pH value of the receiving stream water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Acidic mine drainage has a very low pH and lowers the pH value of neutral water."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "f2e7f8e4b71d66fa59b843fbc876c682c488bfad4ff7f9d9c9c7f38ce97c1a7f",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-09",
+    "prompt": "Solid calcium carbonate dissolves and ionizes in pure mineral-free water inside a clean glass vessel. What happens to the concentration of positively charged calcium cations in the water?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o1",
+    "explanation": "Ionization of calcium carbonate releases positively charged calcium cations and negatively charged carbonate anions into solution."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "8c9167fb862a3be47fdf10f78ac0e5b2b4cb00cade53b2c25c88ff410ee17869",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m3-10",
+    "prompt": "A raw water sample containing suspended river silt and dissolved mineral salts passes through a standard laboratory suspended-solids filter. What happens to the suspended-solids content remaining in the filtrate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "o1",
+      "label": "It increases"
+     },
+     {
+      "id": "o2",
+      "label": "It decreases"
+     },
+     {
+      "id": "o3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Standard filtration retains suspended solids on the filter while allowing dissolved and colloidal solids to pass through."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "8205680554b5633d3206e94581df423e779c2e5a07694267178a246f71c61db2",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-01",
+    "prompt": "An operator is reviewing conveyance valve mechanics for plant and distribution piping. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "A butterfly valve disk stays in the fluid stream when open, creating higher head loss than a gate valve."
+     },
+     {
+      "id": "o2",
+      "label": "A wafer-type butterfly valve is compact and fits directly between pipeline flanges for bidirectional control."
+     },
+     {
+      "id": "o3",
+      "label": "A diaphragm valve relies on a deep packed stem gland to seal line pressure away from the valve actuator."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Diaphragm valves are glandless valves that isolate and stop flow with a flexible elastomeric diaphragm rather than stem packing."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "7c8b0d64c4923cf725b4f2e98c51a36912ef244a6f7e893a5aef532a25a0edc0",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-02",
+    "prompt": "A technician is explaining how a spring-loaded ball vacuum breaker prevents backsiphonage. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Under normal positive pressure, a spring holds the internal ball up against its seat to seal the piping."
+     },
+     {
+      "id": "o2",
+      "label": "When a partial vacuum develops, the ball is forced tighter against the upper seat to block air entry."
+     },
+     {
+      "id": "o3",
+      "label": "Admitting atmospheric air between the cross-connection and vacuum source breaks the siphon in the line."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "A partial vacuum pulls the ball down into the retainer tube against the spring so air enters the pipe and breaks the vacuum."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "09790c6b2d1e6d8d1262de10c2a5271d4ed08747171d189b8e3054139a76c938",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-03",
+    "prompt": "A trainee is comparing miscibility and solubility in basic water chemistry. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Water and alcohol mix uniformly in varying proportions and are described as miscible liquids."
+     },
+     {
+      "id": "o2",
+      "label": "Water and liquid mercury form a uniform single-phase molecular dispersion when stirred together."
+     },
+     {
+      "id": "o3",
+      "label": "Many environmental contaminants dissolve in water up to a limited proportion measured in parts per million."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Water and liquid mercury are immiscible liquids and do not disperse uniformly into a single phase."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "b52e048aeb05e5ba4d404ff958729d74407b562c427e53ca1989f77f44b89fb9",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-04",
+    "prompt": "During a laboratory review on solids in water, three notes are compared. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Total solids represent the combined suspended and dissolved matter left behind after water evaporates."
+     },
+     {
+      "id": "o2",
+      "label": "Colloidal solids are finely divided particles smaller than one micron that pass through standard filters."
+     },
+     {
+      "id": "o3",
+      "label": "Dissolved mineral salts are nonpolar particles retained on the filter pad during a suspended-solids test."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Dissolved solids pass through laboratory filters; nonpolar particles such as silt make up undissolved suspended solids."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "1d1ac02ef0922229b152cb5007a199ec7a060a625e6a81bb3926d7dc8c0d7658",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-05",
+    "prompt": "An instructor is reviewing ions and self-ionization in water. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "When table salt dissolves in water, sodium forms a positive cation and chloride forms a negative anion."
+     },
+     {
+      "id": "o2",
+      "label": "A water molecule that gains a hydrogen ion becomes a negatively charged hydroxide ion in solution."
+     },
+     {
+      "id": "o3",
+      "label": "Calcium carbonate ionizes into positively charged calcium ions and negatively charged carbonate ions."
+     }
+    ],
+    "correctOptionId": "o2",
+    "explanation": "Gaining a hydrogen ion produces a positively charged hydronium ion, while losing one leaves a negatively charged hydroxide ion."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "4bb1eea28a715d66af2b60597bae30fa2d4e88959a468f2edc700b1c239e712d",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-07",
+    "prompt": "A study group is reviewing atomic structure and chemical formulas. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Atomic weight equals the combined number of protons and neutrons inside the nucleus of an atom."
+     },
+     {
+      "id": "o2",
+      "label": "Electrons carry negligible mass compared with protons and participate in chemical reactions between atoms."
+     },
+     {
+      "id": "o3",
+      "label": "Chemical reactions between treatment compounds rearrange protons and neutrons inside atomic nuclei."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Chemical reactions involve orbiting electrons without altering protons or neutrons in the nucleus."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "5d24772dbbe82fc830def3b8ebc41aea70d59b584d52fd303bc3ad5dff8c789f",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m4-10",
+    "prompt": "Three statements describe quick-opening valves and check valves in water facilities. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "o1",
+      "label": "Quick-opening valves replace a threaded stem with a lever to provide rapid on-off operation at deluge showers."
+     },
+     {
+      "id": "o2",
+      "label": "Check valves are driven open by forward flow pressure and pushed closed when flow reverses direction."
+     },
+     {
+      "id": "o3",
+      "label": "Check valves require multi-turn manual handwheels to stop reverse flow during sudden pump shutdowns."
+     }
+    ],
+    "correctOptionId": "o3",
+    "explanation": "Check valves (nonreturn or reflux valves) operate by fluid flow direction itself rather than manual multi-turn stems."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "f929b8f3a89a3668a8faa4216eace8c38013a95520eec77a6e76ae2173691d5e",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m5-01",
+    "prompt": "In the mechanical operation of a spring-loaded ball-type vacuum breaker after a pipeline vacuum event ends, does the spring returning the ball to seal against its upper seat occur before or after atmospheric air enters the piping to break the vacuum?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Atmospheric air enters while the ball is pulled down into the retainer tube; once the vacuum is broken, the spring returns the ball to seal the seat."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "a88b166e50764491cce2d0f646f287c4620293e8d49e3f8dbb6e42937e4aa97c",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m5-02",
+    "prompt": "In an instrumental chemical test that measures a bulk physical property of a water sample, is calibrating the instrument performed before or after performing the sample measurement?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Instrument calibration precedes running the sample measurement so the physical reading is accurate."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "88a8170dc545f3471141f7ef24f88a71663819f8ab4e78080371ab10c410dfdf",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m5-03",
+    "prompt": "In the formation of a solid chemical precipitate from an aqueous solution, does dissolving the substance into solution occur before or after a pH or temperature shift separates the solid phase?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "A precipitate is a previously dissolved solute that separates from solution when chemical conditions such as pH or temperature change."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "5a0dc323d66cb79897535ef5de7b0b626373f1a327ccc128c383b7e88cb6d150",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m5-04",
+    "prompt": "In the laboratory gravimetric determination of total solids in an unfiltered water sample, is weighing the remaining solid residue done before or after removing the liquid water by evaporation?",
+    "mode": "before-after",
+    "correctAnswer": "after",
+    "explanation": "Total solids are the suspended and dissolved solids remaining behind after the water has been removed by evaporation."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "ad04c168c915a42cfe1ae4e0a1b23cc4100eceb3464b39aa388f86c10b8e68f2",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m5-05",
+    "prompt": "During closure of a butterfly valve from its full open position in a pressurized water main, is the disk aligned parallel to the pipe axis before or after the disk edge seats against the rubber gasket?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "In the full open position the disk sits parallel to the pipe axis, and rotating the shaft seats the disk against the rubber gasket to close."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "e90fe270141f55b2db38d1f803aa086b891bf455301ea7369835fededfcb102e",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  },
+  {
+   "courseKey": "wpi-class3-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "target2-ct261118-wpi-class3-water-dist-r02-m5-06",
+    "prompt": "In the progressive dissolution of a soluble salt added incrementally to pure water at constant temperature, does forming an unsaturated solution occur before or after reaching a saturated solution state?",
+    "mode": "before-after",
+    "correctAnswer": "before",
+    "explanation": "Solute dissolves up to its solubility limit before the liquid reaches the saturated state where no additional solute dissolves."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-carbon",
+    "model": "gemini-4-carbon",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+    "notes": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+    "registeredAt": "2026-11-19T02:27:32.087Z",
+    "payloadSha256": "939e04fb252fbd75b95881285806dbb00450ebcb37ee37608186433179f0a5cf",
+    "builderResultsSha256": "bf0a454ba28b7be59fe1cd0771a221110ca39f25767fd62398119057c1261fbe"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-carbon",
+   "reviewedAt": "2026-11-19T02:25:15.159706+00:00",
+   "attestation": "Strict Carbon self-review completed against supplied Handbook pages, peer collision candidates, and intra-batch items for wpi-class3-water-dist; 38 exact items accepted and 7 rejected.",
+   "payloadSha256": {
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-01": "eebeca9f234eda251e280d955d8d0a5c6af9049af9e7510a874f10bbb8bfea4c",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-02": "34f50cc8ad42381c43865599c508caee78df60ce99d2cab401c6918bf0d7feae",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-03": "eb78b95881298287c63f808d9ece0beff6a03c3d50fbab839f54616a744a5c47",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-04": "7552347fd5bd83540232bc4853aa4b31ba6e66ea90b84714d74b2ae1e2f7095f",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-05": "81cddc234aa4d79bad1ebe5c1542616a98107d32b1230548059f56e453d777b8",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-06": "5ff330207c61b5d4053af0b57eb0cf21b1987c70cf154a6d4c222eac93444cab",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-07": "2860617776094c3387ea010958747a97539f7847cffb02f2ec26c5b536f6484f",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-08": "21a036d8b48a2d170a5a404e8c61a73836ade8e3dc45c6f75466b5a3de58ae8e",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-09": "ed1f7aae0a8eba289c60f89a7799a8f0996ce25c7616e9f71fc37360cdc9c42f",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-11": "e1aeb46303904f6b4f2114c718da300a8974f3fa39fd3d9f1f2205cfd251d9f6",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-12": "ca74f0a7dec028d78267fce4b3e4e133c52a7930f522216eb5bee85e8ae5ab97",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-13": "562d207dd05bcaa90305c49d06e91d442175ecc6cce4ba846b425fb9142e531d",
+    "target2-ct261118-wpi-class3-water-dist-r02-m0-14": "41ed3a07e59e0668ec0cb1cca5ff444181be8d6377d0a7cfd9ba3ee2895da4c6",
+    "target2-ct261118-wpi-class3-water-dist-r02-m1-01": "4e8476f934acf1c058d307ef9d8ef35ad130fbea071e181600ab9dd8201a457c",
+    "target2-ct261118-wpi-class3-water-dist-r02-m1-02": "817f7d3aeef9724655d9808c2474b7d85b7353de99e7b176172c7361723f7efa",
+    "target2-ct261118-wpi-class3-water-dist-r02-m1-04": "285e0dc31a0bfd26e1c2beea0c78c03fd00a927a52b01118284bc48c3bf7544f",
+    "target2-ct261118-wpi-class3-water-dist-r02-m1-05": "7f45b4a78a5efed52504fc0689a211502a0e69628df58b68256eca6aabf86ca1",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-01": "d61d1924fbdb38ff79a92125826b27f83d1f0109599d658bde29e62fcb8ef9ea",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-02": "a49b6631e5a4775462834656e567515cfb2db9264c1791425478a9f6daa2dee7",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-03": "3ad547cf2461733127bf0dee57acf40fc0b7f9927dcaded9f77f7c6641643c87",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-04": "73ae8005a497bcbf9b29d934745a09f4ca133ef4920932ab992bd4a099a65832",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-05": "86168a24bf715b9f722c346f8592341111209e583a71a124c7c9944f5d676ff7",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-08": "f2e7f8e4b71d66fa59b843fbc876c682c488bfad4ff7f9d9c9c7f38ce97c1a7f",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-09": "8c9167fb862a3be47fdf10f78ac0e5b2b4cb00cade53b2c25c88ff410ee17869",
+    "target2-ct261118-wpi-class3-water-dist-r02-m3-10": "8205680554b5633d3206e94581df423e779c2e5a07694267178a246f71c61db2",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-01": "7c8b0d64c4923cf725b4f2e98c51a36912ef244a6f7e893a5aef532a25a0edc0",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-02": "09790c6b2d1e6d8d1262de10c2a5271d4ed08747171d189b8e3054139a76c938",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-03": "b52e048aeb05e5ba4d404ff958729d74407b562c427e53ca1989f77f44b89fb9",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-04": "1d1ac02ef0922229b152cb5007a199ec7a060a625e6a81bb3926d7dc8c0d7658",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-05": "4bb1eea28a715d66af2b60597bae30fa2d4e88959a468f2edc700b1c239e712d",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-07": "5d24772dbbe82fc830def3b8ebc41aea70d59b584d52fd303bc3ad5dff8c789f",
+    "target2-ct261118-wpi-class3-water-dist-r02-m4-10": "f929b8f3a89a3668a8faa4216eace8c38013a95520eec77a6e76ae2173691d5e",
+    "target2-ct261118-wpi-class3-water-dist-r02-m5-01": "a88b166e50764491cce2d0f646f287c4620293e8d49e3f8dbb6e42937e4aa97c",
+    "target2-ct261118-wpi-class3-water-dist-r02-m5-02": "88a8170dc545f3471141f7ef24f88a71663819f8ab4e78080371ab10c410dfdf",
+    "target2-ct261118-wpi-class3-water-dist-r02-m5-03": "5a0dc323d66cb79897535ef5de7b0b626373f1a327ccc128c383b7e88cb6d150",
+    "target2-ct261118-wpi-class3-water-dist-r02-m5-04": "ad04c168c915a42cfe1ae4e0a1b23cc4100eceb3464b39aa388f86c10b8e68f2",
+    "target2-ct261118-wpi-class3-water-dist-r02-m5-05": "e90fe270141f55b2db38d1f803aa086b891bf455301ea7369835fededfcb102e",
+    "target2-ct261118-wpi-class3-water-dist-r02-m5-06": "939e04fb252fbd75b95881285806dbb00450ebcb37ee37608186433179f0a5cf"
+   }
+  },
+  "registeredAt": "2026-11-19T02:27:32.087Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 7,
+     "f": 6
+    },
+    "dirs": {
+     "increase": 4,
+     "decrease": 3,
+     "unchanged": 1
+    },
+    "longest": 2,
+    "options": 15
+   },
+   "batchSha256": "99f9ded13d97c5f0b6d6e5434805fadd9e36ea5be4b53609ddcf320b7e4b5563"
+  }
+ }
+}

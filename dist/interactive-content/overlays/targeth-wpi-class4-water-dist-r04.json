@@ -1,0 +1,594 @@
+{
+ "format": "interactive-overlay-v2",
+ "overlayId": "targeth-wpi-class4-water-dist-r04",
+ "scope": "Owner-authorized AI-reviewed game activities: 10 items.",
+ "additions": [
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-01",
+    "prompt": "Distinguish each pump protective or vibration monitoring instrument by its measurement function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "RTD temperature sensor",
+      "right": "Flexible small sensor placed near bearings for logging"
+     },
+     {
+      "id": "p2",
+      "left": "Dial thermometer",
+      "right": "Monitors oil thrown from pump or motor bearings"
+     },
+     {
+      "id": "p3",
+      "left": "Seismic pickup",
+      "right": "Dual-setpoint vibration sensor on outboard pump housing"
+     },
+     {
+      "id": "p4",
+      "left": "Proximator with x-y probes",
+      "right": "Measures shaft vibration at radial and thrust bearings"
+     },
+     {
+      "id": "p5",
+      "left": "Key phasor",
+      "right": "Works with a proximator for shaft vibration analysis"
+     },
+     {
+      "id": "p6",
+      "left": "Water-jacket temperature detector",
+      "right": "Warns against cooling water supply failure at bearings"
+     }
+    ],
+    "explanation": "Large pumps use specialized temperature and shaft-vibration sensors to detect bearing overheating, cooling failure, and mechanical vibration."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "6d32adda8a4f6ffec9054db070d4f4646c093c7c601e21c9502762d5e71e61f4",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-02",
+    "prompt": "Distinguish each submersible, recessed-impeller, or turbine pump characteristic by its operational effect.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Recessed impeller",
+      "right": "Passes larger solids with lower hydraulic efficiency"
+     },
+     {
+      "id": "p2",
+      "left": "Submerged pump assembly",
+      "right": "Eliminates dry-well construction and initial priming"
+     },
+     {
+      "id": "p3",
+      "left": "Additional impeller-bowl stages",
+      "right": "Increases the total head a turbine pump produces"
+     },
+     {
+      "id": "p4",
+      "left": "Vertical turbine pump",
+      "right": "Offers high head and low noise for clean service water"
+     },
+     {
+      "id": "p5",
+      "left": "Heavy solids in a turbine pump",
+      "right": "Seriously increases pump maintenance requirements"
+     },
+     {
+      "id": "p6",
+      "left": "Undersized downstream piping",
+      "right": "Allows solids passed by a recessed impeller to clog later"
+     }
+    ],
+    "explanation": "Pump geometry and placement determine solids-handling capability, priming needs, head production, and maintenance demands."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "eb2b00c28258e893c88c86e9cf2ffdc40def60d96bd57114ea7fad4088281a05",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-03",
+    "prompt": "Distinguish each piping system design consideration by the physical stress or risk it addresses.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipe wall strength",
+      "right": "Resists internal water pressure and earth or traffic loads"
+     },
+     {
+      "id": "p2",
+      "left": "Expansion and contraction allowance",
+      "right": "Protects pipelines exposed to atmospheric temperature swings"
+     },
+     {
+      "id": "p3",
+      "left": "Proper bedding and backfill",
+      "right": "Supports buried pipe evenly against external ground loads"
+     },
+     {
+      "id": "p4",
+      "left": "Flexible basin wall connection",
+      "right": "Prevents pipe failure when a massive structure settles"
+     },
+     {
+      "id": "p5",
+      "left": "Non-toxic pipe composition",
+      "right": "Prevents adverse effects on consumer health"
+     },
+     {
+      "id": "p6",
+      "left": "Corrosion and abrasion resistance",
+      "right": "Preserves pipe integrity against aggressive fluids or soils"
+     }
+    ],
+    "explanation": "Piping design balances structural strength, thermal movement, soil support, settlement protection, and material safety."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "b35d671b65a8400c45f4c1ecf080f6544e487544fd7c0fab0d5d6b4298e0bb72",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-04",
+    "prompt": "Distinguish each plant piping system concept or diagram type by its engineering role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Single-line diagram",
+      "right": "Uses schematic symbols like an electrical drawing"
+     },
+     {
+      "id": "p2",
+      "left": "Double-line diagram",
+      "right": "Shows a pictorial view of pipe walls, joints, and valves"
+     },
+     {
+      "id": "p3",
+      "left": "Chemical feed line",
+      "right": "Connects storage tank outlet to the point of application"
+     },
+     {
+      "id": "p4",
+      "left": "Leak-proof closed system",
+      "right": "Primary goal of plant piping maintenance"
+     },
+     {
+      "id": "p5",
+      "left": "Conveyance network",
+      "right": "Complete system of pipes, valves, and fittings"
+     },
+     {
+      "id": "p6",
+      "left": "Plant utility piping",
+      "right": "Supplies hot water, cold water, heating, and HVAC"
+     }
+    ],
+    "explanation": "Plant piping includes process, chemical, and utility lines documented through schematic single-line or pictorial double-line diagrams."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "6837578bbba4467f2d0077513360b9eae914a5e288c9ab5a41e500bf21fdb699",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-05",
+    "prompt": "Distinguish each pressure-sensing or valve device by its mechanical construction.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Bellows gauge",
+      "right": "Uses an expandable accordion-like element to measure pressure"
+     },
+     {
+      "id": "p2",
+      "left": "Bourdon tube",
+      "right": "Semicircular elliptical tube that senses pressure changes"
+     },
+     {
+      "id": "p3",
+      "left": "Butterfly valve",
+      "right": "Rotating disk on a shaft, parallel to flow when open"
+     },
+     {
+      "id": "p4",
+      "left": "Check valve",
+      "right": "Opens with normal flow and closes against flow reversal"
+     },
+     {
+      "id": "p5",
+      "left": "Globe valve",
+      "right": "Round, ball-like shell housing a horizontal disk"
+     },
+     {
+      "id": "p6",
+      "left": "Pressure-regulating valve",
+      "right": "Uses a horizontal disk to automatically reduce water pressure"
+     }
+    ],
+    "explanation": "Each gauge and valve relies on a distinct mechanical element to sense pressure, throttle flow, or prevent reversal."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "3ae6a501e70e9c03dd419845eb2efe7a3d99311d3581f87d7b7875d04dc75b47",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-06",
+    "prompt": "Distinguish each piping or hose material term by its physical composition.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Asbestos",
+      "right": "Fibrous mineral form of magnesium silicate"
+     },
+     {
+      "id": "p2",
+      "left": "Bimetallic",
+      "right": "Constructed from two different types of metal"
+     },
+     {
+      "id": "p3",
+      "left": "Cast iron",
+      "right": "Family of high carbon-silicon-iron casting alloys"
+     },
+     {
+      "id": "p4",
+      "left": "Neoprene",
+      "right": "Synthetic material resistant to oil, flame, and weathering"
+     },
+     {
+      "id": "p5",
+      "left": "Nonferrous",
+      "right": "Material classification containing no iron"
+     },
+     {
+      "id": "p6",
+      "left": "Prestressed concrete",
+      "right": "Concrete compressed with wires or rods to reduce cracking"
+     }
+    ],
+    "explanation": "Piping and hose materials vary from ferrous alloys and prestressed concrete to synthetic elastomers and nonferrous metals."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "65948e819b759aeea792a42021f2b4d13056f83c3fb18e917132bb61cfc43d2a",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-07",
+    "prompt": "Distinguish each pipe-joining or hose-manufacturing term by its structural role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Brazing",
+      "right": "Hard soldering with a lower-melting nonferrous alloy"
+     },
+     {
+      "id": "p2",
+      "left": "Carcass",
+      "right": "Reinforcement layers between a hose inner tube and cover"
+     },
+     {
+      "id": "p3",
+      "left": "Mandrel",
+      "right": "Central core or spindle around which material is shaped"
+     },
+     {
+      "id": "p4",
+      "left": "Ply",
+      "right": "One of several thin sheets or layers of material"
+     },
+     {
+      "id": "p5",
+      "left": "Joint",
+      "right": "Connection between two pipe lengths or a pipe and fitting"
+     },
+     {
+      "id": "p6",
+      "left": "Nominal pipe size",
+      "right": "Standard specification thickness to which tolerances apply"
+     }
+    ],
+    "explanation": "Pipe joining, hose layering, and standardized sizing terms define how conduits are fabricated and connected."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "79682ec8cccdd23deb06a4838a5f4f3be6e832ed50b2c3db9127b01443b79393",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-08",
+    "prompt": "Distinguish each fluid property or piping protection concept by its physical behavior.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Fluid",
+      "right": "Any substance that flows, including liquids, gases, and sludge"
+     },
+     {
+      "id": "p2",
+      "left": "Viscosity",
+      "right": "Thickness or internal resistance of a liquid to flow"
+     },
+     {
+      "id": "p3",
+      "left": "Vacuum breaker",
+      "right": "Admits air to prevent backsiphonage during a partial vacuum"
+     },
+     {
+      "id": "p4",
+      "left": "Water hammer",
+      "right": "Concussion against pipe walls from sudden flow stoppage"
+     },
+     {
+      "id": "p5",
+      "left": "Vitrified clay",
+      "right": "Kiln-treated clay with a glazed, watertight surface"
+     },
+     {
+      "id": "p6",
+      "left": "Filters and strainers",
+      "right": "Protect valves and downstream equipment from damaging solids"
+     }
+    ],
+    "explanation": "Understanding fluid behavior, pressure transients, and protective components helps operators maintain safe, intact piping."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "26533967af5ae644ec9acddf1682182344025763b67045242add9398ea64778a",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-09",
+    "prompt": "Distinguish each factor in hypochlorite-line scaling by its chemical or hydraulic role.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Sodium hydroxide (caustic)",
+      "right": "Added to hypochlorite to raise pH and extend shelf life"
+     },
+     {
+      "id": "p2",
+      "left": "Dilution water pH above 9.0",
+      "right": "Alkaline condition created by excess caustic in feed water"
+     },
+     {
+      "id": "p3",
+      "left": "Calcium and dissolved CO2",
+      "right": "React together at high pH to form mineral scale"
+     },
+     {
+      "id": "p4",
+      "left": "Calcium carbonate",
+      "right": "Hard deposit that can severely restrict feed pipe diameter"
+     },
+     {
+      "id": "p5",
+      "left": "Turbulent valve chambers",
+      "right": "Locations where scale deposition is greatest"
+     },
+     {
+      "id": "p6",
+      "left": "Chlorine stability",
+      "right": "Maintained in solution by keeping hypochlorite pH elevated"
+     }
+    ],
+    "explanation": "Excess caustic stabilizes hypochlorite but raises dilution pH, driving calcium carbonate scaling especially in turbulent fittings."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "72ed71693efe1b5c68723338e1fd473a82a6d1fa094be09d96cd8242253d7831",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  },
+  {
+   "courseKey": "wpi-class4-water-dist",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "targeth-ht261118-wpi-class4-water-dist-r04-m1-10",
+    "prompt": "Distinguish each pipe insulation or support concept by its thermal or protective function.",
+    "mode": "speed-match",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Hot-fluid pipe insulation",
+      "right": "Prevents heated fluid from cooling along the line"
+     },
+     {
+      "id": "p2",
+      "left": "Cold-fluid pipe insulation",
+      "right": "Keeps chilled fluid cold by blocking ambient heat gain"
+     },
+     {
+      "id": "p3",
+      "left": "Natural heat transfer",
+      "right": "Always moves from a warmer surface to a cooler one"
+     },
+     {
+      "id": "p4",
+      "left": "Underground insulating wrap",
+      "right": "Protects buried pipe from rusting and soil chemical corrosion"
+     },
+     {
+      "id": "p5",
+      "left": "Insulation thickness",
+      "right": "Selected according to the specific thermal application"
+     },
+     {
+      "id": "p6",
+      "left": "Pipe roll stands and anchor chairs",
+      "right": "Mechanical hardware that supports and secures piping"
+     }
+    ],
+    "explanation": "Insulation controls heat transfer and shields buried pipe from soil corrosion, while stands and chairs provide structural support."
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "gemini-4-hydrogen",
+    "model": "gemini-4-hydrogen",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+    "notes": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+    "registeredAt": "2026-11-19T03:46:02.328Z",
+    "payloadSha256": "958a52c779157402c10edebc5bfde3f5f23cdc40794a7c0b70cc7d63daddaf67",
+    "builderResultsSha256": "650e63d7236669f33ae0f6596b113a9c0cd44ed41f871b562e0c2f442e9d4c50"
+   }
+  }
+ ],
+ "replacements": [],
+ "receipt": {
+  "declaration": {
+   "reviewAuthority": "owner-authorized-ai-review",
+   "model": "gemini-4-hydrogen",
+   "reviewedAt": "2026-11-19T03:45:36.719995+00:00",
+   "attestation": "Strict Hydrogen self-review completed for targeth-wpi-class4-water-dist-r04 against supplied source pages, course level, and collision candidates; accepted 10 of 10 items.",
+   "payloadSha256": {
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-01": "6d32adda8a4f6ffec9054db070d4f4646c093c7c601e21c9502762d5e71e61f4",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-02": "eb2b00c28258e893c88c86e9cf2ffdc40def60d96bd57114ea7fad4088281a05",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-03": "b35d671b65a8400c45f4c1ecf080f6544e487544fd7c0fab0d5d6b4298e0bb72",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-04": "6837578bbba4467f2d0077513360b9eae914a5e288c9ab5a41e500bf21fdb699",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-05": "3ae6a501e70e9c03dd419845eb2efe7a3d99311d3581f87d7b7875d04dc75b47",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-06": "65948e819b759aeea792a42021f2b4d13056f83c3fb18e917132bb61cfc43d2a",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-07": "79682ec8cccdd23deb06a4838a5f4f3be6e832ed50b2c3db9127b01443b79393",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-08": "26533967af5ae644ec9acddf1682182344025763b67045242add9398ea64778a",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-09": "72ed71693efe1b5c68723338e1fd473a82a6d1fa094be09d96cd8242253d7831",
+    "targeth-ht261118-wpi-class4-water-dist-r04-m1-10": "958a52c779157402c10edebc5bfde3f5f23cdc40794a7c0b70cc7d63daddaf67"
+   }
+  },
+  "registeredAt": "2026-11-19T03:46:02.328Z",
+  "builderResults": {
+   "checks": [
+    "schema",
+    "duplicate",
+    "longest-answer",
+    "absolute-wording",
+    "true-false-balance",
+    "cause-effect-calculation"
+   ],
+   "errors": [],
+   "stats": {
+    "swipe": {
+     "t": 0,
+     "f": 0
+    },
+    "dirs": {
+     "increase": 0,
+     "decrease": 0,
+     "unchanged": 0
+    },
+    "longest": 0,
+    "options": 0
+   },
+   "batchSha256": "94381aac939d87a64b183d994c0b302e97b1982bfba9f1a8d5d7cb7bd23ab1d2"
+  }
+ }
+}
