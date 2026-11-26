@@ -24,6 +24,11 @@ describe("Equipment library expansion", () => {
     const items = equipmentCatalogue();
     expect(filterEquipmentCatalogue(items, "  PiLoT ").map(item => item.id)).toEqual(["pressure-reducing-valve"]);
     expect(filterEquipmentCatalogue(items, "settling").some(item => item.id === "circular-clarifier")).toBe(true);
+    for (const query of ["impeller", "pumps", "rotating impeller"]) {
+      expect(filterEquipmentCatalogue(items, query).some(item => item.id === "centrifugal-pump")).toBe(true);
+    }
+    expect(filterEquipmentCatalogue(items, "feedwell").map(item => item.id)).toEqual(["circular-clarifier"]);
+    expect(filterEquipmentCatalogue(items, "scraper arms").map(item => item.id)).toEqual(["circular-clarifier"]);
     expect(filterEquipmentCatalogue(items, "", "water-treatment")).toHaveLength(3);
     expect(filterEquipmentCatalogue(items, "", "wastewater-treatment")).toHaveLength(4);
     expect(filterEquipmentCatalogue(items, "", "water-distribution")).toHaveLength(2);

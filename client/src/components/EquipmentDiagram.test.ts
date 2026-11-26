@@ -95,6 +95,57 @@ describe("EquipmentDiagram deterministic descriptors", () => {
     ]);
   });
 
+  it("places the waste-sludge hotspot on its distinct branch, not the RAS pipe", () => {
+    const waste = getPart("aeration-basin", "was-line");
+    expect(waste.anchor[0]).toBeGreaterThan(455);
+    expect(waste.anchor[0]).toBeLessThan(568);
+    expect(waste.anchor[1]).toBe(274);
+    expect(waste.shapes[0].d).toContain("V274H568");
+    expect(Math.abs(waste.anchor[1] - 296)).toBeGreaterThan(18);
+  });
+
+  it("places the lift-station riser hotspot on exposed pipe outside both check valves", () => {
+    const riser = getPart("lift-station", "riser");
+    expect(riser.anchor[0]).toBe(414);
+    expect(riser.anchor[1]).toBeGreaterThan(165 + 12);
+    expect(riser.anchor[1]).toBeLessThan(250);
+    expect(riser.shapes.some(shape => shape.d === "M382 250H414V133")).toBe(true);
+    for (const [x, y, w, h] of [[311, 143, 24, 22], [402, 143, 24, 22]]) {
+      expect(riser.anchor[0] >= x && riser.anchor[0] <= x + w && riser.anchor[1] >= y && riser.anchor[1] <= y + h).toBe(false);
+    }
+  });
+
+  it("routes PRV main flow inside the wetted passage through the disc-seat gap", () => {
+    const prv = model("pressure-reducing-valve");
+    const passage = getPart("pressure-reducing-valve", "diaphragm").shapes.find(shape => shape.fill === "water")!;
+    const vertices = (d: string): [number, number][] => {
+      const result: [number, number][] = [];
+      let x = 0, y = 0;
+      for (const match of d.matchAll(/([MHV])([\d.]+)(?:[ ,]+([\d.]+))?/g)) {
+        if (match[1] === "M") { x = Number(match[2]); y = Number(match[3]); }
+        if (match[1] === "H") x = Number(match[2]);
+        if (match[1] === "V") y = Number(match[2]);
+        result.push([x, y]);
+      }
+      return result;
+    };
+    const polygon = vertices(passage.d);
+    const inside = (x: number, y: number) => {
+      let contained = false;
+      for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+        const [xi, yi] = polygon[i], [xj, yj] = polygon[j];
+        if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) contained = !contained;
+      }
+      return contained;
+    };
+    const route = vertices(prv.flows.find(flow => flow.d.startsWith("M301"))!.d);
+    for (let i = 1; i < route.length; i++) {
+      const [a, b] = [route[i - 1], route[i]];
+      for (let t = 0; t <= 1; t += 0.1) expect(inside(a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)).toBe(true);
+    }
+    expect(route.some(([x, y], i) => i > 0 && route[i - 1][0] < 329 && x > 365 && y > 239 && y < 246)).toBe(true);
+  });
+
   it("places contact sampling after the final pass and UV lamps inside longer sleeves", () => {
     expect(getPart("chlorine-contact-tank", "sample-point").anchor[0]).toBeGreaterThan(getPart("chlorine-contact-tank", "outlet").anchor[0]);
     expect(model("chlorine-contact-tank").flows[1].d).toContain("477 248V158");

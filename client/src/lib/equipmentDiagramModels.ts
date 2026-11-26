@@ -38,7 +38,7 @@ export const EQUIPMENT_DIAGRAM_MODELS: Readonly<Record<string, EquipmentDiagramM
       part("mixed-liquor", [440, 207], "right", [602, 191], [R(236, 164, 264, 105, "water")]),
       part("influent-channel", [196, 179], "left", [118, 150], [...pipe("M140 179H236")]),
       part("ras-line", [203, 249], "bottom", [207, 351], [...pipe("M560 296H203V197H236", "sludge")]),
-      part("was-line", [472, 296], "bottom", [518, 351], [...pipe("M455 296V274H568", "sludge")]),
+      part("was-line", [520, 274], "bottom", [518, 351], [...pipe("M455 296V274H568", "sludge")]),
       part("blower", [203, 116], "top", [208, 27], [R(170, 97, 62, 38), E(195, 116, 12, 12, "white"), P("M189 110L202 116L189 123Z", "teal"), ...pipe("M232 116H266V258", "air")]),
       part("diffuser-grid", [345, 259], "bottom", [362, 351], [P("M266 259H473", "none", "air", 7), ...[286, 328, 370, 412, 454].flatMap(x => [R(x - 12, 255, 24, 8, "teal"), E(x, 235, 3, 3, "white"), E(x + 5, 215, 3, 3, "white"), E(x - 3, 190, 2, 2, "white")])]),
       part("do-probe", [467, 179], "top", [512, 27], [R(457, 119, 20, 14), P("M467 133V187", "none", "steel", 5), E(467, 189, 5, 7, "teal")]),
@@ -133,7 +133,7 @@ export const EQUIPMENT_DIAGRAM_MODELS: Readonly<Record<string, EquipmentDiagramM
     parts: [
       part("wet-well", [350, 203], "right", [602, 196], [R(236, 196, 234, 86, "water"), P("M241 196H465", "none", "teal", 2)]),
       part("inlet", [190, 178], "left", [118, 166], [...pipe("M140 178H251"), P("M251 178V208", "none", "water", 12)]),
-      part("riser", [414, 164], "bottom", [513, 351], [...pipe("M291 250H323V133H539V108H580"), ...pipe("M382 250H414V133")]),
+      part("riser", [414, 190], "bottom", [513, 351], [...pipe("M291 250H323V133H539V108H580"), ...pipe("M382 250H414V133")]),
       part("pump", [286, 256], "bottom", [208, 351], [R(263, 235, 40, 37, "teal"), E(283, 239, 20, 10, "steel"), R(273, 216, 20, 22), R(354, 235, 40, 37, "teal"), E(374, 239, 20, 10, "steel"), R(364, 216, 20, 22), P("M264 273H305M355 273H396", "none", "ink", 4)]),
       part("check-valve", [323, 152], "top", [513, 27], [R(311, 143, 24, 22, "white"), P("M315 160L331 148M315 146H331", "none", "ink", 3), R(402, 143, 24, 22, "white"), P("M406 160L422 148M406 146H422", "none", "ink", 3)]),
       part("level-sensor", [353, 128], "top", [207, 27], [R(341, 92, 24, 19), E(353, 122, 9, 7, "teal"), P("M353 130L336 184M353 130L370 184", "none", "teal", 1)]),
@@ -147,12 +147,12 @@ export const EQUIPMENT_DIAGRAM_MODELS: Readonly<Record<string, EquipmentDiagramM
     parts: [
       part("inlet", [197, 238], "left", [118, 224], [...pipe("M140 238H290")]),
       part("outlet", [524, 238], "right", [602, 224], [...pipe("M406 238H580")]),
-      part("diaphragm", [348, 181], "bottom", [362, 351], [P("M284 208H410V267H369V244H325V267H284Z", "steel"), P("M290 218H329V234H365V218H404V256H375V238H320V256H290Z", "water"), P("M302 181H392", "none", "teal", 7), P("M347 183V231", "none", "ink", 6), R(327, 230, 40, 9, "teal"), P("M323 244H371", "none", "ink", 4)]),
+      part("diaphragm", [348, 181], "bottom", [362, 351], [P("M284 208H410V270H284Z", "steel"), P("M290 218H329V240H365V218H404V260H375V248H320V260H290Z", "water"), P("M302 181H392", "none", "teal", 7), P("M347 183V231", "none", "ink", 6), R(327, 230, 40, 9, "teal"), P("M320 248H375", "none", "ink", 4)]),
       part("pilot", [453, 144], "top", [512, 27], [P("M190 238V151H454V170H370M454 170H529V238", "none", "teal", 3), R(438, 126, 33, 40, "steel"), P("M448 154H462M455 145V162", "none", "ink", 3)]),
       part("strainer", [227, 151], "top", [207, 27], [R(216, 144, 22, 14, "white"), P("M220 156L229 146M227 156L236 146", "none", "ink", 1.5), P("M227 158V167H235", "none", "steel", 3)]),
       part("spring", [455, 114], "top", [362, 27], [R(442, 94, 26, 33, "white"), P("M455 91V99L447 104L463 109L447 114L463 119L455 124", "none", "ink", 2), P("M447 91H463", "none", "ink", 3)]),
     ],
-    flows: [flow("M151 238H275", "inlet", "diaphragm"), flow("M301 237H314V250H380V237H399", "diaphragm", "outlet"), flow("M434 238H568", "diaphragm", "outlet"), flow("M190 203V151H206", "inlet", "strainer", "pilot"), flow("M245 151H426", "strainer", "pilot", "pilot"), flow("M432 170H376", "pilot", "diaphragm", "pilot")],
+    flows: [flow("M151 238H275", "inlet", "diaphragm"), flow("M301 238H314V243H380V238H399", "diaphragm", "outlet"), flow("M434 238H568", "diaphragm", "outlet"), flow("M190 203V151H206", "inlet", "strainer", "pilot"), flow("M245 151H426", "strainer", "pilot", "pilot"), flow("M432 170H376", "pilot", "diaphragm", "pilot")],
     notes: [{ x: 362, y: 314, text: "Small upstream pilot strainer • Downstream pressure sensing" }],
   },
 };
