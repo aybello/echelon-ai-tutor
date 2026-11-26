@@ -9,14 +9,22 @@ export type CeuDiagramFamily =
   | "safety"
   | "leadership";
 
+export type CeuDiagramVariant =
+  | "steps"
+  | "ppm-conversion"
+  | "pressure-scale"
+  | "ratio-bar"
+  | "wastewater-train";
+
 export interface CeuDiagramDefinition {
   family: CeuDiagramFamily;
+  variant: CeuDiagramVariant;
   title: string;
   caption: string;
   steps: readonly [string, string, string, string, string];
 }
 
-const DIAGRAMS: Record<CeuDiagramFamily, Omit<CeuDiagramDefinition, "steps">> = {
+const DIAGRAMS: Record<CeuDiagramFamily, Omit<CeuDiagramDefinition, "steps" | "variant">> = {
   treatment: {
     family: "treatment",
     title: "Treatment barrier map",
@@ -53,7 +61,7 @@ const TREATMENT_STEPS: Array<[RegExp, CeuDiagramDefinition["steps"]]> = [
   [/preliminary|primary/i, ["Influent", "Screen", "Remove grit", "Settle solids", "Check removal"]],
   [/activated|biological|biomass/i, ["Load", "Aerate", "Mix liquor", "Clarify", "Trend solids"]],
   [/filter/i, ["Condition water", "Build floc", "Filter media", "Backwash", "Verify effluent"]],
-  [/chlorin|disinfection|ct/i, ["Dose", "Mix", "Contact", "Measure residual", "Record CT"]],
+  [/chlorin|disinfection|\bct\b/i, ["Dose", "Mix", "Contact", "Measure residual", "Record CT"]],
   [/distribution|storage|pressure|system components/i, ["Source", "Store", "Transmit", "Zone pressure", "Protect quality"]],
   [/collection|wet-weather|wet well|incident volume|response plan/i, ["Catchment", "Collect", "Pump or store", "Measure event", "Recover"]],
   [/source and the treatment train|treatment train|coagulation|sedimentation|water treatment concepts/i, ["Source water", "Coagulate", "Settle", "Filter", "Disinfect"]],
@@ -63,10 +71,18 @@ function familyFor(module: Pick<CeuLesson, "id" | "title">): CeuDiagramFamily {
   const text = `${module.id} ${module.title}`;
   if (/safety|hazard|confined|excavation|chemical-emergency/i.test(text)) return "safety";
   if (/supervisor|responsibility|management|leading-through-change|role/i.test(text)) return "leadership";
-  if (/math|calculation|formula|number|percent|area|volume|plant-formulas|dose-calculations/i.test(text)) return "calculation";
   if (/instrument|scada|alarm|signal|control|monitoring|data-audit|sampling|custody|quality|compliance|records|audit|evidence|report|practicum/i.test(text)) return "evidence";
+  if (/math|calculation|formula|number|percent|area|volume|units|conversion|plant-formulas|dose-calculations/i.test(text)) return "calculation";
   if (/process|treatment|filter|chlorin|disinfection|distribution|collection|storage|wet-weather|activated|biological|coagulation|sedimentation|source-and-train|preliminary/i.test(text)) return "treatment";
   return "control";
+}
+
+function variantFor(module: Pick<CeuLesson, "id" | "title">): CeuDiagramVariant {
+  if (module.id === "chemical-emergency") return "ppm-conversion";
+  if (module.id === "pressure-head") return "pressure-scale";
+  if (module.id === "units-conversions") return "ratio-bar";
+  if (module.id === "characteristics-and-train") return "wastewater-train";
+  return "steps";
 }
 
 function stepsFor(module: Pick<CeuLesson, "id" | "title">, family: CeuDiagramFamily): CeuDiagramDefinition["steps"] {
@@ -84,22 +100,23 @@ function stepsFor(module: Pick<CeuLesson, "id" | "title">, family: CeuDiagramFam
 
 export function ceuDiagramFor(module: Pick<CeuLesson, "id" | "title">): CeuDiagramDefinition {
   const family = familyFor(module);
-  return { ...DIAGRAMS[family], steps: stepsFor(module, family) };
+  return { ...DIAGRAMS[family], variant: variantFor(module), steps: stepsFor(module, family) };
 }
 
 export function ceuDiagramFamilyFor(module: Pick<CeuLesson, "id" | "title">) {
   return ceuDiagramFor(module).family;
 }
 
-/**
- * Chooses one authored teaching slide for the visual. The selection is title-driven
- * so a diagram stays beside the concept it explains rather than becoming decoration
- * on every slide in the course.
- */
+/** Authored photos and inline SVGs are already the primary teaching visual. */
+export function hasAuthoredVisual(body: string) {
+  return /<svg\b|<img\b|!\[[^\]]*\]\([^)]*\.(?:png|jpe?g|webp|svg)(?:[?#][^)]*)?\)/i.test(body);
+}
+
+/** Chooses one authored teaching slide that does not already contain a visual. */
 export function ceuDiagramSlideId(
   module: Pick<CeuLesson, "id" | "title">,
-  slides: readonly Pick<CeuSlide, "id" | "kind" | "title">[]
-) {
+  slides: readonly Pick<CeuSlide, "id" | "kind" | "title" | "body">[],
+): string | undefined {
   const family = ceuDiagramFamilyFor(module);
   const hints: Record<CeuDiagramFamily, RegExp> = {
     treatment: /train|process|screen|grit|clarif|aerat|filter|disinfect|residual|distribution|storage|pressure|collection|hydrograph|wet well|incident|solids|nutrient/i,
@@ -109,10 +126,6 @@ export function ceuDiagramSlideId(
     safety: /hazard|control|ppe|confined|atmosphere|excavat|energy|chemical|emergency|rescue/i,
     leadership: /role|responsib|accountab|style|delegat|coach|change|handover|supervisor/i,
   };
-  const conceptSlides = slides.filter(slide => slide.kind === "lesson");
-  return (
-    conceptSlides.find(slide => hints[family].test(slide.title))?.id ??
-    conceptSlides[0]?.id ??
-    `${module.id}:concept-1`
-  );
+  const usableSlides = slides.filter(slide => slide.kind === "lesson" && !hasAuthoredVisual(slide.body));
+  return usableSlides.find(slide => hints[family].test(slide.title))?.id ?? usableSlides[0]?.id;
 }
