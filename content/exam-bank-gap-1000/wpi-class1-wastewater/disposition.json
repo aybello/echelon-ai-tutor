@@ -1,0 +1,32 @@
+{
+ "accepted": 209,
+ "notes": [
+  "Coordinator metadata correction: 13 items in batches 1 and 2 carried split module values ('Equipment Evaluation' or 'Maintenance & Operation'); all 13 were set to the combined SPEC module 'Equipment Evaluation, Maintenance & Operation'. No other field changed.",
+  "Bank answer-length metric: correct option strictly longest in 29% of items; no item carried a length flag.",
+  "Assignment topics naming Ontario Regulation 129/04 were authored on the same licensing duty substance in generic provincial terms without naming the regulation in the item body, per the binding WPI rule; no regulation numbers or limits were invented."
+ ],
+ "rejected": [
+  {
+   "itemId": "WASTEWATER-TREATMENT-L1-654",
+   "questionNum": 2654,
+   "reason": "Original payload rejected pre-acceptance: calculation expression (300-30)/300*100 duplicated new item WASTEWATER-TREATMENT-L1-618 (same overall percent removal skeleton and values). Replaced in place with a series combination of two stage removal percentages; replacement passed all checks and is the accepted payload."
+  }
+ ],
+ "withheld": [],
+ "nearDuplicatePairReview": [
+  {
+   "pair": [
+    "WASTEWATER-TREATMENT-L1-486",
+    "WASTEWATER-TREATMENT-L1-653"
+   ],
+   "similarity": 0.9355,
+   "decision": "replaced",
+   "replacedItemId": "WASTEWATER-TREATMENT-L1-653",
+   "reason": "Both items compute the surface overflow rate for two identical rectangular clarifiers as total flow divided by total surface area, differing only in clarifier dimensions. Same formula and scenario, so the second item was replaced.",
+   "oldPayloadSha256": "119fb27bd5aeec96ef5ecb7ab9dbfb1cd93b2ce1dc72f5dfbf05f50e49ef6235",
+   "newPayloadSha256": "999946aec30243fe71befe5801fd2b6e1567e2233893c2e74a4f155b58bdc229",
+   "oldStem": "A flow of 3600 m3/day is split evenly between two identical rectangular clarifiers. Each clarifier is 20 m long and 9 m wide. What is the surface overflow rate for each clarifier? Round to 1 decimal place.",
+   "newStem": "A clarifier effluent launder has a total weir length of 36 m and receives a flow of 5400 m3/day. What is the weir overflow rate? Round to 1 decimal place."
+  }
+ ]
+}

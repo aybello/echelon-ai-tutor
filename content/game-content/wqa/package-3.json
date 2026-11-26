@@ -1,0 +1,4220 @@
+{
+ "courseKey": "wqa",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wqa-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this weekly mean calculation for four results of 22 mg/L, 24 mg/L, 26 mg/L, and 28 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional weekly results: 22 mg/L, 24 mg/L, 26 mg/L, 28 mg/L, count = 4. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 22 mg/L + 24 mg/L + 26 mg/L + 28 mg/L = 100 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 100 mg/L / 5 = 20 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mean = 100 mg/L / 4 = 25 mg/L",
+   "explanation": "Line 3 divided by 5 instead of the count of 4 results. The mean is 25 mg/L."
+  },
+  {
+   "id": "wqa-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for results of 10 mg/L, 20 mg/L, and 60 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional results: 10 mg/L, 20 mg/L, 60 mg/L, count = 3. The middle value in sorted order is 20 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 10 mg/L + 20 mg/L + 60 mg/L = 90 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = Middle value = 20 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mean = 90 mg/L / 3 = 30 mg/L",
+   "explanation": "Line 3 reports the middle value, which is the median, instead of the mean. The mean is 30 mg/L."
+  },
+  {
+   "id": "wqa-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for turbidity results of 2.5 NTU, 3.5 NTU, 4.5 NTU, and 5.5 NTU.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional turbidity results: 2.5 NTU, 3.5 NTU, 4.5 NTU, 5.5 NTU, count = 4. Target unit: NTU.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 2.5 NTU + 3.5 NTU + 4.5 NTU + 5.5 NTU = 15 NTU"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 15 NTU / 4 = 3.75 NTU"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3.75 NTU"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sum = 2.5 + 3.5 + 4.5 + 5.5 = 16 NTU, so mean = 16 / 4 = 4 NTU",
+   "explanation": "Line 2 is an addition slip: the results sum to 16, not 15. The mean is 4 NTU."
+  },
+  {
+   "id": "wqa-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for results of 0 mg/L, 10 mg/L, and 20 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional results: 0 mg/L, 10 mg/L, 20 mg/L, count = 3. A result of zero is still a valid result. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of all results / Count of all results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Count used = 2, with the zero result excluded"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 30 mg/L / 2 = 15 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Count used = 3, including the zero result, so mean = 30 / 3 = 10 mg/L",
+   "explanation": "Line 2 wrongly excludes the zero result from the count. Including all three results, the mean is 10 mg/L."
+  },
+  {
+   "id": "wqa-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for a morning result of 40 mg/L and an afternoon result of 60 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional paired results: 40 mg/L, 60 mg/L, count = 2. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 40 mg/L + 60 mg/L = 100 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 100 mg/L / 2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Mean = 40 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Mean = 100 mg/L / 2 = 50 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 100 / 2 = 50, not 40."
+  },
+  {
+   "id": "wqa-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this range calculation for results of 15 mg/L, 25 mg/L, and 35 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional results: lowest = 15 mg/L, highest = 35 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Range = Highest result - Lowest result"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Highest = 35 mg/L and Lowest = 15 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Range = 35 mg/L + 15 mg/L = 50 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Range = 35 mg/L - 15 mg/L = 20 mg/L",
+   "explanation": "Line 3 added the highest and lowest results instead of subtracting. The range is 20 mg/L."
+  },
+  {
+   "id": "wqa-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for results of 100 mg/L, 200 mg/L, 300 mg/L, and 400 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional results: 100 mg/L, 200 mg/L, 300 mg/L, 400 mg/L, count = 4. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 100 mg/L + 200 mg/L + 300 mg/L + 400 mg/L = 1000 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 1000 mg/L / 8 = 125 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 125 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mean = 1000 mg/L / 4 = 250 mg/L",
+   "explanation": "Line 3 divided by 8 instead of the count of 4 results. The mean is 250 mg/L."
+  },
+  {
+   "id": "wqa-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for chlorine residual results of 0.4 mg/L, 0.5 mg/L, and 0.6 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional residual results: 0.4 mg/L, 0.5 mg/L, 0.6 mg/L, count = 3. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 0.4 mg/L + 0.5 mg/L + 0.6 mg/L = 1.8 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 1.8 mg/L / 3 = 0.6 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.6 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sum = 0.4 + 0.5 + 0.6 = 1.5 mg/L, so mean = 1.5 / 3 = 0.5 mg/L",
+   "explanation": "Line 2 is an addition slip: the results sum to 1.5, not 1.8. The mean is 0.5 mg/L."
+  },
+  {
+   "id": "wqa-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sample count calculation for 6 sampling sites that each need 4 samples in a month.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional monthly program under Regulation 170/03 sampling planning: sites = 6, samples per site = 4. Target unit: samples.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total samples = Sites * Samples per site"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Sites = 6 and Samples per site = 4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total samples = 6 + 4 = 10 samples"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10 samples"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total samples = 6 * 4 = 24 samples",
+   "explanation": "Line 3 added the sites and samples per site instead of multiplying. The total is 24 samples."
+  },
+  {
+   "id": "wqa-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sample count calculation for a program needing 3 samples per week for 4 weeks plus 2 quality control duplicates.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional program: routine sampling = 3 samples per week for 4 weeks, quality control duplicates = 2. Target unit: total samples.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total samples = Routine samples + Quality control duplicates"
+    },
+    {
+     "id": "line2",
+     "label": "2. Routine samples = 3 per week * 4 weeks = 12 samples"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total samples = 12 samples"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12 samples"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total samples = 12 samples + 2 duplicates = 14 samples",
+   "explanation": "Line 3 omits the 2 quality control duplicates that line 1 requires. The total is 14 samples."
+  },
+  {
+   "id": "wqa-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this bottle count calculation for 15 samples that each need 3 bottles.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional bottle plan: samples = 15, bottles per sample = 3. Target unit: bottles.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total bottles = Samples * Bottles per sample"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Samples = 15 and Bottles per sample = 3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total bottles = 15 * 3"
+    },
+    {
+     "id": "line4",
+     "label": "4. Total bottles = 35 bottles"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Total bottles = 15 * 3 = 45 bottles",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 15 * 3 = 45, not 35."
+  },
+  {
+   "id": "wqa-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sample count calculation for 40 routine samples with duplicates at 10 percent of the routine count.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional quality control plan: routine samples = 40, duplicates = 10 percent of the routine count. Target unit: total samples.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total samples = Routine samples + Duplicates, where Duplicates = 10 percent of routine"
+    },
+    {
+     "id": "line2",
+     "label": "2. Routine samples given as 40"
+    },
+    {
+     "id": "line3",
+     "label": "3. Duplicates = 10 samples, so total = 40 + 10 = 50 samples"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 samples"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Duplicates = 40 * 0.1 = 4 samples, so total = 40 + 4 = 44 samples",
+   "explanation": "Line 3 used the percent number 10 directly as a sample count. Ten percent of 40 is 4, giving a total of 44 samples."
+  },
+  {
+   "id": "wqa-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sample count calculation for 8 sites sampled twice in a month plus 4 blank samples.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional monthly program: sites = 8, rounds per site = 2, blank samples = 4. Target unit: total samples.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total samples = Site samples + Blanks, where Site samples = Sites * Rounds"
+    },
+    {
+     "id": "line2",
+     "label": "2. Site samples = 8 + 2 = 10 samples"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total samples = 10 samples + 4 blanks = 14 samples"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 14 samples"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Site samples = 8 * 2 = 16 samples, so total = 16 + 4 = 20 samples",
+   "explanation": "Line 2 added the sites and rounds instead of multiplying. Site samples are 16, giving a total of 20 samples."
+  },
+  {
+   "id": "wqa-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual sample count calculation for quarterly sampling with 4 events per year and 12 samples per event.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional quarterly program: sampling events per year = 4, samples per event = 12. Target unit: samples per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual samples = Events per year * Samples per event"
+    },
+    {
+     "id": "line2",
+     "label": "2. Events per year given as 4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual samples = 12 samples * 12 months = 144 samples"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 144 samples"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Annual samples = 4 events * 12 samples = 48 samples",
+   "explanation": "Line 3 used 12 months instead of the 4 quarterly events. The annual total is 48 samples."
+  },
+  {
+   "id": "wqa-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this bottle count calculation for a sampling day needing 20 bottles plus 5 spare bottles.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional bottle plan: bottles needed = 20, spare bottles = 5. Target unit: total bottles to pack.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total bottles to pack = Bottles needed - Spare bottles"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Needed = 20 bottles and Spares = 5 bottles"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total bottles to pack = 20 - 5 = 15 bottles"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 bottles"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total bottles to pack = Bottles needed + Spare bottles = 20 + 5 = 25 bottles",
+   "explanation": "Line 1 uses the wrong formula. Spares are added to the bottles needed, giving 25 bottles to pack."
+  },
+  {
+   "id": "wqa-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this sample count calculation for 5 distribution sites each sampled on 2 separate days.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional distribution program: sites = 5, sampling days per site = 2. Target unit: samples.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total samples = Sites * Days per site"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Sites = 5 and Days per site = 2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total samples = 5 * 2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Total samples = 12 samples"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Total samples = 5 * 2 = 10 samples",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 5 * 2 = 10, not 12."
+  },
+  {
+   "id": "wqa-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this bottle count calculation for 9 samples that each need 2 bottles plus 2 spare bottles.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional bottle plan: samples = 9, bottles per sample = 2, spare bottles = 2. Target unit: total bottles.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total bottles = Sample bottles + Spare bottles"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sample bottles = 9 samples * 2 bottles = 18 bottles"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total bottles = 18 bottles"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 18 bottles"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total bottles = 18 bottles + 2 spares = 20 bottles",
+   "explanation": "Line 3 omits the 2 spare bottles that line 1 requires. The total is 20 bottles."
+  },
+  {
+   "id": "wqa-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual sample count calculation for a program needing 1 sample per week for a full year.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional weekly program: samples per week = 1, weeks in a full year = 52. Target unit: samples per year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual samples = Samples per week * Weeks per year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weeks per year used = 50"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual samples = 1 * 50 = 50 samples"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 samples"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weeks per year used = 52, so annual samples = 1 * 52 = 52 samples",
+   "explanation": "Line 2 uses 50 weeks for a full year instead of 52. The annual total is 52 samples."
+  },
+  {
+   "id": "wqa-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this bottle count calculation for 4 locations that each need separate bottles for 3 parameters.",
+   "topicId": "sampling-bottle-planning",
+   "level": "class1",
+   "assumptions": "Fictional bottle plan: locations = 4, parameters per location = 3, one bottle per parameter. Target unit: bottles.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total bottles = Locations * Parameters per location"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Locations = 4 and Parameters = 3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total bottles = 4 + 3 = 7 bottles"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 7 bottles"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total bottles = 4 * 3 = 12 bottles",
+   "explanation": "Line 3 added the locations and parameters instead of multiplying. The total is 12 bottles."
+  },
+  {
+   "id": "wqa-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation for a sample collected Monday at 09:00 and analysed Tuesday at 15:00, with a 24 h holding time limit.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected Monday 09:00, analysed Tuesday 15:00, holding time limit = 24 h. Target unit: elapsed hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed time = Analysis time - Collection time, counting across midnight"
+    },
+    {
+     "id": "line2",
+     "label": "2. Times given as Collection = Monday 09:00 and Analysis = Tuesday 15:00"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed time = 15 - 9 = 6 h, within the 24 h limit"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6 h and within the limit"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Elapsed time = (24 - 9) + 15 = 30 h, which exceeds the 24 h limit",
+   "explanation": "Line 3 subtracted the clock hours without counting the day change across midnight. The elapsed time is 30 h."
+  },
+  {
+   "id": "wqa-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation for a sample collected at 14:00 and analysed the next day at 10:00.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected Day 1 at 14:00, analysed Day 2 at 10:00. Target unit: elapsed hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed time = (24 - Collection hour) + Analysis hour for a next day analysis"
+    },
+    {
+     "id": "line2",
+     "label": "2. Times given as Collection = 14:00 and Analysis next day = 10:00"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed time = (24 - 14) + 10"
+    },
+    {
+     "id": "line4",
+     "label": "4. Elapsed time = 24 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Elapsed time = (24 - 14) + 10 = 20 h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: (24 - 14) + 10 = 20, not 24."
+  },
+  {
+   "id": "wqa-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this remaining holding time calculation where the holding time limit is 48 h and 20 h have already elapsed.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: holding time limit = 48 h, elapsed time so far = 20 h. Target unit: hours remaining.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Time remaining = Holding time limit - Elapsed time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Limit = 48 h and Elapsed = 20 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Time remaining = 48 h + 20 h = 68 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 68 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Time remaining = 48 h - 20 h = 28 h",
+   "explanation": "Line 3 added the elapsed time to the limit instead of subtracting it. The time remaining is 28 h."
+  },
+  {
+   "id": "wqa-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this analysis deadline calculation for a sample collected at 10:00 with an 8 h holding time.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected at 10:00, holding time = 8 h, same day deadline. Target unit: deadline clock hour.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Deadline hour = Collection hour + Holding hours"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Collection = 10:00 and Holding time = 8 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Deadline hour = 10 + 8 = 16, so deadline is 16:00"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 16:00"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Deadline hour = 10 + 8 = 18, so deadline is 18:00",
+   "explanation": "Line 3 is an addition slip: 10 + 8 = 18, not 16. The deadline is 18:00."
+  },
+  {
+   "id": "wqa-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation for a sample collected at 22:00 and analysed the next day at 06:00, with a 12 h holding time limit.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected Day 1 at 22:00, analysed Day 2 at 06:00, holding time limit = 12 h. Target unit: elapsed hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed time = Analysis time - Collection time, counting across midnight"
+    },
+    {
+     "id": "line2",
+     "label": "2. Elapsed time = 22 - 6 = 16 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed time of 16 h exceeds the 12 h limit"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 16 h and over the limit"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Elapsed time = (24 - 22) + 6 = 8 h, which is within the 12 h limit",
+   "explanation": "Line 2 subtracted the clock hours without counting across midnight. The elapsed time is 8 h."
+  },
+  {
+   "id": "wqa-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation for a sample collected at 09:00 and analysed the next day at 09:00, with a 24 h holding time limit.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected Day 1 at 09:00, analysed Day 2 at 09:00, holding time limit = 24 h. Target unit: elapsed hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed time = Analysis time - Collection time, counting across midnight"
+    },
+    {
+     "id": "line2",
+     "label": "2. Times given as Collection = Day 1 09:00 and Analysis = Day 2 09:00"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed time = 2 days * 24 h = 48 h, over the limit because the sample touches two calendar days"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 48 h and over the limit"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Elapsed time = (24 - 9) + 9 = 24 h, exactly at the 24 h limit",
+   "explanation": "Line 3 counts two calendar days as 48 h. From 09:00 to the same time the next day is exactly 24 h."
+  },
+  {
+   "id": "wqa-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting an elapsed holding time of 360 min to hours.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: elapsed holding time = 360 min, 60 min = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed hours = Elapsed minutes / 60 min per h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Elapsed time given as 360 min"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed hours = 360 min / 100 = 3.6 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3.6 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Elapsed hours = 360 min / 60 = 6 h",
+   "explanation": "Line 3 divided by 100 instead of 60 minutes per hour. The elapsed time is 6 h."
+  },
+  {
+   "id": "wqa-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation for a sample collected Friday at 16:00 and analysed Monday at 10:00.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected Friday 16:00, analysed Monday 10:00. Saturday and Sunday are full days in between. Target unit: elapsed hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed time = Hours to midnight Friday + Full weekend days + Hours on Monday"
+    },
+    {
+     "id": "line2",
+     "label": "2. Parts given as Friday remainder = (24 - 16) h, Saturday = 24 h, Sunday = 24 h, Monday = 10 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed time = (24 - 16) + 24 + 24 + 10"
+    },
+    {
+     "id": "line4",
+     "label": "4. Elapsed time = 56 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Elapsed time = (24 - 16) + 24 + 24 + 10 = 66 h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an addition slip: 8 + 24 + 24 + 10 = 66, not 56."
+  },
+  {
+   "id": "wqa-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this remaining holding time calculation for a sample collected at 12:00, checked at 20:00 the same day, with a 30 h holding time limit.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: collected at 12:00, current time = 20:00 same day, holding time limit = 30 h. Target unit: hours remaining.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Time remaining = Holding time limit - Elapsed time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Elapsed time = 20 - 12 = 6 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Time remaining = 30 h - 6 h = 24 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 24 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Elapsed time = 20 - 12 = 8 h, so time remaining = 30 - 8 = 22 h",
+   "explanation": "Line 2 is a subtraction slip: 20 - 12 = 8, not 6. The time remaining is 22 h."
+  },
+  {
+   "id": "wqa-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation where a sample is collected on day 3 of a study and analysed on day 12.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional study sample: collection day = day 3, analysis day = day 12. Target unit: elapsed days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed days = Analysis day - Collection day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Analysis day = 12 and Collection day = 3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed days = 12 + 3 = 15 days"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 15 days"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Elapsed days = 12 - 3 = 9 days",
+   "explanation": "Line 3 added the two day numbers instead of subtracting. The elapsed time is 9 days."
+  },
+  {
+   "id": "wqa-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this holding time calculation for a sample received at 11:00 with analysis starting at 17:00 the same day.",
+   "topicId": "sampling-holding-time",
+   "level": "class1",
+   "assumptions": "Fictional sample: received at 11:00, analysis starts at 17:00 the same day. Target unit: elapsed hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Elapsed time = Analysis start - Receipt time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Times given as Receipt = 11:00 and Analysis start = 17:00"
+    },
+    {
+     "id": "line3",
+     "label": "3. Elapsed time = 17 - 11 = 8 h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 8 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Elapsed time = 17 - 11 = 6 h",
+   "explanation": "Line 3 is a subtraction slip: 17 - 11 = 6, not 8. The elapsed time is 6 h."
+  },
+  {
+   "id": "wqa-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a bench result of 2.5 mg/L to ug/L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional bench result: 2.5 mg/L, 1 mg = 1000 ug. Target unit: ug/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion factor stated as 1 mg = 1000 ug"
+    },
+    {
+     "id": "line2",
+     "label": "2. Result given as 2.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Result = 2.5 mg/L / 1000 ug/mg = 0.0025 ug/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.0025 ug/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Result = 2.5 mg/L * 1000 ug/mg = 2500 ug/L",
+   "explanation": "Line 3 divided by 1000 instead of multiplying. A milligram is the larger unit, so the result is 2500 ug/L."
+  },
+  {
+   "id": "wqa-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a bench result of 4500 ug/L to mg/L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional bench result: 4500 ug/L, 1000 ug = 1 mg. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion stated as mg/L = ug/L / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Result given as 4500 ug/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Result = 4500 ug/L / 1000"
+    },
+    {
+     "id": "line4",
+     "label": "4. Result = 45 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Result = 4500 ug/L / 1000 = 4.5 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is a decimal place slip: 4500 / 1000 = 4.5, not 45."
+  },
+  {
+   "id": "wqa-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a reagent volume of 0.75 L to mL.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional reagent volume: 0.75 L, 1 L = 1000 mL. Target unit: mL.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion factor stated as 1 L = 1000 mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 0.75 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 0.75 L / 1000 mL/L = 0.00075 mL"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.00075 mL"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 0.75 L * 1000 mL/L = 750 mL",
+   "explanation": "Line 3 divided by 1000 instead of multiplying. The volume is 750 mL."
+  },
+  {
+   "id": "wqa-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a sample volume of 250 mL to L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional sample volume: 250 mL, 1000 mL = 1 L. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume in L = Volume in mL * 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 250 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 250 mL * 1000 = 250000 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 250000 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Volume in L = Volume in mL / 1000 = 250 / 1000 = 0.25 L",
+   "explanation": "Line 1 uses the wrong conversion direction. Millilitres convert to litres by dividing by 1000, giving 0.25 L."
+  },
+  {
+   "id": "wqa-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a solution strength of 1.2 percent to mg/L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional solution: strength = 1.2 percent, 1 percent = 10000 mg/L. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion factor stated as 1 percent = 10000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Strength given as 1.2 percent"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 1.2 * 1000 = 1200 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1200 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 1.2 * 10000 = 12000 mg/L",
+   "explanation": "Line 3 used a factor of 1000 instead of the stated factor of 10000 mg/L per percent. The strength is 12000 mg/L."
+  },
+  {
+   "id": "wqa-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a standard strength of 3 g/L to mg/L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional standard: strength = 3 g/L, 1 g = 1000 mg. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion stated as mg/L = g/L * 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Strength given as 3 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 3 g/L * 1000"
+    },
+    {
+     "id": "line4",
+     "label": "4. Strength = 300 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Strength = 3 g/L * 1000 = 3000 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is a decimal place slip: 3 * 1000 = 3000, not 300."
+  },
+  {
+   "id": "wqa-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a solute mass of 850 mg to g.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional solute mass: 850 mg, 1000 mg = 1 g. Target unit: g.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass in g = Mass in mg / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass given as 850 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass = 850 mg * 1000 = 850000 g"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 850000 g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mass = 850 mg / 1000 = 0.85 g",
+   "explanation": "Line 3 multiplied by 1000 instead of dividing. The mass is 0.85 g."
+  },
+  {
+   "id": "wqa-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a solute mass of 0.04 kg to mg.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional solute mass: 0.04 kg, 1 kg = 1000 g, 1 g = 1000 mg. Target unit: mg.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass in mg = Mass in kg * 1000 g/kg * 1000 mg/g"
+    },
+    {
+     "id": "line2",
+     "label": "2. First step: 0.04 kg * 100 = 4 g"
+    },
+    {
+     "id": "line3",
+     "label": "3. Second step: 4 g * 1000 mg/g = 4000 mg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4000 mg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. First step: 0.04 kg * 1000 = 40 g, so mass = 40 * 1000 = 40000 mg",
+   "explanation": "Line 2 used 100 grams per kilogram instead of 1000. The mass is 40 g, which is 40000 mg."
+  },
+  {
+   "id": "wqa-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a bench result of 5000 mg/L to g/L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional bench result: 5000 mg/L, 1000 mg = 1 g. Target unit: g/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Result in g/L = Result in mg/L / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Result value used = 5000 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Result = 5000 g/L, with no conversion applied"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 5000 g/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Result value used = 5000 mg/L, so result = 5000 / 1000 = 5 g/L",
+   "explanation": "Line 2 restates the result in grams per litre before any conversion is done. The given result is 5000 mg/L, which converts to 5 g/L."
+  },
+  {
+   "id": "wqa-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a reagent carboy volume of 1.5 m3 to L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional reagent carboy: volume = 1.5 m3, 1 m3 = 1000 L. Target unit: L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion factor stated as 1 m3 = 1000 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 1.5 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Volume = 1.5 m3 / 1000 L/m3 = 0.0015 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.0015 L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Volume = 1.5 m3 * 1000 L/m3 = 1500 L",
+   "explanation": "Line 3 divided by 1000 instead of multiplying. The volume is 1500 L."
+  },
+  {
+   "id": "wqa-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to plan a weekly drinking water sampling run under Regulation 170/03.",
+   "topicId": "process-sampling-run-weekly-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario municipal system planning its routine weekly distribution sampling.",
+   "configuration": "Scope: reviewing the sampling schedule through loading the vehicle for the run.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the weekly sampling schedule and confirm the required sample locations and parameters"
+    },
+    {
+     "id": "s2",
+     "label": "Check bottle inventory and select the correct preserved and sterile bottles for each parameter"
+    },
+    {
+     "id": "s3",
+     "label": "Label bottles in advance with location codes and prepare chain of custody forms"
+    },
+    {
+     "id": "s4",
+     "label": "Calibrate or verify the field meters for chlorine, pH, and turbidity"
+    },
+    {
+     "id": "s5",
+     "label": "Pack coolers with ice packs and load bottles, meters, and safety equipment in route order"
+    },
+    {
+     "id": "s6",
+     "label": "Record the departure time and run plan in the sampling log before leaving"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The run is planned from the schedule outward: locations and bottles are confirmed first, meters are verified, and only then is the vehicle loaded so nothing is discovered missing in the field."
+  },
+  {
+   "id": "wqa-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chain of custody steps for a field sampling run.",
+   "topicId": "process-chain-of-custody-field",
+   "level": "class1",
+   "assumptions": "Fictional routine distribution sampling run in an Ontario municipality.",
+   "configuration": "Scope: collecting the first sample through handing the cooler to the laboratory.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect the sample and cap and label the bottle immediately at the sample point"
+    },
+    {
+     "id": "s2",
+     "label": "Record the location, date, time, and sampler initials on the bottle label and field sheet"
+    },
+    {
+     "id": "s3",
+     "label": "Place the sample in the cooler with ice packs and check the cooler temperature plan"
+    },
+    {
+     "id": "s4",
+     "label": "Complete the chain of custody form for every bottle in the cooler"
+    },
+    {
+     "id": "s5",
+     "label": "Seal the cooler and record the seal number on the custody form"
+    },
+    {
+     "id": "s6",
+     "label": "Hand the sealed cooler to the courier or laboratory and obtain a signed receipt"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Custody starts at the moment of collection with immediate labelling, continues through documented chilling and sealing, and ends only when a signed handover proves the transfer."
+  },
+  {
+   "id": "wqa-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the bacteriological sample collection steps as performed by a certified analyst.",
+   "topicId": "process-bacteriological-collection-wqa",
+   "level": "class1",
+   "assumptions": "Fictional distribution bacteriological sample collected in a sterile bottle containing sodium thiosulfate.",
+   "configuration": "Scope: arriving at the sample station through placing the sample in the cooler.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Wash and dry hands and confirm the sterile bottle seal is intact and in date"
+    },
+    {
+     "id": "s2",
+     "label": "Disinfect the sample tap outlet and flush the tap to draw fresh main water"
+    },
+    {
+     "id": "s3",
+     "label": "Reduce the flow to a steady stream and open the bottle without touching the rim or cap interior"
+    },
+    {
+     "id": "s4",
+     "label": "Fill the bottle to the fill line without rinsing out the sodium thiosulfate"
+    },
+    {
+     "id": "s5",
+     "label": "Cap the bottle immediately and label it with location, date, time, and sampler"
+    },
+    {
+     "id": "s6",
+     "label": "Place the bottle upright in the cooler with ice packs and complete the field record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Sterility is protected in order: hands and bottle are checked first, the tap is disinfected and flushed, the bottle is filled without contact or rinsing, and chilling and records follow immediately."
+  },
+  {
+   "id": "wqa-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the standing and flushed lead sampling sequence at a residential plumbing site.",
+   "topicId": "process-lead-sample-standing-flushed",
+   "level": "class1",
+   "assumptions": "Fictional Ontario home sampled for lead under the provincial lead sampling program at a general level.",
+   "configuration": "Scope: preparing for the visit through submitting both samples to the laboratory.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare two labelled lead bottles and confirm the sampling address and fixture"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the water has stood undisturbed in the plumbing for the required standing period"
+    },
+    {
+     "id": "s3",
+     "label": "Collect the standing sample from the cold water tap before any water is run"
+    },
+    {
+     "id": "s4",
+     "label": "Flush the plumbing for the required period after the standing sample is taken"
+    },
+    {
+     "id": "s5",
+     "label": "Collect the flushed sample from the same tap"
+    },
+    {
+     "id": "s6",
+     "label": "Submit both samples with the completed sampling form to the licensed laboratory"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The standing sample must capture water that sat in the plumbing, so it is always taken before any flushing, and the flushed sample from the same tap provides the comparison."
+  },
+  {
+   "id": "wqa-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to collect a trihalomethane sample without headspace.",
+   "topicId": "process-trihalomethane-sampling",
+   "level": "class1",
+   "assumptions": "Fictional distribution trihalomethane sample collected in amber glass vials with preservative.",
+   "configuration": "Scope: preparing the vials through placing the filled vials in the cooler.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the vials contain the correct preservative and check them for cracks or bubbles"
+    },
+    {
+     "id": "s2",
+     "label": "Flush the sample tap to draw fresh main water and reduce the flow to a gentle stream"
+    },
+    {
+     "id": "s3",
+     "label": "Fill the first vial slowly down its side to limit aeration and volatile loss"
+    },
+    {
+     "id": "s4",
+     "label": "Fill the vial to form a convex meniscus and cap it so no air bubble remains"
+    },
+    {
+     "id": "s5",
+     "label": "Invert the vial and check for headspace, resampling if a bubble is present"
+    },
+    {
+     "id": "s6",
+     "label": "Label the vials, place them in the cooler, and complete the custody form"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Volatile samples are filled gently and capped with zero headspace because any air bubble lets trihalomethanes escape, so the bubble check decides whether the sample is valid before it is chilled."
+  },
+  {
+   "id": "wqa-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preservation verification steps before a sampling run departs.",
+   "topicId": "process-sample-preservation-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing bottles for a mixed chemistry and microbiology run.",
+   "configuration": "Scope: pulling bottles from storage through releasing the bottle set for the run.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pull the sampling plan and list the preservation required for each parameter"
+    },
+    {
+     "id": "s2",
+     "label": "Select bottles with the matching preservative for each parameter on the plan"
+    },
+    {
+     "id": "s3",
+     "label": "Check each preservative and bottle expiry date against the run date"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect bottles for damage, missing caps, or broken sterile seals"
+    },
+    {
+     "id": "s5",
+     "label": "Quarantine and replace any bottle that fails the checks"
+    },
+    {
+     "id": "s6",
+     "label": "Record the bottle lot numbers and release the verified set for the run"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Preservation is verified against the plan before anything leaves the laboratory, because a wrong or expired preservative invalidates the result no matter how well the sample is collected."
+  },
+  {
+   "id": "wqa-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the field free chlorine measurement steps at a distribution sample station.",
+   "topicId": "process-field-chlorine-measurement",
+   "level": "class1",
+   "assumptions": "Fictional routine free chlorine check using a DPD colorimeter at a designated station.",
+   "configuration": "Scope: arriving at the station through recording the verified result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Remove any aerator or hose from the sample tap and flush the tap at a steady flow"
+    },
+    {
+     "id": "s2",
+     "label": "Rinse the sample cell three times with the sample water"
+    },
+    {
+     "id": "s3",
+     "label": "Fill the cell to the mark and wipe the outside clean and dry"
+    },
+    {
+     "id": "s4",
+     "label": "Add the DPD reagent for free chlorine and mix as the method directs"
+    },
+    {
+     "id": "s5",
+     "label": "Read the result in the colorimeter within the method time limit"
+    },
+    {
+     "id": "s6",
+     "label": "Record the result with location, date, time, and instrument identification"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The tap is flushed so the sample represents the main, the cell is rinsed with sample to avoid dilution, and the DPD reading is taken promptly because the colour develops and fades with time."
+  },
+  {
+   "id": "wqa-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to adjust a sampling run for a severe winter storm.",
+   "topicId": "process-sampling-in-adverse-weather",
+   "level": "class1",
+   "assumptions": "Fictional Ontario sampling run on a day with a major snowstorm and road closures.",
+   "configuration": "Scope: learning of the storm through completing the adjusted run record.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the forecast and road reports and identify which sample stations remain safely reachable"
+    },
+    {
+     "id": "s2",
+     "label": "Prioritize the regulatory samples that must be collected that day under the schedule"
+    },
+    {
+     "id": "s3",
+     "label": "Reorder the route to collect the priority samples first on cleared roads"
+    },
+    {
+     "id": "s4",
+     "label": "Contact the laboratory to advise of possible late delivery and confirm the courier plan"
+    },
+    {
+     "id": "s5",
+     "label": "Collect the priority samples with custody and chilling maintained throughout"
+    },
+    {
+     "id": "s6",
+     "label": "Document any deferred samples and the reason in the sampling log for rescheduling"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Safety and regulatory priority drive the adjusted run: reachable priority samples are collected first with custody intact, and deferred samples are documented so they are rescheduled, not lost."
+  },
+  {
+   "id": "wqa-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the clearance sampling sequence for a newly installed watermain.",
+   "topicId": "process-new-main-clearance-sampling",
+   "level": "class1",
+   "assumptions": "Fictional new subdivision watermain in Ontario after disinfection and flushing.",
+   "configuration": "Scope: the flushed and disinfected main through clearance to connect it to the live system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the main has been disinfected, held, and flushed to system chlorine residual"
+    },
+    {
+     "id": "s2",
+     "label": "Collect the first set of bacteriological samples from the designated points"
+    },
+    {
+     "id": "s3",
+     "label": "Deliver the samples to the licensed laboratory within the holding time"
+    },
+    {
+     "id": "s4",
+     "label": "Collect the second set of bacteriological samples on the next consecutive day"
+    },
+    {
+     "id": "s5",
+     "label": "Receive absent results for both consecutive sample sets"
+    },
+    {
+     "id": "s6",
+     "label": "Authorize connection of the new main to the live distribution system"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A new main is only connected after disinfection and flushing are complete and two consecutive days of absent bacteriological results prove it is microbiologically safe."
+  },
+  {
+   "id": "wqa-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the resampling sequence that follows an adverse bacteriological result.",
+   "topicId": "process-resample-after-adverse",
+   "level": "class1",
+   "assumptions": "Fictional Ontario distribution location with a total coliform adverse result under Regulation 170/03.",
+   "configuration": "Scope: receiving the adverse notice through submitting the resamples.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the adverse result details and identify the original sample location"
+    },
+    {
+     "id": "s2",
+     "label": "Collect resamples at the original location as soon as possible"
+    },
+    {
+     "id": "s3",
+     "label": "Collect additional samples upstream and downstream of the original location"
+    },
+    {
+     "id": "s4",
+     "label": "Check and record the free chlorine residual at each resample location"
+    },
+    {
+     "id": "s5",
+     "label": "Deliver all resamples to the licensed laboratory with priority handling noted"
+    },
+    {
+     "id": "s6",
+     "label": "Record the resampling actions in the adverse incident file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Resampling brackets the original location with upstream and downstream samples and pairs each with a chlorine residual, so the laboratory results can show whether contamination is local or widespread."
+  },
+  {
+   "id": "wqa-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to build a cross training plan for bench coverage.",
+   "topicId": "process-cross-training-plan",
+   "level": "class1",
+   "assumptions": "Fictional laboratory ensuring every critical method has a backup analyst.",
+   "configuration": "Scope: reviewing method coverage through issuing the training schedule.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the critical methods and the analysts currently authorized for each"
+    },
+    {
+     "id": "s2",
+     "label": "Identify methods with only one authorized analyst as coverage risks"
+    },
+    {
+     "id": "s3",
+     "label": "Select backup analysts and the methods each will learn"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule supervised training and capability demonstrations for each pairing"
+    },
+    {
+     "id": "s5",
+     "label": "Record authorizations as each backup analyst qualifies"
+    },
+    {
+     "id": "s6",
+     "label": "Review the updated coverage list at the quality meeting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cross training starts from a coverage risk list, pairs backups with single coverage methods, and is complete only when new authorizations are actually recorded."
+  },
+  {
+   "id": "wqa-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sample receipt steps when a cooler arrives at the laboratory.",
+   "topicId": "process-sample-receipt-intake",
+   "level": "class1",
+   "assumptions": "Fictional drinking water laboratory receiving a routine courier delivery.",
+   "configuration": "Scope: the cooler arriving at reception through samples placed in refrigerated storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the date, time, and courier identity and note the cooler seal condition"
+    },
+    {
+     "id": "s2",
+     "label": "Open the cooler and measure and record the sample temperature"
+    },
+    {
+     "id": "s3",
+     "label": "Check each bottle against the chain of custody form for count and identity"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect bottles for breakage, leakage, or missing labels"
+    },
+    {
+     "id": "s5",
+     "label": "Place acceptable samples in the designated refrigerator in analysis order"
+    },
+    {
+     "id": "s6",
+     "label": "Flag any discrepancy for the analyst review step before login is completed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Receipt verifies the physical evidence first: seal, temperature, count, and condition are checked against the custody form before samples enter storage, and discrepancies are flagged before login."
+  },
+  {
+   "id": "wqa-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory information system login steps for a received sample set.",
+   "topicId": "process-sample-login-lims",
+   "level": "class1",
+   "assumptions": "Fictional laboratory using a laboratory information management system for sample tracking.",
+   "configuration": "Scope: custody form in hand through printed labels placed on the bottles.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Open a new login record and enter the client, system name, and sampling date"
+    },
+    {
+     "id": "s2",
+     "label": "Enter each sample location and the analyses requested for that location"
+    },
+    {
+     "id": "s3",
+     "label": "Assign the unique laboratory sample number to each bottle"
+    },
+    {
+     "id": "s4",
+     "label": "Print the laboratory labels and apply one to each matching bottle"
+    },
+    {
+     "id": "s5",
+     "label": "Verify each labelled bottle against the custody form line by line"
+    },
+    {
+     "id": "s6",
+     "label": "Save the login and route the work list to the analysts"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Login creates the traceable identity of every sample: details are entered once, unique numbers are assigned and labelled, and a line by line verification catches mismatches before analysis begins."
+  },
+  {
+   "id": "wqa-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response when a received cooler is above the acceptable temperature.",
+   "topicId": "process-temperature-failure-receipt",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving samples that arrived warm after a courier delay.",
+   "configuration": "Scope: measuring the warm cooler temperature through the disposition decision.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure and record the cooler temperature and the time of receipt"
+    },
+    {
+     "id": "s2",
+     "label": "Segregate the affected samples and mark them as temperature compromised"
+    },
+    {
+     "id": "s3",
+     "label": "Review the holding times and the parameters requested for each sample"
+    },
+    {
+     "id": "s4",
+     "label": "Notify the sampler and the client contact of the temperature excursion"
+    },
+    {
+     "id": "s5",
+     "label": "Obtain and record the decision to reject and resample or to qualify the results"
+    },
+    {
+     "id": "s6",
+     "label": "Document the excursion and decision in the nonconformance record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A warm cooler is segregated and documented before any decision, the client is notified, and rejection or qualification is recorded so the data quality impact is never hidden."
+  },
+  {
+   "id": "wqa-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the holding time triage steps at the start of the laboratory day.",
+   "topicId": "process-holding-time-triage",
+   "level": "class1",
+   "assumptions": "Fictional laboratory with samples at different ages awaiting analysis.",
+   "configuration": "Scope: pulling the overnight sample list through issuing the prioritized work list.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Generate the list of logged samples with their collection dates and times"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate the remaining holding time for each requested analysis"
+    },
+    {
+     "id": "s3",
+     "label": "Sort the work so the shortest remaining holding time is analyzed first"
+    },
+    {
+     "id": "s4",
+     "label": "Assign the urgent analyses to analysts and confirm bench capacity"
+    },
+    {
+     "id": "s5",
+     "label": "Flag any sample already past its holding time for qualification review"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the prioritized work list and record the triage in the daily log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Triage protects validity by working backward from holding time expiry: remaining time is calculated for every sample, the most urgent work goes first, and expired samples are flagged rather than quietly analyzed."
+  },
+  {
+   "id": "wqa-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for handling a sample that must be rejected at receipt.",
+   "topicId": "process-rejected-sample-handling",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving a bacteriological sample in a non sterile container.",
+   "configuration": "Scope: identifying the defect through closing the rejection record.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify and photograph or describe the defect that makes the sample unacceptable"
+    },
+    {
+     "id": "s2",
+     "label": "Record the rejection reason on the receipt checklist and in the system"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the sampler and request a replacement sample as soon as possible"
+    },
+    {
+     "id": "s4",
+     "label": "Label the rejected sample and store it separately from acceptable samples"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the nonconformance record with the notification details"
+    },
+    {
+     "id": "s6",
+     "label": "Dispose of the rejected sample by the approved method after the record is closed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A rejected sample is documented and segregated, the sampler is notified promptly so a valid replacement can still be collected, and disposal waits until the record is complete."
+  },
+  {
+   "id": "wqa-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the weekend sample receipt and storage sequence.",
+   "topicId": "process-weekend-sample-receipt",
+   "level": "class1",
+   "assumptions": "Fictional laboratory with reduced weekend staffing receiving Saturday samples.",
+   "configuration": "Scope: samples arriving Saturday morning through the Monday analyst handover.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive the cooler and complete the full receipt checks including temperature"
+    },
+    {
+     "id": "s2",
+     "label": "Log the samples into the system with the weekend receipt date and time"
+    },
+    {
+     "id": "s3",
+     "label": "Start any analysis whose holding time will expire before Monday"
+    },
+    {
+     "id": "s4",
+     "label": "Store the remaining samples at the required refrigerated temperature"
+    },
+    {
+     "id": "s5",
+     "label": "Record storage locations and any analyses already started"
+    },
+    {
+     "id": "s6",
+     "label": "Hand over the sample status list to the Monday analyst in writing"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Weekend receipt follows the same checks as any day, starts the analyses that cannot wait, and leaves a written handover so Monday staff inherit a known sample status."
+  },
+  {
+   "id": "wqa-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory response when a sample courier is delayed past the holding time.",
+   "topicId": "process-courier-delay-response",
+   "level": "class1",
+   "assumptions": "Fictional laboratory expecting samples that are stuck with a delayed courier.",
+   "configuration": "Scope: learning of the delay through the final disposition of the samples.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Contact the courier and establish the revised delivery time"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate whether each analysis holding time will still be met on arrival"
+    },
+    {
+     "id": "s3",
+     "label": "Advise the client which results may be qualified if delivery proceeds"
+    },
+    {
+     "id": "s4",
+     "label": "Decide with the client whether to accept late delivery or arrange resampling"
+    },
+    {
+     "id": "s5",
+     "label": "Receive the samples and document the actual arrival time and temperature"
+    },
+    {
+     "id": "s6",
+     "label": "Apply the agreed qualification or rejection and close the incident record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The response is driven by holding time arithmetic and a documented client decision, so late samples are either knowingly qualified or replaced, never silently accepted."
+  },
+  {
+   "id": "wqa-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to split one field sample into laboratory subsamples.",
+   "topicId": "process-sample-split-login",
+   "level": "class1",
+   "assumptions": "Fictional laboratory splitting a large volume sample for chemistry and metals analysis.",
+   "configuration": "Scope: the logged parent sample through labelled subsamples routed to each bench.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the parent sample identity and the analyses requiring subsamples"
+    },
+    {
+     "id": "s2",
+     "label": "Mix the parent sample thoroughly so every subsample is representative"
+    },
+    {
+     "id": "s3",
+     "label": "Pour the first subsample into the container for the first analysis group"
+    },
+    {
+     "id": "s4",
+     "label": "Pour the remaining subsamples, adding any required preservative at pouring"
+    },
+    {
+     "id": "s5",
+     "label": "Label each subsample with the parent number plus its subsample suffix"
+    },
+    {
+     "id": "s6",
+     "label": "Record the split in the system and route each subsample to its bench"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Subsamples inherit the parent identity with a suffix, and thorough mixing before pouring ensures each bench analyzes the same water, which is what makes the split traceable and representative."
+  },
+  {
+   "id": "wqa-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the priority login steps for resamples linked to an adverse result.",
+   "topicId": "process-priority-sample-login",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving resamples that must be reported as quickly as possible.",
+   "configuration": "Scope: resamples arriving at reception through analysts starting the work.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the samples as adverse follow up resamples from the custody form"
+    },
+    {
+     "id": "s2",
+     "label": "Complete receipt checks and measure the cooler temperature first"
+    },
+    {
+     "id": "s3",
+     "label": "Log the samples as priority and link them to the original adverse record"
+    },
+    {
+     "id": "s4",
+     "label": "Alert the microbiology analyst that priority samples have arrived"
+    },
+    {
+     "id": "s5",
+     "label": "Deliver the samples directly to the bench and confirm the start time"
+    },
+    {
+     "id": "s6",
+     "label": "Record the priority handling in the incident file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Priority login keeps the receipt checks but compresses the path to the bench, links the resamples to the original adverse record, and alerts the analyst so reporting is not delayed by routine queueing."
+  },
+  {
+   "id": "wqa-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to resolve a mismatch between bottles received and the custody form.",
+   "topicId": "process-receipt-discrepancy-resolution",
+   "level": "class1",
+   "assumptions": "Fictional laboratory that received nine bottles against a custody form listing ten.",
+   "configuration": "Scope: discovering the count mismatch through closing the corrected record.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Recount the bottles and recheck the cooler for a bottle packed separately"
+    },
+    {
+     "id": "s2",
+     "label": "Compare every bottle label against each custody form line"
+    },
+    {
+     "id": "s3",
+     "label": "Contact the sampler to establish whether a bottle was collected but not shipped"
+    },
+    {
+     "id": "s4",
+     "label": "Record the sampler response and the agreed explanation in the receipt notes"
+    },
+    {
+     "id": "s5",
+     "label": "Amend the login to match the verified physical samples only"
+    },
+    {
+     "id": "s6",
+     "label": "File the discrepancy note with the custody form for the sample set"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A count mismatch is resolved by physical recheck and sampler confirmation, and the login is built only from verified bottles so the record never claims a sample the laboratory does not hold."
+  },
+  {
+   "id": "wqa-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the membrane filtration steps for a total coliform and E. coli analysis.",
+   "topicId": "process-coliform-membrane-filtration",
+   "level": "class1",
+   "assumptions": "Fictional laboratory analyzing a drinking water sample by membrane filtration.",
+   "configuration": "Scope: preparing the filtration apparatus through incubating the membrane.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Flame or disinfect the filtration funnel and place a sterile membrane with sterile forceps"
+    },
+    {
+     "id": "s2",
+     "label": "Mix the sample thoroughly and measure the required sample volume"
+    },
+    {
+     "id": "s3",
+     "label": "Filter the sample under vacuum and rinse the funnel walls with sterile buffered water"
+    },
+    {
+     "id": "s4",
+     "label": "Transfer the membrane grid side up onto the selective agar plate without air bubbles"
+    },
+    {
+     "id": "s5",
+     "label": "Label the plate with the sample number, date, and incubation conditions"
+    },
+    {
+     "id": "s6",
+     "label": "Place the plate inverted in the incubator at the method temperature"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Membrane filtration protects the membrane at every step: sterile handling, complete filtration with rinsing, bubble free transfer to agar, and prompt labelled incubation."
+  },
+  {
+   "id": "wqa-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the enzyme substrate test setup steps for coliform and E. coli.",
+   "topicId": "process-colilert-setup",
+   "level": "class1",
+   "assumptions": "Fictional laboratory using a presence absence enzyme substrate method in a sealed tray.",
+   "configuration": "Scope: sample and reagent preparation through sealing the tray for incubation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Bring the sample to room temperature and mix it thoroughly"
+    },
+    {
+     "id": "s2",
+     "label": "Add the enzyme substrate reagent to the measured sample volume and dissolve it fully"
+    },
+    {
+     "id": "s3",
+     "label": "Pour the mixture into the sample tray without introducing bubbles"
+    },
+    {
+     "id": "s4",
+     "label": "Run the tray through the sealer to seal every well"
+    },
+    {
+     "id": "s5",
+     "label": "Label the sealed tray with the sample number and incubation start time"
+    },
+    {
+     "id": "s6",
+     "label": "Place the tray in the incubator at the method temperature for the method period"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The reagent must be fully dissolved and the tray fully sealed before incubation, because unsealed wells or undissolved reagent produce invalid well reactions."
+  },
+  {
+   "id": "wqa-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to read incubated coliform plates after the incubation period.",
+   "topicId": "process-micro-incubation-reading",
+   "level": "class1",
+   "assumptions": "Fictional laboratory reading membrane filtration plates the morning after setup.",
+   "configuration": "Scope: removing plates from the incubator through recording the counts.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Remove the plates after the full incubation period and check the incubator temperature record"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the plate labels match the bench worksheet sample list"
+    },
+    {
+     "id": "s3",
+     "label": "Examine each membrane under the specified lighting and count the target colonies"
+    },
+    {
+     "id": "s4",
+     "label": "Check the quality control plates and confirm they performed as expected"
+    },
+    {
+     "id": "s5",
+     "label": "Record the counts and the presence or absence result for each sample"
+    },
+    {
+     "id": "s6",
+     "label": "Return any plate needing confirmation testing to the confirmation step"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Reading starts with proof the incubation was valid, including the temperature record and control plates, and only then are sample colonies counted and recorded."
+  },
+  {
+   "id": "wqa-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the confirmation steps for a presumptive E. coli result.",
+   "topicId": "process-ecoli-confirmation",
+   "level": "class1",
+   "assumptions": "Fictional laboratory confirming a presumptive positive colony from a drinking water sample.",
+   "configuration": "Scope: selecting the presumptive colony through the confirmed result entry.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select a well isolated presumptive colony from the original plate"
+    },
+    {
+     "id": "s2",
+     "label": "Subculture the colony onto the confirmation medium as the method directs"
+    },
+    {
+     "id": "s3",
+     "label": "Incubate the confirmation culture for the method period"
+    },
+    {
+     "id": "s4",
+     "label": "Examine the confirmation culture for the specified E. coli reactions"
+    },
+    {
+     "id": "s5",
+     "label": "Record the confirmed or refuted result against the original sample number"
+    },
+    {
+     "id": "s6",
+     "label": "Notify the senior analyst immediately if the result is confirmed positive"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Confirmation works from the original colony through a defined subculture and reaction check, and a confirmed positive is escalated at once because it may trigger adverse reporting."
+  },
+  {
+   "id": "wqa-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the quality control steps that accompany a microbiology analysis batch.",
+   "topicId": "process-micro-batch-qc",
+   "level": "class1",
+   "assumptions": "Fictional daily coliform batch including method blanks and control cultures.",
+   "configuration": "Scope: preparing the batch quality controls through accepting the batch.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare a sterile method blank and filter or set it up with the batch"
+    },
+    {
+     "id": "s2",
+     "label": "Include the positive and negative control cultures required by the method"
+    },
+    {
+     "id": "s3",
+     "label": "Process the controls through every step alongside the samples"
+    },
+    {
+     "id": "s4",
+     "label": "Read the controls and confirm the blank is negative and the cultures react correctly"
+    },
+    {
+     "id": "s5",
+     "label": "Record the control results on the batch quality control sheet"
+    },
+    {
+     "id": "s6",
+     "label": "Release the sample results only after the batch controls are accepted"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Controls travel through the whole method with the samples, and sample results are released only after the blank and culture controls prove the batch performed correctly."
+  },
+  {
+   "id": "wqa-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the culture media preparation and sterilization steps.",
+   "topicId": "process-autoclave-media-prep",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing a batch of selective agar for coliform analysis.",
+   "configuration": "Scope: weighing the dehydrated medium through storing the poured plates.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Weigh the dehydrated medium and dissolve it in the specified volume of purified water"
+    },
+    {
+     "id": "s2",
+     "label": "Adjust and record the pH of the medium before sterilization if the method requires it"
+    },
+    {
+     "id": "s3",
+     "label": "Autoclave the medium at the specified temperature, pressure, and time"
+    },
+    {
+     "id": "s4",
+     "label": "Cool the medium to the pouring temperature in a water bath"
+    },
+    {
+     "id": "s5",
+     "label": "Pour the plates aseptically and allow them to solidify on a level surface"
+    },
+    {
+     "id": "s6",
+     "label": "Label, quality check, and refrigerate the plates with the preparation date and expiry"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Media quality depends on order: correct dissolution and pH come before sterilization, and controlled cooling and aseptic pouring protect the sterile medium afterward."
+  },
+  {
+   "id": "wqa-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily incubator temperature verification steps.",
+   "topicId": "process-incubator-temperature-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory performing its morning equipment checks.",
+   "configuration": "Scope: reading the incubator thermometer through filing the daily check record.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Read the calibrated thermometer inside the incubator before opening it repeatedly"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the reading with the continuous recorder or data logger value"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the temperature is within the method range for the cultures inside"
+    },
+    {
+     "id": "s4",
+     "label": "Record both readings, the date, time, and analyst initials on the check sheet"
+    },
+    {
+     "id": "s5",
+     "label": "Report any out of range reading to the senior analyst before samples are read"
+    },
+    {
+     "id": "s6",
+     "label": "File the completed check sheet in the equipment records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The incubator check compares an independent thermometer with the recorder, and an out of range finding is escalated before results are read because incubation temperature affects validity."
+  },
+  {
+   "id": "wqa-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when a microbiology sample cannot be analyzed on the day of receipt.",
+   "topicId": "process-micro-sample-holding",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving a late Friday bacteriological sample.",
+   "configuration": "Scope: deciding the sample cannot be run that day through starting it within holding time.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the collection time and calculate the remaining holding time"
+    },
+    {
+     "id": "s2",
+     "label": "Store the sample immediately at the required refrigerated temperature"
+    },
+    {
+     "id": "s3",
+     "label": "Record the storage location and the planned analysis start time"
+    },
+    {
+     "id": "s4",
+     "label": "Brief the next analyst in writing that the sample is time critical"
+    },
+    {
+     "id": "s5",
+     "label": "Start the analysis within the holding time and record the actual start time"
+    },
+    {
+     "id": "s6",
+     "label": "Qualify the result if the holding time was exceeded and document the reason"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A held microbiology sample is chilled and tracked against its holding time with a written handover, and any exceedance is qualified rather than hidden."
+  },
+  {
+   "id": "wqa-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preparation of sterile buffered dilution water for microbiology.",
+   "topicId": "process-sterile-dilution-water",
+   "level": "class1",
+   "assumptions": "Fictional laboratory preparing dilution water for membrane filtration rinsing.",
+   "configuration": "Scope: preparing the buffer solution through releasing the sterilized batch.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the buffer solution to the specified recipe in purified water"
+    },
+    {
+     "id": "s2",
+     "label": "Dispense the solution into the rinse and dilution bottles to the marked volumes"
+    },
+    {
+     "id": "s3",
+     "label": "Autoclave the filled bottles at the specified cycle"
+    },
+    {
+     "id": "s4",
+     "label": "Cool the bottles and check that caps and volumes remain correct"
+    },
+    {
+     "id": "s5",
+     "label": "Test a bottle from the batch for sterility and pH as the quality program requires"
+    },
+    {
+     "id": "s6",
+     "label": "Label the batch with preparation and expiry dates and release it for use"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Dilution water is sterilized in its final bottles and released only after sterility and pH checks, because contaminated rinse water would invalidate every filtration it touches."
+  },
+  {
+   "id": "wqa-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the heterotrophic plate count analysis workflow.",
+   "topicId": "process-plate-count-workflow",
+   "level": "class1",
+   "assumptions": "Fictional laboratory running a heterotrophic plate count on a treated water sample.",
+   "configuration": "Scope: preparing dilutions through counting the incubated plates.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Mix the sample and prepare the required serial dilutions in sterile dilution water"
+    },
+    {
+     "id": "s2",
+     "label": "Pipette the specified volume of sample and dilutions into labelled plates"
+    },
+    {
+     "id": "s3",
+     "label": "Pour the cooled molten agar into each plate and swirl to mix evenly"
+    },
+    {
+     "id": "s4",
+     "label": "Allow the agar to solidify and invert the plates"
+    },
+    {
+     "id": "s5",
+     "label": "Incubate the plates for the method period at the method temperature"
+    },
+    {
+     "id": "s6",
+     "label": "Count the colonies on the countable plates and calculate and record the result"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Plate counts depend on even mixing of sample into molten agar at the right temperature, solidification before inversion, and counting only plates in the countable range."
+  },
+  {
+   "id": "wqa-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the decontamination steps for microbiology cultures after reading.",
+   "topicId": "process-micro-waste-decon",
+   "level": "class1",
+   "assumptions": "Fictional laboratory disposing of incubated plates and trays from a completed batch.",
+   "configuration": "Scope: gathering the read cultures through releasing the autoclave load.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather all read plates and trays into the designated biohazard bags"
+    },
+    {
+     "id": "s2",
+     "label": "Seal the bags and place them in the autoclave waste container"
+    },
+    {
+     "id": "s3",
+     "label": "Autoclave the waste at the validated decontamination cycle"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the cycle indicators show the load reached sterilizing conditions"
+    },
+    {
+     "id": "s5",
+     "label": "Allow the load to cool and transfer it to the approved waste stream"
+    },
+    {
+     "id": "s6",
+     "label": "Record the decontamination load in the waste log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cultures are decontaminated only by a validated autoclave cycle with indicator confirmation, and the load is logged before it enters the regular waste stream."
+  },
+  {
+   "id": "wqa-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the quality check steps before a new lot of culture media is put into use.",
+   "topicId": "process-new-media-lot-check",
+   "level": "class1",
+   "assumptions": "Fictional laboratory receiving a new lot of selective agar.",
+   "configuration": "Scope: the new lot arriving through its release for routine analysis.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the lot number, receipt date, and expiry in the media inventory"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the dehydrated medium or plates for damage and correct storage"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare a test batch from the new lot by the standard method"
+    },
+    {
+     "id": "s4",
+     "label": "Inoculate test plates with the positive and negative control cultures"
+    },
+    {
+     "id": "s5",
+     "label": "Incubate and confirm the expected growth and selective reactions"
+    },
+    {
+     "id": "s6",
+     "label": "Release the lot for routine use and file the lot check record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A new media lot earns its release by performing correctly with control cultures, so a defective lot is caught in quality checks instead of in client results."
+  },
+  {
+   "id": "wqa-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the bench pH measurement steps for a drinking water sample.",
+   "topicId": "process-ph-measurement-bench",
+   "level": "class1",
+   "assumptions": "Fictional laboratory measuring pH with a calibrated bench meter and combination electrode.",
+   "configuration": "Scope: preparing the meter through recording the sample result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Rinse the electrode with purified water and blot it gently without wiping"
+    },
+    {
+     "id": "s2",
+     "label": "Calibrate the meter with the specified pH buffers bracketing the sample range"
+    },
+    {
+     "id": "s3",
+     "label": "Verify the calibration with an independent buffer check standard"
+    },
+    {
+     "id": "s4",
+     "label": "Rinse the electrode and immerse it in the mixed sample at room temperature"
+    },
+    {
+     "id": "s5",
+     "label": "Allow the reading to stabilize and record the pH and sample temperature"
+    },
+    {
+     "id": "s6",
+     "label": "Rinse and return the electrode to its storage solution"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "pH is measured only after bracketing calibration and an independent check, and the electrode is stored in solution afterward so the next measurement starts from a healthy sensor."
+  },
+  {
+   "id": "wqa-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the bench turbidity measurement steps for a treated water sample.",
+   "topicId": "process-turbidity-bench",
+   "level": "class1",
+   "assumptions": "Fictional laboratory using a bench nephelometer for a compliance turbidity result.",
+   "configuration": "Scope: preparing the sample vial through recording the verified result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the turbidimeter calibration with the specified turbidity standards"
+    },
+    {
+     "id": "s2",
+     "label": "Mix the sample gently to suspend particles without introducing bubbles"
+    },
+    {
+     "id": "s3",
+     "label": "Fill a clean vial, cap it, and wipe the outside with a lint free cloth"
+    },
+    {
+     "id": "s4",
+     "label": "Insert the vial with the index mark aligned and close the sample chamber"
+    },
+    {
+     "id": "s5",
+     "label": "Read the result in NTU after the reading stabilizes"
+    },
+    {
+     "id": "s6",
+     "label": "Record the result and repeat with a second vial if the duplicate check is due"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Turbidity readings require a verified meter and a clean, bubble free, correctly indexed vial, because fingerprints, bubbles, and misalignment all scatter light and bias the result."
+  },
+  {
+   "id": "wqa-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the bench DPD free and total chlorine measurement steps.",
+   "topicId": "process-dpd-chlorine-bench",
+   "level": "class1",
+   "assumptions": "Fictional laboratory measuring chlorine residuals on distribution samples by the DPD method.",
+   "configuration": "Scope: preparing the sample cells through recording both residuals.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Rinse both sample cells with the sample and fill them to the mark"
+    },
+    {
+     "id": "s2",
+     "label": "Place the blank cell in the colorimeter and zero the instrument"
+    },
+    {
+     "id": "s3",
+     "label": "Add the free chlorine DPD reagent to the first cell and mix"
+    },
+    {
+     "id": "s4",
+     "label": "Read the free chlorine result within the method time limit"
+    },
+    {
+     "id": "s5",
+     "label": "Add the total chlorine reagents to the second cell and allow the full reaction time"
+    },
+    {
+     "id": "s6",
+     "label": "Read the total chlorine result and record both values with the sample identity"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Free chlorine is read promptly before the colour fades, while total chlorine needs its full reaction time, so the two readings follow their own timing in sequence."
+  },
+  {
+   "id": "wqa-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the alkalinity titration steps for a drinking water sample.",
+   "topicId": "process-alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional laboratory determining total alkalinity by titration with standardized acid.",
+   "configuration": "Scope: preparing the sample and burette through calculating the result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pipette the specified sample volume into a clean titration flask"
+    },
+    {
+     "id": "s2",
+     "label": "Add the specified indicator and mix the sample gently"
+    },
+    {
+     "id": "s3",
+     "label": "Fill the burette with standardized acid and record the starting volume"
+    },
+    {
+     "id": "s4",
+     "label": "Titrate slowly to the indicator endpoint while swirling the flask"
+    },
+    {
+     "id": "s5",
+     "label": "Record the final burette volume and calculate the acid volume used"
+    },
+    {
+     "id": "s6",
+     "label": "Calculate alkalinity as calcium carbonate and record the result with the acid factor"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The titration result comes from the acid volume between two burette readings at a carefully approached endpoint, so setup, slow titration, and calculation follow in that order."
+  },
+  {
+   "id": "wqa-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the total hardness titration steps using EDTA.",
+   "topicId": "process-hardness-titration",
+   "level": "class1",
+   "assumptions": "Fictional laboratory determining total hardness on a groundwater sample.",
+   "configuration": "Scope: preparing the sample through calculating hardness as calcium carbonate.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pipette the specified sample volume into the titration flask"
+    },
+    {
+     "id": "s2",
+     "label": "Add the buffer solution to bring the sample to the method pH"
+    },
+    {
+     "id": "s3",
+     "label": "Add the indicator and mix until the sample shows the starting colour"
+    },
+    {
+     "id": "s4",
+     "label": "Titrate with standardized EDTA slowly to the colour change endpoint"
+    },
+    {
+     "id": "s5",
+     "label": "Record the EDTA volume used from the burette readings"
+    },
+    {
+     "id": "s6",
+     "label": "Calculate total hardness as calcium carbonate and record the result"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Hardness titration needs the buffered pH set before the indicator is added, and the EDTA volume at the colour endpoint is what the calcium carbonate calculation is built from."
+  },
+  {
+   "id": "wqa-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the true colour measurement steps for a treated water sample.",
+   "topicId": "process-colour-measurement",
+   "level": "class1",
+   "assumptions": "Fictional laboratory measuring true colour against platinum cobalt standards.",
+   "configuration": "Scope: preparing the sample through recording the colour result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Filter the sample through the specified filter to remove turbidity for true colour"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare or verify the colour standard series for the measurement range"
+    },
+    {
+     "id": "s3",
+     "label": "Rinse the sample cell with filtered sample and fill it to the mark"
+    },
+    {
+     "id": "s4",
+     "label": "Zero or blank the spectrophotometer with purified water as the method directs"
+    },
+    {
+     "id": "s5",
+     "label": "Read the sample absorbance or compare it against the standard series"
+    },
+    {
+     "id": "s6",
+     "label": "Record the colour result in colour units with the method reference"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "True colour is measured on a filtered sample so turbidity does not masquerade as colour, and the reading is tied to the verified standard series."
+  },
+  {
+   "id": "wqa-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the fluoride measurement steps using an ion selective electrode.",
+   "topicId": "process-fluoride-electrode",
+   "level": "class1",
+   "assumptions": "Fictional laboratory measuring fluoride in finished water samples.",
+   "configuration": "Scope: preparing standards and samples through recording the results.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the fluoride calibration standards in the method concentration range"
+    },
+    {
+     "id": "s2",
+     "label": "Add the ionic strength adjustment buffer to standards and samples in equal proportion"
+    },
+    {
+     "id": "s3",
+     "label": "Calibrate the electrode system and confirm the slope is within the method range"
+    },
+    {
+     "id": "s4",
+     "label": "Rinse the electrode and measure each sample after the standards verify"
+    },
+    {
+     "id": "s5",
+     "label": "Recheck a mid range standard after the samples to confirm drift is acceptable"
+    },
+    {
+     "id": "s6",
+     "label": "Record the sample results and the calibration verification data"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Fluoride by electrode depends on equal buffer treatment of standards and samples and a verified slope, with a closing standard check proving the calibration held through the run."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wqa-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Lab Summary Statistics Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wqa-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Chain Of Custody Field Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wqa-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wqa-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Lab Summary Statistics Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wqa-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wqa-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wqa-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Lead Sample Standing Flushed Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wqa-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Lab Summary Statistics Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wqa-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wqa-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Sample Preservation Check Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wqa-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wqa-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wqa-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Sampling Bottle Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wqa-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Sampling In Adverse Weather Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wqa-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wqa-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Sampling Bottle Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wqa-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wqa-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wqa-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Resample After Adverse Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wqa-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Sampling Holding Time Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wqa-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wqa-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Sample Receipt Intake Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wqa-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wqa-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wqa-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Sampling Holding Time Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wqa-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Temperature Failure Receipt Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wqa-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wqa-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Sampling Holding Time Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wqa-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wqa-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wqa-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Rejected Sample Handling Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wqa-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Lab Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wqa-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wqa-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Courier Delay Response Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wqa-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wqa-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wqa-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Lab Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wqa-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Priority Sample Login Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wqa-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wqa-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Laboratory analysis, sampling and water quality chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "84228df838cd331a278c5cecca2027c15e371ec6cfab608de8767eacbf013def",
+  "taskReceipts": [
+   {
+    "taskId": "wqa-error60",
+    "revision": "r1",
+    "sha256": "86c77942de0625624011658e7642fe8561e3a9751480a5dec8c57d6209824dbd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error61",
+    "revision": "r1",
+    "sha256": "43080f80b772b6dcef946aef621002f4f19fb925b4c93c9f870db676846bebab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error62",
+    "revision": "r1",
+    "sha256": "63b475aa0b3b2247225d267019ba30a5e8f785e9b8ca614decdd4f09d82665b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error63",
+    "revision": "r1",
+    "sha256": "faeb147ede275b6f0d90a7df2d2df4052fdd25aa02e24e40308fd23bfc11c83b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error64",
+    "revision": "r1",
+    "sha256": "45d9a713d178ed1eb78136fb4b6cad2876caa1c3f42110c592a281fe39fe7ec8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error65",
+    "revision": "r1",
+    "sha256": "39d752b5dd3d68cb264f625e9d606be7dce5b73a07173d2740694d5e53c0ca15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error66",
+    "revision": "r1",
+    "sha256": "ad72e2dd9fd5b0ba8e02fc6239238396d0b84f4a7871446c761abf9626bcb94c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error67",
+    "revision": "r1",
+    "sha256": "75f7207d49f2658e7b2f2bd2341b21e0000276ff67bb29aeb5c1101fecf5af44",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error68",
+    "revision": "r1",
+    "sha256": "c7a33bda381737ecfb4854f2d1c406cedbd665eb623cb8d7cb8fa598c3ac69ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error69",
+    "revision": "r1",
+    "sha256": "ea177043f4f00bddf7d71759b25d63e8594dcc8db39d639b1a56ffa46c7a7325",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error70",
+    "revision": "r1",
+    "sha256": "251bb1a622604b3bfa4ba041498578bd880ea4e91815f729661d5655d5c78e1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error71",
+    "revision": "r1",
+    "sha256": "7d004c8d3093078550b814fc49b61e6b479e18167a5921a7bac5ad45a46adc59",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error72",
+    "revision": "r1",
+    "sha256": "dfd401038cd341241c3b0063443689a32e2604a376e24bc25d132edadbc19c4e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error73",
+    "revision": "r1",
+    "sha256": "683981a92958feb3a71a70d672f32fbb4ffd90d99367abbdadda1685bedc240f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error74",
+    "revision": "r1",
+    "sha256": "8d7a4816dc36190e5b7b060fe1d9ed0376c2042205b3d6b7b859d784569db585",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error75",
+    "revision": "r1",
+    "sha256": "763bc8d202db96baed95344b80f8507f283f91c567d96b3da07abd27b56077e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error76",
+    "revision": "r1",
+    "sha256": "3a5767c2e06e627f21db009340a76fdba44f34fc085ccdb37fcea90667b9cc45",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error77",
+    "revision": "r1",
+    "sha256": "dbf09e28065095889d1f5eb646f1873ce4ddf7b36b4eea0a5099d3ab0888e68b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error78",
+    "revision": "r1",
+    "sha256": "a5658b158532cb0df296b1de184af87fcde4ef3d9cea747fc8905109f620f438",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error79",
+    "revision": "r1",
+    "sha256": "762cbb07c62d394cf21f22273af4b9c3300447461a731ea6ad2bdffe9d6e44da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error80",
+    "revision": "r1",
+    "sha256": "f50f6598dfb0cfd32e5b6ae0e83e69ebfd0a446f9a8086a15cae54171ee63640",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error81",
+    "revision": "r1",
+    "sha256": "5224d52b13cc01e14f7bdfc92c6da5614e6c94a578024196fd8be7b4b0ba5b2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error82",
+    "revision": "r1",
+    "sha256": "c22c2f5bc0c9fa47ce310be459d2f8fb2079069ecc5979de21dc93c1687b9030",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error83",
+    "revision": "r1",
+    "sha256": "08354121880acc506128dc4c822e1b38360faa26dd0559aab08818d32d3d7586",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error84",
+    "revision": "r1",
+    "sha256": "96210c1c62a272e460fe2f099dbb2c35bc0feae43247e0c421509aee8582920b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error85",
+    "revision": "r1",
+    "sha256": "b21dc8669b9547ace7efabf91603d9fa883c25cc0f337173e10231c31ff7ab0e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error86",
+    "revision": "r1",
+    "sha256": "92624b57d908cf8724b02ff33d0a9240bd5bce9513d2c82be9321204c1672420",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error87",
+    "revision": "r1",
+    "sha256": "ff62bef9dfa2f1078d551021d55cdd7586f607859d9ead51f0cea654ae729bc9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error88",
+    "revision": "r1",
+    "sha256": "7583839ba6a0ec05d02c0dc93fcce83335bbbd99c047510dffd4fcc17baf94ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error89",
+    "revision": "r1",
+    "sha256": "984622ba1a334acb77c1fa383374697be9a47c1fa4ba723d12f4870e410f1102",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error90",
+    "revision": "r1",
+    "sha256": "6236fba9dc37553da124ec9d35ca74a6994b650a8d335eb92bb0349187da40fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error91",
+    "revision": "r1",
+    "sha256": "b586cf1b19abc97bf8d52ee8a1e105c80df70337b656c047634ec80051eabd42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error92",
+    "revision": "r1",
+    "sha256": "33158471b5839eeea08e5ab949df4dee90593a9f437cdfb253cd9b5bb6cb21dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error93",
+    "revision": "r1",
+    "sha256": "022feaab9dac2b5a25ab07ff874a37620d7c89add28af4d00e33ffc0215ce2f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error94",
+    "revision": "r1",
+    "sha256": "cd21a3349b7354d0b1bbc3a6f994e3325999eba142d88ccc216f9985d2f8d2d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error95",
+    "revision": "r1",
+    "sha256": "2ff6eb6a52b89b81e1efe2d79e9fe1b1ee40500410b3b799e9f38b98d7345631",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error96",
+    "revision": "r1",
+    "sha256": "be9ff7f89b82a4087615bea03c0218aeeef78353f7939277d352bdd80c39d0c6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error97",
+    "revision": "r1",
+    "sha256": "d85d30c32058a22949b1e2b1906e5071507bac8aa39414e708db421111ccbabc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error98",
+    "revision": "r1",
+    "sha256": "1c02a6507e86c717303a045527acd879df7dc0ed89d4855a8d47bc471cb236d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error99",
+    "revision": "r1",
+    "sha256": "f5e466f332d9905971d27c83c602a3e99f7fc4f16078650602a9226771f5feed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process01",
+    "revision": "r1",
+    "sha256": "2b36b1356cd38493bef33c5f6947cb5feb2386115a662353b753c20aeb71c50b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process02",
+    "revision": "r1",
+    "sha256": "d73ad5a930e7ab8cc06e0d122129bc0941affc13a8a680fba79965926cbbbde8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process03",
+    "revision": "r1",
+    "sha256": "91fefcdde531088976b44716f5d5827a100df51cb03dab3ccd6c0cd05915a0ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process04",
+    "revision": "r1",
+    "sha256": "9e27666f4261729f21a5c8e2291c945e44929cfd32122701a8a46da804647a11",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process05",
+    "revision": "r1",
+    "sha256": "6a60f49cb8fa96506079a948835db2975791515e20b211312746cc1263271f85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process06",
+    "revision": "r1",
+    "sha256": "e21cd2d55a5c34a725821e19b0a212c884a90eb804100b48e64b7fa334418e0c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process07",
+    "revision": "r1",
+    "sha256": "fcc9f3b90ae103baf294c62faeefd53c4e1692b5e7b68fcc85f41086c8d43185",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process08",
+    "revision": "r1",
+    "sha256": "bb8a671a48fb0192d283e9b35cf5b16dde86277970bc49637501401ecf2d8529",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process09",
+    "revision": "r1",
+    "sha256": "6191d1a503ea318423da9151e585a709433198a09db2ca59b2513c7b0328d5f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process10",
+    "revision": "r1",
+    "sha256": "63c0f5185cdd89ffb8f7c200d8f96d4569113392bf44ba2bccecfc0a3905efcc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process100",
+    "revision": "r1",
+    "sha256": "2f5fece5ffadbf6d4e2e1835673eb5016d72a5dd139a512dadbc3b79a24f0c7f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process11",
+    "revision": "r1",
+    "sha256": "ec93ca413918c9053082cf0241aac60d6ea81d17d89a74f939f8eba8cffebb2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process12",
+    "revision": "r1",
+    "sha256": "71ce75d65a4b78ced297ebf31fe66518a70fd19a2d8745618246a44be90db169",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process13",
+    "revision": "r1",
+    "sha256": "707805ee2dcf6d9b6d45a51c62c0167510576674900d3d4a75d7dff07d31b14c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process14",
+    "revision": "r1",
+    "sha256": "dffe0043839130f6284a461553574a66cf6f468274d5f0d84fe4116801e8922f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process15",
+    "revision": "r1",
+    "sha256": "d3f352d8a4f46393ef5e7d4e7ac4a166c80df2d514a76aaaff9615bb1d6a4568",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process16",
+    "revision": "r1",
+    "sha256": "c3ea627d2cbd127fef2255ea5791dce6d509f69794946e02fe0a9e9cdf9654b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process17",
+    "revision": "r1",
+    "sha256": "9fc15df7c568f299d723c1c9767ecc792a36a252ecab6ad4813a8e343cf9ae19",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process18",
+    "revision": "r1",
+    "sha256": "35247839999447e586d2866314b861e1e4bd28b2baed3d66f0f4ce84de12f476",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process19",
+    "revision": "r1",
+    "sha256": "779ff79f4503f399b4f7beee003498aaa886e754a87b49ac0a04c6acac800a86",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process20",
+    "revision": "r1",
+    "sha256": "3a5c4235a6c4cb0880647f240205dd9ae5ae9d37976b2c30a0f36d518128d199",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process21",
+    "revision": "r1",
+    "sha256": "5e984a758e6ab7b704aba7e75a499ad4f81ee42be6317d911121f8897df7539a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process22",
+    "revision": "r1",
+    "sha256": "e062dd6e3d78ef0cbecbc326dbbb3d8d7a3a0f2ae63bf0c764973f3838fa0911",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process23",
+    "revision": "r1",
+    "sha256": "14a94d265d1598c4ad21b2098635723d7fb5544bc91d39b2769ba467bd42a614",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process24",
+    "revision": "r1",
+    "sha256": "f03f360dc7de58fed6a3989dd30750d4a299dce0d3279f3cbcd2b1e84ce63117",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process25",
+    "revision": "r1",
+    "sha256": "09755a9e39b9d30f51281eca777bdcc5e20dadc4883fe1be56fb5b5acbe280a9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process26",
+    "revision": "r1",
+    "sha256": "c0ab5815beff1b094f33842b6567122552409c0ff909a9342e1b858e5ced9217",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process27",
+    "revision": "r1",
+    "sha256": "975ef3942e312424a051b97a6070eb496c238f2cbd7390c7becc5defb6f70561",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process28",
+    "revision": "r1",
+    "sha256": "8f62a9a2f08dfb51f33f4f57f1770ce279d98ae787299af79d8ef3535ef1ed7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process29",
+    "revision": "r1",
+    "sha256": "e4dc401d1c3479f5eb0fb2769637ee0568b16bcb4549bad964995ea208d7b5d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process30",
+    "revision": "r1",
+    "sha256": "1b3e9dac4d857febd9565ec5db7b09b9397877926fb1c6cdea8daf29925f912a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process31",
+    "revision": "r1",
+    "sha256": "cfe6e252fc4ac621c8075579963e94d3387fd283edd1b22b81de43e65802539a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process32",
+    "revision": "r1",
+    "sha256": "54c7e3d544bbac7e091c96d36077a18a56cd2c89884c797c6e8dd59837750f5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process33",
+    "revision": "r1",
+    "sha256": "6d330813db91f51a239246f4d33e4dfa1d4f953afb234ba5654c4c9123f86fa9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process34",
+    "revision": "r1",
+    "sha256": "4f637aaabff59fb73b6c803ab31378c44fbd1865dd1a3143a3c715303923a536",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process35",
+    "revision": "r1",
+    "sha256": "8c5af420fb1ca6a1d69e3527a9f0eefbceba3133105c60ddf0f6f2ff3ea3de11",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process36",
+    "revision": "r1",
+    "sha256": "d8790019a1f470fcd28218d7e6048602e56e16cde56708b8b7138e5eba2d9f7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process37",
+    "revision": "r1",
+    "sha256": "5c482708362e4a642a38668320a82ae62192e1998f82c58d1dcbb575f63fdf35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process38",
+    "revision": "r1",
+    "sha256": "830e46eae22f3f6bb8333e15747d31b3ac3a32b295edb0753d7256ffbf50f1d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-process39",
+    "revision": "r1",
+    "sha256": "8187a8d7e42388f8b6b3b70ec81d9456d34d9749b2bbbe2fd0875cc24767599e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wqa-mission41",
+    "revision": "r1",
+    "sha256": "fad9962ffdb9f2b3df5431ffe45bf98f61baee9cf2974213c4e32ce695edcad5"
+   },
+   {
+    "missionId": "wqa-mission42",
+    "revision": "r1",
+    "sha256": "12b06ebba030b7c4b4721daf7376d92b18c0f963ce59bc586478044cb557977e"
+   },
+   {
+    "missionId": "wqa-mission43",
+    "revision": "r1",
+    "sha256": "a3d74b61f94a8c36347128519c58af5554e7fd5f8b0af576240715942c3e695d"
+   },
+   {
+    "missionId": "wqa-mission44",
+    "revision": "r1",
+    "sha256": "f468fa28bb315f2edb495587287472976ddee985543d49031918e3012a58c9a7"
+   },
+   {
+    "missionId": "wqa-mission45",
+    "revision": "r1",
+    "sha256": "6e3cd4d0b645c7fd1ee8f80b29e0153fd93ca3be1adf3a1dfa7b7b142966c52b"
+   },
+   {
+    "missionId": "wqa-mission46",
+    "revision": "r1",
+    "sha256": "70de1e6f08188f6fa90c81254e244526780d19caf6ca661c85b8ce2cdfbad5e0"
+   },
+   {
+    "missionId": "wqa-mission47",
+    "revision": "r1",
+    "sha256": "b4dbf81dbf4f59ea41cbd704eccdd4116cd59065f63eac00a79ffa45e7deb0c0"
+   },
+   {
+    "missionId": "wqa-mission48",
+    "revision": "r1",
+    "sha256": "180f2e466e61051f1722d47466a7c7d9947a4c65cb2a212fe568a8bfa5f6d468"
+   },
+   {
+    "missionId": "wqa-mission49",
+    "revision": "r1",
+    "sha256": "4180194a0e22dab270e188942605fe5c9dadc97025a6ae96ebaae55c1bed35b2"
+   },
+   {
+    "missionId": "wqa-mission50",
+    "revision": "r1",
+    "sha256": "039aea20e8a8f5a8ac0f4794cee304e66eb2ed493b56ce34e616a4649ffe77f6"
+   },
+   {
+    "missionId": "wqa-mission51",
+    "revision": "r1",
+    "sha256": "9c8d4816ac3d1730c5e1bd4baa66cb55600d53e0ee46787d1f785c4c32111d58"
+   },
+   {
+    "missionId": "wqa-mission52",
+    "revision": "r1",
+    "sha256": "26e5de96dfc4bb8b625f2adbb2445d6278008615386a0e120d42501a57f65f53"
+   },
+   {
+    "missionId": "wqa-mission53",
+    "revision": "r1",
+    "sha256": "b70290d7e5c5762c6504bad41e442e62d644bb69d7dc07c2588cbc76abf5ee03"
+   },
+   {
+    "missionId": "wqa-mission54",
+    "revision": "r1",
+    "sha256": "5fae391ded40a536f6829747dca8335abbd5597ad5f0d90625dbd30bf539db18"
+   },
+   {
+    "missionId": "wqa-mission55",
+    "revision": "r1",
+    "sha256": "012750e282e23266977877699a4056aba4636bfe9a359f14115f886c1542d2b1"
+   },
+   {
+    "missionId": "wqa-mission56",
+    "revision": "r1",
+    "sha256": "fec426ec103f1d48c18d68d90f473e27f861863a673ef975dcb289c521896e56"
+   },
+   {
+    "missionId": "wqa-mission57",
+    "revision": "r1",
+    "sha256": "26171afeee9d4c22dca0175b3db59d1a9a59c093131db94fe4631e030c17955f"
+   },
+   {
+    "missionId": "wqa-mission58",
+    "revision": "r1",
+    "sha256": "a52ad8791430afd1bb034521d3cf37c1b1108f8454c73458e5b435edb6e108e7"
+   },
+   {
+    "missionId": "wqa-mission59",
+    "revision": "r1",
+    "sha256": "fb56ee84bce1f7240d04891a4b31d7cb9d3bd425fd3bc86136c5e120954f1c9d"
+   },
+   {
+    "missionId": "wqa-mission60",
+    "revision": "r1",
+    "sha256": "835e652785c9086b168d78553af0475ecf82b4ef1048d22d1546ba09be6301fd"
+   }
+  ]
+ }
+}

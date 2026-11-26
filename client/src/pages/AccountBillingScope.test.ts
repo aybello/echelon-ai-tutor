@@ -112,11 +112,13 @@ describe("personal billing UI without changing team membership or terms", () => 
     expect(accountSource).toContain("if (isManager && !isPersonalBilling)");
     expect(accountSource).toContain('const rawNext = isPersonalBilling ? "/account?billing=personal"');
   });
-  it("Team exposes an accessible explicit personal link in normal and recovery states", () => {
-    expect(teamSource.match(/href="\/account\?billing=personal"/g)).toHaveLength(2);
-    const link = teamSource.split('<Link href="/account?billing=personal"')[2].split("</Link>")[0];
-    expect(link).toContain("Individual billing &amp; passes");
-    expect(link).not.toContain("hidden");
+  it("Team keeps normal and recovery manager journeys on employer support without personal-billing diversions", () => {
+    const recovery = teamSource.split("if (overviewQuery.error) {")[1].split("const overview = overviewQuery.data!;")[0];
+    const dashboard = teamSource.split("const overview = overviewQuery.data!;")[1];
+    expect(teamSource).not.toContain("/account?billing=personal");
+    expect(teamSource).not.toContain("Individual billing &amp; passes");
+    expect(recovery).toMatch(/<a href="mailto:abello@echeloninstitute\.ca"[^>]*>Contact team support<\/a>/);
+    expect(dashboard).toMatch(/<a href="mailto:abello@echeloninstitute\.ca"[^>]*>Team support<\/a>/);
   });
   it("normal and recovery Team billing calls stay explicitly team-scoped", () => {
     expect(teamSource).toContain('billingPortal.mutate({ scope: "team", orgId: overview.orgId })');

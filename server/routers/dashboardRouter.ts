@@ -12,7 +12,7 @@ import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseL
 import { readPracticeReviewCounts } from "../practiceReviewEligibility";
 import { READINESS_MODEL_VERSION } from "../_core/readiness";
 import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes, examResults } from "../../drizzle/schema";
-import { and, eq, sql, desc, gte, or } from "drizzle-orm";
+import { and, eq, sql, desc, gte, or, isNull } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
@@ -439,12 +439,19 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * AI Tutor Session History — only available for OAuth users
+   * Saved tutor history for the current verified identity, never an account/email union.
    */
   aiSessionHistory: publicProcedure.query(async ({ ctx }) => {
-    const { userId } = await resolveDashboardIdentity(ctx);
+    const { userId, email } = resolveDashboardIdentity(ctx);
     const db = await getDb();
-    if (!db || !userId) return [];
+    if (!db) {
+      throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Saved tutor history is temporarily unavailable. Please retry." });
+    }
+    // Account sign-ins read only their account rows. Without an account, email
+    // comes exclusively from ctx.studentEmail (verified by server context).
+    const identityWhere = userId !== null
+      ? eq(aiChatSessions.userId, userId)
+      : and(isNull(aiChatSessions.userId), eq(aiChatSessions.studentEmail, email!));
 
     const rows = await db
       .select({
@@ -456,14 +463,14 @@ export const dashboardRouter = router({
         summary: aiChatSessions.summary,
       })
       .from(aiChatSessions)
-      .where(eq(aiChatSessions.userId, userId))
-      .orderBy(desc(aiChatSessions.sessionStart))
+      .where(identityWhere)
+      .orderBy(desc(aiChatSessions.sessionStart), desc(aiChatSessions.id))
       .limit(10);
 
     return rows.map((r) => ({
       id: r.id,
       examType: r.examType ?? "general",
-      sessionStart: r.sessionStart ? new Date(r.sessionStart).toISOString() : new Date().toISOString(),
+      sessionStart: r.sessionStart ? new Date(r.sessionStart).toISOString() : null,
       messageCount: r.messageCount ?? 0,
       topicsCovered: r.topicsCovered ?? "",
       summary: r.summary ?? "No summary available",
@@ -703,13 +710,9 @@ export const dashboardRouter = router({
 
     const totalAttempts = Object.values(topicAccuracyMap).reduce((s, t) => s + t.total, 0);
 
-    // Use course-specific paths from the primary focus
-    const quizBase = examTypeFilter
-      ? (getCourseByKey(examTypeFilter)?.quizPath ?? "/quiz")
-      : "/quiz";
-    const mockBase = examTypeFilter
-      ? (getCourseByKey(examTypeFilter)?.mockExamPath ?? "/quiz?mode=mock")
-      : "/quiz?mode=mock";
+    // Missing course context must never redirect another course's work to OIT.
+    const quizBase = focusedCourse?.quizPath ?? "/account";
+    const mockBase = focusedCourse?.mockExamPath ?? "/account";
     const resultIdentityWhere = userId && email
       ? or(eq(examResults.userId, userId), eq(examResults.studentEmail, email))
       : userId ? eq(examResults.userId, userId) : eq(examResults.studentEmail, email!);
@@ -952,8 +955,8 @@ export const dashboardRouter = router({
       source: focus.source,
       label: course?.displayName ?? focus.courseKey ?? null,
       shortName: course?.shortName ?? focus.courseKey ?? null,
-      quizPath: course?.quizPath ?? "/quiz",
-      mockExamPath: course?.mockExamPath ?? "/quiz?mode=mock",
+      quizPath: course?.quizPath ?? "/account",
+      mockExamPath: course?.mockExamPath ?? "/account",
       flashcardPath: course?.flashcardPath ?? null,
       formulaPath: course?.formulaPath ?? null,
     };

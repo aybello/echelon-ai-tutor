@@ -1,0 +1,5520 @@
+{
+ "courseKey": "class4-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4w-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the post incident review and recovery sequence after a major emergency.",
+   "topicId": "process-emergency-post-incident-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: from emergency stand down to a stronger system than before the event.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the emergency is over and essential services and water quality are stable"
+    },
+    {
+     "id": "s2",
+     "label": "Restore normal staffing, replenish consumed resources, and repair temporary measures"
+    },
+    {
+     "id": "s3",
+     "label": "Collect logs, records, and accounts from all responding teams while memories are fresh"
+    },
+    {
+     "id": "s4",
+     "label": "Analyse what worked, what failed, and the root causes of any harm or delay"
+    },
+    {
+     "id": "s5",
+     "label": "Agree improvement actions with owners and dates and update the emergency plan"
+    },
+    {
+     "id": "s6",
+     "label": "Share the review with senior management, the owner, and responding partners as appropriate"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Recovery restores service first, then learning improves the system. Updating the plan while evidence is fresh is what makes the next response better."
+  },
+  {
+   "id": "c4w-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the ministry inspection readiness sequence for a drinking water system.",
+   "topicId": "process-regulatory-inspection-readiness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: preparing for a scheduled provincial inspection under Ontario Regulation 170/03.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the inspection scope, dates, and the records period the inspector will review"
+    },
+    {
+     "id": "s2",
+     "label": "Audit sampling, monitoring, and reporting records for completeness and accuracy"
+    },
+    {
+     "id": "s3",
+     "label": "Walk the plant and distribution system to find and correct housekeeping and labelling gaps"
+    },
+    {
+     "id": "s4",
+     "label": "Verify operator certification records, logbooks, and contingency plans are current and retrievable"
+    },
+    {
+     "id": "s5",
+     "label": "Brief staff on inspection conduct, honest answers, and who escorts the inspector"
+    },
+    {
+     "id": "s6",
+     "label": "Host the inspection, track every request and finding, and begin corrections immediately where possible"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Readiness is a records and field audit done before the inspector arrives. Tracking requests during the visit prevents findings being lost."
+  },
+  {
+   "id": "c4w-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual compliance reporting leadership sequence.",
+   "topicId": "process-regulatory-annual-reporting-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: preparing the annual report and summary report required for the system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the year production, sampling, adverse incident, and corrective action records"
+    },
+    {
+     "id": "s2",
+     "label": "Verify the data against laboratory reports, logbooks, and continuous monitoring records"
+    },
+    {
+     "id": "s3",
+     "label": "Draft the reports in the required format with explanations for any incidents or exceedances"
+    },
+    {
+     "id": "s4",
+     "label": "Review the drafts with the overall responsible operator and senior management for accuracy"
+    },
+    {
+     "id": "s5",
+     "label": "Submit the reports by the regulatory deadlines and provide them to the owner and the public as required"
+    },
+    {
+     "id": "s6",
+     "label": "File the submitted reports and record lessons for improving data collection next year"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Verification against source records precedes drafting claims. Submission by deadline and public availability are both compliance requirements, not courtesies."
+  },
+  {
+   "id": "c4w-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the adverse water quality incident leadership sequence.",
+   "topicId": "process-regulatory-adverse-incident-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: senior handling of an adverse test result from notification to final closure.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive the adverse result and confirm the sample details and result validity with the laboratory"
+    },
+    {
+     "id": "s2",
+     "label": "Make the immediate verbal notifications to the health unit and the ministry as regulation requires"
+    },
+    {
+     "id": "s3",
+     "label": "Issue any required public notices and direct resampling and corrective actions"
+    },
+    {
+     "id": "s4",
+     "label": "Submit the written adverse report within the required timeline with actions taken"
+    },
+    {
+     "id": "s5",
+     "label": "Collect resample results and confirm the issue is resolved with the health unit"
+    },
+    {
+     "id": "s6",
+     "label": "File the complete incident record and review the event for preventive actions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Immediate verbal notification cannot wait for perfect information. Written reports and resampling then prove the corrective action worked."
+  },
+  {
+   "id": "c4w-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the regulatory sampling program leadership sequence for a new operating year.",
+   "topicId": "process-regulatory-sampling-program-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: setting up the full Regulation 170/03 sampling program for the year ahead.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the regulation, licence, and permit sampling requirements for every parameter and location"
+    },
+    {
+     "id": "s2",
+     "label": "Build the annual sampling calendar with frequencies, locations, and responsible staff"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm laboratory arrangements, bottles, preservatives, and courier schedules for each sample type"
+    },
+    {
+     "id": "s4",
+     "label": "Brief samplers on locations, techniques, chain of custody, and adverse result duties"
+    },
+    {
+     "id": "s5",
+     "label": "Track completion monthly and reschedule any missed sample within its required window"
+    },
+    {
+     "id": "s6",
+     "label": "Review program results quarterly and adjust locations or frequencies where evidence supports it"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Requirements define the calendar, and monthly tracking catches misses while they can still be corrected. Quarterly review turns sampling into information, not only compliance."
+  },
+  {
+   "id": "c4w-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the corrective action sequence after a ministry inspection order is issued.",
+   "topicId": "process-regulatory-inspection-order-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: responding to a provincial officers order with binding deadlines.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Read the order carefully and confirm every requirement, deadline, and reporting duty"
+    },
+    {
+     "id": "s2",
+     "label": "Brief senior management and the owner on the order, its risks, and the resources needed"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare a compliance plan assigning each requirement an owner, actions, and interim milestones"
+    },
+    {
+     "id": "s4",
+     "label": "Implement the plan with priority on any requirement affecting drinking water safety"
+    },
+    {
+     "id": "s5",
+     "label": "Provide progress reports to the inspector as the order requires and keep evidence of each step"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm in writing when every requirement is met and request closure of the order"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The order, not preference, sets the priorities and deadlines. Written confirmation and evidence are needed because the utility must prove compliance, not assume it."
+  },
+  {
+   "id": "c4w-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the drinking water works permit and licence amendment sequence.",
+   "topicId": "process-regulatory-permit-licence-amendment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: amending approvals for a significant change to the drinking water system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the proposed change needs an amendment and identify the approval instruments affected"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare the technical description, drawings, and supporting studies for the change"
+    },
+    {
+     "id": "s3",
+     "label": "Review the application internally for consistency with the operational plan and source protection requirements"
+    },
+    {
+     "id": "s4",
+     "label": "Submit the application and respond to ministry questions and information requests"
+    },
+    {
+     "id": "s5",
+     "label": "Receive the amended approvals and update procedures, drawings, and staff training to match"
+    },
+    {
+     "id": "s6",
+     "label": "Implement the change only within the conditions of the amended approvals"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Work must stay within existing approvals until the amendment is granted. Updating procedures and training makes the new approval real in daily operations."
+  },
+  {
+   "id": "c4w-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the source protection plan implementation sequence for a water system.",
+   "topicId": "process-regulatory-source-protection-implementation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: carrying out the system duties under the local source protection plan.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the vulnerable areas, threats, and policies that apply to the system sources"
+    },
+    {
+     "id": "s2",
+     "label": "Assign each applicable policy an owner and the actions the utility must complete"
+    },
+    {
+     "id": "s3",
+     "label": "Complete risk management, signage, monitoring, and reporting duties by their required dates"
+    },
+    {
+     "id": "s4",
+     "label": "Train operators on spill response and land use concerns inside the vulnerable areas"
+    },
+    {
+     "id": "s5",
+     "label": "Report implementation progress to the source protection authority as required"
+    },
+    {
+     "id": "s6",
+     "label": "Review the duties whenever the source protection plan or the system sources change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Duties flow from the plan policies, so identifying them accurately comes first. Reporting and review keep protection active as land use and plans change."
+  },
+  {
+   "id": "c4w-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the lead and corrosion control program leadership sequence.",
+   "topicId": "process-regulatory-lead-corrosion-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: managing the regulatory lead sampling and corrosion control duties for the system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the sampling requirements, locations, and schedule that apply to the system this period"
+    },
+    {
+     "id": "s2",
+     "label": "Collect samples exactly to protocol, including plumbing and distribution samples as required"
+    },
+    {
+     "id": "s3",
+     "label": "Review results against the standard and identify any locations or patterns of concern"
+    },
+    {
+     "id": "s4",
+     "label": "Notify the required parties and the public of results and any required corrective steps"
+    },
+    {
+     "id": "s5",
+     "label": "Implement or adjust corrosion control treatment where results show it is needed"
+    },
+    {
+     "id": "s6",
+     "label": "Track results over successive periods and report the program status to senior management"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Protocol exact sampling comes before any conclusion about lead levels. Treatment adjustment follows evidence, and trending shows whether control is working."
+  },
+  {
+   "id": "c4w-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the records management sequence for regulatory compliance evidence.",
+   "topicId": "process-regulatory-records-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: ensuring compliance records are complete, retrievable, and retained as required.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory the record types the regulation, licence, and DWQMS require the system to keep"
+    },
+    {
+     "id": "s2",
+     "label": "Set retention periods, storage locations, and access rules for each record type"
+    },
+    {
+     "id": "s3",
+     "label": "Check current records for gaps, unsigned entries, and misfiling and correct what can be corrected"
+    },
+    {
+     "id": "s4",
+     "label": "Train staff on contemporaneous recording, corrections, and logbook standards"
+    },
+    {
+     "id": "s5",
+     "label": "Audit retrievability by requesting sample records and timing their production"
+    },
+    {
+     "id": "s6",
+     "label": "Review the records system annually and after any inspection finding about records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "You cannot manage records you have not inventoried. The retrievability audit tests the system the way an inspector will."
+  },
+  {
+   "id": "c4w-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the compliance data verification sequence before a regulatory submission.",
+   "topicId": "process-regulatory-data-verification-submission",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: senior verification of monitoring data before it is submitted to the ministry.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Extract the submission data set and confirm the period, parameters, and locations are complete"
+    },
+    {
+     "id": "s2",
+     "label": "Reconcile the data against laboratory reports and continuous monitoring records"
+    },
+    {
+     "id": "s3",
+     "label": "Investigate and resolve discrepancies, documenting any corrections and their reasons"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm adverse incidents in the period are all reported and cross referenced"
+    },
+    {
+     "id": "s5",
+     "label": "Obtain the overall responsible operator review and sign off of the verified data"
+    },
+    {
+     "id": "s6",
+     "label": "Submit the data, file the submission copy, and record the submission confirmation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Reconciliation against source records catches errors while they can still be fixed. Sign off after verification gives the submission accountable ownership."
+  },
+  {
+   "id": "c4w-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the asset management plan development sequence for a water utility.",
+   "topicId": "process-asset-management-plan-development",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: building a plan that links asset condition, service levels, risk, and funding.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the scope of assets covered and the levels of service the utility commits to deliver"
+    },
+    {
+     "id": "s2",
+     "label": "Build the asset inventory with age, condition, capacity, and replacement value information"
+    },
+    {
+     "id": "s3",
+     "label": "Assess risks and identify the assets whose failure would most affect service and compliance"
+    },
+    {
+     "id": "s4",
+     "label": "Develop lifecycle and renewal strategies with forecast costs for each asset group"
+    },
+    {
+     "id": "s5",
+     "label": "Align the plan with the capital forecast, operating budget, and long term financial plan"
+    },
+    {
+     "id": "s6",
+     "label": "Obtain owner approval, publish the plan summary, and schedule annual updates"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Service levels come before spending strategies, because assets exist to deliver service. Owner approval connects the technical plan to funding decisions."
+  },
+  {
+   "id": "c4w-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the asset condition assessment program sequence.",
+   "topicId": "process-asset-condition-assessment-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: rolling program that grades condition across treatment and distribution assets.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the asset groups due for assessment and the grading scale to be used consistently"
+    },
+    {
+     "id": "s2",
+     "label": "Gather maintenance history, failure records, and performance data for each group"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the assets in the field and grade condition with supporting photographs"
+    },
+    {
+     "id": "s4",
+     "label": "Enter grades into the asset register and flag assets in poor or critical condition"
+    },
+    {
+     "id": "s5",
+     "label": "Report the condition profile and the highest risk assets to senior management"
+    },
+    {
+     "id": "s6",
+     "label": "Feed poor condition assets into renewal planning with recommended timing"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A consistent scale makes grades comparable across years and asset groups. The program succeeds when poor grades change renewal priorities."
+  },
+  {
+   "id": "c4w-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the asset criticality ranking sequence for maintenance and renewal priorities.",
+   "topicId": "process-asset-criticality-ranking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: ranking assets by consequence and likelihood of failure.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the assets and systems to be ranked with their functions in the treatment process"
+    },
+    {
+     "id": "s2",
+     "label": "Score consequence of failure for water quality, supply, safety, environment, and cost"
+    },
+    {
+     "id": "s3",
+     "label": "Score likelihood of failure using age, condition, and failure history evidence"
+    },
+    {
+     "id": "s4",
+     "label": "Combine the scores into a criticality ranking and review outliers with operations staff"
+    },
+    {
+     "id": "s5",
+     "label": "Apply the ranking to maintenance frequency, spare parts holdings, and renewal order"
+    },
+    {
+     "id": "s6",
+     "label": "Refresh the ranking annually and after any major failure or system change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Consequence and likelihood are scored separately before they are combined. Applying the ranking to spares and maintenance is where it changes daily decisions."
+  },
+  {
+   "id": "c4w-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the lifecycle renewal planning sequence for a major asset group.",
+   "topicId": "process-asset-lifecycle-renewal-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: planning renewal of one asset group, for example high lift pumps, over its full life.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Establish the current age, condition, performance, and maintenance cost of the group"
+    },
+    {
+     "id": "s2",
+     "label": "Estimate remaining useful life and the failure risks in the final years of service"
+    },
+    {
+     "id": "s3",
+     "label": "Compare refurbishment, like for like replacement, and upgraded replacement options"
+    },
+    {
+     "id": "s4",
+     "label": "Select the preferred strategy and time the renewal before reliability becomes unacceptable"
+    },
+    {
+     "id": "s5",
+     "label": "Include the renewal in the capital forecast with procurement lead time allowed"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor performance after renewal and record actual life and costs for future planning"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Remaining life evidence sets the timing window. Recording actual outcomes improves the next lifecycle estimate instead of repeating assumptions."
+  },
+  {
+   "id": "c4w-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the level of service framework development sequence.",
+   "topicId": "process-asset-level-of-service-framework",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: defining measurable service commitments for council and customers.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the service areas customers and regulators care about, such as quality, pressure, and reliability"
+    },
+    {
+     "id": "s2",
+     "label": "Set measurable indicators and target levels for each service area with senior management"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm current performance against the targets using operating and complaint data"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the asset and funding implications of closing any gaps to target"
+    },
+    {
+     "id": "s5",
+     "label": "Report performance against the framework to the owner at least annually"
+    },
+    {
+     "id": "s6",
+     "label": "Review and adjust targets when expectations, regulations, or funding change materially"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Targets must be measurable and based on current performance evidence. Annual reporting keeps service promises connected to asset funding."
+  },
+  {
+   "id": "c4w-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the maintenance strategy review sequence from preventive to predictive practice.",
+   "topicId": "process-asset-maintenance-strategy-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: modernizing maintenance for critical treatment equipment.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse work order and failure history to find the equipment causing the most downtime"
+    },
+    {
+     "id": "s2",
+     "label": "Classify equipment by criticality and current maintenance approach"
+    },
+    {
+     "id": "s3",
+     "label": "Identify where condition monitoring or predictive checks can replace fixed interval tasks"
+    },
+    {
+     "id": "s4",
+     "label": "Pilot the revised strategy on one critical equipment group and track failures and costs"
+    },
+    {
+     "id": "s5",
+     "label": "Train technicians on the new tasks and update the maintenance system schedules"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the strategy where the pilot proves it and review results annually"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Failure history shows where the current strategy is failing. A pilot proves predictive tasks work before they replace proven preventive work."
+  },
+  {
+   "id": "c4w-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the critical spare parts program sequence.",
+   "topicId": "process-asset-critical-spares-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: ensuring spares exist for failures that would stop treatment or supply.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List critical equipment and the failure modes that would remove it from service"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the parts needed for each failure mode and their supplier lead times"
+    },
+    {
+     "id": "s3",
+     "label": "Set stock levels that balance outage risk against inventory cost for each part"
+    },
+    {
+     "id": "s4",
+     "label": "Stock, label, and record the parts in the inventory system with reorder points"
+    },
+    {
+     "id": "s5",
+     "label": "Review usage and lead times annually and adjust levels for obsolescence"
+    },
+    {
+     "id": "s6",
+     "label": "Audit physical stock against records and correct discrepancies found"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Lead time drives stock decisions, because a cheap part with a long lead time can still cause a long outage. Annual review handles obsolescence before it surprises."
+  },
+  {
+   "id": "c4w-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the asset decommissioning leadership sequence for retired treatment equipment.",
+   "topicId": "process-asset-decommissioning-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: safely retiring a replaced process unit and removing it from service records.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the replacement is in service and the old asset is no longer needed for any duty"
+    },
+    {
+     "id": "s2",
+     "label": "Isolate, drain, clean, and de energize the asset and remove chemicals and residuals"
+    },
+    {
+     "id": "s3",
+     "label": "Assess the asset and site for hazardous materials and environmental requirements"
+    },
+    {
+     "id": "s4",
+     "label": "Remove or secure the asset and restore the area to a safe condition"
+    },
+    {
+     "id": "s5",
+     "label": "Remove the asset from the register, maintenance plans, drawings, and procedures"
+    },
+    {
+     "id": "s6",
+     "label": "Record disposal, costs, and any salvage value and close the decommissioning file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "De energizing and cleaning precede removal work for safety. Removing the asset from drawings and plans prevents future staff trusting records for equipment that no longer exists."
+  },
+  {
+   "id": "c4w-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the capital versus maintenance decision sequence for a failing asset.",
+   "topicId": "process-asset-capital-versus-maintenance-decision",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: deciding whether to keep repairing an asset or renew it.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the repair history, maintenance cost trend, and downtime caused by the asset"
+    },
+    {
+     "id": "s2",
+     "label": "Assess remaining life and the risk that failures will affect compliance or supply"
+    },
+    {
+     "id": "s3",
+     "label": "Cost continued maintenance over the next five years including expected major repairs"
+    },
+    {
+     "id": "s4",
+     "label": "Cost renewal including capital, installation, and the operating savings it would bring"
+    },
+    {
+     "id": "s5",
+     "label": "Compare the options on cost, risk, and service impact and recommend a course of action"
+    },
+    {
+     "id": "s6",
+     "label": "Record the decision and, if renewal is chosen, enter the project into the capital forecast"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Cost comparison without risk comparison favours endless repair. The recorded decision prevents the same debate recurring at every breakdown."
+  },
+  {
+   "id": "c4w-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the asset performance reporting sequence to the owner.",
+   "topicId": "process-asset-performance-reporting-owner",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: annual report connecting asset condition and investment to service outcomes.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile condition, renewal spending, failure, and service performance data for the year"
+    },
+    {
+     "id": "s2",
+     "label": "Compare renewal investment with the level the asset management plan says is required"
+    },
+    {
+     "id": "s3",
+     "label": "Highlight assets and risks that grew because renewal was deferred"
+    },
+    {
+     "id": "s4",
+     "label": "Present options for the coming year with the service consequences of each funding level"
+    },
+    {
+     "id": "s5",
+     "label": "Record owner decisions and direction in the meeting minutes"
+    },
+    {
+     "id": "s6",
+     "label": "Update the asset plan and capital forecast to reflect the decisions taken"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Owners decide funding, so the report must show consequences, not only spending. Recording decisions links the report to next year plan."
+  },
+  {
+   "id": "c4w-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the energy management program launch sequence for a water utility.",
+   "topicId": "process-energy-management-program-launch",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: establishing a managed program to reduce energy use per cubic metre treated.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile energy use and cost by plant, process area, and pumping station for a baseline year"
+    },
+    {
+     "id": "s2",
+     "label": "Set an energy intensity target and assign an energy lead with senior management support"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the largest loads and the operational practices that drive them"
+    },
+    {
+     "id": "s4",
+     "label": "Approve an action list covering operations, maintenance, and capital measures"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the actions in priority order and track energy monthly against the baseline"
+    },
+    {
+     "id": "s6",
+     "label": "Report results, savings, and next actions to senior management each quarter"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A baseline year and a named lead turn good intentions into a program. Monthly tracking against baseline is how savings are proven."
+  },
+  {
+   "id": "c4w-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the energy audit sequence for a treatment plant.",
+   "topicId": "process-energy-audit-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: detailed audit from data collection to an investment grade opportunity list.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect utility bills, interval data, equipment inventories, and operating schedules"
+    },
+    {
+     "id": "s2",
+     "label": "Walk the plant to observe operating practices, idle equipment, and control settings"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse the data to build a load profile and identify peak demand drivers"
+    },
+    {
+     "id": "s4",
+     "label": "Quantify each saving opportunity with energy, cost, and implementation effort"
+    },
+    {
+     "id": "s5",
+     "label": "Rank opportunities by payback and operational risk and present them to management"
+    },
+    {
+     "id": "s6",
+     "label": "Enter approved opportunities into the energy program and track their delivery"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Observation in the field catches waste that bills alone cannot explain. Ranking by payback and risk lets management fund the right measures first."
+  },
+  {
+   "id": "c4w-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical program strategy review sequence.",
+   "topicId": "process-chemical-program-strategy-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: annual senior review of all treatment chemicals, suppliers, and dosing systems.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile chemical usage, unit costs, dose performance, and supplier reliability for the year"
+    },
+    {
+     "id": "s2",
+     "label": "Review treated water quality outcomes achieved at current doses and products"
+    },
+    {
+     "id": "s3",
+     "label": "Test alternate products or suppliers through jar testing and controlled plant trials"
+    },
+    {
+     "id": "s4",
+     "label": "Assess storage capacity, delivery reliability, and single source risks for each chemical"
+    },
+    {
+     "id": "s5",
+     "label": "Select products and suppliers for the next period through the procurement process"
+    },
+    {
+     "id": "s6",
+     "label": "Update dose guidance, contracts, and contingency arrangements for supply interruptions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Quality outcomes come before price in the review order. Supply resilience is assessed before contracts are signed, not after a missed delivery."
+  },
+  {
+   "id": "c4w-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical delivery resilience planning sequence.",
+   "topicId": "process-chemical-delivery-resilience",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: protecting treatment against delayed or failed chemical deliveries.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate days of storage on hand for each chemical at maximum and average dose rates"
+    },
+    {
+     "id": "s2",
+     "label": "Identify chemicals with short cover, single suppliers, or difficult delivery access"
+    },
+    {
+     "id": "s3",
+     "label": "Set minimum stock triggers and reorder points that account for delivery lead times"
+    },
+    {
+     "id": "s4",
+     "label": "Arrange alternate suppliers, emergency contacts, and mutual aid options for critical chemicals"
+    },
+    {
+     "id": "s5",
+     "label": "Brief operators on conservation dosing and escalation steps if a delivery is missed"
+    },
+    {
+     "id": "s6",
+     "label": "Test the arrangements with a tabletop review and update the contingency plan"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Days of cover at maximum dose is the honest measure of resilience. Triggers and alternates must exist before a delivery fails."
+  },
+  {
+   "id": "c4w-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical dose optimization program sequence across a full plant.",
+   "topicId": "process-chemical-dose-optimization-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: coordinated optimization of coagulant, disinfectant, and conditioning chemicals.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Establish baseline doses, costs, and treated water quality for each chemical over a representative period"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the water quality targets and limits that optimization must not compromise"
+    },
+    {
+     "id": "s3",
+     "label": "Run jar tests and stepwise plant trials to find the lowest effective dose for each chemical"
+    },
+    {
+     "id": "s4",
+     "label": "Watch downstream effects, because one chemical change can shift another chemical demand"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the optimized doses into guidance tables linked to raw water conditions"
+    },
+    {
+     "id": "s6",
+     "label": "Track dose, cost, and quality monthly and investigate any drift from the optimized values"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Baselines and quality limits frame the program. Downstream effects are checked because chemicals interact across the process train."
+  },
+  {
+   "id": "c4w-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the pumping energy optimization sequence for high lift and distribution pumping.",
+   "topicId": "process-energy-pumping-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: reducing pumping energy while maintaining storage levels and pressures.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Profile pumping energy, flows, pressures, and electricity price periods for the system"
+    },
+    {
+     "id": "s2",
+     "label": "Identify pumps operating far from their best efficiency point or against throttled valves"
+    },
+    {
+     "id": "s3",
+     "label": "Develop a revised pumping schedule that favours efficient pumps and lower price periods"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the schedule while monitoring storage levels, pressures, and water age"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm energy savings and that no service or quality indicator has degraded"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the schedule, update pump control settings, and review it seasonally"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Efficiency and price periods together determine the cheapest compliant schedule. Water age and pressure are monitored because energy savings cannot trade away quality."
+  },
+  {
+   "id": "c4w-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the energy performance contract oversight sequence.",
+   "topicId": "process-energy-performance-contract-oversight",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: senior oversight of a guaranteed savings project delivered by an energy services provider.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Agree the baseline, measurement method, and guaranteed savings in the contract before work begins"
+    },
+    {
+     "id": "s2",
+     "label": "Review the providers designs and confirm they do not compromise treatment or compliance"
+    },
+    {
+     "id": "s3",
+     "label": "Monitor construction and commissioning of the energy measures with plant staff involved"
+    },
+    {
+     "id": "s4",
+     "label": "Verify measured savings against the agreed method for the first performance period"
+    },
+    {
+     "id": "s5",
+     "label": "Require corrective action from the provider if savings fall short of the guarantee"
+    },
+    {
+     "id": "s6",
+     "label": "Report verified savings and contract status to senior management annually"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The measurement method agreed in advance decides whether savings claims can be trusted. Verification each period enforces the guarantee."
+  },
+  {
+   "id": "c4w-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical storage upgrade program sequence.",
+   "topicId": "process-chemical-storage-upgrade-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: upgrading bulk chemical storage for safety and regulatory compliance.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assess current storage against containment, ventilation, separation, and eyewash requirements"
+    },
+    {
+     "id": "s2",
+     "label": "Rank deficiencies by risk to people, the environment, and treatment continuity"
+    },
+    {
+     "id": "s3",
+     "label": "Design upgrades with operations input on delivery access and operator tasks"
+    },
+    {
+     "id": "s4",
+     "label": "Plan construction so chemical supply is maintained throughout the work"
+    },
+    {
+     "id": "s5",
+     "label": "Commission the upgraded storage with leak testing and updated safety procedures"
+    },
+    {
+     "id": "s6",
+     "label": "Train all operators on the new storage, update drawings, and close the project file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Risk ranking sets the upgrade order. Supply continuity planning prevents the upgrade itself from interrupting treatment."
+  },
+  {
+   "id": "c4w-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the peak energy demand management sequence.",
+   "topicId": "process-energy-peak-demand-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: reducing demand charges by controlling when large loads run.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Analyse interval data to find when system peaks occur and which loads create them"
+    },
+    {
+     "id": "s2",
+     "label": "Identify loads that can be shifted, staggered, or briefly paused without process risk"
+    },
+    {
+     "id": "s3",
+     "label": "Set demand targets and alarms that warn operators before a new peak is established"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the demand control practices during a typical high demand period"
+    },
+    {
+     "id": "s5",
+     "label": "Measure the peak reduction and confirm treatment and storage were not compromised"
+    },
+    {
+     "id": "s6",
+     "label": "Formalize the practices in operating procedures and review peak performance monthly"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Peaks must be understood from interval data before they can be managed. Alarms give operators the warning they need to act in time."
+  },
+  {
+   "id": "c4w-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical inventory and cost control sequence.",
+   "topicId": "process-chemical-inventory-cost-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: monthly control cycle linking stock, usage, dose, and cost.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Count physical stock and reconcile it with delivery and usage records"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate usage per cubic metre treated and cost per cubic metre for each chemical"
+    },
+    {
+     "id": "s3",
+     "label": "Compare unit usage with dose guidance for the raw water conditions experienced"
+    },
+    {
+     "id": "s4",
+     "label": "Investigate variances caused by dose drift, leaks, spills, or recording errors"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust orders and dose guidance and brief operators on any corrections"
+    },
+    {
+     "id": "s6",
+     "label": "Report chemical cost and usage trends to senior management with the monthly results"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Reconciled stock makes usage figures trustworthy. Variance investigation separates real dose problems from simple recording errors."
+  },
+  {
+   "id": "c4w-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory quality management system review sequence.",
+   "topicId": "process-lab-quality-system-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: annual senior review of the laboratory quality manual and its performance.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile quality indicators including control failures, audit findings, and turnaround times"
+    },
+    {
+     "id": "s2",
+     "label": "Review the quality manual against current methods, instruments, and regulatory requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Assess staff training and competency records for every test the laboratory performs"
+    },
+    {
+     "id": "s4",
+     "label": "Identify recurring quality problems and their root causes from the indicator data"
+    },
+    {
+     "id": "s5",
+     "label": "Approve updates to the manual, methods, and training plans with assigned owners"
+    },
+    {
+     "id": "s6",
+     "label": "Verify the updates are in use at the next internal quality audit"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Indicators and competency records show whether the system works in practice. Verification at audit prevents manual updates that never reach the bench."
+  },
+  {
+   "id": "c4w-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory audit readiness sequence for an external quality assessment.",
+   "topicId": "process-lab-external-audit-readiness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: preparing the laboratory for an external accreditation or client audit visit.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the assessment scope, standards, and schedule with the assessing body"
+    },
+    {
+     "id": "s2",
+     "label": "Run an internal audit of methods, records, calibrations, and quality controls"
+    },
+    {
+     "id": "s3",
+     "label": "Correct documentation and record gaps found and brief analysts on audit conduct"
+    },
+    {
+     "id": "s4",
+     "label": "Verify every instrument calibration and standard is current and traceable"
+    },
+    {
+     "id": "s5",
+     "label": "Host the assessment, provide requested records, and record all findings raised"
+    },
+    {
+     "id": "s6",
+     "label": "Complete corrective actions and submit evidence within the assessors required timelines"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Traceability and current calibrations are checked before the visit because they cannot be created on the day. Findings enter the same corrective discipline as internal ones."
+  },
+  {
+   "id": "c4w-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the quality control chart program sequence for a key laboratory test.",
+   "topicId": "process-lab-qc-chart-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: establishing statistical control monitoring for a compliance test method.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the control material and the test frequency for routine quality control samples"
+    },
+    {
+     "id": "s2",
+     "label": "Collect enough control results to establish a reliable mean and control limits"
+    },
+    {
+     "id": "s3",
+     "label": "Plot results on the control chart for every analytical run and apply the acceptance rules"
+    },
+    {
+     "id": "s4",
+     "label": "Stop and investigate reporting when a result breaks a control rule"
+    },
+    {
+     "id": "s5",
+     "label": "Identify the cause, correct it, and reanalyse affected samples before results are released"
+    },
+    {
+     "id": "s6",
+     "label": "Review charts monthly for trends that warn of drift before limits are broken"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Control limits need enough data to be meaningful. Monthly trend review catches slow drift that single run rules can miss."
+  },
+  {
+   "id": "c4w-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the proficiency testing program sequence for laboratory analysts.",
+   "topicId": "process-lab-proficiency-testing-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: annual cycle of external proficiency samples from receipt to evaluated results.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Enrol in proficiency rounds for every accredited or compliance parameter the laboratory reports"
+    },
+    {
+     "id": "s2",
+     "label": "Receive the samples and analyse them exactly like routine samples, without special treatment"
+    },
+    {
+     "id": "s3",
+     "label": "Submit results by the deadline and record the analysts and methods used"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the laboratory scores with the assigned values when reports are issued"
+    },
+    {
+     "id": "s5",
+     "label": "Investigate any unsatisfactory score for analyst, method, or instrument causes"
+    },
+    {
+     "id": "s6",
+     "label": "Complete corrective actions and verify improvement in the next proficiency round"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Proficiency samples only test real performance when they are treated as routine. Unsatisfactory scores require cause investigation, not only disappointment."
+  },
+  {
+   "id": "c4w-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the method validation sequence before a new laboratory method is used for reporting.",
+   "topicId": "process-lab-method-validation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: proving a new or changed method is fit for compliance reporting.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the method scope, reporting limits, and quality criteria the validation must meet"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare validation samples covering the working range, including blanks and spikes"
+    },
+    {
+     "id": "s3",
+     "label": "Run the validation batches and calculate precision, bias, and detection performance"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the results with the acceptance criteria and the requirements of the standard method"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the method for use, update the quality manual, and train and assess analysts"
+    },
+    {
+     "id": "s6",
+     "label": "Place the method under routine quality control and review its early performance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Validation evidence comes before approval for reporting. Early routine performance is reviewed because validation conditions differ from daily workload."
+  },
+  {
+   "id": "c4w-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chain of custody and data integrity sequence for compliance samples.",
+   "topicId": "process-lab-chain-of-custody-integrity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: protecting sample and result integrity from collection to reported result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Label samples uniquely at collection and complete the chain of custody form at handover"
+    },
+    {
+     "id": "s2",
+     "label": "Transport and store samples within temperature and holding time requirements and log their receipt"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse samples under the assigned identifiers and record raw data contemporaneously"
+    },
+    {
+     "id": "s4",
+     "label": "Review calculations, transcriptions, and quality controls before results are authorized"
+    },
+    {
+     "id": "s5",
+     "label": "Report results through the controlled system with an audit trail for any corrections"
+    },
+    {
+     "id": "s6",
+     "label": "Archive raw data, custody forms, and reports so the full history can be reconstructed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Integrity is built at each handover, not reconstructed later. The archive test is whether an auditor can rebuild the result from raw data alone."
+  },
+  {
+   "id": "c4w-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory corrective action sequence after a quality control failure.",
+   "topicId": "process-lab-corrective-action-qc-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: handling a failed quality control result that affects reported compliance data.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Stop reporting results from the affected method and identify the samples analysed since the last good control"
+    },
+    {
+     "id": "s2",
+     "label": "Check standards, reagents, instruments, and analyst technique for the immediate cause"
+    },
+    {
+     "id": "s3",
+     "label": "Correct the cause and demonstrate the method is back in control with passing quality controls"
+    },
+    {
+     "id": "s4",
+     "label": "Reanalyse or qualify affected samples and assess whether any reported results must be corrected"
+    },
+    {
+     "id": "s5",
+     "label": "Notify the overall responsible operator and, where required, the regulator about corrected results"
+    },
+    {
+     "id": "s6",
+     "label": "Document the failure, cause, and preventive actions in the quality system records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Stopping reporting protects decision makers from bad data. Assessing already reported results is essential because the failure window extends backwards."
+  },
+  {
+   "id": "c4w-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sampling quality assurance sequence for field sampling staff.",
+   "topicId": "process-lab-sampling-quality-assurance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: assuring the quality of samples collected across the system, not only laboratory analysis.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define sampling locations, techniques, containers, preservatives, and holding times in written procedures"
+    },
+    {
+     "id": "s2",
+     "label": "Train samplers and assess their technique in the field against the procedures"
+    },
+    {
+     "id": "s3",
+     "label": "Include field blanks, duplicates, and trip blanks in the program at the planned frequency"
+    },
+    {
+     "id": "s4",
+     "label": "Review field quality results and investigate contamination or inconsistency patterns"
+    },
+    {
+     "id": "s5",
+     "label": "Correct procedures or retrain samplers where field quality results show a problem"
+    },
+    {
+     "id": "s6",
+     "label": "Report sampling quality performance in the annual quality review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Laboratory quality cannot repair a badly collected sample. Field quality samples prove whether collection itself is under control."
+  },
+  {
+   "id": "c4w-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory safety and chemical hygiene leadership sequence.",
+   "topicId": "process-lab-safety-chemical-hygiene",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: senior review cycle for laboratory chemical and equipment safety.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory laboratory chemicals, hazards, and safety data sheets and remove expired or unneeded stock"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect fume hoods, eyewash stations, storage, and waste arrangements against requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Review incidents, exposures, and near misses from the period for patterns"
+    },
+    {
+     "id": "s4",
+     "label": "Correct deficiencies and update the chemical hygiene and waste procedures"
+    },
+    {
+     "id": "s5",
+     "label": "Train analysts on the revised procedures and confirm understanding"
+    },
+    {
+     "id": "s6",
+     "label": "Schedule the next inspection and track open safety actions to completion"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Inventory and inspection find hazards before incidents do. Incident pattern review shows whether corrections are working."
+  },
+  {
+   "id": "c4w-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the senior data review and authorization sequence for compliance results.",
+   "topicId": "process-lab-data-review-authorization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: the review workflow a senior analyst or manager completes before results are released.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the analytical batch quality controls all passed and are documented"
+    },
+    {
+     "id": "s2",
+     "label": "Review raw data, calculations, and any manual transcriptions for errors"
+    },
+    {
+     "id": "s3",
+     "label": "Compare results with historical values for the location and flag unusual results for confirmation"
+    },
+    {
+     "id": "s4",
+     "label": "Verify unusual results by reanalysis or resampling where the value affects a compliance decision"
+    },
+    {
+     "id": "s5",
+     "label": "Authorize the verified results for reporting and record the reviewer and date"
+    },
+    {
+     "id": "s6",
+     "label": "Transmit the authorized results to operations and regulatory reporting without alteration"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Authorization is a technical review, not a signature habit. Unusual results are confirmed before they trigger compliance consequences."
+  },
+  {
+   "id": "c4w-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the overall responsible operator coverage program sequence.",
+   "topicId": "process-leadership-oro-coverage-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: ensuring a qualified overall responsible operator is designated at all times.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the certification requirements for the system classification and the overall responsible operator role"
+    },
+    {
+     "id": "s2",
+     "label": "Designate the primary overall responsible operator and qualified alternates in writing"
+    },
+    {
+     "id": "s3",
+     "label": "Publish the coverage roster so every shift and on call period names the responsible operator"
+    },
+    {
+     "id": "s4",
+     "label": "Brief all operators on how to reach the designated operator and what must be escalated"
+    },
+    {
+     "id": "s5",
+     "label": "Review coverage after absences, incidents, or staffing changes and update designations promptly"
+    },
+    {
+     "id": "s6",
+     "label": "Audit the roster and logbooks periodically to confirm coverage was actually in place"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Written designation and a published roster make accountability findable at 2 in the morning. Periodic audit confirms the roster matched reality."
+  },
+  {
+   "id": "c4w-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the operator certification and training program leadership sequence.",
+   "topicId": "process-leadership-certification-training-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: annual program keeping all operators certified and competent for their duties.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory every operators certificates, expiry dates, and the classes their duties require"
+    },
+    {
+     "id": "s2",
+     "label": "Identify gaps, upcoming expiries, and the training each operator needs this year"
+    },
+    {
+     "id": "s3",
+     "label": "Build the training calendar covering regulatory, safety, process, and emergency topics"
+    },
+    {
+     "id": "s4",
+     "label": "Deliver training and record attendance, content, and trainer for every session"
+    },
+    {
+     "id": "s5",
+     "label": "Assess competency for critical tasks through observation or practical checks"
+    },
+    {
+     "id": "s6",
+     "label": "Report certification status to senior management and address any lapsed certificates immediately"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The inventory of expiries drives the calendar, not habit. Competency assessment goes beyond attendance for tasks where errors affect public health."
+  },
+  {
+   "id": "c4w-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the staffing and succession planning sequence for critical operating roles.",
+   "topicId": "process-leadership-staffing-succession-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: protecting the utility against loss of key operators and specialists.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the roles whose vacancy would threaten compliance, safety, or continuity"
+    },
+    {
+     "id": "s2",
+     "label": "Assess retirement, turnover, and single person dependency risks for each critical role"
+    },
+    {
+     "id": "s3",
+     "label": "Select development candidates and define the experience and certification each one needs"
+    },
+    {
+     "id": "s4",
+     "label": "Provide acting assignments, mentoring, and training to build readiness over time"
+    },
+    {
+     "id": "s5",
+     "label": "Review readiness at least annually and adjust plans as people and risks change"
+    },
+    {
+     "id": "s6",
+     "label": "Document the succession plan and share its status with senior management"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Single person dependencies are the core risk this process manages. Acting experience builds real readiness in a way classroom training alone cannot."
+  },
+  {
+   "id": "c4w-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the standard operating procedure governance sequence.",
+   "topicId": "process-leadership-sop-governance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: controlling how operating procedures are created, approved, and kept current.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory all procedures and identify missing, outdated, or conflicting documents"
+    },
+    {
+     "id": "s2",
+     "label": "Draft or revise procedures with the operators who perform the work"
+    },
+    {
+     "id": "s3",
+     "label": "Review drafts for safety, compliance, and consistency with the operational plan"
+    },
+    {
+     "id": "s4",
+     "label": "Approve procedures through the designated authority and issue them under document control"
+    },
+    {
+     "id": "s5",
+     "label": "Train affected staff and remove superseded versions from all points of use"
+    },
+    {
+     "id": "s6",
+     "label": "Review procedures on a fixed cycle and after incidents, audits, or process changes"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Operators who do the work must shape the procedure. Document control fails if old versions remain available at the point of use."
+  },
+  {
+   "id": "c4w-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the shift operations governance sequence for log review and handover.",
+   "topicId": "process-leadership-shift-log-governance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: senior oversight of shift logs, handovers, and outstanding operating issues.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the standard for log entries covering process status, alarms, samples, and issues"
+    },
+    {
+     "id": "s2",
+     "label": "Require a structured handover where outgoing and incoming shifts review open items together"
+    },
+    {
+     "id": "s3",
+     "label": "Review logs daily as the senior operator and follow up incomplete or unclear entries"
+    },
+    {
+     "id": "s4",
+     "label": "Escalate recurring problems from logs into maintenance or management action lists"
+    },
+    {
+     "id": "s5",
+     "label": "Audit log quality monthly and coach operators whose entries fall below standard"
+    },
+    {
+     "id": "s6",
+     "label": "Use log trends in operational meetings to prevent repeat incidents"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Logs are a control, not a diary. Daily senior review and escalation turn recorded problems into assigned actions."
+  },
+  {
+   "id": "c4w-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the out of hours incident decision sequence for the overall responsible operator.",
+   "topicId": "process-leadership-oro-out-of-hours-decisions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: remote senior decision making during a night time process incident.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive the call and gather the essential facts, current readings, and actions already taken"
+    },
+    {
+     "id": "s2",
+     "label": "Decide immediate protective actions and direct the on site operator clearly"
+    },
+    {
+     "id": "s3",
+     "label": "Determine notifications required to management, the health unit, and the ministry"
+    },
+    {
+     "id": "s4",
+     "label": "Decide whether to attend site, call in additional staff, or continue remote direction"
+    },
+    {
+     "id": "s5",
+     "label": "Stay in contact at agreed intervals and record decisions and times as they are made"
+    },
+    {
+     "id": "s6",
+     "label": "Review the incident the next working day and complete reports and follow up actions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Protective actions come before administrative decisions. A contemporaneous decision record is essential when the review happens days later."
+  },
+  {
+   "id": "c4w-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the competency assessment sequence for operators performing critical tasks.",
+   "topicId": "process-leadership-competency-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: verifying operators can perform high risk tasks to standard, not only attend training.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select the critical tasks to be assessed, such as chemical handling and disinfection control"
+    },
+    {
+     "id": "s2",
+     "label": "Define the performance standard and the assessment method for each task"
+    },
+    {
+     "id": "s3",
+     "label": "Observe each operator performing the task and score against the standard"
+    },
+    {
+     "id": "s4",
+     "label": "Provide coaching and retraining for any operator below standard and restrict the task if needed"
+    },
+    {
+     "id": "s5",
+     "label": "Reassess after retraining and record the outcome in the training file"
+    },
+    {
+     "id": "s6",
+     "label": "Schedule reassessments at a risk based interval and after procedure changes"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Attendance records do not prove competence. Observation against a defined standard, with reassessment, is what protects the process."
+  },
+  {
+   "id": "c4w-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the contractor supervision leadership sequence for work on the treatment system.",
+   "topicId": "process-leadership-contractor-supervision",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: controlling contractor work that affects drinking water quality or safety.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify contractor qualifications, insurance, and safety documentation before work is authorized"
+    },
+    {
+     "id": "s2",
+     "label": "Brief the contractor on site rules, water quality protection, and emergency procedures"
+    },
+    {
+     "id": "s3",
+     "label": "Issue the work authorization or permit defining scope, isolations, and hold points"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor the work at the defined points and stop work that departs from the authorization"
+    },
+    {
+     "id": "s5",
+     "label": "Verify completed work, disinfection, and testing before the asset returns to service"
+    },
+    {
+     "id": "s6",
+     "label": "Close the authorization, file records, and note contractor performance for future work"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Qualification checks and permits precede site work. Return to service requires verification and disinfection evidence, not the contractors assurance alone."
+  },
+  {
+   "id": "c4w-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the health and safety program leadership review sequence.",
+   "topicId": "process-leadership-health-safety-program-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: annual senior review of the utility occupational health and safety program.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile incident, injury, near miss, inspection, and training data for the year"
+    },
+    {
+     "id": "s2",
+     "label": "Review the data with the joint health and safety committee for trends and priorities"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect high risk areas and tasks, including confined spaces, chemicals, and lockout points"
+    },
+    {
+     "id": "s4",
+     "label": "Set the years safety priorities, actions, owners, and training requirements"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the actions and monitor progress at management meetings"
+    },
+    {
+     "id": "s6",
+     "label": "Report program performance to senior management and the owner with the annual review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Trend data and committee input set priorities better than the last incident alone. Monitoring at management meetings keeps safety actions from stalling."
+  },
+  {
+   "id": "c4w-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the mentoring program sequence for newly certified operators.",
+   "topicId": "process-leadership-mentoring-new-operators",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: structured development from newly certified to independent shift operator.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assess the new operators current experience, strengths, and development needs"
+    },
+    {
+     "id": "s2",
+     "label": "Pair the operator with an experienced mentor and define the mentoring goals"
+    },
+    {
+     "id": "s3",
+     "label": "Work through a graded task plan from supervised to independent performance"
+    },
+    {
+     "id": "s4",
+     "label": "Review progress at set intervals with the operator, mentor, and supervisor"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm readiness for independent duties through competency checks on critical tasks"
+    },
+    {
+     "id": "s6",
+     "label": "Record completion and set the next development goals for continued growth"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Graded responsibility builds confidence without risking the process. Independent duty follows demonstrated competency, not time served alone."
+  },
+  {
+   "id": "c4w-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the utility strategic planning sequence.",
+   "topicId": "process-governance-strategic-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: multi year strategic plan for the drinking water utility.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review performance, compliance history, growth forecasts, and stakeholder expectations"
+    },
+    {
+     "id": "s2",
+     "label": "Assess strengths, weaknesses, opportunities, and threats facing the utility"
+    },
+    {
+     "id": "s3",
+     "label": "Set strategic goals for service, compliance, people, assets, and finances"
+    },
+    {
+     "id": "s4",
+     "label": "Develop initiatives, measures, and targets for each goal with accountable owners"
+    },
+    {
+     "id": "s5",
+     "label": "Obtain owner approval of the plan and align budgets and work plans to it"
+    },
+    {
+     "id": "s6",
+     "label": "Report progress against the plan annually and refresh it on the planned cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Evidence and stakeholder expectations ground the strategy. Annual progress reporting prevents the plan becoming a one time document."
+  },
+  {
+   "id": "c4w-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual operating budget leadership sequence.",
+   "topicId": "process-governance-operating-budget",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: building the operating budget from operational needs to approved spending.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect cost history, production forecasts, chemical and energy price expectations, and staffing needs"
+    },
+    {
+     "id": "s2",
+     "label": "Build draft budgets with each operational area and challenge assumptions against history"
+    },
+    {
+     "id": "s3",
+     "label": "Identify risks, pressures, and options to reduce cost without harming compliance"
+    },
+    {
+     "id": "s4",
+     "label": "Consolidate the drafts and align them with service levels and the strategic plan"
+    },
+    {
+     "id": "s5",
+     "label": "Present the budget for senior management and owner approval with key variances explained"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor actual spending monthly and manage variances with documented actions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Challenging assumptions before consolidation prevents padded budgets. Monthly variance management is where the approved budget is actually delivered."
+  },
+  {
+   "id": "c4w-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the long term financial planning sequence for water rates and reserves.",
+   "topicId": "process-governance-long-term-financial-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: ten year outlook linking capital needs, operating costs, rates, and reserves.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the capital forecast, debt obligations, reserve balances, and operating cost trends"
+    },
+    {
+     "id": "s2",
+     "label": "Forecast revenues under current rates and identify the years where funding falls short"
+    },
+    {
+     "id": "s3",
+     "label": "Model rate and reserve options and test them for affordability and intergenerational fairness"
+    },
+    {
+     "id": "s4",
+     "label": "Select the preferred financial strategy with finance staff and senior management"
+    },
+    {
+     "id": "s5",
+     "label": "Present the plan and its rate implications to the owner for direction and approval"
+    },
+    {
+     "id": "s6",
+     "label": "Update the plan annually with actual results and revised capital needs"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The shortfall years must be identified before options are modelled. Annual updates keep long term promises aligned with real costs."
+  },
+  {
+   "id": "c4w-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the public water quality communication sequence for the annual consumer report.",
+   "topicId": "process-governance-public-water-quality-report",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: preparing and publishing the annual summary of water quality for consumers.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the years sampling results, incidents, and corrective actions from verified records"
+    },
+    {
+     "id": "s2",
+     "label": "Draft the report in plain language explaining results, standards, and any incidents honestly"
+    },
+    {
+     "id": "s3",
+     "label": "Review the draft for technical accuracy with water quality staff and senior management"
+    },
+    {
+     "id": "s4",
+     "label": "Approve and publish the report through the required channels by the required date"
+    },
+    {
+     "id": "s5",
+     "label": "Respond to public questions and track themes in the inquiries received"
+    },
+    {
+     "id": "s6",
+     "label": "Use inquiry themes and lessons to improve next years report and communications"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Verified records come before public statements. Tracking public questions turns a compliance report into a trust building tool."
+  },
+  {
+   "id": "c4w-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the council and board reporting sequence for water system performance.",
+   "topicId": "process-governance-council-board-reporting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: quarterly performance reporting to the governing body.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile performance data on quality, compliance, production, incidents, and finances"
+    },
+    {
+     "id": "s2",
+     "label": "Compare performance with targets, licence requirements, and previous periods"
+    },
+    {
+     "id": "s3",
+     "label": "Prepare the report highlighting exceptions, risks, and decisions the board needs to make"
+    },
+    {
+     "id": "s4",
+     "label": "Brief senior management and finalize the report and recommendations"
+    },
+    {
+     "id": "s5",
+     "label": "Present the report, answer questions, and record the boards direction"
+    },
+    {
+     "id": "s6",
+     "label": "Complete the directed actions and report back at the next meeting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Exception focused reporting respects the boards time and surfaces risk early. Reporting back on directed actions closes the accountability loop."
+  },
+  {
+   "id": "c4w-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the climate adaptation planning sequence for a drinking water system.",
+   "topicId": "process-governance-climate-adaptation-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: assessing and planning for climate risks to source, treatment, and supply.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the climate hazards relevant to the system, including drought, flood, and extreme runoff"
+    },
+    {
+     "id": "s2",
+     "label": "Assess vulnerability of sources, intakes, treatment capacity, and power supply to each hazard"
+    },
+    {
+     "id": "s3",
+     "label": "Rank the risks and identify the time horizons over which they become significant"
+    },
+    {
+     "id": "s4",
+     "label": "Develop adaptation options covering operations, infrastructure, and emergency planning"
+    },
+    {
+     "id": "s5",
+     "label": "Include priority adaptations in asset and capital plans with triggers for action"
+    },
+    {
+     "id": "s6",
+     "label": "Review the assessment when new climate information or system changes emerge"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Vulnerability assessment must precede adaptation spending. Triggers for action let the utility respond as risks materialize rather than guessing dates."
+  },
+  {
+   "id": "c4w-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the utility risk register leadership sequence.",
+   "topicId": "process-governance-risk-register-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: maintaining a live register of the top risks to the water utility.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify risks across compliance, operations, finance, people, and reputation with area leads"
+    },
+    {
+     "id": "s2",
+     "label": "Score each risk for likelihood and impact and record the existing controls"
+    },
+    {
+     "id": "s3",
+     "label": "Assign a risk owner and agree additional treatments for the highest scored risks"
+    },
+    {
+     "id": "s4",
+     "label": "Review the register at management meetings and update scores as conditions change"
+    },
+    {
+     "id": "s5",
+     "label": "Escalate risks beyond the utilitys authority to the owner with recommended options"
+    },
+    {
+     "id": "s6",
+     "label": "Test key controls periodically so the register reflects tested, not assumed, protection"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Owners and treatments turn a list into management. Testing controls matters because an untested control may not reduce risk at all."
+  },
+  {
+   "id": "c4w-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the customer service leadership sequence for recurring water quality complaints.",
+   "topicId": "process-governance-customer-complaint-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: senior handling of a cluster of taste, odour, or discolouration complaints.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Log and map the complaints to find the area, timing, and pattern they share"
+    },
+    {
+     "id": "s2",
+     "label": "Sample and inspect the affected area for residuals, turbidity, and possible causes"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the cause, such as a main disturbance, storage turnover, or treatment change"
+    },
+    {
+     "id": "s4",
+     "label": "Correct the cause through flushing, treatment adjustment, or repair as appropriate"
+    },
+    {
+     "id": "s5",
+     "label": "Contact affected customers with findings, actions taken, and any precautions"
+    },
+    {
+     "id": "s6",
+     "label": "Review the cluster for preventive actions and brief customer service staff on the outcome"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Mapping complaints usually reveals the cause area faster than individual responses. Contacting customers after correction closes the trust loop."
+  },
+  {
+   "id": "c4w-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the regional coordination sequence for shared water services with neighbouring systems.",
+   "topicId": "process-governance-regional-coordination",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment system used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations under Ontario Regulation 170/03 and the Drinking Water Quality Management Standard.",
+   "configuration": "Scope: establishing a working coordination arrangement between neighbouring utilities.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the shared interests, such as emergency supply, training, purchasing, and mutual aid"
+    },
+    {
+     "id": "s2",
+     "label": "Meet counterpart leads to agree priorities and the scope of cooperation"
+    },
+    {
+     "id": "s3",
+     "label": "Draft the arrangement covering responsibilities, costs, liability, and decision making"
+    },
+    {
+     "id": "s4",
+     "label": "Obtain approvals from each utilitys owner or governing body"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the arrangement with named contacts and a regular meeting rhythm"
+    },
+    {
+     "id": "s6",
+     "label": "Review the arrangement annually and update it from operational experience"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Shared interests define the scope before legal drafting begins. Named contacts and regular meetings keep the arrangement usable in an emergency."
+  },
+  {
+   "id": "c4w-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "At utility scale, ultrafiltration Rack C normalized permeability fell 22 percent in 3 weeks while Racks A, B, and D held steady at the same flux.",
+   "topicId": "membrane-fleet-biofouling-rack",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "All four racks run at 45 L per m2 per h and share the same feed header."
+    },
+    {
+     "id": "ev2",
+     "label": "Feed temperature is stable and temperature corrected permeability still fell on Rack C only."
+    },
+    {
+     "id": "ev3",
+     "label": "Rack C feed ATP rose from 180 to 2100 relative light units after a reservoir algae increase, while other racks stayed below 250."
+    },
+    {
+     "id": "ev4",
+     "label": "Chemically enhanced backwash recovery on Rack C fell from 90 percent to 58 percent, while other racks stayed near 89 percent."
+    },
+    {
+     "id": "ev5",
+     "label": "A bench chlorine soak of a Rack C fibre restored 85 percent of lost permeability, while an acid soak restored only 10 percent."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Irreversible mineral scaling is affecting all four racks equally"
+     },
+     {
+      "id": "inf-b",
+      "label": "A common feed pump failure is starving all racks of flow"
+     },
+     {
+      "id": "inf-c",
+      "label": "The Rack C pressure transmitter has drifted and no real fouling exists"
+     },
+     {
+      "id": "inf-d",
+      "label": "Biofouling concentrated on Rack C is driving its permeability loss"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "The loss is rack specific at shared flux and temperature, which rules out a common pump or plant wide scaling cause. High ATP, poor backwash recovery, and strong chlorine soak recovery with weak acid recovery fit biofouling. A drifted transmitter would not change backwash recovery or bench soak results."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms biofouling on Rack C?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived common feed pump amperage log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived raw water hardness log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived rack by rack ATP trend paired with temperature corrected permeability trend"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Pump amperage was steady across racks and does not separate Rack C.",
+    "nc-b": "Hardness was steady and does not explain a rack specific biological signal.",
+    "nc-c": "ATP on Rack C rose as its corrected permeability fell, while the other racks stayed flat on both measures."
+   }
+  },
+  {
+   "id": "c4w-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A six train reverse osmosis fleet lost 14 percent of total capacity, and normalized data show the loss sits entirely in Trains 5 and 6 tail stages.",
+   "topicId": "membrane-fleet-tail-scaling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Trains 1 to 4 normalized permeate flow is unchanged, while Trains 5 and 6 Stage 2 flow fell 20 percent."
+    },
+    {
+     "id": "ev2",
+     "label": "Trains 5 and 6 were switched to a higher recovery of 84 percent last month, while Trains 1 to 4 stayed at 76 percent."
+    },
+    {
+     "id": "ev3",
+     "label": "Concentrate silica and calcium indices exceed saturation at 84 percent recovery but sit below saturation at 76 percent."
+    },
+    {
+     "id": "ev4",
+     "label": "Antiscalant dose was not increased when recovery was raised on Trains 5 and 6."
+    },
+    {
+     "id": "ev5",
+     "label": "Returning Trains 5 and 6 to 76 percent in a 2 week trial stopped further flow loss with no other changes."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "All six trains have reached membrane end of life at once"
+     },
+     {
+      "id": "inf-b",
+      "label": "Feed salinity rose for the whole plant"
+     },
+     {
+      "id": "inf-c",
+      "label": "The higher recovery on Trains 5 and 6 pushed tail stage concentrate past saturation, causing scaling"
+     },
+     {
+      "id": "inf-d",
+      "label": "Biofouling in the lead stages is blocking the whole fleet"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Only the trains moved to higher recovery lost flow, and only in tail stages where concentrate is strongest. Saturation indices cross limits only at the higher recovery, and the return trial stopped the loss. Lead stage biofouling and fleet wide end of life do not fit a two train tail pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the recovery related scaling?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived feed conductivity log for the whole plant"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived recovery setting log paired with normalized Stage 2 flow by train"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived lead stage differential pressure log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Plant feed conductivity was steady and does not explain a two train pattern.",
+    "nc-b": "Stage 2 loss began when recovery rose on Trains 5 and 6 and stopped when recovery returned to 76 percent.",
+    "nc-c": "Lead stage pressures stayed normal throughout the period."
+   }
+  },
+  {
+   "id": "c4w-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Fleet wide review shows membrane replacement is proposed for all 40 modules, but age and performance records differ sharply by bank.",
+   "topicId": "membrane-fleet-replacement-prioritization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Banks 1 and 2, age 11 years, show corrected permeability at 62 percent of baseline and failed integrity tests on 6 modules."
+    },
+    {
+     "id": "ev2",
+     "label": "Banks 3 and 4, age 6 years, show corrected permeability at 94 percent of baseline and pass all integrity tests."
+    },
+    {
+     "id": "ev3",
+     "label": "Cleaning restores less than 15 percent of lost permeability on Banks 1 and 2, but over 80 percent on Banks 3 and 4."
+    },
+    {
+     "id": "ev4",
+     "label": "Permeate quality from Banks 3 and 4 meets all targets, while Banks 1 and 2 need blending to hold turbidity targets."
+    },
+    {
+     "id": "ev5",
+     "label": "A pilot replacement of 4 modules in Bank 1 restored that section to 96 percent of baseline permeability."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "No modules need replacement because cleaning was attempted"
+     },
+     {
+      "id": "inf-b",
+      "label": "Only Banks 1 and 2 have reached end of useful life, so staged replacement of those banks is supported, not a fleet wide change out"
+     },
+     {
+      "id": "inf-c",
+      "label": "All 40 modules must be replaced because one purchase is simpler"
+     },
+     {
+      "id": "inf-d",
+      "label": "Banks 3 and 4 are the failed banks and should be replaced first"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Age, integrity failures, poor cleaning recovery, and quality shortfalls all concentrate in Banks 1 and 2, and the pilot replacement confirms new modules restore performance there. Banks 3 and 4 perform near baseline, which contradicts replacing them first or replacing everything at once."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best supports the staged replacement decision?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived bank by bank integrity, permeability, and cleaning recovery summary"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived membrane purchase price list"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived plant total flow log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The summary shows failure indicators only in Banks 1 and 2 and healthy performance in Banks 3 and 4.",
+    "nc-b": "Prices show cost only and do not show which banks have failed.",
+    "nc-c": "Total flow hides bank level differences that drive the decision."
+   }
+  },
+  {
+   "id": "c4w-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a membrane supplier change, Train 2 cleaning frequency doubled while Train 1 on the original membranes stayed on its normal schedule.",
+   "topicId": "membrane-supplier-performance-comparison",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Both trains share feed water, flux, and cleaning chemicals and procedures."
+    },
+    {
+     "id": "ev2",
+     "label": "Train 2 normalized permeability falls twice as fast as Train 1 between cleans in a paired 8 week comparison."
+    },
+    {
+     "id": "ev3",
+     "label": "A side by side bench test of fibres from both trains in the same foulant solution shows Train 2 fibres foul 45 percent faster."
+    },
+    {
+     "id": "ev4",
+     "label": "Feed quality, temperature, and backwash settings were matched across the comparison period."
+    },
+    {
+     "id": "ev5",
+     "label": "Swapping the cleaning chemical batch between trains did not change which train fouled faster."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The replacement membrane material on Train 2 fouls faster under identical conditions"
+     },
+     {
+      "id": "inf-b",
+      "label": "The cleaning chemical batch is defective for Train 2 only"
+     },
+     {
+      "id": "inf-c",
+      "label": "Train 2 receives dirtier feed water than Train 1"
+     },
+     {
+      "id": "inf-d",
+      "label": "Operators clean Train 2 on a different procedure"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Shared feed and procedures, a paired plant comparison, and a controlled bench test all point to the membrane material itself. Swapping chemical batches did not move the problem, which rules out the chemical batch, and shared feed rules out dirtier water for one train."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the material difference?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived cleaning chemical delivery invoices"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived feed turbidity log for the common header"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived paired train fouling rate log paired with the bench fibre test report"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Invoices show deliveries, not fouling behaviour.",
+    "nc-b": "Common header turbidity was the same for both trains.",
+    "nc-c": "Fouling rate is double on Train 2 in both the plant pairing and the bench test on the same solution."
+   }
+  },
+  {
+   "id": "c4w-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A utility membrane plant reports rising energy use per cubic metre, and a fleet audit compares specific energy across four identical trains.",
+   "topicId": "membrane-fleet-energy-diagnosis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Trains 1, 3, and 4 use 0.11 kWh per m3, while Train 2 uses 0.19 kWh per m3 at the same flux."
+    },
+    {
+     "id": "ev2",
+     "label": "Train 2 feed pressure is 90 kPa higher than the other trains at the same flow."
+    },
+    {
+     "id": "ev3",
+     "label": "Train 2 valve position records show its feed control valve is 40 percent closed while other trains run near open."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial that fully opened Train 2 valve after a positioner repair cut its feed pressure to match the other trains."
+    },
+    {
+     "id": "ev5",
+     "label": "Membrane permeability on Train 2 matches the other trains after temperature correction."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Train 2 membranes are severely fouled and need replacement"
+     },
+     {
+      "id": "inf-b",
+      "label": "All trains need higher pressure because feed quality worsened"
+     },
+     {
+      "id": "inf-c",
+      "label": "The energy meter on Train 2 is faulty and pressure is normal"
+     },
+     {
+      "id": "inf-d",
+      "label": "A faulty valve positioner is throttling Train 2 and wasting pumping energy, not membrane fouling"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Permeability matches the fleet, which argues against fouling, while the partly closed valve, high feed pressure, and the repair trial all localize the loss to throttling. A faulty energy meter would not explain the measured pressure difference or the trial result."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the throttling loss?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived raw water turbidity log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived Train 2 valve position and feed pressure trend before and after the positioner repair"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived membrane cleaning log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Turbidity was common to all trains and cannot explain one train.",
+    "nc-b": "Valve opening and pressure normalized together after the repair and specific energy fell to the fleet value.",
+    "nc-c": "Cleaning dates do not line up with the pressure change."
+   }
+  },
+  {
+   "id": "c4w-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "During a capacity review, a membrane plant that must meet a new peak demand of 52000 m3 per day is assessed train by train.",
+   "topicId": "membrane-fleet-capacity-shortfall",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Firm capacity with the largest train out of service is 46000 m3 per day at current flux limits."
+    },
+    {
+     "id": "ev2",
+     "label": "Two trains are limited to 80 percent flux because of repeated integrity test failures."
+    },
+    {
+     "id": "ev3",
+     "label": "A repaired and retested train in a trial returned to full flux and passed integrity testing for 30 days."
+    },
+    {
+     "id": "ev4",
+     "label": "Demand records show the 52000 m3 per day peak occurred on 6 days last summer and is forecast to grow."
+    },
+    {
+     "id": "ev5",
+     "label": "Storage can cover a 4 hour peak but not a full peak day at the current firm capacity."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Storage alone closes the gap for a full peak day"
+     },
+     {
+      "id": "inf-b",
+      "label": "Integrity limits can be ignored when demand is high"
+     },
+     {
+      "id": "inf-c",
+      "label": "The plant has a real firm capacity shortfall driven by the two integrity limited trains, so repair or added capacity is required"
+     },
+     {
+      "id": "inf-d",
+      "label": "Firm capacity is adequate because nameplate total capacity exceeds peak demand"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Firm capacity counts the plant with the largest train out, and it falls short of the forecast peak. Storage covers hours, not a full day, as the records state. The trial shows repair can restore a train, which supports fixing the limited trains rather than ignoring integrity limits."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the capacity position?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived firm capacity calculation paired with the peak day demand forecast"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived nameplate capacity brochure"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived storage level log for one peak hour"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Firm capacity at 46000 m3 per day sits below the 52000 m3 per day peak even before growth.",
+    "nc-b": "Nameplate totals ignore the train out of service condition.",
+    "nc-c": "One hour of storage data does not test a full peak day."
+   }
+  },
+  {
+   "id": "c4w-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Concentrate disposal costs rose sharply at a brackish reverse osmosis plant, and operations review recovery and concentrate volume records.",
+   "topicId": "membrane-concentrate-volume-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Recovery was lowered from 80 percent to 72 percent to control scaling, raising concentrate from 20 percent to 28 percent of feed flow."
+    },
+    {
+     "id": "ev2",
+     "label": "Feed flow rose 10 percent in the same period with new demand."
+    },
+    {
+     "id": "ev3",
+     "label": "Antiscalant optimization trials show 78 percent recovery holds scaling indices below saturation."
+    },
+    {
+     "id": "ev4",
+     "label": "Concentrate volume per cubic metre of permeate rose 55 percent across the two changes combined."
+    },
+    {
+     "id": "ev5",
+     "label": "A 3 week trial at 78 percent recovery held normalized flow stable with no new scaling."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The trial proves 84 percent recovery is safe"
+     },
+     {
+      "id": "inf-b",
+      "label": "Most of the concentrate increase comes from the recovery reduction, and the trial supports returning toward 78 percent with optimized antiscalant"
+     },
+     {
+      "id": "inf-c",
+      "label": "Concentrate volume is unrelated to recovery setting"
+     },
+     {
+      "id": "inf-d",
+      "label": "Feed flow growth alone explains the full 55 percent rise per cubic metre"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Concentrate per unit of permeate is set mainly by recovery, and the per cubic metre rise matches the recovery cut far more than the feed growth. The trial tested 78 percent, not 84 percent, so it supports 78 percent only."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the recovery effect?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived concentrate hauling invoices"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived permeate conductivity log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived recovery, feed flow, and concentrate flow balance for the trial and baseline periods"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Invoices show cost, not the flow cause.",
+    "nc-b": "Permeate conductivity does not measure concentrate volume.",
+    "nc-c": "The flow balance shows concentrate per cubic metre tracking recovery, with the trial stable at 78 percent."
+   }
+  },
+  {
+   "id": "c4w-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A membrane plant sees permeate turbidity spikes only during the first 10 minutes after each backwash on Rack B.",
+   "topicId": "membrane-backwash-turbidity-spike",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Spikes reach 0.22 NTU and then fall to 0.04 NTU for the rest of the filtration cycle."
+    },
+    {
+     "id": "ev2",
+     "label": "Pressure decay testing on Rack B passes before and after the spike period."
+    },
+    {
+     "id": "ev3",
+     "label": "Particle counts rise only in the same first 10 minutes and match a flush volume equal to the rack drain volume."
+    },
+    {
+     "id": "ev4",
+     "label": "Delaying the return to service by one extra drain flush in a trial eliminated the spikes."
+    },
+    {
+     "id": "ev5",
+     "label": "Other racks with a longer standard drain step show no post backwash spikes."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Inadequate drain and flush after backwash is carrying loosened solids into early permeate on Rack B"
+     },
+     {
+      "id": "inf-b",
+      "label": "Rack B has a fibre breach that opens only after backwash"
+     },
+     {
+      "id": "inf-c",
+      "label": "The turbidimeter is faulty only in the first 10 minutes"
+     },
+     {
+      "id": "inf-d",
+      "label": "Feed turbidity spikes after every backwash for the whole plant"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Integrity testing passes and the spike volume matches the drain volume, which fits residual loosened solids, not a breach. The extra flush trial removed the spikes, and other racks with longer drains are clean. A plant wide feed spike would affect all racks."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the flush explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived turbidimeter calibration certificate"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived Rack B permeate turbidity trace paired with backwash and drain step timing"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived plant feed turbidity log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The meter reads correctly for the rest of each cycle.",
+    "nc-b": "Turbidity falls exactly as the drain volume is displaced and the extra flush removes the spike.",
+    "nc-c": "Feed turbidity shows no matching plant wide spikes."
+   }
+  },
+  {
+   "id": "c4w-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two membrane chemistries are piloted for a source with high organic matter, and the utility must choose a fleet standard.",
+   "topicId": "membrane-chemistry-selection-pilot",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Pilot A held corrected permeability within 8 percent over 90 days with monthly cleans."
+    },
+    {
+     "id": "ev2",
+     "label": "Pilot B lost 30 percent corrected permeability in 40 days and needed cleans every 10 days."
+    },
+    {
+     "id": "ev3",
+     "label": "Both pilots ran at the same flux on split feed from the same source with matched pretreatment."
+    },
+    {
+     "id": "ev4",
+     "label": "Pilot B cleaning waste shows high organic foulant, while Pilot A waste shows low foulant after the same period."
+    },
+    {
+     "id": "ev5",
+     "label": "Permeate quality met targets on both pilots, so quality alone does not separate them."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Pilot B is better because it was cleaned more often"
+     },
+     {
+      "id": "inf-b",
+      "label": "The pilots cannot be compared because feed differed"
+     },
+     {
+      "id": "inf-c",
+      "label": "Permeate quality proves both membranes foul at the same rate"
+     },
+     {
+      "id": "inf-d",
+      "label": "Pilot A resists this source organic fouling far better and is the supported fleet standard"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Matched feed, flux, and pretreatment make the comparison valid, and fouling rate and cleaning need clearly favour Pilot A. More frequent cleaning on Pilot B is a symptom of faster fouling, not a benefit, and equal permeate quality does not erase the fouling difference."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the pilot ranking?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived paired pilot permeability and cleaning frequency log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived permeate quality summary alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived pilot purchase price list"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The paired log shows Pilot A stable for 90 days while Pilot B needed cleans every 10 days.",
+    "nc-b": "Quality was equal, so it cannot rank fouling resistance.",
+    "nc-c": "Price does not measure fouling performance."
+   }
+  },
+  {
+   "id": "c4w-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A membrane integrity event is reviewed after one train produced permeate during a failed pressure decay test window.",
+   "topicId": "membrane-integrity-event-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "SCADA shows Train 4 stayed in production for 2 hours after its pressure decay result exceeded the limit."
+    },
+    {
+     "id": "ev2",
+     "label": "The automatic isolation valve for Train 4 was in manual mode after maintenance and did not close."
+    },
+    {
+     "id": "ev3",
+     "label": "Permeate turbidity for the plant header stayed below 0.10 NTU during the window."
+    },
+    {
+     "id": "ev4",
+     "label": "Distribution samples taken that day show no total coliform and chlorine residuals at target."
+    },
+    {
+     "id": "ev5",
+     "label": "The event log shows no operator acknowledgement of the failed test alarm for 90 minutes."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The membrane itself caused the event by failing the test"
+     },
+     {
+      "id": "inf-b",
+      "label": "Manual mode after maintenance needs no follow up if quality passed"
+     },
+     {
+      "id": "inf-c",
+      "label": "The root failure is the defeated automatic isolation and missed alarm response, even though no adverse water quality result was found"
+     },
+     {
+      "id": "inf-d",
+      "label": "No failure occurred because distribution samples were acceptable"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "A failed integrity test with continued production is the event, and the records show the isolation was in manual and the alarm went unacknowledged. Acceptable downstream samples reduce harm but do not erase the control failure. The membrane failing a test is what the controls exist to catch."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the control failure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived distribution sample results alone"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived membrane age record"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived SCADA valve mode and alarm acknowledgement log paired with the integrity test record"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Sample results show outcome, not the control failure.",
+    "nc-b": "Membrane age does not show valve mode or alarm response.",
+    "nc-c": "The logs show manual mode and a 90 minute acknowledgement gap during production after the failed test."
+   }
+  },
+  {
+   "id": "c4w-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A management review closes the year by testing whether the utility corrective actions actually reduced repeat adverse and near miss events.",
+   "topicId": "management-review-repeat-event-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Repeat low residual events in District D fell from 6 in the prior year to 1 after tank cycling and cleaning actions were completed."
+    },
+    {
+     "id": "ev2",
+     "label": "Repeat membrane integrity alarms at the north plant stayed at 5 per year after an action that only added an alarm acknowledgement step."
+    },
+    {
+     "id": "ev3",
+     "label": "Near miss reports rose 40 percent after a reporting campaign, while actual incident counts fell."
+    },
+    {
+     "id": "ev4",
+     "label": "Actions with physical or process changes show event reductions in 4 of 5 tracked categories."
+    },
+    {
+     "id": "ev5",
+     "label": "Actions limited to reminders and acknowledgement steps show no reduction in any tracked category."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Physical and process change actions reduced repeat events, while paperwork only actions did not, and the near miss rise reflects reporting, not more incidents"
+     },
+     {
+      "id": "inf-b",
+      "label": "All corrective actions were equally effective this year"
+     },
+     {
+      "id": "inf-c",
+      "label": "Rising near miss reports prove incidents increased"
+     },
+     {
+      "id": "inf-d",
+      "label": "Alarm acknowledgement steps reduced integrity alarms"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "District events fell after physical actions, integrity alarms were flat after a paperwork action, and the pattern holds across categories. Near misses rose with a reporting campaign while incidents fell, so the rise signals better reporting, not worse performance."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the action effectiveness pattern?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived near miss report count alone"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived corrective action closure list alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived repeat event counts by category paired with the type of corrective action taken"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Near miss counts alone confuse reporting with occurrence.",
+    "nc-b": "Closure shows actions done, not whether events fell.",
+    "nc-c": "Physical actions cut repeats in 4 of 5 categories while paperwork actions cut none."
+   }
+  },
+  {
+   "id": "c4w-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A utility reviews chlorine CT compliance after flows rose, and one contact basin cell shows repeated low CT margins.",
+   "topicId": "disinfection-ct-baffling-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Basin tracer testing gives a baffling factor of 0.32 for Cell 2 and 0.68 for Cell 1 at the same flow."
+    },
+    {
+     "id": "ev2",
+     "label": "Cell 2 chlorine residual at outlet is 0.9 mg/L, the same as Cell 1, but its calculated CT is less than half."
+    },
+    {
+     "id": "ev3",
+     "label": "Short circuiting dye appears at the Cell 2 outlet within 4 minutes of injection at the inlet."
+    },
+    {
+     "id": "ev4",
+     "label": "Installing trial baffle curtains in Cell 2 raised its tracer baffling factor to 0.61 in a repeat test."
+    },
+    {
+     "id": "ev5",
+     "label": "Temperature and pH, which affect CT, were matched between the cells during testing."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Both cells perform the same because outlet residuals match"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cell 2 short circuiting and poor baffling, not residual level, explain its low CT"
+     },
+     {
+      "id": "inf-c",
+      "label": "Cell 2 needs a higher chlorine dose because its residual is low"
+     },
+     {
+      "id": "inf-d",
+      "label": "CT does not depend on contact time or baffling"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Residuals match, so dose is not the difference, while tracer and dye results show far less effective contact time in Cell 2. The baffle trial improved the factor, confirming hydraulics as the cause. CT by definition depends on time, which the tracer measures."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the baffling cause?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived outlet residual log alone"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived tracer test reports for both cells before and after the baffle trial"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived chlorine dose log alone"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Equal residuals with unequal CT point to time, not residual.",
+    "nc-b": "Tracer factors separate the cells and improve with baffles, matching the CT gap.",
+    "nc-c": "Dose was the same for both cells."
+   }
+  },
+  {
+   "id": "c4w-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant using chloramines sees distribution nitrification each summer, and a strategy review compares two zones.",
+   "topicId": "disinfection-chloramine-nitrification-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Zone A, with average water age of 6 days, shows nitrite rising to 0.08 mg/L and total chlorine falling each August."
+    },
+    {
+     "id": "ev2",
+     "label": "Zone B, with average water age of 2 days, holds total chlorine and shows no nitrite rise on the same supply."
+    },
+    {
+     "id": "ev3",
+     "label": "Free ammonia leaving the plant is 0.35 mg/L, above the utility target of 0.10 mg/L for chloramine control."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial that trimmed free ammonia to 0.08 mg/L and flushed Zone A dead ends held nitrite flat the following August."
+    },
+    {
+     "id": "ev5",
+     "label": "Temperature rises in both zones each summer, so temperature alone does not separate them."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Excess free ammonia plus long water age in Zone A drive its nitrification, and the trial controls address both"
+     },
+     {
+      "id": "inf-b",
+      "label": "Nitrification is caused by low temperature in Zone A"
+     },
+     {
+      "id": "inf-c",
+      "label": "Zone B proves chloramines cannot nitrify in this system"
+     },
+     {
+      "id": "inf-d",
+      "label": "Raising free ammonia would improve Zone A stability"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Both zones share temperature and supply, but only the long age, high free ammonia zone nitrifies. Trimming free ammonia and flushing the long age zone held nitrite flat, which supports both parts of the cause. Raising free ammonia would feed the process the trial removed."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the nitrification drivers?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived zone water age, free ammonia, nitrite, and total chlorine trends for the trial summer"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived plant effluent pH log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived Zone B results alone"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Zone A improved only when free ammonia and water age were both addressed.",
+    "nc-b": "Plant pH was stable and does not track nitrite.",
+    "nc-c": "Zone B alone does not show why Zone A changed."
+   }
+  },
+  {
+   "id": "c4w-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Ultraviolet disinfection credit is reviewed after a reactor bank repeatedly derates at high flow in a four bank installation.",
+   "topicId": "uv-bank-capacity-derating",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Banks 1, 2, and 4 deliver validated dose at 14000 m3 per day each, while Bank 3 derates at 9500 m3 per day."
+    },
+    {
+     "id": "ev2",
+     "label": "Bank 3 lamp output sensors read 58 percent with lamps at 4200 hours, well inside the 9000 hour rated life."
+    },
+    {
+     "id": "ev3",
+     "label": "Sleeve cleaning restores Bank 3 sensor readings only to 61 percent, while a reference sensor reads the same low value."
+    },
+    {
+     "id": "ev4",
+     "label": "Swapping a new lamp into Bank 3 in a trial restored that channel to 98 percent output."
+    },
+    {
+     "id": "ev5",
+     "label": "Water UVT and flow meters were verified and match across banks during testing."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Sleeve fouling fully explains Bank 3 because cleaning was done"
+     },
+     {
+      "id": "inf-b",
+      "label": "All four banks are derating because UVT fell"
+     },
+     {
+      "id": "inf-c",
+      "label": "The flow meter on Bank 3 reads high and dose is actually fine"
+     },
+     {
+      "id": "inf-d",
+      "label": "Premature lamp failure in Bank 3, not sleeve fouling or flow error, causes its derating"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Cleaning barely moved the reading, a reference sensor agrees it is low, and a new lamp restores output, which isolates the lamps. UVT and flow were verified common and correct, ruling out a plant wide water or meter cause."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms premature lamp failure?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived sleeve cleaning schedule"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived plant UVT log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived Bank 3 lamp output trend paired with the lamp swap trial result"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "The schedule shows cleaning happened, not that it worked.",
+    "nc-b": "UVT was verified and shared across banks.",
+    "nc-c": "Output stayed low after cleaning and jumped to 98 percent with a new lamp at low hours."
+   }
+  },
+  {
+   "id": "c4w-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A disinfection strategy review compares free chlorine and chloramine for a system with long distribution detention and high organic matter.",
+   "topicId": "disinfection-strategy-byproduct-tradeoff",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Free chlorine trials hold residuals well but trihalomethanes reach 92 percent of the Ontario standard in late summer."
+    },
+    {
+     "id": "ev2",
+     "label": "Chloramine trials hold total chlorine residuals to the far zone but trihalomethanes fall to 45 percent of the standard."
+    },
+    {
+     "id": "ev3",
+     "label": "The far zone water age is 5 to 7 days, where free chlorine residuals fell below target in trials."
+    },
+    {
+     "id": "ev4",
+     "label": "Enhanced coagulation in trials cut organic precursor levels by 30 percent and lowered both disinfectant byproduct results."
+    },
+    {
+     "id": "ev5",
+     "label": "No total coliform adverse results occurred under either trial disinfectant with residuals held."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Disinfectant choice does not affect far zone residuals"
+     },
+     {
+      "id": "inf-b",
+      "label": "Enhanced coagulation raises byproduct formation"
+     },
+     {
+      "id": "inf-c",
+      "label": "Chloramine with enhanced coagulation best fits this system because it holds far zone residuals while keeping byproducts lower"
+     },
+     {
+      "id": "inf-d",
+      "label": "Free chlorine is best because its byproducts are lowest"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Trials show free chlorine loses far zone residual and runs near the byproduct standard, while chloramine holds residual with lower byproducts. Enhanced coagulation lowered precursors and byproducts in the trials, the opposite of the third option."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the strategy choice?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived coagulant purchase log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived paired disinfectant trial summary for residual reach and byproduct levels by zone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived plant flow log"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Purchases do not measure residuals or byproducts.",
+    "nc-b": "The trial summary shows chloramine holding far zone residual at lower byproduct levels, improved further by enhanced coagulation.",
+    "nc-c": "Flow does not compare disinfectant performance."
+   }
+  },
+  {
+   "id": "c4w-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Chlorine residual at a plant clearwell outlet fell for 3 days, and leadership must decide whether demand or dosing failed.",
+   "topicId": "disinfection-demand-versus-dose-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Chlorine dose was steady at 2.2 mg/L with the dosing pump verified by drawdown test."
+    },
+    {
+     "id": "ev2",
+     "label": "Raw water organic matter and ammonia rose after a storm, and bench demand testing shows demand rose from 1.4 to 2.3 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "A jar demand trial at the higher demand predicts an outlet residual near zero at the current dose, matching the plant."
+    },
+    {
+     "id": "ev4",
+     "label": "Raising dose in a controlled trial to 3.1 mg/L restored outlet residual to 0.8 mg/L."
+    },
+    {
+     "id": "ev5",
+     "label": "Clearwell level and flow, and therefore contact volume, were unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Bench demand testing is unrelated to plant residual"
+     },
+     {
+      "id": "inf-b",
+      "label": "A storm driven rise in chlorine demand, not a dosing failure, consumed the residual"
+     },
+     {
+      "id": "inf-c",
+      "label": "The dosing pump failed and delivered no chlorine"
+     },
+     {
+      "id": "inf-d",
+      "label": "Contact volume fell and shortened contact time"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Drawdown verification shows the pump delivered its dose, and contact volume was unchanged. Bench demand rose enough to explain the loss, its prediction matches the plant, and the dose trial restored residual, all fitting a demand rise."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the demand rise?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived bench chlorine demand results paired with dose and outlet residual trends"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived pump motor hour log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived clearwell level log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Demand rose from 1.4 to 2.3 mg/L while dose held, and the trial dose restored residual.",
+    "nc-b": "Motor hours do not prove delivered dose, which drawdown already verified.",
+    "nc-c": "Clearwell level was unchanged, so volume did not fall."
+   }
+  },
+  {
+   "id": "c4w-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A utility considers ozone for taste and odour, and a pilot review examines byproduct and disinfection records together.",
+   "topicId": "ozone-bromate-disinfection-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Source bromide is 0.28 mg/L, in the range where ozonation forms bromate."
+    },
+    {
+     "id": "ev2",
+     "label": "Pilot ozonation at the taste and odour dose produced bromate at 78 percent of the Ontario standard."
+    },
+    {
+     "id": "ev3",
+     "label": "Lowering pilot ozone dose to control bromate left geosmin above the odour threshold in spiked samples."
+    },
+    {
+     "id": "ev4",
+     "label": "Granular activated carbon after a lower ozone dose in the pilot removed geosmin to below threshold with bromate at 35 percent of the standard."
+    },
+    {
+     "id": "ev5",
+     "label": "Chlorine CT after the pilot train still met targets with the carbon step in place."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Ozone alone cannot meet both odour and bromate goals on this source, while the lower ozone plus carbon combination met both in the pilot"
+     },
+     {
+      "id": "inf-b",
+      "label": "Ozone alone at full dose is safe because bromate stayed under the standard once"
+     },
+     {
+      "id": "inf-c",
+      "label": "Bromate does not form when bromide is present in source water"
+     },
+     {
+      "id": "inf-d",
+      "label": "Carbon after ozone worsened odour results in the pilot"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Full dose ozone leaves little bromate margin, and the lower dose alone fails odour control, so ozone alone fails one goal at each dose. The combined pilot met both goals and held chlorine CT, and the carbon step improved, not worsened, odour results."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the combined process result?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived ozone generator nameplate data"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived raw water bromide log alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived pilot bromate and geosmin results for ozone alone versus ozone plus carbon"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Nameplate data do not measure byproducts or odour.",
+    "nc-b": "Bromide alone shows risk, not pilot performance.",
+    "nc-c": "Only the combined run held bromate at 35 percent of the standard with geosmin below threshold."
+   }
+  },
+  {
+   "id": "c4w-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Disinfection records for a regulatory review show CT met on paper, but a supervisor questions the residual measurement location.",
+   "topicId": "disinfection-ct-measurement-location",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The CT calculation uses clearwell outlet residual of 1.1 mg/L for the full clearwell volume."
+    },
+    {
+     "id": "ev2",
+     "label": "Residual measured at the clearwell inlet is 1.6 mg/L and at mid clearwell is 1.3 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "Tracer testing shows 30 percent of flow short circuits from inlet to outlet in under 15 minutes."
+    },
+    {
+     "id": "ev4",
+     "label": "Recalculating CT with the short circuit fraction and outlet residual drops the result below the required value at peak flow."
+    },
+    {
+     "id": "ev5",
+     "label": "Temperature and pH records used in the calculation were verified correct."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The CT calculation is correct because outlet residual was used"
+     },
+     {
+      "id": "inf-b",
+      "label": "Higher inlet residual proves CT is higher than calculated"
+     },
+     {
+      "id": "inf-c",
+      "label": "Tracer results do not affect CT credit"
+     },
+     {
+      "id": "inf-d",
+      "label": "The paper CT overstates disinfection because it credits full volume contact for water that short circuits, so peak flow CT is not actually met"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Using full volume assumes all water gets full contact time, but the tracer shows a large fraction exits quickly. The recalculation with that fraction falls below the requirement at peak flow. A higher inlet residual does not fix short contact time for the short circuited fraction."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the CT overstatement?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived inlet residual log alone"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived clearwell tracer report paired with the recalculated peak flow CT worksheet"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived outlet residual log alone"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Inlet residual is higher but does not give short circuited water more time.",
+    "nc-b": "The tracer fraction plus recalculation drops peak CT below the required value.",
+    "nc-c": "Outlet residual alone hides the contact time problem."
+   }
+  },
+  {
+   "id": "c4w-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant switches chlorine gas to bulk hypochlorite, and 6 months later disinfection performance is reviewed.",
+   "topicId": "hypochlorite-strength-decay-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Delivered hypochlorite strength tested at 12 percent on delivery and 7 percent after 55 days in the warm storage room."
+    },
+    {
+     "id": "ev2",
+     "label": "Dosing pump output in litres per day is unchanged, so delivered chlorine mass fell with strength."
+    },
+    {
+     "id": "ev3",
+     "label": "Outlet residuals fell gradually over each storage cycle and jumped back after each fresh delivery."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial with a smaller, shaded tank turning over in 18 days held strength above 10.5 percent and residuals steady."
+    },
+    {
+     "id": "ev5",
+     "label": "Raw water demand testing shows no trend over the 6 months."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Raw water demand rose steadily over 6 months"
+     },
+     {
+      "id": "inf-b",
+      "label": "Residual jumps after deliveries are unrelated to strength"
+     },
+     {
+      "id": "inf-c",
+      "label": "Hypochlorite strength decay in long warm storage, not pump or demand change, explains the residual pattern"
+     },
+     {
+      "id": "inf-d",
+      "label": "The dosing pump lost capacity over 6 months"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Residuals track the storage cycle and recover on fresh delivery, strength tests show decay, and demand shows no trend. Pump output in volume is unchanged, and its mass delivery fell only because strength fell, which the turnover trial corrected."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms strength decay as the cause?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived hypochlorite strength tests by storage age paired with outlet residual trend"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived pump run time log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived raw water demand test log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Strength falls with storage age and residuals follow the same cycle, then stabilize in the fast turnover trial.",
+    "nc-b": "Run time was steady and does not measure strength.",
+    "nc-c": "Demand testing shows no trend to explain the cycle."
+   }
+  },
+  {
+   "id": "c4w-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "UV and chlorine sequencing is reviewed after a plant finds its UV reactors are being credited for more than their validated conditions.",
+   "topicId": "uv-validated-condition-exceedance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 4 water treatment utility record. Steady operation unless noted. Archived plant, laboratory, and management records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Reactor logs show 11 days last quarter ran above the validated maximum flow for the installed lamp configuration."
+    },
+    {
+     "id": "ev2",
+     "label": "On those days the control system still reported dose at target using an unvalidated flow pacing curve."
+    },
+    {
+     "id": "ev3",
+     "label": "UVT on those days was inside the validated range, so flow is the only parameter outside validation."
+    },
+    {
+     "id": "ev4",
+     "label": "Chlorine CT alone on those days, without UV credit, still met the total disinfection requirement."
+    },
+    {
+     "id": "ev5",
+     "label": "No adverse microbiological results occurred in the quarter."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Chlorine CT shortfall caused the exceedance days"
+     },
+     {
+      "id": "inf-b",
+      "label": "UV credit was claimed outside validated flow conditions on 11 days, even though chlorine CT alone still met the total requirement"
+     },
+     {
+      "id": "inf-c",
+      "label": "No issue exists because no adverse results occurred"
+     },
+     {
+      "id": "inf-d",
+      "label": "UV dose was validated at any flow the plant can run"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Logs place flow outside the validated envelope while an unvalidated curve still reported target dose, so the credit claim is unsupported for those days. Chlorine CT alone met the requirement, so there was no CT shortfall, and absence of adverse results does not make an unvalidated claim valid."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the validation exceedance?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived microbiological results summary"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived UVT log alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived reactor flow log compared against the validated operating envelope in the validation report"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "The correct record directly tests the supported explanation against the alternatives."
+   },
+   "clueText": {
+    "nc-a": "Good results do not validate an out of envelope claim.",
+    "nc-b": "UVT was in range, so it does not explain the exceedance.",
+    "nc-c": "Flow exceeded the validated maximum on 11 days while dose was still reported at target."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4w-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Process Emergency Post Incident Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c4w-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Membrane Fleet Tail Scaling Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c4w-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c4w-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Process Regulatory Adverse Incident Leadership Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c4w-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c4w-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c4w-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Membrane Supplier Performance Comparison Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c4w-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Process Regulatory Source Protection Implementation Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c4w-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c4w-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Membrane Fleet Capacity Shortfall Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c4w-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c4w-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c4w-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Process Asset Condition Assessment Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c4w-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Membrane Backwash Turbidity Spike Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c4w-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c4w-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Process Asset Level Of Service Framework Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c4w-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c4w-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c4w-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Membrane Integrity Event Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c4w-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Process Asset Capital Versus Maintenance Decision Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c4w-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c4w-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Disinfection Ct Baffling Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c4w-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c4w-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c4w-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Process Chemical Delivery Resilience Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c4w-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Uv Bank Capacity Derating Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c4w-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c4w-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Process Energy Performance Contract Oversight Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c4w-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c4w-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c4w-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Disinfection Demand Versus Dose Failure Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c4w-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Process Lab Quality System Review Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c4w-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c4w-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Disinfection Ct Measurement Location Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c4w-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c4w-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c4w-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Process Lab Chain Of Custody Integrity Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c4w-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4w-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Uv Validated Condition Exceedance Shift",
+   "tasks": [
+    {
+     "taskId": "c4w-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c4w-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c4w-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced water treatment management, process evaluation and optimization chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "3a590ab87781436f45ad3c8bb62c727fd97f1f711a80272f5cc13c102c9f6ea9",
+  "taskReceipts": [
+   {
+    "taskId": "c4w-process40",
+    "revision": "r1",
+    "sha256": "834b70a91a5444c031a38e85200f1587d1782061cc48d2a7aa75a9acab78065e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process41",
+    "revision": "r1",
+    "sha256": "b623abfbbca3d4852bc1a1e944f6178e66507faa80ee8d15e3af6a3edc3caa0e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process42",
+    "revision": "r1",
+    "sha256": "7a625a83db1a4dc307c11b5c986c7d1b7cd041174d2b73153acd7451133c3aec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process43",
+    "revision": "r1",
+    "sha256": "12f19e4f4fb21ef405bbfd88dcb1bfa1b3f13250b0b363fef65950b7f708e57b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process44",
+    "revision": "r1",
+    "sha256": "3e62d143fc427161f9b0cc894e1349c033848b900baf26585106fe3ccb80a60e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process45",
+    "revision": "r1",
+    "sha256": "526dcecbe409f785d3e221eea21eac9421493cabab7f45f767c279781dd731de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process46",
+    "revision": "r1",
+    "sha256": "67ee3a29eb7790523a7f098db160f09d5f5fe07a82429f0098dbba16ceced3ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process47",
+    "revision": "r1",
+    "sha256": "994a7f5c2df607d8ec311d642a1830a32351e9b5b6957a267ada2bafa85549fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process48",
+    "revision": "r1",
+    "sha256": "cb23a3ecc90f6235ca7687f146ea95c91c57e60fea601909e0d0868ca0533422",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process49",
+    "revision": "r1",
+    "sha256": "fdef15a1105a899b95c88ff6a55aaa05a17bd97b56d283b2e4ec51c5bbd3ef84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process50",
+    "revision": "r1",
+    "sha256": "80e3eee03732a438bef2104833e32444d6aa9fbafe84ac886ff35513c0c4823e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process51",
+    "revision": "r1",
+    "sha256": "4e968b4a871732fdcc837d0e87cdb85672e5835fc891a0eca4c14a7052effe56",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process52",
+    "revision": "r1",
+    "sha256": "608f4f20494261b9b6ba0b67fb7faa1505e9afe3e97f56284dc51593c602d76f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process53",
+    "revision": "r1",
+    "sha256": "41d670bdef68d8035b2cd7b150556174b30aeb54521ab5f5ccaa8521f37e080c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process54",
+    "revision": "r1",
+    "sha256": "2fe2d0dfb45b882f50c2a937b52ec97d5f46c605cecf1e570ba5d38659ee5172",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process55",
+    "revision": "r1",
+    "sha256": "f632bfb7b22c46082435d43539f696fd655cc726c860388dad47168fe2153a6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process56",
+    "revision": "r1",
+    "sha256": "e823d844d1ccbf77cdd8b7115021ab185089b8bb8acce91eee1c941af1dd4495",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process57",
+    "revision": "r1",
+    "sha256": "79f4cf5f548c5372b0da1780e4d55adf60fee22e1d06d560e4f0fab45d98710a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process58",
+    "revision": "r1",
+    "sha256": "381e5874e3dfa39ddd3e845a14878782b3e94d7a5cca011e04d9aba0473820d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process59",
+    "revision": "r1",
+    "sha256": "371bd0e97621c56714170d2689723720ab80985c4c517f7a7be93408342cf113",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process60",
+    "revision": "r1",
+    "sha256": "b64f15e69dc752307e2edf9ecc7cc463f5b300a689183f1ae7902bc7df318834",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process61",
+    "revision": "r1",
+    "sha256": "b6ebc51c4af22364e5ac78dd81919589180915eeebe5209cac88815ba8f3b62a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process62",
+    "revision": "r1",
+    "sha256": "8c22e4249b777bc94fa968b8b2d795cc4f4cc70a71d129573f77c8add3165821",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process63",
+    "revision": "r1",
+    "sha256": "ee34e47f47b623e1b67718ec09b45610c476dade2b6515b7fb5e4fc8274de86f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process64",
+    "revision": "r1",
+    "sha256": "6e2f6702b7275af7ec627d1daab88332b8af0acefef424496c3a21ccf4c501b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process65",
+    "revision": "r1",
+    "sha256": "ab94f1c897f8f86e48974d91d3f9a69a0f2923f82573913e08fd580ce2a5383d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process66",
+    "revision": "r1",
+    "sha256": "ca095613b7e74780d30b321ace0cec95804d0b31fb1508fa70b4bf80dec155f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process67",
+    "revision": "r1",
+    "sha256": "93cfc19d6db39c5944fa17645e1b8d309fed945260fb5c76418081c82e2bd659",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process68",
+    "revision": "r1",
+    "sha256": "8c1e2e369f3b3b66c5224c30f447dbc1a02f290dea19caab19f81d565f525e3e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process69",
+    "revision": "r1",
+    "sha256": "fd93212b2555b7d092bd638599e7a0fce765a43733aa629fe1601125f58dc541",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process70",
+    "revision": "r1",
+    "sha256": "7d67ae0bd898906c7ef604ed0a637415c161bd7f3735533cbe5271689b632440",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process71",
+    "revision": "r1",
+    "sha256": "9d4e4828402272d613a0441053cd64b6ceebbdef10ab9c0b3f901dacd2a232d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process72",
+    "revision": "r1",
+    "sha256": "55874df8272dcb793ddd5ebdbd9734c08ab552b4a23fcdb53a1f067fd65bb7c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process73",
+    "revision": "r1",
+    "sha256": "e082b4edfdff2c510958ea1bab6a26dc19a1a55318cb5b6779d991eb94073ee8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process74",
+    "revision": "r1",
+    "sha256": "91027b9360987d4056960550d5ae1a7151f56ae9fdacf8b04e2dd9e435838917",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process75",
+    "revision": "r1",
+    "sha256": "1447e287056b6fbd372a679d3dadffd371a2adeb8233575b9443eb37b56ac980",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process76",
+    "revision": "r1",
+    "sha256": "237c22aeba314724cedda0a8de7f5f8e47d3ae7bb5b2189a64c7fd3ef85c7d84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process77",
+    "revision": "r1",
+    "sha256": "148d57082a6768358c68715162b423b945ab32f01dddb164feb22ef56cbf512d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process78",
+    "revision": "r1",
+    "sha256": "ad0aed0bab4183efe844c4b620e7875593ddc6b8549864d9d1ebcb83f0ccfc95",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process79",
+    "revision": "r1",
+    "sha256": "e7f03006a237ebc57d8fa82329cab39f4eb2416cdfb53f00325c87f1de81498b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process80",
+    "revision": "r1",
+    "sha256": "58195d4a6f4c6d6062a6848cfebe2a618dfa5acbe33e27dba3ba1fd1d16d8c4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process81",
+    "revision": "r1",
+    "sha256": "f822e7ed7f02b2b980fba1f23f25e688a0ef41dadad1e58fdf73e066de6e4679",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process82",
+    "revision": "r1",
+    "sha256": "68bc554427cb46826e406e8fa91edc3ef1bc76392c9182076a19160d1df51f28",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process83",
+    "revision": "r1",
+    "sha256": "b17663a3d181df75061819f7b9d8c590f2dc409bc42811b3e7604c31bba48dd0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process84",
+    "revision": "r1",
+    "sha256": "f0ed1716ebeafab2624cefdd769a293ef7ea8c7a6a16c9243abd079cbc925906",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process85",
+    "revision": "r1",
+    "sha256": "8c89f2d45f0e63dd0d1f0cced1bf4cb122ac6cda639c2382d05cc7b52ab75086",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process86",
+    "revision": "r1",
+    "sha256": "b41358ed537523c5a137a07ac6a8101243ba187bf67fb695e0e24f6dd8958999",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process87",
+    "revision": "r1",
+    "sha256": "c1df82ba43489cee23465af5c246da348b90e885f930a83afdc5a3f0e7428516",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process88",
+    "revision": "r1",
+    "sha256": "c7e71341fc69e3964ce1dfb5cfacaf1f9701b04d6a9eca3ae9fb26a389a29885",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process89",
+    "revision": "r1",
+    "sha256": "f77a2d3333962909e5ddb7953f6fd626a47946444a7529050a8a97a1d7aa4430",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process90",
+    "revision": "r1",
+    "sha256": "3af55703327daaf37d85184acbe2d62c42cecf225c23613b5bfe8a330e54f268",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process91",
+    "revision": "r1",
+    "sha256": "3c77764b05b0fe0ee4cc02007e2d00c953dec32756015b17a31311a052989450",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process92",
+    "revision": "r1",
+    "sha256": "f5c2febd7d73cc9e27ddca52bcb7c54508f9eeb59b8df81c6abcfc5d284a31bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process93",
+    "revision": "r1",
+    "sha256": "4e03d2352ae4fec66dd4dd455cf5a2991b61b80e5f29e0de67f09e44e9b36f37",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process94",
+    "revision": "r1",
+    "sha256": "61813720e2641f83b592667b212eb1bca70be29024a4da51c82ec622859166a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process95",
+    "revision": "r1",
+    "sha256": "449426e648c06d746c4754fb1aecc642bf13c3c95a87264419ee63d333db7ec0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process96",
+    "revision": "r1",
+    "sha256": "27147207ae6d593f63833936abc50fe576a2b2959443eeb0dfeb0f3eed70e37c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process97",
+    "revision": "r1",
+    "sha256": "7602c570dbce32514bd4c6f481a4228915fe47e3012221f11c8bbb4b1571b890",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process98",
+    "revision": "r1",
+    "sha256": "d6ebf640b7099c45d1794aeb97719420c376fbff04096b8054345634a1ed8453",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-process99",
+    "revision": "r1",
+    "sha256": "2ae4e5e287daff2a05840c95393c9f72c7329cc21bf9376b13d29167cee19d81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence01",
+    "revision": "r1",
+    "sha256": "eda7157ed0ef21e3d294c79a71acbd1a933fa247ccfe079d0c4c2691002af871",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence02",
+    "revision": "r1",
+    "sha256": "b0a396a042aab92d2e30b630a46fa6e3fae068e64648c9586b2f2e424dbbb64e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence03",
+    "revision": "r1",
+    "sha256": "1bbd35578eacef4f28abb46fcfae9b2e1484f97b0c216c3e8abfd59105c1e2d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence04",
+    "revision": "r1",
+    "sha256": "d70317a337a5ddcf588cf3689b611ffd35f33f083d0429bd390eb418faa4f716",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence05",
+    "revision": "r1",
+    "sha256": "3a571cf6548c39be50a6559dbf1cde6541ef0079adff88d6675a78fc121300c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence06",
+    "revision": "r1",
+    "sha256": "9aa85b4aa287d0b83b3403c42ada6cef5e2d7423c0d71f87d138868e5e5ba6c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence07",
+    "revision": "r1",
+    "sha256": "efa9195ae12b01a223e39b1a3bab988d638e46bb5aa84dc695cbce22d165c8f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence08",
+    "revision": "r1",
+    "sha256": "6effdec2b69ddef75754d7c3bebdcdb9ba541053333f2d4c2bfe15eb647e2f58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence09",
+    "revision": "r1",
+    "sha256": "f7e7b8c466934586e8767d99eb99b89dda05da0072c81608329a558c1bd46a69",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence10",
+    "revision": "r1",
+    "sha256": "b65db2876e101309dfe5a6585a73d84201853821574a9d39ff4b627d80429cbe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence100",
+    "revision": "r1",
+    "sha256": "c14a4236e704ee19969d297d5e5695f3a41c8055e8c058fe1f9961d77bd0b360",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence11",
+    "revision": "r1",
+    "sha256": "be5ca7e8207dc5277c4501a4b67ba92b09f71c3a27691bdda2505ba1f14b3eeb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence12",
+    "revision": "r1",
+    "sha256": "9e592056598b27a950b9ad2a36f511a90aa5bebd00d6fb8e6dc93a70175d5275",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence13",
+    "revision": "r1",
+    "sha256": "067974ecf28bd0c64ccc3df26d4b4202c1c086993dc5f64e8a080e8b93fddef6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence14",
+    "revision": "r1",
+    "sha256": "b5c9a8e1dc7ce2ae6491f9d6ea7863da9be4dcb69396c59af55a8156ed2610b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence15",
+    "revision": "r1",
+    "sha256": "891efd7ff64e585eb2b1c6452b70c136590cdcccbc2a6ede155cb6ae74475dda",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence16",
+    "revision": "r1",
+    "sha256": "76293db940f778eeab28d418f5bd8b2406272b080b41a6e23e3c2bebdca38fc8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence17",
+    "revision": "r1",
+    "sha256": "05f47e745c060f7c46d3d7e6112c24fc614df497b96e63d912e88fed2943a54c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence18",
+    "revision": "r1",
+    "sha256": "6d90cd87f253b8b3478b58cbf9cfe40ec11901bda609cfa538ec71fde78667e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4w-evidence19",
+    "revision": "r1",
+    "sha256": "b5cd81dc763d97d97acbd338aace4cec6be8ce70b93a99b9ec4ae1e557179033",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4w-mission61",
+    "revision": "r1",
+    "sha256": "0f7d5b8513421b6c9d970d0879a190ae8f43779052bfa0b1e0a28f746132f0f9"
+   },
+   {
+    "missionId": "c4w-mission62",
+    "revision": "r1",
+    "sha256": "6bf711607ad0057a750ba2c92cad981a377fd46354f3c189a54d33eec37fac69"
+   },
+   {
+    "missionId": "c4w-mission63",
+    "revision": "r1",
+    "sha256": "c7494cc5fcde3a0626bdd1ce05ef2fb39c5688eb7efd7b9d2c984afd201b2984"
+   },
+   {
+    "missionId": "c4w-mission64",
+    "revision": "r1",
+    "sha256": "0ae6c946346254099f8862a5f882e68365876ba269a8c500d5bcff4cc5f86bb1"
+   },
+   {
+    "missionId": "c4w-mission65",
+    "revision": "r1",
+    "sha256": "6028e17392b69101e2b39c71010032a3866e68bcf2bbec7bb71ce07afa7d432a"
+   },
+   {
+    "missionId": "c4w-mission66",
+    "revision": "r1",
+    "sha256": "e7561c3d43ab970bc9946d0b1585a5f980e5003a56f63880b9345e3b7de2621e"
+   },
+   {
+    "missionId": "c4w-mission67",
+    "revision": "r1",
+    "sha256": "0672cd0f26c78fca4e3b1f530d8d94b13856fbcded15832c35f1d95d73007652"
+   },
+   {
+    "missionId": "c4w-mission68",
+    "revision": "r1",
+    "sha256": "e8ae1412ea2dab8ef5f3d8427e997b95a75d17295adf261eacf85a32e8cb1ba5"
+   },
+   {
+    "missionId": "c4w-mission69",
+    "revision": "r1",
+    "sha256": "b903c301ec201b213f89282eb594157137161f13063723f86fe678c11a0fbca3"
+   },
+   {
+    "missionId": "c4w-mission70",
+    "revision": "r1",
+    "sha256": "cd128bab8eb88c4bd614fe12afe5e4cce303f202a7dcaecb307d02fc0ff80955"
+   },
+   {
+    "missionId": "c4w-mission71",
+    "revision": "r1",
+    "sha256": "e7bb2c8685923fb4e3ab541586263bdf68bd92aa51abbd05da0d80412e7d07a8"
+   },
+   {
+    "missionId": "c4w-mission72",
+    "revision": "r1",
+    "sha256": "c32c331e4030806e5b1f0e7ec67058fed31f136423177b3bc1a5437522d50da1"
+   },
+   {
+    "missionId": "c4w-mission73",
+    "revision": "r1",
+    "sha256": "acac751f73cdb7eb82dafe16146e3a4a03f92f5f896c7de2f620c4bc51db7f61"
+   },
+   {
+    "missionId": "c4w-mission74",
+    "revision": "r1",
+    "sha256": "83c9a8e7356283decb7d878825d6d66d919404e974e5ca5589a75cf70132e381"
+   },
+   {
+    "missionId": "c4w-mission75",
+    "revision": "r1",
+    "sha256": "91457f4fdc154a86144ec64620ee4fef9c4fde93cc75090422e6c480f6ee3cfc"
+   },
+   {
+    "missionId": "c4w-mission76",
+    "revision": "r1",
+    "sha256": "c93d100c63a3fea6a5d896a15c2d1e3f75ebd96804b0e86d5ea7395ba2e89e0a"
+   },
+   {
+    "missionId": "c4w-mission77",
+    "revision": "r1",
+    "sha256": "16900ffd854e9bedbe81ebea7878c84f5258c98eaa2451dacb0f73884f5858e7"
+   },
+   {
+    "missionId": "c4w-mission78",
+    "revision": "r1",
+    "sha256": "17e52e9b486df5a50685cf5d4a19d8377d1ff22731458d7deedf090de98ca945"
+   },
+   {
+    "missionId": "c4w-mission79",
+    "revision": "r1",
+    "sha256": "7c420378d190e7a2914728273ec33378ceef376900ecf690de881182a66c829a"
+   },
+   {
+    "missionId": "c4w-mission80",
+    "revision": "r1",
+    "sha256": "c39aaa2aeffffb49daf901f2aaacdeb1b32e8078b1a00d1bdef3848552606cf0"
+   }
+  ]
+ }
+}

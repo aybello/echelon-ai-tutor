@@ -18,9 +18,9 @@ export function replaceStaticHead(template: string, head: string, title: string)
 
 export function brandedShell(body: string): string {
   return `<div data-ssr-fallback="true" id="ssr-page-shell">
-    <header class="ssr-brand"><a href="/">Echelon Institute</a><span>Water &amp; wastewater operator exam preparation</span></header>
+    <header class="ssr-brand"><a href="/">Echelon Institute</a><span>AI-powered exam prep for skilled trades — water &amp; wastewater first</span></header>
     <div class="ssr-content">${body}</div>
-    <nav class="ssr-nav" aria-label="Site navigation"><a href="/oit">Ontario OIT</a><a href="/canada/ontario">Ontario courses</a><a href="/wpi">WPI-aligned courses</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/account">Sign in</a></nav>
+    <nav class="ssr-nav" aria-label="Site navigation"><a href="/oit">Ontario OIT</a><a href="/canada/ontario">Ontario courses</a><a href="/wpi">WPI-aligned courses</a><a href="/electrician-309a">Free Ontario 309A prep</a><a href="/pricing">Pricing</a><a href="/blog">Blog</a><a href="/account">Sign in</a></nav>
   </div>`;
 }
 
@@ -30,8 +30,8 @@ export function prepareAppFallback(template: string, url: string): { html: strin
   const missing = route.kind === "not-found";
   const privatePage = route.kind === "private";
   const activityPage = route.kind === "public" && /^\/courses\/[a-z0-9-]+\/interactive$/.test(route.path);
-  const title = missing ? "Page Not Found | Echelon Institute" : "Operator Study Resources | Echelon Institute";
-  const description = missing ? "The requested page does not exist. Browse Echelon operator courses and resources." : "Independent water and wastewater operator exam preparation and study resources.";
+  const title = missing ? "Page Not Found | Echelon Institute" : "Skilled Trades Study Resources | Echelon Institute";
+  const description = missing ? "The requested page does not exist. Browse Echelon courses and study resources." : "AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams.";
   const canonical = !missing && !privatePage && !activityPage ? `https://echeloninstitute.ca${route.path}` : null;
   const head = `<meta name="description" content="${escapeHtml(description)}" />
     <meta name="robots" content="${missing || privatePage || activityPage ? "noindex, nofollow" : "index, follow"}" />

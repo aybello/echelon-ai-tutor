@@ -1,0 +1,3808 @@
+{
+ "courseKey": "class1-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c1wd-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine mass calculation for a dose of 0.8 mg/L at 10 ML/day.",
+   "topicId": "chlorine-dose-mass",
+   "level": "class1",
+   "assumptions": "Fictional distribution feed: chlorine dose = 0.8 mg/L, flow = 10 ML/day, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily volume = 10 ML/day * 1000000 L/ML = 10000000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass = 0.8 mg/L * 10000000 L/day = 8000000 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass = 8000000 mg/day / 1000 mg/kg = 8000 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mass = 8000000 mg/day / 1000000 mg/kg = 8 kg/day",
+   "explanation": "Line 3 divided by 1000 instead of 1000000 mg/kg. The chlorine mass is 8 kg/day."
+  },
+  {
+   "id": "c1wd-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine mass calculation for a dose of 5 mg/L at 2 L/s.",
+   "topicId": "chlorine-dose-mass",
+   "level": "class1",
+   "assumptions": "Fictional distribution feed: chlorine dose = 5 mg/L, flow = 2 L/s, 86400 s = 1 day, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass rate = 5 mg/L * 2 L/s = 10 mg/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily mass = 10 mg/s * 86400 s/day = 864000 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass = 864000 mg/day / 1000000 mg/kg = 1.728 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mass = 864000 mg/day / 1000000 mg/kg = 0.864 kg/day",
+   "explanation": "Line 3 arithmetic is wrong. 864000 / 1000000 = 0.864 kg/day."
+  },
+  {
+   "id": "c1wd-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine mass calculation for a dose of 1.2 mg/L at 5 ML/day.",
+   "topicId": "chlorine-dose-mass",
+   "level": "class1",
+   "assumptions": "Fictional distribution feed: chlorine dose = 1.2 mg/L, flow = 5 ML/day, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass = Dose / Flow"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mass = 1.2 mg/L / 5 ML/day = 0.24 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Mass = Dose * Flow",
+   "explanation": "Line 1 divided instead of multiplying. Mass is dose times flow, 1.2 * 5 = 6 kg/day."
+  },
+  {
+   "id": "c1wd-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine solution feed calculation for 12 kg/day of chlorine from a 12 percent solution.",
+   "topicId": "chlorine-solution-feed",
+   "level": "class1",
+   "assumptions": "Fictional hypochlorite feed: chlorine needed = 12 kg/day, solution strength = 12 percent available chlorine, solution density taken as 1 kg/L. Target unit: L/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available chlorine = 12 percent = 0.12 kg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 12 kg/day * 0.12 kg/L = 1.44 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 12 kg/day / 0.12 kg/L = 100 L/day",
+   "explanation": "Line 2 multiplied instead of dividing by the available chlorine content. The feed rate is 12 / 0.12 = 100 L/day."
+  },
+  {
+   "id": "c1wd-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine solution feed calculation for 6 kg/day of chlorine from a 10 percent solution.",
+   "topicId": "chlorine-solution-feed",
+   "level": "class1",
+   "assumptions": "Fictional hypochlorite feed: chlorine needed = 6 kg/day, solution strength = 10 percent available chlorine, solution density taken as 1 kg/L. Target unit: L/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available chlorine = 10 percent = 0.1 kg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 6 kg/day / 0.1 kg/L = 120 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 6 kg/day / 0.1 kg/L = 60 L/day",
+   "explanation": "Line 2 arithmetic is wrong. 6 / 0.1 = 60 L/day."
+  },
+  {
+   "id": "c1wd-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine solution feed calculation for 24 kg/day of chlorine from a 12 percent solution.",
+   "topicId": "chlorine-solution-feed",
+   "level": "class1",
+   "assumptions": "Fictional hypochlorite feed: chlorine needed = 24 kg/day, solution strength = 12 percent available chlorine, solution density taken as 1 kg/L. Target unit: L/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available chlorine = 12 percent = 0.12 kg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 24 kg/day * 0.12 kg/L = 2.88 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 24 kg/day / 0.12 kg/L = 200 L/day",
+   "explanation": "Line 2 multiplied instead of dividing by the available chlorine content. The feed rate is 24 / 0.12 = 200 L/day."
+  },
+  {
+   "id": "c1wd-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed pump calculation for 7.2 kg/day of chlorine from a 10 percent solution.",
+   "topicId": "chlorine-solution-feed",
+   "level": "class1",
+   "assumptions": "Fictional hypochlorite feed: chlorine needed = 7.2 kg/day, solution strength = 10 percent, density taken as 1 kg/L, 1440 min = 1 day. Target unit: mL/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available chlorine = 10 percent = 0.1 kg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 7.2 kg/day / 0.1 kg/L = 72 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed rate = 72 L/day * 1000 mL/L / 144 min/day = 500 mL/min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed rate = 72 L/day * 1000 mL/L / 1440 min/day = 50 mL/min",
+   "explanation": "Line 3 used 144 minutes per day instead of 1440. The pump setting is 50 mL/min."
+  },
+  {
+   "id": "c1wd-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine feed pump calculation for 14.4 kg/day of chlorine from a 10 percent solution.",
+   "topicId": "chlorine-solution-feed",
+   "level": "class1",
+   "assumptions": "Fictional hypochlorite feed: chlorine needed = 14.4 kg/day, solution strength = 10 percent, density taken as 1 kg/L, 1440 min = 1 day. Target unit: mL/min.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available chlorine = 10 percent = 0.1 kg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 14.4 kg/day / 0.1 kg/L = 144 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed rate = 144 L/day * 1000 mL/L / 144 min/day = 1000 mL/min"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Feed rate = 144 L/day * 1000 mL/L / 1440 min/day = 100 mL/min",
+   "explanation": "Line 3 used 144 minutes per day instead of 1440. The pump setting is 100 mL/min."
+  },
+  {
+   "id": "c1wd-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine solution feed calculation for 18 kg/day of chlorine from a 15 percent solution.",
+   "topicId": "chlorine-solution-feed",
+   "level": "class1",
+   "assumptions": "Fictional hypochlorite feed: chlorine needed = 18 kg/day, solution strength = 15 percent available chlorine, solution density taken as 1 kg/L. Target unit: L/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Available chlorine = 15 percent = 0.15 kg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed rate = 18 kg/day * 0.15 kg/L = 2.7 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed rate = 18 kg/day / 0.15 kg/L = 120 L/day",
+   "explanation": "Line 2 multiplied instead of dividing by the available chlorine content. The feed rate is 18 / 0.15 = 120 L/day."
+  },
+  {
+   "id": "c1wd-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 30 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 30 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 98.1 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 30 m * 98.1 kPa/m = 2943 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = Head * 9.81 kPa/m",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 30 * 9.81 = 294.3 kPa."
+  },
+  {
+   "id": "c1wd-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 45 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 45 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 45 m * 9.81 kPa/m = 486.45 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pressure = 45 m * 9.81 kPa/m = 441.45 kPa",
+   "explanation": "Line 2 arithmetic is wrong. 45 * 9.81 = 441.45 kPa."
+  },
+  {
+   "id": "c1wd-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 12 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 12 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 98.1 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 12 m * 98.1 kPa/m = 1177.2 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = Head * 9.81 kPa/m",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 12 * 9.81 = 117.72 kPa."
+  },
+  {
+   "id": "c1wd-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 392.4 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure reading: pressure = 392.4 kPa, pressure increases 9.81 kPa per metre of head. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = Pressure * 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 392.4 kPa * 9.81 kPa/m = 3849.444 m"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Head = Pressure / 9.81 kPa/m",
+   "explanation": "Line 1 multiplied instead of dividing by 9.81 kPa per metre. The head is 392.4 / 9.81 = 40 m."
+  },
+  {
+   "id": "c1wd-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 588.6 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure reading: pressure = 588.6 kPa, pressure increases 9.81 kPa per metre of head. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = Pressure / 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 588.6 kPa / 9.81 kPa/m = 120 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head = 588.6 kPa / 9.81 kPa/m = 60 m",
+   "explanation": "Line 2 arithmetic is wrong. 588.6 / 9.81 = 60 m."
+  },
+  {
+   "id": "c1wd-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 25 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 25 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 98.1 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 25 m * 98.1 kPa/m = 2452.5 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = Head * 9.81 kPa/m",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 25 * 9.81 = 245.25 kPa."
+  },
+  {
+   "id": "c1wd-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 196.2 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure reading: pressure = 196.2 kPa, pressure increases 9.81 kPa per metre of head. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = Pressure * 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 196.2 kPa * 9.81 kPa/m = 1924.722 m"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Head = Pressure / 9.81 kPa/m",
+   "explanation": "Line 1 multiplied instead of dividing by 9.81 kPa per metre. The head is 196.2 / 9.81 = 20 m."
+  },
+  {
+   "id": "c1wd-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 80 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 80 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 80 m * 9.81 kPa/m = 864.8 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pressure = 80 m * 9.81 kPa/m = 784.8 kPa",
+   "explanation": "Line 2 arithmetic is wrong. 80 * 9.81 = 784.8 kPa."
+  },
+  {
+   "id": "c1wd-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 686.7 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure reading: pressure = 686.7 kPa, pressure increases 9.81 kPa per metre of head. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = Pressure / 98.1 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 686.7 kPa / 98.1 kPa/m = 7 m"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Head = Pressure / 9.81 kPa/m",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81. The head is 686.7 / 9.81 = 70 m."
+  },
+  {
+   "id": "c1wd-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 15 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 15 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 98.1 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 15 m * 98.1 kPa/m = 1471.5 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = Head * 9.81 kPa/m",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 15 * 9.81 = 147.15 kPa."
+  },
+  {
+   "id": "c1wd-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 981 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure reading: pressure = 981 kPa, pressure increases 9.81 kPa per metre of head. Target unit: m.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = Pressure / 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 981 kPa / 9.81 kPa/m = 200 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head = 981 kPa / 9.81 kPa/m = 100 m",
+   "explanation": "Line 2 arithmetic is wrong. 981 / 9.81 = 100 m."
+  },
+  {
+   "id": "c1wd-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 50 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional standpipe: head = 50 m, pressure increases 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = Head * 98.1 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 50 m * 98.1 kPa/m = 4905 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = Head * 9.81 kPa/m",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 50 * 9.81 = 490.5 kPa."
+  },
+  {
+   "id": "c1wd-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation to fill 180 m3 at 1.5 m3/min.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: volume = 180 m3, pump rate = 1.5 m3/min, 60 min = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Run time = 180 m3 / 1.5 m3/min = 120 min"
+    },
+    {
+     "id": "line2",
+     "label": "2. Run time = 120 min * 60 min/h = 7200 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Run time = 120 min / 60 min/h = 2 h",
+   "explanation": "Line 2 multiplied by 60 instead of dividing by 60 min/h. The run time is 2 h."
+  },
+  {
+   "id": "c1wd-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation to move 180 m3 at 50 L/s.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: volume = 180 m3, pump rate = 50 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 180 m3 * 1000 L/m3 = 180000 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Run time = 180000 L / 50 L/s = 3600 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Run time = 180000 L / 50 L/s = 3600 s, and 3600 s / 3600 s/h = 1 h",
+   "explanation": "Line 2 reported seconds as hours and skipped the conversion. The run time is 3600 s, which is 1 h."
+  },
+  {
+   "id": "c1wd-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this reservoir drawdown calculation for a 10 m by 6 m reservoir dropping 0.5 m with inflow 20 L/s and no outflow.",
+   "topicId": "reservoir-drawdown",
+   "level": "class1",
+   "assumptions": "Fictional reservoir: length = 10 m, width = 6 m, level drop = 0.5 m, inflow = 20 L/s refilling the drawn volume, 1000 L = 1 m3, 60 s = 1 min. Target: refill time in minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Plan area = 10 m * 6 m = 60 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawn volume = 60 m2 * 1 m = 60 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Refill time = 60 m3 / 1.2 m3/min = 50 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Drawn volume = 60 m2 * 0.5 m = 30 m3",
+   "explanation": "Line 2 used a level change of 1 m instead of the stated 0.5 m. The drawn volume is 30 m3 and the refill time is 25 min."
+  },
+  {
+   "id": "c1wd-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation to fill 90 m3 at 0.5 m3/min.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: volume = 90 m3, pump rate = 0.5 m3/min, 60 min = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Run time = Volume / Pump rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Run time = 90 m3 / 0.5 m3/min = 360 min"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Run time = 90 m3 / 0.5 m3/min = 180 min",
+   "explanation": "Line 2 arithmetic is wrong. 90 / 0.5 = 180 min."
+  },
+  {
+   "id": "c1wd-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this reservoir drawdown calculation for a 10 m by 8 m reservoir dropping 0.6 m with inflow 20 L/s and no outflow.",
+   "topicId": "reservoir-drawdown",
+   "level": "class1",
+   "assumptions": "Fictional reservoir: length = 10 m, width = 8 m, level drop = 0.6 m, inflow = 20 L/s refilling the drawn volume, 1000 L = 1 m3, 60 s = 1 min. Target: refill time in minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Plan area = 10 m * 8 m = 80 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawn volume = 80 m2 * 0.6 m = 48 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow = 20 L/s * 60 s/min / 1000 L/m3 = 1.2 m3/min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Refill time = 48 m3 / 1.2 m3/min = 80 min"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Refill time = 48 m3 / 1.2 m3/min = 40 min",
+   "explanation": "Line 4 arithmetic is wrong. 48 / 1.2 = 40 min."
+  },
+  {
+   "id": "c1wd-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation to move 270 m3 at 25 L/s.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: volume = 270 m3, pump rate = 25 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 270 m3 * 1000 L/m3 = 270000 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Run time = 270000 L / 25 L/s = 10800 s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Run time = 10800 s / 360 s/h = 30 h"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Run time = 10800 s / 3600 s/h = 3 h",
+   "explanation": "Line 3 used 360 seconds per hour instead of 3600. The run time is 3 h."
+  },
+  {
+   "id": "c1wd-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this reservoir drawdown calculation for a 12 m by 4 m reservoir dropping 0.5 m with inflow 12 L/s and no outflow.",
+   "topicId": "reservoir-drawdown",
+   "level": "class1",
+   "assumptions": "Fictional reservoir: length = 12 m, width = 4 m, level drop = 0.5 m, inflow = 12 L/s refilling the drawn volume, 1000 L = 1 m3, 60 s = 1 min. Target: refill time in minutes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Plan area = 12 m * 4 m = 48 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Drawn volume = 48 m2 * 0.5 m = 48 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Drawn volume = 48 m2 * 0.5 m = 24 m3",
+   "explanation": "Line 2 arithmetic is wrong. 48 * 0.5 = 24 m3."
+  },
+  {
+   "id": "c1wd-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump run time calculation to move 90 m3 at 25 L/s.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: volume = 90 m3, pump rate = 25 L/s, 1000 L = 1 m3, 3600 s = 1 h. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume = 90 m3 * 1000 L/m3 = 90000 L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Run time = 90000 L / 25 L/s = 3600 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Run time = 90000 L / 25 L/s = 3600 s, and 3600 s / 3600 s/h = 1 h",
+   "explanation": "Line 2 reported seconds as hours and skipped the conversion. The run time is 3600 s, which is 1 h."
+  },
+  {
+   "id": "c1wd-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a 0.2 m diameter main, 300 m long, using three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional flushing program: diameter = 0.2 m, length = 300 m, area factor 0.785, flush volume = 3 pipe volumes. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.2 m * 0.2 m = 0.0314 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.0314 m2 * 300 m = 9.42 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flush volume = 9.42 m3 * 2 = 18.84 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flush volume = 9.42 m3 * 3 = 28.26 m3",
+   "explanation": "Line 3 used two pipe volumes instead of the required three. The flush volume is 28.26 m3."
+  },
+  {
+   "id": "c1wd-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a 0.4 m diameter main, 150 m long, using three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional flushing program: diameter = 0.4 m, length = 150 m, area factor 0.785, flush volume = 3 pipe volumes. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.4 m * 0.4 m = 0.1256 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.1256 m2 * 150 m = 18.84 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flush volume = 18.84 m3 (one pipe volume)"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flush volume = 18.84 m3 * 3 = 56.52 m3",
+   "explanation": "Line 3 reported one pipe volume instead of three. The flush volume is 56.52 m3."
+  },
+  {
+   "id": "c1wd-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a 0.6 m diameter main, 200 m long, using three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional flushing program: diameter = 0.6 m, length = 200 m, area factor 0.785, flush volume = 3 pipe volumes. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.6 m * 0.6 m = 0.2826 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.2826 m2 * 200 m = 56.52 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flush volume = 56.52 m3 * 2 = 113.04 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flush volume = 56.52 m3 * 3 = 169.56 m3",
+   "explanation": "Line 3 used two pipe volumes instead of the required three. The flush volume is 169.56 m3."
+  },
+  {
+   "id": "c1wd-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a 0.2 m diameter main, 1000 m long, using three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional flushing program: diameter = 0.2 m, length = 1000 m, area factor 0.785, flush volume = 3 pipe volumes. Target unit: m3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.2 m * 0.2 m = 0.0314 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.0314 m2 * 1000 m = 31.4 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flush volume = 31.4 m3 (one pipe volume)"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flush volume = 31.4 m3 * 3 = 94.2 m3",
+   "explanation": "Line 3 reported one pipe volume instead of three. The flush volume is 94.2 m3."
+  },
+  {
+   "id": "c1wd-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this average day demand calculation for annual use of 3650 ML.",
+   "topicId": "average-day-demand",
+   "level": "class1",
+   "assumptions": "Fictional system: annual water use = 3650 ML, 365 days = 1 year, 1 ML = 1000 m3. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Average day demand = 3650 ML / 365 days = 10 ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average day demand = 10 ML/day / 1000 m3/ML = 0.01 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Average day demand = 10 ML/day * 1000 m3/ML = 10000 m3/day",
+   "explanation": "Line 2 divided by 1000 instead of multiplying by 1000 m3/ML. The average day demand is 10000 m3/day."
+  },
+  {
+   "id": "c1wd-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for average day demand 1200 m3/day and a peaking factor of 1.5.",
+   "topicId": "peak-day-demand",
+   "level": "class1",
+   "assumptions": "Fictional system: average day demand = 1200 m3/day, peak day peaking factor = 1.5. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand / Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Peak day demand = 1200 m3/day / 1.5 = 800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Peak day demand = Average day demand * Peaking factor",
+   "explanation": "Line 1 divided instead of multiplying by the peaking factor. The peak day demand is 1200 * 1.5 = 1800 m3/day."
+  },
+  {
+   "id": "c1wd-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this per capita demand calculation for total use of 900000 L/day serving 3000 people.",
+   "topicId": "per-capita-demand",
+   "level": "class1",
+   "assumptions": "Fictional system: total demand = 900000 L/day, population served = 3000. Target unit: L per person per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Per capita demand = Total demand / Population"
+    },
+    {
+     "id": "line2",
+     "label": "2. Per capita demand = 900000 L/day / 3000 people = 3000 L/person/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Per capita demand = 900000 L/day / 3000 people = 300 L/person/day",
+   "explanation": "Line 2 arithmetic is wrong. 900000 / 3000 = 300 L per person per day."
+  },
+  {
+   "id": "c1wd-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this peak day demand calculation for average day demand 800 m3/day and a peaking factor of 2.5.",
+   "topicId": "peak-day-demand",
+   "level": "class1",
+   "assumptions": "Fictional system: average day demand = 800 m3/day, peak day peaking factor = 2.5. Target unit: m3/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak day demand = Average day demand / Peaking factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Peak day demand = 800 m3/day / 2.5 = 320 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Peak day demand = Average day demand * Peaking factor",
+   "explanation": "Line 1 divided instead of multiplying by the peaking factor. The peak day demand is 800 * 2.5 = 2000 m3/day."
+  },
+  {
+   "id": "c1wd-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this per capita demand calculation for total use of 1250000 L/day serving 5000 people.",
+   "topicId": "per-capita-demand",
+   "level": "class1",
+   "assumptions": "Fictional system: total demand = 1250000 L/day, population served = 5000. Target unit: L per person per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Per capita demand = Total demand / Population"
+    },
+    {
+     "id": "line2",
+     "label": "2. Per capita demand = 1250000 L/day / 5000 people = 2500 L/person/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Per capita demand = 1250000 L/day / 5000 people = 250 L/person/day",
+   "explanation": "Line 2 arithmetic is wrong. 1250000 / 5000 = 250 L per person per day."
+  },
+  {
+   "id": "c1wd-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this meter accuracy calculation where the meter registered 160 m3 and the test volume was 200 m3.",
+   "topicId": "meter-accuracy",
+   "level": "class1",
+   "assumptions": "Fictional meter test: registered volume = 160 m3, actual test volume = 200 m3. Target: percent error.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accuracy = 160 m3 / 200 m3 * 100 = 80 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Error = (200 m3 - 160 m3) / 160 m3 * 100 = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Error = (200 m3 - 160 m3) / 200 m3 * 100 = 20 percent",
+   "explanation": "Line 2 divided by the registered volume instead of the actual test volume. The error is 20 percent and the meter accuracy is 80 percent."
+  },
+  {
+   "id": "c1wd-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this meter accuracy calculation where the meter registered 80 m3 and the test volume was 100 m3.",
+   "topicId": "meter-accuracy",
+   "level": "class1",
+   "assumptions": "Fictional meter test: registered volume = 80 m3, actual test volume = 100 m3. Target: percent error.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Accuracy = 80 m3 / 100 m3 * 100 = 80 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Error = (100 m3 - 80 m3) / 80 m3 * 100 = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Error = (100 m3 - 80 m3) / 100 m3 * 100 = 20 percent",
+   "explanation": "Line 2 divided by the registered volume instead of the actual test volume. The error is 20 percent and the meter accuracy is 80 percent."
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The valve is on a live main and must be left in its recorded normal position.",
+   "cards": [
+    {
+     "id": "s-locate",
+     "label": "Locate the valve using the system map and work order, and record its as-found position"
+    },
+    {
+     "id": "s-clear",
+     "label": "Open the valve box and clear out debris and water"
+    },
+    {
+     "id": "s-inspect",
+     "label": "Inspect the valve stem, nut and box for damage or corrosion"
+    },
+    {
+     "id": "s-operate",
+     "label": "Operate the valve slowly through its full travel, counting the turns"
+    },
+    {
+     "id": "s-restore",
+     "label": "Return the valve to its recorded normal position"
+    },
+    {
+     "id": "s-record",
+     "label": "Record turns, direction, condition and any deficiency in the valve log"
+    }
+   ],
+   "configuration": "Scope: one in-service gate valve, from arrival at the valve box to the completed record.",
+   "correctOrder": [
+    "s-locate",
+    "s-clear",
+    "s-inspect",
+    "s-operate",
+    "s-restore",
+    "s-record"
+   ],
+   "explanation": "Exercising starts from the map and as-found position so the valve can be restored exactly. The box is cleared and inspected before operation, the valve is cycled slowly while counting turns, returned to its normal position, and the visit is documented.",
+   "id": "c1wd-process01",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for exercising a gate valve during a routine valve exercising visit.",
+   "revision": "r1",
+   "topicId": "valve-exercising"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The repair crew confirms the repair and flushing are finished.",
+   "cards": [
+    {
+     "id": "s-confirm",
+     "label": "Confirm the repair is complete and the section has been flushed"
+    },
+    {
+     "id": "s-check",
+     "label": "Check the position of the downstream valves that feed the section"
+    },
+    {
+     "id": "s-crack",
+     "label": "Open the valve one turn and pause so the section fills slowly"
+    },
+    {
+     "id": "s-open",
+     "label": "Continue opening slowly, counting turns, while watching for leaks at the repair"
+    },
+    {
+     "id": "s-full",
+     "label": "Open the valve fully, then back it off a quarter turn"
+    },
+    {
+     "id": "s-verify",
+     "label": "Verify restored pressure and check the valve gland for leaks"
+    }
+   ],
+   "configuration": "Scope: one closed gate valve feeding the repaired section, from confirmation to full restoration.",
+   "correctOrder": [
+    "s-confirm",
+    "s-check",
+    "s-crack",
+    "s-open",
+    "s-full",
+    "s-verify"
+   ],
+   "explanation": "The valve is only opened once the repair and flushing are confirmed. Filling slowly first limits surge and air problems, the valve is then opened fully and backed off slightly so it does not seize open, and pressure and gland condition are verified last.",
+   "id": "c1wd-process02",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for opening a gate valve to restore flow after a main repair is complete.",
+   "revision": "r1",
+   "topicId": "valve-operation-restoration"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The repair is planned and affected customers can be notified in advance.",
+   "cards": [
+    {
+     "id": "s-identify",
+     "label": "Identify the isolation valves from the system map"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify dispatch and the affected customers of the planned shutoff"
+    },
+    {
+     "id": "s-upstream",
+     "label": "Close the nearest upstream valve slowly"
+    },
+    {
+     "id": "s-downstream",
+     "label": "Close the nearest downstream valve slowly"
+    },
+    {
+     "id": "s-confirm",
+     "label": "Confirm isolation by checking that pressure in the section has dropped"
+    },
+    {
+     "id": "s-tag",
+     "label": "Tag the closed valves and record the closure times"
+    }
+   ],
+   "configuration": "Scope: isolation of one main section using the nearest valves on each side.",
+   "correctOrder": [
+    "s-identify",
+    "s-notify",
+    "s-upstream",
+    "s-downstream",
+    "s-confirm",
+    "s-tag"
+   ],
+   "explanation": "The correct valves come from the map first, customers are warned before water is shut off, the section is closed in slowly to limit water hammer, isolation is proven by the pressure drop, and tagged valves plus recorded times protect the crew and the record.",
+   "id": "c1wd-process03",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for closing valves to isolate a section of main for a planned repair.",
+   "revision": "r1",
+   "topicId": "valve-isolation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The butterfly valve has a geared operator with a position indicator.",
+   "cards": [
+    {
+     "id": "s-indicator",
+     "label": "Check the position indicator and note the starting position"
+    },
+    {
+     "id": "s-inspect",
+     "label": "Inspect the handwheel, gearbox and stem for damage"
+    },
+    {
+     "id": "s-turn",
+     "label": "Turn the handwheel slowly in the closing direction, watching the indicator move"
+    },
+    {
+     "id": "s-stop",
+     "label": "Stop turning when the indicator shows fully closed"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the final position and the number of handwheel turns"
+    }
+   ],
+   "configuration": "Scope: one butterfly valve in a chamber, from inspection to recorded closure.",
+   "correctOrder": [
+    "s-indicator",
+    "s-inspect",
+    "s-turn",
+    "s-stop",
+    "s-record"
+   ],
+   "explanation": "The starting position is noted before anything moves, the operator is inspected, the geared handwheel is turned slowly while the indicator is watched, turning stops at the fully closed indication to avoid over-torquing the disc, and the result is recorded.",
+   "id": "c1wd-process04",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for operating a gearbox butterfly valve to the fully closed position.",
+   "revision": "r1",
+   "topicId": "valve-butterfly-operation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Traffic control is in place and locates are complete.",
+   "cards": [
+    {
+     "id": "s-locate",
+     "label": "Locate and mark the valve position from the system map and a metal detector"
+    },
+    {
+     "id": "s-excavate",
+     "label": "Excavate around the box down to the damaged top section"
+    },
+    {
+     "id": "s-remove",
+     "label": "Remove the damaged top section of the box"
+    },
+    {
+     "id": "s-set",
+     "label": "Set the new top section to finished road grade"
+    },
+    {
+     "id": "s-backfill",
+     "label": "Backfill and compact around the box"
+    },
+    {
+     "id": "s-test",
+     "label": "Insert the valve key and operate the valve to confirm access"
+    }
+   ],
+   "configuration": "Scope: one buried valve box, from locating the valve to confirming access works.",
+   "correctOrder": [
+    "s-locate",
+    "s-excavate",
+    "s-remove",
+    "s-set",
+    "s-backfill",
+    "s-test"
+   ],
+   "explanation": "The valve must be found before digging, the box is exposed before the damaged section can come off, the new section is set to grade before backfilling, and the job is only complete once a key proves the valve can actually be operated.",
+   "id": "c1wd-process05",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for replacing a damaged valve box top section after road paving buried it.",
+   "revision": "r1",
+   "topicId": "valve-box-maintenance"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The boundary valve is normally closed and must be left closed.",
+   "cards": [
+    {
+     "id": "s-found",
+     "label": "Record the as-found position as closed before touching the valve"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the valve slowly through its full travel, counting turns"
+    },
+    {
+     "id": "s-close",
+     "label": "Close the valve slowly through its full travel, counting turns"
+    },
+    {
+     "id": "s-leave",
+     "label": "Leave the valve fully closed, matching its as-found position"
+    },
+    {
+     "id": "s-log",
+     "label": "Log the turn counts and report any difference between opening and closing counts"
+    }
+   ],
+   "configuration": "Scope: one normally closed zone boundary valve during a scheduled exercising round.",
+   "correctOrder": [
+    "s-found",
+    "s-open",
+    "s-close",
+    "s-leave",
+    "s-log"
+   ],
+   "explanation": "A boundary valve is exercised by cycling it fully open and fully closed, comparing turn counts to catch a broken stem, and it must be left in its normal closed position so the pressure zones stay separated.",
+   "id": "c1wd-process06",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for exercising a normally closed boundary valve between two pressure zones.",
+   "revision": "r1",
+   "topicId": "valve-boundary-exercising"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The air valve sits in a chamber on an isolating service valve.",
+   "cards": [
+    {
+     "id": "s-chamber",
+     "label": "Open the chamber and check for standing water or damage"
+    },
+    {
+     "id": "s-isolate",
+     "label": "Close the isolating valve below the air valve"
+    },
+    {
+     "id": "s-cover",
+     "label": "Remove the air valve cover and inspect the float and seat, clearing any debris"
+    },
+    {
+     "id": "s-reassemble",
+     "label": "Reassemble the air valve and replace the cover"
+    },
+    {
+     "id": "s-restore",
+     "label": "Open the isolating valve slowly and check for leaks and proper air release"
+    }
+   ],
+   "configuration": "Scope: one air release valve, from chamber entry checks to return to service.",
+   "correctOrder": [
+    "s-chamber",
+    "s-isolate",
+    "s-cover",
+    "s-reassemble",
+    "s-restore"
+   ],
+   "explanation": "The chamber is checked first, the isolating valve makes the air valve safe to open, the float and seat are inspected and cleaned, the valve is reassembled, and only then is the isolating valve reopened slowly and the valve checked for leaks and air release.",
+   "id": "c1wd-process07",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for inspecting an automatic air release valve at a high point in the system.",
+   "revision": "r1",
+   "topicId": "valve-air-release-inspection"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A closed gate valve is passing water into an isolated section.",
+   "cards": [
+    {
+     "id": "s-close",
+     "label": "Operate the valve to the fully closed position and confirm the turn count"
+    },
+    {
+     "id": "s-pressure",
+     "label": "Check downstream pressure to confirm water is still passing"
+    },
+    {
+     "id": "s-cycle",
+     "label": "Cycle the valve open and closed several times to flush debris off the seat"
+    },
+    {
+     "id": "s-recheck",
+     "label": "Close the valve again and recheck the downstream pressure"
+    },
+    {
+     "id": "s-schedule",
+     "label": "If it still passes, record the deficiency and schedule the valve for repair or replacement"
+    }
+   ],
+   "configuration": "Scope: one passing gate valve, from first check to the recorded outcome.",
+   "correctOrder": [
+    "s-close",
+    "s-pressure",
+    "s-cycle",
+    "s-recheck",
+    "s-schedule"
+   ],
+   "explanation": "Debris on the seat is the common cause of a passing valve, so the valve is proven closed, the leak past it is confirmed, cycling flushes the seat, the check is repeated, and only a valve that still passes is written up for repair.",
+   "id": "c1wd-process08",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting steps when a gate valve will not fully stop flow to a work area.",
+   "revision": "r1",
+   "topicId": "valve-troubleshooting"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The hydrant is in service and the inspection is visual and operational.",
+   "cards": [
+    {
+     "id": "s-exterior",
+     "label": "Check access, paint condition and the breakaway flange from outside"
+    },
+    {
+     "id": "s-caps",
+     "label": "Remove the caps and inspect threads, gaskets and chains"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the hydrant fully and confirm it operates and flows"
+    },
+    {
+     "id": "s-drain",
+     "label": "Close the hydrant and confirm the barrel drains down"
+    },
+    {
+     "id": "s-capsback",
+     "label": "Replace the caps hand tight and check the operating nut"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the hydrant condition and any deficiencies in the hydrant log"
+    }
+   ],
+   "configuration": "Scope: one hydrant, from exterior check to the completed inspection record.",
+   "correctOrder": [
+    "s-exterior",
+    "s-caps",
+    "s-open",
+    "s-drain",
+    "s-capsback",
+    "s-record"
+   ],
+   "explanation": "Inspection works from the outside in: access and condition first, caps and threads next, then operation, then drainage after closing, which matters for freeze protection, and finally caps replaced and findings logged.",
+   "id": "c1wd-process09",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a routine annual fire hydrant inspection.",
+   "revision": "r1",
+   "topicId": "hydrant-inspection"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The dead end hydrant is flushed to refresh water quality.",
+   "cards": [
+    {
+     "id": "s-setup",
+     "label": "Set up traffic control and fit a diffuser to direct the discharge"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the hydrant slowly until it is fully open"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush until the discharged water runs clear"
+    },
+    {
+     "id": "s-residual",
+     "label": "Measure and record the free chlorine residual at the hydrant"
+    },
+    {
+     "id": "s-close",
+     "label": "Close the hydrant slowly to avoid water hammer"
+    },
+    {
+     "id": "s-record",
+     "label": "Record flush duration, residual and hydrant condition"
+    }
+   ],
+   "configuration": "Scope: one dead end hydrant flush, from site setup to the recorded result.",
+   "correctOrder": [
+    "s-setup",
+    "s-open",
+    "s-flush",
+    "s-residual",
+    "s-close",
+    "s-record"
+   ],
+   "explanation": "Traffic control and a diffuser protect the site before water flows. The hydrant is opened slowly, flushed until clear, sampled for residual while flowing, and closed slowly because a fast closure can cause water hammer.",
+   "id": "c1wd-process10",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for flushing a hydrant on a dead end main.",
+   "revision": "r1",
+   "topicId": "hydrant-flushing"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The month included routine samples, one adverse result and regular flushing.",
+   "cards": [
+    {
+     "id": "s-compile",
+     "label": "Compile the months sample results from the laboratory reports"
+    },
+    {
+     "id": "s-adverse",
+     "label": "Summarize every adverse result and the corrective actions taken"
+    },
+    {
+     "id": "s-maintenance",
+     "label": "Compile the flushing, valve exercising and hydrant maintenance completed"
+    },
+    {
+     "id": "s-review",
+     "label": "Have the summary reviewed by the overall responsible operator"
+    },
+    {
+     "id": "s-file",
+     "label": "File the monthly summary and keep it available as required under Ontario Regulation 170/03"
+    }
+   ],
+   "configuration": "Scope: preparing the monthly distribution summary for one system.",
+   "correctOrder": [
+    "s-compile",
+    "s-adverse",
+    "s-maintenance",
+    "s-review",
+    "s-file"
+   ],
+   "explanation": "The monthly summary is built from the primary records, not from memory: laboratory results first, then the adverse events and what was done about them, then the maintenance program, and review by the overall responsible operator precedes filing.",
+   "id": "c1wd-process100",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing the monthly distribution operations summary.",
+   "revision": "r1",
+   "topicId": "monthly-reporting"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Two hydrants on the same main are used, one for pressure and one for flow.",
+   "cards": [
+    {
+     "id": "s-static",
+     "label": "Fit a gauge to the residual hydrant and record the static pressure"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the flow hydrant fully and let the flow stabilize"
+    },
+    {
+     "id": "s-pitot",
+     "label": "Measure the pitot pressure at the flowing hydrant"
+    },
+    {
+     "id": "s-residual",
+     "label": "Read the residual pressure at the residual hydrant while the water is flowing"
+    },
+    {
+     "id": "s-close",
+     "label": "Close the flow hydrant slowly"
+    },
+    {
+     "id": "s-calc",
+     "label": "Use the recorded static, pitot and residual pressures to calculate the available flow"
+    }
+   ],
+   "configuration": "Scope: one flow test, from static pressure to the calculated result.",
+   "correctOrder": [
+    "s-static",
+    "s-open",
+    "s-pitot",
+    "s-residual",
+    "s-close",
+    "s-calc"
+   ],
+   "explanation": "Static pressure is the no flow reference, so it is recorded first. The flow hydrant is opened and allowed to stabilize, the pitot pressure is taken at the flowing hydrant, the residual pressure is read at the same time at the test hydrant, the hydrant is closed slowly, and the three pressures are then used to calculate available flow.",
+   "id": "c1wd-process11",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a hydrant flow test using a residual hydrant and a flow hydrant.",
+   "revision": "r1",
+   "topicId": "hydrant-flow-test"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The hydrant was used the previous day and overnight temperatures are below freezing.",
+   "cards": [
+    {
+     "id": "s-cap",
+     "label": "Remove one hydrant cap"
+    },
+    {
+     "id": "s-measure",
+     "label": "Lower a weighted line into the barrel to measure any standing water"
+    },
+    {
+     "id": "s-pump",
+     "label": "Pump out standing water if the drain is plugged"
+    },
+    {
+     "id": "s-report",
+     "label": "Report the plugged drain and flag the hydrant for repair"
+    }
+   ],
+   "configuration": "Scope: one dry barrel hydrant, from opening a cap to the reported result.",
+   "correctOrder": [
+    "s-cap",
+    "s-measure",
+    "s-pump",
+    "s-report"
+   ],
+   "explanation": "Standing water can only be confirmed by measuring inside the barrel. Water found above the drain means the drain is plugged, the barrel is pumped out to prevent freeze damage, and the defect is reported for repair.",
+   "id": "c1wd-process12",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for checking that a hydrant barrel has drained after firefighting use in cold weather.",
+   "revision": "r1",
+   "topicId": "hydrant-drainage-check"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The hydrant was struck by a vehicle and cannot be used.",
+   "cards": [
+    {
+     "id": "s-isolate",
+     "label": "Close the hydrant isolation valve to take the hydrant off the main"
+    },
+    {
+     "id": "s-tag",
+     "label": "Place the out of service cover or tag on the hydrant"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify dispatch and the fire department that the hydrant is out of service"
+    },
+    {
+     "id": "s-log",
+     "label": "Log the hydrant number, date and reason, and raise a repair work order"
+    }
+   ],
+   "configuration": "Scope: one damaged hydrant, from isolation to notification.",
+   "correctOrder": [
+    "s-isolate",
+    "s-tag",
+    "s-notify",
+    "s-log"
+   ],
+   "explanation": "Isolating the hydrant makes it safe, the cover warns users at the site, the fire department must know before they plan around the hydrant, and the log entry plus work order start the repair.",
+   "id": "c1wd-process13",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking a damaged hydrant out of service.",
+   "revision": "r1",
+   "topicId": "hydrant-out-of-service"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Installation, pressure testing and disinfection are complete and accepted.",
+   "cards": [
+    {
+     "id": "s-inspect",
+     "label": "Inspect the installation, including the breakaway flange and cap chains"
+    },
+    {
+     "id": "s-flush",
+     "label": "Open the hydrant and flush until the water runs clear"
+    },
+    {
+     "id": "s-drain",
+     "label": "Close the hydrant and confirm the barrel drains"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the hydrant data, including make, size and location"
+    },
+    {
+     "id": "s-notify",
+     "label": "Notify the fire department that the hydrant is in service"
+    }
+   ],
+   "configuration": "Scope: one new hydrant, from final inspection to in-service notification.",
+   "correctOrder": [
+    "s-inspect",
+    "s-flush",
+    "s-drain",
+    "s-record",
+    "s-notify"
+   ],
+   "explanation": "The hydrant is inspected before it is flowed, flushed clear, proven to drain so it will not freeze, entered into the records, and only then reported to the fire department as available.",
+   "id": "c1wd-process14",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for placing a newly installed hydrant into service.",
+   "revision": "r1",
+   "topicId": "hydrant-commissioning"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Bulk filling is only allowed with a permit, a meter and backflow protection.",
+   "cards": [
+    {
+     "id": "s-permit",
+     "label": "Verify the contractor hydrant use permit"
+    },
+    {
+     "id": "s-backflow",
+     "label": "Connect the approved backflow preventer to the hydrant outlet"
+    },
+    {
+     "id": "s-meter",
+     "label": "Connect the hydrant meter and record the starting reading"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the hydrant slowly and fill the tanker"
+    },
+    {
+     "id": "s-final",
+     "label": "Close the hydrant and record the final meter reading for billing"
+    }
+   ],
+   "configuration": "Scope: one permitted tanker fill at a designated hydrant.",
+   "correctOrder": [
+    "s-permit",
+    "s-backflow",
+    "s-meter",
+    "s-open",
+    "s-final"
+   ],
+   "explanation": "The permit authorizes the use, the backflow preventer protects the main before any connection flows, the meter must be read before filling starts so the volume can be billed, and the final reading closes the record.",
+   "id": "c1wd-process15",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps when a contractor fills a water tanker from a hydrant under a hydrant use permit.",
+   "revision": "r1",
+   "topicId": "hydrant-use-permit"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Locates and traffic control are complete and a replacement hydrant is on site.",
+   "cards": [
+    {
+     "id": "s-notify",
+     "label": "Notify dispatch and the fire department of the planned removal"
+    },
+    {
+     "id": "s-isolate",
+     "label": "Close the hydrant isolation valve"
+    },
+    {
+     "id": "s-remove",
+     "label": "Drain the barrel and unbolt the hydrant at the breakaway flange"
+    },
+    {
+     "id": "s-install",
+     "label": "Set and bolt the replacement hydrant"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the isolation valve slowly, then flush the hydrant and check for leaks"
+    },
+    {
+     "id": "s-return",
+     "label": "Record the new hydrant data and notify the fire department it is back in service"
+    }
+   ],
+   "configuration": "Scope: one hydrant replacement, from notification to return to service.",
+   "correctOrder": [
+    "s-notify",
+    "s-isolate",
+    "s-remove",
+    "s-install",
+    "s-open",
+    "s-return"
+   ],
+   "explanation": "Users are warned before the hydrant leaves service, the isolation valve makes removal safe, the breakaway flange is the designed separation point, and the new hydrant is flushed and leak checked before records and notifications close the job.",
+   "id": "c1wd-process16",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for replacing a damaged hydrant with a new one.",
+   "revision": "r1",
+   "topicId": "hydrant-replacement"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The program cleans mains systematically rather than flushing random hydrants.",
+   "cards": [
+    {
+     "id": "s-review",
+     "label": "Review the system map, complaint records and residual results"
+    },
+    {
+     "id": "s-zones",
+     "label": "Divide the system into flushing zones that start at the clean water source and move outward"
+    },
+    {
+     "id": "s-sequence",
+     "label": "Sequence the valves and hydrants to be used in each zone"
+    },
+    {
+     "id": "s-schedule",
+     "label": "Estimate the flows needed and schedule crews and dates for each zone"
+    },
+    {
+     "id": "s-notices",
+     "label": "Issue customer notices for the zones in the order they will be flushed"
+    }
+   ],
+   "configuration": "Scope: program planning, from reviewing records to issuing customer notices.",
+   "correctOrder": [
+    "s-review",
+    "s-zones",
+    "s-sequence",
+    "s-schedule",
+    "s-notices"
+   ],
+   "explanation": "Planning starts from records so problem areas shape the zones. Unidirectional flushing always works from the clean source outward so loosened deposits are pushed ahead of clean water, never back into cleaned mains.",
+   "id": "c1wd-process17",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the planning steps for a unidirectional flushing program for the whole system.",
+   "revision": "r1",
+   "topicId": "udf-program-planning"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The zone plan, valve list and customer notices are already issued.",
+   "cards": [
+    {
+     "id": "s-traffic",
+     "label": "Set up traffic control at the flushing hydrant"
+    },
+    {
+     "id": "s-valves",
+     "label": "Close the zone valves so water can enter the zone from only the planned inlet"
+    },
+    {
+     "id": "s-open",
+     "label": "Open the flushing hydrant fully to reach the target flushing velocity"
+    },
+    {
+     "id": "s-flush",
+     "label": "Flush until the water runs clear and the chlorine residual meets the target"
+    },
+    {
+     "id": "s-restore",
+     "label": "Close the hydrant and return all zone valves to their normal positions"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the flushing volume, residual and valve positions"
+    }
+   ],
+   "configuration": "Scope: one flushing zone, from valve setup to restoration.",
+   "correctOrder": [
+    "s-traffic",
+    "s-valves",
+    "s-open",
+    "s-flush",
+    "s-restore",
+    "s-record"
+   ],
+   "explanation": "The zone is isolated to one inlet before the hydrant opens, which is what makes the flow unidirectional and able to reach scouring velocity. Flushing continues until clarity and residual targets are met, then valves are restored and documented.",
+   "id": "c1wd-process18",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for carrying out unidirectional flushing in one zone.",
+   "revision": "r1",
+   "topicId": "udf-zone-execution"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Three hydrants sit along the zone main, from the inlet toward the far end.",
+   "cards": [
+    {
+     "id": "s-confirm",
+     "label": "Confirm the zone valves are set as planned"
+    },
+    {
+     "id": "s-first",
+     "label": "Open the hydrant nearest the zone inlet and flush until clear, then close it"
+    },
+    {
+     "id": "s-next",
+     "label": "Open the next hydrant downstream and flush until clear, then close it"
+    },
+    {
+     "id": "s-last",
+     "label": "Open the hydrant at the far end of the zone and flush until clear, then close it"
+    },
+    {
+     "id": "s-restore",
+     "label": "Restore all zone valves to their normal positions and record the results"
+    }
+   ],
+   "configuration": "Scope: the order in which the three hydrants are flushed within the zone.",
+   "correctOrder": [
+    "s-confirm",
+    "s-first",
+    "s-next",
+    "s-last",
+    "s-restore"
+   ],
+   "explanation": "Flushing moves from the inlet downstream so each section is cleaned with water that has only passed through already cleaned pipe. Working in the reverse order would drag deposits back into finished sections.",
+   "id": "c1wd-process19",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the hydrant sequence when flushing a series of hydrants along one main in a unidirectional flushing zone.",
+   "revision": "r1",
+   "topicId": "udf-hydrant-sequence"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The zone plan exists and the work is scheduled for today.",
+   "cards": [
+    {
+     "id": "s-plan",
+     "label": "Review the zone plan, valve list and target flows with the crew"
+    },
+    {
+     "id": "s-valves",
+     "label": "Confirm the zone valves were exercised and operate ahead of the flush"
+    },
+    {
+     "id": "s-notices",
+     "label": "Confirm customer notices for todays zone were delivered"
+    },
+    {
+     "id": "s-gear",
+     "label": "Stage hydrant diffusers, pressure gauges and sampling equipment"
+    },
+    {
+     "id": "s-brief",
+     "label": "Brief the crew on the hydrant order and safety setup"
+    }
+   ],
+   "configuration": "Scope: crew preparation before the first hydrant is opened.",
+   "correctOrder": [
+    "s-plan",
+    "s-valves",
+    "s-notices",
+    "s-gear",
+    "s-brief"
+   ],
+   "explanation": "A stuck valve or a missed notice can stop a flushing day, so the plan is reviewed, valves are proven operable in advance, notices are confirmed, equipment is staged, and the crew briefing ties the sequence together before work starts.",
+   "id": "c1wd-process20",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the preparation steps on the morning of a unidirectional flushing day.",
+   "revision": "r1",
+   "topicId": "udf-day-preparation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Flushing is active in the customers zone today.",
+   "cards": [
+    {
+     "id": "s-check",
+     "label": "Check whether the address is inside the zone being flushed today"
+    },
+    {
+     "id": "s-advise1",
+     "label": "Advise the customer to avoid using hot water until flushing in the zone is finished"
+    },
+    {
+     "id": "s-advise2",
+     "label": "Once the zone is complete, advise the customer to run a cold water tap until the water clears"
+    },
+    {
+     "id": "s-visit",
+     "label": "If the water is still dirty after that, visit the property and check the chlorine residual"
+    }
+   ],
+   "configuration": "Scope: one dirty water call received while flushing is under way nearby.",
+   "correctOrder": [
+    "s-check",
+    "s-advise1",
+    "s-advise2",
+    "s-visit"
+   ],
+   "explanation": "Dirty water inside an active flushing zone is expected and temporary. Keeping hot water off protects the water heater from sediment, the cold tap flush clears the service after the main is clean, and a visit is only needed if the problem outlasts the zone work.",
+   "id": "c1wd-process21",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the response when a customer reports dirty water during unidirectional flushing in their zone.",
+   "revision": "r1",
+   "topicId": "udf-customer-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. All zones in the program have been flushed.",
+   "cards": [
+    {
+     "id": "s-volumes",
+     "label": "Total the flushing volumes recorded for each zone"
+    },
+    {
+     "id": "s-residuals",
+     "label": "Compile the chlorine residual results and compare them with pre program results"
+    },
+    {
+     "id": "s-valves",
+     "label": "Verify every program valve is confirmed back in its normal position"
+    },
+    {
+     "id": "s-report",
+     "label": "Report the results, problem areas and water used to the supervisor"
+    },
+    {
+     "id": "s-next",
+     "label": "Schedule the next program cycle and note zones needing earlier attention"
+    }
+   ],
+   "configuration": "Scope: program close out, from field data to the next cycle.",
+   "correctOrder": [
+    "s-volumes",
+    "s-residuals",
+    "s-valves",
+    "s-report",
+    "s-next"
+   ],
+   "explanation": "Close out turns field sheets into program evidence: volumes and residuals show what the program achieved, valve positions are verified so the system is left normal, and the report drives the timing of the next cycle.",
+   "id": "c1wd-process22",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the close out steps at the end of a unidirectional flushing program.",
+   "revision": "r1",
+   "topicId": "udf-program-closeout"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The inspection is done from the ground and the tank stays in service.",
+   "cards": [
+    {
+     "id": "s-records",
+     "label": "Review the last inspection report and the tanks repair history"
+    },
+    {
+     "id": "s-visual",
+     "label": "Visually check the coating, overflow pipe, roof vent and vent screen from the ground"
+    },
+    {
+     "id": "s-light",
+     "label": "Check the aviation light and that the access ladder is secured"
+    },
+    {
+     "id": "s-site",
+     "label": "Check site drainage, fencing and the access gate"
+    },
+    {
+     "id": "s-report",
+     "label": "Record deficiencies and schedule the follow up work"
+    }
+   ],
+   "configuration": "Scope: one elevated tank, from records review to the inspection report.",
+   "correctOrder": [
+    "s-records",
+    "s-visual",
+    "s-light",
+    "s-site",
+    "s-report"
+   ],
+   "explanation": "Past reports tell the inspector what to look for. The tank shell, overflow and screened vent protect water quality, the light and ladder are safety and security items, and the site check plus written deficiencies complete the inspection.",
+   "id": "c1wd-process23",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a routine external inspection of an elevated storage tank.",
+   "revision": "r1",
+   "topicId": "storage-tank-external-inspection"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The tank will be drained and entered under confined space procedures.",
+   "cards": [
+    {
+     "id": "s-isolate",
+     "label": "Take the tank out of service and close and tag its inlet and outlet valves"
+    },
+    {
+     "id": "s-drain",
+     "label": "Drain the tank down through the system or the drain line"
+    },
+    {
+     "id": "s-space",
+     "label": "Set up confined space controls, including ventilation and atmospheric testing"
+    },
+    {
+     "id": "s-enter",
+     "label": "Enter and wash down the interior so surfaces can be inspected"
+    },
+    {
+     "id": "s-inspect",
+     "label": "Inspect the interior coating, roof and structure, and record the condition"
+    }
+   ],
+   "configuration": "Scope: one tank, from taking it out of service to a safe entry.",
+   "correctOrder": [
+    "s-isolate",
+    "s-drain",
+    "s-space",
+    "s-enter",
+    "s-inspect"
+   ],
+   "explanation": "Isolation and draining must come before entry, confined space controls and atmospheric testing make the entry safe, washing exposes the surfaces, and only then can the coating and structure be properly inspected.",
+   "id": "c1wd-process24",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a storage tank for an internal inspection.",
+   "revision": "r1",
+   "topicId": "storage-tank-inspection-prep"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Cleaning and any repairs are complete and accepted.",
+   "cards": [
+    {
+     "id": "s-disinfect",
+     "label": "Disinfect the interior surfaces following the approved procedure"
+    },
+    {
+     "id": "s-fill",
+     "label": "Fill the tank and hold the water for the required contact period"
+    },
+    {
+     "id": "s-sample",
+     "label": "Collect bacteriological samples from the tank"
+    },
+    {
+     "id": "s-results",
+     "label": "Wait for satisfactory sample results before proceeding"
+    },
+    {
+     "id": "s-return",
+     "label": "Open the inlet and outlet valves and return the tank to service"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the cleaning, disinfection and sample results"
+    }
+   ],
+   "configuration": "Scope: one cleaned tank, from disinfection to normal operation.",
+   "correctOrder": [
+    "s-disinfect",
+    "s-fill",
+    "s-sample",
+    "s-results",
+    "s-return",
+    "s-record"
+   ],
+   "explanation": "A cleaned tank is a new surface in contact with drinking water, so it is disinfected, filled, and proven safe by bacteriological results before its valves are opened to the system. Returning it earlier would put untested water into distribution.",
+   "id": "c1wd-process25",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for returning a cleaned storage tank to service.",
+   "revision": "r1",
+   "topicId": "storage-tank-return-to-service"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The tank has a level recorder and the operator reviews it each morning.",
+   "cards": [
+    {
+     "id": "s-read",
+     "label": "Read the current tank level and the last 24 hours of level trend"
+    },
+    {
+     "id": "s-compare",
+     "label": "Compare the level range with the target operating band"
+    },
+    {
+     "id": "s-turnover",
+     "label": "Check that the daily level change shows the stored water is turning over"
+    },
+    {
+     "id": "s-alarm",
+     "label": "Confirm the high and low level alarms are clear and the overflow shows no discharge"
+    },
+    {
+     "id": "s-adjust",
+     "label": "Adjust filling controls if the level sat near the top with little movement, and log the review"
+    }
+   ],
+   "configuration": "Scope: the daily review of one elevated tank.",
+   "correctOrder": [
+    "s-read",
+    "s-compare",
+    "s-turnover",
+    "s-alarm",
+    "s-adjust"
+   ],
+   "explanation": "The trend shows how the tank actually cycled. Comparing it with the operating band and checking the daily swing tells the operator whether water is turning over or aging in storage, and adjustments are logged so the next review starts from the same facts.",
+   "id": "c1wd-process26",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for the daily review of storage tank level and water turnover.",
+   "revision": "r1",
+   "topicId": "storage-turnover-check"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A high level alarm has come in and water may be going to overflow.",
+   "cards": [
+    {
+     "id": "s-alarm",
+     "label": "Acknowledge the high level alarm and check the level trend and filling pump status"
+    },
+    {
+     "id": "s-stop",
+     "label": "Stop or reduce filling so the level stops rising"
+    },
+    {
+     "id": "s-site",
+     "label": "Attend the site and check the overflow pipe for discharge"
+    },
+    {
+     "id": "s-altitude",
+     "label": "Check the altitude valve operation once the overflow is confirmed or ruled out"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the event, the estimated volume lost and the cause found"
+    }
+   ],
+   "configuration": "Scope: one overflow event, from alarm to completed record.",
+   "correctOrder": [
+    "s-alarm",
+    "s-stop",
+    "s-site",
+    "s-altitude",
+    "s-record"
+   ],
+   "explanation": "Stopping the fill comes before diagnosis because every minute of delay loses treated water. The site check proves whether water actually overflowed, the altitude valve is the usual control suspect, and the record captures the loss and cause.",
+   "id": "c1wd-process27",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the response steps when a storage tank high level alarm indicates a possible overflow.",
+   "revision": "r1",
+   "topicId": "storage-overflow-response"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The altitude valve controls filling of an elevated tank.",
+   "cards": [
+    {
+     "id": "s-pressures",
+     "label": "Record the tank level and the inlet pressure with the valve in normal operation"
+    },
+    {
+     "id": "s-cycle",
+     "label": "Lower the tank level by normal demand and watch the valve open to refill"
+    },
+    {
+     "id": "s-close",
+     "label": "Let the tank fill and confirm the valve closes at the set level"
+    },
+    {
+     "id": "s-leak",
+     "label": "Check the valve and pilot lines for leaks while it is closed"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the opening and closing levels and report any drift from the setpoints"
+    }
+   ],
+   "configuration": "Scope: one altitude valve functional check during normal operation.",
+   "correctOrder": [
+    "s-pressures",
+    "s-cycle",
+    "s-close",
+    "s-leak",
+    "s-record"
+   ],
+   "explanation": "The valve is proven by watching it work through a real cycle: it must open to refill as the level falls and close at the set level as the tank fills. Leak checks and recorded levels show whether the setpoints are drifting.",
+   "id": "c1wd-process28",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a functional check of a tank altitude valve.",
+   "revision": "r1",
+   "topicId": "storage-altitude-valve-check"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The reservoir is in service and only external fittings are inspected.",
+   "cards": [
+    {
+     "id": "s-hatch",
+     "label": "Inspect the access hatch for a tight seal, a working lock and no gaps"
+    },
+    {
+     "id": "s-vent",
+     "label": "Check the vent screen for damage, blockage or corrosion"
+    },
+    {
+     "id": "s-overflow",
+     "label": "Check the overflow pipe screen and flap for damage or blockage"
+    },
+    {
+     "id": "s-clear",
+     "label": "Clear debris, nests and vegetation from the hatch, vent and overflow"
+    },
+    {
+     "id": "s-record",
+     "label": "Record the condition of each fitting and any repairs needed"
+    }
+   ],
+   "configuration": "Scope: hatch, vent and overflow fittings on one ground level reservoir.",
+   "correctOrder": [
+    "s-hatch",
+    "s-vent",
+    "s-overflow",
+    "s-clear",
+    "s-record"
+   ],
+   "explanation": "Hatches, vents and overflows are the openings where insects, birds and surface water can enter stored water. Each is inspected in turn, cleared of debris, and the condition of every fitting is recorded.",
+   "id": "c1wd-process29",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for inspecting the hatch, vent and overflow of a ground level reservoir.",
+   "revision": "r1",
+   "topicId": "storage-reservoir-fittings"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The reservoir can be bypassed so supply continues during cleaning.",
+   "cards": [
+    {
+     "id": "s-bypass",
+     "label": "Set up the bypass or alternate supply so customers stay in service"
+    },
+    {
+     "id": "s-isolate",
+     "label": "Isolate and drain the reservoir"
+    },
+    {
+     "id": "s-space",
+     "label": "Establish confined space controls and ventilation before entry"
+    },
+    {
+     "id": "s-clean",
+     "label": "Remove sediment and wash down the walls and floor"
+    },
+    {
+     "id": "s-disinfect",
+     "label": "Disinfect the reservoir, then refill and collect bacteriological samples"
+    },
+    {
+     "id": "s-return",
+     "label": "Return the reservoir to service only after satisfactory sample results"
+    }
+   ],
+   "configuration": "Scope: one ground level reservoir cleaning, from bypass to return.",
+   "correctOrder": [
+    "s-bypass",
+    "s-isolate",
+    "s-space",
+    "s-clean",
+    "s-disinfect",
+    "s-return"
+   ],
+   "explanation": "Supply is protected first with a bypass, then the reservoir is isolated and drained. Entry waits for confined space controls, cleaning and disinfection follow, and the reservoir returns only on satisfactory bacteriological results.",
+   "id": "c1wd-process30",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for cleaning a ground level storage reservoir.",
+   "revision": "r1",
+   "topicId": "storage-reservoir-cleaning"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The standby pump has been out of service for maintenance and is being started by hand.",
+   "cards": [
+    {
+     "id": "s-valves",
+     "label": "Check that the suction valve is open and the discharge valve is in its start position"
+    },
+    {
+     "id": "s-prime",
+     "label": "Confirm the pump casing is primed and vent any trapped air"
+    },
+    {
+     "id": "s-controls",
+     "label": "Check the motor power supply and that the controls are ready"
+    },
+    {
+     "id": "s-start",
+     "label": "Start the pump"
+    },
+    {
+     "id": "s-monitor",
+     "label": "Monitor discharge pressure, flow, vibration and noise as the pump comes up to duty"
+    },
+    {
+     "id": "s-log",
+     "label": "Log the start time and the operating readings"
+    }
+   ],
+   "configuration": "Scope: one booster pump start, from valve checks to logged readings.",
+   "correctOrder": [
+    "s-valves",
+    "s-prime",
+    "s-controls",
+    "s-start",
+    "s-monitor",
+    "s-log"
+   ],
+   "explanation": "A pump started against a closed suction valve or full of air can be damaged in seconds, so valves, prime and power are verified before the start button. Readings are watched as it loads, then logged.",
+   "id": "c1wd-process31",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting a standby booster pump at a distribution pumping station.",
+   "revision": "r1",
+   "topicId": "booster-pump-startup"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Two identical booster pumps share duty and are changed over weekly.",
+   "cards": [
+    {
+     "id": "s-observe",
+     "label": "Record the discharge pressure and flow with the duty pump running"
+    },
+    {
+     "id": "s-start",
+     "label": "Start the standby pump"
+    },
+    {
+     "id": "s-carry",
+     "label": "Confirm the standby pump is carrying flow and pressure is stable"
+    },
+    {
+     "id": "s-stop",
+     "label": "Stop the former duty pump"
+    },
+    {
+     "id": "s-select",
+     "label": "Set the controls so the running pump is now the duty pump and the stopped pump is the standby"
+    },
+    {
+     "id": "s-log",
+     "label": "Log the changeover and both pumps run hours"
+    }
+   ],
+   "configuration": "Scope: one planned duty changeover between two booster pumps.",
+   "correctOrder": [
+    "s-observe",
+    "s-start",
+    "s-carry",
+    "s-stop",
+    "s-select",
+    "s-log"
+   ],
+   "explanation": "The standby pump is started and proven before the duty pump is stopped, so the station never loses pressure during the changeover. The control selector is then updated to match reality and run hours are logged for the rotation record.",
+   "id": "c1wd-process32",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for changing over from the duty booster pump to the standby pump.",
+   "revision": "r1",
+   "topicId": "booster-pump-changeover"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A booster pump has tripped on overload and the cause is not yet known.",
+   "cards": [
+    {
+     "id": "s-alarm",
+     "label": "Read the alarm and trip indication at the panel"
+    },
+    {
+     "id": "s-suction",
+     "label": "Check the suction pressure and the storage level feeding the pump"
+    },
+    {
+     "id": "s-electrical",
+     "label": "Check the breaker and overload relay for the tripped pump"
+    },
+    {
+     "id": "s-cause",
+     "label": "Clear the cause found, such as a low suction condition, before any restart"
+    },
+    {
+     "id": "s-restart",
+     "label": "Reset the overload and restart the pump while watching its readings"
+    },
+    {
+     "id": "s-report",
+     "label": "Log the trip and notify the supervisor if the pump trips again"
+    }
+   ],
+   "configuration": "Scope: one pump trip, from alarm to restart decision.",
+   "correctOrder": [
+    "s-alarm",
+    "s-suction",
+    "s-electrical",
+    "s-cause",
+    "s-restart",
+    "s-report"
+   ],
+   "explanation": "Restarting a tripped pump without finding the cause can destroy it. The alarm tells the operator where to look, suction and electrical checks find the common causes, the cause is cleared first, and a repeat trip is escalated instead of retried.",
+   "id": "c1wd-process33",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a booster pump that has tripped during operation.",
+   "revision": "r1",
+   "topicId": "booster-pump-trip"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The operator is doing the weekly station rounds.",
+   "cards": [
+    {
+     "id": "s-gauges",
+     "label": "Record the suction and discharge pressure gauge readings"
+    },
+    {
+     "id": "s-packing",
+     "label": "Check each pump packing or seal for the correct slight leakage and temperature"
+    },
+    {
+     "id": "s-noise",
+     "label": "Listen for unusual bearing or cavitation noise at each running pump"
+    },
+    {
+     "id": "s-house",
+     "label": "Check the station for leaks, standing water and ventilation operation"
+    },
+    {
+     "id": "s-log",
+     "label": "Enter all readings in the station log and report anything abnormal"
+    }
+   ],
+   "configuration": "Scope: one weekly round at a booster pumping station.",
+   "correctOrder": [
+    "s-gauges",
+    "s-packing",
+    "s-noise",
+    "s-house",
+    "s-log"
+   ],
+   "explanation": "Rounds follow the same order every week so trends are comparable: pressures first, then the pumps themselves, then the building, and everything is logged before the operator leaves.",
+   "id": "c1wd-process34",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the checks for a weekly booster pumping station round.",
+   "revision": "r1",
+   "topicId": "booster-station-rounds"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The pump was drained for a seal repair and is dry.",
+   "cards": [
+    {
+     "id": "s-fill",
+     "label": "Close the casing drain and open the vent on top of the casing"
+    },
+    {
+     "id": "s-water",
+     "label": "Admit suction water slowly until a steady stream flows from the vent"
+    },
+    {
+     "id": "s-vent",
+     "label": "Close the vent once all air is expelled"
+    },
+    {
+     "id": "s-rotate",
+     "label": "Turn the shaft by hand to confirm it rotates freely"
+    },
+    {
+     "id": "s-start",
+     "label": "Start the pump and check for normal discharge pressure"
+    }
+   ],
+   "configuration": "Scope: priming one dry booster pump before it returns to service.",
+   "correctOrder": [
+    "s-fill",
+    "s-water",
+    "s-vent",
+    "s-rotate",
+    "s-start"
+   ],
+   "explanation": "Priming means replacing the air in the casing with water. The vent gives the air an escape, a steady stream proves the casing is full, the vent closes, a free shaft check catches mechanical binding, and only then is the pump started.",
+   "id": "c1wd-process35",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for priming a booster pump before start up after maintenance.",
+   "revision": "r1",
+   "topicId": "booster-pump-priming"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. A variable speed booster has been alarming on low discharge pressure at night.",
+   "cards": [
+    {
+     "id": "s-trend",
+     "label": "Review the overnight discharge pressure trend and alarm times"
+    },
+    {
+     "id": "s-demand",
+     "label": "Compare the trend with system demand and tank levels for the same period"
+    },
+    {
+     "id": "s-gauge",
+     "label": "Verify the discharge pressure with a calibrated test gauge at the station"
+    },
+    {
+     "id": "s-sensor",
+     "label": "If the gauge and the panel disagree, check the pressure sensor and its isolating valve"
+    },
+    {
+     "id": "s-report",
+     "label": "Report the finding and log whether the problem is real pressure or instrumentation"
+    }
+   ],
+   "configuration": "Scope: one low pressure alarm investigation at a booster station.",
+   "correctOrder": [
+    "s-trend",
+    "s-demand",
+    "s-gauge",
+    "s-sensor",
+    "s-report"
+   ],
+   "explanation": "The trend and demand comparison show whether low pressure lines up with high use. A calibrated gauge then separates a real pressure problem from a faulty sensor reading, which decides whether the fix is hydraulic or instrumentation.",
+   "id": "c1wd-process36",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the investigation steps for repeated low discharge pressure alarms at a booster station.",
+   "revision": "r1",
+   "topicId": "booster-pressure-investigation"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The pressure reducing valve holds a lower pressure zone below a higher one.",
+   "cards": [
+    {
+     "id": "s-upstream",
+     "label": "Record the upstream pressure at the station gauge"
+    },
+    {
+     "id": "s-downstream",
+     "label": "Record the downstream pressure at the station gauge"
+    },
+    {
+     "id": "s-setpoint",
+     "label": "Compare the downstream pressure with the valve setpoint"
+    },
+    {
+     "id": "s-pilot",
+     "label": "Inspect the pilot lines and strainer for blockage or leaks"
+    },
+    {
+     "id": "s-record",
+     "label": "Record both pressures and report any setpoint drift"
+    }
+   ],
+   "configuration": "Scope: one routine check of a pressure reducing valve station.",
+   "correctOrder": [
+    "s-upstream",
+    "s-downstream",
+    "s-setpoint",
+    "s-pilot",
+    "s-record"
+   ],
+   "explanation": "Both sides of the valve must be known before the setpoint can be judged. A drifting downstream pressure with clean readings points at the pilot system, which is inspected next, and the visit is recorded either way.",
+   "id": "c1wd-process37",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a routine pressure reducing valve check.",
+   "revision": "r1",
+   "topicId": "prv-routine-check"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. Downstream customers report pressures higher than normal.",
+   "cards": [
+    {
+     "id": "s-gauge",
+     "label": "Verify the downstream pressure with a calibrated test gauge"
+    },
+    {
+     "id": "s-strain",
+     "label": "Check the pilot strainer for debris and clean it if fouled"
+    },
+    {
+     "id": "s-recheck",
+     "label": "Recheck the downstream pressure against the setpoint after cleaning"
+    },
+    {
+     "id": "s-isolate",
+     "label": "If pressure is still high, isolate the valve and open the bypass under supervision"
+    },
+    {
+     "id": "s-report",
+     "label": "Record the pressures and raise a repair work order"
+    }
+   ],
+   "configuration": "Scope: one pressure reducing valve passing too much pressure downstream.",
+   "correctOrder": [
+    "s-gauge",
+    "s-strain",
+    "s-recheck",
+    "s-isolate",
+    "s-report"
+   ],
+   "explanation": "A panel gauge alone cannot be trusted, so pressure is verified first. Debris in the pilot strainer is the common cause of a valve failing open, cleaning is rechecked before any isolation, and the bypass keeps the zone supplied while repair is arranged.",
+   "id": "c1wd-process38",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the troubleshooting steps when a pressure reducing valve lets downstream pressure rise above its setpoint.",
+   "revision": "r1",
+   "topicId": "prv-high-pressure"
+  },
+  {
+   "assumptions": "Fictional Ontario distribution system. The station has upstream and downstream isolation valves and a drain.",
+   "cards": [
+    {
+     "id": "s-record",
+     "label": "Record the upstream and downstream pressures before isolating"
+    },
+    {
+     "id": "s-upstream",
+     "label": "Close the upstream isolation valve"
+    },
+    {
+     "id": "s-downstream",
+     "label": "Close the downstream isolation valve"
+    },
+    {
+     "id": "s-drain",
+     "label": "Open the station drain to relieve pressure in the valve chamber piping"
+    },
+    {
+     "id": "s-service",
+     "label": "Remove and service the pilot assembly and strainer"
+    },
+    {
+     "id": "s-restore",
+     "label": "Close the drain, reopen the upstream valve slowly, then the downstream valve, and verify the setpoint"
+    }
+   ],
+   "configuration": "Scope: annual servicing of one pressure reducing valve.",
+   "correctOrder": [
+    "s-record",
+    "s-upstream",
+    "s-downstream",
+    "s-drain",
+    "s-service",
+    "s-restore"
+   ],
+   "explanation": "Pressures are recorded before anything changes so the serviced valve can be compared with its past performance. Both isolation valves close before the drain relieves pressure, the pilot work happens on a depressurized valve, and restoration refills the station slowly.",
+   "id": "c1wd-process39",
+   "level": "class1",
+   "mode": "build-process",
+   "prompt": "Order the steps for isolating a pressure reducing valve for its annual pilot service.",
+   "revision": "r1",
+   "topicId": "prv-annual-service"
+  }
+ ],
+ "missions": [
+  {
+   "id": "c1wd-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Chlorine Dose Mass Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c1wd-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Valve Operation Restoration Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c1wd-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c1wd-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Chlorine Solution Feed Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c1wd-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c1wd-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c1wd-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Valve Butterfly Operation Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c1wd-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Chlorine Solution Feed Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c1wd-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c1wd-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Valve Boundary Exercising Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c1wd-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c1wd-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c1wd-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c1wd-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Valve Troubleshooting Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c1wd-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c1wd-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c1wd-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c1wd-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c1wd-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Hydrant Flushing Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c1wd-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c1wd-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c1wd-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Hydrant Flow Test Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c1wd-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c1wd-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c1wd-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Pump Run Time Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c1wd-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Hydrant Out Of Service Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c1wd-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c1wd-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Reservoir Drawdown Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c1wd-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c1wd-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c1wd-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Hydrant Use Permit Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c1wd-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c1wd-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c1wd-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Udf Program Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c1wd-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c1wd-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c1wd-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Peak Day Demand Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c1wd-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c1wd-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Udf Hydrant Sequence Shift",
+   "tasks": [
+    {
+     "taskId": "c1wd-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c1wd-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c1wd-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution system operation and maintenance chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "181895206f23687b4558063e583f7b8272ea45b31a4435dff82eeaad0975bf24",
+  "taskReceipts": [
+   {
+    "taskId": "c1wd-error60",
+    "revision": "r1",
+    "sha256": "37650eaa28b76185d2abc0aebd2698c606cefbf4ecb3bcfb504e47e36e34d4f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error61",
+    "revision": "r1",
+    "sha256": "10d72e0093fe80196ecdfbd5c52f62e1925ce437290160980bd22118a58b9dc1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error62",
+    "revision": "r1",
+    "sha256": "d832d9a8cc9d2f321c632a9bb190ecd9cfa5e6b33de97508c785ec37828e39e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error63",
+    "revision": "r1",
+    "sha256": "eb598478c764cce3d4608441a76d7482dbcc8d19746c2a494138253f92d11841",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error64",
+    "revision": "r1",
+    "sha256": "1193dcc195de56f4c4136fc6e5db88b52d1f7560d468b27d95afb860fc871d6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error65",
+    "revision": "r1",
+    "sha256": "302e7a40d3434bd0a25ac51f9e7aa9bd94749589d4871d497a9df0b77443d8b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error66",
+    "revision": "r1",
+    "sha256": "9186eafd618876fb3a81387fc08a2fe9939309fc0a5b8c21435b22dc6bc44fdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error67",
+    "revision": "r1",
+    "sha256": "d0f163fde63153f3dd862263c222542d285f2af329c616f59cf4047f82aff7fe",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error68",
+    "revision": "r1",
+    "sha256": "65e9dfe65d588ad97dff29e34a8554a01fdde3cacde7e8cfc2c4a8abb3d4fe9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error69",
+    "revision": "r1",
+    "sha256": "3babfb2e41f12bcba3e96b895540249266f390d650f8b276a9e7d80353212a82",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error70",
+    "revision": "r1",
+    "sha256": "9ba3a94bfb919dcf9ca9c410bbc7f3b7a61d6031b1e408a98d6e351296a7c7ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error71",
+    "revision": "r1",
+    "sha256": "4712acd4d5b2b9ee8f5e9cb4dcdc9ab695ee34ea4ebc4199afeddaf938bf2cbc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error72",
+    "revision": "r1",
+    "sha256": "0777ddeea8ae921fd5b964f8a44fa2f65d336613983871604a90ac6c75165f19",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error73",
+    "revision": "r1",
+    "sha256": "f1583206645a66a006cb766166f4ffc8c846ca353d71f2e5f0b8c456f268cb05",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error74",
+    "revision": "r1",
+    "sha256": "30b5708ddb03ec96fc3ea9ab5463b25502ccff7d48db87898064b246b03ae1bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error75",
+    "revision": "r1",
+    "sha256": "8df5668f45c1f96600d313f4d3f27e0cad0228fa58d7a77feef29045984958f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error76",
+    "revision": "r1",
+    "sha256": "cca44f08bc7c1b829681917644ec34317871b9d5e94c001203323233ecd2b786",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error77",
+    "revision": "r1",
+    "sha256": "174eb37d54b7e9fcb48d99773f4e5faf193c00da893529a1ae75347a63508240",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error78",
+    "revision": "r1",
+    "sha256": "964464be089ad0374bb1eae7e5f467e8b4aeb7c801213e9f8bf3295b5c28422c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error79",
+    "revision": "r1",
+    "sha256": "9f04b8f8746bf6a9917c8511824473212f44e5d76bf82d9da5e6e59998cd119d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error80",
+    "revision": "r1",
+    "sha256": "da5c5b24a23c4e957491376ba2bb9b8e4c70606a4183ca55d7ce809bcb4dfd1e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error81",
+    "revision": "r1",
+    "sha256": "97541389e0587a9502e29cfbfb04cb5a752c99dd73ae6a7bdb9cd3e879e7cae1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error82",
+    "revision": "r1",
+    "sha256": "8410474cf532d5bfe5d8fb96aa3dc349d6c28d13d998ebf68070d28944bda9e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error83",
+    "revision": "r1",
+    "sha256": "4856948348530088c1c113aadacfd71f9ce128d5965c3d9c5e9fb8ca2a5f3e85",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error84",
+    "revision": "r1",
+    "sha256": "041378fc9fb7b51576a4317c9b5f8fc676b19699e26f1ece4a0b0b94113a9527",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error85",
+    "revision": "r1",
+    "sha256": "45534d442d7e54d788b8ef6d1c8096a2e9b681aefabc6addbc854304593b551c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error86",
+    "revision": "r1",
+    "sha256": "513b8773aa4e14c6d2cf3d230b1b1826ae723460c6cf1c63fd3c907a35de12a6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error87",
+    "revision": "r1",
+    "sha256": "b75df1ac38b2b0b1d7a53cf8efd7af00aa0a4ffda162f9fef32029baabd60cdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error88",
+    "revision": "r1",
+    "sha256": "f1b48a2ec1134ccc088af9fbb6591abb1123128930490d824414a34622f893bb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error89",
+    "revision": "r1",
+    "sha256": "184452da96567642eab06bfa91b25c1ad42f0dd5c38e31a39c177bdd2ca6c01d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error90",
+    "revision": "r1",
+    "sha256": "6443b37c40a1f50b1702930cb681af37244b9c4e283f06839a97ddee7f55a393",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error91",
+    "revision": "r1",
+    "sha256": "93b0d7ce7b7a9c3c9f38834dff848fffc5da366e7e64c84771ced78e1ddcfaa6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error92",
+    "revision": "r1",
+    "sha256": "8d54df28923c4753cab5df92f287743b0b61f356d6264955753912ef748838f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error93",
+    "revision": "r1",
+    "sha256": "de4a9b4d4cfa7298e33cc1f6f2d1ba88f8c37bc0fe4f072d53cc2e18e9f08e8a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error94",
+    "revision": "r1",
+    "sha256": "cb4ca6bb304f6ff0dcbbff2ab6593f3c64273cd734745795d9c41ed280fbcdfa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error95",
+    "revision": "r1",
+    "sha256": "b42e6a70d02df18d0c8623d2e969ea3dd6d509c3b1092c2bd587fec0883d8fc7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error96",
+    "revision": "r1",
+    "sha256": "a526c0027a7cd36c97fe215c68af070a392d5a2ce959a00b5d78c2eccc6b0a58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error97",
+    "revision": "r1",
+    "sha256": "47bf853fa45aaeb5cfa669156117ca6ec122bb61318e1a8683ba27f6fddad795",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error98",
+    "revision": "r1",
+    "sha256": "9ed8fd58d94e9527cf6b35426a67f79b9b5f955afeb1af684ef16bd5fd32476a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-error99",
+    "revision": "r1",
+    "sha256": "ef336c2736f51c2b8cc62c243d6c70643ca3a40be5b4d1be3d1b022b143b5a40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process01",
+    "revision": "r1",
+    "sha256": "6adf47b4402481c9cfd4d176dcf41f1b7097ce2502d19f2d07e7ccefbc663db6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process02",
+    "revision": "r1",
+    "sha256": "977dda51ed31b90bc345a42bcdb0426b591f0670639d006190f532eca830be91",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process03",
+    "revision": "r1",
+    "sha256": "7c7cc24e09012244cac9103c6cd1bf947836bba738c7a94708178f903f0df89f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process04",
+    "revision": "r1",
+    "sha256": "1b5f976d71444156069170789e87a0cf6f6d6345c30eec66f34722f442f1e990",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process05",
+    "revision": "r1",
+    "sha256": "e0702045882fc1083e65c45db95b07fa1ce11da9432f6f35e34656324c55509b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process06",
+    "revision": "r1",
+    "sha256": "5688058522eff37179ce646de5d961407233ca7d952c9c97c5f5c558e42c1a57",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process07",
+    "revision": "r1",
+    "sha256": "b04e2f4e5cd6ab5801c72dda95e76fdeecfc6d1105cf082d0a87d0f3f0083286",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process08",
+    "revision": "r1",
+    "sha256": "f04ae7409e4324b2451b4b834e2a93ee337ad130bf9bf9b82ad937f9ac63c774",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process09",
+    "revision": "r1",
+    "sha256": "c4569b2916df97087219ca9ff9796c0b88486cdc32dde5889079891f91eeb7b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process10",
+    "revision": "r1",
+    "sha256": "8acf866aa3ba1ae6318e44d8e1f9ac8faa1bd584f9d64eab31092d845bc0f2ea",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process100",
+    "revision": "r1",
+    "sha256": "69bae8060d5c7df692cf2b6d1fbad2ddf3feb8cf7a63b3f5375d7a409a34875d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process11",
+    "revision": "r1",
+    "sha256": "e83a4871c8b7dad1ba7c1722a1236e47ed052a531c4e213d531e798d55ebb9fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process12",
+    "revision": "r1",
+    "sha256": "a07736c5061b18187becc85a4751de49607b2c234a0fb6daf7e02b1469cade43",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process13",
+    "revision": "r1",
+    "sha256": "cf591b3f0f11826f1c38524559d9b6b559703bc37dbb91494dd27fe4902a5acd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process14",
+    "revision": "r1",
+    "sha256": "ced48a498b87bd7ccb508a7b0d63789daf3deb70dbb13b026d633fa2bc5246a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process15",
+    "revision": "r1",
+    "sha256": "ec58f21439f51221cb8fb08746dc5b09c39bfa58b0853ba21053b020ce1f4ac5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process16",
+    "revision": "r1",
+    "sha256": "0d87e14989b1b142fafb8e9c6886e2d8d6a263bd5b0d8b383de9c6aa17cc9a3b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process17",
+    "revision": "r1",
+    "sha256": "82da511318be3adbc06866040d4d13792e64eaaf7bf3a679af3ff9c85a01361d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process18",
+    "revision": "r1",
+    "sha256": "289afedbb48c6bfc5f88ba1f5e9faeb4e5df7560c56850f5cc39820c153004a8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process19",
+    "revision": "r1",
+    "sha256": "b29fddfad981cc2cc02835ff9e476866751ada3a1b71ab42bff1300b5ac192f9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process20",
+    "revision": "r1",
+    "sha256": "4a16a03bd5f975fb038b6dbb233bf02893e0b2dc23d6b802619238e240ff3053",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process21",
+    "revision": "r1",
+    "sha256": "c3d712745edbb217e42e4764d5ccc34bd038cfc40f97379c292f8124667f2e4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process22",
+    "revision": "r1",
+    "sha256": "e954106e9d4f0ee7f639cfe865ee4995dc78453ca7574caed730fea5af1bf67a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process23",
+    "revision": "r1",
+    "sha256": "a44305c74873918dd72014338c7b82e7edd06d63b7bfe92f7c5bf2376c5bc004",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process24",
+    "revision": "r1",
+    "sha256": "d0a98c008e2c055305ac92c2495f0ab22897a9c701bd577bfc67163ceb85beef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process25",
+    "revision": "r1",
+    "sha256": "5c5aa3bbe01e00e32413ca35a68059b36a96eec1578bf3a35c4e8cb775dfadbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process26",
+    "revision": "r1",
+    "sha256": "46b8fd2bfa9bfabf023e65f6a69831c0e9c858f16dad8f31e95380f9b448b6e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process27",
+    "revision": "r1",
+    "sha256": "9f7beeac725e3c278bc2ed73bc36d7cc64169c93e1c8ee9224437e7a8456d673",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process28",
+    "revision": "r1",
+    "sha256": "5761ee11e1ba9787802caff3e61d32c687ce1377cdb1e5c1f57f20b447960854",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process29",
+    "revision": "r1",
+    "sha256": "0f0a67fe3fc6838335103c5bd95009783ac46d7ed4d7081c8e9c905beb115cba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process30",
+    "revision": "r1",
+    "sha256": "75982d2b23edd0c541fd0fccbf8e2c88a6498bad5f4077333311fda80d77716f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process31",
+    "revision": "r1",
+    "sha256": "e3ef4c5e412287a317f2a0b5a85d09cb512b93ddf613fd7783fb75bf4d404ac2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process32",
+    "revision": "r1",
+    "sha256": "fab9d6d6cba99306bc28a0c361377683ed56b95bfdaa3ab2537a8c3563720e3d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process33",
+    "revision": "r1",
+    "sha256": "6401c4e4407333a4e83745df5b737f70914bcc70655a8da4160c2b0d19549e59",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process34",
+    "revision": "r1",
+    "sha256": "f82b0ded183068b16bdc1adf5bfc8a7a065b65f2cc0b3e22dcd5336c3beeadee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process35",
+    "revision": "r1",
+    "sha256": "b400fd1e705b6cf3e5b88cad82fdd2541e1eb1a9a0ebfc76f91cbd23bb5644e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process36",
+    "revision": "r1",
+    "sha256": "74c8c2c364307f5b1c7341c1d02b834c3e38eec10262a80150f58dbff2b950e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process37",
+    "revision": "r1",
+    "sha256": "538f0f6486bf355cd108397d42b125544a9ced176bfa84df0a82cd99e6d707aa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process38",
+    "revision": "r1",
+    "sha256": "baccf084e588cacdc922d9c4657cbccaa252c909d6b8f135c3919f01f6a5e661",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c1wd-process39",
+    "revision": "r1",
+    "sha256": "004d3cd4a42b32746e59126a435eb375e793e010f542b73c1af5cce19b3e66e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c1wd-mission41",
+    "revision": "r1",
+    "sha256": "469fe3c351abec872055d40f3a8c764cc56beca950a074f0d61b56d0b479d296"
+   },
+   {
+    "missionId": "c1wd-mission42",
+    "revision": "r1",
+    "sha256": "a7ba8dd374675269f8c6886ac40715e38b23138b0fd6e961e9f1009de01f3eca"
+   },
+   {
+    "missionId": "c1wd-mission43",
+    "revision": "r1",
+    "sha256": "b15b57c7175e048f84e7065c2127599ab6b74d90facd220e40dc7dc034b12c42"
+   },
+   {
+    "missionId": "c1wd-mission44",
+    "revision": "r1",
+    "sha256": "11c55e9edb7083aa558a012cd95e50ed65799ff63ddb9c9ac090c07ebeec2530"
+   },
+   {
+    "missionId": "c1wd-mission45",
+    "revision": "r1",
+    "sha256": "082b9d22093a5ef7f2ece20e4feff3039d567868e3a92402357305f78d85d771"
+   },
+   {
+    "missionId": "c1wd-mission46",
+    "revision": "r1",
+    "sha256": "107bd76f7a5f1783fbfda24fe6c38d9493b15fbbad02790ef46711340c906d3c"
+   },
+   {
+    "missionId": "c1wd-mission47",
+    "revision": "r1",
+    "sha256": "308c5826ab0a1d15a23c43a6ccd81470a09330aed213ce3a80e44fc5c7a7908d"
+   },
+   {
+    "missionId": "c1wd-mission48",
+    "revision": "r1",
+    "sha256": "37454307321b4ba2bd8f0071fddda9e43d9739fcc782a3940f82252c9d9f47b8"
+   },
+   {
+    "missionId": "c1wd-mission49",
+    "revision": "r1",
+    "sha256": "17d18e344050cf9319f48f255beacc9ca3d75146999da0a6fccffca347b44bd4"
+   },
+   {
+    "missionId": "c1wd-mission50",
+    "revision": "r1",
+    "sha256": "6038d16c0a6fd623c1be007857791886d452df05d6dff9d43e937b3fadce21af"
+   },
+   {
+    "missionId": "c1wd-mission51",
+    "revision": "r1",
+    "sha256": "85d0601b5aafcc5084b98902b9fa7be311d2495299e23855f3ff549eb19b838f"
+   },
+   {
+    "missionId": "c1wd-mission52",
+    "revision": "r1",
+    "sha256": "000d04fb90934085da73c0ca950cc2980f574337e3d6b27162f96402e6206f10"
+   },
+   {
+    "missionId": "c1wd-mission53",
+    "revision": "r1",
+    "sha256": "bff67758b8594d2bebeb029e0c4690cc2bcd58eab9cdb762313f4ef42aae98da"
+   },
+   {
+    "missionId": "c1wd-mission54",
+    "revision": "r1",
+    "sha256": "1cf72a596b75019f02a6828eac5e4b377eb14fb6461a0e44cf33ec681ed58a44"
+   },
+   {
+    "missionId": "c1wd-mission55",
+    "revision": "r1",
+    "sha256": "887a762753dafc59301364ada4a6301c546f790dcfcd7fd1a723e96a37ef5b5e"
+   },
+   {
+    "missionId": "c1wd-mission56",
+    "revision": "r1",
+    "sha256": "84fa9553d741ca7611bfe0c40ac62bf8855826d9991aced5ad7998e5965eee8f"
+   },
+   {
+    "missionId": "c1wd-mission57",
+    "revision": "r1",
+    "sha256": "a294a8ee553df5ddc950605ec0ec263898988d3e8c6a16c84fd20c6abf3a6484"
+   },
+   {
+    "missionId": "c1wd-mission58",
+    "revision": "r1",
+    "sha256": "994bd90718315dd9229466a456042c6f47f697059a026fe35dd46e9fc38394e9"
+   },
+   {
+    "missionId": "c1wd-mission59",
+    "revision": "r1",
+    "sha256": "99c256c1f9de31fcb4aecd7c2e12a6a88da69a38423a72fa51016404c7c6b767"
+   },
+   {
+    "missionId": "c1wd-mission60",
+    "revision": "r1",
+    "sha256": "16b390ac8d71ef71c73d37e31b2ae01cc28e53587bac7ddc63233c067c783347"
+   }
+  ]
+ }
+}

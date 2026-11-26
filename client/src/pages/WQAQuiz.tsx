@@ -42,7 +42,7 @@ export default function WQAQuiz() {
       currentPath="/wqa"
       courseLabel="Water Quality Analyst"
       courseTitle="WQA Practice Quiz"
-      courseSubtitle="500 questions · Ontario Water Quality Analyst"
+      courseSubtitle="1,000+ questions · Ontario Water Quality Analyst"
       headerGradient="linear-gradient(135deg, #6D28D9 0%, #4F46E5 100%)"
       headerIcon="🔬"
       headerActions={[
@@ -124,7 +124,7 @@ export default function WQAQuiz() {
           productName="WQA Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 WQA questions — unlimited attempts",
+            "1,000+ WQA questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

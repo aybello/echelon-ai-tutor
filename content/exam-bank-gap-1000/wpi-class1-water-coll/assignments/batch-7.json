@@ -1,0 +1,402 @@
+{
+ "courseKey": "wpi-class1-water-coll",
+ "bankKey": "wpi-class1-wastewater-coll",
+ "batch": 7,
+ "size": 43,
+ "conceptualCount": 34,
+ "calcCount": 9,
+ "topicPoolRound": 2,
+ "questionNumStart": 2710,
+ "questionNumEnd": 2752,
+ "itemIdStart": "COLLECTION-L1-710",
+ "itemIdEnd": "COLLECTION-L1-752",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2710,
+   "itemId": "COLLECTION-L1-710",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "lift station alarms and response"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2711,
+   "itemId": "COLLECTION-L1-711",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "pump types for wastewater"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2712,
+   "itemId": "COLLECTION-L1-712",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "gas testing before entry"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2713,
+   "itemId": "COLLECTION-L1-713",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "night flow analysis awareness"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2714,
+   "itemId": "COLLECTION-L1-714",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "cleaning production awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2715,
+   "itemId": "COLLECTION-L1-715",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "defect vocabulary basics"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2716,
+   "itemId": "COLLECTION-L1-716",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "reporting duties"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2717,
+   "itemId": "COLLECTION-L1-717",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulation 129/04 awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2718,
+   "itemId": "COLLECTION-L1-718",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station alarms and response"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2719,
+   "itemId": "COLLECTION-L1-719",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump types for wastewater"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2720,
+   "itemId": "COLLECTION-L1-720",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "gas testing before entry"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2721,
+   "itemId": "COLLECTION-L1-721",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "night flow analysis awareness"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2722,
+   "itemId": "COLLECTION-L1-722",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "cleaning production awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2723,
+   "itemId": "COLLECTION-L1-723",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "defect vocabulary basics"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2724,
+   "itemId": "COLLECTION-L1-724",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "reporting duties"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2725,
+   "itemId": "COLLECTION-L1-725",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulation 129/04 awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2726,
+   "itemId": "COLLECTION-L1-726",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station alarms and response"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2727,
+   "itemId": "COLLECTION-L1-727",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump types for wastewater"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2728,
+   "itemId": "COLLECTION-L1-728",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "gas testing before entry"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2729,
+   "itemId": "COLLECTION-L1-729",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "night flow analysis awareness"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2730,
+   "itemId": "COLLECTION-L1-730",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "cleaning production awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2731,
+   "itemId": "COLLECTION-L1-731",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "defect vocabulary basics"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2732,
+   "itemId": "COLLECTION-L1-732",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "reporting duties"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2733,
+   "itemId": "COLLECTION-L1-733",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulation 129/04 awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2734,
+   "itemId": "COLLECTION-L1-734",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station alarms and response"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2735,
+   "itemId": "COLLECTION-L1-735",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump types for wastewater"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2736,
+   "itemId": "COLLECTION-L1-736",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "gas testing before entry"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2737,
+   "itemId": "COLLECTION-L1-737",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "night flow analysis awareness"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2738,
+   "itemId": "COLLECTION-L1-738",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "cleaning production awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2739,
+   "itemId": "COLLECTION-L1-739",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "defect vocabulary basics"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2740,
+   "itemId": "COLLECTION-L1-740",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "reporting duties"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2741,
+   "itemId": "COLLECTION-L1-741",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulation 129/04 awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2742,
+   "itemId": "COLLECTION-L1-742",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lift station alarms and response"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2743,
+   "itemId": "COLLECTION-L1-743",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump types for wastewater"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2744,
+   "itemId": "COLLECTION-L1-744",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "wet well drawdown time"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2745,
+   "itemId": "COLLECTION-L1-745",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main detention time"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2746,
+   "itemId": "COLLECTION-L1-746",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "percent of capacity with given full flow"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2747,
+   "itemId": "COLLECTION-L1-747",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "cleaning length and production rate"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2748,
+   "itemId": "COLLECTION-L1-748",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "wet well drawdown time"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2749,
+   "itemId": "COLLECTION-L1-749",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force main detention time"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2750,
+   "itemId": "COLLECTION-L1-750",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "percent of capacity with given full flow"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2751,
+   "itemId": "COLLECTION-L1-751",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "cleaning length and production rate"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2752,
+   "itemId": "COLLECTION-L1-752",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "wet well drawdown time"
+  }
+ ]
+}

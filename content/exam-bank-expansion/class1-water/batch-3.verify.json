@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "WATER-TREATMENT-L1-391",
+  "expression": "12*8",
+  "expected": "96.0",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-392",
+  "expression": "10*5*3",
+  "expected": "150.0",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-393",
+  "expression": "(40-2)/40*100",
+  "expected": "95.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-394",
+  "expression": "90/1000/0.06",
+  "expected": "1.5",
+  "decimalPlaces": 1,
+  "unit": "m/s"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-395",
+  "expression": "1200/400",
+  "expected": "3.0",
+  "decimalPlaces": 1,
+  "unit": "turnovers/day"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-396",
+  "expression": "25*0.6*9",
+  "expected": "135.0",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-397",
+  "expression": "(120-3)/120*100",
+  "expected": "97.5",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-398",
+  "expression": "392.7/1000/(3.1416*0.5*0.5/4)",
+  "expected": "2.0",
+  "decimalPlaces": 1,
+  "unit": "m/s"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-399",
+  "expression": "3.1416*6*6/4*2.5",
+  "expected": "70.7",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "WATER-TREATMENT-L1-400",
+  "expression": "(200-1)/200*100",
+  "expected": "99.5",
+  "decimalPlaces": 1,
+  "unit": "%"
+ }
+]

@@ -1,0 +1,447 @@
+{
+ "courseKey": "class3-water",
+ "bankKey": "class3-water",
+ "batch": 3,
+ "size": 48,
+ "conceptualCount": 38,
+ "calcCount": 10,
+ "topicPoolRound": 1,
+ "questionNumStart": 2547,
+ "questionNumEnd": 2594,
+ "itemIdStart": "WATER-TREATMENT-L3-547",
+ "itemIdEnd": "WATER-TREATMENT-L3-594",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2547,
+   "itemId": "WATER-TREATMENT-L3-547",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "membrane fouling and cleaning"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2548,
+   "itemId": "WATER-TREATMENT-L3-548",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "UV lamp aging and monitoring"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2549,
+   "itemId": "WATER-TREATMENT-L3-549",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "coagulation optimization trials"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2550,
+   "itemId": "WATER-TREATMENT-L3-550",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "filter optimization studies"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2551,
+   "itemId": "WATER-TREATMENT-L3-551",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "source water protection planning"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2552,
+   "itemId": "WATER-TREATMENT-L3-552",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "supervisory and ORO duties"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2553,
+   "itemId": "WATER-TREATMENT-L3-553",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "inspection readiness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2554,
+   "itemId": "WATER-TREATMENT-L3-554",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "emergency leadership awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2555,
+   "itemId": "WATER-TREATMENT-L3-555",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "membrane fouling and cleaning"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2556,
+   "itemId": "WATER-TREATMENT-L3-556",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "UV lamp aging and monitoring"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2557,
+   "itemId": "WATER-TREATMENT-L3-557",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation optimization trials"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2558,
+   "itemId": "WATER-TREATMENT-L3-558",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter optimization studies"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2559,
+   "itemId": "WATER-TREATMENT-L3-559",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "source water protection planning"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2560,
+   "itemId": "WATER-TREATMENT-L3-560",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "supervisory and ORO duties"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2561,
+   "itemId": "WATER-TREATMENT-L3-561",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "inspection readiness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2562,
+   "itemId": "WATER-TREATMENT-L3-562",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "emergency leadership awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2563,
+   "itemId": "WATER-TREATMENT-L3-563",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "membrane fouling and cleaning"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2564,
+   "itemId": "WATER-TREATMENT-L3-564",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "UV lamp aging and monitoring"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2565,
+   "itemId": "WATER-TREATMENT-L3-565",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation optimization trials"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2566,
+   "itemId": "WATER-TREATMENT-L3-566",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter optimization studies"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2567,
+   "itemId": "WATER-TREATMENT-L3-567",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "source water protection planning"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2568,
+   "itemId": "WATER-TREATMENT-L3-568",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "supervisory and ORO duties"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2569,
+   "itemId": "WATER-TREATMENT-L3-569",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "inspection readiness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2570,
+   "itemId": "WATER-TREATMENT-L3-570",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "emergency leadership awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2571,
+   "itemId": "WATER-TREATMENT-L3-571",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "membrane fouling and cleaning"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2572,
+   "itemId": "WATER-TREATMENT-L3-572",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "UV lamp aging and monitoring"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2573,
+   "itemId": "WATER-TREATMENT-L3-573",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation optimization trials"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2574,
+   "itemId": "WATER-TREATMENT-L3-574",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "filter optimization studies"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2575,
+   "itemId": "WATER-TREATMENT-L3-575",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "source water protection planning"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2576,
+   "itemId": "WATER-TREATMENT-L3-576",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "supervisory and ORO duties"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2577,
+   "itemId": "WATER-TREATMENT-L3-577",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "inspection readiness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2578,
+   "itemId": "WATER-TREATMENT-L3-578",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "emergency leadership awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2579,
+   "itemId": "WATER-TREATMENT-L3-579",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "membrane fouling and cleaning"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2580,
+   "itemId": "WATER-TREATMENT-L3-580",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "UV lamp aging and monitoring"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2581,
+   "itemId": "WATER-TREATMENT-L3-581",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "coagulation optimization trials"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2582,
+   "itemId": "WATER-TREATMENT-L3-582",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "filter optimization studies"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2583,
+   "itemId": "WATER-TREATMENT-L3-583",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "source water protection planning"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2584,
+   "itemId": "WATER-TREATMENT-L3-584",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "supervisory and ORO duties"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2585,
+   "itemId": "WATER-TREATMENT-L3-585",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "contactor CT calculation"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2586,
+   "itemId": "WATER-TREATMENT-L3-586",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "membrane fleet capacity"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2587,
+   "itemId": "WATER-TREATMENT-L3-587",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "solids production forecast"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2588,
+   "itemId": "WATER-TREATMENT-L3-588",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage capacity planning quantity"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2589,
+   "itemId": "WATER-TREATMENT-L3-589",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "contactor CT calculation"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2590,
+   "itemId": "WATER-TREATMENT-L3-590",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "membrane fleet capacity"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2591,
+   "itemId": "WATER-TREATMENT-L3-591",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "solids production forecast"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2592,
+   "itemId": "WATER-TREATMENT-L3-592",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "storage capacity planning quantity"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2593,
+   "itemId": "WATER-TREATMENT-L3-593",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "contactor CT calculation"
+  },
+  {
+   "seq": 48,
+   "questionNum": 2594,
+   "itemId": "WATER-TREATMENT-L3-594",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "membrane fleet capacity"
+  }
+ ]
+}

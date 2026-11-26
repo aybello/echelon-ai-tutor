@@ -1,66 +1,78 @@
 import { getCourseByKey } from "../../shared/courseRegistry";
-import type { DeepCoursePackage } from "../../shared/deepGames";
-import { validateDeepCoursePackage } from "./schema";
+import {
+  deepContentCourseKeys,
+  type DeepCoursePackage,
+} from "../../shared/deepGames";
+import { deepPayloadSha256, validateDeepCoursePackage } from "./schema";
 
-type PilotKey = DeepCoursePackage["courseKey"];
+export type DeepCourseKey = DeepCoursePackage["courseKey"];
 type NativeImporter = (url: string) => Promise<{ default?: unknown }>;
 export type DeepCourseLoader = (courseKey: string) => Promise<DeepCoursePackage | null>;
 
-export function isDeepCourseSupported(courseKey: string): courseKey is PilotKey {
-  if (courseKey !== "oit" && courseKey !== "class1-water") return false;
+const isAlias = (courseKey: string): courseKey is "oit-ww" => courseKey === "oit-ww";
+const sourceKey = (courseKey: DeepCourseKey): DeepCourseKey => isAlias(courseKey) ? "oit" : courseKey;
+
+export function isDeepCourseSupported(courseKey: string): courseKey is DeepCourseKey {
+  if (!deepContentCourseKeys.includes(courseKey as (typeof deepContentCourseKeys)[number])) return false;
   const course = getCourseByKey(courseKey);
   return !!course?.isActive && course.courseKey === courseKey
     && (course.provinceOrRegion === "ontario" || course.provinceOrRegion === "western")
     && (course.examFamily === "ontario" || course.examFamily === "western");
 }
 
-/** Only trusted module location affects this fixed map; never caller input or cwd.
- * esbuild's single server bundle keeps import.meta.url at dist/index.js. Content
- * is separately compiled by the parent build, outside the public static tree.
- */
-export function deepContentModuleUrls(moduleUrl = import.meta.url): Readonly<Record<PilotKey, string>> {
+function moduleMap(moduleUrl: string): Readonly<Record<DeepCourseKey, string>> {
   const location = new URL(moduleUrl);
   if (location.protocol !== "file:") throw new Error("Deep content runtime unavailable");
-  if (location.pathname.endsWith("/server/deepGames/registry.ts")) {
-    return Object.freeze({
-      oit: new URL("./content/oit.ts", location).href,
-      "class1-water": new URL("./content/class1-water.ts", location).href,
-    });
-  }
-  if (location.pathname.endsWith("/index.js")) {
-    return Object.freeze({
-      oit: new URL("./deep-game-content/oit.js", location).href,
-      "class1-water": new URL("./deep-game-content/class1-water.js", location).href,
-    });
-  }
-  throw new Error("Deep content runtime unavailable");
+  const suffix = location.pathname.endsWith("/server/deepGames/registry.ts")
+    ? "./content/"
+    : location.pathname.endsWith("/index.js")
+      ? "./deep-game-content/"
+      : null;
+  if (!suffix) throw new Error("Deep content runtime unavailable");
+  const entries = Object.fromEntries(deepContentCourseKeys.map((key) => [
+    key,
+    new URL(`${suffix}${key}.${suffix === "./content/" ? "ts" : "js"}`, location).href,
+  ])) as Record<DeepCourseKey, string>;
+  entries["oit-ww"] = entries.oit;
+  return Object.freeze(entries);
 }
 
-/** Import remains a native variable boundary: no content bank enters the main bundle. */
+export function deepContentModuleUrls(moduleUrl = import.meta.url): Readonly<Record<DeepCourseKey, string>> {
+  return moduleMap(moduleUrl);
+}
+
 const nativeImport: NativeImporter = async url => import(/* @vite-ignore */ url);
 
-/** Dependency injection is for private tests; no request can supply an importer or URL. */
+function aliasPackage(data: DeepCoursePackage, courseKey: DeepCourseKey): DeepCoursePackage {
+  if (!isAlias(courseKey)) return data;
+  const core = { courseKey, version: data.version, tasks: data.tasks, missions: data.missions };
+  return validateDeepCoursePackage({
+    ...data,
+    ...core,
+    publication: { ...data.publication, packageSha256: deepPayloadSha256(core) },
+  }, courseKey);
+}
+
 export function createDeepCourseRegistry(options: { importModule?: NativeImporter; moduleUrl?: string } = {}): { loadDeepCourse: DeepCourseLoader } {
-  const cache = new Map<PilotKey, DeepCoursePackage>();
-  const loading = new Map<PilotKey, Promise<DeepCoursePackage>>();
+  const cache = new Map<DeepCourseKey, DeepCoursePackage>();
+  const loading = new Map<DeepCourseKey, Promise<DeepCoursePackage>>();
   const importer = options.importModule ?? nativeImport;
-  const loadDeepCourse: DeepCourseLoader = async courseKey => {
-    if (!isDeepCourseSupported(courseKey)) return null;
+  const loadDeepCourse: DeepCourseLoader = async requestedKey => {
+    if (!isDeepCourseSupported(requestedKey)) return null;
+    const courseKey = requestedKey;
     const cached = cache.get(courseKey);
     if (cached) return cached;
     const pending = loading.get(courseKey);
     if (pending) return pending;
     const promise = (async () => {
       try {
-        const url = deepContentModuleUrls(options.moduleUrl)[courseKey];
+        const url = deepContentModuleUrls(options.moduleUrl)[sourceKey(courseKey)];
         const loaded = await importer(url);
-        const validated = validateDeepCoursePackage(loaded.default, courseKey);
-        // There can only ever be two allowlisted pilot entries.
-        if (cache.size >= 2 && !cache.has(courseKey)) throw new Error("Deep cache limit");
-        cache.set(courseKey, validated);
-        return validated;
+        const validated = validateDeepCoursePackage(loaded.default, sourceKey(courseKey));
+        const result = aliasPackage(validated, courseKey);
+        cache.set(courseKey, result);
+        return result;
       } catch {
-        // Do not expose private paths, authored content, or receipt validation details.
         throw new Error("Deep course content is unavailable");
       }
     })();

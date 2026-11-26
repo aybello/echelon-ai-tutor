@@ -550,6 +550,64 @@
         "assessment_activity_sessions",
         "assessment_activity_events"
       ]
+    },
+    {
+      "version": 84,
+      "tag": "0084_feature_requests",
+      "file": "drizzle/0084_feature_requests.sql",
+      "sha256": "396c632b998ef0093da17a3d667a474b0c713287ebd50e9b36988dfc10c6d1ad",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "feature_requests"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "feature_requests"
+      ]
+    },
+    {
+      "version": 85,
+      "tag": "0085_licence_expiry_tracking",
+      "file": "drizzle/0085_licence_expiry_tracking.sql",
+      "sha256": "36cfd33cbe7413ac2aa879abb0755730f62265b3d2d784b560fb0a82355bf3b5",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "certificates",
+          "certificate_alerts"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "certificates",
+        "certificate_alerts"
+      ]
+    },
+    {
+      "version": 86,
+      "tag": "0086_certificate_manager_slice",
+      "file": "drizzle/0086_certificate_manager_slice.sql",
+      "sha256": "b532bcf62f6416d5e3cc9429b1c41a7a68e5ea2e2cc12ca8f2f09299e9aff338",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "certificates",
+          "certificate_audit_log",
+          "certificate_evidence"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "certificates",
+        "certificate_audit_log",
+        "certificate_evidence"
+      ],
+      "alteredTables": {
+        "certificates": [
+          "followUpOwner",
+          "followUpStatus",
+          "rosterReviewStatus"
+        ]
+      }
     }
   ]
 }

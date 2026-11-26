@@ -29,9 +29,8 @@ import type { DBQuestion } from "@/hooks/useQuestionBank";
 import { PracticeQueue } from "@/lib/practiceQueue";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 import { useAssessmentActivity, type ActivityObservation } from "@/hooks/useAssessmentActivity";
-import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
+import { useStablePracticeActorKey } from "@/components/PracticeSaveStatus";
 import { assessmentActivityActions, type AssessmentActivityCapability } from "@shared/assessmentActivity";
-
 // ─── Constants ───────────────────────────────────────────────────────────────
 // Default/fallback session size; actual size comes from quizSettings.sessionSize
 const DEFAULT_SESSION_SIZE = 15;
@@ -376,8 +375,7 @@ export function useQuizSession({
     useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [activityTracking, setActivityTracking] = useState<AssessmentActivityCapability | null>(null);
-  const actorScope = useVerifiedPracticeSaveScope(examType);
-  const actorKey = actorScope ? JSON.stringify(actorScope) : "unverified";
+  const actorKey = useStablePracticeActorKey(examType);
   const { observeFor: enqueueObservation, retry: retryActivity } = useAssessmentActivity(activityTracking, actorKey);
   // Exact-capability writes use the shared same-actor durable worker, including
   // late canonical acknowledgments and terminal Back/Next review.
@@ -516,10 +514,10 @@ export function useQuizSession({
 
   // ── Derived ────────────────────────────────────────────────────────────────
   const { correctCount, wrongCount } = summarizeHistory(history);
-  // sessionSize: quick10 is always 10; the free preview is always fixed at
+  // Request sizing: quick10 is always 10; the free preview is always fixed at
   // DEFAULT_SESSION_SIZE (so the counter/limit shown to a locked user can never
   // disagree with the actual paywall); paid users get their configured setting.
-  const sessionSize =
+  const configuredSessionSize =
     quizMode === "quick10"
       ? 10
       : !trialUnlocked
@@ -656,12 +654,22 @@ export function useQuizSession({
   }, [practiceQueueScope]);
   const activePracticeQueueGeneration = useRef(practiceQueueGeneration);
   activePracticeQueueGeneration.current = practiceQueueGeneration;
+  const [initialMissedTotal, setInitialMissedTotal] = useState<{ generation: number; total: number } | null>(null);
+  // Review runs to exhaustion. Keep its first eligible total, not the badge or
+  // a later page's shrinking latest-miss count, and never reuse a retired total.
+  const sessionSize = quizMode === "missed" && trialUnlocked && !freeCourse
+    ? (initialMissedTotal?.generation === practiceQueueGeneration ? initialMissedTotal.total : 0)
+    : configuredSessionSize;
   const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(async excludeIds => {
     const page = await withPracticeQuestionTimeout(fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, topic: selectedTopic ?? undefined, calcOnly,
       difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
-      excludeIds, limit: Math.min(sessionSize, 50), activityTimed: quizSettings.timedMode, accessToken: storedAccessTokenForAccess }));
+      excludeIds, limit: Math.min(configuredSessionSize, 50), activityTimed: quizSettings.timedMode, accessToken: storedAccessTokenForAccess }));
     if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
       return page;
+    }
+    if (quizMode === "missed") {
+      setInitialMissedTotal(previous => previous?.generation === practiceQueueGeneration
+        ? previous : { generation: practiceQueueGeneration, total: page.total });
     }
     registerQuestions(page.questions);
     if ("topicUnavailable" in page && page.topicUnavailable === true) {
@@ -793,7 +801,7 @@ export function useQuizSession({
     ) {
       setTrialDone(true);
       trackQuizCompleted(updatedHistory, "preview_gate");
-    } else if (updatedHistory.length >= sessionSize) {
+    } else if ((quizMode === "standard" || quizMode === "quick10") && updatedHistory.length >= sessionSize) {
       trackQuizCompleted(updatedHistory, "session_limit");
     }
   }, [

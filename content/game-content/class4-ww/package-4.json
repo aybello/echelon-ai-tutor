@@ -1,0 +1,5440 @@
+{
+ "courseKey": "class4-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4ww-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for governing effluent sampling program changes.",
+   "topicId": "effluent-sampling-program-governance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: proposed changes to sampling points, frequency, or methods.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "State the reason for the change and the data need it serves"
+    },
+    {
+     "id": "step-05",
+     "label": "Update sampling procedures, calendars, and laboratory instructions together"
+    },
+    {
+     "id": "step-03",
+     "label": "Check the effect on trend history and comparability of results"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the approval minimum sampling duties the change must still meet"
+    },
+    {
+     "id": "step-04",
+     "label": "Approve the change through the compliance lead and record it"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the first reporting period under the change for errors"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Approval duties set the floor, comparability protects trend value, and the first period under the change is checked closely."
+  },
+  {
+   "id": "c4ww-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a bypass and overflow compliance review after a wet weather season.",
+   "topicId": "bypass-overflow-compliance-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: season with several bypass and overflow events across the utility.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Report the review and the improvement plan to leadership"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare event frequency and volume with prior seasons and design intent"
+    },
+    {
+     "id": "step-02",
+     "label": "Check each event notification and report against approval requirements"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify collection or plant changes that would cut the largest events"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile every event with date, duration, volume estimate, and cause"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign the improvement actions and note any capital needs"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A complete event record comes first, reporting is checked event by event, and improvements target the largest events for real gain."
+  },
+  {
+   "id": "c4ww-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for training leaders on regulatory reporting duties.",
+   "topicId": "regulatory-reporting-leader-training",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: new supervisors taking on approval and incident reporting duties.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "List every report, its deadline, and its legal basis for the plant"
+    },
+    {
+     "id": "step-04",
+     "label": "Correct the practice reports and record competency sign off"
+    },
+    {
+     "id": "step-06",
+     "label": "Audit the first live reports each new supervisor submits"
+    },
+    {
+     "id": "step-02",
+     "label": "Show worked examples of complete and deficient reports"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign reporting duties only after sign off is complete"
+    },
+    {
+     "id": "step-03",
+     "label": "Have trainees prepare a report from real plant data under review"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Duties and deadlines are listed before examples, practice precedes live duty, and early live reports are audited until quality is proven."
+  },
+  {
+   "id": "c4ww-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing an approval renewal application for a plant expansion.",
+   "topicId": "approval-renewal-expansion-application",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: Environmental Compliance Approval renewal tied to a plant expansion.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Review the draft conditions for duties the plant can actually meet"
+    },
+    {
+     "id": "step-02",
+     "label": "Compile operating and compliance history for the current approval period"
+    },
+    {
+     "id": "step-05",
+     "label": "Submit the application with time allowed for questions and revisions"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the design basis and the effluent objectives for the expanded plant"
+    },
+    {
+     "id": "step-06",
+     "label": "Plan commissioning and reporting around the issued conditions"
+    },
+    {
+     "id": "step-03",
+     "label": "Prepare the application with process descriptions and expected performance"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Design basis and operating history support the application, draft conditions are tested for practicality, and time is allowed for review."
+  },
+  {
+   "id": "c4ww-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a self assessment against Ontario Regulation 129/04 duties.",
+   "topicId": "regulation-129-04-self-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: assessment of licensing, overall responsible operator, and operating duties.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Verify overall responsible operator designation and coverage for all shifts"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm closure of the gaps and file the completed assessment"
+    },
+    {
+     "id": "step-01",
+     "label": "List the duties that apply to each plant and classification level"
+    },
+    {
+     "id": "step-05",
+     "label": "Record gaps with a corrective action and a due date for each"
+    },
+    {
+     "id": "step-02",
+     "label": "Check licence records for every operator against their assigned duties"
+    },
+    {
+     "id": "step-04",
+     "label": "Review logbooks and records the regulation expects the plant to keep"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Applicable duties are listed plant by plant, licences and coverage are verified from records, and gaps close with dated actions."
+  },
+  {
+   "id": "c4ww-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for handling a public complaint about effluent or odour through leadership.",
+   "topicId": "public-complaint-leadership-handling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: complaint alleging river impact and odour near a plant outfall.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Take corrective action if the plant contributed to the problem"
+    },
+    {
+     "id": "step-01",
+     "label": "Log the complaint with time, location, and the concern as stated"
+    },
+    {
+     "id": "step-04",
+     "label": "Respond to the complainant with findings in plain language"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the complaint, findings, and action in the plant file"
+    },
+    {
+     "id": "step-03",
+     "label": "Visit or inspect the reported location where it is safe to do so"
+    },
+    {
+     "id": "step-02",
+     "label": "Check plant operations, effluent data, and weather for the period"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The complaint is logged as stated, plant data are checked before any reply, and the response reports findings honestly."
+  },
+  {
+   "id": "c4ww-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for defining a technology evaluation framework for the utility.",
+   "topicId": "technology-evaluation-framework",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: framework used for all new process and control technology proposals.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Set evaluation criteria covering performance, risk, cost, and staffing"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign who approves passage at each gate"
+    },
+    {
+     "id": "step-03",
+     "label": "Require reference site data for any technology beyond pilot stage"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the problem classes the utility will consider technology for"
+    },
+    {
+     "id": "step-04",
+     "label": "Set the stage gates from screening to pilot to full adoption"
+    },
+    {
+     "id": "step-06",
+     "label": "Publish the framework and apply it to the current proposal list"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Criteria and gates are set before proposals are judged, reference data are mandatory, and named approvers make gates real."
+  },
+  {
+   "id": "c4ww-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a pilot program for a new nutrient removal technology.",
+   "topicId": "nutrient-technology-pilot-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: sidestream pilot unit treating dewatering returns for one season.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Decide to adopt, extend, or stop and record the basis for the decision"
+    },
+    {
+     "id": "step-03",
+     "label": "Install and commission the unit with vendor support and safety review"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm sampling, analysis, and data review duties for the pilot"
+    },
+    {
+     "id": "step-04",
+     "label": "Operate through the agreed load and temperature range"
+    },
+    {
+     "id": "step-01",
+     "label": "Write pilot objectives, success measures, and the test period"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare results with the success measures and the mainstream alternative"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Objectives and measures are fixed before startup, the test covers the real operating range, and the decision compares pilot with mainstream."
+  },
+  {
+   "id": "c4ww-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for evaluating automation and control system upgrades.",
+   "topicId": "automation-control-upgrade-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: upgrade of plant supervisory control and data systems proposed.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "List the operational problems the upgrade is expected to solve"
+    },
+    {
+     "id": "step-04",
+     "label": "Require operator involvement in screen and alarm design reviews"
+    },
+    {
+     "id": "step-06",
+     "label": "Evaluate benefits after a full season against the original problem list"
+    },
+    {
+     "id": "step-02",
+     "label": "Audit current instruments and signals for accuracy and coverage"
+    },
+    {
+     "id": "step-05",
+     "label": "Plan staged cutover that keeps the plant in control at all times"
+    },
+    {
+     "id": "step-03",
+     "label": "Check cybersecurity, backup, and manual fallback requirements"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Problems come before products, instruments are audited first, manual fallback is protected, and benefits are judged after a full season."
+  },
+  {
+   "id": "c4ww-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a technology scan for energy recovery options.",
+   "topicId": "energy-recovery-technology-scan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: scan covering biogas use, heat recovery, and effluent heat options.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Check space, permitting, and operating skill needs for each option"
+    },
+    {
+     "id": "step-02",
+     "label": "List proven options and screen out those unsuited to plant scale"
+    },
+    {
+     "id": "step-05",
+     "label": "Rank options and select one for detailed feasibility work"
+    },
+    {
+     "id": "step-01",
+     "label": "Baseline current energy use and the recoverable energy in plant streams"
+    },
+    {
+     "id": "step-06",
+     "label": "Report the scan and the selected option to leadership"
+    },
+    {
+     "id": "step-03",
+     "label": "Estimate recoverable energy and simple economics for the shortlist"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Baselines and scale screening keep the scan realistic, feasibility follows ranking, and leadership sees the full comparison."
+  },
+  {
+   "id": "c4ww-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for governing pilot data so results can support capital decisions.",
+   "topicId": "pilot-data-governance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: pilot results will be used in a capital funding request.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Log operating conditions with every performance result"
+    },
+    {
+     "id": "step-06",
+     "label": "State data limits and uncertainty in the capital submission"
+    },
+    {
+     "id": "step-01",
+     "label": "Set the data quality objectives for the pilot before it starts"
+    },
+    {
+     "id": "step-05",
+     "label": "Keep raw data and calculations in the project file"
+    },
+    {
+     "id": "step-02",
+     "label": "Calibrate pilot instruments and confirm laboratory methods"
+    },
+    {
+     "id": "step-04",
+     "label": "Have data reviewed by someone independent of the vendor"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Quality objectives and calibration come first, independent review protects credibility, and uncertainty is stated rather than hidden."
+  },
+  {
+   "id": "c4ww-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for evaluating a new online analyzer for compliance support.",
+   "topicId": "online-analyzer-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: analyzer for effluent ammonia to support process control and early warning.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Decide the analyzer role as control, warning, or record only"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the decisions the analyzer readings will drive"
+    },
+    {
+     "id": "step-04",
+     "label": "Check alarm and data transfer functions with plant systems"
+    },
+    {
+     "id": "step-06",
+     "label": "Set the ongoing verification schedule if the analyzer is adopted"
+    },
+    {
+     "id": "step-03",
+     "label": "Measure uptime, drift, and maintenance effort during the trial"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare analyzer results with laboratory results over a trial period"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The decisions define the accuracy needed, laboratory comparison proves performance, and the adopted role matches proven reliability."
+  },
+  {
+   "id": "c4ww-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for planning a full scale trial of a process change.",
+   "topicId": "full-scale-process-trial-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: trial of step feed operation in one aeration train for two months.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Set trial boundaries that protect effluent compliance at all times"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the trains and check for effects elsewhere in the plant"
+    },
+    {
+     "id": "step-03",
+     "label": "Assign trial duties and added sampling to named staff"
+    },
+    {
+     "id": "step-01",
+     "label": "State the trial hypothesis and the measures that will judge it"
+    },
+    {
+     "id": "step-04",
+     "label": "Run the trial train and a control train under matched conditions"
+    },
+    {
+     "id": "step-06",
+     "label": "Adopt or reject the change and update procedures accordingly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Hypothesis and compliance boundaries come first, a control train makes comparison fair, and procedures change only on evidence."
+  },
+  {
+   "id": "c4ww-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for assessing digital reporting tools for plant operations.",
+   "topicId": "digital-reporting-tool-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: replacing paper logbooks and spreadsheets with a digital system.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review record quality after three months and correct the gaps"
+    },
+    {
+     "id": "step-03",
+     "label": "Check access control, backup, and record retention features"
+    },
+    {
+     "id": "step-02",
+     "label": "Test the tool with real shifts and real data before committing"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm the tool works during network outages or has a fallback"
+    },
+    {
+     "id": "step-01",
+     "label": "Map the records the plant must keep under its approval and procedures"
+    },
+    {
+     "id": "step-05",
+     "label": "Plan migration of historical records and staff training"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Legal record needs come first, real shift testing exposes problems, outage fallback is essential, and record quality is audited after adoption."
+  },
+  {
+   "id": "c4ww-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a vendor demonstration evaluation at a working plant.",
+   "topicId": "vendor-demonstration-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: vendor demonstrating a dewatering unit on plant sludge for one week.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Set the demonstration measures and the sludge types to be tested"
+    },
+    {
+     "id": "step-04",
+     "label": "Note operator effort, housekeeping, and safety observations"
+    },
+    {
+     "id": "step-06",
+     "label": "Write the evaluation before discussing commercial terms"
+    },
+    {
+     "id": "step-02",
+     "label": "Record feed quality for every test run"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare results with the current machine on the same sludge"
+    },
+    {
+     "id": "step-03",
+     "label": "Measure cake solids, capture, polymer use, and throughput each run"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Measures and feed records make results comparable, the current machine is the benchmark, and evaluation precedes commercial talks."
+  },
+  {
+   "id": "c4ww-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for deciding whether to scale a successful pilot utility wide.",
+   "topicId": "pilot-scale-up-decision",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: successful aeration control pilot proposed for all plants.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Identify plants where the method does not fit and record why"
+    },
+    {
+     "id": "step-02",
+     "label": "Check each receiving plant for instruments and staff the method needs"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve a phased rollout with a review after the first plants"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the pilot results held across seasons and load ranges"
+    },
+    {
+     "id": "step-06",
+     "label": "Track benefits at each plant against the pilot results"
+    },
+    {
+     "id": "step-03",
+     "label": "Estimate rollout cost and the order that gives the fastest benefit"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Seasonal proof comes first, plant readiness is checked honestly, and phased rollout with benefit tracking protects the investment."
+  },
+  {
+   "id": "c4ww-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing intellectual risk when trialling proprietary processes.",
+   "topicId": "proprietary-process-trial-risk",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: trial of a vendor proprietary biological process.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Confirm the plant can return to normal operation if the trial stops"
+    },
+    {
+     "id": "step-06",
+     "label": "Close the trial with a written summary owned by the utility"
+    },
+    {
+     "id": "step-01",
+     "label": "Record what plant data and samples the vendor will receive"
+    },
+    {
+     "id": "step-05",
+     "label": "Review any vendor claims against the independent record"
+    },
+    {
+     "id": "step-02",
+     "label": "Agree data ownership, publication, and exit terms before startup"
+    },
+    {
+     "id": "step-04",
+     "label": "Keep an independent record of performance during the trial"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Data and exit terms are settled before startup, independent records protect the utility, and the closing summary stays with the utility."
+  },
+  {
+   "id": "c4ww-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a ten year capital plan for a wastewater utility.",
+   "topicId": "ten-year-capital-plan-build",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plan covering renewal, growth, and compliance projects for all plants.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Phase the spending to match funding and construction capacity"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile asset condition and remaining life for major plant systems"
+    },
+    {
+     "id": "step-04",
+     "label": "Estimate each project cost at a planning level with contingencies"
+    },
+    {
+     "id": "step-06",
+     "label": "Approve the plan and review it yearly against condition and growth"
+    },
+    {
+     "id": "step-03",
+     "label": "Group projects into programs with logical construction sequences"
+    },
+    {
+     "id": "step-02",
+     "label": "Add growth and compliance projects with their required in service dates"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Condition and required dates drive the project list, sequencing and phasing keep the plan buildable, and yearly review keeps it real."
+  },
+  {
+   "id": "c4ww-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for prioritizing capital projects across competing plants.",
+   "topicId": "capital-project-prioritization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: more project requests than the annual capital budget can fund.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Confirm the cost and the consequence of deferring each project one year"
+    },
+    {
+     "id": "step-05",
+     "label": "Communicate the ranking and the deferral risks to plant leaders"
+    },
+    {
+     "id": "step-03",
+     "label": "Rank the projects and draw the funding line transparently"
+    },
+    {
+     "id": "step-01",
+     "label": "Score each project on compliance risk, failure risk, and service impact"
+    },
+    {
+     "id": "step-04",
+     "label": "Record the risk accepted for each project below the line"
+    },
+    {
+     "id": "step-06",
+     "label": "Revisit the ranking if a failure or a new duty changes the risk"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Common scoring and deferral consequences make ranking defensible, accepted risk is recorded, and changes in risk reopen the ranking."
+  },
+  {
+   "id": "c4ww-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an asset management plan update for treatment plants.",
+   "topicId": "asset-management-plan-update",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: update covering asset inventory, condition, and levels of service.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Publish the update and link its actions to the capital plan"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare current performance with the defined levels of service"
+    },
+    {
+     "id": "step-02",
+     "label": "Update condition ratings from recent inspections and work history"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify assets whose condition threatens a level of service"
+    },
+    {
+     "id": "step-01",
+     "label": "Refresh the asset inventory with additions, retirements, and replacements"
+    },
+    {
+     "id": "step-05",
+     "label": "Set renewal and inspection actions for the threatened assets"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Inventory and condition come before service conclusions, threatened assets get actions, and the capital plan carries the funding path."
+  },
+  {
+   "id": "c4ww-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a condition assessment program for critical plant assets.",
+   "topicId": "critical-asset-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program for blowers, pumps, clarifier drives, and electrical gear.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Rank assets by consequence of failure to set assessment priority"
+    },
+    {
+     "id": "step-04",
+     "label": "Complete assessments and record condition in the asset system"
+    },
+    {
+     "id": "step-06",
+     "label": "Report critical asset condition to leadership twice a year"
+    },
+    {
+     "id": "step-02",
+     "label": "Set assessment methods and intervals for each asset class"
+    },
+    {
+     "id": "step-05",
+     "label": "Turn poor condition findings into funded renewal or repair actions"
+    },
+    {
+     "id": "step-03",
+     "label": "Train or contract assessors and confirm their competency"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Failure consequence sets priority, competent assessment gives trusted ratings, and poor findings become funded actions, not just records."
+  },
+  {
+   "id": "c4ww-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for planning a plant renewal project without losing treatment capacity.",
+   "topicId": "plant-renewal-capacity-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: clarifier and aeration renewal while the plant stays in service.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Set construction hold points where operations must approve restart"
+    },
+    {
+     "id": "step-02",
+     "label": "Sequence the work so only one unit is out of service at a time"
+    },
+    {
+     "id": "step-05",
+     "label": "Brief operators on the sequence and the contingency plans"
+    },
+    {
+     "id": "step-01",
+     "label": "Determine the minimum treatment capacity that must stay online"
+    },
+    {
+     "id": "step-06",
+     "label": "Review capacity weekly during construction and adjust the sequence as needed"
+    },
+    {
+     "id": "step-03",
+     "label": "Plan temporary treatment or flow measures for peak periods"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Minimum online capacity is set first, one unit out at a time protects treatment, and weekly review keeps construction and operations aligned."
+  },
+  {
+   "id": "c4ww-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a lifecycle cost comparison for a major equipment choice.",
+   "topicId": "lifecycle-cost-comparison",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: comparing blower technologies for an aeration renewal project.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Calculate total cost over the same evaluation period for both"
+    },
+    {
+     "id": "step-06",
+     "label": "Recommend the option with the comparison and sensitivities recorded"
+    },
+    {
+     "id": "step-01",
+     "label": "Define the duty point and the operating hours both options must meet"
+    },
+    {
+     "id": "step-05",
+     "label": "Check non cost factors such as noise, footprint, and parts support"
+    },
+    {
+     "id": "step-02",
+     "label": "Collect capital, energy, maintenance, and expected life data for each"
+    },
+    {
+     "id": "step-04",
+     "label": "Test the result against higher and lower energy price cases"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A common duty and period make costs comparable, sensitivity testing shows robustness, and non cost factors complete the decision."
+  },
+  {
+   "id": "c4ww-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting a capital contingency and risk allowance policy.",
+   "topicId": "capital-contingency-policy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: policy for project contingencies by project type and design stage.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Reduce contingency as design advances and risks are retired"
+    },
+    {
+     "id": "step-01",
+     "label": "Review past projects for estimate growth from approval to completion"
+    },
+    {
+     "id": "step-04",
+     "label": "Require reporting of contingency use at each project gate"
+    },
+    {
+     "id": "step-06",
+     "label": "Audit completed projects yearly to keep the ranges honest"
+    },
+    {
+     "id": "step-03",
+     "label": "Define who can approve use of contingency and for what causes"
+    },
+    {
+     "id": "step-02",
+     "label": "Set contingency ranges by project type and by design stage"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Past project evidence sets the ranges, approval rules control use, and yearly audit keeps the policy matched to reality."
+  },
+  {
+   "id": "c4ww-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a growth capacity assessment for capital planning.",
+   "topicId": "growth-capacity-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: assessment linking development forecasts to plant rated capacity.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Convert growth to flow and load using current per capita values"
+    },
+    {
+     "id": "step-05",
+     "label": "Stage the expansion projects to be ready before those years"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare forecast loads with rated and reliable plant capacity"
+    },
+    {
+     "id": "step-01",
+     "label": "Obtain official growth forecasts for population and employment"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify the year each major process reaches its reliable limit"
+    },
+    {
+     "id": "step-06",
+     "label": "Report capacity triggers to municipal planning and utility leadership"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Official forecasts and measured per capita loads ground the assessment, limit years drive staging, and triggers are shared with planners."
+  },
+  {
+   "id": "c4ww-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing a capital project stage gate review.",
+   "topicId": "capital-stage-gate-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: gate review before construction funding for a nutrient removal upgrade.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Set the conditions and reporting required for the next gate"
+    },
+    {
+     "id": "step-03",
+     "label": "Check that operating and staffing impacts are funded in the operating plan"
+    },
+    {
+     "id": "step-02",
+     "label": "Review the updated cost estimate and the remaining risks"
+    },
+    {
+     "id": "step-04",
+     "label": "Verify procurement and construction readiness"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the project scope, design basis, and approval conditions are aligned"
+    },
+    {
+     "id": "step-05",
+     "label": "Approve, hold, or stop the project and record the decision basis"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Scope, cost, and operating impacts are tested together, readiness is verified, and the gate decision is recorded with its basis."
+  },
+  {
+   "id": "c4ww-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for asset criticality ranking for maintenance planning.",
+   "topicId": "asset-criticality-ranking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: ranking all plant assets to focus preventive maintenance resources.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "List assets by system and record the function each one performs"
+    },
+    {
+     "id": "step-04",
+     "label": "Combine the scores into a criticality ranking with review by operators"
+    },
+    {
+     "id": "step-06",
+     "label": "Refresh the ranking after major failures or plant changes"
+    },
+    {
+     "id": "step-02",
+     "label": "Score consequence of failure for compliance, safety, and service"
+    },
+    {
+     "id": "step-05",
+     "label": "Direct inspection and sparing resources to the highest ranked assets"
+    },
+    {
+     "id": "step-03",
+     "label": "Score likelihood using age, condition, and failure history"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Function and consequence come before likelihood, operator review grounds the ranking, and resources follow the highest criticality."
+  },
+  {
+   "id": "c4ww-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a reserve fund study for wastewater asset renewal.",
+   "topicId": "renewal-reserve-fund-study",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: study setting contributions needed to fund future asset renewals.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Test the model against early failure and cost increase cases"
+    },
+    {
+     "id": "step-02",
+     "label": "Spread renewal costs by year over the study period"
+    },
+    {
+     "id": "step-05",
+     "label": "Recommend a contribution path and the service charge effect"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the renewal forecast from the asset management plan"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the study every few years or after major plan changes"
+    },
+    {
+     "id": "step-03",
+     "label": "Model contribution levels that keep the fund from falling below its floor"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The renewal forecast drives the funding need, stress cases test the path, and periodic review keeps contributions matched to reality."
+  },
+  {
+   "id": "c4ww-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for disposing of retired plant assets responsibly.",
+   "topicId": "retired-asset-disposal",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: retired pumps, motors, and process equipment leaving the plant.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Check for hazardous materials that need special handling"
+    },
+    {
+     "id": "step-06",
+     "label": "Close the asset record with the disposal method and date"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the asset is removed from service and from the asset register"
+    },
+    {
+     "id": "step-05",
+     "label": "Sell, recycle, or dispose through approved channels with records kept"
+    },
+    {
+     "id": "step-02",
+     "label": "Drain, clean, and isolate any process or chemical residues"
+    },
+    {
+     "id": "step-04",
+     "label": "Offer reusable equipment to other utility plants first"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Register and safety checks come first, reuse inside the utility precedes sale, and disposal records close the asset history properly."
+  },
+  {
+   "id": "c4ww-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building an energy management program for wastewater plants.",
+   "topicId": "energy-management-program-build",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program covering aeration, pumping, and building energy across plants.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Fund quick measures first and plan capital measures through the capital plan"
+    },
+    {
+     "id": "step-01",
+     "label": "Baseline energy use by plant and by major process for a full year"
+    },
+    {
+     "id": "step-04",
+     "label": "Set annual reduction targets and assign an energy lead"
+    },
+    {
+     "id": "step-06",
+     "label": "Report energy performance and savings at management reviews"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify the largest saving opportunities from the baseline data"
+    },
+    {
+     "id": "step-02",
+     "label": "Set energy intensity measures such as kilowatt hours per cubic metre treated"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A full year baseline and intensity measures come first, targets and funding follow the data, and management review sustains the program."
+  },
+  {
+   "id": "c4ww-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an aeration energy benchmarking review across plants.",
+   "topicId": "aeration-energy-benchmarking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: comparing blower energy per unit of load removed between plants and trains.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Normalize energy by flow and by mass of ammonia and organic load removed"
+    },
+    {
+     "id": "step-05",
+     "label": "Trial the best practices at the least efficient plant"
+    },
+    {
+     "id": "step-03",
+     "label": "Check dissolved oxygen control and probe accuracy at outlier plants"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect blower energy, flow, and load data for the same period at each plant"
+    },
+    {
+     "id": "step-04",
+     "label": "Identify operating practices behind the most efficient plants"
+    },
+    {
+     "id": "step-06",
+     "label": "Report benchmark results and the trial outcome to leadership"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Common periods and normalization make comparison fair, outliers are checked for control faults, and best practice is trialled before adoption."
+  },
+  {
+   "id": "c4ww-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a biogas utilization improvement program.",
+   "topicId": "biogas-utilization-improvement",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: digester gas partly flared, program to raise beneficial use.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Report gas use and flaring monthly until the target holds"
+    },
+    {
+     "id": "step-03",
+     "label": "Identify why gas is flared, including storage and demand mismatches"
+    },
+    {
+     "id": "step-02",
+     "label": "Check gas quality and the condition of using equipment such as boilers"
+    },
+    {
+     "id": "step-04",
+     "label": "Sequence fixes from controls and storage to new using equipment"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure gas production, use, and flaring over a representative period"
+    },
+    {
+     "id": "step-05",
+     "label": "Set a target for beneficial use and a date to reach it"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Measurement separates production from use problems, causes are fixed in sequence, and monthly reporting holds the gain."
+  },
+  {
+   "id": "c4ww-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a pump energy efficiency program across lift and process pumps.",
+   "topicId": "pump-energy-efficiency-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program covering major pumps with high run hours and energy use.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "List major pumps and rank them by annual energy use"
+    },
+    {
+     "id": "step-04",
+     "label": "Add or tune variable speed control where duty varies widely"
+    },
+    {
+     "id": "step-06",
+     "label": "Track energy per volume pumped for the corrected pumps"
+    },
+    {
+     "id": "step-02",
+     "label": "Test the highest users against their duty points and system needs"
+    },
+    {
+     "id": "step-05",
+     "label": "Set a retest cycle for the largest pumps"
+    },
+    {
+     "id": "step-03",
+     "label": "Correct throttled, oversized, or worn pumps found by testing"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Ranking by energy focuses effort, duty testing finds the real faults, and energy per volume proves the corrections worked."
+  },
+  {
+   "id": "c4ww-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting an energy review for a plant expansion design.",
+   "topicId": "expansion-design-energy-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: expansion design review focused on lifetime energy cost.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Confirm metering that will verify energy performance after startup"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare process options on energy per unit treated over the plant life"
+    },
+    {
+     "id": "step-05",
+     "label": "Record the accepted energy performance in the project requirements"
+    },
+    {
+     "id": "step-01",
+     "label": "Require an energy model of the expanded plant at design flows"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify actual energy against the model after one year of operation"
+    },
+    {
+     "id": "step-03",
+     "label": "Check that efficient equipment is not removed during cost cutting"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Energy is modelled before options are chosen, value engineering cannot silently remove efficiency, and post startup verification closes the loop."
+  },
+  {
+   "id": "c4ww-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing peak electricity demand at a large plant.",
+   "topicId": "peak-demand-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: demand charges driven by coincident blower, pumping, and dewatering peaks.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Resequence flexible loads such as dewatering and filling away from peaks"
+    },
+    {
+     "id": "step-06",
+     "label": "Review peak results monthly and refine the schedule"
+    },
+    {
+     "id": "step-01",
+     "label": "Analyse interval demand data to find when and why peaks occur"
+    },
+    {
+     "id": "step-05",
+     "label": "Agree any process limits that demand actions must respect"
+    },
+    {
+     "id": "step-02",
+     "label": "List the loads that coincide at peak times and their flexibility"
+    },
+    {
+     "id": "step-04",
+     "label": "Set demand alarms and operator actions as the peak approaches"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Interval data reveal the true peak causes, flexible loads move first, and process limits keep demand control safe for treatment."
+  },
+  {
+   "id": "c4ww-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a heat recovery assessment for plant buildings and processes.",
+   "topicId": "heat-recovery-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: assessing recovery from effluent, biogas equipment, and exhaust air.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Cost the shortlisted options on a whole life basis"
+    },
+    {
+     "id": "step-01",
+     "label": "Inventory heat sources and heat demands with temperatures and timing"
+    },
+    {
+     "id": "step-04",
+     "label": "Check fouling, corrosion, and maintenance effects for each option"
+    },
+    {
+     "id": "step-06",
+     "label": "Select one option for detailed design or record why none proceed"
+    },
+    {
+     "id": "step-03",
+     "label": "Estimate recoverable heat for the best matched pairs"
+    },
+    {
+     "id": "step-02",
+     "label": "Match sources to demands that occur at the same time"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Sources and demands are matched on timing as well as temperature, practical effects are checked, and whole life cost decides."
+  },
+  {
+   "id": "c4ww-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an energy audit follow up program after an external audit.",
+   "topicId": "energy-audit-follow-up",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: external audit produced many recommendations of varied value.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Group recommendations into quick actions, projects, and rejections"
+    },
+    {
+     "id": "step-05",
+     "label": "Record why rejected items were not pursued"
+    },
+    {
+     "id": "step-03",
+     "label": "Assign owners and dates to the quick actions"
+    },
+    {
+     "id": "step-01",
+     "label": "Review each recommendation for saving, cost, and confidence level"
+    },
+    {
+     "id": "step-04",
+     "label": "Carry worthwhile projects into the capital plan with audit evidence"
+    },
+    {
+     "id": "step-06",
+     "label": "Report realized savings against the audit estimates yearly"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Recommendations are screened for confidence before action, quick wins come first, and realized savings are compared with estimates."
+  },
+  {
+   "id": "c4ww-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving renewable energy installations at plant sites.",
+   "topicId": "renewable-energy-site-approval",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: solar installation proposed on plant land and rooftops.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Approve or decline with the evidence and conditions recorded"
+    },
+    {
+     "id": "step-03",
+     "label": "Review structural, electrical, and safety requirements for the installation"
+    },
+    {
+     "id": "step-02",
+     "label": "Estimate generation from site data and check it against plant demand profile"
+    },
+    {
+     "id": "step-04",
+     "label": "Model whole life cost and the effect on purchased energy"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the site use does not conflict with plant expansion or operations"
+    },
+    {
+     "id": "step-05",
+     "label": "Confirm ownership, maintenance, and end of life duties in the agreement"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Operational needs come before generation estimates, whole life cost and duties are explicit, and the decision is recorded with conditions."
+  },
+  {
+   "id": "c4ww-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for reporting energy and emissions performance to leadership.",
+   "topicId": "energy-emissions-reporting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: annual report on energy use, cost, and greenhouse gas emissions.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Compile energy use by source for every plant for the year"
+    },
+    {
+     "id": "step-04",
+     "label": "Explain the largest changes and the actions behind them"
+    },
+    {
+     "id": "step-06",
+     "label": "Present the report and record leadership direction in the energy file"
+    },
+    {
+     "id": "step-02",
+     "label": "Convert use to cost and emissions using the approved factors"
+    },
+    {
+     "id": "step-05",
+     "label": "State the next year targets and the projects that support them"
+    },
+    {
+     "id": "step-03",
+     "label": "Normalize results by flow and load treated for fair comparison"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Complete data and approved factors come first, normalization allows fair comparison, and targets are tied to funded projects."
+  },
+  {
+   "id": "c4ww-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for updating a plant emergency response plan at utility level.",
+   "topicId": "emergency-response-plan-update",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plan covering spills, bypasses, power loss, flooding, and chemical events.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Assign roles for incident lead, operations, communications, and logging"
+    },
+    {
+     "id": "step-02",
+     "label": "List the credible emergencies for the site and their first actions"
+    },
+    {
+     "id": "step-05",
+     "label": "Issue the updated plan and brief all shifts on the changes"
+    },
+    {
+     "id": "step-01",
+     "label": "Review recent incidents and exercises for lessons the plan must carry"
+    },
+    {
+     "id": "step-06",
+     "label": "Test the plan with an exercise and correct the gaps found"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm notification lists, regulator contacts, and mutual aid arrangements"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Lessons and credible scenarios shape the update, roles and contacts are confirmed, and an exercise proves the plan works."
+  },
+  {
+   "id": "c4ww-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for leading the utility response to a major plant power failure.",
+   "topicId": "major-power-failure-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: extended power failure affecting treatment and pumping at a large plant.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Decide on bypass, hauling, or load reduction measures if capacity is exceeded"
+    },
+    {
+     "id": "step-06",
+     "label": "Lead the recovery and the post incident review when power is restored"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the failure scope and the expected restoration time from the utility provider"
+    },
+    {
+     "id": "step-05",
+     "label": "Update leadership and the public information contact on a set rhythm"
+    },
+    {
+     "id": "step-02",
+     "label": "Direct protection of treatment processes, equipment, and public safety first"
+    },
+    {
+     "id": "step-04",
+     "label": "Make the notifications required by the approval and utility procedures"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Scope and restoration time frame decisions, protection comes before mitigation, notifications are timely, and recovery ends with review."
+  },
+  {
+   "id": "c4ww-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for planning a flood readiness program for riverside plants.",
+   "topicId": "flood-readiness-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plants with a history of high water affecting access and process units.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Exercise the plan before the high water season"
+    },
+    {
+     "id": "step-01",
+     "label": "Map the site levels at which water affects each asset and access route"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief staff on safe access rules and when to stop attending the site"
+    },
+    {
+     "id": "step-06",
+     "label": "Review each flood event and update triggers and stock lists"
+    },
+    {
+     "id": "step-03",
+     "label": "Preposition barriers, pumps, fuel, and critical spares before the season"
+    },
+    {
+     "id": "step-02",
+     "label": "Set trigger levels tied to forecasts that start each readiness action"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Site levels and forecast triggers make actions timely, stock and staffing are ready in advance, and every event improves the plan."
+  },
+  {
+   "id": "c4ww-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a chemical spill emergency exercise at a treatment plant.",
+   "topicId": "chemical-spill-exercise",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: tabletop and field exercise for a bulk chemical delivery spill.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Brief participants on their roles without revealing the full scenario"
+    },
+    {
+     "id": "step-05",
+     "label": "Debrief participants and record the gaps without assigning blame"
+    },
+    {
+     "id": "step-03",
+     "label": "Run the exercise and record decisions, times, and communications"
+    },
+    {
+     "id": "step-01",
+     "label": "Set the exercise scenario, objectives, and safety boundaries"
+    },
+    {
+     "id": "step-04",
+     "label": "Check that spill equipment, containment, and notifications were correct"
+    },
+    {
+     "id": "step-06",
+     "label": "Assign corrective actions and retest the failed parts"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Objectives and safety boundaries come first, performance is recorded honestly, and corrective actions are retested, not just listed."
+  },
+  {
+   "id": "c4ww-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing a prolonged bypass event during extreme wet weather.",
+   "topicId": "prolonged-bypass-event-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: bypass continuing for many hours as flows exceed plant capacity.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Complete the event report and the improvement actions after flows recede"
+    },
+    {
+     "id": "step-03",
+     "label": "Maximize treatment through every available process path"
+    },
+    {
+     "id": "step-02",
+     "label": "Make and update the required notifications as the event develops"
+    },
+    {
+     "id": "step-04",
+     "label": "Protect downstream uses by coordinating with affected parties as directed"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm bypass start, cause, and estimated flow using plant records"
+    },
+    {
+     "id": "step-05",
+     "label": "Record volumes, duration, and effluent quality through the event"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Accurate event records support notifications, treatment is maximized throughout, and the report converts the event into improvements."
+  },
+  {
+   "id": "c4ww-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a cybersecurity incident response for plant control systems.",
+   "topicId": "control-system-cyber-incident-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: suspected compromise of the plant control network.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Isolate the affected systems while keeping the plant safely in control"
+    },
+    {
+     "id": "step-04",
+     "label": "Preserve logs and evidence for the investigation"
+    },
+    {
+     "id": "step-06",
+     "label": "Complete the incident review and strengthen access controls"
+    },
+    {
+     "id": "step-02",
+     "label": "Confirm manual operating capability for critical processes"
+    },
+    {
+     "id": "step-05",
+     "label": "Restore systems in stages with verification at each stage"
+    },
+    {
+     "id": "step-03",
+     "label": "Engage the utility information technology and security responders"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Safe manual control comes before investigation, evidence is preserved, staged restore prevents repeat harm, and access controls are strengthened."
+  },
+  {
+   "id": "c4ww-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for mutual aid coordination between utilities during an emergency.",
+   "topicId": "mutual-aid-coordination",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: neighbouring utility needs operators and equipment after a major failure.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Deploy the team with a named lead and daily reporting back"
+    },
+    {
+     "id": "step-02",
+     "label": "Check that sending help does not breach home plant coverage or licensing duties"
+    },
+    {
+     "id": "step-05",
+     "label": "Support the team and rotate staff if the event extends"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the request, the skills and equipment needed, and the duration"
+    },
+    {
+     "id": "step-06",
+     "label": "Close the deployment with a debrief and record lessons for both utilities"
+    },
+    {
+     "id": "step-03",
+     "label": "Agree cost, supervision, and safety responsibilities in writing"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The request is confirmed precisely, home coverage is protected, terms are written before deployment, and debriefing shares the lessons."
+  },
+  {
+   "id": "c4ww-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a post incident review after a serious plant event.",
+   "topicId": "post-incident-review-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: review after an event involving compliance, safety, or public impact.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Identify the direct causes and the system causes behind them"
+    },
+    {
+     "id": "step-06",
+     "label": "Share the lessons with other plants that share the same risks"
+    },
+    {
+     "id": "step-01",
+     "label": "Secure the records, logs, and samples that document the event"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign owners and dates and report progress to leadership"
+    },
+    {
+     "id": "step-02",
+     "label": "Build a timeline from records rather than memory"
+    },
+    {
+     "id": "step-04",
+     "label": "Agree corrective actions that address the system causes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Records and timeline come before conclusions, system causes drive lasting fixes, and lessons are shared where the same risk exists."
+  },
+  {
+   "id": "c4ww-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up a laboratory quality management system for a utility.",
+   "topicId": "laboratory-quality-system-setup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: quality system covering plant laboratories and contract laboratory use.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Start internal audits and proficiency testing on a set schedule"
+    },
+    {
+     "id": "step-01",
+     "label": "List the analyses, methods, and reporting duties the system must cover"
+    },
+    {
+     "id": "step-04",
+     "label": "Set training and competency records for every analyst"
+    },
+    {
+     "id": "step-06",
+     "label": "Review system performance at management review and act on findings"
+    },
+    {
+     "id": "step-03",
+     "label": "Write procedures for calibration, quality control, and data review"
+    },
+    {
+     "id": "step-02",
+     "label": "Assign a quality lead and define roles for analysts and reviewers"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Scope and roles come first, procedures and competency make quality repeatable, and audits prove the system works."
+  },
+  {
+   "id": "c4ww-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating out of control quality control results in the laboratory.",
+   "topicId": "laboratory-qc-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: repeated quality control failures for a compliance parameter.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check standards, reagents, and calibration records for the analysis"
+    },
+    {
+     "id": "step-05",
+     "label": "Correct the confirmed cause and requalify the analysis"
+    },
+    {
+     "id": "step-03",
+     "label": "Reanalyse quality control and retained samples to isolate the fault"
+    },
+    {
+     "id": "step-01",
+     "label": "Hold reporting of affected results until validity is assessed"
+    },
+    {
+     "id": "step-04",
+     "label": "Review analyst technique against the method where records look sound"
+    },
+    {
+     "id": "step-06",
+     "label": "Release or correct the held results and document the investigation"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Results are held before any release, materials and calibration are checked before technique, and requalification precedes reporting."
+  },
+  {
+   "id": "c4ww-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a proficiency testing program for plant laboratories.",
+   "topicId": "proficiency-testing-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program testing analyst and method performance with external samples.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Record corrective actions and verify them in the next round"
+    },
+    {
+     "id": "step-03",
+     "label": "Submit results by the program deadline and record them as reported"
+    },
+    {
+     "id": "step-02",
+     "label": "Distribute samples as routine work without special handling"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare results with the assigned values and the acceptance limits"
+    },
+    {
+     "id": "step-01",
+     "label": "Select proficiency samples that match the compliance analyses performed"
+    },
+    {
+     "id": "step-05",
+     "label": "Investigate any unacceptable result to its root cause"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Samples treated as routine give honest results, failures are investigated to root cause, and the next round verifies the fix."
+  },
+  {
+   "id": "c4ww-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for approving a new laboratory method for compliance reporting.",
+   "topicId": "new-laboratory-method-approval",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: new method proposed for a parameter reported under the approval.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Confirm the method is accepted for the compliance purpose intended"
+    },
+    {
+     "id": "step-04",
+     "label": "Train analysts and record competency on the new method"
+    },
+    {
+     "id": "step-06",
+     "label": "Approve the change and update procedures and reporting together"
+    },
+    {
+     "id": "step-02",
+     "label": "Compare the new method with the current method on real samples"
+    },
+    {
+     "id": "step-05",
+     "label": "Run both methods in parallel for the agreed period"
+    },
+    {
+     "id": "step-03",
+     "label": "Check detection limits, precision, and quality control requirements"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Acceptance for the purpose comes first, real sample comparison and parallel running prove equivalence, and documents change together."
+  },
+  {
+   "id": "c4ww-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a laboratory data review and release procedure.",
+   "topicId": "laboratory-data-review-release",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: procedure governing review of effluent results before they are reported.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Release approved results to operations and compliance reporting"
+    },
+    {
+     "id": "step-02",
+     "label": "Reviewer confirms holding times, dilutions, and limit comparisons"
+    },
+    {
+     "id": "step-05",
+     "label": "File raw data and reviews so any result can be traced"
+    },
+    {
+     "id": "step-01",
+     "label": "Analyst checks raw data, calculations, and quality control for the batch"
+    },
+    {
+     "id": "step-06",
+     "label": "Audit released results against raw data on a regular schedule"
+    },
+    {
+     "id": "step-03",
+     "label": "Flag any result that is unusual for the plant and verify it before release"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Analyst and reviewer checks are separate, unusual results are verified before release, and traceability allows later audit."
+  },
+  {
+   "id": "c4ww-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing contract laboratory performance for compliance samples.",
+   "topicId": "contract-laboratory-performance-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: contract laboratory analysing most compliance samples for the utility.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Track turnaround and error rates by parameter monthly"
+    },
+    {
+     "id": "step-06",
+     "label": "Renew, correct, or change provider based on the performance record"
+    },
+    {
+     "id": "step-01",
+     "label": "Set contract requirements for methods, turnaround, and quality control reporting"
+    },
+    {
+     "id": "step-05",
+     "label": "Audit the laboratory or its quality records on a set cycle"
+    },
+    {
+     "id": "step-02",
+     "label": "Review each report for completeness and holding time compliance"
+    },
+    {
+     "id": "step-04",
+     "label": "Raise issues with the laboratory with evidence and required corrections"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Requirements are set in the contract first, performance is tracked from evidence, and renewal decisions rest on the record."
+  },
+  {
+   "id": "c4ww-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a sampling quality program for plant sampling points.",
+   "topicId": "sampling-quality-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program covering sampling locations, containers, preservation, and custody.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Audit sampling in the field against the rules on a set schedule"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm each sampling point measures the stream the approval intends"
+    },
+    {
+     "id": "step-04",
+     "label": "Use chain of custody for every compliance sample"
+    },
+    {
+     "id": "step-06",
+     "label": "Correct sampling faults and note any effect on past results"
+    },
+    {
+     "id": "step-03",
+     "label": "Train samplers and record their competency"
+    },
+    {
+     "id": "step-02",
+     "label": "Set container, preservation, and holding time rules for each analysis"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Correct points and rules come before training, custody protects sample integrity, and field audits catch faults that records hide."
+  },
+  {
+   "id": "c4ww-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for designating an overall responsible operator for a Class 4 plant.",
+   "topicId": "oro-designation-class4-plant",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: designation covering all shifts, absences, and emergency availability.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Check the candidate experience and knowledge of this plant systems"
+    },
+    {
+     "id": "step-05",
+     "label": "Brief operators on who holds the role and how to reach them"
+    },
+    {
+     "id": "step-03",
+     "label": "Record the designation in writing with its start date and scope"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the candidate licence class matches the plant classification"
+    },
+    {
+     "id": "step-04",
+     "label": "Arrange qualified backup coverage for absences and off hours"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the designation when staffing or plant classification changes"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Licence and plant knowledge are verified first, written designation and backup coverage make the role real, and changes trigger review."
+  },
+  {
+   "id": "c4ww-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an overall responsible operator handover between shifts.",
+   "topicId": "oro-shift-handover",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: handover covering process state, compliance risks, and active incidents.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Escalate any unresolved risk to utility leadership before leaving"
+    },
+    {
+     "id": "step-03",
+     "label": "Confirm the sampling and reporting duties due in the coming shift"
+    },
+    {
+     "id": "step-02",
+     "label": "List active incidents, bypass risks, and equipment out of service"
+    },
+    {
+     "id": "step-04",
+     "label": "Brief the incoming overall responsible operator in person or by phone"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the operating log and the latest laboratory and trend data"
+    },
+    {
+     "id": "step-05",
+     "label": "Record the handover and any directions given in the log"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Data and risks are reviewed before briefing, directions are recorded, and unresolved risk is escalated rather than handed over silently."
+  },
+  {
+   "id": "c4ww-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a supervisory competency program for shift supervisors.",
+   "topicId": "supervisory-competency-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: program building process, compliance, safety, and leadership competency.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Define the competencies each supervisor role must hold"
+    },
+    {
+     "id": "step-04",
+     "label": "Provide coaching, courses, and acting opportunities matched to each plan"
+    },
+    {
+     "id": "step-06",
+     "label": "Assign duties only within the competencies each supervisor has proven"
+    },
+    {
+     "id": "step-02",
+     "label": "Assess current supervisors against the competency list"
+    },
+    {
+     "id": "step-05",
+     "label": "Reassess competency after the development period"
+    },
+    {
+     "id": "step-03",
+     "label": "Build individual development plans for the gaps found"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The competency standard comes first, gaps get individual plans, and duties follow proven competency, not job title alone."
+  },
+  {
+   "id": "c4ww-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for leading a serious incident investigation as the overall responsible operator.",
+   "topicId": "oro-serious-incident-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: investigation of an incident with injury risk and compliance impact.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Interview staff and build the event timeline from records"
+    },
+    {
+     "id": "step-02",
+     "label": "Preserve records, samples, and equipment settings as found"
+    },
+    {
+     "id": "step-05",
+     "label": "Identify causes and corrective actions with owners and dates"
+    },
+    {
+     "id": "step-01",
+     "label": "Make the scene safe and ensure care for anyone affected"
+    },
+    {
+     "id": "step-06",
+     "label": "Verify the actions closed and share lessons across plants"
+    },
+    {
+     "id": "step-03",
+     "label": "Notify utility leadership and regulators as the duties require"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Safety and care come first, evidence is preserved before interviews, and verified closure plus shared lessons complete the duty."
+  },
+  {
+   "id": "c4ww-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an operator training and licensing progression plan.",
+   "topicId": "operator-licensing-progression-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: plan moving operators toward higher classes under Ontario Regulation 129/04.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Schedule study support, courses, and exam attempts"
+    },
+    {
+     "id": "step-06",
+     "label": "Report licensing coverage and risks to leadership twice a year"
+    },
+    {
+     "id": "step-01",
+     "label": "Record each operator current licence, experience, and eligibility dates"
+    },
+    {
+     "id": "step-05",
+     "label": "Celebrate passes and reset plans promptly after any failure"
+    },
+    {
+     "id": "step-02",
+     "label": "Match operators to the next licence level and its requirements"
+    },
+    {
+     "id": "step-04",
+     "label": "Arrange work experience that builds the required competencies"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Current status and eligibility frame the plan, experience is arranged deliberately, and leadership sees coverage risk regularly."
+  },
+  {
+   "id": "c4ww-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a management of change review led by senior operations.",
+   "topicId": "management-of-change-leadership-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, the Environmental Compliance Approval, and direction from the overall responsible operator.",
+   "configuration": "Scope: change to a process, chemical, or control strategy at a major plant.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Implement with updated procedures and training before startup"
+    },
+    {
+     "id": "step-01",
+     "label": "Describe the change and the reason it is proposed in writing"
+    },
+    {
+     "id": "step-04",
+     "label": "Approve, modify, or reject the change and record the basis"
+    },
+    {
+     "id": "step-06",
+     "label": "Review the change after a set period and confirm it performed as expected"
+    },
+    {
+     "id": "step-03",
+     "label": "Check approval and procedure documents the change would affect"
+    },
+    {
+     "id": "step-02",
+     "label": "Assess effects on compliance, safety, staffing, and training"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Written description and impact assessment come before approval, procedures and training precede startup, and later review proves the change."
+  },
+  {
+   "id": "c4ww-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "At utility scale the plant meets ammonia limits in summer but fails total nitrogen each winter, and leadership must choose a strategy.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Basin temperature falls to 8 C each winter while summer holds near 20 C at the same loading."
+    },
+    {
+     "id": "ev2",
+     "label": "Winter solids retention time is held at 9 days, while a pilot at 16 days nitrified and denitrified fully on winter sewage."
+    },
+    {
+     "id": "ev3",
+     "label": "Summer total nitrogen averages 6 mg/L and winter averages 14 mg/L against a 10 mg/L objective."
+    },
+    {
+     "id": "ev4",
+     "label": "Carbon for denitrification is adequate year round, with anoxic zone nitrate near zero when nitrification holds."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Winter SRT is too short for cold nitrifiers, so the winter nitrogen failure is a sludge age capacity limit, not a carbon limit"
+     },
+     {
+      "id": "inf-b",
+      "label": "A new carbon source is needed because denitrification carbon is exhausted in winter"
+     },
+     {
+      "id": "inf-c",
+      "label": "The aeration blowers have failed and no oxygen reaches the basin in winter"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent nitrogen doubles every winter and exceeds design load"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Carbon is shown adequate and anoxic nitrate is near zero when nitrification holds, which contradicts a carbon limit. No blower failure is recorded. The pilot at longer SRT succeeding at the same winter temperature and load supports a sludge age capacity limit."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Winter SRT record with paired pilot nitrification results at 9 and 16 days"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent flow annual summary"
+     },
+     {
+      "id": "nc-c",
+      "label": "Blower nameplate data sheet"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The record shows the 16 day pilot holding total nitrogen below 8 mg/L all winter while the 9 day plant train exceeded 12 mg/L.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two parallel biological nutrient removal trains show very different phosphorus results and leadership must decide where to invest.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Train A effluent phosphorus averages 0.4 mg/L and Train B averages 1.8 mg/L at the same influent and flow split."
+    },
+    {
+     "id": "ev2",
+     "label": "Anaerobic zone volatile fatty acids are high at the head of Train A and near zero at the head of Train B."
+    },
+    {
+     "id": "ev3",
+     "label": "Train B anaerobic zone receives nitrate rich return sludge, while Train A return enters without nitrate."
+    },
+    {
+     "id": "ev4",
+     "label": "Swapping the return routing on trial moved the high phosphorus result with the nitrate rich return."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Train B has fewer phosphorus accumulating organisms and needs reseeding from Train A"
+     },
+     {
+      "id": "inf-b",
+      "label": "Nitrate entering the Train B anaerobic zone is suppressing phosphorus release, so return routing, not biology inventory, drives the difference"
+     },
+     {
+      "id": "inf-c",
+      "label": "Ferric dosing is lower on Train B and explains the whole difference"
+     },
+     {
+      "id": "inf-d",
+      "label": "Train B clarifier is larger and washes phosphorus out hydraulically"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Ferric dosing is not shown to differ and clarifier size does not explain anaerobic release. The swap trial moving the result with the nitrate rich return directly supports the routing explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Ferric delivery invoices for the quarter"
+     },
+     {
+      "id": "nc-b",
+      "label": "Return routing log with anaerobic nitrate and phosphorus release profiles for both trains"
+     },
+     {
+      "id": "nc-c",
+      "label": "Clarifier dimension drawing"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "Anaerobic phosphorus release in Train B recovered within a week once nitrate free return was routed there, matching Train A.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A utility debates adding external carbon plant wide after a month of high effluent total nitrogen.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent nitrate is high at 11 mg/L while effluent ammonia stays low at 0.8 mg/L, showing nitrification is complete."
+    },
+    {
+     "id": "ev2",
+     "label": "Anoxic zone dissolved oxygen reads 1.6 mg/L because return sludge arrives highly aerated from the aerobic zone."
+    },
+    {
+     "id": "ev3",
+     "label": "A bench denitrification test on the same liquor at DO below 0.3 mg/L removed nitrate fully without added carbon."
+    },
+    {
+     "id": "ev4",
+     "label": "Influent readily biodegradable carbon is in the normal range for this plant."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Nitrifiers have washed out and ammonia oxidation has stopped"
+     },
+     {
+      "id": "inf-b",
+      "label": "The influent carbon supply has collapsed and must be replaced externally"
+     },
+     {
+      "id": "inf-c",
+      "label": "Oxygen carried into the anoxic zone is consuming carbon and blocking denitrification, so carbon addition plant wide is not the first fix"
+     },
+     {
+      "id": "inf-d",
+      "label": "Cold temperature has stopped all biological activity in the anoxic zone"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Ammonia is low, which contradicts nitrifier washout, and the bench test removed nitrate without added carbon, which contradicts a collapsed carbon supply. High anoxic DO with full bench removal at low DO supports oxygen carryover."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Carbon supplier quotation file"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent temperature monthly summary"
+     },
+     {
+      "id": "nc-c",
+      "label": "Anoxic DO profile with bench denitrification rate test at low and high DO"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "The bench rate at low DO was three times the rate at 1.6 mg/L DO on the same liquor, with no carbon added in either jar."
+   }
+  },
+  {
+   "id": "c4ww-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Leadership reviews a proposal to dose ferric to the whole plant after phosphorus rose in one of four clarifier quadrants.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Only the quadrant fed by Aeration Train 2 shows high effluent phosphorus, at 2.1 mg/L, while the other three average 0.5 mg/L."
+    },
+    {
+     "id": "ev2",
+     "label": "Train 2 anaerobic phosphorus release is weak, and its influent volatile fatty acids are half the other trains."
+    },
+    {
+     "id": "ev3",
+     "label": "A sidestream fermentation pilot on Train 2 sludge doubled its volatile fatty acids and restored release in a bench test."
+    },
+    {
+     "id": "ev4",
+     "label": "Ferric dose is equal to all trains and clarifier hydraulics are balanced."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "All trains need more ferric because the dose is too low everywhere"
+     },
+     {
+      "id": "inf-b",
+      "label": "Train 2 clarifier is hydraulically overloaded and needs a new baffle"
+     },
+     {
+      "id": "inf-c",
+      "label": "The phosphorus analyser reads high only on Train 2 samples"
+     },
+     {
+      "id": "inf-d",
+      "label": "Train 2 lacks fermentable carbon for biological phosphorus release, so a targeted fermentation fix fits better than plant wide ferric"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Equal ferric and balanced hydraulics contradict a plant wide dose or clarifier cause, and only one train is affected. The pilot doubling fatty acids and restoring release supports a Train 2 carbon shortage."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Train by train anaerobic release and volatile fatty acid record with fermentation pilot results"
+     },
+     {
+      "id": "nc-b",
+      "label": "Ferric pump calibration sheet"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent composite sampler log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The pilot raised Train 2 fatty acids to match the other trains and bench release rose to the same range within days.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant chasing a tighter phosphorus limit must choose between chemical and biological upgrades.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Biological phosphorus removal already achieves 0.6 mg/L on average but spikes to 1.4 mg/L during wet weather flow peaks."
+    },
+    {
+     "id": "ev2",
+     "label": "During peaks the anaerobic zone detention falls below 30 minutes and return sludge nitrate rises."
+    },
+    {
+     "id": "ev3",
+     "label": "A pilot with flow equalization ahead of the anaerobic zone held phosphorus below 0.7 mg/L through simulated peaks."
+    },
+    {
+     "id": "ev4",
+     "label": "Steady state bench tests show ample phosphorus accumulating activity at normal detention."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Wet weather loss of anaerobic detention and nitrate intrusion cause the spikes, so equalization protects the biology better than more chemical alone"
+     },
+     {
+      "id": "inf-b",
+      "label": "The biology has lost its phosphorus organisms permanently and must be replaced"
+     },
+     {
+      "id": "inf-c",
+      "label": "Ferric pumps fail during every storm and cause each spike"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent phosphorus doubles during storms and exceeds any process capacity"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "No pump failure pattern is recorded and steady state activity is ample. The pilot holding phosphorus through simulated peaks at the same load supports detention loss as the spike cause."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Ferric pump maintenance log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Wet weather anaerobic detention and nitrate record with equalization pilot results"
+     },
+     {
+      "id": "nc-c",
+      "label": "Annual influent phosphorus summary"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "Equalized pilot effluent stayed below 0.7 mg/L through three simulated peaks while the unequalized control spiked above 1.3 mg/L each time.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Ammonia compliance is strong but alkalinity costs keep rising, and leadership questions the aeration strategy.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent alkalinity falls to 45 mg/L as CaCO3 while influent alkalinity is 210 mg/L as CaCO3."
+    },
+    {
+     "id": "ev2",
+     "label": "The plant nitrifies fully but its anoxic zone is bypassed, so almost no alkalinity is recovered by denitrification."
+    },
+    {
+     "id": "ev3",
+     "label": "A pilot restoring the anoxic zone recovered about half the consumed alkalinity and cut soda ash use in the trial mass balance."
+    },
+    {
+     "id": "ev4",
+     "label": "Basin pH stays near 6.8 and nitrification has not yet failed."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Influent alkalinity has fallen and the watershed supply must be supplemented"
+     },
+     {
+      "id": "inf-b",
+      "label": "Bypassing denitrification forfeits alkalinity recovery, so restoring the anoxic zone addresses the chemical cost at its source"
+     },
+     {
+      "id": "inf-c",
+      "label": "Nitrification is failing and soda ash is masking a biology problem"
+     },
+     {
+      "id": "inf-d",
+      "label": "The soda ash feeder is leaking and wasting chemical to the floor"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Influent alkalinity is normal at 210 mg/L and nitrification is complete, which contradicts supply loss and biology failure. The pilot recovery in the mass balance supports the bypass explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Soda ash delivery invoices"
+     },
+     {
+      "id": "nc-b",
+      "label": "Watershed alkalinity survey"
+     },
+     {
+      "id": "nc-c",
+      "label": "Anoxic zone operating record with pilot alkalinity mass balance"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "The pilot mass balance showed alkalinity recovery matching the denitrified nitrate load, with soda ash demand falling in step."
+   }
+  },
+  {
+   "id": "c4ww-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A utility must decide whether its nitrification limit is set by basin volume or by clarifier solids handling.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "At peak ammonia load the basin holds MLSS at 3200 mg/L and nitrifies fully in a bench reactor at the same SRT."
+    },
+    {
+     "id": "ev2",
+     "label": "In the plant, effluent ammonia rises only when clarifier solids loading exceeds its rated band and MLSS is forced down."
+    },
+    {
+     "id": "ev3",
+     "label": "A paired trial holding clarifier loading in band by step feed kept plant MLSS up and ammonia low at the same peak load."
+    },
+    {
+     "id": "ev4",
+     "label": "Blower capacity has 20 percent spare at peak oxygen demand."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Basin volume is too small and only a new tank can add capacity"
+     },
+     {
+      "id": "inf-b",
+      "label": "Blower capacity is exhausted and oxygen limits nitrification at peak"
+     },
+     {
+      "id": "inf-c",
+      "label": "Clarifier solids loading caps the MLSS the plant can hold, so nitrification capacity is clarifier limited, not basin volume limited"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent ammonia exceeds the design load beyond any operating fix"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Blowers have spare capacity and the bench reactor nitrified at the same SRT, which argues against oxygen and volume limits. Step feed holding MLSS and ammonia at the same load supports the clarifier cap."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Clarifier solids loading and MLSS record with step feed trial results"
+     },
+     {
+      "id": "nc-b",
+      "label": "Blower capacity test sheet"
+     },
+     {
+      "id": "nc-c",
+      "label": "Design basin volume drawing"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "During step feed the clarifier stayed in band, MLSS held at 3200 mg/L, and effluent ammonia stayed below 2 mg/L through the peak.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Effluent total phosphorus crept up over a season while chemical dose stayed constant, prompting a strategy review.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Ferric dose per unit of phosphorus removed has risen steadily for three months."
+    },
+    {
+     "id": "ev2",
+     "label": "Influent phosphorus load rose 30 percent after a new food industry connected to the sewer."
+    },
+    {
+     "id": "ev3",
+     "label": "Jar tests show the current ferric dose achieves the limit on old sewage but not on current sewage."
+    },
+    {
+     "id": "ev4",
+     "label": "A jar test at a dose matched to the new load met the limit with normal residuals."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Ferric quality has degraded in storage and lost its strength"
+     },
+     {
+      "id": "inf-b",
+      "label": "The phosphorus organisms died and chemical removal must replace them"
+     },
+     {
+      "id": "inf-c",
+      "label": "Effluent limits changed mid season and the plant was not told"
+     },
+     {
+      "id": "inf-d",
+      "label": "The influent phosphorus load increase outgrew a fixed chemical dose, so dose must follow load rather than stay constant"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Jar tests meeting the limit at a load matched dose contradict degraded chemical strength as the sole cause. The load trend and the fixed dose jar failure support load outgrowing dose."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Ferric storage inspection log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent phosphorus load trend with jar tests at fixed and load matched doses"
+     },
+     {
+      "id": "nc-c",
+      "label": "Regulation amendment file"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "At the load matched dose the jar met 0.5 mg/L, while the fixed dose jar on the same current sewage stayed at 1.1 mg/L.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Leadership weighs sidestream treatment after centrate returns began driving morning ammonia peaks.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent ammonia peaks each morning two hours after dewatering starts and is flat on days dewatering does not run."
+    },
+    {
+     "id": "ev2",
+     "label": "Centrate ammonia measures 850 mg/L and the dewatering window is only four hours per day."
+    },
+    {
+     "id": "ev3",
+     "label": "A pilot storing centrate and returning it evenly over 24 hours cut the morning peak by more than half."
+    },
+    {
+     "id": "ev4",
+     "label": "Main influent ammonia shows no morning peak on the diurnal survey."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Concentrated centrate returned in a short window creates the ammonia peak, so equalized or sidestream handling is the strategic fix"
+     },
+     {
+      "id": "inf-b",
+      "label": "Morning influent from the collection system carries the ammonia peak"
+     },
+     {
+      "id": "inf-c",
+      "label": "Nitrifiers are inactive each morning and recover by noon daily"
+     },
+     {
+      "id": "inf-d",
+      "label": "The ammonia analyser drifts high every morning and corrects itself"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The influent survey shows no morning peak and peaks vanish on non dewatering days, which contradicts a collection system source. The equalization pilot cutting the peak supports the centrate window explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Diurnal influent survey summary"
+     },
+     {
+      "id": "nc-b",
+      "label": "Analyser calibration log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Centrate flow and ammonia record with equalized return pilot results"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "With equalized return the morning effluent ammonia peak fell from 6.5 to 2.8 mg/L at unchanged total centrate load."
+   }
+  },
+  {
+   "id": "c4ww-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant with excellent nitrogen removal faces rising aeration energy and asks whether it is over aerating.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Effluent ammonia averages 0.4 mg/L against a 5 mg/L limit, and nitrate is fully denitrified."
+    },
+    {
+     "id": "ev2",
+     "label": "Aerobic zone DO is held at 3.5 mg/L around the clock, including low load nights."
+    },
+    {
+     "id": "ev3",
+     "label": "A trial holding DO at 1.8 mg/L by ammonia based control kept effluent ammonia below 1.5 mg/L and cut airflow 25 percent."
+    },
+    {
+     "id": "ev4",
+     "label": "Nitrifier activity tests show strong capacity reserve at current SRT."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The plant is at risk of ammonia failure and needs even higher DO"
+     },
+     {
+      "id": "inf-b",
+      "label": "Fixed high DO control wastes air beyond what compliance needs, so ammonia based aeration control is supported by the trial"
+     },
+     {
+      "id": "inf-c",
+      "label": "Blower wear has raised energy use and only new blowers can help"
+     },
+     {
+      "id": "inf-d",
+      "label": "Influent load rose and the extra air is fully load driven"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Effluent ammonia far below the limit with strong reserve contradicts a compliance risk needing more air. The trial cutting airflow while holding ammonia low supports over aeration under fixed control."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Ammonia based control trial record with airflow and effluent ammonia trends"
+     },
+     {
+      "id": "nc-b",
+      "label": "Blower maintenance history"
+     },
+     {
+      "id": "nc-c",
+      "label": "Annual load summary"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Across the two week trial, airflow fell 25 percent and no effluent ammonia result exceeded 1.5 mg/L.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A ransomware event disables the plant control network at a neighbouring utility, prompting a local readiness review.",
+   "topicId": "risk-emergency-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "This plant control network is segmented from the business network with no direct internet path in the architecture review."
+    },
+    {
+     "id": "ev2",
+     "label": "Manual operation capability was tested last quarter and operators ran the plant by hand for a shift."
+    },
+    {
+     "id": "ev3",
+     "label": "Backup control configurations are stored offline and a restore was tested this year."
+    },
+    {
+     "id": "ev4",
+     "label": "Vendor remote access uses a single shared password that has not changed in three years."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "No gaps exist because segmentation alone stops all attacks"
+     },
+     {
+      "id": "inf-b",
+      "label": "Manual operation is impossible at a modern plant"
+     },
+     {
+      "id": "inf-c",
+      "label": "Backups have never been tested at this plant"
+     },
+     {
+      "id": "inf-d",
+      "label": "Segmentation, manual capability, and tested backups are strengths, but the shared vendor password is the standout gap to close first"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Backups were tested and manual operation was proven, which contradicts the never tested and impossible claims. The unchanged shared vendor password remains a concrete gap despite good segmentation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Readiness review record covering network architecture, manual operation test, backups, and vendor access"
+     },
+     {
+      "id": "nc-b",
+      "label": "Vendor access log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Backup restore test report"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "Closing the vendor access gap with individual accounts and multifactor sign in was completed within the month after the review.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Total nitrogen fails only on the train receiving landfill leachate, and leadership must set a receiving strategy.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Leachate adds 18 percent of the nitrogen load in 2 percent of the flow to Train 1 only."
+    },
+    {
+     "id": "ev2",
+     "label": "Train 1 effluent total nitrogen averages 13 mg/L while Train 2 on municipal sewage averages 7 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "Bench tests show leachate sewage nitrifies but denitrifies slowly due to low biodegradable carbon."
+    },
+    {
+     "id": "ev4",
+     "label": "Blending leachate across both trains in a pilot evened the load and both trains met 10 mg/L."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Leachate contains a nitrification toxin that kills Train 1 biomass"
+     },
+     {
+      "id": "inf-b",
+      "label": "Train 1 blowers are undersized compared with Train 2"
+     },
+     {
+      "id": "inf-c",
+      "label": "Concentrating a high strength, carbon poor leachate on one train overloads its nitrogen capacity, so load sharing is the supported strategy"
+     },
+     {
+      "id": "inf-d",
+      "label": "Train 2 receives a hidden carbon source that Train 1 lacks"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Bench nitrification succeeding contradicts a biomass killing toxin, and no blower difference is recorded. Blending in the pilot meeting the objective on both trains supports load concentration as the cause."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Blower nameplate comparison"
+     },
+     {
+      "id": "nc-b",
+      "label": "Leachate load split record with blended pilot total nitrogen results"
+     },
+     {
+      "id": "nc-c",
+      "label": "Leachate toxicity screening file"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "Blended pilot effluent total nitrogen held at 8 to 9 mg/L on both trains at the same total leachate volume.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A utility choosing between two denitrification filters and a basin retrofit reviews pilot data from both options.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Pilot Filter A removed nitrate to 2 mg/L but backwashed twice daily and lost media fines."
+    },
+    {
+     "id": "ev2",
+     "label": "Pilot Filter B removed nitrate to 3 mg/L with one backwash per day and stable media over six months."
+    },
+    {
+     "id": "ev3",
+     "label": "The basin retrofit pilot met 4 mg/L using existing tanks and no new media, at the lowest operating cost."
+    },
+    {
+     "id": "ev4",
+     "label": "The compliance objective is 10 mg/L total nitrogen, already within reach of all three options."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Filter A is the only option that can meet the nitrogen objective"
+     },
+     {
+      "id": "inf-b",
+      "label": "Filter B media is unstable and will fail within a year"
+     },
+     {
+      "id": "inf-c",
+      "label": "The basin retrofit cannot remove nitrate at all"
+     },
+     {
+      "id": "inf-d",
+      "label": "All options meet the objective, so the decision turns on operability and cost, where the retrofit and Filter B outperform Filter A"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "All three pilots met the 10 mg/L objective, which contradicts claims that only one option works. Six month media stability favours Filter B over Filter A, and the retrofit removed nitrate using existing tanks."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Vendor brochure collection"
+     },
+     {
+      "id": "nc-b",
+      "label": "Single day demonstration results"
+     },
+     {
+      "id": "nc-c",
+      "label": "Six month pilot comparison record for nitrate, backwash frequency, and media condition"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "Over six months Filter B media loss was negligible and the retrofit held 4 mg/L, while Filter A needed twice daily backwashing throughout."
+   }
+  },
+  {
+   "id": "c4ww-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Phosphorus removal improved after a sewer rehabilitation program, surprising leadership who expected no process link.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Infiltration fell 25 percent after rehabilitation, and influent flow dropped while phosphorus mass load stayed the same."
+    },
+    {
+     "id": "ev2",
+     "label": "Influent phosphorus concentration rose from 5.2 to 6.8 mg/L as dilution fell."
+    },
+    {
+     "id": "ev3",
+     "label": "Anaerobic zone fatty acid concentration rose with the stronger sewage and phosphorus release increased."
+    },
+    {
+     "id": "ev4",
+     "label": "Effluent phosphorus fell from 0.9 to 0.5 mg/L with no change in ferric dose."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Less dilution strengthened the sewage and improved biological phosphorus release, linking the sewer program to the process gain"
+     },
+     {
+      "id": "inf-b",
+      "label": "Ferric dose was secretly increased by operations staff"
+     },
+     {
+      "id": "inf-c",
+      "label": "The rehabilitation removed a phosphorus discharging industry"
+     },
+     {
+      "id": "inf-d",
+      "label": "A new analyser installed that month reads lower than the old one"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Mass load stayed the same, which contradicts removal of a discharger, and the ferric log shows no dose change. Stronger sewage raising fatty acids and release supports the dilution explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Influent flow, concentration, and mass load record before and after rehabilitation"
+     },
+     {
+      "id": "nc-b",
+      "label": "Ferric dosing pump log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Analyser replacement record"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The record shows concentration up and mass flat across the change, with anaerobic release rising in step with fatty acids.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A plant must protect nitrification through a planned digester outage that will change sidestream loads.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "With the digester out, undigested sludge storage will return ammonia rich supernatant to the headworks."
+    },
+    {
+     "id": "ev2",
+     "label": "Bench tests on supernatant blended sewage show nitrification holds if SRT is raised two days before the outage."
+    },
+    {
+     "id": "ev3",
+     "label": "The same bench blend at current SRT loses nitrification within four days."
+    },
+    {
+     "id": "ev4",
+     "label": "Spare basin capacity exists to raise MLSS ahead of the outage."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The outage has no nitrogen impact and no preparation is needed"
+     },
+     {
+      "id": "inf-b",
+      "label": "Raising SRT before the outage builds nitrifier reserve for the sidestream ammonia surge, as the bench comparison shows"
+     },
+     {
+      "id": "inf-c",
+      "label": "Chemical addition alone can replace nitrification during the outage"
+     },
+     {
+      "id": "inf-d",
+      "label": "Supernatant should be hauled away because blending always fails"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Blending succeeded at raised SRT, which contradicts the claim that blending always fails. The bench loss at current SRT shows preparation is needed, supporting the SRT build ahead plan."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Digester outage schedule"
+     },
+     {
+      "id": "nc-b",
+      "label": "Bench nitrification record for outage blends at current and raised SRT"
+     },
+     {
+      "id": "nc-c",
+      "label": "Chemical delivery contract"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "The raised SRT bench held effluent ammonia below 3 mg/L on the outage blend while the current SRT bench rose above 10 mg/L.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Denitrification stalls each spring despite warm temperatures, and leadership reviews the seasonal pattern.",
+   "topicId": "nutrient-removal-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Each spring, snowmelt raises flows 40 percent and anoxic zone detention falls by one third."
+    },
+    {
+     "id": "ev2",
+     "label": "Effluent nitrate rises each spring while ammonia stays low, showing nitrification intact."
+    },
+    {
+     "id": "ev3",
+     "label": "A step feed pilot during melt held anoxic detention and kept nitrate low at the same high flow."
+    },
+    {
+     "id": "ev4",
+     "label": "Influent carbon concentration falls with melt dilution but total carbon mass is unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Spring carbon mass collapses and external carbon is required"
+     },
+     {
+      "id": "inf-b",
+      "label": "Nitrifiers wash out each spring and release nitrate"
+     },
+     {
+      "id": "inf-c",
+      "label": "Spring high flow shortens anoxic detention and stalls denitrification, so flow management, not carbon purchase, is the seasonal fix"
+     },
+     {
+      "id": "inf-d",
+      "label": "Cold spring temperatures stop denitrifier activity"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Carbon mass is unchanged and ammonia stays low, which contradicts carbon collapse and nitrifier washout. Warm spring temperatures argue against cold inhibition, and the step feed pilot supports detention loss."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Carbon mass load calculation sheet"
+     },
+     {
+      "id": "nc-b",
+      "label": "Basin temperature trend"
+     },
+     {
+      "id": "nc-c",
+      "label": "Spring flow and anoxic detention record with step feed pilot nitrate results"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "The step feed pilot held effluent nitrate below 5 mg/L through the melt peak while the conventional train rose to 11 mg/L."
+   }
+  },
+  {
+   "id": "c4ww-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A whole plant solids balance does not close, and leadership must find where the missing solids go.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Measured solids out in cake and effluent total 82 percent of solids in plus growth estimated from yield."
+    },
+    {
+     "id": "ev2",
+     "label": "Digester gas production is normal, ruling out a large unmeasured destruction change."
+    },
+    {
+     "id": "ev3",
+     "label": "Solids inventory in the sludge storage tank rose steadily all quarter on level records."
+    },
+    {
+     "id": "ev4",
+     "label": "A tank survey confirms stored volume matches the balance gap within measurement error."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Cake scales underread and the missing solids left by truck"
+     },
+     {
+      "id": "inf-b",
+      "label": "Effluent solids are under sampled and carry the missing mass"
+     },
+     {
+      "id": "inf-c",
+      "label": "Digesters destroyed far more solids than gas data show"
+     },
+     {
+      "id": "inf-d",
+      "label": "Solids are accumulating in storage rather than leaving the plant, so the balance gap is an inventory build, not a measurement loss"
+     }
+    ],
+    "correctOptionId": "inf-d",
+    "explanation": "Gas production is normal, which argues against extra destruction, and the survey matching the gap directly supports storage accumulation. No scale fault is recorded."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Quarterly solids balance with storage tank level and survey record"
+     },
+     {
+      "id": "nc-b",
+      "label": "Truck scale calibration certificate"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent sampler maintenance log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The surveyed storage increase equalled the balance gap to within 3 percent for the quarter.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Capacity planning must decide whether the plant is hydraulically or biologically limited at design horizon flows.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "At projected flows the clarifiers reach their solids loading limit while basins stay below their loading limit."
+    },
+    {
+     "id": "ev2",
+     "label": "Pilot stress tests held biology stable at 130 percent of current load with clarifier loading kept in band."
+    },
+    {
+     "id": "ev3",
+     "label": "Wet weather peaks, not average load, drive the clarifier exceedances in the model."
+    },
+    {
+     "id": "ev4",
+     "label": "Equalization storage in the model removes the clarifier exceedances without new basins."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Clarifier capacity during wet weather peaks is the binding constraint, so peak management outranks basin expansion"
+     },
+     {
+      "id": "inf-b",
+      "label": "Basin biology fails first and new aeration tanks are the priority"
+     },
+     {
+      "id": "inf-c",
+      "label": "Blower capacity limits the plant before any clarifier limit"
+     },
+     {
+      "id": "inf-d",
+      "label": "Projected flows never exceed any unit limit in the model"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The pilot held biology at higher load and the model shows basins in band, which contradicts a biology first limit. Equalization removing the exceedances supports the clarifier peak constraint."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Blower capacity curve"
+     },
+     {
+      "id": "nc-b",
+      "label": "Capacity model record with pilot stress test and equalization results"
+     },
+     {
+      "id": "nc-c",
+      "label": "Basin volume design sheet"
+     }
+    ],
+    "correctOptionId": "nc-b",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "With equalization the modelled clarifier loading stayed in band at horizon flows, while basin loading never exceeded 80 percent of its limit.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  },
+  {
+   "id": "c4ww-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Energy benchmarking shows one of two identical plants using far more power per cubic metre treated.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Plant A uses 0.42 kWh per m3 and Plant B uses 0.61 kWh per m3 at similar load and effluent quality."
+    },
+    {
+     "id": "ev2",
+     "label": "Plant B aeration accounts for almost all of the difference on submetered records."
+    },
+    {
+     "id": "ev3",
+     "label": "Plant B holds DO at 3.2 mg/L while Plant A controls near 1.9 mg/L with similar ammonia results."
+    },
+    {
+     "id": "ev4",
+     "label": "A DO control trial at Plant B matched Plant A energy per m3 within a month."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Plant B blowers are worn out and must be replaced to save energy"
+     },
+     {
+      "id": "inf-b",
+      "label": "Plant B excess energy is an aeration control difference, not an equipment or load difference, as the trial confirms"
+     },
+     {
+      "id": "inf-c",
+      "label": "Plant B treats a much stronger sewage that needs the extra air"
+     },
+     {
+      "id": "inf-d",
+      "label": "Plant B meters overread and the difference is not real"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Similar strength and quality contradict a load explanation, and the trial matching energy after a control change argues against worn blowers as the cause. Submeters, not a single meter, show the aeration gap."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Blower overhaul quotation"
+     },
+     {
+      "id": "nc-b",
+      "label": "Influent strength comparison table"
+     },
+     {
+      "id": "nc-c",
+      "label": "Submetered energy comparison with Plant B DO control trial record"
+     }
+    ],
+    "correctOptionId": "nc-c",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "After the control change Plant B aeration energy fell to within 5 percent of Plant A at the same ammonia performance."
+   }
+  },
+  {
+   "id": "c4ww-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A mass balance shows more nitrogen leaving in effluent plus cake than entering in influent, prompting a data review.",
+   "topicId": "whole-plant-balance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater plant case under Ontario Regulation 129/04. Readings are from the stated period unless a bench, pilot, or paired unit check is noted. Archived plant records are available for follow up.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Influent nitrogen is sampled twice weekly while effluent is sampled daily."
+    },
+    {
+     "id": "ev2",
+     "label": "Two wet weather influent events with high nitrogen were missed by the twice weekly schedule."
+    },
+    {
+     "id": "ev3",
+     "label": "Flow weighted resampling for one month closed the nitrogen balance within 5 percent."
+    },
+    {
+     "id": "ev4",
+     "label": "Cake nitrogen assays are consistent across the quarter."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The process fixes atmospheric nitrogen and creates the extra mass"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cake assays overstate nitrogen and cause the whole gap"
+     },
+     {
+      "id": "inf-c",
+      "label": "Influent sampling frequency missed load events and biased the balance, so the gap is a sampling artifact, not a process creation of nitrogen"
+     },
+     {
+      "id": "inf-d",
+      "label": "Effluent sampling double counts nitrogen on wet days"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Cake assays are consistent and no double counting is shown. Resampling closing the balance within 5 percent directly supports the sampling frequency explanation."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check best distinguishes the supported explanation from the alternatives?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Flow weighted influent resampling record with the monthly nitrogen balance"
+     },
+     {
+      "id": "nc-b",
+      "label": "Cake assay duplicates file"
+     },
+     {
+      "id": "nc-c",
+      "label": "Effluent sampler log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "This check tests the supported explanation directly against the alternatives. The other choices do not isolate the cause shown by the evidence."
+   },
+   "clueText": {
+    "nc-a": "The resampled month balanced to within 5 percent, compared with a 22 percent gap under the old schedule.",
+    "nc-b": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives.",
+    "nc-c": "This check does not isolate the cause shown by the evidence and cannot distinguish the supported explanation from the alternatives."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4ww-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Effluent Sampling Program Governance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c4ww-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c4ww-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c4ww-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Approval Renewal Expansion Application Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c4ww-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c4ww-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c4ww-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c4ww-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Nutrient Technology Pilot Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c4ww-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c4ww-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c4ww-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c4ww-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c4ww-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Full Scale Process Trial Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c4ww-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c4ww-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c4ww-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Pilot Scale Up Decision Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c4ww-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c4ww-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c4ww-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c4ww-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Asset Management Plan Update Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c4ww-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c4ww-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c4ww-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c4ww-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c4ww-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Growth Capacity Assessment Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c4ww-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c4ww-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c4ww-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Renewal Reserve Fund Study Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c4ww-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c4ww-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c4ww-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Nutrient Removal Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c4ww-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Biogas Utilization Improvement Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c4ww-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c4ww-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c4ww-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c4ww-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c4ww-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Energy Audit Follow Up Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c4ww-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4ww-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Whole Plant Balance Shift",
+   "tasks": [
+    {
+     "taskId": "c4ww-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c4ww-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c4ww-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced wastewater management, nutrient removal strategy, digestion and biosolids chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "d0ff03837ff7f8f08ee7944ab80d719fe70e8975d5e3f525fdaea408f08ae4f3",
+  "taskReceipts": [
+   {
+    "taskId": "c4ww-process40",
+    "revision": "r1",
+    "sha256": "38a886e805bb64247e9af7d4a1f1111fcd803afa19acd39860d51326f11937a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process41",
+    "revision": "r1",
+    "sha256": "6677b1027869e4864ce34c3f656d3a8cda59bfb18dbb20254de1f7f4b12fbad6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process42",
+    "revision": "r1",
+    "sha256": "1930965d6d6501bbe4491d250009cb2f2d5ea31c08baf1e01485d87484ff8402",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process43",
+    "revision": "r1",
+    "sha256": "d3564977e51fddb08bd3998554ac0312583fdb20b9ffeb37e408d5be0a7c85dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process44",
+    "revision": "r1",
+    "sha256": "6c1e18f4aeafd980a7e84367d011d74bf45f8f3afdeb8f8267fa184dbf5c3997",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process45",
+    "revision": "r1",
+    "sha256": "fc35aa129babcd25ded51eaaab3c62fbd104eeba18d3702bdff36a24e0a3de6c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process46",
+    "revision": "r1",
+    "sha256": "b142a56e886839912bbb0bddaa0ee55fc111f62d32601f94b1586aadbe486f8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process47",
+    "revision": "r1",
+    "sha256": "3825c281459e3cb2d28640a578aa7bf6371edce0aacc20760fafef90942f3aa1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process48",
+    "revision": "r1",
+    "sha256": "fb753b6514e69dc9c4bffd80d8ea37263065a7dafce63659cec1614afb5de881",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process49",
+    "revision": "r1",
+    "sha256": "0cb1514913307be08f6c3e215ed0784fca9b663be1dc011ed3f53d7b0810d371",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process50",
+    "revision": "r1",
+    "sha256": "23faa2382d63c92d434b589b13002d1dc94e0860d211d0a476014849affecda1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process51",
+    "revision": "r1",
+    "sha256": "bafd3441359ed45c52f60c6dd2650b25c1f80fc9282ec55a1548a0420553517f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process52",
+    "revision": "r1",
+    "sha256": "afca1803ca1448f9625a01402797b44406eea992425a8d1a739b0563e0340437",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process53",
+    "revision": "r1",
+    "sha256": "f01833e285df8d81b13cfe5404849a0d38bb3aa00a7d6a081a68d8d22200d5b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process54",
+    "revision": "r1",
+    "sha256": "5a2f72c65d9514dab0e83fc863b142584eda190a7235c6c4c5d02cbfc373b46d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process55",
+    "revision": "r1",
+    "sha256": "a9c2590ab224dcaf669dbe4e101e6d657ab7de1d3be9f9f38907536f3e2b129e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process56",
+    "revision": "r1",
+    "sha256": "dec184e150823e2c1d2b98e256f7eaadbad4aba631d223a3b6b83b0a80a128a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process57",
+    "revision": "r1",
+    "sha256": "075cf4f2d44f411bc54063b49c08d84c886cf27b5c047014a23d80b40e1f8dbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process58",
+    "revision": "r1",
+    "sha256": "bb011854c475d309f34002dbccdbb0c2cb19419309fb81b5e47b2549254ba265",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process59",
+    "revision": "r1",
+    "sha256": "7afcb20baab5a4cf941c19485a4b28dbf473900e289fd44bd57ba593eb328c60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process60",
+    "revision": "r1",
+    "sha256": "d07cea9dc635632f80681a510c57050efefb1c9954cd1609c2a39c5debecb3f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process61",
+    "revision": "r1",
+    "sha256": "76749a31895315c073e3f70749371a3b029debfb3f9b40bebab55fa93ca370b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process62",
+    "revision": "r1",
+    "sha256": "115012b4405a76498e2165fe8f15498dc2d61603364e6261010ef817207693fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process63",
+    "revision": "r1",
+    "sha256": "d4448bf54cb4c45d436bfe6358419616644df5fcad2304509c86bd170d2b42c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process64",
+    "revision": "r1",
+    "sha256": "96f9df369a423322cb1562b1147d0e7ef98defe9763b4c22f6866dcee552470a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process65",
+    "revision": "r1",
+    "sha256": "69510d994d667454584505e902c97261483fbce69b43471759cd46bd5217e6ec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process66",
+    "revision": "r1",
+    "sha256": "ced30709815417e7158ed07e59230da1e1231d3f8ff69a3704d27e6ae5583caa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process67",
+    "revision": "r1",
+    "sha256": "5e50ace068c6c53f320fc5410cfcc7430ab775407a0c365c0699e08fe7b00100",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process68",
+    "revision": "r1",
+    "sha256": "33e3f177348eda39b12961d58830f95698de68bcf093d47e9f549dc972bd5d38",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process69",
+    "revision": "r1",
+    "sha256": "c3e29226dde1f59c7234db1403ed5fff5250d699eafcde312a3dec5afc2a0250",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process70",
+    "revision": "r1",
+    "sha256": "a00d36423f186485beefdcf798fa65c4c0ce3fdd18f1cb324f1588c1fa5f0be5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process71",
+    "revision": "r1",
+    "sha256": "07763f0e16b0da6dcd71721365302dd18e010ec44ac8711915e061799f1bbee4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process72",
+    "revision": "r1",
+    "sha256": "90b6f413b321697470c6cac6ce834f192af2f2671cd27a32fea84002aa8ecfca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process73",
+    "revision": "r1",
+    "sha256": "6a6ca6d8fc55c7d73cfc7fd998740c1e175c0d7776b8bbdc5b584730b5ce390f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process74",
+    "revision": "r1",
+    "sha256": "ee4c15b68a7538ef127fc40106caaf8455ac69a3bda5fa2fe5b12493f5190104",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process75",
+    "revision": "r1",
+    "sha256": "362396813eb6beb3f4b1dd921eb254d51d0d7aff6d16e57864c5d0d2b21a2330",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process76",
+    "revision": "r1",
+    "sha256": "5e92d1cc1614a6f9cc7bd054b573130af3e7dce488bc0e9b57258e9750654430",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process77",
+    "revision": "r1",
+    "sha256": "0bd38923cf54a2edabc354ffd229ce269b93b1af57415f1e44ebfb323aab5a6a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process78",
+    "revision": "r1",
+    "sha256": "778c0465c596b9b18d054863a1bb7ac64937d4ab75eb39d106c31585c0856ac8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process79",
+    "revision": "r1",
+    "sha256": "8e955cadf25cbad30aa3158845309104b5eb358535e9d1584c588ffb12241a70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process80",
+    "revision": "r1",
+    "sha256": "4b0ae43729c65f552849cd15e2bd93afab85ed72727e6110a545893400b1081f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process81",
+    "revision": "r1",
+    "sha256": "b5c868feaacac0c638ea2f6a4c4681e1893a82a4da2f0fc744df7470f1d7a26e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process82",
+    "revision": "r1",
+    "sha256": "18fdaf6fb3714ba7d50ffc95fb45dc4f5a07efca871c2b25f4c38a0c966d18fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process83",
+    "revision": "r1",
+    "sha256": "ce0a3757a220dfd9ddddf356d4e67f569664e042148f5e2d6733335769a273f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process84",
+    "revision": "r1",
+    "sha256": "12d84e0bbddc15a660bf13f3301d3c3142194bb25562065c75a57a716de4f8cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process85",
+    "revision": "r1",
+    "sha256": "4f674d5c11fd1f63fc6cfbadcc00e4d697f478eae4812ab10ea3787bdd55392b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process86",
+    "revision": "r1",
+    "sha256": "b30bb623d099a109ba706ad5149f83ecea799462b468d8ac4c646cd97b9252f9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process87",
+    "revision": "r1",
+    "sha256": "e4f37f4df624ed49ece6db274d81c53b3f67354e95e73b564c244c4e09261c2c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process88",
+    "revision": "r1",
+    "sha256": "2c58cd48f1a417093747bbf6ee9a070e08aa587bb0dab5d3d964f5a6698d5128",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process89",
+    "revision": "r1",
+    "sha256": "2fa39b3052a98e59b6e400aa7f076e7b1a040ce9477529fb25594e7396beaea8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process90",
+    "revision": "r1",
+    "sha256": "e2f849b03eaaf827a6d091eb204ef78281495f264d890258529c9b3a7140e032",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process91",
+    "revision": "r1",
+    "sha256": "386e31517986d59112fb1a4bc822dd3a19c8ddf67a33c2bbb51e87c6d8af3802",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process92",
+    "revision": "r1",
+    "sha256": "9f0d3786ab7d5d892ef2528a17b797308940b20e710113bf2137b11743f465e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process93",
+    "revision": "r1",
+    "sha256": "62e5f5ebdd45c2f0d438b3b8d06e196991d0bfb8e57fb958282ffa2d8fb19925",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process94",
+    "revision": "r1",
+    "sha256": "1e08c9e443e1491c318cb4888064fbd44ced866dbd75b39a542f51816d5ebdeb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process95",
+    "revision": "r1",
+    "sha256": "6390c59181fd6ae070df6d32644b9cf1583770bec6d99c9c738ff1873a45c964",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process96",
+    "revision": "r1",
+    "sha256": "8b57c300817b851a2fbcc1f01fa4225a904ad21f41b2ed08f8d907f7745d6ae9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process97",
+    "revision": "r1",
+    "sha256": "0bc5a83d431a1666b4101b9e289e45d959d75984431f682ed3503fce8dba02c6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process98",
+    "revision": "r1",
+    "sha256": "cf1e0faaf4c7fa2061d4e8d16be49ac7a754ff10cbe6a2c87b110fd4853be9d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-process99",
+    "revision": "r1",
+    "sha256": "b4744e2f7de3f87af39764fc6ee6a8c09954ce7c0ca5404e60656a4d6b392130",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence01",
+    "revision": "r1",
+    "sha256": "6f2bafaaeefac11a22a981689a05ce30e5004ddb3438d8de912a83f910b84bc3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence02",
+    "revision": "r1",
+    "sha256": "97e3c897ad7c8984f4c1983498a54a87a15de5bb8cb28098f0fe8e7157e394f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence03",
+    "revision": "r1",
+    "sha256": "bc0e261dfc78fdca152d16e76876be0d3e05bc115194c20c90ce194668d46a42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence04",
+    "revision": "r1",
+    "sha256": "42ba50e7f74d07760a747b47bdb1e0f874b9d2a6b6acf2d66150e7ddcdce1745",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence05",
+    "revision": "r1",
+    "sha256": "d4568818753391e68275784eaf47c502e4de71943605a65162ed283f6d8cd310",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence06",
+    "revision": "r1",
+    "sha256": "55fc2d0bd2e14ccd90a425ff0bda471c7d7ca9d639c59f1634f7c1bb172aa01f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence07",
+    "revision": "r1",
+    "sha256": "0f94c5ac3df16efc1d91e1c96bf9133a36d5a4abeb64069e08db05dd3d6a665e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence08",
+    "revision": "r1",
+    "sha256": "1eceb940a2a26b601e1fed88784636179713f55bcab2c337a58d28a6b3119654",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence09",
+    "revision": "r1",
+    "sha256": "02a4e50df3b9748ce52a465270e9b6b794030fe9be6943bd9d0fb983c3c60287",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence10",
+    "revision": "r1",
+    "sha256": "e5bd0e4d0d842d9d9aea1a52c0b73afc95f1a0f458341a5d02821d477796a0d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence100",
+    "revision": "r1",
+    "sha256": "a9d73c6fa4a59eb9a4a5804ffc15784b39d0c2804061806895516d02dd89718c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence11",
+    "revision": "r1",
+    "sha256": "005d4d0176d5194224cdee7d321d7261ee2787235770b9f0087fb3663cae4ec6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence12",
+    "revision": "r1",
+    "sha256": "f2d287891dee64fc3208abeaa4dba7936f9a2ebb796aaf15b730905daf66de4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence13",
+    "revision": "r1",
+    "sha256": "8c9c3b2646afd804b87f15a793baacfdea4b28e2c5d1299e38590aa84230338f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence14",
+    "revision": "r1",
+    "sha256": "d27933adb7e441a6b0c0b24341305405038609a7d9c6747f32daa37f3dda175c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence15",
+    "revision": "r1",
+    "sha256": "d9dab166b25dbefc51ad5f2b96a52a001cffaedda20604a551c9ceafbbd8055b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence16",
+    "revision": "r1",
+    "sha256": "c8f866c307d2a00cd109812db8a959e01a42ab387d7fa10b5911272cfdc80711",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence17",
+    "revision": "r1",
+    "sha256": "83cb889a7e4cf4125502e197d0bdb044c9b40d6cd750ff91b60e5bbba30baa52",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence18",
+    "revision": "r1",
+    "sha256": "642e2af697ba3c3afe8b618e5cba6dabe905bddec49d10fb21424a07b7f0816a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4ww-evidence19",
+    "revision": "r1",
+    "sha256": "081e734e1972c864a479889a6f0ddafeb98f6b36fa68248c079fe348c119d3d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4ww-mission61",
+    "revision": "r1",
+    "sha256": "0f73b7edf0c92722c36e78c2c950b3131e7b5f2099f0ce09a3779d7e037729a9"
+   },
+   {
+    "missionId": "c4ww-mission62",
+    "revision": "r1",
+    "sha256": "e6eae8e345e63cdd8b6b9a7c9e4f37ac09ebc5138594e8deb89211333bd25a83"
+   },
+   {
+    "missionId": "c4ww-mission63",
+    "revision": "r1",
+    "sha256": "4daa069199def87ee9175a868d9c8e3f208208b6f5abda7d1543af972035051d"
+   },
+   {
+    "missionId": "c4ww-mission64",
+    "revision": "r1",
+    "sha256": "07f6348302153d1868990372b616b063523a92c872dd29c2173c7013a43a7955"
+   },
+   {
+    "missionId": "c4ww-mission65",
+    "revision": "r1",
+    "sha256": "07ab7b4172993cc8d99e6b6cf69bd4975c24334bba3f58346e9f6ff3c9f0a971"
+   },
+   {
+    "missionId": "c4ww-mission66",
+    "revision": "r1",
+    "sha256": "af315b0f107bbc061bb4ba0c41fc0df0062d38a636f7366fde3d9e5a227fc19b"
+   },
+   {
+    "missionId": "c4ww-mission67",
+    "revision": "r1",
+    "sha256": "eb63831472ebb561f5b9069bd86c6231b22191babbd828eec6a3920518027a20"
+   },
+   {
+    "missionId": "c4ww-mission68",
+    "revision": "r1",
+    "sha256": "45a134cbb41648e73f174d8372ee5f1ef83e5cafbb9bbb75fe03280191b93caf"
+   },
+   {
+    "missionId": "c4ww-mission69",
+    "revision": "r1",
+    "sha256": "041fec667fe4d84e4e8f5fcf3bf1193e965051e9a3e0109a2195c1a606f04ee4"
+   },
+   {
+    "missionId": "c4ww-mission70",
+    "revision": "r1",
+    "sha256": "27489ba6c2901a9520ef5eb1cd5bfd53bd299c2f710e42a16638238e7c60bf48"
+   },
+   {
+    "missionId": "c4ww-mission71",
+    "revision": "r1",
+    "sha256": "a06aa59b4b00fa2ad432a6971f29e3c776b49f600f7e53252dd4ab8f42f0225e"
+   },
+   {
+    "missionId": "c4ww-mission72",
+    "revision": "r1",
+    "sha256": "6438b1781c31c2b3555a7d20a1fb40bde07e34a68d97de734b00935b537b1108"
+   },
+   {
+    "missionId": "c4ww-mission73",
+    "revision": "r1",
+    "sha256": "73af9a32f0865306eac8cdcaabfeb2d9f00f928cfea5923ec64496a7ce208637"
+   },
+   {
+    "missionId": "c4ww-mission74",
+    "revision": "r1",
+    "sha256": "00226d7eb700a8144289ab77dca7ce71052514422755cef5585bf9221b93fdf6"
+   },
+   {
+    "missionId": "c4ww-mission75",
+    "revision": "r1",
+    "sha256": "121443a3869181b434ca39e053efdc65d6e11778535f7989e1f2c49dd622fc11"
+   },
+   {
+    "missionId": "c4ww-mission76",
+    "revision": "r1",
+    "sha256": "c0a087e347bd2273a39316306c8c8d227535469c6348b23939f9a739d63c9be8"
+   },
+   {
+    "missionId": "c4ww-mission77",
+    "revision": "r1",
+    "sha256": "12b09b32a86fd5fd8d137f512bc1327741a95221890419a70644cb13df35bc54"
+   },
+   {
+    "missionId": "c4ww-mission78",
+    "revision": "r1",
+    "sha256": "cef35e801309bab91595331a19e75ba5a4984880862966efc5739403dca186fc"
+   },
+   {
+    "missionId": "c4ww-mission79",
+    "revision": "r1",
+    "sha256": "caf836ab53ae7c925d050a493cbe9065d80878df760270e7647d80513c2f04cd"
+   },
+   {
+    "missionId": "c4ww-mission80",
+    "revision": "r1",
+    "sha256": "c37953d4824aa75ec1bb3c328b158295f0ffa3f677567d31e5f2877ead218896"
+   }
+  ]
+ }
+}

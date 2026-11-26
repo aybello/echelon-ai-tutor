@@ -1,0 +1,3860 @@
+{
+ "courseKey": "class2-ww",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c2ww-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this volatile solids reduction calculation. Volatile solids in are 260 kg/d and volatile solids out are 104 kg/d.",
+   "topicId": "digester-loading",
+   "level": "class1",
+   "assumptions": "Fictional digester: VS in = 260 kg/d, VS out = 104 kg/d. Percent reduction divides by VS in.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volatile solids in = 260 kg/d and volatile solids out = 104 kg/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. VS reduction = (VS in - VS out) / VS in * 100"
+    },
+    {
+     "id": "line3",
+     "label": "3. VS reduction = (260 - 104) / 104 * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. VS reduction = (260 - 104) / 260 * 100 = 60 percent",
+   "explanation": "Line 3 divided by VS out instead of VS in. Correct reduction is 60 percent."
+  },
+  {
+   "id": "c2ww-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity calculation. Ammonia nitrogen oxidized is 20 mg/L at a flow of 2000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 20 mg/L, Q = 2000 m3/d, factor 7.14 mg/mg as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 20 mg/L and flow = 2000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 mg per mg * ammonia oxidized"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 7.41 * 20 mg/L = 148.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity consumed = 7.14 * 20 mg/L = 142.8 mg/L",
+   "explanation": "Line 3 used 7.41 instead of the given 7.14 factor. Correct consumption is 142.8 mg/L, or 285.6 kg/d at this flow."
+  },
+  {
+   "id": "c2ww-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity mass calculation. Ammonia nitrogen oxidized is 25 mg/L at a flow of 2000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 25 mg/L, Q = 2000 m3/d, factor 7.14 mg/mg as given. Mass in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 25 mg/L and flow = 2000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 * 25 mg/L = 178.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity mass = 178.5 mg/L * 2000 m3/d / 100 = 3570 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity mass = 178.5 mg/L * 2000 m3/d / 1000 = 357 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct alkalinity mass is 357 kg/d."
+  },
+  {
+   "id": "c2ww-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity calculation. Ammonia nitrogen oxidized is 30 mg/L at a flow of 3000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 30 mg/L, Q = 3000 m3/d, factor 7.14 mg/mg as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 30 mg/L and flow = 3000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 mg per mg * ammonia oxidized"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 7.41 * 30 mg/L = 222.3 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity consumed = 7.14 * 30 mg/L = 214.2 mg/L",
+   "explanation": "Line 3 used 7.41 instead of the given 7.14 factor. Correct consumption is 214.2 mg/L, or 642.6 kg/d at this flow."
+  },
+  {
+   "id": "c2ww-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity mass calculation. Ammonia nitrogen oxidized is 15 mg/L at a flow of 4000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 15 mg/L, Q = 4000 m3/d, factor 7.14 mg/mg as given. Mass in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 15 mg/L and flow = 4000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 * 15 mg/L = 107.1 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity mass = 107.1 mg/L * 4000 m3/d / 100 = 4284 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity mass = 107.1 mg/L * 4000 m3/d / 1000 = 428.4 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct alkalinity mass is 428.4 kg/d."
+  },
+  {
+   "id": "c2ww-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity calculation. Ammonia nitrogen oxidized is 28 mg/L at a flow of 2500 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 28 mg/L, Q = 2500 m3/d, factor 7.14 mg/mg as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 28 mg/L and flow = 2500 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 mg per mg * ammonia oxidized"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 7.41 * 28 mg/L = 207.48 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity consumed = 7.14 * 28 mg/L = 199.92 mg/L",
+   "explanation": "Line 3 used 7.41 instead of the given 7.14 factor. Correct consumption is 199.92 mg/L, or 499.8 kg/d at this flow."
+  },
+  {
+   "id": "c2ww-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity mass calculation. Ammonia nitrogen oxidized is 22 mg/L at a flow of 3000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 22 mg/L, Q = 3000 m3/d, factor 7.14 mg/mg as given. Mass in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 22 mg/L and flow = 3000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 * 22 mg/L = 157.08 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity mass = 157.08 mg/L * 3000 m3/d / 100 = 4712.4 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity mass = 157.08 mg/L * 3000 m3/d / 1000 = 471.24 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct alkalinity mass is 471.24 kg/d."
+  },
+  {
+   "id": "c2ww-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity calculation. Ammonia nitrogen oxidized is 35 mg/L at a flow of 2000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 35 mg/L, Q = 2000 m3/d, factor 7.14 mg/mg as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 35 mg/L and flow = 2000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 mg per mg * ammonia oxidized"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 7.41 * 35 mg/L = 259.35 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity consumed = 7.14 * 35 mg/L = 249.9 mg/L",
+   "explanation": "Line 3 used 7.41 instead of the given 7.14 factor. Correct consumption is 249.9 mg/L, or 499.8 kg/d at this flow."
+  },
+  {
+   "id": "c2ww-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity mass calculation. Ammonia nitrogen oxidized is 18 mg/L at a flow of 5000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 18 mg/L, Q = 5000 m3/d, factor 7.14 mg/mg as given. Mass in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 18 mg/L and flow = 5000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 * 18 mg/L = 128.52 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity mass = 128.52 mg/L * 5000 m3/d / 100 = 6426 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity mass = 128.52 mg/L * 5000 m3/d / 1000 = 642.6 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct alkalinity mass is 642.6 kg/d."
+  },
+  {
+   "id": "c2ww-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity calculation. Ammonia nitrogen oxidized is 24 mg/L at a flow of 2500 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 24 mg/L, Q = 2500 m3/d, factor 7.14 mg/mg as given.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 24 mg/L and flow = 2500 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 mg per mg * ammonia oxidized"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity consumed = 7.41 * 24 mg/L = 177.84 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity consumed = 7.14 * 24 mg/L = 171.36 mg/L",
+   "explanation": "Line 3 used 7.41 instead of the given 7.14 factor. Correct consumption is 171.36 mg/L, or 428.4 kg/d at this flow."
+  },
+  {
+   "id": "c2ww-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity mass calculation. Ammonia nitrogen oxidized is 26 mg/L at a flow of 3000 m3/d. Alkalinity consumption is 7.14 mg as CaCO3 per mg of ammonia nitrogen.",
+   "topicId": "alkalinity-nitrification",
+   "level": "class1",
+   "assumptions": "Fictional nitrifying basin: ammonia oxidized = 26 mg/L, Q = 3000 m3/d, factor 7.14 mg/mg as given. Mass in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ammonia nitrogen oxidized = 26 mg/L and flow = 3000 m3/d"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity consumed = 7.14 * 26 mg/L = 185.64 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity mass = 185.64 mg/L * 3000 m3/d / 100 = 5569.2 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity mass = 185.64 mg/L * 3000 m3/d / 1000 = 556.92 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct alkalinity mass is 556.92 kg/d."
+  },
+  {
+   "id": "c2ww-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 30 percent and stage 2 removes 50 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 30 percent and 50 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 30 percent and stage 2 removal = 50 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.30 = 0.7"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 30 percent + 50 percent = 80 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.30) * (1 - 0.50)) * 100 = 65 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 65 percent."
+  },
+  {
+   "id": "c2ww-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 40 percent and stage 2 removes 50 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 40 percent and 50 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 40 percent and stage 2 removal = 50 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.40 = 0.6"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 40 percent + 50 percent = 90 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.40) * (1 - 0.50)) * 100 = 70 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 70 percent."
+  },
+  {
+   "id": "c2ww-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 20 percent and stage 2 removes 75 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 20 percent and 75 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 20 percent and stage 2 removal = 75 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.20 = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 20 percent + 75 percent = 95 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.20) * (1 - 0.75)) * 100 = 80 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 80 percent."
+  },
+  {
+   "id": "c2ww-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 50 percent and stage 2 removes 60 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 50 percent and 60 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 50 percent and stage 2 removal = 60 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.50 = 0.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 50 percent + 60 percent = 110 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.50) * (1 - 0.60)) * 100 = 80 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 80 percent."
+  },
+  {
+   "id": "c2ww-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 30 percent and stage 2 removes 70 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 30 percent and 70 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 30 percent and stage 2 removal = 70 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.30 = 0.7"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 30 percent + 70 percent = 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.30) * (1 - 0.70)) * 100 = 79 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 79 percent."
+  },
+  {
+   "id": "c2ww-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 25 percent and stage 2 removes 60 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 25 percent and 60 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 25 percent and stage 2 removal = 60 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.25 = 0.75"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 25 percent + 60 percent = 85 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.25) * (1 - 0.60)) * 100 = 70 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 70 percent."
+  },
+  {
+   "id": "c2ww-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 40 percent and stage 2 removes 75 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 40 percent and 75 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 40 percent and stage 2 removal = 75 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.40 = 0.6"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 40 percent + 75 percent = 115 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.40) * (1 - 0.75)) * 100 = 85 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 85 percent."
+  },
+  {
+   "id": "c2ww-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 20 percent and stage 2 removes 50 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 20 percent and 50 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 20 percent and stage 2 removal = 50 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.20 = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 20 percent + 50 percent = 70 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.20) * (1 - 0.50)) * 100 = 60 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 60 percent."
+  },
+  {
+   "id": "c2ww-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 60 percent and stage 2 removes 50 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 60 percent and 50 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 60 percent and stage 2 removal = 50 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.60 = 0.4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 60 percent + 50 percent = 110 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.60) * (1 - 0.50)) * 100 = 80 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 80 percent."
+  },
+  {
+   "id": "c2ww-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two stage removal calculation. Stage 1 removes 35 percent and stage 2 removes 60 percent of what remains.",
+   "topicId": "multi-stage-removal",
+   "level": "class1",
+   "assumptions": "Fictional two stage process: stage removals 35 percent and 60 percent, each applied to what remains. Removals compound, they do not add.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stage 1 removal = 35 percent and stage 2 removal = 60 percent"
+    },
+    {
+     "id": "line2",
+     "label": "2. Fraction remaining after stage 1 = 1 - 0.35 = 0.65"
+    },
+    {
+     "id": "line3",
+     "label": "3. Overall removal = 35 percent + 60 percent = 95 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Overall removal = (1 - (1 - 0.35) * (1 - 0.60)) * 100 = 74 percent",
+   "explanation": "Line 3 added the stage removals. Stage 2 acts only on what remains after stage 1, so overall removal is 74 percent."
+  },
+  {
+   "id": "c2ww-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 300 mL/L and MLSS is 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 300 mL/L, MLSS = 3000 mg/L. SVI in mL/g = SV30 * 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 300 mL/L and MLSS = 3000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 300 / 3000 = 0.1 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 300 * 1000 / 3000 = 100 mL/g",
+   "explanation": "Line 3 omitted the 1000 factor that converts mg to g. Correct SVI is 100 mL/g."
+  },
+  {
+   "id": "c2ww-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 240 mL/L, the 60 minute settled volume is 480 mL/L and MLSS is 2000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 240 mL/L, SV60 = 480 mL/L, MLSS = 2000 mg/L. SVI uses the 30 minute volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 240 mL/L, after 60 min = 480 mL/L, MLSS = 2000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 480 * 1000 / 2000 = 240 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 240 * 1000 / 2000 = 120 mL/g",
+   "explanation": "Line 3 used the 60 minute settled volume. SVI uses the 30 minute volume, giving 120 mL/g."
+  },
+  {
+   "id": "c2ww-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 270 mL/L and MLSS is 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 270 mL/L, MLSS = 3000 mg/L. SVI in mL/g = SV30 * 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 270 mL/L and MLSS = 3000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 270 / 3000 = 0.09 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 270 * 1000 / 3000 = 90 mL/g",
+   "explanation": "Line 3 omitted the 1000 factor that converts mg to g. Correct SVI is 90 mL/g."
+  },
+  {
+   "id": "c2ww-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 200 mL/L, the 60 minute settled volume is 400 mL/L and MLSS is 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 200 mL/L, SV60 = 400 mL/L, MLSS = 2500 mg/L. SVI uses the 30 minute volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 200 mL/L, after 60 min = 400 mL/L, MLSS = 2500 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 400 * 1000 / 2500 = 160 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 200 * 1000 / 2500 = 80 mL/g",
+   "explanation": "Line 3 used the 60 minute settled volume. SVI uses the 30 minute volume, giving 80 mL/g."
+  },
+  {
+   "id": "c2ww-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 330 mL/L and MLSS is 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 330 mL/L, MLSS = 3000 mg/L. SVI in mL/g = SV30 * 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 330 mL/L and MLSS = 3000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 330 / 3000 = 0.11 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 330 * 1000 / 3000 = 110 mL/g",
+   "explanation": "Line 3 omitted the 1000 factor that converts mg to g. Correct SVI is 110 mL/g."
+  },
+  {
+   "id": "c2ww-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 180 mL/L, the 60 minute settled volume is 360 mL/L and MLSS is 2000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 180 mL/L, SV60 = 360 mL/L, MLSS = 2000 mg/L. SVI uses the 30 minute volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 180 mL/L, after 60 min = 360 mL/L, MLSS = 2000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 360 * 1000 / 2000 = 180 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 180 * 1000 / 2000 = 90 mL/g",
+   "explanation": "Line 3 used the 60 minute settled volume. SVI uses the 30 minute volume, giving 90 mL/g."
+  },
+  {
+   "id": "c2ww-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 250 mL/L and MLSS is 2500 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 250 mL/L, MLSS = 2500 mg/L. SVI in mL/g = SV30 * 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 250 mL/L and MLSS = 2500 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 250 / 2500 = 0.1 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 250 * 1000 / 2500 = 100 mL/g",
+   "explanation": "Line 3 omitted the 1000 factor that converts mg to g. Correct SVI is 100 mL/g."
+  },
+  {
+   "id": "c2ww-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 360 mL/L, the 60 minute settled volume is 720 mL/L and MLSS is 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 360 mL/L, SV60 = 720 mL/L, MLSS = 3000 mg/L. SVI uses the 30 minute volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 360 mL/L, after 60 min = 720 mL/L, MLSS = 3000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 720 * 1000 / 3000 = 240 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 360 * 1000 / 3000 = 120 mL/g",
+   "explanation": "Line 3 used the 60 minute settled volume. SVI uses the 30 minute volume, giving 120 mL/g."
+  },
+  {
+   "id": "c2ww-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 210 mL/L and MLSS is 3000 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 210 mL/L, MLSS = 3000 mg/L. SVI in mL/g = SV30 * 1000 / MLSS.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 210 mL/L and MLSS = 3000 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 210 / 3000 = 0.07 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 210 * 1000 / 3000 = 70 mL/g",
+   "explanation": "Line 3 omitted the 1000 factor that converts mg to g. Correct SVI is 70 mL/g."
+  },
+  {
+   "id": "c2ww-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this SVI calculation. The 30 minute settled volume is 280 mL/L, the 60 minute settled volume is 560 mL/L and MLSS is 2800 mg/L.",
+   "topicId": "sludge-volume-index",
+   "level": "class1",
+   "assumptions": "Fictional settleability test: SV30 = 280 mL/L, SV60 = 560 mL/L, MLSS = 2800 mg/L. SVI uses the 30 minute volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Settled volume after 30 min = 280 mL/L, after 60 min = 560 mL/L, MLSS = 2800 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. SVI = settled volume * 1000 / MLSS"
+    },
+    {
+     "id": "line3",
+     "label": "3. SVI = 560 * 1000 / 2800 = 200 mL/g"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SVI = 280 * 1000 / 2800 = 100 mL/g",
+   "explanation": "Line 3 used the 60 minute settled volume. SVI uses the 30 minute volume, giving 100 mL/g."
+  },
+  {
+   "id": "c2ww-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 20 mg/L, flow is 3000 m3/d and product purity is 0.80 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 20 mg/L, Q = 3000 m3/d, purity = 0.80. Product feed = pure chemical / purity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 20 mg/L, flow = 3000 m3/d, product purity = 0.80"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = 20 mg/L * 3000 m3/d / 1000 = 60 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product feed = 60 kg/d * 0.80 = 48 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product feed = 60 kg/d / 0.80 = 75 kg/d",
+   "explanation": "Line 3 multiplied by purity instead of dividing. More product is needed than pure chemical, so feed is 75 kg/d."
+  },
+  {
+   "id": "c2ww-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 15 mg/L, flow is 4000 m3/d and product purity is 0.75 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 15 mg/L, Q = 4000 m3/d, purity = 0.75. Pure chemical in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 15 mg/L, flow = 4000 m3/d, product purity = 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = dose * flow with unit conversion, then correct for purity"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pure chemical needed = 15 mg/L * 4000 m3/d / 100 = 600 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pure chemical needed = 15 mg/L * 4000 m3/d / 1000 = 60 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct pure chemical is 60 kg/d, so product feed is 80 kg/d."
+  },
+  {
+   "id": "c2ww-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 25 mg/L, flow is 2400 m3/d and product purity is 0.80 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 25 mg/L, Q = 2400 m3/d, purity = 0.80. Product feed = pure chemical / purity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 25 mg/L, flow = 2400 m3/d, product purity = 0.80"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = 25 mg/L * 2400 m3/d / 1000 = 60 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product feed = 60 kg/d * 0.80 = 48 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product feed = 60 kg/d / 0.80 = 75 kg/d",
+   "explanation": "Line 3 multiplied by purity instead of dividing. More product is needed than pure chemical, so feed is 75 kg/d."
+  },
+  {
+   "id": "c2ww-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 30 mg/L, flow is 2000 m3/d and product purity is 0.60 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 30 mg/L, Q = 2000 m3/d, purity = 0.60. Pure chemical in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 30 mg/L, flow = 2000 m3/d, product purity = 0.60"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = dose * flow with unit conversion, then correct for purity"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pure chemical needed = 30 mg/L * 2000 m3/d / 100 = 600 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pure chemical needed = 30 mg/L * 2000 m3/d / 1000 = 60 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct pure chemical is 60 kg/d, so product feed is 100 kg/d."
+  },
+  {
+   "id": "c2ww-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 12 mg/L, flow is 5000 m3/d and product purity is 0.75 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 12 mg/L, Q = 5000 m3/d, purity = 0.75. Product feed = pure chemical / purity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 12 mg/L, flow = 5000 m3/d, product purity = 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = 12 mg/L * 5000 m3/d / 1000 = 60 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product feed = 60 kg/d * 0.75 = 45 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product feed = 60 kg/d / 0.75 = 80 kg/d",
+   "explanation": "Line 3 multiplied by purity instead of dividing. More product is needed than pure chemical, so feed is 80 kg/d."
+  },
+  {
+   "id": "c2ww-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 18 mg/L, flow is 3000 m3/d and product purity is 0.90 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 18 mg/L, Q = 3000 m3/d, purity = 0.90. Pure chemical in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 18 mg/L, flow = 3000 m3/d, product purity = 0.90"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = dose * flow with unit conversion, then correct for purity"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pure chemical needed = 18 mg/L * 3000 m3/d / 100 = 540 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pure chemical needed = 18 mg/L * 3000 m3/d / 1000 = 54 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct pure chemical is 54 kg/d, so product feed is 60 kg/d."
+  },
+  {
+   "id": "c2ww-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 24 mg/L, flow is 2500 m3/d and product purity is 0.80 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 24 mg/L, Q = 2500 m3/d, purity = 0.80. Product feed = pure chemical / purity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 24 mg/L, flow = 2500 m3/d, product purity = 0.80"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = 24 mg/L * 2500 m3/d / 1000 = 60 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product feed = 60 kg/d * 0.80 = 48 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product feed = 60 kg/d / 0.80 = 75 kg/d",
+   "explanation": "Line 3 multiplied by purity instead of dividing. More product is needed than pure chemical, so feed is 75 kg/d."
+  },
+  {
+   "id": "c2ww-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 16 mg/L, flow is 3750 m3/d and product purity is 0.75 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 16 mg/L, Q = 3750 m3/d, purity = 0.75. Pure chemical in kg/d = mg/L * m3/d / 1000.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 16 mg/L, flow = 3750 m3/d, product purity = 0.75"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = dose * flow with unit conversion, then correct for purity"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pure chemical needed = 16 mg/L * 3750 m3/d / 100 = 600 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Pure chemical needed = 16 mg/L * 3750 m3/d / 1000 = 60 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Correct pure chemical is 60 kg/d, so product feed is 80 kg/d."
+  },
+  {
+   "id": "c2ww-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed calculation. The dose is 28 mg/L, flow is 2500 m3/d and product purity is 0.70 as a decimal.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 28 mg/L, Q = 2500 m3/d, purity = 0.70. Product feed = pure chemical / purity.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = 28 mg/L, flow = 2500 m3/d, product purity = 0.70"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pure chemical needed = 28 mg/L * 2500 m3/d / 1000 = 70 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product feed = 70 kg/d * 0.70 = 49 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product feed = 70 kg/d / 0.70 = 100 kg/d",
+   "explanation": "Line 3 multiplied by purity instead of dividing. More product is needed than pure chemical, so feed is 100 kg/d."
+  },
+  {
+   "id": "c2ww-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps to establish a baseline solids retention time before any wasting change.",
+   "topicId": "srt-management",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 activated sludge plant with daily mixed liquor and waste sludge records.",
+   "configuration": "Scope: one aeration basin and its secondary clarifier, one operating week.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the current mixed liquor suspended solids, basin volume, waste flow and return flow records"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the current solids inventory in the aeration system"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the current solids retention time from inventory divided by solids wasted per day"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the result with the plant target range for the season"
+    },
+    {
+     "id": "c5",
+     "label": "Record the baseline and the target in the process control log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The baseline inventory and SRT must be known before wasting is changed, and the comparison with the seasonal target comes after the calculation."
+  },
+  {
+   "id": "c2ww-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a program to raise solids retention time when nitrification is weakening.",
+   "topicId": "srt-management",
+   "level": "class1",
+   "assumptions": "Fictional plant with falling effluent ammonia performance and an SRT below the nitrifier range.",
+   "configuration": "Scope: wasting reduction program over several days, no other process change made at the same time.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the current SRT is below the target range from the latest calculation"
+    },
+    {
+     "id": "c2",
+     "label": "Reduce the daily waste activated sludge volume by one small planned step"
+    },
+    {
+     "id": "c3",
+     "label": "Hold the new wasting rate steady for several days"
+    },
+    {
+     "id": "c4",
+     "label": "Resample mixed liquor and recalculate SRT"
+    },
+    {
+     "id": "c5",
+     "label": "Check effluent ammonia trend before deciding on any further wasting change"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Reducing wasting raises inventory and SRT, but the change is made in one small step and verified by resampling and ammonia trending before more action."
+  },
+  {
+   "id": "c2ww-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a program to lower solids retention time when mixed liquor is building up and oxygen demand is rising.",
+   "topicId": "srt-management",
+   "level": "class1",
+   "assumptions": "Fictional plant with SRT above target, rising mixed liquor and rising air demand.",
+   "configuration": "Scope: wasting increase program for one aeration train.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the current SRT is above the target range from the latest calculation"
+    },
+    {
+     "id": "c2",
+     "label": "Increase the daily waste activated sludge volume by one small planned step"
+    },
+    {
+     "id": "c3",
+     "label": "Hold the new wasting rate steady for several days"
+    },
+    {
+     "id": "c4",
+     "label": "Resample mixed liquor and recalculate SRT"
+    },
+    {
+     "id": "c5",
+     "label": "Check dissolved oxygen and effluent quality trends before deciding on any further change"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Increasing wasting lowers inventory and SRT, and the effect is verified by recalculation and trend checks before another adjustment."
+  },
+  {
+   "id": "c2ww-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily wasting routine used to hit a target waste solids mass.",
+   "topicId": "wasting-programs",
+   "level": "class1",
+   "assumptions": "Fictional plant wasting a set mass of solids per day using a timed waste pump.",
+   "configuration": "Scope: one day of scheduled wasting from the return sludge line.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Read the target waste solids mass for the day from the process control sheet"
+    },
+    {
+     "id": "c2",
+     "label": "Measure the waste sludge suspended solids concentration from a fresh sample"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the waste volume needed to remove that mass at the measured concentration"
+    },
+    {
+     "id": "c4",
+     "label": "Set the waste pump run time to deliver that volume at its verified rate"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm the actual wasted volume at the end of the run and record it"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The waste volume can only be calculated after the concentration is measured, and the pump run is set from that volume before actual delivery is confirmed."
+  },
+  {
+   "id": "c2ww-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a microscopic exam that shows heavy filamentous growth and a rising sludge blanket.",
+   "topicId": "microscopic-examination",
+   "level": "class1",
+   "assumptions": "Fictional exam showing abundant filaments, bridging floc and a deepening clarifier blanket.",
+   "configuration": "Scope: awareness level response in one activated sludge plant.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the filament abundance and floc structure seen in the microscopic exam"
+    },
+    {
+     "id": "c2",
+     "label": "Check clarifier blanket depth and settleability to confirm the bulking impact"
+    },
+    {
+     "id": "c3",
+     "label": "Review dissolved oxygen, food to microorganism ratio and nutrient data for likely causes"
+    },
+    {
+     "id": "c4",
+     "label": "Apply the plant corrective step for the confirmed cause, such as raising dissolved oxygen if it is low"
+    },
+    {
+     "id": "c5",
+     "label": "Repeat the microscopic exam and blanket check after the correction to confirm improvement"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The exam finding is confirmed in the clarifier first, likely causes are reviewed next, and the correction is verified by repeating the exam."
+  },
+  {
+   "id": "c2ww-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a microscopic exam showing dispersed growth and many free bacteria with cloudy effluent.",
+   "topicId": "microscopic-examination",
+   "level": "class1",
+   "assumptions": "Fictional exam showing dispersed floc, weak structure and turbid supernatant in the settleability test.",
+   "configuration": "Scope: awareness level response after a high load period.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the dispersed growth and free bacteria seen in the microscopic exam"
+    },
+    {
+     "id": "c2",
+     "label": "Review recent influent loading and solids retention time for a high food to microorganism condition"
+    },
+    {
+     "id": "c3",
+     "label": "Check settleability and effluent turbidity to confirm the impact"
+    },
+    {
+     "id": "c4",
+     "label": "Reduce the loading stress by the plant step for the confirmed cause, such as lowering wasting to rebuild inventory"
+    },
+    {
+     "id": "c5",
+     "label": "Repeat the exam and settleability test to confirm floc structure is recovering"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Dispersed growth points to loading or inventory stress, so records are reviewed and impact confirmed before inventory is rebuilt and rechecked."
+  },
+  {
+   "id": "c2ww-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a routine microscopic examination from sample collection to recorded result.",
+   "topicId": "microscopic-examination",
+   "level": "class1",
+   "assumptions": "Fictional plant laboratory with a phase contrast microscope and a standard exam form.",
+   "configuration": "Scope: one mixed liquor sample examined the same shift it is collected.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect a fresh mixed liquor sample from the aeration basin outlet"
+    },
+    {
+     "id": "c2",
+     "label": "Mix the sample gently and place one drop on a slide with a cover slip"
+    },
+    {
+     "id": "c3",
+     "label": "Scan the slide at low power to assess floc size and structure"
+    },
+    {
+     "id": "c4",
+     "label": "Scan at higher power to identify filaments and indicator organisms"
+    },
+    {
+     "id": "c5",
+     "label": "Record the findings, the sample time and the operator initials on the exam form"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "A fresh representative sample is collected first, low power assessment comes before higher power identification, and recording closes the routine."
+  },
+  {
+   "id": "c2ww-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a food to microorganism ratio review and adjustment workflow.",
+   "topicId": "process-control-fm",
+   "level": "class1",
+   "assumptions": "Fictional plant with recent influent BOD, flow, mixed liquor volatile solids and basin volume data.",
+   "configuration": "Scope: weekly review for one aeration basin.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the recent influent flow and BOD data for the review period"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the BOD mass load applied to the basin"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the food to microorganism ratio using the mixed liquor volatile solids inventory"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the ratio with the plant target range"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust wasting or flow split as directed and record the decision in the log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The applied load must be calculated before the ratio, the ratio is compared with target next, and adjustment follows the comparison."
+  },
+  {
+   "id": "c2ww-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a return activated sludge rate adjustment to control clarifier blanket depth.",
+   "topicId": "ras-control",
+   "level": "class1",
+   "assumptions": "Fictional plant where blanket depth is measured with a sludge judge at set points.",
+   "configuration": "Scope: one secondary clarifier with a steadily rising blanket.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure the clarifier blanket depth at the standard sample points"
+    },
+    {
+     "id": "c2",
+     "label": "Compare the depth with the plant target blanket range"
+    },
+    {
+     "id": "c3",
+     "label": "Increase the return sludge rate by one planned step if the blanket is above target"
+    },
+    {
+     "id": "c4",
+     "label": "Remeasure blanket depth after the clarifier has had time to respond"
+    },
+    {
+     "id": "c5",
+     "label": "Record the new return rate and the follow up blanket readings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Blanket depth is measured and compared with target before the return rate is changed, and the response is remeasured before recording."
+  },
+  {
+   "id": "c2ww-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a waste pump rate verification before a wasting program change takes effect.",
+   "topicId": "instrumentation-calibration",
+   "level": "class1",
+   "assumptions": "Fictional plant wasting by timed pump runs from a sludge holding tank with a sight gauge.",
+   "configuration": "Scope: drawdown check on one waste activated sludge pump.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Isolate the waste pump discharge to the holding tank and record the starting level"
+    },
+    {
+     "id": "c2",
+     "label": "Run the waste pump for a timed interval and record the ending level"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the delivered volume and the actual pump rate from the level change"
+    },
+    {
+     "id": "c4",
+     "label": "Compare the actual rate with the rate used in the wasting schedule"
+    },
+    {
+     "id": "c5",
+     "label": "Correct the wasting schedule run times using the verified rate and record the check"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The timed drawdown gives the delivered volume, the rate is calculated and compared next, and schedule times are corrected from the verified rate."
+  },
+  {
+   "id": "c2ww-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an alkalinity feed program for a nitrifying plant with low residual alkalinity.",
+   "topicId": "chemical-feed-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant whose effluent pH falls whenever ammonia removal is high.",
+   "configuration": "Scope: soda ash or lime style alkalinity feed trimmed to pH and residual targets.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure residual alkalinity and pH at the aeration basin outlet"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the alkalinity shortfall against the plant residual target"
+    },
+    {
+     "id": "c3",
+     "label": "Set the alkalinity feed to make up the shortfall at the current flow"
+    },
+    {
+     "id": "c4",
+     "label": "Recheck pH and residual alkalinity after the feed change stabilises"
+    },
+    {
+     "id": "c5",
+     "label": "Record the feed rate and adjust it with flow or ammonia load changes"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Residual and pH are measured first, the shortfall is calculated next, feed is set to make it up, stabilised results are rechecked, and the rate is recorded."
+  },
+  {
+   "id": "c2ww-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a weekly sludge age trending review for the operations team.",
+   "topicId": "srt-management",
+   "level": "class1",
+   "assumptions": "Fictional plant keeping daily SRT, mixed liquor, wasting and effluent ammonia records.",
+   "configuration": "Scope: review meeting covering the past seven days of process data.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Assemble the daily SRT, mixed liquor and wasting records for the week"
+    },
+    {
+     "id": "c2",
+     "label": "Plot or tabulate the trend and mark any days outside the target range"
+    },
+    {
+     "id": "c3",
+     "label": "Review effluent ammonia and settleability trends for the same days"
+    },
+    {
+     "id": "c4",
+     "label": "Agree on one wasting adjustment for the coming week"
+    },
+    {
+     "id": "c5",
+     "label": "Issue the adjusted wasting schedule and file the review notes"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Records are assembled and trended first, effluent impact is reviewed next, and one agreed adjustment is issued at the end."
+  },
+  {
+   "id": "c2ww-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the recovery program after a sludge washout event leaves mixed liquor very low.",
+   "topicId": "srt-management",
+   "level": "class1",
+   "assumptions": "Fictional plant that lost solids over the clarifier weirs and now has thin mixed liquor.",
+   "configuration": "Scope: recovery over the days following a clarifier washout during high flow.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Stop or minimise wasting to retain the remaining solids inventory"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm clarifier blanket and effluent solids to verify the loss has ended"
+    },
+    {
+     "id": "c3",
+     "label": "Maximise return sludge rate within pump and clarifier limits to recover solids to the basin"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor mixed liquor concentration daily as inventory rebuilds"
+    },
+    {
+     "id": "c5",
+     "label": "Resume normal wasting only after mixed liquor and SRT return to the target range"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Retaining and returning solids comes first, recovery is monitored daily, and normal wasting resumes only when inventory and SRT are back in range."
+  },
+  {
+   "id": "c2ww-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a nitrification start up program for a newly seeded aeration basin.",
+   "topicId": "nitrification-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant bringing a refurbished basin into service in mild weather.",
+   "configuration": "Scope: start up from seeding through stable ammonia removal.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill the basin and confirm aeration, mixing and instrumentation are working"
+    },
+    {
+     "id": "c2",
+     "label": "Add seed sludge from a healthy nitrifying basin"
+    },
+    {
+     "id": "c3",
+     "label": "Start feeding wastewater at a reduced loading rate"
+    },
+    {
+     "id": "c4",
+     "label": "Monitor ammonia, nitrite, nitrate, pH and alkalinity daily as nitrifiers establish"
+    },
+    {
+     "id": "c5",
+     "label": "Increase loading in steps only after ammonia removal is stable at the current load"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Equipment is proven and seed is added before feeding starts, and load is increased only after stable ammonia removal is demonstrated."
+  },
+  {
+   "id": "c2ww-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a seasonal nitrification recovery program as wastewater temperature falls in autumn.",
+   "topicId": "nitrification-recovery",
+   "level": "class1",
+   "assumptions": "Fictional plant with a history of winter ammonia pressure.",
+   "configuration": "Scope: preparation program started before cold weather limits nitrifier growth.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the temperature trend and the current effluent ammonia trend"
+    },
+    {
+     "id": "c2",
+     "label": "Raise the target solids retention time to protect the slower growing nitrifiers"
+    },
+    {
+     "id": "c3",
+     "label": "Reduce wasting in planned steps to build the higher inventory"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm alkalinity and pH remain adequate for the added nitrification"
+    },
+    {
+     "id": "c5",
+     "label": "Verify ammonia removal holds as temperature continues to fall"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Temperature and ammonia trends trigger the program, inventory is built by reducing wasting, and alkalinity and performance are verified as it gets colder."
+  },
+  {
+   "id": "c2ww-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an alkalinity adequacy check for a nitrifying plant with falling effluent pH.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant oxidising ammonia with a measured ammonia drop across the basin.",
+   "configuration": "Scope: one round of checks and calculations for the aeration basin effluent.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure influent and effluent ammonia nitrogen to find the amount oxidised"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the alkalinity consumed using 7.14 mg as CaCO3 per mg of ammonia nitrogen oxidised"
+    },
+    {
+     "id": "c3",
+     "label": "Measure the residual alkalinity and pH in the basin effluent"
+    },
+    {
+     "id": "c4",
+     "label": "Compare residual alkalinity with the minimum the plant keeps for stable pH"
+    },
+    {
+     "id": "c5",
+     "label": "Arrange alkalinity addition if the residual is below that minimum"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Alkalinity consumption is calculated from the ammonia oxidised, the residual is measured and compared next, and addition is arranged only if it is low."
+  },
+  {
+   "id": "c2ww-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a rising effluent ammonia trend with low basin dissolved oxygen.",
+   "topicId": "nitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with ammonia climbing over two days and dissolved oxygen below setpoint.",
+   "configuration": "Scope: same shift response in one nitrifying aeration basin.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the low dissolved oxygen reading with a second probe or grab check"
+    },
+    {
+     "id": "c2",
+     "label": "Increase aeration to restore dissolved oxygen to the nitrification setpoint range"
+    },
+    {
+     "id": "c3",
+     "label": "Recheck effluent ammonia after dissolved oxygen has been restored for several hours"
+    },
+    {
+     "id": "c4",
+     "label": "Review solids retention time if ammonia does not start falling"
+    },
+    {
+     "id": "c5",
+     "label": "Record the aeration change and the ammonia response in the log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The oxygen reading is verified before aeration is increased, ammonia is rechecked after oxygen is restored, and SRT is reviewed only if ammonia stays high."
+  },
+  {
+   "id": "c2ww-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order cold weather nitrification protection steps at the start of a cold snap.",
+   "topicId": "nitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional Ontario plant whose influent temperature is dropping quickly.",
+   "configuration": "Scope: protective program for one activated sludge plant facing a week of very cold influent.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the influent temperature drop from the plant trend record"
+    },
+    {
+     "id": "c2",
+     "label": "Stop any planned wasting increase and protect the existing solids inventory"
+    },
+    {
+     "id": "c3",
+     "label": "Check that dissolved oxygen is at the upper end of the normal range"
+    },
+    {
+     "id": "c4",
+     "label": "Review alkalinity residual to confirm pH will stay stable"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor effluent ammonia daily through the cold snap"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Inventory is protected first because nitrifiers grow slowly in the cold, then oxygen and alkalinity are confirmed, with daily ammonia monitoring through the event."
+  },
+  {
+   "id": "c2ww-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an investigation into sudden nitrification loss with normal dissolved oxygen and SRT.",
+   "topicId": "nitrification-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional plant suspecting an inhibitory discharge to the sewer system.",
+   "configuration": "Scope: troubleshooting sequence after ammonia removal collapses in two days.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the ammonia rise with a fresh effluent sample and laboratory result"
+    },
+    {
+     "id": "c2",
+     "label": "Review dissolved oxygen, pH, alkalinity and SRT records to rule out operating causes"
+    },
+    {
+     "id": "c3",
+     "label": "Review recent industrial discharge and hauled waste records for a possible inhibitor"
+    },
+    {
+     "id": "c4",
+     "label": "Notify the supervisor and the collection system contact to trace the source"
+    },
+    {
+     "id": "c5",
+     "label": "Increase monitoring frequency until ammonia removal recovers"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Laboratory confirmation comes first, operating causes are ruled out next, discharge records are checked after that, and escalation and monitoring follow."
+  },
+  {
+   "id": "c2ww-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a falling basin pH in a fully nitrifying plant.",
+   "topicId": "nitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with high ammonia removal and low residual alkalinity.",
+   "configuration": "Scope: response over one shift where pH has dropped below the normal band.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the pH reading with a calibrated bench meter on a fresh sample"
+    },
+    {
+     "id": "c2",
+     "label": "Measure residual alkalinity to confirm alkalinity depletion"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the alkalinity demand from the ammonia being oxidised"
+    },
+    {
+     "id": "c4",
+     "label": "Start or increase alkalinity feed at the calculated starting rate"
+    },
+    {
+     "id": "c5",
+     "label": "Recheck pH and residual alkalinity after the feed change has stabilised"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "A verified low pH and confirmed low alkalinity lead to a calculated feed rate, and pH is rechecked after the feed stabilises."
+  },
+  {
+   "id": "c2ww-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the restart of nitrification after a long aeration outage in one basin.",
+   "topicId": "nitrification-recovery",
+   "level": "class1",
+   "assumptions": "Fictional basin that sat unaerated for many hours and lost ammonia removal.",
+   "configuration": "Scope: restart sequence after blowers are returned to service.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Restore aeration and confirm dissolved oxygen reaches the normal setpoint"
+    },
+    {
+     "id": "c2",
+     "label": "Check mixed liquor condition and settleability after the outage"
+    },
+    {
+     "id": "c3",
+     "label": "Measure ammonia, nitrite and nitrate to assess how much nitrifier activity remains"
+    },
+    {
+     "id": "c4",
+     "label": "Reduce loading to the basin if ammonia is passing through untreated"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor nitrogen species daily until ammonia removal is re established"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Aeration is restored first, sludge condition and nitrogen species are assessed next, loading is eased if needed, and recovery is tracked daily."
+  },
+  {
+   "id": "c2ww-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the set up of an anoxic zone for denitrification in a modified basin.",
+   "topicId": "denitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant adding total nitrogen control ahead of its aeration zone.",
+   "configuration": "Scope: conversion of the first basin cell to anoxic operation.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Take the first cell mixers into service and confirm the aeration air to that cell is closed off"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm internal recycle flow is directed to the anoxic cell"
+    },
+    {
+     "id": "c3",
+     "label": "Measure dissolved oxygen in the cell and confirm it is near zero"
+    },
+    {
+     "id": "c4",
+     "label": "Measure nitrate entering and leaving the cell to confirm denitrification is occurring"
+    },
+    {
+     "id": "c5",
+     "label": "Record the anoxic zone settings and the nitrate results in the log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Mixing without air creates the anoxic cell, recycle delivers nitrate to it, and near zero oxygen plus nitrate removal confirm it is working."
+  },
+  {
+   "id": "c2ww-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a carbon adequacy check for an anoxic zone with poor nitrate removal.",
+   "topicId": "denitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with high nitrate leaving the anoxic zone and low influent BOD reaching it.",
+   "configuration": "Scope: awareness level check of food supply for denitrification.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure nitrate entering and leaving the anoxic zone to confirm poor removal"
+    },
+    {
+     "id": "c2",
+     "label": "Check the readily available food supply reaching the zone from the influent or fermenter"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm dissolved oxygen in the zone is low enough that food is not being burned aerobically"
+    },
+    {
+     "id": "c4",
+     "label": "Arrange supplemental carbon feed to the zone if food is confirmed short"
+    },
+    {
+     "id": "c5",
+     "label": "Remeasure nitrate removal after the carbon feed is established"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Poor removal is confirmed first, food supply and oxygen are checked next, and supplemental carbon is added only after a food shortage is confirmed."
+  },
+  {
+   "id": "c2ww-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order steps to reduce dissolved oxygen carryover into an anoxic zone.",
+   "topicId": "denitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant whose anoxic zone dissolved oxygen stays above the target near zero.",
+   "configuration": "Scope: adjustment of the aerobic zone outlet feeding an internal recycle.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure dissolved oxygen at the aerobic zone outlet and in the anoxic zone"
+    },
+    {
+     "id": "c2",
+     "label": "Lower the dissolved oxygen setpoint in the final aerobic pass"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm the internal recycle rate is not higher than the program calls for"
+    },
+    {
+     "id": "c4",
+     "label": "Remeasure anoxic zone dissolved oxygen after the changes settle"
+    },
+    {
+     "id": "c5",
+     "label": "Check nitrate removal across the anoxic zone to confirm improvement"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Carryover is measured first, aerobic setpoint and recycle are adjusted next, and anoxic oxygen and nitrate removal are verified after settling."
+  },
+  {
+   "id": "c2ww-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a nitrate trending response when final effluent nitrate climbs steadily.",
+   "topicId": "denitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with a total nitrogen objective and a working anoxic zone.",
+   "configuration": "Scope: supervisory response over several days of rising nitrate.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the rising nitrate trend from laboratory results rather than one sample"
+    },
+    {
+     "id": "c2",
+     "label": "Check anoxic zone dissolved oxygen and mixing status"
+    },
+    {
+     "id": "c3",
+     "label": "Check internal recycle rate against the program setting"
+    },
+    {
+     "id": "c4",
+     "label": "Check carbon availability at the anoxic zone inlet"
+    },
+    {
+     "id": "c5",
+     "label": "Adjust the limiting factor found and trend nitrate for the following days"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The trend is confirmed first, then zone oxygen, recycle and carbon are checked in order, and the limiting factor is adjusted and trended."
+  },
+  {
+   "id": "c2ww-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an anoxic zone mixing check after nitrate removal drops in one cell.",
+   "topicId": "denitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with submersible mixers in the anoxic cell.",
+   "configuration": "Scope: field check of one anoxic cell with suspected dead zones.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Observe the cell surface for movement and check each mixer run status"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm mixer amperage is in the normal range for the running units"
+    },
+    {
+     "id": "c3",
+     "label": "Take dissolved oxygen and nitrate samples at several points in the cell"
+    },
+    {
+     "id": "c4",
+     "label": "Return any failed mixer to service or report it for repair"
+    },
+    {
+     "id": "c5",
+     "label": "Resample the cell to confirm uniform conditions and restored nitrate removal"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Mixer status and load are checked first, sampling maps the cell conditions next, repairs follow, and resampling confirms the fix."
+  },
+  {
+   "id": "c2ww-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seasonal changeover from winter to summer denitrification settings.",
+   "topicId": "denitrification-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant that runs different recycle and carbon settings by season.",
+   "configuration": "Scope: planned changeover directed by the supervisor in spring.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review effluent nitrogen performance and wastewater temperature for the past month"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the supervisor approved seasonal setpoints for recycle and carbon feed"
+    },
+    {
+     "id": "c3",
+     "label": "Change the internal recycle rate to the summer setting"
+    },
+    {
+     "id": "c4",
+     "label": "Change the carbon feed rate to the summer setting"
+    },
+    {
+     "id": "c5",
+     "label": "Trend nitrate and total nitrogen for the first week and report the results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Performance review and approved setpoints come before any change, recycle and carbon are changed in order, and the first week is trended and reported."
+  },
+  {
+   "id": "c2ww-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a dissolved oxygen setpoint change program for an aeration basin.",
+   "topicId": "aeration-control",
+   "level": "class1",
+   "assumptions": "Fictional plant moving a basin from manual to a revised dissolved oxygen target.",
+   "configuration": "Scope: one setpoint change made under supervisory direction.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the current dissolved oxygen trend and effluent ammonia performance"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the new setpoint and the reason for it with the supervisor"
+    },
+    {
+     "id": "c3",
+     "label": "Enter the new setpoint in the aeration control system"
+    },
+    {
+     "id": "c4",
+     "label": "Watch blower output and valve response as control settles at the new setpoint"
+    },
+    {
+     "id": "c5",
+     "label": "Record the setpoint change and the first day of ammonia results in the log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Trend review and supervisory confirmation precede the change, control response is watched as it settles, and the change and results are recorded."
+  },
+  {
+   "id": "c2ww-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a low dissolved oxygen alarm in one aeration basin.",
+   "topicId": "aeration-control",
+   "level": "class1",
+   "assumptions": "Fictional basin with dissolved oxygen well below setpoint and the blower at full output.",
+   "configuration": "Scope: immediate operator response on shift.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Verify the low reading with a handheld dissolved oxygen meter"
+    },
+    {
+     "id": "c2",
+     "label": "Check that the basin air control valve is open and the header pressure is normal"
+    },
+    {
+     "id": "c3",
+     "label": "Check influent flow and loading for a surge reaching the basin"
+    },
+    {
+     "id": "c4",
+     "label": "Start the standby blower or open the manual air supply if air delivery is short"
+    },
+    {
+     "id": "c5",
+     "label": "Recheck dissolved oxygen and record the cause found and the action taken"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The reading is verified first, air delivery and loading are checked next, added air is brought on if delivery is short, and the outcome is recorded."
+  },
+  {
+   "id": "c2ww-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a diffuser fouling investigation for a basin needing more air each month.",
+   "topicId": "aeration-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional fine bubble aeration basin with slowly rising energy use.",
+   "configuration": "Scope: investigation of rising header pressure at the same air flow.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Trend header pressure and air flow to confirm pressure is rising at equal flow"
+    },
+    {
+     "id": "c2",
+     "label": "Compare dissolved oxygen control behaviour with a sister basin on the same header"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect a lifted diffuser grid or use the plant fouling test procedure"
+    },
+    {
+     "id": "c4",
+     "label": "Clean or replace the fouled diffusers found"
+    },
+    {
+     "id": "c5",
+     "label": "Retrend header pressure after cleaning to confirm it returned to normal"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Pressure trending confirms fouling, comparison isolates the basin, inspection finds the fouled grids, and retrending verifies the cleaning worked."
+  },
+  {
+   "id": "c2ww-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an ammonia based aeration control check for a basin with that control mode available.",
+   "topicId": "aeration-control",
+   "level": "class1",
+   "assumptions": "Fictional plant whose blowers trim air from an online ammonia analyser.",
+   "configuration": "Scope: awareness level routine verifying ammonia guided air control.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the online ammonia analyser is reading sensibly against a laboratory grab result"
+    },
+    {
+     "id": "c2",
+     "label": "Check that the aeration control mode is set to ammonia based control"
+    },
+    {
+     "id": "c3",
+     "label": "Watch air flow respond as ammonia load changes through the morning peak"
+    },
+    {
+     "id": "c4",
+     "label": "Compare effluent ammonia with the target for the mode"
+    },
+    {
+     "id": "c5",
+     "label": "Record the check and report any analyser disagreement for calibration"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The analyser is trusted only after a grab comparison, the control mode is confirmed next, response and effluent quality are watched, and problems are reported."
+  },
+  {
+   "id": "c2ww-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a dissolved oxygen profile survey across an aeration basin.",
+   "topicId": "aeration-operations",
+   "level": "class1",
+   "assumptions": "Fictional plug flow basin suspected of low oxygen at the inlet end.",
+   "configuration": "Scope: one survey from basin inlet to outlet during steady loading.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Calibrate or verify the handheld dissolved oxygen meter before the survey"
+    },
+    {
+     "id": "c2",
+     "label": "Measure dissolved oxygen at the basin inlet zone"
+    },
+    {
+     "id": "c3",
+     "label": "Measure dissolved oxygen at the basin midpoint"
+    },
+    {
+     "id": "c4",
+     "label": "Measure dissolved oxygen at the basin outlet zone"
+    },
+    {
+     "id": "c5",
+     "label": "Plot the profile and report any zone below the plant minimum"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The meter is verified first, measurements follow the flow path from inlet to outlet, and the plotted profile is reported at the end."
+  },
+  {
+   "id": "c2ww-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an aeration turndown check aimed at saving energy during low load nights.",
+   "topicId": "aeration-control",
+   "level": "class1",
+   "assumptions": "Fictional plant with variable speed blowers and stable night time ammonia.",
+   "configuration": "Scope: supervised trial on one basin during a low load period.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm night time loading and effluent ammonia are stable and within limits"
+    },
+    {
+     "id": "c2",
+     "label": "Reduce the dissolved oxygen setpoint by one small step for the trial"
+    },
+    {
+     "id": "c3",
+     "label": "Monitor ammonia and dissolved oxygen closely through the trial period"
+    },
+    {
+     "id": "c4",
+     "label": "Restore the normal setpoint if ammonia rises toward the limit"
+    },
+    {
+     "id": "c5",
+     "label": "Record the energy saving and the ammonia results for the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Stability is confirmed before the trial, the setpoint is lowered in one small step, ammonia guards the trial, and results are recorded for review."
+  },
+  {
+   "id": "c2ww-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the balancing of air between two basins on a common header.",
+   "topicId": "aeration-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with two parallel basins and manual air valves.",
+   "configuration": "Scope: valve balancing after one basin shows low oxygen and the other shows high oxygen.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure dissolved oxygen in both basins at the same time"
+    },
+    {
+     "id": "c2",
+     "label": "Note the current valve positions and header pressure"
+    },
+    {
+     "id": "c3",
+     "label": "Open the air valve to the low oxygen basin by one small step"
+    },
+    {
+     "id": "c4",
+     "label": "Close the air valve to the high oxygen basin by one matching small step if header pressure rises"
+    },
+    {
+     "id": "c5",
+     "label": "Remeasure both basins after the air distribution settles"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Both basins are measured first, valves are adjusted in small matched steps, and both basins are remeasured after settling."
+  },
+  {
+   "id": "c2ww-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start sequence for a standby blower after the duty blower trips.",
+   "topicId": "aeration-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with one duty and one standby centrifugal blower.",
+   "configuration": "Scope: emergency air restoration for the aeration basins.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the duty blower trip and check for any obvious fault or alarm cause"
+    },
+    {
+     "id": "c2",
+     "label": "Open the standby blower discharge valve path as the start procedure directs"
+    },
+    {
+     "id": "c3",
+     "label": "Start the standby blower and bring it up to load"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm header pressure and basin dissolved oxygen are recovering"
+    },
+    {
+     "id": "c5",
+     "label": "Report the trip and the standby start to the supervisor and log the event"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The trip is confirmed first, the standby machine is started by its procedure next, air recovery is confirmed, and the event is reported and logged."
+  },
+  {
+   "id": "c2ww-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a steadily rising secondary clarifier blanket.",
+   "topicId": "clarifier-performance",
+   "level": "class1",
+   "assumptions": "Fictional clarifier with blanket depth rising toward the weirs over several hours.",
+   "configuration": "Scope: same day response for one clarifier.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure and record the current blanket depth"
+    },
+    {
+     "id": "c2",
+     "label": "Check return sludge rate and increase it if it is below the program setting"
+    },
+    {
+     "id": "c3",
+     "label": "Check clarifier influent flow for a surge and note the flow split"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect the effluent for rising solids carryover"
+    },
+    {
+     "id": "c5",
+     "label": "Remeasure the blanket after the return change has taken effect"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Depth is measured first, return rate and flow are checked next, carryover is inspected, and the blanket is remeasured after the change."
+  },
+  {
+   "id": "c2ww-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a clarifier solids loading review for a clarifier with chronic solids carryover.",
+   "topicId": "clarifier-performance",
+   "level": "class1",
+   "assumptions": "Fictional plant whose clarifier loses solids at moderate flows.",
+   "configuration": "Scope: weekly performance review using plant flow and solids data.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect clarifier influent flow, mixed liquor solids and return flow data"
+    },
+    {
+     "id": "c2",
+     "label": "Calculate the solids loading rate on the clarifier surface"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the surface overflow rate for the same period"
+    },
+    {
+     "id": "c4",
+     "label": "Compare both rates with the plant design and operating ranges"
+    },
+    {
+     "id": "c5",
+     "label": "Recommend flow split, return rate or inventory changes based on which rate is out of range"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Data collection leads to the two loading calculations, comparison with design ranges follows, and recommendations are based on which rate is excessive."
+  },
+  {
+   "id": "c2ww-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the daily secondary clarifier mechanical check.",
+   "topicId": "clarifier-operations",
+   "level": "class1",
+   "assumptions": "Fictional clarifier with a centre drive, sludge scraper and surface skimmer.",
+   "configuration": "Scope: morning rounds check of one clarifier drive, scraper and skimmer.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the drive unit for abnormal noise, heat and oil level"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the scraper is turning and the drive torque is in the normal range"
+    },
+    {
+     "id": "c3",
+     "label": "Check the skimmer is clearing the surface and the scum baffle is in place"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect the effluent weirs for level flow and solids carryover"
+    },
+    {
+     "id": "c5",
+     "label": "Record the check and report any defect found for maintenance"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "The drive is checked first, scraper and skimmer function follow, effluent condition is inspected, and findings are recorded and reported."
+  },
+  {
+   "id": "c2ww-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to sludge rising in clumps in a secondary clarifier with gas bubbles.",
+   "topicId": "clarifier-troubleshooting",
+   "level": "class1",
+   "assumptions": "Fictional clarifier with floating sludge clumps on a warm afternoon and a deep blanket.",
+   "configuration": "Scope: response to denitrification occurring in the clarifier blanket.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the floating clumps are releasing gas bubbles and are not algae or scum"
+    },
+    {
+     "id": "c2",
+     "label": "Measure blanket depth and check how long solids are staying in the clarifier"
+    },
+    {
+     "id": "c3",
+     "label": "Increase return sludge rate to shorten solids residence time in the blanket"
+    },
+    {
+     "id": "c4",
+     "label": "Reduce blanket depth and recheck the surface for floating clumps"
+    },
+    {
+     "id": "c5",
+     "label": "Review nitrate entering the clarifier if the problem returns"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Floating gassy sludge points to denitrification in a deep blanket, so return rate is raised to cut residence time and the surface is rechecked."
+  },
+  {
+   "id": "c2ww-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the correction of an uneven flow split between two secondary clarifiers.",
+   "topicId": "clarifier-operations",
+   "level": "class1",
+   "assumptions": "Fictional plant with an adjustable splitter box feeding two clarifiers.",
+   "configuration": "Scope: adjustment after one clarifier is overloaded and the other is lightly loaded.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure or estimate the flow reaching each clarifier and compare blanket depths"
+    },
+    {
+     "id": "c2",
+     "label": "Check the splitter box gates or weirs for uneven settings or debris"
+    },
+    {
+     "id": "c3",
+     "label": "Clear any debris and set the splitter to an even division"
+    },
+    {
+     "id": "c4",
+     "label": "Confirm both clarifier blankets and effluent quality move toward balance"
+    },
+    {
+     "id": "c5",
+     "label": "Record the splitter settings and the follow up readings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Flows and blankets are compared first, the splitter is inspected and corrected next, and balance is confirmed and recorded."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c2ww-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Digester Loading Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c2ww-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Srt Management Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c2ww-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c2ww-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Alkalinity Nitrification Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c2ww-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c2ww-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c2ww-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Wasting Programs Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c2ww-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Alkalinity Nitrification Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c2ww-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c2ww-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Microscopic Examination Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c2ww-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c2ww-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c2ww-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Multi Stage Removal Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c2ww-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Control Fm Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c2ww-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c2ww-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Multi Stage Removal Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c2ww-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c2ww-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c2ww-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Instrumentation Calibration Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c2ww-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Multi Stage Removal Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c2ww-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c2ww-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Srt Management Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c2ww-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c2ww-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c2ww-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Sludge Volume Index Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c2ww-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Nitrification Startup Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c2ww-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c2ww-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Sludge Volume Index Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c2ww-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c2ww-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c2ww-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Nitrification Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c2ww-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Chemical Feed Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c2ww-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c2ww-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Nitrification Operations Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c2ww-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c2ww-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c2ww-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Chemical Feed Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c2ww-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2ww-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Nitrification Operations Shift",
+   "tasks": [
+    {
+     "taskId": "c2ww-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c2ww-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c2ww-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater process control chapters (activated sludge, nutrient removal, solids processing)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "c198bae190bcfde409fa35b41764c6ee8639802e344cd33bba828cbb1e8d76d8",
+  "taskReceipts": [
+   {
+    "taskId": "c2ww-error60",
+    "revision": "r1",
+    "sha256": "4b0f59cfd782ccc8c86bb0f6d458b37b3cee2d95d917a81ca5e379bf182533c5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error61",
+    "revision": "r1",
+    "sha256": "87c8b5f43249a07853c8720448afc7e4820253790aa45b03c3ef8629430536d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error62",
+    "revision": "r1",
+    "sha256": "dbb4b41c5b940ee7387f1e3db99553796d0fe8591beca259f5f3d64410a7ec98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error63",
+    "revision": "r1",
+    "sha256": "2e77d29f533ffdf953e84b4fdb9f549108bf13757389ee5256a80b5bf6509f40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error64",
+    "revision": "r1",
+    "sha256": "70cf916472a09cd1972c5bed3939724afc060cb9a08062c73e8592688101c6fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error65",
+    "revision": "r1",
+    "sha256": "036e44441a26c4802193b51d6531037a1b2ea71b7d89a69afc3e6cb74de752d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error66",
+    "revision": "r1",
+    "sha256": "0138635b1d9540e9003ae69942b92b41b9fbe798804ce2b03e1f91e2327e005f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error67",
+    "revision": "r1",
+    "sha256": "590b0db5669074f066eed58377522853934c5bebf3dd841682d80984d1056909",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error68",
+    "revision": "r1",
+    "sha256": "1a65ed5872685bad950b261a29a0157088532f029dad18874899666afea9492c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error69",
+    "revision": "r1",
+    "sha256": "29c74becb69c9c7ebaa4e25dbcfec2dc7274ca35af8520ee08fbd9779c14ee15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error70",
+    "revision": "r1",
+    "sha256": "b2009948523d8391d3434c04fd6f915c722fad7fc7f92e2d7e51a072a36f5b00",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error71",
+    "revision": "r1",
+    "sha256": "b50f65e148132fcfdbab9e08f7d597b561432334d27c4cb61245e52b3ba2862f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error72",
+    "revision": "r1",
+    "sha256": "46c0f2b06d75d5fc703e102010929faac39feb70b1d85905a004a3ca62e2bb77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error73",
+    "revision": "r1",
+    "sha256": "98ebbc0b68c8d1d773e4414c3b843d5c36b7a924f2e42a2f0d8ea2d56bfa4c5c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error74",
+    "revision": "r1",
+    "sha256": "e39721b33e5158d914740125f868fb8f048b59d4cb9280d9256230a280ff0844",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error75",
+    "revision": "r1",
+    "sha256": "20971e0fe8c90c1fed858774cab4b34bd9e5730b701113ceace18e8a9adcfd22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error76",
+    "revision": "r1",
+    "sha256": "95f8908f0e634a71a83c3eddb46b9d00a423afe68115cbe65fce3a34b69f201c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error77",
+    "revision": "r1",
+    "sha256": "e865dee927a4930498f7978658b7c5f0d213dd34d3c2305b06df2ee3ff30a37b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error78",
+    "revision": "r1",
+    "sha256": "c14d753f4a50d78c00019736c4f4e82252de69bf4c4e9804d6dc31d74004e8a9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error79",
+    "revision": "r1",
+    "sha256": "2c5d410483502b6fab67af378e1504b104dcf26f5deca0674b518f6cad0c3f6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error80",
+    "revision": "r1",
+    "sha256": "501cf57b3d33a2e57f4d809232ebc9334be8033554b4cedc8a10f75b078b637f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error81",
+    "revision": "r1",
+    "sha256": "b6af0fec33846b0045f3affd997dd67b99f1958fb5936aa87ccf058bcf56c006",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error82",
+    "revision": "r1",
+    "sha256": "0b80089f11e42b473c4e41b01961ead67ce6d65ee07c6b3c2b999fd5d41ba77e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error83",
+    "revision": "r1",
+    "sha256": "05b8a2ed1f9bb5a6066d1c7d74dc150ce09379ae7c63faf0d5d151e50af36e1a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error84",
+    "revision": "r1",
+    "sha256": "346139d834d8482048059a1caa653ca640f709e7cd1c3802d4321cf3c20bd409",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error85",
+    "revision": "r1",
+    "sha256": "b8a288cce74b6725441b60e07ad1223f6e74a646762effaa08e45b5fd84c5618",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error86",
+    "revision": "r1",
+    "sha256": "13ce4365944acfc050cd470a5e1583317bba34a9e4a639b6f10acaf3df748722",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error87",
+    "revision": "r1",
+    "sha256": "c4939797b4cc4ce233f0fcb55144497612f8e4325937ea8bc5038aa269eb1d28",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error88",
+    "revision": "r1",
+    "sha256": "b71eaf4313ca4149cdd839919ec0ec23e6dd3b454ece212717012aeca5249ec9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error89",
+    "revision": "r1",
+    "sha256": "1943f7df5a7f9c978a836ba09ff7b780e7ec02c553f0b2b546b9c5a34ee0de58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error90",
+    "revision": "r1",
+    "sha256": "9104ac8937612a5592a2d4619107d1253152c204c808a2363943603ad9cd4207",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error91",
+    "revision": "r1",
+    "sha256": "b82dc7046d6cbd4e3c87bb26f22d6dc0fff272ef7bfc35b38f912ccd084e3770",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error92",
+    "revision": "r1",
+    "sha256": "e38d7ac9dc104d412b73f91a3e38d5cf3ffae88cbe3bea6da705a1eae22fa738",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error93",
+    "revision": "r1",
+    "sha256": "efd01f548280ff595332493507bfc03bc40ab36d158c382a74453c46e48bab00",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error94",
+    "revision": "r1",
+    "sha256": "e4a0e25367e7815b6a0cf90efa7714173cce10615fbb071e025a3471c6fc3e99",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error95",
+    "revision": "r1",
+    "sha256": "2a212c1bcd27a2b2ca532057b1c9d163c3e181b886cb1fabe1675792a395da30",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error96",
+    "revision": "r1",
+    "sha256": "8aeb7bff2770aeb85cbcbce624d4f06cdaad7902f24e373eddbe5a27a3e2f765",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error97",
+    "revision": "r1",
+    "sha256": "cd541467f08588c22e7e6ca0bb7eb3d128df16ebcbcee6a25fd3b34a07adbf4c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error98",
+    "revision": "r1",
+    "sha256": "676e18a7b20b6cfb1725ad675cdaea5c12cbd45117aed265d3641548eb568221",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-error99",
+    "revision": "r1",
+    "sha256": "e7656c233078d872086ec10c11e8c4cbf649113b26f169034025063349cfbeb6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process01",
+    "revision": "r1",
+    "sha256": "d5983142cb96585a0628456320721a39e2131e1d4b91a2261c9e9ad39d3d159e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process02",
+    "revision": "r1",
+    "sha256": "689db1234cd5c71d3269ae212b7d920de9413e96f7eaf2af46a02a89e06813d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process03",
+    "revision": "r1",
+    "sha256": "df1020a678e4363e5ceb3f2df1262e36ab1ed8ede7e44fdfa460dd89543da33c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process04",
+    "revision": "r1",
+    "sha256": "d38443d1049fc56d25e2d143079d801baf3b9fe4eed9f42ab60efd6ae687de4b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process05",
+    "revision": "r1",
+    "sha256": "6ca872e92bdd5206152c57c2bb095ade719c7f3dc0a0b3a3ab9cefe5f3eb4513",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process06",
+    "revision": "r1",
+    "sha256": "fcfb07e6fd2756231eb6951938bc1c6b2f046a2ca1f4f4c7d145ba0e9e35b7e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process07",
+    "revision": "r1",
+    "sha256": "ddb82245a1fa5e259e83d8e3572602b7cb1d20c203fe22da7d3beb341131320a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process08",
+    "revision": "r1",
+    "sha256": "3a8b4a4790ce348418b7db6f51381d0f385dfd72a563b74efb8954c08e40c790",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process09",
+    "revision": "r1",
+    "sha256": "f49ec2ba549f8398c50968cefd484c7a49e47f6136ffa2059817ba2ed71de883",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process10",
+    "revision": "r1",
+    "sha256": "d2d5c5050d2093cb8ffeaa15f316192c88df0d81cd46fdd48165c96355d5250e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process100",
+    "revision": "r1",
+    "sha256": "4bdf5ac2b81190fdf7513a81ee1bb8d82549bfe02dd6ec1cba3bddaec4e0c3b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process11",
+    "revision": "r1",
+    "sha256": "04ca4717382d31df239d6d3ec9bab04bcad5d1f5b7e4388d334c28ae21484e6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process12",
+    "revision": "r1",
+    "sha256": "40aa6ca85346b61f366b3d0a107d4bdc706e6c9a1ed9ecee94b56d4027dc9ad2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process13",
+    "revision": "r1",
+    "sha256": "384c92b214d2c3f2f5f613ba3ed08244bbe07aff7e1b1159fcfdaca8fdfcd691",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process14",
+    "revision": "r1",
+    "sha256": "81e5da07d2f54e56c4b1f8f36be44f115cd1521c9a5a4806ec70f22fe853d310",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process15",
+    "revision": "r1",
+    "sha256": "5fe515da2ec1935a2b4af66c7c740a155991376d2f3135f6be3b58f42dbd8244",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process16",
+    "revision": "r1",
+    "sha256": "71f8c76ea650707cdf7a82b2d351872abd71eb973080607423155dea14554c02",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process17",
+    "revision": "r1",
+    "sha256": "5018ed928eff24d8d1b63f75161d600619bd86fd524381d33f5561d902b405f5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process18",
+    "revision": "r1",
+    "sha256": "8a5533f938c73fe53e889b54f4d94b55e1a12b274dc3333714d2d704905b97d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process19",
+    "revision": "r1",
+    "sha256": "0f59efbbb81e705c1dc3c260d480dd89841373cf1345db54bcadae488bc47656",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process20",
+    "revision": "r1",
+    "sha256": "ccd6461d5c51372e8a968fe00b3f83c93e49b5d903ce4f607359376adf1ed0d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process21",
+    "revision": "r1",
+    "sha256": "e3057e6e06b2e0f156b0450d0c922f1818eb2c0d946b884cdc4ee3316fec1f2e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process22",
+    "revision": "r1",
+    "sha256": "f7e8024fe461a549bf012ad04cfd0edfacef919fa6ef4e41a68ae8e1806d4ad4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process23",
+    "revision": "r1",
+    "sha256": "0f0e66974da61137cd9f848851bef9b5d536c3876c48922f513e764a78fb86c6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process24",
+    "revision": "r1",
+    "sha256": "aedc696cbb1c74465f9a5a45428321b0a04196536f3d1ac1d3749ada4efb0327",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process25",
+    "revision": "r1",
+    "sha256": "d12de95c3d51da4d14d621618e30a2204571ebf28c72f6f0a50f65e6c95acbdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process26",
+    "revision": "r1",
+    "sha256": "07915baacc55dd4bb6f9d14ef2ef6c16a368a7e6f94b70402d9532b83c1708ef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process27",
+    "revision": "r1",
+    "sha256": "7a3acc212d8e70d1b96ce62739cf3cc6abdc94e6b9935d7f2f670858e3613b5c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process28",
+    "revision": "r1",
+    "sha256": "2087766dc616f3e83cd7c22f6306bd447746ff56b796007218860cf86c816093",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process29",
+    "revision": "r1",
+    "sha256": "ba5514f9547bd685dcd8d965dd4a3e5e66489165768a667e1921361fc997dccc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process30",
+    "revision": "r1",
+    "sha256": "31ad86cd1ca1e12b06eedc52110650fea9e04e70ff72d6dc301098d0c6d13e08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process31",
+    "revision": "r1",
+    "sha256": "a6452180ad0867dceb920de65aff0c2b483ad0968f5810cc5248a28fa28ed979",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process32",
+    "revision": "r1",
+    "sha256": "b38f00bb80dbf301b68d3c67c323a6ea236b7e4b0596783b5a414167d1e7c6a7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process33",
+    "revision": "r1",
+    "sha256": "285609e3b5ecc2567d6888d65b50af827859c59fae99e7207ee68387454c7a79",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process34",
+    "revision": "r1",
+    "sha256": "863b37eae7d945fa93f577cc1d9c2ce3357ce826f38256c39165d743b774a95b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process35",
+    "revision": "r1",
+    "sha256": "ab55f33be321e1f3a43fb6bf8ac16b4326ab75c6401b28b719be611859c7d9b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process36",
+    "revision": "r1",
+    "sha256": "57e2c7b612c7fac3943f508d77d4da510d380fc050082889856162ae7948e444",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process37",
+    "revision": "r1",
+    "sha256": "2674f7027499b69f95d17a6ddd2d886ad42252fedff6178d6549022391ce21f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process38",
+    "revision": "r1",
+    "sha256": "c1c9d9ad733b41cd2d28334719792cc8b9a543952109206aa68bf3966e153436",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2ww-process39",
+    "revision": "r1",
+    "sha256": "8fcbe59aa4044088b18cf454beda11f0fbb41f19f989008d7a4942b76a4b9441",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c2ww-mission41",
+    "revision": "r1",
+    "sha256": "ea3ed01c1d6f5a8e27b41bdb46a775f79c91050436c5cc01026a28800330f081"
+   },
+   {
+    "missionId": "c2ww-mission42",
+    "revision": "r1",
+    "sha256": "763dfa50affdd563231e7fb8ca0fc3237ea500b04212e2d857d992c64bb60aa2"
+   },
+   {
+    "missionId": "c2ww-mission43",
+    "revision": "r1",
+    "sha256": "5733f6efa705a13500e40d4e40942f56233dd82f01d470803a86c1d669c6fadf"
+   },
+   {
+    "missionId": "c2ww-mission44",
+    "revision": "r1",
+    "sha256": "98748490ab46183a73ba1707f8698b21480b63a847b05480d63ee9e3e46ae0b2"
+   },
+   {
+    "missionId": "c2ww-mission45",
+    "revision": "r1",
+    "sha256": "64e1bbe974c7faa76e6482f3a8f7e21dd39a47c9a0be3b0b4fd77f028709dc5c"
+   },
+   {
+    "missionId": "c2ww-mission46",
+    "revision": "r1",
+    "sha256": "c30a5d0c460ec05cf8931da2bc6a66d0a0631c53ae0db4abd323e5bd63eab4f5"
+   },
+   {
+    "missionId": "c2ww-mission47",
+    "revision": "r1",
+    "sha256": "74cb5d63370a6f90de6a7ac79ec91147714e08b1cf90e77b65543ade7486035b"
+   },
+   {
+    "missionId": "c2ww-mission48",
+    "revision": "r1",
+    "sha256": "00a8749de6c3047cb1ddbc44591c1669385811884a2a265c82a0abd3e2cbdf6f"
+   },
+   {
+    "missionId": "c2ww-mission49",
+    "revision": "r1",
+    "sha256": "18beac4f84c46c55517505e769431f1d04b19f4bf0ab378e88e317adbb4a54d2"
+   },
+   {
+    "missionId": "c2ww-mission50",
+    "revision": "r1",
+    "sha256": "4886bd77f7f97e3b669b0ea4a823f8775c077db4e56e730ed55700064cf04196"
+   },
+   {
+    "missionId": "c2ww-mission51",
+    "revision": "r1",
+    "sha256": "fa54f6c7e807b12d26902f37972eee1404a5f034b736149be0f8aa60edb968bd"
+   },
+   {
+    "missionId": "c2ww-mission52",
+    "revision": "r1",
+    "sha256": "86dcb95a886436f58081784ea2557571c4cb4d39d195be01319c25a6230e4358"
+   },
+   {
+    "missionId": "c2ww-mission53",
+    "revision": "r1",
+    "sha256": "d1e5269e82f870651ef21e3c9c53c1b478bfcf348b59c5272a4eb6757ae5cfa0"
+   },
+   {
+    "missionId": "c2ww-mission54",
+    "revision": "r1",
+    "sha256": "fe25abc56399cde1621e7673c1efe29a44514df0f86218b462805e61983710b1"
+   },
+   {
+    "missionId": "c2ww-mission55",
+    "revision": "r1",
+    "sha256": "821b488ed2a33c4faebeefbdbfd8207fb7c5a3d053f2cbab1fedbfb87a49da8c"
+   },
+   {
+    "missionId": "c2ww-mission56",
+    "revision": "r1",
+    "sha256": "b0e3e22d9019e5064fe9e273a6f966e2000dbed502197337315b25c927fca168"
+   },
+   {
+    "missionId": "c2ww-mission57",
+    "revision": "r1",
+    "sha256": "9a378f4bb4c90a1120917dad6c262584649a448167dc47d8b36c13c5869055f2"
+   },
+   {
+    "missionId": "c2ww-mission58",
+    "revision": "r1",
+    "sha256": "b36851262e64b20dc08f9516b9fe9177b61ec8c1c3709d0f1f1a383cd5ccebfb"
+   },
+   {
+    "missionId": "c2ww-mission59",
+    "revision": "r1",
+    "sha256": "1c0c7a7ac44df36030833297571c2341788b3295d20ce53796db862193e705a6"
+   },
+   {
+    "missionId": "c2ww-mission60",
+    "revision": "r1",
+    "sha256": "7b5e3bc0d1c6684504ee38c8386154bad2858cf7a203cc8f560c33109ee0b06e"
+   }
+  ]
+ }
+}

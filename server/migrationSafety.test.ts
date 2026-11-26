@@ -202,6 +202,33 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["interactive_item_progress", "interactive_daily_activity"] },
         verifierAllowMissingTables: ["interactive_item_progress", "interactive_daily_activity"],
       }),
+      expect.objectContaining({
+        version: 83,
+        tag: "0083_assessment_activity",
+        file: "drizzle/0083_assessment_activity.sql",
+        sha256: "d65a0baf0443f0d8bc279673a222b0ed3b05e59b9abbbb5d260463c1103533ae",
+        proposedOnly: true,
+        standaloneApply: { tables: ["assessment_activity_sessions", "assessment_activity_events"] },
+        verifierAllowMissingTables: ["assessment_activity_sessions", "assessment_activity_events"],
+      }),
+      expect.objectContaining({
+        version: 84,
+        tag: "0084_feature_requests",
+        file: "drizzle/0084_feature_requests.sql",
+        sha256: "396c632b998ef0093da17a3d667a474b0c713287ebd50e9b36988dfc10c6d1ad",
+        proposedOnly: true,
+        standaloneApply: { tables: ["feature_requests"] },
+        verifierAllowMissingTables: ["feature_requests"],
+      }),
+      expect.objectContaining({
+        version: 85,
+        tag: "0085_licence_expiry_tracking",
+        file: "drizzle/0085_licence_expiry_tracking.sql",
+        sha256: "36cfd33cbe7413ac2aa879abb0755730f62265b3d2d784b560fb0a82355bf3b5",
+        proposedOnly: true,
+        standaloneApply: { tables: ["certificates", "certificate_alerts"] },
+        verifierAllowMissingTables: ["certificates", "certificate_alerts"],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -952,7 +979,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]);
   });
 });
 

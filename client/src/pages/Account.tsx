@@ -12,7 +12,9 @@ import { getAllSubscriptionExamTypes } from "../../../server/stripe/subscription
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ExamDateTracker from "@/components/ExamDateTracker";
+import { MyCertificates } from "@/components/MyCertificates";
 import { toast } from "sonner";
+import { sanitizeAccountNext } from "./accountAccess";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -129,7 +131,7 @@ function OtpAccessSection({ email }: { email: string }) {
 export default function Account() {
   usePageMeta({
     title: "My Passes — Echelon Institute",
-    description: "Restore access to your Echelon Institute practice passes. Enter your purchase email to unlock your exams on any device.",
+    description: "Sign in with your checkout or team-invitation email and verify the six-digit inbox code to view your current Echelon Institute course access on any device.",
     keywords: "restore access, my passes, Echelon Institute account",
     noindex: true
   });
@@ -139,7 +141,7 @@ export default function Account() {
       return localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? "";
     } catch { return ""; }
   });
-  const [submittedEmail, setSubmittedEmail] = useState<string | null>(() => {
+  const [submittedEmail] = useState<string | null>(() => {
     try {
       return localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? null;
     } catch { return null; }
@@ -177,6 +179,10 @@ export default function Account() {
 
   // Shared-device reset must end httpOnly sessions as well as cached access.
   const handleClearDeviceState = logout;
+
+  // Logout clears both session types, storage, and query caches, then hard-navigates
+  // to /account's signed-out code sign-in form. Do not just reset the local email.
+  const handleSwitchEmail = logout;
 
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
     undefined,
@@ -243,7 +249,7 @@ export default function Account() {
     // Redirect to OTP login with email pre-filled
     // Forward the ?next= param if it is a safe same-application relative path
     const rawNext = isPersonalBilling ? "/account?billing=personal" : new URLSearchParams(search).get("next") ?? "";
-    const safeNext = /^\/[^/]/.test(rawNext) && !/^\/\//.test(rawNext) && !rawNext.includes(":") ? rawNext : "";
+    const safeNext = sanitizeAccountNext(rawNext);
     setOtpRedirecting(true);
     window.location.href = `/login/otp?email=${encodeURIComponent(trimmed)}${safeNext ? `&next=${encodeURIComponent(safeNext)}` : ""}`;
   };
@@ -261,7 +267,7 @@ export default function Account() {
         ...(getSubscriptions.data?.unlockedExamTypes ?? []),
       ].filter((v, i, a) => a.indexOf(v) === i);
   const purchases = getPurchases.data?.purchases ?? [];
-  const hasPurchases = unlockedExamTypes.length > 0;
+  const hasActiveAccess = unlockedExamTypes.length > 0;
 
   if (isManager && !isPersonalBilling) {
     return (
@@ -317,7 +323,7 @@ export default function Account() {
               ? "View your active passes, subscriptions, and team seats. Manage your account below."
               : emailSession
               ? `Signed in as ${emailSession}. Your active passes are shown below.`
-              : "Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone."}
+              : "Sign in with your checkout or team-invitation email. Enter the six-digit code sent to that inbox to view your current access. The code verifies inbox ownership before showing paid course access."}
           </p>
           {isPersonalBilling && isAnyAuthenticated && (
             <Link href="/team" style={{ display: "inline-block", marginTop: 12, color: "#1D4ED8", fontSize: 13, fontWeight: 700 }}>
@@ -326,13 +332,16 @@ export default function Account() {
           )}
         </div>
 
+        {/* Operator's own tracked certificates (renders only when some are on file) */}
+        {isAnyAuthenticated && <MyCertificates />}
+
         {/* How it works */}
         {!submittedEmail && (
           <div style={{ display: "flex", gap: 16, marginBottom: 32, justifyContent: "center", flexWrap: "wrap" }}>
             {[
               { step: "1", label: "Enter your purchase email", icon: "✉️" },
-              { step: "2", label: "We find your passes instantly", icon: "🔍" },
-              { step: "3", label: "Access restored on this device", icon: "✅" },
+              { step: "2", label: "Verify the code in your inbox", icon: "🔍" },
+              { step: "3", label: "View your current passes", icon: "✅" },
             ].map(s => (
               <div key={s.step} style={{ display: "flex", alignItems: "center", gap: 10, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: "10px 16px", flex: "1 1 160px", minWidth: 160, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
                 <div className="step-badge" style={{ background: "#1D4ED8", color: "#fff" }}>{s.step}</div>
@@ -350,7 +359,7 @@ export default function Account() {
         <div className="account-card" style={{ padding: 28, marginBottom: 24 }}>
           <form onSubmit={handleSubmit}>
             <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8, letterSpacing: "0.02em" }}>
-              Purchase email address
+              Checkout or team-invitation email address
             </label>
             <div className="restore-form-row" style={{ display: "flex", gap: 10 }}>
               <input
@@ -395,8 +404,8 @@ export default function Account() {
           {/* Trust signals */}
           <div style={{ display: "flex", gap: 20, marginTop: 18, flexWrap: "wrap" }}>
             {[
-              { icon: "🔒", text: "Inbox-verified — only you can sign in" },
-              { icon: "🔢", text: "6-digit code sent to your email" },
+              { icon: "🔒", text: "Inbox verification protects your course access" },
+              { icon: "🔢", text: "Six-digit inbox code for eligible accounts" },
               { icon: "📱", text: "Works on any device or browser" },
             ].map(t => (
               <div key={t.text} style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -411,7 +420,7 @@ export default function Account() {
         {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
         {isAnyAuthenticated && !(getPurchases.isFetching || entitlementsQuery.isFetching || getSubscriptions.isFetching || getEmailSubscriptions.isFetching) && (
           <>
-            {hasPurchases ? (
+            {hasActiveAccess ? (
               <>
                 {/* Success banner */}
                 <div style={{
@@ -461,7 +470,7 @@ export default function Account() {
                           "class4": "Class 4 All-Access",
                           "all-access": "All-Access Pass",
                         }[sub.tier] ?? sub.tier;
-                        const provinceLabel = sub.province === "western" ? "Western Canada (WPI)" : "Ontario (EOCP)";
+                        const provinceLabel = sub.province === "western" ? "Western Canada (WPI)" : "Ontario";
                         const daysLeft = Math.max(0, Math.ceil((new Date(sub.currentPeriodEnd).getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
                         return (
                           <div key={sub.id} style={{ padding: "20px 24px", borderBottom: "1px solid #F1F5F9" }}>
@@ -743,34 +752,35 @@ export default function Account() {
                 {/* Device note */}
                 <div style={{ textAlign: "center", padding: "16px 20px", background: "#FFFFFF", borderRadius: 12, border: "1px solid #E2E8F0" }}>
                   <p style={{ fontSize: 12, color: "#94A3B8", margin: "0 0 6px" }}>
-                    💡 Access is saved to <strong style={{ color: "#64748B" }}>this browser only</strong>. Switching devices? Just re-enter your email here.
+                    To use another device, sign in with your checkout or team-invitation email and verify a new email code.
                   </p>
                   <button
-                    onClick={() => { setSubmittedEmail(null); setEmail(submittedEmail ?? ""); setRestored(false); }}
+                    onClick={handleSwitchEmail}
                     style={{ fontSize: 11, color: "#3B82F6", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontWeight: 600 }}
                   >
-                    ← Use a different email
+                    Sign out and use a different email
                   </button>
                 </div>
               </>
             ) : (
-              /* No purchases found */
+              /* No active access — purchase history may still exist. */
               <div className="account-card" style={{ padding: 36, textAlign: "center" }}>
                 <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#F1F5F9", border: "2px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
-                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>{isPersonalBilling ? "No active individual passes or subscriptions" : "No purchases found"}</h2>
+                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>{isPersonalBilling ? "No active individual passes or subscriptions" : "No active passes or subscriptions"}</h2>
                 <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
-                  {isPersonalBilling ? "No active individual access was found for " : "We couldn't find any purchases for "}
+                  {isPersonalBilling ? "No current individual course access is available for this account: " : "No current course access is available for this account: "}
                   <span style={{ color: "#334155", fontWeight: 700 }}>{submittedEmail}</span>.
                 </p>
                 <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
                   {isPersonalBilling
                     ? "Team licences and billing are separate and remain in your team dashboard. Check the email on your individual receipt if you expected a personal purchase."
-                    : "Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address."}
+                    : "Access may have expired or become inactive. Check your Stripe receipt or team invitation to confirm the email address used."}
                 </p>
 
                 <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left", border: "1px solid #E2E8F0" }}>
                   <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", margin: "0 0 10px" }}>Common reasons:</p>
                   {[
+                    "Your pass or subscription may have expired or become inactive",
                     "You may have used a different email (e.g., work vs. personal)",
                     "The purchase was made under a different account",
                     "Check your Stripe receipt email for the exact address used",
@@ -784,10 +794,10 @@ export default function Account() {
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
                   <button
-                    onClick={() => { setSubmittedEmail(null); setEmail(""); }}
+                    onClick={handleSwitchEmail}
                     style={{ padding: "11px 28px", borderRadius: 10, border: "none", background: "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", fontSize: 13, fontWeight: 800, cursor: "pointer", fontFamily: "inherit" }}
                   >
-                    Try a different email
+                    Sign out and use a different email
                   </button>
                   <Link href="/pricing">
                     <span style={{ fontSize: 12, color: "#3B82F6", fontWeight: 600, cursor: "pointer" }}>Browse Practice Passes →</span>
@@ -814,7 +824,7 @@ export default function Account() {
         )}
 
         {/* Ask active customers for a review after access is restored, not before sign-in. */}
-        {hasPurchases && <div style={{ marginTop: 32, textAlign: "center" }}>
+        {hasActiveAccess && <div style={{ marginTop: 32, textAlign: "center" }}>
           <a
             href="https://g.page/r/CWsjBbkUlS8rEBM/review"
             target="_blank"

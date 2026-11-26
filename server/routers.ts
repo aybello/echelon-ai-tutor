@@ -26,6 +26,7 @@ import { TRPCError } from "@trpc/server";
 import { readCourseLearnerProfile, readOverallLearnerActivity } from "./courseLearnerProfile";
 import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { adminRouter } from "./routers/admin";
+import { featureRequestsRouter } from "./routers/featureRequestsRouter";
 import { resolveEntitlementsByEmail } from "./_core/access";
 import {
   getAccessibleCoursesForIdentity,
@@ -55,6 +56,7 @@ import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
 import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
+import { certificatesRouter } from "./routers/certificatesRouter";
 import { interactiveRouter } from "./routers/interactiveRouter";
 import { deepGamesRouter } from "./routers/deepGamesRouter";
 import { assessmentActivityRouter } from "./routers/assessmentActivityRouter";
@@ -93,6 +95,7 @@ export const studyPlanCaptureInput = z.object({
 });
 
 export const appRouter = router({
+  featureRequests: featureRequestsRouter,
   municipal: municipalProcurementRouter,
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -189,6 +192,7 @@ export const appRouter = router({
   electricianReview: electricianReviewRouter,
   training: trainingRouter,
   ceu: ceuRouter,
+  certificates: certificatesRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
@@ -387,7 +391,7 @@ export const appRouter = router({
           const offer = resolveQuizGateOffer(input.productKey);
           const courseLabel = course?.displayName ?? offer.productName ?? "your course";
           const site = "https://echeloninstitute.ca";
-          const courseUrl = `${site}/pricing?course=${encodeURIComponent(input.productKey)}`;
+          const courseUrl = course ? `${site}${course.quizPath}` : undefined;
           await sendPreviewStudyPlanEmail({
             email,
             courseLabel,
@@ -396,7 +400,7 @@ export const appRouter = router({
             total: input.total,
             weakTopics: input.weakTopics,
             courseUrl,
-            offerUrl: courseUrl,
+            offerUrl: `${site}/pricing?course=${encodeURIComponent(input.productKey)}`,
             priceLabel: offer.priceLabel ?? "available on the pricing page",
             stage: input.stage,
           });
@@ -898,7 +902,7 @@ export const appRouter = router({
           rating: z.number().int().min(1).max(5),
           comment: z.string().max(1000).optional(),
           email: z.string().email().optional(), // for guest users
-          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score"]),
+          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score", "dashboard", "quick10"]),
           province: z.string().max(32).optional(),
         })
       )
@@ -908,7 +912,7 @@ export const appRouter = router({
         const userId = ctx.user?.id ?? null;
         await db.insert(userFeedback).values({
           userId,
-          email: input.email ?? ctx.user?.email ?? null,
+          email: ctx.studentEmail ?? ctx.user?.email ?? input.email ?? null,
           examType: input.examType,
           rating: input.rating,
           comment: input.comment ?? null,

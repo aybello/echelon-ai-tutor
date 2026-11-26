@@ -31,6 +31,7 @@ import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import { FlexOrderBuilder } from "@/components/FlexOrderBuilder";
 import { MUNICIPAL_CALLBACK_NOTICE } from "@shared/municipalCallback";
+import TrustedOrganizations from "@/components/TrustedOrganizations";
 
 const ANNUAL_TIERS: TeamStreamTier[] = [
   "stream-water",
@@ -162,12 +163,10 @@ export default function Teams() {
           <h1>Train your crew. Track every operator.</h1>
           <p className="teams-hero-intro">Flexible exam preparation for utilities and employers.</p>
           <p className="teams-hero-assurance">Named operator licences · Stripe checkout and paid invoice</p>
-          <div className="teams-customer-proof">
-            <p className="teams-customer-proof-label text-sm font-semibold">Used by operators at</p>
-            <div className="teams-customer-proof-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong></div>
-          </div>
         </div>
       </section>
+
+      <TrustedOrganizations />
 
       <main className="teams-redesign__content mx-auto max-w-6xl px-6 py-12">
         <section className="teams-product-switch mx-auto mb-10">

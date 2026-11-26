@@ -1,0 +1,5446 @@
+{
+ "courseKey": "oit",
+ "version": "deep-20261121-v3",
+ "tasks": [
+  {
+   "id": "oit-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages raw water follows from a lake intake to the plant treatment units.",
+   "topicId": "intake-raw-water-train",
+   "level": "oit",
+   "assumptions": "Fictional intake where zebra mussel control chlorination is applied at the crib in season.",
+   "configuration": "Shoreline lake intake with a crib, intake pipe, wet well, and raw water pumps.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Water enters the submerged intake crib"
+    },
+    {
+     "id": "c2",
+     "label": "Chlorine is applied at the crib for mussel control"
+    },
+    {
+     "id": "c3",
+     "label": "Water flows by gravity through the intake pipe to the shore wet well"
+    },
+    {
+     "id": "c4",
+     "label": "Travelling screens remove debris at the wet well"
+    },
+    {
+     "id": "c5",
+     "label": "Raw water pumps lift the water to the plant"
+    },
+    {
+     "id": "c6",
+     "label": "Raw water passes the plant flow meter to the treatment units"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Water must enter at the crib before anything else can happen, and mussel control is applied there because that is where mussels attach. Gravity carries the water to shore, screening protects the pumps, and metering at the plant records what the treatment units receive."
+  },
+  {
+   "id": "oit-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for changing the full scale coagulant dose after jar test results come in.",
+   "topicId": "coagulant-dose-adjustment",
+   "level": "oit",
+   "assumptions": "Fictional adjustment where the operator confirms the jar test winner before touching the feed pump.",
+   "configuration": "Coagulant dose change at a surface water plant after a raw water quality shift.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the jar test results and select the dose with the lowest settled turbidity"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the current raw water flow and quality have not changed since sampling"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the new feed pump setting for the plant flow"
+    },
+    {
+     "id": "c4",
+     "label": "Adjust the metering pump to the new setting"
+    },
+    {
+     "id": "c5",
+     "label": "Verify the actual feed rate on the calibration column"
+    },
+    {
+     "id": "c6",
+     "label": "Monitor settled and filtered water turbidity and record the change"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The jar test only helps if its winning dose is matched to current plant flow and raw water, so those are confirmed before calculating the pump setting. The calibration column proves the pump delivers the intended rate, and follow up turbidity monitoring shows whether the change worked."
+  },
+  {
+   "id": "oit-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for inspecting the media in a gravity filter taken out of service.",
+   "topicId": "filter-media-inspection",
+   "level": "oit",
+   "assumptions": "Fictional inspection looking for mud balls, media loss, and gravel displacement.",
+   "configuration": "Filter media inspection during a planned filter outage at a conventional plant.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Take the filter out of service and drain it below the media surface"
+    },
+    {
+     "id": "c2",
+     "label": "Measure the media depth at several points and compare with the design depth"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect the surface for mud balls, cracks, and uneven areas"
+    },
+    {
+     "id": "c4",
+     "label": "Core sample the media to check for fouling through the bed depth"
+    },
+    {
+     "id": "c5",
+     "label": "Inspect the exposed underdrain and support gravel where visible"
+    },
+    {
+     "id": "c6",
+     "label": "Record the findings and return or hold the filter based on condition"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The bed must be drained before it can be measured or seen. Depth and surface checks come before core sampling because they show where the bed is disturbed, the underdrain is checked while the filter is down, and the record supports the return to service decision."
+  },
+  {
+   "id": "oit-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a suspected backflow contamination in a building connected to the distribution system.",
+   "topicId": "backflow-incident-response",
+   "level": "oit",
+   "assumptions": "Fictional response where the affected building is isolated before the system is flushed and sampled.",
+   "configuration": "Suspected back siphonage from a commercial building after a nearby watermain break dropped system pressure.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Isolate the building service from the distribution system"
+    },
+    {
+     "id": "c2",
+     "label": "Notify the supervisor and the local health unit of the suspected incident"
+    },
+    {
+     "id": "c3",
+     "label": "Interview the building operator about chemicals and cross connections present"
+    },
+    {
+     "id": "c4",
+     "label": "Flush the affected distribution mains around the building"
+    },
+    {
+     "id": "c5",
+     "label": "Collect bacteriological and chlorine residual samples in the area"
+    },
+    {
+     "id": "c6",
+     "label": "Return the service to use after acceptable results and a backflow preventer is confirmed"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Isolation comes first so suspect water cannot spread further into the system. Notifications and the building interview identify what may have entered, flushing and sampling clear and verify the mains, and the service returns only with protection confirmed in place."
+  },
+  {
+   "id": "oit-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for investigating a low water pressure complaint from a customer.",
+   "topicId": "low-pressure-complaint",
+   "level": "oit",
+   "assumptions": "Fictional investigation that works from the customer tap back toward the system to find the cause.",
+   "configuration": "Low pressure complaint from a home on a street served by a pressure zone with a booster station.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the complaint details and check for other complaints in the area"
+    },
+    {
+     "id": "c2",
+     "label": "Check the pressure at the customer hose tap with a gauge"
+    },
+    {
+     "id": "c3",
+     "label": "Check pressure at the nearest hydrant on the same main"
+    },
+    {
+     "id": "c4",
+     "label": "Review booster station pressures and any valve or break records for the zone"
+    },
+    {
+     "id": "c5",
+     "label": "Check whether a partially closed valve or an active repair explains the reading"
+    },
+    {
+     "id": "c6",
+     "label": "Advise the customer of the finding and record the investigation outcome"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The pattern of complaints shows early whether the problem is one home or the whole zone. Measuring at the home and then at the hydrant separates plumbing problems from main problems, system records are checked next, and the customer is told what was found."
+  },
+  {
+   "id": "oit-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for handling a discoloured water complaint after a watermain break repair nearby.",
+   "topicId": "discoloured-water-complaint",
+   "level": "oit",
+   "assumptions": "Fictional response where flushing is targeted from clean water toward the affected area.",
+   "configuration": "Rusty water complaints on a street where a break was repaired the previous day.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the complaint and check the recent break and flushing records for the street"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect the water colour and check the chlorine residual at a nearby hydrant"
+    },
+    {
+     "id": "c3",
+     "label": "Flush the affected main from the nearest clean section toward the complaint area"
+    },
+    {
+     "id": "c4",
+     "label": "Advise affected customers to run a cold tap until their water clears"
+    },
+    {
+     "id": "c5",
+     "label": "Recheck colour and residual after flushing"
+    },
+    {
+     "id": "c6",
+     "label": "Record the complaint, the flushing done, and the final results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Records first tell the operator whether the break explains the complaint. Flushing is planned so dirty water is pulled toward the flush point rather than spread, customer advice matches the flushing, and the recheck proves the water is back to normal."
+  },
+  {
+   "id": "oit-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for shock chlorinating a private style well after pump replacement.",
+   "topicId": "well-shock-chlorination",
+   "level": "oit",
+   "assumptions": "Fictional disinfection where strong chlorine solution is circulated through the well and plumbing before flushing and sampling.",
+   "configuration": "Shock chlorination of a drilled well following pump work that may have introduced contamination.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Calculate the well water volume and the chlorine needed for the target strong dose"
+    },
+    {
+     "id": "c2",
+     "label": "Pour the chlorine solution into the well and circulate it with a hose"
+    },
+    {
+     "id": "c3",
+     "label": "Open each tap in the building until chlorine is smelled, then close it"
+    },
+    {
+     "id": "c4",
+     "label": "Let the chlorinated water stand in the well and plumbing for 12 to 24 hours"
+    },
+    {
+     "id": "c5",
+     "label": "Flush the system until the chlorine residual returns to normal"
+    },
+    {
+     "id": "c6",
+     "label": "Collect a bacteriological sample after the chlorine has cleared"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The dose is based on the well volume, so the calculation comes first. Circulating and drawing chlorine to every tap disinfects the whole system, the standing time provides contact, flushing removes the strong solution, and sampling is only meaningful once that chlorine is gone."
+  },
+  {
+   "id": "oit-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the five steps for calibrating a laboratory pH meter before sample testing.",
+   "topicId": "ph-meter-calibration",
+   "level": "oit",
+   "assumptions": "Fictional calibration using pH 7 and pH 4 buffers at room temperature.",
+   "configuration": "Two point pH meter calibration in a treatment plant laboratory using commercial buffer solutions.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Rinse the electrode with distilled water and blot it dry"
+    },
+    {
+     "id": "c2",
+     "label": "Immerse the electrode in the pH 7 buffer and set the zero point"
+    },
+    {
+     "id": "c3",
+     "label": "Rinse and blot the electrode again"
+    },
+    {
+     "id": "c4",
+     "label": "Immerse the electrode in the pH 4 buffer and set the slope"
+    },
+    {
+     "id": "c5",
+     "label": "Rinse the electrode and store it in its storage solution"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Rinsing between buffers prevents one buffer from contaminating the next. The neutral buffer sets the zero point first because the slope adjustment is referenced to it, and proper storage keeps the electrode hydrated and ready."
+  },
+  {
+   "id": "oit-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of an alkalinity titration on a treated water sample.",
+   "topicId": "alkalinity-titration",
+   "level": "oit",
+   "assumptions": "Fictional titration to the bromocresol green methyl orange endpoint near pH 4.5.",
+   "configuration": "Alkalinity titration using a standardized acid and a colour indicator in the plant laboratory.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Measure the sample volume into a clean flask"
+    },
+    {
+     "id": "c2",
+     "label": "Add the alkalinity indicator to the sample"
+    },
+    {
+     "id": "c3",
+     "label": "Fill the burette with standardized acid and record the starting level"
+    },
+    {
+     "id": "c4",
+     "label": "Add acid slowly while swirling until the colour begins to change"
+    },
+    {
+     "id": "c5",
+     "label": "Finish drop by drop to the endpoint colour"
+    },
+    {
+     "id": "c6",
+     "label": "Record the final burette level and calculate the alkalinity as calcium carbonate"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A measured sample and indicator come before any acid is added. The titration slows near the endpoint because one extra drop overshoots it, and the alkalinity is calculated from the acid volume actually used."
+  },
+  {
+   "id": "oit-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a bench chlorine demand test on raw water.",
+   "topicId": "chlorine-demand-test",
+   "level": "oit",
+   "assumptions": "Fictional test where identical samples receive increasing chlorine doses and residuals are read after a set contact time.",
+   "configuration": "Chlorine demand test used to estimate how much chlorine the raw water will consume.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill a series of sample bottles with the same raw water volume"
+    },
+    {
+     "id": "c2",
+     "label": "Add a different measured chlorine dose to each bottle"
+    },
+    {
+     "id": "c3",
+     "label": "Mix and store the bottles in the dark for the set contact time"
+    },
+    {
+     "id": "c4",
+     "label": "Measure the free chlorine residual in each bottle"
+    },
+    {
+     "id": "c5",
+     "label": "Calculate the demand for each bottle as dose minus residual"
+    },
+    {
+     "id": "c6",
+     "label": "Select the dose that leaves the target residual after the contact time"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Equal volumes and known doses make the bottles comparable. Residuals can only be read after the contact time has passed, demand is the difference between what was added and what remains, and the chosen dose is the one that still leaves the target residual."
+  },
+  {
+   "id": "oit-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a unidirectional flushing run on a distribution loop.",
+   "topicId": "unidirectional-flushing",
+   "level": "oit",
+   "assumptions": "Fictional run where valves are set so clean water is pulled through the target main in sequence.",
+   "configuration": "Unidirectional flushing program segment designed to scour a main at high velocity in one direction.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Plan the flushing route and identify the valves and hydrants in sequence"
+    },
+    {
+     "id": "c2",
+     "label": "Notify customers in the flushing area"
+    },
+    {
+     "id": "c3",
+     "label": "Close valves to isolate the target main and force one direction flow"
+    },
+    {
+     "id": "c4",
+     "label": "Open the first hydrant and flush until the water runs clear"
+    },
+    {
+     "id": "c5",
+     "label": "Move to the next hydrant downstream and repeat the flush"
+    },
+    {
+     "id": "c6",
+     "label": "Restore all valves to their normal positions and record the results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The route and valve plan create the one direction high velocity flow that does the scouring, so planning and isolation come before water moves. Hydrants are worked in downstream order so loosened deposits are carried out, and valves are restored and documented at the end."
+  },
+  {
+   "id": "oit-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six operating steps for taking a ground storage reservoir out of service for a day and returning it.",
+   "topicId": "storage-tank-cycling",
+   "level": "oit",
+   "assumptions": "Fictional reservoir outage for a level instrument repair, with the other reservoir carrying the system.",
+   "configuration": "Ground level storage reservoir with separate inlet and outlet valves and a level control system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Transfer system storage duty to the other reservoir"
+    },
+    {
+     "id": "c2",
+     "label": "Close the reservoir inlet and outlet valves and tag them"
+    },
+    {
+     "id": "c3",
+     "label": "Drain the reservoir to the level needed for the work"
+    },
+    {
+     "id": "c4",
+     "label": "Complete the instrument repair and remove all tools"
+    },
+    {
+     "id": "c5",
+     "label": "Refill the reservoir slowly and check the new level readings against a manual measurement"
+    },
+    {
+     "id": "c6",
+     "label": "Return the reservoir to automatic level control and service"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Storage duty moves first so the town is never without stored water. The reservoir is isolated and drained only as far as the work needs, and after refilling the repaired instrument is proven against a manual reading before automatic control resumes."
+  },
+  {
+   "id": "oit-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a spilled drum of treatment chemical inside the plant.",
+   "topicId": "chemical-spill-response",
+   "level": "oit",
+   "assumptions": "Fictional spill response where the area is made safe before containment and cleanup begin.",
+   "configuration": "Spill of a liquid treatment chemical from a tipped drum in the chemical storage room.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Move people away and keep others out of the area"
+    },
+    {
+     "id": "c2",
+     "label": "Identify the chemical from its label and safety data sheet"
+    },
+    {
+     "id": "c3",
+     "label": "Put on the protective equipment the safety data sheet requires"
+    },
+    {
+     "id": "c4",
+     "label": "Stop the source if it is safe, such as uprighting the drum"
+    },
+    {
+     "id": "c5",
+     "label": "Contain the spill with absorbent booms and pads so it cannot reach a drain"
+    },
+    {
+     "id": "c6",
+     "label": "Collect the used absorbent as chemical waste and report the spill"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "People and identification come first because the right protective equipment depends on knowing the chemical. Only then is the source stopped and the spill contained before it reaches a drain, and the cleanup waste is handled as chemical waste with the spill reported."
+  },
+  {
+   "id": "oit-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps in the chain of custody for drinking water samples sent to a licensed laboratory.",
+   "topicId": "drinking-water-sample-custody",
+   "level": "oit",
+   "assumptions": "Fictional sample set that must stay cold, documented, and traceable from tap to laboratory report.",
+   "configuration": "Weekly distribution samples for bacteriological and chemical testing under Ontario Regulation 170/03.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Label each bottle with the sample location, date, and time before collecting"
+    },
+    {
+     "id": "c2",
+     "label": "Collect the samples and complete the chain of custody form"
+    },
+    {
+     "id": "c3",
+     "label": "Place the samples in a cooler with ice packs"
+    },
+    {
+     "id": "c4",
+     "label": "Seal the cooler and record the courier or delivery details"
+    },
+    {
+     "id": "c5",
+     "label": "Deliver the cooler to the laboratory within the allowed holding time"
+    },
+    {
+     "id": "c6",
+     "label": "File the laboratory report with the sampling records when it arrives"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Labels go on before collection so a sample can never be mixed up afterward. The custody form, cold transport, and timely delivery keep the samples valid and traceable, and filing the report with the field records closes the chain."
+  },
+  {
+   "id": "oit-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for installing a new residential water service connection from an existing main.",
+   "topicId": "new-service-connection",
+   "level": "oit",
+   "assumptions": "Fictional installation ending with disinfection, pressure testing, and the curb stop left off until the home plumbing is ready.",
+   "configuration": "New service tapped from a live distribution main to a new home.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Locate and expose the main at the tapping location"
+    },
+    {
+     "id": "c2",
+     "label": "Tap the main and install the corporation stop"
+    },
+    {
+     "id": "c3",
+     "label": "Run the service line from the main to the property line"
+    },
+    {
+     "id": "c4",
+     "label": "Install the curb stop and service box at the property line"
+    },
+    {
+     "id": "c5",
+     "label": "Disinfect and pressure test the new service line"
+    },
+    {
+     "id": "c6",
+     "label": "Flush the service and leave the curb stop closed until the building connection is made"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The tap on the live main comes first because every later step depends on it. The line is run to the property line where the curb stop gives the municipality its shut off point, and the disinfected, tested service stays closed until the building is connected."
+  },
+  {
+   "id": "oit-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of preliminary treatment at the headworks of a wastewater plant.",
+   "topicId": "wastewater-preliminary-train",
+   "level": "oit",
+   "assumptions": "Fictional preliminary train that protects downstream equipment and removes material that is not treated biologically.",
+   "configuration": "Headworks of a municipal wastewater plant receiving raw sewage from the collection system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Raw wastewater arrives at the headworks inlet"
+    },
+    {
+     "id": "c2",
+     "label": "Coarse screening removes rags and large solids"
+    },
+    {
+     "id": "c3",
+     "label": "Grit removal settles out sand and gravel"
+    },
+    {
+     "id": "c4",
+     "label": "Flow measurement records the plant influent flow"
+    },
+    {
+     "id": "c5",
+     "label": "Screenings and grit are washed and sent for disposal"
+    },
+    {
+     "id": "c6",
+     "label": "Screened wastewater flows to primary treatment"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Large solids are screened first because they would clog or damage everything downstream. Grit follows because it is heavy and settles quickly once flow slows, flow is measured on the cleaned stream, and the removed material leaves as waste while the wastewater continues to primary treatment."
+  },
+  {
+   "id": "oit-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the seven stages of a conventional activated sludge plant from influent to final effluent.",
+   "topicId": "activated-sludge-full-train",
+   "level": "oit",
+   "assumptions": "Fictional Ontario plant treating municipal wastewater to a disinfected final effluent.",
+   "configuration": "Conventional activated sludge plant with primary and secondary clarifiers and chlorine disinfection.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Preliminary screening and grit removal"
+    },
+    {
+     "id": "c2",
+     "label": "Primary clarification"
+    },
+    {
+     "id": "c3",
+     "label": "Aeration basin biological treatment"
+    },
+    {
+     "id": "c4",
+     "label": "Secondary clarification"
+    },
+    {
+     "id": "c5",
+     "label": "Disinfection of the clarified effluent"
+    },
+    {
+     "id": "c6",
+     "label": "Final effluent discharge to the receiver"
+    },
+    {
+     "id": "c7",
+     "label": "Solids handling of the collected sludges"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6",
+    "c7"
+   ],
+   "explanation": "Preliminary and primary treatment remove the material biology cannot handle well. The aeration basin grows microorganisms that consume the dissolved waste, secondary clarification separates them from the treated water, disinfection finishes the liquid stream, and the collected solids go to solids handling."
+  },
+  {
+   "id": "oit-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages mixed liquor and effluent follow from the aeration basin to the outfall.",
+   "topicId": "secondary-to-disinfection-path",
+   "level": "oit",
+   "assumptions": "Fictional plant with a gravity secondary clarifier, a chlorine contact tank, and a cascade outfall.",
+   "configuration": "Liquid flow path through the back end of an activated sludge plant.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Mixed liquor leaves the aeration basin"
+    },
+    {
+     "id": "c2",
+     "label": "Mixed liquor enters the secondary clarifier"
+    },
+    {
+     "id": "c3",
+     "label": "Biomass settles and clarified effluent flows over the weirs"
+    },
+    {
+     "id": "c4",
+     "label": "Clarified effluent enters the chlorine contact tank"
+    },
+    {
+     "id": "c5",
+     "label": "Chlorine residual decays through the contact period"
+    },
+    {
+     "id": "c6",
+     "label": "Disinfected effluent discharges through the outfall"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The clarifier can only separate what the aeration basin delivers to it. Settled effluent, not mixed liquor, goes forward to disinfection, the contact tank provides the time chlorine needs to work, and the finished effluent leaves by the outfall."
+  },
+  {
+   "id": "oit-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages wastewater follows through primary treatment.",
+   "topicId": "primary-treatment-train",
+   "level": "oit",
+   "assumptions": "Fictional primary train that removes settleable solids and floating material before biological treatment.",
+   "configuration": "Primary treatment section of a plant with rectangular primary clarifiers and scum removal.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Screened wastewater enters the primary clarifier distribution channel"
+    },
+    {
+     "id": "c2",
+     "label": "Flow slows as wastewater spreads across the clarifier"
+    },
+    {
+     "id": "c3",
+     "label": "Settleable solids sink to the clarifier floor as primary sludge"
+    },
+    {
+     "id": "c4",
+     "label": "Oils and grease float and are skimmed as scum"
+    },
+    {
+     "id": "c5",
+     "label": "Primary sludge and scum are pumped to solids handling"
+    },
+    {
+     "id": "c6",
+     "label": "Primary effluent flows to the aeration basin"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Primary clarifiers work by slowing the flow so gravity can separate both ways at once: heavy solids sink and light material floats. Both streams are removed to solids handling, and the clarified primary effluent carries the remaining dissolved load to biological treatment."
+  },
+  {
+   "id": "oit-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of a trickling filter plant from influent to final effluent.",
+   "topicId": "trickling-filter-train",
+   "level": "oit",
+   "assumptions": "Fictional plant where a biological slime layer grows on the filter media.",
+   "configuration": "Trickling filter plant with a primary clarifier, a rock media filter, and a humus clarifier.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Primary clarification removes settleable solids"
+    },
+    {
+     "id": "c2",
+     "label": "Primary effluent is pumped to the filter distributor"
+    },
+    {
+     "id": "c3",
+     "label": "Rotating distributor sprays wastewater over the media bed"
+    },
+    {
+     "id": "c4",
+     "label": "Wastewater trickles through the biological slime layer on the media"
+    },
+    {
+     "id": "c5",
+     "label": "Treated flow and sloughed biomass drain to the humus clarifier"
+    },
+    {
+     "id": "c6",
+     "label": "Humus solids settle and the clarified effluent is disinfected"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Primary treatment protects the filter from solids that would plug the media. The distributor spreads flow evenly so the whole slime layer is fed, sloughed biomass travels with the treated flow, and the humus clarifier settles it before disinfection."
+  },
+  {
+   "id": "oit-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages wastewater follows through a rotating biological contactor plant.",
+   "topicId": "rbc-train",
+   "level": "oit",
+   "assumptions": "Fictional plant where plastic discs rotate slowly through the wastewater and the air.",
+   "configuration": "Rotating biological contactor plant with primary and final clarification.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Primary clarification"
+    },
+    {
+     "id": "c2",
+     "label": "Wastewater flows into the contactor tank"
+    },
+    {
+     "id": "c3",
+     "label": "Discs rotate biomass alternately through wastewater and air"
+    },
+    {
+     "id": "c4",
+     "label": "Microorganisms on the discs consume the waste as they pass through the flow"
+    },
+    {
+     "id": "c5",
+     "label": "Excess biomass sloughs off the discs into the flow"
+    },
+    {
+     "id": "c6",
+     "label": "Final clarification settles the sloughed solids before discharge"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The discs need primary effluent so coarse solids do not coat them. Rotation is what feeds the biomass both food and oxygen, sloughed solids are a normal product of growth, and the final clarifier separates them from the treated effluent."
+  },
+  {
+   "id": "oit-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the five phases of one sequencing batch reactor treatment cycle.",
+   "topicId": "sbr-cycle",
+   "level": "oit",
+   "assumptions": "Fictional SBR cycle treating municipal wastewater with aeration and settling in the same vessel.",
+   "configuration": "Sequencing batch reactor that treats a batch of wastewater in a single tank by timing each phase.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill: wastewater enters the reactor"
+    },
+    {
+     "id": "c2",
+     "label": "React: aeration and mixing treat the wastewater"
+    },
+    {
+     "id": "c3",
+     "label": "Settle: aeration stops and solids settle quietly"
+    },
+    {
+     "id": "c4",
+     "label": "Decant: clarified effluent is drawn off the top"
+    },
+    {
+     "id": "c5",
+     "label": "Idle: the reactor waits and sludge is wasted before the next fill"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Each phase creates the condition the next one needs: filling loads the tank, reacting treats the load, settling only works once mixing stops, decanting removes the clarified layer without disturbing the settled solids, and idling resets the tank for the next batch."
+  },
+  {
+   "id": "oit-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages in the sludge flow path from the secondary clarifier to wasting and return.",
+   "topicId": "ras-was-flow-path",
+   "level": "oit",
+   "assumptions": "Fictional plant where most settled biomass is returned to the aeration basin and the excess is wasted.",
+   "configuration": "Activated sludge solids flow path at a conventional plant with return and waste sludge pumping.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Biomass settles in the secondary clarifier"
+    },
+    {
+     "id": "c2",
+     "label": "Settled sludge collects in the clarifier hopper"
+    },
+    {
+     "id": "c3",
+     "label": "Return activated sludge pumps send most of the sludge back to the aeration basin inlet"
+    },
+    {
+     "id": "c4",
+     "label": "Returned sludge mixes with primary effluent entering the basin"
+    },
+    {
+     "id": "c5",
+     "label": "Excess sludge is drawn off as waste activated sludge"
+    },
+    {
+     "id": "c6",
+     "label": "Waste sludge flows to the thickener and solids handling"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Sludge must settle and collect before any pump can move it. Returning most of it keeps the aeration basin population high, mixing happens where the return meets the incoming wastewater, and only the excess growth leaves as waste sludge to solids handling."
+  },
+  {
+   "id": "oit-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a sludge volume index settleability test.",
+   "topicId": "svi-test-procedure",
+   "level": "oit",
+   "assumptions": "Fictional SVI test where the settled sludge volume after 30 minutes is combined with the MLSS result.",
+   "configuration": "Settleability test on mixed liquor using a one litre graduated cylinder in the plant laboratory.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect a fresh mixed liquor sample from the aeration basin outlet"
+    },
+    {
+     "id": "c2",
+     "label": "Pour one litre of mixed liquor into the graduated cylinder"
+    },
+    {
+     "id": "c3",
+     "label": "Start timing and let the sludge settle undisturbed"
+    },
+    {
+     "id": "c4",
+     "label": "Read the settled sludge volume after 30 minutes"
+    },
+    {
+     "id": "c5",
+     "label": "Measure or obtain the MLSS concentration of the same sample"
+    },
+    {
+     "id": "c6",
+     "label": "Calculate SVI from the settled volume and the MLSS"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The sample must represent the basin, so it is collected fresh at the outlet. Settling is timed and undisturbed because disturbance changes the blanket, and SVI can only be calculated once both the settled volume and the solids concentration are known."
+  },
+  {
+   "id": "oit-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for handling a wastewater BOD sample from collection to analysis start.",
+   "topicId": "bod-sample-handling",
+   "level": "oit",
+   "assumptions": "Fictional sample where temperature control and holding time decide whether the result is valid.",
+   "configuration": "BOD sample collected at a plant influent sampling point for the five day BOD test.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the sample in a clean bottle and fill it completely"
+    },
+    {
+     "id": "c2",
+     "label": "Cap the bottle and place it in a cooler on ice immediately"
+    },
+    {
+     "id": "c3",
+     "label": "Record the collection time, location, and sampler name"
+    },
+    {
+     "id": "c4",
+     "label": "Transport the sample to the laboratory the same day"
+    },
+    {
+     "id": "c5",
+     "label": "Store the sample refrigerated at about 4 degrees Celsius"
+    },
+    {
+     "id": "c6",
+     "label": "Begin the BOD analysis within the allowed holding time"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A full bottle leaves no air space for oxygen exchange, and cooling slows the bacteria so the sample still represents the wastewater when tested. Documentation and same day delivery protect the holding time, and refrigerated storage holds the sample until analysis starts."
+  },
+  {
+   "id": "oit-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for setting up a five day BOD test in the laboratory.",
+   "topicId": "bod-test-setup",
+   "level": "oit",
+   "assumptions": "Fictional laboratory setup where initial dissolved oxygen is measured before the incubation period.",
+   "configuration": "BOD dilution test setup using dilution water, seeded bottles, and a dissolved oxygen meter.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Prepare aerated dilution water with nutrients and seed if required"
+    },
+    {
+     "id": "c2",
+     "label": "Measure the sample into BOD bottles at the chosen dilutions"
+    },
+    {
+     "id": "c3",
+     "label": "Fill the bottles with dilution water and stopper them without air bubbles"
+    },
+    {
+     "id": "c4",
+     "label": "Measure and record the initial dissolved oxygen of each bottle"
+    },
+    {
+     "id": "c5",
+     "label": "Incubate the bottles in the dark at 20 degrees Celsius for five days"
+    },
+    {
+     "id": "c6",
+     "label": "Measure the final dissolved oxygen and calculate the BOD"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Dilution water and the measured sample come before filling, and trapped air would add oxygen and ruin the test. Initial oxygen must be known before incubation so the oxygen used over the five days can be found from the final reading."
+  },
+  {
+   "id": "oit-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a sewer flushing job on a sanitary sewer section.",
+   "topicId": "sewer-flushing-sequence",
+   "level": "oit",
+   "assumptions": "Fictional job worked from the upstream manhole toward the downstream manhole.",
+   "configuration": "Flushing a low slope sewer section that collects sediment, using a flusher truck and a downstream manhole.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Open and ventilate the upstream and downstream manholes"
+    },
+    {
+     "id": "c2",
+     "label": "Set the flusher nozzle and hose into the upstream manhole"
+    },
+    {
+     "id": "c3",
+     "label": "Advance the hose with water jets pulling it toward the downstream manhole"
+    },
+    {
+     "id": "c4",
+     "label": "Pull the hose back slowly so the jets wash sediment downstream"
+    },
+    {
+     "id": "c5",
+     "label": "Catch and vacuum the loosened debris at the downstream manhole"
+    },
+    {
+     "id": "c6",
+     "label": "Inspect the cleaned section and record the work"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Both manholes are opened and made safe before the hose goes in. The jets drive the hose forward and then scour on the way back, which is when most cleaning happens, and debris is captured downstream instead of being pushed into the next section."
+  },
+  {
+   "id": "oit-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a manhole structure inspection from the surface.",
+   "topicId": "manhole-inspection-sequence",
+   "level": "oit",
+   "assumptions": "Fictional inspection covering the frame, walls, benching, and flow observed in the channel.",
+   "configuration": "Manhole inspection for a maintenance program, done from the surface without entry.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Set up traffic control and open the manhole cover safely"
+    },
+    {
+     "id": "c2",
+     "label": "Ventilate and test the atmosphere before leaning over the opening"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect the frame, cover, and chimney for damage"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect the walls and steps or ladder for corrosion and cracks"
+    },
+    {
+     "id": "c5",
+     "label": "Inspect the benching and channel and observe the flow"
+    },
+    {
+     "id": "c6",
+     "label": "Record defects with measurements and close the cover securely"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Traffic and atmospheric safety come before any inspection because the open manhole is the hazard. The structure is checked from the top down, flow observation comes last at the bottom of the structure, and the record and secure cover close the job."
+  },
+  {
+   "id": "oit-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a closed circuit television inspection of a sewer section.",
+   "topicId": "cctv-sewer-inspection",
+   "level": "oit",
+   "assumptions": "Fictional inspection where the camera travels from the downstream manhole setup toward the upstream manhole.",
+   "configuration": "CCTV inspection of a sanitary sewer between two manholes after a flushing pass.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Flush the sewer section so the camera can see the pipe"
+    },
+    {
+     "id": "c2",
+     "label": "Set up the camera tractor and cable at the downstream manhole"
+    },
+    {
+     "id": "c3",
+     "label": "Lower the camera into the pipe and set the distance counter to zero"
+    },
+    {
+     "id": "c4",
+     "label": "Drive the camera up the pipe while recording and noting defects"
+    },
+    {
+     "id": "c5",
+     "label": "Retrieve the camera and review the footage for missed defects"
+    },
+    {
+     "id": "c6",
+     "label": "Log the defect codes and file the inspection record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A dirty pipe hides defects, so flushing comes first. The counter is zeroed at the start point so every defect location is accurate, the survey is recorded as the camera advances, and the coded log is the deliverable of the inspection."
+  },
+  {
+   "id": "oit-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a sanitary sewer blockage with sewage backing up toward homes.",
+   "topicId": "sewer-blockage-response",
+   "level": "oit",
+   "assumptions": "Fictional response that protects homes and the environment before the blockage is cleared.",
+   "configuration": "Blockage response on a residential street where a basement backup has been reported.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the backup is in the municipal sewer and not the home plumbing"
+    },
+    {
+     "id": "c2",
+     "label": "Notify affected residents and the supervisor of the possible overflow risk"
+    },
+    {
+     "id": "c3",
+     "label": "Open the downstream manhole and check whether it is flowing"
+    },
+    {
+     "id": "c4",
+     "label": "Rod or flush the blocked section from the downstream manhole"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm flow is restored and vacuum up any spilled sewage"
+    },
+    {
+     "id": "c6",
+     "label": "Disinfect the affected area and record the incident and its cause"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Confirming the problem is in the municipal main directs the response to the right pipe. Checking the downstream manhole locates the blockage, clearing is worked from downstream so loosened material has somewhere to go, and cleanup and records finish the event."
+  },
+  {
+   "id": "oit-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a high level alarm at a sewage lift station.",
+   "topicId": "wet-well-high-level-response",
+   "level": "oit",
+   "assumptions": "Fictional response where one pump has tripped and inflow is still rising.",
+   "configuration": "High wet well level alarm at a duplex pump lift station during a storm.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Acknowledge the alarm and check the wet well level on arrival"
+    },
+    {
+     "id": "c2",
+     "label": "Check the pump status lights and control panel for a tripped pump"
+    },
+    {
+     "id": "c3",
+     "label": "Reset or restart the tripped pump and confirm it is drawing the level down"
+    },
+    {
+     "id": "c4",
+     "label": "Check for a blocked discharge or closed valve if the pump runs but the level stays high"
+    },
+    {
+     "id": "c5",
+     "label": "Set up a portable pump or call a vacuum truck if the level keeps rising"
+    },
+    {
+     "id": "c6",
+     "label": "Record the alarm, the cause found, and the actions taken"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The level and the panel tell the story first: most high levels are a tripped pump, which a reset fixes. If the pump runs without drawing down, the problem is hydraulic, and bypass help is arranged before the well overflows, not after."
+  },
+  {
+   "id": "oit-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a submersible sewage pump after it has been pulled and reinstalled.",
+   "topicId": "lift-station-pump-startup",
+   "level": "oit",
+   "assumptions": "Fictional restart covering guide rails, electrical checks, and a drawdown test.",
+   "configuration": "Duplex submersible lift station where one pump was removed for a seal repair.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Lower the pump down the guide rails and confirm it seats on the discharge elbow"
+    },
+    {
+     "id": "c2",
+     "label": "Reconnect power and check the pump rotation and insulation readings"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm the discharge valve is open and the check valve is free"
+    },
+    {
+     "id": "c4",
+     "label": "Start the pump in hand mode and watch the wet well level fall"
+    },
+    {
+     "id": "c5",
+     "label": "Check current draw and listen for abnormal noise or vibration"
+    },
+    {
+     "id": "c6",
+     "label": "Run a full drawdown cycle and return the pump to automatic alternation"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The pump must seat properly before it can pump against the system, and rotation is checked electrically before a wet test. The hand run and drawdown prove the pump moves sewage at the right rate, and only then does it go back to automatic duty."
+  },
+  {
+   "id": "oit-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for cleaning a grease and grit buildup out of a lift station wet well.",
+   "topicId": "wet-well-cleaning-sequence",
+   "level": "oit",
+   "assumptions": "Fictional cleaning where the space is treated as a confined space even though most work is done from the surface.",
+   "configuration": "Wet well cleaning using a vacuum truck with the station kept in service on one pump.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Isolate one side or set the station to run on the remaining pump"
+    },
+    {
+     "id": "c2",
+     "label": "Ventilate the well and test the atmosphere"
+    },
+    {
+     "id": "c3",
+     "label": "Break up the grease mat with a water jet from the surface"
+    },
+    {
+     "id": "c4",
+     "label": "Vacuum out the grease, grit, and debris"
+    },
+    {
+     "id": "c5",
+     "label": "Wash down the walls and floats and confirm the floats move freely"
+    },
+    {
+     "id": "c6",
+     "label": "Return the station to full automatic operation and record the cleaning"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Keeping a pump in service protects the upstream sewers while work goes on. Ventilation and testing come before anyone leans into the well, the grease is broken up before it can be vacuumed, and clean floats are what make automatic control reliable again."
+  },
+  {
+   "id": "oit-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the five stages grit follows from the grit channel to disposal.",
+   "topicId": "grit-handling-path",
+   "level": "oit",
+   "assumptions": "Fictional grit path where washing reduces the organic content before disposal.",
+   "configuration": "Grit removal and handling system at a plant headworks with a grit classifier.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Grit settles in the aerated grit chamber"
+    },
+    {
+     "id": "c2",
+     "label": "Grit pumps or air lifts move the grit slurry to the classifier"
+    },
+    {
+     "id": "c3",
+     "label": "The classifier washes the grit and drains free water"
+    },
+    {
+     "id": "c4",
+     "label": "Washed grit drops into a disposal container"
+    },
+    {
+     "id": "c5",
+     "label": "The container is hauled to landfill when full"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Grit has to settle before it can be collected, and it moves as a slurry because dry grit will not flow. Washing and draining in the classifier remove putrescible organics and water, so what reaches the container is a cleaner, drier material for landfill."
+  },
+  {
+   "id": "oit-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the five stages screenings follow from the bar screen to disposal.",
+   "topicId": "screenings-handling-path",
+   "level": "oit",
+   "assumptions": "Fictional screenings path ending in a covered container for landfill disposal.",
+   "configuration": "Mechanically raked bar screen with a screenings washer compactor at a plant headworks.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "The rake lifts screenings off the bar screen"
+    },
+    {
+     "id": "c2",
+     "label": "Screenings drop into the washer compactor"
+    },
+    {
+     "id": "c3",
+     "label": "The compactor washes organics back into the flow and squeezes out water"
+    },
+    {
+     "id": "c4",
+     "label": "Compacted screenings discharge into a lined container"
+    },
+    {
+     "id": "c5",
+     "label": "The container is covered and hauled to landfill"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+   ],
+   "explanation": "Screenings come off the screen first because that is where they are captured. Washing returns organics to the treatment flow and compaction removes water, both of which reduce odour and hauling weight before the container goes to landfill."
+  },
+  {
+   "id": "oit-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for a primary sludge pumping cycle from a primary clarifier.",
+   "topicId": "primary-sludge-pumping",
+   "level": "oit",
+   "assumptions": "Fictional cycle where pumping too long would pull thin sludge and overload solids handling.",
+   "configuration": "Primary sludge withdrawal to the sludge holding tank, done on a timed cycle.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the sludge blanket depth in the clarifier"
+    },
+    {
+     "id": "c2",
+     "label": "Open the sludge withdrawal valve from the clarifier hopper"
+    },
+    {
+     "id": "c3",
+     "label": "Start the sludge pump and check the discharge flow"
+    },
+    {
+     "id": "c4",
+     "label": "Watch the sludge consistency at the sample tap while pumping"
+    },
+    {
+     "id": "c5",
+     "label": "Stop the pump when the sludge thins to mostly water"
+    },
+    {
+     "id": "c6",
+     "label": "Record the pumping time and the volume sent to the holding tank"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Blanket depth tells the operator whether there is sludge worth pumping. The pump runs while the sample tap shows thick sludge and stops when it thins, because pumping water wastes holding tank space and energy."
+  },
+  {
+   "id": "oit-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages sludge follows through anaerobic digestion and gas handling.",
+   "topicId": "anaerobic-digestion-path",
+   "level": "oit",
+   "assumptions": "Fictional solids train where digestion stabilizes sludge and produces methane gas.",
+   "configuration": "Anaerobic digestion system with a primary digester, gas collection, and digested sludge storage.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Thickened sludge is pumped into the primary digester"
+    },
+    {
+     "id": "c2",
+     "label": "The digester contents are mixed and heated"
+    },
+    {
+     "id": "c3",
+     "label": "Anaerobic bacteria break down volatile solids and produce digester gas"
+    },
+    {
+     "id": "c4",
+     "label": "Digester gas is collected from the roof and sent to the boiler or flare"
+    },
+    {
+     "id": "c5",
+     "label": "Digested sludge overflows or is drawn to the storage tank"
+    },
+    {
+     "id": "c6",
+     "label": "Stored digested sludge is dewatered or hauled as biosolids"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Sludge must be inside the digester before mixing and heating can support the bacteria. Gas is a product of the breakdown, so collection follows digestion, and the stabilized sludge leaves for storage once its time in the digester is complete."
+  },
+  {
+   "id": "oit-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a belt filter press for sludge dewatering.",
+   "topicId": "belt-press-startup",
+   "level": "oit",
+   "assumptions": "Fictional startup where the belt is washed and tracked before sludge is applied.",
+   "configuration": "Belt filter press run with polymer conditioning of digested sludge.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Start the belt wash water and run the empty belt to wash it"
+    },
+    {
+     "id": "c2",
+     "label": "Check belt tracking and tension and adjust as needed"
+    },
+    {
+     "id": "c3",
+     "label": "Start the polymer feed and confirm solution is flowing"
+    },
+    {
+     "id": "c4",
+     "label": "Start the sludge feed pump at a low rate"
+    },
+    {
+     "id": "c5",
+     "label": "Watch the gravity zone for good flocculation and free water drainage"
+    },
+    {
+     "id": "c6",
+     "label": "Adjust sludge and polymer rates for a firm, dry cake discharge"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A clean, correctly tracked belt is the foundation of the run, so it is proven empty first. Polymer must be flowing before sludge arrives or the sludge will not flocculate, and rates are tuned only once cake is forming."
+  },
+  {
+   "id": "oit-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for applying treated biosolids to an agricultural field in Ontario.",
+   "topicId": "biosolids-land-application",
+   "level": "oit",
+   "assumptions": "Fictional application where setbacks, soil testing, and application records are part of the job.",
+   "configuration": "Biosolids land application under a nutrient management approach for a farm field.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Sample and test the soil and the biosolids for nutrients and metals"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the field meets setbacks from wells, watercourses, and neighbours"
+    },
+    {
+     "id": "c3",
+     "label": "Calculate the application rate from the crop nutrient need"
+    },
+    {
+     "id": "c4",
+     "label": "Notify the municipality and nearby residents as required"
+    },
+    {
+     "id": "c5",
+     "label": "Apply the biosolids evenly at the calculated rate and incorporate if required"
+    },
+    {
+     "id": "c6",
+     "label": "Record the field, date, volume applied, and weather conditions"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Testing drives everything: the rate is calculated from what the soil and crop actually need. Setbacks are confirmed before any load travels, application follows the plan, and the record proves the field received the right amount."
+  },
+  {
+   "id": "oit-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps in the chain of custody for a final effluent compliance sample.",
+   "topicId": "effluent-sampling-custody",
+   "level": "oit",
+   "assumptions": "Fictional sample set with a refrigerated autosampler and a licensed laboratory.",
+   "configuration": "Final effluent sample collected for the plant operating certificate compliance testing.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Program and start the refrigerated autosampler for a 24 hour composite"
+    },
+    {
+     "id": "c2",
+     "label": "Collect the composite container after the sampling period ends"
+    },
+    {
+     "id": "c3",
+     "label": "Mix the composite and pour off the laboratory sample bottles"
+    },
+    {
+     "id": "c4",
+     "label": "Preserve and refrigerate the bottles as the methods require"
+    },
+    {
+     "id": "c5",
+     "label": "Complete the chain of custody form and seal the cooler"
+    },
+    {
+     "id": "c6",
+     "label": "Ship the cooler to the laboratory within the holding time"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The composite must represent the full day, so sampling runs the full period before bottles are filled. Preservation, custody documentation, and timely shipping keep the results legally defensible, which is the point of a compliance sample."
+  },
+  {
+   "id": "oit-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for setting up an automatic composite sampler at a plant influent point.",
+   "topicId": "composite-sampler-setup",
+   "level": "oit",
+   "assumptions": "Fictional setup before a 24 hour influent sampling day.",
+   "configuration": "Refrigerated autosampler set to collect time based aliquots into one composite bottle.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Place the sampler at the sampling point and connect power or check the battery"
+    },
+    {
+     "id": "c2",
+     "label": "Install a clean composite bottle and run the suction line to the sample point"
+    },
+    {
+     "id": "c3",
+     "label": "Purge the suction line and program the sample volume and interval"
+    },
+    {
+     "id": "c4",
+     "label": "Run a test sample to confirm the sampler draws and deposits correctly"
+    },
+    {
+     "id": "c5",
+     "label": "Set the refrigerator temperature and confirm it is cooling"
+    },
+    {
+     "id": "c6",
+     "label": "Start the program and record the start time and settings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Hardware comes before programming: the bottle, line, and power make sampling possible. The test draw proves the setup works before the real day is committed, refrigeration protects the sample, and the recorded settings document how the composite was built."
+  },
+  {
+   "id": "oit-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages effluent follows through chlorine disinfection at a wastewater plant.",
+   "topicId": "wastewater-chlorine-disinfection",
+   "level": "oit",
+   "assumptions": "Fictional contact tank with baffled passes that prevent short circuiting.",
+   "configuration": "Chlorine contact tank disinfection of secondary effluent before discharge to a river.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Secondary effluent enters the chlorine contact tank inlet"
+    },
+    {
+     "id": "c2",
+     "label": "Chlorine solution is injected and mixed at the inlet"
+    },
+    {
+     "id": "c3",
+     "label": "Effluent travels the baffled serpentine path through the tank"
+    },
+    {
+     "id": "c4",
+     "label": "Contact time allows the chlorine to inactivate pathogens"
+    },
+    {
+     "id": "c5",
+     "label": "Effluent chlorine residual is measured at the tank outlet"
+    },
+    {
+     "id": "c6",
+     "label": "Treated effluent discharges to the receiving stream"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Chlorine is added at the inlet so it is present for the whole trip through the tank. The baffles force the full path so every parcel of effluent gets its contact time, and the outlet residual confirms disinfection happened before discharge."
+  },
+  {
+   "id": "oit-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a microscopic examination of mixed liquor.",
+   "topicId": "microscopic-exam-procedure",
+   "level": "oit",
+   "assumptions": "Fictional examination of a fresh mixed liquor sample under a compound microscope.",
+   "configuration": "Microscopic exam used to judge the health of the activated sludge by its indicator organisms.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect a fresh mixed liquor sample and examine it promptly"
+    },
+    {
+     "id": "c2",
+     "label": "Place a drop of mixed liquor on a slide and add a cover slip"
+    },
+    {
+     "id": "c3",
+     "label": "Start scanning on low power to view floc structure"
+    },
+    {
+     "id": "c4",
+     "label": "Increase magnification to identify filamentous organisms"
+    },
+    {
+     "id": "c5",
+     "label": "Count and note the higher life forms such as rotifers and stalked ciliates"
+    },
+    {
+     "id": "c6",
+     "label": "Record the findings and compare them with the plant target condition"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Freshness matters because the organisms change quickly after sampling. The exam moves from low power structure to high power identification in a set order, and the recorded community picture is what the operator compares against a healthy sludge."
+  },
+  {
+   "id": "oit-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for measuring dissolved oxygen across an aeration basin.",
+   "topicId": "aeration-basin-do-measurement",
+   "level": "oit",
+   "assumptions": "Fictional profile used to confirm the air supply matches the load along the basin.",
+   "configuration": "Dissolved oxygen profile check on a plug flow aeration basin with a portable DO meter.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Calibrate the portable dissolved oxygen meter in air saturated water"
+    },
+    {
+     "id": "c2",
+     "label": "Measure DO at the basin inlet zone"
+    },
+    {
+     "id": "c3",
+     "label": "Measure DO at the basin midpoint"
+    },
+    {
+     "id": "c4",
+     "label": "Measure DO at the basin outlet zone"
+    },
+    {
+     "id": "c5",
+     "label": "Compare the profile with the plant target range"
+    },
+    {
+     "id": "c6",
+     "label": "Adjust the air flow or blower output if the profile is out of range"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "An uncalibrated meter makes the whole profile meaningless, so calibration is first. Readings are taken in flow order so the profile shows where oxygen is consumed, and air is adjusted only after the pattern is known."
+  },
+  {
+   "id": "oit-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for collecting a representative mixed liquor sample for MLSS testing.",
+   "topicId": "mixed-liquor-sampling",
+   "level": "oit",
+   "assumptions": "Fictional sample where sampling location and timing decide whether the result represents the basin.",
+   "configuration": "Mixed liquor suspended solids sample from an aeration basin for laboratory analysis.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Go to the basin outlet or other well mixed sampling point"
+    },
+    {
+     "id": "c2",
+     "label": "Rinse the sample container with mixed liquor"
+    },
+    {
+     "id": "c3",
+     "label": "Collect the sample below the surface while the basin is aerated and mixed"
+    },
+    {
+     "id": "c4",
+     "label": "Fill the container and cap it without leaving a large air space"
+    },
+    {
+     "id": "c5",
+     "label": "Label the sample with location, date, and time"
+    },
+    {
+     "id": "c6",
+     "label": "Deliver the sample to the laboratory promptly for MLSS analysis"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The outlet of a well mixed basin holds the most representative liquor. Rinsing and a subsurface grab avoid scum and surface bias, and prompt delivery keeps the solids from changing before the test."
+  },
+  {
+   "id": "oit-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a smoke testing program to find sewer inflow sources.",
+   "topicId": "smoke-testing-sewers",
+   "level": "oit",
+   "assumptions": "Fictional test using non toxic smoke blown into a manhole with the section isolated.",
+   "configuration": "Smoke testing of a sanitary sewer area to locate roof leaders, catch basins, and broken laterals connected to it.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Notify residents and the fire department before testing"
+    },
+    {
+     "id": "c2",
+     "label": "Isolate the sewer section by plugging lines at the manholes"
+    },
+    {
+     "id": "c3",
+     "label": "Set the smoke blower over the manhole and seal it in place"
+    },
+    {
+     "id": "c4",
+     "label": "Start the blower and force smoke through the section"
+    },
+    {
+     "id": "c5",
+     "label": "Walk the area and mark every place smoke escapes"
+    },
+    {
+     "id": "c6",
+     "label": "Record the defects found and schedule follow up dye testing or repair"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Notification comes first because smoke from a roof vent looks like a fire. The section is isolated so smoke pressure builds and escapes only through defects, and every escape point is marked and recorded while the smoke is visible."
+  },
+  {
+   "id": "oit-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps of a dye test to confirm whether a building drain connects to the sanitary sewer.",
+   "topicId": "dye-testing-sewers",
+   "level": "oit",
+   "assumptions": "Fictional test using non toxic dye and a downstream manhole observer.",
+   "configuration": "Dye test on a suspect building connection identified during smoke testing.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Station an observer at the downstream manhole"
+    },
+    {
+     "id": "c2",
+     "label": "Add dyed water to the building drain or fixture being tested"
+    },
+    {
+     "id": "c3",
+     "label": "Flush the fixture to push the dye into the drain"
+    },
+    {
+     "id": "c4",
+     "label": "Watch the manhole for the appearance of dyed flow"
+    },
+    {
+     "id": "c5",
+     "label": "Record whether the dye appeared and how long it took"
+    },
+    {
+     "id": "c6",
+     "label": "Flush the section with clean water if a cross connection must be cleared"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The observer must be in place before the dye is released or the evidence passes unseen. Dye is added at the suspect fixture and flushed toward the sewer, appearance in the manhole proves the connection, and the timing and result are recorded."
+  },
+  {
+   "id": "oit-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for responding to a sanitary sewer overflow to a ditch in Ontario.",
+   "topicId": "sewer-overflow-response",
+   "level": "oit",
+   "assumptions": "Fictional response covering public protection, containment, cleanup, sampling, and reporting duties.",
+   "configuration": "Sanitary sewer overflow from a surcharged manhole reaching a roadside ditch.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Protect public safety and keep people and traffic away from the sewage"
+    },
+    {
+     "id": "c2",
+     "label": "Stop or reduce the overflow by clearing the blockage or setting up bypass pumping"
+    },
+    {
+     "id": "c3",
+     "label": "Contain the spilled sewage with berms or a vacuum truck before it reaches a watercourse"
+    },
+    {
+     "id": "c4",
+     "label": "Notify the supervisor, the municipality, and the Ministry Spills Action Centre"
+    },
+    {
+     "id": "c5",
+     "label": "Clean up and disinfect the affected area and collect samples if required"
+    },
+    {
+     "id": "c6",
+     "label": "Complete the overflow report with volumes, duration, and cause"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Safety and stopping the source come before cleanup, because sewage is still flowing. Containment protects the watercourse while notifications go out, and cleanup, sampling, and the formal report close the event."
+  },
+  {
+   "id": "oit-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for setting up bypass pumping so a sewer section can be repaired dry.",
+   "topicId": "bypass-pumping-setup",
+   "level": "oit",
+   "assumptions": "Fictional setup with plugs, a diesel bypass pump, and discharge piping to the downstream manhole.",
+   "configuration": "Bypass pumping around a broken sewer section between two manholes.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Plug the sewer at the upstream manhole and confirm flow is stopped"
+    },
+    {
+     "id": "c2",
+     "label": "Set the suction hose in the upstream manhole below the flow level"
+    },
+    {
+     "id": "c3",
+     "label": "Position the bypass pump and run the discharge line to the downstream manhole"
+    },
+    {
+     "id": "c4",
+     "label": "Prime the pump and start it, watching the upstream level"
+    },
+    {
+     "id": "c5",
+     "label": "Confirm the work area section is drained and safe to open"
+    },
+    {
+     "id": "c6",
+     "label": "Monitor the bypass continuously while the repair proceeds"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The plug creates the dry section, so it goes in before pumping starts. Suction and discharge are placed before the pump is primed, the upstream level proves the bypass is keeping up, and continuous monitoring protects the repair crew and the upstream homes."
+  },
+  {
+   "id": "oit-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six checks for receiving a load of hauled septic waste at a wastewater plant.",
+   "topicId": "hauled-waste-receiving",
+   "level": "oit",
+   "assumptions": "Fictional receiving process where an unacceptable load must be caught before it is discharged.",
+   "configuration": "Hauled waste receiving station at a plant that accepts septage from licensed haulers.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the hauler licence and the load manifest or source record"
+    },
+    {
+     "id": "c2",
+     "label": "Inspect the load and screen for odour or appearance that suggests industrial waste"
+    },
+    {
+     "id": "c3",
+     "label": "Collect a sample of the load if the plant procedure requires it"
+    },
+    {
+     "id": "c4",
+     "label": "Direct the truck to the receiving station and confirm the connection"
+    },
+    {
+     "id": "c5",
+     "label": "Discharge the load at the controlled rate into the receiving tank"
+    },
+    {
+     "id": "c6",
+     "label": "Record the volume, source, and hauler in the receiving log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Paperwork and inspection come before discharge because once a bad load is in the plant it cannot be taken back. The controlled discharge rate protects the treatment process from a slug load, and the log makes the load traceable."
+  },
+  {
+   "id": "oit-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a wet chemical odour control scrubber at a headworks.",
+   "topicId": "odour-scrubber-startup",
+   "level": "oit",
+   "assumptions": "Fictional scrubber using a caustic and hypochlorite recirculation solution.",
+   "configuration": "Packed bed wet scrubber treating foul air from a headworks building.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill the scrubber sump with water and the required chemicals"
+    },
+    {
+     "id": "c2",
+     "label": "Start the recirculation pump and confirm spray coverage over the packing"
+    },
+    {
+     "id": "c3",
+     "label": "Check and adjust the scrubbing solution pH and oxidation level"
+    },
+    {
+     "id": "c4",
+     "label": "Start the exhaust fan and confirm air is being drawn from the building"
+    },
+    {
+     "id": "c5",
+     "label": "Check the pressure drop across the scrubber"
+    },
+    {
+     "id": "c6",
+     "label": "Record the chemical levels and set the chemical feed to automatic"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The scrubber cannot treat air until the liquid side is working, so the sump, pump, and solution chemistry come first. The fan starts once liquid is circulating, pressure drop confirms air is passing through the packing, and automatic chemical feed holds the condition."
+  },
+  {
+   "id": "oit-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a dry polymer make down system for sludge dewatering.",
+   "topicId": "polymer-feed-startup",
+   "level": "oit",
+   "assumptions": "Fictional system where dry polymer must be wetted and aged before it will work.",
+   "configuration": "Polymer make down unit feeding a belt press, with a mixing tank and an aging tank.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Fill the mixing tank with water to the starting level"
+    },
+    {
+     "id": "c2",
+     "label": "Start the mixer and the dry polymer feeder together"
+    },
+    {
+     "id": "c3",
+     "label": "Let the solution mix and then transfer it to the aging tank"
+    },
+    {
+     "id": "c4",
+     "label": "Age the solution for the time the supplier recommends"
+    },
+    {
+     "id": "c5",
+     "label": "Start the solution feed pump to the dewatering unit at a low rate"
+    },
+    {
+     "id": "c6",
+     "label": "Check the sludge flocculation and adjust the polymer dose"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Polymer only works if it is properly wetted, mixed, and aged, so make down follows that order without shortcuts. Feed starts low, and the floc in the sludge is the real test of whether the dose is right."
+  },
+  {
+   "id": "oit-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for starting a positive displacement aeration blower.",
+   "topicId": "aeration-blower-startup",
+   "level": "oit",
+   "assumptions": "Fictional blower with an inlet filter, a pressure relief valve, and a discharge header shared with other blowers.",
+   "configuration": "Aeration blower supplying air to the activated sludge basins, started after a maintenance outage.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Check the blower oil level and inlet air filter condition"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm the discharge valve to the air header is open"
+    },
+    {
+     "id": "c3",
+     "label": "Confirm the pressure relief valve is in service and unobstructed"
+    },
+    {
+     "id": "c4",
+     "label": "Start the blower and listen for abnormal noise"
+    },
+    {
+     "id": "c5",
+     "label": "Check discharge pressure and motor current against normal values"
+    },
+    {
+     "id": "c6",
+     "label": "Confirm air flow is reaching the basins by checking dissolved oxygen response"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Oil and filtration protect the machine, and an open discharge path plus a working relief valve protect it from dead heading. Pressure and current prove the blower is healthy, and the basin oxygen response proves the air is doing its job."
+  },
+  {
+   "id": "oit-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for returning a secondary clarifier to service after repairs.",
+   "topicId": "clarifier-return-to-service",
+   "level": "oit",
+   "assumptions": "Fictional clarifier where the scraper mechanism is tested before the tank is filled.",
+   "configuration": "Secondary clarifier drained for a drive unit repair and being refilled.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Remove all tools, parts, and debris from the empty clarifier"
+    },
+    {
+     "id": "c2",
+     "label": "Run the scraper drive briefly and confirm it turns freely"
+    },
+    {
+     "id": "c3",
+     "label": "Close the drain valve and begin filling the clarifier with mixed liquor or effluent"
+    },
+    {
+     "id": "c4",
+     "label": "Fill to the weir level and check for leaks"
+    },
+    {
+     "id": "c5",
+     "label": "Start the scraper drive in continuous operation"
+    },
+    {
+     "id": "c6",
+     "label": "Open the inlet fully and return sludge pumping to automatic"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The tank is proven empty of foreign material and the repaired drive is tested while any problem is still easy to reach. Filling and leak checks follow, and full flow and automatic sludge return come last once the clarifier is stable."
+  },
+  {
+   "id": "oit-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six steps for measuring the chlorine residual in a wastewater plant final effluent.",
+   "topicId": "effluent-chlorine-residual-sampling",
+   "level": "oit",
+   "assumptions": "Fictional check confirming the residual is high enough for disinfection but within the certificate limit for the receiver.",
+   "configuration": "Effluent chlorine residual check at the chlorine contact tank outlet before discharge.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the effluent sample at the contact tank outlet sampling point"
+    },
+    {
+     "id": "c2",
+     "label": "Rinse the sample cell with the effluent"
+    },
+    {
+     "id": "c3",
+     "label": "Fill the cell and add the DPD reagent promptly"
+    },
+    {
+     "id": "c4",
+     "label": "Read the total chlorine residual on the colorimeter"
+    },
+    {
+     "id": "c5",
+     "label": "Compare the result with the plant disinfection target and discharge limit"
+    },
+    {
+     "id": "c6",
+     "label": "Record the result and adjust the chlorine feed if it is out of range"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The outlet is the only point that shows what actually leaves the plant. Chlorine readings are taken promptly because the residual keeps changing, and the comparison against both the target and the limit drives the feed adjustment."
+  },
+  {
+   "id": "oit-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages wastewater follows through a facultative lagoon system.",
+   "topicId": "lagoon-treatment-train",
+   "level": "oit",
+   "assumptions": "Fictional lagoon where treatment depends on algae, bacteria, sunlight, and long detention time.",
+   "configuration": "Two cell facultative lagoon serving a small Ontario community with seasonal discharge.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Wastewater is screened at the lagoon inlet"
+    },
+    {
+     "id": "c2",
+     "label": "Wastewater enters the first lagoon cell"
+    },
+    {
+     "id": "c3",
+     "label": "Bacteria break down waste while algae supply oxygen in the upper layer"
+    },
+    {
+     "id": "c4",
+     "label": "Solids settle and digest in the bottom layer of the cell"
+    },
+    {
+     "id": "c5",
+     "label": "Effluent flows to the second cell for further treatment and storage"
+    },
+    {
+     "id": "c6",
+     "label": "Treated effluent is discharged seasonally after testing confirms it meets its limits"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Screening protects the lagoon from floating debris. The facultative cell works in layers, with aerobic treatment near the surface and settling and digestion at the bottom, and the second cell polishes and stores the effluent until a tested seasonal discharge is allowed."
+  },
+  {
+   "id": "oit-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the six stages of a membrane bioreactor wastewater plant from influent to permeate.",
+   "topicId": "mbr-train",
+   "level": "oit",
+   "assumptions": "Fictional MBR where membranes replace the secondary clarifier for solids separation.",
+   "configuration": "Membrane bioreactor plant with fine screening, a bioreactor, and submerged membrane tanks.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Influent passes fine screening to protect the membranes"
+    },
+    {
+     "id": "c2",
+     "label": "Screened wastewater enters the aeration bioreactor"
+    },
+    {
+     "id": "c3",
+     "label": "Microorganisms consume the waste in the mixed liquor"
+    },
+    {
+     "id": "c4",
+     "label": "Mixed liquor flows to the membrane tanks"
+    },
+    {
+     "id": "c5",
+     "label": "Membranes filter out solids and treated permeate is drawn off"
+    },
+    {
+     "id": "c6",
+     "label": "Permeate is disinfected and discharged"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Fine screening is critical in an MBR because hair and grit damage membranes. Biology happens in the bioreactor before separation, the membranes then do the clarifier job of separating solids, and disinfection finishes the permeate."
+  },
+  {
+   "id": "oit-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "At a small surface water plant, filtered water turbidity from Filter 2 climbs to 0.28 NTU in the first hour after every backwash, then settles to 0.05 NTU for the rest of the run. Filter 1 does not show the spike.",
+   "topicId": "filtration-turbidity",
+   "level": "oit",
+   "assumptions": "Fictional small Ontario surface water plant with two gravity filters; readings are from the plant log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The turbidity spike on Filter 2 happens only in the first 30 to 60 minutes after a backwash."
+    },
+    {
+     "id": "e2",
+     "label": "Filter 2 was returned to service immediately after backwashing, with no filter to waste step."
+    },
+    {
+     "id": "e3",
+     "label": "Filter 1, which is run to waste for 20 minutes after backwash, shows no start of run spike."
+    },
+    {
+     "id": "e4",
+     "label": "Raw and settled water turbidity were steady all week."
+    },
+    {
+     "id": "e5",
+     "label": "The Filter 2 effluent turbidity always returns to 0.05 NTU and stays there until the next backwash."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The spike is filter ripening at the start of the run, sent to the clearwell because the filter was not run to waste after backwashing."
+     },
+     {
+      "id": "inf2",
+      "label": "The filter media in Filter 2 has failed and is passing raw water for the whole run."
+     },
+     {
+      "id": "inf3",
+      "label": "A settled water quality upset is breaking through both filters at random times."
+     },
+     {
+      "id": "inf4",
+      "label": "The turbidimeter on Filter 2 is faulty and reads high only after backwashes."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Ripening is the brief period after backwash when the clean media has not yet built up capture efficiency. The spike is tied to the start of the run, the twin filter with a filter to waste step has no spike, and performance is excellent for the rest of the run, which rules out media failure, a settled water upset, and a faulty meter."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Run Filter 2 to waste after the next backwash and log effluent turbidity every 5 minutes during the first hour."
+     },
+     {
+      "id": "nc2",
+      "label": "Take Filter 2 out of service and core sample the media for depth and condition."
+     },
+     {
+      "id": "nc3",
+      "label": "Increase the coagulant dose and watch settled water turbidity for a day."
+     },
+     {
+      "id": "nc4",
+      "label": "Swap the Filter 2 turbidimeter with the Filter 1 instrument and compare readings."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Running the filter to waste while logging the first hour directly tests whether the spike is start of run ripening that can be diverted from the clearwell."
+   },
+   "clueText": {
+    "nc1": "Turbidity to waste starts at 0.30 NTU and falls below 0.10 NTU within 25 minutes, confirming start of run ripening that the filter to waste step can capture.",
+    "nc2": "The core sample shows normal media depth and clean grains, which does not explain a spike that only occurs right after backwash.",
+    "nc3": "Settled water turbidity stays steady at the higher dose, so coagulation was not driving the start of run spike.",
+    "nc4": "Both turbidimeters agree on a spare filter, so the instruments are reading consistently."
+   }
+  },
+  {
+   "id": "oit-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A small town operator finds free chlorine residuals falling across the distribution system over two weeks, even though the plant outlet residual is steady at 1.0 mg/L.",
+   "topicId": "distribution-residual",
+   "level": "oit",
+   "assumptions": "Fictional Ontario distribution system with one elevated tank, about 12 km of mains, and several dead end streets; values are from routine sampling records for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Plant outlet free chlorine is steady at 1.0 mg/L every day."
+    },
+    {
+     "id": "e2",
+     "label": "Residuals are lowest, near 0.1 mg/L, at dead end streets farthest from the plant."
+    },
+    {
+     "id": "e3",
+     "label": "Water temperature in the system has risen to 22 degrees C during a warm spell."
+    },
+    {
+     "id": "e4",
+     "label": "The elevated tank was last turned over slowly, and its level has been held near full for a week."
+    },
+    {
+     "id": "e5",
+     "label": "No watermain breaks or flushing have been reported in the past two weeks."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The residual loss is mainly water age and warm temperature in the far ends and the slowly turning over tank, not a plant dosing problem."
+     },
+     {
+      "id": "inf2",
+      "label": "The chlorine feed pump at the plant is failing and underdosing the whole system."
+     },
+     {
+      "id": "inf3",
+      "label": "A large leak is pulling untreated groundwater into the mains across town."
+     },
+     {
+      "id": "inf4",
+      "label": "Customers are using far more water than usual, diluting the chlorine."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The outlet residual is steady, so dosing is working. The pattern of loss grows with distance and detention, warm water speeds chlorine decay, and the nearly stagnant tank adds aged water. A leak or dilution would not produce this distance based pattern with a steady outlet residual."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Measure free chlorine and water temperature at the tank outlet and at two dead ends before and after a targeted flushing of those legs."
+     },
+     {
+      "id": "nc2",
+      "label": "Raise the plant dose and recheck the outlet residual the next day."
+     },
+     {
+      "id": "nc3",
+      "label": "Pressure test the whole system for leaks over one night."
+     },
+     {
+      "id": "nc4",
+      "label": "Compare this month's total water use with last month's billing totals."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Sampling the tank outlet and dead ends before and after flushing shows whether aged, warm water in those legs is where the residual is being lost."
+   },
+   "clueText": {
+    "nc1": "Dead end residuals rise from 0.1 to 0.6 mg/L after flushing and the tank outlet reads 0.3 mg/L, confirming water age and warm detention are consuming the residual.",
+    "nc2": "The outlet residual was already at target, so a higher dose alone would not explain why only the far ends were low.",
+    "nc3": "Night pressures hold steady across the system, giving no sign of a large leak.",
+    "nc4": "Total water use is normal for the season, so dilution from unusual demand does not fit."
+   }
+  },
+  {
+   "id": "oit-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A raw water pump at a small plant has started rattling like gravel is passing through it, and its discharge pressure gauge needle is bouncing.",
+   "topicId": "pump-cavitation",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water intake pump station; observations are from the operator's round sheet for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The pump makes a crackling, gravel like noise that was not present last month."
+    },
+    {
+     "id": "e2",
+     "label": "Discharge pressure swings up and down instead of holding steady."
+    },
+    {
+     "id": "e3",
+     "label": "The wet well level has been running lower than usual because the intake screen is partly blocked with weeds."
+    },
+    {
+     "id": "e4",
+     "label": "Vibration at the pump volute is higher than at the motor."
+    },
+    {
+     "id": "e5",
+     "label": "The discharge valve position has not changed and the pump still delivers near normal flow when the wet well is full."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The pump is cavitating because suction conditions are starved by the low wet well level and blocked intake screen."
+     },
+     {
+      "id": "inf2",
+      "label": "The pump bearings have failed and are shedding metal into the water."
+     },
+     {
+      "id": "inf3",
+      "label": "The discharge check valve is slamming shut several times per minute."
+     },
+     {
+      "id": "inf4",
+      "label": "Air is being drawn in through the discharge piping downstream of the pump."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Cavitation sounds like gravel or marbles in the pump and makes discharge pressure unstable. The starved suction from a low wet well and a blocked screen explains it, and the pump performs normally when the well is full, which argues against bearing failure or a downstream problem."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Clean the intake screen, restore normal wet well level, and listen to the pump while logging suction and discharge pressure."
+     },
+     {
+      "id": "nc2",
+      "label": "Pull the pump and inspect the bearings for metal debris."
+     },
+     {
+      "id": "nc3",
+      "label": "Replace the discharge check valve with a new one."
+     },
+     {
+      "id": "nc4",
+      "label": "Pressure test the discharge piping for air leaks."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Restoring suction conditions and watching the noise and pressures is the direct test for cavitation caused by a starved suction."
+   },
+   "clueText": {
+    "nc1": "With the screen cleaned and the well at normal level, the gravel noise stops and discharge pressure holds steady, confirming cavitation from the starved suction.",
+    "nc2": "The bearings show normal wear and no metal debris, so bearing failure was not the source of the noise.",
+    "nc3": "The check valve seats cleanly on shutdown, so repeated slamming does not explain the running noise.",
+    "nc4": "The discharge piping holds pressure with no air leaks found."
+   }
+  },
+  {
+   "id": "oit-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A well pump serving a small hamlet starts and stops every two minutes, and the pressure gauge swings between 280 and 380 kPa with each cycle.",
+   "topicId": "well-pump-cycling",
+   "level": "oit",
+   "assumptions": "Fictional Ontario groundwater system with a captive air pressure tank and pressure switch; details are from a service call record for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The pump starts about 30 times per hour, far more than its normal 4 to 6 starts."
+    },
+    {
+     "id": "e2",
+     "label": "Each run lasts under a minute and the pressure falls quickly once the pump stops."
+    },
+    {
+     "id": "e3",
+     "label": "When a tap is opened at the pumphouse, mostly air sputters out before water flows."
+    },
+    {
+     "id": "e4",
+     "label": "The pressure tank feels uniformly heavy and sounds dull along its whole height when tapped."
+    },
+    {
+     "id": "e5",
+     "label": "There are no visible leaks at the pumphouse and the well recovers normally overnight."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The pressure tank is waterlogged, having lost its air cushion, so small draws start the pump and pressure falls at once."
+     },
+     {
+      "id": "inf2",
+      "label": "The well is running dry and the pump is cycling on low water."
+     },
+     {
+      "id": "inf3",
+      "label": "The pressure switch contacts are welded shut and cannot switch properly."
+     },
+     {
+      "id": "inf4",
+      "label": "A large leak in the distribution system is draining pressure between cycles."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "A waterlogged tank has no air volume to absorb and release water, so pressure swings are fast and starts are frequent. Air sputtering at the tap and a tank that is dull and heavy throughout fit a lost air charge. The well recovers overnight and no leaks are visible, which argues against a dry well or a system leak."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Drain the pressure tank, check and restore its air charge, then count pump starts over one hour of normal use."
+     },
+     {
+      "id": "nc2",
+      "label": "Run the well at full rate for two hours and log the pumping water level."
+     },
+     {
+      "id": "nc3",
+      "label": "Replace the pressure switch and watch the cycle count."
+     },
+     {
+      "id": "nc4",
+      "label": "Walk the distribution route listening for a major leak."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Recharging the tank air and recounting starts directly tests the waterlogged tank explanation."
+   },
+   "clueText": {
+    "nc1": "After recharging, the pump starts 5 times in the hour and pressure changes slowly, confirming the tank had lost its air cushion.",
+    "nc2": "The well holds a steady pumping level for two hours, so the well itself can supply the demand.",
+    "nc3": "The old switch tests fine on the bench, so welded contacts were not causing the short cycles.",
+    "nc4": "No leak sounds or wet ground are found along the route."
+   }
+  },
+  {
+   "id": "oit-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After scheduled hydrant flushing on one street, a dozen homes report yellow brown water for the rest of the day, while streets that were not flushed report clear water.",
+   "topicId": "discoloured-water",
+   "level": "oit",
+   "assumptions": "Fictional Ontario distribution system with older cast iron mains; complaint details are from the municipal call log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Complaints began within an hour of hydrant flushing on the same street."
+    },
+    {
+     "id": "e2",
+     "label": "The discoloured water clears after residents run a cold tap for a few minutes."
+    },
+    {
+     "id": "e3",
+     "label": "Streets not flushed that day have no complaints."
+    },
+    {
+     "id": "e4",
+     "label": "A sample from a flushed street shows elevated iron but normal chlorine residual and no coliforms."
+    },
+    {
+     "id": "e5",
+     "label": "The plant treated water leaving the clearwell is clear with turbidity of 0.05 NTU."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Flushing stirred up iron sediment and tubercles in the older mains, and the disturbance is temporary and local to the flushed street."
+     },
+     {
+      "id": "inf2",
+      "label": "The treatment plant is producing discoloured water that is spreading through town."
+     },
+     {
+      "id": "inf3",
+      "label": "A sewage cross connection has contaminated the street's water main."
+     },
+     {
+      "id": "inf4",
+      "label": "The hydrant flushing broke the main and soil is entering the pipe."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The complaints are limited to the flushed street, began right after flushing, clear with brief running, and show iron with normal chlorine and no coliforms. Plant water is clear. That pattern fits disturbed iron deposits, not a plant problem, a cross connection, or a break, which would not clear so quickly or stay so local."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Flush the affected street at controlled velocity until hydrant samples run clear, and log iron and turbidity at the far hydrant."
+     },
+     {
+      "id": "nc2",
+      "label": "Shut down the plant and inspect the clearwell for sediment."
+     },
+     {
+      "id": "nc3",
+      "label": "Issue a system wide boil water advisory and sample every street."
+     },
+     {
+      "id": "nc4",
+      "label": "Excavate the main at the first complaining home to look for a break."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Controlled flushing with sampling at the far hydrant shows whether the discolouration is loose iron sediment that can be cleaned from that leg."
+   },
+   "clueText": {
+    "nc1": "The far hydrant runs clear within 20 minutes and iron falls to normal, confirming loose iron sediment stirred up by the first flushing.",
+    "nc2": "The clearwell is clean and its water is clear, so the plant was not the source.",
+    "nc3": "Follow up samples across town show normal chlorine and no coliforms, so a system wide contamination event does not fit.",
+    "nc4": "Excavation is not needed once the leg flushes clear and pressures were normal all day."
+   }
+  },
+  {
+   "id": "oit-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A sodium hypochlorite feed pump at a small well station loses prime every morning, and the operator has to reprime it before the residual comes back up.",
+   "topicId": "chemical-feed-prime",
+   "level": "oit",
+   "assumptions": "Fictional Ontario groundwater disinfection station using a diaphragm metering pump; notes are from the operator log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The pump runs and strokes normally once it is primed by hand."
+    },
+    {
+     "id": "e2",
+     "label": "Small air bubbles are seen rising in the clear suction tubing while the pump runs."
+    },
+    {
+     "id": "e3",
+     "label": "The foot valve at the bottom of the day tank was found sitting in sludge at the tank bottom."
+    },
+    {
+     "id": "e4",
+     "label": "The suction tubing connection at the pump head weeps slightly and has salt crust on it."
+    },
+    {
+     "id": "e5",
+     "label": "The day tank is three quarters full of fresh hypochlorite."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Air is leaking into the suction side at the crusted fitting and the fouled foot valve, so the pump loses prime overnight."
+     },
+     {
+      "id": "inf2",
+      "label": "The hypochlorite has lost all its strength and can no longer be pumped."
+     },
+     {
+      "id": "inf3",
+      "label": "The pump motor is failing and stops turning overnight."
+     },
+     {
+      "id": "inf4",
+      "label": "The discharge line is plugged solid, so nothing can leave the pump."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Bubbles in the suction line, a weeping crusted suction fitting, and a foot valve fouled in sludge all point to air entering the suction side. The pump works once primed and the tank has fresh chemical, which rules out a dead motor, weak chemical, or a plugged discharge."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Clean the foot valve, replace the suction tubing and fitting, then leave the pump overnight and check prime and stroke in the morning."
+     },
+     {
+      "id": "nc2",
+      "label": "Replace the day tank contents with a fresh delivery and watch the pump."
+     },
+     {
+      "id": "nc3",
+      "label": "Swap the pump motor with the spare and monitor overnight."
+     },
+     {
+      "id": "nc4",
+      "label": "Remove and rod out the entire discharge line."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Repairing the suction side and testing overnight directly checks whether air entry was causing the loss of prime."
+   },
+   "clueText": {
+    "nc1": "The pump holds prime overnight and feeds steadily all day, confirming air was entering at the suction fitting and fouled foot valve.",
+    "nc2": "The old hypochlorite assays at normal strength, so chemical decay was not the problem.",
+    "nc3": "The original motor runs the pump without stopping once prime is held, so the motor was not failing.",
+    "nc4": "The discharge line flows freely when tested, so it was not plugged."
+   }
+  },
+  {
+   "id": "oit-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A small plant's primary clarifier effluent has grown steadily worse over a season, and a sludge judge shows the sludge blanket now fills half the tank depth.",
+   "topicId": "primary-sludge-blanket",
+   "level": "oit",
+   "assumptions": "Fictional Ontario plant with a primary clarifier whose sludge pump was sized for the plant's original flows; the town has grown since. Records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The blanket has risen as town flows grew about 30 percent over five years."
+    },
+    {
+     "id": "e2",
+     "label": "Primary sludge pumping time per day has never been increased from the original schedule."
+    },
+    {
+     "id": "e3",
+     "label": "Effluent from the primary carries solids that the secondary process must then handle, raising its load."
+    },
+    {
+     "id": "e4",
+     "label": "The rake mechanism works and delivers sludge to the hopper."
+    },
+    {
+     "id": "e5",
+     "label": "When the crew pumps the blanket down manually for a week, primary effluent quality improves at once."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Sludge withdrawal has not kept pace with the town's growth, so the blanket has built up until solids wash over with the effluent."
+     },
+     {
+      "id": "inf2",
+      "label": "The primary clarifier's inlet has failed and sewage short circuits to the outlet."
+     },
+     {
+      "id": "inf3",
+      "label": "The secondary process is backwashing solids into the primary."
+     },
+     {
+      "id": "inf4",
+      "label": "The sludge judge readings are wrong because the tube is fouled."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "A blanket that grew with town flows, an unchanged pumping schedule, a working rake, and instant improvement when the blanket is pumped down all show under withdrawal. Short circuiting would not build a deep blanket, the secondary cannot push solids backward, and a fouled judge would not change effluent quality when pumping changes."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Increase primary sludge pumping in steps to hold the blanket below a third of the depth, and log blanket depth and primary effluent solids weekly."
+     },
+     {
+      "id": "nc2",
+      "label": "Dye test the primary inlet for short circuiting."
+     },
+     {
+      "id": "nc3",
+      "label": "Check flow direction between the primary and secondary units."
+     },
+     {
+      "id": "nc4",
+      "label": "Clean the sludge judge and repeat the blanket measurement."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Holding the blanket at a controlled depth while logging effluent solids confirms whether under withdrawal was degrading primary performance."
+   },
+   "clueText": {
+    "nc1": "With the blanket held shallow, primary effluent solids fall back to their historical range, confirming sludge withdrawal had not kept pace with growth.",
+    "nc2": "The dye test shows even distribution from the inlet.",
+    "nc3": "Flow between the units is in the normal forward direction at all times.",
+    "nc4": "The cleaned judge gives the same deep readings as before, so the blanket was real."
+   }
+  },
+  {
+   "id": "oit-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A low UV intensity alarm has come up on the single UV unit at a small groundwater plant, and the calculated dose is dropping toward the validated minimum.",
+   "topicId": "uv-intensity",
+   "level": "oit",
+   "assumptions": "Fictional Ontario groundwater plant using UV disinfection ahead of chlorine; alarm details are from the SCADA log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "UV intensity has fallen steadily over three weeks, not suddenly."
+    },
+    {
+     "id": "e2",
+     "label": "The UV transmittance of the well water is unchanged at 94 percent."
+    },
+    {
+     "id": "e3",
+     "label": "The lamp has 4,100 hours on it, well under its rated life."
+    },
+    {
+     "id": "e4",
+     "label": "A white mineral scale is visible on the quartz sleeve when the wiper parks."
+    },
+    {
+     "id": "e5",
+     "label": "Flow through the unit has been steady and within the validated range."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Mineral scale fouling the quartz sleeve is blocking UV output and causing the falling intensity."
+     },
+     {
+      "id": "inf2",
+      "label": "The lamp has burned out completely and is producing no light."
+     },
+     {
+      "id": "inf3",
+      "label": "The well water has suddenly become much harder for UV light to pass through."
+     },
+     {
+      "id": "inf4",
+      "label": "Flow has exceeded the validated range and is diluting the dose."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The slow three week decline, unchanged water transmittance, a lamp well within its life, and visible scale on the sleeve all point to sleeve fouling. A burned out lamp would drop intensity at once, and neither transmittance nor flow changed."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Clean the quartz sleeve following the maker's procedure, then record intensity and calculated dose at the same flow."
+     },
+     {
+      "id": "nc2",
+      "label": "Replace the lamp with a new one and record the intensity."
+     },
+     {
+      "id": "nc3",
+      "label": "Take a raw water sample for a full metals scan."
+     },
+     {
+      "id": "nc4",
+      "label": "Throttle the plant flow to half and watch the dose reading."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Cleaning the sleeve and remeasuring at the same flow directly tests whether fouling was blocking the light."
+   },
+   "clueText": {
+    "nc1": "Intensity returns to near its post service value and dose is back in the validated range, confirming scale fouling on the sleeve.",
+    "nc2": "The old lamp lights at full brightness on the bench, so it had not burned out.",
+    "nc3": "The metals scan is unremarkable and matches past results for this well.",
+    "nc4": "Halving the flow raises dose slightly but intensity stays low until the sleeve is cleaned, so flow was not the cause."
+   }
+  },
+  {
+   "id": "oit-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "At a small lake supply plant, filter runs have shortened from 48 hours to 14 hours over a warm month, with headloss climbing fast while effluent turbidity stays low.",
+   "topicId": "filter-headloss-algae",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant with dual media filters; details are from the operations log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Headloss rises quickly from the start of each run, mostly in the first hours."
+    },
+    {
+     "id": "e2",
+     "label": "A green slimy layer is visible on the filter surface when a unit is drained."
+    },
+    {
+     "id": "e3",
+     "label": "Raw water algae counts have risen sharply during a warm, sunny period."
+    },
+    {
+     "id": "e4",
+     "label": "Effluent turbidity remains at 0.05 NTU throughout the shortened runs."
+    },
+    {
+     "id": "e5",
+     "label": "Settled water turbidity is only slightly higher than normal."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Algae from the raw water are blinding the filter surface and causing rapid headloss, even though particle removal is still good."
+     },
+     {
+      "id": "inf2",
+      "label": "The filter media has cemented into mudballs throughout the bed depth."
+     },
+     {
+      "id": "inf3",
+      "label": "The coagulant dose has failed and raw solids are passing to the filters."
+     },
+     {
+      "id": "inf4",
+      "label": "The headloss gauge is drifting and the runs are actually normal."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "A green slimy surface layer, high raw water algae counts, and headloss that builds from the surface downward fit algal blinding. Effluent quality is still excellent and settled water is near normal, which argues against coagulation failure, deep mudballs, or a faulty gauge."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Skim and sample the surface layer for algae identification, and record headloss against run time for one full run."
+     },
+     {
+      "id": "nc2",
+      "label": "Core sample the full bed depth and wash the core looking for mudballs."
+     },
+     {
+      "id": "nc3",
+      "label": "Double the coagulant dose for a day and compare filter run times."
+     },
+     {
+      "id": "nc4",
+      "label": "Replace the headloss gauge with a calibrated spare."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Identifying algae in the surface layer and tracking headloss over a run confirms whether surface blinding by algae is shortening the runs."
+   },
+   "clueText": {
+    "nc1": "The surface sample is dominated by the same algae counted in the raw water, and headloss builds from the surface, confirming algal blinding.",
+    "nc2": "The core is clean below the top few centimetres, so deep mudballs are not the cause.",
+    "nc3": "Run times stay short at the higher dose, so coagulant failure was not driving the headloss.",
+    "nc4": "The spare gauge matches the installed gauge, so the headloss readings are real."
+   }
+  },
+  {
+   "id": "oit-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two days after a watermain break repair on a rural concession road, the operator finds chlorine demand in that area has jumped and residuals near the repair are near zero despite normal plant dosing.",
+   "topicId": "chlorine-demand-break",
+   "level": "oit",
+   "assumptions": "Fictional Ontario distribution system; the break was on a gravel road section with ditches on both sides. Records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The break section was swabbed and flushed, but heavy rain filled the open trench with ditch water during the repair."
+    },
+    {
+     "id": "e2",
+     "label": "Free chlorine near the repair is 0.05 mg/L while the plant outlet is 1.0 mg/L."
+    },
+    {
+     "id": "e3",
+     "label": "Turbidity in samples near the repair is higher than the rest of the system."
+    },
+    {
+     "id": "e4",
+     "label": "One sample near the repair came back total coliform positive, with repeats pending."
+    },
+    {
+     "id": "e5",
+     "label": "Areas away from the repair have normal residuals and clear samples."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Contaminated ditch water that entered the main during the repair is exerting a high chlorine demand and consuming residual near the repair."
+     },
+     {
+      "id": "inf2",
+      "label": "The plant chlorinator has lost capacity and the whole system is underdosed."
+     },
+     {
+      "id": "inf3",
+      "label": "The repaired section of pipe is made of a material that absorbs chlorine."
+     },
+     {
+      "id": "inf4",
+      "label": "Warm weather alone has increased demand evenly across the whole system."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The problem is local to the repair, began after it, and comes with turbidity and a coliform positive, which fits contamination entering the open main from the flooded trench. The plant outlet residual is normal and the rest of the system is unaffected, ruling out plant dosing, pipe material, and weather."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Collect bacteriological and chlorine samples at the repair site and at points moving away from it, and flush the section until residuals recover."
+     },
+     {
+      "id": "nc2",
+      "label": "Raise the plant chlorine dose for the whole system for one week."
+     },
+     {
+      "id": "nc3",
+      "label": "Replace the repaired pipe section with a different pipe material."
+     },
+     {
+      "id": "nc4",
+      "label": "Wait for cooler weather and resample at the end of the month."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "A sampling line moving away from the repair, paired with flushing, shows whether the demand and contamination are centred on the repaired section."
+   },
+   "clueText": {
+    "nc1": "Residuals recover with distance from the repair and repeats come back coliform free after flushing, confirming localized contamination from the repair event.",
+    "nc2": "Raising the plant dose does not fix the near zero residual at the repair while the section is unflushed, so plant capacity was not the issue.",
+    "nc3": "The same pipe material elsewhere in the system holds normal residuals, so the material is not absorbing chlorine.",
+    "nc4": "The rest of the system stayed normal through the same warm weather, so weather alone does not explain the local demand."
+   }
+  },
+  {
+   "id": "oit-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "In late August, customers of a small reservoir supply are complaining of earthy, musty tastes, and the raw water has a noticeable swampy odour at the intake.",
+   "topicId": "algae-taste-odour",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water system drawing from a small reservoir; complaint and sampling records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Complaints began during a two week stretch of hot, calm weather."
+    },
+    {
+     "id": "e2",
+     "label": "Raw water algae counts are the highest recorded in five years, dominated by blue green algae."
+    },
+    {
+     "id": "e3",
+     "label": "The earthy odour is present in raw water but chlorine residuals in town are normal."
+    },
+    {
+     "id": "e4",
+     "label": "Treated water turbidity and bacteriological results are all normal."
+    },
+    {
+     "id": "e5",
+     "label": "A similar complaint period occurred in the same weeks three summers ago."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "An algal bloom in the warm reservoir is releasing earthy taste and odour compounds that pass through the plant's conventional treatment."
+     },
+     {
+      "id": "inf2",
+      "label": "A fuel spill near the intake is contaminating the raw water."
+     },
+     {
+      "id": "inf3",
+      "label": "The chlorine feed is overdosing and causing the taste complaints."
+     },
+     {
+      "id": "inf4",
+      "label": "A sewer leak is entering the reservoir near the intake."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The timing in hot calm weather, record blue green algae counts, odour present in the raw water, normal disinfection and bacteriological results, and the same pattern in a past summer all point to an algal bloom producing taste and odour compounds. A spill, overdose, or sewer leak would not match the algae counts or the repeating seasonal pattern."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Send raw and treated samples for taste and odour compound analysis and algae speciation, and check whether powdered activated carbon feed is available."
+     },
+     {
+      "id": "nc2",
+      "label": "Shut the intake and search the shoreline for a fuel spill."
+     },
+     {
+      "id": "nc3",
+      "label": "Cut the chlorine dose in half and monitor complaints."
+     },
+     {
+      "id": "nc4",
+      "label": "Sample the reservoir for E. coli at the intake every day for a week."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Analyzing raw and treated water for the earthy compounds and identifying the algae confirms the bloom as the source and points to carbon treatment."
+   },
+   "clueText": {
+    "nc1": "Geosmin and MIB are detected in the raw water and partly in the treated water, and the dominant algae is a known producer, confirming the bloom as the source.",
+    "nc2": "No spill or sheen is found along the shoreline near the intake.",
+    "nc3": "Complaints persist at the lower dose while residuals fall, so chlorine was not causing the taste.",
+    "nc4": "Intake E. coli results stay within the normal raw water range for this reservoir."
+   }
+  },
+  {
+   "id": "oit-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "During a January cold snap with temperatures near minus 30 degrees C, a small town gets nine frozen service calls in three days, all on two streets.",
+   "topicId": "frozen-services",
+   "level": "oit",
+   "assumptions": "Fictional Ontario distribution system; the two streets were rebuilt years ago with shallower than usual services. Records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "All nine frozen services are on two streets known to have shallow buried services."
+    },
+    {
+     "id": "e2",
+     "label": "Frost depth measured at the works yard is approaching the depth of those services."
+    },
+    {
+     "id": "e3",
+     "label": "Streets with standard depth services have no frozen calls."
+    },
+    {
+     "id": "e4",
+     "label": "Water temperature leaving the plant is near 1 degree C, normal for January."
+    },
+    {
+     "id": "e5",
+     "label": "Several affected homes were vacant or kept at low heat during the cold snap."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Frost has reached the shallow services on those two streets, and low or no flow in vacant homes let the water freeze in place."
+     },
+     {
+      "id": "inf2",
+      "label": "The plant is sending out water that is too cold because of a treatment failure."
+     },
+     {
+      "id": "inf3",
+      "label": "A watermain break has dropped pressure and caused the freezing."
+     },
+     {
+      "id": "inf4",
+      "label": "The town's mains are all freezing at the same rate everywhere."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The calls cluster only on the shallow streets, frost depth is near their burial depth, standard depth streets are unaffected, and vacant low heat homes freeze first because the water sits still. Plant water temperature is normal for January, and there is no break or pressure loss, so a plant or system wide cause does not fit."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Run frost depth probes beside a frozen service and log which services on those streets have continuous small flows from bleeders or known use."
+     },
+     {
+      "id": "nc2",
+      "label": "Raise the plant discharge water temperature setpoint."
+     },
+     {
+      "id": "nc3",
+      "label": "Excavate a main on an unaffected street to check for ice."
+     },
+     {
+      "id": "nc4",
+      "label": "Lower system pressure to slow freezing in the mains."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Probing frost depth at the affected services and comparing flow use confirms whether frost penetration to the shallow services is the cause."
+   },
+   "clueText": {
+    "nc1": "Frost is at or below the service depth on the two streets and the frozen homes had little or no flow, confirming frost penetration of shallow, low flow services.",
+    "nc2": "Plant water is already at its normal winter temperature, so no treatment failure is involved.",
+    "nc3": "Mains on unaffected streets are ice free at standard depth, as expected.",
+    "nc4": "Pressure was normal throughout, so pressure changes were not part of the event."
+   }
+  },
+  {
+   "id": "oit-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "The standby generator at a small well station fails its weekly test, cranking slowly and never starting, though it ran fine a month ago.",
+   "topicId": "generator-start",
+   "level": "oit",
+   "assumptions": "Fictional Ontario groundwater station with a diesel standby generator and automatic transfer switch; test records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The starter cranks slowly and the engine does not catch."
+    },
+    {
+     "id": "e2",
+     "label": "Battery voltage reads 11.2 V at rest and drops below 9 V during cranking."
+    },
+    {
+     "id": "e3",
+     "label": "The battery is five years old and its terminals have heavy white corrosion."
+    },
+    {
+     "id": "e4",
+     "label": "The fuel tank is three quarters full and the fuel was delivered two months ago."
+    },
+    {
+     "id": "e5",
+     "label": "The block heater is warm and the coolant level is normal."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The starting battery is weak and corroded, so it cannot deliver cranking power even though fuel and engine conditions are fine."
+     },
+     {
+      "id": "inf2",
+      "label": "The diesel fuel has gone bad and the engine is starved."
+     },
+     {
+      "id": "inf3",
+      "label": "The engine has seized from lack of use between tests."
+     },
+     {
+      "id": "inf4",
+      "label": "The transfer switch is preventing the generator from starting."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Low resting voltage, a large voltage drop under cranking load, battery age, and corroded terminals all point to the battery. Fuel is fresh and plentiful, the block heater and coolant are fine, and the transfer switch only connects load after the generator starts, so it cannot cause slow cranking."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Load test the battery and clean the terminals, then repeat the start test while logging voltage during cranking."
+     },
+     {
+      "id": "nc2",
+      "label": "Drain and replace all the diesel fuel and try again."
+     },
+     {
+      "id": "nc3",
+      "label": "Remove the starter and bar the engine over by hand to check for seizure."
+     },
+     {
+      "id": "nc4",
+      "label": "Replace the transfer switch controller."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "A battery load test with voltage logged during cranking directly confirms whether the battery can deliver starting power."
+   },
+   "clueText": {
+    "nc1": "The battery fails the load test and a charged replacement starts the engine at once with voltage holding above 10 V, confirming the weak battery.",
+    "nc2": "The drained fuel is clean and the engine starts on the same fuel with the new battery, so fuel quality was not the cause.",
+    "nc3": "The engine bars over freely by hand, so it was never seized.",
+    "nc4": "The transfer switch transfers load normally once the generator runs, so it was not blocking the start."
+   }
+  },
+  {
+   "id": "oit-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A booster station serving a hilltop subdivision has lost about 70 kPa of discharge pressure since yesterday, and residents at the top of the hill report weak showers.",
+   "topicId": "booster-pressure",
+   "level": "oit",
+   "assumptions": "Fictional Ontario distribution booster station with two pumps; a contractor replaced a discharge gate valve at the station yesterday. Records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The pressure drop began right after the discharge gate valve replacement."
+    },
+    {
+     "id": "e2",
+     "label": "Pump motors draw normal amperage and the pumps sound normal."
+    },
+    {
+     "id": "e3",
+     "label": "Suction pressure from the lower zone is unchanged."
+    },
+    {
+     "id": "e4",
+     "label": "The new gate valve's stem shows only a few threads of travel compared with the old valve's full travel marks."
+    },
+    {
+     "id": "e5",
+     "label": "Flows to the subdivision are normal for the time of day."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The replacement gate valve is only partly open, throttling the discharge and causing the pressure loss."
+     },
+     {
+      "id": "inf2",
+      "label": "Both booster pumps have suddenly worn out at the same time."
+     },
+     {
+      "id": "inf3",
+      "label": "The lower zone is failing to supply enough suction pressure."
+     },
+     {
+      "id": "inf4",
+      "label": "A major leak has opened on the hilltop and is draining the zone."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The timing right after the valve change, normal pump and suction conditions, and a stem showing little travel all point to a partly open gate valve throttling flow. Two pumps wearing out together, a suction failure, or a leak do not match the unchanged suction pressure and normal motor readings."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Open the gate valve fully while watching discharge pressure and stem travel against the manufacturer's turns count."
+     },
+     {
+      "id": "nc2",
+      "label": "Pull both pumps for impeller inspection."
+     },
+     {
+      "id": "nc3",
+      "label": "Raise the lower zone pressure setpoint at the plant."
+     },
+     {
+      "id": "nc4",
+      "label": "Walk the hilltop streets looking for leak water at the surface."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Counting valve turns to fully open while watching discharge pressure directly tests the throttling explanation."
+   },
+   "clueText": {
+    "nc1": "Discharge pressure recovers the full 70 kPa as the valve reaches full travel, confirming the valve had been left partly closed.",
+    "nc2": "The impellers are in good condition when checked later during planned work, so pump wear was not the cause.",
+    "nc3": "Suction pressure was already normal, so raising it was unnecessary.",
+    "nc4": "No surface water or leak noise is found on the hilltop streets."
+   }
+  },
+  {
+   "id": "oit-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After an intense spring storm, raw water turbidity at a small river intake jumps from 8 NTU to 240 NTU in six hours, and the plant is struggling to hold settled water quality.",
+   "topicId": "storm-turbidity",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant on a small river with farm fields upstream; records are from the storm event log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The turbidity rise followed heavy rain over the whole watershed."
+    },
+    {
+     "id": "e2",
+     "label": "The river is visibly brown and carrying leaves and debris past the intake."
+    },
+    {
+     "id": "e3",
+     "label": "Settled water turbidity improves each time the coagulant dose is raised in jar tests."
+    },
+    {
+     "id": "e4",
+     "label": "Plant flow has not changed and all chemical feeders are working."
+    },
+    {
+     "id": "e5",
+     "label": "Upstream, a tributary draining farm fields is running much darker than the main river."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Storm runoff is carrying a heavy silt and organic load into the river, and the plant needs dose adjustment for the changed raw water, not equipment repair."
+     },
+     {
+      "id": "inf2",
+      "label": "The intake screen has collapsed and riverbed sand is being pumped in."
+     },
+     {
+      "id": "inf3",
+      "label": "The raw water turbidimeter is fouled and reading falsely high."
+     },
+     {
+      "id": "inf4",
+      "label": "The coagulant tote is empty and the plant has been running without chemical."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "The rise tracks the storm, the river is visibly loaded with debris, the darker farm tributary shows where the load comes from, jar tests respond to dose, and the feeders are working with flow unchanged. A collapsed screen, a fouled meter, or an empty tote would not match the visible river conditions or the jar test response."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Run a jar test series on the storm raw water to set a revised coagulant dose, and log raw and settled turbidity hourly."
+     },
+     {
+      "id": "nc2",
+      "label": "Send a diver to inspect the intake screen for collapse."
+     },
+     {
+      "id": "nc3",
+      "label": "Remove and clean the raw water turbidimeter sample cell."
+     },
+     {
+      "id": "nc4",
+      "label": "Check the coagulant tote level and delivery records."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Jar testing the actual storm water sets a dose matched to the new load and shows whether settling responds as expected."
+   },
+   "clueText": {
+    "nc1": "Jar tests find a dose that restores settled turbidity to normal, and plant results follow, confirming a runoff driven raw water change.",
+    "nc2": "The intake screen is intact on later inspection, so collapse was not the source.",
+    "nc3": "A grab sample measured on the bench meter matches the online reading, so the turbidimeter was accurate.",
+    "nc4": "The tote is half full with feed confirmed at the injection point."
+   }
+  },
+  {
+   "id": "oit-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A small plant on a river source cannot hold a free chlorine residual leaving the plant, even at its usual dose, though the operators have confirmed the chlorinator is feeding at full rate.",
+   "topicId": "breakpoint-ammonia",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant; a manure lagoon upstream overflowed during spring melt two days ago. Records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Free chlorine leaving the plant is near zero while total chlorine is 0.8 mg/L."
+    },
+    {
+     "id": "e2",
+     "label": "Raw water ammonia has risen to 1.2 mg/L, ten times its normal level."
+    },
+    {
+     "id": "e3",
+     "label": "The chlorine feed rate is confirmed at its maximum and the day tank level is dropping normally."
+    },
+    {
+     "id": "e4",
+     "label": "Combined chlorine makes up almost all of the total chlorine measured."
+    },
+    {
+     "id": "e5",
+     "label": "Treated water turbidity is normal and flows are average."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The ammonia spike in the raw water is combining with chlorine and the dose has not passed breakpoint, so free residual cannot form yet."
+     },
+     {
+      "id": "inf2",
+      "label": "The chlorinator is broken and no chlorine is being added."
+     },
+     {
+      "id": "inf3",
+      "label": "The free chlorine analyzer is broken while total chlorine reads correctly on the same sample line."
+     },
+     {
+      "id": "inf4",
+      "label": "High turbidity is shielding microbes and using up the chlorine instantly."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Total chlorine is present and the feeder is confirmed working, so chlorine is being added. Almost all of it is combined, and raw ammonia is ten times normal, which is the classic picture of chlorine tied up as chloramines before breakpoint. Turbidity is normal, so shielding does not explain it."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Measure free and total chlorine and ammonia across the contact tank while raising the dose in steps to find the breakpoint."
+     },
+     {
+      "id": "nc2",
+      "label": "Replace the chlorinator with the spare unit."
+     },
+     {
+      "id": "nc3",
+      "label": "Replace the free chlorine analyzer reagents and recalibrate."
+     },
+     {
+      "id": "nc4",
+      "label": "Increase the coagulant dose to cut turbidity further."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Stepping the dose while tracking free chlorine, total chlorine, and ammonia shows the breakpoint hump and confirms when free residual begins to form."
+   },
+   "clueText": {
+    "nc1": "Free chlorine stays near zero until the dose passes roughly ten times the ammonia level, then rises sharply, confirming breakpoint behaviour from the ammonia spike.",
+    "nc2": "The spare chlorinator produces the same results, so the original unit was feeding correctly.",
+    "nc3": "Bench DPD tests match the analyzer, so the free chlorine readings were real.",
+    "nc4": "Turbidity was already normal and unchanged by the dose step test, so it was not consuming the chlorine."
+   }
+  },
+  {
+   "id": "oit-evidence20",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Through one summer month, a small plant's filters need backwashing twice as often, and each backwash produces unusually dark, dirty water in the first minutes.",
+   "topicId": "filter-runs-seasonal",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant drawing from a eutrophic lake; records are from the summer operations log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The first backwash water is dark brown and carries visible floc and algae."
+    },
+    {
+     "id": "e2",
+     "label": "Settled water turbidity has crept up as the lake warmed and algae increased."
+    },
+    {
+     "id": "e3",
+     "label": "Filter effluent turbidity is still excellent at 0.04 NTU."
+    },
+    {
+     "id": "e4",
+     "label": "Backwash flow rates and air scour were verified normal last week."
+    },
+    {
+     "id": "e5",
+     "label": "Run lengths return toward normal on cooler, cloudy weeks."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The filters are loading faster because settled water is carrying more algal solids this summer, so more material is captured and backwashed out."
+     },
+     {
+      "id": "inf2",
+      "label": "The backwash system is failing and leaving the beds dirty after every wash."
+     },
+     {
+      "id": "inf3",
+      "label": "The media has been lost and the beds are too shallow to filter properly."
+     },
+     {
+      "id": "inf4",
+      "label": "Raw water flow meters are over reading and the plant is treating more water than it thinks."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Dark solids laden backwash water, higher settled water solids during the algal season, excellent effluent quality, verified backwash equipment, and run lengths that recover in cooler weeks all show the filters are simply capturing a heavier load. A failing backwash would leave effluent quality suffering, and lost media would hurt turbidity."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Measure settled water turbidity and algae counts alongside filter run length for two weeks to link loading to run time."
+     },
+     {
+      "id": "nc2",
+      "label": "Measure the backwash rate again with a pitot gauge during a wash."
+     },
+     {
+      "id": "nc3",
+      "label": "Measure media depth in both filters against the design depth."
+     },
+     {
+      "id": "nc4",
+      "label": "Check the raw flow meter against the clearwell level change over one hour."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Tracking settled water quality and algae against run length shows whether the heavier seasonal load is what shortens the runs."
+   },
+   "clueText": {
+    "nc1": "Run length shortens and lengthens in step with settled water algae and turbidity, confirming seasonal solids loading as the driver.",
+    "nc2": "The backwash rate is at the design value, so the wash itself is effective.",
+    "nc3": "Media depth matches design in both filters.",
+    "nc4": "The flow meter agrees with the clearwell drawdown check within 2 percent."
+   }
+  },
+  {
+   "id": "oit-evidence21",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A gravity filter at a small plant loses flow partway through each run, and when the bed is drained, bubbles stream up through the media as the water level falls.",
+   "topicId": "filter-air-binding",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant; the filter effluent valve discharges below the filter water level. Records are for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Flow through the filter fades after several hours even though headloss gauges read only moderate loss."
+    },
+    {
+     "id": "e2",
+     "label": "Streams of bubbles rise through the bed when the unit is taken offline and drained."
+    },
+    {
+     "id": "e3",
+     "label": "The raw water is cold snowmelt that was saturated with air at the intake."
+    },
+    {
+     "id": "e4",
+     "label": "The filter operates with the water level dropping below the media surface late in the run."
+    },
+    {
+     "id": "e5",
+     "label": "Backwashing restores full flow every time."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "Dissolved air is coming out of solution inside the bed and binding the filter, because the water level falls below the media and creates negative pressure in the bed."
+     },
+     {
+      "id": "inf2",
+      "label": "The media grains have swollen with age and are blocking the pores."
+     },
+     {
+      "id": "inf3",
+      "label": "The underdrains have collapsed and are choking off flow."
+     },
+     {
+      "id": "inf4",
+      "label": "The effluent valve actuator is slowly closing on its own during runs."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Bubbles streaming from the bed, air saturated cold water, a water level that drops below the media surface creating negative head, and full recovery after backwash all fit air binding. Collapsed underdrains or a closing valve would not release streams of bubbles or recover so completely with each wash."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Run the filter while keeping the water level above the media surface at all times, and log flow and headloss for the full run."
+     },
+     {
+      "id": "nc2",
+      "label": "Excavate a section of underdrain to check for collapse."
+     },
+     {
+      "id": "nc3",
+      "label": "Replace the effluent valve actuator and observe the next run."
+     },
+     {
+      "id": "nc4",
+      "label": "Take a media sample and soak it to check for swelling."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Holding the water level above the media removes the negative pressure condition, so a normal full run would confirm air binding."
+   },
+   "clueText": {
+    "nc1": "The filter completes a full run at steady flow with the level held above the media, confirming air binding from negative head in the bed.",
+    "nc2": "The underdrains pass a camera inspection with no collapse found.",
+    "nc3": "The valve holds its set position through the test run, so the actuator was not closing it.",
+    "nc4": "The media grains measure at their original size range with no swelling."
+   }
+  },
+  {
+   "id": "oit-evidence22",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Floc in the flocculation basin at a small plant has nearly disappeared this morning and settled water turbidity is climbing, though the alum pump is stroking and its speed is unchanged.",
+   "topicId": "coagulant-feed-failure",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant using liquid alum from a bulk tote; records are from the morning rounds for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "The alum pump strokes normally but no liquid moves in the clear suction line."
+    },
+    {
+     "id": "e2",
+     "label": "The bulk tote sight glass shows the tote is empty."
+    },
+    {
+     "id": "e3",
+     "label": "A delivery ticket from last week shows the tote refill was signed for but the tote on the pad is the old one."
+    },
+    {
+     "id": "e4",
+     "label": "Jar tests with alum from a lab bottle form strong floc at the usual dose."
+    },
+    {
+     "id": "e5",
+     "label": "Raw water quality is unchanged from yesterday."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The plant has run out of alum because the refill was not actually placed in service, so no coagulant is reaching the water."
+     },
+     {
+      "id": "inf2",
+      "label": "The raw water has changed so that alum no longer works on it."
+     },
+     {
+      "id": "inf3",
+      "label": "The flocculation paddles have stopped turning and no floc can form."
+     },
+     {
+      "id": "inf4",
+      "label": "The settled water turbidimeter has failed high."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "An empty tote, no movement in the suction line despite a stroking pump, and a delivery mix up explain the missing chemical. Jar tests prove alum still works on this raw water, ruling out a raw water change, and the settling problem is real, not a meter fault."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Bring the full tote into service, confirm alum flow at the injection point, and run a jar test at the plant dose to verify floc formation."
+     },
+     {
+      "id": "nc2",
+      "label": "Change to a different coagulant product and retest."
+     },
+     {
+      "id": "nc3",
+      "label": "Inspect the flocculation paddle drive for a sheared key."
+     },
+     {
+      "id": "nc4",
+      "label": "Replace the settled water turbidimeter."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Restoring the chemical supply and confirming flow plus a jar test directly verifies that the empty tote was the cause."
+   },
+   "clueText": {
+    "nc1": "Alum flows at the injection point and floc reforms within the hour, confirming the plant had simply run out of coagulant in service.",
+    "nc2": "The original alum works in the jar test, so a product change was not needed.",
+    "nc3": "The paddles are turning at normal speed when checked.",
+    "nc4": "A grab sample on the bench meter confirms the high settled turbidity was real."
+   }
+  },
+  {
+   "id": "oit-evidence23",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After the operator raised the alum dose to handle spring turbidity, the floc became weak and pin sized and settled water pH fell to 6.1 at a small plant.",
+   "topicId": "low-alkalinity-coagulation",
+   "level": "oit",
+   "assumptions": "Fictional Ontario surface water plant on a soft, low alkalinity shield lake; records are from the spring log for training only.",
+   "evidence": [
+    {
+     "id": "e1",
+     "label": "Raw water alkalinity is only 18 mg/L as CaCO3, typical for this shield lake."
+    },
+    {
+     "id": "e2",
+     "label": "Settled water pH fell from 6.9 to 6.1 as the alum dose was raised."
+    },
+    {
+     "id": "e3",
+     "label": "Jar tests with added soda ash restore strong floc at the same alum dose."
+    },
+    {
+     "id": "e4",
+     "label": "Floc is small and weak and carries over the settling basin."
+    },
+    {
+     "id": "e5",
+     "label": "Raw turbidity is high from spring runoff, which prompted the dose increase."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "What is the best supported inference from these observations?",
+    "options": [
+     {
+      "id": "inf1",
+      "label": "The higher alum dose consumed the limited alkalinity and dropped the pH out of the good coagulation range, weakening the floc."
+     },
+     {
+      "id": "inf2",
+      "label": "The alum has lost strength in storage over the winter."
+     },
+     {
+      "id": "inf3",
+      "label": "The rapid mix motor is running too slowly to disperse the alum."
+     },
+     {
+      "id": "inf4",
+      "label": "Cold water alone is preventing floc from forming at any dose."
+     }
+    ],
+    "correctOptionId": "inf1",
+    "explanation": "Low raw alkalinity, a pH fall that tracks the dose increase, and jar tests where adding alkalinity restores floc all point to alkalinity consumption by alum. Weak product or poor mixing would not be fixed by soda ash in the jar test."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which next check or sample would best confirm or sharpen this inference?",
+    "options": [
+     {
+      "id": "nc1",
+      "label": "Run jar tests across alum doses with and without soda ash, tracking pH, alkalinity, and floc quality to set a feed plan."
+     },
+     {
+      "id": "nc2",
+      "label": "Order a fresh alum shipment and retest when it arrives."
+     },
+     {
+      "id": "nc3",
+      "label": "Measure the rapid mix motor speed against its nameplate."
+     },
+     {
+      "id": "nc4",
+      "label": "Warm a jar test sample to room temperature and compare floc."
+     }
+    ],
+    "correctOptionId": "nc1",
+    "explanation": "Jar tests that vary alum and alkalinity together show exactly how much alkalinity the higher dose needs to hold pH in range."
+   },
+   "clueText": {
+    "nc1": "Floc is strong whenever alkalinity is added, at the same alum dose, confirming alkalinity consumption and pH drop as the cause.",
+    "nc2": "The stored alum performs the same as a fresh lab sample in side by side jars.",
+    "nc3": "The rapid mix motor runs at nameplate speed.",
+    "nc4": "Warming the sample helps slightly but floc stays weak until alkalinity is added."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "oit-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Intake Raw Water Train Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process43",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "oit-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Distribution Residual Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "oit-process44",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "oit-process45",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Backflow Incident Response Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process46",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "oit-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "oit-process47",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "oit-process48",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Well Pump Cycling Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "oit-process49",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Ph Meter Calibration Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process50",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "oit-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "oit-process51",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Chemical Feed Prime Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "oit-process52",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "oit-process53",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "oit-process54",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Chemical Spill Response Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process55",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "oit-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Uv Intensity Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "oit-process56",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "oit-process57",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Wastewater Preliminary Train Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process58",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "oit-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "oit-process59",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "oit-process60",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Chlorine Demand Break Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "oit-process61",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Trickling Filter Train Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process62",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "oit-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "oit-process63",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Frozen Services Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "oit-process64",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "oit-process65",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "oit-process66",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Bod Sample Handling Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process67",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "oit-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Booster Pressure Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "oit-process68",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "oit-process69",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Manhole Inspection Sequence Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process70",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "oit-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "oit-process71",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "oit-process72",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Breakpoint Ammonia Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "oit-process73",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Lift Station Pump Startup Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process74",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "oit-evidence20",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "oit-process75",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission81",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 81: The Filter Air Binding Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence21",
+     "revision": "r1",
+     "occurrenceId": "m81-t1"
+    },
+    {
+     "taskId": "oit-process76",
+     "revision": "r1",
+     "occurrenceId": "m81-t2"
+    },
+    {
+     "taskId": "oit-process77",
+     "revision": "r1",
+     "occurrenceId": "m81-t3"
+    },
+    {
+     "taskId": "oit-process78",
+     "revision": "r1",
+     "occurrenceId": "m81-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission82",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 82: The Anaerobic Digestion Path Shift",
+   "tasks": [
+    {
+     "taskId": "oit-process79",
+     "revision": "r1",
+     "occurrenceId": "m82-t1"
+    },
+    {
+     "taskId": "oit-evidence22",
+     "revision": "r1",
+     "occurrenceId": "m82-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission83",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 83: The Low Alkalinity Coagulation Shift",
+   "tasks": [
+    {
+     "taskId": "oit-evidence23",
+     "revision": "r1",
+     "occurrenceId": "m83-t1"
+    },
+    {
+     "taskId": "oit-process80",
+     "revision": "r1",
+     "occurrenceId": "m83-t2"
+    },
+    {
+     "taskId": "oit-process81",
+     "revision": "r1",
+     "occurrenceId": "m83-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "hb-p176",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 176 (printed p. 125), Section 6.4.3 Area and Volume"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "cb6e16287533fd669906329d71e225273430cad3742f81f1a01d98259a0f3771",
+  "taskReceipts": [
+   {
+    "taskId": "oit-process43",
+    "revision": "r1",
+    "sha256": "5e42918f4bd773414d958beecaa6d5c22c46c7e87a715864204a2d4f6da658b9",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process44",
+    "revision": "r1",
+    "sha256": "742a951cae05f147ba67d2780b59745586096a95859d61161137b16f207626e4",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process45",
+    "revision": "r1",
+    "sha256": "bf67ba3c9670904d5dd1c788b5c3b056e01922b96261443b8084a8b5c6230d5e",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process46",
+    "revision": "r1",
+    "sha256": "7644e0925bfa2324f8e87948244d7b371101ebb1c54f475986ca45a566b07132",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process47",
+    "revision": "r1",
+    "sha256": "fb569693a5ab54a9e85c09c734afcbce2580b1afbfeeb54fa810edaf8b3cc6c1",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process48",
+    "revision": "r1",
+    "sha256": "d07521bf0cb621e5e2bb2e22815035d21d89d271a757be76c1342d0e665b9624",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process49",
+    "revision": "r1",
+    "sha256": "c4787d6f8a75f5c76a36e5cf61c04a1f85fdb77e4323276b6c340f87cf32610b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process50",
+    "revision": "r1",
+    "sha256": "39842ecca1c02047a50d8a26ad6a5f31b4329516f46f9b6c6e3bbbda69f8ba6a",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process51",
+    "revision": "r1",
+    "sha256": "1e1871754b19f63bfc600f8714c94acfc1f975c44a45413f4c7d752d0253a3d6",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process52",
+    "revision": "r1",
+    "sha256": "cad588530a735f3d2adc64ede3840cbc496a6df4a0c9f19b6e37d93735707f23",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process53",
+    "revision": "r1",
+    "sha256": "81237d7c98df2268bc2928a4daa8463090dd88b0712c3e89eaf7213b694cc4e8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process54",
+    "revision": "r1",
+    "sha256": "37f9817bde84b319270109040478dd95cbc618f84810213781e8f2ad9e8701ae",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process55",
+    "revision": "r1",
+    "sha256": "532d66bf1770e43437edb719ba218e7dce1ac33fbcae3252900a158b912245ce",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process56",
+    "revision": "r1",
+    "sha256": "75c74b677aafb1802e6f986b9bae7934e5016d3a0a0eb401dc68abfa36223bfb",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process57",
+    "revision": "r1",
+    "sha256": "94e59132c51e63181b165800103ad2137982c027a9d31b3c7a5bbbc0fa1ea09b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process58",
+    "revision": "r1",
+    "sha256": "6886bd1d0a498c643665e9e761f61c9b48076c2f45267aa1868fd9e733174b59",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process59",
+    "revision": "r1",
+    "sha256": "12728ca60dd056bd218f23e70af1d0f638095ca273d09318c47af1b352fed537",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process60",
+    "revision": "r1",
+    "sha256": "2b97292ad664e4e6ad73882224b57214632cb280407cc9133b310e0dfa6aba94",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process61",
+    "revision": "r1",
+    "sha256": "0bb57cb1df4eb58605e7d771d5e56b1ab235b2d70ad4afb9dce1e7459a61f940",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process62",
+    "revision": "r1",
+    "sha256": "ddde060d812b3f42614658b9dec7f303ab02f953e6c703d690b103cdb1e72e61",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process63",
+    "revision": "r1",
+    "sha256": "f9e98488f23bf8e08967bc72059396b0261e5e315e234e7d328cdcc4f3e0a5b2",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process64",
+    "revision": "r1",
+    "sha256": "8f598048ca91e1cae5a9899f69506a4c42ab3daff620e17ef660609c6ce7cc52",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process65",
+    "revision": "r1",
+    "sha256": "2b9f6afcf7a847bf51fe4372f421e8461482afff00318859683a69a80845fdbc",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process66",
+    "revision": "r1",
+    "sha256": "cf5702bfdfef0f1b232da3bd28c9c331286dcfae956cb28b3660268910d14af4",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process67",
+    "revision": "r1",
+    "sha256": "54a1d6bac513845706dee310886313edd18739b30e3176a1b290ba6ac94d801b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process68",
+    "revision": "r1",
+    "sha256": "2d8d941f47ab281f3111a2faa898a0e46827cdc2520fcf8c28c3a9ffcdf2850f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process69",
+    "revision": "r1",
+    "sha256": "b0d02aa9d464a5bcd662f8c5aa4905e8a692b89d59c9099082dad954a2bcfbc3",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process70",
+    "revision": "r1",
+    "sha256": "274f44dc58ecaaaa0478c224615a344bbf91a9262e700aaf48a18626e5282045",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process71",
+    "revision": "r1",
+    "sha256": "b0879005ba83f623b6afc160e328a807b0ef2326abde99780dfbf5ad6b4b8b9c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process72",
+    "revision": "r1",
+    "sha256": "c558f5c8dca48c32584dd3f43415f471dcf96a0ab6359ce471718cfba32f3f3d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process73",
+    "revision": "r1",
+    "sha256": "76765c6a2c430d2db505084972976f52d05e9cb1030740885155d274694d29f5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process74",
+    "revision": "r1",
+    "sha256": "a594c5fa7af23b859cfa26fd9b8b3b76dab6fbe865742e08829e95834cf5af17",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process75",
+    "revision": "r1",
+    "sha256": "c953924ff46322ebf55ba71498eaffabcbef64374ef175edb40e54d033963a29",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process76",
+    "revision": "r1",
+    "sha256": "7d722a2cebda3de097afb8e7e928fa7113657a6a974a595edbcbfdbb49dd44f9",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process77",
+    "revision": "r1",
+    "sha256": "fd24878ba149891dfad940d08cfe12b386f105e16073147569cde949ed943827",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process78",
+    "revision": "r1",
+    "sha256": "733be6e167d4ae17fbf89618ede000650102b0d390912bd6d5435589cf7063ec",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process79",
+    "revision": "r1",
+    "sha256": "528c54232f71168a192e65d465f14fb0536ae0b9f8dfcb69ebc88fb8e9b9b78c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process80",
+    "revision": "r1",
+    "sha256": "80ee54adb52056da0b41a03033335ea3c80438358e4f3cae293568756e5d7d31",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process81",
+    "revision": "r1",
+    "sha256": "84da126ae35e097f71e574698dfcb5637442fadb16971db25876cffae445887d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process82",
+    "revision": "r1",
+    "sha256": "81b8ffc4ad824833c16f0f8a4b5e97d77df3fba4f449f42adb795f49ba0560b5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process83",
+    "revision": "r1",
+    "sha256": "333ae2dde6e2cff98a8595b70455239a2cccade8ed56279a7d1da32809aa3422",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process84",
+    "revision": "r1",
+    "sha256": "1f98afe0fa3dbece0d9e1d2afd1d5d92842a9dc802373a7880008ff57419740c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process85",
+    "revision": "r1",
+    "sha256": "7e2601995c6d01fd2072aa5ac4ebf8664b0095a87bc87631e1dc2d5de8ad96da",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process86",
+    "revision": "r1",
+    "sha256": "9112e4a12bfafd3fd48105bea4a90507304a7e1ab093494bc22e193ebb00c797",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process87",
+    "revision": "r1",
+    "sha256": "a38a0594b6e98ac9bf62246e47758155c12d6d11908d994ba778720236f5ec98",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process88",
+    "revision": "r1",
+    "sha256": "c39f828357d27bf34b7d084ed392012180299207e3ee70445f44c1b4a19d5ce7",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process89",
+    "revision": "r1",
+    "sha256": "7d63f149942a2afc1d93a96ad5cdcba1e7e3c46358679f5e64d2ce781a8f8c87",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process90",
+    "revision": "r1",
+    "sha256": "3615adefee8d5c31fea81319e20aa5105cf2d1929f3bf5276d9470a0dca8d7b5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process91",
+    "revision": "r1",
+    "sha256": "c42b176a7e1998754ed1e58562b60030e56509f8621099d9ea44d8171cba6986",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process92",
+    "revision": "r1",
+    "sha256": "ee31b5b691d80ab224457cf9b20e5ca1043eafbba3e479c05718021aeab99b8b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process93",
+    "revision": "r1",
+    "sha256": "a6216f5f3356468b9bf8401ddaf9abaae269b6ecbc78e3a853e68f752215c421",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process94",
+    "revision": "r1",
+    "sha256": "51cc38b15e5f532ea78c62055fdc0d9c9200bc3e672268e0e32c15bc9c9cc3ed",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process95",
+    "revision": "r1",
+    "sha256": "f23661e8abd8ca211452773a80e44b3936482584220126223e1fd61b11920b8e",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process96",
+    "revision": "r1",
+    "sha256": "bdd30b668576a6326a6d0658ee9da1a46206bdadacffa7c8e20cebfa669592f9",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process97",
+    "revision": "r1",
+    "sha256": "dc1bec3b5fa6e19c4f128558a09d345060a53c9325ada1e88fc995928a3c5078",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process98",
+    "revision": "r1",
+    "sha256": "2271c93b018372741fbc6c550b7f2e5d6be8cd9b93425c90ebf513db36b1d303",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-process99",
+    "revision": "r1",
+    "sha256": "18b17539ce1d2217dae9ff4acb3ce59d0782b246042a8587593992d6f75636f5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence05",
+    "revision": "r1",
+    "sha256": "094bdccdb9e7d3efe1be772f64a301109753568744288d3490755d8ba163ef48",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence06",
+    "revision": "r1",
+    "sha256": "c42a5dbe4e3722d9af1c1577bc5f2d00e9b79e4ac2090c1e6529696715d50f70",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence07",
+    "revision": "r1",
+    "sha256": "da1f470268c4436802120bf2af4576a51428426eb0a6d8426f3b55b5419088fc",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence08",
+    "revision": "r1",
+    "sha256": "42053b8aae6427e7d40c83e4c00cbaa04491422a2f2f2f7f68df9a073cfc8519",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence09",
+    "revision": "r1",
+    "sha256": "5391b7a3a115320c978121ae28d4a381ba803aeca5428144ebfe6b69dd6e1c64",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence10",
+    "revision": "r1",
+    "sha256": "3d32b4c13feddc3d563befd3366c45336c2cb0a4b958f9777db9859dcc30f4db",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence100",
+    "revision": "r1",
+    "sha256": "ada224cb29bf8fe673e4284311b4ddf569dda1241eedb21023c0a7c627d543c5",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence11",
+    "revision": "r1",
+    "sha256": "da879888e33cbb75f6a0a77745cfe71892117ab9572d611b973b0943acb00a97",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence12",
+    "revision": "r1",
+    "sha256": "b6471b2fd248e4e02c24e905899d70c2088ff31870eb1eadc87aad4fd87825a0",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence13",
+    "revision": "r1",
+    "sha256": "b3ea529fb7d667ad190b004f1bd586885b69d12e80b20a8b0ed0244cdd85db12",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence14",
+    "revision": "r1",
+    "sha256": "bb27e90d8a48de0cb1718f4c1a3afabcd4c18202589fd1a8f98dadcd81ec8ebb",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence15",
+    "revision": "r1",
+    "sha256": "d8ae7b258ad614cd1d4c8b3d05e6dacb49e41e3aa0045e70a0076a9b89ad53af",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence16",
+    "revision": "r1",
+    "sha256": "c77366409f74f007e2e53becf74034b1d9ac7c26d17f61ded43b349afb2e73da",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence17",
+    "revision": "r1",
+    "sha256": "0eee6b6bba04fa3fd850cf5632855a9ce69e8651e963b03fd1f0e4f24b82b554",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence18",
+    "revision": "r1",
+    "sha256": "f7b9037726914c59bac7227ed068b4fe5e2cace92d90136dc363849e623bde7f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence19",
+    "revision": "r1",
+    "sha256": "c4f7aeed823135431ec7119d2c2345d4426569b31130fe2e430fbfd43b61f014",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence20",
+    "revision": "r1",
+    "sha256": "8546f801d22c658dff223c83619444cbbaf628572903fb3b2db3fcb04370c7b4",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence21",
+    "revision": "r1",
+    "sha256": "d1b9b8edb351618d3a3ae959f213a3f7a323a1d91e072cada33f84d25cf5e044",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence22",
+    "revision": "r1",
+    "sha256": "a9b2605522440459fd1e997dfee9ccd3270a320416cadcc7a3aaaed38baa4c92",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-evidence23",
+    "revision": "r1",
+    "sha256": "98d4ff4920a8f8654a8e4c0cd026d69c7210ff8fffa8c201e756559e5af8b628",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "oit-mission64",
+    "revision": "r1",
+    "sha256": "26a61b9b8c68e121be1f69aae62fd7a0d811829fcf88215a6f7af23932200374"
+   },
+   {
+    "missionId": "oit-mission65",
+    "revision": "r1",
+    "sha256": "940728be391f57e0d18107d87e6934aa3c16a57069fadfe6a9949a226d378739"
+   },
+   {
+    "missionId": "oit-mission66",
+    "revision": "r1",
+    "sha256": "1cce2ee625587e7afb3a5cacd72a2c539df4e795564f76becd3fcc2fff891e8a"
+   },
+   {
+    "missionId": "oit-mission67",
+    "revision": "r1",
+    "sha256": "0a68eb8a78fdcbfab9c4b5e8d3ec1925c772029611c4465eed0a3a8a29e699dc"
+   },
+   {
+    "missionId": "oit-mission68",
+    "revision": "r1",
+    "sha256": "509fc719993cce98b778b98b5271f294c2515445eaa8bd52138055584c92b5dc"
+   },
+   {
+    "missionId": "oit-mission69",
+    "revision": "r1",
+    "sha256": "f1e1db4732210d399f67255318d1b4ff2509bf75995523ac0b5c07ecf3dedda3"
+   },
+   {
+    "missionId": "oit-mission70",
+    "revision": "r1",
+    "sha256": "0444d22276caf8db48e224ebfe69f2c9f161ee05652cdc3a9936756bbd502179"
+   },
+   {
+    "missionId": "oit-mission71",
+    "revision": "r1",
+    "sha256": "2d5e2c9ffcc9fd1c317714249123231f0a3a7150dd157ac574868901d65ea69a"
+   },
+   {
+    "missionId": "oit-mission72",
+    "revision": "r1",
+    "sha256": "88ce3625d83e0b5afa8fb051c8adefb9f64ca71b24d59b7e0f4d33728c7238fd"
+   },
+   {
+    "missionId": "oit-mission73",
+    "revision": "r1",
+    "sha256": "569357909920048e47951489ec0ebfb21ae300f898b2595ac469036f3d459eba"
+   },
+   {
+    "missionId": "oit-mission74",
+    "revision": "r1",
+    "sha256": "b9481465bc518c310938b58b3a4040ed9ac221c1dea69814ae38012c393d61d1"
+   },
+   {
+    "missionId": "oit-mission75",
+    "revision": "r1",
+    "sha256": "24c54af16c64b9b7fd6515a24a7d9ef0ba5a5e76b7ea362dd263c46dfc9b7243"
+   },
+   {
+    "missionId": "oit-mission76",
+    "revision": "r1",
+    "sha256": "76450143ea3ce525bd3d2bc5a7c78556882e956f02be265c4fff7c7eb8541b86"
+   },
+   {
+    "missionId": "oit-mission77",
+    "revision": "r1",
+    "sha256": "0b9fa6bc9368989cb0727536d960ec2f981bfef5e880664587c14363a285881b"
+   },
+   {
+    "missionId": "oit-mission78",
+    "revision": "r1",
+    "sha256": "569bef328446b5f5b0381c3d75bfd055fdd78756a9f797e5dedf5c7f27ceaa05"
+   },
+   {
+    "missionId": "oit-mission79",
+    "revision": "r1",
+    "sha256": "7118072fc3141d45c75d1db25d2f5a11c47526e9dd31e0f2ed67afe118ebe356"
+   },
+   {
+    "missionId": "oit-mission80",
+    "revision": "r1",
+    "sha256": "0e0563c0c0bf389bd5c34cc66bbe433697d60eff750c7841d720eb591a5aeed3"
+   },
+   {
+    "missionId": "oit-mission81",
+    "revision": "r1",
+    "sha256": "32c1368959932e44f6b9bc9b2804ccc2eb633c8e54fec3151ab29b40fecba87e"
+   },
+   {
+    "missionId": "oit-mission82",
+    "revision": "r1",
+    "sha256": "b163bc16fae4f22fcef94c24a979d02a9bc33387e7128f7d0508a80137ccbe48"
+   },
+   {
+    "missionId": "oit-mission83",
+    "revision": "r1",
+    "sha256": "775f68d8b9a8927ca7822dfd63deb4540f43837599e15cf61e11a8eb67d6a4c0"
+   }
+  ]
+ }
+}

@@ -1089,8 +1089,11 @@ export function courseKeyToLabel(courseKey: string, _province?: string): string 
 export function getTeamCourseOptions(
   province: string,
 ): { key: string; label: string }[] {
-  const family: ExamFamily = province === "western" ? "western" : "ontario";
-  return getTeamAssignableCourses(family).map((e) => ({
+  const family: ExamFamily = province === "western" || province === "nova-scotia" ? "western" : "ontario";
+  return getTeamAssignableCourses(family).filter((e) =>
+    province !== "nova-scotia" || e.classLevel < 4 ||
+    (e.track !== "water-distribution" && e.track !== "wastewater-collection"),
+  ).map((e) => ({
     key: e.courseKey,
     label: e.displayName,
   }));

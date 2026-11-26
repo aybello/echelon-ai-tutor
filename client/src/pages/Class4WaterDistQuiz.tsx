@@ -25,7 +25,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class4WaterDistQuiz() {
   usePageMeta({
     title: "Ontario Class 4 Water Distribution and Supply Practice Questions",
-    description: "Practice questions for the Ontario Class 4 Water Distribution and Supply operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 4 Water Distribution and Supply operator certification exam. 1,000+ questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
     noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class4-water-dist", "lazy");
@@ -48,7 +48,7 @@ export default function Class4WaterDistQuiz() {
       currentPath="/class4-water-dist"
       courseLabel="Ontario Class 4 · Water Distribution and Supply"
       courseTitle="Ontario Class 4 Water Distribution and Supply Quiz"
-      courseSubtitle="500 questions · Ontario Class 4 Water Distribution and Supply"
+      courseSubtitle="1,000+ questions · Ontario Class 4 Water Distribution and Supply"
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[
@@ -130,7 +130,7 @@ export default function Class4WaterDistQuiz() {
           productName="Ontario Class 4 Water Distribution and Supply Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "300 Ontario Class 4 Water Distribution and Supply questions — unlimited attempts",
+            "1,000+ Ontario Class 4 Water Distribution and Supply questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

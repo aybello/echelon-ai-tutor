@@ -76,8 +76,10 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
+import { isTeamRegion, TEAM_REGION_LABELS } from "@shared/teamPricing";
 import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
 import { FlexLicencePanel } from "@/components/FlexLicencePanel";
+import { CertificatesPanel } from "@/components/CertificatesPanel";
 import "@/components/StudyWorkspace.css";
 import { filterRosterMembers, getOperatorStudyStage } from "@/lib/managerRoster";
 import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
@@ -454,7 +456,7 @@ export default function OrgDashboard() {
         </p>
         {orgChooser}
         {!isUnauth && <Button className="bg-blue-600 text-white" onClick={() => billingPortal.mutate({ ...orgInput, scope: "team" })} disabled={billingPortal.isPending}>Manage team billing</Button>}
-        {!isUnauth && <Link href="/account?billing=personal" className="text-sm text-blue-700 underline">Individual billing &amp; passes</Link>}
+        {!isUnauth && <a href="mailto:abello@echeloninstitute.ca" className="text-sm text-blue-700 underline">Contact team support</a>}
         <Link href="/account">
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Sign In
@@ -474,14 +476,17 @@ export default function OrgDashboard() {
   const overview = overviewQuery.data!;
   const members = membersQuery.data ?? [];
   const attention = attentionQuery.data ?? { atRisk: [], stalled: [] };
+  const hasAnnualContract = overview.tier !== "course-pass" && overview.billingType !== "course-pass";
 
   // Annual licence semantics: licences used this term vs total, not concurrent active count
   const licencesUsedThisTerm = overview.seatsUsedThisTerm ?? overview.seatsAssigned;
   const licencesAvailableThisTerm = Math.max(0, overview.seatsTotal - licencesUsedThisTerm);
-  // Keep seatsAvailable for backward compat with manage-seats modal minimum floor
+  // Active seat availability is separate from full-term licence consumption.
   const seatsAvailable = overview.seatsTotal - overview.seatsAssigned;
   const termDays = daysUntil(overview.termEnd);
-  const hasStripe = overview.billingType === "stripe" && !!overview.stripeSubscriptionId;
+  const hasStripe = hasAnnualContract && overview.billingType === "stripe" && !!overview.stripeSubscriptionId;
+  const minimumSeatIncrease = Math.max(5, overview.seatsTotal + 1, licencesUsedThisTerm);
+  const canIncreaseSeats = Number.isInteger(newSeatCount) && newSeatCount >= minimumSeatIncrease && newSeatCount <= 500;
 
   // Progress bar: % of the 1-year term that has elapsed
   const termProgressPct = (() => {
@@ -541,10 +546,10 @@ export default function OrgDashboard() {
               <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
               <div>
                 <p className="text-sm font-semibold text-green-800">
-                  Team plan activated! Welcome to Echelon for Teams.
+                  {hasAnnualContract ? "Team plan activated! Welcome to Echelon for Teams." : "Course Pass order received! Welcome to Echelon for Teams."}
                 </p>
                 <p className="text-xs text-green-600 mt-0.5">
-                  Your organization is ready. Start assigning seats to your operators below.
+                  {hasAnnualContract ? "Your organization is ready. Start assigning seats to your operators below." : "Review your Course Pass inventory and invite operators below."}
                 </p>
               </div>
             </div>
@@ -560,7 +565,7 @@ export default function OrgDashboard() {
       )}
 
       {/* Term progress bar — full-width strip below welcome banner, above header */}
-      {termRemainingPct !== null && overview.termEnd && (
+      {hasAnnualContract && termRemainingPct !== null && overview.termEnd && (
         <div className="teams-redesign__term-strip bg-white border-b border-slate-100 px-6 py-3">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-1.5">
@@ -623,8 +628,9 @@ export default function OrgDashboard() {
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <span>Manager Dashboard</span>
                 <span>·</span>
-                <span className="capitalize">{overview.province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}</span>
-                {termDays !== null && (
+                <span>{isTeamRegion(overview.province) ? TEAM_REGION_LABELS[overview.province] : overview.province}</span>
+                {!hasAnnualContract && <><span>·</span><span>Teams Flex · one-time Course Passes</span></>}
+                {hasAnnualContract && termDays !== null && (
                   <>
                     <span>·</span>
                     <span className={termDays < 30 ? "text-amber-600 font-medium" : ""}>
@@ -655,12 +661,13 @@ export default function OrgDashboard() {
                 size="sm"
                 className="text-slate-600 border-slate-200 hover:bg-slate-50 hidden sm:flex"
                 onClick={() => {
-                  setNewSeatCount(overview.seatsTotal);
+                  setNewSeatCount(minimumSeatIncrease);
                   setManageSeatsOpen(true);
                 }}
+                disabled={minimumSeatIncrease > 500}
               >
                 <Settings className="w-4 h-4 mr-1.5" />
-                Manage Seats
+                Add Annual Seats
               </Button>
             )}
             {/* Bug fix: Manage Billing button calls createBillingPortalSession */}
@@ -676,9 +683,7 @@ export default function OrgDashboard() {
                 {billingPortal.isPending ? "Opening..." : "Manage Billing"}
               </Button>
             )}
-            <Link href="/account?billing=personal" className="text-xs font-medium text-blue-700 underline px-2 py-2">
-              Individual billing &amp; passes
-            </Link>
+            <a href="mailto:abello@echeloninstitute.ca" className="text-xs font-medium text-blue-700 underline px-2 py-2">Team support</a>
             <Button
               variant="outline"
               size="sm"
@@ -705,7 +710,7 @@ export default function OrgDashboard() {
       <main className="teams-dashboard-main max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
 
         {/* Metric cards */}
-        <div className="manager-summary-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+        {hasAnnualContract && <div className="manager-summary-grid grid grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard
             icon={Users}
             label="Licences Used This Term"
@@ -740,13 +745,14 @@ export default function OrgDashboard() {
             sub="≥80% estimated score"
             accent="text-green-600"
           />
-        </div>
+        </div>}
 
         <nav className="workspace-view-tabs" aria-label="Manager dashboard views">
           <button type="button" aria-pressed={managerView === "operators"} onClick={() => setManagerView("operators")}>Operators and access</button>
           <button type="button" aria-pressed={managerView === "reports"} onClick={() => setManagerView("reports")}>Reports and outcomes</button>
         </nav>
         {managerView === "operators" && <section aria-label="Operator management" className="manager-operators">
+        {hasAnnualContract && <>
         {/* Pass rate summary: same definition as the Exam results panel on the Reports tab */}
         {passRateQuery.data && passRateQuery.data.total > 0 && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 flex items-center justify-between">
@@ -1123,9 +1129,14 @@ export default function OrgDashboard() {
             </details>
           )}
         </div>
+        </>}
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
+        {!hasAnnualContract && <p className="text-sm text-slate-600">Teams Flex Course Passes are a one-time purchase. Each licence has its own activate-by date, study term and reporting window, shown below.</p>}
         {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
+
+        {/* ── Licence Expiry Tracking ────────────────────────────────── */}
+        {overview.orgId && <CertificatesPanel key={overview.orgId} orgId={overview.orgId} />}
 
         </section>}
 
@@ -1143,7 +1154,7 @@ export default function OrgDashboard() {
           <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">Echelon Institute</div>
           <h1 className="text-2xl font-bold text-slate-900 mt-1">{overview.orgName} — Learning Outcomes Report</h1>
           <div className="text-xs text-slate-500 mt-1">
-            Generated {formatDate(new Date())} · Licence term {formatDate(overview.termStart)} to {formatDate(overview.termEnd)}
+            Generated {formatDate(new Date())} · {hasAnnualContract ? `Annual licence term ${formatDate(overview.termStart)} to ${formatDate(overview.termEnd)}` : "Course Pass reporting · individual licence dates apply"}
           </div>
           <p className="text-xs text-slate-600 mt-3 max-w-3xl">
             Aggregate activation, practice, and readiness indicators for municipal training review. Study estimates are coaching signals, not official exam scores or pass guarantees.
@@ -1151,6 +1162,7 @@ export default function OrgDashboard() {
         </div>
 
         {(readinessSummaryQuery.isError || operatorReadinessQuery.isError) && <p role="alert" className="text-sm text-amber-800">Part of the report could not load. <button type="button" className="workspace-text-link" onClick={() => { void readinessSummaryQuery.refetch(); void operatorReadinessQuery.refetch(); }}>Retry report</button></p>}
+        {hasAnnualContract && <>
         <ExamOutcomesPanel orgInput={orgInput} />
         {/* Team Readiness Summary */}
         {readinessSummaryQuery.data && (
@@ -1249,12 +1261,12 @@ export default function OrgDashboard() {
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
                 <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldCheck className="w-3.5 h-3.5 text-green-500" />Estimated Ready</div>
                 <div className="text-2xl font-bold text-green-600">{readinessSummaryQuery.data.examReadyCount}</div>
-                <div className="text-xs text-slate-400 mt-0.5">≥ 80% accuracy</div>
+                <div className="text-xs text-slate-400 mt-0.5" title="Composite study estimate combines practice accuracy, completed mock accuracy, attempt volume and recent activity; it is not raw accuracy.">Study estimate of 80 or higher</div>
               </div>
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
                 <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldAlert className="w-3.5 h-3.5 text-red-500" />At Risk</div>
                 <div className="text-2xl font-bold text-red-600">{readinessSummaryQuery.data.atRiskCount}</div>
-                <div className="text-xs text-slate-400 mt-0.5">&lt; 50% accuracy</div>
+                <div className="text-xs text-slate-400 mt-0.5" title="Study estimate below 50 with more than 10 practice attempts, or an exam date 21 days away or less (including past dates) with practice accuracy below 70%.">Low study estimate or a near exam with weak practice results</div>
               </div>
               <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
                 <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><Clock className="w-3.5 h-3.5 text-amber-500" />Inactive</div>
@@ -1529,6 +1541,7 @@ export default function OrgDashboard() {
             </div>
           </div>
         )}
+        </>}
         </section>
 
         {/* ── Command Centre Cohort Intelligence ─────────────────────────── */}
@@ -1640,11 +1653,11 @@ export default function OrgDashboard() {
           <Link href="/teams">
             <span className="hover:text-slate-600 cursor-pointer flex items-center gap-1">
               <ExternalLink className="w-3 h-3" />
-              Add more seats
+              {hasAnnualContract ? "Add more seats" : "Buy more Course Passes"}
             </span>
           </Link>
           <span>·</span>
-          <span>Term ends {formatDate(overview.termEnd)}</span>
+          <span>{hasAnnualContract ? `Annual term ends ${formatDate(overview.termEnd)}` : "Course Pass dates are shown per licence"}</span>
         </div>
       </main>
 
@@ -1773,9 +1786,9 @@ export default function OrgDashboard() {
       <Dialog open={manageSeatsOpen} onOpenChange={setManageSeatsOpen}>
         <DialogContent className="bg-white border-slate-200 max-w-sm">
           <DialogHeader>
-            <DialogTitle className="text-slate-900">Manage Seats</DialogTitle>
+            <DialogTitle className="text-slate-900">Add Annual Seats</DialogTitle>
             <DialogDescription className="text-slate-500 text-sm">
-              Update your team's annual licence count.
+              Increase your team's annual licence count now. For renewal reductions, contact team support; this form does not schedule reductions.
             </DialogDescription>
           </DialogHeader>
           <div className="py-2 space-y-4">
@@ -1783,35 +1796,35 @@ export default function OrgDashboard() {
               <Label className="text-slate-700">New seat count</Label>
               <Input
                 type="number"
-                min={licencesUsedThisTerm}
+                min={minimumSeatIncrease}
                 max={500}
                 value={newSeatCount}
-                onChange={e => setNewSeatCount(Math.max(licencesUsedThisTerm, parseInt(e.target.value) || 0))}
+                onChange={e => setNewSeatCount(Number(e.target.value))}
                 className="border-slate-200 text-slate-900"
               />
               <p className="text-xs text-slate-400">
                 Current: {overview.seatsTotal} annual licences · {licencesUsedThisTerm} used this term.
-                Minimum is {licencesUsedThisTerm} (licences already consumed this term cannot be removed).
+                Minimum increase total is {minimumSeatIncrease}: at least five seats, above the current total and no fewer than licences used this term. Maximum is 500.
+                Each used licence is consumed for the full contract year.
               </p>
             </div>
-            {newSeatCount !== overview.seatsTotal && (
+            {canIncreaseSeats && (
               <div className="bg-blue-50 border border-blue-100 rounded-lg px-4 py-3 text-xs text-blue-700">
-                {newSeatCount > overview.seatsTotal
-                  ? `Adding ${newSeatCount - overview.seatsTotal} seat${newSeatCount - overview.seatsTotal === 1 ? "" : "s"}. Additional licences take effect now. Stripe may prorate the added licences for the remainder of the current term.`
-                  : `Removing ${overview.seatsTotal - newSeatCount} seat${overview.seatsTotal - newSeatCount === 1 ? "" : "s"}. This reduction will take effect at renewal. Current-term access and used-licence history will not change.`}
+                {`Adding ${newSeatCount - overview.seatsTotal} seat${newSeatCount - overview.seatsTotal === 1 ? "" : "s"}. Additional licences take effect now. Stripe may prorate the added licences for the remainder of the current term.`}
               </div>
             )}
+            <a href="mailto:abello@echeloninstitute.ca" className="text-xs text-blue-700 underline">Contact support about renewal quantity</a>
           </div>
           <DialogFooter>
             <Button variant="ghost" onClick={() => setManageSeatsOpen(false)} className="text-slate-500">
               Cancel
             </Button>
             <Button
-              onClick={() => updateSeats.mutate({ orgId: overview.orgId, seats: newSeatCount})}
-              disabled={updateSeats.isPending || newSeatCount === overview.seatsTotal || newSeatCount < licencesUsedThisTerm}
+              onClick={() => { if (canIncreaseSeats) updateSeats.mutate({ orgId: overview.orgId, seats: newSeatCount }); }}
+              disabled={updateSeats.isPending || !canIncreaseSeats}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >
-              {updateSeats.isPending ? "Updating..." : "Update Seats"}
+              {updateSeats.isPending ? "Updating..." : "Add Seats"}
             </Button>
           </DialogFooter>
         </DialogContent>

@@ -1,0 +1,5040 @@
+{
+ "courseKey": "wqa",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wqa-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Analysis must start within 24 h of collection. A sample is already 9.5 h old. Find the time remaining before analysis must start, in hours. Enter the exact unrounded number.",
+   "topicId": "holding-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory scheduling case: window = 24 h, sample age = 9.5 h. Remaining = window - age.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining time = Window + Sample age"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining time = Sample age - Window"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining time = Window - Sample age"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which subtraction gives the time still available?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Window minus age"
+      },
+      {
+       "id": "opt-b",
+       "label": "Age minus window"
+      },
+      {
+       "id": "opt-c",
+       "label": "Window plus age"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining = 9.5 - 24 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining = 24 - 9.5 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining = 24 + 9.5 h"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact remaining time in hours (h).",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "14.5",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Remaining = 24 - 9.5 = 14.5 h."
+   }
+  },
+  {
+   "id": "wqa-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A preserved sample has a 14 day holding time. It is now day 9 since collection. Find the holding time remaining, in days. Enter the exact unrounded number.",
+   "topicId": "holding-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory sample handling case: holding limit = 14 days, elapsed = 9 days. Remaining = limit - elapsed.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining days = Holding limit - Days elapsed"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining days = Holding limit + Days elapsed"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining days = Days elapsed - Holding limit"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which subtraction gives the days still available?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Elapsed minus limit"
+      },
+      {
+       "id": "opt-b",
+       "label": "Limit minus elapsed"
+      },
+      {
+       "id": "opt-c",
+       "label": "Limit plus elapsed"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining = 9 - 14 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining = 14 + 9 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining = 14 - 9 days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact remaining time in days (days).",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "5",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Remaining = 14 - 9 = 5 days."
+   }
+  },
+  {
+   "id": "wqa-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A bench schedule runs 24 analyses per day for 5 days. Find the total number of analyses scheduled. Enter the exact unrounded number.",
+   "topicId": "scheduling-arithmetic",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory scheduling case: rate = 24 analyses per day, days = 5. Total = rate * days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total analyses = Analyses per day / Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total analyses = Analyses per day * Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total analyses = Analyses per day + Days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "How does a daily rate build over 5 days?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the daily rate by 5"
+      },
+      {
+       "id": "opt-b",
+       "label": "Add 5 to the daily rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply the daily rate by 5"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total = 24 * 5 analyses"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total = 24 / 5 analyses"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total = 24 + 5 analyses"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total count (count).",
+    "unitOptions": [
+     {
+      "id": "count",
+      "label": "count"
+     },
+     {
+      "id": "dozen",
+      "label": "dozen",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "120",
+    "expectedUnitId": "count",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 24 * 5 = 120 analyses."
+   }
+  },
+  {
+   "id": "wqa-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An instrument run takes 3 min per sample. A batch holds 45 samples. Find the total run time in minutes. Enter the exact unrounded number.",
+   "topicId": "scheduling-arithmetic",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory scheduling case: time per sample = 3 min, samples = 45. Total time = per sample time * samples.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total time = Time per sample / Number of samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total time = Number of samples / Time per sample"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total time = Time per sample * Number of samples"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which operation scales a per sample time to a full batch?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by the number of samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by the number of samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add the number of samples"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total = 3 / 45 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total = 3 * 45 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total = 45 / 3 min"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total run time in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "135",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 3 * 45 = 135 min."
+   }
+  },
+  {
+   "id": "wqa-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A batch needs 15 min of setup plus 2 min of analysis time for each of 40 samples. Find the total batch time in minutes. Enter the exact unrounded number.",
+   "topicId": "scheduling-arithmetic",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory scheduling case: setup = 15 min, per sample = 2 min, samples = 40. Total = setup + per sample * samples.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total time = Setup + Time per sample * Samples"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total time = Setup * Time per sample * Samples"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total time = Setup + Samples / Time per sample"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which part of the total is multiplied by 40?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "The 15 min setup as well"
+      },
+      {
+       "id": "opt-b",
+       "label": "Only the 2 min per sample time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Neither part"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total = 15 * 2 * 40 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total = 15 + 40 / 2 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total = 15 + 2 * 40 min"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total batch time in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "95",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 15 + 2 * 40 = 95 min."
+   }
+  },
+  {
+   "id": "wqa-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A courier trip takes 2.5 h and the laboratory queue adds 1.5 h before analysis. Find the total time from collection to analysis, in hours. Enter the exact unrounded number.",
+   "topicId": "scheduling-arithmetic",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory scheduling case: transport = 2.5 h, queue = 1.5 h. Total = transport + queue.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total time = Transport time * Queue time"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total time = Transport time + Queue time"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total time = Transport time - Queue time"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "How do sequential time periods combine?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the two periods together"
+      },
+      {
+       "id": "opt-b",
+       "label": "Subtract the shorter period"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add the two periods together"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total = 2.5 + 1.5 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total = 2.5 * 1.5 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total = 2.5 - 1.5 h"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total time in hours (h).",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "4",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 2.5 + 1.5 = 4 h."
+   }
+  },
+  {
+   "id": "wqa-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A prepared standard has a shelf life of 28 days. It is used on day 21 after preparation. Find the shelf life remaining, in days. Enter the exact unrounded number.",
+   "topicId": "scheduling-arithmetic",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory quality case: shelf life = 28 days, age = 21 days. Remaining = shelf life - age.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining days = Shelf life + Age"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining days = Age - Shelf life"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining days = Shelf life - Age"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which subtraction gives the days still available?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Shelf life minus age"
+      },
+      {
+       "id": "opt-b",
+       "label": "Age minus shelf life"
+      },
+      {
+       "id": "opt-c",
+       "label": "Shelf life plus age"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Remaining = 21 - 28 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Remaining = 28 - 21 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Remaining = 28 + 21 days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact remaining shelf life in days (days).",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "7",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Remaining = 28 - 21 = 7 days."
+   }
+  },
+  {
+   "id": "wqa-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A calibration check is required after every 10 samples. A run contains 90 samples. Find the number of calibration checks required. Enter the exact unrounded number.",
+   "topicId": "quality-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory quality case: run = 90 samples, interval = 10 samples per check. Checks = run size / interval.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Checks = Run size / Interval"
+      },
+      {
+       "id": "opt-b",
+       "label": "Checks = Run size * Interval"
+      },
+      {
+       "id": "opt-c",
+       "label": "Checks = Interval / Run size"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which operation applies a one per 10 rate?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the run size by 10"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the run size by 10"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add 10 to the run size"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Checks = 90 * 10"
+      },
+      {
+       "id": "opt-b",
+       "label": "Checks = 10 / 90"
+      },
+      {
+       "id": "opt-c",
+       "label": "Checks = 90 / 10"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact number of checks (count).",
+    "unitOptions": [
+     {
+      "id": "count",
+      "label": "count"
+     },
+     {
+      "id": "dozen",
+      "label": "dozen",
+      "toExpected": {
+       "numerator": "12",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "9",
+    "expectedUnitId": "count",
+    "absoluteTolerance": "0",
+    "explanation": "Checks = 90 / 10 = 9."
+   }
+  },
+  {
+   "id": "wqa-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sample is 2.25 h old. Find its age in minutes. Enter the exact unrounded number.",
+   "topicId": "holding-time",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory sample handling case: age = 2.25 h, 60 min = 1 h. Minutes = hours * 60.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Minutes = Hours / 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Minutes = Hours * 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Minutes = Hours + 60"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts hours to minutes?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Add 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by 60"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Age = 2.25 * 60 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "Age = 2.25 / 60 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "Age = 2.25 + 60 min"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact sample age in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "135",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Age = 2.25 * 60 = 135 min."
+   }
+  },
+  {
+   "id": "wqa-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A bench result is reported as 2.5 mg/L. Find the same result in ug/L. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory reporting case: result = 2.5 mg/L, given factor 1 mg/L = 1000 ug/L.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Result in ug/L = Result in mg/L / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Result in ug/L = Result in mg/L + 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Result in ug/L = Result in mg/L * 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Does the number get larger or smaller in ug/L?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Larger, because each mg contains 1000 ug"
+      },
+      {
+       "id": "opt-b",
+       "label": "Smaller, because each mg contains 1000 ug"
+      },
+      {
+       "id": "opt-c",
+       "label": "It stays the same"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Result = 2.5 / 1000 ug/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Result = 2.5 * 1000 ug/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Result = 2.5 + 1000 ug/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in micrograms per litre (ug/L).",
+    "unitOptions": [
+     {
+      "id": "ug-L",
+      "label": "ug/L"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "NTU",
+      "label": "NTU"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "2500",
+    "expectedUnitId": "ug-L",
+    "absoluteTolerance": "0",
+    "explanation": "Result = 2.5 * 1000 = 2500 ug/L."
+   }
+  },
+  {
+   "id": "wqa-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A bench result is reported as 4500 ug/L. Find the same result in mg/L. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory reporting case: result = 4500 ug/L, given factor 1000 ug/L = 1 mg/L.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Result in mg/L = Result in ug/L / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Result in mg/L = Result in ug/L * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Result in mg/L = Result in ug/L - 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Does the number get larger or smaller in mg/L?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Larger, because 1000 ug make 1 mg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Smaller, because 1000 ug make 1 mg"
+      },
+      {
+       "id": "opt-c",
+       "label": "It stays the same"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Result = 4500 * 1000 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Result = 4500 - 1000 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Result = 4500 / 1000 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "ug-L",
+      "label": "ug/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "NTU",
+      "label": "NTU"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "4.5",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Result = 4500 / 1000 = 4.5 mg/L."
+   }
+  },
+  {
+   "id": "wqa-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An analyst measures out 0.75 L of dilution water. Find this volume in mL. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory preparation case: volume = 0.75 L, given factor 1 L = 1000 mL.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume in mL = Volume in L / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume in mL = Volume in L * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume in mL = Volume in L + 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts litres to millilitres?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Add 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 0.75 * 1000 mL"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 0.75 / 1000 mL"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 0.75 + 1000 mL"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in millilitres (mL).",
+    "unitOptions": [
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "750",
+    "expectedUnitId": "mL",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 0.75 * 1000 = 750 mL."
+   }
+  },
+  {
+   "id": "wqa-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A carboy holds 1250 mL of reagent. Find this volume in litres (L). Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory preparation case: volume = 1250 mL, given factor 1000 mL = 1 L.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume in L = Volume in mL * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume in L = Volume in mL - 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume in L = Volume in mL / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts millilitres to litres?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Subtract 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = 1250 * 1000 L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = 1250 / 1000 L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = 1250 - 1000 L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in litres (L).",
+    "unitOptions": [
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "mL",
+      "label": "mL",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "1.25",
+    "expectedUnitId": "L",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 1250 / 1000 = 1.25 L."
+   }
+  },
+  {
+   "id": "wqa-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A reagent mass is recorded as 3.2 g. Find the same mass in mg. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory preparation case: mass = 3.2 g, given factor 1 g = 1000 mg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass in mg = Mass in g * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass in mg = Mass in g / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass in mg = Mass in g + 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts grams to milligrams?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 3.2 / 1000 mg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 3.2 + 1000 mg"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 3.2 * 1000 mg"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass in milligrams (mg).",
+    "unitOptions": [
+     {
+      "id": "mg",
+      "label": "mg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "3200",
+    "expectedUnitId": "mg",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 3.2 * 1000 = 3200 mg."
+   }
+  },
+  {
+   "id": "wqa-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A reagent mass is recorded as 850 mg. Find the same mass in grams (g). Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory preparation case: mass = 850 mg, given factor 1000 mg = 1 g.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass in g = Mass in mg * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass in g = Mass in mg / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass in g = Mass in mg - 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts milligrams to grams?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Subtract 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 850 / 1000 g"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 850 * 1000 g"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 850 - 1000 g"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass in grams (g).",
+    "unitOptions": [
+     {
+      "id": "g",
+      "label": "g"
+     },
+     {
+      "id": "mg",
+      "label": "mg",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "0.85",
+    "expectedUnitId": "g",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 850 / 1000 = 0.85 g."
+   }
+  },
+  {
+   "id": "wqa-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A solution strength is given as 1 percent. Using the given factor that 1 percent equals 10000 mg/L for a water based solution, find the strength in mg/L. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory reporting case: strength = 1 percent, given factor 1 percent = 10000 mg/L.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Strength in mg/L = Percent / 10000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Strength in mg/L = Percent + 10000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Strength in mg/L = Percent * 10000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which operation applies the given factor?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the percent by 10000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the percent by 10000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add 10000 to the percent"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Strength = 1 / 10000 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Strength = 1 * 10000 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Strength = 1 + 10000 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact strength in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "ug-L",
+      "label": "ug/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "NTU",
+      "label": "NTU"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "10000",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Strength = 1 * 10000 = 10000 mg/L."
+   }
+  },
+  {
+   "id": "wqa-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A solution strength is given as 0.5 percent. Using the given factor that 1 percent equals 10000 mg/L for a water based solution, find the strength in mg/L. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory reporting case: strength = 0.5 percent, given factor 1 percent = 10000 mg/L.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Strength in mg/L = Percent * 10000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Strength in mg/L = Percent / 10000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Strength in mg/L = Percent + 10000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which operation applies the given factor?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the percent by 10000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the percent by 10000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add 10000 to the percent"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Strength = 0.5 / 10000 mg/L"
+      },
+      {
+       "id": "opt-b",
+       "label": "Strength = 0.5 + 10000 mg/L"
+      },
+      {
+       "id": "opt-c",
+       "label": "Strength = 0.5 * 10000 mg/L"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact strength in milligrams per litre (mg/L).",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "ug-L",
+      "label": "ug/L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "NTU",
+      "label": "NTU"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "5000",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Strength = 0.5 * 10000 = 5000 mg/L."
+   }
+  },
+  {
+   "id": "wqa-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A micro balance reading is 250 ug. Find the same mass in mg. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory preparation case: mass = 250 ug, given factor 1000 ug = 1 mg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass in mg = Mass in ug * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass in mg = Mass in ug / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass in mg = Mass in ug - 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts micrograms to milligrams?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Subtract 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Mass = 250 / 1000 mg"
+      },
+      {
+       "id": "opt-b",
+       "label": "Mass = 250 * 1000 mg"
+      },
+      {
+       "id": "opt-c",
+       "label": "Mass = 250 - 1000 mg"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact mass in milligrams (mg).",
+    "unitOptions": [
+     {
+      "id": "mg",
+      "label": "mg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "0.25",
+    "expectedUnitId": "mg",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 250 / 1000 = 0.25 mg."
+   }
+  },
+  {
+   "id": "wqa-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A holding time is stated as 48 h. Find the same time in days. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory sample handling case: time = 48 h, given factor 24 h = 1 day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Days = Hours * 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Days = Hours + 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Days = Hours / 24"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts hours to days?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 24"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 24"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add 24"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Time = 48 * 24 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Time = 48 / 24 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Time = 48 + 24 days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact time in days (days).",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "count",
+      "label": "count"
+     }
+    ],
+    "expected": "2",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Time = 48 / 24 = 2 days."
+   }
+  },
+  {
+   "id": "wqa-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An incubation period is 1.5 h. Find the same period in minutes. Enter the exact unrounded number.",
+   "topicId": "bench-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional Ontario laboratory scheduling case: period = 1.5 h, given factor 1 h = 60 min.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Minutes = Hours * 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Minutes = Hours / 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Minutes = Hours + 60"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct relationship is applied before any numbers are inserted."
+    },
+    {
+     "id": "units",
+     "prompt": "Which factor converts hours to minutes?",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by 60"
+      },
+      {
+       "id": "opt-c",
+       "label": "Add 60"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "Units must be consistent before the final division or multiplication."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Period = 1.5 / 60 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "Period = 1.5 + 60 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "Period = 1.5 * 60 min"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The given values are inserted in the positions set by the formula."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact period in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     }
+    ],
+    "expected": "90",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "Period = 1.5 * 60 = 90 min."
+   }
+  },
+  {
+   "id": "wqa-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a nitrate sample diluted from 10 mL to 100 mL with an instrument reading of 4.5 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample under a Regulation 170/03 sampling program: aliquot = 10 mL, final volume = 100 mL, instrument reading on the diluted sample = 4.5 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor, where Dilution factor = Final volume / Aliquot volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 10 mL / 100 mL = 0.1"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 4.5 mg/L * 0.1 = 0.45 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.45 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dilution factor = 100 mL / 10 mL = 10, so original result = 4.5 mg/L * 10 = 45 mg/L",
+   "explanation": "Line 2 inverted the dilution factor, dividing the aliquot by the final volume. The factor is 100 / 10 = 10, so the original result is 45 mg/L."
+  },
+  {
+   "id": "wqa-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a chloride sample diluted from 25 mL to 250 mL with an instrument reading of 2.4 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 25 mL, final volume = 250 mL, instrument reading on the diluted sample = 2.4 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 250 mL / 25 mL = 10"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 2.4 mg/L, with no dilution correction applied"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2.4 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Original result = 2.4 mg/L * 10 = 24 mg/L",
+   "explanation": "Line 3 omitted the dilution factor of 10 that line 2 calculated correctly. The original result is 2.4 * 10 = 24 mg/L."
+  },
+  {
+   "id": "wqa-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a fluoride sample diluted from 5 mL to 50 mL with an instrument reading of 0.8 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 5 mL, final volume = 50 mL, instrument reading on the diluted sample = 0.8 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 50 mL / 5 mL = 10"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 0.8 mg/L * 10"
+    },
+    {
+     "id": "line4",
+     "label": "4. Original result = 80 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Original result = 0.8 mg/L * 10 = 8 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 0.8 * 10 = 8, not 80."
+  },
+  {
+   "id": "wqa-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a phosphate sample diluted from 10 mL to 200 mL with an instrument reading of 1.5 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 10 mL, final volume = 200 mL, dilution factor = 20, instrument reading on the diluted sample = 1.5 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading / Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Reading = 1.5 mg/L and Dilution factor = 20"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 1.5 mg/L / 20 = 0.075 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.075 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Original result = Reading * Dilution factor = 1.5 mg/L * 20 = 30 mg/L",
+   "explanation": "Line 1 uses the wrong formula. A diluted reading must be multiplied by the dilution factor, giving 30 mg/L."
+  },
+  {
+   "id": "wqa-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a sulphate sample diluted from 20 mL to 100 mL with an instrument reading of 6 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 20 mL, final volume = 100 mL, instrument reading on the diluted sample = 6 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 100 mL / 20 mL = 4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 6 mg/L * 4 = 24 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 24 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dilution factor = 100 mL / 20 mL = 5, so original result = 6 mg/L * 5 = 30 mg/L",
+   "explanation": "Line 2 is an arithmetic slip: 100 / 20 = 5, not 4. The original result is 30 mg/L."
+  },
+  {
+   "id": "wqa-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for an ammonia sample diluted from 50 mL to 100 mL with an instrument reading of 9 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 50 mL, final volume = 100 mL, instrument reading on the diluted sample = 9 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor, where Dilution factor = Final volume / Aliquot volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 50 mL / 100 mL = 0.5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 9 mg/L * 0.5 = 4.5 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4.5 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dilution factor = 100 mL / 50 mL = 2, so original result = 9 mg/L * 2 = 18 mg/L",
+   "explanation": "Line 2 inverted the dilution factor. The factor is 100 / 50 = 2, so the original result is 18 mg/L."
+  },
+  {
+   "id": "wqa-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a lead sample diluted from 10 mL to 50 mL with an instrument reading of 8 ug/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample tested against a Regulation 169/03 standard: aliquot = 10 mL, final volume = 50 mL, dilution factor = 5, instrument reading on the diluted sample = 8 ug/L. Target unit: ug/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor given as 5"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 8 ug/L / 5 = 1.6 ug/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1.6 ug/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Original result = 8 ug/L * 5 = 40 ug/L",
+   "explanation": "Line 3 divided by the dilution factor instead of multiplying. The original result is 8 * 5 = 40 ug/L."
+  },
+  {
+   "id": "wqa-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a colour sample diluted from 25 mL to 100 mL with an instrument reading of 15 units.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 25 mL, final volume = 100 mL, dilution factor = 4, instrument reading on the diluted sample = 15 colour units. Target unit: colour units in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor given as 4"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 15 units * 4"
+    },
+    {
+     "id": "line4",
+     "label": "4. Original result = 45 units"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Original result = 15 units * 4 = 60 units",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 15 * 4 = 60, not 45."
+  },
+  {
+   "id": "wqa-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this two step dilution calculation where a sample is diluted by a factor of 10 and then by a factor of 10 again, with a final instrument reading of 0.6 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: first dilution factor = 10, second dilution factor = 10, instrument reading after both dilutions = 0.6 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Total dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total dilution factor = 10 + 10 = 20"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 0.6 mg/L * 20 = 12 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total dilution factor = 10 * 10 = 100, so original result = 0.6 mg/L * 100 = 60 mg/L",
+   "explanation": "Line 2 added the two dilution factors instead of multiplying them. Successive dilution factors multiply, giving a total factor of 100 and a result of 60 mg/L."
+  },
+  {
+   "id": "wqa-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a sample diluted from 10 mL to 80 mL with an instrument reading of 3.2 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 10 mL, final volume = 80 mL, instrument reading on the diluted sample = 3.2 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dilution factor = Aliquot volume / Final volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Aliquot = 10 mL, Final volume = 80 mL, Reading = 3.2 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dilution factor = 10 mL / 80 mL = 0.125, so original result = 3.2 mg/L * 0.125 = 0.4 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.4 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Dilution factor = Final volume / Aliquot volume = 80 mL / 10 mL = 8, so original result = 3.2 mg/L * 8 = 25.6 mg/L",
+   "explanation": "Line 1 states the dilution factor upside down. The factor is final volume divided by aliquot volume, which is 8, giving a result of 25.6 mg/L."
+  },
+  {
+   "id": "wqa-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a chlorine residual result of 0.5 mg/L to ug/L.",
+   "topicId": "lab-unit-conversions",
+   "level": "class1",
+   "assumptions": "Fictional bench result: free chlorine residual = 0.5 mg/L, 1 mg = 1000 ug. Target unit: ug/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion stated as ug/L = mg/L * 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Result given as 0.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Result = 0.5 mg/L * 1000"
+    },
+    {
+     "id": "line4",
+     "label": "4. Result = 50 ug/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Result = 0.5 mg/L * 1000 = 500 ug/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is a decimal place slip: 0.5 * 1000 = 500, not 50."
+  },
+  {
+   "id": "wqa-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a hardness sample diluted from 20 mL to 200 mL with an instrument reading of 18 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 20 mL, final volume = 200 mL, instrument reading on the diluted sample = 18 mg/L as CaCO3. Target unit: mg/L as CaCO3 in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 200 mL / 20 mL = 10"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 18 mg/L as CaCO3, with no dilution correction applied"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 18 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Original result = 18 mg/L * 10 = 180 mg/L as CaCO3",
+   "explanation": "Line 3 omitted the dilution factor of 10 that line 2 calculated correctly. The original result is 180 mg/L as CaCO3."
+  },
+  {
+   "id": "wqa-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for an alkalinity sample diluted from 40 mL to 100 mL with an instrument reading of 24 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 40 mL, final volume = 100 mL, instrument reading on the diluted sample = 24 mg/L as CaCO3. Target unit: mg/L as CaCO3 in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 100 mL / 40 mL = 2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 24 mg/L * 2 = 48 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 48 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dilution factor = 100 mL / 40 mL = 2.5, so original result = 24 mg/L * 2.5 = 60 mg/L",
+   "explanation": "Line 2 is an arithmetic slip: 100 / 40 = 2.5, not 2. The original result is 60 mg/L as CaCO3."
+  },
+  {
+   "id": "wqa-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a copper sample diluted from 2 mL to 20 mL with an instrument reading of 0.15 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 2 mL, final volume = 20 mL, instrument reading on the diluted sample = 0.15 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor, where Dilution factor = Final volume / Aliquot volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor = 2 mL / 20 mL = 0.1"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 0.15 mg/L * 0.1 = 0.015 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.015 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dilution factor = 20 mL / 2 mL = 10, so original result = 0.15 mg/L * 10 = 1.5 mg/L",
+   "explanation": "Line 2 inverted the dilution factor. The factor is 20 / 2 = 10, so the original result is 1.5 mg/L."
+  },
+  {
+   "id": "wqa-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this diluted result calculation for a zinc sample diluted from 25 mL to 50 mL with an instrument reading of 0.35 mg/L.",
+   "topicId": "lab-dilution-factor",
+   "level": "class1",
+   "assumptions": "Fictional sample: aliquot = 25 mL, final volume = 50 mL, dilution factor = 2, instrument reading on the diluted sample = 0.35 mg/L. Target unit: mg/L in the original sample.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Original result = Reading * Dilution factor"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dilution factor given as 2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Original result = 0.35 mg/L * 2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Original result = 7 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Original result = 0.35 mg/L * 2 = 0.7 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is a decimal place slip: 0.35 * 2 = 0.7, not 7."
+  },
+  {
+   "id": "wqa-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation to make 1000 mL of a 100 mg/L standard from a 1000 mg/L stock.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: stock concentration C1 = 1000 mg/L, target concentration C2 = 100 mg/L, target volume V2 = 1000 mL. Target unit: mL of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 * V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 1000 mg/L, C2 = 100 mg/L, V2 = 1000 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 1000 mg/L * 1000 mL / 100 mg/L = 10000 mL"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10000 mL of stock"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. V1 = 100 mg/L * 1000 mL / 1000 mg/L = 100 mL",
+   "explanation": "Line 3 inverted the two concentrations in the substitution. The stock volume is 100 mL."
+  },
+  {
+   "id": "wqa-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation for the mass needed to make 500 mL of a 200 mg/L standard.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: target concentration = 200 mg/L, target volume = 500 mL, which is 0.5 L. Target unit: mg of solute.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solute mass = Concentration * Volume in L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 500 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solute mass = 200 mg/L * 500 = 100000 mg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 100000 mg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solute mass = 200 mg/L * 0.5 L = 100 mg",
+   "explanation": "Line 3 used the volume in millilitres without converting to litres. With 0.5 L, the mass is 100 mg."
+  },
+  {
+   "id": "wqa-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution strength calculation where 5 g of solute is dissolved and made up to 250 mL.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional solution: solute mass = 5 g, final solution volume = 250 mL. Target unit: percent w/v.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent w/v = Solute g / Volume mL * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Solute = 5 g and Volume = 250 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 5 / 250 = 0.02 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.02 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 5 / 250 * 100 = 2 percent",
+   "explanation": "Line 3 forgot to multiply by 100 to express the ratio as a percent. The strength is 2 percent w/v."
+  },
+  {
+   "id": "wqa-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a 12 percent w/v chlorine stock solution strength to g/L.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional stock solution: strength = 12 percent w/v, meaning 12 g of available chlorine per 100 mL of solution, 1000 mL = 1 L. Target unit: g/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. A 12 percent w/v solution contains 12 g per 100 mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume basis restated as 100 mL of solution"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 12 g/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12 g/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 12 g per 100 mL * 10 = 120 g/L",
+   "explanation": "Line 3 used the percent number 12 directly as grams per litre. Since 100 mL scales to 1000 mL by a factor of 10, the strength is 120 g/L."
+  },
+  {
+   "id": "wqa-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation to make 250 mL of a 10 mg/L standard from a 250 mg/L stock.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: stock concentration C1 = 250 mg/L, target concentration C2 = 10 mg/L, target volume V2 = 250 mL. Target unit: mL of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 * V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 250 mg/L, C2 = 10 mg/L, V2 = 250 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 10 mg/L * 250 mL / 250 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. V1 = 100 mL"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. V1 = 10 mg/L * 250 mL / 250 mg/L = 10 mL",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 10 * 250 / 250 = 10, not 100."
+  },
+  {
+   "id": "wqa-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation where 10 mL of a 1000 mg/L stock is diluted to a final volume of 100 mL.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: stock concentration = 1000 mg/L, aliquot volume = 10 mL, final volume = 100 mL. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Final concentration = Stock concentration * Aliquot volume / Final volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Stock = 1000 mg/L, Aliquot = 10 mL, Final volume = 100 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final concentration = 1000 mg/L * 100 mL / 10 mL = 10000 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10000 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Final concentration = 1000 mg/L * 10 mL / 100 mL = 100 mg/L",
+   "explanation": "Line 3 inverted the aliquot and final volumes in the substitution. The final concentration is 100 mg/L."
+  },
+  {
+   "id": "wqa-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation for the mass needed to make 2 L of a 50 mg/L standard.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: target concentration = 50 mg/L, target volume = 2 L. Target unit: mg of solute.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solute mass = Concentration / Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Concentration = 50 mg/L and Volume = 2 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solute mass = 50 mg/L / 2 L = 25 mg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 25 mg"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Solute mass = Concentration * Volume = 50 mg/L * 2 L = 100 mg",
+   "explanation": "Line 1 uses the wrong formula. Mass is concentration multiplied by volume, giving 100 mg."
+  },
+  {
+   "id": "wqa-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation to make 100 mL of a 5 percent solution from a 20 percent stock.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: stock strength C1 = 20 percent, target strength C2 = 5 percent, target volume V2 = 100 mL. Target unit: mL of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 * V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as C1 = 20 percent, C2 = 5 percent, V2 = 100 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 20 percent * 100 mL / 5 percent = 400 mL"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 400 mL of stock"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. V1 = 5 percent * 100 mL / 20 percent = 25 mL",
+   "explanation": "Line 3 inverted the two strengths in the substitution. The stock volume is 25 mL."
+  },
+  {
+   "id": "wqa-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in converting a standard strength of 0.25 g/L to mg/L.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard: strength = 0.25 g/L, 1000 mg = 1 g. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Conversion factor stated as 1000 mg = 1 g"
+    },
+    {
+     "id": "line2",
+     "label": "2. Strength given as 0.25 g/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 0.25 g/L / 1000 mg/g = 0.00025 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.00025 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Strength = 0.25 g/L * 1000 mg/g = 250 mg/L",
+   "explanation": "Line 3 divided by 1000 instead of multiplying by 1000 mg/g. The strength is 250 mg/L."
+  },
+  {
+   "id": "wqa-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this solution strength calculation where 2.5 g of solute is dissolved and made up to 500 mL.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional solution: solute mass = 2.5 g, final solution volume = 500 mL, which is 0.5 L. Target unit: g/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Strength = Solute mass / Volume in L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume restated as 500 mL = 0.5 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Strength = 2.5 g / 0.5 L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Strength = 0.5 g/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Strength = 2.5 g / 0.5 L = 5 g/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is a decimal place slip: 2.5 / 0.5 = 5, not 0.5."
+  },
+  {
+   "id": "wqa-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dilution calculation where 5 mL of a 200 mg/L intermediate standard is diluted to a final volume of 100 mL.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: intermediate concentration = 200 mg/L, aliquot volume = 5 mL, final volume = 100 mL. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Final concentration = Stock concentration * Aliquot volume / Final volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Stock = 200 mg/L, Aliquot = 5 mL, Final volume = 100 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Final concentration = 200 mg/L * 100 mL / 5 mL = 4000 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4000 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Final concentration = 200 mg/L * 5 mL / 100 mL = 10 mg/L",
+   "explanation": "Line 3 inverted the aliquot and final volumes in the substitution. The final concentration is 10 mg/L."
+  },
+  {
+   "id": "wqa-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this weighing calculation where 100 mg of active substance is needed from a reagent that is 80 percent pure.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional reagent preparation: active substance required = 100 mg, reagent purity = 80 percent, which is a fraction of 0.8. Target unit: mg of reagent to weigh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mass to weigh = Active mass required / Purity fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Purity restated as 80 percent = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mass to weigh = 100 mg * 0.8 = 80 mg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 80 mg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mass to weigh = 100 mg / 0.8 = 125 mg",
+   "explanation": "Line 3 multiplied by the purity fraction instead of dividing by it. More reagent must be weighed than the active mass needed, which is 125 mg."
+  },
+  {
+   "id": "wqa-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation to make 200 mL of a 0.5 mg/L standard from a 10 mg/L stock.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: stock concentration C1 = 10 mg/L, target concentration C2 = 0.5 mg/L, target volume V2 = 200 mL. Target unit: mL of stock.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Stock volume V1 = C2 * V2 / C1"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values used as C1 = 0.5 mg/L and C2 = 10 mg/L, with V2 = 200 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. V1 = 10 mg/L * 200 mL / 0.5 mg/L = 4000 mL"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4000 mL of stock"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Values used as C1 = 10 mg/L and C2 = 0.5 mg/L, so V1 = 0.5 * 200 / 10 = 10 mL",
+   "explanation": "Line 2 swapped the stock and target concentrations. With C1 = 10 mg/L and C2 = 0.5 mg/L, the stock volume is 10 mL."
+  },
+  {
+   "id": "wqa-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this standard preparation calculation for the total solute mass in 250 mL of a 400 mg/L standard.",
+   "topicId": "lab-standard-preparation",
+   "level": "class1",
+   "assumptions": "Fictional standard preparation: concentration = 400 mg/L, volume = 250 mL, which is 0.25 L. Target unit: mg of solute.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solute mass = Concentration * Volume in L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Volume given as 250 mL"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solute mass = 400 mg/L * 250 = 100000 mg"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 100000 mg"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solute mass = 400 mg/L * 0.25 L = 100 mg",
+   "explanation": "Line 3 used the volume in millilitres without converting to litres. With 0.25 L, the mass is 100 mg."
+  },
+  {
+   "id": "wqa-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a quality control standard has a true value of 40 mg/L and the measured value is 50 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 40 mg/L, measured value = 50 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured value / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Measured = 50 mg/L and True = 40 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 40 mg/L / 50 mg/L * 100 = 80 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 80 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = 50 mg/L / 40 mg/L * 100 = 125 percent",
+   "explanation": "Line 3 inverted the measured and true values. Recovery is measured divided by true, giving 125 percent."
+  },
+  {
+   "id": "wqa-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a quality control standard has a true value of 80 mg/L and the measured value is 72 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 80 mg/L, measured value = 72 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured value / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Measured = 72 mg/L and True = 80 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 72 mg/L / 80 mg/L * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent recovery = 80 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Percent recovery = 72 mg/L / 80 mg/L * 100 = 90 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 72 / 80 * 100 = 90, not 80."
+  },
+  {
+   "id": "wqa-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a quality control standard has a true value of 50 mg/L and the measured value is 45 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 50 mg/L, measured value = 45 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured value / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Measured = 45 mg/L and True = 50 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 45 mg/L / 50 mg/L = 0.9 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.9 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = 45 mg/L / 50 mg/L * 100 = 90 percent",
+   "explanation": "Line 3 forgot to multiply by 100 to express the ratio as a percent. The recovery is 90 percent."
+  },
+  {
+   "id": "wqa-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this matrix spike recovery calculation where the unspiked sample result is 10 mg/L, the spiked sample result is 55 mg/L, and the spike added is 50 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional matrix spike: unspiked sample result = 10 mg/L, spiked sample result = 55 mg/L, spike added = 50 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = (Spiked result - Unspiked result) / Spike added * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Spiked = 55 mg/L, Unspiked = 10 mg/L, Added = 50 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 55 mg/L / 50 mg/L * 100 = 110 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 110 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = (55 mg/L - 10 mg/L) / 50 mg/L * 100 = 90 percent",
+   "explanation": "Line 3 forgot to subtract the unspiked sample result before dividing by the spike added. The recovery is 90 percent."
+  },
+  {
+   "id": "wqa-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this matrix spike recovery calculation where the unspiked sample result is 10 mg/L, the spiked sample result is 60 mg/L, and the spike added is 40 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional matrix spike: unspiked sample result = 10 mg/L, spiked sample result = 60 mg/L, spike added = 40 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = (Spiked result - Unspiked result) / Spike added * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Denominator used = 50 mg/L, the spike added plus the unspiked result"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = (60 mg/L - 10 mg/L) / 50 mg/L * 100 = 100 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Denominator used = Spike added = 40 mg/L, so recovery = (60 - 10) / 40 * 100 = 125 percent",
+   "explanation": "Line 2 used the wrong base for the recovery. Percent recovery is based on the spike added alone, 40 mg/L, giving 125 percent."
+  },
+  {
+   "id": "wqa-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a quality control standard has a true value of 200 mg/L and the measured value is 190 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 200 mg/L, measured value = 190 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = (True value - Measured value) / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as True = 200 mg/L and Measured = 190 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = (200 mg/L - 190 mg/L) / 200 mg/L * 100 = 5 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 5 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Percent recovery = Measured value / True value * 100 = 190 / 200 * 100 = 95 percent",
+   "explanation": "Line 1 uses the percent error formula instead of percent recovery. Recovery is measured divided by true, giving 95 percent."
+  },
+  {
+   "id": "wqa-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a quality control standard has a true value of 10 mg/L and the measured value is 9.5 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 10 mg/L, measured value = 9.5 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured value / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Measured = 9.5 mg/L and True = 10 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 9.5 mg/L / 10 mg/L * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent recovery = 85 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Percent recovery = 9.5 mg/L / 10 mg/L * 100 = 95 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 9.5 / 10 * 100 = 95, not 85."
+  },
+  {
+   "id": "wqa-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this blank spike recovery calculation where the spike added is 20 mg/L, there is no native result, and the measured spiked result is 25 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional blank spike: spike added = 20 mg/L, unspiked result = 0 mg/L, spiked sample result = 25 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = (Spiked result - Unspiked result) / Spike added * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Spiked = 25 mg/L, Unspiked = 0 mg/L, Added = 20 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 20 mg/L / 25 mg/L * 100 = 80 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 80 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = (25 mg/L - 0 mg/L) / 20 mg/L * 100 = 125 percent",
+   "explanation": "Line 3 inverted the spike added and the recovered amount. The recovery is 125 percent."
+  },
+  {
+   "id": "wqa-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a quality control standard has a true value of 60 mg/L and the measured value is 48 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 60 mg/L, measured value = 48 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured value / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Measured = 48 mg/L and True = 60 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = (60 mg/L - 48 mg/L) / 60 mg/L * 100 = 20 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = 48 mg/L / 60 mg/L * 100 = 80 percent",
+   "explanation": "Line 3 calculated the percent shortfall instead of the percent recovery. The recovery is 80 percent."
+  },
+  {
+   "id": "wqa-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where a certified standard has a true value of 100 mg/L and the measured value is 98 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true value = 100 mg/L, measured value = 98 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured value / True value * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Measured value rounded to 100 mg/L for the calculation"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 100 mg/L / 100 mg/L * 100 = 100 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Keep measured value = 98 mg/L, so recovery = 98 / 100 * 100 = 98 percent",
+   "explanation": "Line 2 rounds the measured value of 98 to 100 too early, which changes the answer. The recovery is 98 percent."
+  },
+  {
+   "id": "wqa-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this spike recovery calculation where 1 mL of a 1000 mg/L stock is spiked into 100 mL of sample and the measured increase is 8 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional spike: stock concentration = 1000 mg/L, spike volume = 1 mL, sample volume = 100 mL, measured increase over the unspiked sample = 8 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spike added = Stock concentration * Spike volume / Sample volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spike added = 1000 mg/L * 1 mL / 100 mL = 10 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 10 mg/L / 8 mg/L * 100 = 125 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 125 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = 8 mg/L / 10 mg/L * 100 = 80 percent",
+   "explanation": "Line 3 inverted the recovered increase and the spike added. The recovery is 80 percent."
+  },
+  {
+   "id": "wqa-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this percent recovery calculation where the true mass is 0.5 mg and the measured mass is 0.4 mg.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional quality control check: true mass = 0.5 mg, measured mass = 0.4 mg. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = Measured mass / True mass * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Measured = 0.4 mg and True = 0.5 mg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = 0.4 mg / 0.5 mg * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. Percent recovery = 70 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Percent recovery = 0.4 mg / 0.5 mg * 100 = 80 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 0.4 / 0.5 * 100 = 80, not 70."
+  },
+  {
+   "id": "wqa-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this matrix spike recovery calculation where the unspiked sample result is 20 mg/L, the spiked sample result is 70 mg/L, and the spike added is 50 mg/L.",
+   "topicId": "lab-percent-recovery",
+   "level": "class1",
+   "assumptions": "Fictional matrix spike: unspiked sample result = 20 mg/L, spiked sample result = 70 mg/L, spike added = 50 mg/L. Target unit: percent recovery.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent recovery = (Spiked result - Unspiked result) / Spike added * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Spiked = 70 mg/L, Unspiked = 20 mg/L, Added = 50 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent recovery = (70 mg/L - 50 mg/L) / 50 mg/L * 100 = 40 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent recovery = (70 mg/L - 20 mg/L) / 50 mg/L * 100 = 100 percent",
+   "explanation": "Line 3 subtracted the spike added instead of the unspiked sample result. The recovery is 100 percent."
+  },
+  {
+   "id": "wqa-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 40 mg/L and 60 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 40 mg/L, result B = 60 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (40 mg/L + 60 mg/L) / 2 = 50 mg/L, Difference = 20 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 20 mg/L / 40 mg/L * 100 = 50 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 50 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. RPD = 20 mg/L / 50 mg/L * 100 = 40 percent",
+   "explanation": "Line 3 divided by the first result instead of the mean of the pair. The RPD denominator is the mean, 50 mg/L, giving 40 percent."
+  },
+  {
+   "id": "wqa-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 80 mg/L and 120 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 80 mg/L, result B = 120 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (80 mg/L + 120 mg/L) / 2 = 100 mg/L, Difference = 40 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 40 mg/L / 200 mg/L * 100 = 20 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. RPD = 40 mg/L / 100 mg/L * 100 = 40 percent",
+   "explanation": "Line 3 divided by the sum of the pair instead of the mean. The mean is 100 mg/L, giving an RPD of 40 percent."
+  },
+  {
+   "id": "wqa-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 45 mg/L and 55 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 45 mg/L, result B = 55 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (45 mg/L + 55 mg/L) / 2 = 50 mg/L, Difference = 10 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 10 mg/L / 50 mg/L * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. RPD = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. RPD = 10 mg/L / 50 mg/L * 100 = 20 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 10 / 50 * 100 = 20, not 25."
+  },
+  {
+   "id": "wqa-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 90 mg/L and 110 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 90 mg/L, result B = 110 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / (Result A + Result B) * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as A = 90 mg/L and B = 110 mg/L, Difference = 20 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 20 mg/L / 200 mg/L * 100 = 10 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. RPD = Difference / Mean of the pair * 100 = 20 / 100 * 100 = 20 percent",
+   "explanation": "Line 1 uses the sum of the pair as the denominator instead of the mean. The mean is 100 mg/L, giving an RPD of 20 percent."
+  },
+  {
+   "id": "wqa-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 30 mg/L and 50 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 30 mg/L, result B = 50 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (30 mg/L + 50 mg/L) / 2 = 40 mg/L, Difference = 20 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 20 mg/L / 50 mg/L * 100 = 40 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. RPD = 20 mg/L / 40 mg/L * 100 = 50 percent",
+   "explanation": "Line 3 divided by the second result instead of the mean of the pair. The mean is 40 mg/L, giving an RPD of 50 percent."
+  },
+  {
+   "id": "wqa-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 15 mg/L and 25 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 15 mg/L, result B = 25 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = 15 mg/L + 25 mg/L = 40 mg/L, Difference = 10 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 10 mg/L / 40 mg/L * 100 = 25 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Mean = (15 mg/L + 25 mg/L) / 2 = 20 mg/L, so RPD = 10 / 20 * 100 = 50 percent",
+   "explanation": "Line 2 forgot to divide the sum by 2 when finding the mean. The mean is 20 mg/L, giving an RPD of 50 percent."
+  },
+  {
+   "id": "wqa-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 12 mg/L and 20 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 12 mg/L, result B = 20 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (12 mg/L + 20 mg/L) / 2 = 16 mg/L, Difference = 8 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 8 mg/L / 20 mg/L * 100 = 40 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 40 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. RPD = 8 mg/L / 16 mg/L * 100 = 50 percent",
+   "explanation": "Line 3 divided by the second result instead of the mean of the pair. The mean is 16 mg/L, giving an RPD of 50 percent."
+  },
+  {
+   "id": "wqa-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 200 mg/L and 300 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 200 mg/L, result B = 300 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (200 mg/L + 300 mg/L) / 2 = 250 mg/L, Difference = 100 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 100 mg/L / 250 mg/L = 0.4 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.4 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. RPD = 100 mg/L / 250 mg/L * 100 = 40 percent",
+   "explanation": "Line 3 forgot to multiply by 100 to express the ratio as a percent. The RPD is 40 percent."
+  },
+  {
+   "id": "wqa-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 60 mg/L and 90 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 60 mg/L, result B = 90 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (60 mg/L + 90 mg/L) / 2 = 75 mg/L, Difference = 30 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 30 mg/L / 75 mg/L * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. RPD = 30 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. RPD = 30 mg/L / 75 mg/L * 100 = 40 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 30 / 75 * 100 = 40, not 30."
+  },
+  {
+   "id": "wqa-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 48 mg/L and 72 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 48 mg/L, result B = 72 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / (Result A + Result B) * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as A = 48 mg/L and B = 72 mg/L, Difference = 24 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 24 mg/L / 120 mg/L * 100 = 20 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. RPD = Difference / Mean of the pair * 100 = 24 / 60 * 100 = 40 percent",
+   "explanation": "Line 1 uses the sum of the pair as the denominator instead of the mean. The mean is 60 mg/L, giving an RPD of 40 percent."
+  },
+  {
+   "id": "wqa-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 100 mg/L and 150 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 100 mg/L, result B = 150 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (100 mg/L + 150 mg/L) / 2 = 125 mg/L, Difference = 40 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 40 mg/L / 125 mg/L * 100 = 32 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 32 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Difference = 150 mg/L - 100 mg/L = 50 mg/L, so RPD = 50 / 125 * 100 = 40 percent",
+   "explanation": "Line 2 is a subtraction slip: 150 - 100 = 50, not 40. The RPD is 40 percent."
+  },
+  {
+   "id": "wqa-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 36 mg/L and 44 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 36 mg/L, result B = 44 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (36 mg/L + 44 mg/L) / 2 = 40 mg/L, Difference = 8 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 8 mg/L / 80 mg/L * 100 = 10 percent"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. RPD = 8 mg/L / 40 mg/L * 100 = 20 percent",
+   "explanation": "Line 3 divided by the sum of the pair instead of the mean. The mean is 40 mg/L, giving an RPD of 20 percent."
+  },
+  {
+   "id": "wqa-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this relative percent difference calculation for duplicate results of 70 mg/L and 90 mg/L.",
+   "topicId": "lab-relative-percent-difference",
+   "level": "class1",
+   "assumptions": "Fictional duplicate pair: result A = 70 mg/L, result B = 90 mg/L. Target unit: percent RPD.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. RPD = Difference / Mean of the pair * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Mean = (70 mg/L + 90 mg/L) / 2 = 80 mg/L, Difference = 20 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. RPD = 20 mg/L / 80 mg/L * 100"
+    },
+    {
+     "id": "line4",
+     "label": "4. RPD = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. RPD = 20 mg/L / 80 mg/L * 100 = 25 percent",
+   "explanation": "Lines 1 to 3 are correct. Line 4 reports the difference itself instead of the calculated percent: 20 / 80 * 100 = 25 percent."
+  },
+  {
+   "id": "wqa-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for triplicate results of 10 mg/L, 20 mg/L, and 30 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional triplicate results: 10 mg/L, 20 mg/L, 30 mg/L, count = 3. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 10 mg/L + 20 mg/L + 30 mg/L = 60 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 60 mg/L / 2 = 30 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 30 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Mean = 60 mg/L / 3 = 20 mg/L",
+   "explanation": "Line 3 divided by 2 instead of the count of 3 results. The mean is 20 mg/L."
+  },
+  {
+   "id": "wqa-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for results of 5 mg/L, 15 mg/L, 25 mg/L, and 35 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional results: 5 mg/L, 15 mg/L, 25 mg/L, 35 mg/L, count = 4. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 5 mg/L + 15 mg/L + 25 mg/L + 35 mg/L = 80 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 80 mg/L / 4"
+    },
+    {
+     "id": "line4",
+     "label": "4. Mean = 25 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Mean = 80 mg/L / 4 = 20 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 is an arithmetic slip: 80 / 4 = 20, not 25."
+  },
+  {
+   "id": "wqa-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for duplicate results of 12 mg/L and 18 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional duplicate results: 12 mg/L, 18 mg/L, count = 2. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results * Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 12 mg/L + 18 mg/L = 30 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 30 mg/L * 2 = 60 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 60 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Mean = Sum of results / Count of results = 30 mg/L / 2 = 15 mg/L",
+   "explanation": "Line 1 uses the wrong formula. A mean divides the sum by the count, giving 15 mg/L."
+  },
+  {
+   "id": "wqa-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for results of 8 mg/L, 12 mg/L, 16 mg/L, 20 mg/L, and 24 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional results: 8 mg/L, 12 mg/L, 16 mg/L, 20 mg/L, 24 mg/L, count = 5. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of results / Count of results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Sum = 8 mg/L + 12 mg/L + 16 mg/L + 20 mg/L + 24 mg/L = 90 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = 90 mg/L / 5 = 18 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 18 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Sum = 8 + 12 + 16 + 20 + 24 = 80 mg/L, so mean = 80 / 5 = 16 mg/L",
+   "explanation": "Line 2 is an addition slip: the results sum to 80, not 90. The mean is 16 mg/L."
+  },
+  {
+   "id": "wqa-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this mean calculation for triplicate results of 0.8 mg/L, 1.0 mg/L, and 1.5 mg/L.",
+   "topicId": "lab-summary-statistics",
+   "level": "class1",
+   "assumptions": "Fictional triplicate results: 0.8 mg/L, 1.0 mg/L, 1.5 mg/L, count = 3. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Mean = Sum of all results / Count of all results"
+    },
+    {
+     "id": "line2",
+     "label": "2. Results used = 0.8 mg/L and 1.0 mg/L only"
+    },
+    {
+     "id": "line3",
+     "label": "3. Mean = (0.8 mg/L + 1.0 mg/L) / 2 = 0.9 mg/L"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 0.9 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Results used = 0.8, 1.0, and 1.5 mg/L, so mean = (0.8 + 1.0 + 1.5) / 3 = 1.1 mg/L",
+   "explanation": "Line 2 leaves out the third result of 1.5 mg/L. Using all three results, the mean is 1.1 mg/L."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wqa-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Holding Time Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wqa-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wqa-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wqa-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Scheduling Arithmetic Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wqa-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wqa-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wqa-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wqa-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Quality Control Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wqa-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wqa-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wqa-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wqa-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wqa-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Bench Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wqa-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wqa-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wqa-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Bench Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wqa-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wqa-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wqa-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wqa-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Bench Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wqa-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wqa-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wqa-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wqa-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wqa-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Scheduling Arithmetic Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wqa-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Lab Dilution Factor Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wqa-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wqa-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Quality Control Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wqa-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wqa-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wqa-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Lab Standard Preparation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wqa-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Bench Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wqa-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wqa-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Lab Standard Preparation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wqa-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wqa-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wqa-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Bench Unit Conversions Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wqa-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wqa-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Lab Standard Preparation Shift",
+   "tasks": [
+    {
+     "taskId": "wqa-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wqa-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wqa-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Laboratory analysis, sampling and water quality chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "b6973cfc3d1bd0ee94d1a23f5430bd88a2026b75ad64f8a2a59f02108067c024",
+  "taskReceipts": [
+   {
+    "taskId": "wqa-ladder80",
+    "revision": "r1",
+    "sha256": "77057ec7d9520f6db7d2513103a8ee68c3c4f646e19f1a70931a1004a3da64c6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder81",
+    "revision": "r1",
+    "sha256": "30dc2ba70df40c0da09831b60e13255e921f28d10bffea9eaf91a93102f9e917",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder82",
+    "revision": "r1",
+    "sha256": "5f28b15e32636134b2a83f90e508ae2531f1f9bc94f2ea6e8f579f8188893a52",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder83",
+    "revision": "r1",
+    "sha256": "649df8603f6ea13103f258262a945e8a0dea8c63cfcd3dd03e75bd06ed910fa2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder84",
+    "revision": "r1",
+    "sha256": "383c9847c9f101a7423d16337305338b5d9f14bb58800b87aea58fe87d76dc3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder85",
+    "revision": "r1",
+    "sha256": "1d1ce7907dc032fd7cbf2fd2edc44ab65370fed28a7c36b726c917752d445b39",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder86",
+    "revision": "r1",
+    "sha256": "d1f0b4e20372b30e9cf4586bbce52f60f7550f3281de6fce96797eebc5b00961",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder87",
+    "revision": "r1",
+    "sha256": "b8ca5acc49a1a4812425bde533d4bd234ab9379c9d0954ab91b8d5dd74db2864",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder88",
+    "revision": "r1",
+    "sha256": "14d706c73ba66ffcdd57b4b5d98e88f77d280fafccccdb4e1138448d5104f13c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder89",
+    "revision": "r1",
+    "sha256": "b5d0a7e9200b5d46c349450d31828a45a469a78bd07ea8061479ce080264f5c1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder90",
+    "revision": "r1",
+    "sha256": "adee335538770b5cadc95ea154bbba0e2a0d0fb707b3a6daca4f29ed3d4d6f71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder91",
+    "revision": "r1",
+    "sha256": "952545657bff9b419d877f940176a97ad148a23cb28b3de27b5b98848396713c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder92",
+    "revision": "r1",
+    "sha256": "9f38f1b718d5493827783262116f46aa116c787931610d965f3ff43e9c064552",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder93",
+    "revision": "r1",
+    "sha256": "d3ce5db3aaca4e60b635f37f03d032e1a6e7b08bf8855e7aead27e429abf478e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder94",
+    "revision": "r1",
+    "sha256": "f88d7ff039032e97caba4ff16506ddf4f17796bb5b4259eed77b85bf27ef75ef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder95",
+    "revision": "r1",
+    "sha256": "7453beaf1fb11ddf2b3b748795d8c64a68328fa2a659b28330fbd5c368520e53",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder96",
+    "revision": "r1",
+    "sha256": "9cc9a5ce8e63c6baccc4b51f5d509853dc9d6e144936263824bdcb81dee2894d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder97",
+    "revision": "r1",
+    "sha256": "3b9804124e7ff595d910163c6f3c4706bbff980a6d9d3db231cd53cd1288f83f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder98",
+    "revision": "r1",
+    "sha256": "23e1c8818ab04d23d4a059621898dfdf999de1e52356f944a9224781f297fd97",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-ladder99",
+    "revision": "r1",
+    "sha256": "261c0f66ad046615e732efeba58d5bb3c1d290aec69d12a5db9c91521f98b8d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error01",
+    "revision": "r1",
+    "sha256": "3fc040e17871654e09fd1c42929cb9c3366610f87bd0581617d6d1df64ba0d6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error02",
+    "revision": "r1",
+    "sha256": "1ff1d3910c3da6f01258a3ee5c3fa5583a37b70b5534fb6823233c53cd65fbee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error03",
+    "revision": "r1",
+    "sha256": "2b487ec3d3254e1b5ba4a47cb89b67b1b263d35046b75a2d26ff3c51f090b51f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error04",
+    "revision": "r1",
+    "sha256": "178204c0a96d23b3e278f409ace7f116b651d576481fe51decee9e9d4c4fed4b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error05",
+    "revision": "r1",
+    "sha256": "a10b43170cea4ff4da0fe9c5fe1e3e6a52087b731ce7ebb200aa7c594cf27232",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error06",
+    "revision": "r1",
+    "sha256": "7a504226d7ac00afd3952eb1ce1f2db1ad3ffbe5d7790c27fda2c727a13c8c74",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error07",
+    "revision": "r1",
+    "sha256": "e384fa6e17b63a67e5963af9908bf3205be9015100835d7337adf2ca67d7e466",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error08",
+    "revision": "r1",
+    "sha256": "515422adcce42098845aedd2f28655abc06a9567d89d3c5e57ddba613eecf65e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error09",
+    "revision": "r1",
+    "sha256": "25dc62d07a400b2a8f7f6597a1ac04df130cf0cfd460fae02a4e2d9b9ad5989a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error10",
+    "revision": "r1",
+    "sha256": "32d6fbc9546b9bb83ec217a6c28b558beb6d5b06c1212fdf8983a0233faca365",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error100",
+    "revision": "r1",
+    "sha256": "3daff99a88e54748527f7828fdf17f80ebbeb82633fbee6de30adcde581584d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error11",
+    "revision": "r1",
+    "sha256": "91e8d2c1c721bab8c819c993f80bcbaa9747f8210988aa391258eed9135d6f59",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error12",
+    "revision": "r1",
+    "sha256": "62a59f02d8e02d6cc1641448bb200a47dbc89f7e0e600c84a075674eb7ed3126",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error13",
+    "revision": "r1",
+    "sha256": "473215c0918a3f2df48b780af1666d201a3fa21eb097c99f1a323557f1a78d6f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error14",
+    "revision": "r1",
+    "sha256": "a072bca0d74f236821f8633edba04828f44dfca727eed814655b1e151ba2d724",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error15",
+    "revision": "r1",
+    "sha256": "404a222bd21c85dc9c5814402ccbac7c5bfa35c8e1321ea62a3499f2b86fbbcf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error16",
+    "revision": "r1",
+    "sha256": "359567793ee18c5131e6247a7a078ce32c94ce9a1327b04e946c1471de335d2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error17",
+    "revision": "r1",
+    "sha256": "c692e66b1dcfe26161e1c5e6ba9c36abe0d6523b568b38b3817d4103227e6595",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error18",
+    "revision": "r1",
+    "sha256": "db913fd7e0e1808a2d0268132ffaa537c94ca83694649b9bd470619c30b46320",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error19",
+    "revision": "r1",
+    "sha256": "ee59d12d277adf3223dbacb3687d92bdc982f4580590023ee354a7523a5975d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error20",
+    "revision": "r1",
+    "sha256": "87a4625ef46fefb058d0856170f94dc8b27e3a4d3e18def6144cf9e389dbced8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error21",
+    "revision": "r1",
+    "sha256": "e8b2a9db1b82e4ef9072dac07d9a0713764b38513b77db9001c75137d84b6374",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error22",
+    "revision": "r1",
+    "sha256": "0d01199f188a131b55f3cefd1e3d9935df64fdc7c42b0c685e68ca8347aec178",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error23",
+    "revision": "r1",
+    "sha256": "6e046d8bc1fd0ad4d9361d6020b4bd1ecde3b2ef54c853e67142ddbfc108dc12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error24",
+    "revision": "r1",
+    "sha256": "5bed2e33e9e8148acdef276f4d2aa32929ab0b49239b4bfe6b62109d0cee6055",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error25",
+    "revision": "r1",
+    "sha256": "8016ab90ca48b796d367e15a29ab75ce06cbc37121080475fc1a442de186e4be",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error26",
+    "revision": "r1",
+    "sha256": "3b68dc51472d4c13bc40d93a7b72eec0c685136bfb0095c9354cb66469e5896c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error27",
+    "revision": "r1",
+    "sha256": "f2ce004dfcc873371e0d24ab2bf52586a5b70c5500df656c19e3cd0fdf0337e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error28",
+    "revision": "r1",
+    "sha256": "a25fd70d27f4f49d971de2b3e7c1e6c26c803a27d61c37fa330df5f3eadb3d61",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error29",
+    "revision": "r1",
+    "sha256": "fa5618b6510c8d3ad7fae9977e43d0fe1161a3ced63c690fedf88c6667f34ea0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error30",
+    "revision": "r1",
+    "sha256": "0c30bc69fbfa9a53d136cfac04da0f3d191ab440bbfafdb28e7b5027fbfe95a1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error31",
+    "revision": "r1",
+    "sha256": "d71d63d8a806a254b67c9e8ac5d22f79de7bac027c1cb1a84ddc0541119f3ac4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error32",
+    "revision": "r1",
+    "sha256": "397a774d6ff588d57461bf066d1c80fbb0286d2efd39fe567b64829fd1047234",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error33",
+    "revision": "r1",
+    "sha256": "a638243d57f56b01862d26d2e304529676ee324404312c1b4f33f0b579138820",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error34",
+    "revision": "r1",
+    "sha256": "a2f28a6e8b594b823372b207a8cb88e31d30967ac375d8e8c67b0ce202b37a41",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error35",
+    "revision": "r1",
+    "sha256": "6b8e4a0000b1e1efacc4bd5bbceba2b7bb4710916f7fbd9aaa09267e8b12be16",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error36",
+    "revision": "r1",
+    "sha256": "408d806456de157e18d2363728accd69d710d9cb986ce274edbe235b5a635722",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error37",
+    "revision": "r1",
+    "sha256": "6d6536e9367b83ac6fea33eef8a31b6b42990e5cf0817ed8a2e2a86c51c9986c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error38",
+    "revision": "r1",
+    "sha256": "bc13f94ddd07dc5d85c8b5b86b1c6eaec3febb15b4274592718a53256e25a4b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error39",
+    "revision": "r1",
+    "sha256": "210096fb4756d60c1be7bc82d17cd2ed07048774f5807fc8270e7b29a2cd4ebc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error40",
+    "revision": "r1",
+    "sha256": "8956dca1cdc6d2435c71a1b2f00447f2cdc1834d616258090faea24803d918cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error41",
+    "revision": "r1",
+    "sha256": "934661af298aae8d9144a5ecc2ae398f99d99eb9fcef9706b13e6cbdbc1331ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error42",
+    "revision": "r1",
+    "sha256": "28536087fff77c51aefc0ff11dc6e9ece30c7a55ccf377630c0f5d528020ff00",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error43",
+    "revision": "r1",
+    "sha256": "f7befdfbfe298e9423016205a9d0a4dee1a59fbf573cd9c1652a78c04906a0b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error44",
+    "revision": "r1",
+    "sha256": "575672f4855c206cfca850a2c6a0ea5689a8340a45fe4a0ee6061a588928cb48",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error45",
+    "revision": "r1",
+    "sha256": "2014956c0b7812bc5ac5d3ea5306b84eff5d49beb3678569d36901754eb6af76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error46",
+    "revision": "r1",
+    "sha256": "f05922b8769f7af59c51303c57877cac7b897f8534c7cf265aa6c66d3118a6ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error47",
+    "revision": "r1",
+    "sha256": "038fcf71383fb5cecf8784479c981f5085896e17da81dc87128b8c8ba60ae7d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error48",
+    "revision": "r1",
+    "sha256": "80a2a7ac01b844bae8b8b0aabd07c1e30e60c5493dcd90342d4c8de949085d7f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error49",
+    "revision": "r1",
+    "sha256": "07f071d76ca78a3dcf08f45afc4d72a39f7c15909e5c0b2e6bec56e2dc99ff6c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error50",
+    "revision": "r1",
+    "sha256": "d4e9fd5e340027796244497221e2e9d0419065e559b6a00120a814ec7106feac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error51",
+    "revision": "r1",
+    "sha256": "e6078f358da7149678b2b7e25010765d67142cd65d6e7a12534039a72be663ac",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error52",
+    "revision": "r1",
+    "sha256": "14d51856c9b136b2ebf6c6f282459b6124fd00ee77c1b0438520fd145e864037",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error53",
+    "revision": "r1",
+    "sha256": "d8d3d1aa9b346ae5930457e126181b10c9be37edc81832765d93a99978194aa5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error54",
+    "revision": "r1",
+    "sha256": "b1fc8a4b2dffb81c3145ac12dcb43fac8e96ddc5b34d7f5e419128ad42228d0f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error55",
+    "revision": "r1",
+    "sha256": "c01a5cd0eda5e13db32e1d06876335a6bf150a80e62d88594f66425106794526",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error56",
+    "revision": "r1",
+    "sha256": "72ed4dee0c5dff0afa2b1fcce652f2aeeb991b2d2dc5f27abd0470ba4fb230c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error57",
+    "revision": "r1",
+    "sha256": "27dd7637fb003c4bb800fc617dbfe78b2fd1b6bc20acf1f8cf018172ed51ea41",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error58",
+    "revision": "r1",
+    "sha256": "3beaf62a344d8e8441524ba59685b2a14083a6ee04d1be94f5685c89b048bb12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wqa-error59",
+    "revision": "r1",
+    "sha256": "b1cc25d4f5243e77e1e84b93a1ed453515bb1d45a6a8723eaa8929123b000f56",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wqa-mission21",
+    "revision": "r1",
+    "sha256": "2bf390335bd498eaaba4f4764d14ccf68f000a6e122a76dd122d7cf3a663c52a"
+   },
+   {
+    "missionId": "wqa-mission22",
+    "revision": "r1",
+    "sha256": "41d796f313a4416c53547894edb6fd20bc031e4899cf4943a35c44eb840a05e0"
+   },
+   {
+    "missionId": "wqa-mission23",
+    "revision": "r1",
+    "sha256": "9737b808bffaeb12c0109d2cd2dd0191f484de637a93918333de4e49f272362c"
+   },
+   {
+    "missionId": "wqa-mission24",
+    "revision": "r1",
+    "sha256": "b7418712c264f224509f85de4019ec65138b5df544bcb6804eee11329e8a79b4"
+   },
+   {
+    "missionId": "wqa-mission25",
+    "revision": "r1",
+    "sha256": "1f7c03ffe88868d00aed2386ec79bb8c21e019dab8840112ce5b933194a737d1"
+   },
+   {
+    "missionId": "wqa-mission26",
+    "revision": "r1",
+    "sha256": "0214064ba01bba570d36ea6190c7390649ee2b475ba2ac104610af1b67522e9c"
+   },
+   {
+    "missionId": "wqa-mission27",
+    "revision": "r1",
+    "sha256": "705b9a9d5fab89484910bd6bf6eb3023e277f773b537b9c7b3bd0e35fb8d945d"
+   },
+   {
+    "missionId": "wqa-mission28",
+    "revision": "r1",
+    "sha256": "3406ad3b53235505f7fec9e56d73c3fd4338e2fa6b120d61bc804ce123749afd"
+   },
+   {
+    "missionId": "wqa-mission29",
+    "revision": "r1",
+    "sha256": "889318e118fbf957701643c46afb2987bf684a457f46be72f4cafba03f9171e9"
+   },
+   {
+    "missionId": "wqa-mission30",
+    "revision": "r1",
+    "sha256": "9a0a054313369bcc972af7d68d7638c44bbb3c73412d796cbb6804728aafd9aa"
+   },
+   {
+    "missionId": "wqa-mission31",
+    "revision": "r1",
+    "sha256": "3650d5e482ed03d07a8bfdd75c3655b1a5f9dd2ea8ad7809ce5f0cec12f3c732"
+   },
+   {
+    "missionId": "wqa-mission32",
+    "revision": "r1",
+    "sha256": "a1e481f2526c278ef8a4121a95ded8868d19bd997de20eeb134997e2962497f5"
+   },
+   {
+    "missionId": "wqa-mission33",
+    "revision": "r1",
+    "sha256": "82abc61c7133c39150a85479043038ea37d0ab9f35330e2c81b6caf7ba0e06d8"
+   },
+   {
+    "missionId": "wqa-mission34",
+    "revision": "r1",
+    "sha256": "07cd207430fabf44cfef0843df4dfec0d8c17a1557c58692aec7f285dc6b6d74"
+   },
+   {
+    "missionId": "wqa-mission35",
+    "revision": "r1",
+    "sha256": "59dad86aa9024cf4ceac536ba6d5786c83b549119e2c9598484ce80aabb27631"
+   },
+   {
+    "missionId": "wqa-mission36",
+    "revision": "r1",
+    "sha256": "68ac49d2aa1f388233faf56b4ebd6f69cc79b9a7ba31588e357b0c53291191c4"
+   },
+   {
+    "missionId": "wqa-mission37",
+    "revision": "r1",
+    "sha256": "a5de97a83cf72f5ef18797ad061c77e1f14c8410d84ad875b97f1442e15ffa34"
+   },
+   {
+    "missionId": "wqa-mission38",
+    "revision": "r1",
+    "sha256": "50725454e5c40c74107d317c2b00e561bac2c386de704ae23424e95d03d044f5"
+   },
+   {
+    "missionId": "wqa-mission39",
+    "revision": "r1",
+    "sha256": "eef88d82af51ebfc0ef4d2b4f7bd2da883d6ab7d05677f8880663782655662cc"
+   },
+   {
+    "missionId": "wqa-mission40",
+    "revision": "r1",
+    "sha256": "acc2066c624fa1cb0c603cbc783b67f73cde7d089064652e3c08632d5f0e1fa4"
+   }
+  ]
+ }
+}

@@ -139,7 +139,7 @@ export default function WpiClass4WaterDistQuiz() {
           productName="WPI Class 4 Water Distribution Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 WPI Class 4 Water Distribution questions — unlimited attempts",
+            "1,000+ WPI Class 4 Water Distribution questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

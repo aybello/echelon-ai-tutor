@@ -4,6 +4,7 @@ import { claimWork, WorkBusyError } from "./durableWork";
 import { runReconciliation } from "./reconcile";
 import { runExamReminders } from "./examReminders";
 import { runTriggerEngine } from "./triggerEngine";
+import { runCertificateExpiryAlerts } from "./certificateExpiryAlerts";
 
 export const MANAGED_JOBS = {
   "reconcile-purchases": {
@@ -12,6 +13,7 @@ export const MANAGED_JOBS = {
   },
   "exam-reminders": { cron: "0 0 8 * * *", run: runExamReminders },
   "study-triggers": { cron: "0 0 21 * * *", run: runTriggerEngine },
+  "certificate-expiry-alerts": { cron: "0 0 13 * * *", run: runCertificateExpiryAlerts },
 };
 
 /** Authenticated scheduling is also bound to a designated production host and project task. */

@@ -42,7 +42,7 @@ export default function Class4WastewaterQuiz() {
       currentPath="/class4-ww"
       courseLabel="Ontario Class 4 · Wastewater Treatment"
       courseTitle="Class 4 Wastewater Practice Quiz"
-      courseSubtitle="500 questions · Ontario Class 4 Wastewater Treatment"
+      courseSubtitle="1,000+ questions · Ontario Class 4 Wastewater Treatment"
       headerGradient="linear-gradient(135deg, #0F766E 0%, #065F46 100%)"
       headerIcon="♻️"
       headerActions={[
@@ -124,7 +124,7 @@ export default function Class4WastewaterQuiz() {
           productName="Class 4 Wastewater Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 Class 4 Wastewater questions — unlimited attempts",
+            "1,000+ Class 4 Wastewater questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

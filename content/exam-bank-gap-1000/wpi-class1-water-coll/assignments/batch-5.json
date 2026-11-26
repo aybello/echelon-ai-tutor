@@ -1,0 +1,402 @@
+{
+ "courseKey": "wpi-class1-water-coll",
+ "bankKey": "wpi-class1-wastewater-coll",
+ "batch": 5,
+ "size": 43,
+ "conceptualCount": 34,
+ "calcCount": 9,
+ "topicPoolRound": 2,
+ "questionNumStart": 2624,
+ "questionNumEnd": 2666,
+ "itemIdStart": "COLLECTION-L1-624",
+ "itemIdEnd": "COLLECTION-L1-666",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2624,
+   "itemId": "COLLECTION-L1-624",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "gravity sewers and manholes"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2625,
+   "itemId": "COLLECTION-L1-625",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "lift station components"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2626,
+   "itemId": "COLLECTION-L1-626",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "wet wells and level control"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2627,
+   "itemId": "COLLECTION-L1-627",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "force mains"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2628,
+   "itemId": "COLLECTION-L1-628",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "flow monitoring basics"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2629,
+   "itemId": "COLLECTION-L1-629",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "infiltration and inflow sources"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2630,
+   "itemId": "COLLECTION-L1-630",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "sewer cleaning methods"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2631,
+   "itemId": "COLLECTION-L1-631",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "safety confined space preparation"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2632,
+   "itemId": "COLLECTION-L1-632",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "gravity sewers and manholes"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2633,
+   "itemId": "COLLECTION-L1-633",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station components"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2634,
+   "itemId": "COLLECTION-L1-634",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "wet wells and level control"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2635,
+   "itemId": "COLLECTION-L1-635",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force mains"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2636,
+   "itemId": "COLLECTION-L1-636",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring basics"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2637,
+   "itemId": "COLLECTION-L1-637",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "infiltration and inflow sources"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2638,
+   "itemId": "COLLECTION-L1-638",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sewer cleaning methods"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2639,
+   "itemId": "COLLECTION-L1-639",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "safety confined space preparation"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2640,
+   "itemId": "COLLECTION-L1-640",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "gravity sewers and manholes"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2641,
+   "itemId": "COLLECTION-L1-641",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station components"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2642,
+   "itemId": "COLLECTION-L1-642",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "wet wells and level control"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2643,
+   "itemId": "COLLECTION-L1-643",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force mains"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2644,
+   "itemId": "COLLECTION-L1-644",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring basics"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2645,
+   "itemId": "COLLECTION-L1-645",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "infiltration and inflow sources"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2646,
+   "itemId": "COLLECTION-L1-646",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sewer cleaning methods"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2647,
+   "itemId": "COLLECTION-L1-647",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "safety confined space preparation"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2648,
+   "itemId": "COLLECTION-L1-648",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "gravity sewers and manholes"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2649,
+   "itemId": "COLLECTION-L1-649",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station components"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2650,
+   "itemId": "COLLECTION-L1-650",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "wet wells and level control"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2651,
+   "itemId": "COLLECTION-L1-651",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force mains"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2652,
+   "itemId": "COLLECTION-L1-652",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring basics"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2653,
+   "itemId": "COLLECTION-L1-653",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "infiltration and inflow sources"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2654,
+   "itemId": "COLLECTION-L1-654",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sewer cleaning methods"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2655,
+   "itemId": "COLLECTION-L1-655",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "safety confined space preparation"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2656,
+   "itemId": "COLLECTION-L1-656",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "gravity sewers and manholes"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2657,
+   "itemId": "COLLECTION-L1-657",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lift station components"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2658,
+   "itemId": "COLLECTION-L1-658",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow conversion"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2659,
+   "itemId": "COLLECTION-L1-659",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sewer slope from inverts"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2660,
+   "itemId": "COLLECTION-L1-660",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pipe volume"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2661,
+   "itemId": "COLLECTION-L1-661",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "wet well fill time"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2662,
+   "itemId": "COLLECTION-L1-662",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow conversion"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2663,
+   "itemId": "COLLECTION-L1-663",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sewer slope from inverts"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2664,
+   "itemId": "COLLECTION-L1-664",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pipe volume"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2665,
+   "itemId": "COLLECTION-L1-665",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "wet well fill time"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2666,
+   "itemId": "COLLECTION-L1-666",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flow conversion"
+  }
+ ]
+}

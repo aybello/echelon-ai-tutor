@@ -44,7 +44,7 @@ export default function Class3WastewaterMockExam() {
       practiceLabel="Class 3 Wastewater Practice"
       showProvinceSelector={true}
       currentPath="/class3-ww-mock"
-      infoLine={`${totalQuestions} questions · Ontario (MECP) · BC (EOCP Level III) · Alberta (AWWOA Class III)`}
+      infoLine={`${totalQuestions} questions · Ontario Class 3 Wastewater Treatment`}
       stream="wastewater"
     />
   );

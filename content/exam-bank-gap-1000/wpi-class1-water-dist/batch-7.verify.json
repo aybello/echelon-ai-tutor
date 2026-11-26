@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L1-744",
+  "expression": "3.1416*0.1*0.1*150*1000*3",
+  "expected": "14137.2",
+  "decimalPlaces": 1,
+  "unit": "L"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-745",
+  "expression": "(52*8*60+40*5*60)/1000",
+  "expected": "36.96",
+  "decimalPlaces": 2,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-746",
+  "expression": "0.85-0.09*4+0.20",
+  "expected": "0.69",
+  "decimalPlaces": 2,
+  "unit": "mg/L"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-747",
+  "expression": "200*0.9*1000/12.5/3600",
+  "expected": "4.0",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-748",
+  "expression": "3.1416*0.075*0.075*(120+80)*3",
+  "expected": "10.6029",
+  "decimalPlaces": 4,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-749",
+  "expression": "(45*1000/36+45*1000/45)/60",
+  "expected": "37.5",
+  "decimalPlaces": 1,
+  "unit": "minutes"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-750",
+  "expression": "1.25-0.16*2.5-0.10*1.5",
+  "expected": "0.70",
+  "decimalPlaces": 2,
+  "unit": "mg/L"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-751",
+  "expression": "1.5+(288-20*1.5*3600/1000)*1000/12.5/3600",
+  "expected": "5.5",
+  "decimalPlaces": 1,
+  "unit": "hours"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-752",
+  "expression": "(3.1416*0.15*0.15*60+3.1416*0.1*0.1*90)*3",
+  "expected": "21.2058",
+  "decimalPlaces": 4,
+  "unit": "m3"
+ }
+]

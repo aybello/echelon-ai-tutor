@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "WQA-754",
+  "expression": "2.4*(100/4)*(50/10)",
+  "expected": "300.0",
+  "decimalPlaces": 1,
+  "unit": "mg/L"
+ },
+ {
+  "itemId": "WQA-755",
+  "expression": "(12.4+12.8+13.0+12.6+13.2)/5",
+  "expected": "12.8",
+  "decimalPlaces": 1,
+  "unit": "mg/L"
+ },
+ {
+  "itemId": "WQA-756",
+  "expression": "(8*2+2)*3",
+  "expected": "54",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "WQA-757",
+  "expression": "0.48*1000*2.5",
+  "expected": "1200.0",
+  "decimalPlaces": 1,
+  "unit": "ug"
+ },
+ {
+  "itemId": "WQA-758",
+  "expression": "(0.85-0.05)*(200/2)",
+  "expected": "80.0",
+  "decimalPlaces": 1,
+  "unit": "mg/L"
+ },
+ {
+  "itemId": "WQA-759",
+  "expression": "(10.2+10.8+11.0+10.6)/4",
+  "expected": "10.65",
+  "decimalPlaces": 2,
+  "unit": "mg/L"
+ },
+ {
+  "itemId": "WQA-760",
+  "expression": "(15+2)*4*2",
+  "expected": "136",
+  "decimalPlaces": 0,
+  "unit": "bottles"
+ },
+ {
+  "itemId": "WQA-761",
+  "expression": "250*0.75/1000",
+  "expected": "0.1875",
+  "decimalPlaces": 4,
+  "unit": "mg"
+ },
+ {
+  "itemId": "WQA-762",
+  "expression": "(0.46-0.02)*(100/10)*(100/20)",
+  "expected": "22.0",
+  "decimalPlaces": 1,
+  "unit": "mg/L"
+ }
+]

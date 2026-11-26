@@ -9,6 +9,8 @@ const streams = [
     practiceHref: "/quiz",
     mockHref: "/oit-mock",
     flashcardsHref: "/oit-water-flashcards",
+    mockDescription: "Water mock: 100 questions · 3 hours",
+    gamesHref: "/courses/oit/interactive",
   },
   {
     name: "Wastewater OIT",
@@ -16,6 +18,8 @@ const streams = [
     practiceHref: "/oit-ww",
     mockHref: "/oit-ww-mock",
     flashcardsHref: "/oit-ww-flashcards",
+    mockDescription: "Wastewater mock: 50 questions · 1 hour",
+    gamesHref: "/courses/oit-ww/interactive",
   },
 ] as const;
 
@@ -43,12 +47,6 @@ export default function OitHub() {
           account or credit card is required for the free preview. A 12-month
           pass for one selected OIT course is CA$49.
         </p>
-        <Link
-          href="/interactive-learning"
-          className="mt-5 inline-block rounded-lg font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
-        >
-          Try an introductory interactive example →
-        </Link>
       </section>
 
       <section
@@ -63,6 +61,9 @@ export default function OitHub() {
             <h2 className="text-2xl font-extrabold">{stream.name}</h2>
             <p className="mt-2 min-h-12 text-sm leading-6 text-slate-600">
               {stream.description}
+            </p>
+            <p className="mt-2 text-sm font-semibold text-slate-700">
+              {stream.mockDescription}
             </p>
             <Link
               href={stream.practiceHref}
@@ -84,6 +85,12 @@ export default function OitHub() {
                 Mock exam
               </Link>
             </div>
+            <Link
+              href={stream.gamesHref}
+              className="mt-4 block rounded-lg text-center text-sm font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+            >
+              Play free {stream.name} games
+            </Link>
           </article>
         ))}
       </section>
@@ -94,9 +101,9 @@ export default function OitHub() {
             Included with a paid OIT Exam Pass
           </h2>
           <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700 sm:grid-cols-2 sm:text-base">
-            <li>400+ practice questions organized by exam topic</li>
+            <li>1,000+ practice questions organized by exam topic</li>
             <li>400+ concept flashcards with progress tracking</li>
-            <li>Timed 100-question mock exam with module results</li>
+            <li>Course-specific timed mock exam with module results</li>
             <li>AI Tutor explanations for concepts and calculations</li>
             <li>Process guides, formula sheets, and math practice</li>
             <li>12 months of access for one named learner from successful payment</li>

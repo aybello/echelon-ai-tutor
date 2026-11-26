@@ -1,389 +1,102 @@
-/**
- * FeedbackModal — Review funnel that routes users based on rating:
- *  - 4-5 stars → redirects to Google review (one action = Google review)
- *  - 1-3 stars → shows internal comment form (keeps complaints private)
- *
- * Shown in multiple contexts:
- *  1. After 15 free questions (quiz gate)
- *  2. After a quiz session completes
- *  3. After mock exam completion
- *  4. After first 80%+ score (one-time)
- */
-
-import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useId, useState } from "react";
+import { Star } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { isHappyRating, openGoogleReview, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 
+export type FeedbackType = "quiz_gate" | "session_complete" | "mock_exam" | "first_high_score" | "dashboard" | "quick10";
 interface FeedbackModalProps {
   examType: string;
-  feedbackType: "quiz_gate" | "session_complete" | "mock_exam" | "first_high_score";
+  feedbackType: FeedbackType;
   onClose: () => void;
   onSubmitted?: () => void;
 }
-
 const STAR_LABELS = ["", "Poor", "Fair", "Good", "Great", "Excellent"];
 
-export default function FeedbackModal({
-  examType,
-  feedbackType,
-  onClose,
-  onSubmitted,
-}: FeedbackModalProps) {
+/** Private product feedback and public Google reviews are separate, optional actions. */
+export default function FeedbackModal({ examType, feedbackType, onClose, onSubmitted }: FeedbackModalProps) {
   const [rating, setRating] = useState(0);
-  const [hoveredStar, setHoveredStar] = useState(0);
   const [comment, setComment] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [redirectedToGoogle, setRedirectedToGoogle] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    markReviewPromptShown();
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prev; };
-  }, []);
-
+  const [saveError, setSaveError] = useState("");
+  const commentId = useId();
+  useEffect(() => { markReviewPromptShown(); }, []);
   const submitMutation = trpc.feedback.submit.useMutation({
     onSuccess: () => {
+      setSaveError("");
       setSubmitted(true);
-      setTimeout(() => {
-        onSubmitted?.();
-        onClose();
-      }, 1800);
+      onSubmitted?.();
     },
-    onError: () => {
-      setSubmitted(true);
-      setTimeout(() => {
-        onSubmitted?.();
-        onClose();
-      }, 1800);
-    },
+    onError: () => setSaveError("Your feedback was not saved. Please try again. Your rating and comment are still here."),
   });
 
-  function handleStarClick(star: number) {
-    setRating(star);
-
-    // If happy rating (4-5), redirect to Google immediately
-    if (isHappyRating(star)) {
-      // Still record internally that they gave a high rating
-      let province: string | undefined;
-      try { province = localStorage.getItem("echelon_province") ?? undefined; } catch {}
-      let email: string | undefined;
-      try { email = localStorage.getItem("echelon_trial_email") ?? undefined; } catch {}
-
-      submitMutation.mutate({
-        examType,
-        rating: star,
-        comment: "[Redirected to Google Review]",
-        feedbackType,
-        province,
-        email,
-      });
-
-      // Open Google review
-      openGoogleReview();
-      setRedirectedToGoogle(true);
-
-      // Auto-close after a moment
-      setTimeout(() => {
-        onSubmitted?.();
-        onClose();
-      }, 2500);
-    }
+  function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (!rating || submitMutation.isPending) return;
+    setSaveError("");
+    // Session identity is resolved by the server. Do not attach a stale browser-stored email.
+    submitMutation.mutate({ examType, feedbackType, rating, comment: comment.trim() || undefined });
   }
 
-  function handleSubmit() {
-    if (rating === 0) return;
-    let province: string | undefined;
-    try { province = localStorage.getItem("echelon_province") ?? undefined; } catch {}
-    let email: string | undefined;
-    try { email = localStorage.getItem("echelon_trial_email") ?? undefined; } catch {}
-
-    submitMutation.mutate({
-      examType,
-      rating,
-      comment: comment.trim() || undefined,
-      feedbackType,
-      province,
-      email,
-    });
-  }
-
-  const activeStar = hoveredStar || rating;
-
-  // Thank you state after Google redirect
-  if (redirectedToGoogle) {
-    const content = (
-      <div style={{
-        position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-        background: "rgba(15,23,42,0.55)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-        zIndex: 99998,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: 20,
-      }}>
-        <div style={{
-          background: "#fff", borderRadius: 20, padding: "36px 32px",
-          maxWidth: 420, width: "100%",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
-          textAlign: "center",
-          animation: "feedbackFadeIn 0.3s ease",
-        }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>⭐</div>
-          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
-            Thanks! A Google Review tab opened.
-          </h3>
-          <p style={{ color: "#64748B", fontSize: 14 }}>
-            Your review helps other operators find quality training.
-          </p>
+  return (
+    <Dialog open onOpenChange={(open) => { if (!open) onClose(); }}>
+      <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto bg-white text-slate-900 sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Share your experience</DialogTitle>
+          <DialogDescription>What is working well, and what could be better? All feedback is welcome.</DialogDescription>
+        </DialogHeader>
+        {submitted ? <div role="status" className="rounded-lg bg-blue-50 p-4 text-sm text-blue-900">
+          Thank you. Your feedback has been saved privately for the Echelon team.
+        </div> : <form onSubmit={handleSubmit} className="space-y-4">
+          <fieldset disabled={submitMutation.isPending}>
+            <legend className="mb-2 text-sm font-semibold">Your rating</legend>
+            <div className="flex gap-1" role="group" aria-label="Your rating">
+              {[1, 2, 3, 4, 5].map(star => <button key={star} type="button"
+                aria-label={`${star} star${star > 1 ? "s" : ""}: ${STAR_LABELS[star]}`}
+                aria-pressed={rating === star} onClick={() => setRating(star)}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 disabled:opacity-50">
+                <Star aria-hidden="true" size={28} className={star <= rating ? "fill-amber-400 text-amber-700" : "text-slate-500"} />
+              </button>)}
+            </div>
+            <p className="mt-1 text-sm text-slate-600" aria-live="polite">{rating ? STAR_LABELS[rating] : "Choose 1 to 5 stars"}</p>
+          </fieldset>
+          <div>
+            <label htmlFor={commentId} className="text-sm font-semibold">Tell us more <span className="font-normal text-slate-600">(optional)</span></label>
+            <textarea id={commentId} value={comment} onChange={event => setComment(event.target.value)}
+              disabled={submitMutation.isPending} maxLength={1000} rows={3}
+              placeholder="What helped you learn? What should we improve?"
+              className="mt-2 w-full resize-y rounded-lg border border-slate-400 bg-white p-3 text-sm text-slate-900 focus-visible:outline-2 focus-visible:outline-blue-700" />
+            <p className="mt-1 text-xs text-slate-600">Private feedback. This does not publish a review or give permission to use your words in marketing.</p>
+          </div>
+          {saveError && <p role="alert" className="text-sm text-red-700">{saveError}</p>}
+          <Button type="submit" disabled={!rating || submitMutation.isPending} className="min-h-11 w-full">
+            {submitMutation.isPending ? "Saving feedback..." : saveError ? "Retry saving feedback" : "Send private feedback"}
+          </Button>
+        </form>}
+        <div className="border-t border-slate-200 pt-4">
+          <p className="mb-2 text-sm text-slate-600">Prefer to share your experience publicly?</p>
+          <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center font-semibold text-blue-800 underline underline-offset-4">
+            Write a Google review <span className="sr-only">(opens in a new tab)</span>
+          </a>
         </div>
-      </div>
-    );
-    if (!mounted) return null;
-    return createPortal(content, document.body);
-  }
-
-  // Thank you state after internal submission
-  if (submitted) {
-    const content = (
-      <div style={{
-        position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-        background: "rgba(15,23,42,0.55)",
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-        zIndex: 99998,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        padding: 20,
-      }}>
-        <div style={{
-          background: "#fff", borderRadius: 20, padding: "36px 32px",
-          maxWidth: 420, width: "100%",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
-          textAlign: "center",
-          animation: "feedbackFadeIn 0.3s ease",
-        }}>
-          <div style={{ fontSize: 48, marginBottom: 12 }}>💙</div>
-          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
-            Thank you for your feedback!
-          </h3>
-          <p style={{ color: "#64748B", fontSize: 14 }}>
-            Your input helps us improve Echelon for every operator.
-          </p>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <button type="button" onClick={() => { markAsReviewed(); onClose(); }} className="min-h-11 text-xs text-slate-600 underline">I already left a review</button>
+          <Button type="button" variant="outline" onClick={onClose} className="min-h-11">{submitted ? "Done" : "Not now"}</Button>
         </div>
-      </div>
-    );
-    if (!mounted) return null;
-    return createPortal(content, document.body);
-  }
-
-  // Main form — shows comment only for 1-3 star ratings
-  const showCommentForm = rating > 0 && !isHappyRating(rating);
-
-  const content = (
-    <div style={{
-      position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-      background: "rgba(15,23,42,0.55)",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      zIndex: 99998,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: "20px 16px",
-      overflowY: "auto",
-      WebkitOverflowScrolling: "touch",
-    }}>
-      <style>{`
-        @keyframes feedbackFadeIn {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .fb-star { cursor: pointer; transition: transform 0.15s ease; display: inline-block; }
-        .fb-star:hover { transform: scale(1.2); }
-        .fb-star:active { transform: scale(0.95); }
-      `}</style>
-      <div style={{
-        background: "#fff", borderRadius: 20,
-        padding: "28px 24px 24px",
-        maxWidth: 440, width: "100%",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
-        textAlign: "center",
-        position: "relative",
-        animation: "feedbackFadeIn 0.3s ease",
-        maxHeight: "calc(100vh - 40px)",
-        overflowY: "auto",
-      }}>
-        {/* Skip button */}
-        <button
-          onClick={onClose}
-          aria-label="Skip feedback"
-          style={{
-            position: "absolute", top: 14, right: 14,
-            width: 32, height: 32, borderRadius: "50%",
-            background: "#F1F5F9", border: "1px solid #E2E8F0",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            cursor: "pointer", fontSize: 15, color: "#64748B",
-            lineHeight: 1, padding: 0,
-          }}
-        >
-          ✕
-        </button>
-
-        {/* Header */}
-        <div style={{ fontSize: 36, marginBottom: 10 }}>
-          {feedbackType === "quiz_gate" ? "📝" : feedbackType === "mock_exam" ? "🏆" : feedbackType === "first_high_score" ? "🎉" : "🎯"}
-        </div>
-        <h3 style={{
-          fontSize: 19, fontWeight: 800, color: "#0F172A",
-          marginBottom: 6, fontFamily: "Sora, sans-serif",
-        }}>
-          {feedbackType === "quiz_gate"
-            ? "How was your experience?"
-            : feedbackType === "mock_exam"
-            ? "How was that exam?"
-            : feedbackType === "first_high_score"
-            ? "Nice score! How's Echelon working for you?"
-            : "How was this session?"}
-        </h3>
-        <p style={{ color: "#64748B", fontSize: 13, marginBottom: 20, lineHeight: 1.5 }}>
-          {feedbackType === "quiz_gate"
-            ? "Quick feedback before you continue — it helps us improve!"
-            : feedbackType === "mock_exam"
-            ? "Rate your mock exam experience."
-            : feedbackType === "first_high_score"
-            ? "You're clearly learning — let us know how it's going."
-            : "Rate your practice session — your feedback shapes Echelon."}
-        </p>
-
-        {/* Star rating */}
-        <div style={{ marginBottom: 8 }}>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              className="fb-star"
-              role="button"
-              aria-label={`${star} star${star > 1 ? "s" : ""}`}
-              onClick={() => handleStarClick(star)}
-              onMouseEnter={() => setHoveredStar(star)}
-              onMouseLeave={() => setHoveredStar(0)}
-              style={{
-                fontSize: 36,
-                padding: "0 4px",
-                color: star <= activeStar ? "#F59E0B" : "#E2E8F0",
-                filter: star <= activeStar ? "drop-shadow(0 1px 2px rgba(245,158,11,0.3))" : "none",
-              }}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-        <div style={{
-          fontSize: 13, fontWeight: 600, color: "#1D4ED8",
-          marginBottom: 18, minHeight: 20,
-        }}>
-          {activeStar > 0 ? STAR_LABELS[activeStar] : "Tap a star to rate"}
-        </div>
-
-        {/* Comment form — only for 1-3 stars (unhappy path) */}
-        {showCommentForm && (
-          <>
-            <p style={{ color: "#64748B", fontSize: 12, marginBottom: 10 }}>
-              We're sorry to hear that. What could we do better?
-            </p>
-            <textarea
-              placeholder="Tell us what went wrong..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              maxLength={1000}
-              rows={3}
-              style={{
-                width: "100%",
-                padding: "10px 14px",
-                borderRadius: 10,
-                border: "1.5px solid #E2E8F0",
-                fontSize: 14,
-                fontFamily: "inherit",
-                resize: "vertical",
-                outline: "none",
-                boxSizing: "border-box",
-                marginBottom: 16,
-                minHeight: 72,
-              }}
-              onFocus={(e) => { e.target.style.borderColor = "#1D4ED8"; }}
-              onBlur={(e) => { e.target.style.borderColor = "#E2E8F0"; }}
-            />
-
-            {/* Submit button */}
-            <button
-              onClick={handleSubmit}
-              disabled={submitMutation.isPending}
-              style={{
-                width: "100%",
-                padding: "13px 20px",
-                borderRadius: 12,
-                border: "none",
-                background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
-                color: "#fff",
-                fontSize: 15,
-                fontWeight: 800,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                touchAction: "manipulation",
-                letterSpacing: "0.01em",
-              }}
-            >
-              {submitMutation.isPending ? "Sending…" : "Submit Feedback"}
-            </button>
-          </>
-        )}
-
-        {/* "I already left a review" — permanently suppress */}
-        <button
-          onClick={() => {
-            markAsReviewed();
-            onClose();
-          }}
-          style={{
-            display: "block",
-            width: "100%",
-            padding: "10px",
-            background: "transparent",
-            border: "none",
-            color: "#1D4ED8",
-            fontSize: 12,
-            fontWeight: 600,
-            cursor: "pointer",
-            fontFamily: "inherit",
-            marginTop: 12,
-          }}
-        >
-          I already left a review
-        </button>
-
-        {/* Skip link */}
-        <button
-          onClick={onClose}
-          style={{
-            display: "block",
-            width: "100%",
-            padding: "10px",
-            background: "transparent",
-            border: "none",
-            color: "#94A3B8",
-            fontSize: 12,
-            fontWeight: 500,
-            cursor: "pointer",
-            fontFamily: "inherit",
-            marginTop: 4,
-          }}
-        >
-          Skip for now
-        </button>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
+}
 
-  if (!mounted) return null;
-  return createPortal(content, document.body);
+/** A user-initiated entry point, never an interruption to an active assessment. */
+export function ReviewButton({ examType = "general", feedbackType = "dashboard" }: { examType?: string; feedbackType?: FeedbackType }) {
+  const [open, setOpen] = useState(false);
+  return <>
+    <Button type="button" variant="outline" className="min-h-11 gap-2 bg-white text-slate-700" onClick={() => setOpen(true)}>
+      <Star size={15} aria-hidden="true" /> Leave a review
+    </Button>
+    {open && <FeedbackModal examType={examType} feedbackType={feedbackType} onClose={() => setOpen(false)} />}
+  </>;
 }

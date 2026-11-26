@@ -1,0 +1,438 @@
+{
+ "courseKey": "wpi-class3-water-dist",
+ "bankKey": "wpi-class3-water-dist",
+ "batch": 4,
+ "size": 47,
+ "conceptualCount": 38,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2593,
+ "questionNumEnd": 2639,
+ "itemIdStart": "DISTRIBUTION-L3-593",
+ "itemIdEnd": "DISTRIBUTION-L3-639",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2593,
+   "itemId": "DISTRIBUTION-L3-593",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] regulatory leadership"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2594,
+   "itemId": "DISTRIBUTION-L3-594",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] system optimization studies"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2595,
+   "itemId": "DISTRIBUTION-L3-595",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] asset condition programs"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2596,
+   "itemId": "DISTRIBUTION-L3-596",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] energy strategy awareness"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2597,
+   "itemId": "DISTRIBUTION-L3-597",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] team supervision"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2598,
+   "itemId": "DISTRIBUTION-L3-598",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] complaint pattern analysis"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2599,
+   "itemId": "DISTRIBUTION-L3-599",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] renewal program awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2600,
+   "itemId": "DISTRIBUTION-L3-600",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] continuous improvement"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2601,
+   "itemId": "DISTRIBUTION-L3-601",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] regulatory leadership"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2602,
+   "itemId": "DISTRIBUTION-L3-602",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] system optimization studies"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2603,
+   "itemId": "DISTRIBUTION-L3-603",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset condition programs"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2604,
+   "itemId": "DISTRIBUTION-L3-604",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] energy strategy awareness"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2605,
+   "itemId": "DISTRIBUTION-L3-605",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] team supervision"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2606,
+   "itemId": "DISTRIBUTION-L3-606",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint pattern analysis"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2607,
+   "itemId": "DISTRIBUTION-L3-607",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] renewal program awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2608,
+   "itemId": "DISTRIBUTION-L3-608",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] continuous improvement"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2609,
+   "itemId": "DISTRIBUTION-L3-609",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] regulatory leadership"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2610,
+   "itemId": "DISTRIBUTION-L3-610",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] system optimization studies"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2611,
+   "itemId": "DISTRIBUTION-L3-611",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset condition programs"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2612,
+   "itemId": "DISTRIBUTION-L3-612",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] energy strategy awareness"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2613,
+   "itemId": "DISTRIBUTION-L3-613",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] team supervision"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2614,
+   "itemId": "DISTRIBUTION-L3-614",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint pattern analysis"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2615,
+   "itemId": "DISTRIBUTION-L3-615",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] renewal program awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2616,
+   "itemId": "DISTRIBUTION-L3-616",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] continuous improvement"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2617,
+   "itemId": "DISTRIBUTION-L3-617",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] regulatory leadership"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2618,
+   "itemId": "DISTRIBUTION-L3-618",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] system optimization studies"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2619,
+   "itemId": "DISTRIBUTION-L3-619",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset condition programs"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2620,
+   "itemId": "DISTRIBUTION-L3-620",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] energy strategy awareness"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2621,
+   "itemId": "DISTRIBUTION-L3-621",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] team supervision"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2622,
+   "itemId": "DISTRIBUTION-L3-622",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint pattern analysis"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2623,
+   "itemId": "DISTRIBUTION-L3-623",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] renewal program awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2624,
+   "itemId": "DISTRIBUTION-L3-624",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] continuous improvement"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2625,
+   "itemId": "DISTRIBUTION-L3-625",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] regulatory leadership"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2626,
+   "itemId": "DISTRIBUTION-L3-626",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] system optimization studies"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2627,
+   "itemId": "DISTRIBUTION-L3-627",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] asset condition programs"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2628,
+   "itemId": "DISTRIBUTION-L3-628",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] energy strategy awareness"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2629,
+   "itemId": "DISTRIBUTION-L3-629",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] team supervision"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2630,
+   "itemId": "DISTRIBUTION-L3-630",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] complaint pattern analysis"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2631,
+   "itemId": "DISTRIBUTION-L3-631",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "demand forecast with given growth factors"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2632,
+   "itemId": "DISTRIBUTION-L3-632",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "turnover program volume"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2633,
+   "itemId": "DISTRIBUTION-L3-633",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sampling schedule counts"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2634,
+   "itemId": "DISTRIBUTION-L3-634",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump fleet energy quantity"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2635,
+   "itemId": "DISTRIBUTION-L3-635",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "demand forecast with given growth factors"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2636,
+   "itemId": "DISTRIBUTION-L3-636",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "turnover program volume"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2637,
+   "itemId": "DISTRIBUTION-L3-637",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sampling schedule counts"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2638,
+   "itemId": "DISTRIBUTION-L3-638",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump fleet energy quantity"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2639,
+   "itemId": "DISTRIBUTION-L3-639",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "demand forecast with given growth factors"
+  }
+ ]
+}

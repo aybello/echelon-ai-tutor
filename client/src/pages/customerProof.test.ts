@@ -1,40 +1,33 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-
+import { customers } from "../lib/trustedOrganizations";
 const read = (file: string) => readFileSync(join(process.cwd(), file), "utf8");
-
 describe("customer proof on public pages", () => {
   it.each(["client/src/pages/Landing.tsx", "client/src/pages/Teams.tsx"])(
-    "preserves the existing customer organizations without implying an endorsement in %s",
-    file => {
+    "uses the approved customer strip without implying endorsement in %s", file => {
       const source = read(file);
-      expect(source).toContain("Used by operators at");
-      expect(source).toContain("<strong>Utilities Kingston</strong>");
-      expect(source).toContain("<strong>City of Winnipeg</strong>");
+      expect(source.match(/<TrustedOrganizations \/>/g)).toHaveLength(1);
       expect(source).not.toMatch(/endorsed by (?:Utilities Kingston|the City of Winnipeg)/i);
+      expect(source).not.toContain("Black Entrepreneurship Alliance");
     }
   );
-
-  it("shows the named proof in the homepage hero before the primary actions", () => {
-    const source = read("client/src/pages/Landing.tsx");
-    expect(source).toContain("<strong>City of Quinte West</strong>");
-    expect(source).not.toContain("Black Entrepreneurship Alliance");
-    expect(source.indexOf('className="homepage-customer-proof"')).toBeLessThan(
-      source.indexOf('className="homepage-hero-actions"')
-    );
+  it("uses the three remaining approved marks with a bounded relationship label", () => {
+    const strip = read("client/src/components/TrustedOrganizations.tsx");
+    expect(strip).toContain("Used by operators and teams at");
+    expect(customers.map(item => item.name)).toEqual(["Utilities Kingston", "City of Winnipeg", "City of Quinte West"]);
+    expect(strip).not.toMatch(/paying customers|endorsed by/i);
   });
-
-  it("places the static organization strip immediately after the hero and before tools", () => {
+  it("places proof once after the interactive hero and course discovery before tools", () => {
     const source = read("client/src/pages/Landing.tsx");
-    expect(source).toMatch(/<StudyWorkspacePreview \/>[\s\S]*?<\/section>\s*<TrustedOrganizations \/>\s*<section id="tools"/);
-    expect(source.match(/<TrustedOrganizations \/>/g)).toHaveLength(1);
+    expect(source).toMatch(/<HomepageProductDemo \/>[\s\S]*?<\/section>\s*<TrustedOrganizations \/>\s*<section id="courses"/);
+    expect(source.indexOf('id="courses"')).toBeLessThan(source.indexOf('id="tools"'));
+    expect(source).not.toContain('className="homepage-customer-proof"');
   });
-
-  it("keeps the Teams proof label dark against its white background", () => {
-    const source = read("client/src/pages/Teams.tsx");
-    const styles = read("client/src/styles/TeamsRedesign.css");
-    expect(source).toContain("teams-customer-proof-label");
-    expect(styles).toMatch(/p\.teams-customer-proof-label\s*\{\s*color:\s*#10458f\s*!important/i);
+  it("preserves the accessible shared strip rather than a second Teams-specific list", () => {
+    const strip = read("client/src/components/TrustedOrganizations.tsx");
+    expect(strip).toContain("Pause logo animation");
+    expect(strip).toContain("Resume logo animation");
+    expect(strip).toContain('aria-pressed={paused}');
   });
 });

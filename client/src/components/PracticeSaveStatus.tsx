@@ -26,6 +26,24 @@ export function useVerifiedPracticeSaveScope(courseKey: string): PracticeSaveSco
   const course = resolveCourseKey(courseKey);
   return identity && course ? { identity, courseKey: course.courseKey } : null;
 }
+/** Queue ownership changes only on a settled identity result, not a refetch.
+ * Saving still uses useVerifiedPracticeSaveScope and remains blocked while busy.
+ * Initial loading/errors never establish an identity; logout/account changes
+ * retire the prior queue as soon as their authoritative result settles.
+ */
+export function useStablePracticeActorKey(courseKey: string): string {
+  const oauth = trpc.auth.me.useQuery(undefined, { retry: false });
+  const email = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
+  const settled = useRef("unverified");
+  if (oauth.isError || email.isError || oauth.isLoading || email.isLoading) {
+    settled.current = "unverified";
+  } else if (!oauth.isFetching && !email.isFetching) {
+    const identity = oauth.data ? `user:${oauth.data.id}` : email.data?.email?.trim().toLowerCase();
+    const course = resolveCourseKey(courseKey);
+    settled.current = identity && course ? JSON.stringify({ identity, courseKey: course.courseKey }) : "unverified";
+  }
+  return settled.current;
+}
 export default function PracticeSaveStatus({ courseKey }: { courseKey?: string }) {
   const scope = useVerifiedPracticeSaveScope(courseKey ?? "");
   const activeScope = useRef<string | null>(null);

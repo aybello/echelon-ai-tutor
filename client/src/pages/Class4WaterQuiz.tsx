@@ -50,7 +50,7 @@ export default function Class4WaterQuiz() {
       currentPath="/class4-water"
       courseLabel="Ontario Class 4 · Water Treatment"
       courseTitle="Class 4 Water Practice Quiz"
-      courseSubtitle="500 questions · Ontario Class 4 Water Treatment"
+      courseSubtitle="1,000+ questions · Ontario Class 4 Water Treatment"
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="💧"
       headerActions={[
@@ -132,7 +132,7 @@ export default function Class4WaterQuiz() {
           productName="Class 4 Water Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "500 Class 4 Water questions — unlimited attempts",
+            "1,000+ Class 4 Water questions — unlimited attempts",
             "Timed mock exam (100 questions, 2 hrs)",
             "AI Tutor explanations on every question",
             "Module-by-module performance tracking",

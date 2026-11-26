@@ -44,7 +44,7 @@ export default function Class2WastewaterMockExam() {
       practiceLabel="Class 2 Wastewater Practice"
       showProvinceSelector={true}
       currentPath="/class2-ww-mock"
-      infoLine={`${totalQuestions} questions · Ontario (MECP) · BC (EOCP Level II) · Alberta (AWWOA Class II)`}
+      infoLine={`${totalQuestions} questions · Ontario Class 2 Wastewater Treatment`}
       stream="wastewater"
     />
   );

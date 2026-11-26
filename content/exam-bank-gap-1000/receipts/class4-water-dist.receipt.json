@@ -1,0 +1,1736 @@
+{
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "courseKey": "class4-water-dist",
+ "canonicalBankKey": "class4-water-dist",
+ "itemBankKey": "class4-water-dist",
+ "packageSha256": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+ "additionsFileSha256": "20b61fa757899b91ec9a737cdcf8900d3b54935e8c72a598941a3dca1eb0dc61",
+ "batchFileSha256": {
+  "batch-1.json": "b5fb2c87834deca5048b107d4d88685c34ace2bbd8badff785bf953cb5b223b2",
+  "batch-1.verify.json": "496731f08b0d8daa3517d457dd4ce1519f7ab041cc620c651f93662a3e6aba18",
+  "batch-2.json": "53b1f92a0f830b57d9dd355943b9fba941e710a6c316c1a3497833b3b4c78c4f",
+  "batch-2.verify.json": "11d62413dab317e6ecd8658cb2e74713e298e18a5a38ffe03c89c026cdb20a6f",
+  "batch-3.json": "486b60ecae3716a270c12e17ebc121ef79d8c1f16f9d6a84af287fc2f7addc03",
+  "batch-3.verify.json": "fd2e679d37bc33112bc0d564e809a62474ff5b125871012d146700ab8556610d",
+  "batch-4.json": "07f87dacbd0890467329ee282428c8711fd7a991ddb09db57249dc7b717ad844",
+  "batch-4.verify.json": "c96b28930694939724280ef16820520a30f248fd3199bf3473a4baa143c6c810",
+  "batch-5.json": "84e105fe755716e6512017fde52a9691fe3040a7ade47ed5ace96f813ddbbc2c",
+  "batch-5.verify.json": "5dc17c3140246d68ed95208a1788a493c35306f3be7df842677e4be210f172e5"
+ },
+ "counts": {
+  "requested": 235,
+  "generated": 235,
+  "accepted": 235,
+  "withheld": [],
+  "rejected": [
+   {
+    "itemId": "DISTRIBUTION-L4-499",
+    "questionNum": 2499,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing capital plan purpose item. Replaced in place with a different easy recall question on capital planning leadership; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "DISTRIBUTION-L4-592",
+    "questionNum": 2592,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing master plan purpose item. Replaced in place with a different easy recall question on master planning; replacement passed all checks and is the accepted payload."
+   },
+   {
+    "itemId": "DISTRIBUTION-L4-640",
+    "questionNum": 2640,
+    "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing water quality strategy goal item. Replaced in place with a different easy recall question on system wide water quality strategy; replacement passed all checks and is the accepted payload."
+   }
+  ]
+ },
+ "checks": {
+  "schemaValidation": {
+   "checker": "validate_gap.py",
+   "checkerSha256": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+   "errors": [],
+   "warnings": []
+  },
+  "calculationVerification": {
+   "checker": "verify_calcs_gap.py",
+   "checkerSha256": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+   "checked": 45,
+   "problems": [],
+   "checksPerformed": [
+    "expression recomputation in exact rational arithmetic",
+    "exactly-one-record enforcement",
+    "item/record field consistency",
+    "correctAnswer exact numeric and unit match",
+    "result-step value match (treat variant steps: Relationship, Substitution and Result entries required; Result entry must contain the expected value as a standalone number token)"
+   ]
+  },
+  "dedup": {
+   "new_items": 235,
+   "existing_corpus_items": 200,
+   "exact": [],
+   "near": [],
+   "expression_dups": [],
+   "option_collisions": [],
+   "cross_bank_exact": [],
+   "corpus": {
+    "files": [
+     {
+      "path": "exam-bank-expansion/class4-water-dist/additions.json",
+      "sha256": "a8f67eee0d524be2d1d7dda9a9dbe32fa1a48b4a2b9f540fcd2a0bd030ac3f6b",
+      "items": 200
+     }
+    ],
+    "totalItems": 200,
+    "corpusSha256": "f281976f5f1f29b331b0476d21bed1894d6cf51e70fbf5ea4352f403588f9982",
+    "globalNov22": {
+     "files": [
+      {
+       "path": "exam-bank-expansion/class1-wastewater-coll/additions.json",
+       "sha256": "34b7777a29d18e9ec5bb2a40f3218852d9954f492cd8eb57cfba6c92dc9f7f19",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-water/additions.json",
+       "sha256": "df88b9d9bb1464f540470ea274b0fb785124bce25df03c1e54942b747e1b4b26",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-water-dist/additions.json",
+       "sha256": "329e72c3edd06c4bae29f5a9c617b8a8b8e2796b5d4f5479b98bbcb34c4b6641",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class1-ww/additions.json",
+       "sha256": "90563f49d0fe1c39e80293409bf8782523b41221ae50f104dab532ed26645c2e",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-wastewater-coll/additions.json",
+       "sha256": "ca89489825aa3374437ae8889a4ae5894a36f127c4dcb308c498c4ba1df8e5b3",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-water/additions.json",
+       "sha256": "385b388466c1b7f4e6a0c686b44d8ae53168b833aa23b036fbd109b8928cb540",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-water-dist/additions.json",
+       "sha256": "19e3b0e6491deca77531e660d064048fd08a2b744e7ab682a4efee5fdbcbe40a",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class2-ww/additions.json",
+       "sha256": "bdf63927d6bad6a4b998d353777f3a90682a883f759ee4174a1a9824547096b9",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-wastewater-coll/additions.json",
+       "sha256": "22bb27af2c80dfa00386dc0e97abd261846b58d53bd018a26eb6333782710b12",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-water/additions.json",
+       "sha256": "34c78dfc6e6297751e2454e9a66dadc3ed7ee356716a88c867499a3129dc17f4",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-water-dist/additions.json",
+       "sha256": "c993927c03a1ce9817a8ea553cabf95a7b1fdd37a8500aadae6ee7f53d9c8f04",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class3-ww/additions.json",
+       "sha256": "ff411a32cba0eda233e09378cc1296172c27047a410bed55f51078c5ffc5274a",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-wastewater-coll/additions.json",
+       "sha256": "f5282577e09b2869a7d7d64e012d12ab1bf233fb39edac3dbe65b50a150a6a91",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-water/additions.json",
+       "sha256": "875e85fe3461dfc8bc071f3ce0feeb6e0544620b3946e209ed5d9797e44acc5e",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-water-dist/additions.json",
+       "sha256": "a8f67eee0d524be2d1d7dda9a9dbe32fa1a48b4a2b9f540fcd2a0bd030ac3f6b",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/class4-ww/additions.json",
+       "sha256": "d1554f79de67a2a088c79f6be5882a0f72cb17c656ceee3436763550d4270e69",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/oit/additions-water.json",
+       "sha256": "bd790c18000682b45fc8747be13999c8def7149678534160be9c2d1dfbea4d89",
+       "items": 100
+      },
+      {
+       "path": "exam-bank-expansion/oit/additions-wastewater.json",
+       "sha256": "673ceedda7b46ea74c3a39c090abf2c485481d698a6d22855573a4958042170e",
+       "items": 100
+      },
+      {
+       "path": "exam-bank-expansion/oit-ww/additions-wastewater.json",
+       "sha256": "3a06447dc3fcc29a031900f43f2b4c25ed48b27211faa181937f18a6c79d9a85",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-wastewater/additions.json",
+       "sha256": "1c127c652039f0b9c765caec64e87e52d4df3adf0a52468e2a1686d33a40d3dc",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water/additions.json",
+       "sha256": "4cd774bb5a6a8b2305bd61ef6dc73142572c0782498536d9a33feb6c36ff9d11",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water-coll/additions.json",
+       "sha256": "d338aa3d615a9cd5a1db5c65aece6e346d1218a8c44d0746f320082449151315",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class1-water-dist/additions.json",
+       "sha256": "57b4e292ab623c4304daa820f3bf434968af0a5156db2c752e51765c33e111e0",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-wastewater/additions.json",
+       "sha256": "dc5fd6d8156126fa821c8275f9491d342d925aaee573037c9c153f297b1aaf47",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water/additions.json",
+       "sha256": "9923b31afa38f31bf9dee714d5621ea0e444e6f478afaa98b75c0208dc7aa7a6",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water-coll/additions.json",
+       "sha256": "97d9c35a4afdf33aaaf0ebf56a0b1d89443bd49e04786a92d1c24f0ad7611961",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class2-water-dist/additions.json",
+       "sha256": "94e645ea25bb7078fb7cd4714846352217d17a8c34549eedb3c5ad87268ad708",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-wastewater/additions.json",
+       "sha256": "6d34e3ccf935a90656ff514eb3894d963871c282f1167a1b6d0290fc843582da",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water/additions.json",
+       "sha256": "5475fafea499a310331eedb7e89c92180fde71ef055134be7e0633cb6dd38675",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water-coll/additions.json",
+       "sha256": "ef4dd6eda8a3e816f4f0a72a28290d9e2e79b25d815b3c06db085d413c2128c7",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class3-water-dist/additions.json",
+       "sha256": "6c7932362cf09817e51fe089df42371508180ff41f1eee002d78334f9cda23e2",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-wastewater/additions.json",
+       "sha256": "bc9ba57b4e654f3e4b42f7c06fe5783d442fcb5804efb5a28b12cd6a6cea6f88",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water/additions.json",
+       "sha256": "bffcfc7604e0015ec8f8ca33e84ecb35295cbafc890f87a2290ef4dcd23debaf",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water-coll/additions.json",
+       "sha256": "ccbdd77ec9cc2bb11cdfc6acbe137dfd9655e213661f4d63c21bfbc40412921b",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wpi-class4-water-dist/additions.json",
+       "sha256": "cb593a08d2010734efc1d9239144bdaf53eb566f62bb799e6b157ca6aa157460",
+       "items": 200
+      },
+      {
+       "path": "exam-bank-expansion/wqa/additions.json",
+       "sha256": "83579e46a2f4ec2d4f9fb741f40308e8a19279fdfee1f8e1547a006f91e349e6",
+       "items": 200
+      }
+     ],
+     "totalItems": 7000,
+     "corpusSha256": "9d6b5b31981e8e8617582f49af3f16413bec67a7c9c8ce9fa80255c6f001eee9"
+    }
+   },
+   "config": {
+    "jaccardThreshold": 0.85,
+    "checker": "dedup_gap.py",
+    "checkerSha256": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933"
+   },
+   "payloadDigest": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba"
+  },
+  "quality": {
+   "checker": "quality_checks.py",
+   "checkerSha256": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "configSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+   "payloadDigest": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+   "items": 235,
+   "length_flags": [],
+   "length_hard": [],
+   "correct_is_longest_share": 0.217,
+   "absolute_in_correct": [],
+   "absolute_in_stem_count": 13,
+   "true_false_items": [],
+   "true_false_share": 0.0,
+   "position_flags": []
+  }
+ },
+ "bindings": {
+  "gapConfigSha256": "0b3ce1f0495aaca40fb2b0817cfca80786aef2a0d30cab555fe22960c7c1d8ba",
+  "manifestSha256": "3f01bc1a60eb65ba607bcef538374b7e9a287bf9f8e990ee788a28d12c38359b",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
+  }
+ },
+ "items": [
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2451,
+   "itemId": "DISTRIBUTION-L4-451",
+   "payloadSha256": "bc8cb67a394b049daacf9787759d29542b15d076b8a921c3e5d0bb3c08de526e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2452,
+   "itemId": "DISTRIBUTION-L4-452",
+   "payloadSha256": "f7a8b8a8445c0181429da93e8f295812307c0a6b2594bb2a1f0bb4db1610f76f"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2453,
+   "itemId": "DISTRIBUTION-L4-453",
+   "payloadSha256": "aa5b097889e2b929512da4cf605c0d554d7c4546a264951f803c9e0039b8b1ff"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2454,
+   "itemId": "DISTRIBUTION-L4-454",
+   "payloadSha256": "9f59d7bf80e425c8555204cb796461124226d184e1c31495253ae9de5c7483f0"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2455,
+   "itemId": "DISTRIBUTION-L4-455",
+   "payloadSha256": "040814573ddda9321789c3bd1ebceeb9e16467f728c874e2f258f3d9ec35f7c4"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2456,
+   "itemId": "DISTRIBUTION-L4-456",
+   "payloadSha256": "380a49faa9901ba3cd4ce571904757ffec620511d5ea6b737e1c6ab216f8e16a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2457,
+   "itemId": "DISTRIBUTION-L4-457",
+   "payloadSha256": "f820e639882f381d6c9b5395886b03face9c844b5ad98ab93a5c5e5723c9be55"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2458,
+   "itemId": "DISTRIBUTION-L4-458",
+   "payloadSha256": "01969ad4e914dcc29b440c1861966168031d88992cb31e631a8723946cd679ad"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2459,
+   "itemId": "DISTRIBUTION-L4-459",
+   "payloadSha256": "6921c04a828df51a957bb60f007890c1a9268696bbac210b8f218667e6bd09f9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2460,
+   "itemId": "DISTRIBUTION-L4-460",
+   "payloadSha256": "49aeb1ef9d3328fe492608fb8a8f9c5f724f2dffcd0d8f5322724260572234b8"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2461,
+   "itemId": "DISTRIBUTION-L4-461",
+   "payloadSha256": "1121c2321e62b135d9587032e6711aae81e9039b24f53228c474dd6ca32e0a6c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2462,
+   "itemId": "DISTRIBUTION-L4-462",
+   "payloadSha256": "77a7ad09cf722f77c08cd42b4bdf26097fc40f3954350380ade46c0555f4e615"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2463,
+   "itemId": "DISTRIBUTION-L4-463",
+   "payloadSha256": "160bd2cc605dd3ca04bbe99f1003c820dde64a3e9a41428a47d49aca1542694b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2464,
+   "itemId": "DISTRIBUTION-L4-464",
+   "payloadSha256": "4ccc720ca206841c176e04665dd525dfd2c34113c0293bad5463c3cbd441e953"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2465,
+   "itemId": "DISTRIBUTION-L4-465",
+   "payloadSha256": "d04e954e910311bdb6105444059f60d2e6bd74eef909a20354faa5442ccbbf01"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2466,
+   "itemId": "DISTRIBUTION-L4-466",
+   "payloadSha256": "d67a5a63f34d9c05ccbaf8b50cbc37f7689294785d228f0c5f8299fc7b184d2e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2467,
+   "itemId": "DISTRIBUTION-L4-467",
+   "payloadSha256": "abf73146708dbb798625428a5e67ec3317a04db57fa5df4d669a89fc1a08a6d9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2468,
+   "itemId": "DISTRIBUTION-L4-468",
+   "payloadSha256": "b24346017ecaedb7b20fc6ae5d60f2712810a9dc46342b561151b9269b327be8"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2469,
+   "itemId": "DISTRIBUTION-L4-469",
+   "payloadSha256": "8ebfc59b706f52ad4d3c4ee5eeee2c55721ad6d3f195f75b55700f8241b666b3"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2470,
+   "itemId": "DISTRIBUTION-L4-470",
+   "payloadSha256": "80fe00d4507a52c9746bc52f8ac0975e7f58c3c9e85eb9f38c5619f8f404ef17"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2471,
+   "itemId": "DISTRIBUTION-L4-471",
+   "payloadSha256": "e859146a10d0722d3223dc24e96dd9a2b6b4825feb7e2ae4ed794642610bd3f4"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2472,
+   "itemId": "DISTRIBUTION-L4-472",
+   "payloadSha256": "5af1f8eee3bdadf577432ac5799d27961d376bad3da6194024f025a7919222c5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2473,
+   "itemId": "DISTRIBUTION-L4-473",
+   "payloadSha256": "5b8e5552f226efa58abe8d86840f1f1829da636367c102777b11e69ffad132f9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2474,
+   "itemId": "DISTRIBUTION-L4-474",
+   "payloadSha256": "1d2cd3b35048996497c161d607d85074e9a37f7fe8411daf2f64c3428bc4ae73"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2475,
+   "itemId": "DISTRIBUTION-L4-475",
+   "payloadSha256": "2c56b74767a63d37be8f572ea658b3843f82a1018b75e43d867d0d7047289744"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2476,
+   "itemId": "DISTRIBUTION-L4-476",
+   "payloadSha256": "b054f2c3e64674db6a4b1b3ce8aa68b069c976020071747c4d4aaa6903acbba6"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2477,
+   "itemId": "DISTRIBUTION-L4-477",
+   "payloadSha256": "8ca84d50a56f8877db3954db67ec1d9296e810c14a82c8dba5dc0343806bf373"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2478,
+   "itemId": "DISTRIBUTION-L4-478",
+   "payloadSha256": "569ec6d28026a03a13f5e34822e364669aa4b711c11acf2866952de9649e7c4a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2479,
+   "itemId": "DISTRIBUTION-L4-479",
+   "payloadSha256": "6c340f1c64de7366825bc92f59d442338db318d0e119c1a23a14afc8ce77dedf"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2480,
+   "itemId": "DISTRIBUTION-L4-480",
+   "payloadSha256": "99ea994cf226bc1b4e48b891d94824d223e9caa049ae1c9ebdbc8dcacf86d81a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2481,
+   "itemId": "DISTRIBUTION-L4-481",
+   "payloadSha256": "4eb72cb141283cc9ea02a8327847439807d28f3e47ba032d303062cea3e9aa37"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2482,
+   "itemId": "DISTRIBUTION-L4-482",
+   "payloadSha256": "307d15aeb03875d3aa931609697617b6e8ab0ec96cdbbdb23c84e1afb8ae10e0"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2483,
+   "itemId": "DISTRIBUTION-L4-483",
+   "payloadSha256": "72dcece444b8ed200c9300f741fb712d71f3133b66e0862cf8edf9a824b1f6e4"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2484,
+   "itemId": "DISTRIBUTION-L4-484",
+   "payloadSha256": "104700fa4b0aa41f5b4504672b366963960f9823895154872892abda66502dd9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2485,
+   "itemId": "DISTRIBUTION-L4-485",
+   "payloadSha256": "ae0ce7631245aef9040a3838a2d41debd1ff508e6c14574cbfc2fca010a694c2"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2486,
+   "itemId": "DISTRIBUTION-L4-486",
+   "payloadSha256": "97d57f563ea2b3d383eb7c9b6f2d8b59d0fb233add6a2e122dee8ab7362302dc"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2487,
+   "itemId": "DISTRIBUTION-L4-487",
+   "payloadSha256": "f9cafd1fdebc58631002b7046aa1542472c9f3c80ee98860bb70af6d2698bd3a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2488,
+   "itemId": "DISTRIBUTION-L4-488",
+   "payloadSha256": "26f67d129e3474f2352830a38763110eeb32a7446c255e5e365bee074999c867"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2489,
+   "itemId": "DISTRIBUTION-L4-489",
+   "payloadSha256": "2772e9d2cb34d83ee1cc69eb58fdc0a9f631f8b55b374a8baa80fc093c9295cb"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2490,
+   "itemId": "DISTRIBUTION-L4-490",
+   "payloadSha256": "65b273541d9d6b3cccde5f3159d00a670dfa7986cc9a0caa6294ada800f67607"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2491,
+   "itemId": "DISTRIBUTION-L4-491",
+   "payloadSha256": "d147cbdf0740b8cc4a22fee73da3a740bfe237704691be6f05ca0212030b4333"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2492,
+   "itemId": "DISTRIBUTION-L4-492",
+   "payloadSha256": "cff793df327396058837beed9d3d910e24cd0e5fd82b34b0bff6ca76c6a6d3a0"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2493,
+   "itemId": "DISTRIBUTION-L4-493",
+   "payloadSha256": "3ebf972971d5f5b5b1678bcd74d295c649a7259660839ad132db63d48873890d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2494,
+   "itemId": "DISTRIBUTION-L4-494",
+   "payloadSha256": "b02a5baa93ab907c89d704499e6e94a0a707de23ccfdd9e31aae550ba91e38e7"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2495,
+   "itemId": "DISTRIBUTION-L4-495",
+   "payloadSha256": "7fd63bb2023f09eb5bc38595d5f666961c6b314dfd8f3d82ec1d375d4cdef0ab"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2496,
+   "itemId": "DISTRIBUTION-L4-496",
+   "payloadSha256": "50eb6464cfb3c433d1d5d7c90030b1d831507baf035fa3474d98b8605f43c2ce"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2497,
+   "itemId": "DISTRIBUTION-L4-497",
+   "payloadSha256": "4c798f15ba5376174af0b5af496412479abb4337ac1f680b4d820d4854d47e8c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2498,
+   "itemId": "DISTRIBUTION-L4-498",
+   "payloadSha256": "37c4b066270bf8a4d29990b4490454d6cdd55970910f65a1f0e878dd007819a0"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2499,
+   "itemId": "DISTRIBUTION-L4-499",
+   "payloadSha256": "b219e13aaf71ccb425c9d4578e496138633b38f28c3e2133bc838c2f0402357c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2500,
+   "itemId": "DISTRIBUTION-L4-500",
+   "payloadSha256": "cf2d3b0e56e390bf57f15c5fad2d071e74ae19914150e9fd8cb8b04e661ddfd4"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2501,
+   "itemId": "DISTRIBUTION-L4-501",
+   "payloadSha256": "c84a8699a2666dcf4954134c67486014c1b54674dc5e21722c610224001e4a20"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2502,
+   "itemId": "DISTRIBUTION-L4-502",
+   "payloadSha256": "667a340eba7f735b4deb2503ad7120037f93028626556ceaf076edcf364c5d5d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2503,
+   "itemId": "DISTRIBUTION-L4-503",
+   "payloadSha256": "05d02b8634d12153936e1ae2e9ade1c2009cb888c1008bbd0be8448999e66e3e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2504,
+   "itemId": "DISTRIBUTION-L4-504",
+   "payloadSha256": "a596abf5ca17e45a19708b4f1d79253a58e7bea5efcf2685761f985d7402ba46"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2505,
+   "itemId": "DISTRIBUTION-L4-505",
+   "payloadSha256": "6a5f5727e34370304d30cdfb92063ee140d23ec78f67fd1500cb50aadb2235eb"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2506,
+   "itemId": "DISTRIBUTION-L4-506",
+   "payloadSha256": "b8657bb40f273099d47225432abbd86569e261123f952c3550c8ab8b25268255"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2507,
+   "itemId": "DISTRIBUTION-L4-507",
+   "payloadSha256": "d40026d81f388e4e4d8445560c5a9503b1b042ec3489633895ae51d5fdaac138"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2508,
+   "itemId": "DISTRIBUTION-L4-508",
+   "payloadSha256": "539ec5bab08c5db3f6d3957c1d214a7981e4cc247d73ebde95045b681ec847ca"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2509,
+   "itemId": "DISTRIBUTION-L4-509",
+   "payloadSha256": "8db6c292e6a04d4b24362410db095b16653d1adff1a2e54a5ee7166bbdfc0235"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2510,
+   "itemId": "DISTRIBUTION-L4-510",
+   "payloadSha256": "abdd7874faff233bdc37cfb82644e03129ba3ed09539d1281ebde340ac3166ea"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2511,
+   "itemId": "DISTRIBUTION-L4-511",
+   "payloadSha256": "630dd26e224b14b9b3cd92dc72088f6007b8392abd1b5288d6528eb947bc3a5e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2512,
+   "itemId": "DISTRIBUTION-L4-512",
+   "payloadSha256": "79fad1857443d93310102d403e1c957d5c605a826cfc4ea82a52545cf0b599ab"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2513,
+   "itemId": "DISTRIBUTION-L4-513",
+   "payloadSha256": "b2ecf22c2d9677325bb9aeb06815acb57fbaed3afea771a644ac439ab84a312b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2514,
+   "itemId": "DISTRIBUTION-L4-514",
+   "payloadSha256": "ca7002469c2413d49284e0a039d95691841a6cb933aba35fbdb89fcda32a7f4b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2515,
+   "itemId": "DISTRIBUTION-L4-515",
+   "payloadSha256": "b0545a2ab8bae044ceebfe5a12fec3a5040847053bf99340385087f15321d33f"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2516,
+   "itemId": "DISTRIBUTION-L4-516",
+   "payloadSha256": "39efcf6b386d0a3457a5bd552ae2dd3e9b395db964f473e35046e26e09432025"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2517,
+   "itemId": "DISTRIBUTION-L4-517",
+   "payloadSha256": "9ac484ec2f6729fbe661b278601bc363f610c2844a8bff5f8e2d83c6a2420935"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2518,
+   "itemId": "DISTRIBUTION-L4-518",
+   "payloadSha256": "8196f2d3e8a9c8973fc71ae307a84e365554f80c034f4631961e6e5f988db53e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2519,
+   "itemId": "DISTRIBUTION-L4-519",
+   "payloadSha256": "334029451c00955417a4a536ccdb45648204ca40cb54e77bd34c4d48ef976720"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2520,
+   "itemId": "DISTRIBUTION-L4-520",
+   "payloadSha256": "8ade6d3ce28fccdb457b9c2b94f5afe34da444d789b1005d36d6049ca7d07342"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2521,
+   "itemId": "DISTRIBUTION-L4-521",
+   "payloadSha256": "3e238cd89de85618dd974ad2ec35123e5a296aa3e483ada44f1a705c13ea928d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2522,
+   "itemId": "DISTRIBUTION-L4-522",
+   "payloadSha256": "64735a05b49b9b1a1b3c2fcdb8c3bbb1b39eee3adfe1cf6df897d8f10e588ea0"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2523,
+   "itemId": "DISTRIBUTION-L4-523",
+   "payloadSha256": "4123abf9440666643ca3796511eb62cca845df66ca67a7e1dc1d5b593f241f67"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2524,
+   "itemId": "DISTRIBUTION-L4-524",
+   "payloadSha256": "0c39bc3dd04683c49b2e853467528fa0a1e0cfeef8c650eed9ae205ef37aeb9b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2525,
+   "itemId": "DISTRIBUTION-L4-525",
+   "payloadSha256": "369ee1e20f2d212e5676d869acf99fd05f10ffd2622cf045992c1c80c593a16a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2526,
+   "itemId": "DISTRIBUTION-L4-526",
+   "payloadSha256": "ed5023e405887f5818defb041aa6f09445f80062fec3c5857ed2e2daf420d4ba"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2527,
+   "itemId": "DISTRIBUTION-L4-527",
+   "payloadSha256": "e0aa288e299d87f0be126470ba2148d034dcc81728e9b3744d0bde30fa42a1fe"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2528,
+   "itemId": "DISTRIBUTION-L4-528",
+   "payloadSha256": "c49414149af93d9675e380c1455074eecba55985045a1c45ae2dd5903bf8239e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2529,
+   "itemId": "DISTRIBUTION-L4-529",
+   "payloadSha256": "b9de5707f309f03a06a6a24961187c849deb76392e885937ad61900afe3340f5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2530,
+   "itemId": "DISTRIBUTION-L4-530",
+   "payloadSha256": "b331919ab692d64e3b3183def60e76c4075c51819aa435e7a4ddae403e4fa564"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2531,
+   "itemId": "DISTRIBUTION-L4-531",
+   "payloadSha256": "6d901fce05be248c6bede3daf0c42d5bbf0ab03fea10e48183eb0ff21cb92353"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2532,
+   "itemId": "DISTRIBUTION-L4-532",
+   "payloadSha256": "ed2fb0c3db4bbf06b2db5b3707cc0de5b01e79d7d0f56165f492170503d75413"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2533,
+   "itemId": "DISTRIBUTION-L4-533",
+   "payloadSha256": "2331e39a53406b58c6cee2eb1fb3275ffca875006c9cafc339904a687365226d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2534,
+   "itemId": "DISTRIBUTION-L4-534",
+   "payloadSha256": "4dc6c0f9446d301e7ab035ef5c72b770a6fd734aa84d1049bf622d0912c2a7cd"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2535,
+   "itemId": "DISTRIBUTION-L4-535",
+   "payloadSha256": "fee223bac082022b548d1e8a43bae7962d3876d00f0c1b786efd8bfdd03f8a1a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2536,
+   "itemId": "DISTRIBUTION-L4-536",
+   "payloadSha256": "8f86b3486e6ed57978cf3166c87e05370864b9d30460a30732d885a6db114e5b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2537,
+   "itemId": "DISTRIBUTION-L4-537",
+   "payloadSha256": "d20814a0c6d1436aba392bd5ad7214f258f5202122b8c6e95819602965796360"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2538,
+   "itemId": "DISTRIBUTION-L4-538",
+   "payloadSha256": "14f30882e9a0dc84a93015c0779be996a80441351727df62cc1d3be2e964f010"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2539,
+   "itemId": "DISTRIBUTION-L4-539",
+   "payloadSha256": "2170097ed0e36f7959ffffc2d3567015052c0e5698d010ba124c41414ac104e2"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2540,
+   "itemId": "DISTRIBUTION-L4-540",
+   "payloadSha256": "90386c4bb74b4fbba743b6cf95960865254a6f24fef9b369c3d2d4b7025ae0a5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2541,
+   "itemId": "DISTRIBUTION-L4-541",
+   "payloadSha256": "ef0654404de3b28f87a4c26e2bcc233e1b5c10e7b3b77e8b49cfdb3069b17f47"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2542,
+   "itemId": "DISTRIBUTION-L4-542",
+   "payloadSha256": "48e3caa13c78ba5c5a36c0cb4f6f228bf8bda7fab3048483b52bd7b360ef45f2"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2543,
+   "itemId": "DISTRIBUTION-L4-543",
+   "payloadSha256": "596b68a7004db4746b5d77e725afefdec85125cea049fe6da5cb9f1922e22f1d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2544,
+   "itemId": "DISTRIBUTION-L4-544",
+   "payloadSha256": "9e189a92fa268b27ea6edac16d342c9a864d87b3c0419c72093835ef89c3585a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2545,
+   "itemId": "DISTRIBUTION-L4-545",
+   "payloadSha256": "6dcd590b86f3c7e27e76e4a4528508f268bfd0aa9477ec38c8113a3d3c586343"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2546,
+   "itemId": "DISTRIBUTION-L4-546",
+   "payloadSha256": "7e0e0b9753887422efac4ce1f8174a000c222e1ca8115e828194c52db803f014"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2547,
+   "itemId": "DISTRIBUTION-L4-547",
+   "payloadSha256": "65850e6fd68a2056ee835bb94ebfe904bcfe54e344dea89728255634e28c1756"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2548,
+   "itemId": "DISTRIBUTION-L4-548",
+   "payloadSha256": "9d83899877b93c7b8d1f50880ca0bc16fcae2aee1ce9a38fa174e345a7cb2ce3"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2549,
+   "itemId": "DISTRIBUTION-L4-549",
+   "payloadSha256": "74c3991db81c41a50d892c73028b7b624f54f58c9940f25184e3f46ea1df0460"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2550,
+   "itemId": "DISTRIBUTION-L4-550",
+   "payloadSha256": "1fb3f01aceb32269013012744a5b743eea822a2ce5b87e992f5e518f695cefb8"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2551,
+   "itemId": "DISTRIBUTION-L4-551",
+   "payloadSha256": "7b4acdcf79b75440b7f65bc8abeff885b26eaacab892d2b4957378ac380012c5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2552,
+   "itemId": "DISTRIBUTION-L4-552",
+   "payloadSha256": "6e45c82148d8603f3c979e583ce49bae17e86b22655e27671cebdf25eed88441"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2553,
+   "itemId": "DISTRIBUTION-L4-553",
+   "payloadSha256": "64ed5fcb5563563e517850d2313970ce1089440acd7f376a7a22f46378fe9623"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2554,
+   "itemId": "DISTRIBUTION-L4-554",
+   "payloadSha256": "d19f637d51f1cec9b80f1d4cacb9c372e4530ddd3fbbbab7740689ec2ce9711c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2555,
+   "itemId": "DISTRIBUTION-L4-555",
+   "payloadSha256": "c9c1f3b304fb46a19cfc6861d0ce43a0bb562198caad2bf4e8c867b34a0ee4c5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2556,
+   "itemId": "DISTRIBUTION-L4-556",
+   "payloadSha256": "45035b3ce1f5c1ddacdf008a9002ac0b828b73abc2c6afc4282a300012b8344d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2557,
+   "itemId": "DISTRIBUTION-L4-557",
+   "payloadSha256": "677972121aefdcfc31264b3ed6e2262789c65501e0213c92de07d848e4f12285"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2558,
+   "itemId": "DISTRIBUTION-L4-558",
+   "payloadSha256": "288ad909197edac847da8f3cc9f35895cee15e06a18a199144443bb3ea8b795e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2559,
+   "itemId": "DISTRIBUTION-L4-559",
+   "payloadSha256": "62a60f0ec9b5ca8cf98daa285b5ddadfe596aa868e704cbd685e5c792854a1b3"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2560,
+   "itemId": "DISTRIBUTION-L4-560",
+   "payloadSha256": "2a291754ce0f3045bc39cc7dc939ed181135d080a4088c3dbbb38e32d141cceb"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2561,
+   "itemId": "DISTRIBUTION-L4-561",
+   "payloadSha256": "58ab1493f72945dbb3477a9ab42a21067319e4e975057a112e87d621f75e4f1b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2562,
+   "itemId": "DISTRIBUTION-L4-562",
+   "payloadSha256": "914f7fe006f848d1bdf671ce1c996371ddccf6ffea81ca2486c33d8d4cb1d906"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2563,
+   "itemId": "DISTRIBUTION-L4-563",
+   "payloadSha256": "c4f3dd543d1e62c436fc314464963347b74acf53975371e461153f1a3dd38e99"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2564,
+   "itemId": "DISTRIBUTION-L4-564",
+   "payloadSha256": "4daabb2839c2f47ee717239df1ebcdb35c388d2fef438fa837828f77d05bb76d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2565,
+   "itemId": "DISTRIBUTION-L4-565",
+   "payloadSha256": "fe09fb6a9184e4fb30b7e358dd27362423f9ca69259123480eee7248bd2e2430"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2566,
+   "itemId": "DISTRIBUTION-L4-566",
+   "payloadSha256": "8503f05d9079a47ae347b36d316dbf1a84f97c9a8c8207486ecb262417b6041b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2567,
+   "itemId": "DISTRIBUTION-L4-567",
+   "payloadSha256": "c8bd2fb319dd8aabffaafcdf03d7c9d7de10a347ce099badf346175e5e4f93ae"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2568,
+   "itemId": "DISTRIBUTION-L4-568",
+   "payloadSha256": "1de5f19826ee8ec966abdc844a2109b9cc340ab60fb96b6fe35aeac3fe707dc1"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2569,
+   "itemId": "DISTRIBUTION-L4-569",
+   "payloadSha256": "3ace763a4d7ed3b843c4b638a617b7ef223261f36f81dc518116de86b99a8f30"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2570,
+   "itemId": "DISTRIBUTION-L4-570",
+   "payloadSha256": "3ab3a6e7324a3dee0dab76c02ee4bb5499edbfb94dcdac0ec73669d6455da219"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2571,
+   "itemId": "DISTRIBUTION-L4-571",
+   "payloadSha256": "ca094675aaefc9ed368a387762a2142263918b4e34aea84a7202a849cb3de224"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2572,
+   "itemId": "DISTRIBUTION-L4-572",
+   "payloadSha256": "86edbf7488d77999d507fb5826049133f708ad1759fa6c392e627198a1d34981"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2573,
+   "itemId": "DISTRIBUTION-L4-573",
+   "payloadSha256": "9ea95d90927b6a8c571a2c66d8638e6db3ac9368e620c65ea0d54afe3b7af3d6"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2574,
+   "itemId": "DISTRIBUTION-L4-574",
+   "payloadSha256": "5ba2ff55a0f3c33f4a1b5187715b9eee8e50cde112ac96b3f63ae22782f0c3aa"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2575,
+   "itemId": "DISTRIBUTION-L4-575",
+   "payloadSha256": "14342d976fc9a5b88a4c91d078c8c7389bbf69338a04b041ee7107504e76b5de"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2576,
+   "itemId": "DISTRIBUTION-L4-576",
+   "payloadSha256": "60ce317716326dae3d7f85b40d1f88e530f7dcc2a03809ba0a7c0c4c0119fd42"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2577,
+   "itemId": "DISTRIBUTION-L4-577",
+   "payloadSha256": "b7a5f932fee1519d3a9ed366537cf42b0068a6fbf7c727ca4a087aa6b5787e87"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2578,
+   "itemId": "DISTRIBUTION-L4-578",
+   "payloadSha256": "9ff90abf3614475ecf2b9d9e52007e323dcfbf9ccb2c64014b4e6eb562ab267f"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2579,
+   "itemId": "DISTRIBUTION-L4-579",
+   "payloadSha256": "c75e6943c081ba780852ca8a33e2eccbf72de60f7a2db45ba70972804cc248fe"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2580,
+   "itemId": "DISTRIBUTION-L4-580",
+   "payloadSha256": "acb7b38a0bc17d5912c51f9d12a38eb837c4a6b75e9bbd98d5b84c4da95057f9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2581,
+   "itemId": "DISTRIBUTION-L4-581",
+   "payloadSha256": "8a388b42898ec54bc114e881e5094781091bbcf25d27f6c946d87b6da8b6c65a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2582,
+   "itemId": "DISTRIBUTION-L4-582",
+   "payloadSha256": "f460bffbeb31b02b54531cd31717a55b125e3df4ce86cd0d62b10de2e9c415f8"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2583,
+   "itemId": "DISTRIBUTION-L4-583",
+   "payloadSha256": "1e4b04624c6f6e7d787b99d8dc310d9736042fd76c3760b6cea756da3e1073e5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2584,
+   "itemId": "DISTRIBUTION-L4-584",
+   "payloadSha256": "a1210d6a5d53687092008d3a7cccc62d69e4363a414d7933f08f559570d2ed93"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2585,
+   "itemId": "DISTRIBUTION-L4-585",
+   "payloadSha256": "f54f6d8e5da87ff0740630cd8bb2e70c8fa92187cb0025fb89a4f170fdd1d277"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2586,
+   "itemId": "DISTRIBUTION-L4-586",
+   "payloadSha256": "cfea8e13b8fb506f2511a466ca4c47b5b16bd465872f9d3edda2d4b932c2834f"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2587,
+   "itemId": "DISTRIBUTION-L4-587",
+   "payloadSha256": "24bed5617aecc09639a8ef6ffd9061de2e64d328fa78eca41949b9c36148fd0f"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2588,
+   "itemId": "DISTRIBUTION-L4-588",
+   "payloadSha256": "841aa78f9a0402680d7268cebf08d5c5938e9cdfd98c738ea0b9f3d89b3e9139"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2589,
+   "itemId": "DISTRIBUTION-L4-589",
+   "payloadSha256": "70bfde9733f6c9cac88664c4b7dbdcb8f51fad60e09dfe4dd9ba4fffe1211ae1"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2590,
+   "itemId": "DISTRIBUTION-L4-590",
+   "payloadSha256": "d8b89e8f42df8da1f03bb01d87af533fad0776bc44a2953eee69fe783c40772f"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2591,
+   "itemId": "DISTRIBUTION-L4-591",
+   "payloadSha256": "104955efe8d9eb5629cc4eb66e792e29ff8c8108dc8d745ffebf5d6582906ab5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2592,
+   "itemId": "DISTRIBUTION-L4-592",
+   "payloadSha256": "39b9eaa869c5791e4c5fcd37c8053e71335dfca498d72561573c108f9155bbd6"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2593,
+   "itemId": "DISTRIBUTION-L4-593",
+   "payloadSha256": "c8d1fdec231e886ef325857c4721214b4172025aa914eeaef3421e9a6e164b83"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2594,
+   "itemId": "DISTRIBUTION-L4-594",
+   "payloadSha256": "0a6760054a9d6a6ddaac9a1f6fef9da5da452a0d052f525b19c215113eba3950"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2595,
+   "itemId": "DISTRIBUTION-L4-595",
+   "payloadSha256": "88513361a88afaa990188818a7716f43d053ffb2008b333b4c8a7341fc729c53"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2596,
+   "itemId": "DISTRIBUTION-L4-596",
+   "payloadSha256": "d883305f4f09a5e2290c1b92da614cf882eaf12aed91b55bc5d96d46deab6e4c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2597,
+   "itemId": "DISTRIBUTION-L4-597",
+   "payloadSha256": "73c4e5ff80f3795d748590344da9312154244fe5ccffe86970f79a47bc1f1f5e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2598,
+   "itemId": "DISTRIBUTION-L4-598",
+   "payloadSha256": "ca273c374c1d0f2c19e355224544dd1c6ff83d48d6cafff337df2fa65956651a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2599,
+   "itemId": "DISTRIBUTION-L4-599",
+   "payloadSha256": "c16d8af7b70e06c15d187e7946cf9f506ba342b74746e010580e0b9fad51a3c9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2600,
+   "itemId": "DISTRIBUTION-L4-600",
+   "payloadSha256": "7b35346fb9421b3e487ece3509a52d6a45679b36f8f1a705cfdbe1a6c42b5ea9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2601,
+   "itemId": "DISTRIBUTION-L4-601",
+   "payloadSha256": "839f9f80818a89c7c20c996519d04561cb2b017a41aa4a20c51a2354760f77e2"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2602,
+   "itemId": "DISTRIBUTION-L4-602",
+   "payloadSha256": "84ff2686206be17e01270336403bccc58c88e8d6c8e3c0e356a53860db96be88"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2603,
+   "itemId": "DISTRIBUTION-L4-603",
+   "payloadSha256": "19836ca0e8cce22492d340b2c77d1ce04765cade3aaa8265ace2e51ad9dc7461"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2604,
+   "itemId": "DISTRIBUTION-L4-604",
+   "payloadSha256": "3da217bcb5d5feb8d4f60a7b9fb2ebe4a25ba1994a4c970f9a89396d0d19053b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2605,
+   "itemId": "DISTRIBUTION-L4-605",
+   "payloadSha256": "57b455c0bb769d22cc2df75b835c760526457d11460ce0a5ff8b3533cbe1d31d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2606,
+   "itemId": "DISTRIBUTION-L4-606",
+   "payloadSha256": "ee1237a14e679671cb36ab5e999da74ff0e9dffc446ac17707c583dd9b9f66d4"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2607,
+   "itemId": "DISTRIBUTION-L4-607",
+   "payloadSha256": "7ea9452b7953afacb9a9fcef702480044d830e56410fc74d31971e9e766a2751"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2608,
+   "itemId": "DISTRIBUTION-L4-608",
+   "payloadSha256": "b6ffb86d709ebeebffb34a7863702611d036f175ef1c7e0d857db02e969df6e1"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2609,
+   "itemId": "DISTRIBUTION-L4-609",
+   "payloadSha256": "b7b8485331a9a2840a6d42bc24fb0de3e92214163dd1e8fc0c50fe24686bb8dd"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2610,
+   "itemId": "DISTRIBUTION-L4-610",
+   "payloadSha256": "e60ed03507fe97ef6cd8a6009a8c9956958d56ec1b8ec71dbf6ceee6a4cb2f22"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2611,
+   "itemId": "DISTRIBUTION-L4-611",
+   "payloadSha256": "3bedd5ddecd36e2631a260ff7483912b5696aadd14d0f0d1f9c9e08fb5363266"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2612,
+   "itemId": "DISTRIBUTION-L4-612",
+   "payloadSha256": "70ccb240b15a2077d3724282fc06457bb534b2054ccaaaf070531eb4499f7079"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2613,
+   "itemId": "DISTRIBUTION-L4-613",
+   "payloadSha256": "55ef7a711891ea77ca23a2d517da25ea36158feeeaf2f7dbc8ecdc6b9363f366"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2614,
+   "itemId": "DISTRIBUTION-L4-614",
+   "payloadSha256": "dd33eaa9a77d8d14bb5c9435773d5ab3b402115cfaa2daa8a81f03b776447a40"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2615,
+   "itemId": "DISTRIBUTION-L4-615",
+   "payloadSha256": "f720001cf337cd4a0842dd45625e8d9fb470480b4ef6cad9af06aa3efd68e01e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2616,
+   "itemId": "DISTRIBUTION-L4-616",
+   "payloadSha256": "a18e97d88935717b75ccc5ca2870a9491c46f9dbeb2e26fd943cec0cf964bf65"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2617,
+   "itemId": "DISTRIBUTION-L4-617",
+   "payloadSha256": "32a72ab68b50106418f32332c598b6e601a4af710499fc4e1cc0ec729ba07149"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2618,
+   "itemId": "DISTRIBUTION-L4-618",
+   "payloadSha256": "3ebe20a958a63c87bae0b50d184e79623fd98e6bcb43e0af0c62666acdb6a944"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2619,
+   "itemId": "DISTRIBUTION-L4-619",
+   "payloadSha256": "3d678e3daeb7bbb2930fc603a9dd491c6dd50fd199d7036992f52bbcebdeffcd"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2620,
+   "itemId": "DISTRIBUTION-L4-620",
+   "payloadSha256": "ef8b24203247da4cfc57d827e05854eb4f55fc1914b6b01e98734bafe129fa6e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2621,
+   "itemId": "DISTRIBUTION-L4-621",
+   "payloadSha256": "c0a2e8f4229ef401b07fa3552ce375f2c7dfa8d943cdd075619e2485886e4c07"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2622,
+   "itemId": "DISTRIBUTION-L4-622",
+   "payloadSha256": "26db1a35d31067001116c80b15a79d1a249808a2555175bb23f0411c89c9f03e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2623,
+   "itemId": "DISTRIBUTION-L4-623",
+   "payloadSha256": "eea591079548cf0e22ddff28811eea1732c972e6120abeae2d42f0272df9d5f1"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2624,
+   "itemId": "DISTRIBUTION-L4-624",
+   "payloadSha256": "79b38d5df63cd96a193b7e468da81042b3e2269e4a7e0c3eef8d55e25eb36203"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2625,
+   "itemId": "DISTRIBUTION-L4-625",
+   "payloadSha256": "d601c2cf85ca3eefd3964be6746e386dde40d8a099acf0a13be08cbf9e549474"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2626,
+   "itemId": "DISTRIBUTION-L4-626",
+   "payloadSha256": "a7ee40bdc701199285ee9651c8e22a0249f42b83c764f1d2fe27b78b393eb31a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2627,
+   "itemId": "DISTRIBUTION-L4-627",
+   "payloadSha256": "a7084676e24e6d194aad5de73e676bcb3c0ba5123c461f07fa3622b294a413a9"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2628,
+   "itemId": "DISTRIBUTION-L4-628",
+   "payloadSha256": "feb3842d6be9f70fc5e4fd69e6b0f74e699ec7f71436fa8d87e341dc92f1b363"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2629,
+   "itemId": "DISTRIBUTION-L4-629",
+   "payloadSha256": "90e07e0627d8357597c642e2999e39920d7f09f4e2ed6f3be67b32e350f1b97b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2630,
+   "itemId": "DISTRIBUTION-L4-630",
+   "payloadSha256": "5670321109995fe1cd7ab6ca87c17f5b24b613c2b939b505f5165ea4c75d581a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2631,
+   "itemId": "DISTRIBUTION-L4-631",
+   "payloadSha256": "903422079ed772cf1d8c56a2fc92bd24d72edcb0082696e3b796a13cd51c4fbb"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2632,
+   "itemId": "DISTRIBUTION-L4-632",
+   "payloadSha256": "c6deb47b2285b9b04be632fa5394d16f6327d803dd777ae37633a41b89d9dd83"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2633,
+   "itemId": "DISTRIBUTION-L4-633",
+   "payloadSha256": "987e4496fc8c226ead08b721af92a493cb53f18cbe171a1c22a0bd226800c649"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2634,
+   "itemId": "DISTRIBUTION-L4-634",
+   "payloadSha256": "83c82bf321ab017b3b273cacb51c23420fbb57e3fd2e9226ee69d9fd9762eb8a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2635,
+   "itemId": "DISTRIBUTION-L4-635",
+   "payloadSha256": "1e72c74873efb18ed17beb322fe2a1af225ef5eac09c87c11f73a0663fac8971"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2636,
+   "itemId": "DISTRIBUTION-L4-636",
+   "payloadSha256": "b410cf25d98e7f8eca661512102f6eaffc459918ce223b0136cd90e80ada9aee"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2637,
+   "itemId": "DISTRIBUTION-L4-637",
+   "payloadSha256": "3c29df5e29d6936a0b5c6d267dea15092b68da831fc16e3c14ac4d9e988304c7"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2638,
+   "itemId": "DISTRIBUTION-L4-638",
+   "payloadSha256": "740e3d58182315c51ea4e3f8138d1f06d66b64b0167074b0f2e12bfb4253b8ab"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2639,
+   "itemId": "DISTRIBUTION-L4-639",
+   "payloadSha256": "3687a298ef1dba5407e4652c54b28e081bf9cdd70218e5f0bf551fcef15ed930"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2640,
+   "itemId": "DISTRIBUTION-L4-640",
+   "payloadSha256": "2a8d9a501b132105836c0dc3121f7a3b41f5eecc5210d26fba847b69785eef9e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2641,
+   "itemId": "DISTRIBUTION-L4-641",
+   "payloadSha256": "6ea1df5696923bc2a28be6066c8674a4cced53e89e4727b461f70da7221ec392"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2642,
+   "itemId": "DISTRIBUTION-L4-642",
+   "payloadSha256": "a466ed826f7a123905cd37c6b7bbf6c213f49f6cbaaa4fa01f86cbdd17fe6376"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2643,
+   "itemId": "DISTRIBUTION-L4-643",
+   "payloadSha256": "33a8767bc1d62dd9a5131761d18f2f483c1c1c68da2c5a483368e9fb780094e5"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2644,
+   "itemId": "DISTRIBUTION-L4-644",
+   "payloadSha256": "9e6d06884f5737e2438d680574fdf4923bedebd80ca6d19b18b6cfbb07ab459c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2645,
+   "itemId": "DISTRIBUTION-L4-645",
+   "payloadSha256": "6c99f2140840e2c798cdd10d53d83036afa5482a3b6e1a65905e877a6cc277ac"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2646,
+   "itemId": "DISTRIBUTION-L4-646",
+   "payloadSha256": "ad873a585f26701aa81cdd428e9471b03f531db4c879e7cfc0bf75a7b8ef6f3e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2647,
+   "itemId": "DISTRIBUTION-L4-647",
+   "payloadSha256": "58b0c6efb3e52c419ec0415671291698f8789b09c45c4216fd89f33267754e85"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2648,
+   "itemId": "DISTRIBUTION-L4-648",
+   "payloadSha256": "7bfc2be0b43b67c4d433ab3b70de0ad7bca3aeae88aa79c0bc0646099fc5e62d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2649,
+   "itemId": "DISTRIBUTION-L4-649",
+   "payloadSha256": "12496d76f87ec990278c9308f74e3602c619a5defc0fe06f5300e650231c2b3e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2650,
+   "itemId": "DISTRIBUTION-L4-650",
+   "payloadSha256": "b37252f88583088b2bcf192245082acaaf4435e71c53aac380e1f0b466348ba6"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2651,
+   "itemId": "DISTRIBUTION-L4-651",
+   "payloadSha256": "9fbbb6ee865a2f4292e3e95acaef20de75ee2b57711916e3593e51e4db26356d"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2652,
+   "itemId": "DISTRIBUTION-L4-652",
+   "payloadSha256": "0cdb0d61e983641c8fc9ec8279840d703c9c35d9ad6c34d62d5ba2d9d00e8761"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2653,
+   "itemId": "DISTRIBUTION-L4-653",
+   "payloadSha256": "102981dcce871e916f902d5f564fdcd8b5055e59be9af798acff99c4178b0b45"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2654,
+   "itemId": "DISTRIBUTION-L4-654",
+   "payloadSha256": "2722326540a09279c877f9d137e79d8de5774cfc7f93e0b81812d3df96d3403c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2655,
+   "itemId": "DISTRIBUTION-L4-655",
+   "payloadSha256": "3093886eaae634fb9e6c1bef77cc6b63af370f2856f4756db1984464d2b940b6"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2656,
+   "itemId": "DISTRIBUTION-L4-656",
+   "payloadSha256": "78306e6c8be8b7db4b8ac180e91a691e4e9377227e44739532276a7f0f07d8f2"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2657,
+   "itemId": "DISTRIBUTION-L4-657",
+   "payloadSha256": "fe2e81b7b20a8a078d020e7e9b8de516f03cfc5ca6e43080f62d77d2d63a4054"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2658,
+   "itemId": "DISTRIBUTION-L4-658",
+   "payloadSha256": "5e79fb093c4047be773df15fee85bf4dd08da64d90631b892ed40c8da9778d9c"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2659,
+   "itemId": "DISTRIBUTION-L4-659",
+   "payloadSha256": "9887e90e62ef825bebdc89c6eb3804bba9ee4196fe1d5c43f252957f5a71304a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2660,
+   "itemId": "DISTRIBUTION-L4-660",
+   "payloadSha256": "056fe12890f1c164b6e970f33db821f33af58aac182ee99300cf920c3d621f24"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2661,
+   "itemId": "DISTRIBUTION-L4-661",
+   "payloadSha256": "5c63f8c6a4b461c675f334d23370808391baadd70507120100f87f7e7ee424d0"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2662,
+   "itemId": "DISTRIBUTION-L4-662",
+   "payloadSha256": "2a4706382670c25aff6a6b3e2ee01dd12767d73cc2ffde5a70ce4b1abc2da3ed"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2663,
+   "itemId": "DISTRIBUTION-L4-663",
+   "payloadSha256": "ebf2c8af966343a317450800c5f44193cbf8bde672395f45746b0a01d284f7d4"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2664,
+   "itemId": "DISTRIBUTION-L4-664",
+   "payloadSha256": "4386d1a200cddd817bdc458b11b1a5d575ce72867659e71e2085beb6a996664b"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2665,
+   "itemId": "DISTRIBUTION-L4-665",
+   "payloadSha256": "0c3229c3c584e3534511c8094aa4a8b5407cefe84c1160aa785982134df2a651"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2666,
+   "itemId": "DISTRIBUTION-L4-666",
+   "payloadSha256": "ffee49872a09902c85e6fca14ee336355562c8312e302101d75f3448a21e4d56"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2667,
+   "itemId": "DISTRIBUTION-L4-667",
+   "payloadSha256": "15a3b9bdec2de3551104c605d6d9265742c0323875790e912d99684b6ccad67e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2668,
+   "itemId": "DISTRIBUTION-L4-668",
+   "payloadSha256": "cded8a82c380b85747e1a4327e0b30d46b0bcfd4a6f482e2c9ca4f9b1a9e5a72"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2669,
+   "itemId": "DISTRIBUTION-L4-669",
+   "payloadSha256": "59a7cd8f2f2e74a48f716b45102f8e693c20595d64b9c38249f580af7ace14cf"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2670,
+   "itemId": "DISTRIBUTION-L4-670",
+   "payloadSha256": "e45853c9f974ff0ccb997b8e13cbf539f3b33065ccdf617c5ec3e9ddba7bd1ae"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2671,
+   "itemId": "DISTRIBUTION-L4-671",
+   "payloadSha256": "075e264e6e9a26d9ef2ba2492f8be35db0c9c8aa51017230a5bda3e712fd3a83"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2672,
+   "itemId": "DISTRIBUTION-L4-672",
+   "payloadSha256": "9c198429e98be59fa67cc60cdcc2191fe9a82442f78ed3620435cc6e004be506"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2673,
+   "itemId": "DISTRIBUTION-L4-673",
+   "payloadSha256": "df6dc1b3706c78f6893d17ecd293ac6e6026d74b1878aac6497552062bca2211"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2674,
+   "itemId": "DISTRIBUTION-L4-674",
+   "payloadSha256": "2251826ecd936341aab2d7981985ec2c05da563c6bcac999672fdb3a6b47873a"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2675,
+   "itemId": "DISTRIBUTION-L4-675",
+   "payloadSha256": "5e44f93724b9ca19790bb89ce5da9679246360218d9e96ea55847fdc6d9864fb"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2676,
+   "itemId": "DISTRIBUTION-L4-676",
+   "payloadSha256": "eab539d3ba33864975e4421f5a43dc94e61fbb20cf4bfcc9db74448d08bc46f2"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2677,
+   "itemId": "DISTRIBUTION-L4-677",
+   "payloadSha256": "68c9570483e79c6aebc48cf7c13295102e46881fdae5378929d35415b92e5975"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2678,
+   "itemId": "DISTRIBUTION-L4-678",
+   "payloadSha256": "4ff896ea87e2114248711d74fbd21064f2d29c015bc30a2bf35f47e056c77512"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2679,
+   "itemId": "DISTRIBUTION-L4-679",
+   "payloadSha256": "6f233e0fa0bdd06cd1fc3084603d3b0995a9b295c522ebfa32ad55b0b2e157a7"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2680,
+   "itemId": "DISTRIBUTION-L4-680",
+   "payloadSha256": "b4bcbf4e0039bdbbd52208a2b3523332771ac26ed688cffd237f2dd9090fa2b7"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2681,
+   "itemId": "DISTRIBUTION-L4-681",
+   "payloadSha256": "0c8a7a8f397beb99471ac77947aa61f03c29b6b4040c3b0e5e8d1d7f4c10ea14"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2682,
+   "itemId": "DISTRIBUTION-L4-682",
+   "payloadSha256": "977447ccc12b2b25b54f1218d383de7e8df0731aa46d6305c15a4a5566d870dd"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2683,
+   "itemId": "DISTRIBUTION-L4-683",
+   "payloadSha256": "03ade0f846cefb7dcfb98fca8bec69ecd39a5c73a1570b34a2a65441b7702aa8"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2684,
+   "itemId": "DISTRIBUTION-L4-684",
+   "payloadSha256": "59d1e4c7720af6a791caa9d4f51315efbec7d206d37e88ee4d8962c5eb65fe2e"
+  },
+  {
+   "bankKey": "class4-water-dist",
+   "questionNum": 2685,
+   "itemId": "DISTRIBUTION-L4-685",
+   "payloadSha256": "928f4c258a8b1382a10901e7e59eb629a77adaaa10ee9679fb5693b3f93923be"
+  }
+ ],
+ "engineeringVerification": {
+  "verifiedBy": "Manus engineering verification (not a new content review)",
+  "verifiedAtUtc": "2026-11-23T18:59:04Z",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
+  }
+ }
+}

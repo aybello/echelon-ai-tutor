@@ -16,7 +16,7 @@ export const organizationSchema = {
   ...provider,
   logo: LOGO_URL,
   description:
-    "Independent Canadian exam preparation for water and wastewater operators, with course-specific practice, mock exams, flashcards, process guides, and AI-supported explanations.",
+    "Independent Canadian provider of AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater, with Canadian courses and supported US preparation.",
   foundingDate: "2025",
   founder: {
     "@type": "Person",
@@ -29,12 +29,17 @@ export const organizationSchema = {
     contactType: "customer support",
     availableLanguage: "English",
   },
-  areaServed: { "@type": "Country", name: "Canada" },
+  areaServed: [
+    { "@type": "Country", name: "Canada" },
+    { "@type": "Country", name: "United States", description: "Supported operator exam-preparation courses and jurisdictions only." },
+  ],
   knowsAbout: [
+    "skilled-trades exam preparation",
     "water operator certification exam preparation",
     "wastewater operator certification exam preparation",
     "Ontario operator-in-training exam preparation",
     "Water Professionals International exam preparation",
+    "Ontario 309A Construction Electrician exam preparation",
   ],
 };
 
@@ -45,7 +50,7 @@ export const websiteSchema = {
   name: "Echelon Institute",
   url: SITE_URL,
   description:
-    "Canadian water and wastewater operator exam preparation with a free 15-question preview on every course.",
+    "AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams.",
   publisher: { "@id": `${SITE_URL}/#organization` },
   inLanguage: "en-CA",
 };
@@ -83,17 +88,17 @@ const faqs = [
   {
     question: "How can I try Echelon before paying?",
     answer:
-      "The first 15 questions on every course are available without an account or credit card. Full access requires an Individual Exam Pass or an assigned team licence.",
+      "Paid operator courses include a free practice preview without an account or credit card. Full access to those courses requires an Individual Exam Pass or an assigned team licence. Ontario 309A practice and mock exams are free.",
   },
   {
     question: "How does individual access work?",
     answer:
-      "An Individual Exam Pass is a one-time payment for one selected course with 12 months of access from successful payment. Current course pricing is shown on the pricing page.",
+      "For paid operator courses, an Individual Exam Pass is a one-time payment for one selected course with 12 months of access from successful payment. Current course pricing is shown on the pricing page. Ontario 309A practice and mock exams are free.",
   },
   {
     question: "Which certifications are supported?",
     answer:
-      "Echelon provides Ontario-specific OIT and Class 1–4 preparation plus WPI-aligned Class I–IV courses for treatment, distribution, and collection candidates. Candidates should confirm current requirements with their certifying authority.",
+      "Echelon provides Ontario-specific OIT and Class 1–4 operator preparation, WPI-aligned Class I–IV courses for treatment, distribution, and collection candidates in Canada and supported US jurisdictions, and Ontario 309A Construction Electrician preparation. Availability varies by course and jurisdiction; confirm current requirements with your certifying authority.",
   },
   {
     question: "Is Echelon affiliated with a certifying authority?",

@@ -227,6 +227,9 @@ async function withCourse(
     const authoredExamples = (contentResponses[course] as { examples?: Array<{ mode: string }> } | undefined)?.examples;
     if (authoredExamples?.length && authoredExamples[0].mode && authoredExamples[0].mode !== "rapid-swipe") {
       const labels: Record<string, string> = { "before-after": "Before/After", "cause-effect": "Cause Effect", "odd-one-out": "Odd-One-Out", "tap-the-flaw": "Tap-the-Flaw", "speed-match": "Speed-Match" };
+      const chooser = page.locator(".course-interactive__chooser");
+      await chooser.waitFor();
+      if (!(await chooser.evaluate(el => (el as HTMLDetailsElement).open))) await chooser.locator("summary").click();
       await page.getByRole("navigation", { name: "Choose a practice mode" }).getByRole("button", { name: new RegExp(`^${labels[authoredExamples[0].mode]}`) }).click();
     }
     await run(page);

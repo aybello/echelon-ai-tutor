@@ -1,0 +1,4851 @@
+{
+ "courseKey": "oit",
+ "version": "deep-20261121-v3",
+ "tasks": [
+  {
+   "id": "oit-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the volume in m3 of a rectangular wet well 3 m long, 2 m wide, and 1.5 m deep. Enter the exact unrounded number.",
+   "topicId": "wet-well-volume",
+   "level": "oit",
+   "assumptions": "Wet well dimensions: length = 3 m, width = 2 m, depth = 1.5 m. Provided formula: V = length x width x depth.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "V = length x width x depth"
+      },
+      {
+       "id": "opt2",
+       "label": "V = length / width x depth"
+      },
+      {
+       "id": "opt3",
+       "label": "V = length + width x depth"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: V = length x width x depth. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from multiplying m x m x m?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "m3"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in m3."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "V = 3 m x 2 m x 1.5 m"
+      },
+      {
+       "id": "opt2",
+       "label": "V = 3 m / 2 m x 1.5 m"
+      },
+      {
+       "id": "opt3",
+       "label": "V = 3 m + 2 m x 1.5 m"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: V = 3 m x 2 m x 1.5 m."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "9",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "V = 3 m x 2 m x 1.5 m = 9 m3."
+   }
+  },
+  {
+   "id": "oit-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the time in min to fill a wet well volume of 1800 L when the inflow is 150 L/min and a small outflow is 60 L/min, giving a net inflow of 90 L/min. Enter the exact unrounded number.",
+   "topicId": "wet-well-time",
+   "level": "oit",
+   "assumptions": "Wet well volume V = 1800 L, inflow = 150 L/min, and outflow = 60 L/min. Provided formula: t = V / (inflow - outflow).",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "t = V / (inflow - outflow)"
+      },
+      {
+       "id": "opt2",
+       "label": "t = V x (inflow - outflow)"
+      },
+      {
+       "id": "opt3",
+       "label": "t = V - (inflow - outflow)"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: t = V / (inflow - outflow). The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from dividing L by a net rate in L/min?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "min"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "m3"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in min."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "t = 1800 L / (150 L/min - 60 L/min)"
+      },
+      {
+       "id": "opt2",
+       "label": "t = 1800 L x (150 L/min - 60 L/min)"
+      },
+      {
+       "id": "opt3",
+       "label": "t = 1800 L - (150 L/min - 60 L/min)"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: t = 1800 L / (150 L/min - 60 L/min)."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in min.",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "L-min",
+      "label": "L/min"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "t = 1800 L / (150 L/min - 60 L/min) = 20 min."
+   }
+  },
+  {
+   "id": "oit-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the flow in m3/s in a sewer flowing at a velocity of 0.8 m/s with a cross sectional area of 0.5 m2. Enter the exact unrounded number.",
+   "topicId": "sewer-flow",
+   "level": "oit",
+   "assumptions": "Velocity v = 0.8 m/s and sewer area A = 0.5 m2. Provided formula: Q = v x A.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Q = v x A"
+      },
+      {
+       "id": "opt2",
+       "label": "Q = v / A"
+      },
+      {
+       "id": "opt3",
+       "label": "Q = v + A"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Q = v x A. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from multiplying m/s by m2?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "m3/s"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in m3/s."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Q = 0.8 m/s x 0.5 m2"
+      },
+      {
+       "id": "opt2",
+       "label": "Q = 0.8 m/s / 0.5 m2"
+      },
+      {
+       "id": "opt3",
+       "label": "Q = 0.8 m/s + 0.5 m2"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Q = 0.8 m/s x 0.5 m2."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in m3/s.",
+    "unitOptions": [
+     {
+      "id": "m3-s",
+      "label": "m3/s"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m-s",
+      "label": "m/s"
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     }
+    ],
+    "expected": "0.4",
+    "expectedUnitId": "m3-s",
+    "absoluteTolerance": "0",
+    "explanation": "Q = 0.8 m/s x 0.5 m2 = 0.4 m3/s."
+   }
+  },
+  {
+   "id": "oit-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Convert a sewer flow of 0.75 m3/s to L/s. Enter the exact unrounded number.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Flow Q = 0.75 m3/s. Conversion: 1 m3 = 1000 L. Provided formula: Q in L/s = Q in m3/s x 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Q in L/s = Q in m3/s x 1000"
+      },
+      {
+       "id": "opt2",
+       "label": "Q in L/s = Q in m3/s / 1000"
+      },
+      {
+       "id": "opt3",
+       "label": "Q in L/s = Q in m3/s + 1000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Q in L/s = Q in m3/s x 1000. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results after converting cubic meters to liters at the same per second rate?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "L/s"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in L/s."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Q = 0.75 m3/s x 1000"
+      },
+      {
+       "id": "opt2",
+       "label": "Q = 0.75 m3/s / 1000"
+      },
+      {
+       "id": "opt3",
+       "label": "Q = 0.75 m3/s + 1000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Q = 0.75 m3/s x 1000."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in L/s.",
+    "unitOptions": [
+     {
+      "id": "L-s",
+      "label": "L/s"
+     },
+     {
+      "id": "m3-s",
+      "label": "m3/s",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "750",
+    "expectedUnitId": "L-s",
+    "absoluteTolerance": "0",
+    "explanation": "Q = 0.75 m3/s x 1000 = 750 L/s."
+   }
+  },
+  {
+   "id": "oit-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the BOD mass in kg when 2000000 L of wastewater has a BOD concentration of 220 mg/L. Enter the exact unrounded number.",
+   "topicId": "bod-loading",
+   "level": "oit",
+   "assumptions": "Volume V = 2000000 L and BOD concentration = 220 mg/L. Conversion: 1000000 mg = 1 kg. Provided formula: mass in kg = concentration x V / 1000000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Mass in kg = concentration x V / 1000000"
+      },
+      {
+       "id": "opt2",
+       "label": "Mass in kg = concentration / V / 1000000"
+      },
+      {
+       "id": "opt3",
+       "label": "Mass in kg = concentration + V / 1000000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Mass in kg = concentration x V / 1000000. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results after converting the milligram mass to kilograms?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "kg"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in kg."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Mass = 220 mg/L x 2000000 L / 1000000"
+      },
+      {
+       "id": "opt2",
+       "label": "Mass = 220 mg/L / 2000000 L / 1000000"
+      },
+      {
+       "id": "opt3",
+       "label": "Mass = 220 mg/L + 2000000 L / 1000000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Mass = 220 mg/L x 2000000 L / 1000000."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg.",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg",
+      "label": "mg"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "440",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 220 mg/L x 2000000 L / 1000000 = 440 kg."
+   }
+  },
+  {
+   "id": "oit-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the sludge volume index in mL/g when the settled sludge volume is 240 mL/L and the MLSS concentration is 2000 mg/L. Enter the exact unrounded number.",
+   "topicId": "svi",
+   "level": "oit",
+   "assumptions": "Settled volume = 240 mL/L and MLSS = 2000 mg/L. Provided formula: SVI = settled volume x 1000 / MLSS.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "SVI = settled volume x 1000 / MLSS"
+      },
+      {
+       "id": "opt2",
+       "label": "SVI = settled volume / 1000 / MLSS"
+      },
+      {
+       "id": "opt3",
+       "label": "SVI = settled volume + 1000 / MLSS"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: SVI = settled volume x 1000 / MLSS. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from this settled volume to solids ratio?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "mL/g"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in mL/g."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "SVI = 240 mL/L x 1000 / 2000 mg/L"
+      },
+      {
+       "id": "opt2",
+       "label": "SVI = 240 mL/L / 1000 / 2000 mg/L"
+      },
+      {
+       "id": "opt3",
+       "label": "SVI = 240 mL/L + 1000 / 2000 mg/L"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: SVI = 240 mL/L x 1000 / 2000 mg/L."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in mL/g.",
+    "unitOptions": [
+     {
+      "id": "mL-g",
+      "label": "mL/g"
+     },
+     {
+      "id": "L-kg",
+      "label": "L/kg",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mL-L",
+      "label": "mL/L"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "120",
+    "expectedUnitId": "mL-g",
+    "absoluteTolerance": "0",
+    "explanation": "SVI = 240 mL/L x 1000 / 2000 mg/L = 120 mL/g."
+   }
+  },
+  {
+   "id": "oit-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the food to microorganism ratio in 1/day when the BOD load is 450 kg/day and the biomass is 3000 kg. Enter the exact unrounded number.",
+   "topicId": "fm-ratio",
+   "level": "oit",
+   "assumptions": "BOD load = 450 kg/day and biomass = 3000 kg. Provided formula: F/M = BOD load / biomass.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "F/M = BOD load / biomass"
+      },
+      {
+       "id": "opt2",
+       "label": "F/M = BOD load x biomass"
+      },
+      {
+       "id": "opt3",
+       "label": "F/M = BOD load - biomass"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: F/M = BOD load / biomass. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from dividing kg/day by kg?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "1/day"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in 1/day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "F/M = 450 kg/day / 3000 kg"
+      },
+      {
+       "id": "opt2",
+       "label": "F/M = 450 kg/day x 3000 kg"
+      },
+      {
+       "id": "opt3",
+       "label": "F/M = 450 kg/day - 3000 kg"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: F/M = 450 kg/day / 3000 kg."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in 1/day.",
+    "unitOptions": [
+     {
+      "id": "1-day",
+      "label": "1/day"
+     },
+     {
+      "id": "1-h",
+      "label": "1/h",
+      "toExpected": {
+       "numerator": "24",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "0.15",
+    "expectedUnitId": "1-day",
+    "absoluteTolerance": "0",
+    "explanation": "F/M = 450 kg/day / 3000 kg = 0.15 1/day."
+   }
+  },
+  {
+   "id": "oit-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids retention time in days when the solids in the system total 7200 kg and solids leave at 600 kg/day. Enter the exact unrounded number.",
+   "topicId": "srt",
+   "level": "oit",
+   "assumptions": "Solids in system = 7200 kg and solids leaving = 600 kg/day. Provided formula: SRT = solids in system / solids leaving per day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "SRT = solids in system / solids leaving per day"
+      },
+      {
+       "id": "opt2",
+       "label": "SRT = solids in system x solids leaving per day"
+      },
+      {
+       "id": "opt3",
+       "label": "SRT = solids in system - solids leaving per day"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: SRT = solids in system / solids leaving per day. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from dividing kg by kg/day?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "day"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "SRT = 7200 kg / (600 kg/day)"
+      },
+      {
+       "id": "opt2",
+       "label": "SRT = 7200 kg x (600 kg/day)"
+      },
+      {
+       "id": "opt3",
+       "label": "SRT = 7200 kg - (600 kg/day)"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: SRT = 7200 kg / (600 kg/day)."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in day.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "12",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "SRT = 7200 kg / (600 kg/day) = 12 day."
+   }
+  },
+  {
+   "id": "oit-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids mass in kg in 20 m3 of sludge at a solids concentration of 8000 mg/L. Enter the exact unrounded number.",
+   "topicId": "sludge-mass",
+   "level": "oit",
+   "assumptions": "Sludge volume V = 20 m3 and solids concentration = 8000 mg/L. Provided formula: mass in kg = concentration x V / 1000, using mg/L x m3 / 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Mass in kg = concentration x V / 1000"
+      },
+      {
+       "id": "opt2",
+       "label": "Mass in kg = concentration / V / 1000"
+      },
+      {
+       "id": "opt3",
+       "label": "Mass in kg = concentration + V / 1000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Mass in kg = concentration x V / 1000. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results after converting the milligram based mass to kilograms?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "kg"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in kg."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Mass = 8000 mg/L x 20 m3 / 1000"
+      },
+      {
+       "id": "opt2",
+       "label": "Mass = 8000 mg/L / 20 m3 / 1000"
+      },
+      {
+       "id": "opt3",
+       "label": "Mass = 8000 mg/L + 20 m3 / 1000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Mass = 8000 mg/L x 20 m3 / 1000."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg.",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "g",
+      "label": "g",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg",
+      "label": "mg"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "160",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 8000 mg/L x 20 m3 / 1000 = 160 kg."
+   }
+  },
+  {
+   "id": "oit-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the percent solids of a sludge sample that contains 40 kg of solids in a total sample mass of 1000 kg. Enter the exact unrounded number.",
+   "topicId": "percent-solids",
+   "level": "oit",
+   "assumptions": "Solids mass = 40 kg and total sample mass = 1000 kg. Provided formula: percent solids = solids mass / total mass x 100.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Percent solids = solids mass / total mass x 100"
+      },
+      {
+       "id": "opt2",
+       "label": "Percent solids = solids mass x total mass x 100"
+      },
+      {
+       "id": "opt3",
+       "label": "Percent solids = solids mass - total mass x 100"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Percent solids = solids mass / total mass x 100. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit expresses a mass ratio as a percentage?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "%"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in %."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Percent = 40 kg / 1000 kg x 100"
+      },
+      {
+       "id": "opt2",
+       "label": "Percent = 40 kg x 1000 kg x 100"
+      },
+      {
+       "id": "opt3",
+       "label": "Percent = 40 kg - 1000 kg x 100"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Percent = 40 kg / 1000 kg x 100."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in %.",
+    "unitOptions": [
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "g",
+      "label": "g"
+     }
+    ],
+    "expected": "4",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Percent = 40 kg / 1000 kg x 100 = 4 %."
+   }
+  },
+  {
+   "id": "oit-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the dilution factor when a 10 mL sample is made up to a total bottle volume of 300 mL. Enter the exact unrounded number.",
+   "topicId": "dilution",
+   "level": "oit",
+   "assumptions": "Sample volume = 10 mL and total diluted volume = 300 mL. Provided formula: dilution factor = total volume / sample volume.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Dilution factor = total volume / sample volume"
+      },
+      {
+       "id": "opt2",
+       "label": "Dilution factor = total volume x sample volume"
+      },
+      {
+       "id": "opt3",
+       "label": "Dilution factor = total volume - sample volume"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Dilution factor = total volume / sample volume. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit expresses this volume ratio?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "dilution factor"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in dilution factor."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Factor = 300 mL / 10 mL"
+      },
+      {
+       "id": "opt2",
+       "label": "Factor = 300 mL x 10 mL"
+      },
+      {
+       "id": "opt3",
+       "label": "Factor = 300 mL - 10 mL"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Factor = 300 mL / 10 mL."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in dilution factor.",
+    "unitOptions": [
+     {
+      "id": "ratio",
+      "label": "dilution factor"
+     },
+     {
+      "id": "mL",
+      "label": "mL"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "ratio",
+    "absoluteTolerance": "0",
+    "explanation": "Factor = 300 mL / 10 mL = 30 dilution factor."
+   }
+  },
+  {
+   "id": "oit-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the chlorine dosage in mg/L for wastewater disinfection when the demand is 2 mg/L and the target residual is 1 mg/L. Enter the exact unrounded number.",
+   "topicId": "chlorine-dosage",
+   "level": "oit",
+   "assumptions": "Chlorine demand = 2 mg/L and target residual = 1 mg/L. Provided formula: dosage = demand + residual.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Dosage = demand + residual"
+      },
+      {
+       "id": "opt2",
+       "label": "Dosage = demand - residual"
+      },
+      {
+       "id": "opt3",
+       "label": "Dosage = demand x residual"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Dosage = demand + residual. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit do demand and residual share in this addition?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "mg/L"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in mg/L."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Dosage = 2 mg/L + 1 mg/L"
+      },
+      {
+       "id": "opt2",
+       "label": "Dosage = 2 mg/L - 1 mg/L"
+      },
+      {
+       "id": "opt3",
+       "label": "Dosage = 2 mg/L x 1 mg/L"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Dosage = 2 mg/L + 1 mg/L."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in mg/L.",
+    "unitOptions": [
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     },
+     {
+      "id": "g-L",
+      "label": "g/L",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "mg",
+      "label": "mg"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "3",
+    "expectedUnitId": "mg-L",
+    "absoluteTolerance": "0",
+    "explanation": "Dosage = 2 mg/L + 1 mg/L = 3 mg/L."
+   }
+  },
+  {
+   "id": "oit-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the chlorine use in kg/day for a dose of 3 mg/L applied to an effluent flow of 1000000 L/day. Enter the exact unrounded number.",
+   "topicId": "chlorine-mass",
+   "level": "oit",
+   "assumptions": "Dose D = 3 mg/L and flow Q = 1000000 L/day. Conversion: 1000000 mg = 1 kg. Provided formula: mass in kg/day = D x Q / 1000000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Mass in kg/day = D x Q / 1000000"
+      },
+      {
+       "id": "opt2",
+       "label": "Mass in kg/day = D / Q / 1000000"
+      },
+      {
+       "id": "opt3",
+       "label": "Mass in kg/day = D + Q / 1000000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Mass in kg/day = D x Q / 1000000. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results after converting the daily milligram mass to kilograms?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "kg/day"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in kg/day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Mass = 3 mg/L x 1000000 L/day / 1000000"
+      },
+      {
+       "id": "opt2",
+       "label": "Mass = 3 mg/L / 1000000 L/day / 1000000"
+      },
+      {
+       "id": "opt3",
+       "label": "Mass = 3 mg/L + 1000000 L/day / 1000000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Mass = 3 mg/L x 1000000 L/day / 1000000."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/day.",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "mg-day",
+      "label": "mg/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     }
+    ],
+    "expected": "3",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Mass = 3 mg/L x 1000000 L/day / 1000000 = 3 kg/day."
+   }
+  },
+  {
+   "id": "oit-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the grit volume in m3 collected over 7 days at a grit production rate of 0.05 m3/day. Enter the exact unrounded number.",
+   "topicId": "grit-volume",
+   "level": "oit",
+   "assumptions": "Grit rate = 0.05 m3/day and period = 7 days. Provided formula: V = rate x time.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "V = rate x time"
+      },
+      {
+       "id": "opt2",
+       "label": "V = rate / time"
+      },
+      {
+       "id": "opt3",
+       "label": "V = rate + time"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: V = rate x time. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from multiplying m3/day by day?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "m3"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in m3."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "V = 0.05 m3/day x 7 day"
+      },
+      {
+       "id": "opt2",
+       "label": "V = 0.05 m3/day / 7 day"
+      },
+      {
+       "id": "opt3",
+       "label": "V = 0.05 m3/day + 7 day"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: V = 0.05 m3/day x 7 day."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in m3.",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "day",
+      "label": "day"
+     }
+    ],
+    "expected": "0.35",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "V = 0.05 m3/day x 7 day = 0.35 m3."
+   }
+  },
+  {
+   "id": "oit-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the detention time in days for a primary tank of 90 m3 receiving a flow of 45 m3/day. Enter the exact unrounded number.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "Tank volume V = 90 m3 and flow Q = 45 m3/day. Provided formula: t = V / Q.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "t = V / Q"
+      },
+      {
+       "id": "opt2",
+       "label": "t = V x Q"
+      },
+      {
+       "id": "opt3",
+       "label": "t = V - Q"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: t = V / Q. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from dividing m3 by m3/day?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "day"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "t = 90 m3 / (45 m3/day)"
+      },
+      {
+       "id": "opt2",
+       "label": "t = 90 m3 x (45 m3/day)"
+      },
+      {
+       "id": "opt3",
+       "label": "t = 90 m3 - (45 m3/day)"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: t = 90 m3 / (45 m3/day)."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in day.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "2",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "t = 90 m3 / (45 m3/day) = 2 day."
+   }
+  },
+  {
+   "id": "oit-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the weir loading rate in m3/m/day for a secondary clarifier with a flow of 1200 m3/day and a weir length of 40 m. Enter the exact unrounded number.",
+   "topicId": "weir-loading",
+   "level": "oit",
+   "assumptions": "Flow Q = 1200 m3/day and weir length = 40 m. Provided formula: weir loading = Q / weir length.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Weir loading = Q / weir length"
+      },
+      {
+       "id": "opt2",
+       "label": "Weir loading = Q x weir length"
+      },
+      {
+       "id": "opt3",
+       "label": "Weir loading = Q - weir length"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Weir loading = Q / weir length. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from dividing m3/day by m?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "m3/m/day"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in m3/m/day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Loading = 1200 m3/day / 40 m"
+      },
+      {
+       "id": "opt2",
+       "label": "Loading = 1200 m3/day x 40 m"
+      },
+      {
+       "id": "opt3",
+       "label": "Loading = 1200 m3/day - 40 m"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Loading = 1200 m3/day / 40 m."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in m3/m/day.",
+    "unitOptions": [
+     {
+      "id": "m3-m-day",
+      "label": "m3/m/day"
+     },
+     {
+      "id": "L-m-day",
+      "label": "L/m/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "m",
+      "label": "m"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "m3-m-day",
+    "absoluteTolerance": "0",
+    "explanation": "Loading = 1200 m3/day / 40 m = 30 m3/m/day."
+   }
+  },
+  {
+   "id": "oit-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A pump rated at 10 L/s must move 108000 L. Find the run time in h. Enter the exact unrounded number.",
+   "topicId": "pump-run-time",
+   "level": "oit",
+   "assumptions": "Volume V = 108000 L and pumping rate Q = 10 L/s. Conversion: 1 h = 3600 s. Provided formula: t in h = V / Q / 3600.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "t in h = V / Q / 3600"
+      },
+      {
+       "id": "opt2",
+       "label": "t in h = V x Q / 3600"
+      },
+      {
+       "id": "opt3",
+       "label": "t in h = V - Q / 3600"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: t in h = V / Q / 3600. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results after converting the pumping time in seconds to hours?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "h"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in h."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "t = 108000 L / (10 L/s) / 3600"
+      },
+      {
+       "id": "opt2",
+       "label": "t = 108000 L x (10 L/s) / 3600"
+      },
+      {
+       "id": "opt3",
+       "label": "t = 108000 L - (10 L/s) / 3600"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: t = 108000 L / (10 L/s) / 3600."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in h.",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "L-s",
+      "label": "L/s"
+     }
+    ],
+    "expected": "3",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "t = 108000 L / (10 L/s) / 3600 = 3 h."
+   }
+  },
+  {
+   "id": "oit-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Convert a wastewater flow of 1200 L/min to m3/h. Enter the exact unrounded number.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Flow Q = 1200 L/min. Conversions: 1 h = 60 min and 1000 L = 1 m3. Provided formula: Q in m3/h = Q in L/min x 60 / 1000.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Q in m3/h = Q in L/min x 60 / 1000"
+      },
+      {
+       "id": "opt2",
+       "label": "Q in m3/h = Q in L/min / 60 / 1000"
+      },
+      {
+       "id": "opt3",
+       "label": "Q in m3/h = Q in L/min + 60 / 1000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Q in m3/h = Q in L/min x 60 / 1000. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results after converting minutes to hours and liters to cubic meters?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "m3/h"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in m3/h."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Q = 1200 L/min x 60 / 1000"
+      },
+      {
+       "id": "opt2",
+       "label": "Q = 1200 L/min / 60 / 1000"
+      },
+      {
+       "id": "opt3",
+       "label": "Q = 1200 L/min + 60 / 1000"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Q = 1200 L/min x 60 / 1000."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in m3/h.",
+    "unitOptions": [
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "L-min",
+      "label": "L/min",
+      "toExpected": {
+       "numerator": "3",
+       "denominator": "50"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "72",
+    "expectedUnitId": "m3-h",
+    "absoluteTolerance": "0",
+    "explanation": "Q = 1200 L/min x 60 / 1000 = 72 m3/h."
+   }
+  },
+  {
+   "id": "oit-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the solids loading rate in kg/m2/day for a clarifier receiving a solids load of 600 kg/day over a surface area of 30 m2. Enter the exact unrounded number.",
+   "topicId": "solids-loading",
+   "level": "oit",
+   "assumptions": "Solids load = 600 kg/day and surface area A = 30 m2. Provided formula: solids loading = load / A.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Which formula gives the required result?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Solids loading = load / A"
+      },
+      {
+       "id": "opt2",
+       "label": "Solids loading = load x A"
+      },
+      {
+       "id": "opt3",
+       "label": "Solids loading = load - A"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Use the stated relationship: Solids loading = load / A. The other choices change the operation and do not match it."
+    },
+    {
+     "id": "units",
+     "prompt": "What unit results from dividing kg/day by m2?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "kg/m2/day"
+      },
+      {
+       "id": "opt2",
+       "label": "L"
+      },
+      {
+       "id": "opt3",
+       "label": "min"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "The result of this calculation is expressed in kg/m2/day."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Which substitution uses the given values correctly?",
+     "options": [
+      {
+       "id": "opt1",
+       "label": "Loading = 600 kg/day / 30 m2"
+      },
+      {
+       "id": "opt2",
+       "label": "Loading = 600 kg/day x 30 m2"
+      },
+      {
+       "id": "opt3",
+       "label": "Loading = 600 kg/day - 30 m2"
+      }
+     ],
+     "correctOptionId": "opt1",
+     "explanation": "Substitute the given values exactly as stated: Loading = 600 kg/day / 30 m2."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact result in kg/m2/day.",
+    "unitOptions": [
+     {
+      "id": "kg-m2-day",
+      "label": "kg/m2/day"
+     },
+     {
+      "id": "g-m2-day",
+      "label": "g/m2/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "kg-m2-day",
+    "absoluteTolerance": "0",
+    "explanation": "Loading = 600 kg/day / 30 m2 = 20 kg/m2/day."
+   }
+  },
+  {
+   "id": "oit-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time for a contact tank.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "Tank volume V = 2400 L, flow Q = 30 L/min. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 2400 L, Q = 30 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "t = Q / V"
+    },
+    {
+     "id": "l3",
+     "label": "t = 30 / 2400"
+    },
+    {
+     "id": "l4",
+     "label": "t = 0.0125 min"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "t = V / Q",
+   "explanation": "Line 2 reverses the detention formula. Detention time is volume divided by flow: 2400 L / 30 L/min = 80 min."
+  },
+  {
+   "id": "oit-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time in hours for a clearwell.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "Clearwell volume V = 36 m3, flow Q = 12 m3/h. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 36 m3, Q = 12 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 36 m3 / (12 m3/h)"
+    },
+    {
+     "id": "l4",
+     "label": "t = 4 h"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 36 m3 / (12 m3/h) = 3 h",
+   "explanation": "Lines 1 to 3 are correct. The arithmetic in line 4 is wrong: 36 / 12 = 3, so the detention time is 3 h."
+  },
+  {
+   "id": "oit-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a flow from L/min to m3/h.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Flow Q = 120 L/min. Conversions: 1 h = 60 min, 1 m3 = 1000 L.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 120 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "Flow per hour = 120 L/min x 60 min/h = 7200 L/h"
+    },
+    {
+     "id": "l3",
+     "label": "Flow in m3/h = 7200 L/h x 1000 L/m3"
+    },
+    {
+     "id": "l4",
+     "label": "Flow = 7200000 m3/h"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Flow in m3/h = 7200 L/h / (1000 L/m3) = 7.2 m3/h",
+   "explanation": "Lines 1 and 2 are correct. To convert L to m3, divide by 1000, not multiply: 7200 / 1000 = 7.2 m3/h."
+  },
+  {
+   "id": "oit-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a daily flow to L/min.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Daily flow = 288 m3/d. Conversions: 1 m3 = 1000 L, 1 d = 1440 min.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: flow = 288 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Volume per day = 288 x 1000 = 288000 L/d"
+    },
+    {
+     "id": "l3",
+     "label": "Q = 288000 L/d x 1440 min/d"
+    },
+    {
+     "id": "l4",
+     "label": "Q = 414720000 L/min"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Q = 288000 L/d / (1440 min/d) = 200 L/min",
+   "explanation": "Lines 1 and 2 are correct. A rate per day is divided by minutes per day to get a rate per minute: 288000 / 1440 = 200 L/min."
+  },
+  {
+   "id": "oit-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the cross-sectional area of a pipe.",
+   "topicId": "pipe-volume",
+   "level": "oit",
+   "assumptions": "Pipe diameter = 1 m, so radius = 0.5 m. Use pi = 3.14. Formula: A = pi x r x r.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: diameter = 1 m, radius = 0.5 m, pi = 3.14"
+    },
+    {
+     "id": "l2",
+     "label": "A = pi x r x r"
+    },
+    {
+     "id": "l3",
+     "label": "A = 3.14 x 1 m x 1 m"
+    },
+    {
+     "id": "l4",
+     "label": "A = 3.14 m2"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "A = 3.14 x 0.5 m x 0.5 m = 0.785 m2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 substitutes the diameter 1 m instead of the radius 0.5 m: 3.14 x 0.5 x 0.5 = 0.785 m2."
+  },
+  {
+   "id": "oit-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding velocity in a pipe.",
+   "topicId": "pipe-velocity",
+   "level": "oit",
+   "assumptions": "Flow Q = 0.5 m3/s, pipe area A = 0.25 m2. Formula: v = Q / A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 0.5 m3/s, A = 0.25 m2"
+    },
+    {
+     "id": "l2",
+     "label": "v = Q / A"
+    },
+    {
+     "id": "l3",
+     "label": "v = 0.25 m2 / (0.5 m3/s)"
+    },
+    {
+     "id": "l4",
+     "label": "v = 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "v = 0.5 m3/s / 0.25 m2 = 2 m/s",
+   "explanation": "Lines 1 and 2 are correct. Line 3 inverts the substitution, placing area over flow. The correct order gives 0.5 / 0.25 = 2 m/s."
+  },
+  {
+   "id": "oit-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding mass of BOD removed per day.",
+   "topicId": "bod-removal",
+   "level": "oit",
+   "assumptions": "Influent BOD load = 350 kg/d, effluent BOD load = 50 kg/d. Formula: removed = influent load - effluent load.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: in load = 350 kg/d, out load = 50 kg/d"
+    },
+    {
+     "id": "l2",
+     "label": "Removed = in - out"
+    },
+    {
+     "id": "l3",
+     "label": "Removed = 350 - 50"
+    },
+    {
+     "id": "l4",
+     "label": "Removed = 400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Removed = 350 - 50 = 300 kg/d",
+   "explanation": "Lines 1 to 3 are correct, including the subtraction setup. Line 4 adds in the result instead of subtracting: 350 - 50 = 300 kg/d."
+  },
+  {
+   "id": "oit-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a pipe volume in litres.",
+   "topicId": "pipe-volume",
+   "level": "oit",
+   "assumptions": "Pipe area A = 0.4 m2, length L = 25 m. Formula: V = A x L. Conversion: 1 m3 = 1000 L.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: A = 0.4 m2, L = 25 m"
+    },
+    {
+     "id": "l2",
+     "label": "V = A x L"
+    },
+    {
+     "id": "l3",
+     "label": "V = 0.4 m2 x 25 m = 10 m3"
+    },
+    {
+     "id": "l4",
+     "label": "V = 10 L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "V = 10 m3 x (1000 L/m3) = 10000 L",
+   "explanation": "Lines 1 to 3 are correct, giving 10 m3. Line 4 forgets to convert m3 to L: 10 x 1000 = 10000 L."
+  },
+  {
+   "id": "oit-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding daily chemical mass in kg.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "Dose = 20 mg/L, flow = 500 m3/d. Formula: mass in kg/d = dose x flow / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dose = 20 mg/L, flow = 500 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Mass = dose x flow / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Mass = 20 x 500 / 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 10000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Mass = 20 x 500 / 1000 = 10 kg/d",
+   "explanation": "Lines 1 to 3 are correct. Line 4 ignores the division by 1000 in the substitution: 20 x 500 / 1000 = 10 kg/d."
+  },
+  {
+   "id": "oit-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding daily alum mass.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "Alum dose = 12 mg/L, flow = 2500 m3/d. Formula: mass in kg/d = dose x flow / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dose = 12 mg/L, flow = 2500 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Mass = dose / flow x 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Mass = 12 / 2500 x 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 4.8 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Mass = dose x flow / 1000",
+   "explanation": "Line 2 uses the wrong formula, dividing dose by flow. The correct formula gives 12 x 2500 / 1000 = 30 kg/d."
+  },
+  {
+   "id": "oit-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding chlorine demand.",
+   "topicId": "chlorine-demand",
+   "level": "oit",
+   "assumptions": "Chlorine dose = 2.4 mg/L, residual = 0.4 mg/L. Formula: demand = dose - residual.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dose = 2.4 mg/L, residual = 0.4 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Demand = dose - residual"
+    },
+    {
+     "id": "l3",
+     "label": "Demand = 2.4 mg/L + 0.4 mg/L"
+    },
+    {
+     "id": "l4",
+     "label": "Demand = 2.8 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Demand = 2.4 mg/L - 0.4 mg/L = 2 mg/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 adds instead of subtracting: 2.4 - 0.4 = 2 mg/L."
+  },
+  {
+   "id": "oit-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the chlorine dose needed.",
+   "topicId": "chlorine-dose",
+   "level": "oit",
+   "assumptions": "Chlorine demand = 1.8 mg/L, target residual = 0.6 mg/L. Formula: dose = demand + residual.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: demand = 1.8 mg/L, residual = 0.6 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Dose = demand + residual"
+    },
+    {
+     "id": "l3",
+     "label": "Dose = 1.8 mg/L - 0.6 mg/L"
+    },
+    {
+     "id": "l4",
+     "label": "Dose = 1.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Dose = 1.8 mg/L + 0.6 mg/L = 2.4 mg/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 subtracts instead of adding: 1.8 + 0.6 = 2.4 mg/L."
+  },
+  {
+   "id": "oit-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when calculating a CT value.",
+   "topicId": "ct-value",
+   "level": "oit",
+   "assumptions": "Free chlorine C = 0.5 mg/L, contact time t = 40 min. Formula: CT = C x t.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: C = 0.5 mg/L, t = 40 min"
+    },
+    {
+     "id": "l2",
+     "label": "CT = C / t"
+    },
+    {
+     "id": "l3",
+     "label": "CT = 0.5 / 40"
+    },
+    {
+     "id": "l4",
+     "label": "CT = 0.0125 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "CT = C x t",
+   "explanation": "Line 2 divides instead of multiplying. CT is concentration multiplied by time: 0.5 x 40 = 20 mg min/L."
+  },
+  {
+   "id": "oit-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when calculating a CT value for a contact chamber.",
+   "topicId": "ct-value",
+   "level": "oit",
+   "assumptions": "Free chlorine C = 2 mg/L, contact time t = 30 min. Formula: CT = C x t.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: C = 2 mg/L, t = 30 min"
+    },
+    {
+     "id": "l2",
+     "label": "CT = C x t"
+    },
+    {
+     "id": "l3",
+     "label": "CT = 2 mg/L x 30 min"
+    },
+    {
+     "id": "l4",
+     "label": "CT = 50 mg min/L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "CT = 2 mg/L x 30 min = 60 mg min/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 2 x 30 = 60, not 50."
+  },
+  {
+   "id": "oit-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a filter loading rate.",
+   "topicId": "filter-loading",
+   "level": "oit",
+   "assumptions": "Flow Q = 600 m3/d, filter area A = 30 m2. Formula: loading = Q / A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 600 m3/d, A = 30 m2"
+    },
+    {
+     "id": "l2",
+     "label": "Loading = Q / A"
+    },
+    {
+     "id": "l3",
+     "label": "Loading = 30 m2 / (600 m3/d)"
+    },
+    {
+     "id": "l4",
+     "label": "Loading = 0.05 m/d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Loading = 600 m3/d / 30 m2 = 20 m/d",
+   "explanation": "Lines 1 and 2 are correct. Line 3 inverts the substitution. The correct order gives 600 / 30 = 20 m/d."
+  },
+  {
+   "id": "oit-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a filter loading rate.",
+   "topicId": "filter-loading",
+   "level": "oit",
+   "assumptions": "Flow Q = 300 m3/d, filter is 5 m by 3 m. Formula: loading = Q / A, A = length x width.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 300 m3/d, filter = 5 m by 3 m"
+    },
+    {
+     "id": "l2",
+     "label": "A = 5 m x 3 m = 15 m2"
+    },
+    {
+     "id": "l3",
+     "label": "Loading = Q / A"
+    },
+    {
+     "id": "l4",
+     "label": "Loading = 300 / 15 = 25 m/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Loading = 300 / 15 = 20 m/d",
+   "explanation": "Lines 1 to 3 are correct, including the area of 15 m2. Line 4 has an arithmetic slip: 300 / 15 = 20, not 25."
+  },
+  {
+   "id": "oit-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the base area of a circular tank.",
+   "topicId": "tank-volume",
+   "level": "oit",
+   "assumptions": "Tank diameter = 6 m, so radius = 3 m. Use pi = 3.14. Formula for base area: A = pi x r x r.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: diameter = 6 m, radius = 3 m, pi = 3.14"
+    },
+    {
+     "id": "l2",
+     "label": "Base area A = 2 x pi x r"
+    },
+    {
+     "id": "l3",
+     "label": "A = 2 x 3.14 x 3 m"
+    },
+    {
+     "id": "l4",
+     "label": "A = 18.84 m2"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Base area A = pi x r x r = 3.14 x 3 m x 3 m = 28.26 m2",
+   "explanation": "Line 2 uses the circumference formula 2 x pi x r instead of the area formula pi x r x r: 3.14 x 3 x 3 = 28.26 m2."
+  },
+  {
+   "id": "oit-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a tank volume to litres.",
+   "topicId": "tank-volume",
+   "level": "oit",
+   "assumptions": "Rectangular tank 6 m by 4 m by 2 m deep. Formula: V = length x width x depth. Conversion: 1 m3 = 1000 L.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: length = 6 m, width = 4 m, depth = 2 m"
+    },
+    {
+     "id": "l2",
+     "label": "V = 6 m x 4 m x 2 m"
+    },
+    {
+     "id": "l3",
+     "label": "V = 48 m3"
+    },
+    {
+     "id": "l4",
+     "label": "V = 48 / 1000 = 0.048 L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "V = 48 m3 x (1000 L/m3) = 48000 L",
+   "explanation": "Lines 1 to 3 are correct, giving 48 m3. To convert m3 to L, multiply by 1000, not divide: 48 x 1000 = 48000 L."
+  },
+  {
+   "id": "oit-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding how long a pump must run.",
+   "topicId": "pump-run-time",
+   "level": "oit",
+   "assumptions": "Volume to deliver V = 2400 L, pump rate Q = 40 L/min. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 2400 L, Q = 40 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "t = V x Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 2400 x 40"
+    },
+    {
+     "id": "l4",
+     "label": "t = 96000 min"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "t = V / Q",
+   "explanation": "Line 2 multiplies instead of dividing. Run time is volume divided by pump rate: 2400 / 40 = 60 min."
+  },
+  {
+   "id": "oit-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding storage detention time.",
+   "topicId": "storage-detention",
+   "level": "oit",
+   "assumptions": "Storage volume V = 150 m3, flow Q = 25 m3/h. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 150 m3, Q = 25 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 150 m3 / (25 m3/h)"
+    },
+    {
+     "id": "l4",
+     "label": "t = 5 h"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 150 m3 / (25 m3/h) = 6 h",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 150 / 25 = 6, not 5."
+  },
+  {
+   "id": "oit-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding chemical mass in a percent solution.",
+   "topicId": "percent-strength",
+   "level": "oit",
+   "assumptions": "Solution volume = 200 L, strength = 5 percent, density taken as 1 kg/L in the assumptions. Decimal form: 5 percent = 0.05. Formula: mass = volume x decimal strength.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: volume = 200 L, strength = 5 percent"
+    },
+    {
+     "id": "l2",
+     "label": "Decimal strength = 5 / 100 = 0.05"
+    },
+    {
+     "id": "l3",
+     "label": "Mass = volume x decimal strength"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 200 L x 5 = 1000 kg"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Mass = 200 L x 0.05 = 10 kg",
+   "explanation": "Lines 1 to 3 are correct. Line 4 uses the percent 5 as a whole number instead of the decimal 0.05 from line 2: 200 x 0.05 = 10 kg."
+  },
+  {
+   "id": "oit-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding stock volume for a dilution.",
+   "topicId": "dilution",
+   "level": "oit",
+   "assumptions": "Stock strength C1 = 10 percent, target strength C2 = 2 percent, target volume V2 = 200 L. Formula: V1 = C2 x V2 / C1.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: C1 = 10, C2 = 2, V2 = 200 L"
+    },
+    {
+     "id": "l2",
+     "label": "V1 = C2 x V2 / C1"
+    },
+    {
+     "id": "l3",
+     "label": "V1 = 10 x 200 / 2"
+    },
+    {
+     "id": "l4",
+     "label": "V1 = 1000 L"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "V1 = 2 x 200 / 10 = 40 L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 swaps C1 and C2 in the substitution. The correct order gives 2 x 200 / 10 = 40 L."
+  },
+  {
+   "id": "oit-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the slope of a water main section.",
+   "topicId": "slope",
+   "level": "oit",
+   "assumptions": "A main drops 2 m over a horizontal run of 400 m. Formula: slope = rise / run, using drop as rise here.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: drop = 2 m, run = 400 m"
+    },
+    {
+     "id": "l2",
+     "label": "Slope = drop / run"
+    },
+    {
+     "id": "l3",
+     "label": "Slope = 400 m / 2 m"
+    },
+    {
+     "id": "l4",
+     "label": "Slope = 200"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Slope = 2 m / 400 m = 0.005",
+   "explanation": "Lines 1 and 2 are correct. Line 3 inverts the slope, placing run over drop. The correct order gives 2 / 400 = 0.005."
+  },
+  {
+   "id": "oit-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time in parallel contact cells.",
+   "topicId": "parallel-cells",
+   "level": "oit",
+   "assumptions": "Two identical parallel cells, each 60 m3. Total flow 40 m3/h splits equally, so each cell receives 20 m3/h. Formula per cell: t = V per cell / Q per cell.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: each cell V = 60 m3, Q per cell = 20 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "t = V per cell / Q per cell"
+    },
+    {
+     "id": "l3",
+     "label": "t = 120 m3 / (20 m3/h)"
+    },
+    {
+     "id": "l4",
+     "label": "t = 6 h"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "t = 60 m3 / (20 m3/h) = 3 h",
+   "explanation": "Lines 1 and 2 are correct. Line 3 uses the total volume of both cells, 120 m3, instead of the per cell volume of 60 m3: 60 / 20 = 3 h."
+  },
+  {
+   "id": "oit-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the overall detention time for parallel basins.",
+   "topicId": "parallel-cells",
+   "level": "oit",
+   "assumptions": "Two identical parallel basins. Each basin: V = 50 m3, Q per basin = 25 m3/h. Water passes through one basin only. Formula per basin: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: each basin V = 50 m3, Q per basin = 25 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "t for one basin = 50 / 25 = 2 h"
+    },
+    {
+     "id": "l3",
+     "label": "t for the other basin = 50 / 25 = 2 h"
+    },
+    {
+     "id": "l4",
+     "label": "Overall t = 2 h + 2 h = 4 h"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Overall t = 2 h",
+   "explanation": "Lines 1 to 3 are correct. Parallel basins do not add detention times, because water passes through only one basin. The overall detention time stays 2 h."
+  },
+  {
+   "id": "oit-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a flow from L/s to m3/h.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Flow Q = 20 L/s. Conversions: 1 h = 3600 s, 1 m3 = 1000 L.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 20 L/s"
+    },
+    {
+     "id": "l2",
+     "label": "Flow per hour = 20 L/s x 3600 s/h = 72000 L/h"
+    },
+    {
+     "id": "l3",
+     "label": "Flow in m3/h = 72000 / 100"
+    },
+    {
+     "id": "l4",
+     "label": "Flow = 720 m3/h"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Flow in m3/h = 72000 / 1000 = 72 m3/h",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides by 100 instead of 1000 when converting L to m3: 72000 / 1000 = 72 m3/h."
+  },
+  {
+   "id": "oit-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding daily alum mass.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "Alum dose = 30 mg/L, flow = 2000 m3/d. Formula: mass in kg/d = dose x flow / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dose = 30 mg/L, flow = 2000 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Mass = dose x flow / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Mass = 30 x 2000 / 1000"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 50 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Mass = 30 x 2000 / 1000 = 60 kg/d",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 30 x 2000 / 1000 = 60, not 50."
+  },
+  {
+   "id": "oit-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding chlorine residual after demand is met.",
+   "topicId": "chlorine-residual",
+   "level": "oit",
+   "assumptions": "Chlorine dose = 3 mg/L, chlorine demand = 2.2 mg/L. Formula: residual = dose - demand.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dose = 3 mg/L, demand = 2.2 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Residual = dose - demand"
+    },
+    {
+     "id": "l3",
+     "label": "Residual = 3 mg/L + 2.2 mg/L"
+    },
+    {
+     "id": "l4",
+     "label": "Residual = 5.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Residual = 3 mg/L - 2.2 mg/L = 0.8 mg/L",
+   "explanation": "Lines 1 and 2 are correct. Line 3 adds instead of subtracting: 3 - 2.2 = 0.8 mg/L."
+  },
+  {
+   "id": "oit-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time for a flocculation tank.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "Tank volume V = 900 L, flow Q = 15 L/min. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 900 L, Q = 15 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 15 L/min / 900 L"
+    },
+    {
+     "id": "l4",
+     "label": "t = 0.0167 min"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "t = 900 L / (15 L/min) = 60 min",
+   "explanation": "Lines 1 and 2 are correct. Line 3 places flow over volume instead of volume over flow: 900 / 15 = 60 min."
+  },
+  {
+   "id": "oit-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the volume of a circular tank.",
+   "topicId": "tank-volume",
+   "level": "oit",
+   "assumptions": "Tank diameter = 10 m, radius = 5 m, depth = 2 m. Use pi = 3.14. Formula: V = pi x r x r x depth.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: radius = 5 m, depth = 2 m, pi = 3.14"
+    },
+    {
+     "id": "l2",
+     "label": "V = pi x r x r x depth"
+    },
+    {
+     "id": "l3",
+     "label": "V = 3.14 x 5 m x 5 m x 2 m"
+    },
+    {
+     "id": "l4",
+     "label": "V = 157 m3"
+    },
+    {
+     "id": "l5",
+     "label": "V in L = 157 L"
+    }
+   ],
+   "firstWrongLineId": "l5",
+   "correctedLine": "V in L = 157 m3 x (1000 L/m3) = 157000 L",
+   "explanation": "Lines 1 to 4 are correct, giving 157 m3. Line 5 forgets to convert m3 to L: 157 x 1000 = 157000 L."
+  },
+  {
+   "id": "oit-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding velocity from flow and pipe area.",
+   "topicId": "pipe-velocity",
+   "level": "oit",
+   "assumptions": "Flow Q = 120 L/s converted to 0.12 m3/s in the assumptions, pipe area A = 0.06 m2. Formula: v = Q / A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 0.12 m3/s, A = 0.06 m2"
+    },
+    {
+     "id": "l2",
+     "label": "v = Q / A"
+    },
+    {
+     "id": "l3",
+     "label": "v = 0.12 / 0.06"
+    },
+    {
+     "id": "l4",
+     "label": "v = 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "v = 0.12 / 0.06 = 2 m/s",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 0.12 / 0.06 = 2, not 0.5."
+  },
+  {
+   "id": "oit-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting metres of head to a pressure change using the given factor.",
+   "topicId": "head-pressure",
+   "level": "oit",
+   "assumptions": "Given factor in the assumptions: 1 m of head = 10 kPa, rounded for this exercise. Head = 25 m.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: head = 25 m, factor = 10 kPa per m"
+    },
+    {
+     "id": "l2",
+     "label": "Pressure = head x factor"
+    },
+    {
+     "id": "l3",
+     "label": "Pressure = 25 m / (10 kPa per m)"
+    },
+    {
+     "id": "l4",
+     "label": "Pressure = 2.5 kPa"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Pressure = 25 m x (10 kPa per m) = 250 kPa",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides instead of multiplying by the factor: 25 x 10 = 250 kPa."
+  },
+  {
+   "id": "oit-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when preparing a percent solution.",
+   "topicId": "percent-strength",
+   "level": "oit",
+   "assumptions": "Target volume = 50 L of a 4 percent solution, density taken as 1 kg/L. Decimal form: 4 percent = 0.04. Formula: mass = volume x decimal strength.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: volume = 50 L, strength = 4 percent"
+    },
+    {
+     "id": "l2",
+     "label": "Decimal strength = 0.04"
+    },
+    {
+     "id": "l3",
+     "label": "Mass = 50 x 4"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 200 kg"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Mass = volume x decimal strength = 50 x 0.04 = 2 kg",
+   "explanation": "Lines 1 and 2 are correct. Line 3 uses the percent 4 as a whole number instead of the decimal 0.04 stated in line 2: 50 x 0.04 = 2 kg."
+  },
+  {
+   "id": "oit-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding chemical feed rate in kg/h.",
+   "topicId": "chemical-feed",
+   "level": "oit",
+   "assumptions": "Daily chemical mass = 96 kg/d. Conversion: 1 d = 24 h. Formula: hourly rate = daily mass / 24.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: daily mass = 96 kg/d"
+    },
+    {
+     "id": "l2",
+     "label": "Hourly rate = daily mass / 24"
+    },
+    {
+     "id": "l3",
+     "label": "Hourly rate = 96 x 24"
+    },
+    {
+     "id": "l4",
+     "label": "Hourly rate = 2304 kg/h"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Hourly rate = 96 / 24 = 4 kg/h",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies by 24 instead of dividing: 96 / 24 = 4 kg/h."
+  },
+  {
+   "id": "oit-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding filter area needed from a loading rate.",
+   "topicId": "filter-loading",
+   "level": "oit",
+   "assumptions": "Flow Q = 1000 m3/d, target loading = 25 m/d. Formula: A = Q / loading.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 1000 m3/d, loading = 25 m/d"
+    },
+    {
+     "id": "l2",
+     "label": "A = Q / loading"
+    },
+    {
+     "id": "l3",
+     "label": "A = 1000 x 25"
+    },
+    {
+     "id": "l4",
+     "label": "A = 25000 m2"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "A = 1000 / 25 = 40 m2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies instead of dividing: 1000 / 25 = 40 m2."
+  },
+  {
+   "id": "oit-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a detention time found in hours to minutes.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "A tank calculation gives t = 2.5 h. Conversion: 1 h = 60 min.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: t = 2.5 h"
+    },
+    {
+     "id": "l2",
+     "label": "t in min = 2.5 h / (60 min/h)"
+    },
+    {
+     "id": "l3",
+     "label": "t = 0.0417 min"
+    },
+    {
+     "id": "l4",
+     "label": "Final answer: 0.0417 min"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "t in min = 2.5 h x (60 min/h) = 150 min",
+   "explanation": "Line 1 is correct. Line 2 divides by 60 instead of multiplying when converting hours to minutes: 2.5 x 60 = 150 min."
+  },
+  {
+   "id": "oit-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a flow from m3/h to L/min.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Flow Q = 6 m3/h. Conversions: 1 m3 = 1000 L, 1 h = 60 min.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 6 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "Flow in L/h = 6 x 1000 = 6000 L/h"
+    },
+    {
+     "id": "l3",
+     "label": "Flow in L/min = 6000 x 60"
+    },
+    {
+     "id": "l4",
+     "label": "Flow = 360000 L/min"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Flow in L/min = 6000 / 60 = 100 L/min",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies by 60 instead of dividing when going from per hour to per minute: 6000 / 60 = 100 L/min."
+  },
+  {
+   "id": "oit-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding chlorine demand from a jar test record.",
+   "topicId": "chlorine-demand",
+   "level": "oit",
+   "assumptions": "Applied dose = 1.6 mg/L, measured residual after contact = 0.3 mg/L. Formula: demand = dose - residual.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: dose = 1.6 mg/L, residual = 0.3 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "Demand = dose - residual"
+    },
+    {
+     "id": "l3",
+     "label": "Demand = 1.6 - 0.3"
+    },
+    {
+     "id": "l4",
+     "label": "Demand = 1.9 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Demand = 1.6 - 0.3 = 1.3 mg/L",
+   "explanation": "Lines 1 to 3 are correct, including the subtraction setup. Line 4 adds in the result instead of subtracting: 1.6 - 0.3 = 1.3 mg/L."
+  },
+  {
+   "id": "oit-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the area of a circular pipe using circumference.",
+   "topicId": "pipe-volume",
+   "level": "oit",
+   "assumptions": "Pipe diameter = 2 m, radius = 1 m. Use pi = 3.14. Formula: A = pi x r x r.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: diameter = 2 m, radius = 1 m, pi = 3.14"
+    },
+    {
+     "id": "l2",
+     "label": "A = pi x r x r"
+    },
+    {
+     "id": "l3",
+     "label": "A = 2 x pi x r"
+    },
+    {
+     "id": "l4",
+     "label": "A = 6.28 m2"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "A = 3.14 x 1 m x 1 m = 3.14 m2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 switches to the circumference formula 2 x pi x r instead of the area formula: 3.14 x 1 x 1 = 3.14 m2."
+  },
+  {
+   "id": "oit-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a rectangular tank volume.",
+   "topicId": "tank-volume",
+   "level": "oit",
+   "assumptions": "Tank length = 8 m, width = 2.5 m, depth = 2 m. Formula: V = length x width x depth.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: length = 8 m, width = 2.5 m, depth = 2 m"
+    },
+    {
+     "id": "l2",
+     "label": "V = length x width x depth"
+    },
+    {
+     "id": "l3",
+     "label": "V = 8 x 2.5 x 2"
+    },
+    {
+     "id": "l4",
+     "label": "V = 30 m3"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "V = 8 x 2.5 x 2 = 40 m3",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 8 x 2.5 x 2 = 40, not 30."
+  },
+  {
+   "id": "oit-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding a pump run time.",
+   "topicId": "pump-run-time",
+   "level": "oit",
+   "assumptions": "Pump must deliver V = 14400 L at Q = 80 L/min. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 14400 L, Q = 80 L/min"
+    },
+    {
+     "id": "l2",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l3",
+     "label": "t = 14400 / 80"
+    },
+    {
+     "id": "l4",
+     "label": "t = 170 min"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 14400 / 80 = 180 min",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 14400 / 80 = 180, not 170."
+  },
+  {
+   "id": "oit-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when diluting a stock solution.",
+   "topicId": "dilution",
+   "level": "oit",
+   "assumptions": "Stock volume used = 5 L at 20 percent, diluted to a total volume of 100 L. Formula: final strength = stock volume x stock strength / total volume, strengths as decimals 0.20.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: stock = 5 L at 0.20, total = 100 L"
+    },
+    {
+     "id": "l2",
+     "label": "Final strength = 5 x 0.20 / 100"
+    },
+    {
+     "id": "l3",
+     "label": "Final strength = 1 / 100 = 0.01"
+    },
+    {
+     "id": "l4",
+     "label": "Final strength as percent = 0.01 x 10 = 0.1 percent"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Final strength as percent = 0.01 x 100 = 1 percent",
+   "explanation": "Lines 1 to 3 are correct, giving a decimal strength of 0.01. Line 4 converts a decimal to a percent by multiplying by 10 instead of 100: 0.01 x 100 = 1 percent."
+  },
+  {
+   "id": "oit-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding contact time needed for a target CT.",
+   "topicId": "ct-value",
+   "level": "oit",
+   "assumptions": "Target CT = 45 mg min/L, chlorine C = 1.5 mg/L. Formula: t = CT / C.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: CT = 45 mg min/L, C = 1.5 mg/L"
+    },
+    {
+     "id": "l2",
+     "label": "t = CT / C"
+    },
+    {
+     "id": "l3",
+     "label": "t = 45 x 1.5"
+    },
+    {
+     "id": "l4",
+     "label": "t = 67.5 min"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "t = 45 / 1.5 = 30 min",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies instead of dividing: 45 / 1.5 = 30 min."
+  },
+  {
+   "id": "oit-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the dose from a daily chemical mass.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "Daily mass = 45 kg/d, flow = 3000 m3/d. Formula: dose in mg/L = mass x 1000 / flow.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: mass = 45 kg/d, flow = 3000 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Dose = mass x 1000 / flow"
+    },
+    {
+     "id": "l3",
+     "label": "Dose = 45 x 1000 / 3000"
+    },
+    {
+     "id": "l4",
+     "label": "Dose = 150 mg/L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Dose = 45 x 1000 / 3000 = 15 mg/L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 45000 / 3000 = 15, not 150."
+  },
+  {
+   "id": "oit-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error caused by rounding an intermediate dose too early.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "A prior step used 10 kg/d of chemical at a flow of 3000 m3/d, giving an exact dose of 10 x 1000 / 3000 = 3.3333 mg/L. The same dose is now applied at a new flow of 6000 m3/d. Formula: mass in kg/d = dose x flow / 1000.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: exact dose = 3.3333 mg/L, new flow = 6000 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Mass = dose x flow / 1000"
+    },
+    {
+     "id": "l3",
+     "label": "Dose rounded first to 3 mg/L for the calculation"
+    },
+    {
+     "id": "l4",
+     "label": "Mass = 3 x 6000 / 1000 = 18 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Use the exact dose: Mass = (10 x 1000 / 3000) x 6000 / 1000 = 20 kg/d",
+   "explanation": "Line 3 rounds the intermediate dose from 3.3333 mg/L down to 3 mg/L before calculating, which changes the result. Using the exact dose gives 20 kg/d."
+  },
+  {
+   "id": "oit-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding volume collected over a time period.",
+   "topicId": "flow-volume",
+   "level": "oit",
+   "assumptions": "Flow Q = 45 L/min, time t = 20 min. Formula: V = Q x t.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: Q = 45 L/min, t = 20 min"
+    },
+    {
+     "id": "l2",
+     "label": "V = Q x t"
+    },
+    {
+     "id": "l3",
+     "label": "V = 45 x 20"
+    },
+    {
+     "id": "l4",
+     "label": "V = 800 L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "V = 45 x 20 = 900 L",
+   "explanation": "Lines 1 to 3 are correct. Line 4 has an arithmetic slip: 45 x 20 = 900, not 800."
+  },
+  {
+   "id": "oit-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding usable storage from a tank volume and a percent usable.",
+   "topicId": "storage-volume",
+   "level": "oit",
+   "assumptions": "Tank volume = 800 m3, usable portion = 75 percent. Decimal form: 75 percent = 0.75. Formula: usable = total x decimal.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: total = 800 m3, usable = 75 percent"
+    },
+    {
+     "id": "l2",
+     "label": "Decimal = 0.75"
+    },
+    {
+     "id": "l3",
+     "label": "Usable = 800 x 75"
+    },
+    {
+     "id": "l4",
+     "label": "Usable = 60000 m3"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Usable = 800 x 0.75 = 600 m3",
+   "explanation": "Lines 1 and 2 are correct. Line 3 uses the percent 75 as a whole number instead of the decimal 0.75: 800 x 0.75 = 600 m3."
+  },
+  {
+   "id": "oit-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding backwash water volume.",
+   "topicId": "filter-backwash",
+   "level": "oit",
+   "assumptions": "Backwash rate = 30 L/s, backwash time = 8 min. Conversions: time in s = 8 x 60 = 480 s. Formula: V = rate x time in s.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: rate = 30 L/s, time = 8 min"
+    },
+    {
+     "id": "l2",
+     "label": "Time in s = 8 x 60 = 480 s"
+    },
+    {
+     "id": "l3",
+     "label": "V = rate x time"
+    },
+    {
+     "id": "l4",
+     "label": "V = 30 x 8 = 240 L"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "V = 30 L/s x 480 s = 14400 L",
+   "explanation": "Lines 1 to 3 are correct, including converting the time to 480 s in line 2. Line 4 uses 8 min directly instead of the converted 480 s: 30 x 480 = 14400 L."
+  },
+  {
+   "id": "oit-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding flow from velocity and area.",
+   "topicId": "pipe-velocity",
+   "level": "oit",
+   "assumptions": "Velocity v = 1.5 m/s, pipe area A = 0.2 m2. Formula: Q = v x A.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: v = 1.5 m/s, A = 0.2 m2"
+    },
+    {
+     "id": "l2",
+     "label": "Q = v / A"
+    },
+    {
+     "id": "l3",
+     "label": "Q = 1.5 / 0.2"
+    },
+    {
+     "id": "l4",
+     "label": "Q = 7.5 m3/s"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Q = v x A",
+   "explanation": "Line 2 divides instead of multiplying. Flow is velocity multiplied by area: 1.5 x 0.2 = 0.3 m3/s."
+  },
+  {
+   "id": "oit-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when scaling a chlorine dose to a larger flow.",
+   "topicId": "chlorine-dose",
+   "level": "oit",
+   "assumptions": "At flow 1000 m3/d the chlorine mass is 2 kg/d. Flow doubles to 2000 m3/d at the same dose in mg/L, so mass doubles. Formula: new mass = old mass x (new flow / old flow).",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: old mass = 2 kg/d, old flow = 1000, new flow = 2000"
+    },
+    {
+     "id": "l2",
+     "label": "Ratio = 2000 / 1000 = 2"
+    },
+    {
+     "id": "l3",
+     "label": "New mass = 2 kg/d / 2"
+    },
+    {
+     "id": "l4",
+     "label": "New mass = 1 kg/d"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "New mass = 2 kg/d x 2 = 4 kg/d",
+   "explanation": "Lines 1 and 2 are correct, giving a flow ratio of 2. Line 3 divides by the ratio instead of multiplying: 2 x 2 = 4 kg/d."
+  },
+  {
+   "id": "oit-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding the circumference of a circular tank instead of its area in a volume step.",
+   "topicId": "tank-volume",
+   "level": "oit",
+   "assumptions": "Tank radius = 4 m, depth = 1.5 m. Use pi = 3.14. The volume step needs base area A = pi x r x r, then V = A x depth.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: radius = 4 m, depth = 1.5 m, pi = 3.14"
+    },
+    {
+     "id": "l2",
+     "label": "A = pi x r x r"
+    },
+    {
+     "id": "l3",
+     "label": "A = 2 x 3.14 x 4 = 25.12 m2"
+    },
+    {
+     "id": "l4",
+     "label": "V = 25.12 x 1.5 = 37.68 m3"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "A = 3.14 x 4 m x 4 m = 50.24 m2",
+   "explanation": "Lines 1 and 2 are correct. Line 3 calculates circumference, 2 x pi x r, instead of area: 3.14 x 4 x 4 = 50.24 m2."
+  },
+  {
+   "id": "oit-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time across two tanks in series.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "Two tanks in series, each 40 m3, flow Q = 20 m3/h passes through both. Formula per tank: t = V / Q, and series times add.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: each tank V = 40 m3, Q = 20 m3/h, tanks in series"
+    },
+    {
+     "id": "l2",
+     "label": "t for one tank = 40 / 20 = 2 h"
+    },
+    {
+     "id": "l3",
+     "label": "Total volume = 40 + 40 = 80 m3"
+    },
+    {
+     "id": "l4",
+     "label": "Total t = 80 / 20 = 3 h"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "Total t = 80 / 20 = 4 h",
+   "explanation": "Lines 1 to 3 are correct for tanks in series, where volumes add. Line 4 has an arithmetic slip: 80 / 20 = 4, not 3."
+  },
+  {
+   "id": "oit-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding chemical mass using a percent feed solution.",
+   "topicId": "chemical-dose",
+   "level": "oit",
+   "assumptions": "Feed solution strength = 10 percent as a decimal 0.10, solution fed = 300 kg in a day, density and strength basis as stated. Formula: chemical mass = solution mass x decimal strength.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: solution = 300 kg, strength decimal = 0.10"
+    },
+    {
+     "id": "l2",
+     "label": "Chemical mass = solution x strength"
+    },
+    {
+     "id": "l3",
+     "label": "Chemical mass = 300 / 0.10"
+    },
+    {
+     "id": "l4",
+     "label": "Chemical mass = 3000 kg"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Chemical mass = 300 x 0.10 = 30 kg",
+   "explanation": "Lines 1 and 2 are correct. Line 3 divides instead of multiplying by the strength: 300 x 0.10 = 30 kg."
+  },
+  {
+   "id": "oit-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a flow in m3/d to m3/h.",
+   "topicId": "flow-conversion",
+   "level": "oit",
+   "assumptions": "Flow = 480 m3/d. Conversion: 1 d = 24 h. Formula: hourly flow = daily flow / 24.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: flow = 480 m3/d"
+    },
+    {
+     "id": "l2",
+     "label": "Hourly flow = 480 x 24"
+    },
+    {
+     "id": "l3",
+     "label": "Hourly flow = 11520 m3/h"
+    },
+    {
+     "id": "l4",
+     "label": "Final answer: 11520 m3/h"
+    }
+   ],
+   "firstWrongLineId": "l2",
+   "correctedLine": "Hourly flow = 480 / 24 = 20 m3/h",
+   "explanation": "Line 1 is correct. Line 2 multiplies by 24 instead of dividing when converting a daily rate to an hourly rate: 480 / 24 = 20 m3/h."
+  },
+  {
+   "id": "oit-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding head from pressure using the given factor.",
+   "topicId": "head-pressure",
+   "level": "oit",
+   "assumptions": "Given factor: 10 kPa per 1 m of head, rounded for this exercise. Pressure = 180 kPa. Formula: head = pressure / factor.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: pressure = 180 kPa, factor = 10 kPa per m"
+    },
+    {
+     "id": "l2",
+     "label": "Head = pressure / factor"
+    },
+    {
+     "id": "l3",
+     "label": "Head = 180 x 10"
+    },
+    {
+     "id": "l4",
+     "label": "Head = 1800 m"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Head = 180 / 10 = 18 m",
+   "explanation": "Lines 1 and 2 are correct. Line 3 multiplies instead of dividing by the factor: 180 / 10 = 18 m."
+  },
+  {
+   "id": "oit-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding pipe volume using diameter instead of radius in the last step.",
+   "topicId": "pipe-volume",
+   "level": "oit",
+   "assumptions": "Pipe radius = 0.25 m, diameter = 0.5 m, length = 20 m. Use pi = 3.14. Formula: V = pi x r x r x length.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: radius = 0.25 m, diameter = 0.5 m, length = 20 m, pi = 3.14"
+    },
+    {
+     "id": "l2",
+     "label": "V = pi x r x r x length"
+    },
+    {
+     "id": "l3",
+     "label": "V = 3.14 x 0.5 x 0.5 x 20"
+    },
+    {
+     "id": "l4",
+     "label": "V = 15.7 m3"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "V = 3.14 x 0.25 m x 0.25 m x 20 m = 3.925 m3",
+   "explanation": "Lines 1 and 2 are correct. Line 3 substitutes the diameter 0.5 m twice instead of the radius 0.25 m: 3.14 x 0.25 x 0.25 x 20 = 3.925 m3."
+  },
+  {
+   "id": "oit-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when converting a filter loading rate to a percent of a limit.",
+   "topicId": "filter-loading",
+   "level": "oit",
+   "assumptions": "Loading found = 18 m/d, limit = 24 m/d. Formula: percent of limit = loading / limit x 100.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: loading = 18 m/d, limit = 24 m/d"
+    },
+    {
+     "id": "l2",
+     "label": "Fraction = 18 / 24 = 0.75"
+    },
+    {
+     "id": "l3",
+     "label": "Percent = 0.75 x 10"
+    },
+    {
+     "id": "l4",
+     "label": "Percent = 7.5 percent"
+    }
+   ],
+   "firstWrongLineId": "l3",
+   "correctedLine": "Percent = 0.75 x 100 = 75 percent",
+   "explanation": "Lines 1 and 2 are correct. Line 3 converts a fraction to a percent by multiplying by 10 instead of 100: 0.75 x 100 = 75 percent."
+  },
+  {
+   "id": "oit-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first line with a calculation error when finding detention time in a tank given in litres and a flow in m3/h.",
+   "topicId": "detention-time",
+   "level": "oit",
+   "assumptions": "Tank V = 12000 L, flow Q = 2 m3/h. Conversion: 1 m3 = 1000 L, so Q = 2000 L/h. Formula: t = V / Q.",
+   "lines": [
+    {
+     "id": "l1",
+     "label": "Given: V = 12000 L, Q = 2 m3/h"
+    },
+    {
+     "id": "l2",
+     "label": "Q in L/h = 2 x 1000 = 2000 L/h"
+    },
+    {
+     "id": "l3",
+     "label": "t = V / Q"
+    },
+    {
+     "id": "l4",
+     "label": "t = 12000 / 2000 = 60 h"
+    }
+   ],
+   "firstWrongLineId": "l4",
+   "correctedLine": "t = 12000 / 2000 = 6 h",
+   "explanation": "Lines 1 to 3 are correct, including the conversion to 2000 L/h. Line 4 has an arithmetic slip: 12000 / 2000 = 6, not 60."
+  }
+ ],
+ "missions": [
+  {
+   "id": "oit-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Wet Well Volume Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "oit-error05",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error06",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "oit-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "oit-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "oit-error07",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "oit-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "oit-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error08",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "oit-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Srt Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "oit-error09",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "oit-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Pipe Velocity Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error10",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "oit-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "oit-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "oit-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Chlorine Mass Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "oit-error100",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Pipe Volume Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error11",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "oit-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "oit-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Weir Loading Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "oit-error12",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "oit-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "oit-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Chemical Dose Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error13",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "oit-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Wet Well Volume Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "oit-error14",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "oit-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Chlorine Dose Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error15",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "oit-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "oit-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "oit-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Svi Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "oit-error16",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Ct Value Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error17",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "oit-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "oit-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Sludge Mass Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "oit-error18",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "oit-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "oit-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Filter Loading Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error19",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "oit-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Chlorine Mass Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "oit-error20",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "oit-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Tank Volume Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error21",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "oit-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    },
+    {
+     "taskId": "oit-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m41-t3"
+    },
+    {
+     "taskId": "oit-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m41-t4"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "oit-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "oit-error22",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    }
+   ]
+  },
+  {
+   "id": "oit-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Storage Detention Shift",
+   "tasks": [
+    {
+     "taskId": "oit-error23",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "oit-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "oit-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "hb-p176",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "PDF p. 176 (printed p. 125), Section 6.4.3 Area and Volume"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "ab4584b1313ef1d67fba1b0f061e59ae9c494d9d64a85fb6c85444e8d2c7008b",
+  "taskReceipts": [
+   {
+    "taskId": "oit-ladder81",
+    "revision": "r1",
+    "sha256": "608f49ddd458a2bc4bcbb67fde1c1cfbf20c8eeeeef2be722b2bec1903f194b8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder82",
+    "revision": "r1",
+    "sha256": "8b6aa8f02f1e7306245b06d6b56efc8058c803fabab2f814a1b1f83b86128e6a",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder83",
+    "revision": "r1",
+    "sha256": "96368c0f6d13576ac151f37a2593040656c8c2ec11a22271a796f217936ba905",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder84",
+    "revision": "r1",
+    "sha256": "4f729ddc4bab17fd891ece28cc2e23a6e7a460d2bda0b889c7ef3c7191811f26",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder85",
+    "revision": "r1",
+    "sha256": "179404a37ba35331e00cb25275712c9d84555a8abfb1d2bea95dc385ea245f13",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder86",
+    "revision": "r1",
+    "sha256": "fbb78e790a99554d6032afad7a4cc5b08cdb08dd5a3abfcb82b559bacf69ace4",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder87",
+    "revision": "r1",
+    "sha256": "9e882f19a2f824299259c7c8b2153abab781cd0f33a6cbf0fbcf6784a5867264",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder88",
+    "revision": "r1",
+    "sha256": "62c8140cdfb180dc21adae00e3ac0e8f1035c7b8bbda71557f57830b2b86d069",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder89",
+    "revision": "r1",
+    "sha256": "e792ca9512bdf50f2b74b4d83cc6ec6620404e3b988d8f10665f2e02af13366b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder90",
+    "revision": "r1",
+    "sha256": "a2e074a549e47130998fd61c69d9b7fb45b15c47b49859dd1cc09f303ebe7daf",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder91",
+    "revision": "r1",
+    "sha256": "83c07a421740948f537c63ed56673d6b70219c9bd804204103c0f10faf86d9c0",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder92",
+    "revision": "r1",
+    "sha256": "7ef9f84489f1a983672b274b493ddf11fececb6195ee05a598524c5ee32bde48",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder93",
+    "revision": "r1",
+    "sha256": "0db320a932aa33b2f204832262bfaec8f2d0552f04274bff74e3722d6fa475c2",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder94",
+    "revision": "r1",
+    "sha256": "23ce6594a314bd798f2285f123d9c53779f79cc29a06f945721fec43e52bc33b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder95",
+    "revision": "r1",
+    "sha256": "4f4dc4e238a2a2b50842a312b138676b36ce82b80d73f49faa03930dcc5512ea",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder96",
+    "revision": "r1",
+    "sha256": "baecb68f251fed85134da83139d5b2b38c42e5f969f258e1a8c3f44d7366914f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder97",
+    "revision": "r1",
+    "sha256": "8bcca429fd45f83f1160bf1008bdd6b8fa5481a35553e446ea34e5f83f158131",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder98",
+    "revision": "r1",
+    "sha256": "cc2a0762d74ff2921b6f0916b8788367d864f06483f084f7667faabec0a0b142",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-ladder99",
+    "revision": "r1",
+    "sha256": "29a484d55aae0236cb3cc89f848fd4f8f565466d12a9ae1c49894d5b656af9a2",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error05",
+    "revision": "r1",
+    "sha256": "c0277275e5c90ffa25a64ac7a26e66b44bf28ff8f62a3feeff2b3db9ce26801d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error06",
+    "revision": "r1",
+    "sha256": "78d6b18df2740a72fc16f8b12faae4f140ef1d2a8cadd47db9e07db67ae6036b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error07",
+    "revision": "r1",
+    "sha256": "622ecaae1bd0dcd058664b2d192526e6849f6726a0d2ce983418783603dd5879",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error08",
+    "revision": "r1",
+    "sha256": "72f2e6f16372097b2b7a9f2a347c9fc248506b5af878fa27aa949b3ba8f4cc0f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error09",
+    "revision": "r1",
+    "sha256": "ef0e4968012bafa86565ebdc1c48401f3af4dc4a21c55b7ccfd078fdffd4db5a",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error10",
+    "revision": "r1",
+    "sha256": "dd76736213ec1388adc7989e495a7c12ccb1b760fe676056757a603190b672ed",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error100",
+    "revision": "r1",
+    "sha256": "a7b1599c09a187b2c552ae2b14a3d3e918334e627899f1d48b3a485f5355dea8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error11",
+    "revision": "r1",
+    "sha256": "f674272d1af278610aadf3467f64c430bbda679aba98a645d91e49e20299b3be",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error12",
+    "revision": "r1",
+    "sha256": "548e7bd6df12ba83b9b63f633df41390be4cd2b342fd6f26447ee61572fcd887",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error13",
+    "revision": "r1",
+    "sha256": "18232e7115c3b978db932bf931aaabd8df455233fd11dd8412cdab1ffe32202c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error14",
+    "revision": "r1",
+    "sha256": "7d019019ef74577a4ab0c29843ef9ab17737df31be06f7c93dfc7a67dfced69a",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error15",
+    "revision": "r1",
+    "sha256": "32c7c0ee1127f3c4319a7ad3a5db0ca81fba667244b3b3b5d7728de2229450e1",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error16",
+    "revision": "r1",
+    "sha256": "14be1a534e6ddb89517aca185f992221fc0274e98f4a36afbd67e651459dcb46",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error17",
+    "revision": "r1",
+    "sha256": "c07a548f8485ba706666e6aa18b151fb1880d8a5ec8f343e2fa269d3e51f9541",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error18",
+    "revision": "r1",
+    "sha256": "08ca555b1eabb45a408660b3f9d1239e5a9e72d93c3eb0f790963bb757653091",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error19",
+    "revision": "r1",
+    "sha256": "42da187453e90d2b9a40ca8fec3769ece1409a18264bf7eeb87abe7caa453eff",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error20",
+    "revision": "r1",
+    "sha256": "94c392af61855870b316ea53b9b0677473ce761999378b96337439dfeb6dc7f1",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error21",
+    "revision": "r1",
+    "sha256": "e08c946226ba45de1ce8928ec2851f7a3c86728821ead7a2ca7db03ccbfa21a8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error22",
+    "revision": "r1",
+    "sha256": "1f6c42dd8dba37227b2244efc40ccac54f3d9ffb2a091510b42d7e53384a1b2f",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error23",
+    "revision": "r1",
+    "sha256": "ce3dcba70a4e1bdb41133c050c43ca39de063d080b4981905129bd989f3b47a3",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error24",
+    "revision": "r1",
+    "sha256": "dd5545985fe497cb2bd8e9fd3a2037fff83d098d5ba6bc788ad08ebf7456895e",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error25",
+    "revision": "r1",
+    "sha256": "d485afc4f0b554953cc008ac8e72edbef9b8a55e96b234c62d8fb3958a92ce60",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error26",
+    "revision": "r1",
+    "sha256": "53c7917c5d6d2026fc61577a8416441b35df468954e246143a2812a1db6a00a7",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error27",
+    "revision": "r1",
+    "sha256": "77daa939466dd5528002191b1ca9bbf841141fdde156ccb920e887d58566ff38",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error28",
+    "revision": "r1",
+    "sha256": "08ec839221fb11a1402d885e904b420dce7c7907c4c05ed0ab0418a6edfa23ad",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error29",
+    "revision": "r1",
+    "sha256": "cfa38e7339715930de9c7f1631bba84299e4f3734d8c7d4db924a07cc952a87c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error30",
+    "revision": "r1",
+    "sha256": "21a35f8bb7539aac1b9eb9abb248ee617f7237117c019e902a220270114df80b",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error31",
+    "revision": "r1",
+    "sha256": "42476a7759366b332ce3a3ca0e4e37006dfb00dc0a7458ef77e5194f917e4228",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error32",
+    "revision": "r1",
+    "sha256": "fab36a7afbdd5125684e96e9633bde49e262a9c1304d1e8fcd6cf04dc48275f0",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error33",
+    "revision": "r1",
+    "sha256": "36071199f51809dbc8f02b479f9db0f4198091f348e42742799562f98a395d0d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error34",
+    "revision": "r1",
+    "sha256": "991f57affb6d42eafc1fef75bac75c9effef0a04e8a0211468ccb87b641713e7",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error35",
+    "revision": "r1",
+    "sha256": "b0c1b313a96bb30fa68bec202886123e8dd6851809d6b328c5a15c091b080098",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error36",
+    "revision": "r1",
+    "sha256": "ca4f7900c21768e54278995f368bfd58593b85038d1a226909e851f1f580ccf4",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error37",
+    "revision": "r1",
+    "sha256": "f4f2010dec99987c68480a7545b496c9fbcd7f22b7e26ba66c0e45f36908c75c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error38",
+    "revision": "r1",
+    "sha256": "a0b18d7dc62ea5f285a631630dcce7ea8c87e833495a482d762259b8c662d43d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error39",
+    "revision": "r1",
+    "sha256": "fc34db51e0518b113746172453452d78c5d240f54dfe41c18d3e0166081244ae",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error40",
+    "revision": "r1",
+    "sha256": "b1b50732a9edaba0a9a0bda2b010fe7d66a11d4b7c5b5c61a1c2c641f8e6f014",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error41",
+    "revision": "r1",
+    "sha256": "bf195dca04cbe73a9cfddd1fc8ca432718afc7615b06e81234e2a8443fd98e15",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error42",
+    "revision": "r1",
+    "sha256": "8a7078a14898fcb3606186da2925be34ef301a992207277378cfb1dd29d14e69",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error43",
+    "revision": "r1",
+    "sha256": "f599d47ff1fa2772cf33ad84545876b0dd70c8021316027edc6829c581623576",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error44",
+    "revision": "r1",
+    "sha256": "7e7fafcb5396a34e8472c4dadaa3a53f2f133add0ec4cab6239da792507dc37c",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error45",
+    "revision": "r1",
+    "sha256": "a61c29ebf33f24a3b3fe70a93ace9c8a3e77fcd012986ad4b9d20e854a6a8293",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error46",
+    "revision": "r1",
+    "sha256": "5a79c5b111e448e0963b1bce36b38866974cdeaaa72858556fe26829f3a755df",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error47",
+    "revision": "r1",
+    "sha256": "2ff0b4261834d9ecb5897cf5003f476f9def3c738f549001aafe7c02c73543e8",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error48",
+    "revision": "r1",
+    "sha256": "f3d13445ef1330d1b4b7cf13440542c55d7c607f4eab76692f8f1832ae222c24",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error49",
+    "revision": "r1",
+    "sha256": "72932300289ba001983563d5dbd4d703ac1510d5dd0ceebd0a810d960da0c723",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error50",
+    "revision": "r1",
+    "sha256": "c76b314879b800add34c9ecf680b1689ae4d205489b5ae7175a6111cbaa77108",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error51",
+    "revision": "r1",
+    "sha256": "2dfe28b1190ca593f3247a99be4c2b8b07980b87f41f082343e01d7075c666ed",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error52",
+    "revision": "r1",
+    "sha256": "591dab94c96ff3102cacfcb1b26f8a86c692016f5a751ad2771dd11f0b6e8f64",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error53",
+    "revision": "r1",
+    "sha256": "171d439f03c974d577c09191a761a6d8ed0920ccbd2f28e7661deb8d5549808d",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error54",
+    "revision": "r1",
+    "sha256": "1c76581d74b0fc60a914ba9b97ebfe7c279595cecfcfb30ee1f0341d1dab2221",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error55",
+    "revision": "r1",
+    "sha256": "5e03d42f9e35faefb004dad9b5804b9b52378cf1bc50f894ab1f3ac80779e337",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error56",
+    "revision": "r1",
+    "sha256": "f09051fdb16564264206e6994c0f5dc66404424dc7b3ba7ee620517121811701",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error57",
+    "revision": "r1",
+    "sha256": "4e256aed887020df59e0386f6e6d83ae4e5ab5889235feb6209f024d2ab8a865",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error58",
+    "revision": "r1",
+    "sha256": "cc282c506086ac827328d25a15e476213822c723e146b8cce695e5734a240aca",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error59",
+    "revision": "r1",
+    "sha256": "8e045c97e60de497ac0d381dd47f56c4ee5c6d960977e80da70c862150c4667e",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error60",
+    "revision": "r1",
+    "sha256": "d1a41e52774c03e347ecfcffbb6464eee7323617e60273a72bec936d5e1f9bae",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   },
+   {
+    "taskId": "oit-error61",
+    "revision": "r1",
+    "sha256": "011a78dd7c9e79fb159cf54237f69f8938d6a094f1a04db6ea22174fcaf11def",
+    "sourceIds": [
+     "hb-p176"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "oit-mission24",
+    "revision": "r1",
+    "sha256": "2b13a40247cd943396ab3808a7acae62619906a9387e88a6bf516a977e9ba785"
+   },
+   {
+    "missionId": "oit-mission25",
+    "revision": "r1",
+    "sha256": "1ba9044df68f79f48fdd949c89e20caecd326729a2102686d7c13a5accb60fc3"
+   },
+   {
+    "missionId": "oit-mission26",
+    "revision": "r1",
+    "sha256": "c80c7a66346ee13d89a5766f690d154ec86bb6a32db50fa9d319421227e75f22"
+   },
+   {
+    "missionId": "oit-mission27",
+    "revision": "r1",
+    "sha256": "30f84522a092d4daf3ee96b909454aaaa89abe21dc44a2b2fdaf17333e7329db"
+   },
+   {
+    "missionId": "oit-mission28",
+    "revision": "r1",
+    "sha256": "912f45d046489b8ea8ff689ea0381102599a1b24f428941e2818c265672a70f8"
+   },
+   {
+    "missionId": "oit-mission29",
+    "revision": "r1",
+    "sha256": "5542227fcc35d15555656d6bcbb97ead04019b4c1769ea5f499df0059484bcde"
+   },
+   {
+    "missionId": "oit-mission30",
+    "revision": "r1",
+    "sha256": "d2f4899c32246fcdca4213cdfaae83bbf694243271c5b2027dd3ee2b5b3b6f65"
+   },
+   {
+    "missionId": "oit-mission31",
+    "revision": "r1",
+    "sha256": "6d37f549f389fd231ef58a0bfca9025b1f6a70e04d30e67e193fc380a55f9330"
+   },
+   {
+    "missionId": "oit-mission32",
+    "revision": "r1",
+    "sha256": "818b91504b23f6a8574fd122bac12c49277bfb6dcef1840bb2bf5ee9ac8eaebe"
+   },
+   {
+    "missionId": "oit-mission33",
+    "revision": "r1",
+    "sha256": "84382aef0fe6fe86622ce25056cad777f52a6ec62542a2f21c995d70de4daa8a"
+   },
+   {
+    "missionId": "oit-mission34",
+    "revision": "r1",
+    "sha256": "46bb192c39f2e571e75d3c152426eb9cbddb416f5c3b6892181aa5840f16e639"
+   },
+   {
+    "missionId": "oit-mission35",
+    "revision": "r1",
+    "sha256": "5f632163b4be2e5723e219d4322c3d8b90f7768542350f8c0c0822010952706c"
+   },
+   {
+    "missionId": "oit-mission36",
+    "revision": "r1",
+    "sha256": "10ec3325bfbb9fec430753f95249778b77e05d9dc8c755e695ca6d9beca6f30a"
+   },
+   {
+    "missionId": "oit-mission37",
+    "revision": "r1",
+    "sha256": "de52d6043c57d67b41c7e1003a1e2b55c38be0ee2a5afec13c31e77a661c2631"
+   },
+   {
+    "missionId": "oit-mission38",
+    "revision": "r1",
+    "sha256": "42074587fb7b8a46a424d89e4b7a5fc9bfe5106d2c2475088f48f2ce97376344"
+   },
+   {
+    "missionId": "oit-mission39",
+    "revision": "r1",
+    "sha256": "e48b021e7d836de75b18ed2c1d4904b1994dd5ee8620f2e21c7fe773cd3b2233"
+   },
+   {
+    "missionId": "oit-mission40",
+    "revision": "r1",
+    "sha256": "eb0ff706791d48743ed0391faee4b6a80bf0ad01b27f7d55cb0f9080046e96ed"
+   },
+   {
+    "missionId": "oit-mission41",
+    "revision": "r1",
+    "sha256": "3303af34bb8bd3d230aaa23d4d3836f4a3dcaf6491c32154b5f4765d7e4d03de"
+   },
+   {
+    "missionId": "oit-mission42",
+    "revision": "r1",
+    "sha256": "33fe8582f1754c56f4cec64635717b62bff5c5561ce40eb2535708afdb72d435"
+   },
+   {
+    "missionId": "oit-mission43",
+    "revision": "r1",
+    "sha256": "417a0f51ae6195d3bd45c16587e3fa30d056c108b7a8fbfd7cf2835a6896fea0"
+   }
+  ]
+ }
+}

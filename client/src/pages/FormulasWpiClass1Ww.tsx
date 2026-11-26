@@ -1,7 +1,8 @@
 // WPI Class I Wastewater Treatment — Formula & Reference Sheet
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import { getFormulaStudyLinks } from "@/lib/courseNavigation";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 interface FormulaCard {
@@ -377,6 +378,7 @@ const SECTIONS: FormulaSection[] = [
 ];
 
 export default function FormulasWpiClass1Ww() {
+  const study = getFormulaStudyLinks("/formulas-wpi-class1-ww", useSearch());
   usePageMeta({
     title: "WPI Class 1 Wastewater Formulas",
     description: "Essential formulas and calculations for WPI Class 1 Wastewater operator certification exam. Quick reference formula sheet.",
@@ -538,11 +540,11 @@ export default function FormulasWpiClass1Ww() {
         <div style={{ textAlign: "center", padding: "24px 0" }}>
           <p style={{ color: "#94A3B8", marginBottom: 16 }}>Ready to test your knowledge?</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/wpi-class1-wastewater" style={{ background: "#1D4ED8", color: "#fff", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600 }}>
-              Practice Quiz
+            <Link href={study.practiceHref} style={{ background: "#1D4ED8", color: "#fff", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600 }}>
+              {study.practiceLabel}
             </Link>
-            <Link href="/wpi-class1-wastewater-mock" style={{ background: "#1E293B", color: "#93C5FD", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600, border: "1px solid #334155" }}>
-              Mock Exam
+            <Link href={study.mockHref} style={{ background: "#1E293B", color: "#93C5FD", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600, border: "1px solid #334155" }}>
+              {study.mockLabel}
             </Link>
           </div>
         </div>

@@ -1,10 +1,13 @@
 import { readFileSync } from "node:fs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
-import { diagnosticSessions, examResults, learningActivitySessions, productAnalyticsEvents, questionAttempts, users } from "../drizzle/schema";
+import { assessmentActivitySessions, diagnosticSessions, examResults, learningActivitySessions, productAnalyticsEvents, questionAttempts, users } from "../drizzle/schema";
 const state = vi.hoisted(() => ({ getDb: vi.fn() }));
 vi.mock("./db", () => state);
+vi.mock("./_core/env", () => ({ ENV: { cookieSecret: "learner-discovery-test-only-secret" } }));
 import { adminRouter } from "./routers/admin";
+import { assessmentActivityEmailHash } from "./assessmentActivity";
+import { hashAnalyticsEmail } from "./analytics";
 import { finalizeLearnerFeed, signInMethod } from "./adminLearnerActivity";
 function caller(role: "admin" | "user" | null) {
   return adminRouter.createCaller({ user: role ? { id: 1, role } as never : null, studentEmail: "verified@example.test", req: { headers: {} } as never, res: {} as never });
@@ -41,6 +44,7 @@ describe("admin learner activity", () => {
   });
   it.each([null, "user"] as const)("rejects %s, including email-cookie-only identity, before querying", async role => {
     await expect(caller(role).learnerSearch({ query: "alice" })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(caller(role).learnerSearch({ query: "alice@example.test" })).rejects.toMatchObject({ code: "FORBIDDEN" });
     await expect(caller(role).learnerActivity({ learner: { email: "alice@example.test" }, days: 7 })).rejects.toMatchObject({ code: "FORBIDDEN" });
     expect(state.getDb).not.toHaveBeenCalled();
   });
@@ -67,6 +71,41 @@ describe("admin learner activity", () => {
     const emailQuery = dialect.sqlToQuery(queries[1].conditions as never);
     expect(emailQuery.sql).toContain('`userId` is null');
     expect(emailQuery.sql).toContain('`startedAt` >= ?');
+  });
+  it("discovers assessment-ledger-only verified emails with the issuance HMAC and the reader's bounded observed window", async () => {
+    const queries = mockDatabase(new Map([[assessmentActivitySessions, [{ id: "session-fixture" }]]]));
+    const result = await caller("admin").learnerSearch({ query: " ALICE@example.test " });
+    expect(result.learners).toEqual([{ key: "email:alice@example.test", name: null, email: "alice@example.test", selection: { email: "alice@example.test" } }]);
+    const ledger = queries.find(query => query.table === assessmentActivitySessions)!;
+    expect(ledger.limit).toBe(1);
+    const query = dialect.sqlToQuery(ledger.conditions as never);
+    expect(query.params).toContain(assessmentActivityEmailHash("alice@example.test"));
+    expect(query.params).not.toContain(hashAnalyticsEmail("alice@example.test"));
+    expect(query.params).toEqual(expect.arrayContaining(["verified-email", "observed"]));
+    expect(query.sql).toContain('`userId` is null');
+    expect(query.sql).toContain('`startedAt` >= ?');
+    expect(query.sql).toContain('`lastObservedAt` <= ?');
+    expect(query.sql).not.toContain("like");
+    const numeric = query.params.filter((value): value is number => typeof value === "number");
+    expect(numeric[2] - numeric[0]).toBe(30 * 86400000);
+    expect(query.params).not.toContain("alice@example.test");
+  });
+  it("keeps an assessment-only email option separate from a matching named account", async () => {
+    mockDatabase(new Map<unknown, unknown[]>([[users, [{ id: 4, name: "Account name", email: "alice@example.test" }]], [assessmentActivitySessions, [{ id: "session-fixture" }]]]));
+    const result = await caller("admin").learnerSearch({ query: "alice@example.test" });
+    expect(result.learners.map(row => [row.key, row.name, row.selection])).toEqual([
+      ["user:4", "Account name", { userId: 4 }], ["email:alice@example.test", null, { email: "alice@example.test" }],
+    ]);
+  });
+  it.each(["alice", "alice@", "alice@example"])("does not inspect irreversible assessment hashes for prefix or incomplete email %s", async query => {
+    const queries = mockDatabase(new Map([[assessmentActivitySessions, [{ id: "session-fixture" }]]]));
+    expect((await caller("admin").learnerSearch({ query })).learners).toEqual([]);
+    expect(queries.some(value => value.table === assessmentActivitySessions)).toBe(false);
+  });
+  it("does not invent a verified-email learner when every bounded source is empty", async () => {
+    const queries = mockDatabase();
+    expect((await caller("admin").learnerSearch({ query: "absent@example.test" })).learners).toEqual([]);
+    expect(queries.find(query => query.table === assessmentActivitySessions)?.limit).toBe(1);
   });
   it("escapes prefix wildcard input and reports truncated search", async () => {
     const queries = mockDatabase(new Map<unknown, unknown[]>([[users, Array.from({ length: 21 }, (_, id) => ({ id, name: "Account", email: null }))]]));

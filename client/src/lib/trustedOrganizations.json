@@ -31,16 +31,5 @@
     "height": 130,
     "sha256": "4025684eb96b308ed7e0bc95f08558c736cc9a21cc5bad3675803bedd3ab996f",
     "logoDisplayAllowed": true
-  },
-  {
-    "slug": "black-entrepreneurship-alliance",
-    "name": "Black Entrepreneurship Alliance",
-    "sourcePage": "https://www.yorku.ca/yspace/programs-streams/bea/",
-    "sourceAsset": "https://www.yorku.ca/yspace/wp-content/uploads/sites/231/2026/09/Logo-black-1024x326.png",
-    "runtimeUrl": "/manus-storage/bea_560997bf.png",
-    "width": 1024,
-    "height": 326,
-    "sha256": "1681e9c43e30edc28502f7e1d44b69b421c3fcfc569905d219c0c93da19a1480",
-    "logoDisplayAllowed": true
   }
 ]

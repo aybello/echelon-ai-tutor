@@ -2,9 +2,10 @@
 // Advanced treatment, membranes, process control, regulatory compliance
 
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { getFormulaStudyLinks } from "@/lib/courseNavigation";
 
 interface Formula {
   name: string;
@@ -253,6 +254,7 @@ const QUICK_REF = [
 ];
 
 export default function FormulasWpiClass3() {
+  const study = getFormulaStudyLinks("/formulas-wpi-class3", useSearch());
   usePageMeta({
     title: "WPI Class 3 Water Formulas",
     description: "Essential formulas and calculations for WPI Class 3 Water operator certification exam. Quick reference formula sheet.",
@@ -289,14 +291,14 @@ export default function FormulasWpiClass3() {
           Advanced treatment, membranes, process control &amp; regulatory calculations for the WPI Class III exam
         </p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link href="/wpi-class3-water">
+          <Link href={study.practiceHref}>
             <button style={{ background: "#4F46E5", color: "#fff", border: "none", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
-              Practice Quiz →
+              {study.practiceLabel}
             </button>
           </Link>
-          <Link href="/wpi-class3-water-mock">
+          <Link href={study.mockHref}>
             <button style={{ background: "rgba(255,255,255,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
-              Mock Exam →
+              {study.mockLabel}
             </button>
           </Link>
         </div>

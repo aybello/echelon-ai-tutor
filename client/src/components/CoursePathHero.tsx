@@ -1,15 +1,15 @@
 import type { ReactNode } from "react";
 
-/** Homepage hero copy while retaining the existing course-finder entry point. */
+/** Homepage positioning while retaining the existing course-finder entry point. */
 export default function CoursePathHero({ children }: { children?: ReactNode }) {
   return (
     <div className="course-path-hero">
-      <span className="homepage-kicker">Exam prep for skilled trades</span>
+      <span className="homepage-kicker">AI-powered exam prep for skilled trades</span>
       <h1 id="homepage-hero-title" className="landing-hero-reveal landing-hero-reveal-1">
-        Be ready for <span>what’s next.</span>
+        Learn the material. <span>Build skills that last.</span>
       </h1>
       <p className="course-path-intro landing-hero-reveal landing-hero-reveal-2">
-        Practice questions, worked calculations and timed mock exams for water and wastewater certification across Canada and the United States.
+        AI-powered exam prep, interactive learning and continuing education for the skilled-trades workforce. Start with water and wastewater courses in Canada and the United States.
       </p>
       {children}
     </div>

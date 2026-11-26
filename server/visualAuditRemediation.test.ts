@@ -89,7 +89,7 @@ describe("live visual-audit remediation", () => {
 
   it("shows the Google review request only after course access is restored", () => {
     const account = source("client/src/pages/Account.tsx");
-    expect(account).toContain("{hasPurchases && <div");
+    expect(account).toContain("{hasActiveAccess && <div");
     expect(account).toContain("Rate Echelon on Google");
   });
 });

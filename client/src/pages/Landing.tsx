@@ -1,25 +1,24 @@
 import { Link, useSearch } from "wouter";
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   ArrowRight,
   BookOpen,
-  Calculator,
   Check,
   ChevronRight,
   ClipboardCheck,
+  Gamepad2,
   GraduationCap,
-  MapPin,
   MessageSquareText,
   Play,
 } from "lucide-react";
 import LandingNav from "@/components/LandingNav";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import CoursePathHero from "@/components/CoursePathHero";
-import StepSolution from "@/components/StepSolution";
-import CourseFinder from "@/components/CourseFinder";
+import HomepageProductDemo from "@/components/HomepageProductDemo";
+import HomepageCourseDiscovery from "@/components/HomepageCourseDiscovery";
 import TrustedOrganizations from "@/components/TrustedOrganizations";
+import LearnerReviews from "@/components/LearnerReviews";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
-import ProvinceBanner from "@/components/ProvinceBanner";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
@@ -30,7 +29,7 @@ import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
 import type { ExamFamily } from "@shared/courseRegistry";
-import { useGeoRegion } from "@/hooks/useGeoRegion";
+import { CEU_COURSES } from "@shared/ceuCourses";
 import "./Landing.css";
 
 function PreviewChoice({ onClose }: { onClose: () => void }) {
@@ -56,45 +55,6 @@ function PreviewChoice({ onClose }: { onClose: () => void }) {
         </Link>
       </div>
     </div>
-  );
-}
-
-function StudyWorkspacePreview() {
-  return (
-    <aside className="homepage-workspace" aria-label="Example worked solution from the study tools">
-      <div className="homepage-workspace-topbar">
-        <div className="homepage-workspace-product"><img className="homepage-workspace-logo" src={ECHELON_LOGO_URL} alt="" /><span>Echelon Institute</span></div>
-        <span className="homepage-preview-badge">Example</span>
-      </div>
-      <div className="homepage-workspace-body">
-        <span className="homepage-workspace-eyebrow">Worked calculation · Water Class I</span>
-        <h2>Practice. Learn. Improve.</h2>
-        <div className="homepage-example-question">
-          <span>Flow rate conversion</span>
-          <p>A plant treats 25 L/s. What is the daily flow in m³/d?</p>
-          <strong>Answer: 2,160 m³/d</strong>
-        </div>
-        <StepSolution
-          steps={[
-            { l: "Relationship", c: "Q (m³/d) = Q (L/s) × 86.4" },
-            { l: "Substitution", c: "Q = 25 × 86.4" },
-            { l: "Result", c: "2,160 m³/d" },
-          ]}
-          tip="1 L/s = 86.4 m³/d."
-        />
-        <Link href="/formulas" className="homepage-example-link">Explore the formula library <ArrowRight size={15} aria-hidden="true" /></Link>
-      </div>
-    </aside>
-  );
-}
-
-function ToolCard({ icon, title, description, href }: { icon: ReactNode; title: string; description: string; href: string }) {
-  return (
-    <Link href={href} className="homepage-tool-card">
-      <span className="homepage-tool-icon">{icon}</span>
-      <span><strong>{title}</strong><small>{description}</small></span>
-      <ArrowRight size={17} aria-hidden="true" />
-    </Link>
   );
 }
 
@@ -197,18 +157,15 @@ function ContactSection() {
 }
 
 export default function Landing() {
-  const { isUS } = useGeoRegion();
   usePageMeta({
-    title: "Water & Wastewater Operator Exam Prep",
-    description: isUS
-      ? "Exam preparation for US water and wastewater operators. Practice questions, worked calculations, timed mock exams and study tools."
-      : "Water and wastewater operator exam preparation. Start with 15 free questions and choose the certification path that fits your province and level.",
-    keywords: "water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
+    title: "AI-Powered Exam Prep for Skilled Trades",
+    description: "AI-powered exam prep for the skilled-trades workforce, starting with water and wastewater. Canadian courses and supported US preparation, plus free Ontario 309A practice and mock exams.",
+    keywords: "skilled trades exam prep, AI-powered exam prep, Ontario 309A electrician, water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
     path: "/",
   });
   useStructuredData(landingPageSchemas);
 
-  const { province: storedProvince, showPrompt, setProvince, dismiss } = useProvince();
+  const { province: storedProvince, setProvince } = useProvince();
   const search = useSearch();
   const routeProvince = new URLSearchParams(search).get("province")?.toLowerCase();
   const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns" ? routeProvince : storedProvince;
@@ -235,9 +192,10 @@ export default function Landing() {
     requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
   }, []);
 
-  const handleProvinceSelect = (id: ProvinceId) => {
-    setProvince(id);
-    if (isAuthenticated) updateProvinceMutation.mutate({ province: id });
+  const handleProvinceSelect = (value: string) => {
+    if (value !== "on" && value !== "bc" && value !== "ab" && value !== "sk" && value !== "mb" && value !== "ns") return;
+    setProvince(value);
+    if (isAuthenticated) updateProvinceMutation.mutate({ province: value });
   };
 
   const closePreviewChoice = () => {
@@ -266,84 +224,111 @@ export default function Landing() {
         currentPath="/"
         rightSlot={<a className="homepage-get-started" href="#find-course">Get started <ArrowRight size={14} aria-hidden="true" /></a>}
       />
-      {showPrompt && <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />}
-
       <main>
         <section className="homepage-hero" aria-labelledby="homepage-hero-title">
           <div className="homepage-hero-copy">
             <CoursePathHero>
-              <div className="homepage-customer-proof">
-                <span>Used by operators at</span>
-                <div className="homepage-customer-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong><strong>City of Quinte West</strong></div>
-              </div>
               <div className="homepage-hero-actions">
                 <a className="homepage-primary-button" href="#find-course">Find your course <ArrowRight size={18} aria-hidden="true" /></a>
-                <Link href="/teams" className="homepage-secondary-button">Explore team plans <ArrowRight size={17} aria-hidden="true" /></Link>
-                <button ref={previewTriggerRef} type="button" className="homepage-preview-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
-                  <Play size={14} fill="currentColor" aria-hidden="true" /> Try 15 free questions (OIT)
-                </button>
+                <Link href="/teams" className="homepage-secondary-button">Train your team <ArrowRight size={17} aria-hidden="true" /></Link>
               </div>
-              <p className="homepage-hero-note">Choose your province, system and level. No account required to start the OIT free preview.</p>
-              <p className="homepage-preview-inclusions">For new learners, the free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages.</p>
-              {showOitPreviewChoice && <PreviewChoice onClose={closePreviewChoice} />}
+              <p className="homepage-hero-note">For your next exam. For the skills beyond it.</p>
             </CoursePathHero>
           </div>
           <div className="homepage-hero-visual">
-            <StudyWorkspacePreview />
+            <HomepageProductDemo />
           </div>
         </section>
 
         <TrustedOrganizations />
 
-        <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
-          <div className="homepage-section-heading homepage-section-heading-left">
-            <span className="homepage-kicker">A better way to prep</span>
-            <h2 id="homepage-tools-title">A better way to prepare.</h2>
-            <p>Work through questions, calculations and exam conditions with the same course context carried through each study mode.</p>
-          </div>
-          <div className="homepage-tool-grid">
-            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice questions" description="Review course-specific questions and explanations." href="/quiz" />
-            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Formula library" description="Keep core operator calculations in reach." href="/formulas" />
-            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Mock exams" description="Build confidence under timed conditions." href="/oit-mock" />
-            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="Study guides" description="Connect concepts to process and equipment." href="/guides" />
-          </div>
-        </section>
-
-        <section className="homepage-proof-strip" aria-label="Echelon platform facts">
-          <div><strong>Course-specific</strong><span>certification preparation</span></div>
-          <div><strong>15</strong><span>free OIT questions for new learners</span></div>
-          <div><strong>Canada + U.S.</strong><span>study contexts supported</span></div>
-          <div><strong>Practice to mock</strong><span>one study workspace</span></div>
-        </section>
-
         <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
           <span id="find-course" className="homepage-anchor-target" aria-hidden="true" />
-          <div className="homepage-finder-intro"><span className="homepage-kicker"><MapPin size={14} aria-hidden="true" /> Course matching</span><p>Start with the exact route that fits where you write your exam.</p></div>
-          <CourseFinder initialProvince={province} onCourseSelected={recordCourseBrowse} />
+          <HomepageCourseDiscovery initialProvince={province} onProvinceSelected={handleProvinceSelect} onCourseSelected={recordCourseBrowse} />
+          <div className="homepage-preview-entry">
+            <button ref={previewTriggerRef} type="button" className="homepage-preview-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
+              <Play size={14} fill="currentColor" aria-hidden="true" /> New to the field? Try a free OIT preview
+            </button>
+            {showOitPreviewChoice && <>
+              <PreviewChoice onClose={closePreviewChoice} />
+              <p className="homepage-preview-inclusions">For new learners, the free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages. No account required to start.</p>
+            </>}
+          </div>
           <button type="button" className="homepage-waitlist-link" onClick={() => setNationalWaitlistOpen(true)}>Need a course path that is not listed? Join the update list <ArrowRight size={15} aria-hidden="true" /></button>
+        </section>
+
+        <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
+          <div className="homepage-section-heading homepage-section-heading-left">
+            <span className="homepage-kicker">More than a question bank</span>
+            <h2 id="homepage-tools-title">Learn it. Practise it. Put it to the test.</h2>
+            <p>One learning journey, from the concept that will not click to the question you can work through on your own.</p>
+          </div>
+          <div className="homepage-learning-stages">
+            <article className="homepage-learning-stage">
+              <div className="homepage-stage-top"><MessageSquareText size={24} aria-hidden="true" /><span>01 / Understand</span></div>
+              <h3>Get past the part that stops you.</h3>
+              <p>Ask the AI tutor follow-up questions. Break down calculations with worked solutions, then revisit the concepts in study notes and flashcards.</p>
+              <ul><li>AI explanations you can question</li><li>Step-by-step calculation support</li><li>Study notes, formulas and flashcards</li></ul>
+              <a href="#find-course" className="homepage-text-link">Find your learning workspace <ArrowRight size={16} aria-hidden="true" /></a>
+            </article>
+            <article className="homepage-learning-stage homepage-learning-stage-featured">
+              <div className="homepage-stage-top"><Gamepad2 size={24} aria-hidden="true" /><span>02 / Practise by doing</span></div>
+              <h3>Do more than read the answer.</h3>
+              <p>Match processes, find the flaw and work through cause and effect. Interactive learning games turn concepts into decisions you make yourself.</p>
+              <ul><li>Six active-revision game modes</li><li>Feedback that explains the answer</li><li>Deeper calculation and process challenges</li></ul>
+              <Link href="/courses/oit/interactive" className="homepage-text-link">Explore Water OIT games <ArrowRight size={16} aria-hidden="true" /></Link>
+            </article>
+            <article className="homepage-learning-stage">
+              <div className="homepage-stage-top"><ClipboardCheck size={24} aria-hidden="true" /><span>03 / Rehearse the exam</span></div>
+              <h3>Find the gaps before exam day.</h3>
+              <p>Practise with explanations, work against the clock in timed mock exams and use your results to decide what to study next.</p>
+              <ul><li>Course-specific practice questions</li><li>Timed mock exams and review</li><li>Results and progress tracking</li></ul>
+              <a href="#find-course" className="homepage-text-link">Choose your exam preparation <ArrowRight size={16} aria-hidden="true" /></a>
+            </article>
+          </div>
+          <p className="homepage-availability-note">Tools vary by course. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Ontario 309A offers free practice and mock exams, not interactive games.</p>
+        </section>
+
+        <LearnerReviews />
+
+        <section id="continuing-education" className="homepage-section homepage-education" aria-labelledby="homepage-education-title">
+          <div className="homepage-education-copy">
+            <span className="homepage-kicker"><GraduationCap size={17} aria-hidden="true" /> Continuing education</span>
+            <h2 id="homepage-education-title">Your learning does not end at the exam.</h2>
+            <p>{CEU_COURSES.length} self-paced operator courses. Build your understanding with structured lessons, saved progress and final assessments.</p>
+            <Link href="/continuing-education" className="homepage-primary-button">Browse {CEU_COURSES.length} courses <ArrowRight size={17} aria-hidden="true" /></Link>
+            <p className="homepage-education-disclosure">Available now as non-credit pilot courses. No approved CEUs, accreditation or regulatory recognition are awarded.</p>
+          </div>
+          <div className="homepage-education-subjects" aria-label="Examples from the continuing education catalogue">
+            {CEU_COURSES.filter(course => ["ceu-basic-hydraulics", "ceu-chlorination-principles", "ceu-supervisor-essentials"].includes(course.key)).map(course => (
+              <Link key={course.key} href={`/continuing-education/${course.key}`} className="homepage-education-course">
+                <BookOpen size={21} aria-hidden="true" /><span><small>Self-paced operator learning</small><strong>{course.shortTitle}</strong><span>Lessons · Saved progress · Final assessment</span></span><ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section id="teams" className="homepage-team-section" aria-labelledby="homepage-team-title">
           <div className="homepage-team-content">
             <span className="homepage-kicker">For utilities and employers</span>
-            <h2 id="homepage-team-title">Keep operator learning visible without making training harder to manage.</h2>
-            <p>Teams can give operators structured preparation while managers have a clear view of assigned learning and readiness.</p>
-            <Link href="/teams" className="homepage-primary-button">Explore team training <ArrowRight size={17} aria-hidden="true" /></Link>
+            <h2 id="homepage-team-title">See who is practising. Know where to support them.</h2>
+            <p>Give each operator a structured path to their next exam. Review individual assessment sessions, results and topic gaps so training conversations start with evidence, not guesswork.</p>
+            <div className="homepage-employer-actions"><Link href="/teams" className="homepage-primary-button">Explore team training <ArrowRight size={17} aria-hidden="true" /></Link><a href="mailto:abello@echeloninstitute.ca?subject=Employer%20training%20enquiry" className="homepage-text-link">Enquire about team training <ArrowRight size={16} aria-hidden="true" /></a></div>
           </div>
           <div className="homepage-team-preview" aria-label="Illustrative team training overview">
             <div><span>Team training overview</span><small>Illustrative preview</small></div>
-            <dl><div><dt>Learning</dt><dd>Assigned courses</dd></div><div><dt>Preparation</dt><dd>Study plans</dd></div><div><dt>Visibility</dt><dd>Readiness</dd></div></dl>
-            <p><Check size={15} aria-hidden="true" /> Course-specific learning paths for each assigned operator.</p>
+            <dl><div><dt>Organize</dt><dd>Assign operator licences</dd></div><div><dt>Follow</dt><dd>Individual assessment activity</dd></div><div><dt>Support</dt><dd>Results and topic gaps</dd></div></dl>
+            <p><Check size={15} aria-hidden="true" /> Follow each assigned operator's preparation in one place.</p>
           </div>
         </section>
 
         <section id="faq" className="homepage-section homepage-faq-section" aria-labelledby="homepage-faq-title">
           <div className="homepage-section-heading"><span className="homepage-kicker">Before you start</span><h2 id="homepage-faq-title">A few useful answers.</h2></div>
           <div className="homepage-faq-list">
-            <FaqItem question="Can I try a course before I buy?" answer="Yes. Start from the homepage to try a free practice preview before you decide on course access." />
-            <FaqItem question="How does course access work?" answer="Individuals purchase a twelve-month Exam Pass for one selected certification course after successful payment. Teams have separate access options for assigned operators." />
+            <FaqItem question="Can I try a course before I buy?" answer="Yes. Paid operator courses include a free practice preview without an account or credit card. Ontario 309A practice and mock exams are free." />
+            <FaqItem question="How does course access work?" answer="For paid operator courses, an Individual Exam Pass provides 12 months of access to one selected course from successful payment, or access can come through an assigned team licence. Ontario 309A practice and mock exams are free." />
             <FaqItem question="Do the questions match the real exam?" answer="The question banks are designed around relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent preparation provider; confirm current requirements with your certifying authority." />
-            <FaqItem question="What is included in a course?" answer="Course inclusions and question totals vary. The pricing page lists the current question count, access term and study tools before checkout." />
+            <FaqItem question="What is included in a course?" answer="Echelon brings together practice questions with explanations, AI tutoring, timed mock exams, flashcards, study notes, formulas and progress tracking. Interactive learning games add another way to practise. Open your course to see its available tools; Ontario 309A currently offers free practice and mock exams. Continuing education courses offer separate self-paced non-credit pilot learning and do not award approved CEUs or regulatory recognition. The pricing page confirms paid-course inclusions and access before checkout." />
             <FaqItem question="Can I get a refund?" answer={`${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`} />
           </div>
         </section>
@@ -354,9 +339,9 @@ export default function Landing() {
 
       <footer className="homepage-footer">
         <div className="homepage-footer-main">
-          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>Operator certification preparation for water and wastewater professionals.</p></div></div>
+          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>AI-powered exam preparation, interactive learning and continuing education for the skilled-trades workforce, starting with water and wastewater.</p></div></div>
           <div className="homepage-footer-links">
-            <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
+            <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/continuing-education">Continuing education</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
             <div><strong>Teams</strong><Link href="/teams">Team training</Link><Link href="/partnerships">Partnerships</Link><Link href="/jobs">Jobs</Link></div>
             <div><strong>Support</strong><Link href="/about">About Echelon</Link><Link href="/refund">Refund policy</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
           </div>

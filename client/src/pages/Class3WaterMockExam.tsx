@@ -49,7 +49,7 @@ export default function Class3WaterMockExam() {
       accentColor2="#0E7490"
       showProvinceSelector={true}
       currentPath="/class3-water-mock"
-      infoLine="552 questions · Ontario (MECP) · BC (EOCP Level III) · Alberta (AWWOA Class III)"
+      infoLine="1,000+ questions · Ontario (MECP) · BC (EOCP Level III) · Alberta (AWWOA Class III)"
       stream="water"
     />
   );

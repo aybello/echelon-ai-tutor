@@ -1,0 +1,411 @@
+{
+ "courseKey": "class3-ww",
+ "bankKey": "class3-wastewater",
+ "batch": 4,
+ "size": 44,
+ "conceptualCount": 35,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2583,
+ "questionNumEnd": 2626,
+ "itemIdStart": "WASTEWATER-TREATMENT-L3-583",
+ "itemIdEnd": "WASTEWATER-TREATMENT-L3-626",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2583,
+   "itemId": "WASTEWATER-TREATMENT-L3-583",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2584,
+   "itemId": "WASTEWATER-TREATMENT-L3-584",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2585,
+   "itemId": "WASTEWATER-TREATMENT-L3-585",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2586,
+   "itemId": "WASTEWATER-TREATMENT-L3-586",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "risk management"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2587,
+   "itemId": "WASTEWATER-TREATMENT-L3-587",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2588,
+   "itemId": "WASTEWATER-TREATMENT-L3-588",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "data driven process decisions"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2589,
+   "itemId": "WASTEWATER-TREATMENT-L3-589",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2590,
+   "itemId": "WASTEWATER-TREATMENT-L3-590",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2591,
+   "itemId": "WASTEWATER-TREATMENT-L3-591",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2592,
+   "itemId": "WASTEWATER-TREATMENT-L3-592",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2593,
+   "itemId": "WASTEWATER-TREATMENT-L3-593",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2594,
+   "itemId": "WASTEWATER-TREATMENT-L3-594",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "risk management"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2595,
+   "itemId": "WASTEWATER-TREATMENT-L3-595",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2596,
+   "itemId": "WASTEWATER-TREATMENT-L3-596",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "data driven process decisions"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2597,
+   "itemId": "WASTEWATER-TREATMENT-L3-597",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2598,
+   "itemId": "WASTEWATER-TREATMENT-L3-598",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2599,
+   "itemId": "WASTEWATER-TREATMENT-L3-599",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2600,
+   "itemId": "WASTEWATER-TREATMENT-L3-600",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2601,
+   "itemId": "WASTEWATER-TREATMENT-L3-601",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2602,
+   "itemId": "WASTEWATER-TREATMENT-L3-602",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "risk management"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2603,
+   "itemId": "WASTEWATER-TREATMENT-L3-603",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2604,
+   "itemId": "WASTEWATER-TREATMENT-L3-604",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "data driven process decisions"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2605,
+   "itemId": "WASTEWATER-TREATMENT-L3-605",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2606,
+   "itemId": "WASTEWATER-TREATMENT-L3-606",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2607,
+   "itemId": "WASTEWATER-TREATMENT-L3-607",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2608,
+   "itemId": "WASTEWATER-TREATMENT-L3-608",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2609,
+   "itemId": "WASTEWATER-TREATMENT-L3-609",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2610,
+   "itemId": "WASTEWATER-TREATMENT-L3-610",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "risk management"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2611,
+   "itemId": "WASTEWATER-TREATMENT-L3-611",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2612,
+   "itemId": "WASTEWATER-TREATMENT-L3-612",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "data driven process decisions"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2613,
+   "itemId": "WASTEWATER-TREATMENT-L3-613",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2614,
+   "itemId": "WASTEWATER-TREATMENT-L3-614",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2615,
+   "itemId": "WASTEWATER-TREATMENT-L3-615",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2616,
+   "itemId": "WASTEWATER-TREATMENT-L3-616",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2617,
+   "itemId": "WASTEWATER-TREATMENT-L3-617",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2618,
+   "itemId": "WASTEWATER-TREATMENT-L3-618",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant solids balance"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2619,
+   "itemId": "WASTEWATER-TREATMENT-L3-619",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with peaking factors"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2620,
+   "itemId": "WASTEWATER-TREATMENT-L3-620",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sampling program counts"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2621,
+   "itemId": "WASTEWATER-TREATMENT-L3-621",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical program quantity with given ratios"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2622,
+   "itemId": "WASTEWATER-TREATMENT-L3-622",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant solids balance"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2623,
+   "itemId": "WASTEWATER-TREATMENT-L3-623",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with peaking factors"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2624,
+   "itemId": "WASTEWATER-TREATMENT-L3-624",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sampling program counts"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2625,
+   "itemId": "WASTEWATER-TREATMENT-L3-625",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "chemical program quantity with given ratios"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2626,
+   "itemId": "WASTEWATER-TREATMENT-L3-626",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "whole plant solids balance"
+  }
+ ]
+}
