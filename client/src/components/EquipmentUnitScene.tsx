@@ -4,6 +4,8 @@ import * as THREE from "three";
 import type { EquipmentDefinition, EquipmentView } from "@shared/equipmentRegistry";
 import { createTankEndShape, EQUIPMENT_TANK_PORTS, type TankEndPorts, type TankPort } from "../lib/equipmentTankGeometry";
 import { createPRVBodyGeometry, PRV_BODY } from "../lib/equipmentValveGeometry";
+import { createPumpVoluteGeometry, PUMP_DISCHARGE } from "../lib/equipmentPumpGeometry";
+import { createGritFloorShape, createGritHopperGeometry, GRIT_HOPPER } from "../lib/equipmentGritGeometry";
 
 type Point = [number, number, number];
 export interface EquipmentUnitSceneProps {
@@ -195,28 +197,15 @@ function Rotor({ scene, children }: { scene: SceneProps; children: ReactNode }) 
   return scene.animate && scene.view !== "exploded" ? <Spinning>{children}</Spinning> : <group>{children}</group>;
 }
 
-function VoluteWall({ shape, inspectTop }: { shape: THREE.Shape; inspectTop: boolean }) {
-  return <mesh position={[-1, -0.1, 0]} rotation={[0, Math.PI / 2, 0]} castShadow {...usePartMesh(inspectTop)}>
-    <extrudeGeometry args={[shape, { depth: 0.6, bevelEnabled: false }]} /><Surface opacity={inspectTop ? 0.2 : 1} />
+function VoluteWall({ inspectTop }: { inspectTop: boolean }) {
+  const geometry = useMemo(() => createPumpVoluteGeometry(), []);
+  return <mesh name="pump-ported-volute" geometry={geometry} castShadow {...usePartMesh(inspectTop)}>
+    <Surface opacity={inspectTop ? 0.2 : 1} />
   </mesh>;
 }
 
 function Pump(scene: SceneProps) {
   const cut = scene.view === "cutaway" || scene.view === "exploded";
-  const volute = useMemo(() => {
-    const shape = new THREE.Shape();
-    // Increasing-radius spiral chamber carries the radial impeller discharge.
-    for (let i = 0; i <= 64; i++) {
-      const t = i / 64, a = t * Math.PI * 2, r = 0.94 + 0.25 * t;
-      if (!i) shape.moveTo(r * Math.cos(a), r * Math.sin(a));
-      else shape.lineTo(r * Math.cos(a), r * Math.sin(a));
-    }
-    for (let i = 64; i >= 0; i--) {
-      const t = i / 64, a = t * Math.PI * 2, r = 0.78 + 0.25 * t;
-      shape.lineTo(r * Math.cos(a), r * Math.sin(a));
-    }
-    shape.closePath(); return shape;
-  }, []);
   return <group>
     <Box at={[0.35, -1.55, 0]} size={[6.3, 0.22, 2.5]} color={CONCRETE} />
     <Part id="suction" scene={scene} offset={[-1.1, 0, 0]}>
@@ -225,7 +214,7 @@ function Pump(scene: SceneProps) {
       <Arrow from={[-3.3, 0.26, 0]} to={[-1.35, 0.26, 0]} scene={scene} />
     </Part>
     <Part id="casing" scene={scene} offset={[0.15, 0, 0]}>
-      <VoluteWall shape={volute} inspectTop={scene.view === "top"} />
+      <VoluteWall inspectTop={scene.view === "top"} />
       {/* Section the near head so the +X/+Z camera can see the impeller. */}
       <Shell at={[-0.42, -0.1, 0]} radius={1.1} thickness={0.86} length={0.1}
         cut={cut} color={STEEL} opacity={cut ? 1 : 0.23} passive={!cut} />
@@ -258,7 +247,10 @@ function Pump(scene: SceneProps) {
     </Part>
     <Part id="discharge" scene={scene} offset={[0.75, 0.6, 0]}>
       {/* Tangential outlet at the top of the volute, never an axial second nozzle. */}
-      <Tube points={[[-0.65, 0.98, 0.36], [-0.65, 1.3, 0.36], [-0.65, 1.78, 0.36]]} radius={0.2} />
+      <group position={[PUMP_DISCHARGE.x, (PUMP_DISCHARGE.bottom + PUMP_DISCHARGE.top) / 2, PUMP_DISCHARGE.z]}
+        rotation={[0, 0, Math.PI / 2]}>
+        <Shell radius={PUMP_DISCHARGE.radius} thickness={0.05} length={PUMP_DISCHARGE.top - PUMP_DISCHARGE.bottom} color={LIGHT} />
+      </group>
       <Ring at={[-0.65, 1.75, 0.36]} radius={0.28} rotation={[Math.PI / 2, 0, 0]} color={LIGHT} />
       <Arrow from={[-0.28, 1.0, 0.36]} to={[-0.28, 1.7, 0.36]} scene={scene} />
     </Part>
@@ -430,6 +422,17 @@ function BarScreen(scene: SceneProps) {
   </group>;
 }
 
+function GritFloor() {
+  const shape = useMemo(() => createGritFloorShape(), []);
+  return <mesh name="grit-bounded-floor" position={[0, GRIT_HOPPER.topY, 0]} rotation={[Math.PI / 2, 0, 0]}
+    castShadow receiveShadow {...usePartMesh()}>
+    <extrudeGeometry args={[shape, { depth: 0.2, bevelEnabled: false }]} /><Surface color={CONCRETE} />
+  </mesh>;
+}
+function GritHopper({ cut }: { cut: boolean }) {
+  const geometry = useMemo(() => createGritHopperGeometry(cut), [cut]);
+  return <mesh name="grit-sealed-hopper" geometry={geometry} castShadow {...usePartMesh()}><Surface color={STEEL} /></mesh>;
+}
 function GritChamber(scene: SceneProps) {
   const cut = scene.view === "cutaway" || scene.view === "exploded";
   const screw = useMemo(() => Array.from({ length: 145 }, (_, i): Point => {
@@ -440,8 +443,7 @@ function GritChamber(scene: SceneProps) {
   return <group>
     <Part id="chamber" scene={scene}>
       <Tank length={6} width={2.2} floor={-1.18} top={0.4} cut={cut} openEnds splitFloor />
-      <Box at={[-1.35, -1.28, 0]} size={[3.3, 0.2, 2.6]} color={CONCRETE} />
-      <Box at={[2.52, -1.28, 0]} size={[0.96, 0.2, 2.6]} color={CONCRETE} />
+      <GritFloor />
       <Water at={[0, -0.67, 0]} size={[6, 0.95, 2.18]} />
       <Arrow from={[-2.4, -0.15, 0.45]} to={[2.5, -0.15, 0.45]} scene={scene} />
     </Part>
@@ -452,13 +454,7 @@ function GritChamber(scene: SceneProps) {
     </Part>
     <Part id="grit-hopper" scene={scene} offset={[0, 0.35, 0.8]}>
       {/* Four thick sloping panels form a mineral-grit pocket below the channel floor. */}
-      {[-1, 1].map(s => <group key={s}>
-        <Box at={[1.2 + s * 0.54, -1.48, 0]} size={[0.12, 0.79, 1.75]}
-          rotation={[0, 0, s * -0.72]} color={STEEL} />
-        {(!cut || s === -1) && <Box at={[1.2, -1.48, s * 0.61]} size={[1.72, 0.79, 0.12]}
-          rotation={[s * 0.65, 0, 0]} color={STEEL} />}
-      </group>)}
-      <Box at={[1.2, -1.84, 0]} size={[0.68, 0.12, 0.8]} color={STEEL} />
+      <GritHopper cut={cut} />
       <Box at={[1.2, -1.73, 0]} size={[0.64, 0.1, 0.72]} color={SAND} />
       {Array.from({ length: 12 }, (_, i) => <Cylinder key={i} at={[0.98 + (i % 4) * 0.14, -1.65,
         -0.24 + Math.floor(i / 4) * 0.2]} radius={0.04} length={0.07} sides={6} color={SAND} />)}
