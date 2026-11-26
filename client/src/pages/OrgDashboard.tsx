@@ -1155,7 +1155,7 @@ export default function OrgDashboard() {
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
         {!hasAnnualContract && <p className="text-sm text-slate-600">Teams Flex Course Passes are a one-time purchase. Each licence has its own activate-by date, study term and reporting window, shown below.</p>}
-        {overview.orgId && <FlexLicencePanel key={overview.orgId} orgId={overview.orgId} />}
+        {overview.orgId && <FlexLicencePanel key={`flex-${overview.orgId}`} orgId={overview.orgId} />}
 
         {/* ── Licence Expiry Tracking ────────────────────────────────── */}
         {overview.orgId && <CertificatesPanel key={overview.orgId} orgId={overview.orgId} />}

@@ -140,6 +140,22 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("organization-local pending forms", () => {
+  it("keeps organization-keyed sibling panels distinct during reconciliation", () => {
+    let tree = startA();
+    for (const orgId of [7, 8]) {
+      if (orgId === 8) tree = changeOrg(tree, orgId);
+      const section = elements(tree).find(element => element.type === "section" && element.props["aria-label"] === "Operator management");
+      expect(section).toBeTruthy();
+      const children = (Array.isArray(section.props.children) ? section.props.children.flat() : [section.props.children])
+        .filter((element: any) => React.isValidElement(element) && element.key !== null);
+      const keys = children.map((element: any) => element.key);
+      expect(new Set(keys).size, `duplicate sibling keys for organization ${orgId}`).toBe(keys.length);
+      const panel = children.filter((element: any) => element.type === FlexLicencePanel);
+      expect(panel).toHaveLength(1);
+      expect(panel[0].props.orgId).toBe(orgId);
+    }
+  });
+
   it("discards A's inline draft and only saves B after a fresh edit", () => {
     let tree = startA();
     elements(tree).find(element => element.props["aria-label"] === "Edit courses for Synthetic operator").props.onClick();
