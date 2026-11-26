@@ -40,10 +40,10 @@ describe("Equipment visual contracts", () => {
   });
   it("keeps rotation and travel subscriptions gated by motion and exploded mode", () => {
     expect(stage).toContain("shouldAnimate(flowing, reduced, exploded)");
-    expect(scene.match(/scene\.animate && scene\.view !== "exploded"/g)).toHaveLength(2);
+    expect(scene.match(/(\w+)\.animate && \1\.view !== "exploded"/g)).toHaveLength(2);
     expect(scene).not.toContain("new THREE.BoxGeometry");
     expect(scene).not.toContain("<Canvas");
-    expect(scene).toContain("event.stopPropagation()");
+    expect(scene).toMatch(/\w+\.stopPropagation\(\)/);
     expect(scene).toContain("raycast: NO_RAYCAST");
   });
   it("uses each formula card's actual available unit system for term labels", () => {
