@@ -984,7 +984,8 @@ function buildEquipmentPageMeta(unit: EquipmentDefinition): PageMeta {
     priority: "0.7",
     jsonLd,
     bodyHtml: `<p>${escapeHtml(unit.summary)}</p>${sections}${components}${calculations}${symptoms}${faqHtml}
-      <p>Calculations are presented in metric first, matching Canadian certification exams, with US unit versions available. This is a generalized learning illustration, not manufacturer drawings or a site-specific procedure. Your plant's own procedures and your provincial authority's requirements always govern.</p>
+      <p>Calculations are presented in metric first. ${unit.formulas.some(formula => formula.workedUs) ? "US unit versions are available for selected examples." : "Worked examples on this module use metric units."} This is a generalized learning illustration, not manufacturer drawings or a site-specific procedure. Your plant's own procedures and your provincial authority's requirements always govern.</p>
+      ${unit.sources?.length ? `<h2>Technical reading</h2><ul>${unit.sources.map(source => `<li><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a>. ${escapeHtml(source.supports)}. Source checked ${escapeHtml(source.reviewedAt)}.</li>`).join("")}</ul>` : ""}
       <p><a href="${SITE_URL}${unit.guideRoute}">Open the related process guide</a> or <a href="${SITE_URL}${unit.practiceRoute}">work through practice questions</a>.</p>`,
   };
 }
@@ -1012,8 +1013,8 @@ function buildEquipmentHubMeta(): PageMeta {
     h1: "Water and Wastewater Equipment in Interactive 3D",
     changefreq: "monthly",
     priority: "0.8",
-    bodyHtml: `<p>The Equipment Lab lets water and wastewater operators look inside the equipment they are tested on. Each module is an interactive 3D model with labelled components, operator notes, worked calculations in metric and US units, and the observations that tell you what the process is doing.</p>
-      <h2>Available modules</h2>${cards}
+    bodyHtml: `<p>The Equipment Lab lets water and wastewater operators look inside ${EQUIPMENT_REGISTRY.length + 1} pieces of equipment. Explore interactive 3D assemblies and labelled diagrams, operator notes and worked metric calculations. Selected aeration examples also offer US units.</p>
+      <h2>Available modules</h2><h3><a href="${SITE_URL}/equipment-lab#clarifier">Circular clarifier</a></h3><p>Follow settling, sludge collection and clarified effluent through a centre-feed circular clarifier.</p>${cards}
       <p>Every module is free to use. These are generalized learning illustrations, not manufacturer drawings or site-specific procedures. Your plant's own procedures and your provincial authority's requirements always govern.</p>`,
   };
 }

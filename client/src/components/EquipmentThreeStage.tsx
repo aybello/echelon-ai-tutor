@@ -7,6 +7,7 @@ import type {
   EquipmentView,
 } from "@shared/equipmentRegistry";
 import EquipmentAerationScene from "./EquipmentAerationScene";
+import EquipmentUnitScene from "./EquipmentUnitScene";
 import { aerationCameraZoom } from "@/lib/equipmentAerationModel";
 import { supportsWebGL2 } from "@/lib/webglSupport";
 
@@ -59,10 +60,12 @@ function usePrefersReducedMotion() {
 function CameraRig({
   view,
   exploded,
+  equipment,
   controls,
 }: {
   view: EquipmentView;
   exploded: boolean;
+  equipment: EquipmentDefinition;
   controls: React.MutableRefObject<{ update: () => void } | null>;
 }) {
   const { camera, size } = useThree();
@@ -70,17 +73,19 @@ function CameraRig({
   useEffect(() => {
     const cam = camera as THREE.OrthographicCamera;
     if (!cam.isOrthographicCamera) return;
-    cam.zoom = aerationCameraZoom(size.width, size.height, exploded);
+    cam.zoom = equipment.sceneId === "aeration-basin"
+      ? aerationCameraZoom(size.width, size.height, exploded)
+      : Math.max(10, Math.min(size.width / 12.6, size.height / (exploded ? 10.8 : 8.4), 70));
     cam.updateProjectionMatrix();
-  }, [camera, size.width, size.height, exploded]);
+  }, [camera, size.width, size.height, exploded, equipment.sceneId]);
 
   useEffect(() => {
     const [x, y, z] = equipmentCameraPosition(view);
     camera.position.set(x, y, z);
-    camera.lookAt(0, -0.8, 0);
+    camera.lookAt(0, equipment.sceneId === "aeration-basin" ? -0.8 : 0, 0);
     camera.updateProjectionMatrix();
     controls.current?.update();
-  }, [camera, view, controls]);
+  }, [camera, view, controls, equipment.sceneId]);
 
   return null;
 }
@@ -136,7 +141,7 @@ export default function EquipmentThreeStage({
           gl.setClearColor("#eaf4f5");
         }}
       >
-        <CameraRig view={view} exploded={exploded} controls={controlsRef} />
+        <CameraRig view={view} exploded={exploded} equipment={equipment} controls={controlsRef} />
         {/*
           Flat ambient light washed out every surface and made moulded concrete
           look like coloured paper. A sky/ground hemisphere plus a strong keyed
@@ -171,7 +176,7 @@ export default function EquipmentThreeStage({
             onSelectPart={onSelectPart}
             animate={animate}
           />
-        ) : null}
+        ) : <EquipmentUnitScene equipment={equipment} view={view} activePart={activePart} onSelectPart={onSelectPart} animate={animate} />}
 
         <OrbitControls
           ref={controlsRef as never}
@@ -180,7 +185,7 @@ export default function EquipmentThreeStage({
           minZoom={9}
           maxZoom={110}
           maxPolarAngle={Math.PI / 2.05}
-          target={[0, -0.8, 0]}
+          target={[0, equipment.sceneId === "aeration-basin" ? -0.8 : 0, 0]}
         />
       </Canvas>
 

@@ -77,7 +77,7 @@ describe("Equipment Lab teaching content is correct", () => {
   it("presents calculations in metric first, because Canadian exams are metric", () => {
     for (const unit of EQUIPMENT_REGISTRY) {
       for (const formula of unit.formulas) {
-        const metricMarkers = /m3|kg|mg\/L|mL\/g|hours|days/;
+        const metricMarkers = /m3|m2|kg|kPa|mg\/L|mL\/g|m\/s|m\/h|hours|days/;
         expect(
           metricMarkers.test(formula.expression) ||
             formula.terms.some(t => metricMarkers.test(t.units)),

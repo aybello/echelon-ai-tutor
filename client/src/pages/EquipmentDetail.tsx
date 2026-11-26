@@ -18,6 +18,7 @@ import {
 import ErrorBoundary from "@/components/ErrorBoundary";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import EquipmentDiagram from "@/components/EquipmentDiagram";
 import { supportsWebGL2 } from "@/lib/webglSupport";
 import type {
   EquipmentDefinition,
@@ -73,6 +74,7 @@ export default function EquipmentDetail({
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       <SiteNav currentPath={`/equipment-lab/${equipment.slug}`} />
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <a href="/equipment-lab" className="mb-5 inline-flex min-h-11 items-center text-sm font-semibold text-teal-800 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">Back to equipment library</a>
         <GuideStudyRecording
           topic={`Equipment Lab: ${equipment.shortTitle}`}
         />
@@ -163,8 +165,8 @@ export default function EquipmentDetail({
               role="status"
               className="mb-4 rounded-md bg-amber-50 p-3 text-sm text-amber-950"
             >
-              3D is unavailable in this browser. The labelled component list
-              below covers the same material.
+              3D is unavailable in this browser. The interactive Diagram view
+              and component inspector are ready to use.
             </p>
           )}
 
@@ -199,6 +201,7 @@ export default function EquipmentDetail({
                 </Suspense>
               ) : (
                 <div className="min-h-[360px] p-5">
+                  <EquipmentDiagram equipment={equipment} activePart={activePart} onSelectPart={setActivePart} />
                   <p className="text-sm font-semibold text-slate-900">
                     Process sequence
                   </p>
@@ -388,10 +391,10 @@ export default function EquipmentDetail({
                           {t.symbol}
                         </dt>
                         <dd className="text-slate-600">
-                          {t.meaning}{" "}
-                          <span className="text-slate-400">
-                            (
-                            {units === "us" && t.unitsUs ? t.unitsUs : t.units})
+                            {t.meaning}{" "}
+                            <span className="text-slate-400">
+                              (
+                            {showUs && t.unitsUs ? t.unitsUs : t.units})
                           </span>
                         </dd>
                       </div>
@@ -502,6 +505,17 @@ export default function EquipmentDetail({
             ))}
           </dl>
         </section>
+
+        {equipment.sources?.length ? <section aria-labelledby="equipment-sources-heading" className="mt-6 rounded-xl border border-slate-200 bg-white p-4">
+          <h2 id="equipment-sources-heading" className="text-sm font-semibold text-slate-900">Technical reading</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">These sources support the learning content. Illustrations are conceptual, not manufacturer drawings or instructions for operating your site.</p>
+          <ul className="mt-3 space-y-3">
+            {equipment.sources.map(source => <li key={source.url} className="text-sm leading-6">
+              <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-teal-800 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">{source.title}</a>
+              <p className="text-slate-600">{source.supports} <span className="text-xs text-slate-500">Source checked {source.reviewedAt}.</span></p>
+            </li>)}
+          </ul>
+        </section> : null}
 
         {/* ── Continue ────────────────────────────────────────────── */}
         <section className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 py-6">

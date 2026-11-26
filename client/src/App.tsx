@@ -293,7 +293,7 @@ function Router() {
           {(params: { slug: string }) => {
             const unit = findEquipment(params.slug);
             return unit ? (
-              <EquipmentDetail equipment={unit} />
+              <EquipmentDetail key={unit.id} equipment={unit} />
             ) : (
               <Redirect to="/equipment-lab" />
             );

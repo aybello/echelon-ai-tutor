@@ -11,6 +11,8 @@
  * plant's own SOPs and the provincial authority always govern real actions.
  */
 
+import { EQUIPMENT_ADDITIONS } from "./equipmentAdditions";
+
 export type EquipmentView = "isometric" | "top" | "cutaway" | "exploded";
 
 export type EquipmentStream =
@@ -99,7 +101,7 @@ export interface EquipmentDefinition {
   stream: EquipmentStream;
   accent: string;
   /** Which 3D scene renders this unit. "clarifier" is the shipped scene. */
-  sceneId: "clarifier" | "aeration-basin";
+  sceneId: "clarifier" | "aeration-basin" | "centrifugal-pump" | "rapid-gravity-filter" | "chlorine-contact-tank" | "uv-reactor" | "bar-screen" | "grit-chamber" | "lift-station" | "pressure-reducing-valve";
   /** Courses where this equipment is examinable, for internal linking. */
   relatedTopics: string[];
   /** Route of the matching process guide. */
@@ -110,6 +112,8 @@ export interface EquipmentDefinition {
   stages: readonly EquipmentStage[];
   formulas: readonly EquipmentFormula[];
   symptoms: readonly EquipmentSymptom[];
+  /** Reviewed supporting reading, not an endorsement or compliance certificate. */
+  sources?: readonly { title: string; url: string; reviewedAt: string; supports: string }[];
   /** Crawlable prose. Real teaching content, not marketing copy. */
   seo: {
     title: string;
@@ -298,7 +302,7 @@ const AERATION_BASIN: EquipmentDefinition = {
       expression: "Sludge age = Solids held in the system / Solids leaving per day",
       terms: [
         { symbol: "Sludge age", meaning: "Average time a solids particle stays in the system, also called SRT or mean cell residence time", units: "days" },
-        { symbol: "Solids held", meaning: "Mass of suspended solids in the aeration basin, found from V x MLSS / 1000", units: "kg", unitsUs: "lb" },
+        { symbol: "Solids held", meaning: "Mass of suspended solids in the aeration basin, calculated from volume and concentration using the conversion factor for the selected unit system", units: "kg", unitsUs: "lb" },
         { symbol: "Solids leaving", meaning: "Mass removed daily as waste activated sludge plus solids lost with the effluent", units: "kg/day", unitsUs: "lb/day" },
       ],
       worked: {
@@ -539,7 +543,7 @@ const AERATION_BASIN: EquipmentDefinition = {
  * Registry
  * ──────────────────────────────────────────────────────────────────────────── */
 
-export const EQUIPMENT_REGISTRY: readonly EquipmentDefinition[] = [AERATION_BASIN];
+export const EQUIPMENT_REGISTRY: readonly EquipmentDefinition[] = [AERATION_BASIN, ...EQUIPMENT_ADDITIONS];
 
 export function findEquipment(slug: string): EquipmentDefinition | undefined {
   return EQUIPMENT_REGISTRY.find(item => item.slug === slug);

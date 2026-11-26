@@ -6,7 +6,7 @@ import ClarifierLab from "@/components/ClarifierLab";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { EQUIPMENT_REGISTRY } from "@shared/equipmentRegistry";
+import EquipmentCatalogue from "@/components/EquipmentCatalogue";
 
 import { supportsWebGL2 } from "@/lib/webglSupport";
 
@@ -36,11 +36,12 @@ export default function EquipmentLab() {
     <div className="learning-redesign equipment-lab-page min-h-screen bg-slate-50 font-sans text-slate-900">
       <SiteNav currentPath="/equipment-lab" />
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+        <EquipmentCatalogue />
         <GuideStudyRecording topic="Equipment Lab - circular clarifier" />
-        <section className="flex flex-wrap items-end justify-between gap-5 border-b border-slate-200 pb-6">
+        <section id="clarifier" className="flex flex-wrap items-end justify-between gap-5 border-t border-slate-200 pt-8 pb-6">
           <div className="max-w-2xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-teal-700">Equipment Lab · Module 01</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-[32px] sm:leading-9">Inside a circular clarifier</h1>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-900 sm:text-[32px] sm:leading-9">Inside a circular clarifier</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600 sm:text-base">Inspect the equipment, follow the conceptual separation sequence, and connect each assembly to operator decisions that protect effluent quality.</p>
             {aboutOpen && <p id="model-description" className="mt-3 border-l-2 border-teal-700 pl-3 text-sm leading-6 text-slate-600">This is a generalized learning illustration, not manufacturer CAD, a hydraulic simulation, a site-specific drawing, a maintenance procedure, or a calibrated training simulator. Flow paths, motion, and separation distances are illustrative.</p>}
           </div>
@@ -54,7 +55,7 @@ export default function EquipmentLab() {
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">Circular clarifier · centre feed</p>
-              <h2 id="clarifier-heading" className="mt-1 text-lg font-semibold text-slate-900">Explore the assembly</h2>
+              <h3 id="clarifier-heading" className="mt-1 text-lg font-semibold text-slate-900">Explore the assembly</h3>
             </div>
             <div className="flex rounded-md border border-slate-300 bg-white p-1" role="group" aria-label="Equipment Lab render mode">
               <button disabled={!available} onClick={() => setRenderMode("three")} aria-pressed={renderMode === "three"} className={`inline-flex min-h-9 items-center gap-1.5 rounded px-3 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${renderMode === "three" ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100"}`}><Box size={14} aria-hidden="true" /> 3D model</button>
@@ -70,31 +71,6 @@ export default function EquipmentLab() {
               </ErrorBoundary>
             </Suspense>
           ) : <ClarifierLab onStudyLink={() => navigate("/wastewater")} />}
-        </section>
-
-        <section className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 py-6">
-          <div className="w-full">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">More modules</p>
-            <h2 className="mt-1 text-lg font-semibold text-slate-900">Other equipment in the lab</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {EQUIPMENT_REGISTRY.map(unit => (
-                <button
-                  key={unit.id}
-                  onClick={() => navigate(`/equipment-lab/${unit.slug}`)}
-                  className="rounded-xl border border-slate-300 bg-white p-4 text-left transition-colors hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
-                >
-                  <span
-                    className="inline-block rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white"
-                    style={{ background: unit.accent }}
-                  >
-                    Module {unit.moduleNumber}
-                  </span>
-                  <span className="mt-2 block text-sm font-semibold text-slate-900">{unit.title}</span>
-                  <span className="mt-1 block text-sm leading-6 text-slate-600">{unit.summary}</span>
-                </button>
-              ))}
-            </div>
-          </div>
         </section>
 
         <section className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 py-6">
