@@ -95,6 +95,15 @@ describe("EquipmentDiagram deterministic descriptors", () => {
     ]);
   });
 
+  it("keeps filter service water below the open wash-trough lips and above the media", () => {
+    const surface = Number(getPart("rapid-gravity-filter", "supernatant").shapes[0].d.match(/^M[\d.]+ ([\d.]+)/)![1]);
+    const trough = getPart("rapid-gravity-filter", "wash-trough").shapes[0].d;
+    const lips = [Number(trough.match(/^M[\d.]+ ([\d.]+)/)![1]), Number(trough.match(/V([\d.]+)$/)![1])];
+    const mediaTop = Number(getPart("rapid-gravity-filter", "media").shapes[0].d.match(/^M[\d.]+ ([\d.]+)/)![1]);
+    for (const lip of lips) expect(lip).toBeLessThan(surface);
+    expect(surface).toBeLessThan(mediaTop);
+  });
+
   it("places the waste-sludge hotspot on its distinct branch, not the RAS pipe", () => {
     const waste = getPart("aeration-basin", "was-line");
     expect(waste.anchor[0]).toBeGreaterThan(455);

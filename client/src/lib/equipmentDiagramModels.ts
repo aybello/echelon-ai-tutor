@@ -64,14 +64,14 @@ export const EQUIPMENT_DIAGRAM_MODELS: Readonly<Record<string, EquipmentDiagramM
     description: "Side section in filtration service only. Inlet water fills the supernatant above layered filter media, flows downward through media to the underdrain, then exits through the filtered-water outlet. An elevated wash trough collects dirty wash water during a separate backwash operation; no backwash flow is shown.",
     base: [R(235, 103, 262, 189, "concrete")],
     parts: [
-      part("supernatant", [403, 153], "top", [361, 27], [R(245, 116, 242, 77, "water")]),
+      part("supernatant", [403, 178], "top", [361, 27], [R(245, 174, 242, 19, "water"), P("M245 174H487", "none", "teal", 2)]),
       part("inlet", [193, 143], "left", [118, 133], [...pipe("M140 143H245")]),
       part("media", [396, 220], "right", [602, 190], [R(245, 193, 242, 28, "media"), R(245, 221, 242, 25, "sludge"), R(245, 246, 242, 13, "steel"), ...[267, 299, 331, 363, 395, 427, 459].flatMap(x => [E(x, 210, 2, 2, "ink"), E(x + 8, 236, 3, 2, "media")])]),
       part("underdrain", [365, 276], "bottom", [362, 351], [R(245, 259, 242, 23, "water"), P("M258 269H475", "none", "teal", 5), ...[267, 299, 331, 363, 395, 427, 459].map(x => P(`M${x} 259V270`, "none", "ink", 3))]),
       part("outlet", [537, 270], "bottom", [519, 351], [...pipe("M475 270H578")]),
       part("wash-trough", [287, 164], "top", [208, 27], [P("M260 149V169H314V149", "none", "steel", 7), P("M263 155H311", "none", "white", 4)]),
     ],
-    flows: [flow("M152 143H230", "inlet", "supernatant"), flow("M355 156V224", "supernatant", "media"), flow("M429 227V269", "media", "underdrain"), flow("M502 270H565", "underdrain", "outlet")],
+    flows: [flow("M152 143H230", "inlet", "supernatant"), flow("M355 180V224", "supernatant", "media"), flow("M429 227V269", "media", "underdrain"), flow("M502 270H565", "underdrain", "outlet")],
     notes: [{ x: 363, y: 319, text: "FILTRATION SERVICE • Backwash is a separate mode" }],
   },
   "chlorine-contact-tank": {

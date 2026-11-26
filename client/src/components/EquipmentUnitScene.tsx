@@ -2,6 +2,7 @@ import { createContext, useContext, useMemo, useRef, type ReactNode } from "reac
 import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import * as THREE from "three";
 import type { EquipmentDefinition, EquipmentView } from "@shared/equipmentRegistry";
+import { createTankEndShape, EQUIPMENT_TANK_PORTS, type TankEndPorts, type TankPort } from "../lib/equipmentTankGeometry";
 
 type Point = [number, number, number];
 export interface EquipmentUnitSceneProps {
@@ -134,21 +135,24 @@ function UVHead({ x }: { x: number }) {
 function Water({ at, size }: { at: Point; size: Point }) {
   return <Box at={at} size={size} color={WATER} opacity={0.18} passive />;
 }
+function TankEndWall({ x, width, floor, top, port }: { x: number; width: number; floor: number; top: number; port?: TankPort }) {
+  const shape = useMemo(() => createTankEndShape(width, floor, top, port), [width, floor, top, port?.y, port?.z, port?.radius]);
+  return <mesh position={[x - 0.1, 0, 0]} rotation={[0, Math.PI / 2, 0]} castShadow receiveShadow {...usePartMesh()}>
+    <extrudeGeometry args={[shape, { depth: 0.2, bevelEnabled: false, curveSegments: 32 }]} />
+    <Surface color={CONCRETE} />
+  </mesh>;
+}
 /** The near wall is removed in Cutaway/Exploded; end ports are actual openings. */
 function Tank({ length = 6, width = 3.4, floor = -1.65, top = 0.5, cut, openEnds = false,
-  splitFloor = false }: { length?: number; width?: number; floor?: number; top?: number; cut: boolean;
-  openEnds?: boolean; splitFloor?: boolean }) {
+  splitFloor = false, ports = {} }: { length?: number; width?: number; floor?: number; top?: number; cut: boolean;
+  openEnds?: boolean; splitFloor?: boolean; ports?: TankEndPorts }) {
   const h = top - floor, y = (top + floor) / 2;
   return <>
     {!splitFloor && <Box at={[0, floor - 0.1, 0]} size={[length + 0.4, 0.2, width + 0.4]} color={CONCRETE} />}
     <Box at={[0, y, -width / 2 - 0.1]} size={[length + 0.4, h, 0.2]} color={CONCRETE} />
     {!cut && <Box at={[0, y, width / 2 + 0.1]} size={[length + 0.4, h, 0.2]} color={CONCRETE} />}
-    {!openEnds && [-1, 1].map(sign => <group key={sign}>
-      {/* Three jambs leave a central side-port gap instead of burying the pipe. */}
-      {[-1, 1].map(z => <Box key={z} at={[sign * (length / 2 + 0.1), y, z * (width / 4 + 0.22)]}
-        size={[0.2, h, width / 2 - 0.44]} color={CONCRETE} />)}
-      <Box at={[sign * (length / 2 + 0.1), top - 0.12, 0]} size={[0.2, 0.24, 0.88]} color={CONCRETE} />
-    </group>)}
+    {!openEnds && [-1, 1].map(sign => <TankEndWall key={sign} x={sign * (length / 2 + 0.1)}
+      width={width} floor={floor} top={top} port={sign < 0 ? ports.left : ports.right} />)}
   </>;
 }
 function StillArrow({ from, to }: { from: Point; to: Point }) {
@@ -256,7 +260,7 @@ function Pump(scene: SceneProps) {
 function GravityFilter(scene: SceneProps) {
   const cut = scene.view === "cutaway" || scene.view === "exploded";
   return <group>
-    <Tank length={4.8} width={3.2} floor={-1.65} top={0.98} cut={cut} />
+    <Tank length={4.8} width={3.2} floor={EQUIPMENT_TANK_PORTS.filter.floor} top={0.98} cut={cut} ports={EQUIPMENT_TANK_PORTS.filter.ends} />
     <Part id="inlet" scene={scene} offset={[-0.65, 0.5, 0]}>
       <Shell at={[-3.05, 0.35, 0]} radius={0.22} thickness={0.05} length={1.4} color={LIGHT} />
       <Flange x={-3.65} y={0.35} radius={0.29} />
@@ -481,7 +485,7 @@ function LiftStation(scene: SceneProps) {
   return <group>
     <Part id="wet-well" scene={scene}>
       {/* Permanent inspection section keeps both bottom pumps visible at low camera angles. */}
-      <Tank length={4.2} width={3.2} floor={-1.8} top={0.85} cut />
+      <Tank length={4.2} width={3.2} floor={EQUIPMENT_TANK_PORTS.liftStation.floor} top={0.85} cut ports={EQUIPMENT_TANK_PORTS.liftStation.ends} />
       <Water at={[0, -1.09, 0]} size={[4.15, 1.4, 3.15]} />
       <Box at={[1.55, -0.39, -1.57]} size={[0.65, 0.04, 0.065]} color={WATER} />
     </Part>
