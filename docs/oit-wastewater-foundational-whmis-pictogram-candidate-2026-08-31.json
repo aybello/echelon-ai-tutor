@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 423,
+    "question": "On a WHMIS product label, what does a hazard pictogram communicate?",
+    "options": [
+      "The type of hazard associated with the hazardous product.",
+      "The quantity of product remaining in the container.",
+      "The manufacturer’s sales contact information.",
+      "The complete first-aid procedure for every possible exposure."
+    ],
+    "correctIndex": 0,
+    "explanation": "WHMIS communicates hazard information through labels and safety data sheets. A hazard pictogram is used to identify the type of hazard associated with a hazardous product; workers must still follow the full label, safety data sheet, and workplace procedures.",
+    "sourceTitle": "Health Canada — Guidance on the WHMIS Supplier Requirements",
+    "sourceReference": "Health Canada describes WHMIS as a Canadian hazard-classification and communication system using labels and safety data sheets; pictograms are assigned based on the hazardous-product classification.",
+    "sourceUrl": "https://www.canada.ca/en/health-canada/services/environmental-workplace-health/occupational-health-safety/workplace-hazardous-materials-information-system/supplier-hazard-communication-requirements-whmis/guidance.html"
+  }
+]

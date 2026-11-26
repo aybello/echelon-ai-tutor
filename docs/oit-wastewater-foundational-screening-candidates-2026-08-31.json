@@ -1,0 +1,32 @@
+[
+  {
+    "questionNum": 55,
+    "question": "What is the primary function of a comminutor or grinder in preliminary treatment?",
+    "options": [
+      "To reduce the size of large solids in the wastewater stream so they can pass through later process equipment.",
+      "To remove fine sand and grit from wastewater before it reaches the pumps and other mechanical equipment.",
+      "To separate floating oil and grease from wastewater before it enters the primary sedimentation process.",
+      "To add air to wastewater so odour-causing compounds can be oxidized before downstream biological treatment begins."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance describes comminutors and grinders as alternatives to coarse screening that shred or cut material rather than physically remove it from the sewage flow. They can protect equipment where stringy material would otherwise accumulate.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Section 10.2 describes comminutors and grinders as alternatives to coarse screening and distinguishes shredding or cutting material from physically removing coarse material from influent sewage.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  },
+  {
+    "questionNum": 63,
+    "question": "What is a key difference between a mechanically cleaned bar screen and a manually cleaned bar screen?",
+    "options": [
+      "A mechanically cleaned screen uses cleaning equipment, while a manual screen requires an operator to remove accumulated screenings.",
+      "A mechanically cleaned screen removes all dissolved organic matter, while a manual screen removes only sand and coarse grit particles.",
+      "A manually cleaned screen disinfects incoming wastewater, while a mechanically cleaned screen provides sedimentation before treatment begins.",
+      "A mechanically cleaned screen eliminates all maintenance needs, while a manually cleaned screen must always be operated at one fixed flow rate."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance recognizes both manually and mechanically cleaned bar screens. Manual facilities are designed so an operator can rake screenings safely, while mechanical screening equipment uses a cleaning mechanism and still requires maintenance safeguards.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Section 10.1 identifies coarse bar screens as manually or mechanically cleaned. Section 10.1.1.1 addresses manual raking access, while Section 10.1.1.3 addresses mechanically cleaned screening equipment and maintenance protection.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  }
+]

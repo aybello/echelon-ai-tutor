@@ -1,0 +1,47 @@
+[
+  {
+    "questionNum": 16,
+    "question": "What does inflow mean in a wastewater collection system?",
+    "options": [
+      "Water that enters a sanitary sewer through direct connections, such as roof drains or catch basins, especially during wet weather.",
+      "Groundwater that leaks slowly into a sanitary sewer through cracks, defective joints, or other pipe defects over time.",
+      "The normal wastewater flow that travels by gravity through a sanitary sewer from homes and businesses each day.",
+      "Treated effluent that leaves the wastewater treatment plant after its final process and authorized discharge monitoring."
+    ],
+    "correctIndex": 0,
+    "explanation": "Inflow is water entering a sanitary sewer through direct connections, such as roof drains or catch basins, often during wet weather. Infiltration is groundwater that enters through defects such as cracks or joints.",
+    "sourceTitle": "U.S. EPA — Collection and Lift Station Maintenance: Reducing the Risk for Sanitary Sewer Overflows",
+    "sourceReference": "EPA identifies inflow and infiltration as collection-system issues. This question uses only the basic inflow distinction and does not assert a regulatory requirement.",
+    "sourceUrl": "https://www.epa.gov/compliance/collection-and-lift-station-maintenance-reducing-risk-sanitary-sewer-overflows"
+  },
+  {
+    "questionNum": 112,
+    "question": "What is a trickling filter in wastewater treatment?",
+    "options": [
+      "An aerobic attached-growth unit where wastewater flows over media that support microorganisms which remove organic matter.",
+      "An aeration tank where microorganisms remain suspended in liquid by blowers and mechanical mixing throughout the treatment process.",
+      "A chemical-addition basin where coagulants are used to disinfect wastewater and control every odour at the treatment plant.",
+      "A primary settling tank where gravity alone removes all dissolved organic matter before the wastewater moves to later treatment."
+    ],
+    "correctIndex": 0,
+    "explanation": "A trickling filter is an aerobic attached-growth treatment unit. Wastewater flows over media that support microorganisms, which remove organic matter; it is not the same as a suspended-growth aeration tank.",
+    "sourceTitle": "U.S. EPA — Wastewater Technology Fact Sheet: Trickling Filters",
+    "sourceReference": "EPA describes trickling filters as aerobic treatment systems using microorganisms attached to media to remove organic matter from wastewater.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P10099PA.TXT"
+  },
+  {
+    "questionNum": 143,
+    "question": "What is a basic role of a secondary clarifier in activated-sludge treatment?",
+    "options": [
+      "To separate settled biological solids from treated liquid, providing clarified overflow and sludge for return or further handling.",
+      "To add oxygen to wastewater with blowers so biological solids can begin growing under controlled aeration conditions in the basin.",
+      "To remove large debris and grit at the headworks before wastewater enters primary treatment and downstream flow distribution.",
+      "To disinfect final effluent and ensure all pathogens are destroyed before treated water reaches any receiving-water environment."
+    ],
+    "correctIndex": 0,
+    "explanation": "A secondary clarifier separates settled activated sludge from treated liquid. It provides low-solids clarified overflow and produces settled sludge that can be returned to the process or sent for further handling.",
+    "sourceTitle": "U.S. EPA — A Mathematical Model of a Final Clarifier",
+    "sourceReference": "EPA describes a final clarifier’s functions as providing low-suspended-solids effluent and removing settled activated sludge at sufficient concentration for process needs.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=9101SCVU.TXT"
+  }
+]

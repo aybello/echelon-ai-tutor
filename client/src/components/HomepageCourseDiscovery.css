@@ -1,0 +1,240 @@
+.homepage-course-discovery {
+  --discovery-blue: #1757B8;
+  --discovery-ink: #000;
+  --discovery-paper: #fff;
+  --discovery-line: rgb(0 0 0 / 16%);
+  --workspace-ink: var(--discovery-ink);
+  --workspace-muted: rgb(0 0 0 / 70%);
+  --workspace-line: var(--discovery-line);
+  --workspace-accent: var(--discovery-blue);
+  box-sizing: border-box;
+  min-width: 0;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--discovery-line);
+  border-radius: 14px;
+  color: var(--discovery-ink);
+  background: var(--discovery-paper);
+  text-align: left;
+}
+
+.homepage-course-discovery .homepage-course-discovery__title {
+  margin: 0;
+  color: var(--discovery-ink);
+  font-size: clamp(24px, 3vw, 30px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+.homepage-course-discovery .homepage-course-discovery__intro {
+  margin: 8px 0 20px;
+  color: rgb(0 0 0 / 70%);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.homepage-course-discovery .homepage-course-discovery__countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--discovery-line);
+}
+
+.homepage-course-discovery .homepage-course-discovery__countries button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 24px;
+  border: 1px solid var(--discovery-line);
+  border-radius: 6px;
+  color: var(--discovery-ink);
+  background: var(--discovery-paper);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.homepage-course-discovery .homepage-course-discovery__countries button:hover {
+  border-color: var(--discovery-blue);
+  color: var(--discovery-blue);
+}
+
+.homepage-course-discovery .homepage-course-discovery__countries button[aria-selected="true"] {
+  border-color: var(--discovery-blue);
+  color: var(--discovery-paper);
+  background: var(--discovery-blue);
+}
+
+.homepage-course-discovery .homepage-course-discovery__panel[hidden] {
+  display: none;
+}
+
+/* Only the homepage wrapper replaces the heading and country/trade helper row. */
+.homepage-course-discovery .course-finder-heading,
+.homepage-course-discovery .course-finder-other {
+  display: none;
+}
+
+.homepage-course-discovery .course-finder {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.homepage-course-discovery .course-finder-fields {
+  margin: 22px 0 18px;
+}
+
+.homepage-course-discovery .course-finder-fields label {
+  min-width: 0;
+  color: var(--discovery-ink);
+}
+
+.homepage-course-discovery .course-finder select {
+  box-sizing: border-box;
+  max-width: 100%;
+  border-color: var(--discovery-line);
+  color: var(--discovery-ink);
+}
+
+.homepage-course-discovery .course-finder select:disabled {
+  color: rgb(0 0 0 / 60%);
+  background: rgb(0 0 0 / 4%);
+}
+
+.homepage-course-discovery .course-finder-result {
+  border-color: rgb(23 87 184 / 16%);
+  background: rgb(23 87 184 / 4%);
+}
+
+.homepage-course-discovery .course-finder-result .workspace-primary,
+.homepage-course-discovery .homepage-course-discovery__us-link {
+  color: var(--discovery-paper);
+  background: var(--discovery-blue);
+}
+
+.homepage-course-discovery .course-finder-result .workspace-primary:hover,
+.homepage-course-discovery .homepage-course-discovery__us-link:hover {
+  background: var(--discovery-ink);
+  transform: none;
+}
+
+.homepage-course-discovery .workspace-text-link,
+.homepage-course-discovery .course-finder a:not(.workspace-primary),
+.homepage-course-discovery .homepage-course-discovery__trade a {
+  color: var(--discovery-blue);
+  text-underline-offset: 4px;
+}
+
+.homepage-course-discovery .homepage-course-discovery__trade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--discovery-line);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.homepage-course-discovery .homepage-course-discovery__trade strong {
+  font-weight: 750;
+}
+
+.homepage-course-discovery .homepage-course-discovery__trade p {
+  margin: 3px 0 0;
+  color: rgb(0 0 0 / 70%);
+  text-wrap: pretty;
+}
+
+.homepage-course-discovery .homepage-course-discovery__trade a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 700;
+}
+
+.homepage-course-discovery .homepage-course-discovery__us {
+  padding-top: 24px;
+}
+
+.homepage-course-discovery .homepage-course-discovery__us h3 {
+  margin: 0 0 8px;
+  color: var(--discovery-ink);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.homepage-course-discovery .homepage-course-discovery__us p {
+  margin: 0 0 20px;
+  color: rgb(0 0 0 / 70%);
+  font-size: 15px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.homepage-course-discovery .homepage-course-discovery__us-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.homepage-course-discovery .homepage-course-discovery__team {
+  margin-top: 18px;
+}
+
+.homepage-course-discovery .homepage-course-discovery__team a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: rgb(0 0 0 / 70%);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.homepage-course-discovery .homepage-course-discovery__team a:hover {
+  color: var(--discovery-blue);
+}
+
+.homepage-course-discovery :is(a, button, select, [role="tabpanel"]):focus-visible {
+  outline: 3px solid var(--discovery-blue);
+  outline-offset: 3px;
+}
+
+@media (max-width: 680px) {
+  .homepage-course-discovery .course-finder-fields {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .homepage-course-discovery .homepage-course-discovery__countries button {
+    flex: 1;
+    padding-inline: 16px;
+  }
+
+  .homepage-course-discovery .course-finder-result > div {
+    min-width: 0;
+  }
+
+  .homepage-course-discovery .homepage-course-discovery__us-link {
+    width: 100%;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "reviews": [
+    {
+      "questionNum": 267,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option closely matches the source definition that infiltration is groundwater entering sanitary sewers through cracks, leaks, or deteriorated pipes and increasing sewer flows.",
+        "Explanation accurately reflects that excessive infiltration can overwhelm sewer systems and increase treatment costs, consistent with the cited Ontario municipal program.",
+        "Jurisdiction and regulatory scope are appropriate: the item uses Ontario municipal guidance as non-regulatory background and does not misstate it as a legal requirement.",
+        "Learning objective is foundational and suitable for an Ontario OIT learner, focusing on basic recognition of infiltration as a collection-system concern.",
+        "Exactly one option is correct; the distractors are clearly incorrect but plausible and do not encourage unsafe operation or omission of required actions.",
+        "No universal or unsourced claims are made beyond the cited description; there is no overstated regulatory or design guidance."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

@@ -1,0 +1,465 @@
+{
+ "courseKey": "wpi-class2-water-coll",
+ "bankKey": "wpi-class2-wastewater-coll",
+ "batch": 3,
+ "size": 50,
+ "conceptualCount": 40,
+ "calcCount": 10,
+ "topicPoolRound": 1,
+ "questionNumStart": 2551,
+ "questionNumEnd": 2600,
+ "itemIdStart": "COLLECTION-L2-551",
+ "itemIdEnd": "COLLECTION-L2-600",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2551,
+   "itemId": "COLLECTION-L2-551",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "basin comparison analysis"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2552,
+   "itemId": "COLLECTION-L2-552",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "step testing for I&I awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2553,
+   "itemId": "COLLECTION-L2-553",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "lateral rehabilitation awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2554,
+   "itemId": "COLLECTION-L2-554",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "spot repairs"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2555,
+   "itemId": "COLLECTION-L2-555",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "grate and cover programs"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2556,
+   "itemId": "COLLECTION-L2-556",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "asset data management"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2557,
+   "itemId": "COLLECTION-L2-557",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulatory reporting depth"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2558,
+   "itemId": "COLLECTION-L2-558",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "supervisory awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2559,
+   "itemId": "COLLECTION-L2-559",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "basin comparison analysis"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2560,
+   "itemId": "COLLECTION-L2-560",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "step testing for I&I awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2561,
+   "itemId": "COLLECTION-L2-561",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lateral rehabilitation awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2562,
+   "itemId": "COLLECTION-L2-562",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "spot repairs"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2563,
+   "itemId": "COLLECTION-L2-563",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "grate and cover programs"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2564,
+   "itemId": "COLLECTION-L2-564",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset data management"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2565,
+   "itemId": "COLLECTION-L2-565",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory reporting depth"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2566,
+   "itemId": "COLLECTION-L2-566",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "supervisory awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2567,
+   "itemId": "COLLECTION-L2-567",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "basin comparison analysis"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2568,
+   "itemId": "COLLECTION-L2-568",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "step testing for I&I awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2569,
+   "itemId": "COLLECTION-L2-569",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lateral rehabilitation awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2570,
+   "itemId": "COLLECTION-L2-570",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "spot repairs"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2571,
+   "itemId": "COLLECTION-L2-571",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "grate and cover programs"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2572,
+   "itemId": "COLLECTION-L2-572",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset data management"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2573,
+   "itemId": "COLLECTION-L2-573",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory reporting depth"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2574,
+   "itemId": "COLLECTION-L2-574",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "supervisory awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2575,
+   "itemId": "COLLECTION-L2-575",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "basin comparison analysis"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2576,
+   "itemId": "COLLECTION-L2-576",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "step testing for I&I awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2577,
+   "itemId": "COLLECTION-L2-577",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lateral rehabilitation awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2578,
+   "itemId": "COLLECTION-L2-578",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "spot repairs"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2579,
+   "itemId": "COLLECTION-L2-579",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "grate and cover programs"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2580,
+   "itemId": "COLLECTION-L2-580",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset data management"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2581,
+   "itemId": "COLLECTION-L2-581",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory reporting depth"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2582,
+   "itemId": "COLLECTION-L2-582",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "supervisory awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2583,
+   "itemId": "COLLECTION-L2-583",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "basin comparison analysis"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2584,
+   "itemId": "COLLECTION-L2-584",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "step testing for I&I awareness"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2585,
+   "itemId": "COLLECTION-L2-585",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lateral rehabilitation awareness"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2586,
+   "itemId": "COLLECTION-L2-586",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "spot repairs"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2587,
+   "itemId": "COLLECTION-L2-587",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "grate and cover programs"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2588,
+   "itemId": "COLLECTION-L2-588",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "asset data management"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2589,
+   "itemId": "COLLECTION-L2-589",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory reporting depth"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2590,
+   "itemId": "COLLECTION-L2-590",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "supervisory awareness"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2591,
+   "itemId": "COLLECTION-L2-591",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "infiltration per hectare calculation"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2592,
+   "itemId": "COLLECTION-L2-592",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump cycle analysis"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2593,
+   "itemId": "COLLECTION-L2-593",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehab area quantity"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2594,
+   "itemId": "COLLECTION-L2-594",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "program completion forecast"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2595,
+   "itemId": "COLLECTION-L2-595",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "infiltration per hectare calculation"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2596,
+   "itemId": "COLLECTION-L2-596",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump cycle analysis"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2597,
+   "itemId": "COLLECTION-L2-597",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "rehab area quantity"
+  },
+  {
+   "seq": 48,
+   "questionNum": 2598,
+   "itemId": "COLLECTION-L2-598",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "program completion forecast"
+  },
+  {
+   "seq": 49,
+   "questionNum": 2599,
+   "itemId": "COLLECTION-L2-599",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "infiltration per hectare calculation"
+  },
+  {
+   "seq": 50,
+   "questionNum": 2600,
+   "itemId": "COLLECTION-L2-600",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump cycle analysis"
+  }
+ ]
+}

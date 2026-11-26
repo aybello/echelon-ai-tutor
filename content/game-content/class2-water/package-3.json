@@ -1,0 +1,3920 @@
+{
+ "courseKey": "class2-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c2w-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 2000 rpm draws 16 kW and its speed is changed to 3000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 2000 rpm to 3000 rpm, power at the first speed = 16 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 3000 rpm / 2000 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. New power = 16 kW * (1.5)^2 = 36 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Motor load is checked against 36 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New power = 16 kW * (1.5)^3 = 54 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the ratio cubed: 16 kW * (1.5)^3 = 54 kW."
+  },
+  {
+   "id": "c2w-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 2000 rpm draws 80 kW and its speed is changed to 1000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 2000 rpm to 1000 rpm, power at the first speed = 80 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1000 rpm / 2000 rpm = 0.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. New power = 80 kW * (0.5)^2 = 20 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Motor load is checked against 20 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New power = 80 kW * (0.5)^3 = 10 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the ratio cubed: 80 kW * (0.5)^3 = 10 kW."
+  },
+  {
+   "id": "c2w-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 5000 rpm draws 25 kW and its speed is changed to 6000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 5000 rpm to 6000 rpm, power at the first speed = 25 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 6000 rpm / 5000 rpm = 1.2"
+    },
+    {
+     "id": "line2",
+     "label": "2. New power = 25 kW * (1.2)^2 = 36 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Motor load is checked against 36 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New power = 25 kW * (1.2)^3 = 43.2 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the ratio cubed: 25 kW * (1.2)^3 = 43.2 kW."
+  },
+  {
+   "id": "c2w-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 1000 rpm draws 5 kW and its speed is changed to 2000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 1000 rpm to 2000 rpm, power at the first speed = 5 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 2000 rpm / 1000 rpm = 2"
+    },
+    {
+     "id": "line2",
+     "label": "2. New power = 5 kW * (2)^2 = 20 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Motor load is checked against 20 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New power = 5 kW * (2)^3 = 40 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the ratio cubed: 5 kW * (2)^3 = 40 kW."
+  },
+  {
+   "id": "c2w-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 2000 rpm draws 32 kW and its speed is changed to 3000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 2000 rpm to 3000 rpm, power at the first speed = 32 kW. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 3000 rpm / 2000 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. New power = 32 kW * (1.5)^2 = 72 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Motor load is checked against 72 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New power = 32 kW * (1.5)^3 = 108 kW",
+   "explanation": "Line 2 squared the speed ratio for power. Power varies with the ratio cubed: 32 kW * (1.5)^3 = 108 kW."
+  },
+  {
+   "id": "c2w-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 1000 rpm delivers 100 L/s and its speed is changed to 2000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 1000 rpm to 2000 rpm, flow at the first speed = 100 L/s. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 2000 rpm / 1000 rpm = 2"
+    },
+    {
+     "id": "line2",
+     "label": "2. New flow = 100 L/s * (2)^2 = 400 L/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Downstream units are checked against 400 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New flow = 100 L/s * 2 = 200 L/s",
+   "explanation": "Line 2 squared the speed ratio for flow. Flow varies directly with the ratio: 100 L/s * 2 = 200 L/s."
+  },
+  {
+   "id": "c2w-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 2000 rpm delivers 60 L/s and its speed is changed to 3000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 2000 rpm to 3000 rpm, flow at the first speed = 60 L/s. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 3000 rpm / 2000 rpm = 1.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. New flow = 60 L/s * (1.5)^2 = 135 L/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Downstream units are checked against 135 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New flow = 60 L/s * 1.5 = 90 L/s",
+   "explanation": "Line 2 squared the speed ratio for flow. Flow varies directly with the ratio: 60 L/s * 1.5 = 90 L/s."
+  },
+  {
+   "id": "c2w-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 2000 rpm delivers 200 L/s and its speed is changed to 1000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 2000 rpm to 1000 rpm, flow at the first speed = 200 L/s. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 1000 rpm / 2000 rpm = 0.5"
+    },
+    {
+     "id": "line2",
+     "label": "2. New flow = 200 L/s * (0.5)^2 = 50 L/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Downstream units are checked against 50 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New flow = 200 L/s * 0.5 = 100 L/s",
+   "explanation": "Line 2 squared the speed ratio for flow. Flow varies directly with the ratio: 200 L/s * 0.5 = 100 L/s."
+  },
+  {
+   "id": "c2w-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this affinity law calculation. A pump at 5000 rpm delivers 50 L/s and its speed is changed to 6000 rpm.",
+   "topicId": "pumps-affinity-laws",
+   "level": "class1",
+   "assumptions": "Fictional pump: speed changes from 5000 rpm to 6000 rpm, flow at the first speed = 50 L/s. Affinity laws: flow varies with speed ratio, head varies with speed ratio squared, power varies with speed ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Speed ratio = 6000 rpm / 5000 rpm = 1.2"
+    },
+    {
+     "id": "line2",
+     "label": "2. New flow = 50 L/s * (1.2)^2 = 72 L/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Downstream units are checked against 72 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New flow = 50 L/s * 1.2 = 60 L/s",
+   "explanation": "Line 2 squared the speed ratio for flow. Flow varies directly with the ratio: 50 L/s * 1.2 = 60 L/s."
+  },
+  {
+   "id": "c2w-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 30 m/h, the filter area is 20 m2, and the backwash lasts 12 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 30 m/h, area = 20 m2, duration = 12 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 30 m/h * 20 m2 = 600 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 600 m3/h * 12 min = 7200 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 7200 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 600 m3/h * 12 min / 60 min/h = 120 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 600 m3/h * 12 min / 60 min/h = 120 m3."
+  },
+  {
+   "id": "c2w-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 36 m/h, the filter area is 25 m2, and the backwash lasts 8 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 36 m/h, area = 25 m2, duration = 8 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 36 m/h * 25 m2 = 900 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 900 m3/h * 8 min = 7200 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 7200 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 900 m3/h * 8 min / 60 min/h = 120 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 900 m3/h * 8 min / 60 min/h = 120 m3."
+  },
+  {
+   "id": "c2w-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 40 m/h, the filter area is 15 m2, and the backwash lasts 15 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 40 m/h, area = 15 m2, duration = 15 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 40 m/h * 15 m2 = 600 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 600 m3/h * 15 min = 9000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 9000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 600 m3/h * 15 min / 60 min/h = 150 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 600 m3/h * 15 min / 60 min/h = 150 m3."
+  },
+  {
+   "id": "c2w-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 30 m/h, the filter area is 30 m2, and the backwash lasts 10 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 30 m/h, area = 30 m2, duration = 10 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 30 m/h * 30 m2 = 900 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 900 m3/h * 10 min = 9000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 9000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 900 m3/h * 10 min / 60 min/h = 150 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 900 m3/h * 10 min / 60 min/h = 150 m3."
+  },
+  {
+   "id": "c2w-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 45 m/h, the filter area is 20 m2, and the backwash lasts 12 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 45 m/h, area = 20 m2, duration = 12 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 45 m/h * 20 m2 = 900 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 900 m3/h * 12 min = 10800 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 10800 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 900 m3/h * 12 min / 60 min/h = 180 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 900 m3/h * 12 min / 60 min/h = 180 m3."
+  },
+  {
+   "id": "c2w-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 36 m/h, the filter area is 20 m2, and the backwash lasts 15 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 36 m/h, area = 20 m2, duration = 15 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 36 m/h * 20 m2 = 720 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 720 m3/h * 15 min = 10800 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 10800 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 720 m3/h * 15 min / 60 min/h = 180 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 720 m3/h * 15 min / 60 min/h = 180 m3."
+  },
+  {
+   "id": "c2w-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 25 m/h, the filter area is 24 m2, and the backwash lasts 10 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 25 m/h, area = 24 m2, duration = 10 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 25 m/h * 24 m2 = 600 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 600 m3/h * 10 min = 6000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 6000 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 600 m3/h * 10 min / 60 min/h = 100 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 600 m3/h * 10 min / 60 min/h = 100 m3."
+  },
+  {
+   "id": "c2w-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this backwash volume calculation. The backwash rate is 48 m/h, the filter area is 25 m2, and the backwash lasts 6 min.",
+   "topicId": "filtration-backwash",
+   "level": "class1",
+   "assumptions": "Fictional filter: backwash rate = 48 m/h, area = 25 m2, duration = 6 min, 60 min = 1 h. Backwash volume = rate * area * duration in hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Backwash flow = 48 m/h * 25 m2 = 1200 m3/h"
+    },
+    {
+     "id": "line2",
+     "label": "2. Backwash volume = 1200 m3/h * 6 min = 7200 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Waste tank is checked against 7200 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Backwash volume = 1200 m3/h * 6 min / 60 min/h = 120 m3",
+   "explanation": "Line 2 used the duration in minutes as if it were hours. Volume = 1200 m3/h * 6 min / 60 min/h = 120 m3."
+  },
+  {
+   "id": "c2w-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 4 cells of 25 m2 each, one cell is out of service, and flow is 300 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 4 cells at 25 m2 each, one cell out of service, Q = 300 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 4 cells * 25 m2 = 100 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 100 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 300 m3/h / 100 m2 = 3 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (4 - 1) * 25 m2 = 75 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 75 m2, so loading = 300 m3/h / 75 m2 = 4 m/h."
+  },
+  {
+   "id": "c2w-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 5 cells of 20 m2 each, one cell is out of service, and flow is 320 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 5 cells at 20 m2 each, one cell out of service, Q = 320 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 5 cells * 20 m2 = 100 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 100 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 320 m3/h / 100 m2 = 3.2 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (5 - 1) * 20 m2 = 80 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 80 m2, so loading = 320 m3/h / 80 m2 = 4 m/h."
+  },
+  {
+   "id": "c2w-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 6 cells of 20 m2 each, one cell is out of service, and flow is 600 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 6 cells at 20 m2 each, one cell out of service, Q = 600 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 6 cells * 20 m2 = 120 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 120 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 600 m3/h / 120 m2 = 5 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (6 - 1) * 20 m2 = 100 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 100 m2, so loading = 600 m3/h / 100 m2 = 6 m/h."
+  },
+  {
+   "id": "c2w-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 3 cells of 30 m2 each, one cell is out of service, and flow is 360 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 3 cells at 30 m2 each, one cell out of service, Q = 360 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 3 cells * 30 m2 = 90 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 90 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 360 m3/h / 90 m2 = 4 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (3 - 1) * 30 m2 = 60 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 60 m2, so loading = 360 m3/h / 60 m2 = 6 m/h."
+  },
+  {
+   "id": "c2w-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 4 cells of 20 m2 each, one cell is out of service, and flow is 240 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 4 cells at 20 m2 each, one cell out of service, Q = 240 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 4 cells * 20 m2 = 80 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 80 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 240 m3/h / 80 m2 = 3 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (4 - 1) * 20 m2 = 60 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 60 m2, so loading = 240 m3/h / 60 m2 = 4 m/h."
+  },
+  {
+   "id": "c2w-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 5 cells of 25 m2 each, one cell is out of service, and flow is 500 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 5 cells at 25 m2 each, one cell out of service, Q = 500 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 5 cells * 25 m2 = 125 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 125 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 500 m3/h / 125 m2 = 4 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (5 - 1) * 25 m2 = 100 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 100 m2, so loading = 500 m3/h / 100 m2 = 5 m/h."
+  },
+  {
+   "id": "c2w-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 6 cells of 25 m2 each, one cell is out of service, and flow is 750 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 6 cells at 25 m2 each, one cell out of service, Q = 750 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 6 cells * 25 m2 = 150 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 150 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 750 m3/h / 150 m2 = 5 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (6 - 1) * 25 m2 = 125 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 125 m2, so loading = 750 m3/h / 125 m2 = 6 m/h."
+  },
+  {
+   "id": "c2w-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this filter loading calculation. The plant has 3 cells of 25 m2 each, one cell is out of service, and flow is 300 m3/h.",
+   "topicId": "filtration-loading",
+   "level": "class1",
+   "assumptions": "Fictional filter plant: 3 cells at 25 m2 each, one cell out of service, Q = 300 m3/h. Loading rate = Q / active area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total filter area = 3 cells * 25 m2 = 75 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Active area with one cell out of service = 75 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Loading rate = 300 m3/h / 75 m2 = 4 m/h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Active area with one cell out of service = (3 - 1) * 25 m2 = 50 m2",
+   "explanation": "Line 2 kept the full area even though one cell is out of service. Active area = 50 m2, so loading = 300 m3/h / 50 m2 = 6 m/h."
+  },
+  {
+   "id": "c2w-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for V = 100 m3 and Q = 25 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 100 m3, Q = 25 m3/h. Theoretical detention time HDT = V / Q. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = Q / V"
+    },
+    {
+     "id": "line2",
+     "label": "2. HDT = 25 m3/h / 100 m3 = 0.25 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Contact time is reported as 0.25 h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. HDT = V / Q",
+   "explanation": "Line 1 inverted the formula. HDT = V / Q = 100 m3 / 25 m3/h = 4 h."
+  },
+  {
+   "id": "c2w-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for V = 144 m3 and Q = 36 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 144 m3, Q = 36 m3/h. Theoretical detention time HDT = V / Q. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = Q / V"
+    },
+    {
+     "id": "line2",
+     "label": "2. HDT = 36 m3/h / 144 m3 = 0.25 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Contact time is reported as 0.25 h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. HDT = V / Q",
+   "explanation": "Line 1 inverted the formula. HDT = V / Q = 144 m3 / 36 m3/h = 4 h."
+  },
+  {
+   "id": "c2w-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this detention time calculation for V = 200 m3 and Q = 40 m3/h.",
+   "topicId": "hydraulics-detention-time",
+   "level": "class1",
+   "assumptions": "Fictional basin: V = 200 m3, Q = 40 m3/h. Theoretical detention time HDT = V / Q. Target unit: hours.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. HDT = Q / V"
+    },
+    {
+     "id": "line2",
+     "label": "2. HDT = 40 m3/h / 200 m3 = 0.2 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Contact time is reported as 0.2 h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. HDT = V / Q",
+   "explanation": "Line 1 inverted the formula. HDT = V / Q = 200 m3 / 40 m3/h = 5 h."
+  },
+  {
+   "id": "c2w-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for Q = 864 m3/day and surface area = 216 m2.",
+   "topicId": "sedimentation-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: Q = 864 m3/day, surface area = 216 m2. Surface overflow rate = Q / surface area. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Surface overflow rate = Area / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Overflow rate = 216 m2 / 864 m3/day = 0.25 m/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier is checked against 0.25 m/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Surface overflow rate = Q / Area",
+   "explanation": "Line 1 inverted the formula. Overflow rate = Q / Area = 864 m3/day / 216 m2 = 4 m/day."
+  },
+  {
+   "id": "c2w-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for Q = 1200 m3/day and surface area = 300 m2.",
+   "topicId": "sedimentation-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: Q = 1200 m3/day, surface area = 300 m2. Surface overflow rate = Q / surface area. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Surface overflow rate = Area / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Overflow rate = 300 m2 / 1200 m3/day = 0.25 m/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier is checked against 0.25 m/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Surface overflow rate = Q / Area",
+   "explanation": "Line 1 inverted the formula. Overflow rate = Q / Area = 1200 m3/day / 300 m2 = 4 m/day."
+  },
+  {
+   "id": "c2w-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this surface overflow rate calculation for Q = 1000 m3/day and surface area = 200 m2.",
+   "topicId": "sedimentation-overflow-rate",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: Q = 1000 m3/day, surface area = 200 m2. Surface overflow rate = Q / surface area. Target unit: m/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Surface overflow rate = Area / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Overflow rate = 200 m2 / 1000 m3/day = 0.2 m/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier is checked against 0.2 m/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Surface overflow rate = Q / Area",
+   "explanation": "Line 1 inverted the formula. Overflow rate = Q / Area = 1000 m3/day / 200 m2 = 5 m/day."
+  },
+  {
+   "id": "c2w-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity titration calculation. A 100 mL sample used 8 mL of 0.02 N acid to the endpoint.",
+   "topicId": "alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional lab titration: sample = 100 mL, titrant = 8 mL, acid normality = 0.02 N. Alkalinity in mg/L as CaCO3 = titrant mL * normality * 50000 / sample mL.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity = titrant mL * normality * 50000 / sample mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity = 8 mL * 0.02 * 5000 / 100 mL = 8 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity is reported as 8 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity = 8 mL * 0.02 * 50000 / 100 mL = 80 mg/L as CaCO3",
+   "explanation": "Line 2 used 5000 instead of the equivalent weight factor 50000. Alkalinity = 8 * 0.02 * 50000 / 100 = 80 mg/L as CaCO3."
+  },
+  {
+   "id": "c2w-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity titration calculation. A 100 mL sample used 12 mL of 0.02 N acid to the endpoint.",
+   "topicId": "alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional lab titration: sample = 100 mL, titrant = 12 mL, acid normality = 0.02 N. Alkalinity in mg/L as CaCO3 = titrant mL * normality * 50000 / sample mL.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity = titrant mL * normality * 50000 / sample mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity = 12 mL * 0.02 * 5000 / 100 mL = 12 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity is reported as 12 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity = 12 mL * 0.02 * 50000 / 100 mL = 120 mg/L as CaCO3",
+   "explanation": "Line 2 used 5000 instead of the equivalent weight factor 50000. Alkalinity = 12 * 0.02 * 50000 / 100 = 120 mg/L as CaCO3."
+  },
+  {
+   "id": "c2w-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity titration calculation. A 50 mL sample used 10 mL of 0.01 N acid to the endpoint.",
+   "topicId": "alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional lab titration: sample = 50 mL, titrant = 10 mL, acid normality = 0.01 N. Alkalinity in mg/L as CaCO3 = titrant mL * normality * 50000 / sample mL.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity = titrant mL * normality * 50000 / sample mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity = 10 mL * 0.01 * 5000 / 50 mL = 10 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity is reported as 10 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity = 10 mL * 0.01 * 50000 / 50 mL = 100 mg/L as CaCO3",
+   "explanation": "Line 2 used 5000 instead of the equivalent weight factor 50000. Alkalinity = 10 * 0.01 * 50000 / 50 = 100 mg/L as CaCO3."
+  },
+  {
+   "id": "c2w-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity titration calculation. A 200 mL sample used 16 mL of 0.02 N acid to the endpoint.",
+   "topicId": "alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional lab titration: sample = 200 mL, titrant = 16 mL, acid normality = 0.02 N. Alkalinity in mg/L as CaCO3 = titrant mL * normality * 50000 / sample mL.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity = titrant mL * normality * 50000 / sample mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity = 16 mL * 0.02 * 5000 / 200 mL = 8 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity is reported as 8 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity = 16 mL * 0.02 * 50000 / 200 mL = 80 mg/L as CaCO3",
+   "explanation": "Line 2 used 5000 instead of the equivalent weight factor 50000. Alkalinity = 16 * 0.02 * 50000 / 200 = 80 mg/L as CaCO3."
+  },
+  {
+   "id": "c2w-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity titration calculation. A 100 mL sample used 6 mL of 0.05 N acid to the endpoint.",
+   "topicId": "alkalinity-titration",
+   "level": "class1",
+   "assumptions": "Fictional lab titration: sample = 100 mL, titrant = 6 mL, acid normality = 0.05 N. Alkalinity in mg/L as CaCO3 = titrant mL * normality * 50000 / sample mL.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity = titrant mL * normality * 50000 / sample mL"
+    },
+    {
+     "id": "line2",
+     "label": "2. Alkalinity = 6 mL * 0.05 * 5000 / 100 mL = 15 mg/L as CaCO3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity is reported as 15 mg/L as CaCO3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Alkalinity = 6 mL * 0.05 * 50000 / 100 mL = 150 mg/L as CaCO3",
+   "explanation": "Line 2 used 5000 instead of the equivalent weight factor 50000. Alkalinity = 6 * 0.05 * 50000 / 100 = 150 mg/L as CaCO3."
+  },
+  {
+   "id": "c2w-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine demand calculation. The dose applied was 5 mg/L and the measured residual was 1.2 mg/L.",
+   "topicId": "disinfection-chlorine-demand",
+   "level": "class1",
+   "assumptions": "Fictional disinfection check: dose applied = 5 mg/L, measured residual = 1.2 mg/L. Chlorine demand = dose applied - residual measured.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine demand = dose applied - residual measured"
+    },
+    {
+     "id": "line2",
+     "label": "2. Demand = 5 mg/L + 1.2 mg/L = 6.2 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Demand is reported as 6.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Demand = 5 mg/L - 1.2 mg/L = 3.8 mg/L",
+   "explanation": "Line 2 added the residual instead of subtracting it. Demand = 5 mg/L - 1.2 mg/L = 3.8 mg/L."
+  },
+  {
+   "id": "c2w-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine dose calculation. The chlorine demand is 4.5 mg/L and the target residual is 0.5 mg/L.",
+   "topicId": "disinfection-chlorine-demand",
+   "level": "class1",
+   "assumptions": "Fictional disinfection check: chlorine demand = 4.5 mg/L, target residual = 0.5 mg/L. Required dose = demand + target residual.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Required dose = chlorine demand + target residual"
+    },
+    {
+     "id": "line2",
+     "label": "2. Required dose = 4.5 mg/L - 0.5 mg/L = 4 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed is set at 4 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Required dose = 4.5 mg/L + 0.5 mg/L = 5 mg/L",
+   "explanation": "Line 2 subtracted the target residual instead of adding it. Required dose = 4.5 mg/L + 0.5 mg/L = 5 mg/L."
+  },
+  {
+   "id": "c2w-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this breakpoint chlorination calculation. Ammonia nitrogen is 1.5 mg/L and the given breakpoint ratio is 7.6 mg chlorine per mg ammonia nitrogen.",
+   "topicId": "disinfection-breakpoint",
+   "level": "class1",
+   "assumptions": "Fictional breakpoint study: ammonia nitrogen = 1.5 mg/L, given breakpoint ratio = 7.6 to 1 by mass. Breakpoint dose = ammonia nitrogen * 7.6.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Breakpoint dose = ammonia nitrogen * 7.6"
+    },
+    {
+     "id": "line2",
+     "label": "2. Breakpoint dose = 1.5 mg/L + 7.6 = 9.1 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Feed is set at 9.1 mg/L to reach breakpoint"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Breakpoint dose = 1.5 mg/L * 7.6 = 11.4 mg/L",
+   "explanation": "Line 2 added the ratio as if it were a dose in mg/L. The ratio is a multiplier: 1.5 mg/L * 7.6 = 11.4 mg/L."
+  },
+  {
+   "id": "c2w-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine demand calculation. The dose applied was 8 mg/L and the residual after the contact time was 2.5 mg/L.",
+   "topicId": "disinfection-chlorine-demand",
+   "level": "class1",
+   "assumptions": "Fictional disinfection check: dose applied = 8 mg/L, residual after contact time = 2.5 mg/L. Chlorine demand = dose applied - residual measured.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chlorine demand = dose applied - residual after contact time"
+    },
+    {
+     "id": "line2",
+     "label": "2. Demand = 8 mg/L + 2.5 mg/L = 10.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Demand is reported as 10.5 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Demand = 8 mg/L - 2.5 mg/L = 5.5 mg/L",
+   "explanation": "Line 2 added the residual instead of subtracting it. Demand = 8 mg/L - 2.5 mg/L = 5.5 mg/L."
+  },
+  {
+   "id": "c2w-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up a jar test to compare coagulant doses on today's raw water.",
+   "topicId": "jar-testing-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional Ontario surface water plant. Raw water is collected at the intake sample tap for a bench jar test.",
+   "configuration": "Fictional Ontario surface water plant. Raw water is collected at the intake sample tap for a bench jar test.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Collect a representative raw water sample and record its temperature, pH, turbidity and alkalinity"
+    },
+    {
+     "id": "c-b",
+     "label": "Fill each jar with the same measured volume of raw water"
+    },
+    {
+     "id": "c-c",
+     "label": "Add a different measured coagulant dose to each jar"
+    },
+    {
+     "id": "c-d",
+     "label": "Rapid mix all jars at the same speed and time to disperse the coagulant"
+    },
+    {
+     "id": "c-e",
+     "label": "Slow mix all jars to allow floc to form"
+    },
+    {
+     "id": "c-f",
+     "label": "Stop mixing and allow the jars to settle for the set settling time"
+    },
+    {
+     "id": "c-g",
+     "label": "Measure settled water turbidity in each jar and record the results"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f",
+    "c-g"
+   ],
+   "explanation": "A representative sample and equal jar volumes make the doses comparable. Rapid mix disperses coagulant, slow mix builds floc, settling follows, and turbidity is measured only after settling."
+  },
+  {
+   "id": "c2w-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for selecting a plant coagulant dose from completed jar test results.",
+   "topicId": "jar-testing-dose-selection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Six jars were dosed in increasing amounts and settled turbidity results are available.",
+   "configuration": "Fictional plant. Six jars were dosed in increasing amounts and settled turbidity results are available.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review the settled turbidity and floc appearance recorded for each jar dose"
+    },
+    {
+     "id": "c-b",
+     "label": "Identify the lowest dose that produced clear settled water and strong floc"
+    },
+    {
+     "id": "c-c",
+     "label": "Check that the selected dose leaves adequate residual alkalinity in the treated sample"
+    },
+    {
+     "id": "c-d",
+     "label": "Confirm the selected dose against current raw water conditions before changing the plant feed"
+    },
+    {
+     "id": "c-e",
+     "label": "Adjust the plant coagulant feeder to the selected dose"
+    },
+    {
+     "id": "c-f",
+     "label": "Monitor settled water turbidity after the change and record the new dose in the log"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "Dose selection starts from the jar results, checks alkalinity, confirms raw water has not changed, and only then changes the plant feed, with monitoring and logging last."
+  },
+  {
+   "id": "c2w-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a jar test run when raw water alkalinity is low.",
+   "topicId": "jar-testing-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Raw alkalinity is near the lower end of the normal range before a coagulant trial.",
+   "configuration": "Fictional plant. Raw alkalinity is near the lower end of the normal range before a coagulant trial.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Measure raw water alkalinity and pH before dosing any jars"
+    },
+    {
+     "id": "c-b",
+     "label": "Calculate the alkalinity expected to be consumed by the trial coagulant doses"
+    },
+    {
+     "id": "c-c",
+     "label": "Add alkali to the jars that need it to hold the target coagulation pH"
+    },
+    {
+     "id": "c-d",
+     "label": "Add the coagulant doses and run the rapid mix and slow mix sequence"
+    },
+    {
+     "id": "c-e",
+     "label": "Measure settled pH and turbidity in each jar after settling"
+    },
+    {
+     "id": "c-f",
+     "label": "Select the dose and alkali combination that met both pH and turbidity targets"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "Alkalinity and its consumption must be known before dosing, because coagulation pH controls performance. Settled pH and turbidity are judged together at the end."
+  },
+  {
+   "id": "c2w-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for building a seasonal jar test baseline before spring runoff.",
+   "topicId": "jar-testing-seasonal-baseline",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant preparing for spring runoff. Historical raw water records and bench equipment are available.",
+   "configuration": "Fictional plant preparing for spring runoff. Historical raw water records and bench equipment are available.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review last year's runoff records for turbidity, colour and alkalinity ranges"
+    },
+    {
+     "id": "c-b",
+     "label": "Select trial dose ranges that cover the expected runoff conditions"
+    },
+    {
+     "id": "c-c",
+     "label": "Run jar tests across the selected dose ranges on current raw water"
+    },
+    {
+     "id": "c-d",
+     "label": "Record the dose response results in the seasonal baseline table"
+    },
+    {
+     "id": "c-e",
+     "label": "Set the starting plant dose and feeder settings from the baseline before runoff arrives"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Planning uses history first, then bench trials, then a recorded baseline, and plant settings are set from that baseline before the event arrives."
+  },
+  {
+   "id": "c2w-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a full scale coagulant dose optimization trial over one shift.",
+   "topicId": "dose-optimization-trial",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant running a planned dose trial at steady flow with the supervisor's approval.",
+   "configuration": "Fictional plant running a planned dose trial at steady flow with the supervisor's approval.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Record baseline settled and filtered turbidity at the current dose"
+    },
+    {
+     "id": "c-b",
+     "label": "Change the coagulant dose by one planned step only"
+    },
+    {
+     "id": "c-c",
+     "label": "Wait for the changed water to travel through the flocculation and sedimentation basins"
+    },
+    {
+     "id": "c-d",
+     "label": "Record settled and filtered turbidity at the new dose"
+    },
+    {
+     "id": "c-e",
+     "label": "Compare the new results with the baseline and decide whether to keep or revert the dose"
+    },
+    {
+     "id": "c-f",
+     "label": "Log the trial steps, results and decision in the plant record"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "A baseline must exist before a change, travel time must pass before sampling, and comparison and logging complete the trial."
+  },
+  {
+   "id": "c2w-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for jar testing a flocculant aid with the plant coagulant.",
+   "topicId": "jar-testing-polymer-aid",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. A polymer aid is being bench tested as a supplement to the normal coagulant.",
+   "configuration": "Fictional plant. A polymer aid is being bench tested as a supplement to the normal coagulant.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Prepare the polymer solution to the supplier's stated concentration and record it"
+    },
+    {
+     "id": "c-b",
+     "label": "Dose all jars with the same coagulant amount"
+    },
+    {
+     "id": "c-c",
+     "label": "Rapid mix the jars to disperse the coagulant"
+    },
+    {
+     "id": "c-d",
+     "label": "Add a different measured polymer dose to each jar at the start of slow mixing"
+    },
+    {
+     "id": "c-e",
+     "label": "Slow mix, settle, and measure settled turbidity in each jar"
+    },
+    {
+     "id": "c-f",
+     "label": "Select the polymer dose with the best floc and settled clarity without overdosing"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "Polymer is added after coagulant dispersion and at the start of flocculation, matching plant practice. Selection follows settling and measurement."
+  },
+  {
+   "id": "c2w-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running duplicate jar tests as a quality check.",
+   "topicId": "jar-testing-replicates",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant laboratory. Two operators will run the same jar test series for comparison.",
+   "configuration": "Fictional plant laboratory. Two operators will run the same jar test series for comparison.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Agree on one written procedure, dose series and mixing times for both runs"
+    },
+    {
+     "id": "c-b",
+     "label": "Collect one large raw water sample and split it evenly between the two runs"
+    },
+    {
+     "id": "c-c",
+     "label": "Run the first jar series and record all results"
+    },
+    {
+     "id": "c-d",
+     "label": "Run the second jar series using the same procedure on the split sample"
+    },
+    {
+     "id": "c-e",
+     "label": "Compare the duplicate results jar by jar"
+    },
+    {
+     "id": "c-f",
+     "label": "Investigate any large differences and record the agreed result"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "A shared procedure and a split sample remove avoidable differences before the runs. Comparison comes after both runs, and investigation follows comparison."
+  },
+  {
+   "id": "c2w-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a jar test that compares coagulation at different pH values.",
+   "topicId": "jar-testing-ph-control",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Raw water colour is high and coagulation pH is being studied on the bench.",
+   "configuration": "Fictional plant. Raw water colour is high and coagulation pH is being studied on the bench.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Fill the jars with equal volumes of the same raw water sample"
+    },
+    {
+     "id": "c-b",
+     "label": "Adjust each jar to a different target pH and record the amount used"
+    },
+    {
+     "id": "c-c",
+     "label": "Add the same coagulant dose to every jar"
+    },
+    {
+     "id": "c-d",
+     "label": "Rapid mix, slow mix and settle all jars under identical conditions"
+    },
+    {
+     "id": "c-e",
+     "label": "Measure settled turbidity and colour in each jar"
+    },
+    {
+     "id": "c-f",
+     "label": "Identify the pH that gave the best settled quality for plant follow up"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "Only pH varies between jars, so pH is adjusted before the common dose and identical mixing. The best pH is identified from the settled results."
+  },
+  {
+   "id": "c2w-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for putting a new jar test dose into service on the plant.",
+   "topicId": "dose-implementation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. A jar test has identified a better coagulant dose and the change is approved.",
+   "configuration": "Fictional plant. A jar test has identified a better coagulant dose and the change is approved.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the jar test result with a repeat check of current raw water turbidity and alkalinity"
+    },
+    {
+     "id": "c-b",
+     "label": "Calculate the feeder setting needed to deliver the new dose at current plant flow"
+    },
+    {
+     "id": "c-c",
+     "label": "Adjust the feeder and verify the actual feed rate by a drawdown or calibration check"
+    },
+    {
+     "id": "c-d",
+     "label": "Watch floc formation and settled turbidity through one basin travel time"
+    },
+    {
+     "id": "c-e",
+     "label": "Record the old dose, new dose, reason and time of change in the operating log"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The bench result is confirmed against current raw water first, the feeder setting is calculated and verified, performance is watched, and the change is logged last."
+  },
+  {
+   "id": "c2w-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a supervisor review of a week of jar test records.",
+   "topicId": "jar-test-records-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. The supervisor is reviewing bench records against plant performance for the past week.",
+   "configuration": "Fictional plant. The supervisor is reviewing bench records against plant performance for the past week.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Collect the week's jar test sheets and the matching plant dose logs"
+    },
+    {
+     "id": "c-b",
+     "label": "Match each jar test result to the plant dose that was in use at that time"
+    },
+    {
+     "id": "c-c",
+     "label": "Compare settled turbidity predicted by the jars with actual plant settled turbidity"
+    },
+    {
+     "id": "c-d",
+     "label": "Flag any days where plant results differed greatly from jar predictions"
+    },
+    {
+     "id": "c-e",
+     "label": "Record follow up actions for the flagged days and file the review"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Records are collected and matched before comparison, differences are flagged from the comparison, and follow up is recorded last."
+  },
+  {
+   "id": "c2w-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a first response to flooding in the plant basement gallery.",
+   "topicId": "emergency-flooding-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Water is entering a below grade gallery during a storm.",
+   "configuration": "Fictional plant. Water is entering a below grade gallery during a storm.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Keep staff clear of electrical hazards and stop work in the flooded area"
+    },
+    {
+     "id": "c-b",
+     "label": "Isolate electrical equipment in the affected area if it can be done safely"
+    },
+    {
+     "id": "c-c",
+     "label": "Start sump or portable pumps to control the water level"
+    },
+    {
+     "id": "c-d",
+     "label": "Notify the supervisor and record the extent and equipment affected"
+    },
+    {
+     "id": "c-e",
+     "label": "Inspect and test affected equipment before returning it to service after the water is cleared"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Personnel safety and electrical isolation come first, pumping controls the water, the event is escalated and recorded, and equipment is proven safe before reuse."
+  },
+  {
+   "id": "c2w-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response steps when raw water turbidity rises sharply during a storm.",
+   "topicId": "coagulation-turbidity-spike",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional surface water plant. Raw turbidity has doubled in one hour and rain continues.",
+   "configuration": "Fictional surface water plant. Raw turbidity has doubled in one hour and rain continues.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the rise with a grab sample and a second turbidity measurement"
+    },
+    {
+     "id": "c-b",
+     "label": "Notify the supervisor and note the time and readings in the log"
+    },
+    {
+     "id": "c-c",
+     "label": "Run a quick jar test on the new raw water to check the coagulant dose"
+    },
+    {
+     "id": "c-d",
+     "label": "Adjust the coagulant feed to the dose supported by the jar test"
+    },
+    {
+     "id": "c-e",
+     "label": "Increase monitoring of settled and filtered turbidity"
+    },
+    {
+     "id": "c-f",
+     "label": "Review the dose again once raw turbidity stabilizes"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "Verification comes before escalation and dose changes. The dose is set from a fresh jar test, monitoring increases, and review follows stabilization."
+  },
+  {
+   "id": "c2w-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to a sudden rise in raw water colour from runoff.",
+   "topicId": "coagulation-colour-event",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. True colour has risen well above normal after heavy rain in the watershed.",
+   "configuration": "Fictional plant. True colour has risen well above normal after heavy rain in the watershed.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Measure raw colour, turbidity, pH and alkalinity on a fresh sample"
+    },
+    {
+     "id": "c-b",
+     "label": "Jar test a range of coagulant doses for colour removal"
+    },
+    {
+     "id": "c-c",
+     "label": "Select the dose that met colour and turbidity targets in the jars"
+    },
+    {
+     "id": "c-d",
+     "label": "Adjust the plant coagulant feed and confirm the feeder output"
+    },
+    {
+     "id": "c-e",
+     "label": "Monitor settled colour and turbidity until they return to target"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Fresh measurements define the event, jar tests set the dose, the feed is adjusted and verified, and monitoring continues to target."
+  },
+  {
+   "id": "c2w-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for adjusting coagulation as raw water temperature falls in late autumn.",
+   "topicId": "coagulation-cold-water",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Raw water temperature has fallen below 5 degrees C and floc is forming slowly.",
+   "configuration": "Fictional plant. Raw water temperature has fallen below 5 degrees C and floc is forming slowly.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the temperature trend from intake records over several days"
+    },
+    {
+     "id": "c-b",
+     "label": "Jar test current raw water at its actual cold temperature"
+    },
+    {
+     "id": "c-c",
+     "label": "Review floc formation time and settled quality in the cold jars"
+    },
+    {
+     "id": "c-d",
+     "label": "Adjust dose or aid and flocculation time based on the cold water results"
+    },
+    {
+     "id": "c-e",
+     "label": "Monitor plant floc and settled turbidity more frequently through the change"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Cold water slows reactions, so the trend is confirmed and jars are run at actual temperature before plant changes are made and monitored."
+  },
+  {
+   "id": "c2w-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when raw water alkalinity drops during spring melt.",
+   "topicId": "coagulation-alkalinity-drop",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Snowmelt has diluted raw alkalinity and coagulation pH is falling.",
+   "configuration": "Fictional plant. Snowmelt has diluted raw alkalinity and coagulation pH is falling.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Measure raw alkalinity and treated pH and compare with normal ranges"
+    },
+    {
+     "id": "c-b",
+     "label": "Calculate the alkali feed needed to hold the target coagulation pH"
+    },
+    {
+     "id": "c-c",
+     "label": "Start or increase the alkali feed and verify its output"
+    },
+    {
+     "id": "c-d",
+     "label": "Recheck coagulation pH and settled turbidity after one travel time"
+    },
+    {
+     "id": "c-e",
+     "label": "Log the alkalinity trend, feed change and results"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Measurement and calculation precede the feed change, verification follows one travel time later, and logging completes the response."
+  },
+  {
+   "id": "c2w-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to an algae bloom affecting coagulation.",
+   "topicId": "coagulation-algae-event",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional reservoir source plant. Algae counts are high and filters are seeing extra load.",
+   "configuration": "Fictional reservoir source plant. Algae counts are high and filters are seeing extra load.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the bloom with raw water algae observations and taste and odour checks"
+    },
+    {
+     "id": "c-b",
+     "label": "Jar test to check coagulant demand and floc settleability with the algae present"
+    },
+    {
+     "id": "c-c",
+     "label": "Adjust coagulant or aid dose based on the jar results"
+    },
+    {
+     "id": "c-d",
+     "label": "Watch clarifier sludge blanket and settled turbidity for algae carryover"
+    },
+    {
+     "id": "c-e",
+     "label": "Shorten filter runs as needed based on headloss and effluent turbidity trends"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The bloom is confirmed first, demand is bench tested, plant dose follows, and clarifier and filter effects are managed from observed trends."
+  },
+  {
+   "id": "c2w-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when the rapid mix unit fails during operation.",
+   "topicId": "rapid-mix-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. The rapid mixer motor has tripped and coagulant is still feeding.",
+   "configuration": "Fictional plant. The rapid mixer motor has tripped and coagulant is still feeding.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Stop the coagulant feed to the unmixed application point"
+    },
+    {
+     "id": "c-b",
+     "label": "Notify the supervisor and log the time of the failure"
+    },
+    {
+     "id": "c-c",
+     "label": "Switch coagulant feed to the approved alternate mixing point if one is available"
+    },
+    {
+     "id": "c-d",
+     "label": "Restart or repair the mixer following the maintenance procedure"
+    },
+    {
+     "id": "c-e",
+     "label": "Confirm mixing is restored and floc is forming normally before returning to the normal feed point"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Feeding into an unmixed point wastes chemical and harms treatment, so feed stops first. Normal feed resumes only after mixing is confirmed restored."
+  },
+  {
+   "id": "c2w-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for adjusting flocculation energy when floc is breaking up.",
+   "topicId": "floc-basin-adjustment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Large floc forms early in the basin but arrives at the outlet as small pin floc.",
+   "configuration": "Fictional plant. Large floc forms early in the basin but arrives at the outlet as small pin floc.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Observe floc size at the basin inlet, middle and outlet"
+    },
+    {
+     "id": "c-b",
+     "label": "Check current paddle or mixer speeds against the operating guide"
+    },
+    {
+     "id": "c-c",
+     "label": "Reduce the speed in the later flocculation zone by one step"
+    },
+    {
+     "id": "c-d",
+     "label": "Observe floc at the outlet after allowing the adjusted water to travel through"
+    },
+    {
+     "id": "c-e",
+     "label": "Record the speed change and the floc response in the log"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Observation along the basin locates the breakup, speeds are checked, one change is made, its effect is observed after travel time, and the change is logged."
+  },
+  {
+   "id": "c2w-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating rising settled water turbidity at steady flow.",
+   "topicId": "settled-turbidity-rise",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Settled turbidity has risen over two hours with no flow change.",
+   "configuration": "Fictional plant. Settled turbidity has risen over two hours with no flow change.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Verify the settled turbidity reading with a grab sample on a bench meter"
+    },
+    {
+     "id": "c-b",
+     "label": "Check coagulant feed rate and day tank level for an interruption"
+    },
+    {
+     "id": "c-c",
+     "label": "Check raw turbidity, alkalinity and coagulation pH for a source change"
+    },
+    {
+     "id": "c-d",
+     "label": "Inspect floc formation and the clarifier sludge blanket depth"
+    },
+    {
+     "id": "c-e",
+     "label": "Correct the cause found and monitor settled turbidity back to target"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The reading is verified first, then chemical feed, source water and basin condition are checked in flow order, and correction and monitoring follow."
+  },
+  {
+   "id": "c2w-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing coagulation and clarification for a planned high flow period.",
+   "topicId": "high-flow-event",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Demand will rise to near rated capacity for the next day.",
+   "configuration": "Fictional plant. Demand will rise to near rated capacity for the next day.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the expected flow and duration with the distribution operator"
+    },
+    {
+     "id": "c-b",
+     "label": "Check chemical inventories and feeder capacity for the higher dose rates"
+    },
+    {
+     "id": "c-c",
+     "label": "Jar test at the expected conditions to confirm dose at high flow"
+    },
+    {
+     "id": "c-d",
+     "label": "Raise clarifier sludge wasting to keep the blanket low before the event"
+    },
+    {
+     "id": "c-e",
+     "label": "Monitor settled turbidity and blanket depth closely during the high flow period"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The event is defined first, chemical capacity is confirmed, dose is bench checked, the clarifier is prepared, and close monitoring covers the event itself."
+  },
+  {
+   "id": "c2w-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when the duty coagulant feed pump fails.",
+   "topicId": "coagulant-feed-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. The duty coagulant pump has stopped and the standby pump is available.",
+   "configuration": "Fictional plant. The duty coagulant pump has stopped and the standby pump is available.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the failure by checking pump status, feed line flow and day tank drawdown"
+    },
+    {
+     "id": "c-b",
+     "label": "Start the standby coagulant pump and set it to the required feed rate"
+    },
+    {
+     "id": "c-c",
+     "label": "Verify chemical is reaching the application point and floc is forming"
+    },
+    {
+     "id": "c-d",
+     "label": "Notify the supervisor and maintenance and log the failure and changeover"
+    },
+    {
+     "id": "c-e",
+     "label": "Tag out the failed pump for repair following lockout procedures"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Changeover to the standby pump restores treatment first and is verified at the application point. Notification, logging and tag out follow."
+  },
+  {
+   "id": "c2w-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for extending filter runs without losing effluent quality.",
+   "topicId": "filter-run-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant with four rapid gravity filters and individual effluent turbidimeters.",
+   "configuration": "Fictional plant with four rapid gravity filters and individual effluent turbidimeters.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review run length, headloss and effluent turbidity records for each filter"
+    },
+    {
+     "id": "c-b",
+     "label": "Identify the filter that ends runs with quality and headloss margin remaining"
+    },
+    {
+     "id": "c-c",
+     "label": "Extend that filter's run target by a small planned amount"
+    },
+    {
+     "id": "c-d",
+     "label": "Monitor its effluent turbidity and headloss closely through the longer run"
+    },
+    {
+     "id": "c-e",
+     "label": "Adopt, adjust or abandon the new target based on the recorded results"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Records identify the candidate, a small trial extension follows, close monitoring covers the trial, and the decision is based on results."
+  },
+  {
+   "id": "c2w-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking a filter out of service for backwash.",
+   "topicId": "backwash-initiation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. One filter has reached its headloss limit and is due for backwash.",
+   "configuration": "Fictional plant. One filter has reached its headloss limit and is due for backwash.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the backwash trigger from headloss, turbidity or run time records"
+    },
+    {
+     "id": "c-b",
+     "label": "Check that the remaining filters can carry the plant flow during the wash"
+    },
+    {
+     "id": "c-c",
+     "label": "Notify the control room and log the filter coming out of service"
+    },
+    {
+     "id": "c-d",
+     "label": "Close the filter influent and allow the water level to draw down to the wash level"
+    },
+    {
+     "id": "c-e",
+     "label": "Begin the backwash sequence for that filter"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The trigger is confirmed, capacity of the remaining filters is checked, the change is communicated and logged, the filter is drawn down, and washing begins."
+  },
+  {
+   "id": "c2w-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the stages of a standard air and water backwash for a dual media filter.",
+   "topicId": "backwash-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional dual media filter with air scour and surface wash fitted, following the plant wash procedure.",
+   "configuration": "Fictional dual media filter with air scour and surface wash fitted, following the plant wash procedure.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Drain the filter water down to just above the media surface"
+    },
+    {
+     "id": "c-b",
+     "label": "Start air scour to loosen the media bed"
+    },
+    {
+     "id": "c-c",
+     "label": "Start the low rate backwash water flow with air continuing"
+    },
+    {
+     "id": "c-d",
+     "label": "Stop the air and raise the wash water to the full backwash rate"
+    },
+    {
+     "id": "c-e",
+     "label": "Continue washing until the waste water runs acceptably clear"
+    },
+    {
+     "id": "c-f",
+     "label": "Stop the wash and allow the bed to settle and regrade"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "Draining precedes air scour, air and low water combine, air stops before full rate washing, washing continues to clarity, and the bed settles last."
+  },
+  {
+   "id": "c2w-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for returning a backwashed filter to service using filter to waste.",
+   "topicId": "filter-to-waste",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. A filter has completed backwash and has a filter to waste capability.",
+   "configuration": "Fictional plant. A filter has completed backwash and has a filter to waste capability.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Complete the backwash and allow the media bed to settle"
+    },
+    {
+     "id": "c-b",
+     "label": "Start the filter at a reduced rate with effluent directed to waste"
+    },
+    {
+     "id": "c-c",
+     "label": "Monitor the waste stream turbidity as the filter ripens"
+    },
+    {
+     "id": "c-d",
+     "label": "Confirm effluent turbidity is below the plant target for the set time"
+    },
+    {
+     "id": "c-e",
+     "label": "Open the filter to the clear well and raise it to its normal rate"
+    },
+    {
+     "id": "c-f",
+     "label": "Log the wash, ripening time and return to service"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "The bed settles first, ripening runs to waste, quality must meet target before the clear well is opened, rate is then normalized, and the cycle is logged."
+  },
+  {
+   "id": "c2w-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for managing backwash waste water returned to the head of the plant.",
+   "topicId": "backwash-recovery",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant with a backwash recovery tank that returns wash water at a controlled rate.",
+   "configuration": "Fictional plant with a backwash recovery tank that returns wash water at a controlled rate.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the recovery tank level and that the return pumps are available"
+    },
+    {
+     "id": "c-b",
+     "label": "Check the recovered water turbidity before starting the return"
+    },
+    {
+     "id": "c-c",
+     "label": "Start the return at the set percentage of plant inflow"
+    },
+    {
+     "id": "c-d",
+     "label": "Monitor raw water turbidity and coagulant demand while the return is running"
+    },
+    {
+     "id": "c-e",
+     "label": "Stop or reduce the return if settled turbidity rises above target"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Tank and pump readiness and water quality are checked before return starts. The return rate is controlled and its effect on treatment is monitored with a stop rule."
+  },
+  {
+   "id": "c2w-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a step test to check a filter's response to a higher rate.",
+   "topicId": "filter-rate-step-test",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant evaluating a modest filtration rate increase on one filter.",
+   "configuration": "Fictional plant evaluating a modest filtration rate increase on one filter.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Record baseline effluent turbidity and headloss at the current rate"
+    },
+    {
+     "id": "c-b",
+     "label": "Increase the filter rate by one planned step"
+    },
+    {
+     "id": "c-c",
+     "label": "Hold the new rate for the set test period"
+    },
+    {
+     "id": "c-d",
+     "label": "Record effluent turbidity and headloss through the test period"
+    },
+    {
+     "id": "c-e",
+     "label": "Return the filter to its normal rate and evaluate the results before any permanent change"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Baseline data comes first, one rate step is tested and held, results are recorded, and the filter returns to normal while results are evaluated."
+  },
+  {
+   "id": "c2w-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for an internal inspection of a drained filter.",
+   "topicId": "filter-media-inspection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. A filter is out of service and drained for a scheduled media inspection.",
+   "configuration": "Fictional plant. A filter is out of service and drained for a scheduled media inspection.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Isolate, drain and lock out the filter following the plant procedure"
+    },
+    {
+     "id": "c-b",
+     "label": "Enter and inspect the media surface for cracks, mounding and mudballs"
+    },
+    {
+     "id": "c-c",
+     "label": "Measure media depth at several points and compare with the design depth"
+    },
+    {
+     "id": "c-d",
+     "label": "Inspect the underdrain area and nozzles where access allows"
+    },
+    {
+     "id": "c-e",
+     "label": "Record findings, photograph the surface and report any defects for repair planning"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Safe isolation and draining precede entry. Surface, depth and underdrain checks follow in order, and findings are recorded and reported last."
+  },
+  {
+   "id": "c2w-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for checking underdrain performance during a backwash observation.",
+   "topicId": "filter-underdrain-check",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Uneven boiling is suspected during backwash on one filter.",
+   "configuration": "Fictional plant. Uneven boiling is suspected during backwash on one filter.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Start the backwash and observe the bed surface as wash water rises"
+    },
+    {
+     "id": "c-b",
+     "label": "Map the areas of strong, weak and no upward flow across the surface"
+    },
+    {
+     "id": "c-c",
+     "label": "Stop the wash and drain the filter for a closer inspection of the suspect area"
+    },
+    {
+     "id": "c-d",
+     "label": "Inspect nozzles or laterals in the suspect area for blockage or damage"
+    },
+    {
+     "id": "c-e",
+     "label": "Record the findings and raise a work order for any defects found"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The wash observation locates suspect areas first. Draining and direct inspection follow, and findings and work orders complete the check."
+  },
+  {
+   "id": "c2w-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for adjusting the backwash program for summer algae season.",
+   "topicId": "backwash-program-seasonal",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Summer runs are shorter and wash water use is being reviewed before the season.",
+   "configuration": "Fictional plant. Summer runs are shorter and wash water use is being reviewed before the season.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review last summer's run lengths, wash frequency and wash water volumes"
+    },
+    {
+     "id": "c-b",
+     "label": "Set seasonal backwash triggers for headloss, turbidity and maximum run time"
+    },
+    {
+     "id": "c-c",
+     "label": "Adjust wash duration steps based on waste water clarity records"
+    },
+    {
+     "id": "c-d",
+     "label": "Brief all shifts on the seasonal triggers and steps"
+    },
+    {
+     "id": "c-e",
+     "label": "Review wash water use and filter quality monthly through the season"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Last season's records inform the new triggers and durations. Staff are briefed before the season, and monthly review checks the program in use."
+  },
+  {
+   "id": "c2w-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for returning a filter to service after media maintenance.",
+   "topicId": "filter-restart-maintenance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Media was topped up and a nozzle replaced on an out of service filter.",
+   "configuration": "Fictional plant. Media was topped up and a nozzle replaced on an out of service filter.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the maintenance work is complete and all tools and materials are removed"
+    },
+    {
+     "id": "c-b",
+     "label": "Refill the filter slowly from below to avoid disturbing the media"
+    },
+    {
+     "id": "c-c",
+     "label": "Backwash the filter to clean and regrade the media"
+    },
+    {
+     "id": "c-d",
+     "label": "Run the filter to waste until effluent turbidity meets the target"
+    },
+    {
+     "id": "c-e",
+     "label": "Return the filter to service and log the maintenance and restart"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Completion and clearance come first, slow refill protects the bed, washing cleans it, ripening to waste proves quality, and return to service is logged."
+  },
+  {
+   "id": "c2w-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps in a daily filter surveillance round.",
+   "topicId": "filter-surveillance-rounds",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant with individual filter turbidimeters and headloss gauges.",
+   "configuration": "Fictional plant with individual filter turbidimeters and headloss gauges.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review the overnight effluent turbidity and headloss trends for all filters"
+    },
+    {
+     "id": "c-b",
+     "label": "Visit each filter and compare gauge readings with the recorded trends"
+    },
+    {
+     "id": "c-c",
+     "label": "Check each filter's rate and water level against its set points"
+    },
+    {
+     "id": "c-d",
+     "label": "Note any filter with rising turbidity, rapid headloss or uneven surface"
+    },
+    {
+     "id": "c-e",
+     "label": "Record the round findings and flag any filter needing follow up"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Trend review guides the round, field readings are compared with trends, abnormalities are noted, and findings and follow ups are recorded."
+  },
+  {
+   "id": "c2w-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating one filter with slowly rising effluent turbidity.",
+   "topicId": "filter-turbidity-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Filter 3 effluent turbidity has crept up over two days while other filters are stable.",
+   "configuration": "Fictional plant. Filter 3 effluent turbidity has crept up over two days while other filters are stable.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Verify the reading with a grab sample on a calibrated bench turbidimeter"
+    },
+    {
+     "id": "c-b",
+     "label": "Compare Filter 3 settled water quality and rate with the other filters"
+    },
+    {
+     "id": "c-c",
+     "label": "Review its last backwash record for wash duration and waste clarity"
+    },
+    {
+     "id": "c-d",
+     "label": "Inspect the media surface at the next drawdown for mudballs or cracks"
+    },
+    {
+     "id": "c-e",
+     "label": "Decide on an early backwash, extended wash or maintenance based on the findings"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Verification rules out instrument error first. Comparisons, wash history and surface inspection build the case before a corrective decision is made."
+  },
+  {
+   "id": "c2w-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding to a rising particle count trend on a filter effluent monitor.",
+   "topicId": "filter-particle-trend",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant fitted with a particle counter on one filter effluent for surveillance awareness.",
+   "configuration": "Fictional plant fitted with a particle counter on one filter effluent for surveillance awareness.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the trend is real by checking the counter's sample flow and recent maintenance"
+    },
+    {
+     "id": "c-b",
+     "label": "Compare the particle trend with the filter's effluent turbidity trend"
+    },
+    {
+     "id": "c-c",
+     "label": "Check for recent rate changes or hydraulic surges on that filter"
+    },
+    {
+     "id": "c-d",
+     "label": "Reduce the filter rate or take it out for backwash if counts keep rising"
+    },
+    {
+     "id": "c-e",
+     "label": "Record the trend, actions and outcome for the surveillance file"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Instrument checks come first, particle and turbidity trends are compared, hydraulic causes are checked, action follows continued rise, and the event is filed."
+  },
+  {
+   "id": "c2w-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a routine filter integrity awareness check on a granular media filter.",
+   "topicId": "filter-integrity-awareness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. This is a surveillance check, not a membrane integrity test.",
+   "configuration": "Fictional plant. This is a surveillance check, not a membrane integrity test.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review the filter's turbidity, headloss and run time since its last backwash"
+    },
+    {
+     "id": "c-b",
+     "label": "Observe a full backwash for even bed lift and boil pattern"
+    },
+    {
+     "id": "c-c",
+     "label": "Check the drained media surface for holes, cracks or depressions"
+    },
+    {
+     "id": "c-d",
+     "label": "Measure media depth and compare it with the baseline record"
+    },
+    {
+     "id": "c-e",
+     "label": "Record the check results and schedule any corrective work"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Operating history is reviewed first, wash behaviour and surface condition are observed, depth is compared with baseline, and results and work are recorded."
+  },
+  {
+   "id": "c2w-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for taking a media core sample from a filter.",
+   "topicId": "filter-core-sampling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. A core sample will check media condition at depth on an out of service filter.",
+   "configuration": "Fictional plant. A core sample will check media condition at depth on an out of service filter.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Take the filter out of service, drain it and lock it out"
+    },
+    {
+     "id": "c-b",
+     "label": "Mark the sampling locations on the media surface"
+    },
+    {
+     "id": "c-c",
+     "label": "Push the core sampler straight down through the full media depth"
+    },
+    {
+     "id": "c-d",
+     "label": "Withdraw the core and keep the layers in order for examination"
+    },
+    {
+     "id": "c-e",
+     "label": "Examine each layer for coating, mudballs and gradation change and record the findings"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Safe isolation precedes sampling. Locations are marked, the core is taken through full depth, layers are kept in order, and examination and recording finish the task."
+  },
+  {
+   "id": "c2w-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps when one filter's effluent turbidity exceeds the plant action limit.",
+   "topicId": "filter-effluent-exceedance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Filter 2 effluent turbidity has risen above the internal action limit of 0.3 NTU.",
+   "configuration": "Fictional plant. Filter 2 effluent turbidity has risen above the internal action limit of 0.3 NTU.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Verify the exceedance with a grab sample on a bench turbidimeter"
+    },
+    {
+     "id": "c-b",
+     "label": "Remove the filter from service or reduce its rate following the plant procedure"
+    },
+    {
+     "id": "c-c",
+     "label": "Notify the supervisor and log the time, readings and action taken"
+    },
+    {
+     "id": "c-d",
+     "label": "Backwash the filter and inspect for a cause before returning it"
+    },
+    {
+     "id": "c-e",
+     "label": "Return it to service through filter to waste only after turbidity meets target"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Verification comes first, the filter is controlled, the event is escalated and logged, cause is checked during washing, and return is through filter to waste at target quality."
+  },
+  {
+   "id": "c2w-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating headloss that builds mainly at the media surface.",
+   "topicId": "filter-headloss-profile",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. Total headloss rises quickly but clears almost fully after each backwash.",
+   "configuration": "Fictional plant. Total headloss rises quickly but clears almost fully after each backwash.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Review headloss growth curves from several recent runs"
+    },
+    {
+     "id": "c-b",
+     "label": "Check settled water turbidity and algae levels entering the filter"
+    },
+    {
+     "id": "c-c",
+     "label": "Observe the backwash waste for the type of material being removed"
+    },
+    {
+     "id": "c-d",
+     "label": "Inspect the surface layer for a mat or crust at the next drain down"
+    },
+    {
+     "id": "c-e",
+     "label": "Adjust pretreatment or wash steps based on the findings and record the change"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "Run curves and influent quality frame the problem, wash waste and surface inspection confirm it, and adjustments follow the findings."
+  },
+  {
+   "id": "c2w-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for deciding to end a filter run early.",
+   "topicId": "filter-run-termination",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional plant. A filter shows rising effluent turbidity well before its headloss limit.",
+   "configuration": "Fictional plant. A filter shows rising effluent turbidity well before its headloss limit.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Confirm the turbidity rise with a repeat sample"
+    },
+    {
+     "id": "c-b",
+     "label": "Compare the rise with the filter's normal end of run pattern"
+    },
+    {
+     "id": "c-c",
+     "label": "Check that other filters can take the flow if this filter stops"
+    },
+    {
+     "id": "c-d",
+     "label": "End the run and take the filter to backwash"
+    },
+    {
+     "id": "c-e",
+     "label": "Log the early termination, the readings and the reason"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e"
+   ],
+   "explanation": "The rise is confirmed and compared with normal patterns, capacity is checked, the run is ended, and the decision is logged with its reason."
+  },
+  {
+   "id": "c2w-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps in the daily CT compliance check for a clear well.",
+   "topicId": "ct-workflow-daily",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 2 water treatment study scenario. Fictional Ontario plant using free chlorine. The daily check uses the plant CT worksheet.",
+   "configuration": "Fictional Ontario plant using free chlorine. The daily check uses the plant CT worksheet.",
+   "cards": [
+    {
+     "id": "c-a",
+     "label": "Record the lowest clear well chlorine residual measured for the period"
+    },
+    {
+     "id": "c-b",
+     "label": "Record the highest pH and the lowest temperature for the same period"
+    },
+    {
+     "id": "c-c",
+     "label": "Determine the contact time using clear well volume at its lowest level and the peak flow factor in the procedure"
+    },
+    {
+     "id": "c-d",
+     "label": "Apply the baffling factor for the clear well from the approved study"
+    },
+    {
+     "id": "c-e",
+     "label": "Calculate CT and compare it with the required CT from the tables for the target inactivation"
+    },
+    {
+     "id": "c-f",
+     "label": "Record the CT result and initial the compliance worksheet"
+    }
+   ],
+   "correctOrder": [
+    "c-a",
+    "c-b",
+    "c-c",
+    "c-d",
+    "c-e",
+    "c-f"
+   ],
+   "explanation": "CT uses worst case residual, pH and temperature for the same period, then contact time and baffling, then the calculation and comparison, and recording last."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c2w-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Pumps Affinity Laws Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c2w-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Jar Testing Dose Selection Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c2w-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c2w-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Pumps Affinity Laws Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c2w-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c2w-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c2w-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Jar Testing Seasonal Baseline Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c2w-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Pumps Affinity Laws Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c2w-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c2w-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Jar Testing Polymer Aid Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c2w-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c2w-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c2w-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Filtration Backwash Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c2w-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Jar Testing Ph Control Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c2w-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c2w-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Filtration Backwash Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c2w-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c2w-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c2w-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Jar Test Records Review Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c2w-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Filtration Loading Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c2w-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c2w-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Coagulation Turbidity Spike Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c2w-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c2w-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c2w-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Filtration Loading Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c2w-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Coagulation Cold Water Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c2w-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c2w-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Hydraulics Detention Time Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c2w-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c2w-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c2w-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Coagulation Algae Event Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c2w-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Alkalinity Titration Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c2w-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c2w-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Floc Basin Adjustment Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c2w-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c2w-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c2w-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Disinfection Chlorine Demand Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c2w-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2w-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The High Flow Event Shift",
+   "tasks": [
+    {
+     "taskId": "c2w-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c2w-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c2w-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Water treatment operations chapters (coagulation, sedimentation, filtration, disinfection, softening)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "e9a6d7e87969f93530ab5eb09da8766b4880a6b737acb6740b0d48f21d4a3582",
+  "taskReceipts": [
+   {
+    "taskId": "c2w-error60",
+    "revision": "r1",
+    "sha256": "25feaffed3d221216ed94e1f63a825fbf82eba8f074147056b48657f0868742d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error61",
+    "revision": "r1",
+    "sha256": "ba84b84b75b5b16c139c7de3705059b9d85ebb41bb87554dedcc3edda5df9831",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error62",
+    "revision": "r1",
+    "sha256": "5014e22f48b3ed4b2d8d22465ca2b75f463ca9914242137e7cde25902bce5dd3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error63",
+    "revision": "r1",
+    "sha256": "75b47c9bdc46f3a1f562481f76a8ab211d7267c7aa7461f9511f9e9724e39be5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error64",
+    "revision": "r1",
+    "sha256": "5c4e68a85035667c7573f474e70b31a60efee34cec5ea47a3f5024fc1c77643a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error65",
+    "revision": "r1",
+    "sha256": "e2c2113e2f900bb7547f0dcc2ce31f9af3a883dbab443f4537164a3e76ccf64f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error66",
+    "revision": "r1",
+    "sha256": "d01108369929521295c58656df4ce310a6ead9f9e813f9fc0e176d8746abfbf5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error67",
+    "revision": "r1",
+    "sha256": "200f942014dd3fc9b19d100ec46acf37664fdf6058d3535b03e0625576b16bfd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error68",
+    "revision": "r1",
+    "sha256": "3464d560cc43ce481c7af4763dd18ca6ca8e7ad6eda74aa28398407192bf3826",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error69",
+    "revision": "r1",
+    "sha256": "2963fdad6eb602650000a80ed1b9080fd02e0bfbf30ee0c14c660825b1498c60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error70",
+    "revision": "r1",
+    "sha256": "e809c8bf2b8691200da84c0161e82dfd340a0b47246431577b65ba0bc679d2b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error71",
+    "revision": "r1",
+    "sha256": "86dc9ed22913c9bd99689b8932d362d5043e76211cdccb86f6e93ff9a6d03667",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error72",
+    "revision": "r1",
+    "sha256": "48062834bd6daeb16f94a29476b0a4f5c16b6714c081148a27a4da15d6925e53",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error73",
+    "revision": "r1",
+    "sha256": "6c9f0f99d2d624511eaf7edd5d16230bc3fa77b37fbee7ac10278b9c9631513a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error74",
+    "revision": "r1",
+    "sha256": "71cbfe9fc5b1b5f66943c772d05f559721fcb0b80cdcbb2dfe633450de184a24",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error75",
+    "revision": "r1",
+    "sha256": "df29bc99f0cb427e235f274caaed007bbd4e7e8bfd5368ae625a4f0e346749f0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error76",
+    "revision": "r1",
+    "sha256": "cd8e49772a8b21f4ffd56fbe0e8d21bbe578c4b015bde1ca0bc701543eb0b003",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error77",
+    "revision": "r1",
+    "sha256": "9b95cab6b845fa587d6c89ccd6b3291e96066eac4ed4d37e13cb289e5918f6a8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error78",
+    "revision": "r1",
+    "sha256": "09c641d4f8ddff450c34a78252d3507b06692b9d5be07672c121180c70e35a9a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error79",
+    "revision": "r1",
+    "sha256": "e29a306ef519cf8af8566f72b26f842240f489e0b9dc0148905d1ddada30a1e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error80",
+    "revision": "r1",
+    "sha256": "2e477d016aae26912da23a4b8a4f78525baa4f72c15386a257e05d2d0340ddfa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error81",
+    "revision": "r1",
+    "sha256": "f465ed563bdce92b85188798c375780daaf7c527bdc78e594ff8f240e99ce3ed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error82",
+    "revision": "r1",
+    "sha256": "f04e567d4a6b535f7df5b508a29c6df71adf3fb0e4acf986932fdd0b33e6d472",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error83",
+    "revision": "r1",
+    "sha256": "8aae35afd497347af3d2488b072e3fab09a92a5d33d926b54e2418b7d8c786cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error84",
+    "revision": "r1",
+    "sha256": "85adfcfaf301d5da960b697187154562544942191626b704cbca0fa0c819853c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error85",
+    "revision": "r1",
+    "sha256": "5cb60f7b31bd27f2464e6528a7f5c6914f2e2f9a47d94f52e70a8c09b096e48a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error86",
+    "revision": "r1",
+    "sha256": "036fb40ad82858bb78c2b647ce3b033a8177181ffb887748f4eb3032a0f3151b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error87",
+    "revision": "r1",
+    "sha256": "e3b72e15f89c5dc489ef3ef79461242f8c65501e7ccb094512bbd8d54230044a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error88",
+    "revision": "r1",
+    "sha256": "a9e0df60477c7f2d3421f3c50df024c21ca56c9d42292d9d71bd44aa55616a27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error89",
+    "revision": "r1",
+    "sha256": "c2945cafbab12fb8425db2f9e0498f0ae1543116cf520322ec2ea3a712fa6124",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error90",
+    "revision": "r1",
+    "sha256": "2a3de6e167294ea665cbf1436a99bb9d4a00d1d182aa34592d3aaa4b4e0888bb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error91",
+    "revision": "r1",
+    "sha256": "7744b703ef8d0946638fc2fb3308b6fb24ce2000e369599a11f7c557448c513a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error92",
+    "revision": "r1",
+    "sha256": "b6ecfa424fc53de344dfae2561eebe2e15662d72ad8a33f246ad39394890f0ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error93",
+    "revision": "r1",
+    "sha256": "be49dd858ab241e28a13181c00d44f1dcc55ed79beb2adcc8ea440a8b76795f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error94",
+    "revision": "r1",
+    "sha256": "23c11e70bde3b3b1c589a1cf5ee300c2b85f6be562963ab4737d8f10412bac7a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error95",
+    "revision": "r1",
+    "sha256": "abe2111376703d3a4532edaec3c2153d53501d4e7f0c02ba6d48f06a0c508ceb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error96",
+    "revision": "r1",
+    "sha256": "7b955d1665d3a0115c33e97923c38ed7268b8e139bc4b3e92bb8ca254f1af0bf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error97",
+    "revision": "r1",
+    "sha256": "9b2c2308199e2211b8120d51d5bd9c162019f5c1a7c318d3f1c30d765a48e833",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error98",
+    "revision": "r1",
+    "sha256": "ead8f36ddeb1f69211f3ca702964a99a8db0bac1216179f934d3edb8a6bd0d91",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-error99",
+    "revision": "r1",
+    "sha256": "293fbbc3e15a69dc9d74962209ac18855e4d0a12a611eb48ab14d73447f6c228",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process01",
+    "revision": "r1",
+    "sha256": "205ae2bf6860f93088ea513ecd1fd783e9a69fd38467284bed52fb95f7e0b23e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process02",
+    "revision": "r1",
+    "sha256": "8fa073c0c44a7d3c0736a2f19af56f15b3faf6183d0d3e1b95e85adf36c448e7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process03",
+    "revision": "r1",
+    "sha256": "ad6603b35b6edfb81c1876307298d2ec11cd3323c789b74d93660758685ff19d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process04",
+    "revision": "r1",
+    "sha256": "496be7a190030fdd93baca52e4f96294e33c4b1ea71a38a73f0b45e9fe5ac4d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process05",
+    "revision": "r1",
+    "sha256": "3c32d5ea7ef92b65747e099ba7ad86517eaa72db2fe7f9f1a644cb691ecd66bf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process06",
+    "revision": "r1",
+    "sha256": "8ed3006a02c6d70481b9506ac4db77569b6f2aad2a52a2b3d8db906f6e89e1c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process07",
+    "revision": "r1",
+    "sha256": "3496bb95982e59636c3f57909ba52d43b72a9e9b9885e3a103a7b81901619dee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process08",
+    "revision": "r1",
+    "sha256": "e71eb45e0d8c833afa31c085d775665665e54bc95b0aad423e1abad3ee9428d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process09",
+    "revision": "r1",
+    "sha256": "2dacc90aff7c87bb9ee7c0e7938b593460e8b33f387b728053c37cc176ba3c8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process10",
+    "revision": "r1",
+    "sha256": "f268289f33f9385fc44be2247d6900ee75c4506932feab5d14e55b50fb781ef6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process100",
+    "revision": "r1",
+    "sha256": "02b1641e9ae396710c46bbaf16e29773065ddfc1dd6d32567719617d46ac9d90",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process11",
+    "revision": "r1",
+    "sha256": "560667725b4f908233dcfa2c381cda43a9e81861fe35536c11ef655c6e878c2d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process12",
+    "revision": "r1",
+    "sha256": "be08bb94c8a89148cdf83a7252dc67b3c689b00211a7403ed1092c7b10bf1255",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process13",
+    "revision": "r1",
+    "sha256": "c8de57f5767e15ce5f9ae2da343729fe8f2ca9e83180c6a92875bccb6ed6121d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process14",
+    "revision": "r1",
+    "sha256": "dbf49e495cd76ec452ad67d338cd12807b87e58af8ea2f5e6110ee58086260d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process15",
+    "revision": "r1",
+    "sha256": "89422a4d0a54d51a493d1a94820d91b3e16109bbb30a1f783f618595baa5ab7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process16",
+    "revision": "r1",
+    "sha256": "736b9d276f76d11b8e26825061e5a1214ba0df37b11cbb84d01d5d8f05e96b1b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process17",
+    "revision": "r1",
+    "sha256": "d4ced72acbf59d3b530affa0b59cd53285f8cd3ea335d836ef0057acd6dcef45",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process18",
+    "revision": "r1",
+    "sha256": "d3a233ebc840ebabf30e4a29195b5bbb3077a2460c40016baa31b55c22e63d6b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process19",
+    "revision": "r1",
+    "sha256": "36d8e2362e00e911edc993b36f0ccfb877388a166a65fec1fbf5eb1a5625f138",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process20",
+    "revision": "r1",
+    "sha256": "5df9d8cb975ce93e9ce6740e3ac47bb8e5c22a15b2122bca885a1d4b65e7836b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process21",
+    "revision": "r1",
+    "sha256": "a2eb7e7d8a901b73e7457ef9da9f3c3a3c814e585b6f0f26a07186ef5e740b26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process22",
+    "revision": "r1",
+    "sha256": "563e8749d7d3bbf44054821d04e8686f55789ed7f5525336b6b7ddbf0c5dee74",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process23",
+    "revision": "r1",
+    "sha256": "d162a206fecb2c0d4053c5221de303d7ab46978830c31d2af6460f5805cd3040",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process24",
+    "revision": "r1",
+    "sha256": "f3d73a6229a701122c7b2d262cbdbcc90272be0dac95bba8e9ceb426100ab322",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process25",
+    "revision": "r1",
+    "sha256": "78038466312c35965843f78f6d94eeb262837038c4ad706a7e9b508fbf8b2c99",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process26",
+    "revision": "r1",
+    "sha256": "303478b37ad746bf1bd4786c243798e290f9d875b8e756c3913a24e4548f60d5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process27",
+    "revision": "r1",
+    "sha256": "b9f6e88366b0a652c546d040c16ffb7970a66a3a8416f2b319ad132ae1693eaa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process28",
+    "revision": "r1",
+    "sha256": "929bdef1bbd798abd429368b8141006529379c243c389ff9513e020a364d00fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process29",
+    "revision": "r1",
+    "sha256": "570cb926cc6323167d05211a80bbf1bafff1e72c6edaba9ecf6c26c47ec41573",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process30",
+    "revision": "r1",
+    "sha256": "509d62eced190cf8042cb7ef799d1f94fcc6733aef8b8f54e3b8aefaf356908f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process31",
+    "revision": "r1",
+    "sha256": "b886ed3792af4e07d05a7874682d5bcf1d45ac95c252f307406cc50125ecc56e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process32",
+    "revision": "r1",
+    "sha256": "7eb5ad841719d500fac638ec0bb355ea1e05a72bc77a40f989ce7fe63681113f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process33",
+    "revision": "r1",
+    "sha256": "20d0fdfc11900d631af5cd2961543e8b16e8d560841f6f1640ecee4b9273ff82",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process34",
+    "revision": "r1",
+    "sha256": "35a662fa3713b9fc35cf4d1013007287045d55497b01efc575c69567c727853e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process35",
+    "revision": "r1",
+    "sha256": "776dad8836a6fe9e5da9557d44ba859df0674ff591008bb60d93635dcc69b91f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process36",
+    "revision": "r1",
+    "sha256": "e5e42f155b2f9f1de8593e7d6e7bd285487479d8619aca96a229081d7f9790f7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process37",
+    "revision": "r1",
+    "sha256": "97de600e1ade797a341fa0723f832766d316f6606bea51b63c2c8ba835c3ae5f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process38",
+    "revision": "r1",
+    "sha256": "fa47d62ac7c498244cedc2736b27073779e07eb5cf31425d530994d6aa82b172",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2w-process39",
+    "revision": "r1",
+    "sha256": "4d5e35e01fd3db44f9c57b8b24fe0b3f41776592a300af1599acd792a048f130",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c2w-mission41",
+    "revision": "r1",
+    "sha256": "6496369a22607060e9063814aa5af570251339203da2088d60170072367bb13f"
+   },
+   {
+    "missionId": "c2w-mission42",
+    "revision": "r1",
+    "sha256": "efeec2c9798a9dd5ede991b9717c1d70f17584d0591c3aeb88d88964731c4add"
+   },
+   {
+    "missionId": "c2w-mission43",
+    "revision": "r1",
+    "sha256": "671fe23515099612c2fbc3b373a5fbc03e986449f672e85737be301b4f0e5508"
+   },
+   {
+    "missionId": "c2w-mission44",
+    "revision": "r1",
+    "sha256": "97b2877c7a8efb922e886e46a52fbe69d746aaec7de4d32e13d43e9e98de2319"
+   },
+   {
+    "missionId": "c2w-mission45",
+    "revision": "r1",
+    "sha256": "b7424043d75ae09d8fcf8be68b30a835566f98e6cce41113913e3173461d51dc"
+   },
+   {
+    "missionId": "c2w-mission46",
+    "revision": "r1",
+    "sha256": "c3b4e842894157126b118d8424a509faa4f56abf857e8ba28eab5bf4bce49762"
+   },
+   {
+    "missionId": "c2w-mission47",
+    "revision": "r1",
+    "sha256": "1d2b3a671138fca221fbd21d0f2824f00fb64360547eb180d169a94897d85b63"
+   },
+   {
+    "missionId": "c2w-mission48",
+    "revision": "r1",
+    "sha256": "aa664320902c27ee363ae121f4e0a85745844b7cb63a55a860295aee413d0028"
+   },
+   {
+    "missionId": "c2w-mission49",
+    "revision": "r1",
+    "sha256": "88377785e4e27ddbd0268b61d62431d6b0994b6cefa20966996d0480d312add0"
+   },
+   {
+    "missionId": "c2w-mission50",
+    "revision": "r1",
+    "sha256": "427652adfd1bea391ce084759b180a5f7d07c6afa2c7f041815916f98a91058a"
+   },
+   {
+    "missionId": "c2w-mission51",
+    "revision": "r1",
+    "sha256": "d1d3dcecc87543f40ec814c9a8b29d0f405da986ffd75037849b142f5d198fd1"
+   },
+   {
+    "missionId": "c2w-mission52",
+    "revision": "r1",
+    "sha256": "b1d530c0f2b43fff5ceeb560e4e6c23cc1332c094b2530823a81eb12e72c07e9"
+   },
+   {
+    "missionId": "c2w-mission53",
+    "revision": "r1",
+    "sha256": "f8971a83fa5a75a058902476c9094759932c32f817e9a2e15523c6b0a077cd86"
+   },
+   {
+    "missionId": "c2w-mission54",
+    "revision": "r1",
+    "sha256": "97e538c75677f82636c59e93238773311dd14e57307a86b32d158bf75f8a9b3e"
+   },
+   {
+    "missionId": "c2w-mission55",
+    "revision": "r1",
+    "sha256": "071d34fa84380228106a4e967839ff6f4dec0fe14a0b6315b04e03e0ff2bb05f"
+   },
+   {
+    "missionId": "c2w-mission56",
+    "revision": "r1",
+    "sha256": "0b300ed9a389b3c4bd3c7bbe45a716f08931db5de56e5b64d787f26cbf3b925c"
+   },
+   {
+    "missionId": "c2w-mission57",
+    "revision": "r1",
+    "sha256": "d4875a7933e8e6d55fb623134989139a5432910681c06811fe65e8b3c2a82dc5"
+   },
+   {
+    "missionId": "c2w-mission58",
+    "revision": "r1",
+    "sha256": "6999834a52da8de436d5748a9e758f899db1da7736de88471fcf4cad8fc2c2d9"
+   },
+   {
+    "missionId": "c2w-mission59",
+    "revision": "r1",
+    "sha256": "a54bb02305deb11805ab0c8e43d266c23db1fad7069def647f0598f7454fab8b"
+   },
+   {
+    "missionId": "c2w-mission60",
+    "revision": "r1",
+    "sha256": "ea456f86c49527ec5fca95b4eaf2702cd443d1e3fb54100f3ac2fc977e60dd0d"
+   }
+  ]
+ }
+}

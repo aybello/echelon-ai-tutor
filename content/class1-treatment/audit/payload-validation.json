@@ -1,0 +1,22 @@
+{
+  "inputCount": 500,
+  "waterCount": 250,
+  "wastewaterCount": 250,
+  "answerPositions": {
+    "0": 130,
+    "1": 126,
+    "2": 123,
+    "3": 121
+  },
+  "questionRanges": {
+    "water": [
+      2001,
+      2250
+    ],
+    "wastewater": [
+      2001,
+      2250
+    ]
+  },
+  "structuralValidation": "passed"
+}

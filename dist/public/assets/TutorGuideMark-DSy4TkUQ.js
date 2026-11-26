@@ -1,1 +1,0 @@
-import{j as e}from"./vendor-trpc-H5A0iCft.js";import{m as i,n}from"./vendor-utils-CSflWU_r.js";function m({size:r=18,color:o="currentColor",mode:t="tutor",className:s}){const a=t==="analysis"?i:n;return e.jsx(a,{"aria-hidden":"true",className:s,color:o,focusable:"false",size:r,strokeWidth:2.15})}export{m as T};

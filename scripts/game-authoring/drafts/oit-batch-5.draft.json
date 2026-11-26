@@ -1,0 +1,3662 @@
+{
+ "format": "interactive-overlay-v1",
+ "overlayId": "og-oit-5",
+ "scope": "Unreviewed draft: original game activities for oit: 165 items from authoring tables.",
+ "additions": [
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0001",
+    "prompt": "One gallon of water weighs about 8.34 pounds.",
+    "correctAnswer": true,
+    "explanation": "A commonly used value for the weight of a gallon of water is 8.34 pounds.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0002",
+    "prompt": "One gallon of water weighs about 1 pound.",
+    "correctAnswer": false,
+    "explanation": "A gallon of water weighs about 8.34 pounds.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0003",
+    "prompt": "A percent means parts per hundred.",
+    "correctAnswer": true,
+    "explanation": "Percent is a ratio out of 100.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0004",
+    "prompt": "Ten percent of a number is found by dividing it by 10.",
+    "correctAnswer": true,
+    "explanation": "Ten percent is one tenth.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0005",
+    "prompt": "A decimal point shifts one place to the left when dividing by 10.",
+    "correctAnswer": true,
+    "explanation": "Dividing by 10 moves the decimal one place left.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0006",
+    "prompt": "A decimal point shifts one place to the left when multiplying by 10.",
+    "correctAnswer": false,
+    "explanation": "Multiplying by 10 moves the decimal one place to the right.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0007",
+    "prompt": "The area of a rectangle is length times width.",
+    "correctAnswer": true,
+    "explanation": "Area for a rectangle equals length multiplied by width.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0008",
+    "prompt": "The area of a rectangle is length plus width.",
+    "correctAnswer": false,
+    "explanation": "Area is length multiplied by width, not added.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0009",
+    "prompt": "The volume of a rectangular tank is length times width times depth.",
+    "correctAnswer": true,
+    "explanation": "Volume equals the product of the three dimensions.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0010",
+    "prompt": "Rounding a number to the nearest whole number changes 4.6 to 5.",
+    "correctAnswer": true,
+    "explanation": "Values of .5 or more round up.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0011",
+    "prompt": "A mg/L reading is about the same as parts per million for water.",
+    "correctAnswer": true,
+    "explanation": "For dilute water solutions, one mg/L is close to one ppm.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0012",
+    "prompt": "A mg/L reading is about the same as parts per billion for water.",
+    "correctAnswer": false,
+    "explanation": "One mg/L is about one ppm, and one ppb is about one microgram per liter.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0013",
+    "prompt": "The average of a set of readings is found by adding them and dividing by the count.",
+    "correctAnswer": true,
+    "explanation": "That is the arithmetic mean.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0014",
+    "prompt": "The average of a set of readings is found by adding them and dividing by the largest value.",
+    "correctAnswer": false,
+    "explanation": "The average divides the sum by the number of readings.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0015",
+    "prompt": "The volume of a cylindrical tank uses pi times radius squared times height.",
+    "correctAnswer": true,
+    "explanation": "A cylinder's volume is the base area times height.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0016",
+    "prompt": "The volume of a cylindrical tank uses pi times diameter times height.",
+    "correctAnswer": false,
+    "explanation": "The formula uses radius squared, not diameter.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0017",
+    "prompt": "A flow rate in gallons per minute can be converted to gallons per day by multiplying by 1,440.",
+    "correctAnswer": true,
+    "explanation": "There are 1,440 minutes in a day.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0018",
+    "prompt": "A flow rate in gallons per minute can be converted to gallons per day by multiplying by 24.",
+    "correctAnswer": false,
+    "explanation": "Multiplying by 24 gives gallons per hour from gallons per minute only if minutes were hours. Use 1,440 minutes per day.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0019",
+    "prompt": "A graph with time on one axis can show how a reading changes over time.",
+    "correctAnswer": true,
+    "explanation": "Time-based graphs show trends.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0020",
+    "prompt": "A sample's pH is found by tasting it.",
+    "correctAnswer": false,
+    "explanation": "pH is measured with a meter or test method, never by tasting.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0021",
+    "prompt": "Doubling the radius of a round tank multiplies its base area by four.",
+    "correctAnswer": true,
+    "explanation": "Area depends on radius squared.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0022",
+    "prompt": "Doubling the radius of a round tank doubles its base area.",
+    "correctAnswer": false,
+    "explanation": "Area depends on radius squared, so it is multiplied by four.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0023",
+    "prompt": "A pump moving a steady gallons per minute fills a larger tank in more time than a smaller one.",
+    "correctAnswer": true,
+    "explanation": "More volume at the same flow takes more time.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0024",
+    "prompt": "A pump moving a steady gallons per minute fills a larger tank in less time than a smaller one.",
+    "correctAnswer": false,
+    "explanation": "More volume at the same flow takes more time.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0025",
+    "prompt": "A percent solution of 1 percent has about 10,000 mg/L of the substance.",
+    "correctAnswer": true,
+    "explanation": "One percent is one part in 100, which equals 10,000 mg/L.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0026",
+    "prompt": "A percent solution of 1 percent has about 100 mg/L of the substance.",
+    "correctAnswer": false,
+    "explanation": "One percent is 10,000 mg/L.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0027",
+    "prompt": "Reading a meter from a different angle can add error through parallax.",
+    "correctAnswer": true,
+    "explanation": "Reading at an angle can shift the apparent value.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0028",
+    "prompt": "Significant figures show how precisely a number was measured.",
+    "correctAnswer": true,
+    "explanation": "They communicate the precision of a measurement.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0029",
+    "prompt": "Writing ten digits from a calculator makes a rough measurement precise.",
+    "correctAnswer": false,
+    "explanation": "Results should reflect the precision of the measurements used.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0030",
+    "prompt": "Unit conversion factors multiply to change units without changing the value.",
+    "correctAnswer": true,
+    "explanation": "A conversion factor equals one, so it changes the units but not the amount.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0031",
+    "prompt": "Rounding 4.4 to the nearest whole number gives 5.",
+    "correctAnswer": false,
+    "explanation": "Values below .5 round down, so 4.4 rounds to 4.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0032",
+    "prompt": "A tape measure is used to check whether a surface is level.",
+    "correctAnswer": false,
+    "explanation": "A level checks for flatness. A tape measure measures length.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0033",
+    "prompt": "There are 60 minutes in a day.",
+    "correctAnswer": false,
+    "explanation": "There are 1,440 minutes in a day.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0034",
+    "prompt": "The median is the highest value in a set of readings.",
+    "correctAnswer": false,
+    "explanation": "The median is the middle value.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0035",
+    "prompt": "A service line is a large main that feeds a whole neighborhood.",
+    "correctAnswer": false,
+    "explanation": "A service line connects a main to a customer. Mains are the large pipes.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0036",
+    "prompt": "A spike sample is a sample left untouched with no additions.",
+    "correctAnswer": false,
+    "explanation": "A spike has a known amount of the substance added to check recovery.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0037",
+    "prompt": "A larger radius gives a smaller tank volume at the same depth.",
+    "correctAnswer": false,
+    "explanation": "Volume increases with radius, so a larger radius gives a larger volume.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-rapid-swipe-0038",
+    "prompt": "A blank is expected to show a high reading in a clean test.",
+    "correctAnswer": false,
+    "explanation": "A clean blank should read near zero.",
+    "mode": "rapid-swipe"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-speed-match-0039",
+    "prompt": "Match each shape to its area or volume idea.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rectangle area",
+      "right": "Length times width"
+     },
+     {
+      "id": "p2",
+      "left": "Rectangular tank volume",
+      "right": "Length times width times depth"
+     },
+     {
+      "id": "p3",
+      "left": "Circle area",
+      "right": "Pi times radius squared"
+     },
+     {
+      "id": "p4",
+      "left": "Cylinder volume",
+      "right": "Base area times height"
+     },
+     {
+      "id": "p5",
+      "left": "Triangle area",
+      "right": "Half of base times height"
+     },
+     {
+      "id": "p6",
+      "left": "Cube volume",
+      "right": "Side times side times side"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-speed-match-0040",
+    "prompt": "Match each conversion to its value.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Minutes in a day",
+      "right": "1,440"
+     },
+     {
+      "id": "p2",
+      "left": "Hours in a day",
+      "right": "24"
+     },
+     {
+      "id": "p3",
+      "left": "Pounds in a gallon of water",
+      "right": "About 8.34"
+     },
+     {
+      "id": "p4",
+      "left": "Inches in a foot",
+      "right": "12"
+     },
+     {
+      "id": "p5",
+      "left": "Feet in a yard",
+      "right": "3"
+     },
+     {
+      "id": "p6",
+      "left": "Seconds in a minute",
+      "right": "60"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-speed-match-0041",
+    "prompt": "Match each unit to the kind of quantity.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Gallon",
+      "right": "Volume"
+     },
+     {
+      "id": "p2",
+      "left": "Pound",
+      "right": "Weight"
+     },
+     {
+      "id": "p3",
+      "left": "Foot",
+      "right": "Length"
+     },
+     {
+      "id": "p4",
+      "left": "Minute",
+      "right": "Time"
+     },
+     {
+      "id": "p5",
+      "left": "Square foot",
+      "right": "Area"
+     },
+     {
+      "id": "p6",
+      "left": "Gallons per minute",
+      "right": "Flow rate"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-speed-match-0042",
+    "prompt": "Match each hand tool to its job.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Pipe wrench",
+      "right": "Turns pipe fittings"
+     },
+     {
+      "id": "p2",
+      "left": "Screwdriver",
+      "right": "Drives screws"
+     },
+     {
+      "id": "p3",
+      "left": "Hammer",
+      "right": "Drives nails"
+     },
+     {
+      "id": "p4",
+      "left": "Tape measure",
+      "right": "Measures length"
+     },
+     {
+      "id": "p5",
+      "left": "Level",
+      "right": "Checks if a surface is flat"
+     },
+     {
+      "id": "p6",
+      "left": "Pliers",
+      "right": "Grips and bends"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-speed-match-0043",
+    "prompt": "Match each math term to its meaning.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Average",
+      "right": "Sum divided by count"
+     },
+     {
+      "id": "p2",
+      "left": "Median",
+      "right": "Middle value"
+     },
+     {
+      "id": "p3",
+      "left": "Range",
+      "right": "Highest minus lowest"
+     },
+     {
+      "id": "p4",
+      "left": "Percent",
+      "right": "Parts per hundred"
+     },
+     {
+      "id": "p5",
+      "left": "Ratio",
+      "right": "Comparison of two numbers"
+     },
+     {
+      "id": "p6",
+      "left": "Rate",
+      "right": "Amount per unit of time"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-speed-match-0044",
+    "prompt": "Match each concentration unit to its meaning.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "mg/L",
+      "right": "Milligrams per liter"
+     },
+     {
+      "id": "p2",
+      "left": "ppm",
+      "right": "Parts per million"
+     },
+     {
+      "id": "p3",
+      "left": "ppb",
+      "right": "Parts per billion"
+     },
+     {
+      "id": "p4",
+      "left": "Percent",
+      "right": "Parts per hundred"
+     },
+     {
+      "id": "p5",
+      "left": "Grains per gallon",
+      "right": "Hardness unit"
+     },
+     {
+      "id": "p6",
+      "left": "NTU",
+      "right": "Turbidity unit"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-speed-match-0045",
+    "prompt": "Match each lab quality term to its meaning.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Accuracy",
+      "right": "Closeness to the true value"
+     },
+     {
+      "id": "p2",
+      "left": "Precision",
+      "right": "Closeness of repeated results"
+     },
+     {
+      "id": "p3",
+      "left": "Blank",
+      "right": "Contamination check"
+     },
+     {
+      "id": "p4",
+      "left": "Standard",
+      "right": "Known reference solution"
+     },
+     {
+      "id": "p5",
+      "left": "Duplicate",
+      "right": "Repeat of a sample"
+     },
+     {
+      "id": "p6",
+      "left": "Spike",
+      "right": "Known amount added to a sample"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-speed-match-0046",
+    "prompt": "Match each piece of distribution equipment to its job.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Main",
+      "right": "Large pipe carrying water"
+     },
+     {
+      "id": "p2",
+      "left": "Service line",
+      "right": "Pipe from the main to a customer"
+     },
+     {
+      "id": "p3",
+      "left": "Curb stop",
+      "right": "Shut-off for a service line"
+     },
+     {
+      "id": "p4",
+      "left": "Fire hydrant",
+      "right": "Fire supply and flushing point"
+     },
+     {
+      "id": "p5",
+      "left": "Pressure reducing valve",
+      "right": "Lowers downstream pressure"
+     },
+     {
+      "id": "p6",
+      "left": "Storage tank",
+      "right": "Holds water for demand"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-speed-match-0047",
+    "prompt": "Match each type of record to what it holds.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Chemical inventory",
+      "right": "Amounts on hand"
+     },
+     {
+      "id": "p2",
+      "left": "Flow record",
+      "right": "Volumes treated or delivered"
+     },
+     {
+      "id": "p3",
+      "left": "Complaint log",
+      "right": "Customer concerns"
+     },
+     {
+      "id": "p4",
+      "left": "Training record",
+      "right": "Staff learning and skills"
+     },
+     {
+      "id": "p5",
+      "left": "Equipment log",
+      "right": "Service history"
+     },
+     {
+      "id": "p6",
+      "left": "Sample log",
+      "right": "Collection details"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-speed-match-0048",
+    "prompt": "Match each hazard to a protection method.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Noise",
+      "right": "Hearing protection"
+     },
+     {
+      "id": "p2",
+      "left": "Dust",
+      "right": "Respirator"
+     },
+     {
+      "id": "p3",
+      "left": "Heat",
+      "right": "Rest and water"
+     },
+     {
+      "id": "p4",
+      "left": "Cold",
+      "right": "Warm clothing"
+     },
+     {
+      "id": "p5",
+      "left": "Falling objects",
+      "right": "Hard hat"
+     },
+     {
+      "id": "p6",
+      "left": "Sharp edges",
+      "right": "Gloves"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-speed-match-0049",
+    "prompt": "Match each calculation to the quantity it finds.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Volume divided by flow",
+      "right": "Detention time"
+     },
+     {
+      "id": "p2",
+      "left": "Flow divided by area",
+      "right": "Loading or overflow rate"
+     },
+     {
+      "id": "p3",
+      "left": "Dose times flow times a factor",
+      "right": "Pounds of chemical"
+     },
+     {
+      "id": "p4",
+      "left": "Concentration times time",
+      "right": "Ct"
+     },
+     {
+      "id": "p5",
+      "left": "Sum divided by count",
+      "right": "Average"
+     },
+     {
+      "id": "p6",
+      "left": "Length times width times depth",
+      "right": "Tank volume"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-speed-match-0050",
+    "prompt": "Match each unit mix-up to its effect.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Using radius for diameter",
+      "right": "Wrong area by a factor"
+     },
+     {
+      "id": "p2",
+      "left": "Mixing mg/L and ppb",
+      "right": "Wrong concentration by 1,000"
+     },
+     {
+      "id": "p3",
+      "left": "Forgetting a flow unit",
+      "right": "Wrong detention time"
+     },
+     {
+      "id": "p4",
+      "left": "Rounding too early",
+      "right": "Added error"
+     },
+     {
+      "id": "p5",
+      "left": "Reading the wrong scale",
+      "right": "Wrong value recorded"
+     },
+     {
+      "id": "p6",
+      "left": "Skipping a unit conversion",
+      "right": "Result in the wrong units"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-speed-match-0051",
+    "prompt": "Match each instrument problem to a likely check.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Drifting reading",
+      "right": "Recalibrate"
+     },
+     {
+      "id": "p2",
+      "left": "No reading",
+      "right": "Check power and connections"
+     },
+     {
+      "id": "p3",
+      "left": "Noisy reading",
+      "right": "Check for air or fouling"
+     },
+     {
+      "id": "p4",
+      "left": "Slow response",
+      "right": "Check the probe condition"
+     },
+     {
+      "id": "p5",
+      "left": "Reading off from the lab",
+      "right": "Compare with a standard"
+     },
+     {
+      "id": "p6",
+      "left": "Unstable zero",
+      "right": "Check reference and cleanliness"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-speed-match-0052",
+    "prompt": "Match each treatment issue to a likely adjustment.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Weak floc",
+      "right": "Review coagulant dose and mixing"
+     },
+     {
+      "id": "p2",
+      "left": "High filter turbidity",
+      "right": "Check coagulation and filter condition"
+     },
+     {
+      "id": "p3",
+      "left": "Low residual",
+      "right": "Review dose and demand"
+     },
+     {
+      "id": "p4",
+      "left": "High pH after lime",
+      "right": "Reduce the lime feed"
+     },
+     {
+      "id": "p5",
+      "left": "Taste and odor",
+      "right": "Consider carbon"
+     },
+     {
+      "id": "p6",
+      "left": "Corrosive water",
+      "right": "Review pH and alkalinity"
+     }
+    ],
+    "mode": "speed-match"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0053",
+    "prompt": "Which is not a unit of length or distance?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Meter"
+     },
+     {
+      "id": "option-2",
+      "label": "Mile"
+     },
+     {
+      "id": "option-3",
+      "label": "Foot"
+     },
+     {
+      "id": "option-4",
+      "label": "Cup"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Cup does not measure length.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0054",
+    "prompt": "Which is not a unit of length or distance?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Ton"
+     },
+     {
+      "id": "option-2",
+      "label": "Foot"
+     },
+     {
+      "id": "option-3",
+      "label": "Inch"
+     },
+     {
+      "id": "option-4",
+      "label": "Yard"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Ton does not measure length.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0055",
+    "prompt": "Which is not a unit of length or distance?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Mile"
+     },
+     {
+      "id": "option-2",
+      "label": "Yard"
+     },
+     {
+      "id": "option-3",
+      "label": "Day"
+     },
+     {
+      "id": "option-4",
+      "label": "Meter"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Day does not measure length.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0056",
+    "prompt": "Which is not a unit of length or distance?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Inch"
+     },
+     {
+      "id": "option-2",
+      "label": "Yard"
+     },
+     {
+      "id": "option-3",
+      "label": "Meter"
+     },
+     {
+      "id": "option-4",
+      "label": "Cup"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Cup does not measure length.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0057",
+    "prompt": "Which is not a unit of length or distance?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Yard"
+     },
+     {
+      "id": "option-2",
+      "label": "Foot"
+     },
+     {
+      "id": "option-3",
+      "label": "Ton"
+     },
+     {
+      "id": "option-4",
+      "label": "Meter"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Ton does not measure length.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0058",
+    "prompt": "Which is not a unit of length or distance?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Day"
+     },
+     {
+      "id": "option-2",
+      "label": "Meter"
+     },
+     {
+      "id": "option-3",
+      "label": "Foot"
+     },
+     {
+      "id": "option-4",
+      "label": "Inch"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Day does not measure length.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0059",
+    "prompt": "Which is not a hand tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pump"
+     },
+     {
+      "id": "option-2",
+      "label": "Screwdriver"
+     },
+     {
+      "id": "option-3",
+      "label": "Level"
+     },
+     {
+      "id": "option-4",
+      "label": "Pliers"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Pump is not a hand tool.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0060",
+    "prompt": "Which is not a hand tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Hammer"
+     },
+     {
+      "id": "option-2",
+      "label": "Pliers"
+     },
+     {
+      "id": "option-3",
+      "label": "Valve"
+     },
+     {
+      "id": "option-4",
+      "label": "Screwdriver"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Valve is not a hand tool.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0061",
+    "prompt": "Which is not a hand tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Screwdriver"
+     },
+     {
+      "id": "option-2",
+      "label": "Wrench"
+     },
+     {
+      "id": "option-3",
+      "label": "Tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Level"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Tank is not a hand tool.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0062",
+    "prompt": "Which is not a hand tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Hammer"
+     },
+     {
+      "id": "option-2",
+      "label": "Pump"
+     },
+     {
+      "id": "option-3",
+      "label": "Wrench"
+     },
+     {
+      "id": "option-4",
+      "label": "Level"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Pump is not a hand tool.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0063",
+    "prompt": "Which is not a hand tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pliers"
+     },
+     {
+      "id": "option-2",
+      "label": "Valve"
+     },
+     {
+      "id": "option-3",
+      "label": "Hammer"
+     },
+     {
+      "id": "option-4",
+      "label": "Level"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Valve is not a hand tool.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0064",
+    "prompt": "Which is not a hand tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Screwdriver"
+     },
+     {
+      "id": "option-2",
+      "label": "Hammer"
+     },
+     {
+      "id": "option-3",
+      "label": "Tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Level"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Tank is not a hand tool.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0065",
+    "prompt": "Which is not a unit of volume?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Liter"
+     },
+     {
+      "id": "option-2",
+      "label": "Pint"
+     },
+     {
+      "id": "option-3",
+      "label": "Pound"
+     },
+     {
+      "id": "option-4",
+      "label": "Cubic foot"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Pound does not measure volume.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0066",
+    "prompt": "Which is not a unit of volume?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Cubic foot"
+     },
+     {
+      "id": "option-2",
+      "label": "Quart"
+     },
+     {
+      "id": "option-3",
+      "label": "Foot"
+     },
+     {
+      "id": "option-4",
+      "label": "Liter"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Foot does not measure volume.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0067",
+    "prompt": "Which is not a unit of volume?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Cubic foot"
+     },
+     {
+      "id": "option-2",
+      "label": "Minute"
+     },
+     {
+      "id": "option-3",
+      "label": "Quart"
+     },
+     {
+      "id": "option-4",
+      "label": "Gallon"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Minute does not measure volume.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0068",
+    "prompt": "Which is not a unit of volume?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Liter"
+     },
+     {
+      "id": "option-2",
+      "label": "Quart"
+     },
+     {
+      "id": "option-3",
+      "label": "Gallon"
+     },
+     {
+      "id": "option-4",
+      "label": "Pound"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Pound does not measure volume.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0069",
+    "prompt": "Which is not a unit of volume?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Cubic foot"
+     },
+     {
+      "id": "option-2",
+      "label": "Foot"
+     },
+     {
+      "id": "option-3",
+      "label": "Liter"
+     },
+     {
+      "id": "option-4",
+      "label": "Gallon"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Foot does not measure volume.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0070",
+    "prompt": "Which is not a unit of volume?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Cubic foot"
+     },
+     {
+      "id": "option-2",
+      "label": "Gallon"
+     },
+     {
+      "id": "option-3",
+      "label": "Minute"
+     },
+     {
+      "id": "option-4",
+      "label": "Pint"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Minute does not measure volume.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0071",
+    "prompt": "Which is not a measure of the middle or center of data?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Median"
+     },
+     {
+      "id": "option-2",
+      "label": "Mode"
+     },
+     {
+      "id": "option-3",
+      "label": "Mean"
+     },
+     {
+      "id": "option-4",
+      "label": "Range"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Range describes spread rather than the center.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0072",
+    "prompt": "Which is not a measure of the middle or center of data?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Spread"
+     },
+     {
+      "id": "option-2",
+      "label": "Mode"
+     },
+     {
+      "id": "option-3",
+      "label": "Average"
+     },
+     {
+      "id": "option-4",
+      "label": "Mean"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Spread describes spread rather than the center.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0073",
+    "prompt": "Which is not a measure of the middle or center of data?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Mean"
+     },
+     {
+      "id": "option-2",
+      "label": "Median"
+     },
+     {
+      "id": "option-3",
+      "label": "Range"
+     },
+     {
+      "id": "option-4",
+      "label": "Average"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Range describes spread rather than the center.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0074",
+    "prompt": "Which is not a measure of the middle or center of data?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Average"
+     },
+     {
+      "id": "option-2",
+      "label": "Spread"
+     },
+     {
+      "id": "option-3",
+      "label": "Mode"
+     },
+     {
+      "id": "option-4",
+      "label": "Median"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Spread describes spread rather than the center.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0075",
+    "prompt": "Which is not a piece of distribution infrastructure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Main"
+     },
+     {
+      "id": "option-2",
+      "label": "Service line"
+     },
+     {
+      "id": "option-3",
+      "label": "Storage tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Jar"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Jar is lab glassware, not distribution infrastructure.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0076",
+    "prompt": "Which is not a piece of distribution infrastructure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Curb stop"
+     },
+     {
+      "id": "option-2",
+      "label": "Hydrant"
+     },
+     {
+      "id": "option-3",
+      "label": "Beaker"
+     },
+     {
+      "id": "option-4",
+      "label": "Service line"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Beaker is lab glassware, not distribution infrastructure.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0077",
+    "prompt": "Which is not a piece of distribution infrastructure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Burette"
+     },
+     {
+      "id": "option-2",
+      "label": "Service line"
+     },
+     {
+      "id": "option-3",
+      "label": "Storage tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Curb stop"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Burette is lab glassware, not distribution infrastructure.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0078",
+    "prompt": "Which is not a piece of distribution infrastructure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Hydrant"
+     },
+     {
+      "id": "option-2",
+      "label": "Main"
+     },
+     {
+      "id": "option-3",
+      "label": "Jar"
+     },
+     {
+      "id": "option-4",
+      "label": "Curb stop"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Jar is lab glassware, not distribution infrastructure.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0079",
+    "prompt": "Which is not a piece of distribution infrastructure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Curb stop"
+     },
+     {
+      "id": "option-2",
+      "label": "Storage tank"
+     },
+     {
+      "id": "option-3",
+      "label": "Beaker"
+     },
+     {
+      "id": "option-4",
+      "label": "Hydrant"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Beaker is lab glassware, not distribution infrastructure.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0080",
+    "prompt": "Which is not a piece of distribution infrastructure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Hydrant"
+     },
+     {
+      "id": "option-2",
+      "label": "Storage tank"
+     },
+     {
+      "id": "option-3",
+      "label": "Burette"
+     },
+     {
+      "id": "option-4",
+      "label": "Service line"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Burette is lab glassware, not distribution infrastructure.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0081",
+    "prompt": "Which is not a quality control sample type?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Spike"
+     },
+     {
+      "id": "option-2",
+      "label": "Duplicate"
+     },
+     {
+      "id": "option-3",
+      "label": "Standard"
+     },
+     {
+      "id": "option-4",
+      "label": "Backwash"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Backwash is not a quality control sample type.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0082",
+    "prompt": "Which is not a quality control sample type?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Grab bag"
+     },
+     {
+      "id": "option-2",
+      "label": "Blank"
+     },
+     {
+      "id": "option-3",
+      "label": "Standard"
+     },
+     {
+      "id": "option-4",
+      "label": "Duplicate"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Grab bag is not a quality control sample type.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0083",
+    "prompt": "Which is not a quality control sample type?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Spike"
+     },
+     {
+      "id": "option-2",
+      "label": "Duplicate"
+     },
+     {
+      "id": "option-3",
+      "label": "Blank"
+     },
+     {
+      "id": "option-4",
+      "label": "Backwash"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Backwash is not a quality control sample type.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0084",
+    "prompt": "Which is not a source of calculation error?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Reading the wrong scale"
+     },
+     {
+      "id": "option-2",
+      "label": "Using the wrong unit"
+     },
+     {
+      "id": "option-3",
+      "label": "Checking units"
+     },
+     {
+      "id": "option-4",
+      "label": "Skipping a conversion"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Checking units helps prevent errors.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0085",
+    "prompt": "Which is not a source of calculation error?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Writing steps down"
+     },
+     {
+      "id": "option-2",
+      "label": "Rounding too early"
+     },
+     {
+      "id": "option-3",
+      "label": "Reading the wrong scale"
+     },
+     {
+      "id": "option-4",
+      "label": "Skipping a conversion"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Writing steps down helps prevent errors.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0086",
+    "prompt": "Which is not a source of calculation error?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Skipping a conversion"
+     },
+     {
+      "id": "option-2",
+      "label": "Rounding too early"
+     },
+     {
+      "id": "option-3",
+      "label": "Checking units"
+     },
+     {
+      "id": "option-4",
+      "label": "Using the wrong unit"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Checking units helps prevent errors.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0087",
+    "prompt": "Which is not a source of calculation error?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Reading the wrong scale"
+     },
+     {
+      "id": "option-2",
+      "label": "Writing steps down"
+     },
+     {
+      "id": "option-3",
+      "label": "Rounding too early"
+     },
+     {
+      "id": "option-4",
+      "label": "Using the wrong unit"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Writing steps down helps prevent errors.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0088",
+    "prompt": "Which is not a sign that an instrument needs attention?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "No reading"
+     },
+     {
+      "id": "option-2",
+      "label": "Drifting readings"
+     },
+     {
+      "id": "option-3",
+      "label": "Noisy readings"
+     },
+     {
+      "id": "option-4",
+      "label": "Stable readings"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Stable readings suggests the instrument is working well.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0089",
+    "prompt": "Which is not a sign that an instrument needs attention?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Matching lab"
+     },
+     {
+      "id": "option-2",
+      "label": "No reading"
+     },
+     {
+      "id": "option-3",
+      "label": "Slow response"
+     },
+     {
+      "id": "option-4",
+      "label": "Drifting readings"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Matching lab suggests the instrument is working well.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-odd-one-out-0090",
+    "prompt": "Which is not a sign that an instrument needs attention?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Slow response"
+     },
+     {
+      "id": "option-2",
+      "label": "Noisy readings"
+     },
+     {
+      "id": "option-3",
+      "label": "Drifting readings"
+     },
+     {
+      "id": "option-4",
+      "label": "Stable readings"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Stable readings suggests the instrument is working well.",
+    "mode": "odd-one-out"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0091",
+    "prompt": "In solving a plant math problem, which step comes earlier?",
+    "options": [
+     "Read the problem",
+     "Check the units"
+    ],
+    "correctAnswer": "Read the problem",
+    "explanation": "Understanding the problem comes before calculating and checking. Read the problem comes before Check the units.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0092",
+    "prompt": "In solving a plant math problem, which step comes later?",
+    "options": [
+     "Read the problem",
+     "Do the math"
+    ],
+    "correctAnswer": "Do the math",
+    "explanation": "Understanding the problem comes before calculating and checking. Read the problem comes before Do the math.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0093",
+    "prompt": "In solving a plant math problem, which step comes earlier?",
+    "options": [
+     "Do the math",
+     "Check the units"
+    ],
+    "correctAnswer": "Do the math",
+    "explanation": "Understanding the problem comes before calculating and checking. Do the math comes before Check the units.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0094",
+    "prompt": "In solving a plant math problem, which step comes later?",
+    "options": [
+     "Write the known values",
+     "Do the math"
+    ],
+    "correctAnswer": "Do the math",
+    "explanation": "Understanding the problem comes before calculating and checking. Write the known values comes before Do the math.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0095",
+    "prompt": "In solving a plant math problem, which step comes earlier?",
+    "options": [
+     "Choose the formula",
+     "Write the known values"
+    ],
+    "correctAnswer": "Write the known values",
+    "explanation": "Understanding the problem comes before calculating and checking. Write the known values comes before Choose the formula.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0096",
+    "prompt": "In solving a plant math problem, which step comes later?",
+    "options": [
+     "Do the math",
+     "Choose the formula"
+    ],
+    "correctAnswer": "Do the math",
+    "explanation": "Understanding the problem comes before calculating and checking. Choose the formula comes before Do the math.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0097",
+    "prompt": "In solving a plant math problem, which step comes earlier?",
+    "options": [
+     "Choose the formula",
+     "Check the units"
+    ],
+    "correctAnswer": "Choose the formula",
+    "explanation": "Understanding the problem comes before calculating and checking. Choose the formula comes before Check the units.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-before-after-0098",
+    "prompt": "In solving a plant math problem, which step comes later?",
+    "options": [
+     "Read the problem",
+     "Write the known values"
+    ],
+    "correctAnswer": "Write the known values",
+    "explanation": "Understanding the problem comes before calculating and checking. Read the problem comes before Write the known values.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0099",
+    "prompt": "In taking a meter reading for the log, which step comes earlier?",
+    "options": [
+     "Compare with the last reading",
+     "Check the units"
+    ],
+    "correctAnswer": "Check the units",
+    "explanation": "Reading and checking come before recording and reporting. Check the units comes before Compare with the last reading.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0100",
+    "prompt": "In taking a meter reading for the log, which step comes later?",
+    "options": [
+     "Record it",
+     "Read the meter"
+    ],
+    "correctAnswer": "Record it",
+    "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Record it.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0101",
+    "prompt": "In taking a meter reading for the log, which step comes earlier?",
+    "options": [
+     "Compare with the last reading",
+     "Report anything unusual"
+    ],
+    "correctAnswer": "Compare with the last reading",
+    "explanation": "Reading and checking come before recording and reporting. Compare with the last reading comes before Report anything unusual.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0102",
+    "prompt": "In taking a meter reading for the log, which step comes later?",
+    "options": [
+     "Check the units",
+     "Report anything unusual"
+    ],
+    "correctAnswer": "Report anything unusual",
+    "explanation": "Reading and checking come before recording and reporting. Check the units comes before Report anything unusual.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0103",
+    "prompt": "In taking a meter reading for the log, which step comes earlier?",
+    "options": [
+     "Record it",
+     "Report anything unusual"
+    ],
+    "correctAnswer": "Record it",
+    "explanation": "Reading and checking come before recording and reporting. Record it comes before Report anything unusual.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0104",
+    "prompt": "In taking a meter reading for the log, which step comes later?",
+    "options": [
+     "Read the meter",
+     "Compare with the last reading"
+    ],
+    "correctAnswer": "Compare with the last reading",
+    "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Compare with the last reading.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0105",
+    "prompt": "In taking a meter reading for the log, which step comes earlier?",
+    "options": [
+     "Read the meter",
+     "Check the units"
+    ],
+    "correctAnswer": "Read the meter",
+    "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Check the units.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0106",
+    "prompt": "In taking a meter reading for the log, which step comes later?",
+    "options": [
+     "Record it",
+     "Compare with the last reading"
+    ],
+    "correctAnswer": "Record it",
+    "explanation": "Reading and checking come before recording and reporting. Compare with the last reading comes before Record it.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0107",
+    "prompt": "In taking a meter reading for the log, which step comes earlier?",
+    "options": [
+     "Report anything unusual",
+     "Read the meter"
+    ],
+    "correctAnswer": "Read the meter",
+    "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Report anything unusual.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0108",
+    "prompt": "In taking a meter reading for the log, which step comes later?",
+    "options": [
+     "Check the units",
+     "Record it"
+    ],
+    "correctAnswer": "Record it",
+    "explanation": "Reading and checking come before recording and reporting. Check the units comes before Record it.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0109",
+    "prompt": "In preparing a standard solution, which step comes earlier?",
+    "options": [
+     "Dilute to the mark",
+     "Measure the standard"
+    ],
+    "correctAnswer": "Measure the standard",
+    "explanation": "Preparation comes first and labeling finishes the job. Measure the standard comes before Dilute to the mark.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0110",
+    "prompt": "In preparing a standard solution, which step comes later?",
+    "options": [
+     "Gather clean glassware",
+     "Dilute to the mark"
+    ],
+    "correctAnswer": "Dilute to the mark",
+    "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Dilute to the mark.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0111",
+    "prompt": "In preparing a standard solution, which step comes earlier?",
+    "options": [
+     "Gather clean glassware",
+     "Mix well"
+    ],
+    "correctAnswer": "Gather clean glassware",
+    "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Mix well.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0112",
+    "prompt": "In preparing a standard solution, which step comes later?",
+    "options": [
+     "Label the solution",
+     "Measure the standard"
+    ],
+    "correctAnswer": "Label the solution",
+    "explanation": "Preparation comes first and labeling finishes the job. Measure the standard comes before Label the solution.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0113",
+    "prompt": "In preparing a standard solution, which step comes earlier?",
+    "options": [
+     "Gather clean glassware",
+     "Measure the standard"
+    ],
+    "correctAnswer": "Gather clean glassware",
+    "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Measure the standard.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0114",
+    "prompt": "In preparing a standard solution, which step comes later?",
+    "options": [
+     "Measure the standard",
+     "Mix well"
+    ],
+    "correctAnswer": "Mix well",
+    "explanation": "Preparation comes first and labeling finishes the job. Measure the standard comes before Mix well.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0115",
+    "prompt": "In preparing a standard solution, which step comes earlier?",
+    "options": [
+     "Label the solution",
+     "Gather clean glassware"
+    ],
+    "correctAnswer": "Gather clean glassware",
+    "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Label the solution.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0116",
+    "prompt": "In preparing a standard solution, which step comes later?",
+    "options": [
+     "Mix well",
+     "Label the solution"
+    ],
+    "correctAnswer": "Label the solution",
+    "explanation": "Preparation comes first and labeling finishes the job. Mix well comes before Label the solution.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0117",
+    "prompt": "In preparing a standard solution, which step comes earlier?",
+    "options": [
+     "Mix well",
+     "Dilute to the mark"
+    ],
+    "correctAnswer": "Dilute to the mark",
+    "explanation": "Preparation comes first and labeling finishes the job. Dilute to the mark comes before Mix well.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-before-after-0118",
+    "prompt": "In preparing a standard solution, which step comes later?",
+    "options": [
+     "Label the solution",
+     "Dilute to the mark"
+    ],
+    "correctAnswer": "Label the solution",
+    "explanation": "Preparation comes first and labeling finishes the job. Dilute to the mark comes before Label the solution.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0119",
+    "prompt": "In investigating a customer taste complaint, which step comes earlier?",
+    "options": [
+     "Record the complaint",
+     "Test the sample"
+    ],
+    "correctAnswer": "Record the complaint",
+    "explanation": "Facts are gathered before a response is given. Record the complaint comes before Test the sample.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0120",
+    "prompt": "In investigating a customer taste complaint, which step comes later?",
+    "options": [
+     "Visit and sample",
+     "Test the sample"
+    ],
+    "correctAnswer": "Test the sample",
+    "explanation": "Facts are gathered before a response is given. Visit and sample comes before Test the sample.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0121",
+    "prompt": "In investigating a customer taste complaint, which step comes earlier?",
+    "options": [
+     "Record the complaint",
+     "Compare with the system"
+    ],
+    "correctAnswer": "Record the complaint",
+    "explanation": "Facts are gathered before a response is given. Record the complaint comes before Compare with the system.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0122",
+    "prompt": "In investigating a customer taste complaint, which step comes later?",
+    "options": [
+     "Respond to the customer",
+     "Test the sample"
+    ],
+    "correctAnswer": "Respond to the customer",
+    "explanation": "Facts are gathered before a response is given. Test the sample comes before Respond to the customer.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0123",
+    "prompt": "In investigating a customer taste complaint, which step comes earlier?",
+    "options": [
+     "Respond to the customer",
+     "Record the complaint"
+    ],
+    "correctAnswer": "Record the complaint",
+    "explanation": "Facts are gathered before a response is given. Record the complaint comes before Respond to the customer.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0124",
+    "prompt": "In investigating a customer taste complaint, which step comes later?",
+    "options": [
+     "Respond to the customer",
+     "Visit and sample"
+    ],
+    "correctAnswer": "Respond to the customer",
+    "explanation": "Facts are gathered before a response is given. Visit and sample comes before Respond to the customer.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0125",
+    "prompt": "In investigating a customer taste complaint, which step comes earlier?",
+    "options": [
+     "Respond to the customer",
+     "Compare with the system"
+    ],
+    "correctAnswer": "Compare with the system",
+    "explanation": "Facts are gathered before a response is given. Compare with the system comes before Respond to the customer.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0126",
+    "prompt": "In investigating a customer taste complaint, which step comes later?",
+    "options": [
+     "Compare with the system",
+     "Test the sample"
+    ],
+    "correctAnswer": "Compare with the system",
+    "explanation": "Facts are gathered before a response is given. Test the sample comes before Compare with the system.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0127",
+    "prompt": "In investigating a customer taste complaint, which step comes earlier?",
+    "options": [
+     "Visit and sample",
+     "Compare with the system"
+    ],
+    "correctAnswer": "Visit and sample",
+    "explanation": "Facts are gathered before a response is given. Visit and sample comes before Compare with the system.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0128",
+    "prompt": "In investigating a customer taste complaint, which step comes later?",
+    "options": [
+     "Record the complaint",
+     "Visit and sample"
+    ],
+    "correctAnswer": "Visit and sample",
+    "explanation": "Facts are gathered before a response is given. Record the complaint comes before Visit and sample.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0129",
+    "prompt": "In adjusting a chemical feed by data, which step comes earlier?",
+    "options": [
+     "Wait for results",
+     "Make the change"
+    ],
+    "correctAnswer": "Make the change",
+    "explanation": "Changes follow data review and are checked after a delay. Make the change comes before Wait for results.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0130",
+    "prompt": "In adjusting a chemical feed by data, which step comes later?",
+    "options": [
+     "Review the data",
+     "Make the change"
+    ],
+    "correctAnswer": "Make the change",
+    "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Make the change.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0131",
+    "prompt": "In adjusting a chemical feed by data, which step comes earlier?",
+    "options": [
+     "Make the change",
+     "Check the new data"
+    ],
+    "correctAnswer": "Make the change",
+    "explanation": "Changes follow data review and are checked after a delay. Make the change comes before Check the new data.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0132",
+    "prompt": "In adjusting a chemical feed by data, which step comes later?",
+    "options": [
+     "Review the data",
+     "Wait for results"
+    ],
+    "correctAnswer": "Wait for results",
+    "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Wait for results.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0133",
+    "prompt": "In adjusting a chemical feed by data, which step comes earlier?",
+    "options": [
+     "Review the data",
+     "Pick a small change"
+    ],
+    "correctAnswer": "Review the data",
+    "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Pick a small change.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0134",
+    "prompt": "In adjusting a chemical feed by data, which step comes later?",
+    "options": [
+     "Review the data",
+     "Check the new data"
+    ],
+    "correctAnswer": "Check the new data",
+    "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Check the new data.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0135",
+    "prompt": "In adjusting a chemical feed by data, which step comes earlier?",
+    "options": [
+     "Wait for results",
+     "Pick a small change"
+    ],
+    "correctAnswer": "Pick a small change",
+    "explanation": "Changes follow data review and are checked after a delay. Pick a small change comes before Wait for results.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0136",
+    "prompt": "In adjusting a chemical feed by data, which step comes later?",
+    "options": [
+     "Pick a small change",
+     "Make the change"
+    ],
+    "correctAnswer": "Make the change",
+    "explanation": "Changes follow data review and are checked after a delay. Pick a small change comes before Make the change.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0137",
+    "prompt": "In adjusting a chemical feed by data, which step comes earlier?",
+    "options": [
+     "Wait for results",
+     "Check the new data"
+    ],
+    "correctAnswer": "Wait for results",
+    "explanation": "Changes follow data review and are checked after a delay. Wait for results comes before Check the new data.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-before-after-0138",
+    "prompt": "In adjusting a chemical feed by data, which step comes later?",
+    "options": [
+     "Check the new data",
+     "Pick a small change"
+    ],
+    "correctAnswer": "Check the new data",
+    "explanation": "Changes follow data review and are checked after a delay. Pick a small change comes before Check the new data.",
+    "mode": "before-after"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0139",
+    "prompt": "The radius of a round tank is doubled with the same depth. What happens to the volume of the tank?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Volume depends on radius squared, so it grows.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0140",
+    "prompt": "A pump runs for a longer time at the same flow. What happens to the volume pumped?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Volume equals flow times time.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0141",
+    "prompt": "A reading is recorded in the log at the same value as before. What happens to the trend line slope?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "No change in the value keeps the trend flat.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0142",
+    "prompt": "The length of a tank is reduced with the same width and depth. What happens to the volume of the tank?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Volume equals length times width times depth.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0143",
+    "prompt": "The flow into a basin increases while its volume stays the same. What happens to the detention time?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Volume divided by flow gives a shorter time.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0144",
+    "prompt": "The volume of a basin increases while the flow stays the same. What happens to the detention time?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Volume divided by flow gives a longer time.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0145",
+    "prompt": "The flow rises while the surface area stays the same. What happens to the overflow rate?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Overflow rate is flow divided by area.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0146",
+    "prompt": "The surface area increases while the flow stays the same. What happens to the overflow rate?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Overflow rate is flow divided by area.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0147",
+    "prompt": "Calibration standards are measured with fresh solution. What happens to the reliability of the calibration?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Fresh standards give a better reference.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0148",
+    "prompt": "An old and contaminated standard is used for calibration. What happens to the reliability of the calibration?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "A poor standard gives a poor reference.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0149",
+    "prompt": "Early rounding is used in a multi step calculation. What happens to the error in the final answer?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Rounding early adds error that carries through.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0150",
+    "prompt": "The wrong unit conversion is used in a calculation. What happens to the reliability of the answer?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "The result may be off by a large factor.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0151",
+    "prompt": "A meter is read at an angle. What happens to the accuracy of the reading?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Parallax can shift the apparent reading.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0152",
+    "prompt": "Duplicate samples agree closely. What happens to confidence in the repeatability of results?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Close agreement suggests good precision.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0153",
+    "prompt": "A blank shows a high reading. What happens to confidence that the test is free of contamination?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "A high blank points to contamination in the method or supplies.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0154",
+    "prompt": "A spike recovers close to the known amount added. What happens to confidence in the method accuracy?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Good recovery suggests the method is accurate.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0155",
+    "prompt": "The weight of chemical fed per day stays the same while flow doubles. What happens to the dose in mg/L?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "The same weight spread over more water gives a lower concentration.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-cause-effect-0156",
+    "prompt": "The concentration of a feed solution is doubled at the same feed pump setting. What happens to the dose delivered?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A stronger solution delivers more chemical per volume fed.",
+    "mode": "cause-effect"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0157",
+    "prompt": "Which statement about tank math is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Volume uses length times width times depth"
+     },
+     {
+      "id": "option-2",
+      "label": "Larger tanks hold more water"
+     },
+     {
+      "id": "option-3",
+      "label": "Volume equals length plus width"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Volume multiplies the dimensions. It does not add them.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0158",
+    "prompt": "Which statement about units is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A foot is a volume"
+     },
+     {
+      "id": "option-2",
+      "label": "A foot measures length"
+     },
+     {
+      "id": "option-3",
+      "label": "A pound measures weight"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A gallon measures volume, not length.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0159",
+    "prompt": "Which statement about reading meters is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Write down the units"
+     },
+     {
+      "id": "option-2",
+      "label": "Report unusual values"
+     },
+     {
+      "id": "option-3",
+      "label": "Skip the units"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Units matter, and should be written with the reading.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0160",
+    "prompt": "Which statement about averages is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "The range is highest minus lowest"
+     },
+     {
+      "id": "option-2",
+      "label": "Divide by the biggest value"
+     },
+     {
+      "id": "option-3",
+      "label": "Add readings then divide by the count"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "An average divides the sum by the number of readings.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0161",
+    "prompt": "Which statement about quality control is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A blank checks for contamination"
+     },
+     {
+      "id": "option-2",
+      "label": "A spike checks recovery"
+     },
+     {
+      "id": "option-3",
+      "label": "A high blank is fine"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "A high blank suggests contamination and needs follow-up.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0162",
+    "prompt": "Which statement about concentration units is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "mg/L is about ppm in water"
+     },
+     {
+      "id": "option-2",
+      "label": "Percent is parts per hundred"
+     },
+     {
+      "id": "option-3",
+      "label": "mg/L equals ppb"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "mg/L is about ppm. ppb is a thousand times smaller.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0163",
+    "prompt": "Which statement about calculations is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Match precision to the measurement"
+     },
+     {
+      "id": "option-2",
+      "label": "Round early to be exact"
+     },
+     {
+      "id": "option-3",
+      "label": "Keep track of units"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Rounding early adds error to later steps.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0164",
+    "prompt": "Which statement about areas is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Doubling radius doubles area"
+     },
+     {
+      "id": "option-2",
+      "label": "Doubling radius multiplies area by four"
+     },
+     {
+      "id": "option-3",
+      "label": "Area uses radius squared"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Area depends on radius squared, so doubling the radius gives four times the area.",
+    "mode": "tap-the-flaw"
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b5-tap-the-flaw-0165",
+    "prompt": "Which statement about instruments is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Noise may point to fouling"
+     },
+     {
+      "id": "option-2",
+      "label": "Drift is a sign of quality"
+     },
+     {
+      "id": "option-3",
+      "label": "Drift may call for recalibration"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Drift is a sign the instrument may need attention.",
+    "mode": "tap-the-flaw"
+   }
+  }
+ ],
+ "replacements": []
+}

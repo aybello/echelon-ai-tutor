@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 104,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Stated function of RAS (returning settled microorganisms from secondary sedimentation to the aeration/bioreactor tank) is directly traceable to the cited Ontario design guideline source record, which describes secondary sedimentation returning microorganisms to the bioreactor and RAS recirculation from final sedimentation to aeration or reaeration tanks.",
+        "Jurisdiction and regulatory scope are accurate and limited to Ontario Ministry of the Environment design guidance without importing non-Ontario or non-wastewater regulatory claims.",
+        "Exactly one option is correct: the other options describe grit removal, chemical oxygen addition, and pH adjustment, which are distinct processes and not functions of RAS, while remaining plausible-sounding and not normalizing unsafe operation or omitted required actions.",
+        "The learning objective—recognizing the primary function of RAS in an activated sludge process—is foundational and appropriate for an Ontario OIT learner and explicitly identified as such in the source record notes.",
+        "The explanation accurately reflects the source passage and does not introduce universal performance claims, design criteria, or process-control instructions beyond the basic functional description of RAS."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

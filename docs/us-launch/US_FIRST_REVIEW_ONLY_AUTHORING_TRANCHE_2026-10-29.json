@@ -1,0 +1,142 @@
+{
+  "generatedAtUtc": "2026-10-30T01:13:00Z",
+  "purpose": "First review-only authoring tranche. No import, activation, learner access, or release.",
+  "perBankCandidateCount": 25,
+  "selected": [
+    {
+      "id": "la-water-distribution",
+      "stateCode": "LA",
+      "stateName": "Louisiana",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/la-water-distribution.md",
+      "sha256": "4770dc2b09858120cc855704c27ec8017ef06bd22add5970ada7bede54c12657",
+      "bankRecommendation": null
+    },
+    {
+      "id": "nd-water-distribution",
+      "stateCode": "ND",
+      "stateName": "North Dakota",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/nd-water-distribution.md",
+      "sha256": "5f56637fecb3e94fabe264b5f25c687be572436a0ae321823492a2093792a87d",
+      "bankRecommendation": null
+    },
+    {
+      "id": "nh-wastewater-collection",
+      "stateCode": "NH",
+      "stateName": "New Hampshire",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/nh-wastewater-collection.md",
+      "sha256": "029f4bbdd9698c852a113081173c737d596256ffc31076c2e62f3f440b7167d8",
+      "bankRecommendation": "Do not create an NH-only bank. The evidence supports one shared regional credential identity, proposed only for future duplicate/overlap validation as `newea-collection-systems-grade-1`. Its scope must be the NEWEA Grade I Collection Systems Certification examination, not state-specific New Hampshire treatment-operator content. A Grade II\u2013IV bank, state-law addendum, or collection-system claim beyond the official Grade I outline is not supported by this dossier."
+    },
+    {
+      "id": "nm-wastewater-collection",
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/nm-wastewater-collection.md",
+      "sha256": "db543cdd3de3ef2920349ef69c2affd6fef37c3443e4d55de95a3904c5587019",
+      "bankRecommendation": null
+    },
+    {
+      "id": "nm-wastewater-treatment",
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/nm-wastewater-treatment.md",
+      "sha256": "6090328e021c74ab5ef8b905733962a990c9428b108b5a45923775d598a3223b",
+      "bankRecommendation": "Propose one unique, state-specific, review-only bank identity: `nm-public-wastewater-ww2`"
+    },
+    {
+      "id": "nm-water-treatment",
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/nm-water-treatment.md",
+      "sha256": "9214701cbfc30117da025136e9262b86783e48b9386bff8f5c0b6b03edcc9e89",
+      "bankRecommendation": null
+    },
+    {
+      "id": "pa-wastewater-collection",
+      "stateCode": "PA",
+      "stateName": "Pennsylvania",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/pa-wastewater-collection.md",
+      "sha256": "f5ca98b501949121e4d946476f7660f75300be63ace4a44f81931666a4e77b05",
+      "bankRecommendation": null
+    },
+    {
+      "id": "pa-water-distribution",
+      "stateCode": "PA",
+      "stateName": "Pennsylvania",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/pa-water-distribution.md",
+      "sha256": "9b6032614c14278d3affc6342a06c82e32570712ce2e80c1e42dcdedd0317291",
+      "bankRecommendation": null
+    },
+    {
+      "id": "ut-water-distribution",
+      "stateCode": "UT",
+      "stateName": "Utah",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/ut-water-distribution.md",
+      "sha256": "ab73602d5db5870ac693a472c9eb607804d62f53fb7e07cb5d83780cfa7ae31e",
+      "bankRecommendation": null
+    },
+    {
+      "id": "wi-wastewater-collection",
+      "stateCode": "WI",
+      "stateName": "Wisconsin",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/wi-wastewater-collection.md",
+      "sha256": "5178f022edf9fc960c41632aecee0e40315dda1deae3d26b20fb0115fe2fb78d",
+      "bankRecommendation": null
+    },
+    {
+      "id": "wi-wastewater-treatment",
+      "stateCode": "WI",
+      "stateName": "Wisconsin",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "decision": "Suitable",
+      "reportPath": "docs/us-launch/state-dossiers/wi-wastewater-treatment.md",
+      "sha256": "e9b6ee027289aba4b6ec08fe1bfdbdb17a87307a9be680e304933f8e0dc56bb0",
+      "bankRecommendation": null
+    }
+  ],
+  "heldFromSuitable": [
+    {
+      "id": "ca-wastewater-collection",
+      "reason": "overlap/recovery/revalidation gate in source dossier"
+    },
+    {
+      "id": "ca-water-distribution",
+      "reason": "overlap/recovery/revalidation gate in source dossier"
+    },
+    {
+      "id": "nm-water-distribution",
+      "reason": "overlap/recovery/revalidation gate in source dossier"
+    }
+  ]
+}

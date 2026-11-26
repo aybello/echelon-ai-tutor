@@ -1,0 +1,46 @@
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
+
+const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
+  "Distribution System Components":                { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Equipment Installation, O&M & Repair":          { bg: "#DCFCE7", color: "#15803D" },
+  "Water Quality Monitoring & Lab":                { bg: "#EDE9FE", color: "#6D28D9" },
+  "Security, Safety, Admin & Public Interactions": { bg: "#FFEDD5", color: "#C2410C" },
+};
+
+export default function Class2WaterDistMockExam() {
+  usePageMeta({
+    title: "Ontario Class 2 Water Distribution and Supply Mock Exam",
+    description: "100-question timed mock exam for the Ontario Class 2 Water Distribution and Supply certification. 3-hour timer, 70% pass threshold.",
+    noindex: true
+  });
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("class2-water-dist");
+  if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
+  return (
+    <MockExamShell
+      title="Ontario Class 2 Water Distribution and Supply Mock Exam"
+      badge="ONTARIO CLASS 2 · WATER DISTRIBUTION AND SUPPLY"
+      metaDescription="100-question timed mock exam for Ontario Class 2 Water Distribution and Supply certification. 3-hour timer, 70% pass threshold."
+      metaKeywords="Ontario Class 2 Water Distribution and Supply mock exam, Ontario operator certification"
+      examQuestions={100}
+      examDuration={3 * 60 * 60}
+      passThreshold={0.7}
+      moduleTargets={dbModuleTargets ?? {}}
+      moduleColors={MODULE_COLORS}
+      productKey="class2-water-dist"
+      productName="Ontario Class 2 Water Distribution and Supply Practice Pass"
+      price={99}
+      backPath="/class2-water"
+      practicePath="/class2-water-dist"
+      practiceLabel="Class 2 Water Distribution and Supply Practice"
+      showProvinceSelector={false}
+      currentPath="/class2-water-dist-mock"
+      infoLine={`${totalQuestions} questions · Ontario Class 2 Water Distribution and Supply`}
+      stream="water"
+      accentColor="#0369A1"
+    />
+  );
+}

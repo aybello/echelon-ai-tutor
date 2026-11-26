@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 263,
+    "question": "What is a primary concern with a combined sewer overflow during wet weather?",
+    "options": [
+      "It can discharge a mixture of sanitary sewage and stormwater to the environment when the combined system is overwhelmed.",
+      "It removes all stormwater from the combined system before the flow reaches a sewage treatment plant.",
+      "It increases the dissolved oxygen concentration in raw sewage before the preliminary-treatment process begins.",
+      "It guarantees that only fully treated wastewater reaches a receiving water during periods of heavy rainfall."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance defines a combined sewer overflow as a discharge to the environment from a combined sewer system. A combined sewer conveys sanitary sewage and stormwater through one pipe, so wet-weather overflows can discharge a mixture of those flows.",
+    "sourceTitle": "Ontario MECP — Design Guidelines for Sewage Works, Chapter 8: Design Considerations for Sewage Treatment Plants",
+    "sourceReference": "Sections 8.3.4 and 8.3.15 define combined sewer systems and combined sewer overflows.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/design-considerations-sewage-treatment-plants"
+  }
+]

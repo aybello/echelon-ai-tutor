@@ -1,0 +1,16 @@
+{
+  "distribution": {
+    "exactTargetSeedCount": 0,
+    "allRepositorySeedCount": 700,
+    "exactMatchesAgainstAllSeeds": [],
+    "withinPackageHighTextSimilarity": [],
+    "fullProductionBankCompared": false
+  },
+  "collection": {
+    "exactTargetSeedCount": 0,
+    "allRepositorySeedCount": 700,
+    "exactMatchesAgainstAllSeeds": [],
+    "withinPackageHighTextSimilarity": [],
+    "fullProductionBankCompared": false
+  }
+}

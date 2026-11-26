@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 421,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The claim is traceable to the cited CCOHS confined-space guidance, which identifies oxygen-deficient or enriched atmospheres, toxic substances, and flammable or explosive atmospheres as entry hazards that must be assessed and controlled.",
+        "The jurisdictional scope is appropriate for Ontario OIT learners because the item uses general Canadian confined-space safety guidance rather than misrepresenting a specific Ontario regulation or a universal legal rule.",
+        "Exactly one option is clearly correct: option 1 directly states the hazard-identification purpose of atmospheric testing, while the other choices describe unsafe or unsupported alternatives.",
+        "The item is foundational and appropriate for OIT level because it tests basic confined-space hazard recognition without requiring technical thresholds, permit-form details, or advanced process knowledge.",
+        "The distractors are plausible but do not normalize unsafe practice or omit required controls in a way that would create a misleading training message."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

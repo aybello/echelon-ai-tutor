@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 191,
+    "question": "Which group of factors should be considered when assessing chlorine disinfection for sewage effluent?",
+    "options": [
+      "Sewage characteristics, prior treatment, flow, pH, disinfectant demand, equipment, and maintenance requirements should be considered together.",
+      "Only the brand of chlorination equipment and the layout of the treatment building need to be considered before any effluent assessment is made.",
+      "Only the calendar season and the total quantity of chlorine delivered to the site determine whether disinfection will be effective at the outlet.",
+      "Only the appearance of the final effluent and the length of the outfall pipe determine whether an effluent needs disinfection control."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance says chlorination selection should consider sewage characteristics, prior treatment, flow, pH, effluent criteria, disinfectant demand, equipment, chemical and power cost, and maintenance requirements. This item tests recognition that effective disinfection depends on several operating and effluent factors, not one factor alone.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 14: Disinfection and Supplement Treatment Processes",
+    "sourceReference": "Section 14.2.1 states that selection of a disinfection process should consider sewage characteristics, prior treatment, flow rates, pH, effluent quality criteria, disinfectant demand, equipment, chemicals, power cost, and maintenance requirements. The item tests only this foundational recognition, without asserting site-specific effluent limits or operator instructions.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/disinfection-and-supplement-treatment-processes"
+  }
+]

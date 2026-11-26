@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 502,
+    "question": "Why is dissolved oxygen monitored in the aeration tank of an activated sludge process?",
+    "options": [
+      "To help confirm that aerobic biological treatment has the oxygen conditions needed for microorganisms to treat wastewater.",
+      "To measure the hardness of the mixed liquor so the correct amount of grit can be removed before preliminary treatment.",
+      "To determine whether primary clarifiers are removing floating grease before the wastewater enters the aeration process.",
+      "To verify that all treated wastewater has been disinfected before it is discharged from the final effluent channel."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance requires aeration equipment to maintain dissolved oxygen in the mixed liquor and explains that biological treatment relies on oxygen-demanding processes. This item tests the basic connection between dissolved oxygen and aerobic biological treatment, not site-specific setpoints or troubleshooting.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 12: Biological Treatment and Secondary Sedimentation",
+    "sourceReference": "Chapter 12 states that aeration equipment should be capable of maintaining dissolved oxygen in the mixed liquor and describes oxygen demand as part of activated-sludge treatment design guidance.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/biological-treatment-and-secondary-sedimentation"
+  }
+]

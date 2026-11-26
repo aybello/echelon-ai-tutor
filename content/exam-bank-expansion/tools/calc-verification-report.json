@@ -1,0 +1,142 @@
+{
+ "oit": {
+  "checked": 40,
+  "problems": []
+ },
+ "oit-ww": {
+  "checked": 40,
+  "problems": []
+ },
+ "class1-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "class1-ww": {
+  "checked": 40,
+  "problems": []
+ },
+ "class1-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "class1-wastewater-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "class2-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "class3-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "class4-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "class2-ww": {
+  "checked": 40,
+  "problems": []
+ },
+ "class3-ww": {
+  "checked": 40,
+  "problems": []
+ },
+ "class4-ww": {
+  "checked": 40,
+  "problems": []
+ },
+ "class2-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "class3-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "class4-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "class2-wastewater-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "class3-wastewater-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "class4-wastewater-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "wqa": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class1-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class2-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class3-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class4-water": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class1-wastewater": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class2-wastewater": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class3-wastewater": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class4-wastewater": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class1-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class2-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class3-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class4-water-dist": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class1-water-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class2-water-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class3-water-coll": {
+  "checked": 40,
+  "problems": []
+ },
+ "wpi-class4-water-coll": {
+  "checked": 40,
+  "problems": []
+ }
+}

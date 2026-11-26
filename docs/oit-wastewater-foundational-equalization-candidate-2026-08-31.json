@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 79,
+    "question": "Why is mixing used in a wastewater flow-equalization basin?",
+    "options": [
+      "To help keep solids from depositing and to maintain more uniform wastewater conditions in the basin.",
+      "To disinfect the wastewater before it reaches the secondary-treatment process and remove all bacteria from the flow.",
+      "To add chemicals that neutralize every industrial discharge before the wastewater enters the plant's preliminary-treatment area.",
+      "To replace the need for influent-flow monitoring by keeping the plant flow identical during all operating conditions."
+    ],
+    "correctIndex": 0,
+    "explanation": "Where a plant uses a flow-equalization basin, general wastewater technical guidance describes mixing as a way to help prevent solids deposition and maintain aerobic, more uniform basin conditions. This is a basic process concept, not a site-specific operating requirement.",
+    "sourceTitle": "U.S. EPA — Flow Equalization",
+    "sourceReference": "The publication states that adequate aeration and mixing must be provided to keep equalization basins aerobic and prevent solids deposition.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000QTKP.TXT"
+  }
+]

@@ -1,0 +1,456 @@
+{
+ "courseKey": "wpi-class2-water-coll",
+ "bankKey": "wpi-class2-wastewater-coll",
+ "batch": 5,
+ "size": 49,
+ "conceptualCount": 39,
+ "calcCount": 10,
+ "topicPoolRound": 2,
+ "questionNumStart": 2651,
+ "questionNumEnd": 2699,
+ "itemIdStart": "COLLECTION-L2-651",
+ "itemIdEnd": "COLLECTION-L2-699",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2651,
+   "itemId": "COLLECTION-L2-651",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CMOM program development"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2652,
+   "itemId": "COLLECTION-L2-652",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "condition assessment programs"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2653,
+   "itemId": "COLLECTION-L2-653",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CCTV defect interpretation"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2654,
+   "itemId": "COLLECTION-L2-654",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "manhole assessment"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2655,
+   "itemId": "COLLECTION-L2-655",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "rehabilitation methods CIPP"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2656,
+   "itemId": "COLLECTION-L2-656",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "pipe bursting and slip lining"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2657,
+   "itemId": "COLLECTION-L2-657",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "flow monitoring analysis"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2658,
+   "itemId": "COLLECTION-L2-658",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "rainfall dependent I&I"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2659,
+   "itemId": "COLLECTION-L2-659",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CMOM program development"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2660,
+   "itemId": "COLLECTION-L2-660",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "condition assessment programs"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2661,
+   "itemId": "COLLECTION-L2-661",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CCTV defect interpretation"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2662,
+   "itemId": "COLLECTION-L2-662",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "manhole assessment"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2663,
+   "itemId": "COLLECTION-L2-663",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation methods CIPP"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2664,
+   "itemId": "COLLECTION-L2-664",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pipe bursting and slip lining"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2665,
+   "itemId": "COLLECTION-L2-665",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring analysis"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2666,
+   "itemId": "COLLECTION-L2-666",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rainfall dependent I&I"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2667,
+   "itemId": "COLLECTION-L2-667",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM program development"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2668,
+   "itemId": "COLLECTION-L2-668",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "condition assessment programs"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2669,
+   "itemId": "COLLECTION-L2-669",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CCTV defect interpretation"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2670,
+   "itemId": "COLLECTION-L2-670",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "manhole assessment"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2671,
+   "itemId": "COLLECTION-L2-671",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation methods CIPP"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2672,
+   "itemId": "COLLECTION-L2-672",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pipe bursting and slip lining"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2673,
+   "itemId": "COLLECTION-L2-673",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring analysis"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2674,
+   "itemId": "COLLECTION-L2-674",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rainfall dependent I&I"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2675,
+   "itemId": "COLLECTION-L2-675",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM program development"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2676,
+   "itemId": "COLLECTION-L2-676",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "condition assessment programs"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2677,
+   "itemId": "COLLECTION-L2-677",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CCTV defect interpretation"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2678,
+   "itemId": "COLLECTION-L2-678",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "manhole assessment"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2679,
+   "itemId": "COLLECTION-L2-679",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation methods CIPP"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2680,
+   "itemId": "COLLECTION-L2-680",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pipe bursting and slip lining"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2681,
+   "itemId": "COLLECTION-L2-681",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring analysis"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2682,
+   "itemId": "COLLECTION-L2-682",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "rainfall dependent I&I"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2683,
+   "itemId": "COLLECTION-L2-683",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CMOM program development"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2684,
+   "itemId": "COLLECTION-L2-684",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "condition assessment programs"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2685,
+   "itemId": "COLLECTION-L2-685",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CCTV defect interpretation"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2686,
+   "itemId": "COLLECTION-L2-686",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "manhole assessment"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2687,
+   "itemId": "COLLECTION-L2-687",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation methods CIPP"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2688,
+   "itemId": "COLLECTION-L2-688",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pipe bursting and slip lining"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2689,
+   "itemId": "COLLECTION-L2-689",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring analysis"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2690,
+   "itemId": "COLLECTION-L2-690",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I rate calculation"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2691,
+   "itemId": "COLLECTION-L2-691",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "RDII volume with given coefficients"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2692,
+   "itemId": "COLLECTION-L2-692",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation quantity liner length and area"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2693,
+   "itemId": "COLLECTION-L2-693",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "cleaning completion percentage"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2694,
+   "itemId": "COLLECTION-L2-694",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I rate calculation"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2695,
+   "itemId": "COLLECTION-L2-695",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "RDII volume with given coefficients"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2696,
+   "itemId": "COLLECTION-L2-696",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation quantity liner length and area"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2697,
+   "itemId": "COLLECTION-L2-697",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "cleaning completion percentage"
+  },
+  {
+   "seq": 48,
+   "questionNum": 2698,
+   "itemId": "COLLECTION-L2-698",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "I&I rate calculation"
+  },
+  {
+   "seq": 49,
+   "questionNum": 2699,
+   "itemId": "COLLECTION-L2-699",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "RDII volume with given coefficients"
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+  "/ceu-covers/ceu-activated-sludge-troubleshooting-cover.jpg": {
+    "url": "/manus-storage/ceu-activated-sludge-troubleshooting-cover_5618888a.jpg",
+    "bytes": 233971,
+    "sha256": "feb104c65eb133a6db7cb1064a0110b7e5f1eb09f0c7d7077fb96161ed267e99"
+  },
+  "/ceu-covers/ceu-basic-hydraulics-cover.jpg": {
+    "url": "/manus-storage/ceu-basic-hydraulics-cover_c5a35cbb.jpg",
+    "bytes": 341162,
+    "sha256": "424060668b99fd311a2609224028b9d03ce8101cfc175da1e8df9706ea2a5f76"
+  },
+  "/ceu-covers/ceu-basic-instrumentation-cover.jpg": {
+    "url": "/manus-storage/ceu-basic-instrumentation-cover_9e868b43.jpg",
+    "bytes": 189934,
+    "sha256": "122f2fcb10c1c403e37eca1d2282d3e806e05bf75edbb3a2f65f563ba2f3a3bd"
+  },
+  "/ceu-covers/ceu-basic-instrumentation-flume.jpg": {
+    "url": "/manus-storage/ceu-basic-instrumentation-flume_e5919382.jpg",
+    "bytes": 171637,
+    "sha256": "53c803c254694ef4a0fc1c9253aded4fc8b6ee9cd84cb58ff4810a72025c259e"
+  },
+  "/ceu-covers/ceu-basic-instrumentation-panel.jpg": {
+    "url": "/manus-storage/ceu-basic-instrumentation-panel_f70ff399.jpg",
+    "bytes": 117918,
+    "sha256": "aa3334556bb5a45ccec3880facb3cbafa23507368699218f4383d2426fd76c58"
+  },
+  "/ceu-covers/ceu-basic-math-cover.jpg": {
+    "url": "/manus-storage/ceu-basic-math-cover_bfce9684.jpg",
+    "bytes": 203517,
+    "sha256": "777bc5224a6053baaf70920898ede8c8b1ed472313bb4c55b609633b9bb3ccc2"
+  },
+  "/ceu-covers/ceu-basic-safety-chemicals.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-chemicals_804dd1bb.jpg",
+    "bytes": 151055,
+    "sha256": "45266d8cbe0f3d94d3cc6728892d7570d42cd4b7680950b2db2e8b8573fd6418"
+  },
+  "/ceu-covers/ceu-basic-safety-confined-space.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-confined-space_40e8fa9b.jpg",
+    "bytes": 239645,
+    "sha256": "024abbd1177bb3e982b850f91299077c1a04c1cb907554c13e9c8a712209e76d"
+  },
+  "/ceu-covers/ceu-basic-safety-cover.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-cover_008a7f91.jpg",
+    "bytes": 257475,
+    "sha256": "34d2efa89d9d23623a500e7c80d0d48b0f458d1cca0c63fb4fdbae2006b45e94"
+  },
+  "/ceu-covers/ceu-basic-safety-finding-hazards.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-finding-hazards_09f8320c.jpg",
+    "bytes": 216867,
+    "sha256": "92e9295b64f688f82afeb37299ff4b11446bc33d1249c07e35b6f95a8dd66d22"
+  },
+  "/ceu-covers/ceu-basic-safety-fire-extinguisher.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-fire-extinguisher_536eb0dc.jpg",
+    "bytes": 162431,
+    "sha256": "95080add584e1ab0a7c46af447ef94fd4bd9c1225bfae3d3bca3ed4ff57d5b11"
+  },
+  "/ceu-covers/ceu-basic-safety-hazard-labels.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-hazard-labels_81e969b7.jpg",
+    "bytes": 131997,
+    "sha256": "98373845ca0abda6f99699d37672e02499370739d2f7254696dc7591ce8b9318"
+  },
+  "/ceu-covers/ceu-basic-safety-ppe.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-ppe_1a08f231.jpg",
+    "bytes": 108927,
+    "sha256": "9c6e811a7b10df9a18ee8ddb23fa50a7adbe9f7a3b92f1bf78a1e79230f6d71f"
+  },
+  "/ceu-covers/ceu-basic-safety-spill-kit.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-spill-kit_98651068.jpg",
+    "bytes": 193217,
+    "sha256": "f908a3bee2b7a61ab3e8a525c6940a69b75a69825e59efb7be6d5251c3e2cd69"
+  },
+  "/ceu-covers/ceu-basic-safety-traffic-control.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-traffic-control_f8f1535f.jpg",
+    "bytes": 250199,
+    "sha256": "aaa8d05b69bc4c865de2829eb9855a37ca152a4d8038da53fb3fc003e7472307"
+  },
+  "/ceu-covers/ceu-basic-safety-trench.jpg": {
+    "url": "/manus-storage/ceu-basic-safety-trench_1fe7b481.jpg",
+    "bytes": 212971,
+    "sha256": "1126b19df84a1f8008c7bbaaa0066495a3a86fef1d2eb811bedf71e9caac7b21"
+  },
+  "/ceu-covers/ceu-chlorination-principles-chlorine-room.jpg": {
+    "url": "/manus-storage/ceu-chlorination-principles-chlorine-room_130e323f.jpg",
+    "bytes": 109527,
+    "sha256": "9ee87915fde4d0e500d0491ffc5390411430e8903b37ddcd3c3cb08b5016bc90"
+  },
+  "/ceu-covers/ceu-chlorination-principles-cover.jpg": {
+    "url": "/manus-storage/ceu-chlorination-principles-cover_8c50586b.jpg",
+    "bytes": 244199,
+    "sha256": "209b63367e27d62ab23d77c934b3c10840fe7b0d1d8b590a0fd954f85f25abec"
+  },
+  "/ceu-covers/ceu-chlorination-principles-hypochlorite.jpg": {
+    "url": "/manus-storage/ceu-chlorination-principles-hypochlorite_5703f4d6.jpg",
+    "bytes": 136515,
+    "sha256": "281ee533b3da1f58bb36ca3e477bf2e958229fca039ecc8132f7680a85c40d1f"
+  },
+  "/ceu-covers/ceu-coagulation-filtration-cover.jpg": {
+    "url": "/manus-storage/ceu-coagulation-filtration-cover_0e504937.jpg",
+    "bytes": 121105,
+    "sha256": "8330bec1c3d78005bb434e7da5e412235a1cd9ac822a821c2dab8f8e2fcdd546"
+  },
+  "/ceu-covers/ceu-collection-wet-weather-cover.jpg": {
+    "url": "/manus-storage/ceu-collection-wet-weather-cover_1e493bea.jpg",
+    "bytes": 276883,
+    "sha256": "f68593ebfa6d657f17afc264d0ff05184736af3f4d5c36e89de784137904fc6f"
+  },
+  "/ceu-covers/ceu-disinfection-ct-cover.jpg": {
+    "url": "/manus-storage/ceu-disinfection-ct-cover_5d726806.jpg",
+    "bytes": 178701,
+    "sha256": "f3a4313f7bdc421608cfc4247e687d99e97c8cf293864b7bc605dcf3586e1605"
+  },
+  "/ceu-covers/ceu-distribution-water-quality-cover.jpg": {
+    "url": "/manus-storage/ceu-distribution-water-quality-cover_1a8acfce.jpg",
+    "bytes": 225699,
+    "sha256": "3aee2c09166ce552c1108f1b0ab2e1e9e56c76c148d3615fc77436572a4c8f0e"
+  },
+  "/ceu-covers/ceu-drinking-water-compliance-cover.jpg": {
+    "url": "/manus-storage/ceu-drinking-water-compliance-cover_da3d3d38.jpg",
+    "bytes": 155564,
+    "sha256": "c0ed0e618b6c63d4d76f78698dc7bc95af3aa22726280466e962f8e5a39e6604"
+  },
+  "/ceu-covers/ceu-instrumentation-scada-cover.jpg": {
+    "url": "/manus-storage/ceu-instrumentation-scada-cover_9fc6ed5d.jpg",
+    "bytes": 201325,
+    "sha256": "510d88213d46bc01619285280599acf075ead041d1fd5882a7b23d9d95d019d0"
+  },
+  "/ceu-covers/ceu-sampling-data-quality-cover.jpg": {
+    "url": "/manus-storage/ceu-sampling-data-quality-cover_921d2611.jpg",
+    "bytes": 148999,
+    "sha256": "9a85771ca5f893e10e7e1494231cb9aa1adcbf8bbffc20a2c7b1bdd4f3bf5931"
+  },
+  "/ceu-covers/ceu-supervisor-essentials-cover.jpg": {
+    "url": "/manus-storage/ceu-supervisor-essentials-cover_c5ab4951.jpg",
+    "bytes": 168423,
+    "sha256": "3ca6fbfcf7f66e7c39dd79715358c6fa4292efac28089c362f0ea1391227361f"
+  },
+  "/ceu-covers/ceu-supervisor-essentials-shift-briefing.jpg": {
+    "url": "/manus-storage/ceu-supervisor-essentials-shift-briefing_481b7597.jpg",
+    "bytes": 146369,
+    "sha256": "bbb97440855be219f8507de8311a2c49b41dd9a27c276f7571e39a99a124aa6b"
+  },
+  "/ceu-covers/ceu-supervisor-essentials-team-change.jpg": {
+    "url": "/manus-storage/ceu-supervisor-essentials-team-change_cf95d5e4.jpg",
+    "bytes": 200106,
+    "sha256": "c32ecb60a904d1721c1c05c2527094b20bcebe2c4a79a6b8d93679ee9da1f53a"
+  },
+  "/ceu-covers/ceu-wastewater-treatment-process-control-cover.jpg": {
+    "url": "/manus-storage/ceu-wastewater-treatment-process-control-cover_254148b5.jpg",
+    "bytes": 260021,
+    "sha256": "c9bec874a6cde5430379e33f9e759269f315e65e2db386b6cf5452824f382ac0"
+  },
+  "/ceu-covers/ceu-water-distribution-overview-cover.jpg": {
+    "url": "/manus-storage/ceu-water-distribution-overview-cover_033f54eb.jpg",
+    "bytes": 284494,
+    "sha256": "8b6a5a15247e86b4ab8eccf3da930985a73290a5f3657f9972175a6ff245fdba"
+  },
+  "/ceu-covers/ceu-water-distribution-overview-tank.jpg": {
+    "url": "/manus-storage/ceu-water-distribution-overview-tank_b50bf863.jpg",
+    "bytes": 173443,
+    "sha256": "a8125cd1a52dc48101747f446584541a02cae7dc9dfea1cc560ec8bd3bd57311"
+  },
+  "/ceu-covers/ceu-water-distribution-overview-valve.jpg": {
+    "url": "/manus-storage/ceu-water-distribution-overview-valve_11807e04.jpg",
+    "bytes": 190334,
+    "sha256": "788d1b991f6a16e12fdbd7e1c169890ef452e212eb0dc293bb2b1c2aca047243"
+  },
+  "/ceu-covers/ceu-water-treatment-process-control-cover.jpg": {
+    "url": "/manus-storage/ceu-water-treatment-process-control-cover_b42f020f.jpg",
+    "bytes": 226603,
+    "sha256": "333bcdfa4e03315d6db8fdd7a07d547d84101f15b21915be2be222b7aad1ea0d"
+  }
+}

@@ -1,0 +1,402 @@
+{
+ "courseKey": "wpi-class1-water-coll",
+ "bankKey": "wpi-class1-wastewater-coll",
+ "batch": 2,
+ "size": 43,
+ "conceptualCount": 34,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2495,
+ "questionNumEnd": 2537,
+ "itemIdStart": "COLLECTION-L1-495",
+ "itemIdEnd": "COLLECTION-L1-537",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2495,
+   "itemId": "COLLECTION-L1-495",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CCTV inspection awareness"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2496,
+   "itemId": "COLLECTION-L1-496",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "blockage causes roots and FOG"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2497,
+   "itemId": "COLLECTION-L1-497",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "odour and hydrogen sulfide awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2498,
+   "itemId": "COLLECTION-L1-498",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "spill and overflow response awareness"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2499,
+   "itemId": "COLLECTION-L1-499",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CMOM principles"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2500,
+   "itemId": "COLLECTION-L1-500",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "jetting and flushing awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2501,
+   "itemId": "COLLECTION-L1-501",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "manhole inspection basics"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2502,
+   "itemId": "COLLECTION-L1-502",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "traffic control awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2503,
+   "itemId": "COLLECTION-L1-503",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CCTV inspection awareness"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2504,
+   "itemId": "COLLECTION-L1-504",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "blockage causes roots and FOG"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2505,
+   "itemId": "COLLECTION-L1-505",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour and hydrogen sulfide awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2506,
+   "itemId": "COLLECTION-L1-506",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "spill and overflow response awareness"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2507,
+   "itemId": "COLLECTION-L1-507",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM principles"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2508,
+   "itemId": "COLLECTION-L1-508",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "jetting and flushing awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2509,
+   "itemId": "COLLECTION-L1-509",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "manhole inspection basics"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2510,
+   "itemId": "COLLECTION-L1-510",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "traffic control awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2511,
+   "itemId": "COLLECTION-L1-511",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CCTV inspection awareness"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2512,
+   "itemId": "COLLECTION-L1-512",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "blockage causes roots and FOG"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2513,
+   "itemId": "COLLECTION-L1-513",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour and hydrogen sulfide awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2514,
+   "itemId": "COLLECTION-L1-514",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "spill and overflow response awareness"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2515,
+   "itemId": "COLLECTION-L1-515",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM principles"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2516,
+   "itemId": "COLLECTION-L1-516",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "jetting and flushing awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2517,
+   "itemId": "COLLECTION-L1-517",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "manhole inspection basics"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2518,
+   "itemId": "COLLECTION-L1-518",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "traffic control awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2519,
+   "itemId": "COLLECTION-L1-519",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CCTV inspection awareness"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2520,
+   "itemId": "COLLECTION-L1-520",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "blockage causes roots and FOG"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2521,
+   "itemId": "COLLECTION-L1-521",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "odour and hydrogen sulfide awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2522,
+   "itemId": "COLLECTION-L1-522",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "spill and overflow response awareness"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2523,
+   "itemId": "COLLECTION-L1-523",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CMOM principles"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2524,
+   "itemId": "COLLECTION-L1-524",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "jetting and flushing awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2525,
+   "itemId": "COLLECTION-L1-525",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "manhole inspection basics"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2526,
+   "itemId": "COLLECTION-L1-526",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "traffic control awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2527,
+   "itemId": "COLLECTION-L1-527",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CCTV inspection awareness"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2528,
+   "itemId": "COLLECTION-L1-528",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "blockage causes roots and FOG"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2529,
+   "itemId": "COLLECTION-L1-529",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pipe velocity from continuity"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2530,
+   "itemId": "COLLECTION-L1-530",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pump run time and cycles"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2531,
+   "itemId": "COLLECTION-L1-531",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main velocity"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2532,
+   "itemId": "COLLECTION-L1-532",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "infiltration rate per length"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2533,
+   "itemId": "COLLECTION-L1-533",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "pipe velocity from continuity"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2534,
+   "itemId": "COLLECTION-L1-534",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pump run time and cycles"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2535,
+   "itemId": "COLLECTION-L1-535",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force main velocity"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2536,
+   "itemId": "COLLECTION-L1-536",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "infiltration rate per length"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2537,
+   "itemId": "COLLECTION-L1-537",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "pipe velocity from continuity"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+name: Public Tree Privacy Gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  privacy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Block unexpected identifiers, private exports and secrets
+        run: node scripts/privacyGuard.mjs
+      - name: Exercise redacted guard failures and private-input boundary
+        run: node --test scripts/privacyGuard.test.mjs scripts/lib/privateRecipients.test.mjs

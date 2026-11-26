@@ -1,0 +1,1091 @@
+{
+  "key": "ceu-basic-safety",
+  "version": "2026-11-17.1",
+  "title": "Basic Safety for Water and Wastewater Operators",
+  "shortTitle": "Basic Safety",
+  "stream": "drinking_water",
+  "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+  "prerequisites": "Basic familiarity with plants, pump stations and distribution or collection work. This course teaches recognition and purpose and does not replace site training; your facility procedures, permits and the rules that apply to you govern. US customary units are primary with metric equivalents; all scenarios and facility data are fictional.",
+  "introduction": "Learn to find hazards before work starts and to choose the strongest control: the hierarchy of controls, PPE, labels and safety data sheets, confined space and atmosphere awareness, trench, traffic, energy and lifting hazards, and chemical and emergency awareness. Each module ends with a fictional scenario and checks that name the mistake behind each wrong answer.",
+  "plannedMinutes": 180,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "ccohs-hierarchy",
+      "title": "CCOHS OSH Answers: Hazard Control and Hierarchy of Controls",
+      "url": "https://www.ccohs.ca/oshanswers/hsprograms/hazard/hierarchy_controls.html",
+      "section": "Hierarchy of controls: elimination, substitution, engineering, administrative controls and personal protective equipment",
+      "jurisdiction": "Canada, national occupational health and safety centre; general principles also used in US practice",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "ccohs-whmis",
+      "title": "CCOHS OSH Answers: WHMIS and GHS hazard communication",
+      "url": "https://www.ccohs.ca/oshanswers/chemicals/whmis_ghs/index.html",
+      "section": "Labels, pictograms and safety data sheets: what each tells a worker",
+      "jurisdiction": "Canada; the US Hazard Communication Standard uses the same GHS label elements and SDS format",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "ccohs-confined",
+      "title": "CCOHS OSH Answers: Confined Spaces, Introduction",
+      "url": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_intro.html",
+      "section": "What makes a space confined, atmospheric hazards, and the purpose of testing, ventilation, attendant, rescue and permits",
+      "jurisdiction": "Canada; confirm your own jurisdiction's confined space rule and permit program",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "niosh-trench",
+      "title": "CDC NIOSH: Trenching and Excavation Safety",
+      "url": "https://www.cdc.gov/niosh/trenching/",
+      "section": "Trench hazards and protective systems: why walls collapse and what sloping, shoring and shielding are for",
+      "jurisdiction": "US federal research agency; the competent person and the applicable rule govern your site",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "modules": [
+    {
+      "id": "hazard-ppe",
+      "title": "Hazard recognition and personal protective equipment",
+      "objectives": [
+        "Find hazards before work and rank controls using the hierarchy of controls.",
+        "Match PPE to the hazard it protects against and read labels and safety data sheets.",
+        "Recognise respirator program, falling-object, abrasive blasting, solvent and biological hazards and their basic controls."
+      ],
+      "lesson": "### Start with the hazard, not the injury\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-ppe_1a08f231.jpg\" alt=\"A maintenance technician putting on nitrile gloves while wearing safety glasses and hearing protection in a plant room.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Put on the right PPE for the task before you start, not after.</figcaption></figure>\n\nMost injuries at a plant, pump station or collection site come from ordinary hazards nobody stopped to name: a wet floor, an unguarded belt, an unlabelled drum, a hose across a walkway.\n\nA **hazard** is anything with the potential to cause harm: a chemical, a moving part, a height, a noise, an energized wire. **Risk** is the combination of how bad the harm could be and how likely it is.\n\n> **Your job:** before any task, ask what could hurt someone, how bad and how likely, and what the strongest control is.\n\n### Finding hazards before work\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-finding-hazards_09f8320c.jpg\" alt=\"A supervisor and an operator in hi-vis vests walk a plant area with a clipboard, beside a pipe that is leaking water onto the floor.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Walk the area with a checklist before work starts: a leak, a wet floor and a loose guard are hazards to note, not things to work around.</figcaption></figure>\n\nA job hazard review is a short look at a task: walk the area, then think through each step and ask what could go wrong. Useful prompts are **energy** (can anything start, move, fall or discharge?), **substances** (what is present, and is it labelled?), **environment** (weather, noise, traffic, low-lying areas) and **people and time** (alone, at night, in a hurry, new to the task?).\n\nMany sites rank hazards with a matrix. This fictional scale scores severity 1 to 5 and likelihood 1 to 5, then multiplies.\n\n**Worked example.** At the fictional Cedarline pump station, a crew lists two hazards. A worn stair tread is a slip risk: severity 3, likelihood 4. A missing guard on a belt drive could cause a serious injury if someone reaches in: severity 5, likelihood 2.\n\n- Stair tread: 3 x 4 = **12**\n- Belt guard: 5 x 2 = **10**\n\nBoth need action, and the stair tread ranks first because it is more likely. Ranking sets the order of fixes, not what to ignore: until the guard is back, the drive is kept stopped or out of reach, because a score never makes an exposed moving part acceptable. Adding instead of multiplying is a common mistake: it makes different hazards look equal (3 + 4 = 7 and 5 + 2 = 7).\n\n### The hierarchy of controls\n\nOnce a hazard is found, choose a control. Controls are ranked from most to least effective because higher ones do not depend on a person remembering every time.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Pyramid of five controls from strongest at the top to weakest at the bottom: 1 eliminate, 2 substitute, 3 engineering controls, 4 administrative controls, 5 personal protective equipment.\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#1d2d40\">\n<title>Hierarchy of controls pyramid</title>\n<polygon points=\"100,20 100,20 109,60 91,60\" fill=\"#2f6db2\"/>\n<polygon points=\"91,60 109,60 118,100 82,100\" fill=\"#5d8fc7\"/>\n<polygon points=\"82,100 118,100 127,140 73,140\" fill=\"#98b7da\"/>\n<polygon points=\"73,140 127,140 136,180 64,180\" fill=\"#c9d7e8\"/>\n<polygon points=\"64,180 136,180 145,220 55,220\" fill=\"#e6ebf1\" stroke=\"#6b7a8c\"/>\n<text x=\"100\" y=\"52\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#fff\">1</text>\n<text x=\"100\" y=\"92\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#fff\">2</text>\n<text x=\"100\" y=\"132\" text-anchor=\"middle\" font-weight=\"bold\">3</text>\n<text x=\"100\" y=\"172\" text-anchor=\"middle\" font-weight=\"bold\">4</text>\n<text x=\"100\" y=\"212\" text-anchor=\"middle\" font-weight=\"bold\">5</text>\n<g stroke=\"#6b7a8c\"><path d=\"M112 38H170M122 80H170M131 120H170M140 160H170M150 200H170\"/></g>\n<g font-weight=\"bold\"><text x=\"176\" y=\"42\">Eliminate</text><text x=\"176\" y=\"82\">Substitute</text><text x=\"176\" y=\"122\">Engineering controls</text><text x=\"176\" y=\"162\">Administrative controls</text><text x=\"176\" y=\"202\">PPE</text></g>\n<g font-size=\"14\"><text x=\"176\" y=\"56\">remove it from the job</text><text x=\"176\" y=\"96\">swap in something safer</text><text x=\"176\" y=\"136\">guard, ventilate, isolate</text><text x=\"176\" y=\"176\">rules, training, permits</text><text x=\"176\" y=\"216\">last line of defence</text></g>\n<text x=\"20\" y=\"241\" font-size=\"14\">Top = strongest control, bottom = weakest</text>\n</svg>\n<figcaption>The hierarchy of controls: stronger controls sit at the top and personal protective equipment sits at the bottom as the last line of defence.</figcaption>\n</figure>\n\n1. **Eliminate** the hazard: move a valve to ground level and nobody needs a ladder.\n2. **Substitute** something safer, such as a water-based cleaner in place of a solvent.\n3. **Engineering controls** isolate people from the hazard: guards, enclosures, ventilation, railings, interlocks and sound housings.\n4. **Administrative controls** change how work is done: procedures, training, signs, permits and schedules. They depend on people following them.\n5. **Personal protective equipment (PPE)** protects the person when the hazard remains. It is the last line of defence because it removes nothing and relies on correct selection, fit, condition and use.\n\nMove up the list whenever you can. Ear muffs in a loud room protect one person, but enclosing the noisy equipment protects everyone who walks in.\n\n### Personal protective equipment: what protects what\n\nPPE is chosen for the hazard found in the review, not by habit.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 300\" role=\"img\" aria-label=\"Body outline with seven PPE zones: head hard hat, eyes and face goggles or shield, ears hearing protection, lungs respirator, body vest or apron, hands gloves, feet safety boots.\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#1d2d40\">\n<title>PPE zones on the body</title>\n<g fill=\"#e6ebf1\" stroke=\"#6b7a8c\" stroke-width=\"2\"><circle cx=\"195\" cy=\"62\" r=\"20\"/><rect x=\"170\" y=\"86\" width=\"50\" height=\"86\" rx=\"6\"/><rect x=\"146\" y=\"88\" width=\"20\" height=\"78\" rx=\"8\"/><rect x=\"224\" y=\"88\" width=\"20\" height=\"78\" rx=\"8\"/><rect x=\"172\" y=\"174\" width=\"21\" height=\"86\" rx=\"6\"/><rect x=\"197\" y=\"174\" width=\"21\" height=\"86\" rx=\"6\"/></g>\n<path d=\"M173 56a22 22 0 0 1 44 0z\" fill=\"#2f6db2\"/>\n<g stroke=\"#2f6db2\" stroke-width=\"1.5\"><path d=\"M116 38L178 48M116 74L186 64M116 134L170 130M116 190L150 166M274 62L215 68M274 112L210 108M274 270L212 260\"/></g>\n<g fill=\"#2f6db2\"><circle cx=\"178\" cy=\"48\" r=\"3\"/><circle cx=\"186\" cy=\"64\" r=\"3\"/><circle cx=\"170\" cy=\"130\" r=\"3\"/><circle cx=\"150\" cy=\"166\" r=\"3\"/><circle cx=\"215\" cy=\"68\" r=\"3\"/><circle cx=\"210\" cy=\"108\" r=\"3\"/><circle cx=\"212\" cy=\"260\" r=\"3\"/></g>\n<g text-anchor=\"end\" font-weight=\"bold\"><text x=\"112\" y=\"34\">Head</text><text x=\"112\" y=\"70\">Eyes, face</text><text x=\"112\" y=\"130\">Body</text><text x=\"112\" y=\"186\">Hands</text></g>\n<g text-anchor=\"end\" font-size=\"14\"><text x=\"112\" y=\"48\">hard hat</text><text x=\"112\" y=\"84\">goggles, shield</text><text x=\"112\" y=\"144\">vest, apron, suit</text><text x=\"112\" y=\"200\">gloves</text></g>\n<g font-weight=\"bold\"><text x=\"280\" y=\"58\">Ears</text><text x=\"280\" y=\"108\">Lungs</text><text x=\"280\" y=\"266\">Feet</text></g>\n<g font-size=\"14\"><text x=\"280\" y=\"72\">plugs, muffs</text><text x=\"280\" y=\"122\">respirator</text><text x=\"280\" y=\"280\">safety boots</text></g>\n</svg>\n<figcaption>PPE zones on the body: each item is matched to the part of the body and the hazard it protects against.</figcaption>\n</figure>\n\n| PPE | Protects against | Common mistake |\n| --- | --- | --- |\n| Hard hat | Falling objects, overhead bumps | Wearing a cracked or old shell |\n| Safety glasses, goggles, face shield | Flying particles, splashes, spray | Using plain safety glasses where a chemical splash is possible |\n| Hearing protection | Noise damage over time | Wearing it loosely or removing it for a short task |\n| Respirator | Dust, vapors or gases in the air, matched to the cartridge | Using the wrong cartridge or skipping the fit check |\n| Gloves | Cuts, heat, chemicals, biological material | Wearing a glove type that the chemical passes through |\n| Safety boots | Crushing, punctures, slips, chemicals | Soft-soled shoes near heavy loads |\n| Fall protection | Falls from height | Anchoring to something not rated for the load |\n\nPPE must suit the hazard, fit you and be inspected before use. A glove that suits one chemical may fail within minutes against another, so the SDS and your facility procedure decide. Head, eye, hearing and foot protection come in grades: a hard hat that resists impact may not resist electrical contact, goggles that seal against splash differ from open-sided glasses, and a safety boot may add toe or sole protection that a work shoe lacks. Read the rating marks and match them to the review.\n\n**Respirators** need a program, not just a mask. The wearer is medically cleared to wear one and, for a tight-fitting respirator, is fit tested on the model and size in use and checks the seal each time it is put on. Facial hair or a loose strap can break the seal. An air-purifying respirator filters the air around you with cartridges chosen for the contaminant. It makes no oxygen, so it does not replace knowing what is in the air; module 2 returns to this.\n\n### Hazard communication: labels and safety data sheets\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-hazard-labels_81e969b7.jpg\" alt=\"An operator reads a container label beside shelves of plain containers in secondary containment trays, with a safety data sheet binder on a stand.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Read the label and the safety data sheet before you handle a container; the binder is only useful if it is where people look.</figcaption></figure>\n\nHazard communication means nobody handles a product without knowing what it can do. Two tools carry the information: the container label and the safety data sheet (SDS).\n\nA **label** gives a quick warning at the point of use: product name, supplier, signal word, hazard statements, precautionary statements and pictograms. A flame marks fire hazards, most often a flammable product; corrosion means the product can burn skin or eyes or damage metal; a gas cylinder means gas under pressure; and a skull and crossbones means acute toxicity that can kill or poison in small amounts. The hazard statements beside a pictogram say which hazard applies.\n\nAn **SDS** carries the full detail in a standard set of sections. Know what each is for:\n\n- **Identification** names the product, the supplier and an emergency contact.\n- **Hazard identification** gives the hazards, pictograms and signal word.\n- **Handling and storage** says what to keep the product away from.\n- **First-aid measures** covers exposure until medical help arrives.\n- **Exposure controls and personal protection** lists engineering controls and suited PPE.\n- **Stability and reactivity** says what the product reacts with.\n- **Toxicological information** describes health effects. Properties, disposal and transport sections fill in the rest.\n\nThe label is the first look and the SDS the full reference, so keep SDS copies within quick reach. An unlabelled container is an unknown hazard: do not open, smell, mix or pour it, keep others away and report it. Label any smaller container you fill.\n\n### Housekeeping, falling objects and storage\n\nHousekeeping is a hazard control. Wet floors, hoses across walkways, loose cords, cluttered stairs and poor lighting cause slips, trips and falls, among the most common injuries here.\n\nGood housekeeping finds the cause, not just the puddle. A drip from a pump seal wets the floor again within the hour, so the strong control is to fix or report the leak, with cleaning and marking as interim steps. Route hoses and cords overhead or cover them, keep handrails in place and report burned-out lights.\n\nThings fall too. Anything on a platform, catwalk or landing can drop onto a person below, which is why those edges carry a **toe-board**, a low solid strip that stops tools and debris sliding off. Under overhead work the area below is marked and kept clear, and hard hats are worn. Store materials so they cannot topple: heavy items low, stable stacks, bags and drums on pallets, aisles open to exits and extinguishers.\n\n### Dust, abrasive blasting, paint and solvents\n\n**Abrasive blasting**, often called sandblasting, drives grit at high speed to strip paint and rust from steel. Rebounding grit and dust harm lungs and eyes, and old coatings may hold toxic metals. It is specialist work: the blaster wears a hood with supplied air, the area is fenced and the hose is controlled so it cannot whip. Recognise it, keep clear, and ask whether a safer method can replace it.\n\n**Paints, coatings and solvents** give off vapors that irritate, intoxicate or burn. Read the label and SDS, keep containers closed, ventilate, and remove ignition sources. Solvent-soaked rags go in a closed metal can. A tank interior is usually a confined space, and coating vapors can add a hazardous atmosphere, so the confined-space program and its permit decide how the work proceeds.\n\n### Biological hazards and hygiene\n\nWastewater, sludge and some raw water carry bacteria, viruses and parasites, and animals and insects add bites and stings. Wash hands with soap and water after handling anything contaminated and before eating, drinking or smoking. Cover cuts, keep food out of work areas and change out of soiled clothing. Follow your health program on vaccinations such as tetanus. After a bite or sting, clean the wound, report it and get medical advice. \n\n### Working alone\n\nMany operators work alone on nights, weekends and at remote sites. A person who slips and cannot call out may lie unfound for hours.\n\nControls are mostly administrative: a check-in schedule with a named contact, a working phone or radio, a plan for a missed check-in and limits on tasks that need a second person. A check-in does not make a risky task safe; it limits how long a problem goes unnoticed.\n\n### Before you move on\n\nYou can now rank controls, match PPE to its hazard, read a label and find the right SDS section. Module 2 applies this to confined spaces.",
+      "evidence": "### Fictional scenario: the Cedarline pump station walk-through\n\nCedarline is a fictional pump station. During a pre-job walk-through the crew finds four things: a worn stair tread with a wet landing, a belt drive with a missing guard, an unlabelled drum beside the chemical room, and a hose stretched across the walkway to a truck. One operator will work the night shift alone.\n\n### Your decision\n\nFor each item, name the hazard, rate severity and likelihood on a 1 to 5 scale and multiply, then pick the strongest practical control from the hierarchy and say what PPE, if any, remains necessary. Describe a check-in plan for the night operator.",
+      "assignment": "Prepare a one-page hazard review for the Cedarline walk-through. For each of the four items give a risk score, the control you choose and its level in the hierarchy of controls. Add the PPE you would still require and one sentence on how a label or safety data sheet would help with the unlabelled drum.",
+      "rubric": [
+        "Scores each hazard by multiplying severity and likelihood and ranks them.",
+        "Chooses the strongest practical control and names its level in the hierarchy.",
+        "Matches PPE to the hazard and does not treat it as a replacement for stronger controls.",
+        "Treats the unlabelled drum as an unknown hazard to be left closed and reported."
+      ],
+      "facilitatorGuide": "Sample scoring on the fictional scale: stair tread 3 x 4 = 12, belt guard 5 x 2 = 10, unlabelled drum severity 4 x likelihood 2 = 8, hose 2 x 4 = 8. Strong controls: repair or replace the tread and cover the landing, restore the guard (engineering), leave the drum closed and report it, reroute the hose. Learners often add the two scores instead of multiplying or list PPE first. The night operator needs a check-in schedule with a named contact; do not accept a plan that treats check-ins as making a risky task safe.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and work through the example, writing units and reasons at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one hazard from your own workplace that this module covers."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review the feedback."
+        }
+      ],
+      "sourceIds": [
+        "ccohs-hierarchy",
+        "ccohs-whmis"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-safety-hazard-ppe-c1",
+          "objective": "hazard-ppe",
+          "prompt": "A fictional crew finds that a noisy blower can be enclosed in a sound housing so staff do not need ear protection in that room. In the hierarchy of controls, the housing is:",
+          "choices": [
+            "An engineering control isolating the hazard",
+            "A PPE control that protects the worker's ears",
+            "An administrative control limiting exposure time",
+            "An elimination control that removes the blower"
+          ],
+          "correctIndex": 0,
+          "explanation": "A housing around the source is a physical barrier that works without anyone remembering to use it, which is the definition of an engineering control. The \"A PPE control that protects the worker's ears\" choice treated the housing as personal protection, but it works on the equipment, not on the worker. The \"An administrative control limiting exposure time\" choice confused a physical barrier with a rule about how long people stay in the room. The \"An elimination control that removes the blower\" choice assumed the hazard was removed, but the blower still runs and the noise is only contained."
+        },
+        {
+          "id": "ceu-basic-safety-hazard-ppe-c2",
+          "objective": "hazard-ppe",
+          "prompt": "A fictional operator wants to know what to do if a product splashes into the eyes. Which part of the safety data sheet covers this?",
+          "choices": [
+            "The disposal considerations section",
+            "The first-aid measures section",
+            "The identification section",
+            "The transport information section"
+          ],
+          "correctIndex": 1,
+          "explanation": "The first-aid section describes what to do after eye, skin, breathing or swallowing exposure until medical help arrives. The \"The disposal considerations section\" choice mixed up first aid with waste handling, which covers how to discard the product. The \"The identification section\" choice chose the section that names the product and gives contact details, which does not describe treatment. The \"The transport information section\" choice chose the shipping classification section, which says how the product is moved and not how to treat exposure."
+        },
+        {
+          "id": "ceu-basic-safety-hazard-ppe-c3",
+          "objective": "hazard-ppe",
+          "prompt": "A fictional container label carries a flame pictogram. The hazard it most commonly signals is:",
+          "choices": [
+            "A corrosive material that burns skin and metal",
+            "A gas stored under pressure in a cylinder",
+            "A flammable material that can ignite",
+            "A substance with serious toxic effects"
+          ],
+          "correctIndex": 2,
+          "explanation": "A flame pictogram signals a fire hazard, most often a flammable material; each pictogram has its own shape, so learn them as a set. The \"A corrosive material that burns skin and metal\" choice confused the flame with the corrosion pictogram, which shows a liquid eating a surface and a hand. The \"A gas stored under pressure in a cylinder\" choice confused the flame with the gas cylinder pictogram, which shows a cylinder shape. The \"A substance with serious toxic effects\" choice confused the flame with the skull and crossbones used for serious toxicity."
+        },
+        {
+          "id": "ceu-basic-safety-hazard-ppe-c4",
+          "objective": "hazard-ppe",
+          "prompt": "A fictional operator may be splashed while transferring a liquid chemical. Which item protects the face best against a splash?",
+          "choices": [
+            "Plain safety glasses with side shields",
+            "A hard hat with a wide protective brim",
+            "Cut-resistant leather work gloves",
+            "A face shield over chemical goggles"
+          ],
+          "correctIndex": 3,
+          "explanation": "Splash protection needs sealed goggles for the eyes and a shield for the face; the other items protect against different hazards. The \"Plain safety glasses with side shields\" choice treated impact glasses as splash protection, but liquid can run around or under them. The \"A hard hat with a wide protective brim\" choice assumed a brim blocks splashes, but a hard hat guards against falling objects. The \"Cut-resistant leather work gloves\" choice chose hand protection for a face hazard."
+        },
+        {
+          "id": "ceu-basic-safety-hazard-ppe-c5",
+          "objective": "hazard-ppe",
+          "prompt": "A fictional crew at Cedarline must strip old paint from a steel tank wall by abrasive blasting. Which statement fits recognition-level safety?",
+          "choices": [
+            "Blasting is specialist work with supplied air and a fenced area",
+            "Plain safety glasses and a paper dust mask give the blaster enough protection",
+            "The grit stays on the floor, so other staff can watch from the open doorway",
+            "Coating work inside a tank needs no permit because paint is not a gas"
+          ],
+          "correctIndex": 0,
+          "explanation": "Abrasive blasting throws rebounding grit and coating dust that harm the lungs and eyes, so a trained blaster uses supplied-air protection inside a fenced area. The \"Plain safety glasses and a paper dust mask give the blaster enough protection\" choice assumed ordinary eye and dust protection is enough, but fine dust and rebounding grit need more. The \"The grit stays on the floor, so other staff can watch from the open doorway\" choice ignored the dust cloud and rebound that reach bystanders. The \"Coating work inside a tank needs no permit because paint is not a gas\" choice forgot that a tank interior is usually a confined space and that coating vapors can add a hazardous atmosphere, which brings in the confined-space program and its permit."
+        },
+        {
+          "id": "ceu-basic-safety-hazard-ppe-c6",
+          "objective": "hazard-ppe",
+          "prompt": "A fictional operator is issued a tight-fitting respirator for a dusty task. Which program step comes before the first use?",
+          "choices": [
+            "Reading the filter box and picking any cartridge from the shelf",
+            "Medical clearance and a fit test on the model and size in use",
+            "A sniff test of the cartridge to confirm that it smells clean",
+            "Trimming the straps so the mask sits loose and comfortable"
+          ],
+          "correctIndex": 1,
+          "explanation": "A respirator program starts with medical clearance and a fit test, because a mask that is unsafe for the wearer or leaks at the seal gives little protection. The \"Reading the filter box and picking any cartridge from the shelf\" choice treated cartridges as interchangeable, but the cartridge must match the contaminant. The \"A sniff test of the cartridge to confirm that it smells clean\" choice used smell to judge a filter, which cannot show whether the filter works. The \"Trimming the straps so the mask sits loose and comfortable\" choice traded seal for comfort, since a loose mask lets unfiltered air in."
+        }
+      ]
+    },
+    {
+      "id": "confined-atmosphere",
+      "title": "Confined spaces and atmospheric hazards",
+      "objectives": [
+        "Recognise what makes a space confined and why its air can change.",
+        "Explain the purpose of testing, ventilation, an attendant, a rescue plan and a permit, and why smell is not a warning.",
+        "Recognise what IDLH and SCBA mean and why explosion-proof equipment is required in classified flammable-gas areas."
+      ],
+      "lesson": "### Why confined spaces kill\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-confined-space_40e8fa9b.jpg\" alt=\"A harness-equipped worker at a wet well opening, with a tripod and winch, while a second worker stands by the lifeline.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>A retrieval setup and an observer at the opening are part of the entry plan. This picture does not show an entry procedure.</figcaption></figure>\n\nConfined spaces are among the deadliest places in water and wastewater work, and many of the people who die in them are would-be rescuers. A confined space limits how fast a person can get out and how fast air can move in, so a hazard that would be minor in the open becomes severe. This module is about recognition and purpose: what makes a space confined, why its air can turn dangerous, and why each safeguard exists. It is not an entry procedure.\n\n> **Your job:** recognise a confined space, know why your senses cannot judge its air, and call trained rescuers rather than climbing in.\n\n### What makes a space confined\n\nA space is generally treated as confined when it meets three conditions together:\n\n- It is large enough for a person to enter and do work.\n- It has limited or restricted ways in or out, such as a manhole, a hatch or a ladder through a small opening.\n- It is not designed for continuous occupancy by people.\n\nTypical examples are wet wells, manholes and vaults, sewers, digesters, clarifier and tank interiors, chemical tanks, storage reservoirs and pipe galleries. Some are **permit-required** because they have, or could have, a recognised serious hazard, such as a hazardous atmosphere, material that can engulf a person, a shape that can trap someone, or any other serious safety or health hazard. The employer evaluates spaces against the applicable rule and the program says which need a permit; do not decide on the day.\n\nDepth is not the test: a shallow vault with a small hatch can be confined, and \"empty\" is not \"safe\".\n\n### Why the air changes\n\nThe air in an enclosed space changes with what is inside, what is happening in it and what is connected to it.\n\n- **Low oxygen.** Oxygen can be used up by rusting steel, by decaying material and by combustion. It can also be pushed out by other gases such as nitrogen, carbon dioxide or methane. The danger is that a person cannot sense low oxygen. There is no smell, no taste and no warning irritation, and impairment can come on quickly.\n- **Hydrogen sulfide.** Sewage and sludge that go septic release hydrogen sulfide. At low levels it smells like rotten eggs. It is toxic and slightly heavier than air, so it collects low, but it also moves with air currents, so do not assume any level is free of it.\n- **Methane and other flammable gas.** Methane forms in digesters, sewers and sludge holding areas. It is lighter than air and tends to collect high in a space, such as under a roof or the top of a gallery. In the right mixture with air, a flammable gas can ignite from a spark, a hot surface or a static discharge.\n- **Chlorine.** Chlorine gas is heavier than air, irritates the eyes and lungs, and sinks to pits and trenches, entering through leaks, drains and ducts.\n- **Other sources.** Welding, engines near an opening (carbon monoxide) and gases from a neighbouring line.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Cross-section of a vault under a manhole. Near the top, methane collects. Near the bottom, hydrogen sulfide and chlorine collect. Low oxygen can occur at any level.\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#1d2d40\">\n<title>Where gases collect in a vault</title>\n<rect x=\"20\" y=\"52\" width=\"150\" height=\"180\" fill=\"#e6ebf1\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"70\" y=\"40\" width=\"50\" height=\"14\" fill=\"#fff\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<path d=\"M10 40H70M120 40H170\" stroke=\"#6b7a8c\" stroke-width=\"3\"/>\n<text x=\"95\" y=\"30\" text-anchor=\"middle\" font-weight=\"bold\">Manhole</text>\n<path d=\"M45 110V72\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M45 66l-6 10h12z\" fill=\"#2f6db2\"/>\n<path d=\"M45 175V212\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M45 218l-6 -10h12z\" fill=\"#2f6db2\"/>\n<path d=\"M30 142H160\" stroke=\"#6b7a8c\" stroke-dasharray=\"5 4\"/>\n<text x=\"95\" y=\"146\" text-anchor=\"middle\" font-size=\"14\">mixes in the middle</text>\n<g stroke=\"#6b7a8c\"><path d=\"M170 76H196M170 142H196M170 206H196\"/></g>\n<text x=\"200\" y=\"70\" font-weight=\"bold\">Methane</text><text x=\"200\" y=\"84\" font-size=\"14\">lighter, collects high</text>\n<text x=\"200\" y=\"136\" font-weight=\"bold\">Any level</text><text x=\"200\" y=\"150\" font-size=\"14\">low oxygen, carbon monoxide</text>\n<text x=\"200\" y=\"200\" font-weight=\"bold\">Hydrogen sulfide, chlorine</text><text x=\"200\" y=\"214\" font-size=\"14\">heavier, collect low</text>\n<text x=\"20\" y=\"252\" font-size=\"14\">Test at several levels: gases shift with air movement</text>\n</svg>\n<figcaption>Where common gases collect in a vault: lighter gases drift high, heavier gases sink, and low oxygen can occur at any level.</figcaption>\n</figure>\n\nThe figure is a guide, not a promise: ventilation, temperature and movement change where gases sit, so a space is tested at more than one level and again as conditions change.\n\n### Why smell cannot be trusted\n\n\"I would smell it if it were bad\" has killed experienced people. First, some hazards have no smell: oxygen deficiency, carbon monoxide and sewer methane give no warning. Second, hydrogen sulfide can dull the sense of smell, so an odor that fades may mean the worker has lost the ability to detect it while the gas is still there. Third, people differ in how well they smell.\n\nThe answer is instruments. A calibrated, bump-tested gas monitor reads the hazards it is designed for, and it is only as good as its calibration, sensors and reader. Know what your meter does not read.\n\n### Why each safeguard exists\n\nEach part of a confined space program answers a specific failure that has happened to real crews. Understanding the purpose makes the rules easier to follow and harder to skip.\n\n| Safeguard | Purpose |\n| --- | --- |\n| **Atmospheric testing** | Checks the four atmosphere types (oxygen, flammable gas, toxic gas and other contaminants such as dust) before work and while it continues, because conditions change |\n| **Ventilation and purge** | A purge clears stale air before entry and continuous ventilation keeps fresh air moving; both support testing and do not replace it |\n| **Isolation of connected lines and energy** | Stops material, gas or power from entering the space while people are inside |\n| **Attendant, harness and lifeline** | The attendant stays outside, tracks entrants, keeps contact and summons rescue without entering; a harness and lifeline let an entrant be pulled out without a second person going in |\n| **Rescue plan** | Makes sure that trained rescuers and equipment are ready before anyone goes in, so rescue is quick |\n| **Entry permit** | Records that the hazards were identified, controls are in place, and the designated entry supervisor authorised the entry; it communicates the plan to everyone involved |\n\nA permit forces a pause in which the questions are answered before anyone is at risk. The attendant is not a lookout who can be pulled away for another job.\n\n### Rescue awareness: do not become the second victim\n\nWhen a worker collapses in a space, the instinct is to rush in. Resist it. The same atmosphere or hazard that downed the first person will down the second, and often a third. Rescuers who enter without the right equipment and training are a leading reason that confined space incidents become multiple fatalities.\n\nIf you see a coworker in trouble in a space, call for help and activate the rescue plan. Stay out unless you are a trained, equipped member of the rescue team, and do not rely on holding your breath. Every safeguard in the table exists so that rescue is never improvised.\n\n### Breathing apparatus and classified areas (recognition only)\n\nA filtering respirator is a poor fit for a confined space: it supplies no oxygen and cannot handle a large or unknown contaminant. **IDLH** stands for immediately dangerous to life or health, air where a short exposure could kill, cause lasting harm or leave a person too impaired to escape. An unknown atmosphere is treated as IDLH until tested. A space that is or may be IDLH calls for **SCBA**, a self-contained breathing apparatus that carries its own air supply on the wearer's back, or an airline (supplied-air) respirator fed through a hose that also has its own escape air supply. An ordinary airline respirator without escape air is not enough, because the hose can fail. Both need medical clearance, fit testing and specific training. Rescue teams use them; an untrained operator does not pick one up in an emergency.\n\n**Explosion-proof equipment** matters where flammable gas or vapor may be present, such as a digester gallery or fuel room. The site's hazardous-location classification, set under the applicable code, marks which areas need it. An explosion-proof housing is built so that if gas inside ignites, the housing contains the blast and cools what escapes, so the surrounding atmosphere does not ignite. The name does not mean the equipment cannot fail. Check the rating mark before bringing in a light, meter, radio, drill or phone, because an ordinary one can be the spark. Intrinsically safe instruments limit their energy so they cannot ignite gas. The rating has to match the area, and unrated items are not swapped in.\n\n### Worked example: reading a gas meter\n\n*The Alder Bend lift station is fictional. The constants below are given in the example and are not exposure limits.*\n\nMeters show different hazards in different units. Oxygen is read in percent by volume, flammable gas often as a percentage of the lower flammable limit, and toxic gases usually in parts per million (ppm). Converting between ppm and percent is common:\n\n**10,000 ppm = 1 percent by volume**\n\nAt Alder Bend, a fictional meter reads 2,500 ppm for a gas. To express this in percent, divide by 10,000:\n\n2,500 ppm / 10,000 = **0.25 percent by volume**\n\nTo go the other way, multiply by 10,000. A reading of 0.3 percent is 0.3 x 10,000 = **3,000 ppm**. Direction check: ppm is a much larger number than percent, so ppm to percent should shrink the number.\n\nRemember what the number does not tell you. Whether a reading is acceptable depends on the gas and on the rule or permit that applies, never on a figure you half remember. Your job is to know what the meter is telling you and to stop and ask when it is not what you expected.\n\n### Before you move on\n\nYou can now name the features of a confined space, explain how the air becomes dangerous and what each safeguard is for. Module 3 turns to excavations, traffic, energy and lifting.",
+      "evidence": "### Fictional scenario: the Alder Bend lift station\n\nAlder Bend is a fictional town. A lift station wet well has been quiet for a week. A technician plans to enter to free a float switch. The operator who last visited noticed a faint rotten-egg smell that was gone by the end of the visit. A coworker suggests that a quick look is enough because the pump is off and the smell has cleared. The fictional meter reads 3,000 ppm for one gas.\n\n### Your decision\n\nExplain why the plan should not proceed as described, name the hazards that may be present and where each would collect, convert the meter reading to percent by volume, and state what each safeguard in a permit program is for.",
+      "assignment": "Write a half-page memo for the Alder Bend crew. Explain why the wet well is treated as a permit-required space, why smell cannot be trusted, and what role the attendant, the rescue plan and the permit each play. Convert 3,000 ppm to percent by volume and show the unit conversion.",
+      "rubric": [
+        "Identifies the space as confined and explains why its air may have changed.",
+        "Explains why the faded smell is not evidence that the gas has cleared.",
+        "States the purpose of testing, ventilation, attendant, rescue plan and permit without describing entry steps.",
+        "Converts 3,000 ppm to 0.3 percent by volume with the correct direction and units."
+      ],
+      "facilitatorGuide": "3,000 ppm / 10,000 = 0.3 percent by volume. Key points: the space may hold gas or low oxygen after a week; hydrogen sulfide can dull the sense of smell; methane collects high and heavier gases collect low; ventilation supports testing and does not replace it; the attendant stays outside; the rescue plan exists before entry; nobody enters to rescue unless trained and equipped. Reject answers that give an entry procedure, quote an acceptable gas limit from memory, or rely on the pump being off as protection.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and work through the example, writing units and reasons at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one hazard from your own workplace that this module covers."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review the feedback."
+        }
+      ],
+      "sourceIds": [
+        "ccohs-confined"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-safety-confined-atmosphere-c1",
+          "objective": "confined-atmosphere",
+          "prompt": "A fictional supervisor asks what makes a space confined. Which description is closest?",
+          "choices": [
+            "Lies below ground level and is reached by a fixed ladder",
+            "Holds liquid, sludge or chemical product that could be released",
+            "Can be entered, has limited exits, is not for regular occupancy",
+            "Has a hatch that locks from the outside when it is closed"
+          ],
+          "correctIndex": 2,
+          "explanation": "A space is confined when it can be entered, has restricted entry or exit, and is not designed for continuous occupancy. The \"Lies below ground level and is reached by a fixed ladder\" choice used depth as the test, but a shallow vault with a small hatch can be confined and a deep open pit may not be. The \"Holds liquid, sludge or chemical product that could be released\" choice used the contents as the test, but an empty vault can be confined. The \"Has a hatch that locks from the outside when it is closed\" choice chose a feature that is not part of the definition."
+        },
+        {
+          "id": "ceu-basic-safety-confined-atmosphere-c2",
+          "objective": "confined-atmosphere",
+          "prompt": "A fictional wet well was clear on Monday. Why might it be hazardous on Friday?",
+          "choices": [
+            "Air in a closed space stays the same until someone enters",
+            "Clear outdoor air means the air inside is clear too",
+            "Hazards change once the entry permit has expired",
+            "Decay, rust, leaks or nearby work can change the air"
+          ],
+          "correctIndex": 3,
+          "explanation": "The air in a space changes with its contents and connected lines: decay and leaks add gas, and rusting uses up oxygen, so an earlier clear result does not carry forward. The \"Air in a closed space stays the same until someone enters\" choice believed an unopened space holds a fixed atmosphere, but the contents keep reacting. The \"Clear outdoor air means the air inside is clear too\" choice judged the space by the air outside, but gas and low oxygen build up inside where air does not move freely. The \"Hazards change once the entry permit has expired\" choice treated the permit as the cause of the hazard instead of a record of it."
+        },
+        {
+          "id": "ceu-basic-safety-confined-atmosphere-c3",
+          "objective": "confined-atmosphere",
+          "prompt": "Why is smell a poor warning for hydrogen sulfide?",
+          "choices": [
+            "It can dull smell, so the odor fades while gas remains",
+            "It has no odor at any level of concentration",
+            "A weak odor means the space is probably safe to enter",
+            "Its odor depends on the temperature and humidity of the air"
+          ],
+          "correctIndex": 0,
+          "explanation": "Hydrogen sulfide can deaden the sense of smell, so a fading smell does not mean the gas has gone. The \"It has no odor at any level of concentration\" choice stated that it has no odor, but at low levels it smells like rotten eggs. The \"A weak odor means the space is probably safe to enter\" choice assumed odor strength tracks danger, but the sense of smell can be lost. The \"Its odor depends on the temperature and humidity of the air\" choice chose a factor that is not the cause of lost detection."
+        },
+        {
+          "id": "ceu-basic-safety-confined-atmosphere-c4",
+          "objective": "confined-atmosphere",
+          "prompt": "What does the term IDLH describe in respiratory protection?",
+          "choices": [
+            "A rating showing a cartridge filters most gases and vapors from the air",
+            "Air where brief exposure can kill, injure for life or stop escape",
+            "A permit category for work near hot surfaces or open flames",
+            "A label showing that a gas meter passed its bump test"
+          ],
+          "correctIndex": 1,
+          "explanation": "IDLH means immediately dangerous to life or health: air where a short exposure could kill, cause lasting harm or leave a person unable to escape. The \"A rating showing a cartridge filters most gases and vapors from the air\" choice mixed up the term with a filtering cartridge rating. The \"A permit category for work near hot surfaces or open flames\" choice mistook it for a hot work category. The \"A label showing that a gas meter passed its bump test\" choice mistook it for an instrument check label."
+        },
+        {
+          "id": "ceu-basic-safety-confined-atmosphere-c5",
+          "objective": "confined-atmosphere",
+          "prompt": "What is the job of the attendant posted outside a permit-required space?",
+          "choices": [
+            "Enter quickly when an entrant stops answering calls",
+            "Test the air once and then leave the site",
+            "Stay at the opening, track entrants, summon rescue",
+            "Keep the permit on file for the supervisor to review"
+          ],
+          "correctIndex": 2,
+          "explanation": "The attendant stays outside, keeps track of the entrants and calls rescue; the attendant does not enter. The \"Enter quickly when an entrant stops answering calls\" choice sent the attendant in, which can create a second victim. The \"Test the air once and then leave the site\" choice turned a continuing monitoring role into a single task. The \"Keep the permit on file for the supervisor to review\" choice treated the attendant as a clerk instead of the person who watches the entrants."
+        },
+        {
+          "id": "ceu-basic-safety-confined-atmosphere-c6",
+          "objective": "confined-atmosphere",
+          "prompt": "A fictional operator sees a coworker collapse inside a manhole. What is the safe awareness response?",
+          "choices": [
+            "Climb in at once because seconds count for rescue",
+            "Hold your breath and enter a short way in",
+            "Lower a fan, then go in to check",
+            "Call for trained rescue and stay out"
+          ],
+          "correctIndex": 3,
+          "explanation": "Untrained entry turns one victim into two; the safe response is to call for trained rescuers and keep others out. The \"Climb in at once because seconds count for rescue\" choice rushed in, and the same atmosphere can overcome the second person. The \"Hold your breath and enter a short way in\" choice believed a breath-hold protects against a hazardous atmosphere. The \"Lower a fan, then go in to check\" choice assumed brief ventilation makes unprepared entry safe."
+        }
+      ]
+    },
+    {
+      "id": "excavation-energy",
+      "title": "Excavations, traffic, energy and lifting",
+      "objectives": [
+        "Explain why trenches collapse and what sloping, shoring and shielding are for.",
+        "Recognise the purpose of traffic control, lockout and tagout, and safe lifting, tool and noise controls.",
+        "Recognise the purpose of grounding, GFCI protection, hot work permits, arc screens and crane and hoist safeguards."
+      ],
+      "lesson": "### Hazards that come from outside the building\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-trench_1fe7b481.jpg\" alt=\"A trench with an aluminium trench box in place, workers outside it, and traffic control on the roadside.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>A trench box protects the people working inside it. Workers stay clear of the box and the trench edge.</figcaption></figure>\n\nCrews work around trenches, vehicles, electricity, heavy loads and tools, and each hazard looks routine. This module covers the purpose of the controls, not step-by-step procedures; your facility program, competent person and applicable rules govern the details.\n\n> **Your job:** recognise what makes each hazard dangerous, know what protection is for and stop work when something looks wrong.\n\n### Why trenches cave in\n\nSoil is heavy. A cubic foot weighs roughly a hundred pounds (45 kg) or more, so even a small section of wall can bury a person in seconds. Soil that looks solid can fail without warning. Usual contributors:\n\n- **Water:** rain, a high water table or a leaking pipe softens soil and adds weight.\n- **Vibration:** passing trucks, compactors and nearby equipment shake walls loose.\n- **Added load:** spoil piles, equipment and materials placed near the edge push on the wall.\n- **Soil type and disturbed ground:** sand, loose fill and ground near an old utility cut are unstable.\n\nNobody enters a trench until a competent person has inspected it and protection is in place. Cracks along the edge, falling soil, bulging, seeping water and an undercut base are reasons to get out and report.\n\n### Sloping, shoring and shielding\n\nThree common methods protect workers in an excavation, and all do the same job: keep soil from burying anyone.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Three trench cross-sections: sloped with angled walls, shored with braces across the trench, shielded with a box around the workers.\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#1d2d40\">\n<title>Three trench protection methods</title>\n<g fill=\"#d5dae1\" stroke=\"#6b7a8c\" stroke-width=\"2\"><path d=\"M8 50H118V180H8z\"/><path d=\"M135 50H255V180H135z\"/><path d=\"M272 50H382V180H272z\"/></g>\n<g fill=\"#fff\" stroke=\"#6b7a8c\" stroke-width=\"2\"><path d=\"M8 50L40 180H86L118 50z\"/><path d=\"M168 50V180H222V50z\"/><path d=\"M296 50V180H358V50z\"/></g>\n<g fill=\"#2f6db2\" stroke=\"#1d2d40\"><rect x=\"161\" y=\"60\" width=\"7\" height=\"120\"/><rect x=\"222\" y=\"60\" width=\"7\" height=\"120\"/></g>\n<g stroke=\"#1d2d40\" stroke-width=\"3\"><path d=\"M168 85H222M168 140H222\"/></g>\n<g fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"5\"><rect x=\"304\" y=\"80\" width=\"46\" height=\"100\"/></g>\n<g fill=\"#1d2d40\"><circle cx=\"327\" cy=\"130\" r=\"6\"/><circle cx=\"63\" cy=\"170\" r=\"6\"/><circle cx=\"195\" cy=\"170\" r=\"6\"/></g>\n<text x=\"63\" y=\"30\" text-anchor=\"middle\" font-weight=\"bold\">Sloped</text><text x=\"195\" y=\"30\" text-anchor=\"middle\" font-weight=\"bold\">Shored</text><text x=\"327\" y=\"30\" text-anchor=\"middle\" font-weight=\"bold\">Shielded</text>\n<text x=\"63\" y=\"203\" text-anchor=\"middle\" font-size=\"14\">walls cut back</text><text x=\"195\" y=\"203\" text-anchor=\"middle\" font-size=\"14\">walls braced</text><text x=\"327\" y=\"203\" text-anchor=\"middle\" font-size=\"14\">box around workers</text>\n<text x=\"195\" y=\"222\" text-anchor=\"middle\" font-size=\"14\">dot = worker</text>\n</svg>\n<figcaption>Three trench protection methods: sloping cuts the walls back, shoring braces them, and shielding places a strong box around the workers.</figcaption>\n</figure>\n\n- **Sloping and benching** cut the trench walls back at an angle so the soil cannot slide in. Steeper walls need stronger soil; the competent person determines the angle for the soil conditions.\n- **Shoring** holds the walls in place with supports such as hydraulic or timber braces and boards pressed against the wall.\n- **Shielding** uses a prefabricated trench box or shield that stands in the trench. A shield does not hold the walls back; it protects the people inside if a wall collapses, so workers must stay within it.\n\nA competent person selects and checks the system for the soil, depth and water, and it stays until backfilling.\n\n### Ladders, spoil piles and utilities\n\n**Means of exit.** A trench needs a safe way out within a short walk of workers, such as a ladder or ramp, so people can leave quickly if a wall fails or water rises. A ladder does not support the wall or replace trench protection.\n\n**Spoil piles and equipment.** Soil, pipe, tools and machines are kept back from the edge, where their weight pushes the wall inward and loose material can fall on workers. Keep vehicles away or use barriers or stop logs.\n\n**Buried utilities.** Before digging, utility owners mark their lines, usually through a locate service. Striking a gas, power or water line injures workers and cuts service. Marks show the approximate position of each line, not its exact path or depth, so digging near them is done with care, and a locate does not make the trench safe.\n\n### Traffic control\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-traffic-control_f8f1535f.jpg\" alt=\"A flagger in a hi-vis vest signals traffic at a roadside work zone, behind cones and a barrier, with a utility truck working ahead.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Traffic control is set up before the crew enters the lane; the flagger stands where drivers can see them, outside the work area.</figcaption></figure>\n\nRoadside work puts a crew close to fast vehicles. Traffic control warns drivers early, guides them around the work area and keeps them from workers, using signs, cones, barriers, arrow boards, flaggers and lane closures. The plan is designed in advance, not improvised. High-visibility clothing is part of it, and backing trucks need a spotter.\n\n### Electrical hazards, lockout and tagout\n\n**Shock** is current passing through the body; it can stop the heart, burn tissue and throw a person from a ladder. **Arc flash** is the intense heat and light released when current jumps through the air between conductors or to ground; the arc blast that comes with it adds a pressure wave and flying molten metal. Only qualified people work on energized equipment.\n\nAssume any wire or circuit is energized until a qualified person verifies it as de-energized. A switch that \"looks off\" or a machine that \"is not running\" is not proof.\n\n**Lockout and tagout** exist because equipment can start or release energy while someone is servicing it: electrical, hydraulic, pneumatic, gravity and stored spring or line pressure. A lock holds the energy-isolating device off, and the tag says who placed it and why. Everyone working on the equipment has a lock, and it stays until its owner removes it. Treat a lock and tag as a stop sign: do not operate it, do not remove it and do not assume it was forgotten.\n\nThe steps belong to your site's energy control program and training. Carry the purpose, and the rule that no one starts, bypasses or removes a locked or tagged device.\n\n### Grounding, cords and ground-fault protection\n\n**Grounding** (the equipment grounding conductor and bonding) gives fault current a low-resistance path back to the source, so a metal case that becomes energized trips a breaker or blows a fuse quickly instead of staying live for the next person who touches it. It reduces shock risk; it does not remove it. Do not cut off a grounding prong or use a cheater adapter. A **ground-fault circuit interrupter (GFCI)** senses a small leak of current, such as through a person, and cuts power quickly. It is the expected protection for portable tools and outlets in wet or outdoor places, and it is tested with its own button as the program directs. It limits harm; it does not make a live wire safe to touch.\n\nExtension cords are temporary. Use cords rated for the tool and for wet or outdoor use, keep them out of water and walkways, and do not chain them together, run them through doors or repair them with tape. A damaged cord or plug takes the tool out of service.\n\n### Hot work, welding and cutting\n\nWelding, cutting and grinding throw sparks, molten metal and heat that can reach materials far from the work. Most facilities control this work with a **hot work permit** or written authorization under their hot work program. It records that the area was checked for flammable material and gas, combustibles were moved or covered, a fire watch is assigned where the program calls for one, and an extinguisher is at hand. Gas-welding cylinders and hoses are secured and kept from sparks. The arc gives off ultraviolet light that burns eyes and skin within seconds, so the welder wears a helmet with a filter lens shade matched to the process, and nearby people are shielded by **arc screens** or curtains. Fumes are controlled by ventilation or by the respirators the program specifies. Hot work near a wet well or digester is a flammable-gas hazard first, so the facility's hot work procedure and gas testing decide whether it may start.\n\n### Lifting, ergonomics, tools and noise\n\nBack and shoulder injuries are common and cumulative. The strongest control is to remove the lift with a hoist, cart or hand truck. When a manual lift remains, clear the path, keep the load close, bend the knees, turn with the feet rather than the waist, and use a team lift for heavy or awkward loads.\n\n**Hand and power tools** cause cuts, crushing, flying particles and shock. Inspect them before use, keep guards in place, use the tool for its intended job and wear matching PPE. A defective tool goes out of service and is reported.\n\n**Noise** usually injures hearing slowly and painlessly, and a single very loud blast can harm it at once. Loudness and time both matter; the applicable rule sets the action levels and the facility's hearing program applies them. If coworkers must shout at arm's length, assume the noise needs control: enclose the equipment first, limit time next, issue hearing protection last.\n\n### Cranes, hoists and rigging\n\nCranes and hoists move heavy suspended loads, so routes are planned to keep loads away from people. Know the rated capacity marked on the device and on each sling, and do not exceed it. Inspect hooks, chains, slings and the hoist before use, and remove damaged items. A trained operator moves the load, a qualified rigger attaches it, and signals come from one agreed signal person, although anyone who sees danger may call a stop and the operator obeys it. Keep the load low and the path clear, and stay out from under a suspended load and out of the swing area. Keep cranes and booms away from power lines: contact can energize the machine and the ground around it.\n\n### Worked example: a trench at Pine Hollow\n\n*Pine Hollow is a fictional town. The crew uses 1 ft = 0.3048 m.*\n\nA crew digs a trench 8 ft deep to replace a service line. Overnight rain softened the soil, a dump truck idles near the edge beside the spoil pile, and the competent person finds a crack along the edge and water seeping at the base.\n\nFirst, convert the depth for the metric record: 8 ft x 0.3048 m/ft = **2.44 m**.\n\nSecond, list the contributors and warning signs: water-softened soil, vibration from the truck and added load from the spoil pile and truck push the wall toward failure, and the crack and seeping water warn that it may already be moving. Together they make a cave-in likely.\n\nThird, choose the response: nobody enters, the truck and spoil pile are moved back, the protective system is checked or rebuilt, and entry resumes only when the competent person approves. A ladder would not change this assessment; it is for exit, not support.\n\n### Before you move on\n\nYou can now explain why trench walls fail, why traffic control, lockout, grounding and hot work permits exist, and how to lift and rig more safely. Module 4 covers chemicals and emergency awareness.",
+      "evidence": "### Fictional scenario: the Pine Hollow service line\n\nPine Hollow is a fictional town. A crew is replacing a service line in a trench 8 ft deep beside a driveway. It rained overnight. A dump truck idles at the edge, the spoil pile is next to the trench, and a crack runs along the surface a few feet from the wall. Nearby, a coworker has locked and tagged a pump disconnect, and another worker lifts a heavy bag of material alone.\n\n### Your decision\n\nName the factors that raise the cave-in risk, say which protective methods the competent person could consider and what each does, convert the trench depth to metres with 1 ft = 0.3048 m, and explain what the lock and tag mean and what to do about the solo lift.",
+      "assignment": "Prepare a short field note for the Pine Hollow crew. List the cave-in factors, describe the purpose of sloping, shoring and shielding, convert the trench depth to metres, explain the purpose of the lock and tag on the disconnect, and suggest a safer way to handle the heavy bag.",
+      "rubric": [
+        "Names water, vibration and added load as cave-in factors and the surface crack as a warning sign.",
+        "States the purpose of sloping, shoring and shielding and notes that a ladder is not protection.",
+        "Converts 8 ft to 2.44 m.",
+        "Explains that a lock and tag mean do not operate or remove, and proposes a mechanical or team lift."
+      ],
+      "facilitatorGuide": "8 ft x 0.3048 = 2.44 m. Factors: rain softening the soil, truck vibration, spoil pile and truck weight near the edge, and a surface crack signalling movement. The competent person chooses the protective system; the operator should stop work and keep out until it is approved. A lock and tag mean someone is working on the equipment, so nobody starts it or removes the lock. For the lift, use a cart, hoist or team lift. Reject answers that treat a ladder as support or a locate as protection from cave-in.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and work through the example, writing units and reasons at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one hazard from your own workplace that this module covers."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review the feedback."
+        }
+      ],
+      "sourceIds": [
+        "niosh-trench",
+        "ccohs-hierarchy"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-safety-excavation-energy-c1",
+          "objective": "excavation-energy",
+          "prompt": "Why can trench walls that look solid still collapse?",
+          "choices": [
+            "Heavy soil can fail from water, vibration or added load",
+            "Dry-looking soil stays stable until someone touches it",
+            "Walls fail in sand but hold in any clay soil",
+            "Soil gets stronger under the weight of heavy equipment nearby"
+          ],
+          "correctIndex": 0,
+          "explanation": "Soil weighs a great deal, and water, vibration and added load can make a wall fail without warning. The \"Dry-looking soil stays stable until someone touches it\" choice judged stability by appearance, but wall failure needs no touch. The \"Walls fail in sand but hold in any clay soil\" choice assumed one soil type is dependable, but conditions and water change it. The \"Soil gets stronger under the weight of heavy equipment nearby\" choice reversed the effect, since added load pushes on the wall."
+        },
+        {
+          "id": "ceu-basic-safety-excavation-energy-c2",
+          "objective": "excavation-energy",
+          "prompt": "Sloping, shoring and shielding share which purpose?",
+          "choices": [
+            "To pump groundwater out of the excavation",
+            "To protect trench workers from a cave-in",
+            "To keep buried utilities from being struck",
+            "To keep passing traffic away from the edge"
+          ],
+          "correctIndex": 1,
+          "explanation": "All three methods keep soil from burying a worker; they differ in how they do it. The \"To pump groundwater out of the excavation\" choice confused protection from soil with dewatering. The \"To keep buried utilities from being struck\" choice confused trench protection with locating buried lines. The \"To keep passing traffic away from the edge\" choice confused trench protection with traffic control."
+        },
+        {
+          "id": "ceu-basic-safety-excavation-energy-c3",
+          "objective": "excavation-energy",
+          "prompt": "Why are spoil piles and equipment kept back from a trench edge?",
+          "choices": [
+            "They make the trench look smaller to passing drivers",
+            "The soil near the edge is needed for the first backfill",
+            "Their weight can push in the wall or drop material",
+            "Setback keeps the soil near the edge from drying out"
+          ],
+          "correctIndex": 2,
+          "explanation": "Weight near the edge loads the wall and material can roll in, so piles and machines are set back. The \"They make the trench look smaller to passing drivers\" choice chose a visibility reason that does not address cave-in. The \"The soil near the edge is needed for the first backfill\" choice chose a work-sequence reason instead of a safety one. The \"Setback keeps the soil near the edge from drying out\" choice chose a soil-moisture reason that does not apply."
+        },
+        {
+          "id": "ceu-basic-safety-excavation-energy-c4",
+          "objective": "excavation-energy",
+          "prompt": "What is the main purpose of traffic control at a roadside work zone?",
+          "choices": [
+            "To stop traffic on the road until work ends",
+            "To mark the site for delivery drivers",
+            "To make high-visibility clothing unnecessary for crews",
+            "To warn drivers early and guide them past workers"
+          ],
+          "correctIndex": 3,
+          "explanation": "Traffic control warns, guides and separates; it supplements high-visibility clothing and does not replace it. The \"To stop traffic on the road until work ends\" choice treated a full closure as the general purpose; some jobs do close a road, but the usual aim is to warn drivers and guide them safely past the work. The \"To mark the site for delivery drivers\" choice treated the devices as site signage for deliveries. The \"To make high-visibility clothing unnecessary for crews\" choice believed devices replace personal visibility, but they work together."
+        },
+        {
+          "id": "ceu-basic-safety-excavation-energy-c5",
+          "objective": "excavation-energy",
+          "prompt": "What is the purpose of lockout and tagout?",
+          "choices": [
+            "To keep equipment from starting or releasing energy",
+            "To record maintenance hours for the equipment history",
+            "To warn operators that the equipment is due for service",
+            "To let a switch be turned off and on quickly"
+          ],
+          "correctIndex": 0,
+          "explanation": "A lock holds the energy-isolating device off and the tag warns who placed it, so no one starts the machine; stored energy is also released or blocked so it cannot reach a worker. The \"To record maintenance hours for the equipment history\" choice treated the lock as a record-keeping device. The \"To warn operators that the equipment is due for service\" choice treated the tag as a service reminder. The \"To let a switch be turned off and on quickly\" choice treated it as a convenience for quick restarts."
+        },
+        {
+          "id": "ceu-basic-safety-excavation-energy-c6",
+          "objective": "excavation-energy",
+          "prompt": "What is the safest assumption about a wire or circuit before it has been verified as de-energized?",
+          "choices": [
+            "It is dead if the switch handle looks off",
+            "It is live and can shock or cause an arc",
+            "It is dead if the equipment is not running",
+            "It is harmless if the insulation looks intact"
+          ],
+          "correctIndex": 1,
+          "explanation": "Appearance does not prove isolation, so treat a circuit as live until a qualified person verifies it is not. The \"It is dead if the switch handle looks off\" choice trusted the appearance of a switch, which can be wrong or backfed. The \"It is dead if the equipment is not running\" choice assumed idle equipment is safe, but the circuit can still be live. The \"It is harmless if the insulation looks intact\" choice assumed intact insulation guarantees no hazard."
+        }
+      ]
+    },
+    {
+      "id": "chemical-emergency",
+      "title": "Chemical safety and emergency awareness",
+      "objectives": [
+        "Recognise common treatment chemicals, their hazards and why incompatible products are stored apart.",
+        "Describe awareness-level responses to leaks, spills, fire and emergencies, and the roles of drills, near-miss reports and security.",
+        "Recognise hydrogen peroxide, cross-connection and non-potable marking, battery, food and laboratory contamination and fire-class hazards."
+      ],
+      "lesson": "### Chemicals do useful work and can hurt you\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-chemicals_804dd1bb.jpg\" alt=\"A chemical storage room with containers on spill trays, separated shelving and a wall-mounted eyewash station.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Containment trays, separated storage and a nearby eyewash are the basic layout to check, not a full storage design.</figcaption></figure>\n\nOperators handle disinfectants, pH adjusters, coagulants, fluoride compounds and polymer daily. Each is dangerous when mixed, spilled or mistaken for something else. This module teaches recognition and awareness; handling and emergency procedures belong to your facility's plans and training.\n\n> **Your job:** know what each chemical can do, keep incompatible products apart, spot leaks early and respond through the plan.\n\n### Common treatment chemicals and what to recognise\n\n| Chemical | What it is used for | What to recognise |\n| --- | --- | --- |\n| **Chlorine gas** | Disinfection | Greenish-yellow gas, sharp odor, heavier than air, harms eyes and lungs; liquid under pressure in cylinders and ton containers |\n| **Sodium hypochlorite** | Disinfection | Corrosive bleach solution; loses strength with age, heat and light; releases chlorine gas with acid |\n| **Ammonia** | Chloramine disinfection | Pungent gas or solution; irritates eyes and lungs; reacts with chlorine products to form harmful vapors |\n| **Caustic soda** | pH and alkalinity adjustment | Strongly corrosive to skin, eyes and some metals; releases heat when diluted |\n| **Acids** | pH adjustment, cleaning, scale removal | Corrosive; reactions with other products can release gas or heat |\n| **Hydrogen peroxide** | Oxidizing, odor control and some cleaning uses | Strong oxidizer; concentrated liquid burns skin and eyes; contamination can break it down, releasing oxygen and heat that burst a sealed container, so it is stored vented, away from fuels; flush contact with water at once |\n| **Polymer** | Coagulation and dewatering aid | Spilled polymer is extremely slippery when wet; dust or mist can irritate |\n| **Fluoride compounds** | Fluoridation | Dust and concentrated solutions are toxic and irritating; follow the SDS |\n\nFor each chemical ask what it can do to a person, what it reacts with and what the SDS requires. If you cannot answer, read the SDS first.\n\n### Why incompatible chemicals are stored apart\n\nSome pairs of chemicals produce gas, heat or fire when they meet, and the meeting usually happens by accident: a leak, a forklift, a wrong hose or a pail on the wrong shelf.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Storage layout with four separate areas: hypochlorite and chlorine, acids, ammonia, caustic. Arrows between pairs that react are labelled toxic gas, toxic gas and heat.\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#1d2d40\">\n<title>Chemical storage layout by group</title>\n<g stroke=\"#1d2d40\" stroke-width=\"2\"><rect x=\"20\" y=\"20\" width=\"140\" height=\"70\" fill=\"#e3edf8\"/><rect x=\"230\" y=\"20\" width=\"140\" height=\"70\" fill=\"#e6ebf1\"/><rect x=\"20\" y=\"150\" width=\"140\" height=\"70\" fill=\"#e6ebf1\"/><rect x=\"230\" y=\"150\" width=\"140\" height=\"70\" fill=\"#e3edf8\"/></g>\n<g text-anchor=\"middle\" font-weight=\"bold\"><text x=\"90\" y=\"50\">Hypochlorite</text><text x=\"300\" y=\"50\">Acids</text><text x=\"90\" y=\"180\">Ammonia</text><text x=\"300\" y=\"180\">Caustic</text></g>\n<g text-anchor=\"middle\" font-size=\"14\"><text x=\"90\" y=\"68\">and chlorine</text><text x=\"300\" y=\"68\">own curb, own fill line</text><text x=\"90\" y=\"198\">own curb, own fill line</text><text x=\"300\" y=\"198\">own curb, own fill line</text></g>\n<g stroke=\"#2f6db2\" stroke-width=\"3\" stroke-dasharray=\"6 4\"><path d=\"M166 55H224M90 96V144M300 96V144\"/></g>\n<g text-anchor=\"middle\" font-weight=\"bold\" fill=\"#2f6db2\"><text x=\"195\" y=\"47\">toxic gas</text><text x=\"90\" y=\"124\" dx=\"-4\" text-anchor=\"end\">toxic gas</text><text x=\"300\" y=\"124\" dx=\"-4\" text-anchor=\"end\">heat</text></g>\n<text x=\"20\" y=\"246\" font-size=\"14\">Dashed line = keep these groups apart; check the SDS</text>\n</svg>\n<figcaption>A storage layout that separates incompatible groups: hypochlorite, acids, ammonia and caustic each get their own area, and the pairs that react are kept farthest apart.</figcaption>\n</figure>\n\n- **Hypochlorite and acid:** mixing releases chlorine gas.\n- **Hypochlorite or chlorine and ammonia:** mixing forms chloramine compounds, which are irritating and toxic vapors.\n- **Acid and caustic:** mixing releases a large amount of heat and can spatter violently.\n- **Oxidizers and fuels or oils:** can ignite or speed a fire.\n\nThe control is separation by design: separate rooms or secured areas, secondary containment such as curbs or trays, dedicated fill lines with connections that do not fit the wrong tank, and clear labels. Delivery is a high-risk moment, because a driver connecting to the wrong fill line can mix products.\n\n### Cylinders, batteries and containers\n\nA damaged valve can turn a compressed gas cylinder into a leak or a projectile. Keep cylinders secured in the position the supplier specifies, which is upright for most cylinders while chlorine ton containers lie on their sides on rated supports, with valve caps or other valve protection on when not connected, move them on the right cart, keep them out of heat and report a damaged valve or smell of gas. A **regulator** steps cylinder pressure down to the working level and is made for one gas family, so nothing is borrowed from another gas, and oil or grease near oxygen fittings can ignite. Repairs are for trained people.\n\n**Batteries** differ by type. Lead-acid and some other batteries hold acid or caustic electrolyte and can give off hydrogen while charging: keep sparks away, charge in ventilated areas, wear splash protection and keep metal tools off the terminals, where a short circuit burns and spatters. Lithium-ion batteries have different hazards, mainly overheating and fire, so follow the maker's charging and storage instructions.\n\n### Cross-connections and marking of non-potable piping\n\nA **cross-connection** is any link between drinking water and a source that could contaminate it, such as a hose left in a chemical tank or a feed line tied to process water. Reverse flow into the clean pipe is called **backflow**. It happens by **backsiphonage**, when supply pressure drops and the contaminant is drawn backward, or by **backpressure**, when the connected source is at higher pressure than the drinking water and pushes into it. Controls include an air gap, a backflow preventer tested on the program's schedule, and hoses kept out of containers. **Non-potable piping** such as reclaimed water, process water and chemical lines is marked with labels, colour bands, flow arrows and do-not-drink signs so that nobody mistakes it for drinking water. Colours and wording are set by the applicable code and your site, so learn your facility's scheme.\n\n### Food, drink and laboratory contamination\n\nChemicals and pathogens reach the mouth through hands, food and drink. Eat, drink and store food in designated clean areas, not in the lab, chemical room or on a bench, and keep food out of any refrigerator that holds samples or reagents. In the lab, label every bottle, do not pipette by mouth, keep containers capped, use a fume hood for volatile or corrosive work, send reagent waste through the lab's waste plan rather than the sink, and do not taste or sniff a sample to identify it.\n\n### Recognising a spill or leak, and who to notify\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-spill-kit_98651068.jpg\" alt=\"A spill response pallet with a drum containment sump and absorbent pads sits beside drums, while an operator in gloves stands well back.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Spill kits and containment are for a trained response; the picture shows where they are kept, not how to clean a spill.</figcaption></figure>\n\nEarly signs of a leak are damp patches, crusting around fittings, a change in odor, corroded metal, a hiss, visible vapor, a tank level drop with no matching feed or a sensor alarm. Treat a stain around a fitting as a leak that has not finished growing.\n\nThe awareness-level response is short: move away, warn others nearby and notify the supervisor or the emergency contact in your plan. Trained, equipped responders manage a release; an operator who is not does not walk in to stop it. Know your escape route. The rules that apply to your site set whether a release is reportable, so know who makes that call.\n\n### First aid awareness, eyewash and showers\n\nFirst aid in a chemical incident is about time, because many chemicals keep injuring tissue until they are removed. The **eyewash station and safety shower** flush a chemical from the eyes or body immediately while help is called. They dilute and remove the chemical rather than neutralize it. They must be reachable without obstruction and tested on the facility's schedule. Contaminated clothing is removed, and the SDS and facility plan say how long to flush and when a dry powder is brushed off before water is used.\n\nKnow where the stations, first aid kit, SDS and emergency numbers are, and who on each shift holds current first aid and CPR training: a person who has stopped breathing needs help within minutes. Call emergency services, then follow your training and plan. Anyone exposed to a chemical should be medically assessed even if they feel better, because hydrogen sulfide and chlorine can cause delayed lung effects.\n\n### Fire awareness\n\n<figure><img src=\"/manus-storage/ceu-basic-safety-fire-extinguisher_536eb0dc.jpg\" alt=\"A fire extinguisher is mounted on a wall beside an exit door, with an illuminated exit sign above it.\" width=\"1200\" height=\"800\" loading=\"lazy\"><figcaption>Know where the extinguisher and the exits are before you need them. Only use one if your facility plan and training say you should.</figcaption></figure>\n\nFire needs fuel, oxygen and heat, and treatment sites hold them in unusual places: digester gas, generator fuel, oxidizers near organic material and electrical equipment in damp rooms. Control **ignition sources**: no smoking, flames, sparks or unrated equipment near flammable areas, and smoke only in posted areas.\n\nFires are grouped into classes by fuel, and an extinguisher must suit the class: ordinary combustibles such as paper and wood, flammable liquids and gases, energized electrical equipment, and combustible metals. Water on a liquid or electrical fire can spread it or shock the user, and metal fires need a special agent, so read the label. Extinguishers are for small fires, used by trained people with a clear exit.\n\nThe awareness-level response follows an order: get anyone in immediate danger out if it is safe to do so, raise the alarm, close doors to contain the fire, and use an extinguisher only on a small fire with your back to the exit. If the fire is growing, leave.\n\n### Emergency plans, drills, near misses and security\n\nAn **emergency action plan** says who calls whom, where to go, who accounts for people and who talks to responders in a fire, release, medical event or storm. It helps only if people know the alarm, exits and meeting point.\n\n**Drills** test the plan under realistic conditions and find the locked door, the dead radio battery and the worker who did not know the route in a safe setting.\n\n**Near misses** are events that could have caused harm but did not: a slip without a fall, a valve left open, a small leak caught in time. Reporting them is a cheap safety tool, because the same conditions will eventually injure someone, and a report is information, not blame.\n\n**Security awareness** protects safety too. Report cut fences, unlocked chemical rooms, unfamiliar visitors and tampered locks promptly, because a gap can become a chemical or contamination hazard.\n\n### Worked example: a cylinder at Marlowe Springs\n\n*Marlowe Springs is a fictional plant. The numbers are made up for practice.*\n\nA fictional plant feeds chlorine at a steady **12 lb/day** (5.4 kg/day) and has **96 lb** (44 kg) of net chlorine left in the cylinders on the scale. Days of supply at that feed rate:\n\n96 lb / 12 lb/day = **8 days**\n\nThe operator orders a delivery well before day 8, because rushed cylinder changes cause mistakes. Unit check: pounds divided by pounds per day gives days. Dividing the other way (12 / 96 = 0.125) gives the share of the stock used per day, not days of supply.\n\nA reviewer also finds a hypochlorite tote beside a pallet of acid. If a leak let the two mix, chlorine gas could be released, so the products belong in separate, contained areas.\n\n### Before you move on\n\nYou can now recognise the main treatment chemicals, explain why incompatible products are stored apart, and describe cross-connection, fire and emergency awareness. Your next step is to complete the checks and take the final assessment.",
+      "evidence": "### Fictional scenario: the Marlowe Springs chemical room\n\nMarlowe Springs is a fictional plant. During a weekly walk-through an operator finds a sodium hypochlorite tote on a pallet beside a pallet of acid, a damp crust around a fitting on a chemical line, a chlorine cylinder not secured, and a cut section of perimeter fence. The plant feeds 12 lb/day of chlorine and has 96 lb of net chlorine on hand. A coworker mentions that last month a worker slipped on spilled polymer and did not report it.\n\n### Your decision\n\nExplain what is wrong with each finding, say who should be notified, calculate the days of chlorine supply, and explain why the unreported slip matters.",
+      "assignment": "Write a one-page walk-through report for Marlowe Springs. For each finding give the hazard, why it matters and the awareness-level action (report, secure or move away; trained responders handle releases). Calculate the days of chlorine on hand and explain the value of the near-miss report.",
+      "rubric": [
+        "Explains that hypochlorite and acid must be separated because mixing releases chlorine gas.",
+        "Classifies the crusted fitting as a leak to report and the loose cylinder and fence as hazards to secure and report.",
+        "Calculates 96 / 12 = 8 days with correct units.",
+        "Explains that near-miss reports reveal hazards and are not for blame."
+      ],
+      "facilitatorGuide": "96 lb / 12 lb per day = 8 days. Hypochlorite and acid separation: a leak could release chlorine gas, so each needs its own contained area and fill line. The damp crust is an early leak sign to report. The cylinder should be secured upright with the cap on. The cut fence and unlocked room are security gaps to report. Polymer is very slippery, and the slip was a near miss or injury that should have been reported. Do not accept answers that send an untrained operator in to stop a leak or that give detailed emergency steps.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and work through the example, writing units and reasons at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one hazard from your own workplace that this module covers."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks, review the feedback and take the final assessment."
+        }
+      ],
+      "sourceIds": [
+        "ccohs-whmis",
+        "ccohs-confined"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-safety-chemical-emergency-c1",
+          "objective": "chemical-emergency",
+          "prompt": "What is a cross-connection in a water system?",
+          "choices": [
+            "A valve that links two treated water storage tanks to each other",
+            "A fitting that couples two sections of the same water main pipe",
+            "A link from drinking water to a source of contamination",
+            "A cross-shaped pipe fitting used where two water mains meet"
+          ],
+          "correctIndex": 2,
+          "explanation": "A cross-connection links drinking water to a possible contaminant, so a pressure drop (backsiphonage) or higher pressure on the other side (backpressure) can move that contaminant backward into the clean pipe. The \"A valve that links two treated water storage tanks to each other\" choice described an ordinary valve between two clean sources. The \"A fitting that couples two sections of the same water main pipe\" choice described a coupling, which is routine pipe work. The \"A cross-shaped pipe fitting used where two water mains meet\" choice read the name literally as the shape of a fitting."
+        },
+        {
+          "id": "ceu-basic-safety-chemical-emergency-c2",
+          "objective": "chemical-emergency",
+          "prompt": "Which gas is greenish-yellow, irritates the eyes and lungs and sinks to low areas?",
+          "choices": [
+            "Methane",
+            "Ammonia",
+            "Nitrogen",
+            "Chlorine"
+          ],
+          "correctIndex": 3,
+          "explanation": "Chlorine is a heavy, greenish-yellow, irritating gas, so it collects in pits and low rooms. The \"Methane\" choice picked a colorless flammable gas that rises. The \"Ammonia\" choice picked a colorless, pungent gas that is lighter than air. The \"Nitrogen\" choice picked a colorless gas that is not irritating and does not match the description."
+        },
+        {
+          "id": "ceu-basic-safety-chemical-emergency-c3",
+          "objective": "chemical-emergency",
+          "prompt": "What is the purpose of an eyewash station or safety shower?",
+          "choices": [
+            "To flush a chemical off the eyes or body quickly",
+            "To neutralize the chemical by reacting with it",
+            "To give an injured worker a drink of clean water",
+            "To rinse tools and equipment after a chemical spill"
+          ],
+          "correctIndex": 0,
+          "explanation": "These stations dilute and wash off a chemical quickly; time to reach them matters. The \"To neutralize the chemical by reacting with it\" choice believed the water cancels the chemical, but it only dilutes and removes it. The \"To give an injured worker a drink of clean water\" choice chose an unrelated first aid purpose. The \"To rinse tools and equipment after a chemical spill\" choice chose a cleaning purpose for equipment made for people."
+        },
+        {
+          "id": "ceu-basic-safety-chemical-emergency-c4",
+          "objective": "chemical-emergency",
+          "prompt": "A fictional operator sees crusting and a damp stain around a chemical line fitting. The best classification is:",
+          "choices": [
+            "A cosmetic issue to note at the next repainting",
+            "A possible leak to report before it grows",
+            "A normal trace of the last delivery",
+            "A spill that matters if it reaches a drain"
+          ],
+          "correctIndex": 1,
+          "explanation": "Crusting and stains are early signs that a fitting is leaking, and early reporting prevents a larger release. The \"A cosmetic issue to note at the next repainting\" choice treated early leak evidence as a surface-appearance problem. The \"A normal trace of the last delivery\" choice assumed dried residue is expected and harmless. The \"A spill that matters if it reaches a drain\" choice waited for a release to travel before treating it as a problem."
+        },
+        {
+          "id": "ceu-basic-safety-chemical-emergency-c5",
+          "objective": "chemical-emergency",
+          "prompt": "Why should near misses be reported?",
+          "choices": [
+            "They show which workers are being careless",
+            "They are reported when equipment is damaged",
+            "They reveal hazards that could hurt someone",
+            "They prove the safety program has failed"
+          ],
+          "correctIndex": 2,
+          "explanation": "A near miss is a free warning: the same conditions can injure someone later. The \"They show which workers are being careless\" choice used the report to assign blame, which discourages reporting. The \"They are reported when equipment is damaged\" choice limited reporting to events with damage, which misses most near misses. The \"They prove the safety program has failed\" choice assumed a report is a verdict on the program instead of useful information."
+        },
+        {
+          "id": "ceu-basic-safety-chemical-emergency-c6",
+          "objective": "chemical-emergency",
+          "prompt": "Why are upright compressed gas cylinders secured, with valve caps on, when not in use?",
+          "choices": [
+            "Upright cylinders hold more gas than ones lying flat",
+            "The cap keeps the cylinder label clean and dry",
+            "Chains keep the cylinder cool in warm weather",
+            "A fall or valve damage can cause a gas release"
+          ],
+          "correctIndex": 3,
+          "explanation": "Securing the cylinder and covering the valve protects against falls and valve damage that cause a release. The \"Upright cylinders hold more gas than ones lying flat\" choice assumed position changes how much a cylinder holds, but the reason is protection from falls. The \"The cap keeps the cylinder label clean and dry\" choice chose a label-protection reason instead of valve protection. The \"Chains keep the cylinder cool in warm weather\" choice chose a cooling effect that chains do not provide."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-basic-safety-hazard-ppe-f1",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional crew at Marlow Creek must clean tanks with a solvent. The supervisor offers a water-based cleaner that does the job with less hazard. This choice is:",
+      "choices": [
+        "Substitution, swapping in a safer material",
+        "Elimination, removing the cleaning task from the job",
+        "An administrative control, changing the work rule",
+        "An engineering control, adding ventilation"
+      ],
+      "correctIndex": 0,
+      "explanation": "Swapping a hazardous material for a safer one is substitution, the second step down from elimination. The \"Elimination, removing the cleaning task from the job\" choice assumed the task disappears, but the cleaning still happens. The \"An administrative control, changing the work rule\" choice treated a material swap as a change to procedure. The \"An engineering control, adding ventilation\" choice described a different control that this scenario does not use."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-f1",
+      "objective": "confined-atmosphere",
+      "prompt": "A fictional operator plans work in the Alder Bend wet well. The wet well is a permit-required space and was clear a week ago. Why are testing and a permit still needed?",
+      "choices": [
+        "The permit proves the space was safe when it was last entered",
+        "Conditions change between visits, so air must be rechecked",
+        "Testing is needed when a strong odor is noticed in the space",
+        "The permit replaces the need for an attendant at the opening"
+      ],
+      "correctIndex": 1,
+      "explanation": "The air in a space changes, so the current work needs current testing and a current permit. The \"The permit proves the space was safe when it was last entered\" choice treated a permit as a lasting guarantee instead of a current check. The \"Testing is needed when a strong odor is noticed in the space\" choice made testing depend on smell, which is not a dependable warning. The \"The permit replaces the need for an attendant at the opening\" choice treated paperwork as a substitute for a person posted at the opening."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-f1",
+      "objective": "excavation-energy",
+      "prompt": "A fictional crew at Pine Hollow digs beside a driveway used by trucks, and rain fell overnight. Which combination most raises the cave-in risk?",
+      "choices": [
+        "A clean cut face, shallow depth and a dry surface",
+        "Dry, firm soil, level ground and no nearby traffic",
+        "Vibration, added load and wet, soft soil",
+        "Painted marks, good lighting and clear signage"
+      ],
+      "correctIndex": 2,
+      "explanation": "Water, vibration and added weight all push a wall toward failure. The \"A clean cut face, shallow depth and a dry surface\" choice chose conditions that lower risk instead of raising it. The \"Dry, firm soil, level ground and no nearby traffic\" choice chose stable conditions. The \"Painted marks, good lighting and clear signage\" choice chose conditions that help visibility but do not change wall stability."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-f1",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional plant stores sodium hypochlorite on a pallet beside a pallet of acid, separated by a low aisle. Why is this layout a concern?",
+      "choices": [
+        "Each would lose strength in shared air",
+        "Hypochlorite needs more floor space than acid",
+        "The pallets would be hard to count",
+        "A leak could mix them and release toxic gas"
+      ],
+      "correctIndex": 3,
+      "explanation": "Acid and hypochlorite release chlorine gas when they meet, so each needs its own contained area. The \"Each would lose strength in shared air\" choice chose an aging effect instead of the gas hazard. The \"Hypochlorite needs more floor space than acid\" choice chose a space reason that does not address safety. The \"The pallets would be hard to count\" choice chose an inventory reason that does not address safety."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-f2",
+      "objective": "hazard-ppe",
+      "prompt": "In the hierarchy of controls, which is the last line of defence, used when stronger controls cannot remove the hazard?",
+      "choices": [
+        "Engineering controls such as guards",
+        "Personal protective equipment",
+        "Substitution of a safer material",
+        "Elimination of the hazard"
+      ],
+      "correctIndex": 1,
+      "explanation": "PPE sits last because it leaves the hazard in place and depends on correct selection, fit and use. The \"Engineering controls such as guards\" choice placed a stronger, upper-level control at the bottom of the ranking. The \"Substitution of a safer material\" choice placed a strong upper-level control at the bottom of the ranking. The \"Elimination of the hazard\" choice placed the strongest control at the bottom of the ranking."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-f2",
+      "objective": "confined-atmosphere",
+      "prompt": "What is the main purpose of mechanical ventilation of a permit-required space?",
+      "choices": [
+        "To cover odors so entrants feel comfortable",
+        "To replace atmospheric testing during the job",
+        "To dilute hazardous air and bring in fresh air",
+        "To cool the space for entrants while they work"
+      ],
+      "correctIndex": 2,
+      "explanation": "Ventilation supports air quality and works together with testing, not instead of it. The \"To cover odors so entrants feel comfortable\" choice treated ventilation as odor masking. The \"To replace atmospheric testing during the job\" choice believed airflow makes monitoring unnecessary. The \"To cool the space for entrants while they work\" choice chose comfort over atmosphere control."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-f2",
+      "objective": "excavation-energy",
+      "prompt": "A fictional crew lowers a prefabricated box into a trench and works inside it. This protection method is called:",
+      "choices": [
+        "Sloping",
+        "Shoring",
+        "Dewatering",
+        "Shielding"
+      ],
+      "correctIndex": 3,
+      "explanation": "A trench box or shield protects workers if a wall collapses, but it does not hold the walls back. The \"Sloping\" choice described cutting the walls back, not placing a box. The \"Shoring\" choice described bracing the walls, which holds soil in place instead of protecting workers inside a box. The \"Dewatering\" choice described removing water, which is not a cave-in protection system."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-f2",
+      "objective": "chemical-emergency",
+      "prompt": "Which pair of chemicals could form irritating chloramine vapors if they mix?",
+      "choices": [
+        "Hypochlorite and ammonia",
+        "Caustic and liquid polymer",
+        "Alum and dry polymer",
+        "Fluoride and caustic soda"
+      ],
+      "correctIndex": 0,
+      "explanation": "Chlorine products react with ammonia to form chloramine compounds, which is why they are stored apart. The \"Caustic and liquid polymer\" choice picked a pair that does not produce chloramines. The \"Alum and dry polymer\" choice picked two treatment chemicals that do not react to form chloramines. The \"Fluoride and caustic soda\" choice picked a pair without a chlorine source."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-f3",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional operator finds an unlabelled drum in the chemical room. Which response fits hazard communication?",
+      "choices": [
+        "Smell the contents to identify it",
+        "Treat it as plain water and use it for rinsing",
+        "Leave it closed, keep others away, report it",
+        "Pour a sample into a small labelled bottle for testing"
+      ],
+      "correctIndex": 2,
+      "explanation": "An unlabelled container is an unknown hazard: leave it closed, keep others away and report it. The \"Smell the contents to identify it\" choice tried to identify an unknown with the nose, which exposes the operator to the hazard. The \"Treat it as plain water and use it for rinsing\" choice assumed the contents are harmless without evidence. The \"Pour a sample into a small labelled bottle for testing\" choice opened and handled an unknown product, which spreads the hazard."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-f3",
+      "objective": "confined-atmosphere",
+      "prompt": "A fictional gas meter reads 4,000 ppm of a toxic gas. Using 10,000 ppm = 1 percent by volume, the reading in percent by volume is:",
+      "choices": [
+        "40 percent",
+        "4 percent",
+        "0.04 percent",
+        "0.4 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "4,000 / 10,000 = 0.4 percent; ppm is a much larger number than percent, so the answer should be small. The \"40 percent\" choice used 100 ppm for each percent instead of 10,000. The \"4 percent\" choice divided by 1,000 instead of 10,000. The \"0.04 percent\" choice divided by 100,000 instead of 10,000."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-f3",
+      "objective": "excavation-energy",
+      "prompt": "A fictional trench is 7 ft deep. Using 1 ft = 0.3048 m, the depth in metres is:",
+      "choices": [
+        "2.13 m",
+        "22.97 m",
+        "2.31 m",
+        "0.04 m"
+      ],
+      "correctIndex": 0,
+      "explanation": "7 x 0.3048 = 2.13 m; feet are the larger number, so the metre value should be smaller. The \"22.97 m\" choice divided by 0.3048 instead of multiplying. The \"2.31 m\" choice used 0.33 for the conversion factor. The \"0.04 m\" choice divided the factor by the depth."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-f3",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional operator hears a hiss and sees a greenish haze near the chlorine cylinder room. Which response matches awareness-level training?",
+      "choices": [
+        "Walk toward the haze to look for the leak source",
+        "Leave, warn others and call the emergency contact",
+        "Open a window and keep working at your task",
+        "Tighten the valve without protection or training"
+      ],
+      "correctIndex": 1,
+      "explanation": "An untrained operator moves away, warns others and calls for trained responders; the facility plan governs the rest. The \"Walk toward the haze to look for the leak source\" choice approached the release, which adds an exposure and a possible victim. The \"Open a window and keep working at your task\" choice treated a release as a ventilation chore. The \"Tighten the valve without protection or training\" choice attempted a repair without training or equipment."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-f4",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional operator needs to know which gloves suit a product. Which SDS section lists engineering controls and suitable PPE?",
+      "choices": [
+        "The physical and chemical properties section",
+        "The stability and reactivity section",
+        "The toxicological information section",
+        "Exposure controls and personal protection"
+      ],
+      "correctIndex": 3,
+      "explanation": "The section on exposure controls and personal protection names the engineering controls and the PPE suited to the product. The \"The physical and chemical properties section\" choice chose the section with appearance and boiling point, which does not name protection. The \"The stability and reactivity section\" choice chose the section on what the product reacts with, not what to wear. The \"The toxicological information section\" choice chose the section on health effects data, which does not recommend equipment."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-f4",
+      "objective": "confined-atmosphere",
+      "prompt": "A fictional operator smells rotten eggs at a lift station, then notices the smell has gone though work continues. The best interpretation is:",
+      "choices": [
+        "Smell may be dulled, so leave and have the air tested",
+        "The gas has cleared because the smell faded away",
+        "The gas moved to the top where it is no longer harmful",
+        "A weak smell means work can continue as planned"
+      ],
+      "correctIndex": 0,
+      "explanation": "Hydrogen sulfide can deaden the sense of smell, so a vanished smell is a reason to stop work, move to fresh air, report it and have trained people test the air with instruments before work resumes. The \"The gas has cleared because the smell faded away\" choice read a fading smell as a clearing atmosphere. The \"The gas moved to the top where it is no longer harmful\" choice assumed gas that moves is no longer a hazard. The \"A weak smell means work can continue as planned\" choice treated odor strength as a safety measure."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-f4",
+      "objective": "excavation-energy",
+      "prompt": "A fictional trench has a ladder in it. What is the ladder for?",
+      "choices": [
+        "Supporting the trench wall against soil",
+        "Giving workers a safe way out nearby",
+        "Providing a place to store tools and pipe",
+        "Replacing the need for cave-in protection"
+      ],
+      "correctIndex": 1,
+      "explanation": "A ladder lets workers leave quickly; it does not protect against a collapse. The \"Supporting the trench wall against soil\" choice treated an exit as wall support. The \"Providing a place to store tools and pipe\" choice chose a storage use that adds clutter in the way out. The \"Replacing the need for cave-in protection\" choice believed a way out removes the cave-in hazard."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-f4",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional plant feeds chlorine at a steady 12 lb/day and holds 96 lb of net chlorine. At that feed rate, the supply lasts:",
+      "choices": [
+        "1,152 days",
+        "0.125 days",
+        "8 days",
+        "84 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "96 lb / 12 lb per day = 8 days; pounds divided by pounds per day gives days. The \"1,152 days\" choice multiplied pounds by pounds per day. The \"0.125 days\" choice divided the feed rate by the pounds on hand. The \"84 days\" choice subtracted 12 from 96 instead of dividing."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-f5",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional site scores risk as severity times likelihood, each on a 1 to 5 scale. A worn stair tread has severity 3 and likelihood 4. A missing belt guard has severity 5 and likelihood 2. Which ranking is correct?",
+      "choices": [
+        "Stair tread 12 ranks above belt guard 10",
+        "Belt guard ranks first because its severity is highest",
+        "The two tie at 7 because each pair adds to 7",
+        "Belt guard 10 ranks above a stair total of 7"
+      ],
+      "correctIndex": 0,
+      "explanation": "3 x 4 = 12 and 5 x 2 = 10, so the stair tread scores higher; both still need action. The \"Belt guard ranks first because its severity is highest\" choice ranked by severity alone and ignored likelihood. The \"The two tie at 7 because each pair adds to 7\" choice added the two scores instead of multiplying. The \"Belt guard 10 ranks above a stair total of 7\" choice multiplied one pair but added the other."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-f5",
+      "objective": "confined-atmosphere",
+      "prompt": "Which atmospheric hazard is an absence rather than a substance and gives no smell or color warning?",
+      "choices": [
+        "Hydrogen sulfide gas",
+        "Oxygen deficiency",
+        "Chlorine",
+        "Ammonia"
+      ],
+      "correctIndex": 1,
+      "explanation": "Low oxygen is the lack of a gas, so there is nothing to see or smell, which is why instruments are needed. The \"Hydrogen sulfide gas\" choice picked a toxic gas that has a recognisable odor at low levels. The \"Chlorine\" choice picked a gas with a strong odor and a greenish color. The \"Ammonia\" choice picked a gas with a sharp, easily noticed odor."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-f5",
+      "objective": "excavation-energy",
+      "prompt": "A fictional operator finds a coworker's lock and tag on a pump disconnect. What does this mean?",
+      "choices": [
+        "The tag is a reminder that the pump is due for service later",
+        "The pump is out of service and any crew member may remove the lock",
+        "The coworker is working on the pump and will remove the lock",
+        "The pump is ready for a trial start after maintenance"
+      ],
+      "correctIndex": 2,
+      "explanation": "A lock and tag mean someone is working on the equipment and the lock stays until its owner removes it; do not operate or remove it. The \"The tag is a reminder that the pump is due for service later\" choice read a warning device as a work reminder. The \"The pump is out of service and any crew member may remove the lock\" choice assumed anyone may take off another worker's lock. The \"The pump is ready for a trial start after maintenance\" choice read a stop signal as permission to start."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-f5",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional operator finds a cut fence and an unlocked chemical room. What is the best response?",
+      "choices": [
+        "Repair the fence at the next scheduled work day",
+        "Ignore it because cameras are installed",
+        "Post a photo of the damage on social media",
+        "Report it promptly and secure the area"
+      ],
+      "correctIndex": 3,
+      "explanation": "Security gaps at treatment sites can become chemical or contamination hazards, so report them promptly. The \"Repair the fence at the next scheduled work day\" choice delayed a security gap that is open now. The \"Ignore it because cameras are installed\" choice assumed cameras replace locks and a response. The \"Post a photo of the damage on social media\" choice shared sensitive site information publicly."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-basic-safety-hazard-ppe-a1",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional crew at Cedarline finds a missing guard on a belt drive. They replace it before the drive is used again. This action is best described as:",
+      "choices": [
+        "Restoring an engineering control at the machine",
+        "Adding PPE for workers near the belt hazard",
+        "Posting a warning sign as an administrative control",
+        "Substituting a safer drive in place of the belt"
+      ],
+      "correctIndex": 0,
+      "explanation": "A guard is a physical barrier between the person and the moving part, the definition of an engineering control. The \"Adding PPE for workers near the belt hazard\" choice described worker equipment, but the guard works at the machine. The \"Posting a warning sign as an administrative control\" choice described a sign, but a guard is a physical barrier. The \"Substituting a safer drive in place of the belt\" choice described replacing the drive, which did not happen."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-a1",
+      "objective": "confined-atmosphere",
+      "prompt": "Why do entrants in a permit-required space usually wear a harness connected to a lifeline?",
+      "choices": [
+        "To let the entrant climb out alone without help from the attendant",
+        "To allow retrieval from outside without sending in a second person",
+        "To hold the gas meter and radio close against the entrant's chest",
+        "To replace ventilation and atmospheric testing once the entrant is in"
+      ],
+      "correctIndex": 1,
+      "explanation": "A harness and lifeline let the attendant pull an entrant out from outside, so rescue does not mean sending in another person who could be overcome. The \"To let the entrant climb out alone without help from the attendant\" choice treated the lifeline as a climbing aid, but its job is retrieval. The \"To hold the gas meter and radio close against the entrant's chest\" choice treated it as a holder for equipment. The \"To replace ventilation and atmospheric testing once the entrant is in\" choice treated it as a substitute for testing and ventilation, which it is not."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-a1",
+      "objective": "excavation-energy",
+      "prompt": "A fictional crew at Pine Hollow lifts a pump with a hoist. Which practice fits crane and hoist awareness?",
+      "choices": [
+        "Stand beside the load to steady it with one hand as it rises",
+        "Treat the rated capacity as a guide that a short lift may exceed",
+        "Inspect hook and sling first and keep people out from under the load",
+        "Let any nearby coworker give signals while the operator watches elsewhere"
+      ],
+      "correctIndex": 2,
+      "explanation": "Inspecting the hook and sling and keeping people clear of the suspended load addresses the two main failures: broken gear and a falling load. The \"Stand beside the load to steady it with one hand as it rises\" choice put a person within reach of a load that can swing or drop. The \"Treat the rated capacity as a guide that a short lift may exceed\" choice treated the rating as a suggestion, but the rating is the limit. The \"Let any nearby coworker give signals while the operator watches elsewhere\" choice split attention, since routine signals come from one agreed signal person the operator watches, although anyone may call a stop."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-a1",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional plant stores concentrated hydrogen peroxide for odor control. Which storage choice fits recognition-level practice?",
+      "choices": [
+        "A sealed drum parked next to the fuel tank so it is easy to reach",
+        "A tightly sealed tank with no vent so no outside air can get in",
+        "A drum shared with spare caustic soda to save space on the floor",
+        "A vented container made for it, kept apart from fuels"
+      ],
+      "correctIndex": 3,
+      "explanation": "Peroxide can break down and release oxygen and heat, so it is stored in a vented container made for it and kept away from fuels and organic material. The \"A sealed drum parked next to the fuel tank so it is easy to reach\" choice placed an oxidizer beside fuel, which feeds a fire. The \"A tightly sealed tank with no vent so no outside air can get in\" choice sealed a product that releases gas as it breaks down, which can burst the tank. The \"A drum shared with spare caustic soda to save space on the floor\" choice mixed two incompatible products in one place for convenience."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-a2",
+      "objective": "hazard-ppe",
+      "prompt": "What is a key limit of personal protective equipment as a control?",
+      "choices": [
+        "It removes the hazard at the source",
+        "It leaves the hazard in place and relies on correct use",
+        "It needs no training once it has been issued to staff",
+        "It is not recognised as a valid control layer by safety rules"
+      ],
+      "correctIndex": 1,
+      "explanation": "PPE protects the person but does nothing to the hazard, so its protection depends on the worker. The \"It removes the hazard at the source\" choice credited PPE with removing the hazard, which belongs to higher controls. The \"It needs no training once it has been issued to staff\" choice assumed issue is enough, but selection, fit and care need training. The \"It is not recognised as a valid control layer by safety rules\" choice dismissed PPE entirely, when it is a valid last layer."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-a2",
+      "objective": "confined-atmosphere",
+      "prompt": "A fictional rescue team uses SCBA. What is the key feature of SCBA?",
+      "choices": [
+        "It filters contaminants out of the air around the wearer",
+        "It adds oxygen to the room air so entry becomes safe",
+        "It carries its own air supply instead of using room air",
+        "It is an escape hood that any worker may pick up and use"
+      ],
+      "correctIndex": 2,
+      "explanation": "A self-contained breathing apparatus carries its own air supply, so the wearer does not depend on the air in the space. The \"It filters contaminants out of the air around the wearer\" choice described a filtering respirator, which cleans room air but makes no oxygen. The \"It adds oxygen to the room air so entry becomes safe\" choice assumed the apparatus changes the air in the space, but it only supplies the wearer. The \"It is an escape hood that any worker may pick up and use\" choice ignored that SCBA needs medical clearance, fit testing and training."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-a2",
+      "objective": "excavation-energy",
+      "prompt": "A fictional plant's hot work program covers welding near its lift station wet well. Which control fits before the welding starts?",
+      "choices": [
+        "Begin welding at once and watch for stray sparks as the work goes on",
+        "Rely on the welding helmet to protect the people working nearby too",
+        "Move the gas cylinders next to the repair so they are within easy reach",
+        "A hot work permit with gas testing and a fire watch assigned"
+      ],
+      "correctIndex": 3,
+      "explanation": "Sparks can ignite flammable gas or combustibles far from the work, so the facility's hot work permit, gas testing and fire watch come before starting. The \"Begin welding at once and watch for stray sparks as the work goes on\" choice started the work before checking for gas and combustibles. The \"Rely on the welding helmet to protect the people working nearby too\" choice assumed the welder's helmet shields bystanders, but arc screens do that. The \"Move the gas cylinders next to the repair so they are within easy reach\" choice placed cylinders near sparks instead of keeping them secured and away."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-a2",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional delivery leaves two incompatible chemicals in the same containment tray. This is best classified as:",
+      "choices": [
+        "An incompatibility risk to correct and report",
+        "A storage preference with no real safety effect",
+        "A task for the next scheduled audit",
+        "Acceptable if the containers are sealed"
+      ],
+      "correctIndex": 0,
+      "explanation": "Incompatibles that share containment can mix in a leak, so the situation is corrected and reported. The \"A storage preference with no real safety effect\" choice treated a reaction hazard as a matter of taste. The \"A task for the next scheduled audit\" choice delayed a hazard that exists now. The \"Acceptable if the containers are sealed\" choice assumed sealed containers cannot leak or be damaged."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-a3",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional label shows a corrosion pictogram (a liquid eating a surface and a hand). The best reading is:",
+      "choices": [
+        "The product is flammable and ignites near heat or sparks",
+        "The product may explode when it is heated or shaken",
+        "The product can burn skin or eyes or damage metal",
+        "The product is a gas held in a pressurized cylinder"
+      ],
+      "correctIndex": 2,
+      "explanation": "The corrosion pictogram signals material that can destroy skin or eyes, or corrode metal, on contact; the hazard statements say which applies. The \"The product is flammable and ignites near heat or sparks\" choice confused the corrosion pictogram with the flame. The \"The product may explode when it is heated or shaken\" choice confused it with the exploding bomb pictogram. The \"The product is a gas held in a pressurized cylinder\" choice confused it with the gas cylinder pictogram."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-a3",
+      "objective": "confined-atmosphere",
+      "prompt": "A fictional meter shows 0.6 percent by volume of a gas. Using 10,000 ppm = 1 percent by volume, the reading in ppm is:",
+      "choices": [
+        "60 ppm",
+        "600 ppm",
+        "60,000 ppm",
+        "6,000 ppm"
+      ],
+      "correctIndex": 3,
+      "explanation": "0.6 x 10,000 = 6,000 ppm; ppm is the larger number, so converting from percent should make it larger. The \"60 ppm\" choice used 100 ppm for each percent instead of 10,000. The \"600 ppm\" choice used 1,000 ppm for each percent. The \"60,000 ppm\" choice used 100,000 ppm for each percent."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-a3",
+      "objective": "excavation-energy",
+      "prompt": "A fictional trench is 9 ft deep. Using 1 ft = 0.3048 m, the depth in metres is:",
+      "choices": [
+        "2.74 m",
+        "29.53 m",
+        "2.97 m",
+        "0.03 m"
+      ],
+      "correctIndex": 0,
+      "explanation": "9 x 0.3048 = 2.74 m, which is smaller than the depth in feet. The \"29.53 m\" choice divided by 0.3048 instead of multiplying. The \"2.97 m\" choice used 0.33 for the conversion factor. The \"0.03 m\" choice divided the factor by the depth."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-a3",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional plant feeds chlorine at a steady 14 lb/day and holds 98 lb of net chlorine. At that feed rate, the supply lasts:",
+      "choices": [
+        "1,372 days",
+        "7 days",
+        "0.143 days",
+        "84 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "98 lb / 14 lb per day = 7 days. The \"1,372 days\" choice multiplied pounds by pounds per day. The \"0.143 days\" choice divided the feed rate by the pounds on hand. The \"84 days\" choice subtracted 14 from 98 instead of dividing."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-a4",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional crew at Cedarline sets tools and a pipe section on a catwalk edge above a pump. Which control best stops items dropping on workers below?",
+      "choices": [
+        "A hard hat for the person who is working on the catwalk",
+        "A sign asking workers below to walk quickly past the pump",
+        "A reminder at the pre-job talk to be careful with the tools",
+        "A toe-board along the edge with the area below marked off"
+      ],
+      "correctIndex": 3,
+      "explanation": "A toe-board is a physical barrier that stops items sliding off an elevated edge, and marking the area below keeps people out of the drop zone. The \"A hard hat for the person who is working on the catwalk\" choice protected only the person above, who is not the one in the drop zone. The \"A sign asking workers below to walk quickly past the pump\" choice relied on speed instead of removing the hazard. The \"A reminder at the pre-job talk to be careful with the tools\" choice depended on memory and care, an administrative control that fails when people are busy."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-a4",
+      "objective": "confined-atmosphere",
+      "prompt": "A fictional tank at Willow Gap has been empty and closed for months. Which statement is best?",
+      "choices": [
+        "The air may have changed, so testing and review are needed",
+        "An empty tank is safe because nothing is left to release gas",
+        "Months of closure let the air clear itself",
+        "Opening the hatch briefly makes testing unnecessary"
+      ],
+      "correctIndex": 0,
+      "explanation": "A closed, empty tank can still be low in oxygen or hold gas, so the usual controls apply. The \"An empty tank is safe because nothing is left to release gas\" choice assumed emptiness removes the hazard, but residue and corrosion still change the air. The \"Months of closure let the air clear itself\" choice assumed a closed space refreshes the air by itself. The \"Opening the hatch briefly makes testing unnecessary\" choice treated a short opening as a substitute for testing."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-a4",
+      "objective": "excavation-energy",
+      "prompt": "Why does grounding on a power tool or metal enclosure matter?",
+      "choices": [
+        "It stores spare current in the tool so it runs at a steady speed",
+        "It gives fault current a path back to the source so a breaker trips",
+        "It makes a damaged cord safe enough to use for short jobs in wet areas",
+        "It replaces the need for a GFCI on outlets used outdoors in the rain"
+      ],
+      "correctIndex": 1,
+      "explanation": "Grounding gives fault current a low-resistance path back to the source so a breaker trips or a fuse blows quickly, which reduces the chance of a person receiving the shock. The \"It stores spare current in the tool so it runs at a steady speed\" choice described grounding as storage, but it carries fault current away. The \"It makes a damaged cord safe enough to use for short jobs in wet areas\" choice treated grounding as a repair for damaged cords, which are removed from service. The \"It replaces the need for a GFCI on outlets used outdoors in the rain\" choice treated grounding as a replacement for GFCI, but the two protect in different ways."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-a4",
+      "objective": "chemical-emergency",
+      "prompt": "Why are non-potable water lines marked with labels, colour bands and flow arrows?",
+      "choices": [
+        "To show the crew which pipes are due for repainting next year",
+        "To tell visitors the pressure rating of each line in the plant",
+        "So a line is not mistaken for drinking water or tapped in error",
+        "To satisfy a paint supplier that specifies one colour per pipe size"
+      ],
+      "correctIndex": 2,
+      "explanation": "Marking tells workers and visitors that a line carries water that is not safe to drink, which prevents accidental use and unsafe connections. The \"To show the crew which pipes are due for repainting next year\" choice treated the marking as a maintenance reminder. The \"To tell visitors the pressure rating of each line in the plant\" choice treated it as a pressure label. The \"To satisfy a paint supplier that specifies one colour per pipe size\" choice treated it as a supplier preference."
+    },
+    {
+      "id": "ceu-basic-safety-hazard-ppe-a5",
+      "objective": "hazard-ppe",
+      "prompt": "A fictional operator is bitten by a stray dog while reading a meter at a remote site. Which response fits awareness-level practice?",
+      "choices": [
+        "Clean the wound, report the bite and get medical advice promptly",
+        "Skip reporting because a small bite heals without a visit",
+        "Cover the bite and finish the route before telling anyone",
+        "Wait for symptoms before deciding whether any follow-up is needed"
+      ],
+      "correctIndex": 0,
+      "explanation": "A bite can carry infection or disease, so it is cleaned, reported and assessed by medical staff soon after. The \"Skip reporting because a small bite heals without a visit\" choice judged the risk by the size of the wound, but a small bite can still carry serious infection or rabies risk. The \"Cover the bite and finish the route before telling anyone\" choice delayed care and the report for the sake of the route. The \"Wait for symptoms before deciding whether any follow-up is needed\" choice waited for symptoms, which can appear after the best window for treatment."
+    },
+    {
+      "id": "ceu-basic-safety-confined-atmosphere-a5",
+      "objective": "confined-atmosphere",
+      "prompt": "Why must equipment brought into a classified flammable-gas area carry a matching rating?",
+      "choices": [
+        "To prove the item passed its bump test and has a fresh battery installed",
+        "To make sure a spark inside will not ignite the gas around the item",
+        "To show the item is waterproof when it is washed down with a hose",
+        "To permit the item to run from a stronger power supply than normal"
+      ],
+      "correctIndex": 1,
+      "explanation": "An explosion-proof or intrinsically safe rating shows the item is built so that a spark or heat inside it does not ignite the surrounding gas. The \"To prove the item passed its bump test and has a fresh battery installed\" choice confused an ignition rating with a meter check. The \"To show the item is waterproof when it is washed down with a hose\" choice confused an ignition rating with a washdown rating. The \"To permit the item to run from a stronger power supply than normal\" choice confused an ignition rating with a power rating."
+    },
+    {
+      "id": "ceu-basic-safety-excavation-energy-a5",
+      "objective": "excavation-energy",
+      "prompt": "A fictional operator plans to power a drill outdoors on a damp morning. Which setup fits recognition-level practice?",
+      "choices": [
+        "A long run made by joining two indoor extension cords together",
+        "A cord taped over its damage with the ground prong removed so it fits",
+        "A rated outdoor cord on a GFCI outlet, kept out of puddles",
+        "A cord strung through the doorway and pinched under the closed door"
+      ],
+      "correctIndex": 2,
+      "explanation": "A cord rated for outdoor use on a GFCI-protected outlet, kept out of water, limits both damage to the cord and harm from a ground fault. The \"A long run made by joining two indoor extension cords together\" choice joined indoor cords that are not rated for damp outdoor use. The \"A cord taped over its damage with the ground prong removed so it fits\" choice used a damaged cord and defeated the grounding prong. The \"A cord strung through the doorway and pinched under the closed door\" choice pinched the cord, which damages the insulation."
+    },
+    {
+      "id": "ceu-basic-safety-chemical-emergency-a5",
+      "objective": "chemical-emergency",
+      "prompt": "A fictional operator wants to keep lunch cold at the plant. Which place fits contamination awareness?",
+      "choices": [
+        "The laboratory refrigerator on the shelf beside the sample bottles",
+        "A shelf in the chemical room set well back from the doorway",
+        "The lab bench next to the reagent bottles that are kept capped",
+        "A refrigerator in a clean break area set aside for food"
+      ],
+      "correctIndex": 3,
+      "explanation": "Food belongs in a designated clean area away from samples and chemicals, because contamination reaches the mouth through food, drink and hands. The \"The laboratory refrigerator on the shelf beside the sample bottles\" choice stored food with samples and reagents, a direct route for contamination. The \"A shelf in the chemical room set well back from the doorway\" choice treated distance from the door as protection, but chemical vapors and spills still reach the food. The \"The lab bench next to the reagent bottles that are kept capped\" choice relied on capped bottles, which can leak or be handled with contaminated hands."
+    }
+  ]
+}

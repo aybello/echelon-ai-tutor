@@ -1,0 +1,92 @@
+[
+  {
+    "questionNum": 226,
+    "question": "What is a primary purpose of anaerobic digestion for wastewater solids?",
+    "options": [
+      "To stabilize organic matter in wastewater solids while converting part of the volatile solids into biogas, supporting subsequent solids management.",
+      "To add oxygen continuously to wastewater solids so all biological activity stops, eliminating the need for later dewatering, handling, or disposal planning.",
+      "To disinfect the final treated effluent before discharge by exposing it to methane, replacing the need for facility-specific disinfection or monitoring processes.",
+      "To separate stormwater from sanitary wastewater within collection pipes, preventing all inflow and infiltration before the flow reaches the treatment facility."
+    ],
+    "correctIndex": 0,
+    "explanation": "Anaerobic digestion is a biological process that stabilizes organic matter in wastewater solids. It converts part of the volatile solids into biogas and can reduce the quantity of solids requiring further management.",
+    "sourceTitle": "U.S. EPA — Fact Sheet: Multi-Stage Anaerobic Digestion",
+    "sourceReference": "EPA states that anaerobic digestion stabilizes organic matter in wastewater solids and converts part of the volatile-solids fraction to biogas.",
+    "sourceUrl": "https://www.epa.gov/biosolids/fact-sheet-multi-stage-anaerobic-digestion"
+  },
+  {
+    "questionNum": 246,
+    "question": "What is the primary purpose of a belt filter press in wastewater solids handling?",
+    "options": [
+      "To remove water from wastewater residuals and produce a more manageable dewatered solids material commonly called cake.",
+      "To disinfect wastewater using pressurized belts, replacing the need for the facility’s approved disinfection process and effluent-quality monitoring.",
+      "To increase the liquid volume of sludge before hauling, ensuring that every solids stream remains easy to pump regardless of downstream handling needs.",
+      "To measure dissolved oxygen in an aeration tank, allowing operators to adjust blower output without using process instruments or operational checks."
+    ],
+    "correctIndex": 0,
+    "explanation": "A belt filter press is mechanical dewatering equipment. It applies pressure to wastewater residuals between porous belts to remove water and produce a dewatered solids material known as cake.",
+    "sourceTitle": "U.S. EPA — Biosolids Technology Fact Sheet: Belt Filter Press",
+    "sourceReference": "EPA describes belt filter presses as equipment used to remove water from liquid wastewater residuals and produce a non-liquid material referred to as cake.",
+    "sourceUrl": "https://19january2021snapshot.epa.gov/sites/static/files/2018-11/documents/belt-filter-press-factsheet.pdf"
+  },
+  {
+    "questionNum": 248,
+    "question": "Why may wastewater solids be conditioned with polymer before mechanical dewatering?",
+    "options": [
+      "To support dewatering performance by helping solids form a condition suitable for water separation and effective operation of the dewatering equipment.",
+      "To disinfect all wastewater solids completely before dewatering, making facility-specific safety controls, biosolids handling, and approved end-use requirements unnecessary.",
+      "To convert every dissolved contaminant directly into oxygen gas, allowing operators to bypass solids monitoring, equipment checks, and process-control procedures.",
+      "To prevent any solids from entering the dewatering process, so the belt press can operate without feed material, chemical monitoring, or routine cleaning."
+    ],
+    "correctIndex": 0,
+    "explanation": "Polymer conditioning is often used as part of belt-filter-press dewatering. It helps prepare wastewater solids for dewatering; the facility’s equipment and procedures determine the specific polymer, dosage, mixing, and operating controls.",
+    "sourceTitle": "U.S. EPA — Biosolids Technology Fact Sheet: Belt Filter Press",
+    "sourceReference": "EPA identifies polymer conditioning as a basic belt-filter-press feature and notes that solids must be conditioned with polymer to support dewatering performance.",
+    "sourceUrl": "https://19january2021snapshot.epa.gov/sites/static/files/2018-11/documents/belt-filter-press-factsheet.pdf"
+  },
+  {
+    "questionNum": 432,
+    "question": "What is the basic purpose of a fall-arrest system?",
+    "options": [
+      "To stop a worker’s fall before contact with a lower level or obstruction, using equipment and procedures appropriate to the work area.",
+      "To allow a worker to reach an unguarded edge freely, because fall protection is needed only after a worker has already contacted the lower surface.",
+      "To replace all pre-work hazard assessment and rescue planning, since fall-arrest equipment alone eliminates the need for training or emergency preparation.",
+      "To secure tools and materials at height without protecting the worker, making it unnecessary to consider a harness, lanyard, lifeline, or anchor system."
+    ],
+    "correctIndex": 0,
+    "explanation": "A fall-arrest system is intended to arrest a fall before the worker contacts a lower level or obstruction. It does not replace the need for worker instruction, equipment inspection, hazard assessment, or rescue planning.",
+    "sourceTitle": "WorkSafeNB — Fall Protection: Basic Types",
+    "sourceReference": "WorkSafeNB explains that a fall-arresting system arrests a worker’s fall and notes the importance of instruction and post-fall rescue preparation.",
+    "sourceUrl": "https://www.worksafenb.ca/general-resources/publications/safety-talks/fall-protection-basic-types"
+  },
+  {
+    "questionNum": 443,
+    "question": "How does a travel-restraint system differ from a fall-arrest system?",
+    "options": [
+      "Travel restraint prevents a worker from reaching an unguarded edge, while fall arrest is intended to stop a fall before contact with a lower level.",
+      "Travel restraint is used only after a fall has occurred, while fall arrest is used only to limit how close a worker may travel to an unguarded edge.",
+      "Travel restraint disinfects equipment used at height, while fall arrest is a wastewater-treatment process that removes solids before secondary treatment begins.",
+      "Travel restraint eliminates the need for training and inspection, while fall arrest is limited to securing tools and cannot be used to protect workers from falls."
+    ],
+    "correctIndex": 0,
+    "explanation": "Travel restraint is designed to keep a worker from reaching an unguarded edge. Fall arrest is designed to arrest a fall. The system selected must follow the applicable workplace requirements and the facility’s safety procedures.",
+    "sourceTitle": "WorkSafeNB — Fall Protection: Basic Types",
+    "sourceReference": "WorkSafeNB defines travel restraint as preventing a worker from reaching an unguarded edge and explains that a fall-arresting system arrests a fall.",
+    "sourceUrl": "https://www.worksafenb.ca/general-resources/publications/safety-talks/fall-protection-basic-types"
+  },
+  {
+    "questionNum": 476,
+    "question": "Why are duplicate or replicate samples used in environmental monitoring quality control?",
+    "options": [
+      "To assess the precision of sampling and/or laboratory measurements by comparing results from samples that represent the same environment or material.",
+      "To guarantee that every individual result is accurate without considering method performance, sample handling, calibration, or other quality-control checks.",
+      "To replace the original sample permanently, allowing the facility to discard all chain-of-custody records, field notes, analytical documentation, and data review steps.",
+      "To increase the measured concentration of every parameter, ensuring that results remain above detection limits regardless of the sample matrix or analytical method."
+    ],
+    "correctIndex": 0,
+    "explanation": "Field duplicates and laboratory replicates are quality-control checks. Comparing their results helps assess measurement precision; they do not by themselves guarantee accuracy or replace other sampling and laboratory quality controls.",
+    "sourceTitle": "U.S. EPA — Quality Assurance, Quality Control, and Quality Assessment Measures",
+    "sourceReference": "EPA states that field duplicates estimate sampling and laboratory-analysis precision and that laboratory replicates test precision of laboratory measurements.",
+    "sourceUrl": "https://archive.epa.gov/water/archive/web/html/132.html"
+  }
+]

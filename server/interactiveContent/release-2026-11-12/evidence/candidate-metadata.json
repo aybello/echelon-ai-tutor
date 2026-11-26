@@ -1,0 +1,2245 @@
+{
+  "format": "echelon-six-games-candidate-metadata-v1",
+  "visibility": "server-only; contains answers and source materials",
+  "contentAuthorship": "AI-authored",
+  "review": "AI-reviewed against primary sources in prior research/review stages; no human subject-matter review is claimed. Referenced records vary by item and document their scope and limitations.",
+  "limitations": "This assembly independently performs structural checks only; it does not verify claims, citations, source currency, jurisdiction, safety, instructional quality, or human sign-off. Prior AI research/review can contain errors. Source notes include specific restrictions and may recommend expert review.",
+  "releaseDecision": "Candidate only. Draft packages are not loadable by the runtime; no registry/loader changes, deployment, or production database access.",
+  "runtimeSchemaTest": "The actual schema and loader were tested with an ephemeral in-memory copy whose status was changed from draft to approved and an ephemeral approved registration. Nothing with substituted status was written or registered. This tests compatibility, not release approval, factual accuracy, or human review.",
+  "previewSelection": "Lexicographically smallest existing item ID per mode, deterministic, not editorially evaluated.",
+  "sourceRoot": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped",
+  "courseRegistry": {
+    "path": "/home/ubuntu/echelon-ai-tutor/shared/courseRegistry.ts",
+    "sha256": "4fabcb1061345cb735e05326cf5e62a4489fa0b2514e6077585011ae9a040611"
+  },
+  "converter": {
+    "path": "/home/ubuntu/echelon-ai-tutor/scripts/assemble-interactive-draft-package.mjs",
+    "sha256": "688ad7eab3a56e35a1900a88d4090e5a6407f51afc65ed6932d4d4c208c52a79"
+  },
+  "structuralConverter": {
+    "path": "/home/ubuntu/echelon-ai-tutor/scripts/validate-interactive-drafts.mjs",
+    "sha256": "eaa07ad4287b3e20d015ce247b86dc2dd14d779c73771751d9e83f7dcdc842c9"
+  },
+  "runtimeSchema": {
+    "path": "/home/ubuntu/echelon-ai-tutor/server/interactiveContent/schema.ts",
+    "sha256": "7815b1186ff95a6d756218bfa34bfb84246a422b1d700bcfef0cee3786ab5594"
+  },
+  "runtimeLoader": {
+    "path": "/home/ubuntu/echelon-ai-tutor/server/interactiveContent/loader.ts",
+    "sha256": "f7a5f436a49c75b5e766a03e7b4ff8b3c4929119499e9e29810a48d9668d92c9"
+  },
+  "priorReports": [
+    {
+      "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/combined-review-report.md",
+      "sha256": "dfa7e61ee79af8bc02a6e02df4ba468d5d2d89b11ab539d505b46457b2f4d7ec"
+    },
+    {
+      "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/combined-validation-report.json",
+      "sha256": "d29dab0136747a8d3be18d6c5793c87923740520b854b6bf319a9971a1f8de16"
+    },
+    {
+      "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/release-scope-report.md",
+      "sha256": "411014df8f71bbcc7a44b26ccaad1487061b0a02227d2f4d318141c2226a9e8e"
+    },
+    {
+      "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-audit-evidence/manifest.tsv",
+      "sha256": "8cb0127745870719f122f709b80d07cd644c8719ab67f67bab3a57d05541d9ac"
+    },
+    {
+      "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-audit-evidence/excluded-items.json",
+      "sha256": "823ec6616ce873f9c5b4ff681b35d3791e7decf73ae95b8264accfabb6897b5e"
+    },
+    {
+      "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-audit-evidence/build-release-scope.py",
+      "sha256": "94c019a12d14f9320790629866bf2b7438af0e2c37c06af4dc6fbabcdf03be13"
+    }
+  ],
+  "originalAssembler": {
+    "path": "/home/ubuntu/echelon-ai-tutor/scripts/assemble-echelonsix-candidate.mjs",
+    "sha256": "da541a54b5eff0984c64709d6a5da3cd083952ca63b1e68c4aba06091b604f88"
+  },
+  "adaptedAssembler": {
+    "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/assemble-final-candidate.mjs",
+    "sha256": "f4583bf387ccac8fcee1e728ea498c7d5d31e7d98a1dd2fe76287566622f26c6"
+  },
+  "counts": {
+    "courses": 38,
+    "examples": 3984,
+    "modes": {
+      "rapid-swipe": 715,
+      "speed-match": 397,
+      "odd-one-out": 526,
+      "cause-effect": 1015,
+      "tap-the-flaw": 693,
+      "before-after": 638
+    }
+  },
+  "courses": [
+    {
+      "courseKey": "class1-wastewater-coll",
+      "displayName": "Class 1 Wastewater Collection",
+      "examFamily": "ontario",
+      "track": "wastewater-collection",
+      "questionBankKey": "class1-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class1-wastewater-coll.json",
+        "sha256": "aff04cd1c1f31375704758c4e9d2338f893d8deff153456de8ec2528e69ae57c",
+        "bytes": 75092
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class1-wastewater-coll.md",
+          "sha256": "e86b5f2792b4107ab9ad5a0caffabc4c0fbae1c1177e5de9c191fd248e1f7b90"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class1-wastewater-coll.md",
+          "sha256": "dc0f867f9765b12677371691dde726328001f9e2903b7a56aecd7624283e7ea8"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class1-wastewater-coll.md",
+          "sha256": "281459e95dcf250c7f89c7f3d23a3a32e86ceea08abb8750e499dded7ff744c8"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class1-wastewater-coll.md",
+          "sha256": "c9e2cf0b80a3f72abe2398bf598ce3cd413030e6d901a0aa636509a85acafebb"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-wastewater-coll/package.json",
+        "sha256": "b0ef0d22d72734e8f5ade64495cd8646044a4487ff67ae2c99bd17536b069917",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-wastewater-coll/provenance.json",
+        "sha256": "4d954907b784765bd52aa87a050b50d07fc7747bef721cc1099ee704db46f4a6"
+      },
+      "itemCount": 110,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 29,
+        "tap-the-flaw": 17,
+        "before-after": 19
+      },
+      "previewIds": {
+        "rapid-swipe": "class1-wastewater-coll-001",
+        "speed-match": "class1-wastewater-coll-021",
+        "odd-one-out": "class1-wastewater-coll-031",
+        "cause-effect": "class1-wastewater-coll-046",
+        "tap-the-flaw": "class1-wastewater-coll-067",
+        "before-after": "class1-wastewater-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class1-water",
+      "displayName": "Class 1 Water Treatment",
+      "examFamily": "ontario",
+      "track": "water-treatment",
+      "questionBankKey": "class1-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class1-water.json",
+        "sha256": "6cac6c030925ee661322f8a4ea8722b57659ee665bf13a741dcdba21d9362ced",
+        "bytes": 71302
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class1-water.md",
+          "sha256": "050fee59497ea5d619f228779730db527d0c9f11f67b8875a6fdd89097242570"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class1-water.md",
+          "sha256": "c4c1add6161de10cde19c0d16f0d4736febb4a2cc32f80668797f5eb426fd8bf"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class1-water.md",
+          "sha256": "9d35c6d6acb6e9af7aba0e22d8933b0b7fbcccaecb95fb66f0b47355d56e8cc5"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class1-water.md",
+          "sha256": "aa2c05a885bdbf535a535922c12d455b9a0db531545f944213fbdd237eafc1d4"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-water/package.json",
+        "sha256": "e3ed2bc0bde9a6b591cf8277e2d5b4af8ead89da720b8fa4d2a65bbd4a44163d",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-water/provenance.json",
+        "sha256": "60522c081980558227a1850ad445b21e144baea85495ba7c1be916580e6b55ca"
+      },
+      "itemCount": 110,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 11,
+        "odd-one-out": 15,
+        "cause-effect": 29,
+        "tap-the-flaw": 17,
+        "before-after": 18
+      },
+      "previewIds": {
+        "rapid-swipe": "class1-water-001",
+        "speed-match": "class1-water-021",
+        "odd-one-out": "class1-water-031",
+        "cause-effect": "class1-water-046",
+        "tap-the-flaw": "class1-water-066",
+        "before-after": "class1-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class1-water-dist",
+      "displayName": "Class 1 Water Distribution and Supply",
+      "examFamily": "ontario",
+      "track": "water-distribution",
+      "questionBankKey": "class1-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class1-water-dist.json",
+        "sha256": "aebbab61a8fcd826cf162818c1794602172ee871d777d132868045db18a2de67",
+        "bytes": 65817
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class1-water-dist.md",
+          "sha256": "f83fd7d4aa34b74a9276a284bb91108f1d7d0a7cb17404fa835c1d3059d4f472"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class1-water-dist.md",
+          "sha256": "8c1148f7c6f5b8c36615db3ba89047f3b87a2b0a5e7e56b7b6ba804df33ebd51"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class1-water-dist.md",
+          "sha256": "e2d7dba079990cb671ee953ead40cf38fd7216cd9e7f5b25db6e2e30a875827b"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class1-water-dist.md",
+          "sha256": "594a5fe7f8550d0339f8dc8fad6bc732996e1d8be018a181f50d0027bfaa8211"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-water-dist/package.json",
+        "sha256": "e8e8d5384e7bebe409329443b40f66ef4a4cd6e6474cb39a4bd290cfba8ff8fb",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-water-dist/provenance.json",
+        "sha256": "afc197ae875efa72a65fc1e4870ff2b4e4a4cf62dbf8c0c8a80fa3386810bb32"
+      },
+      "itemCount": 101,
+      "modeCounts": {
+        "rapid-swipe": 28,
+        "speed-match": 10,
+        "odd-one-out": 13,
+        "cause-effect": 20,
+        "tap-the-flaw": 18,
+        "before-after": 12
+      },
+      "previewIds": {
+        "rapid-swipe": "class1-water-dist-001",
+        "speed-match": "class1-water-dist-021",
+        "odd-one-out": "class1-water-dist-031",
+        "cause-effect": "class1-water-dist-046",
+        "tap-the-flaw": "class1-water-dist-066",
+        "before-after": "class1-water-dist-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class1-ww",
+      "displayName": "Class 1 Wastewater Treatment",
+      "examFamily": "ontario",
+      "track": "wastewater-treatment",
+      "questionBankKey": "class1-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class1-ww.json",
+        "sha256": "208d4701aafddfdc41bcf1c9c10fd783668fec15d8fb183ef054634d49e63e73",
+        "bytes": 72009
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class1-ww.md",
+          "sha256": "aa11bdf55da6e178fa662d59c79c936f79157943f95c8b957af54304ff32c3f9"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class1-ww.md",
+          "sha256": "53cf7b461f09c7cc3dd3b9f0b1c28911585eb7251e2a20282c42183cc15d19c4"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class1-ww.md",
+          "sha256": "85d93335a5d7c32e6328eba33bfc720a18d255bb60cf50d6ef82406f5cf0be14"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class1-ww.md",
+          "sha256": "e2d7f8d68c844874a3e0ae5d6dc294f1f928b6641b5f1d80255b5b7ae3693ed4"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-ww/package.json",
+        "sha256": "50d6c0835d9f1846ca60d4d80586106898141d5a996df76189f3ee3db2123bc0",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class1-ww/provenance.json",
+        "sha256": "0cc9927f82aeb9ad338cb3721678d3d5b241c8055a88e117ddb4a69b7b460b89"
+      },
+      "itemCount": 114,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 12,
+        "odd-one-out": 20,
+        "cause-effect": 19,
+        "tap-the-flaw": 21,
+        "before-after": 22
+      },
+      "previewIds": {
+        "rapid-swipe": "class1-ww-001",
+        "speed-match": "class1-ww-017",
+        "odd-one-out": "class1-ww-029",
+        "cause-effect": "class1-ww-049",
+        "tap-the-flaw": "class1-ww-069",
+        "before-after": "class1-ww-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class2-wastewater-coll",
+      "displayName": "Class 2 Wastewater Collection",
+      "examFamily": "ontario",
+      "track": "wastewater-collection",
+      "questionBankKey": "class2-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class2-wastewater-coll.json",
+        "sha256": "7332fd5dea117c47287af252bb69a55663bcffb708784d19b7f3c1faf8ce20d9",
+        "bytes": 68184
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class2-wastewater-coll.md",
+          "sha256": "a2dfd1e3f42ac16788efc14b9a5f984e324aaa6fa195e27754820f65b607e095"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class2-wastewater-coll.md",
+          "sha256": "94d2a3ec8f0cacb84fd2e17d0450a941a1bbaff2bf3eb19022d5be1466f3010a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class2-wastewater-coll.md",
+          "sha256": "495f316293610012b2d5d8e913543d1af49fde06c660326faae6d86ca6699320"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class2-wastewater-coll.md",
+          "sha256": "84d8b6352cc499200086f4bbf94a4746109dd0e798c866f74577270650e1563b"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-wastewater-coll/package.json",
+        "sha256": "664a289585382889e59424a2169b2ace566d5d845b96441b47c0245259438d2d",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-wastewater-coll/provenance.json",
+        "sha256": "d5a03ea86627086c65202c5e3e86922774ccfdbc38a7587810cda03750be156f"
+      },
+      "itemCount": 109,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 9,
+        "odd-one-out": 15,
+        "cause-effect": 26,
+        "tap-the-flaw": 21,
+        "before-after": 18
+      },
+      "previewIds": {
+        "rapid-swipe": "class2-wastewater-coll-001",
+        "speed-match": "class2-wastewater-coll-021",
+        "odd-one-out": "class2-wastewater-coll-031",
+        "cause-effect": "class2-wastewater-coll-046",
+        "tap-the-flaw": "class2-wastewater-coll-066",
+        "before-after": "class2-wastewater-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class2-water",
+      "displayName": "Class 2 Water Treatment",
+      "examFamily": "ontario",
+      "track": "water-treatment",
+      "questionBankKey": "class2-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class2-water.json",
+        "sha256": "6a210fbe29e7d5c4390413a70b3661b301ed45ff7278e0d1b1d41a711952d0d0",
+        "bytes": 56140
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class2-water.md",
+          "sha256": "f99c442b51b80f510e1606926ea6a79beea5ff565966d9cacfa61041e52f1cfe"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class2-water.md",
+          "sha256": "dd4b31ead700f03b378d1786c3a6c65f77287b386b3e7160668262297a2d850c"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class2-water.md",
+          "sha256": "92c98a36d5f3bd988fa7ad48bdedff262cec98ba491e7fe5223c544b417d1ef0"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class2-water.md",
+          "sha256": "72a8a454be36bc2955ed979a326247e4b7e58743e3de2d0ec643fd0b57008c10"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-water/package.json",
+        "sha256": "f39a44ca8b7fb9bee5c4d2db1e2a0e6a2849ac7eed2d46c375ddbc76d91ffcb6",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-water/provenance.json",
+        "sha256": "9d1f133a29f79a3152c7234a7d95cf248b7d775e8ac2d69cc67c333c629ddde5"
+      },
+      "itemCount": 90,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 9,
+        "odd-one-out": 8,
+        "cause-effect": 24,
+        "tap-the-flaw": 8,
+        "before-after": 21
+      },
+      "previewIds": {
+        "rapid-swipe": "class2-water-001",
+        "speed-match": "class2-water-021",
+        "odd-one-out": "class2-water-031",
+        "cause-effect": "class2-water-047",
+        "tap-the-flaw": "class2-water-067",
+        "before-after": "class2-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class2-water-dist",
+      "displayName": "Class 2 Water Distribution and Supply",
+      "examFamily": "ontario",
+      "track": "water-distribution",
+      "questionBankKey": "class2-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class2-water-dist.json",
+        "sha256": "17015f9052e8cd7ff357814a900bc1bb929f675c1385c216ab0cdae94290c508",
+        "bytes": 55070
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class2-water-dist.md",
+          "sha256": "15a9240f253c2300831b72763025bc50192e87d134e101bb87e2fa1dda63ff58"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class2-water-dist.md",
+          "sha256": "3567102a1ca483d24ba2659dea175ebf562407a17d43954a82aebf995a165f43"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class2-water-dist.md",
+          "sha256": "fcb46eaf269db63b34563055d6d2e59769d4a731b9c8d1187ca0ad5b706cba5c"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class2-water-dist.md",
+          "sha256": "8b52efa64e223e932603ddfae4bbac28dcbb8e0f27db4bff802c72fd7c2ea067"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-water-dist/package.json",
+        "sha256": "8f2450db1d891dde5444b0c767d32b3fe633d330a19b4f0cb6de76969c469930",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-water-dist/provenance.json",
+        "sha256": "f7fa030a9908b758a8c10354e190b2c88eae380a4e554adeff312df98c1ce024"
+      },
+      "itemCount": 87,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 7,
+        "odd-one-out": 15,
+        "cause-effect": 23,
+        "tap-the-flaw": 17,
+        "before-after": 5
+      },
+      "previewIds": {
+        "rapid-swipe": "class2-water-dist-001",
+        "speed-match": "class2-water-dist-021",
+        "odd-one-out": "class2-water-dist-031",
+        "cause-effect": "class2-water-dist-046",
+        "tap-the-flaw": "class2-water-dist-066",
+        "before-after": "class2-water-dist-order-011"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class2-ww",
+      "displayName": "Class 2 Wastewater Treatment",
+      "examFamily": "ontario",
+      "track": "wastewater-treatment",
+      "questionBankKey": "class2-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class2-ww.json",
+        "sha256": "85a6a7f95c1daad8c28d18fa7851af8bf196562137edc0b4df8ddada2f30b068",
+        "bytes": 76350
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class2-ww.md",
+          "sha256": "ac706beafb8f7456da1d03d0033fee2f6fa0fa261f0616bbf4a56040d0b564a4"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class2-ww.md",
+          "sha256": "4af2e7e50c56f17562512e74c91f0ed90554162c8a6093be72b7cdf81a4783b2"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class2-ww.md",
+          "sha256": "ad2ea4908f7d35769bae16ae1a86dafa40b1a2d6f5a675cc2fc154d4bfd9d0aa"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class2-ww.md",
+          "sha256": "95af064592af18af03af22c7c22492443dbc621eda4c26f149166ad9c40a4ff4"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-ww/package.json",
+        "sha256": "0e67068693b7804f5ea0572ac56443be51d8c5946fe9f1a6e19b74bf29b8a777",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class2-ww/provenance.json",
+        "sha256": "d50144bbae5925756afbf3f4353f5beee95e15930ae6519bd97290004a9633ca"
+      },
+      "itemCount": 105,
+      "modeCounts": {
+        "rapid-swipe": 18,
+        "speed-match": 10,
+        "odd-one-out": 16,
+        "cause-effect": 26,
+        "tap-the-flaw": 18,
+        "before-after": 17
+      },
+      "previewIds": {
+        "rapid-swipe": "class2-ww-001",
+        "speed-match": "class2-ww-019",
+        "odd-one-out": "class2-ww-029",
+        "cause-effect": "class2-ww-045",
+        "tap-the-flaw": "class2-ww-063",
+        "before-after": "class2-ww-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class3-wastewater-coll",
+      "displayName": "Class 3 Wastewater Collection",
+      "examFamily": "ontario",
+      "track": "wastewater-collection",
+      "questionBankKey": "class3-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class3-wastewater-coll.json",
+        "sha256": "04084a9b246734a8af820f06c997fa75f8693158ae60b8244b754144fe0f3fd7",
+        "bytes": 72135
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class3-wastewater-coll.md",
+          "sha256": "776ac80c109ed5436f863972b0d8a2fe3ee1b401fc64fb7aad80efc4b8d3a8e9"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class3-wastewater-coll.md",
+          "sha256": "844c52989fbcd2eb1cd9de3272589888e1d213a4a9e65a6add2becc5c7ad37c8"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class3-wastewater-coll.md",
+          "sha256": "3fb0704f04952385c3763450689f8974c787e3572252e8689cb9fbb245074bac"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class3-wastewater-coll.md",
+          "sha256": "3244a9d995f71f8b527efb53b7a15d2ead02820d18940958cfaddcd9ac163fc3"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-wastewater-coll/package.json",
+        "sha256": "a7fdd9c2f8d44b876b8b09eec03cf74280b274778b3aa27de53c071e3b61255c",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-wastewater-coll/provenance.json",
+        "sha256": "8f3b300276b78a2031f21cb993daf6abccc4e7fbc967ec5db6f63ddebbd1234f"
+      },
+      "itemCount": 104,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 12,
+        "odd-one-out": 15,
+        "cause-effect": 22,
+        "tap-the-flaw": 20,
+        "before-after": 15
+      },
+      "previewIds": {
+        "rapid-swipe": "class3-wastewater-coll-001",
+        "speed-match": "class3-wastewater-coll-021",
+        "odd-one-out": "class3-wastewater-coll-033",
+        "cause-effect": "class3-wastewater-coll-048",
+        "tap-the-flaw": "class3-wastewater-coll-066",
+        "before-after": "class3-wastewater-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class3-water",
+      "displayName": "Class 3 Water Treatment",
+      "examFamily": "ontario",
+      "track": "water-treatment",
+      "questionBankKey": "class3-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class3-water.json",
+        "sha256": "8eb0177f130a127588427e80f8bb4807f68b18dd3b6984ec1e7704deaa2605f0",
+        "bytes": 81686
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class3-water.md",
+          "sha256": "32886851ccad2782c72b11648dc80d652accbd21327c87662d192e1eba90c0c8"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class3-water.md",
+          "sha256": "f59cebae27a9c9e61fd918f7b3a588cc7501d065a8a43f4f4704d3f31935326a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class3-water.md",
+          "sha256": "01d222adfbe2a97c65a66caea384fab6a68de1f55dce7888db9656ae7166d298"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class3-water.md",
+          "sha256": "7eab191d7cbf79f77aeee1c5bcca3864ed7fc537d2c1bcc382a8afeeaa1d1468"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-water/package.json",
+        "sha256": "56c37393ce12a7f2fc1d1baea1b1fa0ab303247a729fd60e76c2d3b6b45c2002",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-water/provenance.json",
+        "sha256": "be694ebbe77ba8a09abb708032b89f04c8bc1672b1e6cadbf67555ba837b9091"
+      },
+      "itemCount": 108,
+      "modeCounts": {
+        "rapid-swipe": 18,
+        "speed-match": 13,
+        "odd-one-out": 3,
+        "cause-effect": 42,
+        "tap-the-flaw": 12,
+        "before-after": 20
+      },
+      "previewIds": {
+        "rapid-swipe": "class3-water-001",
+        "speed-match": "class3-water-019",
+        "odd-one-out": "class3-water-032",
+        "cause-effect": "class3-water-047",
+        "tap-the-flaw": "class3-water-069",
+        "before-after": "class3-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class3-water-dist",
+      "displayName": "Class 3 Water Distribution and Supply",
+      "examFamily": "ontario",
+      "track": "water-distribution",
+      "questionBankKey": "class3-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class3-water-dist.json",
+        "sha256": "710d477de45d1def5285ab1c560b9235863bd2e455a447bbfa05d35d2e563f88",
+        "bytes": 69510
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class3-water-dist.md",
+          "sha256": "3d002898c1e11cddf4e2e8a5a23aa05b21a25f171dbc9a6d3c3cd9190c655d7d"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class3-water-dist.md",
+          "sha256": "c058066eda75844e12e1bd97c9184dcf589fc660feb788a4fdcaddf9b819409f"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class3-water-dist.md",
+          "sha256": "fd34a7b8786ae485e9811b3513b3fef907f9f149538cf9cb0ff1735780098da3"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class3-water-dist.md",
+          "sha256": "ad59c74a683689a77bd6edf7591fe6c1fee7bcf55f9a63b0fd184a272b00929c"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-water-dist/package.json",
+        "sha256": "67f600fffc5031ec705cdf847681caed21f38f1b54dbbe17e47c7f2d5c5cef49",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-water-dist/provenance.json",
+        "sha256": "bb67d6c7a5f877a43c8d29f8ce239bb99632ea5278f5053cf404a1264294dc71"
+      },
+      "itemCount": 97,
+      "modeCounts": {
+        "rapid-swipe": 17,
+        "speed-match": 12,
+        "odd-one-out": 17,
+        "cause-effect": 27,
+        "tap-the-flaw": 15,
+        "before-after": 9
+      },
+      "previewIds": {
+        "rapid-swipe": "class3-water-dist-001",
+        "speed-match": "class3-water-dist-018",
+        "odd-one-out": "class3-water-dist-030",
+        "cause-effect": "class3-water-dist-047",
+        "tap-the-flaw": "class3-water-dist-065",
+        "before-after": "class3-water-dist-order-009"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class3-ww",
+      "displayName": "Class 3 Wastewater Treatment",
+      "examFamily": "ontario",
+      "track": "wastewater-treatment",
+      "questionBankKey": "class3-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class3-ww.json",
+        "sha256": "5b09089d0050a6286faff2fbc7875383532b13d2430a698fee1bb79e82524aa3",
+        "bytes": 74465
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class3-ww.md",
+          "sha256": "0ed5960ca76004e008ca21e15065aa23e1507f8f708e60a7e6223980a9161172"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class3-ww.md",
+          "sha256": "7d6ea8d35f1a57b43b04545150b26c1fc8907fa409fdc32220185ba5af916e6a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class3-ww.md",
+          "sha256": "0e2158a730ec95326a47427d7dd0c7da34d4ca7a2496f2ca0d41bf10b2eff083"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class3-ww.md",
+          "sha256": "df5f45929f4b0358eed785724360a9522f1d8c3076f8637212c270764edff7d9"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-ww/package.json",
+        "sha256": "8e3b000ce603438ef5d68654bae94df0be20467ebab179ecf2a5f8bbb04145b6",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class3-ww/provenance.json",
+        "sha256": "36d7b60f5a994de8222e1f40b33e3e9933201e404fc63eaa6358e473e22e0364"
+      },
+      "itemCount": 117,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 31,
+        "tap-the-flaw": 20,
+        "before-after": 21
+      },
+      "previewIds": {
+        "rapid-swipe": "class3-ww-001",
+        "speed-match": "class3-ww-021",
+        "odd-one-out": "class3-ww-031",
+        "cause-effect": "class3-ww-046",
+        "tap-the-flaw": "class3-ww-066",
+        "before-after": "class3-ww-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class4-wastewater-coll",
+      "displayName": "Class 4 Wastewater Collection",
+      "examFamily": "ontario",
+      "track": "wastewater-collection",
+      "questionBankKey": "class4-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class4-wastewater-coll.json",
+        "sha256": "bb424c17b3f4ca704ea2e37a6db0009c2b4844030fbcf627a0e6138ffa74860c",
+        "bytes": 73760
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class4-wastewater-coll.md",
+          "sha256": "838b8cefed175b5024d2e5e7924c6b8222209b9146453d799f6aef428809ba30"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class4-wastewater-coll.md",
+          "sha256": "4e0e409968cf4766cc452315abfd655320c8edb6a492e12a42c0bb2246038c2d"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class4-wastewater-coll.md",
+          "sha256": "b35479c40dab5f6b01d3586a77ab95b5ec9dca24f72d31118ecfca80cc23bbdd"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class4-wastewater-coll.md",
+          "sha256": "cfc937e311b81364ce957687727f9f93922d6be679e59e1826ec8c66e8a4fdee"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-wastewater-coll/package.json",
+        "sha256": "a39ee834cb15e5bb4118308f4dff16fc7164603c57323b241d257103f621ca53",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-wastewater-coll/provenance.json",
+        "sha256": "46b4ce0b69281d0f38fd0b581bb85c365940bfc4405eaf92418d70fefb8a54cd"
+      },
+      "itemCount": 101,
+      "modeCounts": {
+        "rapid-swipe": 15,
+        "speed-match": 11,
+        "odd-one-out": 14,
+        "cause-effect": 30,
+        "tap-the-flaw": 17,
+        "before-after": 14
+      },
+      "previewIds": {
+        "rapid-swipe": "class4-wastewater-coll-001",
+        "speed-match": "class4-wastewater-coll-021",
+        "odd-one-out": "class4-wastewater-coll-033",
+        "cause-effect": "class4-wastewater-coll-049",
+        "tap-the-flaw": "class4-wastewater-coll-069",
+        "before-after": "class4-wastewater-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class4-water",
+      "displayName": "Class 4 Water Treatment",
+      "examFamily": "ontario",
+      "track": "water-treatment",
+      "questionBankKey": "class4-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class4-water.json",
+        "sha256": "74813a6f5e7c2a6cfa3d266730676e3e2030e8d613b6bd0c91eb68e109a53fde",
+        "bytes": 87739
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class4-water.md",
+          "sha256": "d89daa3de19252411add4156a466310b934a8dd2a5981729da782db6ff85a477"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class4-water.md",
+          "sha256": "2b3f7986cbe0e8fcc75bb8ecadce33b3d465a714e02aa85199fc0f226a10cdd8"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class4-water.md",
+          "sha256": "aee39736d00668dd346c9b5eae02f102d0a8c146795cba19bfd1ef0280cea6c1"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class4-water.md",
+          "sha256": "6e243c07d6fcabd923f4fb680690bcf4f41cc0b60e7b6e6b4d0aa291e3b236ec"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-water/package.json",
+        "sha256": "c7741261aef444d8625162af0cf74e6f780c41f4bb4d2e8df63372e797637ccb",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-water/provenance.json",
+        "sha256": "620e00e853c979849919820e78424d39f4bfa2c75995f263e410fdcd2bf8003e"
+      },
+      "itemCount": 108,
+      "modeCounts": {
+        "rapid-swipe": 18,
+        "speed-match": 11,
+        "odd-one-out": 12,
+        "cause-effect": 33,
+        "tap-the-flaw": 14,
+        "before-after": 20
+      },
+      "previewIds": {
+        "rapid-swipe": "class4-water-001",
+        "speed-match": "class4-water-019",
+        "odd-one-out": "class4-water-029",
+        "cause-effect": "class4-water-045",
+        "tap-the-flaw": "class4-water-066",
+        "before-after": "class4-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class4-water-dist",
+      "displayName": "Class 4 Water Distribution and Supply",
+      "examFamily": "ontario",
+      "track": "water-distribution",
+      "questionBankKey": "class4-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class4-water-dist.json",
+        "sha256": "49a897bf822e4fc7ca49fb8f1d6372440e3d68598c8a628c9ac52535f807ae91",
+        "bytes": 63105
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class4-water-dist.md",
+          "sha256": "c4ed3cdeca52e5b095d30ca6ff79d6aa8677a2961581429064657d5da07b302e"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class4-water-dist.md",
+          "sha256": "25d5e171afd6742265bfde0e6ff8bf90768bef2b0441bf77c6c13808f035ee40"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class4-water-dist.md",
+          "sha256": "3bc3f6f86b31d1cd13f8ac6d568b926a13f1f5d8478991fdd5ad65c113d8bd83"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class4-water-dist.md",
+          "sha256": "2ee95e02e14261250448ad0657d1aaffdf38fdf167f404bf8e7d435dd606ca49"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-water-dist/package.json",
+        "sha256": "320e32f7752ad35fc21073dd177cd317f46ab0913f720be600ddf191f4f81c83",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-water-dist/provenance.json",
+        "sha256": "b6f9501e45182f414eb7127b31eafdeae0ce47a19e26a314bf290f3ac00b3bf1"
+      },
+      "itemCount": 91,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 9,
+        "cause-effect": 31,
+        "tap-the-flaw": 14,
+        "before-after": 7
+      },
+      "previewIds": {
+        "rapid-swipe": "class4-water-dist-001",
+        "speed-match": "class4-water-dist-021",
+        "odd-one-out": "class4-water-dist-031",
+        "cause-effect": "class4-water-dist-046",
+        "tap-the-flaw": "class4-water-dist-068",
+        "before-after": "class4-water-dist-order-007"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "class4-ww",
+      "displayName": "Class 4 Wastewater Treatment",
+      "examFamily": "ontario",
+      "track": "wastewater-treatment",
+      "questionBankKey": "class4-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/class4-ww.json",
+        "sha256": "954a167f30d5ae9b3ad13c293a60bafba92191e9ed721a83841b840e2aeada87",
+        "bytes": 78733
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/class4-ww.md",
+          "sha256": "6516fb36186794b00655c11f8a8977317e31fa20f88cd4bbde5aa740fe88052e"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/class4-ww.md",
+          "sha256": "fec4122f37a3e39d28db64f0c43b90971049589d052a0f31004727aadbf71b22"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/class4-ww.md",
+          "sha256": "7082b291a184ec4b4ccfa80da7868b3dfbacb7e7d92cfc0de5fb9bcfaed502eb"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/class4-ww.md",
+          "sha256": "e352c0b91a9f17f0376ae4fcdc88a5d9056b5994f253a20a45ce73688175c546"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-ww/package.json",
+        "sha256": "10cc4cd71a558570b7e7925957eebe95b332df8a478670269ee364a8981787ff",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/class4-ww/provenance.json",
+        "sha256": "c70c672a73b44422b88a69e2f2b26a40500d00e9a5d14f84985c5c75475cf69c"
+      },
+      "itemCount": 108,
+      "modeCounts": {
+        "rapid-swipe": 16,
+        "speed-match": 12,
+        "odd-one-out": 16,
+        "cause-effect": 22,
+        "tap-the-flaw": 20,
+        "before-after": 22
+      },
+      "previewIds": {
+        "rapid-swipe": "class4-ww-001",
+        "speed-match": "class4-ww-017",
+        "odd-one-out": "class4-ww-029",
+        "cause-effect": "class4-ww-045",
+        "tap-the-flaw": "class4-ww-065",
+        "before-after": "class4-ww-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "oit",
+      "displayName": "OIT — Water Treatment",
+      "examFamily": "ontario",
+      "track": "oit",
+      "questionBankKey": "oit",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/oit.json",
+        "sha256": "d189014d49b63b8dc51a40af91aad0e6abbb75f7fd5d6cb18efc597567f36f1c",
+        "bytes": 66642
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/oit.md",
+          "sha256": "c778d4f4efdca332f8ac090beb0c790de1c5b18807232e6acd6dee997fb6f71a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/oit.md",
+          "sha256": "4bafd8ab324063750b4532938ed7ced620d91a20c8d5e09a70ed37f1f7b06b31"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/oit.md",
+          "sha256": "240b67ab10f4e0c69ff9cc304ab1059362f368ee55d957ee6410a878bdb5f289"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/oit.md",
+          "sha256": "52d55610694ed4a3664eeadd81c97766ea8340fc32b87e0267245af0dd45c6cd"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/oit/package.json",
+        "sha256": "fd613a621b92ed159f232ed7666df598ab4b2cc6d7f7685f68c498b49dbb5cf9",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/oit/provenance.json",
+        "sha256": "cee0b6c87ecb8b6b7de8036ba77d67f01b6d0554163ec07e53d5889387147b83"
+      },
+      "itemCount": 105,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 13,
+        "cause-effect": 23,
+        "tap-the-flaw": 20,
+        "before-after": 19
+      },
+      "previewIds": {
+        "rapid-swipe": "oit-001",
+        "speed-match": "oit-021",
+        "odd-one-out": "oit-031",
+        "cause-effect": "oit-046",
+        "tap-the-flaw": "oit-066",
+        "before-after": "oit-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "oit-ww",
+      "displayName": "OIT — Wastewater",
+      "examFamily": "ontario",
+      "track": "oit",
+      "questionBankKey": "oit-ww",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/oit-ww.json",
+        "sha256": "c4fd8574199fdbfddb6f11785e72c013e4abe97840fe0739b1c8a2cde7fee046",
+        "bytes": 63766
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/oit-ww.md",
+          "sha256": "7c8aa8ba723a827d11506b76a7260a776be2227c367c1b4c9ef6fb92a5001a5c"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/oit-ww.md",
+          "sha256": "72fb4dbf2e7e2dbeced0d6f56eae53f756b15fdcb568ba3987df0d36ea841855"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/oit-ww.md",
+          "sha256": "88e5473fffb109c2c409efbd5de37de5898492eb6b399a25f35619f2d16d7fc7"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/oit-ww.md",
+          "sha256": "4d60d6e313c98b7066538478dcc7c8d11759aa52b4db11f608770469fc0b300c"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/oit-ww/package.json",
+        "sha256": "2fc1ea8efcb305dbe296f6420f934deb4c74c73d4e174daf85ab806b271da68f",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/oit-ww/provenance.json",
+        "sha256": "57533dfe27ecf586b7f88fd0ecf9d3a0a89f94e46b772ba0ab76ea3d77ba9e14"
+      },
+      "itemCount": 107,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 22,
+        "tap-the-flaw": 20,
+        "before-after": 20
+      },
+      "previewIds": {
+        "rapid-swipe": "oit-ww-001",
+        "speed-match": "oit-ww-021",
+        "odd-one-out": "oit-ww-031",
+        "cause-effect": "oit-ww-046",
+        "tap-the-flaw": "oit-ww-066",
+        "before-after": "oit-ww-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "us-class1-water",
+      "displayName": "US Class I Water Treatment",
+      "examFamily": "us-wpi",
+      "track": "water-treatment",
+      "questionBankKey": "us-class1-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/us-class1-water.json",
+        "sha256": "94a62798ba5d896e46ed39cdcb080ef24fd9783d44762c5aae25df473e4aed20",
+        "bytes": 69556
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/us-class1-water.md",
+          "sha256": "cc5135a7d8b76ded5117849ca6a70082ee944eccb5f3ad03a37a2a218a5fef42"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/us-class1-water.md",
+          "sha256": "402ebbbbe3913ce169d84b93109957bd1dd06a65b8bd6d95bc3ebad345c7b933"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/us-class1-water.md",
+          "sha256": "2a0f55e0abe463447dfa09b43a328e257447acb767b9d0696acc2b38fbfd8680"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/us-class1-water.md",
+          "sha256": "a0be63d8fc6e35d29b32481a9e13aee1e71b776d7da6dd3f54f2e6dbb65f722c"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/us-class1-water/package.json",
+        "sha256": "45baab499387d8dd6d5b41fa207b6f68719df98d6a25845952fc8500c6fa8e3a",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/us-class1-water/provenance.json",
+        "sha256": "4b3acc3f233b9e2198e649e6216364af6e40f1971f0cc66d973f1b0b52d76f81"
+      },
+      "itemCount": 110,
+      "modeCounts": {
+        "rapid-swipe": 10,
+        "speed-match": 10,
+        "odd-one-out": 13,
+        "cause-effect": 43,
+        "tap-the-flaw": 16,
+        "before-after": 18
+      },
+      "previewIds": {
+        "rapid-swipe": "us-class1-water-011",
+        "speed-match": "us-class1-water-021",
+        "odd-one-out": "us-class1-water-031",
+        "cause-effect": "us-class1-water-001",
+        "tap-the-flaw": "us-class1-water-066",
+        "before-after": "us-class1-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "us-class1-water-dist",
+      "displayName": "US Class I Water Distribution",
+      "examFamily": "us-wpi",
+      "track": "water-distribution",
+      "questionBankKey": "us-class1-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/us-class1-water-dist.json",
+        "sha256": "62b8cfe18cdec09b37f04bb28fecf410763bc301ae56fa569173f642f8653577",
+        "bytes": 66659
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/us-class1-water-dist.md",
+          "sha256": "4417b3be7a8aa6908d7a79fe2924cbb8c2be90ea4db1294050ef4ac68e7d23de"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/us-class1-water-dist.md",
+          "sha256": "9d8a9820d8c4f78ef4886fd1eaf18629abbc865adbc07d4850e973dbcdc0ee96"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/us-class1-water-dist.md",
+          "sha256": "24b9821b2f1d1c6cc2db415006a54f1ff2591640bd37abd251e95f67fcf01f5a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/us-class1-water-dist.md",
+          "sha256": "fd0afe93db74d5f4d1247f2ae9711ab50c43e3111ddffe271f54cc403d8a53c5"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/us-class1-water-dist/package.json",
+        "sha256": "bfd0ba7b2aaeecc4eb8c448544ed0893f46078d5f954291812895f7c9e4b3ea2",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/us-class1-water-dist/provenance.json",
+        "sha256": "ebb650de3ae87bb8554f4bdb85b8d9a069b8946dc13947d2479a385a55c3b9c0"
+      },
+      "itemCount": 100,
+      "modeCounts": {
+        "rapid-swipe": 19,
+        "speed-match": 8,
+        "odd-one-out": 14,
+        "cause-effect": 28,
+        "tap-the-flaw": 20,
+        "before-after": 11
+      },
+      "previewIds": {
+        "rapid-swipe": "us-class1-water-dist-001",
+        "speed-match": "us-class1-water-dist-021",
+        "odd-one-out": "us-class1-water-dist-031",
+        "cause-effect": "us-class1-water-dist-046",
+        "tap-the-flaw": "us-class1-water-dist-067",
+        "before-after": "us-class1-water-dist-order-005"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "us-texas-class-d-water",
+      "displayName": "Texas Class D Water",
+      "examFamily": "us-state",
+      "track": "water-treatment",
+      "questionBankKey": "us-texas-class-d-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/us-texas-class-d-water.json",
+        "sha256": "772f4042c2cfe8129d7614c1291b60ae7647c6dae86fcb841532b8533ff39cf6",
+        "bytes": 83169
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/us-texas-class-d-water.md",
+          "sha256": "7473039d37f40b952e2a71e04949f7e260af009bc3d63a2681d35ff1579ee847"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/us-texas-class-d-water.md",
+          "sha256": "81bb2bf96f1743c00585572a7f24d645fb092e26799d2b781bb467a2975895b4"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/us-texas-class-d-water.md",
+          "sha256": "4c082eb2bb04996d2620381d83116e314237e9dd756cd4336f43071dfaa30d77"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/us-texas-class-d-water.md",
+          "sha256": "1debe6215ba8574f4247b531925c621f3f7699d383759a0770f4526518ba3775"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/us-texas-class-d-water/package.json",
+        "sha256": "a6596db777b154daf1d7b12fbc1facf55d6494d64f56642f1314046799e5fe8f",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/us-texas-class-d-water/provenance.json",
+        "sha256": "f03ab17223c00aafd6c3f936dee861636ded03d5d08ca989101490dfb4d7c811"
+      },
+      "itemCount": 113,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 9,
+        "odd-one-out": 15,
+        "cause-effect": 15,
+        "tap-the-flaw": 34,
+        "before-after": 20
+      },
+      "previewIds": {
+        "rapid-swipe": "us-texas-class-d-water-001",
+        "speed-match": "us-texas-class-d-water-021",
+        "odd-one-out": "us-texas-class-d-water-029",
+        "cause-effect": "us-texas-class-d-water-044",
+        "tap-the-flaw": "us-texas-class-d-water-059",
+        "before-after": "us-texas-class-d-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class1-wastewater",
+      "displayName": "WPI Class I Wastewater Treatment",
+      "examFamily": "western",
+      "track": "wastewater-treatment",
+      "questionBankKey": "wpi-class1-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class1-wastewater.json",
+        "sha256": "f14d25a90dd4b5df69a3ceacb1f78a8f871a4e135042da66af7c15fd215d1f91",
+        "bytes": 69102
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class1-wastewater.md",
+          "sha256": "1389a5d6717e55e1b9c0c62b3a32dc2e10c9c057ad45cfae185cd065fbaff132"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class1-wastewater.md",
+          "sha256": "f70eab2d2fe673504c84ec98d9bdbff5fd81b1bb5dde24fe4a3f4105ac536742"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class1-wastewater.md",
+          "sha256": "8b0b5e0f77ca86010e9397fe421bc9ce7d2f9fbccd9fddfdd7eebbf40c205167"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class1-wastewater.md",
+          "sha256": "b159d22c5a1ea312d6ba5855b36694c0eaabb135794ebfdc69ae4209b59f3d3d"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-wastewater/package.json",
+        "sha256": "635cbcd13b3711e8feefc4eae36c43eb917ee90f3b0e8d8a7960f3e3f258c71a",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-wastewater/provenance.json",
+        "sha256": "491c7a083de5758830ec20d858c7c4b57138d9a91360ac5a84fb2148ddc2436e"
+      },
+      "itemCount": 110,
+      "modeCounts": {
+        "rapid-swipe": 15,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 28,
+        "tap-the-flaw": 20,
+        "before-after": 22
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-wastewater-002",
+        "speed-match": "wpi-class1-wastewater-021",
+        "odd-one-out": "wpi-class1-wastewater-031",
+        "cause-effect": "wpi-class1-wastewater-001",
+        "tap-the-flaw": "wpi-class1-wastewater-066",
+        "before-after": "wpi-class1-wastewater-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class1-water",
+      "displayName": "WPI Class I Water Treatment",
+      "examFamily": "western",
+      "track": "water-treatment",
+      "questionBankKey": "wpi-class1-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class1-water.json",
+        "sha256": "86a14a0ae447f819ae349249d68b06acdb17b76a8442bb4571fd7e875e8c1edb",
+        "bytes": 74408
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class1-water.md",
+          "sha256": "f2121a05fc799f0dc8446b73362ec420a9fbe4113ecb896ba312149e3db40cfc"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class1-water.md",
+          "sha256": "90eea609efad5371ccf2fa719dc4fa547f72494ecff40f8c7df2bbaf62c634d5"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class1-water.md",
+          "sha256": "ead10fa48325575ea4f5be3c6dc8860be48c20491f01a767b20919ba9ef9faad"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class1-water.md",
+          "sha256": "63f026900611b0ff0f56e76c533801e38ee74388a80513a54dd5a1dcf2a3e3a1"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-water/package.json",
+        "sha256": "62ddd298cd6fa8d258d4f90df490ee88b6fce6f399f27f60d811786437dfc7c8",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-water/provenance.json",
+        "sha256": "b5254585295e68b81bab08b47ec1b4452255c862bf3ac6f263d1a1e770e1a0ac"
+      },
+      "itemCount": 110,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 28,
+        "tap-the-flaw": 20,
+        "before-after": 17
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-water-001",
+        "speed-match": "wpi-class1-water-021",
+        "odd-one-out": "wpi-class1-water-031",
+        "cause-effect": "wpi-class1-water-046",
+        "tap-the-flaw": "wpi-class1-water-066",
+        "before-after": "wpi-class1-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class1-water-coll",
+      "displayName": "WPI Class I Wastewater Collection",
+      "examFamily": "western",
+      "track": "wastewater-collection",
+      "questionBankKey": "wpi-class1-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class1-water-coll.json",
+        "sha256": "4805b2368285776ca0dc29b2d872cb7a64eac597140155fc85671a9886b273fa",
+        "bytes": 67654
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class1-water-coll.md",
+          "sha256": "62c0f896e203eca4f8039cfae540aec7dd0c3528f43022bed2e49335829fe9c4"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class1-water-coll.md",
+          "sha256": "016b5f9025e8e6449f40d4ecd92408e60a5affa419a6bdea4a2b9c67a936c323"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class1-water-coll.md",
+          "sha256": "fa5c11a8fff965805fe7f2d376ffad3e8ddbc963dfa8c80d7a3559870ffd2413"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class1-water-coll.md",
+          "sha256": "9a8db8fbffb574ccac653ff9f3b9cb62f44455f4df5147c69a51b5e8798b7c38"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-water-coll/package.json",
+        "sha256": "ecf8fab1a287dea2bb6a547ba553e50425ddcf4b70b84385023cf0c7f3bd7553",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-water-coll/provenance.json",
+        "sha256": "42f56cc5d0bcf5cc3ace9611494229f3ccaa60134fe8a62798fe15b463383226"
+      },
+      "itemCount": 95,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 8,
+        "odd-one-out": 16,
+        "cause-effect": 23,
+        "tap-the-flaw": 18,
+        "before-after": 10
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-water-coll-001",
+        "speed-match": "wpi-class1-water-coll-021",
+        "odd-one-out": "wpi-class1-water-coll-029",
+        "cause-effect": "wpi-class1-water-coll-045",
+        "tap-the-flaw": "wpi-class1-water-coll-065",
+        "before-after": "wpi-class1-water-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class1-water-dist",
+      "displayName": "WPI Class I Water Distribution",
+      "examFamily": "western",
+      "track": "water-distribution",
+      "questionBankKey": "wpi-class1-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class1-water-dist.json",
+        "sha256": "78063668358e6fd23dfbe083cf7e9a676234cf64b0ed7fbee4554fde79daa665",
+        "bytes": 73077
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class1-water-dist.md",
+          "sha256": "756d5bb41a88605e91bd1b8269fc30b3aa38f9461d71fe0fa69d41957a08e8d5"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class1-water-dist.md",
+          "sha256": "2db642f45bd73643ab77eab632211230360cf5b24683e32f3234441c4b730338"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class1-water-dist.md",
+          "sha256": "f09aa7a53d1bace20f2893b887606a6473418843bb9b05e8c70cc24d640ab1b3"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class1-water-dist.md",
+          "sha256": "ed11d8b620f48fcc45bd482ac87acdf6bb7e7caccd54991dd180094d32057b98"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-water-dist/package.json",
+        "sha256": "9be2e8de50c032c0eea89a772aa9f4664ad947c62b6a56331a39c1e899ef0d44",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class1-water-dist/provenance.json",
+        "sha256": "ca0105704f73103ca3892155b358639149cbe87acd611c922bb5e15d6db2206a"
+      },
+      "itemCount": 110,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 12,
+        "cause-effect": 29,
+        "tap-the-flaw": 20,
+        "before-after": 19
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-water-dist-001",
+        "speed-match": "wpi-class1-water-dist-021",
+        "odd-one-out": "wpi-class1-water-dist-032",
+        "cause-effect": "wpi-class1-water-dist-046",
+        "tap-the-flaw": "wpi-class1-water-dist-064",
+        "before-after": "wpi-class1-water-dist-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class2-wastewater",
+      "displayName": "WPI Class II Wastewater Treatment",
+      "examFamily": "western",
+      "track": "wastewater-treatment",
+      "questionBankKey": "wpi-class2-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class2-wastewater.json",
+        "sha256": "be3f76a39b9e9c71214a5fa10a0f92325353e608791138e88da223e70a4ee400",
+        "bytes": 71479
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class2-wastewater.md",
+          "sha256": "a4c5f2450070b7ee36bc3afeef2309e74dadbd18e0f8f776e3c29ebb5500897e"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class2-wastewater.md",
+          "sha256": "937c4fed2599e8db4c89c73c3b71cd1a6a5519b6a80f1b7d16f9821c99ed3f0b"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class2-wastewater.md",
+          "sha256": "3d2e5418844b012a5698a71a8e303a39da509b0191eeeba859626c9cb1a5dd16"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class2-wastewater.md",
+          "sha256": "d24ae1d575e1e47e101a11e59b487658df02e4490c8521519023fa1fe416db4c"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-wastewater/package.json",
+        "sha256": "e75d75cae10c57dfb26d9bfa82f14b62087de32dbd610b5bd90eec224c078fdf",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-wastewater/provenance.json",
+        "sha256": "8e74aab33d6b6c5cff74fbae1e0570679f2a0413274e71858be50c3d6124ac75"
+      },
+      "itemCount": 103,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 12,
+        "odd-one-out": 14,
+        "cause-effect": 22,
+        "tap-the-flaw": 18,
+        "before-after": 17
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-wastewater-001",
+        "speed-match": "wpi-class2-wastewater-021",
+        "odd-one-out": "wpi-class2-wastewater-033",
+        "cause-effect": "wpi-class2-wastewater-048",
+        "tap-the-flaw": "wpi-class2-wastewater-068",
+        "before-after": "wpi-class2-wastewater-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class2-water",
+      "displayName": "WPI Class II Water Treatment",
+      "examFamily": "western",
+      "track": "water-treatment",
+      "questionBankKey": "wpi-class2-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class2-water.json",
+        "sha256": "1cd50ef7079e24240f990a2c9fe6968650806348138393b5a4ff4981c1f4a973",
+        "bytes": 74485
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class2-water.md",
+          "sha256": "1332e733458a9efc1ff9e9977ab1134f982b5298f4aa0eb359c4587d50b4ec13"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class2-water.md",
+          "sha256": "8e2ceb03fbe51b1d9d1f2caa1b0df2c8a128ce43458deac3b74f9498c172e75c"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class2-water.md",
+          "sha256": "1f4cea0a209a942f43e45db7b26e4cfe905df2e6acec800ee5118d692126eee3"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class2-water.md",
+          "sha256": "2b96d0bd546957ebbec0344248aa8df257ce82275e983c4b7b239653a3d02131"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-water/package.json",
+        "sha256": "3f42255cc2fe9eabdc236813bce1ad84a440e21d392e0e0678e13195707d0359",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-water/provenance.json",
+        "sha256": "77f6131c9c73cce2f69a14dc865790d7934bfeff2f9392d619e02afae0bbecb3"
+      },
+      "itemCount": 111,
+      "modeCounts": {
+        "rapid-swipe": 23,
+        "speed-match": 15,
+        "odd-one-out": 12,
+        "cause-effect": 20,
+        "tap-the-flaw": 22,
+        "before-after": 19
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-water-001",
+        "speed-match": "wpi-class2-water-021",
+        "odd-one-out": "wpi-class2-water-036",
+        "cause-effect": "wpi-class2-water-051",
+        "tap-the-flaw": "wpi-class2-water-071",
+        "before-after": "wpi-class2-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class2-water-coll",
+      "displayName": "WPI Class II Wastewater Collection",
+      "examFamily": "western",
+      "track": "wastewater-collection",
+      "questionBankKey": "wpi-class2-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class2-water-coll.json",
+        "sha256": "3ba0ea12826ecda75418dee1f8cdeac3f399fa6e8ae7bd7b39134ecae5853653",
+        "bytes": 75626
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class2-water-coll.md",
+          "sha256": "944e2c68f2c76d55d0d2ed09d6f1ee1a6d11fb805e2305010c1b0c73fff1f9cd"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class2-water-coll.md",
+          "sha256": "d24c415bcd52715119992782b4079fc626eede9bd9616c2cc9477e9aa47e6058"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class2-water-coll.md",
+          "sha256": "ea78903f489fcc5a7e22ca062e993dcf75c08dcce57330039e6631560b1e7db5"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class2-water-coll.md",
+          "sha256": "8f3849e2a15d23b8e322a32e728d2b18c026995f09bdbf102d05644b5b8c1dcb"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-water-coll/package.json",
+        "sha256": "75a9fcf0ac1e9a16091e85ded7d575c59f4cd25745c939146d21054262282b7c",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-water-coll/provenance.json",
+        "sha256": "c6b18e251aa45be400f5954655a5838ab6c76e17a67e5e07b29ae300af79f430"
+      },
+      "itemCount": 103,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 12,
+        "odd-one-out": 9,
+        "cause-effect": 25,
+        "tap-the-flaw": 21,
+        "before-after": 16
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-water-coll-001",
+        "speed-match": "wpi-class2-water-coll-021",
+        "odd-one-out": "wpi-class2-water-coll-031",
+        "cause-effect": "wpi-class2-water-coll-046",
+        "tap-the-flaw": "wpi-class2-water-coll-066",
+        "before-after": "wpi-class2-water-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class2-water-dist",
+      "displayName": "WPI Class II Water Distribution",
+      "examFamily": "western",
+      "track": "water-distribution",
+      "questionBankKey": "wpi-class2-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class2-water-dist.json",
+        "sha256": "706b42ce83fc97f47c7701aeafebe3dfdbadf916a8f8fe969947eb808ee646b8",
+        "bytes": 70996
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class2-water-dist.md",
+          "sha256": "009dc3c9e9738fdf4718c0e13b0ba1588cf7a553a02cd3ca17e8518cb78ddf09"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class2-water-dist.md",
+          "sha256": "4739d0204ef568ae0a505b5f33a8df517203e535f3751cced522f88fbb165082"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class2-water-dist.md",
+          "sha256": "f4ae411711120f0a248d34012043a2a8f13cfb711360b89c83d7385d14e0febe"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class2-water-dist.md",
+          "sha256": "0c202fe2bdf9cbfc907df30da0d1733db6a19eeb55fd69c3115ed7cfcbe4cf7b"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-water-dist/package.json",
+        "sha256": "6c34a97844d414c65788b69ea2423cd76e879dd145223f71b37f30e3050c2da3",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class2-water-dist/provenance.json",
+        "sha256": "a9f5bada1cb9771e90b8a2d822c1aef9c4b1f279d832f948bc5bc86b2fbe8095"
+      },
+      "itemCount": 106,
+      "modeCounts": {
+        "rapid-swipe": 17,
+        "speed-match": 12,
+        "odd-one-out": 13,
+        "cause-effect": 32,
+        "tap-the-flaw": 18,
+        "before-after": 14
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-water-dist-001",
+        "speed-match": "wpi-class2-water-dist-018",
+        "odd-one-out": "wpi-class2-water-dist-030",
+        "cause-effect": "wpi-class2-water-dist-046",
+        "tap-the-flaw": "wpi-class2-water-dist-063",
+        "before-after": "wpi-class2-water-dist-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class3-wastewater",
+      "displayName": "WPI Class III Wastewater Treatment",
+      "examFamily": "western",
+      "track": "wastewater-treatment",
+      "questionBankKey": "wpi-class3-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class3-wastewater.json",
+        "sha256": "833e92127b931ba5afde0a9d13d89cb791d6963f6701c82e04d2769e806ed308",
+        "bytes": 68561
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class3-wastewater.md",
+          "sha256": "427385268588acef55e4025179f0f3b1e7a4e35b9f02c677e6b4d1538561ad61"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class3-wastewater.md",
+          "sha256": "ea78e0cd120e99d245162570ab07c7d96670e2be917eb59e23fa3aa12cf145da"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class3-wastewater.md",
+          "sha256": "2b64cf46fa93e4825343b9b57f4427a2a13356ce53836c194cc9062fcf2246c3"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class3-wastewater.md",
+          "sha256": "193b3b0fc7a0db42d7340f805c4bc5f1047b8a9a0cfb7b3a9e2503a40cd15376"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-wastewater/package.json",
+        "sha256": "8692bccc81ae31e1157fd27ce26672fbd2ae4b3e539ddc395c5d439a8e41aa1d",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-wastewater/provenance.json",
+        "sha256": "b7487eed59268139106a8ef5316c5ac60436b13b1ef3e1f1ed7f7453210b74ec"
+      },
+      "itemCount": 105,
+      "modeCounts": {
+        "rapid-swipe": 18,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 21,
+        "tap-the-flaw": 20,
+        "before-after": 21
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-wastewater-001",
+        "speed-match": "wpi-class3-wastewater-019",
+        "odd-one-out": "wpi-class3-wastewater-029",
+        "cause-effect": "wpi-class3-wastewater-044",
+        "tap-the-flaw": "wpi-class3-wastewater-062",
+        "before-after": "wpi-class3-wastewater-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class3-water",
+      "displayName": "WPI Class III Water Treatment",
+      "examFamily": "western",
+      "track": "water-treatment",
+      "questionBankKey": "wpi-class3-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class3-water.json",
+        "sha256": "24d4a415cde42c3fb1d5d05c5efac198af7b7d778e2e540ad8809c8493eb5a28",
+        "bytes": 75097
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class3-water.md",
+          "sha256": "2d05e6ac5635177f0b7d12949788628e8daad7736ff35d34e6486be6091ae470"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class3-water.md",
+          "sha256": "07d74fa5785ca5b69ad71fc92a114faa8de4f61bccb43d1d1897084353794846"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class3-water.md",
+          "sha256": "6ce9647896d508ee1f5ca6c999cd5065e8d33896cb4293640ef61dadbfaa3dfb"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class3-water.md",
+          "sha256": "b2029c06a3a664632db6042976ebcd30b2f03df2a5254b3166a4c4f7e69d43eb"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-water/package.json",
+        "sha256": "0a46e42bbce98297a6e105c602875a0cd1885844e208280dccab34b939982fc6",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-water/provenance.json",
+        "sha256": "34439413d66b2e460557043016f4c9b0f77152ec1ed1a435fafe5d4ea2987fcb"
+      },
+      "itemCount": 106,
+      "modeCounts": {
+        "rapid-swipe": 19,
+        "speed-match": 13,
+        "odd-one-out": 13,
+        "cause-effect": 29,
+        "tap-the-flaw": 11,
+        "before-after": 21
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-water-001",
+        "speed-match": "wpi-class3-water-019",
+        "odd-one-out": "wpi-class3-water-031",
+        "cause-effect": "wpi-class3-water-046",
+        "tap-the-flaw": "wpi-class3-water-066",
+        "before-after": "wpi-class3-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class3-water-coll",
+      "displayName": "WPI Class III Wastewater Collection",
+      "examFamily": "western",
+      "track": "wastewater-collection",
+      "questionBankKey": "wpi-class3-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class3-water-coll.json",
+        "sha256": "78aeca28979bef90eec0ba7a7ba685793a79e7d64b026d7475425b9cb7339261",
+        "bytes": 66751
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class3-water-coll.md",
+          "sha256": "dad5a5c67f5f088b93acdf939cdcafe01fb70fa6e398dce9ad04c59c8e179644"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class3-water-coll.md",
+          "sha256": "c1563dadda15e01eb9afe722b8871f2a624dcf3871b70f1a363d94abcf15a14a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class3-water-coll.md",
+          "sha256": "6ca3d9b03082e22da4ccafa6df254d62385b473ae5060378760be6380270ede1"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class3-water-coll.md",
+          "sha256": "898c099a839295d75c783447facdb51a4a2738e3a747a0c34594ca1bdc35705e"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-water-coll/package.json",
+        "sha256": "f00cd53258e39449f316d31ced233e4f37b06858a38a22bedbd2a1983326773c",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-water-coll/provenance.json",
+        "sha256": "0b486e05b0aebef97888a20c7e8199987cc1a8fbab7ecf80b5abd9d353ed5135"
+      },
+      "itemCount": 102,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 8,
+        "odd-one-out": 16,
+        "cause-effect": 23,
+        "tap-the-flaw": 20,
+        "before-after": 15
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-water-coll-001",
+        "speed-match": "wpi-class3-water-coll-021",
+        "odd-one-out": "wpi-class3-water-coll-029",
+        "cause-effect": "wpi-class3-water-coll-045",
+        "tap-the-flaw": "wpi-class3-water-coll-065",
+        "before-after": "wpi-class3-water-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class3-water-dist",
+      "displayName": "WPI Class III Water Distribution",
+      "examFamily": "western",
+      "track": "water-distribution",
+      "questionBankKey": "wpi-class3-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class3-water-dist.json",
+        "sha256": "8e07ee8bcfd7a9addd571b864466004ca32dd2c9da6a6c14cf066cabc422c0c9",
+        "bytes": 85941
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class3-water-dist.md",
+          "sha256": "9487c0d36fad9b7a464548ba75e91ce7846b5571ed3385ffd412cee0bd7ed045"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class3-water-dist.md",
+          "sha256": "b792d3e7edcf13e24177b5b1cac9dcf4ab17cf5db8d0aaed4a0548ca5dd2a52d"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class3-water-dist.md",
+          "sha256": "e24fa6f86bb2ea7a998feba657f15fe446ee71cddc21364117accac38953792a"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class3-water-dist.md",
+          "sha256": "1585645e26b0da48645e5d13728ad08a0449ba650385e0d3f7ed137c6444c055"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-water-dist/package.json",
+        "sha256": "8a56c6ce6893e99b26fd9de53814b1823ad0a59c4f60cdac8de3e7cf8f19a259",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class3-water-dist/provenance.json",
+        "sha256": "7d9a6092e8e74f36d9a4b327be874060a01af78c218cd041fd6429682e4ca4d9"
+      },
+      "itemCount": 111,
+      "modeCounts": {
+        "rapid-swipe": 16,
+        "speed-match": 12,
+        "odd-one-out": 17,
+        "cause-effect": 36,
+        "tap-the-flaw": 12,
+        "before-after": 18
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-water-dist-001",
+        "speed-match": "wpi-class3-water-dist-017",
+        "odd-one-out": "wpi-class3-water-dist-029",
+        "cause-effect": "wpi-class3-water-dist-047",
+        "tap-the-flaw": "wpi-class3-water-dist-066",
+        "before-after": "wpi-class3-water-dist-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class4-wastewater",
+      "displayName": "WPI Class IV Wastewater Treatment",
+      "examFamily": "western",
+      "track": "wastewater-treatment",
+      "questionBankKey": "wpi-class4-wastewater",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class4-wastewater.json",
+        "sha256": "59fc83b0bea257e6a98edf6d85ca1641988e06a69d93a6544f0d231ebaa9c434",
+        "bytes": 65514
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class4-wastewater.md",
+          "sha256": "2f3cc8bea5df0abbddeafb2b5131b3cad65f964d896262ad5425eab19d4bd1f7"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class4-wastewater.md",
+          "sha256": "5036feac3499b6f64e9a672630fb77847ded2b4f5d018568d08ce9d840537b47"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class4-wastewater.md",
+          "sha256": "bb9060a0225c959a4a191623065aa4ab2ddd598837fc32188d07a197e519d778"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class4-wastewater.md",
+          "sha256": "2f5a70cd91e0384999764440d8c4736f6ad9f14f740db0190204c8e75ae784ed"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-wastewater/package.json",
+        "sha256": "2461a72326a32c7b2f6b508cf95fe520273ec17975d4afd20e66136abf564064",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-wastewater/provenance.json",
+        "sha256": "a7b6e63191cd516fb7d948f8fc58e9afd08937c29a3a4c4f77952987e42c5394"
+      },
+      "itemCount": 93,
+      "modeCounts": {
+        "rapid-swipe": 19,
+        "speed-match": 5,
+        "odd-one-out": 16,
+        "cause-effect": 22,
+        "tap-the-flaw": 15,
+        "before-after": 16
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-ww-001",
+        "speed-match": "wpi-class4-wastewater-top-010",
+        "odd-one-out": "wpi-class4-ww-037",
+        "cause-effect": "wpi-class4-wastewater-top-001",
+        "tap-the-flaw": "wpi-class4-ww-069",
+        "before-after": "wpi-class4-wastewater-order-001"
+      },
+      "legacyItemIdPrefixCount": 69
+    },
+    {
+      "courseKey": "wpi-class4-water",
+      "displayName": "WPI Class IV Water Treatment",
+      "examFamily": "western",
+      "track": "water-treatment",
+      "questionBankKey": "wpi-class4-water",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class4-water.json",
+        "sha256": "13097950702b04371e3824efa9f1253d464e0844e40b641bb42f6ad4bce51098",
+        "bytes": 72012
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class4-water.md",
+          "sha256": "1339bea0207015b7cd61f438cf9b51c53d4147a01bc4125d31c0afc2562a8225"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class4-water.md",
+          "sha256": "7407ac6456c3c85835692e8ebfa8059264d8e4f301b1050714fb6aab1cebb328"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class4-water.md",
+          "sha256": "f4596fb02f4fc3616cf0079d715817231bb969a3dd4f8e493c30c057bcd978f3"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class4-water.md",
+          "sha256": "c50f4ddba64cfac9db6caf61c510a8375b26c2087220caa0ca21f8f6edcfd4ce"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-water/package.json",
+        "sha256": "328f2d5f45ace16c277b0d0a57fc9c8367349450c61ab65840277c3a326bab08",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-water/provenance.json",
+        "sha256": "86a508e89f50dc456fe67f1ff807be2d9c3eb708fd04549083f99cce2e7f9203"
+      },
+      "itemCount": 112,
+      "modeCounts": {
+        "rapid-swipe": 20,
+        "speed-match": 10,
+        "odd-one-out": 15,
+        "cause-effect": 26,
+        "tap-the-flaw": 20,
+        "before-after": 21
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-water-001",
+        "speed-match": "wpi-class4-water-021",
+        "odd-one-out": "wpi-class4-water-031",
+        "cause-effect": "wpi-class4-water-046",
+        "tap-the-flaw": "wpi-class4-water-066",
+        "before-after": "wpi-class4-water-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class4-water-coll",
+      "displayName": "WPI Class IV Wastewater Collection",
+      "examFamily": "western",
+      "track": "wastewater-collection",
+      "questionBankKey": "wpi-class4-wastewater-coll",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class4-water-coll.json",
+        "sha256": "923c60a1789d4a4b76c27ab5b578dd309bc7d1faa4b963e893731a6cf5dd7d54",
+        "bytes": 80568
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class4-water-coll.md",
+          "sha256": "cd1768fd0eb47087552622d4b717a65776c52003bac8c5852b7218cd136bb74c"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class4-water-coll.md",
+          "sha256": "31a7d1fafe49cdaa586da4cfc6a2bbe606627f539c4b8dc536aee7e8bccc363d"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class4-water-coll.md",
+          "sha256": "df95cc55252eaa16be0293e8f341729180c96d9b3af16ad5faa42d9f06df63c5"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class4-water-coll.md",
+          "sha256": "affa4db19eb5865801c9e81f53558a9dd402577eabdb937739e5aead2f83fe5f"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-water-coll/package.json",
+        "sha256": "1af1465c4d81278dcd788d01761fd36f6bd87c9f042badd05910a9caacf16f30",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-water-coll/provenance.json",
+        "sha256": "311c38885f2f9c975395074a3442387f54239c02b2f65b02e803ef0ee4257073"
+      },
+      "itemCount": 102,
+      "modeCounts": {
+        "rapid-swipe": 14,
+        "speed-match": 14,
+        "odd-one-out": 16,
+        "cause-effect": 26,
+        "tap-the-flaw": 16,
+        "before-after": 16
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-water-coll-001",
+        "speed-match": "wpi-class4-water-coll-017",
+        "odd-one-out": "wpi-class4-water-coll-031",
+        "cause-effect": "wpi-class4-water-coll-048",
+        "tap-the-flaw": "wpi-class4-water-coll-065",
+        "before-after": "wpi-class4-water-coll-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wpi-class4-water-dist",
+      "displayName": "WPI Class IV Water Distribution",
+      "examFamily": "western",
+      "track": "water-distribution",
+      "questionBankKey": "wpi-class4-water-dist",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wpi-class4-water-dist.json",
+        "sha256": "d8459841546aaa3e949c9b7cbe9aa92385f98a35e7cef2dec13bb8c7e380a8e2",
+        "bytes": 74240
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wpi-class4-water-dist.md",
+          "sha256": "e342d6b4000ef80f85ab7247a388d5ce3f8cc00c08934dea20a9d447a0c57771"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wpi-class4-water-dist.md",
+          "sha256": "44b6189de2dd7a348a0b871667c2b68f48a731c22109522a6d60b23412b4b22f"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wpi-class4-water-dist.md",
+          "sha256": "23ed81a3c24bb4f7d887592f286d6137bfd8dacb8d109b3d5819df5d749b48b6"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wpi-class4-water-dist.md",
+          "sha256": "51a537f9222ac75b4eb742222400fafcddf678f5f0e6426877fb469e69fdda0c"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-water-dist/package.json",
+        "sha256": "324c5155b95b00b635c71a8526b698eebbbb093480149f09b69f4b038b235d84",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wpi-class4-water-dist/provenance.json",
+        "sha256": "c4a4743ed8e82effd61b28039f4d50bbe3ec82f5128c209247a15a075f786e31"
+      },
+      "itemCount": 108,
+      "modeCounts": {
+        "rapid-swipe": 17,
+        "speed-match": 12,
+        "odd-one-out": 10,
+        "cause-effect": 34,
+        "tap-the-flaw": 18,
+        "before-after": 17
+      },
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-water-dist-001",
+        "speed-match": "wpi-class4-water-dist-018",
+        "odd-one-out": "wpi-class4-water-dist-030",
+        "cause-effect": "wpi-class4-water-dist-046",
+        "tap-the-flaw": "wpi-class4-water-dist-063",
+        "before-after": "wpi-class4-water-dist-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    },
+    {
+      "courseKey": "wqa",
+      "displayName": "Water Quality Analyst (WQA)",
+      "examFamily": "ontario",
+      "track": "water-quality",
+      "questionBankKey": "wqa",
+      "source": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/release-scoped/wqa.json",
+        "sha256": "21cf2573afe6b245fc1fe31f30ec13e701e851311c85354943bec49059da4518",
+        "bytes": 62630
+      },
+      "reviewReferences": [
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/research/wqa.md",
+          "sha256": "f4168d4555201bb031b36845feb5836bbea402fae78e0752c79ee9f06dd03fd3"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/review/wqa.md",
+          "sha256": "4ddb35168d3994c088697d93281418d6329a59e0cd83cf667af73b6cd6234c87"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/topup-review/wqa.md",
+          "sha256": "e7fae0253d476544bf7579809b4ccca6907020104d88c5b805a9b493076e3148"
+        },
+        {
+          "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/order-review/wqa.md",
+          "sha256": "d691ca1094e9a556bce97bbcbb7b28e51919dbcdb94b6e8c9a7b334b6d75d4b7"
+        }
+      ],
+      "package": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wqa/package.json",
+        "sha256": "9fed9943991638d21be0267de729b9ec5d7b3157609db71f0ecd58758f09a0e0",
+        "storedStatus": "draft"
+      },
+      "provenance": {
+        "path": "/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate/wqa/provenance.json",
+        "sha256": "65aa5c4113e06896ff76adfcccc3aab5314098d6a399ad373dc9b28bcb331940"
+      },
+      "itemCount": 102,
+      "modeCounts": {
+        "rapid-swipe": 18,
+        "speed-match": 8,
+        "odd-one-out": 14,
+        "cause-effect": 26,
+        "tap-the-flaw": 25,
+        "before-after": 11
+      },
+      "previewIds": {
+        "rapid-swipe": "wqa-001",
+        "speed-match": "wqa-021",
+        "odd-one-out": "wqa-031",
+        "cause-effect": "wqa-046",
+        "tap-the-flaw": "wqa-066",
+        "before-after": "wqa-order-001"
+      },
+      "legacyItemIdPrefixCount": 0
+    }
+  ]
+}

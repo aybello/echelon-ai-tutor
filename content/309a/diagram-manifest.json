@@ -1,0 +1,43 @@
+{
+  "formatVersion": 1,
+  "courseKey": "electrician-309a",
+  "component": "client/src/components/ElectricianDiagrams.tsx",
+  "implemented": [
+    {
+      "id": "309A-D01",
+      "title": "Lockout and absence-of-voltage sequence",
+      "blueprint": ["A-1"],
+      "altRequired": true
+    },
+    {
+      "id": "309A-D03",
+      "title": "Transformer turns and voltage relationship",
+      "blueprint": ["B-15"],
+      "altRequired": true
+    },
+    {
+      "id": "309A-D04",
+      "title": "Distribution hierarchy and protective-device path",
+      "blueprint": ["B-8", "B-9"],
+      "altRequired": true
+    },
+    {
+      "id": "309A-D05",
+      "title": "Grounding and bonding conceptual fault path",
+      "blueprint": ["B-11"],
+      "altRequired": true
+    },
+    {
+      "id": "309A-D10",
+      "title": "Across-the-line starter control concept",
+      "blueprint": ["D-22"],
+      "altRequired": true
+    }
+  ],
+  "constraints": [
+    "Original Echelon Institute SVGs only",
+    "No Canadian Electrical Code table values or rule-number claims",
+    "No manufacturer schematics or utility drawings",
+    "Each question reference must use an implemented id and describe the visual in its explanation"
+  ]
+}

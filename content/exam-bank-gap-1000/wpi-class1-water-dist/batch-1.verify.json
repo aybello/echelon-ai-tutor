@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L1-486",
+  "expression": "3.1416*0.1*0.1*200*1000",
+  "expected": "6283.2",
+  "decimalPlaces": 1,
+  "unit": "L"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-487",
+  "expression": "(25+20)/1000/0.03",
+  "expected": "1.5",
+  "decimalPlaces": 1,
+  "unit": "m/s"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-488",
+  "expression": "(42-18)*9.81",
+  "expected": "235.44",
+  "decimalPlaces": 2,
+  "unit": "kPa"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-489",
+  "expression": "(86.4+43.2)*1000/86400",
+  "expected": "1.5",
+  "decimalPlaces": 1,
+  "unit": "L/s"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-490",
+  "expression": "3.1416*0.15*0.15*100*3",
+  "expected": "21.21",
+  "decimalPlaces": 2,
+  "unit": "m³"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-491",
+  "expression": "4241.16/86400/(3.1416*0.125*0.125)",
+  "expected": "1.0",
+  "decimalPlaces": 1,
+  "unit": "m/s"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-492",
+  "expression": "(38-4)*9.81",
+  "expected": "333.54",
+  "decimalPlaces": 2,
+  "unit": "kPa"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-493",
+  "expression": "(2.5*16+1.0*8)*3600/1000",
+  "expected": "172.8",
+  "decimalPlaces": 1,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L1-494",
+  "expression": "(3.1416*0.2*0.2*50-3.1416*0.1*0.1*50)*1000",
+  "expected": "4712.4",
+  "decimalPlaces": 1,
+  "unit": "L"
+ }
+]

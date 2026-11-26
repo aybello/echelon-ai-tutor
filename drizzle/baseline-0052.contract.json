@@ -1,0 +1,4057 @@
+{
+  "formatVersion": 1,
+  "tables": [
+    {
+      "name": "ai_chat_sessions",
+      "columns": [
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "messageCount",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "resourcesSurfaced",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sessionEnd",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sessionStart",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "summary",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "topicsCovered",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "blog_posts",
+      "columns": [
+        {
+          "name": "author",
+          "type": "varchar(100)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "content",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "excerpt",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "metaDescription",
+          "type": "varchar(500)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "metaTitle",
+          "type": "varchar(300)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "published",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "publishedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "readingTimeMinutes",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "slug",
+          "type": "varchar(200)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "tags",
+          "type": "varchar(500)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "title",
+          "type": "varchar(300)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "blog_posts_slug_unique",
+          "unique": true,
+          "columns": [
+            "slug"
+          ]
+        },
+        {
+          "name": "blog_published_idx",
+          "unique": false,
+          "columns": [
+            "published",
+            "publishedAt"
+          ]
+        },
+        {
+          "name": "blog_slug_idx",
+          "unique": false,
+          "columns": [
+            "slug"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bookmarks",
+      "columns": [
+        {
+          "name": "bankKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "questionId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "bm_email_idx",
+          "unique": false,
+          "columns": [
+            "studentEmail"
+          ]
+        },
+        {
+          "name": "bm_email_question_idx",
+          "unique": true,
+          "columns": [
+            "studentEmail",
+            "bankKey",
+            "questionId"
+          ]
+        },
+        {
+          "name": "bm_user_question_idx",
+          "unique": true,
+          "columns": [
+            "userId",
+            "bankKey",
+            "questionId"
+          ]
+        },
+        {
+          "name": "bm_userid_idx",
+          "unique": false,
+          "columns": [
+            "userId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "changelog",
+      "columns": [
+        {
+          "name": "badge",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "badgeColor",
+          "type": "varchar(16)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "date",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "sortOrder",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "title",
+          "type": "varchar(256)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "visible",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "command_drill_queue",
+      "columns": [
+        {
+          "name": "completedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "drillName",
+          "type": "varchar(255)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "guestId",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "queuedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "cdq_guest_idx",
+          "unique": false,
+          "columns": [
+            "guestId"
+          ]
+        },
+        {
+          "name": "cdq_user_idx",
+          "unique": false,
+          "columns": [
+            "userId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "command_email_capture",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "guestId",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "source",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "command_feedback",
+      "columns": [
+        {
+          "name": "comment",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "guestId",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "rating",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "runId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "scenarioId",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "command_run_history",
+      "columns": [
+        {
+          "name": "commandScore",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "completedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "decisionsJson",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "displayName",
+          "type": "varchar(80)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "elapsedSeconds",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "guestId",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "optimalCalls",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "scenarioId",
+          "type": "varchar(60)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "scenarioTitle",
+          "type": "varchar(120)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalSteps",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "crh_guest_idx",
+          "unique": false,
+          "columns": [
+            "guestId"
+          ]
+        },
+        {
+          "name": "crh_scenario_idx",
+          "unique": false,
+          "columns": [
+            "scenarioId"
+          ]
+        },
+        {
+          "name": "crh_score_idx",
+          "unique": false,
+          "columns": [
+            "commandScore"
+          ]
+        },
+        {
+          "name": "crh_user_idx",
+          "unique": false,
+          "columns": [
+            "userId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact_submissions",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "message",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "name",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "subject",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dashboard_otps",
+      "columns": [
+        {
+          "name": "attempts",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "codeHash",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "expiresAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "usedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "diagnostic_sessions",
+      "columns": [
+        {
+          "name": "completedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "correct",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "label",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "organizationMemberId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "score",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sessionId",
+          "type": "varchar(36)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "strongTopics",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "topicBreakdown",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "total",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "weakTopics",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "diagnostic_identity_time_idx",
+          "unique": false,
+          "columns": [
+            "studentEmail",
+            "courseKey",
+            "completedAt"
+          ]
+        },
+        {
+          "name": "diagnostic_member_idx",
+          "unique": false,
+          "columns": [
+            "organizationMemberId"
+          ]
+        },
+        {
+          "name": "diagnostic_org_time_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "completedAt"
+          ]
+        },
+        {
+          "name": "diagnostic_sessions_sessionId_unique",
+          "unique": true,
+          "columns": [
+            "sessionId"
+          ]
+        },
+        {
+          "name": "diagnostic_user_time_idx",
+          "unique": false,
+          "columns": [
+            "userId",
+            "courseKey",
+            "completedAt"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "email_otp_codes",
+      "columns": [
+        {
+          "name": "attempts",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "codeHash",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "expiresAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "usedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "otp_email_idx",
+          "unique": false,
+          "columns": [
+            "email"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "exam_dates",
+      "columns": [
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examDate",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "organizationMemberId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "productKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "remindersSent",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "exam_dates_org_member_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "organizationMemberId",
+            "courseKey",
+            "examDate"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "exam_outcomes",
+      "columns": [
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examDate",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "memberEmail",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "readinessModelVersion",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "readinessScoreAtOutcome",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "recordedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "recordedBy",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "result",
+          "type": "enum('passed','failed','no_show')",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "exam_outcomes_email_idx",
+          "unique": false,
+          "columns": [
+            "memberEmail"
+          ]
+        },
+        {
+          "name": "exam_outcomes_orgid_idx",
+          "unique": false,
+          "columns": [
+            "orgId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "exam_results",
+      "columns": [
+        {
+          "name": "bankKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "calcOnly",
+          "type": "enum('yes','no')",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "moduleBreakdown",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "organizationMemberId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "passed",
+          "type": "enum('yes','no')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "province",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "score",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sessionId",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stream",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "timeTakenSeconds",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "total",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "exam_results_identity_idx",
+          "unique": false,
+          "columns": [
+            "studentEmail",
+            "courseKey",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "exam_results_org_member_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "organizationMemberId",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "exam_results_session_unique_idx",
+          "unique": true,
+          "columns": [
+            "sessionId"
+          ]
+        },
+        {
+          "name": "idx_exam_results_email",
+          "unique": false,
+          "columns": [
+            "studentEmail"
+          ]
+        },
+        {
+          "name": "idx_exam_results_user",
+          "unique": false,
+          "columns": [
+            "userId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "flashcard_progress",
+      "columns": [
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "knownIds",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalCards",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "job_postings",
+      "columns": [
+        {
+          "name": "company",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "isActive",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "isFeatured",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "jobType",
+          "type": "enum('full-time','part-time','contract')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "lastSeenAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "location",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "postedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "province",
+          "type": "enum('on','bc','ab','sk','mb','other')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "salary",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceName",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceType",
+          "type": "enum('rss','scraper')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceUrl",
+          "type": "varchar(1024)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "title",
+          "type": "varchar(255)",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "job_active_idx",
+          "unique": false,
+          "columns": [
+            "isActive"
+          ]
+        },
+        {
+          "name": "job_posted_at_idx",
+          "unique": false,
+          "columns": [
+            "postedAt"
+          ]
+        },
+        {
+          "name": "job_postings_source_url_unique",
+          "unique": true,
+          "columns": []
+        },
+        {
+          "name": "job_province_idx",
+          "unique": false,
+          "columns": [
+            "province"
+          ]
+        },
+        {
+          "name": "job_type_idx",
+          "unique": false,
+          "columns": [
+            "jobType"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "learner_onboarding",
+      "columns": [
+        {
+          "name": "completedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "confidence",
+          "type": "varchar(24)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "diagnosticStartedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "examDate",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "organizationMemberId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sessionMinutes",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(24)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "studyDaysPerWeek",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "learner_onboarding_email_course_idx",
+          "unique": true,
+          "columns": [
+            "studentEmail",
+            "courseKey"
+          ]
+        },
+        {
+          "name": "learner_onboarding_member_idx",
+          "unique": false,
+          "columns": [
+            "organizationMemberId"
+          ]
+        },
+        {
+          "name": "learner_onboarding_org_status_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "status"
+          ]
+        },
+        {
+          "name": "learner_onboarding_user_course_idx",
+          "unique": true,
+          "columns": [
+            "userId",
+            "courseKey"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "magic_links",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examTypes",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "expiresAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "tokenHash",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "usedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "magic_links_tokenHash_unique",
+          "unique": true,
+          "columns": [
+            "tokenHash"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "module_overviews",
+      "columns": [
+        {
+          "name": "bankKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "overviewsJson",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "bank_overview_idx",
+          "unique": true,
+          "columns": [
+            "bankKey"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "organization_members",
+      "columns": [
+        {
+          "name": "assignedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKeys",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "lastRemindedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "name",
+          "type": "varchar(200)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "reminderOptOut",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "revokedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "role",
+          "type": "varchar(20)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(20)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "unsubscribeToken",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "org_members_email_idx",
+          "unique": false,
+          "columns": [
+            "email"
+          ]
+        },
+        {
+          "name": "org_members_org_email_unique_idx",
+          "unique": true,
+          "columns": [
+            "orgId",
+            "email"
+          ]
+        },
+        {
+          "name": "org_members_orgid_idx",
+          "unique": false,
+          "columns": [
+            "orgId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "organization_term_operator_usage",
+      "columns": [
+        {
+          "name": "firstActivatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "memberEmail",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "termEnd",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "termStart",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "term_usage_email_idx",
+          "unique": false,
+          "columns": [
+            "memberEmail"
+          ]
+        },
+        {
+          "name": "term_usage_orgid_idx",
+          "unique": false,
+          "columns": [
+            "orgId"
+          ]
+        },
+        {
+          "name": "term_usage_unique_idx",
+          "unique": true,
+          "columns": [
+            "orgId",
+            "memberEmail",
+            "termStart"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "organizations",
+      "columns": [
+        {
+          "name": "billingType",
+          "type": "varchar(16)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "managerEmail",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "name",
+          "type": "varchar(200)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "onboardingEmailSentAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "province",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "seatsTotal",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stream",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeCustomerId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeSubscriptionId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "termEnd",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "termStart",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "tier",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "organizations_stripeSubscriptionId_unique",
+          "unique": true,
+          "columns": [
+            "stripeSubscriptionId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "product_analytics_events",
+      "columns": [
+        {
+          "name": "emailHash",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "eventName",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "metadata",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "occurredAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "productKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "analytics_email_time_idx",
+          "unique": false,
+          "columns": [
+            "emailHash",
+            "occurredAt"
+          ]
+        },
+        {
+          "name": "analytics_event_time_idx",
+          "unique": false,
+          "columns": [
+            "eventName",
+            "occurredAt"
+          ]
+        },
+        {
+          "name": "analytics_org_time_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "occurredAt"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "purchases",
+      "columns": [
+        {
+          "name": "accessExpiresAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "amountCAD",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "customerName",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "phone",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "productKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "productName",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "province",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "referralSource",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "refundedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripePaymentIntentId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeSessionId",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "utmCampaign",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "utmMedium",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "utmSource",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "welcomeEmailSentAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "purchases_stripeSessionId_unique",
+          "unique": true,
+          "columns": [
+            "stripeSessionId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "qotd_completions",
+      "columns": [
+        {
+          "name": "correct",
+          "type": "enum('yes','no')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "dateKey",
+          "type": "varchar(10)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "guestToken",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "questionId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "question_attempts",
+      "columns": [
+        {
+          "name": "bankKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "bookmarked",
+          "type": "enum('yes','no')",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "confidence",
+          "type": "enum('low','medium','high')",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "correct",
+          "type": "enum('yes','no')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "difficulty",
+          "type": "varchar(16)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "guestToken",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "organizationMemberId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "questionId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "quizMode",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "selectedIndex",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sessionId",
+          "type": "varchar(36)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "topic",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "qa_email_createdat_idx",
+          "unique": false,
+          "columns": [
+            "studentEmail",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "qa_org_member_course_created_idx",
+          "unique": false,
+          "columns": [
+            "orgId",
+            "organizationMemberId",
+            "courseKey",
+            "createdAt"
+          ]
+        },
+        {
+          "name": "qa_sessionid_idx",
+          "unique": false,
+          "columns": [
+            "sessionId"
+          ]
+        },
+        {
+          "name": "qa_userid_createdat_idx",
+          "unique": false,
+          "columns": [
+            "userId",
+            "createdAt"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "question_bank_meta",
+      "columns": [
+        {
+          "name": "bankKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "blueprintVersion",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "contentVersion",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "formulaLinks",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "minCalcPerMock",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "modules",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "moduleTargets",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "recallTargetPct",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalQuestions",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "question_bank_meta_bankKey_unique",
+          "unique": true,
+          "columns": [
+            "bankKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "question_error_reports",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "details",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "module",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "questionId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "questionText",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "reportType",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "questions",
+      "columns": [
+        {
+          "name": "bankKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "blueprintObjective",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "cognitiveLevel",
+          "type": "enum('recall','application')",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "correctIndex",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "difficulty",
+          "type": "varchar(16)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "explanation",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "isCalc",
+          "type": "enum('yes','no')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "module",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "options",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "question",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "questionNum",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "reviewedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "reviewedBy",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "reviewStatus",
+          "type": "enum('unreviewed','in_review','approved','rejected')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceReference",
+          "type": "varchar(512)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceTitle",
+          "type": "varchar(255)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "sourceUrl",
+          "type": "varchar(1024)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "steps",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "tip",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "topic",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "bank_question_idx",
+          "unique": true,
+          "columns": [
+            "bankKey",
+            "questionNum"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "question_bank_review_status_idx",
+          "unique": false,
+          "columns": [
+            "bankKey",
+            "reviewStatus"
+          ]
+        },
+        {
+          "name": "question_review_status_idx",
+          "unique": false,
+          "columns": [
+            "reviewStatus"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stripe_event_log",
+      "columns": [
+        {
+          "name": "attemptCount",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "completedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "dbProcessed",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "emailDelivered",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "eventType",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "lastError",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "processingStartedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "processingToken",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(40)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeEventId",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeObjectId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "stripe_event_log_event_type_idx",
+          "unique": false,
+          "columns": [
+            "eventType"
+          ]
+        },
+        {
+          "name": "stripe_event_log_org_id_idx",
+          "unique": false,
+          "columns": [
+            "orgId"
+          ]
+        },
+        {
+          "name": "stripe_event_log_stripeEventId_unique",
+          "unique": true,
+          "columns": [
+            "stripeEventId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "student_profiles",
+      "columns": [
+        {
+          "name": "currentStreak",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "lastActiveDate",
+          "type": "varchar(10)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "longestStreak",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "strongTopics",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "topicAccuracy",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalAttempts",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalSessions",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "weakTopics",
+          "type": "text",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "student_profiles_email_idx",
+          "unique": true,
+          "columns": [
+            "studentEmail"
+          ]
+        },
+        {
+          "name": "student_profiles_userId_idx",
+          "unique": true,
+          "columns": [
+            "userId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "subscriptions",
+      "columns": [
+        {
+          "name": "amountCAD",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "currentPeriodEnd",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "currentPeriodStart",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "customerName",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "orgId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "phone",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "province",
+          "type": "enum('ontario','western')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "referralSource",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "enum('active','cancelled','past_due','unpaid','expired')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeCustomerId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeSubscriptionId",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "tier",
+          "type": "enum('class1','class2','class3','class4','all-access')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "utmCampaign",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "utmMedium",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "utmSource",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "subscriptions_stripeSubscriptionId_unique",
+          "unique": true,
+          "columns": [
+            "stripeSubscriptionId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "team_flex_extensions",
+      "columns": [
+        {
+          "name": "appliedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "extensionDays",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "licenceId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "newAccessEndsAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "organizationId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "priceCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "purchaserUserId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeCheckoutSessionId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripePaymentIntentId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "team_flex_extensions_licence_unique",
+          "unique": true,
+          "columns": [
+            "licenceId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "team_flex_licences",
+      "columns": [
+        {
+          "name": "accessEndsAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "activatedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "activationDeadline",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "assignedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "extensionApplied",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "extensionStartsAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "invitationToken",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "invitedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "invitedEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "operatorUserId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "orderItemId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "organizationId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "originalAccessEndsAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "previousStatus",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "replacedByLicenceId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "replacesLicenceId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "reportingEndsAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "revokedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "revokeReason",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "startsAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "suspendedAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "suspendedReason",
+          "type": "varchar(100)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "termMonths",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "flex_lic_deadline_idx",
+          "unique": false,
+          "columns": [
+            "status",
+            "activationDeadline"
+          ]
+        },
+        {
+          "name": "flex_lic_email_idx",
+          "unique": false,
+          "columns": [
+            "invitedEmail",
+            "status",
+            "courseKey"
+          ]
+        },
+        {
+          "name": "flex_lic_invitation_idx",
+          "unique": false,
+          "columns": [
+            "invitationToken",
+            "status"
+          ]
+        },
+        {
+          "name": "flex_lic_operator_idx",
+          "unique": false,
+          "columns": [
+            "operatorUserId",
+            "status",
+            "courseKey"
+          ]
+        },
+        {
+          "name": "flex_lic_org_status_idx",
+          "unique": false,
+          "columns": [
+            "organizationId",
+            "status"
+          ]
+        },
+        {
+          "name": "idx_flex_lic_deadline",
+          "unique": false,
+          "columns": [
+            "status",
+            "activationDeadline"
+          ]
+        },
+        {
+          "name": "idx_flex_lic_expiry",
+          "unique": false,
+          "columns": [
+            "status",
+            "accessEndsAt"
+          ]
+        },
+        {
+          "name": "idx_flex_lic_invitation",
+          "unique": false,
+          "columns": [
+            "invitationToken"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "team_flex_order_items",
+      "columns": [
+        {
+          "name": "courseKey",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseLevel",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "discountedUnitPriceCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "discountRate",
+          "type": "decimal(5,4)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "examFamily",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "lineTotalCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "listUnitPriceCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "orderId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "pricingBand",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "termMonths",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_flex_items_order",
+          "unique": false,
+          "columns": [
+            "orderId"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "team_flex_orders",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "currency",
+          "type": "varchar(3)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "discountCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "discountRate",
+          "type": "decimal(5,4)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "managerEmail",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "organizationId",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "overlapAcknowledged",
+          "type": "tinyint(1)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "paidAt",
+          "type": "timestamp",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "purchaserUserId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeCheckoutSessionId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripeCustomerId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "stripePaymentIntentId",
+          "type": "varchar(128)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "subtotalCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "taxCents",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalBeforeTaxCents",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalLicences",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "totalPaidCents",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "idx_flex_orders_org",
+          "unique": false,
+          "columns": [
+            "organizationId"
+          ]
+        },
+        {
+          "name": "idx_flex_orders_status",
+          "unique": false,
+          "columns": [
+            "status"
+          ]
+        },
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "team_flex_orders_checkout_unique",
+          "unique": true,
+          "columns": [
+            "stripeCheckoutSessionId"
+          ]
+        },
+        {
+          "name": "uk_stripe_pi",
+          "unique": true,
+          "columns": [
+            "stripePaymentIntentId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trial_emails",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "source",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trigger_logs",
+      "columns": [
+        {
+          "name": "cooldownUntil",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "emailBodyPreview",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "emailSubject",
+          "type": "varchar(256)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "sentAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "status",
+          "type": "varchar(16)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "studentEmail",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "triggerType",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "trigger_logs_email_sentat_idx",
+          "unique": false,
+          "columns": [
+            "studentEmail",
+            "sentAt"
+          ]
+        },
+        {
+          "name": "trigger_logs_userid_sentat_idx",
+          "unique": false,
+          "columns": [
+            "userId",
+            "sentAt"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user_feedback",
+      "columns": [
+        {
+          "name": "comment",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "examType",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "feedbackType",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "province",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "rating",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "userId",
+          "type": "int",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "lastSignedIn",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "loginMethod",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "openId",
+          "type": "varchar(64)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "phone",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "province",
+          "type": "varchar(32)",
+          "nullable": true,
+          "autoIncrement": false
+        },
+        {
+          "name": "role",
+          "type": "enum('user','admin')",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        },
+        {
+          "name": "users_openId_unique",
+          "unique": true,
+          "columns": [
+            "openId"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "waitlist",
+      "columns": [
+        {
+          "name": "courseCode",
+          "type": "varchar(32)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "courseTitle",
+          "type": "varchar(128)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "createdAt",
+          "type": "timestamp",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "email",
+          "type": "varchar(320)",
+          "nullable": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": false,
+          "autoIncrement": true
+        },
+        {
+          "name": "province",
+          "type": "varchar(64)",
+          "nullable": true,
+          "autoIncrement": false
+        }
+      ],
+      "indexes": [
+        {
+          "name": "PRIMARY",
+          "unique": true,
+          "columns": [
+            "id"
+          ]
+        }
+      ]
+    }
+  ]
+}

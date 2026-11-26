@@ -1,0 +1,32 @@
+[
+  {
+    "questionNum": 235,
+    "question": "What is the primary purpose of a centrifuge in wastewater solids handling?",
+    "options": [
+      "To use rapid rotation to separate wastewater solids from liquid and produce a drier solids material commonly called cake.",
+      "To disinfect final treated effluent with centrifugally generated chemicals before a discharge-quality sample is collected.",
+      "To move untreated wastewater uphill through collection piping so gravity sewers and lift-station controls are never required.",
+      "To add oxygen to activated sludge until it becomes a final biosolids product with no need for later handling."
+    ],
+    "correctIndex": 0,
+    "explanation": "A centrifuge is mechanical solids-handling equipment. It uses rapid rotation to separate wastewater solids from liquid, producing a drier material commonly called cake for subsequent handling.",
+    "sourceTitle": "U.S. EPA — Fact Sheet: Centrifuge Thickening and Dewatering",
+    "sourceReference": "EPA describes centrifugal thickening and dewatering as rapid rotation of a cylindrical bowl to separate wastewater solids from liquid and produce a non-liquid material called cake.",
+    "sourceUrl": "https://www.epa.gov/biosolids/fact-sheet-centrifuge-thickening-and-dewatering"
+  },
+  {
+    "questionNum": 291,
+    "question": "Which statement best describes a force main in a wastewater collection system?",
+    "options": [
+      "It is a pressurized pipeline that conveys wastewater from the discharge side of a pump or pneumatic ejector to a discharge point.",
+      "It is a gravity sewer that relies only on downhill slope and is designed to operate without pumps, pressure, or lift-station equipment.",
+      "It is a standby bypass pipe that sends untreated wastewater directly to a receiving waterbody whenever a pump station needs maintenance.",
+      "It is a pipe used only to convey final treated effluent after disinfection, replacing the need for collection-system pumps and controls."
+    ],
+    "correctIndex": 0,
+    "explanation": "A force main carries wastewater under pressure from the discharge side of a pump or pneumatic ejector. It is used when pumping is needed to move wastewater to a discharge point rather than relying only on gravity flow.",
+    "sourceTitle": "U.S. EPA — Wastewater Technology Fact Sheet: Sewers, Force Main",
+    "sourceReference": "EPA defines force mains as pipelines that convey wastewater under pressure from a pump or pneumatic-ejector discharge side to a discharge point, including where gravity conveyance is insufficient.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P10099PU.TXT"
+  }
+]

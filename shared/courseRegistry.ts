@@ -1,0 +1,1100 @@
+/**
+ * Echelon Institute — Canonical Course Registry
+ *
+ * This is the SINGLE SOURCE OF TRUTH for all course definitions.
+ * It replaces the scattered mappings in products.ts, subscriptionProducts.ts,
+ * and access.ts. All province, tier, route, and team-assignability data lives here.
+ *
+ * Rules:
+ * - Unknown course keys MUST fail closed (return undefined / throw).
+ * - Ontario and Western/WPI course families MUST NOT accidentally mix.
+ * - Legacy aliases resolve to canonical keys explicitly — never implicitly.
+ * - Adding a new province requires only adding entries here.
+ */
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+/**
+ * Regulatory exam families.
+ *
+ * "us-wpi" is a SEPARATE family from "western". Both reference WPI-aligned
+ * material, but US courses carry their own course keys, question bank keys,
+ * products and mock profile. "us-state" is a separate, state-specific US
+ * family. A Canadian bank is never reachable from a US course key, and a US
+ * bank is never reachable from a Canadian one. Any code branching on family
+ * must handle all four cases explicitly.
+ */
+export type ExamFamily = "ontario" | "western" | "us-wpi" | "us-state";
+export type ProvinceOrRegion = "ontario" | "western" | "united-states";
+export type TrackType =
+  | "water-treatment"
+  | "wastewater-treatment"
+  | "water-distribution"
+  | "wastewater-collection"
+  | "water-quality"
+  | "oit"
+  | "construction-electrician";
+
+export interface CourseEntry {
+  /** Canonical course key — used in DB, URLs, and product keys */
+  courseKey: string;
+  /** Human-readable display name */
+  displayName: string;
+  /** Short display name for compact UIs */
+  shortName: string;
+  /** Province / regulatory family */
+  provinceOrRegion: ProvinceOrRegion;
+  /** Regulatory exam family */
+  examFamily: ExamFamily;
+  /** Track within the exam family */
+  track: TrackType;
+  /** Numeric class level (1–4, or 0 for OIT) */
+  classLevel: 0 | 1 | 2 | 3 | 4;
+  /** Frontend quiz route (e.g. "/class1-water") */
+  quizPath: string;
+  /** Frontend mock exam route */
+  mockExamPath: string;
+  /** Frontend flashcard route (null if not available) */
+  flashcardPath: string | null;
+  /** Frontend formula sheet route (null if not available) */
+  formulaPath: string | null;
+  /** Individual product key in products.ts */
+  productKey: string;
+  /** Subscription tier this course belongs to */
+  subscriptionTier: "class1" | "class2" | "class3" | "class4" | "all-access";
+  /** Question bank key used in the DB */
+  questionBankKey: string;
+  /** Whether this course can be assigned to team seats */
+  teamAssignable: boolean;
+  /**
+   * Legacy aliases that resolve to this canonical key.
+   * These are accepted as input but normalized to courseKey.
+   */
+  aliases: string[];
+  /** Whether this course is actively sold / accessible */
+  isActive: boolean;
+}
+
+// ---------------------------------------------------------------------------
+// Registry
+// ---------------------------------------------------------------------------
+
+const REGISTRY: CourseEntry[] = [
+  // ── Ontario Skilled Trades ────────────────────────────────────────────────
+  {
+    courseKey: "electrician-309a",
+    displayName: "Ontario 309A Construction Electrician",
+    shortName: "Ontario 309A Electrician",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "construction-electrician",
+    classLevel: 0,
+    quizPath: "/electrician-309a",
+    mockExamPath: "/electrician-309a-mock",
+    flashcardPath: "/electrician-309a-flashcards",
+    formulaPath: null,
+    productKey: "electrician-309a",
+    subscriptionTier: "all-access",
+    questionBankKey: "electrician-309a",
+    teamAssignable: false,
+    aliases: ["electrician-309a-demo"],
+    isActive: true,
+  },
+  // ── Ontario OIT ──────────────────────────────────────────────────────────
+  {
+    courseKey: "oit",
+    displayName: "OIT — Water Treatment",
+    shortName: "OIT Water",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "oit",
+    classLevel: 0,
+    quizPath: "/quiz",
+    mockExamPath: "/oit-mock",
+    flashcardPath: "/oit-water-flashcards",
+    formulaPath: null,
+    productKey: "oit",
+    subscriptionTier: "class1",
+    questionBankKey: "oit",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "oit-ww",
+    displayName: "OIT — Wastewater",
+    shortName: "OIT Wastewater",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "oit",
+    classLevel: 0,
+    quizPath: "/oit-ww",
+    mockExamPath: "/oit-ww-mock",
+    flashcardPath: "/oit-ww-flashcards",
+    formulaPath: null,
+    productKey: "oit-ww",
+    subscriptionTier: "class1",
+    questionBankKey: "oit-ww",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Ontario Water Treatment ───────────────────────────────────────────────
+  {
+    courseKey: "class1-water",
+    displayName: "Class 1 Water Treatment",
+    shortName: "Class 1 Water",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-treatment",
+    classLevel: 1,
+    quizPath: "/class1-water",
+    mockExamPath: "/class1-water-mock",
+    flashcardPath: "/class1-water-flashcards",
+    formulaPath: "/formulas-water1",
+    productKey: "class1-water",
+    subscriptionTier: "class1",
+    questionBankKey: "class1-water",
+    teamAssignable: true,
+    aliases: ["class1"],
+    isActive: true,
+  },
+  {
+    courseKey: "class2-water",
+    displayName: "Class 2 Water Treatment",
+    shortName: "Class 2 Water",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-treatment",
+    classLevel: 2,
+    quizPath: "/class2-water",
+    mockExamPath: "/class2-water-mock",
+    flashcardPath: "/class2-water-flashcards",
+    formulaPath: "/formulas-water2",
+    productKey: "class2-water",
+    subscriptionTier: "class2",
+    questionBankKey: "class2-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class3-water",
+    displayName: "Class 3 Water Treatment",
+    shortName: "Class 3 Water",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-treatment",
+    classLevel: 3,
+    quizPath: "/class3-water",
+    mockExamPath: "/class3-water-mock",
+    flashcardPath: "/class3-water-flashcards",
+    formulaPath: "/formulas-water3",
+    productKey: "class3-water",
+    subscriptionTier: "class3",
+    questionBankKey: "class3-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class4-water",
+    displayName: "Class 4 Water Treatment",
+    shortName: "Class 4 Water",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-treatment",
+    classLevel: 4,
+    quizPath: "/class4-water",
+    mockExamPath: "/class4-water-mock",
+    flashcardPath: "/class4-water-flashcards",
+    formulaPath: "/formulas-water4",
+    productKey: "class4-water",
+    subscriptionTier: "class4",
+    questionBankKey: "class4-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Ontario Wastewater Treatment ──────────────────────────────────────────
+  {
+    courseKey: "class1-ww",
+    displayName: "Class 1 Wastewater Treatment",
+    shortName: "Class 1 Wastewater",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-treatment",
+    classLevel: 1,
+    quizPath: "/class1-ww",
+    mockExamPath: "/class1-ww-mock",
+    flashcardPath: "/class1-ww-flashcards",
+    formulaPath: "/formulas-ww1",
+    productKey: "class1-ww",
+    subscriptionTier: "class1",
+    questionBankKey: "class1-wastewater",
+    teamAssignable: true,
+    aliases: ["class1-wastewater"],
+    isActive: true,
+  },
+  {
+    courseKey: "class2-ww",
+    displayName: "Class 2 Wastewater Treatment",
+    shortName: "Class 2 Wastewater",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-treatment",
+    classLevel: 2,
+    quizPath: "/class2-ww",
+    mockExamPath: "/class2-ww-mock",
+    flashcardPath: "/class2-ww-flashcards",
+    formulaPath: "/formulas-ww2",
+    productKey: "class2-ww",
+    subscriptionTier: "class2",
+    questionBankKey: "class2-wastewater",
+    teamAssignable: true,
+    aliases: ["class2-wastewater"],
+    isActive: true,
+  },
+  {
+    courseKey: "class3-ww",
+    displayName: "Class 3 Wastewater Treatment",
+    shortName: "Class 3 Wastewater",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-treatment",
+    classLevel: 3,
+    quizPath: "/class3-ww",
+    mockExamPath: "/class3-ww-mock",
+    flashcardPath: "/class3-ww-flashcards",
+    formulaPath: "/formulas-ww3",
+    productKey: "class3-ww",
+    subscriptionTier: "class3",
+    questionBankKey: "class3-wastewater",
+    teamAssignable: true,
+    aliases: ["class3-wastewater"],
+    isActive: true,
+  },
+  {
+    courseKey: "class4-ww",
+    displayName: "Class 4 Wastewater Treatment",
+    shortName: "Class 4 Wastewater",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-treatment",
+    classLevel: 4,
+    quizPath: "/class4-ww",
+    mockExamPath: "/class4-ww-mock",
+    flashcardPath: "/class4-ww-flashcards",
+    formulaPath: "/formulas-ww4",
+    productKey: "class4-ww",
+    subscriptionTier: "class4",
+    questionBankKey: "class4-wastewater",
+    teamAssignable: true,
+    aliases: ["class4-wastewater"],
+    isActive: true,
+  },
+  // ── Ontario Water Quality Analyst ─────────────────────────────────────────
+  {
+    courseKey: "wqa",
+    displayName: "Water Quality Analyst (WQA)",
+    shortName: "WQA",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-quality",
+    classLevel: 4,
+    quizPath: "/wqa",
+    mockExamPath: "/wqa-mock",
+    flashcardPath: "/wqa-flashcards",
+    formulaPath: "/formulas-wqa",
+    productKey: "wqa",
+    subscriptionTier: "class4",
+    questionBankKey: "wqa",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Ontario Water Distribution ────────────────────────────────────────────
+  {
+    courseKey: "class1-water-dist",
+    displayName: "Class 1 Water Distribution and Supply",
+    shortName: "Class 1 Distribution & Supply",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-distribution",
+    classLevel: 1,
+    quizPath: "/class1-water-dist",
+    mockExamPath: "/class1-water-dist-mock",
+    flashcardPath: "/class1-water-dist-flashcards",
+    formulaPath: null,
+    productKey: "class1-water-dist",
+    subscriptionTier: "class1",
+    questionBankKey: "class1-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class2-water-dist",
+    displayName: "Class 2 Water Distribution and Supply",
+    shortName: "Class 2 Distribution & Supply",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-distribution",
+    classLevel: 2,
+    quizPath: "/class2-water-dist",
+    mockExamPath: "/class2-water-dist-mock",
+    flashcardPath: "/class2-water-dist-flashcards",
+    formulaPath: null,
+    productKey: "class2-water-dist",
+    subscriptionTier: "class2",
+    questionBankKey: "class2-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class3-water-dist",
+    displayName: "Class 3 Water Distribution and Supply",
+    shortName: "Class 3 Distribution & Supply",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-distribution",
+    classLevel: 3,
+    quizPath: "/class3-water-dist",
+    mockExamPath: "/class3-water-dist-mock",
+    flashcardPath: "/class3-water-dist-flashcards",
+    formulaPath: null,
+    productKey: "class3-water-dist",
+    subscriptionTier: "class3",
+    questionBankKey: "class3-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class4-water-dist",
+    displayName: "Class 4 Water Distribution and Supply",
+    shortName: "Class 4 Distribution & Supply",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "water-distribution",
+    classLevel: 4,
+    quizPath: "/class4-water-dist",
+    mockExamPath: "/class4-water-dist-mock",
+    flashcardPath: "/class4-water-dist-flashcards",
+    formulaPath: null,
+    productKey: "class4-water-dist",
+    subscriptionTier: "class4",
+    questionBankKey: "class4-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Ontario Wastewater Collection ─────────────────────────────────────────
+  {
+    courseKey: "class1-wastewater-coll",
+    displayName: "Class 1 Wastewater Collection",
+    shortName: "Class 1 Collection",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-collection",
+    classLevel: 1,
+    quizPath: "/class1-wastewater-coll",
+    mockExamPath: "/class1-wastewater-coll-mock",
+    flashcardPath: "/class1-wastewater-coll-flashcards",
+    formulaPath: null,
+    productKey: "class1-wastewater-coll",
+    subscriptionTier: "class1",
+    questionBankKey: "class1-wastewater-coll",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class2-wastewater-coll",
+    displayName: "Class 2 Wastewater Collection",
+    shortName: "Class 2 Collection",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-collection",
+    classLevel: 2,
+    quizPath: "/class2-wastewater-coll",
+    mockExamPath: "/class2-wastewater-coll-mock",
+    flashcardPath: "/class2-wastewater-coll-flashcards",
+    formulaPath: null,
+    productKey: "class2-wastewater-coll",
+    subscriptionTier: "class2",
+    questionBankKey: "class2-wastewater-coll",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class3-wastewater-coll",
+    displayName: "Class 3 Wastewater Collection",
+    shortName: "Class 3 Collection",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-collection",
+    classLevel: 3,
+    quizPath: "/class3-wastewater-coll",
+    mockExamPath: "/class3-wastewater-coll-mock",
+    flashcardPath: "/class3-wastewater-coll-flashcards",
+    formulaPath: null,
+    productKey: "class3-wastewater-coll",
+    subscriptionTier: "class3",
+    questionBankKey: "class3-wastewater-coll",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "class4-wastewater-coll",
+    displayName: "Class 4 Wastewater Collection",
+    shortName: "Class 4 Collection",
+    provinceOrRegion: "ontario",
+    examFamily: "ontario",
+    track: "wastewater-collection",
+    classLevel: 4,
+    quizPath: "/class4-wastewater-coll",
+    mockExamPath: "/class4-wastewater-coll-mock",
+    flashcardPath: "/class4-wastewater-coll-flashcards",
+    formulaPath: null,
+    productKey: "class4-wastewater-coll",
+    subscriptionTier: "class4",
+    questionBankKey: "class4-wastewater-coll",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Western Canada (WPI) Water Treatment ─────────────────────────────────
+  {
+    courseKey: "wpi-class1-water",
+    displayName: "WPI Class I Water Treatment",
+    shortName: "WPI Class I Water",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-treatment",
+    classLevel: 1,
+    quizPath: "/wpi-class1-water",
+    mockExamPath: "/wpi-class1-water-mock",
+    flashcardPath: "/wpi-class1-water-flashcards",
+    formulaPath: "/formulas-wpi-class1",
+    productKey: "wpi-class1-water",
+    subscriptionTier: "class1",
+    questionBankKey: "wpi-class1-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class2-water",
+    displayName: "WPI Class II Water Treatment",
+    shortName: "WPI Class II Water",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-treatment",
+    classLevel: 2,
+    quizPath: "/wpi-class2-water",
+    mockExamPath: "/wpi-class2-water-mock",
+    flashcardPath: "/wpi-class2-water-flashcards",
+    formulaPath: "/formulas-wpi-class2",
+    productKey: "wpi-class2-water",
+    subscriptionTier: "class2",
+    questionBankKey: "wpi-class2-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class3-water",
+    displayName: "WPI Class III Water Treatment",
+    shortName: "WPI Class III Water",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-treatment",
+    classLevel: 3,
+    quizPath: "/wpi-class3-water",
+    mockExamPath: "/wpi-class3-water-mock",
+    flashcardPath: "/wpi-class3-water-flashcards",
+    formulaPath: "/formulas-wpi-class3",
+    productKey: "wpi-class3-water",
+    subscriptionTier: "class3",
+    questionBankKey: "wpi-class3-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class4-water",
+    displayName: "WPI Class IV Water Treatment",
+    shortName: "WPI Class IV Water",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-treatment",
+    classLevel: 4,
+    quizPath: "/wpi-class4-water",
+    mockExamPath: "/wpi-class4-water-mock",
+    flashcardPath: "/wpi-class4-water-flashcards",
+    formulaPath: "/formulas-wpi-class4",
+    productKey: "wpi-class4-water",
+    subscriptionTier: "class4",
+    questionBankKey: "wpi-class4-water",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Western Canada (WPI) Wastewater Treatment ─────────────────────────────
+  {
+    courseKey: "wpi-class1-wastewater",
+    displayName: "WPI Class I Wastewater Treatment",
+    shortName: "WPI Class I Wastewater",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-treatment",
+    classLevel: 1,
+    quizPath: "/wpi-class1-wastewater",
+    mockExamPath: "/wpi-class1-wastewater-mock",
+    flashcardPath: "/wpi-class1-wastewater-flashcards",
+    formulaPath: "/formulas-wpi-class1-ww",
+    productKey: "wpi-class1-wastewater",
+    subscriptionTier: "class1",
+    questionBankKey: "wpi-class1-wastewater",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class2-wastewater",
+    displayName: "WPI Class II Wastewater Treatment",
+    shortName: "WPI Class II Wastewater",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-treatment",
+    classLevel: 2,
+    quizPath: "/wpi-class2-wastewater",
+    mockExamPath: "/wpi-class2-wastewater-mock",
+    flashcardPath: "/wpi-class2-wastewater-flashcards",
+    formulaPath: "/formulas-wpi-class2-ww",
+    productKey: "wpi-class2-wastewater",
+    subscriptionTier: "class2",
+    questionBankKey: "wpi-class2-wastewater",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class3-wastewater",
+    displayName: "WPI Class III Wastewater Treatment",
+    shortName: "WPI Class III Wastewater",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-treatment",
+    classLevel: 3,
+    quizPath: "/wpi-class3-wastewater",
+    mockExamPath: "/wpi-class3-wastewater-mock",
+    flashcardPath: "/wpi-class3-wastewater-flashcards",
+    formulaPath: "/formulas-wpi-class3-ww",
+    productKey: "wpi-class3-wastewater",
+    subscriptionTier: "class3",
+    questionBankKey: "wpi-class3-wastewater",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class4-wastewater",
+    displayName: "WPI Class IV Wastewater Treatment",
+    shortName: "WPI Class IV Wastewater",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-treatment",
+    classLevel: 4,
+    quizPath: "/wpi-class4-wastewater",
+    mockExamPath: "/wpi-class4-wastewater-mock",
+    flashcardPath: "/wpi-class4-wastewater-flashcards",
+    formulaPath: "/formulas-wpi-class4-ww",
+    productKey: "wpi-class4-wastewater",
+    subscriptionTier: "class4",
+    questionBankKey: "wpi-class4-wastewater",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Western Canada (WPI) Water Distribution ───────────────────────────────
+  {
+    courseKey: "wpi-class1-water-dist",
+    displayName: "WPI Class I Water Distribution",
+    shortName: "WPI Class I Distribution",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-distribution",
+    classLevel: 1,
+    quizPath: "/wpi-class1-water-dist",
+    mockExamPath: "/wpi-class1-water-dist-mock",
+    flashcardPath: "/wpi-class1-water-dist-flashcards",
+    formulaPath: "/formulas-wpi-class1",
+    productKey: "wpi-class1-water-dist",
+    subscriptionTier: "class1",
+    questionBankKey: "wpi-class1-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class2-water-dist",
+    displayName: "WPI Class II Water Distribution",
+    shortName: "WPI Class II Distribution",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-distribution",
+    classLevel: 2,
+    quizPath: "/wpi-class2-water-dist",
+    mockExamPath: "/wpi-class2-water-dist-mock",
+    flashcardPath: "/wpi-class2-water-dist-flashcards",
+    formulaPath: "/formulas-wpi-class2",
+    productKey: "wpi-class2-water-dist",
+    subscriptionTier: "class2",
+    questionBankKey: "wpi-class2-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class3-water-dist",
+    displayName: "WPI Class III Water Distribution",
+    shortName: "WPI Class III Distribution",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-distribution",
+    classLevel: 3,
+    quizPath: "/wpi-class3-water-dist",
+    mockExamPath: "/wpi-class3-water-dist-mock",
+    flashcardPath: "/wpi-class3-water-dist-flashcards",
+    formulaPath: "/formulas-wpi-class3",
+    productKey: "wpi-class3-water-dist",
+    subscriptionTier: "class3",
+    questionBankKey: "wpi-class3-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class4-water-dist",
+    displayName: "WPI Class IV Water Distribution",
+    shortName: "WPI Class IV Distribution",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "water-distribution",
+    classLevel: 4,
+    quizPath: "/wpi-class4-water-dist",
+    mockExamPath: "/wpi-class4-water-dist-mock",
+    flashcardPath: "/wpi-class4-water-dist-flashcards",
+    formulaPath: "/formulas-wpi-class4",
+    productKey: "wpi-class4-water-dist",
+    subscriptionTier: "class4",
+    questionBankKey: "wpi-class4-water-dist",
+    teamAssignable: true,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Western Canada (WPI) Wastewater Collection ────────────────────────────
+  {
+    courseKey: "wpi-class1-water-coll",
+    displayName: "WPI Class I Wastewater Collection",
+    shortName: "WPI Class I Collection",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-collection",
+    classLevel: 1,
+    quizPath: "/wpi-class1-water-coll",
+    mockExamPath: "/wpi-class1-water-coll-mock",
+    flashcardPath: "/wpi-class1-water-coll-flashcards",
+    formulaPath: "/formulas-wpi-class1-ww",
+    productKey: "wpi-class1-water-coll",
+    subscriptionTier: "class1",
+    questionBankKey: "wpi-class1-wastewater-coll",
+    teamAssignable: true,
+    aliases: ["wpi-class1-wastewater-coll"],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class2-water-coll",
+    displayName: "WPI Class II Wastewater Collection",
+    shortName: "WPI Class II Collection",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-collection",
+    classLevel: 2,
+    quizPath: "/wpi-class2-water-coll",
+    mockExamPath: "/wpi-class2-water-coll-mock",
+    flashcardPath: "/wpi-class2-water-coll-flashcards",
+    formulaPath: "/formulas-wpi-class2-ww",
+    productKey: "wpi-class2-water-coll",
+    subscriptionTier: "class2",
+    questionBankKey: "wpi-class2-wastewater-coll",
+    teamAssignable: true,
+    aliases: ["wpi-class2-wastewater-coll"],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class3-water-coll",
+    displayName: "WPI Class III Wastewater Collection",
+    shortName: "WPI Class III Collection",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-collection",
+    classLevel: 3,
+    quizPath: "/wpi-class3-water-coll",
+    mockExamPath: "/wpi-class3-water-coll-mock",
+    flashcardPath: "/wpi-class3-water-coll-flashcards",
+    formulaPath: "/formulas-wpi-class3-ww",
+    productKey: "wpi-class3-water-coll",
+    subscriptionTier: "class3",
+    questionBankKey: "wpi-class3-wastewater-coll",
+    teamAssignable: true,
+    aliases: ["wpi-class3-wastewater-coll"],
+    isActive: true,
+  },
+  {
+    courseKey: "wpi-class4-water-coll",
+    displayName: "WPI Class IV Wastewater Collection",
+    shortName: "WPI Class IV Collection",
+    provinceOrRegion: "western",
+    examFamily: "western",
+    track: "wastewater-collection",
+    classLevel: 4,
+    quizPath: "/wpi-class4-water-coll",
+    mockExamPath: "/wpi-class4-water-coll-mock",
+    flashcardPath: "/wpi-class4-water-coll-flashcards",
+    formulaPath: "/formulas-wpi-class4-ww",
+    productKey: "wpi-class4-water-coll",
+    subscriptionTier: "class4",
+    questionBankKey: "wpi-class4-wastewater-coll",
+    teamAssignable: true,
+    aliases: ["wpi-class4-wastewater-coll"],
+    isActive: true,
+  },
+  // ── United States Class I (held pending content approval) ─────────────────
+  // These carry their own question bank keys and products. They are inactive
+  // until father approves the reviewed US content, so they are excluded from
+  // every active-course listing, SEO page and purchasable catalogue.
+  {
+    courseKey: "us-class1-water",
+    displayName: "US Class I Water Treatment",
+    shortName: "US Class I Water",
+    provinceOrRegion: "united-states",
+    examFamily: "us-wpi",
+    track: "water-treatment",
+    classLevel: 1,
+    quizPath: "/us-class1-water",
+    mockExamPath: "/us-class1-water-mock",
+    flashcardPath: "/us-class1-water-flashcards",
+    formulaPath: "/formulas-us-class1",
+    productKey: "us-class1-water",
+    subscriptionTier: "class1",
+    questionBankKey: "us-class1-water",
+    teamAssignable: false,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "us-class1-water-dist",
+    displayName: "US Class I Water Distribution",
+    shortName: "US Class I Distribution",
+    provinceOrRegion: "united-states",
+    examFamily: "us-wpi",
+    track: "water-distribution",
+    classLevel: 1,
+    quizPath: "/us-class1-water-dist",
+    mockExamPath: "/us-class1-water-dist-mock",
+    flashcardPath: "/us-class1-water-dist-flashcards",
+    formulaPath: "/formulas-us-class1",
+    productKey: "us-class1-water-dist",
+    subscriptionTier: "class1",
+    questionBankKey: "us-class1-water-dist",
+    teamAssignable: false,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Texas Class D Water (state-specific, governed commercial release) ──
+  // Texas Class D is a combined entry credential spanning treatment and
+  // distribution. This separate family prevents it from inheriting any WPI or
+  // Canadian entitlement, bank, route or source claim.
+  {
+    courseKey: "us-texas-class-d-water",
+    displayName: "Texas Class D Water",
+    shortName: "Texas Class D Water",
+    provinceOrRegion: "united-states",
+    examFamily: "us-state",
+    track: "water-treatment",
+    classLevel: 0,
+    quizPath: "/us-texas-class-d-water",
+    mockExamPath: "/us-texas-class-d-water-mock",
+    flashcardPath: "/us-texas-class-d-water-flashcards",
+    formulaPath: "/formulas-us-texas-class-d-water",
+    productKey: "us-texas-class-d-water",
+    subscriptionTier: "all-access",
+    questionBankKey: "us-texas-class-d-water",
+    teamAssignable: false,
+    aliases: [],
+    isActive: true,
+  },
+  // Independent state learner registration: standard preview and exact-course guards apply.
+  // No catalogue product, checkout release, Canadian subscription or team grant.
+  {
+      "courseKey": "fl-water-distribution-l3",
+      "displayName": "Florida Water Distribution Level 3",
+      "shortName": "FL Level 3 Distribution",
+      "provinceOrRegion": "united-states",
+      "examFamily": "us-state",
+      "track": "water-distribution",
+      "classLevel": 0,
+      "quizPath": "/us/practice/fl-water-distribution-l3",
+      "mockExamPath": "/us/mock/fl-water-distribution-l3",
+      "flashcardPath": "/us/flashcards/fl-water-distribution-l3",
+      "formulaPath": null,
+      "productKey": "fl-water-distribution-l3",
+      "subscriptionTier": "all-access",
+      "questionBankKey": "fl-water-distribution-l3",
+      "teamAssignable": false,
+      "aliases": [],
+      "isActive": true
+  },
+  {
+      "courseKey": "pa-class-e-water-distribution",
+      "displayName": "Pennsylvania Class E Water Distribution",
+      "shortName": "PA Class E Distribution",
+      "provinceOrRegion": "united-states",
+      "examFamily": "us-state",
+      "track": "water-distribution",
+      "classLevel": 0,
+      "quizPath": "/us/practice/pa-class-e-water-distribution",
+      "mockExamPath": "/us/mock/pa-class-e-water-distribution",
+      "flashcardPath": "/us/flashcards/pa-class-e-water-distribution",
+      "formulaPath": null,
+      "productKey": "pa-class-e-water-distribution",
+      "subscriptionTier": "all-access",
+      "questionBankKey": "pa-class-e-water-distribution",
+      "teamAssignable": false,
+      "aliases": [],
+      "isActive": true
+  },
+  {
+      "courseKey": "pa-wastewater-collection-e4",
+      "displayName": "Pennsylvania Wastewater Collection (Class E, Subclass 4)",
+      "shortName": "PA E4 Collection",
+      "provinceOrRegion": "united-states",
+      "examFamily": "us-state",
+      "track": "wastewater-collection",
+      "classLevel": 0,
+      "quizPath": "/us/practice/pa-wastewater-collection-e4",
+      "mockExamPath": "/us/mock/pa-wastewater-collection-e4",
+      "flashcardPath": "/us/flashcards/pa-wastewater-collection-e4",
+      "formulaPath": null,
+      "productKey": "pa-wastewater-collection-e4",
+      "subscriptionTier": "all-access",
+      "questionBankKey": "pa-wastewater-collection-e4",
+      "teamAssignable": false,
+      "aliases": [],
+      "isActive": true
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Internal index — built once at module load time
+// ---------------------------------------------------------------------------
+
+/** Primary index: canonical courseKey → entry */
+const BY_KEY = new Map<string, CourseEntry>();
+/** Alias index: alias → canonical entry */
+const BY_ALIAS = new Map<string, CourseEntry>();
+
+for (const entry of REGISTRY) {
+  BY_KEY.set(entry.courseKey, entry);
+  for (const alias of entry.aliases) {
+    BY_ALIAS.set(alias, entry);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Public helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Look up a course by its canonical key.
+ * Returns undefined for unknown keys — callers must handle this (fail closed).
+ */
+export function getCourseByKey(key: string): CourseEntry | undefined {
+  return BY_KEY.get(key);
+}
+
+/**
+ * Look up a course by a legacy alias.
+ * Returns undefined if the alias is not registered.
+ */
+export function getCourseByAlias(alias: string): CourseEntry | undefined {
+  return BY_ALIAS.get(alias);
+}
+
+/**
+ * Resolve a key that may be either canonical or an alias.
+ * Returns the canonical CourseEntry, or undefined if not found.
+ * Use this at input boundaries (e.g. team seat assignment, quiz route).
+ */
+export function resolveCourseKey(key: string): CourseEntry | undefined {
+  return BY_KEY.get(key) ?? BY_ALIAS.get(key);
+}
+
+/**
+ * Check whether a key is a valid canonical course key for the given exam family.
+ * FAIL CLOSED: returns false for unknown keys or cross-family keys.
+ */
+export function isValidCourseKeyForFamily(
+  key: string,
+  family: ExamFamily,
+): boolean {
+  const entry = BY_KEY.get(key);
+  return entry !== undefined && entry.examFamily === family && entry.isActive;
+}
+
+/**
+ * Return all active courses for a given exam family.
+ */
+export function getCoursesForFamily(family: ExamFamily): CourseEntry[] {
+  return REGISTRY.filter((e) => e.examFamily === family && e.isActive);
+}
+
+/**
+ * Return all active courses for a given subscription tier and exam family.
+ */
+export function getCoursesForSubscriptionTier(
+  tier: CourseEntry["subscriptionTier"],
+  family: ExamFamily,
+): CourseEntry[] {
+  return REGISTRY.filter(
+    (e) => e.subscriptionTier === tier && e.examFamily === family && e.isActive,
+  );
+}
+
+/**
+ * Return all team-assignable courses for a given exam family.
+ */
+export function getTeamAssignableCourses(family: ExamFamily): CourseEntry[] {
+  return REGISTRY.filter(
+    (e) => e.examFamily === family && e.teamAssignable && e.isActive,
+  );
+}
+
+/**
+ * Given a canonical course key and exam family, return the subscription tier.
+ * FAIL CLOSED: returns null for unknown or cross-family keys.
+ */
+export function courseKeyToTierStrict(
+  key: string,
+  family: ExamFamily,
+): CourseEntry["subscriptionTier"] | null {
+  const entry = BY_KEY.get(key);
+  if (!entry || entry.examFamily !== family || !entry.isActive) return null;
+  return entry.subscriptionTier;
+}
+
+/**
+ * Return the quiz and mock exam routes for a course key.
+ * Returns null if the key is unknown.
+ */
+export function getRouteForCourse(
+  key: string,
+): { quizPath: string; mockExamPath: string } | null {
+  const entry = BY_KEY.get(key);
+  if (!entry) return null;
+  return { quizPath: entry.quizPath, mockExamPath: entry.mockExamPath };
+}
+
+/**
+ * Return all active course keys as a flat array.
+ * Useful for validation schemas.
+ */
+export function getAllActiveCourseKeys(): string[] {
+  return REGISTRY.filter((e) => e.isActive).map((e) => e.courseKey);
+}
+
+/**
+ * Return all active course keys for a given exam family as a flat array.
+ */
+export function getAllActiveCourseKeysForFamily(family: ExamFamily): string[] {
+  return REGISTRY.filter((e) => e.examFamily === family && e.isActive).map(
+    (e) => e.courseKey,
+  );
+}
+
+/**
+ * True when a course may be presented to a learner studying in the United
+ * States. Two different families qualify, and they are NOT interchangeable:
+ *
+ * - "us-wpi": a dedicated US Class I course with its own US question bank,
+ *   blueprint and formula sheet.
+ * - "western": the shared WPI-aligned Canadian course that US learners can
+ *   also buy, presented honestly as shared preparation.
+ * - "us-state": a dedicated state-specific US course with a state-owned bank
+ *   identity and no implied WPI match.
+ *
+ * Callers that need to distinguish the two must test `examFamily` directly.
+ * This helper exists only so US-context presentation (course bar labels,
+ * study-context links) covers both instead of silently falling back to an
+ * Ontario label.
+ */
+export function isUSPresentableFamily(family: ExamFamily | undefined): boolean {
+  return family === "us-wpi" || family === "us-state" || family === "western";
+}
+
+/**
+ * Return the full registry (read-only view).
+ * Prefer the typed helpers above for most use cases.
+ */
+export function getAllCourses(): readonly CourseEntry[] {
+  return REGISTRY;
+}
+
+/**
+ * Returns the exam type(s) for a given courseKey.
+ * For most courses this is a single-element array [questionBankKey].
+ * Returns [] for unknown keys (fail closed).
+ */
+export function getExamTypesForCourseKey(courseKey: string): string[] {
+  const entry = resolveCourseKey(courseKey);
+  if (!entry) return [];
+  return [entry.questionBankKey];
+}
+
+/**
+ * Returns a human-readable label for a courseKey.
+ * Equivalent to the legacy courseKeyToLabel from products.ts.
+ * Falls back to the courseKey itself if not found.
+ * The province parameter is accepted for API compatibility but not used
+ * (province is encoded in the courseKey itself via the registry).
+ */
+export function courseKeyToLabel(courseKey: string, _province?: string): string {
+  const entry = resolveCourseKey(courseKey);
+  return entry?.displayName ?? courseKey;
+}
+
+/**
+ * Returns team-assignable courses for a province as { key, label } pairs.
+ * Drop-in replacement for the legacy getTeamCourseOptions from products.ts.
+ * Province values: "ontario" | "western" (or any string — unknown maps to ontario).
+ */
+export function getTeamCourseOptions(
+  province: string,
+): { key: string; label: string }[] {
+  const family: ExamFamily = province === "western" || province === "nova-scotia" ? "western" : "ontario";
+  return getTeamAssignableCourses(family).filter((e) =>
+    province !== "nova-scotia" || e.classLevel < 4 ||
+    (e.track !== "water-distribution" && e.track !== "wastewater-collection"),
+  ).map((e) => ({
+    key: e.courseKey,
+    label: e.displayName,
+  }));
+}

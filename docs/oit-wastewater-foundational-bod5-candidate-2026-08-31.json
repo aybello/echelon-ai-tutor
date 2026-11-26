@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 456,
+    "question": "In Ontario's routine sewage-treatment sampling program, what does BOD5 represent?",
+    "options": [
+      "The oxygen used by microorganisms over five days.",
+      "The total amount of suspended material in water.",
+      "The acidity or alkalinity measured at sampling.",
+      "The amount of chlorine remaining after treatment."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario's F-10-1 procedure includes BOD5 in routine sewage-treatment sampling. BOD5 refers to five-day biochemical oxygen demand: oxygen used by microorganisms as they break down biodegradable organic material. The result helps assess treatment performance; site-specific sampling requirements still govern each facility.",
+    "sourceTitle": "Ontario Guideline F-10-1 — Procedures for Sampling and Analysis Requirements for Municipal and Private Sewage Treatment Works",
+    "sourceReference": "Routine monitoring tables list BOD5 for raw and treated sewage streams; the document defines BOD5 as five-day biochemical oxygen demand.",
+    "sourceUrl": "https://www.ontario.ca/page/f-10-1-procedures-sampling-and-analysis-requirements-municipal-and-private-sewage-treatment-works"
+  }
+]

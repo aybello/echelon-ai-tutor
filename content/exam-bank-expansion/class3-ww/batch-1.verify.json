@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-291",
+  "expression": "4800/(240+60)",
+  "expected": "16.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-292",
+  "expression": "(4000*180)/(1800*2000)",
+  "expected": "0.20",
+  "decimalPlaces": 2,
+  "unit": "kg BOD/kg MLVSS/day"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-293",
+  "expression": "320/(3200/1000)",
+  "expected": "100.0",
+  "decimalPlaces": 1,
+  "unit": "mL/g"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-294",
+  "expression": "((6000+3000)*3000/1000)/450",
+  "expected": "60.0",
+  "decimalPlaces": 1,
+  "unit": "kg/m2/day"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-295",
+  "expression": "6300/(315+35)",
+  "expected": "18.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-296",
+  "expression": "(7500*210)/(2500*2250)",
+  "expected": "0.28",
+  "decimalPlaces": 2,
+  "unit": "kg BOD/kg MLVSS/day"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-297",
+  "expression": "(110*1000/500)/(2500/1000)",
+  "expected": "88.0",
+  "decimalPlaces": 1,
+  "unit": "mL/g"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-298",
+  "expression": "((5400+5400*0.6)*3000/1000)/(24*15)",
+  "expected": "72.0",
+  "decimalPlaces": 1,
+  "unit": "kg/m2/day"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-299",
+  "expression": "(3200*2875/1000)/(400+60)",
+  "expected": "20.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "WASTEWATER-TREATMENT-L3-300",
+  "expression": "(12000*160)/(4000*2400)",
+  "expected": "0.20",
+  "decimalPlaces": 2,
+  "unit": "kg BOD/kg MLVSS/day"
+ }
+]

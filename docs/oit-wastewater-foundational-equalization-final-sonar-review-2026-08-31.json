@@ -1,0 +1,19 @@
+{
+  "reviews": [
+    {
+      "questionNum": 79,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option is directly traceable to the cited EPA statement about aeration and mixing preventing solids deposition and maintaining aerobic basin conditions.",
+        "Item is framed explicitly as general technical background and not as an Ontario or universal legal requirement, consistent with the source boundary for flow equalization.",
+        "The learning objective (basic purpose of mixing in an equalization basin) is foundational and appropriate for an Ontario OIT learner.",
+        "Jurisdiction and regulatory scope are accurate: the U.S. EPA publication is used only for general process concept, not for Ontario-specific obligations.",
+        "Exactly one option is correct; distractors are clearly incorrect while remaining plausible as misconceptions and do not normalize unsafe operation or omitted required actions."
+      ],
+      "requiredChanges": [
+        "Minor wording adjustment could further reduce any perceived prescriptive tone, for example by reinforcing that mixing is typically used to help prevent solids deposition and maintain more uniform conditions rather than implying it is always required."
+      ]
+    }
+  ]
+}

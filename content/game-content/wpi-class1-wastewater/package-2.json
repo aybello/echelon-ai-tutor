@@ -1,0 +1,4852 @@
+{
+ "courseKey": "wpi-class1-wastewater",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp1ww-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester volatile solids loading in kg per m3 per day when 720 kg/day of volatile solids are fed to a digester of 450 m3 at a wastewater plant on the British Columbia coast. Enter the exact unrounded number.",
+   "topicId": "digester-loading",
+   "level": "class1",
+   "assumptions": "Fictional digester: volatile solids feed = 720 kg/day, digester volume = 450 m3, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "VS loading = Digester volume / Volatile solids feed"
+      },
+      {
+       "id": "opt-b",
+       "label": "VS loading = Volatile solids feed / Digester volume"
+      },
+      {
+       "id": "opt-c",
+       "label": "VS loading = Volatile solids feed * Digester volume"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: VS loading = Volatile solids feed / Digester volume"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3 divided by kg/day gives kg/(m3 day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "kg/day times m3 gives kg/(m3 day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "kg/day divided by m3 gives kg/(m3 day)"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: kg/day divided by m3 gives kg/(m3 day)"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "720 / 450 kg/(m3 day)"
+      },
+      {
+       "id": "opt-b",
+       "label": "450 / 720 kg/(m3 day)"
+      },
+      {
+       "id": "opt-c",
+       "label": "720 * 450 kg/(m3 day)"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 720 / 450 kg/(m3 day)"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volatile solids loading in kg/(m3 day).",
+    "unitOptions": [
+     {
+      "id": "kg-m3-day",
+      "label": "kg/(m3 day)"
+     },
+     {
+      "id": "g-m3-day",
+      "label": "g/(m3 day)",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "1.6",
+    "expectedUnitId": "kg-m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "720 kg/day / 450 m3 = 1.6 kg/(m3 day)."
+   }
+  },
+  {
+   "id": "wp1ww-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester detention time in days for a digester volume of 600 m3 and a sludge feed rate of 30 m3/day at a wastewater treatment plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "digester-detention",
+   "level": "class1",
+   "assumptions": "Fictional digester: volume = 600 m3, feed rate = 30 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time (days) = Feed rate / Digester volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time (days) = Digester volume * Feed rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time (days) = Digester volume / Feed rate"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Detention time (days) = Digester volume / Feed rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3 divided by m3/day gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by m3 gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 times m3/day gives days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: m3 divided by m3/day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "30 / 600 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "600 / 30 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "600 * 30 days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 600 / 30 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact detention time in days.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "600 m3 / 30 m3/day = 20 days."
+   }
+  },
+  {
+   "id": "wp1ww-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester detention time in days for a digester volume of 750 m3 and a sludge feed rate of 25 m3/day at a small activated sludge plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "digester-detention",
+   "level": "class1",
+   "assumptions": "Fictional digester: volume = 750 m3, feed rate = 25 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time (days) = Digester volume / Feed rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time (days) = Feed rate / Digester volume"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time (days) = Digester volume * Feed rate"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Detention time (days) = Digester volume / Feed rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day divided by m3 gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3 divided by m3/day gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 times m3/day gives days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: m3 divided by m3/day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "25 / 750 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "750 * 25 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "750 / 25 days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 750 / 25 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact detention time in days.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "750 m3 / 25 m3/day = 30 days."
+   }
+  },
+  {
+   "id": "wp1ww-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester detention time in days for a digester volume of 900 m3 and a sludge feed rate of 36 m3/day at a lagoon and treatment system in Manitoba. Enter the exact unrounded number.",
+   "topicId": "digester-detention",
+   "level": "class1",
+   "assumptions": "Fictional digester: volume = 900 m3, feed rate = 36 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time (days) = Feed rate / Digester volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time (days) = Digester volume / Feed rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time (days) = Digester volume * Feed rate"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Detention time (days) = Digester volume / Feed rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day divided by m3 gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3 times m3/day gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 divided by m3/day gives days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: m3 divided by m3/day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "900 / 36 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "36 / 900 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "900 * 36 days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 900 / 36 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact detention time in days.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "25",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "900 m3 / 36 m3/day = 25 days."
+   }
+  },
+  {
+   "id": "wp1ww-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester detention time in days for a digester volume of 450 m3 and a sludge feed rate of 30 m3/day at a wastewater plant on the British Columbia coast. Enter the exact unrounded number.",
+   "topicId": "digester-detention",
+   "level": "class1",
+   "assumptions": "Fictional digester: volume = 450 m3, feed rate = 30 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time (days) = Feed rate / Digester volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time (days) = Digester volume * Feed rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time (days) = Digester volume / Feed rate"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Detention time (days) = Digester volume / Feed rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3 divided by m3/day gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3/day divided by m3 gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 times m3/day gives days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: m3 divided by m3/day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "30 / 450 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "450 / 30 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 * 30 days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 450 / 30 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact detention time in days.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "15",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "450 m3 / 30 m3/day = 15 days."
+   }
+  },
+  {
+   "id": "wp1ww-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the digester detention time in days for a digester volume of 720 m3 and a sludge feed rate of 30 m3/day at a Prairie town wastewater plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "digester-detention",
+   "level": "class1",
+   "assumptions": "Fictional digester: volume = 720 m3, feed rate = 30 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Detention time (days) = Digester volume / Feed rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Detention time (days) = Feed rate / Digester volume"
+      },
+      {
+       "id": "opt-c",
+       "label": "Detention time (days) = Digester volume * Feed rate"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Detention time (days) = Digester volume / Feed rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/day divided by m3 gives days"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3 divided by m3/day gives days"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 times m3/day gives days"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: m3 divided by m3/day gives days"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "30 / 720 days"
+      },
+      {
+       "id": "opt-b",
+       "label": "720 * 30 days"
+      },
+      {
+       "id": "opt-c",
+       "label": "720 / 30 days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 720 / 30 days"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact detention time in days.",
+    "unitOptions": [
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "24",
+    "expectedUnitId": "day",
+    "absoluteTolerance": "0",
+    "explanation": "720 m3 / 30 m3/day = 24 days."
+   }
+  },
+  {
+   "id": "wp1ww-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the grit volume in m3/day when the grit yield is 0.04 m3 per 1000 m3 of wastewater and the plant flow is 20000 m3/day at a lagoon and treatment system in Manitoba. Enter the exact unrounded number.",
+   "topicId": "grit-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grit data: yield = 0.04 m3 per 1000 m3, flow = 20000 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Grit volume = Grit yield / Flow * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Grit volume = Grit yield * Flow / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Grit volume = Flow / Grit yield / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Grit volume = Grit yield * Flow / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the yield by flow and multiply by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide flow by the yield with no 1000 factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.04 * 20000 / 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.04 / 20000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "20000 / 0.04 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 0.04 * 20000 / 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact grit volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "0.8",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "0.04 m3 per 1000 m3 * 20000 m3/day / 1000 = 0.8 m3/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the grit volume in m3/day when the grit yield is 0.05 m3 per 1000 m3 of wastewater and the plant flow is 18000 m3/day at a wastewater plant on the British Columbia coast. Enter the exact unrounded number.",
+   "topicId": "grit-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grit data: yield = 0.05 m3 per 1000 m3, flow = 18000 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Grit volume = Grit yield / Flow * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Grit volume = Flow / Grit yield / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Grit volume = Grit yield * Flow / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Grit volume = Grit yield * Flow / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the yield by flow and multiply by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide flow by the yield with no 1000 factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.05 / 18000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.05 * 18000 / 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "18000 / 0.05 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 0.05 * 18000 / 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact grit volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "0.9",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "0.05 m3 per 1000 m3 * 18000 m3/day / 1000 = 0.9 m3/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the grit volume in m3/day when the grit yield is 0.02 m3 per 1000 m3 of wastewater and the plant flow is 25000 m3/day at a Prairie town wastewater plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "grit-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grit data: yield = 0.02 m3 per 1000 m3, flow = 25000 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Grit volume = Grit yield * Flow / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Grit volume = Grit yield / Flow * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Grit volume = Flow / Grit yield / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Grit volume = Grit yield * Flow / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the yield by flow and multiply by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide flow by the yield with no 1000 factor"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.02 / 25000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "25000 / 0.02 / 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "0.02 * 25000 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 0.02 * 25000 / 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact grit volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "0.5",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "0.02 m3 per 1000 m3 * 25000 m3/day / 1000 = 0.5 m3/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the grit volume in m3/day when the grit yield is 0.06 m3 per 1000 m3 of wastewater and the plant flow is 12000 m3/day at a cold climate wastewater facility in northern Alberta. Enter the exact unrounded number.",
+   "topicId": "grit-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grit data: yield = 0.06 m3 per 1000 m3, flow = 12000 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Grit volume = Grit yield / Flow * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Grit volume = Grit yield * Flow / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Grit volume = Flow / Grit yield / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Grit volume = Grit yield * Flow / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the yield by flow and multiply by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide flow by the yield with no 1000 factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.06 * 12000 / 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.06 / 12000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "12000 / 0.06 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 0.06 * 12000 / 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact grit volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "0.72",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "0.06 m3 per 1000 m3 * 12000 m3/day / 1000 = 0.72 m3/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the grit volume in m3/day when the grit yield is 0.03 m3 per 1000 m3 of wastewater and the plant flow is 22000 m3/day at a municipal wastewater plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "grit-quantity",
+   "level": "class1",
+   "assumptions": "Fictional grit data: yield = 0.03 m3 per 1000 m3, flow = 22000 m3/day, both given values.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Grit volume = Grit yield / Flow * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Grit volume = Flow / Grit yield / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Grit volume = Grit yield * Flow / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Grit volume = Grit yield * Flow / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the yield by flow and multiply by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide flow by the yield with no 1000 factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Multiply the yield by flow in m3/day and divide by 1000 m3 to get m3/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "0.03 / 22000 * 1000 m3/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "0.03 * 22000 / 1000 m3/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "22000 / 0.03 / 1000 m3/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 0.03 * 22000 / 1000 m3/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact grit volume in m3/day.",
+    "unitOptions": [
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     },
+     {
+      "id": "L-day",
+      "label": "L/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3-h",
+      "label": "m3/h"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "0.66",
+    "expectedUnitId": "m3-day",
+    "absoluteTolerance": "0",
+    "explanation": "0.03 m3 per 1000 m3 * 22000 m3/day / 1000 = 0.66 m3/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the chlorine feed rate in kg/day for a dose of 2 mg/L at a flow of 3000 m3/day at a cold climate wastewater facility in northern Alberta. Enter the exact unrounded number.",
+   "topicId": "disinfection",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 2 mg/L, flow = 3000 m3/day. Note that mg/L times m3/day divided by 1000 gives kg/day. The product is treated as 100 percent active for this introductory calculation.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical feed (kg/day) = Flow (m3/day) / Dose (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the product by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Divide the product by 1000"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2 / 3000 * 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2 * 3000 * 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2 * 3000 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 2 * 3000 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical feed rate in kilograms per day (kg/day).",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "6",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "2 mg/L * 3000 m3/day / 1000 = 6 kg/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the chlorine feed rate in kg/day for a dose of 3 mg/L at a flow of 2500 m3/day at a municipal wastewater plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "disinfection",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 3 mg/L, flow = 2500 m3/day. Note that mg/L times m3/day divided by 1000 gives kg/day. The product is treated as 100 percent active for this introductory calculation.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical feed (kg/day) = Flow (m3/day) / Dose (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the product by 1000000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Divide the product by 1000"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3 * 2500 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "3 / 2500 * 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "3 * 2500 * 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 3 * 2500 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical feed rate in kilograms per day (kg/day).",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "7.5",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "3 mg/L * 2500 m3/day / 1000 = 7.5 kg/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the alum feed rate in kg/day for a dose of 40 mg/L at a flow of 2200 m3/day at a wastewater facility serving a Manitoba community. Enter the exact unrounded number.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 40 mg/L, flow = 2200 m3/day. Note that mg/L times m3/day divided by 1000 gives kg/day. The product is treated as 100 percent active for this introductory calculation.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical feed (kg/day) = Flow (m3/day) / Dose (mg/L) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide the product by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply the product by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Divide the product by 1000"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "40 / 2200 * 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "40 * 2200 / 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "40 * 2200 * 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 40 * 2200 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical feed rate in kilograms per day (kg/day).",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "88",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "40 mg/L * 2200 m3/day / 1000 = 88 kg/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the polymer feed rate in kg/day for a dose of 2.5 mg/L at a flow of 3200 m3/day at a wastewater treatment plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "chemical-feed",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 2.5 mg/L, flow = 3200 m3/day. Note that mg/L times m3/day divided by 1000 gives kg/day. The product is treated as 100 percent active for this introductory calculation.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical feed (kg/day) = Flow (m3/day) / Dose (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the product by 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Divide the product by 1000"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2.5 / 3200 * 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "2.5 * 3200 * 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "2.5 * 3200 / 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 2.5 * 3200 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical feed rate in kilograms per day (kg/day).",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "8",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "2.5 mg/L * 3200 m3/day / 1000 = 8 kg/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the chlorine feed rate in kg/day for a dose of 12 mg/L at a flow of 1500 m3/day at a small activated sludge plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "disinfection",
+   "level": "class1",
+   "assumptions": "Fictional chemical feed: dose = 12 mg/L, flow = 1500 m3/day. Note that mg/L times m3/day divided by 1000 gives kg/day. The product is treated as 100 percent active for this introductory calculation.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) / Flow (m3/day) * 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical feed (kg/day) = Flow (m3/day) / Dose (mg/L) / 1000"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Chemical feed (kg/day) = Dose (mg/L) * Flow (m3/day) / 1000"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply the product by 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide the product by 1000000"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide the product by 1000"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Divide the product by 1000"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "12 * 1500 / 1000 kg/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 / 1500 * 1000 kg/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "12 * 1500 * 1000 kg/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 12 * 1500 / 1000 kg/day"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical feed rate in kilograms per day (kg/day).",
+    "unitOptions": [
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "g-day",
+      "label": "g/day",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "L-day",
+      "label": "L/day"
+     },
+     {
+      "id": "mg-L",
+      "label": "mg/L"
+     }
+    ],
+    "expected": "18",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "12 mg/L * 1500 m3/day / 1000 = 18 kg/day."
+   }
+  },
+  {
+   "id": "wp1ww-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the volume in m3 of a rectangular grit tank that is 10 m long, 5 m wide, and 3 m deep at a wastewater treatment plant in Alberta. Enter the exact unrounded number.",
+   "topicId": "tank-volume",
+   "level": "class1",
+   "assumptions": "Fictional tank: length = 10 m, width = 5 m, depth = 3 m.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Volume = Length * Width / Depth"
+      },
+      {
+       "id": "opt-b",
+       "label": "Volume = Length + Width + Depth"
+      },
+      {
+       "id": "opt-c",
+       "label": "Volume = Length * Width * Depth"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Volume = Length * Width * Depth"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m times m times m gives m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "m times m divided by m gives m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "m plus m plus m gives m3"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: m times m times m gives m3"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "10 * 5 / 3 m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "10 * 5 * 3 m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "10 + 5 + 3 m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 10 * 5 * 3 m3"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact volume in cubic metres (m3).",
+    "unitOptions": [
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "m2",
+      "label": "m2"
+     }
+    ],
+    "expected": "150",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "10 m * 5 m * 3 m = 150 m3."
+   }
+  },
+  {
+   "id": "wp1ww-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the wet well fill time in minutes when the usable wet well volume is 6000 L and the inflow is 300 L/min at a small activated sludge plant in Saskatchewan. Enter the exact unrounded number.",
+   "topicId": "wet-well-timing",
+   "level": "class1",
+   "assumptions": "Fictional wet well: usable volume = 6000 L, inflow = 300 L/min, pump off during filling.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Fill time = Usable volume / Inflow rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Fill time = Inflow rate / Usable volume"
+      },
+      {
+       "id": "opt-c",
+       "label": "Fill time = Usable volume * Inflow rate"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Fill time = Usable volume / Inflow rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "L/min divided by L gives min"
+      },
+      {
+       "id": "opt-b",
+       "label": "L divided by L/min gives min"
+      },
+      {
+       "id": "opt-c",
+       "label": "L times L/min gives min"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: L divided by L/min gives min"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "300 / 6000 min"
+      },
+      {
+       "id": "opt-b",
+       "label": "6000 * 300 min"
+      },
+      {
+       "id": "opt-c",
+       "label": "6000 / 300 min"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: 6000 / 300 min"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact fill time in minutes (min).",
+    "unitOptions": [
+     {
+      "id": "min",
+      "label": "min"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "60",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "20",
+    "expectedUnitId": "min",
+    "absoluteTolerance": "0",
+    "explanation": "6000 L / 300 L/min = 20 min."
+   }
+  },
+  {
+   "id": "wp1ww-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the pump run time in hours to transfer 180 m3 of sludge at a pump rate of 45 m3/h at a lagoon and treatment system in Manitoba. Enter the exact unrounded number.",
+   "topicId": "pump-run-time",
+   "level": "class1",
+   "assumptions": "Fictional transfer: volume = 180 m3, pump rate = 45 m3/h, steady rate.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Run time = Pump rate / Volume"
+      },
+      {
+       "id": "opt-b",
+       "label": "Run time = Volume / Pump rate"
+      },
+      {
+       "id": "opt-c",
+       "label": "Run time = Volume * Pump rate"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: Run time = Volume / Pump rate"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "m3/h divided by m3 gives h"
+      },
+      {
+       "id": "opt-b",
+       "label": "m3 times m3/h gives h"
+      },
+      {
+       "id": "opt-c",
+       "label": "m3 divided by m3/h gives h"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: m3 divided by m3/h gives h"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "180 / 45 h"
+      },
+      {
+       "id": "opt-b",
+       "label": "45 / 180 h"
+      },
+      {
+       "id": "opt-c",
+       "label": "180 * 45 h"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: 180 / 45 h"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact pump run time in hours (h).",
+    "unitOptions": [
+     {
+      "id": "h",
+      "label": "h"
+     },
+     {
+      "id": "min",
+      "label": "min",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "60"
+      }
+     },
+     {
+      "id": "day",
+      "label": "day"
+     },
+     {
+      "id": "L",
+      "label": "L"
+     }
+    ],
+    "expected": "4",
+    "expectedUnitId": "h",
+    "absoluteTolerance": "0",
+    "explanation": "180 m3 / 45 m3/h = 4 h."
+   }
+  },
+  {
+   "id": "wp1ww-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Find the population equivalent for a BOD load of 300 kg/day when one person contributes 60 g of BOD per day for a community served by a wastewater plant on the British Columbia coast. Enter the exact unrounded number.",
+   "topicId": "population-equivalent",
+   "level": "class1",
+   "assumptions": "Fictional community: BOD load = 300 kg/day, per capita BOD = 60 g/person/day, 1000 g = 1 kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Population equivalent = Total BOD load * Per capita BOD load"
+      },
+      {
+       "id": "opt-b",
+       "label": "Population equivalent = Per capita BOD load / Total BOD load"
+      },
+      {
+       "id": "opt-c",
+       "label": "Population equivalent = Total BOD load / Per capita BOD load"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct choice is: Population equivalent = Total BOD load / Per capita BOD load"
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit check for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Convert 300 kg/day to 300000 g/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Convert 300 kg/day to 300 g/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Convert 60 g to 60 kg with no change to the load"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct choice is: Convert 300 kg/day to 300000 g/day"
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "300 / 60 persons with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "300 * 1000 / 60 persons"
+      },
+      {
+       "id": "opt-c",
+       "label": "60 / (300 * 1000) persons"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct choice is: 300 * 1000 / 60 persons"
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact population equivalent in persons.",
+    "unitOptions": [
+     {
+      "id": "persons",
+      "label": "persons"
+     },
+     {
+      "id": "thousand-persons",
+      "label": "thousand persons",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "m3-day",
+      "label": "m3/day"
+     }
+    ],
+    "expected": "5000",
+    "expectedUnitId": "persons",
+    "absoluteTolerance": "0",
+    "explanation": "300 kg/day * 1000 g/kg / 60 g/person/day = 5000 persons."
+   }
+  },
+  {
+   "id": "wp1ww-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Alberta with Q = 2000 m3/d and influent BOD = 220 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 2000 m3/d, BOD = 220 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 2000 m3/d * 220 mg/L = 440000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 440000 g/d / 100 g/kg = 4400 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report BOD load = 4400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 440000 g/d / 1000 g/kg = 440 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 2000 * 220 / 1000 = 440 kg/d."
+  },
+  {
+   "id": "wp1ww-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Saskatchewan with Q = 1800 m3/d and influent BOD = 200 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1800 m3/d, BOD = 200 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1800 m3/d * 200 mg/L = 378000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 378000 g/d / 1000 g/kg = 378 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 1800 m3/d * 200 mg/L = 360000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 1800 * 200 = 360000, so the load is 360000 / 1000 = 360 kg/d."
+  },
+  {
+   "id": "wp1ww-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant in Manitoba with Q = 2500 m3/d and influent TSS = 180 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 2500 m3/d, TSS = 180 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 2500 m3/d * 180 mg/L = 450000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 450000 g/d / 100 g/kg = 4500 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report TSS load = 4500 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TSS load = 450000 g/d / 1000 g/kg = 450 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 2500 * 180 / 1000 = 450 kg/d."
+  },
+  {
+   "id": "wp1ww-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant in British Columbia with Q = 1200 m3/d and influent TSS = 250 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1200 m3/d, TSS = 250 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1200 m3/d * 250 mg/L = 312000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 312000 g/d / 1000 g/kg = 312 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 1200 m3/d * 250 mg/L = 300000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 1200 * 250 = 300000, so the load is 300000 / 1000 = 300 kg/d."
+  },
+  {
+   "id": "wp1ww-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant at a prairie lagoon system in Saskatchewan with Q = 3000 m3/d and influent BOD = 160 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 3000 m3/d, BOD = 160 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 3000 m3/d * 160 mg/L = 480000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 480000 g/d / 100 g/kg = 4800 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report BOD load = 4800 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 480000 g/d / 1000 g/kg = 480 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 3000 * 160 / 1000 = 480 kg/d."
+  },
+  {
+   "id": "wp1ww-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant at a small plant in northern British Columbia with Q = 900 m3/d and influent BOD = 300 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 900 m3/d, BOD = 300 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 900 m3/d * 300 mg/L = 279000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 279000 g/d / 1000 g/kg = 279 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 900 m3/d * 300 mg/L = 270000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 900 * 300 = 270000, so the load is 270000 / 1000 = 270 kg/d."
+  },
+  {
+   "id": "wp1ww-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant in Alberta with Q = 4000 m3/d and influent TSS = 140 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 4000 m3/d, TSS = 140 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 4000 m3/d * 140 mg/L = 560000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 560000 g/d / 10000 g/kg = 56 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TSS load = 560000 g/d / 1000 g/kg = 560 kg/d",
+   "explanation": "Line 3 divided by 10000 instead of 1000 g/kg. Correct load is 4000 * 140 / 1000 = 560 kg/d."
+  },
+  {
+   "id": "wp1ww-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Saskatchewan with Q = 1500 m3/d and influent BOD = 240 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1500 m3/d, BOD = 240 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1500 m3/d * 240 mg/L = 375000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 375000 g/d / 1000 g/kg = 375 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 1500 m3/d * 240 mg/L = 360000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 1500 * 240 = 360000, so the load is 360000 / 1000 = 360 kg/d."
+  },
+  {
+   "id": "wp1ww-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Manitoba with Q = 2200 m3/d and influent BOD = 200 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 2200 m3/d, BOD = 200 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 2200 m3/d * 200 mg/L = 440000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 440000 g/d / 100 g/kg = 4400 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report BOD load = 4400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 440000 g/d / 1000 g/kg = 440 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 2200 * 200 / 1000 = 440 kg/d."
+  },
+  {
+   "id": "wp1ww-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant in British Columbia with Q = 1000 m3/d and influent TSS = 280 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1000 m3/d, TSS = 280 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1000 m3/d * 280 mg/L = 290000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 290000 g/d / 1000 g/kg = 290 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 1000 m3/d * 280 mg/L = 280000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 1000 * 280 = 280000, so the load is 280000 / 1000 = 280 kg/d."
+  },
+  {
+   "id": "wp1ww-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier weir loading calculation for Q = 1570 m3/d and total weir length = 31.4 m.",
+   "topicId": "weir-loading",
+   "level": "class1",
+   "assumptions": "Fictional circular clarifier in western Canada: Q = 1570 m3/d, total weir length = 31.4 m. Target unit: m3 per m per d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Weir loading = Q / Weir length"
+    },
+    {
+     "id": "line2",
+     "label": "2. Weir loading = 31.4 m / 1570 m3/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Weir loading = 1570 m3/d / 31.4 m = 50 m3 per m per d",
+   "explanation": "Line 2 inverted the division. Weir loading is 1570 / 31.4 = 50 m3 per m per d."
+  },
+  {
+   "id": "wp1ww-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant at a prairie lagoon system in Saskatchewan with Q = 3500 m3/d and influent BOD = 120 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 3500 m3/d, BOD = 120 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 3500 m3/d * 120 mg/L = 420000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 420000 g/d / 10000 g/kg = 42 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 420000 g/d / 1000 g/kg = 420 kg/d",
+   "explanation": "Line 3 divided by 10000 instead of 1000 g/kg. Correct load is 3500 * 120 / 1000 = 420 kg/d."
+  },
+  {
+   "id": "wp1ww-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant at a small plant in northern British Columbia with Q = 1600 m3/d and influent TSS = 225 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1600 m3/d, TSS = 225 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1600 m3/d * 225 mg/L = 360000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 360000 g/d / 100 g/kg = 3600 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report TSS load = 3600 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TSS load = 360000 g/d / 1000 g/kg = 360 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 1600 * 225 / 1000 = 360 kg/d."
+  },
+  {
+   "id": "wp1ww-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Alberta with Q = 800 m3/d and influent BOD = 350 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 800 m3/d, BOD = 350 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 800 m3/d * 350 mg/L = 288000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 288000 g/d / 1000 g/kg = 288 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 800 m3/d * 350 mg/L = 280000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 800 * 350 = 280000, so the load is 280000 / 1000 = 280 kg/d."
+  },
+  {
+   "id": "wp1ww-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Saskatchewan with Q = 2800 m3/d and influent BOD = 150 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 2800 m3/d, BOD = 150 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 2800 m3/d * 150 mg/L = 420000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 420000 g/d / 100 g/kg = 4200 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report BOD load = 4200 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 420000 g/d / 1000 g/kg = 420 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 2800 * 150 / 1000 = 420 kg/d."
+  },
+  {
+   "id": "wp1ww-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant in Manitoba with Q = 2000 m3/d and influent TSS = 190 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 2000 m3/d, TSS = 190 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 2000 m3/d * 190 mg/L = 400000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 400000 g/d / 1000 g/kg = 400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 2000 m3/d * 190 mg/L = 380000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 2000 * 190 = 380000, so the load is 380000 / 1000 = 380 kg/d."
+  },
+  {
+   "id": "wp1ww-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in British Columbia with Q = 5000 m3/d and influent BOD = 110 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 5000 m3/d, BOD = 110 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 5000 m3/d * 110 mg/L = 550000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 550000 g/d / 10000 g/kg = 55 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 550000 g/d / 1000 g/kg = 550 kg/d",
+   "explanation": "Line 3 divided by 10000 instead of 1000 g/kg. Correct load is 5000 * 110 / 1000 = 550 kg/d."
+  },
+  {
+   "id": "wp1ww-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant at a prairie lagoon system in Saskatchewan with Q = 1300 m3/d and influent TSS = 260 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1300 m3/d, TSS = 260 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1300 m3/d * 260 mg/L = 338000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 338000 g/d / 100 g/kg = 3380 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report TSS load = 3380 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. TSS load = 338000 g/d / 1000 g/kg = 338 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 1300 * 260 / 1000 = 338 kg/d."
+  },
+  {
+   "id": "wp1ww-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant at a small plant in northern British Columbia with Q = 2400 m3/d and influent BOD = 175 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 2400 m3/d, BOD = 175 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 2400 m3/d * 175 mg/L = 444000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 444000 g/d / 1000 g/kg = 444 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 2400 m3/d * 175 mg/L = 420000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 2400 * 175 = 420000, so the load is 420000 / 1000 = 420 kg/d."
+  },
+  {
+   "id": "wp1ww-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD loading calculation for a plant in Alberta with Q = 3200 m3/d and influent BOD = 125 mg/L.",
+   "topicId": "bod-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 3200 m3/d, BOD = 125 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. BOD load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 3200 m3/d * 125 mg/L = 400000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. BOD load = 400000 g/d / 100 g/kg = 4000 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report BOD load = 4000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. BOD load = 400000 g/d / 1000 g/kg = 400 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000 g/kg. Correct load is 3200 * 125 / 1000 = 400 kg/d."
+  },
+  {
+   "id": "wp1ww-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS loading calculation for a plant in Saskatchewan with Q = 1100 m3/d and influent TSS = 300 mg/L.",
+   "topicId": "tss-loading",
+   "level": "class1",
+   "assumptions": "Fictional wastewater: Q = 1100 m3/d, TSS = 300 mg/L, 1000 g = 1 kg, 1 mg/L over 1 m3 = 1 g. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. TSS load = Q * C / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * C = 1100 m3/d * 300 mg/L = 341000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. TSS load = 341000 g/d / 1000 g/kg = 341 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * C = 1100 m3/d * 300 mg/L = 330000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 1100 * 300 = 330000, so the load is 330000 / 1000 = 330 kg/d."
+  },
+  {
+   "id": "wp1ww-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 240 mg/L and effluent = 60 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 240 mg/L, effluent BOD = 60 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 240 mg/L - 60 mg/L = 180 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 180 / 60 * 100 = 300 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 180 / 240 * 100 = 75 percent",
+   "explanation": "Line 3 divided by the effluent value instead of the influent value. Correct removal is 180 / 240 * 100 = 75 percent."
+  },
+  {
+   "id": "wp1ww-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 200 mg/L and effluent = 50 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 200 mg/L, effluent TSS = 50 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 200 mg/L - 50 mg/L = 250 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 250 / 200 * 100 = 125 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In - Out = 200 mg/L - 50 mg/L = 150 mg/L",
+   "explanation": "Line 2 added instead of subtracting. 200 - 50 = 150, so removal is 150 / 200 * 100 = 75 percent."
+  },
+  {
+   "id": "wp1ww-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 300 mg/L and effluent = 75 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 300 mg/L, effluent BOD = 75 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 300 mg/L - 75 mg/L = 225 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 225 / 300 = 0.75 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 225 / 300 * 100 = 75 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 225 / 300 = 0.75, which is 75 percent."
+  },
+  {
+   "id": "wp1ww-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 180 mg/L and effluent = 45 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 180 mg/L, effluent TSS = 45 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 180 mg/L - 45 mg/L = 135 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 135 / 45 * 100 = 300 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 135 / 180 * 100 = 75 percent",
+   "explanation": "Line 3 divided by the effluent value instead of the influent value. Correct removal is 135 / 180 * 100 = 75 percent."
+  },
+  {
+   "id": "wp1ww-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 260 mg/L and effluent = 52 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 260 mg/L, effluent BOD = 52 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 260 mg/L - 52 mg/L = 312 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 312 / 260 * 100 = 120 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In - Out = 260 mg/L - 52 mg/L = 208 mg/L",
+   "explanation": "Line 2 added instead of subtracting. 260 - 52 = 208, so removal is 208 / 260 * 100 = 80 percent."
+  },
+  {
+   "id": "wp1ww-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 220 mg/L and effluent = 55 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 220 mg/L, effluent TSS = 55 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 220 mg/L - 55 mg/L = 165 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 165 / 220 = 0.75 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 165 / 220 * 100 = 75 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 165 / 220 = 0.75, which is 75 percent."
+  },
+  {
+   "id": "wp1ww-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 320 mg/L and effluent = 64 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 320 mg/L, effluent BOD = 64 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 320 mg/L - 64 mg/L = 256 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 256 / 64 * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 256 / 320 * 100 = 80 percent",
+   "explanation": "Line 3 divided by the effluent value instead of the influent value. Correct removal is 256 / 320 * 100 = 80 percent."
+  },
+  {
+   "id": "wp1ww-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 150 mg/L and effluent = 30 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 150 mg/L, effluent TSS = 30 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 150 mg/L - 30 mg/L = 180 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 180 / 150 * 100 = 120 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In - Out = 150 mg/L - 30 mg/L = 120 mg/L",
+   "explanation": "Line 2 added instead of subtracting. 150 - 30 = 120, so removal is 120 / 150 * 100 = 80 percent."
+  },
+  {
+   "id": "wp1ww-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 280 mg/L and effluent = 56 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 280 mg/L, effluent BOD = 56 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 280 mg/L - 56 mg/L = 224 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 224 / 280 = 0.8 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 224 / 280 * 100 = 80 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 224 / 280 = 0.8, which is 80 percent."
+  },
+  {
+   "id": "wp1ww-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 210 mg/L and effluent = 42 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 210 mg/L, effluent TSS = 42 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 210 mg/L - 42 mg/L = 168 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 168 / 42 * 100 = 400 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 168 / 210 * 100 = 80 percent",
+   "explanation": "Line 3 divided by the effluent value instead of the influent value. Correct removal is 168 / 210 * 100 = 80 percent."
+  },
+  {
+   "id": "wp1ww-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 250 mg/L and effluent = 100 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 250 mg/L, effluent BOD = 100 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 250 mg/L - 100 mg/L = 350 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 350 / 250 * 100 = 140 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In - Out = 250 mg/L - 100 mg/L = 150 mg/L",
+   "explanation": "Line 2 added instead of subtracting. 250 - 100 = 150, so removal is 150 / 250 * 100 = 60 percent."
+  },
+  {
+   "id": "wp1ww-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 175 mg/L and effluent = 35 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 175 mg/L, effluent TSS = 35 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 175 mg/L - 35 mg/L = 140 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 140 / 175 = 0.8 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 140 / 175 * 100 = 80 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 140 / 175 = 0.8, which is 80 percent."
+  },
+  {
+   "id": "wp1ww-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 340 mg/L and effluent = 85 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 340 mg/L, effluent BOD = 85 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 340 mg/L - 85 mg/L = 255 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 255 / 85 * 100 = 300 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 255 / 340 * 100 = 75 percent",
+   "explanation": "Line 3 divided by the effluent value instead of the influent value. Correct removal is 255 / 340 * 100 = 75 percent."
+  },
+  {
+   "id": "wp1ww-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this TSS percent removal calculation for influent = 230 mg/L and effluent = 46 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent TSS = 230 mg/L, effluent TSS = 46 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 230 mg/L - 46 mg/L = 276 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 276 / 230 * 100 = 120 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. In - Out = 230 mg/L - 46 mg/L = 184 mg/L",
+   "explanation": "Line 2 added instead of subtracting. 230 - 46 = 184, so removal is 184 / 230 * 100 = 80 percent."
+  },
+  {
+   "id": "wp1ww-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this BOD percent removal calculation for influent = 290 mg/L and effluent = 58 mg/L at a western Canadian plant.",
+   "topicId": "percent-removal",
+   "level": "class1",
+   "assumptions": "Fictional sample: influent BOD = 290 mg/L, effluent BOD = 58 mg/L. Target: percent removal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Percent removal = (In - Out) / In * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. In - Out = 290 mg/L - 58 mg/L = 232 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Percent removal = 232 / 290 = 0.8 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Percent removal = 232 / 290 * 100 = 80 percent",
+   "explanation": "Line 3 forgot to multiply by 100. 232 / 290 = 0.8, which is 80 percent."
+  },
+  {
+   "id": "wp1ww-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary clarifier surface overflow rate calculation for diameter = 20 m and Q = 2826 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular primary clarifier: diameter = 20 m, Q = 2826 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 20 m * 20 m = 1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 2826 m3/d / 1256 m2 = 2.25 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 20 m * 20 m / 4 = 314 m2",
+   "explanation": "Line 2 omitted dividing by 4 for a circular area. Correct area is 314 m2, so SOR is 2826 / 314 = 9 m/d."
+  },
+  {
+   "id": "wp1ww-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for diameter = 16 m and Q = 1607.68 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular secondary clarifier: diameter = 16 m, Q = 1607.68 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 16 m * 16 m / 4 = 200.96 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 200.96 m2 / 1607.68 m3/d = 0.125 m/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 1607.68 m3/d / 200.96 m2 = 8 m/d",
+   "explanation": "Line 3 inverted the division. SOR is Q / Area = 1607.68 / 200.96 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary clarifier surface overflow rate calculation for diameter = 12 m and Q = 1130.4 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular primary clarifier: diameter = 12 m, Q = 1130.4 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 12 m * 12 m = 452.16 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 1130.4 m3/d / 452.16 m2 = 2.5 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 12 m * 12 m / 4 = 113.04 m2",
+   "explanation": "Line 2 omitted dividing by 4 for a circular area. Correct area is 113.04 m2, so SOR is 1130.4 / 113.04 = 10 m/d."
+  },
+  {
+   "id": "wp1ww-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for diameter = 24 m and Q = 3617.28 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular secondary clarifier: diameter = 24 m, Q = 3617.28 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 24 m * 24 m / 4 = 452.16 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 452.16 m2 / 3617.28 m3/d = 0.125 m/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 3617.28 m3/d / 452.16 m2 = 8 m/d",
+   "explanation": "Line 3 inverted the division. SOR is Q / Area = 3617.28 / 452.16 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary clarifier surface overflow rate calculation for diameter = 18 m and Q = 2034.72 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular primary clarifier: diameter = 18 m, Q = 2034.72 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 18 m * 18 m = 1017.36 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 2034.72 m3/d / 1017.36 m2 = 2 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 18 m * 18 m / 4 = 254.34 m2",
+   "explanation": "Line 2 omitted dividing by 4 for a circular area. Correct area is 254.34 m2, so SOR is 2034.72 / 254.34 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for diameter = 14 m and Q = 1230.88 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular secondary clarifier: diameter = 14 m, Q = 1230.88 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 14 m * 14 m / 4 = 153.86 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 153.86 m2 / 1230.88 m3/d = 0.125 m/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 1230.88 m3/d / 153.86 m2 = 8 m/d",
+   "explanation": "Line 3 inverted the division. SOR is Q / Area = 1230.88 / 153.86 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary clarifier surface overflow rate calculation for diameter = 20 m and Q = 1884 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular primary clarifier: diameter = 20 m, Q = 1884 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 20 m * 20 m = 1256 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 1884 m3/d / 1256 m2 = 1.5 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 20 m * 20 m / 4 = 314 m2",
+   "explanation": "Line 2 omitted dividing by 4 for a circular area. Correct area is 314 m2, so SOR is 1884 / 314 = 6 m/d."
+  },
+  {
+   "id": "wp1ww-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for diameter = 10 m and Q = 628 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular secondary clarifier: diameter = 10 m, Q = 628 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 10 m * 10 m / 4 = 78.5 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 78.5 m2 / 628 m3/d = 0.125 m/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 628 m3/d / 78.5 m2 = 8 m/d",
+   "explanation": "Line 3 inverted the division. SOR is Q / Area = 628 / 78.5 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary clarifier surface overflow rate calculation for diameter = 22 m and Q = 2279.64 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular primary clarifier: diameter = 22 m, Q = 2279.64 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 22 m * 22 m = 1519.76 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 2279.64 m3/d / 1519.76 m2 = 1.5 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 22 m * 22 m / 4 = 379.94 m2",
+   "explanation": "Line 2 omitted dividing by 4 for a circular area. Correct area is 379.94 m2, so SOR is 2279.64 / 379.94 = 6 m/d."
+  },
+  {
+   "id": "wp1ww-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for diameter = 15 m and Q = 1413 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular secondary clarifier: diameter = 15 m, Q = 1413 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 15 m * 15 m / 4 = 176.625 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 176.625 m2 / 1413 m3/d = 0.125 m/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 1413 m3/d / 176.625 m2 = 8 m/d",
+   "explanation": "Line 3 inverted the division. SOR is Q / Area = 1413 / 176.625 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this primary clarifier surface overflow rate calculation for diameter = 26 m and Q = 3183.96 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular primary clarifier: diameter = 26 m, Q = 3183.96 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 26 m * 26 m = 2122.64 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 3183.96 m3/d / 2122.64 m2 = 1.5 m/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Area = 3.14 * 26 m * 26 m / 4 = 530.66 m2",
+   "explanation": "Line 2 omitted dividing by 4 for a circular area. Correct area is 530.66 m2, so SOR is 3183.96 / 530.66 = 6 m/d."
+  },
+  {
+   "id": "wp1ww-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier surface overflow rate calculation for diameter = 11 m and Q = 759.88 m3/d.",
+   "topicId": "clarifier-sor",
+   "level": "class1",
+   "assumptions": "Fictional circular secondary clarifier: diameter = 11 m, Q = 759.88 m3/d, pi = 3.14. Target unit: m/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. SOR = Q / Area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Area = 3.14 * 11 m * 11 m / 4 = 94.985 m2"
+    },
+    {
+     "id": "line3",
+     "label": "3. SOR = 94.985 m2 / 759.88 m3/d = 0.125 m/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. SOR = 759.88 m3/d / 94.985 m2 = 8 m/d",
+   "explanation": "Line 3 inverted the division. SOR is Q / Area = 759.88 / 94.985 = 8 m/d."
+  },
+  {
+   "id": "wp1ww-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier detention time calculation for V = 720 m3 and Q = 2880 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: V = 720 m3, Q = 2880 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 2880 m3/d / 20 h/d = 144 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 720 m3 / 144 m3/h = 5 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 2880 m3/d / 24 h/d = 120 m3/h",
+   "explanation": "Line 2 used 20 h/d instead of 24 h/d. Correct flow is 120 m3/h, giving detention of 6 h."
+  },
+  {
+   "id": "wp1ww-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration tank detention time calculation for V = 540 m3 and Q = 2160 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: V = 540 m3, Q = 2160 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 2160 m3/d / 24 h/d = 90 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 540 m3 / 90 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Detention time = 8 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Detention time = 540 / 90 = 6 h",
+   "explanation": "Line 4 divided incorrectly. 540 / 90 = 6 h."
+  },
+  {
+   "id": "wp1ww-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this grit tank detention time calculation for V = 960 m3 and Q = 3840 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional grit tank: V = 960 m3, Q = 3840 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 3840 m3/d / 10 h/d = 384 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 960 m3 / 384 m3/h = 2.5 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 3840 m3/d / 24 h/d = 160 m3/h",
+   "explanation": "Line 2 used 10 h/d instead of 24 h/d. Correct flow is 160 m3/h, giving detention of 6 h."
+  },
+  {
+   "id": "wp1ww-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this contact tank detention time calculation for V = 400 m3 and Q = 2400 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: V = 400 m3, Q = 2400 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 2400 m3/d / 24 h/d = 100 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 400 m3 / 100 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Detention time = 6 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Detention time = 400 / 100 = 4 h",
+   "explanation": "Line 4 divided incorrectly. 400 / 100 = 4 h."
+  },
+  {
+   "id": "wp1ww-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier detention time calculation for V = 1080 m3 and Q = 4320 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: V = 1080 m3, Q = 4320 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 4320 m3/d / 20 h/d = 216 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 1080 m3 / 216 m3/h = 5 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 4320 m3/d / 24 h/d = 180 m3/h",
+   "explanation": "Line 2 used 20 h/d instead of 24 h/d. Correct flow is 180 m3/h, giving detention of 6 h."
+  },
+  {
+   "id": "wp1ww-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration tank detention time calculation for V = 630 m3 and Q = 2520 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: V = 630 m3, Q = 2520 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 2520 m3/d / 24 h/d = 105 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 630 m3 / 105 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Detention time = 8 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Detention time = 630 / 105 = 6 h",
+   "explanation": "Line 4 divided incorrectly. 630 / 105 = 6 h."
+  },
+  {
+   "id": "wp1ww-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this grit tank detention time calculation for V = 1500 m3 and Q = 6000 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional grit tank: V = 1500 m3, Q = 6000 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 6000 m3/d / 10 h/d = 600 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 1500 m3 / 600 m3/h = 2.5 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 6000 m3/d / 24 h/d = 250 m3/h",
+   "explanation": "Line 2 used 10 h/d instead of 24 h/d. Correct flow is 250 m3/h, giving detention of 6 h."
+  },
+  {
+   "id": "wp1ww-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this contact tank detention time calculation for V = 840 m3 and Q = 3360 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: V = 840 m3, Q = 3360 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 3360 m3/d / 24 h/d = 140 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 840 m3 / 140 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Detention time = 8 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Detention time = 840 / 140 = 6 h",
+   "explanation": "Line 4 divided incorrectly. 840 / 140 = 6 h."
+  },
+  {
+   "id": "wp1ww-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this clarifier detention time calculation for V = 360 m3 and Q = 1440 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional clarifier: V = 360 m3, Q = 1440 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 1440 m3/d / 20 h/d = 72 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 360 m3 / 72 m3/h = 5 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 1440 m3/d / 24 h/d = 60 m3/h",
+   "explanation": "Line 2 used 20 h/d instead of 24 h/d. Correct flow is 60 m3/h, giving detention of 6 h."
+  },
+  {
+   "id": "wp1ww-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this aeration tank detention time calculation for V = 1200 m3 and Q = 4800 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional aeration tank: V = 1200 m3, Q = 4800 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 4800 m3/d / 24 h/d = 200 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 1200 m3 / 200 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Detention time = 8 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Detention time = 1200 / 200 = 6 h",
+   "explanation": "Line 4 divided incorrectly. 1200 / 200 = 6 h."
+  },
+  {
+   "id": "wp1ww-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this grit tank detention time calculation for V = 810 m3 and Q = 2700 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional grit tank: V = 810 m3, Q = 2700 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 2700 m3/d / 10 h/d = 270 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 810 m3 / 270 m3/h = 3 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q = 2700 m3/d / 24 h/d = 112.5 m3/h",
+   "explanation": "Line 2 used 10 h/d instead of 24 h/d. Correct flow is 112.5 m3/h, giving detention of 7.2 h."
+  },
+  {
+   "id": "wp1ww-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this contact tank detention time calculation for V = 600 m3 and Q = 2400 m3/d.",
+   "topicId": "detention-time",
+   "level": "class1",
+   "assumptions": "Fictional contact tank: V = 600 m3, Q = 2400 m3/d, 24 h = 1 d. Target unit: h.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Detention time = V / Q"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q = 2400 m3/d / 24 h/d = 100 m3/h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Detention time = 600 m3 / 100 m3/h"
+    },
+    {
+     "id": "line4",
+     "label": "4. Detention time = 8 h"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Detention time = 600 / 100 = 6 h",
+   "explanation": "Line 4 divided incorrectly. 600 / 100 = 6 h."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp1ww-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Digester Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "wp1ww-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Digester Detention Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "wp1ww-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "wp1ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The Tss Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Grit Quantity Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "wp1ww-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "wp1ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "wp1ww-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "wp1ww-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "wp1ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The Tss Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Population Equivalent Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "wp1ww-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "wp1ww-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Digester Detention Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "wp1ww-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Grit Quantity Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "wp1ww-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "wp1ww-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Tss Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Disinfection Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "wp1ww-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Tss Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "wp1ww-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Tank Volume Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "wp1ww-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp1ww-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Bod Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp1ww-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "wp1ww-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "wp1ww-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater treatment operations chapters (preliminary, primary, biological treatment, solids)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "2685c9d2e7bc2a7ceeabbb66fcee59f5c129188a3fdc3f6c97a6be9a7a4481e4",
+  "taskReceipts": [
+   {
+    "taskId": "wp1ww-ladder80",
+    "revision": "r1",
+    "sha256": "9fdfeef3fc9e50e5fb10e11c713c6f8e886f8bb07cb519ce328bed4608339aa1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder81",
+    "revision": "r1",
+    "sha256": "e40ab2aa3a648661ee3f422b8be7e7d70e2ca244c28ab3a30bec228662fa68d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder82",
+    "revision": "r1",
+    "sha256": "883a70af8bef914d09b5ce3b6357323a4afd2479facb4e2b92aa12bd43262c6b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder83",
+    "revision": "r1",
+    "sha256": "cefe3aef57e067150e884ba379251c3e9267646755e9803af8e40268b58361be",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder84",
+    "revision": "r1",
+    "sha256": "6d14bb5801cbd30c97d833accab6ede85819025526510279c68b023de96aa17f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder85",
+    "revision": "r1",
+    "sha256": "67171397f55f617b2eae57b454dad3976635fc484e00d9f921f76496d8573efa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder86",
+    "revision": "r1",
+    "sha256": "55999f9d98e327d2a72d33b67895e3afd9789374768981c8ed2244c01308902c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder87",
+    "revision": "r1",
+    "sha256": "f5d3be8d39ab92ca88474ab275d63e2ff22f48376f3f18076df351383f3a7d8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder88",
+    "revision": "r1",
+    "sha256": "4198eb97b81d0956ab16222857e2a23900a37ee4adeb4525f9fd6c0f8635b737",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder89",
+    "revision": "r1",
+    "sha256": "f11663e6702e21a5cdcc5f720b75201613b80b5bb165a677224b175cc8520451",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder90",
+    "revision": "r1",
+    "sha256": "1ec1957a093eb23b861022f0619e5bf4d41c0b5f003c2594165cc7bbec73ab31",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder91",
+    "revision": "r1",
+    "sha256": "6e7540af628d58c4971baaea31b3c2259fbe3db34673cb9bff969e772dadc499",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder92",
+    "revision": "r1",
+    "sha256": "f8df06e8998c0dcc30ee645545f542ba4424bada7fe172ad7c809598417c2f4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder93",
+    "revision": "r1",
+    "sha256": "d20b2d9bc22a585d83fdd2d30b30393b562d9d203e33587fa1164646fc66a784",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder94",
+    "revision": "r1",
+    "sha256": "b844f76da6e5d8d3739449b23afb04be1918a69a7a3b96cef5171a2399460842",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder95",
+    "revision": "r1",
+    "sha256": "e0d97c34c54715caf908dacca7cf61f2cd18876044125701a99428b6329c0e26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder96",
+    "revision": "r1",
+    "sha256": "9c4b244d9fd80e107652e558cff9e8fc5510938f148e2d86ce613e1ea70723db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder97",
+    "revision": "r1",
+    "sha256": "6933cec7816290ddff75fd2d6f9f8c47bc9023a54c23b8301ac4324d3f1b0008",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder98",
+    "revision": "r1",
+    "sha256": "3832c41baee36dc53e77fc9685ef6bffecba89949ab291cbc9f34bf35bf85c51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-ladder99",
+    "revision": "r1",
+    "sha256": "01302d7a26e4db7cbea6025f85e1afe7a005b2a447e33dea3425bb83096fdab9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error01",
+    "revision": "r1",
+    "sha256": "104ff87d584861865fb31953738bcfcaf38161c2cab559a5abfab1113bef3adc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error02",
+    "revision": "r1",
+    "sha256": "52c61246320188bbd901f5f91b991b816df859b581f568940ace32128171d004",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error03",
+    "revision": "r1",
+    "sha256": "23e8b14403fa7b756a4af23eee530b93566464629c811506e70d1ed3c4dbbd4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error04",
+    "revision": "r1",
+    "sha256": "1c98c3a0d7a628b6e5aaab32c3ecacad87528b45141264341d6be34ba99594cb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error05",
+    "revision": "r1",
+    "sha256": "5c4df8d2e01ced4cdb2e8488be4fc29cdc096051c9f0998f88d2f560f6bda179",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error06",
+    "revision": "r1",
+    "sha256": "f92cdee3d0f8805ee73d9f57dc7bcb43d50a4e8590383777dcbded86cf61424f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error07",
+    "revision": "r1",
+    "sha256": "91289712a6ddb1457a9f62efe75234ce1094dd19d9b9f823eb33e132be124ae1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error08",
+    "revision": "r1",
+    "sha256": "fb2b89c3950fd61afb0d4275dbe16ae844a6dfe73a0ab6a63cbfa8ac059c4c77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error09",
+    "revision": "r1",
+    "sha256": "a9d82444d9bd3a64e180ac91da354717bff3aae8090354c0e3b24d706a97f919",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error10",
+    "revision": "r1",
+    "sha256": "c55ab3b60e08b0b13944024418f8eb2bd4e6fea24c9e38fc72c30f155758259b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error100",
+    "revision": "r1",
+    "sha256": "259c5a2088cd8f2ace772d3c31cd920e2c863056696cc93b2acf19c273ade80b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error11",
+    "revision": "r1",
+    "sha256": "1c5990fe2c4e7b8bd8177b3c7992a5e5ccd50f6fa64b3e3d21b4709c2355672f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error12",
+    "revision": "r1",
+    "sha256": "70e0384d0e00f989c63de430a39447295378130cf765789d1f0d6ec24c60553c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error13",
+    "revision": "r1",
+    "sha256": "5e3d8e306033e2b82c272e2760490e99900dafc5bcd83e68d0a22741306ed2cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error14",
+    "revision": "r1",
+    "sha256": "67c73890d54555abe6974e61e8656cc70f15bad7785ddca176c3ff9e1c5d079a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error15",
+    "revision": "r1",
+    "sha256": "f42d5c16647683096c8d6312cca3376d1ebcdd557537b43692092945d7714439",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error16",
+    "revision": "r1",
+    "sha256": "bec3ae6a7af6c54ef322fdf2440e4ed6d8b111d659e773ff0d42b5e4bd526a78",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error17",
+    "revision": "r1",
+    "sha256": "6a574dd787f4d8b87d5d53393f1c60213bd1c9a8164bcb41ff6eb3e0caec7858",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error18",
+    "revision": "r1",
+    "sha256": "e20c672d35fd01a6256919edd015a65ea5cd5f6e212d7cd7a1fcf00dc8b5c2ba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error19",
+    "revision": "r1",
+    "sha256": "2a8aa79a47fb002a8ed7394216e88c16293c4912f3e8beaf9ed2d3712d2937eb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error20",
+    "revision": "r1",
+    "sha256": "635fea5e8a0b8ae6a68a4eecf341c27782a7e2a1006f7b3ac3d477f7c8d48fe4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error21",
+    "revision": "r1",
+    "sha256": "6ad1985df8359b8aa749ddacf60a070e49e13b890dafc444dc22cb639d5a7f03",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error22",
+    "revision": "r1",
+    "sha256": "5a01b7890f41443e2e2dc7bfb454d7a08c56c0049d8c602dc79914888e1882c8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error23",
+    "revision": "r1",
+    "sha256": "1f3699220804946591b5e98ce115b06f8c99930d1acfac040cf218145fcf57c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error24",
+    "revision": "r1",
+    "sha256": "4cdd1f4cd9fc037edb6615d2a5b2e7931cf5336338b43aa478ba1b8ff14cad77",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error25",
+    "revision": "r1",
+    "sha256": "86c2e7a8b3f7dcfc34a89dedc2296b432b6aeb99f37ef24e1c0111179201365e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error26",
+    "revision": "r1",
+    "sha256": "26d0548aab5b50e7cd0bf93896f58ae6de427bc79a8da8025b21717413cf0bbd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error27",
+    "revision": "r1",
+    "sha256": "79c01a61cd977998c2962957502cb2b4a9509ca357c3148e52adfb16946c1aa4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error28",
+    "revision": "r1",
+    "sha256": "0f2e3290c1993160927fc4c02904d842ccd5f20a75ee5a43e67a4e7aacccc482",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error29",
+    "revision": "r1",
+    "sha256": "621172959ec7d6f0fe86231af9cc8f96b7eb5466ec1ae500b7f17df7dcae5434",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error30",
+    "revision": "r1",
+    "sha256": "1868ab909098be51ea0fe9bac94071045d32bd1e76c3ce5ef9d85e3ae7781d34",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error31",
+    "revision": "r1",
+    "sha256": "f128f54fe6dfeb7612aeadc0c4443aa7a1d0598b1959c8ad7b9c220b6926b05e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error32",
+    "revision": "r1",
+    "sha256": "a5fcb7fb159ffe05cb52fbb6a88438d3c8e16e647e6d13b4ba6f52f005b09642",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error33",
+    "revision": "r1",
+    "sha256": "2fad0b0225ed35356a27654f045de27745e3e78ee5b3805218976e653fad8814",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error34",
+    "revision": "r1",
+    "sha256": "bee250bbe301ee2d694759fbb126e8581f738382afdcc4fd65de7000f409d00b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error35",
+    "revision": "r1",
+    "sha256": "61781bdf9d3479fb5fb2321f08b760fab44ab15197c87cc58ae0499d0bbe8e5e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error36",
+    "revision": "r1",
+    "sha256": "4b7ac82b8f46901eb18158749f88235ad2411828c637b1f9bddc8e8edd824518",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error37",
+    "revision": "r1",
+    "sha256": "38186e02e77eb63f1d5a1296db3e432d77cd37394f0122ff1abfea5ed587d4a7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error38",
+    "revision": "r1",
+    "sha256": "c0e0e63da0a32772e986646614c52a179c6df91d187708df48ed850d198362de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error39",
+    "revision": "r1",
+    "sha256": "1eebfae6b85190bfb238046a2384d55eb6457470fa88c085e0b36627d7275528",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error40",
+    "revision": "r1",
+    "sha256": "53efbda2090ae5b6176fb47435315da34db7a96e02141f3bc1320cea3fcbc46b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error41",
+    "revision": "r1",
+    "sha256": "5af63803282290d5e45281bdc758e28d2e337e3f2061ea406ce2e1dc132699e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error42",
+    "revision": "r1",
+    "sha256": "ebe6afc0b634577f037435d017dbf58ef4d059634dad9cb66f82bb3a22c54486",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error43",
+    "revision": "r1",
+    "sha256": "a82b8d803e83742445cb66d2def4bf4b68199bab53ab6f46fd813b6206f3a0de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error44",
+    "revision": "r1",
+    "sha256": "35d3d41693f74d4cf823ccbbf35c14bb4f5d79b16d5108d921795d17dcca4f44",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error45",
+    "revision": "r1",
+    "sha256": "b8cf194008a7b59e90847f6813e92ccf3ae48227faae5f24812d188e1e34c15f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error46",
+    "revision": "r1",
+    "sha256": "4db7012c0050d430cb784a6844bd3f1bda3ef9a68a2c0531afbb164366cd1091",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error47",
+    "revision": "r1",
+    "sha256": "8764461f85f21370b807ea0874c8a9fdfeb8a40d1857ab1b082b809426f917d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error48",
+    "revision": "r1",
+    "sha256": "c8441df45c7a7a016e1ffda6a151b96be825f0ddbe1a23def4e5e2f93c810104",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error49",
+    "revision": "r1",
+    "sha256": "302225e29d423a24c0544d0bff4940afd70e415919bcbc2e99ab92d9a500ef10",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error50",
+    "revision": "r1",
+    "sha256": "aa712ec81325b5e45f439f150959008ce90f2283596456b1a0cf0ad8bb9be1d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error51",
+    "revision": "r1",
+    "sha256": "c053afb947a1fce8adfebc2ae974fce1fbd21f34e22c1d104fd4dbe3a56d6ef7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error52",
+    "revision": "r1",
+    "sha256": "b0290946d5e7c989f207c5d8bca4fdd30d7007ef36284132dfd425c24cf82819",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error53",
+    "revision": "r1",
+    "sha256": "f0886a937cf6316ea525bf1a42aee270582a40242d28e497ef081dc7a984e901",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error54",
+    "revision": "r1",
+    "sha256": "5d50cd71f94a057c4554100dfad531306ace717d4afdee931c1eab8fd58dfe19",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error55",
+    "revision": "r1",
+    "sha256": "063b7d1e0e3ccc4009445e9a0600c970dc15f99c9bd55ca15fff9b7d2d6144db",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error56",
+    "revision": "r1",
+    "sha256": "8ac9e12b271bd07a51aea329de22993974720a16196bcd65a91caa1dfbd40e76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error57",
+    "revision": "r1",
+    "sha256": "369484bfca7ffd7dbc0dd7255e4341b93b87e027a39ac9f2fb4948468709fc4e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error58",
+    "revision": "r1",
+    "sha256": "0353b7bd099aee5805c34d3fe3b00001175b17764b4e4c4b7ceaff21bcf46266",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp1ww-error59",
+    "revision": "r1",
+    "sha256": "4f2805f06e7e94fa2cfd6acf2f18e1c614cc53ffec47c8b9ce808111758e8849",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp1ww-mission21",
+    "revision": "r1",
+    "sha256": "1d00c719ef15997f26454b0bcc61b07494a2a3883e471e27660c979a2d677c9c"
+   },
+   {
+    "missionId": "wp1ww-mission22",
+    "revision": "r1",
+    "sha256": "6e231d32bdbccb76c8fdf21ca3fee200201c1f06e49e4fd1caf8cec250cbb194"
+   },
+   {
+    "missionId": "wp1ww-mission23",
+    "revision": "r1",
+    "sha256": "9b9bb8e3a87e3258c4de27ccbe761266930ba3605c01b6618e513252fb110af7"
+   },
+   {
+    "missionId": "wp1ww-mission24",
+    "revision": "r1",
+    "sha256": "10aff8cefb9680daf9a191b3bab5054900730c22b77fc53685c070304cbdb289"
+   },
+   {
+    "missionId": "wp1ww-mission25",
+    "revision": "r1",
+    "sha256": "13b0eb967c014f904609b5ae9ec3c630cd088830c1cb57b5a364179a3f8d2495"
+   },
+   {
+    "missionId": "wp1ww-mission26",
+    "revision": "r1",
+    "sha256": "3048720b5291530c3a9bba6ce20be8905082c929b2dfa2d23b58480661c070cc"
+   },
+   {
+    "missionId": "wp1ww-mission27",
+    "revision": "r1",
+    "sha256": "d03defd6faf49a12536d501d6804a2c05c1715fcaed024f67436cf88073233c8"
+   },
+   {
+    "missionId": "wp1ww-mission28",
+    "revision": "r1",
+    "sha256": "d874950e3882f924e7e068b52130641ebb642f7359a415067a13e5315c79d30c"
+   },
+   {
+    "missionId": "wp1ww-mission29",
+    "revision": "r1",
+    "sha256": "a20b61dc8dc23f8e902d30a6f39bc89d40295619165278d3c597b53fa687f4f5"
+   },
+   {
+    "missionId": "wp1ww-mission30",
+    "revision": "r1",
+    "sha256": "d4aec055f90eb804dcf35d3cb45a1a846e48c9d4aa581baf798ebfde942b2cf3"
+   },
+   {
+    "missionId": "wp1ww-mission31",
+    "revision": "r1",
+    "sha256": "9d52a9037e33c1f8abfeb521501003797abec6ef700c4c640efedf72d958bd55"
+   },
+   {
+    "missionId": "wp1ww-mission32",
+    "revision": "r1",
+    "sha256": "27fe0753d24e51c794eb6d1737143703071eab8e8e65e3389ec95aca87d5ac57"
+   },
+   {
+    "missionId": "wp1ww-mission33",
+    "revision": "r1",
+    "sha256": "a17005145998434bc2390fda4e8ecd343d0a8352902003a32245e097d967934b"
+   },
+   {
+    "missionId": "wp1ww-mission34",
+    "revision": "r1",
+    "sha256": "be34bd624613da6f9a3b87c74f43438ffa1a87f1b527b09dac8852401c2db253"
+   },
+   {
+    "missionId": "wp1ww-mission35",
+    "revision": "r1",
+    "sha256": "4bc9eb7d161bb851e8b09def9b5f69f8d8ebe77664a4e22269e49c2010a3ef04"
+   },
+   {
+    "missionId": "wp1ww-mission36",
+    "revision": "r1",
+    "sha256": "69cdce946c061fd056900f9f47401a523ce3e4d4f5a42a74d6c562d6ba2c3d3e"
+   },
+   {
+    "missionId": "wp1ww-mission37",
+    "revision": "r1",
+    "sha256": "5433445074162fac758190db8604e5bc5cf32f51730305dbd363ecfcfb8c8bb5"
+   },
+   {
+    "missionId": "wp1ww-mission38",
+    "revision": "r1",
+    "sha256": "08c8e0d37202414fb7da039e136534ffec32f8cc89cc77a11fa6aa040dcfac97"
+   },
+   {
+    "missionId": "wp1ww-mission39",
+    "revision": "r1",
+    "sha256": "b060537785edde6e412cf310a95813d17990461feb17ab93275139b658c7e919"
+   },
+   {
+    "missionId": "wp1ww-mission40",
+    "revision": "r1",
+    "sha256": "56f60ea82cc2fa9d7733ae607b1eee919541a99336d56838bc206c27c6861f1c"
+   }
+  ]
+ }
+}

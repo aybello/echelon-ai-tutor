@@ -1,0 +1,30 @@
+{
+  "reviews": [
+    {
+      "questionNum": 122,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches EPA description of an RBC as attached-growth biological treatment with rotating media alternately exposed to wastewater and air.",
+        "Source is used as general technical background only and does not assert U.S. regulatory or Ontario certification requirements, consistent with source notes.",
+        "Learning objective (basic purpose of an RBC) is foundational and appropriate for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors describe unrelated headworks, disinfection, and sludge-thickening functions and remain plausible without encouraging unsafe operation or omission of required actions.",
+        "No universal performance claims, design criteria, or operational instructions beyond the basic process purpose are made."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 455,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects the three core worker health-and-safety rights: to know, to participate, and to refuse unsafe work, as stated by CCOHS and the Ontario OHSA guide.",
+        "Question clearly frames the rights as Ontario workplace health-and-safety rights and does not overstate them beyond what is supported by the cited sources.",
+        "Learning objective (recognizing basic worker rights) is foundational and suitable for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors are clearly incorrect without normalizing unsafe operation or contradicting legal requirements.",
+        "Item does not attempt to teach detailed or site-specific refusal procedures, regulatory processes, or advanced legal interpretation beyond entry-level scope."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

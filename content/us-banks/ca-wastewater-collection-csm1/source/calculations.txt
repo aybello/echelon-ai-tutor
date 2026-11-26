@@ -1,0 +1,55 @@
+@Operations and maintenance|CWEAHB|Slope, flow, volume and travel time
+A sewer drops 2.4 ft over a run of 600 ft. What is the slope as a percent?|Slope percent = fall divided by length times 100|2.4/600*100|%|1|0.004,250,40|m
+A full 18-in sewer (1.5 ft diameter) has a velocity of 2.0 ft/s. Use area = 0.785 × D² and 1 cfs = 448.8 gpm. What is the flow in gpm?|Flow in cfs = area times velocity, then convert to gpm|0.785*1.5*1.5*2*448.8|gpm|0|3.5,396,1346|h
+A round manhole is 4 ft in diameter and holds 9 ft of water. Use volume = 0.785 × D² × depth and 1 ft³ = 7.48 gal. How many gallons does it hold?|Gallons = 0.785 times diameter squared times depth times 7.48|0.785*4*4*9*7.48|gal|0|113,211,1077|m
+Flow travels through 2,400 ft of sewer at an average velocity of 3.0 ft/s. How many minutes does it take to travel that distance?|Minutes = length divided by velocity, divided by 60|2400/3/60|min|1|800.0,48000.0,0.1|m
+A basin averages 288,000 gallons per day. Use 1,440 min/day. What is the average flow in gpm?|gpm = gallons per day divided by 1,440|288000/1440|gpm|0|4800,12000,415|m
+A 10-in sewer (0.833 ft diameter) is 400 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the pipe hold when full?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*0.833*0.833*400*7.48|gal|0|218,408,234872|m
+A jetting nozzle uses 70 gpm and the crew cleans 1,200 ft of sewer at 20 ft/min. How many gallons of water are used?|Gallons = (length divided by pace) times gpm|1200/20*70|gal|0|343,84000,17|h
+A circular wet well is 6 ft in diameter. With the pumps off, the level rises 2.0 ft in 10 minutes. Use volume = 0.785 × D² × H and 1 ft³ = 7.48 gal. What is the inflow in gpm?|Inflow = volume gained divided by time|0.785*6*6*2*7.48/10|gpm|0|423,6,11|h
+@Tools and equipment|CWEAHB|Equipment calculations
+A pump fills a 30 gal container in 45 seconds. What is the pump flow in gpm?|gpm = gallons divided by seconds, times 60|30/45*60|gpm|0|0.67,1350,90|m
+A 4-in discharge hose (0.333 ft diameter) is 100 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the full hose hold?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*0.333*0.333*100*7.48|gal|0|260,9396,9|h
+A jetting truck carries a 1,500 gal water tank. The crew keeps 10 percent of the tank in reserve, and the jetter uses 60 gpm. How many minutes can the jetter run before the tank is down to the reserve?|Minutes = tank times 0.9 divided by gpm|1500*0.9/60|min|1|25,2.5,27.8|h
+A trash pump moves 900 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?|cfs = gpm divided by 448.8|900/448.8|cfs|2|403920,120.32,15|m
+@Administration|CWEAHB|Time, materials and records arithmetic
+A 3-person crew works 6.5 hours each on a cleaning job. How many labor-hours (total hours worked by all crew members) should be recorded for the job?|Labor-hours = number of workers times hours worked|3*6.5|labor-hours|1|9.5,2.2,195|m
+A stockroom has 480 ft of pipe. One job uses 6 sections that are each 20 ft long, and a second job uses 4 sections that are each 20 ft long. How many feet of pipe remain?|Remaining = starting feet minus the feet used on both jobs|480-(6*20+4*20)|ft|0|200,400,360|h
+A work truck odometer reads 45230 miles at the start of a shift and 45312 miles at the end. The truck uses 1 gallon of fuel for every 8 miles. How many gallons were used?|Gallons = (end reading minus start reading) divided by miles per gallon|(45312-45230)/8|gal|2|656,0.1,74|m
+@Math|CWEAHB|Unit conversions
+A pump delivers 450 gpm. Use 1 MGD = 694.4 gpm. What is the flow in MGD?|MGD = gpm divided by 694.4|450/694.4|MGD|3|312480,290.89,1.543|m
+A line carries 1.8 cfs. Use 1 cfs = 448.8 gpm. What is the flow in gpm?|gpm = cfs times 448.8|1.8*448.8|gpm|0|249,1250,8078|m
+A sewer run measures 238 ft 6 in. Use 12 in = 1 ft. What is the length in feet?|Feet = whole feet plus inches divided by 12|238+6/12|ft|1|244,1428,2862|m
+A basin averages 0.36 MGD. Use 1 MGD = 1,000,000 gal per day and 1,440 min per day. What is the average flow in gpm?|gpm = MGD times 1,000,000 divided by 1,440|0.36*1000000/1440|gpm|0|360000,518,4|h
+A line carries a steady 2.4 cfs for 3 hours. Use 3,600 sec per hour and 1 ft³ = 7.48 gal. How many gallons pass in that time?|Gallons = cfs times seconds times 7.48|2.4*3*3600*7.48|gal|0|3232,25920,3465|h
+@Math|CWEAHB|Area and volume
+A round manhole has a diameter of 4 ft. Use area = 0.785 × D². What is the floor area in square feet?|Area = 0.785 times diameter squared|0.785*4*4|ft²|2|3.14,50.24,6.28|m
+A rectangular vault is 8 ft long and 6 ft wide and holds 3.5 ft of water. Use 1 ft³ = 7.48 gal. How many gallons are in the vault?|Gallons = length times width times depth times 7.48|8*6*3.5*7.48|gal|0|168,22,131|m
+A 12-in sewer (1.0 ft diameter) is 300 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the pipe hold when full?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*1*1*300*7.48|gal|0|7046,236,440|m
+A 4-ft diameter manhole has 7.5 ft of water standing in it. Use volume = 0.785 × D² × depth and 1 ft³ = 7.48 gal. How many gallons must be pumped out?|Gallons = 0.785 times diameter squared times depth times 7.48|0.785*4*4*7.5*7.48|gal|0|94,2818,176|h
+A 15-in sewer (1.25 ft diameter) is 400 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the full pipe hold?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*1.25*1.25*400*7.48|gal|0|14680,2936,491|h
+@Math|CWEAHB|Flow and velocity
+A full 12-in pipe has a flow area of 0.785 ft² and a velocity of 2.5 ft/s. Use Q = A × V. What is the flow in cfs?|Flow in cfs = area times velocity|0.785*2.5|cfs|2|0.31,3.29,4.91|m
+Flow moves through a 300 ft pipe run at an average velocity of 2.5 ft/s. How many minutes does it take to travel the run?|Minutes = length divided by velocity, divided by 60|300/2.5/60|min|1|120,0.5,750|m
+A 15-in pipe has a flow area of 1.23 ft² and a velocity of 3.0 ft/s. Use Q = A × V and 1 cfs = 448.8 gpm. What is the flow in gpm?|Flow in cfs = area times velocity, then convert to gpm|1.23*3*448.8|gpm|0|4,28,2562|h
+A flow of 2.0 cfs moves through an 18-in pipe with a flow area of 1.77 ft². Use V = Q ÷ A. What is the velocity in ft/s?|Velocity = flow divided by area|2/1.77|ft/s|2|3.54,0.89,1.33|h
+Flow passes through a 220 ft reach at 2.0 ft/s and then a 180 ft reach at 1.5 ft/s. How many minutes does it take to travel both reaches?|Minutes = (time in reach one plus time in reach two) divided by 60|(220/2+180/1.5)/60|min|2|230,3.81,3.33|h
+@Math|CWEAHB|Slope and grade
+A sewer drops 1.6 ft over a 200 ft run. What is the slope as a percent?|Slope percent = fall divided by length times 100|1.6/200*100|%|1|125,80,0.4|m
+The upstream invert is 104.20 ft and the downstream invert is 103.40 ft. The manholes are 160 ft apart. What is the slope in ft/ft?|Slope = (upstream invert minus downstream invert) divided by length|(104.2-103.4)/160|ft/ft|3|0.5,200,0.05|m
+The invert out of one manhole is 98.40 ft. The next manhole is 220 ft away and the pipe is laid at a 0.5 percent slope. What is the invert elevation at the downstream manhole?|Downstream invert = upstream invert minus (length times percent divided by 100)|98.4-220*0.5/100|ft|2|99.50,-11.60,98.29|h
+The upstream invert is 101.75 ft and the downstream invert is 100.95 ft, with 250 ft between manholes. What is the slope as a percent?|Slope percent = fall divided by length times 100|(101.75-100.95)/250*100|%|2|312.5,3.2,0.64|m
+A new 300 ft sewer must be laid at a minimum slope of 0.4 percent. What is the minimum fall in feet over the run?|Fall = length times percent divided by 100|300*0.4/100|ft|1|120,750,12|m
+@Math|CWEAHB|Percentages, averages and rates
+A crew plans to clean 2,500 ft of sewer and has finished 1,850 ft. What percent of the planned footage has been cleaned?|Percent = footage cleaned divided by footage planned times 100|1850/2500*100|%|0|26,135,650|m
+Four velocity readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average reading?|Average = sum of readings divided by number of readings|(4.2+3.8+4.6+4.0)/4|ft/s|2|16.6,5.53,4.60|m
+A crew cleans 1,260 ft of sewer in 4.5 hours. How many feet are cleaned per hour?|Feet per hour = footage divided by hours|1260/4.5|ft/hr|0|5670,1256,840|m
+A service area has 18,000 people and an average flow of 1.35 MGD. Use 1 MGD = 1,000,000 gal per day. What is the flow in gallons per person per day?|Gallons per person per day = flow in gallons per day divided by population|1.35*1000000/18000|gal/person/day|0|13333,1350000,7500|h
+Dry-weather flow in a basin is 0.8 MGD and the peak wet-weather flow is 2.0 MGD. By what percent does the peak exceed the dry-weather flow?|Percent increase = (peak minus dry) divided by dry times 100|(2.0-0.8)/0.8*100|%|0|250,60,40|h
+@Math|CWEAHB|Spill calculations
+A broken main spills at a steady 30 gpm for 2.5 hours. How many gallons spilled?|Gallons = flow in gpm times minutes (2.5 hr x 60)|30*2.5*60|gal|0|75,450,9000|m
+A manhole is 4 ft in diameter and the sewage rose 1.5 ft above the normal level before overflowing and stopping. Use 0.785 for the area factor and 7.48 gal per cubic ft. How many gallons were held in that 1.5 ft depth?|Gallons = 0.785 x D squared x depth x 7.48|0.785*4*4*1.5*7.48|gal|0|19,563,2250|h
+Sewage covers a flat paved area of 20 ft by 15 ft to an average depth of 0.1 ft. Use 7.48 gal per cubic ft. About how many gallons spilled?|Gallons = length x width x depth x 7.48|20*15*0.1*7.48|gal|0|30,22440,2244|h
+@Math|CWEAHB|Distance and elevation
+A sewer starts at station 4+50 and ends at station 7+25. Stations are in feet, so 4+50 means 450 ft. How long is the sewer in feet?|Length = ending station minus starting station|(725-450)|ft|0|1175,375,175|m
+A level reads 4.62 ft on a rod at point A and 7.18 ft on a rod at point B. Point A has an elevation of 100.00 ft. A higher rod reading means lower ground. What is the elevation of point B in feet?|Elevation B = A elevation plus rod A minus rod B|100+4.62-7.18|ft|2|102.56,111.80,107.18|h

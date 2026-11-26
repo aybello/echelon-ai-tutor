@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 75,
+    "question": "Which operational challenge is commonly associated with manually cleaned bar screens?",
+    "options": [
+      "They require high electrical energy use because a mechanical raking system operates continuously during all flow conditions.",
+      "They require safe manual removal and handling of accumulated screenings, creating ongoing labour and maintenance needs.",
+      "They convert grit into dissolved solids, increasing the concentration of organic matter before wastewater reaches primary treatment.",
+      "They are designed to remove dissolved nutrients before biological treatment, so their performance controls final effluent phosphorus."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario guidance identifies maintenance and labour requirements as factors for manually or mechanically cleaned screens. It also calls for accessible platforms so operators can rake screenings safely. This item tests recognition that manual screening creates routine handling and maintenance demands.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Section 10.1 identifies maintenance and labour requirements as screen-selection factors. Section 10.1.1.1 says manually cleaned screening facilities should include an accessible platform from which an operator may rake screenings easily and safely.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  }
+]

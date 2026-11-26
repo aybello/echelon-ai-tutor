@@ -1,0 +1,847 @@
+{
+  "batch": "08",
+  "title": "Class 1 Water Treatment — batch 08 (questions 1281–1320)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1281,
+      "question": "Why does a utility benchmark its performance against comparable systems?",
+      "options": [
+        "To identify where its performance differs and where improvement is possible",
+        "To establish the water quality limits that will apply to its finished water",
+        "To determine the certification class its treatment facility should hold",
+        "To set the water rates it must charge to its residential customers"
+      ],
+      "correctIndex": 0,
+      "explanation": "Comparing indicators such as unaccounted-for water, energy per megalitre, chemical cost, and break rate against similar utilities shows whether performance is normal or an outlier. An outlier is a prompt to investigate, and comparison also identifies practices worth adopting.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Benchmarking",
+      "isCalc": "no",
+      "tip": "Benchmarking identifies the question worth asking. It does not by itself explain the difference."
+    },
+    {
+      "questionNum": 1282,
+      "question": "Nitrate is detected at elevated concentration in a groundwater supply. What is the most likely origin?",
+      "options": [
+        "Natural leaching of nitrate from the bedrock surrounding the aquifer",
+        "Agricultural fertilizer or septic system influence in the recharge area",
+        "Chloramination residual decaying within the distribution system",
+        "Corrosion of nitrogen-containing alloys in the well pump assembly"
+      ],
+      "correctIndex": 1,
+      "explanation": "Elevated nitrate in groundwater usually reflects surface activity in the recharge area, most commonly fertilizer application, manure, or septic system discharge. Because nitrate is highly mobile and not removed by conventional treatment, source protection and blending or specialised treatment are the responses.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Nitrate contamination",
+      "isCalc": "no",
+      "tip": "Nitrate is a source protection problem. Conventional coagulation and filtration do not remove it."
+    },
+    {
+      "questionNum": 1283,
+      "question": "Why is nitrate in drinking water of particular concern for infants?",
+      "options": [
+        "Infants consume more water per unit of body weight than adults do",
+        "Infants absorb nitrate more completely through the digestive tract",
+        "Nitrate interferes with oxygen transport in the blood of young infants",
+        "Nitrate reacts with infant formula to form insoluble compounds"
+      ],
+      "correctIndex": 2,
+      "explanation": "In young infants, nitrate converted to nitrite interferes with the ability of haemoglobin to carry oxygen, a condition known as methaemoglobinaemia. Because infants are the sensitive population, the guideline value for nitrate is set to protect them specifically, and boiling water concentrates rather than removes it.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "Nitrate health effects",
+      "isCalc": "no",
+      "tip": "Never advise boiling for nitrate. Boiling evaporates water and raises the concentration."
+    },
+    {
+      "questionNum": 1284,
+      "question": "Why are pressure filters commonly used in small groundwater systems?",
+      "options": [
+        "They operate within the pressurized system without requiring repumping",
+        "They achieve higher removal efficiency than gravity filters can reach",
+        "They require no backwashing because of the pressure applied to the media",
+        "They can be operated without any instrumentation or operator attention"
+      ],
+      "correctIndex": 0,
+      "explanation": "A pressure filter is a closed vessel installed in the pressurized line, so water passes through and continues to the distribution system without breaking pressure and repumping. That suits small groundwater plants, though the media cannot be observed directly and backwash still applies.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Pressure filters",
+      "isCalc": "no",
+      "tip": "The drawback is that you cannot see the bed. Media condition must be inferred or the vessel opened."
+    },
+    {
+      "questionNum": 1285,
+      "question": "Why is garnet or ilmenite used as the bottom layer in a multimedia filter?",
+      "options": [
+        "It is the most chemically resistant of the available filter media",
+        "It has the highest density, so it remains beneath the finer sand layer",
+        "It adsorbs dissolved organic compounds that pass through the sand",
+        "It resists abrasion better than sand during vigorous backwashing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Multimedia filters grade coarse to fine in the direction of flow, which requires the finest material to be at the bottom. Because backwashing restratifies media by settling velocity, the fine bottom layer must be substantially denser than the sand above it, which is why high-density garnet or ilmenite is used.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Multimedia filters",
+      "isCalc": "no",
+      "tip": "Density is what holds the layers in order after backwash. Size alone would not keep fine media at the bottom."
+    },
+    {
+      "questionNum": 1286,
+      "question": "What is the function of the underdrain in a granular media filter?",
+      "options": [
+        "To collect filtered water and distribute backwash flow evenly across the bed",
+        "To provide the final stage of particle removal before water leaves the filter",
+        "To support the gravel layer against the weight of the media above it",
+        "To measure the headloss developed through the filter during a run"
+      ],
+      "correctIndex": 0,
+      "explanation": "The underdrain collects filtered water uniformly during service and, more critically, distributes backwash water and air evenly across the whole bed area. Uneven distribution leaves parts of the bed unwashed while scouring others, which produces mudballs, cracks and media loss.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Underdrain function",
+      "isCalc": "no",
+      "tip": "Most chronic filter problems trace back to uneven backwash distribution from the underdrain."
+    },
+    {
+      "questionNum": 1287,
+      "question": "Why is a corrosion control program evaluated by monitoring at consumers' taps rather than at the plant?",
+      "options": [
+        "Because plant sampling cannot detect metals at the concentrations of interest",
+        "Because metal release occurs in premise plumbing and service lines",
+        "Because tap sampling is less expensive than sampling at the treatment plant",
+        "Because consumers are able to collect samples without operator attendance"
+      ],
+      "correctIndex": 1,
+      "explanation": "Lead and copper enter water from service lines, solder and fixtures, which are downstream of the plant and of most distribution sampling points. Only a sample drawn at the tap, under prescribed standing conditions, measures what a consumer is actually exposed to.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Corrosion monitoring",
+      "isCalc": "no",
+      "tip": "Water can leave the plant with no lead and reach the tap with a great deal. Sample where the exposure occurs."
+    },
+    {
+      "questionNum": 1288,
+      "question": "An operator is offered a process change that would reduce chemical cost but has not been tested at the plant. What is the appropriate approach?",
+      "options": [
+        "Implement the change during a low demand period and monitor the outcome",
+        "Implement the change only if a neighbouring plant has used it successfully",
+        "Evaluate it at bench scale first, then trial it under close monitoring",
+        "Decline the change, since existing settings already meet all requirements"
+      ],
+      "correctIndex": 2,
+      "explanation": "A change that affects a treatment barrier is evaluated before it is relied upon. Bench-scale work such as jar testing predicts the effect at low risk, and a monitored full-scale trial with defined limits and a reversion plan confirms it. Neither refusing all change nor changing untested is good practice.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Process optimization",
+      "isCalc": "no",
+      "tip": "Test small, trial carefully, and always know in advance what result would make you revert."
+    },
+    {
+      "questionNum": 1289,
+      "question": "A chlorine cylinder holds 68 kg and the plant feeds 12 kg/d. How long will the cylinder last?",
+      "options": [
+        "3.5 days",
+        "5.7 days",
+        "8.2 days",
+        "12.0 days"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cylinder duration is the contents divided by the feed rate: 68 ÷ 12 = 5.7 days.",
+      "difficulty": "easy",
+      "module": "Disinfection",
+      "topic": "Cylinder duration",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Days = cylinder mass ÷ daily feed"
+        },
+        {
+          "l": "Substitute",
+          "c": "68 kg ÷ 12 kg/d"
+        },
+        {
+          "l": "Solve",
+          "c": "= 5.7 days"
+        },
+        {
+          "l": "In practice",
+          "c": "Change over before the cylinder empties to avoid losing residual."
+        }
+      ],
+      "tip": "Plan changeover with margin. A cylinder running out unnoticed is a loss of the disinfection barrier."
+    },
+    {
+      "questionNum": 1290,
+      "question": "A metering pump has a maximum output of 100 L/h and must deliver 35 L/h. What stroke setting is required?",
+      "options": [
+        "3.5 percent",
+        "35 percent",
+        "65 percent",
+        "285 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "The setting is the required output as a proportion of maximum: 35 ÷ 100 × 100 = 35 percent.",
+      "difficulty": "easy",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Pump setting",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Setting % = required ÷ maximum × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "35 L/h ÷ 100 L/h × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 35 percent"
+        },
+        {
+          "l": "Verify",
+          "c": "Confirm actual delivery with a drawdown test."
+        }
+      ],
+      "tip": "Pump linearity is poor at very low stroke settings, so avoid operating below about 20 percent."
+    },
+    {
+      "questionNum": 1291,
+      "question": "Raw water carries 20 mg/L of suspended solids and the plant treats 10 ML/d. What mass of solids must be removed daily?",
+      "options": [
+        "20 kg/d",
+        "50 kg/d",
+        "200 kg/d",
+        "2000 kg/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mass equals concentration times flow: 20 mg/L × 10 ML/d = 200 kg/d of suspended solids entering the plant.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Solids load",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "kg/d = mg/L × ML/d"
+        },
+        {
+          "l": "Substitute",
+          "c": "20 mg/L × 10 ML/d"
+        },
+        {
+          "l": "Solve",
+          "c": "= 200 kg/d"
+        },
+        {
+          "l": "Note",
+          "c": "Coagulant solids add to this, so total sludge exceeds the raw solids load."
+        }
+      ],
+      "tip": "Sludge production is raw solids plus the chemical solids the coagulant itself forms."
+    },
+    {
+      "questionNum": 1292,
+      "question": "A plant treating 12 ML/d distributes flow equally across six filters. What flow does each filter receive?",
+      "options": [
+        "1.0 ML/d",
+        "2.0 ML/d",
+        "6.0 ML/d",
+        "72 ML/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dividing the plant flow equally gives 12 ÷ 6 = 2.0 ML/d per filter.",
+      "difficulty": "easy",
+      "module": "Filtration",
+      "topic": "Flow distribution",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Divide",
+          "c": "12 ML/d ÷ 6 filters = 2.0 ML/d each"
+        },
+        {
+          "l": "Consider",
+          "c": "With one filter backwashing, the remaining five carry 2.4 ML/d each."
+        }
+      ],
+      "tip": "Always check the loading on remaining filters when one is out of service. That is the design case."
+    },
+    {
+      "questionNum": 1293,
+      "question": "A pump delivers 0.05 m³/s against a total head of 40 m. What is the water power delivered?",
+      "options": [
+        "2.0 kW",
+        "9.8 kW",
+        "19.6 kW",
+        "40.0 kW"
+      ],
+      "correctIndex": 2,
+      "explanation": "Water power equals density times gravity times flow times head: 1000 × 9.81 × 0.05 × 40 = 19 620 W, which is 19.6 kW.",
+      "difficulty": "hard",
+      "module": "Pumps & Hydraulics",
+      "topic": "Water power",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Power (W) = ρ × g × Q × H"
+        },
+        {
+          "l": "Substitute",
+          "c": "1000 kg/m³ × 9.81 m/s² × 0.05 m³/s × 40 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 19 620 W = 19.6 kW"
+        },
+        {
+          "l": "Note",
+          "c": "Electrical input will be higher because of pump and motor inefficiency."
+        }
+      ],
+      "tip": "Water power is the useful output. Divide by efficiency to find the electrical input required."
+    },
+    {
+      "questionNum": 1294,
+      "question": "A plant stores 2000 kg of chlorine and feeds 45 kg/d. How many days of stock are held?",
+      "options": [
+        "22 days",
+        "35 days",
+        "44 days",
+        "90 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "Stock duration is the quantity held divided by daily consumption: 2000 ÷ 45 = 44 days.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Chemical stock duration",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Divide",
+          "c": "2000 kg ÷ 45 kg/d"
+        },
+        {
+          "l": "Solve",
+          "c": "= 44 days"
+        },
+        {
+          "l": "Consider",
+          "c": "Compare against supplier lead time to set the reorder point."
+        }
+      ],
+      "tip": "Set the reorder point at lead time plus a safety margin, not at the point of running low."
+    },
+    {
+      "questionNum": 1295,
+      "question": "A chloramination system targets a chlorine to ammonia ratio of 4 to 1 by weight, feeding chlorine at 3.2 mg/L. What ammonia dose is required?",
+      "options": [
+        "0.4 mg/L",
+        "0.8 mg/L",
+        "1.6 mg/L",
+        "12.8 mg/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "At a 4 to 1 ratio the ammonia dose is the chlorine dose divided by four: 3.2 ÷ 4 = 0.8 mg/L.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Chloramine ratio calculation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Ratio",
+          "c": "Chlorine to ammonia = 4 : 1 by weight"
+        },
+        {
+          "l": "Substitute",
+          "c": "3.2 mg/L ÷ 4"
+        },
+        {
+          "l": "Solve",
+          "c": "= 0.8 mg/L ammonia"
+        },
+        {
+          "l": "Check",
+          "c": "Excess ammonia invites nitrification; too little leaves free chlorine."
+        }
+      ],
+      "tip": "The ratio is controlled by weight, not by volume of the solutions fed."
+    },
+    {
+      "questionNum": 1296,
+      "question": "A residuals lagoon measures 40 m by 25 m with an average depth of 2 m. What volume does it hold?",
+      "options": [
+        "1000 m³",
+        "1300 m³",
+        "2000 m³",
+        "4000 m³"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume is length times width times depth: 40 × 25 × 2 = 2000 m³.",
+      "difficulty": "easy",
+      "module": "Sedimentation",
+      "topic": "Lagoon volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Volume = L × W × D"
+        },
+        {
+          "l": "Substitute",
+          "c": "40 m × 25 m × 2 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 2000 m³"
+        }
+      ],
+      "tip": "Lagoon capacity divided by daily sludge volume gives the interval before cleaning is required."
+    },
+    {
+      "questionNum": 1297,
+      "question": "A filter produces 120 m³/h and is backwashed for 10 minutes using 115 m³. What is the net production during a 12 hour run?",
+      "options": [
+        "1325 m³",
+        "1440 m³",
+        "1555 m³",
+        "1200 m³"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gross production is 120 m³/h × 12 h = 1440 m³. Subtracting the 115 m³ used for backwashing gives a net of 1325 m³.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Net production",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Gross",
+          "c": "120 m³/h × 12 h = 1440 m³"
+        },
+        {
+          "l": "Subtract backwash",
+          "c": "1440 − 115 = 1325 m³"
+        },
+        {
+          "l": "Note",
+          "c": "Shorter runs mean more backwashes and lower net production."
+        }
+      ],
+      "tip": "Net production is what leaves the plant. Frequent backwashing erodes it quickly."
+    },
+    {
+      "questionNum": 1298,
+      "question": "A 30 m³ section of new watermain is to be disinfected at a dose of 50 mg/L. What mass of chlorine is required?",
+      "options": [
+        "0.15 kg",
+        "1.5 kg",
+        "15 kg",
+        "150 kg"
+      ],
+      "correctIndex": 1,
+      "explanation": "Using the batch relationship, kg equals cubic metres times mg/L divided by 1000: 30 × 50 ÷ 1000 = 1.5 kg.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Main disinfection dose",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "kg = m³ × mg/L ÷ 1000"
+        },
+        {
+          "l": "Substitute",
+          "c": "30 × 50 ÷ 1000"
+        },
+        {
+          "l": "Solve",
+          "c": "= 1.5 kg of chlorine"
+        }
+      ],
+      "tip": "Calculate the pipe volume from its diameter and length before applying the dose."
+    },
+    {
+      "questionNum": 1299,
+      "question": "Why is a new watermain pressure tested before it is disinfected and placed in service?",
+      "options": [
+        "To confirm joints and restraint are sound before the main is commissioned",
+        "To flush construction debris out of the main ahead of disinfection",
+        "To establish the friction factor of the new pipe for hydraulic modelling",
+        "To verify the pipe material matches the specification for the project"
+      ],
+      "correctIndex": 0,
+      "explanation": "A pressure test verifies that joints, fittings and thrust restraint hold under a pressure above normal operating conditions, and that leakage is within allowance. Finding a defect after the main is disinfected and connected would mean repeating the disinfection and sampling.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Main commissioning",
+      "isCalc": "no",
+      "tip": "Test the structure first, then treat the water quality. Doing it the other way wastes the disinfection."
+    },
+    {
+      "questionNum": 1300,
+      "question": "After a new main is disinfected and flushed, what confirms it may be connected to the distribution system?",
+      "options": [
+        "The chlorine residual in the main matches that of the surrounding system",
+        "The flushing discharge has run clear for the specified period of time",
+        "Satisfactory bacteriological samples have been obtained from the main",
+        "The disinfectant contact period specified in the procedure has elapsed"
+      ],
+      "correctIndex": 2,
+      "explanation": "Contact time, flushing and residual matching are all steps in the procedure, but the confirmation that the main is safe to connect is a satisfactory bacteriological result. Sampling is the verification that the disinfection actually achieved its purpose.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Main clearance",
+      "isCalc": "no",
+      "tip": "Completing a procedure is not the same as verifying the outcome. The sample result is the evidence."
+    },
+    {
+      "questionNum": 1301,
+      "question": "What is the purpose of a cross-connection control survey at a commercial or industrial property?",
+      "options": [
+        "To identify hazards requiring backflow protection and confirm devices installed",
+        "To measure the water consumption of the property for billing verification",
+        "To determine whether the service line is adequately sized for the demand",
+        "To assess whether the property's internal plumbing meets current standards"
+      ],
+      "correctIndex": 0,
+      "explanation": "A survey identifies every connection where a substance could be drawn back into the potable supply, assesses the degree of hazard, and confirms that protection of the appropriate type is installed, tested and functioning. Higher hazards require more robust device types.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Cross-connection survey",
+      "isCalc": "no",
+      "tip": "Protection is matched to the degree of hazard. A severe hazard needs an air gap or a reduced pressure assembly."
+    },
+    {
+      "questionNum": 1302,
+      "question": "Why is an air gap considered the most reliable form of backflow protection?",
+      "options": [
+        "It requires no periodic testing because it has no moving components",
+        "It provides a physical separation that no pressure condition can defeat",
+        "It can be installed without interrupting service to the property",
+        "It protects against backsiphonage but not against backpressure conditions"
+      ],
+      "correctIndex": 1,
+      "explanation": "An air gap is an unobstructed vertical space between the supply outlet and the flood level of the receiving vessel. Because there is no continuous path for water to travel back, no combination of backsiphonage or backpressure can cause reverse flow. Its limitation is that it breaks pressure and cannot be used everywhere.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Air gap protection",
+      "isCalc": "no",
+      "tip": "An air gap cannot fail mechanically, but it can be defeated by someone submerging the outlet."
+    },
+    {
+      "questionNum": 1303,
+      "question": "A water system must supply customers from a tanker during an extended outage. What is the primary water quality control?",
+      "options": [
+        "Limiting the volume each customer may draw from the tanker per day",
+        "Ensuring the tanker is dedicated to potable use, disinfected and monitored",
+        "Positioning the tanker where all customers can reach it within a short distance",
+        "Recording the identity of each customer who collects water from the tanker"
+      ],
+      "correctIndex": 1,
+      "explanation": "Temporary supply must not become the contamination event it was meant to avoid. Tankers and hoses used for potable supply are dedicated to that purpose or thoroughly disinfected, filled from a verified source, carry a residual, and are sampled, with the water dispensed through protected outlets.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Emergency water supply",
+      "isCalc": "no",
+      "tip": "A tanker previously used for any non-potable purpose should never be pressed into potable service."
+    },
+    {
+      "questionNum": 1304,
+      "question": "Why is accurate mapping of the distribution system important during an emergency?",
+      "options": [
+        "It records the installation date of each main for asset planning purposes",
+        "It shows which valves must be closed to isolate a section quickly",
+        "It documents the total length of main the utility is responsible for",
+        "It identifies the customers who should be billed within each pressure zone"
+      ],
+      "correctIndex": 1,
+      "explanation": "Isolating a break quickly limits water loss, property damage, and the extent of the low-pressure zone where contamination can enter. That depends on knowing which valves control the section and where they are, so mapping accuracy directly affects the public health outcome of a break.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "System mapping",
+      "isCalc": "no",
+      "tip": "Verify valve locations during exercising. A map that is wrong is discovered at the worst possible time."
+    },
+    {
+      "questionNum": 1305,
+      "question": "Before a boil water advisory is rescinded, what must generally be established?",
+      "options": [
+        "That the cause has been corrected and sampling confirms water is satisfactory",
+        "That a defined number of days have elapsed since the advisory was issued",
+        "That customer complaints about water quality have returned to normal levels",
+        "That the chlorine residual at the plant has been restored to its target value"
+      ],
+      "correctIndex": 0,
+      "explanation": "Rescinding an advisory requires both that the condition which caused it has been corrected and that monitoring confirms the water is now satisfactory, usually through consecutive acceptable bacteriological results. Time alone, or restoring one parameter, does not demonstrate the system is safe.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Advisory rescission",
+      "isCalc": "no",
+      "tip": "Fix the cause, then prove the result. Both are required before the advisory comes off."
+    },
+    {
+      "questionNum": 1306,
+      "question": "What makes public communication during a water quality incident effective?",
+      "options": [
+        "Providing technical detail so consumers can evaluate the risk themselves",
+        "Delaying communication until the cause has been fully determined",
+        "Clear, timely instructions on what to do, repeated through several channels",
+        "Limiting communication to the customers within the affected pressure zone"
+      ],
+      "correctIndex": 2,
+      "explanation": "Consumers need to know what to do and for how long, in plain language, delivered quickly and through multiple channels so it reaches people who do not use any single one. Waiting for complete information delays protective action, and technical detail without clear instruction causes confusion.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Public communication",
+      "isCalc": "no",
+      "tip": "Say what is known, what is being done, and what people should do. Update as facts develop."
+    },
+    {
+      "questionNum": 1307,
+      "question": "Why is alum sludge generally difficult to dewater?",
+      "options": [
+        "It contains dissolved aluminium that must be recovered before disposal",
+        "It contains gelatinous hydroxide floc that holds water tightly",
+        "It contains a high proportion of coarse grit that blinds filter media",
+        "It contains residual disinfectant that interferes with polymer conditioning"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aluminium hydroxide floc is a highly hydrated, gelatinous solid that retains water within its structure and compresses poorly. Achieving a handleable solids content usually requires conditioning with polymer and mechanical dewatering, or extended drying in lagoons or beds.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Residuals dewatering",
+      "isCalc": "no",
+      "tip": "Alum sludge is mostly water held in the floc structure, not free water that will simply drain away."
+    },
+    {
+      "questionNum": 1308,
+      "question": "Why must supernatant from a residuals lagoon be managed rather than discharged freely?",
+      "options": [
+        "It carries suspended solids and possibly metals and pathogens",
+        "It has a very high hardness that would damage the receiving water",
+        "It contains dissolved oxygen at levels harmful to aquatic organisms",
+        "It has a temperature substantially higher than the receiving water"
+      ],
+      "correctIndex": 0,
+      "explanation": "Supernatant drawn from a residuals lagoon still contains suspended solids, coagulant metals, and any pathogens that were concentrated with the sludge. Discharge requires an approval and usually treatment, or the supernatant is returned to the plant at a controlled rate.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Residuals supernatant",
+      "isCalc": "no",
+      "tip": "Residuals streams concentrate exactly what treatment removed. They are not clean water."
+    },
+    {
+      "questionNum": 1309,
+      "question": "Why is the residual aluminium concentration in finished water monitored at plants using alum?",
+      "options": [
+        "Because residual aluminium indicates the coagulant dose was insufficient",
+        "Because aluminium accumulates in mains and can cause post-precipitation",
+        "Because residual aluminium interferes with the chlorine residual measurement",
+        "Because aluminium is required at a minimum level for corrosion control"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aluminium that is not fully precipitated and removed carries into the distribution system, where changes in pH or temperature can cause it to precipitate as a white floc. That produces discoloured water complaints and accumulates deposits in mains. Coagulation pH control is the main means of minimising it.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Residual aluminium",
+      "isCalc": "no",
+      "tip": "Residual aluminium is usually a coagulation pH problem rather than a dose problem."
+    },
+    {
+      "questionNum": 1310,
+      "question": "Where should a coagulant aid polymer normally be added relative to the primary coagulant?",
+      "options": [
+        "At the same point, so both chemicals disperse simultaneously",
+        "Before the primary coagulant, to condition the particles for treatment",
+        "After the primary coagulant, once initial destabilization has occurred",
+        "At the filter influent, after sedimentation has already been completed"
+      ],
+      "correctIndex": 2,
+      "explanation": "A coagulant aid works by bridging particles that have already been destabilized, so it is added after the primary coagulant has had a brief opportunity to neutralize charge. Adding it too early or at the same point can waste the polymer or interfere with the primary coagulation reaction.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Polymer feed point",
+      "isCalc": "no",
+      "tip": "Destabilize first, then bridge. Feed point and timing matter as much as polymer dose."
+    },
+    {
+      "questionNum": 1311,
+      "question": "Why is on-site generation of hypochlorite attractive to some water systems?",
+      "options": [
+        "It produces a stronger solution than can be purchased commercially",
+        "It avoids transporting and storing bulk chlorine chemicals on site",
+        "It eliminates the need to monitor the disinfectant residual produced",
+        "It produces hypochlorite that does not degrade during long storage"
+      ],
+      "correctIndex": 1,
+      "explanation": "On-site generation produces a dilute hypochlorite solution from salt, water and electricity, so the facility avoids delivery, handling and storage of concentrated chlorine products. The generated solution is weak, which reduces hazard but requires more storage volume, and the system needs reliable power and maintenance.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "On-site generation",
+      "isCalc": "no",
+      "tip": "The trade is hazard reduction against equipment complexity, power dependence and hydrogen management."
+    },
+    {
+      "questionNum": 1312,
+      "question": "Why must hydrogen be safely vented from an on-site hypochlorite generation system?",
+      "options": [
+        "Hydrogen is produced as a by-product and is explosive when it accumulates",
+        "Hydrogen displaces oxygen and creates an asphyxiation hazard in the room",
+        "Hydrogen reacts with hypochlorite and reduces the strength of the solution",
+        "Hydrogen corrodes the electrodes and shortens the life of the generator"
+      ],
+      "correctIndex": 0,
+      "explanation": "Electrolysis of brine liberates hydrogen gas alongside the hypochlorite produced. Hydrogen is lighter than air, accumulates at high points, and forms an explosive mixture over a wide concentration range, so dedicated venting and dilution air are essential design features.",
+      "difficulty": "hard",
+      "module": "Safety",
+      "topic": "Hydrogen hazard",
+      "isCalc": "no",
+      "tip": "Hydrogen rises, unlike chlorine. Ventilation for it must be taken from the highest point of the enclosure."
+    },
+    {
+      "questionNum": 1313,
+      "question": "What is the purpose of destroying residual ozone in the off-gas from an ozone contactor?",
+      "options": [
+        "To recover unreacted ozone and return it to the contactor for reuse",
+        "To prevent a toxic and corrosive gas being released into the workspace",
+        "To reduce the electrical consumption of the ozone generation equipment",
+        "To prevent ozone from reacting with chlorine added downstream"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ozone that does not dissolve leaves the contactor in the off-gas. Ozone is toxic to breathe and corrosive to equipment, so the off-gas passes through a thermal or catalytic destruct unit that converts it back to oxygen before release.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Ozone off-gas",
+      "isCalc": "no",
+      "tip": "Ozone destruct failure is a worker safety issue as much as an environmental one."
+    },
+    {
+      "questionNum": 1314,
+      "question": "What does validation of a UV reactor establish?",
+      "options": [
+        "That the reactor delivers the required dose across its operating conditions",
+        "That the lamps installed match the specification supplied by the manufacturer",
+        "That the reactor housing will withstand the system operating pressure",
+        "That the reactor achieves the required flow rate without excessive headloss"
+      ],
+      "correctIndex": 0,
+      "explanation": "Validation is testing with challenge organisms across a range of flows, intensities and water qualities to establish the operating envelope within which the reactor reliably delivers its credited dose. Operation outside that validated envelope means the disinfection credit no longer applies.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "UV validation",
+      "isCalc": "no",
+      "tip": "A UV reactor earns credit only inside its validated range of flow, intensity and transmittance."
+    },
+    {
+      "questionNum": 1315,
+      "question": "Why is biological activity sometimes encouraged in a filter following ozonation?",
+      "options": [
+        "To generate a disinfectant residual within the filter media itself",
+        "To consume the biodegradable organic matter that ozone creates",
+        "To reduce the frequency at which the filter requires backwashing",
+        "To increase the effective size of the media through biological growth"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ozone breaks larger organic molecules into smaller, more biodegradable fragments. If those pass into distribution they support regrowth and consume residual. A biologically active filter downstream removes them, so ozonation and biofiltration are commonly paired.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Biological filtration",
+      "isCalc": "no",
+      "tip": "Biofilters are not disinfected in backwash, since chlorinated wash water would kill the biology being cultivated."
+    },
+    {
+      "questionNum": 1316,
+      "question": "What condition can cause frazil ice to interfere with a surface water intake?",
+      "options": [
+        "Rapid melting of surface ice that releases fragments into the intake",
+        "Ice forming on the intake structure as water temperature falls below zero",
+        "Supercooled turbulent water forming ice crystals that adhere to the screens",
+        "Sheet ice on the reservoir surface reducing the available water depth"
+      ],
+      "correctIndex": 2,
+      "explanation": "In turbulent, supercooled open water, ice forms as suspended crystals rather than a surface sheet. Those crystals adhere to submerged screens and intake surfaces, rapidly restricting flow. Counter-measures include heating the screens, backflushing, and drawing from deeper water.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "Frazil ice",
+      "isCalc": "no",
+      "tip": "Frazil forms in open turbulent water during extreme cold, so a frozen surface can actually reduce the risk."
+    },
+    {
+      "questionNum": 1317,
+      "question": "A chemical spill is reported upstream of a surface water intake. What is the operator's first priority?",
+      "options": [
+        "Increase the coagulant dose to improve removal of the contaminant",
+        "Assess whether to stop drawing from the source and use stored water",
+        "Collect raw water samples and await laboratory identification of the substance",
+        "Increase the chlorine dose to oxidise the contaminant before filtration"
+      ],
+      "correctIndex": 1,
+      "explanation": "Conventional treatment is not designed to remove arbitrary chemical contaminants, and some are made worse by oxidation. The protective action is to stop drawing the contaminated water where storage or an alternative source allows, then determine the substance and its behaviour before deciding on treatment.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "Source contamination response",
+      "isCalc": "no",
+      "tip": "Isolating the source buys time. Treating an unidentified contaminant risks making it worse."
+    },
+    {
+      "questionNum": 1318,
+      "question": "Why does a plant monitor for taste and odour compounds before consumers complain?",
+      "options": [
+        "Because these compounds indicate the presence of pathogens in the source",
+        "Because complaints indicate the compounds have already reached consumers",
+        "Because taste and odour compounds interfere with residual measurement",
+        "Because monitoring is required at the same frequency as microbiological testing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Treatment for taste and odour, such as activated carbon dosing, takes time to bring on line and works best applied early. Detecting rising concentrations in the source allows treatment to begin before the compounds pass through the plant, whereas a complaint means the water has already been supplied.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Taste and odour monitoring",
+      "isCalc": "no",
+      "tip": "Complaints are a lagging indicator. Source monitoring turns taste and odour into a manageable event."
+    },
+    {
+      "questionNum": 1319,
+      "question": "Why is planned outage work scheduled during periods of low demand where possible?",
+      "options": [
+        "Because equipment is easier to isolate when system pressure is lower",
+        "Because storage and remaining capacity can more readily cover the shortfall",
+        "Because water quality parameters are more stable during low demand",
+        "Because contractors are more readily available outside peak season"
+      ],
+      "correctIndex": 1,
+      "explanation": "Taking a filter, a pump or a reservoir out of service removes capacity. During low demand the remaining plant and stored water can meet requirements with margin, so a delay or complication does not immediately threaten supply or force operation beyond safe limits.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Outage planning",
+      "isCalc": "no",
+      "tip": "Plan outages around the worst credible case: the work overruns and demand rises unexpectedly."
+    },
+    {
+      "questionNum": 1320,
+      "question": "Why does a training program include scenarios an operator may never have encountered?",
+      "options": [
+        "Because rare events are the ones where inexperience causes the worst outcomes",
+        "Because certification examinations test scenarios rather than routine operation",
+        "Because scenario training can substitute for supervised operational experience",
+        "Because rare events occur more frequently than routine operating conditions"
+      ],
+      "correctIndex": 0,
+      "explanation": "Operators build competence in routine conditions through daily work. The situations that cause serious harm, such as a major contamination event or a total power failure, are rare precisely because they are unusual, so the only preparation available is deliberate training and exercises before they occur.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Training programs",
+      "isCalc": "no",
+      "tip": "Routine competence comes from the job. Emergency competence has to be deliberately built."
+    }
+  ]
+}

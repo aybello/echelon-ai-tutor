@@ -1,0 +1,169 @@
+{
+  "reviews": [
+    {
+      "questionNum": 104,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "O. Reg. 128/04 is correctly identified as governing operator-in-training certification for municipal residential drinking-water subsystems.",
+        "The wastewater and other regulatory distractors are accurate descriptions of different regulations and are clearly incorrect for the question asked.",
+        "The source title, provisions, and URL are traceable."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 385,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The cited Ontario pocket guide supports the operational plan as documentation of the DWQMS quality-management system and its processes.",
+        "The explanation appropriately distinguishes guidance from the underlying mandatory legal, licensing, and DWQMS framework.",
+        "Exactly one option is defensibly correct."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 386,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer accurately states the system-specific Schedule 7 defaults that apply when manufacturer instructions do not specify a frequency.",
+        "The item avoids incorrectly imposing a universal monthly interval.",
+        "The distractors clearly contradict the cited requirements."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 387,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer accurately reflects the ready-access and manual-content requirements in section 20 of O. Reg. 129/04.",
+        "The requirement correctly includes both operators and maintenance personnel.",
+        "The distractors are clearly inconsistent with the regulation."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 396,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer requires disconnection, lockout/tagging, and verification of the absence of electrical energy before work proceeds.",
+        "The other options describe preparatory activities that do not establish a verified de-energized state.",
+        "The item does not treat stopping the pump, reviewing records, or using PPE as a substitute for energy isolation."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 398,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer is consistent with source-supported, site-specific preventive maintenance, functional testing, documentation, and deficiency follow-up.",
+        "The item avoids inventing a universal standby-pump testing interval.",
+        "The inadequate alternatives are clearly distinguished from a complete readiness-verification practice."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 405,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The pollutant and actual or potential adverse effects, together with applicable classifications and exemptions, are relevant to reportability under O. Reg. 675/98.",
+        "The distractors concern administrative or asset-management matters that do not determine statutory spill reporting.",
+        "The explanation preserves telephone reporting to the Spills Action Centre where the notice provisions apply."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 524,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The cited research supports investigating residual decline using location-specific residuals together with initial chlorine, water age or travel time, temperature, and related conditions.",
+        "The distractors improperly rely on isolated data or a single assumed cause.",
+        "Exactly one option provides a defensible investigation data set."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 528,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed definition correctly includes real losses, apparent losses, and unbilled authorized consumption within non-revenue water.",
+        "The alternatives incorrectly limit NRW to one component or describe unrelated volumes.",
+        "The cited technical memorandum is traceable and uses the IWA/AWWA water-balance framework."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 547,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Schedule 16 correctly identifies the Ministry's Spills Action Centre as the contact point for the immediate Ministry report.",
+        "The explanation also preserves the applicable Medical Officer of Health contact and written notice within 24 hours.",
+        "The other Ministry offices are clearly incorrect for the immediate report."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 29,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer accurately states the hierarchy of manufacturer instructions followed by applicable Schedule 7 defaults when no frequency is specified.",
+        "The explanation correctly distinguishes specified monthly defaults from accuracy-margin-based checking for other systems.",
+        "The distractors incorrectly make manufacturer directions optional or impose a universal interval."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 224,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer correctly uses the current SDS, label, and applicable facility procedures for product-specific hazards and precautions.",
+        "The distractors identify records or generic references that cannot replace WHMIS hazard communication and workplace procedures.",
+        "The item supports safe chemical storage and handling decisions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 397,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer accurately describes stationary and rotating mechanical-seal faces operating with a lubricating fluid film.",
+        "It correctly distinguishes packing as an alternative that may require adjustment.",
+        "The remaining options reverse or misstate the operating principles."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 399,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer accurately reflects the owner's duty under section 20 of O. Reg. 129/04.",
+        "The explanation supplies the required plans, drawings, and process-description content and the safe-and-efficient-operation purpose.",
+        "The distractors clearly contradict the facility-specific access and content requirements."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 532,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The keyed answer correctly identifies pressure-loss-induced reverse flow through a submerged hose as a route for pool water to enter the potable service.",
+        "The explanation appropriately calls for isolation of the unsafe connection and follow-up through the applicable local cross-connection-control process.",
+        "The distractors are clearly incorrect and do not assign unsupported enforcement authority to an operator-in-training."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

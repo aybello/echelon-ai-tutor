@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 423,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches Health Canada WHMIS guidance that pictograms communicate the hazard class/type associated with a hazardous product.",
+        "Jurisdiction and regulatory scope are appropriate for an Ontario OIT learner because WHMIS is a Canada-wide hazard communication system applicable in Ontario workplaces.",
+        "The learning objective (basic understanding of what a WHMIS hazard pictogram communicates) is foundational and suitable for OIT level.",
+        "Exactly one option is clearly correct; the distractors are plausible yet clearly incorrect without promoting unsafe practices or omitting required actions.",
+        "The explanation accurately states that WHMIS uses labels and SDSs and that pictograms are assigned based on hazardous-product classification, consistent with the cited source and without overstating WHMIS requirements."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

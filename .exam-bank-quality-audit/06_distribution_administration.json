@@ -1,0 +1,342 @@
+[
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 698,
+    "module": "Administration",
+    "difficulty": "easy",
+    "question": "What is the first purpose of a watermain-break response plan?",
+    "options": [
+      "Protect people and water quality while controlling the break and maintaining essential service",
+      "Restore pavement before isolating water",
+      "Avoid documenting the event",
+      "Maximize flow through the damaged main"
+    ],
+    "correctIndex": 0,
+    "explanation": "The response balances life safety, contamination control, isolation, customers, fire protection, repair, and restoration.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 699,
+    "module": "Administration",
+    "difficulty": "easy",
+    "question": "What is mutual aid?",
+    "options": [
+      "A customer rebate",
+      "Prearranged assistance from other organizations during an emergency",
+      "A pump-control setting",
+      "A water-quality test method"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mutual-aid agreements define contacts, resources, authority, and reimbursement before an incident.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 700,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "A large break threatens to drain an elevated tank. What should operations prioritize?",
+    "options": [
+      "Close every zone valve without analysis",
+      "Wait until the tank is empty",
+      "Control isolation, pumping, storage, pressure, fire-flow needs, and customer notification as one coordinated response",
+      "Increase pressure in the broken main"
+    ],
+    "correctIndex": 2,
+    "explanation": "Uncoordinated isolation can spread outages or pressure problems. The incident plan uses system data to stabilize service.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 701,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "Why is a valve-isolation plan prepared before excavating a break?",
+    "options": [
+      "To eliminate the need for field verification",
+      "To calculate chlorine demand only",
+      "To select traffic cones",
+      "To identify valves, affected customers and facilities, pressure impacts, and fallback isolation"
+    ],
+    "correctIndex": 3,
+    "explanation": "A planned isolation reduces outage scope and surprises. Valve status must still be confirmed in the field.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 702,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "A contamination complaint is received from one building. What should be done first?",
+    "options": [
+      "Collect structured information, assess immediate risk, and compare building plumbing with nearby system conditions",
+      "Announce system-wide contamination immediately",
+      "Dismiss a single complaint",
+      "Tell the customer to remove their meter"
+    ],
+    "correctIndex": 0,
+    "explanation": "A disciplined investigation protects health while distinguishing premise plumbing from distribution causes. Escalation follows evidence and regulatory requirements.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 703,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "Why must emergency communications use one authorized source of truth?",
+    "options": [
+      "To prevent operators from recording data",
+      "To prevent conflicting instructions and keep operational, regulatory, and public messages aligned",
+      "To reduce water pressure",
+      "To replace the incident commander"
+    ],
+    "correctIndex": 1,
+    "explanation": "Consistent, approved messages protect credibility and public action while the situation changes.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 704,
+    "module": "Administration",
+    "difficulty": "hard",
+    "question": "A break isolation would also remove supply to a hospital. What is the best response?",
+    "options": [
+      "Close the valves without notification",
+      "Keep the failed main open regardless of contamination",
+      "Coordinate alternate supply, staged isolation, hospital needs, fire protection, and public-health controls before shutting down when conditions permit",
+      "Transfer the decision to the repair contractor"
+    ],
+    "correctIndex": 2,
+    "explanation": "Critical customers require explicit continuity planning, but unsafe water or uncontrolled damage may still require rapid action.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 705,
+    "module": "Administration",
+    "difficulty": "hard",
+    "question": "After pressure is restored from a major event, why is reopening valves slowly important?",
+    "options": [
+      "It guarantees no sampling is needed",
+      "It immediately removes all air",
+      "It increases chlorine demand deliberately",
+      "It limits surge, deposit mobilization, air movement, and secondary breaks"
+    ],
+    "correctIndex": 3,
+    "explanation": "Controlled restoration reduces hydraulic shock and water-quality disturbance while crews monitor pressure and flushing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 706,
+    "module": "Administration",
+    "difficulty": "easy",
+    "question": "What is preventive maintenance?",
+    "options": [
+      "Planned work performed to reduce the likelihood of failure",
+      "Repair performed only after failure",
+      "Emergency customer notification",
+      "A laboratory sampling method"
+    ],
+    "correctIndex": 0,
+    "explanation": "Preventive work uses time, usage, or condition triggers to preserve reliability.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 707,
+    "module": "Administration",
+    "difficulty": "easy",
+    "question": "Why are work orders assigned asset identifiers?",
+    "options": [
+      "To measure pH",
+      "To link labour, materials, findings, and history to the correct asset",
+      "To increase hydrant pressure",
+      "To replace all maps"
+    ],
+    "correctIndex": 1,
+    "explanation": "Asset-linked work history supports planning, recurring-failure analysis, and lifecycle decisions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 708,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "A valve-exercising program repeatedly finds the same valves inaccessible. What should management do?",
+    "options": [
+      "Record the issue without action",
+      "Remove the valves from the asset list",
+      "Create corrective work, assign ownership and due dates, and track restoration of access",
+      "Assume they will work during an emergency"
+    ],
+    "correctIndex": 2,
+    "explanation": "Known access defects are operational risks. A closed-loop maintenance process must correct and verify them.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 709,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "How should limited maintenance resources be prioritized?",
+    "options": [
+      "By asset age alone",
+      "By whichever complaint is newest",
+      "Equally across every asset regardless of condition",
+      "By risk, considering likelihood and consequence of failure plus regulatory and service needs"
+    ],
+    "correctIndex": 3,
+    "explanation": "Risk-based planning combines condition, criticality, failure history, redundancy, safety, and compliance.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 710,
+    "module": "Administration",
+    "difficulty": "hard",
+    "question": "A pump has rising vibration but still meets flow targets. What is the best maintenance decision?",
+    "options": [
+      "Trend the condition, verify the measurement, and plan intervention before functional failure",
+      "Run to failure because output is acceptable",
+      "Disable the vibration alarm",
+      "Increase speed to hide the trend"
+    ],
+    "correctIndex": 0,
+    "explanation": "Condition indicators can reveal deterioration before performance falls. Planned work can reduce damage and outage risk.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 711,
+    "module": "Administration",
+    "difficulty": "easy",
+    "question": "Why must an operator log be legible and time-stamped?",
+    "options": [
+      "To increase water pressure",
+      "So actions and conditions can be reconstructed accurately",
+      "To eliminate electronic records",
+      "To replace sampling"
+    ],
+    "correctIndex": 1,
+    "explanation": "Clear, contemporaneous records support shift continuity, compliance, investigation, and decision-making.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 712,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "A SCADA value is manually overridden during a repair. What should be recorded?",
+    "options": [
+      "Only the final value",
+      "Nothing because SCADA keeps data",
+      "Who changed it, when, why, the authorized value, safeguards, and when normal control was restored",
+      "The operator's personal opinion only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Temporary overrides can create persistent risk. Traceable records and restoration checks are essential.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 713,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "Why should valve-field changes be updated in GIS and maintenance records promptly?",
+    "options": [
+      "Updates increase pipe diameter",
+      "GIS replaces field locating",
+      "Old maps are always sufficient",
+      "Emergency isolation depends on accurate location, status, and configuration data"
+    ],
+    "correctIndex": 3,
+    "explanation": "Unrecorded changes can expand outages and delay response. Controlled data updates preserve a shared source of truth.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 714,
+    "module": "Administration",
+    "difficulty": "hard",
+    "question": "A pressure incident is investigated, but SCADA clocks, logger clocks, and work-order times differ. What should be done?",
+    "options": [
+      "Reconcile time sources and document uncertainty before drawing causal conclusions",
+      "Sort all records alphabetically",
+      "Use whichever time best supports the theory",
+      "Average the clock readings without context"
+    ],
+    "correctIndex": 0,
+    "explanation": "Event sequence depends on synchronized timestamps. Misalignment can falsely reverse cause and effect.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 715,
+    "module": "Administration",
+    "difficulty": "easy",
+    "question": "How should an operator respond to a customer water-quality complaint?",
+    "options": [
+      "Promise a cause before testing",
+      "Listen, record specific observations and timing, explain the next steps, and follow the investigation procedure",
+      "Dismiss the complaint",
+      "Tell the customer to contact another utility"
+    ],
+    "correctIndex": 1,
+    "explanation": "A respectful, structured intake preserves evidence and trust without making unsupported claims.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 716,
+    "module": "Administration",
+    "difficulty": "medium",
+    "question": "A secure reservoir hatch is found open with no work order. What is the correct response?",
+    "options": [
+      "Close it and make no record",
+      "Assume wind opened it",
+      "Treat it as a security and water-quality incident, restrict access, preserve evidence, and notify required personnel",
+      "Post a photo publicly before reporting"
+    ],
+    "correctIndex": 2,
+    "explanation": "An unexplained breach requires coordinated security, operational, and regulatory assessment.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-water-dist",
+    "questionNum": 717,
+    "module": "Administration",
+    "difficulty": "hard",
+    "question": "Social media claims the utility is hiding contamination, but current data do not confirm it. What should communication do?",
+    "options": [
+      "Attack the person who posted",
+      "Say nothing until every question is resolved",
+      "Declare the system safe without qualification",
+      "Acknowledge the concern, state verified facts and uncertainties, describe actions underway, and provide update timing"
+    ],
+    "correctIndex": 3,
+    "explanation": "Transparent, evidence-based communication maintains trust while avoiding speculation or premature assurance.",
+    "isCalc": "no",
+    "steps": null
+  }
+]

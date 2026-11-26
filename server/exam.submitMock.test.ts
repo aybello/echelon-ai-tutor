@@ -1,0 +1,176 @@
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { appRouter } from "./routers";
+import type { TrpcContext } from "./_core/context";
+import { issueMockSession, mockOwner, mockSpecification } from "./mockExamSession";
+import { ENV } from "./_core/env";
+import { examResults } from "../drizzle/schema";
+vi.mock("./db", () => ({ getDb: vi.fn() }));
+vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn().mockResolvedValue({
+  userId: 5, studentEmail: "operator@example.com", orgId: 3, organizationMemberId: 77,
+}) }));
+vi.mock("./teams/attemptAttribution", () => ({ resolveAttemptAttribution: vi.fn(), validateIssuedAttribution: vi.fn() }));
+vi.mock("./analytics", () => ({ trackEvent: vi.fn().mockResolvedValue(undefined) }));
+import { getDb } from "./db";
+import { validateIssuedAttribution, type AttemptAttribution } from "./teams/attemptAttribution";
+const identity = { userId: 5, studentEmail: "operator@example.com" };
+const QUESTIONS = Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: 0, module: "Safety", difficulty: "easy", explanation: `Explanation ${i + 1}` }));
+const issuedQuestions = QUESTIONS.map(question => ({
+  ...question,
+  question: `Issued question ${question.questionNum}`,
+  options: ["Issued A", "Issued B", "Issued C", "Issued D"],
+  topic: "Issued topic",
+  steps: null,
+  tip: null,
+  isCalc: false,
+}));
+function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
+  const insertValues = vi.fn().mockResolvedValue([]);
+  const db: any = {
+    select: vi.fn().mockReturnValue({ from: (table: unknown) => ({
+      where: () => table === examResults ? { limit: async () => existing } : Promise.resolve(questionRows),
+    }) }),
+    insert: vi.fn().mockReturnValue({ values: insertValues }),
+    transaction: async (work: (tx: any) => Promise<void>) => work(db),
+  };
+  vi.mocked(getDb).mockResolvedValue(db);
+  return { db, insertValues };
+}
+const ctx = { user: null, studentEmail: null, req: { headers: {} }, res: {} } as TrpcContext;
+function input(correct = 69, now = Date.now(), attribution?: AttemptAttribution) {
+  const spec = mockSpecification("class4-ww");
+  const issued = issueMockSession({ ...spec, attribution, owner: mockOwner(identity), preview: false, questionNums: QUESTIONS.map(q => q.questionNum), issuedQuestions }, now);
+  return { sessionId: issued.manifest.sessionId, sessionToken: issued.token, examType: spec.examType, bankKey: spec.courseKey,
+    answers: QUESTIONS.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct ? 0 : null })) };
+}
+describe("issued mock submission", () => {
+  beforeEach(() => {
+    vi.clearAllMocks(); ENV.cookieSecret = "unit-test-secret-not-production";
+    vi.mocked(validateIssuedAttribution).mockImplementation(async (_identity, _key, issued) => issued ?? { orgId: null, organizationMemberId: null, flexLicenceId: null });
+  });
+  it("saves 69/100 as a fail, including all unanswered items and organization attribution", async () => {
+    const { insertValues } = makeDb();
+    const attribution = { orgId: 3, organizationMemberId: 77, flexLicenceId: null };
+    const result = await appRouter.createCaller(ctx).exam.submitMock(input(69, Date.now(), attribution));
+    expect(result).toMatchObject({ score: 69, total: 100, passed: false, persisted: true });
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ score: 69, total: 100, passed: "no" });
+    const attempts = insertValues.mock.calls[1][0];
+    expect(attempts).toHaveLength(100);
+    expect(attempts.filter((a: any) => a.selectedIndex === null)).toHaveLength(31);
+    expect(attempts[0]).toMatchObject({ ...attribution, quizMode: "mock", bankKey: "class4-ww" });
+    expect(validateIssuedAttribution).toHaveBeenCalledWith(expect.objectContaining(identity), "class4-ww", attribution);
+  });
+  it("preserves legacy signed results as learner history without guessing a current employer", async () => {
+    const { insertValues } = makeDb();
+    await appRouter.createCaller(ctx).exam.submitMock(input());
+    expect(insertValues.mock.calls[0][0]).toMatchObject({ orgId: null, organizationMemberId: null });
+    expect(insertValues.mock.calls[1][0][0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+  });
+  it("uses revalidated attribution rather than stamping revoked issued membership", async () => {
+    const { insertValues } = makeDb();
+    vi.mocked(validateIssuedAttribution).mockResolvedValue({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+    await appRouter.createCaller(ctx).exam.submitMock(input(69, Date.now(), { orgId: 3, organizationMemberId: 77, flexLicenceId: null }));
+    expect(insertValues.mock.calls[1][0][0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
+  });
+  it.each([69, 70])("scores only the 100 scored items of a 110-question WPI exam (%i correct)", async correct => {
+    const all = Array.from({ length: 110 }, (_, i) => ({ ...QUESTIONS[0], questionNum: i + 1 }));
+    const { insertValues } = makeDb(all);
+    const spec = mockSpecification("wpi-class4-wastewater");
+    const classIvIssuedQuestions = all.map(question => ({
+      ...question,
+      question: `Issued Class IV question ${question.questionNum}`,
+      options: ["A", "B", "C", "D"],
+      topic: "Issued topic",
+      steps: null,
+      tip: null,
+      isCalc: false,
+    }));
+    const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: false, questionNums: all.map(q => q.questionNum), unscoredQuestionNums: all.slice(100).map(q => q.questionNum), issuedQuestions: classIvIssuedQuestions });
+    const result = await appRouter.createCaller(ctx).exam.submitMock({ sessionId: issued.manifest.sessionId, sessionToken: issued.token,
+      examType: spec.examType, bankKey: spec.courseKey, answers: all.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct || i >= 100 ? 0 : null })) });
+    expect(result).toMatchObject({ score: correct, total: 100, pct: correct, passed: correct >= 70 });
+    expect(result.review).toHaveLength(110);
+    expect(result.review.filter(q => !q.scored)).toHaveLength(10);
+    const attempts = insertValues.mock.calls[1][0];
+    expect(attempts).toHaveLength(100);
+    expect(attempts.every((a: any) => a.questionId <= 100)).toBe(true);
+    expect(Object.values(result.moduleBreakdown).reduce((n, area) => n + area.total, 0)).toBe(100);
+  });
+  it("passes a complete 70/100 exam", async () => {
+    makeDb(); expect(await appRouter.createCaller(ctx).exam.submitMock(input(70))).toMatchObject({ pct: 70, passed: true });
+  });
+  it("returns answer review only after the server scores the complete signed submission", async () => {
+    makeDb();
+    const result = await appRouter.createCaller(ctx).exam.submitMock(input(70));
+    expect(result.review).toHaveLength(100);
+    expect(result.review[0]).toEqual({ questionNum: 1, scored: true, correctIndex: 0, explanation: "Explanation 1" });
+  });
+  it("scores and reviews the immutable issued context when the canonical row changes before the first submission", async () => {
+    const changed = QUESTIONS.map(question => question.questionNum === 1
+      ? { ...question, correctIndex: 3, module: "Changed module", explanation: "Changed explanation", question: "Changed stem", options: ["Changed A", "Changed B", "Changed C", "Changed D"] }
+      : question);
+    const { insertValues } = makeDb(changed);
+    const data = input(1);
+
+    const decoded = JSON.parse(Buffer.from(data.sessionToken.split(".")[0], "base64url").toString());
+    expect(decoded).not.toContain("Issued A");
+    expect(decoded).not.toContain("Explanation 1");
+    expect(decoded).not.toContain("correctIndex");
+
+    const result = await appRouter.createCaller(ctx).exam.submitMock(data);
+
+    expect(result).toMatchObject({ score: 1, total: 100, moduleBreakdown: { Safety: { correct: 1, total: 100 } } });
+    expect(result.review[0]).toEqual({ questionNum: 1, scored: true, correctIndex: 0, explanation: "Explanation 1" });
+    expect(result.reviewToken).toEqual(expect.any(String));
+    expect(insertValues.mock.calls[1][0][0]).toMatchObject({ correct: "yes", topic: "Issued topic", difficulty: "easy" });
+  });
+  it.each(["one-question", "duplicate", "replacement", "course", "session", "calcOnly", "signature", "missing-token"])("rejects %s tampering before writing results", async kind => {
+    const { insertValues } = makeDb(); const data: any = input();
+    if (kind === "one-question") data.answers = data.answers.slice(0, 1);
+    if (kind === "duplicate") data.answers[99] = data.answers[0];
+    if (kind === "replacement") data.answers[99].questionNum = 99999;
+    if (kind === "course") data.bankKey = "oit";
+    if (kind === "session") data.sessionId = "another-session";
+    if (kind === "calcOnly") data.calcOnly = true;
+    if (kind === "signature") data.sessionToken = "altered." + data.sessionToken.split(".")[1];
+    if (kind === "missing-token") delete data.sessionToken;
+    await expect(appRouter.createCaller(ctx).exam.submitMock(data)).rejects.toThrow();
+    expect(insertValues).not.toHaveBeenCalled();
+  });
+  it("rejects new results after the deadline and transport grace", async () => {
+    const { insertValues } = makeDb();
+    await expect(appRouter.createCaller(ctx).exam.submitMock(input(100, Date.now() - 4 * 3600_000))).rejects.toThrow("expired");
+    expect(insertValues).not.toHaveBeenCalled();
+  });
+  it("returns a persisted result even after the deadline or later bank edits", async () => {
+    const data = input(100, Date.now() - 4 * 3600_000);
+    const { insertValues } = makeDb([], [{ userId: 5, studentEmail: identity.studentEmail, examType: data.examType, bankKey: data.bankKey, score: 69, total: 100, passed: "no", moduleBreakdown: "{}" }]);
+    expect(await appRouter.createCaller(ctx).exam.submitMock(data)).toMatchObject({ score: 69, total: 100, persisted: true, review: Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: null, explanation: null })) });
+    expect(insertValues).not.toHaveBeenCalled();
+    expect(validateIssuedAttribution).not.toHaveBeenCalled();
+  });
+  it("saves a retired question as incorrect without shrinking the denominator", async () => {
+    const { insertValues } = makeDb(QUESTIONS.slice(0, 99));
+    expect(await appRouter.createCaller(ctx).exam.submitMock(input(100))).toMatchObject({
+      score: 99, total: 100, unavailableCount: 1, persisted: true,
+    });
+    expect(insertValues.mock.calls[1][0]).toHaveLength(100);
+    expect(insertValues.mock.calls[1][0][99]).toMatchObject({ questionId: 100, correct: "no" });
+  });
+  it("reports honestly when zero questions can be scored and writes nothing", async () => {
+    const { insertValues } = makeDb([]);
+    await expect(appRouter.createCaller(ctx).exam.submitMock(input())).rejects.toThrow("No result was saved");
+    expect(insertValues).not.toHaveBeenCalled();
+  });
+  it("does not persist or mark an OIT preview as a full mock pass", async () => {
+    const { insertValues } = makeDb(QUESTIONS.slice(0, 30)); const spec = mockSpecification("oit");
+    const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: true, questionNums: QUESTIONS.slice(0, 30).map(q => q.questionNum) });
+    expect(await appRouter.createCaller(ctx).exam.submitMock({ sessionId: issued.manifest.sessionId, sessionToken: issued.token,
+      bankKey: "oit", examType: "oit", answers: QUESTIONS.slice(0, 30).map(q => ({ questionNum: q.questionNum, selectedIndex: 0 })) })).toMatchObject({ persisted: false, passed: false, score: 30 });
+    expect(insertValues).not.toHaveBeenCalled();
+  });
+  it("closes the legacy browser-score bypass", async () => {
+    const { insertValues } = makeDb();
+    await expect(appRouter.createCaller(ctx).exam.saveResult({ score: 1, total: 1, passed: true })).rejects.toThrow("no longer accepted");
+    expect(insertValues).not.toHaveBeenCalled();
+  });
+});

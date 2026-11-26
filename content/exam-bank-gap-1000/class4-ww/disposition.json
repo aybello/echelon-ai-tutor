@@ -1,0 +1,86 @@
+{
+ "accepted": 212,
+ "withheld": [],
+ "rejected": [
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-457",
+   "questionNum": 2457,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate (Jaccard >= 0.85) of an existing ORO-role item under Ontario Regulation 129/04. Replaced in place with an inspection-readiness records question; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-485",
+   "questionNum": 2485,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing solids load item and expression 12000*220/1000 duplicated an existing bank expression. Replaced in place with a net solids accumulation balance; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-488",
+   "questionNum": 2488,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing aeration energy item. Replaced in place with an energy per kilogram of BOD removed calculation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-571",
+   "questionNum": 2571,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing energy per mass item. Replaced in place with a two-step energy per BOD removed calculation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-572",
+   "questionNum": 2572,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing dewatering haulage item. Replaced in place with a per-day part-load trip count; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-573",
+   "questionNum": 2573,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing nutrient capacity item. Replaced in place with an effluent concentration back-calculation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-574",
+   "questionNum": 2574,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing program quantity item. Replaced in place with a base-plus-duplicates-plus-blanks sample count; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-576",
+   "questionNum": 2576,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing dewatering item. Replaced in place with a wet cake mass calculation from feed volume, concentration and capture; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-582",
+   "questionNum": 2582,
+   "reason": "Original rejected pre-acceptance: masked-stem near-duplicate of an existing management review purpose item. Replaced in place with a management review inputs question; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-615",
+   "questionNum": 2615,
+   "reason": "Original rejected pre-acceptance: answer option set identical to an existing bank item. Replaced in place with a two-plant energy intensity difference calculation with a fresh option set; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-655",
+   "questionNum": 2655,
+   "reason": "Original rejected pre-acceptance: expression 12000*220/1000 duplicated an existing bank expression. Replaced in place with a waste sludge balance calculation; replacement passed all checks and is the accepted payload."
+  },
+  {
+   "itemId": "WASTEWATER-TREATMENT-L4-658",
+   "questionNum": 2658,
+   "reason": "Original rejected pre-acceptance: expression 4500/15000 duplicated an existing bank expression and its option set was identical to an existing bank item. Replaced in place with a two-blower aeration electricity cost calculation; replacement passed all checks and is the accepted payload."
+  }
+ ],
+ "notes": [
+  "Coordinator metadata correction (not a content rejection): 6 items in batch 2 carried split module values ('Equipment Evaluation', 'Maintenance & Operation'); the module field was set to the combined SPEC module 'Equipment Evaluation, Maintenance & Operation'. No other field changed.",
+  "Bank answer-length metric: correct option strictly longest in 18% of items; no length flags."
+ ],
+ "nearDuplicatePairReview": [
+  {
+   "pair": [
+    "WASTEWATER-TREATMENT-L4-528",
+    "WASTEWATER-TREATMENT-L4-614"
+   ],
+   "similarity": 0.88,
+   "decision": "replaced",
+   "replacedItemId": "WASTEWATER-TREATMENT-L4-614",
+   "reason": "Both items forecast dry solids production as BOD removed multiplied by a given solids yield of 0.65, differing only in the BOD removed value. Same formula and scenario, so the second item was replaced.",
+   "oldPayloadSha256": "086f7873d93d281d0094c1a5e9f19add42dde0e52defaae85af7e2bec5c73ab3",
+   "newPayloadSha256": "726488c79165f17a059541c93ffca96dc38d783daad519e118e32bab89d7aaeb",
+   "oldStem": "A plant removes 480 kg/day of BOD. Use a given solids yield of 0.65 kg of solids per kg of BOD removed to forecast solids production. What is the forecast solids production? Round to 1 decimal place.",
+   "newStem": "An aeration basin has a volume of 3000 m3 and receives 9000 m3/day of wastewater with a BOD of 220 mg/L. What is the volumetric BOD loading on the basin? Round to 2 decimal places."
+  }
+ ]
+}

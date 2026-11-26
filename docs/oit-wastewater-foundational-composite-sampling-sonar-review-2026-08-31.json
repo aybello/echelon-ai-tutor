@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 468,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects Ontario Procedure F-10-1’s description of composite samples as aliquots collected over a sampling period and thoroughly mixed, supporting the claim that they can represent changing conditions over time.",
+        "Jurisdiction and regulatory scope are accurate: the item clearly relies on Ontario MECP Procedure F-10-1, which governs municipal and private sewage treatment works sampling in Ontario.",
+        "Exactly one option is correct; all distractors are clearly incorrect while remaining plausible-sounding without encouraging unsafe operation or omission of required actions.",
+        "Learning objective is foundational and appropriate for an Ontario OIT learner, focusing on the basic purpose and representativeness of composite sampling rather than detailed program design or advanced QA/QC concepts.",
+        "No universal or absolute performance claims are made; the explanation appropriately notes that usefulness depends on the applicable sampling program, aligning with the source record’s scope boundary."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

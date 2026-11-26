@@ -1,0 +1,36 @@
+{
+  "date": "2026-09-11",
+  "baselineSha256": "6a93fe375a2216cffbd6aa3768482657641ecd211668beeb6af2a01e2176035e",
+  "method": "TF-IDF word unigrams/bigrams, English stop words, cosine >= 0.62; new conceptual stems vs own full candidate bank and exact historical bank",
+  "scope": "Editorial aid, not exhaustive semantic duplicate detection or independent subject-matter certification",
+  "banks": [
+    {
+      "bankKey": "class1-water",
+      "historicalCount": 555,
+      "candidateCount": 250,
+      "conceptualComparisons": 200,
+      "remainingFlaggedPairs": []
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "historicalCount": 565,
+      "candidateCount": 250,
+      "conceptualComparisons": 200,
+      "remainingFlaggedPairs": []
+    }
+  ],
+  "replacedOverlaps": [
+    {
+      "bankKey": "class1-wastewater",
+      "candidate": 2023,
+      "historical": 83,
+      "replacement": "Distribution of daily wasting over time instead of purpose-of-wasting definition"
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "candidate": 2069,
+      "historical": 60,
+      "replacement": "Blocked-nozzle limitations instead of low-flow recirculation definition"
+    }
+  ]
+}

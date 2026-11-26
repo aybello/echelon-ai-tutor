@@ -1,0 +1,456 @@
+{
+ "courseKey": "wpi-class3-water-coll",
+ "bankKey": "wpi-class3-wastewater-coll",
+ "batch": 6,
+ "size": 49,
+ "conceptualCount": 39,
+ "calcCount": 10,
+ "topicPoolRound": 2,
+ "questionNumStart": 2699,
+ "questionNumEnd": 2747,
+ "itemIdStart": "COLLECTION-L3-699",
+ "itemIdEnd": "COLLECTION-L3-747",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2699,
+   "itemId": "COLLECTION-L3-699",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "sewer rehabilitation program planning"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2700,
+   "itemId": "COLLECTION-L3-700",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "prioritization methods awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2701,
+   "itemId": "COLLECTION-L3-701",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "overflow and bypass response leadership"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2702,
+   "itemId": "COLLECTION-L3-702",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "reporting leadership"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2703,
+   "itemId": "COLLECTION-L3-703",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2704,
+   "itemId": "COLLECTION-L3-704",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2705,
+   "itemId": "COLLECTION-L3-705",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "ORO duties awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2706,
+   "itemId": "COLLECTION-L3-706",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "emergency leadership"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2707,
+   "itemId": "COLLECTION-L3-707",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "sewer rehabilitation program planning"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2708,
+   "itemId": "COLLECTION-L3-708",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "prioritization methods awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2709,
+   "itemId": "COLLECTION-L3-709",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "overflow and bypass response leadership"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2710,
+   "itemId": "COLLECTION-L3-710",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "reporting leadership"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2711,
+   "itemId": "COLLECTION-L3-711",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2712,
+   "itemId": "COLLECTION-L3-712",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2713,
+   "itemId": "COLLECTION-L3-713",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "ORO duties awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2714,
+   "itemId": "COLLECTION-L3-714",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "emergency leadership"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2715,
+   "itemId": "COLLECTION-L3-715",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sewer rehabilitation program planning"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2716,
+   "itemId": "COLLECTION-L3-716",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "prioritization methods awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2717,
+   "itemId": "COLLECTION-L3-717",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "overflow and bypass response leadership"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2718,
+   "itemId": "COLLECTION-L3-718",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "reporting leadership"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2719,
+   "itemId": "COLLECTION-L3-719",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2720,
+   "itemId": "COLLECTION-L3-720",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2721,
+   "itemId": "COLLECTION-L3-721",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "ORO duties awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2722,
+   "itemId": "COLLECTION-L3-722",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "emergency leadership"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2723,
+   "itemId": "COLLECTION-L3-723",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sewer rehabilitation program planning"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2724,
+   "itemId": "COLLECTION-L3-724",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "prioritization methods awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2725,
+   "itemId": "COLLECTION-L3-725",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "overflow and bypass response leadership"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2726,
+   "itemId": "COLLECTION-L3-726",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "reporting leadership"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2727,
+   "itemId": "COLLECTION-L3-727",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2728,
+   "itemId": "COLLECTION-L3-728",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2729,
+   "itemId": "COLLECTION-L3-729",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "ORO duties awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2730,
+   "itemId": "COLLECTION-L3-730",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "emergency leadership"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2731,
+   "itemId": "COLLECTION-L3-731",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sewer rehabilitation program planning"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2732,
+   "itemId": "COLLECTION-L3-732",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "prioritization methods awareness"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2733,
+   "itemId": "COLLECTION-L3-733",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "overflow and bypass response leadership"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2734,
+   "itemId": "COLLECTION-L3-734",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "reporting leadership"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2735,
+   "itemId": "COLLECTION-L3-735",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "asset management awareness"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2736,
+   "itemId": "COLLECTION-L3-736",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capital planning awareness"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2737,
+   "itemId": "COLLECTION-L3-737",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "ORO duties awareness"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2738,
+   "itemId": "COLLECTION-L3-738",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation quantities liner and grout"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2739,
+   "itemId": "COLLECTION-L3-739",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "cleaning and CCTV completion percentages"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2740,
+   "itemId": "COLLECTION-L3-740",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "surcharge storage volume"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2741,
+   "itemId": "COLLECTION-L3-741",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour chemical dosing with given rates"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2742,
+   "itemId": "COLLECTION-L3-742",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation quantities liner and grout"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2743,
+   "itemId": "COLLECTION-L3-743",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "cleaning and CCTV completion percentages"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2744,
+   "itemId": "COLLECTION-L3-744",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "surcharge storage volume"
+  },
+  {
+   "seq": 47,
+   "questionNum": 2745,
+   "itemId": "COLLECTION-L3-745",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "odour chemical dosing with given rates"
+  },
+  {
+   "seq": 48,
+   "questionNum": 2746,
+   "itemId": "COLLECTION-L3-746",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "rehabilitation quantities liner and grout"
+  },
+  {
+   "seq": 49,
+   "questionNum": 2747,
+   "itemId": "COLLECTION-L3-747",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "cleaning and CCTV completion percentages"
+  }
+ ]
+}

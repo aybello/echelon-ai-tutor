@@ -1,0 +1,98 @@
+{
+  "reviews": [
+    {
+      "questionNum": 239,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects CCOHS statements that hydrogen sulfide is highly toxic, flammable, and can accumulate in low-lying and confined spaces, creating serious inhalation hazards.",
+        "Question is clearly framed as hazard recognition, which is an appropriate foundational Ontario OIT learning outcome.",
+        "Jurisdiction and regulatory scope are accurate: CCOHS is presented as general occupational-safety guidance, not as Ontario-specific legal requirements.",
+        "Exactly one option is correct; distractors are clearly incorrect yet plausible misunderstandings and do not normalize unsafe practices, as they explicitly deny needed precautions and therefore signal unsafe ideas rather than normalize them."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 276,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches EPA guidance that sewer-camera (CCTV) inspection is used to examine internal pipe condition and identify defects, blockages, or locations needing maintenance and further investigation.",
+        "Use of U.S. EPA source is within the stated non-regulatory, operational-concept scope for collection-system maintenance and does not claim Ontario-specific legal duties.",
+        "Learning objective (basic understanding of CCTV inspection purpose) is foundational and appropriate for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors are implausible or clearly incorrect without encouraging unsafe operation (they do not instruct actual practice but describe obviously wrong capabilities).",
+        "Minor issue: the explanation slightly broadens the source by referencing asset-management decisions, which is reasonable inference but not explicitly stated in the cited passage."
+      ],
+      "requiredChanges": [
+        "Option and stem can remain as written; to tighten source-to-claim alignment, consider revising the explanation to focus on inspection for defects/blockages and informing maintenance planning, avoiding broader asset-management language not directly supported by the source (e.g., change 'asset-management decisions' to 'maintenance decisions')."
+      ]
+    },
+    {
+      "questionNum": 278,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option is traceable to EPA guidance that smoke testing is used to identify inflow and infiltration locations, defects, and improper connections needing further investigation.",
+        "Source is U.S. EPA, appropriately framed as operational maintenance guidance, not as Ontario legal requirements.",
+        "Learning objective (purpose of smoke testing in sanitary sewers) is foundational and suitable for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors are incorrect and describe clearly unsafe or impossible uses but do not normalize unsafe behaviour, as they are framed as obviously wrong statements rather than recommended actions.",
+        "Explanation stays within the source-supported scope by describing smoke testing as an investigation tool to identify I&I and defects, with follow-up determined by facility procedures."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 296,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option aligns with EPA guidance that investigating and repairing defects and improper connections that allow stormwater/groundwater into sanitary sewers helps reduce inflow and infiltration and associated risks.",
+        "Use of U.S. EPA guidance is consistent with the stated scope: operational concepts to reduce SSO/I&I, not Ontario-specific legal obligations.",
+        "Learning objective (basic understanding that addressing defects/improper connections reduces I&I) is foundational for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors describe clearly incorrect and unsafe approaches, but they are framed as wrong answers rather than normal practices, so they do not normalize unsafe operation.",
+        "Minor inference: explanation lists inspection, smoke testing, and sewer-camera investigation together; while each is mentioned in EPA guidance, the combined list is interpretive rather than a verbatim, exhaustive source statement."
+      ],
+      "requiredChanges": [
+        "Keep the correct option unchanged; to reduce implied exhaustiveness in the explanation, adjust wording from 'Inspection, smoke testing, sewer-camera investigation, and corrective work can help identify defects...' to 'Activities such as inspection, smoke testing, sewer-camera investigation, and corrective work can help identify defects...', clarifying these are examples rather than a complete list."
+      ]
+    },
+    {
+      "questionNum": 305,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option reflects EPA guidance that air-relief (air-release) valves should be inspected and maintained as part of collection and lift-station maintenance to release trapped air and support reliable force-main operation.",
+        "Jurisdictional framing is appropriate: EPA is presented as operational guidance, not as Ontario regulatory authority.",
+        "Learning objective (purpose of air-release valves and their inspection/maintenance) is foundational and appropriate for Ontario OIT level.",
+        "Exactly one option is correct; distractors are clearly incorrect and do not normalize unsafe practices, since they present implausible functions (disinfection, increasing stormwater entry, replacing all maintenance) rather than realistic shortcuts.",
+        "Explanation properly limits operational detail, noting that specific design and procedures depend on facility equipment and manuals, avoiding universal prescriptions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 429,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option is directly traceable to Ontario Regulation 129/04, s.19(5)5, which requires recording unusual or abnormal conditions, action taken, and conclusions drawn for each operating shift.",
+        "Jurisdiction and regulatory scope are accurate and clearly Ontario-specific, matching the cited regulation.",
+        "Learning objective (key required log content for each operating shift) is foundational and squarely within Ontario OIT scope.",
+        "Exactly one option is correct; distractors conflict with explicit regulatory requirements (ignoring abnormal conditions, including unauthorized opinions, substituting capital plans) and therefore do not normalize unsafe or non-compliant logging practices.",
+        "Explanation closely aligns with the regulation by mentioning chronological logs, authorized persons, abnormal conditions, actions, conclusions, and identification of the person making the entry, without adding unsupported requirements."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 454,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects CCOHS emergency-planning guidance that drills/exercises practice all or critical parts of the emergency plan and identify gaps to correct before an actual emergency.",
+        "Source is correctly framed as general workplace safety guidance, not Ontario-specific legal requirements or fixed drill frequencies.",
+        "Learning objective (primary purpose of emergency response drills) is foundational and suitable for an Ontario OIT learner.",
+        "Exactly one option is correct; distractors are clearly wrong, suggesting elimination of plans, ignoring responsibilities, or delaying corrective action, and thus do not normalize unsafe practices as they are presented as incorrect statements.",
+        "Explanation stays within source scope by noting that drills allow practice of portions of the plan, that review identifies areas for improvement, and that plans should be revised when shortcomings are found—consistent with the cited CCOHS content without adding prescriptive legal requirements."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

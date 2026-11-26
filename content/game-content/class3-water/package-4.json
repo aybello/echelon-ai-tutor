@@ -1,0 +1,5520 @@
+{
+ "courseKey": "class3-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3w-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the backwash water recovery system operation sequence.",
+   "topicId": "process-backwash-recovery-operation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: daily operation of the spent backwash equalization and return system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive spent backwash water in the equalization tank and record the volume"
+    },
+    {
+     "id": "s2",
+     "label": "Allow solids to settle and check supernatant clarity before return"
+    },
+    {
+     "id": "s3",
+     "label": "Return supernatant to the plant headworks at a rate that does not upset treatment"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor headworks turbidity during the return period"
+    },
+    {
+     "id": "s5",
+     "label": "Remove accumulated solids from the tank to the residuals stream on schedule"
+    },
+    {
+     "id": "s6",
+     "label": "Reconcile recovered volume and solids removed in the weekly residuals report"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the residuals inventory and reporting sequence at month end.",
+   "topicId": "process-residuals-inventory-reporting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: monthly close out of residuals volumes and movements.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect daily logs for each residual stream produced during the month"
+    },
+    {
+     "id": "s2",
+     "label": "Reconcile produced volumes with storage level changes and hauled volumes"
+    },
+    {
+     "id": "s3",
+     "label": "Investigate and resolve any imbalance beyond the allowed tolerance"
+    },
+    {
+     "id": "s4",
+     "label": "Compile quality results for material hauled or applied during the month"
+    },
+    {
+     "id": "s5",
+     "label": "Prepare the monthly residuals report for management and regulatory files"
+    },
+    {
+     "id": "s6",
+     "label": "File the report and flag any storage capacity concerns for the next month"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response sequence for a residuals spill inside the plant yard.",
+   "topicId": "process-residuals-spill-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: containment and cleanup of a sludge spill from a transfer line failure.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Stop the transfer and isolate the failed line to end the release"
+    },
+    {
+     "id": "s2",
+     "label": "Protect nearby drains and watercourses with berms or covers"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the overall responsible operator and assess reporting duties for the spill"
+    },
+    {
+     "id": "s4",
+     "label": "Recover pooled material and washings to the residuals system, not to storm drains"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect and repair the failed line and test it before reuse"
+    },
+    {
+     "id": "s6",
+     "label": "Document the spill, cleanup, and corrective actions in the incident file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the concentrate management program sequence for a membrane plant.",
+   "topicId": "process-concentrate-management-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: managing reverse osmosis concentrate from characterization to approved discharge.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure concentrate flow, conductivity, and key quality parameters across operating conditions"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the discharge approval limits and the receiving system capacity"
+    },
+    {
+     "id": "s3",
+     "label": "Set the plant recovery limit so concentrate quality stays within approval limits"
+    },
+    {
+     "id": "s4",
+     "label": "Install or verify continuous monitoring required by the approval"
+    },
+    {
+     "id": "s5",
+     "label": "Review concentrate data monthly and adjust recovery or pretreatment if trends rise"
+    },
+    {
+     "id": "s6",
+     "label": "Renew or amend the approval before expiry if operating conditions change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the residuals quality testing program sequence for a new disposal season.",
+   "topicId": "process-residuals-quality-testing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: preparing a sludge stream for land application or disposal testing.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the approval testing list and sampling frequency for the stream"
+    },
+    {
+     "id": "s2",
+     "label": "Collect representative samples using the approved sampling method"
+    },
+    {
+     "id": "s3",
+     "label": "Send samples to the accredited laboratory with chain of custody records"
+    },
+    {
+     "id": "s4",
+     "label": "Compare results with acceptance limits and investigate any exceedance"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the stream for the outlet only after results pass"
+    },
+    {
+     "id": "s6",
+     "label": "Schedule the next sampling round and file results in the residuals record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the residuals load-out and hauling sequence for dewatered cake.",
+   "topicId": "process-residuals-loadout-hauling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one hauling day from storage check to completed delivery records.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm cake quantity and quality results meet the receiving outlet acceptance limits"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule the haul with the carrier and confirm the receiving site is open"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the truck box and confirm it is clean and covered for transport"
+    },
+    {
+     "id": "s4",
+     "label": "Load cake evenly and record the loaded mass from the scale"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the hauling manifest and give the driver the delivery documents"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm receipt with the outlet and file the manifest and scale records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the design sequence for a chemical optimization trial.",
+   "topicId": "process-chemical-trial-design",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: planning a plant scale trial of a reduced coagulant dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "State the trial objective, the quality limits that must be protected, and the success measure"
+    },
+    {
+     "id": "s2",
+     "label": "Collect baseline dose, cost, and treated water quality data"
+    },
+    {
+     "id": "s3",
+     "label": "Set the trial dose steps, step duration, and the raw water conditions for each step"
+    },
+    {
+     "id": "s4",
+     "label": "Define the stop rules that restore the normal dose immediately"
+    },
+    {
+     "id": "s5",
+     "label": "Brief all shifts and post the trial plan at the control station"
+    },
+    {
+     "id": "s6",
+     "label": "Begin the first dose step only after baseline review is signed off"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the coagulant dose optimization trial sequence during stable raw water.",
+   "topicId": "process-coagulant-dose-trial",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: step down trial from baseline dose to the lowest effective dose.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm raw water quality is stable enough for a valid comparison"
+    },
+    {
+     "id": "s2",
+     "label": "Record settled and filtered turbidity at the current baseline dose"
+    },
+    {
+     "id": "s3",
+     "label": "Reduce the dose by one planned step and allow the process to stabilize"
+    },
+    {
+     "id": "s4",
+     "label": "Measure settled and filtered quality at the new dose over a full filter run"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat step reductions until quality approaches the internal action level"
+    },
+    {
+     "id": "s6",
+     "label": "Set the adopted dose one step above the lowest passing dose as the safety margin"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chlorine dose optimization sequence for finished water.",
+   "topicId": "process-chlorine-dose-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: finding the lowest dose that reliably holds the distribution residual target.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Map current dose, plant outlet residual, and far point residual results"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm contact time credit is met at the current dose before any reduction"
+    },
+    {
+     "id": "s3",
+     "label": "Reduce the dose in one small step and monitor outlet and distribution residuals"
+    },
+    {
+     "id": "s4",
+     "label": "Hold each step long enough to capture a full distribution travel time"
+    },
+    {
+     "id": "s5",
+     "label": "Stop at the dose where far point residuals approach the minimum target"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the dose with a margin above that point and update the dose guidance table"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning sequence for a new chemical feed system.",
+   "topicId": "process-chemical-feed-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from installed feed system to approved routine operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify installation, materials compatibility, and containment against the approved design"
+    },
+    {
+     "id": "s2",
+     "label": "Test pumps, piping, and alarms with water before introducing chemical"
+    },
+    {
+     "id": "s3",
+     "label": "Calibrate each feed pump across its operating range and record the curves"
+    },
+    {
+     "id": "s4",
+     "label": "Introduce chemical and confirm feed rate by drawdown measurement"
+    },
+    {
+     "id": "s5",
+     "label": "Run the system in automatic control and verify dose pacing with flow"
+    },
+    {
+     "id": "s6",
+     "label": "Hand the system to operations with procedures, training, and spares in place"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical delivery acceptance sequence for a bulk chemical shipment.",
+   "topicId": "process-chemical-delivery-acceptance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from truck arrival to released chemical storage.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the order, product, and quantity against the delivery documents before unloading"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the truck connections and confirm the correct storage tank and fill line"
+    },
+    {
+     "id": "s3",
+     "label": "Sample the delivery where the procedure requires it and check the certificate of analysis"
+    },
+    {
+     "id": "s4",
+     "label": "Supervise unloading into containment with spill equipment at hand"
+    },
+    {
+     "id": "s5",
+     "label": "Verify tank level change matches the delivered quantity"
+    },
+    {
+     "id": "s6",
+     "label": "Release the load in the inventory system and file the delivery records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical inventory management program sequence.",
+   "topicId": "process-chemical-inventory-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: monthly supervisory cycle for treatment chemical supply security.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Count physical stock for each chemical and reconcile it with usage records"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate days of supply at current and at peak demand rates"
+    },
+    {
+     "id": "s3",
+     "label": "Reorder any chemical below its minimum days of supply threshold"
+    },
+    {
+     "id": "s4",
+     "label": "Review supplier lead times and confirm delivery schedules for critical chemicals"
+    },
+    {
+     "id": "s5",
+     "label": "Investigate usage that differs from the expected dose based consumption"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the monthly inventory report with stock risks and pending deliveries"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the polymer optimization trial sequence for residuals thickening.",
+   "topicId": "process-polymer-optimization-trial",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: selecting the polymer dose that gives the best capture at lowest cost.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect baseline cake or thickened solids, capture, and polymer use data"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare trial doses spanning below and above the current dose"
+    },
+    {
+     "id": "s3",
+     "label": "Run each dose long enough to collect representative solids and filtrate samples"
+    },
+    {
+     "id": "s4",
+     "label": "Compare solids capture, output solids, and polymer cost per tonne for each dose"
+    },
+    {
+     "id": "s5",
+     "label": "Select the dose with acceptable capture at the lowest cost per tonne"
+    },
+    {
+     "id": "s6",
+     "label": "Update the thickening procedure and record the trial in the optimization file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the pH and alkalinity adjustment optimization sequence.",
+   "topicId": "process-ph-adjustment-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: stabilizing treated water pH within the corrosion control target range.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review treated water pH, alkalinity, and corrosion indicator results for the period"
+    },
+    {
+     "id": "s2",
+     "label": "Jar test or bench test adjustment chemical doses against the current water"
+    },
+    {
+     "id": "s3",
+     "label": "Trial the selected dose change on one treatment train or feed point"
+    },
+    {
+     "id": "s4",
+     "label": "Monitor pH stability through the clear well and into the distribution samples"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm corrosion indicators improve or hold steady at the new dose"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the dose guidance and add pH trend review to the weekly quality meeting"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical feed pump calibration program sequence.",
+   "topicId": "process-feed-pump-calibration-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: quarterly calibration of all duty chemical feed pumps.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare calibration columns, measuring equipment, and the calibration record forms"
+    },
+    {
+     "id": "s2",
+     "label": "Take one pump out of automatic service while its standby maintains the dose"
+    },
+    {
+     "id": "s3",
+     "label": "Run timed drawdown tests at low, mid, and high settings"
+    },
+    {
+     "id": "s4",
+     "label": "Compare delivered rate with the set rate and adjust the pump or control curve"
+    },
+    {
+     "id": "s5",
+     "label": "Return the pump to automatic service and verify dose at the process"
+    },
+    {
+     "id": "s6",
+     "label": "Repeat for each pump and file the calibration curves in the equipment record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical cost review sequence for the annual operating budget.",
+   "topicId": "process-chemical-cost-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory review of chemical spend and dose efficiency.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile chemical usage, delivered prices, and treated volumes for the year"
+    },
+    {
+     "id": "s2",
+     "label": "Calculate unit cost per megalitre for each chemical and for the plant overall"
+    },
+    {
+     "id": "s3",
+     "label": "Compare doses with the optimized guidance and flag chemicals used above guidance"
+    },
+    {
+     "id": "s4",
+     "label": "Obtain updated pricing or alternate product information for flagged chemicals"
+    },
+    {
+     "id": "s5",
+     "label": "Trial or bench verify any proposed product or dose change before adoption"
+    },
+    {
+     "id": "s6",
+     "label": "Present the cost review with adopted savings actions for the budget"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the risk assessment sequence for a source water hazard.",
+   "topicId": "process-risk-assessment-source-hazard",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: assessing a new potential contaminant source in the intake protection zone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the hazard and how it could reach the intake or wellhead"
+    },
+    {
+     "id": "s2",
+     "label": "Gather information on quantity, mobility, and existing controls at the source"
+    },
+    {
+     "id": "s3",
+     "label": "Estimate likelihood and consequence using the plant risk matrix"
+    },
+    {
+     "id": "s4",
+     "label": "Decide whether existing barriers reduce the risk to an acceptable level"
+    },
+    {
+     "id": "s5",
+     "label": "Add monitoring, procedures, or capital actions for any unacceptable risk"
+    },
+    {
+     "id": "s6",
+     "label": "Record the assessment and set its review date in the risk register"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the critical control point review sequence for plant disinfection.",
+   "topicId": "process-critical-control-point-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: annual review of the disinfection critical control point.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the hazard the control point protects against and the critical limit in place"
+    },
+    {
+     "id": "s2",
+     "label": "Review monitoring records and every critical limit deviation from the past year"
+    },
+    {
+     "id": "s3",
+     "label": "Verify alarms, response procedures, and operator actions matched the plan for each deviation"
+    },
+    {
+     "id": "s4",
+     "label": "Check monitoring equipment calibration and redundancy for the control point"
+    },
+    {
+     "id": "s5",
+     "label": "Update limits, monitoring, or procedures where the review shows weakness"
+    },
+    {
+     "id": "s6",
+     "label": "Approve the revised control point summary and brief all operators"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the Drinking Water Quality Management Standard operational plan review sequence.",
+   "topicId": "process-dwqms-operational-plan-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: annual review cycle for the operational plan, at a general awareness level.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Schedule the review and notify the owner, top management, and operating authority representatives"
+    },
+    {
+     "id": "s2",
+     "label": "Collect audit results, corrective actions, and performance data since the last review"
+    },
+    {
+     "id": "s3",
+     "label": "Review each element of the operational plan for currency and effectiveness"
+    },
+    {
+     "id": "s4",
+     "label": "Record decisions, changes, and new commitments in the review minutes"
+    },
+    {
+     "id": "s5",
+     "label": "Update and re-endorse the operational plan document with the required approvals"
+    },
+    {
+     "id": "s6",
+     "label": "Communicate the changes to all staff whose work is affected"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the hazard assessment workshop sequence for a treatment process area.",
+   "topicId": "process-hazard-assessment-workshop",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: team workshop assessing hazards for the chemical storage area.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assemble the team with operations, maintenance, and supervisory representation"
+    },
+    {
+     "id": "s2",
+     "label": "Walk the area and list hazards for each task and process step"
+    },
+    {
+     "id": "s3",
+     "label": "Score each hazard for likelihood and consequence with the risk matrix"
+    },
+    {
+     "id": "s4",
+     "label": "Identify existing controls and judge whether each risk is acceptable"
+    },
+    {
+     "id": "s5",
+     "label": "Assign new controls or actions for unacceptable risks with owners and dates"
+    },
+    {
+     "id": "s6",
+     "label": "Document the assessment and add open actions to the corrective action tracker"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the corrective action sequence after an internal audit finding.",
+   "topicId": "process-corrective-action-audit-finding",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: closing a finding that a required record was incomplete.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the finding with the auditor and confirm the exact requirement that was missed"
+    },
+    {
+     "id": "s2",
+     "label": "Determine the root cause, such as training, workload, or a missing checklist step"
+    },
+    {
+     "id": "s3",
+     "label": "Correct the affected records or process as far as correction is possible"
+    },
+    {
+     "id": "s4",
+     "label": "Implement the preventive change, such as a revised checklist or added review step"
+    },
+    {
+     "id": "s5",
+     "label": "Verify the change is working after a defined period of new records"
+    },
+    {
+     "id": "s6",
+     "label": "Close the finding with evidence and report closure at management review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the management review sequence under the quality management system.",
+   "topicId": "process-dwqms-management-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: preparing and completing the annual management review meeting.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile inputs including audit results, corrective actions, incidents, and performance trends"
+    },
+    {
+     "id": "s2",
+     "label": "Circulate the input package to participants before the meeting"
+    },
+    {
+     "id": "s3",
+     "label": "Review each input and decide actions, resources, and priorities in the meeting"
+    },
+    {
+     "id": "s4",
+     "label": "Record decisions and action assignments in the management review minutes"
+    },
+    {
+     "id": "s5",
+     "label": "Communicate decisions to affected staff and update plans and budgets"
+    },
+    {
+     "id": "s6",
+     "label": "Track the actions at regular intervals until all are complete"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the internal audit program sequence for the quality management system.",
+   "topicId": "process-internal-audit-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one full internal audit from planning to reported results.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the audit plan, scope, criteria, and auditor assignments for the cycle"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the audited areas and request the records to be examined"
+    },
+    {
+     "id": "s3",
+     "label": "Conduct interviews and record reviews and collect objective evidence"
+    },
+    {
+     "id": "s4",
+     "label": "Classify findings and discuss them with the area supervisor before reporting"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the audit report with findings and required response dates"
+    },
+    {
+     "id": "s6",
+     "label": "Follow up on responses and verify corrective actions at the next cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response sequence when a critical control point limit is exceeded.",
+   "topicId": "process-ccp-limit-exceedance-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: response to a disinfection critical limit deviation at the plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Detect the deviation through monitoring and alarm response"
+    },
+    {
+     "id": "s2",
+     "label": "Take the immediate corrective action in the control point procedure, such as increasing dose or stopping flow"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the supervisor and the overall responsible operator without delay"
+    },
+    {
+     "id": "s4",
+     "label": "Assess the quality of water produced during the deviation and decide its disposition"
+    },
+    {
+     "id": "s5",
+     "label": "Complete the deviation record with cause, actions, and water quality outcome"
+    },
+    {
+     "id": "s6",
+     "label": "Review the event at the next operations meeting and update the procedure if needed"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual operational planning update sequence.",
+   "topicId": "process-operational-planning-update",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: updating plant operational plans for the coming year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review last year performance, incidents, audit findings, and demand changes"
+    },
+    {
+     "id": "s2",
+     "label": "Identify required changes to processes, staffing, monitoring, and maintenance plans"
+    },
+    {
+     "id": "s3",
+     "label": "Draft the updated operational plan sections with owners for each change"
+    },
+    {
+     "id": "s4",
+     "label": "Review the draft with top management and obtain endorsement"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the controlled plan and withdraw superseded versions"
+    },
+    {
+     "id": "s6",
+     "label": "Brief all staff on the changes that affect their duties"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the emergency preparedness review sequence within the quality management system.",
+   "topicId": "process-emergency-plan-review-cycle",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: annual review of the plant emergency plan and contact lists.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Test all emergency contact numbers and correct the contact list"
+    },
+    {
+     "id": "s2",
+     "label": "Review incident reports from the year for lessons that change the plan"
+    },
+    {
+     "id": "s3",
+     "label": "Update procedures for the scenarios where lessons or site changes apply"
+    },
+    {
+     "id": "s4",
+     "label": "Verify emergency equipment and supplies against the plan inventory"
+    },
+    {
+     "id": "s5",
+     "label": "Run a tabletop exercise on one updated scenario with the response team"
+    },
+    {
+     "id": "s6",
+     "label": "Record exercise results and assign plan improvements with due dates"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory quality assurance program setup sequence.",
+   "topicId": "process-lab-qa-program-setup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: establishing a QA program for a plant laboratory.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the analyses, methods, and quality requirements the laboratory must meet"
+    },
+    {
+     "id": "s2",
+     "label": "Select approved methods and obtain the controlled method documents"
+    },
+    {
+     "id": "s3",
+     "label": "Establish quality control samples, acceptance limits, and charting for each analysis"
+    },
+    {
+     "id": "s4",
+     "label": "Train and assess analysts on each method before independent work"
+    },
+    {
+     "id": "s5",
+     "label": "Run a trial period comparing plant results with a reference laboratory"
+    },
+    {
+     "id": "s6",
+     "label": "Approve the program and begin routine quality control charting and review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the proficiency testing program sequence for the plant laboratory.",
+   "topicId": "process-lab-proficiency-testing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one proficiency round from sample receipt to reviewed result.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive and log the proficiency samples and store them as directed"
+    },
+    {
+     "id": "s2",
+     "label": "Analyse the samples with routine methods and analysts, without special handling"
+    },
+    {
+     "id": "s3",
+     "label": "Review results internally for obvious errors before submission"
+    },
+    {
+     "id": "s4",
+     "label": "Submit results by the program deadline"
+    },
+    {
+     "id": "s5",
+     "label": "Compare returned scores with acceptance criteria when the report arrives"
+    },
+    {
+     "id": "s6",
+     "label": "Investigate any unacceptable score and document corrective action"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the method validation awareness sequence for adopting a new laboratory test.",
+   "topicId": "process-lab-method-validation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: bringing a new bench method into routine plant laboratory use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the method is approved for the parameter and matrix being tested"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare standards and run the method to establish detection and reporting limits"
+    },
+    {
+     "id": "s3",
+     "label": "Analyse spiked and replicate samples to check accuracy and precision"
+    },
+    {
+     "id": "s4",
+     "label": "Compare results with the current reference method on split samples"
+    },
+    {
+     "id": "s5",
+     "label": "Write the bench procedure and train analysts on the validated method"
+    },
+    {
+     "id": "s6",
+     "label": "Approve the method for routine use and add its quality controls to the program"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chain of custody sequence for a compliance sample set.",
+   "topicId": "process-compliance-sample-chain-of-custody",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from sample collection to accredited laboratory receipt.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect samples in the correct containers with preservatives and hold times noted"
+    },
+    {
+     "id": "s2",
+     "label": "Label each sample with location, date, time, and sampler identification"
+    },
+    {
+     "id": "s3",
+     "label": "Complete the chain of custody form listing every sample in the set"
+    },
+    {
+     "id": "s4",
+     "label": "Seal samples in the transport cooler with ice packs as required"
+    },
+    {
+     "id": "s5",
+     "label": "Transfer the cooler to the courier or laboratory with signatures at each handover"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm laboratory receipt and file the completed custody record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sampling response sequence after an adverse water quality result.",
+   "topicId": "process-adverse-incident-sampling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: resampling workflow following an adverse microbiological result at the plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive the adverse result and notify the overall responsible operator immediately"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the required health unit and regulatory contacts as directed for adverse results"
+    },
+    {
+     "id": "s3",
+     "label": "Collect resamples at the adverse location and at upstream and downstream points as required"
+    },
+    {
+     "id": "s4",
+     "label": "Expedite delivery to the accredited laboratory with full custody records"
+    },
+    {
+     "id": "s5",
+     "label": "Review resample results and any operational checks on the affected area"
+    },
+    {
+     "id": "s6",
+     "label": "Document all notifications, samples, and results in the adverse incident file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory instrument calibration program sequence.",
+   "topicId": "process-lab-instrument-calibration",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: monthly calibration cycle for bench turbidity and pH instruments.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the instrument register for instruments due for calibration"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare fresh standards and verify standard expiry dates before use"
+    },
+    {
+     "id": "s3",
+     "label": "Calibrate each instrument following the method and record as found and as left values"
+    },
+    {
+     "id": "s4",
+     "label": "Verify calibration with an independent check standard"
+    },
+    {
+     "id": "s5",
+     "label": "Return passing instruments to service and tag out any that fail"
+    },
+    {
+     "id": "s6",
+     "label": "Update the register with results and next due dates"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the data quality review sequence before laboratory results are reported.",
+   "topicId": "process-lab-data-quality-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory review of one week of plant laboratory results.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect bench sheets, quality control charts, and instrument records for the week"
+    },
+    {
+     "id": "s2",
+     "label": "Check that quality control results fall within acceptance limits for each analysis"
+    },
+    {
+     "id": "s3",
+     "label": "Investigate any result that conflicts with trends or duplicate samples"
+    },
+    {
+     "id": "s4",
+     "label": "Qualify, repeat, or reject data that fails quality review with reasons recorded"
+    },
+    {
+     "id": "s5",
+     "label": "Release the reviewed results for operational and compliance use"
+    },
+    {
+     "id": "s6",
+     "label": "File the review record and brief analysts on any recurring issues"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the weekly microbiological sampling program sequence.",
+   "topicId": "process-microbiological-sampling-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one week of routine distribution and plant microbiological sampling.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the sampling schedule from the regulatory sampling plan for the week"
+    },
+    {
+     "id": "s2",
+     "label": "Collect samples using sterile technique at the scheduled locations"
+    },
+    {
+     "id": "s3",
+     "label": "Record chlorine residual and sample conditions at each location at collection"
+    },
+    {
+     "id": "s4",
+     "label": "Deliver samples to the laboratory within the required hold time"
+    },
+    {
+     "id": "s5",
+     "label": "Review results as they return and act on any adverse or total coliform detection"
+    },
+    {
+     "id": "s6",
+     "label": "File the week results and update the sampling compliance tracker"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the laboratory safety inspection program sequence.",
+   "topicId": "process-lab-safety-inspection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: monthly laboratory safety inspection from preparation to closed actions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the inspection checklist covering chemicals, eyewash, ventilation, and waste"
+    },
+    {
+     "id": "s2",
+     "label": "Walk the laboratory with a second staff member and record all findings"
+    },
+    {
+     "id": "s3",
+     "label": "Classify findings by risk and correct immediate hazards on the spot"
+    },
+    {
+     "id": "s4",
+     "label": "Assign corrective actions with owners and dates for remaining findings"
+    },
+    {
+     "id": "s5",
+     "label": "Verify completed actions at the next inspection"
+    },
+    {
+     "id": "s6",
+     "label": "File the inspection record and report trends to the safety committee"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the investigation sequence for a laboratory quality control failure.",
+   "topicId": "process-lab-qc-failure-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: investigating a failed quality control sample for a routine analysis.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Stop reporting results for the affected analysis until the failure is understood"
+    },
+    {
+     "id": "s2",
+     "label": "Check standards, reagents, and instrument calibration for obvious causes"
+    },
+    {
+     "id": "s3",
+     "label": "Re-analyse the quality control sample and a fresh standard to confirm the failure"
+    },
+    {
+     "id": "s4",
+     "label": "Correct the identified cause, such as replacing a degraded standard"
+    },
+    {
+     "id": "s5",
+     "label": "Demonstrate acceptable quality control on repeat analysis before resuming"
+    },
+    {
+     "id": "s6",
+     "label": "Document the failure, cause, and affected results in the quality record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning plan sequence for a treatment plant upgrade project.",
+   "topicId": "process-capital-commissioning-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: planning commissioning for a new treatment process unit.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define commissioning scope, roles, and acceptance criteria with the project team"
+    },
+    {
+     "id": "s2",
+     "label": "Develop the sequence for equipment checks, wet testing, and process testing"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm training, manuals, and spare parts are delivered before process testing"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule commissioning around plant production so supply is maintained"
+    },
+    {
+     "id": "s5",
+     "label": "Execute tests in the planned order and record results against acceptance criteria"
+    },
+    {
+     "id": "s6",
+     "label": "Sign off commissioning and transfer the unit to operations control"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning sequence for a new granular media filter.",
+   "topicId": "process-new-filter-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: bringing a newly built filter from construction complete to production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the completed filter, underdrains, and media placement against the design"
+    },
+    {
+     "id": "s2",
+     "label": "Disinfect and flush the filter and connected piping before any production"
+    },
+    {
+     "id": "s3",
+     "label": "Backwash the media to remove fines and stratify the bed as specified"
+    },
+    {
+     "id": "s4",
+     "label": "Run a test filtration period with effluent turbidity monitoring"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm performance meets the acceptance criteria over the test period"
+    },
+    {
+     "id": "s6",
+     "label": "Place the filter into the normal rotation and complete the commissioning record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning sequence for a replacement ultraviolet reactor in an existing plant.",
+   "topicId": "process-new-uv-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: replacing an end of life reactor while maintaining disinfection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Plan the changeover so a validated reactor always remains in credited service"
+    },
+    {
+     "id": "s2",
+     "label": "Install the new reactor and complete electrical and control integration"
+    },
+    {
+     "id": "s3",
+     "label": "Calibrate flow and intensity instrumentation for the new unit"
+    },
+    {
+     "id": "s4",
+     "label": "Run dose performance checks across the expected flow and transmittance range"
+    },
+    {
+     "id": "s5",
+     "label": "Transfer credited duty to the new reactor after checks pass"
+    },
+    {
+     "id": "s6",
+     "label": "Remove the old reactor from service and update disinfection records and drawings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning sequence for a new bulk chemical storage and feed facility.",
+   "topicId": "process-chemical-system-commissioning-capital",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: capital project delivery of a new chemical facility at the plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Complete construction inspection and correct deficiencies before filling any tank"
+    },
+    {
+     "id": "s2",
+     "label": "Pressure test and flush all transfer and feed piping with water"
+    },
+    {
+     "id": "s3",
+     "label": "Verify containment, ventilation, alarms, and safety systems operate as designed"
+    },
+    {
+     "id": "s4",
+     "label": "Fill storage with the first chemical delivery under the acceptance procedure"
+    },
+    {
+     "id": "s5",
+     "label": "Calibrate feed pumps and prove automatic dose control"
+    },
+    {
+     "id": "s6",
+     "label": "Train operators and hand over the facility with procedures and drawings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the performance testing sequence after a treatment upgrade is built.",
+   "topicId": "process-performance-testing-upgrade",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: proving a new process unit meets its guaranteed performance.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Agree the test protocol, duration, and pass criteria with the contractor before testing"
+    },
+    {
+     "id": "s2",
+     "label": "Operate the unit at the specified test conditions for the full test period"
+    },
+    {
+     "id": "s3",
+     "label": "Collect performance samples and data using the agreed methods"
+    },
+    {
+     "id": "s4",
+     "label": "Calculate results and compare every criterion with the guarantee"
+    },
+    {
+     "id": "s5",
+     "label": "Require correction and retesting for any failed criterion"
+    },
+    {
+     "id": "s6",
+     "label": "Accept performance and release the unit to routine operation once all criteria pass"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the handover sequence from contractor to operations for a completed upgrade.",
+   "topicId": "process-contractor-handover-operations",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: formal transfer of a finished project to the operating authority.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Walk the installation with the contractor and list all deficiencies"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm manuals, drawings, warranties, and training records are received"
+    },
+    {
+     "id": "s3",
+     "label": "Verify operators have completed training on the new equipment"
+    },
+    {
+     "id": "s4",
+     "label": "Agree dates for deficiency correction and holdback release conditions"
+    },
+    {
+     "id": "s5",
+     "label": "Sign the handover certificate once substantial completion conditions are met"
+    },
+    {
+     "id": "s6",
+     "label": "Enter the new assets into the maintenance and operations systems"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the sequence for placing a new process piping section into treated water service.",
+   "topicId": "process-new-main-disinfection-service",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: new piping from construction complete to carrying treated water.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Pressure test the completed piping and repair any leaks found"
+    },
+    {
+     "id": "s2",
+     "label": "Flush the piping to remove construction debris"
+    },
+    {
+     "id": "s3",
+     "label": "Disinfect the piping with the approved chlorination procedure"
+    },
+    {
+     "id": "s4",
+     "label": "Hold and then flush out the disinfectant to normal residual levels"
+    },
+    {
+     "id": "s5",
+     "label": "Collect bacteriological samples and confirm acceptable results"
+    },
+    {
+     "id": "s6",
+     "label": "Open the section to normal service and record the release"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the deficiency review and closeout sequence for a capital project.",
+   "topicId": "process-deficiency-closeout-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: closing out a treatment upgrade project after handover.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the deficiency list from inspections, commissioning, and early operation"
+    },
+    {
+     "id": "s2",
+     "label": "Classify deficiencies by impact on safety, compliance, and operation"
+    },
+    {
+     "id": "s3",
+     "label": "Agree correction methods and dates with the contractor for each item"
+    },
+    {
+     "id": "s4",
+     "label": "Re-inspect corrected work and confirm it meets the specification"
+    },
+    {
+     "id": "s5",
+     "label": "Release holdbacks only for items verified as complete"
+    },
+    {
+     "id": "s6",
+     "label": "Close the project file with final records, warranties, and lessons learned"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the emergency leadership sequence for a major treatment plant failure.",
+   "topicId": "process-emergency-leadership-major-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory command of a failure that stops treated water production.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assess the failure, immediate risks to water quality, and expected outage duration"
+    },
+    {
+     "id": "s2",
+     "label": "Activate the emergency plan and assign response roles to available staff"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the owner, regulatory contacts, and the health unit as required for the event"
+    },
+    {
+     "id": "s4",
+     "label": "Implement contingency supply or demand measures while repairs proceed"
+    },
+    {
+     "id": "s5",
+     "label": "Direct repairs and verify treated water quality before restoring normal production"
+    },
+    {
+     "id": "s6",
+     "label": "Stand down the response, notify contacts of the return to normal, and schedule the debrief"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the chemical spill response leadership sequence for a large treatment chemical spill.",
+   "topicId": "process-chemical-spill-response-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory response to a bulk chemical spill in the storage area.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Raise the alarm and keep staff clear of the spill area until hazards are assessed"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the chemical and review its safety data before directing any cleanup"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the overall responsible operator and external contacts required for the spill size"
+    },
+    {
+     "id": "s4",
+     "label": "Direct containment with berms and absorbents from a safe position"
+    },
+    {
+     "id": "s5",
+     "label": "Arrange approved cleanup and disposal of spilled material and contaminated absorbents"
+    },
+    {
+     "id": "s6",
+     "label": "Complete spill reporting and restock response supplies before closing the event"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the flood response sequence for a treatment plant threatened by rising water.",
+   "topicId": "process-flood-response-plant",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: plant protection and water quality response during a flood event.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Monitor forecasts and trigger levels and alert the response team early"
+    },
+    {
+     "id": "s2",
+     "label": "Protect electrical equipment, chemicals, and records by moving or isolating them"
+    },
+    {
+     "id": "s3",
+     "label": "Shut down or isolate equipment in areas expected to flood, in a safe order"
+    },
+    {
+     "id": "s4",
+     "label": "Maintain treatment with remaining capacity or implement contingency supply"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect, clean, and test affected equipment and water quality before restarting flooded areas"
+    },
+    {
+     "id": "s6",
+     "label": "Document damage, actions, and water quality results for the incident file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the power outage response leadership sequence at a treatment plant.",
+   "topicId": "process-power-outage-response-leadership",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory response from outage start to stable normal power.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the outage extent and start standby generation for critical loads"
+    },
+    {
+     "id": "s2",
+     "label": "Prioritize disinfection, monitoring, and treated water pumping on available power"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the utility and regulatory contacts and estimate the outage duration"
+    },
+    {
+     "id": "s4",
+     "label": "Manage storage levels and demand so treated water is conserved during the outage"
+    },
+    {
+     "id": "s5",
+     "label": "Restore normal power in stages when utility supply returns and verify all systems"
+    },
+    {
+     "id": "s6",
+     "label": "Log the event, generator performance, and any water quality impacts"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the source water contamination incident response sequence.",
+   "topicId": "process-source-contamination-incident",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: response to a reported spill upstream of the plant intake.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive the report and gather location, material, and timing information"
+    },
+    {
+     "id": "s2",
+     "label": "Assess travel time to the intake and the treatment barriers available"
+    },
+    {
+     "id": "s3",
+     "label": "Close the intake or switch source before the contaminant arrives if risk warrants"
+    },
+    {
+     "id": "s4",
+     "label": "Notify the health unit, regulatory contacts, and downstream users as required"
+    },
+    {
+     "id": "s5",
+     "label": "Increase raw and treated water monitoring for the contaminant and indicators"
+    },
+    {
+     "id": "s6",
+     "label": "Reopen the intake only after monitoring confirms the source is clear, and document the event"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the boil water advisory decision workflow sequence.",
+   "topicId": "process-boil-water-advisory-workflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: awareness of the advisory workflow from confirmed risk to advisory lifted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the water quality risk with resampling and operational evidence"
+    },
+    {
+     "id": "s2",
+     "label": "Notify and consult the local health unit, which leads the advisory decision"
+    },
+    {
+     "id": "s3",
+     "label": "Issue the advisory through the health unit and municipal communication channels if directed"
+    },
+    {
+     "id": "s4",
+     "label": "Inform customers of the reason, the precautions, and where to get updates"
+    },
+    {
+     "id": "s5",
+     "label": "Correct the cause and collect the required clear samples over the required period"
+    },
+    {
+     "id": "s6",
+     "label": "Lift the advisory only on health unit direction after acceptable results, and notify customers"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the emergency preparedness exercise program sequence.",
+   "topicId": "process-emergency-exercise-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: annual exercise cycle from scenario selection to improved readiness.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select a scenario based on the plant risk assessment and past incidents"
+    },
+    {
+     "id": "s2",
+     "label": "Write exercise objectives and the expected response actions to be tested"
+    },
+    {
+     "id": "s3",
+     "label": "Brief controllers and safety officers, keeping the scenario from participants"
+    },
+    {
+     "id": "s4",
+     "label": "Run the exercise and record response times, decisions, and gaps"
+    },
+    {
+     "id": "s5",
+     "label": "Debrief participants and document strengths and improvement actions"
+    },
+    {
+     "id": "s6",
+     "label": "Update the emergency plan and training from the exercise findings"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the mutual aid request workflow sequence for a plant emergency.",
+   "topicId": "process-mutual-aid-request-workflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: requesting operator and equipment assistance from a neighbouring utility.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the emergency need exceeds internal staff and equipment resources"
+    },
+    {
+     "id": "s2",
+     "label": "Contact the mutual aid partner or network coordinator with the specific need"
+    },
+    {
+     "id": "s3",
+     "label": "Agree the scope, arrival time, supervision, and cost arrangements for the assistance"
+    },
+    {
+     "id": "s4",
+     "label": "Brief incoming responders on site hazards, procedures, and their assigned roles"
+    },
+    {
+     "id": "s5",
+     "label": "Integrate the assistance into the response and track hours and equipment use"
+    },
+    {
+     "id": "s6",
+     "label": "Release responders when no longer needed and complete the mutual aid documentation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the post incident review sequence after a major plant event.",
+   "topicId": "process-post-incident-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: structured review from timeline reconstruction to implemented improvements.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Reconstruct the event timeline from logs, alarms, and staff accounts"
+    },
+    {
+     "id": "s2",
+     "label": "Identify what worked, what failed, and the root causes of failures"
+    },
+    {
+     "id": "s3",
+     "label": "Assess whether notifications, procedures, and water quality decisions were correct"
+    },
+    {
+     "id": "s4",
+     "label": "Agree improvement actions with owners and completion dates"
+    },
+    {
+     "id": "s5",
+     "label": "Update procedures, training, and equipment based on the agreed actions"
+    },
+    {
+     "id": "s6",
+     "label": "Verify the actions are complete at the follow up review and close the incident file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the overall responsible operator daily oversight workflow.",
+   "topicId": "process-oro-daily-oversight",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: one day of supervisory oversight for a Class 3 plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review overnight alarms, treated water quality, and production against demand"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm staffing, operator certification coverage, and any planned maintenance"
+    },
+    {
+     "id": "s3",
+     "label": "Check critical control points and disinfection performance for the day ahead"
+    },
+    {
+     "id": "s4",
+     "label": "Direct corrective actions for any deviation and assign them to named operators"
+    },
+    {
+     "id": "s5",
+     "label": "Review and sign the daily operational records"
+    },
+    {
+     "id": "s6",
+     "label": "Brief the incoming shift and the owner contact on status and open actions"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly regulatory reporting sequence for a treatment plant.",
+   "topicId": "process-regulatory-reporting-monthly",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: preparing and submitting the monthly operating report.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect flow, quality, chemical, and incident data for the reporting month"
+    },
+    {
+     "id": "s2",
+     "label": "Verify the data against laboratory reports and continuous monitoring records"
+    },
+    {
+     "id": "s3",
+     "label": "Complete the report forms with all required parameters and explanations for exceedances"
+    },
+    {
+     "id": "s4",
+     "label": "Have the overall responsible operator review and sign the report"
+    },
+    {
+     "id": "s5",
+     "label": "Submit the report by the regulatory deadline through the required channel"
+    },
+    {
+     "id": "s6",
+     "label": "File the submission confirmation and the supporting data package"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual report preparation sequence under Ontario drinking water requirements.",
+   "topicId": "process-annual-report-preparation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: preparing the annual report for a municipal residential drinking water system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather the year summary of test results, adverse incidents, and corrective actions"
+    },
+    {
+     "id": "s2",
+     "label": "Draft the report sections covering system description, treatment, and water quality"
+    },
+    {
+     "id": "s3",
+     "label": "Verify every reported result against the laboratory and operational records"
+    },
+    {
+     "id": "s4",
+     "label": "Obtain the required review and approval before publication"
+    },
+    {
+     "id": "s5",
+     "label": "Make the report available to the public by the required date and method"
+    },
+    {
+     "id": "s6",
+     "label": "File the published report and notify the owner that the requirement is complete"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the inspection preparation sequence for a ministry drinking water inspection.",
+   "topicId": "process-inspection-preparation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: supervisory preparation in the two weeks before an announced inspection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the previous inspection report and confirm all past actions are closed"
+    },
+    {
+     "id": "s2",
+     "label": "Gather licences, approvals, operational plans, and monitoring records for the inspector"
+    },
+    {
+     "id": "s3",
+     "label": "Walk the plant and correct housekeeping, labelling, and record gaps found"
+    },
+    {
+     "id": "s4",
+     "label": "Brief operators on inspection protocol and on answering within their knowledge"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm document copies and site access arrangements for the inspection day"
+    },
+    {
+     "id": "s6",
+     "label": "Host the inspection and record every request and finding for follow up"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the adverse result notification workflow sequence.",
+   "topicId": "process-adverse-result-notification",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: from receipt of an adverse test result to completed notifications.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Receive the result from the laboratory and confirm it is an adverse result under the regulation"
+    },
+    {
+     "id": "s2",
+     "label": "Immediately notify the overall responsible operator and begin operational checks"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the spill action centre and the local health unit within the required timeframe"
+    },
+    {
+     "id": "s4",
+     "label": "Take the corrective actions directed, including resampling and any advisory support"
+    },
+    {
+     "id": "s5",
+     "label": "Report the corrective actions and resample results to the notified agencies"
+    },
+    {
+     "id": "s6",
+     "label": "Close the notification record once agencies confirm no further action is required"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the operator certification and staffing review sequence.",
+   "topicId": "process-certification-staffing-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: quarterly supervisory review of licence coverage for all shifts.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every operator, certificate class, and expiry date for the facility"
+    },
+    {
+     "id": "s2",
+     "label": "Compare coverage with the facility classification and shift requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Identify gaps such as expiring certificates or shifts without required coverage"
+    },
+    {
+     "id": "s4",
+     "label": "Arrange renewals, examinations, training, and shift adjustments to close gaps"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the overall responsible operator and operator in charge designations are current"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the staffing review and file it with the compliance records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the supervisory shift handover workflow sequence.",
+   "topicId": "process-shift-handover-supervisory",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant used for study. All sequences follow standard practice in the cited sources for Ontario drinking water operations.",
+   "configuration": "Scope: handover between outgoing and incoming shifts at a Class 3 plant.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Outgoing operator completes the shift log with quality, production, and equipment status"
+    },
+    {
+     "id": "s2",
+     "label": "Outgoing and incoming operators walk critical process areas together"
+    },
+    {
+     "id": "s3",
+     "label": "Review open alarms, deviations, chemical stocks, and planned work for the next shift"
+    },
+    {
+     "id": "s4",
+     "label": "Incoming operator confirms understanding and accepts responsibility in the log"
+    },
+    {
+     "id": "s5",
+     "label": "Supervisor reviews the handover record and follows up any unresolved item"
+    },
+    {
+     "id": "s6",
+     "label": "File the handover record with the daily operational documents"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The steps follow the standard sequence for this work: preparation, safety and verification checks come first, the main action follows only when conditions are confirmed, and results are verified and documented before the work is closed. Each step creates the conditions the next step depends on, so no other order is defensible."
+  },
+  {
+   "id": "c3w-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Ultrafiltration Train 2 transmembrane pressure rose 38 percent in 10 days at constant flux while Train 1 stayed stable.",
+   "topicId": "membrane-fouling-biofouling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Permeate flow and flux are held at 42 L per m2 per h on both trains."
+    },
+    {
+     "id": "ev2",
+     "label": "Feed water temperature is unchanged and viscosity corrected TMP still rose on Train 2 only."
+    },
+    {
+     "id": "ev3",
+     "label": "Train 2 feed heterotrophic plate counts rose from 120 to 4800 per mL after a raw water algae bloom."
+    },
+    {
+     "id": "ev4",
+     "label": "Chemically enhanced backwash recovery on Train 2 fell from 92 percent to 61 percent, while Train 1 stayed at 91 percent."
+    },
+    {
+     "id": "ev5",
+     "label": "A bench soak of a Train 2 fibre in chlorine solution restored 88 percent of lost permeability, while an acid soak restored only 12 percent."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Biofouling on Train 2 is driving the TMP rise"
+     },
+     {
+      "id": "inf-b",
+      "label": "Irreversible mineral scaling is driving the TMP rise on both trains"
+     },
+     {
+      "id": "inf-c",
+      "label": "Feed pump wear is reducing flux on Train 2"
+     },
+     {
+      "id": "inf-d",
+      "label": "The TMP transmitter on Train 2 has drifted high"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The rise is train specific at constant flux and temperature, which rules out a plant wide scaling or pump cause. High plate counts plus strong recovery from a chlorine soak and poor recovery from acid fit biofouling, not mineral scale. A drifted transmitter would not change backwash recovery or bench soak results."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms biofouling on Train 2?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived ATP and plate count trend paired with TMP trend for each train"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived feed pump amperage log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived raw water hardness log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Comparing biological counts with TMP by train tests whether biological growth tracks the pressure rise."
+   },
+   "clueText": {
+    "nc-a": "ATP on Train 2 rose fourfold as TMP rose, while Train 1 ATP and TMP stayed flat.",
+    "nc-b": "Pump amperage was steady on both trains and does not separate the trains.",
+    "nc-c": "Hardness was steady and does not explain a train specific biological signal."
+   }
+  },
+  {
+   "id": "c3w-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Reverse osmosis Stage 2 differential pressure rose sharply while Stage 1 stayed normal and permeate conductivity rose in Stage 2 tail elements.",
+   "topicId": "membrane-scaling-diagnosis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Normalized permeate flow fell 18 percent with the loss concentrated in Stage 2."
+    },
+    {
+     "id": "ev2",
+     "label": "Concentrate calcium and sulfate give a saturation index well above 1 at current recovery of 78 percent."
+    },
+    {
+     "id": "ev3",
+     "label": "Antiscalant day tank level fell to empty 3 days before the pressure rise began and dosing pump alarms were muted."
+    },
+    {
+     "id": "ev4",
+     "label": "A bench acid clean of a tail element restored 80 percent of its flow."
+    },
+    {
+     "id": "ev5",
+     "label": "Feed pressure and temperature are unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Antiscalant interruption allowed calcium sulfate scaling in Stage 2"
+     },
+     {
+      "id": "inf-b",
+      "label": "Biofouling in Stage 1 is blocking the whole array"
+     },
+     {
+      "id": "inf-c",
+      "label": "A permeate side leak is raising conductivity"
+     },
+     {
+      "id": "inf-d",
+      "label": "Feed water salinity doubled overnight"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Loss concentrated in the tail stage, a saturation index above 1, an empty antiscalant tank just before onset, and strong acid clean recovery all fit scaling. Stage 1 is normal, which argues against Stage 1 biofouling, and feed conditions are unchanged."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the scaling diagnosis?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived antiscalant dosing log paired with normalized Stage 2 performance trend"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived permeate tank level log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed turbidity log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Pairing the dosing interruption with normalized stage performance tests timing and location together."
+   },
+   "clueText": {
+    "nc-a": "Dosing shows zero flow for 3 days before Stage 2 normalized flow fell, while Stage 1 stayed normal.",
+    "nc-b": "Tank level does not show stage specific scaling.",
+    "nc-c": "Feed turbidity was low and steady and does not explain tail element scaling."
+   }
+  },
+  {
+   "id": "c3w-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "One ultrafiltration train shows permeate turbidity of 0.28 NTU while three parallel trains read 0.04 NTU, and direct integrity testing was requested.",
+   "topicId": "membrane-integrity-breach",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "All four trains share the same feed water at 1.8 NTU."
+    },
+    {
+     "id": "ev2",
+     "label": "Pressure decay on the suspect train is 18 kPa in 5 minutes, above the 10 kPa limit, while other trains decay 3 kPa."
+    },
+    {
+     "id": "ev3",
+     "label": "Particle counts in suspect train permeate are 20 times higher than in the other trains."
+    },
+    {
+     "id": "ev4",
+     "label": "Isolating module 6 of 8 restores pressure decay to 4 kPa and permeate turbidity to 0.05 NTU."
+    },
+    {
+     "id": "ev5",
+     "label": "Feed pressure, flux, and backwash settings are identical across trains."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A fibre breach in module 6 is passing particles to permeate"
+     },
+     {
+      "id": "inf-b",
+      "label": "Feed turbidity spiked for the whole plant"
+     },
+     {
+      "id": "inf-c",
+      "label": "The permeate turbidimeter on the suspect train needs calibration"
+     },
+     {
+      "id": "inf-d",
+      "label": "Backwash pressure is too low on all trains"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The fault is isolated to one train and then to one module, and both turbidity and particle counts agree, which rules out a single meter error. Shared feed rules out a plant wide feed spike, and identical settings rule out a common backwash cause."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the breach location?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived pressure decay and sonic test log by module for the suspect train"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived plant total flow log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed chlorine residual log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Module level integrity records directly locate a breach."
+   },
+   "clueText": {
+    "nc-a": "Module 6 fails pressure decay and shows sonic activity, while modules 1 to 5 and 7 to 8 pass.",
+    "nc-b": "Total flow does not locate a module breach.",
+    "nc-c": "Feed chlorine does not test membrane integrity."
+   }
+  },
+  {
+   "id": "c3w-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a caustic clean, Train 1 permeability recovered only 30 percent, but a follow up acid clean recovered a further 55 percent.",
+   "topicId": "membrane-cleaning-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Foulant analysis of the caustic soak waste shows low organic carbon."
+    },
+    {
+     "id": "ev2",
+     "label": "Foulant analysis of the acid soak waste shows high calcium and iron."
+    },
+    {
+     "id": "ev3",
+     "label": "Feed water iron rose to 0.8 mg/L during a raw water turnover event before the fouling period."
+    },
+    {
+     "id": "ev4",
+     "label": "Temperature corrected permeability before any cleaning was 55 percent of baseline."
+    },
+    {
+     "id": "ev5",
+     "label": "A parallel train fed through a greensand prefilter recovered 90 percent with acid cleaning alone in the same period."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Combined inorganic fouling dominated, so acid cleaning was the effective step"
+     },
+     {
+      "id": "inf-b",
+      "label": "Caustic cleaning was done at the wrong temperature"
+     },
+     {
+      "id": "inf-c",
+      "label": "The membrane has permanent chemical damage"
+     },
+     {
+      "id": "inf-d",
+      "label": "Permeability loss is only an instrument error"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Low organics in the caustic waste and high calcium and iron in the acid waste show the foulant was mainly inorganic. High feed iron and the prefiltered train result support that source. Instrument error would not produce foulant in the soak waste."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the inorganic foulant source?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived feed iron trend paired with acid soak waste metals analysis"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived clean water tank level log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived permeate pH log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Pairing feed iron with soak waste metals links source water to the foulant found."
+   },
+   "clueText": {
+    "nc-a": "Feed iron peaked during turnover and acid waste carried the matching calcium and iron load.",
+    "nc-b": "Tank level does not identify foulant chemistry.",
+    "nc-c": "Permeate pH alone does not identify the foulant."
+   }
+  },
+  {
+   "id": "c3w-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Plant staff report membrane permeability fell 25 percent in January and suspect severe fouling, but cleaning recovered almost nothing.",
+   "topicId": "membrane-flux-temperature-effect",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Feed water temperature fell from 18 C to 6 C over the same period."
+    },
+    {
+     "id": "ev2",
+     "label": "Raw TMP rose, but temperature corrected permeability is within 3 percent of the summer baseline."
+    },
+    {
+     "id": "ev3",
+     "label": "Flux, recovery, and permeate quality are all at target."
+    },
+    {
+     "id": "ev4",
+     "label": "A full chemical clean changed temperature corrected permeability by only 2 percent."
+    },
+    {
+     "id": "ev5",
+     "label": "Train differential pressures are normal for the flow."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The apparent decline is a water viscosity effect of cold feed water, not fouling"
+     },
+     {
+      "id": "inf-b",
+      "label": "Severe organic fouling needs a stronger clean"
+     },
+     {
+      "id": "inf-c",
+      "label": "Membrane compaction has permanently reduced area"
+     },
+     {
+      "id": "inf-d",
+      "label": "Feed pumps are cavitating"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Once temperature is accounted for, permeability is at baseline and cleaning changes almost nothing, which rules out significant fouling. Quality and differential pressure are normal, arguing against compaction or cavitation damage."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the viscosity explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived temperature corrected permeability trend across the season"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived chemical clean volume log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed pump vibration log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The corrected trend is the direct test of whether real permeability changed."
+   },
+   "clueText": {
+    "nc-a": "Corrected permeability stays flat all winter while uncorrected values track temperature closely.",
+    "nc-b": "Clean volumes do not test the temperature effect.",
+    "nc-c": "Vibration was normal and does not explain a seasonal pattern."
+   }
+  },
+  {
+   "id": "c3w-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A membrane plant claims 4 log removal credit but virus challenge data and integrity records do not align during an audit review.",
+   "topicId": "membrane-log-removal-credit",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Daily pressure decay tests pass at a sensitivity that demonstrates only 3 log removal."
+    },
+    {
+     "id": "ev2",
+     "label": "The resolution of the online permeate turbidimeter cannot detect the turbidity change tied to a 4 log breach."
+    },
+    {
+     "id": "ev3",
+     "label": "Two days in the review month have no integrity test record at all."
+    },
+    {
+     "id": "ev4",
+     "label": "Feed and permeate particle counts on tested days support at least 3 log removal."
+    },
+    {
+     "id": "ev5",
+     "label": "No direct integrity test failure occurred in the month."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The plant can support 3 log credit, but records do not support the claimed 4 log credit"
+     },
+     {
+      "id": "inf-b",
+      "label": "A membrane breach occurred and was hidden"
+     },
+     {
+      "id": "inf-c",
+      "label": "The turbidimeter limit means no removal occurred"
+     },
+     {
+      "id": "inf-d",
+      "label": "Missing records prove the plant was shut down"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Passing tests support removal only to the sensitivity actually demonstrated, which is 3 log. Missing records and coarse turbidity resolution mean 4 log is unsupported, but passing particle counts argue against claiming a breach or zero removal occurred."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best resolves the credit question?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived integrity test sensitivity calculation paired with the daily test log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived permeate storage volume log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived operator shift roster"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Sensitivity calculations plus the test log show what removal the testing can actually verify."
+   },
+   "clueText": {
+    "nc-a": "Sensitivity math caps verifiable removal at 3 log and two days lack tests, so 4 log cannot be credited.",
+    "nc-b": "Storage volume does not set integrity credit.",
+    "nc-c": "The roster does not change test sensitivity."
+   }
+  },
+  {
+   "id": "c3w-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A trial raised ultrafiltration backwash frequency from every 30 minutes to every 20 minutes and net plant output fell, prompting a review.",
+   "topicId": "membrane-backwash-optimization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Gross permeate production rose 1 percent with the more frequent backwash."
+    },
+    {
+     "id": "ev2",
+     "label": "Backwash waste volume rose from 3 percent to 6.5 percent of gross production."
+    },
+    {
+     "id": "ev3",
+     "label": "TMP rise per day was unchanged between the two settings in a paired 2 week trial."
+    },
+    {
+     "id": "ev4",
+     "label": "Chemical use and energy per net cubic metre both rose in the trial period."
+    },
+    {
+     "id": "ev5",
+     "label": "Feed turbidity was matched between the trial and baseline periods."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The extra backwashing wastes more water than it recovers, with no fouling benefit at this feed quality"
+     },
+     {
+      "id": "inf-b",
+      "label": "More frequent backwash always improves net output"
+     },
+     {
+      "id": "inf-c",
+      "label": "The trial feed water was dirtier, hiding a real benefit"
+     },
+     {
+      "id": "inf-d",
+      "label": "Backwash waste is not counted in net output"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "With matched feed quality, TMP behaviour was unchanged while waste volume more than doubled, so net output fell. The small gross gain cannot offset the waste increase, which the per net volume chemical and energy figures confirm."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the trial conclusion?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived net water recovery calculation for the paired trial periods"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived backwash pump nameplate photo"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived raw water colour log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Net recovery math for matched periods is the direct measure of the change."
+   },
+   "clueText": {
+    "nc-a": "Net recovery fell from 96.8 percent to 93.4 percent with no change in daily TMP rise.",
+    "nc-b": "A nameplate photo does not measure trial performance.",
+    "nc-c": "Colour was matched and does not change the recovery result."
+   }
+  },
+  {
+   "id": "c3w-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Hollow fibre fouling accelerated after maintenance, with TMP rising twice as fast in the lower half of each module.",
+   "topicId": "membrane-air-scour-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Air scour blower discharge pressure is normal at the header."
+    },
+    {
+     "id": "ev2",
+     "label": "Individual module air flow checks show the bottom distribution laterals deliver 40 percent of design air."
+    },
+    {
+     "id": "ev3",
+     "label": "A removed lateral shows biofilm and grit blocking most air holes."
+    },
+    {
+     "id": "ev4",
+     "label": "Water only backwash recovery is unchanged from baseline."
+    },
+    {
+     "id": "ev5",
+     "label": "Top half fibre permeability after cleaning is near baseline, while bottom half stays low."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Blocked air distribution laterals are starving the lower modules of scour air"
+     },
+     {
+      "id": "inf-b",
+      "label": "The blower has lost capacity"
+     },
+     {
+      "id": "inf-c",
+      "label": "The membranes have reached end of life"
+     },
+     {
+      "id": "inf-d",
+      "label": "Feed turbidity doubled"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Header pressure is normal but module level air delivery is low, and the removed lateral is physically blocked, which localizes the fault to distribution, not the blower. Uneven top to bottom fouling matches uneven scour, not uniform end of life decline."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the air distribution fault?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived module by module air flow test results before and after lateral cleaning"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived blower motor hour log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived permeate turbidity log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Module level air flows before and after cleaning directly test the distribution fault."
+   },
+   "clueText": {
+    "nc-a": "Bottom lateral flows rose to design after cleaning and TMP rise per day fell by half.",
+    "nc-b": "Motor hours do not measure air delivery per module.",
+    "nc-c": "Permeate turbidity does not locate an air fault."
+   }
+  },
+  {
+   "id": "c3w-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Membrane fouling worsened after the upstream coagulant dose was raised to improve settled turbidity.",
+   "topicId": "membrane-coagulant-carryover",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Settled turbidity improved from 2.0 NTU to 1.1 NTU after the dose increase."
+    },
+    {
+     "id": "ev2",
+     "label": "Membrane feed residual aluminum rose from 0.05 mg/L to 0.31 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "Jar tests show the new dose is past the optimum and restabilizes fine particles at low temperature."
+    },
+    {
+     "id": "ev4",
+     "label": "CIP waste from the membranes is high in aluminum hydroxide."
+    },
+    {
+     "id": "ev5",
+     "label": "Returning the dose to the jar test optimum in a 1 week trial cut the TMP rise rate by 60 percent."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Excess coagulant carryover is fouling the membranes with aluminum hydroxide"
+     },
+     {
+      "id": "inf-b",
+      "label": "The membranes are fouled by raw water algae"
+     },
+     {
+      "id": "inf-c",
+      "label": "Higher coagulant dose always protects membranes"
+     },
+     {
+      "id": "inf-d",
+      "label": "Settled turbidity improvement proves the dose is correct"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Residual aluminum in membrane feed and in CIP waste rose with the dose, and the dose reduction trial cut fouling sharply. Settled turbidity alone looks better, but jar tests show the dose is past optimum, so carryover, not algae, fits all records."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms carryover fouling?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived membrane feed residual aluminum trend paired with the dose log"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived raw water algae count log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived permeate flow totalizer log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Residual aluminum tracking the dose log is the direct carryover test."
+   },
+   "clueText": {
+    "nc-a": "Feed aluminum tracks dose changes within hours and falls when dose returns to optimum.",
+    "nc-b": "Algae counts were low during the fouling period.",
+    "nc-c": "Flow totals do not identify the foulant."
+   }
+  },
+  {
+   "id": "c3w-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Permeate conductivity on one reverse osmosis vessel is three times the array average while its permeate flow is also high.",
+   "topicId": "membrane-seal-bypass",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Probing shows conductivity peaks at one tube sheet position in the vessel."
+    },
+    {
+     "id": "ev2",
+     "label": "Other vessels on the same feed show normal conductivity and flow."
+    },
+    {
+     "id": "ev3",
+     "label": "Feed conductivity and recovery are steady for the whole array."
+    },
+    {
+     "id": "ev4",
+     "label": "Replacing the interconnect O ring at the high conductivity position normalizes that vessel in a test run."
+    },
+    {
+     "id": "ev5",
+     "label": "Salt passage calculated for all other vessels is within normal limits."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A damaged O ring is bypassing feed water into that vessel permeate"
+     },
+     {
+      "id": "inf-b",
+      "label": "The membrane in every vessel has oxidized"
+     },
+     {
+      "id": "inf-c",
+      "label": "Feed salinity rose for one vessel only"
+     },
+     {
+      "id": "inf-d",
+      "label": "The conductivity meter reads the whole array high"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "The fault is confined to one vessel and one position, and an O ring replacement fixes it, which fits mechanical bypass. Plant wide oxidation or a meter fault would affect all vessels, and vessels share the same feed."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the bypass?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived vessel probing profile before and after the seal repair"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived feed conductivity log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived array total permeate flow log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Probing profiles locate the leak position and verify the repair."
+   },
+   "clueText": {
+    "nc-a": "Probing isolates one position and the profile is flat and normal after the seal change.",
+    "nc-b": "Feed conductivity was steady and normal.",
+    "nc-c": "Total flow does not locate a single vessel leak."
+   }
+  },
+  {
+   "id": "c3w-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A hazard review rates the coagulant feed as a critical control point, and monitoring adequacy is being assessed.",
+   "topicId": "risk-critical-control-point",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Coagulant feed has a low flow alarm, but it is checked only once per shift."
+    },
+    {
+     "id": "ev2",
+     "label": "A feed interruption of 40 minutes in a past event raised settled turbidity above the filter design limit before the next shift check."
+    },
+    {
+     "id": "ev3",
+     "label": "Continuous streaming current and settled turbidity monitoring exist but are not alarmed."
+    },
+    {
+     "id": "ev4",
+     "label": "A trial with alarmed continuous monitoring detects a simulated feed loss in 3 minutes."
+    },
+    {
+     "id": "ev5",
+     "label": "Chemical day tank sizing gives 18 hours of storage, so supply is not the weak point."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Detection delay, not storage or supply, is the control weakness at this critical control point"
+     },
+     {
+      "id": "inf-b",
+      "label": "The coagulant feed is not a critical control point"
+     },
+     {
+      "id": "inf-c",
+      "label": "Once per shift checks are adequate detection"
+     },
+     {
+      "id": "inf-d",
+      "label": "Unalarmed trends provide the same protection as alarms"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "A real 40 minute interruption already exceeded downstream limits before a shift check caught it, storage is ample, and alarmed monitoring detects a simulated loss in minutes. The weakness is how fast a loss is seen, which is what control at a critical point requires."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the detection gap?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived past interruption timeline paired with the alarmed monitoring trial"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived day tank capacity calculation"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived chemical delivery schedule"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The timeline shows harm occurring inside the current detection interval."
+   },
+   "clueText": {
+    "nc-a": "Settled turbidity passed the filter limit 25 minutes into the past interruption, 5 hours before the next scheduled check.",
+    "nc-b": "Capacity confirms supply is not the issue.",
+    "nc-c": "Deliveries were never interrupted."
+   }
+  },
+  {
+   "id": "c3w-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Cartridge filters ahead of reverse osmosis now last 5 days instead of 30, and SDI values rose from 2 to 6.",
+   "topicId": "membrane-pretreatment-failure",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Multimedia prefilter effluent turbidity rose from 0.3 NTU to 1.4 NTU."
+    },
+    {
+     "id": "ev2",
+     "label": "Prefilter backwash records show backwash flow was cut to 60 percent of design to save water."
+    },
+    {
+     "id": "ev3",
+     "label": "A core sample of prefilter media shows mudballs and channel cracks."
+    },
+    {
+     "id": "ev4",
+     "label": "Differential pressure across the prefilter falls during runs, suggesting bypass through channels."
+    },
+    {
+     "id": "ev5",
+     "label": "Restoring design backwash flow in a trial returned effluent turbidity to 0.4 NTU within 3 runs."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Inadequate prefilter backwash caused channeling and solids breakthrough to the cartridges"
+     },
+     {
+      "id": "inf-b",
+      "label": "Cartridge quality from the supplier suddenly fell"
+     },
+     {
+      "id": "inf-c",
+      "label": "SDI test technique alone explains the change"
+     },
+     {
+      "id": "inf-d",
+      "label": "Reverse osmosis membranes are shedding particles backward"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Rising prefilter effluent turbidity, falling differential pressure during runs, mudballs, and recovery after restoring backwash flow all point to channeling from weak backwash. A cartridge defect would not raise prefilter effluent turbidity or SDI upstream of the cartridges."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms prefilter channeling?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived prefilter effluent turbidity trend paired with backwash flow records"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived cartridge purchase invoices"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived permeate conductivity log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Effluent quality paired with backwash flow tests the backwash adequacy link."
+   },
+   "clueText": {
+    "nc-a": "Effluent turbidity rose as backwash flow was cut and recovered when full flow was restored.",
+    "nc-b": "Invoices do not measure filtration performance.",
+    "nc-c": "Permeate conductivity is downstream and does not diagnose the prefilter."
+   }
+  },
+  {
+   "id": "c3w-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Polyamide reverse osmosis salt rejection fell from 98.5 percent to 94 percent over 2 months and did not recover after cleaning.",
+   "topicId": "membrane-chlorine-damage",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Feed free chlorine averaged 0.4 mg/L during the period because the dechlorination carbon bed was exhausted."
+    },
+    {
+     "id": "ev2",
+     "label": "Carbon bed effluent chlorine breakthrough was logged but the alarm was set at 1.0 mg/L."
+    },
+    {
+     "id": "ev3",
+     "label": "Cleaning restored flow but not salt rejection."
+    },
+    {
+     "id": "ev4",
+     "label": "A new membrane element tested on the same feed with fresh carbon gives 98.6 percent rejection."
+    },
+    {
+     "id": "ev5",
+     "label": "Feed pressure and recovery are unchanged."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Chlorine oxidation permanently damaged the membrane polymer"
+     },
+     {
+      "id": "inf-b",
+      "label": "Reversible organic fouling is reducing rejection"
+     },
+     {
+      "id": "inf-c",
+      "label": "Feed temperature rise explains the rejection loss"
+     },
+     {
+      "id": "inf-d",
+      "label": "Cleaning chemicals were too weak"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Documented chlorine exposure, flow recovery without rejection recovery after cleaning, and normal rejection from a new element on protected feed fit permanent oxidation. Reversible fouling would recover with cleaning, and operating conditions are unchanged."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms oxidation damage?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived carbon bed effluent chlorine trend paired with rejection trend"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived cleaning chemical volume log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed pressure log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Chlorine exposure tracking rejection loss is the direct oxidation test."
+   },
+   "clueText": {
+    "nc-a": "Rejection fell steadily while carbon effluent chlorine stayed near 0.4 mg/L and stabilized on protected elements after the carbon change.",
+    "nc-b": "Cleaning volumes were standard and cleaning did restore flow.",
+    "nc-c": "Feed pressure was steady throughout."
+   }
+  },
+  {
+   "id": "c3w-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Raising reverse osmosis recovery from 75 percent to 82 percent caused rapid tail element fouling, and a concentrate valve was blamed.",
+   "topicId": "membrane-recovery-limit",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Concentrate conductivity rose as expected with higher recovery and osmotic pressure rose 15 percent."
+    },
+    {
+     "id": "ev2",
+     "label": "Lead element performance stayed normal while tail elements lost flow."
+    },
+    {
+     "id": "ev3",
+     "label": "Calculated calcium carbonate and silica indices in the concentrate both exceed saturation at 82 percent but not at 75 percent."
+    },
+    {
+     "id": "ev4",
+     "label": "Returning to 75 percent recovery in a trial stopped the flow loss without any valve work."
+    },
+    {
+     "id": "ev5",
+     "label": "The concentrate valve position and flow readings match the set recovery."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The higher recovery pushed concentrate chemistry past saturation limits in the tail elements"
+     },
+     {
+      "id": "inf-b",
+      "label": "The concentrate valve malfunction caused the fouling"
+     },
+     {
+      "id": "inf-c",
+      "label": "Lead elements are fouled first and worst"
+     },
+     {
+      "id": "inf-d",
+      "label": "Silica and calcium indices are unrelated to recovery"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Tail only loss, saturation indices crossing limits only at the higher recovery, and recovery in the trial without valve work all fit a chemistry limit. The valve readings match setpoint, ruling out the valve theory."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the recovery limit?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived concentrate saturation index calculations at both recovery settings"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived valve maintenance roster"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed tank level log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Index calculations at both settings show whether chemistry crossed saturation."
+   },
+   "clueText": {
+    "nc-a": "Indices exceed saturation at 82 percent and sit below it at 75 percent, matching where fouling occurred.",
+    "nc-b": "The roster does not measure concentrate chemistry.",
+    "nc-c": "Tank level does not set scaling limits."
+   }
+  },
+  {
+   "id": "c3w-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "An ultrafiltration train was taken out of service for a suspected breach, but permeate quality records conflict with the alarm.",
+   "topicId": "membrane-false-integrity-alarm",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The alarm came from a permeate turbidimeter reading 0.45 NTU."
+    },
+    {
+     "id": "ev2",
+     "label": "A handheld turbidimeter on a permeate grab sample reads 0.05 NTU."
+    },
+    {
+     "id": "ev3",
+     "label": "Pressure decay test passes at 3 kPa in 5 minutes."
+    },
+    {
+     "id": "ev4",
+     "label": "Particle counts in permeate are at baseline for intact trains."
+    },
+    {
+     "id": "ev5",
+     "label": "The online turbidimeter sample line is found full of air bubbles from a leaking fitting."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Air bubbles in the sample line caused a false high turbidity alarm on an intact train"
+     },
+     {
+      "id": "inf-b",
+      "label": "A major fibre breach occurred"
+     },
+     {
+      "id": "inf-c",
+      "label": "Pressure decay testing missed a large breach"
+     },
+     {
+      "id": "inf-d",
+      "label": "Grab samples always read lower than online meters"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Passing integrity testing, baseline particle counts, and a normal grab result all say the train is intact, while bubbles in the sample line explain a false optical reading. A large breach would raise particle counts and fail pressure decay."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the false alarm?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived paired online and grab turbidity log after the fitting repair"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived feed turbidity log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived backwash count log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Paired readings after repair test whether the online meter agrees once air is removed."
+   },
+   "clueText": {
+    "nc-a": "After the fitting repair the online meter reads 0.05 NTU and matches grabs for 7 days.",
+    "nc-b": "Feed turbidity does not test the permeate sample line.",
+    "nc-c": "Backwash counts do not explain an optical alarm."
+   }
+  },
+  {
+   "id": "c3w-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Membrane TMP rises every spring for 3 weeks then recovers, and staff propose year round higher chemical cleaning frequency.",
+   "topicId": "membrane-seasonal-algal-fouling",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Spring raw water shows algae counts 30 times winter values and elevated algal organic matter."
+    },
+    {
+     "id": "ev2",
+     "label": "Spring CIP waste is high in organic carbon and polysaccharide indicators."
+    },
+    {
+     "id": "ev3",
+     "label": "Winter CIP waste is mostly inorganic with low organics."
+    },
+    {
+     "id": "ev4",
+     "label": "A spring only pretreatment trial with powdered activated carbon cut the TMP rise rate by 55 percent."
+    },
+    {
+     "id": "ev5",
+     "label": "Year round weekly cleans in one trial year gave no winter benefit over monthly cleans."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Seasonal algal organic fouling drives the spring TMP rise, so targeted spring pretreatment fits better than year round cleaning"
+     },
+     {
+      "id": "inf-b",
+      "label": "The membranes degrade and heal seasonally"
+     },
+     {
+      "id": "inf-c",
+      "label": "Winter inorganic fouling is the main spring problem"
+     },
+     {
+      "id": "inf-d",
+      "label": "More cleaning always helps regardless of season"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Spring foulant chemistry is organic, algae and algal organics peak in spring, and a spring pretreatment trial worked, while extra winter cleaning gave no benefit. The pattern is a seasonal foulant, not membrane self repair or winter scale."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the seasonal foulant?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived seasonal CIP waste analysis paired with raw algae counts"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived annual cleaning chemical invoices"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived permeate tank level log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Seasonal foulant chemistry paired with source counts identifies the driver."
+   },
+   "clueText": {
+    "nc-a": "Spring waste organics peak with algae counts, while winter waste stays inorganic.",
+    "nc-b": "Invoices show cost, not foulant type.",
+    "nc-c": "Tank level does not identify foulants."
+   }
+  },
+  {
+   "id": "c3w-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Four membrane trains share a header, but Train 3 fouls twice as fast as the others at the same reported flux.",
+   "topicId": "membrane-train-flow-imbalance",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Flow verification with a portable meter shows Train 3 actually carries 18 percent more flow than its panel meter reports."
+    },
+    {
+     "id": "ev2",
+     "label": "Panel meters on Trains 1, 2, and 4 agree with the portable meter within 2 percent."
+    },
+    {
+     "id": "ev3",
+     "label": "Train 3 panel meter was replaced last year with a different pipe size setting left in its configuration."
+    },
+    {
+     "id": "ev4",
+     "label": "Correcting the meter factor in a trial equalizes reported flows and Train 3 fouling rate then matches the others at true equal flux."
+    },
+    {
+     "id": "ev5",
+     "label": "Feed water is common to all trains."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "A meter configuration error overloaded Train 3 above its reported flux"
+     },
+     {
+      "id": "inf-b",
+      "label": "Train 3 membranes are defective"
+     },
+     {
+      "id": "inf-c",
+      "label": "Train 3 receives dirtier feed water"
+     },
+     {
+      "id": "inf-d",
+      "label": "Train 3 cleaning is less effective than other trains"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Portable verification shows real overload on one train, the settings error explains it, and correcting the factor normalizes fouling. Shared feed rules out dirtier water for one train, and a membrane defect would not be fixed by a meter correction."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms the overload?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived portable flow verification log paired with panel readings by train"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived membrane purchase records"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed turbidity log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Independent flow checks by train directly test reported versus actual flux."
+   },
+   "clueText": {
+    "nc-a": "Only Train 3 disagrees with the portable meter, by 18 percent, matching its extra fouling.",
+    "nc-b": "Purchase records do not measure flow.",
+    "nc-c": "Feed is common and turbidity does not split by train."
+   }
+  },
+  {
+   "id": "c3w-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Ultrafiltration permeability declines within each filtration cycle but fully recovers after every backpulse.",
+   "topicId": "membrane-reversible-cake",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "TMP rises steadily during each 30 minute cycle and resets to baseline after backpulse."
+    },
+    {
+     "id": "ev2",
+     "label": "Daily CIP is not needed to hold weekly average permeability, which is stable."
+    },
+    {
+     "id": "ev3",
+     "label": "Permeate turbidity stays at 0.04 NTU through the cycles."
+    },
+    {
+     "id": "ev4",
+     "label": "Feed turbidity is elevated at 3.5 NTU during a runoff week."
+    },
+    {
+     "id": "ev5",
+     "label": "Extending the cycle to 60 minutes in a trial doubles end of cycle TMP but backpulse still fully recovers it."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Reversible surface cake from high feed solids is forming and clearing each cycle"
+     },
+     {
+      "id": "inf-b",
+      "label": "Irreversible pore blocking is progressing"
+     },
+     {
+      "id": "inf-c",
+      "label": "A breach opens during filtration and seals at backpulse"
+     },
+     {
+      "id": "inf-d",
+      "label": "Chemical cleaning is overdue"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Full recovery every backpulse and a stable weekly average rule out irreversible blocking or overdue cleaning. A breach would raise permeate turbidity, which stays low. Rising feed turbidity fits a reversible cake that backpulse removes."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms reversible cake behaviour?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived cycle TMP traces paired with feed turbidity for the runoff week"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived CIP chemical log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived permeate storage log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Cycle traces against feed solids show the cake forming and clearing pattern."
+   },
+   "clueText": {
+    "nc-a": "TMP slope steepens as feed turbidity rises and resets fully after every backpulse.",
+    "nc-b": "CIP frequency was unchanged and weekly permeability stayed stable.",
+    "nc-c": "Storage levels do not show cycle behaviour."
+   }
+  },
+  {
+   "id": "c3w-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a module replacement, a train passes its pressure decay test but the overall responsible operator questions whether production can resume.",
+   "topicId": "membrane-return-to-service",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The replacement module is the same model and rating as the original."
+    },
+    {
+     "id": "ev2",
+     "label": "Pressure decay is 4 kPa in 5 minutes, within the 10 kPa limit, on two consecutive tests."
+    },
+    {
+     "id": "ev3",
+     "label": "Permeate turbidity is 0.05 NTU and particle counts match intact trains."
+    },
+    {
+     "id": "ev4",
+     "label": "Disinfection of the train was completed and documented after the repair."
+    },
+    {
+     "id": "ev5",
+     "label": "One required post repair water quality sample result is still pending at the lab."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The train is mechanically intact, but return to service should wait for the pending sample result"
+     },
+     {
+      "id": "inf-b",
+      "label": "The train failed integrity and must stay out of service"
+     },
+     {
+      "id": "inf-c",
+      "label": "Pressure decay results can be ignored if turbidity is low"
+     },
+     {
+      "id": "inf-d",
+      "label": "Pending lab results never affect return to service"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Two passing decay tests plus normal turbidity and particle counts show integrity, so claiming failure contradicts the records. Documented disinfection is complete, but a required sample is still pending, so resuming before it arrives would skip a stated requirement."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms readiness status?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived post repair checklist showing integrity, disinfection, and sample status"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived train flow totalizer log"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived feed pump log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The checklist shows which return to service steps are done and which are open."
+   },
+   "clueText": {
+    "nc-a": "Checklist shows integrity and disinfection complete with the lab sample still outstanding.",
+    "nc-b": "Flow totals do not show sample status.",
+    "nc-c": "Pump logs do not confirm water quality clearance."
+   }
+  },
+  {
+   "id": "c3w-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "UV reactor validated dose fell below target at the same flow and UVT, and operators suspect the flow meter.",
+   "topicId": "uv-dose-lamp-aging",
+   "level": "class1",
+   "assumptions": "Fictional Ontario Class 3 water treatment plant log. Steady flow unless noted. Archived plant, laboratory, and maintenance records are available for review.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Lamp hour meter reads 10500 hours, past the 9000 hour validated lamp life."
+    },
+    {
+     "id": "ev2",
+     "label": "UV intensity sensor reads 62 percent of new lamp output with a clean sleeve."
+    },
+    {
+     "id": "ev3",
+     "label": "A reference sensor check agrees with the duty sensor within 3 percent."
+    },
+    {
+     "id": "ev4",
+     "label": "Flow verification with a calibrated meter matches the plant meter within 2 percent."
+    },
+    {
+     "id": "ev5",
+     "label": "Installing new lamps in a trial restores intensity to 97 percent and validated dose to target."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Lamp aging reduced UV output below the validated dose"
+     },
+     {
+      "id": "inf-b",
+      "label": "The flow meter over reads and dilutes dose"
+     },
+     {
+      "id": "inf-c",
+      "label": "The duty intensity sensor has drifted low"
+     },
+     {
+      "id": "inf-d",
+      "label": "Water UVT fell without being measured"
+     }
+    ],
+    "correctOptionId": "inf-a",
+    "explanation": "Hours past lamp life, low output with a clean sleeve, an agreeing reference sensor, a verified flow meter, and recovery with new lamps all fit lamp aging. Sensor drift and flow error are both excluded by direct checks."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record best confirms lamp aging?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Archived lamp hour and intensity trend paired with the lamp change trial result"
+     },
+     {
+      "id": "nc-b",
+      "label": "Archived flow meter purchase record"
+     },
+     {
+      "id": "nc-c",
+      "label": "Archived reactor pressure log"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Output against lamp hours plus the change trial is the direct aging test."
+   },
+   "clueText": {
+    "nc-a": "Intensity declined steadily with lamp hours and jumped to 97 percent after the lamp change.",
+    "nc-b": "Purchase records do not measure output.",
+    "nc-c": "Reactor pressure does not set UV dose."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3w-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Process Backwash Recovery Operation Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c3w-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Membrane Scaling Diagnosis Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c3w-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c3w-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Process Concentrate Management Program Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c3w-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c3w-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c3w-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Membrane Cleaning Effectiveness Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c3w-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Process Coagulant Dose Trial Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c3w-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c3w-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Membrane Log Removal Credit Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c3w-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c3w-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c3w-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Process Polymer Optimization Trial Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c3w-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Membrane Air Scour Failure Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c3w-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c3w-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Process Chemical Cost Review Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c3w-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c3w-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c3w-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Membrane Seal Bypass Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c3w-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Process Hazard Assessment Workshop Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c3w-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c3w-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Membrane Pretreatment Failure Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c3w-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c3w-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c3w-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Process Operational Planning Update Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c3w-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Membrane Recovery Limit Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c3w-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c3w-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Process Lab Proficiency Testing Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c3w-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c3w-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c3w-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Membrane Seasonal Algal Fouling Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c3w-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Process Lab Instrument Calibration Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c3w-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c3w-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Membrane Reversible Cake Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c3w-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c3w-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c3w-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Process Capital Commissioning Plan Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c3w-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3w-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Uv Dose Lamp Aging Shift",
+   "tasks": [
+    {
+     "taskId": "c3w-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c3w-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c3w-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Advanced water treatment operations chapters (membranes, disinfection strategy, residuals, optimization)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "73a8cd1a0d1d14f1a97ab9f7a8878d62796ed55acc8222d6f872a557da671bb4",
+  "taskReceipts": [
+   {
+    "taskId": "c3w-process40",
+    "revision": "r1",
+    "sha256": "1e15f7a869261354e83a68296ce6b899b564dc4f4ad909acaf45a91e064f545a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process41",
+    "revision": "r1",
+    "sha256": "5ab4be54537f12a37a1737a569addfdc81d6ae572d53b7f73d746eb695cdf515",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process42",
+    "revision": "r1",
+    "sha256": "a411245c2f3b4bab074ae6e753b9c2e7dc9cad61d4d095186483d31bbea9ad7e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process43",
+    "revision": "r1",
+    "sha256": "ceaf7f9a04278591d6468817e33a35e58159cb69d30667d43cec2cbb623ed61f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process44",
+    "revision": "r1",
+    "sha256": "fd4faa7b0b1d4de43843d1a7f0fccde15c083bb290a0025f2818646992fb1fbb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process45",
+    "revision": "r1",
+    "sha256": "c7607aa01fdd03ffa2ac87bcd372270ee4ea5ceb13c707a3c7153d3ec650abee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process46",
+    "revision": "r1",
+    "sha256": "bfea0d3616270087ecef6bee0f25181afa585a36f238bc48c40208738cc878ec",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process47",
+    "revision": "r1",
+    "sha256": "6cc605f0d6b04cbed08d216dc3e6538bc81d52b8b7bc6c2912fbee6c6c590605",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process48",
+    "revision": "r1",
+    "sha256": "4f51d8e792d5d931c2807352561b991fafbc861952019a3f7f1b5231706a6013",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process49",
+    "revision": "r1",
+    "sha256": "24f1463e9227714a6ebfec0c94e1c681da8dbf6c37f2c867c0617c9a6bb11ba0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process50",
+    "revision": "r1",
+    "sha256": "a62564e5ba1fe8e37c7059fb4eee693119f785fb0601d3f7cb9f9d7187be6f4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process51",
+    "revision": "r1",
+    "sha256": "65d18e46073b8101d483ceb34ad7eee85b6b31337f13b350ffec631356cea481",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process52",
+    "revision": "r1",
+    "sha256": "2f91838f800a702cddf94671abecd46388707d817c4a17e21cc9f899d1116491",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process53",
+    "revision": "r1",
+    "sha256": "b46b31fba984af53de2eb9dba8f18b2b193975f631253c0b2a222bd79127897e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process54",
+    "revision": "r1",
+    "sha256": "8365b358f43fd82bb84bab143d533254a457efb54c9066e23846011bb4fe261e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process55",
+    "revision": "r1",
+    "sha256": "d8573d9242b6020bb9a24dad0154504bd68774eb6c068776b7431560acf985b1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process56",
+    "revision": "r1",
+    "sha256": "0ad4e2ae5cfcdaf061e146fb73a99c972029c813c645bd28aca28f8d1755c41a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process57",
+    "revision": "r1",
+    "sha256": "725324e57e22deac0468e18b45689511e77b515701c92c0c37b9dc2a367ecab4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process58",
+    "revision": "r1",
+    "sha256": "a223ebecefb4d679f574279a4704e4263f508b60e25065c33a5a90ae95fb886c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process59",
+    "revision": "r1",
+    "sha256": "c759e15caec4021e9aa512c62c7c62164f835eb8774515aaeb316cc45fc5b89c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process60",
+    "revision": "r1",
+    "sha256": "318fc1aab932a9b9e829839a8993e1c3d3d371eecb92d860cf0340d3dba37aaf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process61",
+    "revision": "r1",
+    "sha256": "bd95116fa7a4afa8aace0b94b41f0be9a1a04af42607a00a1b74137e138484c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process62",
+    "revision": "r1",
+    "sha256": "a90ab595277b7e40ad1f45ecb1c7473cb41c6803d94feb6e84271fe0ef5f6ac7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process63",
+    "revision": "r1",
+    "sha256": "5a967185e26886e2989a7201572df5db89fb36e74325f59e231bea0e1b9be7af",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process64",
+    "revision": "r1",
+    "sha256": "1fed064d5a21ae5ffbb162d1ac2247451b832b3b715ecd44f7635da50b2484f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process65",
+    "revision": "r1",
+    "sha256": "9d58570524a790ae73803166892f4ec68dd8f8840885dcaa8e0b1e7b2c1bafc3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process66",
+    "revision": "r1",
+    "sha256": "8c3e3a20f6dbe2dac33645b32a14a3192dfd9232464dbfe1d0bdf213ddf0ccd9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process67",
+    "revision": "r1",
+    "sha256": "5bb7fdec6257aadbaa189dd1aca9e2acc5a5773f789d3058d88dd6e7ba4c9bff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process68",
+    "revision": "r1",
+    "sha256": "061ba87abf05b570bc1b615766c227d78702ae39bfc4708fcaa95466e38043f6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process69",
+    "revision": "r1",
+    "sha256": "460aae16a4f89d08670dab3b1db34d0152776c07e47b86e62b3eba469f49a504",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process70",
+    "revision": "r1",
+    "sha256": "fd69243136b675216af7793837142a3e3dfccbdcabb4a1569858d39e9223138d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process71",
+    "revision": "r1",
+    "sha256": "1eceb3fbc8dce4375a076c720cb4f634e5f6966b5a5289dec2adfee34c443bb8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process72",
+    "revision": "r1",
+    "sha256": "d6217fb696a214b286e8a6d4c0720f7b3945aa81630e68fc0d054e8933faed49",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process73",
+    "revision": "r1",
+    "sha256": "504c1144a3ade5a8252eaeda519d314ebcbf3ebfb0287ce988cda4c8e69d1f64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process74",
+    "revision": "r1",
+    "sha256": "a0597bd7b8940adee35c3d0beb97b6c5081f580ecdb1f211b2826a7d32b1d74a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process75",
+    "revision": "r1",
+    "sha256": "7947988a32756735b31399a0410510556bb08b52fd41fb42c6206e6828630404",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process76",
+    "revision": "r1",
+    "sha256": "28d14163c7e9661a93f54a74d31658bebc1bd62c62fdd9055f3085c6f9be0a99",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process77",
+    "revision": "r1",
+    "sha256": "acc018e9137af87353e62bac06a3d8395afc975ba1c07fc3777582f267515eaa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process78",
+    "revision": "r1",
+    "sha256": "2d618b84377bbb2a7ad41f08ffbebfd977750c3b347e3e53a3dfae8fa0fb76ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process79",
+    "revision": "r1",
+    "sha256": "4b2ecf18060618b5ae9f1b6bdc5136481e29716b094560172bd5327f7c461b22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process80",
+    "revision": "r1",
+    "sha256": "af31b518524210494189b2796b1b1232708244a62d27a0ea1946c585dc720534",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process81",
+    "revision": "r1",
+    "sha256": "8cff7f09fb02ed09e0dda6921da966b7d78b81cb05b17207618df4e6d3f514d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process82",
+    "revision": "r1",
+    "sha256": "2aeb86260aed6803dd0befaba89466a8eeacb0bab2ca5d6236c714643315c5ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process83",
+    "revision": "r1",
+    "sha256": "dc4ebcdb967d73146d0b2f3843a550b02f13c3f3767a06d9f37bfbd467fd1ed5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process84",
+    "revision": "r1",
+    "sha256": "25da516003ff91f089b989978313c2d7ddff604e0ce8c0444e8dccae73ce0a12",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process85",
+    "revision": "r1",
+    "sha256": "c7bd55748d951714da6f7240f15082d16aeb083dc72887d6b31c84f8d4508e78",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process86",
+    "revision": "r1",
+    "sha256": "38806edbf5ec2bdde5e47b03c2c433dc3d0f4a5e9f5216f6b6e89e3349415759",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process87",
+    "revision": "r1",
+    "sha256": "540f1c25860c3f8f16a6ce7a695ff1aafad46a2c4fec4928cfd10530ada82bf1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process88",
+    "revision": "r1",
+    "sha256": "b42be79d822a6ace590add838081042290b581482ec645e3ba51b25f997b7f98",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process89",
+    "revision": "r1",
+    "sha256": "945b0e7a798870a15366a44216070e2b5ac0adf4084dd1782a8b8cbf6c314185",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process90",
+    "revision": "r1",
+    "sha256": "8a2e96794e8d33041bbe3913208a201a76b0b3f279c16ed9ca8e1eabcdc31faf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process91",
+    "revision": "r1",
+    "sha256": "29c99286a1fb10cf62b96e0825c0e7aa18df17e4d4345c0e2f21a4a89ee04611",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process92",
+    "revision": "r1",
+    "sha256": "b922f85b7ee5f7ecaf04df2bdfe3855de6ceb50e4f6e1b3037248a5818587ba1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process93",
+    "revision": "r1",
+    "sha256": "85cb3bdd687282f2fe0fc3af8d6f62f02a5df30add2fb79e0fd3e5461cfb881b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process94",
+    "revision": "r1",
+    "sha256": "1095dbb54716c74ba2da756f10bc08806cf0a197f83447489e40969449ea268c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process95",
+    "revision": "r1",
+    "sha256": "87f138ebb037b28df15e4104900f9cbaf6720209a9a906a5cb807c7e711f63f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process96",
+    "revision": "r1",
+    "sha256": "6e064f2ce85a53456c944f62f144c873406d7ae90b32bb5c312d1652c1ca8ebb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process97",
+    "revision": "r1",
+    "sha256": "069cf1e0d3c0e8677ffd02104941983e1c033814f67ecc84149086c155a00855",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process98",
+    "revision": "r1",
+    "sha256": "972e5a64c720980269f8e9dd39489186a7a3b08f15277d8644029053789a2a4f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-process99",
+    "revision": "r1",
+    "sha256": "ba5615338d658b718538ec8ad96bbd761b273d06633dbc5e8cdf6ef097255741",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence01",
+    "revision": "r1",
+    "sha256": "f2871494cbbdb74a9a5812e55be824a860486e026f683b597874a7a3101d8e8c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence02",
+    "revision": "r1",
+    "sha256": "754a3489f270162967b5f36d3e0a1269efdda6762dbad98695f9bab748fb492d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence03",
+    "revision": "r1",
+    "sha256": "ee6b94bb52623cf9248c105df2ff56e953d6e466c9ef7b073c0197969c15c853",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence04",
+    "revision": "r1",
+    "sha256": "cb75e91d52b068a103a0c3f4ad91084f9328cec4bdb0bc5cda8dd18e6c7d5ea3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence05",
+    "revision": "r1",
+    "sha256": "95e729d8d631466b253da760400f73fefec20814c3c193d25fd2598c15a92ee5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence06",
+    "revision": "r1",
+    "sha256": "9f4c33e25318f872a77b71341d22fcbbb6c2bc656fdae34a9870d83c3fa8f721",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence07",
+    "revision": "r1",
+    "sha256": "967511a239a6f8fac3c67719b545ecde8e86122b99c5265c3b3a18e21015c363",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence08",
+    "revision": "r1",
+    "sha256": "dd657f16c01355d2fd589b411c9a96e9fc5f9aee5ce879c069737ec91c49188d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence09",
+    "revision": "r1",
+    "sha256": "0cb36ed52265ef8a7665fe57218d3b08bc34a54c3030ec71c1c962618be84713",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence10",
+    "revision": "r1",
+    "sha256": "e95d56197df6ff37cf27a40ec4185e59bf825501a8f41294232207e27372af6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence100",
+    "revision": "r1",
+    "sha256": "95b65263aa32791ff99d08e5ba40f5d40ee09e6c72b8e15703eb52c31373a98c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence11",
+    "revision": "r1",
+    "sha256": "fd10f6811f49db0af17484c077c70400547bfb2f92e566e8d4dd546fb25304ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence12",
+    "revision": "r1",
+    "sha256": "edfce571e0bc13ca323a21c1b2d85a17673be00e862c5b518802847d6f178bfd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence13",
+    "revision": "r1",
+    "sha256": "1fdc8e21588c6f66bc59e1ac7dcc4560bc0f7ae8db608b4264cb76042753cbda",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence14",
+    "revision": "r1",
+    "sha256": "bd0858e4bed7c19599c1725eb14bc8aa5f4213ba38cf7c814101cedc97429c2f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence15",
+    "revision": "r1",
+    "sha256": "39625ad598e167b6913a7ff9e57272c1177fbd41e85df4c07f69686457090193",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence16",
+    "revision": "r1",
+    "sha256": "7734488540eb41d355f2c40d88e4dd1c69665d6e22532a7c77a504857061c8c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence17",
+    "revision": "r1",
+    "sha256": "c330e6e1d1666920b11840f32ebfb5140ec18013b2478697b9ce42b7b1cf5787",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence18",
+    "revision": "r1",
+    "sha256": "029ad6b5a18a94652afe24ff063b1423d1c0aa932e34429d8b9973c0dca7184c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3w-evidence19",
+    "revision": "r1",
+    "sha256": "b26a3830aeeba19c9326b5444570df095a507dea2aa6d795a88cf6b5df8f1461",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3w-mission61",
+    "revision": "r1",
+    "sha256": "29bb86a2f1e0d671ad6b064b9937a5b220a7aa443a165db79c07bbdc3ed35daf"
+   },
+   {
+    "missionId": "c3w-mission62",
+    "revision": "r1",
+    "sha256": "85351aa17dd5b7faeaa5b6efb718aecdefea732e1ac502c92980734686fbcc64"
+   },
+   {
+    "missionId": "c3w-mission63",
+    "revision": "r1",
+    "sha256": "a05f4a13c03cf52e7824ebeb61914d13cc99b545a4e0e3008335f00911b102bb"
+   },
+   {
+    "missionId": "c3w-mission64",
+    "revision": "r1",
+    "sha256": "180c43d255f53d48d8d184304fd4298c00820cc9a6695cc70d520fbde85e2657"
+   },
+   {
+    "missionId": "c3w-mission65",
+    "revision": "r1",
+    "sha256": "3e922e2d4488d0355fc422859801f8035dd8f8aa7b97348cc540822ed3accd79"
+   },
+   {
+    "missionId": "c3w-mission66",
+    "revision": "r1",
+    "sha256": "23efe77eb78f7946f17586316053a97ba8cf749f0712afd1036ff498e59b8506"
+   },
+   {
+    "missionId": "c3w-mission67",
+    "revision": "r1",
+    "sha256": "50e74bdd288d7be0039bf7b143aafe49242ccfca4aea219379e6f38028810009"
+   },
+   {
+    "missionId": "c3w-mission68",
+    "revision": "r1",
+    "sha256": "c03cb89ea43a1b8f0ce74f58ee7047d8d19df05c3316258817ef5dde070ca131"
+   },
+   {
+    "missionId": "c3w-mission69",
+    "revision": "r1",
+    "sha256": "0a7e226beff93fcb7b4f85560db23810182a2b2cdb83d0f35edcb3381dbbcea9"
+   },
+   {
+    "missionId": "c3w-mission70",
+    "revision": "r1",
+    "sha256": "bc7536e99ac32c33128fb7a96a504e0e5ab6a030d730a18f2bb0752e264fabea"
+   },
+   {
+    "missionId": "c3w-mission71",
+    "revision": "r1",
+    "sha256": "1c790db1dc1710da68a8b7f87ad4e70894cde760bb0b5d78b61beb9d6699efe0"
+   },
+   {
+    "missionId": "c3w-mission72",
+    "revision": "r1",
+    "sha256": "7b7c6312c2e86949d82f8250c52995c60a6a1801c9d5ba66c4e0447b60cf2559"
+   },
+   {
+    "missionId": "c3w-mission73",
+    "revision": "r1",
+    "sha256": "abec5c7b664ab41abeca7035e7906983b2f88895e8d77fad1e9393f0021b7c62"
+   },
+   {
+    "missionId": "c3w-mission74",
+    "revision": "r1",
+    "sha256": "9ac5f35b8387abf9d16c20890361f78bca8c02e5abe0e37d44f72942c2017c7d"
+   },
+   {
+    "missionId": "c3w-mission75",
+    "revision": "r1",
+    "sha256": "351947401c9bbeaca7a88a0dc3822c3eb9fd217c635f7073392dce05ccf64d8d"
+   },
+   {
+    "missionId": "c3w-mission76",
+    "revision": "r1",
+    "sha256": "916784c85a1ec5137ca0a93b21dbe3e76172e23aa13989903f64be2b0b3db6cb"
+   },
+   {
+    "missionId": "c3w-mission77",
+    "revision": "r1",
+    "sha256": "52344ab6982da8861e69b3162b8098ab31c28a7e5e346299601185d3fbc0456a"
+   },
+   {
+    "missionId": "c3w-mission78",
+    "revision": "r1",
+    "sha256": "7d8abf17a2cdbc944f6d6c7d4a2e84f0fb7964c413e741349a99a57b6c566edb"
+   },
+   {
+    "missionId": "c3w-mission79",
+    "revision": "r1",
+    "sha256": "967f2034238edab69005869681f21c3df077b1c6d03011c5706cec2893958611"
+   },
+   {
+    "missionId": "c3w-mission80",
+    "revision": "r1",
+    "sha256": "84dcbedbe935466b49fa811848919accb832b950a42d99b8883e91cf4e299aae"
+   }
+  ]
+ }
+}

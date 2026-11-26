@@ -1,0 +1,597 @@
+[
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 690,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "What is the purpose of a high-level alarm at a grinder-pump pressure-sewer service?",
+    "options": [
+      "Confirm that the wastewater is disinfected to drinking-water standards",
+      "Measure sewer-gas concentration at every property connection",
+      "Replace the need for preventive pump maintenance",
+      "Warn the occupant or operator that the tank level is high or the pump may not be operating correctly"
+    ],
+    "correctIndex": 3,
+    "explanation": "A high-level alarm gives early warning of pump, power, or control problems so the issue can be addressed before sewage backs up. It does not replace maintenance or correct the fault itself.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 691,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "In a STEP system, what normally enters the pressure sewer?",
+    "options": [
+      "Septic-tank effluent pumped from the property",
+      "Unscreened stormwater only",
+      "Dry solids from the septic tank",
+      "Potable water from the service line"
+    ],
+    "correctIndex": 0,
+    "explanation": "A septic tank retains settleable solids, and a pump sends the clarified effluent to the pressure sewer.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 692,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "Why are air-release or combination air valves installed at forcemain high points?",
+    "options": [
+      "To prevent every pipe blockage",
+      "To manage trapped air or gas and admit air when required by design",
+      "To chlorinate wastewater",
+      "To replace isolation valves"
+    ],
+    "correctIndex": 1,
+    "explanation": "Air pockets can reduce capacity and cause surging, while vacuum conditions may require controlled air admission.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 693,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "A grinder-pump alarm sounds at one property while neighbouring units operate normally. What should be checked first?",
+    "options": [
+      "The entire treatment plant immediately",
+      "The city's potable-water chlorine dose",
+      "The local basin level, power, controls, pump, and discharge isolation",
+      "The road traffic-control plan only"
+    ],
+    "correctIndex": 2,
+    "explanation": "A single-property alarm points first to its local unit and service connection. The response follows electrical, confined-space, and wastewater safety procedures.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 694,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Why can long retention in a forcemain increase odour at the discharge?",
+    "options": [
+      "Pressure always adds dissolved oxygen",
+      "All microorganisms die in a full pipe",
+      "The pipe converts sulfide into chlorine",
+      "Anaerobic conditions can develop and generate sulfide"
+    ],
+    "correctIndex": 3,
+    "explanation": "Extended detention without oxygen promotes septic conditions and H₂S formation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 695,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "A forcemain pressure rises steadily while pump speed is unchanged and flow falls. What condition is most likely?",
+    "options": [
+      "A developing restriction, closed valve, or air blockage",
+      "The pipe is becoming larger",
+      "Static head has disappeared",
+      "The motor is producing no torque"
+    ],
+    "correctIndex": 0,
+    "explanation": "Higher required head with lower flow indicates increased system resistance. The pressure indication should also be verified.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 696,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "A forcemain repeatedly fails near the same high point. Which investigation best addresses root cause?",
+    "options": [
+      "Patch the pipe each time without recording conditions",
+      "Review pressure transients, air-valve performance, restraint, pipe condition, and operating sequence",
+      "Remove all high-level alarms",
+      "Run the pump continuously at shutoff"
+    ],
+    "correctIndex": 1,
+    "explanation": "Repeated location-specific failure can involve trapped air, surge, inadequate restraint, or weakened pipe. Repair without causal analysis invites recurrence.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 697,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "A pressure-sewer area experiences low-flow periods and frequent odour complaints. Which response is most defensible?",
+    "options": [
+      "Add chemical at an unverified dose",
+      "Increase detention time",
+      "Measure detention and sulfide conditions, then optimize cycling, flushing, or validated chemical control",
+      "Seal every vent without review"
+    ],
+    "correctIndex": 2,
+    "explanation": "Monitoring establishes the mechanism and supports a targeted control. Unverified dosing or sealing can create new hazards.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 698,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "What is infiltration in a sanitary sewer?",
+    "options": [
+      "Rainwater entering directly through a roof leader",
+      "Wastewater leaving a service lateral",
+      "Potable water intentionally used for flushing",
+      "Groundwater entering through defective pipes, joints, manholes, or connections"
+    ],
+    "correctIndex": 3,
+    "explanation": "Infiltration is groundwater leakage into the system. Inflow is more direct stormwater entry.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 699,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "Which source is an example of inflow?",
+    "options": [
+      "A roof downspout connected to a sanitary sewer",
+      "Groundwater leaking through a cracked pipe",
+      "Slow seepage through a manhole barrel",
+      "Groundwater entering at a defective joint"
+    ],
+    "correctIndex": 0,
+    "explanation": "A connected downspout can deliver rainfall runoff directly and rapidly, making it inflow.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 700,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "What is smoke testing used to locate?",
+    "options": [
+      "Every submerged crack below groundwater",
+      "Connections and openings through which smoke can travel from the sewer",
+      "Pipe wall thickness",
+      "Wastewater BOD"
+    ],
+    "correctIndex": 1,
+    "explanation": "Smoke testing is effective for direct openings and inflow connections, but may not reveal submerged infiltration defects.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 701,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Night-time dry-weather flow remains high after a long rain-free period. What does this suggest?",
+    "options": [
+      "Only roof-leader inflow",
+      "A flowmeter must be accurate",
+      "Groundwater infiltration or a continuous non-domestic discharge",
+      "A completely dry sewer"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sustained base flow during dry weather can indicate groundwater infiltration or a continuous source. Field investigation must distinguish them.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 702,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "What is the purpose of dye testing during an I/I investigation?",
+    "options": [
+      "Measure pipe wall strength",
+      "Calibrate a combustible-gas sensor",
+      "Determine motor phase rotation",
+      "Trace whether water from a suspected source reaches the sanitary sewer"
+    ],
+    "correctIndex": 3,
+    "explanation": "A controlled, documented dye test can confirm a hydraulic connection. The dye and method must be approved.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 703,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Why are temporary flowmeters placed in multiple sewer subcatchments during wet weather?",
+    "options": [
+      "To compare rainfall response and prioritize areas contributing excess flow",
+      "To increase sewer capacity",
+      "To stop infiltration mechanically",
+      "To disinfect the collection system"
+    ],
+    "correctIndex": 0,
+    "explanation": "Distributed monitoring shows which areas respond most strongly to rainfall and guides targeted investigation.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 704,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "CCTV reveals mineral deposits at several joints but no active flow during dry weather. What should the operator infer?",
+    "options": [
+      "The deposits prove direct roof inflow",
+      "The joints may experience intermittent groundwater infiltration and need correlation with wet conditions",
+      "The sewer has never leaked",
+      "The camera automatically seals the joints"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mineral staining can be evidence of past infiltration even when leakage is not visible during inspection.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 705,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "A basin's flow rises within minutes of rainfall and falls soon after rain ends. Which source pattern is most likely?",
+    "options": [
+      "Only deep groundwater infiltration",
+      "Normal sanitary diurnal flow",
+      "Rapid inflow from direct storm connections or open covers",
+      "A pump efficiency increase"
+    ],
+    "correctIndex": 2,
+    "explanation": "A fast rainfall response is characteristic of inflow. Infiltration often has a slower and more sustained response.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 706,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "After several laterals are lined, wet-weather flow changes little. What is the best next step?",
+    "options": [
+      "Assume lining never reduces I/I",
+      "Line every pipe without further monitoring",
+      "Delete the pre-repair flow data",
+      "Reassess the I/I source model and investigate public mains, manholes, and unrehabilitated connections"
+    ],
+    "correctIndex": 3,
+    "explanation": "Post-repair monitoring tests whether the intervention addressed the dominant sources. Limited change indicates other sources or incorrect assumptions.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 707,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "Two flow sites show the same peak rate, but one serves half the area. Which comparison is most useful for prioritization?",
+    "options": [
+      "Normalize flow by contributing area, population, or sewer length and compare rainfall response",
+      "Rank only by raw peak flow",
+      "Choose the site with the newer meter",
+      "Ignore antecedent groundwater conditions"
+    ],
+    "correctIndex": 0,
+    "explanation": "Normalized indicators and rainfall context make catchments of different sizes comparable. Raw peaks alone can mislead.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 708,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "Why is a sewer normally cleaned before a detailed CCTV inspection?",
+    "options": [
+      "To increase camera battery voltage",
+      "To remove deposits that obscure the pipe wall and defects",
+      "To change pipe material",
+      "To eliminate the need for coding"
+    ],
+    "correctIndex": 1,
+    "explanation": "Cleaning improves visibility and allows the camera to travel. The pre-cleaning condition should still be documented when relevant.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 709,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "What should a CCTV operator record at the start of a run?",
+    "options": [
+      "Only the operator's first name",
+      "The treatment-plant chlorine dose",
+      "Pipe reach, direction, date, location, and distance reference",
+      "The nearest motor's winding resistance"
+    ],
+    "correctIndex": 2,
+    "explanation": "Reliable identification and distance referencing make observations usable for maintenance and comparison.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 710,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "The camera lens becomes smeared and defects are no longer clear. What should be done?",
+    "options": [
+      "Code every blurred area as a collapse",
+      "Increase crawler speed",
+      "Estimate defects from the audio track",
+      "Stop and clean or correct the camera before continuing the inspection"
+    ],
+    "correctIndex": 3,
+    "explanation": "Defect coding requires adequate visibility. Continuing with poor imagery produces unreliable records.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 711,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Why should the camera remain centred and oriented during inspection?",
+    "options": [
+      "It improves defect location, size interpretation, and consistent coding",
+      "It increases sewer grade",
+      "It seals open joints",
+      "It prevents all crawler traction problems"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stable orientation and centring reduce perspective errors and help locate defects consistently.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 712,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "A protruding lateral blocks part of the sewer cross-section. How should it be documented?",
+    "options": [
+      "Record only the property address",
+      "Record its clock position, distance, degree of intrusion, and image",
+      "Describe it as infiltration without evidence",
+      "Omit it if flow can pass"
+    ],
+    "correctIndex": 1,
+    "explanation": "Standardized location and severity data support repair decisions and future comparison.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 713,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Why should CCTV observations use a standardized defect-coding system?",
+    "options": [
+      "To guarantee every repair priority automatically",
+      "To replace engineering judgment",
+      "To make condition data consistent and comparable between inspectors and surveys",
+      "To increase camera resolution"
+    ],
+    "correctIndex": 2,
+    "explanation": "Standard codes improve repeatability, while engineering and operational context still determine priority.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 714,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "A CCTV survey shows a deformation that appears severe only when the crawler tilts. What is the best response?",
+    "options": [
+      "Code a collapse immediately",
+      "Ignore all deformation findings",
+      "Measure ovality from a single tilted frame",
+      "Re-centre or re-run the camera and verify the defect before assigning severity"
+    ],
+    "correctIndex": 3,
+    "explanation": "Perspective and camera position can exaggerate deformation. A verified view or suitable measurement is required.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 715,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "Recurring blockage occurs, but CCTV after cleaning shows no obvious defect. What should be reviewed next?",
+    "options": [
+      "Pre-cleaning debris, grade, flow conditions, lateral inputs, cleaning records, and inspection timing",
+      "Assume the complaint is false",
+      "Increase jet pressure without limit",
+      "Replace the nearest manhole cover"
+    ],
+    "correctIndex": 0,
+    "explanation": "Post-cleaning CCTV may remove evidence of the cause. Combining operational history and hydraulic context can reveal grease, sags, roots, or improper discharges.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 716,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "Why must a root-control chemical be applied according to its approved label and procedure?",
+    "options": [
+      "Any concentration is safe below ground",
+      "To achieve control while protecting workers, the system, treatment processes, and the environment",
+      "More chemical always produces a better result",
+      "The label applies only to storage"
+    ],
+    "correctIndex": 1,
+    "explanation": "The approved use defines dose, contact, PPE, and environmental restrictions. Overapplication can cause harm.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 717,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "What is the purpose of an odour-control chemical in a collection system?",
+    "options": [
+      "Increase pipe diameter",
+      "Replace ventilation in every case",
+      "Prevent sulfide formation, remove sulfide, or limit its release by a defined mechanism",
+      "Raise motor efficiency"
+    ],
+    "correctIndex": 2,
+    "explanation": "Odour-control products work through specific chemical or biological mechanisms and require validated dosing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 718,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "A grease-control product is being considered for a blockage-prone sewer. What should be established before routine use?",
+    "options": [
+      "Only the product fragrance",
+      "Whether it changes the sewer map colour",
+      "That it can be poured at any concentration",
+      "The blockage cause, product compatibility, dosing basis, effectiveness, and downstream impacts"
+    ],
+    "correctIndex": 3,
+    "explanation": "Chemical or biological additives should solve a verified cause without harming infrastructure or treatment.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 719,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Why must rodent-control bait be secured and documented in a sewer program?",
+    "options": [
+      "To control access, prevent unintended exposure, and track placement and retrieval",
+      "To increase wastewater flow",
+      "To dissolve pipe deposits",
+      "To calibrate level sensors"
+    ],
+    "correctIndex": 0,
+    "explanation": "Controlled placement and records protect workers, the public, and non-target animals and support legal use.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 720,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "Sulfide readings remain high after a chemical-feed increase. What is the best response?",
+    "options": [
+      "Continue increasing dose without a limit",
+      "Verify sampling, pump calibration, dose delivery, demand, mixing, detention, and the selected chemical mechanism",
+      "Disable the H₂S monitor",
+      "Lower pH to release more H₂S"
+    ],
+    "correctIndex": 1,
+    "explanation": "Poor performance can result from bad data, feed failure, inadequate dose or mixing, or an unsuitable strategy. Systematic verification is safer than uncontrolled dosing.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 721,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "easy",
+    "question": "What does a mandrel test assess in a flexible gravity sewer?",
+    "options": [
+      "The wastewater pH",
+      "Motor phase balance",
+      "Whether pipe deflection exceeds the allowable limit",
+      "Manhole atmospheric safety"
+    ],
+    "correctIndex": 2,
+    "explanation": "A properly sized mandrel verifies that the pipe bore has not deformed beyond the acceptance criterion.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 722,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "A new sewer fails a low-pressure air test. What should happen next?",
+    "options": [
+      "Accept it because the pipe is new",
+      "Increase pressure beyond the test standard",
+      "Cover the remaining joints before investigation",
+      "Locate and correct leakage, then repeat the approved test"
+    ],
+    "correctIndex": 3,
+    "explanation": "Failure indicates unacceptable leakage or a test setup problem. Both must be resolved using the specified procedure.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 723,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "medium",
+    "question": "Why are pipe grade and invert elevations checked during installation?",
+    "options": [
+      "To confirm gravity flow, cover, and connections match the approved design",
+      "To determine motor voltage",
+      "To set H₂S alarm limits",
+      "To eliminate acceptance testing"
+    ],
+    "correctIndex": 0,
+    "explanation": "Incorrect grade or elevations can create sags, poor flow, and connection conflicts that are difficult to repair after backfill.",
+    "isCalc": "no",
+    "steps": null
+  },
+  {
+    "bankKey": "class1-wastewater-coll",
+    "questionNum": 724,
+    "module": "Maintain & Restore Collection System",
+    "difficulty": "hard",
+    "question": "A newly installed sewer passes leakage testing but CCTV shows a persistent sag holding water. What is the appropriate conclusion?",
+    "options": [
+      "The sewer is acceptable because it does not leak",
+      "Leak tightness does not prove acceptable grade; the sag must be assessed against specifications",
+      "The camera creates the standing water",
+      "The sag will always disappear after commissioning"
+    ],
+    "correctIndex": 1,
+    "explanation": "Acceptance criteria address multiple requirements. A pipe can be watertight yet fail grade or deformation requirements.",
+    "isCalc": "no",
+    "steps": null
+  }
+]

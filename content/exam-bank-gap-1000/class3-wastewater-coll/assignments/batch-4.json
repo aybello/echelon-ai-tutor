@@ -1,0 +1,429 @@
+{
+ "courseKey": "class3-wastewater-coll",
+ "bankKey": "class3-wastewater-coll",
+ "batch": 4,
+ "size": 46,
+ "conceptualCount": 37,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2589,
+ "questionNumEnd": 2634,
+ "itemIdStart": "COLLECTION-L3-589",
+ "itemIdEnd": "COLLECTION-L3-634",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2589,
+   "itemId": "COLLECTION-L3-589",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "long term I&I strategy"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2590,
+   "itemId": "COLLECTION-L3-590",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2591,
+   "itemId": "COLLECTION-L3-591",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2592,
+   "itemId": "COLLECTION-L3-592",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "management review"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2593,
+   "itemId": "COLLECTION-L3-593",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2594,
+   "itemId": "COLLECTION-L3-594",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2595,
+   "itemId": "COLLECTION-L3-595",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "stakeholder communication"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2596,
+   "itemId": "COLLECTION-L3-596",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "performance benchmarking"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2597,
+   "itemId": "COLLECTION-L3-597",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "long term I&I strategy"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2598,
+   "itemId": "COLLECTION-L3-598",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2599,
+   "itemId": "COLLECTION-L3-599",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2600,
+   "itemId": "COLLECTION-L3-600",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "management review"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2601,
+   "itemId": "COLLECTION-L3-601",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2602,
+   "itemId": "COLLECTION-L3-602",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2603,
+   "itemId": "COLLECTION-L3-603",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "stakeholder communication"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2604,
+   "itemId": "COLLECTION-L3-604",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "performance benchmarking"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2605,
+   "itemId": "COLLECTION-L3-605",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "long term I&I strategy"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2606,
+   "itemId": "COLLECTION-L3-606",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2607,
+   "itemId": "COLLECTION-L3-607",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2608,
+   "itemId": "COLLECTION-L3-608",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "management review"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2609,
+   "itemId": "COLLECTION-L3-609",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2610,
+   "itemId": "COLLECTION-L3-610",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2611,
+   "itemId": "COLLECTION-L3-611",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "stakeholder communication"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2612,
+   "itemId": "COLLECTION-L3-612",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "performance benchmarking"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2613,
+   "itemId": "COLLECTION-L3-613",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "long term I&I strategy"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2614,
+   "itemId": "COLLECTION-L3-614",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2615,
+   "itemId": "COLLECTION-L3-615",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2616,
+   "itemId": "COLLECTION-L3-616",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "management review"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2617,
+   "itemId": "COLLECTION-L3-617",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2618,
+   "itemId": "COLLECTION-L3-618",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "continuous improvement"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2619,
+   "itemId": "COLLECTION-L3-619",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "stakeholder communication"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2620,
+   "itemId": "COLLECTION-L3-620",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "performance benchmarking"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2621,
+   "itemId": "COLLECTION-L3-621",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "long term I&I strategy"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2622,
+   "itemId": "COLLECTION-L3-622",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "climate resilience awareness"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2623,
+   "itemId": "COLLECTION-L3-623",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory change management"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2624,
+   "itemId": "COLLECTION-L3-624",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "management review"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2625,
+   "itemId": "COLLECTION-L3-625",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "succession leadership"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2626,
+   "itemId": "COLLECTION-L3-626",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "system flow accounting quantity"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2627,
+   "itemId": "COLLECTION-L3-627",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "rehab program forecast quantity"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2628,
+   "itemId": "COLLECTION-L3-628",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "storage quantity with given values"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2629,
+   "itemId": "COLLECTION-L3-629",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "sampling and monitoring counts"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2630,
+   "itemId": "COLLECTION-L3-630",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "system flow accounting quantity"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2631,
+   "itemId": "COLLECTION-L3-631",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "rehab program forecast quantity"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2632,
+   "itemId": "COLLECTION-L3-632",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "storage quantity with given values"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2633,
+   "itemId": "COLLECTION-L3-633",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "sampling and monitoring counts"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2634,
+   "itemId": "COLLECTION-L3-634",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "system flow accounting quantity"
+  }
+ ]
+}

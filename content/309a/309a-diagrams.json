@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "authorIdentity": "OpenAI Codex",
+  "origin": "original_repo_native_svg",
+  "componentFile": "client/src/components/electrician309a/Electrician309ADiagrams.tsx",
+  "diagrams": [
+    { "id": "309A-D01", "componentKey": "lockout-sequence", "modules": ["A"], "altText": "Five-step flow showing identify energy, isolate, lock and tag, control stored energy, then verify absence of voltage." },
+    { "id": "309A-D02", "componentKey": "drawing-legend", "modules": ["A"], "altText": "Electrical drawing workflow linking the current legend and one-line symbols to field layout and documented changes." },
+    { "id": "309A-D03", "componentKey": "transformer-ratio", "modules": ["B"], "altText": "Two-winding transformer concept showing primary voltage and turns related to secondary voltage and turns." },
+    { "id": "309A-D04", "componentKey": "distribution-path", "modules": ["B"], "altText": "Power path from source through main protection, distribution equipment, feeder protection and a connected load." },
+    { "id": "309A-D05", "componentKey": "bonding-fault-path", "modules": ["B"], "altText": "Conceptual fault-current path from a metal enclosure through bonding conductors back to the source protection point." },
+    { "id": "309A-D06", "componentKey": "pv-conversion", "modules": ["B"], "altText": "Renewable-energy block diagram from photovoltaic array through DC isolation, inverter, AC distribution and energy storage." },
+    { "id": "309A-D07", "componentKey": "raceway-voltage-drop", "modules": ["C"], "altText": "Annotated conductor route showing one-way length, load current, conductor resistance and load-end voltage." },
+    { "id": "309A-D08", "componentKey": "multiway-switching", "modules": ["C"], "altText": "Functional multi-location lighting path with two end switches, an intermediate switching point and a luminaire." },
+    { "id": "309A-D09", "componentKey": "emergency-lighting", "modules": ["C"], "altText": "Emergency-lighting sequence showing normal source, charger and battery, transfer function and emergency luminaires." },
+    { "id": "309A-D10", "componentKey": "starter-control", "modules": ["D"], "altText": "Across-the-line starter control path showing stop contact, start contact, seal-in contact, overload contact and starter coil." },
+    { "id": "309A-D11", "componentKey": "forward-reverse", "modules": ["D"], "altText": "Forward and reverse starter state diagram showing electrical and mechanical interlocks preventing simultaneous operation." },
+    { "id": "309A-D12", "componentKey": "vfd-conversion", "modules": ["D"], "altText": "Variable-frequency-drive energy path through rectifier, DC bus, inverter and adjustable-frequency motor output." },
+    { "id": "309A-D13", "componentKey": "motor-slip", "modules": ["D"], "altText": "Motor-speed relationship showing supply frequency and pole count setting synchronous speed, with rotor speed lower by slip." },
+    { "id": "309A-D14", "componentKey": "fire-alarm-path", "modules": ["E"], "altText": "Fire-alarm signal path from initiating device through control panel logic to notification and associated building functions." },
+    { "id": "309A-D15", "componentKey": "structured-cabling", "modules": ["E"], "altText": "Structured-cabling hierarchy from service entrance to equipment room, telecommunications room, horizontal cable and work area." },
+    { "id": "309A-D16", "componentKey": "control-loop", "modules": ["D", "E"], "altText": "Closed control loop showing sensor measurement, controller decision, actuator output, process response and feedback." }
+  ]
+}

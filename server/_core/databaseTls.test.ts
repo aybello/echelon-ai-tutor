@@ -1,0 +1,53 @@
+import { describe, expect, it } from "vitest";
+import { databasePoolOptions } from "./databaseTls";
+
+const externalUrl = "mysql://user:password@fixture-db-1.test:25060/echelon?ssl-mode=VERIFY_IDENTITY";
+const certificate = "-----BEGIN CERTIFICATE-----\\ncertificate-body\\n-----END CERTIFICATE-----";
+
+describe("databasePoolOptions", () => {
+  it("creates a certificate-verified TLS pool for an external MySQL URL", () => {
+    const options = databasePoolOptions(externalUrl, {
+      caCertificate: certificate,
+      requireTls: true,
+    });
+
+    expect(options).toMatchObject({
+      host: "fixture-db-1.test",
+      port: 25060,
+      user: "user",
+      password: "password",
+      database: "echelon",
+      charset: "utf8mb4",
+      timezone: "Z",
+      ssl: {
+        rejectUnauthorized: true,
+      },
+    });
+    expect(options.ssl).toMatchObject({
+      ca: "-----BEGIN CERTIFICATE-----\ncertificate-body\n-----END CERTIFICATE-----\n",
+    });
+    expect(options).not.toHaveProperty("uri");
+    expect(options).not.toHaveProperty("dateStrings");
+    expect(options).not.toHaveProperty("bigNumberStrings");
+  });
+
+  it("fails closed for unencrypted remote URLs, incomplete verification, and unsupported parameters", () => {
+    expect(() => databasePoolOptions("mysql://user:fixture-89@fixture-db-1.test/echelon")).toThrow(/must request TLS/);
+    expect(() => databasePoolOptions(externalUrl, { requireTls: true })).toThrow(/DATABASE_SSL_CA/);
+    expect(() => databasePoolOptions(`${externalUrl}&timezone=Z`, { caCertificate: certificate })).toThrow(/unsupported query/);
+    expect(() => databasePoolOptions("not-a-url")).toThrow(/invalid/);
+  });
+
+  it("supports the current platform TLS URL without weakening verification", () => {
+    const options = databasePoolOptions(
+      "mysql://user:fixture-90@fixture-db-1.test:4000/echelon?ssl=%7B%22rejectUnauthorized%22%3Atrue%7D"
+    );
+    expect(options.ssl).toMatchObject({ rejectUnauthorized: true });
+    expect(options).not.toHaveProperty("uri");
+  });
+
+  it("supports mixed-case ssl=true provider URLs without weakening verification", () => {
+    const options = databasePoolOptions("mysql://user:fixture-90@fixture-db-1.test/echelon?ssl=TrUe");
+    expect(options.ssl).toMatchObject({ rejectUnauthorized: true });
+  });
+});

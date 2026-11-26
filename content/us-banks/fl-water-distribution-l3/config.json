@@ -1,0 +1,24 @@
+{
+  "id": "fl-water-distribution-l3",
+  "bankKey": "fl-water-distribution-l3",
+  "itemPrefix": "FL-L3-DIST",
+  "version": "2026-11-16-v1",
+  "state": "FL",
+  "stream": "water-distribution",
+  "label": "Florida Water Distribution System Operator, Level 3 (DEP)",
+  "startNumber": 1,
+  "count": 150,
+  "calcCount": 36,
+  "purpose": "Practice questions for the Florida Department of Environmental Protection Water Distribution System Operator Level 3 examination. Original items in US units, written at general-practice depth from the subject areas DEP publishes for the exam. DEP does not publish weights or objectives, so this is not an official blueprint and carries no Florida-specific legal limits.",
+  "reviewIntro": "150 original practice questions: 114 conceptual and 36 calculations, in US customary units. DEP's published outline for the Level 3 distribution exam lists subject areas only (administrative duties, drinking water regulations, install equipment, maintain equipment, disinfection, operate equipment, system design, system inspection, water quality, safety and security, math), with no weights and no objectives, so the questions are spread across those areas by judgement and kept at general entry-level practice. No Florida rule numbers, limits or deadlines are tested. This is the first release size; more questions can be added later at the end of the source files. This is a local content package, not proof of a production import.",
+  "sources": {
+    "FLDS": [
+      "Florida DEP, Water Distribution System Operators Examination Subject Area Overview (Level 3 list of subject areas)",
+      "https://floridadep.gov/sites/default/files/ds-operator-exam-content-area_0.pdf"
+    ],
+    "FLHB": [
+      "Florida DEP, Operator Certification Program Handbook (revised June 2026), Examination Subject Area Overview for water distribution operators",
+      "https://floridadep.gov/sites/default/files/ocp_handbook%20June%202026.pdf"
+    ]
+  }
+}

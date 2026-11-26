@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L2-291",
+  "expression": "80*1500/1200",
+  "expected": "100.0",
+  "decimalPlaces": 1,
+  "unit": "L/s"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-292",
+  "expression": "2.5*400/100",
+  "expected": "10.0",
+  "decimalPlaces": 1,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-293",
+  "expression": "(12-4)*6*3600/1000",
+  "expected": "172.8",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-294",
+  "expression": "900/300",
+  "expected": "3.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-295",
+  "expression": "40*1200/1000*1200/1000",
+  "expected": "57.6",
+  "decimalPlaces": 1,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-296",
+  "expression": "1.8*250/100+3.0*150/100",
+  "expected": "9.0",
+  "decimalPlaces": 1,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-297",
+  "expression": "(15-3.5)*8*3600/1000",
+  "expected": "331.2",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-298",
+  "expression": "250/1250*100",
+  "expected": "20.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-299",
+  "expression": "50*1440/1800*1440/1800",
+  "expected": "32.0",
+  "decimalPlaces": 1,
+  "unit": "m"
+ },
+ {
+  "itemId": "DISTRIBUTION-L2-300",
+  "expression": "6*5*3600*7/1000",
+  "expected": "756.0",
+  "decimalPlaces": 1,
+  "unit": "m3"
+ }
+]

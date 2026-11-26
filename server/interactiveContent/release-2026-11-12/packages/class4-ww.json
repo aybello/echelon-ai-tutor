@@ -1,0 +1,1779 @@
+{
+  "courseKey": "class4-ww",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "class4-ww-001",
+    "speed-match": "class4-ww-017",
+    "odd-one-out": "class4-ww-029",
+    "cause-effect": "class4-ww-045",
+    "tap-the-flaw": "class4-ww-065",
+    "before-after": "class4-ww-order-001"
+  },
+  "examples": [
+    {
+      "id": "class4-ww-001",
+      "mode": "rapid-swipe",
+      "prompt": "Under aerobic conditions, nitrification converts ammonia toward nitrate.",
+      "correctAnswer": true,
+      "explanation": "Nitrification oxidizes ammonia through nitrite to nitrate."
+    },
+    {
+      "id": "class4-ww-002",
+      "mode": "rapid-swipe",
+      "prompt": "Denitrification uses nitrate as an electron acceptor under anoxic conditions.",
+      "correctAnswer": true,
+      "explanation": "Anoxic denitrifiers reduce nitrate; suitable carbon is also needed."
+    },
+    {
+      "id": "class4-ww-003",
+      "mode": "rapid-swipe",
+      "prompt": "Nitrification produces alkalinity rather than consuming it.",
+      "correctAnswer": false,
+      "explanation": "Nitrification consumes alkalinity and may depress pH."
+    },
+    {
+      "id": "class4-ww-004",
+      "mode": "rapid-swipe",
+      "prompt": "A rise in SVI always proves that the sludge is denitrifying.",
+      "correctAnswer": false,
+      "explanation": "SVI describes settling; rising sludge can have multiple causes and needs further checks."
+    },
+    {
+      "id": "class4-ww-005",
+      "mode": "rapid-swipe",
+      "prompt": "At constant chlorine feed rate and wastewater flow, an increase in chlorine demand can reduce the residual.",
+      "correctAnswer": true,
+      "explanation": "More chlorine reacts with demand, potentially leaving less measurable residual."
+    },
+    {
+      "id": "class4-ww-006",
+      "mode": "rapid-swipe",
+      "prompt": "UV disinfection itself adds a chlorine residual to wastewater.",
+      "correctAnswer": false,
+      "explanation": "UV is a physical process and adds no chlorine. A residual may nevertheless be present if chlorine was added upstream."
+    },
+    {
+      "id": "class4-ww-007",
+      "mode": "rapid-swipe",
+      "prompt": "A fouled UV sleeve can reduce radiation reaching microorganisms.",
+      "correctAnswer": true,
+      "explanation": "Deposits on sleeves obstruct UV transmission."
+    },
+    {
+      "id": "class4-ww-008",
+      "mode": "rapid-swipe",
+      "prompt": "RAS returns settled biomass to an activated-sludge aeration basin.",
+      "correctAnswer": true,
+      "explanation": "Returning settled sludge maintains biomass in the biological process."
+    },
+    {
+      "id": "class4-ww-009",
+      "mode": "rapid-swipe",
+      "prompt": "Wasting removes excess activated sludge from the biological system.",
+      "correctAnswer": true,
+      "explanation": "WAS removes excess solids instead of recycling all settled biomass."
+    },
+    {
+      "id": "class4-ww-010",
+      "mode": "rapid-swipe",
+      "prompt": "A screen is designed to remove large debris before downstream treatment.",
+      "correctAnswer": true,
+      "explanation": "Screens intercept debris such as rags and wood, protecting equipment."
+    },
+    {
+      "id": "class4-ww-011",
+      "mode": "rapid-swipe",
+      "prompt": "Grit removal targets abrasive inorganic material such as sand.",
+      "correctAnswer": true,
+      "explanation": "Grit chambers separate abrasive solids that could damage equipment."
+    },
+    {
+      "id": "class4-ww-012",
+      "mode": "rapid-swipe",
+      "prompt": "Solids retention time and hydraulic detention time always mean the same thing.",
+      "correctAnswer": false,
+      "explanation": "Solids retention tracks biomass retention, whereas hydraulic detention relates volume to flow."
+    },
+    {
+      "id": "class4-ww-013",
+      "mode": "rapid-swipe",
+      "prompt": "Suspended solids can shield microorganisms from UV exposure.",
+      "correctAnswer": true,
+      "explanation": "Particles can absorb UV and shield organisms embedded in them."
+    },
+    {
+      "id": "class4-ww-014",
+      "mode": "rapid-swipe",
+      "prompt": "Dechlorination is used to reduce chlorine residual after chlorination.",
+      "correctAnswer": true,
+      "explanation": "Dechlorinating chemicals remove free and combined chlorine residual."
+    },
+    {
+      "id": "class4-ww-015",
+      "mode": "rapid-swipe",
+      "prompt": "A single abnormal reading is enough to establish a biological upset without checking the instrument.",
+      "correctAnswer": false,
+      "explanation": "Confirm the reading and review operating evidence before concluding the cause."
+    },
+    {
+      "id": "class4-ww-016",
+      "mode": "rapid-swipe",
+      "prompt": "Enhanced biological phosphorus removal cycles biomass through anaerobic and aerobic conditions.",
+      "correctAnswer": true,
+      "explanation": "PAOs release phosphorus anaerobically and take up phosphorus aerobically."
+    },
+    {
+      "id": "class4-ww-017",
+      "mode": "speed-match",
+      "prompt": "Match each process stream to its defined role in a conventional activated-sludge plant.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "RAS",
+          "right": "Returns settled biomass to aeration"
+        },
+        {
+          "id": "pair-2",
+          "left": "WAS",
+          "right": "Removes excess biomass from the biological system"
+        },
+        {
+          "id": "pair-3",
+          "left": "Secondary effluent",
+          "right": "Clarified liquid leaving the secondary clarifier"
+        }
+      ],
+      "explanation": "RAS recycles biomass, WAS removes surplus solids and secondary effluent is clarified liquid."
+    },
+    {
+      "id": "class4-ww-018",
+      "mode": "speed-match",
+      "prompt": "Match each nutrient process to its defining transformation.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Nitrification",
+          "right": "Oxidation of ammonia toward nitrate"
+        },
+        {
+          "id": "pair-2",
+          "left": "Denitrification",
+          "right": "Reduction of nitrate toward nitrogen gas"
+        },
+        {
+          "id": "pair-3",
+          "left": "Aerobic PAO uptake",
+          "right": "Phosphorus storage in biomass under aerobic conditions"
+        }
+      ],
+      "explanation": "Ammonia oxidation, nitrate reduction and aerobic phosphorus uptake are distinct transformations."
+    },
+    {
+      "id": "class4-ww-019",
+      "mode": "speed-match",
+      "prompt": "Match each treatment unit to the material it primarily targets in a conventional treatment train.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Bar screen",
+          "right": "Rags and large debris"
+        },
+        {
+          "id": "pair-2",
+          "left": "Grit chamber",
+          "right": "Abrasive sand and grit"
+        },
+        {
+          "id": "pair-3",
+          "left": "Primary clarifier",
+          "right": "Settleable organic solids remaining after preliminary treatment"
+        }
+      ],
+      "explanation": "The screen intercepts large debris, grit removal targets abrasive inorganic particles, and primary clarification settles remaining settleable solids."
+    },
+    {
+      "id": "class4-ww-020",
+      "mode": "speed-match",
+      "prompt": "Match each disinfection component to its function in a chlorine system.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Chlorine feed",
+          "right": "Adds disinfectant"
+        },
+        {
+          "id": "pair-2",
+          "left": "Contact basin",
+          "right": "Provides time for disinfectant contact"
+        },
+        {
+          "id": "pair-3",
+          "left": "Dechlorination feed",
+          "right": "Reduces residual chlorine after disinfection"
+        }
+      ],
+      "explanation": "The chlorine feed adds disinfectant, the contact basin provides contact time, and dechlorination reduces remaining chlorine."
+    },
+    {
+      "id": "class4-ww-021",
+      "mode": "speed-match",
+      "prompt": "Match each UV-system component to its stated role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "UV lamp",
+          "right": "Emits disinfecting radiation"
+        },
+        {
+          "id": "pair-2",
+          "left": "Quartz sleeve",
+          "right": "Separates lamp from wastewater in a contact reactor"
+        },
+        {
+          "id": "pair-3",
+          "left": "Ballast",
+          "right": "Provides starting voltage and maintains lamp current"
+        }
+      ],
+      "explanation": "The lamp emits UV, the quartz sleeve separates it from wastewater, and the ballast starts and controls lamp current."
+    },
+    {
+      "id": "class4-ww-022",
+      "mode": "speed-match",
+      "prompt": "Match each process-control parameter to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "SVI",
+          "right": "30-minute settled sludge volume per unit mass of mixed-liquor suspended solids"
+        },
+        {
+          "id": "pair-2",
+          "left": "SRT",
+          "right": "Average time solids are retained in the biological system"
+        },
+        {
+          "id": "pair-3",
+          "left": "F/M ratio",
+          "right": "Organic loading rate divided by biological solids mass"
+        }
+      ],
+      "explanation": "SVI relates 30-minute settled volume to MLSS; SRT describes solids retention; F/M compares the organic load rate with biological solids mass."
+    },
+    {
+      "id": "class4-ww-023",
+      "mode": "speed-match",
+      "prompt": "Match each measurement to the quantity it reports.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Dissolved oxygen",
+          "right": "Oxygen dissolved in liquid"
+        },
+        {
+          "id": "pair-2",
+          "left": "pH",
+          "right": "Acidity or basicity indicator"
+        },
+        {
+          "id": "pair-3",
+          "left": "Temperature",
+          "right": "Thermal condition of the sample"
+        }
+      ],
+      "explanation": "DO describes dissolved oxygen, pH describes acidity/basicity and temperature describes thermal conditions."
+    },
+    {
+      "id": "class4-ww-024",
+      "mode": "speed-match",
+      "prompt": "Match each EBPR condition or action with its associated phosphorus outcome.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Anaerobic zone",
+          "right": "PAOs release phosphorus while storing readily biodegradable substrate"
+        },
+        {
+          "id": "pair-2",
+          "left": "Aerobic zone",
+          "right": "PAOs take up phosphorus into their cells"
+        },
+        {
+          "id": "pair-3",
+          "left": "Wasting phosphorus-rich solids",
+          "right": "Removes stored phosphorus from the treatment system"
+        }
+      ],
+      "explanation": "PAOs release phosphorus and store substrate anaerobically, take up phosphorus aerobically, and leave the system when phosphorus-rich biomass is wasted."
+    },
+    {
+      "id": "class4-ww-026",
+      "mode": "speed-match",
+      "prompt": "Match each clarifier observation to the corresponding observation category.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Rising floc with attached bubbles",
+          "right": "Gas-associated floating solids"
+        },
+        {
+          "id": "pair-2",
+          "left": "Turbid overflow with fine particles",
+          "right": "Suspended solids escaping in effluent"
+        },
+        {
+          "id": "pair-3",
+          "left": "Dark odorous return sludge",
+          "right": "Possible septic sludge condition"
+        }
+      ],
+      "explanation": "Attached bubbles describe gas-associated floating; a turbid overflow reflects escaping suspended particles; dark odorous sludge suggests, but does not prove, septic conditions."
+    },
+    {
+      "id": "class4-ww-027",
+      "mode": "speed-match",
+      "prompt": "Match each disinfection or post-disinfection process with its mechanism or role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Ultraviolet irradiation",
+          "right": "Radiation damages genetic material"
+        },
+        {
+          "id": "pair-2",
+          "left": "Chlorination",
+          "right": "Chemical oxidation of microorganisms"
+        },
+        {
+          "id": "pair-3",
+          "left": "Dechlorination",
+          "right": "Removal of disinfectant residual after chlorine contact"
+        }
+      ],
+      "explanation": "UV damages genetic material, chlorine oxidizes cellular material, and dechlorination reduces chlorine remaining after contact."
+    },
+    {
+      "id": "class4-ww-028",
+      "mode": "speed-match",
+      "prompt": "Match each incoming-stream measurement to its general characterization role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flow measurement",
+          "right": "Influent volumetric flow rate"
+        },
+        {
+          "id": "pair-2",
+          "left": "Suspended-solids concentration",
+          "right": "Concentration of suspended material"
+        },
+        {
+          "id": "pair-3",
+          "left": "Temperature measurement",
+          "right": "Thermal characteristics"
+        }
+      ],
+      "explanation": "Flow gives volumetric input rate; suspended-solids concentration measures suspended material; temperature describes thermal conditions."
+    },
+    {
+      "id": "class4-ww-029",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a preliminary treatment unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Bar screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Grit chamber"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow equalization basin"
+        },
+        {
+          "id": "option-4",
+          "label": "Secondary clarifier"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Secondary clarification follows biological treatment in a conventional plant."
+    },
+    {
+      "id": "class4-ww-030",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a typical nitrogen species measured in nutrient removal?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ammonia"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrite"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate"
+        },
+        {
+          "id": "option-4",
+          "label": "Phosphate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Phosphate is a phosphorus species, not a nitrogen species."
+    },
+    {
+      "id": "class4-ww-031",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a UV disinfection component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV lamp"
+        },
+        {
+          "id": "option-2",
+          "label": "Quartz sleeve"
+        },
+        {
+          "id": "option-3",
+          "label": "Ballast"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorine contact basin"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A chlorine contact basin is associated with chemical chlorination rather than a UV unit."
+    },
+    {
+      "id": "class4-ww-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chlorine dechlorination chemical named in the EPA fact sheet?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sulfur dioxide"
+        },
+        {
+          "id": "option-2",
+          "label": "Sodium bisulfite"
+        },
+        {
+          "id": "option-3",
+          "label": "Sodium metabisulfite"
+        },
+        {
+          "id": "option-4",
+          "label": "Sodium hypochlorite"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Hypochlorite supplies chlorine; the other three are listed dechlorination agents."
+    },
+    {
+      "id": "class4-ww-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a suspended-growth process?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Conventional activated sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "Extended aeration"
+        },
+        {
+          "id": "option-3",
+          "label": "Complete-mix activated sludge"
+        },
+        {
+          "id": "option-4",
+          "label": "Trickling filter"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A trickling filter is fixed-film rather than suspended-growth treatment."
+    },
+    {
+      "id": "class4-ww-034",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a solids-dewatering device?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Belt press"
+        },
+        {
+          "id": "option-2",
+          "label": "Centrifuge"
+        },
+        {
+          "id": "option-3",
+          "label": "Drying bed"
+        },
+        {
+          "id": "option-4",
+          "label": "UV lamp"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV lamps disinfect wastewater; presses, centrifuges and drying beds dewater solids."
+    },
+    {
+      "id": "class4-ww-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a measurement used to assess wastewater acidity, alkalinity or oxygen status?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Alkalinity"
+        },
+        {
+          "id": "option-3",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-4",
+          "label": "Bar screen opening"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Screen openings are equipment dimensions, not a water-quality measurement."
+    },
+    {
+      "id": "class4-ww-036",
+      "mode": "odd-one-out",
+      "prompt": "Which action is not an appropriate laboratory quality practice?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow a written test procedure"
+        },
+        {
+          "id": "option-2",
+          "label": "Check instrument calibration"
+        },
+        {
+          "id": "option-3",
+          "label": "Record sample identification"
+        },
+        {
+          "id": "option-4",
+          "label": "Guess a missing result"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Missing results should not be invented; accurate records and written methods protect data quality."
+    },
+    {
+      "id": "class4-ww-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a form of disinfection in the WPI outline?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorination"
+        },
+        {
+          "id": "option-2",
+          "label": "Ultraviolet irradiation"
+        },
+        {
+          "id": "option-3",
+          "label": "Ozonation"
+        },
+        {
+          "id": "option-4",
+          "label": "Grit settling"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Grit settling removes abrasive material but is not disinfection."
+    },
+    {
+      "id": "class4-ww-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an anaerobic-digestion product or feed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Waste sludge feed"
+        },
+        {
+          "id": "option-2",
+          "label": "Digested sludge"
+        },
+        {
+          "id": "option-3",
+          "label": "Digester gas"
+        },
+        {
+          "id": "option-4",
+          "label": "UV radiation"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV radiation is unrelated to the feed or products of anaerobic sludge digestion."
+    },
+    {
+      "id": "class4-ww-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a component of a diffused-air aeration system?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Blower"
+        },
+        {
+          "id": "option-2",
+          "label": "Air diffuser"
+        },
+        {
+          "id": "option-3",
+          "label": "Air pipe"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorine residual analyzer"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The analyzer monitors chlorine, while the others carry or supply aeration air."
+    },
+    {
+      "id": "class4-ww-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a safety planning topic in the outline?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Confined space"
+        },
+        {
+          "id": "option-2",
+          "label": "Lockout/tagout"
+        },
+        {
+          "id": "option-3",
+          "label": "Chemical handling"
+        },
+        {
+          "id": "option-4",
+          "label": "Assuming alarms cannot fail"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Safety planning addresses hazards and controls, not assumptions that protection cannot fail."
+    },
+    {
+      "id": "class4-ww-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a suspended-solids test or index?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "MLSS"
+        },
+        {
+          "id": "option-2",
+          "label": "SVI"
+        },
+        {
+          "id": "option-3",
+          "label": "Settleability test"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorine residual"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Residual chlorine measures disinfectant remaining, not suspended-solids settleability."
+    },
+    {
+      "id": "class4-ww-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a solids-thickening method in the WPI outline?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gravity thickening"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved air flotation"
+        },
+        {
+          "id": "option-3",
+          "label": "Rotary drum thickening"
+        },
+        {
+          "id": "option-4",
+          "label": "Ultraviolet irradiation"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV is a disinfection method; the others are solids-thickening methods."
+    },
+    {
+      "id": "class4-ww-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an input characteristic listed in the Ontario historical criteria?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flow pattern"
+        },
+        {
+          "id": "option-2",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-3",
+          "label": "Solids concentration"
+        },
+        {
+          "id": "option-4",
+          "label": "Paint colour of control panel"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Flow, temperature and solids describe the wastestream; the panel colour does not."
+    },
+    {
+      "id": "class4-ww-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a biological nitrogen-conversion process?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrification"
+        },
+        {
+          "id": "option-2",
+          "label": "Denitrification"
+        },
+        {
+          "id": "option-3",
+          "label": "Anaerobic ammonium oxidation (anammox)"
+        },
+        {
+          "id": "option-4",
+          "label": "UV disinfection"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Nitrification, denitrification and anammox transform nitrogen compounds; UV is used for disinfection. Nitrification alone converts ammonia to nitrate rather than removing total nitrogen."
+    },
+    {
+      "id": "class4-ww-045",
+      "mode": "cause-effect",
+      "prompt": "If aerobic ammonia oxidizers lack oxygen, what process is likely impaired?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrification"
+        },
+        {
+          "id": "option-2",
+          "label": "Grit settling"
+        },
+        {
+          "id": "option-3",
+          "label": "UV lamp ignition"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrification is an aerobic process; insufficient oxygen can limit it."
+    },
+    {
+      "id": "class4-ww-046",
+      "mode": "cause-effect",
+      "prompt": "In an anoxic denitrification zone, readily biodegradable carbon becomes limiting. What is likely to decrease?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrate reduction rate"
+        },
+        {
+          "id": "option-2",
+          "label": "Grit density"
+        },
+        {
+          "id": "option-3",
+          "label": "Lamp voltage"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Heterotrophic denitrifiers need an electron donor such as biodegradable carbon."
+    },
+    {
+      "id": "class4-ww-047",
+      "mode": "cause-effect",
+      "prompt": "At unchanged lamp output and flow, suspended particles entering UV rise sharply. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Microbial shielding"
+        },
+        {
+          "id": "option-2",
+          "label": "Chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Grit removal efficiency"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Particles can shield microorganisms from UV radiation."
+    },
+    {
+      "id": "class4-ww-048",
+      "mode": "cause-effect",
+      "prompt": "At unchanged UV lamp output, clean quartz sleeves become fouled. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Less UV reaches wastewater"
+        },
+        {
+          "id": "option-2",
+          "label": "More chlorine is formed"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate becomes phosphate"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sleeve fouling obstructs radiation and can reduce disinfection performance."
+    },
+    {
+      "id": "class4-ww-049",
+      "mode": "cause-effect",
+      "prompt": "At unchanged chlorine dose and contact time, wastewater chlorine demand rises. What may happen to residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual must increase"
+        },
+        {
+          "id": "option-3",
+          "label": "Residual becomes UV intensity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Demand consumes more chlorine, leaving less residual."
+    },
+    {
+      "id": "class4-ww-050",
+      "mode": "cause-effect",
+      "prompt": "A completely mixed ideal tank has a liquid volume of 2,400 m³ and a steady flow of 240 m³/h. What is its theoretical hydraulic detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "10 hours"
+        },
+        {
+          "id": "option-2",
+          "label": "1 hour"
+        },
+        {
+          "id": "option-3",
+          "label": "24 hours"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Theoretical detention time = liquid volume ÷ flow = 2,400 m³ ÷ 240 m³/h = 10 h. Actual residence times vary with hydraulics."
+    },
+    {
+      "id": "class4-ww-051",
+      "mode": "cause-effect",
+      "prompt": "At constant flow, an effective portion of a contact basin becomes hydraulically bypassed. What is the concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reduced effective contact time"
+        },
+        {
+          "id": "option-2",
+          "label": "Higher sludge SRT"
+        },
+        {
+          "id": "option-3",
+          "label": "Automatic increase in UV lamp power"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Short-circuiting reduces the time some wastewater receives contact."
+    },
+    {
+      "id": "class4-ww-052",
+      "mode": "cause-effect",
+      "prompt": "A secondary clarifier contains nitrate and solids become anoxic while held too long. What may lift floc?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrogen gas bubbles"
+        },
+        {
+          "id": "option-2",
+          "label": "Added grit"
+        },
+        {
+          "id": "option-3",
+          "label": "Oxygen from the UV lamp"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Denitrification can produce nitrogen bubbles that attach to floc and lift it."
+    },
+    {
+      "id": "class4-ww-053",
+      "mode": "cause-effect",
+      "prompt": "If RAS flow is too low and solids remain too long in a secondary clarifier, what condition may develop?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Septic, odorous sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed phosphorus removal"
+        },
+        {
+          "id": "option-3",
+          "label": "Instantly clean UV sleeves"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Excessive clarifier residence can cause settled sludge to become septic."
+    },
+    {
+      "id": "class4-ww-054",
+      "mode": "cause-effect",
+      "prompt": "A nitrifying plant has very low influent alkalinity. What can sustained nitrification contribute to?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A drop in pH"
+        },
+        {
+          "id": "option-2",
+          "label": "A guaranteed rise in pH"
+        },
+        {
+          "id": "option-3",
+          "label": "No change in alkalinity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrification consumes alkalinity; insufficient buffering can allow pH to fall."
+    },
+    {
+      "id": "class4-ww-055",
+      "mode": "cause-effect",
+      "prompt": "In a biological phosphorus-removal train, substantial nitrate enters the anaerobic zone. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Competition for readily biodegradable substrate"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic chlorine formation"
+        },
+        {
+          "id": "option-3",
+          "label": "Improved grit removal"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrate in the anaerobic zone can interfere with PAO substrate uptake and phosphorus removal."
+    },
+    {
+      "id": "class4-ww-056",
+      "mode": "cause-effect",
+      "prompt": "With constant organic load, the biological solids inventory decreases. What happens to the F/M ratio?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases"
+        },
+        {
+          "id": "option-2",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes a chlorine residual"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "F/M divides the organic loading by biological solids inventory."
+    },
+    {
+      "id": "class4-ww-057",
+      "mode": "cause-effect",
+      "prompt": "A 30-minute settleability test gives 300 mL/L settled volume, and MLSS is 3,000 mg/L. What is the sludge volume index?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "100 mL/g"
+        },
+        {
+          "id": "option-2",
+          "label": "10 mL/g"
+        },
+        {
+          "id": "option-3",
+          "label": "1,000 mL/g"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "SVI = settled volume × 1,000 ÷ MLSS = 300 × 1,000 ÷ 3,000 = 100 mL/g; the factor converts mg to g."
+    },
+    {
+      "id": "class4-ww-058",
+      "mode": "cause-effect",
+      "prompt": "If a bar screen becomes obstructed, what hydraulic symptom may appear across it?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Increased head loss"
+        },
+        {
+          "id": "option-2",
+          "label": "Reduced upstream water level only"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate generation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Obstruction restricts flow and can increase the water-level difference across the screen."
+    },
+    {
+      "id": "class4-ww-059",
+      "mode": "cause-effect",
+      "prompt": "A flowmeter reads too high while the true flow is unchanged. What is the effect on a flow-proportional chemical feed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It may overfeed"
+        },
+        {
+          "id": "option-2",
+          "label": "It must stop"
+        },
+        {
+          "id": "option-3",
+          "label": "The true flow doubles"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A controller using an inflated flow signal can command excessive feed."
+    },
+    {
+      "id": "class4-ww-060",
+      "mode": "cause-effect",
+      "prompt": "A primary clarifier is overwhelmed hydraulically. What may happen to settling?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More solids escape with overflow"
+        },
+        {
+          "id": "option-2",
+          "label": "All particles settle faster"
+        },
+        {
+          "id": "option-3",
+          "label": "BOD becomes alkalinity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Less effective settling time and higher hydraulic loading can carry solids downstream."
+    },
+    {
+      "id": "class4-ww-061",
+      "mode": "cause-effect",
+      "prompt": "At a given initial biological solids inventory, the waste solids removal rate increases while effluent solids loss stays unchanged. What is the initial effect on calculated SRT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "SRT decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "SRT increases"
+        },
+        {
+          "id": "option-3",
+          "label": "SRT equals hydraulic flow"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "SRT is solids inventory divided by the total rate of solids leaving; increasing the waste-solids mass removal rate lowers the calculated initial SRT."
+    },
+    {
+      "id": "class4-ww-062",
+      "mode": "cause-effect",
+      "prompt": "If a clarifier solids blanket reaches the effluent weir, what can increase?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Solids carryover"
+        },
+        {
+          "id": "option-2",
+          "label": "UV lamp output"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine dose automatically"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Solids near the overflow can leave with clarified effluent."
+    },
+    {
+      "id": "class4-ww-063",
+      "mode": "cause-effect",
+      "prompt": "A sudden organic load increases oxygen uptake while aeration supply stays fixed. What may happen to basin DO?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "DO decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "DO must increase"
+        },
+        {
+          "id": "option-3",
+          "label": "DO equals SVI"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Oxygen demand may exceed the unchanged oxygen transfer rate."
+    },
+    {
+      "id": "class4-ww-065",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator says: “The UV unit adds chlorine.” Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV adds chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual can be measured"
+        },
+        {
+          "id": "option-3",
+          "label": "UV requires maintenance"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "UV is a physical process and does not add chlorine."
+    },
+    {
+      "id": "class4-ww-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A supervisor says: “The chlorine residual is zero, so contact time cannot matter.” Identify the flawed claim.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Contact time cannot matter"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual is zero"
+        },
+        {
+          "id": "option-3",
+          "label": "A residual test was taken"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Both concentration and contact time matter to chlorine disinfection."
+    },
+    {
+      "id": "class4-ww-067",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician says: “SVI is high; that proves exactly which filament caused bulking.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "SVI identifies the organism"
+        },
+        {
+          "id": "option-2",
+          "label": "SVI describes settling"
+        },
+        {
+          "id": "option-3",
+          "label": "Bulking can impair settling"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "SVI measures settling characteristics, not organism identity; microscopy can help."
+    },
+    {
+      "id": "class4-ww-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A plant log states: “Because aeration DO is low, the probe must be correct and no confirmation is needed.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "No confirmation is needed"
+        },
+        {
+          "id": "option-2",
+          "label": "DO is a process variable"
+        },
+        {
+          "id": "option-3",
+          "label": "Aeration supplies oxygen"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Check the probe and compare evidence, while following the site alarm-response procedure without delaying any required immediate protective action."
+    },
+    {
+      "id": "class4-ww-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A process plan says: “Denitrification can continue without nitrate or another relevant oxidized nitrogen source.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "No oxidized nitrogen source is needed"
+        },
+        {
+          "id": "option-2",
+          "label": "Anoxic conditions are relevant"
+        },
+        {
+          "id": "option-3",
+          "label": "Carbon can support denitrification"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Denitrification reduces oxidized nitrogen, such as nitrate, using an electron donor."
+    },
+    {
+      "id": "class4-ww-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A staffing note says: “A confined space is safe because it has been entered before.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Past entry proves current safety"
+        },
+        {
+          "id": "option-2",
+          "label": "Hazards must be assessed"
+        },
+        {
+          "id": "option-3",
+          "label": "Written procedures are useful"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Conditions can change; apply site procedures and evaluate current hazards."
+    },
+    {
+      "id": "class4-ww-071",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator says: “Wasting has no effect on biological solids inventory.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Wasting has no effect on solids inventory"
+        },
+        {
+          "id": "option-2",
+          "label": "WAS carries solids"
+        },
+        {
+          "id": "option-3",
+          "label": "Solids can be measured"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Wasting removes solids from the biological treatment system."
+    },
+    {
+      "id": "class4-ww-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A shift log says: “A new foul odour proves the exact cause without any other checks.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Odour alone proves the cause"
+        },
+        {
+          "id": "option-2",
+          "label": "Odour is an observation"
+        },
+        {
+          "id": "option-3",
+          "label": "Other checks can help"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Odour is a symptom with several possible causes, so investigate further."
+    },
+    {
+      "id": "class4-ww-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A control note says: “Nitrification adds alkalinity.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrification adds alkalinity"
+        },
+        {
+          "id": "option-2",
+          "label": "Alkalinity buffers pH"
+        },
+        {
+          "id": "option-3",
+          "label": "pH can be measured"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrification consumes alkalinity and can lead to a pH drop when buffering is inadequate."
+    },
+    {
+      "id": "class4-ww-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician says: “Flow doubled but volume stayed fixed, so theoretical detention time doubled.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Detention time doubled"
+        },
+        {
+          "id": "option-2",
+          "label": "Volume stayed fixed"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow doubled"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Detention time is volume divided by flow, so it halves."
+    },
+    {
+      "id": "class4-ww-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A manager says: “A perfect instrument calibration permanently eliminates every future measurement error.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Calibration eliminates every future error"
+        },
+        {
+          "id": "option-2",
+          "label": "Instruments can be checked"
+        },
+        {
+          "id": "option-3",
+          "label": "Measurements should be recorded"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Calibration is useful but instruments can drift, foul or fail later."
+    },
+    {
+      "id": "class4-ww-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A chlorine plan says: “Dechlorinate before the disinfectant is allowed its intended contact time.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Remove residual before intended contact"
+        },
+        {
+          "id": "option-2",
+          "label": "Allow disinfectant contact"
+        },
+        {
+          "id": "option-3",
+          "label": "Monitor residual"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Removing chlorine prematurely can undermine the intended disinfection contact period."
+    },
+    {
+      "id": "class4-ww-077",
+      "mode": "tap-the-flaw",
+      "prompt": "A test report says: “The sample label is missing, so invent the sample location.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Invent the location"
+        },
+        {
+          "id": "option-2",
+          "label": "Record sample identification"
+        },
+        {
+          "id": "option-3",
+          "label": "Follow the sample procedure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Never fabricate sample identity; document the problem and follow the sampling procedure."
+    },
+    {
+      "id": "class4-ww-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A UV operator says: “Heavy particle shielding cannot affect UV performance if lamps are on.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Particle shielding cannot matter"
+        },
+        {
+          "id": "option-2",
+          "label": "Lamps emit UV"
+        },
+        {
+          "id": "option-3",
+          "label": "Suspended solids can be measured"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Suspended particles can protect microorganisms from UV exposure."
+    },
+    {
+      "id": "class4-ww-079",
+      "mode": "tap-the-flaw",
+      "prompt": "A team says: “One plant train describes the sequence in every wastewater facility.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Every facility has the same train"
+        },
+        {
+          "id": "option-2",
+          "label": "Plants have treatment units"
+        },
+        {
+          "id": "option-3",
+          "label": "A train can be documented"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Treatment configurations vary, so specify the assumed process train."
+    },
+    {
+      "id": "class4-ww-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A phosphorus-removal report says: “PAOs accumulate most phosphorus in the anaerobic zone.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aerobic uptake was assigned to the anaerobic zone"
+        },
+        {
+          "id": "option-2",
+          "label": "PAOs cycle between zones"
+        },
+        {
+          "id": "option-3",
+          "label": "Biomass contains phosphorus"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "PAOs release phosphorus anaerobically and take it up under aerobic conditions."
+    },
+    {
+      "id": "class4-ww-082",
+      "mode": "tap-the-flaw",
+      "prompt": "An operations note says: “A clarifier with rising solids can have only one possible cause.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rising solids have only one possible cause"
+        },
+        {
+          "id": "option-2",
+          "label": "Rising solids can be observed"
+        },
+        {
+          "id": "option-3",
+          "label": "Additional checks can be useful"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Gas-associated rising sludge and poor settling are different possible mechanisms."
+    },
+    {
+      "id": "class4-ww-083",
+      "mode": "tap-the-flaw",
+      "prompt": "A screening note says: “A bar screen is intended primarily to remove dissolved ammonia.” Identify the flaw.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Screening removes dissolved ammonia"
+        },
+        {
+          "id": "option-2",
+          "label": "A screen removes large debris"
+        },
+        {
+          "id": "option-3",
+          "label": "Ammonia can be tested"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Bar screens intercept coarse debris; dissolved ammonia passes through."
+    },
+    {
+      "id": "class4-ww-top-001",
+      "mode": "cause-effect",
+      "prompt": "A complete-mix activated-sludge basin receives 4,800 m³/day of primary effluent containing 180 mg/L BOD. Its 1,600 m³ aeration volume contains 2,500 mg/L mixed-liquor volatile suspended solids (MLVSS). Using aeration-basin MLVSS as the biomass inventory and ignoring solids elsewhere, what is the F/M ratio?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.216 kg BOD/(kg MLVSS·day)"
+        },
+        {
+          "id": "option-2",
+          "label": "2.16 kg BOD/(kg MLVSS·day)"
+        },
+        {
+          "id": "option-3",
+          "label": "0.046 kg BOD/(kg MLVSS·day)"
+        },
+        {
+          "id": "option-4",
+          "label": "4.63 kg BOD/(kg MLVSS·day)"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "F/M = influent BOD mass per day ÷ biomass mass. Since 1 mg/L = 0.001 kg/m³, the food load is 4,800 m³/day × 180 mg/L × 0.001 kg/m³ per mg/L = 864 kg BOD/day. The biomass is 1,600 m³ × 2,500 mg/L × 0.001 kg/m³ per mg/L = 4,000 kg MLVSS. Thus F/M = 864 kg BOD/day ÷ 4,000 kg MLVSS = 0.216 kg BOD/(kg MLVSS·day). This is the specified basin-only inventory; other accounting boundaries may yield a different result."
+    },
+    {
+      "id": "class4-ww-top-002",
+      "mode": "cause-effect",
+      "prompt": "The measured suspended-solids inventory across an activated-sludge system is 7,000 kg. Waste sludge leaves the system at 100 m³/day and 6,000 mg/L suspended solids; final effluent leaves at 5,000 m³/day and 20 mg/L suspended solids. These are the only solids outputs. What is the calculated solids retention time (SRT)?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "10 days"
+        },
+        {
+          "id": "option-2",
+          "label": "11.7 days"
+        },
+        {
+          "id": "option-3",
+          "label": "7 days"
+        },
+        {
+          "id": "option-4",
+          "label": "70 days"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "SRT = solids inventory ÷ total solids leaving per day. Convert 1 mg/L to 0.001 kg/m³. Waste solids = 100 m³/day × 6,000 mg/L × 0.001 = 600 kg/day. Effluent solids = 5,000 m³/day × 20 mg/L × 0.001 = 100 kg/day. Total loss = 600 + 100 = 700 kg/day. SRT = 7,000 kg ÷ 700 kg/day = 10 days. Ignoring effluent loss would give about 11.7 days, but the question includes it."
+    },
+    {
+      "id": "class4-ww-top-003",
+      "mode": "cause-effect",
+      "prompt": "A primary clarifier receives 12,000 m³/day of influent plus 1,200 m³/day of recycle, both entering the clarifier. Its water surface area is 550 m². What is the hydraulic surface overflow rate based on total entering flow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "24 m³/(m²·day)"
+        },
+        {
+          "id": "option-2",
+          "label": "21.8 m³/(m²·day)"
+        },
+        {
+          "id": "option-3",
+          "label": "2.4 m³/(m²·day)"
+        },
+        {
+          "id": "option-4",
+          "label": "13,200 m³/(m²·day)"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Surface overflow rate = total clarifier flow ÷ water surface area. Add both entering flows: 12,000 + 1,200 = 13,200 m³/day. Divide by 550 m²: 13,200 m³/day ÷ 550 m² = 24 m³/(m²·day). The calculation is a hydraulic loading estimate, not a claim that this rate is a site-specific acceptable operating limit."
+    },
+    {
+      "id": "class4-ww-order-001",
+      "mode": "before-after",
+      "prompt": "In the in-line equalization configuration illustrated in the EPA preliminary-treatment training, is the equalization basin before or after primary treatment along the main liquid path?",
+      "correctAnswer": "before",
+      "explanation": "The example places an in-line equalization basin upstream of primary treatment. Equalization can also be configured off-line; this answer is specific to the illustrated in-line arrangement."
+    },
+    {
+      "id": "class4-ww-order-002",
+      "mode": "before-after",
+      "prompt": "In the common flow-equalization arrangement described in EPA preliminary-treatment training, is the grit chamber before or after the equalization basin along the liquid path?",
+      "correctAnswer": "before",
+      "explanation": "The EPA training describes equalization as typically located downstream of grit removal. Alternative layouts exist."
+    },
+    {
+      "id": "class4-ww-order-003",
+      "mode": "before-after",
+      "prompt": "In the series bar-screen and comminutor arrangement described in the EPA package-plant manual, is the comminutor before or after the bar screen along the flow path?",
+      "correctAnswer": "after",
+      "explanation": "In the series example, the bar screen precedes the comminutor; the same manual notes that the units may instead be arranged in parallel."
+    },
+    {
+      "id": "class4-ww-order-004",
+      "mode": "before-after",
+      "prompt": "In conventional activated sludge, is secondary clarification before or after the aeration basin along the liquid path?",
+      "correctAnswer": "after",
+      "explanation": "Mixed liquor flows from aeration to the secondary clarifier, where biological solids settle; return sludge is a separate recycle stream."
+    },
+    {
+      "id": "class4-ww-order-005",
+      "mode": "before-after",
+      "prompt": "In a conventional activated-sludge plant using UV disinfection of its liquid effluent, is the secondary clarifier before or after the UV reactor along the main liquid path?",
+      "correctAnswer": "before",
+      "explanation": "For this specified secondary-effluent UV application, clarification precedes UV exposure. Solids removal helps limit particulate shielding; layouts and treatment levels vary."
+    },
+    {
+      "id": "class4-ww-order-007",
+      "mode": "before-after",
+      "prompt": "In the EPA example chlorine-contact system, is chlorine introduced before or after the main chlorine contact period along the liquid path?",
+      "correctAnswer": "before",
+      "explanation": "The EPA schematic places chlorine introduction near the contact basin inlet, followed by the principal contact period as the wastewater passes through the basin."
+    },
+    {
+      "id": "class4-ww-order-008",
+      "mode": "before-after",
+      "prompt": "For the same nitrogen atom in conventional complete nitrification, is its conversion from ammonia to nitrite before or after its conversion from nitrite to nitrate?",
+      "correctAnswer": "before",
+      "explanation": "Nitrite is the intermediate: ammonia oxidation produces nitrite, which can then be oxidized to nitrate. Other nitrogen removal routes are not being described."
+    },
+    {
+      "id": "class4-ww-order-009",
+      "mode": "before-after",
+      "prompt": "For a nitrogen atom undergoing the simplified denitrification pathway described by EPA, is nitrate reduction to nitrite before or after nitrite reduction toward nitrogen gas?",
+      "correctAnswer": "before",
+      "explanation": "In the illustrated pathway, nitrate is reduced to nitrite; further reduction converts nitrogen intermediates toward nitrogen gas."
+    },
+    {
+      "id": "class4-ww-order-010",
+      "mode": "before-after",
+      "prompt": "In the main-flow path of the modified Ludzack–Ettinger process, is the anoxic zone before or after the aerobic zone?",
+      "correctAnswer": "before",
+      "explanation": "The MLE configuration places its anoxic zone upstream of the aerobic zone in the main flow. An internal recycle brings nitrate-rich mixed liquor back to the anoxic zone."
+    },
+    {
+      "id": "class4-ww-order-011",
+      "mode": "before-after",
+      "prompt": "In the four-stage Bardenpho process, is the second anoxic zone before or after the first aerobic zone on the main flow path?",
+      "correctAnswer": "after",
+      "explanation": "The four-stage configuration includes a post-anoxic zone downstream of the first aerobic zone, providing an additional opportunity for denitrification."
+    },
+    {
+      "id": "class4-ww-order-012",
+      "mode": "before-after",
+      "prompt": "In the five-stage modified Bardenpho configuration, is the anaerobic zone before or after the first anoxic zone on the main flow path?",
+      "correctAnswer": "before",
+      "explanation": "The five-stage configuration adds an anaerobic zone at the front of the four-stage Bardenpho system, upstream of its first anoxic zone."
+    },
+    {
+      "id": "class4-ww-order-013",
+      "mode": "before-after",
+      "prompt": "In a sequencing batch reactor using the standard discrete five-phase cycle, is the react phase before or after the settle phase within the same batch?",
+      "correctAnswer": "before",
+      "explanation": "In the standard cycle, the react phase precedes quiescent settling. Reactions can also occur during other phases, and individual SBR operating strategies vary."
+    },
+    {
+      "id": "class4-ww-order-014",
+      "mode": "before-after",
+      "prompt": "In a sequencing batch reactor using the standard discrete five-phase cycle, is the draw phase before or after the settle phase within the same batch?",
+      "correctAnswer": "after",
+      "explanation": "Following settling, the draw or decant phase removes clarified effluent. This comparison concerns the same batch, not a later cycle."
+    },
+    {
+      "id": "class4-ww-order-015",
+      "mode": "before-after",
+      "prompt": "During anaerobic digestion of a particular complex organic molecule, is hydrolysis before or after its acid fermentation?",
+      "correctAnswer": "before",
+      "explanation": "Hydrolysis breaks complex organics into smaller soluble molecules, and fermentation converts those products into organic acids. The processes can occur concurrently on different material in a mixed digester."
+    },
+    {
+      "id": "class4-ww-order-016",
+      "mode": "before-after",
+      "prompt": "In anaerobic digestion of a given feed molecule through the acid pathway described by EPA, is fermentation to organic acids before or after conversion to methane?",
+      "correctAnswer": "before",
+      "explanation": "Fermentation creates organic acids that are further converted by the methanogenic pathway to methane and carbon dioxide. Different steps can occur simultaneously on different material."
+    },
+    {
+      "id": "class4-ww-order-017",
+      "mode": "before-after",
+      "prompt": "In the typical multi-stage anaerobic biosolids train described by EPA, is thickening before or after digestion along the solids path?",
+      "correctAnswer": "before",
+      "explanation": "EPA describes the typical arrangement with thickening upstream of multi-stage anaerobic digestion, reducing the volume treated. Solids trains can differ by facility."
+    },
+    {
+      "id": "class4-ww-order-018",
+      "mode": "before-after",
+      "prompt": "In the typical multi-stage anaerobic biosolids train described by EPA, is dewatering before or after digestion along the solids path?",
+      "correctAnswer": "after",
+      "explanation": "EPA describes multi-stage anaerobic digestion upstream of dewatering in the typical solids train. Some facilities handle solids differently."
+    },
+    {
+      "id": "class4-ww-order-019",
+      "mode": "before-after",
+      "prompt": "For a centrifuge dewatering process, is formation of the dewatered cake before or after the solids slurry enters the centrifuge?",
+      "correctAnswer": "after",
+      "explanation": "The slurry feeds the centrifuge, which separates solids and liquid and discharges dewatered solids as cake."
+    },
+    {
+      "id": "class4-ww-order-020",
+      "mode": "before-after",
+      "prompt": "In the EPA laboratory method for mixed-liquor settleability, is the 30-minute settled-volume reading before or after the sample is placed in the settling vessel?",
+      "correctAnswer": "after",
+      "explanation": "The sample is placed in a graduated vessel and allowed to settle; the settled sludge volume is read at 30 minutes. Follow the laboratory’s current approved method."
+    },
+    {
+      "id": "class4-ww-order-021",
+      "mode": "before-after",
+      "prompt": "In the gravimetric suspended-solids method described in the EPA operator laboratory manual, is filtration of a measured sample before or after the final dry-residue weighing?",
+      "correctAnswer": "before",
+      "explanation": "The sample is filtered to retain suspended solids, and the retained residue is dried, cooled, and weighed. Follow the current approved laboratory method."
+    },
+    {
+      "id": "class4-ww-order-022",
+      "mode": "before-after",
+      "prompt": "In the EPA volatile suspended-solids procedure, is the weighing of the dried sample-bearing residue for suspended solids before or after ignition of that residue?",
+      "correctAnswer": "before",
+      "explanation": "The dried sample-bearing residue is weighed for suspended solids, then ignited and weighed again to determine the volatile fraction. The filter or crucible may also be pre-ignited and weighed before sample analysis. Follow the current laboratory SOP."
+    }
+  ]
+}

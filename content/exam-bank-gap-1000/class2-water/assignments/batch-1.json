@@ -1,0 +1,249 @@
+{
+ "courseKey": "class2-water",
+ "bankKey": "class2-water",
+ "batch": 1,
+ "size": 26,
+ "conceptualCount": 21,
+ "calcCount": 5,
+ "topicPoolRound": 1,
+ "questionNumStart": 2451,
+ "questionNumEnd": 2476,
+ "itemIdStart": "WATER-TREATMENT-L2-451",
+ "itemIdEnd": "WATER-TREATMENT-L2-476",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2451,
+   "itemId": "WATER-TREATMENT-L2-451",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "coagulation chemistry and alkalinity"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2452,
+   "itemId": "WATER-TREATMENT-L2-452",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "jar test dose selection"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2453,
+   "itemId": "WATER-TREATMENT-L2-453",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "tube and plate settlers"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2454,
+   "itemId": "WATER-TREATMENT-L2-454",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "dual media filtration"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2455,
+   "itemId": "WATER-TREATMENT-L2-455",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CT with baffling factors"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2456,
+   "itemId": "WATER-TREATMENT-L2-456",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "breakpoint chlorination"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2457,
+   "itemId": "WATER-TREATMENT-L2-457",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "laboratory titrations"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2458,
+   "itemId": "WATER-TREATMENT-L2-458",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical storage and handling"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2459,
+   "itemId": "WATER-TREATMENT-L2-459",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "coagulation chemistry and alkalinity"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2460,
+   "itemId": "WATER-TREATMENT-L2-460",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "jar test dose selection"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2461,
+   "itemId": "WATER-TREATMENT-L2-461",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "tube and plate settlers"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2462,
+   "itemId": "WATER-TREATMENT-L2-462",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "dual media filtration"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2463,
+   "itemId": "WATER-TREATMENT-L2-463",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CT with baffling factors"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2464,
+   "itemId": "WATER-TREATMENT-L2-464",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "breakpoint chlorination"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2465,
+   "itemId": "WATER-TREATMENT-L2-465",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "laboratory titrations"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2466,
+   "itemId": "WATER-TREATMENT-L2-466",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical storage and handling"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2467,
+   "itemId": "WATER-TREATMENT-L2-467",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "coagulation chemistry and alkalinity"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2468,
+   "itemId": "WATER-TREATMENT-L2-468",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "jar test dose selection"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2469,
+   "itemId": "WATER-TREATMENT-L2-469",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "tube and plate settlers"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2470,
+   "itemId": "WATER-TREATMENT-L2-470",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "dual media filtration"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2471,
+   "itemId": "WATER-TREATMENT-L2-471",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CT with baffling factors"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2472,
+   "itemId": "WATER-TREATMENT-L2-472",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CT calculation with baffling factor"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2473,
+   "itemId": "WATER-TREATMENT-L2-473",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "chemical feed with purity correction"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2474,
+   "itemId": "WATER-TREATMENT-L2-474",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "alkalinity consumption"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2475,
+   "itemId": "WATER-TREATMENT-L2-475",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "filter loading with cells out of service"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2476,
+   "itemId": "WATER-TREATMENT-L2-476",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CT calculation with baffling factor"
+  }
+ ]
+}

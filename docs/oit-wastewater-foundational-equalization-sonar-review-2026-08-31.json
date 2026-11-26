@@ -1,0 +1,19 @@
+{
+  "reviews": [
+    {
+      "questionNum": 79,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option is traceable to the cited U.S. EPA technical description of mixing/aeration in equalization basins preventing solids deposition and maintaining basin conditions.",
+        "Question stays within general technical background and does not assert Ontario-specific legal or permit requirements.",
+        "Learning objective (basic purpose of mixing in a flow-equalization basin) is appropriate for foundational Ontario OIT level.",
+        "Distractors are clearly incorrect yet plausible to a novice and do not normalize unsafe operation, missed maintenance, or omitted required actions.",
+        "Explanation accurately reflects the source scope as general process guidance and avoids universal operational prescriptions."
+      ],
+      "requiredChanges": [
+        "Clarify in the stem or explanation that equalization basins are one possible plant design feature, to avoid any implication that all Ontario plants must use them."
+      ]
+    }
+  ]
+}

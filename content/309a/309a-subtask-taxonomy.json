@@ -1,0 +1,133 @@
+{
+  "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
+  "retrievedAt": "2026-08-17",
+  "majorWorkActivities": [
+    {
+      "code": "A",
+      "sourceUrl": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-a.shtml",
+      "subtasks": [
+        ["A-1.01", "Uses personal protective equipment and safety equipment"],
+        ["A-1.02", "Maintains a safe work environment"],
+        ["A-1.03", "Performs lockout and tagout procedures"],
+        ["A-2.01", "Uses common and specialty tools and equipment"],
+        ["A-2.02", "Uses access equipment"],
+        ["A-2.03", "Uses rigging, hoisting and lifting equipment"],
+        ["A-3.01", "Interprets drawings and specifications"],
+        ["A-3.02", "Organizes materials and supplies"],
+        ["A-3.03", "Plans project tasks and procedures"],
+        ["A-3.04", "Prepares the worksite"],
+        ["A-3.05", "Maintains project documentation"],
+        ["A-4.01", "Fabricates support structures"],
+        ["A-4.02", "Installs brackets, hangers and fasteners"],
+        ["A-4.03", "Installs seismic restraints"],
+        ["A-5.01", "Performs system startup and shutdown"],
+        ["A-5.02", "Commissions and decommissions electrical systems"],
+        ["A-6.01", "Uses communication techniques"],
+        ["A-6.02", "Uses mentoring techniques"]
+      ]
+    },
+    {
+      "code": "B",
+      "sourceUrl": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-b.shtml",
+      "subtasks": [
+        ["B-7.01", "Installs single-phase consumer/supply services and metering equipment"],
+        ["B-7.02", "Installs three-phase consumer/supply services and metering equipment"],
+        ["B-7.03", "Services and maintains single-phase consumer/supply services and metering equipment"],
+        ["B-7.04", "Services and maintains three-phase consumer/supply services and metering equipment"],
+        ["B-8.01", "Installs overcurrent protection devices"],
+        ["B-8.02", "Installs ground-fault, arc-fault and surge protection devices"],
+        ["B-8.03", "Services and maintains protection devices"],
+        ["B-9.01", "Installs power distribution equipment"],
+        ["B-9.02", "Services and maintains power distribution equipment"],
+        ["B-10.01", "Installs power conditioning, UPS and surge suppression systems"],
+        ["B-10.02", "Services and maintains power conditioning, UPS and surge suppression systems"],
+        ["B-11.01", "Installs bonding and grounding systems"],
+        ["B-11.02", "Installs ground-fault protection and detection systems"],
+        ["B-11.03", "Installs lightning protection systems"],
+        ["B-11.04", "Services and maintains bonding and grounding systems"],
+        ["B-12.01", "Installs AC generating systems"],
+        ["B-12.02", "Services and maintains AC generating systems"],
+        ["B-12.03", "Installs DC generating and conversion systems"],
+        ["B-12.04", "Services and maintains DC generating and conversion systems"],
+        ["B-13.01", "Installs renewable energy generating and storage systems"],
+        ["B-13.02", "Services and maintains renewable energy generating and storage systems"],
+        ["B-14.01", "Installs high-voltage equipment"],
+        ["B-14.02", "Installs high-voltage cables"],
+        ["B-14.03", "Services and maintains high-voltage systems"],
+        ["B-15.01", "Installs extra-low-voltage transformers"],
+        ["B-15.02", "Installs low-voltage single-phase transformers"],
+        ["B-15.03", "Installs low-voltage three-phase transformers"],
+        ["B-15.04", "Installs high-voltage transformers"],
+        ["B-15.05", "Services and maintains transformers"]
+      ]
+    },
+    {
+      "code": "C",
+      "sourceUrl": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-c.shtml",
+      "subtasks": [
+        ["C-16.01", "Installs conductors and cables"],
+        ["C-16.02", "Installs conduit and fittings"],
+        ["C-16.03", "Installs raceways"],
+        ["C-16.04", "Installs boxes and enclosures"],
+        ["C-16.05", "Services and maintains raceways, conductors, cables and enclosures"],
+        ["C-17.01", "Installs luminaires"],
+        ["C-17.02", "Installs wiring devices"],
+        ["C-17.03", "Installs lighting controls"],
+        ["C-17.04", "Installs lighting standards"],
+        ["C-17.05", "Services branch circuitry"],
+        ["C-17.06", "Installs, services and maintains airport visual aid systems"],
+        ["C-17.07", "Installs, services and maintains traffic signal lights and controls"],
+        ["C-18.01", "Connects HVAC systems and associated equipment"],
+        ["C-18.02", "Installs HVAC controls"],
+        ["C-18.03", "Services and maintains HVAC systems and controls"],
+        ["C-19.01", "Installs electric heating systems"],
+        ["C-19.02", "Installs electric heating system controls"],
+        ["C-19.03", "Services and maintains electric heating systems and controls"],
+        ["C-20.01", "Installs exit and emergency lighting"],
+        ["C-20.02", "Services and maintains exit and emergency lighting systems"],
+        ["C-21.01", "Installs cathodic protection systems"],
+        ["C-21.02", "Services and maintains cathodic protection systems"]
+      ]
+    },
+    {
+      "code": "D",
+      "sourceUrl": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-d.shtml",
+      "subtasks": [
+        ["D-22.01", "Installs motor starters"],
+        ["D-22.02", "Services and maintains motor starters"],
+        ["D-22.03", "Installs motor control devices"],
+        ["D-22.04", "Services and maintains motor controls"],
+        ["D-23.01", "Installs AC drives"],
+        ["D-23.02", "Services and maintains AC drives"],
+        ["D-23.03", "Installs DC drives"],
+        ["D-23.04", "Services and maintains DC drives"],
+        ["D-24.01", "Installs single-phase motors"],
+        ["D-24.02", "Services and maintains single-phase motors"],
+        ["D-24.03", "Installs three-phase motors"],
+        ["D-24.04", "Services and maintains three-phase motors"],
+        ["D-24.05", "Installs DC motors"],
+        ["D-24.06", "Services and maintains DC motors"],
+        ["D-25.01", "Installs automated control systems"],
+        ["D-25.02", "Services and maintains automated control systems"],
+        ["D-25.03", "Programs and configures automated control systems"]
+      ]
+    },
+    {
+      "code": "E",
+      "sourceUrl": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-e.shtml",
+      "subtasks": [
+        ["E-26.01", "Installs fire alarm systems"],
+        ["E-26.02", "Services and maintains fire alarm systems"],
+        ["E-26.03", "Installs security and surveillance systems"],
+        ["E-26.04", "Services and maintains security and surveillance systems"],
+        ["E-27.01", "Installs voice/data/video and CATV systems"],
+        ["E-27.02", "Installs public-address and intercom systems"],
+        ["E-27.03", "Installs nurse-call systems"],
+        ["E-27.04", "Services and maintains communication systems"],
+        ["E-28.01", "Installs building automation systems"],
+        ["E-28.02", "Installs building control systems"],
+        ["E-28.03", "Services and maintains integrated control systems"]
+      ]
+    }
+  ]
+}

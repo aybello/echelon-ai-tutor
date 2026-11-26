@@ -1,0 +1,772 @@
+import { isTeamRegion } from "../../shared/teamPricing";
+import { provisionIndividualSubscription } from "./provisionIndividualSubscription";
+import { fulfilIndividualPurchase } from "./fulfilIndividualPurchase";
+import { processIndividualDispute } from "./paymentState";
+import type { Express, Request, Response } from "express";
+import express from "express";
+import { stripe } from "./stripe";
+import { getDb } from "../db";
+import { purchases, subscriptions, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
+import { notifyOwner } from "../_core/notification";
+import { sendSubscriptionRenewalEmail } from "../email";
+import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, type OrganizationSubscriptionTier } from "./subscriptionProducts";
+import { PRODUCT_STUDY_PATHS } from "./products";
+import { eq, and } from "drizzle-orm";
+import { normalizeEmail } from "../_core/access";
+import { getSubscriptionPeriod } from "./subscriptionPeriod";
+import { trackEvent } from "../analytics";
+import { ENV } from "../_core/env";
+import { provisionOrgFromWebhook } from "./provisionOrg";
+import { processOrgInvoice, classifyInvoiceSubscription } from "./processOrgInvoice";
+import { recordOrganizationInvoiceConversion } from "./recordOrgInvoiceAnalytics";
+import type { SubscriptionProvince } from "./subscriptionProducts";
+import {
+  INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE,
+  usesTwelveMonthIndividualExamPassPolicy,
+} from "./individualExamPass";
+import { processRefund } from "./processRefund";
+import {
+  normalizePaymentIntentId,
+  paymentTimestampFromStripeEvent,
+} from "./paymentTimestamp";
+import {
+  handleFlexDisputeClosed,
+  handleFlexDisputeCreated,
+  handleFlexFullRefund,
+  handleFlexPartialRefund,
+  handleFlexUnallocatedRefund,
+  flexDisputeOutcome,
+} from "../teams/flexRefundDisputeHandlers";
+
+export function parseRefundLicenceIds(metadata: Record<string, string> | null | undefined): number[] {
+  const raw = metadata?.licenceIds ?? metadata?.licence_ids;
+  if (!raw) return [];
+  let values: unknown[];
+  try {
+    const parsed = JSON.parse(raw);
+    values = Array.isArray(parsed) ? parsed : [parsed];
+  } catch {
+    values = raw.split(",");
+  }
+  return values
+    .map(value => Number(String(value).trim()))
+    .filter(value => Number.isInteger(value) && value > 0);
+}
+
+export function registerStripeWebhook(app: Express) {
+  // MUST use raw body parser for Stripe signature verification
+  app.post(
+    "/api/stripe/webhook",
+    express.raw({ type: "application/json" }),
+    async (req: Request, res: Response) => {
+      const sig = req.headers["stripe-signature"];
+      const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+      if (!webhookSecret) {
+        console.error("[Stripe Webhook] STRIPE_WEBHOOK_SECRET not configured -- rejecting.");
+        return res.status(500).send("Webhook not configured");
+      }
+      if (!sig) {
+        console.warn("[Stripe Webhook] Missing stripe-signature header -- rejecting.");
+        return res.status(400).send("Missing signature");
+      }
+
+      let event;
+      try {
+        event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
+      } catch (err: any) {
+        console.error("[Stripe Webhook] Signature verification failed:", err.message);
+        return res.status(400).send(`Webhook Error: ${err.message}`);
+      }
+
+      // Guard against malformed events
+      if (!event || !event.id) {
+        console.warn("[Stripe Webhook] Received event with no id -- ignoring");
+        return res.json({ received: true });
+      }
+
+      console.log(`[Stripe Webhook] Event: ${event.type} | ID: ${event.id}`);
+
+      if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
+        const session = event.data.object as any;
+
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database unavailable");
+
+          // --- Teams Flex Retake Extension fulfilment branch ---
+          if (session.metadata?.type === "team_flex_extension") {
+            const { fulfilRetakeExtension } = await import("../teams/flexExtensionService");
+            const extensionId = Number.parseInt(session.metadata.teamFlexExtensionId, 10);
+            if (!Number.isInteger(extensionId) || extensionId <= 0) {
+              console.error("[Stripe Webhook] team_flex_extension session missing extension ID");
+              return res.json({ received: true });
+            }
+            const paymentIntentId = typeof session.payment_intent === "string"
+              ? session.payment_intent
+              : session.payment_intent?.id ?? null;
+            const result = await fulfilRetakeExtension(extensionId, {
+              id: session.id,
+              paymentIntentId,
+              amountSubtotal: session.amount_subtotal ?? 0,
+              currency: session.currency ?? "",
+              paymentStatus: session.payment_status ?? "unpaid",
+            }, paymentTimestampFromStripeEvent(event.created));
+            if (!result.success) {
+              console.error(`[Stripe Webhook] Retake Extension fulfilment failed for extension #${extensionId}: ${result.error}`);
+              await notifyOwner({
+                title: "Retake Extension payment needs review",
+                content: `Extension #${extensionId} was paid but could not be applied automatically. Stripe session: ${session.id}. Reason: ${result.error ?? "unknown"}.`,
+              }).catch(() => {});
+              // The service returns non-success only for a durable mismatch.
+              // A 2xx response prevents Stripe retries from charging no new
+              // money while repeating an unrecoverable state.
+              return res.json({ received: true, reviewRequired: true });
+            }
+            return res.json({ received: true });
+          }
+
+          // --- Teams Flex fulfilment branch ---
+          if (session.metadata?.type === "team_flex") {
+            const { fulfilFlexOrder } = await import("../teams/fulfilFlexOrder");
+            const teamFlexOrderId = Number.parseInt(session.metadata.teamFlexOrderId, 10);
+            if (!Number.isInteger(teamFlexOrderId) || teamFlexOrderId <= 0) {
+              console.error("[Stripe Webhook] team_flex session missing teamFlexOrderId");
+              return res.json({ received: true });
+            }
+            const result = await fulfilFlexOrder({
+              id: session.id,
+              payment_intent: session.payment_intent ?? null,
+              amount_total: session.amount_total ?? 0,
+              amount_subtotal: session.amount_subtotal ?? 0,
+              amount_tax: session.total_details?.amount_tax ?? 0,
+              currency: session.currency ?? "cad",
+              customer: session.customer ?? null,
+              payment_status: session.payment_status ?? "unpaid",
+            }, teamFlexOrderId);
+            if (!result.success) {
+              console.error(`[Stripe Webhook] Flex fulfilment failed for order #${teamFlexOrderId}: ${result.error}`);
+              return res.status(503).json({ error: "Course Pass fulfilment is incomplete" });
+            }
+            return res.json({ received: true });
+          }
+
+          // Subscription and Teams events use their own webhook paths. An
+          // unversioned historical session is deliberately not an entitlement
+          // writer. It requires separate evidence-bound recovery review.
+          const isIndividualExamPass =
+            session.mode === "payment" &&
+            session.metadata?.entitlement_type === INDIVIDUAL_EXAM_PASS_ENTITLEMENT_TYPE;
+          if (!isIndividualExamPass) return res.json({ received: true });
+
+          if (!usesTwelveMonthIndividualExamPassPolicy(session.metadata?.individual_access_policy)) {
+            console.error(`[Stripe Webhook] Individual Exam Pass session ${session.id} is missing its approved access policy`);
+            await notifyOwner({
+              title: "Individual Pass payment needs metadata review",
+              content: `Stripe session ${session.id} has Individual Pass metadata without the approved access-policy marker. No access was granted. Review the session through the evidence-bound recovery process.`,
+            }).catch((error) => {
+              console.error("[Stripe Webhook] Could not notify owner about Individual Pass metadata:", error);
+            });
+            return res.json({ received: true, reviewRequired: true });
+          }
+
+          // A Checkout completion can precede payment for delayed methods. Only
+          // the signed async success event can authorize that later fulfilment.
+          if (event.type === "checkout.session.completed" && session.payment_status !== "paid") {
+            return res.json({ received: true, pendingPayment: true });
+          }
+
+          const productKey = session.metadata?.product_key;
+          const productName = session.metadata?.product_name;
+          const email = normalizeEmail(
+            session.customer_details?.email ??
+            session.customer_email ??
+            session.metadata?.customer_email
+          );
+          const parsedUserId = Number.parseInt(session.metadata?.user_id ?? "", 10);
+          const userId = Number.isInteger(parsedUserId) && parsedUserId > 0
+            ? parsedUserId
+            : null;
+          // Name: prefer Stripe's customer_details, fall back to pre-checkout modal metadata
+          const webhookCustomerName: string | null =
+            session.customer_details?.name ??
+            (session.metadata?.customer_name || null);
+          // Phone: prefer Stripe's customer_details, fall back to pre-checkout modal metadata
+          const webhookPrePhone: string | null =
+            session.customer_details?.phone ??
+            (session.metadata?.customer_phone || null);
+          // Stripe supplies currency for live Checkout Sessions. CAD is the
+          // safe compatibility default for older internal fixtures and records
+          // that predate this receipt metadata, since new sales are CAD-only.
+          const paymentCurrency = session.currency?.toLowerCase() ?? "cad";
+          if (paymentCurrency !== "cad" && paymentCurrency !== "usd") {
+            throw new Error("Unsupported individual Checkout currency");
+          }
+          const amountPaidCents = session.amount_total ?? 0;
+          const paymentAmountLabel = `${paymentCurrency === "usd" ? "US$" : "CA$"}${(amountPaidCents / 100).toFixed(2)}`;
+          const stripeSessionId = session.id;
+          const stripePaymentIntentId = normalizePaymentIntentId(session.payment_intent);
+          if (!productKey || !email) {
+            // email is already normalized above
+            console.error("[Stripe Webhook] Missing product_key or email in session metadata");
+            return res.json({ received: true });
+          }
+
+          // Fulfillment, refunds and disputes acquire the same payment guard.
+          // Live charge state is checked inside that transaction, even on replay.
+          const fulfilled = await fulfilIndividualPurchase(db, {
+            userId: userId ?? undefined, email, phone: webhookPrePhone,
+            customerName: webhookCustomerName, productKey, productName: productName ?? productKey,
+            // New checkouts remain CAD-only; preserve historical USD receipt currency.
+            amountCAD: amountPaidCents, paymentCurrency, stripeSessionId, stripePaymentIntentId,
+          }, paymentIntentId => stripe.paymentIntents.retrieve(paymentIntentId, { expand: ["latest_charge"] }));
+          if (fulfilled.state === "blocked") {
+            return res.json({ received: true, accessBlocked: fulfilled.reason });
+          }
+          if (fulfilled.state === "created") {
+            const purchasePhone = session.customer_details?.phone ?? null;
+            await notifyOwner({
+              title: `New Purchase: ${productName ?? productKey}`,
+              content: `${email} purchased ${productName ?? productKey} for ${paymentAmountLabel}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
+            }).catch(error => console.error("[Stripe Webhook] Could not notify owner about purchase:", error));
+            const analyticsIdentityHash = session.metadata?.analytics_identity_hash || null;
+            const analyticsContext = {
+              source: session.metadata?.analytics_source || "unknown",
+              device: session.metadata?.analytics_device || "unknown",
+              province: session.metadata?.analytics_province || "unknown",
+              surface: session.metadata?.analytics_surface || "unknown",
+            };
+            await trackEvent("checkout_completed", { email, identityHash: analyticsIdentityHash, productKey, extra: { amountCAD: amountPaidCents, currency: paymentCurrency, ...analyticsContext } })
+              .catch(error => console.error("[Stripe Webhook] Checkout analytics failed:", error));
+            await trackEvent("access_activated", { email, identityHash: analyticsIdentityHash, productKey, extra: { activationType: "individual_purchase", ...analyticsContext } })
+              .catch(error => console.error("[Stripe Webhook] Access analytics failed:", error));
+            // Close the loop on any abandoned cart this buyer left behind, so
+            // they stop being chased and the recovery rate stays truthful.
+            await import("../abandonedCheckout")
+              .then(m => m.markAbandonedCheckoutRecovered(db, email))
+              .catch(error => console.error("[Stripe Webhook] Abandoned cart close failed:", error));
+          }
+        } catch (err: any) {
+          console.error("[Stripe Webhook] Error processing checkout.session.completed:", err);
+          // Notify owner immediately so they can manually restore access
+          const sessionEmail = session?.customer_details?.email ?? session?.customer_email ?? session?.metadata?.customer_email ?? "unknown";
+          const sessionProduct = session?.metadata?.product_name ?? session?.metadata?.product_key ?? "unknown";
+          await trackEvent("stripe_provisioning_failed", { email: sessionEmail, productKey: sessionProduct, extra: { error: err.message } })
+            .catch((trackingError) => console.error("[Stripe Webhook] Failure analytics could not be recorded:", trackingError));
+          notifyOwner({
+            title: "⚠️ Webhook Processing Error",
+            content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: correct the issue, then replay the signed Stripe event. Do not create access manually without evidence-bound approval.`,
+          }).catch((err) => { console.error("[webhook] notifyOwner failed:", err); });
+          // A non-2xx response makes a transient database or Stripe lookup
+          // failure retryable. Durable metadata mismatches return earlier with 2xx.
+          return res.status(503).json({ error: "Individual Exam Pass fulfilment is incomplete" });
+        }
+      }
+
+      // ── Subscription lifecycle events ──────────────────────────────────────
+
+      if (event.type === "customer.subscription.created" || event.type === "customer.subscription.updated") {
+        const eventSubscription = event.data.object as any;
+
+        // Retrieve live Stripe data BEFORE classifying the subscription.
+        // This ensures corrected metadata is used when replaying an older event.
+        let liveSubscription: any;
+        try {
+          liveSubscription = await stripe.subscriptions.retrieve(eventSubscription.id);
+        } catch (error: any) {
+          console.error("[Stripe Webhook] Could not retrieve live subscription:", error.message);
+          return res.status(503).json({ error: "Could not retrieve live Stripe subscription" });
+        }
+
+        // ── Org (team) subscription branch ────────────────────────────────
+        if (liveSubscription.metadata?.type === "org") {
+          const managerEmail = normalizeEmail(liveSubscription.metadata?.manager_email ?? "");
+          const orgName = liveSubscription.metadata?.org_name?.trim() ?? "";
+          const province = liveSubscription.metadata?.subscription_province;
+          if (!isTeamRegion(province)) {
+            console.error("[Stripe Webhook] Invalid team region in subscription metadata.");
+            return res.status(503).json({ error: "Invalid organization region in live Stripe metadata" });
+          }
+          const tier = liveSubscription.metadata?.subscription_tier as OrganizationSubscriptionTier;
+          const seats = liveSubscription.items.data[0]?.quantity ?? 0;
+          const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(liveSubscription);
+
+          if (!managerEmail || !orgName || !province || !tier || seats < 1 || !currentPeriodEnd) {
+            await notifyOwner({
+              title: "Team provisioning metadata is incomplete",
+              content: `Subscription ${liveSubscription.id} cannot be provisioned. Correct its live Stripe metadata and replay event ${event.id}.`,
+            }).catch(() => {});
+            return res.status(503).json({ error: "Organization subscription metadata is incomplete" });
+          }
+
+          const db = await getDb();
+          if (!db) return res.status(503).json({ error: "Database unavailable" });
+
+          const result = await provisionOrgFromWebhook(db, {
+            stripeEventId: event.id,
+            eventType: event.type,
+            stripeSubscriptionId: liveSubscription.id,
+            stripeCustomerId: typeof liveSubscription.customer === "string" ? liveSubscription.customer : (liveSubscription.customer as any).id,
+            orgName,
+            managerEmail,
+            province,
+            tier,
+            seats,
+            currentPeriodStart,
+            currentPeriodEnd,
+            status: liveSubscription.status === "active" ? "active" : liveSubscription.status === "past_due" ? "past_due" : "cancelled",
+          });
+
+          if (result.state === "completed" || result.state === "already_completed") {
+            // Team conversion events are emitted only from the first successful
+            // paid invoice below. Provisioning can precede payment and must not
+            // be interpreted as a completed purchase.
+            return res.json({ received: true });
+          }
+          if (result.state === "busy") {
+            return res.status(409).json({ error: "Event is already being processed" });
+          }
+          // result.state === "retryable_failure"
+          return res.status(503).json({ error: result.state === "retryable_failure" ? (result as any).error : "Provisioning failed" });
+        }
+        // ── End org branch ─────────────────────────────────────────────────
+
+        // Acknowledge only after durable individual provisioning completes.
+        try {
+          const db = await getDb();
+          if (!db) return res.status(503).json({ error: "Database unavailable" });
+          const result = await provisionIndividualSubscription(db, event.id, event.type, liveSubscription);
+          if (result.state === "busy") return res.status(409).json({ error: "Event already processing" });
+          if (result.state === "retryable_failure") return res.status(503).json({ error: "Subscription provisioning incomplete" });
+          return res.json({ received: true });
+        } catch (error) {
+          console.error("[Stripe Webhook] Individual subscription processing failed", error instanceof Error ? error.message : "unknown");
+          return res.status(503).json({ error: "Subscription provisioning incomplete" });
+        }
+      }
+
+      if (event.type === "customer.subscription.deleted") {
+        const sub = event.data.object as any;
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database unavailable");
+
+          // Org cancellation: expire all org-managed seats
+          if (sub.metadata?.type === "org") {
+            const orgRow = await db
+              .select({ id: organizations.id, managerEmail: organizations.managerEmail })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, sub.id))
+              .limit(1);
+            if (orgRow.length > 0) {
+              const orgId = orgRow[0].id;
+              const members = await db
+                .select({ email: organizationMembers.email })
+                .from(organizationMembers)
+                .where(and(
+                  eq(organizationMembers.orgId, orgId),
+                  eq(organizationMembers.role, "operator"),
+                  eq(organizationMembers.status, "assigned"),
+                ));
+              await db.update(organizations).set({ status: "cancelled" }).where(eq(organizations.id, orgId));
+              await db.update(subscriptions).set({ status: "expired" }).where(eq(subscriptions.orgId, orgId));
+              await db.update(organizationMembers).set({ status: "revoked", revokedAt: new Date() }).where(eq(organizationMembers.orgId, orgId));
+              await trackEvent("subscription_cancelled", {
+                email: orgRow[0].managerEmail,
+                orgId,
+                productKey: "teams-all-access",
+                extra: { subscriptionType: "organization", seatsRevoked: members.length },
+              });
+              for (const member of members) {
+                await trackEvent("team_seat_revoked", {
+                  email: member.email,
+                  orgId,
+                  extra: { reason: "organization_subscription_cancelled" },
+                });
+              }
+              console.log(`[Stripe Webhook] Org cancelled: ${orgId}`);
+            }
+            return res.json({ received: true });
+          }
+
+          const cancelledRows = await db
+            .select({ email: subscriptions.email, tier: subscriptions.tier, province: subscriptions.province })
+            .from(subscriptions)
+            .where(eq(subscriptions.stripeSubscriptionId, sub.id))
+            .limit(1);
+          await db
+            .update(subscriptions)
+            .set({ status: "cancelled" })
+            .where(eq(subscriptions.stripeSubscriptionId, sub.id));
+          const cancelled = cancelledRows[0];
+          await trackEvent("subscription_cancelled", {
+            email: cancelled?.email ?? null,
+            productKey: cancelled ? `${cancelled.province}-${cancelled.tier}` : null,
+            extra: { subscriptionType: "individual" },
+          });
+          console.log(`[Stripe Webhook] Subscription cancelled: ${sub.id}`);
+        } catch (err: any) {
+          console.error("[Stripe Webhook] Error processing subscription.deleted:", err.message);
+          return res.status(503).json({ error: "Subscription cancellation processing failed" });
+        }
+      }
+
+      if (event.type === "invoice.payment_succeeded") {
+        const invoice = event.data.object as any;
+        const stripeSubscriptionId = invoice.subscription;
+        if (stripeSubscriptionId) {
+          try {
+            const db = await getDb();
+            if (!db) throw new Error("Database unavailable");
+
+            // ── Org invoice branch ───────────────────────────────────────────
+            // Retrieve live subscription to check metadata (handles event ordering).
+            const liveSub = await stripe.subscriptions.retrieve(stripeSubscriptionId);
+            const isOrgSubscription = liveSub.metadata?.type === "org";
+
+            const orgRow = await db
+              .select({ id: organizations.id, name: organizations.name, managerEmail: organizations.managerEmail, tier: organizations.tier, seatsTotal: organizations.seatsTotal, status: organizations.status })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+
+            const invoiceRoute = classifyInvoiceSubscription({
+              isOrganizationSubscription: isOrgSubscription,
+              organizationExists: orgRow.length > 0,
+            });
+
+            if (invoiceRoute === "organization_pending") {
+              // Invoice arrived before the subscription provisioning event.
+              // Return 503 so Stripe retries after the org is created.
+              return res.status(503).json({ error: "Organization provisioning is not complete" });
+            }
+
+            if (invoiceRoute === "organization") {
+              const org = orgRow[0];
+              const result = await processOrgInvoice(db, {
+                stripeEventId: event.id,
+                stripeInvoiceId: invoice.id ?? "",
+                stripeSubscriptionId,
+                amountPaid: invoice.amount_paid ?? 0,
+                billingReason: invoice.billing_reason ?? null,
+                hostedInvoiceUrl: invoice.hosted_invoice_url ?? null,
+                invoicePdfUrl: invoice.invoice_pdf ?? null,
+                organization: org,
+              });
+              if (result.state === "completed" || result.state === "already_completed") {
+                const analyticsContext = {
+                  source: liveSub.metadata?.analytics_source || "unknown",
+                  device: liveSub.metadata?.analytics_device || "unknown",
+                  province: liveSub.metadata?.analytics_province || "unknown",
+                  surface: liveSub.metadata?.analytics_surface || "teams",
+                };
+                const analyticsIdentityHash = liveSub.metadata?.analytics_identity_hash || null;
+                if (invoice.billing_reason === "subscription_create") {
+                  // The event ledger keeps this write retryable. A crash after
+                  // payment processing but before analytics commit is repaired
+                  // by Stripe replay without duplicating conversion records.
+                  await recordOrganizationInvoiceConversion(db, {
+                    stripeEventId: event.id,
+                    org,
+                    identityHash: analyticsIdentityHash,
+                    attribution: analyticsContext,
+                  });
+                }
+                if (result.state === "completed" && invoice.billing_reason === "subscription_cycle") {
+                  await trackEvent("subscription_renewed", {
+                    orgId: org.id,
+                    productKey: "teams-all-access",
+                    extra: { subscriptionType: "organization" },
+                  });
+                }
+                return res.json({ received: true });
+              }
+              return res.status(503).json({ error: result.state === "retryable_failure" ? (result as any).error : "Invoice processing failed" });
+            }
+            // ── End org invoice branch ────────────────────────────────────────
+
+            // Fetch the latest subscription period from Stripe to update our record
+            const stripeSub = await stripe.subscriptions.retrieve(stripeSubscriptionId) as any;
+            const { currentPeriodEnd } = getSubscriptionPeriod(stripeSub);
+            if (!currentPeriodEnd) throw new Error(`Could not resolve currentPeriodEnd for subscription ${stripeSubscriptionId}`);
+            await db
+              .update(subscriptions)
+              .set({ status: "active", currentPeriodEnd })
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
+            console.log(`[Stripe Webhook] Subscription renewed: ${stripeSubscriptionId} new end=${currentPeriodEnd.toISOString()}`);
+            // Send renewal email (non-blocking)
+            try {
+              const subRow = await db
+                .select({ email: subscriptions.email, tier: subscriptions.tier, province: subscriptions.province })
+                .from(subscriptions)
+                .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
+                .limit(1);
+              if (subRow.length > 0) {
+                const { email: subEmail, tier: subTier, province: subProvince } = subRow[0];
+                if (invoice.billing_reason === "subscription_cycle") {
+                  await trackEvent("subscription_renewed", {
+                    email: subEmail,
+                    productKey: `${subProvince}-${subTier}`,
+                    extra: { subscriptionType: "individual" },
+                  });
+                }
+                const renewTierLabel = TIER_LABELS[subTier as ST] ?? subTier;
+                const renewProvinceLabel = PROVINCE_LABELS[subProvince as SP] ?? subProvince;
+                const renewQuizPath = subProvince === "western"
+                  ? (TIER_QUIZ_PATHS_WPI[subTier] ?? "/wpi-class1-water")
+                  : (TIER_QUIZ_PATHS_ONTARIO[subTier] ?? "/quiz");
+                sendSubscriptionRenewalEmail({
+                  email: subEmail,
+                  tierLabel: renewTierLabel,
+                  provinceLabel: renewProvinceLabel,
+                  currentPeriodEnd,
+                  quizPath: renewQuizPath,
+                }).catch(err => {
+                  console.error("[Stripe Webhook] Failed to send renewal email:", err.message);
+                });
+              }
+            } catch (renewEmailErr: any) {
+              console.error("[Stripe Webhook] Error fetching sub row for renewal email:", renewEmailErr.message);
+            }
+          } catch (err: any) {
+            console.error("[Stripe Webhook] Error processing invoice.payment_succeeded:", err.message);
+            return res.status(503).json({ error: "Invoice processing failed" });
+          }
+        }
+      }
+
+      if (event.type === "invoice.payment_failed") {
+        const invoice = event.data.object as any;
+        const stripeSubscriptionId =
+          typeof invoice.subscription === "string"
+            ? invoice.subscription
+            : invoice.subscription?.id;
+
+        if (stripeSubscriptionId) {
+          try {
+            const db = await getDb();
+            if (!db) throw new Error("Database unavailable");
+
+            // ── Org (team) payment failure branch ─────────────────────────
+            const orgRows = await db
+              .select({ id: organizations.id, name: organizations.name, managerEmail: organizations.managerEmail })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+
+            if (orgRows.length > 0) {
+              const organization = orgRows[0];
+              await db
+                .update(organizations)
+                .set({ status: "past_due" })
+                .where(eq(organizations.id, organization.id));
+              // Keep operator access active during Stripe's retry window.
+              // Do not revoke members or expire their managed subscriptions here.
+              await notifyOwner({
+                title: "Team plan payment failed",
+                content: `Payment failed for ${organization.name}, ${organization.managerEmail}, subscription ${stripeSubscriptionId}. Stripe will retry automatically.`,
+              }).catch(() => {});
+              return res.json({ received: true });
+            }
+            // ── End org payment failure branch ─────────────────────────────
+
+            // Individual subscription payment failure
+            await db
+              .update(subscriptions)
+              .set({ status: "past_due" })
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
+            console.log(`[Stripe Webhook] Subscription payment failed: ${stripeSubscriptionId}`);
+
+            const failedSubRows = await db
+              .select({ email: subscriptions.email, tier: subscriptions.tier })
+              .from(subscriptions)
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+            const failedEmail = failedSubRows[0]?.email ?? "(unknown)";
+            const failedTier = failedSubRows[0]?.tier ?? "(unknown)";
+            await notifyOwner({
+              title: "Subscription payment failed",
+              content: `Payment failed for ${failedEmail} (${failedTier} plan, sub ${stripeSubscriptionId}). Stripe will retry automatically.`,
+            }).catch((notifyErr) => {
+              console.error("[Stripe Webhook] notifyOwner failed for payment_failed:", notifyErr.message);
+            });
+            return res.json({ received: true });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] Error processing invoice.payment_failed:", err.message);
+            return res.status(503).json({ error: "Payment failure processing failed" });
+          }
+        }
+      }
+
+      if (event.type === "refund.created") {
+        const refund = event.data.object as any;
+        const pi = typeof refund.payment_intent === "string"
+          ? refund.payment_intent
+          : refund.payment_intent?.id;
+        if (pi) {
+          try {
+            const licenceIds = parseRefundLicenceIds(refund.metadata);
+            const handled = licenceIds.length > 0
+              ? await handleFlexPartialRefund(pi, licenceIds)
+              : await handleFlexUnallocatedRefund(pi);
+            if (handled) return res.json({ received: true });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] refund.created:", err.message);
+            return res.status(503).json({ error: "Course Pass refund processing failed" });
+          }
+        }
+      }
+
+      if (event.type === "charge.refunded") {
+        const charge = event.data.object as any;
+        const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
+        if (pi) {
+          try {
+            const amount = Number(charge.amount ?? 0);
+            const amountRefunded = Number(charge.amount_refunded ?? 0);
+            const refundLicenceIds = Array.isArray(charge.refunds?.data)
+              ? charge.refunds.data.flatMap((refund: any) => parseRefundLicenceIds(refund.metadata))
+              : [];
+            const flexHandled = amount > 0 && amountRefunded >= amount
+              ? await handleFlexFullRefund(pi)
+              : refundLicenceIds.length > 0
+                ? await handleFlexPartialRefund(pi, refundLicenceIds)
+                : await handleFlexUnallocatedRefund(pi);
+            if (flexHandled) return res.json({ received: true });
+
+            const db = await getDb();
+            if (!db) return res.status(503).json({ error: "Database unavailable" });
+            const result = await processRefund(db, {
+              stripeEventId: event.id,
+              stripePaymentIntentId: pi,
+              stripeChargeId: charge.id ?? null,
+              refundKind: amount > 0 && amountRefunded >= amount ? "full_refund" : "partial_refund",
+            });
+            if (result.state === "busy") {
+              return res.status(503).json({ error: "Refund event is already being processed" });
+            }
+            if (result.state === "retryable_failure") {
+              return res.status(503).json({ error: result.error });
+            }
+            if (result.state === "completed" && result.purchase) {
+              await notifyOwner({
+                title: "Purchase refunded",
+                content: `Refund for ${result.purchase.productKey} purchase ${pi}. Access revoked.`,
+              });
+            }
+          } catch (err: any) {
+            console.error("[Stripe Webhook] charge.refunded:", err.message);
+            return res.status(503).json({ error: "Refund processing failed" });
+          }
+        }
+      }
+
+      if (event.type === "charge.dispute.created") {
+        const dispute = event.data.object as any;
+        const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
+        if (pi) {
+          try {
+            // Delivery order is not guaranteed. The handler reads the dispute
+            // as it stands now, after locking the order, so a closure that
+            // landed first is applied instead of suspending licences forever.
+            // If Stripe cannot be read the handler throws, we answer 503 and
+            // Stripe retries; the event's own status is never trusted.
+            const flexResult = await handleFlexDisputeCreated(pi, async () => {
+              if (typeof dispute.id !== "string") return dispute.status as string | undefined;
+              // Bounded so the order row lock is never held through a slow read.
+              const live = await stripe.disputes.retrieve(dispute.id, undefined, { timeout: 5_000, maxNetworkRetries: 0 });
+              return live.status as string;
+            });
+            if (flexResult.handled) {
+              await notifyOwner(flexResult.action === "suspended"
+                ? {
+                    title: "⚠️ Course Pass dispute opened",
+                    content: `Chargeback for PI ${pi}. Order licences were suspended pending Stripe's decision.`,
+                  }
+                : {
+                    title: "Course Pass dispute already closed",
+                    content: `Dispute for PI ${pi} arrived after its closure. The outcome was applied; no licences were suspended.`,
+                  });
+              return res.json({ received: true });
+            }
+            const db = await getDb();
+            if (!db) return res.status(503).json({ error: "Database unavailable" });
+            await processIndividualDispute(db, pi);
+            await notifyOwner({ title: "⚠️ Dispute opened", content: `Chargeback for PI ${pi}. Review in Stripe.` });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] dispute.created:", err.message);
+            return res.status(503).json({ error: "Dispute processing failed" });
+          }
+        }
+      }
+
+      if (event.type === "charge.dispute.closed") {
+        const dispute = event.data.object as any;
+        const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
+        const outcome = flexDisputeOutcome(dispute.status);
+        if (pi && outcome) {
+          try {
+            const handled = await handleFlexDisputeClosed(pi, outcome);
+            if (handled) return res.json({ received: true });
+          } catch (err: any) {
+            console.error("[Stripe Webhook] dispute.closed:", err.message);
+            return res.status(503).json({ error: "Dispute closure processing failed" });
+          }
+        }
+      }
+
+      // ── Checkout session expired ─────────────────────────────────────────────
+      if (event.type === "checkout.session.expired") {
+        const session = event.data.object as any;
+        if (session.metadata?.type === "team_flex_extension") {
+          const extensionId = Number.parseInt(session.metadata.teamFlexExtensionId, 10);
+          if (Number.isInteger(extensionId) && extensionId > 0 && typeof session.id === "string") {
+            const { releaseExpiredRetakeExtensionCheckout } = await import("../teams/flexExtensionService");
+            await releaseExpiredRetakeExtensionCheckout(extensionId, session.id);
+          }
+        } else if (session.metadata?.teamFlexOrderId) {
+          const flexOrderId = Number(session.metadata.teamFlexOrderId);
+          const { handleFlexCheckoutExpired } = await import("../teams/fulfilFlexOrder");
+          await handleFlexCheckoutExpired(flexOrderId);
+          console.log(`[Stripe Webhook] Flex checkout expired: order #${flexOrderId}`);
+        } else {
+          // An individual learner reached the payment page and did not finish.
+          // Record it so one recovery email can go out later. Recording must
+          // never fail the webhook: Stripe would retry a payment event we have
+          // already processed.
+          try {
+            const { extractAbandonedCheckout, recordAbandonedCheckout } = await import(
+              "../abandonedCheckout"
+            );
+            const record = extractAbandonedCheckout(session);
+            if (record) {
+              const expiredDb = await getDb();
+              if (expiredDb) {
+                await recordAbandonedCheckout(expiredDb, record);
+                console.log(
+                  `[Stripe Webhook] Abandoned checkout recorded: ${record.productKey} ${record.stripeSessionId}`
+                );
+              }
+            }
+          } catch (err: any) {
+            console.error("[Stripe Webhook] abandoned checkout record failed:", err?.message ?? err);
+          }
+        }
+      }
+
+      // ── Async payment failed ─────────────────────────────────────────────────
+      if (event.type === "checkout.session.async_payment_failed") {
+        const session = event.data.object as any;
+        const flexOrderId = session.metadata?.teamFlexOrderId;
+        if (flexOrderId) {
+          const { handleFlexPaymentFailed } = await import("../teams/fulfilFlexOrder");
+          await handleFlexPaymentFailed(Number(flexOrderId));
+          console.log(`[Stripe Webhook] Flex async payment failed: order #${flexOrderId}`);
+        }
+      }
+
+
+      res.json({ received: true });
+    }
+  );
+}

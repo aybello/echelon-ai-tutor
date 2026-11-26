@@ -1,0 +1,48 @@
+{
+  "reviews": [
+    {
+      "questionNum": 144,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is traceable to the source record: grit removal removes dense mineral particles such as sand and gravel and protects downstream equipment and units.",
+        "The item is foundational and appropriate for an Ontario OIT learner because it tests basic headworks purpose rather than detailed process design.",
+        "The distractors are plausible but clearly incorrect without normalizing unsafe or omitted operational practices."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 404,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option matches the cited source: an entry permit documents the hazard/risk assessment and required controls for confined-space entry.",
+        "The question is within foundational OIT scope and is framed as a confined-space safety control rather than a blanket legal condition for all wastewater work.",
+        "The distractors are plausible yet obviously unsafe or incorrect, and the item does not overstate the permit’s scope."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 466,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is traceable to the source record: a five-day BOD test indicates oxygen used by microorganisms as they break down biodegradable material during incubation.",
+        "The item is basic enough for OIT learning because it asks for the meaning of BOD rather than method details or quantitative interpretation.",
+        "The distractors remain plausible but do not normalize unsafe operations or introduce unsupported claims."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 480,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is supported by the source record: flow-proportional composite sampling relates collection to measured flow and can better represent changing discharge conditions.",
+        "The item stays at a foundational OIT level by focusing on representative sampling and flow measurement rather than detailed regulatory procedure.",
+        "The distractors are plausible and do not create unsafe normalization or omit required actions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

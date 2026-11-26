@@ -1,0 +1,28 @@
+chunk-061: 183632 (operator-in-charge class requirement) and 183670 (Ontario fluoride target range) were NOT verified by the reviewer and not flagged.
+chunk-041: 180317 (Schedule 6 distribution chlorine sampling) and 180357 (lead standard 0.010 mg/L) fixes unconfirmed against e-Laws.
+chunk-043: 183486 and 183527 (Schedule 10 sampling figures) fixes unconfirmed against e-Laws.
+chunk-051, chunk-056: reviewer ran no web searches; Ontario biosolids / water-reuse fixes rest on model knowledge.
+chunk-030: 181916 and 181937 fixes give no numeric Ontario CP1/CP2 limits (not confirmed).
+chunk-069: reviewer ran no web searches; its Ontario fixes rest on model knowledge.
+chunk-072, chunk-076: heavy Ontario-specific fixes (OPSS/OPSD numbers, MECP procedure F-5-5, manhole spacing figures); reviewer could not confirm all values; verify before Manus applies.
+chunk-079: reviewer ran no web searches.
+chunk-083: fixes for 184575 (cover depth), 186086 and 184680 (48 h hold) and 184626 follow-up unconfirmed online; reviewer says 184626 (F-6-1 0.5 m separation) was verified.
+chunk-088: reviewer ran no web searches.
+chunk-109: reviewer ran no web searches.
+chunk-116: reviewer ran no web searches.
+LEAD LIMIT: chunk-041 fix (Ontario bank) assumes 0.010 mg/L; chunk-117 fix (western bank, id 46075) uses 0.005 mg/L (Health Canada 2019 guideline). Check which figure applies per jurisdiction against the current Ontario regulation and Health Canada guideline before Manus applies either.
+chunk-121: reviewer ran no web searches.
+chunk-124: reviewer ran no web searches.
+chunk-125: reviewer ran no web searches; 47423 (24 h SSO reporting window vs 'immediately' in western Canada) unverified.
+chunk-128: reviewer ran no web searches.
+chunk-130: reviewer ran no web searches; 42178 (UV 40 mJ/cm2 Giardia log credit) and 42111 (coliform holding time) unverified.
+chunk-131: reviewer ran no web searches; manganese MAC 0.12 mg/L / AO 0.02 and iron AO 0.3 mg/L claims (42293, 42317, 42316) unverified online (match my recollection of Health Canada 2019 guidelines).
+chunk-134: reviewer ran no web searches; 90216 (48 h holding time) rests on model knowledge.
+chunk-136: reviewer ran no web searches.
+chunk-141: reviewer ran no web searches.
+chunk-146: reviewer ran no web searches.
+chunk-167: reviewer ran no web searches; Health Canada values (lead, manganese, turbidity, HPC) from memory.
+chunk-169: reviewer ran no web searches.
+chunk-170: reviewer ran no web searches AND said it left several US-unit questions unflagged to keep scope manageable -> units coverage incomplete; follow up with a regex scan for US-unit terms in Canadian banks (wpi-*, class*, oit*) not already flagged.
+chunk-171: no web searches; 48 h holding time (40718), 5 TCU colour objective (40767, 40782), turbidity wording (40762) from memory.
+chunk-172: no web searches; Ontario regulation citations, 48 h holding time and CT values from memory.

@@ -1,0 +1,133 @@
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { chromium, type Browser } from "@playwright/test";
+import { build } from "esbuild";
+let browser: Browser;
+let script: string;
+beforeAll(async () => {
+  const result = await build({ bundle: true, write: false, format: "iife", jsx: "automatic", stdin: { resolveDir: process.cwd(), loader: "tsx", contents: `
+    import React, { useState } from 'react';
+    import { createRoot } from 'react-dom/client';
+    import Status from './client/src/components/PracticeSaveStatus';
+    import { listPendingPracticeSaves, enqueuePracticeSave, removePendingPracticeSave } from './client/src/lib/practiceSaveOutbox';
+    window.enqueuePending = item => enqueuePracticeSave(localStorage, item);
+    window.removePending = id => removePendingPracticeSave(localStorage, id);
+    window.pending = () => listPendingPracticeSaves(localStorage, {identity:'user:17',courseKey:'oit'});
+    import { useAttemptLogger } from './client/src/components/QuizModeBar';
+    function App() {
+      const [, refresh] = useState(0);
+      window.refreshStatus = () => refresh(x => x + 1);
+      const log = useAttemptLogger('oit');
+      return <><button id="answer" onClick={() => log({questionId: 4, selectedIndex: 2, attemptToken: window.receipt})}>Answer</button>
+        <button id="switch" onClick={() => {window.identity = 18; refresh(x=>x+1)}}>Switch</button><Status courseKey="oit" /></>;
+    }
+    window.identity = 17;
+    window.receipt = 'e30.' + btoa(JSON.stringify({exp: Math.floor(Date.now()/1000)+3600})) + '.signature';
+    createRoot(document.getElementById('root')).render(<App/>);
+  ` }, plugins: [{ name: "isolated-trpc", setup(builder) {
+    builder.onResolve({ filter: /^@\/lib\/trpc$|^sonner$/ }, args => ({ path: args.path, namespace: "mock" }));
+    builder.onLoad({ filter: /.*/, namespace: "mock" }, args => ({ contents: args.path === "sonner" ? "export const toast = {error() {}}" : `
+      export const trpc = {
+        auth: { me: { useQuery: () => ({data:{id:window.identity}, isLoading:false}) } },
+        dashboardAuth: { me: { useQuery: () => ({data:null, isLoading:false}) } },
+        quiz: { logAttempt: { useMutation: () => ({mutateAsync: async input => {
+          const response = await fetch('https://practice.invalid/attempt', {method:'POST',body:JSON.stringify(input)});
+          return response.json();
+        }}) } }
+      };
+    ` }));
+  } }], alias: { "@": `${process.cwd()}/client/src`, "@shared": `${process.cwd()}/shared` } });
+  script = result.outputFiles[0].text;
+  browser = await chromium.launch({ headless: true });
+}, 30000);
+afterAll(async () => { await browser?.close(); });
+async function setup(loseAck = false) {
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  const calls: Record<string, unknown>[] = [];
+  await page.route("**/*", async route => {
+    const url = route.request().url();
+    if (url === "https://practice.invalid/") return route.fulfill({ contentType: "text/html", body: '<div id="root"></div>' });
+    if (url === "https://practice.invalid/attempt") {
+      calls.push(JSON.parse(route.request().postData()!));
+      if (loseAck && calls.length === 1) return route.abort("failed");
+      return route.fulfill({ contentType: "application/json", body: '{"success":true,"correct":true}' });
+    }
+    return route.abort("blockedbyclient");
+  });
+  await page.goto("https://practice.invalid/");
+  await page.addScriptTag({ content: script });
+  return { page, calls };
+}
+describe("practice recovery component in an offline intercepted browser", () => {
+  it("initial HTTP and explicit retry use the exact same UUID/input after lost ack", async () => {
+    const { page, calls } = await setup(true);
+    await page.locator("#answer").click();
+    await page.getByText(/Save not confirmed/).first().waitFor();
+    expect(calls).toHaveLength(1);
+    await page.getByRole("button", {name:"Retry pending answer", exact:true}).click();
+    await page.getByText("Answer confirmed saved to your course history.", {exact:true}).waitFor();
+    expect(calls).toHaveLength(2); expect(calls[1]).toEqual(calls[0]);
+    expect(calls[0].operationId).toMatch(/^[0-9a-f-]{36}$/);
+    expect(await page.evaluate(() => (window as any).pending())).toEqual([]);
+    await page.close();
+  });
+  it("stores independent operations across real same-origin tabs and acknowledges only one", async () => {
+    const { page, calls } = await setup();
+    const second = await page.context().newPage();
+    await second.route("**/*", route => route.request().url() === "https://practice.invalid/"
+      ? route.fulfill({ contentType: "text/html", body: '<div id="root"></div>' }) : route.abort("blockedbyclient"));
+    await second.goto("https://practice.invalid/"); await second.addScriptTag({ content: script });
+    const original = { version: 1, idempotencyVersion: 1, operationId: "550e8400-e29b-41d4-a716-446655440001", scope: { identity: "user:17", courseKey: "oit" }, questionId: 4, selectedIndex: 2, bankKey: "oit", examType: "oit", quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", createdAt: 1 };
+    await page.evaluate(item => (window as any).enqueuePending(item), original);
+    await second.evaluate(item => (window as any).enqueuePending(item), { ...original, operationId: "550e8400-e29b-41d4-a716-446655440002" });
+    await page.getByText(/2 answer saves awaiting confirmation/).waitFor();
+    expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith("echelon:practice-save-outbox:v2:")))).toHaveLength(2);
+    await page.evaluate(id => (window as any).removePending(id), original.operationId);
+    // Chromium propagates localStorage updates between renderer processes asynchronously.
+    await expect.poll(() => second.evaluate(() => (window as any).pending().map((item: any) => item.operationId))).toEqual(["550e8400-e29b-41d4-a716-446655440002"]);
+    expect(calls).toHaveLength(0);
+    await second.close(); await page.close();
+  });
+  it("expired receipt is unrecoverable without another call; dismiss never saves", async () => {
+    const { page, calls } = await setup(true);
+    await page.evaluate(() => { (window as any).receipt = `e30.${btoa('{"exp":1}')}.sig`; });
+    await page.locator("#answer").click(); await page.getByText(/receipt has expired/).waitFor();
+    expect(await page.getByRole("button", {name:"Retry pending answer",exact:true}).isDisabled()).toBe(true);
+    await page.getByRole("button", {name:/Dismiss local warning/}).click();
+    await page.getByText(/did not save an answer or delete any server history/).waitFor();
+    expect(calls).toHaveLength(1); await page.close();
+  });
+  it("scope switch hides the old learner's pending recovery and never sends", async () => {
+    const { page, calls } = await setup(true); await page.locator("#answer").click();
+    await page.getByText(/Save not confirmed/).first().waitFor(); await page.locator("#switch").click();
+    expect(await page.getByRole("button", {name:"Retry pending answer",exact:true}).count()).toBe(0);
+    expect(calls).toHaveLength(1); await page.close();
+  });
+  it("an undurable failed answer warning survives another answer succeeding", async () => {
+    const { page, calls } = await setup(true);
+    await page.evaluate(() => { const set = Storage.prototype.setItem; (window as any).restore = () => {Storage.prototype.setItem = set}; Storage.prototype.setItem = () => {throw Error('quota')}; });
+    await page.locator("#answer").click(); await page.getByText(/no durable recovery record/).waitFor();
+    await page.evaluate(() => (window as any).restore()); await page.locator("#answer").click();
+    await page.getByText("Answer saved to your course history.", {exact:true}).waitFor();
+    expect(await page.getByText(/no durable recovery record/).count()).toBe(1);
+    expect(calls).toHaveLength(2); await page.close();
+  });
+  it("renders the recovery storage warning when an independent record read throws", async () => {
+    const { page, calls } = await setup();
+    await page.evaluate(() => {
+      const record = { version: 1, idempotencyVersion: 1, operationId: "550e8400-e29b-41d4-a716-446655440001", scope: { identity: "user:17", courseKey: "oit" }, questionId: 4, selectedIndex: 2, bankKey: "oit", examType: "oit", quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", createdAt: 1 };
+      localStorage.setItem(`echelon:practice-save-outbox:v2:${encodeURIComponent(record.operationId)}`, JSON.stringify(record));
+      const getItem = Storage.prototype.getItem;
+      (window as any).restoreStorageRead = () => { Storage.prototype.getItem = getItem; };
+      Storage.prototype.getItem = function(key: string) {
+        if (key.startsWith("echelon:practice-save-outbox:v2:")) throw Error("storage unavailable");
+        return getItem.call(this, key);
+      };
+      (window as any).refreshStatus();
+    });
+    await page.getByText("Browser recovery storage is unavailable. Pending answers cannot be recovered here.", { exact: true }).waitFor();
+    expect(calls).toHaveLength(0);
+    await page.evaluate(() => (window as any).restoreStorageRead());
+    await page.close();
+  });
+});

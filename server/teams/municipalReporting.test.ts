@@ -1,0 +1,379 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { MySqlDialect } from "drizzle-orm/mysql-core";
+import superjson from "superjson";
+import { organizationMembers, organizations } from "../../drizzle/schema";
+const { getDb, calculateReadinessSnapshot } = vi.hoisted(() => ({
+  getDb: vi.fn(), calculateReadinessSnapshot: vi.fn().mockResolvedValue({ score: 65, hasData: true, activeDaysLast30: 2 }),
+}));
+vi.mock("../db", () => ({ getDb }));
+vi.mock("../analytics", () => ({ trackEvent: vi.fn().mockResolvedValue(undefined) }));
+vi.mock("../email", () => ({ sendTeamEnrollmentEmail: vi.fn(), sendOperatorStudyReminderEmail: vi.fn(), sendCoursePassInvitationEmail: vi.fn() }));
+vi.mock("../readinessSnapshot", () => ({ calculateReadinessSnapshot }));
+vi.mock("../stripe/stripe", () => ({ stripe: {} }));
+import { aggregateUtcDate, orgIntelRouter, orgRouter } from "../routers/orgRouter";
+import { teamFlexRouter, validTimestamp } from "../routers/teamFlexRouter";
+import { summarizeFlexProgress } from "../../client/src/lib/flexProgressMetrics";
+const now = new Date();
+const past = new Date(now.getTime() - 86400000);
+const future = new Date(now.getTime() + 86400000);
+const mysqlTimestamp = (date: Date) => date.toISOString().slice(0, 19).replace("T", " ");
+const org = { id: 7, name: "Fixture municipality", managerEmail: "manager@example.test", billingType: "course-pass", status: "active", createdAt: past, termStart: past, termEnd: past, seatsTotal: 0, province: "ontario" };
+const lic = { id: 42, organizationId: 7, courseKey: "class1-water", termMonths: 3, status: "expired", accessEndsAt: past, reportingEndsAt: future, startsAt: new Date("2026-01-01"), activatedAt: new Date("2026-01-01"), invitedEmail: "operator@example.test", operatorUserId: null };
+const member = { id: 3, email: "operator@example.test", name: "Fixture", courseKey: "class1-water", assignedAt: past, status: "assigned" };
+const ctx = { user: null, studentEmail: org.managerEmail, req: { headers: {} }, res: {} } as any;
+function database(results: any[][]) {
+  const pending = [...results];
+  const conditions: string[] = [];
+  const dialect = new MySqlDialect();
+  const select = vi.fn((projection?: any) => {
+    let table: unknown;
+    let joinedTable: unknown;
+    let rows: any[] | undefined;
+    const result = () => {
+      // These primary-owner fixtures have zero delegates, not zero reporting members.
+      if (table === organizationMembers && joinedTable === organizations && projection?.organization === organizations) return [];
+      rows ??= pending.shift();
+      if (!rows) throw new Error("Unexpected database query");
+      return rows;
+    };
+    const chain: any = { then: (resolve: any, reject: any) => Promise.resolve().then(result).then(resolve, reject) };
+    chain.from = vi.fn((source: unknown) => { table = source; return chain; });
+    chain.innerJoin = vi.fn((joined: unknown) => {
+      expect(table).toBe(organizationMembers);
+      expect(joined).toBe(organizations);
+      expect(projection?.organization).toBe(organizations);
+      joinedTable = joined;
+      return chain;
+    });
+    for (const method of ["groupBy", "orderBy", "having", "limit"]) chain[method] = vi.fn(() => chain);
+    chain.where = vi.fn((condition: any) => { conditions.push(dialect.sqlToQuery(condition).sql); return chain; });
+    return chain;
+  });
+  getDb.mockResolvedValue({ select });
+  return { select, conditions, pending };
+}
+beforeEach(() => { vi.clearAllMocks(); });
+describe("manager reporting router behavior", () => {
+  it("interprets raw MySQL aggregate timestamps as UTC and fails closed for invalid values", () => {
+    expect(aggregateUtcDate("2026-10-21 00:30:00")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(aggregateUtcDate("not-a-timestamp")).toBeNull();
+    expect(aggregateUtcDate("2026-02-30 12:00:00")).toBeNull();
+    expect(aggregateUtcDate(new Date("invalid"))).toBeNull();
+    expect(aggregateUtcDate("October 21, 2026 00:30:00 GMT")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(aggregateUtcDate("2026-02-30T12:00:00Z")?.toISOString()).toBe("2026-03-02T12:00:00.000Z");
+  });
+  it("strictly validates Flex dates and returns valid timestamps as UTC Dates", () => {
+    for (const value of [
+      "2026-02-29T12:00:00Z", "2024-02-30T12:00:00Z", "2026-04-31T12:00:00+02:00", "2026-02-30T12:00",
+      "2026-00-01T00:00:00Z", "2026-01-00T00:00:00Z", "2026-01-01T25:00:00Z",
+      "2026-01-01T24:00:01Z", "2026-01-01T12:60:00Z", "2026-01-01T12:00:60Z",
+      "2026-01-01T12:00:00+24:00", "2026-01-01T12:00:00-05:60", "1900-02-29T00:00:00Z",
+    ]) expect(validTimestamp(value)).toBeNull();
+    for (const [value, expected] of [
+      ["2024-02-29T23:30:45.123Z", "2024-02-29T23:30:45.123Z"],
+      ["2024-02-29T23:30:45+02:30", "2024-02-29T21:00:45.000Z"],
+      ["2024-02-29T23:30:45-0500", "2024-03-01T04:30:45.000Z"],
+      ["2026-01-01T24:00:00Z", "2026-01-02T00:00:00.000Z"],
+      ["2000-02-29T00:00:00Z", "2000-02-29T00:00:00.000Z"],
+    ]) {
+      expect(validTimestamp(value)?.toISOString()).toBe(expected);
+    }
+    expect(validTimestamp("2026-01-01T12:00")?.toISOString()).toBe("2026-01-01T12:00:00.000Z");
+    expect(validTimestamp("2026-10-21 00:30:00")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(validTimestamp("October 21, 2026 00:30:00 GMT")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(validTimestamp(past)).toBe(past);
+    expect(validTimestamp(new Date("invalid"))).toBeNull();
+  });
+  it("keeps actual expired-pass attempt evidence during reporting grace", async () => {
+    const db = database([[org], [lic], [lic], [{ total: 10, correct: 7, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ licenceId: 42, status: "expired", totalAttempts: 10, correctAttempts: 7, accuracy: 70, activityAvailable: true, readinessScore: 65, readinessAvailable: true }]);
+    expect(calculateReadinessSnapshot).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ flexScope: { orgId: 7, licenceId: 42, startsAt: lic.startsAt, endsAt: past } }));
+    expect(db.conditions.at(-1)).toContain("flexLicenceId");
+    expect(db.conditions.at(-1)).toContain("orgId");
+    expect(db.pending).toEqual([]);
+  });
+  it("normalizes timestamps before visibility, interval filtering and client metrics", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-21T00:15:00Z"));
+    try {
+      const active = { ...lic, status: "active", activatedAt: "2026-10-20T22:00", startsAt: "2026-10-21T00:15:00+02:00", accessEndsAt: "2026-10-21 00:30:00", reportingEndsAt: "2026-10-22 00:30:00" };
+      const db = database([[org], [lic], [active], [{ total: 1, correct: 1, lastActive: "2026-10-21 00:10:00" }]]);
+      const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+      expect(rows).toHaveLength(1);
+      expect(rows[0]).toMatchObject({ activatedAt: new Date("2026-10-20T22:00:00Z"), accessEndsAt: new Date("2026-10-21T00:30:00Z"), lastActiveAt: new Date("2026-10-21T00:10:00Z"), activityAvailable: true });
+      expect(calculateReadinessSnapshot).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ flexScope: { orgId: 7, licenceId: 42, startsAt: new Date("2026-10-20T22:15:00Z"), endsAt: new Date("2026-10-21T00:30:00Z") } }));
+      const roundTrip = superjson.parse<typeof rows>(superjson.stringify(rows));
+      expect(summarizeFlexProgress(roundTrip, new Date("2026-10-21T00:15:00Z"))).toMatchObject({ activatedLicences: 1, studyingLearners: 1, activeCohortComplete: true });
+      expect(db.pending).toEqual([]);
+    } finally { vi.useRealTimers(); }
+  });
+  it("reports a genuine zero readiness score when the snapshot has evidence", async () => {
+    calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: true, activeDaysLast30: 1 });
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    const db = database([[org], [active], [active], [{ total: 1, correct: 0, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ status: "active", totalAttempts: 1, correctAttempts: 0, accuracy: 0, activityAvailable: true, readinessScore: 0, readinessAvailable: true }]);
+    expect(db.pending).toEqual([]);
+  });
+  it("distinguishes unavailable readiness from available historical activity", async () => {
+    calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: false, activeDaysLast30: 0 });
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    const db = database([[org], [active], [active], [{ total: 5, correct: 4, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ totalAttempts: 5, accuracy: 80, activityAvailable: true, readinessScore: 0, readinessAvailable: false }]);
+    expect(db.pending).toEqual([]);
+  });
+  it("distinguishes known unstarted passes from incomplete active and expired metadata", async () => {
+    const incomplete = [
+      { ...lic, id: 1, status: "active", accessEndsAt: future, operatorUserId: null, invitedEmail: "  " },
+      { ...lic, id: 2, status: "active", accessEndsAt: future, activatedAt: null },
+      { ...lic, id: 3, status: "active", accessEndsAt: future, startsAt: null },
+      { ...lic, id: 4, status: "active", accessEndsAt: null },
+      { ...lic, id: 5, status: "expired", startsAt: null },
+      { ...lic, id: 8, status: "expired", operatorUserId: null, invitedEmail: null },
+      { ...lic, id: 9, status: "expired", accessEndsAt: null },
+      { ...lic, id: 10, status: "assigned", activatedAt: null },
+    ];
+    const unstarted = [
+      { ...lic, id: 6, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: null },
+      { ...lic, id: 7, status: "invited", activatedAt: null, startsAt: null, accessEndsAt: null },
+    ];
+    const all = [...incomplete, ...unstarted];
+    const db = database([[org], [lic], all]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows.map(row => [row.licenceId, row.activityAvailable, row.readinessAvailable])).toEqual([
+      [1, false, false], [2, false, false], [3, false, false], [4, false, false], [5, false, false], [8, false, false], [9, false, false], [10, false, false],
+      [6, true, false], [7, true, false],
+    ]);
+    expect(rows.every(row => row.totalAttempts === 0)).toBe(true);
+    expect(rows.find(row => row.licenceId === 1)?.operatorKey).toBeNull();
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+    expect(db.pending).toEqual([]);
+  });
+  it("marks equal, reversed, and invalid activity intervals unavailable without querying activity", async () => {
+    const invalid = new Date("invalid");
+    const licences = [
+      { ...lic, id: 11, status: "active", startsAt: future, accessEndsAt: future },
+      { ...lic, id: 12, status: "active", startsAt: future, accessEndsAt: past },
+      { ...lic, id: 13, status: "active", startsAt: invalid, accessEndsAt: future },
+      { ...lic, id: 14, status: "active", startsAt: past, accessEndsAt: invalid },
+      { ...lic, id: 15, status: "expired", startsAt: past, accessEndsAt: past },
+      { ...lic, id: 16, status: "expired", startsAt: future, accessEndsAt: past },
+      { ...lic, id: 17, status: "expired", startsAt: invalid, accessEndsAt: past },
+      { ...lic, id: 18, status: "expired", startsAt: past, accessEndsAt: invalid },
+    ];
+    const db = database([[org], [lic], licences]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows.map(row => row.licenceId)).toEqual(licences.map(item => item.id));
+    expect(rows.every(row => !row.activityAvailable && !row.readinessAvailable && row.totalAttempts === 0)).toBe(true);
+    expect(rows.filter(row => [14, 18].includes(row.licenceId)).every(row => row.accessEndsAt === null)).toBe(true);
+    expect(db.select).toHaveBeenCalledTimes(4); // Includes the empty delegated-membership lookup.
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+    expect(db.pending).toEqual([]);
+  });
+  it("rejects invalid activation timestamps and does not serialize invalid fallback dates", async () => {
+    const invalid = new Date("invalid");
+    const licences = [
+      { ...lic, id: 21, status: "active", accessEndsAt: future, activatedAt: invalid },
+      { ...lic, id: 22, status: "active", accessEndsAt: invalid, activatedAt: invalid },
+      { ...lic, id: 23, status: "assigned", activatedAt: invalid, startsAt: null, accessEndsAt: null },
+      { ...lic, id: 24, status: "invited", activatedAt: null, startsAt: invalid, accessEndsAt: null },
+      { ...lic, id: 25, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: invalid },
+      { ...lic, id: 26, status: "invited", activatedAt: null, startsAt: null, accessEndsAt: null },
+      { ...lic, id: 27, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: null, operatorUserId: 123, invitedEmail: null },
+      { ...lic, id: 28, status: "active", activatedAt: "2026-02-30T12:00:00Z", accessEndsAt: "2026-04-31T12:00:00+02:00" },
+    ];
+    const db = database([[org], [lic], licences]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows.map(row => row.activityAvailable)).toEqual([false, false, false, false, false, true, true, false]);
+    expect(rows[0]).toMatchObject({ activatedAt: null, accessEndsAt: future, lastActiveAt: null });
+    expect(rows[1]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
+    expect(rows[7]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
+    expect(() => superjson.serialize(rows)).not.toThrow();
+    expect(db.select).toHaveBeenCalledTimes(4); // Includes the empty delegated-membership lookup.
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+  });
+  it("sanitizes invalid last activity without discarding otherwise valid activity", async () => {
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    for (const lastActive of [new Date("invalid"), "2026-02-30 12:00:00", "2026-02-30T12:00:00Z", "2026-04-31T12:00:00+02:00"]) {
+      const db = database([[org], [active], [active], [{ total: 2, correct: 1, lastActive }]]);
+      const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+      expect(rows[0]).toMatchObject({ activatedAt: active.activatedAt, accessEndsAt: future, lastActiveAt: null, activityAvailable: true, totalAttempts: 2 });
+      expect(() => superjson.serialize(rows)).not.toThrow();
+      expect(db.pending).toEqual([]);
+    }
+  });
+  it("preserves a valid last activity timestamp from the aggregate", async () => {
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    database([[org], [active], [active], [{ total: 1, correct: 1, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows[0].lastActiveAt).toEqual(past);
+    expect(() => superjson.serialize(rows)).not.toThrow();
+  });
+  it("retains elapsed active-pass evidence during reporting grace before the expiry job runs", async () => {
+    const elapsed = { ...lic, status: "active", accessEndsAt: past };
+    const db = database([[org], [lic], [elapsed], [{ total: 2, correct: 1, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ status: "active", activityAvailable: true, totalAttempts: 2, accuracy: 50 }]);
+    expect(calculateReadinessSnapshot).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ flexScope: { orgId: 7, licenceId: 42, startsAt: lic.startsAt, endsAt: past } }));
+    expect(db.pending).toEqual([]);
+  });
+  it("reports a queried empty active licence as known unstarted", async () => {
+    calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: false, activeDaysLast30: 0 });
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    const db = database([[org], [active], [active], [{ total: 0, correct: null, lastActive: null }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ activityAvailable: true, totalAttempts: 0, readinessAvailable: false }]);
+    expect(db.pending).toEqual([]);
+  });
+  it("drops expired progress only after the recorded reporting window", async () => {
+    const db = database([[{ ...org, termEnd: future }], [], [{ ...lic, reportingEndsAt: past }]]);
+    await expect(teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 })).resolves.toEqual([]);
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+    expect(db.select).toHaveBeenCalledTimes(4); // Includes the empty delegated-membership lookup.
+  });
+  const diagnostics = [
+    { memberId: 3, courseKey: "class1-water", score: 40, completedAt: new Date("2026-01-10") },
+    { memberId: 3, courseKey: "class1-water", score: 90, completedAt: new Date("2026-01-20") },
+  ];
+  const practice = [
+    { memberId: 3, courseKey: "class1-water", bankKey: null, examType: "class1-water", quizMode: "standard", correct: "yes", createdAt: new Date("2026-01-11") },
+    { memberId: 3, courseKey: "class1-water", bankKey: null, examType: "class1-water", quizMode: "standard", correct: "no", createdAt: new Date("2026-01-09") },
+    { memberId: 3, courseKey: "class1-wastewater", bankKey: null, examType: "class1-wastewater", quizMode: "standard", correct: "no", createdAt: new Date("2026-01-11") },
+  ];
+  it("summary compares only same-course practice after the first baseline", async () => {
+    const db = database([[org], [lic], [org], [member], [], [], [], [], [], [], diagnostics, [], practice, []]);
+    const result = await orgIntelRouter.createCaller(ctx).getTeamReadinessSummary({ orgId: 7 });
+    expect(result).toMatchObject({ avgDiagnosticBaseline: 40, avgPracticeAccuracy: 100, accuracyChange: 60, matchedLearnerCourses: 1, matchedPracticeAttempts: 1 });
+    expect(db.pending).toEqual([]);
+  });
+  it("uses completed mock accuracy, not the number of completed mocks, in the team study estimate", async () => {
+    const db = database([
+      [org], [lic], [org], [member],
+      [{ memberId: 3, total: 200, correct: 160, lastActive: mysqlTimestamp(past) }],
+      [{ memberId: 3 }], [],
+      [{ memberId: 3, count: 5 }],
+      [{ memberId: 3, correct: 20, total: 100 }],
+      [], [], [{ memberId: 3 }], [], [],
+    ]);
+
+    const result = await orgIntelRouter.createCaller(ctx).getTeamReadinessSummary({ orgId: 7 });
+
+    // 80% practice × 50% + 20% completed-mock accuracy × 25%
+    // + full volume × 15% + recent activity × 10% = 70%.
+    expect(result).toMatchObject({ avgReadiness: 70, examReadyCount: 0 });
+    expect(db.pending).toEqual([]);
+  });
+  it("treats a raw MySQL aggregate timestamp string as dated activity in the attention list", async () => {
+    const stale = new Date(now.getTime() - 15 * 86400000);
+    const db = database([
+      [org], [lic], [member],
+      [{ memberId: 3, total: 10, correct: 8 }],
+      [{ memberId: 3, lastActive: mysqlTimestamp(stale) }],
+      [],
+    ]);
+
+    const result = await orgRouter.createCaller(ctx).getAttention();
+
+    expect(result.stalled).toEqual([
+      expect.objectContaining({ email: member.email, reason: "inactive", daysSinceActivity: 15 }),
+    ]);
+    expect(db.pending).toEqual([]);
+  });
+  it("keeps upcoming exams, course accuracy, aliases, and dates bound to assigned members and courses", async () => {
+    const waterOperator = {
+      id: 101, orgId: 7, email: "water-operator@echelon.test", role: "operator", status: "assigned",
+      courseKey: "class1-water", courseKeys: '["class1-water"]', assignedAt: new Date(now.getTime() - 30 * 86400000),
+    };
+    const wastewaterOperator = {
+      id: 102, orgId: 7, email: "wastewater-operator@echelon.test", role: "operator", status: "assigned",
+      courseKey: "class1-ww", courseKeys: '["class1-ww"]', assignedAt: new Date(now.getTime() - 30 * 86400000),
+    };
+    const multiCourseOperator = {
+      id: 201, orgId: 7, email: "multi-course-operator@echelon.test", role: "operator", status: "assigned",
+      courseKey: "class1-water", courseKeys: '["class1-water","class1-ww"]', assignedAt: new Date(now.getTime() - 30 * 86400000),
+    };
+    const waterExamDate = new Date(now.getTime() + 3 * 86400000);
+    const wastewaterExamDate = new Date(now.getTime() + 7 * 86400000);
+    const laterWastewaterExamDate = new Date(now.getTime() + 14 * 86400000);
+    const db = database([
+      [org], [lic], [waterOperator, wastewaterOperator, multiCourseOperator],
+      [
+        { memberId: 101, examType: "class1-water", total: 100, correct: 95 },
+        { memberId: 102, examType: "class1-wastewater", total: 100, correct: 20 },
+        { memberId: 201, examType: "class1-water", total: 100, correct: 20 },
+        { memberId: 201, examType: "class1-wastewater", total: 100, correct: 0 },
+      ],
+      [
+        { memberId: 101, lastActive: now },
+        { memberId: 102, lastActive: now },
+        { memberId: 201, lastActive: now },
+      ],
+      [
+        // An alias stored on the date must normalize to class1-ww and match
+        // the registry-defined class1-wastewater question bank.
+        { memberId: 102, email: wastewaterOperator.email, courseKey: "class1-wastewater", examDate: wastewaterExamDate },
+        { memberId: 201, email: multiCourseOperator.email, courseKey: "class1-water", examDate: waterExamDate },
+        { memberId: 201, email: multiCourseOperator.email, courseKey: "class1-wastewater", examDate: laterWastewaterExamDate },
+        // This other-org row must not cross either the SQL org/member scopes
+        // or the in-memory assigned-member boundary.
+        { orgId: 8, memberId: 999, email: "foreign-operator@echelon.test", courseKey: "class1-ww", examDate: new Date(now.getTime() + 2 * 86400000) },
+      ],
+    ]);
+
+    const result = await orgRouter.createCaller(ctx).getAttention();
+
+    expect(result.atRisk).toEqual([
+      {
+        memberId: 201, email: multiCourseOperator.email, courseKey: "class1-water",
+        courseLabel: "Class 1 Water Treatment", courseAccuracy: 20,
+        examDate: waterExamDate, daysUntilExam: 3,
+      },
+      {
+        memberId: 102, email: wastewaterOperator.email, courseKey: "class1-ww",
+        courseLabel: "Class 1 Wastewater Treatment", courseAccuracy: 20,
+        examDate: wastewaterExamDate, daysUntilExam: 7,
+      },
+      {
+        memberId: 201, email: multiCourseOperator.email, courseKey: "class1-ww",
+        courseLabel: "Class 1 Wastewater Treatment", courseAccuracy: 0,
+        examDate: laterWastewaterExamDate, daysUntilExam: 14,
+      },
+    ]);
+    expect(result.atRisk.map(row => row.email)).not.toContain(waterOperator.email);
+    expect(result.atRisk.map(row => row.email)).not.toContain("foreign-operator@echelon.test");
+    expect(db.conditions.some(condition => condition.includes("organizationMemberId") && condition.includes("orgId"))).toBe(true);
+    expect(db.pending).toEqual([]);
+  });
+  it("normalizes a raw MySQL minimum exam date in the per-operator readiness report", async () => {
+    const examDate = new Date(now.getTime() + 7 * 86400000);
+    const db = database([
+      [org], [lic], [member],
+      [{ memberId: 3, total: 10, correct: 8 }],
+      [], [],
+      [{ memberId: 3, lastActive: mysqlTimestamp(past) }],
+      [{ email: member.email, examDate: mysqlTimestamp(examDate) }],
+      [],
+    ]);
+
+    const result = await orgIntelRouter.createCaller(ctx).getOperatorReadiness({ orgId: 7 });
+
+    expect(result.operators).toEqual([
+      expect.objectContaining({ email: member.email, daysUntilExam: 7, examRisk: "critical" }),
+    ]);
+    expect(db.pending).toEqual([]);
+  });
+  it("CSV uses identical matched evidence and exposes sample sizes", async () => {
+    const db = database([[org], [lic], [org], [member], [], practice, [], [], [], [], [], diagnostics]);
+    const result = await orgIntelRouter.createCaller(ctx).exportTeamCSV({ orgId: 7 });
+    const [header, row] = result.csv.split("\n").map(line => line.split(","));
+    expect(row[header.indexOf("Matched Diagnostic Baseline")]).toBe("40%");
+    expect(row[header.indexOf("Same-Course Post-Baseline Practice Accuracy")]).toBe("100%");
+    expect(row[header.indexOf("Matched Accuracy Change")]).toBe("+60 pts");
+    expect(row[header.indexOf("Matched Learner-Courses")]).toBe("1");
+    expect(row[header.indexOf("Matched Practice Attempts")]).toBe("1");
+    expect(row.length).toBe(header.length);
+    expect(db.pending).toEqual([]);
+  });
+});

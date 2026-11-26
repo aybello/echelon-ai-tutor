@@ -1,0 +1,71 @@
+.province-banner {
+  padding: 8px 20px;
+  border-bottom: 1px solid #ccdcf4;
+  background: #eaf2fc;
+  color: #000;
+  font-family: "Source Sans 3", Arial, sans-serif;
+}
+.province-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.province-banner-label {
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.province-banner-options {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 4px;
+}
+.province-banner .province-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #b9cde8;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.province-code { color: #1757b8; font-weight: 800; }
+.province-name-full { font-size: 12px; }
+.province-banner .province-btn:hover { border-color: #1757b8; background: #f5f9ff; }
+.province-banner-dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
+}
+.province-banner-dismiss:hover { background: #dce9fc; }
+.province-banner :is(button):focus-visible { outline: 3px solid #1757b8; outline-offset: 2px; }
+@media (max-width: 640px) {
+  .province-banner { padding: 6px 12px; }
+  .province-banner-inner { flex-wrap: wrap; gap: 4px; }
+  .province-banner-label { flex: 1; }
+  .province-banner-dismiss { width: 44px; height: 44px; }
+  .province-banner-options { flex: 0 0 100%; order: 3; padding-bottom: 6px; }
+}

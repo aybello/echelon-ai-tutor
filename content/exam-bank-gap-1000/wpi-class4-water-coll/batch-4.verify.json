@@ -1,0 +1,72 @@
+[
+ {
+  "itemId": "COLLECTION-L4-640",
+  "expression": "(540000-12500*30-2800*30)/30",
+  "expected": "2700",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L4-641",
+  "expression": "9500*1.12*2.4",
+  "expected": "25536",
+  "decimalPlaces": 0,
+  "unit": "m³/day"
+ },
+ {
+  "itemId": "COLLECTION-L4-642",
+  "expression": "(240000/80)*850",
+  "expected": "2550000.00",
+  "decimalPlaces": 2,
+  "unit": "$"
+ },
+ {
+  "itemId": "COLLECTION-L4-643",
+  "expression": "27000/450*1.1",
+  "expected": "66.0",
+  "decimalPlaces": 1,
+  "unit": "days"
+ },
+ {
+  "itemId": "COLLECTION-L4-644",
+  "expression": "(8200+6400+3900-17575)/(8200+6400+3900)*100",
+  "expected": "5.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ },
+ {
+  "itemId": "COLLECTION-L4-645",
+  "expression": "(30000-22800)/1.44",
+  "expected": "5000",
+  "decimalPlaces": 0,
+  "unit": "homes"
+ },
+ {
+  "itemId": "COLLECTION-L4-646",
+  "expression": "18.6+5*1.2-5*2.0",
+  "expected": "14.6",
+  "decimalPlaces": 1,
+  "unit": "km"
+ },
+ {
+  "itemId": "COLLECTION-L4-647",
+  "expression": "12*6*90*4.5",
+  "expected": "29160.00",
+  "decimalPlaces": 2,
+  "unit": "$"
+ },
+ {
+  "itemId": "COLLECTION-L4-648",
+  "expression": "(420000+185000+310000+265000)/295",
+  "expected": "4000.00",
+  "decimalPlaces": 2,
+  "unit": "$/km"
+ },
+ {
+  "itemId": "COLLECTION-L4-649",
+  "expression": "(450-(310+68+27))/450*100",
+  "expected": "10.0",
+  "decimalPlaces": 1,
+  "unit": "%"
+ }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 468,
+    "question": "Why can a composite wastewater sample be useful for evaluating a treatment plant's performance?",
+    "options": [
+      "It combines aliquots collected over a sampling period, helping the sample represent changing wastewater conditions over time.",
+      "It measures every pollutant without laboratory analysis, so operators can use it instead of approved analytical methods.",
+      "It is always taken as one instantaneous grab, which makes it the best way to identify a short-term spill event.",
+      "It removes suspended solids before laboratory analysis, allowing a wastewater facility to skip required mixing and preservation steps."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario Procedure F-10-1 describes a composite sample as aliquots taken over the required sampling period and thoroughly mixed. A composite can therefore help represent conditions that vary during that period when the applicable sampling program calls for it.",
+    "sourceTitle": "Ontario MECP — F-10-1 Procedures for Sampling and Analysis Requirements for Municipal and Private Sewage Treatment Works",
+    "sourceReference": "Section 2.1 states that composite samples should ideally consist of flow-proportioned aliquots taken at least once per hour over the required sampling period and that all aliquots should be thoroughly mixed.",
+    "sourceUrl": "https://www.ontario.ca/page/f-10-1-procedures-sampling-and-analysis-requirements-municipal-and-private-sewage-treatment-works"
+  }
+]

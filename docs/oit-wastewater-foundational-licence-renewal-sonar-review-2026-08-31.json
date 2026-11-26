@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 424,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Licence-expiry timing is directly traceable to the cited provision in O. Reg. 129/04 s.7(4), with no source-to-claim mismatch.",
+        "The question correctly treats O. Reg. 129/04 as an Ontario regulation governing sewage works operator licensing, matching the jurisdiction and regulatory scope.",
+        "Exactly one option is correct; the three- and five-year, one-year, and never-expire distractors are plausible without introducing unsafe operational practices or omitting required actions.",
+        "The learning objective (recognizing basic licence validity period under the Ontario licensing regulation) is foundational and appropriate for an Ontario OIT candidate.",
+        "The explanation accurately paraphrases the regulation’s language and properly limits the scope to the licence period, without overstating or universalizing additional regulatory requirements."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

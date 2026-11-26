@@ -1,0 +1,5440 @@
+{
+ "courseKey": "class2-wastewater-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c2wc-process40",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the investigation of repeated blockages in one sewer using CCTV and maintenance records.",
+   "topicId": "repeat-blockage-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a reach with four blockages in two years being investigated by a Class 2 supervisor.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the full blockage and cleaning history with dates, causes found and material removed"
+    },
+    {
+     "id": "s2",
+     "label": "Match each historical blockage location against the defects found on the video"
+    },
+    {
+     "id": "s3",
+     "label": "Set a follow up inspection or cleaning check to confirm the blockages stop"
+    },
+    {
+     "id": "s4",
+     "label": "Select the corrective action that addresses the matched cause, such as root treatment, repair or increased cleaning frequency"
+    },
+    {
+     "id": "s5",
+     "label": "Clean the reach thoroughly so the camera can see the pipe wall and joints"
+    },
+    {
+     "id": "s6",
+     "label": "Run CCTV and code every structural and maintenance defect in the reach"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s5",
+    "s6",
+    "s2",
+    "s4",
+    "s3"
+   ],
+   "explanation": "History defines the pattern, cleaning enables a clear camera view, and matching blockage locations to visible defects identifies the true cause. The corrective action targets that cause, and follow up confirms it worked."
+  },
+  {
+   "id": "c2wc-process41",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a cured in place pipe lining project from design checks to return to service.",
+   "topicId": "cipp-lining-project-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: lining of a deteriorated 300 mm sanitary reach under a residential street.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set up bypass pumping sized for the expected flows for the full installation period"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the host pipe condition, diameter and length from the pre design CCTV inspection"
+    },
+    {
+     "id": "s3",
+     "label": "Reinstate the service connections and collect the post lining CCTV for acceptance"
+    },
+    {
+     "id": "s4",
+     "label": "Remove the bypass, return the reach to normal service and file the acceptance records"
+    },
+    {
+     "id": "s5",
+     "label": "Clean the reach and complete a final pre lining CCTV to confirm it is ready for the liner"
+    },
+    {
+     "id": "s6",
+     "label": "Install the liner and complete the curing process specified for the liner system"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s5",
+    "s1",
+    "s6",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Design is confirmed from inspection first, and the pipe must be clean and proven ready before bypass and installation begin. Curing and reinstatement precede acceptance inspection, and bypass removal is last because the reach must be proven before it carries flow again."
+  },
+  {
+   "id": "c2wc-process42",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preparation day before a liner installation on a trunk reach.",
+   "topicId": "lining-preparation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: final preparation of a 450 mm reach scheduled for lining the next morning.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure and record the exact reach length and service connection locations for the installer"
+    },
+    {
+     "id": "s2",
+     "label": "Stage the bypass pumps and test run them under load before the installation day"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the installation schedule, access points and traffic control bookings for the work window"
+    },
+    {
+     "id": "s4",
+     "label": "Run the pre lining CCTV and confirm no obstruction remains that would damage the liner"
+    },
+    {
+     "id": "s5",
+     "label": "Notify affected properties of the work window and any water use restrictions"
+    },
+    {
+     "id": "s6",
+     "label": "Complete the final cleaning pass and remove all debris and protruding obstructions"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s6",
+    "s4",
+    "s1",
+    "s2",
+    "s5"
+   ],
+   "explanation": "Preparation ends with a pipe proven clean on camera, measurements the installer can rely on, and a bypass that has already run under load. Property notification comes before the work window so residents are not surprised on installation day."
+  },
+  {
+   "id": "c2wc-process43",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the installation and curing awareness sequence for a liner installation day.",
+   "topicId": "liner-installation-curing-awareness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a supervisor awareness sequence for a contractor liner installation and cure.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Hold the cure for the full specified time and confirm monitoring records stay within limits"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm bypass pumping is running and flows are fully controlled before the host pipe is taken out of service"
+    },
+    {
+     "id": "s3",
+     "label": "Observe the liner being inserted or inverted into the host pipe from the installation manhole"
+    },
+    {
+     "id": "s4",
+     "label": "Cut the liner ends and reinstate services only after the liner is confirmed set"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm curing begins using the specified method and that temperature or pressure monitoring is in place"
+    },
+    {
+     "id": "s6",
+     "label": "Cool or depressurize the liner gradually as specified before any cutting begins"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s3",
+    "s5",
+    "s1",
+    "s6",
+    "s4"
+   ],
+   "explanation": "Flow control is proven before the pipe leaves service, and curing is a timed, monitored process that cannot be shortened. Controlled cooling and confirmation that the liner is set protect the new pipe before ends are cut and services are restored."
+  },
+  {
+   "id": "c2wc-process44",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a pipe bursting awareness sequence for replacing a deteriorated sewer.",
+   "topicId": "pipe-bursting-awareness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: supervisor awareness for a contractor replacing a 200 mm sewer with a larger pipe by pipe bursting.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the new pipe size, alignment and depth from the design and the pre construction CCTV"
+    },
+    {
+     "id": "s2",
+     "label": "Run post construction CCTV and return the reach to service after acceptance"
+    },
+    {
+     "id": "s3",
+     "label": "Reconnect the service connections and manholes to the new pipe"
+    },
+    {
+     "id": "s4",
+     "label": "Pull the bursting head through, fracturing the old pipe and drawing the new pipe in behind it"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm underground utilities in the burst path are located and exposed or protected as required"
+    },
+    {
+     "id": "s6",
+     "label": "Excavate the insertion and receiving pits at the locations shown on the design"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s6",
+    "s5",
+    "s4",
+    "s3",
+    "s2"
+   ],
+   "explanation": "Design confirmation and pit excavation frame the work, and utility protection must be complete before the bursting head moves. Connections and acceptance inspection follow installation, and the reach returns to service only after acceptance."
+  },
+  {
+   "id": "c2wc-process45",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a slip lining awareness sequence for a large diameter trunk sewer.",
+   "topicId": "slip-lining-awareness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: supervisor awareness for inserting a smaller liner pipe into a 900 mm trunk sewer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Grout the annular space between the liner and the host pipe in controlled lifts"
+    },
+    {
+     "id": "s2",
+     "label": "Excavate or prepare the insertion access at the location with the required working space"
+    },
+    {
+     "id": "s3",
+     "label": "Clean the host pipe and remove obstructions that would block the liner pipe passage"
+    },
+    {
+     "id": "s4",
+     "label": "Insert and join the liner pipe sections through the host pipe to the far manhole"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the reduced internal diameter still provides the required capacity for the reach"
+    },
+    {
+     "id": "s6",
+     "label": "Reconnect services, run acceptance CCTV and return the reach to service"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s6"
+   ],
+   "explanation": "Capacity is checked first because slip lining reduces diameter. A clear host pipe and proper access allow insertion, grouting stabilizes the annulus in lifts to control pressure, and acceptance inspection precedes return to service."
+  },
+  {
+   "id": "c2wc-process46",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an open cut spot repair of a collapsed sewer section.",
+   "topicId": "open-cut-spot-repair",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: excavation and replacement of a 4 m collapsed section of residential sewer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Excavate to the pipe, supporting the trench and controlling groundwater as required"
+    },
+    {
+     "id": "s2",
+     "label": "Set up traffic control, shoring and bypass pumping or plugging for the work area"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the failure location and depth from CCTV and surface marking and book the excavation"
+    },
+    {
+     "id": "s4",
+     "label": "Restore the surface, remove the bypass and record the repair in the asset history"
+    },
+    {
+     "id": "s5",
+     "label": "Backfill and compact in lifts and complete a mandrel or visual check of the new section as specified"
+    },
+    {
+     "id": "s6",
+     "label": "Remove the failed section and install the new pipe section with proper bedding and joints"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s2",
+    "s1",
+    "s6",
+    "s5",
+    "s4"
+   ],
+   "explanation": "Location, safety and flow control are established before digging. The new section is bedded and jointed correctly, backfill is compacted in lifts to protect it, and surface restoration and records close the repair."
+  },
+  {
+   "id": "c2wc-process47",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an internal spot repair using a short sectional liner patch.",
+   "topicId": "sectional-patch-repair",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a sectional patch installed over a cracked and infiltrating joint in a 300 mm sewer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run post repair CCTV to confirm the patch is smooth, sealed and correctly located"
+    },
+    {
+     "id": "s2",
+     "label": "Deflate and withdraw the carrier after the cure is complete"
+    },
+    {
+     "id": "s3",
+     "label": "Clean the reach and run a sizing check to confirm the patch will pass to the defect"
+    },
+    {
+     "id": "s4",
+     "label": "Inflate the carrier to press the patch against the pipe wall and hold it for the full cure time"
+    },
+    {
+     "id": "s5",
+     "label": "Position the patch carrier at the measured defect location using the camera for confirmation"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the defect location, length and diameter from the reviewed CCTV inspection"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s5",
+    "s4",
+    "s2",
+    "s1"
+   ],
+   "explanation": "The patch is sized and positioned from measured inspection data, with camera confirmation before inflation. Full cure time is held before the carrier is withdrawn, and post repair CCTV proves the patch landed correctly."
+  },
+  {
+   "id": "c2wc-process48",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lateral rehabilitation awareness sequence for a defective service connection.",
+   "topicId": "lateral-rehabilitation-awareness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: supervisor awareness for lining a cracked private side lateral from the mainline connection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Install the lateral liner from the mainline connection to the agreed rehabilitation limit"
+    },
+    {
+     "id": "s2",
+     "label": "Reinstate the connection at the main and confirm flow from the property fixtures"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the lateral defect and ownership boundary from the lateral launch inspection records"
+    },
+    {
+     "id": "s4",
+     "label": "Notify the property owner and agree on access and the work window"
+    },
+    {
+     "id": "s5",
+     "label": "Record the completed rehabilitation limits in the asset and property files"
+    },
+    {
+     "id": "s6",
+     "label": "Clean the lateral from the access point and confirm it is clear for the liner"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s4",
+    "s6",
+    "s1",
+    "s2",
+    "s5"
+   ],
+   "explanation": "Ownership and defect confirmation come first because lateral work crosses the public and private boundary. Owner agreement precedes cleaning and installation, flow is proven from the property, and the completed limits are recorded for both files."
+  },
+  {
+   "id": "c2wc-process49",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a manhole rehabilitation sequence for a structurally deteriorated manhole.",
+   "topicId": "manhole-rehabilitation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: rehabilitation of a brick manhole with infiltration and a deteriorated chimney and benching.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set up bypass or flow control if the work requires a dry manhole interior"
+    },
+    {
+     "id": "s2",
+     "label": "Remove deteriorated material and repair the structure, benching and pipe connections"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect and grade the manhole and select the rehabilitation method matched to its defects"
+    },
+    {
+     "id": "s4",
+     "label": "Apply the specified lining or coating system to the prepared interior surfaces"
+    },
+    {
+     "id": "s5",
+     "label": "Allow the full cure time specified for the applied system before returning flow"
+    },
+    {
+     "id": "s6",
+     "label": "Reinspect the finished manhole and record the rehabilitation in the asset history"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s2",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Method selection follows grading, and surface preparation determines whether any lining or coating will bond. Cure time is protected before flow returns, and reinspection verifies the finished work before it is recorded."
+  },
+  {
+   "id": "c2wc-process50",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the planning of a rehabilitation tender package for a group of sewer reaches.",
+   "topicId": "rehabilitation-tender-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a Class 2 supervisor preparing a lining tender covering twelve reaches.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify each reach length, diameter and access from current inspection and map records"
+    },
+    {
+     "id": "s2",
+     "label": "Issue the package and record the tender closing and evaluation steps in the project file"
+    },
+    {
+     "id": "s3",
+     "label": "Group the reaches into one contract with a logical work sequence by area"
+    },
+    {
+     "id": "s4",
+     "label": "Set the bypass pumping, traffic and resident notification requirements for each reach"
+    },
+    {
+     "id": "s5",
+     "label": "Include the acceptance CCTV and deficiency correction requirements in the package"
+    },
+    {
+     "id": "s6",
+     "label": "Write the specification requirements for preparation, installation, curing and acceptance"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s3",
+    "s6",
+    "s4",
+    "s5",
+    "s2"
+   ],
+   "explanation": "A tender is built on verified reach data, grouped for efficient delivery. The specification defines quality and acceptance before prices are sought, and the file records how the tender will be closed and evaluated."
+  },
+  {
+   "id": "c2wc-process51",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lift station capacity analysis comparing inflow with firm capacity.",
+   "topicId": "lift-station-capacity-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a duplex station serving a growing area, reviewed after repeated high level alarms.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Project inflow growth from approved development for the planning horizon"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the year and condition when inflow is projected to exceed firm capacity"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm the firm capacity as the pumping rate with the largest pump out of service"
+    },
+    {
+     "id": "s4",
+     "label": "Compare peak wet weather inflow against firm capacity for the design storm condition"
+    },
+    {
+     "id": "s5",
+     "label": "Recommend capacity upgrades or inflow reduction and enter them into the capital plan"
+    },
+    {
+     "id": "s6",
+     "label": "Compile dry weather and wet weather inflow records from station run times and flow data"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s3",
+    "s4",
+    "s1",
+    "s2",
+    "s5"
+   ],
+   "explanation": "Capacity analysis compares measured and projected inflow against firm capacity, which by definition assumes the largest pump is unavailable. The exceedance point is identified before upgrades are recommended and programmed."
+  },
+  {
+   "id": "c2wc-process52",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the build of a lift station reliability program based on criticality.",
+   "topicId": "lift-station-reliability-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a municipality with fourteen lift stations of different ages and consequences.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set inspection, testing and spare parts levels for each criticality tier"
+    },
+    {
+     "id": "s2",
+     "label": "Review criticality scores annually and after any station failure or upgrade"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule the reliability tasks for the highest tier stations first"
+    },
+    {
+     "id": "s4",
+     "label": "Combine consequence and condition into a criticality score for every station"
+    },
+    {
+     "id": "s5",
+     "label": "Rank the stations by consequence of failure, including overflow receptors and number of properties served"
+    },
+    {
+     "id": "s6",
+     "label": "Assess the condition and age of pumps, controls, power and alarms at each station"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s1",
+    "s3",
+    "s2"
+   ],
+   "explanation": "Consequence and condition are assessed separately, then combined, because either one alone misranks risk. Service levels follow the tier, the highest tier is scheduled first, and failures feed back into the scores."
+  },
+  {
+   "id": "c2wc-process53",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a pump performance test program for a duplex lift station.",
+   "topicId": "pump-performance-testing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: annual drawdown testing of both pumps at a duplex station.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Isolate inflow as far as operations allow and note the starting wet well level"
+    },
+    {
+     "id": "s2",
+     "label": "Record the wet well dimensions and confirm the level instruments read correctly"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate the pumping rate from the volume removed and the recorded time"
+    },
+    {
+     "id": "s4",
+     "label": "Repeat the test for the second pump and for both pumps running together"
+    },
+    {
+     "id": "s5",
+     "label": "Compare all rates with the rated capacity and the previous year results and flag any decline"
+    },
+    {
+     "id": "s6",
+     "label": "Run the first pump alone on a timed drawdown between two fixed levels and record the time"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s1",
+    "s6",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Accurate levels and dimensions come before timing, because the rate is calculated from volume over time. Each pump is tested alone before the combined test, and comparison with rated and historical values reveals decline."
+  },
+  {
+   "id": "c2wc-process54",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the wet well cleaning program cycle for a group of lift stations.",
+   "topicId": "wet-well-cleaning-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: scheduled cleaning of six wet wells with known grease and grit accumulation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Schedule cleaning for the worst wells first, with vacuum truck and confined space controls booked"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect pumps, floats and rails while the well is clean and accessible"
+    },
+    {
+     "id": "s3",
+     "label": "Lower the well level, remove floatables and grit, and wash down the walls and equipment"
+    },
+    {
+     "id": "s4",
+     "label": "Adjust the cleaning frequency for wells that filled faster or slower than expected"
+    },
+    {
+     "id": "s5",
+     "label": "Record the volume and type of material removed for each well"
+    },
+    {
+     "id": "s6",
+     "label": "Rank the wet wells by grease and grit accumulation rates from inspection history"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s3",
+    "s2",
+    "s5",
+    "s4"
+   ],
+   "explanation": "Ranking by accumulation rate puts the worst wells first. Cleaning creates the access for equipment inspection, removal records quantify the problem, and frequencies are adjusted from measured results."
+  },
+  {
+   "id": "c2wc-process55",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the standby power test program for lift stations with generators.",
+   "topicId": "standby-power-testing",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: monthly and annual testing of standby generators at critical lift stations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Run the monthly loaded exercise and record run time, voltage and any alarms"
+    },
+    {
+     "id": "s2",
+     "label": "Transfer load back to utility power and confirm normal operation is restored"
+    },
+    {
+     "id": "s3",
+     "label": "Run the pumps on generator power and confirm alarms and telemetry operate on backup supply"
+    },
+    {
+     "id": "s4",
+     "label": "Transfer the station load to the generator under controlled conditions for the annual test"
+    },
+    {
+     "id": "s5",
+     "label": "Log all results and raise work orders for every deficiency found during testing"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm fuel, oil and coolant levels and the generator exercise clock settings before the test"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s4",
+    "s3",
+    "s2",
+    "s5"
+   ],
+   "explanation": "Pre checks prevent a test from becoming a failure event. Loaded running precedes a full load transfer, station systems are proven on backup power, and normal service is confirmed restored before deficiencies are worked off."
+  },
+  {
+   "id": "c2wc-process56",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the alarm and telemetry review program for a network of lift stations.",
+   "topicId": "alarm-telemetry-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a supervisor reviewing alarm performance across ten telemetered stations for one quarter.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify stations with repeat alarms that point to an unresolved equipment problem"
+    },
+    {
+     "id": "s2",
+     "label": "Raise corrective work orders for the equipment problems and for faulty alarm points"
+    },
+    {
+     "id": "s3",
+     "label": "Report alarm performance and overdue corrections to management in the quarterly review"
+    },
+    {
+     "id": "s4",
+     "label": "Compare each genuine event against the operator response record and response time"
+    },
+    {
+     "id": "s5",
+     "label": "Remove duplicate and chattering alarms and count the genuine events by station"
+    },
+    {
+     "id": "s6",
+     "label": "Extract the alarm history for every station, including high level, power fail and pump fault alarms"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s5",
+    "s4",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "explanation": "Alarm history is cleaned before it is counted, because chattering points distort the picture. Genuine events are tested against response records, repeat alarms become equipment work orders, and the quarter closes with a management report."
+  },
+  {
+   "id": "c2wc-process57",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the critical spare parts program for a lift station network.",
+   "topicId": "critical-spare-parts-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: setting spare parts stock for pumps, floats, controls and power components.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the failure prone and long lead time components at each criticality tier of station"
+    },
+    {
+     "id": "s2",
+     "label": "Set a stock level for each component based on consequence, lead time and number of stations served"
+    },
+    {
+     "id": "s3",
+     "label": "Stock and label the parts and enter them into the inventory system with reorder points"
+    },
+    {
+     "id": "s4",
+     "label": "Record the consequence and expected downtime if each component fails without a spare on hand"
+    },
+    {
+     "id": "s5",
+     "label": "Review usage and lead times annually and adjust stock levels and reorder points"
+    },
+    {
+     "id": "s6",
+     "label": "Issue parts only against a work order so usage is recorded against the station"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s4",
+    "s2",
+    "s3",
+    "s6",
+    "s5"
+   ],
+   "explanation": "Stock levels are set from failure consequence and lead time, not from habit. Controlled issuing ties parts to stations and work orders, and annual review keeps levels matched to real usage."
+  },
+  {
+   "id": "c2wc-process58",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lift station condition assessment for capital planning.",
+   "topicId": "lift-station-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a full condition assessment of a twenty year old duplex station.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the electrical, control and telemetry systems for age, support and reliability"
+    },
+    {
+     "id": "s2",
+     "label": "Build the renewal project list in priority order for the capital plan"
+    },
+    {
+     "id": "s3",
+     "label": "Review the station maintenance, failure and energy records for the past five years"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect the civil structure, wet well coating and hatches for corrosion and safety defects"
+    },
+    {
+     "id": "s5",
+     "label": "Grade each system and estimate its remaining service life"
+    },
+    {
+     "id": "s6",
+     "label": "Inspect and test the pumps, valves and piping for condition and performance"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s4",
+    "s6",
+    "s1",
+    "s5",
+    "s2"
+   ],
+   "explanation": "Records frame the field work, and each system, civil, mechanical and electrical, is graded on its own condition. Remaining life estimates convert grades into a prioritized renewal list for capital planning."
+  },
+  {
+   "id": "c2wc-process59",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development of a bypass pumping plan for a lift station renewal project.",
+   "topicId": "bypass-pumping-plan",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a plan to keep a duplex station in service while its pumps and controls are replaced.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select bypass pumps with capacity above the peak inflow and a standby unit on site"
+    },
+    {
+     "id": "s2",
+     "label": "Lay out suction and discharge piping routes, power supply and fuel storage"
+    },
+    {
+     "id": "s3",
+     "label": "Set the monitoring, alarm and refuelling schedule for the full bypass period"
+    },
+    {
+     "id": "s4",
+     "label": "Write the contingency steps for bypass pump failure and for a storm during the work"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the plan and brief all shifts before the station is taken out of normal service"
+    },
+    {
+     "id": "s6",
+     "label": "Measure or confirm the station peak inflow that the bypass must handle"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5"
+   ],
+   "explanation": "Bypass sizing starts from peak inflow, and a standby unit is part of the base plan, not an extra. Monitoring and contingency steps are written before approval, and every shift is briefed before the station leaves normal service."
+  },
+  {
+   "id": "c2wc-process60",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lift station renewal project from shutdown to return to automatic service.",
+   "topicId": "lift-station-renewal-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: replacement of pumps, controls and valves at an operating duplex station.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Test each new pump manually, then test floats, alarms and alternation in automatic"
+    },
+    {
+     "id": "s2",
+     "label": "Remove the old pumps, valves and control panel and prepare the mounting surfaces"
+    },
+    {
+     "id": "s3",
+     "label": "Install the new equipment and complete the electrical and control connections"
+    },
+    {
+     "id": "s4",
+     "label": "Commission the approved bypass pumping and confirm it handles the station inflow"
+    },
+    {
+     "id": "s5",
+     "label": "Stand down the bypass and place the renewed station in normal automatic service"
+    },
+    {
+     "id": "s6",
+     "label": "Isolate, lock out and drain the work area and confirm a safe work zone"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s6",
+    "s2",
+    "s3",
+    "s1",
+    "s5"
+   ],
+   "explanation": "The station is never out of service without a proven bypass. New equipment is tested manually before automatic controls are trusted, and bypass is stood down only after a full automatic test succeeds."
+  },
+  {
+   "id": "c2wc-process61",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the air release valve inspection program for a force main network.",
+   "topicId": "air-release-valve-inspection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: annual inspection of air release and vacuum valves on three force mains.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the valve body, float and seat for corrosion, debris and leakage and clean as required"
+    },
+    {
+     "id": "s2",
+     "label": "Schedule inspections starting with the valves on the highest consequence mains"
+    },
+    {
+     "id": "s3",
+     "label": "List every air valve by location, high point and valve type from the force main records"
+    },
+    {
+     "id": "s4",
+     "label": "Record the condition and raise replacement work orders for valves that fail inspection"
+    },
+    {
+     "id": "s5",
+     "label": "Isolate and depressurize each valve chamber as required for safe inspection"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the isolation valve operates and the valve vents and reseats correctly"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s2",
+    "s5",
+    "s1",
+    "s6",
+    "s4"
+   ],
+   "explanation": "The program starts from a complete valve inventory tied to high points, where air collects. Safe isolation precedes inspection, operation is proven before the visit ends, and failed valves become work orders rather than notes."
+  },
+  {
+   "id": "c2wc-process62",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the replacement of a failed air release valve on a force main high point.",
+   "topicId": "air-release-valve-replacement",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: replacement of a leaking air release valve at the highest point of a sewage force main.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Install the new valve with new gaskets and confirm all connections are tight"
+    },
+    {
+     "id": "s2",
+     "label": "Restart the pumps slowly, vent air in a controlled way and check the new valve for leaks"
+    },
+    {
+     "id": "s3",
+     "label": "Remove the failed valve and inspect the tapping and isolation valve for damage"
+    },
+    {
+     "id": "s4",
+     "label": "Shut down the pumps, close the isolation valves and drain the valve assembly"
+    },
+    {
+     "id": "s5",
+     "label": "Plan the pump shutdown window with the station crew and notify the supervisor"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the spare valve matches the size, pressure rating and connection of the installed valve"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s5",
+    "s4",
+    "s3",
+    "s1",
+    "s2"
+   ],
+   "explanation": "The correct spare and an agreed shutdown window come before any wrench work. The assembly is drained before removal, the tapping is inspected while it is exposed, and restart is slow and controlled so the new valve can be checked under pressure."
+  },
+  {
+   "id": "c2wc-process63",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the planning of a force main swabbing or pigging awareness program.",
+   "topicId": "force-main-pigging-planning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: supervisor planning awareness for cleaning a force main with declining capacity.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the monitoring points for pressure and flow during the cleaning run"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the capacity loss from pump run times, pressures and flow records at the station"
+    },
+    {
+     "id": "s3",
+     "label": "Select the cleaning device type and size matched to the main and the deposits expected"
+    },
+    {
+     "id": "s4",
+     "label": "Plan the launch and retrieval points, flow control and disposal of removed material"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the plan, including the contingency for a stuck device, before any device is launched"
+    },
+    {
+     "id": "s6",
+     "label": "Review the force main profile for diameter changes, fittings and valves that could trap a pig or swab"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s6",
+    "s3",
+    "s4",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Capacity loss must be proven from operating records before cleaning is justified. The main profile decides whether a device can pass at all, launch and retrieval are planned before approval, and a stuck device contingency is mandatory."
+  },
+  {
+   "id": "c2wc-process64",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a force main swabbing run awareness sequence on the day of the work.",
+   "topicId": "force-main-swabbing-run",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: supervisor awareness sequence for a contractor swabbing run on a 300 mm force main.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Start pumping at the controlled rate set in the plan and record starting pressure and flow"
+    },
+    {
+     "id": "s2",
+     "label": "Track the swab progress using pressure changes and timed arrival estimates along the main"
+    },
+    {
+     "id": "s3",
+     "label": "Restore normal pumping and compare pressure and flow against the pre cleaning records"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm launch and retrieval crews are in position and in radio contact with the station operator"
+    },
+    {
+     "id": "s5",
+     "label": "Recover the swab at the retrieval point and inspect it and the removed material"
+    },
+    {
+     "id": "s6",
+     "label": "Load the swab at the launch point and confirm the retrieval trap is set and ready"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s6",
+    "s1",
+    "s2",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Crews and communications are confirmed before the swab moves. Pumping follows the planned rate with pressure tracked throughout, recovery confirms what was removed, and post run records prove whether capacity improved."
+  },
+  {
+   "id": "c2wc-process65",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a force main surge and pressure review after repeated high pressure alarms.",
+   "topicId": "force-main-surge-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a review triggered by pressure alarms at a lift station discharging to a long force main.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect air release valves at the high points for blockage or failure to vent"
+    },
+    {
+     "id": "s2",
+     "label": "Check for partially closed valves or obstructions that raise normal operating pressure"
+    },
+    {
+     "id": "s3",
+     "label": "Recommend control, valve or air management corrections for the confirmed causes"
+    },
+    {
+     "id": "s4",
+     "label": "Review pump start and stop control settings and valve closure speeds"
+    },
+    {
+     "id": "s5",
+     "label": "Compile the pressure alarm history with pump start and stop times for each event"
+    },
+    {
+     "id": "s6",
+     "label": "Retest under normal pump cycles and confirm the alarms stop before closing the review"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s4",
+    "s2",
+    "s3",
+    "s6"
+   ],
+   "explanation": "Alarm history tied to pump cycles frames the review, and air management is checked early because trapped air is a common cause of pressure problems. Corrections target confirmed causes, and retesting under normal cycles proves the fix."
+  },
+  {
+   "id": "c2wc-process66",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the investigation of a suspected force main leak.",
+   "topicId": "force-main-leak-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a wet area and odour reported above a force main route between two stations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compare station discharge volumes with receiving volumes for the suspect period"
+    },
+    {
+     "id": "s2",
+     "label": "Walk the force main route and record wet areas, odour, vegetation changes and surface damage"
+    },
+    {
+     "id": "s3",
+     "label": "Check air valve chambers and low points along the route for leakage or surcharging"
+    },
+    {
+     "id": "s4",
+     "label": "Complete the repair, disinfect and restore the area, and record the leak in the asset history"
+    },
+    {
+     "id": "s5",
+     "label": "Excavate at the confirmed location and expose the main for repair assessment"
+    },
+    {
+     "id": "s6",
+     "label": "Use pressure testing of an isolated section to confirm whether the main is losing pressure"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s6",
+    "s5",
+    "s4"
+   ],
+   "explanation": "Volume comparison confirms a loss exists before field work begins. Route inspection narrows the search, an isolated pressure test confirms the section, and excavation happens only at the confirmed location."
+  },
+  {
+   "id": "c2wc-process67",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a force main capacity test using station drawdown and discharge pressure.",
+   "topicId": "force-main-capacity-test",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a capacity test of a force main suspected of internal buildup.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate the capacity loss indicated by the higher pressure at the same flow"
+    },
+    {
+     "id": "s2",
+     "label": "Run a controlled test with one pump at a steady wet well level and record pressure and flow"
+    },
+    {
+     "id": "s3",
+     "label": "Recommend cleaning, investigation or acceptance of the current capacity based on the loss found"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the test pressures and flows against the commissioning records for the main"
+    },
+    {
+     "id": "s5",
+     "label": "Repeat the controlled test with both pumps running and record the same values"
+    },
+    {
+     "id": "s6",
+     "label": "Record baseline pump run times, discharge pressures and wet well drawdown rates over a normal week"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s2",
+    "s5",
+    "s4",
+    "s1",
+    "s3"
+   ],
+   "explanation": "A normal week baseline comes before controlled tests so results are comparable. Single and dual pump tests at recorded pressures are compared with commissioning values, and the recommendation follows the measured loss."
+  },
+  {
+   "id": "c2wc-process68",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the isolation and drain down of a force main section for a planned repair.",
+   "topicId": "force-main-isolation-draindown",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: taking a force main section out of service for a valve replacement.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Notify the receiving facility and confirm the repair window and flow storage arrangements"
+    },
+    {
+     "id": "s2",
+     "label": "Apply lockout to the pumps and valves and confirm the section is isolated"
+    },
+    {
+     "id": "s3",
+     "label": "Complete the repair and inspect the finished work before any refilling begins"
+    },
+    {
+     "id": "s4",
+     "label": "Stop the pumps and close the isolation valves at both ends of the work section"
+    },
+    {
+     "id": "s5",
+     "label": "Refill the section slowly, vent air at the high points and return the main to service"
+    },
+    {
+     "id": "s6",
+     "label": "Drain the section to the approved discharge point and confirm it is depressurized"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s4",
+    "s2",
+    "s6",
+    "s3",
+    "s5"
+   ],
+   "explanation": "Notification and storage arrangements protect the system while the main is down. Isolation and lockout precede draining, the section is proven depressurized before work, and slow refilling with venting prevents air and surge problems on return."
+  },
+  {
+   "id": "c2wc-process69",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an odour complaint investigation for a residential area near a trunk sewer.",
+   "topicId": "odour-complaint-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: repeated evening odour complaints near a trunk sewer and a lift station.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify the most likely source from the combined complaint, inspection and measurement records"
+    },
+    {
+     "id": "s2",
+     "label": "Apply the source control measure and follow up with the complainants to confirm improvement"
+    },
+    {
+     "id": "s3",
+     "label": "Log each complaint with time, weather, wind direction and the exact location reported"
+    },
+    {
+     "id": "s4",
+     "label": "Review station run times and upstream detention conditions that match the complaint times"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect the nearby manholes, station and vents for odour strength and visible causes"
+    },
+    {
+     "id": "s6",
+     "label": "Measure hydrogen sulfide at the suspect locations with a calibrated gas instrument"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s5",
+    "s6",
+    "s4",
+    "s1",
+    "s2"
+   ],
+   "explanation": "Complaint patterns are data, so they are logged with time and weather first. Field inspection and calibrated measurement test the pattern, the source is identified from combined evidence, and control is verified with the people who complained."
+  },
+  {
+   "id": "c2wc-process70",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the setup of a hydrogen sulfide monitoring program for a corrosion prone trunk.",
+   "topicId": "sulfide-monitoring-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: continuous sulfide logging at three points on a long, flat trunk sewer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Report the locations and periods of concern and recommend control measures for each"
+    },
+    {
+     "id": "s2",
+     "label": "Calibrate the logging instruments and confirm their ranges suit the expected sulfide levels"
+    },
+    {
+     "id": "s3",
+     "label": "Download and review the data for daily peaks and for locations with sustained high readings"
+    },
+    {
+     "id": "s4",
+     "label": "Log through warm weather and a range of flow conditions for the planned study period"
+    },
+    {
+     "id": "s5",
+     "label": "Select monitoring points at the discharge of the long force main, mid trunk and downstream end"
+    },
+    {
+     "id": "s6",
+     "label": "Install the loggers and record the starting readings and site conditions"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s2",
+    "s6",
+    "s4",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Monitoring points follow the sulfide generation path, from force main discharge downstream. Calibrated instruments and a study period that includes warm weather produce defensible data, and recommendations are tied to specific locations and peaks."
+  },
+  {
+   "id": "c2wc-process71",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the start up of a chemical feed program for sulfide control in a force main.",
+   "topicId": "sulfide-chemical-feed-startup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: starting a chemical feed at a lift station to control sulfide in a long force main. Awareness level only, using the product and dose set by the program design.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the storage, feed pumps and injection point and confirm all safety equipment is in place"
+    },
+    {
+     "id": "s2",
+     "label": "Adjust the dose only within the approved limits based on the downstream results"
+    },
+    {
+     "id": "s3",
+     "label": "Calibrate the feed pump output at the starting dose setting"
+    },
+    {
+     "id": "s4",
+     "label": "Measure sulfide at the downstream monitoring point on the set schedule"
+    },
+    {
+     "id": "s5",
+     "label": "Start the feed and confirm chemical is reaching the injection point"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the chemical, target dose and control limits from the approved program design"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s1",
+    "s3",
+    "s5",
+    "s4",
+    "s2"
+   ],
+   "explanation": "The approved design governs the chemical and dose before any equipment is touched. Storage and safety checks precede calibration and start up, downstream measurement proves performance, and dose changes stay inside approved limits."
+  },
+  {
+   "id": "c2wc-process72",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a corrosion inspection program for concrete sewers exposed to sulfide.",
+   "topicId": "corrosion-inspection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: inspection of concrete trunk sewers downstream of force main discharges.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assign reaches to monitoring, lining or replacement based on grade and remaining life"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect the highest ranked reaches, measuring crown corrosion and remaining wall condition"
+    },
+    {
+     "id": "s3",
+     "label": "Photograph and record corrosion by location so future inspections can be compared"
+    },
+    {
+     "id": "s4",
+     "label": "Rank concrete reaches by sulfide exposure, age and consequence from the monitoring records"
+    },
+    {
+     "id": "s5",
+     "label": "Set the reinspection interval for monitored reaches based on the corrosion rate observed"
+    },
+    {
+     "id": "s6",
+     "label": "Grade each reach for structural condition and estimate its remaining service life"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s2",
+    "s3",
+    "s6",
+    "s1",
+    "s5"
+   ],
+   "explanation": "Ranking by exposure focuses effort where sulfide attack is worst. Measured, photographed records allow corrosion rate to be calculated later, grades drive the intervention choice, and reinspection intervals follow the observed rate."
+  },
+  {
+   "id": "c2wc-process73",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the commissioning checks for a lift station odour control unit.",
+   "topicId": "odour-control-commissioning",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a new carbon based odour control unit installed on a lift station wet well vent.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Measure the airflow through the unit and compare it with the design airflow"
+    },
+    {
+     "id": "s2",
+     "label": "Set the media inspection and replacement schedule from the manufacturer requirements"
+    },
+    {
+     "id": "s3",
+     "label": "Measure odour or hydrogen sulfide at the unit outlet and compare with the performance target"
+    },
+    {
+     "id": "s4",
+     "label": "Record the commissioning results and hand the unit over to routine operations"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the unit is installed as designed with the fan, media and ducting complete"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the wet well is under slight negative pressure so air is drawn into the unit"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s6",
+    "s3",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Installation completeness comes before performance measurement. Airflow and negative pressure prove the air path, outlet measurement proves treatment, and the media schedule is set before handover so performance is maintained."
+  },
+  {
+   "id": "c2wc-process74",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the response to a high hydrogen sulfide reading found during manhole work.",
+   "topicId": "high-h2s-response",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a crew gas detector alarms at high hydrogen sulfide during a routine manhole inspection. Safety response only.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Account for every worker and confirm no one remains in or near the hazardous atmosphere"
+    },
+    {
+     "id": "s2",
+     "label": "Investigate the source of the high reading with the supervisor before any entry resumes"
+    },
+    {
+     "id": "s3",
+     "label": "Stop work immediately and move all workers out of the manhole area to fresh air"
+    },
+    {
+     "id": "s4",
+     "label": "Ventilate the manhole from a safe position using the blower setup"
+    },
+    {
+     "id": "s5",
+     "label": "Retest the atmosphere from outside the manhole until readings are within the safe limits in the procedure"
+    },
+    {
+     "id": "s6",
+     "label": "Record the event, the readings and the actions taken in the safety and work records"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s4",
+    "s5",
+    "s2",
+    "s6"
+   ],
+   "explanation": "Worker safety governs the whole sequence: exit first, account for everyone, ventilate from a safe position, and retest from outside. Entry does not resume until the source is investigated with the supervisor, and the event is fully recorded."
+  },
+  {
+   "id": "c2wc-process75",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the ventilation and air treatment maintenance cycle for a large lift station.",
+   "topicId": "ventilation-maintenance-cycle",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: scheduled maintenance of wet well ventilation and odour treatment equipment.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check the treatment media condition and measure pressure drop across the media bed"
+    },
+    {
+     "id": "s2",
+     "label": "Record the service, parts used and next due dates in the maintenance system"
+    },
+    {
+     "id": "s3",
+     "label": "Run the system and confirm airflow and treatment performance after the service"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect fans, belts, dampers and ducting for wear, blockage and corrosion"
+    },
+    {
+     "id": "s5",
+     "label": "Review the equipment run hours, alarms and odour complaints since the last service"
+    },
+    {
+     "id": "s6",
+     "label": "Replace media or components that have reached the service limits in the maintenance plan"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s4",
+    "s1",
+    "s6",
+    "s3",
+    "s2"
+   ],
+   "explanation": "Run history and complaints frame what to look for. Inspection and pressure drop measurement identify exhausted media, replacement follows the plan limits, and a performance run after service proves the system was restored."
+  },
+  {
+   "id": "c2wc-process76",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the prioritization of corrosion rehabilitation from inspection and sulfide data.",
+   "topicId": "corrosion-rehabilitation-prioritization",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a supervisor ranking concrete reaches for lining using corrosion grades and sulfide records.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assign lining to reaches with short remaining life and monitoring to reaches with long remaining life"
+    },
+    {
+     "id": "s2",
+     "label": "Reinspect monitored reaches on schedule and move any that deteriorate faster than expected up the list"
+    },
+    {
+     "id": "s3",
+     "label": "Enter the lining projects into the capital plan in ranked order"
+    },
+    {
+     "id": "s4",
+     "label": "Combine the corrosion grades with the sulfide exposure records for each concrete reach"
+    },
+    {
+     "id": "s5",
+     "label": "Estimate remaining service life for each reach from its grade and observed corrosion rate"
+    },
+    {
+     "id": "s6",
+     "label": "Rank the reaches by shortest remaining life combined with consequence of failure"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s5",
+    "s6",
+    "s1",
+    "s3",
+    "s2"
+   ],
+   "explanation": "Remaining life is estimated from grade plus measured corrosion rate, not from age alone. Ranking drives the lining versus monitoring decision, capital order follows the ranking, and faster than expected deterioration promotes a reach."
+  },
+  {
+   "id": "c2wc-process77",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the setup of a fats, oils and grease program for a municipal collection system.",
+   "topicId": "fog-program-setup",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a municipality starting a formal FOG program to reduce grease blockages.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Begin scheduled interceptor inspections starting with the hotspot areas"
+    },
+    {
+     "id": "s2",
+     "label": "Adopt the program requirements for interceptors, maintenance frequency and record keeping"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the establishments of the requirements and the compliance schedule"
+    },
+    {
+     "id": "s4",
+     "label": "Inventory the food service establishments in and upstream of the hotspot areas"
+    },
+    {
+     "id": "s5",
+     "label": "Map the grease related blockage hotspots from maintenance and overflow records"
+    },
+    {
+     "id": "s6",
+     "label": "Track blockages and compliance and report program results after the first year"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s4",
+    "s2",
+    "s3",
+    "s1",
+    "s6"
+   ],
+   "explanation": "Hotspot data targets the program where grease actually causes blockages. The inventory and requirements come before notification and inspection, and first year results are judged against the blockage record that justified the program."
+  },
+  {
+   "id": "c2wc-process78",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a grease interceptor inspection cycle for food service establishments.",
+   "topicId": "interceptor-inspection-cycle",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: routine inspection of interceptors at twenty food service establishments.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record the inspection result and the next due date for every establishment"
+    },
+    {
+     "id": "s2",
+     "label": "Compare the measured accumulation with the program limit for cleaning, commonly the quarter depth rule in the program"
+    },
+    {
+     "id": "s3",
+     "label": "Review the cleaning records and hauler manifests submitted after the directed cleaning"
+    },
+    {
+     "id": "s4",
+     "label": "Direct cleaning by a licensed hauler when the limit is exceeded and set the recheck date"
+    },
+    {
+     "id": "s5",
+     "label": "Open the interceptor and measure the grease and solids layers in each compartment"
+    },
+    {
+     "id": "s6",
+     "label": "Schedule the inspections and notify each establishment of its inspection window"
+    }
+   ],
+   "correctOrder": [
+    "s6",
+    "s5",
+    "s2",
+    "s4",
+    "s3",
+    "s1"
+   ],
+   "explanation": "Measurement, not appearance, decides compliance, so layers are measured and compared with the program limit. Directed cleaning is verified through hauler records, and every visit ends with a recorded result and a next due date."
+  },
+  {
+   "id": "c2wc-process79",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the escalation path for a food service establishment that ignores FOG requirements.",
+   "topicId": "fog-enforcement-escalation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: an establishment with repeated missed cleanings and a downstream grease blockage history.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Issue a written notice of violation that states the required actions and the deadline"
+    },
+    {
+     "id": "s2",
+     "label": "Close the file only after two consecutive compliant inspections are recorded"
+    },
+    {
+     "id": "s3",
+     "label": "Meet with the operator to agree on a corrective plan and an inspection schedule"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the non compliance from inspection records and missed cleaning documentation"
+    },
+    {
+     "id": "s5",
+     "label": "Reinspect on the agreed dates and record whether each corrective action was completed"
+    },
+    {
+     "id": "s6",
+     "label": "Apply the next enforcement step in the program bylaw if the deadlines are missed"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s3",
+    "s5",
+    "s6",
+    "s2"
+   ],
+   "explanation": "Escalation is built on documented non compliance, and each step, notice, agreed plan, reinspection and bylaw action, follows in order. The file closes only on proven, repeated compliance, not on a promise."
+  },
+  {
+   "id": "c2wc-process80",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the review of hauler manifests in a FOG program audit.",
+   "topicId": "fog-manifest-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a quarterly audit of interceptor cleaning manifests submitted by establishments and haulers.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check each manifest for the required details, including date, volume removed and disposal site"
+    },
+    {
+     "id": "s2",
+     "label": "Record the audit results and schedule follow up inspections for unresolved cases"
+    },
+    {
+     "id": "s3",
+     "label": "Collect the manifests for the quarter and match each one to an establishment and interceptor"
+    },
+    {
+     "id": "s4",
+     "label": "Compare manifest volumes with the interceptor sizes and the expected accumulation"
+    },
+    {
+     "id": "s5",
+     "label": "Contact the flagged establishments and haulers to resolve the discrepancies"
+    },
+    {
+     "id": "s6",
+     "label": "Flag establishments with missing manifests or volumes that do not match their interceptors"
+    }
+   ],
+   "correctOrder": [
+    "s3",
+    "s1",
+    "s4",
+    "s6",
+    "s5",
+    "s2"
+   ],
+   "explanation": "Manifests are matched to real interceptors before their contents are judged. Volume comparison exposes paper only compliance, discrepancies are put to the establishments and haulers, and unresolved cases become inspections."
+  },
+  {
+   "id": "c2wc-process81",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the investigation of a grease blockage hotspot in a commercial district.",
+   "topicId": "grease-hotspot-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a sewer reach behind a restaurant row with three grease blockages in one year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Clean and CCTV the reach to record the grease accumulation pattern and any structural defects"
+    },
+    {
+     "id": "s2",
+     "label": "Set a follow up cleaning and camera check to confirm the accumulation rate has dropped"
+    },
+    {
+     "id": "s3",
+     "label": "Direct the corrective actions found, including cleaning, repairs or increased frequency"
+    },
+    {
+     "id": "s4",
+     "label": "Compile the blockage records and confirm the grease cause from the material removed each time"
+    },
+    {
+     "id": "s5",
+     "label": "List the food service establishments discharging upstream of the hotspot"
+    },
+    {
+     "id": "s6",
+     "label": "Inspect the interceptors of the upstream establishments, starting with any overdue for cleaning"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s1",
+    "s5",
+    "s6",
+    "s3",
+    "s2"
+   ],
+   "explanation": "The grease cause is confirmed from records and camera evidence before establishments are approached. Upstream inspections start with the most overdue interceptors, corrective actions follow the findings, and a follow up check proves the hotspot is cooling."
+  },
+  {
+   "id": "c2wc-process82",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a FOG education campaign rollout for food service operators.",
+   "topicId": "fog-education-campaign",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a program education campaign delivered before the first inspection cycle in a new area.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Hold an information session and record the questions operators ask most often"
+    },
+    {
+     "id": "s2",
+     "label": "Begin the inspection cycle after the education period stated in the program notice"
+    },
+    {
+     "id": "s3",
+     "label": "Deliver the materials through visits, mail and the industry association contacts for the area"
+    },
+    {
+     "id": "s4",
+     "label": "Prepare plain language materials that explain interceptor care, cleaning records and kitchen best practices"
+    },
+    {
+     "id": "s5",
+     "label": "Revise the materials to answer the recurring questions clearly"
+    },
+    {
+     "id": "s6",
+     "label": "Translate and format the materials for the languages and formats used by local operators"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s6",
+    "s3",
+    "s1",
+    "s5",
+    "s2"
+   ],
+   "explanation": "Education precedes enforcement in a new area, and materials must be usable by the actual operators before they are delivered. Questions from the information session improve the materials, and inspections start only after the promised education period."
+  },
+  {
+   "id": "c2wc-process83",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual review of a FOG program.",
+   "topicId": "fog-annual-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: review of a FOG program after its third year of operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile grease blockage and overflow counts for the program areas and for comparison areas"
+    },
+    {
+     "id": "s2",
+     "label": "Recommend changes to inspection frequency, education or requirements for those groups"
+    },
+    {
+     "id": "s3",
+     "label": "Update the program plan and report the results and changes to management"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the establishment types and areas with the weakest compliance"
+    },
+    {
+     "id": "s5",
+     "label": "Compare blockage trends against the years before the program began"
+    },
+    {
+     "id": "s6",
+     "label": "Compile inspection, compliance and enforcement results for the year"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s6",
+    "s5",
+    "s4",
+    "s2",
+    "s3"
+   ],
+   "explanation": "The review judges the program on blockage outcomes, not on inspection counts alone. Compliance data explains where the program is weak, recommendations target those groups, and the updated plan is reported to management."
+  },
+  {
+   "id": "c2wc-process84",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a private side source investigation program for one high inflow neighbourhood.",
+   "topicId": "private-side-investigation-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a neighbourhood where basin analysis shows strong fast inflow response to storms.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Issue correction notices for the confirmed sources with the program deadline"
+    },
+    {
+     "id": "s2",
+     "label": "Run smoke testing and visual inspections to locate candidate private sources street by street"
+    },
+    {
+     "id": "s3",
+     "label": "Divide the neighbourhood into street by street investigation areas"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm each candidate source with dye testing or property inspection"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the fast inflow signature from the basin wet weather analysis records"
+    },
+    {
+     "id": "s6",
+     "label": "Verify corrections and update the basin source inventory with the flows removed"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s3",
+    "s2",
+    "s4",
+    "s1",
+    "s6"
+   ],
+   "explanation": "Private investigation is justified by the measured fast response, and candidate sources from screening are never enforced until confirmed by dye or inspection. Verified corrections, not notices issued, are what the inventory credits."
+  },
+  {
+   "id": "c2wc-process85",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a lateral launch CCTV inspection from the mainline into a service lateral.",
+   "topicId": "lateral-launch-inspection",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: inspection of a lateral suspected of root intrusion and infiltration at the connection.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Position the launch camera at the target connection using the mainline camera view"
+    },
+    {
+     "id": "s2",
+     "label": "Clean the mainline reach so the launch camera can enter the lateral without obstruction"
+    },
+    {
+     "id": "s3",
+     "label": "Continue to the property line limit or the full lateral length set in the work scope"
+    },
+    {
+     "id": "s4",
+     "label": "Launch into the lateral and record defects, roots and infiltration with distances from the connection"
+    },
+    {
+     "id": "s5",
+     "label": "Assign responsibility for each defect using the ownership boundary in the program records"
+    },
+    {
+     "id": "s6",
+     "label": "Issue the repair recommendation to the responsible party and file the inspection record"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s1",
+    "s4",
+    "s3",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A clean mainline and accurate positioning come before launch, because distances are measured from the connection. Defects are recorded with those distances, responsibility follows the ownership boundary, and recommendations go to the party who owns the defect."
+  },
+  {
+   "id": "c2wc-process86",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a foundation drain and sump pump investigation for basement flooding and inflow complaints.",
+   "topicId": "foundation-drain-investigation",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a street where homes report sump activity and the sanitary sewer shows storm response.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the complaint history and the storm response records for the street sewers"
+    },
+    {
+     "id": "s2",
+     "label": "Survey the properties for sump pumps, foundation drains and their discharge points"
+    },
+    {
+     "id": "s3",
+     "label": "Verify the corrections and record the inflow removed in the street summary"
+    },
+    {
+     "id": "s4",
+     "label": "Dye test or inspect the connections of properties where the discharge point cannot be confirmed visually"
+    },
+    {
+     "id": "s5",
+     "label": "Classify each property as connected to sanitary, connected to storm, or discharging to grade"
+    },
+    {
+     "id": "s6",
+     "label": "Issue correction notices for sanitary connections with approved outlet options explained"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s4",
+    "s5",
+    "s6",
+    "s3"
+   ],
+   "explanation": "Records and survey come before testing, and only unconfirmed discharge points need dye testing. Classification by outlet determines who gets a correction notice, and verification closes each property file."
+  },
+  {
+   "id": "c2wc-process87",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a roof leader disconnection program for one subdivision.",
+   "topicId": "roof-leader-disconnection-program",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a subdivision where survey found many roof leaders connected to the sanitary lateral system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Provide the disconnection guidance and the completion deadline from the program"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect completed disconnections and confirm downspouts discharge safely away from foundations"
+    },
+    {
+     "id": "s3",
+     "label": "Record completions and credit the estimated inflow removal in the program inventory"
+    },
+    {
+     "id": "s4",
+     "label": "Notify each owner of the required disconnection and the approved surface discharge methods"
+    },
+    {
+     "id": "s5",
+     "label": "Survey the subdivision and record every roof leader and its current discharge point"
+    },
+    {
+     "id": "s6",
+     "label": "Confirm the connected leaders by dye testing a sample and by inspection where access allows"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s6",
+    "s4",
+    "s1",
+    "s2",
+    "s3"
+   ],
+   "explanation": "The survey finds the leaders, confirmation testing proves the connections, and owners receive methods and a deadline before inspections begin. Only inspected completions are credited in the inventory."
+  },
+  {
+   "id": "c2wc-process88",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the property access and notification sequence for a private side inspection program.",
+   "topicId": "private-side-access-notification",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: arranging access to sixty properties for lateral and plumbing inspections.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Prepare the property list from the investigation area map and ownership records"
+    },
+    {
+     "id": "s2",
+     "label": "Book inspection appointments with the owners or occupants who respond"
+    },
+    {
+     "id": "s3",
+     "label": "Send the first notice explaining the program purpose, the inspection scope and the contact number"
+    },
+    {
+     "id": "s4",
+     "label": "Deliver a reminder notice to non responding properties with a second response deadline"
+    },
+    {
+     "id": "s5",
+     "label": "Refer persistent refusals to the program enforcement process with the full contact history attached"
+    },
+    {
+     "id": "s6",
+     "label": "Complete the booked inspections and record access refusals separately from completed properties"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s3",
+    "s2",
+    "s4",
+    "s6",
+    "s5"
+   ],
+   "explanation": "Access work starts from an accurate property list and a clear first notice. Appointments, reminders and inspections follow in order, refusals are recorded honestly rather than counted as inspections, and enforcement receives the complete contact history."
+  },
+  {
+   "id": "c2wc-process89",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the integration of private side findings into the basin rehabilitation plan.",
+   "topicId": "private-findings-integration",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: combining private source results with public side findings for one basin plan.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the confirmed private sources with their estimated flow contributions"
+    },
+    {
+     "id": "s2",
+     "label": "Report the combined plan so public and private work proceed on the same schedule"
+    },
+    {
+     "id": "s3",
+     "label": "Compile the public side defects and their flow contributions for the same basin"
+    },
+    {
+     "id": "s4",
+     "label": "Set the combined basin target and the verification monitoring that will measure it"
+    },
+    {
+     "id": "s5",
+     "label": "Assign private corrections to the owner program stream and public defects to the capital stream"
+    },
+    {
+     "id": "s6",
+     "label": "Rank all sources together by flow contribution and cost to correct"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s3",
+    "s6",
+    "s5",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Private and public sources are compiled on the same basis before ranking, because the basin responds to total flow, not to ownership. Each source is then assigned to its proper delivery stream, and one combined target and verification plan govern both."
+  },
+  {
+   "id": "c2wc-process90",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development of a collection system emergency response plan.",
+   "topicId": "emergency-response-plan-development",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a new emergency response plan covering overflows, collapses, station failures and major storms.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Write the field procedures for containment, public protection, cleanup and restoration"
+    },
+    {
+     "id": "s2",
+     "label": "List the credible emergency types and the consequences each one creates for the public and the environment"
+    },
+    {
+     "id": "s3",
+     "label": "List the equipment, bypass resources and mutual aid contacts the procedures depend on"
+    },
+    {
+     "id": "s4",
+     "label": "Approve the plan, distribute it to all response staff and set the exercise and review schedule"
+    },
+    {
+     "id": "s5",
+     "label": "Define the response roles, the on call structure and the authority to act for each emergency type"
+    },
+    {
+     "id": "s6",
+     "label": "Set the internal, public and regulatory notification steps and timelines for each type"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s5",
+    "s1",
+    "s6",
+    "s3",
+    "s4"
+   ],
+   "explanation": "Credible emergencies are listed before roles and procedures are written, because the plan must match real risks. Notifications and resources are defined inside the plan, and approval, distribution and exercising make it a working document."
+  },
+  {
+   "id": "c2wc-process91",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a tabletop exercise of the overflow response plan.",
+   "topicId": "tabletop-exercise-sequence",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a two hour tabletop exercise for supervisors and on call operators.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Write a realistic overflow scenario with timed injects that add complications"
+    },
+    {
+     "id": "s2",
+     "label": "Debrief the participants and separate plan problems from individual performance issues"
+    },
+    {
+     "id": "s3",
+     "label": "Run the scenario and record every decision, delay and information gap the facilitators observe"
+    },
+    {
+     "id": "s4",
+     "label": "Assign plan revisions and training actions with owners and dates and record them in the exercise report"
+    },
+    {
+     "id": "s5",
+     "label": "Set the exercise objectives, such as testing notification timelines and role clarity"
+    },
+    {
+     "id": "s6",
+     "label": "Brief the participants on the exercise rules and their assigned plan roles"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s1",
+    "s6",
+    "s3",
+    "s2",
+    "s4"
+   ],
+   "explanation": "Objectives and a written scenario come before anyone sits down, and facilitators record what actually happens rather than what was hoped. The debrief converts observations into owned revisions and training actions."
+  },
+  {
+   "id": "c2wc-process92",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a full field exercise of a bypass pumping deployment.",
+   "topicId": "bypass-field-exercise",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a field drill deploying bypass pumping at a lift station with a crew and supervisor evaluators.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Deploy the bypass and bring it into operation against the live station inflow"
+    },
+    {
+     "id": "s2",
+     "label": "Set the drill objectives and the safety controls and notify the station and control room staff"
+    },
+    {
+     "id": "s3",
+     "label": "Stage the bypass pumps, hoses and power equipment at the station as the plan requires"
+    },
+    {
+     "id": "s4",
+     "label": "Run the bypass for the set drill period while evaluators time each step and note problems"
+    },
+    {
+     "id": "s5",
+     "label": "Debrief, repair or replace any equipment that failed, and update the plan with the lessons learned"
+    },
+    {
+     "id": "s6",
+     "label": "Stand the bypass down and return the station to normal operation"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s3",
+    "s1",
+    "s4",
+    "s6",
+    "s5"
+   ],
+   "explanation": "Objectives and safety controls frame the drill, and the bypass must prove itself against live inflow, not in an empty yard. Timed evaluation, a clean return to normal operation, and equipment fixes close the exercise."
+  },
+  {
+   "id": "c2wc-process93",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the readiness sequence ahead of a forecast major storm for a collection system.",
+   "topicId": "major-storm-readiness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: preparation in the 48 hours before a forecast storm expected to stress the collection system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the forecast and identify the stations, low areas and overflow prone locations at greatest risk"
+    },
+    {
+     "id": "s2",
+     "label": "Inspect and test the critical stations, generators, fuel levels and high level alarms"
+    },
+    {
+     "id": "s3",
+     "label": "Brief all shifts on the expected conditions, reporting lines and safety limits for the event"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the on call roster, extended shift coverage and contractor support contacts"
+    },
+    {
+     "id": "s5",
+     "label": "Pre position equipment and crews at the locations identified in the risk review"
+    },
+    {
+     "id": "s6",
+     "label": "Clear known hotspot inlets and check portable pumps, bypass equipment and vehicles"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s6",
+    "s4",
+    "s5",
+    "s3"
+   ],
+   "explanation": "Risk locations are identified from the forecast first, then equipment and stations at those locations are proven ready. Staffing and pre positioning follow, and a full shift briefing ensures everyone works to the same picture."
+  },
+  {
+   "id": "c2wc-process94",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the post incident review after a major sanitary sewer overflow.",
+   "topicId": "post-incident-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a structured review completed within two weeks of a major overflow event.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Secure the event records, including logs, telemetry, photographs and notification records"
+    },
+    {
+     "id": "s2",
+     "label": "Build the event timeline from the first alarm to the completion of cleanup"
+    },
+    {
+     "id": "s3",
+     "label": "Assess the response against the plan for timeliness, containment, notification and cleanup"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the physical cause of the overflow and the condition or capacity factor behind it"
+    },
+    {
+     "id": "s5",
+     "label": "File the review, brief management and track the corrective actions to closure"
+    },
+    {
+     "id": "s6",
+     "label": "Assign corrective actions for the cause and for every response gap, with owners and dates"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s4",
+    "s3",
+    "s6",
+    "s5"
+   ],
+   "explanation": "Records are secured before memories fade, and the timeline is built from them. Cause and response are assessed separately, corrective actions cover both, and tracking to closure prevents the review from becoming a report that changes nothing."
+  },
+  {
+   "id": "c2wc-process95",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the monthly supervisory review of collection work order performance.",
+   "topicId": "work-order-program-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a Class 2 supervisor reviewing one month of preventive and corrective work orders.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify overdue preventive items and the assets and crews they belong to"
+    },
+    {
+     "id": "s2",
+     "label": "Reassign or reschedule the overdue work with priority given to high risk assets"
+    },
+    {
+     "id": "s3",
+     "label": "Investigate the causes of the overdue items, such as staffing, parts or access problems"
+    },
+    {
+     "id": "s4",
+     "label": "Extract the month work order data, including completions, overdue items and emergency calls"
+    },
+    {
+     "id": "s5",
+     "label": "Report the month performance and the recovery plan to management"
+    },
+    {
+     "id": "s6",
+     "label": "Separate preventive work completed on schedule from corrective and emergency work"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s6",
+    "s1",
+    "s3",
+    "s2",
+    "s5"
+   ],
+   "explanation": "The review starts from complete data and separates planned work from reactive work, because the two tell different stories. Overdue items are investigated before they are rescheduled, and management receives both the performance picture and the recovery plan."
+  },
+  {
+   "id": "c2wc-process96",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the supervisory review of a month of collection system operating data.",
+   "topicId": "collection-data-supervisory-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: monthly review of flows, alarms, overflows and customer complaints by a Class 2 supervisor.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the investigation results and convert confirmed problems into work orders or projects"
+    },
+    {
+     "id": "s2",
+     "label": "Flag the locations and measures that moved outside their normal range"
+    },
+    {
+     "id": "s3",
+     "label": "Compare each measure against the same month in prior years and against program targets"
+    },
+    {
+     "id": "s4",
+     "label": "Compile the month flows, station alarms, overflow events and complaint records"
+    },
+    {
+     "id": "s5",
+     "label": "Assign investigations for each flagged item to a named operator or crew"
+    },
+    {
+     "id": "s6",
+     "label": "Record the review decisions and carry unresolved items into the next month review"
+    }
+   ],
+   "correctOrder": [
+    "s4",
+    "s3",
+    "s2",
+    "s5",
+    "s1",
+    "s6"
+   ],
+   "explanation": "Compilation and comparison come before flagging, because a value only matters against its normal range and targets. Flagged items get named investigators, confirmed problems become work, and unresolved items are carried forward visibly."
+  },
+  {
+   "id": "c2wc-process97",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual licensing and records review for collection operators under Ontario Regulation 129/04.",
+   "topicId": "regulatory-licensing-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: an annual supervisory review supporting the licensed operation of a wastewater collection system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Identify any record gaps or certification issues and assign corrections with dates"
+    },
+    {
+     "id": "s2",
+     "label": "Check that operating records, logs and inspection records for the year are complete and filed"
+    },
+    {
+     "id": "s3",
+     "label": "Verify that every operator certificate is current and matches the duties each operator performs"
+    },
+    {
+     "id": "s4",
+     "label": "File the review summary where it can be produced for regulatory inspection"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm the overall responsible operator and the operators in charge designated for the system"
+    },
+    {
+     "id": "s6",
+     "label": "Complete the corrections and confirm the updated designations and records"
+    }
+   ],
+   "correctOrder": [
+    "s5",
+    "s3",
+    "s2",
+    "s1",
+    "s6",
+    "s4"
+   ],
+   "explanation": "Designations are confirmed first because they define who is accountable for the system. Certificates and records are verified against duties and requirements, gaps are corrected and confirmed, and the summary is filed for inspection."
+  },
+  {
+   "id": "c2wc-process98",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the regulatory reporting sequence for a reportable sanitary sewer overflow in Ontario.",
+   "topicId": "overflow-regulatory-reporting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: reporting steps for an overflow that reached a surface watercourse. Awareness of the sequence only, following the directions of the responsible authorities.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the overflow details from the field crew, including location, start time and whether it has stopped"
+    },
+    {
+     "id": "s2",
+     "label": "Close the event file after the supervisor confirms all reports and actions are complete"
+    },
+    {
+     "id": "s3",
+     "label": "Submit the written report with the cause, volume, response and cleanup details within the required timeline"
+    },
+    {
+     "id": "s4",
+     "label": "Complete the corrective actions that prevent recurrence and record them in the event file"
+    },
+    {
+     "id": "s5",
+     "label": "Collect the volume estimate information, photographs and water sample results as directed"
+    },
+    {
+     "id": "s6",
+     "label": "Notify the required authorities and the downstream water users identified in the response plan without delay"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s6",
+    "s5",
+    "s3",
+    "s4",
+    "s2"
+   ],
+   "explanation": "Field confirmation comes first so notifications carry facts, not guesses. Notification is immediate, supporting information is gathered as directed, the written report follows within its timeline, and the file closes only after corrective actions are complete."
+  },
+  {
+   "id": "c2wc-process99",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the build of a collection performance indicator review for quarterly management reporting.",
+   "topicId": "performance-indicator-review",
+   "level": "class1",
+   "assumptions": "Fictional Ontario wastewater collection scenario for Class 2 study. Conditions are as stated in the configuration, and all work follows site procedures, permits where they apply, and standard collection practice in the cited sources.",
+   "configuration": "Scope: a supervisor building the quarterly indicator package for a collection system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Present the package and record the approved actions in the program tracker"
+    },
+    {
+     "id": "s2",
+     "label": "Select the indicators that match the program objectives, such as overflows, blockages, inspection completion and response times"
+    },
+    {
+     "id": "s3",
+     "label": "Calculate each indicator and compare it with the target and with previous quarters"
+    },
+    {
+     "id": "s4",
+     "label": "Recommend actions for every indicator that missed its target"
+    },
+    {
+     "id": "s5",
+     "label": "Extract and validate the quarter data for each selected indicator"
+    },
+    {
+     "id": "s6",
+     "label": "Explain the main movements using the operational events behind the numbers"
+    }
+   ],
+   "correctOrder": [
+    "s2",
+    "s5",
+    "s3",
+    "s6",
+    "s4",
+    "s1"
+   ],
+   "explanation": "Indicators are chosen from program objectives before data is extracted, so the package measures what the program promised. Validated calculations are compared with targets, movements are explained from real events, and misses produce approved actions."
+  },
+  {
+   "id": "c2wc-evidence01",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two adjacent basins with similar homes show very different wet weather responses in the same storms.",
+   "topicId": "infiltration-inflow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Basin A flow rises within 30 minutes of rain starting and returns to dry weather flow within 2 hours of rain ending, in all six storms."
+    },
+    {
+     "id": "ev2",
+     "label": "Basin B flow rises slowly over 12 hours after rain and stays elevated for three days after each storm."
+    },
+    {
+     "id": "ev3",
+     "label": "Rainfall depth and intensity are the same over both basins in each storm."
+    },
+    {
+     "id": "ev4",
+     "label": "Basin A has many roof leaders connected to sanitary laterals, Basin B has none found on survey."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Basin A response is dominated by slow groundwater infiltration through pipe defects"
+     },
+     {
+      "id": "inf-b",
+      "label": "Basin A response is dominated by fast direct inflow, while Basin B shows slow rainfall dependent infiltration"
+     },
+     {
+      "id": "inf-c",
+      "label": "Both basins show the same source and the difference is a flow meter error"
+     },
+     {
+      "id": "inf-d",
+      "label": "Basin B response is dominated by direct roof leader inflow"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Timing separates the sources. A fast rise and fast fall in Basin A fits direct inflow, and the roof leaders provide the entry path. Basin B rises slowly and stays high for days, which fits groundwater driven infiltration. Rainfall was equal, so weather does not explain the contrast, and a meter error would not produce two different response shapes."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Paired basin hydrographs with rainfall for the six storms, plus the roof leader survey counts by basin"
+     },
+     {
+      "id": "nc-b",
+      "label": "Annual total flow volumes for the two basins"
+     },
+     {
+      "id": "nc-c",
+      "label": "Treatment plant influent flow for the storm days"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The paired hydrographs with rainfall directly test response timing, which is what separates fast inflow from slow infiltration."
+   },
+   "clueText": {
+    "nc-a": "Hydrographs confirm Basin A peaks with the rain and Basin B peaks a day later and drains slowly over three days.",
+    "nc-b": "Annual totals hide storm timing and cannot separate fast inflow from slow infiltration.",
+    "nc-c": "Plant influent mixes both basins and cannot attribute either response."
+   }
+  },
+  {
+   "id": "c2wc-evidence02",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A basin flow study tests whether lining the mains alone will cut wet weather peaks.",
+   "topicId": "infiltration-inflow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Dry weather night flow in the basin is 22 L/s, of which billed water use accounts for about 7 L/s."
+    },
+    {
+     "id": "ev2",
+     "label": "During a 25 mm storm, basin flow peaks at 95 L/s within one hour of the heaviest rain."
+    },
+    {
+     "id": "ev3",
+     "label": "CCTV of the mains shows moderate joint infiltration but no large openings."
+    },
+    {
+     "id": "ev4",
+     "label": "Smoke testing finds 18 roof leaders and 6 area drains connected to the sanitary system."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Lining the mains alone will remove most of the storm peak"
+     },
+     {
+      "id": "inf-b",
+      "label": "The storm peak is mainly fast inflow from private side connections, so main lining alone will leave most of the peak"
+     },
+     {
+      "id": "inf-c",
+      "label": "The night flow shows the basin has no infiltration problem"
+     },
+     {
+      "id": "inf-d",
+      "label": "The peak is caused by the flow meter reading high in wet weather"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The peak arrives within an hour of heavy rain and smoke testing finds direct private side connections, which fits fast inflow that main lining cannot reach. Night flow of 22 L/s against 7 L/s of water use also shows a real infiltration component, so infiltration is present but it is not the fast peak source."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Storm hydrograph for the basin with the smoke test connection list mapped by address"
+     },
+     {
+      "id": "nc-b",
+      "label": "Main lining unit prices from a recent tender"
+     },
+     {
+      "id": "nc-c",
+      "label": "Average daily flow for the whole town"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The hydrograph timing plus the mapped connection list ties the fast peak to the private side sources that lining would miss."
+   },
+   "clueText": {
+    "nc-a": "The hydrograph peaks with the rain and every fast responding subarea contains mapped roof leader or area drain connections.",
+    "nc-b": "Prices say what lining costs, not what share of the peak it can remove.",
+    "nc-c": "A town wide average cannot attribute a peak inside one basin."
+   }
+  },
+  {
+   "id": "c2wc-evidence03",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "After a wet spring, one basin night flow climbs month by month while a twin basin stays flat.",
+   "topicId": "infiltration-inflow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Basin C minimum night flow rises from 9 L/s in March to 16 L/s in June as the water table rises."
+    },
+    {
+     "id": "ev2",
+     "label": "Basin D, with the same pipe age and materials, holds at 8 L/s over the same months."
+    },
+    {
+     "id": "ev3",
+     "label": "Groundwater wells show the water table above the sewer crown in Basin C and below the invert in Basin D."
+    },
+    {
+     "id": "ev4",
+     "label": "No new development or water use change occurred in either basin."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Basin C has developed a new direct inflow connection this spring"
+     },
+     {
+      "id": "inf-b",
+      "label": "Basin D meters are drifting low and hiding the same rise"
+     },
+     {
+      "id": "inf-c",
+      "label": "Groundwater infiltration through defects explains the Basin C rise, because flow tracks the water table only where sewers sit below it"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents in Basin C are using more water at night each month"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The rise is slow, seasonal, and occurs only in the basin where the water table sits above the sewer crown. That fits groundwater entering through defects. A direct inflow connection would spike with storms rather than climb with the water table, and no water use change is reported."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Night flow trend for both basins plotted against the groundwater well levels"
+     },
+     {
+      "id": "nc-b",
+      "label": "Daytime water demand records for both basins"
+     },
+     {
+      "id": "nc-c",
+      "label": "A list of new homes built in the town this year"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Plotting night flow against well levels tests the groundwater link directly in both basins at once."
+   },
+   "clueText": {
+    "nc-a": "In Basin C night flow rises and falls with the well level, while Basin D stays flat with its water table below the invert.",
+    "nc-b": "Daytime demand does not explain a night minimum that tracks groundwater.",
+    "nc-c": "No new homes were built in either basin, so growth cannot explain the rise."
+   }
+  },
+  {
+   "id": "c2wc-evidence04",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A rehabilitation business case claims a basin RDII value, and a reviewer checks the storm selection.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The claimed RDII uses one small 8 mm storm in a dry month, when soils were dry."
+    },
+    {
+     "id": "ev2",
+     "label": "Three larger storms in the same season, 22 mm to 31 mm, each produced two to three times the wet weather volume per millimetre of rain."
+    },
+    {
+     "id": "ev3",
+     "label": "Antecedent rainfall in the week before the small storm was zero, and 28 mm in the week before the largest storm."
+    },
+    {
+     "id": "ev4",
+     "label": "Dry weather flow was stable across all four storms."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The small storm value is the best estimate because small storms are most common"
+     },
+     {
+      "id": "inf-b",
+      "label": "The meter under read during the three larger storms"
+     },
+     {
+      "id": "inf-c",
+      "label": "RDII in this basin grows with storm size and wet antecedent conditions, so the single small dry storm understates the design response"
+     },
+     {
+      "id": "inf-d",
+      "label": "Dry weather flow instability explains the larger storm responses"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Three larger storms with wet antecedent conditions each produced far more response per millimetre, while dry weather flow stayed stable. That pattern shows response depends on storm size and soil wetness, so one small dry storm cannot represent the basin. No meter fault is reported."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Wet weather volume per millimetre of rain for all storms that season, plotted against storm depth and antecedent rainfall"
+     },
+     {
+      "id": "nc-b",
+      "label": "The single small storm calculation repeated with more decimal places"
+     },
+     {
+      "id": "nc-c",
+      "label": "Annual rainfall total for the town"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Comparing response per millimetre across all storms against depth and antecedent rain tests whether the small storm is representative."
+   },
+   "clueText": {
+    "nc-a": "Response per millimetre rises with storm depth and antecedent rain, confirming the small dry storm is the lowest response of the season.",
+    "nc-b": "More decimal places do not change which storms were selected.",
+    "nc-c": "An annual total says nothing about how one basin responds to one storm."
+   }
+  },
+  {
+   "id": "c2wc-evidence05",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Flow monitors above and below a creek crossing reach isolate a wet weather jump.",
+   "topicId": "infiltration-inflow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The upstream monitor shows a storm peak of 40 L/s and the downstream monitor, 400 m later, shows 78 L/s in the same storm."
+    },
+    {
+     "id": "ev2",
+     "label": "The reach between the monitors serves only 12 homes, whose dry weather flow is about 1 L/s."
+    },
+    {
+     "id": "ev3",
+     "label": "CCTV in the reach shows a submerged joint with clear water entering in a steady stream during the storm."
+    },
+    {
+     "id": "ev4",
+     "label": "A parallel reach of the same age without a creek crossing gains only 3 L/s between its monitors."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The 12 homes discharge far more sewage during storms than in dry weather"
+     },
+     {
+      "id": "inf-b",
+      "label": "The downstream meter reads high whenever flow rises"
+     },
+     {
+      "id": "inf-c",
+      "label": "Stormwater and groundwater are entering in the short creek reach, adding about 37 L/s beyond the homes"
+     },
+     {
+      "id": "inf-d",
+      "label": "The upstream meter misses the storm peak because it is too small"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "A 400 m reach with 12 homes cannot add 38 L/s of sewage, and the camera shows clear water entering at a submerged joint in the same reach. The parallel reach gains only 3 L/s, which rules out a general meter behaviour. The entry is localised to the creek reach."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Dye and level check at the submerged joint plus the paired monitor hydrographs for the reach"
+     },
+     {
+      "id": "nc-b",
+      "label": "Water bills for the 12 homes"
+     },
+     {
+      "id": "nc-c",
+      "label": "The meter purchase specifications"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The joint check combined with the paired hydrographs confirms both the entry point and the added volume in that reach."
+   },
+   "clueText": {
+    "nc-a": "Clear water enters at the joint at a rate matching the 37 L/s gain, and it slows as the creek level falls after the storm.",
+    "nc-b": "Water bills for 12 homes cannot reach storm gains of this size.",
+    "nc-c": "Specifications describe the meters, not the water seen entering the pipe."
+   }
+  },
+  {
+   "id": "c2wc-evidence06",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A city compares two I and I removal options using paired basin results from a pilot area.",
+   "topicId": "infiltration-inflow-programs",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "In the pilot basin, main and lateral lining cut storm peaks by 20 percent but cut elevated night flow by 65 percent."
+    },
+    {
+     "id": "ev2",
+     "label": "Roof leader disconnection in the same pilot cut storm peaks by 55 percent and left night flow unchanged."
+    },
+    {
+     "id": "ev3",
+     "label": "The target basin has both high night flow and sharp storm peaks of similar size to the pilot."
+    },
+    {
+     "id": "ev4",
+     "label": "Costs of the two options for the target basin are similar."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Lining alone is the better first step because it cut night flow the most"
+     },
+     {
+      "id": "inf-b",
+      "label": "The pilot shows the two tools attack different components, so the target basin needs both to address its peak and its night flow"
+     },
+     {
+      "id": "inf-c",
+      "label": "Disconnection failed in the pilot because night flow did not fall"
+     },
+     {
+      "id": "inf-d",
+      "label": "The target basin results can be predicted from costs alone"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The pilot separates the components. Lining mainly removed the slow infiltration seen in night flow, and disconnection mainly removed the fast storm peak. The target basin has both problems at similar size and similar costs, so neither tool alone addresses both. Judging disconnection by night flow uses the wrong measure for a fast inflow tool."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Pilot basin hydrographs before and after each step, applied component by component to the target basin"
+     },
+     {
+      "id": "nc-b",
+      "label": "Total program cost summary for the pilot"
+     },
+     {
+      "id": "nc-c",
+      "label": "A survey of resident satisfaction in the pilot area"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Component by component hydrographs show which part of the target basin response each tool can actually remove."
+   },
+   "clueText": {
+    "nc-a": "Pilot hydrographs confirm lining flattened the night flow tail and disconnection flattened the storm peak, with little overlap.",
+    "nc-b": "Costs alone cannot predict which flow component a tool removes.",
+    "nc-c": "Satisfaction does not measure flow components."
+   }
+  },
+  {
+   "id": "c2wc-evidence07",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Night flow in a basin falls after manhole rehabilitation, and the size of the fall is checked.",
+   "topicId": "infiltration-inflow-programs",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Before rehabilitation, basin night flow was 14 L/s in a wet month with a high water table."
+    },
+    {
+     "id": "ev2",
+     "label": "Forty manholes with leaking covers and frames were sealed, and no pipe work was done."
+    },
+    {
+     "id": "ev3",
+     "label": "After rehabilitation, in a similar wet month with a similar water table, night flow was 11 L/s."
+    },
+    {
+     "id": "ev4",
+     "label": "Daytime dry weather flow was unchanged in both periods."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Pipe joint infiltration was the main night flow source and it repaired itself"
+     },
+     {
+      "id": "inf-b",
+      "label": "The 3 L/s fall is consistent with manhole defects contributing a real but partial share of night infiltration"
+     },
+     {
+      "id": "inf-c",
+      "label": "Manhole sealing removed all infiltration from the basin"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents reduced night water use by 3 L/s after the work"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Only manholes were sealed, conditions were matched between periods, and night flow fell by 3 L/s while daytime flow stayed the same. That supports a real but partial manhole contribution. It cannot be all infiltration because 11 L/s remains, and pipe defects were not repaired."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Manhole inspection records with defect severity, matched against the night flow change"
+     },
+     {
+      "id": "nc-b",
+      "label": "Resident water conservation survey results"
+     },
+     {
+      "id": "nc-c",
+      "label": "Pipe lining proposals for the basin"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Matching sealed defect severity to the measured fall tests whether the manhole share is plausible and how much remains for pipe work."
+   },
+   "clueText": {
+    "nc-a": "The largest local leakage reductions were at the sealed manholes with the worst cover and frame defects, and the remaining night flow is still well above water use.",
+    "nc-b": "A conservation survey cannot explain a fall matched to wet months and high water tables.",
+    "nc-c": "Proposals describe future pipe work, not the measured manhole result."
+   }
+  },
+  {
+   "id": "c2wc-evidence08",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A basin with flat storm response but high dry weather flow is flagged for an inflow program.",
+   "topicId": "infiltration-inflow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Storm peaks in the basin are only 15 percent above dry weather flow, even in a 30 mm storm."
+    },
+    {
+     "id": "ev2",
+     "label": "Dry weather flow per home is twice that of a similar newer basin."
+    },
+    {
+     "id": "ev3",
+     "label": "CCTV shows widespread joint and lateral infiltration along a shallow water table reach."
+    },
+    {
+     "id": "ev4",
+     "label": "Smoke testing finds almost no direct storm connections."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The basin needs a roof leader disconnection program first"
+     },
+     {
+      "id": "inf-b",
+      "label": "The high flow is groundwater infiltration spread through many defects, so a disconnection program would miss the source"
+     },
+     {
+      "id": "inf-c",
+      "label": "The flow meter over reads at all flows by a factor of two"
+     },
+     {
+      "id": "inf-d",
+      "label": "Homes in this basin simply use twice as much water"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The storm response is small and smoke testing finds almost no direct connections, so fast inflow is minor. Dry flow per home is doubled and cameras show widespread infiltration where the water table is shallow, which fits distributed groundwater entry. A program aimed at roof leaders would treat a source that testing shows is nearly absent."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Minimum night flow comparison with the newer basin, plus the CCTV infiltration defect count per kilometre"
+     },
+     {
+      "id": "nc-b",
+      "label": "Roof leader disconnection cost estimates"
+     },
+     {
+      "id": "nc-c",
+      "label": "Storm peak records alone for the basin"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Night flow and defect density together test the distributed infiltration explanation against the inflow explanation."
+   },
+   "clueText": {
+    "nc-a": "Night flow per home is also doubled, and defect counts are high along the shallow water table reach and low elsewhere.",
+    "nc-b": "Disconnection costs do not identify the source of the high dry flow.",
+    "nc-c": "Storm peaks are already known to be small, which argues against an inflow first program."
+   }
+  },
+  {
+   "id": "c2wc-evidence09",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Two storms a week apart produce very different peaks in the same basin.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The first storm drops 20 mm after a dry month and basin flow peaks at 45 L/s."
+    },
+    {
+     "id": "ev2",
+     "label": "The second storm drops 18 mm after 35 mm of rain in the prior week and basin flow peaks at 88 L/s."
+    },
+    {
+     "id": "ev3",
+     "label": "Dry weather flow before each storm is the same at 18 L/s."
+    },
+    {
+     "id": "ev4",
+     "label": "The flow meter passes a field check after both storms."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The meter drifted between the two storms"
+     },
+     {
+      "id": "inf-b",
+      "label": "Antecedent soil wetness and a high water table before the second storm explain the larger response to similar rain"
+     },
+     {
+      "id": "inf-c",
+      "label": "The second storm rainfall gauge under reported the true depth by half"
+     },
+     {
+      "id": "inf-d",
+      "label": "A new subdivision connected between the two storms"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Rainfall and dry flow are similar, the meter checks out, and no new connections are reported. The clear difference is antecedent wetness, which raises groundwater and soil moisture so more of the second storm enters the system. That fits the near doubling of the peak."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Antecedent rainfall and groundwater levels for both storms, with the basin hydrographs"
+     },
+     {
+      "id": "nc-b",
+      "label": "Subdivision connection permits for the week between the storms"
+     },
+     {
+      "id": "nc-c",
+      "label": "The rainfall gauge calibration certificate alone"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Antecedent conditions with the hydrographs directly test whether wetness, not rain depth, drove the difference."
+   },
+   "clueText": {
+    "nc-a": "Groundwater was 0.8 m higher before the second storm and soils were saturated, matching the larger and longer response.",
+    "nc-b": "No new connections were permitted or built in that week.",
+    "nc-c": "A certificate does not show field conditions during either storm."
+   }
+  },
+  {
+   "id": "c2wc-evidence10",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A trunk sewer flow study must decide if growth or I and I explains rising wet weather flows.",
+   "topicId": "infiltration-inflow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario collection system study. Flow, rainfall and inspection records are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Trunk dry weather flow has grown 10 percent in five years, matching new home connections."
+    },
+    {
+     "id": "ev2",
+     "label": "Trunk wet weather peaks have grown 60 percent in the same five years."
+    },
+    {
+     "id": "ev3",
+     "label": "Rainfall records show no trend in storm depth or intensity over the period."
+    },
+    {
+     "id": "ev4",
+     "label": "CCTV over the period shows progressive joint opening and root growth in the oldest reaches."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "New homes explain both the dry and wet weather growth"
+     },
+     {
+      "id": "inf-b",
+      "label": "Wetter storms explain the wet weather growth"
+     },
+     {
+      "id": "inf-c",
+      "label": "Deteriorating joints are admitting more rainfall dependent infiltration, growing wet peaks far faster than growth alone"
+     },
+     {
+      "id": "inf-d",
+      "label": "The trunk meter has drifted upward only during storms"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Growth matches the dry flow rise at 10 percent but cannot explain a 60 percent peak rise, and rainfall shows no trend. Progressive joint opening gives a mechanism for more storm entry each year. A meter that drifts only in storms is not supported by any check result."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Peak flow per millimetre of rain by year, with the CCTV defect trend for the oldest reaches"
+     },
+     {
+      "id": "nc-b",
+      "label": "New home connection counts by year alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Annual average flow by year alone"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Peak per millimetre by year removes rainfall and growth effects and shows whether the system itself is admitting more water."
+   },
+   "clueText": {
+    "nc-a": "Peak per millimetre has risen steadily and tracks the reaches where joint defects worsened, while rainfall stayed trend free.",
+    "nc-b": "Connection counts explain the dry flow rise, which is already accounted for.",
+    "nc-c": "Annual averages blend dry and wet flow and hide the peak trend."
+   }
+  },
+  {
+   "id": "c2wc-evidence100",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A homeowner disputes a cross connection finding, and a controlled test settles it.",
+   "topicId": "private-side-sources",
+   "level": "class1",
+   "assumptions": "Fictional Ontario private side investigation. Dye, smoke and inspection results are as stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Smoke testing suggested a roof leader connection, but the homeowner states the leader drains to a splash pad."
+    },
+    {
+     "id": "ev2",
+     "label": "A metered hose test runs water onto the roof at a known rate for 20 minutes."
+    },
+    {
+     "id": "ev3",
+     "label": "Sanitary flow at the street rises by the same rate within two minutes and falls when the hose stops."
+    },
+    {
+     "id": "ev4",
+     "label": "The splash pad area stays dry through the whole test."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The smoke test was a false positive and the leader is correctly drained"
+     },
+     {
+      "id": "inf-b",
+      "label": "The hose test proves the roof drains to the sanitary sewer, because sanitary flow tracks the known input and the splash pad never gets wet"
+     },
+     {
+      "id": "inf-c",
+      "label": "The street flow rise is a coincidence of timing"
+     },
+     {
+      "id": "inf-d",
+      "label": "Rain that day explains the street flow rise"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "A controlled known input produces a matching, timed response in the sanitary flow and no water at the claimed outlet. Coincidence cannot match rate, start, and stop. The day was dry apart from the test, and smoke alone was only a suggestion, the hose test is the proof."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Hose test flow record with the street flow trace for the same 20 minutes"
+     },
+     {
+      "id": "nc-b",
+      "label": "Homeowner statement about the splash pad"
+     },
+     {
+      "id": "nc-c",
+      "label": "Smoke test notes alone"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The metered input against the flow trace is a complete mass balance test of the connection."
+   },
+   "clueText": {
+    "nc-a": "Street flow rises and falls with the hose at the metered rate, and post test excavation finds the leader tied into the lateral.",
+    "nc-b": "The statement is contradicted by the dry splash pad during its own test.",
+    "nc-c": "Smoke notes raised the question that the hose test answered."
+   }
+  },
+  {
+   "id": "c2wc-evidence11",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A CIPP lining project is judged one year after installation using matched storms.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Before lining, a 25 mm storm raised basin flow from 20 L/s to 70 L/s."
+    },
+    {
+     "id": "ev2",
+     "label": "After lining the mains and laterals to the property line, a 26 mm storm in the same season raised flow from 19 L/s to 38 L/s."
+    },
+    {
+     "id": "ev3",
+     "label": "Night flow fell from 15 L/s to 9 L/s after lining."
+    },
+    {
+     "id": "ev4",
+     "label": "Roof leader connections in the basin were not changed."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Lining failed because storm flow still rises after lining"
+     },
+     {
+      "id": "inf-b",
+      "label": "Lining removed most infiltration and the rainfall dependent share from pipes and laterals, while the remaining peak is consistent with the untouched direct inflow"
+     },
+     {
+      "id": "inf-c",
+      "label": "The after storm was smaller, which explains the lower peak"
+     },
+     {
+      "id": "inf-d",
+      "label": "Night flow fell because residents used less water that year"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The storms are matched in depth and season, yet the peak rise fell from 50 L/s to 19 L/s and night flow fell by 6 L/s. That is a large reduction in pipe and lateral entry. A residual peak remains, which fits the roof leaders that were deliberately left unchanged, not project failure."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Before and after hydrographs for the matched storms, with the list of assets lined and not lined"
+     },
+     {
+      "id": "nc-b",
+      "label": "Resident water use survey for the after year"
+     },
+     {
+      "id": "nc-c",
+      "label": "Liner thickness test certificates"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Matched hydrographs with the scope list show exactly which response components the lining removed and which it never targeted."
+   },
+   "clueText": {
+    "nc-a": "Hydrographs show the slow tail largely gone and a short sharp peak remaining, matching the unlined roof leader inflow.",
+    "nc-b": "Water use does not explain a night flow fall matched to storm response changes.",
+    "nc-c": "Thickness certificates confirm material, not flow performance."
+   }
+  },
+  {
+   "id": "c2wc-evidence12",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A pipe bursting project replaces a main, but backups continue on one street.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The burst and replaced main passes CCTV with no defects and flows freely."
+    },
+    {
+     "id": "ev2",
+     "label": "Backups continue only at four homes on a side street whose laterals join the replaced main."
+    },
+    {
+     "id": "ev3",
+     "label": "Lateral cameras show each of the four laterals sagged and holding water near the main connection."
+    },
+    {
+     "id": "ev4",
+     "label": "Homes whose laterals were also renewed during the project have no backups."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The bursting project damaged the new main"
+     },
+     {
+      "id": "inf-b",
+      "label": "The new main is undersized for the street"
+     },
+     {
+      "id": "inf-c",
+      "label": "The remaining backups come from the unrenewed sagged laterals, not from the replaced main"
+     },
+     {
+      "id": "inf-d",
+      "label": "The four homes all developed plumbing faults in the same month"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "The new main is verified clear and free flowing, renewed laterals perform well, and the only homes still backing up have sagged unrenewed laterals seen on camera. Four simultaneous private plumbing faults are not supported, and the main evidence contradicts a main problem."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Lateral camera logs for the four homes, compared with the renewed lateral homes on the same street"
+     },
+     {
+      "id": "nc-b",
+      "label": "New main design drawings"
+     },
+     {
+      "id": "nc-c",
+      "label": "Main flow records for the street"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Comparing affected laterals with renewed laterals on the same main isolates the lateral condition as the remaining difference."
+   },
+   "clueText": {
+    "nc-a": "All four affected laterals show sags holding water, and all renewed laterals on the street are free draining.",
+    "nc-b": "Drawings show design intent, not the as found lateral condition causing the backups.",
+    "nc-c": "Main flow is already known to be free, so more main records cannot locate the fault."
+   }
+  },
+  {
+   "id": "c2wc-evidence13",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Spot repairs fix three severe joints, and a manager asks whether the reach still needs full lining.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Before spot repairs, CCTV graded most of the reach sound, with severe defects at only three joints."
+    },
+    {
+     "id": "ev2",
+     "label": "After spot repairs, a full CCTV run shows no severe defects and only light joint infiltration in wet weather."
+    },
+    {
+     "id": "ev3",
+     "label": "Flow monitoring after repairs shows night flow down 40 percent and storm peaks near the basin average."
+    },
+    {
+     "id": "ev4",
+     "label": "The pipe material and age are the same as a neighbouring reach that failed at many joints."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Full lining is still required immediately because the neighbouring reach failed"
+     },
+     {
+      "id": "inf-b",
+      "label": "The spot repairs addressed the severe defects and measured performance is now near average, so full lining can be deferred with monitoring"
+     },
+     {
+      "id": "inf-c",
+      "label": "Spot repairs never work and the CCTV must be wrong"
+     },
+     {
+      "id": "inf-d",
+      "label": "Night flow fell because the repairs coincided with a dry year"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The defects were localised, the repairs removed them, and both camera and flow results now sit near normal, including wet weather checks. The neighbouring reach is a warning to keep monitoring, not proof this reach is still failing."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Repeat CCTV and flow monitoring at set intervals, compared with the post repair baseline"
+     },
+     {
+      "id": "nc-b",
+      "label": "The neighbouring reach failure report alone"
+     },
+     {
+      "id": "nc-c",
+      "label": "Spot repair invoices"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A monitored baseline shows whether the repaired reach stays near average or begins to follow the neighbour, which is the real decision test."
+   },
+   "clueText": {
+    "nc-a": "Two years of monitoring show stable grades and flows, supporting deferral with continued checks.",
+    "nc-b": "The neighbour report describes a different reach and cannot grade this one.",
+    "nc-c": "Invoices prove work was paid for, not how the pipe performs."
+   }
+  },
+  {
+   "id": "c2wc-evidence14",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Manhole lining is credited with a flow drop that started before the work began.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Basin night flow began falling two months before manhole lining started, during a falling water table."
+    },
+    {
+     "id": "ev2",
+     "label": "The fall continued at the same rate during and after the lining work."
+    },
+    {
+     "id": "ev3",
+     "label": "A control basin with no work shows the same night flow fall over the same months."
+    },
+    {
+     "id": "ev4",
+     "label": "Manhole inspections found only minor defects at most structures."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Manhole lining caused the full night flow fall"
+     },
+     {
+      "id": "inf-b",
+      "label": "The fall tracks the falling water table in both basins, so the lining effect cannot be separated and is likely small given the minor defects"
+     },
+     {
+      "id": "inf-c",
+      "label": "The control basin meters failed at the same time"
+     },
+     {
+      "id": "inf-d",
+      "label": "Residents in both basins conserved water at night in the same months"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The fall started before the work, continued at the same rate, and appears in a control basin with no work, all while the water table fell. That pattern points to groundwater conditions, not the lining. Minor defects also limit how much the lining could have removed."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Night flow and water table trends for both basins across the full period"
+     },
+     {
+      "id": "nc-b",
+      "label": "Manhole lining completion certificates"
+     },
+     {
+      "id": "nc-c",
+      "label": "A resident satisfaction survey"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Plotting both basins against the water table shows whether the work added any fall beyond the shared seasonal trend."
+   },
+   "clueText": {
+    "nc-a": "Both basins track the water table with no extra step down when lining was done, confirming the seasonal explanation.",
+    "nc-b": "Certificates prove the work happened, not that it caused the flow change.",
+    "nc-c": "Satisfaction does not measure night flow causes."
+   }
+  },
+  {
+   "id": "c2wc-evidence15",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A lateral lining program shows mixed results across two streets.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "On Street A, lined laterals were first cleaned and root cut, and post lining CCTV shows full bore sealed laterals."
+    },
+    {
+     "id": "ev2",
+     "label": "On Street B, laterals were lined without cleaning, and post lining CCTV shows liner wrinkles trapping debris at several joints."
+    },
+    {
+     "id": "ev3",
+     "label": "Backup calls fell to zero on Street A and continue at the pre program rate on Street B."
+    },
+    {
+     "id": "ev4",
+     "label": "Both streets received the same liner product and crew."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The liner product works on one street and not the other by chance"
+     },
+     {
+      "id": "inf-b",
+      "label": "Street B homes use their drains differently and cause the continuing backups"
+     },
+     {
+      "id": "inf-c",
+      "label": "Surface preparation decided the outcome, because uncleaned laterals produced wrinkled liners that trap debris"
+     },
+     {
+      "id": "inf-d",
+      "label": "Street A backups stopped because those homes were vacant"
+     }
+    ],
+    "correctOptionId": "inf-c",
+    "explanation": "Product and crew are the same, so the difference is the process. Street B liners are visibly wrinkled and trapping debris where cleaning was skipped, and backups continue there at the old rate. No vacancy or use difference is reported."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Post lining CCTV comparison between the streets, with the preparation records for each lateral"
+     },
+     {
+      "id": "nc-b",
+      "label": "Liner product data sheets"
+     },
+     {
+      "id": "nc-c",
+      "label": "Backup call totals without locations"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "Pairing preparation records with post lining camera results tests whether the skipped step produced the defective liners."
+   },
+   "clueText": {
+    "nc-a": "Every wrinkled liner is on a lateral with no cleaning record, and every cleaned lateral is smooth and sealed.",
+    "nc-b": "Data sheets are identical for both streets and cannot explain different outcomes.",
+    "nc-c": "Totals without locations hide the street by street pattern that matters."
+   }
+  },
+  {
+   "id": "c2wc-evidence16",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Cleaning before CCTV is skipped on one reach and the condition grade comes back severe.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario CCTV condition program. Coding uses generic defect descriptions, not a proprietary code set.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The reach was televised with a heavy silt bed covering the invert and lower wall."
+    },
+    {
+     "id": "ev2",
+     "label": "The operator coded severe deposits and possible wall loss along the whole reach."
+    },
+    {
+     "id": "ev3",
+     "label": "After cleaning, a second run shows a sound pipe with light deposits and no wall loss."
+    },
+    {
+     "id": "ev4",
+     "label": "A nearby reach televised after cleaning on the first pass graded as sound."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The pipe deteriorated and then recovered between the two runs"
+     },
+     {
+      "id": "inf-b",
+      "label": "The first grade described the deposits hiding the pipe, not the pipe itself, so cleaning before assessment is required for a valid grade"
+     },
+     {
+      "id": "inf-c",
+      "label": "The second crew missed the wall loss"
+     },
+     {
+      "id": "inf-d",
+      "label": "Silt beds protect pipe walls and should be coded as defects"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The same reach grades sound once the silt is removed, and the clean first pass reach also grades sound. The first run could only see deposits, so its wall loss coding was unsupported. Condition grading requires seeing the pipe wall."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "The before cleaning and after cleaning video pair for the same chainages"
+     },
+     {
+      "id": "nc-b",
+      "label": "The first operator timesheet"
+     },
+     {
+      "id": "nc-c",
+      "label": "Silt tonnage removed from the reach"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The paired videos at the same chainages show what the first grade could and could not actually observe."
+   },
+   "clueText": {
+    "nc-a": "The pair shows silt hiding the wall in the first run and sound wall at the same chainages in the second.",
+    "nc-b": "A timesheet shows attendance, not what was visible on camera.",
+    "nc-c": "Tonnage measures deposits, not pipe wall condition."
+   }
+  },
+  {
+   "id": "c2wc-evidence17",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A rehabilitation priority list ranks reaches by CCTV grade alone, and a reviewer finds a problem.",
+   "topicId": "cctv-condition-assessment",
+   "level": "class1",
+   "assumptions": "Fictional Ontario CCTV condition program. Coding uses generic defect descriptions, not a proprietary code set.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Reach 1 has the worst structural grade but carries low flow, has no backup history, and has a parallel relief sewer."
+    },
+    {
+     "id": "ev2",
+     "label": "Reach 2 has a moderate grade but has caused six basement backups, runs surcharged in moderate rain, and serves a hospital."
+    },
+    {
+     "id": "ev3",
+     "label": "The list places Reach 1 first only because its grade number is higher."
+    },
+    {
+     "id": "ev4",
+     "label": "No consequence or capacity information was used in the ranking."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The list is correct because grade alone should set priorities"
+     },
+     {
+      "id": "inf-b",
+      "label": "Reach 2 should rank first once likelihood is combined with consequence, because its moderate defects are already causing backups at a critical customer"
+     },
+     {
+      "id": "inf-c",
+      "label": "Reach 1 should be abandoned because it has a relief sewer"
+     },
+     {
+      "id": "inf-d",
+      "label": "Both reaches should be lined in the same year regardless of budget"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Grade measures condition, not risk. Reach 2 is already failing in service with backups at a hospital and surcharge in moderate rain, while Reach 1 has capacity relief and no service failures. Priority setting that ignores consequence misranks the work. Abandoning Reach 1 is also unsupported, it still needs planned renewal."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "A risk ranking that pairs each reach grade with backup history, surcharge records and customer criticality"
+     },
+     {
+      "id": "nc-b",
+      "label": "The grade list sorted again in the same way"
+     },
+     {
+      "id": "nc-c",
+      "label": "Liner price quotations for both reaches"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "A combined likelihood and consequence ranking is the test of whether the order reflects actual risk to service."
+   },
+   "clueText": {
+    "nc-a": "The combined ranking places Reach 2 first on backup and criticality grounds and keeps Reach 1 in the planned program.",
+    "nc-b": "Resorting the same grades repeats the original error.",
+    "nc-c": "Prices do not measure risk to customers."
+   }
+  },
+  {
+   "id": "c2wc-evidence18",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "Flow returns to a lined reach within two years and the cause is traced.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "Post lining flow checks at six months showed night flow down 55 percent."
+    },
+    {
+     "id": "ev2",
+     "label": "At two years, night flow is back near pre lining values in wet months."
+    },
+    {
+     "id": "ev3",
+     "label": "CCTV shows the liner intact with no joint infiltration along the lined mains."
+    },
+    {
+     "id": "ev4",
+     "label": "Dye testing shows clear water entering at three unlined private laterals whose connections were not sealed at the main."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "The liner has failed along the mains"
+     },
+     {
+      "id": "inf-b",
+      "label": "Groundwater found the next available path, entering at the unsealed lateral connections that were left out of scope"
+     },
+     {
+      "id": "inf-c",
+      "label": "The six month check was measured incorrectly"
+     },
+     {
+      "id": "inf-d",
+      "label": "Rainfall has doubled in the two years"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "The liner itself is intact on camera and the six month result was real. The new entry point is demonstrated by dye at three unsealed lateral connections. When main joints are sealed, groundwater shifts to remaining openings, which is why connection sealing belongs in the scope."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Dye test records and connection inspection at the three laterals, with wet month night flow"
+     },
+     {
+      "id": "nc-b",
+      "label": "Liner warranty documents"
+     },
+     {
+      "id": "nc-c",
+      "label": "Rainfall totals for the two years"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The dye records at the connections directly identify the new entry path that explains the returning flow."
+   },
+   "clueText": {
+    "nc-a": "Dye appears in the main from all three unsealed connections during high groundwater, and sealing them in a trial drops night flow again.",
+    "nc-b": "Warranty papers do not locate where water is entering.",
+    "nc-c": "Rainfall totals do not explain entry localised at three connections."
+   }
+  },
+  {
+   "id": "c2wc-evidence19",
+   "revision": "r1",
+   "mode": "evidence-detective",
+   "prompt": "A grouting program is compared with a lined reach over three years.",
+   "topicId": "rehabilitation-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario program evaluation. Before and after records cover the same reaches and seasons unless stated.",
+   "evidence": [
+    {
+     "id": "ev1",
+     "label": "The grouted reach cut wet month night flow by 45 percent in the first year."
+    },
+    {
+     "id": "ev2",
+     "label": "By year three, the grouted reach night flow has risen back to 85 percent of its pre program value."
+    },
+    {
+     "id": "ev3",
+     "label": "The lined comparison reach still holds a 50 percent reduction at year three."
+    },
+    {
+     "id": "ev4",
+     "label": "CCTV shows grout loss at several joints in the grouted reach and an intact liner in the lined reach."
+    }
+   ],
+   "inference": {
+    "id": "inference",
+    "prompt": "Which explanation is best supported by all of the observations?",
+    "options": [
+     {
+      "id": "inf-a",
+      "label": "Grouting and lining perform the same over three years"
+     },
+     {
+      "id": "inf-b",
+      "label": "Grouting gave a strong early result that is decaying as grout is lost, while lining is holding, so life cycle planning must treat them differently"
+     },
+     {
+      "id": "inf-c",
+      "label": "The grouted reach flow rise is due to new homes"
+     },
+     {
+      "id": "inf-d",
+      "label": "CCTV cannot distinguish grout loss from liner condition"
+     }
+    ],
+    "correctOptionId": "inf-b",
+    "explanation": "Both methods worked at first, but by year three the grouted reach has lost most of its gain with visible grout loss, while the lined reach holds its reduction with an intact liner. No new homes are reported. The methods differ in durability, which changes renewal planning."
+   },
+   "nextClue": {
+    "id": "next-clue",
+    "prompt": "Which record or check best tests this explanation?",
+    "options": [
+     {
+      "id": "nc-a",
+      "label": "Year by year night flow for both reaches with the year three CCTV comparison"
+     },
+     {
+      "id": "nc-b",
+      "label": "First year results alone for both reaches"
+     },
+     {
+      "id": "nc-c",
+      "label": "Program cost totals alone"
+     }
+    ],
+    "correctOptionId": "nc-a",
+    "explanation": "The full three year trend with camera evidence shows durability, which a first year snapshot cannot reveal."
+   },
+   "clueText": {
+    "nc-a": "The trend shows grout gains fading each wet season while lining stays flat, matching the camera findings.",
+    "nc-b": "First year results alone would wrongly suggest the methods are equal.",
+    "nc-c": "Costs without performance over time cannot set renewal timing."
+   }
+  }
+ ],
+ "missions": [
+  {
+   "id": "c2wc-mission61",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 61: The Repeat Blockage Investigation Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process40",
+     "revision": "r1",
+     "occurrenceId": "m61-t1"
+    },
+    {
+     "taskId": "c2wc-evidence01",
+     "revision": "r1",
+     "occurrenceId": "m61-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission62",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 62: The Infiltration Inflow Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence02",
+     "revision": "r1",
+     "occurrenceId": "m62-t1"
+    },
+    {
+     "taskId": "c2wc-process41",
+     "revision": "r1",
+     "occurrenceId": "m62-t2"
+    },
+    {
+     "taskId": "c2wc-process42",
+     "revision": "r1",
+     "occurrenceId": "m62-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission63",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 63: The Liner Installation Curing Awareness Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process43",
+     "revision": "r1",
+     "occurrenceId": "m63-t1"
+    },
+    {
+     "taskId": "c2wc-evidence03",
+     "revision": "r1",
+     "occurrenceId": "m63-t2"
+    },
+    {
+     "taskId": "c2wc-process44",
+     "revision": "r1",
+     "occurrenceId": "m63-t3"
+    },
+    {
+     "taskId": "c2wc-process45",
+     "revision": "r1",
+     "occurrenceId": "m63-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission64",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 64: The Rainfall Dependent Inflow Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence04",
+     "revision": "r1",
+     "occurrenceId": "m64-t1"
+    },
+    {
+     "taskId": "c2wc-process46",
+     "revision": "r1",
+     "occurrenceId": "m64-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission65",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 65: The Sectional Patch Repair Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process47",
+     "revision": "r1",
+     "occurrenceId": "m65-t1"
+    },
+    {
+     "taskId": "c2wc-evidence05",
+     "revision": "r1",
+     "occurrenceId": "m65-t2"
+    },
+    {
+     "taskId": "c2wc-process48",
+     "revision": "r1",
+     "occurrenceId": "m65-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission66",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 66: The Infiltration Inflow Programs Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence06",
+     "revision": "r1",
+     "occurrenceId": "m66-t1"
+    },
+    {
+     "taskId": "c2wc-process49",
+     "revision": "r1",
+     "occurrenceId": "m66-t2"
+    },
+    {
+     "taskId": "c2wc-process50",
+     "revision": "r1",
+     "occurrenceId": "m66-t3"
+    },
+    {
+     "taskId": "c2wc-process51",
+     "revision": "r1",
+     "occurrenceId": "m66-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission67",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 67: The Lift Station Reliability Program Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process52",
+     "revision": "r1",
+     "occurrenceId": "m67-t1"
+    },
+    {
+     "taskId": "c2wc-evidence07",
+     "revision": "r1",
+     "occurrenceId": "m67-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission68",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 68: The Infiltration Inflow Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence08",
+     "revision": "r1",
+     "occurrenceId": "m68-t1"
+    },
+    {
+     "taskId": "c2wc-process53",
+     "revision": "r1",
+     "occurrenceId": "m68-t2"
+    },
+    {
+     "taskId": "c2wc-process54",
+     "revision": "r1",
+     "occurrenceId": "m68-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission69",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 69: The Standby Power Testing Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process55",
+     "revision": "r1",
+     "occurrenceId": "m69-t1"
+    },
+    {
+     "taskId": "c2wc-evidence09",
+     "revision": "r1",
+     "occurrenceId": "m69-t2"
+    },
+    {
+     "taskId": "c2wc-process56",
+     "revision": "r1",
+     "occurrenceId": "m69-t3"
+    },
+    {
+     "taskId": "c2wc-process57",
+     "revision": "r1",
+     "occurrenceId": "m69-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission70",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 70: The Infiltration Inflow Analysis Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence10",
+     "revision": "r1",
+     "occurrenceId": "m70-t1"
+    },
+    {
+     "taskId": "c2wc-process58",
+     "revision": "r1",
+     "occurrenceId": "m70-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission71",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 71: The Bypass Pumping Plan Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process59",
+     "revision": "r1",
+     "occurrenceId": "m71-t1"
+    },
+    {
+     "taskId": "c2wc-evidence100",
+     "revision": "r1",
+     "occurrenceId": "m71-t2"
+    },
+    {
+     "taskId": "c2wc-process60",
+     "revision": "r1",
+     "occurrenceId": "m71-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission72",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 72: The Rehabilitation Effectiveness Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence11",
+     "revision": "r1",
+     "occurrenceId": "m72-t1"
+    },
+    {
+     "taskId": "c2wc-process61",
+     "revision": "r1",
+     "occurrenceId": "m72-t2"
+    },
+    {
+     "taskId": "c2wc-process62",
+     "revision": "r1",
+     "occurrenceId": "m72-t3"
+    },
+    {
+     "taskId": "c2wc-process63",
+     "revision": "r1",
+     "occurrenceId": "m72-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission73",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 73: The Force Main Swabbing Run Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process64",
+     "revision": "r1",
+     "occurrenceId": "m73-t1"
+    },
+    {
+     "taskId": "c2wc-evidence12",
+     "revision": "r1",
+     "occurrenceId": "m73-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission74",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 74: The Rehabilitation Effectiveness Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence13",
+     "revision": "r1",
+     "occurrenceId": "m74-t1"
+    },
+    {
+     "taskId": "c2wc-process65",
+     "revision": "r1",
+     "occurrenceId": "m74-t2"
+    },
+    {
+     "taskId": "c2wc-process66",
+     "revision": "r1",
+     "occurrenceId": "m74-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission75",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 75: The Force Main Capacity Test Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process67",
+     "revision": "r1",
+     "occurrenceId": "m75-t1"
+    },
+    {
+     "taskId": "c2wc-evidence14",
+     "revision": "r1",
+     "occurrenceId": "m75-t2"
+    },
+    {
+     "taskId": "c2wc-process68",
+     "revision": "r1",
+     "occurrenceId": "m75-t3"
+    },
+    {
+     "taskId": "c2wc-process69",
+     "revision": "r1",
+     "occurrenceId": "m75-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission76",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 76: The Rehabilitation Effectiveness Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence15",
+     "revision": "r1",
+     "occurrenceId": "m76-t1"
+    },
+    {
+     "taskId": "c2wc-process70",
+     "revision": "r1",
+     "occurrenceId": "m76-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission77",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 77: The Sulfide Chemical Feed Startup Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process71",
+     "revision": "r1",
+     "occurrenceId": "m77-t1"
+    },
+    {
+     "taskId": "c2wc-evidence16",
+     "revision": "r1",
+     "occurrenceId": "m77-t2"
+    },
+    {
+     "taskId": "c2wc-process72",
+     "revision": "r1",
+     "occurrenceId": "m77-t3"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission78",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 78: The Cctv Condition Assessment Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence17",
+     "revision": "r1",
+     "occurrenceId": "m78-t1"
+    },
+    {
+     "taskId": "c2wc-process73",
+     "revision": "r1",
+     "occurrenceId": "m78-t2"
+    },
+    {
+     "taskId": "c2wc-process74",
+     "revision": "r1",
+     "occurrenceId": "m78-t3"
+    },
+    {
+     "taskId": "c2wc-process75",
+     "revision": "r1",
+     "occurrenceId": "m78-t4"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission79",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 79: The Corrosion Rehabilitation Prioritization Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-process76",
+     "revision": "r1",
+     "occurrenceId": "m79-t1"
+    },
+    {
+     "taskId": "c2wc-evidence18",
+     "revision": "r1",
+     "occurrenceId": "m79-t2"
+    }
+   ]
+  },
+  {
+   "id": "c2wc-mission80",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 80: The Rehabilitation Effectiveness Shift",
+   "tasks": [
+    {
+     "taskId": "c2wc-evidence19",
+     "revision": "r1",
+     "occurrenceId": "m80-t1"
+    },
+    {
+     "taskId": "c2wc-process77",
+     "revision": "r1",
+     "occurrenceId": "m80-t2"
+    },
+    {
+     "taskId": "c2wc-process78",
+     "revision": "r1",
+     "occurrenceId": "m80-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater collection system operation, assessment and rehabilitation chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "bef63abbf548f22b753d7330f3f802c923464a9e72bf6a43e9eb905526010afd",
+  "taskReceipts": [
+   {
+    "taskId": "c2wc-process40",
+    "revision": "r1",
+    "sha256": "1fd4e027adb65f7d45c36e5511dd964e9aa13113248a0c0c038a420f22f030b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process41",
+    "revision": "r1",
+    "sha256": "7f946b1a728c9069047754483e212b3150f551815428b03bc32b4a8eabdb4e62",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process42",
+    "revision": "r1",
+    "sha256": "1b98d82dd0abf2e066576563966fa3f35e115bf5a51d73d48dc9e18f6ef0b0fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process43",
+    "revision": "r1",
+    "sha256": "9b3059fed723b245bcb078e2314d03f207c29a026096d227a797499ce7dbef5c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process44",
+    "revision": "r1",
+    "sha256": "2a736f22a7d4f1accfda33bf273391285c4855072a7d62a4d324adf9653dd8b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process45",
+    "revision": "r1",
+    "sha256": "01f734d63f9898d816098ee4462f1c3aa1fb7b98dec387974310a038cea15f18",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process46",
+    "revision": "r1",
+    "sha256": "7242de9fcd183cd9df85abff16ff1c2cf16df700c6a3d26a013fbaebbc5d0846",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process47",
+    "revision": "r1",
+    "sha256": "93ff95968c17bd9c08a4a5fb34c19ff7fe29571ca2de8e9445a256da8368613f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process48",
+    "revision": "r1",
+    "sha256": "79dbe974a57ba92d3a632a7ad3ace55a67cd8b43f225b55f4b19fc4559c8801a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process49",
+    "revision": "r1",
+    "sha256": "504a1c9042d8363d734f9e4fa4df1d475900ae178d1cde0b9a4a612be1a7cd69",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process50",
+    "revision": "r1",
+    "sha256": "7afb5afd1611b873ec5253e7999173ee5dad02ffbd6f1c1665d47ce296104ed8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process51",
+    "revision": "r1",
+    "sha256": "e899049b149d76a44dd50b5839becabcd89e02983c65bae97f547f9631b9f622",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process52",
+    "revision": "r1",
+    "sha256": "81978943d3caf713769f0b705f58ccf0ae5ed225d1d4f5006f1403c077eaf373",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process53",
+    "revision": "r1",
+    "sha256": "bbe7330be6c5bb16447f11e1bd8e62016f61fad6bfc61906d2dd6504b2503c70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process54",
+    "revision": "r1",
+    "sha256": "7c4139835c2307a34594e0a4c79977f1bfa6def9da3e7ccb570985d6c48b128e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process55",
+    "revision": "r1",
+    "sha256": "30ecaa1c1f4e6019dd813f194745bcbef28ced296a3ae894e99e81b9e52f27cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process56",
+    "revision": "r1",
+    "sha256": "6c9d14ece0f459412cd2bf686b625413c385630d8eaa3e4cedf012d9ef2d5a5a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process57",
+    "revision": "r1",
+    "sha256": "243c3c4b55d612487822e84b4640aef7c84452eb14b5b052b9b4a19ae749ff82",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process58",
+    "revision": "r1",
+    "sha256": "d0aa32d4b9ae8e6620afd5417100d9a5af4506fd3b9c8c174ac23165749564a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process59",
+    "revision": "r1",
+    "sha256": "c84f6db24cd626bb478c2437b7591277147c1d71010d678bddb1af265d58204a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process60",
+    "revision": "r1",
+    "sha256": "b293d7b69d534b73eada2c76fed7d1b860fe96e6ca1b12ec72d83d7a954022aa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process61",
+    "revision": "r1",
+    "sha256": "80b0807d944c1fe7d57e5c165de3c66cb82f41dd8727eeab36693c09a7b166df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process62",
+    "revision": "r1",
+    "sha256": "b4e84bb38d4c7cb8c90b836b6f2965222008b612bc6157053ea4c3be452244ed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process63",
+    "revision": "r1",
+    "sha256": "1ecf1337a4176bbaf08bf02b4c368d22556528c67e361a78cb19df6922bdd4bf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process64",
+    "revision": "r1",
+    "sha256": "b642827e28e225f45c5b5403d4057f1855f2d13ce8c8bb4340535ed5517679b8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process65",
+    "revision": "r1",
+    "sha256": "a5d6ebf07b2198b09efb1d6ceb95e6d9a764deceda7820a8a7a9ab4fafca0824",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process66",
+    "revision": "r1",
+    "sha256": "db243052689b79685c157ac58f43500aaf6f6fd75b0dc593a88c2b865ee40c99",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process67",
+    "revision": "r1",
+    "sha256": "c7a600f78072efdd10d192410ed3da8a4a8c2de5a8f40b323dec69d75816c132",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process68",
+    "revision": "r1",
+    "sha256": "8697ed399de24ff3d34f2defe452b4843586bb545a1183cfed1ee1d468e74e3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process69",
+    "revision": "r1",
+    "sha256": "69e9c5fb9e3197ced63f4136802158874a513061e9e26eb812e79d7a814f4d08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process70",
+    "revision": "r1",
+    "sha256": "9ac068dac1e94307eda4488ab7f93ede9bdeae4806eefd552c01995ab0aa09bd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process71",
+    "revision": "r1",
+    "sha256": "54c3caf36d5a89acbf914622157910cce3163b2b79f70b56140b043d5157c93e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process72",
+    "revision": "r1",
+    "sha256": "b491a23e7cbf7913770893187807bf5a9ef62370d550cd49c7c01a807f33a2b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process73",
+    "revision": "r1",
+    "sha256": "1b1203b87c24a6805368904a8128e7d7b00b8399eb9f0f9d908099237d39d3fd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process74",
+    "revision": "r1",
+    "sha256": "fefa13bdbaa5cda208061224faf69977ddc165e20047971e8e406c2dda162373",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process75",
+    "revision": "r1",
+    "sha256": "0b78ca54553bc710bf29e3096ee3daff1e13b5f0cea2d2c5b3f8f500863d5251",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process76",
+    "revision": "r1",
+    "sha256": "fe7bf2192434e8f2624475632771ea6bcc8c729c3a7067f7056ed782b4daafd1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process77",
+    "revision": "r1",
+    "sha256": "6f2cd60eede62990a350de23b4ce504662634fcb10177d6b9992db31f3a7f756",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process78",
+    "revision": "r1",
+    "sha256": "524c74efb762e6a3adaf13d3d3490c2e065078e37e79ad47420d6b2417c9243b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process79",
+    "revision": "r1",
+    "sha256": "f4895909385bd3f5ee8e86ca189a7bdb49e4a95cd0ca0e2cce98c7e66a06c1f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process80",
+    "revision": "r1",
+    "sha256": "0b10f434e42a007768dda9d15923b9e4dd5d1142864b1e6aa0407a3fc6296988",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process81",
+    "revision": "r1",
+    "sha256": "9ef42734578e50a1bef8641616d1f13fe29d82a84aa52b7f950e37a53ccdac18",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process82",
+    "revision": "r1",
+    "sha256": "96bc139a2fb66fc5285c7e336b13a0b05a46f7fcf128c7220675e8e9da931518",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process83",
+    "revision": "r1",
+    "sha256": "13a890fc2f289739def5e38c97cc4803577e6f184e1ac6a421abca364dfd5679",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process84",
+    "revision": "r1",
+    "sha256": "7958aee7f8eb85dc84441c298bce26dbb1400ea54afb49f48d4d73b9df6ad061",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process85",
+    "revision": "r1",
+    "sha256": "3c2c0ad4086b8a7beb3ff1802f38dde8f8bb32edb5bcefbdbbb5d95bf86eac07",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process86",
+    "revision": "r1",
+    "sha256": "96b53a6e6e80fc3d59a986af32e9f3849da1bd9820bcd31277c1586cd62fafc7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process87",
+    "revision": "r1",
+    "sha256": "a5674b793894b5baea90026a293672c0a482fc757c93a23b55a15746b799e66b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process88",
+    "revision": "r1",
+    "sha256": "b74d0a6ad22ab6f44acf10bfb1909c501e5afe608e8309e25c542595fb51c368",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process89",
+    "revision": "r1",
+    "sha256": "34418ece79d948d30ce39641b3287b142f1fa44e3845c02a82112608585a422a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process90",
+    "revision": "r1",
+    "sha256": "21a9c619842f35f7c447591a2be9f21f1e9d26c47a8dc716593606b155994150",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process91",
+    "revision": "r1",
+    "sha256": "b00d7518d687cdd5eafe230c335c268f48cc798021bd9bcded09035cb774eadb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process92",
+    "revision": "r1",
+    "sha256": "fb8f25da72aa621c5a9ac81a31f3ef3355405c279d8521a1519b073766852337",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process93",
+    "revision": "r1",
+    "sha256": "00697ab0fac7729e140bc5a8856f5cf83335903b39cbc245ab55955b21a7e9f4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process94",
+    "revision": "r1",
+    "sha256": "daa644d88eccc852248e5aa5a90946ff4772d639783eb710429e14e54b7621b9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process95",
+    "revision": "r1",
+    "sha256": "53aede6acf2b6c46055a0a06913a068b6db804d7995cb0ca84df15259c2076a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process96",
+    "revision": "r1",
+    "sha256": "58a56adac1191365e347229b67657b74371dbb797b250fbb155a4853fd31a7e5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process97",
+    "revision": "r1",
+    "sha256": "9b5af4fbf3a1ff029ba81f950c8bd1d83c1d9b94fa6ede075748bf3cb1cc67df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process98",
+    "revision": "r1",
+    "sha256": "8d3a964a4a3faef83cbe8a3732e7927dbf2efe5de4f9b3cf110bc0de838f2b48",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-process99",
+    "revision": "r1",
+    "sha256": "c2a331e61cce871431795b68dda1669fc800b6b5e95b8b6cf1f10e0208451e29",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence01",
+    "revision": "r1",
+    "sha256": "23834f12aad89d3cdf8233b0bdc4e7ed2825ff2aa32c8c9d30b2a38a6e6b8192",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence02",
+    "revision": "r1",
+    "sha256": "39f1cdc7f51561af150c3909edff2db66c96d9f27a038fd6fd7a34f87d01d68e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence03",
+    "revision": "r1",
+    "sha256": "b79482f17f9651fe33e2b62adb5c2cd3cffadd10dfb160c92502e2154840937e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence04",
+    "revision": "r1",
+    "sha256": "0240a10782d0c63c165e56ffc62d2c669c374e213b561d907bd99374a960a5e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence05",
+    "revision": "r1",
+    "sha256": "cd9dbafeaaee53fb0cafb1877cccd24a34ce2fe62dfcfbea4af89d21e5717f8b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence06",
+    "revision": "r1",
+    "sha256": "db44dce746db13836d5704982ac0baddf2c813de9c2abfd2c04d52521a65cf6a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence07",
+    "revision": "r1",
+    "sha256": "ef902951be3bf316bc7bc0cf7855021a28cc0692488b9354f1127b436b6177a0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence08",
+    "revision": "r1",
+    "sha256": "b237c07e79729bd97bbc9ec2edaa0e05283ae751b51a436407a77b3d72c5f3ab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence09",
+    "revision": "r1",
+    "sha256": "5ebcc450f110c205f4c88995e6e0da6afdb37e4601f46ef51168446b20783372",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence10",
+    "revision": "r1",
+    "sha256": "e21a241d28495d5ac78c674a9e70773f239bd2a540f91c7ae02eb209f7eeef74",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence100",
+    "revision": "r1",
+    "sha256": "4fb100400f92342ecf06bd793375a188c4462070be8e91fa1a2f5f798bf80723",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence11",
+    "revision": "r1",
+    "sha256": "b8fa481c57a9157cc8de48236330da3209f58be7a7f704402abc6f6aa6368046",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence12",
+    "revision": "r1",
+    "sha256": "262195be2e1901272bc0c79a67b41c5a9622992e3916b86df80924fce6dd5a9d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence13",
+    "revision": "r1",
+    "sha256": "818b2f1400c79d1b80b36918a986a0a9a42ddd1e5ce389f2623e92ad57318c16",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence14",
+    "revision": "r1",
+    "sha256": "1ba008bfd848204f373e9cb78804a42b5955e72feae6a1c7bb0d9660d1e8642d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence15",
+    "revision": "r1",
+    "sha256": "7cbb4dc8d115dcf9ff93af5c9492a4830d6eaf536e48d428921b13c72d538295",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence16",
+    "revision": "r1",
+    "sha256": "149a790af9ce8ba4d6bde99aed4c6e3cc030854db7b9d0d2b7a694015aa200e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence17",
+    "revision": "r1",
+    "sha256": "9ae803b7c7e85c17220602a8a8d1921a20dddb84faed6bc19671ce58aa3de580",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence18",
+    "revision": "r1",
+    "sha256": "e9fb89c8dfd493b32ea42d5a535d2ad1e8174cab1d66eeb15464f9d806a67a42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c2wc-evidence19",
+    "revision": "r1",
+    "sha256": "544ebf4bc6ca44969b4da4d3625e78d15dcede6c295b08e413770deef603783d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c2wc-mission61",
+    "revision": "r1",
+    "sha256": "2f580f0e21e73a005d2401dae50e74e34db4043e481911f5105f9cc3bf2ec840"
+   },
+   {
+    "missionId": "c2wc-mission62",
+    "revision": "r1",
+    "sha256": "76e08601cd03415f36a788cdf6b51df52eed302feb5dbb3665db87a8869356a3"
+   },
+   {
+    "missionId": "c2wc-mission63",
+    "revision": "r1",
+    "sha256": "2060e0e1d92ea4fa7bb6bdb80c98ca87c4d64f44582da7c2e4fa322e63acd1cc"
+   },
+   {
+    "missionId": "c2wc-mission64",
+    "revision": "r1",
+    "sha256": "368a301568758835ec9f1d0d5bab6e1bfb798c69f6421fdc40522d71cf782bf8"
+   },
+   {
+    "missionId": "c2wc-mission65",
+    "revision": "r1",
+    "sha256": "07c12e69f323b5dffc0b5dac0fceeba926e9716dd8ab8b119c9e0d34ee9f0641"
+   },
+   {
+    "missionId": "c2wc-mission66",
+    "revision": "r1",
+    "sha256": "b37c1d072299ca489a0dc938bd5787ea81775f11884d01e4ee782bb57ce26b09"
+   },
+   {
+    "missionId": "c2wc-mission67",
+    "revision": "r1",
+    "sha256": "99e2e8db99e06a34130e081e8bcb32d8c261ec5cb1b1243ac2b0e72db5616d10"
+   },
+   {
+    "missionId": "c2wc-mission68",
+    "revision": "r1",
+    "sha256": "ac5b3b765649aa304f3ed9df397c0ff18b679f4cb6266feb55fc67b8277cb5a5"
+   },
+   {
+    "missionId": "c2wc-mission69",
+    "revision": "r1",
+    "sha256": "c807dd22872f3002fc3b3caf7d9129cad3d93a38b62cc7c238dfc12531b295a3"
+   },
+   {
+    "missionId": "c2wc-mission70",
+    "revision": "r1",
+    "sha256": "c84442d4e90e7d88b1bb54f792d6f8309897bfe4b580c7759abba892383a2243"
+   },
+   {
+    "missionId": "c2wc-mission71",
+    "revision": "r1",
+    "sha256": "f779802f9dc402518ffb486870b7a5f795ecf1617b4887cd073ce98f9a58281c"
+   },
+   {
+    "missionId": "c2wc-mission72",
+    "revision": "r1",
+    "sha256": "bfcec5c5f82b37a6520c9510c560906a1dacc3e838761672ca65db62f00d457a"
+   },
+   {
+    "missionId": "c2wc-mission73",
+    "revision": "r1",
+    "sha256": "bc8c00d03ba73118b254775bbe100e0445863777c74615bac963416bc030b712"
+   },
+   {
+    "missionId": "c2wc-mission74",
+    "revision": "r1",
+    "sha256": "f7bac667896540e474ebb4efe3a1e0155eaa1d5c78e530fe6cd173bd2dac0c41"
+   },
+   {
+    "missionId": "c2wc-mission75",
+    "revision": "r1",
+    "sha256": "cfb2a80922ee9b3b43296113618971c9264702ad5d4eb56c971100b7f3b05124"
+   },
+   {
+    "missionId": "c2wc-mission76",
+    "revision": "r1",
+    "sha256": "89efc97a29688dac1ae4c6766ef5b0c2ad76c88e95d5f9947b122152954b5f29"
+   },
+   {
+    "missionId": "c2wc-mission77",
+    "revision": "r1",
+    "sha256": "7baea99f97f76b3fb943ea97efc5bba7ee3f7b8b33885e05b2f22a4a9a9e2dc1"
+   },
+   {
+    "missionId": "c2wc-mission78",
+    "revision": "r1",
+    "sha256": "a9cda3f69280b94896db92d8ed7967c257cba79e5b784d0966143a6527771900"
+   },
+   {
+    "missionId": "c2wc-mission79",
+    "revision": "r1",
+    "sha256": "f9d2c9b97e4bba56c9d262befc7fcf71797b114c05c413839d0b195732bb9c78"
+   },
+   {
+    "missionId": "c2wc-mission80",
+    "revision": "r1",
+    "sha256": "d79753eaf8228d066dcb7b0975a7e2e85e155787f864fce79885079cb57a09af"
+   }
+  ]
+ }
+}

@@ -1,0 +1,4208 @@
+{
+ "courseKey": "wpi-class4-water",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp4w-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed mass calculation for a plant near Prince Albert, Saskatchewan. The alum dose is 10 mg/L and the plant flow is 14 ML/day. With flow in ML/day, chemical use in kg/day equals dose in mg/L times flow in ML/day.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: dose = 10 mg/L, flow = 14 ML/day, daily mass = dose x flow in ML/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose x Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 10 mg/L and Flow = 14 ML/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 10 x 14 = 150 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 150 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily mass = 10 x 14 = 140 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 10 x 14 = 140, not 150."
+  },
+  {
+   "id": "wp4w-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical feed mass calculation for a plant near Grande Prairie, Alberta. The alum dose is 4 mg/L and the plant flow is 22 ML/day. With flow in ML/day, chemical use in kg/day equals dose in mg/L times flow in ML/day.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: dose = 4 mg/L, flow = 22 ML/day, daily mass = dose x flow in ML/day. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily mass = Dose x Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dose = 4 mg/L and Flow = 22 ML/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily mass = 4 x 22 = 82 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 82 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily mass = 4 x 22 = 88 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 4 x 22 = 88, not 82."
+  },
+  {
+   "id": "wp4w-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this monthly chemical cost for a plant near Winnipeg, Manitoba. Chemical use is 96 kg/day for 30 days at a given unit price of 2.5 dollars per kg, under provincial drinking water requirements.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: use = 96 kg/day, period = 30 days, unit price = 2.5 dollars per kg, period mass = use x days, period cost = period mass x unit price. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Period cost = (Daily use x Days) x Unit price"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period mass = 96 x 30 = 2880 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Period cost = 2880 x 2.5 = 7320 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 7320 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Period cost = 2880 x 2.5 = 7200 dollars",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 2880 x 2.5 = 7200, not 7320."
+  },
+  {
+   "id": "wp4w-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this monthly chemical cost for a plant near Kelowna, British Columbia. Chemical use is 90 kg/day for 30 days at a given unit price of 3 dollars per kg, under provincial drinking water requirements.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: use = 90 kg/day, period = 30 days, unit price = 3 dollars per kg, period mass = use x days, period cost = period mass x unit price. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Period cost = (Daily use x Days) x Unit price"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period mass = 90 x 30 = 2400 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Period cost = 2400 x 3 = 7200 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 7200 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Period mass = 90 x 30 = 2700 kg, so period cost = 2700 x 3 = 8100 dollars",
+   "explanation": "Line 2 is an arithmetic slip: 90 x 30 = 2700, not 2400. The period cost is 8100 dollars."
+  },
+  {
+   "id": "wp4w-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this monthly chemical cost for a plant near Red Deer, Alberta. Chemical use is 140 kg/day for 30 days at a given unit price of 2 dollars per kg, under provincial drinking water requirements.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: use = 140 kg/day, period = 30 days, unit price = 2 dollars per kg, period mass = use x days, period cost = period mass x unit price. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Period cost = (Daily use x Days) x Unit price"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period mass = 140 x 30 = 4200 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Period cost = 4200 x 2 = 8100 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 8100 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Period cost = 4200 x 2 = 8400 dollars",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 4200 x 2 = 8400, not 8100."
+  },
+  {
+   "id": "wp4w-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this monthly chemical cost for a plant near Brandon, Manitoba. Chemical use is 88 kg/day for 30 days at a given unit price of 2.5 dollars per kg, under provincial drinking water requirements.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: use = 88 kg/day, period = 30 days, unit price = 2.5 dollars per kg, period mass = use x days, period cost = period mass x unit price. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Period cost = (Daily use x Days) x Unit price"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period mass = 88 x 30 = 2340 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Period cost = 2340 x 2.5 = 5850 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 5850 dollars"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Period mass = 88 x 30 = 2640 kg, so period cost = 2640 x 2.5 = 6600 dollars",
+   "explanation": "Line 2 is an arithmetic slip: 88 x 30 = 2640, not 2340. The period cost is 6600 dollars."
+  },
+  {
+   "id": "wp4w-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this monthly chemical cost for a plant near Prince George, British Columbia. Chemical use is 120 kg/day for 30 days at a given unit price of 1.8 dollars per kg, under provincial drinking water requirements.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: use = 120 kg/day, period = 30 days, unit price = 1.8 dollars per kg, period mass = use x days, period cost = period mass x unit price. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Period cost = (Daily use x Days) x Unit price"
+    },
+    {
+     "id": "line2",
+     "label": "2. Period mass = 120 x 30 = 3600 kg"
+    },
+    {
+     "id": "line3",
+     "label": "3. Period cost = 3600 x 1.8 = 6720 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 6720 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Period cost = 3600 x 1.8 = 6480 dollars",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 3600 x 1.8 = 6480, not 6720."
+  },
+  {
+   "id": "wp4w-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical product requirement near Victoria, British Columbia. The program needs 180 kg/day of active chemical and the product purity is given as 0.9 as a fraction.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: active need = 180 kg/day, purity = 0.9 as a fraction, product required = active / purity. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Product required = Active need / Purity fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Active = 180 kg/day and Purity = 0.9"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product required = 180 / 0.9 = 215 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 215 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product required = 180 / 0.9 = 200 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 180 / 0.9 = 200, not 215."
+  },
+  {
+   "id": "wp4w-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical product requirement near Yorkton, Saskatchewan. The program needs 240 kg/day of active chemical and the product purity is given as 0.8 as a fraction.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: active need = 240 kg/day, purity = 0.8 as a fraction, product required = active / purity. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Product required = Active need / Purity fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Active = 240 kg/day and Purity = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product required = 240 x 0.8 = 192 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 192 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product required = 240 / 0.8 = 300 kg/day",
+   "explanation": "Line 3 multiplied by purity instead of dividing. The product required is 300 kg/day."
+  },
+  {
+   "id": "wp4w-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical product requirement near Cranbrook, British Columbia. The program needs 150 kg/day of active chemical and the product purity is given as 0.75 as a fraction.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: active need = 150 kg/day, purity = 0.75 as a fraction, product required = active / purity. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Product required = Active need / Purity fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Active = 150 kg/day and Purity = 0.75"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product required = 150 / 0.75 = 180 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 180 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product required = 150 / 0.75 = 200 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 150 / 0.75 = 200, not 180."
+  },
+  {
+   "id": "wp4w-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chemical product requirement near Fort McMurray, Alberta. The program needs 320 kg/day of active chemical and the product purity is given as 0.8 as a fraction.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: active need = 320 kg/day, purity = 0.8 as a fraction, product required = active / purity. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Product required = Active need / Purity fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Active = 320 kg/day and Purity = 0.8"
+    },
+    {
+     "id": "line3",
+     "label": "3. Product required = 320 x 0.8 = 256 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 256 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Product required = 320 / 0.8 = 400 kg/day",
+   "explanation": "Line 3 multiplied by purity instead of dividing. The product required is 400 kg/day."
+  },
+  {
+   "id": "wp4w-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program cost near Red Deer, Alberta. The coagulant program costs 7200 dollars per month and the disinfection chemical program costs 5400 dollars per month.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: coagulant cost = 7200 dollars per month, disinfection cost = 5400 dollars per month, total program cost = coagulant plus disinfection. Target unit: dollars per month.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total program cost = Coagulant cost plus Disinfection cost"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Coagulant = 7200 dollars and Disinfection = 5400 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 7200 plus 5400 = 13200 dollars per month"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 13200 dollars per month"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total program cost = 7200 plus 5400 = 12600 dollars per month",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 7200 plus 5400 = 12600, not 13200."
+  },
+  {
+   "id": "wp4w-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program cost near Brandon, Manitoba. The coagulant program costs 8400 dollars per month and the disinfection chemical program costs 3600 dollars per month.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: coagulant cost = 8400 dollars per month, disinfection cost = 3600 dollars per month, total program cost = coagulant plus disinfection. Target unit: dollars per month.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total program cost = Coagulant cost plus Disinfection cost"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total taken as 8400 dollars (the coagulant cost only), with Disinfection = 3600 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 8400 dollars per month"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 8400 dollars per month"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total = 8400 plus 3600 = 12000 dollars per month",
+   "explanation": "Line 2 left the disinfection program out of the total. The total program cost is 12000 dollars per month."
+  },
+  {
+   "id": "wp4w-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program cost near Prince George, British Columbia. The coagulant program costs 6480 dollars per month and the disinfection chemical program costs 4320 dollars per month.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: coagulant cost = 6480 dollars per month, disinfection cost = 4320 dollars per month, total program cost = coagulant plus disinfection. Target unit: dollars per month.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total program cost = Coagulant cost plus Disinfection cost"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Coagulant = 6480 dollars and Disinfection = 4320 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 6480 plus 4320 = 10350 dollars per month"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10350 dollars per month"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total program cost = 6480 plus 4320 = 10800 dollars per month",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 6480 plus 4320 = 10800, not 10350."
+  },
+  {
+   "id": "wp4w-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program cost near Lethbridge, Alberta. The coagulant program costs 9600 dollars per month and the disinfection chemical program costs 6000 dollars per month.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: coagulant cost = 9600 dollars per month, disinfection cost = 6000 dollars per month, total program cost = coagulant plus disinfection. Target unit: dollars per month.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total program cost = Coagulant cost plus Disinfection cost"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Coagulant = 9600 dollars and Disinfection = 6000 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 9600 plus 6000 plus 6000 = 21600 dollars per month"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 21600 dollars per month"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total program cost = 9600 plus 6000 = 15600 dollars per month",
+   "explanation": "Line 3 counted the disinfection cost twice. The total program cost is 15600 dollars per month."
+  },
+  {
+   "id": "wp4w-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total chemical program cost near Moose Jaw, Saskatchewan. The coagulant program costs 5400 dollars per month and the disinfection chemical program costs 4500 dollars per month.",
+   "topicId": "chemical-program-cost",
+   "level": "class1",
+   "assumptions": "Fictional chemical program: coagulant cost = 5400 dollars per month, disinfection cost = 4500 dollars per month, total program cost = coagulant plus disinfection. Target unit: dollars per month.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total program cost = Coagulant cost plus Disinfection cost"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Coagulant = 5400 dollars and Disinfection = 4500 dollars"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total program cost = 5400 plus 4500 = 10250 dollars per month"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 10250 dollars per month"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total program cost = 5400 plus 4500 = 9900 dollars per month",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 5400 plus 4500 = 9900, not 10250."
+  },
+  {
+   "id": "wp4w-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a plant near Prince Albert, Saskatchewan. The plant used 5400 kWh to treat 12 ML in the benchmark period, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 5400 kWh, volume = 12 ML, specific energy = energy / volume. Target unit: kWh/ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = Energy / Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 5400 kWh and Volume = 12 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Specific energy = 5400 / 12 = 480 kWh/ML"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 480 kWh/ML"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Specific energy = 5400 / 12 = 450 kWh/ML",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 5400 / 12 = 450, not 480."
+  },
+  {
+   "id": "wp4w-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a plant near Grande Prairie, Alberta. The plant used 7200 kWh to treat 16 ML in the benchmark period, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 7200 kWh, volume = 16 ML, specific energy = energy / volume. Target unit: kWh/ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = Volume / Energy"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 7200 kWh and Volume = 16 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Specific energy calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Specific energy = Energy / Volume = 7200 / 16 = 450 kWh/ML",
+   "explanation": "Line 1 inverts the benchmark. Specific energy is energy divided by volume, giving 450 kWh/ML."
+  },
+  {
+   "id": "wp4w-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a plant near Victoria, British Columbia. The plant used 4950 kWh to treat 11 ML in the benchmark period, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 4950 kWh, volume = 11 ML, specific energy = energy / volume. Target unit: kWh/ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = Energy / Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 4950 kWh and Volume = 11 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Specific energy = 4950 / 11 = 425 kWh/ML"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 425 kWh/ML"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Specific energy = 4950 / 11 = 450 kWh/ML",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 4950 / 11 = 450, not 425."
+  },
+  {
+   "id": "wp4w-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a plant near Yorkton, Saskatchewan. The plant used 6300 kWh to treat 14 ML in the benchmark period, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 6300 kWh, volume = 14 ML, specific energy = energy / volume. Target unit: kWh/ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = Volume / Energy"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 6300 kWh and Volume = 14 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Specific energy calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Specific energy = Energy / Volume = 6300 / 14 = 450 kWh/ML",
+   "explanation": "Line 1 inverts the benchmark. Specific energy is energy divided by volume, giving 450 kWh/ML."
+  },
+  {
+   "id": "wp4w-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy benchmark for a plant near Cranbrook, British Columbia. The plant used 8800 kWh to treat 20 ML in the benchmark period, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 8800 kWh, volume = 20 ML, specific energy = energy / volume. Target unit: kWh/ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Specific energy = Energy / Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 8800 kWh and Volume = 20 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Specific energy = 8800 / 20 = 480 kWh/ML"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 480 kWh/ML"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Specific energy = 8800 / 20 = 440 kWh/ML",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 8800 / 20 = 440, not 480."
+  },
+  {
+   "id": "wp4w-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily energy total near Fort McMurray, Alberta. Average load is 145 kW over a full 24 hour day, under provincial drinking water requirements.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: average load = 145 kW, period = 24 h, daily energy = load x hours. Target unit: kWh/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily energy = Average load x Hours in the day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Load = 145 kW and Hours = 24 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 145 x 24 = 3660 kWh/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3660 kWh/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily energy = 145 x 24 = 3480 kWh/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 145 x 24 = 3480, not 3660."
+  },
+  {
+   "id": "wp4w-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this plant energy total near Swift Current, Saskatchewan. Treatment processes used 4200 kWh and raw and treated water pumping used 3100 kWh in the benchmark month.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: treatment = 4200 kWh, pumping = 3100 kWh, total energy = treatment plus pumping. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total energy = Treatment energy plus Pumping energy"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Treatment = 4200 kWh and Pumping = 3100 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total energy = 4200 plus 3100 = 7050 kWh"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 7050 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total energy = 4200 plus 3100 = 7300 kWh",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 4200 plus 3100 = 7300, not 7050."
+  },
+  {
+   "id": "wp4w-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily energy total near Calgary, Alberta. Average load is 210 kW over a full 24 hour day.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: average load = 210 kW, period = 24 h, daily energy = load x hours. Target unit: kWh/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily energy = Average load x Hours in the day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Hours used = 12 h (a half day), with Load = 210 kW"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 210 x 12 = 2520 kWh/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2520 kWh/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Hours = 24 h, so daily energy = 210 x 24 = 5040 kWh/day",
+   "explanation": "Line 2 used a half day of hours for a full day benchmark. The daily energy is 5040 kWh/day."
+  },
+  {
+   "id": "wp4w-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this plant energy total near Edmonton, Alberta. Treatment processes used 5600 kWh and raw and treated water pumping used 2800 kWh in the benchmark month.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: treatment = 5600 kWh, pumping = 2800 kWh, total energy = treatment plus pumping. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total energy = Treatment energy plus Pumping energy"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Treatment = 5600 kWh and Pumping = 2800 kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total energy = 5600 plus 2800 = 8800 kWh"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 8800 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total energy = 5600 plus 2800 = 8400 kWh",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 5600 plus 2800 = 8400, not 8800."
+  },
+  {
+   "id": "wp4w-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this daily energy total near Regina, Saskatchewan. Average load is 96 kW over a full 24 hour day, under provincial drinking water requirements.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: average load = 96 kW, period = 24 h, daily energy = load x hours. Target unit: kWh/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily energy = Average load x Hours in the day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Load = 96 kW and Hours = 24 h"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily energy = 96 x 24 = 2160 kWh/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2160 kWh/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Daily energy = 96 x 24 = 2304 kWh/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 96 x 24 = 2304, not 2160."
+  },
+  {
+   "id": "wp4w-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy cost for a plant near Moose Jaw, Saskatchewan. Benchmark month energy is 7300 kWh at a given rate of 0.12 dollars per kWh.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 7300 kWh, rate = 0.12 dollars per kWh, energy cost = energy x rate. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy cost = Energy x Rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 7300 kWh and Rate = 0.12 dollars per kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy cost = 7300 x 0.12 = 920 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 920 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Energy cost = 7300 x 0.12 = 876 dollars",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 7300 x 0.12 = 876, not 920."
+  },
+  {
+   "id": "wp4w-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy saving estimate near Kamloops, British Columbia. Baseline specific energy is 500 kWh/ML, the improved value is 420 kWh/ML, and annual volume is 18 ML.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: baseline = 500 kWh/ML, improved = 420 kWh/ML, volume = 18 ML, saving = (baseline minus improved) x volume. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = (Baseline specific energy minus Improved specific energy) x Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Baseline = 500 kWh/ML, Improved = 420 kWh/ML, Volume = 18 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy saving = (500 minus 420) x 18 = 2880 kWh"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2880 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Energy saving = (500 minus 420) x 18 = 1440 kWh",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: (500 minus 420) x 18 = 1440, not 2880."
+  },
+  {
+   "id": "wp4w-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy cost for a plant near Medicine Hat, Alberta. Benchmark month energy is 8400 kWh at a given rate of 0.15 dollars per kWh.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 8400 kWh, rate = 0.15 dollars per kWh, energy cost = energy x rate. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy cost = Energy x Rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 8400 kWh and Rate = 0.15 dollars per kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy cost = 8400 x 0.15 = 1200 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1200 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Energy cost = 8400 x 0.15 = 1260 dollars",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 8400 x 0.15 = 1260, not 1200."
+  },
+  {
+   "id": "wp4w-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy saving estimate near Prince Albert, Saskatchewan. Baseline specific energy is 480 kWh/ML, the improved value is 400 kWh/ML, and annual volume is 15 ML.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: baseline = 480 kWh/ML, improved = 400 kWh/ML, volume = 15 ML, saving = (baseline minus improved) x volume. Target unit: kWh.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy saving = (Baseline specific energy minus Improved specific energy) x Volume"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Baseline = 480 kWh/ML, Improved = 400 kWh/ML, Volume = 15 ML"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy saving = (480 minus 400) x 15 = 1080 kWh"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 1080 kWh"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Energy saving = (480 minus 400) x 15 = 1200 kWh",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: (480 minus 400) x 15 = 1200, not 1080."
+  },
+  {
+   "id": "wp4w-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this energy cost for a plant near Grande Prairie, Alberta. Benchmark month energy is 5040 kWh at a given rate of 0.125 dollars per kWh.",
+   "topicId": "energy-benchmark",
+   "level": "class1",
+   "assumptions": "Fictional energy benchmark: energy = 5040 kWh, rate = 0.125 dollars per kWh, energy cost = energy x rate. Target unit: dollars.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Energy cost = Energy x Rate"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Energy = 5040 kWh and Rate = 0.125 dollars per kWh"
+    },
+    {
+     "id": "line3",
+     "label": "3. Energy cost = 5040 x 0.125 = 660 dollars"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 660 dollars"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Energy cost = 5040 x 0.125 = 630 dollars",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 5040 x 0.125 = 630, not 660."
+  },
+  {
+   "id": "wp4w-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids production estimate near Cranbrook, British Columbia. Plant flow is 14 ML/day and the given solids yield is 180 mg/L of solids in the residuals stream. With flow in ML/day, solids in kg/day equal flow times concentration in mg/L.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: flow = 14 ML/day, solids concentration = 180 mg/L, dry solids = flow in ML/day x concentration. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow in ML/day x Solids concentration"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Flow = 14 ML/day and Concentration = 180 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 14 x 180 = 2640 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2640 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 14 x 180 = 2520 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 14 x 180 = 2520, not 2640."
+  },
+  {
+   "id": "wp4w-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids production estimate near Fort McMurray, Alberta. Plant flow is 10 ML/day and the given solids yield is 220 mg/L of solids in the residuals stream. With flow in ML/day, solids in kg/day equal flow times concentration in mg/L.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: flow = 10 ML/day, solids concentration = 220 mg/L, dry solids = flow in ML/day x concentration. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Solids concentration / Flow in ML/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Flow = 10 ML/day and Concentration = 220 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids calculated with the line 1 formula"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Dry solids = Flow x Concentration = 10 x 220 = 2200 kg/day",
+   "explanation": "Line 1 divides concentration by flow instead of multiplying. Dry solids production is 2200 kg/day."
+  },
+  {
+   "id": "wp4w-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids production estimate near Swift Current, Saskatchewan. Plant flow is 16 ML/day and the given solids yield is 150 mg/L of solids in the residuals stream. With flow in ML/day, solids in kg/day equal flow times concentration in mg/L.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: flow = 16 ML/day, solids concentration = 150 mg/L, dry solids = flow in ML/day x concentration. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow in ML/day x Solids concentration"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Flow = 16 ML/day and Concentration = 150 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 16 x 150 = 2240 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 2240 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 16 x 150 = 2400 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 16 x 150 = 2400, not 2240."
+  },
+  {
+   "id": "wp4w-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals solids production estimate near Calgary, Alberta. Plant flow is 12 ML/day and the given solids yield is 260 mg/L of solids in the residuals stream. With flow in ML/day, solids in kg/day equal flow times concentration in mg/L.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: flow = 12 ML/day, solids concentration = 260 mg/L, dry solids = flow in ML/day x concentration. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dry solids = Flow in ML/day x Solids concentration"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Flow = 12 ML/day and Concentration = 260 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Dry solids = 12 x 260 = 3300 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 3300 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Dry solids = 12 x 260 = 3120 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 12 x 260 = 3120, not 3300."
+  },
+  {
+   "id": "wp4w-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals cake production near Prince George, British Columbia. Dry solids are 2400 kg/day and the dewatered cake is given as 0.2 solids as a fraction, under provincial drinking water requirements.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: dry solids = 2400 kg/day, cake solids fraction = 0.2, wet cake = dry solids / cake fraction. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = Dry solids / Cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dry solids = 2400 kg/day and Cake fraction = 0.2"
+    },
+    {
+     "id": "line3",
+     "label": "3. Wet cake = 2400 / 0.2 = 12600 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 12600 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Wet cake = 2400 / 0.2 = 12000 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 2400 / 0.2 = 12000, not 12600."
+  },
+  {
+   "id": "wp4w-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this annual residuals total near Lethbridge, Alberta. Dry solids production is 2520 kg/day over a full year of 365 days.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: daily solids = 2520 kg/day, days = 365, annual total = daily x days. Target unit: kg/year.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Annual total = Daily solids x Days in the year"
+    },
+    {
+     "id": "line2",
+     "label": "2. Days used = 300 (a partial year), with Daily solids = 2520 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Annual total = 2520 x 300 = 756000 kg/year"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 756000 kg/year"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Days = 365, so annual total = 2520 x 365 = 919800 kg/year",
+   "explanation": "Line 2 used a partial year for an annual program total. The annual total is 919800 kg/year."
+  },
+  {
+   "id": "wp4w-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals hauling count near Moose Jaw, Saskatchewan. The program must haul 1800 m3 of residuals and each truck carries 15 m3, assessed against the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: volume = 1800 m3, truck capacity = 15 m3, truck loads = volume / truck capacity. Target unit: loads.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Truck loads = Residuals volume / Truck capacity"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Volume = 1800 m3 and Truck capacity = 15 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Truck loads = 1800 / 15 = 112 loads"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 112 loads"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Truck loads = 1800 / 15 = 120 loads",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 1800 / 15 = 120, not 112."
+  },
+  {
+   "id": "wp4w-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total residuals production near Kamloops, British Columbia. Clarifier residuals are 2520 kg/day of dry solids and filter residuals are 1680 kg/day of dry solids.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: clarifier solids = 2520 kg/day, filter solids = 1680 kg/day, total solids = clarifier plus filter. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total dry solids = Clarifier solids plus Filter solids"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Clarifier = 2520 kg/day and Filter = 1680 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total dry solids = 2520 plus 1680 = 4500 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 4500 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total dry solids = 2520 plus 1680 = 4200 kg/day",
+   "explanation": "Lines 1 and 2 are correct. Line 3 is an arithmetic slip: 2520 plus 1680 = 4200, not 4500."
+  },
+  {
+   "id": "wp4w-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residuals cake production near Medicine Hat, Alberta. Dry solids are 3120 kg/day and the dewatered cake is given as 0.24 solids as a fraction, under provincial drinking water requirements.",
+   "topicId": "residuals-program",
+   "level": "class1",
+   "assumptions": "Fictional residuals program: dry solids = 3120 kg/day, cake solids fraction = 0.24, wet cake = dry solids / cake fraction. Target unit: kg/day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Wet cake = Dry solids / Cake solids fraction"
+    },
+    {
+     "id": "line2",
+     "label": "2. Values given as Dry solids = 3120 kg/day and Cake fraction = 0.24"
+    },
+    {
+     "id": "line3",
+     "label": "3. Wet cake = 3120 x 0.24 = 748.8 kg/day"
+    },
+    {
+     "id": "line4",
+     "label": "4. Answer reported as 748.8 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Wet cake = 3120 / 0.24 = 13000 kg/day",
+   "explanation": "Line 3 multiplied by the cake fraction instead of dividing. Wet cake production is 13000 kg/day."
+  },
+  {
+   "id": "wp4w-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the establishment of a utility wide drinking water quality management system.",
+   "topicId": "process-quality-management-system-establishment",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in Alberta building a formal quality management system for all treatment operations under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: leadership commitment through the management system in routine use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Secure a written commitment and policy from utility leadership that names quality responsibilities and resources"
+    },
+    {
+     "id": "s2",
+     "label": "Map every process from source intake to treated water delivery and assign an owner to each process"
+    },
+    {
+     "id": "s3",
+     "label": "Write the procedures, records, and competence requirements for each owned process"
+    },
+    {
+     "id": "s4",
+     "label": "Train all affected staff on their procedures and verify understanding with supervised practice"
+    },
+    {
+     "id": "s5",
+     "label": "Run the system for one full operating quarter and collect records, deviations, and staff feedback"
+    },
+    {
+     "id": "s6",
+     "label": "Hold a leadership review of the quarter results and approve the system for ongoing use with assigned improvements"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A management system starts with leadership commitment and clear process ownership, and it is only real once records from a full quarter have been reviewed and improved."
+  },
+  {
+   "id": "wp4w-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the annual management review cycle for a drinking water utility.",
+   "topicId": "process-annual-management-review-cycle",
+   "level": "class1",
+   "assumptions": "Fictional utility leadership team in Saskatchewan running its yearly review of treatment performance under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: review inputs gathered through actions tracked to completion.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect the year inputs: quality results, audit findings, incidents, customer concerns, and process performance trends"
+    },
+    {
+     "id": "s2",
+     "label": "Analyse the inputs for recurring causes and for risks that are growing rather than single events"
+    },
+    {
+     "id": "s3",
+     "label": "Present the analysis to utility leadership with options and resource needs for each major issue"
+    },
+    {
+     "id": "s4",
+     "label": "Record leadership decisions, owners, and due dates for every accepted improvement action"
+    },
+    {
+     "id": "s5",
+     "label": "Fund and schedule the accepted actions in the operating and capital plans for the coming year"
+    },
+    {
+     "id": "s6",
+     "label": "Track the actions quarterly and report completion and effect at the next annual review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Management review turns a year of records into funded, owned decisions, and tracking to the next review is what separates a review from a meeting."
+  },
+  {
+   "id": "wp4w-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an internal audit program for treatment operations.",
+   "topicId": "process-internal-audit-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in Manitoba auditing its own treatment procedures before any external review under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: audit plan through verified corrective actions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Set the audit scope and schedule so every critical treatment process is audited within the cycle"
+    },
+    {
+     "id": "s2",
+     "label": "Select and train auditors who do not audit their own work and give them the procedure and record checklists"
+    },
+    {
+     "id": "s3",
+     "label": "Conduct the audits by observing work, interviewing operators, and sampling records for each process"
+    },
+    {
+     "id": "s4",
+     "label": "Classify each finding by treated water quality risk and agree the facts with the process owner"
+    },
+    {
+     "id": "s5",
+     "label": "Require a corrective action plan with an owner and a due date for every significant finding"
+    },
+    {
+     "id": "s6",
+     "label": "Verify each corrective action in the field and close the finding only when the fix is working"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Internal audits protect quality only when findings are risk ranked, owned, and verified in the field, not when they are simply filed."
+  },
+  {
+   "id": "wp4w-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a corrective action and preventive action program for a utility.",
+   "topicId": "process-corrective-action-program",
+   "level": "class1",
+   "assumptions": "Fictional regional utility in British Columbia handling deviations from lab results, alarms, and audits under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: deviation reported through systemic causes removed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define which deviations, near misses, and audit findings must enter the corrective action system"
+    },
+    {
+     "id": "s2",
+     "label": "Log each entry with the immediate containment taken to protect treated water quality"
+    },
+    {
+     "id": "s3",
+     "label": "Investigate significant entries for root cause using records, trends, and operator interviews"
+    },
+    {
+     "id": "s4",
+     "label": "Approve corrective and preventive actions that address the root cause, with owners and due dates"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the actions and update any procedures, training, or equipment the cause points to"
+    },
+    {
+     "id": "s6",
+     "label": "Check effectiveness after a set operating period and reopen the entry if the deviation recurs"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Containment protects water today, root cause work prevents the repeat, and the effectiveness check proves the difference."
+  },
+  {
+   "id": "wp4w-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a document and records control system for treatment operations.",
+   "topicId": "process-document-records-control-system",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in Alberta where several procedure versions are in use at once under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: document inventory through controlled documents in daily use.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory all procedures, forms, and drawings and identify which version is actually in use at each location"
+    },
+    {
+     "id": "s2",
+     "label": "Assign each controlled document an owner, a version number, and a scheduled review date"
+    },
+    {
+     "id": "s3",
+     "label": "Approve current versions through the designated authority and withdraw every superseded copy"
+    },
+    {
+     "id": "s4",
+     "label": "Place the approved versions where operators work and train staff on any changed procedure"
+    },
+    {
+     "id": "s5",
+     "label": "Set retention rules for operating and quality records so they stay retrievable for reviews and inspections"
+    },
+    {
+     "id": "s6",
+     "label": "Audit document use after one quarter and correct any location still using an uncontrolled copy"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Document control fails at the point of use, so withdrawal of old copies and a field audit matter as much as approving the new version."
+  },
+  {
+   "id": "wp4w-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development and approval of a utility drinking water quality policy.",
+   "topicId": "process-quality-policy-development",
+   "level": "class1",
+   "assumptions": "Fictional utility board in Saskatchewan adopting its first formal quality policy under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: drafting principles through the policy communicated and applied.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather input from operators, laboratory staff, and leadership on the commitments the policy must carry"
+    },
+    {
+     "id": "s2",
+     "label": "Draft the policy around safe water, regulatory compliance in general terms, competence, and continual improvement"
+    },
+    {
+     "id": "s3",
+     "label": "Check the draft against current procedures to find commitments the utility cannot yet meet"
+    },
+    {
+     "id": "s4",
+     "label": "Close the gaps with funded actions or revise the draft so every commitment is achievable"
+    },
+    {
+     "id": "s5",
+     "label": "Approve the policy at the highest utility level and sign and date the approved version"
+    },
+    {
+     "id": "s6",
+     "label": "Communicate the policy to all staff and the public summary, and test it in the next management review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A quality policy is credible only when it is checked against real capability before approval, so the commitments signed are ones the utility can keep."
+  },
+  {
+   "id": "wp4w-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a senior operator accountability and delegation framework for a multi plant utility.",
+   "topicId": "process-senior-operator-accountability-framework",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba operating three treatment plants with shared senior staff under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: accountability gaps identified through delegations tested in practice.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the decisions and duties that must always have a named accountable senior operator, including after hours"
+    },
+    {
+     "id": "s2",
+     "label": "Map current coverage by plant and by hour and mark every gap or single person dependency"
+    },
+    {
+     "id": "s3",
+     "label": "Write delegation rules that state who acts when the accountable operator is absent and what limits apply"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm each named operator holds the certification and experience the delegation requires"
+    },
+    {
+     "id": "s5",
+     "label": "Brief all shifts and post the delegation roster where control room staff can reach it at any hour"
+    },
+    {
+     "id": "s6",
+     "label": "Test the framework with an after hours scenario exercise and correct the gaps it reveals"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Accountability that exists only on weekday day shift is not accountability, so the framework is tested after hours before it is trusted."
+  },
+  {
+   "id": "wp4w-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a management of change program for treatment process changes.",
+   "topicId": "process-management-of-change-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 plant in British Columbia where chemical, equipment, and set point changes have been informal under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: change triggers defined through changes reviewed after implementation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define which changes need formal review, including chemicals, equipment, software, procedures, and staffing of critical roles"
+    },
+    {
+     "id": "s2",
+     "label": "Require a change request that states the reason, the quality and safety risks, and the rollback plan"
+    },
+    {
+     "id": "s3",
+     "label": "Review each request with operations, maintenance, laboratory, and safety staff before approval"
+    },
+    {
+     "id": "s4",
+     "label": "Approve, schedule, and communicate the change with any training or procedure updates completed first"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the change under supervision and monitor the affected quality results closely at first"
+    },
+    {
+     "id": "s6",
+     "label": "Review the change after a set period and close it, extend monitoring, or roll it back on the evidence"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Management of change puts the risk review and the training before the change, and the post change review decides whether the change has earned its place."
+  },
+  {
+   "id": "wp4w-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the preparation of an annual drinking water report for the utility governing body.",
+   "topicId": "process-annual-report-to-governing-body",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta reporting a full year of treatment performance to its council or board under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: data assembled through the report received and actions directed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assemble the year quality results, production volumes, incidents, and compliance related summaries in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Reconcile the report figures with laboratory records and plant logs so every number can be traced to its source"
+    },
+    {
+     "id": "s3",
+     "label": "Draft the report in plain language with trends, explanations for adverse results, and corrective actions taken"
+    },
+    {
+     "id": "s4",
+     "label": "Have senior operations and laboratory staff review the draft for accuracy before leadership sign off"
+    },
+    {
+     "id": "s5",
+     "label": "Present the report to the governing body and record its questions, directions, and any requested follow up"
+    },
+    {
+     "id": "s6",
+     "label": "Publish the public version and file the presentation record with the year quality file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An annual report earns trust when its figures trace to source records and adverse results are explained with the actions taken, not omitted."
+  },
+  {
+   "id": "wp4w-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a utility strategic plan refresh for drinking water services.",
+   "topicId": "process-utility-strategic-plan-refresh",
+   "level": "class1",
+   "assumptions": "Fictional regional utility in Saskatchewan setting a five year direction for treatment services under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: current state assessment through the refreshed plan adopted and resourced.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assess the current state: asset condition, quality performance, capacity, workforce, and financial position"
+    },
+    {
+     "id": "s2",
+     "label": "Scan the drivers that will shape the next five years, including growth, climate, source risk, and technology change"
+    },
+    {
+     "id": "s3",
+     "label": "Set a small number of strategic goals with a measurable outcome for each one"
+    },
+    {
+     "id": "s4",
+     "label": "Build initiatives under each goal with owners, sequencing, and the resources each initiative needs"
+    },
+    {
+     "id": "s5",
+     "label": "Test the draft plan against the capital and operating forecasts and remove or defer what cannot be funded"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the plan at leadership level and review progress against it twice a year"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A strategic plan that is not tested against funding is a wish list, so affordability is checked before adoption and progress is reviewed on a fixed cycle."
+  },
+  {
+   "id": "wp4w-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a senior decision routine for major operating decisions under uncertainty.",
+   "topicId": "process-senior-decision-routine-under-uncertainty",
+   "level": "class1",
+   "assumptions": "Fictional utility leadership team in Saskatchewan formalizing how it decides when evidence is incomplete under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: decision triggers defined through decisions reviewed for quality, not only outcome.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the decision classes that must come to the senior routine: quality risk, major spending in general terms, service interruption, and public communication"
+    },
+    {
+     "id": "s2",
+     "label": "Require each proposal to state the evidence, the uncertainty, the options, and the cost of waiting"
+    },
+    {
+     "id": "s3",
+     "label": "Set the rule that the operator closest to the problem presents first and seniority speaks after the facts"
+    },
+    {
+     "id": "s4",
+     "label": "Decide with a recorded rationale, the dissent noted, and the conditions that would reopen the decision"
+    },
+    {
+     "id": "s5",
+     "label": "Assign the implementation owner and the date the decision effect will be checked"
+    },
+    {
+     "id": "s6",
+     "label": "Review past decisions for the quality of their reasoning at the time, and improve the routine from what the reviews teach"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Decisions under uncertainty are judged by the quality of their reasoning with the evidence then available, and recording dissent and reopening conditions keeps the routine honest."
+  },
+  {
+   "id": "wp4w-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development of a utility wide water quality strategy.",
+   "topicId": "process-water-quality-strategy-development",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in Manitoba setting a multi year quality strategy from source to treated water under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: quality risks profiled through the strategy adopted with funded priorities.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Profile quality risks at each barrier: source, treatment, storage, and treated water leaving the plant"
+    },
+    {
+     "id": "s2",
+     "label": "Set measurable quality goals for each barrier that go beyond minimum compliance in general terms"
+    },
+    {
+     "id": "s3",
+     "label": "Identify the gaps between current performance and each goal using trend data and audit results"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the gaps by health risk and by how many people are affected when performance slips"
+    },
+    {
+     "id": "s5",
+     "label": "Build a funded improvement program for the highest ranked gaps with owners and milestones"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the strategy at leadership level and report progress against the goals every quarter"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A quality strategy ranks gaps by health risk rather than by ease, and quarterly reporting keeps the funded program tied to the goals it was built for."
+  },
+  {
+   "id": "wp4w-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a source to tap multi barrier risk review for a utility.",
+   "topicId": "process-source-to-tap-barrier-review",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia reviewing every barrier on a river source system under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: hazards inventoried through barrier gaps closed or formally accepted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory hazards and hazardous events at the source, intake, each treatment step, and storage"
+    },
+    {
+     "id": "s2",
+     "label": "For each hazard, record the barrier that controls it and the evidence that the barrier works"
+    },
+    {
+     "id": "s3",
+     "label": "Score the residual risk where barriers are weak, unmonitored, or dependent on one person or one device"
+    },
+    {
+     "id": "s4",
+     "label": "Rank the residual risks and assign each significant one an owner and a treatment option"
+    },
+    {
+     "id": "s5",
+     "label": "Implement the chosen controls or formally accept the risk at leadership level with a review date"
+    },
+    {
+     "id": "s6",
+     "label": "Re score the risks after controls are in place and file the review as the utility risk register for water quality"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A barrier review trusts evidence, not habit: a barrier without monitoring or backup carries residual risk no matter how long it has worked."
+  },
+  {
+   "id": "wp4w-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a long term disinfection strategy for a utility with several plants.",
+   "topicId": "process-long-term-disinfection-strategy",
+   "level": "class1",
+   "assumptions": "Fictional multi plant utility in Alberta balancing inactivation, residuals, and byproducts across different sources under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: plant by plant barrier assessment through one utility strategy in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assess each plant barriers, credits in general terms, contact conditions, and byproduct history"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the weakest plant and condition combinations, such as cold water, high organics, and peak flow together"
+    },
+    {
+     "id": "s3",
+     "label": "Compare strategy options for each weak point, including ultraviolet, chlorine sequencing, and organics removal"
+    },
+    {
+     "id": "s4",
+     "label": "Select a utility standard approach with plant specific set points where sources genuinely differ"
+    },
+    {
+     "id": "s5",
+     "label": "Stage the changes so no plant loses a barrier during conversion and verify credit conditions at each stage"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the strategy, brief all plants, and trend inactivation margins and byproducts together quarterly"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Disinfection strategy is set at the weakest combined condition across the fleet, and inactivation and byproducts are trended together so one is never bought with the other."
+  },
+  {
+   "id": "wp4w-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a disinfection byproduct control strategy for the next five years.",
+   "topicId": "process-byproduct-control-strategy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan with rising byproduct trends on a high organics prairie source under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: byproduct drivers confirmed through the long term control program adopted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Trend byproduct results with raw organics, chlorine dose, water age, and temperature to confirm the true drivers"
+    },
+    {
+     "id": "s2",
+     "label": "Set a byproduct control goal with margin below the guideline values referenced in general terms"
+    },
+    {
+     "id": "s3",
+     "label": "Evaluate control options in order: source and organics removal first, then dose and point of application, then distribution age"
+    },
+    {
+     "id": "s4",
+     "label": "Pilot the leading option at the worst plant or season and measure byproducts at the strategy sampling points"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the proven program as seasonal operating rules with dose and organics targets by raw condition"
+    },
+    {
+     "id": "s6",
+     "label": "Review results each season and adjust the program before trends approach the internal goal"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Byproducts are controlled at their drivers, starting with organics, and the program acts on trends with margin rather than waiting for a limit to be reached."
+  },
+  {
+   "id": "wp4w-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a corrosion control strategy review for treated water quality.",
+   "topicId": "process-corrosion-control-strategy-review",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba reviewing treated water stability and metals results at consumer taps in general terms under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: stability data reviewed through the revised treatment targets in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect treated water pH, alkalinity, hardness, and tap metals results for a full seasonal cycle"
+    },
+    {
+     "id": "s2",
+     "label": "Assess water stability using the utility indices and compare results across seasons and plants"
+    },
+    {
+     "id": "s3",
+     "label": "Identify whether instability comes from source chemistry, treatment targets, or blending between plants"
+    },
+    {
+     "id": "s4",
+     "label": "Select revised pH and alkalinity targets and the chemical changes needed to hold them"
+    },
+    {
+     "id": "s5",
+     "label": "Trial the revised targets at one plant and monitor tap results and treatment side effects for a season"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the proven targets utility wide and set the ongoing tap monitoring and review schedule"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Corrosion control is proven at the tap over a season, not at the plant on one day, so targets are trialled and monitored where the water is actually used."
+  },
+  {
+   "id": "wp4w-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an emerging contaminant readiness strategy.",
+   "topicId": "process-emerging-contaminant-readiness-strategy",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in British Columbia preparing for contaminants of emerging concern in its source under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: source vulnerability assessed through a readiness plan with trigger levels.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Screen the source watershed for activities and discharges that could introduce contaminants of emerging concern"
+    },
+    {
+     "id": "s2",
+     "label": "Review current guideline and provincial information in general terms for the contaminants most relevant to the source"
+    },
+    {
+     "id": "s3",
+     "label": "Check which relevant contaminants the current treatment barriers can and cannot reduce, using supplier and literature evidence"
+    },
+    {
+     "id": "s4",
+     "label": "Set a monitoring approach with sampling points, frequencies, and accredited laboratory arrangements"
+    },
+    {
+     "id": "s5",
+     "label": "Define trigger levels and the leadership decisions each trigger starts, including treatment changes and public communication"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the readiness plan, brief senior staff, and review it whenever source activities or guidance change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Readiness means the monitoring, the treatment evidence, and the decisions are agreed before a detection, so the first result starts a plan instead of an argument."
+  },
+  {
+   "id": "wp4w-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a cyanobacteria and algal toxin management strategy for a reservoir source utility.",
+   "topicId": "process-cyanobacteria-toxin-strategy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta drawing from a prairie reservoir with seasonal blooms under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: bloom risk profiled through the seasonal strategy in operation.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Profile bloom history with reservoir temperature, nutrients, wind, and past toxin results by season"
+    },
+    {
+     "id": "s2",
+     "label": "Set a surveillance program of visual checks, cell counts or indicators, and toxin sampling triggers"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm which treatment steps remove cells and which address dissolved toxin, and set intake depth options"
+    },
+    {
+     "id": "s4",
+     "label": "Write the response levels that change intake, treatment, and sampling as bloom indicators rise"
+    },
+    {
+     "id": "s5",
+     "label": "Stage the chemicals, laboratory capacity, and communications needed at the highest response level"
+    },
+    {
+     "id": "s6",
+     "label": "Run the strategy through one bloom season and revise the triggers and response levels from the season record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Bloom management separates cell removal from dissolved toxin control, because a step that solves one can worsen the other if the sequence is wrong."
+  },
+  {
+   "id": "wp4w-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a utility taste and odour management strategy.",
+   "topicId": "process-taste-odour-management-strategy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan where seasonal taste and odour complaints recur each summer under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: causes characterized through a seasonal control program adopted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Characterize past events by source condition, treatment state, and complaint pattern to separate source from treatment causes"
+    },
+    {
+     "id": "s2",
+     "label": "Set source surveillance for algae and organics indicators ahead of the historical event window"
+    },
+    {
+     "id": "s3",
+     "label": "Evaluate control options such as oxidant timing, activated carbon, and intake management for the confirmed cause"
+    },
+    {
+     "id": "s4",
+     "label": "Trial the leading control at the first event of the season and judge it on treated results and complaints together"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the seasonal program with start triggers, dose rules, and complaint tracking in one place"
+    },
+    {
+     "id": "s6",
+     "label": "Review each season and retire controls that the evidence shows do not change the outcome"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Taste and odour controls are judged on treated water and complaints together, and controls that do not change either are retired rather than repeated by habit."
+  },
+  {
+   "id": "wp4w-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the design of a utility compliance sampling program for a new operating year.",
+   "topicId": "process-compliance-sampling-program-design",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in Manitoba designing its treated water sampling program for the year under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: requirements gathered in general terms through the approved program in the laboratory system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the parameters, locations, and frequencies the provincial requirements and the utility quality goals call for in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Map sampling points so source, process, treated, and storage points each answer a defined question"
+    },
+    {
+     "id": "s3",
+     "label": "Assign accredited laboratory methods, holding times, and courier schedules that fit western Canadian distances"
+    },
+    {
+     "id": "s4",
+     "label": "Build the calendar with backup dates and named backup samplers for illness, weather, and road closures"
+    },
+    {
+     "id": "s5",
+     "label": "Have the laboratory and senior operations review the program together and approve it before the year starts"
+    },
+    {
+     "id": "s6",
+     "label": "Load the approved program into the tracking system and review completion and result quality monthly"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A sampling program for a western utility must survive distance and winter, so backup samplers and courier timing are designed in, not improvised."
+  },
+  {
+   "id": "wp4w-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a treated water storage quality strategy for a utility.",
+   "topicId": "process-storage-water-quality-strategy",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia with several treated water reservoirs of different ages and turnover under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: storage inventory assessed through turnover and inspection rules in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inventory every storage facility with volume, age, turnover, mixing, and inspection history"
+    },
+    {
+     "id": "s2",
+     "label": "Trend residual and quality results by facility to find where water age is degrading quality"
+    },
+    {
+     "id": "s3",
+     "label": "Set turnover and level operating rules for each facility that protect residual without wasting treated water"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule cleaning and inspection by quality risk and age, with treated water isolation and disinfection steps defined"
+    },
+    {
+     "id": "s5",
+     "label": "Return each cleaned facility to service only on satisfactory quality results"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the strategy and review facility trends and inspection due dates at each management review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Storage quality is managed facility by facility, because turnover and age differ, and a cleaned tank returns to service on results, not on schedule."
+  },
+  {
+   "id": "wp4w-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a treatment technology needs assessment for a growing utility.",
+   "topicId": "process-technology-needs-assessment",
+   "level": "class1",
+   "assumptions": "Fictional growing utility in Alberta defining what a future treatment upgrade must achieve under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: future demands defined through a needs statement approved for study.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Forecast future flows, source quality ranges, and quality goals over the planning horizon"
+    },
+    {
+     "id": "s2",
+     "label": "Document where the current plant cannot meet those demands, with data for each shortfall"
+    },
+    {
+     "id": "s3",
+     "label": "State the needs as performance outcomes, not as a preferred technology, so options stay open"
+    },
+    {
+     "id": "s4",
+     "label": "Set the evaluation criteria and their relative weight, including quality, risk, lifecycle cost in general terms, and operability"
+    },
+    {
+     "id": "s5",
+     "label": "Have operations, laboratory, and maintenance staff test the needs statement against real operating experience"
+    },
+    {
+     "id": "s6",
+     "label": "Approve the needs statement at leadership level as the fixed basis for the selection study"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A needs assessment states outcomes before technologies, so the later selection is judged against the problem rather than against a favourite solution."
+  },
+  {
+   "id": "wp4w-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a technology screening study from a long list to a short list.",
+   "topicId": "process-technology-screening-study",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan screening treatment options for organics and turbidity control under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: long list assembled through a defensible short list approved for piloting.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Assemble a long list of credible technologies that could meet the approved needs statement"
+    },
+    {
+     "id": "s2",
+     "label": "Apply pass or fail screens first: source fit, cold climate suitability, residuals handling, and regulatory acceptability in general terms"
+    },
+    {
+     "id": "s3",
+     "label": "Score the survivors against the weighted criteria using evidence from reference plants in similar climates"
+    },
+    {
+     "id": "s4",
+     "label": "Visit or interview at least one operating reference utility for each leading option"
+    },
+    {
+     "id": "s5",
+     "label": "Record the scores, the evidence, and the reasons every option was kept or dropped"
+    },
+    {
+     "id": "s6",
+     "label": "Approve a short list of no more than three options for pilot or detailed evaluation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Screening applies fatal flaw screens before scoring, because a weighted score must never rescue an option that cannot work in a cold western source."
+  },
+  {
+   "id": "wp4w-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a pilot study design for a short listed treatment technology.",
+   "topicId": "process-pilot-study-design",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba piloting a membrane system on a variable river source under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: pilot objectives set through a design that can answer the selection question.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "State the selection questions the pilot must answer, with a measurable success value for each one"
+    },
+    {
+     "id": "s2",
+     "label": "Size the pilot and set its location so it sees the same source water as the full plant"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule the pilot across the worst source conditions, including spring runoff and cold water, not only easy months"
+    },
+    {
+     "id": "s4",
+     "label": "Define the sampling, data logging, and quality checks that will prove performance and fouling behaviour"
+    },
+    {
+     "id": "s5",
+     "label": "Set the operating staffing, chemical supply, and waste handling the pilot needs for the full run"
+    },
+    {
+     "id": "s6",
+     "label": "Approve the pilot design and success values before equipment is ordered, and file them unchangeable without leadership sign off"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A pilot proves a technology only if it runs through the worst source conditions and its success values were fixed before the results arrived."
+  },
+  {
+   "id": "wp4w-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the evaluation of pilot results and the scale up decision.",
+   "topicId": "process-pilot-evaluation-scale-up-decision",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia deciding whether pilot membrane results justify a full plant under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: pilot data validated through a scale up decision recorded with its conditions.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Validate the pilot data set and exclude only periods with a documented equipment or sampling fault"
+    },
+    {
+     "id": "s2",
+     "label": "Compare results with the success values fixed in the pilot design, criterion by criterion"
+    },
+    {
+     "id": "s3",
+     "label": "Scale the pilot performance to full plant flows and seasons, stating every assumption the scaling uses"
+    },
+    {
+     "id": "s4",
+     "label": "Update the lifecycle comparison with pilot based chemical, energy, and cleaning figures"
+    },
+    {
+     "id": "s5",
+     "label": "Present the comparison and the remaining risks to leadership with a clear recommend or reject position"
+    },
+    {
+     "id": "s6",
+     "label": "Record the decision and its conditions, including any further piloting a conditional approval requires"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Scale up is decided against the success values set before the pilot, with scaling assumptions stated, so enthusiasm cannot quietly move the goalposts."
+  },
+  {
+   "id": "wp4w-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a membrane system selection study for a utility upgrade.",
+   "topicId": "process-membrane-system-selection-study",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta choosing between membrane options for a plant expansion under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: duty defined through the selected system carried into design.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the duty: design flows, recovery or flux expectations in general terms, feed quality range, and treated quality goals"
+    },
+    {
+     "id": "s2",
+     "label": "Require each proponent to state performance at the coldest design temperature, not only at reference temperature"
+    },
+    {
+     "id": "s3",
+     "label": "Compare cleaning regimes, chemical needs, membrane life evidence, and residuals volumes for each option"
+    },
+    {
+     "id": "s4",
+     "label": "Check reference plants on similar cold, high organics sources and record their fouling and replacement history"
+    },
+    {
+     "id": "s5",
+     "label": "Score the options against the weighted criteria and test the ranking by varying the weights"
+    },
+    {
+     "id": "s6",
+     "label": "Select the system, record the reasons, and carry its guaranteed values into the design requirements"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Membrane selection in western Canada is decided at the coldest water and on cleaning and replacement evidence, because that is where lifetime cost and capacity are set."
+  },
+  {
+   "id": "wp4w-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an ultraviolet disinfection system selection study.",
+   "topicId": "process-uv-system-selection-study",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan adding ultraviolet disinfection as an additional barrier under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: credit goal defined in general terms through the selected system carried into design.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the inactivation goal in general terms and the flow, transmittance, and water quality range it must be met across"
+    },
+    {
+     "id": "s2",
+     "label": "Require validated dose delivery evidence across that range, including lamp aging and sleeve fouling allowances"
+    },
+    {
+     "id": "s3",
+     "label": "Compare reactor configurations for redundancy, so the goal is met with the largest unit out of service"
+    },
+    {
+     "id": "s4",
+     "label": "Assess cleaning systems, lamp replacement logistics, and power needs for a remote western site"
+    },
+    {
+     "id": "s5",
+     "label": "Score the options and check the leading option against the disinfection strategy it must serve"
+    },
+    {
+     "id": "s6",
+     "label": "Select the system and carry its validated operating envelope into the plant control and alarm design"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Ultraviolet selection rests on validated dose across the real transmittance range with a unit out of service, not on nameplate dose at ideal water."
+  },
+  {
+   "id": "wp4w-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a residuals treatment technology selection for a plant with growing sludge volumes.",
+   "topicId": "process-residuals-technology-selection",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba choosing how to thicken and dewater treatment residuals under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: residuals characterized through the selected process carried into capital planning.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Characterize residuals volume and solids across seasons, including the spring runoff peak"
+    },
+    {
+     "id": "s2",
+     "label": "Define the required outcomes: solids capture, cake dryness in general terms, filtrate quality, and hauling limits"
+    },
+    {
+     "id": "s3",
+     "label": "Screen credible thickening and dewatering options against cold climate operation and operator skill needs"
+    },
+    {
+     "id": "s4",
+     "label": "Pilot or trial the leading option on real residuals, including the hardest spring material"
+    },
+    {
+     "id": "s5",
+     "label": "Compare full costs in general terms, including hauling and disposal route capacity for the cake produced"
+    },
+    {
+     "id": "s6",
+     "label": "Select the process and place it in the capital plan with its building and storage needs included"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Residuals selection is tested on spring runoff material and includes the disposal route, because a process that works in summer can fail the utility in April."
+  },
+  {
+   "id": "wp4w-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a chemical system replacement selection, from bulk storage to feed.",
+   "topicId": "process-chemical-system-replacement-selection",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 plant in British Columbia replacing an aging chlorine and coagulant system under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: hazards and duties defined through the selected system carried into design.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the chemicals, duties, storage days required, and the hazards of the current system that must be designed out"
+    },
+    {
+     "id": "s2",
+     "label": "Compare credible storage and feed options for reliability, containment, delivery access in winter, and operator exposure"
+    },
+    {
+     "id": "s3",
+     "label": "Check each option against current safety guidance in general terms and the plant emergency arrangements"
+    },
+    {
+     "id": "s4",
+     "label": "Trial feed accuracy of the leading option across the full dose range on the bench or a temporary skid"
+    },
+    {
+     "id": "s5",
+     "label": "Score the options with safety and reliability weighted ahead of first cost"
+    },
+    {
+     "id": "s6",
+     "label": "Select the system and carry its containment, ventilation, and alarm requirements into the project design"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Chemical systems are selected safety first, with feed accuracy proven across the dose range, because the cheapest system is the most expensive one after an incident."
+  },
+  {
+   "id": "wp4w-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a supervisory control system replacement selection for a utility.",
+   "topicId": "process-scada-replacement-selection",
+   "level": "class1",
+   "assumptions": "Fictional multi plant utility in Alberta replacing an unsupported control and data system under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: operational needs defined through the selected platform carried into implementation planning.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Document what operators must see, control, trend, and report, plant by plant, before looking at products"
+    },
+    {
+     "id": "s2",
+     "label": "Set non negotiable requirements: alarm handling, data retention, remote access security, and support life"
+    },
+    {
+     "id": "s3",
+     "label": "Require each proponent to demonstrate the system on the utility own operating scenarios, including an alarm flood and a communications loss"
+    },
+    {
+     "id": "s4",
+     "label": "Check reference utilities of similar size in western Canada for support quality and upgrade history"
+    },
+    {
+     "id": "s5",
+     "label": "Score the demonstrations and references, and test how the ranking changes if support criteria are weighted higher"
+    },
+    {
+     "id": "s6",
+     "label": "Select the platform and plan implementation plant by plant so no plant is left without control or records"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Control systems are chosen on demonstrated behaviour during failures and on support life, because that is when the system earns or loses operator trust."
+  },
+  {
+   "id": "wp4w-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an innovation trial governance process for new treatment ideas.",
+   "topicId": "process-innovation-trial-governance",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan that wants staff ideas tested without risking treated water quality under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: idea intake through trials judged and scaled or stopped on evidence.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Open a simple intake where any operator can propose a trial with the problem it addresses and the expected benefit"
+    },
+    {
+     "id": "s2",
+     "label": "Screen each proposal for treated water quality and safety risk, and reject or redesign any that can reach the clearwell unguarded"
+    },
+    {
+     "id": "s3",
+     "label": "Approve small trials with a defined duration, success measures, and a named trial owner"
+    },
+    {
+     "id": "s4",
+     "label": "Run the trial isolated or closely monitored, with quality sampling increased for its duration"
+    },
+    {
+     "id": "s5",
+     "label": "Judge the results against the success measures and record scale up, extend, or stop decisions"
+    },
+    {
+     "id": "s6",
+     "label": "Share the outcome with all staff, including stopped trials, and file the lessons in the improvement program"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Innovation governance protects the clearwell first and publishes stopped trials as proudly as successes, so staff keep bringing ideas forward."
+  },
+  {
+   "id": "wp4w-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an asset inventory and condition assessment program for treatment assets.",
+   "topicId": "process-asset-inventory-condition-program",
+   "level": "class1",
+   "assumptions": "Fictional Class 4 utility in Manitoba building its first complete treatment asset register under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: asset hierarchy defined through condition data feeding the capital plan.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define the asset hierarchy from plant down to maintainable components and the data each record must carry"
+    },
+    {
+     "id": "s2",
+     "label": "Field verify the inventory asset by asset, photographing nameplates and correcting the register on site"
+    },
+    {
+     "id": "s3",
+     "label": "Assess condition using a standard grading scale with photo evidence for the worst grades"
+    },
+    {
+     "id": "s4",
+     "label": "Record remaining life estimates and the basis for each one, separating age from observed condition"
+    },
+    {
+     "id": "s5",
+     "label": "Load the verified register into the maintenance system and link work history to each asset"
+    },
+    {
+     "id": "s6",
+     "label": "Use the condition results to set the inspection cycle and to feed the risk ranking for capital planning"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An asset register is only useful when it is field verified and graded on observed condition, because age alone misranks both failing and healthy assets."
+  },
+  {
+   "id": "wp4w-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a levels of service framework for drinking water treatment.",
+   "topicId": "process-levels-of-service-framework",
+   "level": "class1",
+   "assumptions": "Fictional utility in British Columbia defining what service its community should expect under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: community expectations gathered through service levels adopted and reported.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Gather expectations from the governing body and the community on quality, reliability, pressure of supply in general terms, and cost awareness"
+    },
+    {
+     "id": "s2",
+     "label": "Translate each expectation into a measurable service level with a target and a reporting frequency"
+    },
+    {
+     "id": "s3",
+     "label": "Measure current performance against each draft service level and identify the gaps honestly"
+    },
+    {
+     "id": "s4",
+     "label": "Cost the options in general terms for closing each gap and present the trade offs to the governing body"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt the service levels the governing body accepts and funds"
+    },
+    {
+     "id": "s6",
+     "label": "Report performance against the adopted levels every year and review the levels themselves on a set cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Levels of service make the cost of reliability explicit, so the governing body chooses and funds a standard instead of discovering it after a failure."
+  },
+  {
+   "id": "wp4w-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the development of a twenty year capital plan for treatment.",
+   "topicId": "process-twenty-year-capital-plan",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta planning treatment investment over twenty years under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: needs gathered through the plan adopted and updated annually.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect needs from condition assessments, capacity forecasts, quality strategy gaps, and regulatory change in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Group the needs into projects with a scope, a timing driver, and a consequence of deferral for each one"
+    },
+    {
+     "id": "s3",
+     "label": "Sequence the projects so enabling work comes first and no project strands a later one"
+    },
+    {
+     "id": "s4",
+     "label": "Build the funding profile in general terms across the twenty years and smooth the peaks where the work allows"
+    },
+    {
+     "id": "s5",
+     "label": "Present the plan with the deferral consequences stated plainly for any project pushed beyond its timing driver"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the plan and update it every year with completed work, new condition data, and revised forecasts"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A twenty year plan sequences by timing driver and states deferral consequences plainly, so a delay is a recorded decision and not a surprise failure."
+  },
+  {
+   "id": "wp4w-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order an asset criticality and risk ranking for capital prioritization.",
+   "topicId": "process-asset-criticality-risk-ranking",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan ranking treatment assets to decide renewal order under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: failure consequences defined through the ranked list governing renewal sequencing.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Define consequence categories: quality, supply interruption, safety, environmental, and cost of emergency repair"
+    },
+    {
+     "id": "s2",
+     "label": "Score each major asset for likelihood of failure from condition, age, history, and duty"
+    },
+    {
+     "id": "s3",
+     "label": "Score each asset for consequence of failure, including whether redundancy exists and how long repair would take in winter"
+    },
+    {
+     "id": "s4",
+     "label": "Combine likelihood and consequence into a risk rank and list the top risks with their evidence"
+    },
+    {
+     "id": "s5",
+     "label": "Have operations and maintenance challenge the ranking in a workshop before it is accepted"
+    },
+    {
+     "id": "s6",
+     "label": "Use the accepted ranking to sequence renewals and to set spares and contingency plans for the highest risks"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Criticality ranking combines likelihood with consequence and winter repair reality, and it is challenged by the people who run the assets before it governs spending."
+  },
+  {
+   "id": "wp4w-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a growth and capacity planning study for treatment.",
+   "topicId": "process-growth-capacity-planning-study",
+   "level": "class1",
+   "assumptions": "Fictional fast growing utility in Manitoba testing when its plant runs out of capacity under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: demand forecast built through expansion triggers adopted.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Build a demand forecast from population, per capita use, industrial commitments, and peaking factors in general terms"
+    },
+    {
+     "id": "s2",
+     "label": "Rate the firm capacity of each process step with the largest unit out of service, in the coldest design condition"
+    },
+    {
+     "id": "s3",
+     "label": "Find the year each step reaches its firm capacity and identify the true bottleneck step"
+    },
+    {
+     "id": "s4",
+     "label": "Develop expansion options for the bottleneck with staging that matches the forecast growth rate"
+    },
+    {
+     "id": "s5",
+     "label": "Set decision triggers based on measured demand, so expansion starts on evidence and not on forecast alone"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the triggers and review measured demand against them every year at management review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Capacity planning rates firm capacity in the coldest condition and starts expansion on measured demand triggers, so the utility is neither early nor caught short."
+  },
+  {
+   "id": "wp4w-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a water master plan update for a regional utility.",
+   "topicId": "process-water-master-plan-update",
+   "level": "class1",
+   "assumptions": "Fictional regional utility in British Columbia updating a ten year old master plan under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: old plan reviewed through the updated plan adopted as the planning basis.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the old plan forecasts against what actually happened to demand, source quality, and growth"
+    },
+    {
+     "id": "s2",
+     "label": "Update the technical basis: source capacity, treatment capacity, storage, and quality strategy"
+    },
+    {
+     "id": "s3",
+     "label": "Reassess the risks the old plan carried and add new ones, including climate and watershed change"
+    },
+    {
+     "id": "s4",
+     "label": "Develop the recommended program of studies, projects, and policy actions with sequencing"
+    },
+    {
+     "id": "s5",
+     "label": "Consult the governing body and affected communities on the draft program before finalizing"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the updated master plan and use it as the single basis for capital plans and development approvals"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A master plan update starts by scoring the old forecasts against reality, because a plan that never checks its own accuracy repeats its errors at larger scale."
+  },
+  {
+   "id": "wp4w-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a capital funding and reserve strategy for treatment renewal.",
+   "topicId": "process-capital-funding-reserve-strategy",
+   "level": "class1",
+   "assumptions": "Fictional utility in Alberta aligning its reserves with its twenty year renewal needs under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: renewal needs profiled through a reserve policy adopted and reported annually.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Profile the renewal spending the capital plan requires year by year over the planning horizon"
+    },
+    {
+     "id": "s2",
+     "label": "Inventory current reserves, debt room in general terms, and known external funding programs"
+    },
+    {
+     "id": "s3",
+     "label": "Model contribution options that smooth the funding profile instead of spiking in peak project years"
+    },
+    {
+     "id": "s4",
+     "label": "Present the options and their long term effects to the governing body in plain language"
+    },
+    {
+     "id": "s5",
+     "label": "Adopt a reserve policy with a target range and the conditions for drawing on it"
+    },
+    {
+     "id": "s6",
+     "label": "Report reserve position against the policy every year and adjust contributions when the capital plan changes"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A reserve strategy smooths renewal funding across decades and ties contributions to the capital plan, so one large project year cannot destabilize the utility."
+  },
+  {
+   "id": "wp4w-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a value engineering review for a major treatment project.",
+   "topicId": "process-value-engineering-review",
+   "level": "class1",
+   "assumptions": "Fictional utility in Saskatchewan reviewing the design of a major plant expansion before tender under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: design functions listed through accepted savings carried into the design.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List the functions the design must deliver, separating required performance from preferred features"
+    },
+    {
+     "id": "s2",
+     "label": "Bring in reviewers who were not on the design team, including an operator from a comparable plant"
+    },
+    {
+     "id": "s3",
+     "label": "Generate alternatives for the highest cost functions and screen them for quality and operability risk"
+    },
+    {
+     "id": "s4",
+     "label": "Evaluate the surviving alternatives on lifecycle performance in general terms, not first cost alone"
+    },
+    {
+     "id": "s5",
+     "label": "Recommend the alternatives that keep every required function and record why each rejected one was rejected"
+    },
+    {
+     "id": "s6",
+     "label": "Carry the accepted alternatives into the design and track the realized effect through construction"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Value engineering protects required functions first and judges alternatives on lifecycle performance, so savings never come from quietly deleting operability."
+  },
+  {
+   "id": "wp4w-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order a post project evaluation for a completed treatment upgrade.",
+   "topicId": "process-post-project-evaluation",
+   "level": "class1",
+   "assumptions": "Fictional utility in Manitoba reviewing a completed filtration upgrade one year after start up under provincial drinking water requirements in general terms and the Guidelines for Canadian Drinking Water Quality in general terms.",
+   "configuration": "Scope: project objectives recalled through lessons adopted into the next project.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Restate the original objectives, budget in general terms, schedule, and performance guarantees of the project"
+    },
+    {
+     "id": "s2",
+     "label": "Measure actual performance against each objective using a full year of operating data"
+    },
+    {
+     "id": "s3",
+     "label": "Interview operators and maintainers on what works, what is hard to run, and what they would change"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the causes of every significant variance, separating design, construction, and start up causes"
+    },
+    {
+     "id": "s5",
+     "label": "Write the lessons as specific changes to the utility design standards and project process"
+    },
+    {
+     "id": "s6",
+     "label": "Adopt the standard changes and brief the team starting the next major project on the evaluation"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Post project evaluation waits for a year of operating data and turns findings into changed standards, so the next project inherits lessons instead of repeating them."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp4w-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp4w-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Annual Management Review Cycle Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp4w-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp4w-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp4w-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp4w-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp4w-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Corrective Action Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp4w-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp4w-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp4w-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Quality Policy Development Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp4w-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp4w-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp4w-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp4w-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Management Of Change Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp4w-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp4w-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Chemical Program Cost Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp4w-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp4w-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp4w-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process Utility Strategic Plan Refresh Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp4w-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp4w-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp4w-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Water Quality Strategy Development Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp4w-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp4w-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp4w-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp4w-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Long Term Disinfection Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp4w-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp4w-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Energy Benchmark Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp4w-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp4w-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp4w-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Corrosion Control Strategy Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp4w-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Residuals Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp4w-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp4w-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Cyanobacteria Toxin Strategy Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp4w-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp4w-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp4w-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Residuals Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp4w-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp4w-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Compliance Sampling Program Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp4w-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp4w-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp4w-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Senior operations and management chapters (utility management, balances, technology selection)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "a8496875a85d40717241dd7068680b80ffc586a3f84dfb5a005231279ff36b70",
+  "taskReceipts": [
+   {
+    "taskId": "wp4w-error60",
+    "revision": "r1",
+    "sha256": "ef541a8fba07001741176ad63b6e112388a55e39944908c656ad90b8a739f448",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error61",
+    "revision": "r1",
+    "sha256": "539358fc9e6fdea6bcc8c8d34d12a26b68daebdfa69b2230f74d0a58306a0848",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error62",
+    "revision": "r1",
+    "sha256": "79cac6566bae9203fa92544d5b7435a4a2815fab42f171fb475c61d34cd187d1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error63",
+    "revision": "r1",
+    "sha256": "7e66ea3bf12a0cd9fff9cc68b6885784cc16d240990e68fe20314d16f4d10faa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error64",
+    "revision": "r1",
+    "sha256": "0d9122aa7a33c1924c1337867d39060093bd951730c19c0184adf9538339d141",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error65",
+    "revision": "r1",
+    "sha256": "a08f8d71fa6a5ffd99f269779249829403c33a3867d66772ce3644e9491a6a3b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error66",
+    "revision": "r1",
+    "sha256": "11f6321a1472ce72182556ba990ac547ca8d14929793b00015da65cc8de8f3d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error67",
+    "revision": "r1",
+    "sha256": "d79dbbeae9f95081886935c31ef697baad883dac7238a7ef85ffaa95a419a0a4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error68",
+    "revision": "r1",
+    "sha256": "21b8fd6ba85f3faad1095063f175c34c681aa9ee34d49d7e1e9a84656a883fa9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error69",
+    "revision": "r1",
+    "sha256": "8b6d1ad17f67b60e197f3018e03938f6532942323df50b1e45c91c549802eac8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error70",
+    "revision": "r1",
+    "sha256": "04834e07578478f2d1a3760a30559f8f8176d1649711652f92b4309568f6ccdd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error71",
+    "revision": "r1",
+    "sha256": "c0b52c2f31ed55e2fd4bd68614c37d6768ebb6e13c20f857142e1822eb64fc01",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error72",
+    "revision": "r1",
+    "sha256": "3cb26d418f6114d89e83a8b77be1cb0a3ace329df51a1b7bcb1f323c5274bb3b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error73",
+    "revision": "r1",
+    "sha256": "d1fc245972367faffb313397892072984d1f6725ac4eca36ff33ad205291ba6d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error74",
+    "revision": "r1",
+    "sha256": "ad5a3f47c811599c8e41ded69814bbf5379ced62fff419fa143ca63a6bb916a7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error75",
+    "revision": "r1",
+    "sha256": "836e708460bb7d24e308ffb1b2c8192ebcb281a23e91e3d10c09a931981d3ed2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error76",
+    "revision": "r1",
+    "sha256": "3b7b4956ee5e901c6b2081aa537785f35b25f38e5c47a39cce6bf7beb6f3eb78",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error77",
+    "revision": "r1",
+    "sha256": "84764b6f49de533b499bbd6010ffb2717c66a862ad6f92440c400c86bf395f73",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error78",
+    "revision": "r1",
+    "sha256": "c56df2683a9d6a93123ed9198d31ae90158d49a5078510ad675165d6391dda4a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error79",
+    "revision": "r1",
+    "sha256": "7c74e99bf66532f5ce4798ac18c60ad4ba3d80f9c41d7eaa16941a4a4329b3b6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error80",
+    "revision": "r1",
+    "sha256": "7c278424d198b3cc13c8285611a5450eb42f15e9c7215d1f149273963add1081",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error81",
+    "revision": "r1",
+    "sha256": "cf32904e0d40001fbaa50e9aa40d37de5b23e39109730b2818db75533ace6e2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error82",
+    "revision": "r1",
+    "sha256": "b2369f9cca9c4f684a51755685014b0cc807c0aa25078ad398896b7e2fbe2bb4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error83",
+    "revision": "r1",
+    "sha256": "44c5d3abdb22c0af109083ef5e0c6cf66b9f39c773cbb75931b27d438e9b1a9f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error84",
+    "revision": "r1",
+    "sha256": "adfe31afac05aafdbb6103655a92d28966f11c7d259694ca8272a0ef2fa326ee",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error85",
+    "revision": "r1",
+    "sha256": "53dc13b26efa4cedace697d11ea8a721e48aeed64d625162a1d9fea463c085b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error86",
+    "revision": "r1",
+    "sha256": "ff031f62c7420c7b7a698028d0cb2321b3f5f4be46ca3146514b044564a42cc8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error87",
+    "revision": "r1",
+    "sha256": "727b42213dddd645a4eedf246916e63595c39eb8b94b78f4b2e3a84e7ccc057e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error88",
+    "revision": "r1",
+    "sha256": "485aeb96e484ebbb3cfc0d46c7d353ae65c982d16d448f95ae8ca373573e42d8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error89",
+    "revision": "r1",
+    "sha256": "887c6cf9a0f2715b6eac2cc6888eb630121e966eb8e1bd6020072bc50f599563",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error90",
+    "revision": "r1",
+    "sha256": "721207407cb0866f691bbbec6cf8df9d2b538fe647783343cf4cd23334a8058b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error91",
+    "revision": "r1",
+    "sha256": "51cd54a357096371bb30a08dd19aaec4b509116f9b3c34947b6c49c3ba4377ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error92",
+    "revision": "r1",
+    "sha256": "fdbf66fe0a14d05e45c7f0d8c0c85af03a7b7bf9b9d5b3acd73ae472052970d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error93",
+    "revision": "r1",
+    "sha256": "dbbcb97104b2564237375a8ffec60bf830a874ad205ea48b068820258907620d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error94",
+    "revision": "r1",
+    "sha256": "ef912f54fcc8b75316cb9b03442ff0b89cc55ef74bb19efeeb15e861066fe3c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error95",
+    "revision": "r1",
+    "sha256": "515ab6f792c144f8e45162aaa090c429b9ab760d3ed563c9d56a9d56b4c3b254",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error96",
+    "revision": "r1",
+    "sha256": "152a8b4a3bd3bfac3c83e30abbc5174e9bcbc310303c773675f68d61b917929f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error97",
+    "revision": "r1",
+    "sha256": "9f34dbcc130544509fe425d67adb8e6b1c2d4232aaf110a03a234a58829b8c13",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error98",
+    "revision": "r1",
+    "sha256": "df66f6d1c8498435159f65e5867feb7c5a6e0a907a7368ace1a1cec8c8215074",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-error99",
+    "revision": "r1",
+    "sha256": "7e10bbe613bc5077b8abb35b8d1fb2eb9c901b82a719a486566a1c4ff6b0a523",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process01",
+    "revision": "r1",
+    "sha256": "4c5f4d82b28781ec5fe10d7475db996ed9bafa387abbea35e375bedbc2cc2242",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process02",
+    "revision": "r1",
+    "sha256": "f665de28f42bb5760f8f0c1fbd237e6d46d3e5e7875fcaf080dad8c205fa9ae4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process03",
+    "revision": "r1",
+    "sha256": "d78571130b178763984815f367fb7d2b521f22704ddb5d76c85d4476a62cd1cc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process04",
+    "revision": "r1",
+    "sha256": "4ae9054b24ae1e55c932432c5a3352cc03b55c5a7fef5739bab39e27c564db0c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process05",
+    "revision": "r1",
+    "sha256": "abff88c640c1af7d197d68a3d69d56c84648923f0c47f0bdea870a8e3c1e79ed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process06",
+    "revision": "r1",
+    "sha256": "944a07506eb545dee8541f3376fa75153c9f44622501f91e2bed52d4b71cd338",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process07",
+    "revision": "r1",
+    "sha256": "0a430c80e33f74c34029642c6794092ef18d3fbbbab0c768a2d0a74cc95865b0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process08",
+    "revision": "r1",
+    "sha256": "d177f8735c7bcf0ceb8c63d7802ad3eb476db793e225dc19f83dfa6d34f0c7e2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process09",
+    "revision": "r1",
+    "sha256": "49c9ad59e500ae7909214b432264d05b4de1848202d5454677bfaa3f7dbf9c16",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process10",
+    "revision": "r1",
+    "sha256": "9be94beb24dc5e3913566043ead0c0af2dca3bbb107697694fc0e161eff86355",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process100",
+    "revision": "r1",
+    "sha256": "a853a3c837a6e9582cc4ce5cd97c3ca1a52b741defce0ddc1fe9b98d1509ecca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process11",
+    "revision": "r1",
+    "sha256": "6e0e47addb74d8146da562cff4d28341a11289ae1a58b1a476b1597e5713ee40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process12",
+    "revision": "r1",
+    "sha256": "e6a73a230d50988c8e82a094387b4d48b1859a768b850cd9b3f4470eb186c258",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process13",
+    "revision": "r1",
+    "sha256": "a7696aecc2140de674466553db27e4ebae9a6d38fa7525618ae0f64e11d31553",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process14",
+    "revision": "r1",
+    "sha256": "d94bacb44e4effa269140b5b83c7b569c8ba375932cbe3255523acce9208460c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process15",
+    "revision": "r1",
+    "sha256": "f33bc1f81ddc0f54f7a8e8297bd0807d5cb5f5f1d610e778650911b292fc81c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process16",
+    "revision": "r1",
+    "sha256": "3739fd3558e32bb425a59b1298a36cc090ea9a5c93c5219c917ffd3ded4e3e81",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process17",
+    "revision": "r1",
+    "sha256": "f64fd720f61e47acbc366e517addc35c1daa8fdc843043dae3a44ea717dc44d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process18",
+    "revision": "r1",
+    "sha256": "2b4b9e52d7b79a1fbf5d49c5c5214fb5ac9cbf37bbdd9c0ee009549fcf5b596d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process19",
+    "revision": "r1",
+    "sha256": "679d720c65740d4d943cbf38c92a9c051af161d35892f20b3a60fc8f26e598df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process20",
+    "revision": "r1",
+    "sha256": "70bc77da552e676b21f1791911f04b8f55342f8b33d90890be01e059d41eebd8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process21",
+    "revision": "r1",
+    "sha256": "fd92e97f3c1acd2279bc59214c5059c473063e149c1693228e7c3775d1bc11fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process22",
+    "revision": "r1",
+    "sha256": "d493916e0ee0d7eab8d068807c76c5dc22b8ba02db7fc18b6afda9e4b455f1a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process23",
+    "revision": "r1",
+    "sha256": "a45f3e306a9764fbf54d8b3772482e34bfc34692af0de09fed7d8e7184c12ffd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process24",
+    "revision": "r1",
+    "sha256": "96d0c7354eb170f52750f39991590cd6110adf940dae7a1ccbd586e47a3c2c15",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process25",
+    "revision": "r1",
+    "sha256": "bf232aa036d6275fdf30213ca28f993df271f6edf34e1a12cc1f6ab97bb9bd21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process26",
+    "revision": "r1",
+    "sha256": "55043251ee9eeafa6f89e423b0fc3b675ef41083009563652762fb73f2f13cf6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process27",
+    "revision": "r1",
+    "sha256": "5ed4e892d5e1e39ef93b035018d8d0f02e3c8c8b84cdf4bfc02b62944dc7fbc8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process28",
+    "revision": "r1",
+    "sha256": "d2b66a8c3cfbe078fdac86608e9ed93d7194d0a497c3cac59d354765e191073c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process29",
+    "revision": "r1",
+    "sha256": "d870f2d0e4f6fff863f6fb5f0f6ffc3af564fc99d37d6c304ffefb29b32414d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process30",
+    "revision": "r1",
+    "sha256": "1c78eac41b10aaf0fb0a2466007c02ab0e63160d3a74a62ebfca5fb406fb8bb8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process31",
+    "revision": "r1",
+    "sha256": "19a662b41d21def17bf142acb34c0bd19b71156a4b7cbf5091a897f6dfd31a9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process32",
+    "revision": "r1",
+    "sha256": "75ba40e6685fa704b627dda805213916d7efae5782065c620d8eb8489203f3c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process33",
+    "revision": "r1",
+    "sha256": "af9f33ba10a3c4a849886dee4b10ba14c78919be9173028eb0cbb5243874c429",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process34",
+    "revision": "r1",
+    "sha256": "86749e4b92e9f49039e357140f63b0d064ab0ee2260cef6585e728de3d0fa707",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process35",
+    "revision": "r1",
+    "sha256": "64814b40251197e6f6be26bf74fb1ffe9ac92e5cd07c011689eb059ede06ab5b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process36",
+    "revision": "r1",
+    "sha256": "dd86c5ef55cb49859fe6e5d5573695fd6ad4632919245fc5518e417234bc3077",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process37",
+    "revision": "r1",
+    "sha256": "493949fadf928e4643592bc9890357855775a3bc145ffb3bbad52bc876f81fb4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process38",
+    "revision": "r1",
+    "sha256": "8f0bfb134363ffee32a075ebce164de34a5b3cc48fc015f471f0665805b46c4d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp4w-process39",
+    "revision": "r1",
+    "sha256": "a1bbf68c6e26a9dd781c5745d3904447a453b15b4f2b392aaea39efc9a5c1457",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp4w-mission41",
+    "revision": "r1",
+    "sha256": "8c699771d6246d2ada905afcd8db51136e17718f0ea7dffb557baf0e3d852405"
+   },
+   {
+    "missionId": "wp4w-mission42",
+    "revision": "r1",
+    "sha256": "ce10fe0680ad16c5cbc2a2b1e71db740d54c620d6900eda630e9561d67133127"
+   },
+   {
+    "missionId": "wp4w-mission43",
+    "revision": "r1",
+    "sha256": "bf4108f0c0a05802f076e2eef7d568af6d0dcafe3df4741667a2bb5bcf0f7d06"
+   },
+   {
+    "missionId": "wp4w-mission44",
+    "revision": "r1",
+    "sha256": "50502a5644275938606cd34b215023482b8e60a865be31cbc2acae553d8f3172"
+   },
+   {
+    "missionId": "wp4w-mission45",
+    "revision": "r1",
+    "sha256": "659e4eae0d1403c78ab904432feabbef52cf8a739a2004107dbca1afedd1eb99"
+   },
+   {
+    "missionId": "wp4w-mission46",
+    "revision": "r1",
+    "sha256": "c82461162d5b47c546405fd6ded3258f4a52b06c3d5c5d7d71fcaf891362f97d"
+   },
+   {
+    "missionId": "wp4w-mission47",
+    "revision": "r1",
+    "sha256": "84eb74a785936ee227dff4637f7466f453ba9b3ad88505a157305d7ce8ae01da"
+   },
+   {
+    "missionId": "wp4w-mission48",
+    "revision": "r1",
+    "sha256": "f2d3dc6d24982f4fd993462d74cd6cf8b1d4f7ae1b5356f31b803b5f13c60c6c"
+   },
+   {
+    "missionId": "wp4w-mission49",
+    "revision": "r1",
+    "sha256": "bf6929a9ad781c7ed9eba9639432d43f89ca93fd9e14deafbf3be7c896529fbb"
+   },
+   {
+    "missionId": "wp4w-mission50",
+    "revision": "r1",
+    "sha256": "5c12643013fb62a0d8120bc725258ba45b6c54ba7cff4b261d0d3786ec1e9f3b"
+   },
+   {
+    "missionId": "wp4w-mission51",
+    "revision": "r1",
+    "sha256": "3d5e112ad9ac55793a45d35861e9e8cdae3575b10286aa31860dd7201c519c93"
+   },
+   {
+    "missionId": "wp4w-mission52",
+    "revision": "r1",
+    "sha256": "1162efc5d736141d94cdc28d9be34e4a02750e22a8353629f33021e2075af114"
+   },
+   {
+    "missionId": "wp4w-mission53",
+    "revision": "r1",
+    "sha256": "bab4c27900fd33acf1c90a65798b989fab09ac7c14ea929400130b193aac909a"
+   },
+   {
+    "missionId": "wp4w-mission54",
+    "revision": "r1",
+    "sha256": "c245f8a37ccb3115a9af3970a13bafd5c32e260dae7ae6314f72d3bd2038e71e"
+   },
+   {
+    "missionId": "wp4w-mission55",
+    "revision": "r1",
+    "sha256": "93165ba46186ca46d3069534b3bca361357f8ec47fff044185c4835fa0e28151"
+   },
+   {
+    "missionId": "wp4w-mission56",
+    "revision": "r1",
+    "sha256": "2c4c5e66e51e54be15141f2904e9d9e6118ccddfb046d367b99ba74580ff7d50"
+   },
+   {
+    "missionId": "wp4w-mission57",
+    "revision": "r1",
+    "sha256": "9ede24128e8b853000628151e510ada18cd3dc8fe5ea8e3184f6e279e0d1e2ca"
+   },
+   {
+    "missionId": "wp4w-mission58",
+    "revision": "r1",
+    "sha256": "511b5351d31c8ce94e9adac27cba7d1de8de4dd931992523705aebaba328ecc0"
+   },
+   {
+    "missionId": "wp4w-mission59",
+    "revision": "r1",
+    "sha256": "b670f005805537eb4a707713ccad7a4835ff55494f27d8c01e7b562880865ad2"
+   },
+   {
+    "missionId": "wp4w-mission60",
+    "revision": "r1",
+    "sha256": "a3674d5dc24e170bdfb3b6184f84906f72b0215858bce959be55442aac43f930"
+   }
+  ]
+ }
+}

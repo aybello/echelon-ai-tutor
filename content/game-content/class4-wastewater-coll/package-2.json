@@ -1,0 +1,4612 @@
+{
+ "courseKey": "class4-wastewater-coll",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c4wc-ladder80",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A sewer cleaning crew in Brantford cleans a given rate of 450 m per day for 4 days. Find the total length cleaned in m. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: rate = 450 m/day, duration = 4 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Length cleaned = Rate * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Length cleaned = Rate + Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Length cleaned = Rate / Days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Metres per day multiplied by days leaves metres with no conversion"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "450 * 4 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "450 * 4"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 / 4"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total length cleaned in m.",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "km",
+      "label": "km",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "s",
+      "label": "s"
+     }
+    ],
+    "expected": "1800",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Length = 450 * 4 = 1800 m."
+   }
+  },
+  {
+   "id": "c4wc-ladder81",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A cleaning program in Barrie must clean 7200 m in 6 days. One crew cleans a given rate of 300 m per day. Find the number of crews required. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: total = 7200 m, days = 6, crew rate = 300 m/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Crews required = Total length / (Crew rate * Days)"
+      },
+      {
+       "id": "opt-b",
+       "label": "Crews required = Crew rate * Days / Total length"
+      },
+      {
+       "id": "opt-c",
+       "label": "Crews required = Total length * Crew rate / Days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "Metres divided by metres per crew over the program leaves a count of crews with no conversion"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "7200 / (300 / 6)"
+      },
+      {
+       "id": "opt-b",
+       "label": "7200 / (300 * 6)"
+      },
+      {
+       "id": "opt-c",
+       "label": "7200 / (300 * 6) / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact number of crews required.",
+    "unitOptions": [
+     {
+      "id": "crews",
+      "label": "crews"
+     },
+     {
+      "id": "trucks",
+      "label": "trucks"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     }
+    ],
+    "expected": "4",
+    "expectedUnitId": "crews",
+    "absoluteTolerance": "0",
+    "explanation": "Crews = 7200 / (300 * 6) = 4 crews."
+   }
+  },
+  {
+   "id": "c4wc-ladder82",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A flushing program in Kingston has cleaned 2880 m out of a planned 3600 m. Find the program completion in percent. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: cleaned = 2880 m, planned = 3600 m.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Completion in percent = Planned length / Cleaned length * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Completion in percent = Cleaned length * Planned length / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Completion in percent = Cleaned length / Planned length * 100"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide cleaned by planned to get a fraction, then multiply by 100 for percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2880 / 3600 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "2880 / 3600 * 100 / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "2880 / 3600 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact completion in percent.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     }
+    ],
+    "expected": "80",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Completion = 2880 / 3600 * 100 = 80 percent."
+   }
+  },
+  {
+   "id": "c4wc-ladder83",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A CCTV crew in Windsor inspects a given rate of 12 segments per day for 15 days. Find the number of segments inspected. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: rate = 12 segments/day, duration = 15 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Segments inspected = Rate + Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Segments inspected = Rate / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Segments inspected = Rate * Days"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Segments per day multiplied by days leaves a count of segments with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "12 * 15 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "12 * 15"
+      },
+      {
+       "id": "opt-c",
+       "label": "12 / 15"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact number of segments inspected.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "segments",
+      "label": "segments"
+     },
+     {
+      "id": "reaches",
+      "label": "reaches"
+     }
+    ],
+    "expected": "180",
+    "expectedUnitId": "segments",
+    "absoluteTolerance": "0",
+    "explanation": "Segments = 12 * 15 = 180 segments."
+   }
+  },
+  {
+   "id": "c4wc-ladder84",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A CCTV program in Ottawa has inspected 450 segments out of a planned 750 segments. Find the program completion in percent. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: inspected = 450 segments, planned = 750 segments.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Completion in percent = Planned segments / Inspected segments * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "Completion in percent = Inspected segments / Planned segments * 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "Completion in percent = Inspected segments * Planned segments / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide inspected by planned to get a fraction, then multiply by 100 for percent"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "450 / 750 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "450 / 750 * 100 / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 / 750 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact completion in percent.",
+    "unitOptions": [
+     {
+      "id": "L",
+      "label": "L"
+     },
+     {
+      "id": "percent",
+      "label": "%"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "fraction",
+      "label": "fraction",
+      "toExpected": {
+       "numerator": "100",
+       "denominator": "1"
+      }
+     }
+    ],
+    "expected": "60",
+    "expectedUnitId": "percent",
+    "absoluteTolerance": "0",
+    "explanation": "Completion = 450 / 750 * 100 = 60 percent."
+   }
+  },
+  {
+   "id": "c4wc-ladder85",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "CCTV inspection in Kitchener found an average of 3 defects per segment over 140 segments. Find the total number of defects. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: defects per segment = 3, segments = 140.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total defects = Defects per segment * Segments"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total defects = Defects per segment / Segments"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total defects = Defects per segment + Segments"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "A count per segment multiplied by segments leaves a count of defects with no conversion"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3 * 140 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "3 / 140"
+      },
+      {
+       "id": "opt-c",
+       "label": "3 * 140"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total number of defects.",
+    "unitOptions": [
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "defects",
+      "label": "defects"
+     },
+     {
+      "id": "observations",
+      "label": "observations"
+     }
+    ],
+    "expected": "420",
+    "expectedUnitId": "defects",
+    "absoluteTolerance": "0",
+    "explanation": "Total defects = 3 * 140 = 420 defects."
+   }
+  },
+  {
+   "id": "c4wc-ladder86",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A CCTV program in Guelph plans 960 segments and has inspected 624 segments. Find the segments remaining. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: planned = 960 segments, inspected = 624 segments.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Segments remaining = Planned segments - Inspected segments"
+      },
+      {
+       "id": "opt-b",
+       "label": "Segments remaining = Planned segments + Inspected segments"
+      },
+      {
+       "id": "opt-c",
+       "label": "Segments remaining = Inspected segments - Planned segments"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Both counts are in segments, so the difference is in segments with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "960 - 624 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "960 + 624"
+      },
+      {
+       "id": "opt-c",
+       "label": "960 - 624"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact segments remaining.",
+    "unitOptions": [
+     {
+      "id": "segments",
+      "label": "segments"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "reaches",
+      "label": "reaches"
+     }
+    ],
+    "expected": "336",
+    "expectedUnitId": "segments",
+    "absoluteTolerance": "0",
+    "explanation": "Remaining = 960 - 624 = 336 segments."
+   }
+  },
+  {
+   "id": "c4wc-ladder87",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A CCTV crew in Hamilton has 264 segments remaining and inspects a given rate of 12 segments per day. Find the forecast days to finish. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: remaining = 264 segments, rate = 12 segments/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Forecast days = Segments remaining * Inspection rate"
+      },
+      {
+       "id": "opt-b",
+       "label": "Forecast days = Inspection rate / Segments remaining"
+      },
+      {
+       "id": "opt-c",
+       "label": "Forecast days = Segments remaining / Inspection rate"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Segments divided by segments per day leaves days with no further conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "264 / 12 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "264 * 12"
+      },
+      {
+       "id": "opt-c",
+       "label": "264 / 12"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact forecast days.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     }
+    ],
+    "expected": "22",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Forecast = 264 / 12 = 22 days."
+   }
+  },
+  {
+   "id": "c4wc-ladder88",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "Two CCTV crews in Cambridge each inspect a given rate of 400 m per day for 9 days. Find the total length inspected in m. Enter the exact unrounded number.",
+   "topicId": "cleaning-cctv-program",
+   "level": "class1",
+   "assumptions": "Fictional program: crews = 2, rate = 400 m/day each, duration = 9 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Length inspected = Crews * Rate * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Length inspected = Crews * Rate / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Length inspected = Rate * Days / Crews"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Metres per day multiplied by days and by the number of crews leaves metres with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "2 * 400 * 9 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "2 / 400 * 9"
+      },
+      {
+       "id": "opt-c",
+       "label": "2 * 400 * 9"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact total length inspected in m.",
+    "unitOptions": [
+     {
+      "id": "m",
+      "label": "m"
+     },
+     {
+      "id": "km",
+      "label": "km",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "7200",
+    "expectedUnitId": "m",
+    "absoluteTolerance": "0",
+    "explanation": "Length = 2 * 400 * 9 = 7200 m."
+   }
+  },
+  {
+   "id": "c4wc-ladder89",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control station in Waterloo doses a given rate of 8 mg/L into a flow of 60 ML/day. Find the chemical use in kg/day, noting that 1 mg/L applied to 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional station: dose = 8 mg/L, flow = 60 ML/day, 1 mg/L * 1 ML = 1 kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical use in kg/day = Dose in mg/L * Flow in ML/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical use in kg/day = Dose in mg/L + Flow in ML/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical use in kg/day = Dose in mg/L / Flow in ML/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "With the given equivalence, mg/L multiplied by ML/day gives kg/day directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "8 * 60"
+      },
+      {
+       "id": "opt-b",
+       "label": "8 * 60 / 100"
+      },
+      {
+       "id": "opt-c",
+       "label": "8 / 60"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical use in kg/day.",
+    "unitOptions": [
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "t-day",
+      "label": "t/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     }
+    ],
+    "expected": "480",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chemical use = 8 * 60 = 480 kg/day."
+   }
+  },
+  {
+   "id": "c4wc-ladder90",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control station in London doses a given rate of 6.5 mg/L into a flow of 40 ML/day. Find the chemical use in kg/day, noting that 1 mg/L applied to 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional station: dose = 6.5 mg/L, flow = 40 ML/day, 1 mg/L * 1 ML = 1 kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical use in kg/day = Dose in mg/L + Flow in ML/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical use in kg/day = Dose in mg/L * Flow in ML/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical use in kg/day = Dose in mg/L / Flow in ML/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "With the given equivalence, mg/L multiplied by ML/day gives kg/day directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "6.5 / 40"
+      },
+      {
+       "id": "opt-b",
+       "label": "6.5 * 40"
+      },
+      {
+       "id": "opt-c",
+       "label": "6.5 * 40 / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical use in kg/day.",
+    "unitOptions": [
+     {
+      "id": "t-day",
+      "label": "t/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     }
+    ],
+    "expected": "260",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chemical use = 6.5 * 40 = 260 kg/day."
+   }
+  },
+  {
+   "id": "c4wc-ladder91",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control station in Burlington doses a given rate of 9 mg/L into a flow of 35 ML/day. Find the chemical use in kg/day, noting that 1 mg/L applied to 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional station: dose = 9 mg/L, flow = 35 ML/day, 1 mg/L * 1 ML = 1 kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical use in kg/day = Dose in mg/L + Flow in ML/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical use in kg/day = Dose in mg/L * Flow in ML/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical use in kg/day = Dose in mg/L / Flow in ML/day"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "With the given equivalence, mg/L multiplied by ML/day gives kg/day directly"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "9 / 35"
+      },
+      {
+       "id": "opt-b",
+       "label": "9 * 35"
+      },
+      {
+       "id": "opt-c",
+       "label": "9 * 35 / 100"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical use in kg/day.",
+    "unitOptions": [
+     {
+      "id": "t-day",
+      "label": "t/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "315",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chemical use = 9 * 35 = 315 kg/day."
+   }
+  },
+  {
+   "id": "c4wc-ladder92",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control station in Brantford doses a given rate of 7.2 mg/L into a flow of 50 ML/day. Find the chemical use in kg/day, noting that 1 mg/L applied to 1 ML equals 1 kg. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional station: dose = 7.2 mg/L, flow = 50 ML/day, 1 mg/L * 1 ML = 1 kg.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Chemical use in kg/day = Dose in mg/L * Flow in ML/day"
+      },
+      {
+       "id": "opt-b",
+       "label": "Chemical use in kg/day = Dose in mg/L / Flow in ML/day"
+      },
+      {
+       "id": "opt-c",
+       "label": "Chemical use in kg/day = Dose in mg/L + Flow in ML/day"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-b",
+       "label": "With the given equivalence, mg/L multiplied by ML/day gives kg/day directly"
+      },
+      {
+       "id": "opt-c",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "7.2 * 50 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "7.2 / 50"
+      },
+      {
+       "id": "opt-c",
+       "label": "7.2 * 50"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical use in kg/day.",
+    "unitOptions": [
+     {
+      "id": "t-day",
+      "label": "t/day",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg-day",
+      "label": "kg/day"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "360",
+    "expectedUnitId": "kg-day",
+    "absoluteTolerance": "0",
+    "explanation": "Chemical use = 7.2 * 50 = 360 kg/day."
+   }
+  },
+  {
+   "id": "c4wc-ladder93",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control program in Barrie uses 24 kg/day of chemical. Find the chemical required for 30 days in kg. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional program: daily use = 24 kg/day, duration = 30 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total chemical = Daily use * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total chemical = Daily use + Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total chemical = Daily use / Days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Kilograms per day multiplied by days leaves kilograms with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "24 * 30 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "24 / 30"
+      },
+      {
+       "id": "opt-c",
+       "label": "24 * 30"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical required in kg.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "t",
+      "label": "t",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "kg",
+      "label": "kg"
+     }
+    ],
+    "expected": "720",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 24 * 30 = 720 kg."
+   }
+  },
+  {
+   "id": "c4wc-ladder94",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control program in Kingston uses 18.5 kg/day of chemical. Find the chemical required for 30 days in kg. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional program: daily use = 18.5 kg/day, duration = 30 days.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Total chemical = Daily use * Days"
+      },
+      {
+       "id": "opt-b",
+       "label": "Total chemical = Daily use / Days"
+      },
+      {
+       "id": "opt-c",
+       "label": "Total chemical = Daily use + Days"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Kilograms per day multiplied by days leaves kilograms with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "18.5 * 30 / 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "18.5 / 30"
+      },
+      {
+       "id": "opt-c",
+       "label": "18.5 * 30"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact chemical required in kg.",
+    "unitOptions": [
+     {
+      "id": "kg",
+      "label": "kg"
+     },
+     {
+      "id": "t",
+      "label": "t",
+      "toExpected": {
+       "numerator": "1000",
+       "denominator": "1"
+      }
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "555",
+    "expectedUnitId": "kg",
+    "absoluteTolerance": "0",
+    "explanation": "Total = 18.5 * 30 = 555 kg."
+   }
+  },
+  {
+   "id": "c4wc-ladder95",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control station in Windsor holds 4500 kg of chemical in storage and uses 150 kg/day. Find how many days the stock will last. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional station: stock = 4500 kg, daily use = 150 kg/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Days of stock = Stock * Daily use"
+      },
+      {
+       "id": "opt-b",
+       "label": "Days of stock = Daily use / Stock"
+      },
+      {
+       "id": "opt-c",
+       "label": "Days of stock = Stock / Daily use"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Kilograms divided by kilograms per day leaves days with no further conversion"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "4500 / 150"
+      },
+      {
+       "id": "opt-b",
+       "label": "4500 * 150"
+      },
+      {
+       "id": "opt-c",
+       "label": "4500 / 150 * 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact days the stock will last.",
+    "unitOptions": [
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     }
+    ],
+    "expected": "30",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Days = 4500 / 150 = 30 days."
+   }
+  },
+  {
+   "id": "c4wc-ladder96",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "An odour control station in Ottawa holds 3360 kg of chemical in storage and uses 120 kg/day. Find how many days the stock will last. Enter the exact unrounded number.",
+   "topicId": "odour-control-program",
+   "level": "class1",
+   "assumptions": "Fictional station: stock = 3360 kg, daily use = 120 kg/day.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Days of stock = Stock / Daily use"
+      },
+      {
+       "id": "opt-b",
+       "label": "Days of stock = Stock * Daily use"
+      },
+      {
+       "id": "opt-c",
+       "label": "Days of stock = Daily use / Stock"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Kilograms divided by kilograms per day leaves days with no further conversion"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "3360 / 120 * 100"
+      },
+      {
+       "id": "opt-b",
+       "label": "3360 / 120"
+      },
+      {
+       "id": "opt-c",
+       "label": "3360 * 120"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact days the stock will last.",
+    "unitOptions": [
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "days",
+      "label": "days"
+     },
+     {
+      "id": "h",
+      "label": "h",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "24"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "28",
+    "expectedUnitId": "days",
+    "absoluteTolerance": "0",
+    "explanation": "Days = 3360 / 120 = 28 days."
+   }
+  },
+  {
+   "id": "c4wc-ladder97",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A surcharge storage chamber in Kitchener has a plan area of 450 m2 and a usable depth of 1.6 m. Find the storage volume in m3. Enter the exact unrounded number.",
+   "topicId": "surcharge-storage",
+   "level": "class1",
+   "assumptions": "Fictional chamber: area = 450 m2, depth = 1.6 m.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Storage volume = Plan area / Usable depth"
+      },
+      {
+       "id": "opt-b",
+       "label": "Storage volume = Plan area * Usable depth"
+      },
+      {
+       "id": "opt-c",
+       "label": "Storage volume = Plan area + Usable depth"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Square metres multiplied by metres gives m3 directly with no conversion"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "450 * 1.6"
+      },
+      {
+       "id": "opt-b",
+       "label": "450 / 1.6"
+      },
+      {
+       "id": "opt-c",
+       "label": "450 * 1.6 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     }
+    ],
+    "expected": "720",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 450 * 1.6 = 720 m3."
+   }
+  },
+  {
+   "id": "c4wc-ladder98",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "A surcharge storage chamber in Guelph has a plan area of 380 m2 and a usable depth of 2.2 m. Find the storage volume in m3. Enter the exact unrounded number.",
+   "topicId": "surcharge-storage",
+   "level": "class1",
+   "assumptions": "Fictional chamber: area = 380 m2, depth = 2.2 m.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Storage volume = Plan area + Usable depth"
+      },
+      {
+       "id": "opt-b",
+       "label": "Storage volume = Plan area / Usable depth"
+      },
+      {
+       "id": "opt-c",
+       "label": "Storage volume = Plan area * Usable depth"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Square metres multiplied by metres gives m3 directly with no conversion"
+      },
+      {
+       "id": "opt-b",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-c",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "380 * 2.2"
+      },
+      {
+       "id": "opt-b",
+       "label": "380 / 2.2"
+      },
+      {
+       "id": "opt-c",
+       "label": "380 * 2.2 / 100"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact storage volume in m3.",
+    "unitOptions": [
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     },
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     }
+    ],
+    "expected": "836",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 380 * 2.2 = 836 m3."
+   }
+  },
+  {
+   "id": "c4wc-ladder99",
+   "revision": "r1",
+   "mode": "calculation-ladder",
+   "prompt": "During a storm in Hamilton, flow above sewer capacity is 120 L/s for 3600 seconds. Find the surcharge volume that must be stored in m3. Enter the exact unrounded number.",
+   "topicId": "surcharge-storage",
+   "level": "class1",
+   "assumptions": "Fictional storm: excess flow = 120 L/s, duration = 3600 s, 1000 L = 1 m3.",
+   "choices": [
+    {
+     "id": "formula",
+     "prompt": "Select the correct formula or relationship for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Surcharge volume in m3 = Excess flow in L/s * Duration in s * 1000 L/m3"
+      },
+      {
+       "id": "opt-b",
+       "label": "Surcharge volume in m3 = Excess flow in L/s * Duration in s / 1000 L/m3"
+      },
+      {
+       "id": "opt-c",
+       "label": "Surcharge volume in m3 = Excess flow in L/s / Duration in s / 1000 L/m3"
+      }
+     ],
+     "correctOptionId": "opt-b",
+     "explanation": "The correct option states the governing relationship for this calculation."
+    },
+    {
+     "id": "units",
+     "prompt": "Select the correct unit conversion or unit handling for this calculation.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "Divide by 100 instead of using the stated conversion or given factor"
+      },
+      {
+       "id": "opt-b",
+       "label": "Multiply by the stated conversion factor instead of dividing, or ignore the given factor entirely"
+      },
+      {
+       "id": "opt-c",
+       "label": "Litres per second multiplied by seconds gives litres, then divide by 1000 L/m3 for m3"
+      }
+     ],
+     "correctOptionId": "opt-c",
+     "explanation": "The correct option applies the conversion factors so the units cancel to the target unit."
+    },
+    {
+     "id": "substitution",
+     "prompt": "Select the correct substitution using consistent units.",
+     "options": [
+      {
+       "id": "opt-a",
+       "label": "120 * 3600 / 1000"
+      },
+      {
+       "id": "opt-b",
+       "label": "120 * 3600 * 1000"
+      },
+      {
+       "id": "opt-c",
+       "label": "120 / 3600 / 1000"
+      }
+     ],
+     "correctOptionId": "opt-a",
+     "explanation": "The correct option substitutes the given values into the governing formula with consistent units."
+    }
+   ],
+   "result": {
+    "id": "result",
+    "prompt": "Enter the exact surcharge volume in m3.",
+    "unitOptions": [
+     {
+      "id": "L",
+      "label": "L",
+      "toExpected": {
+       "numerator": "1",
+       "denominator": "1000"
+      }
+     },
+     {
+      "id": "kPa",
+      "label": "kPa"
+     },
+     {
+      "id": "s",
+      "label": "s"
+     },
+     {
+      "id": "m3",
+      "label": "m3"
+     }
+    ],
+    "expected": "432",
+    "expectedUnitId": "m3",
+    "absoluteTolerance": "0",
+    "explanation": "Volume = 120 * 3600 / 1000 = 432 m3."
+   }
+  },
+  {
+   "id": "c4wc-error01",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total system flow accounting for the North Trunk service area.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario service area: residential flow 4200 m3/day, commercial flow 800 m3/day, institutional flow 600 m3/day, infiltration allowance 400 m3/day. Total system flow is the sum of all four components.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residential plus commercial flow = 4200 + 800 = 5000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Subtotal plus institutional flow = 5000 + 600 = 5600 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total system flow = 5600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total system flow = 5600 + 400 = 6000 m3/day",
+   "explanation": "Line 3 stopped at the subtotal and left out the infiltration allowance of 400 m3/day. The total system flow is 6000 m3/day."
+  },
+  {
+   "id": "c4wc-error02",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total system flow accounting for the East Basin service area.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario service area: residential flow 3600 m3/day, commercial flow 900 m3/day, institutional flow 500 m3/day, infiltration allowance 500 m3/day. Total system flow is the sum of all four components.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residential plus commercial flow = 3600 + 900 = 4500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Subtotal plus institutional flow = 4500 + 500 = 5000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total system flow = 5000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total system flow = 5000 + 500 = 5500 m3/day",
+   "explanation": "Line 3 stopped at the subtotal and left out the infiltration allowance of 500 m3/day. The total system flow is 5500 m3/day."
+  },
+  {
+   "id": "c4wc-error03",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total system flow accounting for the Central Trunk service area.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario service area: residential flow 5400 m3/day, commercial flow 1200 m3/day, institutional flow 800 m3/day, infiltration allowance 600 m3/day. Total system flow is the sum of all four components.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residential plus commercial flow = 5400 + 1200 = 6600 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Subtotal plus institutional flow = 6600 + 800 = 7400 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total system flow = 7400 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total system flow = 7400 + 600 = 8000 m3/day",
+   "explanation": "Line 3 stopped at the subtotal and left out the infiltration allowance of 600 m3/day. The total system flow is 8000 m3/day."
+  },
+  {
+   "id": "c4wc-error04",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total system flow accounting for the West Basin service area.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario service area: residential flow 2800 m3/day, commercial flow 700 m3/day, institutional flow 300 m3/day, infiltration allowance 200 m3/day. Total system flow is the sum of all four components.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residential plus commercial flow = 2800 + 700 = 3500 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Subtotal plus institutional flow = 3500 + 300 = 3800 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total system flow = 3800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total system flow = 3800 + 200 = 4000 m3/day",
+   "explanation": "Line 3 stopped at the subtotal and left out the infiltration allowance of 200 m3/day. The total system flow is 4000 m3/day."
+  },
+  {
+   "id": "c4wc-error05",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total system flow accounting for the Harbour Basin service area.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario service area: residential flow 6100 m3/day, commercial flow 1100 m3/day, institutional flow 900 m3/day, infiltration allowance 400 m3/day. Total system flow is the sum of all four components.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Residential plus commercial flow = 6100 + 1100 = 7200 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Subtotal plus institutional flow = 7200 + 900 = 8100 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Total system flow = 8100 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Total system flow = 8100 + 400 = 8500 m3/day",
+   "explanation": "Line 3 stopped at the subtotal and left out the infiltration allowance of 400 m3/day. The total system flow is 8500 m3/day."
+  },
+  {
+   "id": "c4wc-error06",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total flow accounting for the Riverside sewershed.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario sewershed: residential flow 3800 m3/day, commercial flow 1200 m3/day, infiltration 500 m3/day counted once. Total flow equals sanitary flow plus infiltration.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sanitary flow = 3800 + 1200 = 5000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total flow = 5000 + 500 + 500 = 6000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total flow = 5000 + 500 = 5500 m3/day",
+   "explanation": "Line 2 added the infiltration of 500 m3/day twice. Counted once, the total flow is 5500 m3/day."
+  },
+  {
+   "id": "c4wc-error07",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total flow accounting for the Hillcrest sewershed.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario sewershed: residential flow 4200 m3/day, commercial flow 800 m3/day, infiltration 600 m3/day counted once. Total flow equals sanitary flow plus infiltration.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sanitary flow = 4200 + 800 = 5000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total flow = 5000 + 600 + 600 = 6200 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total flow = 5000 + 600 = 5600 m3/day",
+   "explanation": "Line 2 added the infiltration of 600 m3/day twice. Counted once, the total flow is 5600 m3/day."
+  },
+  {
+   "id": "c4wc-error08",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total flow accounting for the Lakeside sewershed.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario sewershed: residential flow 2900 m3/day, commercial flow 1100 m3/day, infiltration 400 m3/day counted once. Total flow equals sanitary flow plus infiltration.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sanitary flow = 2900 + 1100 = 4000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total flow = 4000 + 400 + 400 = 4800 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total flow = 4000 + 400 = 4400 m3/day",
+   "explanation": "Line 2 added the infiltration of 400 m3/day twice. Counted once, the total flow is 4400 m3/day."
+  },
+  {
+   "id": "c4wc-error09",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total flow accounting for the Downtown sewershed.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario sewershed: residential flow 5100 m3/day, commercial flow 900 m3/day, infiltration 750 m3/day counted once. Total flow equals sanitary flow plus infiltration.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sanitary flow = 5100 + 900 = 6000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total flow = 6000 + 750 + 750 = 7500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total flow = 6000 + 750 = 6750 m3/day",
+   "explanation": "Line 2 added the infiltration of 750 m3/day twice. Counted once, the total flow is 6750 m3/day."
+  },
+  {
+   "id": "c4wc-error10",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this total flow accounting for the Airport Basin sewershed.",
+   "topicId": "system-flow-accounting",
+   "level": "class1",
+   "assumptions": "Fictional Ontario sewershed: residential flow 3300 m3/day, commercial flow 700 m3/day, infiltration 300 m3/day counted once. Total flow equals sanitary flow plus infiltration.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Sanitary flow = 3300 + 700 = 4000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total flow = 4000 + 300 + 300 = 4600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total flow = 4000 + 300 = 4300 m3/day",
+   "explanation": "Line 2 added the infiltration of 300 m3/day twice. Counted once, the total flow is 4300 m3/day."
+  },
+  {
+   "id": "c4wc-error100",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this scrubber solution make up calculation for the Station 5 Scrubber.",
+   "topicId": "odour-control-chemical",
+   "level": "class1",
+   "assumptions": "Fictional Ontario odour scrubber: solution tank 3000 L, chemical strength 4 percent of the tank volume, with the percent used as a decimal. Chemical volume equals the tank volume times the decimal strength.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Strength = 4 percent = 4"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chemical volume = 3000 L * 4 = 12000 L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Strength = 4 percent = 0.04",
+   "explanation": "Line 1 kept 4 percent as the whole number 4 instead of the decimal 0.04. The chemical volume is 3000 L * 0.04 = 120 L."
+  },
+  {
+   "id": "c4wc-error11",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration share calculation for a trunk sewer annual report.",
+   "topicId": "flow-component-share",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: infiltration 1500 m3/day, total flow 6000 m3/day. Percent share equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 1500 m3/day / 6000 m3/day = 0.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Share = 0.25 * 10 = 2.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Share = 0.25 * 100 = 25 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The infiltration share is 25 percent of the total flow."
+  },
+  {
+   "id": "c4wc-error12",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this commercial flow share calculation for a trunk sewer annual report.",
+   "topicId": "flow-component-share",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: commercial flow 2400 m3/day, total flow 6000 m3/day. Percent share equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 2400 m3/day / 6000 m3/day = 0.4"
+    },
+    {
+     "id": "line2",
+     "label": "2. Share = 0.4 * 10 = 4 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Share = 0.4 * 100 = 40 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The commercial flow share is 40 percent of the total flow."
+  },
+  {
+   "id": "c4wc-error13",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration share calculation for a trunk sewer annual report.",
+   "topicId": "flow-component-share",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: infiltration 1750 m3/day, total flow 5000 m3/day. Percent share equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 1750 m3/day / 5000 m3/day = 0.35"
+    },
+    {
+     "id": "line2",
+     "label": "2. Share = 0.35 * 10 = 3.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Share = 0.35 * 100 = 35 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The infiltration share is 35 percent of the total flow."
+  },
+  {
+   "id": "c4wc-error14",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this institutional flow share calculation for a trunk sewer annual report.",
+   "topicId": "flow-component-share",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: institutional flow 1200 m3/day, total flow 4800 m3/day. Percent share equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 1200 m3/day / 4800 m3/day = 0.25"
+    },
+    {
+     "id": "line2",
+     "label": "2. Share = 0.25 * 10 = 2.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Share = 0.25 * 100 = 25 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The institutional flow share is 25 percent of the total flow."
+  },
+  {
+   "id": "c4wc-error15",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration share calculation for a trunk sewer annual report.",
+   "topicId": "flow-component-share",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: infiltration 3200 m3/day, total flow 8000 m3/day. Percent share equals the ratio times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Ratio = 3200 m3/day / 8000 m3/day = 0.4"
+    },
+    {
+     "id": "line2",
+     "label": "2. Share = 0.4 * 10 = 4 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Share = 0.4 * 100 = 40 percent",
+   "explanation": "Line 2 multiplied the ratio by 10 instead of 100 to get a percent. The infiltration share is 40 percent of the total flow."
+  },
+  {
+   "id": "c4wc-error16",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for the North Trunk capacity report.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional Ontario capacity report: average flow 8640 m3/day, 1000 L = 1 m3, 86400 s = 1 day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 8640 m3/day * 1000 L/m3 = 8640000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 8640000 L/day / 3600 s/day = 2400 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flow = 8640000 L/day / 86400 s/day = 100 L/s",
+   "explanation": "Line 2 divided a daily volume by 3600 s, which is one hour. Using 86400 s per day gives 100 L/s."
+  },
+  {
+   "id": "c4wc-error17",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for the East Basin capacity report.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional Ontario capacity report: average flow 4320 m3/day, 1000 L = 1 m3, 86400 s = 1 day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 4320 m3/day * 1000 L/m3 = 4320000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 4320000 L/day / 3600 s/day = 1200 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flow = 4320000 L/day / 86400 s/day = 50 L/s",
+   "explanation": "Line 2 divided a daily volume by 3600 s, which is one hour. Using 86400 s per day gives 50 L/s."
+  },
+  {
+   "id": "c4wc-error18",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for the Central Trunk capacity report.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional Ontario capacity report: average flow 17280 m3/day, 1000 L = 1 m3, 86400 s = 1 day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 17280 m3/day * 1000 L/m3 = 17280000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 17280000 L/day / 3600 s/day = 4800 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flow = 17280000 L/day / 86400 s/day = 200 L/s",
+   "explanation": "Line 2 divided a daily volume by 3600 s, which is one hour. Using 86400 s per day gives 200 L/s."
+  },
+  {
+   "id": "c4wc-error19",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for the West Basin capacity report.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional Ontario capacity report: average flow 12960 m3/day, 1000 L = 1 m3, 86400 s = 1 day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 12960 m3/day * 1000 L/m3 = 12960000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 12960000 L/day / 3600 s/day = 3600 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flow = 12960000 L/day / 86400 s/day = 150 L/s",
+   "explanation": "Line 2 divided a daily volume by 3600 s, which is one hour. Using 86400 s per day gives 150 L/s."
+  },
+  {
+   "id": "c4wc-error20",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flow conversion for the Harbour Basin capacity report.",
+   "topicId": "flow-conversion",
+   "level": "class1",
+   "assumptions": "Fictional Ontario capacity report: average flow 6912 m3/day, 1000 L = 1 m3, 86400 s = 1 day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flow = 6912 m3/day * 1000 L/m3 = 6912000 L/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 6912000 L/day / 3600 s/day = 1920 L/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flow = 6912000 L/day / 86400 s/day = 80 L/s",
+   "explanation": "Line 2 divided a daily volume by 3600 s, which is one hour. Using 86400 s per day gives 80 L/s."
+  },
+  {
+   "id": "c4wc-error21",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Maple Basin rehabilitation study.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: area 12 ha, rainfall 25 mm, rainfall volume in m3 equals hectares times millimetres times 10, inflow coefficient 40 percent used as a decimal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Coefficient = 40 percent = 40"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rainfall volume = 12 ha * 25 mm * 10 = 3000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 3000 m3 * 40 = 120000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Coefficient = 40 percent = 0.4",
+   "explanation": "Line 1 kept 40 percent as the whole number 40 instead of the decimal 0.4. The inflow volume is 3000 m3 * 0.4 = 1200 m3."
+  },
+  {
+   "id": "c4wc-error22",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Cedar Basin rehabilitation study.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: area 15 ha, rainfall 20 mm, rainfall volume in m3 equals hectares times millimetres times 10, inflow coefficient 35 percent used as a decimal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Coefficient = 35 percent = 35"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rainfall volume = 15 ha * 20 mm * 10 = 3000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 3000 m3 * 35 = 105000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Coefficient = 35 percent = 0.35",
+   "explanation": "Line 1 kept 35 percent as the whole number 35 instead of the decimal 0.35. The inflow volume is 3000 m3 * 0.35 = 1050 m3."
+  },
+  {
+   "id": "c4wc-error23",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Elm Basin rehabilitation study.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: area 10 ha, rainfall 30 mm, rainfall volume in m3 equals hectares times millimetres times 10, inflow coefficient 50 percent used as a decimal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Coefficient = 50 percent = 50"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rainfall volume = 10 ha * 30 mm * 10 = 3000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 3000 m3 * 50 = 150000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Coefficient = 50 percent = 0.5",
+   "explanation": "Line 1 kept 50 percent as the whole number 50 instead of the decimal 0.5. The inflow volume is 3000 m3 * 0.5 = 1500 m3."
+  },
+  {
+   "id": "c4wc-error24",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Birch Basin rehabilitation study.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: area 20 ha, rainfall 15 mm, rainfall volume in m3 equals hectares times millimetres times 10, inflow coefficient 45 percent used as a decimal.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Coefficient = 45 percent = 45"
+    },
+    {
+     "id": "line2",
+     "label": "2. Rainfall volume = 20 ha * 15 mm * 10 = 3000 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Inflow volume = 3000 m3 * 45 = 135000 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Coefficient = 45 percent = 0.45",
+   "explanation": "Line 1 kept 45 percent as the whole number 45 instead of the decimal 0.45. The inflow volume is 3000 m3 * 0.45 = 1350 m3."
+  },
+  {
+   "id": "c4wc-error25",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Maple Basin program review.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: rainfall volume 4000 m3, inflow coefficient 0.5. Rainfall dependent inflow equals the coefficient times the rainfall volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 4000 m3 / 0.5 = 8000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average hourly inflow = 8000 m3 / 24 h = 333.3333 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inflow volume = 4000 m3 * 0.5 = 2000 m3",
+   "explanation": "Line 1 divided by the coefficient instead of multiplying. Only a fraction of the rainfall reaches the sewer, giving 2000 m3."
+  },
+  {
+   "id": "c4wc-error26",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Cedar Basin program review.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: rainfall volume 6000 m3, inflow coefficient 0.4. Rainfall dependent inflow equals the coefficient times the rainfall volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 6000 m3 / 0.4 = 15000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average hourly inflow = 15000 m3 / 24 h = 625 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inflow volume = 6000 m3 * 0.4 = 2400 m3",
+   "explanation": "Line 1 divided by the coefficient instead of multiplying. Only a fraction of the rainfall reaches the sewer, giving 2400 m3."
+  },
+  {
+   "id": "c4wc-error27",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Elm Basin program review.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: rainfall volume 4500 m3, inflow coefficient 0.5. Rainfall dependent inflow equals the coefficient times the rainfall volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 4500 m3 / 0.5 = 9000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average hourly inflow = 9000 m3 / 24 h = 375 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inflow volume = 4500 m3 * 0.5 = 2250 m3",
+   "explanation": "Line 1 divided by the coefficient instead of multiplying. Only a fraction of the rainfall reaches the sewer, giving 2250 m3."
+  },
+  {
+   "id": "c4wc-error28",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this rainfall dependent inflow calculation for the Birch Basin program review.",
+   "topicId": "rainfall-dependent-inflow",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: rainfall volume 7200 m3, inflow coefficient 0.6. Rainfall dependent inflow equals the coefficient times the rainfall volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Inflow volume = 7200 m3 / 0.6 = 12000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Average hourly inflow = 12000 m3 / 24 h = 500 m3/h"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Inflow volume = 7200 m3 * 0.6 = 4320 m3",
+   "explanation": "Line 1 divided by the coefficient instead of multiplying. Only a fraction of the rainfall reaches the sewer, giving 4320 m3."
+  },
+  {
+   "id": "c4wc-error29",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration volume calculation for Reach 4 in the system wide audit.",
+   "topicId": "infiltration-rate",
+   "level": "class1",
+   "assumptions": "Fictional Ontario reach: infiltration rate 0.5 L/s per km, length 12 km, 86400 s = 1 day. Daily volume equals the total rate times the seconds per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total infiltration = 0.5 L/s/km * 12 km = 6 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 6 L/s * 3600 s/day = 21600 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 6 L/s * 86400 s/day = 518400 L/day",
+   "explanation": "Line 2 used 3600 s, which is one hour, as the seconds in a day. The daily infiltration volume is 518400 L/day."
+  },
+  {
+   "id": "c4wc-error30",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration volume calculation for Reach 7 in the system wide audit.",
+   "topicId": "infiltration-rate",
+   "level": "class1",
+   "assumptions": "Fictional Ontario reach: infiltration rate 0.8 L/s per km, length 10 km, 86400 s = 1 day. Daily volume equals the total rate times the seconds per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total infiltration = 0.8 L/s/km * 10 km = 8 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 8 L/s * 3600 s/day = 28800 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 8 L/s * 86400 s/day = 691200 L/day",
+   "explanation": "Line 2 used 3600 s, which is one hour, as the seconds in a day. The daily infiltration volume is 691200 L/day."
+  },
+  {
+   "id": "c4wc-error31",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration volume calculation for Reach 9 in the system wide audit.",
+   "topicId": "infiltration-rate",
+   "level": "class1",
+   "assumptions": "Fictional Ontario reach: infiltration rate 0.6 L/s per km, length 20 km, 86400 s = 1 day. Daily volume equals the total rate times the seconds per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total infiltration = 0.6 L/s/km * 20 km = 12 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 12 L/s * 3600 s/day = 43200 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 12 L/s * 86400 s/day = 1036800 L/day",
+   "explanation": "Line 2 used 3600 s, which is one hour, as the seconds in a day. The daily infiltration volume is 1036800 L/day."
+  },
+  {
+   "id": "c4wc-error32",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration volume calculation for Reach 12 in the system wide audit.",
+   "topicId": "infiltration-rate",
+   "level": "class1",
+   "assumptions": "Fictional Ontario reach: infiltration rate 0.25 L/s per km, length 16 km, 86400 s = 1 day. Daily volume equals the total rate times the seconds per day.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total infiltration = 0.25 L/s/km * 16 km = 4 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 4 L/s * 3600 s/day = 14400 L/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily volume = 4 L/s * 86400 s/day = 345600 L/day",
+   "explanation": "Line 2 used 3600 s, which is one hour, as the seconds in a day. The daily infiltration volume is 345600 L/day."
+  },
+  {
+   "id": "c4wc-error33",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration and inflow reduction effectiveness calculation for the Maple Basin program.",
+   "topicId": "inflow-reduction-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario rehabilitation basin: extraneous flow 5000 m3 per storm before rehabilitation and 3000 m3 per storm after. Percent reduction is measured against the before value.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reduction = 5000 m3 - 3000 m3 = 2000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent reduction = 2000 m3 / 3000 m3 * 100, using the after value as the base"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent reduction = 2000 m3 / 5000 m3 * 100 = 40 percent",
+   "explanation": "Line 2 used the after value as the base. A reduction is measured against the original before value, giving 40 percent."
+  },
+  {
+   "id": "c4wc-error34",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration and inflow reduction effectiveness calculation for the Cedar Basin program.",
+   "topicId": "inflow-reduction-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario rehabilitation basin: extraneous flow 8000 m3 per storm before rehabilitation and 6000 m3 per storm after. Percent reduction is measured against the before value.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reduction = 8000 m3 - 6000 m3 = 2000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent reduction = 2000 m3 / 6000 m3 * 100, using the after value as the base"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent reduction = 2000 m3 / 8000 m3 * 100 = 25 percent",
+   "explanation": "Line 2 used the after value as the base. A reduction is measured against the original before value, giving 25 percent."
+  },
+  {
+   "id": "c4wc-error35",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration and inflow reduction effectiveness calculation for the Elm Basin program.",
+   "topicId": "inflow-reduction-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario rehabilitation basin: extraneous flow 6000 m3 per storm before rehabilitation and 4500 m3 per storm after. Percent reduction is measured against the before value.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reduction = 6000 m3 - 4500 m3 = 1500 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent reduction = 1500 m3 / 4500 m3 * 100, using the after value as the base"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent reduction = 1500 m3 / 6000 m3 * 100 = 25 percent",
+   "explanation": "Line 2 used the after value as the base. A reduction is measured against the original before value, giving 25 percent."
+  },
+  {
+   "id": "c4wc-error36",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this infiltration and inflow reduction effectiveness calculation for the Birch Basin program.",
+   "topicId": "inflow-reduction-effectiveness",
+   "level": "class1",
+   "assumptions": "Fictional Ontario rehabilitation basin: extraneous flow 9000 m3 per storm before rehabilitation and 5400 m3 per storm after. Percent reduction is measured against the before value.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Reduction = 9000 m3 - 5400 m3 = 3600 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Percent reduction = 3600 m3 / 5400 m3 * 100, using the after value as the base"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Percent reduction = 3600 m3 / 9000 m3 * 100 = 40 percent",
+   "explanation": "Line 2 used the after value as the base. A reduction is measured against the original before value, giving 40 percent."
+  },
+  {
+   "id": "c4wc-error37",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night flow analysis for the North End basin in the long term infiltration study.",
+   "topicId": "night-flow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: measured minimum night flow 24 L/s, legitimate night use 8 L/s, 86400 s = 1 day, 1000 L = 1 m3. Extraneous night flow equals the night flow minus the legitimate use.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Extraneous night flow = 24 L/s + 8 L/s = 32 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 32 L/s * 86400 s/day = 2764800 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume = 2764800 L/day / 1000 L/m3 = 2764.8 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Extraneous night flow = 24 L/s - 8 L/s = 16 L/s",
+   "explanation": "Line 1 added the legitimate night use instead of subtracting it. The extraneous flow is 16 L/s, which is 1382.4 m3/day."
+  },
+  {
+   "id": "c4wc-error38",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night flow analysis for the South End basin in the long term infiltration study.",
+   "topicId": "night-flow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: measured minimum night flow 30 L/s, legitimate night use 10 L/s, 86400 s = 1 day, 1000 L = 1 m3. Extraneous night flow equals the night flow minus the legitimate use.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Extraneous night flow = 30 L/s + 10 L/s = 40 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 40 L/s * 86400 s/day = 3456000 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume = 3456000 L/day / 1000 L/m3 = 3456 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Extraneous night flow = 30 L/s - 10 L/s = 20 L/s",
+   "explanation": "Line 1 added the legitimate night use instead of subtracting it. The extraneous flow is 20 L/s, which is 1728 m3/day."
+  },
+  {
+   "id": "c4wc-error39",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night flow analysis for the Old Town basin in the long term infiltration study.",
+   "topicId": "night-flow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: measured minimum night flow 18 L/s, legitimate night use 6 L/s, 86400 s = 1 day, 1000 L = 1 m3. Extraneous night flow equals the night flow minus the legitimate use.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Extraneous night flow = 18 L/s + 6 L/s = 24 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 24 L/s * 86400 s/day = 2073600 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume = 2073600 L/day / 1000 L/m3 = 2073.6 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Extraneous night flow = 18 L/s - 6 L/s = 12 L/s",
+   "explanation": "Line 1 added the legitimate night use instead of subtracting it. The extraneous flow is 12 L/s, which is 1036.8 m3/day."
+  },
+  {
+   "id": "c4wc-error40",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this night flow analysis for the East End basin in the long term infiltration study.",
+   "topicId": "night-flow-analysis",
+   "level": "class1",
+   "assumptions": "Fictional Ontario basin: measured minimum night flow 42 L/s, legitimate night use 14 L/s, 86400 s = 1 day, 1000 L = 1 m3. Extraneous night flow equals the night flow minus the legitimate use.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Extraneous night flow = 42 L/s + 14 L/s = 56 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily volume = 56 L/s * 86400 s/day = 4838400 L/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Daily volume = 4838400 L/day / 1000 L/m3 = 4838.4 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Extraneous night flow = 42 L/s - 14 L/s = 28 L/s",
+   "explanation": "Line 1 added the legitimate night use instead of subtracting it. The extraneous flow is 28 L/s, which is 2419.2 m3/day."
+  },
+  {
+   "id": "c4wc-error41",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population growth projection for the North Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 50000, growth 1200 people per year for 10 years. Future population equals the current population plus the total growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 1200 people/year * 10 years = 12000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 50000 + 1200 = 51200 people"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 50000 + 12000 = 62000 people",
+   "explanation": "Line 2 added only one year of growth. Adding the full 10 year growth gives a future population of 62000 people."
+  },
+  {
+   "id": "c4wc-error42",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population growth projection for the East Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 40000, growth 800 people per year for 15 years. Future population equals the current population plus the total growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 800 people/year * 15 years = 12000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 40000 + 800 = 40800 people"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 40000 + 12000 = 52000 people",
+   "explanation": "Line 2 added only one year of growth. Adding the full 15 year growth gives a future population of 52000 people."
+  },
+  {
+   "id": "c4wc-error43",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population growth projection for the West Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 65000, growth 1500 people per year for 8 years. Future population equals the current population plus the total growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 1500 people/year * 8 years = 12000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 65000 + 1500 = 66500 people"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 65000 + 12000 = 77000 people",
+   "explanation": "Line 2 added only one year of growth. Adding the full 8 year growth gives a future population of 77000 people."
+  },
+  {
+   "id": "c4wc-error44",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this population growth projection for the South Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 30000, growth 600 people per year for 20 years. Future population equals the current population plus the total growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total growth = 600 people/year * 20 years = 12000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future population = 30000 + 600 = 30600 people"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future population = 30000 + 12000 = 42000 people",
+   "explanation": "Line 2 added only one year of growth. Adding the full 20 year growth gives a future population of 42000 people."
+  },
+  {
+   "id": "c4wc-error45",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this future flow projection for the North Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 60000, growth factor 1.25, per capita flow 0.3 m3/day per person. Future flow uses the future population.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 60000 * 1.25 = 75000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 60000 people * 0.3 m3/day/person = 18000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future flow = 75000 people * 0.3 m3/day/person = 22500 m3/day",
+   "explanation": "Line 2 used the current population instead of the future population from line 1. The future flow is 22500 m3/day."
+  },
+  {
+   "id": "c4wc-error46",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this future flow projection for the East Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 50000, growth factor 1.2, per capita flow 0.25 m3/day per person. Future flow uses the future population.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 50000 * 1.2 = 60000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 50000 people * 0.25 m3/day/person = 12500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future flow = 60000 people * 0.25 m3/day/person = 15000 m3/day",
+   "explanation": "Line 2 used the current population instead of the future population from line 1. The future flow is 15000 m3/day."
+  },
+  {
+   "id": "c4wc-error47",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this future flow projection for the West Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 80000, growth factor 1.5, per capita flow 0.2 m3/day per person. Future flow uses the future population.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 80000 * 1.5 = 120000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 80000 people * 0.2 m3/day/person = 16000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future flow = 120000 people * 0.2 m3/day/person = 24000 m3/day",
+   "explanation": "Line 2 used the current population instead of the future population from line 1. The future flow is 24000 m3/day."
+  },
+  {
+   "id": "c4wc-error48",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this future flow projection for the South Growth Area capacity plan.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario growth area: current population 45000, growth factor 1.4, per capita flow 0.3 m3/day per person. Future flow uses the future population.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Future population = 45000 * 1.4 = 63000 people"
+    },
+    {
+     "id": "line2",
+     "label": "2. Future flow = 45000 people * 0.3 m3/day/person = 13500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Future flow = 63000 people * 0.3 m3/day/person = 18900 m3/day",
+   "explanation": "Line 2 used the current population instead of the future population from line 1. The future flow is 18900 m3/day."
+  },
+  {
+   "id": "c4wc-error49",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this design flow calculation for Trunk A in the capacity plan.",
+   "topicId": "design-flow-peaking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: average sanitary flow 3000 m3/day, peaking factor 3, infiltration and inflow allowance 1000 m3/day added after peaking. Design flow equals peaked sanitary flow plus the allowance.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak sanitary flow = 3000 m3/day * 3 = 9000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design flow = (3000 m3/day + 1000 m3/day) * 3 = 12000 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design flow = 3000 m3/day * 3 + 1000 m3/day = 10000 m3/day",
+   "explanation": "Line 2 applied the peaking factor to the infiltration and inflow allowance as well. The allowance is added after peaking, giving 10000 m3/day."
+  },
+  {
+   "id": "c4wc-error50",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this design flow calculation for Trunk B in the capacity plan.",
+   "topicId": "design-flow-peaking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: average sanitary flow 2400 m3/day, peaking factor 2.5, infiltration and inflow allowance 600 m3/day added after peaking. Design flow equals peaked sanitary flow plus the allowance.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak sanitary flow = 2400 m3/day * 2.5 = 6000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design flow = (2400 m3/day + 600 m3/day) * 2.5 = 7500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design flow = 2400 m3/day * 2.5 + 600 m3/day = 6600 m3/day",
+   "explanation": "Line 2 applied the peaking factor to the infiltration and inflow allowance as well. The allowance is added after peaking, giving 6600 m3/day."
+  },
+  {
+   "id": "c4wc-error51",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this design flow calculation for Trunk C in the capacity plan.",
+   "topicId": "design-flow-peaking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: average sanitary flow 2000 m3/day, peaking factor 2, infiltration and inflow allowance 800 m3/day added after peaking. Design flow equals peaked sanitary flow plus the allowance.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak sanitary flow = 2000 m3/day * 2 = 4000 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design flow = (2000 m3/day + 800 m3/day) * 2 = 5600 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design flow = 2000 m3/day * 2 + 800 m3/day = 4800 m3/day",
+   "explanation": "Line 2 applied the peaking factor to the infiltration and inflow allowance as well. The allowance is added after peaking, giving 4800 m3/day."
+  },
+  {
+   "id": "c4wc-error52",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this design flow calculation for Trunk D in the capacity plan.",
+   "topicId": "design-flow-peaking",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: average sanitary flow 3600 m3/day, peaking factor 3, infiltration and inflow allowance 900 m3/day added after peaking. Design flow equals peaked sanitary flow plus the allowance.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Peak sanitary flow = 3600 m3/day * 3 = 10800 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Design flow = (3600 m3/day + 900 m3/day) * 3 = 13500 m3/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Design flow = 3600 m3/day * 3 + 900 m3/day = 11700 m3/day",
+   "explanation": "Line 2 applied the peaking factor to the infiltration and inflow allowance as well. The allowance is added after peaking, giving 11700 m3/day."
+  },
+  {
+   "id": "c4wc-error53",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this spare capacity calculation for Trunk A.",
+   "topicId": "spare-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: capacity 20000 m3/day, design flow 12000 m3/day. Spare capacity equals the capacity minus the design flow, and the spare share is the spare capacity divided by the capacity, times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity = 20000 m3/day and design flow = 12000 m3/day, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 20000 + 12000 = 32000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Spare share = 32000 m3/day / 20000 m3/day * 100 = 160 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Spare capacity = 20000 - 12000 = 8000 m3/day",
+   "explanation": "Line 2 added the design flow to the capacity instead of subtracting it. The spare capacity is 8000 m3/day, which is 40 percent of the capacity."
+  },
+  {
+   "id": "c4wc-error54",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this spare capacity calculation for Trunk B.",
+   "topicId": "spare-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: capacity 24000 m3/day, design flow 12000 m3/day. Spare capacity equals the capacity minus the design flow, and the spare share is the spare capacity divided by the capacity, times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity = 24000 m3/day and design flow = 12000 m3/day, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 24000 + 12000 = 36000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Spare share = 36000 m3/day / 24000 m3/day * 100 = 150 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Spare capacity = 24000 - 12000 = 12000 m3/day",
+   "explanation": "Line 2 added the design flow to the capacity instead of subtracting it. The spare capacity is 12000 m3/day, which is 50 percent of the capacity."
+  },
+  {
+   "id": "c4wc-error55",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this spare capacity calculation for Trunk C.",
+   "topicId": "spare-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: capacity 16000 m3/day, design flow 10000 m3/day. Spare capacity equals the capacity minus the design flow, and the spare share is the spare capacity divided by the capacity, times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity = 16000 m3/day and design flow = 10000 m3/day, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 16000 + 10000 = 26000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Spare share = 26000 m3/day / 16000 m3/day * 100 = 162.5 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Spare capacity = 16000 - 10000 = 6000 m3/day",
+   "explanation": "Line 2 added the design flow to the capacity instead of subtracting it. The spare capacity is 6000 m3/day, which is 37.5 percent of the capacity."
+  },
+  {
+   "id": "c4wc-error56",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this spare capacity calculation for Trunk D.",
+   "topicId": "spare-capacity",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: capacity 30000 m3/day, design flow 18000 m3/day. Spare capacity equals the capacity minus the design flow, and the spare share is the spare capacity divided by the capacity, times 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capacity = 30000 m3/day and design flow = 18000 m3/day, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Spare capacity = 30000 + 18000 = 48000 m3/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Spare share = 48000 m3/day / 30000 m3/day * 100 = 160 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Spare capacity = 30000 - 18000 = 12000 m3/day",
+   "explanation": "Line 2 added the design flow to the capacity instead of subtracting it. The spare capacity is 12000 m3/day, which is 40 percent of the capacity."
+  },
+  {
+   "id": "c4wc-error57",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this years to capacity estimate for Trunk A.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: spare capacity 6000 m3/day, flow growth 500 m3/day per year. Years to capacity equals the spare capacity divided by the annual flow growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = 6000 m3/day and annual flow growth = 500 m3/day/year, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Years to capacity = 500 m3/day/year / 6000 m3/day, growth divided by spare capacity"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Years to capacity = 6000 m3/day / 500 m3/day/year = 12 years",
+   "explanation": "Line 2 divided the growth by the spare capacity. Dividing the spare capacity by the annual growth gives 12 years."
+  },
+  {
+   "id": "c4wc-error58",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this years to capacity estimate for Trunk B.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: spare capacity 4500 m3/day, flow growth 300 m3/day per year. Years to capacity equals the spare capacity divided by the annual flow growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = 4500 m3/day and annual flow growth = 300 m3/day/year, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Years to capacity = 300 m3/day/year / 4500 m3/day, growth divided by spare capacity"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Years to capacity = 4500 m3/day / 300 m3/day/year = 15 years",
+   "explanation": "Line 2 divided the growth by the spare capacity. Dividing the spare capacity by the annual growth gives 15 years."
+  },
+  {
+   "id": "c4wc-error59",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this years to capacity estimate for Trunk C.",
+   "topicId": "capacity-planning-growth",
+   "level": "class1",
+   "assumptions": "Fictional Ontario trunk sewer: spare capacity 8000 m3/day, flow growth 800 m3/day per year. Years to capacity equals the spare capacity divided by the annual flow growth.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Spare capacity = 8000 m3/day and annual flow growth = 800 m3/day/year, from the capacity plan"
+    },
+    {
+     "id": "line2",
+     "label": "2. Years to capacity = 800 m3/day/year / 8000 m3/day, growth divided by spare capacity"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Years to capacity = 8000 m3/day / 800 m3/day/year = 10 years",
+   "explanation": "Line 2 divided the growth by the spare capacity. Dividing the spare capacity by the annual growth gives 10 years."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c4wc-mission21",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 21: The Cleaning Cctv Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m21-t1"
+    },
+    {
+     "taskId": "c4wc-error01",
+     "revision": "r1",
+     "occurrenceId": "m21-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission22",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 22: The System Flow Accounting Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error02",
+     "revision": "r1",
+     "occurrenceId": "m22-t1"
+    },
+    {
+     "taskId": "c4wc-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m22-t2"
+    },
+    {
+     "taskId": "c4wc-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m22-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission23",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 23: The Cleaning Cctv Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m23-t1"
+    },
+    {
+     "taskId": "c4wc-error03",
+     "revision": "r1",
+     "occurrenceId": "m23-t2"
+    },
+    {
+     "taskId": "c4wc-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m23-t3"
+    },
+    {
+     "taskId": "c4wc-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m23-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission24",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 24: The System Flow Accounting Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error04",
+     "revision": "r1",
+     "occurrenceId": "m24-t1"
+    },
+    {
+     "taskId": "c4wc-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m24-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission25",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 25: The Cleaning Cctv Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m25-t1"
+    },
+    {
+     "taskId": "c4wc-error05",
+     "revision": "r1",
+     "occurrenceId": "m25-t2"
+    },
+    {
+     "taskId": "c4wc-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m25-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission26",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 26: The System Flow Accounting Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error06",
+     "revision": "r1",
+     "occurrenceId": "m26-t1"
+    },
+    {
+     "taskId": "c4wc-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m26-t2"
+    },
+    {
+     "taskId": "c4wc-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m26-t3"
+    },
+    {
+     "taskId": "c4wc-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m26-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission27",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 27: The Odour Control Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m27-t1"
+    },
+    {
+     "taskId": "c4wc-error07",
+     "revision": "r1",
+     "occurrenceId": "m27-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission28",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 28: The System Flow Accounting Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error08",
+     "revision": "r1",
+     "occurrenceId": "m28-t1"
+    },
+    {
+     "taskId": "c4wc-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m28-t2"
+    },
+    {
+     "taskId": "c4wc-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m28-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission29",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 29: The Odour Control Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m29-t1"
+    },
+    {
+     "taskId": "c4wc-error09",
+     "revision": "r1",
+     "occurrenceId": "m29-t2"
+    },
+    {
+     "taskId": "c4wc-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m29-t3"
+    },
+    {
+     "taskId": "c4wc-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m29-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission30",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 30: The System Flow Accounting Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error10",
+     "revision": "r1",
+     "occurrenceId": "m30-t1"
+    },
+    {
+     "taskId": "c4wc-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m30-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission31",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 31: The Surcharge Storage Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder99",
+     "revision": "r1",
+     "occurrenceId": "m31-t1"
+    },
+    {
+     "taskId": "c4wc-error100",
+     "revision": "r1",
+     "occurrenceId": "m31-t2"
+    },
+    {
+     "taskId": "c4wc-ladder80",
+     "revision": "r1",
+     "occurrenceId": "m31-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission32",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 32: The Flow Component Share Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error11",
+     "revision": "r1",
+     "occurrenceId": "m32-t1"
+    },
+    {
+     "taskId": "c4wc-ladder81",
+     "revision": "r1",
+     "occurrenceId": "m32-t2"
+    },
+    {
+     "taskId": "c4wc-ladder82",
+     "revision": "r1",
+     "occurrenceId": "m32-t3"
+    },
+    {
+     "taskId": "c4wc-ladder83",
+     "revision": "r1",
+     "occurrenceId": "m32-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission33",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 33: The Cleaning Cctv Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder84",
+     "revision": "r1",
+     "occurrenceId": "m33-t1"
+    },
+    {
+     "taskId": "c4wc-error12",
+     "revision": "r1",
+     "occurrenceId": "m33-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission34",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 34: The Flow Component Share Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error13",
+     "revision": "r1",
+     "occurrenceId": "m34-t1"
+    },
+    {
+     "taskId": "c4wc-ladder85",
+     "revision": "r1",
+     "occurrenceId": "m34-t2"
+    },
+    {
+     "taskId": "c4wc-ladder86",
+     "revision": "r1",
+     "occurrenceId": "m34-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission35",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 35: The Cleaning Cctv Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder87",
+     "revision": "r1",
+     "occurrenceId": "m35-t1"
+    },
+    {
+     "taskId": "c4wc-error14",
+     "revision": "r1",
+     "occurrenceId": "m35-t2"
+    },
+    {
+     "taskId": "c4wc-ladder88",
+     "revision": "r1",
+     "occurrenceId": "m35-t3"
+    },
+    {
+     "taskId": "c4wc-ladder89",
+     "revision": "r1",
+     "occurrenceId": "m35-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission36",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 36: The Flow Component Share Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error15",
+     "revision": "r1",
+     "occurrenceId": "m36-t1"
+    },
+    {
+     "taskId": "c4wc-ladder90",
+     "revision": "r1",
+     "occurrenceId": "m36-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission37",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 37: The Odour Control Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder91",
+     "revision": "r1",
+     "occurrenceId": "m37-t1"
+    },
+    {
+     "taskId": "c4wc-error16",
+     "revision": "r1",
+     "occurrenceId": "m37-t2"
+    },
+    {
+     "taskId": "c4wc-ladder92",
+     "revision": "r1",
+     "occurrenceId": "m37-t3"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission38",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 38: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error17",
+     "revision": "r1",
+     "occurrenceId": "m38-t1"
+    },
+    {
+     "taskId": "c4wc-ladder93",
+     "revision": "r1",
+     "occurrenceId": "m38-t2"
+    },
+    {
+     "taskId": "c4wc-ladder94",
+     "revision": "r1",
+     "occurrenceId": "m38-t3"
+    },
+    {
+     "taskId": "c4wc-ladder95",
+     "revision": "r1",
+     "occurrenceId": "m38-t4"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission39",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 39: The Odour Control Program Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-ladder96",
+     "revision": "r1",
+     "occurrenceId": "m39-t1"
+    },
+    {
+     "taskId": "c4wc-error18",
+     "revision": "r1",
+     "occurrenceId": "m39-t2"
+    }
+   ]
+  },
+  {
+   "id": "c4wc-mission40",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 40: The Flow Conversion Shift",
+   "tasks": [
+    {
+     "taskId": "c4wc-error19",
+     "revision": "r1",
+     "occurrenceId": "m40-t1"
+    },
+    {
+     "taskId": "c4wc-ladder97",
+     "revision": "r1",
+     "occurrenceId": "m40-t2"
+    },
+    {
+     "taskId": "c4wc-ladder98",
+     "revision": "r1",
+     "occurrenceId": "m40-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater collection system management, assessment, rehabilitation and asset chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "b7735dd6eeb2afcaeff1e58e3f09293263128fedd2615441f5acd8a24a89add9",
+  "taskReceipts": [
+   {
+    "taskId": "c4wc-ladder80",
+    "revision": "r1",
+    "sha256": "4e4bc701c6b4bfa2881fe8fcf5498575ff4ad20450035594eb7097d09c19cbba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder81",
+    "revision": "r1",
+    "sha256": "4ee98dc7a1f35d2fda10b070667c25ae05b7ec1d269619e56a74abd38771d1fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder82",
+    "revision": "r1",
+    "sha256": "7716a3ecec1c505c632329462c1713bb0fec5a47ed71176c6f9d4f199cb3859d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder83",
+    "revision": "r1",
+    "sha256": "269b86b8e6a9e357135e784d591d45b0e29077225e5ed98508830bd74c7ec6b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder84",
+    "revision": "r1",
+    "sha256": "34c4b973a25398198db79d91ba43744c2d2182b19f8b52076945a6447c561aa0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder85",
+    "revision": "r1",
+    "sha256": "d7fc3aeffd7b2f070aed69887adf4018379bb0e3a8673c1995ee30aca5df2829",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder86",
+    "revision": "r1",
+    "sha256": "cfe01bd67797432ca7527c42e9d29e3868645d058b2bff8dee92ed9fd051ca8d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder87",
+    "revision": "r1",
+    "sha256": "f2aca0fe5f2819baeecd9624c8cb68fc4a7f0b9927adc43bf5e3dc212b8bb7d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder88",
+    "revision": "r1",
+    "sha256": "5b334ef07bca45af75a81b543aa106f9db31fe8f9fee910fa025bb63aa2c1c82",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder89",
+    "revision": "r1",
+    "sha256": "e297746c841aeb1c0fddba8ad0944433eb9509abaecc215cf9b589d8853fa5d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder90",
+    "revision": "r1",
+    "sha256": "b25a824692e319fa63d26a8052b3b1e4224c17994965d296509e24d490c88be3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder91",
+    "revision": "r1",
+    "sha256": "2732c1c196b61f842164e08cee33d43a07b57ad07fd7436b281dbbbbdd32aee4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder92",
+    "revision": "r1",
+    "sha256": "a372bce1c020db4104b58ec0a5e01c5671bb5f66fdd5ed750b9a4de10131969f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder93",
+    "revision": "r1",
+    "sha256": "17f24eda1a198d7218ede1578748b3920c9501db08c15486bec45c0abe39ce08",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder94",
+    "revision": "r1",
+    "sha256": "b031eff912ac517d3fcca299d02f979084403195e4fb6bcf072896a772ea2231",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder95",
+    "revision": "r1",
+    "sha256": "7338aee9431274cb5c486a38dc490655ec7518c06489bd5c5bb926c45a75e2e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder96",
+    "revision": "r1",
+    "sha256": "1ffe5771263b39606096c5cc88a47c45babef07cadba8f12c321328035c87c46",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder97",
+    "revision": "r1",
+    "sha256": "c476c61564e2575eb029f58938d744f864c9807008852d4760b7631c776dd528",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder98",
+    "revision": "r1",
+    "sha256": "1bbaa8e84a2b3eda5d127818836f5ff4584dfa5af1bd7d278380ed5f830e06cd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-ladder99",
+    "revision": "r1",
+    "sha256": "36badc78d29b735d710f3b4f5dc3822e069b527a938e0249518fea2fa40620da",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error01",
+    "revision": "r1",
+    "sha256": "2fb0f8f27348542f52bac4e3ecf2b8056e9a5f822473d979a989521fd1e24d47",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error02",
+    "revision": "r1",
+    "sha256": "f3e6e0c48fd6ad3038668a0322acbc3481560aa81725f19c26f00be2c215c1ed",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error03",
+    "revision": "r1",
+    "sha256": "792060cc3f327203cb57f5b98b975fb18084665d02aa9bba7e88e4757df62e9f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error04",
+    "revision": "r1",
+    "sha256": "4165254e1ef5c246280f73ca76e0eee20d7246ef3bdd370818a16c7c73385bb7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error05",
+    "revision": "r1",
+    "sha256": "0ca9a102bdc5a05fde805d66fd4b2aafd2957742ba4deebf9d5bfda8307f9e9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error06",
+    "revision": "r1",
+    "sha256": "99f93622187ce19a9806a7487ee12b4d1be902fa87011126594bee4dfba0ca33",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error07",
+    "revision": "r1",
+    "sha256": "a6d32c10ecc717226418bcf45ce681319c8a2de7674f6ad53cd42d883486e1dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error08",
+    "revision": "r1",
+    "sha256": "bcfd124be0faa5b291d7bfaeea9a194f705be10bda4049684f2e78fd1cc3bf1d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error09",
+    "revision": "r1",
+    "sha256": "dfac03674af2578fc361cce7fa46d5efaf61302266b14441213e7ceb1aca20ca",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error10",
+    "revision": "r1",
+    "sha256": "469eb76b4236b9c5a501d1edb38c23966b6090dc2265f5f73534dfbd80c37b75",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error100",
+    "revision": "r1",
+    "sha256": "db5ce10c825f3bf40716aa4cc1e6a84db77476e567c3512b261d12dd28d4ca5f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error11",
+    "revision": "r1",
+    "sha256": "91c44a9adb240fe315badb48666b3acfbaf88e6e25f2b9f01d4bfd73ad05f53d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error12",
+    "revision": "r1",
+    "sha256": "173dc318baa2e9e3b86ae6b291cb9a2888aeb0b7b9093a8ee83ce5f3353316e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error13",
+    "revision": "r1",
+    "sha256": "b80182e8a59cab8d40df1f885e347e819731bb3b64f40d3929038f062aca361d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error14",
+    "revision": "r1",
+    "sha256": "0412f92126de222dfad101195fe046443ff0f2b623e24a30b118c3e7f89d9084",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error15",
+    "revision": "r1",
+    "sha256": "932c4ac47fbba2469101c9b2774f9cd18ce275c0a8ef8e6fccacb04fa434cd2a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error16",
+    "revision": "r1",
+    "sha256": "cd92a8723d444b01eff598f04d9fca27e7270fd187f3f6ee18831f3ef52db23c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error17",
+    "revision": "r1",
+    "sha256": "dd2d4815e9326eee8fe80fdd9542485ee31663f0da6b99e2084427a67bc58608",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error18",
+    "revision": "r1",
+    "sha256": "b168748addfb1eb02ea1713520d518b9dbcb4641fbfa44915b20f7ab205aabdc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error19",
+    "revision": "r1",
+    "sha256": "e96917625c303a076e9e75dc5e5d4007c88fc3b616a9688c4722da6b49ca3456",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error20",
+    "revision": "r1",
+    "sha256": "3fd8f7d9f05d61d521c9d8cae0fefed45f2c77b23d9afea2512bae23b5568824",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error21",
+    "revision": "r1",
+    "sha256": "daf82f78e854569b776c9122ea798f56a8d1183346454f8e87d67b557b3cf797",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error22",
+    "revision": "r1",
+    "sha256": "237bb03829471150b5575bd0b4df0a9bdd333f29b2544bd600f268d0c28a4ec7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error23",
+    "revision": "r1",
+    "sha256": "9d8d9587fcbd1482c94bf3dfd5e73b209a9488646cad6f246b54e3f9480b6414",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error24",
+    "revision": "r1",
+    "sha256": "9733245045f0ab28253ea149888645c67e361a539a515ad861e64a7180092706",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error25",
+    "revision": "r1",
+    "sha256": "00034ce9737b9658095a7666a8ee8c98e19614dcc957f15ad11f795e9fa6b191",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error26",
+    "revision": "r1",
+    "sha256": "70ff444194bfac2dc3f6fae859666f48aa599b974eec8d7cf7fbcf5ea9f2cd40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error27",
+    "revision": "r1",
+    "sha256": "7abf2b7faaef14c6968c4cb17bc3b767145d1cff612cc0229534957bc1b78400",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error28",
+    "revision": "r1",
+    "sha256": "4603e98ef82309b206e06bdec4fdf1a24f079697e4bee8700ede124a8035a9ae",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error29",
+    "revision": "r1",
+    "sha256": "29e026911293394474fca3b73ad40ac5d8a295a6aeb0221b781f03217274debd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error30",
+    "revision": "r1",
+    "sha256": "90f175fcba2319bafd4c62791cf7c185359950fd1f1c109a79d443bbd402df10",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error31",
+    "revision": "r1",
+    "sha256": "d0499cd90a18290c8059b880d704ab7d5888ecaad80fb3a6f47c3a95f37bdd22",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error32",
+    "revision": "r1",
+    "sha256": "86a94ec55dd7a3cdfded61227ea50ace762551f0c92715ee099487fc91e51abd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error33",
+    "revision": "r1",
+    "sha256": "a29b3e3f8b394904d3de8c371aa8f754e88468776fa4c04ccc90094a320adaf7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error34",
+    "revision": "r1",
+    "sha256": "95fa7edb9032ab033369712e36c416f06535857c5bc3b0298273bd989185a888",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error35",
+    "revision": "r1",
+    "sha256": "c4ff71d9bb83443b852d15ceef65f0e435c5982b857c8f02e711b974d23c0863",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error36",
+    "revision": "r1",
+    "sha256": "efdd66758dbc11c9a99c37ee6ad3498c317f1fbb808a21955a210ab3fd886f11",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error37",
+    "revision": "r1",
+    "sha256": "d473ee787dc1a3ccacf7052886bf86ad7b92650dbeabf6990eb230f7f970c2d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error38",
+    "revision": "r1",
+    "sha256": "22fcda98580e27759f2e561a7390b6fa40d8a5858c9ce57779208c386754864b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error39",
+    "revision": "r1",
+    "sha256": "f82b6af3f80b6742c34ec391021417bb0cb91ede5a4484b9ed1a89ec362e145a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error40",
+    "revision": "r1",
+    "sha256": "712a2ef83389cbb9b328f99cb9601c2821e500ac0851dcd82b052cab89463081",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error41",
+    "revision": "r1",
+    "sha256": "6adffaf0e886785f9a33ba76fe5a2ce14dca33137100406998d3cd43d2887824",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error42",
+    "revision": "r1",
+    "sha256": "6439c24868d8305b406e5c46ec1dbd053220bfbde2b44d171061479472ef927c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error43",
+    "revision": "r1",
+    "sha256": "118bf201f3f1d06efc4d45bdd97da8c4f9a0768244d5dc26bcf851351008b0a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error44",
+    "revision": "r1",
+    "sha256": "d34ff440823c599f8571391baa535442949352a32642fe8e81b2f9b4a4db5168",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error45",
+    "revision": "r1",
+    "sha256": "1fc191e896c5eef7b571e832e25e664f04c395db036be59d5bf3db1971bd42c3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error46",
+    "revision": "r1",
+    "sha256": "a724d499beaeeaa23920f7bddf0745b7220e80272f0c7a805e2b8879f0f39b78",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error47",
+    "revision": "r1",
+    "sha256": "2c6fecc8acde1b0966a77914b29fb20b6f7f616f7ee40a6e1c6d9aa79d7c9de2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error48",
+    "revision": "r1",
+    "sha256": "c5e745db6302fbd0eab060eda22f097ba98b6e959d4604952b88ee32f4be42e0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error49",
+    "revision": "r1",
+    "sha256": "ab0058e4296979cd23a755403bbc9461648d2b6eedbb0f0a256bfaafde7d6e27",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error50",
+    "revision": "r1",
+    "sha256": "7c2adb6ffa78470cd7fc9df4b53ded7b69532e751f4e992d66650dd6da3dd88d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error51",
+    "revision": "r1",
+    "sha256": "6b4d8db6303bfafb842c20adbd5c4fcffb0ae91b31f1098cc42eb6e3e3e4db2d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error52",
+    "revision": "r1",
+    "sha256": "a064c98873ab78884603ee78e02636a74f61246748c9aa0f9b55f9a8ece9c0c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error53",
+    "revision": "r1",
+    "sha256": "000b9bec3396c07ce2108d7b8613023879270d9edc7d2cbaab25c40b7ba3f114",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error54",
+    "revision": "r1",
+    "sha256": "c669ff3f6cb72ff92010b09a06077e3b6e97fdfa4e9ec17627f68ce1e6de04ff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error55",
+    "revision": "r1",
+    "sha256": "133daccbbe22736ac4515f1ed16ce24ebb8e63093da0c8d91d3e7fe523d3d2b7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error56",
+    "revision": "r1",
+    "sha256": "2e097335ee75f0695fdd9d9c2b000b78f42fc4a68a654eeab449771a221fcda1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error57",
+    "revision": "r1",
+    "sha256": "7c0a59a0ed8ffda5334f47162bf9ad607f1a4760f94d589633346b58ad91afa2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error58",
+    "revision": "r1",
+    "sha256": "84a9ed65cc8e762ae364aa123468ed181c9b3368e5e32ce79f95d756d868d752",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c4wc-error59",
+    "revision": "r1",
+    "sha256": "49a00b8a7292f20647e58924450fe4e4a4664cdbcf6daad0e322870f75ebb121",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c4wc-mission21",
+    "revision": "r1",
+    "sha256": "b27b4fb4cb3797fc4e66d97db4474b7ee0b8f10229ac8e2922c860f205562742"
+   },
+   {
+    "missionId": "c4wc-mission22",
+    "revision": "r1",
+    "sha256": "b2d86c0e9ef94ce29aeecc8a03ed1d69294d5d600cd47abb274e9f114ffe026e"
+   },
+   {
+    "missionId": "c4wc-mission23",
+    "revision": "r1",
+    "sha256": "28b8f6d40d389e1f43b69d751d28d02ecf842dfcec41cb486755d897fc30993a"
+   },
+   {
+    "missionId": "c4wc-mission24",
+    "revision": "r1",
+    "sha256": "1f98be7ad2f7c38353a6bfb53e30ae712bebf110c8dcae8023ee3edd1592d47e"
+   },
+   {
+    "missionId": "c4wc-mission25",
+    "revision": "r1",
+    "sha256": "089d5c6b432f2fb9632c54c5f243c36a88f2e5a70eee11593511dd207565d5e7"
+   },
+   {
+    "missionId": "c4wc-mission26",
+    "revision": "r1",
+    "sha256": "8f0ff98e41cc27f35ced3543d3490079db4fc7f449f8abc41a98e70348e9822e"
+   },
+   {
+    "missionId": "c4wc-mission27",
+    "revision": "r1",
+    "sha256": "c4ec99e657b6666d50364166717837ce9a894213f468ab5c255579fcd5116f35"
+   },
+   {
+    "missionId": "c4wc-mission28",
+    "revision": "r1",
+    "sha256": "cf69f805be09ce3bffb4454e1a01924c2a06d64782499d090aaafc8722ff287d"
+   },
+   {
+    "missionId": "c4wc-mission29",
+    "revision": "r1",
+    "sha256": "4667c941e1a82a7866323a2f10964cf38ffda752cee279d140dfcdfbb7f34e63"
+   },
+   {
+    "missionId": "c4wc-mission30",
+    "revision": "r1",
+    "sha256": "4bc985dfbd83268edf031d56e75b6fb81e756ad736df97fd18e5fb8990548b15"
+   },
+   {
+    "missionId": "c4wc-mission31",
+    "revision": "r1",
+    "sha256": "2712fc9d0efaadc21bd505d04198c04fb8247e850a578ee4a10098f096d4a7d1"
+   },
+   {
+    "missionId": "c4wc-mission32",
+    "revision": "r1",
+    "sha256": "26337c8a5e66852aa7d34512ba246984fe7ff4b5b9ae414afe145b0a8ce068f9"
+   },
+   {
+    "missionId": "c4wc-mission33",
+    "revision": "r1",
+    "sha256": "cd9fff6c37bcaae234c9b02119039adbb4ddba670b53aaf0500f1b054973be87"
+   },
+   {
+    "missionId": "c4wc-mission34",
+    "revision": "r1",
+    "sha256": "f81de4c5e41379ae78c21d9be6a2ce76a40453b26f46d87eb2d3db4353264edc"
+   },
+   {
+    "missionId": "c4wc-mission35",
+    "revision": "r1",
+    "sha256": "71aaa320e4cb9eb431992ca99729a9d65d9aa93b818878cfabf15ed6d059ac2e"
+   },
+   {
+    "missionId": "c4wc-mission36",
+    "revision": "r1",
+    "sha256": "a339befb9de6e86c7e316d89784f095a60ca10f9a19ca2484655f13174ef4daf"
+   },
+   {
+    "missionId": "c4wc-mission37",
+    "revision": "r1",
+    "sha256": "e6c9b4cfda39b0228677313bb39d08949f81c4186191855c5ab854641e4b7a54"
+   },
+   {
+    "missionId": "c4wc-mission38",
+    "revision": "r1",
+    "sha256": "4714463fa9762dd755ce5d39354d0e623f37a9def9012eae54b48f4d040abdb6"
+   },
+   {
+    "missionId": "c4wc-mission39",
+    "revision": "r1",
+    "sha256": "95b6df752630e1bd70b40bd72a15830fd816b1fe26ab92c8afde2efcb0f20401"
+   },
+   {
+    "missionId": "c4wc-mission40",
+    "revision": "r1",
+    "sha256": "6ebe726965ae64dfe5bdf6cfc34bbf7f528d2bf09208527c24e9d1883adab844"
+   }
+  ]
+ }
+}

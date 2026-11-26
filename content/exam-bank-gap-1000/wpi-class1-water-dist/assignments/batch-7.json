@@ -1,0 +1,402 @@
+{
+ "courseKey": "wpi-class1-water-dist",
+ "bankKey": "wpi-class1-water-dist",
+ "batch": 7,
+ "size": 43,
+ "conceptualCount": 34,
+ "calcCount": 9,
+ "topicPoolRound": 2,
+ "questionNumStart": 2710,
+ "questionNumEnd": 2752,
+ "itemIdStart": "DISTRIBUTION-L1-710",
+ "itemIdEnd": "DISTRIBUTION-L1-752",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2710,
+   "itemId": "DISTRIBUTION-L1-710",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] nitrification awareness"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2711,
+   "itemId": "DISTRIBUTION-L1-711",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] disinfection of repaired mains"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2712,
+   "itemId": "DISTRIBUTION-L1-712",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] hydrant operation and flow awareness"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2713,
+   "itemId": "DISTRIBUTION-L1-713",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] pressure zones awareness"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2714,
+   "itemId": "DISTRIBUTION-L1-714",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Administration] record keeping"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2715,
+   "itemId": "DISTRIBUTION-L1-715",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[General] excavation safety awareness"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2716,
+   "itemId": "DISTRIBUTION-L1-716",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Support Systems] tank inspection awareness"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2717,
+   "itemId": "DISTRIBUTION-L1-717",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "[Processes] flushing volumes"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2718,
+   "itemId": "DISTRIBUTION-L1-718",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification awareness"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2719,
+   "itemId": "DISTRIBUTION-L1-719",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of repaired mains"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2720,
+   "itemId": "DISTRIBUTION-L1-720",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] hydrant operation and flow awareness"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2721,
+   "itemId": "DISTRIBUTION-L1-721",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zones awareness"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2722,
+   "itemId": "DISTRIBUTION-L1-722",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] record keeping"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2723,
+   "itemId": "DISTRIBUTION-L1-723",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] excavation safety awareness"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2724,
+   "itemId": "DISTRIBUTION-L1-724",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] tank inspection awareness"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2725,
+   "itemId": "DISTRIBUTION-L1-725",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] flushing volumes"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2726,
+   "itemId": "DISTRIBUTION-L1-726",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification awareness"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2727,
+   "itemId": "DISTRIBUTION-L1-727",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of repaired mains"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2728,
+   "itemId": "DISTRIBUTION-L1-728",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] hydrant operation and flow awareness"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2729,
+   "itemId": "DISTRIBUTION-L1-729",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zones awareness"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2730,
+   "itemId": "DISTRIBUTION-L1-730",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] record keeping"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2731,
+   "itemId": "DISTRIBUTION-L1-731",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[General] excavation safety awareness"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2732,
+   "itemId": "DISTRIBUTION-L1-732",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] tank inspection awareness"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2733,
+   "itemId": "DISTRIBUTION-L1-733",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] flushing volumes"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2734,
+   "itemId": "DISTRIBUTION-L1-734",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification awareness"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2735,
+   "itemId": "DISTRIBUTION-L1-735",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of repaired mains"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2736,
+   "itemId": "DISTRIBUTION-L1-736",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] hydrant operation and flow awareness"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2737,
+   "itemId": "DISTRIBUTION-L1-737",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] pressure zones awareness"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2738,
+   "itemId": "DISTRIBUTION-L1-738",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Administration] record keeping"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2739,
+   "itemId": "DISTRIBUTION-L1-739",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[General] excavation safety awareness"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2740,
+   "itemId": "DISTRIBUTION-L1-740",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Support Systems] tank inspection awareness"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2741,
+   "itemId": "DISTRIBUTION-L1-741",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] flushing volumes"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2742,
+   "itemId": "DISTRIBUTION-L1-742",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] nitrification awareness"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2743,
+   "itemId": "DISTRIBUTION-L1-743",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "[Processes] disinfection of repaired mains"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2744,
+   "itemId": "DISTRIBUTION-L1-744",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flushing volume at three pipe volumes"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2745,
+   "itemId": "DISTRIBUTION-L1-745",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "hydrant flow awareness calculation"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2746,
+   "itemId": "DISTRIBUTION-L1-746",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "residual decay awareness calculation"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2747,
+   "itemId": "DISTRIBUTION-L1-747",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "tank drainage time"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2748,
+   "itemId": "DISTRIBUTION-L1-748",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flushing volume at three pipe volumes"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2749,
+   "itemId": "DISTRIBUTION-L1-749",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "hydrant flow awareness calculation"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2750,
+   "itemId": "DISTRIBUTION-L1-750",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "residual decay awareness calculation"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2751,
+   "itemId": "DISTRIBUTION-L1-751",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "tank drainage time"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2752,
+   "itemId": "DISTRIBUTION-L1-752",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flushing volume at three pipe volumes"
+  }
+ ]
+}

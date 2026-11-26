@@ -1,0 +1,65 @@
+[
+ {
+  "itemId": "DISTRIBUTION-L4-630",
+  "expression": "48500-(36200+1800+950+1350)",
+  "expected": "8200",
+  "decimalPlaces": 0,
+  "unit": "m3"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-631",
+  "expression": "(28000+3500)*260/1000+850",
+  "expected": "9040",
+  "decimalPlaces": 0,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-632",
+  "expression": "240*1.25/100*5/0.6",
+  "expected": "25",
+  "decimalPlaces": 0,
+  "unit": "projects"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-633",
+  "expression": "36*2*12+12*4",
+  "expected": "912",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-634",
+  "expression": "(6200000-5150000-120000-180000)/500",
+  "expected": "1500",
+  "decimalPlaces": 0,
+  "unit": "m3/km/year"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-635",
+  "expression": "(18600*1.22-1240)*1.85",
+  "expected": "39686.2",
+  "decimalPlaces": 1,
+  "unit": "m3/day"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-636",
+  "expression": "96*0.6/4.8",
+  "expected": "12.0",
+  "decimalPlaces": 1,
+  "unit": "years"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-637",
+  "expression": "(18+22+14)*2*12+8*12+36*3",
+  "expected": "1500",
+  "decimalPlaces": 0,
+  "unit": "samples"
+ },
+ {
+  "itemId": "DISTRIBUTION-L4-638",
+  "expression": "(1850000-1420000-55000-75000)*1000/12000",
+  "expected": "25000",
+  "decimalPlaces": 0,
+  "unit": "L/connection"
+ }
+]

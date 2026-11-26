@@ -1,0 +1,28 @@
+{
+  "reviews": [
+    {
+      "questionNum": 444,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects the cited guidance: including names and phone numbers for troubleshooting, servicing, and assistance, and updating the list annually or when contacts change is directly supported by Section 3 of the Indigenous Services Canada ERP document.",
+        "Item correctly presents the source as public wastewater emergency-response guidance for First Nations communities, not as an Ontario regulatory or licensing requirement, avoiding jurisdictional overreach.",
+        "Exactly one option is clearly correct; the distractors omit key categories (operators, repair providers, agencies, media, community members) or delay/understate preparedness, but do not explicitly encourage unsafe acts or failure to respond during an emergency.",
+        "No universal regulatory claim is made; the stem asks about a practice “supported by public guidance,” which matches the non-regulatory character of the source."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 493,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately summarizes the Ontario Sampling and Analysis Protocol: MDL is defined as a statistically derived method attribute indicating detection at a specified confidence, and RDL is a reporting detection limit with the requirement that MDL be less than or equal to RDL.",
+        "Jurisdiction and scope are accurate: the question is explicitly limited to Ontario laboratory-analysis guidance under the Nutrient Management Act and does not present MDL/RDL distinctions as wastewater operator-licensing requirements.",
+        "Exactly one option is correct; distractors either invert the MDL/RDL relationship, treat them as interchangeable, or assert an incorrect requirement that RDL must always be lower than MDL, all of which are inconsistent with the cited guidance yet remain plausible misconceptions for learners.",
+        "The explanation stays within the source content, does not overstate the guidance, and avoids unsupported universal claims beyond what the protocol describes."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

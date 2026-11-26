@@ -1,0 +1,12 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { parseArgs } from "node:util";
+import { auditWpiClass4Evidence } from "./lib/wpiClass4Evidence.mjs";
+const { values } = parseArgs({ options: { "package-dir": { type: "string" }, report: { type: "string" } } });
+if (!values["package-dir"] || !values.report) throw new Error("Usage: node scripts/audit-wpi-class4-evidence.mjs --package-dir=/private/package --report=/private/new-report.json");
+const read = async name => JSON.parse(await readFile(resolve(values["package-dir"], name), "utf8"));
+const [manifest, existing, additions] = await Promise.all([read("release-manifest.json"), read("existing-questions.json"), read("new-questions.json")]);
+const report = auditWpiClass4Evidence({ manifest, existing, additions });
+await writeFile(values.report, JSON.stringify(report, null, 2), { flag: "wx", mode: 0o600 });
+console.log(JSON.stringify({ count: report.count, errors: report.errors.length, coverageGaps: report.coverageGaps.length, answerCueFlags: report.answerCueFlags.length, missingReferences: report.missingReferences.length }));
+if (report.errors.length || report.coverageGaps.length) process.exitCode = 1;

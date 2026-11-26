@@ -1,0 +1,429 @@
+{
+ "courseKey": "class4-wastewater-coll",
+ "bankKey": "class4-wastewater-coll",
+ "batch": 1,
+ "size": 46,
+ "conceptualCount": 37,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2451,
+ "questionNumEnd": 2496,
+ "itemIdStart": "COLLECTION-L4-451",
+ "itemIdEnd": "COLLECTION-L4-496",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2451,
+   "itemId": "COLLECTION-L4-451",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "collection utility management"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2452,
+   "itemId": "COLLECTION-L4-452",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "CMOM leadership at utility scale"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2453,
+   "itemId": "COLLECTION-L4-453",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "I&I strategy and evaluation"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2454,
+   "itemId": "COLLECTION-L4-454",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "lift station asset strategy"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2455,
+   "itemId": "COLLECTION-L4-455",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "force main asset strategy"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2456,
+   "itemId": "COLLECTION-L4-456",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "odour and corrosion asset protection"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2457,
+   "itemId": "COLLECTION-L4-457",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "overflow risk management"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2458,
+   "itemId": "COLLECTION-L4-458",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulatory leadership"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2459,
+   "itemId": "COLLECTION-L4-459",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "collection utility management"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2460,
+   "itemId": "COLLECTION-L4-460",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership at utility scale"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2461,
+   "itemId": "COLLECTION-L4-461",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I strategy and evaluation"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2462,
+   "itemId": "COLLECTION-L4-462",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station asset strategy"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2463,
+   "itemId": "COLLECTION-L4-463",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main asset strategy"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2464,
+   "itemId": "COLLECTION-L4-464",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour and corrosion asset protection"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2465,
+   "itemId": "COLLECTION-L4-465",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "overflow risk management"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2466,
+   "itemId": "COLLECTION-L4-466",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory leadership"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2467,
+   "itemId": "COLLECTION-L4-467",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "collection utility management"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2468,
+   "itemId": "COLLECTION-L4-468",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership at utility scale"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2469,
+   "itemId": "COLLECTION-L4-469",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I strategy and evaluation"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2470,
+   "itemId": "COLLECTION-L4-470",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station asset strategy"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2471,
+   "itemId": "COLLECTION-L4-471",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main asset strategy"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2472,
+   "itemId": "COLLECTION-L4-472",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "odour and corrosion asset protection"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2473,
+   "itemId": "COLLECTION-L4-473",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "overflow risk management"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2474,
+   "itemId": "COLLECTION-L4-474",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory leadership"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2475,
+   "itemId": "COLLECTION-L4-475",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "collection utility management"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2476,
+   "itemId": "COLLECTION-L4-476",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership at utility scale"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2477,
+   "itemId": "COLLECTION-L4-477",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "I&I strategy and evaluation"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2478,
+   "itemId": "COLLECTION-L4-478",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station asset strategy"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2479,
+   "itemId": "COLLECTION-L4-479",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force main asset strategy"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2480,
+   "itemId": "COLLECTION-L4-480",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "odour and corrosion asset protection"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2481,
+   "itemId": "COLLECTION-L4-481",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "overflow risk management"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2482,
+   "itemId": "COLLECTION-L4-482",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory leadership"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2483,
+   "itemId": "COLLECTION-L4-483",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "collection utility management"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2484,
+   "itemId": "COLLECTION-L4-484",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "CMOM leadership at utility scale"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2485,
+   "itemId": "COLLECTION-L4-485",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "I&I strategy and evaluation"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2486,
+   "itemId": "COLLECTION-L4-486",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lift station asset strategy"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2487,
+   "itemId": "COLLECTION-L4-487",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force main asset strategy"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2488,
+   "itemId": "COLLECTION-L4-488",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "system flow and infiltration accounting"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2489,
+   "itemId": "COLLECTION-L4-489",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "RDII program effectiveness quantity"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2490,
+   "itemId": "COLLECTION-L4-490",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with peaking and growth factors"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2491,
+   "itemId": "COLLECTION-L4-491",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "lift station fleet energy quantity"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2492,
+   "itemId": "COLLECTION-L4-492",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "system flow and infiltration accounting"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2493,
+   "itemId": "COLLECTION-L4-493",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "RDII program effectiveness quantity"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2494,
+   "itemId": "COLLECTION-L4-494",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with peaking and growth factors"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2495,
+   "itemId": "COLLECTION-L4-495",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "lift station fleet energy quantity"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2496,
+   "itemId": "COLLECTION-L4-496",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "system flow and infiltration accounting"
+  }
+ ]
+}

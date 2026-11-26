@@ -1,0 +1,219 @@
+// Echelon Institute — Subscription Success Page
+// Shown after a successful annual subscription checkout.
+// Confirms payment without creating identity. Anonymous customers continue
+// through the existing OTP flow before current access can be restored.
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "wouter";
+import { trpc } from "@/lib/trpc";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import LandingNav from "@/components/LandingNav";
+
+/** Write subscription access to localStorage so the quiz gate lifts immediately. */
+function writeSubscriptionAccess(email: string, tier: string, province: string, examTypes: string[], accessToken?: string | null) {
+  try {
+    localStorage.setItem("echelon_subscription_email", email);
+    localStorage.setItem("echelon_subscription_tier", tier);
+    localStorage.setItem("echelon_subscription_province", province);
+    localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(examTypes));
+    // Also set the global trial-unlocked flag so the quiz gate lifts immediately
+    localStorage.setItem("echelon_trial_unlocked", "true");
+    if (email) {
+      localStorage.setItem("echelon_trial_email", email);
+    }
+    // Store signed JWT access token so server can verify without a DB lookup on every question fetch
+    if (accessToken) {
+      localStorage.setItem("echelon_access_token", accessToken);
+    }
+  } catch {
+    // ignore — localStorage may be unavailable in some browsers
+  }
+}
+
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
+
+const TIER_LABELS: Record<string, string> = {
+  "class1": "Class 1 All-Access",
+  "class2": "Class 2 All-Access",
+  "class3": "Class 3 All-Access",
+  "class4": "Class 4 All-Access",
+  "all-access": "All-Access Pass",
+};
+
+const TIER_QUIZ_PATHS_ONTARIO: Record<string, string> = {
+  "class1": "/quiz",
+  "class2": "/class2-water",
+  "class3": "/class3-water",
+  "class4": "/class4-water",
+  "all-access": "/quiz",
+};
+
+const TIER_QUIZ_PATHS_WPI: Record<string, string> = {
+  "class1": "/wpi-class1-water",
+  "class2": "/wpi-class2-water",
+  "class3": "/wpi-class3-water",
+  "class4": "/wpi-class4-water",
+  "all-access": "/wpi-class1-water",
+};
+
+export default function SubscriptionSuccess() {
+  usePageMeta({
+    title: "Subscription Confirmation — Echelon Institute",
+    description: "Verify your payment and current subscription access.",
+    noindex: true
+  });
+
+  const [, setLocation] = useLocation();
+  const [countdown, setCountdown] = useState(8);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [accessWritten, setAccessWritten] = useState(false);
+  const [requiresSignIn, setRequiresSignIn] = useState(false);
+
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [verifiedPlan, setVerifiedPlan] = useState({ tier: "", province: "" });
+
+  // Only the session identifier is accepted from the receipt URL.
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get("session_id") ?? "";
+  const { tier, province } = verifiedPlan;
+  const tierLabel = TIER_LABELS[tier] ?? "All-Access";
+  const quizPath = province === "western"
+    ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
+    : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");
+  const provinceLabel = province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)";
+
+  // ── Verify session server-side and write localStorage access ──────────────
+  const verifyMutation = trpc.stripe.verifySubscriptionSession.useMutation({
+    onSuccess: (data) => {
+      setPaymentConfirmed(data.paid);
+      if (data.paid && data.examTypes.length > 0) {
+        setVerifiedPlan({ tier: data.tier, province: data.province });
+        writeSubscriptionAccess(data.email, data.tier, data.province, data.examTypes, data.accessToken);
+      } else {
+        // Payment evidence is not identity; continue through the existing OTP flow.
+        setRequiresSignIn(true);
+      }
+      setAccessWritten(true);
+    },
+    onError: () => {
+      setRequiresSignIn(true);
+      setAccessWritten(true);
+    },
+  });
+
+  // Fire the verification once on mount
+  useEffect(() => {
+    if (sessionId) {
+      verifyMutation.mutate({ sessionId });
+    } else {
+      setRequiresSignIn(true);
+      setAccessWritten(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId]);
+
+  // Start countdown once access is written
+  useEffect(() => {
+    if (!accessWritten || requiresSignIn) return;
+    intervalRef.current = setInterval(() => {
+      setCountdown(c => {
+        if (c <= 1) {
+          clearInterval(intervalRef.current!);
+          setLocation(quizPath);
+          return 0;
+        }
+        return c - 1;
+      });
+    }, 1000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [accessWritten, requiresSignIn, quizPath, setLocation]);
+
+  return (
+    <div className="learner-redesign learner-subscription-page" style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%)",
+      display: "flex",
+      flexDirection: "column",
+      fontFamily: "'Sora', sans-serif",
+    }}>
+      <LandingNav currentPath="/subscription-success" />
+      <div className="learner-subscription-main" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 16px", width: "100%" }}>
+      <div className="learner-subscription-card" style={{
+        background: "#fff",
+        borderRadius: 20,
+        padding: "40px 36px",
+        maxWidth: 520,
+        width: "100%",
+        textAlign: "center",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+      }}>
+        <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 48, width: "auto", objectFit: "contain", marginBottom: 16 }} />
+        <div style={{
+          width: 64, height: 64, borderRadius: "50%",
+          background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          margin: "0 auto 20px", fontSize: 28, color: "#fff",
+        }}>{!accessWritten ? "…" : paymentConfirmed ? "✓" : "!"}</div>
+        <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
+          {!accessWritten ? "Verifying your payment…" : !paymentConfirmed ? "Payment not confirmed" : requiresSignIn ? "Payment confirmed" : "Subscription Activated!"}
+        </h1>
+        <p style={{ fontSize: 15, color: "#475569", margin: "0 0 20px", lineHeight: 1.6 }}>
+          {!accessWritten ? "Please wait while we verify your payment and current access." : !paymentConfirmed ? "We could not confirm a paid subscription from this receipt. Sign in to check your current access, or contact support if you were charged." : requiresSignIn ? "Sign in with your subscription email to access your account. This receipt confirms payment, not a new subscription term." : <>Your <strong>{tierLabel}</strong> subscription for <strong>{provinceLabel}</strong> is now active.
+          You have access to your currently included exam types.</>}
+        </p>
+        {accessWritten && !requiresSignIn && <div style={{
+          background: "#F5F3FF", border: "1.5px solid #C4B5FD",
+          borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left",
+        }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
+            Your subscription includes
+          </div>
+          <ul style={{ margin: 0, padding: "0 0 0 16px", fontSize: 13, color: "#475569", lineHeight: 1.8 }}>
+            <li>Unlimited practice questions for all included exam types</li>
+            <li>AI Tutor with step-by-step explanations</li>
+            <li>Timed mock exams &amp; score history</li>
+            <li>Flashcards &amp; module study notes</li>
+            <li>Access follows your current subscription term shown in your account</li>
+          </ul>
+        </div>}
+        {accessWritten && <Link href={requiresSignIn ? "/login/otp" : quizPath}>
+          <button
+            onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
+            style={{
+              width: "100%", padding: "14px 0", borderRadius: 12,
+              background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+              color: "#fff", border: "none", fontSize: 15, fontWeight: 800,
+              cursor: "pointer", fontFamily: "inherit", marginBottom: 12,
+            }}
+          >
+            {requiresSignIn ? "Sign In with Email Code →" : "Start Studying Now →"}
+          </button>
+        </Link>}
+        {paymentConfirmed && <Link href="/account">
+          <button
+            onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
+            style={{
+              width: "100%", padding: "12px 0", borderRadius: 12,
+              background: "#F1F5F9", color: "#475569",
+              border: "1.5px solid #E2E8F0", fontSize: 14, fontWeight: 600,
+              cursor: "pointer", fontFamily: "inherit", marginBottom: 16,
+            }}
+          >
+            View My Subscriptions
+          </button>
+        </Link>}
+        <p role="status" style={{ fontSize: 12, color: "#94A3B8", margin: 0 }}>
+          {requiresSignIn ? "Use the email associated with your subscription." : accessWritten
+            ? `Redirecting to your study page in ${countdown}s…`
+            : "Verifying your payment…"}
+        </p>
+      </div>
+      <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>
+        Questions? Email us at{" "}
+        <a href="mailto:abello@echeloninstitute.ca" style={{ color: "rgba(255,255,255,0.6)" }}>
+          abello@echeloninstitute.ca
+        </a>
+      </p>
+      </div>
+    </div>
+  );
+}

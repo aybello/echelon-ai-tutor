@@ -1,0 +1,218 @@
+import { execFile } from "node:child_process";
+import { createRequire } from "node:module";
+import { dirname, resolve as resolvePath } from "node:path";
+import { fileURLToPath } from "node:url";
+import { decodeHtmlEntities } from "./jobUtils.mjs";
+import { fetchPostingResponse, postingDestination } from "./jobPostingTransport.mjs";
+import { matchPostingEvidence } from "./jobPostingEvidence.mjs";
+
+export function plainJobText(value = "") {
+  return decodeHtmlEntities(value.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+}
+export function sourceDate(value) {
+  if (!value) return null;
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) ? date : null;
+}
+// Zoned ISO instants must precede date-only alternatives; never silently turn
+// an explicitly timed deadline into the end of its calendar day.
+const ISO_INSTANT_PATTERN = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(?::\\d{2}(?:\\.\\d{1,3})?)?(?:Z|[+-]\\d{2}:?\\d{2})";
+const DATE_PATTERN = `(?:${ISO_INSTANT_PATTERN}|[A-Za-z]+\\s+\\d{1,2}(?:st|nd|rd|th)?(?:,)?\\s+\\d{4}|\\d{1,2}(?:st|nd|rd|th)?\\s+[A-Za-z]+(?:,)?\\s+\\d{4}|\\d{4}-\\d{2}-\\d{2}(?![T\\d]))`;
+// Inspect only the immediate suffix, allowing punctuation wrappers before/after at.
+// These are rejection cues, not a natural-language time parser.
+const UNSUPPORTED_CLOSING_TIME = /^[\s,;:()[\]{}\-–—]*(?:T(?=\d)|at[\s,;:()[\]{}\-–—]*(?:\d|noon\b|midnight\b)|\d{1,2}(?:[:.h]|\s*[ap]\.?m\.?(?![a-z]))|noon\b|midnight\b)/i;
+
+function closingCalendarDate(value) {
+  const normalized = value.replace(/(\d)(st|nd|rd|th)\b/gi, "$1");
+  const date = sourceDate(normalized);
+  if (!date) return null;
+  const isoDay = normalized.match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+  if (isoDay) {
+    // Validate the written calendar day, not the zoned instant's UTC day.
+    if (sourceDate(`${isoDay}T00:00:00Z`)?.toISOString().slice(0, 10) !== isoDay) return null;
+  } else {
+    const day = normalized.match(/^(?:[A-Za-z]+\s+)?(\d{1,2})/)?.[1];
+    if (date.getDate() !== Number(day)) return null;
+  }
+  return date;
+}
+
+export function parseJobDates(text) {
+  const clean = plainJobText(text);
+  const parse = label => {
+    const match = clean.match(new RegExp(`(?:${label})\\s*(?:date)?\\s*[:\\-]?\\s*(${DATE_PATTERN})`, "i"));
+    if (!match) return null;
+    const date = sourceDate(match[1].replace(/(\d)(st|nd|rd|th)\b/gi, "$1"));
+    return date ? { date, precise: /T\d{2}:/i.test(match[1]) } : null;
+  };
+  // Select the field before parsing its value: an unsupported first deadline
+  // must not disappear in favour of another later label/date grammar.
+  const field = clean.match(/\b(application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before))\b\s*(?:date\b)?\s*[:\-]?\s*/i);
+  const value = field ? clean.slice(field.index + field[0].length) : "";
+  const numeric = /^application close\s*:/i.test(field?.[0] ?? "") ? value.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?![\d/])/) : null;
+  const matched = numeric?.[0] ?? value.match(new RegExp(`^${DATE_PATTERN}(?!\\d)`, "i"))?.[0];
+  const precise = Boolean(matched && /T\d{2}:/i.test(matched));
+  let closing = null;
+  if (matched && (precise || !UNSUPPORTED_CLOSING_TIME.test(value.slice(matched.length)))) {
+    // Ottawa's explicit Application Close label alone uses day/month/year.
+    const dateValue = numeric ? `${numeric[3]}-${numeric[2].padStart(2, "0")}-${numeric[1].padStart(2, "0")}` : matched;
+    const date = closingCalendarDate(dateValue);
+    if (date) closing = { date, precise };
+  }
+  return { postedAt: parse("posted|published|posting")?.date ?? null, closingAt: closing ? closing.precise ? closing.date : new Date(Date.UTC(closing.date.getUTCFullYear(), closing.date.getUTCMonth(), closing.date.getUTCDate(), 23, 59, 59, 999)) : null };
+}
+const PDF_TIMEOUT_MS = 8000;
+const PDF_INPUT_LIMIT = 5_000_000;
+const PDF_OUTPUT_LIMIT = 2_000_000;
+const PDF_QUEUE_LIMIT = 8;
+let pdfChildActive = false;
+const pdfQueue = [];
+const pdfUnavailable = () => new Error("PDF text extraction unavailable");
+
+function startPdfExtraction(task) {
+  clearTimeout(task.timer);
+  task.signal?.removeEventListener("abort", task.onAbort);
+  if (task.signal?.aborted) { task.reject(pdfUnavailable()); return; }
+  const remaining = Math.ceil(task.deadline - performance.now());
+  if (remaining <= 0) { task.reject(pdfUnavailable()); return; }
+  pdfChildActive = true;
+  let child, error = pdfUnavailable(), stdout, failed = false, completed = false;
+  const complete = () => {
+    if (completed) return;
+    completed = true;
+    pdfChildActive = false;
+    task.bytes = undefined;
+    if (failed || error || task.signal?.aborted || !stdout?.trim()) task.reject(pdfUnavailable());
+    else task.resolve(stdout);
+    while (!pdfChildActive && pdfQueue.length) startPdfExtraction(pdfQueue.shift());
+  };
+  try {
+    const pdfModule = createRequire(import.meta.url).resolve("pdfjs-dist/legacy/build/pdf.mjs");
+    const pdfRoot = resolvePath(dirname(pdfModule), "../..");
+    // esbuild bundles this module into dist/index.js. The build copies only the
+    // child helper to dist/scripts; source execution uses its sibling helper.
+    const helper = fileURLToPath(new URL(import.meta.url.endsWith("/jobVerification.mjs") ? "./jobPdfText.mjs" : "./scripts/jobPdfText.mjs", import.meta.url));
+    child = execFile(process.execPath, [
+      "--max-old-space-size=96", "--max-semi-space-size=4",
+      "--disallow-code-generation-from-strings", "--no-addons", "--permission",
+      `--allow-fs-read=${helper}`, `--allow-fs-read=${pdfRoot}`,
+      helper, pdfModule,
+    ], {
+      timeout: remaining, signal: task.signal, killSignal: "SIGKILL", maxBuffer: PDF_OUTPUT_LIMIT,
+      encoding: "utf8", env: { LANG: "C.UTF-8" },
+    }, (resultError, resultOutput) => { error = resultError; stdout = resultOutput; });
+    // Abort can invoke execFile's callback before stdio/process closure. Only
+    // close may settle a spawned task or admit the next child.
+    child.once("close", complete);
+    child.stdin.on("error", () => {});
+    child.stdin.end(task.bytes);
+    task.bytes = undefined;
+  } catch {
+    failed = true;
+    if (child) child.kill("SIGKILL");
+    else complete(); // No child exists to close; once-guarded synchronous cleanup.
+  }
+}
+
+/** Portable PDF.js parser. Failures/scanned PDFs remain unavailable, never proof of an open or missing vacancy. */
+export async function pdfToText(bytes, options = {}) {
+  options.signal?.throwIfAborted();
+  if (!(bytes instanceof Uint8Array) || !bytes.byteLength || bytes.byteLength > PDF_INPUT_LIMIT || (pdfChildActive && pdfQueue.length >= PDF_QUEUE_LIMIT)) throw pdfUnavailable();
+  return new Promise((resolve, reject) => {
+    const task = { bytes, signal: options.signal, resolve, reject, deadline: performance.now() + PDF_TIMEOUT_MS, timer: undefined };
+    if (!pdfChildActive) startPdfExtraction(task);
+    else {
+      // Queue wait counts toward the same eight-second budget, so concurrent
+      // verification cannot spawn eight parsers on the 512 MiB production host.
+      task.onAbort = () => {
+        const index = pdfQueue.indexOf(task);
+        if (index !== -1) pdfQueue.splice(index, 1);
+        clearTimeout(task.timer);
+        task.signal?.removeEventListener("abort", task.onAbort);
+        task.bytes = undefined;
+        reject(pdfUnavailable());
+      };
+      task.timer = setTimeout(task.onAbort, PDF_TIMEOUT_MS);
+      pdfQueue.push(task);
+      task.signal?.addEventListener("abort", task.onAbort, { once: true });
+    }
+  });
+}
+export async function fetchJobDocument(url, deps = {}) {
+  // A legacy fake-fetch seam cannot pin Node's actual socket lookup. Refuse it
+  // explicitly (also preventing stale fixtures from falling through to DNS).
+  if (deps.fetch) throw new Error("Legacy fetch injection unavailable; use pinned lookup/get fixtures");
+  let destination = postingDestination(url);
+  const signal = deps.signal ? AbortSignal.any([deps.signal, AbortSignal.timeout(8000)]) : AbortSignal.timeout(8000);
+  signal.throwIfAborted();
+  let response;
+  for (let redirects = 0; redirects <= 3; redirects++) {
+    // The built-in HTTPS transport validates all DNS answers and pins its
+    // lookup per hop. A default/global fetch would reintroduce DNS rebinding.
+    response = await fetchPostingResponse(destination, { signal, lookup: deps.lookup, get: deps.get });
+    if (![301, 302, 303, 307, 308].includes(response.status)) break;
+    const next = response.headers.get("location");
+    await response.body?.cancel();
+    if (!next || redirects === 3) throw new Error("Posting redirect unavailable");
+    if (next.includes("\\")) throw new Error("Unapproved posting destination");
+    // Validate absolute raw Locations first: URL serialization erases empty
+    // userinfo. Resolve relative Locations only after inspecting their authority.
+    if (/^https:/i.test(next.trim())) destination = postingDestination(next.trim());
+    else {
+      if (/^(?:\/\/|\\\\)[^/?#]*@/.test(next.trim())) throw new Error("Unapproved posting destination");
+      destination = postingDestination(new URL(next, destination).toString());
+    }
+  }
+  const contentType = response.headers.get("content-type") ?? "";
+  if ([404, 410].includes(response.status)) {
+    await response.body?.cancel();
+    return { missing: true, text: "", raw: "", finalUrl: destination, contentType };
+  }
+  if (!response.ok) {
+    await response.body?.cancel();
+    throw new Error("Posting verification temporarily unavailable");
+  }
+  // Stream with a hard cap rather than reading an unbounded employer response.
+  const chunks = []; let length = 0;
+  for await (const chunk of response.body ?? []) {
+    length += chunk.length;
+    if (length > 5_000_000) throw new Error("Posting document exceeds verification limit");
+    chunks.push(Buffer.from(chunk));
+  }
+  const bytes = Buffer.concat(chunks);
+  const isPdf = bytes.subarray(0, 5).toString() === "%PDF-";
+  const raw = isPdf ? await (deps.pdfToText ?? pdfToText)(bytes, { signal }) : bytes.toString("utf8");
+  signal.throwIfAborted();
+  const text = plainJobText(raw);
+  // A metadata-only JobPosting can still be matched by the record evaluator.
+  if ((!text && !/application\/ld\+json/i.test(raw)) || /(?:just a moment|checking your browser|verify you are human|cf-chl-|captcha)/i.test(raw))
+    throw new Error("Posting content verification unavailable");
+  return { missing: false, text, raw, isPdf, finalUrl: destination, contentType: isPdf ? "application/pdf" : contentType };
+}
+export async function verifyJob(job, options = {}) {
+  const now = options.now ?? new Date();
+  const dates = parseJobDates(job.description ?? "");
+  const postedAt = sourceDate(job.postedAt) ?? dates.postedAt;
+  let closingAt = sourceDate(job.closingAt) ?? dates.closingAt;
+  if (closingAt && closingAt < now) return { status: "expired", closingAt, postedAt };
+  try {
+    const document = await (options.fetchDocument ?? fetchJobDocument)(job.sourceUrl, { signal: options.signal });
+    if (document.missing) return { status: "missing", closingAt, postedAt };
+    // Insufficient identity evidence is unavailable, not unverified/missing:
+    // the refresh must not deactivate inventory or advance its seen timestamp.
+    const evidence = matchPostingEvidence(job, document, { plainJobText, parseJobDates });
+    if (!evidence) return { status: "unavailable", closingAt, postedAt };
+    const recordDates = parseJobDates(evidence.text);
+    // Schema.org validThrough may be date-only or a precise timestamp. Date-only
+    // deadlines retain the existing end-of-day policy, not midnight expiry.
+    const structuredClosing = /^\d{4}-\d{2}-\d{2}$/.test(evidence.closingAt ?? "") ? parseJobDates(`Closing: ${evidence.closingAt}`).closingAt : sourceDate(evidence.closingAt);
+    if (evidence.closingAt && !structuredClosing) return { status: "unavailable", closingAt, postedAt };
+    const targetDates = { postedAt: sourceDate(evidence.postedAt) ?? recordDates.postedAt, closingAt: structuredClosing ?? recordDates.closingAt };
+    closingAt = targetDates.closingAt ?? closingAt;
+    if (closingAt && closingAt < now) return { status: "expired", closingAt, postedAt: postedAt ?? targetDates.postedAt };
+    if (/\b(?:position (?:has been )?filled|posting (?:has )?expired|job (?:is )?no longer available)\b/i.test(evidence.text) && evidence.text.length < 4000) return { status: "missing", closingAt, postedAt };
+    return { status: "verified", closingAt, postedAt: postedAt ?? targetDates.postedAt };
+  } catch {
+    return { status: "unavailable", closingAt, postedAt };
+  }
+}

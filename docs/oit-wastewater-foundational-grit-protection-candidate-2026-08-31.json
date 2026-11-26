@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 100,
+    "question": "What is a potential operational problem if grit is not effectively removed during preliminary treatment?",
+    "options": [
+      "Grit can wear pumps and other equipment and can accumulate in pipes, channels, or tanks.",
+      "Grit increases the amount of dissolved oxygen produced by the aeration system during secondary treatment.",
+      "Grit makes all wastewater samples unsuitable for laboratory analysis regardless of the sample type or location.",
+      "Grit converts organic wastewater into disinfected effluent before it enters the biological-treatment process."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario sewage-works guidance explains that grit removal protects pumps, comminutors, and other equipment from damaging effects and reduces grit accumulation in treatment units. This item tests that basic protective purpose without prescribing a site-specific maintenance response.",
+    "sourceTitle": "Ontario MECP — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Section 10.3.1 identifies possible damaging effects on pumps, comminutors, and other equipment, and the need for storage capacity where grit is likely to accumulate.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  }
+]

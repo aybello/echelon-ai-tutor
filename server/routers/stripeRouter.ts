@@ -1,0 +1,739 @@
+import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
+import { checkoutIdentityMatches } from "../stripe/checkoutIdentity";
+import { z } from "zod";
+import { TRPCError } from "@trpc/server";
+import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { resolveAccess, resolveAccessByEmail, normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
+import { stripe } from "../stripe/stripe";
+import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
+import {
+  getAllSubscriptionExamTypes,
+  TEAM_BASE_PRICE,
+  TEAM_VOLUME_TIERS,
+  TEAM_STREAM_TIER_LABELS,
+  type SubscriptionTier,
+  type SubscriptionProvince,
+  type TeamStreamTier,
+} from "../stripe/subscriptionProducts";
+import {
+  getTeamVolumeTier,
+  getTeamBasePriceCents,
+  getTeamTotalPriceCents,
+  TEAM_STREAM_TIER_LABELS as SHARED_TIER_LABELS,
+} from "../../shared/teamPricing";
+import { CATALOGUE_VERSION } from "../../shared/pricingCatalogue";
+import { getOrCreateTeamAnnualPrice } from "../stripe/teamGraduatedPrice";
+import { getDb } from "../db";
+import { purchaseReadColumns, purchases, subscriptions } from "../../drizzle/schema";
+import { eq, and, gt, count, isNull } from "drizzle-orm";
+import { ENV } from "../_core/env";
+import { notifyOwner } from "../_core/notification";
+import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
+import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
+import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass";
+import { googleAdsPurchaseConversion } from "../stripe/googleAdsPurchase";
+import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
+import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
+import { savePurchaseExamDate } from "../purchaseExamDate";
+import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import { funnelProvince } from "../../shared/funnelNavigation";
+import { isNovaScotiaCheckoutAllowed } from "../../shared/novaScotiaPreparation";
+import {
+  getCommercialAvailability,
+  ORGANIZATION_COMMERCE_ENABLED,
+  ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+} from "../commercialAvailability";
+
+export const stripeRouter = router({
+  /** Return all products with prices for the Pricing page */
+  getProducts: publicProcedure.query(() => {
+    return ALL_PRODUCTS.map(p => ({
+      key: p.key,
+      name: p.name,
+      description: p.description,
+      priceCAD: p.priceCAD,
+      examTypes: p.examTypes,
+    }));
+  }),
+
+  /**
+   * The clean-database commercial release list. It is intentionally narrower
+   * than the product catalogue and returns only products whose live question
+   * bank is both explicitly released and learner-ready.
+   */
+  getCommercialAvailability: publicProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) return { products: [] };
+    return { products: await getCommercialAvailability(db, ALL_PRODUCTS) };
+  }),
+
+  /** Create a Stripe Checkout session for a given product key */
+  createCheckoutSession: publicProcedure
+    .input(z.object({
+      productKey: z.string(),
+      email: z.string().email().optional(),
+      utmSource: z.string().max(128).optional(),
+      utmMedium: z.string().max(128).optional(),
+      utmCampaign: z.string().max(128).optional(),
+      // Individual Exam Passes are priced in CAD. Keeping this input optional
+      // preserves older clients while preventing geographic currency selection.
+      currency: z.literal("cad").optional().default("cad"),
+      province: z.enum(["ON", "BC", "AB", "SK", "MB", "NS"]).optional(),
+      visitorId: z.string().min(16).max(128).optional(),
+      analyticsContext: z.object({
+        source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
+        device: z.enum(["desktop", "mobile", "tablet"]),
+        province: z.enum(["ontario", "western", "nova-scotia", "unknown"]),
+        surface: z.enum(["pricing", "purchase-gate", "quiz-gate"]),
+      }).optional(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
+      if (!product) throw new Error("Product not found");
+      let referrerProvince: string | undefined;
+      try {
+        const referrer = ctx.req.headers.referer;
+        const appOrigin = new URL(ENV.appBaseUrl).origin;
+        if (referrer && new URL(referrer).origin === appOrigin) {
+          referrerProvince = funnelProvince(new URL(referrer).searchParams.get("province"));
+        }
+      } catch { /* Untrusted or malformed referrers cannot influence eligibility. */ }
+      const signedInProvince = ctx.user?.province?.toUpperCase();
+      const requestedProvince = referrerProvince ?? input.province ?? signedInProvince;
+      if (!isNovaScotiaCheckoutAllowed(product.key, requestedProvince)) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This course is not available in Nova Scotia. Nova Scotia currently supports treatment Classes I–IV and distribution or collection Classes I–III through shared WPI preparation.",
+        });
+      }
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Checkout is temporarily unavailable. Please try again shortly." });
+      try {
+        await assertIndividualPaymentSchemaReady(db);
+      } catch {
+        // This runs before the remote Stripe write. No learner can pay while the
+        // signed webhook would be unable to record the access and receipt.
+        throw new TRPCError({
+          code: "SERVICE_UNAVAILABLE",
+          message: "Checkout is temporarily unavailable. Please try again shortly.",
+        });
+      }
+      const releasedProducts = await getCommercialAvailability(db, ALL_PRODUCTS);
+      if (!releasedProducts.some((released) => released.key === product.key)) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "This course is not currently available for purchase. Join the course launch list and we will notify you when its verified question bank is ready.",
+        });
+      }
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
+
+      const userEmail = ctx.user?.email ?? input.email;
+      const currency = "cad" as const;
+      const unitAmount = product.priceCAD;
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "payment",
+        line_items: [
+          {
+            price_data: {
+              currency,
+              unit_amount: unitAmount,
+              product_data: {
+                name: product.name,
+                description: product.description,
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        customer_email: userEmail,
+        client_reference_id: ctx.user?.id?.toString() ?? undefined,
+        metadata: {
+          product_key: product.key,
+          product_name: product.name,
+          user_id: ctx.user?.id?.toString() ?? "",
+          customer_email: userEmail ?? "",
+          utm_source: input.utmSource ?? "",
+          utm_medium: input.utmMedium ?? "",
+          utm_campaign: input.utmCampaign ?? "",
+          currency,
+          catalogue_version: CATALOGUE_VERSION,
+          analytics_identity_hash: input.visitorId ? hashAnalyticsAnonymousId(input.visitorId) : "",
+          analytics_source: input.analyticsContext?.source ?? "unknown",
+          analytics_device: input.analyticsContext?.device ?? "unknown",
+          analytics_province: input.analyticsContext?.province ?? "unknown",
+          analytics_surface: input.analyticsContext?.surface ?? "unknown",
+          checkout_province: requestedProvince ?? "",
+          ...individualExamPassCheckoutMetadata(),
+        },
+        allow_promotion_codes: true,
+        // Stripe requires the phone field when collection is enabled. Collect it
+        // here for every individual pass, including accelerated wallet checkouts.
+        phone_number_collection: { enabled: true },
+        // A learner who reaches the payment page has already decided to buy.
+        // Recovery keeps a reopenable link to this exact cart and gives us the
+        // email they consented to share, so an abandoned checkout becomes one
+        // polite follow-up instead of a buyer we never see again.
+        after_expiration: {
+          recovery: { enabled: true, allow_promotion_codes: true },
+        },
+        success_url: `${appBaseUrl}/purchase-success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${appBaseUrl}${(await import("../../shared/funnelNavigation")).individualCheckoutCancelPath(product.key, ctx.req.headers.referer, appBaseUrl)}`,
+      });
+
+      const checkoutAnalytics = {
+        userId: ctx.user?.id?.toString() ?? null,
+        email: userEmail ?? null,
+        examType: product.examTypes[0] ?? null,
+        productKey: product.key,
+        anonymousId: input.visitorId ?? null,
+        extra: {
+          currency,
+          amountCents: unitAmount,
+          source: input.analyticsContext?.source ?? "unknown",
+          device: input.analyticsContext?.device ?? "unknown",
+          province: input.analyticsContext?.province ?? "unknown",
+          surface: input.analyticsContext?.surface ?? "unknown",
+        },
+      };
+      // The Stripe session is already created. Do not wait for telemetry before
+      // returning its URL, because an analytics database stall must not turn a
+      // valid checkout into a client-visible failure.
+      void trackEvent("checkout_started", checkoutAnalytics);
+      if (input.utmSource === "quiz-diagnostic") {
+        void trackEvent("diagnostic_checkout_started", checkoutAnalytics);
+      }
+
+      return { url: session.url };
+    }),
+
+  /** Verify a Stripe checkout session and return email/product info */
+  verifySession: publicProcedure
+    .input(z.object({
+      sessionId: z.string(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      try {
+        const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
+          expand: ["customer_details"],
+        });
+        // Use canonical validator — never trust client-supplied productKey
+        const checkout = validateOneTimeCheckout(session);
+        const { email, productKey } = checkout;
+
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable while confirming purchase");
+        const existing = await db
+          .select({ id: purchases.id, accessExpiresAt: purchases.accessExpiresAt })
+          .from(purchases)
+          .where(eq(purchases.stripeSessionId, input.sessionId))
+          .limit(1);
+        const fulfilledPurchase = existing[0] ?? null;
+        const fulfillmentPending = !fulfilledPurchase;
+        const accessExpiresAt = fulfilledPurchase?.accessExpiresAt ?? null;
+
+        const identityMatches = checkoutIdentityMatches(ctx, email);
+        // Stripe's signed paid webhook is the only writer for Individual Exam
+        // Passes. Guests prove email ownership separately through OTP.
+        return { email: identityMatches ? email : "", productKey, paid: true,
+          requiresSignIn: !identityMatches,
+          unlockedExamTypes: identityMatches && !fulfillmentPending ? getAllUnlockedExamTypes([productKey]) : [],
+          accessToken: null, accessExpiresAt, fulfillmentPending,
+          adsConversion: googleAdsPurchaseConversion(checkout, session, !fulfillmentPending) };
+      } catch (err: any) {
+        console.error("[verifySession] Error:", err.message);
+        notifyOwner({
+          title: "\u26a0\ufe0f verifySession Error",
+          content: `verifySession failed for session ${input.sessionId}.\n\nError: ${err.message}\n\nAction required: check signed Stripe webhook delivery before any manual recovery.`,
+        }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
+        return { email: "", productKey: "", paid: false, requiresSignIn: true, unlockedExamTypes: [], accessToken: null, accessExpiresAt: null, fulfillmentPending: false, adsConversion: null };
+      }
+    }),
+
+  /** Get all purchases for the current user (by email) */
+  getMyPurchases: protectedProcedure
+    .query(async ({ ctx }) => {
+      const email = ctx.user.email;
+      if (!email) return { purchases: [], unlockedExamTypes: [] };
+
+      const db = await getDb();
+      if (!db) return { purchases: [], unlockedExamTypes: [] };
+
+      const rows = await db
+        .select(purchaseReadColumns)
+        .from(purchases)
+        .where(eq(purchases.email, email));
+
+      const now = new Date();
+      const productKeys = rows
+        .filter((row) =>
+          row.status === "active" &&
+          (row.accessExpiresAt == null || row.accessExpiresAt > now),
+        )
+        .map(r => r.productKey);
+      const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
+
+      return { purchases: rows, unlockedExamTypes };
+    }),
+
+  /** Save the referral source answer for a completed purchase */
+  saveReferralSource: publicProcedure
+    .input(z.object({
+      sessionId: z.string(),
+      referralSource: z.string().max(128),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { success: false };
+      await db.update(purchases)
+        .set({ referralSource: input.referralSource })
+        .where(eq(purchases.stripeSessionId, input.sessionId));
+      return { success: true };
+    }),
+
+  /**
+   * Record the learner's exam date straight from the purchase confirmation
+   * page so the study reminder engine has someone to remind. Proof of the
+   * purchase is the checkout session id, as with the referral question above.
+   * It creates a date only when none exists; it never overwrites one.
+   */
+  saveExamDate: publicProcedure
+    .input(z.object({
+      sessionId: z.string().min(8).max(128),
+      examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { status: "unavailable" as const };
+      const result = await savePurchaseExamDate(db, input);
+      if (result.status === "saved") {
+        await trackEvent("exam_date_set", {
+          productKey: result.productKey,
+          extra: { source: "purchase_success" },
+        }).catch(() => undefined);
+      }
+      return result;
+    }),
+
+  /** Legacy endpoint retained to fail closed for stale clients and bookmarked pages. */
+  createSubscriptionCheckout: publicProcedure
+    .input(z.object({
+      tier: z.enum(["class1", "class2", "class3", "class4", "all-access"]),
+      province: z.enum(["ontario", "western"]),
+      email: z.string().email(),
+      name: z.string().max(128).optional(),
+      phone: z.string().min(7, "Phone number is required").max(30),
+      utmSource: z.string().max(128).optional(),
+      utmMedium: z.string().max(128).optional(),
+      utmCampaign: z.string().max(128).optional(),
+      referralSource: z.string().max(128).optional(),
+      currency: z.enum(["cad", "usd"]).default("cad"),
+    }))
+    .mutation(async (): Promise<{ url: string | null }> => {
+      throw new TRPCError({
+        code: "PRECONDITION_FAILED",
+        message: "Individual subscriptions are no longer available for new purchases. Choose an Individual Exam Pass or a Teams plan.",
+      });
+    }),
+
+  /** Get active personal subscriptions; team access uses assigned-course entitlements. */
+  getMySubscriptions: protectedProcedure
+    .query(async ({ ctx }) => {
+      const email = ctx.user.email;
+      if (!email) return { subscriptions: [], unlockedExamTypes: [] };
+      const db = await getDb();
+      if (!db) return { subscriptions: [], unlockedExamTypes: [] };
+      const now = new Date();
+      const rows = await db
+        .select()
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, email),
+            isNull(subscriptions.orgId),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        );
+      const unlockedExamTypes = getAllSubscriptionExamTypes(
+        rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+      return { subscriptions: rows, unlockedExamTypes };
+    }),
+
+  /**
+   * Same as getMySubscriptions but works for verified email-session users (OTP login)
+   * who do not have an OAuth user record. Uses ctx.studentEmail from the Echelon
+   * session cookie — fails closed if cookie is missing or invalid.
+   */
+  getMySubscriptionsForEmailSession: publicProcedure
+    .query(async ({ ctx }) => {
+      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+      if (!email) return { subscriptions: [], unlockedExamTypes: [] };
+
+      const db = await getDb();
+      if (!db) return { subscriptions: [], unlockedExamTypes: [] };
+
+      const now = new Date();
+      const rows = await db
+        .select()
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, email),
+            isNull(subscriptions.orgId),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        );
+
+      const unlockedExamTypes = getAllSubscriptionExamTypes(
+        rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+
+      return { subscriptions: rows, unlockedExamTypes };
+    }),
+
+  /**
+   * Create a Stripe Billing Portal session so subscribers can manage their
+   * subscription (cancel, update payment method, view invoices) without
+   * needing to contact support.
+   */
+  createBillingPortalSession: publicProcedure
+    .input(z.object({
+      scope: z.enum(["personal", "team"]).optional(),
+      orgId: z.number().int().positive().optional(),
+    }).refine(input => input.scope !== "personal" || input.orgId === undefined, {
+      message: "Personal billing cannot select an organization.",
+      path: ["orgId"],
+    }).default({}))
+    .mutation(async ({ ctx, input }) => {
+      const email = managerEmailForContext(ctx);
+      if (!email) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "Sign in to access billing.",
+        });
+      }
+      // Managers (email-code session) return to /team; individual subscribers return to /account
+      const isManagerSession = Boolean(ctx.studentEmail && !ctx.user);
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
+
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const { normalizeEmail: normEmail } = await import("../_core/access");
+      const { isNull, desc } = await import("drizzle-orm");
+      const normalisedEmail = normEmail(email);
+      // Explicit personal billing must not inspect or depend on team ownership,
+      // including pending checkouts and invoice-billed organizations. Omitted
+      // scope retains the safe legacy team-first behavior for older clients.
+      const managerOrg = input.scope === "personal" ? null : await resolveManagedOrganization(ctx, {
+        orgId: input.orgId,
+        purpose: "billing",
+        allowMissing: input.scope !== "team",
+      });
+      let stripeCustomerId: string | null | undefined;
+      if (managerOrg) {
+        stripeCustomerId = managerOrg.stripeCustomerId;
+        if (managerOrg.billingType === "invoice" || !stripeCustomerId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This organization uses invoice billing or has no billing customer. Contact support to recover team billing." });
+      } else {
+        const rows = await db.select({ stripeCustomerId: subscriptions.stripeCustomerId })
+          .from(subscriptions).where(and(eq(subscriptions.email, normalisedEmail), isNull(subscriptions.orgId)))
+          .orderBy(desc(subscriptions.createdAt)).limit(5);
+        stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
+      }
+      if (!stripeCustomerId) {
+        throw new Error("No Stripe customer found for this email. Please contact abello@echeloninstitute.ca");
+      }
+
+      const portalSession = await stripe.billingPortal.sessions.create({
+        customer: stripeCustomerId,
+        // Preserve the explicit personal view when a manager returns from Stripe.
+        return_url: input.scope === "personal" ? `${appBaseUrl}/account?billing=personal`
+          : managerOrg || isManagerSession ? `${appBaseUrl}/team` : `${appBaseUrl}/account`,
+      });
+
+      return { url: portalSession.url };
+    }),
+
+  /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
+  checkAccess: publicProcedure
+    .input(z.object({ examType: z.string(), email: z.string().email().optional(), accessToken: z.string().optional() }))
+    .query(async ({ input, ctx }) => {
+      let { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
+      // Fallback 1: verify signed access token + live DB re-check (PATCH 1: was JWT-only, now also re-checks DB)
+      if (!hasAccess && !ctx.user && !ctx.studentEmail && input.accessToken) {
+        const recheckResult = await verifyAccessTokenAndRecheckDb(input.accessToken, input.examType);
+        if (recheckResult.hasAccess) {
+          hasAccess = true;
+        }
+      }
+      // Fallback 2: OTP / email-session users — ctx.studentEmail is server-verified via
+      // the signed httpOnly session cookie issued after OTP login. This is safe because
+      // the identity was already proven server-side; no accessToken is needed here.
+      if (!hasAccess && !ctx.user && ctx.studentEmail) {
+        const emailResult = await resolveAccessByEmail(ctx.studentEmail, input.examType);
+        if (emailResult.hasAccess) hasAccess = true;
+      }
+      // The legacy email input is not proof of identity. Token access above is
+      // resolved from the signed token itself and rechecked against live entitlements.
+      return { hasAccess, isOwner };
+    }),
+
+  /**
+   * Confirm payment, never mailbox ownership. Identity must already be verified
+   * through OAuth/OTP; this receipt endpoint issues no session or access tokens.
+   * Team receipts must never expand into personal class-tier entitlements.
+   */
+  verifySubscriptionSession: publicProcedure
+    .input(z.object({ sessionId: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      const confirmation = {
+        paid: false, email: "", tier: "", province: "",
+        examTypes: [] as string[], accessToken: null, requiresSignIn: true,
+      };
+      try {
+        const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
+          expand: ["customer_details"],
+        });
+        // A completed asynchronous checkout is not necessarily paid.
+        if (session.mode !== "subscription" || session.payment_status !== "paid") {
+          return confirmation;
+        }
+        const email = normalizeEmail(
+          session.customer_details?.email ?? session.customer_email ?? session.metadata?.customer_email
+        );
+        const identityMatches = !!email && checkoutIdentityMatches(ctx, email);
+        const paidConfirmation = { ...confirmation, paid: true, requiresSignIn: !identityMatches };
+        const tier = session.metadata?.subscription_tier ?? "";
+        const province = session.metadata?.subscription_province ?? "";
+        if (!identityMatches || session.metadata?.type === "org" || !tier || !province) {
+          return paidConfirmation;
+        }
+        // Historical receipts confirm payment but cannot restore lapsed access.
+        // Current access comes from the common resolver, not checkout metadata.
+        const entitlements = await resolveEntitlementsByEmail(email);
+        const hasMatchingPersonalSubscription = entitlements.activeSubscriptionRows.some(
+          row => row.orgId == null && row.tier === tier && row.province === province
+        );
+        if (!hasMatchingPersonalSubscription) return paidConfirmation;
+        return {
+          ...paidConfirmation, email, tier, province,
+          examTypes: entitlements.unlockedExamTypes,
+        };
+      } catch (err: any) {
+        console.error("[verifySubscriptionSession] Error:", err.message);
+        return confirmation;
+      }
+    }),
+
+  /**
+   * Neutral subscription lookup — confirms only whether an active subscription exists.
+   * Does NOT return tokens, exam types, or course data.
+   * Access restoration must go through the verified OTP or magic-link flow.
+   * @deprecated Use magicLink.requestMagicLink for actual access restoration.
+   */
+  getSubscriptionsByEmail: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .query(async ({ input }) => {
+      // FIX 1 (P0): Never return tokens or unlocked exam types from a public email-only endpoint.
+      const db = await getDb();
+      if (!db) return { accountExists: false };
+      const normalised = normalizeEmail(input.email);
+      const now = new Date();
+      const rows = await db
+        .select({ id: subscriptions.id })
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, normalised),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        )
+        .limit(1);
+      return { accountExists: rows.length > 0 };
+    }),
+
+  /**
+   * Create a Stripe Checkout session for a team (org) plan.
+   * mode: subscription, quantity = seats, volume tiered pricing.
+   * subscription_data.metadata carries type:"org" plus all fields the webhook needs.
+   */
+  createTeamCheckout: publicProcedure
+    .input(z.object({
+      orgName: z.string().min(2).max(200),
+      province: z.enum(["ontario", "western", "nova-scotia"]),
+      tier: z.enum(["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll", "all-access"]).default("all-access"),
+      seats: z.number().int().min(5).max(500),
+      managerEmail: z.string().email(),
+      analyticsContext: z.object({
+        source: z.enum(["campaign", "direct", "organic", "referral", "social"]),
+        device: z.enum(["desktop", "mobile", "tablet"]),
+        province: z.enum(["ontario", "western", "nova-scotia", "unknown"]),
+        visitorId: z.string().min(16).max(128),
+      }).optional(),
+    }))
+    .mutation(async ({ input }) => {
+      if (!ORGANIZATION_COMMERCE_ENABLED) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+        });
+      }
+      const appBaseUrl = ENV.appBaseUrl.replace(/\/$/, "");
+
+      // Graduated volume pricing: Stripe applies the band arithmetic itself
+      const priceId = await getOrCreateTeamAnnualPrice(
+        input.tier as TeamStreamTier,
+        getTeamBasePriceCents(input.province, input.tier as TeamStreamTier),
+      );
+
+      const expectedTotalCents = getTeamTotalPriceCents(
+        input.province,
+        input.tier as TeamStreamTier,
+        input.seats,
+      );
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "subscription",
+        line_items: [{ price: priceId, quantity: input.seats }],
+        customer_email: input.managerEmail,
+        ...buildTeamSubscriptionBillingDocumentOptions(),
+        metadata: {
+          type: "org",
+          org_name: input.orgName,
+          manager_email: input.managerEmail,
+          subscription_tier: input.tier,
+          subscription_province: input.province,
+          seats: String(input.seats),
+          pricing_model: "graduated",
+          catalogue_version: CATALOGUE_VERSION,
+          expected_total_cents: String(expectedTotalCents),
+          analytics_identity_hash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : "",
+          analytics_source: input.analyticsContext?.source ?? "unknown",
+          analytics_device: input.analyticsContext?.device ?? "unknown",
+          analytics_province: input.analyticsContext?.province ?? input.province,
+          analytics_surface: "teams",
+        },
+        subscription_data: {
+          metadata: {
+            type: "org",
+            org_name: input.orgName,
+            manager_email: input.managerEmail,
+            subscription_tier: input.tier,
+            subscription_province: input.province,
+            seats: String(input.seats),
+            pricing_model: "graduated",
+            catalogue_version: CATALOGUE_VERSION,
+            analytics_identity_hash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : "",
+            analytics_source: input.analyticsContext?.source ?? "unknown",
+            analytics_device: input.analyticsContext?.device ?? "unknown",
+            analytics_province: input.analyticsContext?.province ?? input.province,
+            analytics_surface: "teams",
+          },
+        },
+        phone_number_collection: { enabled: true },
+        allow_promotion_codes: true,
+        success_url: `${appBaseUrl}/team?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${appBaseUrl}/teams`,
+      });
+
+      // The Stripe session is already created. Do not wait for telemetry before
+      // returning its URL, because an analytics database stall must not turn a
+      // valid checkout into a client-visible failure.
+      void trackEvent("checkout_started", {
+        email: input.managerEmail,
+        identityHash: input.analyticsContext ? hashAnalyticsAnonymousId(input.analyticsContext.visitorId) : null,
+        productKey: "teams-annual",
+        extra: {
+          source: input.analyticsContext?.source ?? "unknown",
+          device: input.analyticsContext?.device ?? "unknown",
+          province: input.analyticsContext?.province ?? input.province,
+          surface: "teams",
+          seats: input.seats,
+          tier: input.tier,
+        },
+      });
+
+      return { url: session.url };
+    }),
+
+  /**
+   * Update the Stripe subscription quantity for an org (add/remove seats).
+   * Stripe prorates the charge. The webhook customer.subscription.updated
+   * then syncs seatsTotal on the organizations row.
+   */
+  updateTeamSeats: publicProcedure
+    .input(z.object({
+      seats: z.number().int().min(5).max(500),
+      orgId: z.number().int().positive().optional(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const email = managerEmailForContext(ctx);
+      if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in." });
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      const org = await resolveManagedOrganization(ctx, { orgId: input.orgId, ownerOnly: true });
+
+      // Paid Flex reporting can admit a manager after the Annual term ends.
+      // Match orgRouter's Annual write policy before any billing side effect.
+      if (!org || !["active", "past_due"].includes(org.status) || !org.termEnd || org.termEnd <= new Date()) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "The Annual contract term has ended or is inactive. Renew before changing Annual seats." });
+      }
+
+      if (!org?.stripeSubscriptionId) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });
+      }
+
+      // Prevent seat downsizing below annual licence usage (not just active count).
+      // An org that used 20 licences but only has 5 active cannot downsize to 5.
+      const { organizationTermUsage } = await import("../../drizzle/schema");
+      const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+      const licencesUsedThisTerm = await db
+        .select({ cnt: count() })
+        .from(organizationTermUsage)
+        .where(
+          and(
+            eq(organizationTermUsage.orgId, org.id),
+            eq(organizationTermUsage.termStart, termStart),
+          ),
+        )
+        .then(r => Number(r[0]?.cnt ?? 0));
+
+      if (input.seats < licencesUsedThisTerm) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: `Cannot reduce seats to ${input.seats} — ${licencesUsedThisTerm} licence${licencesUsedThisTerm === 1 ? " has" : "s have"} already been used this term. Each licence is consumed for the full contract year.`,
+        });
+      }
+
+      // Per spec: reject ANY current-term seat reduction (reductions take effect at renewal)
+      if (input.seats < org.seatsTotal) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Seat reductions take effect at renewal. Contact support if the renewal quantity needs to change.",
+        });
+      }
+      if (input.seats === org.seatsTotal) {
+        return { success: true, seats: org.seatsTotal, unchanged: true };
+      }
+      // Only increases reach Stripe
+      await stripe.subscriptions.update(org.stripeSubscriptionId, {
+        items: [
+          {
+            id: (await stripe.subscriptions.retrieve(org.stripeSubscriptionId)).items.data[0].id,
+            quantity: input.seats,
+          },
+        ],
+        proration_behavior: "create_prorations",
+      });
+
+      return { success: true, seats: input.seats };
+    }),
+});

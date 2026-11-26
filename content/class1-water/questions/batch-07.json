@@ -1,0 +1,843 @@
+{
+  "batch": "07",
+  "title": "Class 1 Water Treatment — batch 07 (questions 1241–1280)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1241,
+      "question": "Why must a tight-fitting respirator be fit tested for the individual who will wear it?",
+      "options": [
+        "To confirm the wearer can breathe comfortably through the cartridge",
+        "To verify the cartridge selected is correct for the chemical hazard present",
+        "To record the respirator model assigned to that worker for inventory",
+        "To confirm the facepiece seals on that person's face without leakage"
+      ],
+      "correctIndex": 3,
+      "explanation": "A respirator only protects if contaminated air cannot bypass the filter through gaps at the face seal. Face shape and size vary, so a model that seals on one person may leak on another. Fit testing verifies the seal on the specific wearer, and facial hair at the sealing surface defeats it.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Respiratory protection",
+      "isCalc": "no",
+      "tip": "Fit testing checks the seal; cartridge selection checks the hazard. Both are required, and neither substitutes."
+    },
+    {
+      "questionNum": 1242,
+      "question": "Why are biological hazards a consideration for operators working in raw water areas and sludge handling?",
+      "options": [
+        "Because raw water and sludge can contain pathogens that infect through contact",
+        "Because biological growth accelerates corrosion of the surrounding structures",
+        "Because organisms in raw water interfere with the accuracy of instruments",
+        "Because sludge produces flammable gas that can accumulate in enclosed areas"
+      ],
+      "correctIndex": 0,
+      "explanation": "Untreated water and the solids removed from it concentrate the pathogens the plant exists to remove. Operators can be exposed through splashes, aerosols, cuts, or hand-to-mouth contact, so hygiene practices, protective equipment, and immunisation where appropriate are part of routine work in those areas.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Biological hazards",
+      "isCalc": "no",
+      "tip": "The pathogens the plant removes are concentrated in the sludge. Treat sludge areas as a contamination risk."
+    },
+    {
+      "questionNum": 1243,
+      "question": "Why do operator certificates require continuing education for renewal?",
+      "options": [
+        "Because certificates are issued for a fixed term set by regulation",
+        "Because treatment technology, regulations and practice change over time",
+        "Because continuing education replaces the need for periodic re-examination",
+        "Because training hours determine the class of certificate that is issued"
+      ],
+      "correctIndex": 1,
+      "explanation": "Knowledge that was current at certification becomes outdated as standards are revised, new contaminants are recognised, and treatment technology develops. Continuing education requirements ensure that a certificate reflects present competence rather than knowledge held years earlier.",
+      "difficulty": "easy",
+      "module": "Water Quality & Regulations",
+      "topic": "Certificate renewal",
+      "isCalc": "no",
+      "tip": "A certificate demonstrates competence at a point in time. Continuing education keeps it meaningful."
+    },
+    {
+      "questionNum": 1244,
+      "question": "Why is monitoring frequency set higher for microbiological parameters than for most chemical parameters?",
+      "options": [
+        "Because microbiological analysis is faster and less expensive to perform",
+        "Because chemical concentrations cannot change between scheduled samples",
+        "Because microbial contamination can cause illness rapidly after exposure",
+        "Because microbiological samples have a shorter permitted holding time"
+      ],
+      "correctIndex": 2,
+      "explanation": "Microbial contamination can produce acute illness within days of a single exposure, so it must be detected quickly. Most chemical parameters of concern act through long-term exposure, which means a less frequent sampling interval still characterises the risk adequately.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Monitoring frequency rationale",
+      "isCalc": "no",
+      "tip": "Acute risk drives frequent monitoring; chronic risk tolerates less frequent monitoring."
+    },
+    {
+      "questionNum": 1245,
+      "question": "Why is filter-to-waste duration based on measured turbidity rather than a fixed time?",
+      "options": [
+        "Because a fixed duration would waste treated water during every filter run",
+        "Because ripening time varies with water quality, media condition and rate",
+        "Because turbidimeters must be exercised regularly to remain calibrated",
+        "Because the plant controller cannot hold a fixed time reliably between runs"
+      ],
+      "correctIndex": 1,
+      "explanation": "How long a filter takes to ripen depends on the coagulation quality, the media condition, the filtration rate, and how thoroughly the bed was washed. A fixed time either wastes good water or admits poor water. Ending filter-to-waste on a measured turbidity target matches the actual condition of the filter.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filter to waste control",
+      "isCalc": "no",
+      "tip": "Control on the measurement that matters. A timer cannot know whether the filter has actually ripened."
+    },
+    {
+      "questionNum": 1246,
+      "question": "Why is the water level in a filter box monitored during normal operation?",
+      "options": [
+        "Rising level at a constant rate indicates accumulating headloss in the bed",
+        "Falling level indicates the underdrain has become partially obstructed",
+        "Level determines the backwash rise rate the filter will achieve",
+        "Level readings are used to calculate the media depth remaining in the bed"
+      ],
+      "correctIndex": 0,
+      "explanation": "In a filter that controls flow rather than level, the water level above the media rises as solids accumulate and resistance increases. The trend is a direct indication of headloss development, and its rate reveals how quickly the filter is loading compared with previous runs.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filter level monitoring",
+      "isCalc": "no",
+      "tip": "Compare headloss curves between runs. A steeper curve means the filter is loading faster than usual."
+    },
+    {
+      "questionNum": 1247,
+      "question": "Why is a work order system used for plant maintenance rather than verbal requests?",
+      "options": [
+        "It ensures that only certified operators perform maintenance activities",
+        "It creates a record of work requested, completed and equipment history",
+        "It allows maintenance costs to be recovered from the operating budget",
+        "It guarantees that maintenance is completed within a defined timeframe"
+      ],
+      "correctIndex": 1,
+      "explanation": "A work order system records what was requested, what was actually done, what parts were used, and when. That history reveals recurring failures on a particular asset, supports decisions about repair versus replacement, and ensures requests are not lost between shifts.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Maintenance management",
+      "isCalc": "no",
+      "tip": "Equipment history is what turns repeated repairs into a replacement decision backed by evidence."
+    },
+    {
+      "questionNum": 1248,
+      "question": "An operator is asked to increase plant output beyond the flow at which CT compliance can be demonstrated. What is the correct response?",
+      "options": [
+        "Increase output and raise the chlorine dose proportionally to compensate",
+        "Increase output temporarily and document the period of reduced contact time",
+        "Decline to exceed the flow at which the disinfection barrier can be verified",
+        "Increase output and take additional distribution samples during the period"
+      ],
+      "correctIndex": 2,
+      "explanation": "Exceeding the flow at which required contact time can be achieved means the disinfection barrier is not being met, regardless of dose, because CT depends on time as well as concentration. Production is limited to what can be treated compliantly, and the shortfall is managed through storage and demand measures.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Operating limits",
+      "isCalc": "no",
+      "tip": "Raising the dose cannot buy back contact time. Flow is the limit when T is the constraint."
+    },
+    {
+      "questionNum": 1249,
+      "question": "A contact chamber has a theoretical detention time of 60 minutes and a baffling factor of 0.7. What effective contact time is credited?",
+      "options": [
+        "18 minutes",
+        "42 minutes",
+        "60 minutes",
+        "86 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Effective contact time is the theoretical detention time multiplied by the baffling factor: 60 × 0.7 = 42 minutes.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Effective contact time",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "T effective = theoretical DT × baffling factor"
+        },
+        {
+          "l": "Substitute",
+          "c": "60 min × 0.7"
+        },
+        {
+          "l": "Solve",
+          "c": "= 42 minutes"
+        },
+        {
+          "l": "Note",
+          "c": "Only the effective time may be used in a CT calculation."
+        }
+      ],
+      "tip": "Poor baffling can discard a third or more of the contact time the tank volume suggests."
+    },
+    {
+      "questionNum": 1250,
+      "question": "A plant achieves a CT of 54 mg·min/L where the required CT is 45 mg·min/L. What is the CT ratio?",
+      "options": [
+        "0.83",
+        "1.09",
+        "1.20",
+        "2.43"
+      ],
+      "correctIndex": 2,
+      "explanation": "The CT ratio is the CT achieved divided by the CT required: 54 ÷ 45 = 1.20, meaning the plant achieved twenty percent more than the minimum.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "CT ratio",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "CT ratio = CT achieved ÷ CT required"
+        },
+        {
+          "l": "Substitute",
+          "c": "54 ÷ 45"
+        },
+        {
+          "l": "Solve",
+          "c": "= 1.20"
+        },
+        {
+          "l": "Interpret",
+          "c": "A ratio below 1.0 means the inactivation requirement was not met."
+        }
+      ],
+      "tip": "Report the ratio, not just the CT. It shows immediately whether the requirement was satisfied."
+    },
+    {
+      "questionNum": 1251,
+      "question": "A membrane system produces 900 m³/d of permeate from a feed of 1000 m³/d. What is the recovery?",
+      "options": [
+        "10 percent",
+        "90 percent",
+        "100 percent",
+        "111 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Recovery is permeate divided by feed: 900 ÷ 1000 × 100 = 90 percent. The remaining 100 m³/d leaves as concentrate.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Membrane recovery",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Recovery = permeate ÷ feed × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "900 ÷ 1000 × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 90 percent"
+        },
+        {
+          "l": "Balance",
+          "c": "Concentrate = 1000 − 900 = 100 m³/d"
+        }
+      ],
+      "tip": "Higher recovery means less waste but a more concentrated brine and greater fouling risk."
+    },
+    {
+      "questionNum": 1252,
+      "question": "A well yields 30 L/s with a drawdown of 12 m. What is its specific capacity?",
+      "options": [
+        "0.4 L/s per metre",
+        "2.5 L/s per metre",
+        "18.0 L/s per metre",
+        "360 L/s per metre"
+      ],
+      "correctIndex": 1,
+      "explanation": "Specific capacity is yield divided by drawdown: 30 ÷ 12 = 2.5 litres per second per metre of drawdown.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Specific capacity",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Specific capacity = yield ÷ drawdown"
+        },
+        {
+          "l": "Substitute",
+          "c": "30 L/s ÷ 12 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 2.5 L/s per m"
+        },
+        {
+          "l": "Use",
+          "c": "Tracking this over years reveals well deterioration."
+        }
+      ],
+      "tip": "A falling specific capacity at the same pumping rate means the well is losing efficiency."
+    },
+    {
+      "questionNum": 1253,
+      "question": "A system produces 5000 m³/d and bills 4200 m³/d. What percentage is unaccounted for?",
+      "options": [
+        "8 percent",
+        "16 percent",
+        "19 percent",
+        "84 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "The difference is 5000 − 4200 = 800 m³/d. As a percentage of production, 800 ÷ 5000 × 100 = 16 percent.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Unaccounted-for water",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Difference",
+          "c": "5000 − 4200 = 800 m³/d"
+        },
+        {
+          "l": "Percentage",
+          "c": "800 ÷ 5000 × 100 = 16%"
+        },
+        {
+          "l": "Note",
+          "c": "Not all of this is leakage; metering error and authorised unbilled use contribute."
+        }
+      ],
+      "tip": "Unaccounted-for water includes meter under-registration and unbilled uses such as flushing and firefighting."
+    },
+    {
+      "questionNum": 1254,
+      "question": "A circular clarifier has a diameter of 20 m and receives 6280 m³/d. What is the surface overflow rate?",
+      "options": [
+        "10 m³/(m²·d)",
+        "20 m³/(m²·d)",
+        "31 m³/(m²·d)",
+        "63 m³/(m²·d)"
+      ],
+      "correctIndex": 1,
+      "explanation": "The radius is 10 m, so the area is π × 10² = 314 m². Dividing gives 6280 ÷ 314 = 20 m³/(m²·d).",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Circular clarifier loading",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Radius",
+          "c": "20 m ÷ 2 = 10 m"
+        },
+        {
+          "l": "Area",
+          "c": "π × 10² = 314 m²"
+        },
+        {
+          "l": "SOR",
+          "c": "6280 ÷ 314 = 20 m³/(m²·d)"
+        }
+      ],
+      "tip": "For a circular basin, halve the diameter before squaring. Using the diameter gives four times the true area."
+    },
+    {
+      "questionNum": 1255,
+      "question": "Softening reduces hardness from 250 mg/L to 100 mg/L as CaCO₃ at a flow of 8 ML/d. What mass of hardness is removed daily?",
+      "options": [
+        "800 kg/d",
+        "1200 kg/d",
+        "2000 kg/d",
+        "2800 kg/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "The reduction is 250 − 100 = 150 mg/L. Multiplying by the flow in megalitres per day gives 150 × 8 = 1200 kg/d of hardness removed.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Hardness removal load",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Reduction",
+          "c": "250 − 100 = 150 mg/L"
+        },
+        {
+          "l": "Mass",
+          "c": "150 mg/L × 8 ML/d = 1200 kg/d"
+        },
+        {
+          "l": "Note",
+          "c": "This mass appears as sludge requiring handling and disposal."
+        }
+      ],
+      "tip": "mg/L × ML/d = kg/d works for any constituent, not only for chemical feed."
+    },
+    {
+      "questionNum": 1256,
+      "question": "A booster station raises the residual from 0.3 mg/L to 0.9 mg/L in a flow of 4 ML/d. What chlorine feed rate is required, ignoring demand?",
+      "options": [
+        "1.2 kg/d",
+        "2.4 kg/d",
+        "3.6 kg/d",
+        "4.8 kg/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "The required increase is 0.9 − 0.3 = 0.6 mg/L. Multiplying by the flow gives 0.6 × 4 = 2.4 kg/d.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Booster chlorination",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Increase needed",
+          "c": "0.9 − 0.3 = 0.6 mg/L"
+        },
+        {
+          "l": "Feed rate",
+          "c": "0.6 mg/L × 4 ML/d = 2.4 kg/d"
+        },
+        {
+          "l": "In practice",
+          "c": "Additional chlorine is needed to satisfy any remaining demand."
+        }
+      ],
+      "tip": "Boosting adds to an existing residual, so only the increment is calculated, plus any demand."
+    },
+    {
+      "questionNum": 1257,
+      "question": "A tank contains 60 m³ of water and 3 kg of chemical is added and fully mixed. What concentration results?",
+      "options": [
+        "0.05 mg/L",
+        "5 mg/L",
+        "50 mg/L",
+        "180 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "Rearranging the batch dosing relationship, concentration equals mass divided by volume: 3 kg ÷ 60 m³ × 1000 = 50 mg/L.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Batch concentration",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Relationship",
+          "c": "mg/L = kg × 1000 ÷ m³"
+        },
+        {
+          "l": "Substitute",
+          "c": "3 × 1000 ÷ 60"
+        },
+        {
+          "l": "Solve",
+          "c": "= 50 mg/L"
+        }
+      ],
+      "tip": "This is the batch dosing formula rearranged. Mass and volume give concentration."
+    },
+    {
+      "questionNum": 1258,
+      "question": "A filter run produced 2160 m³ over 18 hours from a 20 m² filter. What was the average filtration rate?",
+      "options": [
+        "4.0 m/h",
+        "6.0 m/h",
+        "8.0 m/h",
+        "12.0 m/h"
+      ],
+      "correctIndex": 1,
+      "explanation": "Average flow was 2160 ÷ 18 = 120 m³/h. Dividing by the 20 m² area gives 6.0 m/h.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Average filtration rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Flow rate",
+          "c": "2160 m³ ÷ 18 h = 120 m³/h"
+        },
+        {
+          "l": "Rate",
+          "c": "120 m³/h ÷ 20 m² = 6.0 m/h"
+        }
+      ],
+      "tip": "Work back from total production and run time when instantaneous flow is not recorded."
+    },
+    {
+      "questionNum": 1259,
+      "question": "What distinguishes reverse osmosis from ultrafiltration?",
+      "options": [
+        "Reverse osmosis removes dissolved salts, while ultrafiltration removes particles",
+        "Reverse osmosis operates at lower pressure and produces less concentrate",
+        "Reverse osmosis removes only organic compounds, leaving inorganic salts",
+        "Reverse osmosis requires no pretreatment because its pores are much finer"
+      ],
+      "correctIndex": 0,
+      "explanation": "Ultrafiltration is a physical barrier that removes suspended solids, bacteria and protozoa but passes dissolved salts. Reverse osmosis rejects dissolved ions as well, which requires much higher pressure, produces a concentrate stream, and demands careful pretreatment to prevent scaling and fouling.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Membrane types",
+      "isCalc": "no",
+      "tip": "Finer separation means higher pressure, more energy, and a larger concentrate stream to dispose of."
+    },
+    {
+      "questionNum": 1260,
+      "question": "Why is a membrane system cleaned in place on a scheduled basis?",
+      "options": [
+        "To sterilize the membrane surface before each production campaign",
+        "To restore permeability lost to scaling and biological fouling",
+        "To redistribute the membrane fibres evenly within each module",
+        "To verify the integrity of the membrane seals under chemical load"
+      ],
+      "correctIndex": 1,
+      "explanation": "Scale, organic matter and biofilm accumulate on the membrane surface, raising the pressure needed to maintain flux. A clean-in-place cycle circulates chemical solutions to dissolve those deposits and recover permeability. Delaying cleaning too long can make the fouling irreversible.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Membrane cleaning",
+      "isCalc": "no",
+      "tip": "Clean on a trend trigger such as normalised pressure, not only on a calendar interval."
+    },
+    {
+      "questionNum": 1261,
+      "question": "What is the main operational challenge associated with membrane concentrate?",
+      "options": [
+        "It must be reheated before it can be discharged to a receiving water",
+        "It contains residual membrane material that requires filtration",
+        "It carries the rejected constituents and requires suitable disposal",
+        "It must be blended back into the permeate to restore alkalinity"
+      ],
+      "correctIndex": 2,
+      "explanation": "Everything the membrane rejects leaves in the concentrate at elevated concentration, including salts, metals and any cleaning chemicals. Finding an environmentally and legally acceptable disposal route is often the largest constraint on applying membrane treatment, particularly at inland sites.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Concentrate management",
+      "isCalc": "no",
+      "tip": "Membranes concentrate rather than destroy. The rejected load still has to go somewhere."
+    },
+    {
+      "questionNum": 1262,
+      "question": "How does a solids contact clarifier differ from a conventional rectangular basin?",
+      "options": [
+        "It combines mixing, flocculation and settling within a single structure",
+        "It settles particles without any coagulant being added to the water",
+        "It relies on inclined plates instead of a mechanical sludge collector",
+        "It operates at a much lower surface overflow rate than a rectangular basin"
+      ],
+      "correctIndex": 0,
+      "explanation": "A solids contact unit performs rapid mixing, flocculation and sedimentation in one tank, recirculating previously formed sludge so incoming particles contact an existing floc blanket. That contact improves particle capture and allows a smaller footprint, but the unit is more sensitive to sudden flow or quality changes.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Solids contact clarifier",
+      "isCalc": "no",
+      "tip": "The recirculated blanket is what does the work. Losing the blanket loses the treatment."
+    },
+    {
+      "questionNum": 1263,
+      "question": "For which raw water condition is dissolved air flotation preferred over conventional sedimentation?",
+      "options": [
+        "Water with high mineral turbidity from suspended clay and silt",
+        "Water with very high hardness requiring simultaneous softening",
+        "Water with high iron content requiring oxidation before removal",
+        "Water with algae and low density floc that settles poorly"
+      ],
+      "correctIndex": 3,
+      "explanation": "Dissolved air flotation attaches fine bubbles to floc, floating it to the surface for skimming rather than waiting for it to settle. That suits algae, colour and low-turbidity waters where floc is buoyant or light. Dense mineral turbidity settles readily and is better handled by conventional sedimentation.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Dissolved air flotation",
+      "isCalc": "no",
+      "tip": "If the floc will not sink, float it. Algae-laden and highly coloured waters are the classic application."
+    },
+    {
+      "questionNum": 1264,
+      "question": "What is galvanic corrosion in a distribution system?",
+      "options": [
+        "Corrosion caused by high velocity eroding the protective film on a pipe",
+        "Corrosion accelerated where two dissimilar metals are in electrical contact",
+        "Corrosion caused by bacteria producing acid at the surface of the pipe",
+        "Corrosion resulting from stray electrical current entering a buried main"
+      ],
+      "correctIndex": 1,
+      "explanation": "When dissimilar metals are joined in the presence of water acting as an electrolyte, the more active metal corrodes preferentially. A copper service connected directly to galvanized or steel pipe is a common example, and dielectric fittings are used to break the electrical continuity.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Galvanic corrosion",
+      "isCalc": "no",
+      "tip": "Look for accelerated corrosion right at the joint between two different metals."
+    },
+    {
+      "questionNum": 1265,
+      "question": "Why is cement mortar lining applied to the interior of iron watermains?",
+      "options": [
+        "To separate the water from the metal and reduce corrosion and tuberculation",
+        "To strengthen the pipe wall so it can withstand higher operating pressures",
+        "To add weight so the main resists flotation in a high water table",
+        "To reduce the thermal conductivity of the pipe in shallow installations"
+      ],
+      "correctIndex": 0,
+      "explanation": "Cement mortar lining places a physical barrier between the water and the iron, preventing the corrosion that produces tubercles, red water and lost carrying capacity. It also raises pH slightly at the pipe wall, which is itself protective. Lining can be applied in place to rehabilitate existing mains.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Pipe lining",
+      "isCalc": "no",
+      "tip": "Newly lined mains can raise pH temporarily until the lining cures and stabilises."
+    },
+    {
+      "questionNum": 1266,
+      "question": "Why are thrust blocks or restrained joints installed at bends and tees in a pressurized main?",
+      "options": [
+        "To support the weight of the fitting and prevent settlement over time",
+        "To provide a fixed reference point for locating the fitting in future",
+        "To resist the force that internal pressure exerts on a change of direction",
+        "To allow thermal expansion and contraction of the pipeline to be absorbed"
+      ],
+      "correctIndex": 2,
+      "explanation": "Water under pressure pushes outward wherever the pipeline changes direction or size, and that unbalanced thrust can drive a fitting out of its joint. Thrust blocks transfer the force into undisturbed soil, while restrained joints tie the pipe together so the pipeline itself resists the load.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Thrust restraint",
+      "isCalc": "no",
+      "tip": "Thrust force rises with pressure and pipe diameter. Large-diameter bends carry very high loads."
+    },
+    {
+      "questionNum": 1267,
+      "question": "How does an acoustic leak detection survey locate a buried leak?",
+      "options": [
+        "By measuring the drop in pressure recorded at hydrants along the main",
+        "By detecting the sound that water escaping under pressure generates",
+        "By tracing a dye injected into the main to where it surfaces",
+        "By measuring the change in soil temperature above the leaking section"
+      ],
+      "correctIndex": 1,
+      "explanation": "Water escaping through a small opening under pressure produces a characteristic sound that travels along the pipe wall and through the surrounding ground. Listening devices at valves and hydrants detect it, and correlators compare the arrival time of that sound at two points to pinpoint the location.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Leak detection",
+      "isCalc": "no",
+      "tip": "Metallic pipes transmit leak sound well. Plastic mains are much harder to survey acoustically."
+    },
+    {
+      "questionNum": 1268,
+      "question": "Why is proper bedding material important when installing a watermain?",
+      "options": [
+        "It distributes load evenly and prevents point stresses on the pipe wall",
+        "It provides a conductive path for locating the pipe electronically later",
+        "It insulates the pipe against frost penetration at shallow depths",
+        "It prevents groundwater from contacting the exterior of the pipe"
+      ],
+      "correctIndex": 0,
+      "explanation": "A pipe resting on rock or uneven backfill carries the load at isolated points, creating stress concentrations that cause cracking and premature failure. Properly graded, compacted bedding supports the pipe continuously along its length so earth and traffic loads are distributed.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Pipe installation",
+      "isCalc": "no",
+      "tip": "Many early main failures trace back to installation bedding rather than to the pipe material."
+    },
+    {
+      "questionNum": 1269,
+      "question": "What does a UV254 absorbance measurement indicate about raw water?",
+      "options": [
+        "The concentration of iron and manganese available for oxidation",
+        "The turbidity of the water expressed on a different measurement scale",
+        "The presence of organic matter that acts as a by-product precursor",
+        "The effectiveness of the ultraviolet disinfection system in operation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Certain organic molecules, particularly the aromatic humic material that reacts with chlorine, absorb ultraviolet light strongly at 254 nanometres. The measurement is therefore a rapid surrogate for natural organic matter and is used to track precursor load and to judge the effectiveness of enhanced coagulation.",
+      "difficulty": "hard",
+      "module": "Sampling & Laboratory",
+      "topic": "Organic matter surrogates",
+      "isCalc": "no",
+      "tip": "UV254 is fast and inexpensive, which makes it useful for day-to-day control between TOC analyses."
+    },
+    {
+      "questionNum": 1270,
+      "question": "What does an alkalinity titration measure in a water sample?",
+      "options": [
+        "The concentration of calcium and magnesium ions present in the water",
+        "The capacity of the water to neutralize acid and resist a pH change",
+        "The quantity of dissolved oxygen available to oxidise metals",
+        "The total mass of dissolved solids present in the sample"
+      ],
+      "correctIndex": 1,
+      "explanation": "Alkalinity is the buffering capacity of water, contributed mainly by bicarbonate, carbonate and hydroxide. It is measured by titrating with acid to defined endpoints. Adequate alkalinity is what allows a water to absorb an acidic coagulant dose without pH collapsing.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Alkalinity measurement",
+      "isCalc": "no",
+      "tip": "Alkalinity is buffering capacity, pH is present acidity. A water can have low pH and low alkalinity, or either alone."
+    },
+    {
+      "questionNum": 1271,
+      "question": "Why is turbidity measured by nephelometry rather than by filtering and weighing solids?",
+      "options": [
+        "Because nephelometry measures the mass of solids more accurately",
+        "Because filtering and weighing cannot detect organic particles",
+        "Because scattered light responds to very low particle concentrations quickly",
+        "Because nephelometry distinguishes between different types of particle"
+      ],
+      "correctIndex": 2,
+      "explanation": "Nephelometry measures light scattered at an angle by suspended particles, which responds to concentrations far below what could be weighed and gives an immediate, continuous reading. That sensitivity and speed are essential when filtered water quality must be tracked in real time as a pathogen surrogate.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Turbidity measurement",
+      "isCalc": "no",
+      "tip": "Turbidity is an optical property, not a mass measurement. Particle size and shape both affect the reading."
+    },
+    {
+      "questionNum": 1272,
+      "question": "When evaluating a completed jar test, which observation is the most reliable indicator of the optimum dose?",
+      "options": [
+        "The jar showing the largest visible floc particles during flocculation",
+        "The jar reaching the lowest settled turbidity after the settling period",
+        "The jar in which floc first became visible after coagulant addition",
+        "The jar with the clearest appearance immediately after rapid mixing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Large floc looks impressive but does not always settle best, and early floc formation says little about final quality. Measured settled turbidity after a defined settling period is the objective outcome that predicts how the full-scale process will perform, and it is often confirmed with filtered turbidity.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Jar test evaluation",
+      "isCalc": "no",
+      "tip": "Measure rather than judge by eye. The biggest floc is not reliably the best-performing dose."
+    },
+    {
+      "questionNum": 1273,
+      "question": "What is the purpose of split treatment in a lime softening plant?",
+      "options": [
+        "To treat part of the flow and blend it with untreated water to a target hardness",
+        "To divide the flow between two parallel basins to increase total capacity",
+        "To separate the softening and recarbonation stages into different structures",
+        "To treat the flow in two stages with different lime doses in sequence"
+      ],
+      "correctIndex": 0,
+      "explanation": "Split treatment softens a portion of the flow intensively and blends it with bypassed raw water to reach the desired finished hardness. It reduces chemical consumption and sludge production compared with treating the entire flow, while achieving the same blended result.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Split treatment",
+      "isCalc": "no",
+      "tip": "Water is rarely softened completely. Some residual hardness is desirable to avoid corrosive water."
+    },
+    {
+      "questionNum": 1274,
+      "question": "Why is water rarely softened to near zero hardness for public supply?",
+      "options": [
+        "Because completely soft water tastes unpleasant to most consumers",
+        "Because very soft water is aggressive and more likely to corrode piping",
+        "Because complete softening removes the disinfectant residual from the water",
+        "Because softening equipment cannot achieve near zero hardness reliably"
+      ],
+      "correctIndex": 1,
+      "explanation": "Water with essentially no hardness or alkalinity cannot deposit a protective calcium carbonate film and tends to be corrosive to distribution piping and household plumbing. A moderate residual hardness is deliberately retained, and stabilization ensures the finished water is neither strongly scaling nor aggressive.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Finished water stability",
+      "isCalc": "no",
+      "tip": "Softening too far creates a corrosion problem that costs more than the hardness it removed."
+    },
+    {
+      "questionNum": 1275,
+      "question": "What causes fouling of ion exchange resin in a softening unit?",
+      "options": [
+        "Oxidised iron, organic matter or suspended solids coating the resin beads",
+        "Excessive brine concentration during the regeneration cycle",
+        "Water temperature falling below the design range for the resin",
+        "Regeneration performed more frequently than the resin capacity requires"
+      ],
+      "correctIndex": 0,
+      "explanation": "Iron that has oxidised, natural organic matter and suspended solids coat the bead surface and block access to exchange sites. Capacity falls even though the resin itself is undamaged. Pretreatment to remove iron and solids, and periodic cleaning, restore and preserve performance.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Resin fouling",
+      "isCalc": "no",
+      "tip": "Oxidise and remove iron before ion exchange. Iron fouling of resin is often irreversible."
+    },
+    {
+      "questionNum": 1276,
+      "question": "Why must compressed gas cylinders be secured and stored with valve caps in place?",
+      "options": [
+        "To prevent the contents from stratifying while the cylinder is stored",
+        "To keep the cylinder identification label visible for inventory purposes",
+        "To stop a fallen cylinder shearing its valve and becoming a projectile",
+        "To protect the cylinder from temperature variation during storage"
+      ],
+      "correctIndex": 2,
+      "explanation": "A cylinder that falls can break off its valve, and the stored pressure then discharges through that opening with enough force to propel the cylinder through walls. Restraint prevents the fall and the protective cap shields the valve, which is why cylinders are secured whether full or empty.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Compressed gas handling",
+      "isCalc": "no",
+      "tip": "Secure empty cylinders too. An empty cylinder can still hold enough pressure to be dangerous."
+    },
+    {
+      "questionNum": 1277,
+      "question": "Why must rotating equipment such as pump couplings and drive shafts be guarded?",
+      "options": [
+        "To reduce noise generated by the rotating assembly during operation",
+        "To prevent clothing, hair or hands being drawn into the moving parts",
+        "To keep dust and moisture away from the bearings and seals",
+        "To provide a mounting point for vibration monitoring instruments"
+      ],
+      "correctIndex": 1,
+      "explanation": "Exposed rotating parts can catch loose clothing, gloves, jewellery or hair and pull a worker into the machine faster than they can react. Fixed guards remove the possibility of contact, and they must be replaced before equipment is returned to service after maintenance.",
+      "difficulty": "easy",
+      "module": "Safety",
+      "topic": "Machine guarding",
+      "isCalc": "no",
+      "tip": "The most common failure is a guard removed for maintenance and never refitted."
+    },
+    {
+      "questionNum": 1278,
+      "question": "Why is manual handling of chemical containers a recognised injury risk at treatment plants?",
+      "options": [
+        "Because containers are frequently heavy, awkward and handled in confined areas",
+        "Because chemical containers must be lifted above shoulder height to be poured",
+        "Because containers are usually handled during emergency conditions only",
+        "Because chemical containers cannot be moved using mechanical equipment"
+      ],
+      "correctIndex": 0,
+      "explanation": "Drums, bags and carboys are heavy, shift as they move, and are often handled in tight chemical rooms with poor footing. Cumulative back and shoulder injuries result. Mechanical aids, decanting systems, smaller containers and bulk delivery all reduce the amount of manual handling required.",
+      "difficulty": "easy",
+      "module": "Safety",
+      "topic": "Manual handling",
+      "isCalc": "no",
+      "tip": "Eliminating the lift through bulk delivery or mechanical aids beats training people to lift correctly."
+    },
+    {
+      "questionNum": 1279,
+      "question": "What is the purpose of a condition assessment on a buried watermain?",
+      "options": [
+        "To confirm the main is correctly recorded on the distribution system map",
+        "To measure the flow capacity currently available through the main",
+        "To evaluate remaining structural life and inform replacement priorities",
+        "To determine whether the main was installed to the applicable standard"
+      ],
+      "correctIndex": 2,
+      "explanation": "Condition assessment uses break history, wall thickness measurement, soil corrosivity and inspection techniques to estimate how much service life a main has left. That evidence lets a utility prioritise renewal by risk and consequence rather than replacing pipe purely on the basis of its age.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Asset condition assessment",
+      "isCalc": "no",
+      "tip": "Age alone is a weak predictor. Break history and soil conditions predict failure far better."
+    },
+    {
+      "questionNum": 1280,
+      "question": "Why does an asset management plan consider consequence of failure as well as likelihood?",
+      "options": [
+        "Because consequence determines the funding source available for renewal",
+        "Because likelihood cannot be estimated reliably for buried infrastructure",
+        "Because a low-likelihood failure with severe consequence may rank as high risk",
+        "Because consequence of failure is easier to quantify than likelihood"
+      ],
+      "correctIndex": 2,
+      "explanation": "Risk combines how likely a failure is with how bad it would be. A transmission main serving a hospital may rarely fail, but the consequence is severe enough to justify priority over a frequently failing pipe in a looped residential area with alternative supply.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Risk-based prioritisation",
+      "isCalc": "no",
+      "tip": "Risk equals likelihood times consequence. Ranking on either alone misallocates renewal spending."
+    }
+  ]
+}

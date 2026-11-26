@@ -1,0 +1,3972 @@
+{
+ "courseKey": "class3-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "c3wd-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 1.0 mg/L, the measured residual is 0.3 mg/L and the zone flow is 8 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 1.0 mg/L, measured residual = 0.3 mg/L, zone flow = 8 ML/day, hypochlorite strength = 0.2 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 1.0 mg/L - 0.3 mg/L = 0.7 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.7 mg/L * 8000000 L/day = 5600000 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chlorine mass = 5600000 mg/day / 1000 mg/kg = 5600 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chlorine mass = 5600000 mg/day / 1000000 mg/kg = 5.6 kg/day",
+   "explanation": "Line 3 divided by 1000 instead of 1000000 mg/kg. The chlorine mass is 5.6 kg/day."
+  },
+  {
+   "id": "c3wd-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 0.9 mg/L, the measured residual is 0.5 mg/L and the zone flow is 10 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 0.9 mg/L, measured residual = 0.5 mg/L, zone flow = 10 ML/day, hypochlorite strength = 0.1 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 0.9 mg/L - 0.5 mg/L = 0.4 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.4 mg/L * 10 ML/day = 4 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 4 kg/day * 0.1 = 0.4 L/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 4 kg/day / 0.1 = 40 L/day",
+   "explanation": "Line 3 multiplied by the solution strength instead of dividing. Feed is mass divided by strength, 4 / 0.1 = 40 L/day."
+  },
+  {
+   "id": "c3wd-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residual decay estimate. Water leaves storage at 1.5 mg/L, the given decay rate is 0.05 mg/L per day and the water age is 6 days.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional storage outlet: starting residual = 1.5 mg/L, given linear decay rate = 0.05 mg/L per day, water age = 6 days. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total decay = 0.05 mg/L/day * 6 days = 0.3 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Final residual = 1.5 mg/L - 0.05 mg/L = 1.45 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Final residual = 1.5 mg/L - 0.3 mg/L = 1.2 mg/L",
+   "explanation": "Line 2 subtracted one day of decay instead of the total decay from line 1. The final residual is 1.5 - 0.3 = 1.2 mg/L."
+  },
+  {
+   "id": "c3wd-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 0.8 mg/L, the measured residual is 0.2 mg/L and the zone flow is 12 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 0.8 mg/L, measured residual = 0.2 mg/L, zone flow = 12 ML/day, hypochlorite strength = 0.12 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 0.8 mg/L - 0.2 mg/L = 0.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.6 mg/L * 12 ML/day = 7.8 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 0.6 mg/L * 12 ML/day = 7.2 kg/day",
+   "explanation": "Line 2 arithmetic is wrong. 0.6 * 12 = 7.2 kg/day, since mg/L times ML/day gives kg/day."
+  },
+  {
+   "id": "c3wd-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 1.1 mg/L, the measured residual is 0.5 mg/L and the zone flow is 6 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 1.1 mg/L, measured residual = 0.5 mg/L, zone flow = 6 ML/day, hypochlorite strength = 0.2 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 1.1 mg/L + 0.5 mg/L = 1.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 1.6 mg/L * 6 ML/day = 9.6 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Booster dose needed = 1.1 mg/L - 0.5 mg/L = 0.6 mg/L",
+   "explanation": "Line 1 added the residuals. The booster only needs to make up the shortfall, 1.1 - 0.5 = 0.6 mg/L, so the mass is 3.6 kg/day."
+  },
+  {
+   "id": "c3wd-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 1.4 mg/L, the measured residual is 0.4 mg/L and the zone flow is 7.5 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 1.4 mg/L, measured residual = 0.4 mg/L, zone flow = 7.5 ML/day, hypochlorite strength = 0.1 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 1.4 mg/L - 0.4 mg/L = 1 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 1 mg/L * 7500000 L/day = 7500000 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chlorine mass = 7500000 mg/day / 1000 mg/kg = 7500 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chlorine mass = 7500000 mg/day / 1000000 mg/kg = 7.5 kg/day",
+   "explanation": "Line 3 divided by 1000 instead of 1000000 mg/kg. The chlorine mass is 7.5 kg/day."
+  },
+  {
+   "id": "c3wd-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 0.7 mg/L, the measured residual is 0.3 mg/L and the zone flow is 9 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 0.7 mg/L, measured residual = 0.3 mg/L, zone flow = 9 ML/day, hypochlorite strength = 0.25 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 0.7 mg/L - 0.3 mg/L = 0.4 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.4 mg/L * 9 ML/day = 3.6 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 3.6 kg/day * 0.25 = 0.9 L/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 3.6 kg/day / 0.25 = 14.4 L/day",
+   "explanation": "Line 3 multiplied by the solution strength instead of dividing. Feed is mass divided by strength, 3.6 / 0.25 = 14.4 L/day."
+  },
+  {
+   "id": "c3wd-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residual decay estimate. Water leaves storage at 1.3 mg/L, the given decay rate is 0.1 mg/L per day and the water age is 4 days.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional storage outlet: starting residual = 1.3 mg/L, given linear decay rate = 0.1 mg/L per day, water age = 4 days. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total decay = 0.1 mg/L/day * 4 days = 0.4 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Final residual = 1.3 mg/L - 0.1 mg/L = 1.2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Final residual = 1.3 mg/L - 0.4 mg/L = 0.9 mg/L",
+   "explanation": "Line 2 subtracted one day of decay instead of the total decay from line 1. The final residual is 1.3 - 0.4 = 0.9 mg/L."
+  },
+  {
+   "id": "c3wd-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 1.0 mg/L, the measured residual is 0.6 mg/L and the zone flow is 15 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 1.0 mg/L, measured residual = 0.6 mg/L, zone flow = 15 ML/day, hypochlorite strength = 0.1 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 1.0 mg/L - 0.6 mg/L = 0.4 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.4 mg/L * 15 ML/day = 6.4 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 0.4 mg/L * 15 ML/day = 6 kg/day",
+   "explanation": "Line 2 arithmetic is wrong. 0.4 * 15 = 6 kg/day, since mg/L times ML/day gives kg/day."
+  },
+  {
+   "id": "c3wd-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 0.6 mg/L, the measured residual is 0.2 mg/L and the zone flow is 20 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 0.6 mg/L, measured residual = 0.2 mg/L, zone flow = 20 ML/day, hypochlorite strength = 0.2 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 0.6 mg/L + 0.2 mg/L = 0.8 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.8 mg/L * 20 ML/day = 16 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Booster dose needed = 0.6 mg/L - 0.2 mg/L = 0.4 mg/L",
+   "explanation": "Line 1 added the residuals. The booster only needs to make up the shortfall, 0.6 - 0.2 = 0.4 mg/L, so the mass is 8 kg/day."
+  },
+  {
+   "id": "c3wd-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 1.6 mg/L, the measured residual is 0.8 mg/L and the zone flow is 3 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 1.6 mg/L, measured residual = 0.8 mg/L, zone flow = 3 ML/day, hypochlorite strength = 0.16 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 1.6 mg/L - 0.8 mg/L = 0.8 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.8 mg/L * 3000000 L/day = 2400000 mg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chlorine mass = 2400000 mg/day / 1000 mg/kg = 2400 kg/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chlorine mass = 2400000 mg/day / 1000000 mg/kg = 2.4 kg/day",
+   "explanation": "Line 3 divided by 1000 instead of 1000000 mg/kg. The chlorine mass is 2.4 kg/day."
+  },
+  {
+   "id": "c3wd-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine booster calculation. The target residual is 0.9 mg/L, the measured residual is 0.3 mg/L and the zone flow is 11 ML/day.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional booster station: target residual = 0.9 mg/L, measured residual = 0.3 mg/L, zone flow = 11 ML/day, hypochlorite strength = 0.15 as a fraction, solution density 1 kg/L, 1 ML = 1000000 L, 1000000 mg = 1 kg. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Booster dose needed = 0.9 mg/L - 0.3 mg/L = 0.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.6 mg/L * 11 ML/day = 6.6 kg/day"
+    },
+    {
+     "id": "line3",
+     "label": "3. Solution feed = 6.6 kg/day * 0.15 = 0.99 L/day"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Solution feed = 6.6 kg/day / 0.15 = 44 L/day",
+   "explanation": "Line 3 multiplied by the solution strength instead of dividing. Feed is mass divided by strength, 6.6 / 0.15 = 44 L/day."
+  },
+  {
+   "id": "c3wd-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this residual decay estimate. Water leaves storage at 1.2 mg/L, the given decay rate is 0.05 mg/L per day and the water age is 6 days.",
+   "topicId": "chlorine-booster",
+   "level": "class1",
+   "assumptions": "Fictional storage outlet: starting residual = 1.2 mg/L, given linear decay rate = 0.05 mg/L per day, water age = 6 days. Target unit: mg/L.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total decay = 0.05 mg/L/day * 6 days = 0.3 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Final residual = 1.2 mg/L - 0.05 mg/L = 1.15 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Final residual = 1.2 mg/L - 0.3 mg/L = 0.9 mg/L",
+   "explanation": "Line 2 subtracted one day of decay instead of the total decay from line 1. The final residual is 1.2 - 0.3 = 0.9 mg/L."
+  },
+  {
+   "id": "c3wd-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 10 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 10 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = 10 m * 98.1 kPa/m = 981 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. The zone gauge should read about 981 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = 10 m * 9.81 kPa/m = 98.1 kPa",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 10 * 9.81 = 98.1 kPa."
+  },
+  {
+   "id": "c3wd-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 20 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 20 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure from the first 10 m = 10 m * 9.81 kPa/m = 98.1 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total pressure = 2 * 98.1 kPa = 206.01 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total pressure = 2 * 98.1 kPa = 196.2 kPa",
+   "explanation": "Line 2 arithmetic is wrong. 2 * 98.1 = 196.2 kPa, which matches 20 * 9.81 = 196.2 kPa."
+  },
+  {
+   "id": "c3wd-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 245.25 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: pressure = 245.25 kPa, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = pressure / 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 245.25 kPa / 9.81 kPa/m = 250 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head = 245.25 kPa / 9.81 kPa/m = 25 m",
+   "explanation": "Line 2 arithmetic is wrong. 245.25 / 9.81 = 25 m of head."
+  },
+  {
+   "id": "c3wd-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation. Pressure at the upper gauge is 250 kPa and the lower gauge is 30 m below it.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 30 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head gain = 30 m * 9.81 kPa/m = 294.3 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Lower pressure = 250 kPa - 294.3 kPa = -44.3 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Lower pressure = 250 kPa + 294.3 kPa = 544.3 kPa",
+   "explanation": "Line 2 subtracted the head gain. Pressure increases downhill, so the lower pressure is 250 + 294.3 = 544.3 kPa."
+  },
+  {
+   "id": "c3wd-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 40 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 40 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total head = 20 m + 20 m = 42 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 42 m * 9.81 kPa/m = 412.02 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total head = 20 m + 20 m = 40 m",
+   "explanation": "Line 1 arithmetic is wrong. 20 + 20 = 40 m, so the pressure is 392.4 kPa."
+  },
+  {
+   "id": "c3wd-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 50 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 50 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = 50 m * 98.1 kPa/m = 4905 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. The zone gauge should read about 4905 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = 50 m * 9.81 kPa/m = 490.5 kPa",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 50 * 9.81 = 490.5 kPa."
+  },
+  {
+   "id": "c3wd-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 15 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 15 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure from the first 7.5 m = 7.5 m * 9.81 kPa/m = 73.575 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total pressure = 2 * 73.575 kPa = 156.96 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total pressure = 2 * 73.575 kPa = 147.15 kPa",
+   "explanation": "Line 2 arithmetic is wrong. 2 * 73.575 = 147.15 kPa, which matches 15 * 9.81 = 147.15 kPa."
+  },
+  {
+   "id": "c3wd-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 117.72 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: pressure = 117.72 kPa, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = pressure / 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 117.72 kPa / 9.81 kPa/m = 120 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head = 117.72 kPa / 9.81 kPa/m = 12 m",
+   "explanation": "Line 2 arithmetic is wrong. 117.72 / 9.81 = 12 m of head."
+  },
+  {
+   "id": "c3wd-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation. Pressure at the upper gauge is 200 kPa and the lower gauge is 8 m below it.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 8 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head gain = 8 m * 9.81 kPa/m = 78.48 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Lower pressure = 200 kPa - 78.48 kPa = 121.52 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Lower pressure = 200 kPa + 78.48 kPa = 278.48 kPa",
+   "explanation": "Line 2 subtracted the head gain. Pressure increases downhill, so the lower pressure is 200 + 78.48 = 278.48 kPa."
+  },
+  {
+   "id": "c3wd-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 5 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 5 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total head = 2.5 m + 2.5 m = 7 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure = 7 m * 9.81 kPa/m = 68.67 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total head = 2.5 m + 2.5 m = 5 m",
+   "explanation": "Line 1 arithmetic is wrong. 2.5 + 2.5 = 5 m, so the pressure is 49.05 kPa."
+  },
+  {
+   "id": "c3wd-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 35 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 35 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure = 35 m * 98.1 kPa/m = 3433.5 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. The zone gauge should read about 3433.5 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pressure = 35 m * 9.81 kPa/m = 343.35 kPa",
+   "explanation": "Line 1 used 98.1 kPa per metre instead of 9.81 kPa per metre. The pressure is 35 * 9.81 = 343.35 kPa."
+  },
+  {
+   "id": "c3wd-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation for a water column 45 m high.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 45 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pressure from the first 22.5 m = 22.5 m * 9.81 kPa/m = 220.725 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Total pressure = 2 * 220.725 kPa = 451.26 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Total pressure = 2 * 220.725 kPa = 441.45 kPa",
+   "explanation": "Line 2 arithmetic is wrong. 2 * 220.725 = 441.45 kPa, which matches 45 * 9.81 = 441.45 kPa."
+  },
+  {
+   "id": "c3wd-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head calculation for a pressure of 176.58 kPa.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: pressure = 176.58 kPa, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head = pressure / 9.81 kPa/m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Head = 176.58 kPa / 9.81 kPa/m = 180 m"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Head = 176.58 kPa / 9.81 kPa/m = 18 m",
+   "explanation": "Line 2 arithmetic is wrong. 176.58 / 9.81 = 18 m of head."
+  },
+  {
+   "id": "c3wd-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure calculation. Pressure at the upper gauge is 250 kPa and the lower gauge is 22 m below it.",
+   "topicId": "pressure-head",
+   "level": "class1",
+   "assumptions": "Fictional pressure zone: head = 22 m, conversion 9.81 kPa per metre of head. Target unit: kPa.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Head gain = 22 m * 9.81 kPa/m = 215.82 kPa"
+    },
+    {
+     "id": "line2",
+     "label": "2. Lower pressure = 250 kPa - 215.82 kPa = 34.18 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Lower pressure = 250 kPa + 215.82 kPa = 465.82 kPa",
+   "explanation": "Line 2 subtracted the head gain. Pressure increases downhill, so the lower pressure is 250 + 215.82 = 465.82 kPa."
+  },
+  {
+   "id": "c3wd-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.2 m diameter main, 500 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.2 m, length = 500 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.2 m * 0.2 m = 0.0314 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.0314 m2 * 500 m = 15.7 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing volume = 2 * 15.7 m3 = 31.4 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flushing volume = 3 * 15.7 m3 = 47.1 m3",
+   "explanation": "Line 3 used two pipe volumes. The program flushes three pipe volumes, 3 * 15.7 = 47.1 m3."
+  },
+  {
+   "id": "c3wd-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.4 m diameter main, 250 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.4 m, length = 250 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 3.14 * 0.4 m * 0.4 m = 0.5024 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.5024 m2 * 250 m = 125.6 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Area = 0.785 * 0.4 m * 0.4 m = 0.1256 m2",
+   "explanation": "Line 1 used 3.14 * d * d without the quarter factor. The area is 0.785 * 0.4 * 0.4 = 0.1256 m2 and the pipe volume is 31.4 m3."
+  },
+  {
+   "id": "c3wd-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing velocity check for a 0.6 m diameter main at a flushing flow of 565.2 L/s.",
+   "topicId": "flushing-velocity",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.6 m, length = 200 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.6 m * 0.6 m = 0.2826 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 565.2 L/s / 1000 L/m3 = 0.5652 m3/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.2826 m2 / 0.5652 m3/s = 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 0.5652 m3/s / 0.2826 m2 = 2 m/s",
+   "explanation": "Line 3 inverted the formula. Velocity is flow divided by area, 0.5652 / 0.2826 = 2 m/s."
+  },
+  {
+   "id": "c3wd-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing time calculation for a 0.8 m diameter main, 150 m long, flushed at 80 L/min with three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.8 m, length = 150 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pipe volume = 0.5024 m2 * 150 m = 75.36 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flushing volume = 3 * 75.36 m3 = 226.08 m3 = 226080 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing time = 226080 L / 80 L/min = 2826 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flushing time = 2826 min / 60 s/min = 47.1 s"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Flushing time = 2826 min * 60 s/min = 169560 s",
+   "explanation": "Line 4 divided by 60 instead of multiplying by 60 s/min. The flushing time is 2826 * 60 = 169560 s."
+  },
+  {
+   "id": "c3wd-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.2 m diameter main, 1000 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.2 m, length = 1000 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.2 m * 0.2 m = 0.0314 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.0314 m2 * 1000 m = 31.714 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing volume = 3 * 31.714 m3 = 95.142 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pipe volume = 0.0314 m2 * 1000 m = 31.4 m3",
+   "explanation": "Line 2 arithmetic is wrong. 0.0314 * 1000 = 31.4 m3, so the flushing volume is 94.2 m3."
+  },
+  {
+   "id": "c3wd-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.4 m diameter main, 400 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.4 m, length = 400 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.4 m * 0.4 m = 0.1256 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.1256 m2 * 400 m = 50.24 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing volume = 2 * 50.24 m3 = 100.48 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flushing volume = 3 * 50.24 m3 = 150.72 m3",
+   "explanation": "Line 3 used two pipe volumes. The program flushes three pipe volumes, 3 * 50.24 = 150.72 m3."
+  },
+  {
+   "id": "c3wd-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.6 m diameter main, 300 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.6 m, length = 300 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 3.14 * 0.6 m * 0.6 m = 1.1304 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 1.1304 m2 * 300 m = 339.12 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Area = 0.785 * 0.6 m * 0.6 m = 0.2826 m2",
+   "explanation": "Line 1 used 3.14 * d * d without the quarter factor. The area is 0.785 * 0.6 * 0.6 = 0.2826 m2 and the pipe volume is 84.78 m3."
+  },
+  {
+   "id": "c3wd-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing velocity check for a 1 m diameter main at a flushing flow of 1570 L/s.",
+   "topicId": "flushing-velocity",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 1 m, length = 100 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 1 m * 1 m = 0.785 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 1570 L/s / 1000 L/m3 = 1.57 m3/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.785 m2 / 1.57 m3/s = 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 1.57 m3/s / 0.785 m2 = 2 m/s",
+   "explanation": "Line 3 inverted the formula. Velocity is flow divided by area, 1.57 / 0.785 = 2 m/s."
+  },
+  {
+   "id": "c3wd-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing time calculation for a 0.8 m diameter main, 250 m long, flushed at 200 L/min with three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.8 m, length = 250 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pipe volume = 0.5024 m2 * 250 m = 125.6 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flushing volume = 3 * 125.6 m3 = 376.8 m3 = 376800 L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing time = 376800 L / 200 L/min = 1884 min"
+    },
+    {
+     "id": "line4",
+     "label": "4. Flushing time = 1884 min / 60 s/min = 31.4 s"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Flushing time = 1884 min * 60 s/min = 113040 s",
+   "explanation": "Line 4 divided by 60 instead of multiplying by 60 s/min. The flushing time is 1884 * 60 = 113040 s."
+  },
+  {
+   "id": "c3wd-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.2 m diameter main, 750 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.2 m, length = 750 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.2 m * 0.2 m = 0.0314 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.0314 m2 * 750 m = 23.864 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing volume = 3 * 23.864 m3 = 71.592 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pipe volume = 0.0314 m2 * 750 m = 23.55 m3",
+   "explanation": "Line 2 arithmetic is wrong. 0.0314 * 750 = 23.55 m3, so the flushing volume is 70.65 m3."
+  },
+  {
+   "id": "c3wd-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.4 m diameter main, 600 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.4 m, length = 600 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 0.4 m * 0.4 m = 0.1256 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 0.1256 m2 * 600 m = 75.36 m3"
+    },
+    {
+     "id": "line3",
+     "label": "3. Flushing volume = 2 * 75.36 m3 = 150.72 m3"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Flushing volume = 3 * 75.36 m3 = 226.08 m3",
+   "explanation": "Line 3 used two pipe volumes. The program flushes three pipe volumes, 3 * 75.36 = 226.08 m3."
+  },
+  {
+   "id": "c3wd-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing calculation for a 0.6 m diameter main, 500 m long. The program flushes three pipe volumes.",
+   "topicId": "flushing-volume",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 0.6 m, length = 500 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 3.14 * 0.6 m * 0.6 m = 1.1304 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pipe volume = 1.1304 m2 * 500 m = 565.2 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Area = 0.785 * 0.6 m * 0.6 m = 0.2826 m2",
+   "explanation": "Line 1 used 3.14 * d * d without the quarter factor. The area is 0.785 * 0.6 * 0.6 = 0.2826 m2 and the pipe volume is 141.3 m3."
+  },
+  {
+   "id": "c3wd-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing velocity check for a 1 m diameter main at a flushing flow of 1570 L/s.",
+   "topicId": "flushing-velocity",
+   "level": "class1",
+   "assumptions": "Fictional watermain: diameter = 1 m, length = 200 m, area factor 0.785, flushing volume = 3 pipe volumes, 1000 L = 1 m3. Target unit: as noted.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Area = 0.785 * 1 m * 1 m = 0.785 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flow = 1570 L/s / 1000 L/m3 = 1.57 m3/s"
+    },
+    {
+     "id": "line3",
+     "label": "3. Velocity = 0.785 m2 / 1.57 m3/s = 0.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Velocity = 1.57 m3/s / 0.785 m2 = 2 m/s",
+   "explanation": "Line 3 inverted the formula. Velocity is flow divided by area, 1.57 / 0.785 = 2 m/s."
+  },
+  {
+   "id": "c3wd-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for rebalancing pressure zones ahead of the summer peak demand season.",
+   "topicId": "multi-zone-seasonal-rebalancing",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Summer demands are forecast to rise in the two highest zones.",
+   "configuration": "Scope: system wide seasonal review covering all pressure zones, storage and booster stations.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review last summer demand, pressure and storage level records for each zone"
+    },
+    {
+     "id": "s2",
+     "label": "Identify zones that ran low on storage or pressure during peak days"
+    },
+    {
+     "id": "s3",
+     "label": "Adjust booster station discharge setpoints and tank operating bands for the high demand zones"
+    },
+    {
+     "id": "s4",
+     "label": "Shift selected boundary valves and confirm the new normal positions in the field"
+    },
+    {
+     "id": "s5",
+     "label": "Update the SCADA setpoints and the zone operating sheet to match the field changes"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor the first hot week trends daily and record whether the rebalancing held"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Records show where the system struggled last summer, so they drive the plan. Setpoints and operating bands change before valves move, field positions are then made to match, SCADA and the operating sheet are aligned, and the first peak week proves whether the change worked."
+  },
+  {
+   "id": "c3wd-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for opening a normally closed interzone boundary valve to transfer water into a low zone.",
+   "topicId": "interzone-transfer-opening",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The receiving zone reservoir is low and the transfer was approved by the overall responsible operator.",
+   "configuration": "Scope: one normally closed boundary valve between a high zone and a low zone during a planned transfer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the donor zone has surplus storage and pressure to give"
+    },
+    {
+     "id": "s2",
+     "label": "Check chlorine residuals on both sides of the boundary valve"
+    },
+    {
+     "id": "s3",
+     "label": "Notify control room staff and log the planned transfer start time"
+    },
+    {
+     "id": "s4",
+     "label": "Open the boundary valve slowly in stages while watching pressures in both zones"
+    },
+    {
+     "id": "s5",
+     "label": "Confirm flow direction and stable pressures once the valve is fully open"
+    },
+    {
+     "id": "s6",
+     "label": "Record the valve position as temporarily open and set a review time to close it"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The donor zone must be able to give before anything moves, and residuals confirm the water being transferred is of good quality. Slow staged opening protects both zones from surge, stability is proven before the transfer is left running, and the temporary position is recorded with a close review time so zones are not left connected by default."
+  },
+  {
+   "id": "c3wd-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for closing an interzone boundary valve at the end of a planned transfer and restoring zone separation.",
+   "topicId": "interzone-transfer-closing",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The receiving zone reservoir has recovered to its normal operating band.",
+   "configuration": "Scope: one temporarily open boundary valve returning to its normally closed position.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the receiving zone storage and pressures are back inside the normal band"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the control room and crews working in both zones that separation will be restored"
+    },
+    {
+     "id": "s3",
+     "label": "Close the boundary valve slowly while watching pressures on both sides"
+    },
+    {
+     "id": "s4",
+     "label": "Verify each zone holds its own pressure with the valve closed"
+    },
+    {
+     "id": "s5",
+     "label": "Restore the valve record to normally closed and clear the temporary transfer log entry"
+    },
+    {
+     "id": "s6",
+     "label": "Review transfer volumes and residuals and file the transfer record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Separation is only restored once the receiving zone can stand on its own. Slow closure limits surge, independent pressures prove the zones are truly separated again, and the record and review close the transfer formally."
+  },
+  {
+   "id": "c3wd-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the supervisory investigation steps when an entire pressure zone reports low pressure during peak demand.",
+   "topicId": "zone-low-pressure-investigation",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. No main break has been reported and storage levels were normal at the start of the day.",
+   "configuration": "Scope: one zone with widespread low pressure complaints on a high demand day.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Check SCADA for zone storage level, booster discharge pressure and boundary valve positions"
+    },
+    {
+     "id": "s2",
+     "label": "Compare current zone demand with the normal demand pattern for that time of day"
+    },
+    {
+     "id": "s3",
+     "label": "Rule out a closed or partly closed trunk valve using valve records and a field check"
+    },
+    {
+     "id": "s4",
+     "label": "Dispatch a crew to check for a major leak or unauthorized hydrant use in the zone"
+    },
+    {
+     "id": "s5",
+     "label": "If supply is short, start the standby booster pump and open the planned interzone support"
+    },
+    {
+     "id": "s6",
+     "label": "Log all findings and notify affected customers if low pressure will continue"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "System data comes first because SCADA quickly separates a supply problem from a demand problem. Demand comparison and valve checks rule out the common internal causes before crews search for a leak, support measures follow diagnosis, and customers and the log are closed out last."
+  },
+  {
+   "id": "c3wd-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for commissioning a new pressure zone created for a growing subdivision area.",
+   "topicId": "new-pressure-zone-commissioning",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Construction, pressure testing and disinfection of the new mains are complete and accepted.",
+   "configuration": "Scope: a new zone with its own booster station, reservoir and boundary valves, before customers are connected.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the zone boundary valves are closed and the zone is hydraulically separate"
+    },
+    {
+     "id": "s2",
+     "label": "Fill and pressurize the zone from the booster station and check for leaks"
+    },
+    {
+     "id": "s3",
+     "label": "Collect bacteriological and chlorine samples from the new zone sampling points"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm satisfactory sample results before any customer connection is allowed"
+    },
+    {
+     "id": "s5",
+     "label": "Set and record the normal booster setpoints, tank band and boundary valve positions"
+    },
+    {
+     "id": "s6",
+     "label": "Add the zone to the sampling schedule, asset registry and operating procedures"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A new zone must first prove it is separate, sound and safe. Pressurization and leak checks come before sampling, satisfactory results gate customer connections, and only a proven zone is written into the schedules, registry and procedures that will run it."
+  },
+  {
+   "id": "c3wd-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for planning a zone outage so a reservoir can be taken out of service for inspection.",
+   "topicId": "zone-outage-planning",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The inspection cannot be deferred and the outage is planned for a low demand period.",
+   "configuration": "Scope: one zone reservoir outage lasting several days, with supply maintained from adjacent zones.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate the zone demand that must be carried by adjacent zones during the outage"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the adjacent zones and interconnections can carry that demand with fire flow held in reserve"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule the outage for the lowest demand window and notify the fire department and critical customers"
+    },
+    {
+     "id": "s4",
+     "label": "Set up the interzone transfers and booster changes the day before the outage"
+    },
+    {
+     "id": "s5",
+     "label": "Take the reservoir out of service and confirm zone pressures hold on the alternate supply"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor zone pressures and storage daily until the reservoir returns to service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The plan starts with arithmetic: the load to be carried must be known before anyone promises the adjacent zones can carry it. Notification and setup precede the outage itself, and daily monitoring runs for the whole period the zone is on alternate supply."
+  },
+  {
+   "id": "c3wd-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for balancing levels across two elevated tanks in different zones overnight.",
+   "topicId": "multi-tank-overnight-balancing",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Both tanks are in service and overnight demand is low and predictable.",
+   "configuration": "Scope: two elevated tanks that finished the day at very different levels.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the evening level trend and the overnight demand forecast for both zones"
+    },
+    {
+     "id": "s2",
+     "label": "Decide the target morning level for each tank based on next day demand and turnover needs"
+    },
+    {
+     "id": "s3",
+     "label": "Adjust filling pump schedules so the low tank fills first during off peak hours"
+    },
+    {
+     "id": "s4",
+     "label": "Set the high tank filling to start only after the low tank reaches its interim target"
+    },
+    {
+     "id": "s5",
+     "label": "Check levels again before morning peak and confirm both tanks are inside their bands"
+    },
+    {
+     "id": "s6",
+     "label": "Record the overnight moves and any level alarms in the operating log"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Targets come from forecast demand and turnover, not from habit. Filling is sequenced so the neediest tank is served first in the cheap overnight window, the morning check proves the plan worked, and the log preserves the reasoning."
+  },
+  {
+   "id": "c3wd-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for a supervisory review of a cluster of pressure complaints in one neighbourhood.",
+   "topicId": "zone-complaint-cluster-review",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Individual complaint visits found no plumbing fault inside the homes.",
+   "configuration": "Scope: twelve similar low pressure complaints received from one subdivision over two weeks.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Map the complaint addresses against zone boundaries, mains and recent work in the area"
+    },
+    {
+     "id": "s2",
+     "label": "Pull pressure logger and SCADA data for the streets involved over the same period"
+    },
+    {
+     "id": "s3",
+     "label": "Compare the findings with recent valve operations, flushing and construction in the area"
+    },
+    {
+     "id": "s4",
+     "label": "Deploy temporary pressure loggers at the worst affected streets if the cause is still unclear"
+    },
+    {
+     "id": "s5",
+     "label": "Decide the corrective action, such as a valve correction, main cleaning or a capital referral"
+    },
+    {
+     "id": "s6",
+     "label": "Reply to the complainants with the finding and the action being taken"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A cluster is a system signal, not twelve separate plumbing problems. Mapping and data review usually reveal a shared cause such as a partly closed valve, loggers are deployed only when records cannot settle it, and residents hear the finding and the fix at the end."
+  },
+  {
+   "id": "c3wd-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for isolating part of a zone for planned trunk main work, including customer notification.",
+   "topicId": "planned-zone-isolation-notice",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The work is planned, permits are in place and the isolation valves were exercised last month.",
+   "configuration": "Scope: a planned daytime isolation affecting about 300 homes and one school.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the isolation valve list and the exact streets inside the isolated area"
+    },
+    {
+     "id": "s2",
+     "label": "Prepare the customer notice with the date, hours and a contact number"
+    },
+    {
+     "id": "s3",
+     "label": "Deliver notices at least two days before the work and notify the school directly"
+    },
+    {
+     "id": "s4",
+     "label": "Close the isolation valves slowly on the morning of the work and confirm zero pressure in the section"
+    },
+    {
+     "id": "s5",
+     "label": "Tag the valves and record closure times so no one reopens them during the work"
+    },
+    {
+     "id": "s6",
+     "label": "Reopen the valves slowly after the work, flush the section and confirm residuals before closing the job"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The affected area must be exact before notices are written, and notice lead time is a commitment, not a courtesy. Valves close slowly and are tagged to protect the crew, and reopening is paired with flushing and a residual check before the job is closed."
+  },
+  {
+   "id": "c3wd-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for returning all zones to normal after a system wide emergency ends.",
+   "topicId": "zone-normalization-after-event",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The emergency is declared over by the overall responsible operator.",
+   "configuration": "Scope: all zones after an emergency during which boundary valves, setpoints and schedules were changed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every temporary change made during the emergency from the event log"
+    },
+    {
+     "id": "s2",
+     "label": "Restore boundary valves to their normal positions and verify zone pressures are independent"
+    },
+    {
+     "id": "s3",
+     "label": "Restore booster setpoints, tank bands and pump schedules to the normal operating sheet values"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm chlorine residuals at the zone extremities are back inside the normal range"
+    },
+    {
+     "id": "s5",
+     "label": "Reconcile the event log against the asset and valve records and correct any mismatch"
+    },
+    {
+     "id": "s6",
+     "label": "File the normalization checklist with the event report and brief the next shift"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Normalization works from the event log so nothing temporary is forgotten. Physical restoration comes before paperwork, residuals prove water quality recovered with hydraulics, and reconciled records plus a shift brief prevent the next crew from inheriting a changed system they do not know about."
+  },
+  {
+   "id": "c3wd-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for preparing the annual operating plan and budget for the distribution system.",
+   "topicId": "annual-operating-plan-budget",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The plan must connect program targets to the money requested for each program.",
+   "configuration": "Scope: one budget year covering programs, staffing, energy, chemicals and contracted services.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the current year program results, including flushing, valve, hydrant and leakage completion"
+    },
+    {
+     "id": "s2",
+     "label": "Forecast the next year workload from asset counts, program cycles and known projects"
+    },
+    {
+     "id": "s3",
+     "label": "Price the staffing, energy, chemical and contractor needs for that workload"
+    },
+    {
+     "id": "s4",
+     "label": "Identify the risks and service effects of each proposed reduction before any cut is accepted"
+    },
+    {
+     "id": "s5",
+     "label": "Present the plan with program targets and costs shown together for approval"
+    },
+    {
+     "id": "s6",
+     "label": "Load the approved budget into the tracking system and review spending against programs quarterly"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The plan starts from results and workload, not from last year numbers plus a percentage. Every reduction is priced in service effect before it is accepted, targets and costs are approved together, and quarterly review keeps the budget a management tool rather than an annual surprise."
+  },
+  {
+   "id": "c3wd-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for building the annual storage inspection program for all tanks and reservoirs in the system.",
+   "topicId": "storage-inspection-program-scheduling",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Each facility is due an external inspection yearly and an internal inspection on a rotating cycle.",
+   "configuration": "Scope: program planning for eight storage facilities in one calendar year.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the due dates for external and internal inspections for every facility"
+    },
+    {
+     "id": "s2",
+     "label": "Rank facilities by age, coating condition and time since the last internal inspection"
+    },
+    {
+     "id": "s3",
+     "label": "Group the internal inspections so only one facility per zone is out of service at a time"
+    },
+    {
+     "id": "s4",
+     "label": "Schedule the work into low demand months and reserve contractor and crew time"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the program schedule with outage windows to operations, water quality and customer service"
+    },
+    {
+     "id": "s6",
+     "label": "Track completion monthly and carry any missed facility to the front of the next quarter"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Due dates and condition set the priorities, but hydraulics set the constraint: two facilities in one zone cannot be down together. Scheduling, notification and monthly tracking turn the ranked list into a program that actually finishes."
+  },
+  {
+   "id": "c3wd-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for taking one of two reservoirs in a zone out of service while supply is maintained from the other.",
+   "topicId": "reservoir-outage-with-supply-maintained",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The remaining reservoir alone can meet average day demand but not peak hour demand.",
+   "configuration": "Scope: one ground reservoir out for cleaning, with a second reservoir carrying the zone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the remaining reservoir is full and its pumps and controls are proven"
+    },
+    {
+     "id": "s2",
+     "label": "Raise the remaining reservoir operating band and schedule extra filling for peak periods"
+    },
+    {
+     "id": "s3",
+     "label": "Notify the fire department that available fire storage is temporarily reduced"
+    },
+    {
+     "id": "s4",
+     "label": "Isolate and drain the reservoir being taken out of service"
+    },
+    {
+     "id": "s5",
+     "label": "Post the reduced storage status on the daily operating sheet for all shifts"
+    },
+    {
+     "id": "s6",
+     "label": "Review zone storage twice daily until both reservoirs are back in service"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The carrying reservoir is proven and filled before its partner is touched, and the fire department hears about reduced fire storage before the outage, not during a fire. Twice daily review reflects the thinner margin for the whole outage."
+  },
+  {
+   "id": "c3wd-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for returning a cleaned reservoir to service in a multi reservoir system.",
+   "topicId": "reservoir-return-system-scale",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Cleaning and repairs are complete and the reservoir has been disinfected.",
+   "configuration": "Scope: one cleaned and repaired reservoir returning alongside reservoirs already in service.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Inspect the completed work and confirm all tools and materials are out of the reservoir"
+    },
+    {
+     "id": "s2",
+     "label": "Fill the reservoir and hold the water for the required disinfection contact period"
+    },
+    {
+     "id": "s3",
+     "label": "Collect bacteriological samples and chlorine residuals from the reservoir outlet"
+    },
+    {
+     "id": "s4",
+     "label": "Wait for satisfactory bacteriological results before opening the reservoir to the zone"
+    },
+    {
+     "id": "s5",
+     "label": "Open the inlet and outlet valves slowly and blend the reservoir back into zone operation"
+    },
+    {
+     "id": "s6",
+     "label": "Record the return in the asset history and remove the outage notice from the operating sheet"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Nothing returns on a schedule, it returns on results. The hold period and satisfactory samples gate the valve opening, blending avoids a pressure or quality shock to a zone already in service, and the records close the outage formally."
+  },
+  {
+   "id": "c3wd-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for investigating rising water age across the whole distribution system.",
+   "topicId": "system-water-age-investigation",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Treatment plant finished water quality has not changed over the same period.",
+   "configuration": "Scope: system wide review after residuals at several extremities trend downward over a month.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Calculate water age indicators from tank turnover records and extremity residual trends"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the facilities and areas with the longest storage and travel times"
+    },
+    {
+     "id": "s3",
+     "label": "Check whether tank operating bands have crept upward and reduced daily turnover"
+    },
+    {
+     "id": "s4",
+     "label": "Check for oversized or low use mains and new dead ends created by recent valve closures"
+    },
+    {
+     "id": "s5",
+     "label": "Apply the fixes in order, starting with operating band changes and targeted flushing"
+    },
+    {
+     "id": "s6",
+     "label": "Re sample the extremity sites after two weeks and compare residuals with the baseline"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Finished water is ruled out first so the search stays in distribution. Turnover records usually find the cause in storage operation before pipes are blamed, fixes start with operations rather than construction, and re sampling proves whether age actually fell."
+  },
+  {
+   "id": "c3wd-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for managing ice risk in an elevated tank during a prolonged cold period.",
+   "topicId": "winter-storage-ice-management",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The tank has no mixer and historically forms surface ice in severe cold.",
+   "configuration": "Scope: one elevated tank in a cold snap with overnight temperatures well below freezing.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the forecast and the tank level trend to judge how long water will sit still"
+    },
+    {
+     "id": "s2",
+     "label": "Lower the operating band slightly so the tank cycles more deeply each day"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule filling during the warmer daytime hours where the pumping plan allows"
+    },
+    {
+     "id": "s4",
+     "label": "Check the overflow, vent and roof hatch daily for ice blockage"
+    },
+    {
+     "id": "s5",
+     "label": "Inspect for ice damage to the coating and ladder at the first safe opportunity after the cold snap"
+    },
+    {
+     "id": "s6",
+     "label": "Record the winter settings so the next cold period starts from a proven plan"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Moving water is the defence against ice, so the band and filling schedule are set to keep the tank cycling before hardware is checked. Vents and overflows are the fittings ice blocks first, and the recorded settings turn one winter lesson into standing practice."
+  },
+  {
+   "id": "c3wd-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for commissioning a new mixer in a storage tank to reduce thermal stratification.",
+   "topicId": "tank-mixer-commissioning",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The mixer was installed during a recent outage and electrical work is complete.",
+   "configuration": "Scope: one in service tank fitted with a new active mixer.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Collect baseline temperature and chlorine samples at several depths before the mixer starts"
+    },
+    {
+     "id": "s2",
+     "label": "Start the mixer and confirm operation by indicator lights and a site check"
+    },
+    {
+     "id": "s3",
+     "label": "Repeat the depth samples after one full day of mixing and compare them with the baseline"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm the tank still fills and draws normally with the mixer running"
+    },
+    {
+     "id": "s5",
+     "label": "Add the mixer to the preventive maintenance program with its inspection interval"
+    },
+    {
+     "id": "s6",
+     "label": "Record the baseline and post mixing results in the facility file"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A mixer is only worth its power bill if stratification actually falls, so depth profiles are taken before and after under the same conditions. Normal fill and draw operation is proven, and the unit enters the maintenance program so it does not become forgotten equipment."
+  },
+  {
+   "id": "c3wd-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the supervisory steps after two tanks overflowed on the same night.",
+   "topicId": "multi-tank-overflow-review",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Both overflows were traced to filling pumps that did not stop on high level.",
+   "configuration": "Scope: two overflow events in different zones during one night shift.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Secure both tanks at safe levels and confirm no further overflow is occurring"
+    },
+    {
+     "id": "s2",
+     "label": "Preserve the SCADA level and pump records for both events before they are overwritten"
+    },
+    {
+     "id": "s3",
+     "label": "Test the high level switches and alarms at both facilities"
+    },
+    {
+     "id": "s4",
+     "label": "Estimate the volume lost at each tank from the level records"
+    },
+    {
+     "id": "s5",
+     "label": "Place a temporary manual level watch in effect until the control fault is repaired"
+    },
+    {
+     "id": "s6",
+     "label": "Report the events, the losses and the corrective actions to management and file the incident record"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Stopping the loss comes before explaining it, but the SCADA records are preserved immediately after because they are the evidence. Switch testing finds whether the fault is shared, and a manual watch covers the gap until controls can be trusted again."
+  },
+  {
+   "id": "c3wd-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for supervising a contractor cleaning a storage reservoir.",
+   "topicId": "storage-cleaning-contractor-oversight",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The reservoir is isolated and drained by municipal staff before the contractor arrives.",
+   "configuration": "Scope: contractor cleaning of one reservoir under a municipal contract.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Hold a pre work meeting covering confined space rules, disinfection requirements and site security"
+    },
+    {
+     "id": "s2",
+     "label": "Verify the contractor entry permits and atmospheric test records before the first entry"
+    },
+    {
+     "id": "s3",
+     "label": "Inspect the washed interior with the contractor before any coating repairs begin"
+    },
+    {
+     "id": "s4",
+     "label": "Witness the disinfection application and record the concentration and contact time used"
+    },
+    {
+     "id": "s5",
+     "label": "Collect the clearance bacteriological samples through the municipal sampling program"
+    },
+    {
+     "id": "s6",
+     "label": "Sign off the work only after satisfactory sample results and a final joint inspection"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The municipality keeps control of the safety and water quality gates even when a contractor does the work. Entry records, witnessed disinfection and municipal sampling protect the public, and sign off waits for results, not for the contractor schedule."
+  },
+  {
+   "id": "c3wd-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the leadership steps when system storage falls to emergency levels during a supply interruption.",
+   "topicId": "low-storage-emergency-response",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The supply interruption is expected to last most of the day and demand is high.",
+   "configuration": "Scope: system wide low storage with the treatment supply reduced for several hours.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the true storage position in every zone from SCADA and field readings"
+    },
+    {
+     "id": "s2",
+     "label": "Stop all non essential water use, including flushing, hydrant permits and municipal irrigation"
+    },
+    {
+     "id": "s3",
+     "label": "Start all available booster and transfer capacity to move water to the lowest zones"
+    },
+    {
+     "id": "s4",
+     "label": "Issue a customer water conservation notice through the municipal communication channels"
+    },
+    {
+     "id": "s5",
+     "label": "Set a refill priority order for the zones for when supply is restored"
+    },
+    {
+     "id": "s6",
+     "label": "Log storage levels hourly and stand the emergency down only when all zones recover their minimum bands"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Decisions start from a verified storage picture. Demand is cut and transfers are maximized before the public is asked to conserve, refill priority is decided while there is time to think, and hourly logging governs both the emergency and its stand down."
+  },
+  {
+   "id": "c3wd-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for running a tank on manual level control after its altitude valve fails.",
+   "topicId": "manual-level-control-failure",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. A repair crew is scheduled for the next business day and the tank must stay in service.",
+   "configuration": "Scope: one elevated tank whose altitude valve has failed closed.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the failure by comparing tank level, inlet pressure and valve position indication"
+    },
+    {
+     "id": "s2",
+     "label": "Place the filling pump on manual control with written start and stop levels"
+    },
+    {
+     "id": "s3",
+     "label": "Assign level checks at a set interval through the night with a call out threshold"
+    },
+    {
+     "id": "s4",
+     "label": "Post the manual control instructions at the station and in the operating log"
+    },
+    {
+     "id": "s5",
+     "label": "Brief every shift on the manual procedure and the overflow risk until the repair is done"
+    },
+    {
+     "id": "s6",
+     "label": "Return the valve to automatic control after repair and record a full fill and shut off cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Manual control replaces an automatic safeguard with people, so it needs written levels, set check intervals and a call out threshold rather than good intentions. Every shift is briefed because the risk changes hands, and automatic control is only trusted again after a proven cycle."
+  },
+  {
+   "id": "c3wd-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for setting up a pressure management area controlled by a pressure reducing valve.",
+   "topicId": "dma-pressure-management-setup",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The area has historically run at higher pressure than it needs overnight.",
+   "configuration": "Scope: one district area with a single feed through a new pressure reducing valve station.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the area boundary and that all boundary valves are closed and recorded"
+    },
+    {
+     "id": "s2",
+     "label": "Install the pressure reducing valve and the downstream pressure logger"
+    },
+    {
+     "id": "s3",
+     "label": "Set the initial downstream pressure based on the highest and most distant customer needs"
+    },
+    {
+     "id": "s4",
+     "label": "Record pressures at the critical point for one week at the initial setting"
+    },
+    {
+     "id": "s5",
+     "label": "Lower the setting in small steps, checking the critical point pressure after each step"
+    },
+    {
+     "id": "s6",
+     "label": "Fix the final setting, record it on the station sheet and add the station to the maintenance program"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Pressure can only be managed inside a proven boundary. The starting setting protects the highest customer first, reductions are made in small measured steps against critical point data, and the final setting becomes a maintained asset record."
+  },
+  {
+   "id": "c3wd-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for the annual maintenance round on a pressure reducing valve station.",
+   "topicId": "prv-annual-maintenance-round",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The station can be bypassed so downstream pressure is maintained during the work.",
+   "configuration": "Scope: one pressure reducing valve station with a main valve and a smaller low flow bypass valve.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Record upstream and downstream pressures before any adjustment"
+    },
+    {
+     "id": "s2",
+     "label": "Transfer the area to the bypass and confirm downstream pressure holds"
+    },
+    {
+     "id": "s3",
+     "label": "Open the main valve cover and inspect the diaphragm, seat and pilot system"
+    },
+    {
+     "id": "s4",
+     "label": "Clean the strainer and replace worn seals and the diaphragm if condition requires"
+    },
+    {
+     "id": "s5",
+     "label": "Return the main valve to service and prove it holds the set pressure across a demand change"
+    },
+    {
+     "id": "s6",
+     "label": "Record the as left set pressure and the parts replaced in the station history"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "As found pressures are the baseline the work is judged against. The bypass protects customers while the valve is open, inspection covers the parts that actually fail, and the valve is proven across a demand change before the round is signed off."
+  },
+  {
+   "id": "c3wd-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for approving and making a seasonal pressure reducing valve setpoint change.",
+   "topicId": "prv-setpoint-change-approval",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The change was proposed after a leakage review suggested overnight pressure could be lowered.",
+   "configuration": "Scope: a proposed setpoint reduction for the winter low demand season in one pressure area.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the leakage and critical point pressure data supporting the change"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm fire flow requirements for the area can still be met at the lower pressure"
+    },
+    {
+     "id": "s3",
+     "label": "Approve and document the new setpoint and the dates it will apply"
+    },
+    {
+     "id": "s4",
+     "label": "Adjust the valve in the field and verify the downstream pressure at the critical point"
+    },
+    {
+     "id": "s5",
+     "label": "Notify customer service that a small pressure change will occur in the area"
+    },
+    {
+     "id": "s6",
+     "label": "Review pressures and complaints after two weeks and confirm or reverse the change"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Data makes the case, fire flow sets the limit, and approval is documented before a wrench turns. Field verification proves the setting was achieved, and the two week review gives the change a chance to be reversed on evidence rather than defended on pride."
+  },
+  {
+   "id": "c3wd-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the response steps when a pressure reducing valve fails and downstream pressure rises sharply.",
+   "topicId": "prv-failure-high-pressure-response",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. SCADA shows the downstream pressure rising and customer calls about noise and leaks are starting.",
+   "configuration": "Scope: one pressure area where downstream pressure is approaching the safe limit for services.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the high pressure with a field gauge reading in the affected area"
+    },
+    {
+     "id": "s2",
+     "label": "Open the station bypass control to bring downstream pressure under manual control"
+    },
+    {
+     "id": "s3",
+     "label": "Close and isolate the failed pressure reducing valve"
+    },
+    {
+     "id": "s4",
+     "label": "Check the area for new leaks and advise affected customers through dispatch"
+    },
+    {
+     "id": "s5",
+     "label": "Repair or replace the valve and test the pilot controls on the bench or in place"
+    },
+    {
+     "id": "s6",
+     "label": "Return the valve to service slowly and monitor downstream pressure for a full demand cycle"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A field reading confirms the alarm is real before the system is disturbed. Manual control protects services first, isolation makes repair safe, and the repaired valve earns its way back over a full demand cycle, not a single reading."
+  },
+  {
+   "id": "c3wd-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for deploying pressure loggers for a zone pressure study.",
+   "topicId": "pressure-logger-study-deployment",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The study supports a decision about booster setpoints and a possible new pressure area.",
+   "configuration": "Scope: a two week study using loggers at hydrants and stations across one zone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select logger locations covering the highest, lowest and most distant points of the zone"
+    },
+    {
+     "id": "s2",
+     "label": "Calibrate or verify each logger against a test gauge before deployment"
+    },
+    {
+     "id": "s3",
+     "label": "Install the loggers and record the exact location, time and starting reading for each"
+    },
+    {
+     "id": "s4",
+     "label": "Download and review the data at the midpoint and replace any failed logger"
+    },
+    {
+     "id": "s5",
+     "label": "Retrieve the loggers at the end of the study and download the complete records"
+    },
+    {
+     "id": "s6",
+     "label": "Analyse the minimum and peak pressures and present the study findings with recommendations"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Location choice decides what a study can prove, so the extremes and the far points are covered. A midpoint download saves the study from a silently failed logger, and analysis closes with recommendations the data can support."
+  },
+  {
+   "id": "c3wd-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for investigating repeated pressure transient reports near a booster station.",
+   "topicId": "pressure-transient-investigation",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The reports cluster around the times the large booster pump starts and stops.",
+   "configuration": "Scope: banging pipes and pressure spikes reported by customers on streets near one booster station.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Interview the reporting customers and fix the times and pattern of the disturbances"
+    },
+    {
+     "id": "s2",
+     "label": "Review pump start and stop records and pressure trends for the matching periods"
+    },
+    {
+     "id": "s3",
+     "label": "Check the surge protection equipment, including air vessels and relief valves, at the station"
+    },
+    {
+     "id": "s4",
+     "label": "Check pump control settings for start and stop ramp times"
+    },
+    {
+     "id": "s5",
+     "label": "Make the control or equipment correction indicated by the findings"
+    },
+    {
+     "id": "s6",
+     "label": "Monitor pressures with a fast logging gauge for one week and report the result to the customers"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Customer times are data: matching them to pump records usually identifies the source in one step. Surge equipment and ramp settings are the physical suspects, the correction follows the evidence, and fast logging afterwards proves the transient is gone."
+  },
+  {
+   "id": "c3wd-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for investigating a part of the system that failed to meet required fire flow.",
+   "topicId": "fire-flow-deficiency-investigation",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The shortfall was found during a scheduled hydrant flow test program.",
+   "configuration": "Scope: one industrial area where a recent flow test fell short of the required fire flow.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Repeat the flow test with verified gauges to confirm the shortfall is real"
+    },
+    {
+     "id": "s2",
+     "label": "Check the position and condition of the trunk valves feeding the area"
+    },
+    {
+     "id": "s3",
+     "label": "Review main sizes, age and any recent isolations or construction that changed the feed"
+    },
+    {
+     "id": "s4",
+     "label": "Model or calculate the available flow with each suspected restriction removed"
+    },
+    {
+     "id": "s5",
+     "label": "Decide the remedy, ranging from a valve correction to a capital main upgrade"
+    },
+    {
+     "id": "s6",
+     "label": "Record the deficiency and the interim fire protection advice given to the fire department"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A capital decision needs a confirmed deficiency, so the test is repeated with proven gauges first. Valve and feed checks find the cheap causes before modelling supports an upgrade, and the fire department receives interim advice because the risk exists today."
+  },
+  {
+   "id": "c3wd-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for protecting pressure to a hospital during planned work on its feed main.",
+   "topicId": "critical-customer-pressure-protection",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The hospital is the most critical customer in the zone and has limited on site storage.",
+   "configuration": "Scope: planned valve work on one of the two mains feeding a hospital.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Meet the hospital facilities team and agree the work window and their minimum pressure need"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the second feed can carry the hospital alone by testing it under controlled flow"
+    },
+    {
+     "id": "s3",
+     "label": "Schedule the work inside the agreed window and stage a standby crew and parts"
+    },
+    {
+     "id": "s4",
+     "label": "Notify the hospital before the first valve moves and again when the work is complete"
+    },
+    {
+     "id": "s5",
+     "label": "Monitor pressure at the hospital connection continuously during the work"
+    },
+    {
+     "id": "s6",
+     "label": "Review the event with the hospital contact and record the agreed procedure for future work"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The hospital sets the window and the pressure floor, not the road crew. The alternate feed is proven under flow before the main feed is touched, communication happens before and after rather than during a surprise, and the debrief turns one job into a standing procedure."
+  },
+  {
+   "id": "c3wd-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for a periodic review of booster station pressure control performance.",
+   "topicId": "booster-pressure-control-review",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Zone demand has grown since the station controls were last reviewed.",
+   "configuration": "Scope: one variable speed booster station serving a growing zone.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Trend discharge pressure against zone demand for a representative month"
+    },
+    {
+     "id": "s2",
+     "label": "Check how often the pumps run at maximum or minimum speed and for how long"
+    },
+    {
+     "id": "s3",
+     "label": "Verify the discharge pressure sensor against a calibrated gauge"
+    },
+    {
+     "id": "s4",
+     "label": "Review the setpoint against the pressure needs of the highest customers in the zone"
+    },
+    {
+     "id": "s5",
+     "label": "Adjust the control settings and record the change and the reason"
+    },
+    {
+     "id": "s6",
+     "label": "Re trend the station after one month and file the review with the station history"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A growing zone quietly outgrows old settings. Trending shows whether the pumps are fighting the setpoint or coasting, the sensor is verified before settings are blamed, and the follow up trend proves the adjustment helped."
+  },
+  {
+   "id": "c3wd-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for building the business case for a new pressure management project.",
+   "topicId": "pressure-leakage-business-case",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Management requires a documented case before capital funding is considered.",
+   "configuration": "Scope: a proposal to add pressure management to the oldest and highest pressure area of the system.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Compile the area pressure, leakage and break history from the operating records"
+    },
+    {
+     "id": "s2",
+     "label": "Estimate the leakage and break reduction using the measured night flows and pressure data"
+    },
+    {
+     "id": "s3",
+     "label": "Price the station work, loggers and annual maintenance from recent comparable projects"
+    },
+    {
+     "id": "s4",
+     "label": "Compare the project cost with the value of the water and break repairs avoided"
+    },
+    {
+     "id": "s5",
+     "label": "Present the case with the risks of doing nothing stated plainly"
+    },
+    {
+     "id": "s6",
+     "label": "If approved, set the baseline measurements so the project savings can be verified after construction"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "The case is built from the area own records, not from textbook savings rates. Costs include maintenance, benefits are tied to measured night flow, and baselines are fixed before construction so the promised savings can be audited afterwards."
+  },
+  {
+   "id": "c3wd-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for designing the annual distribution sampling schedule for a large system under Ontario Regulation 170/03.",
+   "topicId": "annual-sampling-schedule-design",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The system serves over 100,000 people and has multiple pressure zones and storage facilities.",
+   "configuration": "Scope: one calendar year schedule covering microbiological, chemical and lead sampling across all zones.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "List every sampling obligation by parameter, frequency and required location type"
+    },
+    {
+     "id": "s2",
+     "label": "Map the existing sampling sites against the zones, storage facilities and older neighbourhoods"
+    },
+    {
+     "id": "s3",
+     "label": "Fill coverage gaps by adding or relocating sites and confirming access with property owners"
+    },
+    {
+     "id": "s4",
+     "label": "Build the weekly and monthly collection calendar so laboratory capacity and courier times are met"
+    },
+    {
+     "id": "s5",
+     "label": "Issue the schedule to the sampling staff and the laboratory with the chain of custody requirements"
+    },
+    {
+     "id": "s6",
+     "label": "Review completion monthly and reschedule any missed sample inside its required period"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Obligations come before locations: the regulation sets what must be sampled, the map shows where coverage is thin, and the calendar is only real if the laboratory can receive the samples in time. Monthly review protects the schedule from silent misses."
+  },
+  {
+   "id": "c3wd-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the leadership steps after the laboratory reports an E. coli positive result from a distribution sample.",
+   "topicId": "awqi-ecoli-response",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The result was received by phone from the accredited laboratory during business hours.",
+   "configuration": "Scope: one confirmed E. coli detection at a distribution sampling site, treated as an adverse water quality incident.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Verify the result details with the laboratory, including site, date and sample identification"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the local health unit and the Ministry of the Environment, Conservation and Parks as required for an adverse result"
+    },
+    {
+     "id": "s3",
+     "label": "Collect resamples from the original site, an upstream site and a downstream site right away"
+    },
+    {
+     "id": "s4",
+     "label": "Check chlorine residuals and recent work, breaks or pressure events near the site"
+    },
+    {
+     "id": "s5",
+     "label": "Follow the direction of the medical officer of health on public notice and any advisory"
+    },
+    {
+     "id": "s6",
+     "label": "Continue enhanced sampling and corrective action until the required clear results are received and the incident is closed in writing"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Verification is instant but brief: the notifications and resampling that protect the public cannot wait. Residuals and recent events guide the corrective action, the health unit directs public notice, and the incident only closes on the required clear results, in writing."
+  },
+  {
+   "id": "c3wd-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps after a distribution lead sample result exceeds the Ontario standard.",
+   "topicId": "lead-result-response",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The sample was collected under the regulatory lead sampling program.",
+   "configuration": "Scope: one plumbing related lead exceedance at a residential sampling site in an older neighbourhood.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the result and the sampling record, including the standing time and sample point details"
+    },
+    {
+     "id": "s2",
+     "label": "Notify the health unit and provide the result and site information as required"
+    },
+    {
+     "id": "s3",
+     "label": "Contact the property owner with the result and advice on flushing and filter options"
+    },
+    {
+     "id": "s4",
+     "label": "Collect the follow up samples required by the regulation and the health unit"
+    },
+    {
+     "id": "s5",
+     "label": "Review results from nearby sites to judge whether the problem is one plumbing system or an area pattern"
+    },
+    {
+     "id": "s6",
+     "label": "Record the actions in the lead program file and include the area in the next corrosion and service line review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A lead exceedance is first a duty to the household: notification and practical advice come early. Follow up sampling separates a single plumbing system from an area pattern, and the program file carries the finding into service line planning where the lasting fix lives."
+  },
+  {
+   "id": "c3wd-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for resampling after a total coliform positive distribution result.",
+   "topicId": "resampling-after-adverse-bacti",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The site is a dedicated sampling tap in a commercial building.",
+   "configuration": "Scope: one total coliform detection with no E. coli, at a routine distribution site.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Review the original sampling record for errors in technique, tap condition or labelling"
+    },
+    {
+     "id": "s2",
+     "label": "Collect the resample set from the original site plus upstream and downstream sites"
+    },
+    {
+     "id": "s3",
+     "label": "Measure and record free chlorine residual at each resample site at the time of collection"
+    },
+    {
+     "id": "s4",
+     "label": "Inspect the original tap and flush it if the tap itself is the suspected source"
+    },
+    {
+     "id": "s5",
+     "label": "Submit the samples with priority handling and record the chain of custody"
+    },
+    {
+     "id": "s6",
+     "label": "Review the resample results with the supervisor and close or escalate the incident based on them"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Technique is checked first because a contaminated tap or a handling error is a common cause. The three point resample set brackets the original site, residuals collected at the same moment give the results their context, and escalation depends on evidence, not anxiety."
+  },
+  {
+   "id": "c3wd-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps when a set of microbiological samples exceeds the allowed holding time before analysis.",
+   "topicId": "holding-time-exceedance-handling",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The delay was caused by a missed courier connection and was flagged by the laboratory.",
+   "configuration": "Scope: one day of distribution samples that arrived at the laboratory too late to be valid.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm with the laboratory which samples are invalid and obtain the flag in writing"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the sites and the regulatory sampling period affected by the invalid results"
+    },
+    {
+     "id": "s3",
+     "label": "Collect replacement samples from the same sites as soon as possible"
+    },
+    {
+     "id": "s4",
+     "label": "Record the incident, the cause and the replacement results in the sampling log"
+    },
+    {
+     "id": "s5",
+     "label": "Fix the courier or delivery step that caused the delay and brief the sampling staff"
+    },
+    {
+     "id": "s6",
+     "label": "Report the gap and its correction in the monthly compliance review"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Invalid samples are a compliance gap, not a paperwork issue: the affected period is identified precisely, replacement sampling restores coverage, and the delivery failure is fixed at its step so the gap does not repeat next month."
+  },
+  {
+   "id": "c3wd-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for selecting distribution sampling sites in a newly assumed subdivision.",
+   "topicId": "new-subdivision-sampling-sites",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The subdivision mains have passed pressure testing, disinfection and clearance sampling.",
+   "configuration": "Scope: a new subdivision with two entry points, one storage facility and several dead ends.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Walk the system map and mark the entry points, storage, high points and dead ends"
+    },
+    {
+     "id": "s2",
+     "label": "Choose sites that represent water entering, stored water and the oldest water in the subdivision"
+    },
+    {
+     "id": "s3",
+     "label": "Confirm each site has a suitable tap, year round access and a willing property contact"
+    },
+    {
+     "id": "s4",
+     "label": "Collect baseline samples from the new sites before they join the routine schedule"
+    },
+    {
+     "id": "s5",
+     "label": "Add the sites to the sampling schedule, the map and the site access records"
+    },
+    {
+     "id": "s6",
+     "label": "Review the first quarter of results to confirm the sites represent the area as intended"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Site selection follows the water: entry, storage and oldest water tell the story of a subdivision. Access is confirmed before a site is promised to a schedule, baselines precede routine monitoring, and the first quarter review checks the choice against real results."
+  },
+  {
+   "id": "c3wd-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for a quality assurance audit of the distribution sampling program.",
+   "topicId": "sampling-program-qa-audit",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The audit is part of the Drinking Water Quality Management Standard operational checks.",
+   "configuration": "Scope: an internal audit covering samplers, sites, transport and records for one quarter.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Select a sample of completed sampling records across all samplers and zones"
+    },
+    {
+     "id": "s2",
+     "label": "Trace each record from the site visit through chain of custody to the laboratory result"
+    },
+    {
+     "id": "s3",
+     "label": "Ride along on a sampling round and observe technique against the written procedure"
+    },
+    {
+     "id": "s4",
+     "label": "Check sample transport temperatures and holding times against the requirements"
+    },
+    {
+     "id": "s5",
+     "label": "Record any nonconformities with the procedure step each one belongs to"
+    },
+    {
+     "id": "s6",
+     "label": "Assign corrective actions with owners and dates and verify them at the next audit"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "An audit traces real samples end to end rather than reading the procedure binder. Observation catches technique drift that records hide, findings are tied to procedure steps so they can be fixed, and verification at the next audit closes the loop."
+  },
+  {
+   "id": "c3wd-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for the operational response to a rising trihalomethane trend at distribution sites.",
+   "topicId": "thm-trend-operational-response",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. Treatment plant results are stable and the highest results are at the oldest water sites.",
+   "configuration": "Scope: several distribution sites trending upward toward the Ontario standard over two quarters.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Confirm the trend from the laboratory reports and rule out a sampling or analysis change"
+    },
+    {
+     "id": "s2",
+     "label": "Identify the high result sites and calculate their water age from storage and travel records"
+    },
+    {
+     "id": "s3",
+     "label": "Reduce water age at those sites by adjusting tank bands and targeted flushing"
+    },
+    {
+     "id": "s4",
+     "label": "Ask the treatment plant to review precursor removal and finished water results for the same period"
+    },
+    {
+     "id": "s5",
+     "label": "Increase sampling frequency at the high sites to track the response"
+    },
+    {
+     "id": "s6",
+     "label": "Report the trend and the actions to management and keep the enhanced monitoring until results fall"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "A trend is managed before it becomes an exceedance. Distribution age is checked first because the pattern points there, treatment is engaged in parallel rather than blamed, and enhanced sampling stays until the data, not the calendar, says the response worked."
+  },
+  {
+   "id": "c3wd-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "prompt": "Order the steps for clearing a new watermain for service through pressure testing, disinfection and sampling.",
+   "topicId": "new-main-commissioning-sampling",
+   "assumptions": "Fictional large Ontario municipal drinking water system operating under Ontario Regulation 170/03. The main has been installed and the contractor requests clearance to connect it.",
+   "configuration": "Scope: one new main section built by a developer contractor, to be assumed by the municipality.",
+   "cards": [
+    {
+     "id": "s1",
+     "label": "Witness the pressure test and accept the recorded results against the specification"
+    },
+    {
+     "id": "s2",
+     "label": "Confirm the main is disinfected and flushed and obtain the disinfection records"
+    },
+    {
+     "id": "s3",
+     "label": "Collect the required bacteriological samples on the required separate days"
+    },
+    {
+     "id": "s4",
+     "label": "Confirm satisfactory results for every required sample set before connection is allowed"
+    },
+    {
+     "id": "s5",
+     "label": "Connect the main, flush the connection point and record the new asset details"
+    },
+    {
+     "id": "s6",
+     "label": "Add the section to the maps, valve records and sampling site review list"
+    }
+   ],
+   "correctOrder": [
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6"
+   ],
+   "explanation": "Each gate protects the existing system from the new pipe: pressure proves strength, disinfection records prove treatment, and satisfactory samples on separate days prove the water is safe. Connection is the reward at the end of the gates, never the start."
+  }
+ ],
+ "missions": [
+  {
+   "id": "c3wd-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Chlorine Booster Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "c3wd-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Interzone Transfer Opening Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "c3wd-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "c3wd-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Chlorine Booster Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "c3wd-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "c3wd-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "c3wd-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Zone Low Pressure Investigation Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "c3wd-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Chlorine Booster Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "c3wd-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "c3wd-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Zone Outage Planning Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "c3wd-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "c3wd-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "c3wd-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Chlorine Booster Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "c3wd-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Zone Complaint Cluster Review Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "c3wd-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "c3wd-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "c3wd-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "c3wd-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "c3wd-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Zone Normalization After Event Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "c3wd-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "c3wd-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "c3wd-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Storage Inspection Program Scheduling Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "c3wd-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "c3wd-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "c3wd-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Pressure Head Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "c3wd-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Reservoir Return System Scale Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "c3wd-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "c3wd-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "c3wd-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "c3wd-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "c3wd-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Winter Storage Ice Management Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "c3wd-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "c3wd-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "c3wd-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Multi Tank Overflow Review Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "c3wd-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "c3wd-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "c3wd-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Flushing Volume Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "c3wd-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "c3wd-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Low Storage Emergency Response Shift",
+   "tasks": [
+    {
+     "taskId": "c3wd-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "c3wd-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "c3wd-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution system management, hydraulics, storage and water quality chapters"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "e45f6c89ad3bb992a25fd98ff25f4cc56f3e8eec75fcc690b12b8612703ff041",
+  "taskReceipts": [
+   {
+    "taskId": "c3wd-error60",
+    "revision": "r1",
+    "sha256": "11d64f32da0c8d5c54b22d5256d124a0192ba580afbdbdf6bff4c6329701c893",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error61",
+    "revision": "r1",
+    "sha256": "a50a4db77a03831aa99107eed3a8d5fe1d243c470f93f474f90b432a8598b28a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error62",
+    "revision": "r1",
+    "sha256": "5cd83340572ff55531c815aa9e7d5f0271f329cd03975cdc5b229b0b8e6d763b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error63",
+    "revision": "r1",
+    "sha256": "cac092c2d636d8cf7d51614a410a5d572cc60af231be50aea420d25e9a7928e3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error64",
+    "revision": "r1",
+    "sha256": "2b4a2274250e1b9909c2f40acf439acc9ebe690c21b1790107dd7e63d676f741",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error65",
+    "revision": "r1",
+    "sha256": "004427f891da2dd52bdcdf276bd23046f96eacfa7f03bf1b4260a3ca0ce457fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error66",
+    "revision": "r1",
+    "sha256": "e4a3bed9180e61d0af90d23117b3019b19f28e806d8779f027512de95dc23d84",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error67",
+    "revision": "r1",
+    "sha256": "78ec6f5619f6277190f18ea94feb94a1a52c43790047c77e747de93f39460366",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error68",
+    "revision": "r1",
+    "sha256": "20df54f4730dca4506fbab2d15afcea4203d0dcb743f1190497bf59251cd3a21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error69",
+    "revision": "r1",
+    "sha256": "84b147d133f6364b412adfed308eb31bc523e4ccefdb7afc765866b0b42dc459",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error70",
+    "revision": "r1",
+    "sha256": "f2a995b24339760af4da961166106b2b5ce715b942cda9a400510792695d7b16",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error71",
+    "revision": "r1",
+    "sha256": "e4eab990519bde74ab450c50afbdb7e11831dd014dc76f764b1a38756099ccde",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error72",
+    "revision": "r1",
+    "sha256": "cfe4b2b2143a3a8eede6ed553d62c369f4904b9c29ff945a19661967b4a4b19f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error73",
+    "revision": "r1",
+    "sha256": "536db4763674568b668d86f8a8e091e46a5db5a08cf7cfc3ca01f2ff8a1b8f42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error74",
+    "revision": "r1",
+    "sha256": "76241cce57d58de334554aa427210ea41c8ca9824a5010980c5f0d4fb093e04c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error75",
+    "revision": "r1",
+    "sha256": "9eb3180d5643463855dea78f65fa9a0ee07f26dd83c5f9d12c9fedac3acadf4b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error76",
+    "revision": "r1",
+    "sha256": "b7f22fcbe264b5e50ea8532ad4df90102189badd29285e9a3d39ad1cdc909e3f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error77",
+    "revision": "r1",
+    "sha256": "389013e3d968228820d2a1c81418d7607c09925508a2c5530a53d467ec686951",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error78",
+    "revision": "r1",
+    "sha256": "e69b1fa39facf8033789e075d321e2f8ac6620c9a896783903ed45535a34aa73",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error79",
+    "revision": "r1",
+    "sha256": "bb5d43024ad3b160ec166cbbc0172d64fc0f3616e0533e17b807ad5c5f7e4a23",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error80",
+    "revision": "r1",
+    "sha256": "40b1f34403d73bcc6a428c12c0483fcfdef1bb1cb6fbfc71f8842035f4135afb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error81",
+    "revision": "r1",
+    "sha256": "1146ffbfdd93bdfafda2d54ec0bca7c70df8a2b44ea871c6600bb941d1ded232",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error82",
+    "revision": "r1",
+    "sha256": "f25d179006b31535ff22e175206d76ec00e3fd81f07a1aee5a4139d633cc69ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error83",
+    "revision": "r1",
+    "sha256": "0deff317b4f1067317946fe3554c71f8ed9e15235bf73c0fdc4bd8cfbaf9ea50",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error84",
+    "revision": "r1",
+    "sha256": "8fba67c808d3770ec522dc0861ee7e37a019a1bb61022267b56b2a05e794210b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error85",
+    "revision": "r1",
+    "sha256": "258496e01ce28b015ad681b3e02085ffc635989a850fea71227cdf0e669663f1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error86",
+    "revision": "r1",
+    "sha256": "682ff72f0f2645acacba45c32d5bdfd126d6a0a08bfd9e17390f6642c13fccd9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error87",
+    "revision": "r1",
+    "sha256": "1efc33dad017013bd863056c30ad999394e5d63dfcc511034476ec40a3120ebc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error88",
+    "revision": "r1",
+    "sha256": "59521f577694bf0dc16b23432733a2123d0b4a02d40e17153ad9bcd1fdb39821",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error89",
+    "revision": "r1",
+    "sha256": "32e90947e4ede24f16bc52f897d0633a006d4ffbd170169be0e883801b3f4c18",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error90",
+    "revision": "r1",
+    "sha256": "3510132423b3f93c891a465a7fa5543ceac9566f5ed94aa7a434037390b10497",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error91",
+    "revision": "r1",
+    "sha256": "6eecfc768ea6ace2394a6d15b02b797305ad8dd94f186309d0e8aafceeee0153",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error92",
+    "revision": "r1",
+    "sha256": "ecc8ec052f9711dfa5fda1b30e8847a0e93079d37ac4ef1f33cf32d3579df60d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error93",
+    "revision": "r1",
+    "sha256": "b0145c410c2d2f28f04dea204fd631d2cf02d11c61b107a363817e2b9fdd1429",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error94",
+    "revision": "r1",
+    "sha256": "b1909bac73588a845136f5a3ea06d48a1c7afb0d0378ffcdfb40dda6ec0fb228",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error95",
+    "revision": "r1",
+    "sha256": "9b11cddc095c800451bd9e0be4907e88b7f8cea17bc8cad57a019a9012d2208c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error96",
+    "revision": "r1",
+    "sha256": "cf2a005e967caae72b3e1bab5c3949163731424642ff493b81b1fd6c4db7bdd8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error97",
+    "revision": "r1",
+    "sha256": "2753fcfa00fb7ea6ae6980dcf5b93043cc9a512e19c85211d9c8d1a439728976",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error98",
+    "revision": "r1",
+    "sha256": "cb758c5730ea01b3f9bb17bdc5294ed30982656ade9dcec34f41ff14acad0911",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-error99",
+    "revision": "r1",
+    "sha256": "7c2bdbd9cb075c2cb9184f56826bb368b82f57ca5e0710b0c769473315f1c008",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process01",
+    "revision": "r1",
+    "sha256": "65a03df0256129c047fb4b2626bee1e2891c565433c26cd31fb08f7cd56e457f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process02",
+    "revision": "r1",
+    "sha256": "232331506c07aed258ec598adcc6adba9fb2a81eb25456809cee1919ede42ccc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process03",
+    "revision": "r1",
+    "sha256": "43feb43b1fb0ad00c5e2458fe1d8074ae280a700b1d5d1728fcc0f8232324b76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process04",
+    "revision": "r1",
+    "sha256": "2a0e7a63314567c6ee350634d976f4588c53517992d8ab735bd79ad3adbad15e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process05",
+    "revision": "r1",
+    "sha256": "4138e8ca2d16759553ffec57ddd502c06ac455a53e9abf3531b93f9bffbb5b2f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process06",
+    "revision": "r1",
+    "sha256": "a2546aa50104fcd91c3d66c41ed019c5277678733b491905396ef11f29cdd5fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process07",
+    "revision": "r1",
+    "sha256": "a0a8af8bc33cb4a036a31a6be25ca55bf49ffc5793a64287c6c763bdc7323290",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process08",
+    "revision": "r1",
+    "sha256": "4711f89543b582bbff37f1c8086930d7f33afacd59f34741a73a19e5ec0fac35",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process09",
+    "revision": "r1",
+    "sha256": "71d8bcaa7d245b74b17e0e56f6099a223a2df4d9dfbb71081e825543e0d18100",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process10",
+    "revision": "r1",
+    "sha256": "5bc54265e2bc0b0a42ebab8fefc3d04028d64e3c5971bc9cdf37050e11d779d6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process100",
+    "revision": "r1",
+    "sha256": "001affdc9e4a6336dc82daf7a565fd16596a08d969b684666b4fef80ce807664",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process11",
+    "revision": "r1",
+    "sha256": "274853fe0d47663bdee9428676ed247525a00c28f8187aa5504373f481403ebc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process12",
+    "revision": "r1",
+    "sha256": "eff6862145732f1a198ac597bcff0450914fa636650336c72d49ea555204af3f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process13",
+    "revision": "r1",
+    "sha256": "3fcac22d684e7af4fa526249bf86bf32df607bc947f07b10c32ecd33d8e62646",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process14",
+    "revision": "r1",
+    "sha256": "d3ec68f3de7d48670da28421a5d4652d97892dfe5179729ace8ea447d4da8680",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process15",
+    "revision": "r1",
+    "sha256": "5f59c19a9cc7b59d3cbeef74066da4252ac699b39db9673c99f3e4406ed0f567",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process16",
+    "revision": "r1",
+    "sha256": "2c612c7bb93196a445a0553e15fdaf30e6a24daa999115fb787f60efc3a03337",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process17",
+    "revision": "r1",
+    "sha256": "283332e6dd8c500b0ae7a04443856294c66a764955393322bbac11f3494afa9f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process18",
+    "revision": "r1",
+    "sha256": "75a46448ea7fd5e813b1567e87cb945be7f5d817fe0563c8ae09205a10449fad",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process19",
+    "revision": "r1",
+    "sha256": "32fe38643f8ec92cb8c2306526f73a8e9e03efb1a9483ab0609b69602a203061",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process20",
+    "revision": "r1",
+    "sha256": "5cba4b612c99760722c00306a0ed9cb10d49ff80fb144f06372c192584ed11a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process21",
+    "revision": "r1",
+    "sha256": "e7e0f36bad1d7b44aa53f8bd8f7d0a3eb1e6fc442b6c0260c123d0ec6412d79d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process22",
+    "revision": "r1",
+    "sha256": "a7601cce9d1aa654024502425862c735e96982e303714e059164e0c1f9d430f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process23",
+    "revision": "r1",
+    "sha256": "eada57c6f5d622b789313a3f5140e97c79f049f19bfed18a4db92f187cdbe5e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process24",
+    "revision": "r1",
+    "sha256": "ae5dcdc8e40993ec9f761d98a7580d9778b36f434be627411a1456cc6f29e32d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process25",
+    "revision": "r1",
+    "sha256": "fc20254779c1d4db2556ba613af80dc792234b959699f1b5fb34112fb8076a3c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process26",
+    "revision": "r1",
+    "sha256": "f6ae8abcaaa2ef0aa30900e82a2428ce496590501c85a8bce37159973cc7b3b2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process27",
+    "revision": "r1",
+    "sha256": "4b9f7ccaa23767deee95bc56c4cb6d2f84e7df427ad25481a4291985ec0786d7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process28",
+    "revision": "r1",
+    "sha256": "066e46daa1260a6dd03a8777f0c3ff08309749184012020375d5b96766310e33",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process29",
+    "revision": "r1",
+    "sha256": "72534750d0950f987e5f1899f6aaeba148cdf73364588158e377c3d42beea68c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process30",
+    "revision": "r1",
+    "sha256": "2185ffb9d5145a192d8b899c21527876bc11962a27f056569ce8b00fada54beb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process31",
+    "revision": "r1",
+    "sha256": "4a102babf5a921e4341d9a908c9107c5d2eb6b8a3b6c844cd6c6d82127fd318d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process32",
+    "revision": "r1",
+    "sha256": "2d8a9e87858c769d431066b43c705cb2bf9cfbdf6c6368bf00fdd33100859185",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process33",
+    "revision": "r1",
+    "sha256": "b7293169208a999da532fe0c6e24856c538052c9809738ba4c031ec3edbdefab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process34",
+    "revision": "r1",
+    "sha256": "7e718ceea82839956b73035bebdae68bfc78b96c1215237c760c1fee00634a8f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process35",
+    "revision": "r1",
+    "sha256": "80614d2e0a6505f492a5c8bfe067a9d3b2e1c5d7d80196bc3de053cf134b2c76",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process36",
+    "revision": "r1",
+    "sha256": "7d62e1b9805d919ae7809559f554251cc83c117f41018701096362ccffec442c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process37",
+    "revision": "r1",
+    "sha256": "042985b2d6ba4a0f127ed5fbd6dc93bac977f0bf09581dd5051abae04d1916bb",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process38",
+    "revision": "r1",
+    "sha256": "cf46eaf7516aca9e693391442dc28a8e0cd7643ec1dd7f0262957c198064c4d4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "c3wd-process39",
+    "revision": "r1",
+    "sha256": "84ef8268977c579127788785500bdac55fe1e8bc561b113d8762843d139a6fd9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "c3wd-mission41",
+    "revision": "r1",
+    "sha256": "e2b42388e239bae80f6ae4ef977396e767f4839e2ca069a7d37f2d532f201337"
+   },
+   {
+    "missionId": "c3wd-mission42",
+    "revision": "r1",
+    "sha256": "36d0d5330987bbfd871b01d08078613a140a273f1910e55c089994d15242f0ef"
+   },
+   {
+    "missionId": "c3wd-mission43",
+    "revision": "r1",
+    "sha256": "cc92cc765cff0574c750a9030e1f4d24d2385be24b1c06fda7f645b6f160e9e1"
+   },
+   {
+    "missionId": "c3wd-mission44",
+    "revision": "r1",
+    "sha256": "a5bc5ed74e4d7d62c8083a39352f0c05908569a8e68eef0bdf27d5f38be68d21"
+   },
+   {
+    "missionId": "c3wd-mission45",
+    "revision": "r1",
+    "sha256": "041801bfce5112f66e8c6b824ed54669c804460a40d18ef40d1b9a88d51b2887"
+   },
+   {
+    "missionId": "c3wd-mission46",
+    "revision": "r1",
+    "sha256": "b3b4d8c335e9865b62d35de0702ace551867c418e41dece8c8c6977e10faeec0"
+   },
+   {
+    "missionId": "c3wd-mission47",
+    "revision": "r1",
+    "sha256": "4ada2ed7e0fd88446488552f7716a454dd93c2d40e87e50331ef093a4319cf88"
+   },
+   {
+    "missionId": "c3wd-mission48",
+    "revision": "r1",
+    "sha256": "e7ab476bf6873175819d56a455553e511019de23dafd6fadaf00ea4ea9d674ff"
+   },
+   {
+    "missionId": "c3wd-mission49",
+    "revision": "r1",
+    "sha256": "ecae784ffc1bd943e7efdf25f421f737d9d53ffec5d9996eb07772df85dbbdfb"
+   },
+   {
+    "missionId": "c3wd-mission50",
+    "revision": "r1",
+    "sha256": "6f8c4e813446a5c16dec6adb384c50aec6349f6e00a72753ce840ba180cea3d4"
+   },
+   {
+    "missionId": "c3wd-mission51",
+    "revision": "r1",
+    "sha256": "c15e387b0d57fc5ca575be45dbdb0271bc27403a692bea71d6896d6c6b8c9f55"
+   },
+   {
+    "missionId": "c3wd-mission52",
+    "revision": "r1",
+    "sha256": "63f63b53f4c3452e4f8be4c26686d630b5e71cc55b1a56fa069b2b47a278b2bc"
+   },
+   {
+    "missionId": "c3wd-mission53",
+    "revision": "r1",
+    "sha256": "99007a071ff39578ba34d329d362fd2e736976a30111ff3d68c8d17d7fe5cae8"
+   },
+   {
+    "missionId": "c3wd-mission54",
+    "revision": "r1",
+    "sha256": "3a1f371465da8ac14d23ab2947f587cb621877b08883d5f82754a9d13dce3901"
+   },
+   {
+    "missionId": "c3wd-mission55",
+    "revision": "r1",
+    "sha256": "2b4eb1f48a6edb121d84e0e7bcb367568f9f11123555b1dad05cd3a61a34a7be"
+   },
+   {
+    "missionId": "c3wd-mission56",
+    "revision": "r1",
+    "sha256": "2df7d526e7eb7df6f7314ba495c4bbf409de4c5bd80715accc3e963f31c6240c"
+   },
+   {
+    "missionId": "c3wd-mission57",
+    "revision": "r1",
+    "sha256": "441b65180ed5f29a7f8a6c7294c196011cfcac11bd1b90bee9969e22e3c20d5f"
+   },
+   {
+    "missionId": "c3wd-mission58",
+    "revision": "r1",
+    "sha256": "731b2c164a960610eb4e9d3538ba5910f09e0a7d56355397617e7fdbb1ca83b5"
+   },
+   {
+    "missionId": "c3wd-mission59",
+    "revision": "r1",
+    "sha256": "3848f511e36db1f764ba650a890db05ca278dce0f650cba9bb7f53740f5be007"
+   },
+   {
+    "missionId": "c3wd-mission60",
+    "revision": "r1",
+    "sha256": "ae234d1c0042994a00d0b41acf8d8514a9959b662c5f8498f4caf749e5f0da93"
+   }
+  ]
+ }
+}

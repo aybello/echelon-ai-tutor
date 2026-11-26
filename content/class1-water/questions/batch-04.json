@@ -1,0 +1,917 @@
+{
+  "batch": "04",
+  "title": "Class 1 Water Treatment — batch 04 (questions 1121–1160)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1121,
+      "question": "A coagulant delivery arrives and the driver's paperwork does not match the product ordered. What should the operator do?",
+      "options": [
+        "Accept the delivery and correct the inventory record after the driver departs",
+        "Direct the delivery into an empty containment area for later identification",
+        "Accept a partial delivery so treatment can continue while the order is checked",
+        "Refuse the transfer until the product identity is confirmed as correct"
+      ],
+      "correctIndex": 3,
+      "explanation": "Offloading an unverified chemical risks contaminating existing stock, feeding the wrong chemical into the process, or creating a hazardous reaction with an incompatible product already in the tank. The transfer is stopped until documentation, labelling and the fill connection all confirm the correct product.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Chemical delivery",
+      "isCalc": "no",
+      "tip": "Verify before the hose is connected. A wrong-product transfer is very difficult to undo."
+    },
+    {
+      "questionNum": 1122,
+      "question": "Why is hearing protection required around operating blowers and high-speed pumps?",
+      "options": [
+        "Because noise exposure causes permanent hearing loss that develops gradually",
+        "Because equipment noise interferes with radio communication across the plant",
+        "Because vibration from rotating equipment can cause discomfort over a shift",
+        "Because alarms cannot be distinguished from equipment noise without protection"
+      ],
+      "correctIndex": 0,
+      "explanation": "Noise-induced hearing loss accumulates painlessly over years and cannot be reversed once it has occurred. Because there is no discomfort to warn the worker at the time, protection is based on measured exposure levels and duration rather than on how loud the environment feels.",
+      "difficulty": "easy",
+      "module": "Safety",
+      "topic": "Noise exposure",
+      "isCalc": "no",
+      "tip": "Hearing loss from noise is cumulative and permanent. Comfort is not a measure of safety."
+    },
+    {
+      "questionNum": 1123,
+      "question": "A small chemical spill occurs inside a containment area. What determines whether operators may clean it up themselves?",
+      "options": [
+        "Whether the spilled volume is small enough to be absorbed by available material",
+        "Whether the spill occurred during normal working hours with staff on site",
+        "Whether responders are trained and equipped for that chemical and quantity",
+        "Whether the containment area can hold the spill without any release to ground"
+      ],
+      "correctIndex": 2,
+      "explanation": "The deciding factor is capability, not volume or convenience. Response requires knowledge of the chemical, correct protective equipment, compatible absorbent and disposal, and a safe method. Where those are not available, the area is secured and specialist responders are called rather than attempting an unsafe cleanup.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Spill response",
+      "isCalc": "no",
+      "tip": "Secure and evacuate is always an acceptable response. Attempting cleanup without training is not."
+    },
+    {
+      "questionNum": 1124,
+      "question": "Why are duplicate samples included in a laboratory quality control program?",
+      "options": [
+        "To verify the precision of the analytical method by comparing two results",
+        "To provide a reserve sample in case the first is damaged during transport",
+        "To confirm that the sampling location produces consistent water quality",
+        "To allow two different laboratories to analyse the same water independently"
+      ],
+      "correctIndex": 0,
+      "explanation": "Duplicates are two portions of the same sample analysed independently. Close agreement demonstrates that the method and the analyst produce repeatable results, while poor agreement indicates a precision problem in the analysis that would otherwise be invisible in routine data.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Quality control samples",
+      "isCalc": "no",
+      "tip": "Duplicates measure precision; spikes measure recovery; blanks detect contamination."
+    },
+    {
+      "questionNum": 1125,
+      "question": "Why should an operator record the reasoning behind a significant process adjustment, not only the change made?",
+      "options": [
+        "Because the record is required before a change to a setpoint may be made",
+        "Because recording reasoning transfers accountability for the outcome to the shift",
+        "Because process changes cannot be reversed without documented justification",
+        "Because the reasoning allows others to evaluate and build on the decision later"
+      ],
+      "correctIndex": 3,
+      "explanation": "A logged value shows what was done but not why, so a later operator cannot tell whether the conditions that justified the change still apply. Recording the observation and the reasoning makes the decision reviewable, supports troubleshooting when the outcome differs from expectation, and preserves knowledge across shifts and staff turnover.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Operational logging",
+      "isCalc": "no",
+      "tip": "Record what you saw, what you did, and why. The third part is what makes the log useful later."
+    },
+    {
+      "questionNum": 1126,
+      "question": "A turbidimeter is verified with a sealed secondary standard rather than a prepared formazin suspension. What is the trade-off?",
+      "options": [
+        "The sealed standard is more accurate but must be replaced far more frequently",
+        "The sealed standard measures a different property and needs separate calibration",
+        "The sealed standard is convenient and stable but is traceable to a primary standard",
+        "The sealed standard removes the need for any periodic calibration of the instrument"
+      ],
+      "correctIndex": 2,
+      "explanation": "Sealed secondary standards are stable, safe to handle and quick to use for routine verification, which makes frequent checking practical. Their value is established against a primary formazin standard, so full calibration against a primary standard is still performed on a defined schedule.",
+      "difficulty": "hard",
+      "module": "Sampling & Laboratory",
+      "topic": "Turbidity standards",
+      "isCalc": "no",
+      "tip": "Secondary standards are for frequent verification; primary standards remain the calibration reference."
+    },
+    {
+      "questionNum": 1127,
+      "question": "Why is a confined space entry permit closed out when the work is finished?",
+      "options": [
+        "To document the total time workers spent inside the space during the entry",
+        "To release the attendant from the assignment before the shift ends",
+        "To transfer responsibility for the space back to the maintenance department",
+        "To confirm all workers are out and the space is secured against re-entry"
+      ],
+      "correctIndex": 3,
+      "explanation": "Closing the permit is the formal check that everyone who entered has been accounted for, that equipment has been removed, and that the opening is secured or covered so no one can enter afterwards under the assumption that conditions were tested and safe.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Confined space permits",
+      "isCalc": "no",
+      "tip": "The permit closes the loop on people accounted for and the space made safe again."
+    },
+    {
+      "questionNum": 1128,
+      "question": "Why is a plant's raw water quality monitored continuously rather than only at the finished water end?",
+      "options": [
+        "Because raw water quality determines the compliance status of the plant",
+        "Because finished water instruments cannot operate without a raw water reference",
+        "Because raw water sampling is less expensive than finished water analysis",
+        "Because early warning of a source change allows treatment to be adjusted in time"
+      ],
+      "correctIndex": 3,
+      "explanation": "Treatment processes have significant lag, so a change detected only in finished water has already passed through the plant. Monitoring the source gives the operator time to adjust coagulant dose, disinfection, or intake selection before the changed water reaches the critical barriers.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Source monitoring",
+      "isCalc": "no",
+      "tip": "Watch the source to act early; watch the effluent to confirm the action worked."
+    },
+    {
+      "questionNum": 1129,
+      "question": "A plant feeds 45 kg/d of chlorine into a flow of 15 ML/d. What is the applied dose?",
+      "options": [
+        "0.3 mg/L",
+        "6.8 mg/L",
+        "30.0 mg/L",
+        "3.0 mg/L"
+      ],
+      "correctIndex": 3,
+      "explanation": "Dose in mg/L equals the mass fed in kg/d divided by the flow in ML/d: 45 ÷ 15 = 3.0 mg/L.",
+      "difficulty": "easy",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Dose from feed rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Dose (mg/L) = kg/d ÷ ML/d"
+        },
+        {
+          "l": "Substitute",
+          "c": "45 kg/d ÷ 15 ML/d"
+        },
+        {
+          "l": "Solve",
+          "c": "= 3.0 mg/L"
+        }
+      ],
+      "tip": "This is the dosage formula rearranged. Feed rate divided by flow returns the dose."
+    },
+    {
+      "questionNum": 1130,
+      "question": "A clearwell holds 900 m³ and the plant produces 5.4 ML/d. What is the detention time in the clearwell?",
+      "options": [
+        "2.0 hours",
+        "6.0 hours",
+        "9.0 hours",
+        "4.0 hours"
+      ],
+      "correctIndex": 3,
+      "explanation": "Converting flow to 5400 m³/d and dividing volume by flow gives 900 ÷ 5400 = 0.1667 days, which is 4.0 hours.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Clearwell detention",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert flow",
+          "c": "5.4 ML/d = 5400 m³/d"
+        },
+        {
+          "l": "Divide",
+          "c": "900 m³ ÷ 5400 m³/d = 0.1667 d"
+        },
+        {
+          "l": "To hours",
+          "c": "0.1667 × 24 = 4.0 hours"
+        },
+        {
+          "l": "Why it matters",
+          "c": "Clearwell detention supplies contact time for CT credit."
+        }
+      ],
+      "tip": "Clearwell detention is often the main source of chlorine contact time in a plant."
+    },
+    {
+      "questionNum": 1131,
+      "question": "A filter with 24 m² of surface area is backwashed at 14.4 m³/min. What is the backwash rise rate?",
+      "options": [
+        "0.6 m/min",
+        "1.7 m/min",
+        "6.0 m/min",
+        "17.0 m/min"
+      ],
+      "correctIndex": 0,
+      "explanation": "Rise rate is the backwash flow divided by the filter area: 14.4 m³/min ÷ 24 m² = 0.6 m/min.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash rise rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Rise rate = backwash flow ÷ filter area"
+        },
+        {
+          "l": "Substitute",
+          "c": "14.4 m³/min ÷ 24 m²"
+        },
+        {
+          "l": "Solve",
+          "c": "= 0.6 m/min"
+        },
+        {
+          "l": "Check",
+          "c": "m³/min ÷ m² leaves m/min, a velocity."
+        }
+      ],
+      "tip": "Rise rate governs bed expansion. Too low leaves mudballs, too high washes media out."
+    },
+    {
+      "questionNum": 1132,
+      "question": "A square filter measures 5 m by 5 m and treats 3000 m³/d. What is the filtration rate in m/h?",
+      "options": [
+        "2.5 m/h",
+        "7.5 m/h",
+        "12.0 m/h",
+        "5.0 m/h"
+      ],
+      "correctIndex": 3,
+      "explanation": "The area is 25 m², so the loading is 3000 ÷ 25 = 120 m³/(m²·d). Dividing by 24 hours gives 5.0 m/h.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filtration rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area",
+          "c": "5 m × 5 m = 25 m²"
+        },
+        {
+          "l": "Loading",
+          "c": "3000 ÷ 25 = 120 m³/(m²·d)"
+        },
+        {
+          "l": "Convert",
+          "c": "120 ÷ 24 = 5.0 m/h"
+        }
+      ],
+      "tip": "m³/(m²·d) is the same as m/d. Dividing by 24 converts it to m/h."
+    },
+    {
+      "questionNum": 1133,
+      "question": "A plant requires 300 kg/d of dry alum and uses a 48 percent liquid alum solution. How much solution must be fed?",
+      "options": [
+        "144 kg/d",
+        "300 kg/d",
+        "625 kg/d",
+        "1440 kg/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Divide the dry chemical requirement by the decimal strength of the solution: 300 ÷ 0.48 = 625 kg/d of liquid alum.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Solution strength",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Solution = dry chemical ÷ decimal strength"
+        },
+        {
+          "l": "Substitute",
+          "c": "300 kg/d ÷ 0.48"
+        },
+        {
+          "l": "Solve",
+          "c": "= 625 kg/d"
+        },
+        {
+          "l": "Check",
+          "c": "A 48% product is less than half chemical, so solution fed must exceed 300 kg/d."
+        }
+      ],
+      "tip": "Going from pure chemical to solution, divide. Going from solution to pure chemical, multiply."
+    },
+    {
+      "questionNum": 1134,
+      "question": "A water contains 40 mg/L of calcium expressed as Ca. What is this expressed as calcium carbonate?",
+      "options": [
+        "16 mg/L as CaCO₃",
+        "40 mg/L as CaCO₃",
+        "100 mg/L as CaCO₃",
+        "160 mg/L as CaCO₃"
+      ],
+      "correctIndex": 2,
+      "explanation": "Calcium carbonate has an equivalent weight of 50 and calcium an equivalent weight of 20, so the conversion factor is 2.5. Therefore 40 mg/L as Ca equals 40 × 2.5 = 100 mg/L as CaCO₃.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Hardness expression",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Factor",
+          "c": "Ca to CaCO₃ multiplier = 2.5"
+        },
+        {
+          "l": "Substitute",
+          "c": "40 mg/L × 2.5"
+        },
+        {
+          "l": "Solve",
+          "c": "= 100 mg/L as CaCO₃"
+        },
+        {
+          "l": "Why",
+          "c": "Reporting as CaCO₃ lets different ions be added on a common basis."
+        }
+      ],
+      "tip": "Hardness and alkalinity are reported as CaCO₃ so they can be compared and combined directly."
+    },
+    {
+      "questionNum": 1135,
+      "question": "A flow is recorded as 36 m³/h. What is this expressed in litres per second?",
+      "options": [
+        "6 L/s",
+        "36 L/s",
+        "60 L/s",
+        "10 L/s"
+      ],
+      "correctIndex": 3,
+      "explanation": "There are 1000 litres in a cubic metre and 3600 seconds in an hour, so 36 m³/h = 36 000 L ÷ 3600 s = 10 L/s.",
+      "difficulty": "easy",
+      "module": "Hydraulics",
+      "topic": "Flow conversion",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "To litres",
+          "c": "36 m³ × 1000 = 36 000 L per hour"
+        },
+        {
+          "l": "To seconds",
+          "c": "36 000 ÷ 3600 = 10 L/s"
+        }
+      ],
+      "tip": "Dividing m³/h by 3.6 gives L/s directly."
+    },
+    {
+      "questionNum": 1136,
+      "question": "A pump delivers 500 L/min continuously. What volume does it move in one day?",
+      "options": [
+        "72 m³/d",
+        "300 m³/d",
+        "720 m³/d",
+        "1200 m³/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "There are 1440 minutes in a day, so 500 L/min × 1440 = 720 000 L/d, which is 720 m³/d.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Pump output",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Minutes per day",
+          "c": "60 × 24 = 1440 min"
+        },
+        {
+          "l": "Litres per day",
+          "c": "500 × 1440 = 720 000 L/d"
+        },
+        {
+          "l": "Convert",
+          "c": "720 000 ÷ 1000 = 720 m³/d"
+        }
+      ],
+      "tip": "Confirm the pump actually runs continuously before applying a full 1440 minutes."
+    },
+    {
+      "questionNum": 1137,
+      "question": "A plant treating 18 ML/d feeds 396 kg/d of alum costing $0.85 per kilogram. What is the alum cost per megalitre treated?",
+      "options": [
+        "$8.50 per ML",
+        "$22.00 per ML",
+        "$336.60 per ML",
+        "$18.70 per ML"
+      ],
+      "correctIndex": 3,
+      "explanation": "Daily cost is 396 kg × $0.85 = $336.60. Dividing by the 18 ML treated each day gives $18.70 per megalitre.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Chemical cost",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Daily cost",
+          "c": "396 kg/d × $0.85/kg = $336.60/d"
+        },
+        {
+          "l": "Per megalitre",
+          "c": "$336.60 ÷ 18 ML = $18.70/ML"
+        }
+      ],
+      "tip": "Unit cost per volume treated is how chemical changes are justified to management."
+    },
+    {
+      "questionNum": 1138,
+      "question": "A rectangular tank measures 15 m long, 8 m wide, and holds water to a depth of 4 m. What volume does it contain?",
+      "options": [
+        "120 m³",
+        "320 m³",
+        "480 m³",
+        "600 m³"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume of a rectangular tank is length times width times depth: 15 × 8 × 4 = 480 m³.",
+      "difficulty": "easy",
+      "module": "Hydraulics",
+      "topic": "Tank volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Volume = length × width × depth"
+        },
+        {
+          "l": "Substitute",
+          "c": "15 m × 8 m × 4 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 480 m³"
+        }
+      ],
+      "tip": "Use the water depth, not the wall height. The freeboard holds no water."
+    },
+    {
+      "questionNum": 1139,
+      "question": "Water flows at 40 L/s through 500 m of 400 mm diameter pipeline. Approximately how long does water take to travel the pipeline?",
+      "options": [
+        "8 minutes",
+        "16 minutes",
+        "26 minutes",
+        "42 minutes"
+      ],
+      "correctIndex": 2,
+      "explanation": "The pipe area is π × 0.20² = 0.1257 m², so the volume is 0.1257 × 500 = 62.8 m³. At 0.040 m³/s the travel time is 62.8 ÷ 0.040 = 1571 seconds, about 26 minutes.",
+      "difficulty": "hard",
+      "module": "Hydraulics",
+      "topic": "Pipeline detention",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area",
+          "c": "π × 0.20² = 0.1257 m²"
+        },
+        {
+          "l": "Volume",
+          "c": "0.1257 m² × 500 m = 62.8 m³"
+        },
+        {
+          "l": "Convert flow",
+          "c": "40 L/s = 0.040 m³/s"
+        },
+        {
+          "l": "Time",
+          "c": "62.8 ÷ 0.040 = 1571 s ≈ 26 min"
+        }
+      ],
+      "tip": "Pipeline travel time can supply real disinfection contact time if the residual is verified at the far end."
+    },
+    {
+      "questionNum": 1140,
+      "question": "A solution is prepared by dissolving 25 kg of chemical to produce 500 kg of finished solution. What is its strength?",
+      "options": [
+        "2 percent",
+        "20 percent",
+        "25 percent",
+        "5 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Percent strength is the mass of chemical divided by the total mass of solution: 25 ÷ 500 × 100 = 5 percent.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Percent strength",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "% = chemical mass ÷ total solution mass × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "25 kg ÷ 500 kg × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 5 percent"
+        }
+      ],
+      "tip": "The denominator is the total solution mass, not the mass of water added."
+    },
+    {
+      "questionNum": 1141,
+      "question": "A tank contains 200 L of a solution with a specific gravity of 1.2. What is the mass of the solution?",
+      "options": [
+        "167 kg",
+        "200 kg",
+        "240 kg",
+        "420 kg"
+      ],
+      "correctIndex": 2,
+      "explanation": "Specific gravity compares the density of the solution with water, so the solution weighs 1.2 kg per litre. Therefore 200 L × 1.2 = 240 kg.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Specific gravity",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Density",
+          "c": "1.2 × 1 kg/L = 1.2 kg/L"
+        },
+        {
+          "l": "Substitute",
+          "c": "200 L × 1.2 kg/L"
+        },
+        {
+          "l": "Solve",
+          "c": "= 240 kg"
+        }
+      ],
+      "tip": "Specific gravity above 1 means heavier than water; a litre is no longer a kilogram."
+    },
+    {
+      "questionNum": 1142,
+      "question": "A plant is credited with 2.5-log removal through filtration and 1.5-log inactivation through disinfection. What total log reduction is achieved?",
+      "options": [
+        "1.0-log",
+        "1.7-log",
+        "3.75-log",
+        "4.0-log"
+      ],
+      "correctIndex": 3,
+      "explanation": "Log credits from independent barriers are added, so 2.5-log plus 1.5-log gives 4.0-log overall, a ten-thousandfold reduction.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Log credit arithmetic",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Rule",
+          "c": "Credits from separate barriers add"
+        },
+        {
+          "l": "Substitute",
+          "c": "2.5-log + 1.5-log"
+        },
+        {
+          "l": "Solve",
+          "c": "= 4.0-log total"
+        },
+        {
+          "l": "Meaning",
+          "c": "4-log is a reduction by a factor of 10 000."
+        }
+      ],
+      "tip": "Add logs, never multiply them. Each additional log is another tenfold reduction."
+    },
+    {
+      "questionNum": 1143,
+      "question": "Raw water requires a chlorine dose of 2.8 mg/L and the measured demand is 2.1 mg/L. What residual should remain?",
+      "options": [
+        "0.7 mg/L",
+        "1.3 mg/L",
+        "2.1 mg/L",
+        "4.9 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "Residual is the applied dose minus the demand exerted by the water: 2.8 − 2.1 = 0.7 mg/L.",
+      "difficulty": "easy",
+      "module": "Disinfection",
+      "topic": "Dose, demand and residual",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Residual = Dose − Demand"
+        },
+        {
+          "l": "Substitute",
+          "c": "2.8 − 2.1"
+        },
+        {
+          "l": "Solve",
+          "c": "= 0.7 mg/L"
+        }
+      ],
+      "tip": "If the measured residual is lower than this, demand has increased since it was last determined."
+    },
+    {
+      "questionNum": 1144,
+      "question": "What does a streaming current detector measure to assist coagulation control?",
+      "options": [
+        "The velocity of water passing through the rapid mix chamber",
+        "The electrical conductivity of the raw water entering the plant",
+        "The concentration of coagulant remaining dissolved in the water",
+        "The residual charge on particles after coagulant has been applied"
+      ],
+      "correctIndex": 3,
+      "explanation": "A streaming current detector responds to the net surface charge remaining on particles after coagulant addition. Because effective coagulation depends on neutralizing that charge, the reading provides a fast, continuous indication of whether the dose is adequate, complementing periodic jar tests.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Streaming current control",
+      "isCalc": "no",
+      "tip": "The detector tracks charge, not turbidity. It is set against a jar-tested target rather than an absolute value."
+    },
+    {
+      "questionNum": 1145,
+      "question": "What distinguishes sweep floc coagulation from charge neutralization?",
+      "options": [
+        "Sweep floc uses polymer only, while charge neutralization uses metal salts",
+        "Sweep floc occurs at low dose, while charge neutralization needs a high dose",
+        "Sweep floc entraps particles in precipitating hydroxide as it forms",
+        "Sweep floc requires cold water, while charge neutralization requires warm water"
+      ],
+      "correctIndex": 2,
+      "explanation": "At higher coagulant doses the metal hydroxide precipitates as a voluminous floc that physically enmeshes particles as it settles, sweeping them from suspension. Charge neutralization works at lower doses by destabilizing particles so they can collide and aggregate. Many plants operate in the sweep floc range because it is more tolerant of variation.",
+      "difficulty": "hard",
+      "module": "Coagulation & Flocculation",
+      "topic": "Coagulation mechanisms",
+      "isCalc": "no",
+      "tip": "Sweep floc is more robust but produces more sludge and uses more chemical."
+    },
+    {
+      "questionNum": 1146,
+      "question": "A dry polymer is being made up into solution. Why must it be wetted and dispersed carefully rather than dumped in quickly?",
+      "options": [
+        "Because rapid addition produces gel clumps that never fully dissolve",
+        "Because the polymer reacts exothermically and can overheat the mix tank",
+        "Because rapid addition releases vapour that is hazardous to the operator",
+        "Because the polymer settles to the tank floor before it can be circulated"
+      ],
+      "correctIndex": 0,
+      "explanation": "Dry polymer hydrates on contact with water, and particles added too quickly form gelatinous lumps with a wet skin that prevents water reaching the dry core. Those fisheyes never fully activate, wasting chemical and fouling feed lines. Controlled wetting, adequate aging time, and gentle mixing avoid the problem.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Polymer makedown",
+      "isCalc": "no",
+      "tip": "Polymer needs aging time after mixing. Feeding it too soon wastes much of its activity."
+    },
+    {
+      "questionNum": 1147,
+      "question": "Why must liquid alum storage be protected from freezing?",
+      "options": [
+        "Because freezing causes crystallization that will not fully redissolve when warmed",
+        "Because freezing converts the alum into an acid that damages the storage tank",
+        "Because freezing releases dissolved gases that pressurize the storage vessel",
+        "Because freezing separates the alum into layers of differing strength"
+      ],
+      "correctIndex": 0,
+      "explanation": "Liquid alum crystallizes as temperature falls, and the crystals settle and are slow or impossible to redissolve completely. The result is plugged suction lines, an unreliable feed, and lost chemical, so storage is heated or located inside a temperature-controlled area.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Chemical storage",
+      "isCalc": "no",
+      "tip": "Check the crystallization temperature of the specific product; it varies with concentration."
+    },
+    {
+      "questionNum": 1148,
+      "question": "What does the baffling factor assigned to a contact chamber represent?",
+      "options": [
+        "The proportion of the chamber volume occupied by internal baffle walls",
+        "The reduction in headloss achieved by installing baffles in the chamber",
+        "The number of directional changes water makes as it crosses the chamber",
+        "The ratio of effective contact time to theoretical detention time"
+      ],
+      "correctIndex": 3,
+      "explanation": "The baffling factor expresses how closely the chamber approaches ideal plug flow, relating the effective time T10 to the theoretical detention time. Better baffling means less short-circuiting, a higher factor, and more usable contact time for CT credit from the same physical volume.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Baffling factor",
+      "isCalc": "no",
+      "tip": "Improving baffling increases CT credit without adding chemical or building more tankage."
+    },
+    {
+      "questionNum": 1149,
+      "question": "Where should the residual used in a CT calculation be measured?",
+      "options": [
+        "At the point where the disinfectant is first injected into the flow",
+        "At the midpoint of the contact chamber to represent average conditions",
+        "At the outlet of the contact chamber, at the end of the credited time",
+        "At the entry to the distribution system after the clearwell outlet"
+      ],
+      "correctIndex": 2,
+      "explanation": "CT credit is based on the residual that persisted throughout the contact period, so it is measured where the credited contact zone ends. Using an injection-point value would overstate the residual actually maintained, because demand consumes chlorine as the water travels through the chamber.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "CT measurement points",
+      "isCalc": "no",
+      "tip": "Always take the residual at the end of the contact zone. It is the lowest value across that zone."
+    },
+    {
+      "questionNum": 1150,
+      "question": "What is the function of the injector, or ejector, in a gas chlorination system?",
+      "options": [
+        "It creates a vacuum that draws chlorine gas and mixes it into the water",
+        "It compresses chlorine gas so it can be forced into a pressurized main",
+        "It converts chlorine gas into liquid before the solution is injected",
+        "It regulates cylinder pressure so gas is withdrawn at a constant rate"
+      ],
+      "correctIndex": 0,
+      "explanation": "Water passing through the injector creates a vacuum that pulls chlorine gas from the vacuum regulator and dissolves it into the motive water to form a solution. Operating the whole gas path under vacuum is a key safety feature, since a break in the line stops the flow of gas rather than releasing it.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Gas chlorination equipment",
+      "isCalc": "no",
+      "tip": "Vacuum operation is the safety principle. A leak in a vacuum line draws air in rather than pushing gas out."
+    },
+    {
+      "questionNum": 1151,
+      "question": "Why is there a limit on the rate at which chlorine gas can be withdrawn from a single cylinder?",
+      "options": [
+        "Because rapid withdrawal draws liquid chlorine into the gas feed line",
+        "Because the cylinder valve is not rated for high continuous flow rates",
+        "Because evaporation cools the cylinder and reduces its ability to supply gas",
+        "Because the pressure regulator cannot maintain accuracy at high flow"
+      ],
+      "correctIndex": 2,
+      "explanation": "Withdrawing gas evaporates liquid chlorine inside the cylinder, and evaporation absorbs heat. If withdrawal is too rapid, the cylinder cools, internal pressure falls, and the supply rate drops, with frost forming on the exterior. Manifolding several cylinders shares the demand rather than overdrawing one.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Gas withdrawal rate",
+      "isCalc": "no",
+      "tip": "Frost on a chlorine cylinder is a warning that withdrawal is exceeding the safe rate."
+    },
+    {
+      "questionNum": 1152,
+      "question": "In chloramination, what is the consequence of adding too much ammonia relative to chlorine?",
+      "options": [
+        "Dichloramine forms preferentially and produces strong taste and odour",
+        "The chloramine residual becomes unstable and decays within a few hours",
+        "The chlorine reacts to completion and produces a free chlorine residual",
+        "Free ammonia remains in the water and supports nitrifying bacteria"
+      ],
+      "correctIndex": 3,
+      "explanation": "Excess ammonia beyond what the chlorine can combine with passes into the distribution system as free ammonia. It becomes a nutrient for nitrifying bacteria, which oxidize it to nitrite and accelerate the loss of chloramine residual. Controlling the chlorine to ammonia ratio is central to operating a chloraminated system.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Chlorine to ammonia ratio",
+      "isCalc": "no",
+      "tip": "Too little ammonia leaves free chlorine; too much leaves free ammonia and invites nitrification."
+    },
+    {
+      "questionNum": 1153,
+      "question": "Why are chlorine gas leak detectors mounted near floor level in a chlorine room?",
+      "options": [
+        "Because floor mounting keeps the sensor away from ventilation air currents",
+        "Because floor level provides the shortest cable run to the alarm panel",
+        "Because sensors respond more accurately at cooler floor temperatures",
+        "Because chlorine gas is heavier than air and accumulates in low areas"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chlorine gas is substantially denser than air, so a release settles and accumulates near the floor and in pits or trenches. A detector mounted high in the room would respond late or not at all, which is also why chlorine room ventilation is drawn from low level.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Gas detection",
+      "isCalc": "no",
+      "tip": "Chlorine sinks, so detection and ventilation are both taken from low level."
+    },
+    {
+      "questionNum": 1154,
+      "question": "Sludge is withdrawn from a clarifier too rapidly and for too long. What is the likely consequence?",
+      "options": [
+        "The sludge blanket rises and carries solids into the effluent launders",
+        "The collector mechanism becomes overloaded by the increased solids load",
+        "The basin detention time falls below its design value for the flow",
+        "Water is drawn through with the sludge, thinning it and wasting capacity"
+      ],
+      "correctIndex": 3,
+      "explanation": "Over-withdrawal pulls water through the sludge blanket along with the solids, producing a thin sludge that overloads downstream handling and wastes treated water. Under-withdrawal allows the blanket to build and eventually carry over. Withdrawal is matched to the rate solids actually accumulate.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Sludge withdrawal",
+      "isCalc": "no",
+      "tip": "Too little withdrawal loses water quality; too much wastes water and thins the sludge."
+    },
+    {
+      "questionNum": 1155,
+      "question": "What causes a density current in a sedimentation basin?",
+      "options": [
+        "A difference in temperature or solids between influent and basin contents",
+        "An excessive rate of sludge collection along the floor of the basin",
+        "A partially closed effluent valve restricting flow from the basin",
+        "An accumulation of floating material at the basin surface near the weirs"
+      ],
+      "correctIndex": 0,
+      "explanation": "Influent that is colder, warmer, or carrying a different solids load than the water already in the basin has a different density. It travels as a distinct layer along the floor or the surface rather than mixing, short-circuiting the settling zone and reducing effective detention time.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Density currents",
+      "isCalc": "no",
+      "tip": "Seasonal turnover and sudden storm inflows are common triggers for density currents."
+    },
+    {
+      "questionNum": 1156,
+      "question": "What is the purpose of conducting a hydrant flow test in a distribution system?",
+      "options": [
+        "To confirm the hydrant drains properly after use in freezing conditions",
+        "To verify the chlorine residual available at the extremity of the system",
+        "To determine the flow and pressure the system can deliver at that location",
+        "To flush accumulated sediment from the main serving the hydrant"
+      ],
+      "correctIndex": 2,
+      "explanation": "A flow test measures static pressure, the pressure while flowing, and the discharge achieved, which together describe the capacity available at that point. The results inform fire protection planning, identify closed or restricted valves, and reveal areas where the network is undersized.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Hydrant flow testing",
+      "isCalc": "no",
+      "tip": "A flow test that returns unexpectedly low results often reveals a partially closed valve."
+    },
+    {
+      "questionNum": 1157,
+      "question": "Why are backflow prevention devices tested on a regular schedule rather than only at installation?",
+      "options": [
+        "Because their internal components wear and can fail without any outward sign",
+        "Because their pressure rating decreases gradually over their service life",
+        "Because testing is the only way to record the device serial number accurately",
+        "Because periodic testing is needed to keep the device warranty in force"
+      ],
+      "correctIndex": 0,
+      "explanation": "Check valves and relief mechanisms accumulate debris, wear, and lose seating over time. A device can fail in a way that leaves no external indication, so the system appears protected while the barrier is actually gone. Only functional testing confirms the device still performs.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Backflow device testing",
+      "isCalc": "no",
+      "tip": "A failed backflow device gives no warning. Scheduled testing is the only detection method."
+    },
+    {
+      "questionNum": 1158,
+      "question": "Why is the material of an existing service line significant for water quality management?",
+      "options": [
+        "Because pipe material determines the flow capacity available to the customer",
+        "Because pipe material governs how quickly a service line can be located",
+        "Because different materials require different sizes of curb stop and fitting",
+        "Because certain materials can release metals of health concern into the water"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lead service lines, and lead-containing solder or brass fittings, can release lead into water that stands in the line. Because the exposure occurs on the customer side of the meter, identifying material inventory, corrosion control, and replacement programs are all central to managing the risk.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Service line materials",
+      "isCalc": "no",
+      "tip": "Standing water in a lead service line picks up the most metal, which is why first-draw sampling is used."
+    },
+    {
+      "questionNum": 1159,
+      "question": "Why are intake screens installed at a surface water intake?",
+      "options": [
+        "To reduce the velocity of water entering the intake structure",
+        "To provide a surface for beneficial biological growth to develop",
+        "To exclude debris, fish and large material from the raw water",
+        "To measure the volume of raw water withdrawn from the source"
+      ],
+      "correctIndex": 2,
+      "explanation": "Screens keep logs, weeds, ice, fish and other large material out of the intake, protecting pumps and downstream processes from damage and blockage. Screen approach velocity is kept low so that fish can escape, and screens are cleaned or rotated to prevent them from blinding over.",
+      "difficulty": "easy",
+      "module": "Water Sources & Quality",
+      "topic": "Intake protection",
+      "isCalc": "no",
+      "tip": "A blinding screen raises headloss and can starve the intake, so differential level is monitored."
+    },
+    {
+      "questionNum": 1160,
+      "question": "Why does invasive mussel colonisation at an intake concern a plant operator?",
+      "options": [
+        "Because the mussels consume the disinfectant residual in the raw water",
+        "Because the mussels increase raw water hardness as their shells dissolve",
+        "Because colonies restrict flow and decaying shells cause taste and odour",
+        "Because the mussels raise raw water turbidity by resuspending sediment"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mussels attach in dense colonies inside intake pipes and screens, progressively restricting flow and increasing headloss. Dead mussels and accumulated shell material also create taste, odour and organic loading problems. Control relies on coatings, physical removal, or oxidant treatment at the intake.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Intake fouling",
+      "isCalc": "no",
+      "tip": "Rising intake headloss with no change in source conditions can indicate biological fouling."
+    }
+  ]
+}

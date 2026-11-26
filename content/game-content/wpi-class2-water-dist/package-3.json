@@ -1,0 +1,3920 @@
+{
+ "courseKey": "wpi-class2-water-dist",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2wd-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this head loss and pressure calculation for a feeder main near Yorkton, Saskatchewan.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional feeder main: static head = 30 m, given loss rate = 0.9 m per 100 m, length = 1000 m, pressure factor 9.81 kPa per metre.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Friction loss = 0.9 m/100 m * 1000 m / 100 = 9 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Pressure head = 30 m + 9 m = 39 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. Pressure = 39 m * 9.81 kPa/m = 382.59 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Pressure head = 30 m - 9 m = 21 m",
+   "explanation": "Line 2 added the friction loss instead of subtracting it. The pressure head is 21 m and the pressure is 206.01 kPa."
+  },
+  {
+   "id": "wp2wd-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reducing valve zone calculation near Fort McMurray, Alberta.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional pressure reducing valve station: upstream head = 58 m, valve head drop = 22 m, pressure factor 9.81 kPa per metre of head.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Downstream head = 58 m - 22 m = 40 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Downstream pressure = 40 m * 9.81 kPa/m = 392.4 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Downstream head = 58 m - 22 m = 36 m",
+   "explanation": "Line 1 arithmetic is wrong. 58 - 22 = 36 m, so the downstream pressure is 353.16 kPa."
+  },
+  {
+   "id": "wp2wd-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reducing valve zone calculation near Prince George, British Columbia.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional pressure reducing valve station: upstream head = 64 m, valve head drop = 28 m, pressure factor 9.81 kPa per metre of head.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Downstream head = 64 m - 28 m = 36 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Downstream pressure = 64 m * 9.81 kPa/m = 627.84 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Downstream pressure = 36 m * 9.81 kPa/m = 353.16 kPa",
+   "explanation": "Line 2 used the upstream head and ignored the pressure reducing valve drop from line 1. The downstream pressure is 353.16 kPa."
+  },
+  {
+   "id": "wp2wd-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reducing valve zone calculation near Chilliwack, British Columbia.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional pressure reducing valve station: upstream head = 49 m, valve head drop = 15 m, pressure factor 9.81 kPa per metre of head.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Downstream head = 49 m - 15 m = 34 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Downstream pressure = 34 m * 98.1 kPa/m = 3335.4 kPa"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Downstream pressure = 34 m * 9.81 kPa/m = 333.54 kPa",
+   "explanation": "Line 2 used 98.1 kPa per metre instead of 9.81 kPa per metre. The downstream pressure is 333.54 kPa."
+  },
+  {
+   "id": "wp2wd-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pressure reducing valve zone calculation near Regina, Saskatchewan.",
+   "topicId": "pressure-zones",
+   "level": "class1",
+   "assumptions": "Fictional pressure reducing valve station: upstream head = 72 m, valve head drop = 30 m, pressure factor 9.81 kPa per metre of head.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Downstream head = 72 m - 20 m = 52 m"
+    },
+    {
+     "id": "line2",
+     "label": "2. Downstream pressure = 52 m * 9.81 kPa/m = 510.12 kPa"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Downstream head = 72 m - 30 m = 42 m",
+   "explanation": "Line 1 used a valve drop of 20 m instead of the stated 30 m. The downstream head is 42 m and the pressure is 412.02 kPa."
+  },
+  {
+   "id": "wp2wd-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover calculation for an elevated tank near Calgary, Alberta.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable storage = 2400 m3, average daily outflow = 600 m3 per day. Daily turnover percent = outflow / usable storage * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily outflow is 600 m3 from usable storage of 2400 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily turnover = 600 m3 / 2400 m3 * 100 = 30 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily turnover = 600 m3 / 2400 m3 * 100 = 25 percent",
+   "explanation": "Line 2 arithmetic is wrong. 600 / 2400 * 100 = 25 percent per day."
+  },
+  {
+   "id": "wp2wd-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover calculation for an elevated tank near Edmonton, Alberta.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable storage = 3600 m3, average daily outflow = 720 m3 per day. Daily turnover percent = outflow / usable storage * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily outflow is 720 m3 from usable storage of 3600 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily turnover = 3600 m3 / 720 m3 * 100"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily turnover = 720 m3 / 3600 m3 * 100 = 20 percent",
+   "explanation": "Line 2 inverted the ratio. Turnover is outflow divided by storage, 720 / 3600 * 100 = 20 percent per day."
+  },
+  {
+   "id": "wp2wd-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover calculation for an elevated tank near Red Deer, Alberta.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable storage = 5000 m3, average daily outflow = 1000 m3 per day. Daily turnover percent = outflow / usable storage * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Usable storage = 6250 m3 total - 1250 m3 dead storage = 5000 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily turnover = 1000 m3 / 6250 m3 * 100 = 16 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily turnover = 1000 m3 / 5000 m3 * 100 = 20 percent",
+   "explanation": "Line 2 divided by total storage including dead storage instead of the usable storage from line 1. Turnover is 20 percent per day."
+  },
+  {
+   "id": "wp2wd-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover calculation for an elevated tank near Winnipeg, Manitoba.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable storage = 1800 m3, average daily outflow = 540 m3 per day. Daily turnover percent = outflow / usable storage * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily outflow is 540 m3 from usable storage of 1800 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily turnover = 540 m3 / 1800 m3 * 100 = 33 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily turnover = 540 m3 / 1800 m3 * 100 = 30 percent",
+   "explanation": "Line 2 arithmetic is wrong. 540 / 1800 * 100 = 30 percent per day."
+  },
+  {
+   "id": "wp2wd-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover calculation for an elevated tank near Brandon, Manitoba.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable storage = 4200 m3, average daily outflow = 840 m3 per day. Daily turnover percent = outflow / usable storage * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily outflow carried into the turnover step is 1050 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily turnover = 1050 m3 / 4200 m3 * 100 = 25 percent"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Daily outflow carried into the turnover step is 840 m3",
+   "explanation": "Line 1 carried in an outflow of 1050 m3 instead of the stated 840 m3. Turnover is 20 percent per day."
+  },
+  {
+   "id": "wp2wd-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover calculation for an elevated tank near Kamloops, British Columbia.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional elevated tank: usable storage = 2800 m3, average daily outflow = 560 m3 per day. Daily turnover percent = outflow / usable storage * 100.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Daily outflow is 560 m3 from usable storage of 2800 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily turnover = 560 m3 / 2800 m3 = 0.2 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily turnover = 560 m3 / 2800 m3 * 100 = 20 percent",
+   "explanation": "Line 2 stopped at the fraction 0.2 and called it a percent. Multiplying by 100 gives 20 percent per day."
+  },
+  {
+   "id": "wp2wd-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for a ground reservoir near Prince Albert, Saskatchewan.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir: usable storage = 4500 m3, average daily demand = 900 m3 per day, 24 h = 1 day. Turnover time = storage / demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Usable storage is 4500 m3 and average demand is 900 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = 900 m3/day / 4500 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = 4500 m3 / 900 m3/day = 5 days",
+   "explanation": "Line 2 inverted the ratio. Turnover time is storage divided by demand, 4500 / 900 = 5 days."
+  },
+  {
+   "id": "wp2wd-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for a ground reservoir near Lethbridge, Alberta.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir: usable storage = 3200 m3, average daily demand = 800 m3 per day, 24 h = 1 day. Turnover time = storage / demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Usable storage is 3200 m3 and average demand is 800 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = 3200 m3 / 800 m3/day = 5 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = 3200 m3 / 800 m3/day = 4 days",
+   "explanation": "Line 2 arithmetic is wrong. 3200 / 800 = 4 days."
+  },
+  {
+   "id": "wp2wd-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for a ground reservoir near Grande Prairie, Alberta.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir: usable storage = 6000 m3, average daily demand = 1200 m3 per day, 24 h = 1 day. Turnover time = storage / demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Usable storage is 6000 m3 and average demand is 1200 m3/day"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = 6000 m3 / 1000 m3/day = 6 days"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = 6000 m3 / 1200 m3/day = 5 days",
+   "explanation": "Line 2 used a demand of 1000 m3 per day instead of the stated 1200 m3 per day. Turnover time is 5 days."
+  },
+  {
+   "id": "wp2wd-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this storage turnover time calculation for a ground reservoir near Moose Jaw, Saskatchewan.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional ground reservoir: usable storage = 2750 m3, average daily demand = 550 m3 per day, 24 h = 1 day. Turnover time = storage / demand.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Turnover time = 2750 m3 / 550 m3/day = 5 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Turnover time = 5 days * 12 h/day = 60 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Turnover time = 5 days * 24 h/day = 120 h",
+   "explanation": "Line 2 used 12 hours per day instead of 24. Turnover time is 5 days, which is 120 hours."
+  },
+  {
+   "id": "wp2wd-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water age and exchange calculation for a storage zone near Swift Current, Saskatchewan.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional storage zone: average tank water age = 2.5 days, added travel time to the far point = 1.5 days, storage volume = 3000 m3, daily turnover = 20 percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Water age at the far point = 2.5 days + 1.5 days = 5 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily exchange volume = 3000 m3 * 20 percent / 100 = 600 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Water age at the far point = 2.5 days + 1.5 days = 4 days",
+   "explanation": "Line 1 arithmetic is wrong. 2.5 + 1.5 = 4 days."
+  },
+  {
+   "id": "wp2wd-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water age and exchange calculation for a storage zone near Yorkton, Saskatchewan.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional storage zone: average tank water age = 3 days, added travel time to the far point = 2 days, storage volume = 2400 m3, daily turnover = 25 percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Water age at the far point = 3 days + 2 days = 5 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily exchange volume = 2400 m3 * 25 percent / 100 = 660 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily exchange volume = 2400 m3 * 25 percent / 100 = 600 m3",
+   "explanation": "Line 2 arithmetic is wrong. 2400 * 25 / 100 = 600 m3 per day."
+  },
+  {
+   "id": "wp2wd-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water age and exchange calculation for a storage zone near Fort McMurray, Alberta.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional storage zone: average tank water age = 1.8 days, added travel time to the far point = 1.2 days, storage volume = 4000 m3, daily turnover = 10 percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Water age at the far point = 1.8 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily exchange volume = 4000 m3 * 10 percent / 100 = 400 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Water age at the far point = 1.8 days + 1.2 days = 3 days",
+   "explanation": "Line 1 omitted the 1.2 days of travel time in the mains. Total water age is 3 days."
+  },
+  {
+   "id": "wp2wd-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this water age and exchange calculation for a storage zone near Prince George, British Columbia.",
+   "topicId": "storage-turnover",
+   "level": "class1",
+   "assumptions": "Fictional storage zone: average tank water age = 4 days, added travel time to the far point = 1.5 days, storage volume = 3600 m3, daily turnover = 30 percent.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Water age at the far point = 4 days + 1.5 days = 5.5 days"
+    },
+    {
+     "id": "line2",
+     "label": "2. Daily exchange volume = 3600 m3 * 40 percent / 100 = 1440 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Daily exchange volume = 3600 m3 * 30 percent / 100 = 1080 m3",
+   "explanation": "Line 2 used a turnover of 40 percent instead of the stated 30 percent. The daily exchange volume is 1080 m3."
+  },
+  {
+   "id": "wp2wd-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster pump energy calculation for a station near Kamloops, British Columbia.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: shaft power = 45 kW, wire to water efficiency = 0.75, run time = 10 h. Input power = shaft power / efficiency, energy = input power * run time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 45 kW * 0.75 = 33.75 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 33.75 kW * 10 h = 337.5 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Input power = 45 kW / 0.75 = 60 kW",
+   "explanation": "Line 1 multiplied by efficiency instead of dividing. Input power is 45 / 0.75 = 60 kW, so energy use is 600 kWh."
+  },
+  {
+   "id": "wp2wd-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster pump energy calculation for a station near Kelowna, British Columbia.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: shaft power = 60 kW, wire to water efficiency = 0.8, run time = 8 h. Input power = shaft power / efficiency, energy = input power * run time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 60 kW / 0.8 = 75 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 75 kW * 8 h = 660 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 75 kW * 8 h = 600 kWh",
+   "explanation": "Line 2 arithmetic is wrong. 75 * 8 = 600 kWh."
+  },
+  {
+   "id": "wp2wd-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster pump energy calculation for a station near Prince Albert, Saskatchewan.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: shaft power = 36 kW, wire to water efficiency = 0.6, run time = 12 h. Input power = shaft power / efficiency, energy = input power * run time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 36 kW / 0.6 = 60 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 60 kW * 10 h = 600 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 60 kW * 12 h = 720 kWh",
+   "explanation": "Line 2 used 10 run hours instead of the stated 12 hours. Energy use is 720 kWh."
+  },
+  {
+   "id": "wp2wd-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster pump energy calculation for a station near Lethbridge, Alberta.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: shaft power = 55 kW, wire to water efficiency = 0.55, run time = 6 h. Input power = shaft power / efficiency, energy = input power * run time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 55 kW / 0.5 = 110 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 110 kW * 6 h = 660 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Input power = 55 kW / 0.55 = 100 kW",
+   "explanation": "Line 1 used an efficiency of 0.5 instead of the stated 0.55. Input power is 100 kW and energy use is 600 kWh."
+  },
+  {
+   "id": "wp2wd-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster pump energy calculation for a station near Grande Prairie, Alberta.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: shaft power = 72 kW, wire to water efficiency = 0.9, run time = 9 h. Input power = shaft power / efficiency, energy = input power * run time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 72 kW / 0.9 = 80 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 80 kW / 9 h"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy = 80 kW * 9 h = 720 kWh",
+   "explanation": "Line 2 divided power by run time instead of multiplying. Energy is 80 * 9 = 720 kWh."
+  },
+  {
+   "id": "wp2wd-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster pump energy calculation for a station near Moose Jaw, Saskatchewan.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: shaft power = 28 kW, wire to water efficiency = 0.7, run time = 14 h. Input power = shaft power / efficiency, energy = input power * run time.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Input power = 28 kW / 0.7 = 45 kW"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy = 45 kW * 14 h = 630 kWh"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Input power = 28 kW / 0.7 = 40 kW",
+   "explanation": "Line 1 arithmetic is wrong. 28 / 0.7 = 40 kW, so energy use is 560 kWh."
+  },
+  {
+   "id": "wp2wd-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pumping energy intensity calculation for a station near Moose Jaw, Saskatchewan.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional pump station day: energy use = 540 kWh, volume delivered = 1800 m3. Energy per volume = energy / volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pumping energy for the day is 540 kWh for 1800 m3 delivered"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per volume = 540 kWh / 1800 m3 = 3 kWh/m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per volume = 540 kWh / 1800 m3 = 0.3 kWh/m3",
+   "explanation": "Line 2 arithmetic is wrong. 540 / 1800 = 0.3 kWh per m3."
+  },
+  {
+   "id": "wp2wd-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pumping energy intensity calculation for a station near Medicine Hat, Alberta.",
+   "topicId": "pump-energy",
+   "level": "class1",
+   "assumptions": "Fictional pump station day: energy use = 720 kWh, volume delivered = 2400 m3. Energy per volume = energy / volume.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pumping energy for the day is 720 kWh for 2400 m3 delivered"
+    },
+    {
+     "id": "line2",
+     "label": "2. Energy per volume = 2400 m3 / 720 kWh"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Energy per volume = 720 kWh / 2400 m3 = 0.3 kWh/m3",
+   "explanation": "Line 2 inverted the ratio. Energy per volume is 720 / 2400 = 0.3 kWh per m3."
+  },
+  {
+   "id": "wp2wd-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump affinity law calculation for a booster station near Yorkton, Saskatchewan.",
+   "topicId": "pump-affinity",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: original flow = 80 L/s, head = 40 m, power = 30 kW, speed ratio = 1.2. Flow scales with the ratio, head with the ratio squared, power with the ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New flow = 80 L/s * 1.2 = 96 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. New head = 40 m * 1.2 = 48 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. New power = 30 kW * 1.2 * 1.2 * 1.2 = 51.84 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New head = 40 m * 1.2 * 1.2 = 57.6 m",
+   "explanation": "Line 2 scaled head by the speed ratio only. Head scales with the square of the ratio, so the new head is 40 * 1.2 * 1.2 = 57.6 m."
+  },
+  {
+   "id": "wp2wd-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump affinity law calculation for a booster station near Fort McMurray, Alberta.",
+   "topicId": "pump-affinity",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: original flow = 50 L/s, head = 25 m, power = 20 kW, speed ratio = 1.5. Flow scales with the ratio, head with the ratio squared, power with the ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New flow = 50 L/s * 1.5 = 75 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. New head = 25 m * 1.5 * 1.5 = 56.25 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. New power = 20 kW * 1.5 * 1.5 = 45 kW"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. New power = 20 kW * 1.5 * 1.5 * 1.5 = 67.5 kW",
+   "explanation": "Line 3 scaled power by the square of the ratio. Power scales with the cube, so the new power is 67.5 kW."
+  },
+  {
+   "id": "wp2wd-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump affinity law calculation for a booster station near Prince George, British Columbia.",
+   "topicId": "pump-affinity",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: original flow = 120 L/s, head = 36 m, power = 45 kW, speed ratio = 0.8. Flow scales with the ratio, head with the ratio squared, power with the ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New flow = 120 L/s * 0.8 = 104 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. New head = 36 m * 0.8 * 0.8 = 23.04 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. New power = 45 kW * 0.8 * 0.8 * 0.8 = 23.04 kW"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. New flow = 120 L/s * 0.8 = 96 L/s",
+   "explanation": "Line 1 arithmetic is wrong. 120 * 0.8 = 96 L/s."
+  },
+  {
+   "id": "wp2wd-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this pump affinity law calculation for a booster station near Chilliwack, British Columbia.",
+   "topicId": "pump-affinity",
+   "level": "class1",
+   "assumptions": "Fictional booster pump: original flow = 60 L/s, head = 50 m, power = 24 kW, speed ratio = 0.9. Flow scales with the ratio, head with the ratio squared, power with the ratio cubed.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. New flow = 60 L/s * 0.9 = 54 L/s"
+    },
+    {
+     "id": "line2",
+     "label": "2. New head = 50 m * 0.9 * 0.9 = 41 m"
+    },
+    {
+     "id": "line3",
+     "label": "3. New power = 24 kW * 0.9 * 0.9 * 0.9 = 17.496 kW"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. New head = 50 m * 0.9 * 0.9 = 40.5 m",
+   "explanation": "Line 2 arithmetic is wrong. 50 * 0.9 * 0.9 = 40.5 m."
+  },
+  {
+   "id": "wp2wd-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster chlorination mass calculation for a reservoir near Red Deer, Alberta.",
+   "topicId": "chlorine-management",
+   "level": "class1",
+   "assumptions": "Fictional booster dose: dose = 1.6 mg/L, volume treated = 25 ML. Chlorine mass in kg = dose in mg/L * volume in ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume treated is 25 ML at a dose of 1.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 1.6 mg/L * 25 ML = 50 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 1.6 mg/L * 25 ML = 40 kg",
+   "explanation": "Line 2 arithmetic is wrong. 1.6 * 25 = 40 kg, because 1 mg/L over 1 ML is 1 kg."
+  },
+  {
+   "id": "wp2wd-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster chlorination mass calculation for a reservoir near Winnipeg, Manitoba.",
+   "topicId": "chlorine-management",
+   "level": "class1",
+   "assumptions": "Fictional booster dose: dose = 2.4 mg/L, volume treated = 15 ML. Chlorine mass in kg = dose in mg/L * volume in ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume treated is 15 ML at a dose of 2.4 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 2.4 mg/L * 20 ML = 48 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 2.4 mg/L * 15 ML = 36 kg",
+   "explanation": "Line 2 used a volume of 20 ML instead of the stated 15 ML. The chlorine mass is 36 kg."
+  },
+  {
+   "id": "wp2wd-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this booster chlorination mass calculation for a reservoir near Brandon, Manitoba.",
+   "topicId": "chlorine-management",
+   "level": "class1",
+   "assumptions": "Fictional booster dose: dose = 0.9 mg/L, volume treated = 40 ML. Chlorine mass in kg = dose in mg/L * volume in ML.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Volume treated is 40 ML at a dose of 0.9 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chlorine mass = 0.9 mg/L * 40 ML / 10 = 3.6 kg"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chlorine mass = 0.9 mg/L * 40 ML = 36 kg",
+   "explanation": "Line 2 added an extra division by 10. With dose in mg/L and volume in ML, the product is already in kg, 36 kg."
+  },
+  {
+   "id": "wp2wd-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine residual decay estimate for a far point near Lethbridge, Alberta.",
+   "topicId": "chlorine-management",
+   "level": "class1",
+   "assumptions": "Fictional residual estimate using a given linear drop: starting residual = 1.4 mg/L, given drop = 0.15 mg/L per day, travel and storage time = 4 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total residual drop = 0.15 mg/L/day * 4 days = 0.6 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Far point residual = 1.4 mg/L + 0.6 mg/L = 2 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Far point residual = 1.4 mg/L - 0.6 mg/L = 0.8 mg/L",
+   "explanation": "Line 2 added the residual drop instead of subtracting it. The far point residual is 0.8 mg/L."
+  },
+  {
+   "id": "wp2wd-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this chlorine residual decay estimate for a far point near Grande Prairie, Alberta.",
+   "topicId": "chlorine-management",
+   "level": "class1",
+   "assumptions": "Fictional residual estimate using a given linear drop: starting residual = 1.8 mg/L, given drop = 0.2 mg/L per day, travel and storage time = 5 days.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Total residual drop = 0.2 mg/L/day * 5 days = 1.2 mg/L"
+    },
+    {
+     "id": "line2",
+     "label": "2. Far point residual = 1.8 mg/L - 1.2 mg/L = 0.6 mg/L"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Total residual drop = 0.2 mg/L/day * 5 days = 1 mg/L",
+   "explanation": "Line 1 arithmetic is wrong. 0.2 * 5 = 1 mg/L, so the far point residual is 0.8 mg/L."
+  },
+  {
+   "id": "wp2wd-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a dead end main near Brandon, Manitoba.",
+   "topicId": "flushing-design",
+   "level": "class1",
+   "assumptions": "Fictional flushing section: pipe area = 0.0314 m2, section length = 400 m. Flush volume = 3 pipe volumes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pipe volume = 0.0314 m2 * 400 m = 12.56 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flush volume = 2 * 12.56 m3 = 25.12 m3"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Flush volume = 3 * 12.56 m3 = 37.68 m3",
+   "explanation": "Line 2 used two pipe volumes. The flushing program design uses three pipe volumes, so the flush volume is 37.68 m3."
+  },
+  {
+   "id": "wp2wd-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a dead end main near Kamloops, British Columbia.",
+   "topicId": "flushing-design",
+   "level": "class1",
+   "assumptions": "Fictional flushing section: pipe area = 0.1256 m2, section length = 250 m. Flush volume = 3 pipe volumes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pipe volume = 0.1256 m2 * 250 m = 34.54 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flush volume = 3 * 34.54 m3 = 103.62 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pipe volume = 0.1256 m2 * 250 m = 31.4 m3",
+   "explanation": "Line 1 arithmetic is wrong. 0.1256 * 250 = 31.4 m3, so three pipe volumes is 94.2 m3."
+  },
+  {
+   "id": "wp2wd-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing volume calculation for a dead end main near Kelowna, British Columbia.",
+   "topicId": "flushing-design",
+   "level": "class1",
+   "assumptions": "Fictional flushing section: pipe area = 0.2826 m2, section length = 300 m. Flush volume = 3 pipe volumes.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Pipe volume = 0.1963 m2 * 300 m = 58.89 m3"
+    },
+    {
+     "id": "line2",
+     "label": "2. Flush volume = 3 * 58.89 m3 = 176.67 m3"
+    }
+   ],
+   "firstWrongLineId": "line1",
+   "correctedLine": "1. Pipe volume = 0.2826 m2 * 300 m = 84.78 m3",
+   "explanation": "Line 1 used a pipe area of 0.1963 m2 instead of the stated 0.2826 m2. The pipe volume is 84.78 m3 and three pipe volumes is 254.34 m3."
+  },
+  {
+   "id": "wp2wd-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this flushing velocity calculation for a main near Prince Albert, Saskatchewan.",
+   "topicId": "flushing-design",
+   "level": "class1",
+   "assumptions": "Fictional flushing flow: flow = 0.0628 m3/s, pipe area = 0.0314 m2. Velocity = flow / area.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Flushing flow is 0.0628 m3/s through a pipe area of 0.0314 m2"
+    },
+    {
+     "id": "line2",
+     "label": "2. Velocity = 0.0628 m3/s / 0.0314 m2 = 2.5 m/s"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Velocity = 0.0628 m3/s / 0.0314 m2 = 2 m/s",
+   "explanation": "Line 2 arithmetic is wrong. 0.0628 / 0.0314 = 2 m/s."
+  },
+  {
+   "id": "wp2wd-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-review-program",
+   "prompt": "Order the steps for an annual pressure zone review for a foothills city system.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one pressure zone, from data review to the approved action list.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the zone map, boundary valves and pressure records for the past year"
+    },
+    {
+     "id": "c2",
+     "label": "Compare recorded high and low pressures with the zone target range"
+    },
+    {
+     "id": "c3",
+     "label": "Identify streets with repeated low pressure or high pressure complaints"
+    },
+    {
+     "id": "c4",
+     "label": "Inspect the boundary valves and the pressure reducing valve station records"
+    },
+    {
+     "id": "c5",
+     "label": "Rank corrective actions by risk to customers and water quality"
+    },
+    {
+     "id": "c6",
+     "label": "Present the review and the action list to the supervisor for approval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Annual review starts from records so field work targets real problems. Boundary and reducing valve condition explain many pressure patterns, actions are ranked before approval, and the approved list becomes the work plan."
+  },
+  {
+   "id": "wp2wd-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-prv-program-setup",
+   "prompt": "Order the steps for setting up a pressure reducing valve maintenance program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program setup for all reducing valve stations in the system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inventory every pressure reducing valve station and record its zone and setpoint"
+    },
+    {
+     "id": "c2",
+     "label": "Classify stations by size, age and consequence of failure"
+    },
+    {
+     "id": "c3",
+     "label": "Set an inspection interval for each class of station"
+    },
+    {
+     "id": "c4",
+     "label": "Create a standard station check sheet covering pressures, strainer and pilot lines"
+    },
+    {
+     "id": "c5",
+     "label": "Schedule the first round of inspections and assign crews"
+    },
+    {
+     "id": "c6",
+     "label": "File the program and review dates in the maintenance system"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A program needs a complete inventory before intervals can be set fairly. Classification by consequence focuses effort where failure hurts most, a standard sheet keeps checks consistent, and scheduling plus filing makes the program repeatable."
+  },
+  {
+   "id": "wp2wd-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-boundary-valve-program",
+   "prompt": "Order the steps for a boundary valve integrity program between two pressure zones.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: all normally closed boundary valves between the upper and lower zones.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List every boundary valve from the system map and field verify its location"
+    },
+    {
+     "id": "c2",
+     "label": "Record the as found position and normal position for each valve"
+    },
+    {
+     "id": "c3",
+     "label": "Exercise each valve and compare opening and closing turn counts"
+    },
+    {
+     "id": "c4",
+     "label": "Repair or schedule replacement for any valve that passes or will not operate"
+    },
+    {
+     "id": "c5",
+     "label": "Update the zone map where field positions differ from the record"
+    },
+    {
+     "id": "c6",
+     "label": "Report program completion and remaining deficiencies to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Boundary valves only protect zone separation if they truly close and are left in the normal position. Field verification corrects the map, exercising proves operability, and deficiencies are repaired or reported rather than assumed away."
+  },
+  {
+   "id": "wp2wd-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-new-subdivision-tie-in",
+   "prompt": "Order the steps for tying a new subdivision into an existing pressure zone.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one new subdivision main connecting to the existing zone.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the subdivision design pressures match the receiving zone range"
+    },
+    {
+     "id": "c2",
+     "label": "Verify the tie in valves and the pressure at the connection point"
+    },
+    {
+     "id": "c3",
+     "label": "Flush and disinfect the new main under the utility procedure"
+    },
+    {
+     "id": "c4",
+     "label": "Collect and review the required water quality samples"
+    },
+    {
+     "id": "c5",
+     "label": "Open the tie in valves slowly and monitor zone pressures during filling"
+    },
+    {
+     "id": "c6",
+     "label": "Update the zone map and add the new mains and valves to the inventory"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Design pressures must match the zone before any connection is made. The new main is proven clean before it is opened to customers, filling is monitored for pressure effects, and records are updated so the zone stays manageable."
+  },
+  {
+   "id": "wp2wd-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-low-pressure-investigation-program",
+   "prompt": "Order the steps for investigating a cluster of low pressure complaints in one zone.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: a neighbourhood cluster of low pressure reports over one week.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Map the complaint addresses and the times the low pressure was noticed"
+    },
+    {
+     "id": "c2",
+     "label": "Check zone pressure records and pump and tank levels for those times"
+    },
+    {
+     "id": "c3",
+     "label": "Deploy temporary pressure loggers at the cluster and at the zone inlet"
+    },
+    {
+     "id": "c4",
+     "label": "Compare logger results to find where pressure is lost in the zone"
+    },
+    {
+     "id": "c5",
+     "label": "Inspect the suspected valves, reducing valve or restriction found"
+    },
+    {
+     "id": "c6",
+     "label": "Report the cause and the corrective action to the supervisor and customers"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Complaint mapping shows whether the problem is local or zone wide. Loggers at the inlet and in the cluster separate a supply problem from a distribution restriction, and inspection follows the evidence rather than guessing."
+  },
+  {
+   "id": "wp2wd-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-high-pressure-mitigation",
+   "prompt": "Order the steps for reducing excessive night pressures in a lower pressure zone.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one lower zone where night pressures exceed the target range.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the high night pressures with logger records over several nights"
+    },
+    {
+     "id": "c2",
+     "label": "Check the reducing valve setpoint and its recorded maintenance history"
+    },
+    {
+     "id": "c3",
+     "label": "Inspect the reducing valve pilot system and strainer for faults"
+    },
+    {
+     "id": "c4",
+     "label": "Adjust the setpoint in small steps and monitor downstream pressure after each step"
+    },
+    {
+     "id": "c5",
+     "label": "Check leakage and burst history to confirm the benefit of the change"
+    },
+    {
+     "id": "c6",
+     "label": "Record the new setpoint and add the station to closer monitoring"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Night pressures are confirmed with data before any adjustment. Pilot and strainer faults are corrected first, setpoint changes are made gradually with monitoring, and the new setting is recorded so the change is controlled."
+  },
+  {
+   "id": "wp2wd-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-logger-program",
+   "prompt": "Order the steps for a seasonal pressure logging program across all zones.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: logger deployment for a spring pressure study.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select logging points that represent inlets, high points and low points in each zone"
+    },
+    {
+     "id": "c2",
+     "label": "Calibrate and time synchronize all loggers before deployment"
+    },
+    {
+     "id": "c3",
+     "label": "Install loggers and record the exact location and start time for each"
+    },
+    {
+     "id": "c4",
+     "label": "Retrieve loggers after the planned logging period and download the data"
+    },
+    {
+     "id": "c5",
+     "label": "Analyse minimum, average and maximum pressures by zone"
+    },
+    {
+     "id": "c6",
+     "label": "File the study report and flag zones outside the target range for action"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Representative points and synchronized clocks make zone comparisons valid. Analysis by zone turns raw traces into decisions, and flagging out of range zones closes the loop from measurement to action."
+  },
+  {
+   "id": "wp2wd-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-split-planning",
+   "prompt": "Order the steps for planning a new pressure zone split in a growing hillside area.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: planning stage only, from demand review to the approved split concept.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review growth, demands and pressure complaints in the hillside area"
+    },
+    {
+     "id": "c2",
+     "label": "Identify the elevation band where a separate zone would hold pressures in range"
+    },
+    {
+     "id": "c3",
+     "label": "Locate candidate boundary streets and valves for the new zone line"
+    },
+    {
+     "id": "c4",
+     "label": "Assess storage and pumping changes the split would require"
+    },
+    {
+     "id": "c5",
+     "label": "Model the concept pressures for the high and low sides of the split"
+    },
+    {
+     "id": "c6",
+     "label": "Present the split concept and its effects to management for approval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A split is justified by growth and pressure evidence, not by map neatness. The elevation band defines the boundary, storage and pumping effects must be understood before approval, and modelling checks the concept before design money is spent."
+  },
+  {
+   "id": "wp2wd-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-fire-flow-review",
+   "prompt": "Order the steps for reviewing fire flow availability by pressure zone.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: annual fire flow review using hydrant test results.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the latest hydrant flow test results for each zone"
+    },
+    {
+     "id": "c2",
+     "label": "Compare available flows with the fire protection needs identified for each area"
+    },
+    {
+     "id": "c3",
+     "label": "List hydrants and streets where available flow is below the need"
+    },
+    {
+     "id": "c4",
+     "label": "Check whether low results follow low zone pressure, small mains or closed valves"
+    },
+    {
+     "id": "c5",
+     "label": "Rank improvement options for the deficient areas"
+    },
+    {
+     "id": "c6",
+     "label": "Share the review with the fire department and file it in the zone records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Flow results only matter when compared with the protection need for each area. Checking valves and pressures separates simple fixes from capital needs, ranking guides investment, and sharing the review keeps fire planning aligned."
+  },
+  {
+   "id": "wp2wd-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "pressure-zone-seasonal-demand-adjustment",
+   "prompt": "Order the steps for adjusting zone operations for peak summer demand in a prairie city.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: seasonal operating change for high irrigation demand.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review last summer peak demands and the lowest zone pressures recorded"
+    },
+    {
+     "id": "c2",
+     "label": "Confirm tank operating levels and pump capacity for the coming peak"
+    },
+    {
+     "id": "c3",
+     "label": "Adjust reducing valve and pump control settings for the seasonal plan"
+    },
+    {
+     "id": "c4",
+     "label": "Notify operators and dispatch of the seasonal settings and trigger points"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor zone pressures daily during the first peak week"
+    },
+    {
+     "id": "c6",
+     "label": "Restore normal settings after the peak and record what was learned"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Last summer data sets the plan, capacity is confirmed before settings change, and all shifts work from the same trigger points. Daily monitoring in the first peak week catches problems early, and restoring settings with notes prepares the next season."
+  },
+  {
+   "id": "wp2wd-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "cold-climate-emergency-thaw-equipment-program",
+   "prompt": "Order the steps for maintaining thawing equipment readiness through winter.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program for electric and hot water thaw units.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inventory thaw units and record their location and condition at winter start"
+    },
+    {
+     "id": "c2",
+     "label": "Test each unit under load and repair or replace failed units"
+    },
+    {
+     "id": "c3",
+     "label": "Stock cables, hoses, fittings and safety gear with each unit"
+    },
+    {
+     "id": "c4",
+     "label": "Train or refresh operators on the approved thaw methods for each pipe material"
+    },
+    {
+     "id": "c5",
+     "label": "Track unit use and any damage after each deployment"
+    },
+    {
+     "id": "c6",
+     "label": "Service units at winter end and record lessons for next season stocking"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Thaw equipment fails when it is stored untested, so units are proven under load before they are needed. Gear stocked with the unit prevents night delays, material specific training prevents pipe damage during thawing, and end of season service closes the loop."
+  },
+  {
+   "id": "wp2wd-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-dma-setup",
+   "prompt": "Order the steps for setting up a district metered area for water loss control.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one district metered area in a residential district.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Define the district boundary using valves that can isolate the area"
+    },
+    {
+     "id": "c2",
+     "label": "Install or verify the district inlet meter and a data logger"
+    },
+    {
+     "id": "c3",
+     "label": "Close and tag boundary valves and prove the district is discrete by a pressure check"
+    },
+    {
+     "id": "c4",
+     "label": "Record the customer count and the main lengths inside the district"
+    },
+    {
+     "id": "c5",
+     "label": "Start routine night flow logging for the district"
+    },
+    {
+     "id": "c6",
+     "label": "Compare the first month night flows with the expected legitimate night use"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "A district must be provably discrete before its night flow means anything. The inlet meter measures everything entering, customer and main data give context, and only then can night flow be judged against legitimate use."
+  },
+  {
+   "id": "wp2wd-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-night-flow-analysis",
+   "prompt": "Order the steps for analysing minimum night flow in a district metered area.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one month of night flow data for one district.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Download the inlet flow and pressure data for the month"
+    },
+    {
+     "id": "c2",
+     "label": "Identify the minimum night flow period on typical nights"
+    },
+    {
+     "id": "c3",
+     "label": "Subtract the assessed legitimate night use by customers"
+    },
+    {
+     "id": "c4",
+     "label": "Convert the remaining flow to a leakage rate for the district"
+    },
+    {
+     "id": "c5",
+     "label": "Compare the leakage rate with the district target and with other districts"
+    },
+    {
+     "id": "c6",
+     "label": "Flag the district for leak detection if leakage exceeds the target"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Night flow analysis works because legitimate use is lowest and steadiest at night. Subtracting assessed night use leaves leakage, and comparison with targets and other districts decides where detection crews go first."
+  },
+  {
+   "id": "wp2wd-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-step-testing",
+   "prompt": "Order the steps for step testing a district to locate a leak area.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one night step test in a district with high night flow.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Plan the valve sequence that will close the district in sections, smallest area last"
+    },
+    {
+     "id": "c2",
+     "label": "Notify dispatch and record the starting district night flow"
+    },
+    {
+     "id": "c3",
+     "label": "Close the first section valve and record the drop in inlet flow"
+    },
+    {
+     "id": "c4",
+     "label": "Continue closing sections in sequence, recording the flow drop at each step"
+    },
+    {
+     "id": "c5",
+     "label": "Identify the section with the largest unexplained flow drop"
+    },
+    {
+     "id": "c6",
+     "label": "Reopen all valves in reverse order and mark the suspect section for leak sounding"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Each valve closure removes one section from supply, so the flow drop belongs to that section. The largest unexplained drop points to the leak area, and reopening in reverse restores supply in a controlled order."
+  },
+  {
+   "id": "wp2wd-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-leak-sounding-program",
+   "prompt": "Order the steps for a leak sounding survey of a high loss district.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: sounding of all fittings in one district.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Divide the district into sounding routes that cover every valve and hydrant"
+    },
+    {
+     "id": "c2",
+     "label": "Brief the crew on listening equipment use and the recording sheet"
+    },
+    {
+     "id": "c3",
+     "label": "Sound each fitting and mark any leak noise with its strength"
+    },
+    {
+     "id": "c4",
+     "label": "Correlate or pinpoint the strongest noises to locate the leak position"
+    },
+    {
+     "id": "c5",
+     "label": "Raise repair work orders for confirmed leak locations"
+    },
+    {
+     "id": "c6",
+     "label": "Resound the district after repairs to confirm the noise is gone"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Complete coverage prevents missed leaks between fittings. Marked noise strength guides correlation effort, repairs follow confirmed locations, and resounding proves the work reduced loss rather than assuming it did."
+  },
+  {
+   "id": "wp2wd-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-meter-accuracy-program",
+   "prompt": "Order the steps for a large meter accuracy testing program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: annual testing of large customer meters.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Rank large meters by consumption so the biggest users are tested first"
+    },
+    {
+     "id": "c2",
+     "label": "Notify each customer and book the test visit"
+    },
+    {
+     "id": "c3",
+     "label": "Test the meter at low, medium and high flows and record accuracy at each"
+    },
+    {
+     "id": "c4",
+     "label": "Compare results with the utility accuracy limits"
+    },
+    {
+     "id": "c5",
+     "label": "Repair, recalibrate or replace meters outside the limits"
+    },
+    {
+     "id": "c6",
+     "label": "Update the billing adjustment and the meter record from the test results"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Testing the largest meters first protects the most revenue and the water balance. Accuracy across the flow range matters because a meter can pass at high flow and fail at low flow, and records plus billing are corrected from the same results."
+  },
+  {
+   "id": "wp2wd-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-balance-program",
+   "prompt": "Order the steps for preparing the annual system water balance.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one calendar year water balance for the whole system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Total the treated water supplied into the distribution system"
+    },
+    {
+     "id": "c2",
+     "label": "Total billed metered and billed unmetered consumption"
+    },
+    {
+     "id": "c3",
+     "label": "Estimate unbilled authorized use such as flushing and fire fighting"
+    },
+    {
+     "id": "c4",
+     "label": "Apply meter accuracy and data handling adjustments from test records"
+    },
+    {
+     "id": "c5",
+     "label": "Calculate non revenue water and its main components"
+    },
+    {
+     "id": "c6",
+     "label": "Present the balance and the largest loss component to management"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The balance starts from measured supply and consumption before any estimates are added. Separating authorized unbilled use and adjustments from real losses shows whether the biggest problem is leakage, metering or data, which decides the control program."
+  },
+  {
+   "id": "wp2wd-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-apparent-loss-review",
+   "prompt": "Order the steps for investigating apparent losses in the water balance.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: a review triggered by rising non revenue water with stable night flows.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm production meter readings and check for data transfer errors"
+    },
+    {
+     "id": "c2",
+     "label": "Review large meter test results for under registration"
+    },
+    {
+     "id": "c3",
+     "label": "Check for unbilled accounts and inactive accounts still taking water"
+    },
+    {
+     "id": "c4",
+     "label": "Review estimates used for unread meters in the billing system"
+    },
+    {
+     "id": "c5",
+     "label": "Correct the data or metering fault found"
+    },
+    {
+     "id": "c6",
+     "label": "Recalculate the water balance and report the change to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Stable night flows with rising non revenue water point to apparent rather than real losses. The review works through metering, billing and data causes in order, corrects the fault, and proves the effect by recalculating the balance."
+  },
+  {
+   "id": "wp2wd-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-unauthorized-use-response",
+   "prompt": "Order the steps when unauthorized hydrant use is found during a loss survey.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one site where a tanker is filling without a permit.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Record the hydrant, time, vehicle and estimated filling rate from a safe position"
+    },
+    {
+     "id": "c2",
+     "label": "Check the permit records to confirm no hydrant use permit covers the site"
+    },
+    {
+     "id": "c3",
+     "label": "Notify the supervisor and the bylaw contact used by the utility"
+    },
+    {
+     "id": "c4",
+     "label": "Direct the user to stop and to the permit and metered filling process"
+    },
+    {
+     "id": "c5",
+     "label": "Estimate the volume taken for the water balance records"
+    },
+    {
+     "id": "c6",
+     "label": "Inspect the hydrant and backflow risk and record the findings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Evidence is recorded before any confrontation, and the permit check confirms the use is unauthorized. Stopping the use protects revenue and water quality, the volume estimate keeps the water balance honest, and the hydrant is checked for damage or contamination risk."
+  },
+  {
+   "id": "wp2wd-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-repair-verification",
+   "prompt": "Order the steps for verifying water loss savings after a leak repair program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one district where several leaks were repaired last month.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm all repair work orders in the district are closed with locations recorded"
+    },
+    {
+     "id": "c2",
+     "label": "Download the district night flow data for the weeks after the repairs"
+    },
+    {
+     "id": "c3",
+     "label": "Compare the new minimum night flow with the pre repair baseline"
+    },
+    {
+     "id": "c4",
+     "label": "Convert the flow reduction to a daily leakage saving"
+    },
+    {
+     "id": "c5",
+     "label": "Check that pressures in the district remain in the target range"
+    },
+    {
+     "id": "c6",
+     "label": "Report the verified saving and update the district loss ranking"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Savings are claimed only from measured night flow change against the pre repair baseline. Pressure is checked so a saving is not just customers receiving less water, and the updated ranking sends the next effort to the district that now needs it most."
+  },
+  {
+   "id": "wp2wd-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-loss-annual-program-review",
+   "prompt": "Order the steps for the annual water loss program review.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: yearly review covering all districts and programs.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile district night flow and leakage rankings for the year"
+    },
+    {
+     "id": "c2",
+     "label": "Total leaks found and repaired by detection method"
+    },
+    {
+     "id": "c3",
+     "label": "Review meter testing results and apparent loss corrections"
+    },
+    {
+     "id": "c4",
+     "label": "Compare total non revenue water with the previous year and the target"
+    },
+    {
+     "id": "c5",
+     "label": "Rank next year work by the largest remaining loss volumes"
+    },
+    {
+     "id": "c6",
+     "label": "Present the review and the proposed program to management for approval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The annual review ranks districts and methods by measured results, not by habit. Comparing the balance year to year shows whether the program is working, and ranking next year work by remaining volume keeps effort on the biggest losses."
+  },
+  {
+   "id": "wp2wd-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-residual-program-design",
+   "prompt": "Order the steps for designing a chlorine residual management program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: program design for the whole distribution system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Map sampling points that represent sources, storage outlets and far ends"
+    },
+    {
+     "id": "c2",
+     "label": "Review a year of residual results to find low residual areas and seasons"
+    },
+    {
+     "id": "c3",
+     "label": "Set target residual ranges for inlets, mid system and far ends"
+    },
+    {
+     "id": "c4",
+     "label": "Assign monitoring frequencies for each class of sampling point"
+    },
+    {
+     "id": "c5",
+     "label": "Define the response actions for results below the target range"
+    },
+    {
+     "id": "c6",
+     "label": "Approve the program and train the sampling and operations staff"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Representative points and a year of history show where and when residuals fail. Targets by location make results judgeable, defined responses prevent ad hoc decisions, and training makes the program work the same on every shift."
+  },
+  {
+   "id": "wp2wd-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-nitrification-monitoring",
+   "prompt": "Order the steps for a nitrification monitoring round in a chloraminated storage area.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one round at a tank outlet and nearby distribution sites. Use only where the system uses chloramines.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Select sites at the tank outlet, a nearby dead end and a mid area control point"
+    },
+    {
+     "id": "c2",
+     "label": "Measure total chlorine, free ammonia and nitrite at each site in that order of collection"
+    },
+    {
+     "id": "c3",
+     "label": "Compare results with the utility action levels for nitrification signs"
+    },
+    {
+     "id": "c4",
+     "label": "Check tank turnover and water age for the same period"
+    },
+    {
+     "id": "c5",
+     "label": "Increase flushing or turnover at sites showing early nitrification signs"
+    },
+    {
+     "id": "c6",
+     "label": "Record the round and schedule the follow up round sooner than routine"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Nitrification is tracked by the pattern across total chlorine, free ammonia and nitrite together, not by one result alone. Comparing sites separates a tank problem from a local dead end problem, and early action plus closer follow up stops a full episode."
+  },
+  {
+   "id": "wp2wd-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-nitrification-response",
+   "prompt": "Order the steps for responding to confirmed nitrification in a storage tank.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one tank with falling total chlorine and rising nitrite.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the result with repeat samples at the tank outlet and in the tank area"
+    },
+    {
+     "id": "c2",
+     "label": "Review tank levels and turnover to find the water age driving the episode"
+    },
+    {
+     "id": "c3",
+     "label": "Increase tank turnover by adjusting operating levels and cycling the tank"
+    },
+    {
+     "id": "c4",
+     "label": "Flush the distribution area fed by the tank, starting nearest the tank"
+    },
+    {
+     "id": "c5",
+     "label": "Retest total chlorine and nitrite until results return to normal range"
+    },
+    {
+     "id": "c6",
+     "label": "Document the episode, the cause found and the actions taken"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Repeat samples confirm the episode before major action. Turnover addresses the root cause, which is old water, flushing refreshes the affected area from the tank outward, and retesting proves recovery before the episode is closed."
+  },
+  {
+   "id": "wp2wd-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-complaint-program-triage",
+   "prompt": "Order the steps for triaging water quality complaints at the program level each morning.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: the daily review of complaints received in the last day.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List all taste, odour, colour and pressure complaints with addresses and times"
+    },
+    {
+     "id": "c2",
+     "label": "Plot the addresses to check for clustering by area, main or tank zone"
+    },
+    {
+     "id": "c3",
+     "label": "Compare clusters with recent flushing, breaks and tank operations"
+    },
+    {
+     "id": "c4",
+     "label": "Assign site visits starting with any cluster that suggests a system cause"
+    },
+    {
+     "id": "c5",
+     "label": "Give single isolated complaints the standard customer guidance and a callback"
+    },
+    {
+     "id": "c6",
+     "label": "Record the triage decisions and any pattern carried to the weekly review"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Daily triage separates isolated customer plumbing issues from early signs of a system event. Clusters are checked against operations first because timing often explains them, and recording patterns daily lets the weekly review see trends no single day shows."
+  },
+  {
+   "id": "wp2wd-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-sampling-schedule-design",
+   "prompt": "Order the steps for building the annual distribution sampling schedule.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: schedule for bacteriological and chemical sampling under provincial drinking water requirements.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "List the sample types, counts and locations required by the provincial program"
+    },
+    {
+     "id": "c2",
+     "label": "Spread samples evenly across weeks so no month is overloaded or missed"
+    },
+    {
+     "id": "c3",
+     "label": "Assign sites so far ends, dead ends and storage outlets are all represented"
+    },
+    {
+     "id": "c4",
+     "label": "Build in repeat and follow up sample capacity for adverse results"
+    },
+    {
+     "id": "c5",
+     "label": "Issue the schedule to samplers with site access notes"
+    },
+    {
+     "id": "c6",
+     "label": "Track completion weekly and reschedule any missed sample within its window"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The schedule starts from the required counts and locations, then spreads work so compliance does not depend on one busy week. Follow up capacity is planned rather than improvised, and weekly tracking catches a missed sample while it can still be taken in its window."
+  },
+  {
+   "id": "wp2wd-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-adverse-result-program-response",
+   "prompt": "Order the steps in the program response to an adverse bacteriological result in distribution.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one adverse result at a routine distribution site, following provincial drinking water requirements.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the result details with the laboratory and record the site and time"
+    },
+    {
+     "id": "c2",
+     "label": "Notify the supervisor and the provincial contact as the utility procedure requires"
+    },
+    {
+     "id": "c3",
+     "label": "Collect repeat samples at the site, upstream and downstream as directed"
+    },
+    {
+     "id": "c4",
+     "label": "Flush the area around the site if directed while samples are pending"
+    },
+    {
+     "id": "c5",
+     "label": "Review results and lift any advisory only when the procedure criteria are met"
+    },
+    {
+     "id": "c6",
+     "label": "Complete the adverse result report and file the full record"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Adverse results follow the set procedure without improvisation: confirmation and notification first, then the directed resampling pattern that locates the extent, and closure only when the criteria in the procedure are met and documented."
+  },
+  {
+   "id": "wp2wd-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-dead-end-program",
+   "prompt": "Order the steps for setting up a dead end water quality improvement program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: all dead ends in the system ranked for action.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Inventory dead ends from the map and record main size and customer count for each"
+    },
+    {
+     "id": "c2",
+     "label": "Rank dead ends by residual history, complaints and water age"
+    },
+    {
+     "id": "c3",
+     "label": "Choose the remedy for each, such as routine flushing, an auto flusher or looping"
+    },
+    {
+     "id": "c4",
+     "label": "Install or schedule the chosen remedy for the highest ranked dead ends first"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor residuals at treated dead ends for one season"
+    },
+    {
+     "id": "c6",
+     "label": "Report which remedies held residuals in range and adjust the program"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Dead ends are ranked by measured quality, not by complaint volume alone. Remedies match the severity at each site, monitoring over a season proves which remedies work in this system, and the program is adjusted from that evidence."
+  },
+  {
+   "id": "wp2wd-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-tank-mixing-assessment",
+   "prompt": "Order the steps for assessing mixing in a ground storage reservoir.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one reservoir suspected of stratification and old water pockets.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review inlet and outlet locations and the normal fill and draw pattern"
+    },
+    {
+     "id": "c2",
+     "label": "Collect temperature and residual samples at different depths or ports"
+    },
+    {
+     "id": "c3",
+     "label": "Compare depth results to confirm whether stratification is present"
+    },
+    {
+     "id": "c4",
+     "label": "Evaluate a mixer or inlet change against the stratification found"
+    },
+    {
+     "id": "c5",
+     "label": "Install the selected measure and repeat the depth sampling"
+    },
+    {
+     "id": "c6",
+     "label": "Record whether residuals equalized and set the routine check interval"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Stratification must be proven by depth sampling before money is spent on mixing. The fill pattern explains the cause, the chosen measure is verified by repeating the same sampling, and a routine interval keeps the fix monitored."
+  },
+  {
+   "id": "wp2wd-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-booster-chlorination-review",
+   "prompt": "Order the steps for reviewing a booster chlorination station performance.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one booster station feeding a far end area.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compare residuals upstream and downstream of the booster station"
+    },
+    {
+     "id": "c2",
+     "label": "Review the booster feed records and chemical use for the period"
+    },
+    {
+     "id": "c3",
+     "label": "Check the feed equipment, injection point and residual analyser calibration"
+    },
+    {
+     "id": "c4",
+     "label": "Adjust the dose setpoint only if equipment and calibration are sound"
+    },
+    {
+     "id": "c5",
+     "label": "Monitor downstream far end residuals for the following week"
+    },
+    {
+     "id": "c6",
+     "label": "Record the review and the setpoint in the station log"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Upstream and downstream residuals show what the booster is actually adding. Equipment and analyser faults are ruled out before the dose is changed, because adjusting a dose to match a faulty analyser makes control worse, and a week of far end results proves the change."
+  },
+  {
+   "id": "wp2wd-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "water-quality-annual-program-report",
+   "prompt": "Order the steps for preparing the annual water quality program report.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: annual report covering residuals, complaints, sampling and flushing.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile residual compliance results by area and season"
+    },
+    {
+     "id": "c2",
+     "label": "Summarize complaints by type and area and compare with last year"
+    },
+    {
+     "id": "c3",
+     "label": "Summarize sampling completion and any adverse results and responses"
+    },
+    {
+     "id": "c4",
+     "label": "Summarize flushing volumes and the areas flushed"
+    },
+    {
+     "id": "c5",
+     "label": "Identify the areas and seasons needing program changes next year"
+    },
+    {
+     "id": "c6",
+     "label": "Present the report to management and file it with the program records"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "The annual report combines residuals, complaints, sampling and flushing so patterns that cross programs become visible. Areas and seasons needing change are identified from the combined evidence, which is what makes next year program better rather than just repeated."
+  },
+  {
+   "id": "wp2wd-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-design-zones",
+   "prompt": "Order the steps for designing flushing zones for a system wide unidirectional flushing program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: zone design stage for the whole system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Review the system map, source locations and historical complaint and residual data"
+    },
+    {
+     "id": "c2",
+     "label": "Divide the system into zones that can each be fed from a single inlet"
+    },
+    {
+     "id": "c3",
+     "label": "Sequence zones so work starts at the sources and moves outward"
+    },
+    {
+     "id": "c4",
+     "label": "List the valves and hydrants to be used in each zone in operating order"
+    },
+    {
+     "id": "c5",
+     "label": "Estimate water needs and crew time for each zone"
+    },
+    {
+     "id": "c6",
+     "label": "Approve the zone plan before any customer notices are issued"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Zones must each work from one inlet or the flow will not be unidirectional. Sequencing from the sources outward protects cleaned mains, the valve and hydrant list is the field plan, and approval comes before public notice so the promise matches the plan."
+  },
+  {
+   "id": "wp2wd-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-velocity-design",
+   "prompt": "Order the steps for designing a flushing sequence to reach target velocity in a large main.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one large diameter main segment in a flushing zone.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the main size, length and the hydrants available for the segment"
+    },
+    {
+     "id": "c2",
+     "label": "Select the hydrant combination that gives the target flushing velocity"
+    },
+    {
+     "id": "c3",
+     "label": "Sequence intermediate valves so flow passes through the segment in one direction"
+    },
+    {
+     "id": "c4",
+     "label": "Plan the discharge route and erosion controls for the chosen hydrants"
+    },
+    {
+     "id": "c5",
+     "label": "Brief the crew on the opening order and the clarity and residual targets"
+    },
+    {
+     "id": "c6",
+     "label": "Record the achieved flow and whether the segment ran clear"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Velocity comes from the hydrant combination matched to the main size, so selection precedes valve work. Discharge is planned before high flow starts, and recording achieved flow shows whether the design velocity was truly reached."
+  },
+  {
+   "id": "wp2wd-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-notice-design",
+   "prompt": "Order the steps for preparing customer notices for a flushing program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: notices for one zone scheduled next week.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm the zone dates and the daily work areas from the approved plan"
+    },
+    {
+     "id": "c2",
+     "label": "Draft the notice with dates, possible discolouration advice and a contact number"
+    },
+    {
+     "id": "c3",
+     "label": "Deliver notices to the zone in the order the streets will be flushed"
+    },
+    {
+     "id": "c4",
+     "label": "Post the zone schedule on the utility public notice channel"
+    },
+    {
+     "id": "c5",
+     "label": "Brief dispatch and customer service on the schedule and the standard advice"
+    },
+    {
+     "id": "c6",
+     "label": "Keep a delivery record so any complaint can be checked against notice coverage"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Notices follow the approved dates, never precede them. Delivery in flushing order means each street is warned just before its work, dispatch shares the same schedule, and the delivery record answers later questions about who was warned."
+  },
+  {
+   "id": "wp2wd-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-swabbing-plan",
+   "prompt": "Order the steps for planning a swabbing run for a tuberculated main.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: one main selected for foam swab cleaning.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Confirm from records and flushing results that deposits need swabbing, not flushing alone"
+    },
+    {
+     "id": "c2",
+     "label": "Select launch and retrieval points and the valves for isolating the run"
+    },
+    {
+     "id": "c3",
+     "label": "Notify affected customers and plan the outage window"
+    },
+    {
+     "id": "c4",
+     "label": "Stage swabs, launch gear and discharge controls at the launch point"
+    },
+    {
+     "id": "c5",
+     "label": "Plan the post run flushing, disinfection checks and sampling"
+    },
+    {
+     "id": "c6",
+     "label": "Approve the run plan with the supervisor before the outage is booked"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Swabbing is chosen only when flushing has proven insufficient. Isolation points and the outage are planned before customers are notified, post run flushing and sampling are part of the same plan, and approval precedes booking the outage."
+  },
+  {
+   "id": "wp2wd-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-auto-flusher-placement",
+   "prompt": "Order the steps for placing automatic flushers on chronic low residual dead ends.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: placement program for auto flushers across the system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Rank dead ends by how often residuals fall below target despite manual flushing"
+    },
+    {
+     "id": "c2",
+     "label": "Check each candidate site for drainage, power or battery access and winter protection"
+    },
+    {
+     "id": "c3",
+     "label": "Set the flush frequency and duration from the water age at the site"
+    },
+    {
+     "id": "c4",
+     "label": "Install the unit and set its controller to the planned program"
+    },
+    {
+     "id": "c5",
+     "label": "Measure residuals at the site over the first month and adjust the program"
+    },
+    {
+     "id": "c6",
+     "label": "Add the unit to the inspection route and record its settings"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Auto flushers go where manual flushing has already failed to hold residuals, so the ranking is evidence based. Drainage and winter protection decide whether a site can work at all in a western Canadian winter, and first month residuals prove the settings."
+  },
+  {
+   "id": "wp2wd-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-water-use-tracking",
+   "prompt": "Order the steps for tracking water used by the flushing program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: tracking setup for one flushing season.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Define how each flush type will have its volume estimated or metered"
+    },
+    {
+     "id": "c2",
+     "label": "Issue the field sheet that records hydrant, time open and estimated flow"
+    },
+    {
+     "id": "c3",
+     "label": "Collect sheets weekly and total volumes by zone"
+    },
+    {
+     "id": "c4",
+     "label": "Compare flushing volumes with the water balance unbilled authorized use"
+    },
+    {
+     "id": "c5",
+     "label": "Investigate any zone where recorded use and estimates differ widely"
+    },
+    {
+     "id": "c6",
+     "label": "Report season totals and unit volumes per main length to the supervisor"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Consistent estimation methods make zone totals comparable. Weekly collection catches missing sheets while crews remember the work, comparison with the water balance validates the method, and reporting per length shows where flushing effort is concentrated."
+  },
+  {
+   "id": "wp2wd-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-effectiveness-review",
+   "prompt": "Order the steps for reviewing whether a flushing program improved water quality.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: review one season after a full system program.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Compile residual results from before and after the program by area"
+    },
+    {
+     "id": "c2",
+     "label": "Compare complaint counts for discolouration and taste for the same periods"
+    },
+    {
+     "id": "c3",
+     "label": "Review the volumes used and the time each zone took"
+    },
+    {
+     "id": "c4",
+     "label": "Identify areas where quality did not improve despite flushing"
+    },
+    {
+     "id": "c5",
+     "label": "Recommend repeat flushing, swabbing or main renewal for those areas"
+    },
+    {
+     "id": "c6",
+     "label": "Present the effectiveness review and recommendations to management"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Effectiveness is judged by quality change, not by volumes flushed. Areas that did not improve need a different remedy, and the review names it, so the next program is designed from results rather than repeated by habit."
+  },
+  {
+   "id": "wp2wd-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-winter-adaptation",
+   "prompt": "Order the steps for adapting the flushing program for winter operation.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: winter version of the routine flushing round in a northern prairie system.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Identify flushing points that can discharge without creating ice hazards on roads and walks"
+    },
+    {
+     "id": "c2",
+     "label": "Reduce flush durations to the minimum that still reaches clarity and residual targets"
+    },
+    {
+     "id": "c3",
+     "label": "Schedule winter flushes for the warmest part of the day where practical"
+    },
+    {
+     "id": "c4",
+     "label": "Fit discharge controls that spread water to avoid a single icing point"
+    },
+    {
+     "id": "c5",
+     "label": "Check each hydrant drains fully after its winter flush"
+    },
+    {
+     "id": "c6",
+     "label": "Record winter results separately so spring planning sees the winter pattern"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "Winter flushing trades a little duration for safety, because discharge ice is a public hazard and a liability. Drainage checks matter more in winter, since a hydrant left holding water can freeze and split, and separate records keep winter limits visible in planning."
+  },
+  {
+   "id": "wp2wd-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "level": "class1",
+   "topicId": "flushing-program-new-main-integration",
+   "prompt": "Order the steps for adding newly constructed mains to the flushing program.",
+   "assumptions": "Fictional western Canadian distribution system operating under provincial drinking water requirements and the Guidelines for Canadian Drinking Water Quality.",
+   "configuration": "Scope: new mains accepted into the system this year.",
+   "cards": [
+    {
+     "id": "c1",
+     "label": "Collect the as built records and valve and hydrant lists for each new main"
+    },
+    {
+     "id": "c2",
+     "label": "Identify new dead ends and low turnover sections created by the construction"
+    },
+    {
+     "id": "c3",
+     "label": "Add the new points to the flushing routes in the correct outward sequence"
+    },
+    {
+     "id": "c4",
+     "label": "Set initial flushing frequencies from the expected water age"
+    },
+    {
+     "id": "c5",
+     "label": "Measure residuals at the new points during the first season"
+    },
+    {
+     "id": "c6",
+     "label": "Adjust frequencies and update the program map at season end"
+    }
+   ],
+   "correctOrder": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5",
+    "c6"
+   ],
+   "explanation": "New mains change water age patterns, so they enter the program from their as built records, not from memory. Initial frequencies are set from expected age, first season residuals test that estimate, and the map is corrected at season end."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2wd-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Pressure Zones Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp2wd-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Pressure Zone Prv Program Setup Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp2wd-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp2wd-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Pressure Zones Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp2wd-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp2wd-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp2wd-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Pressure Zone New Subdivision Tie In Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp2wd-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Storage Turnover Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp2wd-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp2wd-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Pressure Zone High Pressure Mitigation Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp2wd-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp2wd-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp2wd-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Storage Turnover Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp2wd-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Pressure Zone Split Planning Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp2wd-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp2wd-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Storage Turnover Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp2wd-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp2wd-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp2wd-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Pressure Zone Seasonal Demand Adjustment Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp2wd-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Pump Energy Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp2wd-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp2wd-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Water Loss Dma Setup Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp2wd-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp2wd-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp2wd-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Pump Energy Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp2wd-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Water Loss Step Testing Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp2wd-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp2wd-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Pump Affinity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp2wd-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp2wd-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp2wd-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Water Loss Meter Accuracy Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp2wd-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Chlorine Management Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp2wd-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp2wd-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Water Loss Apparent Loss Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp2wd-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp2wd-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp2wd-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Flushing Design Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp2wd-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2wd-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Water Loss Repair Verification Shift",
+   "tasks": [
+    {
+     "taskId": "wp2wd-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp2wd-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp2wd-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Distribution operations chapters (pressure zones, storage, water loss, pumps)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "7fb6c22547596674ea9bd484545f457d168c4f3820d9c56e5953cda019d8dcd7",
+  "taskReceipts": [
+   {
+    "taskId": "wp2wd-error60",
+    "revision": "r1",
+    "sha256": "144f3b9ae3a8ec9d5a244153ceeb2f4cabab762e3f11c72b7c07d56643db39a7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error61",
+    "revision": "r1",
+    "sha256": "099b398f673112d9c2d64d6680ae16bb42657bc0fdcf27f4d412e52565c8e50a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error62",
+    "revision": "r1",
+    "sha256": "e7437614f96b02eadc72d39746c72d427ef8a6f20ed4e1ee8b30a605beeebb01",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error63",
+    "revision": "r1",
+    "sha256": "6ad00e372114d7d862af0b4fcbb4afe30ea88f37f31292f17262ff2601968622",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error64",
+    "revision": "r1",
+    "sha256": "82d8957d15de436e6c2ac122d6df37e93471402e92bae5aff54ee4119890747d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error65",
+    "revision": "r1",
+    "sha256": "7b3228da0a479a4dc038d1c34d8791a701be7da805bb94fbfe5498a0dd66cb69",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error66",
+    "revision": "r1",
+    "sha256": "461e72dca406a6d4ec1cb15c99ddbbc5fecd95631612f38133e1170236dae8c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error67",
+    "revision": "r1",
+    "sha256": "0f7e3449cf0a03ffadaf705ac48cbeb3d8821eec976fd68a8891b0801eb4b9e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error68",
+    "revision": "r1",
+    "sha256": "58cad766d2938be1662bb90c83bbfb22895c7f12bae4708bd17ef6f9a14e4864",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error69",
+    "revision": "r1",
+    "sha256": "c5d2f68e627ee2d8c26f592d6838948f4336febc0a0685687271b5fdc11f09d0",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error70",
+    "revision": "r1",
+    "sha256": "7588718356ee4815982dd1f2d4619c4c216becb3a4399e2a390250c0b5891f5d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error71",
+    "revision": "r1",
+    "sha256": "1cb5f611e158b40c5dfe05e7fa9bfd44739eb00d818ce9420235ee1164d3e36c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error72",
+    "revision": "r1",
+    "sha256": "1bd82eaad29171843e5b7be3c0940355d5ecd84b2cc0d498ca30886faa814f71",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error73",
+    "revision": "r1",
+    "sha256": "e606f160e28607b3fbda237a08900e32c73ef69a9c774168bf1d8b31009e0cb3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error74",
+    "revision": "r1",
+    "sha256": "62a25ce1b7bf1912a2106f1b81814f80be7a21addd42b194c86d3f8728f1c07e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error75",
+    "revision": "r1",
+    "sha256": "9584367169602ae48a8d92c3669d20a149be2ca9fe85a53d5286c74b1ef4a758",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error76",
+    "revision": "r1",
+    "sha256": "54de511e590c7639adb6d7a83c2ee0838cb9b3f5b2578aa5c14a5e816817f4e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error77",
+    "revision": "r1",
+    "sha256": "f06657f2ac4218da82846384ed90aa968aaca18063afd4479952fdf1f6a9d483",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error78",
+    "revision": "r1",
+    "sha256": "34bc583c085ec9ef83dfe508eebd62b951618af01deada8ed7dfacdeab010511",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error79",
+    "revision": "r1",
+    "sha256": "6607005874679f48f27c917ba3584030e52ebe3afa70e805774d054bb3d94252",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error80",
+    "revision": "r1",
+    "sha256": "baa68afd08aeff22d24d4ae83f4369f2372cf2419eb8e156a85783399406ef16",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error81",
+    "revision": "r1",
+    "sha256": "092d9eed3946c7f5999970fbb19af54fbcca7a6e4797b030f4003d21ab7ea991",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error82",
+    "revision": "r1",
+    "sha256": "82f8a623c4ef0e88b49a7f00717e05e9d28d1bc1c9d5ccd62f417e2e5b8b469a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error83",
+    "revision": "r1",
+    "sha256": "f3942372a955866a591022f620e17c0644c0565027f3e96b8a71c6b012870c6e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error84",
+    "revision": "r1",
+    "sha256": "eba4fcf9228d5086abd7cdd1cd31de127f499dbc48f77833e8a58eb688c04de4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error85",
+    "revision": "r1",
+    "sha256": "24b32e9a7742e2d93800d4aab366fff1a37eacf8f49138bda3b6677d24513710",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error86",
+    "revision": "r1",
+    "sha256": "ea69feaa8f3daa06a8a74d6f1423f187cfda222422f2a1cfaaab5a35bf3bf0e6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error87",
+    "revision": "r1",
+    "sha256": "13fcb3220e5f7f0970ae88b9d932000fba2c3f4aee7a7f57611f74a682d0898e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error88",
+    "revision": "r1",
+    "sha256": "a1d54d53f5d08c59f2b96feef0297e24ac91991aae31e51fd853db01a8589360",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error89",
+    "revision": "r1",
+    "sha256": "fbe587a0c3f5698604d1fddedd98682e68ec768be69d9416667d8fd70da58640",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error90",
+    "revision": "r1",
+    "sha256": "f0b50c7dc6fc7f66c02a8347d487799eca11a8d4367fb49f0373f4187092c4a3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error91",
+    "revision": "r1",
+    "sha256": "d2784e12389a588bbab8596ac270f4c5d4125c459714e29548ff5782ef15986a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error92",
+    "revision": "r1",
+    "sha256": "5185658dd118074e6b520edbc964325841423adb5019ecc21bcab635a0e30995",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error93",
+    "revision": "r1",
+    "sha256": "94fe8bf1ff5888780a83a27a11afb9b0282d05c8ca11487d4ad9a6b09c67c01c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error94",
+    "revision": "r1",
+    "sha256": "7aaaa869bf42d04680eaf0224aaac82f32ac978ab468fdf96891ba253b183fd6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error95",
+    "revision": "r1",
+    "sha256": "7d4d621d231a8e692b684c35b48c3f0cff00cf6a07d6a64e5942ec48e502e249",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error96",
+    "revision": "r1",
+    "sha256": "81f27b3670dd8bfded98dae379934161f0ebbb4e4e607c75ffe0ecf8ef973ba6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error97",
+    "revision": "r1",
+    "sha256": "28bd2bd1ca0e301c987f6ecf8df8f44702d26e3f3a64203e286e65ba21740058",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error98",
+    "revision": "r1",
+    "sha256": "ed191fefa78f12e2185259dcc4560c5afe0116772b56a4493b47e77d90720d61",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-error99",
+    "revision": "r1",
+    "sha256": "49cebc368c61aecf38e14bba8fbf8d920722ab47edcf8c237b4e0eec4500595d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process01",
+    "revision": "r1",
+    "sha256": "7e0617c48ee81318912d61e4706071fd529ff40120aedf0adca2959a87944b78",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process02",
+    "revision": "r1",
+    "sha256": "d16995857fb41aff34d4da08f0fd0716d245847c560d514abf23108fe0a5740b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process03",
+    "revision": "r1",
+    "sha256": "5872946ff8417f835e1bc32146719c84864e5333a234916d778e24ef17b5a534",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process04",
+    "revision": "r1",
+    "sha256": "cc7d801fa0f94c9cb46aea3e692eaf2e1926d0331d8777345645b5098aa7dd80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process05",
+    "revision": "r1",
+    "sha256": "4eab43e71affec18353db4d8ead085f4d54a1875d2991085be4dcb174d0a6a0e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process06",
+    "revision": "r1",
+    "sha256": "e5c290aa052d354c42ad6b2bd5ba25dad8414e6ff61a65e7ac4a07fe8b8abd36",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process07",
+    "revision": "r1",
+    "sha256": "7b181cc66e24a659c733b35aeb583f1b7abaff9c21857118389a3451b42d65b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process08",
+    "revision": "r1",
+    "sha256": "05d7b6ac5e71a9b732a0e0d817114a40d69f7c4ecc8a34182ee19e95aa47ae42",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process09",
+    "revision": "r1",
+    "sha256": "29dc55ddd52d5b0ef1ea62a7aa1c9d5278194759b0167bee8577e435e6a7c954",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process10",
+    "revision": "r1",
+    "sha256": "d826a0e39b59f27d0218630cfb0251ad62104ee9353497cd572a3d7e514a6560",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process100",
+    "revision": "r1",
+    "sha256": "6ac2f096d15dfe47d5f0f5073f80a813c38fd1afc0cc6339160eb60c44097795",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process11",
+    "revision": "r1",
+    "sha256": "579e3b24582deb6da96b611af8ac5f62f0a7dee8840e92f038cba37ce95be0c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process12",
+    "revision": "r1",
+    "sha256": "798d84bc2732062a3e61bd0416a7ea9c6c20ca431e1877524c06694f75fa6e0b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process13",
+    "revision": "r1",
+    "sha256": "60cc963f19a82e49942d23889a519271cb8a8fda3685ae3f52dfcc0cb9735258",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process14",
+    "revision": "r1",
+    "sha256": "24cf98eb0065538807fd50d7c40d09bb4e6969fda1f3e0c0849bedd038c380b4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process15",
+    "revision": "r1",
+    "sha256": "741a7445789ffe12a296d8a547e5f3548757794b7222b1fe56c179ed64d292a2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process16",
+    "revision": "r1",
+    "sha256": "3b60002be23764107a173bc3f49388ef2f4a592abefd5214617c2584852fdd51",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process17",
+    "revision": "r1",
+    "sha256": "806b4a32c3cc95c2365d94374182133bec04c2197cc4368c0a598ef260480e5e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process18",
+    "revision": "r1",
+    "sha256": "05af43178c894648d55249f367667e8fd70bf74dfbcf8de69a665c6fd0780cf9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process19",
+    "revision": "r1",
+    "sha256": "a0a5df6e8f8c9f6f79b70d4aeef337014c4c8929c627a188a2a9588c9941dcf3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process20",
+    "revision": "r1",
+    "sha256": "1cdb2e420609ca6ab3a4720ad06b6418962912811976e374293bcf9130c1d52d",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process21",
+    "revision": "r1",
+    "sha256": "9d6d8fc943195b7e3f8ac8ed7b1b804def25f8866222d706d7dc4f2bdfd7a62b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process22",
+    "revision": "r1",
+    "sha256": "9dc08c679d8a812f8981b87111ea05edea808d79c7277272f36f39fb2d4863fc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process23",
+    "revision": "r1",
+    "sha256": "b841fa1dc93c51a5a8a3661841738fcd368c85885c4c954b7c4eefe8d56990d3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process24",
+    "revision": "r1",
+    "sha256": "aa28c4c335c5d50210bff6390609dff5531ea2786bf5a5078fe105c371cf59f8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process25",
+    "revision": "r1",
+    "sha256": "494537f139b285698c9a55862ca3fc567daae30794712600890f4310ac03592a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process26",
+    "revision": "r1",
+    "sha256": "623c7152b6f68c14ed76bd9faff840ee7c2ac99cbe630de6c8c75e68e4a2601c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process27",
+    "revision": "r1",
+    "sha256": "878ce117291e82414dc0e258cd175f4fb5bfeb52b761d6d57f8512ea4e9e8e64",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process28",
+    "revision": "r1",
+    "sha256": "732e11fc2f0472efdd66862dd160e4e14bf3654a8ec4e7e6d49534c0c3c991c9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process29",
+    "revision": "r1",
+    "sha256": "e4c6883a53bebff1c3ace858e2c1afe2f1fb524c4608768e6cc993159a42425a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process30",
+    "revision": "r1",
+    "sha256": "c7eb106ad5b6dccff463fbb87e437eaf90a07b0bc085b05adf8b87fe60cba607",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process31",
+    "revision": "r1",
+    "sha256": "b7194b94b490a5c9d6508975103b6f06fb392d8286aae5e040e35df30862a3af",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process32",
+    "revision": "r1",
+    "sha256": "0e81e7640346b7a92d3bed44b883f31fd7a90e47e8299af6ca735253d4cfc5bc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process33",
+    "revision": "r1",
+    "sha256": "a81f54cbbd514392eefd6c104d630765f886abd8fbfeb01131338cc4a5a937c7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process34",
+    "revision": "r1",
+    "sha256": "d9daaf6ce62a39db14734194660c02acf688bfddf2677d7c26dd28c70b8d1eba",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process35",
+    "revision": "r1",
+    "sha256": "e436f0a52b802521f575e4dfc31f20be37faafbf25189f79cf9ca0cab775ba21",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process36",
+    "revision": "r1",
+    "sha256": "8a05bf534d1092700b5397ea88d6178ec0324b415cd23d6ae34df93312744c2c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process37",
+    "revision": "r1",
+    "sha256": "92af22ecfa4bbdb4ab7a8b44c06c3e0383f2670b2ca31845d1952d2279b0e342",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process38",
+    "revision": "r1",
+    "sha256": "0d98cba0a63e3ee3a0b91d5a0498a8f2266be840aad5f08c322cd375f4ba4547",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2wd-process39",
+    "revision": "r1",
+    "sha256": "a04f205fdce20d7a7f246c15e878743e10f985911192a0d70a33bae39e2d8873",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2wd-mission41",
+    "revision": "r1",
+    "sha256": "c7431ccf04d1ee2caaa37c444588adf938a4e6a2d2034a53683e8476f4ed2eb6"
+   },
+   {
+    "missionId": "wp2wd-mission42",
+    "revision": "r1",
+    "sha256": "9f0d2648ce44724eda438b5a1230ed19f8e590c3c888978608fb5a6d6ae76352"
+   },
+   {
+    "missionId": "wp2wd-mission43",
+    "revision": "r1",
+    "sha256": "2d88aa205a3d92e8786cb544f8c598efde7999ff347c068ee60863ad334ce6e5"
+   },
+   {
+    "missionId": "wp2wd-mission44",
+    "revision": "r1",
+    "sha256": "846fa9a20bfdd03dd0a0ac72415b3d186a385246ee48a8ebc13ceced52210aa5"
+   },
+   {
+    "missionId": "wp2wd-mission45",
+    "revision": "r1",
+    "sha256": "923850a93df5be1314c0b499d80958344b15714b98f1bb9865ecc78c0528979d"
+   },
+   {
+    "missionId": "wp2wd-mission46",
+    "revision": "r1",
+    "sha256": "5aa8eb14df518ff697cf01c166f27ff3b833015dc356baff6ce15bad8b9fe149"
+   },
+   {
+    "missionId": "wp2wd-mission47",
+    "revision": "r1",
+    "sha256": "d7e0a3cd95d2bdb959cd8e4fc4cda5eeb9cfced3430a641999f232c3bf3789b4"
+   },
+   {
+    "missionId": "wp2wd-mission48",
+    "revision": "r1",
+    "sha256": "b12272d5f3b9f9d84478d61cc9131096d706b0b19a86a5abbafd1936bea7755f"
+   },
+   {
+    "missionId": "wp2wd-mission49",
+    "revision": "r1",
+    "sha256": "7f4c29db1335057b274aaa7db393b0ec3ef6c7c62b84333d92908369b31cca0e"
+   },
+   {
+    "missionId": "wp2wd-mission50",
+    "revision": "r1",
+    "sha256": "130ffb11f46d74308636fbe3f42c8402f03a72c0b44511c3b3d6e7237f492c6e"
+   },
+   {
+    "missionId": "wp2wd-mission51",
+    "revision": "r1",
+    "sha256": "57bb2343a2ca04eb8e2ba2165d883372fb0955a69491bfe0bd3f9eabb9bbde78"
+   },
+   {
+    "missionId": "wp2wd-mission52",
+    "revision": "r1",
+    "sha256": "3a428d9830ba41232fc8cd479434f8f18a92c2f377261574ce8c2bdee2fa807f"
+   },
+   {
+    "missionId": "wp2wd-mission53",
+    "revision": "r1",
+    "sha256": "92a384e4c4249b79d66ea624556926a07e452cfb96a0215923fcde7a7c146df0"
+   },
+   {
+    "missionId": "wp2wd-mission54",
+    "revision": "r1",
+    "sha256": "2d5e0c7e307c4a30ff92f7656f75ac04cfc2039819e79bb3c7ae4ebf4cc8d45f"
+   },
+   {
+    "missionId": "wp2wd-mission55",
+    "revision": "r1",
+    "sha256": "72e9f95b22fe24fdcfb5fdb8c428d6d92353b62bc06108ab5be62413a4785b31"
+   },
+   {
+    "missionId": "wp2wd-mission56",
+    "revision": "r1",
+    "sha256": "70b8345cec6b47dab4741a4c9de530f967fc0fe520d92a2b10866ec8dafe31af"
+   },
+   {
+    "missionId": "wp2wd-mission57",
+    "revision": "r1",
+    "sha256": "446edc510938916468e80474f3e8eb82a0627541a66883fd2feb1bff347ec2d8"
+   },
+   {
+    "missionId": "wp2wd-mission58",
+    "revision": "r1",
+    "sha256": "efacb65c06b56807693f9e11271ad689426049b1af08a8102c6568690a81a70c"
+   },
+   {
+    "missionId": "wp2wd-mission59",
+    "revision": "r1",
+    "sha256": "870ec34d2fb069978c1ffadfd6f9c5d6b1bcbaa7b76d6ffd699bde96e88fd8d1"
+   },
+   {
+    "missionId": "wp2wd-mission60",
+    "revision": "r1",
+    "sha256": "7c7a81f1ba88ce49a9e0b6f0904ba6c4125a96e3cdeff448613ce261c5724bf7"
+   }
+  ]
+ }
+}

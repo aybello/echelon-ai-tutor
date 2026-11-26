@@ -1,0 +1,2517 @@
+{
+  "generatedAt": "2026-09-11T17:40:03.951Z",
+  "inputCount": 500,
+  "clearedCount": 500,
+  "pathCounts": {
+    "final-remediation-claude-opus-approval": 13,
+    "first-remediation-independent-approval": 22,
+    "initial-independent-approval": 465
+  },
+  "sourceUpgrade": {
+    "identity": "class1-wastewater:2071",
+    "sourceTitle": "CCOHS: Lockout/Tag out",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/lockout.html"
+  },
+  "ledger": [
+    {
+      "identity": "class1-water:2001",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2002",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2003",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2004",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2005",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2006",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2007",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2008",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2009",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2010",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2011",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2012",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2013",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2014",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2015",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2016",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2017",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2018",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2019",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2020",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2021",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2022",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2023",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2024",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2025",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2026",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2027",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2028",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2029",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2030",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2031",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2032",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2033",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2034",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2035",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2036",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2037",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2038",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2039",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2040",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2041",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2042",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2043",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2044",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2045",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2046",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2047",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2048",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2049",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2050",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2051",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2052",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2053",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2054",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2055",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2056",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2057",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2058",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2059",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2060",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2061",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2062",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2063",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2064",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2065",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2066",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2067",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2068",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2069",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2070",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2071",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2072",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2073",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2074",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2075",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2076",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2077",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2078",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2079",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2080",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2081",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2082",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2083",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2084",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2085",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2086",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2087",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2088",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2089",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2090",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2091",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2092",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2093",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2094",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2095",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2096",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2097",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2098",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2099",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2100",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2101",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2102",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2103",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2104",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2105",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2106",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2107",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2108",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2109",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2110",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2111",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2112",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2113",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2114",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2115",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2116",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2117",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2118",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2119",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2120",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2121",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2122",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2123",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2124",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2125",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2126",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2127",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2128",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2129",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2130",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2131",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2132",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2133",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2134",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2135",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2136",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2137",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2138",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2139",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2140",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2141",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2142",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2143",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2144",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2145",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2146",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2147",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2148",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2149",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2150",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2151",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2152",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2153",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2154",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2155",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2156",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2157",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2158",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2159",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2160",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2161",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2162",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2163",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2164",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2165",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2166",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2167",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2168",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2169",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2170",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2171",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2172",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2173",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2174",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2175",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2176",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2177",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2178",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2179",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2180",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2181",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2182",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2183",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2184",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2185",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2186",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2187",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2188",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2189",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2190",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2191",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2192",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2193",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2194",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2195",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2196",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2197",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2198",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2199",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2200",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2201",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2202",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2203",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2204",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2205",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2206",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2207",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2208",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2209",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2210",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2211",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2212",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2213",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2214",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2215",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2216",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2217",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2218",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2219",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2220",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2221",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2222",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2223",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2224",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2225",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2226",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2227",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2228",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2229",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2230",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2231",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2232",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2233",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2234",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2235",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2236",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2237",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2238",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2239",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2240",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2241",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2242",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2243",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2244",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2245",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2246",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2247",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2248",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2249",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-water:2250",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2001",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2002",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2003",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2004",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2005",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2006",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2007",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2008",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2009",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2010",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2011",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2012",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2013",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2014",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2015",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2016",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2017",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2018",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2019",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2020",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2021",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2022",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2023",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2024",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2025",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2026",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2027",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2028",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2029",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2030",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2031",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2032",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2033",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2034",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2035",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2036",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2037",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2038",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2039",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2040",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2041",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2042",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2043",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2044",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2045",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2046",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2047",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2048",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2049",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2050",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2051",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2052",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2053",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2054",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2055",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2056",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2057",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2058",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2059",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2060",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2061",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2062",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2063",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2064",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2065",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2066",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2067",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2068",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2069",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2070",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2071",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2072",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2073",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2074",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2075",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2076",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2077",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2078",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2079",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2080",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2081",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2082",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2083",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2084",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2085",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2086",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2087",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2088",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2089",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2090",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2091",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2092",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2093",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2094",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2095",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2096",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2097",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2098",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2099",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2100",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2101",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2102",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2103",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2104",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2105",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2106",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2107",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2108",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2109",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2110",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2111",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2112",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2113",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2114",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2115",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2116",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2117",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2118",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2119",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2120",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2121",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2122",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2123",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2124",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2125",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2126",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2127",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2128",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2129",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2130",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2131",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2132",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2133",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2134",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2135",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2136",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2137",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2138",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2139",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2140",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2141",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2142",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2143",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2144",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2145",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2146",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2147",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2148",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2149",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2150",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2151",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2152",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2153",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2154",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2155",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2156",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2157",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2158",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2159",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2160",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2161",
+      "path": "final-remediation-claude-opus-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2162",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2163",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2164",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2165",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2166",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2167",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2168",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2169",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2170",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2171",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2172",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2173",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2174",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2175",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2176",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2177",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2178",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2179",
+      "path": "first-remediation-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2180",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2181",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2182",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2183",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2184",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2185",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2186",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2187",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2188",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2189",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2190",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2191",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2192",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2193",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2194",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2195",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2196",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2197",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2198",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2199",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2200",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2201",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2202",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2203",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2204",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2205",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2206",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2207",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2208",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2209",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2210",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2211",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2212",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2213",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2214",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2215",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2216",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2217",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2218",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2219",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2220",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2221",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2222",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2223",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2224",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2225",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2226",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2227",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2228",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2229",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2230",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2231",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2232",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2233",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2234",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2235",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2236",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2237",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2238",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2239",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2240",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2241",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2242",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2243",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2244",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2245",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2246",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2247",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2248",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2249",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    },
+    {
+      "identity": "class1-wastewater:2250",
+      "path": "initial-independent-approval",
+      "finalDisposition": "cleared"
+    }
+  ]
+}

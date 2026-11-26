@@ -1,0 +1,993 @@
+/**
+ * Dashboard Router — Student performance analytics
+ * Supports two auth paths:
+ *   1. Manus OAuth (ctx.user.id) — existing flow for users with Manus accounts
+ *   2. Email OTP session (echelon_dashboard_session cookie) — for email-only students
+ *
+ * All procedures use resolveDashboardIdentity() to get the right WHERE clause.
+ */
+import { publicProcedure, router } from "../_core/trpc";
+import { getDb } from "../db";
+import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
+import { readPracticeReviewCounts } from "../practiceReviewEligibility";
+import { READINESS_MODEL_VERSION } from "../_core/readiness";
+import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes, examResults } from "../../drizzle/schema";
+import { and, eq, sql, desc, gte, or, isNull } from "drizzle-orm";
+import { getResourcesForProfile } from "../resourceIndex";
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
+import { resolveEntitlementsByEmail } from "../_core/access";
+import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
+import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
+import { learnerVisibleQuestionFilter } from "../questionGovernance";
+import { calculateReadinessSnapshot } from "../readinessSnapshot";
+import { attemptCourseFilter, examCourseFilter } from "../courseActivityScope";
+import { assertAccess } from "../_core/accessService";
+import { gatherNextStepInput } from "../nextStepData";
+import { suggestNextStep, type NextStepInput } from "../../shared/nextStep";
+
+/**
+ * Resolves the dashboard identity from the tRPC context.
+ *
+ * Issue I fix: this is now a thin wrapper around ctx.user and ctx.studentEmail,
+ * which are already verified and normalized by server/_core/context.ts.
+ * There is no longer a second, independent cookie-verification path here.
+ *
+ * Issue J fix: ctx.studentEmail is already lowercased in context.ts, so email
+ * case mismatches between sign-up and dashboard queries are eliminated.
+ *
+ * Returns { userId, email } — at least one will be non-null.
+ * Throws UNAUTHORIZED if neither is present.
+ */
+function resolveDashboardIdentity(ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null }) {
+  // 1. OAuth user (admin / owner)
+  if (ctx.user) {
+    return { userId: ctx.user.id, email: ctx.user.email ?? null };
+  }
+
+  // 2. OTP session — already verified + normalized (lowercased) by context.ts
+  if (ctx.studentEmail) {
+    return { userId: null, email: ctx.studentEmail };
+  }
+
+  throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in to view your dashboard." });
+}
+
+/**
+ * Builds a Drizzle WHERE condition that matches attempts by userId OR studentEmail.
+ * This ensures data is found regardless of which auth path was used when logging.
+ */
+function attemptsWhere(userId: number | null, email: string | null) {
+  if (userId && email) {
+    return or(
+      eq(questionAttempts.userId, userId),
+      eq(questionAttempts.studentEmail, email),
+    );
+  }
+  if (userId) return eq(questionAttempts.userId, userId);
+  if (email) return eq(questionAttempts.studentEmail, email!);
+  throw new Error("No identity");
+}
+
+export const dashboardRouter = router({
+  /** The reserved organization id for an outcome entered by the learner. */
+  reportExamOutcome: publicProcedure
+    .input(z.object({
+      courseKey: z.string().min(1).max(64),
+      result: z.enum(["passed", "failed"]),
+      examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      if (!email) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "A verified email is required to report an exam outcome." });
+      }
+      const course = resolveCourseKey(input.courseKey);
+      if (!course?.isActive) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
+      }
+      const examDate = new Date(`${input.examDate}T12:00:00.000Z`);
+      if (examDate.getTime() > Date.now() + 24 * 60 * 60 * 1000) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "The official exam date cannot be in the future." });
+      }
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const memberEmail = email.trim().toLowerCase();
+      const readiness = await calculateReadinessSnapshot(db, {
+        userId,
+        email: memberEmail,
+        examType: course.questionBankKey,
+      });
+      const [existing] = await db
+        .select({ id: examOutcomes.id })
+        .from(examOutcomes)
+        .where(and(
+          eq(examOutcomes.orgId, 0),
+          eq(examOutcomes.memberEmail, memberEmail),
+          eq(examOutcomes.courseKey, course.courseKey),
+        ))
+        .orderBy(desc(examOutcomes.recordedAt))
+        .limit(1);
+      const values = {
+        result: input.result,
+        examDate,
+        readinessScoreAtOutcome: readiness.hasData ? readiness.score : null,
+        readinessModelVersion: readiness.hasData ? READINESS_MODEL_VERSION : null,
+        recordedAt: new Date(),
+      };
+      if (existing) {
+        await db.update(examOutcomes).set(values).where(eq(examOutcomes.id, existing.id));
+      } else {
+        await db.insert(examOutcomes).values({
+          orgId: 0,
+          memberEmail,
+          courseKey: course.courseKey,
+          recordedBy: "learner-self-report",
+          ...values,
+        });
+      }
+      return { success: true, courseKey: course.courseKey };
+    }),
+
+  myExamOutcome: publicProcedure
+    .input(z.object({ courseKey: z.string().min(1).max(64) }))
+    .query(async ({ ctx, input }) => {
+      const { email } = resolveDashboardIdentity(ctx);
+      if (!email) return null;
+      const course = resolveCourseKey(input.courseKey);
+      if (!course?.isActive) return null;
+      const db = await getDb();
+      if (!db) return null;
+      const [outcome] = await db
+        .select({
+          result: examOutcomes.result,
+          examDate: examOutcomes.examDate,
+          readinessScoreAtOutcome: examOutcomes.readinessScoreAtOutcome,
+          recordedAt: examOutcomes.recordedAt,
+        })
+        .from(examOutcomes)
+        .where(and(
+          eq(examOutcomes.orgId, 0),
+          eq(examOutcomes.memberEmail, email.trim().toLowerCase()),
+          eq(examOutcomes.courseKey, course.courseKey),
+        ))
+        .orderBy(desc(examOutcomes.recordedAt))
+        .limit(1);
+      return outcome ?? null;
+    }),
+
+  /**
+   * Overview stats — hero numbers for the dashboard
+   */
+  overview: publicProcedure
+    .input(z.object({ courseKey: z.string().optional() }).optional())
+    .query(async ({ ctx, input }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return null;
+
+    const profile = input?.courseKey
+      ? await readCourseLearnerProfile(db, { userId, email }, input.courseKey)
+      : null;
+    const overallActivity = await readOverallLearnerActivity(db, { userId, email });
+
+    // Get overall accuracy from attempts (works for both paths)
+    const [accuracyRow] = await db
+      .select({
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(input?.courseKey ? and(attemptsWhere(userId, email), attemptCourseFilter(input.courseKey)) : attemptsWhere(userId, email));
+
+    const total = Number(accuracyRow?.total ?? 0);
+    const correct = Number(accuracyRow?.correct ?? 0);
+
+    return {
+      totalAttempts: total,
+      overallAccuracy: total > 0 ? Math.round((correct / total) * 100) : 0,
+      currentStreak: overallActivity.currentStreak,
+      longestStreak: overallActivity.longestStreak,
+      totalSessions: profile?.totalSessions ?? overallActivity.totalSessions,
+    };
+  }),
+
+  /**
+   * Daily activity — question count per day for the last 30 days
+   */
+  dailyActivity: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return [];
+
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+    // Use Drizzle ORM for parameterized query (no sql.raw)
+    const identityWhere = attemptsWhere(userId, email);
+
+    const result = await db.execute(sql`
+      SELECT DATE_FORMAT(createdAt, '%Y-%m-%d') AS day, COUNT(*) AS total,
+             SUM(CASE WHEN correct = 'yes' THEN 1 ELSE 0 END) AS correct
+      FROM question_attempts
+      WHERE ${identityWhere}
+        AND createdAt >= ${thirtyDaysAgo}
+      GROUP BY DATE_FORMAT(createdAt, '%Y-%m-%d')
+      ORDER BY day
+    `);
+    const rows = (result as any)[0] as Array<{ day: string; total: number; correct: number }>;
+
+    return rows.map((r) => ({
+      day: String(r.day),
+      total: Number(r.total),
+      correct: Number(r.correct),
+    }));
+  }),
+
+  /**
+   * Topic accuracy breakdown — per-topic correct/total
+   */
+  topicAccuracy: publicProcedure.input(z.object({ courseKey: z.string().optional() }).optional()).query(async ({ ctx, input }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return { topics: [], weakTopics: [], strongTopics: [] };
+
+    // For email-only users, compute from raw attempts
+    const rows = await db
+      .select({
+        topic: questionAttempts.topic,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(and(attemptsWhere(userId, email), input?.courseKey ? attemptCourseFilter(input.courseKey) : undefined))
+      .groupBy(questionAttempts.topic)
+      .orderBy(desc(sql`COUNT(*)`));
+
+    const topics = rows.map((r) => {
+      const t = Number(r.total);
+      const c = Number(r.correct);
+      const acc = t > 0 ? Math.round((c / t) * 100) : 0;
+      return {
+        name: r.topic,
+        correct: c,
+        total: t,
+        accuracy: acc,
+        status: acc < 65 ? ("weak" as const) : acc >= 80 ? ("strong" as const) : ("neutral" as const),
+      };
+    });
+
+    const weakTopics = topics.filter((t) => t.status === "weak").map((t) => t.name);
+    const strongTopics = topics.filter((t) => t.status === "strong").map((t) => t.name);
+
+    return { topics, weakTopics, strongTopics };
+  }),
+
+  /**
+   * Per-course breakdown — accuracy and count by examType
+   */
+  courseBreakdown: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return [];
+
+    const rows = await db
+      .select({
+        examType: questionAttempts.examType,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(attemptsWhere(userId, email))
+      .groupBy(questionAttempts.examType)
+      .orderBy(desc(sql`COUNT(*)`));
+
+    return rows.map((r) => ({
+      examType: r.examType,
+      total: Number(r.total),
+      correct: Number(r.correct),
+      accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0,
+    }));
+  }),
+
+  /**
+   * Difficulty breakdown — easy/medium/hard accuracy
+   */
+  difficultyBreakdown: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return [];
+
+    const rows = await db
+      .select({
+        difficulty: questionAttempts.difficulty,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(attemptsWhere(userId, email))
+      .groupBy(questionAttempts.difficulty);
+
+    return rows.map((r) => ({
+      difficulty: r.difficulty ?? "unknown",
+      total: Number(r.total),
+      correct: Number(r.correct),
+      accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0,
+    }));
+  }),
+
+  /**
+   * Recent sessions — last 10 quiz sessions
+   *
+   * Issue Q: rewritten to use GROUP BY sessionId for rows that have a sessionId
+   * (all new rows). Legacy rows (sessionId IS NULL) fall back to the original
+   * 30-minute gap clustering so old data still renders correctly.
+   */
+  recentSessions: publicProcedure.input(z.object({ courseKey: z.string().optional() }).optional()).query(async ({ ctx, input }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return [];
+
+    // ── Path 1: new rows with sessionId ───────────────────────────────────────────────────────────────────────
+    const groupedRows = await db
+      .select({
+        sessionId: questionAttempts.sessionId,
+        examType: questionAttempts.examType,
+        quizMode: questionAttempts.quizMode,
+        startedAt: sql<Date>`MIN(${questionAttempts.createdAt})`,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(and(attemptsWhere(userId, email), input?.courseKey ? attemptCourseFilter(input.courseKey) : undefined, sql`${questionAttempts.sessionId} IS NOT NULL`))
+      .groupBy(questionAttempts.sessionId, questionAttempts.examType, questionAttempts.quizMode)
+      .orderBy(desc(sql`MIN(${questionAttempts.createdAt})`))
+      .limit(10);
+
+    const sessionedResults = groupedRows.map((r) => ({
+      examType: r.examType,
+      quizMode: r.quizMode ?? null,
+      startedAt: new Date(r.startedAt).toISOString(),
+      total: Number(r.total),
+      correct: Number(r.correct),
+      accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0,
+    }));
+
+    // If we already have 10 sessioned results, return them immediately
+    if (sessionedResults.length >= 10) return sessionedResults;
+
+    // ── Path 2: legacy rows (sessionId IS NULL) — 30-minute gap clustering fallback ───────────────────
+    const legacyRows = await db
+      .select({
+        examType: questionAttempts.examType,
+        correct: questionAttempts.correct,
+        createdAt: questionAttempts.createdAt,
+        quizMode: questionAttempts.quizMode,
+      })
+      .from(questionAttempts)
+      .where(and(attemptsWhere(userId, email), input?.courseKey ? attemptCourseFilter(input.courseKey) : undefined, sql`${questionAttempts.sessionId} IS NULL`))
+      .orderBy(desc(questionAttempts.createdAt))
+      .limit(200);
+
+    const legacySessions: Array<{
+      examType: string;
+      quizMode: string | null;
+      startedAt: string;
+      total: number;
+      correct: number;
+      accuracy: number;
+    }> = [];
+
+    let currentSession: {
+      examType: string;
+      quizMode: string | null;
+      startedAt: Date;
+      lastAt: Date;
+      total: number;
+      correct: number;
+    } | null = null;
+
+    const sorted = [...legacyRows].reverse();
+    for (const row of sorted) {
+      const ts = new Date(row.createdAt);
+      const isCorrect = row.correct === "yes";
+
+      if (
+        currentSession &&
+        currentSession.examType === row.examType &&
+        ts.getTime() - currentSession.lastAt.getTime() < 30 * 60 * 1000
+      ) {
+        currentSession.total++;
+        if (isCorrect) currentSession.correct++;
+        currentSession.lastAt = ts;
+      } else {
+        if (currentSession) {
+          legacySessions.push({
+            examType: currentSession.examType,
+            quizMode: currentSession.quizMode,
+            startedAt: currentSession.startedAt.toISOString(),
+            total: currentSession.total,
+            correct: currentSession.correct,
+            accuracy: Math.round((currentSession.correct / currentSession.total) * 100),
+          });
+        }
+        currentSession = {
+          examType: row.examType,
+          quizMode: row.quizMode,
+          startedAt: ts,
+          lastAt: ts,
+          total: 1,
+          correct: isCorrect ? 1 : 0,
+        };
+      }
+    }
+    if (currentSession) {
+      legacySessions.push({
+        examType: currentSession.examType,
+        quizMode: currentSession.quizMode,
+        startedAt: currentSession.startedAt.toISOString(),
+        total: currentSession.total,
+        correct: currentSession.correct,
+        accuracy: Math.round((currentSession.correct / currentSession.total) * 100),
+      });
+    }
+
+    // Merge: sessioned first (most recent), then legacy, capped at 10
+    const remaining = 10 - sessionedResults.length;
+    const legacySlice = legacySessions.reverse().slice(0, remaining);
+    return [...sessionedResults, ...legacySlice];
+  }),
+
+  /**
+   * Saved tutor history for the current verified identity, never an account/email union.
+   */
+  aiSessionHistory: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) {
+      throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Saved tutor history is temporarily unavailable. Please retry." });
+    }
+    // Account sign-ins read only their account rows. Without an account, email
+    // comes exclusively from ctx.studentEmail (verified by server context).
+    const identityWhere = userId !== null
+      ? eq(aiChatSessions.userId, userId)
+      : and(isNull(aiChatSessions.userId), eq(aiChatSessions.studentEmail, email!));
+
+    const rows = await db
+      .select({
+        id: aiChatSessions.id,
+        examType: aiChatSessions.examType,
+        sessionStart: aiChatSessions.sessionStart,
+        messageCount: aiChatSessions.messageCount,
+        topicsCovered: aiChatSessions.topicsCovered,
+        summary: aiChatSessions.summary,
+      })
+      .from(aiChatSessions)
+      .where(identityWhere)
+      .orderBy(desc(aiChatSessions.sessionStart), desc(aiChatSessions.id))
+      .limit(10);
+
+    return rows.map((r) => ({
+      id: r.id,
+      examType: r.examType ?? "general",
+      sessionStart: r.sessionStart ? new Date(r.sessionStart).toISOString() : null,
+      messageCount: r.messageCount ?? 0,
+      topicsCovered: r.topicsCovered ?? "",
+      summary: r.summary ?? "No summary available",
+    }));
+  }),
+
+  /**
+   * Recommended Resources — personalized study materials
+   */
+  recommendedResources: publicProcedure.input(z.object({ courseKey: z.string().optional() }).optional()).query(async ({ ctx, input }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return [];
+
+    let weakTopics: string[] = [];
+    let examType = input?.courseKey ?? "oit";
+    // Resolve current primary study focus (avoids stale stored examType — same pattern as triggerEngine)
+    if (!input?.courseKey) try {
+      const entitlements = await resolveEntitlementsByEmail(email ?? "");
+      if (entitlements.unlockedExamTypes.length > 0) {
+        const focus = await resolvePrimaryStudyFocus({
+          email: email ?? null,
+          unlockedExamTypes: entitlements.unlockedExamTypes,
+        });
+        if (focus.examType) examType = focus.examType;
+      } else {
+        // No entitlements — fall back to most-practiced exam type from attempts
+        const [examRow] = await db
+          .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
+          .from(questionAttempts)
+          .where(attemptsWhere(userId, email))
+          .groupBy(questionAttempts.examType)
+          .orderBy(desc(sql`COUNT(*)`));
+        examType = examRow?.examType ?? "oit";
+      }
+    } catch {
+      // fail open — fall back to most-practiced exam type from attempts
+      const [examRow] = await db
+        .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
+        .from(questionAttempts)
+        .where(attemptsWhere(userId, email))
+        .groupBy(questionAttempts.examType)
+        .orderBy(desc(sql`COUNT(*)`));
+      examType = examRow?.examType ?? "oit";
+    }
+
+    const profile = await readCourseLearnerProfile(db, { userId, email }, examType);
+    weakTopics = profile.weakTopics;
+
+    const resources = getResourcesForProfile(
+      { examType, weakTopics, strongTopics: [] },
+      6
+    );
+
+    return resources.slice(0, 6).map((r) => ({
+      title: r.title,
+      url: r.url,
+      type: r.type,
+      topics: r.topics,
+      description: r.description,
+      reason: r.reason,
+    }));
+  }),
+
+  /**
+   * Exam Countdown — days until the next exam
+   */
+  examCountdown: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return null;
+
+    // Resolve the email to look up exam dates
+    let lookupEmail = email;
+    if (!lookupEmail && userId) {
+      // For OAuth users, get email from user record
+      const { users } = await import("../../drizzle/schema");
+      const userRows = await db.select({ email: users.email }).from(users).where(eq(users.id, userId)).limit(1);
+      lookupEmail = userRows[0]?.email ?? null;
+    }
+    if (!lookupEmail) return null;
+
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const exams = await db
+      .select()
+      .from(examDates)
+      .where(
+        and(
+          eq(examDates.email, lookupEmail),
+          gte(examDates.examDate, todayStart)
+        )
+      )
+      .orderBy(examDates.examDate)
+      .limit(1);
+
+    if (!exams.length) return null;
+
+    const exam = exams[0];
+    // Parse as calendar date (local midnight) to match client-side parseExamDate helper.
+    // Avoids UTC-midnight-to-local-evening drift for Canadian users.
+    const rawDate = exam.examDate instanceof Date ? exam.examDate.toISOString() : String(exam.examDate);
+    const [ey, em, ed] = rawDate.slice(0, 10).split("-").map(Number);
+    const examDate = new Date(ey, em - 1, ed); // local midnight on the intended calendar day
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const daysUntil = Math.ceil((examDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    const [paceRow] = await db
+      .select({ total: sql<number>`COUNT(*)` })
+      .from(questionAttempts)
+      .where(
+        and(
+          attemptsWhere(userId, email),
+          gte(questionAttempts.createdAt, sevenDaysAgo)
+        )
+      );
+
+    const questionsLast7Days = Number(paceRow?.total ?? 0);
+    const avgPerDay = Math.round(questionsLast7Days / 7);
+
+    let paceStatus: "on_track" | "needs_more" | "falling_behind" = "on_track";
+    if (daysUntil <= 7 && avgPerDay < 10) paceStatus = "falling_behind";
+    else if (daysUntil <= 14 && avgPerDay < 5) paceStatus = "needs_more";
+    else if (avgPerDay < 3) paceStatus = "needs_more";
+
+    return {
+      examName: exam.productKey ?? "Upcoming Exam",
+      examDate: examDate.toISOString(),
+      daysUntil,
+      avgQuestionsPerDay: avgPerDay,
+      questionsLast7Days,
+      paceStatus,
+    };
+  }),
+
+  /**
+   * Exam Readiness Score — weighted composite score per examType.
+   *
+   * Weights: 30% recent accuracy | 25% mock accuracy | 20% topic coverage
+   *          15% study frequency | 10% recency bonus
+   */
+  readinessScore: publicProcedure
+    .input(z.object({ examType: z.string().optional() }).optional())
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return null;
+
+      // Default to Primary Study Focus when no explicit examType is provided.
+      // This keeps readinessScore and studyPlan scoped to the same course.
+      let examTypeFilter = input?.examType ?? null;
+      if (!examTypeFilter && email) {
+        const entitlements = await resolveEntitlementsByEmail(email);
+        const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes: entitlements.unlockedExamTypes });
+        examTypeFilter = focus.examType;
+      }
+      if (!examTypeFilter) return null;
+      const readinessResult = await calculateReadinessSnapshot(db, {
+        userId,
+        email,
+        examType: examTypeFilter,
+      });
+
+      return {
+        score: readinessResult.score,
+        level: readinessResult.level,
+        label: readinessResult.label,
+        description: readinessResult.description,
+        nextAction: readinessResult.nextAction,
+        isEstimate: true,
+        calibrationNote: "Echelon study estimate only; it is not an official exam-pass prediction.",
+        breakdown: readinessResult.breakdown,
+        hasData: readinessResult.hasData,
+      };
+    }),
+
+  /**
+   * Study Plan — personalized recommendation engine.
+   * Defaults to the student's Primary Study Focus exam type when no examType is provided.
+   */
+  studyPlan: publicProcedure
+    .input(z.object({ examType: z.string().optional() }).optional())
+    .query(async ({ ctx, input }) => {
+    const { userId, email } = resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return null;
+
+    // Resolve primary focus if no explicit examType is provided
+    let examTypeFilter: string | null = input?.examType ?? null;
+    if (!examTypeFilter && email) {
+      const entitlements = await resolveEntitlementsByEmail(email);
+      const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes: entitlements.unlockedExamTypes });
+      examTypeFilter = focus.examType;
+    }
+
+    const focusedCourse = examTypeFilter ? resolveCourseKey(examTypeFilter) : undefined;
+    if (examTypeFilter && !focusedCourse) {
+      throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown study course." });
+    }
+    const focusedCourseKey = focusedCourse?.courseKey ?? null;
+    let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
+    let weakTopics: string[] = [];
+
+    // Keep course history separated even where older rows use a bank key or legacy Class 1 stream.
+    const identityWhere = attemptsWhere(userId, email);
+    const focusedAttemptWhere = focusedCourseKey ? attemptCourseFilter(focusedCourseKey) : undefined;
+    const rows = await db.select({
+      topic: questionAttempts.topic, total: sql<number>`COUNT(*)`,
+      correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+    }).from(questionAttempts).where(and(identityWhere, focusedAttemptWhere)).groupBy(questionAttempts.topic);
+    for (const row of rows) {
+      topicAccuracyMap[row.topic] = { correct: Number(row.correct), total: Number(row.total) };
+      if (Number(row.total) >= 5 && Number(row.correct) / Number(row.total) < 0.65) weakTopics.push(row.topic);
+    }
+
+    // The focused plan and the practice destination share exact eligibility.
+    // Without a resolved course there is no unambiguous review destination.
+    const { totalMissed, totalLowConf } = focusedCourseKey
+      ? await readPracticeReviewCounts(db, { userId, email }, focusedCourseKey)
+      : { totalMissed: 0, totalLowConf: 0 };
+    // Count bookmarks scoped to the current focus exam type (via bankKey prefix)
+    const bmIdentityWhere = userId
+      ? eq(bookmarks.userId, userId)
+      : eq(bookmarks.studentEmail, email!);
+    const bmWhere = focusedCourse
+      ? and(bmIdentityWhere, eq(bookmarks.bankKey, focusedCourse.questionBankKey))
+      : bmIdentityWhere;
+    const [bookmarkRow] = await db
+      .select({ count: sql<number>`COUNT(*)` })
+      .from(bookmarks)
+      .where(bmWhere);
+    const totalBookmarked = Number(bookmarkRow?.count ?? 0);
+
+    const totalAttempts = Object.values(topicAccuracyMap).reduce((s, t) => s + t.total, 0);
+
+    // Missing course context must never redirect another course's work to OIT.
+    const quizBase = focusedCourse?.quizPath ?? "/account";
+    const mockBase = focusedCourse?.mockExamPath ?? "/account";
+    const resultIdentityWhere = userId && email
+      ? or(eq(examResults.userId, userId), eq(examResults.studentEmail, email))
+      : userId ? eq(examResults.userId, userId) : eq(examResults.studentEmail, email!);
+    const [latestMock] = await db.select({
+      score: examResults.score,
+      total: examResults.total,
+      createdAt: examResults.createdAt,
+    }).from(examResults).where(and(
+      resultIdentityWhere,
+      focusedCourseKey ? examCourseFilter(focusedCourseKey) : undefined,
+      eq(examResults.calcOnly, "no"),
+    )).orderBy(desc(examResults.createdAt)).limit(1);
+
+    type RecType = "weak_topic" | "missed_review" | "low_confidence" | "bookmarked" | "mock_exam" | "start_practicing";
+    const recommendations: Array<{ type: RecType; title: string; description: string; action: string; actionHref: string; priority: number }> = [];
+
+    if (totalAttempts === 0) {
+      const activationPath = focusedCourseKey ? `/activate/${focusedCourseKey}` : quizBase;
+      recommendations.push({ type: "start_practicing", title: "Start with your diagnostic", description: "Set a baseline first, then Echelon can direct your next study block.", action: "Set my baseline", actionHref: activationPath, priority: 1 });
+    } else {
+      const weakWithData = weakTopics
+        .map((t) => ({ topic: t, ...(topicAccuracyMap[t] ?? { correct: 0, total: 0 }) }))
+        .filter((t) => t.total >= 5)
+        .sort((a, b) => (a.correct / a.total) - (b.correct / b.total))
+        .slice(0, 3);
+
+      for (const weak of weakWithData) {
+        const acc = Math.round((weak.correct / weak.total) * 100);
+        const topicParam = encodeURIComponent(weak.topic);
+        recommendations.push({ type: "weak_topic", title: `Practice: ${weak.topic}`, description: `Your accuracy on ${weak.topic} is ${acc}%. Focus here to improve your score.`, action: "Practice this topic", actionHref: `${quizBase}?topic=${topicParam}`, priority: 2 });
+      }
+      if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 3 });
+      if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", actionHref: `${quizBase}?mode=low-confidence`, priority: 4 });
+      if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", actionHref: `${quizBase}?mode=bookmarked`, priority: 5 });
+      if (totalAttempts >= 50 && weakWithData.length === 0 && !latestMock) recommendations.push({ type: "mock_exam", title: "Validate with a Mock Exam", description: "You have enough practice data. Use a full mock to check how your study plan is working.", action: "Start mock exam", actionHref: mockBase, priority: 6 });
+      if (latestMock && totalMissed > 0) {
+        const score = Math.round((latestMock.score / latestMock.total) * 100);
+        recommendations.push({ type: "missed_review", title: "Turn your mock into the next study block", description: `Your latest mock was ${score}%. Review the missed areas, then retest after focused practice.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 1 });
+      }
+    }
+
+    recommendations.sort((a, b) => a.priority - b.priority);
+    return {
+      recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked,
+      hasData: totalAttempts > 0, examType: focusedCourseKey ?? examTypeFilter,
+      latestMock: latestMock ? { score: latestMock.score, total: latestMock.total, createdAt: latestMock.createdAt } : null,
+    };
+  }),
+
+  /**
+   * Missed questions — most recent incorrect attempts
+   */
+  missedQuestions: publicProcedure
+    .input(z.object({ examType: z.string().optional(), limit: z.number().min(1).max(100).default(20) }))
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return [];
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      return db
+        .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
+        .from(questionAttempts)
+        .where(and(identityWhere, eq(questionAttempts.correct, "no"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
+        .orderBy(desc(questionAttempts.createdAt))
+        .limit(input.limit);
+    }),
+
+  /**
+   * Low-confidence questions — questions the student has marked with confidence = "low".
+   * Distinct from missed questions (incorrect answers).
+   */
+  lowConfidenceQuestions: publicProcedure
+    .input(z.object({ examType: z.string().optional(), limit: z.number().min(1).max(100).default(20) }))
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return [];
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      return db
+        .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
+        .from(questionAttempts)
+        .where(and(identityWhere, eq(questionAttempts.confidence, "low"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
+        .orderBy(desc(questionAttempts.createdAt))
+        .limit(input.limit);
+    }),
+
+  /**
+   * Bookmarked questions
+   */
+  bookmarkedQuestions: publicProcedure
+    .input(z.object({ examType: z.string().optional() }))
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Bookmarks are temporarily unavailable. Please retry." });
+      }
+      // FIX 5: Query from the new bookmarks table (per-user+question, not per-attempt)
+      const bmIdentityWhere = userId
+        ? eq(bookmarks.userId, userId)
+        : eq(bookmarks.studentEmail, email!);
+      // Join bookmarks -> questions to get examType, topic, difficulty
+      const rows = await db
+        .select({
+          bookmarkId: bookmarks.id,
+          questionId: bookmarks.questionId,
+          bankKey: bookmarks.bankKey,
+          createdAt: bookmarks.createdAt,
+          topic: questions.topic,
+          difficulty: questions.difficulty,
+        })
+        .from(bookmarks)
+        .leftJoin(questions, and(eq(questions.bankKey, bookmarks.bankKey), eq(questions.questionNum, bookmarks.questionId)))
+        .where(and(
+          bmIdentityWhere,
+          input.examType ? eq(bookmarks.bankKey, input.examType) : undefined,
+          learnerVisibleQuestionFilter(),
+        ))
+        .orderBy(desc(bookmarks.createdAt));
+      return rows.map(r => ({
+        id: r.bookmarkId,
+        questionId: r.questionId,
+        examType: r.bankKey,
+        topic: r.topic ?? "",
+        difficulty: r.difficulty ?? null,
+        confidence: null,
+        createdAt: r.createdAt,
+      }));
+    }),
+
+  /**
+   * Set confidence on a question attempt
+   */
+  setConfidence: publicProcedure
+    .input(z.object({ attemptId: z.number(), confidence: z.enum(["low", "medium", "high"]) }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return { ok: false };
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      await db.update(questionAttempts).set({ confidence: input.confidence }).where(and(eq(questionAttempts.id, input.attemptId), identityWhere));
+      return { ok: true };
+    }),
+
+  /**
+   * FIX 5: Toggle bookmark on a question.
+   * Uses the new per-user+question bookmarks table so bookmark state persists across
+   * multiple attempts of the same question.
+   * Accepts bankKey + questionId (preferred) or attemptId (legacy — resolves to bankKey+questionId).
+   */
+  toggleBookmark: publicProcedure
+    .input(z.object({
+      bankKey: z.string().optional(),
+      questionId: z.number().optional(),
+      attemptId: z.number().optional(), // legacy: resolve to bankKey+questionId via questionAttempts
+      bookmarked: z.boolean().optional(), // if provided, force to this value instead of toggling
+    }).refine(d => (d.bankKey != null && d.questionId != null) || d.attemptId != null, { message: "Provide bankKey+questionId or attemptId" }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return { ok: false, bookmarked: false };
+      if (!userId && !email) return { ok: false, bookmarked: false };
+
+      let bankKey = input.bankKey;
+      let questionId = input.questionId;
+
+      // Legacy path: resolve attemptId to bankKey+questionId
+      if (input.attemptId != null && (bankKey == null || questionId == null)) {
+        const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+        const rows = await db.select({ examType: questionAttempts.examType, questionId: questionAttempts.questionId })
+          .from(questionAttempts)
+          .where(and(eq(questionAttempts.id, input.attemptId), identityWhere))
+          .limit(1);
+        if (!rows.length) return { ok: false, bookmarked: false };
+        bankKey = rows[0].examType;
+        questionId = rows[0].questionId;
+      }
+
+      if (!bankKey || questionId == null) return { ok: false, bookmarked: false };
+
+      const bmIdentityWhere = userId
+        ? eq(bookmarks.userId, userId)
+        : eq(bookmarks.studentEmail, email!);
+
+      // Check current bookmark state
+      const existing = await db.select({ id: bookmarks.id })
+        .from(bookmarks)
+        .where(and(bmIdentityWhere, eq(bookmarks.bankKey, bankKey), eq(bookmarks.questionId, questionId)))
+        .limit(1);
+
+      const isCurrentlyBookmarked = existing.length > 0;
+      const shouldBookmark = input.bookmarked != null ? input.bookmarked : !isCurrentlyBookmarked;
+
+      if (shouldBookmark && !isCurrentlyBookmarked) {
+        // Insert new bookmark
+        await db.insert(bookmarks).values({
+          userId: userId ?? null,
+          studentEmail: userId ? null : (email ?? null),
+          bankKey,
+          questionId,
+        });
+      } else if (!shouldBookmark && isCurrentlyBookmarked) {
+        // Delete existing bookmark
+        await db.delete(bookmarks)
+          .where(and(bmIdentityWhere, eq(bookmarks.bankKey, bankKey), eq(bookmarks.questionId, questionId)));
+      }
+
+      return { ok: true, bookmarked: shouldBookmark };
+    }),
+
+  /**
+   * Primary Study Focus
+   *
+   * Determines the single most relevant course for this student's current session.
+   * Priority: upcoming exam date > recent activity > first unlocked course.
+   * Returns course metadata (quizPath, mockExamPath, etc.) so the dashboard
+   * can build course-specific links without hardcoding routes.
+   */
+  studyFocus: publicProcedure.query(async ({ ctx }) => {
+    // Use a soft identity resolution — return null focus for anonymous users
+    // rather than throwing, so the dashboard can show a generic state.
+    let email: string | null = null;
+    if (ctx.user) {
+      email = ctx.user.email ?? null;
+    } else if (ctx.studentEmail) {
+      email = ctx.studentEmail;
+    }
+
+    // Resolve live entitlements to get the list of unlocked exam types
+    const entitlements = email ? await resolveEntitlementsByEmail(email) : null;
+    const unlockedExamTypes = entitlements?.unlockedExamTypes ?? [];
+
+    const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes });
+
+    const course = focus.courseKey ? getCourseByKey(focus.courseKey) : null;
+
+    return {
+      courseKey: focus.courseKey,
+      examType: focus.examType,
+      source: focus.source,
+      label: course?.displayName ?? focus.courseKey ?? null,
+      shortName: course?.shortName ?? focus.courseKey ?? null,
+      quizPath: course?.quizPath ?? "/account",
+      mockExamPath: course?.mockExamPath ?? "/account",
+      flashcardPath: course?.flashcardPath ?? null,
+      formulaPath: course?.formulaPath ?? null,
+    };
+  }),
+
+  /**
+   * The one "What next" suggestion shown after a quiz, Quick 10 or mock exam.
+   * Needs a verified learner and access to the course. The rules live in shared/nextStep.ts.
+   */
+  nextStep: publicProcedure
+    .input(z.object({
+      courseKey: z.string().min(1).max(64).optional(),
+      /** The browser's Date.getTimezoneOffset(), so "today" is the learner's own day. */
+      timezoneOffsetMinutes: z.number().int().min(-840).max(840).default(0),
+      accessToken: z.string().max(8192).optional(),
+    }).optional())
+    .query(async ({ ctx, input }) => {
+      const identity = resolveDashboardIdentity(ctx);
+      const entitlements = identity.email ? await resolveEntitlementsByEmail(identity.email) : null;
+      const requested = input?.courseKey
+        ?? (await resolvePrimaryStudyFocus({ email: identity.email, unlockedExamTypes: entitlements?.unlockedExamTypes ?? [] })).courseKey;
+      const course = requested ? resolveCourseKey(requested) : null;
+      // No course to look at yet: the default suggestion needs no data.
+      if (!course) {
+        const calm: NextStepInput = { currentStreakDays: 0, practisedToday: false, missedQuestionCount: 0, modules: [], daysUntilExam: null, daysSinceLastMock: null };
+        return { courseKey: null, courseName: null, step: suggestNextStep(calm) };
+      }
+      await assertAccess(ctx, course.courseKey, { accessToken: input?.accessToken });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const data = await gatherNextStepInput(db, identity, course.courseKey, { timezoneOffsetMinutes: input?.timezoneOffsetMinutes ?? 0 });
+      return { courseKey: course.courseKey, courseName: course.displayName, step: suggestNextStep(data) };
+    }),
+});

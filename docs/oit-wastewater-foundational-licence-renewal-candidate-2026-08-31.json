@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 424,
+    "question": "Under O. Reg. 129/04, when does a wastewater operator licence expire after it is issued?",
+    "options": [
+      "Three years after the licence is issued.",
+      "One year after the licence is issued.",
+      "Five years after the licence is issued.",
+      "It never expires after the licence is issued."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 states that an operator's licence expires three years after it is issued and may be reissued in accordance with the regulation. This question is limited to the stated licence period, not the separate requirements for any reissue application.",
+    "sourceTitle": "Ontario Regulation 129/04 — Licensing of Sewage Works Operators",
+    "sourceReference": "Section 7(4) states that an operator's licence expires three years after it is issued and may be reissued in accordance with section 7.",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/040129"
+  }
+]

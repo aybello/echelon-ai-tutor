@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "generatedAtUtc": "2026-11-23T05:14:06.621Z",
+  "source": "live-exam-bank-dedup-2026-11-22.json",
+  "totalStaged": 7000,
+  "withheldCount": 12,
+  "approvedFlaggedCount": 0,
+  "releaseCandidateCount": 6988,
+  "reviewers": [
+    {
+      "provider": "Google",
+      "model": "gemini-4-argon",
+      "role": "independent content release review",
+      "decision": "concurred"
+    },
+    {
+      "provider": "OpenAI",
+      "model": "gpt-6.2-sol",
+      "role": "independent content release review",
+      "decision": "concurred"
+    }
+  ],
+  "withheld": [
+    {
+      "bankKey": "class1-water",
+      "itemId": "WATER-TREATMENT-L1-273",
+      "questionNum": 2273,
+      "payloadSha256": "addf3929356adb3f6c83b7d9efbc3f9fad765f7c6e6846c8466657eaea92bcc1"
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-268",
+      "questionNum": 2268,
+      "payloadSha256": "c664f7a8f3405d8a5e9fdd2716e8855ac694ce3724f52cc4fcfd03478a593aff"
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-251",
+      "questionNum": 2251,
+      "payloadSha256": "88e50ba1de28867df45309b8476263d99954e229c1bb6da0bf44d75e93f05388"
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-406",
+      "questionNum": 2406,
+      "payloadSha256": "791548479a9509d2fb4d19814234adf13ec65e238533a0521fbed7f7803a7e5d"
+    },
+    {
+      "bankKey": "wpi-class1-water",
+      "itemId": "WATER-TREATMENT-L1-373",
+      "questionNum": 2373,
+      "payloadSha256": "4f79a2723d8b9938701c68557c70a322fd37f2c8e721eb69ef491b8a6854a192"
+    },
+    {
+      "bankKey": "wpi-class3-water",
+      "itemId": "WATER-TREATMENT-L3-371",
+      "questionNum": 2371,
+      "payloadSha256": "31b0cdf7962eed65032158309763769ef7fd14ec9f2619c6de763f84dadb50cc"
+    },
+    {
+      "bankKey": "wpi-class4-water",
+      "itemId": "WATER-TREATMENT-L4-416",
+      "questionNum": 2416,
+      "payloadSha256": "4cee22d60cb9c47a928a46609a0a6ea864e59d897ce29cf8154518874a014590"
+    },
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-268",
+      "questionNum": 2268,
+      "payloadSha256": "0ac20c0ee35c6ca2dd77224bd743b97cb0f9ede1bd13b3fc39d43f11bbd14fdb"
+    },
+    {
+      "bankKey": "wpi-class1-water-dist",
+      "itemId": "DISTRIBUTION-L1-351",
+      "questionNum": 2351,
+      "payloadSha256": "01f2f6690b64b1388317a0ce26ec82e7870e03e2beed959eb3bd579190f77813"
+    },
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-303",
+      "questionNum": 2303,
+      "payloadSha256": "a3ccdb52c56017c0e25e0dd2085fcecce12eb3049a463370948f5f89103a6a1e",
+      "reason": "Owner-approved withholding: exact normalized stem duplicate found during live-bank comparison; preserve existing live row.",
+      "decisionBy": "owner: Ay Bello",
+      "decisionAtUtc": "2026-11-23T05:49:15Z"
+    },
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "itemId": "WASTEWATER-TREATMENT-L1-308",
+      "questionNum": 2308,
+      "payloadSha256": "cc2fc0776d0fb778ac269e32f8bbe9ba27687a21203250ba1f5ac6fa324c8c3b",
+      "reason": "Owner-approved withholding: exact normalized stem duplicate found during live-bank comparison; preserve existing live row.",
+      "decisionBy": "owner: Ay Bello",
+      "decisionAtUtc": "2026-11-23T05:49:15Z"
+    },
+    {
+      "bankKey": "wpi-class1-water-coll",
+      "itemId": "COLLECTION-L1-266",
+      "questionNum": 2266,
+      "payloadSha256": "aeef1233f85f22eeb1bd61081abc4b590c9d6cb458403f964946c90fffa23421",
+      "reason": "Exact normalized stem duplicate in authoritative mapped bank wpi-class1-wastewater-coll, existing question ID 46720, number 7. Preserve existing live row.",
+      "decisionBy": "Manus AI: enforce owner no-duplicate release instruction",
+      "decisionAtUtc": "2026-11-23T06:00:00Z"
+    }
+  ],
+  "approvedFlagged": [],
+  "policy": "Do not import withheld items. Any importer must verify payloadSha256 before accepting an approved item and fail closed on mismatch.",
+  "updatedAtUtc": "2026-11-23T05:58:34.392615+00:00",
+  "ownerDecision": "2026-11-23: keep existing duplicates unchanged and withhold the two exact candidate duplicates."
+}

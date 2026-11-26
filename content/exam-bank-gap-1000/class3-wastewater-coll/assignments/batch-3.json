@@ -1,0 +1,429 @@
+{
+ "courseKey": "class3-wastewater-coll",
+ "bankKey": "class3-wastewater-coll",
+ "batch": 3,
+ "size": 46,
+ "conceptualCount": 37,
+ "calcCount": 9,
+ "topicPoolRound": 1,
+ "questionNumStart": 2543,
+ "questionNumEnd": 2588,
+ "itemIdStart": "COLLECTION-L3-543",
+ "itemIdEnd": "COLLECTION-L3-588",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2543,
+   "itemId": "COLLECTION-L3-543",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "capacity analysis at system scale"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2544,
+   "itemId": "COLLECTION-L3-544",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "flow monitoring program leadership"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2545,
+   "itemId": "COLLECTION-L3-545",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "condition grading programs"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2546,
+   "itemId": "COLLECTION-L3-546",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "data driven decisions"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2547,
+   "itemId": "COLLECTION-L3-547",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "regulatory inspections readiness"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2548,
+   "itemId": "COLLECTION-L3-548",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "safety leadership"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2549,
+   "itemId": "COLLECTION-L3-549",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2550,
+   "itemId": "COLLECTION-L3-550",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2551,
+   "itemId": "COLLECTION-L3-551",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "capacity analysis at system scale"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2552,
+   "itemId": "COLLECTION-L3-552",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring program leadership"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2553,
+   "itemId": "COLLECTION-L3-553",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "condition grading programs"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2554,
+   "itemId": "COLLECTION-L3-554",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "data driven decisions"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2555,
+   "itemId": "COLLECTION-L3-555",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory inspections readiness"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2556,
+   "itemId": "COLLECTION-L3-556",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "safety leadership"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2557,
+   "itemId": "COLLECTION-L3-557",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2558,
+   "itemId": "COLLECTION-L3-558",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2559,
+   "itemId": "COLLECTION-L3-559",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capacity analysis at system scale"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2560,
+   "itemId": "COLLECTION-L3-560",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring program leadership"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2561,
+   "itemId": "COLLECTION-L3-561",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "condition grading programs"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2562,
+   "itemId": "COLLECTION-L3-562",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "data driven decisions"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2563,
+   "itemId": "COLLECTION-L3-563",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "regulatory inspections readiness"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2564,
+   "itemId": "COLLECTION-L3-564",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "safety leadership"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2565,
+   "itemId": "COLLECTION-L3-565",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2566,
+   "itemId": "COLLECTION-L3-566",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2567,
+   "itemId": "COLLECTION-L3-567",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capacity analysis at system scale"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2568,
+   "itemId": "COLLECTION-L3-568",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring program leadership"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2569,
+   "itemId": "COLLECTION-L3-569",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "condition grading programs"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2570,
+   "itemId": "COLLECTION-L3-570",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "data driven decisions"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2571,
+   "itemId": "COLLECTION-L3-571",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory inspections readiness"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2572,
+   "itemId": "COLLECTION-L3-572",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "safety leadership"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2573,
+   "itemId": "COLLECTION-L3-573",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "team supervision"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2574,
+   "itemId": "COLLECTION-L3-574",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "technology evaluation awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2575,
+   "itemId": "COLLECTION-L3-575",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capacity analysis at system scale"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2576,
+   "itemId": "COLLECTION-L3-576",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "flow monitoring program leadership"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2577,
+   "itemId": "COLLECTION-L3-577",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "condition grading programs"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2578,
+   "itemId": "COLLECTION-L3-578",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "data driven decisions"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2579,
+   "itemId": "COLLECTION-L3-579",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "regulatory inspections readiness"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2580,
+   "itemId": "COLLECTION-L3-580",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with given factors"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2581,
+   "itemId": "COLLECTION-L3-581",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "force main velocity and detention"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2582,
+   "itemId": "COLLECTION-L3-582",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "program production rates"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2583,
+   "itemId": "COLLECTION-L3-583",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "unit rate quantities"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2584,
+   "itemId": "COLLECTION-L3-584",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with given factors"
+  },
+  {
+   "seq": 43,
+   "questionNum": 2585,
+   "itemId": "COLLECTION-L3-585",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "force main velocity and detention"
+  },
+  {
+   "seq": 44,
+   "questionNum": 2586,
+   "itemId": "COLLECTION-L3-586",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "program production rates"
+  },
+  {
+   "seq": 45,
+   "questionNum": 2587,
+   "itemId": "COLLECTION-L3-587",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "unit rate quantities"
+  },
+  {
+   "seq": 46,
+   "questionNum": 2588,
+   "itemId": "COLLECTION-L3-588",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "capacity planning with given factors"
+  }
+ ]
+}

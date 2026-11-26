@@ -1,0 +1,1878 @@
+{
+  "courseKey": "wpi-class1-wastewater",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wpi-class1-wastewater-002",
+    "speed-match": "wpi-class1-wastewater-021",
+    "odd-one-out": "wpi-class1-wastewater-031",
+    "cause-effect": "wpi-class1-wastewater-001",
+    "tap-the-flaw": "wpi-class1-wastewater-066",
+    "before-after": "wpi-class1-wastewater-order-001"
+  },
+  "examples": [
+    {
+      "id": "wpi-class1-wastewater-001",
+      "mode": "cause-effect",
+      "prompt": "A basin contains 12,000 US gallons of water. A constant flow is 2,000 US gallons per hour. What is the theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "6 hours"
+        },
+        {
+          "id": "option-2",
+          "label": "10 hours"
+        },
+        {
+          "id": "option-3",
+          "label": "24 hours"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Detention time = volume ÷ flow = 12,000 ÷ 2,000 = 6 hours."
+    },
+    {
+      "id": "wpi-class1-wastewater-002",
+      "mode": "rapid-swipe",
+      "prompt": "A comminutor removes ground-up debris from the wastewater.",
+      "correctAnswer": false,
+      "explanation": "A comminutor cuts debris into smaller pieces rather than removing it."
+    },
+    {
+      "id": "wpi-class1-wastewater-003",
+      "mode": "rapid-swipe",
+      "prompt": "Grit removal primarily targets dense inorganic particles such as sand.",
+      "correctAnswer": true,
+      "explanation": "Grit separation removes heavy inorganic particles."
+    },
+    {
+      "id": "wpi-class1-wastewater-004",
+      "mode": "cause-effect",
+      "prompt": "Influent suspended solids are 200 mg/L and effluent suspended solids are 50 mg/L. What is the percentage reduction in concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "75%"
+        },
+        {
+          "id": "option-2",
+          "label": "25%"
+        },
+        {
+          "id": "option-3",
+          "label": "150%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Removal = (200 − 50) ÷ 200 × 100 = 75%."
+    },
+    {
+      "id": "wpi-class1-wastewater-005",
+      "mode": "rapid-swipe",
+      "prompt": "Aerobic biological treatment depends on microorganisms and available dissolved oxygen.",
+      "correctAnswer": true,
+      "explanation": "Aerobic organisms use dissolved oxygen in biological conversion."
+    },
+    {
+      "id": "wpi-class1-wastewater-006",
+      "mode": "cause-effect",
+      "prompt": "For a valid unseeded five-day BOD test with negligible dilution-water blank, 150 mL of sample is diluted to 300 mL. Initial dissolved oxygen is 8 mg/L and final dissolved oxygen is 5 mg/L. What is the calculated BOD₅?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "6 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "3 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "12 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Under the stated unseeded and negligible-blank assumptions, BOD₅ = (8 − 5) × 300 ÷ 150 = 6 mg/L. Actual tests must meet the applicable method’s validity and quality-control requirements."
+    },
+    {
+      "id": "wpi-class1-wastewater-007",
+      "mode": "rapid-swipe",
+      "prompt": "A trickling filter is an attached-growth biological process.",
+      "correctAnswer": true,
+      "explanation": "Microorganisms grow on media in an attached biofilm."
+    },
+    {
+      "id": "wpi-class1-wastewater-008",
+      "mode": "rapid-swipe",
+      "prompt": "A secondary clarifier can separate biological solids from treated liquid.",
+      "correctAnswer": true,
+      "explanation": "Biomass settles and clarified liquid leaves the basin."
+    },
+    {
+      "id": "wpi-class1-wastewater-009",
+      "mode": "rapid-swipe",
+      "prompt": "Return activated sludge normally moves settled biomass back to the aeration tank.",
+      "correctAnswer": true,
+      "explanation": "Return sludge recycles microorganisms to biological treatment."
+    },
+    {
+      "id": "wpi-class1-wastewater-010",
+      "mode": "cause-effect",
+      "prompt": "An aeration tank contains 400 m³ of well-mixed liquor with 2,000 mg/L of suspended solids. What is its approximate suspended-solids mass?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "800 kg"
+        },
+        {
+          "id": "option-2",
+          "label": "200 kg"
+        },
+        {
+          "id": "option-3",
+          "label": "8,000 kg"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Mass = 400 m³ × 2,000 mg/L ÷ 1,000 = 800 kg."
+    },
+    {
+      "id": "wpi-class1-wastewater-011",
+      "mode": "rapid-swipe",
+      "prompt": "UV disinfection leaves a continuing chemical disinfectant residual in the water.",
+      "correctAnswer": false,
+      "explanation": "UV is a physical disinfection process and does not leave a chemical disinfectant residual."
+    },
+    {
+      "id": "wpi-class1-wastewater-012",
+      "mode": "rapid-swipe",
+      "prompt": "Chlorine residual may be harmful to aquatic organisms.",
+      "correctAnswer": true,
+      "explanation": "EPA notes residual chlorine can be toxic to aquatic life."
+    },
+    {
+      "id": "wpi-class1-wastewater-013",
+      "mode": "rapid-swipe",
+      "prompt": "Dechlorination is intended to reduce chlorine residual after disinfection.",
+      "correctAnswer": true,
+      "explanation": "Dechlorination is intended to reduce remaining free and combined chlorine residuals after disinfection."
+    },
+    {
+      "id": "wpi-class1-wastewater-014",
+      "mode": "cause-effect",
+      "prompt": "A stream carries 2,000 m³/day at 100 mg/L BOD. What is the BOD loading?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "200 kg/day"
+        },
+        {
+          "id": "option-2",
+          "label": "20 kg/day"
+        },
+        {
+          "id": "option-3",
+          "label": "2,000 kg/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Load = 2,000 m³/day × 100 mg/L ÷ 1,000 = 200 kg/day."
+    },
+    {
+      "id": "wpi-class1-wastewater-015",
+      "mode": "rapid-swipe",
+      "prompt": "A grab sample represents conditions at the time it is collected.",
+      "correctAnswer": true,
+      "explanation": "A grab is a discrete sample, not an average across a long interval."
+    },
+    {
+      "id": "wpi-class1-wastewater-016",
+      "mode": "rapid-swipe",
+      "prompt": "A composite sample can combine individual samples collected over time.",
+      "correctAnswer": true,
+      "explanation": "A composite combines increments to represent the sampling period."
+    },
+    {
+      "id": "wpi-class1-wastewater-017",
+      "mode": "rapid-swipe",
+      "prompt": "Dissolved oxygen is the same measurement as total suspended solids.",
+      "correctAnswer": false,
+      "explanation": "Dissolved oxygen measures oxygen in water; suspended solids measure particulate matter."
+    },
+    {
+      "id": "wpi-class1-wastewater-018",
+      "mode": "rapid-swipe",
+      "prompt": "A hydrogen sulfide odor disappearing proves the atmosphere is safe.",
+      "correctAnswer": false,
+      "explanation": "Smell can fatigue or be paralyzed; use appropriate atmospheric monitoring."
+    },
+    {
+      "id": "wpi-class1-wastewater-019",
+      "mode": "rapid-swipe",
+      "prompt": "Unexpected release of stored mechanical energy can injure maintenance workers.",
+      "correctAnswer": true,
+      "explanation": "Hazardous energy includes mechanical as well as electrical sources."
+    },
+    {
+      "id": "wpi-class1-wastewater-020",
+      "mode": "rapid-swipe",
+      "prompt": "A wastewater sample should be labeled with its identity and collection details.",
+      "correctAnswer": true,
+      "explanation": "Proper labeling and documentation support sample identification and traceability."
+    },
+    {
+      "id": "wpi-class1-wastewater-021",
+      "mode": "speed-match",
+      "prompt": "Match each preliminary unit to its distinguishing action.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Bar screen",
+          "right": "Captures large rags"
+        },
+        {
+          "id": "pair-2",
+          "left": "Comminutor",
+          "right": "Cuts debris into smaller pieces"
+        },
+        {
+          "id": "pair-3",
+          "left": "Grit chamber",
+          "right": "Settles dense inorganic particles"
+        }
+      ],
+      "explanation": "Bar screen: Captures large rags; Comminutor: Cuts debris into smaller pieces; Grit chamber: Settles dense inorganic particles."
+    },
+    {
+      "id": "wpi-class1-wastewater-022",
+      "mode": "speed-match",
+      "prompt": "Match the activated-sludge term to its destination or function.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Return activated sludge",
+          "right": "Settled biomass sent back to aeration"
+        },
+        {
+          "id": "pair-2",
+          "left": "Waste activated sludge",
+          "right": "Excess biomass sent to solids handling"
+        },
+        {
+          "id": "pair-3",
+          "left": "Secondary clarified effluent",
+          "right": "Liquid leaving the secondary settling tank"
+        }
+      ],
+      "explanation": "Return activated sludge: Settled biomass sent back to aeration; Waste activated sludge: Excess biomass sent to solids handling; Secondary clarified effluent: Liquid leaving the secondary settling tank."
+    },
+    {
+      "id": "wpi-class1-wastewater-023",
+      "mode": "speed-match",
+      "prompt": "Match each measurement to what it describes.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Dissolved oxygen",
+          "right": "Oxygen dissolved in water"
+        },
+        {
+          "id": "pair-2",
+          "left": "Total suspended solids",
+          "right": "Concentration of suspended particulate material"
+        },
+        {
+          "id": "pair-3",
+          "left": "pH",
+          "right": "Measure of acidity or basicity"
+        }
+      ],
+      "explanation": "Dissolved oxygen: Oxygen dissolved in water; Total suspended solids: Concentration of suspended particulate material; pH: Measure of acidity or basicity."
+    },
+    {
+      "id": "wpi-class1-wastewater-024",
+      "mode": "speed-match",
+      "prompt": "Match each example treatment method to its distinguishing mechanism.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Activated sludge",
+          "right": "Suspended biological growth"
+        },
+        {
+          "id": "pair-2",
+          "left": "Trickling filter",
+          "right": "Biological growth attached to media"
+        },
+        {
+          "id": "pair-3",
+          "left": "UV disinfection",
+          "right": "Radiation damages microbial genetic material"
+        }
+      ],
+      "explanation": "Activated sludge: Suspended biological growth; Trickling filter: Biological growth attached to media; UV disinfection: Radiation damages microbial genetic material."
+    },
+    {
+      "id": "wpi-class1-wastewater-025",
+      "mode": "speed-match",
+      "prompt": "Match each clarifier component with its specific role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Effluent weir",
+          "right": "Provides an overflow edge for clarified water"
+        },
+        {
+          "id": "pair-2",
+          "left": "Scum skimmer",
+          "right": "Moves floating material toward removal"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sludge collector",
+          "right": "Moves settled solids toward a collection point"
+        }
+      ],
+      "explanation": "The effluent weir provides the overflow edge; the scum skimmer moves floating material, and the sludge collector moves settled material toward collection."
+    },
+    {
+      "id": "wpi-class1-wastewater-026",
+      "mode": "speed-match",
+      "prompt": "Match each sampling method to the specific collection design described.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Grab sample",
+          "right": "One discrete sample at a collection time"
+        },
+        {
+          "id": "pair-2",
+          "left": "Fixed-time equal-volume composite",
+          "right": "Equal aliquots at regular intervals regardless of flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Fixed-time flow-proportional composite",
+          "right": "Aliquot volume varies with flow at regular intervals"
+        }
+      ],
+      "explanation": "A grab is discrete. In these specific composite designs, one uses equal volumes regardless of flow and the other varies aliquot volume with flow at fixed intervals. Flow-proportional composites can also use equal aliquots at flow-dependent intervals."
+    },
+    {
+      "id": "wpi-class1-wastewater-027",
+      "mode": "speed-match",
+      "prompt": "Match each chemical or physical disinfection term with its role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Chlorination",
+          "right": "Addition of chlorine for disinfection"
+        },
+        {
+          "id": "pair-2",
+          "left": "Dechlorination",
+          "right": "Reduction of remaining chlorine residual"
+        },
+        {
+          "id": "pair-3",
+          "left": "UV disinfection",
+          "right": "Use of ultraviolet radiation for inactivation"
+        }
+      ],
+      "explanation": "Chlorination: Addition of chlorine for disinfection; Dechlorination: Reduction of remaining chlorine residual; UV disinfection: Use of ultraviolet radiation for inactivation."
+    },
+    {
+      "id": "wpi-class1-wastewater-028",
+      "mode": "speed-match",
+      "prompt": "Match each biological nitrogen conversion to its description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Ammonification",
+          "right": "Organic nitrogen becomes ammonia or ammonium"
+        },
+        {
+          "id": "pair-2",
+          "left": "Nitrification",
+          "right": "Ammonium is biologically oxidized to nitrate"
+        },
+        {
+          "id": "pair-3",
+          "left": "Denitrification",
+          "right": "Nitrate is biologically reduced to nitrogen gas"
+        }
+      ],
+      "explanation": "Ammonification: Organic nitrogen becomes ammonia or ammonium; Nitrification: Ammonium is biologically oxidized to nitrate; Denitrification: Nitrate is biologically reduced to nitrogen gas."
+    },
+    {
+      "id": "wpi-class1-wastewater-029",
+      "mode": "speed-match",
+      "prompt": "Match each workplace practice with its direct function.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Gas monitoring",
+          "right": "Detects a hazardous atmosphere"
+        },
+        {
+          "id": "pair-2",
+          "left": "Hazardous-energy isolation",
+          "right": "Controls unexpected equipment energization"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sample labeling",
+          "right": "Identifies the collected sample"
+        }
+      ],
+      "explanation": "Gas monitoring: Detects a hazardous atmosphere; Hazardous-energy isolation: Controls unexpected equipment energization; Sample labeling: Identifies the collected sample."
+    },
+    {
+      "id": "wpi-class1-wastewater-030",
+      "mode": "speed-match",
+      "prompt": "Match each stage to its defining task in this example plant: screens → settling → aeration → final settling.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Screening",
+          "right": "Capture large debris before settling"
+        },
+        {
+          "id": "pair-2",
+          "left": "Primary settling",
+          "right": "Settle influent solids before aeration"
+        },
+        {
+          "id": "pair-3",
+          "left": "Aeration",
+          "right": "Supply oxygen to suspended biomass"
+        },
+        {
+          "id": "pair-4",
+          "left": "Final settling",
+          "right": "Separate biological biomass after aeration"
+        }
+      ],
+      "explanation": "In this example screening captures debris; primary settling removes influent settleable solids before aeration; aeration supplies oxygen; final settling separates biomass after aeration."
+    },
+    {
+      "id": "wpi-class1-wastewater-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a preliminary debris-handling unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Bar screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Comminutor"
+        },
+        {
+          "id": "option-3",
+          "label": "Grit chamber"
+        },
+        {
+          "id": "option-4",
+          "label": "UV reactor"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV is a disinfection unit; the others handle debris or grit."
+    },
+    {
+      "id": "wpi-class1-wastewater-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a biological treatment process?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Activated sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "Trickling filter"
+        },
+        {
+          "id": "option-3",
+          "label": "Facultative lagoon"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorine contact chamber"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chlorination is disinfection; the other processes use biological activity."
+    },
+    {
+      "id": "wpi-class1-wastewater-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT an example of a measured wastewater characteristic?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "Suspended solids"
+        },
+        {
+          "id": "option-4",
+          "label": "Return sludge pump"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The pump is equipment; the others describe measurable water characteristics."
+    },
+    {
+      "id": "wpi-class1-wastewater-034",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a physical solids-separation process?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Screening"
+        },
+        {
+          "id": "option-2",
+          "label": "Sedimentation"
+        },
+        {
+          "id": "option-3",
+          "label": "Filtration"
+        },
+        {
+          "id": "option-4",
+          "label": "Nitrification"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Nitrification is a biological nitrogen conversion, not physical solids separation."
+    },
+    {
+      "id": "wpi-class1-wastewater-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a chlorine-based disinfection agent?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine gas"
+        },
+        {
+          "id": "option-2",
+          "label": "Sodium hypochlorite"
+        },
+        {
+          "id": "option-3",
+          "label": "Calcium hypochlorite"
+        },
+        {
+          "id": "option-4",
+          "label": "Ultraviolet light"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV is radiation rather than a chlorine chemical."
+    },
+    {
+      "id": "wpi-class1-wastewater-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a chlorine-removal chemical?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sulfur dioxide"
+        },
+        {
+          "id": "option-2",
+          "label": "Sodium bisulfite"
+        },
+        {
+          "id": "option-3",
+          "label": "Sodium metabisulfite"
+        },
+        {
+          "id": "option-4",
+          "label": "Sodium hypochlorite"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Hypochlorite supplies chlorine; the others are used to remove chlorine residual."
+    },
+    {
+      "id": "wpi-class1-wastewater-037",
+      "mode": "odd-one-out",
+      "prompt": "Which item does NOT represent an energy source relevant to equipment isolation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Electrical power"
+        },
+        {
+          "id": "option-2",
+          "label": "Compressed air"
+        },
+        {
+          "id": "option-3",
+          "label": "Stored mechanical force"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample identification label"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The label is an identifier; the other items can represent hazardous energy."
+    },
+    {
+      "id": "wpi-class1-wastewater-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a possible biological consequence of excess nutrient discharge?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Algal growth"
+        },
+        {
+          "id": "option-2",
+          "label": "Aquatic plant growth"
+        },
+        {
+          "id": "option-3",
+          "label": "Oxygen depletion after decomposition"
+        },
+        {
+          "id": "option-4",
+          "label": "Automatic removal of all pathogens"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Nutrients promote growth that may create oxygen demand; they do not guarantee pathogen removal."
+    },
+    {
+      "id": "wpi-class1-wastewater-039",
+      "mode": "odd-one-out",
+      "prompt": "Which sample type is NOT a composite?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Single discrete grab"
+        },
+        {
+          "id": "option-2",
+          "label": "Equal aliquots pooled at fixed intervals"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow-weighted aliquots pooled over a period"
+        },
+        {
+          "id": "option-4",
+          "label": "Continuous collection pooled into one container over a period"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A single grab is discrete. The other examples pool material collected over time into a composite sample."
+    },
+    {
+      "id": "wpi-class1-wastewater-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT an example of floating material a primary clarifier can remove?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grease"
+        },
+        {
+          "id": "option-2",
+          "label": "Oil"
+        },
+        {
+          "id": "option-3",
+          "label": "Scum"
+        },
+        {
+          "id": "option-4",
+          "label": "Dissolved oxygen"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Dissolved oxygen is not floating scum or grease."
+    },
+    {
+      "id": "wpi-class1-wastewater-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a biological agent or group associated with wastewater?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Bacteria"
+        },
+        {
+          "id": "option-2",
+          "label": "Viruses"
+        },
+        {
+          "id": "option-3",
+          "label": "Protozoa"
+        },
+        {
+          "id": "option-4",
+          "label": "Sand grain"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Sand is an inorganic particle; the other options are biological agents."
+    },
+    {
+      "id": "wpi-class1-wastewater-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a purpose of disinfection?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reduce pathogen risk"
+        },
+        {
+          "id": "option-2",
+          "label": "Inactivate disease-causing organisms"
+        },
+        {
+          "id": "option-3",
+          "label": "Lower the number of viable target organisms"
+        },
+        {
+          "id": "option-4",
+          "label": "Remove every dissolved salt"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Disinfection targets microorganisms, not complete dissolved-salt removal."
+    },
+    {
+      "id": "wpi-class1-wastewater-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a solids-handling step?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aerobic digestion"
+        },
+        {
+          "id": "option-2",
+          "label": "Sludge dewatering"
+        },
+        {
+          "id": "option-3",
+          "label": "Drying beds"
+        },
+        {
+          "id": "option-4",
+          "label": "UV irradiation of clarified effluent"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "In this example UV disinfects liquid; the others treat or dewater solids."
+    },
+    {
+      "id": "wpi-class1-wastewater-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a source of information needed to identify a wastewater sample?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Collection location"
+        },
+        {
+          "id": "option-2",
+          "label": "Collection time"
+        },
+        {
+          "id": "option-3",
+          "label": "Sample identification"
+        },
+        {
+          "id": "option-4",
+          "label": "Color of the sampler’s shoes"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The sample identity and collection details support traceability; footwear color does not."
+    },
+    {
+      "id": "wpi-class1-wastewater-045",
+      "mode": "odd-one-out",
+      "prompt": "Which does NOT generally reduce the UV dose received by microorganisms?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dirty quartz sleeve"
+        },
+        {
+          "id": "option-2",
+          "label": "Suspended particles"
+        },
+        {
+          "id": "option-3",
+          "label": "Short-circuiting through the reactor"
+        },
+        {
+          "id": "option-4",
+          "label": "Clean quartz sleeve"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A clean sleeve improves transmission. Fouling and particles reduce light reaching organisms, while short-circuiting can reduce their exposure time."
+    },
+    {
+      "id": "wpi-class1-wastewater-046",
+      "mode": "cause-effect",
+      "prompt": "A screen becomes heavily clogged while flow continues. What is a plausible immediate effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Water level rises upstream"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrate converts to nitrogen gas"
+        },
+        {
+          "id": "option-3",
+          "label": "UV lamp becomes cleaner"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The obstructed screen restricts passage of flow and causes upstream head buildup."
+    },
+    {
+      "id": "wpi-class1-wastewater-047",
+      "mode": "cause-effect",
+      "prompt": "A grit chamber removes more sand before pumping. What problem is it intended to reduce?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Abrasion of downstream equipment"
+        },
+        {
+          "id": "option-2",
+          "label": "Oxygen transfer in aeration"
+        },
+        {
+          "id": "option-3",
+          "label": "Color of sample labels"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Dense grit can wear equipment; removing it protects downstream components."
+    },
+    {
+      "id": "wpi-class1-wastewater-048",
+      "mode": "cause-effect",
+      "prompt": "A primary clarifier retains settleable solids. What happens to those captured solids?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "They accumulate as primary sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "They become dissolved oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "They instantly become chlorine"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Settled solids collect in the basin for sludge withdrawal."
+    },
+    {
+      "id": "wpi-class1-wastewater-049",
+      "mode": "cause-effect",
+      "prompt": "Aeration air supply fails in an aerobic basin. What can decrease?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-2",
+          "label": "The mass of quartz in UV sleeves"
+        },
+        {
+          "id": "option-3",
+          "label": "The number of sample labels"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Less oxygen transfer can reduce dissolved oxygen available to aerobic organisms."
+    },
+    {
+      "id": "wpi-class1-wastewater-050",
+      "mode": "cause-effect",
+      "prompt": "Biomass settles poorly in a secondary clarifier. What may rise in the outgoing liquid?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Suspended solids"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved oxygen solely because of settling"
+        },
+        {
+          "id": "option-3",
+          "label": "Screen bar spacing"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Poorly separated biomass can escape with clarified effluent."
+    },
+    {
+      "id": "wpi-class1-wastewater-051",
+      "mode": "cause-effect",
+      "prompt": "A return sludge pump stops in an activated-sludge system. What can accumulate in the clarifier?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Settled biological solids"
+        },
+        {
+          "id": "option-2",
+          "label": "Disinfectant tablets in a UV lamp"
+        },
+        {
+          "id": "option-3",
+          "label": "Sand in the air header"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Without return pumping, settled biomass may build up in the clarifier."
+    },
+    {
+      "id": "wpi-class1-wastewater-052",
+      "mode": "cause-effect",
+      "prompt": "Excess biological solids are never removed from an operating activated-sludge system. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Solids inventory builds up"
+        },
+        {
+          "id": "option-2",
+          "label": "All organisms disappear immediately"
+        },
+        {
+          "id": "option-3",
+          "label": "The primary screen becomes UV equipment"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Microbial growth adds solids; wasting removes excess inventory."
+    },
+    {
+      "id": "wpi-class1-wastewater-053",
+      "mode": "cause-effect",
+      "prompt": "Suspended particles increase substantially before UV disinfection. What can happen to UV performance?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Inactivation may decrease"
+        },
+        {
+          "id": "option-2",
+          "label": "UV light is chemically converted to chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "All particles dissolve immediately"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Particles absorb or block UV and can shield embedded microorganisms."
+    },
+    {
+      "id": "wpi-class1-wastewater-054",
+      "mode": "cause-effect",
+      "prompt": "A UV quartz sleeve becomes fouled. What is a likely effect on light reaching wastewater?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Less light is transmitted"
+        },
+        {
+          "id": "option-2",
+          "label": "More chlorine residual is produced"
+        },
+        {
+          "id": "option-3",
+          "label": "All nitrate is removed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Fouling blocks part of the UV energy reaching organisms."
+    },
+    {
+      "id": "wpi-class1-wastewater-055",
+      "mode": "cause-effect",
+      "prompt": "At the same chlorine dose and contact time, chlorine demand increases while other conditions are comparable. What can happen to residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual can decrease"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual must increase"
+        },
+        {
+          "id": "option-3",
+          "label": "The disinfectant becomes UV light"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "More chlorine is consumed by reactions, potentially leaving less residual."
+    },
+    {
+      "id": "wpi-class1-wastewater-056",
+      "mode": "cause-effect",
+      "prompt": "Chlorinated effluent is dechlorinated after adequate contact. What is the intended effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Lower chlorine residual"
+        },
+        {
+          "id": "option-2",
+          "label": "More large rags enter the screen"
+        },
+        {
+          "id": "option-3",
+          "label": "Increase grit particle size"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Dechlorinating agents reduce the chlorine residual before discharge."
+    },
+    {
+      "id": "wpi-class1-wastewater-057",
+      "mode": "cause-effect",
+      "prompt": "At a steady basin volume, flow increases. What happens to theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It increases"
+        },
+        {
+          "id": "option-3",
+          "label": "It is unchanged for any flow"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Detention time is volume divided by flow; a larger flow reduces it."
+    },
+    {
+      "id": "wpi-class1-wastewater-058",
+      "mode": "cause-effect",
+      "prompt": "At constant flow, a contact basin has double the effective liquid volume. What happens to theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Theoretical detention time equals volume divided by flow."
+    },
+    {
+      "id": "wpi-class1-wastewater-059",
+      "mode": "cause-effect",
+      "prompt": "A treatment basin has dead zones and short-circuiting. What is a possible effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Some water receives less contact time than expected"
+        },
+        {
+          "id": "option-2",
+          "label": "Every particle receives exactly the theoretical detention time"
+        },
+        {
+          "id": "option-3",
+          "label": "All samples become flow-proportional"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Short-circuiting allows some water to pass through faster than intended."
+    },
+    {
+      "id": "wpi-class1-wastewater-060",
+      "mode": "cause-effect",
+      "prompt": "An aeration basin receives more biodegradable organic load with no added oxygen supply. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dissolved oxygen may fall"
+        },
+        {
+          "id": "option-2",
+          "label": "The UV sleeve automatically cleans itself"
+        },
+        {
+          "id": "option-3",
+          "label": "The flow meter turns into a chlorine pump"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Microbial oxygen demand may increase while oxygen input remains unchanged."
+    },
+    {
+      "id": "wpi-class1-wastewater-061",
+      "mode": "cause-effect",
+      "prompt": "A flow-composite sampler loses its flow signal. What is the main concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sample may no longer be properly flow weighted"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample automatically becomes a grab"
+        },
+        {
+          "id": "option-3",
+          "label": "The wastewater becomes sterile"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Flow-proportional sampling depends on accurate flow measurement or a valid flow signal."
+    },
+    {
+      "id": "wpi-class1-wastewater-062",
+      "mode": "cause-effect",
+      "prompt": "A sample bottle is contaminated before collection. What can happen to the result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The result may not represent the wastewater"
+        },
+        {
+          "id": "option-2",
+          "label": "The true result is guaranteed"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample automatically meets every holding time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Contamination introduces material not representative of the sampled stream."
+    },
+    {
+      "id": "wpi-class1-wastewater-063",
+      "mode": "cause-effect",
+      "prompt": "A worker relies on smell to detect hydrogen sulfide after exposure. What can go wrong?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Loss of smell can hide continued exposure"
+        },
+        {
+          "id": "option-2",
+          "label": "Smell accurately reports all concentrations"
+        },
+        {
+          "id": "option-3",
+          "label": "The gas becomes harmless"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Olfactory fatigue or paralysis can make H2S undetectable by smell."
+    },
+    {
+      "id": "wpi-class1-wastewater-064",
+      "mode": "cause-effect",
+      "prompt": "An equipment repair starts without controlling a pressurized air line. What hazard remains?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Stored pneumatic energy can release"
+        },
+        {
+          "id": "option-2",
+          "label": "The tank automatically becomes a safe confined space"
+        },
+        {
+          "id": "option-3",
+          "label": "UV light forms ammonia"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Pneumatic energy can injure workers if not properly isolated and controlled."
+    },
+    {
+      "id": "wpi-class1-wastewater-065",
+      "mode": "cause-effect",
+      "prompt": "Nitrification proceeds in an aerated biological reactor. What happens to nitrogen form?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ammonium can become nitrate"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrate must become organic nitrogen in one step"
+        },
+        {
+          "id": "option-3",
+          "label": "Phosphate becomes a nitrogen gas"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrifying organisms convert ammonium through nitrite to nitrate using oxygen."
+    },
+    {
+      "id": "wpi-class1-wastewater-066",
+      "mode": "tap-the-flaw",
+      "prompt": "Which statement about a bar screen is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It catches large debris"
+        },
+        {
+          "id": "option-2",
+          "label": "It can protect downstream equipment"
+        },
+        {
+          "id": "option-3",
+          "label": "It dissolves all grit"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Screens capture large debris; they do not dissolve grit."
+    },
+    {
+      "id": "wpi-class1-wastewater-067",
+      "mode": "tap-the-flaw",
+      "prompt": "Which proposed response to a jammed mechanical screen is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow energy-control procedures before servicing"
+        },
+        {
+          "id": "option-2",
+          "label": "Check the site procedure"
+        },
+        {
+          "id": "option-3",
+          "label": "Reach into moving machinery to clear the jam"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Moving or unexpectedly energized equipment can cause severe injury."
+    },
+    {
+      "id": "wpi-class1-wastewater-068",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about primary clarification is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can remove settleable solids"
+        },
+        {
+          "id": "option-2",
+          "label": "It can collect floating scum"
+        },
+        {
+          "id": "option-3",
+          "label": "It guarantees removal of all dissolved material"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Gravity separation does not remove all dissolved substances."
+    },
+    {
+      "id": "wpi-class1-wastewater-069",
+      "mode": "tap-the-flaw",
+      "prompt": "Which description of activated sludge is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It uses suspended microorganisms"
+        },
+        {
+          "id": "option-2",
+          "label": "Aeration supplies oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "The biomass is attached only to fixed stone media"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Activated sludge uses suspended growth; a trickling filter uses attached growth."
+    },
+    {
+      "id": "wpi-class1-wastewater-070",
+      "mode": "tap-the-flaw",
+      "prompt": "Which statement about return activated sludge is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It returns settled microorganisms to aeration"
+        },
+        {
+          "id": "option-2",
+          "label": "It comes from the secondary clarifier"
+        },
+        {
+          "id": "option-3",
+          "label": "Its sole purpose is to disinfect effluent"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "RAS recycles biomass for biological treatment, not disinfection."
+    },
+    {
+      "id": "wpi-class1-wastewater-071",
+      "mode": "tap-the-flaw",
+      "prompt": "Which statement about waste activated sludge is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Wasting removes excess biomass"
+        },
+        {
+          "id": "option-2",
+          "label": "The wasted portion can go to solids handling"
+        },
+        {
+          "id": "option-3",
+          "label": "It must all be returned to aeration"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "The wasted portion is removed from the process to manage solids inventory."
+    },
+    {
+      "id": "wpi-class1-wastewater-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Which operator claim about poor settling is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check for solids leaving the clarifier"
+        },
+        {
+          "id": "option-2",
+          "label": "Review process data"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume the effluent cannot contain biomass"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Poor settling can carry biological solids into the clarified liquid."
+    },
+    {
+      "id": "wpi-class1-wastewater-073",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about trickling filters is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "They use attached growth"
+        },
+        {
+          "id": "option-2",
+          "label": "Microbial growth can slough off media"
+        },
+        {
+          "id": "option-3",
+          "label": "They are simple bar screens for removing rags"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Trickling filters support biological growth on media; they are not bar screens."
+    },
+    {
+      "id": "wpi-class1-wastewater-074",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about UV treatment is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Suspended solids can shield organisms"
+        },
+        {
+          "id": "option-2",
+          "label": "Sleeves can need cleaning"
+        },
+        {
+          "id": "option-3",
+          "label": "UV automatically leaves a chlorine residual"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "UV is a physical process and does not generate a chlorine residual."
+    },
+    {
+      "id": "wpi-class1-wastewater-075",
+      "mode": "tap-the-flaw",
+      "prompt": "Which chlorine-contact claim is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Mixing matters"
+        },
+        {
+          "id": "option-2",
+          "label": "Contact time matters"
+        },
+        {
+          "id": "option-3",
+          "label": "Residual alone proves all pathogens are eliminated"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Disinfection performance depends on several factors; measurable residual does not guarantee elimination of every pathogen."
+    },
+    {
+      "id": "wpi-class1-wastewater-076",
+      "mode": "tap-the-flaw",
+      "prompt": "Which dechlorination claim is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It lowers remaining chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "It can protect receiving-water organisms"
+        },
+        {
+          "id": "option-3",
+          "label": "It is another name for removing sand at the headworks"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Dechlorination reduces chlorine residual after disinfection."
+    },
+    {
+      "id": "wpi-class1-wastewater-077",
+      "mode": "tap-the-flaw",
+      "prompt": "Which nitrogen statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrification requires oxygen"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrification forms nitrate from ammonium"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrification is the same as removing grit"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Nitrification is biological conversion; grit removal is physical separation."
+    },
+    {
+      "id": "wpi-class1-wastewater-078",
+      "mode": "tap-the-flaw",
+      "prompt": "Which statement about sample collection is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use the required container"
+        },
+        {
+          "id": "option-2",
+          "label": "Identify the sample"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume any sample point is representative regardless of mixing"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Location and mixing affect representativeness; follow the sampling plan."
+    },
+    {
+      "id": "wpi-class1-wastewater-079",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about a grab sample is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It represents a collection time"
+        },
+        {
+          "id": "option-2",
+          "label": "It is discrete"
+        },
+        {
+          "id": "option-3",
+          "label": "It necessarily represents the average for an entire day"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A grab is a snapshot and cannot automatically describe the full day."
+    },
+    {
+      "id": "wpi-class1-wastewater-080",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about composites is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Time composites use increments over time"
+        },
+        {
+          "id": "option-2",
+          "label": "Flow-weighted composites depend on flow"
+        },
+        {
+          "id": "option-3",
+          "label": "One instant sample is automatically a full-period composite"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A composite requires collection over the specified period."
+    },
+    {
+      "id": "wpi-class1-wastewater-081",
+      "mode": "tap-the-flaw",
+      "prompt": "Which safety claim about hydrogen sulfide is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use suitable monitoring"
+        },
+        {
+          "id": "option-2",
+          "label": "Plan for rescue and follow entry procedures"
+        },
+        {
+          "id": "option-3",
+          "label": "No smell proves no hazardous gas is present"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Smell can fail rapidly; absence of odor does not establish safety."
+    },
+    {
+      "id": "wpi-class1-wastewater-082",
+      "mode": "tap-the-flaw",
+      "prompt": "Which equipment-isolation claim is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hazardous energy can be pneumatic"
+        },
+        {
+          "id": "option-2",
+          "label": "Hazardous energy can be mechanical"
+        },
+        {
+          "id": "option-3",
+          "label": "Switching off a motor always controls every stored energy source"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Stored electrical, mechanical, pneumatic or other energy may remain after switching off."
+    },
+    {
+      "id": "wpi-class1-wastewater-083",
+      "mode": "tap-the-flaw",
+      "prompt": "Which statement about recordkeeping is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record relevant operating observations"
+        },
+        {
+          "id": "option-2",
+          "label": "Use sample identifiers"
+        },
+        {
+          "id": "option-3",
+          "label": "Alter readings to make an undesirable result look normal"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Data must be recorded accurately so operators can interpret conditions."
+    },
+    {
+      "id": "wpi-class1-wastewater-084",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about solids dewatering is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It reduces the water associated with solids"
+        },
+        {
+          "id": "option-2",
+          "label": "It separates a liquid stream from solids-rich material"
+        },
+        {
+          "id": "option-3",
+          "label": "It turns all solids into oxygen gas"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Dewatering separates water from solids; it does not convert all solids to oxygen."
+    },
+    {
+      "id": "wpi-class1-wastewater-085",
+      "mode": "tap-the-flaw",
+      "prompt": "Which claim about disinfection is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It targets microorganisms"
+        },
+        {
+          "id": "option-2",
+          "label": "Its performance depends on treatment conditions"
+        },
+        {
+          "id": "option-3",
+          "label": "It replaces the need for all upstream solids treatment"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Adequate upstream treatment helps disinfection by limiting solids and interference."
+    },
+    {
+      "id": "wpi-class1-wastewater-top-001",
+      "mode": "cause-effect",
+      "prompt": "A rectangular clarifier is 30 ft long and 20 ft wide. If the total flow applied to it is 450,000 US gallons per day, what is its surface overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "450 US gal/day/ft²"
+        },
+        {
+          "id": "option-2",
+          "label": "750 US gal/day/ft²"
+        },
+        {
+          "id": "option-3",
+          "label": "1,500 US gal/day/ft²"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Surface overflow rate = flow ÷ clarifier surface area. First calculate area = length × width = 30 ft × 20 ft = 600 ft². Then divide the applied flow by the area: 450,000 US gal/day ÷ 600 ft² = 750 US gal/day/ft². This is a calculated rate, not a universal operating target."
+    },
+    {
+      "id": "wpi-class1-wastewater-top-002",
+      "mode": "cause-effect",
+      "prompt": "An activated-sludge mixed liquor has a 30-minute settled sludge volume of 250 mL/L and a mixed liquor suspended solids concentration of 2,000 mg/L. What is its sludge volume index?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "125 mL/g"
+        },
+        {
+          "id": "option-2",
+          "label": "8 mL/g"
+        },
+        {
+          "id": "option-3",
+          "label": "500 mL/g"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sludge volume index (SVI) = 30-minute settled sludge volume ÷ mixed liquor suspended solids (MLSS), with MLSS expressed in g/L. Convert 2,000 mg/L ÷ 1,000 mg/g = 2 g/L. Divide 250 mL/L by 2 g/L: SVI = 125 mL/g. Interpret results alongside facility procedures and other process data, not as a stand-alone universal target."
+    },
+    {
+      "id": "wpi-class1-wastewater-top-003",
+      "mode": "cause-effect",
+      "prompt": "In a total-solids test, the empty dish weighs 40 g, the dish plus wet sludge weighs 140 g, and the dish plus dried solids weighs 46 g. What is the sludge's total solids percentage by mass?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4.3%"
+        },
+        {
+          "id": "option-2",
+          "label": "6%"
+        },
+        {
+          "id": "option-3",
+          "label": "15%"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Total solids (%) = dry solids mass ÷ wet sample mass × 100. Subtract the empty-dish mass from both weighings: dry solids = 46 g − 40 g = 6 g; wet sample = 140 g − 40 g = 100 g. Therefore (6 g ÷ 100 g) × 100 = 6%. This assumes the drying and weighing meet the applicable laboratory method."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-001",
+      "mode": "before-after",
+      "prompt": "In the EPA example of a conventional municipal plant with both units, is primary clarification before or after bar screening along the incoming wastewater path?",
+      "correctAnswer": "after",
+      "explanation": "Screening is a preliminary treatment step; primary clarification settles wastewater solids later in this illustrated plant. Layouts vary."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-002",
+      "mode": "before-after",
+      "prompt": "In the EPA conventional activated-sludge example with a primary clarifier, is biological aeration before or after primary clarification on the main liquid path?",
+      "correctAnswer": "after",
+      "explanation": "In the stated conventional arrangement, primary clarified liquid enters the biological aeration process. Extended-aeration systems can omit primary clarification."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-003",
+      "mode": "before-after",
+      "prompt": "In conventional activated sludge, is secondary clarification before or after biological aeration for a pass of mixed liquor?",
+      "correctAnswer": "after",
+      "explanation": "The mixed liquor passes from the aeration basin to the secondary clarifier, where biological solids are separated. The return-sludge loop is not the liquid-effluent path."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-004",
+      "mode": "before-after",
+      "prompt": "In the EPA extended-aeration package-plant example with flow equalization, is the equalization basin before or after the biological aeration chamber along the incoming wastewater path?",
+      "correctAnswer": "before",
+      "explanation": "The EPA package-plant example uses equalization to moderate incoming flow to the aeration chamber. Equalization is optional and can be placed elsewhere in other designs."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-005",
+      "mode": "before-after",
+      "prompt": "In the EPA trickling-filter example with a primary clarifier, is application to the trickling-filter media before or after primary settling along the liquid path?",
+      "correctAnswer": "after",
+      "explanation": "In this example, primary clarified wastewater is distributed over the media for attached-growth biological treatment. This is an example arrangement, not a universal requirement."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-006",
+      "mode": "before-after",
+      "prompt": "For a trickling-filter system with a humus clarifier, is settling of filter sloughings in the humus clarifier before or after biological treatment on the media?",
+      "correctAnswer": "after",
+      "explanation": "Biofilm sloughs from the trickling-filter media and is carried to a secondary or humus clarifier for settling. Other plant arrangements are possible."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-007",
+      "mode": "before-after",
+      "prompt": "In the EPA example of a fill-and-draw sequencing batch reactor, is the settle phase before or after the react phase within the same cycle?",
+      "correctAnswer": "after",
+      "explanation": "The example cycle completes its react phase before quiescent settling separates the biomass from the liquid. The process is a timed batch sequence."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-008",
+      "mode": "before-after",
+      "prompt": "In the EPA fill-and-draw SBR example, is decanting treated liquid before or after the settle phase within the same batch?",
+      "correctAnswer": "after",
+      "explanation": "The settle phase lets solids separate; the decanter then draws treated supernatant. The source notes SBR timing and operating strategies may vary."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-009",
+      "mode": "before-after",
+      "prompt": "In the EPA SBR example that includes both post-batch equalization and filtration, is the equalization basin before or after filtration on the treated-liquid path?",
+      "correctAnswer": "before",
+      "explanation": "EPA describes equalization between the SBR and the downstream filter to moderate the batch flow. It is an optional configuration rather than a universal plant layout."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-010",
+      "mode": "before-after",
+      "prompt": "In the biological conversion of ammonium to nitrate, is formation of nitrite before or after formation of nitrate?",
+      "correctAnswer": "before",
+      "explanation": "In the two-step nitrification pathway described by EPA, ammonium is first oxidized to nitrite and nitrite is then oxidized to nitrate."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-011",
+      "mode": "before-after",
+      "prompt": "For nitrogen originally present in organic matter and following the EPA pathway to nitrate, is ammonification before or after nitrification?",
+      "correctAnswer": "before",
+      "explanation": "Ammonification releases ammonium from organic nitrogen. Nitrification can then oxidize that ammonium through nitrite to nitrate."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-012",
+      "mode": "before-after",
+      "prompt": "In biological nitrogen removal of the same nitrogen, is anoxic conversion of nitrate to nitrogen gas before or after aerobic oxidation of ammonium to nitrate?",
+      "correctAnswer": "after",
+      "explanation": "For the same nitrogen in this post-nitrification example, nitrification produces nitrate and anoxic denitrification reduces it to nitrogen gas. Different reactor layouts can use recirculation."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-013",
+      "mode": "before-after",
+      "prompt": "In the EPA chlorine disinfection example with a contact basin and dechlorination, is dechlorination before or after chlorine contact for the treated liquid?",
+      "correctAnswer": "after",
+      "explanation": "Chlorine contact provides disinfection time; dechlorination then reduces remaining free and combined chlorine residual. Dechlorination is not present at every facility."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-014",
+      "mode": "before-after",
+      "prompt": "In the EPA chlorine-disinfection example, is chlorine addition before or after the wastewater enters the contact basin?",
+      "correctAnswer": "before",
+      "explanation": "The cited EPA system adds and mixes chlorine at the start of the contact process, allowing the wastewater to spend time in the basin for disinfection."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-015",
+      "mode": "before-after",
+      "prompt": "In the Ohio EPA example, is aerobic digestion of settled waste activated sludge before or after withdrawal of that sludge from the secondary clarifier?",
+      "correctAnswer": "after",
+      "explanation": "Excess settled biological solids are wasted from the activated-sludge system to the digester, where additional biological stabilization takes place."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-016",
+      "mode": "before-after",
+      "prompt": "For an SBR solids line using the optional gravity thickener depicted in the EPA example, is thickening before or after aerobic digestion of the same sludge?",
+      "correctAnswer": "before",
+      "explanation": "The EPA example depicts thickening ahead of digestion in its solids line. The need for thickening depends on sludge characteristics and is determined case by case."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-017",
+      "mode": "before-after",
+      "prompt": "In Vermont’s described five-day BOD test, is measuring initial dissolved oxygen before or after the incubation period?",
+      "correctAnswer": "before",
+      "explanation": "The initial dissolved oxygen measurement establishes the starting value. Following incubation, a final dissolved oxygen reading helps determine oxygen depletion. Apply the current laboratory method and local SOP."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-018",
+      "mode": "before-after",
+      "prompt": "In Vermont’s described total suspended solids test using an untared filter, is wastewater filtration before or after the filter’s initial weighing?",
+      "correctAnswer": "after",
+      "explanation": "The filter is prepared and weighed to establish its initial mass before the sample is filtered. The retained residue is later dried and weighed. Follow the applicable laboratory method."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-019",
+      "mode": "before-after",
+      "prompt": "In Vermont’s total suspended solids procedure, is weighing the filter and retained sample after drying before or after cooling them in a desiccator?",
+      "correctAnswer": "after",
+      "explanation": "The described procedure cools the oven-dried filter and residue in a desiccator before weighing to limit moisture uptake and improve mass accuracy."
+    },
+    {
+      "id": "wpi-class1-wastewater-order-022",
+      "mode": "before-after",
+      "prompt": "In EPA’s wastewater sampling approach for trace metals or organic analysis using reusable equipment, is sample collection before or after cleaning the equipment for that collection?",
+      "correctAnswer": "after",
+      "explanation": "The EPA procedure describes using non-disposable equipment cleaned according to its field procedure when collecting samples for trace metals or organic analyses. Follow the current sampling method and local site procedures."
+    }
+  ]
+}

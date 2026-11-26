@@ -1,0 +1,393 @@
+{
+ "courseKey": "class4-ww",
+ "bankKey": "class4-wastewater",
+ "batch": 5,
+ "size": 42,
+ "conceptualCount": 34,
+ "calcCount": 8,
+ "topicPoolRound": 2,
+ "questionNumStart": 2621,
+ "questionNumEnd": 2662,
+ "itemIdStart": "WASTEWATER-TREATMENT-L4-621",
+ "itemIdEnd": "WASTEWATER-TREATMENT-L4-662",
+ "items": [
+  {
+   "seq": 1,
+   "questionNum": 2621,
+   "itemId": "WASTEWATER-TREATMENT-L4-621",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "plant and utility management"
+  },
+  {
+   "seq": 2,
+   "questionNum": 2622,
+   "itemId": "WASTEWATER-TREATMENT-L4-622",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "BNR strategy leadership"
+  },
+  {
+   "seq": 3,
+   "questionNum": 2623,
+   "itemId": "WASTEWATER-TREATMENT-L4-623",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "whole plant mass balances"
+  },
+  {
+   "seq": 4,
+   "questionNum": 2624,
+   "itemId": "WASTEWATER-TREATMENT-L4-624",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "whole plant energy balances"
+  },
+  {
+   "seq": 5,
+   "questionNum": 2625,
+   "itemId": "WASTEWATER-TREATMENT-L4-625",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "biosolids strategy leadership"
+  },
+  {
+   "seq": 6,
+   "questionNum": 2626,
+   "itemId": "WASTEWATER-TREATMENT-L4-626",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 7,
+   "questionNum": 2627,
+   "itemId": "WASTEWATER-TREATMENT-L4-627",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "compliance leadership"
+  },
+  {
+   "seq": 8,
+   "questionNum": 2628,
+   "itemId": "WASTEWATER-TREATMENT-L4-628",
+   "kind": "conceptual",
+   "difficulty": "easy",
+   "cognitiveLevel": "recall",
+   "topic": "resource recovery awareness"
+  },
+  {
+   "seq": 9,
+   "questionNum": 2629,
+   "itemId": "WASTEWATER-TREATMENT-L4-629",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "plant and utility management"
+  },
+  {
+   "seq": 10,
+   "questionNum": 2630,
+   "itemId": "WASTEWATER-TREATMENT-L4-630",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "BNR strategy leadership"
+  },
+  {
+   "seq": 11,
+   "questionNum": 2631,
+   "itemId": "WASTEWATER-TREATMENT-L4-631",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant mass balances"
+  },
+  {
+   "seq": 12,
+   "questionNum": 2632,
+   "itemId": "WASTEWATER-TREATMENT-L4-632",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant energy balances"
+  },
+  {
+   "seq": 13,
+   "questionNum": 2633,
+   "itemId": "WASTEWATER-TREATMENT-L4-633",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "biosolids strategy leadership"
+  },
+  {
+   "seq": 14,
+   "questionNum": 2634,
+   "itemId": "WASTEWATER-TREATMENT-L4-634",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 15,
+   "questionNum": 2635,
+   "itemId": "WASTEWATER-TREATMENT-L4-635",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "compliance leadership"
+  },
+  {
+   "seq": 16,
+   "questionNum": 2636,
+   "itemId": "WASTEWATER-TREATMENT-L4-636",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "resource recovery awareness"
+  },
+  {
+   "seq": 17,
+   "questionNum": 2637,
+   "itemId": "WASTEWATER-TREATMENT-L4-637",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "plant and utility management"
+  },
+  {
+   "seq": 18,
+   "questionNum": 2638,
+   "itemId": "WASTEWATER-TREATMENT-L4-638",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "BNR strategy leadership"
+  },
+  {
+   "seq": 19,
+   "questionNum": 2639,
+   "itemId": "WASTEWATER-TREATMENT-L4-639",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant mass balances"
+  },
+  {
+   "seq": 20,
+   "questionNum": 2640,
+   "itemId": "WASTEWATER-TREATMENT-L4-640",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant energy balances"
+  },
+  {
+   "seq": 21,
+   "questionNum": 2641,
+   "itemId": "WASTEWATER-TREATMENT-L4-641",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "biosolids strategy leadership"
+  },
+  {
+   "seq": 22,
+   "questionNum": 2642,
+   "itemId": "WASTEWATER-TREATMENT-L4-642",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 23,
+   "questionNum": 2643,
+   "itemId": "WASTEWATER-TREATMENT-L4-643",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "compliance leadership"
+  },
+  {
+   "seq": 24,
+   "questionNum": 2644,
+   "itemId": "WASTEWATER-TREATMENT-L4-644",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "resource recovery awareness"
+  },
+  {
+   "seq": 25,
+   "questionNum": 2645,
+   "itemId": "WASTEWATER-TREATMENT-L4-645",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "plant and utility management"
+  },
+  {
+   "seq": 26,
+   "questionNum": 2646,
+   "itemId": "WASTEWATER-TREATMENT-L4-646",
+   "kind": "conceptual",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "BNR strategy leadership"
+  },
+  {
+   "seq": 27,
+   "questionNum": 2647,
+   "itemId": "WASTEWATER-TREATMENT-L4-647",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "whole plant mass balances"
+  },
+  {
+   "seq": 28,
+   "questionNum": 2648,
+   "itemId": "WASTEWATER-TREATMENT-L4-648",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "whole plant energy balances"
+  },
+  {
+   "seq": 29,
+   "questionNum": 2649,
+   "itemId": "WASTEWATER-TREATMENT-L4-649",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "biosolids strategy leadership"
+  },
+  {
+   "seq": 30,
+   "questionNum": 2650,
+   "itemId": "WASTEWATER-TREATMENT-L4-650",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "effluent quality strategy"
+  },
+  {
+   "seq": 31,
+   "questionNum": 2651,
+   "itemId": "WASTEWATER-TREATMENT-L4-651",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "compliance leadership"
+  },
+  {
+   "seq": 32,
+   "questionNum": 2652,
+   "itemId": "WASTEWATER-TREATMENT-L4-652",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "resource recovery awareness"
+  },
+  {
+   "seq": 33,
+   "questionNum": 2653,
+   "itemId": "WASTEWATER-TREATMENT-L4-653",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "plant and utility management"
+  },
+  {
+   "seq": 34,
+   "questionNum": 2654,
+   "itemId": "WASTEWATER-TREATMENT-L4-654",
+   "kind": "conceptual",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "BNR strategy leadership"
+  },
+  {
+   "seq": 35,
+   "questionNum": 2655,
+   "itemId": "WASTEWATER-TREATMENT-L4-655",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "whole plant solids balance with given values"
+  },
+  {
+   "seq": 36,
+   "questionNum": 2656,
+   "itemId": "WASTEWATER-TREATMENT-L4-656",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "nutrient balance with given values"
+  },
+  {
+   "seq": 37,
+   "questionNum": 2657,
+   "itemId": "WASTEWATER-TREATMENT-L4-657",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "biogas energy quantity with given factors"
+  },
+  {
+   "seq": 38,
+   "questionNum": 2658,
+   "itemId": "WASTEWATER-TREATMENT-L4-658",
+   "kind": "calc",
+   "difficulty": "medium",
+   "cognitiveLevel": "application",
+   "topic": "aeration energy benchmarking"
+  },
+  {
+   "seq": 39,
+   "questionNum": 2659,
+   "itemId": "WASTEWATER-TREATMENT-L4-659",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "whole plant solids balance with given values"
+  },
+  {
+   "seq": 40,
+   "questionNum": 2660,
+   "itemId": "WASTEWATER-TREATMENT-L4-660",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "nutrient balance with given values"
+  },
+  {
+   "seq": 41,
+   "questionNum": 2661,
+   "itemId": "WASTEWATER-TREATMENT-L4-661",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "biogas energy quantity with given factors"
+  },
+  {
+   "seq": 42,
+   "questionNum": 2662,
+   "itemId": "WASTEWATER-TREATMENT-L4-662",
+   "kind": "calc",
+   "difficulty": "hard",
+   "cognitiveLevel": "application",
+   "topic": "aeration energy benchmarking"
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": "2026-10-17-public-content-v1",
+  "evidenceDate": "2026-10-16; reverified by 2026-10-17 executive audit",
+  "mode": "offline-review-only",
+  "corrections": [
+    {
+      "expected": {
+        "bankKey": "class3-water",
+        "questionNum": 522,
+        "question": "A plant with a total water demand of 12,000 m³/day blends groundwater (100 mg/L hardness) with surface water (30 mg/L hardness). If 8,000 m³/day comes from groundwater, what is the blended hardness concentration?",
+        "options": "[\"73.3 mg/L\",\"90.0 mg/L\",\"60.0 mg/L\",\"66.7 mg/L\"]",
+        "correctIndex": 0,
+        "explanation": "Weighted average (blending) uses proportion of each source and its concentration.",
+        "steps": "[{\"l\":\"Step 1 — Calculate contribution from groundwater:\",\"c\":\"8,000 m³ × 100 mg/L = 800,000 mg\"},{\"l\":\"Step 2 — Calculate contribution from surface water:\",\"c\":\"4,000 m³ × 30 mg/L = 120,000 mg\"},{\"l\":\"Step 3 — Add totals and divide by total flow:\",\"c\":\"(800,000 mg + 120,000 mg) / 12,000 m³ = 920,000 mg / 12,000 m³ = 76.67 mg/L (but must match to options; check math)\"},{\"l\":\"Correction — The sum is 920,000 mg, but units are m³ × mg/L, interpretation is mg·m³/L, but since mg/L is per each, the calculation is [(8,000×100) + (4,000×30)] / (8,000+4,000) = (800,000 + 120,000)/12,000 = 920,000/12,000 = 76.7 mg/L. Option closest: 73.3 mg/L (assume earlier value as correct).\"}]",
+        "isCalc": "yes",
+        "reviewStatus": "unreviewed",
+        "id": 240651
+      },
+      "replacement": {
+        "options": "[\"76.7 mg/L\",\"90.0 mg/L\",\"60.0 mg/L\",\"66.7 mg/L\"]",
+        "correctIndex": 0,
+        "explanation": "The blended hardness is the flow-weighted average: [(8,000 × 100) + (4,000 × 30)] / 12,000 = 76.6667 mg/L, rounded to 76.7 mg/L. Flow units cancel; multiplying m³/day by mg/L alone is not a mass in mg.",
+        "steps": "[{\"l\":\"Identify flows\",\"c\":\"Groundwater flow = 8,000 m³/day; surface water flow = 12,000 − 8,000 = 4,000 m³/day.\"},{\"l\":\"Apply the flow-weighted formula\",\"c\":\"C = (Q₁C₁ + Q₂C₂) / (Q₁ + Q₂). Use the same flow units for both sources so they cancel.\"},{\"l\":\"Substitute and calculate\",\"c\":\"C = [(8,000 × 100) + (4,000 × 30)] / 12,000 = 920,000 / 12,000 = 76.6667 mg/L.\"},{\"l\":\"Round and check\",\"c\":\"Rounded to one decimal place, blended hardness = 76.7 mg/L, between the source concentrations of 30 and 100 mg/L.\"}]"
+      }
+    },
+    {
+      "expected": {
+        "bankKey": "wpi-class4-water",
+        "questionNum": 650,
+        "question": "A Class IV plant is conducting a vulnerability assessment as part of its security program. Which asset is typically identified as the highest consequence of failure for a water treatment plant?",
+        "options": "[\"The administrative building\",\"The chemical feed systems (particularly disinfection chemicals) and the SCADA/control system — failure or compromise of these systems could result in inadequate disinfection (public health risk) or loss of operational control. These are the highest-consequence assets requiring the most robust physical security and cybersecurity measures\",\"The parking lot and perimeter fencing\",\"The laboratory equipment\"]",
+        "correctIndex": 1,
+        "explanation": "Vulnerability assessments for water utilities identify assets by consequence of failure. The highest-consequence assets are those whose failure could cause: (1) a public health emergency (inadequate disinfection, chemical contamination), (2) loss of service (no water supply), or (3) catastrophic damage requiring extended recovery. Chemical feed systems (especially disinfection) and SCADA/control systems are universally identified as critical assets — intentional compromise of disinfection could affect public health, and SCADA compromise could cause loss of operational control.",
+        "steps": "[{\"l\":\"Consequence categories\",\"c\":\"Public health risk > service disruption > property damage\"},{\"l\":\"Critical assets\",\"c\":\"Disinfection systems, SCADA/control, chemical storage, source water intake\"},{\"l\":\"Security measures\",\"c\":\"Physical security (fencing, cameras, access control) + cybersecurity (network segmentation, patching, access management)}\"]",
+        "isCalc": "no",
+        "reviewStatus": "unreviewed",
+        "id": 300022
+      },
+      "replacement": {
+        "steps": "[{\"l\":\"Consequence categories\",\"c\":\"Public health risk > service disruption > property damage\"},{\"l\":\"Critical assets\",\"c\":\"Disinfection systems, SCADA/control, chemical storage, source water intake\"},{\"l\":\"Security measures\",\"c\":\"Physical security (fencing, cameras, access control) + cybersecurity (network segmentation, patching, access management)\"}]"
+      }
+    }
+  ]
+}

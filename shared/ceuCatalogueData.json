@@ -1,0 +1,1146 @@
+[
+  {
+    "key": "ceu-basic-safety",
+    "interestCode": "ceu-basic-safety",
+    "title": "Basic Safety for Water and Wastewater Operators",
+    "shortTitle": "Basic Safety",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-basic-safety-cover_008a7f91.jpg",
+      "alt": "Water operator safety training equipment"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Find hazards before work and rank controls using the hierarchy of controls.",
+      "Recognise what makes a space confined and why its air can change.",
+      "Explain why trenches collapse and what sloping, shoring and shielding are for.",
+      "Recognise common treatment chemicals, their hazards and why incompatible products are stored apart."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Hazard recognition and personal protective equipment",
+        "durationMinutes": 45,
+        "summary": "Find hazards before work and rank controls using the hierarchy of controls. Match PPE to the hazard it protects against and read labels and safety data sheets. Recognise respirator program, falling-object, abrasive blasting, solvent and biological hazards and their basic controls."
+      },
+      {
+        "number": 2,
+        "title": "Confined spaces and atmospheric hazards",
+        "durationMinutes": 45,
+        "summary": "Recognise what makes a space confined and why its air can change. Explain the purpose of testing, ventilation, an attendant, a rescue plan and a permit, and why smell is not a warning. Recognise what IDLH and SCBA mean and why explosion-proof equipment is required in classified flammable-gas areas."
+      },
+      {
+        "number": 3,
+        "title": "Excavations, traffic, energy and lifting",
+        "durationMinutes": 45,
+        "summary": "Explain why trenches collapse and what sloping, shoring and shielding are for. Recognise the purpose of traffic control, lockout and tagout, and safe lifting, tool and noise controls. Recognise the purpose of grounding, GFCI protection, hot work permits, arc screens and crane and hoist safeguards."
+      },
+      {
+        "number": 4,
+        "title": "Chemical safety and emergency awareness",
+        "durationMinutes": 45,
+        "summary": "Recognise common treatment chemicals, their hazards and why incompatible products are stored apart. Describe awareness-level responses to leaks, spills, fire and emergencies, and the roles of drills, near-miss reports and security. Recognise hydrogen peroxide, cross-connection and non-potable marking, battery, food and laboratory contamination and fire-class hazards."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-basic-hydraulics",
+    "interestCode": "ceu-basic-hydraulics",
+    "title": "Basic Hydraulics for Water and Wastewater Operators",
+    "shortTitle": "Basic Hydraulics",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-basic-hydraulics-cover_c5a35cbb.jpg",
+      "alt": "Water operator hydraulics training"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Distinguish static, dynamic and residual pressure and convert between psi and feet of head.",
+      "Apply Q = A x V and continuity to circular pipes and rectangular channels.",
+      "Identify what drives friction loss and interpret the Hazen-Williams C factor.",
+      "Recognise water hammer, air binding, cavitation, low pressure and valve effects from symptoms."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Pressure and head",
+        "durationMinutes": 45,
+        "summary": "Distinguish static, dynamic and residual pressure and convert between psi and feet of head. Explain gauge versus absolute pressure and pressure at depth."
+      },
+      {
+        "number": 2,
+        "title": "Flow, area and velocity",
+        "durationMinutes": 45,
+        "summary": "Apply Q = A x V and continuity to circular pipes and rectangular channels. Convert among gpm, cfs and MGD and predict velocity changes with pipe size."
+      },
+      {
+        "number": 3,
+        "title": "Friction, energy and pumps",
+        "durationMinutes": 45,
+        "summary": "Identify what drives friction loss and interpret the Hazen-Williams C factor. Build a total dynamic head, calculate water and brake horsepower and recognise operating point shifts."
+      },
+      {
+        "number": 4,
+        "title": "Common operating problems",
+        "durationMinutes": 45,
+        "summary": "Recognise water hammer, air binding, cavitation, low pressure and valve effects from symptoms. Read a pressure and flow trend and calculate tank fill and drain."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-basic-math",
+    "interestCode": "ceu-basic-math",
+    "title": "Basic Math for Water and Wastewater Operators",
+    "shortTitle": "Basic Math",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-basic-math-cover_bfce9684.jpg",
+      "alt": "Water operator mathematics training"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3.5,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Convert among fractions, decimals and percents and avoid the percent-as-decimal slip.",
+      "Convert length, area, volume, time, flow, weight, concentration and temperature using stated constants.",
+      "Calculate the area of rectangles, triangles and circles and the volume of tanks, pipes, trenches and cones.",
+      "Apply the pounds formula, feed rate, detention time, loading rates, percent removal, solution strength and dilution."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Number skills and percent",
+        "durationMinutes": 53,
+        "summary": "Convert among fractions, decimals and percents and avoid the percent-as-decimal slip. Apply ratio, proportion, order of operations, powers, square roots, averages and rounding in a word problem."
+      },
+      {
+        "number": 2,
+        "title": "Units and conversions",
+        "durationMinutes": 53,
+        "summary": "Convert length, area, volume, time, flow, weight, concentration and temperature using stated constants. Use unit analysis to set up and check a conversion."
+      },
+      {
+        "number": 3,
+        "title": "Areas and volumes",
+        "durationMinutes": 52,
+        "summary": "Calculate the area of rectangles, triangles and circles and the volume of tanks, pipes, trenches and cones. Convert volume to gallons and find water depth from a known volume."
+      },
+      {
+        "number": 4,
+        "title": "Treatment-plant formulas",
+        "durationMinutes": 52,
+        "summary": "Apply the pounds formula, feed rate, detention time, loading rates, percent removal, solution strength and dilution. Check an answer for reasonableness, units and rounding."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-chlorination-principles",
+    "interestCode": "ceu-chlorination-principles",
+    "title": "Chlorination Principles for Water and Wastewater Operators",
+    "shortTitle": "Chlorination Principles",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-chlorination-principles-cover_8c50586b.jpg",
+      "alt": "Chlorination Principles for Water and Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3.5,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Compare chlorine gas, sodium hypochlorite and calcium hypochlorite by form, strength, delivery and container recognition.",
+      "Use dose = demand + residual to find a dose or demand.",
+      "Explain why residual and contact time work together, and find nominal detention time in gallons or cubic feet.",
+      "Name the parts of a gas chlorinator and a hypochlorite feed system and state what each one does."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Chlorine forms and chemistry",
+        "durationMinutes": 52,
+        "summary": "Compare chlorine gas, sodium hypochlorite and calcium hypochlorite by form, strength, delivery and container recognition. Explain how hypochlorous acid and hypochlorite ion depend on pH, and separate free, combined and total chlorine. Describe chloramine formation, the breakpoint curve and how nitrification changes demand."
+      },
+      {
+        "number": 2,
+        "title": "Dose, demand and residual calculations",
+        "durationMinutes": 52,
+        "summary": "Use dose = demand + residual to find a dose or demand. Apply the pounds formula, convert gpm to MGD and find feed for gas and hypochlorite of stated strength and density. Convert between lb/day and gal/day and check an answer for reasonableness."
+      },
+      {
+        "number": 3,
+        "title": "Contact time, residual monitoring and by-products",
+        "durationMinutes": 53,
+        "summary": "Explain why residual and contact time work together, and find nominal detention time in gallons or cubic feet. Describe injection and mixing, DPD and amperometric measurement, and how residual changes with water age. Recognise disinfection by-products, dechlorination and the purpose of indicator testing."
+      },
+      {
+        "number": 4,
+        "title": "Feed equipment and operating problems",
+        "durationMinutes": 53,
+        "summary": "Name the parts of a gas chlorinator and a hypochlorite feed system and state what each one does. Match operating symptoms to likely causes and explain preventive maintenance and control concepts. Recognise health effects, leak cues, storage incompatibility and the purpose of notification and SDS use, without response steps."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-basic-instrumentation",
+    "interestCode": "ceu-basic-instrumentation",
+    "title": "Basic Instrumentation for Water and Wastewater Operators",
+    "shortTitle": "Basic Instrumentation",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-basic-instrumentation-cover_9e868b43.jpg",
+      "alt": "Basic Instrumentation for Water and Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Describe the parts of an instrument loop and sort sensors into status, physical and analytical families.",
+      "Compare pressure, level and flow devices and name what each measures and how.",
+      "Describe what pH, turbidity, conductivity, dissolved oxygen and chlorine residual analyzers measure and how each fouls or drifts.",
+      "Recognise PLCs, RTUs, SCADA and the HMI, and read trends as step change, drift, flat line or noise."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Measurement fundamentals",
+        "durationMinutes": 45,
+        "summary": "Describe the parts of an instrument loop and sort sensors into status, physical and analytical families. Convert a 4-20 mA signal to engineering units and back, and explain the live zero. Separate range, span, accuracy, resolution and repeatability, and explain calibration, verification, drift and uncertainty."
+      },
+      {
+        "number": 2,
+        "title": "Pressure, level and flow instruments",
+        "durationMinutes": 45,
+        "summary": "Compare pressure, level and flow devices and name what each measures and how. Convert head to pressure and pressure to level, and use a rating to turn flume head into flow. Explain why partly full pipes, air, fouling, foam and poor installation make instruments read wrongly."
+      },
+      {
+        "number": 3,
+        "title": "Analytical instruments and basic control",
+        "durationMinutes": 45,
+        "summary": "Describe what pH, turbidity, conductivity, dissolved oxygen and chlorine residual analyzers measure and how each fouls or drifts. Explain on/off, proportional and PID control and flow pacing with residual trim, including sample delay. Describe setpoints, deviation alarms and why nuisance alarms are dangerous."
+      },
+      {
+        "number": 4,
+        "title": "SCADA basics and instrument troubleshooting",
+        "durationMinutes": 45,
+        "summary": "Recognise PLCs, RTUs, SCADA and the HMI, and read trends as step change, drift, flat line or noise. Apply the troubleshooting order of process, sensor, signal and display, and verify with a portable meter. Explain the purpose of portable gas detectors, lockout and the operator and technician roles without any procedure steps."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-water-distribution-overview",
+    "interestCode": "ceu-water-distribution-overview",
+    "title": "Water Distribution Overview for Operators",
+    "shortTitle": "Distribution Overview",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-water-distribution-overview-cover_033f54eb.jpg",
+      "alt": "Water Distribution Overview for Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3.5,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water distribution work.",
+    "outcomes": [
+      "Trace water from source to tap and name the job of each component, including pump stations, storage, mains, valves, hydrants, service lines and meters.",
+      "Describe daily demand patterns and how a tank floats on the system.",
+      "Name common causes of main breaks and leaks and recognise common leak detection methods.",
+      "Explain why a disinfectant residual is kept and where water age causes problems."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "System components and layout",
+        "durationMinutes": 52,
+        "summary": "Trace water from source to tap and name the job of each component, including pump stations, storage, mains, valves, hydrants, service lines and meters. Compare tank types and state what storage does for demand, fire flow, pressure and water age. Explain pressure zones, branched versus grid layouts and dead ends, and how common pipe materials tend to fail and corrode."
+      },
+      {
+        "number": 2,
+        "title": "Operating the system",
+        "durationMinutes": 52,
+        "summary": "Describe daily demand patterns and how a tank floats on the system. Apply tank draw-down, velocity and main-volume calculations and cross-refer to the hydraulics course for theory. Recognise valve types, valve exercising, water hammer, hydrant types and parts, and the purpose of flushing and flow testing."
+      },
+      {
+        "number": 3,
+        "title": "Maintenance and repair awareness",
+        "durationMinutes": 53,
+        "summary": "Name common causes of main breaks and leaks and recognise common leak detection methods. Explain the purpose of disinfecting repaired mains, and describe service connections, meter types and meter accuracy. Recognise cross-connections, backsiphonage and backpressure, and match backflow assemblies to the hazard."
+      },
+      {
+        "number": 4,
+        "title": "Water quality, customers and compliance awareness",
+        "durationMinutes": 53,
+        "summary": "Explain why a disinfectant residual is kept and where water age causes problems. Respond to taste, odour, colour and pressure complaints and record them. Describe the purpose of coliform sampling, lead and copper awareness, public notification, operator certification and working with the regulator and the public."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-supervisor-essentials",
+    "interestCode": "ceu-supervisor-essentials",
+    "title": "Supervisor Essentials for Water and Wastewater Operators",
+    "shortTitle": "Supervisor Essentials",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-supervisor-essentials-cover_c5ab4951.jpg",
+      "alt": "Supervisor Essentials for Water and Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 3.5,
+    "audience": "Operators, lead operators and new supervisors across the US and Canada who are moving into or preparing for a supervisory role in water or wastewater work.",
+    "outcomes": [
+      "Describe how a supervisor's work differs from an operator's and where a supervisor sits between operators and managers.",
+      "State the supervisor's job and separate responsibility from accountability.",
+      "Define the autocratic, paternalistic, democratic, laissez-faire and bureaucratic styles and describe what each looks like on a shift.",
+      "Communicate expectations in specific, checkable terms and delegate while keeping accountability."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Stepping into the role",
+        "durationMinutes": 53,
+        "summary": "Describe how a supervisor's work differs from an operator's and where a supervisor sits between operators and managers. Explain what authority a supervisor usually has, why the limits vary, and how to treat former peers fairly and consistently. Compare supervisor, lead operator and manager by their duties rather than their titles."
+      },
+      {
+        "number": 2,
+        "title": "Responsibility and accountability",
+        "durationMinutes": 53,
+        "summary": "State the supervisor's job and separate responsibility from accountability. Use documentation and checklists as accountability tools and explain why a signature must reflect work that was done. Explain the concept of an operator in responsible charge, the need to check your state's or province's rules, and the public-health stakes at purpose level."
+      },
+      {
+        "number": 3,
+        "title": "Management and organisational styles",
+        "durationMinutes": 52,
+        "summary": "Define the autocratic, paternalistic, democratic, laissez-faire and bureaucratic styles and describe what each looks like on a shift. Compare the advantages and disadvantages of each style and choose a style for a given utility situation. Read a simple organisation chart and calculate span of control and the supervisors needed."
+      },
+      {
+        "number": 4,
+        "title": "Leading people through change and problems",
+        "durationMinutes": 52,
+        "summary": "Communicate expectations in specific, checkable terms and delegate while keeping accountability. Choose between coaching and directing, and handle a poor performer through a fair, documented process. Document events factually, work a problem as a team and use an escalation flow that puts safety and authority first."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-drinking-water-compliance",
+    "interestCode": "ceu-compliance",
+    "title": "Drinking Water Operations and Regulatory Compliance",
+    "shortTitle": "Drinking Water Compliance",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-drinking-water-compliance-cover_da3d3d38.jpg",
+      "alt": "Drinking Water Operations and Regulatory Compliance: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 10,
+    "audience": "Ontario drinking-water operators and supervisors preparing, reviewing or handing over operational evidence.",
+    "outcomes": [
+      "Distinguish a legal requirement, a system authorization, a procedure and an observation.",
+      "Classify targets, alarms and applicable requirements without conflating them.",
+      "Reconcile sample identifiers across field, transfer and laboratory records.",
+      "Distinguish internal escalation from applicable external reporting.",
+      "Make an attributable correction while preserving the original observation.",
+      "Combine source applicability, data review and task ownership in one decision record."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Build the compliance and responsibility map",
+        "durationMinutes": 100,
+        "summary": "Distinguish a legal requirement, a system authorization, a procedure and an observation. Assign a case task to a verified role and identify unresolved authority. Create a source register that another operator can independently check."
+      },
+      {
+        "number": 2,
+        "title": "Interpret control limits and conflicting measurements",
+        "durationMinutes": 100,
+        "summary": "Classify targets, alarms and applicable requirements without conflating them. Align observations by time, place, method and hydraulic context. Quantify missing evidence while maintaining a parallel protective response."
+      },
+      {
+        "number": 3,
+        "title": "Reconstruct sample identity and result history",
+        "durationMinutes": 100,
+        "summary": "Reconcile sample identifiers across field, transfer and laboratory records. Distinguish a report amendment from evidence that the original result was invalid. Document sampling uncertainty without suppressing potentially significant results."
+      },
+      {
+        "number": 4,
+        "title": "Manage reporting, corrective action and closure as separate tasks",
+        "durationMinutes": 100,
+        "summary": "Distinguish internal escalation from applicable external reporting. Build a communication record showing attempts, contacts and directions. Specify evidence-based closure criteria and accountable follow-up."
+      },
+      {
+        "number": 5,
+        "title": "Correct records and reconstruct an audit trail",
+        "durationMinutes": 100,
+        "summary": "Make an attributable correction while preserving the original observation. Distinguish event time, entry time, instrument time and receipt time. Produce a coherent evidence index and identify misleading summaries."
+      },
+      {
+        "number": 6,
+        "title": "Defend a complete incident file",
+        "durationMinutes": 100,
+        "summary": "Combine source applicability, data review and task ownership in one decision record. Revise a conclusion when new evidence arrives without rewriting the past. Defend a proportionate closure recommendation using an explicit rubric."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 6 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-water-treatment-process-control",
+    "interestCode": "ceu-water-process",
+    "title": "Water Treatment Process Control and Optimization",
+    "shortTitle": "Water Treatment Process Control",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-water-treatment-process-control-cover_b42f020f.jpg",
+      "alt": "Water Treatment Process Control and Optimization: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 10,
+    "audience": "Operators interpreting conventional treatment performance and preparing controlled optimization trials.",
+    "outcomes": [
+      "Convert flow, concentration and mass loading consistently.",
+      "Interpret turbidity with temperature, alkalinity and organic indicators.",
+      "Convert product feed to active dose using an explicit density and strength.",
+      "Calculate unit filtration loading and compare like run stages.",
+      "Calculate CT from a defined residual and effective contact time.",
+      "Define success and stop criteria before a trial."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Follow water and mass through the treatment train",
+        "durationMinutes": 100,
+        "summary": "Convert flow, concentration and mass loading consistently. Align samples with hydraulic travel and sampling delay. Distinguish an operating target from a validated treatment requirement."
+      },
+      {
+        "number": 2,
+        "title": "Characterize a changing source and set test priorities",
+        "durationMinutes": 100,
+        "summary": "Interpret turbidity with temperature, alkalinity and organic indicators. Select representative sampling and comparison periods. Prioritize evidence that discriminates between competing explanations."
+      },
+      {
+        "number": 3,
+        "title": "Evaluate a jar test and chemical-feed basis",
+        "durationMinutes": 100,
+        "summary": "Convert product feed to active dose using an explicit density and strength. Evaluate jar-test replicates against multiple criteria. Design a bounded full-scale trial proposal."
+      },
+      {
+        "number": 4,
+        "title": "Read individual filter performance",
+        "durationMinutes": 100,
+        "summary": "Calculate unit filtration loading and compare like run stages. Distinguish upstream effects from filter-specific evidence. Preserve short-duration events and data-quality flags."
+      },
+      {
+        "number": 5,
+        "title": "Check disinfection calculations and their limits",
+        "durationMinutes": 100,
+        "summary": "Calculate CT from a defined residual and effective contact time. Distinguish nominal detention time from T10. Evaluate changing flow, level and chemistry against a supplied criterion."
+      },
+      {
+        "number": 6,
+        "title": "Design and defend an optimization trial",
+        "durationMinutes": 100,
+        "summary": "Define success and stop criteria before a trial. Separate observed improvement from causal attribution. Prepare a cross-barrier review and handover."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 6 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-wastewater-treatment-process-control",
+    "interestCode": "ceu-wastewater-process",
+    "title": "Wastewater Treatment Operations and Process Control",
+    "shortTitle": "Wastewater Process Control",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-wastewater-treatment-process-control-cover_254148b5.jpg",
+      "alt": "Wastewater Treatment Operations and Process Control: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 10,
+    "audience": "Experienced municipal wastewater operators and shift supervisors.",
+    "outcomes": [
+      "Draw a control boundary that identifies recycle streams.",
+      "Match concentration and flow periods.",
+      "Separate hydraulic, biological and settling evidence.",
+      "Calculate inventory and solids losses on a stated boundary.",
+      "Calculate a sidestream nitrogen load.",
+      "Prioritize actions from conflicting process evidence."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Process boundaries and incoming load",
+        "durationMinutes": 100,
+        "summary": "Draw a control boundary that identifies recycle streams. Distinguish concentration, flow and daily mass loading."
+      },
+      {
+        "number": 2,
+        "title": "Build a trustworthy process dataset",
+        "durationMinutes": 100,
+        "summary": "Match concentration and flow periods. Calculate removal and identify uncertainty in a comparison."
+      },
+      {
+        "number": 3,
+        "title": "Biomass, oxygen and clarification",
+        "durationMinutes": 100,
+        "summary": "Separate hydraulic, biological and settling evidence. Calculate SVI and distinguish an observation from a diagnosis."
+      },
+      {
+        "number": 4,
+        "title": "Solids inventory, SRT and F/M",
+        "durationMinutes": 100,
+        "summary": "Calculate inventory and solids losses on a stated boundary. Distinguish solids age from hydraulic residence time."
+      },
+      {
+        "number": 5,
+        "title": "Nutrients, sidestreams and final treatment",
+        "durationMinutes": 100,
+        "summary": "Calculate a sidestream nitrogen load. Identify cross-process consequences of an adjustment."
+      },
+      {
+        "number": 6,
+        "title": "Integrated shift and defensible handover",
+        "durationMinutes": 100,
+        "summary": "Prioritize actions from conflicting process evidence. Produce a handover with explicit owners and verification."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 6 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-sampling-data-quality",
+    "interestCode": "ceu-sampling",
+    "title": "Sampling, Laboratory Results and Data Quality",
+    "shortTitle": "Sampling and Data Quality",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-sampling-data-quality-cover_921d2611.jpg",
+      "alt": "Sampling, Laboratory Results and Data Quality: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 3,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Align location and timing with a stated decision.",
+      "Reconstruct a custody timeline.",
+      "Calculate relative percent difference.",
+      "Separate findings, limitations and next actions."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Design a sample that answers the question",
+        "durationMinutes": 45,
+        "summary": "Align location and timing with a stated decision. Distinguish independent sampling from repeat analysis."
+      },
+      {
+        "number": 2,
+        "title": "Trace samples and preserve corrections",
+        "durationMinutes": 45,
+        "summary": "Reconstruct a custody timeline. Resolve conflicting identifiers without overwriting originals."
+      },
+      {
+        "number": 3,
+        "title": "Interpret blanks, duplicates and reporting limits",
+        "durationMinutes": 45,
+        "summary": "Calculate relative percent difference. Separate contamination evidence from sample representativeness."
+      },
+      {
+        "number": 4,
+        "title": "Write a decision-ready result summary",
+        "durationMinutes": 45,
+        "summary": "Separate findings, limitations and next actions. Prevent unsupported claims from entering a public summary."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-disinfection-ct",
+    "interestCode": "ceu-disinfection",
+    "title": "Disinfection Verification and CT Calculations",
+    "shortTitle": "Disinfection and CT",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-disinfection-ct-cover_5d726806.jpg",
+      "alt": "Disinfection Verification and CT Calculations: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate nominal time and T10 with consistent units.",
+      "Calculate achieved CT and a comparison ratio.",
+      "Combine segment ratios only under an explicitly allowed method.",
+      "Audit a complete worksheet and its evidence."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Nominal residence time and effective contact",
+        "durationMinutes": 60,
+        "summary": "Calculate nominal time and T10 with consistent units. Identify evidence required to use a baffling factor."
+      },
+      {
+        "number": 2,
+        "title": "Residual, required CT and calculation boundaries",
+        "durationMinutes": 60,
+        "summary": "Calculate achieved CT and a comparison ratio. Match residual and required CT to the correct conditions."
+      },
+      {
+        "number": 3,
+        "title": "Segment calculations and time alignment",
+        "durationMinutes": 60,
+        "summary": "Combine segment ratios only under an explicitly allowed method. Avoid pairing noncontemporaneous favourable inputs."
+      },
+      {
+        "number": 4,
+        "title": "Disinfection verification dossier",
+        "durationMinutes": 60,
+        "summary": "Audit a complete worksheet and its evidence. Define response and closure evidence without overstating certainty."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-coagulation-filtration",
+    "interestCode": "ceu-filtration",
+    "title": "Coagulation, Filtration and Controlled Optimization",
+    "shortTitle": "Coagulation and Filtration",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-coagulation-filtration-cover_0e504937.jpg",
+      "alt": "Coagulation, Filtration and Controlled Optimization: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Compare candidate doses within stated constraints.",
+      "Convert solution delivery to active chemical dose.",
+      "Calculate individual hydraulic loading and headloss trends.",
+      "Define a fair comparison and stopping criteria."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Replicated jar tests and treatment constraints",
+        "durationMinutes": 60,
+        "summary": "Compare candidate doses within stated constraints. Separate repeatability from a causal treatment conclusion."
+      },
+      {
+        "number": 2,
+        "title": "Chemical mass and actual feed delivery",
+        "durationMinutes": 60,
+        "summary": "Convert solution delivery to active chemical dose. Reconcile pump indication with a measured delivery check."
+      },
+      {
+        "number": 3,
+        "title": "Individual filters and measurement quality",
+        "durationMinutes": 60,
+        "summary": "Calculate individual hydraulic loading and headloss trends. Recognize how combined data conceal unit behaviour."
+      },
+      {
+        "number": 4,
+        "title": "Design and evaluate a controlled trial",
+        "durationMinutes": 60,
+        "summary": "Define a fair comparison and stopping criteria. Calculate normalized resource use before claiming savings."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-instrumentation-scada",
+    "interestCode": "ceu-scada",
+    "title": "Instrumentation, SCADA and Operational Data Integrity",
+    "shortTitle": "Instrumentation and SCADA",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-instrumentation-scada-cover_9fc6ed5d.jpg",
+      "alt": "Instrumentation, SCADA and Operational Data Integrity: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 3,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Convert a linear 4–20 mA signal to engineering units.",
+      "Normalize timestamps using a documented offset.",
+      "Distinguish an alarm acknowledgement from restoration.",
+      "Assemble an auditable signal-quality report."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "From electrical signal to engineering units",
+        "durationMinutes": 45,
+        "summary": "Convert a linear 4–20 mA signal to engineering units. Identify mismatched configured ranges."
+      },
+      {
+        "number": 2,
+        "title": "Clock offsets, stale values and missing samples",
+        "durationMinutes": 45,
+        "summary": "Normalize timestamps using a documented offset. Distinguish last-known values from current measurements."
+      },
+      {
+        "number": 3,
+        "title": "Alarm occurrence, acknowledgement and response",
+        "durationMinutes": 45,
+        "summary": "Distinguish an alarm acknowledgement from restoration. Reconstruct a response from event and action records."
+      },
+      {
+        "number": 4,
+        "title": "Operational data audit and change verification",
+        "durationMinutes": 45,
+        "summary": "Assemble an auditable signal-quality report. Define post-change verification across the whole measurement chain."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-distribution-water-quality",
+    "interestCode": "ceu-distribution",
+    "title": "Distribution Water Quality and System Integrity",
+    "shortTitle": "Distribution Water Quality",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-distribution-water-quality-cover_1a8acfce.jpg",
+      "alt": "Distribution Water Quality and System Integrity: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 3,
+    "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate a nominal storage turnover indicator.",
+      "Compare matched locations and operating periods.",
+      "Reconstruct an integrity-event timeline.",
+      "Integrate hydraulic and water-quality evidence."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Storage turnover and water-age screening",
+        "durationMinutes": 45,
+        "summary": "Calculate a nominal storage turnover indicator. Explain why an average does not describe the oldest water."
+      },
+      {
+        "number": 2,
+        "title": "Spatial residual patterns and investigation design",
+        "durationMinutes": 45,
+        "summary": "Compare matched locations and operating periods. Distinguish a pattern from proof of its cause."
+      },
+      {
+        "number": 3,
+        "title": "Pressure events and repair verification",
+        "durationMinutes": 45,
+        "summary": "Reconstruct an integrity-event timeline. Identify the records needed to apply the current repair procedure."
+      },
+      {
+        "number": 4,
+        "title": "Prioritized zone investigation and handover",
+        "durationMinutes": 45,
+        "summary": "Integrate hydraulic and water-quality evidence. Define measurable follow-up and closure criteria."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-collection-wet-weather",
+    "interestCode": "ceu-collection",
+    "title": "Collection Systems and Wet-Weather Response",
+    "shortTitle": "Collection Systems",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-collection-wet-weather-cover_1e493bea.jpg",
+      "alt": "Collection Systems and Wet-Weather Response: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 3,
+    "audience": "Practising wastewater operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate peak and daily flow changes.",
+      "Calculate net accumulation and conditional time remaining.",
+      "Estimate volume using stated interval assumptions.",
+      "Prioritize capacity, evidence and communication tasks."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Wet-weather patterns and catchment evidence",
+        "durationMinutes": 45,
+        "summary": "Calculate peak and daily flow changes. Distinguish plausible inflow/infiltration patterns from proof."
+      },
+      {
+        "number": 2,
+        "title": "Wet-well storage and time to a trigger",
+        "durationMinutes": 45,
+        "summary": "Calculate net accumulation and conditional time remaining. Explain why rated pump capacity may differ from actual delivery."
+      },
+      {
+        "number": 3,
+        "title": "Incident timelines and uncertain volumes",
+        "durationMinutes": 45,
+        "summary": "Estimate volume using stated interval assumptions. Separate detection time from event onset."
+      },
+      {
+        "number": 4,
+        "title": "Collection-system response and recovery plan",
+        "durationMinutes": 45,
+        "summary": "Prioritize capacity, evidence and communication tasks. Define verified recovery and longer-term investigation."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-activated-sludge-troubleshooting",
+    "interestCode": "ceu-activated-sludge",
+    "title": "Activated Sludge Troubleshooting and Solids Control",
+    "shortTitle": "Activated Sludge Troubleshooting",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-activated-sludge-troubleshooting-cover_5618888a.jpg",
+      "alt": "Activated Sludge Troubleshooting and Solids Control: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Practising wastewater operators and supervisors seeking focused applied development.",
+    "outcomes": [
+      "Calculate SRT with aeration and clarifier inventory.",
+      "Calculate SVI and a stated clarifier solids-loading measure.",
+      "Calculate a theoretical alkalinity demand using a supplied factor.",
+      "Design a controlled response with measurable outcomes."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Solids inventory and retention boundaries",
+        "durationMinutes": 60,
+        "summary": "Calculate SRT with aeration and clarifier inventory. Compare like-for-like solids bases and external losses."
+      },
+      {
+        "number": 2,
+        "title": "Settling, solids loading and competing mechanisms",
+        "durationMinutes": 60,
+        "summary": "Calculate SVI and a stated clarifier solids-loading measure. Differentiate poor settling from hydraulic and return-flow effects."
+      },
+      {
+        "number": 3,
+        "title": "Ammonia, oxygen and alkalinity evidence",
+        "durationMinutes": 60,
+        "summary": "Calculate a theoretical alkalinity demand using a supplied factor. Rank competing explanations for an ammonia increase."
+      },
+      {
+        "number": 4,
+        "title": "Monitored recovery and reassessment",
+        "durationMinutes": 60,
+        "summary": "Design a controlled response with measurable outcomes. Revise a diagnosis as verified evidence arrives."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-water-treatment-concepts",
+    "interestCode": "ceu-water-treatment-concepts",
+    "title": "Water Treatment Concepts for Operators",
+    "shortTitle": "Water Treatment Concepts",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Operator foundations",
+    "cover": {
+      "src": "/manus-storage/ceu-water-treatment-concepts-cover_6b46c3b7.png",
+      "alt": "Water treatment concepts course cover"
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Educational foundation course. Not submitted for regulatory approval in any jurisdiction.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support a conventional surface water or groundwater treatment plant and want a clear foundation before a process-control course.",
+    "outcomes": [
+      "Describe the main sources of raw water and the quality concerns each usually brings.",
+      "Explain why fine particles need a coagulant and what the coagulant does to them.",
+      "Explain how granular filters remove particles and how head loss and breakthrough show a filter's condition.",
+      "Choose a monitoring set for a conventional plant and read its trends."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Source water and the treatment train",
+        "durationMinutes": 60,
+        "summary": "Describe the main sources of raw water and the quality concerns each usually brings. Explain the treatment train and why each barrier is placed where it is."
+      },
+      {
+        "number": 2,
+        "title": "Coagulation, flocculation and sedimentation",
+        "durationMinutes": 60,
+        "summary": "Explain why fine particles need a coagulant and what the coagulant does to them. Relate rapid mixing, flocculation and sedimentation to what the operator sees and measures."
+      },
+      {
+        "number": 3,
+        "title": "Filtration and disinfection basics",
+        "durationMinutes": 60,
+        "summary": "Explain how granular filters remove particles and how head loss and breakthrough show a filter's condition. Explain how a disinfectant residual and contact time work together, and where the residual is checked."
+      },
+      {
+        "number": 4,
+        "title": "Monitoring, records and troubleshooting",
+        "durationMinutes": 60,
+        "summary": "Choose a monitoring set for a conventional plant and read its trends. Keep records that can be trusted and escalate a suspected process failure with the evidence."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-wastewater-treatment-concepts",
+    "interestCode": "ceu-wastewater-concepts",
+    "title": "Wastewater Treatment Concepts for Operators",
+    "shortTitle": "Wastewater Treatment Concepts",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-wastewater-treatment-concepts-cover_abf712eb.png",
+      "alt": "Wastewater treatment concepts course cover"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support a conventional municipal wastewater treatment plant and want a clear foundation before a process-control course.",
+    "outcomes": [
+      "Describe what arrives at a wastewater plant and how the main measures of strength are used.",
+      "Explain what screens and grit removal protect and how operators keep them working.",
+      "Explain how microbes in the aeration tank use organic matter and oxygen to treat wastewater.",
+      "Describe how effluent is disinfected, why residual chlorine is removed when chlorine is used, and what dissolved oxygen tells the operator."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Wastewater characteristics and the treatment train",
+        "durationMinutes": 60,
+        "summary": "Describe what arrives at a wastewater plant and how the main measures of strength are used. Explain how flow changes and the start of the treatment train affect what the plant must handle."
+      },
+      {
+        "number": 2,
+        "title": "Preliminary and primary treatment",
+        "durationMinutes": 60,
+        "summary": "Explain what screens and grit removal protect and how operators keep them working. Describe what a primary clarifier removes and how removal efficiency and sludge show its condition."
+      },
+      {
+        "number": 3,
+        "title": "Biological treatment basics: activated sludge",
+        "durationMinutes": 60,
+        "summary": "Explain how microbes in the aeration tank use organic matter and oxygen to treat wastewater. Describe how the secondary clarifier, return sludge and waste sludge keep the process in balance."
+      },
+      {
+        "number": 4,
+        "title": "Effluent disinfection, monitoring and records",
+        "durationMinutes": 60,
+        "summary": "Describe how effluent is disinfected, why residual chlorine is removed when chlorine is used, and what dissolved oxygen tells the operator. Keep monitoring records that show trends and escalate a process problem with the evidence."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  }
+]

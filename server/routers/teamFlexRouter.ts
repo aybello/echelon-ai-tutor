@@ -1,0 +1,661 @@
+import { attemptCourseFilter, attemptIdentityFilter, flexActivityFilter } from "../courseActivityScope";
+/**
+ * Teams Flex Router — Production-hardened
+ * All manager procedures require authenticated session + verified org membership.
+ * All pricing is server-side only. No client-controlled redirects or prices.
+ */
+import { z } from "zod";
+import { TRPCError } from "@trpc/server";
+import { flexAssessmentScope, learnerAssessmentDetailInput, readAssessmentDetails, readAssessmentSessions } from "../assessmentActivityRead";
+import { publicProcedure, router } from "../_core/trpc";
+import { stripe } from "../stripe/stripe";
+import { ENV } from "../_core/env";
+import { getDb } from "../db";
+import {
+  teamFlexOrders,
+  teamFlexOrderItems,
+  teamFlexLicences,
+  organizations,
+  questionAttempts,
+} from "../../drizzle/schema";
+import { eq, and, desc, sql } from "drizzle-orm";
+import {
+  TEAM_PRICES_CAD,
+  getCourseKeyPricingBand,
+  getTeamFlexVolumeDiscount,
+  getFlexListPrice,
+  isValidFlexTerm,
+  type TeamFlexTermMonths,
+} from "../teams/teamFlexPricing";
+import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
+import { teamRegionExamFamily } from "../../shared/teamPricing";
+import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
+import {
+  inviteOperatorToLicence,
+  resendFlexInvitation,
+  cancelFlexInvitation,
+  claimFlexLicence,
+  assignFlexLicence,
+  activateFlexLicence,
+  changeFlexLicenceCourse,
+  getFlexInvitation,
+  listOperatorFlexLicences,
+} from "../teams/flexLicenceService";
+import { resolveCourseKey } from "../../shared/courseRegistry";
+import { flexLicenceIsVisibleInManagerReport } from "../teams/flexReporting";
+import { ALL_PRODUCTS } from "../stripe/products";
+import {
+  getCommercialAvailability,
+  ORGANIZATION_COMMERCE_ENABLED,
+  ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+} from "../commercialAvailability";
+import { calculateReadinessSnapshot } from "../readinessSnapshot";
+import {
+  bulkInviteFlexOperators,
+  MAX_BULK_ONBOARDING_ROWS,
+  previewFlexBulkOnboarding,
+} from "../teams/flexBulkOnboardingService";
+import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
+import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import { aggregateUtcDate, resolveOrgManager } from "./orgRouter";
+import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
+import { normalizeEmail } from "../_core/access";
+import {
+  checkExtensionEligibility,
+  createRetakeExtensionCheckout,
+} from "../teams/flexExtensionService";
+
+// Normalize database timestamps to Dates before comparisons, queries or serialization.
+export function validTimestamp(value: Date | string | null | undefined): Date | null {
+  if (value == null) return null;
+  if (typeof value === "string") {
+    // Date parsing can silently normalize impossible ISO dates, including
+    // timestamps with a timezone. Validate their original calendar fields.
+    const isoTimestamp = value.trim().match(
+      /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d+))?)?(Z|[+-]\d{2}:?\d{2})?$/i,
+    );
+    if (isoTimestamp) {
+      const [, yearText, monthText, dayText, hourText, minuteText, secondText = "0", fractionText = "", zone] = isoTimestamp;
+      const year = Number(yearText), month = Number(monthText), day = Number(dayText);
+      const hour = Number(hourText), minute = Number(minuteText), second = Number(secondText);
+      const leapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+      const daysInMonth = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      if (month < 1 || month > 12 || day < 1 || day > daysInMonth[month - 1]
+        || hour > 24 || minute > 59 || second > 59
+        || (hour === 24 && (minute !== 0 || second !== 0 || /[1-9]/.test(fractionText)))) return null;
+      if (zone && zone.toUpperCase() !== "Z") {
+        const offset = zone.slice(1).replace(":", "");
+        if (Number(offset.slice(0, 2)) > 23 || Number(offset.slice(2)) > 59) return null;
+      }
+      // aggregateUtcDate handles MySQL timestamps as UTC, but a zone-less
+      // ISO timestamp without seconds would otherwise use the local timezone.
+      if (!zone) return aggregateUtcDate(`${value.trim()}Z`);
+    }
+  }
+  return aggregateUtcDate(value);
+}
+
+const flexBulkRowsSchema = z.array(z.object({
+  clientRowId: z.string().min(1).max(64),
+  operatorEmail: z.string().min(1).max(320),
+  courseKey: z.string().min(1).max(64),
+})).min(1).max(MAX_BULK_ONBOARDING_ROWS);
+
+// ── Manager authorization helper ─────────────────────────────────────────────
+/** Verify the authenticated user is a manager of the specified org. */
+async function requireManagerOfOrg(
+  ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
+  orgId: number,
+): Promise<{ managerEmail: string }> {
+  const manager = await resolveOrgManager(ctx, orgId);
+  if (manager.orgId !== orgId) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." });
+  }
+  return { managerEmail: manager.managerEmail };
+}
+
+/** Resolve the authenticated user's managed org. */
+async function resolveManagerOrg(
+  ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
+): Promise<{ orgId: number; managerEmail: string }> {
+  return resolveOrgManager(ctx);
+}
+
+function requireVerifiedOperator(
+  ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
+): { email: string; userId: number | null } {
+  const email = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
+  if (!email) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Verify your email to continue." });
+  }
+  return { email, userId: ctx.user?.id ?? null };
+}
+
+// ── Router ───────────────────────────────────────────────────────────────────
+export const teamFlexRouter = router({
+  learnerAssessments: publicProcedure.input(z.object({ orgId: z.number().int().positive(), licenceId: z.number().int().positive(), days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(async ({ ctx, input }) => {
+    await requireManagerOfOrg(ctx, input.orgId);
+    return readAssessmentSessions(await flexAssessmentScope(input.orgId, input.licenceId), input.days);
+  }),
+  learnerAssessmentDetails: publicProcedure.input(learnerAssessmentDetailInput.extend({ orgId: z.number().int().positive(), licenceId: z.number().int().positive() }).strict()).query(async ({ ctx, input }) => {
+    await requireManagerOfOrg(ctx, input.orgId);
+    return readAssessmentDetails(await flexAssessmentScope(input.orgId, input.licenceId), input);
+  }),
+  checkoutIdentity: publicProcedure.query(({ ctx }) => ({ managerEmail: managerEmailForContext(ctx) || null })),
+  // ─── Pricing info (public, no auth needed) ─────────────────────────────────
+  getFlexPricing: publicProcedure
+    .input(z.object({ province: z.enum(["ontario", "western", "nova-scotia"]) }))
+    .query(({ input }) => {
+      // Nova Scotia uses the shared WPI exam family, so it reads western prices.
+      const prices = TEAM_PRICES_CAD[teamRegionExamFamily(input.province)];
+      return {
+        prices,
+        volumeTiers: [
+          { min: 1, max: 9, rate: 0 },
+          { min: 10, max: 24, rate: 0.10 },
+          { min: 25, max: 49, rate: 0.15 },
+          { min: 50, max: null, rate: 0.20 },
+        ],
+      };
+    }),
+
+  // ─── List licences for manager's org ───────────────────────────────────────
+  listLicences: publicProcedure
+    .input(z.object({ orgId: z.number().int() }))
+    .query(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const licences = await db
+        .select()
+        .from(teamFlexLicences)
+        .where(eq(teamFlexLicences.organizationId, input.orgId));
+      return licences;
+    }),
+
+  // ─── Invite operator to a licence ──────────────────────────────────────────
+  inviteLicence: publicProcedure
+    .input(z.object({ licenceId: z.number().int(), operatorEmail: z.string().email(), orgId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return inviteOperatorToLicence(input.licenceId, input.operatorEmail, input.orgId);
+    }),
+
+  resendInvitation: publicProcedure
+    .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return resendFlexInvitation(input.licenceId, input.orgId);
+    }),
+
+  previewBulkOnboarding: publicProcedure
+    .input(z.object({ orgId: z.number().int(), rows: flexBulkRowsSchema }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return previewFlexBulkOnboarding(input.orgId, input.rows);
+    }),
+
+  bulkInviteLicences: publicProcedure
+    .input(z.object({ orgId: z.number().int(), rows: flexBulkRowsSchema }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return bulkInviteFlexOperators(input.orgId, input.rows);
+    }),
+
+  // ─── Cancel invitation ─────────────────────────────────────────────────────
+  cancelInvitation: publicProcedure
+    .input(z.object({ licenceId: z.number().int(), orgId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return cancelFlexInvitation(input.licenceId, input.orgId);
+    }),
+
+  // ─── Assign licence directly ───────────────────────────────────────────────
+  assignLicence: publicProcedure
+    .input(z.object({ licenceId: z.number().int(), operatorUserId: z.number().int(), orgId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return assignFlexLicence(input.licenceId, input.operatorUserId, input.orgId);
+    }),
+
+  // ─── Activate licence (operator action) ────────────────────────────────────
+  activateLicence: publicProcedure
+    .input(z.object({ licenceId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return activateFlexLicence(input.licenceId, identity.email, identity.userId);
+    }),
+
+  // ─── Inspect an invitation before sign-in ──────────────────────────────────
+  getInvitation: publicProcedure
+    .input(z.object({ token: z.string().length(64).regex(/^[a-f0-9]+$/i) }))
+    .query(async ({ input }) => {
+      return getFlexInvitation(input.token);
+    }),
+
+  // ─── Claim invitation using a verified email session ───────────────────────
+  claimInvitation: publicProcedure
+    .input(z.object({ token: z.string().length(64).regex(/^[a-f0-9]+$/i) }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return claimFlexLicence(input.token, identity.email, identity.userId);
+    }),
+
+  // ─── Operator Course Pass inventory ────────────────────────────────────────
+  myLicences: publicProcedure.query(async ({ ctx }) => {
+    const identity = requireVerifiedOperator(ctx);
+    return listOperatorFlexLicences(identity.email, identity.userId);
+  }),
+
+  // ─── Retake Extension: a single, paid 90-day extension per Course Pass ───
+  getRetakeExtensionEligibility: publicProcedure
+    .input(z.object({ licenceId: z.number().int().positive() }))
+    .query(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return checkExtensionEligibility(input.licenceId, identity);
+    }),
+
+  createRetakeExtensionCheckout: publicProcedure
+    .input(z.object({ licenceId: z.number().int().positive() }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return createRetakeExtensionCheckout(input.licenceId, identity);
+    }),
+
+  // ─── Change course (pre-activation, same band) ─────────────────────────────
+  changeCourse: publicProcedure
+    .input(z.object({ licenceId: z.number().int(), newCourseKey: z.string().min(1), orgId: z.number().int() }))
+    .mutation(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      return changeFlexLicenceCourse(input.licenceId, input.newCourseKey, input.orgId);
+    }),
+
+  // ─── Create order (existing manager or guest purchaser) ───────────────────
+  createOrder: publicProcedure
+    .input(z.object({
+      organizationName: z.string().trim().min(2).max(200),
+      orgId: z.number().int().positive().optional(),
+      managerEmail: z.string().email().optional(),
+      billingEmail: z.string().email().optional(),
+      province: z.enum(["ontario", "western", "nova-scotia"]),
+      items: z.array(z.object({
+        courseKey: z.string().min(1),
+        termMonths: z.union([z.literal(3), z.literal(6)]),
+        quantity: z.number().int().min(1).max(100),
+      })).min(1).max(20),
+      overlapAcknowledged: z.boolean().default(false),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      if (!ORGANIZATION_COMMERCE_ENABLED) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+        });
+      }
+
+      const ctxEmail = managerEmailForContext(ctx);
+      const namedManager = normalizeEmail(input.managerEmail);
+      if (ctxEmail && namedManager && namedManager !== ctxEmail) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Signed-in checkout must use your verified email as manager. To buy for a different manager, sign out and use guest procurement checkout. Existing organization ownership cannot be transferred here." });
+      }
+      if (!ctxEmail && input.orgId) throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in as the organization manager to add licences to an existing team." });
+      const purchaserUserId = ctx.user?.id ?? null;
+      const managerEmail = ctxEmail || namedManager;
+      if (!managerEmail) throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your manager email address." });
+      const ownedOrganization = ctxEmail ? await resolveManagedOrganization(ctx, { orgId: input.orgId, allowMissing: true, ownerOnly: true }) : null;
+      const orgId = ownedOrganization?.id ?? null;
+      const billingEmail = normalizeEmail(input.billingEmail ?? managerEmail);
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      const releasedCourseKeys = new Set(
+        (await getCommercialAvailability(db, ALL_PRODUCTS)).map((product) => product.key),
+      );
+
+      const normalizedItems = input.items.map((item) => {
+        const course = resolveCourseKey(item.courseKey);
+        if (!course?.isActive || !course.teamAssignable || !releasedCourseKeys.has(course.courseKey)) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown or unavailable course: ${item.courseKey}` });
+        }
+        return { ...item, courseKey: course.courseKey };
+      });
+
+      // ── Check Annual overlap ────────────────────────────────────────────────
+      const [org] = orgId ? await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1) : [];
+      if (org?.tier && org?.province) {
+        const annualCourses = allowedCourseKeysForOrg(org.tier, org.province);
+        const overlapping = normalizedItems.filter(item => annualCourses.includes(item.courseKey));
+        if (overlapping.length > 0 && !input.overlapAcknowledged) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: `Overlap detected: ${overlapping.map(i => i.courseKey).join(", ")} are already covered by your Annual plan. Acknowledge to proceed.`,
+          });
+        }
+      }
+
+      // ── Validate items and calculate pricing (server-side only) ─────────────
+      const totalLicences = normalizedItems.reduce((sum, item) => sum + item.quantity, 0);
+      const discountRate = getTeamFlexVolumeDiscount(totalLicences);
+
+      const orderItems: Array<{
+        courseKey: string;
+        examFamily: string;
+        pricingBand: string;
+        courseLevel: number | null;
+        termMonths: TeamFlexTermMonths;
+        quantity: number;
+        listUnitPriceCents: number;
+        discountedUnitPriceCents: number;
+        lineTotalCents: number;
+      }> = [];
+
+      for (const item of normalizedItems) {
+        if (!isValidFlexTerm(item.termMonths)) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Choose 3 or 6 months.` });
+        }
+
+        const bandResult = getCourseKeyPricingBand(item.courseKey);
+        const { examFamily, pricingBand, courseLevel } = bandResult;
+
+        // Validate province/family match
+        if (input.province === "ontario" && examFamily !== "ontario") {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Ontario.` });
+        }
+        if (input.province === "western" && examFamily !== "western") {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Western Canada.` });
+        }
+        // Nova Scotia prepares operators with the shared WPI family, but the
+        // province certifies distribution and collection to Class III only, so
+        // uncertified courses are refused before any money is taken.
+        if (input.province === "nova-scotia") {
+          if (examFamily !== "western" || !isNovaScotiaCourseSupported(item.courseKey)) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Nova Scotia.` });
+          }
+        }
+
+        const listUnitPriceCents = getFlexListPrice(examFamily, pricingBand, item.termMonths);
+        const discountedUnitPriceCents = Math.round(listUnitPriceCents * (1 - discountRate));
+        const lineTotalCents = discountedUnitPriceCents * item.quantity;
+
+        orderItems.push({
+          courseKey: item.courseKey,
+          examFamily,
+          pricingBand,
+          courseLevel,
+          termMonths: item.termMonths,
+          quantity: item.quantity,
+          listUnitPriceCents,
+          discountedUnitPriceCents,
+          lineTotalCents,
+        });
+      }
+
+      const subtotalCents = orderItems.reduce((sum, item) => sum + item.lineTotalCents, 0);
+      const discountCents = orderItems.reduce((sum, item) => {
+        return sum + (item.listUnitPriceCents * item.quantity - item.lineTotalCents);
+      }, 0);
+
+      // ── Create/reuse a real organization and insert the pending order ───────
+      // Guest checkout used to write organizationId=0 and purchaserUserId=0.
+      // That can violate foreign keys immediately and would attach paid licences
+      // to a non-existent organization. A provisional organization is safe: it
+      // has no manager membership or course access until Stripe confirms payment.
+      if (ownedOrganization && ownedOrganization.province !== input.province) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Choose the region of the selected organization." });
+      }
+      let orderId: number;
+      try {
+        orderId = await db.transaction(async (tx) => {
+          let checkoutOrgId = orgId;
+
+          if (!checkoutOrgId) {
+            // A manager who retries checkout must not fragment their employer
+            // into a new organization each attempt. Live data showed one
+            // utility split across six rows because every abandoned attempt
+            // created another. Reuse is restricted to a provisional, unpaid
+            // organization created by this same manager email in the same
+            // province, so an unverified form still never attaches an order to
+            // a real paying employer.
+            const [reusable] = await tx
+              .select({ id: organizations.id })
+              .from(organizations)
+              .where(
+                and(
+                  eq(organizations.managerEmail, managerEmail),
+                  eq(organizations.province, input.province),
+                  eq(organizations.billingType, "course-pass"),
+                  eq(organizations.status, "pending"),
+                  eq(organizations.seatsTotal, 0),
+                ),
+              )
+              .orderBy(desc(organizations.id))
+              .limit(1);
+
+            if (reusable) {
+              checkoutOrgId = reusable.id;
+            }
+          }
+
+          if (!checkoutOrgId) {
+            // Guest procurement creates an access-free new organization. An
+            // unverified form never attaches an order to an existing employer.
+            const [organizationResult] = await tx.insert(organizations).values(
+              buildProvisionalCoursePassOrganization({ organizationName: input.organizationName, managerEmail, province: input.province }),
+            );
+            checkoutOrgId = Number(organizationResult.insertId);
+          }
+
+          if (!checkoutOrgId || checkoutOrgId <= 0) {
+            throw new Error("Could not resolve an organization for the Course Pass order");
+          }
+
+          const [orderResult] = await tx.insert(teamFlexOrders).values({
+            organizationId: checkoutOrgId,
+            purchaserUserId,
+            managerEmail,
+            totalLicences,
+            subtotalCents,
+            discountRate: String(discountRate),
+            discountCents,
+            totalBeforeTaxCents: subtotalCents,
+            taxCents: null, // Updated from Stripe after payment
+            totalPaidCents: null, // Updated from Stripe after payment
+            currency: "cad",
+            status: "pending",
+            overlapAcknowledged: input.overlapAcknowledged,
+          });
+          const pendingOrderId = Number(orderResult.insertId);
+
+          for (const item of orderItems) {
+            await tx.insert(teamFlexOrderItems).values({
+              orderId: pendingOrderId,
+              courseKey: item.courseKey,
+              examFamily: item.examFamily,
+              pricingBand: item.pricingBand,
+              courseLevel: item.courseLevel,
+              termMonths: item.termMonths,
+              quantity: item.quantity,
+              listUnitPriceCents: item.listUnitPriceCents,
+              discountRate: String(discountRate),
+              discountedUnitPriceCents: item.discountedUnitPriceCents,
+              lineTotalCents: item.lineTotalCents,
+            });
+          }
+
+          return pendingOrderId;
+        });
+      } catch (error) {
+        console.error("[Flex Checkout] Failed to create pending order:", error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "We could not start checkout. Please try again or contact support if the problem continues.",
+        });
+      }
+
+      // ── Build Stripe Checkout (server-owned URLs, no promotion codes) ───────
+      const stripeLineItems = orderItems.map(item => ({
+        price_data: {
+          currency: "cad",
+          unit_amount: item.discountedUnitPriceCents,
+          product_data: {
+            name: `Echelon Flex: ${item.courseKey} (${item.termMonths}-month)`,
+            description: `${item.termMonths}-month licence${discountRate > 0 ? ` (${Math.round(discountRate * 100)}% volume discount)` : ""}`,
+          },
+        },
+        quantity: item.quantity,
+      }));
+
+      const baseUrl = ENV.appBaseUrl;
+      let session;
+      try {
+        session = await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          mode: "payment",
+          line_items: stripeLineItems as any,
+          ...buildTeamFlexBillingDocumentOptions({
+            billingEmail,
+            organizationName: input.organizationName,
+            orderId,
+          }),
+          metadata: {
+            type: "team_flex",
+            teamFlexOrderId: String(orderId),
+          },
+          phone_number_collection: { enabled: true },
+          automatic_tax: { enabled: true },
+          // No allow_promotion_codes — removed per security directive
+          success_url: `${baseUrl}/team?flex_order_id=${orderId}&session_id={CHECKOUT_SESSION_ID}`,
+          cancel_url: `${baseUrl}/teams`,
+        });
+      } catch (error) {
+        await db.update(teamFlexOrders)
+          .set({ status: "checkout_failed" })
+          .where(and(eq(teamFlexOrders.id, orderId), eq(teamFlexOrders.status, "pending")));
+        console.error(`[Flex Checkout] Stripe session creation failed for order #${orderId}:`, error);
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Checkout is temporarily unavailable. Please try again in a few minutes.",
+        });
+      }
+
+      // ── Store Stripe session ID on order ────────────────────────────────────
+      await db.update(teamFlexOrders)
+        .set({ stripeCheckoutSessionId: session.id })
+        .where(eq(teamFlexOrders.id, orderId));
+
+      return { url: session.url, orderId };
+    }),
+
+  // ─── Flex operator progress (manager view) ────────────────────────────────
+  getFlexProgress: publicProcedure
+    .input(z.object({ orgId: z.number().int() }))
+    .query(async ({ ctx, input }) => {
+      await requireManagerOfOrg(ctx, input.orgId);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      // Keep expired passes in view only through their recorded reporting grace.
+      // Filtering after the org-scoped query also handles the small interval
+      // before the expiry job changes an elapsed active pass to "expired".
+      const now = new Date();
+      const licences = (await db
+        .select()
+        .from(teamFlexLicences)
+        .where(and(
+          eq(teamFlexLicences.organizationId, input.orgId),
+          sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited', 'expired')`,
+        )))
+        .filter(licence => flexLicenceIsVisibleInManagerReport({
+          ...licence,
+          accessEndsAt: validTimestamp(licence.accessEndsAt),
+          reportingEndsAt: validTimestamp(licence.reportingEndsAt),
+        }, now));
+
+      if (licences.length === 0) return [];
+
+      // Claimed operators may use verified email without an OAuth account ID.
+      const results = await Promise.all(
+        licences.map(async (lic) => {
+          const canonicalCourse = resolveCourseKey(lic.courseKey);
+          const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
+          const activatedAt = validTimestamp(lic.activatedAt);
+          const startsAt = validTimestamp(lic.startsAt);
+          const accessEndsAt = validTimestamp(lic.accessEndsAt);
+          const startTime = startsAt?.getTime() ?? NaN;
+          const endTime = accessEndsAt?.getTime() ?? NaN;
+          const validInterval = Number.isFinite(startTime) && Number.isFinite(endTime) && startTime < endTime;
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !activatedAt || !validInterval) {
+            return {
+              licenceId: lic.id,
+              courseKey: displayCourseKey,
+              termMonths: lic.termMonths,
+              status: lic.status,
+              operatorEmail: lic.invitedEmail,
+              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+              activatedAt,
+              accessEndsAt,
+              // Pre-activation licences have not started; incomplete active or
+              // expired licences cannot be safely queried and remain unknown.
+              activityAvailable: ["assigned", "invited"].includes(lic.status) && lic.activatedAt == null && lic.startsAt == null && lic.accessEndsAt == null,
+              totalAttempts: 0,
+              correctAttempts: 0,
+              accuracy: 0,
+              readinessScore: 0,
+              readinessAvailable: false,
+              lastActiveAt: null,
+              daysActive30: 0,
+            };
+          }
+
+          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: startsAt!, endsAt: accessEndsAt! };
+          // Fetch only attributable activity under this licence interval
+          const [stats] = await db
+            .select({
+              total: sql<number>`COUNT(*)`,
+              correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+              distinctTopics: sql<number>`COUNT(DISTINCT ${questionAttempts.topic})`,
+              lastActive: sql<string>`MAX(${questionAttempts.createdAt})`,
+            })
+            .from(questionAttempts)
+            .where(and(
+              attemptIdentityFilter(lic.operatorUserId, lic.invitedEmail),
+              attemptCourseFilter(displayCourseKey),
+              flexActivityFilter(flexScope),
+            ));
+
+          const total = Number(stats?.total ?? 0);
+          const correct = Number(stats?.correct ?? 0);
+          const accuracy = total > 0 ? correct / total : 0;
+          const readinessResult = await calculateReadinessSnapshot(db, {
+            userId: lic.operatorUserId,
+            email: lic.invitedEmail,
+            examType: displayCourseKey,
+            flexScope,
+          });
+
+          return {
+            licenceId: lic.id,
+            courseKey: displayCourseKey,
+            termMonths: lic.termMonths,
+            status: lic.status,
+            operatorEmail: lic.invitedEmail,
+            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+            activatedAt,
+            accessEndsAt,
+            activityAvailable: true,
+            totalAttempts: total,
+            correctAttempts: correct,
+            accuracy: Math.round(accuracy * 100),
+            readinessScore: readinessResult.score,
+            readinessAvailable: readinessResult.hasData,
+            lastActiveAt: validTimestamp(stats?.lastActive),
+            daysActive30: readinessResult.activeDaysLast30,
+          };
+        }),
+      );
+
+      return results;
+    }),
+
+});

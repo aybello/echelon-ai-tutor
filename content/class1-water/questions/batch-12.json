@@ -1,0 +1,903 @@
+{
+  "batch": "12",
+  "title": "Class 1 Water Treatment — batch 12 (questions 1441–1480)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1441,
+      "question": "Why must secondary containment be provided around bulk chemical storage?",
+      "options": [
+        "To contain a tank failure or overfill and prevent an uncontrolled release",
+        "To insulate the storage tank against temperature extremes",
+        "To support the weight of the tank when it is completely full",
+        "To provide a working platform for connecting delivery hoses"
+      ],
+      "correctIndex": 0,
+      "explanation": "Containment is sized to hold the contents of the largest tank plus an allowance, so that a rupture, a failed fitting or an overfill during delivery is captured rather than reaching soil, drains or watercourses. It must be kept empty, intact and free of drains that would defeat its purpose.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Secondary containment",
+      "isCalc": "no",
+      "tip": "Containment with an open drain valve is not containment. Check that valves are closed and sealed."
+    },
+    {
+      "questionNum": 1442,
+      "question": "Why is a delivery of bulk chemical supervised by plant personnel?",
+      "options": [
+        "To record the delivered quantity for the inventory management system",
+        "To ensure the correct product enters the correct tank without overfilling",
+        "To assist the driver in connecting the hose to the fill connection",
+        "To confirm the delivery vehicle meets transport safety requirements"
+      ],
+      "correctIndex": 1,
+      "explanation": "The highest-consequence errors occur at the fill connection: delivering a product into the wrong tank can cause a violent reaction, and overfilling releases chemical to containment or beyond. Supervision, unique fill connections, and level verification before and during transfer prevent both.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Chemical delivery supervision",
+      "isCalc": "no",
+      "tip": "Verify available tank volume before the transfer starts, not by watching the level as it fills."
+    },
+    {
+      "questionNum": 1443,
+      "question": "Why is a distribution system flushing program planned rather than performed only in response to complaints?",
+      "options": [
+        "Complaints identify problems only after consumers have received poor water",
+        "Complaint-driven flushing uses more water than a planned program does",
+        "Planned flushing can be scheduled when water demand is at its highest",
+        "Planned flushing avoids the need to notify customers before flushing"
+      ],
+      "correctIndex": 0,
+      "explanation": "Reacting to complaints means deposits, biofilm and water age problems have already reached consumers. A planned program removes accumulated material on a cycle, maintains residual in problem areas, and is far more effective per unit of water used because it can be organised unidirectionally.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Flushing programs",
+      "isCalc": "no",
+      "tip": "Complaint-driven maintenance means the customer is your monitoring system."
+    },
+    {
+      "questionNum": 1444,
+      "question": "Why is customer complaint data recorded and analysed rather than handled case by case?",
+      "options": [
+        "Because complaint patterns can reveal a developing system-wide problem",
+        "Because complaint records are required to support billing adjustments",
+        "Because each complaint must be individually reported to the regulator",
+        "Because complaint volumes determine the staffing of the customer service team"
+      ],
+      "correctIndex": 0,
+      "explanation": "An individual complaint may reflect premise plumbing, but several complaints clustered in one area or arising after a specific event indicate something happening in the system. Mapping complaints by location and time turns anecdotes into a diagnostic tool that can identify a problem before monitoring does.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Complaint analysis",
+      "isCalc": "no",
+      "tip": "Plot complaints on a map with dates. Clusters point to a main, a zone, or a recent operation."
+    },
+    {
+      "questionNum": 1445,
+      "question": "Why does an operator verify that a valve reported as open is genuinely open after maintenance work?",
+      "options": [
+        "To confirm the valve was exercised as part of the maintenance program",
+        "Because a closed valve left in service causes low pressure and stagnation",
+        "To ensure the valve operating nut has been correctly reinstalled",
+        "Because valve position must be recorded before the work order is closed"
+      ],
+      "correctIndex": 1,
+      "explanation": "A valve inadvertently left closed or partly closed creates a dead end, causing low pressure, loss of residual, water quality complaints and reduced fire flow, often in a location no one associates with the completed work. Verifying position and observing system response afterwards prevents that.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Post-work verification",
+      "isCalc": "no",
+      "tip": "Closed valves left behind after work are a classic cause of unexplained water quality problems."
+    },
+    {
+      "questionNum": 1446,
+      "question": "Why does a distribution system model require field verification against measured data?",
+      "options": [
+        "Because a model must be recalibrated whenever new mains are constructed",
+        "Because model output is only reliable if it reproduces observed conditions",
+        "Because field measurement is required to determine each pipe's diameter",
+        "Because models cannot represent storage reservoirs without measurement"
+      ],
+      "correctIndex": 1,
+      "explanation": "A hydraulic model contains assumptions about pipe roughness, demand distribution and valve status, and any of these can be wrong. Comparing predicted pressures and flows against hydrant tests and field measurements shows whether the model reflects reality before decisions are made on its output.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Model calibration",
+      "isCalc": "no",
+      "tip": "Calibration commonly uncovers closed valves and wrong pipe records, which is valuable in itself."
+    },
+    {
+      "questionNum": 1447,
+      "question": "Why is the condition of a storage reservoir hatch, vent and overflow inspected regularly?",
+      "options": [
+        "Because these openings are direct entry points for contamination",
+        "Because these components control the operating level of the reservoir",
+        "Because these fittings are the first to corrode in a treated water tank",
+        "Because these openings provide the ventilation needed for entry work"
+      ],
+      "correctIndex": 0,
+      "explanation": "Hatches, vents and overflows connect stored treated water to the outside environment. An unsecured hatch, a vent with damaged screening, or an overflow without a proper flap or screen allows birds, insects, vermin and surface water direct access to finished water storage.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Reservoir integrity",
+      "isCalc": "no",
+      "tip": "Screened, sealed and downturned. Those three checks cover most reservoir entry points."
+    },
+    {
+      "questionNum": 1448,
+      "question": "Why is a reservoir overflow pipe fitted with a screen and an air gap rather than being connected directly to a drain?",
+      "options": [
+        "To prevent backflow and to stop animals entering through the overflow",
+        "To reduce the velocity of water discharged during an overflow event",
+        "To allow the overflow to be monitored for unauthorised discharge",
+        "To prevent the overflow from freezing during cold weather conditions"
+      ],
+      "correctIndex": 0,
+      "explanation": "A direct connection to a sewer or drain would allow contaminated water to be drawn back into the reservoir if the drain surcharged. Discharging over an air gap makes that impossible, and screening prevents insects, birds and vermin from climbing the pipe into the stored water.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Overflow protection",
+      "isCalc": "no",
+      "tip": "An overflow connected directly to a drain is a cross-connection on treated water storage."
+    },
+    {
+      "questionNum": 1449,
+      "question": "Why is the finished water pH monitored continuously rather than only through periodic sampling?",
+      "options": [
+        "Because pH affects disinfection effectiveness and corrosion control continuously",
+        "Because periodic pH sampling is more expensive than continuous monitoring",
+        "Because pH changes only during periods of high plant production",
+        "Because pH must be recorded at the same frequency as plant flow"
+      ],
+      "correctIndex": 0,
+      "explanation": "pH governs the effectiveness of free chlorine and the stability of the water with respect to corrosion, and it can shift quickly with coagulant dose or raw water changes. Continuous monitoring detects excursions that periodic sampling would miss entirely, both of which have consequences within hours.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Continuous pH monitoring",
+      "isCalc": "no",
+      "tip": "pH sits at the intersection of disinfection efficiency and corrosion control. Both are time-sensitive."
+    },
+    {
+      "questionNum": 1450,
+      "question": "What is the significance of the langelier or a similar saturation index being close to zero?",
+      "options": [
+        "The water is approximately in balance, neither strongly scaling nor corrosive",
+        "The water contains no measurable calcium or carbonate species",
+        "The water has been fully softened and requires no further treatment",
+        "The water is at the pH where disinfection is at its most effective"
+      ],
+      "correctIndex": 0,
+      "explanation": "A saturation index near zero indicates the water is close to equilibrium with calcium carbonate, so it neither aggressively dissolves protective scale nor deposits it heavily. That balance is generally the target for finished water, though the index is an indicator rather than a complete description of corrosivity.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "Saturation index",
+      "isCalc": "no",
+      "tip": "Saturation indices indicate tendency, not rate. They do not predict lead release on their own."
+    },
+    {
+      "questionNum": 1451,
+      "question": "Why is the practice of maintaining a positive pressure throughout the distribution system important?",
+      "options": [
+        "It ensures water flows to the highest customers during peak demand",
+        "It prevents external water being drawn into the mains through defects",
+        "It reduces the rate at which disinfectant residual decays in the mains",
+        "It limits the formation of disinfection by-products within the system"
+      ],
+      "correctIndex": 1,
+      "explanation": "Buried mains have joints, cracks and connections surrounded by soil and groundwater that may be contaminated. Positive internal pressure means any defect leaks outward. If pressure is lost, that flow can reverse and draw contamination in, which is why low pressure is treated as a public health event.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Positive pressure",
+      "isCalc": "no",
+      "tip": "Positive pressure is a continuously acting barrier, not merely a service level requirement."
+    },
+    {
+      "questionNum": 1452,
+      "question": "Why are the results of a distribution system sampling program reviewed as a trend rather than individually?",
+      "options": [
+        "Because individual results are not accurate enough to support decisions",
+        "Because gradual deterioration is visible in a trend before any limit is exceeded",
+        "Because trends are required for the annual report to consumers",
+        "Because individual samples cannot be compared between locations"
+      ],
+      "correctIndex": 1,
+      "explanation": "A single result within limits gives no indication of direction. A residual falling steadily over months, or heterotrophic counts climbing at one location, signals a developing problem while there is still time to investigate and correct it before a limit is breached.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Trend review",
+      "isCalc": "no",
+      "tip": "Compliance is a pass or fail at a point in time. Trends tell you where you are heading."
+    },
+    {
+      "questionNum": 1453,
+      "question": "Why must an operator understand the intent of a monitoring requirement, not just the sampling schedule?",
+      "options": [
+        "Because understanding intent allows results to be interpreted and acted on",
+        "Because the schedule changes frequently and must be reinterpreted",
+        "Because monitoring intent determines the laboratory that must be used",
+        "Because the intent establishes which operator class may collect samples"
+      ],
+      "correctIndex": 0,
+      "explanation": "Collecting a sample on schedule satisfies a requirement, but understanding what the parameter indicates about the barriers allows the operator to recognise a meaningful result, choose an appropriate location, and respond correctly when something changes. Compliance and competence are not the same thing.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Monitoring intent",
+      "isCalc": "no",
+      "tip": "Sampling to a schedule is compliance. Knowing what the result means is operation."
+    },
+    {
+      "questionNum": 1454,
+      "question": "An operator identifies a way to reduce chemical cost that would also slightly reduce a treatment safety margin. How should this be handled?",
+      "options": [
+        "Implement it, since cost reduction benefits the community served",
+        "Implement it during low risk periods and revert when conditions change",
+        "Evaluate the risk explicitly and decide with supervision, documenting the basis",
+        "Reject it, since any reduction in a safety margin is never acceptable"
+      ],
+      "correctIndex": 2,
+      "explanation": "Margins exist to absorb variability and error, so reducing one is a risk decision rather than an operating preference. It is evaluated explicitly against the range of conditions the plant experiences, decided with appropriate authority, documented, and monitored, rather than accepted or refused reflexively.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Risk-based decisions",
+      "isCalc": "no",
+      "tip": "Margins are consumed by real variability. Reducing one means less room for the day something goes wrong."
+    },
+    {
+      "questionNum": 1455,
+      "question": "A 300 m length of 250 mm diameter main is to be disinfected. What volume of water does it contain?",
+      "options": [
+        "5.9 m³",
+        "14.7 m³",
+        "18.8 m³",
+        "58.9 m³"
+      ],
+      "correctIndex": 1,
+      "explanation": "The radius is 0.125 m, so the cross-sectional area is π × 0.125² = 0.0491 m². Multiplying by the length gives 0.0491 × 300 = 14.7 m³.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Pipe volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Radius",
+          "c": "250 mm ÷ 2 = 125 mm = 0.125 m"
+        },
+        {
+          "l": "Area",
+          "c": "π × 0.125² = 0.0491 m²"
+        },
+        {
+          "l": "Volume",
+          "c": "0.0491 m² × 300 m = 14.7 m³"
+        }
+      ],
+      "tip": "Convert millimetres to metres before squaring, or the answer will be out by a factor of a million."
+    },
+    {
+      "questionNum": 1456,
+      "question": "The residual falls from 1.4 mg/L to 0.7 mg/L over 24 hours in a storage reservoir. What percentage of the residual was lost?",
+      "options": [
+        "25 percent",
+        "35 percent",
+        "50 percent",
+        "70 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "The loss is 1.4 − 0.7 = 0.7 mg/L, which as a proportion of the starting value is 0.7 ÷ 1.4 × 100 = 50 percent.",
+      "difficulty": "easy",
+      "module": "Water Distribution",
+      "topic": "Residual decay rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Loss",
+          "c": "1.4 − 0.7 = 0.7 mg/L"
+        },
+        {
+          "l": "Percentage",
+          "c": "0.7 ÷ 1.4 × 100 = 50 percent"
+        },
+        {
+          "l": "Use",
+          "c": "Decay rate determines the residual needed leaving the plant."
+        }
+      ],
+      "tip": "Measure decay in your own system. Published rates rarely match local pipe and water conditions."
+    },
+    {
+      "questionNum": 1457,
+      "question": "A clearwell of 1600 m³ serves a flow of 8 ML/d with a baffling factor of 0.6. What effective contact time is available?",
+      "options": [
+        "17 minutes",
+        "173 minutes",
+        "288 minutes",
+        "480 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Theoretical detention is 1600 ÷ 8000 = 0.2 days, which is 288 minutes. Applying the baffling factor gives 288 × 0.6 = 173 minutes.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Effective contact time",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert flow",
+          "c": "8 ML/d = 8000 m³/d"
+        },
+        {
+          "l": "Detention",
+          "c": "1600 ÷ 8000 = 0.2 d = 288 min"
+        },
+        {
+          "l": "Effective",
+          "c": "288 × 0.6 = 173 min"
+        }
+      ],
+      "tip": "The 288 distractor is the theoretical time. Only the baffled value may be credited."
+    },
+    {
+      "questionNum": 1458,
+      "question": "A filter of 30 m² treats 4320 m³/d. What is the filtration rate in m/h?",
+      "options": [
+        "3.0 m/h",
+        "6.0 m/h",
+        "9.0 m/h",
+        "144 m/h"
+      ],
+      "correctIndex": 1,
+      "explanation": "The loading is 4320 ÷ 30 = 144 m³/(m²·d). Dividing by 24 hours gives 6.0 m/h.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filtration rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Loading",
+          "c": "4320 m³/d ÷ 30 m² = 144 m³/(m²·d)"
+        },
+        {
+          "l": "Convert",
+          "c": "144 ÷ 24 = 6.0 m/h"
+        }
+      ],
+      "tip": "The 144 distractor is the daily rate. Check which time unit the question asks for."
+    },
+    {
+      "questionNum": 1459,
+      "question": "How much water must be added to 40 L of 25 percent solution to dilute it to 10 percent?",
+      "options": [
+        "40 L of water",
+        "60 L of water",
+        "100 L of water",
+        "160 L of water"
+      ],
+      "correctIndex": 1,
+      "explanation": "The final volume needed is 25 × 40 ÷ 10 = 100 L. Since 40 L of concentrate is already present, the water to add is 100 − 40 = 60 L.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Dilution water",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Relationship",
+          "c": "C₁V₁ = C₂V₂"
+        },
+        {
+          "l": "Final volume",
+          "c": "25% × 40 L ÷ 10% = 100 L"
+        },
+        {
+          "l": "Water added",
+          "c": "100 L − 40 L = 60 L"
+        },
+        {
+          "l": "Check",
+          "c": "The 100 distractor is total volume, not water added."
+        }
+      ],
+      "tip": "Read whether the question asks for final volume or for the volume of water to add."
+    },
+    {
+      "questionNum": 1460,
+      "question": "A plant applies 2.2 mg/L of coagulant to 25 ML/d. What is the daily coagulant requirement?",
+      "options": [
+        "11 kg/d",
+        "55 kg/d",
+        "110 kg/d",
+        "550 kg/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "Feed rate equals dose times flow: 2.2 mg/L × 25 ML/d = 55 kg/d.",
+      "difficulty": "easy",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Feed rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "kg/d = mg/L × ML/d"
+        },
+        {
+          "l": "Substitute",
+          "c": "2.2 × 25"
+        },
+        {
+          "l": "Solve",
+          "c": "= 55 kg/d"
+        }
+      ],
+      "tip": "This single relationship covers the majority of chemical feed questions on an operator exam."
+    },
+    {
+      "questionNum": 1461,
+      "question": "A flow of 420 m³/h is measured at the plant outlet. What is this in ML/d?",
+      "options": [
+        "4.2 ML/d",
+        "10.1 ML/d",
+        "17.5 ML/d",
+        "42.0 ML/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "Over 24 hours the volume is 420 × 24 = 10 080 m³/d, which is 10.1 ML/d.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Flow conversion",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Per day",
+          "c": "420 m³/h × 24 h = 10 080 m³/d"
+        },
+        {
+          "l": "Convert",
+          "c": "10 080 ÷ 1000 = 10.1 ML/d"
+        }
+      ],
+      "tip": "1000 m³ equals 1 ML. Most metric water conversions reduce to moving a decimal point."
+    },
+    {
+      "questionNum": 1462,
+      "question": "A pump must overcome 18 m of static lift and 22 percent additional head from friction. What is the total dynamic head?",
+      "options": [
+        "18.0 m",
+        "22.0 m",
+        "22.0 m plus static",
+        "22.0 m total"
+      ],
+      "correctIndex": 1,
+      "explanation": "Friction adds 18 × 0.22 = 4.0 m to the static lift, giving a total dynamic head of 18 + 4 = 22 m.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Total dynamic head",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Friction",
+          "c": "18 m × 0.22 = 4.0 m"
+        },
+        {
+          "l": "Total",
+          "c": "18 m + 4.0 m = 22 m"
+        }
+      ],
+      "tip": "A percentage friction allowance is applied to the static head, then added to it."
+    },
+    {
+      "questionNum": 1463,
+      "question": "A motor draws 22 kW and the pump produces 15.4 kW of water power. What is the overall efficiency?",
+      "options": [
+        "43 percent",
+        "60 percent",
+        "70 percent",
+        "143 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Efficiency is output divided by input: 15.4 ÷ 22 × 100 = 70 percent.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Pump efficiency",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Efficiency = output ÷ input × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "15.4 ÷ 22 × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 70 percent"
+        }
+      ],
+      "tip": "Track efficiency at a consistent duty point. Falling efficiency signals wear."
+    },
+    {
+      "questionNum": 1464,
+      "question": "A plant treats 14 ML/d and loses 2 percent of production to plant process use. How much water is used internally?",
+      "options": [
+        "0.14 ML/d",
+        "0.28 ML/d",
+        "1.40 ML/d",
+        "2.80 ML/d"
+      ],
+      "correctIndex": 1,
+      "explanation": "Two percent of 14 ML/d is 14 × 0.02 = 0.28 ML/d used within the plant.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Plant process water",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Calculate",
+          "c": "14 ML/d × 0.02 = 0.28 ML/d"
+        },
+        {
+          "l": "Note",
+          "c": "Backwashing is usually the largest component of plant process water."
+        }
+      ],
+      "tip": "Plant process water reduces the volume available for supply, so it belongs in the water balance."
+    },
+    {
+      "questionNum": 1465,
+      "question": "A community's peak day demand is 4.8 ML/d and its average day demand is 3.0 ML/d. What is the peaking factor?",
+      "options": [
+        "1.4",
+        "1.6",
+        "1.8",
+        "2.0"
+      ],
+      "correctIndex": 1,
+      "explanation": "The peaking factor is peak day divided by average day: 4.8 ÷ 3.0 = 1.6.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Peaking factor",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Peaking factor = peak day ÷ average day"
+        },
+        {
+          "l": "Substitute",
+          "c": "4.8 ÷ 3.0"
+        },
+        {
+          "l": "Solve",
+          "c": "= 1.6"
+        },
+        {
+          "l": "Use",
+          "c": "Plant and storage are sized for peak demand, not average demand."
+        }
+      ],
+      "tip": "Smaller communities typically have higher peaking factors than large urban systems."
+    },
+    {
+      "questionNum": 1466,
+      "question": "A sample shows 250 organisms per 100 mL before treatment and 25 per 100 mL after. What log reduction is this?",
+      "options": [
+        "0.5-log",
+        "1-log",
+        "2-log",
+        "10-log"
+      ],
+      "correctIndex": 1,
+      "explanation": "The count has fallen by a factor of ten, since 250 ÷ 25 = 10. A tenfold reduction is 1-log.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Log reduction",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Ratio",
+          "c": "250 ÷ 25 = 10"
+        },
+        {
+          "l": "Log",
+          "c": "10 = 10¹, so 1-log reduction"
+        }
+      ],
+      "tip": "Work out the ratio first, then convert to logs. Ten is 1-log, a hundred is 2-log."
+    },
+    {
+      "questionNum": 1467,
+      "question": "A filter uses 95 m³ per backwash and is washed twice daily. If the plant produces 7.6 ML/d, what percentage of production is used?",
+      "options": [
+        "1.25 percent",
+        "2.50 percent",
+        "5.00 percent",
+        "12.5 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Daily backwash is 95 × 2 = 190 m³, and production is 7600 m³/d. The proportion is 190 ÷ 7600 × 100 = 2.5 percent.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash percentage",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Backwash",
+          "c": "95 m³ × 2 = 190 m³/d"
+        },
+        {
+          "l": "Production",
+          "c": "7.6 ML/d = 7600 m³/d"
+        },
+        {
+          "l": "Percentage",
+          "c": "190 ÷ 7600 × 100 = 2.5%"
+        }
+      ],
+      "tip": "Track backwash percentage over time. A rising value means filters are loading faster."
+    },
+    {
+      "questionNum": 1468,
+      "question": "A rectangular basin 24 m long and 6 m wide has water 3 m deep and receives 2160 m³/d. What is the detention time?",
+      "options": [
+        "2.4 hours",
+        "4.8 hours",
+        "9.6 hours",
+        "12.0 hours"
+      ],
+      "correctIndex": 1,
+      "explanation": "The volume is 24 × 6 × 3 = 432 m³. Detention is 432 ÷ 2160 = 0.2 days, which is 4.8 hours.",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Basin detention",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Volume",
+          "c": "24 × 6 × 3 = 432 m³"
+        },
+        {
+          "l": "Detention",
+          "c": "432 ÷ 2160 = 0.2 d"
+        },
+        {
+          "l": "To hours",
+          "c": "0.2 × 24 = 4.8 hours"
+        }
+      ],
+      "tip": "Two-step problems are common. Find the volume first, then apply the flow."
+    },
+    {
+      "questionNum": 1469,
+      "question": "The same basin, 24 m by 6 m, receives 2160 m³/d. What is its surface overflow rate?",
+      "options": [
+        "9 m³/(m²·d)",
+        "15 m³/(m²·d)",
+        "30 m³/(m²·d)",
+        "90 m³/(m²·d)"
+      ],
+      "correctIndex": 1,
+      "explanation": "The surface area is 24 × 6 = 144 m². Dividing the flow gives 2160 ÷ 144 = 15 m³/(m²·d).",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Surface overflow rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area",
+          "c": "24 m × 6 m = 144 m²"
+        },
+        {
+          "l": "SOR",
+          "c": "2160 ÷ 144 = 15 m³/(m²·d)"
+        },
+        {
+          "l": "Note",
+          "c": "Depth affects detention time but not surface overflow rate."
+        }
+      ],
+      "tip": "Detention uses volume; overflow rate uses area. The same basin gives different answers."
+    },
+    {
+      "questionNum": 1470,
+      "question": "A hypochlorite solution tested at 10 percent when delivered now tests at 8 percent. By what percentage has its strength declined?",
+      "options": [
+        "2 percent",
+        "8 percent",
+        "20 percent",
+        "25 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "The decline is 10 − 8 = 2 percentage points, which relative to the original strength is 2 ÷ 10 × 100 = 20 percent.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Strength decline",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Change",
+          "c": "10% − 8% = 2 percentage points"
+        },
+        {
+          "l": "Relative",
+          "c": "2 ÷ 10 × 100 = 20 percent decline"
+        },
+        {
+          "l": "Consequence",
+          "c": "The feed rate must rise by 25 percent for the same dose."
+        }
+      ],
+      "tip": "Distinguish percentage points from percentage change. They are different quantities."
+    },
+    {
+      "questionNum": 1471,
+      "question": "Why is a treated water sample sometimes analysed for both free and total chlorine?",
+      "options": [
+        "The difference reveals combined chlorine, which indicates ammonia present",
+        "Total chlorine measurement verifies the accuracy of the free chlorine result",
+        "Free chlorine is required for reporting while total chlorine is for control",
+        "The two measurements use different reagents and confirm each other"
+      ],
+      "correctIndex": 0,
+      "explanation": "Total chlorine includes both free and combined forms. Subtracting free from total gives the combined chlorine, which indicates that ammonia or organic nitrogen is present and reacting. In a free chlorine system, unexpected combined chlorine is a signal worth investigating.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Free and total chlorine",
+      "isCalc": "no",
+      "tip": "In a free chlorine plant, rising combined chlorine often means ammonia has appeared in the source."
+    },
+    {
+      "questionNum": 1472,
+      "question": "Why does an operator record the time a sample was collected as well as the result?",
+      "options": [
+        "To calculate the holding time and relate the result to plant conditions",
+        "To determine which operator was on duty when the sample was taken",
+        "To establish the order in which samples reached the laboratory",
+        "To confirm the sample was collected within normal working hours"
+      ],
+      "correctIndex": 0,
+      "explanation": "Collection time allows the holding time to be verified and allows the result to be matched against the plant conditions at that moment, such as flow, dose and raw water quality. Without it, a result cannot be connected to what the plant was doing when the water was produced.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Sample documentation",
+      "isCalc": "no",
+      "tip": "A result without a time cannot be linked to operating conditions and loses most of its diagnostic value."
+    },
+    {
+      "questionNum": 1473,
+      "question": "Why is a duplicate bacteriological sample sometimes collected at the same location and time?",
+      "options": [
+        "To provide a reserve sample if the first bottle is broken in transit",
+        "To check the repeatability of the sampling and analytical process",
+        "To allow the result to be reported for two separate sampling points",
+        "To satisfy the requirement for two samples at each system extremity"
+      ],
+      "correctIndex": 1,
+      "explanation": "Two samples collected identically should give comparable results. Substantial disagreement indicates a problem in sampling technique, handling, or laboratory analysis rather than a change in water quality, which is information that a single sample cannot provide.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Duplicate sampling",
+      "isCalc": "no",
+      "tip": "Quality control samples test the measurement process. Routine samples test the water."
+    },
+    {
+      "questionNum": 1474,
+      "question": "Why does an operator record which sampling point was used when several exist at one location?",
+      "options": [
+        "Because different points can give different results and must be comparable",
+        "Because each sampling point requires a separate laboratory account",
+        "Because the sampling point determines the analytical method applied",
+        "Because sampling points are rotated to distribute wear on the fittings"
+      ],
+      "correctIndex": 0,
+      "explanation": "A sample taken from a rarely used tap, a different position in a building, or a point ahead of a treatment step can differ substantially from the intended location. Recording exactly which point was used keeps results comparable over time and prevents an apparent change that reflects only a change in sampling.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Sampling consistency",
+      "isCalc": "no",
+      "tip": "An unexplained step change in results is often a change in the sampling point, not the water."
+    },
+    {
+      "questionNum": 1475,
+      "question": "Why must a plant know the travel time from the treatment plant to key points in the distribution system?",
+      "options": [
+        "To determine how long a water quality change takes to reach consumers",
+        "To calculate the pressure available at each point in the network",
+        "To establish the pipe diameter required for future system expansion",
+        "To determine the volume of water stored within the distribution mains"
+      ],
+      "correctIndex": 0,
+      "explanation": "Travel time determines when water treated under particular conditions arrives at a location. That matters for interpreting sample results, for planning flushing after an event, for estimating residual decay, and for knowing how long a contamination event takes to propagate.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "System travel time",
+      "isCalc": "no",
+      "tip": "During an incident, travel time tells you which customers received the affected water and when."
+    },
+    {
+      "questionNum": 1476,
+      "question": "Why is the disinfectant residual measured at the same distribution locations each time?",
+      "options": [
+        "To build a comparable record that reveals change over time at each point",
+        "To reduce the travel time required to complete the sampling round",
+        "To ensure each location receives an equal share of the flushing program",
+        "To confirm that the residual is uniform across the entire system"
+      ],
+      "correctIndex": 0,
+      "explanation": "Residual varies naturally between locations because of differing water age and pipe conditions. Sampling the same points repeatedly means a change in the record reflects a change in the system rather than a change in where the sample was taken, which is what makes trending possible.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Residual monitoring locations",
+      "isCalc": "no",
+      "tip": "Consistency of location is what turns a series of readings into a usable trend."
+    },
+    {
+      "questionNum": 1477,
+      "question": "Why is a section of main flushed after it is returned to service following repair?",
+      "options": [
+        "To remove disinfectant residual before customers use the water",
+        "To confirm the repair is watertight under normal operating pressure",
+        "To clear debris, disinfectant and any remaining contamination from the section",
+        "To restore the pressure in the section to match the surrounding system"
+      ],
+      "correctIndex": 2,
+      "explanation": "Flushing removes soil, pipe shavings and other debris introduced during the repair, along with the high concentration disinfectant used, and any water that may have been contaminated. It is completed before the section carries water to customers, and sampling confirms the result.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Post-repair flushing",
+      "isCalc": "no",
+      "tip": "Flushing removes what disinfection has killed as well as what it never reached."
+    },
+    {
+      "questionNum": 1478,
+      "question": "Why does an operator check that a hydrant used for flushing is not drawing from a contaminated area?",
+      "options": [
+        "Because flushing draws water toward the hydrant from surrounding mains",
+        "Because hydrant flow measurement is inaccurate near a contaminated zone",
+        "Because contaminated water would damage the hydrant internal components",
+        "Because the flushing discharge must meet environmental requirements"
+      ],
+      "correctIndex": 0,
+      "explanation": "Opening a hydrant creates flow toward it from every connected direction. If a nearby section is under investigation or has recently been repaired, flushing can draw that water through mains that were unaffected, spreading the problem rather than removing it.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Flushing direction",
+      "isCalc": "no",
+      "tip": "Think about where the water will come from, not only where it will go."
+    },
+    {
+      "questionNum": 1479,
+      "question": "Why does a plant define trigger levels for action that are tighter than regulatory limits?",
+      "options": [
+        "To provide time to respond before a limit is actually exceeded",
+        "To satisfy the requirement that internal limits be documented",
+        "To account for the measurement uncertainty of plant instruments",
+        "To reduce the frequency at which compliance samples must be taken"
+      ],
+      "correctIndex": 0,
+      "explanation": "A regulatory limit is a boundary that must not be crossed, not a target to operate at. Internal action levels set below it give the operator time to investigate and correct a developing trend, so the plant reacts to a warning rather than to a violation that has already occurred.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Action levels",
+      "isCalc": "no",
+      "tip": "Operate to your internal target, and treat the regulatory limit as the failure boundary it is."
+    },
+    {
+      "questionNum": 1480,
+      "question": "Why does a well-run plant investigate near misses that did not result in any water quality impact?",
+      "options": [
+        "Because near misses must be reported in the same manner as incidents",
+        "Because a near miss reveals a weakness before it causes actual harm",
+        "Because near miss records are needed to justify equipment replacement",
+        "Because investigating near misses reduces the frequency of routine audits"
+      ],
+      "correctIndex": 1,
+      "explanation": "A near miss is a failure that happened to be caught by chance, by an alert operator, or by a backup that will not always be present. The underlying weakness is identical to the one that would cause a real event, and investigating it costs nothing compared with waiting for the consequence.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Near miss investigation",
+      "isCalc": "no",
+      "tip": "The difference between a near miss and an incident is often luck, not the strength of the system."
+    }
+  ]
+}

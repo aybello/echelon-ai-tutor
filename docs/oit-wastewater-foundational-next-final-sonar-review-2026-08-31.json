@@ -1,0 +1,97 @@
+{
+  "reviews": [
+    {
+      "questionNum": 239,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The source record’s scoped foundational batch does not include this question; q239 is not one of the supported foundational candidates and is marked for a next batch, so it is outside the approved review scope for this round.",
+        "The explanation adds procedural requirements about atmospheric testing and ventilation that are not present in the candidate’s source citation as provided, creating a source-to-claim mismatch for review purposes."
+      ],
+      "requiredChanges": [
+        "Defer this item to a supported batch or provide an external source record explicitly authorizing q239 for review.",
+        "Trim the explanation so it only states the hazard facts directly supported by CCOHS without adding unsourced procedural steps."
+      ]
+    },
+    {
+      "questionNum": 275,
+      "approved": false,
+      "severity": "major",
+      "reasons": [
+        "The question uses U.S. EPA sanitary/combined sewer terminology but does not clearly frame the item as U.S.-jurisdictional; the source record explicitly notes that any such item must identify its U.S. EPA scope.",
+        "The explanation introduces jurisdictional reporting language and terminology that could imply Ontario regulatory scope, which is not supported by the cited source as written.",
+        "Although the answer choice itself is broadly correct, the candidate does not satisfy the source record’s requirement to explicitly identify U.S. EPA scope."
+      ],
+      "requiredChanges": [
+        "Add explicit U.S. EPA or U.S.-jurisdiction wording to the stem.",
+        "Remove or qualify the sentence about terminology and reporting requirements so it does not imply Ontario applicability."
+      ]
+    },
+    {
+      "questionNum": 276,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is singular and traceable to the EPA collection-system maintenance source.",
+        "The item is foundational and appropriate for an OIT learner because it tests the basic purpose of CCTV inspection without requiring design-level knowledge.",
+        "The distractors are plausible but do not normalize unsafe or incorrect operating practices."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 278,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is traceable to the EPA collection-system maintenance source and matches the foundational objective of identifying smoke testing as an investigation tool.",
+        "The question is appropriate for OIT scope and does not depend on advanced design or regulatory nuance.",
+        "The distractors are plausible and do not encourage unsafe practice."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 296,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is directly supported by the EPA collection-system maintenance source and is traceable as a basic inflow/infiltration control measure.",
+        "The item is foundational for OIT learners and stays within collection-system basics.",
+        "The distractors are plausible while not normalizing unsafe or omitted required actions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 305,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is supported by the EPA collection-system maintenance source and remains at a basic operational level appropriate for OIT learning.",
+        "The question asks about a simple maintenance purpose rather than advanced force-main design.",
+        "The distractors are plausible without promoting unsafe operation."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 429,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The question is directly traceable to Ontario Regulation 129/04, including the required shift-log content.",
+        "The regulatory scope is correct for Ontario and appropriate for an operator-in-training learner because it tests a foundational record-keeping duty.",
+        "Exactly one option is correct and the distractors are plausible without normalizing missed documentation."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 454,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is traceable to CCOHS emergency-planning guidance and appropriately reflects a basic workplace-safety concept.",
+        "The learning objective is foundational for OIT and does not exceed entry-level scope.",
+        "The distractors are plausible while not endorsing unsafe practices."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

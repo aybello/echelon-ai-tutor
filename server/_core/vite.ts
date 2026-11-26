@@ -1,0 +1,112 @@
+import express, { type Express } from "express";
+import fs from "fs";
+import { type Server } from "http";
+import { nanoid } from "nanoid";
+import path from "path";
+import {
+  createServer as createViteServer,
+  type ViteDevServer,
+} from "vite";
+import viteConfig from "../../vite.config";
+import { prepareAppFallback } from "../staticHead";
+
+export async function createViteRenderer(server: Server): Promise<ViteDevServer> {
+  const serverOptions = {
+    middlewareMode: true,
+    hmr: { server },
+    allowedHosts: true as const,
+  };
+
+  const config = typeof viteConfig === "function"
+    ? await viteConfig({ command: "serve", mode: "development", isSsrBuild: false, isPreview: false })
+    : viteConfig;
+  const vite = await createViteServer({
+    ...config,
+    configFile: false,
+    server: serverOptions,
+    appType: "custom",
+  });
+
+  return vite;
+}
+
+export function registerViteFallback(app: Express, vite: ViteDevServer) {
+  app.use(vite.middlewares);
+  // This must be registered after explicit public SSR routes. It is the
+  // development SPA catch-all for any route that SSR does not own.
+  app.use("*", async (req, res, next) => {
+    const url = req.originalUrl;
+
+    try {
+      const clientTemplate = path.resolve(
+        import.meta.dirname,
+        "../..",
+        "client",
+        "index.html"
+      );
+
+      // always reload the index.html file from disk incase it changes
+      let template = await fs.promises.readFile(clientTemplate, "utf-8");
+      template = template.replace(
+        `src="/src/main.tsx"`,
+        `src="/src/main.tsx?v=${nanoid()}"`
+      );
+      const fallback = prepareAppFallback(template, url);
+      const page = await vite.transformIndexHtml(url, fallback.html);
+      res.set("Cache-Control", "no-store");
+      res.status(fallback.status).set({ "Content-Type": "text/html" }).end(page);
+    } catch (e) {
+      vite.ssrFixStacktrace(e as Error);
+      next(e);
+    }
+  });
+}
+
+// Backward-compatible convenience wrapper for callers that do not need to
+// register public SSR routes ahead of Vite's development catch-all.
+export async function setupVite(app: Express, server: Server): Promise<ViteDevServer> {
+  const vite = await createViteRenderer(server);
+  registerViteFallback(app, vite);
+  return vite;
+}
+
+export function serveStatic(app: Express) {
+  const distPath =
+    process.env.NODE_ENV === "development"
+      ? path.resolve(import.meta.dirname, "../..", "dist", "public")
+      : path.resolve(import.meta.dirname, "public");
+  if (!fs.existsSync(distPath)) {
+    console.error(
+      `Could not find the build directory: ${distPath}, make sure to build the client first`
+    );
+  }
+
+  // HTML must be revalidated after a release. Otherwise a cached app shell can
+  // request lazy chunks from the previous build after those files are removed.
+  app.use(
+    express.static(distPath, {
+      index: false,
+      redirect: false,
+      setHeaders(res, filePath) {
+        if (filePath.endsWith(".html")) {
+          res.setHeader("Cache-Control", "no-cache, must-revalidate");
+        }
+      },
+    })
+  );
+
+  // An obsolete hashed chunk is genuinely missing. Do not answer a JS request
+  // with index.html; the browser would get an HTML document as a module.
+  app.use("/assets", (_req, res) => {
+    res.status(404).set("Cache-Control", "no-store").end();
+  });
+
+  // fall through to index.html if the file doesn't exist
+  app.use("*", (req, res, next) => {
+    try {
+      const template = fs.readFileSync(path.resolve(distPath, "index.html"), "utf8");
+      const fallback = prepareAppFallback(template, req.originalUrl);
+      res.status(fallback.status).set({ "Cache-Control": "no-store", "Content-Type": "text/html; charset=utf-8" }).end(fallback.html);
+    } catch (error) { next(error); }
+  });
+}

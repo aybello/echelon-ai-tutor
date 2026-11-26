@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 418,
+    "question": "When a spill or discharge is subject to Ontario's notification requirements, how is notice given under O. Reg. 675/98?",
+    "options": [
+      "By telephoning the Spills Action Centre and providing the required information.",
+      "By waiting for laboratory confirmation before contacting any provincial authority.",
+      "By recording the incident only in the plant logbook and providing no external notice.",
+      "By submitting an annual summary without making any prompt incident notification."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 675/98 sets out how notice is given when a discharge or spill is subject to notification requirements. The regulation states that notice is given by telephoning the Spills Action Centre and providing the required information.",
+    "sourceTitle": "Ontario Regulation 675/98 — Classification and Exemption of Spills and Reporting of Discharges",
+    "sourceReference": "Section 13(1) identifies the notification context; section 13(2) states that notice is given by telephoning the Spills Action Centre and providing the required information.",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/980675"
+  }
+]

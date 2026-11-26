@@ -1,0 +1,33 @@
+import { Link } from "wouter";
+import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
+
+const questions = [
+  ["What does Echelon include?", "Study tools and question totals vary by course. Depending on the course, tools may include practice questions, mock exams, explanations, formula resources, progress tracking, and AI-assisted tutoring. Check the matching course page for its inclusions and paid access terms before checkout; not every tool is included in Ontario 309A preparation."],
+  ["Which certifications are supported?", "Echelon provides exam preparation for the skilled-trades workforce, starting with water and wastewater: Ontario operator certification courses, WPI-aligned water treatment, wastewater treatment, water distribution, and wastewater collection courses in Canada and supported US jurisdictions, plus Ontario 309A Construction Electrician preparation. Availability varies by course and jurisdiction, not every trade or exam is offered, and US state coverage is labelled full, partial, or limited on each state page. Confirm current requirements with your certifying authority."],
+  ["Are you affiliated with a certifying authority?", "No. Echelon Institute is an independent exam-preparation provider and is not affiliated with MOECP, OWWCO, WPI, EOCP, or a US state certifying authority."],
+  ["How many practice questions are available?", "The platform contains more than 18,000 practice questions across its current course catalogue. Individual course totals are shown on the pricing page."],
+  ["How long does access last?", "For paid operator courses, an Individual Exam Pass provides 12 months of access to one selected course from successful payment. Teams Flex licences use the 3- or 6-month term displayed at checkout, subject to the activation deadline. Ontario 309A practice and mock exams are free."],
+  ["Can I try Echelon before paying?", "Yes. Paid operator courses include 15 free practice questions without an account or credit card. The OIT preview also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages. Full access to paid operator courses requires an Individual Exam Pass or an assigned team licence. Ontario 309A practice and mock exams are free."],
+  ["Does Echelon guarantee that I will pass?", "No exam-preparation service can guarantee an outcome. Echelon helps you practise, identify weak areas, and prepare against the applicable exam blueprint."],
+  ["How do refunds work?", "Refund eligibility depends on the product and timing. Review the Refund Policy before purchase or contact abello@echeloninstitute.ca."],
+] as const;
+
+export default function FAQ() {
+  usePageMeta({ title: "Frequently Asked Questions | Echelon Institute", description: "Clear answers about Echelon courses, certification coverage, access terms, pricing, refunds, and institutional plans.", keywords: "Echelon Institute FAQ, operator certification exam prep" });
+  return <main className="public-redesign public-redesign-faq min-h-screen bg-slate-50 text-slate-900">
+    <SiteNav currentPath="/faq" />
+    <section className="mx-auto max-w-3xl px-6 py-16">
+      <p className="text-sm font-semibold uppercase tracking-wider text-blue-700">Support</p>
+      <h1 className="mt-2 text-4xl font-bold tracking-tight">Frequently asked questions</h1>
+      <p className="mt-4 text-lg text-slate-600">Straight answers about coverage, access, and what Echelon can and cannot promise.</p>
+      <div className="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-6">
+        {questions.map(([question, answer]) => <section key={question} className="py-6">
+          <h2 className="text-lg font-semibold">{question}</h2>
+          <p className="mt-2 leading-7 text-slate-600">{answer}</p>
+        </section>)}
+      </div>
+      <p className="mt-8 text-slate-600">Still need help? <a className="font-semibold text-blue-700 underline" href="mailto:abello@echeloninstitute.ca">Email Echelon</a> or review our <Link className="font-semibold text-blue-700 underline" href="/terms">Terms</Link>.</p>
+    </section>
+  </main>;
+}

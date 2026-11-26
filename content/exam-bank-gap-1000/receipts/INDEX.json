@@ -1,0 +1,152 @@
+{
+ "build": "exam-bank-gap-1000",
+ "reviewer": "owner-authorized-ai-review",
+ "model": "Muse Wonder",
+ "reviewDateUtc": "2026-11-23T18:41:05Z",
+ "sourceBranch": "exam-bank-gap-1000-2026-11-23",
+ "baseCommit": "6b15ae5120c63cbfd28ea1c2c7aff31cc64ff526",
+ "banks": {
+  "class2-water": {
+   "packageSha256": "abb299e7cdd0c6ae5daf10739c3e2b1bd3518b407df3e5e1147a8b9ed952b833",
+   "items": 51,
+   "requested": 51
+  },
+  "class3-water": {
+   "packageSha256": "25efbb3a71364fe8ba15fca29012718e58d01b61bf82d635f099852030b9405b",
+   "items": 239,
+   "requested": 239
+  },
+  "class4-water": {
+   "packageSha256": "cab27404b38a5eed3290e7ae23223e6f118eea2413c7df27c3c79602e4edaaff",
+   "items": 231,
+   "requested": 231
+  },
+  "class2-ww": {
+   "packageSha256": "21b62e12fd185872a9e69a76be1150c4502a32480638e5d7b47506249d2ba5ad",
+   "items": 6,
+   "requested": 6
+  },
+  "class3-ww": {
+   "packageSha256": "cdea8ece25ac3f91f24caf5d84fef9f5ed16247e026004cf514439688268a384",
+   "items": 220,
+   "requested": 220
+  },
+  "class4-ww": {
+   "packageSha256": "7f71ea7340903fa348fcd6a6857b80fdef79f1b4bb0030c2c1032f89b319f7cb",
+   "items": 212,
+   "requested": 212
+  },
+  "wqa": {
+   "packageSha256": "3911ca017d054016154c572fa14ca3500c044398ef5e822fcd1c12a95c3ea707",
+   "items": 312,
+   "requested": 312
+  },
+  "class2-water-dist": {
+   "packageSha256": "723652e18d81fffa1ae9a3b34b8395d6d4cc7cf8edccc13b41fcedbdc2a9260c",
+   "items": 16,
+   "requested": 16
+  },
+  "class4-water-dist": {
+   "packageSha256": "4ab2d7952643e3010dddee50c7c10f3d19a83b7ba559682a54c2c3e8157f821a",
+   "items": 235,
+   "requested": 235
+  },
+  "class3-wastewater-coll": {
+   "packageSha256": "38b0553b49759d7e77e9a75865c0fd0e76bc206940e49181dd24c191f5ea2a1b",
+   "items": 230,
+   "requested": 230
+  },
+  "class4-wastewater-coll": {
+   "packageSha256": "0134cc5fe0d1f593129770af3dedd0cfd62991a86cb98cd526494bef72e441d3",
+   "items": 230,
+   "requested": 230
+  },
+  "wpi-class1-water": {
+   "packageSha256": "4aaffc714e4758479d759dd4646bdd61a114c579e999f037e5993c540be35238",
+   "items": 203,
+   "requested": 203
+  },
+  "wpi-class2-water": {
+   "packageSha256": "a2516f03456d73fac7ff39c78e60f7c69846ba8467b35e8b82795d4104ea751a",
+   "items": 207,
+   "requested": 207
+  },
+  "wpi-class3-water": {
+   "packageSha256": "cf253a4b7a19b6a073e0adc4d84cc65e8dd5abebd553899f528103d7f424e2d4",
+   "items": 242,
+   "requested": 242
+  },
+  "wpi-class4-water": {
+   "packageSha256": "a6ba3d9701c4eafbf4f8274526a7f248629b4329afabb249b7ee4a4fa34414b6",
+   "items": 128,
+   "requested": 128
+  },
+  "wpi-class1-wastewater": {
+   "packageSha256": "7515cfe539d74f76dc45c74a17b3020315a757324cd3094ba0a65a24d2922f8e",
+   "items": 209,
+   "requested": 209
+  },
+  "wpi-class2-wastewater": {
+   "packageSha256": "0cac70dde6753b690a4871975acb5c18c650df0c2f1e9568a6cd6e736e1345bc",
+   "items": 203,
+   "requested": 203
+  },
+  "wpi-class3-wastewater": {
+   "packageSha256": "9240efe7f29b3405ebaafbf71805befb7daba063d04d9509f4649118aff9f0a7",
+   "items": 194,
+   "requested": 194
+  },
+  "wpi-class1-water-dist": {
+   "packageSha256": "23be7db0e09893ad7fa81371e643599d4d0e7d55aa9e4e6eeab6760709ea7ca1",
+   "items": 302,
+   "requested": 302
+  },
+  "wpi-class2-water-dist": {
+   "packageSha256": "6f4d813cb77b05238b71f9a954a8b875f465da7d5d04feb4fd423e93b403d7c0",
+   "items": 206,
+   "requested": 206
+  },
+  "wpi-class3-water-dist": {
+   "packageSha256": "23e6b83178d6a95527df37ff2f6dfb795596e333a649f00239e8343b4d711841",
+   "items": 189,
+   "requested": 189
+  },
+  "wpi-class4-water-dist": {
+   "packageSha256": "00bc9af76d8369801874d905dca3cde237f17f9a1ae83e0b2c3581075a5ddab9",
+   "items": 183,
+   "requested": 183
+  },
+  "wpi-class1-water-coll": {
+   "packageSha256": "2392b62691a49c9179c5772c793ff57293992b50c2f6b50f4af244901a6b520b",
+   "items": 302,
+   "requested": 302
+  },
+  "wpi-class2-water-coll": {
+   "packageSha256": "d5aeb194822c1352ed82c052518ed08a238f32ec2bfe3f06d897c12065c71a5d",
+   "items": 298,
+   "requested": 298
+  },
+  "wpi-class3-water-coll": {
+   "packageSha256": "1ab54ca71935b84dee7f57a4cf3298b7705030cbc525c794db53e09b54c8a0cf",
+   "items": 297,
+   "requested": 297
+  },
+  "wpi-class4-water-coll": {
+   "packageSha256": "aafabdbd8cd85895bad541407238ac2af6e45c82bdd19c19a78f89d9d6b6f9ae",
+   "items": 297,
+   "requested": 297
+  }
+ },
+ "engineeringVerification": {
+  "verifiedBy": "Manus engineering verification (not a new content review)",
+  "verifiedAtUtc": "2026-11-23T18:59:04Z",
+  "checkers": {
+   "validate_gap.py": "2dc1a05aee0cd04c4fadd263ae0b724005ad793c959876b60d227f6940f3dab5",
+   "verify_calcs_gap.py": "5d4a5952b765ee626744a180f47f7b82d4b9095a58759801e0132865f72b4382",
+   "dedup_gap.py": "0f06ca95d080fba1e23778d547d0cb75ae74c9f384c7c8cb4c63220f3ceb4933",
+   "quality_checks.py": "2fa37c2d8676b68b4b73406ed3f53a68e3569bf2146febbb6feffee5e421d0b6",
+   "receipts.py": "b9d4fa17b358ac50ec4cfe38de9c5bc236cb975ee520416743f36d75563c3616",
+   "verify_receipts.py": "edee2a3c35dcec49a61cac9381b5ec2f00118bcc8e4ee5b1da1ca9c0906f368e"
+  }
+ }
+}

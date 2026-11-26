@@ -1,0 +1,36 @@
+-- Internal historical-customer recovery evidence ledger.
+-- This is additive only. It records reviewable Stripe/archive evidence and
+-- intentionally does not create purchases, subscriptions, or access rights.
+CREATE TABLE IF NOT EXISTS `customer_recovery_evidence` (
+  `id` int AUTO_INCREMENT NOT NULL,
+  `sourceEvidenceKey` varchar(191) NOT NULL,
+  `sourceType` enum('stripe_payment','stripe_checkout','manual_document') NOT NULL,
+  `sourceArchiveRef` varchar(191) NOT NULL,
+  `stripePaymentIntentId` varchar(128),
+  `stripeCheckoutSessionId` varchar(128),
+  `stripeCustomerId` varchar(128),
+  `customerEmail` varchar(320) NOT NULL,
+  `normalizedEmail` varchar(320) NOT NULL,
+  `customerName` varchar(128),
+  `amountMinor` int NOT NULL,
+  `currency` varchar(3) NOT NULL,
+  `paymentStatus` enum('succeeded','refunded','disputed','unknown') NOT NULL,
+  `paymentCreatedAt` timestamp NULL,
+  `candidateProductKey` varchar(64),
+  `candidateAccessExpiresAt` timestamp NULL,
+  `reviewStatus` enum('staged','mapped','claim_verified','approved','rejected','imported') NOT NULL DEFAULT 'staged',
+  `claimVerifiedAt` timestamp NULL,
+  `reviewedByUserId` int,
+  `reviewedAt` timestamp NULL,
+  `reviewNote` text,
+  `importedPurchaseId` int,
+  `importedAt` timestamp NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `customer_recovery_evidence_pk` PRIMARY KEY (`id`),
+  CONSTRAINT `customer_recovery_evidence_source_key_unique` UNIQUE (`sourceEvidenceKey`),
+  CONSTRAINT `customer_recovery_evidence_payment_intent_unique` UNIQUE (`stripePaymentIntentId`),
+  CONSTRAINT `customer_recovery_evidence_checkout_session_unique` UNIQUE (`stripeCheckoutSessionId`),
+  INDEX `customer_recovery_evidence_status_idx` (`reviewStatus`, `createdAt`),
+  INDEX `customer_recovery_evidence_email_idx` (`normalizedEmail`)
+);

@@ -1,0 +1,547 @@
+/**
+ * Regression tests for resolveEntitlementsByEmail — the central entitlement resolver.
+ *
+ * Covers:
+ *   - Null/empty email → no access (fail closed)
+ *   - DB unavailable → no access (fail closed)
+ *   - Unknown product key → no access (fail closed)
+ *   - Refunded / disputed purchase → no access
+ *   - Null status purchase (legacy) → access granted
+ *   - Cancelled subscription → no access
+ *   - Active subscription → correct exam types unlocked
+ *   - past_due subscription → access granted (grace period)
+ *   - Unknown tier/province → no access (fail closed, no throw)
+ *   - Multiple entitlements → deduplicated union
+ *   - Manager with active org → isManager=true, hasAnyAccess=true
+ *   - Manager with cancelled org → no access
+ *   - Email normalisation (whitespace, uppercase, and Gmail plus-addresses)
+ *   - Ontario distribution/collection via subscription
+ *   - Ontario distribution via direct purchase
+ *   - WPI collection via western subscription
+ */
+
+import { describe, it, expect, vi, beforeEach } from "vitest";
+
+// ── Mock getDb before importing access ──────────────────────────────────────
+vi.mock("../db", () => ({ getDb: vi.fn() }));
+
+import { getDb } from "../db";
+import { normalizeEmail, resolveEntitlementsByEmail } from "./access";
+
+// ── Types ────────────────────────────────────────────────────────────────────
+
+type PurchaseRow = { productKey: string; status: string | null; accessExpiresAt: Date | null };
+type SubRow = {
+  tier: string;
+  province: string;
+  status: string;
+  currentPeriodEnd: Date;
+  orgId: number | null;
+};
+type OrgRow = {
+  id: number;
+  status: string;
+  termEnd: Date;
+  createdAt: Date;
+};
+type OrgSeatRow = {
+  courseKey: string | null;
+  courseKeys: string | null;
+  orgProvince: string;
+  orgTier: string;
+  orgTermEnd: Date;
+  orgStatus: string;
+};
+
+// ── Dates ────────────────────────────────────────────────────────────────────
+
+const FUTURE = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
+
+// ── DB mock factory ──────────────────────────────────────────────────────────
+//
+// The resolver makes 5 sequential DB calls:
+//   Call 1: purchases  — .select().from().where()  → returns PurchaseRow[]
+//   Call 2: subscriptions — .select().from().where() → returns SubRow[]
+//   Call 3: org seat check — .select().from().innerJoin().where() → returns OrgSeatRow[]
+//   Call 4: Flex licence check
+//   Call 5: manager check — .select().from().where() → returns OrgRow[]
+//
+// We track call order with a counter and return the right rows for each call.
+
+function mockDb(
+  purchaseRows: PurchaseRow[],
+  subRows: SubRow[],
+  orgRows: OrgRow[],
+  orgSeatRows: OrgSeatRow[] = [],
+) {
+  let call = 0;
+
+  const makeWhere = (hasInnerJoin = false) => ({
+    where: (..._args: any[]) => {
+      call++;
+      if (call === 1) return Promise.resolve(purchaseRows);
+      if (call === 2) return Promise.resolve(subRows);
+      if (call === 3) {
+        // Model the assigned/nonexpired seat predicate enforced by SQL.
+        return Promise.resolve(orgSeatRows.filter(row => row.orgTermEnd > new Date()));
+      }
+      if (call === 4) return Promise.resolve([]); // Flex
+      // call 5 — manager check
+      if (call === 5) return Promise.resolve(orgRows);
+      return Promise.resolve([]); // Independent delegate / paid Flex inventory lookup
+    },
+  });
+
+  const db = {
+    select: () => ({
+      from: () => ({
+        ...makeWhere(),
+        innerJoin: () => makeWhere(true),
+      }),
+    }),
+  };
+
+  vi.mocked(getDb).mockResolvedValue(db as any);
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function purchase(
+  productKey: string,
+  status: string | null = null,
+  accessExpiresAt: Date | null = null,
+): PurchaseRow {
+  return { productKey, status, accessExpiresAt };
+}
+
+function sub(
+  tier: string,
+  province: string,
+  status = "active",
+  currentPeriodEnd = FUTURE,
+  orgId: number | null = null
+): SubRow {
+  return { tier, province, status, currentPeriodEnd, orgId };
+}
+
+function orgSeat(courseKey: string): OrgSeatRow {
+  return {
+    courseKey,
+    courseKeys: null,
+    orgProvince: "ontario",
+    orgTier: "stream-water",
+    orgTermEnd: FUTURE,
+    orgStatus: "active",
+  };
+}
+
+function org(
+  status = "active",
+  id = 1,
+  createdAt = new Date("2026-08-28T19:00:00.000Z"),
+  termEnd = FUTURE,
+): OrgRow {
+  return { id, status, termEnd, createdAt };
+}
+
+// ── Tests ────────────────────────────────────────────────────────────────────
+
+describe("resolveEntitlementsByEmail", () => {
+  beforeEach(() => vi.clearAllMocks());
+
+  // ── Fail-closed edge cases ─────────────────────────────────────────────────
+
+  it("returns no access for null email", async () => {
+    const r = await resolveEntitlementsByEmail(null);
+    expect(r.hasAnyAccess).toBe(false);
+    expect(r.unlockedExamTypes).toHaveLength(0);
+    expect(r.email).toBe("");
+  });
+
+  it("returns no access for blank email", async () => {
+    const r = await resolveEntitlementsByEmail("   ");
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("returns no access when db is unavailable", async () => {
+    vi.mocked(getDb).mockResolvedValue(null as any);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.hasAnyAccess).toBe(false);
+    expect(r.unlockedExamTypes).toHaveLength(0);
+  });
+
+  it("returns no access for unknown product key (fail closed)", async () => {
+    mockDb([purchase("totally-unknown-product-key")], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toHaveLength(0);
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  // ── Purchase status filtering ──────────────────────────────────────────────
+
+  it("grants access for purchase with null status (legacy active)", async () => {
+    mockDb([purchase("class1-water", null)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class1-water");
+    expect(r.sources).toContain("purchase");
+    expect(r.hasAnyAccess).toBe(true);
+  });
+
+  it("grants access for purchase with status=active", async () => {
+    mockDb([purchase("class2-water", "active")], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class2-water");
+  });
+
+  it("grandfathers a purchase with no expiry", async () => {
+    mockDb([purchase("class2-water", "active", null)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class2-water");
+  });
+
+  it("grants access before an Individual Exam Pass expires", async () => {
+    mockDb([purchase("class2-water", "active", FUTURE)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class2-water");
+  });
+
+  it("denies access after an Individual Exam Pass expires", async () => {
+    const past = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    mockDb([purchase("class2-water", "active", past)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).not.toContain("class2-water");
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("denies access at the exact recorded Individual Exam Pass expiry boundary", async () => {
+    vi.useFakeTimers();
+    try {
+      const cutoff = new Date("2027-09-21T14:30:00.000Z");
+      vi.setSystemTime(cutoff);
+
+      mockDb([purchase("class2-water", "active", new Date(cutoff.getTime() + 1))], [], []);
+      await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toMatchObject({
+        unlockedExamTypes: ["class2-water"],
+      });
+
+      mockDb([purchase("class2-water", "active", cutoff)], [], []);
+      await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toMatchObject({
+        unlockedExamTypes: [],
+      });
+
+      mockDb([purchase("class2-water", "active", new Date(cutoff.getTime() - 1))], [], []);
+      await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toMatchObject({
+        unlockedExamTypes: [],
+      });
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("denies access for refunded purchase", async () => {
+    mockDb([purchase("class3-water", "refunded")], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).not.toContain("class3-water");
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("denies access for disputed purchase", async () => {
+    mockDb([purchase("class4-water", "disputed")], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).not.toContain("class4-water");
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  // ── Subscription status filtering ─────────────────────────────────────────
+
+  it("grants access for active Ontario subscription", async () => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class1-water");
+    expect(r.unlockedExamTypes).toContain("class1-ww");
+    expect(r.sources).toContain("subscription");
+  });
+
+  it("resolves a Team Annual org row only through its exact active course assignment", async () => {
+    mockDb(
+      [],
+      [sub("class1", "ontario", "active", FUTURE, 701)],
+      [],
+      [orgSeat("class1-water")]
+    );
+
+    const r = await resolveEntitlementsByEmail("annual-operator@echelon.test");
+
+    expect(r.unlockedExamTypes).toContain("class1-water");
+    // Same class, but different purchased stream/course.
+    expect(r.unlockedExamTypes).not.toContain("class1-ww");
+    // Different course/class in the same regional catalogue.
+    expect(r.unlockedExamTypes).not.toContain("class2-water");
+    // Different regional stream must not be inferred from an Ontario Annual row.
+    expect(r.unlockedExamTypes).not.toContain("wpi-class1-water");
+    expect(r.activeSubscriptionRows).toEqual([]);
+    expect(r.sources).not.toContain("subscription");
+    expect(r.sources).toContain("org_seat");
+  });
+
+  it.each(["cancelled", "revoked"])("does not rescue a stale org subscription for a %s organization", async status => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE, 701)], [], [{ ...orgSeat("class1-water"), orgStatus: status }]);
+    const result = await resolveEntitlementsByEmail("revoked-seat@example.test");
+    expect(result.unlockedExamTypes).toEqual([]);
+    expect(result.hasAnyAccess).toBe(false);
+  });
+
+  it("does not rescue an expired organization through a still-active org subscription", async () => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE, 701)], [], [{ ...orgSeat("class1-water"), orgTermEnd: new Date(0) }]);
+    const result = await resolveEntitlementsByEmail("expired-seat@example.test");
+    expect(result.unlockedExamTypes).toEqual([]);
+  });
+
+  it("does not rescue a revoked seat with no assigned membership through its stale org subscription", async () => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE, 701)], []);
+    expect((await resolveEntitlementsByEmail("revoked-seat@example.test")).unlockedExamTypes).toEqual([]);
+  });
+
+  it("preserves an independent valid personal subscription alongside a stale org row", async () => {
+    mockDb([], [sub("all-access", "ontario", "active", FUTURE, 701), sub("class2", "western")], []);
+    const result = await resolveEntitlementsByEmail("personal-and-org@example.test");
+    expect(result.unlockedExamTypes).toContain("wpi-class2-water");
+    expect(result.unlockedExamTypes).not.toContain("class1-water");
+    expect(result.activeSubscriptionRows).toHaveLength(1);
+    expect(result.activeSubscriptionRows[0].orgId).toBeNull();
+  });
+
+  it("does not broaden a Western Annual course into wastewater in the same class", async () => {
+    mockDb([], [sub("class1", "western", "active", FUTURE, 701)], [], [{ ...orgSeat("wpi-class1-water"), orgProvince: "western" }]);
+    const result = await resolveEntitlementsByEmail("western-seat@example.test");
+    expect(result.unlockedExamTypes).toContain("wpi-class1-water");
+    expect(result.unlockedExamTypes).not.toContain("wpi-class1-wastewater");
+    expect(result.unlockedExamTypes).not.toContain("wpi-class1-water-dist");
+  });
+
+  it("grants access for past_due subscription (grace period)", async () => {
+    mockDb([], [sub("class2", "ontario", "past_due", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class2-water");
+    expect(r.hasAnyAccess).toBe(true);
+  });
+
+  it("denies access for cancelled subscription", async () => {
+    mockDb([], [sub("class3", "ontario", "cancelled", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).not.toContain("class3-water");
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("does not throw for unknown tier (fail closed)", async () => {
+    mockDb([], [sub("class99", "ontario", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    // class99 not in ONTARIO_BY_TIER → returns [] → no access
+    expect(r.unlockedExamTypes).toHaveLength(0);
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("does not throw for unknown province (fail closed)", async () => {
+    mockDb([], [sub("class1", "mars", "active", FUTURE)], []);
+    // Should not throw — resolver catches per-row errors
+    await expect(resolveEntitlementsByEmail("user@example.com")).resolves.toBeDefined();
+  });
+
+  // ── Western Canada subscriptions ───────────────────────────────────────────
+
+  it("grants correct WPI exam types for western subscription", async () => {
+    mockDb([], [sub("class2", "western", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("wpi-class2-water");
+    expect(r.unlockedExamTypes).toContain("wpi-class2-wastewater");
+    expect(r.unlockedExamTypes).toContain("wpi-class2-water-dist");
+    expect(r.unlockedExamTypes).toContain("wpi-class2-water-coll");
+  });
+
+  // ── Multiple entitlements ──────────────────────────────────────────────────
+
+  it("combines purchase and subscription without duplicates", async () => {
+    mockDb(
+      [purchase("class1-water", null)],
+      [sub("class1", "ontario", "active", FUTURE)],
+      [],
+    );
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    const count = r.unlockedExamTypes.filter(t => t === "class1-water").length;
+    expect(count).toBe(1); // deduplicated
+    expect(r.unlockedExamTypes).toContain("class1-ww"); // from subscription
+    expect(r.sources).toContain("purchase");
+    expect(r.sources).toContain("subscription");
+  });
+
+  // ── Manager access ─────────────────────────────────────────────────────────
+
+  it("sets isManager=true and hasAnyAccess=true for active org manager", async () => {
+    mockDb([], [], [org("active")]);
+    const r = await resolveEntitlementsByEmail("manager@example.com");
+    expect(r.isManager).toBe(true);
+    expect(r.hasAnyAccess).toBe(true);
+    expect(r.sources).toContain("org_manager");
+    // Manager alone does NOT grant course exam types
+    expect(r.unlockedExamTypes).toHaveLength(0);
+  });
+
+  it("sets isManager=true for past_due org", async () => {
+    mockDb([], [], [org("past_due")]);
+    const r = await resolveEntitlementsByEmail("manager@example.com");
+    expect(r.isManager).toBe(true);
+    expect(r.hasAnyAccess).toBe(true);
+  });
+
+  it("recognises a manager when an older pending checkout precedes the active organization", async () => {
+    mockDb([], [], [
+      org("pending", 41, new Date("2026-08-28T18:00:00.000Z")),
+      org("active", 42, new Date("2026-08-28T19:00:00.000Z")),
+    ]);
+
+    const r = await resolveEntitlementsByEmail("fixture-10@example.com");
+
+    expect(r.isManager).toBe(true);
+    expect(r.hasAnyAccess).toBe(true);
+    expect(r.sources).toContain("org_manager");
+  });
+
+  it("does not recognise a manager whose organization term has expired", async () => {
+    const expired = new Date(Date.now() - 60_000);
+    mockDb([], [], [org("active", 43, new Date("2026-08-28T19:00:00.000Z"), expired)]);
+
+    const r = await resolveEntitlementsByEmail("expired-manager@example.com");
+
+    expect(r.isManager).toBe(false);
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("does not set isManager for cancelled org", async () => {
+    mockDb([], [], [org("cancelled")]);
+    const r = await resolveEntitlementsByEmail("manager@example.com");
+    expect(r.isManager).toBe(false);
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  it("does not set isManager when no org row found", async () => {
+    mockDb([], [], []);
+    const r = await resolveEntitlementsByEmail("nobody@example.com");
+    expect(r.isManager).toBe(false);
+    expect(r.hasAnyAccess).toBe(false);
+  });
+
+  // ── Email normalisation ────────────────────────────────────────────────────
+
+  it("normalises email to lowercase and trims whitespace", async () => {
+    mockDb([purchase("class1-water", null)], [], []);
+    const r = await resolveEntitlementsByEmail("  USER@EXAMPLE.COM  ");
+    expect(r.email).toBe("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class1-water");
+  });
+
+  // ── Ontario distribution and collection courses ────────────────────────────
+
+  it("grants Ontario distribution courses via class3 subscription", async () => {
+    mockDb([], [sub("class3", "ontario", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class3-water-dist");
+    expect(r.unlockedExamTypes).toContain("class3-wastewater-coll");
+  });
+
+  it("grants Ontario class4 distribution via class4 subscription", async () => {
+    mockDb([], [sub("class4", "ontario", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class4-water-dist");
+    expect(r.unlockedExamTypes).toContain("class4-wastewater-coll");
+  });
+
+  it("grants Ontario distribution via direct purchase", async () => {
+    mockDb([purchase("class4-water-dist", null)], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("class4-water-dist");
+    expect(r.purchasedProductKeys).toContain("class4-water-dist");
+  });
+
+  it("grants WPI collection courses via western class4 subscription", async () => {
+    mockDb([], [sub("class4", "western", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("wpi-class4-water-coll");
+    expect(r.unlockedExamTypes).toContain("wpi-class4-water-dist");
+  });
+
+  // ── All-access subscriptions ───────────────────────────────────────────────
+
+  it("all-access Ontario unlocks all Ontario exam types", async () => {
+    mockDb([], [sub("all-access", "ontario", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    // Spot-check a few from each class
+    expect(r.unlockedExamTypes).toContain("oit");
+    expect(r.unlockedExamTypes).toContain("class4-water");
+    expect(r.unlockedExamTypes).toContain("class4-wastewater-coll");
+    expect(r.unlockedExamTypes).toContain("wqa");
+  });
+
+  it("all-access western unlocks all WPI exam types", async () => {
+    mockDb([], [sub("all-access", "western", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.unlockedExamTypes).toContain("wpi-class1-water");
+    expect(r.unlockedExamTypes).toContain("wpi-class4-wastewater");
+    expect(r.unlockedExamTypes).toContain("wpi-class4-water-coll");
+    expect(r.unlockedExamTypes).toContain("wpi-class4-water-dist");
+  });
+
+  // ── purchasedProductKeys field ─────────────────────────────────────────────
+
+  it("populates purchasedProductKeys from active purchases", async () => {
+    mockDb(
+      [purchase("class1-water", null), purchase("class2-ww", "active")],
+      [],
+      [],
+    );
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.purchasedProductKeys).toContain("class1-water");
+    expect(r.purchasedProductKeys).toContain("class2-ww");
+  });
+
+  it("excludes refunded keys from purchasedProductKeys", async () => {
+    mockDb([purchase("class3-water", "refunded")], [], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.purchasedProductKeys).not.toContain("class3-water");
+  });
+
+  // ── activeSubscriptionRows field ──────────────────────────────────────────
+
+  it("populates activeSubscriptionRows from eligible subscriptions", async () => {
+    mockDb([], [sub("class2", "ontario", "active", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.activeSubscriptionRows).toHaveLength(1);
+    expect(r.activeSubscriptionRows[0].tier).toBe("class2");
+    expect(r.activeSubscriptionRows[0].province).toBe("ontario");
+  });
+
+  it("excludes cancelled rows from activeSubscriptionRows", async () => {
+    mockDb([], [sub("class2", "ontario", "cancelled", FUTURE)], []);
+    const r = await resolveEntitlementsByEmail("user@example.com");
+    expect(r.activeSubscriptionRows).toHaveLength(0);
+  });
+});
+
+describe("normalizeEmail", () => {
+  it("normalizes whitespace and letter case", () => {
+    expect(normalizeEmail("  CUSTOMER@EXAMPLE.COM ")).toBe("customer@example.com");
+  });
+
+  it("removes only Gmail plus tags so Google sign-in and checkout resolve to the same mailbox", () => {
+    // Provider-specific behavior needs the actual domain, not a reserved-domain
+    // replacement. These constructed mailboxes are synthetic and never contacted.
+    const mailbox = (local: string, provider: "gmail.com" | "googlemail.com") => `${local}@${provider}`;
+    expect(normalizeEmail(mailbox("SYNTHETIC-AUDIT-USER+oit-pass", "gmail.com")))
+      .toBe(mailbox("synthetic-audit-user", "gmail.com"));
+    expect(normalizeEmail(mailbox("synthetic-audit-user+quiz", "googlemail.com")))
+      .toBe(mailbox("synthetic-audit-user", "googlemail.com"));
+  });
+
+  it("preserves plus tags for non-Gmail providers", () => {
+    expect(normalizeEmail("customer+oit-pass@example.com")).toBe("customer+oit-pass@example.com");
+  });
+});

@@ -1,0 +1,4128 @@
+{
+ "courseKey": "wpi-class2-wastewater",
+ "version": "deep-20261121-v1",
+ "tasks": [
+  {
+   "id": "wp2ww-error60",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Manitoba. Feed flow is 40 m3/d at 30000 mg/L solids and the press produces 5000 kg/d of wet cake at 18 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: feed flow = 40 m3/d, feed solids = 30000 mg/L, wet cake = 5000 kg/d, cake solids content = 18 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 40 m3/d * 30000 mg/L / 1000 = 1200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 5000 kg/d * 18 / 100 = 900 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 900 / 5000 * 100 = 18 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Capture = 900 / 1200 * 100 = 75 percent",
+   "explanation": "Line 4 divided by the wet cake mass instead of the feed solids. Capture is 900 / 1200 * 100 = 75 percent."
+  },
+  {
+   "id": "wp2ww-error61",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in British Columbia. Feed flow is 60 m3/d at 25000 mg/L solids and the press produces 6000 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: feed flow = 60 m3/d, feed solids = 25000 mg/L, wet cake = 6000 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 60 m3/d * 25000 mg/L / 1000 = 1250 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 6000 kg/d * 20 / 100 = 1200 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 1200 / 1250 * 100 = 96 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed solids = 60 m3/d * 25000 mg/L / 1000 = 1500 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 60 * 25000 / 1000 = 1500 kg/d, so capture is 80 percent."
+  },
+  {
+   "id": "wp2ww-error62",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Alberta. Feed flow is 80 m3/d at 20000 mg/L solids and the press produces 6400 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: feed flow = 80 m3/d, feed solids = 20000 mg/L, wet cake = 6400 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 80 m3/d * 20000 mg/L / 1000 = 1600 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 6400 kg/d * 25 / 100 = 1600 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 1600 / 1600 * 100 = 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cake solids = 6400 kg/d * 20 / 100 = 1280 kg/d",
+   "explanation": "Line 3 used 25 percent cake solids instead of the given 20 percent. Cake solids are 6400 * 20 / 100 = 1280 kg/d, so capture is 80 percent."
+  },
+  {
+   "id": "wp2ww-error63",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Saskatchewan. Feed flow is 100 m3/d at 30000 mg/L solids and the press produces 12000 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: feed flow = 100 m3/d, feed solids = 30000 mg/L, wet cake = 12000 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 100 m3/d * 30000 mg/L / 1000 = 3000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 12000 kg/d * 20 / 100 = 2400 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 2400 / 3000 * 100 = 75 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Capture = 2400 / 3000 * 100 = 80 percent",
+   "explanation": "Line 4 divided incorrectly. 2400 / 3000 * 100 = 80 percent, not 75 percent."
+  },
+  {
+   "id": "wp2ww-error64",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Manitoba. Feed flow is 45 m3/d at 40000 mg/L solids and the press produces 7200 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: feed flow = 45 m3/d, feed solids = 40000 mg/L, wet cake = 7200 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 45 m3/d * 40000 mg/L / 1000 = 1800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 7200 kg/d * 20 / 100 = 1440 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 1800 / 1440 * 100 = 125 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Capture = 1440 / 1800 * 100 = 80 percent",
+   "explanation": "Line 4 inverted the division. Capture is cake solids divided by feed solids, 1440 / 1800 * 100 = 80 percent."
+  },
+  {
+   "id": "wp2ww-error65",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in British Columbia. Feed flow is 30 m3/d at 50000 mg/L solids and the press produces 5000 kg/d of wet cake at 24 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: feed flow = 30 m3/d, feed solids = 50000 mg/L, wet cake = 5000 kg/d, cake solids content = 24 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 30 m3/d * 50000 mg/L / 1000 = 1500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 5000 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report cake solids = 5000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cake solids = 5000 kg/d * 24 / 100 = 1200 kg/d",
+   "explanation": "Line 3 used the wet cake mass as if it were dry solids. Cake solids are 5000 * 24 / 100 = 1200 kg/d, so capture is 1200 / 1500 * 100 = 80 percent."
+  },
+  {
+   "id": "wp2ww-error66",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Alberta. Feed flow is 70 m3/d at 20000 mg/L solids and the press produces 5600 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: feed flow = 70 m3/d, feed solids = 20000 mg/L, wet cake = 5600 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 70 m3/d * 20000 mg/L / 1000 = 1120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 5600 kg/d * 20 / 100 = 1120 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 1120 / 1120 * 100 = 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Feed solids = 70 m3/d * 20000 mg/L / 1000 = 1400 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 70 * 20000 / 1000 = 1400 kg/d, so capture is 80 percent."
+  },
+  {
+   "id": "wp2ww-error67",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Saskatchewan. Feed flow is 90 m3/d at 30000 mg/L solids and the press produces 10800 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: feed flow = 90 m3/d, feed solids = 30000 mg/L, wet cake = 10800 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 90 m3/d * 30000 mg/L / 1000 = 2700 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 10800 kg/d * 20 / 100 = 2160 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 2160 / 10800 * 100 = 20 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Capture = 2160 / 2700 * 100 = 80 percent",
+   "explanation": "Line 4 divided by the wet cake mass instead of the feed solids. Capture is 2160 / 2700 * 100 = 80 percent."
+  },
+  {
+   "id": "wp2ww-error68",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Manitoba. Feed flow is 55 m3/d at 40000 mg/L solids and the press produces 8800 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: feed flow = 55 m3/d, feed solids = 40000 mg/L, wet cake = 8800 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 55 m3/d * 40000 mg/L / 1000 = 2200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 8800 kg/d * 20 / 100 = 2000 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Report cake solids = 2000 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cake solids = 8800 kg/d * 20 / 100 = 1760 kg/d",
+   "explanation": "Line 3 multiplied incorrectly. 8800 * 20 / 100 = 1760 kg/d, so capture is 1760 / 2200 * 100 = 80 percent."
+  },
+  {
+   "id": "wp2ww-error69",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in British Columbia. Feed flow is 65 m3/d at 20000 mg/L solids and the press produces 5200 kg/d of wet cake at 20 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: feed flow = 65 m3/d, feed solids = 20000 mg/L, wet cake = 5200 kg/d, cake solids content = 20 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 65 m3/d * 20000 mg/L / 1000 = 1300 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 5200 kg/d * 20 / 100 = 1040 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 1040 / 1300 * 100 = 85 percent"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Capture = 1040 / 1300 * 100 = 80 percent",
+   "explanation": "Line 4 divided incorrectly. 1040 / 1300 * 100 = 80 percent, not 85 percent."
+  },
+  {
+   "id": "wp2ww-error70",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this dewatering solids capture calculation for a plant in Alberta. Feed flow is 120 m3/d at 25000 mg/L solids and the press produces 10000 kg/d of wet cake at 24 percent solids.",
+   "topicId": "dewatering-capture",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: feed flow = 120 m3/d, feed solids = 25000 mg/L, wet cake = 10000 kg/d, cake solids content = 24 percent. Target: percent solids capture.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Capture = cake solids / feed solids * 100"
+    },
+    {
+     "id": "line2",
+     "label": "2. Feed solids = 120 m3/d * 25000 mg/L / 1000 = 3000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Cake solids = 10000 kg/d * 30 / 100 = 3000 kg/d"
+    },
+    {
+     "id": "line4",
+     "label": "4. Capture = 3000 / 3000 * 100 = 100 percent"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Cake solids = 10000 kg/d * 24 / 100 = 2400 kg/d",
+   "explanation": "Line 3 used 30 percent cake solids instead of the given 24 percent. Cake solids are 10000 * 24 / 100 = 2400 kg/d, so capture is 80 percent."
+  },
+  {
+   "id": "wp2ww-error71",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection chemical use calculation for a plant in Manitoba. Flow is 5000 m3/d and the applied chlorine dose is 3 mg/L.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 5000 m3/d, applied chlorine dose = 3 mg/L, final effluent residual = 0.6 mg/L. Chemical use is based on the applied dose. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chemical use = 5000 m3/d * 3 mg/L / 100 = 150 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chemical use = 5000 m3/d * 3 mg/L / 1000 = 15 kg/d",
+   "explanation": "Line 2 divided by 100 instead of 1000. Chemical use is 5000 * 3 / 1000 = 15 kg/d."
+  },
+  {
+   "id": "wp2ww-error72",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection chemical use calculation for a plant in British Columbia. Flow is 8000 m3/d and the applied chlorine dose is 2.5 mg/L.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 8000 m3/d, applied chlorine dose = 2.5 mg/L, final effluent residual = 0.5 mg/L. Chemical use is based on the applied dose. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chemical use = 8000 m3/d * 0.5 mg/L / 1000 = 4 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chemical use = 8000 m3/d * 2.5 mg/L / 1000 = 20 kg/d",
+   "explanation": "Line 2 used the effluent residual of 0.5 mg/L instead of the applied dose of 2.5 mg/L. Chemical use is 8000 * 2.5 / 1000 = 20 kg/d."
+  },
+  {
+   "id": "wp2ww-error73",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection chemical use calculation for a plant in Alberta. Flow is 12000 m3/d and the applied chlorine dose is 2 mg/L.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 12000 m3/d, applied chlorine dose = 2 mg/L, final effluent residual = 0.4 mg/L. Chemical use is based on the applied dose. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * dose = 12000 m3/d * 2 mg/L = 20000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 20000 g/d / 1000 = 20 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * dose = 12000 m3/d * 2 mg/L = 24000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 12000 * 2 = 24000 g/d, so chemical use is 24000 / 1000 = 24 kg/d."
+  },
+  {
+   "id": "wp2ww-error74",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection chemical use calculation for a plant in Saskatchewan. Flow is 3000 m3/d and the applied chlorine dose is 4 mg/L.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 3000 m3/d, applied chlorine dose = 4 mg/L, final effluent residual = 0.8 mg/L. Chemical use is based on the applied dose. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * dose = 3000 m3/d * 4 mg/L = 15000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 15000 g/d / 1000 = 15 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * dose = 3000 m3/d * 4 mg/L = 12000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 3000 * 4 = 12000 g/d, so chemical use is 12000 / 1000 = 12 kg/d."
+  },
+  {
+   "id": "wp2ww-error75",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection chemical use calculation for a plant in Manitoba. Flow is 15000 m3/d and the applied chlorine dose is 1.6 mg/L.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 15000 m3/d, applied chlorine dose = 1.6 mg/L, final effluent residual = 0.5 mg/L. Chemical use is based on the applied dose. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Chemical use = 15000 m3/d * 1.6 mg/L / 10000 = 2.4 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Chemical use = 15000 m3/d * 1.6 mg/L / 1000 = 24 kg/d",
+   "explanation": "Line 2 divided by 10000 instead of 1000. Chemical use is 15000 * 1.6 / 1000 = 24 kg/d."
+  },
+  {
+   "id": "wp2ww-error76",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection chemical use calculation for a plant in British Columbia. Flow is 20000 m3/d and the applied chlorine dose is 1.2 mg/L.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 20000 m3/d, applied chlorine dose = 1.2 mg/L, final effluent residual = 0.3 mg/L. Chemical use is based on the applied dose. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Q * dose = 20000 m3/d * 1.2 mg/L = 20000 g/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 20000 g/d / 1000 = 20 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Q * dose = 20000 m3/d * 1.2 mg/L = 24000 g/d",
+   "explanation": "Line 2 multiplied incorrectly. 20000 * 1.2 = 24000 g/d, so chemical use is 24000 / 1000 = 24 kg/d."
+  },
+  {
+   "id": "wp2ww-error77",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection dose calculation for a plant in British Columbia. Chlorine demand is 2.4 mg/L, the target residual is 0.6 mg/L and flow is 4000 m3/d.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: chlorine demand = 2.4 mg/L, target residual = 0.6 mg/L, Q = 4000 m3/d. Dose equals demand plus residual. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = demand + residual, then chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 2.4 mg/L + 0.6 mg/L = 2.8 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 4000 m3/d * 2.8 mg/L / 1000 = 11.2 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 2.4 mg/L + 0.6 mg/L = 3 mg/L",
+   "explanation": "Line 2 added incorrectly. 2.4 + 0.6 = 3 mg/L, so chemical use is 4000 * 3 / 1000 = 12 kg/d."
+  },
+  {
+   "id": "wp2ww-error78",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection dose calculation for a plant in Alberta. Chlorine demand is 3.2 mg/L, the target residual is 0.8 mg/L and flow is 6000 m3/d.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: chlorine demand = 3.2 mg/L, target residual = 0.8 mg/L, Q = 6000 m3/d. Dose equals demand plus residual. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = demand + residual, then chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 3.2 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 6000 m3/d * 3.2 mg/L / 1000 = 19.2 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 3.2 mg/L + 0.8 mg/L = 4 mg/L",
+   "explanation": "Line 2 used the demand alone as the dose and left out the target residual. Dose is 3.2 + 0.8 = 4 mg/L, so chemical use is 24 kg/d."
+  },
+  {
+   "id": "wp2ww-error79",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection dose calculation for a plant in Saskatchewan. Chlorine demand is 1.8 mg/L, the target residual is 0.7 mg/L and flow is 8000 m3/d.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: chlorine demand = 1.8 mg/L, target residual = 0.7 mg/L, Q = 8000 m3/d. Dose equals demand plus residual. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = demand + residual, then chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 1.8 mg/L + 0.7 mg/L = 2.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 8000 m3/d * 2.5 mg/L / 100 = 200 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chemical use = 8000 m3/d * 2.5 mg/L / 1000 = 20 kg/d",
+   "explanation": "Line 3 divided by 100 instead of 1000. Chemical use is 8000 * 2.5 / 1000 = 20 kg/d."
+  },
+  {
+   "id": "wp2ww-error80",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection dose calculation for a plant in Manitoba. Chlorine demand is 2.7 mg/L, the target residual is 0.3 mg/L and flow is 10000 m3/d.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: chlorine demand = 2.7 mg/L, target residual = 0.3 mg/L, Q = 10000 m3/d. Dose equals demand plus residual. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = demand + residual, then chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 2.7 mg/L + 0.3 mg/L = 3.3 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 10000 m3/d * 3.3 mg/L / 1000 = 33 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 2.7 mg/L + 0.3 mg/L = 3 mg/L",
+   "explanation": "Line 2 added incorrectly. 2.7 + 0.3 = 3 mg/L, so chemical use is 10000 * 3 / 1000 = 30 kg/d."
+  },
+  {
+   "id": "wp2ww-error81",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection dose calculation for a plant in British Columbia. Chlorine demand is 4.5 mg/L, the target residual is 1.5 mg/L and flow is 5000 m3/d.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: chlorine demand = 4.5 mg/L, target residual = 1.5 mg/L, Q = 5000 m3/d. Dose equals demand plus residual. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = demand + residual, then chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 1.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 5000 m3/d * 1.5 mg/L / 1000 = 7.5 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Dose = 4.5 mg/L + 1.5 mg/L = 6 mg/L",
+   "explanation": "Line 2 used the residual alone as the dose and left out the demand. Dose is 4.5 + 1.5 = 6 mg/L, so chemical use is 30 kg/d."
+  },
+  {
+   "id": "wp2ww-error82",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this effluent disinfection dose calculation for a plant in Alberta. Chlorine demand is 3.6 mg/L, the target residual is 0.9 mg/L and flow is 4000 m3/d.",
+   "topicId": "disinfection-dose",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: chlorine demand = 3.6 mg/L, target residual = 0.9 mg/L, Q = 4000 m3/d. Dose equals demand plus residual. Target unit: kg/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Dose = demand + residual, then chemical use = Q * dose / 1000"
+    },
+    {
+     "id": "line2",
+     "label": "2. Dose = 3.6 mg/L + 0.9 mg/L = 4.5 mg/L"
+    },
+    {
+     "id": "line3",
+     "label": "3. Chemical use = 4000 m3/d * 4.5 mg/L / 1000 = 16 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Chemical use = 4000 m3/d * 4.5 mg/L / 1000 = 18 kg/d",
+   "explanation": "Line 3 calculated incorrectly. 4000 * 4.5 / 1000 = 18 kg/d, not 16 kg/d."
+  },
+  {
+   "id": "wp2ww-error83",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in Alberta. Flow is 2000 m3/d and ammonia nitrogen oxidized is 25 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 2000 m3/d, ammonia nitrogen oxidized = 25 mg/L, TKN = 32 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 2000 m3/d * 25 mg/L / 1000 = 50 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 50 kg/d * 7.41 = 370.5 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity needed = 50 kg/d * 7.14 = 357 kg/d",
+   "explanation": "Line 3 used a factor of 7.41 instead of the given 7.14. Alkalinity needed is 50 * 7.14 = 357 kg/d."
+  },
+  {
+   "id": "wp2ww-error84",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in Saskatchewan. Flow is 4000 m3/d and ammonia nitrogen oxidized is 25 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 4000 m3/d, ammonia nitrogen oxidized = 25 mg/L, TKN = 34 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 4000 m3/d * 25 mg/L / 1000 = 120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 120 kg/d * 7.14 = 856.8 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia load = 4000 m3/d * 25 mg/L / 1000 = 100 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 4000 * 25 / 1000 = 100 kg/d, so alkalinity needed is 100 * 7.14 = 714 kg/d."
+  },
+  {
+   "id": "wp2ww-error85",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in Manitoba. Flow is 5000 m3/d and ammonia nitrogen oxidized is 40 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 5000 m3/d, ammonia nitrogen oxidized = 40 mg/L, TKN = 48 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 5000 m3/d * 40 mg/L / 1000 = 200 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 200 kg/d * 7.14 = 1400 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity needed = 200 kg/d * 7.14 = 1428 kg/d",
+   "explanation": "Line 3 multiplied incorrectly. 200 * 7.14 = 1428 kg/d, not 1400 kg/d."
+  },
+  {
+   "id": "wp2ww-error86",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in British Columbia. Flow is 1000 m3/d and ammonia nitrogen oxidized is 25 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 1000 m3/d, ammonia nitrogen oxidized = 25 mg/L, TKN = 30 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 1000 m3/d * 25 mg/L / 1000 = 25 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 25 kg/d / 7.14"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity needed = 25 kg/d * 7.14 = 178.5 kg/d",
+   "explanation": "Line 3 divided by the factor instead of multiplying. Alkalinity needed is 25 * 7.14 = 178.5 kg/d."
+  },
+  {
+   "id": "wp2ww-error87",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in Alberta. Flow is 3000 m3/d and ammonia nitrogen oxidized is 50 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 3000 m3/d, ammonia nitrogen oxidized = 50 mg/L, TKN = 58 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 3000 m3/d * 50 mg/L / 1000 = 150 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 150 kg/d * 1.74 = 261 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity needed = 150 kg/d * 7.14 = 1071 kg/d",
+   "explanation": "Line 3 used a factor of 1.74 instead of the given 7.14. Alkalinity needed is 150 * 7.14 = 1071 kg/d."
+  },
+  {
+   "id": "wp2ww-error88",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in Saskatchewan. Flow is 6000 m3/d and ammonia nitrogen oxidized is 10 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 6000 m3/d, ammonia nitrogen oxidized = 10 mg/L, TKN = 15 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 6000 m3/d * 15 mg/L / 1000 = 90 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 90 kg/d * 7.14 = 642.6 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia load = 6000 m3/d * 10 mg/L / 1000 = 60 kg/d",
+   "explanation": "Line 2 used the TKN of 15 mg/L instead of the ammonia nitrogen oxidized of 10 mg/L. The ammonia load is 6000 * 10 / 1000 = 60 kg/d, so alkalinity needed is 428.4 kg/d."
+  },
+  {
+   "id": "wp2ww-error89",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in Manitoba. Flow is 8000 m3/d and ammonia nitrogen oxidized is 15 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 8000 m3/d, ammonia nitrogen oxidized = 15 mg/L, TKN = 22 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 8000 m3/d * 15 mg/L / 1000 = 120 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 120 kg/d * 7.14 = 85.68 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Alkalinity needed = 120 kg/d * 7.14 = 856.8 kg/d",
+   "explanation": "Line 3 misplaced the decimal point. 120 * 7.14 = 856.8 kg/d, not 85.68 kg/d."
+  },
+  {
+   "id": "wp2ww-error90",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this alkalinity requirement calculation for nitrification at a plant in British Columbia. Flow is 1500 m3/d and ammonia nitrogen oxidized is 40 mg/L. Use 7.14 mg of alkalinity as CaCO3 per mg of ammonia nitrogen oxidized.",
+   "topicId": "nitrification-alkalinity",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 1500 m3/d, ammonia nitrogen oxidized = 40 mg/L, TKN = 47 mg/L, alkalinity factor = 7.14 mg as CaCO3 per mg ammonia nitrogen. Target unit: kg/d as CaCO3.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Alkalinity needed = ammonia load * 7.14"
+    },
+    {
+     "id": "line2",
+     "label": "2. Ammonia load = 1500 m3/d * 40 mg/L / 1000 = 50 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Alkalinity needed = 50 kg/d * 7.14 = 357 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Ammonia load = 1500 m3/d * 40 mg/L / 1000 = 60 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. 1500 * 40 / 1000 = 60 kg/d, so alkalinity needed is 60 * 7.14 = 428.4 kg/d."
+  },
+  {
+   "id": "wp2ww-error91",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Saskatchewan. Influent flow is 3000 m3/d, return sludge flow is 1500 m3/d and MLSS is 3000 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 3000 m3/d, return activated sludge flow = 1500 m3/d, MLSS = 3000 mg/L, rectangular clarifier 25 m long by 18 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = 3000 m3/d * 3000 mg/L / 1000 = 9000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 25 m * 18 m = 450 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 9000 kg/d / 450 m2 = 20 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = (3000 + 1500) m3/d * 3000 mg/L / 1000 = 13500 kg/d",
+   "explanation": "Line 2 left out the return sludge flow. The clarifier receives influent plus return flow, so solids applied are (3000 + 1500) * 3000 / 1000 = 13500 kg/d and loading is 30 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error92",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Manitoba. Influent flow is 4000 m3/d, return sludge flow is 2000 m3/d and MLSS is 2500 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 4000 m3/d, return activated sludge flow = 2000 m3/d, MLSS = 2500 mg/L, rectangular clarifier 25 m long by 20 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (4000 + 2000) m3/d * 2500 mg/L / 1000 = 15000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 25 m * 20 m = 400 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 15000 kg/d / 400 m2 = 37.5 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Clarifier area = 25 m * 20 m = 500 m2",
+   "explanation": "Line 3 multiplied incorrectly. 25 * 20 = 500 m2, so solids loading is 15000 / 500 = 30 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error93",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in British Columbia. Influent flow is 2000 m3/d, return sludge flow is 1000 m3/d and MLSS is 3500 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 2000 m3/d, return activated sludge flow = 1000 m3/d, MLSS = 3500 mg/L, rectangular clarifier 25 m long by 14 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (2000 + 1000) m3/d * 3500 mg/L / 1000 = 10500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 25 m * 14 m = 350 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 10500 kg/d / 350 m2 = 25 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Solids loading = 10500 kg/d / 350 m2 = 30 kg/m2/d",
+   "explanation": "Line 4 divided incorrectly. 10500 / 350 = 30 kg/m2/d, not 25 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error94",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Alberta. Influent flow is 5000 m3/d, return sludge flow is 2500 m3/d and MLSS is 2000 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 5000 m3/d, return activated sludge flow = 2500 m3/d, MLSS = 2000 mg/L, rectangular clarifier 25 m long by 25 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = 5000 m3/d * 2000 mg/L / 1000 = 10000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 25 m * 25 m = 625 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 10000 kg/d / 625 m2 = 16 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = (5000 + 2500) m3/d * 2000 mg/L / 1000 = 15000 kg/d",
+   "explanation": "Line 2 left out the return sludge flow. The clarifier receives influent plus return flow, so solids applied are (5000 + 2500) * 2000 / 1000 = 15000 kg/d and loading is 24 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error95",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Saskatchewan. Influent flow is 3500 m3/d, return sludge flow is 1500 m3/d and MLSS is 2800 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 3500 m3/d, return activated sludge flow = 1500 m3/d, MLSS = 2800 mg/L, rectangular clarifier 20 m long by 20 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (3500 + 1500) m3/d * 2800 mg/L / 1000 = 14000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 20 m * 20 m = 500 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 14000 kg/d / 500 m2 = 28 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Clarifier area = 20 m * 20 m = 400 m2",
+   "explanation": "Line 3 multiplied incorrectly. 20 * 20 = 400 m2, so solids loading is 14000 / 400 = 35 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error96",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Manitoba. Influent flow is 6000 m3/d, return sludge flow is 3000 m3/d and MLSS is 2200 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Manitoba: Q = 6000 m3/d, return activated sludge flow = 3000 m3/d, MLSS = 2200 mg/L, rectangular clarifier 25 m long by 22 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (6000 + 3000) m3/d * 2200 mg/L / 1000 = 19800 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 25 m * 22 m = 550 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 550 m2 / 19800 kg/d"
+    }
+   ],
+   "firstWrongLineId": "line4",
+   "correctedLine": "4. Solids loading = 19800 kg/d / 550 m2 = 36 kg/m2/d",
+   "explanation": "Line 4 inverted the division. Solids loading is solids divided by area, 19800 / 550 = 36 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error97",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in British Columbia. Influent flow is 2500 m3/d, return sludge flow is 1250 m3/d and MLSS is 3200 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in British Columbia: Q = 2500 m3/d, return activated sludge flow = 1250 m3/d, MLSS = 3200 mg/L, rectangular clarifier 24 m long by 20 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (2500 + 1250) m3/d * 3200 mg/L / 1000 = 14400 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 24 m * 20 m = 480 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 14400 kg/d / 480 m2 = 30 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = (2500 + 1250) m3/d * 3200 mg/L / 1000 = 12000 kg/d",
+   "explanation": "Line 2 multiplied incorrectly. (2500 + 1250) * 3200 / 1000 = 12000 kg/d, so solids loading is 25 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error98",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Alberta. Influent flow is 4500 m3/d, return sludge flow is 1500 m3/d and MLSS is 3000 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Alberta: Q = 4500 m3/d, return activated sludge flow = 1500 m3/d, MLSS = 3000 mg/L, rectangular clarifier 30 m long by 24 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = 4500 m3/d * 3000 mg/L / 1000 = 13500 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 30 m * 24 m = 720 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 13500 kg/d / 720 m2 = 18.75 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line2",
+   "correctedLine": "2. Solids applied = (4500 + 1500) m3/d * 3000 mg/L / 1000 = 18000 kg/d",
+   "explanation": "Line 2 left out the return sludge flow. The clarifier receives influent plus return flow, so solids applied are (4500 + 1500) * 3000 / 1000 = 18000 kg/d and loading is 25 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-error99",
+   "revision": "r1",
+   "mode": "find-calculation-error",
+   "prompt": "Find the first wrong line in this secondary clarifier solids loading calculation for a plant in Saskatchewan. Influent flow is 3200 m3/d, return sludge flow is 800 m3/d and MLSS is 2500 mg/L.",
+   "topicId": "clarifier-solids-loading",
+   "level": "class1",
+   "assumptions": "Fictional plant in Saskatchewan: Q = 3200 m3/d, return activated sludge flow = 800 m3/d, MLSS = 2500 mg/L, rectangular clarifier 25 m long by 16 m wide. Target unit: kg/m2/d.",
+   "lines": [
+    {
+     "id": "line1",
+     "label": "1. Solids loading = (Q + QR) * MLSS / 1000 / clarifier area"
+    },
+    {
+     "id": "line2",
+     "label": "2. Solids applied = (3200 + 800) m3/d * 2500 mg/L / 1000 = 10000 kg/d"
+    },
+    {
+     "id": "line3",
+     "label": "3. Clarifier area = 25 m * 16 m = 320 m2"
+    },
+    {
+     "id": "line4",
+     "label": "4. Solids loading = 10000 kg/d / 320 m2 = 31.25 kg/m2/d"
+    }
+   ],
+   "firstWrongLineId": "line3",
+   "correctedLine": "3. Clarifier area = 25 m * 16 m = 400 m2",
+   "explanation": "Line 3 multiplied incorrectly. 25 * 16 = 400 m2, so solids loading is 10000 / 400 = 25 kg/m2/d."
+  },
+  {
+   "id": "wp2ww-process01",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for adjusting the wasting rate after mixed liquor suspended solids rise above the target range.",
+   "topicId": "process-srt-wasting-adjustment",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: two aeration trains in service, wasting to the thickener, supervisor has approved a new solids retention time target.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Adjust the waste activated sludge pump timer in one small step"
+    },
+    {
+     "id": "step-05",
+     "label": "Sample the waste sludge and confirm the concentration used in the calculation"
+    },
+    {
+     "id": "step-03",
+     "label": "Calculate the wasting rate needed to reach the approved solids retention time target"
+    },
+    {
+     "id": "step-06",
+     "label": "Trend mixed liquor and blanket depth daily until the target range is reached"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the current solids inventory in the aeration trains and clarifiers"
+    },
+    {
+     "id": "step-01",
+     "label": "Review the last seven days of mixed liquor, effluent solids, and wasting records"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The inventory must be known before a wasting rate can be calculated, the pump changes in one controlled step, and daily trending proves whether the target is being approached."
+  },
+  {
+   "id": "wp2ww-process02",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a weekly food to microorganism ratio review at a Class 2 plant.",
+   "topicId": "process-fm-weekly-review",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: weekly process control meeting, one week of flow, biochemical oxygen demand, and mixed liquor data available.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Compile the average mixed liquor volatile solids inventory for the same week"
+    },
+    {
+     "id": "step-03",
+     "label": "Calculate the food to microorganism ratio for each aeration train"
+    },
+    {
+     "id": "step-01",
+     "label": "Compile the average daily flow and influent biochemical oxygen demand load for the week"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare each ratio with the plant target range for the current season"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the ratios, decisions, and follow up checks in the process control log"
+    },
+    {
+     "id": "step-05",
+     "label": "Agree on aeration or wasting changes needed and assign them to the shift operators"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Load and inventory for the same period must be compiled before the ratio is calculated, comparison precedes decisions, and the log closes the review."
+  },
+  {
+   "id": "wp2ww-process03",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for bringing solids retention time back up after a clarifier washout event.",
+   "topicId": "process-srt-washout-recovery",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: heavy rain has washed solids to the effluent, mixed liquor is well below target, effluent limits still apply.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Resume normal wasting in small steps once the target inventory is restored"
+    },
+    {
+     "id": "step-02",
+     "label": "Stop or sharply reduce wasting to conserve the remaining biomass"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the washout by checking mixed liquor, blanket depth, and effluent solids"
+    },
+    {
+     "id": "step-03",
+     "label": "Increase the return sludge rate to return settled solids to the aeration trains"
+    },
+    {
+     "id": "step-05",
+     "label": "Monitor effluent quality and blanket depth every few hours through the recovery"
+    },
+    {
+     "id": "step-04",
+     "label": "Reduce aeration intensity to match the lower biomass if dissolved oxygen rises"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Conserving biomass comes before rebuilding it, return sludge recovers settled solids before normal wasting resumes, and frequent monitoring guards effluent quality throughout."
+  },
+  {
+   "id": "wp2ww-process04",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting a winter mixed liquor target for nitrification protection.",
+   "topicId": "process-winter-mlss-target",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: wastewater temperature falling toward winter values at a western Canadian plant that must keep nitrifying.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Raise the mixed liquor target gradually by reducing wasting over several days"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the winter target and the date it takes effect in the operations plan"
+    },
+    {
+     "id": "step-05",
+     "label": "Watch effluent ammonia and dissolved oxygen daily as the inventory builds"
+    },
+    {
+     "id": "step-02",
+     "label": "Select the longer solids retention time target needed for cold water nitrification"
+    },
+    {
+     "id": "step-01",
+     "label": "Review effluent ammonia results and wastewater temperatures from the previous winter"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm aeration capacity can meet the higher oxygen demand at the new inventory"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Last winter performance informs the new target, the inventory builds gradually before winter arrives, and ammonia monitoring proves the protection is working."
+  },
+  {
+   "id": "wp2ww-process05",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for verifying a waste sludge pump output before relying on it for solids control.",
+   "topicId": "process-was-pump-verification",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: timed waste pump drawing from the return sludge line to the thickener.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Record the pump timer settings and the total run time for the previous day"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure the pumped volume over one timed cycle into a calibrated container or by drawdown"
+    },
+    {
+     "id": "step-03",
+     "label": "Sample the waste sludge during the cycle and record its solids concentration"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the result with the wasting record and adjust the timer if they disagree"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the verified output and the new timer setting for the next shift"
+    },
+    {
+     "id": "step-04",
+     "label": "Calculate the mass wasted per day from the measured volume and concentration"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Volume and concentration must both be measured before mass wasted can be calculated, and any timer correction follows the comparison with the record."
+  },
+  {
+   "id": "wp2ww-process06",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for splitting wasting between two aeration trains with different inventories.",
+   "topicId": "process-two-train-wasting-split",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: Train A carries more solids than Train B, both trains feed a common waste header.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Recheck mixed liquor in both trains and record the split actually achieved"
+    },
+    {
+     "id": "step-05",
+     "label": "Waste the first train, then switch the lineup and waste the second train"
+    },
+    {
+     "id": "step-04",
+     "label": "Set the waste valve lineup and timer for the train wasting first"
+    },
+    {
+     "id": "step-02",
+     "label": "Calculate the total mass to waste to hold the plant solids retention time target"
+    },
+    {
+     "id": "step-01",
+     "label": "Measure mixed liquor concentration and estimate inventory in each train"
+    },
+    {
+     "id": "step-03",
+     "label": "Allocate the wasting mass between the trains in proportion to their excess inventory"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Each train is measured before the total is calculated, the heavier train wastes proportionally more, and a recheck confirms the split worked."
+  },
+  {
+   "id": "wp2ww-process07",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding when the food to microorganism ratio climbs after an industrial discharge.",
+   "topicId": "process-fm-industrial-load-response",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: influent biochemical oxygen demand is well above normal for two days, source is a permitted industrial user.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Increase aeration output to meet the higher oxygen demand"
+    },
+    {
+     "id": "step-06",
+     "label": "Return aeration and sampling to normal once influent load returns to its usual range"
+    },
+    {
+     "id": "step-04",
+     "label": "Hold wasting steady to preserve biomass while the load is high"
+    },
+    {
+     "id": "step-02",
+     "label": "Notify the supervisor and the industrial user contact under the plant response procedure"
+    },
+    {
+     "id": "step-05",
+     "label": "Sample effluent more frequently to confirm treatment is holding"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the high load with influent composite results and flow records"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The load is confirmed before anyone is notified, oxygen and biomass are protected while the load passes, and normal operation resumes only on evidence the load has ended."
+  },
+  {
+   "id": "wp2ww-process08",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a monthly solids inventory and mass balance check.",
+   "topicId": "process-monthly-solids-balance",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: month end process audit covering aeration, clarifiers, wasting, and solids handling.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Total the effluent suspended solids mass discharged during the month"
+    },
+    {
+     "id": "step-06",
+     "label": "File the balance with the monthly operations report for supervisor review"
+    },
+    {
+     "id": "step-01",
+     "label": "Total the influent suspended solids mass received during the month"
+    },
+    {
+     "id": "step-03",
+     "label": "Measure the solids inventory held in the aeration trains and clarifiers at month end"
+    },
+    {
+     "id": "step-04",
+     "label": "Total the solids mass wasted to solids processing during the month"
+    },
+    {
+     "id": "step-05",
+     "label": "Reconcile received mass against discharged, wasted, and inventory change and investigate any large gap"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "All four mass terms must be totalled before they can be reconciled, and investigation of a gap precedes filing the report."
+  },
+  {
+   "id": "wp2ww-process09",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for lowering the return sludge rate when clarifier blankets are falling and mixed liquor is too high.",
+   "topicId": "process-ras-rate-reduction",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: secondary clarifier blankets are thin, mixed liquor is above target, wasting is already at its normal rate.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Reduce the return sludge rate in one small step"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the new return rate and the blanket response for the next shift"
+    },
+    {
+     "id": "step-05",
+     "label": "Sample mixed liquor again to confirm the inventory is moving toward target"
+    },
+    {
+     "id": "step-04",
+     "label": "Watch blanket depth and clarifier effluent clarity over the next few hours"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm blanket depth and mixed liquor concentration with fresh samples"
+    },
+    {
+     "id": "step-02",
+     "label": "Check that wasting is running at the intended rate and the waste line is clear"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The condition is confirmed and wasting is ruled out before return rate changes, the change is made in one step, and its effect is proven before it is logged."
+  },
+  {
+   "id": "wp2ww-process10",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for establishing a new solids retention time target after a process study.",
+   "topicId": "process-new-srt-target-study",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: a two week process study is complete and the supervisor has approved a revised target range.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Brief all shifts on the new target and the wasting changes it requires"
+    },
+    {
+     "id": "step-01",
+     "label": "Summarize study results for effluent quality, settling, and energy use at each trial target"
+    },
+    {
+     "id": "step-03",
+     "label": "Update the process control sheet and the trending charts with the new target range"
+    },
+    {
+     "id": "step-02",
+     "label": "Present the recommended target range to the operations team for review"
+    },
+    {
+     "id": "step-05",
+     "label": "Run the plant at the new target for a trial period with daily review"
+    },
+    {
+     "id": "step-06",
+     "label": "Confirm the target at the end of the trial or return it to the supervisor for revision"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Evidence is summarized before a recommendation is made, crews are briefed before the target changes, and a monitored trial confirms the target before it becomes routine."
+  },
+  {
+   "id": "wp2ww-process100",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a spring thaw readiness check before runoff reaches the plant.",
+   "topicId": "process-spring-thaw-readiness",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: snowmelt and rain expected within two weeks at a western Canadian plant.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Clear snow and ice from access roads, hatches, and chemical delivery points"
+    },
+    {
+     "id": "step-04",
+     "label": "Confirm chemical and fuel inventories will cover a two week high flow period"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the readiness check and any item still outstanding for the supervisor"
+    },
+    {
+     "id": "step-05",
+     "label": "Brief all shifts on flow triggers for extra staffing and sampling"
+    },
+    {
+     "id": "step-02",
+     "label": "Check standby pumps, generators, and fuel supplies by test running them"
+    },
+    {
+     "id": "step-01",
+     "label": "Review wet weather procedures and confirm all clarifiers and screens are available"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Capacity is proven by test runs before it is needed, access and inventories are secured, and briefing aligns every shift on the triggers."
+  },
+  {
+   "id": "wp2ww-process11",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for correcting a slow drift in mixed liquor caused by a faulty solids meter reading.",
+   "topicId": "process-mlss-meter-drift-correction",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: online solids readings have drifted below laboratory results for several days, wasting decisions used the online values.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Return the meter to service once readings agree within the plant tolerance"
+    },
+    {
+     "id": "step-04",
+     "label": "Recalibrate the meter and verify it against fresh laboratory samples"
+    },
+    {
+     "id": "step-02",
+     "label": "Take the online meter out of service for cleaning and calibration checks"
+    },
+    {
+     "id": "step-01",
+     "label": "Compare online solids readings with paired laboratory grab results over several days"
+    },
+    {
+     "id": "step-06",
+     "label": "Review wasting records for the drift period and note the correction in the process log"
+    },
+    {
+     "id": "step-03",
+     "label": "Base wasting decisions on laboratory results while the meter is out of service"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Drift is proven by paired samples before the meter is removed, laboratory control bridges the gap, and verification precedes the return to service."
+  },
+  {
+   "id": "wp2ww-process12",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a seasonal solids retention time changeover briefing.",
+   "topicId": "process-seasonal-srt-briefing",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: spring warm up, the plant moves from the winter target to the summer target over two weeks.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Review progress at the end of week one and adjust the remaining steps if needed"
+    },
+    {
+     "id": "step-01",
+     "label": "Calculate the wasting increase needed to move from the winter to the summer inventory"
+    },
+    {
+     "id": "step-04",
+     "label": "Post the schedule at the control panel and update the target on the trending chart"
+    },
+    {
+     "id": "step-05",
+     "label": "Make the first scheduled wasting change and confirm blankets stay in range"
+    },
+    {
+     "id": "step-02",
+     "label": "Draft the two week step down schedule with a wasting change every few days"
+    },
+    {
+     "id": "step-03",
+     "label": "Brief all shifts on the schedule, the reason for it, and the effluent checks required"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The schedule is calculated and briefed before any change is made, the first step is proven in the clarifiers, and a mid course review guards the rest of the changeover."
+  },
+  {
+   "id": "wp2ww-process13",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a sludge volume index test as part of the weekly control program.",
+   "topicId": "process-svi-test-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: settleability testing on mixed liquor from each aeration train.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Plot the results on the control chart and flag any train outside the target band"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect a fresh mixed liquor sample from each train at the same point in the aeration cycle"
+    },
+    {
+     "id": "step-05",
+     "label": "Calculate the sludge volume index from the settled volume and the solids result"
+    },
+    {
+     "id": "step-02",
+     "label": "Mix each sample gently and fill the settleometer to the mark without delay"
+    },
+    {
+     "id": "step-03",
+     "label": "Record the settled sludge volume at 30 minutes for each sample"
+    },
+    {
+     "id": "step-04",
+     "label": "Take a paired sample for mixed liquor suspended solids analysis"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Settled volume and solids must come from paired samples before the index can be calculated, and charting closes the test so trends are visible."
+  },
+  {
+   "id": "wp2ww-process14",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a microscopic examination of mixed liquor.",
+   "topicId": "process-microscopy-examination",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: routine weekly microscopy to assess biomass health and filament levels.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Scan the slide at low power to assess floc size and structure"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the observations and any process implication in the microscopy log"
+    },
+    {
+     "id": "step-04",
+     "label": "Scan at higher power to identify indicator organisms and estimate filament abundance"
+    },
+    {
+     "id": "step-02",
+     "label": "Prepare a wet mount slide with a coverslip and no air bubbles"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect a fresh mixed liquor sample and bring it to the laboratory promptly"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the findings with the previous examination and the settling test results"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Floc structure is assessed before fine detail, findings are compared with settling behaviour, and the record links the examination to process decisions."
+  },
+  {
+   "id": "wp2ww-process15",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running an oxygen uptake rate test on mixed liquor.",
+   "topicId": "process-oxygen-uptake-test",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: respirometry style check using a dissolved oxygen meter and a sealed bottle, values supplied by the lab sheet.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Record the rate and any follow up action in the process control log"
+    },
+    {
+     "id": "step-02",
+     "label": "Insert the dissolved oxygen probe and seal the bottle with no headspace air"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare the uptake rate with the plant normal range for the current loading"
+    },
+    {
+     "id": "step-04",
+     "label": "Plot the readings and determine the rate of oxygen decline"
+    },
+    {
+     "id": "step-03",
+     "label": "Record dissolved oxygen at timed intervals as the biomass consumes oxygen"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect mixed liquor and aerate it to near saturation in the test bottle"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The sample must start saturated and sealed before decline can be measured, the rate comes from the plotted decline, and comparison with the normal range gives it meaning."
+  },
+  {
+   "id": "wp2ww-process16",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for completing a dissolved oxygen profile across an aeration basin.",
+   "topicId": "process-do-profile-survey",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: plug flow aeration basin with sample points at the inlet, middle, and outlet.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Measure and record dissolved oxygen and temperature at the inlet point"
+    },
+    {
+     "id": "step-01",
+     "label": "Calibrate the portable dissolved oxygen meter in air saturated water"
+    },
+    {
+     "id": "step-05",
+     "label": "Sketch the profile and compare it with the target pattern for the basin"
+    },
+    {
+     "id": "step-06",
+     "label": "Adjust air distribution or note the needed repair if one zone is far off target"
+    },
+    {
+     "id": "step-04",
+     "label": "Measure and record dissolved oxygen and temperature at the outlet point"
+    },
+    {
+     "id": "step-03",
+     "label": "Measure and record dissolved oxygen and temperature at the mid basin point"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The meter is calibrated before any reading is trusted, the profile follows the flow path, and adjustment follows comparison with the target pattern."
+  },
+  {
+   "id": "wp2ww-process17",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for profiling sludge blanket depth across a secondary clarifier.",
+   "topicId": "process-blanket-profile-program",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: circular secondary clarifier, blanket readings taken at several points from centre to edge.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Compare the depths to find any uneven or rising zone"
+    },
+    {
+     "id": "step-05",
+     "label": "Adjust return rate or flow split as directed by the supervisor"
+    },
+    {
+     "id": "step-01",
+     "label": "Lower the core sampler slowly at the first point and record the blanket depth"
+    },
+    {
+     "id": "step-02",
+     "label": "Repeat the measurement at each marked point around the clarifier"
+    },
+    {
+     "id": "step-06",
+     "label": "Repeat the profile after the adjustment to confirm the blanket has evened out"
+    },
+    {
+     "id": "step-04",
+     "label": "Check return sludge flow and distribution if one side carries a deeper blanket"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A full profile precedes any diagnosis, equipment checks follow the pattern found, and a repeat profile proves the adjustment worked."
+  },
+  {
+   "id": "wp2ww-process18",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a centrifuge spin test used to estimate waste sludge concentration.",
+   "topicId": "process-spin-test-was",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: quick field estimate to guide wasting before laboratory solids results return.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Balance the centrifuge with an equal tube opposite the sample"
+    },
+    {
+     "id": "step-05",
+     "label": "Convert the reading to an estimated concentration using the plant correlation chart"
+    },
+    {
+     "id": "step-03",
+     "label": "Spin the sample for the standard time on the lab method sheet"
+    },
+    {
+     "id": "step-01",
+     "label": "Mix the waste sludge sample thoroughly and fill the centrifuge tube to the mark"
+    },
+    {
+     "id": "step-06",
+     "label": "Use the estimate for the wasting decision and file the laboratory result when it arrives"
+    },
+    {
+     "id": "step-04",
+     "label": "Read the compacted solids volume from the tube graduations"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The tube must be balanced before spinning, the reading is converted with the plant correlation, and the laboratory result later confirms the field estimate."
+  },
+  {
+   "id": "wp2ww-process19",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for setting up a 30 minute settling test series during a bulking investigation.",
+   "topicId": "process-settling-series-bulking",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: suspected filamentous bulking, settling samples taken every two hours for one shift.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Note aeration, return rate, and any load changes alongside each result"
+    },
+    {
+     "id": "step-05",
+     "label": "Plot the series and compare the pattern with microscopy findings"
+    },
+    {
+     "id": "step-06",
+     "label": "Summarize the series for the supervisor with a recommended next step"
+    },
+    {
+     "id": "step-02",
+     "label": "Record settled volume and supernatant clarity at the end of each test"
+    },
+    {
+     "id": "step-03",
+     "label": "Collect and test further samples at the set interval through the shift"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect the first mixed liquor sample and start the 30 minute settling test"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Timed tests and operating notes are collected together so cause can be matched to effect, and the plotted series supports the recommendation."
+  },
+  {
+   "id": "wp2ww-process20",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for checking aeration basin foam and assigning a likely cause category.",
+   "topicId": "process-foam-assessment-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: brown foam building on one aeration train, effluent quality still in range.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Review recent wasting, solids retention time, and load records for changes"
+    },
+    {
+     "id": "step-05",
+     "label": "Assign the most likely cause category and the matching control action"
+    },
+    {
+     "id": "step-02",
+     "label": "Collect a foam and mixed liquor sample for microscopic examination"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare the foam type and records with the plant foam troubleshooting guide"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor foam coverage daily and record whether the action is working"
+    },
+    {
+     "id": "step-01",
+     "label": "Observe and photograph the foam colour, texture, and coverage on each train"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Observation and microscopy come before record review, the guide match assigns the cause, and daily monitoring tests whether the chosen action works."
+  },
+  {
+   "id": "wp2ww-process21",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for verifying an online dissolved oxygen probe against a bench check.",
+   "topicId": "process-do-probe-verification",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: basin probe readings differ from operator observations, portable meter available.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Clean the probe membrane and check its calibration if the difference is beyond tolerance"
+    },
+    {
+     "id": "step-01",
+     "label": "Take a mixed liquor sample beside the basin probe location"
+    },
+    {
+     "id": "step-03",
+     "label": "Compare the portable reading with the control room value for the basin probe"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure the sample at once with the calibrated portable meter"
+    },
+    {
+     "id": "step-06",
+     "label": "Log both readings and the maintenance performed for the trending record"
+    },
+    {
+     "id": "step-05",
+     "label": "Recheck the probe against the portable meter after cleaning or calibration"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "A side by side sample gives a fair comparison, cleaning precedes recalibration, and the recheck proves the probe before its readings are trusted again."
+  },
+  {
+   "id": "wp2ww-process22",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for running a chlorine demand style jar check on final effluent before a disinfection change.",
+   "topicId": "process-effluent-demand-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: supervisor wants effluent demand data before changing the disinfection dose setpoint.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Measure the residual in each portion at the end of the contact time"
+    },
+    {
+     "id": "step-06",
+     "label": "Plot dose against residual and report the demand to the supervisor"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect a fresh final effluent sample before the disinfection point"
+    },
+    {
+     "id": "step-03",
+     "label": "Dose each portion with a different chlorine dose from the prepared series"
+    },
+    {
+     "id": "step-04",
+     "label": "Hold the portions for the standard contact time in the dark"
+    },
+    {
+     "id": "step-02",
+     "label": "Divide the sample into the set of test portions in clean glassware"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Portions must be dosed as a series and held for the same contact time before residuals are compared, and the plotted demand informs the setpoint decision."
+  },
+  {
+   "id": "wp2ww-process23",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a weekly clarifier performance check using effluent turbidity and solids.",
+   "topicId": "process-clarifier-performance-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: each secondary clarifier checked in turn while all remain in service.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Record blanket depth and return rate for each clarifier at sampling time"
+    },
+    {
+     "id": "step-02",
+     "label": "Measure turbidity on each sample and submit paired samples for suspended solids"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect effluent samples from each clarifier at the same time of day"
+    },
+    {
+     "id": "step-05",
+     "label": "Investigate the poorest clarifier for distribution, blanket, or drive problems"
+    },
+    {
+     "id": "step-06",
+     "label": "Record the comparison and any work order raised in the process log"
+    },
+    {
+     "id": "step-04",
+     "label": "Compare clarity and solids between clarifiers at similar loading"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Samples are comparable only when taken together with operating data, comparison identifies the outlier, and investigation follows the evidence."
+  },
+  {
+   "id": "wp2ww-process24",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for trending process control results at the end of each week.",
+   "topicId": "process-weekly-trending-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: operator updates all control charts before the weekly operations meeting.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Mark any result outside the target band and note the operating conditions that day"
+    },
+    {
+     "id": "step-06",
+     "label": "Present the charts and flags at the weekly operations meeting"
+    },
+    {
+     "id": "step-02",
+     "label": "Enter each result on its control chart in date order"
+    },
+    {
+     "id": "step-05",
+     "label": "Flag any three day trend moving toward a limit for discussion at the meeting"
+    },
+    {
+     "id": "step-04",
+     "label": "Calculate the weekly averages used in the operations report"
+    },
+    {
+     "id": "step-01",
+     "label": "Gather the week of results for solids, settling, dissolved oxygen, and effluent quality"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Charts are completed before averages are calculated, trends are flagged from the completed charts, and the meeting receives the full picture."
+  },
+  {
+   "id": "wp2ww-process25",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting up an anaerobic digester after it has been emptied for inspection.",
+   "topicId": "process-digester-startup-after-inspection",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: primary digester cleaned and repaired, seed sludge available from the second digester.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Transfer seed sludge from the operating digester to about one third of the working volume"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor volatile acids, alkalinity, and gas production daily until feeding reaches the normal rate"
+    },
+    {
+     "id": "step-04",
+     "label": "Begin heating and gentle mixing and confirm temperature is rising steadily"
+    },
+    {
+     "id": "step-05",
+     "label": "Start feeding raw sludge at a low rate once the seed is warm and active"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the digester, mixers, and gas piping and remove all tools and debris"
+    },
+    {
+     "id": "step-02",
+     "label": "Close and secure all access openings and confirm gas valves are lined up safely"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The vessel is proven empty and sealed before seed is added, heat and mixing establish activity before feeding starts, and daily chemistry guards the ramp up."
+  },
+  {
+   "id": "wp2ww-process26",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a daily anaerobic digester operating check.",
+   "topicId": "process-digester-daily-check",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: heated, mixed primary digester in normal service at a western Canadian plant.",
+   "cards": [
+    {
+     "id": "step-06",
+     "label": "Log all readings and report any abnormal value to the supervisor the same day"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare volatile acids to alkalinity information when laboratory results return"
+    },
+    {
+     "id": "step-02",
+     "label": "Record feed volume, feed solids, and supernatant withdrawal for the previous day"
+    },
+    {
+     "id": "step-03",
+     "label": "Check gas production, gas pressure, and flare or boiler operation"
+    },
+    {
+     "id": "step-04",
+     "label": "Sample digested sludge and note appearance, odour, and pH"
+    },
+    {
+     "id": "step-01",
+     "label": "Record digester temperature and heating system operation"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Temperature, feed, and gas are the daily vital signs, laboratory chemistry follows sampling, and abnormal values are escalated the same day they appear."
+  },
+  {
+   "id": "wp2ww-process27",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for responding when the volatile acids to alkalinity ratio rises in a digester.",
+   "topicId": "process-digester-va-alk-response",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: laboratory reports a rising ratio over three samples, gas production is starting to fall.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Review recent feed changes for a sudden increase in volatile solids loading"
+    },
+    {
+     "id": "step-02",
+     "label": "Reduce the raw sludge feed rate in one controlled step"
+    },
+    {
+     "id": "step-03",
+     "label": "Hold any increase in feed and check digester temperature for a heating fault"
+    },
+    {
+     "id": "step-05",
+     "label": "Resample and track the ratio every day or two until it returns to the normal band"
+    },
+    {
+     "id": "step-06",
+     "label": "Restore the feed rate gradually once the ratio and gas production are stable"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the result by checking the sample dates and requesting a repeat sample"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The result is confirmed before feed is cut, temperature is ruled out as a cause, and feed returns only gradually after stability is proven by resampling."
+  },
+  {
+   "id": "wp2ww-process28",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for withdrawing supernatant from a digester without disturbing digestion.",
+   "topicId": "process-digester-supernatant-withdrawal",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: supernatant layer has built up and digester working volume is reduced.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Check the sight glass or sample ports to locate the supernatant layer depth"
+    },
+    {
+     "id": "step-02",
+     "label": "Line up the supernatant valve to return flow to the plant inlet at a controlled rate"
+    },
+    {
+     "id": "step-03",
+     "label": "Open the withdrawal valve slowly and watch the returned flow for solids carryover"
+    },
+    {
+     "id": "step-06",
+     "label": "Note the returned load in the log so the next shift expects the added flow"
+    },
+    {
+     "id": "step-05",
+     "label": "Record the volume withdrawn and the layer depth remaining"
+    },
+    {
+     "id": "step-04",
+     "label": "Close the valve if the draw turns dark with solids"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The layer is located before any valve opens, withdrawal stops at the first sign of solids, and the log warns the next shift about the returned load."
+  },
+  {
+   "id": "wp2ww-process29",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for transferring digested sludge from the primary to the secondary digester.",
+   "topicId": "process-digester-transfer-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: primary digester level is high, secondary digester has available capacity.",
+   "cards": [
+    {
+     "id": "step-01",
+     "label": "Check levels in both digesters and confirm the transfer line is lined up"
+    },
+    {
+     "id": "step-04",
+     "label": "Stop the pump and close the transfer valves in order"
+    },
+    {
+     "id": "step-06",
+     "label": "Record volumes, levels, and pump run time in the solids log"
+    },
+    {
+     "id": "step-02",
+     "label": "Start the transfer pump at a low rate and check for leaks along the line"
+    },
+    {
+     "id": "step-03",
+     "label": "Transfer the planned volume while watching the primary level fall"
+    },
+    {
+     "id": "step-05",
+     "label": "Sample the secondary digester if a digestion check is due"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Levels and lineup come before pumping, the transfer is watched while it runs, and records close the move so inventories stay accurate."
+  },
+  {
+   "id": "wp2ww-process30",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for investigating a sudden drop in digester gas production.",
+   "topicId": "process-digester-gas-drop-investigation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: gas meter shows production well below the recent average for two days.",
+   "cards": [
+    {
+     "id": "step-05",
+     "label": "Reduce feed if chemistry shows stress, following supervisor direction"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the findings and the corrective action and trend gas daily until normal"
+    },
+    {
+     "id": "step-03",
+     "label": "Check digester temperature and heating records for a loss of heat"
+    },
+    {
+     "id": "step-02",
+     "label": "Review feed records for a drop in volume or volatile solids fed"
+    },
+    {
+     "id": "step-04",
+     "label": "Request volatile acids and alkalinity tests on a fresh digester sample"
+    },
+    {
+     "id": "step-01",
+     "label": "Verify the gas meter reading and check the gas line and condensate trap for blockage"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Metering and feed are checked before biology is blamed, chemistry confirms stress before feed is cut, and daily trending proves recovery."
+  },
+  {
+   "id": "wp2ww-process31",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for preparing a digester for a planned mixing system repair.",
+   "topicId": "process-digester-mixer-repair-prep",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: one mixer out of service for repair, digester stays in operation on the remaining mixers.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Confirm gas piping and pressure relief remain in normal service"
+    },
+    {
+     "id": "step-02",
+     "label": "Reduce the feed rate to match the lower mixing capacity"
+    },
+    {
+     "id": "step-04",
+     "label": "Isolate and lock out only the mixer being repaired"
+    },
+    {
+     "id": "step-01",
+     "label": "Notify the supervisor and maintenance of the repair window and the operating limits"
+    },
+    {
+     "id": "step-05",
+     "label": "Support maintenance with level and temperature information during the repair"
+    },
+    {
+     "id": "step-06",
+     "label": "Return the mixer to service, restore normal mixing, and raise feed back in steps"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Feed is matched to reduced mixing before work starts, only the affected mixer is isolated, and feed returns in steps after mixing is restored."
+  },
+  {
+   "id": "wp2ww-process32",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for a monthly volatile solids reduction calculation for the digestion process.",
+   "topicId": "process-vs-reduction-calculation",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: month end reporting, feed and digested sludge solids results are available.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Account for any change in volatile solids inventory stored in the digesters"
+    },
+    {
+     "id": "step-02",
+     "label": "Total the volatile solids mass leaving in digested sludge during the month"
+    },
+    {
+     "id": "step-01",
+     "label": "Total the volatile solids mass fed to the digesters during the month"
+    },
+    {
+     "id": "step-06",
+     "label": "Compare the result with the plant target and note any explanation in the monthly report"
+    },
+    {
+     "id": "step-05",
+     "label": "Calculate percent volatile solids reduction from the mass destroyed and the mass fed"
+    },
+    {
+     "id": "step-04",
+     "label": "Calculate the mass destroyed as fed mass minus leaving mass adjusted for inventory"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Fed, leaving, and inventory terms must all be totalled before destruction can be calculated, and the percentage follows from those masses."
+  },
+  {
+   "id": "wp2ww-process33",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for handling digester foaming that is lifting the cover pressure.",
+   "topicId": "process-digester-foaming-response",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: foam suspected from rising gas pressure and foam at the sample port, feeding continues.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Review feed sludge for a change in character or a high strength delivery"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm foam presence at the sample port and check gas pressure readings"
+    },
+    {
+     "id": "step-05",
+     "label": "Apply only the supervisor approved foam control measure if foam persists"
+    },
+    {
+     "id": "step-03",
+     "label": "Check mixing operation and restart any mixer found out of service"
+    },
+    {
+     "id": "step-02",
+     "label": "Reduce the feed rate and stop any recent feed increase that preceded the foam"
+    },
+    {
+     "id": "step-06",
+     "label": "Monitor pressure and foam daily and record the trend until the event clears"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Foam is confirmed before feed changes, mixing is restored as a basic control, and approved measures are used only if the basic steps fail."
+  },
+  {
+   "id": "wp2ww-process34",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for warming a cold digester back to its operating temperature after a heating outage.",
+   "topicId": "process-digester-reheat-routine",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: heating boiler was down for two days in winter, digester temperature has fallen several degrees.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Raise temperature gradually, no faster than the site procedure allows per day"
+    },
+    {
+     "id": "step-02",
+     "label": "Hold the feed rate low while the digester is below its normal temperature"
+    },
+    {
+     "id": "step-04",
+     "label": "Monitor volatile acids and alkalinity more often during the warm up"
+    },
+    {
+     "id": "step-05",
+     "label": "Watch gas production as an early sign that biology is recovering"
+    },
+    {
+     "id": "step-06",
+     "label": "Return to the normal feed rate once temperature and chemistry are both stable"
+    },
+    {
+     "id": "step-01",
+     "label": "Confirm the boiler is repaired and the heating loop is circulating"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Heat is restored before feeding is trusted, temperature rises gradually to protect the biology, and normal feeding waits for stable chemistry."
+  },
+  {
+   "id": "wp2ww-process35",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for sampling a digester for the full monthly laboratory suite.",
+   "topicId": "process-digester-monthly-sampling",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: samples needed for volatile solids, volatile acids, alkalinity, and metals screening.",
+   "cards": [
+    {
+     "id": "step-03",
+     "label": "Label each container with digester, date, time, and sampler initials"
+    },
+    {
+     "id": "step-01",
+     "label": "Flush the sample line to waste until fresh digested sludge reaches the port"
+    },
+    {
+     "id": "step-05",
+     "label": "Deliver samples to the laboratory within the holding time on the plan"
+    },
+    {
+     "id": "step-02",
+     "label": "Fill the laboratory containers in the order on the sample plan, volatile acids first"
+    },
+    {
+     "id": "step-04",
+     "label": "Record digester temperature and feed conditions at the time of sampling"
+    },
+    {
+     "id": "step-06",
+     "label": "File the chain of custody copy and note the sampling in the solids log"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "The line is flushed so the sample represents the digester, containers are filled in the planned order, and custody records prove the samples reached the lab on time."
+  },
+  {
+   "id": "wp2ww-process36",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for shutting down an aerobic digester for decanting and cleaning.",
+   "topicId": "process-aerobic-digester-shutdown",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: small aerobic digester at a lagoon style western plant, solids to be hauled after decanting.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Turn off the aeration blowers to allow the solids to settle"
+    },
+    {
+     "id": "step-03",
+     "label": "Decant clear supernatant back to the plant inlet once settling is complete"
+    },
+    {
+     "id": "step-06",
+     "label": "Inspect the aeration grid and walls before the digester returns to service"
+    },
+    {
+     "id": "step-05",
+     "label": "Open the digester for cleaning once the solids are removed"
+    },
+    {
+     "id": "step-01",
+     "label": "Stop feeding sludge to the digester and record the last feed date"
+    },
+    {
+     "id": "step-04",
+     "label": "Sample the settled solids for the hauling and disposal record"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Feeding stops before settling can begin, decanting waits for settling, and inspection happens while the vessel is empty before it returns to service."
+  },
+  {
+   "id": "wp2ww-process37",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for starting up a belt filter press for a dewatering shift.",
+   "topicId": "process-belt-press-startup",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: belt press with polymer feed, gravity drainage, and a cake conveyor.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Start the cake conveyor and confirm the discharge container is in place"
+    },
+    {
+     "id": "step-06",
+     "label": "Check cake solids on the first sample and record the start up settings"
+    },
+    {
+     "id": "step-03",
+     "label": "Start the polymer feed system and confirm flow at the mixing unit"
+    },
+    {
+     "id": "step-05",
+     "label": "Adjust belt tension and speed once cake is forming evenly"
+    },
+    {
+     "id": "step-04",
+     "label": "Start the sludge feed pump at a low rate and watch the gravity drainage zone"
+    },
+    {
+     "id": "step-01",
+     "label": "Inspect the belts, rollers, and wash water system and clear any old cake"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Containment and polymer are ready before sludge arrives, the press loads gradually, and the first cake sample proves the settings."
+  },
+  {
+   "id": "wp2ww-process38",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for optimizing polymer dose during a dewatering run.",
+   "topicId": "process-polymer-dose-optimization",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: cake is wetter than usual and filtrate clarity has fallen during the run.",
+   "cards": [
+    {
+     "id": "step-02",
+     "label": "Reduce or raise the polymer dose in one small step as directed by the test results"
+    },
+    {
+     "id": "step-04",
+     "label": "Collect fresh cake and filtrate samples at the new dose"
+    },
+    {
+     "id": "step-05",
+     "label": "Compare cake dryness and filtrate clarity between the two doses"
+    },
+    {
+     "id": "step-03",
+     "label": "Allow the press to run long enough for the change to reach the cake discharge"
+    },
+    {
+     "id": "step-06",
+     "label": "Settle on the best dose, record it, and note the feed solids it applies to"
+    },
+    {
+     "id": "step-01",
+     "label": "Collect cake and filtrate samples at the current polymer dose"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Samples at the old dose give the baseline, one step changes at a time, and comparison of paired samples selects the dose."
+  },
+  {
+   "id": "wp2ww-process39",
+   "revision": "r1",
+   "mode": "build-process",
+   "prompt": "Order the steps for shutting down and washing a belt filter press at the end of a run.",
+   "topicId": "process-belt-press-shutdown-wash",
+   "level": "class1",
+   "assumptions": "Fictional western Canadian wastewater treatment scenario for study purposes. In real operations, follow the site procedures, the equipment manuals, and supervisor direction.",
+   "configuration": "Scope: planned end of run, press will stand idle until the next dewatering day.",
+   "cards": [
+    {
+     "id": "step-04",
+     "label": "Stop the belts and the wash water and release belt tension if the procedure requires it"
+    },
+    {
+     "id": "step-01",
+     "label": "Stop the sludge feed pump and let the remaining sludge clear the belts"
+    },
+    {
+     "id": "step-03",
+     "label": "Run the belts with wash water on until both belts are clean"
+    },
+    {
+     "id": "step-05",
+     "label": "Empty and wash the press area floor and the filtrate sump"
+    },
+    {
+     "id": "step-02",
+     "label": "Stop the polymer feed and flush the polymer lines with water"
+    },
+    {
+     "id": "step-06",
+     "label": "Log the run hours, cake produced, and any belt damage noticed"
+    }
+   ],
+   "correctOrder": [
+    "step-01",
+    "step-02",
+    "step-03",
+    "step-04",
+    "step-05",
+    "step-06"
+   ],
+   "explanation": "Feed stops before polymer so the belts clear in order, washing happens while the belts still run, and the log captures condition for the next run."
+  }
+ ],
+ "missions": [
+  {
+   "id": "wp2ww-mission41",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 41: The Dewatering Capture Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error60",
+     "revision": "r1",
+     "occurrenceId": "m41-t1"
+    },
+    {
+     "taskId": "wp2ww-process01",
+     "revision": "r1",
+     "occurrenceId": "m41-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission42",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 42: The Process Fm Weekly Review Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process02",
+     "revision": "r1",
+     "occurrenceId": "m42-t1"
+    },
+    {
+     "taskId": "wp2ww-error61",
+     "revision": "r1",
+     "occurrenceId": "m42-t2"
+    },
+    {
+     "taskId": "wp2ww-error62",
+     "revision": "r1",
+     "occurrenceId": "m42-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission43",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 43: The Dewatering Capture Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error63",
+     "revision": "r1",
+     "occurrenceId": "m43-t1"
+    },
+    {
+     "taskId": "wp2ww-process03",
+     "revision": "r1",
+     "occurrenceId": "m43-t2"
+    },
+    {
+     "taskId": "wp2ww-error64",
+     "revision": "r1",
+     "occurrenceId": "m43-t3"
+    },
+    {
+     "taskId": "wp2ww-error65",
+     "revision": "r1",
+     "occurrenceId": "m43-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission44",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 44: The Process Winter Mlss Target Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process04",
+     "revision": "r1",
+     "occurrenceId": "m44-t1"
+    },
+    {
+     "taskId": "wp2ww-error66",
+     "revision": "r1",
+     "occurrenceId": "m44-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission45",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 45: The Dewatering Capture Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error67",
+     "revision": "r1",
+     "occurrenceId": "m45-t1"
+    },
+    {
+     "taskId": "wp2ww-process05",
+     "revision": "r1",
+     "occurrenceId": "m45-t2"
+    },
+    {
+     "taskId": "wp2ww-error68",
+     "revision": "r1",
+     "occurrenceId": "m45-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission46",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 46: The Process Two Train Wasting Split Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process06",
+     "revision": "r1",
+     "occurrenceId": "m46-t1"
+    },
+    {
+     "taskId": "wp2ww-error69",
+     "revision": "r1",
+     "occurrenceId": "m46-t2"
+    },
+    {
+     "taskId": "wp2ww-error70",
+     "revision": "r1",
+     "occurrenceId": "m46-t3"
+    },
+    {
+     "taskId": "wp2ww-error71",
+     "revision": "r1",
+     "occurrenceId": "m46-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission47",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 47: The Disinfection Dose Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error72",
+     "revision": "r1",
+     "occurrenceId": "m47-t1"
+    },
+    {
+     "taskId": "wp2ww-process07",
+     "revision": "r1",
+     "occurrenceId": "m47-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission48",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 48: The Process Monthly Solids Balance Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process08",
+     "revision": "r1",
+     "occurrenceId": "m48-t1"
+    },
+    {
+     "taskId": "wp2ww-error73",
+     "revision": "r1",
+     "occurrenceId": "m48-t2"
+    },
+    {
+     "taskId": "wp2ww-error74",
+     "revision": "r1",
+     "occurrenceId": "m48-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission49",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 49: The Disinfection Dose Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error75",
+     "revision": "r1",
+     "occurrenceId": "m49-t1"
+    },
+    {
+     "taskId": "wp2ww-process09",
+     "revision": "r1",
+     "occurrenceId": "m49-t2"
+    },
+    {
+     "taskId": "wp2ww-error76",
+     "revision": "r1",
+     "occurrenceId": "m49-t3"
+    },
+    {
+     "taskId": "wp2ww-error77",
+     "revision": "r1",
+     "occurrenceId": "m49-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission50",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 50: The Process New Srt Target Study Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process10",
+     "revision": "r1",
+     "occurrenceId": "m50-t1"
+    },
+    {
+     "taskId": "wp2ww-error78",
+     "revision": "r1",
+     "occurrenceId": "m50-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission51",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 51: The Disinfection Dose Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error79",
+     "revision": "r1",
+     "occurrenceId": "m51-t1"
+    },
+    {
+     "taskId": "wp2ww-process100",
+     "revision": "r1",
+     "occurrenceId": "m51-t2"
+    },
+    {
+     "taskId": "wp2ww-error80",
+     "revision": "r1",
+     "occurrenceId": "m51-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission52",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 52: The Process Mlss Meter Drift Correction Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process11",
+     "revision": "r1",
+     "occurrenceId": "m52-t1"
+    },
+    {
+     "taskId": "wp2ww-error81",
+     "revision": "r1",
+     "occurrenceId": "m52-t2"
+    },
+    {
+     "taskId": "wp2ww-error82",
+     "revision": "r1",
+     "occurrenceId": "m52-t3"
+    },
+    {
+     "taskId": "wp2ww-error83",
+     "revision": "r1",
+     "occurrenceId": "m52-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission53",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 53: The Nitrification Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error84",
+     "revision": "r1",
+     "occurrenceId": "m53-t1"
+    },
+    {
+     "taskId": "wp2ww-process12",
+     "revision": "r1",
+     "occurrenceId": "m53-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission54",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 54: The Process Svi Test Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process13",
+     "revision": "r1",
+     "occurrenceId": "m54-t1"
+    },
+    {
+     "taskId": "wp2ww-error85",
+     "revision": "r1",
+     "occurrenceId": "m54-t2"
+    },
+    {
+     "taskId": "wp2ww-error86",
+     "revision": "r1",
+     "occurrenceId": "m54-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission55",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 55: The Nitrification Alkalinity Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error87",
+     "revision": "r1",
+     "occurrenceId": "m55-t1"
+    },
+    {
+     "taskId": "wp2ww-process14",
+     "revision": "r1",
+     "occurrenceId": "m55-t2"
+    },
+    {
+     "taskId": "wp2ww-error88",
+     "revision": "r1",
+     "occurrenceId": "m55-t3"
+    },
+    {
+     "taskId": "wp2ww-error89",
+     "revision": "r1",
+     "occurrenceId": "m55-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission56",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 56: The Process Oxygen Uptake Test Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process15",
+     "revision": "r1",
+     "occurrenceId": "m56-t1"
+    },
+    {
+     "taskId": "wp2ww-error90",
+     "revision": "r1",
+     "occurrenceId": "m56-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission57",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 57: The Clarifier Solids Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error91",
+     "revision": "r1",
+     "occurrenceId": "m57-t1"
+    },
+    {
+     "taskId": "wp2ww-process16",
+     "revision": "r1",
+     "occurrenceId": "m57-t2"
+    },
+    {
+     "taskId": "wp2ww-error92",
+     "revision": "r1",
+     "occurrenceId": "m57-t3"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission58",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 58: The Process Blanket Profile Program Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process17",
+     "revision": "r1",
+     "occurrenceId": "m58-t1"
+    },
+    {
+     "taskId": "wp2ww-error93",
+     "revision": "r1",
+     "occurrenceId": "m58-t2"
+    },
+    {
+     "taskId": "wp2ww-error94",
+     "revision": "r1",
+     "occurrenceId": "m58-t3"
+    },
+    {
+     "taskId": "wp2ww-error95",
+     "revision": "r1",
+     "occurrenceId": "m58-t4"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission59",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 59: The Clarifier Solids Loading Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-error96",
+     "revision": "r1",
+     "occurrenceId": "m59-t1"
+    },
+    {
+     "taskId": "wp2ww-process18",
+     "revision": "r1",
+     "occurrenceId": "m59-t2"
+    }
+   ]
+  },
+  {
+   "id": "wp2ww-mission60",
+   "revision": "r1",
+   "mode": "exam-escape-room",
+   "title": "Escape Room 60: The Process Settling Series Bulking Shift",
+   "tasks": [
+    {
+     "taskId": "wp2ww-process19",
+     "revision": "r1",
+     "occurrenceId": "m60-t1"
+    },
+    {
+     "taskId": "wp2ww-error97",
+     "revision": "r1",
+     "occurrenceId": "m60-t2"
+    },
+    {
+     "taskId": "wp2ww-error98",
+     "revision": "r1",
+     "occurrenceId": "m60-t3"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "id": "spellman-handbook",
+   "title": "Frank R. Spellman, Handbook of Water and Wastewater Treatment Plant Operations, 3rd ed., 2014",
+   "locator": "Wastewater treatment operations chapters (process control, digestion, dewatering)"
+  }
+ ],
+ "publication": {
+  "published": true,
+  "reviewedBy": "Echelon deep games build, AI review (owner-authorized, pending human review)",
+  "reviewedAt": "2026-11-21T19:45:00-05:00",
+  "packageSha256": "bcd89f6b20e7886c4343558c3221abbc3f5266d5d2a958af228414b69bc2bc72",
+  "taskReceipts": [
+   {
+    "taskId": "wp2ww-error60",
+    "revision": "r1",
+    "sha256": "f4b291e387e37edc758dd2df2f6fa75a754ab90817d6a60efbce7d4f29a5c1aa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error61",
+    "revision": "r1",
+    "sha256": "dd4ce78e4f82cf7676dc494d6409ad7a243736521d5592dd31dbd41bf076a2e9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error62",
+    "revision": "r1",
+    "sha256": "9af567ff90c9d2b0f97a847d29b991e5bebe2ad7fe77729e569ad4ef0f3dba26",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error63",
+    "revision": "r1",
+    "sha256": "e51d2397cda17875543a0306fa7bdf3c0dd8559a9a8072fe1aa4b7ec8843c83e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error64",
+    "revision": "r1",
+    "sha256": "3c96b20456a70ad8a677fa83364c3f666abf00f70bb51d058e944d7be10c368e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error65",
+    "revision": "r1",
+    "sha256": "2fa44b732a2837d380762565491c608bba9d1a73b58fe9025232c5eb17aab6c2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error66",
+    "revision": "r1",
+    "sha256": "ad03552be725457ccfef304cc799e5592d68990d3ce90406aac731cb306477d2",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error67",
+    "revision": "r1",
+    "sha256": "e0ec9ce44c8ef6eaf36e7b1a71885e5ef147e83e176743fb97e516748b218787",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error68",
+    "revision": "r1",
+    "sha256": "86b943cc03f5185557f11b13e0555c2d2849059972f4f62160d687ea59331a20",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error69",
+    "revision": "r1",
+    "sha256": "88f06a9afc423139545af1c7b345e5ccd11a10fd810b6df51ce6a7f8de2f5866",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error70",
+    "revision": "r1",
+    "sha256": "5121b0a7a2bfbc19f111b51f9d0db76c36757d119f0a3a90689b7d65b36072aa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error71",
+    "revision": "r1",
+    "sha256": "0d78aaf95a71216375f12f01fb20d3f27fd8f0a4cd258324d03c8e6b8fc3b0a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error72",
+    "revision": "r1",
+    "sha256": "b9f99dd2b916b89abf688d150ff45cd52411cd8b3dfdf3a0a801670c690db7fa",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error73",
+    "revision": "r1",
+    "sha256": "3bfea2b1ff32215a4e12465f18356747dc60799a467278357a2c46e671aaff7c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error74",
+    "revision": "r1",
+    "sha256": "7402cb2c47923e8b084f3cf1f7b824d2e077f064a024cfc97d0558a4ba11272f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error75",
+    "revision": "r1",
+    "sha256": "5e0b7eb9e8fd9aad5be3ade8aace6b18e0b7436003609c4b08b2e3a1bb307b9c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error76",
+    "revision": "r1",
+    "sha256": "020ed3cc4a972d8802e25154b7d34c10153b2b44070eccf01ecad806e20df63b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error77",
+    "revision": "r1",
+    "sha256": "29559d440b7bc097c9fae5b92a42d9c6b20438c1582ebebd33e7926fd37473de",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error78",
+    "revision": "r1",
+    "sha256": "cc9cc19ea44b901ac9383276c96ac41744956b851b7999378ad897d1283814f3",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error79",
+    "revision": "r1",
+    "sha256": "6dcf56423ae1556b8b6150b1f3eaca436d9fe577d3c1e99ce59f75cec60d372f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error80",
+    "revision": "r1",
+    "sha256": "b8feed9fb591f7050cecf3ab8a73611a9a486a2d291d2d54bbfbd20da448beef",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error81",
+    "revision": "r1",
+    "sha256": "623c34cfadf3d2a3ac8edc7272e527e022d752de0a146abfa04923a9c4338f70",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error82",
+    "revision": "r1",
+    "sha256": "72d17758ec2673ae8eb7e0d00539d1e62165d279a598d087c22ce3558244cfa6",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error83",
+    "revision": "r1",
+    "sha256": "6b98ab4fb5031a629d1a4ec0de326f2fcad0ba553fd8ade6ab8d9f1365e295b5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error84",
+    "revision": "r1",
+    "sha256": "5d1bca5ed23afd7c7b454d3c8bb86300385ab3f59c6a8802671f0431626ed234",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error85",
+    "revision": "r1",
+    "sha256": "2d43226e7aa9791e7230c48b1f37c24553fabf9c873d37d1892c87978625600f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error86",
+    "revision": "r1",
+    "sha256": "194f8f719c8cb9d98647b0a1db8e6307fa3b56333373a290acb8b914b1a28cb4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error87",
+    "revision": "r1",
+    "sha256": "b53770b4a9857d58343b7613bd585aa62c38a8abf491c3c4a63009f6daeb229b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error88",
+    "revision": "r1",
+    "sha256": "46a3285192eaf9620e5908fa328beaef566c2468331f5d0433883e98f9c9d62f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error89",
+    "revision": "r1",
+    "sha256": "253859d9cf6af870ef08a8fde1e3eeeadb85d406f87a486c629c23318293db09",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error90",
+    "revision": "r1",
+    "sha256": "4e69be3335cd1fdb39a6ac1f7c9b436636f209f7431a31c292b808ad4c798b40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error91",
+    "revision": "r1",
+    "sha256": "227f87f7f5f2a675b3a26029a1feeec7b4ab5dc474cbb3402faa553c42d3accd",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error92",
+    "revision": "r1",
+    "sha256": "6101559f64f77c7eecd49de68fb40eb23da338bd3505800e3e27710dd0aa4782",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error93",
+    "revision": "r1",
+    "sha256": "3efff8a72a3a21c44f7059ad62e0581124009652236be72555b2b1261c31dba7",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error94",
+    "revision": "r1",
+    "sha256": "ab28fce214e1d0a35a0ffe5d73e27dfb06b7928ae06b3dfaa1aa1023f2774066",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error95",
+    "revision": "r1",
+    "sha256": "b2339f533f44e5f0a3b7baacc47d2e3070c664b61dee6ae77415d0455f6d6f40",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error96",
+    "revision": "r1",
+    "sha256": "f26f89bfe047362c89dbe32533f962a1f9d029adfe1bdbc1e79784273115324e",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error97",
+    "revision": "r1",
+    "sha256": "c9dc42a564ac00943c00731bd8d79b68bcf48447d39bface7643cfff2948a23a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error98",
+    "revision": "r1",
+    "sha256": "40ecbbafbc633f82bbb0f119e6fe45b19bd1f0da003ea48e518d10514f548668",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-error99",
+    "revision": "r1",
+    "sha256": "5fa2c6a9fbe953bd5c6143f676e6ccc41d5dad3660cf3ade4568bf7ccde935df",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process01",
+    "revision": "r1",
+    "sha256": "7221bb4ce0faf6c631b79a8c7152b015d9c12abf8e7b1a1d6975f39c6ce8e181",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process02",
+    "revision": "r1",
+    "sha256": "640937687daafe383cbdc08317258fb4796b518eee02f858440235dd5e79c638",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process03",
+    "revision": "r1",
+    "sha256": "5cf80438abe874076a01d56e1665f086a7121600179b10c212d19c3ede7134cf",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process04",
+    "revision": "r1",
+    "sha256": "994219fcf5c6ad5835302b36f71fc63b54d22eaa808a261fa51cbc82d7b494be",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process05",
+    "revision": "r1",
+    "sha256": "2ac8ca37bc116c179a7e07bcc5fa70cd90913d4b936d91c78e1bb499c83db0dc",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process06",
+    "revision": "r1",
+    "sha256": "6dbba1e61fa88d1b8985c7f28cb4f0c0c9f0a2272ac5500d203d4212b0347bf8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process07",
+    "revision": "r1",
+    "sha256": "57377ec935ba25fce9a0178a7d209cafbd1fd99cf654bafd0e76cca87eeaa2a5",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process08",
+    "revision": "r1",
+    "sha256": "6327e7c906e4f638de158ab8af334cbfc90b3758bb85985eb38d3c3a383c2658",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process09",
+    "revision": "r1",
+    "sha256": "090cf583aea526ccea0564c96a2073f3aff384258fd6dc274d3c116dacccfe80",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process10",
+    "revision": "r1",
+    "sha256": "1f046eb529713e59a5938f9c5d4f0ff330f10eb76faf1bf730bb860f2e80d6a1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process100",
+    "revision": "r1",
+    "sha256": "0c6c70b5486d48fb8b91a6f55bc37dac417e406588d187437f9a7d8165f10f60",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process11",
+    "revision": "r1",
+    "sha256": "ccc717446438eb2e7af6823a4e078dc103dfb68aa0e6e034ea6a42c2f5bde7e1",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process12",
+    "revision": "r1",
+    "sha256": "3567331949ec1bdfac15e44333a31ef796bd3e7b279ad05c8e579fbf2d5de445",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process13",
+    "revision": "r1",
+    "sha256": "7eee258d521b7ae504a96fd6c82017147c2f15524e6dc62301c1958ca9698700",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process14",
+    "revision": "r1",
+    "sha256": "2270ef66f5c7e31ba05ba39b014b7464ad8993bbba1ed3fe0a1793615bd32d10",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process15",
+    "revision": "r1",
+    "sha256": "e9884a522a989d26a8f1d6f1e52fcc42a427e394ac9568ecaf89a0f41bf3ed69",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process16",
+    "revision": "r1",
+    "sha256": "35ca18de8a7ec5f228ebe520605cf7e5219e1b13913266539d8b00e0400bfa1b",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process17",
+    "revision": "r1",
+    "sha256": "9506e7df5355f381ecf102d884c4158ad08a847b4fddab6e036d9e77c742b156",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process18",
+    "revision": "r1",
+    "sha256": "64c51a6268283b1076bb26a7f096d1f0f702ffff2614c4cbaa86125b1cf4fb20",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process19",
+    "revision": "r1",
+    "sha256": "cfe20a11cbc9dd61d3054e220144d7e94bf47c6e6c0bef5ddc844592fdc959ce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process20",
+    "revision": "r1",
+    "sha256": "1899813315d1838da44702b81a6f56e9b84045c2a5762592fdd717c183899ca4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process21",
+    "revision": "r1",
+    "sha256": "48483a38b47a9905a5a6a8c742dad99ed7ac16579f188414eff0d83cd040a260",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process22",
+    "revision": "r1",
+    "sha256": "830d3fda5fad36b154ce75499a430da6fd61c0d85d7767c7444786649104797c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process23",
+    "revision": "r1",
+    "sha256": "5d09a9c54915f1dd3411046fc1204668e7cc0c29a992adb97455e56d3632251a",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process24",
+    "revision": "r1",
+    "sha256": "088f2c1decb3bb6dab1f174d5e27982f2eed21dfe2639e54bb25e211cad70aff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process25",
+    "revision": "r1",
+    "sha256": "b8287d3bf05752997275a786d651f185336eebb2b9595a0aa54c5f42a9667e8c",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process26",
+    "revision": "r1",
+    "sha256": "67b3c729953af111d9aa0cc226cf0b3a15c96426891ac0264ad9b6fcde1b7700",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process27",
+    "revision": "r1",
+    "sha256": "dc3e730e2d9159845a574637e13dbd473641f06aac891f3c6766ede03c6d8342",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process28",
+    "revision": "r1",
+    "sha256": "bf426153438b1fc82a3ffd05392bf7267b63fca398c0f00b6899d8b31a422dff",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process29",
+    "revision": "r1",
+    "sha256": "e735a68371d21d893d584b33170ef0fedc9f39ac4aef54a05ee6fc0c219013e8",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process30",
+    "revision": "r1",
+    "sha256": "2e00b28baa2befe0c6503e26a9222457ab5051bd996773827b59ce56ca935cce",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process31",
+    "revision": "r1",
+    "sha256": "11c6d0e1a223dcb94589a71eb1c687e2165d8e375aeef344eeb351ecd06a3542",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process32",
+    "revision": "r1",
+    "sha256": "1fe0a0e37c530cf8d24e246250c0e7eea2557f9de497e100b9aa90edc0e9fa58",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process33",
+    "revision": "r1",
+    "sha256": "043455d85a5962414714934eccd9acc3c8b624681a0643cfa708ade3f2715d0f",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process34",
+    "revision": "r1",
+    "sha256": "1e138262a381296c08aeb5184092f8bf69d924b03a2134abf896df9ec9b73794",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process35",
+    "revision": "r1",
+    "sha256": "55d6f122b8a6a8d42c15953a51837f21fe957ce0deca8c89d297b306ee8bb793",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process36",
+    "revision": "r1",
+    "sha256": "7fceb94671ff57efa2536053ad8c741f729ec158d2c81fde846ca19cfee33cab",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process37",
+    "revision": "r1",
+    "sha256": "e31c612c682f88822b25e38f9d6d32f5ffb357f76b8a7fa4ffb648f63f62c9e4",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process38",
+    "revision": "r1",
+    "sha256": "ef521030f3d50dd0eaa7292bc52c524331b6dd25db07120e85600f428e98e816",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   },
+   {
+    "taskId": "wp2ww-process39",
+    "revision": "r1",
+    "sha256": "41f1fe87319c6a572faad00e4522e890c658e32286d7ffafa9ac8826c91120d9",
+    "sourceIds": [
+     "spellman-handbook"
+    ]
+   }
+  ],
+  "missionReceipts": [
+   {
+    "missionId": "wp2ww-mission41",
+    "revision": "r1",
+    "sha256": "1d885f5a1fb2c57d7d51152ffae87a6b58ddb9a7f831eb071bbd5dc10053e75a"
+   },
+   {
+    "missionId": "wp2ww-mission42",
+    "revision": "r1",
+    "sha256": "712c6c2543bc5783f49aaf4581ff72deb33503ef7749c41d2beb3c1dfbdb9f34"
+   },
+   {
+    "missionId": "wp2ww-mission43",
+    "revision": "r1",
+    "sha256": "af922986fd13aac53e4b8da27929f055e51ad2f841a945e14637c345d832c132"
+   },
+   {
+    "missionId": "wp2ww-mission44",
+    "revision": "r1",
+    "sha256": "60c988b0ea86250a65c74d0fb693c1b820b46d1cfe109824969b78a6a5865838"
+   },
+   {
+    "missionId": "wp2ww-mission45",
+    "revision": "r1",
+    "sha256": "ea08c39c95b52f01976227152d9a8bbf1aac693eb5745bc2462b069c5073de6b"
+   },
+   {
+    "missionId": "wp2ww-mission46",
+    "revision": "r1",
+    "sha256": "705c3507658d1505bb8c0f3637075d53b103068590ee8763104c3741144351a6"
+   },
+   {
+    "missionId": "wp2ww-mission47",
+    "revision": "r1",
+    "sha256": "d075c571b9a6c494998b741d8cffd123225a503aaffb9d2013c6fbe3fcd0b312"
+   },
+   {
+    "missionId": "wp2ww-mission48",
+    "revision": "r1",
+    "sha256": "6deb8b4d226b51e80ee698002958609c20bfd135c3539da6920eb8abfae36bca"
+   },
+   {
+    "missionId": "wp2ww-mission49",
+    "revision": "r1",
+    "sha256": "dd61e0cfa5ac471fdcc1b021196a77bd749a5228298ff31986e7be584ba7006d"
+   },
+   {
+    "missionId": "wp2ww-mission50",
+    "revision": "r1",
+    "sha256": "bcc683e48e731ef9f1f61ef0d8d5347f31c5cbee26b63775c746d0008a244a41"
+   },
+   {
+    "missionId": "wp2ww-mission51",
+    "revision": "r1",
+    "sha256": "3b14f16cfb844e8c0c1b48accc2b27001259441779788ab3df748a33b83bde05"
+   },
+   {
+    "missionId": "wp2ww-mission52",
+    "revision": "r1",
+    "sha256": "f36a37b221ebe79e980c835168634f9484a77bb38d7f93356590ad769b9127b4"
+   },
+   {
+    "missionId": "wp2ww-mission53",
+    "revision": "r1",
+    "sha256": "9ae900a9d623ded76b7edfe05c25b7f0839c428eac12d0f1b84da7f0c559e040"
+   },
+   {
+    "missionId": "wp2ww-mission54",
+    "revision": "r1",
+    "sha256": "a0fe67ce8722a8a5de3debed062b657989cfa51124da65daff41385abc49b4f0"
+   },
+   {
+    "missionId": "wp2ww-mission55",
+    "revision": "r1",
+    "sha256": "c67bde324f27c55e5ed6c8927629a2f61b748749f311c3797cbae7b109db3ed7"
+   },
+   {
+    "missionId": "wp2ww-mission56",
+    "revision": "r1",
+    "sha256": "ec4ee74a66e19374003d1ae112720f76c94331de33ca6d2580c1b300ca4ffdad"
+   },
+   {
+    "missionId": "wp2ww-mission57",
+    "revision": "r1",
+    "sha256": "c7ef109fb5faf091ebb75f5503798cab02f6fa895f0f2a89622b7fa146bd4f50"
+   },
+   {
+    "missionId": "wp2ww-mission58",
+    "revision": "r1",
+    "sha256": "24050d32f96d3d5a0337c19e57245f05c16f63c0155c9915474e66eba22d1032"
+   },
+   {
+    "missionId": "wp2ww-mission59",
+    "revision": "r1",
+    "sha256": "72497ec9e68573b9f27bef7ccbcf82d8674dcdb07a9e867d082fb1b4845998e5"
+   },
+   {
+    "missionId": "wp2ww-mission60",
+    "revision": "r1",
+    "sha256": "42d14ad3148bbcee8967b3b776e9b7e44f2977064f5542a11d77a04b207e1be1"
+   }
+  ]
+ }
+}

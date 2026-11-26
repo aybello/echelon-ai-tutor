@@ -1,0 +1,122 @@
+{
+  "programKey": "construction-electrician-309a-on",
+  "blueprintVersion": "red-seal-construction-electrician-current-previous-rsos-2026-08-15",
+  "retrievedAt": "2026-08-17",
+  "sources": [
+    {
+      "id": "red-seal-current-exam-weightings",
+      "title": "Construction Electrician examination weightings — current exam, previous RSOS",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/exam-weightings.shtml",
+      "usage": "authoritative current-exam task and weighting matrix",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Blueprint mapping, factual task allocation, and original question authoring; do not copy sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "sha256": "4bf297f12c011725ff81427fbb6f85ed171a1727c01407f3ddb50b9ff94d2abc"
+    },
+    {
+      "id": "red-seal-construction-electrician-trade-page",
+      "title": "Construction Electrician",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/const-elect.shtml",
+      "usage": "authoritative current-versus-in-development RSOS status",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Current-exam status verification and original contextual content.",
+      "verifiedAt": "2026-08-17",
+      "sha256": "83f45827f51c60785ba000b96b1a168ffb8952dbd9a7bffa1ca66a87726e3124"
+    },
+    {
+      "id": "red-seal-exam-preparation-guide",
+      "title": "Red Seal examination preparation guide",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/resources/exam-prep-guide.shtml",
+      "usage": "public examination format and candidate-preparation information",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Exam-format guidance and original preparation content; do not copy sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "sha256": "d272860d2c6a571e6e966fe3c56501353f2fe05cd44c04f24a1388ae06f76ec2"
+    },
+    {
+      "id": "skilled-trades-ontario-309a",
+      "title": "Electrician — Construction and Maintenance (309A)",
+      "publisher": "Skilled Trades Ontario",
+      "url": "https://www.skilledtradesontario.ca/trade-information/electrician-construction-and-maintenance/",
+      "usage": "Ontario credential and curriculum-transition context",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Ontario credential context and original orientation content.",
+      "verifiedAt": "2026-08-17",
+      "sha256": "a2c9e2d0efd4f075a25c4bb11c98a532b54f1b1a8221e068f8426e4253e94dcd"
+    },
+    {
+      "id": "red-seal-previous-rsos-mwa-a",
+      "title": "Construction Electrician previous RSOS — Major Work Activity A",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-a.shtml",
+      "usage": "authoritative current-exam MWA A task and subtask taxonomy",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Subtask mapping and original question authoring; do not copy performance-criteria or sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "hashScope": "normalized_subtask_taxonomy",
+      "snapshotMwa": "A",
+      "sha256": "c3786f150c5946a8302580272ebeae0ed371c75eca220653a872fff1a956ce78"
+    },
+    {
+      "id": "red-seal-previous-rsos-mwa-b",
+      "title": "Construction Electrician previous RSOS — Major Work Activity B",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-b.shtml",
+      "usage": "authoritative current-exam MWA B task and subtask taxonomy",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Subtask mapping and original question authoring; do not copy performance-criteria or sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "hashScope": "normalized_subtask_taxonomy",
+      "snapshotMwa": "B",
+      "sha256": "9ea8495ab20a1515b611c933dca52f06279be3934852b3b7197d1390f86b1e80"
+    },
+    {
+      "id": "red-seal-previous-rsos-mwa-c",
+      "title": "Construction Electrician previous RSOS — Major Work Activity C",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-c.shtml",
+      "usage": "authoritative current-exam MWA C task and subtask taxonomy",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Subtask mapping and original question authoring; do not copy performance-criteria or sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "hashScope": "normalized_subtask_taxonomy",
+      "snapshotMwa": "C",
+      "sha256": "9a7bc6440f0c3da2c2981e55e626cd6b4a2270bcf3b5ab2b71b9dc98a458518d"
+    },
+    {
+      "id": "red-seal-previous-rsos-mwa-d",
+      "title": "Construction Electrician previous RSOS — Major Work Activity D",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-d.shtml",
+      "usage": "authoritative current-exam MWA D task and subtask taxonomy",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Subtask mapping and original question authoring; do not copy performance-criteria or sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "hashScope": "normalized_subtask_taxonomy",
+      "snapshotMwa": "D",
+      "sha256": "5685d5f0ed56e70f8569b9451fd04b0fddd5077aee94aa78583a67c946a11572"
+    },
+    {
+      "id": "red-seal-previous-rsos-mwa-e",
+      "title": "Construction Electrician previous RSOS — Major Work Activity E",
+      "publisher": "Red Seal Program",
+      "url": "https://red-seal.ca/eng/trades/constelectric/previous/mwa-e.shtml",
+      "usage": "authoritative current-exam MWA E task and subtask taxonomy",
+      "rightsBasis": "public_official_reference",
+      "permittedUsage": "Subtask mapping and original question authoring; do not copy performance-criteria or sample-question wording.",
+      "verifiedAt": "2026-08-17",
+      "hashScope": "normalized_subtask_taxonomy",
+      "snapshotMwa": "E",
+      "sha256": "8d006035ed8c073402be55b43382a3c4076f81707db9820dc95772159d9df3ac"
+    }
+  ],
+  "exclusions": [
+    "Canadian Electrical Code rule, table, appendix, or copyrighted wording without recorded rights clearance",
+    "Red Seal sample-question wording or answers",
+    "manufacturer-specific proprietary programming or configuration procedures",
+    "utility-specific drawings, specifications, or protected technical data"
+  ]
+}
