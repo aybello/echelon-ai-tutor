@@ -104,6 +104,81 @@ describe("EquipmentDiagram deterministic descriptors", () => {
     expect(surface).toBeLessThan(mediaTop);
   });
 
+  it("opens the filter airspace and connects the inlet to service water without crossing the wash trough", () => {
+    const slug = "rapid-gravity-filter";
+    const filter = model(slug);
+    const vertices = (d: string): [number, number][] => {
+      const result: [number, number][] = [];
+      let x = 0, y = 0;
+      for (const match of d.matchAll(/([MHVhv])(-?[\d.]+)(?:[ ,]+(-?[\d.]+))?/g)) {
+        const value = Number(match[2]);
+        if (match[1] === "M") { x = value; y = Number(match[3]); }
+        if (match[1] === "H") x = value;
+        if (match[1] === "V") y = value;
+        if (match[1] === "h") x += value;
+        if (match[1] === "v") y += value;
+        result.push([x, y]);
+      }
+      return result;
+    };
+    const bounds = (d: string) => {
+      const points = vertices(d);
+      return { left: Math.min(...points.map(p => p[0])), right: Math.max(...points.map(p => p[0])),
+        top: Math.min(...points.map(p => p[1])), bottom: Math.max(...points.map(p => p[1])) };
+    };
+    const tank = filter.base.find(shape => shape.fill === "concrete")!;
+    const interior = filter.base.find(shape => shape.fill === "white");
+    expect(interior, "a visible, open interior must cover the solid concrete fill").toBeDefined();
+    const water = bounds(getPart(slug, "supernatant").shapes[0].d);
+    const underdrain = bounds(getPart(slug, "underdrain").shapes[0].d);
+    const trough = getPart(slug, "wash-trough").shapes[0];
+    const troughBounds = bounds(trough.d);
+    expect([water.top, troughBounds.top, water.bottom]).toEqual([174, 149, 193]);
+    expect(filter.base.indexOf(interior!)).toBeGreaterThan(filter.base.indexOf(tank));
+    expect(vertices(interior!.d)).toEqual([
+      [water.left, bounds(tank.d).top], [water.left, underdrain.bottom],
+      [water.right, underdrain.bottom], [water.right, bounds(tank.d).top],
+    ]);
+    expect(interior!.d).not.toMatch(/Z/i); // U-shaped section: no roof across the airspace.
+    expect(bounds(interior!.d).top).toBeLessThan(troughBounds.top);
+
+    const inlet = getPart(slug, "inlet");
+    const pipeWater = inlet.shapes.find(shape => shape.stroke === "water")!;
+    const discharge = inlet.shapes.find(shape => shape.stroke === "water" && shape !== pipeWater)!;
+    expect(discharge, "the inlet needs a drawn free-discharge stream").toBeDefined();
+    const pipePoints = vertices(pipeWater.d), dischargePoints = vertices(discharge.d);
+    expect(pipePoints.at(-1)).toEqual(dischargePoints[0]);
+    expect(dischargePoints[0][1]).toBeLessThan(water.top);
+    const route = vertices(filter.flows.find(flow => flow.from === "inlet" && flow.to === "supernatant")!.d);
+    const [endX, endY] = route.at(-1)!;
+    expect([endX, endY]).toEqual(dischargePoints.at(-1));
+    expect(endX).toBeGreaterThan(water.left);
+    expect(endX).toBeLessThan(water.right);
+    expect(endY).toBeGreaterThan(water.top);
+    expect(endY).toBeLessThan(water.bottom);
+
+    // Every point of the service arrow must lie on the actual wetted inlet/stream,
+    // with stroke-width clearance from the trough walls, floor and collection opening.
+    const wetted = [pipeWater, discharge].flatMap(shape => vertices(shape.d).slice(1).map((b, i) => ({
+      a: vertices(shape.d)[i], b, radius: shape.width / 2,
+    })));
+    for (let i = 1; i < route.length; i++) {
+      const [a, b] = [route[i - 1], route[i]];
+      const steps = Math.max(Math.abs(b[0] - a[0]), Math.abs(b[1] - a[1]));
+      for (let step = 0; step <= steps; step++) {
+        const x = a[0] + (b[0] - a[0]) * step / steps, y = a[1] + (b[1] - a[1]) * step / steps;
+        const segment = wetted.find(({ a, b, radius }) => Math.hypot(
+          x - Math.max(Math.min(a[0], b[0]), Math.min(x, Math.max(a[0], b[0]))),
+          y - Math.max(Math.min(a[1], b[1]), Math.min(y, Math.max(a[1], b[1]))),
+        ) <= radius);
+        expect(segment, `disconnected inlet service path at ${x},${y}`).toBeDefined();
+        const clearance = (segment?.radius ?? 0) + trough.width / 2;
+        expect(x >= troughBounds.left - clearance && x <= troughBounds.right + clearance
+          && y >= troughBounds.top - clearance && y <= troughBounds.bottom + clearance).toBe(false);
+      }
+    }
+  });
+
   it("places the waste-sludge hotspot on its distinct branch, not the RAS pipe", () => {
     const waste = getPart("aeration-basin", "was-line");
     expect(waste.anchor[0]).toBeGreaterThan(455);

@@ -44,6 +44,21 @@ export function createPumpVoluteGeometry(): BufferGeometry {
         vertex(x, true, side, (i + 1) / segments), vertex(x, false, side, (i + 1) / segments));
     }
   }
+
+  // Straddle the seam plane (y = -0.1). Each radial tip reaches the
+  // middle of its spiral end, so the solids overlap rather than just touch.
+  const tongueEnd = (x: number) => [
+    new Vector3(x, -0.14, -1.11), new Vector3(x, -0.06, -1.11),
+    new Vector3(x, -0.06, -0.86), new Vector3(x, -0.14, -0.86),
+  ];
+  const left = tongueEnd(-1), right = tongueEnd(-0.4);
+  quad(left[3], left[2], left[1], left[0]);
+  quad(right[0], right[1], right[2], right[3]);
+  for (let i = 0; i < 4; i++) {
+    const next = (i + 1) % 4;
+    quad(left[i], left[next], right[next], right[i]);
+  }
+
   const geometry = new BufferGeometry();
   geometry.setAttribute("position", new Float32BufferAttribute(positions, 3));
   geometry.computeVertexNormals(); geometry.computeBoundingBox(); geometry.computeBoundingSphere();
