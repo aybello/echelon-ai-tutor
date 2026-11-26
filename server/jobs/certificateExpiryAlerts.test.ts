@@ -27,14 +27,14 @@ function seedDb(): InMemoryDb {
   const certDExpires = inDays(7);
   currentDb = createInMemoryDb({
     users: [
-      { id: 1, email: "ava@quintewest.ca", name: "Ava Chen" },
-      { id: 2, email: "ben@quintewest.ca", name: "Ben Ortiz" },
+      { id: 1, email: "ava@example.com", name: "Ava Chen" },
+      { id: 2, email: "ben@example.com", name: "Ben Ortiz" },
     ],
-    organizations: [{ id: 1, name: "City of Quinte West", managerEmail: "amy@quintewest.ca" }],
+    organizations: [{ id: 1, name: "City of Quinte West", managerEmail: "amy@example.com" }],
     organizationMembers: [
-      { id: 1, orgId: 1, email: "amy@quintewest.ca", name: "Amy Russell", role: "manager", status: "assigned" },
-      { id: 2, orgId: 1, email: "ava@quintewest.ca", name: "Ava Chen", role: "operator", status: "assigned" },
-      { id: 3, orgId: 1, email: "ben@quintewest.ca", name: "Ben Ortiz", role: "operator", status: "assigned" },
+      { id: 1, orgId: 1, email: "amy@example.com", name: "Amy Russell", role: "manager", status: "assigned" },
+      { id: 2, orgId: 1, email: "ava@example.com", name: "Ava Chen", role: "operator", status: "assigned" },
+      { id: 3, orgId: 1, email: "ben@example.com", name: "Ben Ortiz", role: "operator", status: "assigned" },
     ],
     certificates: [
       // A: exactly 30 days out — threshold day. Manager + operator alerted.
@@ -47,11 +47,11 @@ function seedDb(): InMemoryDb {
       { id: 4, organizationId: 1, operatorUserId: 1, operatorName: "Ava Chen", certificateType: "class-3-wastewater-treatment", certificateNumber: "ON-1004", issuedAt: null, expiresAt: certDExpires, createdByUserId: 10, createdAt: now, updatedAt: now },
     ],
     certificateAlerts: [
-      { id: 1, certificateId: 4, thresholdDays: 7, expiresAt: certDExpires, recipientUserId: null, recipientEmail: "amy@quintewest.ca", sentAt: now },
+      { id: 1, certificateId: 4, thresholdDays: 7, expiresAt: certDExpires, recipientUserId: null, recipientEmail: "amy@example.com", sentAt: now },
       // C's manager alert previously failed after the exact threshold day.
       // The job must retry the original threshold key, not wait for today to
       // match the threshold again.
-      { id: 2, certificateId: 3, thresholdDays: 0, expiresAt: inDays(0), recipientUserId: null, recipientEmail: "amy@quintewest.ca", status: "failed", lastError: "temporary SMTP error", sentAt: null },
+      { id: 2, certificateId: 3, thresholdDays: 0, expiresAt: inDays(0), recipientUserId: null, recipientEmail: "amy@example.com", status: "failed", lastError: "temporary SMTP error", sentAt: null },
     ],
   });
   return currentDb;
@@ -75,12 +75,12 @@ describe("runCertificateExpiryAlerts", () => {
       byCert.set(call.certificateNumber, list);
     }
     expect(byCert.get("ON-1001")).toEqual([
-      { email: "amy@quintewest.ca", thresholdDays: 30 },
-      { email: "ava@quintewest.ca", thresholdDays: 30 },
+      { email: "amy@example.com", thresholdDays: 30 },
+      { email: "ava@example.com", thresholdDays: 30 },
     ]);
-    expect(byCert.get("ON-1003")).toEqual([{ email: "amy@quintewest.ca", thresholdDays: 0 }]);
+    expect(byCert.get("ON-1003")).toEqual([{ email: "amy@example.com", thresholdDays: 0 }]);
     // D: the manager was already logged, so only the operator is emailed.
-    expect(byCert.get("ON-1004")).toEqual([{ email: "ava@quintewest.ca", thresholdDays: 7 }]);
+    expect(byCert.get("ON-1004")).toEqual([{ email: "ava@example.com", thresholdDays: 7 }]);
     expect(byCert.has("ON-1002")).toBe(false);
 
     // The failed C row is reclaimed in place. Three new rows are inserted,
@@ -112,7 +112,7 @@ describe("runCertificateExpiryAlerts", () => {
         thresholdDays: 30,
         expiresAt: new Date(currentExpiry.getTime() + 15 * DAY_MS),
         recipientUserId: null,
-        recipientEmail: "amy@quintewest.ca",
+        recipientEmail: "amy@example.com",
         status: "failed",
         sentAt: null,
       },
@@ -122,7 +122,7 @@ describe("runCertificateExpiryAlerts", () => {
         thresholdDays: 30,
         expiresAt: currentExpiry,
         recipientUserId: 2,
-        recipientEmail: "ben@quintewest.ca",
+        recipientEmail: "ben@example.com",
         status: "failed",
         sentAt: null,
       }
@@ -135,7 +135,7 @@ describe("runCertificateExpiryAlerts", () => {
       .filter(call => call.certificateNumber === "ON-1002");
     expect(calls).toEqual([
       expect.objectContaining({
-        email: "ben@quintewest.ca",
+        email: "ben@example.com",
         certificateNumber: "ON-1002",
       }),
     ]);

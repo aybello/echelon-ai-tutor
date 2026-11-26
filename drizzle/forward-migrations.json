@@ -570,7 +570,7 @@
       "version": 85,
       "tag": "0085_licence_expiry_tracking",
       "file": "drizzle/0085_licence_expiry_tracking.sql",
-      "sha256": "36cfd33cbe7413ac2aa879abb0755730f62265b3d2d784b560fb0a82355bf3b5",
+      "sha256": "58647600369f5071f6ad32b84376da6325c8b2e6d10b3f38c0b125f3cacd7a1f",
       "proposedOnly": true,
       "standaloneApply": {
         "tables": [
@@ -597,7 +597,6 @@
         ]
       },
       "verifierAllowMissingTables": [
-        "certificates",
         "certificate_audit_log",
         "certificate_evidence"
       ],

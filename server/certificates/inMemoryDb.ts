@@ -13,6 +13,8 @@
 import { Column, Param, SQL, StringChunk } from "drizzle-orm";
 import {
   certificateAlerts,
+  certificateAuditLog,
+  certificateEvidence,
   certificates,
   organizationMembers,
   organizations,
@@ -119,6 +121,10 @@ class SelectQuery implements PromiseLike<Row[]> {
     return this;
   }
 
+  for(_lock: "update"): this {
+    return this;
+  }
+
   private execute(): Row[] {
     let rows = this.rowsRef().filter(row => matches(row, this.filters));
     if (this.ordered) {
@@ -156,6 +162,8 @@ export interface InMemoryDb {
     organizationMembers: Row[];
     certificates: Row[];
     certificateAlerts: Row[];
+    certificateAuditLog: Row[];
+    certificateEvidence: Row[];
   };
 }
 
@@ -168,6 +176,8 @@ export function createInMemoryDb(
     organizationMembers: [...(seed.organizationMembers ?? [])],
     certificates: [...(seed.certificates ?? [])],
     certificateAlerts: [...(seed.certificateAlerts ?? [])],
+    certificateAuditLog: [...(seed.certificateAuditLog ?? [])],
+    certificateEvidence: [...(seed.certificateEvidence ?? [])],
   };
 
   const storeFor = (table: unknown): Row[] => {
@@ -176,6 +186,8 @@ export function createInMemoryDb(
     if (table === organizationMembers) return rows.organizationMembers;
     if (table === certificates) return rows.certificates;
     if (table === certificateAlerts) return rows.certificateAlerts;
+    if (table === certificateAuditLog) return rows.certificateAuditLog;
+    if (table === certificateEvidence) return rows.certificateEvidence;
     throw new Error("In-memory DB: unknown table");
   };
 

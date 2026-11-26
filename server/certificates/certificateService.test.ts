@@ -46,18 +46,18 @@ import {
 function seedDb(overrides: Partial<InMemoryDb["rows"]> = {}): InMemoryDb {
   currentDb = createInMemoryDb({
     users: [
-      { id: 1, email: "ava@quintewest.ca", name: "Ava Chen" },
-      { id: 2, email: "ben@quintewest.ca", name: "Ben Ortiz" },
+      { id: 1, email: "ava@example.com", name: "Ava Chen" },
+      { id: 2, email: "ben@example.com", name: "Ben Ortiz" },
     ],
     organizations: [
-      { id: 1, name: "City of Quinte West", managerEmail: "amy@quintewest.ca" },
-      { id: 2, name: "City of Kingston", managerEmail: "phil@kingston.ca" },
+      { id: 1, name: "City of Quinte West", managerEmail: "amy@example.com" },
+      { id: 2, name: "City of Kingston", managerEmail: "phil@example.com" },
     ],
     organizationMembers: [
       {
         id: 1,
         orgId: 1,
-        email: "ava@quintewest.ca",
+        email: "ava@example.com",
         name: "Ava Chen",
         role: "operator",
         status: "assigned",
@@ -65,7 +65,7 @@ function seedDb(overrides: Partial<InMemoryDb["rows"]> = {}): InMemoryDb {
       {
         id: 2,
         orgId: 1,
-        email: "ben@quintewest.ca",
+        email: "ben@example.com",
         name: "Ben Ortiz",
         role: "operator",
         status: "assigned",
@@ -73,7 +73,7 @@ function seedDb(overrides: Partial<InMemoryDb["rows"]> = {}): InMemoryDb {
       {
         id: 3,
         orgId: 1,
-        email: "amy@quintewest.ca",
+        email: "amy@example.com",
         name: "Amy Russell",
         role: "manager",
         status: "assigned",
@@ -81,7 +81,7 @@ function seedDb(overrides: Partial<InMemoryDb["rows"]> = {}): InMemoryDb {
       {
         id: 4,
         orgId: 2,
-        email: "ava@quintewest.ca",
+        email: "ava@example.com",
         name: "Ava Chen",
         role: "operator",
         status: "assigned",
@@ -99,7 +99,7 @@ describe("createCertificate + listCertificatesForOrg", () => {
     seedDb();
     await createCertificate(1, 10, {
       operatorName: "Ava Chen",
-      operatorEmail: "ava@quintewest.ca",
+      operatorEmail: "ava@example.com",
       certificateType: "class-1-water-treatment",
       certificateNumber: "ON-1001",
       expiresAt: daysFromNow(45),
@@ -327,7 +327,7 @@ describe("listCertificatesForOperator", () => {
         },
       ],
     });
-    const rows = await listCertificatesForOperator(1, "ava@quintewest.ca", NOW);
+    const rows = await listCertificatesForOperator(1, "ava@example.com", NOW);
     expect(rows.map(r => r.id)).toEqual([1]);
   });
   it("does not rebind a linked user id to a different same-name roster account", async () => {
@@ -354,7 +354,7 @@ describe("listCertificatesForOperator", () => {
       certificateId: 1,
       thresholdDays: 30,
       expiresAt,
-      recipientEmail: "amy@quintewest.ca",
+      recipientEmail: "amy@example.com",
       recipientUserId: null,
     });
     expect(claim).not.toBeNull();
@@ -372,7 +372,7 @@ describe("listCertificatesForOperator", () => {
         certificateId: 1,
         thresholdDays: 30,
         expiresAt,
-        recipientEmail: "amy@quintewest.ca",
+        recipientEmail: "amy@example.com",
         recipientUserId: null,
       })
     ).toBeNull();
