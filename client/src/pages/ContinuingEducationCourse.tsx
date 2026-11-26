@@ -26,8 +26,10 @@ import {
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav, { ECHELON_LOGO_URL } from "@/components/SiteNav";
+import CeuLearningDiagram from "@/components/CeuLearningDiagram";
 import { observeCeuShellLayout } from "@/lib/ceuShellLayout";
 import { ceuModuleSlides } from "@shared/ceuSlides";
+import { ceuDiagramSlideId } from "@shared/ceuDiagrams";
 import { getCeuCourseByKey } from "@shared/ceuCourses";
 import { ceuFinalEntry } from "@shared/ceuFinalEntry";
 import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
@@ -155,6 +157,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     [activeModule]
   );
   const activeSlide = slides[activeSlideIndex] ?? slides[0];
+  const diagramSlideId = useMemo(
+    () => (activeModule ? ceuDiagramSlideId(activeModule, slides) : ""),
+    [activeModule, slides]
+  );
   const completedModules = course?.modules.filter(module => moduleComplete(record, module.id)).length ?? 0;
   const allModulesComplete = !!course && completedModules === course.modules.length;
   const finalEntry = ceuFinalEntry(record);
@@ -566,6 +572,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
             <article className="ceu-lesson-card">
               <p className="ceu-slide-eyebrow">{activeSlide.eyebrow}</p>
               <h1>{activeSlide.title}</h1>
+              {activeSlide.id === diagramSlideId && <CeuLearningDiagram module={activeModule} />}
               <LessonMarkdown text={activeSlide.body} />
               {course.key === "ceu-basic-safety" && activeSlide.kind === "overview" && (
                 <img className="ceu-safety-illustration" src="/manus-storage/ceu-basic-safety-cover_008a7f91.jpg" alt={`${activeModule.title}: illustrative training scene, not a work procedure`} />
