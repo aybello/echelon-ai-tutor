@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import media from "../../shared/ceuManagedMedia.json";
 import previewSources from "../../prototypes/ui-ux-preview/media-sources.json";
+import { historicalCeuPresentationSource } from "./historicalPresentationBaseline";
 
 const root = new URL("../../", import.meta.url);
 const read = (path: string) => readFileSync(new URL(path, root), "utf8");
@@ -21,6 +22,8 @@ const runtimeFiles = Object.keys(baseline);
 // remains protected by the original baseline rather than a refreshed digest.
 function normalizeWastewaterClassification(source: string): string {
   const catalogue = JSON.parse(source);
+  // Reject lexical/formatting changes before projecting the seven fields.
+  expect(source).toBe(JSON.stringify(catalogue, null, 2) + "\n");
   const course = catalogue.find((item: { key: string }) => item.key === "ceu-wastewater-treatment-concepts");
   expect(course).toMatchObject({
     stream: "wastewater",
@@ -70,6 +73,7 @@ describe("verified CEU managed media migration", () => {
         source = source.replaceAll(asset.url, oldPath);
       }
       if (path === "shared/ceuCatalogueData.json") source = normalizeWastewaterClassification(source);
+      source = historicalCeuPresentationSource(path, source);
       // Pins all questions, answers, assessment hashes, versions, slide order,
       // caseSolutions, wording, alt text, JSX logic and formatting unchanged.
       expect(digest(source), path).toBe(expectedHash);

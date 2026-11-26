@@ -51,6 +51,9 @@ describe("Wastewater concepts educational quality", () => {
     for (const bar of bars) expect(bar.y + bar.height).toBe(200);
     expect(at(220).height).toBeGreaterThan(at(40).height);
     expect(at(280).height).toBeLessThan(at(100).height);
+    expect(at(220).height / at(40).height).toBe(2);
+    expect(at(280).height / at(100).height).toBe(0.5);
+    expect(course.modules[0].lesson).toContain("This is not the Pinecrest scenario below");
     // The illustrative constant-load case must match Q x C on a common scale.
     expect(at(40).height * at(100).height).toBe(at(220).height * at(280).height);
   });
