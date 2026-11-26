@@ -14,8 +14,8 @@ const organizations = JSON.parse(await readFile(new URL("../../client/src/lib/tr
 const sources = JSON.parse(await readFile(new URL("./media-sources.json", import.meta.url), "utf8"));
 const sha256 = bytes => createHash("sha256").update(bytes).digest("hex");
 
-test("all four authorized managed logo paths have byte-identical, small offline fixtures", async () => {
-  assert.equal(fixtures.length, 4);
+test("all approved managed logo paths have byte-identical, small offline fixtures", async () => {
+  assert.equal(fixtures.length, organizations.length);
   assert.ok((await readFile(fixtureUrl)).length < 150_000);
   const logos = decodeTrustedLogos(fixtures, organizations);
   assert.deepEqual(logos.map(asset => asset.storagePath).sort(), organizations.map(asset => asset.runtimeUrl).sort());
@@ -54,14 +54,14 @@ test("corrupted bytes and non-canonical base64 are rejected", () => {
   }
 });
 
-test("offline preparation retains all 34 pinned CEU originals and registers all four logos", async () => {
+test("offline preparation retains all 34 pinned CEU originals and registers every approved logo", async () => {
   assert.equal(sources.length, 34);
   assert.ok(sources.every(asset => asset.sha === "7f6045098c044aea234b3788dd2df8c73f591172"));
   const output = await mkdtemp(path.join(tmpdir(), "echelon-preview-media-test-"));
   try {
     const manifest = await prepareMedia(output);
-    assert.equal(manifest.length, 38);
-    assert.equal(new Set(manifest.map(asset => asset.storagePath)).size, 38);
+    assert.equal(manifest.length, sources.length + organizations.length);
+    assert.equal(new Set(manifest.map(asset => asset.storagePath)).size, sources.length + organizations.length);
     assert.deepEqual(JSON.parse(await readFile(path.join(output, "assets.json"), "utf8")), manifest);
     for (const asset of [...sources, ...fixtures]) {
       const registered = manifest.find(item => item.storagePath === asset.storagePath);
