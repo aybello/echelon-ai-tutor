@@ -1,1 +1,0 @@
-ALTER TABLE `subscriptions` ADD `amountCAD` int;

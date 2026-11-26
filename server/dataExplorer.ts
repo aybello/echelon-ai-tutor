@@ -35,6 +35,8 @@ export const DATA_EXPLORER_EXCLUDED_TABLES = [
   // manager dashboard; the alert log is an internal delivery ledger.
   "certificates",
   "certificate_alerts",
+  "certificate_audit_log",
+  "certificate_evidence",
 ] as const;
 
 /**

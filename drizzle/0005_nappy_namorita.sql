@@ -1,1 +1,0 @@
-ALTER TABLE `waitlist` ADD `province` varchar(64);

@@ -1,1 +1,0 @@
-ALTER TABLE `exam_results` ADD `calcOnly` enum('yes','no') DEFAULT 'no';

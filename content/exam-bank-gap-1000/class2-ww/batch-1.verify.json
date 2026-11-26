@@ -1,9 +1,0 @@
-[
- {
-  "itemId": "WASTEWATER-TREATMENT-L2-456",
-  "expression": "(840*2500)/(14*7500)",
-  "expected": "20.0",
-  "decimalPlaces": 1,
-  "unit": "days"
- }
-]
