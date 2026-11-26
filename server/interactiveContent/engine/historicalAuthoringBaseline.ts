@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { historicalCeuPresentationSource } from "../../ceu/historicalPresentationBaseline";
 
 /**
  * Historical publication fixtures pin the pre-external-assets authoring tool.
@@ -9,6 +10,9 @@ import { readFileSync } from "node:fs";
  */
 export function historicalAuthoringBytes(path: string): Buffer {
   const bytes = readFileSync(path);
+  if (path === "client/src/pages/ContinuingEducationCourse.css") {
+    return Buffer.from(historicalCeuPresentationSource(path, bytes.toString("utf8")));
+  }
   if (path !== "scripts/game-authoring/build.ts") return bytes;
   let source = bytes.toString("utf8");
   for (const addition of [

@@ -5,16 +5,17 @@ import { pathToFileURL } from "node:url";
 
 test("homepage managed organization logos all load offline on phone, tablet and desktop", async ({page}) => {
   const organizations = JSON.parse(await readFile(new URL("../../client/src/lib/trustedOrganizations.json", import.meta.url), "utf8"));
+  const organizationCount = organizations.length;
   for (const width of [320, 390, 820, 1440]) {
     await page.setViewportSize({width, height:844});
     await page.goto("/#/homepage");
     const originals = page.locator('.trusted-organizations-list:not([aria-hidden])');
     const clone = page.locator('.trusted-organizations-list[aria-hidden="true"]');
-    await expect(originals.locator("li")).toHaveCount(4);
-    await expect(originals.locator("img")).toHaveCount(4);
-    await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
+    await expect(originals.locator("li")).toHaveCount(organizationCount);
+    await expect(originals.locator("img")).toHaveCount(organizationCount);
+    await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(organizationCount);
     await expect(clone).toHaveAttribute("role", "presentation");
-    await expect(clone.locator("li")).toHaveCount(4);
+    await expect(clone.locator("li")).toHaveCount(organizationCount);
     await expect(clone.locator("a, button, [tabindex]")).toHaveCount(0);
     await expect(clone).toBeHidden();
     for (const organization of organizations) {
@@ -37,9 +38,10 @@ test("customer logo motion is seamless, pausable and static for reduced motion w
   const original = page.locator('.trusted-organizations-list:not([aria-hidden])');
   const clone = page.locator('.trusted-organizations-list[aria-hidden="true"]');
   const pause = page.getByRole("button", {name:"Pause logo animation", exact:true});
+  const organizationCount = JSON.parse(await readFile(new URL("../../client/src/lib/trustedOrganizations.json", import.meta.url), "utf8")).length;
   await expect(pause).toBeVisible();
-  await expect(page.locator(".trusted-organizations img")).toHaveCount(8);
-  await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
+  await expect(page.locator(".trusted-organizations img")).toHaveCount(organizationCount * 2);
+  await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(organizationCount);
   await expect(page.locator(".trusted-organizations-supporter")).toHaveCount(0);
   await expect(page.locator('.trusted-organizations img[alt*="Black Entrepreneurship Alliance"], .trusted-organizations img[src*="bea_560997bf"]')).toHaveCount(0);
   await expect(clone).toHaveAttribute("role", "presentation");
@@ -128,7 +130,7 @@ test("customer logo motion is seamless, pausable and static for reduced motion w
         return rect.left >= viewport.left - 0.1 && rect.right <= viewport.right + 0.1;
       });
     })).toBe(true);
-    await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
+    await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(organizationCount);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   }
 });

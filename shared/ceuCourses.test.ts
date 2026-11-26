@@ -14,7 +14,10 @@ describe("CEU public catalogue", () => {
       expect(c.publicDisclosure).toContain("No approved CEUs");
       expect(c.publicDisclosure).toContain("no contact-hour award");
       expect(c.completionRequirements.join(" ")).not.toContain("Pass every module check");
-      if (c.stream === "wastewater") {
+      if (c.group === "foundations") {
+        expect(c.approvalStatus).toBe("not_submitted");
+        expect(c.publicDisclosure).toContain("has not been submitted for approval in any jurisdiction");
+      } else if (c.stream === "wastewater") {
         expect(c.approvalStatus).toBe("ceu_value_review_required");
         expect(c.publicDisclosure).toContain("not Director approved");
       }

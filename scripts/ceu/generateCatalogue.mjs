@@ -2,13 +2,13 @@ import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "../..");
 const order = [
-  "basic-safety", "basic-hydraulics", "basic-math",
-  "water-treatment-concepts", "wastewater-treatment-concepts",
+  "basic-safety",
+  "basic-hydraulics",
+  "basic-math",
   "chlorination-principles",
   "basic-instrumentation",
   "water-distribution-overview",
   "supervisor-essentials",
-
   "drinking-water-compliance",
   "water-treatment-process-control",
   "wastewater-treatment-process-control",
@@ -19,15 +19,17 @@ const order = [
   "distribution-water-quality",
   "collection-wet-weather",
   "activated-sludge-troubleshooting",
+  "water-treatment-concepts",
+  "wastewater-treatment-concepts"
 ];
 const codes = [
-  "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math",
-  "ceu-water-treatment-concepts", "ceu-wastewater-concepts",
+  "ceu-basic-safety",
+  "ceu-basic-hydraulics",
+  "ceu-basic-math",
   "ceu-chlorination-principles",
   "ceu-basic-instrumentation",
   "ceu-water-distribution-overview",
   "ceu-supervisor-essentials",
-
   "ceu-compliance",
   "ceu-water-process",
   "ceu-wastewater-process",
@@ -38,6 +40,8 @@ const codes = [
   "ceu-distribution",
   "ceu-collection",
   "ceu-activated-sludge",
+  "ceu-water-treatment-concepts",
+  "ceu-wastewater-concepts"
 ];
 const curricula = order.map(k =>
   JSON.parse(
@@ -51,26 +55,84 @@ if (
 )
   throw Error("Catalogue order must include every curriculum.");
 const covers = {
-  "ceu-basic-safety": { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/qlvirWqFtbxUNoeG.jpg", alt: "Water operator safety training equipment" },
-  "ceu-basic-hydraulics": { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/txYeoebaOSmzZXAn.jpg", alt: "Water operator hydraulics training" },
-  "ceu-basic-math": { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/oAWVmiXiXiPCiMRH.jpg", alt: "Water operator mathematics training" },
-  "ceu-activated-sludge-troubleshooting": { src: "/manus-storage/ceu-activated-sludge-troubleshooting-cover_19008779.jpg", alt: "Activated Sludge Troubleshooting and Solids Control: illustrative operator training scene" },
-  "ceu-coagulation-filtration": { src: "/manus-storage/ceu-coagulation-filtration-cover_d967e8b2.jpg", alt: "Coagulation, Filtration and Controlled Optimization: illustrative operator training scene" },
-  "ceu-collection-wet-weather": { src: "/manus-storage/ceu-collection-wet-weather-cover_4bd0574d.jpg", alt: "Collection Systems and Wet-Weather Response: illustrative operator training scene" },
-  "ceu-disinfection-ct": { src: "/manus-storage/ceu-disinfection-ct-cover_89cdf029.jpg", alt: "Disinfection Verification and CT Calculations: illustrative operator training scene" },
-  "ceu-distribution-water-quality": { src: "/manus-storage/ceu-distribution-water-quality-cover_77268031.jpg", alt: "Distribution Water Quality and System Integrity: illustrative operator training scene" },
-  "ceu-drinking-water-compliance": { src: "/manus-storage/ceu-drinking-water-compliance-cover_2b2aaece.jpg", alt: "Drinking Water Operations and Regulatory Compliance: illustrative operator training scene" },
-  "ceu-instrumentation-scada": { src: "/manus-storage/ceu-instrumentation-scada-cover_04a1b69b.jpg", alt: "Instrumentation, SCADA and Operational Data Integrity: illustrative operator training scene" },
-  "ceu-sampling-data-quality": { src: "/manus-storage/ceu-sampling-data-quality-cover_76b13aa4.jpg", alt: "Sampling, Laboratory Results and Data Quality: illustrative operator training scene" },
-  "ceu-wastewater-treatment-process-control": { src: "/manus-storage/ceu-wastewater-treatment-process-control-cover_9ef886dc.jpg", alt: "Wastewater Treatment Operations and Process Control: illustrative operator training scene" },
-  "ceu-water-treatment-process-control": { src: "/manus-storage/ceu-water-treatment-process-control-cover_1d7b4b17.jpg", alt: "Water Treatment Process Control and Optimization: illustrative operator training scene" },
-  "ceu-chlorination-principles": { src: "/manus-storage/ceu-chlorination-principles-cover_c42e1257.jpg", alt: "Chlorination Principles for Water and Wastewater Operators: illustrative operator training scene" },
-  "ceu-basic-instrumentation": { src: "/manus-storage/ceu-basic-instrumentation-cover_6aae2f03.jpg", alt: "Basic Instrumentation for Water and Wastewater Operators: illustrative operator training scene" },
-  "ceu-water-distribution-overview": { src: "/manus-storage/ceu-water-distribution-overview-cover_773338af.jpg", alt: "Water Distribution Overview for Operators: illustrative operator training scene" },
-  "ceu-supervisor-essentials": { src: "/manus-storage/ceu-supervisor-essentials-cover_37bf426d.jpg", alt: "Supervisor Essentials for Water and Wastewater Operators: illustrative operator training scene" },
-
+  "ceu-basic-safety": {
+    "src": "/manus-storage/ceu-basic-safety-cover_008a7f91.jpg",
+    "alt": "Water operator safety training equipment"
+  },
+  "ceu-basic-hydraulics": {
+    "src": "/manus-storage/ceu-basic-hydraulics-cover_c5a35cbb.jpg",
+    "alt": "Water operator hydraulics training"
+  },
+  "ceu-basic-math": {
+    "src": "/manus-storage/ceu-basic-math-cover_bfce9684.jpg",
+    "alt": "Water operator mathematics training"
+  },
+  "ceu-chlorination-principles": {
+    "src": "/manus-storage/ceu-chlorination-principles-cover_8c50586b.jpg",
+    "alt": "Chlorination Principles for Water and Wastewater Operators: illustrative operator training scene"
+  },
+  "ceu-basic-instrumentation": {
+    "src": "/manus-storage/ceu-basic-instrumentation-cover_9e868b43.jpg",
+    "alt": "Basic Instrumentation for Water and Wastewater Operators: illustrative operator training scene"
+  },
+  "ceu-water-distribution-overview": {
+    "src": "/manus-storage/ceu-water-distribution-overview-cover_033f54eb.jpg",
+    "alt": "Water Distribution Overview for Operators: illustrative operator training scene"
+  },
+  "ceu-supervisor-essentials": {
+    "src": "/manus-storage/ceu-supervisor-essentials-cover_c5ab4951.jpg",
+    "alt": "Supervisor Essentials for Water and Wastewater Operators: illustrative operator training scene"
+  },
+  "ceu-drinking-water-compliance": {
+    "src": "/manus-storage/ceu-drinking-water-compliance-cover_da3d3d38.jpg",
+    "alt": "Drinking Water Operations and Regulatory Compliance: illustrative operator training scene"
+  },
+  "ceu-water-treatment-process-control": {
+    "src": "/manus-storage/ceu-water-treatment-process-control-cover_b42f020f.jpg",
+    "alt": "Water Treatment Process Control and Optimization: illustrative operator training scene"
+  },
+  "ceu-wastewater-treatment-process-control": {
+    "src": "/manus-storage/ceu-wastewater-treatment-process-control-cover_254148b5.jpg",
+    "alt": "Wastewater Treatment Operations and Process Control: illustrative operator training scene"
+  },
+  "ceu-sampling-data-quality": {
+    "src": "/manus-storage/ceu-sampling-data-quality-cover_921d2611.jpg",
+    "alt": "Sampling, Laboratory Results and Data Quality: illustrative operator training scene"
+  },
+  "ceu-disinfection-ct": {
+    "src": "/manus-storage/ceu-disinfection-ct-cover_5d726806.jpg",
+    "alt": "Disinfection Verification and CT Calculations: illustrative operator training scene"
+  },
+  "ceu-coagulation-filtration": {
+    "src": "/manus-storage/ceu-coagulation-filtration-cover_0e504937.jpg",
+    "alt": "Coagulation, Filtration and Controlled Optimization: illustrative operator training scene"
+  },
+  "ceu-instrumentation-scada": {
+    "src": "/manus-storage/ceu-instrumentation-scada-cover_9fc6ed5d.jpg",
+    "alt": "Instrumentation, SCADA and Operational Data Integrity: illustrative operator training scene"
+  },
+  "ceu-distribution-water-quality": {
+    "src": "/manus-storage/ceu-distribution-water-quality-cover_1a8acfce.jpg",
+    "alt": "Distribution Water Quality and System Integrity: illustrative operator training scene"
+  },
+  "ceu-collection-wet-weather": {
+    "src": "/manus-storage/ceu-collection-wet-weather-cover_1e493bea.jpg",
+    "alt": "Collection Systems and Wet-Weather Response: illustrative operator training scene"
+  },
+  "ceu-activated-sludge-troubleshooting": {
+    "src": "/manus-storage/ceu-activated-sludge-troubleshooting-cover_5618888a.jpg",
+    "alt": "Activated Sludge Troubleshooting and Solids Control: illustrative operator training scene"
+  },
+  "ceu-water-treatment-concepts": {
+    "src": "/manus-storage/ceu-water-treatment-concepts-cover_6b46c3b7.png",
+    "alt": "Water treatment concepts course cover"
+  },
+  "ceu-wastewater-treatment-concepts": {
+    "src": "/manus-storage/ceu-wastewater-treatment-concepts-cover_abf712eb.png",
+    "alt": "Wastewater treatment concepts course cover"
+  }
 };
-const foundations = new Set(["ceu-water-treatment-concepts", "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math", "ceu-chlorination-principles", "ceu-basic-instrumentation", "ceu-water-distribution-overview", "ceu-supervisor-essentials"]);
+const foundations = new Set(["ceu-water-treatment-concepts", "ceu-wastewater-treatment-concepts", "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math", "ceu-chlorination-principles", "ceu-basic-instrumentation", "ceu-water-distribution-overview", "ceu-supervisor-essentials"]);
 const data = curricula.map((c, i) => ({
   key: c.key,
   interestCode: codes[i],
