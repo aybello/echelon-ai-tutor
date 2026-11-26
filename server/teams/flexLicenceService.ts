@@ -2,7 +2,7 @@
  * Teams Flex Licence Inventory Service
  * Handles: invite, cancel invitation, claim (operator signs in), assign, activate
  */
-import { eq, and, or } from "drizzle-orm";
+import { eq, and, or, isNull } from "drizzle-orm";
 import { getDb } from "../db";
 import { organizations, teamFlexLicences } from "../../drizzle/schema";
 import { TRPCError } from "@trpc/server";
@@ -11,6 +11,10 @@ import crypto from "crypto";
 import { ENV } from "../_core/env";
 import { sendCoursePassInvitationEmail } from "../email";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
+import { isTeamRegion, teamRegionExamFamily } from "../../shared/teamPricing";
+import { ALL_PRODUCTS } from "../../shared/products";
+import { getCommercialAvailability } from "../commercialAvailability";
 
 function hashInvitationToken(token: string): string {
   return crypto.createHash("sha256").update(token).digest("hex");
@@ -379,7 +383,8 @@ export async function changeFlexLicenceCourse(
 
   // Same-band validation: import pricing helper
   const canonicalCurrentCourse = resolveCourseKey(licence.courseKey)?.courseKey;
-  const canonicalNewCourse = resolveCourseKey(newCourseKey)?.courseKey;
+  const newCourse = resolveCourseKey(newCourseKey);
+  const canonicalNewCourse = newCourse?.courseKey;
   if (!canonicalCurrentCourse || !canonicalNewCourse) {
     throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown course selection." });
   }
@@ -394,9 +399,37 @@ export async function changeFlexLicenceCourse(
     });
   }
 
-  await db.update(teamFlexLicences)
+  const [org] = await db.select({ province: organizations.province })
+    .from(organizations).where(eq(organizations.id, orgId)).limit(1);
+  if (!org) {
+    throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+  }
+  // Use the checkout region boundary, not the Annual stream tier: Flex is
+  // separately purchased, but NS still excludes Class IV distribution/collection.
+  if (!isTeamRegion(org.province)
+    || newBand.examFamily !== teamRegionExamFamily(org.province)
+    || (org.province === "nova-scotia" && !isNovaScotiaCourseSupported(canonicalNewCourse))) {
+    throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${canonicalNewCourse} is not available in this organization's region.` });
+  }
+  const releasedCourseKeys = new Set(
+    (await getCommercialAvailability(db, ALL_PRODUCTS)).map(product => product.key),
+  );
+  if (!newCourse?.isActive || !newCourse.teamAssignable || !releasedCourseKeys.has(canonicalNewCourse)) {
+    throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown or unavailable course: ${canonicalNewCourse}` });
+  }
+
+  const changeResult = await db.update(teamFlexLicences)
     .set({ courseKey: canonicalNewCourse })
-    .where(eq(teamFlexLicences.id, licenceId));
+    .where(and(
+      eq(teamFlexLicences.id, licenceId),
+      eq(teamFlexLicences.organizationId, orgId),
+      eq(teamFlexLicences.status, licence.status),
+      isNull(teamFlexLicences.activatedAt),
+      eq(teamFlexLicences.courseKey, licence.courseKey),
+    ));
+  if (affectedRows(changeResult) !== 1) {
+    throw new TRPCError({ code: "CONFLICT", message: "This licence was activated or changed by another request. Refresh and try again." });
+  }
 }
 
 export async function activateFlexLicence(

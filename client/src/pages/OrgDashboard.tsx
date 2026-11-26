@@ -207,8 +207,30 @@ export default function OrgDashboard() {
   const [assessmentMember, setAssessmentMember] = useState<{ orgId: number; memberId: number; label: string } | null>(null);
   const organizationQuery = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false });
   const orgInput = { orgId: selectedOrgId };
+  function handleOrganizationChange(value: string) {
+    const nextOrgId = Number(value);
+    if (nextOrgId === selectedOrgId) return;
+    // Discard the old organization's drafts in the same update as the chooser.
+    // A shared operator email must never carry a pending action into another org.
+    setAssignOpen(false);
+    setAssignEmail("");
+    setAssignName("");
+    setAssignCourseKeys([]);
+    setBulkEmails("");
+    setBulkMode(false);
+    setEditCourseTarget(null);
+    setEditCourseKeys([]);
+    setRevokeTarget(null);
+    setOutcomeTarget(null);
+    setOutcomeResult("passed");
+    setOutcomeDate("");
+    setManageSeatsOpen(false);
+    setNewSeatCount(0);
+    setAssessmentMember(null);
+    setSelectedOrgId(nextOrgId);
+  }
   const orgChooser = organizationQuery.data && organizationQuery.data.length > 1 ? (
-    <div className="space-y-2"><Label>Organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={value => setSelectedOrgId(Number(value))}>
+    <div className="space-y-2"><Label>Organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={handleOrganizationChange}>
       <SelectTrigger className="min-w-[220px]"><SelectValue placeholder="Choose an organization" /></SelectTrigger>
       <SelectContent>{organizationQuery.data.map(org => <SelectItem key={org.id} value={String(org.id)}>{org.name} ({org.status})</SelectItem>)}</SelectContent>
     </Select></div>
@@ -1133,7 +1155,7 @@ export default function OrgDashboard() {
 
         {/* ── Flex Licences ─────────────────────────────────────────── */}
         {!hasAnnualContract && <p className="text-sm text-slate-600">Teams Flex Course Passes are a one-time purchase. Each licence has its own activate-by date, study term and reporting window, shown below.</p>}
-        {overview.orgId && <FlexLicencePanel orgId={overview.orgId} />}
+        {overview.orgId && <FlexLicencePanel key={overview.orgId} orgId={overview.orgId} />}
 
         {/* ── Licence Expiry Tracking ────────────────────────────────── */}
         {overview.orgId && <CertificatesPanel key={overview.orgId} orgId={overview.orgId} />}
