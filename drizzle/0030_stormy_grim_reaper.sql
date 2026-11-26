@@ -1,1 +1,0 @@
-ALTER TABLE `question_bank_meta` ADD `contentVersion` int DEFAULT 1 NOT NULL;

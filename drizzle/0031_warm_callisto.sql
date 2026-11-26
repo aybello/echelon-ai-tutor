@@ -1,1 +1,0 @@
-ALTER TABLE `trigger_logs` ADD `status` varchar(16) DEFAULT 'sent' NOT NULL;

@@ -1,1 +1,0 @@
-ALTER TABLE `organization_members` ADD `courseKey` varchar(64);

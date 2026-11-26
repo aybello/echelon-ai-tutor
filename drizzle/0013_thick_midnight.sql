@@ -1,1 +1,0 @@
-ALTER TABLE `flashcard_progress` MODIFY COLUMN `knownIds` text NOT NULL;
