@@ -572,10 +572,12 @@ function ReducingValve(scene: SceneProps) {
     </Part>
     <Part id="pilot" scene={scene} offset={[0.55, 0.55, 0.75]}>
       <Tube points={[[-2.0, -0.45, 0.1], [-2.0, 0.35, 0.75], [-1.8, 0.78, 0.95]]} radius={0.04} />
-      <Tube points={[[-1.12, 0.78, 0.95], [0.4, 0.78, 0.95], [1.2, 0.91, 0.95]]} radius={0.04} />
+      {/* Restricted upstream feed tees to the cover before entering the pilot. */}
+      <Tube points={[[-1.12, 0.78, 0.95], [0.4, 0.78, 0.95], [1.0, 1.03, 0.95]]} radius={0.04} />
+      <Member from={[-0.88, 0.78, 0.95]} to={[-0.68, 0.78, 0.95]} radius={0.08} color={DARK} />
       <Cylinder at={[1.2, 1.03, 0.95]} radius={0.23} length={0.35} color={STEEL} />
       <Cylinder at={[1.2, 1.21, 0.95]} radius={0.28} length={0.08} color={LIGHT} />
-      <Tube points={[[1.0, 1.03, 0.95], [0.4, 1.35, 0.75], [0, 1.35, 0], [0, 1.18, 0]]} radius={0.045} />
+      <Tube points={[[0.4, 0.78, 0.95], [0.4, 1.35, 0.75], [0, 1.35, 0], [0, 1.18, 0]]} radius={0.045} />
       <Tube points={[[1.4, 1.03, 0.95], [2.5, 0.95, 0.95], [2.5, -0.45, 0.1]]} radius={0.035} />
     </Part>
     <Part id="spring" scene={scene} offset={[0.55, 1.05, 0.75]}>

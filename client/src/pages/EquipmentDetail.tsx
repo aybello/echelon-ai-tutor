@@ -209,8 +209,8 @@ export default function EquipmentDetail({
                     {equipment.stages.map(stage => (
                       <li key={stage.id} className="flex gap-3">
                         <span
-                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white"
-                          style={{ background: stage.accent }}
+                          className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 bg-slate-900 text-[11px] font-bold text-white"
+                          style={{ borderColor: stage.accent }}
                         >
                           {stage.step}
                         </span>
@@ -392,7 +392,7 @@ export default function EquipmentDetail({
                         </dt>
                         <dd className="text-slate-600">
                             {t.meaning}{" "}
-                            <span className="text-slate-400">
+                            <span className="text-slate-600">
                               (
                             {showUs && t.unitsUs ? t.unitsUs : t.units})
                           </span>

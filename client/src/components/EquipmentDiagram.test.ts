@@ -164,10 +164,45 @@ describe("EquipmentDiagram deterministic descriptors", () => {
   it("puts a small PRV strainer on upstream pilot feed and spring in the external pilot", () => {
     const prv = model("pressure-reducing-valve");
     expect(prv.flows.filter(f => f.to === "strainer").every(f => f.from === "inlet" && f.medium === "pilot")).toBe(true);
-    expect(prv.flows.some(f => f.from === "strainer" && f.to === "pilot" && f.medium === "pilot")).toBe(true);
+    expect(prv.flows.some(f => f.from === "strainer" && f.to === "diaphragm" && f.medium === "pilot")).toBe(true);
+    expect(prv.flows.some(f => f.from === "diaphragm" && f.to === "pilot" && f.medium === "pilot")).toBe(true);
+    expect(prv.flows.some(f => f.from === "pilot" && f.to === "outlet" && f.medium === "pilot")).toBe(true);
     expect(prv.flows.some(f => f.to === "strainer" && f.medium === "water")).toBe(false);
     expect(getPart("pressure-reducing-valve", "spring").anchor[0]).toBe(getPart("pressure-reducing-valve", "pilot").anchor[0] + 2);
     expect(getPart("pressure-reducing-valve", "pilot").shapes[0].d).toContain("H529V238");
+  });
+
+  it("requires the PRV cover bleed to pass through the pilot without disconnecting its restricted feed", () => {
+    const pilot = getPart("pressure-reducing-valve", "pilot");
+    const circuit = [pilot.shapes[0].d, pilot.shapes[2].d];
+    const connected = (closed: boolean, target: string): boolean => {
+      const points = new Set<string>();
+      for (const path of circuit) {
+        let x = 0, y = 0;
+        for (const match of path.matchAll(/([MHV])([\d.]+)(?:[ ,]+([\d.]+))?/g)) {
+          if (match[1] === "M") { x = Number(match[2]); y = Number(match[3]); points.add(`${x},${y}`); continue; }
+          const endX = match[1] === "H" ? Number(match[2]) : x;
+          const endY = match[1] === "V" ? Number(match[2]) : y;
+          const dx = Math.sign(endX - x), dy = Math.sign(endY - y);
+          while (x !== endX || y !== endY) { x += dx; y += dy; points.add(`${x},${y}`); }
+        }
+      }
+      if (closed) for (let x = 439; x < 471; x++) points.delete(`${x},151`);
+      const visited = new Set(["347,171"]), queue = ["347,171"];
+      for (let i = 0; i < queue.length; i++) {
+        const key = queue[i];
+        if (key === target) return true;
+        const [x, y] = key.split(",").map(Number);
+        for (const neighbor of [`${x - 1},${y}`, `${x + 1},${y}`, `${x},${y - 1}`, `${x},${y + 1}`]) {
+          if (points.has(neighbor) && !visited.has(neighbor)) { visited.add(neighbor); queue.push(neighbor); }
+        }
+      }
+      return false;
+    };
+    expect(connected(false, "529,238")).toBe(true);
+    expect(connected(true, "529,238")).toBe(false);
+    expect(connected(true, "227,151")).toBe(true);
+    expect(pilot.shapes.some(shape => shape.d.includes("259 146L267 156"))).toBe(true);
   });
 });
 

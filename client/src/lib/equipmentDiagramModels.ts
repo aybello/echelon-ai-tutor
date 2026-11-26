@@ -142,18 +142,18 @@ export const EQUIPMENT_DIAGRAM_MODELS: Readonly<Record<string, EquipmentDiagramM
     notes: [{ x: 361, y: 320, text: "Two pump branches • Each check valve precedes the common header" }],
   },
   "pressure-reducing-valve": {
-    description: "Side section of a pilot-operated pressure-reducing valve. Main water flow passes left to right through a seat controlled by the bonnet diaphragm. A small strainer is only on the upstream pilot feed. The external pilot contains an adjustable spring; a separate sensing connection reaches the downstream outlet. Pilot control tubing connects to the diaphragm chamber, not a main-line filter.",
+    description: "Side section of a pilot-operated pressure-reducing valve. Main water flow passes left to right through a seat controlled by the bonnet diaphragm. The upstream pilot feed passes through a small strainer and restriction to a tee serving the cover chamber and pilot inlet. Cover bleed must pass through the adjustable pilot before reaching the downstream outlet. Closing the pilot stops this discharge, leaving the restricted feed connected to the cover. The pilot outlet also communicates downstream pressure to the regulator.",
     base: [P("M287 206V189Q287 163 321 160H373Q407 163 407 189V206", "steel")],
     parts: [
       part("inlet", [197, 238], "left", [118, 224], [...pipe("M140 238H290")]),
       part("outlet", [524, 238], "right", [602, 224], [...pipe("M406 238H580")]),
       part("diaphragm", [348, 181], "bottom", [362, 351], [P("M284 208H410V270H284Z", "steel"), P("M290 218H329V240H365V218H404V260H375V248H320V260H290Z", "water"), P("M302 181H392", "none", "teal", 7), P("M347 183V231", "none", "ink", 6), R(327, 230, 40, 9, "teal"), P("M320 248H375", "none", "ink", 4)]),
-      part("pilot", [453, 144], "top", [512, 27], [P("M190 238V151H454V170H370M454 170H529V238", "none", "teal", 3), R(438, 126, 33, 40, "steel"), P("M448 154H462M455 145V162", "none", "ink", 3)]),
+      part("pilot", [453, 144], "top", [512, 27], [P("M190 238V151H438M335 151V171H347M471 151H529V238", "none", "teal", 3), R(438, 126, 33, 40, "steel"), P("M438 151H471", "none", "teal", 3), P("M448 154H462M455 145V162", "none", "ink", 3), E(335, 151, 3, 3, "teal"), P("M259 146L267 156M267 146L259 156", "none", "ink", 2)]),
       part("strainer", [227, 151], "top", [207, 27], [R(216, 144, 22, 14, "white"), P("M220 156L229 146M227 156L236 146", "none", "ink", 1.5), P("M227 158V167H235", "none", "steel", 3)]),
       part("spring", [455, 114], "top", [362, 27], [R(442, 94, 26, 33, "white"), P("M455 91V99L447 104L463 109L447 114L463 119L455 124", "none", "ink", 2), P("M447 91H463", "none", "ink", 3)]),
     ],
-    flows: [flow("M151 238H275", "inlet", "diaphragm"), flow("M301 238H314V243H380V238H399", "diaphragm", "outlet"), flow("M434 238H568", "diaphragm", "outlet"), flow("M190 203V151H206", "inlet", "strainer", "pilot"), flow("M245 151H426", "strainer", "pilot", "pilot"), flow("M432 170H376", "pilot", "diaphragm", "pilot")],
-    notes: [{ x: 362, y: 314, text: "Small upstream pilot strainer • Downstream pressure sensing" }],
+    flows: [flow("M151 238H275", "inlet", "diaphragm"), flow("M301 238H314V243H380V238H399", "diaphragm", "outlet"), flow("M434 238H568", "diaphragm", "outlet"), flow("M190 203V151H206", "inlet", "strainer", "pilot"), flow("M245 151H318", "strainer", "diaphragm", "pilot"), flow("M347 171H335V151H428", "diaphragm", "pilot", "pilot"), flow("M479 151H529V227", "pilot", "outlet", "pilot")],
+    notes: [{ x: 362, y: 314, text: "Restricted feed → cover • Cover bleed → pilot → outlet" }],
   },
 };
 

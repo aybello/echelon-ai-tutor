@@ -49,4 +49,13 @@ describe("Equipment visual contracts", () => {
   it("uses each formula card's actual available unit system for term labels", () => {
     expect(detail).toContain("showUs && t.unitsUs ? t.unitsUs : t.units");
   });
+  it("keeps small informative labels readable regardless of equipment accent", () => {
+    const catalogue = readFileSync(new URL("../client/src/components/EquipmentCatalogue.tsx", import.meta.url), "utf8");
+    expect(catalogue).toContain('"ml-1 text-slate-600"');
+    expect(catalogue).not.toContain("text-slate-400");
+    expect(detail).toContain("border-2 bg-slate-900 text-[11px] font-bold text-white");
+    expect(detail).toContain("borderColor: stage.accent");
+    expect(detail).not.toContain("background: stage.accent");
+    expect(detail).not.toContain("text-slate-400");
+  });
 });

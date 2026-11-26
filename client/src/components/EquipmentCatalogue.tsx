@@ -40,7 +40,7 @@ export default function EquipmentCatalogue() {
         {(["all", ...Object.keys(EQUIPMENT_STREAM_LABELS)] as (EquipmentStream | "all")[]).map(id => {
           const count = id === "all" ? items.length : items.filter(item => item.stream === id).length;
           return <button key={id} type="button" onClick={() => setStream(id)} aria-pressed={stream === id} className={`min-h-11 rounded-lg border px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${stream === id ? "border-teal-800 bg-teal-800 text-white" : "border-slate-200 bg-white text-slate-600 hover:border-teal-300 hover:bg-teal-50"}`}>
-            {id === "all" ? "All equipment" : EQUIPMENT_STREAM_LABELS[id]} <span className={stream === id ? "ml-1 text-teal-100" : "ml-1 text-slate-400"}>{count}</span>
+            {id === "all" ? "All equipment" : EQUIPMENT_STREAM_LABELS[id]} <span className={stream === id ? "ml-1 text-teal-100" : "ml-1 text-slate-600"}>{count}</span>
           </button>;
         })}
       </div>
