@@ -3,6 +3,7 @@ import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import * as THREE from "three";
 import type { EquipmentDefinition, EquipmentView } from "@shared/equipmentRegistry";
 import { createTankEndShape, EQUIPMENT_TANK_PORTS, type TankEndPorts, type TankPort } from "../lib/equipmentTankGeometry";
+import { createPRVBodyGeometry, PRV_BODY } from "../lib/equipmentValveGeometry";
 
 type Point = [number, number, number];
 export interface EquipmentUnitSceneProps {
@@ -116,6 +117,12 @@ function Flange({ x, y = 0, z = 0, radius = 0.35 }: { x: number; y?: number; z?:
     {[0, 1, 2, 3, 4, 5].map(i => <Cylinder key={i} at={[x, y + Math.sin(i * Math.PI / 3) * (radius - 0.04),
       z + Math.cos(i * Math.PI / 3) * (radius - 0.04)]} radius={0.027} length={0.17} sides={6} rotation={X_AXIS} color={DARK} />)}
   </>;
+}
+function PRVBody({ cut }: { cut: boolean }) {
+  const geometry = useMemo(() => createPRVBodyGeometry(cut), [cut]);
+  return <mesh name="prv-ported-body" geometry={geometry} castShadow {...usePartMesh(!cut)}>
+    <Surface color={STEEL} opacity={cut ? 1 : 0.27} />
+  </mesh>;
 }
 /** Closed UV end head: axial flow port and four sealed sleeve penetrations. */
 function UVHead({ x }: { x: number }) {
@@ -314,13 +321,8 @@ function ContactTank(scene: SceneProps) {
     [1.2, 0.21, 1.22], [1.2, 0.21, -1.22], [2.65, 0.21, -1.22]];
   return <group>
     <Part id="contact-zone" scene={scene} offset={[0, 0, 0]}>
-      <Tank length={6} width={3.4} floor={-1.65} top={0.4} cut={cut} openEnds />
-      {/* End walls have ports in the first/last lanes, not the middle lane. */}
-      {[-1, 1].map(s => <group key={s}>
-        <Box at={[s * 3.1, -0.63, 0.42]} size={[0.2, 2.05, 2.56]} color={CONCRETE} />
-        <Box at={[s * 3.1, -1.23, -1.28]} size={[0.2, 0.84, 0.84]} color={CONCRETE} />
-        <Box at={[s * 3.1, 0.27, -1.28]} size={[0.2, 0.26, 0.84]} color={CONCRETE} />
-      </group>)}
+      <Tank length={6} width={3.4} floor={EQUIPMENT_TANK_PORTS.contactTank.floor} top={0.4}
+        cut={cut} ports={EQUIPMENT_TANK_PORTS.contactTank.ends} />
       <Water at={[0, -0.73, 0]} size={[5.95, 1.7, 3.35]} />
       {/* Explicit diagrammatic direction markers above water, not simulated trajectories. */}
       {path.slice(0, -1).map((p, i) => <Arrow key={i} from={p} to={path[i + 1]} scene={scene} />)}
@@ -539,15 +541,13 @@ function ReducingValve(scene: SceneProps) {
   return <group>
     <Box at={[0, -1.45, 0]} size={[6.5, 0.2, 2.8]} color={CONCRETE} />
     <Part id="inlet" scene={scene} offset={[-0.7, 0, 0]}>
-      <Shell at={[-2.25, -0.45, 0]} radius={0.3} thickness={0.07} length={2.8} color={LIGHT} />
-      <Flange x={-3.55} y={-0.45} radius={0.42} />
+      <Shell at={[-2.16, PRV_BODY.inlet.y, 0]} radius={PRV_BODY.inlet.radius} thickness={0.07} length={3} color={LIGHT} />
+      <Flange x={-3.55} y={PRV_BODY.inlet.y} radius={0.42} />
       <Arrow from={[-3.2, 0, 0]} to={[-1.25, 0, 0]} scene={scene} />
     </Part>
     <Part id="diaphragm" scene={scene} offset={[0, 1.15, -0.65]}>
       {/* Globe-pattern body/seat with a diaphragm-controlled plug, not a gate. */}
-      <group position={[0, -0.52, 0]} rotation={[0, 0, Math.PI / 2]}>
-        <Shell radius={0.86} thickness={0.14} length={1.4} cut={cut} color={STEEL} opacity={cut ? 1 : 0.27} passive={!cut} />
-      </group>
+      <PRVBody cut={cut} />
       <Ring at={[0, -0.62, 0]} radius={0.4} tube={0.06} rotation={[Math.PI / 2, 0, 0]} color={LIGHT} />
       <Cylinder at={[0, -0.42, 0]} radius={0.37} length={0.1} color={DARK} />
       {/* A stepped partition routes inlet below, outlet above the horizontal seat. */}
@@ -575,14 +575,14 @@ function ReducingValve(scene: SceneProps) {
       <Cylinder at={[-1.25, 0.47, 0.95]} radius={0.14} length={0.1} color={DARK} />
     </Part>
     <Part id="pilot" scene={scene} offset={[0.55, 0.55, 0.75]}>
-      <Tube points={[[-2.0, -0.45, 0.1], [-2.0, 0.35, 0.75], [-1.8, 0.78, 0.95]]} radius={0.04} />
+      <Tube points={[[-2.0, PRV_BODY.inlet.y, 0.1], [-2.0, 0.35, 0.75], [-1.8, 0.78, 0.95]]} radius={0.04} />
       {/* Restricted upstream feed tees to the cover before entering the pilot. */}
       <Tube points={[[-1.12, 0.78, 0.95], [0.4, 0.78, 0.95], [1.0, 1.03, 0.95]]} radius={0.04} />
       <Member from={[-0.88, 0.78, 0.95]} to={[-0.68, 0.78, 0.95]} radius={0.08} color={DARK} />
       <Cylinder at={[1.2, 1.03, 0.95]} radius={0.23} length={0.35} color={STEEL} />
       <Cylinder at={[1.2, 1.21, 0.95]} radius={0.28} length={0.08} color={LIGHT} />
       <Tube points={[[0.4, 0.78, 0.95], [0.4, 1.35, 0.75], [0, 1.35, 0], [0, 1.18, 0]]} radius={0.045} />
-      <Tube points={[[1.4, 1.03, 0.95], [2.5, 0.95, 0.95], [2.5, -0.45, 0.1]]} radius={0.035} />
+      <Tube points={[[1.4, 1.03, 0.95], [2.5, 0.95, 0.95], [2.5, PRV_BODY.outlet.y, 0.1]]} radius={0.035} />
     </Part>
     <Part id="spring" scene={scene} offset={[0.55, 1.05, 0.75]}>
       {/* Adjustment spring belongs to the downstream-sensing pilot, not main seat. */}
@@ -594,8 +594,8 @@ function ReducingValve(scene: SceneProps) {
       <Cylinder at={[1.2, 1.86, 0.95]} radius={0.07} length={0.2} sides={6} color={DARK} />
     </Part>
     <Part id="outlet" scene={scene} offset={[0.7, 0, 0]}>
-      <Shell at={[2.25, -0.45, 0]} radius={0.3} thickness={0.07} length={2.8} color={LIGHT} />
-      <Flange x={3.55} y={-0.45} radius={0.42} />
+      <Shell at={[2.16, PRV_BODY.outlet.y, 0]} radius={PRV_BODY.outlet.radius} thickness={0.07} length={3} color={LIGHT} />
+      <Flange x={3.55} y={PRV_BODY.outlet.y} radius={0.42} />
       <Arrow from={[1.25, 0, 0]} to={[3.2, 0, 0]} scene={scene} />
     </Part>
   </group>;

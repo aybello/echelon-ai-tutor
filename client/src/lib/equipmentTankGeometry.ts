@@ -7,6 +7,7 @@ export interface TankEndPorts { left?: TankPort; right?: TankPort }
 export const EQUIPMENT_TANK_PORTS = {
   filter: { floor: -1.7, ends: { left: { y: 0.35, z: 0, radius: 0.22 }, right: { y: -1.49, z: 0, radius: 0.18 } } },
   liftStation: { floor: -1.8, ends: { left: { y: -0.15, z: 0, radius: 0.3 } } },
+  contactTank: { floor: -1.65, ends: { left: { y: -0.35, z: -1.22, radius: 0.23 }, right: { y: -0.35, z: -1.22, radius: 0.23 } } },
 } satisfies Record<string, { floor: number; ends: TankEndPorts }>;
 
 /** Local horizontal coordinate is -world Z after the wall's Y-axis rotation. */

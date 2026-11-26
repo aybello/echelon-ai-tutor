@@ -44,6 +44,15 @@ describe("Assembled equipment tank wall geometry", () => {
       expect(port.y - port.radius).toBeGreaterThan(contract.floor);
     }
   });
+  it("raycasts through the contact-tank bores while retaining submerged wall", () => {
+    const contract = EQUIPMENT_TANK_PORTS.contactTank;
+    expect(contract.floor).toBe(-1.65);
+    for (const port of Object.values(contract.ends)) {
+      const shape = createTankEndShape(3.2, contract.floor, 0.98, port);
+      expect(wallContains(shape, port.z, port.y)).toBe(false);
+      expect(wallContains(shape, -1.22, -0.70)).toBe(true);
+    }
+  });
   it("rejects any hole that breaks through the floor or another wall edge", () => {
     expect(() => createTankEndShape(3.2, -1.8, 0.85, { y: -1.7, z: 0, radius: 0.3 })).toThrow("fully bounded");
     expect(() => createTankEndShape(3.2, -1.8, 0.85, { y: 0, z: 1.5, radius: 0.3 })).toThrow("fully bounded");
