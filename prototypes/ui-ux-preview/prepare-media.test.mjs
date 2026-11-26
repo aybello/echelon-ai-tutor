@@ -54,9 +54,10 @@ test("corrupted bytes and non-canonical base64 are rejected", () => {
   }
 });
 
-test("offline preparation retains all 34 pinned CEU originals and registers every approved logo", async () => {
-  assert.equal(sources.length, 34);
-  assert.ok(sources.every(asset => asset.sha === "7f6045098c044aea234b3788dd2df8c73f591172"));
+test("offline preparation retains all pinned CEU originals and registers every approved logo", async () => {
+  assert.equal(sources.length, 36);
+  assert.equal(sources.filter(asset => asset.sha === "7f6045098c044aea234b3788dd2df8c73f591172").length, 34);
+  assert.equal(sources.filter(asset => asset.sha === "8c958bf35").length, 2);
   const output = await mkdtemp(path.join(tmpdir(), "echelon-preview-media-test-"));
   try {
     const manifest = await prepareMedia(output);

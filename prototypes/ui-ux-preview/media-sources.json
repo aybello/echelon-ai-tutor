@@ -6,6 +6,18 @@
     "sha256": "feb104c65eb133a6db7cb1064a0110b7e5f1eb09f0c7d7077fb96161ed267e99"
   },
   {
+    "sha": "8c958bf35",
+    "source": "docs/handoff/ceu-two-courses-covers/ceu-water-treatment-concepts-cover.png",
+    "storagePath": "/manus-storage/ceu-water-treatment-concepts-cover_6b46c3b7.png",
+    "sha256": "d2595c19ae609bec19b4b45f49c28acc373db6f5a750c7650bc30e1d166646e6"
+  },
+  {
+    "sha": "8c958bf35",
+    "source": "docs/handoff/ceu-two-courses-covers/ceu-wastewater-treatment-concepts-cover.png",
+    "storagePath": "/manus-storage/ceu-wastewater-treatment-concepts-cover_abf712eb.png",
+    "sha256": "2154fc72e051ca4a8a5a65ee4fabaadc3367ad65c585dcfbaa1dd3eecd845698"
+  },
+  {
     "sha": "7f6045098c044aea234b3788dd2df8c73f591172",
     "source": "client/public/ceu-covers/ceu-basic-hydraulics-cover.jpg",
     "storagePath": "/manus-storage/ceu-basic-hydraulics-cover_c5a35cbb.jpg",
