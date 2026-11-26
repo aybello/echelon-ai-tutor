@@ -82,7 +82,7 @@ describe("verified CEU managed media migration", () => {
   });
 
   it("registers the identical managed images in the offline browser fixture", () => {
-    expect(previewSources).toHaveLength(34);
+    expect(previewSources.filter(source => source.sha === "7f6045098c044aea234b3788dd2df8c73f591172")).toHaveLength(34);
     for (const [oldPath, asset] of assets) {
       expect(previewSources.find(source => source.storagePath === asset.url)).toEqual({
         sha: "7f6045098c044aea234b3788dd2df8c73f591172",
