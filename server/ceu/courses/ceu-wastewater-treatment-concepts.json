@@ -3,7 +3,7 @@
   "version": "2026-11-19.1",
   "title": "Wastewater Treatment Concepts for Operators",
   "shortTitle": "Wastewater Treatment Concepts",
-  "stream": "drinking_water",
+  "stream": "wastewater",
   "audience": "Operators, trainees and supervisors who run or support a conventional municipal wastewater treatment plant and want a clear foundation before a process-control course.",
   "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
   "introduction": "Build the foundation for a municipal wastewater plant: what arrives in the sewer, how preliminary and primary treatment protect the process, how activated sludge treats the organic load, how effluent is disinfected and monitored, and which numbers tell an operator that the process is working. Each module has worked scenarios, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
@@ -11,20 +11,28 @@
   "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
   "sources": [
     {
-      "id": "wi-sw-guide",
-      "title": "Wisconsin DNR Operator Certification: Surface Water Study Guide (Subclass S)",
-      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/DWSGSurfaceWater.pdf",
-      "section": "Chapter 4, Section 4.2 Calculations: detention time, chlorine feed rate and related treatment calculations",
-      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
-      "accessed": "2026-11-16"
+      "id": "wi-basic-wastewater",
+      "title": "Wisconsin DNR: Basic General Wastewater Study Guide",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideBasicGeneral.pdf",
+      "section": "Wastewater characteristics and loading; preliminary and primary treatment; biological treatment; disinfection, sampling and records",
+      "jurisdiction": "Wisconsin, US state environmental agency; general educational reference, not jurisdiction-specific approval",
+      "accessed": "2026-11-26"
     },
     {
-      "id": "ca-t-range",
-      "title": "California State Water Resources Control Board: Expected Range of Knowledge for Drinking Water Treatment Exam",
-      "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/2016/treat_range_of_know.pdf",
-      "section": "Calculation items: flow rates, volume in a storage facility, detention time and unit conversions such as gpm to MGD",
-      "jurisdiction": "California, US state certification agency; verify your own certifying agency reference list",
-      "accessed": "2026-11-16"
+      "id": "wi-suspended-growth",
+      "title": "Wisconsin DNR: Biological Treatment, Suspended Growth Processes Study Guide (Subclass A1)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideSuspendedGrowth.pdf",
+      "section": "Activated sludge, dissolved oxygen, MLSS, return activated sludge, waste activated sludge and loading calculations",
+      "jurisdiction": "Wisconsin, US state environmental agency; general educational reference, not jurisdiction-specific approval",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "epa-wastewater-uv",
+      "title": "US EPA: Wastewater Technology Fact Sheet, Ultraviolet Disinfection",
+      "url": "https://www.epa.gov/sites/default/files/2015-06/documents/uv.pdf",
+      "section": "UV inactivation, lack of chemical residual, suspended-solids and lamp-fouling limitations",
+      "jurisdiction": "United States Environmental Protection Agency; general educational reference, not jurisdiction-specific approval",
+      "accessed": "2026-11-26"
     }
   ],
   "modules": [
@@ -35,16 +43,16 @@
         "Describe what arrives at a wastewater plant and how the main measures of strength are used.",
         "Explain how flow changes and the start of the treatment train affect what the plant must handle."
       ],
-      "lesson": "### What arrives at the plant\n\nDomestic wastewater is more than 99 percent water. The rest is dissolved and suspended material from homes, businesses and industry, plus whatever runs into the sewers from streets and roofs. The plant's job is to take that material out of the water in stages, so that the effluent leaving the plant does not harm the receiving water. Understanding the influent is the first step, because every process after it is sized and run for the load it receives.\n\n### Strength and the main measures\n\nThe strength of wastewater describes how much pollution it carries. Biochemical oxygen demand (BOD) measures the oxygen that microbes use to break down organic matter in a sample over a set time. Total suspended solids (TSS) measure the particles that a filter retains. Nutrients such as nitrogen and phosphorus are measured separately because they matter for biological treatment and for the receiving water. A plant that reports strength in several measures can see what kind of load it is dealing with, not only how much.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Bar chart: in dry weather flow is lower and strength higher; in storm flow is higher and strength lower, with a similar load\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Dilution: the storm raises the flow and lowers the strength, so the load can stay about the same.</title>\n<text x=\"110\" y=\"24\" text-anchor=\"middle\" font-weight=\"bold\">Dry weather</text><text x=\"290\" y=\"24\" text-anchor=\"middle\" font-weight=\"bold\">Storm</text><rect x=\"40\" y=\"60\" width=\"50\" height=\"140\" fill=\"#2c6e9a\"/><rect x=\"100\" y=\"110\" width=\"50\" height=\"90\" fill=\"#9fb0bf\"/><rect x=\"220\" y=\"90\" width=\"50\" height=\"110\" fill=\"#2c6e9a\"/><rect x=\"280\" y=\"60\" width=\"50\" height=\"140\" fill=\"#9fb0bf\"/><text x=\"65\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Flow</text><text x=\"125\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Strength</text><text x=\"245\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Flow</text><text x=\"305\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Strength</text><text x=\"195\" y=\"250\" text-anchor=\"middle\" fill=\"#6b7a8c\">Illustrative, relative units. Flow and strength trade off, so the load stays about the same.</text>\n</svg>\n<figcaption>Dilution: the storm raises the flow and lowers the strength, so the load can stay about the same.</figcaption>\n</figure>\n\n### Flow changes and why they matter\n\nWastewater flow changes through the day, with peaks in the morning and evening. Rain changes it more. Infiltration and inflow are groundwater and stormwater that enter the collection system through cracks, joints and connections. They raise the flow and dilute the wastewater, so the concentration of pollutants falls even though the total load may rise. Peak flows can exceed the hydraulic capacity of a unit and carry solids over if the plant is not prepared for them.\n\n### Where the treatment train starts\n\nA typical train begins with preliminary treatment: screens to remove rags and debris, and grit chambers to remove sand and gravel. These steps protect pumps and equipment downstream. Primary clarifiers then settle the heavier solids, which become primary sludge. Biological treatment, usually an activated sludge process, follows, and disinfection and effluent handling come at the end. Each step depends on the one before it, so changes at the start of the train affect everything after.\n\n### What operators watch first\n\nOperators watch flow, influent BOD and TSS, and the condition of the screens and grit removal at the start of the plant. A rising flow with steady strength suggests dilution. A falling flow with rising strength can suggest a blockage or a sewer problem upstream. Trends across several days tell more than any single sample.",
+      "lesson": "### What arrives at the plant\n\nDomestic wastewater is more than 99 percent water. The rest is dissolved and suspended material from homes, businesses and industry, plus whatever runs into the sewers from streets and roofs. The plant's job is to take that material out of the water in stages, so that the effluent leaving the plant does not harm the receiving water. Understanding the influent is the first step, because every process after it is sized and run for the load it receives.\n\n### Strength and the main measures\n\nThe strength of wastewater describes how much pollution it carries. Biochemical oxygen demand (BOD) measures the oxygen that microbes use to break down organic matter in a sample over a set time. Total suspended solids (TSS) measure the particles that a filter retains. Nutrients such as nitrogen and phosphorus are measured separately because they matter for biological treatment and for the receiving water. A plant that reports strength in several measures can see what kind of load it is dealing with, not only how much.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Bar chart: in dry weather flow is lower and strength higher; in storm flow is higher and strength lower, with a similar load\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Dilution: the storm raises the flow and lowers the strength, so the load can stay about the same.</title>\n<text x=\"110\" y=\"24\" text-anchor=\"middle\" font-weight=\"bold\">Dry weather</text><text x=\"290\" y=\"24\" text-anchor=\"middle\" font-weight=\"bold\">Storm</text><rect x=\"40\" y=\"130\" width=\"50\" height=\"70\" fill=\"#2c6e9a\"/><rect x=\"100\" y=\"60\" width=\"50\" height=\"140\" fill=\"#9fb0bf\"/><rect x=\"220\" y=\"60\" width=\"50\" height=\"140\" fill=\"#2c6e9a\"/><rect x=\"280\" y=\"130\" width=\"50\" height=\"70\" fill=\"#9fb0bf\"/><text x=\"65\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Flow</text><text x=\"125\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Strength</text><text x=\"245\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Flow</text><text x=\"305\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Strength</text><text x=\"195\" y=\"250\" text-anchor=\"middle\" fill=\"#6b7a8c\">Illustrative: flow doubles, concentration halves.</text>\n</svg>\n<figcaption>Illustrative constant-load case: flow doubles and concentration halves. This is not the Pinecrest scenario below.</figcaption>\n</figure>\n\n### Flow changes and why they matter\n\nWastewater flow changes through the day, with peaks in the morning and evening. Rain changes it more. Infiltration and inflow are groundwater and stormwater that enter the collection system through cracks, joints and connections. They raise the flow and dilute the wastewater, so the concentration of pollutants falls even though the total load may rise. Peak flows can exceed the hydraulic capacity of a unit and carry solids over if the plant is not prepared for them.\n\n### Where the treatment train starts\n\nA typical train begins with preliminary treatment: screens to remove rags and debris, and grit chambers to remove sand and gravel. These steps protect pumps and equipment downstream. Primary clarifiers then settle the heavier solids, which become primary sludge. Biological treatment, usually an activated sludge process, follows, and disinfection and effluent handling come at the end. Each step depends on the one before it, so changes at the start of the train affect everything after.\n\n### What operators watch first\n\nOperators watch flow, influent BOD and TSS, and the condition of the screens and grit removal at the start of the plant. A rising flow with falling strength can suggest dilution. Flow and concentration together determine the load. A falling flow with rising strength can suggest a blockage or a sewer problem upstream. Trends across several days tell more than any single sample.",
       "evidence": "### Fictional scenario: Pinecrest Plant after the storm\n\nPinecrest Wastewater Plant is a fictional plant. After a night of heavy rain, the influent flow doubled and the BOD of the influent fell by about a third. The screens caught more debris than usual, and the grit chamber collected a large amount of sand. The operator asks what the rain has done to the load and what needs watching over the next two days.",
-      "assignment": "Write a one-page note for Pinecrest's supervisor. Explain why the influent BOD fell while the total load may have stayed about the same. Describe the effect of the extra debris and grit on the screens and the grit chamber. List the measurements you would track over the next two days, with the reason for each. Name anything you could not tell from the scenario.",
+      "assignment": "Write a one-page note for Pinecrest's supervisor. Explain why the influent BOD concentration fell while the total BOD load rose by about a third. Show the relative load calculation using the doubled flow and the one-third concentration drop. Describe the effect of the extra debris and grit on the screens and the grit chamber. List the measurements you would track over the next two days, with the reason for each. Name anything you could not tell from the scenario.",
       "rubric": [
-        "Explains dilution and the difference between concentration and load.",
+        "Explains dilution and shows that twice the flow at two-thirds the original BOD concentration produces four-thirds the original load.",
         "Describes the effect of debris and grit on the preliminary treatment.",
         "Lists measurements with a reason for tracking each one.",
         "Names unanswered questions instead of guessing."
       ],
-      "facilitatorGuide": "Ask learners to say the difference between a concentration and a load, using the BOD example. Check that they link the extra grit and debris to the preliminary equipment, not the biology. Strong answers talk about trends over several days. Watch for learners who treat a falling BOD as an improvement in treatment; the change came from the influent, not the process.",
+      "facilitatorGuide": "Ask learners to distinguish BOD concentration from BOD load. For Pinecrest, the normalized load is 2 × (2/3) = 4/3 of the original, so the load rises by about a third despite the lower concentration. Do not treat the separate constant-load diagram as Pinecrest's calculation. Check that learners link the extra grit and debris to the preliminary equipment, not the biology. Strong answers talk about trends over several days. Watch for learners who treat a falling influent BOD as an improvement in treatment; the change came from the influent, not the process.",
       "activities": [
         {
           "kind": "lesson",
@@ -68,8 +76,7 @@
         }
       ],
       "sourceIds": [
-        "wi-sw-guide",
-        "ca-t-range"
+        "wi-basic-wastewater"
       ],
       "checks": [
         {
@@ -192,8 +199,7 @@
         }
       ],
       "sourceIds": [
-        "wi-sw-guide",
-        "ca-t-range"
+        "wi-basic-wastewater"
       ],
       "checks": [
         {
@@ -316,8 +322,8 @@
         }
       ],
       "sourceIds": [
-        "wi-sw-guide",
-        "ca-t-range"
+        "wi-basic-wastewater",
+        "wi-suspended-growth"
       ],
       "checks": [
         {
@@ -440,8 +446,8 @@
         }
       ],
       "sourceIds": [
-        "wi-sw-guide",
-        "ca-t-range"
+        "wi-basic-wastewater",
+        "epa-wastewater-uv"
       ],
       "checks": [
         {
