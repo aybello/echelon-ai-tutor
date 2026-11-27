@@ -207,7 +207,6 @@ export default function OrgDashboard() {
   const [selectedOrgId, setSelectedOrgId] = useState<number | undefined>();
   const [assessmentMember, setAssessmentMember] = useState<{ orgId: number; memberId: number; label: string } | null>(null);
   const organizationQuery = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false });
-  const dashboardIdentityQuery = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
   const orgInput = { orgId: selectedOrgId };
   function handleOrganizationChange(value: string) {
     const nextOrgId = Number(value);
@@ -501,6 +500,10 @@ export default function OrgDashboard() {
   const members = membersQuery.data ?? [];
   const attention = attentionQuery.data ?? { atRisk: [], stalled: [] };
   const hasAnnualContract = overview.tier !== "course-pass" && overview.billingType !== "course-pass";
+  const hasActiveAnnualLearnerAccess = hasAnnualContract
+    && (overview.status === "active" || overview.status === "past_due")
+    && !!overview.termEnd
+    && new Date(overview.termEnd).getTime() > Date.now();
 
   // Annual licence semantics: licences used this term vs total, not concurrent active count
   const licencesUsedThisTerm = overview.seatsUsedThisTerm ?? overview.seatsAssigned;
@@ -555,7 +558,9 @@ export default function OrgDashboard() {
   const activeMembers = members.filter(m => m.status === "assigned");
   const displayedMembers = filterRosterMembers(activeMembers, rosterSearch, rosterStage);
   const revokedMembers = members.filter(m => m.status === "revoked");
-  const selfStudyCourses = getManagerLearnerCourses(dashboardIdentityQuery.data?.email, activeMembers);
+  const selfStudyCourses = hasActiveAnnualLearnerAccess
+    ? getManagerLearnerCourses(overview.managerEmail, activeMembers)
+    : [];
   const needsFocusMembers = activeMembers.filter(m =>
     m.operatorStatus === "needs_focus" || m.operatorStatus === "behind"
   );

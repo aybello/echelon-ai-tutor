@@ -482,7 +482,7 @@ export const orgRouter = router({
    * Seats assigned, active this week, average study indicator, strong indicators.
    */
   getOrgOverview: teamProcedure.query(async ({ ctx }) => {
-    const { orgId } = await resolveOrgManager(ctx);
+    const { orgId, managerEmail } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
@@ -524,7 +524,8 @@ export const orgRouter = router({
 
     if (seatsAssigned === 0) {
       return {
-      orgId: org.id,
+        orgId: org.id,
+        managerEmail,
         orgName: org.name,
         seatsTotal: org.seatsTotal,
         seatsAssigned: 0,
@@ -615,6 +616,7 @@ export const orgRouter = router({
 
     return {
       orgId: org.id,
+      managerEmail,
       orgName: org.name,
       seatsTotal: org.seatsTotal,
       seatsAssigned,

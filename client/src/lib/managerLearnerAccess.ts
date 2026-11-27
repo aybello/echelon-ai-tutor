@@ -1,4 +1,4 @@
-import { getCourseByKey, type CourseEntry } from "@shared/courseRegistry";
+import { resolveCourseKey, type CourseEntry } from "@shared/courseRegistry";
 
 type AssignedMember = {
   email?: string | null;
@@ -35,7 +35,7 @@ export function getManagerLearnerCourses(
   }
 
   return Array.from(uniqueKeys)
-    .map((key) => getCourseByKey(key))
+    .map((key) => resolveCourseKey(key))
     .filter(
       (course): course is CourseEntry =>
         Boolean(course?.isActive && course.teamAssignable),

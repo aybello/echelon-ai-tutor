@@ -26,6 +26,19 @@ describe("manager learner access", () => {
     ]);
   });
 
+  it("resolves legacy course aliases to canonical learner routes", () => {
+    const courses = getManagerLearnerCourses("manager@example.test", [
+      {
+        email: "manager@example.test",
+        status: "assigned",
+        courseKey: "class1",
+      },
+    ]);
+
+    expect(courses.map((course) => course.courseKey)).toEqual(["class1-water"]);
+    expect(courses[0]?.quizPath).toBe("/class1-water");
+  });
+
   it("fails closed for another user, revoked seats, and unknown or non-team courses", () => {
     const members = [
       {
