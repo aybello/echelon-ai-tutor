@@ -1,6 +1,6 @@
 # New Mexico Wastewater Collection System Level 1 (CS1): 250-question review
 
-250 original practice questions: 178 conceptual and 72 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook as summarised in the readiness dossier. This is a local content package, not proof of a production import.
+250 original practice questions: 195 conceptual and 55 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook. No Regulations module: the dossier bars regulatory items until a clause-level source and independent review exist. This is a local content package, not proof of a production import.
 
 Correct answers are shown beneath each item. See README.md for scope, sources and limits.
 
@@ -1499,168 +1499,51 @@ Where is nutrient removal most often carried out for wastewater?
 
 Nutrient removal is a treatment process, so it is done mainly at the plant rather than in the collection pipes.
 
-### 116: Grab and composite sampling (easy)
-
-A grab sample is best described as
-
-- **A.** A single sample taken at one time and place
-- **B.** Samples collected continuously over 24 hours
-- **C.** A sample of the sludge taken from the digester
-- **D.** A mixture of samples taken at set intervals
-
-**Answer: A. A single sample taken at one time and place**
-
-A grab sample is one portion taken at one time and place, so it shows conditions at that moment.
-
-### 117: Grab and composite sampling (medium)
+### 116: Grab and composite sampling (medium)
 
 A composite sample is used to
 
-- **A.** Capture a sudden spike at one instant in the flow
-- **B.** Test the pH at the moment of discharge
-- **C.** Represent average conditions over a period of time
+- **A.** Represent average conditions over a period of time
+- **B.** Capture a sudden spike at one instant in the flow
+- **C.** Test the pH at the moment of discharge
 - **D.** Measure chlorine residual at the plant outfall
 
-**Answer: C. Represent average conditions over a period of time**
+**Answer: A. Represent average conditions over a period of time**
 
 A composite combines portions over time, so it shows the average condition during that period.
 
-### 118: Grab and composite sampling (medium)
+### 117: Grab and composite sampling (medium)
 
 Which situation calls for a grab sample rather than a composite?
 
-- **A.** Testing a parameter that changes quickly
-- **B.** Testing the flow for a daily average load
-- **C.** Measuring the average BOD over a full week
-- **D.** Estimating the total solids in the influent
+- **A.** Measuring the average BOD over a full week
+- **B.** Estimating the total solids in the influent
+- **C.** Testing a parameter that changes quickly
+- **D.** Testing the flow for a daily average load
 
-**Answer: A. Testing a parameter that changes quickly**
+**Answer: C. Testing a parameter that changes quickly**
 
 For a parameter that changes quickly, such as chlorine or pH, a grab sample captures the value at the moment of interest, while a composite would average it away.
 
-### 119: Grab and composite sampling (easy)
-
-A composite sampler works by
-
-- **A.** Recording the flow rate every minute in a log
-- **B.** Filling a bottle once at the start of the shift
-- **C.** Pumping sludge into a separate digester tank
-- **D.** Collecting small portions at set intervals
-
-**Answer: D. Collecting small portions at set intervals**
-
-A composite sampler collects small portions at timed or flow-based intervals, which are kept together to form one sample.
-
-### 120: Grab and composite sampling (medium)
-
-What is the purpose of a sample preservative?
-
-- **A.** To raise the pH of the sample to a fixed level
-- **B.** To slow chemical or biological change before analysis
-- **C.** To make the sample visible to the analyst
-- **D.** To increase the solids content of the sample
-
-**Answer: B. To slow chemical or biological change before analysis**
-
-Preservatives slow biological and chemical changes, so the analyte is measured close to its original condition.
-
-### 121: Grab and composite sampling (medium)
-
-Why should a sample bottle be labeled at the time of collection?
-
-- **A.** To show the lab which tests will be billed
-- **B.** To keep the sample's identity and collection time clear
-- **C.** To make sure the bottle can be reused later
-- **D.** To allow the sample to be stored at room temperature
-
-**Answer: B. To keep the sample's identity and collection time clear**
-
-A label ties the sample to its source and time, so results can be traced and interpreted correctly.
-
-### 122: Grab and composite sampling (medium)
-
-Which sampling point is preferred for a representative sample of the flow?
-
-- **A.** A location where flow is well mixed and turbulent
-- **B.** A still pool at the bottom of a wet well
-- **C.** The top surface of a quiet sump at low flow
-- **D.** A dead end where solids settle and collect
-
-**Answer: A. A location where flow is well mixed and turbulent**
-
-A well-mixed point gives a sample that represents the whole flow, rather than a settled or stratified layer.
-
-### 123: Grab and composite sampling (medium)
-
-Sample holding time is
-
-- **A.** The time it takes to collect the full composite
-- **B.** The length of a standard lab shift each day
-- **C.** The period a manhole remains open for inspection
-- **D.** Time a sample can wait before analysis
-
-**Answer: D. Time a sample can wait before analysis**
-
-Holding time is the period a sample can be stored before analysis without the result changing significantly.
-
-### 124: Grab and composite sampling (easy)
-
-A sample chain of custody record is used to
-
-- **A.** Show the age of the collection system's pipes
-- **B.** Record the pump run hours for the lift station
-- **C.** Track who handled a sample from collection to analysis
-- **D.** Set the number of samples taken during a storm
-
-**Answer: C. Track who handled a sample from collection to analysis**
-
-Chain of custody documents each transfer of a sample, so its handling can be traced from collection to analysis.
-
-### 125: Grab and composite sampling (medium)
-
-A duplicate sample is collected to
-
-- **A.** Check how consistent the sampling and analysis are
-- **B.** Increase the volume of the composite container
-- **C.** Replace a sample that spilled during transport
-- **D.** Double the flow measured at the sampling point
-
-**Answer: A. Check how consistent the sampling and analysis are**
-
-A duplicate is a second sample taken at the same point, used to check the precision of sampling and analysis.
-
-### 126: Gas and toxicity topics named in the outline (medium)
+### 118: Gas and toxicity topics named in the outline (medium)
 
 Hydrogen sulfide in collection systems is commonly associated with
 
-- **A.** Aerated flow in an open channel at the plant
+- **A.** Septic conditions and sludge or biofilm decay
 - **B.** Fresh rainwater entering a storm sewer
-- **C.** Septic conditions and sludge or biofilm decay
-- **D.** Clean water flowing through a force main
+- **C.** Clean water flowing through a force main
+- **D.** Aerated flow in an open channel at the plant
 
-**Answer: C. Septic conditions and sludge or biofilm decay**
+**Answer: A. Septic conditions and sludge or biofilm decay**
 
 Hydrogen sulfide forms when wastewater goes septic, so it is linked to decaying sludge and biofilm.
 
-### 127: Gas and toxicity topics named in the outline (easy)
-
-A combustible gas detector is used in a wet well to
-
-- **A.** Check the chlorine residual in the wet well
-- **B.** Detect flammable gas that may be present
-- **C.** Sample the sludge for solids content
-- **D.** Measure the flow rate through the station
-
-**Answer: B. Detect flammable gas that may be present**
-
-A combustible gas detector gives awareness of flammable gas, which is one of the sewer atmosphere topics in the outline.
-
-### 128: Gas and toxicity topics named in the outline (medium)
+### 119: Gas and toxicity topics named in the outline (medium)
 
 Methane is a concern in sewers mainly because it
 
-- **A.** Lowers the pH of the wastewater flow sharply
-- **B.** Raises the freezing point of the flow in winter
+- **A.** Raises the freezing point of the flow in winter
+- **B.** Lowers the pH of the wastewater flow sharply
 - **C.** Makes the water too hard for the plant to treat
 - **D.** Can form a flammable mixture with air
 
@@ -1668,384 +1551,280 @@ Methane is a concern in sewers mainly because it
 
 Methane is flammable in air at certain concentrations, which is why it is a recognised sewer atmosphere hazard.
 
-### 129: Gas and toxicity topics named in the outline (medium)
+### 120: Gas and toxicity topics named in the outline (medium)
 
 Toxicity testing of effluent is performed to
 
 - **A.** Measure the flow rate of the outfall channel
-- **B.** Determine the age of the sludge in the digester
-- **C.** Assess whether the discharge harms test organisms
+- **B.** Assess whether the discharge harms test organisms
+- **C.** Determine the age of the sludge in the digester
 - **D.** Count the number of bacteria in the effluent
 
-**Answer: C. Assess whether the discharge harms test organisms**
+**Answer: B. Assess whether the discharge harms test organisms**
 
 Toxicity tests expose test organisms to the effluent to see whether it causes harm, which is a different question from bacterial counts.
 
-### 130: Gas and toxicity topics named in the outline (hard)
-
-Acute toxicity testing focuses on
-
-- **A.** Taste and odor changes in the effluent over time
-- **B.** Effects that appear only after many generations
-- **C.** Changes in the mass of the sludge over a year
-- **D.** Effects that appear over a short exposure period
-
-**Answer: D. Effects that appear over a short exposure period**
-
-Acute tests measure effects over a short exposure, usually a few days, rather than long-term or chronic effects.
-
-### 131: Gas and toxicity topics named in the outline (easy)
-
-Which gas is commonly monitored in a lift station's wet well?
-
-- **A.** Argon stored in the chlorine feed building
-- **B.** Hydrogen sulfide and other sewer gases
-- **C.** Helium used for leak testing of pipe joints
-- **D.** Nitrogen supplied for the aeration basin
-
-**Answer: B. Hydrogen sulfide and other sewer gases**
-
-Sewer gases such as hydrogen sulfide are monitored in wet wells because they can accumulate there.
-
-### 132: Gas and toxicity topics named in the outline (easy)
-
-Oxygen deficiency in a manhole is a concern because
-
-- **A.** Air low in oxygen affects people quickly
-- **B.** High oxygen levels stop biological treatment
-- **C.** Oxygen reacts with pipe joints and weakens them
-- **D.** Oxygen increases the velocity of the flow
-
-**Answer: A. Air low in oxygen affects people quickly**
-
-Low oxygen in a confined air space can affect people quickly, which is why the atmosphere is part of the outline.
-
-### 133: Gas and toxicity topics named in the outline (medium)
-
-Septic wastewater releases odor in a force main mainly because
-
-- **A.** Chlorine is added at the wet well surface
-- **B.** Air is pulled into the pump suction line
-- **C.** Aerobic bacteria release a fragrant oil
-- **D.** Anaerobic decay produces sulfide gas
-
-**Answer: D. Anaerobic decay produces sulfide gas**
-
-Anaerobic bacteria produce hydrogen sulfide when the flow has gone septic, which gives the characteristic rotten-egg odor.
-
-### 134: Cross-connection control concepts (easy)
+### 121: Cross-connection control concepts (easy)
 
 A cross connection is best defined as
 
-- **A.** A joint between a lateral and the street main
+- **A.** A pipe that joins two sewer mains at a manhole
 - **B.** A link between drinking water and a source of contamination
-- **C.** A valve that connects a pump to its discharge line
-- **D.** A pipe that joins two sewer mains at a manhole
+- **C.** A joint between a lateral and the street main
+- **D.** A valve that connects a pump to its discharge line
 
 **Answer: B. A link between drinking water and a source of contamination**
 
 A cross connection is any physical link through which a non-potable source could enter the drinking water system.
 
-### 135: Cross-connection control concepts (medium)
+### 122: Cross-connection control concepts (medium)
 
 Why does cross-connection control matter for a collection operator?
 
 - **A.** Sewage can flow back into a water supply
 - **B.** Storm runoff can dilute the wastewater at the plant
-- **C.** Water can leak out of the sewer into the street
-- **D.** Sewer flow can raise the water pressure in homes
+- **C.** Sewer flow can raise the water pressure in homes
+- **D.** Water can leak out of the sewer into the street
 
 **Answer: A. Sewage can flow back into a water supply**
 
 Cross-connection control prevents contaminated water from entering the supply, which protects public health.
 
-### 136: Cross-connection control concepts (easy)
+### 123: Cross-connection control concepts (easy)
 
 A backflow prevention device is used to
 
-- **A.** Measure the flow of water into a building
-- **B.** Lower the pressure in the sewer during storms
-- **C.** Stop reverse flow from a contaminated source
-- **D.** Increase the flow rate through a customer meter
+- **A.** Increase the flow rate through a customer meter
+- **B.** Measure the flow of water into a building
+- **C.** Lower the pressure in the sewer during storms
+- **D.** Stop reverse flow from a contaminated source
 
-**Answer: C. Stop reverse flow from a contaminated source**
+**Answer: D. Stop reverse flow from a contaminated source**
 
 A backflow device stops contaminated water from flowing back into the potable supply.
 
-### 137: Cross-connection control concepts (hard)
-
-Which statement about a cross connection is most accurate?
-
-- **A.** A closed valve blocks any reverse flow under pressure
-- **B.** A closed valve blocks backflow under every pressure
-- **C.** A closed valve may still leak and allow backflow
-- **D.** Backflow mainly happens through open pipe joints
-
-**Answer: C. A closed valve may still leak and allow backflow**
-
-A valve can leak or fail, so a closed valve alone does not guarantee that a cross connection is safe.
-
-### 138: Cross-connection control concepts (hard)
+### 124: Cross-connection control concepts (hard)
 
 Back siphonage happens when
 
 - **A.** Storage tanks overflow into the public main
 - **B.** Supply pressure rises above that of the connected system
-- **C.** A customer meter is installed on the service line
-- **D.** Supply pressure falls below that of the connected system
+- **C.** Supply pressure falls below that of the connected system
+- **D.** A customer meter is installed on the service line
 
-**Answer: D. Supply pressure falls below that of the connected system**
+**Answer: C. Supply pressure falls below that of the connected system**
 
 Back siphonage occurs when a drop in supply pressure lets the higher-pressure connected system push water back.
 
-### 139: Cross-connection control concepts (medium)
+### 125: Cross-connection control concepts (medium)
 
 Backpressure is most often caused by
 
 - **A.** A pump or boiler pushing water backward
-- **B.** A valve left closed in the morning
-- **C.** Fire flow drawing water from a hydrant
-- **D.** A pressure drop caused by a broken main
+- **B.** Fire flow drawing water from a hydrant
+- **C.** A pressure drop caused by a broken main
+- **D.** A valve left closed in the morning
 
 **Answer: A. A pump or boiler pushing water backward**
 
 Backpressure occurs when the downstream system pressure exceeds the supply pressure, for example from a pump.
 
-### 140: Cross-connection control concepts (easy)
-
-An air gap as a control method
-
-- **A.** Seals the connection with a fixed concrete plug
-- **B.** Leaves open space between the outlet and flood rim
-- **C.** Uses a pressure gauge to monitor the supply line
-- **D.** Closes the valve when the pressure drops
-
-**Answer: B. Leaves open space between the outlet and flood rim**
-
-An air gap is a physical break, with open space between the supply outlet and the receiving vessel's flood-level rim, so no reverse path exists.
-
-### 141: Cross-connection control concepts (medium)
-
-Which hazard is commonly considered in a cross-connection survey?
-
-- **A.** Chlorine residual readings at the reservoir
-- **B.** Unprotected hose connections with submerged inlets
-- **C.** Pressure gauges on pump stations at the plant
-- **D.** Fire hydrants located near a busy road
-
-**Answer: B. Unprotected hose connections with submerged inlets**
-
-A hose in a tank or hose bib with no device can draw contaminants back into the supply.
-
-### 142: Cross-connection control concepts (medium)
+### 126: Cross-connection control concepts (medium)
 
 A hose bib with no backflow device is a concern because
 
-- **A.** A hose in a tank could draw contaminants back
+- **A.** It reduces the pressure for the next customer
 - **B.** It holds too much water for a single household
-- **C.** It lets air into the supply at high pressure
-- **D.** It reduces the pressure for the next customer
+- **C.** A hose in a tank could draw contaminants back
+- **D.** It lets air into the supply at high pressure
 
-**Answer: A. A hose in a tank could draw contaminants back**
+**Answer: C. A hose in a tank could draw contaminants back**
 
 A hose end submerged in a tank can create a back siphonage path, which is why the device is needed.
 
-### 143: Cross-connection control concepts (medium)
+### 127: Cross-connection control concepts (medium)
 
 Why must a backflow assembly be tested on a schedule?
 
-- **A.** Its tests replace visual inspection of the pipe
-- **B.** Its pressure rating drops each year it is installed
-- **C.** Check valves can fail unseen, so tests confirm them
-- **D.** Its flow capacity is reduced by each test performed
+- **A.** Its pressure rating drops each year it is installed
+- **B.** Check valves can fail unseen, so tests confirm them
+- **C.** Its flow capacity is reduced by each test performed
+- **D.** Its tests replace visual inspection of the pipe
 
-**Answer: C. Check valves can fail unseen, so tests confirm them**
+**Answer: B. Check valves can fail unseen, so tests confirm them**
 
 Check and relief valves can wear or foul with no visible sign, so periodic testing confirms that the assembly still stops reverse flow.
 
-### 144: Cross-connection control concepts (easy)
-
-Why is a dual-check valve sometimes used?
-
-- **A.** It stores water for periods of peak demand
-- **B.** It measures flow in both directions at once
-- **C.** It increases the pressure in the supply main
-- **D.** It gives two barriers against reverse flow
-
-**Answer: D. It gives two barriers against reverse flow**
-
-A dual check provides two check valves in series, so a single failure does not leave the supply open to reverse flow.
-
-### 145: Cross-connection control concepts (medium)
+### 128: Cross-connection control concepts (medium)
 
 A reduced-pressure principle device is generally used for
 
-- **A.** Storm drains that carry only rainfall runoff
-- **B.** High-hazard connections where backflow is a concern
+- **A.** Low-hazard irrigation lines with no chemicals
+- **B.** Storm drains that carry only rainfall runoff
 - **C.** Garden hose bibs at a single-family home
-- **D.** Low-hazard irrigation lines with no chemicals
+- **D.** High-hazard connections where backflow is a concern
 
-**Answer: B. High-hazard connections where backflow is a concern**
+**Answer: D. High-hazard connections where backflow is a concern**
 
 Reduced-pressure assemblies are mechanical devices used where the hazard is high, so they are the usual choice for high-hazard connections.
 
-### 146: Hazard categories in the CS1 outline (easy)
+### 129: Hazard categories in the CS1 outline (easy)
 
 Which hazard category includes sewer work near traffic?
 
-- **A.** Traffic hazards near an open excavation or roadway
-- **B.** Chemical hazards from stored disinfectant drums
-- **C.** Electrical hazards inside a wet well panel
-- **D.** Rotating machinery hazards on a belt conveyor
+- **A.** Electrical hazards inside a wet well panel
+- **B.** Rotating machinery hazards on a belt conveyor
+- **C.** Traffic hazards near an open excavation or roadway
+- **D.** Chemical hazards from stored disinfectant drums
 
-**Answer: A. Traffic hazards near an open excavation or roadway**
+**Answer: C. Traffic hazards near an open excavation or roadway**
 
 Traffic is a hazard category for work at the roadside, where vehicles can strike workers or equipment.
 
-### 147: Hazard categories in the CS1 outline (medium)
+### 130: Hazard categories in the CS1 outline (medium)
 
 Which category covers spaces not designed for continuous occupancy?
 
 - **A.** Storage room for chlorine cylinders
 - **B.** Open excavation that is left unshored overnight
-- **C.** Confined space that is not built for occupancy
-- **D.** Electrical panel with a removable door
+- **C.** Electrical panel with a removable door
+- **D.** Confined space that is not built for occupancy
 
-**Answer: C. Confined space that is not built for occupancy**
+**Answer: D. Confined space that is not built for occupancy**
 
 A confined space is large enough to enter but not designed for continuous occupancy, and has limited entry or exit.
 
-### 148: Hazard categories in the CS1 outline (easy)
+### 131: Hazard categories in the CS1 outline (easy)
 
 Which hazard is linked to live power supplied to a motor or control panel?
 
-- **A.** Chemical exposure from a leaking feed line
-- **B.** Excavation collapse next to a lift station
-- **C.** Traffic from a truck parked on the street
-- **D.** Electrical hazard from energized equipment
+- **A.** Traffic from a truck parked on the street
+- **B.** Electrical hazard from energized equipment
+- **C.** Chemical exposure from a leaking feed line
+- **D.** Excavation collapse next to a lift station
 
-**Answer: D. Electrical hazard from energized equipment**
+**Answer: B. Electrical hazard from energized equipment**
 
 Energized motors and panels can cause shock or arc injury, so electrical hazards are a separate category.
 
-### 149: Hazard categories in the CS1 outline (easy)
+### 132: Hazard categories in the CS1 outline (easy)
 
 Rotating machinery awareness includes which idea?
 
-- **A.** Rotation sends signals to the telemetry panel
+- **A.** Moving parts can catch clothing or tools
 - **B.** Rotating blades raise the pH of the flow
 - **C.** Rotating parts warm the wastewater flow
-- **D.** Moving parts can catch clothing or tools
+- **D.** Rotation sends signals to the telemetry panel
 
-**Answer: D. Moving parts can catch clothing or tools**
+**Answer: A. Moving parts can catch clothing or tools**
 
 Rotating equipment can catch loose clothing, hair or tools, so the outline treats it as a separate hazard.
 
-### 150: Hazard categories in the CS1 outline (easy)
+### 133: Hazard categories in the CS1 outline (easy)
 
 An SDS is used to
 
 - **A.** Track sample custody from the field to the lab
 - **B.** Set the flow rate for a chemical feed pump
-- **C.** Find hazard and handling information for a chemical
-- **D.** Record daily pump run times at the station
+- **C.** Record daily pump run times at the station
+- **D.** Find hazard and handling information for a chemical
 
-**Answer: C. Find hazard and handling information for a chemical**
+**Answer: D. Find hazard and handling information for a chemical**
 
 A safety data sheet gives hazard, handling and storage information for a chemical product.
 
-### 151: Hazard categories in the CS1 outline (easy)
+### 134: Hazard categories in the CS1 outline (easy)
 
 Personal protective equipment is best described as
 
-- **A.** Equipment worn to reduce exposure to a hazard
-- **B.** Equipment that feeds chemical into the influent
+- **A.** Equipment that feeds chemical into the influent
+- **B.** Equipment worn to reduce exposure to a hazard
 - **C.** Protective coating applied to the pipe interior
 - **D.** Equipment that measures flow in an open channel
 
-**Answer: A. Equipment worn to reduce exposure to a hazard**
+**Answer: B. Equipment worn to reduce exposure to a hazard**
 
 PPE is worn by the person and is the last line of protection, used alongside controls at the source rather than instead of them.
 
-### 152: Hazard categories in the CS1 outline (medium)
+### 135: Hazard categories in the CS1 outline (medium)
 
 Which statement about excavation hazards is accurate?
 
-- **A.** Shallow trenches are free from collapse risk
-- **B.** Trench walls can collapse without warning
-- **C.** Trench walls become safer after heavy rain
+- **A.** Trench walls can collapse without warning
+- **B.** Trench walls become safer after heavy rain
+- **C.** Shallow trenches are free from collapse risk
 - **D.** Collapse risk depends on the color of the soil
 
-**Answer: B. Trench walls can collapse without warning**
+**Answer: A. Trench walls can collapse without warning**
 
 Trench walls can fail suddenly, so excavation is an awareness topic for every collection crew.
 
-### 153: Hazard categories in the CS1 outline (medium)
+### 136: Hazard categories in the CS1 outline (medium)
 
 Why is a hazard assessment done before work at a lift station?
 
 - **A.** To set the electrical load of the station
-- **B.** To replace the need for a station's maintenance log
-- **C.** To record the pump's head after each storm
-- **D.** To identify hazards and plan controls for the task
+- **B.** To record the pump's head after each storm
+- **C.** To identify hazards and plan controls for the task
+- **D.** To replace the need for a station's maintenance log
 
-**Answer: D. To identify hazards and plan controls for the task**
+**Answer: C. To identify hazards and plan controls for the task**
 
 A hazard assessment identifies what could go wrong during a task so that suitable controls can be planned.
 
-### 154: Hazard categories in the CS1 outline (hard)
+### 137: Hazard categories in the CS1 outline (hard)
 
 Hazards from hydrogen sulfide are most relevant where
 
-- **A.** Wastewater is held and turns septic
-- **B.** Air is supplied to an aerated basin
-- **C.** Stormwater flows over a paved road surface
-- **D.** Clean water is pumped through a potable main
+- **A.** Stormwater flows over a paved road surface
+- **B.** Clean water is pumped through a potable main
+- **C.** Wastewater is held and turns septic
+- **D.** Air is supplied to an aerated basin
 
-**Answer: A. Wastewater is held and turns septic**
+**Answer: C. Wastewater is held and turns septic**
 
 Septic, stagnant wastewater produces hydrogen sulfide, so holding and decay are the conditions to watch.
 
-### 155: Hazard categories in the CS1 outline (medium)
+### 138: Hazard categories in the CS1 outline (medium)
 
 Which hazard is commonly associated with pumps that can start without warning?
 
-- **A.** Slow flow that deposits grit at the headworks
-- **B.** Warm influent that promotes biological growth
-- **C.** Unexpected startup of machinery during work
-- **D.** Low chlorine residual at the reservoir
+- **A.** Warm influent that promotes biological growth
+- **B.** Slow flow that deposits grit at the headworks
+- **C.** Low chlorine residual at the reservoir
+- **D.** Unexpected startup of machinery during work
 
-**Answer: C. Unexpected startup of machinery during work**
+**Answer: D. Unexpected startup of machinery during work**
 
 Pumps can restart automatically when the level rises, so unexpected startup is a recognised hazard during maintenance.
 
-### 156: Hazard categories in the CS1 outline (easy)
+### 139: Hazard categories in the CS1 outline (easy)
 
 Chemical hazards at a treatment or lift station include
 
-- **A.** Clean drinking water stored in a tank
-- **B.** Corrosive chemicals used in feed systems
-- **C.** Sand used as bedding in a sewer trench
-- **D.** Pipe bedding stone placed in a trench
+- **A.** Corrosive chemicals used in feed systems
+- **B.** Sand used as bedding in a sewer trench
+- **C.** Pipe bedding stone placed in a trench
+- **D.** Clean drinking water stored in a tank
 
-**Answer: B. Corrosive chemicals used in feed systems**
+**Answer: A. Corrosive chemicals used in feed systems**
 
 Feed chemicals such as acids and caustics can injure people and damage equipment, so they are a hazard category.
 
-### 157: Hazard categories in the CS1 outline (easy)
+### 140: Hazard categories in the CS1 outline (easy)
 
 Which factor increases the risk of a slip or trip near a wet well?
 
-- **A.** Dry concrete around a fixed guard rail
-- **B.** A bright light shining on the control panel
-- **C.** Smooth paint on the outside of the tank
-- **D.** Wet, uneven surfaces around the opening
+- **A.** Smooth paint on the outside of the tank
+- **B.** Wet, uneven surfaces around the opening
+- **C.** Dry concrete around a fixed guard rail
+- **D.** A bright light shining on the control panel
 
-**Answer: D. Wet, uneven surfaces around the opening**
+**Answer: B. Wet, uneven surfaces around the opening**
 
 Wet or uneven surfaces make footing unsafe near openings and raised structures.
 
-### 158: Hazard categories in the CS1 outline (medium)
+### 141: Hazard categories in the CS1 outline (medium)
 
 Why are electrical panels in a lift station a concern?
 
@@ -2058,25 +1837,25 @@ Why are electrical panels in a lift station a concern?
 
 Panels carry live electrical parts, so electrical contact and arc flash are recognised hazards.
 
-### 159: Hazard categories in the CS1 outline (easy)
+### 142: Hazard categories in the CS1 outline (easy)
 
 Noise from pumps is a hazard mainly because
 
 - **A.** Long exposure can damage hearing
 - **B.** It shows the motor is overloaded at once
-- **C.** It means the wet well is nearly full
-- **D.** It indicates the pump is running dry
+- **C.** It indicates the pump is running dry
+- **D.** It means the wet well is nearly full
 
 **Answer: A. Long exposure can damage hearing**
 
 Prolonged exposure to high noise can damage hearing, which is a recognised workplace hazard.
 
-### 160: SDS and PPE concepts (easy)
+### 143: SDS and PPE concepts (easy)
 
 A chemical label's hazard pictogram is used to
 
-- **A.** Show the exact dilution for each feed
-- **B.** Record the chemical's price on the invoice
+- **A.** Record the chemical's price on the invoice
+- **B.** Show the exact dilution for each feed
 - **C.** Show the type of hazard at a glance
 - **D.** List the shelf life in weeks for storage
 
@@ -2084,137 +1863,137 @@ A chemical label's hazard pictogram is used to
 
 Pictograms give a quick visual cue to the type of hazard, such as corrosive or flammable.
 
-### 161: SDS and PPE concepts (medium)
+### 144: SDS and PPE concepts (medium)
 
 Chemical storage in a feed building generally aims to
 
-- **A.** Keep chemicals at the highest possible temperature
-- **B.** Mix small amounts of each chemical together
-- **C.** Keep incompatible chemicals apart
-- **D.** Store all chemicals in one open drum
+- **A.** Store all chemicals in one open drum
+- **B.** Keep chemicals at the highest possible temperature
+- **C.** Mix small amounts of each chemical together
+- **D.** Keep incompatible chemicals apart
 
-**Answer: C. Keep incompatible chemicals apart**
+**Answer: D. Keep incompatible chemicals apart**
 
 Incompatible chemicals can react dangerously if they mix, so segregation is a basic storage concept.
 
-### 162: SDS and PPE concepts (easy)
+### 145: SDS and PPE concepts (easy)
 
 Which PPE item protects against splashes of corrosive liquid?
 
-- **A.** Chemical splash goggles and face shield
-- **B.** A dust mask for fine airborne grit
-- **C.** Hearing protection rated for loud equipment
-- **D.** A reflective vest for traffic awareness
+- **A.** A dust mask for fine airborne grit
+- **B.** Chemical splash goggles and face shield
+- **C.** A reflective vest for traffic awareness
+- **D.** Hearing protection rated for loud equipment
 
-**Answer: A. Chemical splash goggles and face shield**
+**Answer: B. Chemical splash goggles and face shield**
 
 Splash goggles and a face shield protect the eyes and face from liquid splashes of corrosive materials.
 
-### 163: SDS and PPE concepts (medium)
+### 146: SDS and PPE concepts (medium)
 
 Why is PPE selected for the specific hazard?
 
-- **A.** Because gloves protect against electrical shock
-- **B.** Protection not matched to a hazard may fail
-- **C.** Because heavier gear reduces the need to train
-- **D.** Because one type of gear works for all hazards
+- **A.** Protection not matched to a hazard may fail
+- **B.** Because one type of gear works for all hazards
+- **C.** Because gloves protect against electrical shock
+- **D.** Because heavier gear reduces the need to train
 
-**Answer: B. Protection not matched to a hazard may fail**
+**Answer: A. Protection not matched to a hazard may fail**
 
 PPE must match the hazard, since equipment that is not designed for a hazard may not protect the worker.
 
-### 164: SDS and PPE concepts (easy)
+### 147: SDS and PPE concepts (easy)
 
 What information does an SDS provide?
 
 - **A.** Pump curves and motor nameplate data
 - **B.** Production volume and the price of the product
-- **C.** Customer names and billing history for a site
-- **D.** Hazards, handling, storage and disposal details
+- **C.** Hazards, handling, storage and disposal details
+- **D.** Customer names and billing history for a site
 
-**Answer: D. Hazards, handling, storage and disposal details**
+**Answer: C. Hazards, handling, storage and disposal details**
 
 An SDS lists the hazards and the handling, storage and disposal information for a chemical product.
 
-### 165: SDS and PPE concepts (easy)
+### 148: SDS and PPE concepts (easy)
 
 A hazard communication program's purpose is to
 
-- **A.** Make sure each pump has a unique serial number
-- **B.** Make sure workers know the hazards they face
+- **A.** Make sure chemical prices stay the same each year
+- **B.** Make sure each pump has a unique serial number
 - **C.** Make sure the plant keeps a surplus of supplies
-- **D.** Make sure chemical prices stay the same each year
+- **D.** Make sure workers know the hazards they face
 
-**Answer: B. Make sure workers know the hazards they face**
+**Answer: D. Make sure workers know the hazards they face**
 
 Hazard communication makes sure workers are informed about the chemicals and hazards they may meet on the job.
 
-### 166: SDS and PPE concepts (medium)
+### 149: SDS and PPE concepts (medium)
 
 Which statement about gloves is correct?
 
-- **A.** One glove type fits every chemical in the plant
+- **A.** Gloves are not needed for weak acids
 - **B.** Thicker gloves are better for most tasks
-- **C.** Glove material must match the chemical handled
-- **D.** Gloves are not needed for weak acids
+- **C.** One glove type fits every chemical in the plant
+- **D.** Glove material must match the chemical handled
 
-**Answer: C. Glove material must match the chemical handled**
+**Answer: D. Glove material must match the chemical handled**
 
 Glove materials resist different chemicals to different degrees, so the glove must suit the chemical in use.
 
-### 167: SDS and PPE concepts (easy)
+### 150: SDS and PPE concepts (easy)
 
 Why do operators read the label before opening a container?
 
-- **A.** To check the expiry date for the purchase order
+- **A.** To find the lot number for the shipment
 - **B.** To see how many liters the container holds
-- **C.** To find the lot number for the shipment
-- **D.** To confirm the contents and their hazards
+- **C.** To confirm the contents and their hazards
+- **D.** To check the expiry date for the purchase order
 
-**Answer: D. To confirm the contents and their hazards**
+**Answer: C. To confirm the contents and their hazards**
 
 Reading the label confirms what the container holds and the hazards it presents before it is opened.
 
-### 168: Units of measure and flow terms (easy)
+### 151: Units of measure and flow terms (easy)
 
 Which unit is used to express a flow rate of wastewater in a collection system?
 
 - **A.** Gallons per minute or million gallons per day
-- **B.** Feet of water column of pump head
-- **C.** Pounds per square inch gauge of pressure
-- **D.** Milligrams per liter of suspended solids
+- **B.** Milligrams per liter of suspended solids
+- **C.** Feet of water column of pump head
+- **D.** Pounds per square inch gauge of pressure
 
 **Answer: A. Gallons per minute or million gallons per day**
 
 Flow rate is volume per time, so gallons per minute or million gallons per day are the usual units.
 
-### 169: Units of measure and flow terms (medium)
+### 152: Units of measure and flow terms (medium)
 
 What does 1 MGD equal in gpm?
 
-- **A.** About 69.4 gallons per minute
-- **B.** About 6940 gallons per minute
-- **C.** About 7480 gallons per minute
-- **D.** About 694 gallons per minute
+- **A.** About 6940 gallons per minute
+- **B.** About 694 gallons per minute
+- **C.** About 69.4 gallons per minute
+- **D.** About 7480 gallons per minute
 
-**Answer: D. About 694 gallons per minute**
+**Answer: B. About 694 gallons per minute**
 
 One million gallons per day is about 694.4 gallons per minute, since there are 1440 minutes in a day.
 
-### 170: Units of measure and flow terms (medium)
+### 153: Units of measure and flow terms (medium)
 
 Head in feet of water is related to pressure in psi by about
 
 - **A.** About 8.34 feet of water per psi
-- **B.** About 2.31 feet of water per psi
+- **B.** About 0.433 feet of water per psi
 - **C.** About 7.48 feet of water per psi
-- **D.** About 0.433 feet of water per psi
+- **D.** About 2.31 feet of water per psi
 
-**Answer: B. About 2.31 feet of water per psi**
+**Answer: D. About 2.31 feet of water per psi**
 
 One psi equals about 2.31 feet of water, so a pressure in psi multiplied by 2.31 gives the head in feet.
 
-### 171: Units of measure and flow terms (easy)
+### 154: Units of measure and flow terms (easy)
 
 How many gallons are in one cubic foot of water?
 
@@ -2227,772 +2006,993 @@ How many gallons are in one cubic foot of water?
 
 One cubic foot holds about 7.48 gallons, which is the standard conversion for volume in US units.
 
-### 172: Units of measure and flow terms (easy)
+### 155: Units of measure and flow terms (easy)
 
 A gallon of water weighs about
 
-- **A.** About 2.31 pounds per gallon of water
-- **B.** About 7.48 pounds per gallon of water
+- **A.** About 7.48 pounds per gallon of water
+- **B.** About 0.433 pounds per gallon of water
 - **C.** About 8.34 pounds per gallon of water
-- **D.** About 0.433 pounds per gallon of water
+- **D.** About 2.31 pounds per gallon of water
 
 **Answer: C. About 8.34 pounds per gallon of water**
 
 One gallon of water weighs about 8.34 pounds, which is used for converting volume to mass in dose calculations.
 
-### 173: Units of measure and flow terms (medium)
+### 156: Units of measure and flow terms (medium)
 
 A flow of 1 cubic foot per second is about
 
-- **A.** About 2.31 gallons per minute of flow
-- **B.** About 7.48 gallons per minute of flow
-- **C.** About 694.4 gallons per minute of flow
-- **D.** About 448.8 gallons per minute
+- **A.** About 694.4 gallons per minute of flow
+- **B.** About 448.8 gallons per minute
+- **C.** About 7.48 gallons per minute of flow
+- **D.** About 2.31 gallons per minute of flow
 
-**Answer: D. About 448.8 gallons per minute**
+**Answer: B. About 448.8 gallons per minute**
 
 One cubic foot per second is about 448.8 gallons per minute, a standard conversion for open channel and pipe flow.
 
-### 174: Units of measure and flow terms (easy)
+### 157: Units of measure and flow terms (easy)
 
 What does the abbreviation mg/L mean?
 
-- **A.** Milligrams per liter of gas
-- **B.** Million gallons per liter of flow
-- **C.** Milligrams per liter, a concentration
-- **D.** Miles per gallon of travel distance
+- **A.** Million gallons per liter of flow
+- **B.** Milligrams per liter of gas
+- **C.** Miles per gallon of travel distance
+- **D.** Milligrams per liter, a concentration
 
-**Answer: C. Milligrams per liter, a concentration**
+**Answer: D. Milligrams per liter, a concentration**
 
 mg/L is milligrams of a substance per liter of the sample being measured, the usual unit for concentration.
 
-### 175: Units of measure and flow terms (easy)
+### 158: Units of measure and flow terms (easy)
 
 Which quantity is measured in feet per second?
 
-- **A.** Velocity of flow in a sewer pipe
-- **B.** Area of a pipe cross section
-- **C.** Volume of a wet well in gallons
+- **A.** Volume of a wet well in gallons
+- **B.** Velocity of flow in a sewer pipe
+- **C.** Area of a pipe cross section
 - **D.** Slope of a sewer between two manholes
 
-**Answer: A. Velocity of flow in a sewer pipe**
+**Answer: B. Velocity of flow in a sewer pipe**
 
 Velocity is a distance per time, so feet per second is the usual unit for flow speed in a pipe.
 
-### 176: Units of measure and flow terms (medium)
+### 159: Units of measure and flow terms (medium)
 
 The cross-sectional area of a full circular pipe is found from its
 
-- **A.** Slope expressed as a percent of the grade
-- **B.** Diameter, using 0.785 times diameter squared
+- **A.** Diameter, using 0.785 times diameter squared
+- **B.** Slope expressed as a percent of the grade
 - **C.** Depth of flow measured from the crown
 - **D.** Length of the pipe run between manholes
 
-**Answer: B. Diameter, using 0.785 times diameter squared**
+**Answer: A. Diameter, using 0.785 times diameter squared**
 
 The area of a full circle is 0.785 times the diameter squared, so the diameter sets the full flow area.
 
-### 177: Units of measure and flow terms (hard)
+### 160: Units of measure and flow terms (hard)
 
 The hydraulic radius of a pipe is important because
 
-- **A.** It fixes the length of the pipe run
-- **B.** It sets capacity in open channel equations
-- **C.** It gives the mass of solids in the flow
-- **D.** It sets the number of manholes needed
+- **A.** It sets the number of manholes needed
+- **B.** It fixes the length of the pipe run
+- **C.** It sets capacity in open channel equations
+- **D.** It gives the mass of solids in the flow
 
-**Answer: B. It sets capacity in open channel equations**
+**Answer: C. It sets capacity in open channel equations**
 
 Hydraulic radius, the area divided by the wetted perimeter, enters open channel flow equations for capacity.
 
-### 178: Units of measure and flow terms (medium)
+### 161: Units of measure and flow terms (medium)
 
 Gallons in a cylindrical tank can be estimated by
 
 - **A.** Diameter plus depth times 8.34
-- **B.** Circumference times depth divided by 2
+- **B.** Base area times 8.34 divided by depth
 - **C.** Area of the base times depth times 7.48
-- **D.** Base area times 8.34 divided by depth
+- **D.** Circumference times depth divided by 2
 
 **Answer: C. Area of the base times depth times 7.48**
 
 Volume is base area times depth, and converting cubic feet to gallons uses 7.48 gallons per cubic foot.
 
-### 179: Flow, velocity and area in sewers (hard)
+### 162: Fire, first aid, exposure routes, heat and falls (medium)
+
+Which three elements must be present together for a fire to start and keep burning?
+
+- **A.** Fuel, oxygen and a source of heat
+- **B.** Fuel, oxygen and a metal enclosure
+- **C.** Fuel, water and a source of heat
+- **D.** Oxygen, nitrogen and a spark
+
+**Answer: A. Fuel, oxygen and a source of heat**
+
+A fire needs fuel, oxygen and heat together, which is the fire triangle. Removing any one of the three stops combustion.
+
+### 163: Fire, first aid, exposure routes, heat and falls (easy)
+
+Why is first aid training useful for a worker at a wastewater facility?
+
+- **A.** It lets the worker take over treatment so the injured person can skip a clinic visit
+- **B.** It lets the worker give initial care until trained medical help arrives
+- **C.** It lets the facility avoid recording an injury that a worker reports
+- **D.** It lets the worker diagnose the cause of an injury before a clinician sees the patient
+
+**Answer: B. It lets the worker give initial care until trained medical help arrives**
+
+First aid training covers the initial care a worker can give until professional help arrives. It does not replace diagnosis or medical treatment.
+
+### 164: Fire, first aid, exposure routes, heat and falls (medium)
+
+What is the main purpose of a written safety program at a utility?
+
+- **A.** To keep a record of injuries for the annual budget review
+- **B.** To shift legal responsibility for injuries from the employer to individual workers
+- **C.** To list the penalties a worker faces after each unsafe act
+- **D.** To tie responsibilities, training and hazard controls into one consistent system
+
+**Answer: D. To tie responsibilities, training and hazard controls into one consistent system**
+
+A safety program links responsibilities, training, hazard identification and controls. It does not move responsibility onto workers or replace hazard assessment on each task.
+
+### 165: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why does work in a public street create a hazard beyond the task itself?
+
+- **A.** Pavement weight can collapse a sewer main beneath the work area
+- **B.** Passing vehicles can strike workers and equipment near the work
+- **C.** Street lighting circuits can stop wastewater flow in the sewer main
+- **D.** Street surfaces hold a static charge that discharges into the pipe
+
+**Answer: B. Passing vehicles can strike workers and equipment near the work**
+
+Vehicles passing a work zone can hit people and equipment, so street work adds a traffic hazard to the task.
+
+### 166: Fire, first aid, exposure routes, heat and falls (easy)
+
+Why are exposed couplings, belts and shafts on running equipment a serious hazard?
+
+- **A.** They store an electrical charge that shocks anyone who touches them
+- **B.** They release lubricant that makes the floor slippery
+- **C.** They can catch loose clothing, hair or tools and pull a person in
+- **D.** They raise the pump's head by stirring the liquid in the casing
+
+**Answer: C. They can catch loose clothing, hair or tools and pull a person in**
+
+Moving parts can entangle clothing, hair or tools. Guards keep people from reaching these parts while the machine runs.
+
+### 167: Fire, first aid, exposure routes, heat and falls (hard)
+
+Why can a worker stop noticing hydrogen sulfide at high concentration?
+
+- **A.** The gas grows sweeter as its level rises, which hides the danger
+- **B.** Workers adapt to the odor and can breathe it safely for longer shifts
+- **C.** The gas sinks below the breathing zone, so the smell stops reaching people
+- **D.** High levels paralyze the nerve that senses it, so the warning fades
+
+**Answer: D. High levels paralyze the nerve that senses it, so the warning fades**
+
+Hydrogen sulfide can dull or paralyze the sense of smell at high levels. Smell therefore cannot be relied on to warn of dangerous concentrations.
+
+### 168: Fire, first aid, exposure routes, heat and falls (easy)
+
+Which routes are the main ways wastewater can reach a worker's body?
+
+- **A.** Splashes into the mouth or eyes, and contact with broken skin
+- **B.** Radiation from ultraviolet lamps in the effluent channel
+- **C.** Breathing dust that settles from dried screenings
+- **D.** Static electricity from a pipe carrying flowing water
+
+**Answer: A. Splashes into the mouth or eyes, and contact with broken skin**
+
+Raw wastewater can carry pathogens, so splashes to the mouth or eyes and contact with cuts are the main routes. Hygiene and protective gear reduce these routes.
+
+### 169: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why do wet floors and walls raise the danger from electrical equipment?
+
+- **A.** Water stores electrical charge that is released when a pump starts
+- **B.** Water raises the supply voltage, so the same panel delivers a larger shock
+- **C.** Water insulates the wiring, so a fault spreads along the wet surface
+- **D.** Water lowers the body's resistance, so a shock can be more severe
+
+**Answer: D. Water lowers the body's resistance, so a shock can be more severe**
+
+Wet skin lowers the body's resistance to current, and wet floors and walls can add conductive paths. Either way, an electrical contact is more likely to cause a severe shock.
+
+### 170: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why are near-miss reports valuable to a safety program?
+
+- **A.** They count toward the annual injury total that the state publishes
+- **B.** They reveal hazards before anyone is injured, so controls can be added
+- **C.** They replace task-level training after a minor incident
+- **D.** They prove the employer is not liable for injuries that happen later
+
+**Answer: B. They reveal hazards before anyone is injured, so controls can be added**
+
+A near miss is an event that could have caused harm but did not. Reporting it lets the team fix the hazard before an injury happens.
+
+### 171: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why does hot weather make outdoor maintenance work risky for the worker's body?
+
+- **A.** Core temperature can rise when heat gained exceeds heat lost
+- **B.** Heat dries the skin, so clothing becomes tight and snags on equipment
+- **C.** Heat makes wastewater thicker, so flow slows and solids settle faster
+- **D.** Heat weakens the metal of tools, so they break during the task
+
+**Answer: A. Core temperature can rise when heat gained exceeds heat lost**
+
+When the body gains heat faster than it can lose it, the core temperature rises. That is the basic mechanism behind heat stress.
+
+### 172: Fire, first aid, exposure routes, heat and falls (easy)
+
+Why is a fall into a manhole opening especially serious?
+
+- **A.** The fall breaks the pipe, which drains the wet well at once
+- **B.** The fall releases sewer gas that is lethal at that depth
+- **C.** A drop onto hard surfaces below can cause severe injury
+- **D.** The fall clogs the pipe at the opening, so wastewater backs up
+
+**Answer: C. A drop onto hard surfaces below can cause severe injury**
+
+A fall through an opening can cause severe injury from the impact and from hard surfaces below. Openings are guarded so people do not fall into them.
+
+### 173: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why does working alone at a remote site make a hazard more serious?
+
+- **A.** Solo work needs more protective gear than team work
+- **B.** A lone worker is more likely to set off the site alarm by mistake
+- **C.** A lone worker is less likely to receive the required training
+- **D.** Help may be delayed if an injury or gas exposure occurs
+
+**Answer: D. Help may be delayed if an injury or gas exposure occurs**
+
+Nobody is near to raise an alarm or give initial care, so an injury or exposure can go unnoticed. Staying in contact with others reduces that risk.
+
+### 174: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why is chlorine considered a hazard in a feed room?
+
+- **A.** It is a heavy liquid that pools on the floor and freezes
+- **B.** It is flammable and ignites at room temperature
+- **C.** It is poisonous and irritates and damages the airways
+- **D.** It dissolves metal at once and releases hydrogen into the room
+
+**Answer: C. It is poisonous and irritates and damages the airways**
+
+Chlorine is a toxic substance that irritates and damages the respiratory tract. Its main hazard is breathing it, not fire.
+
+### 175: Fire, first aid, exposure routes, heat and falls (easy)
+
+What does the signal word on a chemical label show?
+
+- **A.** The relative severity of the hazard, such as Danger or Warning
+- **B.** The date by which the chemical must be used before it expires
+- **C.** The name of the company's safety officer for that product
+- **D.** The exact dose at which a worker can become ill from the product
+
+**Answer: A. The relative severity of the hazard, such as Danger or Warning**
+
+Signal words such as Danger and Warning indicate relative severity. They do not state an exact exposure limit or a dose.
+
+### 176: Fire, first aid, exposure routes, heat and falls (easy)
+
+Why are screenings and rags from a bar screen a cut hazard?
+
+- **A.** They are electrically charged and can shock whoever lifts them
+- **B.** They can hide sharp objects such as broken glass or needles
+- **C.** They float and trip workers on the wet well walkway
+- **D.** They release a gas that burns the skin on contact
+
+**Answer: B. They can hide sharp objects such as broken glass or needles**
+
+Screenings can mask sharp items, so cuts and puncture wounds are possible when they are handled. Cut-resistant gloves are one protective measure.
+
+### 177: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why is good housekeeping treated as a safety measure at a lift station?
+
+- **A.** Clean floors stop wastewater from generating sewer gas
+- **B.** Clutter and spills create trip hazards and can hide other hazards
+- **C.** Tidy rooms let operators skip the hazard assessment for each task
+- **D.** Neat storage reduces the need for protective equipment
+
+**Answer: B. Clutter and spills create trip hazards and can hide other hazards**
+
+Loose items and spills cause slips and trips, and they can hide hazards such as an open hatch. Good order keeps hazards visible.
+
+### 178: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why is ventilation important in an enclosed wet well space?
+
+- **A.** It cools the pumps so their motors draw less current
+- **B.** It keeps the wastewater level steady during heavy inflow
+- **C.** It moves gas out of the enclosure and brings fresh air in
+- **D.** It removes the need for a gas detector in the space
+
+**Answer: C. It moves gas out of the enclosure and brings fresh air in**
+
+Ventilation exchanges air in an enclosed space and lowers gas buildup. It does not replace gas testing or detection.
+
+### 179: Fire, first aid, exposure routes, heat and falls (medium)
+
+Why are guardrails fitted around an open wet well hatch?
+
+- **A.** To keep people from falling through the opening
+- **B.** To warn of gas inside the well by changing color
+- **C.** To hold the hatch cover in place during high flows
+- **D.** To keep wastewater from splashing onto the walkway
+
+**Answer: A. To keep people from falling through the opening**
+
+A guardrail is a barrier that helps stop people from falling into an opening. It is a fall-prevention measure, not a gas warning device.
+
+### 180: Fire, first aid, exposure routes, heat and falls (hard)
+
+Why is rotating equipment still a hazard after it is switched off?
+
+- **A.** Motors keep full voltage on their terminals after the switch opens
+- **B.** The stop button removes the risk from the frame and the coupling
+- **C.** Stored heat makes the shaft expand and seize the bearings
+- **D.** Parts can keep turning after the supply is cut, so contact is still a risk
+
+**Answer: D. Parts can keep turning after the supply is cut, so contact is still a risk**
+
+Pumps and fans can coast and keep turning after the power is removed. Contact with moving parts is a risk until they stop.
+
+### 181: Fire, first aid, exposure routes, heat and falls (easy)
+
+Why is a portable extinguisher kept near a chemical storage area?
+
+- **A.** To cool the stored chemicals so they stay stable
+- **B.** To replace the need for a sprinkler system at the door
+- **C.** To neutralize corrosive vapor that is already in the room air
+- **D.** So a small fire can be stopped early, before it spreads
+
+**Answer: D. So a small fire can be stopped early, before it spreads**
+
+An extinguisher is for a small, early fire, and it works best before a fire spreads. It does not neutralize vapors or replace fire protection systems.
+
+### 182: Pump, motor and valve concepts (medium)
+
+What is meant by a centrifugal pump's shutoff condition?
+
+- **A.** The power the motor draws when the flow is at its maximum
+- **B.** The suction lift the pump can reach before losing its prime
+- **C.** The head produced with the discharge closed and no flow
+- **D.** The head produced at its best efficiency point on the curve
+
+**Answer: C. The head produced with the discharge closed and no flow**
+
+Shutoff head is the head produced with the discharge closed, so flow is zero. It is the head at the curve's zero-flow point.
+
+### 183: Pump, motor and valve concepts (hard)
+
+Which relationship gives a positive margin against cavitation?
+
+- **A.** Available NPSH is greater than the pump's required NPSH
+- **B.** The motor draws less current than its full-load rating
+- **C.** Suction head is negative at the design flow rate
+- **D.** Discharge pressure is greater than the station's static lift
+
+**Answer: A. Available NPSH is greater than the pump's required NPSH**
+
+Available NPSH must exceed the pump's required NPSH, or cavitation can start at the impeller eye. Operators keep a margin above the required value because cavitation can still begin close to that point.
+
+### 184: Pump, motor and valve concepts (easy)
+
+What does a centrifugal pump performance curve show?
+
+- **A.** Inlet pressure plotted against the outlet pipe diameter
+- **B.** Head and efficiency plotted against flow for a given impeller and speed
+- **C.** Voltage and current plotted against time during a pump cycle
+- **D.** Motor temperature plotted against the number of starts
+
+**Answer: B. Head and efficiency plotted against flow for a given impeller and speed**
+
+A pump curve plots head, efficiency and power against flow for one impeller and speed. It is the basis for matching a pump to the system.
+
+### 185: Pump, motor and valve concepts (medium)
+
+Why are wear rings replaced in a centrifugal pump?
+
+- **A.** To restore impeller clearance and cut internal leakage
+- **B.** To stop air from entering the suction line past the packing
+- **C.** To raise the impeller speed at the same power input
+- **D.** To balance the shaft so the bearings run cooler
+
+**Answer: A. To restore impeller clearance and cut internal leakage**
+
+Wear rings form a close clearance between the impeller and casing. When that gap opens up, liquid leaks back and the pump loses efficiency.
+
+### 186: Pump, motor and valve concepts (medium)
+
+For an induction motor at rated load, what happens to its line draw when the supply voltage drops slightly?
+
+- **A.** Its draw stays flat because the load sets the current
+- **B.** Its draw falls because the windings resist more current
+- **C.** Power is roughly fixed, so a weaker feed needs a higher amperage
+- **D.** Its draw falls because the motor slows its speed
+
+**Answer: C. Power is roughly fixed, so a weaker feed needs a higher amperage**
+
+At a constant mechanical load, input power stays roughly the same for a small voltage drop. Line current then rises, because current depends on both voltage and power factor, and the motor can overheat.
+
+### 187: Pump, motor and valve concepts (medium)
+
+What does a motor's service factor indicate?
+
+- **A.** The number of starts the motor can take in an hour before it overheats
+- **B.** How far the motor may be loaded above nameplate power under set conditions
+- **C.** The percent of rated speed the motor holds when it is running at no load
+- **D.** The efficiency of the motor at its full rated power and speed
+
+**Answer: B. How far the motor may be loaded above nameplate power under set conditions**
+
+Service factor is a multiplier that shows allowable loading above nameplate power under specified conditions. It is not a starting-torque rating.
+
+### 188: Pump, motor and valve concepts (easy)
+
+Where is a butterfly valve most often chosen?
+
+- **A.** For venting trapped air from the high point of a force main
+- **B.** For reversing the direction of flow in a pipe when the pump stops
+- **C.** For fine flow control in small pipes at high pressure and temperature
+- **D.** For throttling or shutoff in large pipes where a compact footprint matters
+
+**Answer: D. For throttling or shutoff in large pipes where a compact footprint matters**
+
+A butterfly valve is a disc on a rotating shaft, which suits large pipes and a compact footprint. It is not the usual choice for fine control in small high-pressure lines.
+
+### 189: Pump, motor and valve concepts (easy)
+
+What is the main job of a reducing valve in a water or wastewater line?
+
+- **A.** Increase flow by widening the pipe at the valve location
+- **B.** Measure the flow rate passing through the pipe line
+- **C.** Stop reverse flow whenever the pump stops running
+- **D.** Hold a lower downstream pressure than the upstream supply
+
+**Answer: D. Hold a lower downstream pressure than the upstream supply**
+
+A pressure-reducing valve throttles the line so the pressure after the valve is lower than the pressure supplied before it. Its job is pressure control, not flow measurement.
+
+### 190: Pump, motor and valve concepts (medium)
+
+Why are release valves fitted at the high points of a force main?
+
+- **A.** To vent trapped air that would reduce flow and add friction
+- **B.** To increase the flow speed by narrowing the main at the high point
+- **C.** To lower the pressure in the main during peak flow
+- **D.** To drain the main when the pump is switched off for maintenance
+
+**Answer: A. To vent trapped air that would reduce flow and add friction**
+
+Air collects at high points and restricts flow. A release valve vents that air, whereas draining the main is a separate function.
+
+### 191: Feeder calibration, metering and feed pulsation (medium)
+
+What is a common way to check a chemical feed pump's calibration?
+
+- **A.** Read the nameplate voltage and assume the output matches it
+- **B.** Count the strokes per minute and assume each stroke delivers a full dose
+- **C.** Measure the volume it delivers over a timed period and compare it with the setting
+- **D.** Measure the pipe pressure and divide it by the tank capacity
+
+**Answer: C. Measure the volume it delivers over a timed period and compare it with the setting**
+
+A timed volume test measures what the pump actually delivers, which is then compared with the setting. A nameplate or stroke count does not show the real output.
+
+### 192: Feeder calibration, metering and feed pulsation (easy)
+
+Why is a strainer fitted on a chemical feed suction line?
+
+- **A.** To raise the pressure of the feed line before the injector
+- **B.** To keep debris from clogging the check valve and injector
+- **C.** To warm the chemical so it flows more freely in cold weather
+- **D.** To remove dissolved gases from the solution before it is fed
+
+**Answer: B. To keep debris from clogging the check valve and injector**
+
+Debris from the tank can block a check valve or injector and stop the feed. A strainer catches it on the suction side.
+
+### 193: Feeder calibration, metering and feed pulsation (hard)
+
+How does an electromagnetic flow meter measure flow?
+
+- **A.** It measures the pressure drop across a restriction placed in the flow line
+- **B.** It counts the revolutions of a paddle wheel turned by the moving liquid
+- **C.** It senses voltage induced in a conductive liquid moving through a magnetic field
+- **D.** It times the travel of an ultrasonic pulse sent across the pipe bore
+
+**Answer: C. It senses voltage induced in a conductive liquid moving through a magnetic field**
+
+Faraday induction gives a voltage proportional to the liquid's velocity across the field. Pressure-drop, ultrasonic and paddle-wheel meters use different principles.
+
+### 194: Feeder calibration, metering and feed pulsation (easy)
+
+What does the totalizer on a flow meter show?
+
+- **A.** The pressure drop that the meter adds to the line
+- **B.** The total volume that has passed through the device over time
+- **C.** The number of times the meter has been calibrated
+- **D.** The instantaneous rate of flow at the moment it is read
+
+**Answer: B. The total volume that has passed through the device over time**
+
+A totalizer adds up the flow over time, so it shows volume. It is separate from the instantaneous rate, which a meter may also display.
+
+### 195: Feeder calibration, metering and feed pulsation (medium)
+
+What is a pulsation damper's job on a diaphragm chemical feed pump?
+
+- **A.** It smooths the pulses in the discharge so the dose is steadier
+- **B.** It stops the pump when the tank level falls too low
+- **C.** It raises the pressure enough for the injector to overcome the main line
+- **D.** It cools the diaphragm so it lasts longer in hot weather
+
+**Answer: A. It smooths the pulses in the discharge so the dose is steadier**
+
+A pulsation damper absorbs the pressure pulses from a diaphragm pump. The result is a steadier flow to the injection point.
+
+### 196: Flow, velocity and area in sewers (hard)
 
 A 24-inch sewer flows full at a velocity of 3.0 ft/s. Use area = 0.785 × D² with D in feet, and 1 ft³ = 7.48 gal. What is the flow in gallons per minute, to the nearest whole number?
 
-- **A.** 4,228 gpm
-- **B.** 2,114 gpm
-- **C.** 70 gpm
-- **D.** 1,057 gpm
+- **A.** 2,114 gpm
+- **B.** 70 gpm
+- **C.** 1,057 gpm
+- **D.** 4,228 gpm
 
-**Answer: A. 4,228 gpm**
+**Answer: D. 4,228 gpm**
 
 Area in ft² times velocity gives ft³/s; multiply by 7.48 for gal/s and by 60 for gal/min. Substitute the stated values: 0.785 × 2 × 2 × 3 × 7.48 × 60 = 4,228 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 180: Flow, velocity and area in sewers (hard)
-
-A 24-inch sewer flows full at 2.5 ft/s and the flow is to be reported in million gallons per day. Use area = 0.785 × D², 1 ft³ = 7.48 gal and 1 day = 86,400 s. What is the flow?
-
-- **A.** 0.08 MGD
-- **B.** 5,073,235.20 MGD
-- **C.** 5,073.24 MGD
-- **D.** 5.07 MGD
-
-**Answer: D. 5.07 MGD**
-
-Area times velocity gives ft³/s; times 7.48 gives gal/s; times 86,400 and divided by 1,000,000 gives MGD. Substitute the stated values: 0.785 × 2 × 2 × 2.5 × 7.48 × 86400 ÷ 1000000 = 5.07 MGD. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 181: Flow, velocity and area in sewers (hard)
+### 197: Flow, velocity and area in sewers (hard)
 
 A 18-inch sewer carries 1.5 MGD while flowing full. Use 1 MGD = 1.547 cfs and area = 0.785 × D² with D in feet. What is the average velocity in ft/s?
 
-- **A.** 1.97 ft/s
-- **B.** 589.72 ft/s
-- **C.** 4.10 ft/s
-- **D.** 1.31 ft/s
+- **A.** 589.72 ft/s
+- **B.** 1.31 ft/s
+- **C.** 1.97 ft/s
+- **D.** 4.10 ft/s
 
-**Answer: D. 1.31 ft/s**
+**Answer: B. 1.31 ft/s**
 
 Convert MGD to cfs, then divide the flow by the full-pipe area. Substitute the stated values: 1.5 × 1.547 ÷ (0.785 × 1.5 × 1.5) = 1.31 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 182: Flow, velocity and area in sewers (hard)
-
-A 6-inch lateral runs full at 2.0 ft/s. Use area = 0.785 × D² with D in feet, 1 ft³ = 7.48 gal and 1 minute = 60 s. What is the flow in gallons per minute, to one decimal place?
-
-- **A.** 2.9 gpm
-- **B.** 704.6 gpm
-- **C.** 176.2 gpm
-- **D.** 352.3 gpm
-
-**Answer: C. 176.2 gpm**
-
-Area times velocity gives ft³/s; multiply by 7.48 and by 60. Substitute the stated values: 0.785 × 0.5 × 0.5 × 2 × 7.48 × 60 = 176.2 gpm. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 183: Flow, velocity and area in sewers (hard)
+### 198: Flow, velocity and area in sewers (hard)
 
 A pump delivers 500 gpm into a 4-inch force main that runs full. Use area = 0.785 × D² with D in feet, 1 ft³ = 7.48 gal and 1 minute = 60 s. What is the velocity in ft/s?
 
-- **A.** 12.77 ft/s
-- **B.** 766.37 ft/s
-- **C.** 10.03 ft/s
+- **A.** 766.37 ft/s
+- **B.** 10.03 ft/s
+- **C.** 12.77 ft/s
 - **D.** 4.26 ft/s
 
-**Answer: A. 12.77 ft/s**
+**Answer: C. 12.77 ft/s**
 
 Convert gpm to ft³/s, then divide by the full-pipe area. Substitute the stated values: 500 ÷ (7.48 × 60 × 0.785 × (4 ÷ 12) × (4 ÷ 12)) = 12.77 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 184: Flow, velocity and area in sewers (medium)
-
-A 10-inch sewer flows full at 2.5 ft/s. Use area = 0.785 × D² with D in feet and 1 MGD = 1.547 cfs. What is the flow in MGD, to three decimal places?
-
-- **A.** 10.194 MGD
-- **B.** 0.881 MGD
-- **C.** 1.057 MGD
-- **D.** 2.108 MGD
-
-**Answer: B. 0.881 MGD**
-
-Area times velocity gives cfs; divide by 1.547 to convert cfs to MGD. Substitute the stated values: 0.785 × (10 ÷ 12) × (10 ÷ 12) × 2.5 ÷ 1.547 = 0.881 MGD. Round only the final result to 3 decimal place(s). The result uses the assumptions stated in the question.
-
-### 185: Flow, velocity and area in sewers (hard)
-
-A 12-inch sewer flows full at 3.0 ft/s for one hour. Use area = 0.785 × D² with D in feet and 1 ft³ = 7.48 gal. How many gallons pass a point in that hour, to the nearest gallon?
-
-- **A.** 63,415 gal
-- **B.** 1,057 gal
-- **C.** 70,707 gal
-- **D.** 8,478 gal
-
-**Answer: A. 63,415 gal**
-
-Area times velocity times time gives ft³; multiply by 7.48 for gallons. Substitute the stated values: 0.785 × 1 × 1 × 3 × 3600 × 7.48 = 63,415 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
-
-### 186: Flow, velocity and area in sewers (hard)
-
-Two pipes carry the same full flow. Pipe 1 is 12 inches and runs full at 2.0 ft/s. Pipe 2 is 18 inches. Use area = 0.785 × D² with D in feet. What is the velocity in pipe 2, in ft/s, to two decimal places?
-
-- **A.** 1.33 ft/s
-- **B.** 2.35 ft/s
-- **C.** 0.89 ft/s
-- **D.** 0.70 ft/s
-
-**Answer: C. 0.89 ft/s**
-
-Flow is the same, so velocity in pipe 2 is pipe 1 flow divided by pipe 2 area. Substitute the stated values: 0.785 × 1 × 1 × 2 ÷ (0.785 × 1.5 × 1.5) = 0.89 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 187: Flow, velocity and area in sewers (medium)
+### 199: Flow, velocity and area in sewers (medium)
 
 A 30-inch sewer carries 3.0 cfs while flowing full. Use area = 0.785 × D² with D in feet. What is the velocity in ft/s, to two decimal places?
 
-- **A.** 14.72 ft/s
-- **B.** 0.61 ft/s
+- **A.** 0.61 ft/s
+- **B.** 14.72 ft/s
 - **C.** 1.53 ft/s
 - **D.** 0.76 ft/s
 
-**Answer: B. 0.61 ft/s**
+**Answer: A. 0.61 ft/s**
 
 Velocity equals flow divided by the full-pipe area. Substitute the stated values: 3.0 ÷ (0.785 × 2.5 × 2.5) = 0.61 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 188: Flow, velocity and area in sewers (hard)
-
-A rectangular channel is 2.0 ft wide and 1.5 ft deep, and the water is 1.5 ft deep and flowing at 2.5 ft/s. Use 1 ft³ = 7.48 gal and 1 minute = 60 s. What is the flow in gallons per minute, to the nearest whole number?
-
-- **A.** 3,927 gpm
-- **B.** 56 gpm
-- **C.** 2,244 gpm
-- **D.** 3,366 gpm
-
-**Answer: D. 3,366 gpm**
-
-Flow area is width times depth; multiply by velocity, then by 7.48 and by 60. Substitute the stated values: 2 × 1.5 × 2.5 × 7.48 × 60 = 3,366 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
-
-### 189: Flow, velocity and area in sewers (medium)
+### 200: Flow, velocity and area in sewers (medium)
 
 A 12-inch sewer must carry 1,000 gpm flowing full. Use area = 0.785 × D² with D in feet, 1 ft³ = 7.48 gal and 1 minute = 60 s. What velocity in ft/s is needed, to two decimal places?
 
 - **A.** 170.31 ft/s
-- **B.** 5.68 ft/s
-- **C.** 21.23 ft/s
+- **B.** 21.23 ft/s
+- **C.** 5.68 ft/s
 - **D.** 2.84 ft/s
 
 **Answer: D. 2.84 ft/s**
 
 Convert gpm to ft³/s, then divide by the full-pipe area. Substitute the stated values: 1000 ÷ (7.48 × 60 × 0.785 × 1 × 1) = 2.84 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 190: Flow, velocity and area in sewers (medium)
-
-A 40-inch sewer carries a full flow of 4.0 ft/s. Use area = 0.785 × D² with D in feet. What is the flow in cfs, to two decimal places?
-
-- **A.** 34.89 cfs
-- **B.** 69.78 cfs
-- **C.** 260.97 cfs
-- **D.** 10.47 cfs
-
-**Answer: A. 34.89 cfs**
-
-Flow equals area times velocity. Substitute the stated values: 0.785 × (40 ÷ 12) × (40 ÷ 12) × 4.0 = 34.89 cfs. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 191: Flow, velocity and area in sewers (hard)
+### 201: Flow, velocity and area in sewers (hard)
 
 A 15-inch sewer flows full at 0.8 ft/s. Use area = 0.785 × D² with D in feet, 1 ft³ = 7.48 gal and 1 day = 86,400 s. What is the flow in gallons per day, to the nearest gallon?
 
 - **A.** 507,324 gal/day
-- **B.** 440 gal/day
-- **C.** 634,154 gal/day
+- **B.** 634,154 gal/day
+- **C.** 440 gal/day
 - **D.** 158,539 gal/day
 
-**Answer: C. 634,154 gal/day**
+**Answer: B. 634,154 gal/day**
 
 Area times velocity gives ft³/s; multiply by 7.48 for gal/s and by 86,400 for gal/day. Substitute the stated values: 0.785 × 1.25 × 1.25 × 0.8 × 7.48 × 86400 = 634,154 gal/day. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 192: Flow, velocity and area in sewers (medium)
+### 202: Flow, velocity and area in sewers (medium)
 
 A 12-inch pipe runs full and carries 250 gpm of wastewater. Use area = 0.785 × D² with D in feet, 1 ft³ = 7.48 gal and 1 minute = 60 s. What is the velocity in ft/s, to two decimal places?
 
-- **A.** 42.58 ft/s
-- **B.** 0.71 ft/s
-- **C.** 2.84 ft/s
-- **D.** 5.31 ft/s
+- **A.** 5.31 ft/s
+- **B.** 2.84 ft/s
+- **C.** 0.71 ft/s
+- **D.** 42.58 ft/s
 
-**Answer: B. 0.71 ft/s**
+**Answer: C. 0.71 ft/s**
 
 Convert gpm to ft³/s, then divide by the full-pipe area. Substitute the stated values: 250 ÷ (7.48 × 60 × 0.785 × 1 × 1) = 0.71 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 193: Slope, invert and fall (medium)
+### 203: Slope, invert and fall (medium)
 
 A gravity sewer falls 1.8 ft over a run of 450 ft. What is the slope as a percent, to two decimal places?
 
-- **A.** 25,000.00 %
+- **A.** 0.40 %
 - **B.** 4.00 %
-- **C.** 0.40 %
+- **C.** 25,000.00 %
 - **D.** 0.04 %
 
-**Answer: C. 0.40 %**
+**Answer: A. 0.40 %**
 
 Slope percent equals fall divided by length, times 100. Substitute the stated values: 1.8 ÷ 450 × 100 = 0.40 %. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 194: Slope, invert and fall (hard)
-
-The upstream invert of a sewer is at elevation 842.60 ft. The line is 380 ft long and laid at a slope of 0.5 percent (0.005 ft per ft) falling downstream. What is the downstream invert elevation, in ft, to two decimal places?
-
-- **A.** 652.60 ft
-- **B.** 840.70 ft
-- **C.** 823.60 ft
-- **D.** 844.50 ft
-
-**Answer: B. 840.70 ft**
-
-Downstream invert equals upstream invert minus slope times length. Substitute the stated values: 842.6-0.005 × 380 = 840.70 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 195: Slope, invert and fall (medium)
-
-A 500-ft sewer must fall 0.4 percent along its length. How many feet of fall are needed, to two decimal places?
-
-- **A.** 2.00 ft
-- **B.** 1,250.00 ft
-- **C.** 200.00 ft
-- **D.** 24.00 ft
-
-**Answer: A. 2.00 ft**
-
-Fall equals slope as a decimal times length. Substitute the stated values: 0.4 ÷ 100 × 500 = 2.00 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 196: Slope, invert and fall (hard)
+### 204: Slope, invert and fall (hard)
 
 Two manholes have invert elevations of 98.45 ft (upstream) and 96.90 ft (downstream), with 310 ft between them. What is the slope in percent, to two decimal places?
 
-- **A.** 63.02 %
-- **B.** 4.80 %
-- **C.** 0.00 %
+- **A.** 0.00 %
+- **B.** 63.02 %
+- **C.** 4.80 %
 - **D.** 0.50 %
 
 **Answer: D. 0.50 %**
 
 Slope percent equals the invert drop divided by the length, times 100. Substitute the stated values: (98.45-96.90) ÷ 310 × 100 = 0.50 %. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 197: Slope, invert and fall (hard)
-
-A sewer starts with an invert of 215.30 ft and ends with an invert of 207.80 ft, over a length of 1,250 ft. What is the slope in percent, to two decimal places?
-
-- **A.** 33.85 %
-- **B.** 0.60 %
-- **C.** 93.75 %
-- **D.** 0.01 %
-
-**Answer: B. 0.60 %**
-
-Slope percent equals the invert drop divided by the length, times 100. Substitute the stated values: (215.30-207.80) ÷ 1250 × 100 = 0.60 %. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 198: Slope, invert and fall (medium)
+### 205: Slope, invert and fall (medium)
 
 The invert at the upstream end of a 900-ft sewer is 1020.00 ft. The sewer is laid at a slope of 0.25 percent. What is the downstream invert, in ft, to two decimal places?
 
 - **A.** 1,019.98 ft
-- **B.** 795.00 ft
+- **B.** 1,022.25 ft
 - **C.** 1,017.75 ft
-- **D.** 1,022.25 ft
+- **D.** 795.00 ft
 
 **Answer: C. 1,017.75 ft**
 
 Downstream invert equals upstream invert minus slope as a decimal times length. Substitute the stated values: 1020-0.0025 × 900 = 1,017.75 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 199: Slope, invert and fall (hard)
-
-A 400-ft run is laid at 0.5 percent, and the next 300 ft is laid at 0.8 percent, both falling downstream. What is the total fall, in ft, to two decimal places?
-
-- **A.** 4.40 ft
-- **B.** 4.55 ft
-- **C.** 2.00 ft
-- **D.** 440.00 ft
-
-**Answer: A. 4.40 ft**
-
-Total fall is the sum of slope times length for each run. Substitute the stated values: 0.005 × 400+0.008 × 300 = 4.40 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 200: Slope, invert and fall (medium)
-
-A sewer must drop 3.0 ft at a constant slope of 0.4 percent. What length of sewer, in ft, is needed?
-
-- **A.** 0 ft
-- **B.** 75 ft
-- **C.** 8 ft
-- **D.** 750 ft
-
-**Answer: D. 750 ft**
-
-Length equals fall divided by slope as a decimal. Substitute the stated values: 3 ÷ 0.004 = 750 ft. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
-
-### 201: Slope, invert and fall (medium)
-
-A pipe's invert is at 500.10 ft and the pipe is 12 inches in diameter. What is the crown elevation, in ft, to two decimal places?
-
-- **A.** 499.10 ft
-- **B.** 501.10 ft
-- **C.** 500.60 ft
-- **D.** 512.10 ft
-
-**Answer: B. 501.10 ft**
-
-Crown elevation equals invert elevation plus the diameter in feet. Substitute the stated values: 500.10+1.0 = 501.10 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 202: Slope, invert and fall (hard)
-
-A sewer 6,336 ft long is laid at a slope of 0.25 percent. How many feet of fall does it give, to two decimal places?
-
-- **A.** 13.20 ft
-- **B.** 1,584.00 ft
-- **C.** 15.84 ft
-- **D.** 1.32 ft
-
-**Answer: C. 15.84 ft**
-
-Fall equals slope as a decimal times length. Substitute the stated values: 0.0025 × 6336 = 15.84 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 203: Pipe and manhole volumes (medium)
+### 206: Pipe and manhole volumes (medium)
 
 A manhole has an inside diameter of 4 ft and 8 ft of depth. Use 0.785 × D² for the area and 1 ft³ = 7.48 gal. How many gallons does the full manhole hold, to the nearest gallon?
 
 - **A.** 752 gal
-- **B.** 188 gal
-- **C.** 100 gal
-- **D.** 838 gal
+- **B.** 838 gal
+- **C.** 188 gal
+- **D.** 100 gal
 
 **Answer: A. 752 gal**
 
 Volume equals area times depth; multiply by 7.48 for gallons. Substitute the stated values: 0.785 × 4 × 4 × 8 × 7.48 = 752 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 204: Pipe and manhole volumes (medium)
+### 207: Pipe and manhole volumes (medium)
 
 A wet well is 60 inches in diameter and holds liquid 6.0 ft deep. Use 0.785 × D² with D in feet and 1 ft³ = 7.48 gal. How many gallons are in the liquid, to the nearest gallon?
 
-- **A.** 176 gal
-- **B.** 982 gal
-- **C.** 118 gal
-- **D.** 881 gal
+- **A.** 118 gal
+- **B.** 881 gal
+- **C.** 982 gal
+- **D.** 176 gal
 
-**Answer: D. 881 gal**
+**Answer: B. 881 gal**
 
 Volume equals area times depth; multiply by 7.48 for gallons. Substitute the stated values: 0.785 × 5 × 5 × 6 × 7.48 = 881 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 205: Pipe and manhole volumes (medium)
+### 208: Pipe and manhole volumes (medium)
 
 A cylindrical storage tank is 20 ft in diameter and 10 ft deep. Use 0.785 × D² and 1 ft³ = 7.48 gal. How many gallons does it hold, to the nearest gallon?
 
 - **A.** 26,188 gal
 - **B.** 1,174 gal
-- **C.** 23,487 gal
-- **D.** 3,140 gal
+- **C.** 3,140 gal
+- **D.** 23,487 gal
 
-**Answer: C. 23,487 gal**
+**Answer: D. 23,487 gal**
 
 Volume equals area times depth; multiply by 7.48 for gallons. Substitute the stated values: 0.785 × 20 × 20 × 10 × 7.48 = 23,487 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 206: Pipe and manhole volumes (hard)
+### 209: Pipe and manhole volumes (hard)
 
 A 1,000-ft run of 8-inch pipe is full of water. Use 0.785 × D² with D in feet and 1 ft³ = 7.48 gal. How many gallons does the pipe hold, to the nearest gallon?
 
-- **A.** 2,610 gal
-- **B.** 375,795 gal
-- **C.** 2,910 gal
-- **D.** 3,915 gal
+- **A.** 375,795 gal
+- **B.** 2,610 gal
+- **C.** 3,915 gal
+- **D.** 2,910 gal
 
-**Answer: A. 2,610 gal**
+**Answer: B. 2,610 gal**
 
 Pipe area times length gives ft³; multiply by 7.48 for gallons. Substitute the stated values: 0.785 × (8 ÷ 12) × (8 ÷ 12) × 1000 × 7.48 = 2,610 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 207: Pipe and manhole volumes (medium)
+### 210: Pipe and manhole volumes (medium)
 
 A manhole with a 4-ft inside diameter has 3.5 ft of water in it. Use 0.785 × D². What is the volume in cubic feet, to one decimal place?
 
-- **A.** 175.8 ft³
-- **B.** 44.0 ft³
-- **C.** 328.8 ft³
-- **D.** 11.0 ft³
+- **A.** 11.0 ft³
+- **B.** 328.8 ft³
+- **C.** 44.0 ft³
+- **D.** 175.8 ft³
 
-**Answer: B. 44.0 ft³**
+**Answer: C. 44.0 ft³**
 
 Volume equals area times depth. Substitute the stated values: 0.785 × 4 × 4 × 3.5 = 44.0 ft³. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 208: Pipe and manhole volumes (medium)
+### 211: Pipe and manhole volumes (medium)
 
 A trench is 200 ft long, 3 ft wide and 6 ft deep. How many cubic yards of soil were excavated, to one decimal place? (1 yd³ = 27 ft³)
 
-- **A.** 997.3 yd³
-- **B.** 3,600.0 yd³
-- **C.** 1,200.0 yd³
-- **D.** 133.3 yd³
+- **A.** 133.3 yd³
+- **B.** 1,200.0 yd³
+- **C.** 3,600.0 yd³
+- **D.** 997.3 yd³
 
-**Answer: D. 133.3 yd³**
+**Answer: A. 133.3 yd³**
 
 Volume in ft³ is length times width times depth; divide by 27 for cubic yards. Substitute the stated values: 200 × 3 × 6 ÷ 27 = 133.3 yd³. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 209: Pipe and manhole volumes (hard)
+### 212: Pipe and manhole volumes (hard)
 
 A straight run of 500 ft of 18-inch pipe is full. Use 0.785 × D² with D in feet and 1 ft³ = 7.48 gal. How many gallons does the run hold, to the nearest gallon?
 
-- **A.** 7,365 gal
-- **B.** 6,606 gal
-- **C.** 4,404 gal
-- **D.** 13,212 gal
+- **A.** 4,404 gal
+- **B.** 13,212 gal
+- **C.** 7,365 gal
+- **D.** 6,606 gal
 
-**Answer: B. 6,606 gal**
+**Answer: D. 6,606 gal**
 
 Area times length gives ft³; multiply by 7.48 for gallons. Substitute the stated values: 0.785 × 1.5 × 1.5 × 500 × 7.48 = 6,606 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 210: Pipe and manhole volumes (hard)
+### 213: Pipe and manhole volumes (hard)
 
 A pipe of 36-inch diameter is half full along a 400-ft length. Use 0.785 × D² with D in feet for the full area, and 1 ft³ = 7.48 gal. How many gallons does the half-full section hold, to the nearest gallon?
 
-- **A.** 21,138 gal
-- **B.** 11,784 gal
-- **C.** 10,569 gal
-- **D.** 5,285 gal
+- **A.** 5,285 gal
+- **B.** 10,569 gal
+- **C.** 21,138 gal
+- **D.** 11,784 gal
 
-**Answer: C. 10,569 gal**
+**Answer: B. 10,569 gal**
 
 Half-full volume is half the full-pipe volume. Substitute the stated values: 0.5 × 0.785 × 3 × 3 × 400 × 7.48 = 10,569 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 211: Pipe and manhole volumes (medium)
+### 214: Pipe and manhole volumes (medium)
 
 A wet well section is 20 ft long and 6 ft wide, with 2 ft of water. Use 1 ft³ = 7.48 gal. How many gallons are in the water, to the nearest gallon?
 
-- **A.** 1,795 gal
+- **A.** 2,002 gal
 - **B.** 3,590 gal
 - **C.** 240 gal
-- **D.** 2,002 gal
+- **D.** 1,795 gal
 
-**Answer: A. 1,795 gal**
+**Answer: D. 1,795 gal**
 
 Volume equals length times width times depth; multiply by 7.48. Substitute the stated values: 20 × 6 × 2 × 7.48 = 1,795 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 212: Pipe and manhole volumes (hard)
+### 215: Pipe and manhole volumes (hard)
 
 A 10-inch sewer carries flow at 2.0 ft/s with the pipe full. Use 0.785 × D² with D in feet, 1 ft³ = 7.48 gal and 2 hours = 7,200 s. How many gallons pass a point in 2 hours, to the nearest gallon?
 
-- **A.** 29,359 gal
-- **B.** 979 gal
-- **C.** 70,462 gal
-- **D.** 58,718 gal
+- **A.** 58,718 gal
+- **B.** 70,462 gal
+- **C.** 979 gal
+- **D.** 29,359 gal
 
-**Answer: D. 58,718 gal**
+**Answer: A. 58,718 gal**
 
 Flow in ft³/s times 7.48 gives gal/s; multiply by 7,200 s. Substitute the stated values: 0.785 × (10 ÷ 12) × (10 ÷ 12) × 2 × 7.48 × 7200 = 58,718 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 213: Wet well volume and pump run time (medium)
+### 216: Wet well volume and pump run time (medium)
 
 A wet well is 6 ft in diameter. The pump starts at 4.0 ft of liquid and stops at 2.5 ft, with no inflow during pumping. Use 0.785 × D² and 1 ft³ = 7.48 gal. How many gallons are pumped in one cycle, to the nearest gallon?
 
-- **A.** 53 gal
-- **B.** 317 gal
-- **C.** 846 gal
-- **D.** 42 gal
+- **A.** 42 gal
+- **B.** 53 gal
+- **C.** 317 gal
+- **D.** 846 gal
 
-**Answer: B. 317 gal**
+**Answer: C. 317 gal**
 
 Volume equals area times the change in depth; multiply by 7.48. Substitute the stated values: 0.785 × 6 × 6 × 1.5 × 7.48 = 317 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 214: Wet well volume and pump run time (medium)
+### 217: Wet well volume and pump run time (medium)
 
 A pump rated at 350 gpm must remove 317 gallons with no inflow during the cycle. How many seconds does it run for each cycle, to one decimal place?
 
-- **A.** 3,260.6 s
-- **B.** 1,849.2 s
+- **A.** 54.3 s
+- **B.** 3,260.6 s
 - **C.** 0.9 s
-- **D.** 54.3 s
+- **D.** 1,849.2 s
 
-**Answer: D. 54.3 s**
+**Answer: A. 54.3 s**
 
 Run time equals volume divided by pump rate, converted from minutes to seconds. Substitute the stated values: 317 ÷ 350 × 60 = 54.3 s. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 215: Wet well volume and pump run time (hard)
+### 218: Wet well volume and pump run time (hard)
 
 A wet well is 6 ft in diameter and pumps 1.5 ft of liquid per cycle. Inflow is 150 gpm and the pump delivers 350 gpm. Use 0.785 × D² and 1 ft³ = 7.48 gal. How many cycles per hour occur, to one decimal place?
 
-- **A.** 16.2 per hour
-- **B.** 19.9 per hour
-- **C.** 97.3 per hour
-- **D.** 37.8 per hour
+- **A.** 97.3 per hour
+- **B.** 16.2 per hour
+- **C.** 37.8 per hour
+- **D.** 19.9 per hour
 
-**Answer: A. 16.2 per hour**
+**Answer: B. 16.2 per hour**
 
 Cycle time is the pump-on time (volume divided by net outflow) plus the pump-off time (volume divided by inflow); cycles per hour is 60 divided by cycle time in minutes. Substitute the stated values: 60 ÷ (0.785 × 6 × 6 × 1.5 × 7.48 × (1 ÷ 200+1 ÷ 150)) = 16.2 per hour. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 216: Wet well volume and pump run time (medium)
+### 219: Wet well volume and pump run time (medium)
 
 A wet well cycle needs 1,000 gallons of storage. Inflow averages 100 gpm. How many minutes is the pump-off time needed to refill the storage? Use 1 gpm = 1 gal/min.
 
-- **A.** 1.7 min
-- **B.** 16.7 min
+- **A.** 16.7 min
+- **B.** 100,000.0 min
 - **C.** 10.0 min
-- **D.** 100,000.0 min
+- **D.** 1.7 min
 
 **Answer: C. 10.0 min**
 
 Refill time equals storage volume divided by inflow rate. Substitute the stated values: 1000 ÷ 100 = 10.0 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 217: Wet well volume and pump run time (hard)
+### 220: Wet well volume and pump run time (hard)
 
 The wet well drawdown for one cycle is 1,000 gallons. The pump removes water at 300 gpm while 100 gpm of inflow arrives. How many minutes does the pump run for each cycle, to one decimal place?
 
-- **A.** 5.0 min
+- **A.** 2.5 min
 - **B.** 200,000.0 min
 - **C.** 3.3 min
-- **D.** 2.5 min
+- **D.** 5.0 min
 
-**Answer: A. 5.0 min**
+**Answer: D. 5.0 min**
 
 Net outflow is pump rate minus inflow; run time is volume divided by net outflow. Substitute the stated values: 1000 ÷ (300-100) = 5.0 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 218: Wet well volume and pump run time (medium)
+### 221: Wet well volume and pump run time (medium)
 
 A pump runs 4 hours a day at 350 gpm. How many gallons does it pump in one day, to the nearest gallon?
 
-- **A.** 504,000 gal
-- **B.** 84,000 gal
-- **C.** 1,400 gal
-- **D.** 5,250 gal
+- **A.** 1,400 gal
+- **B.** 504,000 gal
+- **C.** 5,250 gal
+- **D.** 84,000 gal
 
-**Answer: B. 84,000 gal**
+**Answer: D. 84,000 gal**
 
 Gallons equal rate in gpm times minutes of run time. Substitute the stated values: 350 × 60 × 4 = 84,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 219: Wet well volume and pump run time (medium)
+### 222: Wet well volume and pump run time (medium)
 
 A lift station receives an average daily flow of 0.25 MGD. What is the average pumping rate over 24 hours, in gpm, to one decimal place? (1 MGD = 1,000,000 gal per day)
 
-- **A.** 4,166.7 gpm
-- **B.** 10,416.7 gpm
-- **C.** 173.6 gpm
-- **D.** 7.2 gpm
+- **A.** 173.6 gpm
+- **B.** 4,166.7 gpm
+- **C.** 7.2 gpm
+- **D.** 10,416.7 gpm
 
-**Answer: C. 173.6 gpm**
+**Answer: A. 173.6 gpm**
 
 Average gpm equals gallons per day divided by minutes per day. Substitute the stated values: 0.25 × 1000000 ÷ (24 × 60) = 173.6 gpm. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 220: Wet well volume and pump run time (medium)
+### 223: Wet well volume and pump run time (medium)
 
 A station must pump 1.2 MGD using a pump rated at 1,400 gpm. How many hours of pumping does it need, to two decimal places?
 
 - **A.** 35.71 h
 - **B.** 28.57 h
-- **C.** 857.14 h
-- **D.** 14.29 h
+- **C.** 14.29 h
+- **D.** 857.14 h
 
-**Answer: D. 14.29 h**
+**Answer: C. 14.29 h**
 
 Hours equal total gallons divided by pump rate in gallons per hour. Substitute the stated values: 1200000 ÷ (1400 × 60) = 14.29 h. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 221: Wet well volume and pump run time (hard)
+### 224: Wet well volume and pump run time (hard)
 
 A wet well is 6 ft in diameter. Inflow is 120 gpm and the level rises 3.0 ft with the pumps off. Use 0.785 × D² and 1 ft³ = 7.48 gal. How many minutes does the rise take, to two decimal places?
 
-- **A.** 0.59 min
-- **B.** 76,098.53 min
-- **C.** 0.88 min
-- **D.** 5.28 min
+- **A.** 76,098.53 min
+- **B.** 5.28 min
+- **C.** 0.59 min
+- **D.** 0.88 min
 
-**Answer: D. 5.28 min**
+**Answer: B. 5.28 min**
 
 Storage volume is area times rise, times 7.48; time equals volume divided by inflow. Substitute the stated values: 0.785 × 6 × 6 × 3 × 7.48 ÷ 120 = 5.28 min. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 222: Wet well volume and pump run time (medium)
+### 225: Wet well volume and pump run time (medium)
 
 A lift station has peak inflow of 700 gpm and pumps rated at 350 gpm each. Peak inflow must be matched by duty pumps, with one standby pump added. How many pumps are needed in total?
 
-- **A.** 3 pumps
-- **B.** 2 pumps
+- **A.** 2 pumps
+- **B.** 3 pumps
 - **C.** 1 pumps
 - **D.** 4 pumps
 
-**Answer: A. 3 pumps**
+**Answer: B. 3 pumps**
 
 Duty pumps equal peak inflow divided by pump rate; add one standby. Substitute the stated values: 700 ÷ 350+1 = 3 pumps. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 223: Removal efficiency percent (medium)
+### 226: Removal efficiency percent (medium)
 
 A process lowers influent TSS from 250 mg/L to 25 mg/L. What is the removal efficiency, in percent, to one decimal place?
 
-- **A.** 900.0 %
+- **A.** 10.0 %
 - **B.** 110.0 %
 - **C.** 90.0 %
-- **D.** 10.0 %
+- **D.** 900.0 %
 
 **Answer: C. 90.0 %**
 
 Removal equals influent minus effluent, divided by influent, times 100. Substitute the stated values: (250-25) ÷ 250 × 100 = 90.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 224: Removal efficiency percent (medium)
+### 227: Removal efficiency percent (medium)
 
 Influent BOD is 180 mg/L and effluent BOD is 36 mg/L. What is the percent removal, to one decimal place?
 
-- **A.** 14,400.0 %
-- **B.** 80.0 %
-- **C.** 20.0 %
-- **D.** 400.0 %
+- **A.** 80.0 %
+- **B.** 14,400.0 %
+- **C.** 400.0 %
+- **D.** 20.0 %
 
-**Answer: B. 80.0 %**
+**Answer: A. 80.0 %**
 
 Removal equals influent minus effluent, divided by influent, times 100. Substitute the stated values: (180-36) ÷ 180 × 100 = 80.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 225: Removal efficiency percent (medium)
-
-A basin receives TSS at 220 mg/L and discharges 33 mg/L. What is the percent removal, to one decimal place?
-
-- **A.** 15.0 %
-- **B.** 85.0 %
-- **C.** 0.8 %
-- **D.** 566.7 %
-
-**Answer: B. 85.0 %**
-
-Removal equals influent minus effluent, divided by influent, times 100. Substitute the stated values: (220-33) ÷ 220 × 100 = 85.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 226: Removal efficiency percent (hard)
+### 228: Removal efficiency percent (hard)
 
 Primary treatment removes 35 percent of BOD. Secondary treatment then removes 90 percent of the BOD that is left. What is the overall percent removal, to one decimal place?
 
 - **A.** 125.0 %
 - **B.** -25.0 %
-- **C.** 93.5 %
-- **D.** 62.5 %
+- **C.** 62.5 %
+- **D.** 93.5 %
 
-**Answer: C. 93.5 %**
+**Answer: D. 93.5 %**
 
 Overall remaining fraction is the product of the two remaining fractions; removal is one minus that, times 100. Substitute the stated values: (1-(1-0.35) × (1-0.9)) × 100 = 93.5 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 227: Removal efficiency percent (medium)
+### 229: Removal efficiency percent (medium)
 
 Influent TSS is 300 mg/L and the process removes 88 percent. What is the effluent concentration, in mg/L, to one decimal place?
 
-- **A.** 36.0 mg/L
-- **B.** 360.0 mg/L
-- **C.** 340.9 mg/L
-- **D.** 264.0 mg/L
+- **A.** 360.0 mg/L
+- **B.** 340.9 mg/L
+- **C.** 264.0 mg/L
+- **D.** 36.0 mg/L
 
-**Answer: A. 36.0 mg/L**
+**Answer: D. 36.0 mg/L**
 
 Effluent equals influent times one minus the removal fraction. Substitute the stated values: 300 × (1-0.88) = 36.0 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 228: Removal efficiency percent (medium)
-
-Influent BOD is 40 mg/L and effluent BOD is 2 mg/L. What is the percent removal, to one decimal place?
-
-- **A.** 5.0 %
-- **B.** 3,800.0 %
-- **C.** 1,900.0 %
-- **D.** 95.0 %
-
-**Answer: D. 95.0 %**
-
-Removal equals influent minus effluent, divided by influent, times 100. Substitute the stated values: (40-2) ÷ 40 × 100 = 95.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 229: Removal efficiency percent (hard)
+### 230: Removal efficiency percent (hard)
 
 A process must reach 90 percent removal of BOD and the effluent must be 15 mg/L. What influent concentration, in mg/L, does that require, to one decimal place?
 
 - **A.** 28.5 mg/L
-- **B.** 16.7 mg/L
+- **B.** 150.0 mg/L
 - **C.** 13.5 mg/L
-- **D.** 150.0 mg/L
+- **D.** 16.7 mg/L
 
-**Answer: D. 150.0 mg/L**
+**Answer: B. 150.0 mg/L**
 
 Influent equals effluent divided by one minus the removal fraction. Substitute the stated values: 15 ÷ (1-0.9) = 150.0 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 230: Removal efficiency percent (medium)
-
-Influent load is 450 lb/day and effluent load is 54 lb/day. What is the percent removal on a mass basis, to one decimal place?
-
-- **A.** 39,600.0 %
-- **B.** 88.0 %
-- **C.** 12.0 %
-- **D.** 733.3 %
-
-**Answer: B. 88.0 %**
-
-Removal equals influent load minus effluent load, divided by influent load, times 100. Substitute the stated values: (450-54) ÷ 450 × 100 = 88.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 231: Removal efficiency percent (hard)
 
@@ -3007,249 +3007,249 @@ A plant has an effluent BOD of 9 mg/L after removing 92 percent of the influent 
 
 Influent equals effluent divided by one minus the removal fraction. Substitute the stated values: 9 ÷ (1-0.92) = 112.5 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 232: Removal efficiency percent (hard)
-
-A process removes 60 percent of the TSS in the first step and 65 percent of the remainder in a second step. What is the overall percent removal, to one decimal place?
-
-- **A.** 86.0 %
-- **B.** 125.0 %
-- **C.** 62.5 %
-- **D.** -25.0 %
-
-**Answer: A. 86.0 %**
-
-Overall removal is one minus the product of the remaining fractions, times 100. Substitute the stated values: (1-(1-0.6) × (1-0.65)) × 100 = 86.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 233: Pounds per day loading from concentration and flow (medium)
+### 232: Pounds per day loading from concentration and flow (medium)
 
 A plant treats 1.5 MGD with an influent BOD of 200 mg/L. Use 8.34 lb per gallon of water. What is the BOD load, in pounds per day, to the nearest whole pound?
 
-- **A.** 2,244 lb/day
-- **B.** 3 lb/day
-- **C.** 2,502 lb/day
-- **D.** 300 lb/day
+- **A.** 2,502 lb/day
+- **B.** 300 lb/day
+- **C.** 2,244 lb/day
+- **D.** 3 lb/day
 
-**Answer: C. 2,502 lb/day**
+**Answer: A. 2,502 lb/day**
 
 Load in lb/day equals flow in MGD times concentration in mg/L times 8.34. Substitute the stated values: 1.5 × 200 × 8.34 = 2,502 lb/day. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 234: Pounds per day loading from concentration and flow (medium)
-
-A plant flows 0.8 MGD with an influent BOD of 250 mg/L. Use 8.34 lb per gallon of water. What is the load, in pounds per day, to the nearest whole pound?
-
-- **A.** 1,668 lb/day
-- **B.** 139 lb/day
-- **C.** 1,496 lb/day
-- **D.** 24 lb/day
-
-**Answer: A. 1,668 lb/day**
-
-Load in lb/day equals flow in MGD times concentration in mg/L times 8.34. Substitute the stated values: 0.8 × 250 × 8.34 = 1,668 lb/day. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
-
-### 235: Pounds per day loading from concentration and flow (hard)
-
-A flow of 350 gpm carries a TSS concentration of 150 mg/L. Use 1,440 minutes per day and 8.34 lb per gallon. What is the load in lb/day, to one decimal place?
-
-- **A.** 75.6 lb/day
-- **B.** 26.3 lb/day
-- **C.** 630,504,000.0 lb/day
-- **D.** 630.5 lb/day
-
-**Answer: D. 630.5 lb/day**
-
-Gallons per day equals gpm times 1,440; load equals gallons times mg/L times 8.34 divided by 1,000,000. Substitute the stated values: 350 × 1440 × 150 × 8.34 ÷ 1000000 = 630.5 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 236: Pounds per day loading from concentration and flow (medium)
-
-A plant flows 1.2 MGD and doses chlorine at 8 mg/L. Use 8.34 lb per gallon. How many pounds of chlorine are added each day, to one decimal place?
-
-- **A.** 9.6 lb/day
-- **B.** 80.1 lb/day
-- **C.** 1.2 lb/day
-- **D.** 71.8 lb/day
-
-**Answer: B. 80.1 lb/day**
-
-Dose in lb/day equals flow in MGD times dose in mg/L times 8.34. Substitute the stated values: 1.2 × 8 × 8.34 = 80.1 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 237: Pounds per day loading from concentration and flow (medium)
-
-A feed system adds a chemical at 12 mg/L to a flow of 0.5 MGD. Use 8.34 lb per gallon. How many pounds of chemical are needed per day, to one decimal place?
-
-- **A.** 44.9 lb/day
-- **B.** 50.0 lb/day
-- **C.** 6.0 lb/day
-- **D.** 0.7 lb/day
-
-**Answer: B. 50.0 lb/day**
-
-Feed in lb/day equals flow in MGD times dose in mg/L times 8.34. Substitute the stated values: 0.5 × 12 × 8.34 = 50.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 238: Pounds per day loading from concentration and flow (hard)
-
-A chemical feeder must deliver 120 lb/day to a flow of 2.0 MGD. Use 8.34 lb per gallon. What concentration, in mg/L, is needed, to one decimal place?
-
-- **A.** 7.2 mg/L
-- **B.** 60.0 mg/L
-- **C.** 8.0 mg/L
-- **D.** 2,001.6 mg/L
-
-**Answer: A. 7.2 mg/L**
-
-Concentration equals load divided by the product of flow and 8.34. Substitute the stated values: 120 ÷ (2 × 8.34) = 7.2 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 239: Pounds per day loading from concentration and flow (medium)
-
-A chemical must be dosed at 40 mg/L to deliver 500 lb/day. Use 8.34 lb per gallon. What flow, in MGD, is needed, to two decimal places?
-
-- **A.** 12.50 MGD
-- **B.** 1.67 MGD
-- **C.** 2,398.08 MGD
-- **D.** 1.50 MGD
-
-**Answer: D. 1.50 MGD**
-
-Flow equals load divided by the product of concentration and 8.34. Substitute the stated values: 500 ÷ (40 × 8.34) = 1.50 MGD. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
-
-### 240: Pounds per day loading from concentration and flow (hard)
+### 233: Pounds per day loading from concentration and flow (hard)
 
 A plant flows 2.5 MGD with an influent BOD of 200 mg/L and an effluent BOD of 15 mg/L. Use 8.34 lb per gallon. How many pounds per day of BOD are removed, to the nearest whole pound?
 
-- **A.** 4,170 lb/day
-- **B.** 3,460 lb/day
+- **A.** 3,460 lb/day
+- **B.** 462 lb/day
 - **C.** 3,857 lb/day
-- **D.** 462 lb/day
+- **D.** 4,170 lb/day
 
 **Answer: C. 3,857 lb/day**
 
 Removed load equals flow times the concentration drop times 8.34. Substitute the stated values: (200-15) × 2.5 × 8.34 = 3,857 lb/day. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 241: Pounds per day loading from concentration and flow (medium)
+### 234: Pounds per day loading from concentration and flow (medium)
 
 A plant has a daily load of 900 lb/day and a flow of 1.8 MGD. Use 8.34 lb per gallon. What concentration, in mg/L, does this represent, to one decimal place?
 
 - **A.** 60.0 mg/L
-- **B.** 194.2 mg/L
-- **C.** 66.8 mg/L
+- **B.** 66.8 mg/L
+- **C.** 194.2 mg/L
 - **D.** 500.0 mg/L
 
 **Answer: A. 60.0 mg/L**
 
 Concentration equals load divided by the product of flow and 8.34. Substitute the stated values: 900 ÷ (1.8 × 8.34) = 60.0 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 242: Pounds per day loading from concentration and flow (medium)
-
-A plant flows 2.0 MGD. What is the average flow in gallons per minute, to one decimal place? Use 1,440 minutes per day.
-
-- **A.** 897.7 gpm
-- **B.** 33,333.3 gpm
-- **C.** 83,333.3 gpm
-- **D.** 1,388.9 gpm
-
-**Answer: D. 1,388.9 gpm**
-
-Gallons per minute equals gallons per day divided by minutes per day. Substitute the stated values: 2 × 1000000 ÷ 1440 = 1,388.9 gpm. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 243: Unit conversions for flow and length (medium)
+### 235: Unit conversions for flow and length (medium)
 
 A pipe carries 2.5 cfs. Use 1 cfs = 448.8 gpm. What is the flow in gallons per minute, to the nearest whole number?
 
-- **A.** 19 gpm
-- **B.** 1,122 gpm
-- **C.** 0 gpm
-- **D.** 1,736 gpm
+- **A.** 1,736 gpm
+- **B.** 0 gpm
+- **C.** 19 gpm
+- **D.** 1,122 gpm
 
-**Answer: B. 1,122 gpm**
+**Answer: D. 1,122 gpm**
 
 Multiply cfs by 448.8 to get gpm. Substitute the stated values: 2.5 × 448.8 = 1,122 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 244: Unit conversions for flow and length (medium)
+### 236: Unit conversions for flow and length (medium)
 
 A plant flows 3.2 MGD. Use 1 MGD = 1.547 cfs. What is the flow in cfs, to two decimal places?
 
 - **A.** 2.07 cfs
-- **B.** 2,222.08 cfs
-- **C.** 4.95 cfs
-- **D.** 4,950.40 cfs
+- **B.** 4.95 cfs
+- **C.** 4,950.40 cfs
+- **D.** 2,222.08 cfs
 
-**Answer: C. 4.95 cfs**
+**Answer: B. 4.95 cfs**
 
 Multiply MGD by 1.547 to get cfs. Substitute the stated values: 3.2 × 1.547 = 4.95 cfs. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 245: Unit conversions for flow and length (medium)
+### 237: Unit conversions for flow and length (medium)
 
 A reservoir holds 2.5 acre-feet of water. Use 1 acre-ft = 43,560 ft³ and 1 ft³ = 7.48 gal. How many gallons are held, to the nearest gallon?
 
-- **A.** 814,572 gal
-- **B.** 908,226 gal
+- **A.** 14,559 gal
+- **B.** 814,572 gal
 - **C.** 108,900 gal
-- **D.** 14,559 gal
+- **D.** 908,226 gal
 
-**Answer: A. 814,572 gal**
+**Answer: B. 814,572 gal**
 
 Multiply acre-feet by 43,560 for ft³, then by 7.48 for gallons. Substitute the stated values: 2.5 × 43560 × 7.48 = 814,572 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 246: Unit conversions for flow and length (medium)
-
-A sewer depth is 0.75 ft. Use 12 inches = 1 ft. How many inches is that, to one decimal place?
-
-- **A.** 0.1 in
-- **B.** 7.5 in
-- **C.** 9.0 in
-- **D.** 108.0 in
-
-**Answer: C. 9.0 in**
-
-Multiply feet by 12 to get inches. Substitute the stated values: 0.75 × 12 = 9.0 in. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
-
-### 247: Unit conversions for flow and length (medium)
+### 238: Unit conversions for flow and length (medium)
 
 A pump develops a pressure of 40 psi. Use 1 psi = 2.31 ft of head. What is the head in feet, to one decimal place?
 
-- **A.** 333.6 ft
+- **A.** 92.4 ft
 - **B.** 299.2 ft
 - **C.** 17.3 ft
-- **D.** 92.4 ft
+- **D.** 333.6 ft
 
-**Answer: D. 92.4 ft**
+**Answer: A. 92.4 ft**
 
 Head in feet equals psi times 2.31. Substitute the stated values: 40 × 2.31 = 92.4 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 248: Unit conversions for flow and length (hard)
+### 239: Chemical feed, pump and motor calculations (medium)
 
-A plant flows 1.2 cfs. Use 1 cfs = 448.8 gpm and 1 day = 1,440 minutes. What is the flow in MGD, to two decimal places?
+A plant flows 1.2 MGD and doses chlorine at 8 mg/L. Use 8.34 as the factor that converts MGD times mg/L to lb/day. How many pounds of chlorine are added each day, to one decimal place?
 
-- **A.** 1.20 MGD
-- **B.** 0.78 MGD
-- **C.** 775,526.40 MGD
-- **D.** 1.86 MGD
+- **A.** 9.6 lb/day
+- **B.** 71.8 lb/day
+- **C.** 1.2 lb/day
+- **D.** 80.1 lb/day
 
-**Answer: B. 0.78 MGD**
+**Answer: D. 80.1 lb/day**
 
-Multiply cfs by 448.8 for gpm, by 1,440 for gallons per day, then divide by 1,000,000. Substitute the stated values: 1.2 × 448.8 × 1440 ÷ 1000000 = 0.78 MGD. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
+Dose in lb/day equals flow in MGD times dose in mg/L times 8.34. Substitute the stated values: 1.2 × 8 × 8.34 = 80.1 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 249: Unit conversions for flow and length (medium)
+### 240: Chemical feed, pump and motor calculations (medium)
 
-A sewer is 1,250 ft long. Use 3 ft = 1 yard. How many yards long is it, to one decimal place?
+A feed system adds a chemical at 12 mg/L to a flow of 0.5 MGD. Use 8.34 as the factor that converts MGD times mg/L to lb/day. How many pounds of chemical are needed per day, to one decimal place?
 
-- **A.** 104.2 yd
-- **B.** 0.2 yd
-- **C.** 416.7 yd
-- **D.** 3,750.0 yd
+- **A.** 6.0 lb/day
+- **B.** 44.9 lb/day
+- **C.** 50.0 lb/day
+- **D.** 0.7 lb/day
 
-**Answer: C. 416.7 yd**
+**Answer: C. 50.0 lb/day**
 
-Divide feet by 3 to get yards. Substitute the stated values: 1250 ÷ 3 = 416.7 yd. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Feed in lb/day equals flow in MGD times dose in mg/L times 8.34. Substitute the stated values: 0.5 × 12 × 8.34 = 50.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 250: Unit conversions for flow and length (medium)
+### 241: Chemical feed, pump and motor calculations (hard)
 
-A tank holds 6 cubic feet of water. Use 1 ft³ = 7.48 gal. How many gallons does it hold, to one decimal place?
+A chemical feeder must deliver 120 lb/day to a flow of 2.0 MGD. Use 8.34 as the factor that converts MGD times mg/L to lb/day. What concentration, in mg/L, is needed, to one decimal place?
 
-- **A.** 4,166.4 gal
-- **B.** 50.0 gal
-- **C.** 0.8 gal
-- **D.** 44.9 gal
+- **A.** 7.2 mg/L
+- **B.** 8.0 mg/L
+- **C.** 2,001.6 mg/L
+- **D.** 60.0 mg/L
 
-**Answer: D. 44.9 gal**
+**Answer: A. 7.2 mg/L**
 
-Multiply cubic feet by 7.48 to get gallons. Substitute the stated values: 6 × 7.48 = 44.9 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Concentration equals load divided by the product of flow and 8.34. Substitute the stated values: 120 ÷ (2 × 8.34) = 7.2 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 242: Chemical feed, pump and motor calculations (medium)
+
+A chemical must be dosed at 40 mg/L to deliver 500 lb/day. Use 8.34 as the factor that converts MGD times mg/L to lb/day. What flow, in MGD, is needed, to two decimal places?
+
+- **A.** 2,398.08 MGD
+- **B.** 12.50 MGD
+- **C.** 1.67 MGD
+- **D.** 1.50 MGD
+
+**Answer: D. 1.50 MGD**
+
+Flow equals load divided by the product of concentration and 8.34. Substitute the stated values: 500 ÷ (40 × 8.34) = 1.50 MGD. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
+
+### 243: Chemical feed, pump and motor calculations (medium)
+
+A pump delivers 500 gpm against a total head of 120 ft. Use water horsepower = flow (gpm) × head (ft) ÷ 3,960. What is the water horsepower, to one decimal place?
+
+- **A.** 1.5 hp
+- **B.** 15.2 hp
+- **C.** 60,000.0 hp
+- **D.** 20.0 hp
+
+**Answer: B. 15.2 hp**
+
+Water horsepower equals flow times head divided by 3,960. Substitute the stated values: 500 × 120 ÷ 3960 = 15.2 hp. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 244: Chemical feed, pump and motor calculations (easy)
+
+A pump discharge gauge reads 52 psi. Use 1 psi = 2.31 ft of water. What is the head in feet, to one decimal place?
+
+- **A.** 22.5 ft
+- **B.** 52.0 ft
+- **C.** 120.1 ft
+- **D.** 1,201.2 ft
+
+**Answer: C. 120.1 ft**
+
+Head in feet equals the gauge pressure in psi times 2.31. Substitute the stated values: 52 × 2.31 = 120.1 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 245: Chemical feed, pump and motor calculations (hard)
+
+A three-phase motor runs on 480 V and draws 40 A at a power factor of 0.85. Use √3 = 1.732 and input power = √3 × V × I × power factor ÷ 1,000. What is the input power in kW, to one decimal place?
+
+- **A.** 28.3 kW
+- **B.** 84.8 kW
+- **C.** 33.3 kW
+- **D.** 16.3 kW
+
+**Answer: A. 28.3 kW**
+
+Input power equals 1.732 times volts times amps times power factor, divided by 1,000. Substitute the stated values: 1.732 × 480 × 40 × 0.85 ÷ 1000 = 28.3 kW. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 246: Chemical feed, pump and motor calculations (hard)
+
+A pump delivers 350 gpm against a head of 60 ft and draws 6.2 hp at the pump shaft (brake horsepower). Use water horsepower = gpm × ft ÷ 3,960. What is the pump efficiency in percent, to one decimal place?
+
+- **A.** 116.9 %
+- **B.** 112.9 %
+- **C.** 85.5 %
+- **D.** 0.9 %
+
+**Answer: C. 85.5 %**
+
+Efficiency equals water horsepower divided by brake horsepower, times 100. Substitute the stated values: (350 × 60 ÷ 3960) ÷ 6.2 × 100 = 85.5 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 247: Chemical feed, pump and motor calculations (medium)
+
+A four-pole motor on 60 Hz power has a synchronous speed of 1,800 rpm. Its slip at full load is 3.0 percent. What is the full-load speed in rpm, to the nearest whole number?
+
+- **A.** 54 rpm
+- **B.** 1,854 rpm
+- **C.** 1,800 rpm
+- **D.** 1,746 rpm
+
+**Answer: D. 1,746 rpm**
+
+Full-load speed equals synchronous speed times one minus the slip fraction. Substitute the stated values: 1800 × (1-0.03) = 1,746 rpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 248: Chemical feed, pump and motor calculations (medium)
+
+A feed pump delivers 2.0 gallons per hour of a solution that weighs 11.0 lb per gallon. The solution is 25 percent active chemical by weight. Use 24 hours per day. How many pounds of active chemical are fed per day, to one decimal place?
+
+- **A.** 5.5 lb/day
+- **B.** 132.0 lb/day
+- **C.** 528.0 lb/day
+- **D.** 12.0 lb/day
+
+**Answer: B. 132.0 lb/day**
+
+Active chemical per day equals gallons per hour times 24 times weight per gallon times strength. Substitute the stated values: 2 × 24 × 11 × 0.25 = 132.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 249: Chemical feed, pump and motor calculations (easy)
+
+A lift station pump lifts liquid through a static height of 18.0 ft, and friction losses in the discharge pipe total 4.6 ft. What is the total dynamic head, in feet, to one decimal place?
+
+- **A.** 4.6 ft
+- **B.** 13.4 ft
+- **C.** 22.6 ft
+- **D.** 18.0 ft
+
+**Answer: C. 22.6 ft**
+
+Total dynamic head equals static head plus friction losses. Substitute the stated values: 18+4.6 = 22.6 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 250: Chemical feed, pump and motor calculations (easy)
+
+A motor is rated 15 kW. Use 1 hp = 0.746 kW. What is the rating in horsepower, to one decimal place?
+
+- **A.** 201.1 hp
+- **B.** 11.2 hp
+- **C.** 15.0 hp
+- **D.** 20.1 hp
+
+**Answer: D. 20.1 hp**
+
+Horsepower equals kilowatts divided by 0.746. Substitute the stated values: 15 ÷ 0.746 = 20.1 hp. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
