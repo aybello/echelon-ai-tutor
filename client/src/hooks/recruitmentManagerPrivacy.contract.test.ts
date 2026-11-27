@@ -1743,6 +1743,48 @@ describe("difficulty-first recruitment creation (Node, synthetic transport)", ()
     expect(h.create).not.toHaveBeenCalled();
   });
 
+  it.each(["mixed", "medium", "hard"])("keeps a removed selected topic visible and removable after fresh catalog replacement in %s", async mode => {
+    await readyDifficultyForm();
+    chooseMode(mode);
+    narrowTopics(true);
+    topicCheckbox("Safety").props.onCheckedChange(true);
+    render();
+    const oldForm = find(n => n.type === "form" && difficultyText(n).includes("Create assessment"));
+    const replacement = {
+      ...difficultyCatalog,
+      courses: [{
+        ...difficultyCatalog.courses[0],
+        difficultyCounts: { mixed: 18, medium: 10, hard: 0 },
+        modules: [difficultyCatalog.courses[0].modules[0]],
+      }],
+    };
+    await h.client.fetchQuery({
+      queryKey: key("catalog", { orgId }), queryFn: async () => replacement, staleTime: 0, retry: false,
+    });
+    await oldForm.props.onSubmit({ preventDefault: vi.fn() });
+    expect(h.create).not.toHaveBeenCalled();
+    await settle();
+    await submitDifficultyForm();
+    expect(h.create).not.toHaveBeenCalled();
+    expect(find(n => n.props.id === `recruitment-difficulty-${mode}`).props.checked).toBe(true);
+    const removed = topicCheckbox("Safety");
+    expect(removed.props.checked).toBe(true);
+    expect(removed.props.disabled).toBe(false);
+    expect(removed.props["aria-invalid"]).toBe(true);
+    narrowTopics(false);
+    narrowTopics(true);
+    expect(topicCheckbox("Safety").props.checked).toBe(true);
+    topicCheckbox("Safety").props.onCheckedChange(false);
+    render();
+    expect(nodes(tree).some(n => n.type === "label" && difficultyText(n).startsWith("Safety"))).toBe(false);
+    chooseMode("mixed");
+    topicCheckbox("Treatment").props.onCheckedChange(true);
+    render();
+    await submitDifficultyForm();
+    expect(h.create).toHaveBeenCalledOnce();
+    expect(h.create.mock.calls[0][0]).toMatchObject({ difficultyMode: "mixed", modules: ["Treatment"] });
+  });
+
   it("rejects a question count above the mode pool without easier replacements", async () => {
     await readyDifficultyForm();
     chooseMode("hard");

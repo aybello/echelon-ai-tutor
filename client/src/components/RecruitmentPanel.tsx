@@ -185,6 +185,12 @@ function RecruitmentPanelBody({
   const submittedModules = specificTopics ? modules : [];
   const selectedModules =
     course?.modules.filter(item => submittedModules.includes(item.name)) ?? [];
+  // Retain withdrawn draft topics only as removable options, never as usable pool counts.
+  const topicOptions = course ? [
+    ...course.modules,
+    ...modules.filter(name => !course.modules.some(item => item.name === name))
+      .map(name => ({ name, count: 0, difficultyCounts: { mixed: 0, medium: 0, hard: 0 } })),
+  ] : [];
   const invalidTopics = specificTopics && (
     submittedModules.length !== selectedModules.length ||
     selectedModules.some(item => matchingCount(item, difficultyMode) === 0)
@@ -454,7 +460,7 @@ function RecruitmentPanelBody({
                     <fieldset id="recruitment-topic-options" className="space-y-2">
                       <legend className="sr-only">Specific topics</legend>
                       <div className="max-h-72 overflow-y-auto rounded-xl border border-slate-200 p-2">
-                        {course.modules.map(module => {
+                        {topicOptions.map(module => {
                           const matches = matchingCount(module, difficultyMode);
                           const selected = modules.includes(module.name);
                           return (
