@@ -67,7 +67,7 @@ A. Settling heavy particles out of the water before filtration
 B. Moving gases between the water and the air
 C. Adding hardness to make the water taste better
 D. Leaving a lasting disinfectant residual in the pipes
-Key: C
+Key: B
 Explanation: Aeration brings water and air into close contact so gases can be added, such as oxygen, or stripped, such as hydrogen sulfide and carbon dioxide.
 
 Q9 [easy] (Aeration: Gas transfer and oxidation)
@@ -135,7 +135,7 @@ Explanation: Small particles carry like charges that keep them apart. A coagulan
 
 Q16 [easy] (Coagulation and Flocculation: Coagulants, mixing, jar testing and chemistry)
 Why is a coagulant added where the water is mixed very vigorously?
-A. It spreads through the water evenly within seconds
+A. It raises the temperature of the water before settling
 B. It breaks up the floc that has already formed in the basin
 C. It lets sludge settle faster inside the pipe
 D. It spreads through the water evenly within seconds
@@ -506,8 +506,8 @@ Q57 [easy] (Distribution: Distribution system water quality and hydraulics)
 What is the main reason for keeping a disinfectant residual in the distribution system?
 A. It removes iron that enters the mains from storage tanks
 B. It turns dissolved solids into floc that settles in the mains
-C. It keeps the pH at one fixed value in every service line
-D. It helps limit microbial regrowth as water travels through pipes
+C. It keeps the pH at one fixed value in each service line
+D. It helps limit microbial regrowth in the pipes
 Key: D
 Explanation: A residual that persists after the water leaves the plant gives some protection against regrowth in pipes and storage. The other options describe pH control, iron removal and settling, which a residual does not do.
 
@@ -541,7 +541,7 @@ Explanation: Head in an elevated tank sets the pressure in the zone it serves. T
 Q61 [hard] (Distribution: Distribution system water quality and hydraulics)
 A low-demand dead-end zone shows a water age near 10 days. Which change best reduces the water age there?
 A. Close the flushing hydrants during low-demand periods
-B. Turn over the storage and flush the zone so water moves through more often
+B. Turn over the storage and flush the zone more often
 C. Raise the chlorine dose at the plant so the residual lasts longer
 D. Lower the pH of the water entering the storage tank
 Key: B
@@ -552,7 +552,7 @@ What is the main job of a pump in a water treatment plant?
 A. It measures the flow passing through a basin
 B. It removes dissolved gases from the water before storage
 C. It mixes coagulant into the raw water at a steady rate
-D. It adds energy so water moves at the flow and head needed
+D. It adds energy so water can move through the system
 Key: D
 Explanation: A pump adds head so water can be moved through piping and process units. Mixing, gas removal and flow measurement are done by other equipment.
 
@@ -577,7 +577,7 @@ Explanation: A drive changes motor speed so the pump follows changing demand and
 Q65 [hard] (Equipment Evaluation and Operation: Pump and equipment performance)
 A pump still runs at its normal speed and discharge pressure, but its flow has fallen over several weeks. What check is most useful first?
 A. Replace the motor bearings and the impeller before any other check
-B. Compare readings with the pump curve, then check suction and impeller condition
+B. Compare readings with the pump curve, then check suction and impeller
 C. Assume the flow meter is wrong and wait for the next reading to confirm
 D. Raise the motor speed until the old flow returns, whatever the cause
 Key: B
@@ -587,7 +587,7 @@ Q66 [medium] (Equipment Evaluation and Operation: Pump and equipment performance
 Two identical pumps run in parallel against the same system head. Compared with one pump running alone, what does the pair do to total flow?
 A. Total flow stays the same while the head doubles
 B. Total flow doubles exactly at any head
-C. Total flow falls because each pump works against the other
+C. Total flow falls because each pump works against the other pump
 D. Total flow rises, but by less than double because head rises
 Key: D
 Explanation: Parallel pumps add flow at a given head, but on a system curve the extra flow raises friction loss, so the gain is less than double.
@@ -596,13 +596,13 @@ Q67 [easy] (Facility Operation and Maintenance: Preventive maintenance and chemi
 What is the main purpose of a preventive maintenance schedule at a water plant?
 A. To catch wear and failures before they interrupt treatment
 B. To keep equipment at its maximum rated speed
-C. To remove the need for operator rounds and logs
+C. To remove the need for operator rounds, logs and inspections
 D. To avoid calibrating analyzers during the year
 Key: A
 Explanation: Scheduled service finds wear, leaks and drift early, which prevents unplanned outages and water quality problems. It does not replace rounds, logs or calibration.
 
 Q68 [medium] (Facility Operation and Maintenance: Preventive maintenance and chemical feed reliability)
-A chemical feed pump delivers less than its setting. Which check is most likely to find the cause?
+A chemical feed pump delivers less than its setting. Which step is most likely to find the cause?
 A. Lower the flow set point on the controller so the pump slows
 B. Replace the chemical with a more concentrated product
 C. Check the suction line, check valves and the pump calibration
@@ -620,11 +620,11 @@ Key: C
 Explanation: A spare keeps treatment going while a failed unit is repaired, which protects water quality. Spares do not change the feed rate, the calibration or the records.
 
 Q70 [hard] (Facility Operation and Maintenance: Preventive maintenance and chemical feed reliability)
-A raw water intake screen clogs during a storm and the pumps lose suction. What is the most appropriate first response?
+An intake screen clogs during a storm and the pumps lose suction. What is the most appropriate first response?
 A. Raise the chemical feed rate to dissolve the debris
 B. Shut the intake and wait for the storm to pass
 C. Take the pumps out of service until the screen is replaced
-D. Clean the screen while another intake or bypass keeps water flowing
+D. Clean the screen while another intake keeps water flowing
 Key: D
 Explanation: A clogged screen starves the pumps, so cleaning it while flow is kept available is usually the best first step. Stopping the intake or adding chemical does not remove debris.
 
@@ -633,12 +633,12 @@ Why do plants keep daily equipment readings in a log?
 A. To spot trends that show a unit is starting to wear or drift
 B. To replace the need for a maintenance schedule
 C. To set the price of the water sold to customers
-D. To show the regulator the plant has no equipment faults
+D. To show the regulator the plant has no equipment faults or repairs
 Key: A
 Explanation: Trends in readings reveal wear, drift or rising load before a failure. A log does not prove that equipment is faultless, and it does not replace scheduled maintenance or set prices.
 
 Q72 [easy] (Iron and Manganese Control: Oxidation, filtration and sequestering of metals)
-Why is dissolved ferrous iron harder to remove than ferric iron?
+Why is ferrous iron harder to remove than ferric iron?
 A. It dissolves best in water above pH 10
 B. It stays dissolved until it is oxidized into particles
 C. It is heavier, so it sinks through the bed and passes the filters
@@ -659,7 +659,7 @@ Q74 [medium] (Iron and Manganese Control: Oxidation, filtration and sequestering
 What is the purpose of regenerating a greensand filter?
 A. To restore its oxidizing media so it keeps removing metals
 B. To add fresh sand grains that trap finer clay
-C. To make the media release chlorine into the water
+C. To make the media release chlorine into the treated water flow
 D. To raise the pH of the filtered water
 Key: A
 Explanation: Metals build up on greensand and use up its oxidizing capacity, so it is regenerated with an oxidant. Adding sand or changing the pH does not restore that capacity.

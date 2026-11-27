@@ -738,10 +738,10 @@ What is the main reason for keeping a disinfectant residual in the distribution 
 
 - **A.** It removes iron that enters the mains from storage tanks
 - **B.** It turns dissolved solids into floc that settles in the mains
-- **C.** It keeps the pH at one fixed value in every service line
-- **D.** It helps limit microbial regrowth as water travels through pipes
+- **C.** It keeps the pH at one fixed value in each service line
+- **D.** It helps limit microbial regrowth in the pipes
 
-**Answer: D. It helps limit microbial regrowth as water travels through pipes**
+**Answer: D. It helps limit microbial regrowth in the pipes**
 
 A residual that persists after the water leaves the plant gives some protection against regrowth in pipes and storage. The other options describe pH control, iron removal and settling, which a residual does not do.
 
@@ -789,11 +789,11 @@ Head in an elevated tank sets the pressure in the zone it serves. Treatment rate
 A low-demand dead-end zone shows a water age near 10 days. Which change best reduces the water age there?
 
 - **A.** Close the flushing hydrants during low-demand periods
-- **B.** Turn over the storage and flush the zone so water moves through more often
+- **B.** Turn over the storage and flush the zone more often
 - **C.** Raise the chlorine dose at the plant so the residual lasts longer
 - **D.** Lower the pH of the water entering the storage tank
 
-**Answer: B. Turn over the storage and flush the zone so water moves through more often**
+**Answer: B. Turn over the storage and flush the zone more often**
 
 Water age rises where water sits in low-demand dead ends and tanks. Moving fresh water through often helps more than a higher plant dose, which does not move any water.
 
@@ -804,9 +804,9 @@ What is the main job of a pump in a water treatment plant?
 - **A.** It measures the flow passing through a basin
 - **B.** It removes dissolved gases from the water before storage
 - **C.** It mixes coagulant into the raw water at a steady rate
-- **D.** It adds energy so water moves at the flow and head needed
+- **D.** It adds energy so water can move through the system
 
-**Answer: D. It adds energy so water moves at the flow and head needed**
+**Answer: D. It adds energy so water can move through the system**
 
 A pump adds head so water can be moved through piping and process units. Mixing, gas removal and flow measurement are done by other equipment.
 
@@ -841,11 +841,11 @@ A drive changes motor speed so the pump follows changing demand and uses less en
 A pump still runs at its normal speed and discharge pressure, but its flow has fallen over several weeks. What check is most useful first?
 
 - **A.** Replace the motor bearings and the impeller before any other check
-- **B.** Compare readings with the pump curve, then check suction and impeller condition
+- **B.** Compare readings with the pump curve, then check suction and impeller
 - **C.** Assume the flow meter is wrong and wait for the next reading to confirm
 - **D.** Raise the motor speed until the old flow returns, whatever the cause
 
-**Answer: B. Compare readings with the pump curve, then check suction and impeller condition**
+**Answer: B. Compare readings with the pump curve, then check suction and impeller**
 
 A fall in flow at a fixed speed and pressure usually points to a suction restriction or impeller wear. Comparing with the curve identifies the likely cause before any part is replaced or the speed is changed.
 
@@ -855,7 +855,7 @@ Two identical pumps run in parallel against the same system head. Compared with 
 
 - **A.** Total flow stays the same while the head doubles
 - **B.** Total flow doubles exactly at any head
-- **C.** Total flow falls because each pump works against the other
+- **C.** Total flow falls because each pump works against the other pump
 - **D.** Total flow rises, but by less than double because head rises
 
 **Answer: D. Total flow rises, but by less than double because head rises**
@@ -868,7 +868,7 @@ What is the main purpose of a preventive maintenance schedule at a water plant?
 
 - **A.** To catch wear and failures before they interrupt treatment
 - **B.** To keep equipment at its maximum rated speed
-- **C.** To remove the need for operator rounds and logs
+- **C.** To remove the need for operator rounds, logs and inspections
 - **D.** To avoid calibrating analyzers during the year
 
 **Answer: A. To catch wear and failures before they interrupt treatment**
@@ -877,7 +877,7 @@ Scheduled service finds wear, leaks and drift early, which prevents unplanned ou
 
 ### 68: Preventive maintenance and chemical feed reliability (medium)
 
-A chemical feed pump delivers less than its setting. Which check is most likely to find the cause?
+A chemical feed pump delivers less than its setting. Which step is most likely to find the cause?
 
 - **A.** Lower the flow set point on the controller so the pump slows
 - **B.** Replace the chemical with a more concentrated product
@@ -903,14 +903,14 @@ A spare keeps treatment going while a failed unit is repaired, which protects wa
 
 ### 70: Preventive maintenance and chemical feed reliability (hard)
 
-A raw water intake screen clogs during a storm and the pumps lose suction. What is the most appropriate first response?
+An intake screen clogs during a storm and the pumps lose suction. What is the most appropriate first response?
 
 - **A.** Raise the chemical feed rate to dissolve the debris
 - **B.** Shut the intake and wait for the storm to pass
 - **C.** Take the pumps out of service until the screen is replaced
-- **D.** Clean the screen while another intake or bypass keeps water flowing
+- **D.** Clean the screen while another intake keeps water flowing
 
-**Answer: D. Clean the screen while another intake or bypass keeps water flowing**
+**Answer: D. Clean the screen while another intake keeps water flowing**
 
 A clogged screen starves the pumps, so cleaning it while flow is kept available is usually the best first step. Stopping the intake or adding chemical does not remove debris.
 
@@ -921,7 +921,7 @@ Why do plants keep daily equipment readings in a log?
 - **A.** To spot trends that show a unit is starting to wear or drift
 - **B.** To replace the need for a maintenance schedule
 - **C.** To set the price of the water sold to customers
-- **D.** To show the regulator the plant has no equipment faults
+- **D.** To show the regulator the plant has no equipment faults or repairs
 
 **Answer: A. To spot trends that show a unit is starting to wear or drift**
 
@@ -929,7 +929,7 @@ Trends in readings reveal wear, drift or rising load before a failure. A log doe
 
 ### 72: Oxidation, filtration and sequestering of metals (easy)
 
-Why is dissolved ferrous iron harder to remove than ferric iron?
+Why is ferrous iron harder to remove than ferric iron?
 
 - **A.** It dissolves best in water above pH 10
 - **B.** It stays dissolved until it is oxidized into particles
@@ -959,7 +959,7 @@ What is the purpose of regenerating a greensand filter?
 
 - **A.** To restore its oxidizing media so it keeps removing metals
 - **B.** To add fresh sand grains that trap finer clay
-- **C.** To make the media release chlorine into the water
+- **C.** To make the media release chlorine into the treated water flow
 - **D.** To raise the pH of the filtered water
 
 **Answer: A. To restore its oxidizing media so it keeps removing metals**
@@ -981,14 +981,14 @@ A sequestrant binds iron so it stays dissolved and does not precipitate. It is t
 
 ### 76: Oxidation, filtration and sequestering of metals (hard)
 
-A well has 1.2 mg/L of iron and 0.2 mg/L of manganese. Aeration and filtration remove the iron well, but the manganese passes through. Which adjustment is the best choice?
+A well has 1.2 mg/L of iron and 0.2 mg/L of manganese. Aeration and a filter remove the iron well, but the manganese passes through. Which adjustment is the best choice?
 
 - **A.** Increase the air rate so the manganese escapes with the air stream
-- **B.** Add a stronger oxidant or raise pH before filtration to oxidize manganese
+- **B.** Add a stronger oxidant or raise pH before the filter
 - **C.** Stop filtering for a while so the manganese settles out by itself
 - **D.** Lower the pH so the manganese dissolves more readily in the filter feed
 
-**Answer: B. Add a stronger oxidant or raise pH before filtration to oxidize manganese**
+**Answer: B. Add a stronger oxidant or raise pH before the filter**
 
 Manganese oxidizes more slowly than iron, so it often needs a stronger oxidant or a higher pH, plus enough contact time before filtration. Lower pH and more air do not oxidize it.
 
@@ -999,7 +999,7 @@ What is the main purpose of a duplicate sample in laboratory work?
 - **A.** To correct the zero reading of the instrument
 - **B.** To replace a sample that was lost in transit
 - **C.** To check the precision of the sampling and analysis
-- **D.** To double the volume available for a second test
+- **D.** To double the volume available for a second test run on it
 
 **Answer: C. To check the precision of the sampling and analysis**
 
@@ -1022,7 +1022,7 @@ Free chlorine reacts with the sample and decays over time, so prompt analysis is
 
 Why is a blank sample run with a batch of samples?
 
-- **A.** To give the true concentration of the target substance
+- **A.** To give the true concentration of the target substance in each sample
 - **B.** To measure instrument drift across the working day
 - **C.** To show how much sample was lost during filtering
 - **D.** To reveal contamination from reagents, containers or handling
@@ -1038,7 +1038,7 @@ Why is a control standard with a known value analyzed in a batch?
 - **A.** To calibrate the flow meter at the plant
 - **B.** To confirm the method gives the expected result that day
 - **C.** To replace the need for sample preservation
-- **D.** To set the detention time for the batch of samples
+- **D.** To set the detention time for the entire batch of samples
 
 **Answer: B. To confirm the method gives the expected result that day**
 
@@ -1075,7 +1075,7 @@ One million gallons per day divided by 1,440 minutes per day is about 694 gpm. T
 What is the purpose of converting a dose in mg/L to pounds per day?
 
 - **A.** To size the mass a feeder must deliver across the plant flow
-- **B.** To change the dose into a percentage of the total hardness
+- **B.** To change the dose into a percentage of the total hardness value
 - **C.** To determine the water temperature in the basin
 - **D.** To find the color of the water after treatment
 
@@ -1085,7 +1085,7 @@ Feeders are sized by the mass they deliver, and mass depends on both the dose an
 
 ### 84: Units, flow, dose and ratios (medium)
 
-Two plants receive the same chemical dose in mg/L, but one plant treats double the water. What does the larger plant need each day?
+Two plants receive the same dose in mg/L, but one plant treats double the water. What does the larger plant need each day?
 
 - **A.** The same mass per day, since the dose is the same
 - **B.** Half the mass per day, since the water is more dilute
@@ -1129,7 +1129,7 @@ What does a well's specific capacity describe?
 - **A.** The total depth of the well casing
 - **B.** The yield per foot of drawdown at the pumping level
 - **C.** The rate at which sand enters the well screen
-- **D.** The number of wells in a field per square mile
+- **D.** The number of wells that can be placed in a field per square mile
 
 **Answer: B. The yield per foot of drawdown at the pumping level**
 
@@ -1137,10 +1137,10 @@ Specific capacity is the well yield divided by its drawdown, a practical measure
 
 ### 88: Source protection, drawdown and well yield (medium)
 
-Why do operators watch water levels in pumping and observation wells?
+Why do operators watch water levels in pumping and observation boreholes?
 
 - **A.** To check drawdown and spot interference between wells
-- **B.** To measure the turbidity of water leaving the field
+- **B.** To measure the turbidity of the water leaving the well field
 - **C.** To size the building that houses the pumps
 - **D.** To set the chlorine residual at each wellhead
 
@@ -1154,7 +1154,7 @@ What is the main role of a reservoir in a surface water system?
 
 - **A.** Holding water to balance supply and demand over time
 - **B.** Adding dissolved oxygen to the stored water
-- **C.** Removing hardness from the incoming source water
+- **C.** Removing hardness from the incoming source water before use
 - **D.** Filtering particles out of the raw water
 
 **Answer: A. Holding water to balance supply and demand over time**
@@ -1191,7 +1191,7 @@ When withdrawals exceed recharge, the storage drains and yields decrease over ti
 
 Why is hydrogen sulfide a particular hazard in enclosed spaces?
 
-- **A.** It is lighter than air and rises out of enclosed tanks
+- **A.** It is lighter than air and rises out of enclosed tanks and vaults
 - **B.** It is nontoxic, but it can explode at room temperature
 - **C.** It is toxic and heavier than air, so it collects in low pockets
 - **D.** It is a solid that clogs the air lines of a plant
@@ -1204,7 +1204,7 @@ Hydrogen sulfide is toxic and heavier than air, so it accumulates in low, enclos
 
 Why is access to a plant's chemical storage area restricted?
 
-- **A.** To keep the room warm so the chemicals stay in their best state
+- **A.** To keep the room warm so the chemicals stay in their best state over time
 - **B.** To make inventory counts easier for the bookkeeper
 - **C.** To keep a record of the water flow rate through the plant
 - **D.** To prevent unauthorized handling and protect people and the water supply
@@ -1215,7 +1215,7 @@ Controlled access protects staff and the water supply from accidental or deliber
 
 ### 94: Hazard recognition and security at treatment facilities (medium)
 
-Why is an oxygen-deficient vessel dangerous to a person who enters it?
+Why is an oxygen-deficient vessel dangerous to whoever enters it?
 
 - **A.** It raises the hardness of the air inside the space
 - **B.** A person can lose consciousness with little warning
@@ -1230,10 +1230,10 @@ Oxygen-deficient air can cause sudden collapse with little warning, which is a r
 
 Which situation presents the greatest hazard from a leak of gaseous chlorine?
 
-- **A.** A cylinder stored upright in a shaded yard away from people
+- **A.** A cylinder stored upright in a shaded yard away from the building
 - **B.** An open outdoor pad with a steady breeze blowing across it
 - **C.** A closed room with poor air movement and people working inside
-- **D.** A sealed cabinet that is kept locked and empty of any product
+- **D.** A closed room with an exhaust fan running and no one inside
 
 **Answer: C. A closed room with poor air movement and people working inside**
 
@@ -1246,7 +1246,7 @@ What is the main difference between safety and security at a water plant?
 - **A.** Safety protects people from hazards; security guards against deliberate harm and tampering
 - **B.** Security covers hazards to people, while safety covers intruders on site
 - **C.** They are the same program with two different names
-- **D.** Safety protects the water supply, while security protects the equipment and the grounds
+- **D.** Safety protects the water supply, while security protects the equipment, grounds and records
 
 **Answer: A. Safety protects people from hazards; security guards against deliberate harm and tampering**
 
@@ -1256,7 +1256,7 @@ Safety addresses accidental hazards to people and property, while security addre
 
 What is the purpose of a primary drinking water standard?
 
-- **A.** To define the design flow for a new treatment plant
+- **A.** To define the design flow and storage volume for a new treatment plant
 - **B.** To set the maximum level of a contaminant that protects health
 - **C.** To list the chemicals a plant must buy each year
 - **D.** To set the price a utility may charge its customers
@@ -1285,7 +1285,7 @@ An operator finds that a required monitoring result was not recorded on time. Wh
 - **A.** Remove the question about the entry from the logbook
 - **B.** Leave the entry blank and count the day as compliant
 - **C.** Report the gap as it occurred, and correct the process that caused it
-- **D.** Enter an estimated value from last week so the log looks complete
+- **D.** Enter an estimated value from last week so the log looks complete and tidy
 
 **Answer: C. Report the gap as it occurred, and correct the process that caused it**
 
@@ -1309,7 +1309,7 @@ A license shows the person met the stated training, experience and exam requirem
 Which is a common source of earthy or musty odor in surface water?
 
 - **A.** Algae and actinomycetes that produce geosmin and MIB
-- **B.** Ferric hydroxide solids settling out in the basin
+- **B.** Ferric hydroxide solids that settle out of the water in the basin
 - **C.** Dissolved calcium released from limestone bedrock
 - **D.** Residual chlorine leaving the plant in the mains
 
@@ -1332,14 +1332,14 @@ Activated carbon adsorbs dissolved organic odor compounds onto its surface. The 
 
 ### 103: Sources of taste and odor and their treatment (hard)
 
-A reservoir has a seasonal algae bloom, and a grassy odor reaches the tap. Which change best addresses the source?
+A reservoir has a seasonal bloom, and a grassy odor reaches the tap. Which change best addresses that source?
 
 - **A.** Lower the pH of the water held in the clearwell before distribution
-- **B.** Stop the coagulant feed so the particles stay dissolved in the water
-- **C.** Control the algae in the reservoir and remove odor compounds before filtration
+- **B.** Stop the coagulant feed so the particles stay dissolved in the water column
+- **C.** Control algae in the reservoir and remove odor compounds before filtration
 - **D.** Raise the chlorine dose at the tap to mask the odor from the algae
 
-**Answer: C. Control the algae in the reservoir and remove odor compounds before filtration**
+**Answer: C. Control algae in the reservoir and remove odor compounds before filtration**
 
 Algae produce the odor compounds, so controlling the bloom and removing those compounds before distribution addresses the cause. Masking the odor or changing pH at the end does not.
 
@@ -1350,7 +1350,7 @@ What does the threshold odor number describe?
 - **A.** The number of days that an odor persists in the reservoir water
 - **B.** How many times a sample must be diluted before its odor is just detectable
 - **C.** The pH at which the odor is strongest in the reservoir water
-- **D.** The count of odor-causing algae cells found in one liter of sample
+- **D.** The count of odor-causing algae cells found in one liter of raw sample water
 
 **Answer: B. How many times a sample must be diluted before its odor is just detectable**
 
@@ -1374,11 +1374,11 @@ Plants produce residuals such as sludge from sedimentation and solids washed off
 Why must filter backwash water be handled with care?
 
 - **A.** It is sterile because the filter removed the organisms and everything else
-- **B.** It is pure enough to discharge to a stream without any review at all
-- **C.** It can carry removed solids and organisms that affect the process if returned
+- **B.** It is pure enough to discharge to a stream without any review
+- **C.** It can carry removed solids and organisms back into the process
 - **D.** It holds mostly dissolved minerals and a few small suspended solids
 
-**Answer: C. It can carry removed solids and organisms that affect the process if returned**
+**Answer: C. It can carry removed solids and organisms back into the process**
 
 Backwash water carries removed solids and organisms, and returning it without review can add load to the treatment process. Filtration does not leave backwash water sterile or pure.
 
@@ -1402,9 +1402,9 @@ What does a recovery basin for filter wash water allow a plant to do?
 - **A.** Store chlorine solutions in the basin for later feeding
 - **B.** Raise the hardness of the wash water before it goes back to the plant
 - **C.** Dry the solids on site without any settling of the water
-- **D.** Let backwash solids settle so clearer water can be reviewed for return
+- **D.** Let backwash solids settle so clearer water can be reviewed
 
-**Answer: D. Let backwash solids settle so clearer water can be reviewed for return**
+**Answer: D. Let backwash solids settle so clearer water can be reviewed**
 
 Recovery basins settle the solids. Returning the clearer water is considered only after review, because it can carry organisms and chemicals back into the process. Storage and drying are different functions.
 
@@ -1415,9 +1415,9 @@ Why are sludge drying beds used at some plants?
 - **A.** To store chlorine solutions in the building for later feeds
 - **B.** To settle the raw water before it reaches the filters and clearwell
 - **C.** To raise the pH of the treated water before it reaches the mains
-- **D.** To let water drain and evaporate so the residuals are easier to handle
+- **D.** To let water drain and evaporate, leaving drier residuals
 
-**Answer: D. To let water drain and evaporate so the residuals are easier to handle**
+**Answer: D. To let water drain and evaporate, leaving drier residuals**
 
 Drying beds let water drain and evaporate, so residuals become drier and easier to haul. They do not store chemicals, settle finished water or change its pH.
 
@@ -1426,7 +1426,7 @@ Drying beds let water drain and evaporate, so residuals become drier and easier 
 In a conventional surface water plant, what is the usual order of treatment steps?
 
 - **A.** Disinfection, then coagulation, then filtration, then sedimentation
-- **B.** Sedimentation, then disinfection, then flocculation, then filtration
+- **B.** Sedimentation, then disinfection, then flocculation, then filtration, then storage
 - **C.** Coagulation and flocculation, sedimentation, filtration, then disinfection
 - **D.** Filtration, then disinfection, then sedimentation, then coagulation
 
@@ -1440,7 +1440,7 @@ Why is presedimentation used at some plants?
 
 - **A.** To raise the alkalinity of the source water before treatment
 - **B.** To remove heavy settleable solids before the main treatment units
-- **C.** To add disinfectant before the first chemical feed in the plant
+- **C.** To add disinfectant before the first chemical feed at the plant inlet
 - **D.** To replace filtration when the source water appears clear
 
 **Answer: B. To remove heavy settleable solids before the main treatment units**
@@ -1452,9 +1452,9 @@ Presedimentation takes out coarse, heavy particles so that the later basins and 
 Direct filtration skips the sedimentation basin. Compared with conventional treatment on the same raw water, what is the most important process consequence?
 
 - **A.** The filters take more solids, so coagulation must be tightly controlled
-- **B.** The plant needs no coagulant at all because the filters capture everything
+- **B.** The plant needs no coagulant because the filters capture everything
 - **C.** The chlorine is added before the coagulant instead of after
-- **D.** Hardness is removed by the filters, a job conventional treatment skips
+- **D.** Hardness is removed by the filters, a job that conventional treatment skips
 
 **Answer: A. The filters take more solids, so coagulation must be tightly controlled**
 
@@ -1789,14 +1789,14 @@ Efficiency = water horsepower divided by brake horsepower, times 100. Substitute
 
 A storage tank holds 6,000 gal of a chemical solution, and the plant uses 250 gal per day. How many days of supply does the tank hold?
 
-- **A.** 24 days
-- **B.** 2 days
-- **C.** 0 days
-- **D.** 25 days
+- **A.** 24.0 days
+- **B.** 240.0 days
+- **C.** 2.4 days
+- **D.** 250.0 days
 
-**Answer: A. 24 days**
+**Answer: A. 24.0 days**
 
-Days = tank volume divided by daily use. Substitute the stated values: 6000 ÷ 250 = 24 days. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+Days = tank volume divided by daily use. Substitute the stated values: 6000 ÷ 250 = 24.0 days. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 139: Preventive maintenance and chemical feed reliability (hard)
 
@@ -1829,7 +1829,7 @@ Pounds per day = iron in mg/L times flow in MGD times 8.34. Substitute the state
 A sample reads 0.30 mg/L before spiking. A spike of 0.50 mg/L is added, and the spiked sample then reads 0.78 mg/L. What is the percent recovery of the spike?
 
 - **A.** 156 %
-- **B.** 1 %
+- **B.** 10 %
 - **C.** 96 %
 - **D.** 48 %
 
@@ -1867,14 +1867,14 @@ Gallons = 0.785 times diameter squared times depth times 7.48. Substitute the st
 
 A well yields 600 gpm with 40 ft of drawdown at the pumping level. What is its specific capacity in gpm per ft of drawdown?
 
-- **A.** 15 gpm/ft
-- **B.** 24,000 gpm/ft
-- **C.** 640 gpm/ft
-- **D.** 0 gpm/ft
+- **A.** 15.00 gpm/ft
+- **B.** 24,000.00 gpm/ft
+- **C.** 640.00 gpm/ft
+- **D.** 0.07 gpm/ft
 
-**Answer: A. 15 gpm/ft**
+**Answer: A. 15.00 gpm/ft**
 
-Specific capacity = yield divided by drawdown. Substitute the stated values: 600 ÷ 40 = 15 gpm/ft. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+Specific capacity = yield divided by drawdown. Substitute the stated values: 600 ÷ 40 = 15.00 gpm/ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 145: Sources of taste and odor and their treatment (medium)
 
@@ -1932,9 +1932,9 @@ Gallons per day = gallons per minute times minutes per day. Substitute the state
 
 A 3.0 L jar receives 15 mL of a stock holding 4 mg of alum per mL. What is the jar dose in mg/L?
 
-- **A.** 60 mg/L
-- **B.** 0 mg/L
-- **C.** 5 mg/L
+- **A.** 5 mg/L
+- **B.** 4 mg/L
+- **C.** 60 mg/L
 - **D.** 20 mg/L
 
 **Answer: D. 20 mg/L**
