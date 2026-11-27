@@ -194,9 +194,20 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           request.query === event.query
         ) {
           const receivedMs = performance.now();
+          const next = event.query.state.data as RecruitmentCandidateView;
+          if (!mayAcceptReceipt(next)) {
+            // QueryClient already published this response. Restore only the
+            // current epoch's accepted DTO, without granting the older receipt.
+            const retained = authorizedFetch.current?.epoch === sessionEpoch.current
+              ? authorizedFetch.current.data
+              : viewRef.current;
+            if (retained) queryClient.setQueryData(queryKey, retained);
+            request = null;
+            return;
+          }
           authorizedFetch.current = {
             epoch: request.epoch,
-            data: event.query.state.data as RecruitmentCandidateView,
+            data: next,
             receivedMs,
           };
           invalidateCandidateReview(authorizedFetch.current.data);
@@ -398,18 +409,22 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     confirmationRef.current = confirmation;
     setRenderingConfirmation(confirmation);
   }
+  function mayAcceptReceipt(next: RecruitmentCandidateView) {
+    if (!live.current || next.assignmentId !== assignmentId) return false;
+    // Compare both visible and accepted-but-not-yet-rendered receipts. A sent
+    // mutation can settle after a newer read, including before passive merge.
+    const accepted = authorizedFetch.current?.epoch === sessionEpoch.current
+      ? authorizedFetch.current.data
+      : null;
+    return [viewRef.current, accepted].every(current => !current || !(
+      next.revision < current.revision ||
+      (next.revision === current.revision && next.serverNowMs < current.serverNowMs) ||
+      (isTerminal(current.status) && !isTerminal(next.status))
+    ));
+  }
   const mergeServerView = useCallback(
     (next: RecruitmentCandidateView, receivedMs?: number) => {
-      if (!live.current || next.assignmentId !== assignmentId) return;
-      const current = viewRef.current;
-      if (
-        current &&
-        (next.revision < current.revision ||
-          (next.revision === current.revision &&
-            next.serverNowMs < current.serverNowMs) ||
-          (isTerminal(current.status) && !isTerminal(next.status)))
-      )
-        return;
+      if (!mayAcceptReceipt(next)) return;
       invalidateCandidateReview(next);
       const monotonicMs = performance.now();
       clock.current.merge(next, monotonicMs);
@@ -484,6 +499,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     next: RecruitmentCandidateView,
     requestStartedMs: number
   ) {
+    if (!mayAcceptReceipt(next)) return false;
     const receivedMs = performance.now();
     // Own mutation responses are current receipts too. A manual setData below
     // must not leave the preceding fetch DTO as the action capability.
@@ -492,6 +508,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     mergeServerView(next, receivedMs);
     // The exact assignment cache receives only the server candidate DTO.
     utils.recruitment.candidateGet.setData({ assignmentId }, next);
+    return true;
   }
   const refreshServer = useCallback(
     async (reason: "retry" | "deadline" | "session" = "retry") => {
@@ -517,10 +534,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         );
         if (!live.current || epoch !== sessionEpoch.current) return;
         entryConsumed.current = true;
-        const receivedMs = performance.now();
-        authorizedFetch.current = { epoch, data: next, receivedMs };
-        clock.current.record(next, requestStartedMs, receivedMs);
-        mergeServerView(next, receivedMs);
+        if (!commitServerView(next, requestStartedMs)) return;
         setNeedsRefresh(false);
         setAuthRequired(false);
         setForbidden(false);
@@ -672,8 +686,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         consentVersion: RECRUITMENT_CONSENT_VERSION,
       });
       if (live.current && epoch === sessionEpoch.current) {
-        commitServerView(next, requestStartedMs);
-        setIndex(0);
+        if (commitServerView(next, requestStartedMs)) setIndex(0);
       }
     } catch (failure) {
       if (live.current && epoch === sessionEpoch.current) {
@@ -718,8 +731,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         revision: current.revision,
       });
       if (live.current && epoch === sessionEpoch.current) {
-        commitServerView(next, requestStartedMs);
-        setSaveState("saved");
+        const accepted = commitServerView(next, requestStartedMs);
+        setSaveState(accepted ? "saved" : "idle");
+        if (!accepted) setMessage("Newer saved answers are already available. Review them before continuing.");
       }
     } catch (failure) {
       if (!live.current || epoch !== sessionEpoch.current) return;

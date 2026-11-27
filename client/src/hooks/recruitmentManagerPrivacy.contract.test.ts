@@ -496,6 +496,11 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
   it("CONFLICT clears review, refreshes changed revision, and requires new explicit confirmation without replay", async () => {
     await readyDetail();
     const oldReview = reviewRevocation();
+    h.invalidates.mockImplementation((input: any, name: string) =>
+      name === "results"
+        ? h.client.invalidateQueries({ queryKey: key(name, input), exact: true })
+        : undefined
+    );
     h.revoke.mockRejectedValueOnce({ data: { code: "CONFLICT" } });
     h.results.mockResolvedValue({ assessment, results: [{ ...result, revision: 4 }] });
     oldReview.handler();
@@ -522,6 +527,68 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
       expectedRevision: 4,
     });
   });
+  it.each(["current", "cleared"] as const)(
+    "reconciles a deadline-finalizing CONFLICT into results and list counts with a %s review without replay",
+    async reviewState => {
+      const active = { ...result, status: "active", startedAtMs: 1000, revision: 3 };
+      const timedAssessment = { ...assessment, timeLimitMinutes: 5 };
+      h.list.mockResolvedValue([timedAssessment]);
+      h.results.mockResolvedValue({ assessment: timedAssessment, results: [active] });
+      await readyDetail();
+      expect(text(tree).replace(/\s+/g, " ")).toContain("0 completed / 1 invited");
+      const oldReview = reviewRevocation();
+      const mutation = deferred();
+      h.revoke.mockReturnValueOnce(mutation.promise);
+      oldReview.handler();
+      if (reviewState === "cleared") {
+        // A pre-conflict read can clear review without seeing the deadline write.
+        await h.client.fetchQuery({
+          queryKey: key("results", { orgId, assessmentId }),
+          queryFn: () => h.results({ orgId, assessmentId }),
+          staleTime: 0,
+          retry: false,
+        });
+        await settle();
+        expect(text(tree)).not.toContain("I confirm I want to revoke");
+      }
+      h.invalidates.mockImplementation((input: any, name: string) =>
+        h.client.invalidateQueries({ queryKey: key(name, input), exact: true })
+      );
+      // Revoke can commit timeout/submission evidence before returning CONFLICT.
+      const finalized = {
+        ...active,
+        status: "timed_out",
+        submittedAtMs: 301000,
+        revision: 4,
+      };
+      const completedAssessment = { ...timedAssessment, completed: 1 };
+      h.results.mockResolvedValue({ assessment: completedAssessment, results: [finalized] });
+      h.list.mockResolvedValue([completedAssessment]);
+      mutation.reject({ data: { code: "CONFLICT" } });
+      await settle();
+      expect(h.invalidates).toHaveBeenCalledWith({ orgId, assessmentId }, "results");
+      expect(h.invalidates).toHaveBeenCalledWith({ orgId }, "list");
+      expect(h.list).toHaveBeenCalledTimes(2);
+      expect(h.client.getQueryData(key("list", { orgId }))).toEqual([completedAssessment]);
+      expect(h.client.getQueryData(key("results", { orgId, assessmentId })).results[0]).toMatchObject(finalized);
+      expect(text(tree).replace(/\s+/g, " ")).toContain("1 completed / 1 invited");
+      expect(text(tree)).toContain("Time ended");
+      expect(text(tree)).not.toContain("Invitation revoked.");
+      expect(text(tree)).not.toContain("I confirm I want to revoke");
+      expect(nodes(tree).some(n => String(n.props["aria-label"]).startsWith("Revoke invitation"))).toBe(false);
+      if (reviewState === "cleared")
+        expect(text(tree)).not.toContain("Revocation was not retried.");
+      oldReview.checkbox.props.onCheckedChange(true);
+      oldReview.handler();
+      await settle();
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(h.revoke).toHaveBeenCalledWith({
+        orgId,
+        assignmentId: active.assignmentId,
+        expectedRevision: active.revision,
+      });
+    }
+  );
   it("reconciles late revoke success after results change while suppressing a stale success notice", async () => {
     await readyDetail();
     const oldReview = reviewRevocation();

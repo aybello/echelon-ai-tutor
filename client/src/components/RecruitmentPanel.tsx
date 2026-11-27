@@ -885,8 +885,9 @@ function RecruitmentDetail({
           setError(
             "The candidate's assessment changed. Refresh results, review the latest status and confirm revocation again. Revocation was not retried."
           );
-        // Reconcile even when a pending results read already cleared review.
-        void query.refetch();
+        // Deadline finalization may commit before CONFLICT; refresh list counts
+        // too, even when a pending results read already cleared review.
+        refreshSubmittedScope();
         return;
       }
       if (stillReviewed)

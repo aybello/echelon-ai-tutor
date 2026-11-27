@@ -1851,3 +1851,94 @@ describe("candidate explicit frozen-form withdrawal contract", () => {
     }
   );
 });
+
+
+describe("candidate receipt ordering before authorization publication", () => {
+  it.each(["revision", "server time", "terminal status"] as const)(
+    "preserves newer view, cache and action authority after an already-sent stale save by %s",
+    async ordering => {
+      await freshTimedQuery(fixture, 0);
+      const pending = deferred<RecruitmentCandidateView>();
+      h.save.mockReturnValueOnce(pending.promise);
+      nodes(render()).find(n => n.type === "radio-group").props.onValueChange("0");
+      await settle();
+      expect(h.save).toHaveBeenCalledTimes(1);
+      const newer: RecruitmentCandidateView = {
+        ...fixture,
+        revision: 9,
+        serverNowMs: fixture.serverNowMs + 2000,
+        answers: { q1: 1 },
+        status: ordering === "terminal status" ? "submitted" : "active",
+      };
+      publishFetchSuccess(newer);
+      render();
+      pending.resolve({
+        ...fixture,
+        revision: ordering === "revision" ? 8 : 9,
+        serverNowMs: ordering === "server time"
+          ? fixture.serverNowMs + 1000
+          : newer.serverNowMs,
+        answers: { q1: 0 },
+      });
+      await settle();
+      expect(h.client.getQueryData(key())).toEqual(newer);
+      expect(text(render())).not.toContain("Saved to server");
+      if (ordering === "terminal status") {
+        expect(text(render())).toContain("Assessment submitted");
+        expect(nodes(render()).some(n => n.type === "radio-group")).toBe(false);
+      } else {
+        button(render(), "Review submission").props.onClick();
+        h.submit.mockResolvedValueOnce({ ...newer, status: "submitted", revision: 10 });
+        button(render(), "Submit assessment").props.onClick();
+        await settle();
+        expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: 9 });
+      }
+    }
+  );
+
+  it("preserves a newer receipt before passive merge when an older sent save settles", async () => {
+    await freshTimedQuery(fixture, 0);
+    const pending = deferred<RecruitmentCandidateView>();
+    h.save.mockReturnValueOnce(pending.promise);
+    nodes(render()).find(n => n.type === "radio-group").props.onValueChange("0");
+    await settle();
+    const newer = { ...fixture, revision: 9, serverNowMs: fixture.serverNowMs + 2000 };
+    publishFetchSuccess(newer);
+    pending.resolve({ ...fixture, revision: 8 });
+    for (let i = 0; i < 25; i++) await Promise.resolve();
+    expect(h.client.getQueryData(key())).toEqual(newer);
+    await settle();
+    button(render(), "Review submission").props.onClick();
+    h.submit.mockResolvedValueOnce({ ...newer, status: "submitted", revision: 10 });
+    button(render(), "Submit assessment").props.onClick();
+    await settle();
+    expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: 9 });
+  });
+
+  it.each(["revision", "server time", "terminal status"] as const)(
+    "ignores older query receipt by %s without fencing current confirmation",
+    async ordering => {
+      const newer: RecruitmentCandidateView = {
+        ...fixture,
+        revision: 9,
+        serverNowMs: fixture.serverNowMs + 2000,
+        status: ordering === "terminal status" ? "submitted" : "active",
+      };
+      await freshTimedQuery(newer, 0);
+      if (newer.status === "active") button(render(), "Review submission").props.onClick();
+      const reviewed = render();
+      publishFetchSuccess({
+        ...fixture,
+        revision: ordering === "revision" ? 8 : 9,
+        serverNowMs: ordering === "server time" ? fixture.serverNowMs + 1000 : newer.serverNowMs,
+      });
+      expect(h.client.getQueryData(key())).toEqual(newer);
+      if (newer.status === "active") {
+        h.submit.mockResolvedValueOnce({ ...newer, status: "submitted", revision: 10 });
+        button(reviewed, "Submit assessment").props.onClick();
+        await settle();
+        expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: 9 });
+      } else expect(text(render())).toContain("Assessment submitted");
+    }
+  );
+});
