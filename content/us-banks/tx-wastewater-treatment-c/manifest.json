@@ -14,7 +14,7 @@
   "file": "questions/bank-402.json",
   "count": 402,
   "calculations": 118,
-  "sha256": "4bb99f490d469c6d4ea41deb547225b8462d32d328942d8fe27568b65636dbfc",
+  "sha256": "81747ee5cb5c59ae199038e5471ebddbd244010082a6394b3a778ad6d27d267e",
   "modules": {
     "Statutes and Rules": 20,
     "Permits": 21,
@@ -97,8 +97,8 @@
     ],
     "answerCues": {
       "conceptualCount": 284,
-      "longestRate": 0.21830985915492956,
-      "shortestRate": 0.17253521126760563,
+      "longestRate": 0.0880281690140845,
+      "shortestRate": 0.3028169014084507,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

@@ -3,12 +3,12 @@ Daily flows for five days are 0.82, 0.91, 0.76, 0.88 and 0.93 MGD. Find the arit
 A plant measured 27.9 million gallons of flow in a 30-day month. Find the average daily flow, rounded to two decimal places.|Total flow divided by the number of days|27.9/30|MGD|2|27.9,0.90,9.30|m
 A plant had 27 compliant days out of 31 days in a month. What percent of the days were compliant? Round to one decimal place.|Compliant days divided by days in the month, times 100|27/31*100|%|1|12.9,114.8,0.9|m
 @Permits|TCEQWW|Permit conditions and monitoring
-A permit limit is 15 mg/L of total suspended solids at a flow of 3.2 MGD. Assume 8.34 lb per gallon. What is the mass limit in pounds per day, rounded to the nearest pound?|Mass per day equals concentration times flow times 8.34|15*3.2*8.34|lb/day|0|48,4003,15|m
+A permit limit is 15 mg/L of total suspended solids at a flow of 3.2 MGD. Assume 8.34 lb per gallon. What is the mass limit in pounds per day, rounded to the nearest pound?|Mass per day equals concentration times flow times 8.34|15*3.2*8.34|lb/day|0|48,4003,3339|m
 A plant discharges 0.9 MGD with a BOD of 22 mg/L. Assume 8.34 lb per gallon. What is the BOD load in pounds per day, rounded to the nearest pound?|Mass per day equals concentration times flow times 8.34|0.9*22*8.34|lb/day|0|19.8,1651,198|m
 Out of 36 daily results, 2 exceed the daily maximum. What percent of results exceed the maximum? Round to one decimal place.|Exceedances divided by total results, times 100|2/36*100|%|1|94.4,18.0,0.1|m
 @Permits|TCEQWW|Permit changes and flow basis
 The plant adds 0.5 MGD of flow at a constant BOD of 18 mg/L. Assume 8.34 lb per gallon. What extra BOD load in pounds per day does the added flow bring, rounded to one decimal place?|Added flow times concentration times 8.34|0.5*18*8.34|lb/day|1|9.0,750.6,150.1|m
-A stream carrying 18 MGD receives 2.0 MGD of plant effluent. What is the stream-to-effluent dilution ratio, rounded to one decimal place?|Stream flow divided by effluent flow|18/2|ratio|1|0.1,36.0,2.0|e
+A stream carrying 18 MGD receives 2.0 MGD of plant effluent. What is the stream-to-effluent dilution ratio, rounded to one decimal place?|Stream flow divided by effluent flow|18/2|ratio|1|0.1,36.0,16.0|e
 A plant result of 12 mg/L is compared with a permit limit of 15 mg/L. What percent of the limit does the result reach? Round to one decimal place.|Result divided by limit, times 100|12/15*100|%|1|125.0,1.3,0.8|e
 The permit flow basis is 2.0 MGD and the plant now treats 2.6 MGD. What percent increase over the basis is this? Round to one decimal place.|Increase over basis divided by basis, times 100|(2.6-2.0)/2.0*100|%|1|130.0,0.6,23.1|m
 @Design Criteria|TCEQWW|Hydraulic and loading design
@@ -24,9 +24,9 @@ A pump room measures 10 ft wide, 12 ft long and 8 ft high. A fan moves 400 cubic
 A room measures 30 ft by 20 ft by 10 ft and needs 6 air changes per hour. What fan rate in cubic feet per minute is needed? Round to the nearest whole number.|Room volume times changes per hour, divided by 60 minutes per hour|30*20*10*6/60|cfm|0|36000,6000,10|m
 A closed room measures 12 ft by 15 ft by 9 ft. Air is supplied at 250 cubic feet per minute. How many air changes per hour does the room get? Round to one decimal place.|Airflow times 60 minutes per hour, divided by room volume|250*60/(12*15*9)|changes/hour|1|15000.0,0.1,6.5|h
 @Safety|TCEQWW|Chemicals and electrical hazards
-A safety shower delivers 30 gallons per minute for 15 minutes. How many gallons does one full run deliver?|Flow rate times time|30*15|gal|0|30,300,4500|e
+A safety shower delivers 30 gallons per minute for 15 minutes. How many gallons does one full run deliver?|Flow rate times time|30*15|gal|0|45,300,4500|e
 A chlorine cylinder holds 150 lb of liquid chlorine and uses 6 lb each day. Assume the same use every day. How many whole days does the cylinder last?|Cylinder contents divided by daily use|150/6|days|0|900,24,156|e
-A drum holds 55 gallons of sodium hypochlorite solution at 12 percent available chlorine. Assume the solution weighs 10.0 lb per gallon. How many pounds of available chlorine are in the drum? Round to one decimal place.|Volume times weight per gallon times strength as a fraction|55*10*0.12|lb|1|6.6,660.0,55.0|m
+A drum holds 55 gallons of sodium hypochlorite solution at 12 percent available chlorine. Assume the solution weighs 10.0 lb per gallon. How many pounds of available chlorine are in the drum? Round to one decimal place.|Volume times weight per gallon times strength as a fraction|55*10*0.12|lb|1|6.6,660.0,6600.0|m
 @Laboratory|TCEQCHART|Sampling and sample handling
 The instrument reads 3.6 mg/L of ammonia nitrogen for a sample diluted so that 1 part sample makes 10 parts total. What is the undiluted concentration in mg/L? Round to one decimal place.|Measured value times the dilution factor|3.6*10|mg/L|1|3.6,0.4,360.0|m
 A 50 mL sample is filtered, and the dried residue weighs 0.0125 g. Find the total suspended solids in mg/L, rounded to one decimal place.|Residue in mg divided by sample volume in liters|0.0125*1000/0.05|mg/L|1|12.5,25.0,2500.0|h
@@ -38,19 +38,19 @@ A duplicate pair reads 42.0 mg/L and 46.0 mg/L. The relative percent difference 
 @Management|TCEQWW|Staffing and training
 Four operators each work 40 hours a week for a 50-week year. How many operator hours are worked in the year?|Operators times hours per week times weeks per year|4*40*50|hours|0|160,1600,80000|e
 A training plan lists 12 operators, each completing 3 courses of 8 hours. What is the total operator training time in hours?|Operators times courses times hours per course|12*3*8|hours|0|96,24,2880|m
-Last month 6 operators logged 96 overtime hours in total. What is the average overtime per operator in hours? Round to one decimal place.|Total hours divided by number of operators|96/6|hours|1|0.1,96.0,1.6|e
+Last month 6 operators logged 96 overtime hours in total. What is the average overtime per operator in hours? Round to one decimal place.|Total hours divided by number of operators|96/6|hours|1|0.1,4.0,1.6|e
 @Management|TCEQWW|Budget, communication and planning
-A budget item costs 12,000 dollars and is spread evenly over 4 years. What is the annual cost in dollars?|Total cost divided by number of years|12000/4|dollars|0|12000,48000,300|e
+A budget item costs 12,000 dollars and is spread evenly over 4 years. What is the annual cost in dollars?|Total cost divided by number of years|12000/4|dollars|0|250,48000,300|e
 A plant plans to spend 2.4 percent of a 1,500,000 dollar budget on spare parts. How many dollars is that?|Budget times the percentage as a fraction|1500000*0.024|dollars|0|3600,360000,62500|m
 The backlog is 210 work orders. The crew completes 14 orders a day, and 5 new orders arrive each day. How many working days clear the backlog? Round to one decimal place.|Backlog divided by the net daily reduction, which is orders completed minus new orders|210/(14-5)|days|1|15.0,42.0,9.0|h
 @Collection|TCEQWW|Collection system components
 A sewer main is 24 inches in diameter. Using pi = 3.14, what is its cross-sectional area in square feet? Round to two decimal places.|Pi times radius squared, with radius equal to half the diameter|3.14*1*1|ft2|2|6.28,12.56,1.57|e
 Inflow from a storm gives 0.18 MGD for 6 hours. How many gallons enter during the storm? Round to the nearest gallon.|Daily flow in gallons times hours divided by 24|0.18*1000000*6/24|gal|0|180000,1080000,7500|m
-A sewer pipe carries 2.0 MGD. What is this flow in cubic feet per second? Use 1 MGD = 1.547 cfs. Round to one decimal place.|Flow in MGD times 1.547 cfs per MGD|2.0*1.547|cfs|1|2.0,1.3,30.9|h
+A sewer pipe carries 2.0 MGD. What is this flow in cubic feet per second? Use 1 MGD = 1.547 cfs. Round to one decimal place.|Flow in MGD times 1.547 cfs per MGD|2.0*1.547|cfs|1|3.0,1.3,30.9|h
 @Collection|TCEQWW|Collection system operation
 A lift station pump delivers 800 gpm against a total head of 60 ft. Use hydraulic horsepower equals gpm times feet divided by 3960. Round to one decimal place.|Flow in gpm times head in feet, divided by 3960|800*60/3960|hp|1|13.3,48000.0,121.2|m
 A wet well has a 6 ft by 8 ft footprint and is filled 6 ft deep. Use 7.48 gal per cubic foot. How many gallons does it hold? Round to the nearest gallon.|Footprint area times depth, times 7.48 gal per cubic foot|6*8*6*7.48|gal|0|288,4308,2402|m
-A 2,400 ft collection main has a manhole every 300 ft, including one at each end. How many manholes are on the main?|Length divided by spacing gives intervals, then add one for the end manhole|2400/300+1|manholes|0|8,10,2400|e
+A 2,400 ft collection main has a manhole every 300 ft, including one at each end. How many manholes are on the main?|Length divided by spacing gives intervals, then add one for the end manhole|2400/300+1|manholes|0|8,10,16|e
 @General Knowledge|TCEQWW|Water cycle and treatment purposes
 A plant treats 2.5 MGD. Using 1 MGD = 694.4 gpm, what is the flow in gallons per minute, rounded to the nearest gallon?|Flow in MGD times 694.4 gpm per MGD|2.5*694.4|gpm|0|694,173.6,17360|e
 A community of 8,000 residents generates 90 gallons of wastewater per person per day. What is the average daily wastewater flow in MGD? Round to two decimal places.|Population times gallons per person, converted to MGD|8000*90/1000000|MGD|2|7.20,0.09,720.00|e
@@ -86,17 +86,17 @@ A primary clarifier removes 35 percent of the BOD from an influent of 200 mg/L a
 @Ponds|TCEQWW|Pond types and operation
 A pond is 300 ft by 200 ft with a 6 ft average depth. Use 7.48 gal per cubic foot. What is its volume in million gallons, rounded to two decimal places?|Length times width times depth, times 7.48, divided by one million|300*200*6*7.48/1000000|MG|2|0.36,26.93,2.24|m
 A pond holds 2.7 million gallons and receives 0.9 MGD. What is the detention time in days, rounded to one decimal place?|Volume divided by flow|2.7/0.9|days|1|0.3,24.0,1.8|e
-A pond covers 6 acres to a depth of 4 ft. Use 1 acre = 43,560 square feet. What is its volume in cubic feet, rounded to the nearest cubic foot?|Area in square feet times depth|6*43560*4|ft3|0|261360,104544,43560|h
+A pond covers 6 acres to a depth of 4 ft. Use 1 acre = 43,560 square feet. What is its volume in cubic feet, rounded to the nearest cubic foot?|Area in square feet times depth|6*43560*4|ft3|0|261360,104544,87120|h
 @Ponds|TCEQWW|Pond loading and performance
 A pond of 12 acres receives 0.45 MGD of influent at 180 mg/L BOD. Use 8.34 lb per gallon. What is the BOD loading per acre in pounds per day? Round to one decimal place.|BOD load in lb/day divided by pond area in acres|0.45*180*8.34/12|lb/day/acre|1|675.5,112.6,0.6|m
-A pond receives 0.3 MGD and has a detention time of 45 days. What is its volume in million gallons, rounded to one decimal place?|Flow times detention time|0.3*45|MG|1|0.3,1.5,135.0|e
+A pond receives 0.3 MGD and has a detention time of 45 days. What is its volume in million gallons, rounded to one decimal place?|Flow times detention time|0.3*45|MG|1|0.0,1.5,135.0|e
 A pond has an influent of 240 mg/L BOD and removes 50 percent of it. The flow is 0.5 MGD. Use 8.34 lb per gallon. What is the effluent BOD load in pounds per day, rounded to the nearest pound?|Effluent concentration times flow times 8.34|240*0.5*0.5*8.34|lb/day|0|60,1000,5004|h
 @Trickling Filters|TCEQWW|Filter media and distribution
-A trickling filter is 80 ft in diameter and receives 1.6 MGD. Using area equals 3.14 times the radius squared, what is the hydraulic loading in gallons per day per square foot? Round to the nearest whole number.|Flow in gallons per day divided by filter area|1600000/(3.14*40*40)|gpd/ft2|0|80,31847,1600000|e
-A filter receives 0.8 MGD of influent with a recirculation ratio of 1.5. What is the total flow through the filter in MGD?|Influent flow times one plus the recirculation ratio|0.8*(1+1.5)|MGD|1|1.2,0.8,1.5|e
-A trickling filter is 6 ft deep and has a surface area of 2,000 square feet. Use 7.48 gal per cubic foot. What is the bulk media volume in gallons, counting the bed as solid? Round to the nearest gallon.|Area times depth, times 7.48 gallons per cubic foot|2000*6*7.48|gal|0|12000,2000,897600|m
+A trickling filter is 80 ft in diameter and receives 1.6 MGD. Using area equals 3.14 times the radius squared, what is the hydraulic loading in gallons per day per square foot? Round to the nearest whole number.|Flow in gallons per day divided by filter area|1600000/(3.14*40*40)|gpd/ft2|0|80,31847,12739|e
+A filter receives 0.8 MGD of influent with a recirculation ratio of 1.5. What is the total flow through the filter in MGD?|Influent flow times one plus the recirculation ratio|0.8*(1+1.5)|MGD|1|1.2,2.3,12.8|e
+A trickling filter is 6 ft deep and has a surface area of 2,000 square feet. Use 7.48 gal per cubic foot. What is the bulk media volume in gallons, counting the bed as solid? Round to the nearest gallon.|Area times depth, times 7.48 gallons per cubic foot|2000*6*7.48|gal|0|12000,1604,897600|m
 @Trickling Filters|TCEQWW|Loading and performance
-A trickling filter is 80 ft in diameter and 6 ft deep. It receives 150 lb of BOD per day. Using pi = 3.14, what is the organic loading in pounds of BOD per 1,000 cubic feet per day? Round to two decimal places.|Daily BOD divided by media volume in thousands of cubic feet|150/(3.14*40*40*6/1000)|lb/1000ft3/day|2|0.50,49.77,150.00|m
+A trickling filter is 80 ft in diameter and 6 ft deep. It receives 150 lb of BOD per day. Using pi = 3.14, what is the organic loading in pounds of BOD per 1,000 cubic feet per day? Round to two decimal places.|Daily BOD divided by media volume in thousands of cubic feet|150/(3.14*40*40*6/1000)|lb/1000ft3/day|2|0.50,49.77,1.24|m
 A trickling filter receives 0.4 MGD of influent at 180 mg/L BOD. Use 8.34 lb per gallon. What is the BOD load in pounds per day? Round to one decimal place.|Flow in MGD times BOD in mg/L times 8.34|0.4*180*8.34|lb/day|1|72.0,1200.9,6005.0|e
 A filter receives 0.8 MGD of influent and 0.6 MGD of recirculated flow. Its surface area is 5,026 square feet. What is the hydraulic loading in gallons per day per square foot? Round to the nearest whole number.|Total flow in gallons per day divided by surface area|(0.8+0.6)*1000000/5026|gpd/ft2|0|159,438,557|h
 @Activated Sludge|TCEQWW|Aeration and oxygen
@@ -105,7 +105,7 @@ Oxygen demand is 1.1 lb of oxygen per pound of BOD removed. The plant removes 80
 A plant receives 3.0 MGD of wastewater with 200 mg/L of BOD, and removes 90 percent of the BOD. It needs 1.1 lb of oxygen per pound of BOD removed. Use 8.34 lb per gallon. How many pounds of oxygen per day are needed? Round to the nearest pound.|Influent flow times BOD times removal fraction, times 8.34 times oxygen factor|3*200*0.9*8.34*1.1|lb/day|0|4504,5404,49540|h
 @Activated Sludge|TCEQWW|Solids and sludge age
 An aeration tank holds 0.4 MG at 2,800 mg/L MLSS with a volatile fraction of 0.75. Influent BOD is 180 mg/L at 2.0 MGD. What is the food-to-microorganism ratio, rounded to two decimal places? Use 8.34 lb per gallon.|Daily BOD load divided by pounds of MLVSS|(2*180*8.34)/(0.4*2800*0.75*8.34)|lb BOD/lb MLVSS-day|2|2.33,0.32,0.60|h
-Solids in the aeration tank and clarifier total 14,000 lb. The plant wastes 1,000 lb of solids per day. What is the sludge age in days, rounded to one decimal place?|Solids in the system divided by solids wasted per day|14000/1000|days|1|0.1,14000.0,7.0|e
+Solids in the aeration tank and clarifier total 14,000 lb. The plant wastes 1,000 lb of solids per day. What is the sludge age in days, rounded to one decimal place?|Solids in the system divided by solids wasted per day|14000/1000|days|1|0.1,28.0,7.0|e
 A settled sample from the aeration tank has an SV30 of 300 mL/L, and the MLSS is 2,500 mg/L. What is the sludge volume index, rounded to one decimal place? Use SVI equals SV30 times 1000, divided by MLSS.|SV30 times 1000, divided by MLSS|300*1000/2500|mL/g|1|0.3,8.3,1200.0|m
 @Process Control|TCEQWW|Monitoring and response
 Five dissolved oxygen readings are 4.2, 3.8, 3.6, 3.9 and 4.0 mg/L. What is their average in mg/L? Round to two decimal places.|Sum of the readings divided by the number of readings|(4.2+3.8+3.6+3.9+4.0)/5|mg/L|2|19.50,3.88,4.20|e
@@ -114,41 +114,41 @@ A feed pump delivers 30 mL per minute of a solution containing 15 g per liter. H
 @Process Control|TCEQWW|Trend interpretation
 Effluent BOD averaged 12 mg/L over four weeks, and last week it was 18 mg/L. What is the percent change from the average? Round to one decimal place.|Change divided by the average, times 100|(18-12)/12*100|%|1|33.3,150.0,6.0|e
 A plant treats 2.0 MGD of wastewater with a chlorine dose of 8 mg/L. Use 8.34 lb per gallon. What is the chlorine feed in pounds per day? Round to one decimal place.|Flow in MGD times dose in mg/L times 8.34|2.0*8*8.34|lb/day|1|16.0,1334.4,66.7|m
-The RAS flow is 0.9 MGD and the influent flow is 1.5 MGD. What is the RAS ratio in percent? Round to one decimal place.|RAS flow divided by influent flow, times 100|0.9/1.5*100|%|1|166.7,0.6,0.9|h
+The RAS flow is 0.9 MGD and the influent flow is 1.5 MGD. What is the RAS ratio in percent? Round to one decimal place.|RAS flow divided by influent flow, times 100|0.9/1.5*100|%|1|166.7,0.6,37.5|h
 @Disinfection|TCEQWW|Chlorine chemistry and dosing
 A chlorine dose of 8.0 mg/L meets a demand of 6.0 mg/L. What is the chlorine residual in mg/L? Round to one decimal place.|Dose minus demand|8.0-6.0|mg/L|1|14.0,0.8,48.0|e
 A plant treats 3.5 MGD and doses chlorine at 6 mg/L. Use 8.34 lb per gallon. How many pounds of chlorine per day are fed? Round to one decimal place.|Flow in MGD times dose in mg/L times 8.34|3.5*6*8.34|lb/day|1|21.0,1751.4,350.3|m
 Sodium hypochlorite is 12.5 percent available chlorine and weighs 10.0 lb per gallon. To supply 100 lb per day of available chlorine, how many gallons per day of solution are needed? Round to one decimal place.|Chlorine needed divided by pounds of available chlorine per gallon|100/(10*0.125)|gal/day|1|8.0,800.0,0.8|h
 @Disinfection|TCEQWW|Contact time and residual
-A chlorine residual of 1.5 mg/L is held for 30 minutes. What is the CT value in mg-min/L? Round to one decimal place.|Residual times contact time|1.5*30|mg-min/L|1|20.0,1.5,450.0|e
+A chlorine residual of 1.5 mg/L is held for 30 minutes. What is the CT value in mg-min/L? Round to one decimal place.|Residual times contact time|1.5*30|mg-min/L|1|20.0,0.8,450.0|e
 A contact basin holds 36,000 gallons. The flow is 1.2 MGD. What is the detention time in minutes? Round to one decimal place.|Volume divided by flow in gallons per minute|36000/(1200000/1440)|min|1|0.7,30.0,86.4|m
 A CT of 40 mg-min/L is required with a residual of 0.8 mg/L. How many minutes of contact time are needed? Round to one decimal place.|Required CT divided by residual|40/0.8|min|1|5.0,500.0,32.0|h
 @Sludge Digestion|TCEQWW|Digester operation
 A digester receives 12,000 gallons per day of sludge at 5 percent solids. Use 8.34 lb per gallon. What is the solids load in pounds per day, rounded to the nearest pound?|Gallons times 8.34 lb per gallon times solids fraction|12000*8.34*0.05|lb/day|0|600,50040,1001|m
 A digester holds 300,000 gallons and receives 12,000 gallons per day. What is the detention time in days? Round to one decimal place.|Volume divided by daily feed|300000/12000|days|1|2.5,250.0,12.5|e
-A digester receives 10,000 lb per day of volatile solids and destroys 40 percent. How many pounds per day of volatile solids remain? Round to the nearest pound.|Feed volatile solids times the remaining fraction|10000*(1-0.4)|lb/day|0|4000,16000,600|m
+A digester receives 10,000 lb per day of volatile solids and destroys 40 percent. How many pounds per day of volatile solids remain? Round to the nearest pound.|Feed volatile solids times the remaining fraction|10000*(1-0.4)|lb/day|0|4000,9600,600|m
 @Sludge Digestion|TCEQWW|Gas and solids reduction
 A digester destroys 4,000 lb per day of volatile solids and produces 0.9 cubic feet of gas per pound destroyed. How many cubic feet of gas are produced per day?|Volatile solids destroyed times gas yield|4000*0.9|ft3/day|0|4444,360,36000|e
 Dry solids are 1,200 lb per day at 5 percent solids. How many pounds per day of wet sludge are produced?|Dry solids divided by solids fraction|1200/0.05|lb/day|0|60,2400,240000|m
-A digester produces 25,000 cubic feet of gas per day with 60 percent methane. How many cubic feet of methane are produced per day?|Gas volume times methane fraction|25000*0.6|ft3/day|0|25000,41667,1500|h
+A digester produces 25,000 cubic feet of gas per day with 60 percent methane. How many cubic feet of methane are produced per day?|Gas volume times methane fraction|25000*0.6|ft3/day|0|10000,41667,1500|h
 @Biosolids Disposal|TCEQWW|Dewatering and handling
 Sludge flows at 6,000 gallons per day with 4 percent solids. Use 8.34 lb per gallon. How many pounds per day of dry solids are produced, rounded to the nearest pound?|Gallons times 8.34 lb per gallon times solids fraction|6000*8.34*0.04|lb/day|0|240,20016,500|m
 Dewatered cake of 2,002 lb per day of dry solids is at 22 percent solids. How many pounds per day of wet cake are produced, rounded to the nearest pound?|Dry solids divided by cake solids fraction|2002/0.22|lb/day|0|440,4551,91000|e
-A press uses 12 lb of polymer per dry ton of solids. The plant processes 2.0 dry tons per day. How many pounds of polymer are used per day? Round to one decimal place.|Polymer per dry ton times dry tons per day|12*2.0|lb/day|1|6.0,240.0,12.0|e
+A press uses 12 lb of polymer per dry ton of solids. The plant processes 2.0 dry tons per day. How many pounds of polymer are used per day? Round to one decimal place.|Polymer per dry ton times dry tons per day|12*2.0|lb/day|1|6.0,240.0,0.0|e
 @Biosolids Disposal|TCEQWW|Disposal and beneficial use
 A cake load is 9,400 lb per day. How many wet tons per day is this, using 2,000 lb per ton? Round to one decimal place.|Pounds per day divided by 2,000 lb per ton|9400/2000|tons/day|1|9.4,0.2,4700.0|e
-A hauler truck carries 25 wet tons of cake at 22 percent solids. How many dry tons does one load hold? Round to one decimal place.|Wet tons times solids fraction|25*0.22|dry tons|1|113.6,0.2,2.5|m
+A hauler truck carries 25 wet tons of cake at 22 percent solids. How many dry tons does one load hold? Round to one decimal place.|Wet tons times solids fraction|25*0.22|dry tons|1|113.6,5.0,2.5|m
 The plant sends three loads of 25 wet tons each week for 50 weeks. How many wet tons are hauled in the year?|Loads per week times tons per load times weeks|3*25*50|wet tons|0|75,375,37500|m
 @Effluent Disposal|TCEQWW|Discharge and dilution
-A plant discharges 3.0 MGD with 15 mg/L of BOD into a stream flowing 27 MGD with 2 mg/L of BOD. What is the mixed BOD in mg/L, assuming complete mixing? Round to one decimal place.|Flow-weighted average of the two concentrations|(3*15+27*2)/(3+27)|mg/L|1|3.7,2.0,15.0|h
+A plant discharges 3.0 MGD with 15 mg/L of BOD into a stream flowing 27 MGD with 2 mg/L of BOD. What is the mixed BOD in mg/L, assuming complete mixing? Round to one decimal place.|Flow-weighted average of the two concentrations|(3*15+27*2)/(3+27)|mg/L|1|3.7,8.5,1.7|h
 A dechlorination feed of sulfur dioxide must remove a residual of 0.5 mg/L at 4.0 MGD. Use 8.34 lb per gallon and a 1 to 1 ratio. How many pounds per day are needed? Round to one decimal place.|Residual times flow times 8.34 lb per gallon|0.5*4*8.34|lb/day|1|2.1,166.8,8.3|e
-A plant discharges 2 MGD, which is 3.094 cfs, into a stream of 5 cfs. What percent of the mixed flow is effluent? Round to one decimal place.|Effluent flow divided by total flow, times 100|2*1.547/(2*1.547+5)*100|%|1|61.8,161.5,3.1|h
+A plant discharges 2 MGD, which is 3.094 cfs, into a stream of 5 cfs. What percent of the mixed flow is effluent? Round to one decimal place.|Effluent flow divided by total flow, times 100|2*1.547/(2*1.547+5)*100|%|1|61.8,161.5,0.4|h
 @Effluent Disposal|TCEQWW|Chlorine residual and dechlorination
 A plant effluent flow is 1.2 MGD with a residual of 0.8 mg/L. Use 8.34 lb per gallon and a 1 to 1 dechlorination ratio. How many pounds per day of dechlorinant are needed? Round to one decimal place.|Residual times flow times 8.34 lb per gallon|1.2*0.8*8.34|lb/day|1|0.8,80.1,6.7|m
 A plant discharges 2 MGD with 13 mg/L of ammonia nitrogen. Use 8.34 lb per gallon. What is the ammonia-nitrogen load in pounds per day? Round to one decimal place.|Flow in MGD times concentration in mg/L times 8.34|2*13*8.34|lb/day|1|26.0,2168.4,108.4|e
 A plant at 2 MGD has a 2.0 mg/L residual, and dechlorination removes 90 percent of it. Use 8.34 lb per gallon. How many pounds per day of residual remain after removal? Round to one decimal place.|Residual times remaining fraction times flow times 8.34|2*(1-0.9)*2*8.34|lb/day|1|33.4,1.7,0.2|h
 @Math Problems|TCEQCHART|Unit conversion and flow
-A plant treats 4.2 MGD. Using 1 MGD = 694.4 gpm, what is the flow in gallons per minute, rounded to the nearest gallon?|Flow in MGD times 694.4 gpm per MGD|4.2*694.4|gpm|0|694,29165,291.6|e
+A plant treats 4.2 MGD. Using 1 MGD = 694.4 gpm, what is the flow in gallons per minute, rounded to the nearest gallon?|Flow in MGD times 694.4 gpm per MGD|4.2*694.4|gpm|0|3,29165,291.6|e
 A pump moves 500 gpm. Using 1 MGD = 694.4 gpm, what is the flow in MGD? Round to two decimal places.|Flow in gpm divided by 694.4 gpm per MGD|500/694.4|MGD|2|1.39,0.07,720.00|m
 A plant receives 0.6 MGD of influent, and 25 percent of that influent flow is recycled back to the head of the plant. What is the total flow at the head of the plant, including the recycle, in MGD? Round to two decimal places.|Influent flow plus the recycled share|0.6*(1+0.25)|MGD|2|0.15,0.45,2.40|h
 @Math Problems|TCEQCHART|Area, volume and dosage

@@ -90,3 +90,44 @@ What remains:
 4. Difficulty mix, per-topic counts and answer-position counts were not changed in this pass. The "Final counts" section above still applies.
 5. Dossier gate: section 7 of `docs/us-launch/state-dossiers/tx-operator-certification.md` (on `claude/tx-dossier`) requires the owner to accept Narrow before any candidate batch. That acceptance is not recorded.
 6. Not compared with the official TCEQ exam. Reviewer is a model, not a human expert.
+
+## Giveaway rewrite, final pass
+
+Status: still review-only. Not committed, not pushed, not imported, not published. The final GPT pass did not meet the threshold (see Result), so the change set is left uncommitted in the scratch clone.
+
+Scope: `source/conceptual.txt` and `source/calculations.txt`. Keys and stems are unchanged except one stem word (row 63: "between bottles" became "of the sample bottles"), which removed a word the stem shared with its key. Calculation expressions and keys are unchanged.
+
+Changed items against the original commit (09c214ee): 251 (227 conceptual rows, 24 calculation rows). 519 options were checked by the reviewer: 493 conceptual wrong options and 26 calculation wrong values.
+
+### What was done
+
+- Round 1 text (224 conceptual rows, 488 wrong options in `rewrites_final.py`; the earlier note said 485). Its GPT pass flagged 363 of 487 verdicts.
+- Round 2: 363 replacements were drafted for the flagged options. 327 were applied as drafted after mechanical checks (no absolute word, length 0.7 to 1.4 times the round-1 text, no 7+ letter word shared with the key, not a duplicate). 36 were written by hand: 35 because the draft failed a check, and 1 (row 239, option 1) because the draft reply had no text for that option.
+- Absolute words: 5 base options used "must" (rows 28, 55, 84 and 165, two options in 165). Replaced with "should", "will want", "is expected to", or no modal.
+- Calculations: the 24 rows that Gemini flagged (a wrong value repeated a number from the stem, or was not a plausible mistake) were rewritten. Each new wrong value comes from one stated mistake (for example 8.34 applied twice, 15 minutes read as 1.5, a missing area divide, a percent entered as a whole number). Keys were not changed. `python3 -I` recomputed all 118 keys from the stored expressions: 0 mismatches.
+- Round C also rewrote the options flagged in round B.
+
+### Review (gpt-6.2-sol only, chunks of 25, all 251 changed items each round)
+
+| Pass | Options flagged (of 519) | Changed items with a flag (of 251) |
+|---|---|---|
+| Round-1 text, before this pass (conceptual rows only) | 363 of 487 verdicts | 224 rows reviewed |
+| A: after round-2 and calculation fixes | 157 (30.2%) | 122 (48.6%) |
+| B: after round-A fixes | 110 (21.2%) | 91 (36.3%) |
+| C: after round-B fixes (final) | 102 (19.7%) | 91 (36.3%) |
+
+Result: the threshold of fewer than 10% of changed items was not met after three rounds. The reviewer's flags moved between rounds. Round B and C flagged some options that round A had passed, and some of its objections were that a distractor was "a valid reason", so a few distractors are arguably correct. Round A returned no verdict for 2 options, round B for 1, and round C for 2. Those are listed in `LEFT-FOR-HUMAN.md`.
+
+### Rule checks on the final text
+
+- Absolute or giveaway words (always, never, only, all, every, none, nothing, cannot, completely, entirely, solely, must, automatically, guarantee): 0 in any option.
+- Correct answer is the longest option in 8.8% of conceptual items (limit about 30%). It is the shortest in 30.3% (lint limit 35%).
+- Stem and key share no word of 7 or more letters: 0 rows.
+- Answer positions: A 100, B 101, C 100, D 101.
+- `lint`, `build` and `check` pass.
+
+### Remaining
+
+- 102 options flagged in the final pass, and 2 with no verdict: see `LEFT-FOR-HUMAN.md`. Keep, rewrite or drop each one with a TCEQ-trained reviewer.
+- The reviewer is a model, not a TCEQ-trained operator. Gemini was not run in this pass.
+- Key correctness was not re-audited in this pass; only the wrong options and the calculation values were changed.
