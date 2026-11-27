@@ -1783,6 +1783,27 @@ export const featureRequests = mysqlTable("feature_requests", {
 export type FeatureRequest = typeof featureRequests.$inferSelect;
 export type InsertFeatureRequest = typeof featureRequests.$inferInsert;
 
+/** Lightweight private product feedback, separate from ratings and public reviews. */
+export const productPulseResponses = mysqlTable("product_pulse_responses", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  /** Resolved only from the verified server session, never from browser input. */
+  email: varchar("email", { length: 320 }),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  pagePath: varchar("pagePath", { length: 256 }).notNull(),
+  source: mysqlEnum("source", ["dashboard", "quick10", "practice"]).notNull(),
+  response: mysqlEnum("response", ["found_what_needed", "got_stuck", "suggestion"]).notNull(),
+  comment: text("comment"),
+  /** Learner context is inferred conservatively from the verified session. */
+  context: mysqlEnum("context", ["learner", "manager", "manager_learner", "unknown"]).default("unknown").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, table => [
+  index("product_pulse_response_created_idx").on(table.response, table.createdAt),
+  index("product_pulse_course_created_idx").on(table.courseKey, table.createdAt),
+]);
+export type ProductPulseResponse = typeof productPulseResponses.$inferSelect;
+export type InsertProductPulseResponse = typeof productPulseResponses.$inferInsert;
+
 /**
  * Operator regulatory certificates tracked for an organization (for example
  * an Ontario Class 2 Water Treatment certificate). This is the municipality's

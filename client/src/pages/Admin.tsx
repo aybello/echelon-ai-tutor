@@ -216,7 +216,7 @@ export default function Admin() {
   const [leadFilter, setLeadFilter] = useState<LeadTriageFilter>("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
-  const [feedbackView, setFeedbackView] = useState<"ratings" | "requests">("ratings");
+  const [feedbackView, setFeedbackView] = useState<"ratings" | "requests" | "pulse">("ratings");
   const [feedbackPage, setFeedbackPage] = useState(1);
   const [feedbackRating, setFeedbackRating] = useState<"all" | "low">("all");
   const [recoveryPage, setRecoveryPage] = useState(1);
@@ -243,6 +243,7 @@ export default function Admin() {
   const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
   const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200, page: feedbackPage, rating: feedbackRating }, { enabled: user?.role === "admin" && activeTab === "feedback" });
+  const pulseQ = trpc.productPulse.list.useQuery({ limit: 200, page: feedbackPage, response: "all" }, { enabled: user?.role === "admin" && activeTab === "feedback" && feedbackView === "pulse" });
   const orgsQ = trpc.admin.listOrganizations.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "orgs" });
   const subscriptionsQ = trpc.admin.getSubscriptions.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "subscriptions" });
   const governanceStatsQ = trpc.admin.getQuestionGovernanceStats.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "questions" });
@@ -424,6 +425,7 @@ export default function Admin() {
     if (activeTab === "health") healthQ.refetch();
     if (activeTab === "feedback") {
       if (feedbackView === "requests") void utils.featureRequests.list.invalidate();
+      else if (feedbackView === "pulse") void pulseQ.refetch();
       else void feedbackQ.refetch();
     }
     if (activeTab === "insights") void utils.admin.gameActivity.invalidate();
@@ -1724,8 +1726,17 @@ export default function Admin() {
 
         {/* -- FEEDBACK TAB -- */}
         {activeTab === "feedback" && (<>
-          <div role="group" aria-label="Feedback type" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}><button type="button" className="admin-btn" aria-pressed={feedbackView === "ratings"} onClick={() => setFeedbackView("ratings")}>Ratings & reviews</button><button type="button" className="admin-btn" aria-pressed={feedbackView === "requests"} onClick={() => setFeedbackView("requests")}>Feature requests</button></div>
-          {feedbackView === "requests" ? <AdminFeatureRequests /> : (
+          <div role="group" aria-label="Feedback type" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}><button type="button" className="admin-btn" aria-pressed={feedbackView === "ratings"} onClick={() => setFeedbackView("ratings")}>Ratings & reviews</button><button type="button" className="admin-btn" aria-pressed={feedbackView === "requests"} onClick={() => setFeedbackView("requests")}>Feature requests</button><button type="button" className="admin-btn" aria-pressed={feedbackView === "pulse"} onClick={() => { setFeedbackView("pulse"); setFeedbackPage(1); }}>Product pulse</button></div>
+          {feedbackView === "requests" ? <AdminFeatureRequests /> : feedbackView === "pulse" ? (
+            <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+              <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", fontSize: 13, fontWeight: 700 }}>How Echelon is working <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{pulseQ.data?.length ?? 0} entries on this page</span></div>
+              {pulseQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+              {pulseQ.error && <div role="alert" className="admin-panel-error">Product pulse could not be loaded. Use Refresh to try again.</div>}
+              {pulseQ.data?.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No product pulse responses yet.</div>}
+              {pulseQ.data && pulseQ.data.length > 0 && <div style={{ display: "flex", flexDirection: "column" }}>{pulseQ.data.map(row => <div key={row.id} className="admin-row" style={{ padding: "16px 20px", borderTop: "1px solid rgba(0,0,0,0.04)" }}><div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}><strong>{row.response === "found_what_needed" ? "Found what they needed" : row.response === "got_stuck" ? "Got stuck" : "Suggestion"}</strong><span style={{ padding: "3px 10px", borderRadius: 100, background: "#DBEAFE", color: "#1D4ED8", fontSize: 10, fontWeight: 700 }}>{row.courseKey}</span><span style={{ fontSize: 10, color: "#475569" }}>{formatDate(row.createdAt)}</span></div>{row.comment && <div style={{ marginTop: 8, fontSize: 13, color: "#64748B", lineHeight: 1.5 }}>&quot;{row.comment}&quot;</div>}<div style={{ marginTop: 6, fontSize: 11, color: "#64748B" }}>{row.email ?? (row.userId ? `User #${row.userId}` : "Anonymous")} · {row.source}</div></div>)}</div>}
+              <nav aria-label="Product pulse pagination" style={{ padding: "12px 20px", display: "flex", alignItems: "center", gap: 12 }}><button type="button" className="admin-btn" disabled={feedbackPage === 1 || pulseQ.isFetching} onClick={() => setFeedbackPage(page => Math.max(1, page - 1))}>Previous</button><span aria-live="polite">Page {feedbackPage}</span><button type="button" className="admin-btn" disabled={pulseQ.isFetching || !!pulseQ.error || pulseQ.data?.length !== 200 || feedbackPage >= 1_000_000} onClick={() => setFeedbackPage(page => page + 1)}>Next</button></nav>
+            </div>
+          ) : (
           <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>

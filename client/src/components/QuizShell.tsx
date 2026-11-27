@@ -23,6 +23,7 @@ import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
 import { SuggestionInvitation } from "@/components/FeatureSuggestion";
+import ProductPulse from "@/components/ProductPulse";
 import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 import { Link, useSearch } from "wouter";
 import PracticeSessionRail from "@/components/PracticeSessionRail";
@@ -590,6 +591,7 @@ export default function QuizShell({
             </p>
             {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" forceDocumentNavigation />}
             {timedSeconds <= 0 && <SuggestionInvitation courseKey={canonicalCourse?.courseKey ?? examType ?? "general"} source="practice" />}
+            {timedSeconds <= 0 && <ProductPulse courseKey={canonicalCourse?.courseKey ?? examType ?? "general"} source="practice" />}
             {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
             {/* Every learner can share an honest review, independent of quiz score. */}
             {shouldShowReviewPrompt() && (
