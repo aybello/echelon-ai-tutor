@@ -1,0 +1,24 @@
+{
+  "id": "tx-wastewater-treatment-c",
+  "bankKey": "tx-wastewater-treatment-c",
+  "itemPrefix": "TX-C-WW",
+  "version": "2026-11-27-v1",
+  "state": "TX",
+  "stream": "wastewater-treatment",
+  "label": "Texas Wastewater Treatment Plant Operator, Class C (TCEQ), need-to-know practice bank (Narrow)",
+  "startNumber": 1,
+  "count": 402,
+  "calcCount": 118,
+  "purpose": "Practice questions aligned to the TCEQ need-to-know categories for the Class C wastewater treatment plant operator. Scope is Narrow: the 20 TCEQ wastewater treatment categories only, with Class C depth (more calculations, process-control reasoning and troubleshooting per category). Practice questions aligned to the TCEQ need-to-know categories; not the official exam blueprint. TCEQ publishes no exam weights and no question counts. This bank claims no weights and no counts, and its per-category numbers are authoring choices, not exam proportions. It contains no state rule citations, no permit limits, no set points and no numerical design criteria.",
+  "reviewIntro": "402 original practice questions: 284 conceptual and 118 calculations, in US customary units. Scope is Narrow. The questions are aligned to the 20 TCEQ wastewater treatment need-to-know categories for the Class C level. They are practice questions aligned to the TCEQ need-to-know categories; not the official exam blueprint. No weights or counts are claimed. Calculations state every assumption; hypothetical values in stems are not TCEQ limits. Class A and B, collection classes, and water classes are excluded.",
+  "sources": {
+    "TCEQWW": [
+      "TCEQ, Wastewater Operators: What Applicants for Licensing Need to Know (Class C need-to-know categories; page last modified 2026-03-17)",
+      "https://www.tceq.texas.gov/licensing/licenses/wastewaterntk.html"
+    ],
+    "TCEQCHART": [
+      "TCEQ, Requirements for a Wastewater Treatment License (chart revised 5/30/2025; Class C core and elective courses)",
+      "https://www.tceq.texas.gov/downloads/licensing/occupational/requirements/requirements-for-a-wastewater-treatment-license.pdf/@@download/file/WW_License_Chart_Rev1_05302025.pdf"
+    ]
+  }
+}

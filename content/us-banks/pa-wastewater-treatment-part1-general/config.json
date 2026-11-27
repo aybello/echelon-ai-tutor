@@ -1,0 +1,65 @@
+{
+  "id": "pa-wastewater-treatment-part1-general",
+  "bankKey": "pa-wastewater-treatment-part1-general",
+  "itemPrefix": "PA-WWT-P1",
+  "version": "2026-11-27-v1",
+  "state": "PA",
+  "stream": "wastewater-treatment",
+  "label": "Pennsylvania Wastewater Treatment: Part I General Examination component only",
+  "startNumber": 1,
+  "count": 122,
+  "calcCount": 29,
+  "purpose": "Practice questions for the common Part I General Examination of the Pennsylvania wastewater treatment certification route only. Not a complete preparation for any Part II treatment-technology examination (activated sludge, fixed film, treatment ponds and lagoons), the wastewater master examination, the Class E / Subclass 4 collection examination, or the laboratory supervisor examination. Not a certificate. Original items in US units. Not an official exam blueprint.",
+  "reviewIntro": "122 original practice questions for the Part I General Examination component of the Pennsylvania wastewater treatment route: 93 conceptual and 29 calculations, in US customary units. Scope follows the narrowed dossier (pa-wastewater-treatment, Narrow). Passing a Part I practice set does not certify anyone and does not cover any Part II examination.",
+  "scopeDecision": "Narrow. Bank size is 100, not the standard 250, because the dossier supports only the common Part I General Examination and only four high-level objective areas. Coverage is limited to the DEP Part I module set: Modules 1, 4, 5, 6, 7, 9, 11, 12, 13, 25, 28 and 29. Excluded on purpose: Module 30 (safety, because the dossier excludes worksite safety instructions and emergency response), industrial pretreatment (the dossier names it as a Part I area, but DEP's current Part I module mapping does not list it, so it is left out until the two are reconciled), Part II technology content, master and collection content, numeric regulatory limits, reporting deadlines, operating setpoints, process-control directions, and laboratory methods.",
+  "sources": {
+    "PADEPM1": [
+      "Pennsylvania DEP Training Module 1: Introduction to Wastewater Treatment (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM4": [
+      "Pennsylvania DEP Training Module 4: Fundamentals of Wastewater Treatment (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM5": [
+      "Pennsylvania DEP Training Module 5: Disinfection and Chlorination (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM6": [
+      "Pennsylvania DEP Training Module 6: Solids Handling and Disposal (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM7": [
+      "Pennsylvania DEP Training Module 7: Basics of Chemical Feed Systems (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM9": [
+      "Pennsylvania DEP Training Module 9: Basics of Pumps and Hydraulics (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM11": [
+      "Pennsylvania DEP Training Module 11: Maintenance (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM12": [
+      "Pennsylvania DEP Training Module 12: Laboratory Overview (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM13": [
+      "Pennsylvania DEP Training Module 13: General Administration of Wastewater Treatment Plants (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM25": [
+      "Pennsylvania DEP Training Module 25: Introduction to Flowmeters (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM28": [
+      "Pennsylvania DEP Training Module 28: Overview of Basic Math (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ],
+    "PADEPM29": [
+      "Pennsylvania DEP Training Module 29: General Chemistry (Part 1 General Exam)",
+      "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/operator-certification-training/department-training-modules"
+    ]
+  }
+}
