@@ -45,7 +45,7 @@ Alkalinity is the buffering capacity of the water, mostly from bicarbonate, carb
 
 ### 4: Raw water quality and seasonal change (medium)
 
-Which pair of dissolved minerals is mainly responsible for the hardness of a water supply?
+Which pair of minerals is mainly responsible for the hardness of a water supply?
 
 - **A.** Chloride and sulfate from road salt and rock
 - **B.** Calcium and magnesium dissolved from rock
@@ -86,7 +86,7 @@ Runoff brings in solids and dilutes the mineral content that gives alkalinity an
 
 Why do operators of a deep reservoir intake watch for the lake turning over in autumn?
 
-- **A.** Algae growth stops, so turbidity falls near zero at all depths
+- **A.** Algae growth stops, so turbidity falls near zero throughout the water column
 - **B.** Cooling surface water strips dissolved minerals out of the lake
 - **C.** Bottom water mixes upward and may bring iron, manganese and odors
 - **D.** Alkalinity is lost from the water as the layers mix together
@@ -253,7 +253,7 @@ Alum reacts with alkalinity when it forms floc and releases acid, so alkalinity 
 
 ### 20: Coagulants, mixing, jar testing and chemistry (medium)
 
-Low-alkalinity raw water cannot hold its pH when alum is fed. What is a common correction?
+Raw water with little natural buffering cannot hold its pH when alum is fed. What is a common correction?
 
 - **A.** Add acid to lower the pH even further for floc growth
 - **B.** Add lime or soda ash to supply alkalinity
@@ -292,7 +292,7 @@ Quiet water with a long path lets suspended solids sink to the floor, which redu
 
 ### 23: Settling, detention time, overflow rate and sludge (easy)
 
-What does detention time describe for a basin?
+What does detention time describe for a settling unit?
 
 - **A.** The time the coagulant takes to dissolve in the feed tank
 - **B.** The time needed for a jar test to finish a full run
@@ -357,7 +357,7 @@ The shallow channels give particles only a short fall to a surface, so the basin
 
 ### 28: Settling, detention time, overflow rate and sludge (hard)
 
-Flow to a rectangular settling basin doubles and nothing else changes. What happens?
+Flow to a rectangular settling unit doubles and nothing else changes. What happens?
 
 - **A.** Overflow rate doubles and detention time also doubles
 - **B.** Overflow rate doubles and fine floc may escape the basin
@@ -424,18 +424,18 @@ Right after cleaning, the bed has not yet regained good particle capture, so the
 
 What does a slow sand filter depend on for much of its cleaning action?
 
-- **A.** A living biological layer at the top of the sand
+- **A.** A living biological layer at the top of the bed
 - **B.** Coagulant fed directly onto the bed surface
 - **C.** A high rate of flow that forces particles through
 - **D.** Strong backwash flows that lift the whole bed
 
-**Answer: A. A living biological layer at the top of the sand**
+**Answer: A. A living biological layer at the top of the bed**
 
 Slow sand filters run at low rates with no chemical feed. A biologically active layer on the surface traps particles and breaks down organisms.
 
 ### 34: Rapid sand, backwash, slow sand and membranes (medium)
 
-How do low-pressure membrane filters mainly remove particles from water?
+How do low-pressure membrane filters mainly remove suspended matter from water?
 
 - **A.** By letting them settle in quiet channels
 - **B.** By reacting them with a coagulant on the surface
@@ -461,7 +461,7 @@ Particles slipping through while head loss stays low point to poor pretreatment 
 
 ### 36: Chlorine, contact time, residual and byproducts (easy)
 
-What is a disinfectant residual?
+What is meant by a residual in chlorinated water?
 
 - **A.** The chemical left in the supply cylinder after a feed
 - **B.** The amount of chemical measured out by the feed pump
@@ -786,7 +786,7 @@ Head in an elevated tank sets the pressure in the zone it serves. Treatment rate
 
 ### 61: Distribution system water quality and hydraulics (hard)
 
-A low-demand dead-end zone shows a water age near 10 days. Which change best reduces the water age there?
+A low-demand dead-end area shows a water age near 10 days. Which change best reduces the water age there?
 
 - **A.** Close the flushing hydrants during low-demand periods
 - **B.** Turn over the storage and flush the zone more often
@@ -838,7 +838,7 @@ A drive changes motor speed so the pump follows changing demand and uses less en
 
 ### 65: Pump and equipment performance (hard)
 
-A pump still runs at its normal speed and discharge pressure, but its flow has fallen over several weeks. What check is most useful first?
+A unit still runs at its normal speed and discharge pressure, but its flow has fallen over several weeks. What check is most useful first?
 
 - **A.** Replace the motor bearings and the impeller before any other check
 - **B.** Compare readings with the pump curve, then check suction and impeller
@@ -1181,9 +1181,9 @@ A well field is pumped harder than its aquifer recharges. What is the likely lon
 - **A.** Yield increases because the sand compacts around the screen
 - **B.** The aquifer recharges faster the longer the pumps run
 - **C.** Water levels rise and the water becomes softer over time
-- **D.** Water levels decline over time and well yields fall
+- **D.** Water levels decline over time and yields fall
 
-**Answer: D. Water levels decline over time and well yields fall**
+**Answer: D. Water levels decline over time and yields fall**
 
 When withdrawals exceed recharge, the storage drains and yields decrease over time. Pumping more does not add recharge to the aquifer.
 
@@ -1336,12 +1336,12 @@ A reservoir has a seasonal bloom, and a grassy odor reaches the tap. Which chang
 
 - **A.** Lower the pH of the water held in the clearwell before distribution
 - **B.** Stop the coagulant feed so the particles stay dissolved in the water column
-- **C.** Control algae in the reservoir and remove odor compounds before filtration
+- **C.** Control algae growth and remove odor compounds before filtration
 - **D.** Raise the chlorine dose at the tap to mask the odor from the algae
 
-**Answer: C. Control algae in the reservoir and remove odor compounds before filtration**
+**Answer: C. Control algae growth and remove odor compounds before filtration**
 
-Algae produce the odor compounds, so controlling the bloom and removing those compounds before distribution addresses the cause. Masking the odor or changing pH at the end does not.
+Algae produce the odor compounds, so controlling the bloom and removing those compounds before filtration addresses the cause. Masking the odor or changing pH at the end does not.
 
 ### 104: Sources of taste and odor and their treatment (medium)
 
@@ -1477,12 +1477,12 @@ A clearwell stores finished water for the pumps, and its volume can provide cont
 
 What is the purpose of a pilot study before a process change is made at full scale?
 
-- **A.** To test the new process on the actual water before a full design
+- **A.** To test the new process on the actual water ahead of design
 - **B.** To remove the need for operator training on the new process type
 - **C.** To choose the color of the new basin's walls and coatings
 - **D.** To avoid the need for jar tests in the final design of the plant
 
-**Answer: A. To test the new process on the actual water before a full design**
+**Answer: A. To test the new process on the actual water ahead of design**
 
 A pilot test shows how a process performs on the actual water, which reduces the risk of costly design or operating surprises. It does not remove training or jar testing needs.
 
@@ -1566,7 +1566,7 @@ Gallons = length times width times depth times 7.48. Substitute the stated value
 
 ### 121: Basin volume, detention time, overflow rate and weir loading (medium)
 
-A basin holds 350,000 gal and receives 2.1 MGD. Use 24 hr per day. What is the detention time in hours?
+A basin holds 350,000 gal and receives 2.1 MGD. Use 1 MGD = 1,000,000 gal per day and 24 hr per day. What is the detention time in hours?
 
 - **A.** 144.0 hr
 - **B.** 0.2 hr
@@ -1579,7 +1579,7 @@ Detention time in hours = volume in gal divided by flow in gal per day times 24.
 
 ### 122: Basin volume, detention time, overflow rate and weir loading (hard)
 
-A circular clarifier is 50 ft in diameter and treats 1.5 MGD. Use area = 0.785 x D x D. What is the surface overflow rate in gpd/ft2?
+A circular clarifier is 50 ft in diameter and treats 1.5 MGD. Use 1 MGD = 1,000,000 gal per day and area = 0.785 x D x D. What is the surface overflow rate in gpd/ft2?
 
 - **A.** 0.8 gpd/ft2
 - **B.** 1,962.5 gpd/ft2
@@ -1592,7 +1592,7 @@ Overflow rate = flow in gpd divided by surface area. Substitute the stated value
 
 ### 123: Basin volume, detention time, overflow rate and weir loading (hard)
 
-A circular clarifier 40 ft in diameter has an effluent weir around its full circumference and treats 1.0 MGD. Use circumference = 3.14 x D. What is the weir loading in gpd/ft?
+A circular clarifier 40 ft in diameter has an effluent weir around its full circumference and treats 1.0 MGD. Use 1 MGD = 1,000,000 gal per day and circumference = 3.14 x D. What is the weir loading in gpd/ft?
 
 - **A.** 7,961.8 gpd/ft
 - **B.** 25,000.0 gpd/ft
@@ -1605,7 +1605,7 @@ Weir loading = flow in gpd divided by weir length. Substitute the stated values:
 
 ### 124: Basin volume, detention time, overflow rate and weir loading (medium)
 
-A rectangular clarifier is 80 ft long and 25 ft wide and treats 1.6 MGD. What is the surface overflow rate in gpd/ft2 (surface area = length times width)?
+A rectangular clarifier is 80 ft long and 25 ft wide and treats 1.6 MGD. Use 1 MGD = 1,000,000 gal per day. What is the surface overflow rate in gpd/ft2 (surface area = length times width)?
 
 - **A.** 107 gpd/ft2
 - **B.** 800 gpd/ft2

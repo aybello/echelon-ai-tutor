@@ -14,7 +14,7 @@
   "file": "questions/bank-150.json",
   "count": 150,
   "calculations": 36,
-  "sha256": "e10202524593961c8113fded0e535f10fc393e4626d79a2706fe1d92db7c8a4a",
+  "sha256": "e05bb65142af927a872685a65f1c914c6398655f411213b50105fe71ec14f988",
   "modules": {
     "Source Water": 9,
     "Aeration": 7,
@@ -84,8 +84,8 @@
     ],
     "answerCues": {
       "conceptualCount": 114,
-      "longestRate": 0.043859649122807015,
-      "shortestRate": 0.24561403508771928,
+      "longestRate": 0.03508771929824561,
+      "shortestRate": 0.2543859649122807,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []
