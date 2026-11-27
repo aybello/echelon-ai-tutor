@@ -6,7 +6,7 @@
   "audience": "Experienced municipal wastewater operators and shift supervisors.",
   "prerequisites": "Working familiarity with a treatment train, laboratory reports and metric units. A calculator and access to the linked readings are required.",
   "introduction": "Work a fictional Millhaven shift from incoming load through biological treatment, clarification, nutrient control and solids handling. Build calculations and a defensible handover from imperfect evidence.",
-  "plannedMinutes": 240,
+  "plannedMinutes": 360,
   "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
   "modules": [
     {
@@ -28,27 +28,27 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
         },
         {
           "kind": "reading",
-          "minutes": 6,
+          "minutes": 9,
           "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
         },
         {
           "kind": "exercise",
-          "minutes": 14,
+          "minutes": 21,
           "instruction": "Analyze the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
           "kind": "exercise",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
-          "minutes": 4,
+          "minutes": 6,
           "instruction": "Complete the module checks and respond to the feedback."
         }
       ],
@@ -156,27 +156,27 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
         },
         {
           "kind": "reading",
-          "minutes": 6,
+          "minutes": 9,
           "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
         },
         {
           "kind": "exercise",
-          "minutes": 14,
+          "minutes": 21,
           "instruction": "Analyze the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
           "kind": "exercise",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
-          "minutes": 4,
+          "minutes": 6,
           "instruction": "Complete the module checks and respond to the feedback."
         }
       ],
@@ -284,27 +284,27 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
         },
         {
           "kind": "reading",
-          "minutes": 6,
+          "minutes": 9,
           "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
         },
         {
           "kind": "exercise",
-          "minutes": 14,
+          "minutes": 21,
           "instruction": "Analyze the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
           "kind": "exercise",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
-          "minutes": 4,
+          "minutes": 6,
           "instruction": "Complete the module checks and respond to the feedback."
         }
       ],
@@ -412,27 +412,27 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
         },
         {
           "kind": "reading",
-          "minutes": 6,
+          "minutes": 9,
           "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
         },
         {
           "kind": "exercise",
-          "minutes": 14,
+          "minutes": 21,
           "instruction": "Analyze the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
           "kind": "exercise",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
-          "minutes": 4,
+          "minutes": 6,
           "instruction": "Complete the module checks and respond to the feedback."
         }
       ],
@@ -540,27 +540,27 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
         },
         {
           "kind": "reading",
-          "minutes": 6,
+          "minutes": 9,
           "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
         },
         {
           "kind": "exercise",
-          "minutes": 14,
+          "minutes": 21,
           "instruction": "Analyze the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
           "kind": "exercise",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
-          "minutes": 4,
+          "minutes": 6,
           "instruction": "Complete the module checks and respond to the feedback."
         }
       ],
@@ -669,27 +669,27 @@
       "activities": [
         {
           "kind": "lesson",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Study the lesson and reconstruct its worked example without looking at the solution."
         },
         {
           "kind": "reading",
-          "minutes": 6,
+          "minutes": 9,
           "instruction": "Read the indicated source sections. Record the section used and one limitation on applying it to this case."
         },
         {
           "kind": "exercise",
-          "minutes": 14,
+          "minutes": 21,
           "instruction": "Analyze the supplied evidence, complete the written assignment and check units, timestamps and assumptions."
         },
         {
           "kind": "exercise",
-          "minutes": 8,
+          "minutes": 12,
           "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
         },
         {
           "kind": "assessment",
-          "minutes": 4,
+          "minutes": 6,
           "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
         }
       ],

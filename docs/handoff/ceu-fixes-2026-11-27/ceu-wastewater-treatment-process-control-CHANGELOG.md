@@ -99,3 +99,5 @@ Structure kept: 6 modules, all module, check, final and alternate ids unchanged,
 - RAS conflict resolved to match the figure: M1 now says return sludge in the figure returns to the head of the works, confirmed on the routing drawing. The aeration-entry paragraph was dropped. M3 and M4 still describe RAS returning to the reactors, which is outside the M1 figure; left unchanged.
 - Spelling bug fixed: "organizm" restored to "organism" (introduced by the earlier spelling pass).
 - Validation: validate.py passes with 0 errors (plannedMinutes 240, activities 40 per module, 9/9/9/9 checks).
+
+- 2026-11-27: planned time raised from 240 to 360 minutes (60 per module, six modules) so the course fits its content. Activities rescaled to match.
