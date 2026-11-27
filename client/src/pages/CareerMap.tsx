@@ -26,7 +26,7 @@ function courseLinks(level: CertLevel, province: ProvinceData) {
   const base = province.id === "on" ? `/class${number}` : `/wpi-class${number}`;
   return [
     { label: `Open Class ${number} Water`, href: `${base}-water` },
-    { label: `Open Class ${number} Wastewater`, href: `${base}-wastewater` },
+    { label: `Open Class ${number} Wastewater`, href: province.id === "on" ? `${base}-ww` : `${base}-wastewater` },
   ];
 }
 
@@ -110,7 +110,7 @@ function DetailPanel({ level, province }: { level: CertLevel | null; province: P
   const careerEarnings = illustrativeCareerEarnings(level);
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 14, animation: "popIn 0.3s ease both" }}>
+      <div className="career-pop-in" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
       {/* Gradient header */}
       <div style={{
         background: `linear-gradient(135deg,${level.color},${level.color}cc)`,
@@ -253,7 +253,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
         {/* Scale */}
         <div style={{
           display: "flex", justifyContent: "space-between", marginTop: 12,
-          paddingTop: 8, borderTop: "1px solid #F1F5F9", paddingLeft: 84,
+          paddingTop: 8, borderTop: "1px solid #F1F5F9", paddingLeft: 84, paddingRight: 174,
         }}>
           {[0, maxSalary / 4, maxSalary / 2, (maxSalary * 3) / 4, maxSalary].map(v => (
             <span key={v} style={{ fontSize: 9, color: "#CBD5E1" }}>{v === 0 ? "$0" : fmtSalary(v)}</span>
@@ -264,7 +264,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
       {/* Data source note */}
       <div style={{ background: "#EFF6FF", borderRadius: 14, padding: "16px 20px", border: "1px solid #BFDBFE" }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", marginBottom: 8 }}>📊 Data Sources & Notes</div>
-        <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 11, color: "#475569", lineHeight: 1.7 }}>
           These are planning ranges, not guaranteed wages. The current data file combines public salary references and provincial agreement research; ranges vary by employer, region, union, overtime, on-call, and certification premiums. Confirm the current source and date before relying on a figure. All rates are in Canadian dollars.
         </div>
       </div>
@@ -301,9 +301,10 @@ function CareerTimeline({ onSelect, selected, province }: {
           {/* Nodes */}
           <div style={{ display: "flex", justifyContent: "space-between", position: "relative", zIndex: 1, marginBottom: 32 }}>
             {mainLevels.map(l => (
-              <button
+                <button
                 type="button"
                 key={l.id}
+                aria-label={`${l.label}, ${l.years}`}
                 aria-pressed={selected?.id === l.id}
                 onClick={() => onSelect(selected?.id === l.id ? null : l)}
                 style={{ display: "flex", flexDirection: "column", alignItems: "center", cursor: "pointer", border: 0, background: "transparent", fontFamily: "inherit" }}
@@ -324,11 +325,11 @@ function CareerTimeline({ onSelect, selected, province }: {
             {mainLevels.map(l => (
               <div key={l.id} style={{ textAlign: "center", width: 80 }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: l.color }}>{l.short}</div>
-                <div style={{ fontSize: 9, color: "#94A3B8" }}>{l.years}</div>
+                <div style={{ fontSize: 9, color: "#64748B" }}>{l.years}</div>
                 <div style={{ fontSize: 10, fontWeight: 700, color: "#0F172A", marginTop: 2 }}>
                   {fmtHr(l.hourly.min)}–{fmtHr(l.hourly.max)}
                 </div>
-                <div style={{ fontSize: 9, color: "#94A3B8" }}>per hour</div>
+                <div style={{ fontSize: 9, color: "#64748B" }}>per hour</div>
               </div>
             ))}
           </div>
@@ -336,16 +337,23 @@ function CareerTimeline({ onSelect, selected, province }: {
 
         {/* Salary jump callouts */}
         <div className="career-salary-jumps" style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
-          {province.salaryJumps.map((j, i) => (
+          {province.salaryJumps.map((j, i) => {
+            const fromLevel = mainLevels[i];
+            const toLevel = mainLevels[i + 1];
+            const fromMid = fromLevel ? (fromLevel.annual.min + fromLevel.annual.max) / 2 : 0;
+            const toMid = toLevel ? (toLevel.annual.min + toLevel.annual.max) / 2 : 0;
+            const midpointJump = fromMid > 0 && toMid > 0 ? Math.round(((toMid / fromMid) - 1) * 100) : null;
+            return (
             <div key={i} style={{
               background: "#F8FAFC", borderRadius: 10, padding: "10px",
               textAlign: "center", border: "1px solid #E5E7EB",
             }}>
               <div style={{ fontSize: 9, color: "#94A3B8", marginBottom: 3 }}>{j.from}</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: "#059669" }}>{j.jump}</div>
-              <div style={{ fontSize: 9, color: "#64748B" }}>{j.note}</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: "#059669" }}>{midpointJump === null ? j.jump : `+${midpointJump}%`}</div>
+              <div style={{ fontSize: 9, color: "#64748B" }}>{j.note} · midpoint annual range</div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -373,7 +381,7 @@ function CareerTimeline({ onSelect, selected, province }: {
 
       {/* Selected detail */}
       {selected && (
-        <div style={{ animation: "popIn 0.3s ease both" }}>
+        <div className="career-pop-in">
           <DetailPanel level={selected} province={province} />
         </div>
       )}
@@ -388,7 +396,6 @@ function CareerTimeline({ onSelect, selected, province }: {
         </div>
         <div className="career-timeline-nodes" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 10 }}>
           {mainLevels.map(l => {
-            const mid    = (l.annual.min + l.annual.max) / 2;
             const career = illustrativeCareerEarnings(l);
             return (
               <div key={l.id} style={{
@@ -484,6 +491,8 @@ function ProvinceSelector({ selected, onChange }: {
         {PROVINCES.map(p => (
           <button
             key={p.id}
+            type="button"
+            aria-pressed={selected === p.id}
             onClick={() => onChange(p.id)}
             style={{
               padding: "7px 14px", borderRadius: 8,
@@ -544,6 +553,7 @@ export default function CareerMap() {
     if (!VALID_PROVINCE_IDS.has(id)) return;
     setProvinceId(id);
     setSelected(null);
+    setTrack("all");
   };
 
   const VIEWS: [ViewType, string][] = [
@@ -568,8 +578,9 @@ export default function CareerMap() {
         @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes popIn  { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:scale(1)} }
         .fade { animation: fadeUp 0.4s ease both; }
+        .career-pop-in { animation: popIn 0.3s ease both; }
         button:focus-visible, a:focus-visible { outline: 3px solid #F59E0B; outline-offset: 3px; }
-        @media (prefers-reduced-motion: reduce) { .fade { animation: none; } *, *::before, *::after { transition-duration: 0.01ms !important; } }
+        @media (prefers-reduced-motion: reduce) { .fade, .career-pop-in { animation: none; } *, *::before, *::after { transition-duration: 0.01ms !important; } }
         @media (max-width: 768px) {
           .career-salary-jumps { grid-template-columns: repeat(2,1fr) !important; }
           .career-timeline-nodes { grid-template-columns: repeat(3,1fr) !important; }
@@ -601,7 +612,7 @@ export default function CareerMap() {
       {/* ── VIEW TOGGLES ── */}
       <div className="career-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap" }}>
         {VIEWS.map(([v, l]) => (
-          <button key={v} onClick={() => setView(v)} style={{
+          <button key={v} type="button" aria-pressed={view === v} onClick={() => setView(v)} style={{
             padding: "7px 14px", borderRadius: 8,
             border: `1px solid ${view === v ? "#1D4ED8" : "#E5E7EB"}`,
             background: view === v ? "#EFF6FF" : "transparent",
@@ -648,8 +659,8 @@ export default function CareerMap() {
                 FILTER BY TRACK
               </span>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {([["all", "All Tracks", "#374151"], ...TRACKS.map(t => [t.id, `${t.icon} ${t.label.split(" ")[0]}`, t.color])] as [string, string, string][]).map(([id, label, color]) => (
-                  <button key={id} onClick={() => handleTrackChange(id)} style={{
+                {([["all", "All Tracks", "#374151"], ...TRACKS.filter(t => t.id !== "wqa" || specialistLevel).map(t => [t.id, `${t.icon} ${t.id === "water" ? "Water" : "Wastewater"}`, t.color])] as [string, string, string][]).map(([id, label, color]) => (
+                  <button key={id} type="button" aria-pressed={track === id} onClick={() => handleTrackChange(id)} style={{
                     padding: "6px 14px", borderRadius: 20,
                     border: `1.5px solid ${track === id ? color : "#E5E7EB"}`,
                     background: track === id ? color + "15" : "transparent",
