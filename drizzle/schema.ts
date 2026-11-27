@@ -1910,6 +1910,8 @@ export const recruitmentAssessments = mysqlTable("recruitment_assessments", {
   title: varchar("title", { length: 160 }).notNull(),
   courseKey: varchar("courseKey", { length: 64 }).notNull(),
   courseLabel: varchar("courseLabel", { length: 200 }).notNull(),
+  // No default or backfill: historical forms did not record a difficulty mode.
+  difficultyMode: mysqlEnum("difficultyMode", ["mixed", "medium", "hard"]),
   modules: json("modules").$type<string[]>().notNull(),
   questionCount: int("questionCount").notNull(),
   timeLimitMinutes: int("timeLimitMinutes"),

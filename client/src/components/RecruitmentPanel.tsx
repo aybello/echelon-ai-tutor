@@ -15,6 +15,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   recruitmentCreateInput,
+  recruitmentDifficultyLabel,
+  type RecruitmentDifficultyMode,
   type RecruitmentCatalog,
   type RecruitmentDefinitionSummary,
   type RecruitmentResult,
@@ -33,6 +35,19 @@ type InvitationOutcome = {
   assignmentId: string;
   message: string;
 };
+
+const difficultyModes: RecruitmentDifficultyMode[] = ["mixed", "medium", "hard"];
+const difficultyDescriptions: Record<RecruitmentDifficultyMode, string> = {
+  mixed: "All available difficulty levels",
+  medium: "Medium-labelled questions only",
+  hard: "Hard-labelled questions only",
+};
+function matchingCount(
+  item: { count: number; difficultyCounts?: Record<RecruitmentDifficultyMode, number> },
+  mode: RecruitmentDifficultyMode
+) {
+  return item.difficultyCounts?.[mode] ?? (mode === "mixed" ? item.count : 0);
+}
 
 function useLifetime() {
   const live = useRef(true);
@@ -104,6 +119,8 @@ function RecruitmentPanelBody({
   const create = trpc.recruitment.create.useMutation();
   const [title, setTitle] = useState("");
   const [courseKey, setCourseKey] = useState("");
+  const [difficultyMode, setDifficultyMode] = useState<RecruitmentDifficultyMode>("mixed");
+  const [specificTopics, setSpecificTopics] = useState(false);
   const [modules, setModules] = useState<string[]>([]);
   const [count, setCount] = useState("20");
   const [timed, setTimed] = useState(false);
@@ -160,17 +177,28 @@ function RecruitmentPanelBody({
   const definitions: RecruitmentDefinitionSummary[] | undefined =
     listQuery.data;
   const course = catalog?.courses.find(item => item.courseKey === courseKey);
+  const courseCount = (mode: RecruitmentDifficultyMode) =>
+    course?.difficultyCounts?.[mode] ??
+    (mode === "mixed"
+      ? course?.modules.reduce((total, item) => total + matchingCount(item, mode), 0) ?? 0
+      : 0);
+  const submittedModules = specificTopics ? modules : [];
   const selectedModules =
-    course?.modules.filter(item => modules.includes(item.name)) ?? [];
-  const available = selectedModules.reduce(
-    (total, item) => total + item.count,
-    0
+    course?.modules.filter(item => submittedModules.includes(item.name)) ?? [];
+  const invalidTopics = specificTopics && (
+    submittedModules.length !== selectedModules.length ||
+    selectedModules.some(item => matchingCount(item, difficultyMode) === 0)
   );
+  const modeUnavailable = !!course && courseCount(difficultyMode) < 5;
+  const available = specificTopics
+    ? selectedModules.reduce((total, item) => total + matchingCount(item, difficultyMode), 0)
+    : courseCount(difficultyMode);
   const parsed = recruitmentCreateInput.safeParse({
     orgId,
     title: title.trim(),
     courseKey,
-    modules,
+    difficultyMode,
+    modules: submittedModules,
     questionCount: Number(count),
     timeLimitMinutes: timed ? Number(minutes) : null,
     expiresInDays: Number(expiry),
@@ -179,14 +207,17 @@ function RecruitmentPanelBody({
     ? (parsed.error.issues[0]?.message ?? "Check the assessment details.")
     : !course
       ? "Choose an available course."
-      : modules.length !== selectedModules.length ||
-          selectedModules.some(item => !item.count)
-        ? "Choose topics with available questions."
-        : Number(count) < modules.length
-          ? "Use at least one question per selected topic."
-          : Number(count) > available
-            ? `Only ${available} questions are available in the selected topics. Choose fewer questions or more topics.`
-            : "";
+      : modeUnavailable
+        ? `${recruitmentDifficultyLabel(difficultyMode)} needs at least 5 matching questions. Choose an available difficulty mode.`
+        : specificTopics && !submittedModules.length
+          ? "Choose at least one specific topic, or turn off Choose specific topics for automatic coverage."
+          : invalidTopics
+            ? "Some selected topics have no matching questions or are no longer available. Uncheck them or choose another difficulty mode."
+            : Number(count) < submittedModules.length
+              ? "Use at least one question per selected topic."
+              : Number(count) > available
+                ? `Only ${available} matching questions are available${specificTopics ? " in the selected topics" : " in this course"}. Choose fewer questions${specificTopics ? " or more topics" : " or another difficulty mode"}.`
+                : "";
   async function createAssessment(event: React.FormEvent) {
     event.preventDefault();
     if (!isCurrent() || !authorized || !canUseCatalog()) return;
@@ -205,6 +236,8 @@ function RecruitmentPanelBody({
       );
       setTitle("");
       setCourseKey("");
+      setDifficultyMode("mixed");
+      setSpecificTopics(false);
       setModules([]);
       setAttempted(false);
     } catch (failure) {
@@ -278,7 +311,8 @@ function RecruitmentPanelBody({
         <div className={recruitmentCard}>
           <h3 className="text-lg font-semibold">Create an assessment</h3>
           <p className="mt-1 text-sm text-slate-600">
-            Choose a course and topics from the available question pool.
+            Choose a course and difficulty. Topic coverage is automatic unless
+            you narrow it below.
           </p>
           {!catalogAuthorized && !catalogQuery.isError ? (
             <p role="status" className="py-8 text-sm text-slate-500">
@@ -330,6 +364,8 @@ function RecruitmentPanelBody({
                     required
                     onChange={event => {
                       setCourseKey(event.target.value);
+                      setDifficultyMode("mixed");
+                      setSpecificTopics(false);
                       setModules([]);
                       setAttempted(false);
                     }}
@@ -343,44 +379,127 @@ function RecruitmentPanelBody({
                   </select>
                 </div>
                 <fieldset className="space-y-2">
-                  <legend className="mb-2 text-sm font-medium">Topics</legend>
-                  {!course ? (
-                    <p className="text-sm text-slate-500">
-                      Choose a course to view topics.
-                    </p>
-                  ) : (
-                    <div className="max-h-72 overflow-y-auto rounded-xl border border-slate-200 p-2">
-                      {course.modules.map(module => (
+                  <legend className="mb-2 text-sm font-medium">Difficulty</legend>
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                    {difficultyModes.map(mode => {
+                      const matches = courseCount(mode);
+                      const disabled = !course || matches < 5;
+                      const selected = difficultyMode === mode;
+                      return (
                         <label
-                          key={module.name}
-                          className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-2 py-3 text-sm hover:bg-slate-50 ${!module.count ? "text-slate-400" : "text-slate-700"}`}
+                          key={mode}
+                          className={`flex min-h-24 items-start gap-2 rounded-xl border p-3 focus-within:ring-2 focus-within:ring-blue-600 ${selected ? "border-blue-400 bg-blue-50" : "border-slate-200 bg-white"} ${disabled ? "cursor-not-allowed" : "cursor-pointer hover:border-blue-300"}`}
                         >
-                          <Checkbox
-                            checked={modules.includes(module.name)}
-                            disabled={!module.count || create.isPending}
-                            onCheckedChange={checked =>
-                              setModules(previous =>
-                                checked === true
-                                  ? [...previous, module.name]
-                                  : previous.filter(
-                                      name => name !== module.name
-                                    )
-                              )
-                            }
+                          <input
+                            id={`recruitment-difficulty-${mode}`}
+                            type="radio"
+                            name="recruitment-difficulty"
+                            value={mode}
+                            checked={selected}
+                            disabled={disabled || create.isPending}
+                            aria-label={recruitmentDifficultyLabel(mode)}
+                            aria-describedby={`recruitment-difficulty-${mode}-count recruitment-difficulty-${mode}-description`}
+                            aria-invalid={selected && modeUnavailable}
+                            onChange={() => setDifficultyMode(mode)}
+                            className="mt-1 h-4 w-4 shrink-0 accent-blue-700"
                           />
-                          <span className="min-w-0 flex-1">{module.name}</span>
-                          <span className="shrink-0 text-xs">
-                            {module.count} questions
+                          <span className="min-w-0">
+                            <span className="block text-sm font-semibold text-slate-900">
+                              {recruitmentDifficultyLabel(mode)}
+                            </span>
+                            <span id={`recruitment-difficulty-${mode}-count`} className="mt-1 block text-xs text-slate-600">
+                              {matches} available
+                            </span>
+                            <span
+                              id={`recruitment-difficulty-${mode}-description`}
+                              className="mt-1 block text-xs leading-relaxed text-slate-500"
+                            >
+                              {difficultyDescriptions[mode]}
+                              {course && disabled ? ". Minimum 5 required." : ""}
+                            </span>
                           </span>
                         </label>
-                      ))}
-                    </div>
+                      );
+                    })}
+                  </div>
+                  {!course && (
+                    <p className="text-xs text-slate-500">Choose a course to see available counts.</p>
                   )}
-                  <p className="text-xs text-slate-500">
-                    {modules.length} topics selected · {available} questions
-                    available. Each selected topic appears at least once.
-                  </p>
+                  {modeUnavailable && (
+                    <p role="alert" className="text-xs text-amber-800">
+                      {recruitmentDifficultyLabel(difficultyMode)} is no longer available with at least 5 matching questions. Your selection has been kept; choose another mode.
+                    </p>
+                  )}
+                  {course && difficultyMode === "mixed" && (
+                    <p className="text-xs leading-relaxed text-slate-500">
+                      {course.unlabelledCount === undefined
+                        ? "Mixed includes questions without a recognized difficulty label; the unlabelled count is not available in this catalog."
+                        : `Mixed includes all available difficulty levels, including ${course.unlabelledCount} unlabelled questions in this course. Difficulty is not inferred or reassigned.`}
+                    </p>
+                  )}
                 </fieldset>
+                <div className="space-y-2">
+                  <label className="flex min-h-11 cursor-pointer items-center gap-3 text-sm font-medium">
+                    <Checkbox
+                      id="recruitment-specific-topics"
+                      checked={specificTopics}
+                      disabled={!course || create.isPending}
+                      aria-controls="recruitment-topic-options"
+                      aria-expanded={specificTopics}
+                      onCheckedChange={checked => setSpecificTopics(checked === true)}
+                    />
+                    Choose specific topics
+                  </label>
+                  {specificTopics && course ? (
+                    <fieldset id="recruitment-topic-options" className="space-y-2">
+                      <legend className="sr-only">Specific topics</legend>
+                      <div className="max-h-72 overflow-y-auto rounded-xl border border-slate-200 p-2">
+                        {course.modules.map(module => {
+                          const matches = matchingCount(module, difficultyMode);
+                          const selected = modules.includes(module.name);
+                          return (
+                            <label
+                              key={module.name}
+                              className={`flex min-h-11 items-center gap-3 rounded-lg px-2 py-3 text-sm ${!matches && selected ? "bg-amber-50 text-amber-900" : !matches ? "text-slate-500" : "text-slate-700"} ${!matches && !selected ? "cursor-not-allowed" : "cursor-pointer hover:bg-slate-50"}`}
+                            >
+                              <Checkbox
+                                checked={selected}
+                                disabled={(!matches && !selected) || create.isPending}
+                                aria-invalid={selected && !matches}
+                                onCheckedChange={checked =>
+                                  setModules(previous =>
+                                    checked === true
+                                      ? previous.includes(module.name) ? previous : [...previous, module.name]
+                                      : previous.filter(name => name !== module.name)
+                                  )
+                                }
+                              />
+                              <span className="min-w-0 flex-1">
+                                {module.name}
+                                {!matches && selected && (
+                                  <span className="mt-1 block text-xs">No matching questions. Uncheck or change difficulty.</span>
+                                )}
+                              </span>
+                              <span className="shrink-0 text-xs">{matches} questions</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                      {invalidTopics && (
+                        <p role="alert" className="text-xs text-amber-800">
+                          Some selected topics have no matching questions or are no longer available. Uncheck them or choose another difficulty mode.
+                        </p>
+                      )}
+                      <p className="text-xs text-slate-500">
+                        {modules.length} topics selected · {available} matching questions available. Each selected topic appears at least once.
+                      </p>
+                    </fieldset>
+                  ) : (
+                    <p className="text-xs leading-relaxed text-slate-500" aria-live="polite">
+                      Automatic topic coverage · {available} matching questions available. Questions are sampled across matching topics in the course.
+                    </p>
+                  )}
+                </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="recruitment-count">Question count</Label>
@@ -528,6 +647,9 @@ function RecruitmentPanelBody({
                       {assessment.timeLimitMinutes === null
                         ? "No time limit"
                         : `${assessment.timeLimitMinutes} minutes`}
+                    </span>
+                    <span className="mt-2 block text-xs font-medium text-blue-700">
+                      Difficulty: {recruitmentDifficultyLabel(assessment.difficultyMode)}
                     </span>
                     <span className="mt-3 flex flex-wrap justify-between gap-2 text-xs text-slate-600">
                       <span>
@@ -937,6 +1059,9 @@ function RecruitmentDetail({
             {assessment.timeLimitMinutes === null
               ? "No time limit"
               : `${assessment.timeLimitMinutes} minutes`}
+          </p>
+          <p className="mt-2 text-sm font-medium text-blue-700">
+            Difficulty: {recruitmentDifficultyLabel(assessment.difficultyMode)}
           </p>
           <p className="mt-1 text-xs text-slate-500">
             Expires {recruitmentDate(assessment.expiresAtMs)}

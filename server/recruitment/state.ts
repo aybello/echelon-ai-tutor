@@ -84,6 +84,7 @@ export function recruitmentCandidateView(assessment: RecruitmentAssessmentRow, a
   const active = assignment.status === "active";
   return {
     assignmentId: assignment.id, title: assessment.title, orgName, courseLabel: assessment.courseLabel,
+    difficultyMode: assessment.difficultyMode ?? null,
     modules: [...assessment.modules], questionCount: assessment.questionCount, timeLimitMinutes: assessment.timeLimitMinutes,
     expiresAtMs: Math.min(assessment.expiresAtMs, assignment.expiresAtMs), deadlineMs: assignmentDeadline(assessment, assignment),
     serverNowMs: nowMs, startedAtMs: assignment.startedAtMs, submittedAtMs: assignment.submittedAtMs, status: assignment.status,
@@ -103,7 +104,8 @@ export function recruitmentResult(assessment: RecruitmentAssessmentRow, assignme
     candidateName: assignment.candidateName, status: assignment.status, startedAtMs: assignment.startedAtMs,
     submittedAtMs: assignment.submittedAtMs, expiresAtMs: Math.min(assignment.expiresAtMs, assessment.expiresAtMs),
     score: scored ? scoreRecruitment(assessment.questions, answers) : null,
-    answers, questions: scored ? assertRecruitmentSnapshot(assessment.questions).map(q => ({ id: q.id, module: q.module, prompt: q.prompt, options: [...q.options], correctIndex: q.correctIndex })) : [],
+    answers, questions: scored ? assertRecruitmentSnapshot(assessment.questions).map(q => ({ id: q.id, module: q.module, prompt: q.prompt, options: [...q.options], correctIndex: q.correctIndex,
+      ...(Object.hasOwn(q, "difficulty") ? { difficulty: q.difficulty } : {}) })) : [],
     revision: assignment.revision,
   };
 }

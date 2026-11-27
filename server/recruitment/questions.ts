@@ -1,11 +1,11 @@
 import { TRPCError } from "@trpc/server";
 import { and, eq, inArray } from "drizzle-orm";
 import { questions } from "../../drizzle/schema";
-import { validRecruitmentQuestions, validRecruitmentSelectionQuestions, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
+import { normalizeRecruitmentDifficulty, validRecruitmentQuestions, validRecruitmentSelectionQuestions, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import type { RecruitmentReadDb } from "./types";
 
-export type RecruitmentBankRow = { id: number; module: string; question: string; options: string; correctIndex: number };
+export type RecruitmentBankRow = { id: number; module: string; question: string; options: string; correctIndex: number; difficulty?: string | null };
 
 /** Malformed content is excluded before catalog counts and sampling, never trusted as JSON. */
 export function usableRecruitmentQuestion(row: RecruitmentBankRow): RecruitmentQuestion | null {
@@ -15,13 +15,14 @@ export function usableRecruitmentQuestion(row: RecruitmentBankRow): RecruitmentQ
   const question: RecruitmentQuestion = {
     id: String(row.id), module: row.module, prompt: row.question,
     options: options as string[], correctIndex: row.correctIndex,
+    difficulty: normalizeRecruitmentDifficulty(row.difficulty),
   };
   return validRecruitmentSelectionQuestions([question]) ? question : null;
 }
 
 /** getDb's authoritative question table; no fixtures, bundle fallback or preview content. */
 export async function loadRecruitmentPool(db: RecruitmentReadDb, bankKey: string): Promise<RecruitmentQuestion[]> {
-  const rows = await db.select({ id: questions.id, module: questions.module, question: questions.question, options: questions.options, correctIndex: questions.correctIndex })
+  const rows = await db.select({ id: questions.id, module: questions.module, question: questions.question, options: questions.options, correctIndex: questions.correctIndex, difficulty: questions.difficulty })
     .from(questions).where(and(eq(questions.bankKey, bankKey), learnerVisibleQuestionFilter()))
     .orderBy(questions.id);
   return rows.map(usableRecruitmentQuestion).filter((q): q is RecruitmentQuestion => q !== null);
@@ -30,7 +31,7 @@ export async function loadRecruitmentPool(db: RecruitmentReadDb, bankKey: string
 export async function loadRecruitmentPools(db: RecruitmentReadDb, bankKeys: string[]): Promise<Map<string, RecruitmentQuestion[]>> {
   const pools = new Map<string, RecruitmentQuestion[]>();
   if (!bankKeys.length) return pools;
-  const rows = await db.select({ bankKey: questions.bankKey, id: questions.id, module: questions.module, question: questions.question, options: questions.options, correctIndex: questions.correctIndex })
+  const rows = await db.select({ bankKey: questions.bankKey, id: questions.id, module: questions.module, question: questions.question, options: questions.options, correctIndex: questions.correctIndex, difficulty: questions.difficulty })
     .from(questions).where(and(inArray(questions.bankKey, [...new Set(bankKeys)]), learnerVisibleQuestionFilter())).orderBy(questions.id);
   for (const row of rows) {
     const q = usableRecruitmentQuestion(row);
@@ -60,7 +61,7 @@ export async function assertRecruitmentSourcesVisible(db: RecruitmentReadDb, ban
   const sampledById = new Map(snapshot.map(q => [Number(q.id), q]));
   for (const id of ids) {
     const [source] = await db.select({ id: questions.id, module: questions.module, question: questions.question,
-      options: questions.options, correctIndex: questions.correctIndex }).from(questions)
+      options: questions.options, correctIndex: questions.correctIndex, difficulty: questions.difficulty }).from(questions)
       .where(and(eq(questions.id, id), eq(questions.bankKey, bankKey), learnerVisibleQuestionFilter()))
       .limit(1).for("share");
     if (!source || source.id !== id) throw replacementNeeded();
@@ -68,7 +69,8 @@ export async function assertRecruitmentSourcesVisible(db: RecruitmentReadDb, ban
       const current = usableRecruitmentQuestion(source), sampled = sampledById.get(id)!;
       if (!current || current.module !== sampled.module || current.prompt !== sampled.prompt
         || current.correctIndex !== sampled.correctIndex || current.options.length !== sampled.options.length
-        || current.options.some((option, index) => option !== sampled.options[index])) throw replacementNeeded();
+        || current.options.some((option, index) => option !== sampled.options[index])
+        || (Object.hasOwn(sampled, "difficulty") && current.difficulty !== sampled.difficulty)) throw replacementNeeded();
     }
   }
 }

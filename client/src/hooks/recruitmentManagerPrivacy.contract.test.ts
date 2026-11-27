@@ -1003,10 +1003,10 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     await readyDetail();
     input("recruitment-title", "Synthetic new assessment");
     input("recruitment-course", "class2-water");
-    find(
-      n =>
-        n.type === "checkbox" && typeof n.props.onCheckedChange === "function"
-    ).props.onCheckedChange(true);
+    find(n => n.props.id === "recruitment-specific-topics").props.onCheckedChange(true);
+    render();
+    nodes(find(n => n.props.id === "recruitment-topic-options"))
+      .find(n => n.type === "checkbox").props.onCheckedChange(true);
     render();
     input("recruitment-candidate", "31");
     const createForm = find(
@@ -1472,10 +1472,10 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     await settle();
     input("recruitment-title", "Synthetic new assessment");
     input("recruitment-course", "class2-water");
-    find(
-      n =>
-        n.type === "checkbox" && typeof n.props.onCheckedChange === "function"
-    ).props.onCheckedChange(true);
+    find(n => n.props.id === "recruitment-specific-topics").props.onCheckedChange(true);
+    render();
+    nodes(find(n => n.props.id === "recruitment-topic-options"))
+      .find(n => n.type === "checkbox").props.onCheckedChange(true);
     render();
     const old = deferred();
     h.create.mockReturnValue(old.promise);
@@ -1522,5 +1522,304 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     expect(text(tree)).not.toContain("Invitation revoked.");
     expect(text(tree)).not.toContain("I confirm");
     expect(text(tree)).not.toContain(result.candidateEmail);
+  });
+});
+
+
+function difficultyText(node: any) {
+  return text(node).replace(/\s+/g, " ").trim();
+}
+// Difficulty-first form interactions use the same actual component/query-cache
+// harness as the privacy regressions above. All writes stay synthetic.
+const difficultyCatalog = {
+  ...catalog,
+  orgName: "Synthetic organization",
+  courses: [{
+    courseKey: "class2-water",
+    label: "Class 2 Water",
+    difficultyCounts: { mixed: 30, medium: 14, hard: 8 },
+    unlabelledCount: 3,
+    modules: [
+      { name: "Treatment", count: 18, difficultyCounts: { mixed: 18, medium: 10, hard: 0 } },
+      { name: "Safety", count: 12, difficultyCounts: { mixed: 12, medium: 4, hard: 8 } },
+      { name: "Empty", count: 0, difficultyCounts: { mixed: 0, medium: 0, hard: 0 } },
+    ],
+  }],
+};
+async function readyDifficultyForm(data: unknown = difficultyCatalog) {
+  h.catalog.mockResolvedValue(data);
+  render();
+  await settle();
+  input("recruitment-title", "Synthetic difficulty assessment");
+  input("recruitment-course", "class2-water");
+  input("recruitment-count", "5");
+}
+function chooseMode(mode: string) {
+  const radio = find(n => n.props.id === `recruitment-difficulty-${mode}`);
+  expect(radio.props.disabled).toBe(false);
+  radio.props.onChange();
+  render();
+}
+function narrowTopics(value: boolean) {
+  find(n => n.props.id === "recruitment-specific-topics").props.onCheckedChange(value);
+  render();
+}
+function topicCheckbox(name: string) {
+  const options = find(n => n.props.id === "recruitment-topic-options");
+  const label = nodes(options).find(n => n.type === "label" && difficultyText(n).startsWith(name));
+  if (!label) throw new Error(`Missing topic ${name}`);
+  return nodes(label).find(n => n.type === "checkbox");
+}
+async function submitDifficultyForm() {
+  await find(n => n.type === "form" && difficultyText(n).includes("Create assessment"))
+    .props.onSubmit({ preventDefault: vi.fn() });
+  await settle();
+}
+
+describe("difficulty-first recruitment creation (Node, synthetic transport)", () => {
+  it("defaults to accessible Mixed radios after course, automatic topics, truthful counts and unlabelled disclosure", async () => {
+    await readyDifficultyForm();
+    const radios = nodes(tree).filter(n => n.props.type === "radio");
+    expect(radios.map(n => n.props.value)).toEqual(["mixed", "medium", "hard"]);
+    expect(radios.map(n => n.props.checked)).toEqual([true, false, false]);
+    expect(new Set(radios.map(n => n.props.name)).size).toBe(1);
+    expect(radios.every(n => !!n.props["aria-describedby"])).toBe(true);
+    const allNodes = nodes(tree);
+    expect(allNodes.indexOf(find(n => n.props.id === "recruitment-course")))
+      .toBeLessThan(allNodes.indexOf(radios[0]));
+    expect(allNodes.indexOf(radios[2]))
+      .toBeLessThan(allNodes.indexOf(find(n => n.props.id === "recruitment-specific-topics")));
+    expect(find(n => n.props.id === "recruitment-specific-topics").props.checked).toBe(false);
+    expect(nodes(tree).some(n => n.props.id === "recruitment-topic-options")).toBe(false);
+    expect(difficultyText(tree)).toContain("30 available");
+    expect(difficultyText(tree)).toContain("14 available");
+    expect(difficultyText(tree)).toContain("8 available");
+    expect(difficultyText(tree)).toContain("including 3 unlabelled questions");
+    expect(difficultyText(tree)).toContain("Automatic topic coverage · 30 matching questions available");
+  });
+
+  it.each(["mixed", "medium", "hard"])("submits %s with no topic narrowing and does not require all automatic topics", async mode => {
+    await readyDifficultyForm();
+    chooseMode(mode);
+    await submitDifficultyForm();
+    expect(h.create).toHaveBeenCalledOnce();
+    expect(h.create).toHaveBeenCalledWith({
+      orgId,
+      title: "Synthetic difficulty assessment",
+      courseKey: "class2-water",
+      difficultyMode: mode,
+      modules: [],
+      questionCount: 5,
+      timeLimitMinutes: null,
+      expiresInDays: 7,
+    });
+  });
+
+  it("requires at least one topic when narrowing is on and submits the explicit selected topic", async () => {
+    await readyDifficultyForm();
+    chooseMode("medium");
+    narrowTopics(true);
+    await submitDifficultyForm();
+    expect(h.create).not.toHaveBeenCalled();
+    expect(difficultyText(tree)).toContain("Choose at least one specific topic");
+    topicCheckbox("Treatment").props.onCheckedChange(true);
+    render();
+    expect(difficultyText(tree)).toContain("1 topics selected · 10 matching questions available");
+    await submitDifficultyForm();
+    expect(h.create).toHaveBeenCalledOnce();
+    expect(h.create.mock.calls[0][0]).toMatchObject({ difficultyMode: "medium", modules: ["Treatment"] });
+  });
+
+  it("retains zero-match selected topics after a mode change, marks invalid, and permits unchecking without fallback", async () => {
+    await readyDifficultyForm();
+    narrowTopics(true);
+    topicCheckbox("Treatment").props.onCheckedChange(true);
+    render();
+    chooseMode("hard");
+    const retained = topicCheckbox("Treatment");
+    expect(retained.props.checked).toBe(true);
+    expect(retained.props.disabled).toBe(false);
+    expect(retained.props["aria-invalid"]).toBe(true);
+    expect(topicCheckbox("Empty").props.disabled).toBe(true);
+    expect(difficultyText(tree)).toContain("No matching questions. Uncheck or change difficulty.");
+    expect(difficultyText(tree)).toContain("1 topics selected · 0 matching questions available");
+    await submitDifficultyForm();
+    expect(h.create).not.toHaveBeenCalled();
+    retained.props.onCheckedChange(false);
+    render();
+    expect(topicCheckbox("Treatment").props.disabled).toBe(true);
+    topicCheckbox("Safety").props.onCheckedChange(true);
+    render();
+    expect(difficultyText(tree)).toContain("1 topics selected · 8 matching questions available");
+    await submitDifficultyForm();
+    expect(h.create.mock.calls[0][0]).toMatchObject({ difficultyMode: "hard", modules: ["Safety"] });
+  });
+
+  it("turning narrowing off submits [] even with retained draft topics", async () => {
+    await readyDifficultyForm();
+    narrowTopics(true);
+    topicCheckbox("Treatment").props.onCheckedChange(true);
+    render();
+    chooseMode("hard");
+    narrowTopics(false);
+    expect(difficultyText(tree)).toContain("Automatic topic coverage · 8 matching questions available");
+    await submitDifficultyForm();
+    expect(h.create.mock.calls[0][0]).toMatchObject({ difficultyMode: "hard", modules: [] });
+  });
+
+  it("course changes reset Mixed and clear topic narrowing and selected topics", async () => {
+    await readyDifficultyForm({
+      ...difficultyCatalog,
+      courses: [...difficultyCatalog.courses, {
+        ...difficultyCatalog.courses[0], courseKey: "second-course", label: "Second course",
+      }],
+    });
+    narrowTopics(true);
+    topicCheckbox("Safety").props.onCheckedChange(true);
+    render();
+    chooseMode("hard");
+    input("recruitment-course", "second-course");
+    expect(find(n => n.props.id === "recruitment-difficulty-mixed").props.checked).toBe(true);
+    expect(find(n => n.props.id === "recruitment-specific-topics").props.checked).toBe(false);
+    narrowTopics(true);
+    expect(topicCheckbox("Safety").props.checked).toBe(false);
+  });
+
+  it("legacy catalog counts support Mixed but do not invent Medium/Hard availability", async () => {
+    await readyDifficultyForm(catalog);
+    expect(find(n => n.props.id === "recruitment-difficulty-mixed").props.disabled).toBe(false);
+    for (const mode of ["medium", "hard"]) {
+      expect(find(n => n.props.id === `recruitment-difficulty-${mode}`).props.disabled).toBe(true);
+      const label = nodes(tree).find(n => n.type === "label" && nodes(n).some(child => child.props.id === `recruitment-difficulty-${mode}`));
+      expect(difficultyText(label)).toContain("0 available");
+    }
+    expect(difficultyText(tree)).toContain("the unlabelled count is not available in this catalog");
+    narrowTopics(true);
+    topicCheckbox("Treatment").props.onCheckedChange(true);
+    render();
+    expect(difficultyText(tree)).toContain("1 topics selected · 30 matching questions available");
+    await submitDifficultyForm();
+    expect(h.create.mock.calls[0][0]).toMatchObject({ difficultyMode: "mixed", modules: ["Treatment"] });
+  });
+
+  it("all-unlabelled banks work only in Mixed with an honest notice", async () => {
+    await readyDifficultyForm({
+      ...difficultyCatalog,
+      courses: [{
+        ...difficultyCatalog.courses[0],
+        difficultyCounts: { mixed: 30, medium: 0, hard: 0 },
+        unlabelledCount: 30,
+        modules: [{ name: "Treatment", count: 30, difficultyCounts: { mixed: 30, medium: 0, hard: 0 } }],
+      }],
+    });
+    expect(difficultyText(tree)).toContain("including 30 unlabelled questions");
+    expect(find(n => n.props.id === "recruitment-difficulty-medium").props.disabled).toBe(true);
+    expect(find(n => n.props.id === "recruitment-difficulty-hard").props.disabled).toBe(true);
+    await submitDifficultyForm();
+    expect(h.create.mock.calls[0][0].difficultyMode).toBe("mixed");
+  });
+
+  it("keeps an unavailable selected mode after fresh catalog replacement and rejects creation rather than downgrading", async () => {
+    await readyDifficultyForm();
+    chooseMode("hard");
+    const oldForm = find(n => n.type === "form" && difficultyText(n).includes("Create assessment"));
+    const replacement = {
+      ...difficultyCatalog,
+      courses: [{ ...difficultyCatalog.courses[0], difficultyCounts: { mixed: 30, medium: 14, hard: 4 } }],
+    };
+    await h.client.fetchQuery({
+      queryKey: key("catalog", { orgId }), queryFn: async () => replacement, staleTime: 0, retry: false,
+    });
+    // A retained handler must not create against its previous exact catalog.
+    await oldForm.props.onSubmit({ preventDefault: vi.fn() });
+    expect(h.create).not.toHaveBeenCalled();
+    await settle();
+    const hard = find(n => n.props.id === "recruitment-difficulty-hard");
+    expect(hard.props.checked).toBe(true);
+    expect(hard.props.disabled).toBe(true);
+    expect(hard.props["aria-invalid"]).toBe(true);
+    expect(difficultyText(tree)).toContain("Your selection has been kept; choose another mode");
+    await submitDifficultyForm();
+    expect(h.create).not.toHaveBeenCalled();
+  });
+
+  it("rejects a question count above the mode pool without easier replacements", async () => {
+    await readyDifficultyForm();
+    chooseMode("hard");
+    input("recruitment-count", "9");
+    await submitDifficultyForm();
+    expect(h.create).not.toHaveBeenCalled();
+    expect(difficultyText(tree)).toContain("Only 8 matching questions are available in this course");
+  });
+
+  it.each([
+    ["mixed", "Mixed"], ["medium", "Medium"], ["hard", "Hard"],
+    [null, "Not recorded"], [undefined, "Not recorded"],
+  ])("list, detail, results and fresh CSV share stored difficulty %s", async (mode, label) => {
+    const saved = { ...assessment, difficultyMode: mode };
+    h.list.mockResolvedValue([saved]);
+    h.results.mockResolvedValue({ assessment: saved, results: [result] });
+    await readyDetail();
+    const labels = nodes(tree).filter(n => (n.type === "p" || n.type === "span") && difficultyText(n) === `Difficulty: ${label}`);
+    expect(labels).toHaveLength(3);
+    expect(difficultyText(tree)).toContain("Scores across different difficulty modes are not equivalent");
+    find(n => n.type === "button" && difficultyText(n).includes("Download CSV")).props.onClick();
+    await settle();
+    const blob = vi.mocked(URL.createObjectURL).mock.calls[0][0] as Blob;
+    const csv = await blob.text();
+    expect(csv.split("\r\n")[0]).toContain('"Assessment","Course","Difficulty"');
+    expect(csv).toContain(`"${label}"`);
+    if (mode == null) expect(csv).not.toContain('"Mixed"');
+  });
+});
+
+describe("difficulty-first recruitment count boundaries", () => {
+  it("automatic coverage allows fewer questions than matching topics", async () => {
+    await readyDifficultyForm({
+      ...difficultyCatalog,
+      courses: [{
+        ...difficultyCatalog.courses[0],
+        difficultyCounts: { mixed: 8, medium: 8, hard: 8 },
+        unlabelledCount: 0,
+        modules: Array.from({ length: 8 }, (_, index) => ({
+          name: `Topic ${index + 1}`, count: 1,
+          difficultyCounts: { mixed: 1, medium: 1, hard: 1 },
+        })),
+      }],
+    });
+    chooseMode("hard");
+    await submitDifficultyForm();
+    expect(h.create).toHaveBeenCalledOnce();
+    expect(h.create.mock.calls[0][0]).toMatchObject({ modules: [], questionCount: 5, difficultyMode: "hard" });
+  });
+  it("explicit topic coverage still requires at least one question per selected topic", async () => {
+    await readyDifficultyForm({
+      ...difficultyCatalog,
+      courses: [{
+        ...difficultyCatalog.courses[0],
+        difficultyCounts: { mixed: 12, medium: 12, hard: 12 },
+        modules: Array.from({ length: 6 }, (_, index) => ({
+          name: `Topic ${index + 1}`, count: 2,
+          difficultyCounts: { mixed: 2, medium: 2, hard: 2 },
+        })),
+      }],
+    });
+    chooseMode("medium");
+    narrowTopics(true);
+    for (let index = 1; index <= 6; index++) {
+      topicCheckbox(`Topic ${index}`).props.onCheckedChange(true);
+      render();
+    }
+    await submitDifficultyForm();
+    expect(h.create).not.toHaveBeenCalled();
+    expect(difficultyText(tree)).toContain("Use at least one question per selected topic");
+  });
+  it("disables a mode below five matching questions even when Mixed has sufficient questions", async () => {
+    await readyDifficultyForm({
+      ...difficultyCatalog,
+      courses: [{ ...difficultyCatalog.courses[0], difficultyCounts: { mixed: 30, medium: 4, hard: 5 } }],
+    });
+    expect(find(n => n.props.id === "recruitment-difficulty-medium").props.disabled).toBe(true);
+    expect(find(n => n.props.id === "recruitment-difficulty-hard").props.disabled).toBe(false);
   });
 });

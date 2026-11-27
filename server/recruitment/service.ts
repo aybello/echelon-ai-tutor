@@ -6,7 +6,8 @@ import {
   type Organization, type RecruitmentAssessmentRow, type RecruitmentAssignmentRow,
 } from "../../drizzle/schema";
 import {
-  selectRecruitmentQuestions, type RecruitmentCatalog, type RecruitmentDefinitionSummary, type RecruitmentResult,
+  normalizeRecruitmentDifficulty, recruitmentCreateInput, selectRecruitmentQuestions,
+  type RecruitmentCatalog, type RecruitmentDefinitionSummary, type RecruitmentDifficultyCounts, type RecruitmentResult,
 } from "../../shared/recruitmentAssessment";
 import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
 import type { TrpcContext } from "../_core/context";
@@ -78,6 +79,7 @@ export function recruitmentDefinitionSummary(assessment: RecruitmentAssessmentRo
   const rows = assignments.filter(row => row.assessmentId === assessment.id && row.orgId === assessment.orgId);
   return {
     id: assessment.id, title: assessment.title, courseKey: assessment.courseKey, courseLabel: assessment.courseLabel,
+    difficultyMode: assessment.difficultyMode ?? null,
     modules: [...assessment.modules], questionCount: assessment.questionCount, timeLimitMinutes: assessment.timeLimitMinutes,
     createdAtMs: assessment.createdAtMs, expiresAtMs: assessment.expiresAtMs,
     candidates: rows.length,
@@ -103,10 +105,19 @@ export async function recruitmentCatalog(ctx: TrpcContext, orgId: number): Promi
     const courses = eligibleCourses.flatMap(course => {
       const pool = pools.get(course.questionBankKey) ?? [];
       if (!pool.length) return [];
-      const modules = new Map<string, number>();
-      for (const q of pool) modules.set(q.module, (modules.get(q.module) ?? 0) + 1);
-      return [{ courseKey: course.courseKey, label: course.displayName,
-        modules: [...modules].map(([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name)) }];
+      const difficultyCounts: RecruitmentDifficultyCounts = { mixed: 0, medium: 0, hard: 0 };
+      const modules = new Map<string, RecruitmentDifficultyCounts>();
+      let unlabelledCount = 0;
+      for (const q of pool) {
+        const counts = modules.get(q.module) ?? { mixed: 0, medium: 0, hard: 0 };
+        const difficulty = normalizeRecruitmentDifficulty(q.difficulty);
+        counts.mixed++; difficultyCounts.mixed++;
+        if (difficulty === "medium" || difficulty === "hard") { counts[difficulty]++; difficultyCounts[difficulty]++; }
+        if (difficulty === null) unlabelledCount++;
+        modules.set(q.module, counts);
+      }
+      return [{ courseKey: course.courseKey, label: course.displayName, difficultyCounts, unlabelledCount,
+        modules: [...modules].map(([name, counts]) => ({ name, count: counts.mixed, difficultyCounts: counts })).sort((a, b) => a.name.localeCompare(b.name)) }];
     });
     const members = await tx.select().from(organizationMembers).where(and(eq(organizationMembers.orgId, org.id), eq(organizationMembers.status, "assigned"))).orderBy(organizationMembers.id);
     const now = new Date();
@@ -124,7 +135,10 @@ export async function recruitmentCatalog(ctx: TrpcContext, orgId: number): Promi
   }, { isolationLevel: "read committed" });
 }
 
-export async function createRecruitmentAssessment(ctx: TrpcContext, input: RecruitmentCreate): Promise<{ assessmentId: string }> {
+export async function createRecruitmentAssessment(ctx: TrpcContext, rawInput: RecruitmentCreate): Promise<{ assessmentId: string }> {
+  const parsed = recruitmentCreateInput.safeParse(rawInput);
+  if (!parsed.success) throw new TRPCError({ code: "BAD_REQUEST", message: "Choose valid assessment settings, difficulty mode, topics and question count." });
+  const input = parsed.data;
   await recruitmentManager(ctx, input.orgId, true);
   const creatorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
@@ -137,7 +151,7 @@ export async function createRecruitmentAssessment(ctx: TrpcContext, input: Recru
     const pool = await loadRecruitmentPool(tx, course.questionBankKey);
     let selected;
     try {
-      selected = selectRecruitmentQuestions(pool, input.modules, input.questionCount, () => randomInt(0, 0x100000000) / 0x100000000);
+      selected = selectRecruitmentQuestions(pool, input.modules, input.questionCount, () => randomInt(0, 0x100000000) / 0x100000000, input.difficultyMode);
     } catch (error) {
       throw new TRPCError({ code: "BAD_REQUEST", message: error instanceof Error ? error.message : "Choose valid assessment topics and question count." });
     }
@@ -150,7 +164,7 @@ export async function createRecruitmentAssessment(ctx: TrpcContext, input: Recru
     const assessmentId = randomUUID();
     await tx.insert(recruitmentAssessments).values({
       id: assessmentId, orgId: org.id, title: input.title, courseKey: course.courseKey, courseLabel: course.displayName,
-      modules: [...input.modules], questionCount: selected.length, timeLimitMinutes: input.timeLimitMinutes,
+      difficultyMode: input.difficultyMode, modules: [...new Set(selected.map(q => q.module))], questionCount: selected.length, timeLimitMinutes: input.timeLimitMinutes,
       questions: selected, creatorEmail, createdAtMs: nowMs, expiresAtMs: nowMs + input.expiresInDays * 86_400_000,
     });
     return { assessmentId };

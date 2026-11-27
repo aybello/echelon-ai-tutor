@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { Download } from "lucide-react";
 import { RecruitmentManagerPrivacyContext } from "@/hooks/recruitmentManagerPrivacy";
 import { safeSupervisorCsvCell } from "@shared/supervisorActionPlan";
+import { recruitmentDifficultyLabel } from "@shared/recruitmentAssessment";
 import type {
   RecruitmentDefinitionSummary,
   RecruitmentResult,
@@ -82,6 +83,7 @@ export function downloadRecruitmentCsv(
   const headings = [
     "Assessment",
     "Course",
+    "Difficulty",
     "Candidate name",
     "Candidate email",
     "Status",
@@ -106,6 +108,7 @@ export function downloadRecruitmentCsv(
     return topics.map(topic => [
       assessment.title,
       assessment.courseLabel,
+      recruitmentDifficultyLabel(assessment.difficultyMode),
       result.candidateName,
       result.candidateEmail,
       resultStatus(result),
@@ -169,9 +172,14 @@ export function RecruitmentResults({
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <h3 className="text-lg font-semibold text-slate-900">
-          Candidate results
-        </h3>
+        <div>
+          <h3 className="text-lg font-semibold text-slate-900">
+            Candidate results
+          </h3>
+          <p className="mt-1 text-sm font-medium text-blue-700">
+            Difficulty: {recruitmentDifficultyLabel(assessment.difficultyMode)}
+          </p>
+        </div>
         <Button
           type="button"
           variant="outline"
@@ -188,7 +196,9 @@ export function RecruitmentResults({
       <p className="text-sm leading-relaxed text-slate-600">
         Results support human review, not an automatic hiring decision. Pending
         assessments have no final score. CSV includes one row per topic for
-        completed results.
+        completed results. Difficulty records the selected question labels, not
+        a calibrated standard. Scores across different difficulty modes are not
+        equivalent.
       </p>
       <p className="text-sm leading-relaxed text-slate-600">
         If a candidate loses team-seat or course access, revoke the assessment

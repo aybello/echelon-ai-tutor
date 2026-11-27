@@ -5,7 +5,7 @@ import { getDb } from "../db";
 import { organizations, organizationMembers, subscriptions, questions, recruitmentAssessments, recruitmentAssignments } from "../../drizzle/schema";
 import { operateRecruitmentCandidate } from "./store";
 import { createRecruitmentAssessment, inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentResults, revokeRecruitmentAssignment } from "./service";
-import { RECRUITMENT_CONSENT_VERSION, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
+import { candidateQuestions, RECRUITMENT_CONSENT_VERSION, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import type { TrpcContext } from "../_core/context";
 
@@ -45,6 +45,8 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
   it("hides questions before consent and preserves one original start/timer under parallel requests", async () => {
     const id = await fixture();
     const before = await operateRecruitmentCandidate(ctx, id, { kind: "get" }); expect(before.questions).toEqual([]); expect(before.answers).toEqual({});
+    expect(before.difficultyMode).toBeNull();
+    expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, (await read(id)).assessmentId)))[0].difficultyMode).toBeNull();
     const views = await Promise.all([start(id), start(id), start(id)]);
     expect(new Set(views.map(v => v.startedAtMs)).size).toBe(1);
     expect(new Set(views.map(v => v.deadlineMs)).size).toBe(1);
@@ -178,6 +180,64 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     await expect(operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 7, revision: view.revision } })).rejects.toMatchObject({ code: "BAD_REQUEST" });
     const row = await read(id); expect(row.answers).toEqual({}); expect(row.revision).toBe(view.revision);
   });
+
+  it("persists normalized difficulty and explicit topics while later difficulty edits leave the recorded form and score unchanged", async () => {
+    const manager = { ...ctx, studentEmail: "manager@example.test" }, module = "Difficulty persistence";
+    const tags = [" HARD ", "hard", "HARD", "medium", " MEDIUM ", "easy", "unknown", null];
+    const rows = await db.insert(questions).values(tags.map((difficulty, n) => ({ bankKey: "class2-water", questionNum: 73_000 + n,
+      module, question: `Synthetic difficulty persistence ${n}`, options: '["One","Two"]', correctIndex: 1,
+      explanation: "Synthetic isolated difficulty", reviewStatus: "approved" as const, difficulty }))).$returningId();
+    const formsBefore = await db.select().from(recruitmentAssessments);
+    const membersBefore = await db.select().from(organizationMembers), subsBefore = await db.select().from(subscriptions);
+    try {
+      const course = (await recruitmentCatalog(manager, orgId)).courses.find(course => course.courseKey === "class2-water")!;
+      expect(course.modules.find(topic => topic.name === module)).toEqual({ name: module, count: 8, difficultyCounts: { mixed: 8, medium: 2, hard: 3 } });
+      expect(course.difficultyCounts!.mixed).toBe(course.modules.reduce((sum, topic) => sum + topic.count, 0));
+      await expect(createRecruitmentAssessment(manager, { orgId, title: "No easier Hard replacement", courseKey: "class2-water", difficultyMode: "hard",
+        modules: [module], questionCount: 5, timeLimitMinutes: null, expiresInDays: 7 })).rejects.toMatchObject({ code: "BAD_REQUEST", message: expect.stringMatching(/Not enough usable.*Hard mode/) });
+      expect(await db.select().from(recruitmentAssessments)).toEqual(formsBefore);
+      const created = await createRecruitmentAssessment(manager, { orgId, title: "Mixed difficulty persistence", courseKey: "class2-water", difficultyMode: "mixed",
+        modules: [module], questionCount: 8, timeLimitMinutes: null, expiresInDays: 7 });
+      const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, created.assessmentId));
+      expect(definition.difficultyMode).toBe("mixed"); expect(definition.modules).toEqual([module]);
+      expect([...definition.questions].sort((a, b) => Number(a.id) - Number(b.id)).map(q => q.difficulty)).toEqual(["hard", "hard", "hard", "medium", "medium", "easy", null, null]);
+      for (const { id } of rows) await db.update(questions).set({ difficulty: "medium" }).where(eq(questions.id, id));
+      const invitation = await inviteRecruitmentCandidate(manager, orgId, definition.id, memberId);
+      expect((await operateRecruitmentCandidate(ctx, invitation.assignmentId, { kind: "get" })).difficultyMode).toBe("mixed");
+      const view = await start(invitation.assignmentId);
+      expect(view.questions).toEqual(candidateQuestions(definition.questions));
+      expect(JSON.stringify(view)).not.toMatch(/correctIndex|explanation|"score"|"difficulty":/);
+      const q = definition.questions[0];
+      const saved = await operateRecruitmentCandidate(ctx, invitation.assignmentId, { kind: "answer", input: { assignmentId: invitation.assignmentId, questionId: q.id, selectedIndex: q.correctIndex, revision: view.revision } });
+      await operateRecruitmentCandidate(ctx, invitation.assignmentId, { kind: "submit", input: { assignmentId: invitation.assignmentId, revision: saved.revision } });
+      const report = await recruitmentResults(manager, orgId, definition.id);
+      expect(report.assessment.difficultyMode).toBe("mixed"); expect(report.results[0].questions).toEqual(definition.questions);
+      expect(report.results[0].score).toMatchObject({ correct: 1, answered: 1, total: 8 });
+      expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
+      expect(await db.select().from(organizationMembers)).toEqual(membersBefore); expect(await db.select().from(subscriptions)).toEqual(subsBefore);
+    } finally { for (const { id } of rows) await db.delete(questions).where(eq(questions.id, id)); }
+  });
+
+  it("automatically samples a scarce Hard pool across more topics than questions and stores only represented topics", async () => {
+    const manager = { ...ctx, studentEmail: "manager@example.test" }, prefix = "Automatic hard topic";
+    const rows = await db.insert(questions).values(Array.from({ length: 8 }, (_, n) => ({ bankKey: "class2-water", questionNum: 74_000 + n,
+      module: `${prefix} ${n}`, question: `Synthetic automatic Hard ${n}`, options: '["One","Two"]', correctIndex: 1,
+      explanation: "Synthetic isolated automatic sampling", reviewStatus: "approved" as const, difficulty: "HARD" }))).$returningId();
+    try {
+      const before = await db.select().from(recruitmentAssessments);
+      await expect(createRecruitmentAssessment(manager, { orgId, title: "Explicit all topics require coverage", courseKey: "class2-water", difficultyMode: "hard",
+        modules: Array.from({ length: 8 }, (_, n) => `${prefix} ${n}`), questionCount: 5, timeLimitMinutes: null, expiresInDays: 7 })).rejects.toMatchObject({ code: "BAD_REQUEST", message: expect.stringMatching(/one question per selected topic/) });
+      expect(await db.select().from(recruitmentAssessments)).toEqual(before);
+      const created = await createRecruitmentAssessment(manager, { orgId, title: "Automatic Hard topic coverage", courseKey: "class2-water", difficultyMode: "hard",
+        modules: [], questionCount: 5, timeLimitMinutes: null, expiresInDays: 7 });
+      const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, created.assessmentId));
+      expect(definition.difficultyMode).toBe("hard"); expect(definition.questions).toHaveLength(5);
+      expect(definition.modules).toEqual([...new Set(definition.questions.map(q => q.module))]);
+      expect(definition.modules).toHaveLength(5); expect(definition.questions.every(q => q.difficulty === "hard")).toBe(true);
+      expect(definition.questions.every(q => rows.some(row => String(row.id) === q.id))).toBe(true);
+    } finally { for (const { id } of rows) await db.delete(questions).where(eq(questions.id, id)); }
+  });
+
   it.each(["delegate revoked", "organization cancelled"] as const)("rejects catalog when %s after accepted preflight but before the real transaction", async change => {
     const delegateEmail = "delegate@example.test";
     const inserted = await db.insert(organizationMembers).values({ orgId, email: delegateEmail, name: "Synthetic Delegate",
@@ -311,7 +371,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     expect(invitations[0].assignmentId).toBe(invitations[1].assignmentId);
     expect(await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.assessmentId, created.assessmentId))).toHaveLength(1);
     const view = await start(invitations[0].assignmentId);
-    expect(view.questions).toEqual(definition.questions.map(({ correctIndex: _key, ...q }) => q));
+    expect(view.questions).toEqual(candidateQuestions(definition.questions));
     expect((await inviteRecruitmentCandidate(manager, orgId, created.assessmentId, memberId)).assignmentId).toBe(invitations[0].assignmentId);
     const report = await recruitmentResults(manager, orgId, created.assessmentId);
     expect(report.results[0].score).toBeNull(); expect(report.assessment.completed).toBe(0);
@@ -597,13 +657,17 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     { label: "undersized options", patch: { options: '["A"]' }, unchanged: false },
     { label: "blank option", patch: { options: '["A"," ","C","D"]' }, unchanged: false },
     { label: "duplicate displayed options", patch: { options: '["A"," A ","C","D"]' }, unchanged: false },
+    { label: "difficulty hard to medium", patch: { difficulty: "medium" }, unchanged: false },
+    { label: "difficulty hard to unknown", patch: { difficulty: "unknown" }, unchanged: false },
+    { label: "difficulty hard to null", patch: { difficulty: null }, unchanged: false },
+    { label: "equivalent normalized difficulty", patch: { difficulty: " HARD " }, unchanged: true },
     { label: "unchanged parsed payload", patch: { options: '[ "A", "B", "C", "D" ]', explanation: "Unrelated authored explanation edit" }, unchanged: true },
   ].flatMap(change => (["before source lock", "actual UPDATE wait"] as const).map(phase => ({ ...change, phase }))))
     ("checks sampled $label during creation at $phase with no replacement sampling", async ({ label, patch, unchanged, phase }) => {
       const manager = { ...ctx, studentEmail: "manager@example.test" }, module = `Payload race ${label} ${phase}`;
       const rows = await db.insert(questions).values(snapshot.map((q, n) => ({ bankKey: "class2-water", questionNum: 71_000 + n,
         module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex,
-        explanation: "Synthetic isolated payload race", reviewStatus: "approved" as const }))).$returningId();
+        difficulty: "hard", explanation: "Synthetic isolated payload race", reviewStatus: "approved" as const }))).$returningId();
       const sourceId = rows[2].id, formsBefore = await db.select().from(recruitmentAssessments);
       const poolGate = barrier(), sampled = barrier(), atSource = barrier(), updateGate = barrier(), updated = barrier();
       const realTransaction = db.transaction.bind(db), sourceReads: number[] = [];
@@ -638,7 +702,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
         },
       })), config));
       const pending = createRecruitmentAssessment(manager, { orgId, title: "Synthetic payload race", courseKey: "class2-water",
-        modules: [module], questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 });
+        difficultyMode: "hard", modules: [module], questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 });
       const outcome = pending.then(value => { returned = true; return { value, code: null }; }, error => { returned = true; return { value: null, code: error.code }; });
       try {
         await Promise.race([sampled.promise, outcome.then(() => { throw new Error("Create skipped the unlocked sampling gate"); })]);
@@ -663,7 +727,8 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
           expect(result.code).toBeNull(); expect(result.value).not.toBeNull();
           const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, result.value!.assessmentId));
           expect([...definition.questions].sort((a, b) => Number(a.id) - Number(b.id)))
-            .toEqual(snapshot.map((q, n) => ({ ...q, id: String(rows[n].id), module })));
+            .toEqual(snapshot.map((q, n) => ({ ...q, id: String(rows[n].id), module, difficulty: "hard" })));
+          expect(definition.difficultyMode).toBe("hard");
           expect(await db.select().from(recruitmentAssessments)).toHaveLength(formsBefore.length + 1);
         } else {
           expect(result.code).toBe("PRECONDITION_FAILED"); expect(result.value).toBeNull();

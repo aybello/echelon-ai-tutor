@@ -5,7 +5,7 @@ import type { recruitmentAnswerInput, recruitmentCreateInput, recruitmentStartIn
 export type RecruitmentDb = NonNullable<Awaited<ReturnType<typeof getDb>>>;
 export type RecruitmentTransaction = Parameters<Parameters<RecruitmentDb["transaction"]>[0]>[0];
 export type RecruitmentReadDb = Pick<RecruitmentDb, "select">;
-export type RecruitmentCreate = z.infer<typeof recruitmentCreateInput>;
+export type RecruitmentCreate = z.input<typeof recruitmentCreateInput>;
 export type RecruitmentStart = z.infer<typeof recruitmentStartInput>;
 export type RecruitmentAnswer = z.infer<typeof recruitmentAnswerInput>;
 export type RecruitmentSubmit = z.infer<typeof recruitmentSubmitInput>;

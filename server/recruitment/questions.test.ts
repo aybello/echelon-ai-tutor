@@ -10,7 +10,7 @@ const snapshot: RecruitmentQuestion[] = Array.from({ length: 5 }, (_, i) => ({ i
 
 describe("recruitment usable question pool", () => {
   it("projects only required snapshot fields from a valid authoritative row", () => {
-    expect(usableRecruitmentQuestion({ ...row, explanation: "not part of the recruitment snapshot" } as RecruitmentBankRow)).toEqual({ id: "1", module: "Treatment", prompt: "Synthetic question", options: ["Option one", "Option two"], correctIndex: 1 });
+    expect(usableRecruitmentQuestion({ ...row, explanation: "not part of the recruitment snapshot" } as RecruitmentBankRow)).toEqual({ id: "1", module: "Treatment", prompt: "Synthetic question", options: ["Option one", "Option two"], correctIndex: 1, difficulty: null });
   });
 
   it.each([
@@ -130,7 +130,7 @@ describe("current governed frozen source validation", () => {
     await assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot, { requireUnchangedPayload: true });
     expect(reads.map(read => read.params[0])).toEqual([1, 2, 3, 4, 5]);
     expect(reads.every(read => read.lock === "share")).toBe(true);
-    expect(Object.keys(select.mock.calls[0][0] as object)).toEqual(["id", "module", "question", "options", "correctIndex"]);
+    expect(Object.keys(select.mock.calls[0][0] as object)).toEqual(["id", "module", "question", "options", "correctIndex", "difficulty"]);
     expect(snapshot).toEqual(before);
   });
 

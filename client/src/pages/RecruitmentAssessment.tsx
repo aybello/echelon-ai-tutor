@@ -36,6 +36,7 @@ import { signInHref } from "@shared/funnelNavigation";
 import {
   RECRUITMENT_CONSENT_VERSION,
   RECRUITMENT_NOTICE,
+  recruitmentDifficultyLabel,
   type RecruitmentCandidateView,
 } from "@shared/recruitmentAssessment";
 
@@ -1022,6 +1023,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             {view.title}
           </h1>
           <p className="mt-3 text-slate-600">{view.courseLabel}</p>
+          <p className="mt-2 text-sm font-medium text-blue-700">
+            Difficulty: {recruitmentDifficultyLabel(view.difficultyMode)}
+          </p>
         </div>
         <dl className="grid gap-4 rounded-xl bg-slate-50 p-4 sm:grid-cols-3">
           <div>
@@ -1158,6 +1162,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           </h1>
           <p className="mt-2 text-sm text-slate-500">
             {view.courseLabel} · {answered} of {view.questionCount} answered
+          </p>
+          <p className="mt-2 text-sm font-medium text-blue-700">
+            Difficulty: {recruitmentDifficultyLabel(view.difficultyMode)}
           </p>
         </div>
         <div className="rounded-xl border border-slate-200 bg-white px-4 py-3">

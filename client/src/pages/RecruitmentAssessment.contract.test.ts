@@ -1962,3 +1962,32 @@ describe("candidate exact receipt identity during rejected cache restoration", (
     expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: 9 });
   });
 });
+
+describe("candidate recorded recruitment difficulty headers", () => {
+  it.each([
+    ["invited", "mixed", "Mixed"],
+    ["invited", "medium", "Medium"],
+    ["invited", "hard", "Hard"],
+    ["invited", null, "Not recorded"],
+    ["invited", undefined, "Not recorded"],
+    ["active", "mixed", "Mixed"],
+    ["active", "medium", "Medium"],
+    ["active", "hard", "Hard"],
+    ["active", null, "Not recorded"],
+    ["active", undefined, "Not recorded"],
+  ] as const)("shows stored %s mode %s as %s without inventing historical difficulty", (status, difficultyMode, label) => {
+    const view: RecruitmentCandidateView = {
+      ...fixture,
+      status,
+      difficultyMode,
+      questions: status === "invited" ? [] : fixture.questions,
+      answers: status === "invited" ? {} : fixture.answers,
+    };
+    const tree = ready(view);
+    expect(text(tree)).toContain(`Difficulty: ${label}`);
+    if (difficultyMode == null) expect(text(tree)).not.toContain("Difficulty: Mixed");
+    expect(h.start).not.toHaveBeenCalled();
+    expect(h.save).not.toHaveBeenCalled();
+    expect(h.submit).not.toHaveBeenCalled();
+  });
+});

@@ -2,6 +2,7 @@ import { getTableName, type SQL } from "drizzle-orm";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Organization, OrganizationMember, RecruitmentAssessmentRow, RecruitmentAssignmentRow, Subscription } from "../../drizzle/schema";
+import type { RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 import type { TrpcContext } from "../_core/context";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 
@@ -28,12 +29,14 @@ const active = () => ({ ...invited(), status: "active" as const, startedAtMs: NO
 /** Read/write spy only: no assertion of real MySQL transaction isolation. */
 function fakeManagerDb(lockedOrg: Organization, existing?: RecruitmentAssignmentRow, options: {
   afterPoolRead?: () => void; beforeSourceRead?: (id: number) => void | Promise<void>;
+  pool?: RecruitmentQuestion[];
+  bankKey?: string;
 } = {}) {
   const reads: { table: string; lock: string | null }[] = [];
   const sourceIds: number[] = [];
-  const sources = form().questions.map(q => ({ id: Number(q.id), bankKey: "class2-water", reviewStatus: "approved",
-    module: q.module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex }));
-  const insertValues = vi.fn(async () => undefined);
+  const sources = (options.pool ?? form().questions).map(q => ({ id: Number(q.id), bankKey: options.bankKey ?? "class2-water", reviewStatus: "approved",
+    module: q.module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex, difficulty: (q.difficulty ?? null) as string | null }));
+  const insertValues = vi.fn(async (_values: unknown) => undefined);
   const insert = vi.fn(() => ({ values: insertValues }));
   const tx = {
     select: vi.fn(() => ({ from: (table: Parameters<typeof getTableName>[0]) => ({ where: (predicate: SQL) => {
@@ -134,6 +137,24 @@ beforeEach(() => {
 afterEach(() => vi.useRealTimers());
 
 describe("transaction-authorized recruitment catalog", () => {
+  it("returns real Mixed/Medium/Hard counts per course and topic, including unknown tags only in Mixed", async () => {
+    fakeReportingDb();
+    const water = form().questions.map((q, i) => ({ ...q, module: i < 3 ? "Treatment" : "Safety",
+      difficulty: ["MEDIUM", "hard", "easy", "unknown", null][i] } as unknown as RecruitmentQuestion));
+    mocks.loadRecruitmentPools.mockResolvedValue(new Map([
+      ["class2-water", water], ["class2-water-dist", form().questions.map(q => ({ ...q, difficulty: "hard" as const }))],
+    ]));
+    const catalog = await recruitmentCatalog(context, 7);
+    expect(catalog.courses.find(course => course.courseKey === "class2-water")).toEqual({
+      courseKey: "class2-water", label: expect.any(String), difficultyCounts: { mixed: 5, medium: 1, hard: 1 }, unlabelledCount: 2,
+      modules: [
+        { name: "Safety", count: 2, difficultyCounts: { mixed: 2, medium: 0, hard: 0 } },
+        { name: "Treatment", count: 3, difficultyCounts: { mixed: 3, medium: 1, hard: 1 } },
+      ],
+    });
+    expect(catalog.courses.find(course => course.courseKey === "class2-water-dist")).toMatchObject({ difficultyCounts: { mixed: 5, medium: 0, hard: 5 }, unlabelledCount: 0 });
+  });
+
   it.each([
     ["missing", null],
     ["cancelled", { ...org(), status: "cancelled" }],
@@ -217,6 +238,63 @@ describe("transaction-authorized recruitment catalog", () => {
 describe("manager immutable source acceptance", () => {
   const createInput = { orgId: 7, title: "Synthetic new form", courseKey: "class2-water", modules: ["Treatment"],
     questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 };
+
+  it.each([
+    ["class1-water", "class1-water", "ontario"],
+    ["class2-ww", "class2-wastewater", "ontario"],
+    ["wpi-class2-water", "wpi-class2-water", "western"],
+  ])("creates difficulty-first forms for eligible %s using only its mapped bank %s", async (courseKey, bankKey, province) => {
+    const db = fakeManagerDb({ ...org(), province }, undefined, { bankKey,
+      pool: form().questions.map(q => ({ ...q, difficulty: "hard" as const })) });
+    await createRecruitmentAssessment(context, { ...createInput, courseKey, difficultyMode: "hard", modules: [] });
+    expect(db.insertValues).toHaveBeenCalledWith(expect.objectContaining({ courseKey, courseLabel: expect.any(String), difficultyMode: "hard" }));
+    expect(db.sourceIds).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it.each(["unknown-course", "texas-class-d-water", "us-unknown-water"])("does not widen existing eligibility for %s through difficulty mode", async courseKey => {
+    const db = fakeManagerDb(org());
+    await expect(createRecruitmentAssessment(context, { ...createInput, courseKey, difficultyMode: "hard", modules: [] })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.insert).not.toHaveBeenCalled(); expect(db.reads.filter(read => read.table === "questions")).toEqual([]);
+  });
+
+  it.each([undefined, []])("creates default Mixed forms with automatic topics %j and freezes only represented topics", async modules => {
+    const pool = Array.from({ length: 8 }, (_, i) => ({ ...form().questions[0], id: String(i + 1), module: `Topic ${i}`, difficulty: "hard" as const }));
+    const db = fakeManagerDb(org(), undefined, { pool });
+    await createRecruitmentAssessment(context, { ...createInput, modules });
+    const stored = db.insertValues.mock.calls[0][0] as unknown as RecruitmentAssessmentRow;
+    expect(stored.difficultyMode).toBe("mixed"); expect(stored.questions).toHaveLength(5);
+    expect(stored.modules).toEqual([...new Set(stored.questions.map(q => q.module))]);
+    expect(stored.modules).toHaveLength(5); expect(stored.questions.every(q => q.difficulty === "hard")).toBe(true);
+    expect(db.sourceIds).toEqual([...db.sourceIds].sort((a, b) => a - b));
+  });
+
+  it("filters before explicit coverage and persists the requested mode with normalized snapshot difficulty", async () => {
+    const pool = [...form().questions.map(q => ({ ...q, difficulty: "hard" as const })),
+      { ...form().questions[0], id: "6", module: "Controls", difficulty: "hard" as const },
+      { ...form().questions[0], id: "7", module: "Safety", difficulty: "medium" as const }];
+    const db = fakeManagerDb(org(), undefined, { pool });
+    await createRecruitmentAssessment(context, { ...createInput, difficultyMode: "hard", modules: ["Treatment", "Controls"] });
+    expect(db.insertValues).toHaveBeenCalledWith(expect.objectContaining({ difficultyMode: "hard", questionCount: 5 }));
+    const stored = db.insertValues.mock.calls[0][0] as unknown as RecruitmentAssessmentRow;
+    expect(new Set(stored.modules)).toEqual(new Set(["Treatment", "Controls"]));
+    expect(stored.questions.every(q => q.difficulty === "hard")).toBe(true); expect(db.sourceIds).not.toContain(7);
+    await expect(createRecruitmentAssessment(context, { ...createInput, difficultyMode: "hard", modules: ["Treatment", "Safety"] }))
+      .rejects.toMatchObject({ code: "BAD_REQUEST", message: expect.stringMatching(/selected topic.*Hard mode/) });
+  });
+
+  it("rejects scarce Hard availability without fallback or INSERT", async () => {
+    const db = fakeManagerDb(org(), undefined, { pool: form().questions.map((q, i) => ({ ...q, difficulty: i ? "medium" : "hard" })) });
+    await expect(createRecruitmentAssessment(context, { ...createInput, difficultyMode: "hard", modules: [] }))
+      .rejects.toMatchObject({ code: "BAD_REQUEST", message: expect.stringMatching(/Not enough usable.*Hard mode/) });
+    expect(db.insert).not.toHaveBeenCalled(); expect(db.sourceIds).toEqual([]);
+  });
+
+  it.each(["medium", "unknown", null])("rejects difficulty edit to %j after sampling and before source SHARE lock", async difficulty => {
+    const db = fakeManagerDb(org(), undefined, { pool: form().questions.map(q => ({ ...q, difficulty: "hard" })),
+      afterPoolRead: () => { db.sources[2].difficulty = difficulty; } });
+    await expect(createRecruitmentAssessment(context, { ...createInput, difficultyMode: "hard" })).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
+    expect(db.insert).not.toHaveBeenCalled(); expect(db.sourceIds).toEqual([1, 2, 3]);
+  });
 
   it.each(["missing", "other-bank", "in_review", "rejected"])("refuses to freeze selected sources changed to %s after the unlocked pool read", async change => {
     const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => {

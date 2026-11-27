@@ -23,6 +23,28 @@ function assertCandidatePrivacy(dto: unknown) {
 }
 
 describe("recruitment durable state transitions", () => {
+  it.each(["mixed", "medium", "hard", null, undefined] as const)("returns only recorded form mode %s without per-question difficulty or answer-key disclosure", difficultyMode => {
+    const form = { ...assessment(), difficultyMode, questions: assessment().questions.map(q => ({ ...q, difficulty: "hard" as const })) } as RecruitmentAssessmentRow;
+    const before = structuredClone(form);
+    for (const row of [invited(), active(), { ...active(), status: "submitted" as const, submittedAtMs: NOW + 1 }]) {
+      const dto = recruitmentCandidateView(form, row, "Synthetic utility", NOW + 1);
+      expect(dto.difficultyMode).toBe(difficultyMode ?? null); assertCandidatePrivacy(dto);
+      expect(dto.questions.every(q => !Object.hasOwn(q, "difficulty"))).toBe(true);
+    }
+    const submitted = transitionRecruitment(form, { ...active(), answers: { q1: 0 } }, submit(), NOW + 1);
+    expect(recruitmentResult(form, submitted, NOW + 1).questions).toEqual(form.questions);
+    expect(form).toEqual(before);
+  });
+
+  it("keeps historical snapshots without difficulty keys unchanged through transitions and scored review", () => {
+    const form = assessment(), before = structuredClone(form);
+    const submitted = transitionRecruitment(form, { ...active(), answers: { q1: 0 } }, submit(), NOW + 1);
+    expect(recruitmentCandidateView(form, submitted, "Synthetic utility", NOW + 1).difficultyMode).toBeNull();
+    expect(recruitmentResult(form, submitted, NOW + 1).questions).toEqual(before.questions);
+    expect(recruitmentResult(form, submitted, NOW + 1).questions.every(q => !Object.hasOwn(q, "difficulty"))).toBe(true);
+    expect(form).toEqual(before);
+  });
+
   it("records explicit consent once and never mutates the invitation or frozen form", () => {
     const form = assessment(), row = invited(), before = structuredClone({ form, row });
     const next = transitionRecruitment(form, row, start, NOW);

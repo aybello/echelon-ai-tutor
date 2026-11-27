@@ -624,6 +624,27 @@
         "recruitment_assessments",
         "recruitment_assignments"
       ]
+    },
+    {
+      "version": 88,
+      "tag": "0088_recruitment_difficulty_mode",
+      "file": "drizzle/0088_recruitment_difficulty_mode.sql",
+      "sha256": "e029296cf23a64662fd0ca4f9207c36e115115b8cd2e9b17d9dc1d23d022c7f7",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "recruitment_assessments"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "recruitment_assessments",
+          "column": "difficultyMode",
+          "targetType": "enum('mixed','medium','hard')",
+          "targetNullable": true,
+          "sqlType": "enum('mixed','medium','hard')"
+        }
+      ]
     }
   ]
 }
