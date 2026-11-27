@@ -253,12 +253,13 @@ function SalaryChart({ province }: { province: ProvinceData }) {
         </div>
         {/* Scale */}
         <div className="career-salary-scale" style={{
-          display: "flex", justifyContent: "space-between", marginTop: 12,
-          paddingTop: 8, borderTop: "1px solid #F1F5F9", paddingLeft: 84, paddingRight: 174,
+          marginTop: 12, height: 24, paddingTop: 8, borderTop: "1px solid #F1F5F9",
         }}>
-          {[0, maxSalary / 4, maxSalary / 2, (maxSalary * 3) / 4, maxSalary].map(v => (
-            <span key={v} style={{ fontSize: 9, color: "#CBD5E1" }}>{v === 0 ? "$0" : fmtSalary(v)}</span>
-          ))}
+          <div className="career-salary-scale-plot" style={{ position: "relative", height: 16, marginLeft: 84, marginRight: 174 }}>
+            {[0, maxSalary / 4, maxSalary / 2, (maxSalary * 3) / 4, maxSalary].map(v => (
+              <span key={v} style={{ position: "absolute", top: 0, left: `${(v / maxSalary) * 100}%`, transform: "translateX(-50%)", fontSize: 9, color: "#CBD5E1", whiteSpace: "nowrap" }}>{v === 0 ? "$0" : fmtSalary(v)}</span>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -285,6 +286,11 @@ function CareerTimeline({ onSelect, selected, province, track }: {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      {track !== "all" && (
+        <div className="career-active-track-label" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 10, padding: "9px 12px", color: "#1D4ED8", fontSize: 11, fontWeight: 700 }}>
+          Active track: {track === "wqa" ? "WQA" : track === "water" ? "Water" : "Wastewater"}
+        </div>
+      )}
       {mainLevels.length > 0 && <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Typical Career Timeline
@@ -612,7 +618,7 @@ export default function CareerMap() {
           .career-bar-row { flex-wrap: wrap !important; gap: 8px !important; }
           .career-bar-label { width: 50px !important; text-align: left !important; min-width: 50px !important; }
           .career-bar-salary { width: auto !important; flex: 1 1 100% !important; }
-          .career-salary-scale { padding-left: 58px !important; padding-right: 0 !important; }
+          .career-salary-scale-plot { margin-left: 58px !important; margin-right: 0 !important; }
         }
       `}</style>
 
