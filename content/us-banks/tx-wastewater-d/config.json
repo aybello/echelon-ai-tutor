@@ -1,0 +1,21 @@
+{
+  "id": "tx-wastewater-d",
+  "bankKey": "tx-wastewater-d",
+  "itemPrefix": "TX-WWD",
+  "version": "2026-11-27-v1",
+  "state": "TX",
+  "stream": "wastewater-treatment-class-d",
+  "label": "Texas Wastewater Treatment Plant Operator, Class D (Narrow practice bank)",
+  "startNumber": 1,
+  "count": 400,
+  "calcCount": 91,
+  "purpose": "Practice questions aligned to the TCEQ need-to-know categories for the Texas Class D wastewater treatment plant operator exam. Narrow scope: 20 categories, no exam weights, no question counts. Practice questions aligned to the TCEQ need-to-know categories; not the official exam blueprint. Original items in US units.",
+  "scope": "Narrow. This bank covers only the 20 wastewater treatment plant Class D need-to-know categories published by TCEQ. TCEQ publishes no exam outline, weights or question counts, so the bank is not balanced to an exam and no category share is claimed. Practice questions aligned to the TCEQ need-to-know categories; not the official exam blueprint. Not affiliated with or endorsed by TCEQ.",
+  "reviewIntro": "400 original practice questions: 309 conceptual and 91 calculations, in US customary units, aligned to the 20 TCEQ Class D wastewater need-to-know categories. Narrow scope: no exam weights or question counts are published, so no category share is claimed. Practice questions aligned to the TCEQ need-to-know categories; not the official exam blueprint. This is a local content package, not a production import.",
+  "sources": {
+    "TCEQWW": [
+      "TCEQ, What You Need to Know for a Class D Wastewater Treatment Plant Operator Exam (need-to-know categories and scope of category)",
+      "https://www.tceq.texas.gov/licensing/licenses/wastewaterntk.html"
+    ]
+  }
+}

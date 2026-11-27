@@ -1,0 +1,124 @@
+# Texas wastewater treatment plant, Class D (Narrow). Calculations; the builder recomputes each answer from its expression. Practice questions aligned to the TCEQ need-to-know categories; not the official exam blueprint.
+@Permits|TCEQWW|Waste discharge permit terms
+A plant reports 54.0 million gallons of flow for a 30-day month. What is the average daily flow in MGD?|Average daily flow = total flow ÷ number of days|54.0/30|MGD|2|1.74,1620.00,18.00|m
+@Permits|TCEQWW|Self-reporting and flow records
+The monthly flow total is 1,250,000 gallons over 31 days. What is the average flow in gpm? Use 1,440 minutes per day.|Average gpm = total gallons ÷ days ÷ 1,440 minutes|1250000/31/1440|gpm|1|40322.6,672.0,868.1|m
+A permit lists 2.0 MGD of permitted capacity. The measured average flow is 1.2 MGD. What percent of permitted capacity is used?|Percent used = average flow ÷ permitted capacity × 100|1.2/2.0*100|%|1|166.7,240.0,0.6|h
+@Design Criteria|TCEQWW|Minimum design standards
+A rectangular tank is 40 ft long, 20 ft wide and 10 ft deep. Use 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = length × width × depth, then cubic feet × 7.48 gal per ft³|40*20*10*7.48|gal|0|8000,1070,524|m
+@Design Criteria|TCEQWW|Detention time and sizing
+A basin holds 30,000 gallons and receives 500,000 gallons per day. Use 24 hours per day. What is the detention time in hours?|Detention time = volume ÷ flow, with the flow converted to gallons per hour|30000/(500000/24)|hours|2|0.06,0.69,3.60|m
+A round clarifier is 60 ft in diameter and receives 1.0 MGD. Use area = 0.785 × D². What is the surface overflow rate in gallons per day per square foot?|Surface overflow rate = flow in gpd ÷ surface area in ft²|1000000/(0.785*60*60)|gpd/ft²|1|21231.4,1415.4,88.5|m
+A tank is 16 ft by 24 ft with a water depth of 12 ft. Use 1 ft³ = 7.48 gal. The flow is 0.6 MGD. What is the detention time in hours?|Detention time = volume in gal ÷ flow in gal per hour|16*24*12*7.48/(600000/24)|hours|2|0.06,0.18,3.45|h
+@Laboratory|TCEQWW|Sampling and preservation
+A composite sample is made of 6 equal portions of 250 mL each. What is the total sample volume in liters?|Total volume = number of portions × volume per portion, converted from mL to L|6*250/1000|L|2|1500.00,0.25,15.00|m
+A 25 mL sample is diluted to a total volume of 250 mL. What is the dilution factor?|Dilution factor = final volume ÷ sample volume|250/25|times|0|0,225,6250|h
+@Laboratory|TCEQWW|Analytical tests and interpretation
+Influent total suspended solids are 180 mg/L and effluent total suspended solids are 12 mg/L. What is the percent removal?|Percent removal = (influent − effluent) ÷ influent × 100|(180-12)/180*100|%|1|6.7,16800.0,1400.0|m
+@Collection|TCEQWW|Components and materials
+A circular sewer pipe has an inside diameter of 1.5 ft. Use area = 0.785 × D². What is the cross-sectional area?|Area = 0.785 × D², with D in feet|0.785*1.5*1.5|ft²|2|1.18,0.44,4.71|m
+@Collection|TCEQWW|Operation, maintenance and hazards
+A 12 in pipe runs full at 2.5 ft/s. Use D = 1.0 ft, area = 0.785 × D², and 1 ft³/s = 448.8 gpm. What is the flow in gpm?|Flow = area × velocity, converted from ft³/s to gpm|0.785*1.0*1.0*2.5*448.8|gpm|0|2,15,1122|m
+A lift station pumps 350 gpm for 4.5 hours per day. How many gallons are pumped per day?|Gallons per day = gpm × 60 minutes per hour × hours per day|350*60*4.5|gal|0|1575,8400,12634|m
+A sewer drops 2.4 ft over a run of 300 ft. What is the slope in percent?|Slope = drop ÷ length × 100|2.4/300*100|%|1|125.0,720.0,1.2|h
+Dry-weather flow is 1.1 MGD and wet-weather flow is 2.3 MGD. Use 1 MGD = 694.4 gpm. What is the extra wet-weather flow in gpm?|Extra flow = (wet-weather flow − dry-weather flow) converted to gpm|(2.3-1.1)*694.4|gpm|1|1.2,20000.0,1597.1|m
+@Pumping|TCEQWW|Pump types and operation
+A centrifugal pump delivers 800 gpm against a total head of 60 ft. Water horsepower = gpm × ft ÷ 3,960. What is the water horsepower?|Water horsepower = gpm × head in ft ÷ 3,960|800*60/3960|hp|2|121.21,9.04,727.27|m
+A pump has a water horsepower of 9.0 hp at a total head of 45 ft. Use water horsepower = gpm × ft ÷ 3,960. What is the flow in gpm?|Flow = water horsepower × 3,960 ÷ head in ft|9*3960/45|gpm|0|0,35640,591|h
+A pump runs 22 hours per day and delivers 500 gpm. How many gallons are pumped per day?|Gallons per day = gpm × 60 minutes per hour × hours per day|500*60*22|gal|0|11000,720000,66000|m
+@Pumping|TCEQWW|Pumping installations and maintenance
+A wet well is 8 ft by 6 ft, and the level drops 3 ft between pump-on and pump-off. Use 1 ft³ = 7.48 gal. How many gallons are drawn down?|Volume = length × width × drop, then cubic feet × 7.48 gal per ft³|8*6*3*7.48|gal|0|144,19,381|m
+A motor is rated 20 hp. Use 1 hp = 0.746 kW. What is the rating in kW?|kW = hp × 0.746|20*0.746|kW|2|26.81,1.49,14920.00|m
+A 60,000 gallon wet well is emptied at 600 gpm. How many minutes does emptying take?|Time in minutes = volume ÷ flow rate|60000/600|min|0|36000000,2,0|m
+@Preliminary Treatment|TCEQWW|Screens and comminutors
+A bar screen channel is 2.0 ft wide, with a flow depth of 1.5 ft. The velocity is 2.0 ft/s. What is the flow in cfs?|Flow = area × velocity, with area = width × depth|2.0*1.5*2.0|cfs|1|5.5,3.0,44.9|m
+A comminutor passes 900 gpm continuously. What is the daily flow in MGD?|Daily flow in gallons = gpm × 1,440 minutes per day, then converted to MGD|900*1440/1000000|MGD|3|1296.000,0.054,9.694|h
+@Preliminary Treatment|TCEQWW|Grit removal
+A grit chamber is 30 ft long, 3 ft wide and 4 ft deep. Use 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = length × width × depth, then cubic feet × 7.48 gal per ft³|30*3*4*7.48|gal|0|360,48,277|m
+A grit chamber holds 2,500 gallons, and the flow is 500 gpm. What is the detention time in minutes?|Detention time = volume ÷ flow|2500/500|min|1|1250000.0,0.2,0.1|m
+A channel carries 1.8 MGD. Use 1 MGD = 694.4 gpm. What is the flow in gpm?|Flow in gpm = MGD × 694.4|1.8*694.4|gpm|1|2592.0,0.0,20.8|h
+@Primary Treatment|TCEQWW|Sedimentation basins and Imhoff tanks
+A rectangular primary clarifier is 60 ft long, 20 ft wide and has a water depth of 10 ft. Use 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = length × width × depth, then cubic feet × 7.48 gal per ft³|60*20*10*7.48|gal|0|12000,1604,673|m
+A rectangular tank is 60 ft long, 20 ft wide and 10 ft deep. Use 1 ft³ = 7.48 gal. The flow is 1.5 MGD. What is the detention time in hours? Use 24 hours per day.|Detention time = volume in gal ÷ flow in gal per hour|60*20*10*7.48/(1500000/24)|hours|2|0.70,0.06,3.59|h
+A circular primary tank is 50 ft in diameter and receives 1.2 MGD. Use area = 0.785 × D². What is the surface overflow rate in gallons per day per square foot?|Surface overflow rate = flow in gpd ÷ area in ft²|1200000/(0.785*50*50)|gpd/ft²|1|30573.2,2445.9,152.9|m
+@Primary Treatment|TCEQWW|Primary sludge and tank performance
+Primary sludge is pumped at 3,000 gallons per day with 4 percent solids. Use 8.34 lb/gal. How many pounds of dry solids are removed per day?|Dry solids lb/day = gallons per day × 8.34 × fraction solids|3000*8.34*0.04|lb/day|0|25020,120,100080|m
+A sludge pump runs 2 hours per day at 250 gpm. How many gallons are pumped per day?|Gallons per day = gpm × 60 minutes per hour × hours per day|250*60*2|gal|0|500,12000,8|m
+A sedimentation basin of 40,000 gallons receives 0.8 MGD. Use 24 hours per day. What is the detention time in hours?|Detention time = volume ÷ flow in gallons per hour|40000/(800000/24)|hours|2|0.83,0.05,3.00|h
+@Ponds|TCEQWW|Pond types
+A rectangular lagoon is 300 ft by 200 ft with an average depth of 4 ft. Use 1 ft³ = 7.48 gal. What is its volume in million gallons?|Volume in gal = length × width × depth × 7.48, then divided by 1,000,000|300*200*4*7.48/1000000|MG|2|0.24,1795.20,0.00|m
+A lagoon holds 1,795,200 gallons and receives 250,000 gallons per day. What is the detention time in days?|Detention time in days = volume ÷ daily flow|1795200/250000|days|1|0.1,172.3,71.8|h
+How many gallons are in one acre-foot of water? Use 43,560 ft³ per acre-foot and 1 ft³ = 7.48 gal.|Gallons = cubic feet × 7.48 gal per ft³|43560*7.48|gal|0|43560,5824,2437199|m
+@Ponds|TCEQWW|Pond biology and operation
+A pond surface covers 5 acres. Use 1 acre = 43,560 ft². What is the surface area in square feet?|Area in ft² = acres × 43,560|5*43560|ft²|0|218,21780,2178|m
+A pond holds 10 acre-feet of water and receives 500,000 gallons per day. Use 1 acre-foot = 325,829 gal. What is the detention time in days?|Detention time = volume ÷ daily flow|10*325829/500000|days|2|0.15,6516.58,156.40|h
+A pond holds 2.0 million gallons and receives 100,000 gallons per day. How many days does the pond hold the water?|Detention time = volume ÷ daily flow|2000000/100000|days|0|0,140,1|m
+@Trickling Filters|TCEQWW|Trickling filter media and distribution
+A circular trickling filter is 80 ft in diameter and 6 ft deep. Use area = 0.785 × D². What is the media volume in cubic feet?|Volume = area × depth, with area = 0.785 × D²|0.785*80*80*6|ft³|0|377,7536,120576|m
+A circular trickling filter is 80 ft in diameter and receives 0.6 MGD. Use area = 0.785 × D². What is the hydraulic loading in gallons per day per square foot?|Hydraulic loading = flow in gpd ÷ surface area in ft²|600000/(0.785*80*80)|gpd/ft²|1|9554.1,477.7,29.9|m
+@Trickling Filters|TCEQWW|RBC units and filter operation
+A disc in an RBC unit is 12 ft in diameter. Use area = 0.785 × D². What is the area of one face in square feet?|Area = 0.785 × D²|0.785*12*12|ft²|1|9.4,28.3,37.7|m
+An RBC unit has 40 discs. Each disc has 113 ft² of area per face, and both faces are wetted. What is the total wetted area in square feet?|Total area = discs × faces × area per face|40*2*113|ft²|0|4520,0,67619|m
+A treatment train recirculates 1.5 times the flow back to a trickling filter. The flow is 0.5 MGD. Use 1 MGD = 694.4 gpm. What is the recirculated flow in gpm?|Recirculated flow = recirculation ratio × flow, converted to gpm|0.5*1.5*694.4|gpm|1|347.2,0.8,1080.0|m
+@Activated Sludge|TCEQWW|Process modes and flow patterns
+An aeration tank is 60 ft long, 25 ft wide and 15 ft deep. Use 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = length × width × depth, then cubic feet × 7.48 gal per ft³|60*25*15*7.48|gal|0|22500,3008,748|m
+An aeration tank 60 ft by 25 ft by 15 ft receives a flow of 2.0 MGD. Use 1 ft³ = 7.48 gal and 24 hours per day. What is the hydraulic detention time in hours?|Detention time = volume in gal ÷ flow in gal per hour|60*25*15*7.48/(2000000/24)|hours|2|0.50,0.08,5.05|h
+Return activated sludge is pumped at 40 percent of a flow of 1.2 MGD. Use 1 MGD = 694.4 gpm. What is the return flow in gpm?|Return flow = return ratio × flow, converted to gpm|0.4*1.2*694.4|gpm|1|0.5,691.2,277.8|m
+@Activated Sludge|TCEQWW|Detention time and recycle
+A tank holds 50,000 gallons and receives 0.5 MGD. Use 24 hours per day. What is the detention time in hours?|Detention time = volume ÷ flow in gallons per hour|50000/(500000/24)|hours|1|0.4,0.1,6.0|m
+A sludge stream of 5,000 gallons per day contains 0.4 percent solids. Use 8.34 lb/gal. How many pounds of dry solids are wasted per day?|Dry solids = gallons × 8.34 × fraction solids|5000*8.34*0.004|lb/day|1|41700.0,20.0,1668.0|m
+Two tanks with a total volume of 150,000 gallons receive 1.5 MGD. What is the detention time in minutes?|Detention time = volume ÷ flow in gallons per minute|150000/(1500000/1440)|min|0|2,0,6|h
+@Process Control|TCEQWW|Monitoring and sampling
+A dry sample weighs 0.8 g from a 20 g wet sample. What is the percent solids?|Percent solids = dry weight ÷ wet weight × 100|0.8/20*100|%|1|2500.0,16.0,0.0|m
+Four daily results are 2.4, 2.6, 2.2 and 2.8 mg/L. What is the average?|Average = sum of results ÷ number of results|(2.4+2.6+2.2+2.8)/4|mg/L|1|10.0,3.3,1.8|h
+@Process Control|TCEQWW|Adjusting the process from test results
+A 50 mL sample is diluted to 500 mL. The diluted sample tests at 12 mg/L. What was the concentration of the original sample?|Original = diluted result × final volume ÷ sample volume|12*500/50|mg/L|0|1,22,600|m
+Flow of 0.6 MGD has 30 mg/L and flow of 1.2 MGD has 10 mg/L. What is the flow-weighted average concentration?|Weighted average = sum of (flow × concentration) ÷ total flow|(0.6*30+1.2*10)/(0.6+1.2)|mg/L|1|20.0,30.0,25.0|h
+A 1,000 mL settleability sample has 300 mL of settled sludge after 30 minutes. What percent of the sample volume settled?|Percent = settled volume ÷ sample volume × 100|300/1000*100|%|1|333.3,3000.0,0.3|m
+@Disinfection|TCEQWW|Chlorine chemistry and dosage
+A plant treats 2.0 MGD and feeds chlorine at 6.0 mg/L. Use 8.34 lb/gal. What is the chlorine dose in pounds per day?|Dose (lb/day) = MGD × mg/L × 8.34|2*6*8.34|lb/day|0|12,17,13|m
+Chlorine is dosed at 8.0 mg/L and the residual is 1.5 mg/L. What is the chlorine demand in mg/L?|Demand = dose − residual|8.0-1.5|mg/L|1|9.5,5.3,12.0|h
+A 150 lb chlorine cylinder feeds 2.5 lb/day. How many days will one cylinder last?|Days = cylinder mass ÷ daily use|150/2.5|days|0|0,375,9|m
+@Disinfection|TCEQWW|Chlorine handling and dechlorination
+A dechlorination ratio is 0.9 lb of sulfur dioxide per lb of chlorine residual. The residual is 40 lb/day. How many pounds per day of sulfur dioxide are needed?|SO2 = ratio × residual|0.9*40|lb/day|0|44,41,300|m
+A tank of 30,000 gallons is dosed at 4 mg/L. Use 8.34 lb/gal and 1 MG = 1,000,000 gal. How many pounds of chlorine are added?|Chlorine lb = MG × mg/L × 8.34|0.03*4*8.34|lb|2|0.12,1000.80,120000.00|h
+A chlorine contact tank holds 25,000 gallons and the flow is 1.0 MGD. What is the contact time in minutes?|Contact time = volume ÷ flow in gallons per minute|25000/(1000000/1440)|min|0|0,2,40|m
+@Sludge Digestion|TCEQWW|Aerobic and anaerobic processes
+An anaerobic digester is 60 ft in diameter and 20 ft deep. Use area = 0.785 × D² and 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = 0.785 × D² × depth, converted to gallons|0.785*60*60*20*7.48|gal|0|56520,7046,28185|m
+A digester holds 422,770 gallons and receives 25,000 gallons per day. What is the detention time in days?|Detention = volume ÷ daily flow|422770/25000|days|1|0.1,169.1,0.7|h
+A digester is fed 1,500 gallons per day of sludge at 4 percent solids. Use 8.34 lb/gal. How many pounds of dry solids are fed per day?|Dry solids = gallons × 8.34 × fraction solids|1500*8.34*0.04|lb/day|1|12510.0,60.0,5004.0|m
+@Sludge Digestion|TCEQWW|Digester operation and safety
+Convert 95 °F to degrees Celsius. Use °C = (°F − 32) × 5/9.|Celsius = (F − 32) × 5 ÷ 9|(95-32)*5/9|°C|1|113.4,52.8,63.0|m
+A digester produces 12,000 ft³ of gas per day, and 65 percent is methane. How many cubic feet of methane are produced per day?|Methane = gas volume × methane fraction|12000*0.65|ft³/day|0|4200,18462,780|m
+Three digesters each hold 422,770 gallons. What is the total storage in gallons?|Total = number × volume each|3*422770|gal|0|140923,1268,422773|m
+@Biosolids Disposal|TCEQWW|Thickening and dewatering
+A thickened sludge stream of 40,000 gallons per day has 2 percent solids. Use 8.34 lb/gal. What is the dry solids load in lb/day?|Dry solids = gallons × 8.34 × fraction solids|40000*8.34*0.02|lb/day|0|333600,800,66720|m
+The same dry solids of 6,672 lb/day are thickened to 6 percent solids. Use 8.34 lb/gal. What volume in gallons per day results?|Volume = dry lb ÷ (8.34 × fraction solids)|6672/(8.34*0.06)|gal/day|0|1333,3339,111200|h
+Dewatered cake at 20 percent solids carries 6,672 lb/day of dry solids. What is the wet cake mass in lb/day?|Wet mass = dry mass ÷ fraction solids|6672/0.20|lb/day|0|1334,333600,5338|m
+@Biosolids Disposal|TCEQWW|Stabilization, sampling and disposal
+A digester reduces volatile solids by 60 percent. Influent volatile solids are 800 lb/day. How many pounds per day of volatile solids remain?|Remaining = influent × (1 − reduction)|800*(1-0.6)|lb/day|0|480,2000,1280|m
+A stockpile contains 350 cubic yards of biosolids. Use 1 yd³ = 27 ft³. What is the volume in cubic feet?|Volume in ft³ = yd³ × 27|350*27|ft³|0|13,1050,70686|m
+A land application site receives 20,000 lb of dry biosolids per acre per year. Use 1 dry ton = 2,000 lb. What is the rate in dry tons per acre per year?|Dry tons = pounds ÷ 2,000|20000/2000|dry tons per acre per year|1|40000000.0,100.0,1.0|h
+@Effluent Disposal|TCEQWW|Effluent characteristics and sampling
+A reuse pond holds 2.0 million gallons. Use 1 acre-foot = 325,829 gallons. How many acre-feet are stored?|Acre-feet = gallons ÷ 325,829|2000000/325829|acre-ft|2|45.91,267379.68,73.66|m
+Applying 500,000 gallons to 40 acres in one day gives what depth in inches? Use 1 acre-foot = 325,829 gal and 1 ft = 12 in.|Depth in inches = gallons ÷ (acres × 325,829) × 12|500000/(40*325829)*12|in|2|0.04,18.41,150000.00|h
+@Effluent Disposal|TCEQWW|Disposal and reuse methods
+A sprayfield of 25 acres receives 600,000 gallons per day. How many gallons per acre per day is that?|Gallons per acre per day = gallons per day ÷ acres|600000/25|gal/acre/day|0|15000000,24,0|m
+A reuse system reuses 0.3 MGD of a total 1.2 MGD of effluent. What percent is reused?|Percent reused = reused ÷ total × 100|0.3/1.2*100|%|1|400.0,30.0,0.2|m
+A discharge of 0.9 MGD is dosed with chlorine at 4.5 mg/L. Use 8.34 lb/gal. What is the dose in lb/day?|Dose = MGD × mg/L × 8.34|0.9*4.5*8.34|lb/day|1|252.7,4.5,38.4|m
+@Math Problems|TCEQWW|Area and volume
+A rectangular basin is 50 ft by 30 ft with 12 ft of water depth. What is its volume in cubic feet?|Volume = length × width × depth|50*30*12|ft³|0|1500,134640,960|m
+A tank is 40 ft in diameter and 15 ft deep. Use area = 0.785 × D² and 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = 0.785 × D² × depth × 7.48|0.785*40*40*15*7.48|gal|0|3523,563693,35231|m
+A circular tank is 25 ft in diameter. What is its top surface area in square feet? Use area = 0.785 × D².|Area = 0.785 × D²|0.785*25*25|ft²|1|19.6,122.7,78.5|m
+A rectangular lagoon is 200 ft by 150 ft and 6 ft deep. Use 1 ft³ = 7.48 gal. What is its volume in million gallons?|Volume = L × W × D × 7.48 ÷ 1,000,000|200*150*6*7.48/1000000|MG|2|0.18,1346.40,1346400.00|h
+A rectangular channel is 3 ft wide with a flow depth of 1.2 ft. What is the cross-sectional area in square feet?|Area = width × depth|3*1.2|ft²|1|4.2,4.3,8.4|m
+A tank holds 50,000 gallons. Use 1 ft³ = 7.48 gal. The tank is 20 ft by 20 ft. What depth in feet fills it?|Depth = volume in ft³ ÷ area in ft²|50000/7.48/(20*20)|ft|1|6684.5,125.0,334.2|h
+A square tank is 40 ft on each side and 8 ft deep. Use 1 ft³ = 7.48 gal. What is its volume in gallons?|Volume = side × side × depth × 7.48|40*40*8*7.48|gal|0|12800,1711,658|m
+@Math Problems|TCEQWW|Flow rate and dosage
+A plant flow is 2.4 MGD. What is the flow in gpm? Use 1 MGD = 694.4 gpm.|Flow in gpm = MGD × 694.4|2.4*694.4|gpm|1|3456.0,0.0,27.8|m
+A pump runs at 850 gpm. What is the daily flow in MGD?|MGD = gpm × 1,440 ÷ 1,000,000|850*1440/1000000|MGD|3|1224.000,0.051,0.590|m
+A plant treats 1.5 MGD with a chemical dose of 3.5 mg/L. Use 8.34 lb/gal. What is the daily chemical use in lb/day?|Dose lb/day = MGD × mg/L × 8.34|1.5*3.5*8.34|lb/day|1|5.2,12.5,327.5|h
+A chemical feed requires 35 lb/day of active chemical, supplied as a product that is 40 percent strength. How many pounds per day of product are needed?|Product = active chemical ÷ strength|35/0.4|lb/day|1|14.0,0.9,35.4|m
+A plant flow is 0.75 MGD with a BOD of 210 mg/L. Use 8.34 lb/gal. What is the BOD load in lb/day?|Load = MGD × mg/L × 8.34|0.75*210*8.34|lb/day|0|158,6,1751|h
+A pump delivers 500 gpm for 8 hours per day. How many million gallons are pumped per day?|MG per day = gpm × 60 × hours ÷ 1,000,000|500*60*8/1000000|MG|2|0.00,240.00,0.03|m
+A plant with 3.0 MGD adds a chemical at 4.2 mg/L. The product is 12 percent strength. Use 8.34 lb/gal. How many pounds per day of product are needed?|Product = (MGD × mg/L × 8.34) ÷ strength|3.0*4.2*8.34/0.12|lb/day|0|13,105,9|h
