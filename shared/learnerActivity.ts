@@ -16,6 +16,12 @@ export type LearnerActivityFeed = {
   items: LearnerActivityItem[]; lastObservedAt: Date | null; recordedStudySeconds: number;
   partial: boolean; since: Date; until: Date; metrics: LearnerActivityMetrics;
 };
+export type LearnerCohortComparison = {
+  cohortSize: number;
+  excludedSelectedLearner: boolean;
+  scope: "identified learners with supported activity records";
+  average: { practiceRuns: number; mockExams: number; tutorSessions: number; gameAnswers: number | null; gameRoundsCompleted: number | null };
+};
 export type LearnerAssessmentSummary = {
   sessionId: string; courseKey: string; mode: string; timed: boolean | null;
   source: "observed"; status: string; startedAt: string; lastObservedAt: string;

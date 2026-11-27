@@ -5,7 +5,7 @@ import { getDb } from "./db";
 import { hashAnalyticsEmail } from "./analytics";
 import { gamePlayerHashForSelection } from "./gameAnalytics";
 import { adminAssessmentScope, assessmentReadPredicate } from "./assessmentActivityRead";
-import type { LearnerActivityFeed, LearnerActivityItem, LearnerOption, LearnerSelection } from "../shared/learnerActivity";
+import type { LearnerActivityFeed, LearnerActivityItem, LearnerCohortComparison, LearnerOption, LearnerSelection } from "../shared/learnerActivity";
 
 const LIMIT = 200;
 async function database() {
@@ -133,4 +133,47 @@ export async function readLearnerActivity(selection: LearnerSelection, days: 7 |
     items.push({ key: `game:${row.id}`, at: row.at, kind: "game", label: completed ? "Interactive game round completed" : "Interactive game answer", course: row.course, detail: `${mode ?? "interactive game"} · server-verified activity; correctness is not stored` });
   }
   return finalizeLearnerFeed(items, [log, sessions, results, baselines, practice, games].some(rows => rows.length > LIMIT), since, until);
+}
+
+type CohortBucket = { practiceRuns: number; mockExams: number; tutorSessions: number };
+const emptyCohortBucket = (): CohortBucket => ({ practiceRuns: 0, mockExams: 0, tutorSessions: 0 });
+function identityKey(row: { userId?: number | null; studentEmail?: string | null }): string | null {
+  if (row.userId !== null && row.userId !== undefined) return `user:${row.userId}`;
+  if (row.studentEmail?.trim()) return `email:${normalize(row.studentEmail)}`;
+  return null;
+}
+function selectedIdentityKey(selection: LearnerSelection): string { return "userId" in selection ? `user:${selection.userId}` : `email:${normalize(selection.email)}`; }
+
+export async function readLearnerCohortComparison(selection: LearnerSelection, days: 7 | 30): Promise<LearnerCohortComparison> {
+  const db = await database();
+  const until = new Date();
+  const since = new Date(until.getTime() - days * 86400000);
+  const window = (column: typeof study.startedAt | typeof exams.createdAt | typeof attempts.createdAt | typeof events.occurredAt) => and(gte(column, since), lte(column, until));
+  const [practice, saved, sessions, tutor] = await Promise.all([
+    db.select({ userId: attempts.userId, studentEmail: attempts.studentEmail, sessionId: attempts.sessionId }).from(attempts)
+      .where(and(window(attempts.createdAt), or(isNull(attempts.quizMode), sql`${attempts.quizMode} <> 'mock'`))).limit(10001),
+    db.select({ userId: exams.userId, studentEmail: exams.studentEmail, calcOnly: exams.calcOnly }).from(exams)
+      .where(window(exams.createdAt)).limit(10001),
+    db.select({ userId: study.userId, studentEmail: study.studentEmail }).from(study)
+      .where(window(study.startedAt)).limit(10001),
+    db.select({ userId: events.userId }).from(events)
+      .where(and(window(events.occurredAt), eq(events.eventName, "ai_tutor_session_saved"))).limit(10001),
+  ]);
+  const buckets = new Map<string, CohortBucket>();
+  const practiceRuns = new Map<string, Set<string>>();
+  const bucket = (key: string) => { const existing = buckets.get(key); if (existing) return existing; const created = emptyCohortBucket(); buckets.set(key, created); return created; };
+  for (const row of practice) {
+    const key = identityKey(row); if (!key) continue;
+    const runs = practiceRuns.get(key) ?? new Set<string>();
+    runs.add(row.sessionId ?? `legacy:${row.userId ?? row.studentEmail}:${runs.size}`);
+    practiceRuns.set(key, runs); bucket(key).practiceRuns = runs.size;
+  }
+  for (const row of saved) { const key = identityKey(row); if (key && row.calcOnly !== "yes") bucket(key).mockExams += 1; }
+  for (const row of sessions) { const key = identityKey(row); if (key) bucket(key); }
+  for (const row of tutor) { if (row.userId !== null) bucket(`user:${row.userId}`).tutorSessions += 1; }
+  const selectedKey = selectedIdentityKey(selection);
+  const comparison = [...buckets.entries()].filter(([key]) => key !== selectedKey).map(([, value]) => value);
+  const cohortSize = comparison.length;
+  const average = (field: keyof CohortBucket) => cohortSize ? Math.round(comparison.reduce((sum, item) => sum + item[field], 0) / cohortSize * 10) / 10 : 0;
+  return { cohortSize, excludedSelectedLearner: buckets.has(selectedKey), scope: "identified learners with supported activity records", average: { practiceRuns: average("practiceRuns"), mockExams: average("mockExams"), tutorSessions: average("tutorSessions"), gameAnswers: null, gameRoundsCompleted: null } };
 }

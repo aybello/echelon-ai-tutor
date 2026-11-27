@@ -26,7 +26,7 @@ vi.mock("@/lib/trpc", () => {
     useQuery: () => ({ data: h.data[name], isLoading: false, isError: h.error, isFetching: false, refetch: vi.fn() }),
   });
   return { trpc: { useUtils: () => h.utils, admin: {
-    learnerSearch: endpoint("learnerSearch"), learnerActivity: endpoint("learnerActivity"),
+    learnerSearch: endpoint("learnerSearch"), learnerActivity: endpoint("learnerActivity"), learnerCohortComparison: endpoint("learnerCohortComparison"),
     learnerAssessments: endpoint("learnerAssessments"), learnerAssessmentDetails: endpoint("learnerAssessmentDetails"),
   } } };
 });
@@ -34,7 +34,7 @@ import { trpc } from "@/lib/trpc";
 import AdminLearnerActivity, { refreshLearnerActivityQueries } from "./AdminLearnerActivity";
 
 const learner = { key: "email:fixture@example.test", selection: { email: "fixture@example.test" }, name: null, email: "fixture@example.test" };
-const procedures = ["learnerSearch", "learnerActivity", "learnerAssessments", "learnerAssessmentDetails"] as const;
+const procedures = ["learnerSearch", "learnerActivity", "learnerCohortComparison", "learnerAssessments", "learnerAssessmentDetails"] as const;
 let client: QueryClient;
 let cleanups: (() => void)[];
 function observe(name: typeof procedures[number], input: any, enabled = true, subscribed = true) {
@@ -71,6 +71,7 @@ describe("bounded learner-view manual refresh", () => {
     const current = [
       observe("learnerSearch", { query: "fixture@example.test" }),
       observe("learnerActivity", { learner: learner.selection, days: 7 }),
+      observe("learnerCohortComparison", { learner: learner.selection, days: 7 }),
       observe("learnerAssessments", { learner: learner.selection, days: 7 }),
       observe("learnerAssessmentDetails", detailInput),
     ];
@@ -79,6 +80,7 @@ describe("bounded learner-view manual refresh", () => {
       observe("learnerSearch", { query: "old-search" }, true, false),
       observe("learnerActivity", { learner: { userId: 1 }, days: 7 }, false),
       observe("learnerActivity", { learner: learner.selection, days: 30 }, true, false),
+      observe("learnerCohortComparison", { learner: learner.selection, days: 30 }, true, false),
       observe("learnerAssessments", { learner: { userId: 99 }, days: 7 }, true, false),
       observe("learnerAssessmentDetails", { learner: learner.selection, days: 7, sessionId: "session-fixture", cursor: 0 }, true, false),
     ];

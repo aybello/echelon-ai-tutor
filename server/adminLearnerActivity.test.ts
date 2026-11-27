@@ -9,7 +9,7 @@ import { adminRouter } from "./routers/admin";
 import { assessmentActivityEmailHash } from "./assessmentActivity";
 import { hashAnalyticsEmail } from "./analytics";
 import { gamePlayerHashForSelection } from "./gameAnalytics";
-import { finalizeLearnerFeed, signInMethod } from "./adminLearnerActivity";
+import { finalizeLearnerFeed, readLearnerCohortComparison, signInMethod } from "./adminLearnerActivity";
 function caller(role: "admin" | "user" | null) {
   return adminRouter.createCaller({ user: role ? { id: 1, role } as never : null, studentEmail: "verified@example.test", req: { headers: {} } as never, res: {} as never });
 }
@@ -161,6 +161,23 @@ describe("admin learner activity", () => {
       if (query.table !== productAnalyticsEvents) expect(compiled.params).toContain(42);
       expect(compiled.sql).not.toContain("studentEmail");
     }
+  });
+  it("compares a selected learner with other identified records without assigning game activity to the cohort", async () => {
+    mockDatabase(new Map<unknown, unknown[]>([
+      [questionAttempts, [
+        { userId: 1, studentEmail: "selected@example.test", sessionId: "selected-run" },
+        { userId: 2, studentEmail: "other@example.test", sessionId: "other-run-1" },
+        { userId: 2, studentEmail: "other@example.test", sessionId: "other-run-1" },
+      ]],
+      [examResults, [{ userId: 2, studentEmail: "other@example.test", calcOnly: "no" }]],
+      [learningActivitySessions, [{ userId: 3, studentEmail: "third@example.test" }]],
+      [productAnalyticsEvents, [{ userId: 2 }]],
+    ]));
+    await expect(readLearnerCohortComparison({ userId: 1 }, 30)).resolves.toMatchObject({
+      cohortSize: 2,
+      excludedSelectedLearner: true,
+      average: { practiceRuns: 0.5, mockExams: 0.5, tutorSessions: 0.5, gameAnswers: null, gameRoundsCompleted: null },
+    });
   });
   it("sorts deterministically, flags truncation and invents neither session spans nor logout", () => {
     const since = new Date("2026-11-01"), until = new Date("2026-11-08");
