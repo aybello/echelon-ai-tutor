@@ -1,6 +1,6 @@
 # New Mexico Wastewater Collection System Level 1 (CS1): 250-question review
 
-250 original practice questions: 195 conceptual and 55 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook. No Regulations module: the dossier bars regulatory items until a clause-level source and independent review exist. This is a local content package, not proof of a production import.
+250 original practice questions: 195 conceptual (including 8 Regulations items from 20.7.4 NMAC) and 55 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook. No 20.6.2 NMAC or NPDES items: the guidebook names those rules but no clauses within them. This is a local content package, not proof of a production import.
 
 Correct answers are shown beneath each item. See README.md for scope, sources and limits.
 
@@ -58,382 +58,317 @@ Gravity networks depend on a sustained pipe slope, which is set in design and ne
 
 ### 5: Layout, components and service connections (medium)
 
-Which record best shows where mains, manholes and service connections are located for planning maintenance?
-
-- **A.** The laboratory sample log kept at the plant
-- **B.** The monthly flow chart from the treatment plant
-- **C.** The current collection system map with asset records
-- **D.** The customer billing ledger for the service area
-
-**Answer: C. The current collection system map with asset records**
-
-Maps and asset records show the physical network and how its parts connect. Billing and lab records do not show layout.
-
-### 6: Layout, components and service connections (medium)
-
 A service connection in a collection system is best described as
 
 - **A.** A valve that isolates a fire hydrant from the water system
-- **B.** A pump that lifts basement flow to the street level
-- **C.** A pipe that carries roof runoff to a creek or ditch
-- **D.** The point where a property's lateral joins the collection main
+- **B.** A pipe that carries roof runoff to a creek or ditch
+- **C.** The point where a property's lateral joins the collection main
+- **D.** A pump that lifts basement flow to the street level
 
-**Answer: D. The point where a property's lateral joins the collection main**
+**Answer: C. The point where a property's lateral joins the collection main**
 
 A service connection is the joint where one property's flow enters the public collection main. The other options describe equipment outside it.
 
-### 7: Layout, components and service connections (medium)
+### 6: Layout, components and service connections (medium)
 
 Why is a force main sometimes needed in a collection system?
 
-- **A.** To flow over high ground or to a point beyond gravity reach
-- **B.** To increase the slope of a gravity sewer that is too flat
-- **C.** To store wastewater during dry weather until the plant needs it
-- **D.** To keep stormwater separate from the sanitary flow in the street
+- **A.** To keep stormwater separate from the sanitary flow in the street
+- **B.** To store wastewater during dry weather until the plant needs it
+- **C.** To increase the slope of a gravity sewer that is too flat
+- **D.** To flow over high ground or to a point beyond gravity reach
 
-**Answer: A. To flow over high ground or to a point beyond gravity reach**
+**Answer: D. To flow over high ground or to a point beyond gravity reach**
 
 A force main is a pressurized pipe that moves flow from a lift station over high ground or to a higher discharge point.
 
-### 8: Layout, components and service connections (medium)
+### 7: Layout, components and service connections (medium)
 
 Which term describes the pipe that receives flow from many laterals and carries it toward a larger sewer?
 
-- **A.** Vent stack on a building drain
-- **B.** Collector or trunk main
+- **A.** Collector or trunk main
+- **B.** Wet well at a lift station
 - **C.** Cleanout access fitting
-- **D.** Wet well at a lift station
+- **D.** Vent stack on a building drain
 
-**Answer: B. Collector or trunk main**
+**Answer: A. Collector or trunk main**
 
 Collectors and trunk mains gather flow from many branches and convey it onward. The other options are access, venting or pumping features.
 
-### 9: Layout, components and service connections (medium)
+### 8: Layout, components and service connections (medium)
 
 A dead-end main has which characteristic?
 
-- **A.** Carries the highest flow of any line in the network
-- **B.** Is the same type of structure as a combined sewer
-- **C.** A closed far end with no through flow, so solids collect
-- **D.** Drains only by pressure from a lift station
+- **A.** Drains only by pressure from a lift station
+- **B.** A closed far end with no through flow, so solids collect
+- **C.** Carries the highest flow of any line in the network
+- **D.** Is the same type of structure as a combined sewer
 
-**Answer: C. A closed far end with no through flow, so solids collect**
+**Answer: B. A closed far end with no through flow, so solids collect**
 
 A dead-end main is closed at one end, so flow reaching that end has no way on and solids can collect there. That end needs planned cleaning or flushing.
 
-### 10: Layout, components and service connections (medium)
+### 9: Layout, components and service connections (medium)
 
 What is the main advantage of placing a lift station where gravity flow cannot continue?
 
-- **A.** Lets the system serve low-lying areas without deep trenches
-- **B.** It makes pipe slope irrelevant in every part of the network
-- **C.** It removes the need for manholes in the network
-- **D.** It lowers the strength of the wastewater reaching the plant
+- **A.** It removes the need for manholes in the network
+- **B.** It lowers the strength of the wastewater reaching the plant
+- **C.** Lets the system serve low-lying areas without deep trenches
+- **D.** It makes pipe slope irrelevant in every part of the network
 
-**Answer: A. Lets the system serve low-lying areas without deep trenches**
+**Answer: C. Lets the system serve low-lying areas without deep trenches**
 
 A lift station raises wastewater to a higher elevation so gravity sewers can continue beyond it. It does not change strength or slope rules.
 
-### 11: Layout, components and service connections (medium)
+### 10: Layout, components and service connections (medium)
 
 Which feature helps trace the route of a buried sewer main in the field?
 
-- **A.** A vent cap on the building drain
-- **B.** Locating marker or tracing wire
-- **C.** A pressure gauge on the force main
+- **A.** Locating marker or tracing wire
+- **B.** A pressure gauge on the force main
+- **C.** A vent cap on the building drain
 - **D.** A chemical feed pump in the station
 
-**Answer: B. Locating marker or tracing wire**
+**Answer: A. Locating marker or tracing wire**
 
 Tracing wire and locating markers help crews find buried lines for maintenance and repair. Vent caps, gauges and pumps do not mark route.
 
-### 12: Layout, components and service connections (medium)
+### 11: Layout, components and service connections (medium)
 
 Which connection type joins a smaller lateral into a larger main at an angle to reduce turbulence?
 
-- **A.** Ball valve installed at the cleanout
-- **B.** Straight coupling placed directly on the main
+- **A.** Straight coupling placed directly on the main
+- **B.** Wye or angled tee fitting
 - **C.** Flanged joint on a pump discharge header
-- **D.** Wye or angled tee fitting
+- **D.** Ball valve installed at the cleanout
 
-**Answer: D. Wye or angled tee fitting**
+**Answer: B. Wye or angled tee fitting**
 
 A wye or angled fitting joins a branch into a main at a shallow angle, which keeps flow moving smoothly and reduces buildup.
 
-### 13: Layout, components and service connections (hard)
+### 12: Layout, components and service connections (hard)
 
 Why is the pipe invert, not the crown, used as the reference for measuring flow depth?
 
 - **A.** The crown marks the top of the trench excavation
-- **B.** The invert is the lowest interior surface, where flow runs
+- **B.** The crown holds the joint seal and is the lowest point
 - **C.** The invert is the outlet elevation of the manhole cover
-- **D.** The crown holds the joint seal and is the lowest point
+- **D.** The invert is the lowest interior surface, where flow runs
 
-**Answer: B. The invert is the lowest interior surface, where flow runs**
+**Answer: D. The invert is the lowest interior surface, where flow runs**
 
 The invert is the bottom inside surface, where flow sits. Depth is measured up from it, so it is the reference point.
 
-### 14: Layout, components and service connections (medium)
-
-A cleanout is most often installed where?
-
-- **A.** Inside the wet well at the high water level of the station
-- **B.** Only at pump discharge valves in the lift station wet well
-- **C.** Inside the headworks at the treatment plant, near the screens
-- **D.** Upstream end of a lateral or a change in direction
-
-**Answer: D. Upstream end of a lateral or a change in direction**
-
-Cleanouts sit at the upstream end of laterals and at changes in direction so rodding and jetting can reach a blockage.
-
-### 15: Layout, components and service connections (hard)
-
-Which element protects a sewer from overload by letting excess flow leave through a controlled outlet?
-
-- **A.** Regulator or relief structure
-- **B.** Sludge thickener at the treatment plant
-- **C.** Vacuum station that holds sealed valve pits
-- **D.** Chlorine contact basin at the plant outfall
-
-**Answer: A. Regulator or relief structure**
-
-Regulators and relief structures divert excess flow so the sewer is not overloaded. The other options belong to vacuum or treatment work.
-
-### 16: Gravity sewers, force mains and manhole concepts (medium)
+### 13: Gravity sewers, force mains and manhole concepts (medium)
 
 Which factor most directly increases the flow velocity in a gravity sewer of fixed diameter?
 
-- **A.** A deeper manhole cover set at a higher grade
-- **B.** More cleanout fittings added along the same line
-- **C.** A steeper slope along the pipe
-- **D.** Longer service laterals connected upstream of the run
+- **A.** Longer service laterals connected upstream of the run
+- **B.** A steeper slope along the pipe
+- **C.** More cleanout fittings added along the same line
+- **D.** A deeper manhole cover set at a higher grade
 
-**Answer: C. A steeper slope along the pipe**
+**Answer: B. A steeper slope along the pipe**
 
 Gravity flow is driven by slope. For a given pipe size, a steeper slope increases velocity.
 
-### 17: Gravity sewers, force mains and manhole concepts (hard)
+### 14: Gravity sewers, force mains and manhole concepts (hard)
 
 Why is a minimum velocity usually specified for gravity sewers?
 
-- **A.** To keep the pipe running full during dry weather for flow metering
-- **B.** To keep solids moving so they do not settle and block the line
+- **A.** To lower the depth of manholes along the street alignment
+- **B.** To keep the pipe running full during dry weather for flow metering
 - **C.** To raise the pressure at the pump discharge of a station
-- **D.** To lower the depth of manholes along the street alignment
+- **D.** To keep solids moving so they do not settle and block the line
 
-**Answer: B. To keep solids moving so they do not settle and block the line**
+**Answer: D. To keep solids moving so they do not settle and block the line**
 
 Low velocity lets solids deposit on the invert. A minimum scouring velocity helps prevent that buildup.
 
-### 18: Gravity sewers, force mains and manhole concepts (medium)
+### 15: Gravity sewers, force mains and manhole concepts (medium)
 
 For a simple design check, a force main's pressure rating must exceed which value?
 
 - **A.** The maximum pressure the pump can develop at shutoff
 - **B.** The volume of the wet well at normal operating level
-- **C.** The depth of the nearest manhole on the alignment
-- **D.** The diameter of the service lateral feeding the station
+- **C.** The diameter of the service lateral feeding the station
+- **D.** The depth of the nearest manhole on the alignment
 
 **Answer: A. The maximum pressure the pump can develop at shutoff**
 
 A force main must withstand the pressure the pump can produce, so the rating must be above that maximum.
 
-### 19: Gravity sewers, force mains and manhole concepts (medium)
+### 16: Gravity sewers, force mains and manhole concepts (medium)
 
 A flexible pipe joint that allows slight angular movement is useful because
 
-- **A.** It raises the slope of the pipe along the run
-- **B.** It stops rodents and roots from entering the sewer
+- **A.** It stops rodents and roots from entering the sewer
+- **B.** It makes the pipe stronger than the barrel around the joint
 - **C.** Ground movement and settlement can bend the line without leaking
-- **D.** It makes the pipe stronger than the barrel around the joint
+- **D.** It raises the slope of the pipe along the run
 
 **Answer: C. Ground movement and settlement can bend the line without leaking**
 
 Flexible joints accommodate settlement and small deflections. Rigid joints are more likely to crack or leak when the ground moves.
 
-### 20: Gravity sewers, force mains and manhole concepts (hard)
+### 17: Gravity sewers, force mains and manhole concepts (hard)
 
 What is the main purpose of a drop manhole?
 
 - **A.** To store rainwater for later reuse at the plant site grounds
-- **B.** To pump flow up to a higher elevation along the street main line
-- **C.** To hold a chlorine feed line at the manhole rim
-- **D.** To join a higher inlet to a lower outlet in a controlled way
+- **B.** To join a higher inlet to a lower outlet in a controlled way
+- **C.** To pump flow up to a higher elevation along the street main line
+- **D.** To hold a chlorine feed line at the manhole rim
 
-**Answer: D. To join a higher inlet to a lower outlet in a controlled way**
+**Answer: B. To join a higher inlet to a lower outlet in a controlled way**
 
 A drop manhole handles a large elevation difference between inlet and outlet in a controlled way, which protects the line from turbulence and damage.
 
-### 21: Gravity sewers, force mains and manhole concepts (medium)
+### 18: Gravity sewers, force mains and manhole concepts (medium)
 
 Why is pipe bedding placed under a sewer barrel?
 
-- **A.** To lower the groundwater table around the trench
+- **A.** To support the barrel evenly and prevent point loads
 - **B.** To serve as a backup power supply for the station
-- **C.** To support the barrel evenly and prevent point loads
+- **C.** To lower the groundwater table around the trench
 - **D.** To increase the flow capacity of the line along its length
 
-**Answer: C. To support the barrel evenly and prevent point loads**
+**Answer: A. To support the barrel evenly and prevent point loads**
 
 Uniform bedding spreads the load along the pipe. Point loads from rock or uneven support can crack the barrel.
 
-### 22: Gravity sewers, force mains and manhole concepts (medium)
+### 19: Gravity sewers, force mains and manhole concepts (medium)
 
 A sag or belly at a low point in a gravity sewer most likely causes which problem?
 
 - **A.** Infiltration stops at that point along the sewer
-- **B.** Solids settle at the low point and can cause blockages
-- **C.** Air is pushed out of the sewer through the joints
-- **D.** Flow speeds up at the low point and clears the pipe
+- **B.** Flow speeds up at the low point and clears the pipe
+- **C.** Solids settle at the low point and can cause blockages
+- **D.** Air is pushed out of the sewer through the joints
 
-**Answer: B. Solids settle at the low point and can cause blockages**
+**Answer: C. Solids settle at the low point and can cause blockages**
 
 At a sag the velocity drops below what is needed to carry solids, so deposits build up and can block the line.
 
-### 23: Gravity sewers, force mains and manhole concepts (medium)
+### 20: Gravity sewers, force mains and manhole concepts (medium)
 
 Which statement about manhole spacing is generally true?
 
-- **A.** Spacing is set so crews can reach each section for cleaning and inspection
-- **B.** Spacing is identical for all pipe materials used in the district
-- **C.** Spacing is the same for every pipe size in a system
-- **D.** Spacing is set by the billing area of each customer
+- **A.** Spacing is identical for all pipe materials used in the district
+- **B.** Spacing is the same for every pipe size in a system
+- **C.** Spacing is set by the billing area of each customer
+- **D.** Spacing is set so crews can reach each section for cleaning and inspection
 
-**Answer: A. Spacing is set so crews can reach each section for cleaning and inspection**
+**Answer: D. Spacing is set so crews can reach each section for cleaning and inspection**
 
 Manhole spacing depends on the ability to clean and inspect the line. Access needs vary with pipe size and the type of maintenance.
 
-### 24: Gravity sewers, force mains and manhole concepts (medium)
-
-Cleanouts are often used instead of manholes on short laterals because
-
-- **A.** They are required on laterals by pump pressure in the station
-- **B.** They stop backflow from the main into the building drain
-- **C.** They increase the lateral's capacity more than a manhole does
-- **D.** They give access at lower cost where a full manhole is not needed
-
-**Answer: D. They give access at lower cost where a full manhole is not needed**
-
-A cleanout gives rodding access at much lower cost than a manhole. It suits short runs that do not need full entry.
-
-### 25: Gravity sewers, force mains and manhole concepts (medium)
-
-A drop in invert elevation across a manhole is most often used to
-
-- **A.** Join a line at a higher elevation to a lower outlet
-- **B.** Lift wastewater to a treatment plant on higher ground
-- **C.** Set the minimum velocity in a force main downstream
-- **D.** Create storage for storm surges in the collection system
-
-**Answer: A. Join a line at a higher elevation to a lower outlet**
-
-A change in invert elevation joins a higher inlet to a lower outlet while the flow passes smoothly through the structure.
-
-### 26: Gravity sewers, force mains and manhole concepts (hard)
+### 21: Gravity sewers, force mains and manhole concepts (hard)
 
 A manhole upstream of a restriction overflows in dry weather while the manhole downstream runs freely. Where is the restriction most likely located?
 
-- **A.** At the downstream end of the district's force main system
-- **B.** Between the overflowing manhole and the next manhole downstream
-- **C.** In the service lateral that serves a single building on the street
-- **D.** At the treatment plant headworks where the flow is screened
+- **A.** At the treatment plant headworks where the flow is screened
+- **B.** At the downstream end of the district's force main system
+- **C.** Between the overflowing manhole and the next manhole downstream
+- **D.** In the service lateral that serves a single building on the street
 
-**Answer: B. Between the overflowing manhole and the next manhole downstream**
+**Answer: C. Between the overflowing manhole and the next manhole downstream**
 
 Flow backs up behind a restriction, while the next manhole downstream runs freely, so the restriction lies in the reach between them.
 
-### 27: Gravity sewers, force mains and manhole concepts (hard)
+### 22: Gravity sewers, force mains and manhole concepts (hard)
 
 Which condition is a sign that a sewer is too flat for the flow it carries?
 
 - **A.** The wet well overflows during a long drought period
-- **B.** Flow velocity increases noticeably at the outlet end
-- **C.** Solids deposit and flow depth rises over time
-- **D.** Air is released through the joints along the run
+- **B.** Solids deposit and flow depth rises over time
+- **C.** Air is released through the joints along the run
+- **D.** Flow velocity increases noticeably at the outlet end
 
-**Answer: C. Solids deposit and flow depth rises over time**
+**Answer: B. Solids deposit and flow depth rises over time**
 
 A slope too flat for the flow lets solids settle. Over time deposits reduce capacity and raise the water surface.
 
-### 28: Gravity sewers, force mains and manhole concepts (medium)
+### 23: Gravity sewers, force mains and manhole concepts (medium)
 
 A PVC gravity sewer is easier to install over long runs mainly because
 
-- **A.** It is heavier than cast iron of the same size
-- **B.** It needs no bedding at any depth of cover
-- **C.** It may not be cut in the field by crews
-- **D.** It is light and its joints are simple to assemble
+- **A.** It is light and its joints are simple to assemble
+- **B.** It is heavier than cast iron of the same size
+- **C.** It needs no bedding at any depth of cover
+- **D.** It may not be cut in the field by crews
 
-**Answer: D. It is light and its joints are simple to assemble**
+**Answer: A. It is light and its joints are simple to assemble**
 
 PVC pipe is light, which eases handling, and its joints assemble quickly. Bedding is still needed for support.
 
-### 29: Gravity sewers, force mains and manhole concepts (medium)
+### 24: Gravity sewers, force mains and manhole concepts (medium)
 
 Cured-in-place lining of a gravity sewer is used when
 
-- **A.** A pump has to be replaced at the station
-- **B.** A new line must be laid at a steeper slope than before
-- **C.** A manhole must be raised to finished grade
+- **A.** A manhole must be raised to finished grade
+- **B.** A pump has to be replaced at the station
+- **C.** A new line must be laid at a steeper slope than before
 - **D.** The existing pipe must be restored without open-cut excavation
 
 **Answer: D. The existing pipe must be restored without open-cut excavation**
 
 Cured-in-place pipe is a trenchless method that creates a new pipe inside the old one. It is used when excavation is costly or disruptive.
 
-### 30: Cleaning and stoppage response concepts (medium)
+### 25: Cleaning and stoppage response concepts (medium)
 
 Which cleaning method uses high-pressure water jets at the nozzle to scour a sewer?
 
-- **A.** Smoke testing with a blower fan at a manhole
-- **B.** Hydraulic jetting with a high-pressure nozzle
-- **C.** Chemical root control applied through the cleanout
+- **A.** Hydraulic jetting with a high-pressure nozzle
+- **B.** Chemical root control applied through the cleanout
+- **C.** Smoke testing with a blower fan at a manhole
 - **D.** Pipe bursting with a hydraulic head in the trench
 
-**Answer: B. Hydraulic jetting with a high-pressure nozzle**
+**Answer: A. Hydraulic jetting with a high-pressure nozzle**
 
 Jetting uses a pressurized water nozzle to scour deposits from the pipe wall and clear the line.
 
-### 31: Cleaning and stoppage response concepts (medium)
+### 26: Cleaning and stoppage response concepts (medium)
 
 A rodding machine is used mainly to
 
 - **A.** Test the pressure rating of a force main before startup
-- **B.** Measure the depth of sludge in a wet well at the station
-- **C.** Break or pull through a blockage with a rotating cable
+- **B.** Break or pull through a blockage with a rotating cable
+- **C.** Measure the depth of sludge in a wet well at the station
 - **D.** Inject grout into cracked joints along the line
 
-**Answer: C. Break or pull through a blockage with a rotating cable**
+**Answer: B. Break or pull through a blockage with a rotating cable**
 
 Rodding uses a rotating cable or rods to cut through or pull out a blockage in a line.
 
-### 32: Cleaning and stoppage response concepts (hard)
+### 27: Cleaning and stoppage response concepts (hard)
 
 Which condition is a common early sign that a line is developing a blockage?
 
-- **A.** Slow drainage upstream, with debris visible at a manhole
-- **B.** A lower wastewater temperature at the headworks
-- **C.** A higher pH in the influent at the headworks
-- **D.** A dry manhole during a period of heavy rain
+- **A.** A dry manhole during a period of heavy rain
+- **B.** A higher pH in the influent at the headworks
+- **C.** Slow drainage upstream, with debris visible at a manhole
+- **D.** A lower wastewater temperature at the headworks
 
-**Answer: A. Slow drainage upstream, with debris visible at a manhole**
+**Answer: C. Slow drainage upstream, with debris visible at a manhole**
 
 Slow drainage and debris at a manhole usually point to a partial blockage downstream, before an overflow occurs.
 
-### 33: Cleaning and stoppage response concepts (medium)
+### 28: Cleaning and stoppage response concepts (medium)
 
 Why is a stoppage response plan useful?
 
 - **A.** It lowers the flow rate permanently in the affected line
-- **B.** It removes the need for maps of the network
-- **C.** It sets steps and contacts for clearing a blockage quickly
-- **D.** It replaces routine cleaning on each street in the district
+- **B.** It replaces routine cleaning on each street in the district
+- **C.** It removes the need for maps of the network
+- **D.** It sets steps and contacts for clearing a blockage quickly
 
-**Answer: C. It sets steps and contacts for clearing a blockage quickly**
+**Answer: D. It sets steps and contacts for clearing a blockage quickly**
 
 A written plan speeds up the response by setting who acts, what they check, and how the line is cleared.
 
-### 34: Cleaning and stoppage response concepts (medium)
+### 29: Cleaning and stoppage response concepts (medium)
 
 Which method removes a grease buildup by using a product that reacts with the deposit?
 
@@ -446,90 +381,64 @@ Which method removes a grease buildup by using a product that reacts with the de
 
 Chemical cleaning uses a product matched to the deposit to break it down. It differs from lining or testing methods.
 
-### 35: Cleaning and stoppage response concepts (medium)
+### 30: Cleaning and stoppage response concepts (medium)
 
 Regular cleaning of a sewer prone to roots mainly reduces
 
-- **A.** The chance of a sudden blockage by keeping the line open
-- **B.** The design capacity of the line over the years
-- **C.** The slope of the line between two manholes
-- **D.** The need for inspection of the line on video
+- **A.** The need for inspection of the line on video
+- **B.** The chance of a sudden blockage by keeping the line open
+- **C.** The design capacity of the line over the years
+- **D.** The slope of the line between two manholes
 
-**Answer: A. The chance of a sudden blockage by keeping the line open**
+**Answer: B. The chance of a sudden blockage by keeping the line open**
 
 Routine cleaning keeps roots and deposits from closing the line. It does not change design capacity or slope.
 
-### 36: Cleaning and stoppage response concepts (medium)
+### 31: Cleaning and stoppage response concepts (medium)
 
 Which tool is typically used to pull debris out of a line after a blockage is loosened?
 
-- **A.** Ultrasonic flow meter
-- **B.** Bucket machine
-- **C.** Chlorine ampoule
+- **A.** Chlorine ampoule
+- **B.** Ultrasonic flow meter
+- **C.** Bucket machine
 - **D.** Grab sampler
 
-**Answer: B. Bucket machine**
+**Answer: C. Bucket machine**
 
 A bucket machine is a cleaning tool that lifts and removes loosened debris from the line.
 
-### 37: Cleaning and stoppage response concepts (medium)
-
-Root intrusion into a sewer is most often caused by
-
-- **A.** Roots growing inside the pump discharge valve
-- **B.** Excess chlorine present in the wastewater flow
-- **C.** Roots seeking water through cracked or open joints
-- **D.** High sludge age in the treatment plant aeration
-
-**Answer: C. Roots seeking water through cracked or open joints**
-
-Roots follow moisture into openings in the pipe. Cracked or displaced joints are the usual entry points.
-
-### 38: Cleaning and stoppage response concepts (medium)
+### 32: Cleaning and stoppage response concepts (medium)
 
 A flexible cutter head on a mechanical cleaning machine is best suited to
 
-- **A.** Sealing a manhole frame against infiltration from the street
-- **B.** Removing roots and hardened deposits inside a line
+- **A.** Removing roots and hardened deposits inside a line
+- **B.** Fixing a broken lateral connection at the building
 - **C.** Measuring the flow velocity in the pipe at a station
-- **D.** Fixing a broken lateral connection at the building
+- **D.** Sealing a manhole frame against infiltration from the street
 
-**Answer: B. Removing roots and hardened deposits inside a line**
+**Answer: A. Removing roots and hardened deposits inside a line**
 
 A cutter head grinds roots and hard buildup from the inside of the line. It does not measure, seal or repair.
 
-### 39: Cleaning and stoppage response concepts (medium)
+### 33: Cleaning and stoppage response concepts (medium)
 
 Which practice helps identify a blockage before it causes a backup?
 
-- **A.** Raising the invert at the low point of the line
-- **B.** Adding more pump capacity at the lift station
-- **C.** Reading the monthly BOD report from the plant laboratory
-- **D.** Regular CCTV or visual inspection of problem reaches
+- **A.** Adding more pump capacity at the lift station
+- **B.** Raising the invert at the low point of the line
+- **C.** Regular CCTV or visual inspection of problem reaches
+- **D.** Reading the monthly BOD report from the plant laboratory
 
-**Answer: D. Regular CCTV or visual inspection of problem reaches**
+**Answer: C. Regular CCTV or visual inspection of problem reaches**
 
 Inspection of problem reaches finds deposits and roots early, before they cause surcharging or overflows.
 
-### 40: Cleaning and stoppage response concepts (medium)
-
-A high-pressure water truck used in a stoppage response is usually meant to
-
-- **A.** Flush debris downstream toward a point where it can be removed
-- **B.** Heat the wastewater to prevent freezing in the line
-- **C.** Raise the pressure in a force main at the station
-- **D.** Pump sludge out of the treatment plant digesters
-
-**Answer: A. Flush debris downstream toward a point where it can be removed**
-
-Flushing moves debris to a manhole or point where it can be captured and removed.
-
-### 41: Cleaning and stoppage response concepts (medium)
+### 34: Cleaning and stoppage response concepts (medium)
 
 Which line condition most often calls for a shorter cleaning interval?
 
-- **A.** A new PVC line with a steep slope and no problem history
-- **B.** A line with the largest diameter in the network
+- **A.** A line with the largest diameter in the network
+- **B.** A new PVC line with a steep slope and no problem history
 - **C.** A line serving a single household in a dry area
 - **D.** A line with a history of grease, roots or solids deposits
 
@@ -537,129 +446,129 @@ Which line condition most often calls for a shorter cleaning interval?
 
 Lines with a history of deposits or roots are cleaned more often because they are more likely to block.
 
-### 42: Preventive maintenance and inspection concepts (medium)
+### 35: Preventive maintenance and inspection concepts (medium)
 
 Preventive maintenance in a collection system is best defined as
 
 - **A.** Scheduled work done before equipment or pipe failure occurs
-- **B.** Replacement of the whole network on a ten-year cycle
-- **C.** Repairs made after an overflow has already been reported
+- **B.** Repairs made after an overflow has already been reported
+- **C.** Replacement of the whole network on a ten-year cycle
 - **D.** Sampling the influent at fixed hours of the day
 
 **Answer: A. Scheduled work done before equipment or pipe failure occurs**
 
 Preventive maintenance is planned work, such as cleaning, inspection and servicing, done before a failure interrupts service.
 
-### 43: Preventive maintenance and inspection concepts (medium)
+### 36: Preventive maintenance and inspection concepts (medium)
 
 What is the main benefit of CCTV inspection of sewers?
 
-- **A.** It determines the horsepower of a pump motor at the station
+- **A.** It measures the depth of the groundwater around the trench
 - **B.** It shows cracks, roots and deposits inside the pipe
-- **C.** It measures the depth of the groundwater around the trench
+- **C.** It determines the horsepower of a pump motor at the station
 - **D.** It records the chlorine residual in the flow at the outfall
 
 **Answer: B. It shows cracks, roots and deposits inside the pipe**
 
 Camera inspection reveals the state of the pipe interior, which guides cleaning and repair decisions.
 
-### 44: Preventive maintenance and inspection concepts (medium)
+### 37: Preventive maintenance and inspection concepts (medium)
 
 Smoke testing a sewer is primarily used to
 
-- **A.** Count the number of service connections on a street
+- **A.** Measure the slope of the sewer between two manholes
 - **B.** Clean roots from the joints of the line
 - **C.** Find leaks and illegal connections that add inflow
-- **D.** Measure the slope of the sewer between two manholes
+- **D.** Count the number of service connections on a street
 
 **Answer: C. Find leaks and illegal connections that add inflow**
 
 Smoke is introduced into the line and seen escaping at defects or connections, which shows where extra water can enter.
 
-### 45: Preventive maintenance and inspection concepts (medium)
+### 38: Preventive maintenance and inspection concepts (medium)
 
 Dye testing is used to
 
-- **A.** Confirm where a connection discharges
-- **B.** Remove grease from the walls of a manhole
-- **C.** Measure the depth of bedding under a sewer trench
-- **D.** Detect corrosion inside a lift station wet well
+- **A.** Remove grease from the walls of a manhole
+- **B.** Confirm where a connection discharges
+- **C.** Detect corrosion inside a lift station wet well
+- **D.** Measure the depth of bedding under a sewer trench
 
-**Answer: A. Confirm where a connection discharges**
+**Answer: B. Confirm where a connection discharges**
 
 Dye introduced into a connection shows where it discharges, which helps find cross connections between storm and sanitary lines.
 
-### 46: Preventive maintenance and inspection concepts (easy)
+### 39: Preventive maintenance and inspection concepts (easy)
 
 Manhole inspection commonly records which conditions?
 
-- **A.** The sample temperature taken at the treatment plant
+- **A.** The pump start count recorded at the station
 - **B.** The laboratory BOD result from the previous month
-- **C.** Frame and cover condition, benching and cracks
-- **D.** The pump start count recorded at the station
+- **C.** The sample temperature taken at the treatment plant
+- **D.** Frame and cover condition, benching and cracks
 
-**Answer: C. Frame and cover condition, benching and cracks**
+**Answer: D. Frame and cover condition, benching and cracks**
 
 A manhole inspection notes the structure, its cover and benching, and visible defects or leaks in the walls.
 
-### 47: Preventive maintenance and inspection concepts (easy)
+### 40: Preventive maintenance and inspection concepts (easy)
 
 What is a defect code in sewer inspection?
 
-- **A.** A flow reading taken in the sewer during inspection
-- **B.** A permit number that identifies a discharge point
-- **C.** A chemical formula for the disinfectant used at the plant
-- **D.** A standard code for the type of defect seen on video
+- **A.** A standard code for the type of defect seen on video
+- **B.** A flow reading taken in the sewer during inspection
+- **C.** A permit number that identifies a discharge point
+- **D.** A chemical formula for the disinfectant used at the plant
 
-**Answer: D. A standard code for the type of defect seen on video**
+**Answer: A. A standard code for the type of defect seen on video**
 
 Defect codes give a consistent way to log what the camera sees, so records can be compared and prioritised.
 
-### 48: Preventive maintenance and inspection concepts (medium)
+### 41: Preventive maintenance and inspection concepts (medium)
 
 Why is a record of each inspection important?
 
-- **A.** It fixes the slope of the sewer between manholes
-- **B.** It shows how a defect changes over time and helps plan repairs
-- **C.** It replaces the need to clean the line on schedule
-- **D.** It changes the design capacity of the line permanently
+- **A.** It replaces the need to clean the line on schedule
+- **B.** It fixes the slope of the sewer between manholes
+- **C.** It changes the design capacity of the line permanently
+- **D.** It shows how a defect changes over time and helps plan repairs
 
-**Answer: B. It shows how a defect changes over time and helps plan repairs**
+**Answer: D. It shows how a defect changes over time and helps plan repairs**
 
 Comparing inspections over time shows whether a defect is growing, which sets the priority and timing of repairs.
 
-### 49: Preventive maintenance and inspection concepts (easy)
+### 42: Preventive maintenance and inspection concepts (easy)
 
 Lamping a sewer means
 
 - **A.** Shining a light between manholes to check the line
-- **B.** Replacing a lamp in a lift station control panel
-- **C.** Testing the brightness of the aeration basins at the plant
+- **B.** Testing the brightness of the aeration basins at the plant
+- **C.** Replacing a lamp in a lift station control panel
 - **D.** Installing a light pole above a manhole in the street
 
 **Answer: A. Shining a light between manholes to check the line**
 
 Lamping is a simple visual check of a clear, straight run between two manholes, using a light source.
 
-### 50: Preventive maintenance and inspection concepts (medium)
+### 43: Preventive maintenance and inspection concepts (medium)
 
 A preventive program that reviews pump run hours and bearing condition is mainly aimed at
 
-- **A.** Setting the manhole spacing for new mains in the district
+- **A.** Changing the disinfectant dose at the outfall
 - **B.** Finding wear before a pump fails and interrupts service
-- **C.** Changing the disinfectant dose at the outfall
-- **D.** Measuring the influent dissolved oxygen at the plant
+- **C.** Measuring the influent dissolved oxygen at the plant
+- **D.** Setting the manhole spacing for new mains in the district
 
 **Answer: B. Finding wear before a pump fails and interrupts service**
 
 Tracking run hours and bearing condition shows wear early, so a planned repair can replace a failure in service.
 
-### 51: Preventive maintenance and inspection concepts (medium)
+### 44: Preventive maintenance and inspection concepts (medium)
 
 Which record is most useful for planning a preventive maintenance schedule?
 
-- **A.** The customer complaint letters received by the utility
-- **B.** The laboratory calibration file for a flow meter
+- **A.** The laboratory calibration file for a flow meter
+- **B.** The customer complaint letters received by the utility
 - **C.** A history of work orders and failures for each asset
 - **D.** The monthly billing summary for the service area
 
@@ -667,436 +576,423 @@ Which record is most useful for planning a preventive maintenance schedule?
 
 Work order and failure history shows which assets fail, how often and how, which is the basis for scheduling.
 
-### 52: Preventive maintenance and inspection concepts (medium)
-
-Which of the following is a preventive maintenance task for a sewer system?
-
-- **A.** Stopping routine inspection during dry seasons
-- **B.** Waiting for a stoppage before scheduling any work
-- **C.** Replacing all pipes at once after a major storm
-- **D.** Periodic cleaning, inspection and repair of known weak spots
-
-**Answer: D. Periodic cleaning, inspection and repair of known weak spots**
-
-Planned cleaning and inspection of known problem areas is a core preventive task. Reacting only after failure is not preventive.
-
-### 53: Preventive maintenance and inspection concepts (medium)
+### 45: Preventive maintenance and inspection concepts (medium)
 
 Which condition is a common early sign that a pump needs maintenance?
 
-- **A.** Lower influent temperature at the headworks
-- **B.** A smaller diameter discharge pipe on the station
-- **C.** Cleaner effluent color at the outfall
-- **D.** Rising vibration or noise and longer run times
+- **A.** Rising vibration or noise and longer run times
+- **B.** Cleaner effluent color at the outfall
+- **C.** A smaller diameter discharge pipe on the station
+- **D.** Lower influent temperature at the headworks
 
-**Answer: D. Rising vibration or noise and longer run times**
+**Answer: A. Rising vibration or noise and longer run times**
 
 Rising vibration, noise and longer run times often point to wear, misalignment or a clogged impeller.
 
-### 54: Lift station concepts: wet wells, pumps, controls and alarms (easy)
+### 46: Lift station concepts: wet wells, pumps, controls and alarms (easy)
 
 What is the wet well of a lift station?
 
-- **A.** Vent pipe that releases gas from the force main outlet
-- **B.** Chamber that collects inflow before the pumps lift it
-- **C.** Dry chamber that houses the motor and control panel
-- **D.** Sealed tank that stores chlorine for disinfection
+- **A.** Dry chamber that houses the motor and control panel
+- **B.** Sealed tank that stores chlorine for disinfection
+- **C.** Chamber that collects inflow before the pumps lift it
+- **D.** Vent pipe that releases gas from the force main outlet
 
-**Answer: B. Chamber that collects inflow before the pumps lift it**
+**Answer: C. Chamber that collects inflow before the pumps lift it**
 
 The wet well holds incoming flow so pumps can draw from it. The other options describe dry equipment or unrelated parts.
 
-### 55: Lift station concepts: wet wells, pumps, controls and alarms (medium)
+### 47: Lift station concepts: wet wells, pumps, controls and alarms (medium)
 
 Why do lift stations have alarms?
 
-- **A.** To count the number of customers served by each pump
+- **A.** To measure the temperature of the influent before the headworks
 - **B.** To record the chemical dose used at the treatment plant
-- **C.** To warn operators of high level, pump failure or power loss
-- **D.** To measure the temperature of the influent before the headworks
+- **C.** To count the number of customers served by each pump
+- **D.** To warn operators of high level, pump failure or power loss
 
-**Answer: C. To warn operators of high level, pump failure or power loss**
+**Answer: D. To warn operators of high level, pump failure or power loss**
 
 Alarms alert operators to conditions that could cause an overflow or lost pumping, so a response can start in time.
 
-### 56: Lift station concepts: wet wells, pumps, controls and alarms (easy)
+### 48: Lift station concepts: wet wells, pumps, controls and alarms (easy)
 
 What does a float or level sensor in a wet well do?
 
-- **A.** Starts and stops pumps as the wet well level changes
-- **B.** Measures the chlorine residual in the discharge line
-- **C.** Closes the valve on the plant outfall during storms
-- **D.** Records the daily flow in gallons for billing purposes
+- **A.** Records the daily flow in gallons for billing purposes
+- **B.** Starts and stops pumps as the wet well level changes
+- **C.** Measures the chlorine residual in the discharge line
+- **D.** Closes the valve on the plant outfall during storms
 
-**Answer: A. Starts and stops pumps as the wet well level changes**
+**Answer: B. Starts and stops pumps as the wet well level changes**
 
 Level sensors give the signal that starts and stops pumps as the liquid rises and falls. They do not measure residual or billing volume.
 
-### 57: Lift station concepts: wet wells, pumps, controls and alarms (medium)
+### 49: Lift station concepts: wet wells, pumps, controls and alarms (medium)
 
 In a two-pump station with a lead and a lag pump, what is the lag pump's main role?
 
-- **A.** Serve as a spare motor for the bar screen at the station inlet
+- **A.** Start when inflow exceeds the lead pump's capacity
 - **B.** Run first in dry weather so the lead pump can rest between cycles
-- **C.** Start when inflow exceeds the lead pump's capacity
-- **D.** Clean the wet well while the lead pump is running in service
+- **C.** Clean the wet well while the lead pump is running in service
+- **D.** Serve as a spare motor for the bar screen at the station inlet
 
-**Answer: C. Start when inflow exceeds the lead pump's capacity**
+**Answer: A. Start when inflow exceeds the lead pump's capacity**
 
 A lag pump starts when inflow outruns the lead pump, and it can take over if the lead fails. It does not run first in dry weather by default.
 
-### 58: Lift station concepts: wet wells, pumps, controls and alarms (medium)
+### 50: Lift station concepts: wet wells, pumps, controls and alarms (medium)
 
 Which control function prevents a lift station pump from running dry?
 
-- **A.** A high-level alarm that sounds at the top of the wet well
-- **B.** A check valve installed on the discharge line
-- **C.** A flow meter that records the discharge volume each day
-- **D.** A low-level cutoff that stops the pump at minimum level
+- **A.** A flow meter that records the discharge volume each day
+- **B.** A low-level cutoff that stops the pump at minimum level
+- **C.** A check valve installed on the discharge line
+- **D.** A high-level alarm that sounds at the top of the wet well
 
-**Answer: D. A low-level cutoff that stops the pump at minimum level**
+**Answer: B. A low-level cutoff that stops the pump at minimum level**
 
 A low-level cutoff stops the pump before air is drawn into it. A high-level alarm warns about overflow and does not protect the pump from dry running.
 
-### 59: Lift station concepts: wet wells, pumps, controls and alarms (easy)
+### 51: Lift station concepts: wet wells, pumps, controls and alarms (easy)
 
 A check valve on a pump discharge is installed to
 
-- **A.** Stop reverse flow back into the wet well when the pump stops
+- **A.** Measure the discharge pressure at the pump outlet nozzle
 - **B.** Release air trapped in the force main during startup
-- **C.** Increase the pumping rate when the level rises quickly
-- **D.** Measure the discharge pressure at the pump outlet nozzle
+- **C.** Stop reverse flow back into the wet well when the pump stops
+- **D.** Increase the pumping rate when the level rises quickly
 
-**Answer: A. Stop reverse flow back into the wet well when the pump stops**
+**Answer: C. Stop reverse flow back into the wet well when the pump stops**
 
 A check valve allows flow one way. It keeps the force main from draining back into the wet well when the pump stops.
 
-### 60: Lift station concepts: wet wells, pumps, controls and alarms (medium)
+### 52: Lift station concepts: wet wells, pumps, controls and alarms (medium)
 
 What is the main purpose of a pump run-time record?
 
-- **A.** To set the chlorine dose at the discharge point each day
-- **B.** To show how many hours each pump has run
-- **C.** To calculate the billing volume for the station's service area
-- **D.** To determine the average daily flow of the whole district
+- **A.** To calculate the billing volume for the station's service area
+- **B.** To set the chlorine dose at the discharge point each day
+- **C.** To determine the average daily flow of the whole district
+- **D.** To show how many hours each pump has run
 
-**Answer: B. To show how many hours each pump has run**
+**Answer: D. To show how many hours each pump has run**
 
 Run-time records show how many hours each pump has operated, which guides maintenance and capacity planning.
 
-### 61: Lift station concepts: wet wells, pumps, controls and alarms (hard)
+### 53: Lift station concepts: wet wells, pumps, controls and alarms (hard)
 
 Why is a wet well sometimes sized larger than the pump strictly needs?
 
-- **A.** To reduce the velocity of the force main discharge
-- **B.** To limit how often a pump starts and stops
-- **C.** To hold extra wastewater for the treatment plant's later use
-- **D.** To increase the flow rate of the influent line by volume
+- **A.** To increase the flow rate of the influent line by volume
+- **B.** To hold extra wastewater for the treatment plant's later use
+- **C.** To reduce the velocity of the force main discharge
+- **D.** To limit how often a pump starts and stops
 
-**Answer: B. To limit how often a pump starts and stops**
+**Answer: D. To limit how often a pump starts and stops**
 
 A larger storage volume between the start and stop levels means fewer starts, which reduces wear and motor heating.
 
-### 62: Lift station concepts: wet wells, pumps, controls and alarms (medium)
+### 54: Lift station concepts: wet wells, pumps, controls and alarms (medium)
 
 A force main at a lift station is designed with a minimum velocity to
 
-- **A.** Keep solids from settling in the discharge pipe
-- **B.** Raise the pump head above the design maximum
-- **C.** Keep the wet well level below the inlet invert
+- **A.** Keep the wet well level below the inlet invert
+- **B.** Keep solids from settling in the discharge pipe
+- **C.** Raise the pump head above the design maximum
 - **D.** Lower the pump motor speed during dry weather
 
-**Answer: A. Keep solids from settling in the discharge pipe**
+**Answer: B. Keep solids from settling in the discharge pipe**
 
 A minimum velocity keeps solids moving in the force main so they do not settle and block the pipe.
 
-### 63: Lift station concepts: wet wells, pumps, controls and alarms (easy)
+### 55: Lift station concepts: wet wells, pumps, controls and alarms (easy)
 
 What is the typical function of a bar screen at a lift station inlet?
 
-- **A.** Reduce the velocity of the flow in the force main discharge
-- **B.** Measure the pH of the influent before the wet well
+- **A.** Measure the pH of the influent before the wet well
+- **B.** Add disinfectant to the flow before the pumps start
 - **C.** Remove rags and large solids that could clog the pumps
-- **D.** Add disinfectant to the flow before the pumps start
+- **D.** Reduce the velocity of the flow in the force main discharge
 
 **Answer: C. Remove rags and large solids that could clog the pumps**
 
 A bar screen catches rags and large debris that could clog or damage the pumps and check valves.
 
-### 64: Lift station concepts: wet wells, pumps, controls and alarms (medium)
+### 56: Lift station concepts: wet wells, pumps, controls and alarms (medium)
 
 Lift stations are often located at low points in a sewer district because
 
-- **A.** The motors stay cool in groundwater at low elevations
-- **B.** No flow measurement is then needed at the plant
-- **C.** The force main stays above the frost line in winter
-- **D.** Gravity brings flow to the station from nearby lines
+- **A.** Gravity brings flow to the station from nearby lines
+- **B.** The motors stay cool in groundwater at low elevations
+- **C.** No flow measurement is then needed at the plant
+- **D.** The force main stays above the frost line in winter
 
-**Answer: D. Gravity brings flow to the station from nearby lines**
+**Answer: A. Gravity brings flow to the station from nearby lines**
 
 Collection lines are routed by gravity toward low points, where a station can collect flow and lift it onward.
 
-### 65: Lift station concepts: wet wells, pumps, controls and alarms (easy)
+### 57: Lift station concepts: wet wells, pumps, controls and alarms (easy)
 
 A standby generator at a lift station is used mainly to
 
 - **A.** Power the chlorine analyzer at the outfall for sampling
-- **B.** Keep pumping during a loss of utility power
-- **C.** Charge the telemetry batteries during the night
-- **D.** Heat the wet well to prevent freezing in winter
+- **B.** Heat the wet well to prevent freezing in winter
+- **C.** Keep pumping during a loss of utility power
+- **D.** Charge the telemetry batteries during the night
 
-**Answer: B. Keep pumping during a loss of utility power**
+**Answer: C. Keep pumping during a loss of utility power**
 
 A standby generator keeps the pumps running during a power outage, which prevents an overflow at the station.
 
-### 66: Lift station concepts: wet wells, pumps, controls and alarms (hard)
+### 58: Lift station concepts: wet wells, pumps, controls and alarms (hard)
 
 What does a bypass connection at a lift station allow?
 
-- **A.** Pressure in the force main to rise during startup
-- **B.** Sludge pumped back from the plant headworks
-- **C.** Flow diverted around the station during repairs
-- **D.** Air drawn into the pump suction during operation
+- **A.** Air drawn into the pump suction during operation
+- **B.** Pressure in the force main to rise during startup
+- **C.** Sludge pumped back from the plant headworks
+- **D.** Flow diverted around the station during repairs
 
-**Answer: C. Flow diverted around the station during repairs**
+**Answer: D. Flow diverted around the station during repairs**
 
 A bypass lets flow continue around the station while pumps or wet well are serviced. It must be used with care.
 
-### 67: Lift station concepts: wet wells, pumps, controls and alarms (hard)
+### 59: Lift station concepts: wet wells, pumps, controls and alarms (hard)
 
 Which event is most likely to cause a lift station to overflow?
 
 - **A.** Pump failure combined with inflow during heavy rain
-- **B.** A pump that starts and stops smoothly during the day
-- **C.** A new check valve installed on the discharge line
+- **B.** A new check valve installed on the discharge line
+- **C.** A pump that starts and stops smoothly during the day
 - **D.** A dry spell that lowers the level in the wet well
 
 **Answer: A. Pump failure combined with inflow during heavy rain**
 
 Overflow risk rises when a pump is unavailable while inflow is high. Smooth cycling and low levels do not cause overflow.
 
-### 68: Chemical feeders and metering equipment (easy)
+### 60: Chemical feeders and metering equipment (easy)
 
 A chemical feed pump is best described as
 
-- **A.** A tank that stores raw wastewater before the screens
-- **B.** A device that heats chemical solution before injection
-- **C.** A pump that lifts sludge from the digester to the press
-- **D.** A metering device that delivers a set chemical dose
+- **A.** A device that heats chemical solution before injection
+- **B.** A metering device that delivers a set chemical dose
+- **C.** A tank that stores raw wastewater before the screens
+- **D.** A pump that lifts sludge from the digester to the press
 
-**Answer: D. A metering device that delivers a set chemical dose**
+**Answer: B. A metering device that delivers a set chemical dose**
 
 A chemical feed pump delivers a controlled, measured amount of chemical at a set rate.
 
-### 69: Chemical feeders and metering equipment (medium)
+### 61: Chemical feeders and metering equipment (medium)
 
 What is a common cause of an inaccurate chemical feed?
 
-- **A.** A chemical tank filled to the correct level for the day
-- **B.** A feed rate checked against the plan and recorded
-- **C.** A clogged injector or line that reduces the feed
+- **A.** A feed rate checked against the plan and recorded
+- **B.** A clogged injector or line that reduces the feed
+- **C.** A chemical tank filled to the correct level for the day
 - **D.** A flow meter calibrated to the correct range for the line
 
-**Answer: C. A clogged injector or line that reduces the feed**
+**Answer: B. A clogged injector or line that reduces the feed**
 
 A clogged injector or line lowers the actual feed below the set rate, which is a common cause of underdosing.
 
-### 70: Chemical feeders and metering equipment (easy)
+### 62: Chemical feeders and metering equipment (easy)
 
 Why is a rotameter or flow indicator used on a chemical feed line?
 
-- **A.** To measure the pH of the solution in the tank
-- **B.** To show the actual rate of chemical flow visually
+- **A.** To show the actual rate of chemical flow visually
+- **B.** To count the number of strokes made by the pump
 - **C.** To record the daily chemical cost in dollars
-- **D.** To count the number of strokes made by the pump
+- **D.** To measure the pH of the solution in the tank
 
-**Answer: B. To show the actual rate of chemical flow visually**
+**Answer: A. To show the actual rate of chemical flow visually**
 
 A rotameter gives a visible reading of flow, so the operator can see whether the feed matches the setting.
 
-### 71: Chemical feeders and metering equipment (easy)
+### 63: Chemical feeders and metering equipment (easy)
 
 A diaphragm chemical feed pump is used to
 
-- **A.** Pump large volumes of raw sewage up to the plant
-- **B.** Mix dry powder into the flow at the headworks
-- **C.** Move solids through a sludge press at a set pressure
-- **D.** Deliver small, accurate doses of liquid chemical
+- **A.** Mix dry powder into the flow at the headworks
+- **B.** Pump large volumes of raw sewage up to the plant
+- **C.** Deliver small, accurate doses of liquid chemical
+- **D.** Move solids through a sludge press at a set pressure
 
-**Answer: D. Deliver small, accurate doses of liquid chemical**
+**Answer: C. Deliver small, accurate doses of liquid chemical**
 
 Diaphragm metering pumps deliver precise, small volumes of chemical at a controlled rate, which is why they suit chemical feed.
 
-### 72: Chemical feeders and metering equipment (medium)
+### 64: Chemical feeders and metering equipment (medium)
 
 What does a chemical dose calculation need to consider?
 
-- **A.** The target dose, the flow rate and the chemical strength
-- **B.** The color of the tank and the room lighting level
-- **C.** The number of manholes upstream of the feed point
-- **D.** The pump's nameplate and its installation date
+- **A.** The pump's nameplate and its installation date
+- **B.** The number of manholes upstream of the feed point
+- **C.** The color of the tank and the room lighting level
+- **D.** The target dose, the flow rate and the chemical strength
 
-**Answer: A. The target dose, the flow rate and the chemical strength**
+**Answer: D. The target dose, the flow rate and the chemical strength**
 
 A dose calculation combines the dose, the flow and the strength of the chemical to set the feed rate.
 
-### 73: Chemical feeders and metering equipment (medium)
+### 65: Chemical feeders and metering equipment (medium)
 
 Why must a chemical feeder be calibrated regularly?
 
-- **A.** Calibration raises the strength of the stock solution
-- **B.** Calibration removes the need for routine checks of the dose
-- **C.** Pump output changes with wear and line conditions
-- **D.** Calibration sets the manhole spacing for the line
+- **A.** Calibration sets the manhole spacing for the line
+- **B.** Pump output changes with wear and line conditions
+- **C.** Calibration raises the strength of the stock solution
+- **D.** Calibration removes the need for routine checks of the dose
 
-**Answer: C. Pump output changes with wear and line conditions**
+**Answer: B. Pump output changes with wear and line conditions**
 
 Pump output drifts as parts wear and as line conditions change, so periodic calibration keeps the dose accurate.
 
-### 74: Chemical feeders and metering equipment (easy)
+### 66: Chemical feeders and metering equipment (easy)
 
 What is a meter's accuracy?
 
-- **A.** How many readings it records in one day
-- **B.** How much chemical it holds in its storage tank
-- **C.** How fast it responds to a sudden change in flow
-- **D.** How close its reading is to the true value
+- **A.** How much chemical it holds in its storage tank
+- **B.** How fast it responds to a sudden change in flow
+- **C.** How close its reading is to the true value
+- **D.** How many readings it records in one day
 
-**Answer: D. How close its reading is to the true value**
+**Answer: C. How close its reading is to the true value**
 
 Accuracy describes how closely a reading agrees with the true value. Response time and capacity are different properties.
 
-### 75: Chemical feeders and metering equipment (easy)
+### 67: Chemical feeders and metering equipment (easy)
 
 Why is a chemical storage tank fitted with a level gauge?
 
-- **A.** To show the feed pump's motor current
-- **B.** To track how much chemical remains for reordering
+- **A.** To track how much chemical remains for reordering
+- **B.** To measure the pH of the chemical solution
 - **C.** To record the flow through the feed line
-- **D.** To measure the pH of the chemical solution
+- **D.** To show the feed pump's motor current
 
-**Answer: B. To track how much chemical remains for reordering**
+**Answer: A. To track how much chemical remains for reordering**
 
 A level gauge shows the stock on hand, so operators can plan orders and avoid running out.
 
-### 76: Chemical feeders and metering equipment (medium)
+### 68: Chemical feeders and metering equipment (medium)
 
 Which metering arrangement keeps a chemical dose in step with flow?
 
-- **A.** Flow-paced feed controlled by a flow signal
-- **B.** Storage tank fed by gravity from the plant
+- **A.** Storage tank fed by gravity from the plant
+- **B.** Constant-rate feed set by hand each morning
 - **C.** Batch dosing once a day at a fixed time
-- **D.** Constant-rate feed set by hand each morning
+- **D.** Flow-paced feed controlled by a flow signal
 
-**Answer: A. Flow-paced feed controlled by a flow signal**
+**Answer: D. Flow-paced feed controlled by a flow signal**
 
 A flow-paced feed adjusts the chemical rate as flow changes, so the dose stays proportional to the flow.
 
-### 77: Chemical feeders and metering equipment (easy)
+### 69: Chemical feeders and metering equipment (easy)
 
 A day tank in a chemical feed system is used to
 
-- **A.** Measure flow at the outfall for permit records
-- **B.** Heat the chemical before it reaches the injector
-- **C.** Store raw sludge before it goes to the digester
-- **D.** Hold a day's supply near the feed pump
+- **A.** Store raw sludge before it goes to the digester
+- **B.** Measure flow at the outfall for permit records
+- **C.** Hold a day's supply near the feed pump
+- **D.** Heat the chemical before it reaches the injector
 
-**Answer: D. Hold a day's supply near the feed pump**
+**Answer: C. Hold a day's supply near the feed pump**
 
 A day tank keeps a short supply close to the pump, so the feed is not interrupted by a delivery.
 
-### 78: Motors, pumps and valves: operation and maintenance (medium)
+### 70: Motors, pumps and valves: operation and maintenance (medium)
 
 What does a motor's nameplate horsepower rating indicate?
 
-- **A.** The motor's rated output power at the design conditions
-- **B.** The diameter of the motor shaft in millimeters
-- **C.** The maximum number of starts allowed per hour in service
-- **D.** The voltage the motor draws from the plant panel
+- **A.** The diameter of the motor shaft in millimeters
+- **B.** The motor's rated output power at the design conditions
+- **C.** The voltage the motor draws from the plant panel
+- **D.** The maximum number of starts allowed per hour in service
 
-**Answer: A. The motor's rated output power at the design conditions**
+**Answer: B. The motor's rated output power at the design conditions**
 
 The nameplate horsepower is the rated output the motor is designed to deliver under its design conditions.
 
-### 79: Motors, pumps and valves: operation and maintenance (easy)
+### 71: Motors, pumps and valves: operation and maintenance (easy)
 
 Why is motor overload protection provided?
 
 - **A.** To increase the motor's speed during peak demand periods
-- **B.** To stop the motor before it overheats from excess current
-- **C.** To keep the pump primed when the level drops suddenly
-- **D.** To record the energy used by the pump each month
+- **B.** To keep the pump primed when the level drops suddenly
+- **C.** To record the energy used by the pump each month
+- **D.** To stop the motor before it overheats from excess current
 
-**Answer: B. To stop the motor before it overheats from excess current**
+**Answer: D. To stop the motor before it overheats from excess current**
 
 Overload protection disconnects the motor when current runs high for too long, which prevents winding damage.
 
-### 80: Motors, pumps and valves: operation and maintenance (easy)
+### 72: Motors, pumps and valves: operation and maintenance (easy)
 
 A centrifugal pump is one that uses
 
-- **A.** A positive displacement screw that traps and pushes liquid
+- **A.** An impeller that spins in a volute casing to move liquid
 - **B.** A diaphragm driven by a reciprocating plunger
-- **C.** An impeller that spins in a volute casing to move liquid
-- **D.** Compressed air in an ejector to lift the liquid
+- **C.** Compressed air in an ejector to lift the liquid
+- **D.** A positive displacement screw that traps and pushes liquid
 
-**Answer: C. An impeller that spins in a volute casing to move liquid**
+**Answer: A. An impeller that spins in a volute casing to move liquid**
 
 A centrifugal pump uses a rotating impeller to add energy to the liquid, which the volute casing directs to the outlet.
 
-### 81: Motors, pumps and valves: operation and maintenance (hard)
+### 73: Motors, pumps and valves: operation and maintenance (hard)
 
 A pump that is cavitating usually shows which sign?
 
 - **A.** A gradual rise in the level of the wet well
-- **B.** Higher discharge pressure with no change in flow
+- **B.** Steady flow with a quiet, even hum at the motor
 - **C.** Crackling or rattling noise with reduced flow
-- **D.** Steady flow with a quiet, even hum at the motor
+- **D.** Higher discharge pressure with no change in flow
 
 **Answer: C. Crackling or rattling noise with reduced flow**
 
 Cavitation makes a rattling or crackling noise and reduces output as vapor bubbles collapse at the impeller.
 
-### 82: Motors, pumps and valves: operation and maintenance (easy)
+### 74: Motors, pumps and valves: operation and maintenance (easy)
 
 Why are pump suction lines kept full of liquid?
 
-- **A.** To prevent air binding and loss of prime
-- **B.** To raise the pump's maximum rated head by a margin
+- **A.** To raise the pump's maximum rated head by a margin
+- **B.** To cut the power draw from the motor at startup
 - **C.** To keep the motor cooled by the flow of the water
-- **D.** To cut the power draw from the motor at startup
+- **D.** To prevent air binding and loss of prime
 
-**Answer: A. To prevent air binding and loss of prime**
+**Answer: D. To prevent air binding and loss of prime**
 
 A pump that loses its prime cannot lift liquid until the air is cleared, so suction lines must stay filled.
 
-### 83: Motors, pumps and valves: operation and maintenance (easy)
+### 75: Motors, pumps and valves: operation and maintenance (easy)
 
 A check valve is best described as
 
 - **A.** A valve that shuts off the pump's power supply
-- **B.** A valve that releases air from high points in a line
-- **C.** A valve that throttles flow to a set percentage
-- **D.** A valve that allows flow in one direction
+- **B.** A valve that allows flow in one direction
+- **C.** A valve that releases air from high points in a line
+- **D.** A valve that throttles flow to a set percentage
 
-**Answer: D. A valve that allows flow in one direction**
+**Answer: B. A valve that allows flow in one direction**
 
 A check valve lets flow pass in one direction and closes to stop reverse flow.
 
-### 84: Motors, pumps and valves: operation and maintenance (medium)
+### 76: Motors, pumps and valves: operation and maintenance (medium)
 
 Which valve type is most often used to isolate a section of pipe for maintenance?
 
-- **A.** Check valve that closes when flow reverses direction
-- **B.** Gate valve, which closes fully with a sliding gate
-- **C.** Float valve that opens on a rising water level
+- **A.** Gate valve, which closes fully with a sliding gate
+- **B.** Float valve that opens on a rising water level
+- **C.** Check valve that closes when flow reverses direction
 - **D.** Globe valve used for fine throttling of the flow
 
-**Answer: B. Gate valve, which closes fully with a sliding gate**
+**Answer: A. Gate valve, which closes fully with a sliding gate**
 
 Gate valves are used for isolation because they seal fully when closed and are not meant for throttling.
 
-### 85: Motors, pumps and valves: operation and maintenance (easy)
+### 77: Motors, pumps and valves: operation and maintenance (easy)
 
 What does a valve's position indicator show?
 
@@ -1109,7 +1005,7 @@ What does a valve's position indicator show?
 
 A position indicator shows the operating state of the valve, so the operator knows whether it is open or closed.
 
-### 86: Motors, pumps and valves: operation and maintenance (medium)
+### 78: Motors, pumps and valves: operation and maintenance (medium)
 
 Pump seals and packing are maintained mainly to
 
@@ -1122,46 +1018,46 @@ Pump seals and packing are maintained mainly to
 
 Packing and seals keep leakage along the shaft to a controlled minimum. Worn or over-tight packing can cause excess leakage and shaft wear.
 
-### 87: Motors, pumps and valves: operation and maintenance (easy)
+### 79: Motors, pumps and valves: operation and maintenance (easy)
 
 A lubrication schedule for pump bearings is set to
 
-- **A.** Prevent the wet well from filling with grit
+- **A.** Lower the discharge pressure to a safe level
 - **B.** Keep bearings from overheating and wearing early
 - **C.** Raise the pump capacity by a fixed percentage
-- **D.** Lower the discharge pressure to a safe level
+- **D.** Prevent the wet well from filling with grit
 
 **Answer: B. Keep bearings from overheating and wearing early**
 
 Bearings need lubricant on a schedule so friction and heat stay low and the bearing lasts longer.
 
-### 88: Motors, pumps and valves: operation and maintenance (hard)
+### 80: Motors, pumps and valves: operation and maintenance (hard)
 
 Why do operators check motor amperage during routine rounds?
 
-- **A.** It determines the pump's suction lift at startup
-- **B.** It records the energy cost charged to the utility
+- **A.** It records the energy cost charged to the utility
+- **B.** It sets the number of pump starts per day
 - **C.** It shows load changes that can signal wear
-- **D.** It sets the number of pump starts per day
+- **D.** It determines the pump's suction lift at startup
 
 **Answer: C. It shows load changes that can signal wear**
 
 Rising or erratic current can point to a bearing problem, a clog or a change in the load on the pump.
 
-### 89: Motors, pumps and valves: operation and maintenance (medium)
+### 81: Motors, pumps and valves: operation and maintenance (medium)
 
 Which factor most affects the head a pump must overcome?
 
-- **A.** The day of the week when the pump operates
-- **B.** The static lift plus friction losses in the pipe
-- **C.** The number of customers connected to the line
+- **A.** The number of customers connected to the line
+- **B.** The day of the week when the pump operates
+- **C.** The static lift plus friction losses in the pipe
 - **D.** The color of the pump housing and its paint
 
-**Answer: B. The static lift plus friction losses in the pipe**
+**Answer: C. The static lift plus friction losses in the pipe**
 
 Total dynamic head is the static lift plus friction losses in the pipe, with any pressure or velocity head added when they apply.
 
-### 90: Motors, pumps and valves: operation and maintenance (hard)
+### 82: Motors, pumps and valves: operation and maintenance (hard)
 
 A gate valve left partly open on a pump discharge is most likely to cause
 
@@ -1174,163 +1070,163 @@ A gate valve left partly open on a pump discharge is most likely to cause
 
 A partly closed valve adds friction, which lowers flow and raises the head the pump must work against.
 
-### 91: Motors, pumps and valves: operation and maintenance (hard)
+### 83: Motors, pumps and valves: operation and maintenance (hard)
 
 A pump operating far to the right of its curve, at high flow, generally has which concern?
 
 - **A.** Too low a speed for the impeller to lift
-- **B.** Too little flow to keep the solids moving
-- **C.** Excess flow that can overload the motor
-- **D.** Excess head that stops the impeller from turning
+- **B.** Excess head that stops the impeller from turning
+- **C.** Too little flow to keep the solids moving
+- **D.** Excess flow that can overload the motor
 
-**Answer: C. Excess flow that can overload the motor**
+**Answer: D. Excess flow that can overload the motor**
 
 At high flow the pump draws more power, so the motor can overload. Check the pump's power curve for the actual draw at that point.
 
-### 92: Wastewater characteristics: strength, solids, pH and temperature (easy)
+### 84: Wastewater characteristics: strength, solids, pH and temperature (easy)
 
 Which measure describes the organic strength of wastewater?
 
 - **A.** Chlorine residual measured after contact time
-- **B.** Turbidity measured in nephelometric units
-- **C.** Total dissolved solids reported as mg/L
-- **D.** Biochemical oxygen demand (BOD)
+- **B.** Biochemical oxygen demand (BOD)
+- **C.** Turbidity measured in nephelometric units
+- **D.** Total dissolved solids reported as mg/L
 
-**Answer: D. Biochemical oxygen demand (BOD)**
+**Answer: B. Biochemical oxygen demand (BOD)**
 
 BOD measures the oxygen that microorganisms use to break down organic matter, which indicates organic strength.
 
-### 93: Wastewater characteristics: strength, solids, pH and temperature (medium)
+### 85: Wastewater characteristics: strength, solids, pH and temperature (medium)
 
 Total suspended solids (TSS) are best described as
 
 - **A.** Microorganisms that die off during the contact tank
-- **B.** Solids retained on a standard filter
+- **B.** Dissolved salts that pass through a fine filter
 - **C.** Gases dissolved in the wastewater at the headworks
-- **D.** Dissolved salts that pass through a fine filter
+- **D.** Solids retained on a standard filter
 
-**Answer: B. Solids retained on a standard filter**
+**Answer: D. Solids retained on a standard filter**
 
 TSS are the solids that a filter of standard size catches. Dissolved salts pass through the filter.
 
-### 94: Wastewater characteristics: strength, solids, pH and temperature (easy)
+### 86: Wastewater characteristics: strength, solids, pH and temperature (easy)
 
 Why does wastewater with a high BOD stress a receiving stream?
 
-- **A.** Its dissolved oxygen is too high for fish to survive
+- **A.** Its organic matter uses up dissolved oxygen
 - **B.** Its pH drops below the level of neutrality
-- **C.** Its solids float and block the outfall gates
-- **D.** Its organic matter uses up dissolved oxygen
+- **C.** Its dissolved oxygen is too high for fish to survive
+- **D.** Its solids float and block the outfall gates
 
-**Answer: D. Its organic matter uses up dissolved oxygen**
+**Answer: A. Its organic matter uses up dissolved oxygen**
 
 Microorganisms consume oxygen to decompose organic matter, so high BOD can deplete the oxygen that aquatic life needs.
 
-### 95: Wastewater characteristics: strength, solids, pH and temperature (easy)
+### 87: Wastewater characteristics: strength, solids, pH and temperature (easy)
 
 Which characteristic shows how acidic or basic wastewater is?
 
-- **A.** Temperature measured at the headworks channel
-- **B.** Conductivity measured in micromhos per centimeter
-- **C.** pH, a logarithmic scale of hydrogen ion activity
-- **D.** Turbidity reported as a count of particles
+- **A.** Turbidity reported as a count of particles
+- **B.** pH, a logarithmic scale of hydrogen ion activity
+- **C.** Temperature measured at the headworks channel
+- **D.** Conductivity measured in micromhos per centimeter
 
-**Answer: C. pH, a logarithmic scale of hydrogen ion activity**
+**Answer: B. pH, a logarithmic scale of hydrogen ion activity**
 
 pH is the scale of hydrogen ion activity, from acidic values below 7 to basic values above 7.
 
-### 96: Wastewater characteristics: strength, solids, pH and temperature (medium)
+### 88: Wastewater characteristics: strength, solids, pH and temperature (medium)
 
 Strong wastewater from a food processor typically has
 
-- **A.** Higher BOD and grease than domestic sewage
-- **B.** Similar strength but a much lower daily volume
-- **C.** Lower solids and higher pH than domestic sewage
-- **D.** Lower BOD and more chlorine demand than domestic sewage
+- **A.** Similar strength but a much lower daily volume
+- **B.** Lower BOD and more chlorine demand than domestic sewage
+- **C.** Higher BOD and grease than domestic sewage
+- **D.** Lower solids and higher pH than domestic sewage
 
-**Answer: A. Higher BOD and grease than domestic sewage**
+**Answer: C. Higher BOD and grease than domestic sewage**
 
 Food processing waste is high in organic matter and fats, so its BOD and grease are typically well above domestic levels.
 
-### 97: Wastewater characteristics: strength, solids, pH and temperature (medium)
+### 89: Wastewater characteristics: strength, solids, pH and temperature (medium)
 
 Grease in collection systems is a concern mainly because it
 
-- **A.** Raises the pH of the wastewater to alkaline levels
+- **A.** Adds oxygen to the flow and reduces corrosion
 - **B.** Solidifies on pipe walls and narrows the flow path
 - **C.** Dissolves the pipe joints and causes infiltration
-- **D.** Adds oxygen to the flow and reduces corrosion
+- **D.** Raises the pH of the wastewater to alkaline levels
 
 **Answer: B. Solidifies on pipe walls and narrows the flow path**
 
 Grease cools and clings to the pipe wall, building up into deposits that reduce the flow area and cause blockages.
 
-### 98: Wastewater characteristics: strength, solids, pH and temperature (medium)
+### 90: Wastewater characteristics: strength, solids, pH and temperature (medium)
 
 Wastewater temperature affects collection systems mainly by
 
 - **A.** Changing biological activity and gas release rates
-- **B.** Fixing the slope required for gravity flow
-- **C.** Setting the maximum velocity allowed in the sewer
-- **D.** Changing the pipe's diameter as it expands
+- **B.** Setting the maximum velocity allowed in the sewer
+- **C.** Changing the pipe's diameter as it expands
+- **D.** Fixing the slope required for gravity flow
 
 **Answer: A. Changing biological activity and gas release rates**
 
 Warmer wastewater speeds biological activity and gas release, which affects odor and corrosion in the collection system.
 
-### 99: Wastewater characteristics: strength, solids, pH and temperature (hard)
+### 91: Wastewater characteristics: strength, solids, pH and temperature (hard)
 
 Septicity in a sewer is best described as
 
 - **A.** Chemical reaction that neutralizes the pH of flow
 - **B.** Aerobic breakdown that clears the line of solids
-- **C.** Settling of grit at the lowest point of the line
-- **D.** Anaerobic decay that produces odor and gas
+- **C.** Anaerobic decay that produces odor and gas
+- **D.** Settling of grit at the lowest point of the line
 
-**Answer: D. Anaerobic decay that produces odor and gas**
+**Answer: C. Anaerobic decay that produces odor and gas**
 
 Septic wastewater has gone anaerobic, so decay produces sulfide, odor and gas that can corrode structures.
 
-### 100: Wastewater characteristics: strength, solids, pH and temperature (hard)
+### 92: Wastewater characteristics: strength, solids, pH and temperature (hard)
 
 Which constituent is most often linked to corrosion of concrete sewers?
 
-- **A.** Nitrate from fertilizer runoff in the district
+- **A.** Dissolved oxygen at high concentration in the flow
 - **B.** Fine grit that abrades the pipe invert
-- **C.** Hydrogen sulfide converted to sulfuric acid
-- **D.** Dissolved oxygen at high concentration in the flow
+- **C.** Nitrate from fertilizer runoff in the district
+- **D.** Hydrogen sulfide converted to sulfuric acid
 
-**Answer: C. Hydrogen sulfide converted to sulfuric acid**
+**Answer: D. Hydrogen sulfide converted to sulfuric acid**
 
 Hydrogen sulfide forms in septic flow and is oxidised to sulfuric acid on crown surfaces, which corrodes concrete.
 
-### 101: Wastewater characteristics: strength, solids, pH and temperature (hard)
+### 93: Wastewater characteristics: strength, solids, pH and temperature (hard)
 
 What does a high percentage of volatile solids indicate?
 
-- **A.** A large share of organic, combustible material
-- **B.** A low chance that solids will settle at the outlet
-- **C.** A large share of inert mineral matter in the flow
-- **D.** A high level of dissolved metals in the influent
+- **A.** A low chance that solids will settle at the outlet
+- **B.** A large share of organic, combustible material
+- **C.** A high level of dissolved metals in the influent
+- **D.** A large share of inert mineral matter in the flow
 
-**Answer: A. A large share of organic, combustible material**
+**Answer: B. A large share of organic, combustible material**
 
 Volatile solids are the portion lost on ignition, a practical measure of the organic fraction. A high share means much of the solids is organic.
 
-### 102: Wastewater characteristics: strength, solids, pH and temperature (medium)
+### 94: Wastewater characteristics: strength, solids, pH and temperature (medium)
 
 Nitrogen and phosphorus in wastewater are of concern mainly because
 
 - **A.** They increase the viscosity of grease in the line
-- **B.** They raise the temperature of the collection pipe
-- **C.** They lower the chlorine demand of the flow
+- **B.** They lower the chlorine demand of the flow
+- **C.** They raise the temperature of the collection pipe
 - **D.** They can stimulate algae growth in receiving waters
 
 **Answer: D. They can stimulate algae growth in receiving waters**
 
 Nutrients fuel algae and plant growth in receiving waters, which can lead to oxygen loss and other impacts.
 
-### 103: Wastewater characteristics: strength, solids, pH and temperature (medium)
+### 95: Wastewater characteristics: strength, solids, pH and temperature (medium)
 
 Infiltration generally makes wastewater
 
@@ -1343,922 +1239,922 @@ Infiltration generally makes wastewater
 
 Infiltration adds clean groundwater to the sewer, which dilutes the BOD and solids that the plant receives.
 
-### 104: Wastewater characteristics: strength, solids, pH and temperature (hard)
+### 96: Wastewater characteristics: strength, solids, pH and temperature (hard)
 
 A high chloride level in the influent may come from
 
-- **A.** Yeast in the commercial bakery's rinse water
-- **B.** Water softeners and some industrial discharges
-- **C.** Algae growing in the collection manhole
+- **A.** Water softeners and some industrial discharges
+- **B.** Algae growing in the collection manhole
+- **C.** Yeast in the commercial bakery's rinse water
 - **D.** Rainfall that washes soil from the street surface
 
-**Answer: B. Water softeners and some industrial discharges**
+**Answer: A. Water softeners and some industrial discharges**
 
 Water softeners add chloride to the wastewater, and some industrial processes do as well.
 
-### 105: Wastewater characteristics: strength, solids, pH and temperature (easy)
+### 97: Wastewater characteristics: strength, solids, pH and temperature (easy)
 
 Why is wastewater temperature important at the plant?
 
-- **A.** It determines the number of manholes needed
-- **B.** It fixes the density of the flow in the pipe
-- **C.** It sets the diameter of the outfall pipe
-- **D.** Biological treatment rates depend on it
+- **A.** It sets the diameter of the outfall pipe
+- **B.** Biological treatment rates depend on it
+- **C.** It determines the number of manholes needed
+- **D.** It fixes the density of the flow in the pipe
 
-**Answer: D. Biological treatment rates depend on it**
+**Answer: B. Biological treatment rates depend on it**
 
 Microbial activity, and so treatment rate, changes with temperature, so the operator must account for it.
 
-### 106: Removal efficiency concepts (medium)
+### 98: Removal efficiency concepts (medium)
 
 How is removal efficiency defined for a treatment process?
 
-- **A.** The mass of solids stored in the digester
-- **B.** The percent of a pollutant removed between inlet and outlet
+- **A.** The percent of a pollutant removed between inlet and outlet
+- **B.** The mass of solids stored in the digester
 - **C.** The volume of sludge produced each day at the plant
 - **D.** The rate at which the pump lifts flow to the basin
 
-**Answer: B. The percent of a pollutant removed between inlet and outlet**
+**Answer: A. The percent of a pollutant removed between inlet and outlet**
 
 Removal efficiency compares what enters a process with what leaves it, expressed as a percentage.
 
-### 107: Removal efficiency concepts (medium)
+### 99: Removal efficiency concepts (medium)
 
 Why is removal efficiency reported as a percentage?
 
-- **A.** It allows comparison between plants of different sizes
-- **B.** It replaces the need for any laboratory testing
-- **C.** It sets the volume of the plant's storage lagoon
-- **D.** It shows the exact daily cost of each chemical used
+- **A.** It sets the volume of the plant's storage lagoon
+- **B.** It shows the exact daily cost of each chemical used
+- **C.** It replaces the need for any laboratory testing
+- **D.** It allows comparison between plants of different sizes
 
-**Answer: A. It allows comparison between plants of different sizes**
+**Answer: D. It allows comparison between plants of different sizes**
 
 A percentage lets operators compare performance between plants and periods even when flows differ.
 
-### 108: Removal efficiency concepts (hard)
+### 100: Removal efficiency concepts (hard)
 
 Why must influent and effluent samples be taken at comparable times?
 
-- **A.** Removal rates depend on the color of the bottle
-- **B.** Samples taken at the same hour are identical
+- **A.** Lab results change if the bottle is kept cold
+- **B.** Removal rates depend on the color of the bottle
 - **C.** Flow varies, so unmatched samples mislead
-- **D.** Lab results change if the bottle is kept cold
+- **D.** Samples taken at the same hour are identical
 
 **Answer: C. Flow varies, so unmatched samples mislead**
 
 Flow and strength change through the day, so unmatched samples do not represent the same water unless detention time is accounted for.
 
-### 109: Removal efficiency concepts (medium)
+### 101: Removal efficiency concepts (medium)
 
 Which mass calculation combines flow and concentration?
 
-- **A.** Load equals concentration minus the flow rate value
-- **B.** Load equals flow divided by the concentration value
-- **C.** Load equals the pump head divided by the flow rate
-- **D.** Load equals flow times concentration times a factor
+- **A.** Load equals flow times concentration times a factor
+- **B.** Load equals the pump head divided by the flow rate
+- **C.** Load equals flow divided by the concentration value
+- **D.** Load equals concentration minus the flow rate value
 
-**Answer: D. Load equals flow times concentration times a factor**
+**Answer: A. Load equals flow times concentration times a factor**
 
 Mass load is flow multiplied by concentration, with a unit conversion factor to give pounds per day.
 
-### 110: Removal efficiency concepts (easy)
+### 102: Removal efficiency concepts (easy)
 
 A high removal efficiency tells the operator that
 
 - **A.** The effluent flow rate was unusually high that day
 - **B.** The influent pH was outside the normal range
-- **C.** The process removed a large share of the pollutant
-- **D.** The sludge produced was low in volatile content
+- **C.** The sludge produced was low in volatile content
+- **D.** The process removed a large share of the pollutant
 
-**Answer: C. The process removed a large share of the pollutant**
+**Answer: D. The process removed a large share of the pollutant**
 
 A high removal efficiency means a large fraction of the incoming pollutant was taken out by the process.
 
-### 111: Removal efficiency concepts (medium)
+### 103: Removal efficiency concepts (medium)
 
 Accurate removal efficiency depends on
 
-- **A.** The age of the manhole covers on the collection line
-- **B.** Paired samples taken accurately and the same way
-- **C.** The pump's electrical load and its startup count
-- **D.** The distance between the plant and the outfall pipe
+- **A.** The distance between the plant and the outfall pipe
+- **B.** The pump's electrical load and its startup count
+- **C.** Paired samples taken accurately and the same way
+- **D.** The age of the manhole covers on the collection line
 
-**Answer: B. Paired samples taken accurately and the same way**
+**Answer: C. Paired samples taken accurately and the same way**
 
 A reliable efficiency needs representative paired samples collected and analyzed consistently.
 
-### 112: Removal efficiency concepts (medium)
+### 104: Removal efficiency concepts (medium)
 
 Which solids are most likely to settle first in a sewer at a low-velocity point?
 
-- **A.** Grit and heavier sand-sized solids
-- **B.** Dissolved gases such as hydrogen sulfide and methane
-- **C.** Dissolved nutrients such as nitrogen and phosphorus
-- **D.** Pathogens that survive the disinfection step
+- **A.** Dissolved gases such as hydrogen sulfide and methane
+- **B.** Grit and heavier sand-sized solids
+- **C.** Pathogens that survive the disinfection step
+- **D.** Dissolved nutrients such as nitrogen and phosphorus
 
-**Answer: A. Grit and heavier sand-sized solids**
+**Answer: B. Grit and heavier sand-sized solids**
 
 Heavier grit and sand-sized solids drop out first where velocity is low, which is why sags and wet wells collect them.
 
-### 113: Removal efficiency concepts (hard)
+### 105: Removal efficiency concepts (hard)
 
 Which statement about dilution by infiltration is true?
 
 - **A.** Dilution has no effect on measured values
-- **B.** Dilution raises the BOD concentration in the pipe
-- **C.** Dilution changes only the pipe slope in the line
+- **B.** Dilution changes only the pipe slope in the line
+- **C.** Dilution raises the BOD concentration in the pipe
 - **D.** Dilution by infiltration lowers measured BOD
 
 **Answer: D. Dilution by infiltration lowers measured BOD**
 
 Clean infiltrating water adds volume without adding load, so the measured concentration falls.
 
-### 114: Removal efficiency concepts (hard)
+### 106: Removal efficiency concepts (hard)
 
 A mass balance around a process says that
 
-- **A.** Mass out is usually larger than mass in
-- **B.** Mass in equals the volume of the wet well
-- **C.** Mass in equals mass out plus any mass retained
+- **A.** Mass in equals the volume of the wet well
+- **B.** Mass in equals mass out plus any mass retained
+- **C.** Mass out is usually larger than mass in
 - **D.** Mass in is the flow times the pump head
 
-**Answer: C. Mass in equals mass out plus any mass retained**
+**Answer: B. Mass in equals mass out plus any mass retained**
 
 A mass balance accounts for every pound entering, leaving or building up in the unit, which is a basic check on performance.
 
-### 115: Removal efficiency concepts (medium)
+### 107: Removal efficiency concepts (medium)
 
 Where is nutrient removal most often carried out for wastewater?
 
-- **A.** Achieved by raising the slope of the collector
-- **B.** Mainly at the treatment plant
+- **A.** Mainly at the treatment plant
+- **B.** Achieved by raising the slope of the collector
 - **C.** Done by adding chlorine in manhole chambers
 - **D.** Handled by the lift station's pump controls
 
-**Answer: B. Mainly at the treatment plant**
+**Answer: A. Mainly at the treatment plant**
 
 Nutrient removal is a treatment process, so it is done mainly at the plant rather than in the collection pipes.
 
-### 116: Grab and composite sampling (medium)
+### 108: Grab and composite sampling (medium)
 
 A composite sample is used to
 
-- **A.** Represent average conditions over a period of time
-- **B.** Capture a sudden spike at one instant in the flow
-- **C.** Test the pH at the moment of discharge
-- **D.** Measure chlorine residual at the plant outfall
+- **A.** Test the pH at the moment of discharge
+- **B.** Measure chlorine residual at the plant outfall
+- **C.** Represent average conditions over a period of time
+- **D.** Capture a sudden spike at one instant in the flow
 
-**Answer: A. Represent average conditions over a period of time**
+**Answer: C. Represent average conditions over a period of time**
 
 A composite combines portions over time, so it shows the average condition during that period.
 
-### 117: Grab and composite sampling (medium)
+### 109: Grab and composite sampling (medium)
 
 Which situation calls for a grab sample rather than a composite?
 
-- **A.** Measuring the average BOD over a full week
-- **B.** Estimating the total solids in the influent
-- **C.** Testing a parameter that changes quickly
-- **D.** Testing the flow for a daily average load
+- **A.** Testing the flow for a daily average load
+- **B.** Measuring the average BOD over a full week
+- **C.** Estimating the total solids in the influent
+- **D.** Testing a parameter that changes quickly
 
-**Answer: C. Testing a parameter that changes quickly**
+**Answer: D. Testing a parameter that changes quickly**
 
 For a parameter that changes quickly, such as chlorine or pH, a grab sample captures the value at the moment of interest, while a composite would average it away.
 
-### 118: Gas and toxicity topics named in the outline (medium)
+### 110: Gas and toxicity topics named in the outline (medium)
 
 Hydrogen sulfide in collection systems is commonly associated with
 
-- **A.** Septic conditions and sludge or biofilm decay
-- **B.** Fresh rainwater entering a storm sewer
-- **C.** Clean water flowing through a force main
-- **D.** Aerated flow in an open channel at the plant
+- **A.** Clean water flowing through a force main
+- **B.** Aerated flow in an open channel at the plant
+- **C.** Septic conditions and sludge or biofilm decay
+- **D.** Fresh rainwater entering a storm sewer
 
-**Answer: A. Septic conditions and sludge or biofilm decay**
+**Answer: C. Septic conditions and sludge or biofilm decay**
 
 Hydrogen sulfide forms when wastewater goes septic, so it is linked to decaying sludge and biofilm.
 
-### 119: Gas and toxicity topics named in the outline (medium)
+### 111: Gas and toxicity topics named in the outline (medium)
 
 Methane is a concern in sewers mainly because it
 
-- **A.** Raises the freezing point of the flow in winter
-- **B.** Lowers the pH of the wastewater flow sharply
-- **C.** Makes the water too hard for the plant to treat
-- **D.** Can form a flammable mixture with air
+- **A.** Makes the water too hard for the plant to treat
+- **B.** Can form a flammable mixture with air
+- **C.** Lowers the pH of the wastewater flow sharply
+- **D.** Raises the freezing point of the flow in winter
 
-**Answer: D. Can form a flammable mixture with air**
+**Answer: B. Can form a flammable mixture with air**
 
 Methane is flammable in air at certain concentrations, which is why it is a recognised sewer atmosphere hazard.
 
-### 120: Gas and toxicity topics named in the outline (medium)
+### 112: Gas and toxicity topics named in the outline (medium)
 
 Toxicity testing of effluent is performed to
 
-- **A.** Measure the flow rate of the outfall channel
-- **B.** Assess whether the discharge harms test organisms
-- **C.** Determine the age of the sludge in the digester
-- **D.** Count the number of bacteria in the effluent
+- **A.** Assess whether the discharge harms test organisms
+- **B.** Measure the flow rate of the outfall channel
+- **C.** Count the number of bacteria in the effluent
+- **D.** Determine the age of the sludge in the digester
 
-**Answer: B. Assess whether the discharge harms test organisms**
+**Answer: A. Assess whether the discharge harms test organisms**
 
 Toxicity tests expose test organisms to the effluent to see whether it causes harm, which is a different question from bacterial counts.
 
-### 121: Cross-connection control concepts (easy)
+### 113: Cross-connection control concepts (easy)
 
 A cross connection is best defined as
 
-- **A.** A pipe that joins two sewer mains at a manhole
-- **B.** A link between drinking water and a source of contamination
+- **A.** A valve that connects a pump to its discharge line
+- **B.** A pipe that joins two sewer mains at a manhole
 - **C.** A joint between a lateral and the street main
-- **D.** A valve that connects a pump to its discharge line
+- **D.** A link between drinking water and a source of contamination
 
-**Answer: B. A link between drinking water and a source of contamination**
+**Answer: D. A link between drinking water and a source of contamination**
 
 A cross connection is any physical link through which a non-potable source could enter the drinking water system.
 
-### 122: Cross-connection control concepts (medium)
+### 114: Cross-connection control concepts (medium)
 
 Why does cross-connection control matter for a collection operator?
 
-- **A.** Sewage can flow back into a water supply
-- **B.** Storm runoff can dilute the wastewater at the plant
-- **C.** Sewer flow can raise the water pressure in homes
-- **D.** Water can leak out of the sewer into the street
+- **A.** Water can leak out of the sewer into the street
+- **B.** Sewer flow can raise the water pressure in homes
+- **C.** Sewage can flow back into a water supply
+- **D.** Storm runoff can dilute the wastewater at the plant
 
-**Answer: A. Sewage can flow back into a water supply**
+**Answer: C. Sewage can flow back into a water supply**
 
 Cross-connection control prevents contaminated water from entering the supply, which protects public health.
 
-### 123: Cross-connection control concepts (easy)
+### 115: Cross-connection control concepts (easy)
 
 A backflow prevention device is used to
 
-- **A.** Increase the flow rate through a customer meter
-- **B.** Measure the flow of water into a building
+- **A.** Measure the flow of water into a building
+- **B.** Stop reverse flow from a contaminated source
 - **C.** Lower the pressure in the sewer during storms
-- **D.** Stop reverse flow from a contaminated source
+- **D.** Increase the flow rate through a customer meter
 
-**Answer: D. Stop reverse flow from a contaminated source**
+**Answer: B. Stop reverse flow from a contaminated source**
 
 A backflow device stops contaminated water from flowing back into the potable supply.
 
-### 124: Cross-connection control concepts (hard)
+### 116: Cross-connection control concepts (hard)
 
 Back siphonage happens when
 
-- **A.** Storage tanks overflow into the public main
+- **A.** Supply pressure falls below that of the connected system
 - **B.** Supply pressure rises above that of the connected system
-- **C.** Supply pressure falls below that of the connected system
-- **D.** A customer meter is installed on the service line
+- **C.** A customer meter is installed on the service line
+- **D.** Storage tanks overflow into the public main
 
-**Answer: C. Supply pressure falls below that of the connected system**
+**Answer: A. Supply pressure falls below that of the connected system**
 
 Back siphonage occurs when a drop in supply pressure lets the higher-pressure connected system push water back.
 
-### 125: Cross-connection control concepts (medium)
+### 117: Cross-connection control concepts (medium)
 
 Backpressure is most often caused by
 
-- **A.** A pump or boiler pushing water backward
+- **A.** A pressure drop caused by a broken main
 - **B.** Fire flow drawing water from a hydrant
-- **C.** A pressure drop caused by a broken main
+- **C.** A pump or boiler pushing water backward
 - **D.** A valve left closed in the morning
 
-**Answer: A. A pump or boiler pushing water backward**
+**Answer: C. A pump or boiler pushing water backward**
 
 Backpressure occurs when the downstream system pressure exceeds the supply pressure, for example from a pump.
 
-### 126: Cross-connection control concepts (medium)
+### 118: Cross-connection control concepts (medium)
 
 A hose bib with no backflow device is a concern because
 
-- **A.** It reduces the pressure for the next customer
+- **A.** A hose in a tank could draw contaminants back
 - **B.** It holds too much water for a single household
-- **C.** A hose in a tank could draw contaminants back
-- **D.** It lets air into the supply at high pressure
+- **C.** It lets air into the supply at high pressure
+- **D.** It reduces the pressure for the next customer
 
-**Answer: C. A hose in a tank could draw contaminants back**
+**Answer: A. A hose in a tank could draw contaminants back**
 
 A hose end submerged in a tank can create a back siphonage path, which is why the device is needed.
 
-### 127: Cross-connection control concepts (medium)
+### 119: Cross-connection control concepts (medium)
 
 Why must a backflow assembly be tested on a schedule?
 
-- **A.** Its pressure rating drops each year it is installed
-- **B.** Check valves can fail unseen, so tests confirm them
-- **C.** Its flow capacity is reduced by each test performed
-- **D.** Its tests replace visual inspection of the pipe
+- **A.** Its flow capacity is reduced by each test performed
+- **B.** Its tests replace visual inspection of the pipe
+- **C.** Its pressure rating drops each year it is installed
+- **D.** Check valves can fail unseen, so tests confirm them
 
-**Answer: B. Check valves can fail unseen, so tests confirm them**
+**Answer: D. Check valves can fail unseen, so tests confirm them**
 
 Check and relief valves can wear or foul with no visible sign, so periodic testing confirms that the assembly still stops reverse flow.
 
-### 128: Cross-connection control concepts (medium)
+### 120: Cross-connection control concepts (medium)
 
 A reduced-pressure principle device is generally used for
 
-- **A.** Low-hazard irrigation lines with no chemicals
-- **B.** Storm drains that carry only rainfall runoff
-- **C.** Garden hose bibs at a single-family home
-- **D.** High-hazard connections where backflow is a concern
+- **A.** Garden hose bibs at a single-family home
+- **B.** High-hazard connections where backflow is a concern
+- **C.** Storm drains that carry only rainfall runoff
+- **D.** Low-hazard irrigation lines with no chemicals
 
-**Answer: D. High-hazard connections where backflow is a concern**
+**Answer: B. High-hazard connections where backflow is a concern**
 
 Reduced-pressure assemblies are mechanical devices used where the hazard is high, so they are the usual choice for high-hazard connections.
 
-### 129: Hazard categories in the CS1 outline (easy)
+### 121: Hazard categories in the CS1 outline (easy)
 
 Which hazard category includes sewer work near traffic?
 
-- **A.** Electrical hazards inside a wet well panel
-- **B.** Rotating machinery hazards on a belt conveyor
-- **C.** Traffic hazards near an open excavation or roadway
-- **D.** Chemical hazards from stored disinfectant drums
+- **A.** Chemical hazards from stored disinfectant drums
+- **B.** Traffic hazards near an open excavation or roadway
+- **C.** Rotating machinery hazards on a belt conveyor
+- **D.** Electrical hazards inside a wet well panel
 
-**Answer: C. Traffic hazards near an open excavation or roadway**
+**Answer: B. Traffic hazards near an open excavation or roadway**
 
 Traffic is a hazard category for work at the roadside, where vehicles can strike workers or equipment.
 
-### 130: Hazard categories in the CS1 outline (medium)
+### 122: Hazard categories in the CS1 outline (medium)
 
 Which category covers spaces not designed for continuous occupancy?
 
-- **A.** Storage room for chlorine cylinders
-- **B.** Open excavation that is left unshored overnight
-- **C.** Electrical panel with a removable door
-- **D.** Confined space that is not built for occupancy
+- **A.** Confined space that is not built for occupancy
+- **B.** Electrical panel with a removable door
+- **C.** Storage room for chlorine cylinders
+- **D.** Open excavation that is left unshored overnight
 
-**Answer: D. Confined space that is not built for occupancy**
+**Answer: A. Confined space that is not built for occupancy**
 
 A confined space is large enough to enter but not designed for continuous occupancy, and has limited entry or exit.
 
-### 131: Hazard categories in the CS1 outline (easy)
+### 123: Hazard categories in the CS1 outline (easy)
 
 Which hazard is linked to live power supplied to a motor or control panel?
 
-- **A.** Traffic from a truck parked on the street
-- **B.** Electrical hazard from energized equipment
-- **C.** Chemical exposure from a leaking feed line
-- **D.** Excavation collapse next to a lift station
+- **A.** Chemical exposure from a leaking feed line
+- **B.** Excavation collapse next to a lift station
+- **C.** Traffic from a truck parked on the street
+- **D.** Electrical hazard from energized equipment
 
-**Answer: B. Electrical hazard from energized equipment**
+**Answer: D. Electrical hazard from energized equipment**
 
 Energized motors and panels can cause shock or arc injury, so electrical hazards are a separate category.
 
-### 132: Hazard categories in the CS1 outline (easy)
+### 124: Hazard categories in the CS1 outline (easy)
 
 Rotating machinery awareness includes which idea?
 
-- **A.** Moving parts can catch clothing or tools
-- **B.** Rotating blades raise the pH of the flow
-- **C.** Rotating parts warm the wastewater flow
+- **A.** Rotating blades raise the pH of the flow
+- **B.** Rotating parts warm the wastewater flow
+- **C.** Moving parts can catch clothing or tools
 - **D.** Rotation sends signals to the telemetry panel
 
-**Answer: A. Moving parts can catch clothing or tools**
+**Answer: C. Moving parts can catch clothing or tools**
 
 Rotating equipment can catch loose clothing, hair or tools, so the outline treats it as a separate hazard.
 
-### 133: Hazard categories in the CS1 outline (easy)
+### 125: Hazard categories in the CS1 outline (easy)
 
 An SDS is used to
 
-- **A.** Track sample custody from the field to the lab
+- **A.** Find hazard and handling information for a chemical
 - **B.** Set the flow rate for a chemical feed pump
 - **C.** Record daily pump run times at the station
-- **D.** Find hazard and handling information for a chemical
+- **D.** Track sample custody from the field to the lab
 
-**Answer: D. Find hazard and handling information for a chemical**
+**Answer: A. Find hazard and handling information for a chemical**
 
 A safety data sheet gives hazard, handling and storage information for a chemical product.
 
-### 134: Hazard categories in the CS1 outline (easy)
+### 126: Hazard categories in the CS1 outline (easy)
 
 Personal protective equipment is best described as
 
 - **A.** Equipment that feeds chemical into the influent
-- **B.** Equipment worn to reduce exposure to a hazard
-- **C.** Protective coating applied to the pipe interior
+- **B.** Protective coating applied to the pipe interior
+- **C.** Equipment worn to reduce exposure to a hazard
 - **D.** Equipment that measures flow in an open channel
 
-**Answer: B. Equipment worn to reduce exposure to a hazard**
+**Answer: C. Equipment worn to reduce exposure to a hazard**
 
 PPE is worn by the person and is the last line of protection, used alongside controls at the source rather than instead of them.
 
-### 135: Hazard categories in the CS1 outline (medium)
+### 127: Hazard categories in the CS1 outline (medium)
 
 Which statement about excavation hazards is accurate?
 
-- **A.** Trench walls can collapse without warning
-- **B.** Trench walls become safer after heavy rain
-- **C.** Shallow trenches are free from collapse risk
-- **D.** Collapse risk depends on the color of the soil
+- **A.** Trench walls become safer after heavy rain
+- **B.** Trench walls can collapse without warning
+- **C.** Collapse risk depends on the color of the soil
+- **D.** Shallow trenches are free from collapse risk
 
-**Answer: A. Trench walls can collapse without warning**
+**Answer: B. Trench walls can collapse without warning**
 
 Trench walls can fail suddenly, so excavation is an awareness topic for every collection crew.
 
-### 136: Hazard categories in the CS1 outline (medium)
+### 128: Hazard categories in the CS1 outline (medium)
 
 Why is a hazard assessment done before work at a lift station?
 
-- **A.** To set the electrical load of the station
-- **B.** To record the pump's head after each storm
-- **C.** To identify hazards and plan controls for the task
-- **D.** To replace the need for a station's maintenance log
+- **A.** To replace the need for a station's maintenance log
+- **B.** To set the electrical load of the station
+- **C.** To record the pump's head after each storm
+- **D.** To identify hazards and plan controls for the task
 
-**Answer: C. To identify hazards and plan controls for the task**
+**Answer: D. To identify hazards and plan controls for the task**
 
 A hazard assessment identifies what could go wrong during a task so that suitable controls can be planned.
 
-### 137: Hazard categories in the CS1 outline (hard)
+### 129: Hazard categories in the CS1 outline (hard)
 
 Hazards from hydrogen sulfide are most relevant where
 
 - **A.** Stormwater flows over a paved road surface
-- **B.** Clean water is pumped through a potable main
+- **B.** Air is supplied to an aerated basin
 - **C.** Wastewater is held and turns septic
-- **D.** Air is supplied to an aerated basin
+- **D.** Clean water is pumped through a potable main
 
 **Answer: C. Wastewater is held and turns septic**
 
 Septic, stagnant wastewater produces hydrogen sulfide, so holding and decay are the conditions to watch.
 
-### 138: Hazard categories in the CS1 outline (medium)
+### 130: Hazard categories in the CS1 outline (medium)
 
 Which hazard is commonly associated with pumps that can start without warning?
 
-- **A.** Warm influent that promotes biological growth
+- **A.** Low chlorine residual at the reservoir
 - **B.** Slow flow that deposits grit at the headworks
-- **C.** Low chlorine residual at the reservoir
+- **C.** Warm influent that promotes biological growth
 - **D.** Unexpected startup of machinery during work
 
 **Answer: D. Unexpected startup of machinery during work**
 
 Pumps can restart automatically when the level rises, so unexpected startup is a recognised hazard during maintenance.
 
-### 139: Hazard categories in the CS1 outline (easy)
+### 131: Hazard categories in the CS1 outline (easy)
 
 Chemical hazards at a treatment or lift station include
 
-- **A.** Corrosive chemicals used in feed systems
-- **B.** Sand used as bedding in a sewer trench
-- **C.** Pipe bedding stone placed in a trench
-- **D.** Clean drinking water stored in a tank
+- **A.** Sand used as bedding in a sewer trench
+- **B.** Corrosive chemicals used in feed systems
+- **C.** Clean drinking water stored in a tank
+- **D.** Pipe bedding stone placed in a trench
 
-**Answer: A. Corrosive chemicals used in feed systems**
+**Answer: B. Corrosive chemicals used in feed systems**
 
 Feed chemicals such as acids and caustics can injure people and damage equipment, so they are a hazard category.
 
-### 140: Hazard categories in the CS1 outline (easy)
+### 132: Hazard categories in the CS1 outline (easy)
 
 Which factor increases the risk of a slip or trip near a wet well?
 
-- **A.** Smooth paint on the outside of the tank
-- **B.** Wet, uneven surfaces around the opening
+- **A.** Wet, uneven surfaces around the opening
+- **B.** A bright light shining on the control panel
 - **C.** Dry concrete around a fixed guard rail
-- **D.** A bright light shining on the control panel
+- **D.** Smooth paint on the outside of the tank
 
-**Answer: B. Wet, uneven surfaces around the opening**
+**Answer: A. Wet, uneven surfaces around the opening**
 
 Wet or uneven surfaces make footing unsafe near openings and raised structures.
 
-### 141: Hazard categories in the CS1 outline (medium)
+### 133: Hazard categories in the CS1 outline (medium)
 
 Why are electrical panels in a lift station a concern?
 
-- **A.** They hold the chemical feed inventory
-- **B.** Energized parts can cause shock or arc injury
-- **C.** They measure the depth of the liquid level
-- **D.** They store heat that warms the wet well
+- **A.** They measure the depth of the liquid level
+- **B.** They hold the chemical feed inventory
+- **C.** They store heat that warms the wet well
+- **D.** Energized parts can cause shock or arc injury
 
-**Answer: B. Energized parts can cause shock or arc injury**
+**Answer: D. Energized parts can cause shock or arc injury**
 
 Panels carry live electrical parts, so electrical contact and arc flash are recognised hazards.
 
-### 142: Hazard categories in the CS1 outline (easy)
+### 134: Hazard categories in the CS1 outline (easy)
 
 Noise from pumps is a hazard mainly because
 
-- **A.** Long exposure can damage hearing
-- **B.** It shows the motor is overloaded at once
-- **C.** It indicates the pump is running dry
-- **D.** It means the wet well is nearly full
+- **A.** It means the wet well is nearly full
+- **B.** Long exposure can damage hearing
+- **C.** It shows the motor is overloaded at once
+- **D.** It indicates the pump is running dry
 
-**Answer: A. Long exposure can damage hearing**
+**Answer: B. Long exposure can damage hearing**
 
 Prolonged exposure to high noise can damage hearing, which is a recognised workplace hazard.
 
-### 143: SDS and PPE concepts (easy)
+### 135: SDS and PPE concepts (easy)
 
 A chemical label's hazard pictogram is used to
 
-- **A.** Record the chemical's price on the invoice
+- **A.** Show the type of hazard at a glance
 - **B.** Show the exact dilution for each feed
-- **C.** Show the type of hazard at a glance
+- **C.** Record the chemical's price on the invoice
 - **D.** List the shelf life in weeks for storage
 
-**Answer: C. Show the type of hazard at a glance**
+**Answer: A. Show the type of hazard at a glance**
 
 Pictograms give a quick visual cue to the type of hazard, such as corrosive or flammable.
 
-### 144: SDS and PPE concepts (medium)
+### 136: SDS and PPE concepts (medium)
 
 Chemical storage in a feed building generally aims to
 
-- **A.** Store all chemicals in one open drum
-- **B.** Keep chemicals at the highest possible temperature
-- **C.** Mix small amounts of each chemical together
-- **D.** Keep incompatible chemicals apart
+- **A.** Mix small amounts of each chemical together
+- **B.** Store all chemicals in one open drum
+- **C.** Keep incompatible chemicals apart
+- **D.** Keep chemicals at the highest possible temperature
 
-**Answer: D. Keep incompatible chemicals apart**
+**Answer: C. Keep incompatible chemicals apart**
 
 Incompatible chemicals can react dangerously if they mix, so segregation is a basic storage concept.
 
-### 145: SDS and PPE concepts (easy)
+### 137: SDS and PPE concepts (easy)
 
 Which PPE item protects against splashes of corrosive liquid?
 
-- **A.** A dust mask for fine airborne grit
-- **B.** Chemical splash goggles and face shield
-- **C.** A reflective vest for traffic awareness
-- **D.** Hearing protection rated for loud equipment
+- **A.** A reflective vest for traffic awareness
+- **B.** Hearing protection rated for loud equipment
+- **C.** Chemical splash goggles and face shield
+- **D.** A dust mask for fine airborne grit
 
-**Answer: B. Chemical splash goggles and face shield**
+**Answer: C. Chemical splash goggles and face shield**
 
 Splash goggles and a face shield protect the eyes and face from liquid splashes of corrosive materials.
 
-### 146: SDS and PPE concepts (medium)
+### 138: SDS and PPE concepts (medium)
 
 Why is PPE selected for the specific hazard?
 
-- **A.** Protection not matched to a hazard may fail
+- **A.** Because gloves protect against electrical shock
 - **B.** Because one type of gear works for all hazards
-- **C.** Because gloves protect against electrical shock
-- **D.** Because heavier gear reduces the need to train
+- **C.** Because heavier gear reduces the need to train
+- **D.** Protection not matched to a hazard may fail
 
-**Answer: A. Protection not matched to a hazard may fail**
+**Answer: D. Protection not matched to a hazard may fail**
 
 PPE must match the hazard, since equipment that is not designed for a hazard may not protect the worker.
 
-### 147: SDS and PPE concepts (easy)
+### 139: SDS and PPE concepts (easy)
 
 What information does an SDS provide?
 
-- **A.** Pump curves and motor nameplate data
-- **B.** Production volume and the price of the product
-- **C.** Hazards, handling, storage and disposal details
-- **D.** Customer names and billing history for a site
+- **A.** Hazards, handling, storage and disposal details
+- **B.** Customer names and billing history for a site
+- **C.** Pump curves and motor nameplate data
+- **D.** Production volume and the price of the product
 
-**Answer: C. Hazards, handling, storage and disposal details**
+**Answer: A. Hazards, handling, storage and disposal details**
 
 An SDS lists the hazards and the handling, storage and disposal information for a chemical product.
 
-### 148: SDS and PPE concepts (easy)
+### 140: SDS and PPE concepts (easy)
 
 A hazard communication program's purpose is to
 
-- **A.** Make sure chemical prices stay the same each year
-- **B.** Make sure each pump has a unique serial number
-- **C.** Make sure the plant keeps a surplus of supplies
-- **D.** Make sure workers know the hazards they face
+- **A.** Make sure each pump has a unique serial number
+- **B.** Make sure workers know the hazards they face
+- **C.** Make sure chemical prices stay the same each year
+- **D.** Make sure the plant keeps a surplus of supplies
 
-**Answer: D. Make sure workers know the hazards they face**
+**Answer: B. Make sure workers know the hazards they face**
 
 Hazard communication makes sure workers are informed about the chemicals and hazards they may meet on the job.
 
-### 149: SDS and PPE concepts (medium)
+### 141: SDS and PPE concepts (medium)
 
 Which statement about gloves is correct?
 
 - **A.** Gloves are not needed for weak acids
-- **B.** Thicker gloves are better for most tasks
-- **C.** One glove type fits every chemical in the plant
-- **D.** Glove material must match the chemical handled
+- **B.** Glove material must match the chemical handled
+- **C.** Thicker gloves are better for most tasks
+- **D.** One glove type fits every chemical in the plant
 
-**Answer: D. Glove material must match the chemical handled**
+**Answer: B. Glove material must match the chemical handled**
 
 Glove materials resist different chemicals to different degrees, so the glove must suit the chemical in use.
 
-### 150: SDS and PPE concepts (easy)
+### 142: SDS and PPE concepts (easy)
 
 Why do operators read the label before opening a container?
 
-- **A.** To find the lot number for the shipment
-- **B.** To see how many liters the container holds
-- **C.** To confirm the contents and their hazards
-- **D.** To check the expiry date for the purchase order
+- **A.** To confirm the contents and their hazards
+- **B.** To find the lot number for the shipment
+- **C.** To check the expiry date for the purchase order
+- **D.** To see how many liters the container holds
 
-**Answer: C. To confirm the contents and their hazards**
+**Answer: A. To confirm the contents and their hazards**
 
 Reading the label confirms what the container holds and the hazards it presents before it is opened.
 
-### 151: Units of measure and flow terms (easy)
+### 143: Units of measure and flow terms (easy)
 
 Which unit is used to express a flow rate of wastewater in a collection system?
 
-- **A.** Gallons per minute or million gallons per day
-- **B.** Milligrams per liter of suspended solids
-- **C.** Feet of water column of pump head
-- **D.** Pounds per square inch gauge of pressure
+- **A.** Pounds per square inch gauge of pressure
+- **B.** Feet of water column of pump head
+- **C.** Gallons per minute or million gallons per day
+- **D.** Milligrams per liter of suspended solids
 
-**Answer: A. Gallons per minute or million gallons per day**
+**Answer: C. Gallons per minute or million gallons per day**
 
 Flow rate is volume per time, so gallons per minute or million gallons per day are the usual units.
 
-### 152: Units of measure and flow terms (medium)
+### 144: Units of measure and flow terms (medium)
 
 What does 1 MGD equal in gpm?
 
-- **A.** About 6940 gallons per minute
-- **B.** About 694 gallons per minute
-- **C.** About 69.4 gallons per minute
-- **D.** About 7480 gallons per minute
+- **A.** About 69.4 gallons per minute
+- **B.** About 6940 gallons per minute
+- **C.** About 7480 gallons per minute
+- **D.** About 694 gallons per minute
 
-**Answer: B. About 694 gallons per minute**
+**Answer: D. About 694 gallons per minute**
 
 One million gallons per day is about 694.4 gallons per minute, since there are 1440 minutes in a day.
 
-### 153: Units of measure and flow terms (medium)
+### 145: Units of measure and flow terms (medium)
 
 Head in feet of water is related to pressure in psi by about
 
 - **A.** About 8.34 feet of water per psi
-- **B.** About 0.433 feet of water per psi
+- **B.** About 2.31 feet of water per psi
 - **C.** About 7.48 feet of water per psi
-- **D.** About 2.31 feet of water per psi
+- **D.** About 0.433 feet of water per psi
 
-**Answer: D. About 2.31 feet of water per psi**
+**Answer: B. About 2.31 feet of water per psi**
 
 One psi equals about 2.31 feet of water, so a pressure in psi multiplied by 2.31 gives the head in feet.
 
-### 154: Units of measure and flow terms (easy)
+### 146: Units of measure and flow terms (easy)
 
 How many gallons are in one cubic foot of water?
 
 - **A.** About 7.48 gallons of water
-- **B.** About 43.6 gallons of water
+- **B.** About 8.34 gallons of water
 - **C.** About 0.134 gallons of water
-- **D.** About 8.34 gallons of water
+- **D.** About 43.6 gallons of water
 
 **Answer: A. About 7.48 gallons of water**
 
 One cubic foot holds about 7.48 gallons, which is the standard conversion for volume in US units.
 
-### 155: Units of measure and flow terms (easy)
+### 147: Units of measure and flow terms (easy)
 
 A gallon of water weighs about
 
-- **A.** About 7.48 pounds per gallon of water
-- **B.** About 0.433 pounds per gallon of water
+- **A.** About 2.31 pounds per gallon of water
+- **B.** About 7.48 pounds per gallon of water
 - **C.** About 8.34 pounds per gallon of water
-- **D.** About 2.31 pounds per gallon of water
+- **D.** About 0.433 pounds per gallon of water
 
 **Answer: C. About 8.34 pounds per gallon of water**
 
 One gallon of water weighs about 8.34 pounds, which is used for converting volume to mass in dose calculations.
 
-### 156: Units of measure and flow terms (medium)
+### 148: Units of measure and flow terms (medium)
 
 A flow of 1 cubic foot per second is about
 
 - **A.** About 694.4 gallons per minute of flow
-- **B.** About 448.8 gallons per minute
+- **B.** About 2.31 gallons per minute of flow
 - **C.** About 7.48 gallons per minute of flow
-- **D.** About 2.31 gallons per minute of flow
+- **D.** About 448.8 gallons per minute
 
-**Answer: B. About 448.8 gallons per minute**
+**Answer: D. About 448.8 gallons per minute**
 
 One cubic foot per second is about 448.8 gallons per minute, a standard conversion for open channel and pipe flow.
 
-### 157: Units of measure and flow terms (easy)
+### 149: Units of measure and flow terms (easy)
 
 What does the abbreviation mg/L mean?
 
-- **A.** Million gallons per liter of flow
+- **A.** Miles per gallon of travel distance
 - **B.** Milligrams per liter of gas
-- **C.** Miles per gallon of travel distance
+- **C.** Million gallons per liter of flow
 - **D.** Milligrams per liter, a concentration
 
 **Answer: D. Milligrams per liter, a concentration**
 
 mg/L is milligrams of a substance per liter of the sample being measured, the usual unit for concentration.
 
-### 158: Units of measure and flow terms (easy)
+### 150: Units of measure and flow terms (easy)
 
 Which quantity is measured in feet per second?
 
-- **A.** Volume of a wet well in gallons
-- **B.** Velocity of flow in a sewer pipe
-- **C.** Area of a pipe cross section
+- **A.** Area of a pipe cross section
+- **B.** Volume of a wet well in gallons
+- **C.** Velocity of flow in a sewer pipe
 - **D.** Slope of a sewer between two manholes
 
-**Answer: B. Velocity of flow in a sewer pipe**
+**Answer: C. Velocity of flow in a sewer pipe**
 
 Velocity is a distance per time, so feet per second is the usual unit for flow speed in a pipe.
 
-### 159: Units of measure and flow terms (medium)
+### 151: Units of measure and flow terms (medium)
 
 The cross-sectional area of a full circular pipe is found from its
 
 - **A.** Diameter, using 0.785 times diameter squared
-- **B.** Slope expressed as a percent of the grade
-- **C.** Depth of flow measured from the crown
+- **B.** Depth of flow measured from the crown
+- **C.** Slope expressed as a percent of the grade
 - **D.** Length of the pipe run between manholes
 
 **Answer: A. Diameter, using 0.785 times diameter squared**
 
 The area of a full circle is 0.785 times the diameter squared, so the diameter sets the full flow area.
 
-### 160: Units of measure and flow terms (hard)
+### 152: Units of measure and flow terms (hard)
 
 The hydraulic radius of a pipe is important because
 
-- **A.** It sets the number of manholes needed
-- **B.** It fixes the length of the pipe run
-- **C.** It sets capacity in open channel equations
+- **A.** It fixes the length of the pipe run
+- **B.** It sets capacity in open channel equations
+- **C.** It sets the number of manholes needed
 - **D.** It gives the mass of solids in the flow
 
-**Answer: C. It sets capacity in open channel equations**
+**Answer: B. It sets capacity in open channel equations**
 
 Hydraulic radius, the area divided by the wetted perimeter, enters open channel flow equations for capacity.
 
-### 161: Units of measure and flow terms (medium)
+### 153: Units of measure and flow terms (medium)
 
 Gallons in a cylindrical tank can be estimated by
 
-- **A.** Diameter plus depth times 8.34
-- **B.** Base area times 8.34 divided by depth
-- **C.** Area of the base times depth times 7.48
-- **D.** Circumference times depth divided by 2
+- **A.** Base area times 8.34 divided by depth
+- **B.** Diameter plus depth times 8.34
+- **C.** Circumference times depth divided by 2
+- **D.** Area of the base times depth times 7.48
 
-**Answer: C. Area of the base times depth times 7.48**
+**Answer: D. Area of the base times depth times 7.48**
 
 Volume is base area times depth, and converting cubic feet to gallons uses 7.48 gallons per cubic foot.
 
-### 162: Fire, first aid, exposure routes, heat and falls (medium)
+### 154: Fire, first aid, exposure routes, heat and falls (medium)
 
 Which three elements must be present together for a fire to start and keep burning?
 
 - **A.** Fuel, oxygen and a source of heat
 - **B.** Fuel, oxygen and a metal enclosure
-- **C.** Fuel, water and a source of heat
-- **D.** Oxygen, nitrogen and a spark
+- **C.** Oxygen, nitrogen and a spark
+- **D.** Fuel, water and a source of heat
 
 **Answer: A. Fuel, oxygen and a source of heat**
 
 A fire needs fuel, oxygen and heat together, which is the fire triangle. Removing any one of the three stops combustion.
 
-### 163: Fire, first aid, exposure routes, heat and falls (easy)
+### 155: Fire, first aid, exposure routes, heat and falls (easy)
 
 Why is first aid training useful for a worker at a wastewater facility?
 
-- **A.** It lets the worker take over treatment so the injured person can skip a clinic visit
-- **B.** It lets the worker give initial care until trained medical help arrives
-- **C.** It lets the facility avoid recording an injury that a worker reports
-- **D.** It lets the worker diagnose the cause of an injury before a clinician sees the patient
+- **A.** It lets the worker diagnose the cause of an injury before a clinician sees the patient
+- **B.** It lets the worker take over treatment so the injured person can skip a clinic visit
+- **C.** It lets the worker give initial care until trained medical help arrives
+- **D.** It lets the facility avoid recording an injury that a worker reports
 
-**Answer: B. It lets the worker give initial care until trained medical help arrives**
+**Answer: C. It lets the worker give initial care until trained medical help arrives**
 
 First aid training covers the initial care a worker can give until professional help arrives. It does not replace diagnosis or medical treatment.
 
-### 164: Fire, first aid, exposure routes, heat and falls (medium)
+### 156: Fire, first aid, exposure routes, heat and falls (medium)
 
 What is the main purpose of a written safety program at a utility?
 
-- **A.** To keep a record of injuries for the annual budget review
-- **B.** To shift legal responsibility for injuries from the employer to individual workers
+- **A.** To shift legal responsibility for injuries from the employer to individual workers
+- **B.** To tie responsibilities, training and hazard controls into one consistent system
 - **C.** To list the penalties a worker faces after each unsafe act
-- **D.** To tie responsibilities, training and hazard controls into one consistent system
+- **D.** To keep a record of injuries for the annual budget review
 
-**Answer: D. To tie responsibilities, training and hazard controls into one consistent system**
+**Answer: B. To tie responsibilities, training and hazard controls into one consistent system**
 
 A safety program links responsibilities, training, hazard identification and controls. It does not move responsibility onto workers or replace hazard assessment on each task.
 
-### 165: Fire, first aid, exposure routes, heat and falls (medium)
+### 157: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why does work in a public street create a hazard beyond the task itself?
 
-- **A.** Pavement weight can collapse a sewer main beneath the work area
-- **B.** Passing vehicles can strike workers and equipment near the work
-- **C.** Street lighting circuits can stop wastewater flow in the sewer main
-- **D.** Street surfaces hold a static charge that discharges into the pipe
+- **A.** Street surfaces hold a static charge that discharges into the pipe
+- **B.** Street lighting circuits can stop wastewater flow in the sewer main
+- **C.** Pavement weight can collapse a sewer main beneath the work area
+- **D.** Passing vehicles can strike workers and equipment near the work
 
-**Answer: B. Passing vehicles can strike workers and equipment near the work**
+**Answer: D. Passing vehicles can strike workers and equipment near the work**
 
 Vehicles passing a work zone can hit people and equipment, so street work adds a traffic hazard to the task.
 
-### 166: Fire, first aid, exposure routes, heat and falls (easy)
+### 158: Fire, first aid, exposure routes, heat and falls (easy)
 
 Why are exposed couplings, belts and shafts on running equipment a serious hazard?
 
-- **A.** They store an electrical charge that shocks anyone who touches them
-- **B.** They release lubricant that makes the floor slippery
-- **C.** They can catch loose clothing, hair or tools and pull a person in
-- **D.** They raise the pump's head by stirring the liquid in the casing
+- **A.** They raise the pump's head by stirring the liquid in the casing
+- **B.** They can catch loose clothing, hair or tools and pull a person in
+- **C.** They release lubricant that makes the floor slippery
+- **D.** They store an electrical charge that shocks anyone who touches them
 
-**Answer: C. They can catch loose clothing, hair or tools and pull a person in**
+**Answer: B. They can catch loose clothing, hair or tools and pull a person in**
 
 Moving parts can entangle clothing, hair or tools. Guards keep people from reaching these parts while the machine runs.
 
-### 167: Fire, first aid, exposure routes, heat and falls (hard)
+### 159: Fire, first aid, exposure routes, heat and falls (hard)
 
 Why can a worker stop noticing hydrogen sulfide at high concentration?
 
-- **A.** The gas grows sweeter as its level rises, which hides the danger
-- **B.** Workers adapt to the odor and can breathe it safely for longer shifts
-- **C.** The gas sinks below the breathing zone, so the smell stops reaching people
-- **D.** High levels paralyze the nerve that senses it, so the warning fades
+- **A.** High levels paralyze the nerve that senses it, so the warning fades
+- **B.** The gas sinks below the breathing zone, so the smell stops reaching people
+- **C.** Workers adapt to the odor and can breathe it safely for longer shifts
+- **D.** The gas grows sweeter as its level rises, which hides the danger
 
-**Answer: D. High levels paralyze the nerve that senses it, so the warning fades**
+**Answer: A. High levels paralyze the nerve that senses it, so the warning fades**
 
 Hydrogen sulfide can dull or paralyze the sense of smell at high levels. Smell therefore cannot be relied on to warn of dangerous concentrations.
 
-### 168: Fire, first aid, exposure routes, heat and falls (easy)
+### 160: Fire, first aid, exposure routes, heat and falls (easy)
 
 Which routes are the main ways wastewater can reach a worker's body?
 
-- **A.** Splashes into the mouth or eyes, and contact with broken skin
-- **B.** Radiation from ultraviolet lamps in the effluent channel
-- **C.** Breathing dust that settles from dried screenings
+- **A.** Radiation from ultraviolet lamps in the effluent channel
+- **B.** Breathing dust that settles from dried screenings
+- **C.** Splashes into the mouth or eyes, and contact with broken skin
 - **D.** Static electricity from a pipe carrying flowing water
 
-**Answer: A. Splashes into the mouth or eyes, and contact with broken skin**
+**Answer: C. Splashes into the mouth or eyes, and contact with broken skin**
 
 Raw wastewater can carry pathogens, so splashes to the mouth or eyes and contact with cuts are the main routes. Hygiene and protective gear reduce these routes.
 
-### 169: Fire, first aid, exposure routes, heat and falls (medium)
+### 161: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why do wet floors and walls raise the danger from electrical equipment?
 
-- **A.** Water stores electrical charge that is released when a pump starts
-- **B.** Water raises the supply voltage, so the same panel delivers a larger shock
-- **C.** Water insulates the wiring, so a fault spreads along the wet surface
-- **D.** Water lowers the body's resistance, so a shock can be more severe
+- **A.** Water raises the supply voltage, so the same panel delivers a larger shock
+- **B.** Water insulates the wiring, so a fault spreads along the wet surface
+- **C.** Water lowers the body's resistance, so a shock can be more severe
+- **D.** Water stores electrical charge that is released when a pump starts
 
-**Answer: D. Water lowers the body's resistance, so a shock can be more severe**
+**Answer: C. Water lowers the body's resistance, so a shock can be more severe**
 
 Wet skin lowers the body's resistance to current, and wet floors and walls can add conductive paths. Either way, an electrical contact is more likely to cause a severe shock.
 
-### 170: Fire, first aid, exposure routes, heat and falls (medium)
+### 162: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why are near-miss reports valuable to a safety program?
 
-- **A.** They count toward the annual injury total that the state publishes
-- **B.** They reveal hazards before anyone is injured, so controls can be added
-- **C.** They replace task-level training after a minor incident
-- **D.** They prove the employer is not liable for injuries that happen later
+- **A.** They reveal hazards before anyone is injured, so controls can be added
+- **B.** They count toward the annual injury total that the state publishes
+- **C.** They prove the employer is not liable for injuries that happen later
+- **D.** They replace task-level training after a minor incident
 
-**Answer: B. They reveal hazards before anyone is injured, so controls can be added**
+**Answer: A. They reveal hazards before anyone is injured, so controls can be added**
 
 A near miss is an event that could have caused harm but did not. Reporting it lets the team fix the hazard before an injury happens.
 
-### 171: Fire, first aid, exposure routes, heat and falls (medium)
+### 163: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why does hot weather make outdoor maintenance work risky for the worker's body?
 
-- **A.** Core temperature can rise when heat gained exceeds heat lost
-- **B.** Heat dries the skin, so clothing becomes tight and snags on equipment
-- **C.** Heat makes wastewater thicker, so flow slows and solids settle faster
+- **A.** Heat makes wastewater thicker, so flow slows and solids settle faster
+- **B.** Core temperature can rise when heat gained exceeds heat lost
+- **C.** Heat dries the skin, so clothing becomes tight and snags on equipment
 - **D.** Heat weakens the metal of tools, so they break during the task
 
-**Answer: A. Core temperature can rise when heat gained exceeds heat lost**
+**Answer: B. Core temperature can rise when heat gained exceeds heat lost**
 
 When the body gains heat faster than it can lose it, the core temperature rises. That is the basic mechanism behind heat stress.
 
-### 172: Fire, first aid, exposure routes, heat and falls (easy)
+### 164: Fire, first aid, exposure routes, heat and falls (easy)
 
 Why is a fall into a manhole opening especially serious?
 
 - **A.** The fall breaks the pipe, which drains the wet well at once
 - **B.** The fall releases sewer gas that is lethal at that depth
-- **C.** A drop onto hard surfaces below can cause severe injury
-- **D.** The fall clogs the pipe at the opening, so wastewater backs up
+- **C.** The fall clogs the pipe at the opening, so wastewater backs up
+- **D.** A drop onto hard surfaces below can cause severe injury
 
-**Answer: C. A drop onto hard surfaces below can cause severe injury**
+**Answer: D. A drop onto hard surfaces below can cause severe injury**
 
 A fall through an opening can cause severe injury from the impact and from hard surfaces below. Openings are guarded so people do not fall into them.
 
-### 173: Fire, first aid, exposure routes, heat and falls (medium)
+### 165: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why does working alone at a remote site make a hazard more serious?
 
 - **A.** Solo work needs more protective gear than team work
-- **B.** A lone worker is more likely to set off the site alarm by mistake
-- **C.** A lone worker is less likely to receive the required training
-- **D.** Help may be delayed if an injury or gas exposure occurs
+- **B.** Help may be delayed if an injury or gas exposure occurs
+- **C.** A lone worker is more likely to set off the site alarm by mistake
+- **D.** A lone worker is less likely to receive the required training
 
-**Answer: D. Help may be delayed if an injury or gas exposure occurs**
+**Answer: B. Help may be delayed if an injury or gas exposure occurs**
 
 Nobody is near to raise an alarm or give initial care, so an injury or exposure can go unnoticed. Staying in contact with others reduces that risk.
 
-### 174: Fire, first aid, exposure routes, heat and falls (medium)
+### 166: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why is chlorine considered a hazard in a feed room?
 
-- **A.** It is a heavy liquid that pools on the floor and freezes
-- **B.** It is flammable and ignites at room temperature
+- **A.** It is flammable and ignites at room temperature
+- **B.** It is a heavy liquid that pools on the floor and freezes
 - **C.** It is poisonous and irritates and damages the airways
 - **D.** It dissolves metal at once and releases hydrogen into the room
 
@@ -2266,59 +2162,59 @@ Why is chlorine considered a hazard in a feed room?
 
 Chlorine is a toxic substance that irritates and damages the respiratory tract. Its main hazard is breathing it, not fire.
 
-### 175: Fire, first aid, exposure routes, heat and falls (easy)
+### 167: Fire, first aid, exposure routes, heat and falls (easy)
 
 What does the signal word on a chemical label show?
 
-- **A.** The relative severity of the hazard, such as Danger or Warning
-- **B.** The date by which the chemical must be used before it expires
-- **C.** The name of the company's safety officer for that product
-- **D.** The exact dose at which a worker can become ill from the product
+- **A.** The exact dose at which a worker can become ill from the product
+- **B.** The name of the company's safety officer for that product
+- **C.** The date by which the chemical must be used before it expires
+- **D.** The relative severity of the hazard, such as Danger or Warning
 
-**Answer: A. The relative severity of the hazard, such as Danger or Warning**
+**Answer: D. The relative severity of the hazard, such as Danger or Warning**
 
 Signal words such as Danger and Warning indicate relative severity. They do not state an exact exposure limit or a dose.
 
-### 176: Fire, first aid, exposure routes, heat and falls (easy)
+### 168: Fire, first aid, exposure routes, heat and falls (easy)
 
 Why are screenings and rags from a bar screen a cut hazard?
 
-- **A.** They are electrically charged and can shock whoever lifts them
-- **B.** They can hide sharp objects such as broken glass or needles
-- **C.** They float and trip workers on the wet well walkway
-- **D.** They release a gas that burns the skin on contact
+- **A.** They can hide sharp objects such as broken glass or needles
+- **B.** They are electrically charged and can shock whoever lifts them
+- **C.** They release a gas that burns the skin on contact
+- **D.** They float and trip workers on the wet well walkway
 
-**Answer: B. They can hide sharp objects such as broken glass or needles**
+**Answer: A. They can hide sharp objects such as broken glass or needles**
 
 Screenings can mask sharp items, so cuts and puncture wounds are possible when they are handled. Cut-resistant gloves are one protective measure.
 
-### 177: Fire, first aid, exposure routes, heat and falls (medium)
+### 169: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why is good housekeeping treated as a safety measure at a lift station?
 
-- **A.** Clean floors stop wastewater from generating sewer gas
-- **B.** Clutter and spills create trip hazards and can hide other hazards
+- **A.** Neat storage reduces the need for protective equipment
+- **B.** Clean floors stop wastewater from generating sewer gas
 - **C.** Tidy rooms let operators skip the hazard assessment for each task
-- **D.** Neat storage reduces the need for protective equipment
+- **D.** Clutter and spills create trip hazards and can hide other hazards
 
-**Answer: B. Clutter and spills create trip hazards and can hide other hazards**
+**Answer: D. Clutter and spills create trip hazards and can hide other hazards**
 
 Loose items and spills cause slips and trips, and they can hide hazards such as an open hatch. Good order keeps hazards visible.
 
-### 178: Fire, first aid, exposure routes, heat and falls (medium)
+### 170: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why is ventilation important in an enclosed wet well space?
 
-- **A.** It cools the pumps so their motors draw less current
-- **B.** It keeps the wastewater level steady during heavy inflow
-- **C.** It moves gas out of the enclosure and brings fresh air in
-- **D.** It removes the need for a gas detector in the space
+- **A.** It removes the need for a gas detector in the space
+- **B.** It moves gas out of the enclosure and brings fresh air in
+- **C.** It keeps the wastewater level steady during heavy inflow
+- **D.** It cools the pumps so their motors draw less current
 
-**Answer: C. It moves gas out of the enclosure and brings fresh air in**
+**Answer: B. It moves gas out of the enclosure and brings fresh air in**
 
 Ventilation exchanges air in an enclosed space and lowers gas buildup. It does not replace gas testing or detection.
 
-### 179: Fire, first aid, exposure routes, heat and falls (medium)
+### 171: Fire, first aid, exposure routes, heat and falls (medium)
 
 Why are guardrails fitted around an open wet well hatch?
 
@@ -2331,25 +2227,25 @@ Why are guardrails fitted around an open wet well hatch?
 
 A guardrail is a barrier that helps stop people from falling into an opening. It is a fall-prevention measure, not a gas warning device.
 
-### 180: Fire, first aid, exposure routes, heat and falls (hard)
+### 172: Fire, first aid, exposure routes, heat and falls (hard)
 
 Why is rotating equipment still a hazard after it is switched off?
 
-- **A.** Motors keep full voltage on their terminals after the switch opens
-- **B.** The stop button removes the risk from the frame and the coupling
-- **C.** Stored heat makes the shaft expand and seize the bearings
-- **D.** Parts can keep turning after the supply is cut, so contact is still a risk
+- **A.** Stored heat makes the shaft expand and seize the bearings
+- **B.** Motors keep full voltage on their terminals after the switch opens
+- **C.** Parts can keep turning after the supply is cut, so contact is still a risk
+- **D.** The stop button removes the risk from the frame and the coupling
 
-**Answer: D. Parts can keep turning after the supply is cut, so contact is still a risk**
+**Answer: C. Parts can keep turning after the supply is cut, so contact is still a risk**
 
 Pumps and fans can coast and keep turning after the power is removed. Contact with moving parts is a risk until they stop.
 
-### 181: Fire, first aid, exposure routes, heat and falls (easy)
+### 173: Fire, first aid, exposure routes, heat and falls (easy)
 
 Why is a portable extinguisher kept near a chemical storage area?
 
-- **A.** To cool the stored chemicals so they stay stable
-- **B.** To replace the need for a sprinkler system at the door
+- **A.** To replace the need for a sprinkler system at the door
+- **B.** To cool the stored chemicals so they stay stable
 - **C.** To neutralize corrosive vapor that is already in the room air
 - **D.** So a small fire can be stopped early, before it spreads
 
@@ -2357,64 +2253,64 @@ Why is a portable extinguisher kept near a chemical storage area?
 
 An extinguisher is for a small, early fire, and it works best before a fire spreads. It does not neutralize vapors or replace fire protection systems.
 
-### 182: Pump, motor and valve concepts (medium)
+### 174: Pump, motor and valve concepts (medium)
 
 What is meant by a centrifugal pump's shutoff condition?
 
-- **A.** The power the motor draws when the flow is at its maximum
-- **B.** The suction lift the pump can reach before losing its prime
+- **A.** The suction lift the pump can reach before losing its prime
+- **B.** The head produced at its best efficiency point on the curve
 - **C.** The head produced with the discharge closed and no flow
-- **D.** The head produced at its best efficiency point on the curve
+- **D.** The power the motor draws when the flow is at its maximum
 
 **Answer: C. The head produced with the discharge closed and no flow**
 
 Shutoff head is the head produced with the discharge closed, so flow is zero. It is the head at the curve's zero-flow point.
 
-### 183: Pump, motor and valve concepts (hard)
+### 175: Pump, motor and valve concepts (hard)
 
 Which relationship gives a positive margin against cavitation?
 
 - **A.** Available NPSH is greater than the pump's required NPSH
-- **B.** The motor draws less current than its full-load rating
-- **C.** Suction head is negative at the design flow rate
+- **B.** Suction head is negative at the design flow rate
+- **C.** The motor draws less current than its full-load rating
 - **D.** Discharge pressure is greater than the station's static lift
 
 **Answer: A. Available NPSH is greater than the pump's required NPSH**
 
 Available NPSH must exceed the pump's required NPSH, or cavitation can start at the impeller eye. Operators keep a margin above the required value because cavitation can still begin close to that point.
 
-### 184: Pump, motor and valve concepts (easy)
+### 176: Pump, motor and valve concepts (easy)
 
 What does a centrifugal pump performance curve show?
 
-- **A.** Inlet pressure plotted against the outlet pipe diameter
+- **A.** Motor temperature plotted against the number of starts
 - **B.** Head and efficiency plotted against flow for a given impeller and speed
-- **C.** Voltage and current plotted against time during a pump cycle
-- **D.** Motor temperature plotted against the number of starts
+- **C.** Inlet pressure plotted against the outlet pipe diameter
+- **D.** Voltage and current plotted against time during a pump cycle
 
 **Answer: B. Head and efficiency plotted against flow for a given impeller and speed**
 
 A pump curve plots head, efficiency and power against flow for one impeller and speed. It is the basis for matching a pump to the system.
 
-### 185: Pump, motor and valve concepts (medium)
+### 177: Pump, motor and valve concepts (medium)
 
 Why are wear rings replaced in a centrifugal pump?
 
-- **A.** To restore impeller clearance and cut internal leakage
-- **B.** To stop air from entering the suction line past the packing
+- **A.** To balance the shaft so the bearings run cooler
+- **B.** To restore impeller clearance and cut internal leakage
 - **C.** To raise the impeller speed at the same power input
-- **D.** To balance the shaft so the bearings run cooler
+- **D.** To stop air from entering the suction line past the packing
 
-**Answer: A. To restore impeller clearance and cut internal leakage**
+**Answer: B. To restore impeller clearance and cut internal leakage**
 
 Wear rings form a close clearance between the impeller and casing. When that gap opens up, liquid leaks back and the pump loses efficiency.
 
-### 186: Pump, motor and valve concepts (medium)
+### 178: Pump, motor and valve concepts (medium)
 
 For an induction motor at rated load, what happens to its line draw when the supply voltage drops slightly?
 
-- **A.** Its draw stays flat because the load sets the current
-- **B.** Its draw falls because the windings resist more current
+- **A.** Its draw falls because the windings resist more current
+- **B.** Its draw stays flat because the load sets the current
 - **C.** Power is roughly fixed, so a weaker feed needs a higher amperage
 - **D.** Its draw falls because the motor slows its speed
 
@@ -2422,122 +2318,226 @@ For an induction motor at rated load, what happens to its line draw when the sup
 
 At a constant mechanical load, input power stays roughly the same for a small voltage drop. Line current then rises, because current depends on both voltage and power factor, and the motor can overheat.
 
-### 187: Pump, motor and valve concepts (medium)
+### 179: Pump, motor and valve concepts (medium)
 
 What does a motor's service factor indicate?
 
-- **A.** The number of starts the motor can take in an hour before it overheats
-- **B.** How far the motor may be loaded above nameplate power under set conditions
-- **C.** The percent of rated speed the motor holds when it is running at no load
-- **D.** The efficiency of the motor at its full rated power and speed
+- **A.** How far the motor may be loaded above nameplate power under set conditions
+- **B.** The efficiency of the motor at its full rated power and speed
+- **C.** The number of starts the motor can take in an hour before it overheats
+- **D.** The percent of rated speed the motor holds when it is running at no load
 
-**Answer: B. How far the motor may be loaded above nameplate power under set conditions**
+**Answer: A. How far the motor may be loaded above nameplate power under set conditions**
 
 Service factor is a multiplier that shows allowable loading above nameplate power under specified conditions. It is not a starting-torque rating.
 
-### 188: Pump, motor and valve concepts (easy)
+### 180: Pump, motor and valve concepts (easy)
 
 Where is a butterfly valve most often chosen?
 
-- **A.** For venting trapped air from the high point of a force main
+- **A.** For fine flow control in small pipes at high pressure and temperature
 - **B.** For reversing the direction of flow in a pipe when the pump stops
-- **C.** For fine flow control in small pipes at high pressure and temperature
+- **C.** For venting trapped air from the high point of a force main
 - **D.** For throttling or shutoff in large pipes where a compact footprint matters
 
 **Answer: D. For throttling or shutoff in large pipes where a compact footprint matters**
 
 A butterfly valve is a disc on a rotating shaft, which suits large pipes and a compact footprint. It is not the usual choice for fine control in small high-pressure lines.
 
-### 189: Pump, motor and valve concepts (easy)
+### 181: Pump, motor and valve concepts (easy)
 
 What is the main job of a reducing valve in a water or wastewater line?
 
-- **A.** Increase flow by widening the pipe at the valve location
+- **A.** Stop reverse flow whenever the pump stops running
 - **B.** Measure the flow rate passing through the pipe line
-- **C.** Stop reverse flow whenever the pump stops running
+- **C.** Increase flow by widening the pipe at the valve location
 - **D.** Hold a lower downstream pressure than the upstream supply
 
 **Answer: D. Hold a lower downstream pressure than the upstream supply**
 
 A pressure-reducing valve throttles the line so the pressure after the valve is lower than the pressure supplied before it. Its job is pressure control, not flow measurement.
 
-### 190: Pump, motor and valve concepts (medium)
+### 182: Pump, motor and valve concepts (medium)
 
 Why are release valves fitted at the high points of a force main?
 
-- **A.** To vent trapped air that would reduce flow and add friction
+- **A.** To lower the pressure in the main during peak flow
 - **B.** To increase the flow speed by narrowing the main at the high point
-- **C.** To lower the pressure in the main during peak flow
+- **C.** To vent trapped air that would reduce flow and add friction
 - **D.** To drain the main when the pump is switched off for maintenance
 
-**Answer: A. To vent trapped air that would reduce flow and add friction**
+**Answer: C. To vent trapped air that would reduce flow and add friction**
 
 Air collects at high points and restricts flow. A release valve vents that air, whereas draining the main is a separate function.
 
-### 191: Feeder calibration, metering and feed pulsation (medium)
+### 183: Feeder calibration, metering and feed pulsation (medium)
 
 What is a common way to check a chemical feed pump's calibration?
 
-- **A.** Read the nameplate voltage and assume the output matches it
+- **A.** Measure the volume it delivers over a timed period and compare it with the setting
 - **B.** Count the strokes per minute and assume each stroke delivers a full dose
-- **C.** Measure the volume it delivers over a timed period and compare it with the setting
-- **D.** Measure the pipe pressure and divide it by the tank capacity
+- **C.** Measure the pipe pressure and divide it by the tank capacity
+- **D.** Read the nameplate voltage and assume the output matches it
 
-**Answer: C. Measure the volume it delivers over a timed period and compare it with the setting**
+**Answer: A. Measure the volume it delivers over a timed period and compare it with the setting**
 
 A timed volume test measures what the pump actually delivers, which is then compared with the setting. A nameplate or stroke count does not show the real output.
 
-### 192: Feeder calibration, metering and feed pulsation (easy)
+### 184: Feeder calibration, metering and feed pulsation (easy)
 
 Why is a strainer fitted on a chemical feed suction line?
 
-- **A.** To raise the pressure of the feed line before the injector
+- **A.** To remove dissolved gases from the solution before it is fed
 - **B.** To keep debris from clogging the check valve and injector
 - **C.** To warm the chemical so it flows more freely in cold weather
-- **D.** To remove dissolved gases from the solution before it is fed
+- **D.** To raise the pressure of the feed line before the injector
 
 **Answer: B. To keep debris from clogging the check valve and injector**
 
 Debris from the tank can block a check valve or injector and stop the feed. A strainer catches it on the suction side.
 
-### 193: Feeder calibration, metering and feed pulsation (hard)
+### 185: Feeder calibration, metering and feed pulsation (hard)
 
 How does an electromagnetic flow meter measure flow?
 
-- **A.** It measures the pressure drop across a restriction placed in the flow line
-- **B.** It counts the revolutions of a paddle wheel turned by the moving liquid
-- **C.** It senses voltage induced in a conductive liquid moving through a magnetic field
-- **D.** It times the travel of an ultrasonic pulse sent across the pipe bore
+- **A.** It senses voltage induced in a conductive liquid moving through a magnetic field
+- **B.** It times the travel of an ultrasonic pulse sent across the pipe bore
+- **C.** It counts the revolutions of a paddle wheel turned by the moving liquid
+- **D.** It measures the pressure drop across a restriction placed in the flow line
 
-**Answer: C. It senses voltage induced in a conductive liquid moving through a magnetic field**
+**Answer: A. It senses voltage induced in a conductive liquid moving through a magnetic field**
 
 Faraday induction gives a voltage proportional to the liquid's velocity across the field. Pressure-drop, ultrasonic and paddle-wheel meters use different principles.
 
-### 194: Feeder calibration, metering and feed pulsation (easy)
+### 186: Feeder calibration, metering and feed pulsation (easy)
 
 What does the totalizer on a flow meter show?
 
 - **A.** The pressure drop that the meter adds to the line
-- **B.** The total volume that has passed through the device over time
-- **C.** The number of times the meter has been calibrated
-- **D.** The instantaneous rate of flow at the moment it is read
+- **B.** The instantaneous rate of flow at the moment it is read
+- **C.** The total volume that has passed through the device over time
+- **D.** The number of times the meter has been calibrated
 
-**Answer: B. The total volume that has passed through the device over time**
+**Answer: C. The total volume that has passed through the device over time**
 
 A totalizer adds up the flow over time, so it shows volume. It is separate from the instantaneous rate, which a meter may also display.
 
-### 195: Feeder calibration, metering and feed pulsation (medium)
+### 187: Feeder calibration, metering and feed pulsation (medium)
 
 What is a pulsation damper's job on a diaphragm chemical feed pump?
 
-- **A.** It smooths the pulses in the discharge so the dose is steadier
-- **B.** It stops the pump when the tank level falls too low
+- **A.** It cools the diaphragm so it lasts longer in hot weather
+- **B.** It smooths the pulses in the discharge so the dose is steadier
 - **C.** It raises the pressure enough for the injector to overcome the main line
-- **D.** It cools the diaphragm so it lasts longer in hot weather
+- **D.** It stops the pump when the tank level falls too low
 
-**Answer: A. It smooths the pulses in the discharge so the dose is steadier**
+**Answer: B. It smooths the pulses in the discharge so the dose is steadier**
 
 A pulsation damper absorbs the pressure pulses from a diaphragm pump. The result is a steadier flow to the injection point.
+
+### 188: NM utility operator certification rules (20.7.4 NMAC) (hard)
+
+Under 20.7.4 NMAC, who may operate a public wastewater facility?
+
+- **A.** A person holding a water supply certificate of any level, without wastewater certification
+- **B.** A trained employee who has completed approved training credits but holds no certificate
+- **C.** Any certified operator, regardless of the level that operator holds
+- **D.** A certified operator at or above the required level, or someone supervised by one
+
+**Answer: D. A certified operator at or above the required level, or someone supervised by one**
+
+20.7.4.20 A NMAC makes it unlawful to operate, or allow operation of, a facility unless a certified operator who meets or exceeds the required level operates it or supervises the operation.
+
+### 189: NM utility operator certification rules (20.7.4 NMAC) (easy)
+
+Under 20.7.4 NMAC, what must a public wastewater facility keep on file with the New Mexico Environment Department at all times?
+
+- **A.** A copy of each operator's training transcript
+- **B.** A copy of each operator's original high school diploma
+- **C.** The operating manual for each lift station
+- **D.** The name of each certified operator it employs
+
+**Answer: D. The name of each certified operator it employs**
+
+20.7.4.20 C NMAC requires the name of each certified operator employed to be on file with the department at all times. A certified operator may be replaced by another certified operator of the required level.
+
+### 190: NM utility operator certification rules (20.7.4 NMAC) (easy)
+
+Under 20.7.4 NMAC, what may the department restrict a certification to?
+
+- **A.** Distribution systems or collection systems
+- **B.** Laboratory systems or sampling networks
+- **C.** Individual pumps and valves
+- **D.** Treatment plants or lift stations
+
+**Answer: A. Distribution systems or collection systems**
+
+20.7.4.20 D NMAC says the department may issue certifications restricted to distribution systems or collection systems. The other options name facilities and categories that this section does not list.
+
+### 191: NM utility operator certification rules (20.7.4 NMAC) (medium)
+
+Under the definitions in 20.7.4 NMAC, which description fits a collection system?
+
+- **A.** Pipelines and appurtenances that carry potable water under pressure to each consumer in the service area
+- **B.** Pipes that carry treated effluent from the plant to the receiving water body for final release
+- **C.** Pipelines or conduits, pumping stations, force mains and related facilities used to collect and convey waste
+- **D.** Tanks, clarifiers and aeration basins that treat waste before it is discharged to a receiving water body
+
+**Answer: C. Pipelines or conduits, pumping stations, force mains and related facilities used to collect and convey waste**
+
+20.7.4.7 D NMAC defines a collection system as pipelines or conduits, pumping stations, force mains and other devices, appurtenances and facilities used to collect and convey waste to a point of treatment and disposal. The potable water description is the distribution system definition in 20.7.4.7 G.
+
+### 192: NM utility operator certification rules (20.7.4 NMAC) (medium)
+
+Under 20.7.4 NMAC, how does meeting its certification rules affect a person's other legal obligations?
+
+- **A.** It replaces federal rules for collection systems within New Mexico
+- **B.** It does not relieve the person of duties under other state and federal rules
+- **C.** It fully satisfies the state and federal rules that apply to the same work
+- **D.** A valid operator certificate waives other rules for the work it covers
+
+**Answer: B. It does not relieve the person of duties under other state and federal rules**
+
+20.7.4.9 NMAC says compliance with this part does not relieve a person from the obligation to comply with other applicable state and federal regulations. Certification is one layer of duty, not a substitute for the rest.
+
+### 193: NM utility operator certification rules (20.7.4 NMAC) (medium)
+
+Under 20.7.4 NMAC, what standard governs the number of certified operators at a public wastewater facility?
+
+- **A.** The number the owner's insurer specifies for liability coverage of the facility and its staff
+- **B.** Whatever number the facility's staffing budget allows for its crew and shifts
+- **C.** The minimum needed to operate the facility to protect human health, public welfare or the environment
+- **D.** The number of operators holding the highest wastewater certificate that the state issues to any operator
+
+**Answer: C. The minimum needed to operate the facility to protect human health, public welfare or the environment**
+
+20.7.4.15 A NMAC requires a public wastewater facility to provide the minimum number of certified operators needed to operate it to protect human health, public welfare or the environment. Under Subsection B the department may set that number in writing after a violation finding.
+
+### 194: NM utility operator certification rules (20.7.4 NMAC) (easy)
+
+What is listed first among a certified operator's duties under the code of professional conduct in 20.7.4 NMAC?
+
+- **A.** Keeping the facility's operating records confidential from the department itself
+- **B.** Protecting the safety, health and welfare of the public in the operator's work
+- **C.** Reporting conduct to the owner first and not to the department or other authority
+- **D.** Protecting the employer's reputation and standing ahead of other operator duties
+
+**Answer: B. Protecting the safety, health and welfare of the public in the operator's work**
+
+20.7.4.16 C(1) NMAC says the certified operator shall protect the safety, health and welfare of the public in performing the operator's duties. Reporting to the proper authority is listed separately in C(2).
+
+### 195: NM utility operator certification rules (20.7.4 NMAC) (easy)
+
+Under 20.7.4 NMAC, can one operator certificate cover operating both a drinking water system and a wastewater facility?
+
+- **A.** Separate certification is required for each type of operation, so one certificate does not cover both
+- **B.** A wastewater laboratory certificate also covers plant operation under the same rules
+- **C.** One certificate covers both types of facility once the operator passes a combined exam
+- **D.** A water certificate of level 4 or higher covers wastewater work without any further certification
+
+**Answer: A. Separate certification is required for each type of operation, so one certificate does not cover both**
+
+20.7.4.20 B NMAC requires separate certification for the operation of public water supply systems and public wastewater facilities. A higher water level does not carry over to wastewater work.
 
 ### 196: Flow, velocity and area in sewers (hard)
 

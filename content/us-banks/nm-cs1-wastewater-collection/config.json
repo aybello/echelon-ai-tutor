@@ -2,15 +2,15 @@
   "id": "nm-cs1-wastewater-collection",
   "bankKey": "nm-cs1-wastewater-collection",
   "itemPrefix": "NM-CS1-COLL",
-  "version": "2026-11-27-v2",
+  "version": "2026-11-27-v3",
   "state": "NM",
   "stream": "wastewater-collection",
   "label": "New Mexico Wastewater Collection System Level 1 (CS1)",
   "startNumber": 1,
   "count": 250,
   "calcCount": 55,
-  "purpose": "Practice questions for the New Mexico Wastewater Collection System Level 1 (CS1) written certification examination, technical outline only. Original items in US units. Not an official NMED examination or blueprint. Contains no population-band, certification-level, regulatory, permit, reporting, site-specific or emergency-response content.",
-  "reviewIntro": "250 original practice questions: 195 conceptual and 55 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook. No Regulations module: the dossier bars regulatory items until a clause-level source and independent review exist. This is a local content package, not proof of a production import.",
+  "purpose": "Practice questions for the New Mexico Wastewater Collection System Level 1 (CS1) written certification examination, technical outline only. Original items in US units. Not an official NMED examination or blueprint. Regulatory items are limited to 20.7.4 NMAC clauses that do not depend on population band, permit, reporting timeframe, fee or site. Contains no certification-level classification, permit, reporting, site-specific or emergency-response content.",
+  "reviewIntro": "250 original practice questions: 195 conceptual (including 8 Regulations items from 20.7.4 NMAC) and 55 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook. No 20.6.2 NMAC or NPDES items: the guidebook names those rules but no clauses within them. This is a local content package, not proof of a production import.",
   "sources": {
     "NMGB": [
       "NMED Utility Operator Certification Program, Wastewater Collection System Level 1 (CS1) Operator Guidebook with Need-to-Know Criteria, March 2026 (topic structure)",
@@ -19,15 +19,20 @@
     "NMCERT": [
       "NMED Drinking Water Bureau, Utility Operator Certification: Certification Exams, Renewal and Equivalencies (CS1 credential identity)",
       "https://www.env.nm.gov/drinking_water/certification-renewal-requirements/"
+    ],
+    "NMREG": [
+      "20.7.4 NMAC Utility Operator Certification (NMED, retrieved 2026-11-27), with NMED CS1 Operator Guidebook (March 2026), Regulations area: https://service.web.env.nm.gov/urls/vBzFrpJV",
+      "https://www.srca.nm.gov/parts/title20/20.007.0004.html"
     ]
   },
   "moduleCounts": {
-    "Collection system": 53,
+    "Collection system": 45,
     "Collection system math": 20,
     "Cross-connection control": 8,
     "Flow and hydraulics math": 10,
     "Lift stations": 14,
     "Mechanical systems": 50,
+    "Regulations": 8,
     "Removal and loading calculations": 9,
     "Safety awareness": 42,
     "Sampling and measurement": 5,

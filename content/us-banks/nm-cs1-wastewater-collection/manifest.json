@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-27-v2",
+  "version": "2026-11-27-v3",
   "status": "validated-local-candidate-not-imported",
   "bankKey": "nm-cs1-wastewater-collection",
   "state": "NM",
@@ -10,13 +10,13 @@
     "end": 250,
     "status": "proposed-not-reserved-in-production"
   },
-  "purpose": "Practice questions for the New Mexico Wastewater Collection System Level 1 (CS1) written certification examination, technical outline only. Original items in US units. Not an official NMED examination or blueprint. Contains no population-band, certification-level, regulatory, permit, reporting, site-specific or emergency-response content.",
+  "purpose": "Practice questions for the New Mexico Wastewater Collection System Level 1 (CS1) written certification examination, technical outline only. Original items in US units. Not an official NMED examination or blueprint. Regulatory items are limited to 20.7.4 NMAC clauses that do not depend on population band, permit, reporting timeframe, fee or site. Contains no certification-level classification, permit, reporting, site-specific or emergency-response content.",
   "file": "questions/bank-250.json",
   "count": 250,
   "calculations": 55,
-  "sha256": "bdfac417cf8a2df55fa1aeee8836dac0819995962c099c057c239fe7f211ae62",
+  "sha256": "c56ded033217108885d9dd482b72ed31796766ac503e07485854606d510dd8e7",
   "modules": {
-    "Collection system": 53,
+    "Collection system": 45,
     "Lift stations": 14,
     "Mechanical systems": 50,
     "Wastewater characteristics": 24,
@@ -24,21 +24,22 @@
     "Cross-connection control": 8,
     "Safety awareness": 42,
     "Units and flow concepts": 11,
+    "Regulations": 8,
     "Flow and hydraulics math": 10,
     "Collection system math": 20,
     "Removal and loading calculations": 9,
     "Units and conversions": 4
   },
   "difficulty": {
-    "medium": 142,
+    "medium": 138,
     "hard": 48,
-    "easy": 60
+    "easy": 64
   },
   "topics": {
-    "Layout, components and service connections": 15,
-    "Gravity sewers, force mains and manhole concepts": 14,
-    "Cleaning and stoppage response concepts": 12,
-    "Preventive maintenance and inspection concepts": 12,
+    "Layout, components and service connections": 12,
+    "Gravity sewers, force mains and manhole concepts": 12,
+    "Cleaning and stoppage response concepts": 10,
+    "Preventive maintenance and inspection concepts": 11,
     "Lift station concepts: wet wells, pumps, controls and alarms": 14,
     "Chemical feeders and metering equipment": 10,
     "Motors, pumps and valves: operation and maintenance": 14,
@@ -53,6 +54,7 @@
     "Fire, first aid, exposure routes, heat and falls": 20,
     "Pump, motor and valve concepts": 9,
     "Feeder calibration, metering and feed pulsation": 5,
+    "NM utility operator certification rules (20.7.4 NMAC)": 8,
     "Flow, velocity and area in sewers": 7,
     "Slope, invert and fall": 3,
     "Pipe and manhole volumes": 10,
@@ -75,8 +77,8 @@
     ],
     "answerCues": {
       "conceptualCount": 195,
-      "longestRate": 0.30256410256410254,
-      "shortestRate": 0.2512820512820513,
+      "longestRate": 0.29743589743589743,
+      "shortestRate": 0.24615384615384617,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

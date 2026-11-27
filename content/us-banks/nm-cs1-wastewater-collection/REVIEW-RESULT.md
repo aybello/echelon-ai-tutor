@@ -2,6 +2,79 @@
 
 Bank `nm-cs1-wastewater-collection`, version 2026-11-27-v1. Local draft: not imported, not activated, not published. Question numbers 1 to 250 are proposed, not reserved in production.
 
+## Regulations v3 (2026-11-27)
+
+This section supersedes the v2 statement "Scope decision: no Regulations module" below. Config version is now 2026-11-27-v3. Total stays at 250 (195 conceptual, 55 calculation).
+
+### Clauses used
+
+All eight rows cite 20.7.4 NMAC (Utility Operator Certification), from the fetched text. Each explanation names its clause, and each clause quote was checked by exact match against the fetched text (12 of 12 found; notes in the scratch file `nm-wwc-regs/clause-notes.txt`).
+
+| Q | Item | Clause |
+| --- | --- | --- |
+| 188 | Who may operate a public wastewater facility (hard) | 20.7.4.20 A NMAC |
+| 189 | Name of each certified operator on file at all times | 20.7.4.20 C NMAC |
+| 190 | Restricted certifications the department may issue | 20.7.4.20 D NMAC |
+| 191 | Definition of a collection system | 20.7.4.7 D NMAC (distractor from 20.7.4.7 G) |
+| 192 | Compliance with 20.7.4 does not relieve other state and federal duties | 20.7.4.9 NMAC |
+| 193 | Minimum number of certified operators | 20.7.4.15 A and B NMAC |
+| 194 | First listed code of professional conduct duty | 20.7.4.16 C(1) NMAC |
+| 195 | Separate certification for water supply and wastewater | 20.7.4.20 B NMAC |
+
+Coverage is narrow: four rows come from 20.7.4.20. The guidebook names the rule title only, so the choice of clauses is a judgement.
+
+### Excluded, and why
+
+- **20.6.2 NMAC (Ground Water Quality Protection): zero rows.** The guidebook's Regulations section names the rule title only, with no clauses (guide.txt, Regulations area and study references). The brief allows only clauses the guidebook names as need-to-know, so none qualify.
+- **NPDES permit requirements** (guidebook topic): permit-specific, excluded by rule 2.
+- **Population bands:** the 20.7.4.12 and 20.7.4.13 tables, and 20.7.4.13 B. The 20.7.4.13 B bands conflict with the guidebook's page-one table (dossier, source freshness section). Not used in any row, distractor or explanation.
+- **Reporting and renewal timeframes:** 20.7.4.20 C (30-day notice of a replacement), 20.7.4.21 A(1) (application 30 days before exam), 20.7.4.23 (six and 18 months), 20.7.4.25 (three-year renewal and training credits), 20.7.4.26 (30-day reinstatement).
+- **Fees:** 20.7.4.21 A(3) and 20.7.4.25 A. The dossier keeps fees out of candidate material.
+- **Eligibility and substitutions:** 20.7.4.22 A and B and guidebook pages 1 and 2. The dossier says eligibility assessment is an NMED function, not candidate content.
+- **CS2 and other credentials:** 20.7.4.22 A(2) and 20.7.4.10 H, outside the CS1 boundary.
+- **Historical certification:** 20.7.4.24 (1993 certification without examination).
+
+### Removed to hold the total at 250
+
+Eight Collection system rows were removed (module now 45 conceptual; Collection systems area with lift stations and collection math is 79, against a target of about 80). Reasons: duplicates or overlaps within the module.
+
+- Which record best shows where mains, manholes and service connections are located (layout; overlaps the map row)
+- A cleanout is most often installed where? (overlaps the cleanout-purpose row)
+- Which element protects a sewer from overload (regulator; hydraulics, not layout)
+- Cleanouts are often used instead of manholes on short laterals (overlaps the cleanout rows)
+- A drop in invert elevation across a manhole (overlaps the drop-manhole row)
+- Root intrusion into a sewer is most often caused by (overlaps the roots row)
+- A high-pressure water truck used in a stoppage response (overlaps the high-pressure jets row)
+- Which of the following is a preventive maintenance task for a sewer system? (overlaps the preventive maintenance definition)
+
+### Review: GPT gpt-6.2-sol
+
+Reviewer: `gpt-6.2-sol` through the proxy (id confirmed with GET /v1/models). Gemini was not used. The reviewer is a model, not a qualified human reviewer, so the dossier's independent qualified review is still outstanding. The reviewer saw the 8 rows and verbatim excerpts of 20.7.4.7 D and G, 20.7.4.9, 20.7.4.15, 20.7.4.16 C and 20.7.4.20.
+
+- **Pass 1, with two planted errors (review copy only; the bank file was not changed):**
+  - Planted: row 3 key swapped to a distractor (the explanation still named the correct systems). Caught.
+  - Planted: row 6 explanation changed from "in writing" to "by telephone", against 20.7.4.15 B. Caught.
+  - Non-planted flags, both real, both fixed: row 3's stem said "which kinds of system", so the key was the only option naming systems (stem and options rewritten); row 5's distractor "Other rules apply when the certification rules say nothing on a topic" was arguably true (replaced with "A valid operator certificate waives other rules for the work it covers").
+- **Pass 2, clean rows after pass 1 fixes:** two flags, both fixed. Row 6's stem asked how the number is set, but the key gave the standard (stem reworded). Row 8 said "work", but 20.7.4.20 B says "operation" (stem and key reworded).
+- **Pass 3, clean rows after pass 2 fixes:** no flags.
+
+**Catch rate:** 2 of 2 planted errors (100%). The sample is two errors, so this says little about accuracy. The non-planted flags are about wording and distractor quality, not key errors.
+
+### Checks run
+
+- `node scripts/us-bank.mjs lint nm-cs1-wastewater-collection`: valid (after two rounds of length and giveaway fixes).
+- `node scripts/us-bank.mjs build nm-cs1-wastewater-collection`: exit 0. The rebuild reshuffled answer positions across the bank, so question numbers and manifest hash changed. Regulations rows are 188 to 195.
+- `node scripts/us-bank.mjs check nm-cs1-wastewater-collection`: exit 0.
+- Clause quotes checked by exact match against the fetched 20.7.4 text: 12 of 12.
+- Calculation rows were not changed.
+
+### Limits (v3)
+
+1. The Regulations rows have not been reviewed by a qualified human or subject-matter expert. The dossier requires that review. Status: draft, not imported, not activated.
+2. No 20.6.2 NMAC content. The guidebook would need to name clauses for that rule.
+3. Four of the eight rows rest on 20.7.4.20, and the set excludes timeframes, fees and eligibility. Coverage is thin on purpose.
+4. Question numbers and answer positions changed with the rebuild. Earlier per-question review references to numbers in v2 no longer apply.
+
 ## Rebalance v2 (2026-11-27)
 
 This section supersedes the counts, review and checks below, which describe version 2026-11-27-v1. Config version is now 2026-11-27-v2.
