@@ -1,0 +1,1093 @@
+{
+  "key": "ceu-disinfection-ct",
+  "title": "Disinfection Verification and CT Calculations",
+  "shortTitle": "Disinfection and CT",
+  "stream": "drinking_water",
+  "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Audit a fictional disinfection calculation, segment by segment. Reconcile effective volume, flow, residual location, timing and the conditions attached to a required CT value.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "modules": [
+    {
+      "id": "hydraulics",
+      "title": "Nominal residence time and effective contact",
+      "objectives": [
+        "Calculate nominal time and T10 with consistent units.",
+        "Identify evidence required to use a baffling factor."
+      ],
+      "lesson": "<figure><img src=\"/manus-storage/ceu-disinfection-ct-cover_5d726806.jpg\" alt=\"Illustrative fictional scene for Disinfection and CT.\" loading=\"lazy\"><figcaption>Illustrative fictional scene for Disinfection and CT. Photo is illustrative, not a specific facility.</figcaption></figure>\n\n### Start with the operating decision\n\nA CT calculation is not a way to make a number look good. It is a decision record. Before you calculate, be clear about the decision you are trying to support: can this contact segment be used for the operating condition that actually occurred?\n\n> **Your job:** show the fastest-moving water had enough supported contact time under the approved basis for your facility.\n\nThat means every input must describe the same condition: the unit configuration, operating level, flow interval, residual sample point and required treatment basis. The arithmetic is easy. The operating discipline is the hard part.\n\nDo not start with a spreadsheet cell. Start with the record set. If you cannot show where a volume, flow, residual or baffling factor came from, treat the calculation as unresolved and escalate it under your plant procedure.\n\n### Separate tank time from water time\n\nNominal detention time is the container calculation:\n\n**T = V ÷ Q**\n\nIt answers one question: at this steady flow, how long would one active tank volume take to pass through the unit? It does **not** tell you how long the fastest water travelled through it.\n\nReal clearwells and contact chambers have short paths, slower zones, inlet jetting and changes in flow pattern. Some water reaches the outlet early. That fast fraction is what matters when you are checking disinfection contact time.\n\nThink of nominal time as a first screen. It tells you whether the calculation is in the right range. It does not earn credit by itself.\n\n<figure><svg viewBox=\"0 0 320 330\" role=\"img\" aria-label=\"CT calculation path\"><title>CT calculation path</title><defs><marker id=\"ceu-disinf0\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"4\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8 z\" fill=\"#5f6b7a\"/></marker></defs><rect x=\"20\" y=\"15\" width=\"280\" height=\"44\" rx=\"8\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"160\" y=\"42\" font-size=\"14\" font-family=\"Arial, sans-serif\" fill=\"#1d2d40\" text-anchor=\"middle\">Measure residual at the basin outlet</text><line x1=\"160\" y1=\"59\" x2=\"160\" y2=\"79\" stroke=\"#5f6b7a\" stroke-width=\"2\" marker-end=\"url(#ceu-disinf0)\"/><rect x=\"20\" y=\"79\" width=\"280\" height=\"44\" rx=\"8\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"160\" y=\"106\" font-size=\"14\" font-family=\"Arial, sans-serif\" fill=\"#1d2d40\" text-anchor=\"middle\">Measure or estimate T10</text><line x1=\"160\" y1=\"123\" x2=\"160\" y2=\"143\" stroke=\"#5f6b7a\" stroke-width=\"2\" marker-end=\"url(#ceu-disinf0)\"/><rect x=\"20\" y=\"143\" width=\"280\" height=\"44\" rx=\"8\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"160\" y=\"170\" font-size=\"14\" font-family=\"Arial, sans-serif\" fill=\"#1d2d40\" text-anchor=\"middle\">Multiply residual by time (CT)</text><line x1=\"160\" y1=\"187\" x2=\"160\" y2=\"207\" stroke=\"#5f6b7a\" stroke-width=\"2\" marker-end=\"url(#ceu-disinf0)\"/><rect x=\"20\" y=\"207\" width=\"280\" height=\"44\" rx=\"8\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"160\" y=\"234\" font-size=\"14\" font-family=\"Arial, sans-serif\" fill=\"#1d2d40\" text-anchor=\"middle\">Compare with the required CT</text><line x1=\"160\" y1=\"251\" x2=\"160\" y2=\"271\" stroke=\"#5f6b7a\" stroke-width=\"2\" marker-end=\"url(#ceu-disinf0)\"/><rect x=\"20\" y=\"271\" width=\"280\" height=\"44\" rx=\"8\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"160\" y=\"298\" font-size=\"14\" font-family=\"Arial, sans-serif\" fill=\"#1d2d40\" text-anchor=\"middle\">Record inputs and the basis used</text></svg><figcaption>Illustrative path for a CT check; each term needs a measured or supplied value.</figcaption></figure>\n\n### Use T10 for the fast-moving fraction\n\n**T10** is the time at which 10 percent of a tracer has reached the outlet. It represents the fast-moving fraction of the flow path.\n\nA common operational form is:\n\n**T10 = T × baffling factor**\n\nThe baffling factor is not a preference and it is not a target. It is a record-supported description of the hydraulic condition. A tracer study or approved facility basis may support it for a stated configuration, water level and flow range.\n\nA factor is no longer automatically valid when a cell is isolated, a bypass is open, the water level changes outside the studied range or throughput rises beyond the tested range. In those situations, the correct question is not “what factor will pass?” It is “what basis is still supported?”\n\n### Build the input register before using the formula\n\nUse this five-line check before you calculate:\n\n| Input | Confirm before use |\n|---|---|\n| Active volume | Operating level, compartments in service and source drawing or stage-volume record match the interval |\n| Flow | Correct meter, correct interval and the flow basis required by the approved procedure |\n| Residual | Approved sampling point and a current verification or grab check |\n| Baffling factor | Dated tracer study or approved basis covers this configuration and flow range |\n| Required CT | Correct disinfectant, temperature, pH and other conditions under the governing method |\n\nIf one line fails, write the gap down. Do not fill it with an old worksheet, a laminated note or a value from memory.\n\n### Worked method: 640 m³ at 133 L/s\n\nUse the following fictional case only to practise the method. It is not an authorized operating value.\n\n| Supplied input | Value |\n|---|---:|\n| Active chamber volume | 640 m³ |\n| Peak flow for the evaluated hour | 133 L/s |\n| Supported baffling factor | 0.30 |\n| Outlet free chlorine residual | 1.2 mg/L |\n\n**1. Convert flow.** 133 L/s × 3.6 = 478.8 m³/h.\n\n**2. Calculate nominal time.** 640 m³ ÷ 478.8 m³/h = 1.34 h, or 80.2 min.\n\n**3. Calculate T10.** 80.2 min × 0.30 = 24.1 min.\n\n**4. Calculate achieved CT.** 1.2 mg/L × 24.1 min = 28.9 mg·min/L.\n\nLabel every line with units. That catches most errors before they become operating decisions.\n\n### See what changes when flow rises\n\nKeep the same fictional chamber, residual and supported factor. Now increase the evaluated flow from 133 L/s to 167 L/s.\n\nThe nominal time falls from 80.2 min to 63.9 min. T10 falls from 24.1 min to 19.2 min. Achieved CT falls from 28.9 to 23.0 mg·min/L.\n\nThe important lesson is not the exact number. It is the direction of the risk. When flow rises, contact time falls. A higher flow can also change the residence-time pattern, which means the earlier baffling factor may no longer be supported.\n\n> **Operating implication:** a calculation that was acceptable at one flow is not automatically valid at a higher flow. Check the tested range before carrying the factor forward.\n\n### Estimate before you calculate\n\nBefore you use the calculator, estimate the answer. A 640 m3 chamber at 480 m3/h turns over in about 1.3 hours, so a nominal time near three hours at that flow points to a unit or flow error. Estimating first catches most conversion slips, and it tells you whether a result is worth checking further.\n\n### Know the stop conditions\n\nStop and resolve the record before relying on the result when any of these conditions apply:\n\n- A compartment is isolated, bypassed or returned to service.\n- The operating level is outside the range used for the volume or tracer basis.\n- The flow is outside the supported range.\n- The residual came from a different point or time than the evaluated interval.\n- A posted factor has no dated source, conditions or approval reference.\n- The required CT lookup does not match the actual disinfectant, temperature or pH.\n\nA calculation can be numerically correct and still be operationally unusable. Mark it as a sensitivity check if it helps planning, but do not represent it as a supported determination.\n\n### Common errors\n\n**Reading a nameplate volume as the active volume.** A tank's structural volume includes freeboard and dead space that the tracer study may have excluded. Use the level-to-volume value for the level you actually recorded, not the figure on the drawing.\n\n**Dividing by a flow from the wrong interval.** A daily average flow is smaller than the peak hour, so nominal time comes out too long. The result can look comfortable and still describe a condition that did not occur at the peak.\n\n**Using a worked example as a template.** The 640 m3 chamber and the 133 L/s case in this lesson are teaching values. Re-run the method on the record for your own interval. Never reuse a result from a different interval.\n\n**Carrying a factor past the configuration it was measured for.** A factor measured with two cells in service says nothing about one cell. Record which cells, which level band and which flow range the factor covers, and treat the factor as unsupported outside them.\n\n### Finish the shift with a defensible record\n\nBefore you sign the calculation, record the unit configuration, operating level, flow interval, residual sample point, temperature, pH, baffling-factor source and required-CT basis. Attach or reference the underlying trend, calibration check and tracer or approval record.\n\nFor Ontario facilities, the applicable disinfection procedure and your facility approvals set the basis you may use. Your operating manual tells you what to do when the basis is not available. General guidance can help you understand the method, but it cannot replace the documents that govern your works.\n\nIf records conflict, use the most conservative supported basis, document the conflict and notify the designated responsible person under your procedure.",
+      "evidence": "### Fictional scenario: Clearwell 2 during valve repair\n\nMaplecrest Water Treatment Plant is checking contact time from 14:00 to 15:00. The historian shows a peak flow of 152 L/s. The level record shows 3.10 m. A stage-volume curve gives 860 m³ active volume with **both** clearwell cells in service. Outlet free chlorine is 0.95 mg/L and the analyzer was grab-checked that morning.\n\nThree records conflict:\n\n1. A laminated card says “Clearwell 2 baffling factor 0.70” with no date, author or source.\n2. A tracer report from two years earlier supports a factor of 0.42, but only with both cells in service at 3.10 m and 400 to 620 m³/h.\n3. The shift log says Cell B was isolated for valve repair at 13:40.\n\n### Your decision\n\nReject the laminated card. It has no evidence behind it. Do not use 860 m³ or 0.42 as a creditable basis either, because both records describe two-cell service and Cell B is isolated.\n\nYou may calculate the two-cell condition as a **sensitivity check** to understand the exposure, but you cannot claim it as the operating determination. Record the conflict, move to the conservative supported single-cell basis in the approved procedure, notify the responsible operator and request a hydraulic verification for the single-cell configuration.",
+      "assignment": "Using the Clearwell 2 record for 14:00 to 15:00, build an input register and calculation audit. Convert the 152 L/s peak flow to m3/h, then calculate nominal time and T10 for the two-cell tracer basis (860 m3 with a factor of 0.42). Compare that basis with the undated laminated card's factor of 0.70. Calculate achieved CT at 0.95 mg/L and label it a conditional sensitivity, not a determination. List the evidence needed to approve a single-cell hydraulic basis. The record does not contain a single-cell volume, so do not calculate one.",
+      "rubric": [
+        "Converts 152 L/s to 547.2 m3/h and gets 94.3 min nominal time and 39.6 min T10 for the two-cell basis.",
+        "Distinguishes the 0.42 factor, valid only for two cells at 3.10 m and 400 to 620 m3/h, from the undated 0.70 card.",
+        "Labels the 37.6 mg.min/L result as a conditional sensitivity, not a CT determination."
+      ],
+      "facilitatorGuide": "Two-cell nominal time is 860 m3 divided by 547.2 m3/h, which is 94.3 min. T10 at the tracer factor 0.42 is 39.6 min. The laminated card's 0.70 would give 66.0 min, but it has no date, author or source, so it is rejected. The sensitivity CT is 0.95 mg/L times 39.6 min, which is 37.6 mg.min/L. It is not an authorized determination because Cell B was isolated at 13:40. Require learners to name the 3.10 m level and the 400 to 620 m3/h range that the tracer covers. Do not accept a factor chosen to make the result pass, and do not accept a single-cell CT, because the record gives no single-cell volume.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "disinfection"
+      ],
+      "checks": [
+        {
+          "id": "ceu-disinfection-ct-hydraulics-c1",
+          "objective": "hydraulics",
+          "prompt": "Nominal detention time, calculated as T equals V divided by Q, tells the operator which of the following about a contact chamber?",
+          "choices": [
+            "The time needed to displace one basin volume at that steady flow",
+            "Time the fastest ten percent of the water spends in the unit",
+            "Travel time along the shortest inlet to outlet path in the unit",
+            "Time for the disinfectant residual to decay across the chamber"
+          ],
+          "correctIndex": 0,
+          "explanation": "Nominal time is V divided by Q: the time to displace one basin volume at a steady flow. The fastest-ten-percent choice describes T10 from a tracer curve, not V divided by Q. The shortest-path choice describes a flow path, and the decay choice describes the residual, which V divided by Q does not measure."
+        },
+        {
+          "id": "ceu-disinfection-ct-hydraulics-c2",
+          "objective": "hydraulics",
+          "prompt": "A SCADA tag reports flow through a fictional clearwell as 145 L/s. For a T equals V over Q calculation in cubic metres per hour, this flow converts to:",
+          "choices": [
+            "60.4 m3/h",
+            "522 m3/h",
+            "8.7 m3/h",
+            "12,528 m3/h"
+          ],
+          "correctIndex": 1,
+          "explanation": "1 L/s equals 3.6 m3/h, so 145 L/s is 522 m3/h. The 60.4 choice divides by 2.4 instead of multiplying by 3.6. The 8.7 choice is 145 L/s in m3/min, mislabelled as m3/h. The 12,528 choice multiplies by 86.4, which converts to cubic metres per day, not per hour."
+        },
+        {
+          "id": "ceu-disinfection-ct-hydraulics-c3",
+          "objective": "hydraulics",
+          "prompt": "A fictional tracer study reports T10 equal to 30 min while nominal time at the test condition is 100 min. The baffling factor for that tested condition is:",
+          "choices": [
+            "3.33",
+            "30 min",
+            "0.30",
+            "0.70"
+          ],
+          "correctIndex": 2,
+          "explanation": "BF is T10 divided by T: 30 divided by 100 gives 0.30, a dimensionless ratio. The 3.33 choice inverts the ratio (T over T10). The 30 min choice is T10 itself, which carries time units and cannot be a factor. The 0.70 choice is the fraction of the test water not yet through at T10, not the factor."
+        },
+        {
+          "id": "ceu-disinfection-ct-hydraulics-c4",
+          "objective": "hydraulics",
+          "prompt": "Which single item, on its own, is acceptable evidence supporting the baffling factor used in a CT calculation at an Ontario drinking water facility?",
+          "choices": [
+            "A laminated card posted beside the chlorine analyzer panel",
+            "A verbal value passed on by the previous shift operator",
+            "A spreadsheet cell holding the number with no source noted",
+            "A dated tracer study report with test flow, level and curve"
+          ],
+          "correctIndex": 3,
+          "explanation": "A factor needs a dated, reproducible source: a tracer study or the value in the approved manual or approval. The laminated card has no test conditions, validity range or date. The verbal value from the previous shift and the spreadsheet cell with no source note are both unsourced, so neither can support the number."
+        },
+        {
+          "id": "ceu-disinfection-ct-hydraulics-c5",
+          "objective": "hydraulics",
+          "prompt": "A fictional contact chamber holds an active volume of 550 m3 and steady flow through it is 250 m3/h. What is the nominal detention time?",
+          "choices": [
+            "132 minutes",
+            "220 minutes",
+            "0.45 hours",
+            "27 minutes"
+          ],
+          "correctIndex": 0,
+          "explanation": "550 divided by 250 is 2.2 h, and 2.2 times 60 is 132 min. The 220 minute choice divides by 2.5 instead of 250, a misplaced decimal in the flow. The 0.45 hours choice inverts the ratio to Q over V. The 27 minute choice is that inverted 0.45 hours converted to minutes."
+        },
+        {
+          "id": "ceu-disinfection-ct-hydraulics-c6",
+          "objective": "hydraulics",
+          "prompt": "When verifying contact time for a specific evaluated interval, the governing method normally directs the operator to base T on which flow value?",
+          "choices": [
+            "Lowest recorded flow through the unit during the interval",
+            "Peak flow through the unit during that evaluated interval",
+            "Daily average flow taken from the historian for that day",
+            "Nameplate design capacity listed for the contact chamber"
+          ],
+          "correctIndex": 1,
+          "explanation": "Contact time must reflect the fast-moving fraction, so the peak flow in the evaluated interval is normally the basis. The lowest-flow choice gives the longest nominal time and overstates T10 at the peak. The daily average smooths out the peak hour and overstates T10. The nameplate design capacity is a design figure, not the flow in that interval."
+        }
+      ]
+    },
+    {
+      "id": "ct-inputs",
+      "title": "Residual, required CT and calculation boundaries",
+      "objectives": [
+        "Calculate achieved CT and a comparison ratio.",
+        "Match residual and required CT to the correct conditions."
+      ],
+      "lesson": "### What the CT number actually represents\n\nCT is a single number that stands in for a larger claim. Writing 28.0 mg·min/L asserts that a defined parcel of water, moving through a defined piece of equipment under defined chemistry, received a defined residual for a defined minimum time. If any boundary is wrong, the arithmetic is still right and the conclusion is worthless.\n\nThe basic form is achieved CT = C × T. C is the residual that the governing method says represents the segment, and T is the supported contact time in minutes, conventionally T10. The Procedure for Disinfection of Drinking Water in Ontario sets the CT concept, the T10 basis and the disinfectant-specific requirements, so it decides what counts as an acceptable C and T at your works.\n\nThe comparison ratio is achieved CT divided by the applicable required CT. A ratio of 1.00 means equality. It does not mean the water was safe or the record is defensible. Report every CT with its segment, flow, residual point, temperature, pH and the source of the required value.\n\n### Fixing C: the residual that belongs to the segment\n\nThree distinctions matter every time. Species: free and total chlorine are different measurements, and required CT is disinfectant specific, so a total reading used against a free requirement overstates credit. Location: the governing method fixes the representative sample point, most commonly the segment outlet. An inlet or mid-chamber reading is not a substitute because it is higher. Time: the residual must represent the evaluated interval, and analyzer data count only when the measurement chain is sound (sample line lag, calibration, drift and grab verification; compare EPA 815-B-19-010, a US technical guide, not Ontario law). When instrument and grab disagree beyond procedure tolerance, suspend the calculation. Do not average them or pick the higher.\n\n### Fixing T: volume, flow and the supported T10\n\nT10 is not a nameplate figure or theoretical detention time. Use the effective volume at the operating level, the peak flow for the evaluated interval (a daily average hides the peak), and a supported baffling basis. A factor lapses when the configuration changes: a removed baffle, an isolated chamber, an open bypass or a level outside the tracer's range. A T10 validated for two chambers in series is not valid for one.\n\n### Worked example 1: single segment achieved CT and comparison ratio\n\nAll values below are supplied case assumptions for this teaching example at a fictional plant. They are not authorized values for any real works.\n\nSupplied: contact chamber effective volume 640 m³; peak hourly flow through the segment 118 L/s; approved baffling factor 0.50 from the tracer basis on file; free chlorine at the approved segment outlet point 0.62 mg/L; required CT for the example conditions assumed to be 22 mg·min/L.\n\nStep 1, convert flow to consistent units.\nQ = 118 L/s × 60 s/min = 7 080 L/min\nQ = 7 080 L/min ÷ 1 000 L/m³ = 7.080 m³/min\n\nStep 2, theoretical detention time.\nTDT = 640 m³ ÷ 7.080 m³/min = 90.40 min\n\nStep 3, supported contact time.\nT10 = 90.40 min × 0.50 = 45.20 min\n\nStep 4, achieved CT.\nCT achieved = 0.62 mg/L × 45.20 min = 28.02 mg·min/L\n\nStep 5, comparison ratio.\nRatio = 28.02 mg·min/L ÷ 22 mg·min/L = 1.27\n\nAnswer: achieved CT is 28.0 mg·min/L and the comparison ratio is 1.27 against the supplied required value, valid only if the residual point, the baffling basis, the flow figure and the required-value conditions all hold.\n\nNow change one condition. Suppose the same interval is re-evaluated at a peak flow of 145 L/s.\nQ = 145 L/s × 60 s/min = 8 700 L/min = 8.700 m³/min\nTDT = 640 m³ ÷ 8.700 m³/min = 73.56 min\nT10 = 73.56 min × 0.50 = 36.78 min\nCT achieved = 0.62 mg/L × 36.78 min = 22.80 mg·min/L\nRatio = 22.80 mg·min/L ÷ 22 mg·min/L = 1.04\n\nA 23 percent flow increase consumed almost all of the margin. That is the number's real message: CT margin is mostly a hydraulic statement, and it moves with flow much faster than most operators expect.\n\n### Matching required CT to the actual conditions\n\nRequired CT is condition specific. Spellman's handbook says the required value \"will vary depending on pH, temperature, and the organisms to be killed\". It does not tie the requirement to the residual concentration, and this course follows that wording. Check the governing lookup before you use any table, because a textbook table is a teaching source and not your facility's authority.\n\nThe table used here is Spellman's Table 18.15. It gives 104 mg.min/L as the CT for 3-log inactivation of Giardia cysts by chlorine at 10 °C. The handbook states that its Giardia values assume 10 °C and a pH from 6 to 9, and that chlorine becomes less effective as pH rises across that range. The table has no value at other temperatures, so a reading at any other temperature needs a lookup from the method that governs your works.\n\n**Worked example 2.** Supplied case assumptions: free chlorine residual at the approved point 0.80 mg/L; supported T10 for the segment 100 min; measured temperature 10 °C; measured pH 7.6.\n\nStep 1, achieved CT.\nCT achieved = 0.80 mg/L × 100 min = 80.0 mg.min/L\n\nStep 2, required CT. The measured conditions match Table 18.15: 10 °C, pH 7.6 within the 6 to 9 band, 3-log Giardia, chlorine. Required CT = 104 mg.min/L. The table gives one value for this band, so no interpolation is applied.\n\nStep 3, comparison ratio.\nRatio = 80.0 mg.min/L ÷ 104 mg.min/L = 0.77\n\nAnswer: the ratio is 0.77, so the comparison is not met for these supplied conditions.\n\nStep 4, the residual target. The residual that would give a ratio of 1.00 at this T10 is 104 mg.min/L ÷ 100 min = 1.04 mg/L. One division is enough here because the handbook ties the required value to pH, temperature and organism, not to the residual. The target is still a number to check against the residual limits in your approval and procedure. It is not a residual the plant has achieved.\n\nThe trap is to treat 1.04 mg/L as a result. It holds only while the temperature and pH stay within the conditions above. A colder interval, or a pH outside the 6 to 9 band, requires a new lookup before any target is used.\n\n### The input register and validity screen\n\nUse a register like this before you compute anything. If a row fails, the calculation does not proceed.\n\n| Input | Where it comes from | Acceptance check | Invalidates the calculation if | Record retained |\n|---|---|---|---|---|\n| Organism and log credit claimed | Facility approval and governing procedure | Matches the credit the works is relying on | Credit assumed rather than established | Approval extract, basis memo |\n| Disinfectant and species | Approved basis and analyzer configuration | Free versus total matches the required-CT basis | Total reading used against a free basis | Analyzer configuration record |\n| Residual value | Approved sample point, analyzer or grab | Within calibration tolerance, grab verification current | Overdue verification, stale sample line, wrong point | Calibration and verification logs |\n| Temperature | Approved measurement point and interval | Represents the evaluated interval | Daily average used to mask a cold period | Continuous trend or logged reading |\n| pH | Approved measurement point | Within the tabulated band or handled by the prescribed rule | pH outside table range with no prescribed rule | Instrument log, calibration record |\n| Flow through the segment | Metered flow for the evaluated interval | Peak basis as prescribed, meter verification current | Daily average substituted for peak | SCADA trend, meter verification |\n| Effective segment volume | Approved basis and operating level | Level-corrected where the method requires | Full structural volume used on a drawn-down tank | Level trend, volume table |\n| T10 basis | Tracer study or approved baffling factor | Configuration matches the validated configuration | Chamber out of service, bypass open, baffle altered | Tracer report, configuration log |\n| Required CT | Governing procedure and approved basis | All conditions matched, interpolation rule stated | Row selected for conditions other than the measured ones | Lookup printout with conditions noted |\n| Ratio and conclusion | Calculation sheet | Computed at full precision, rounded once at the end | Intermediate rounding used to cross 1.00 | Signed calculation record |\n\nRecords are not optional housekeeping. O. Reg. 128/04 addresses the designation of overall responsible operators and operators in charge, their duties and record requirements at sections 23 and 25 to 27, and a CT determination is an operational decision that a designated person owns. The name attached to the calculation matters as much as the number.\n\n### Common errors\n\n**Using the inlet or a mid-chamber residual because it is higher.** This inflates C and CT directly. Compare the recorded value with the approved sample point.\n\n**Treating theoretical detention time as T10.** Volume divided by flow overstates T by about 3.3 times at a factor of 0.3.\n\n**Averaging the flow across the interval.** Peak flow sets the shortest contact time, and an average removes it.\n\n**Rounding intermediate steps until a ratio crosses 1.00.** Round once, at the end, and record the unrounded ratio.\n\n### What to verify before you act\n\nBefore you rely on a CT result, check the documents, not memory: the Ontario disinfection procedure for the CT concept and T10; the works permit and licence for the credited configuration and sample points; the tracer study or baffling determination for that configuration; calibration records for the analyzer, pH, temperature and flow instruments; and your procedure for ratios below 1.00 or failed input checks, including who is notified. O. Reg. 128/04, sections 23 and 25 to 27, sets designation, duties and records. A required value that is not established for the measured conditions is an unresolved determination, escalated under your procedure.\n\n",
+      "evidence": "### Fictional worked scenario\n\n**All facilities, operators, records and readings below are fictional and are supplied only as case assumptions for this exercise. No value here is an authorized figure for any real works.**\n\nMaple Hollow Water Treatment Plant, fictional. Operator M. Devereaux is verifying CT for the post-filter contact chamber for the 07:00 to 08:00 interval on a fictional date.\n\nSupplied values:\n- Effective chamber volume at operating level: 410 m³\n- Peak flow through the segment during the interval: 96 L/s\n- Baffling factor from the tracer study on file: 0.30\n- Free chlorine at the approved segment outlet point: 0.71 mg/L\n- Temperature: 14.6 °C, pH: 7.9\n- Required CT for these example conditions, supplied assumption: 48 mg·min/L\n\nRecords in the shift log that must be rejected:\n1. A handwritten entry reading \"T10 = 70 min (design nameplate).\" This is close to volume divided by flow and ignores the 0.30 baffling factor. It is not a supported T10 and the tracer report on file is the governing basis.\n2. A note reading \"use inlet residual 1.12 mg/L, better signal.\" The approved representative point for this segment is the outlet. The inlet value is real but not applicable.\n\nWorked solution:\n\nQ = 96 L/s × 60 s/min = 5 760 L/min\nQ = 5 760 L/min ÷ 1 000 L/m³ = 5.760 m³/min\nTDT = 410 m³ ÷ 5.760 m³/min = 71.18 min\nT10 = 71.18 min × 0.30 = 21.35 min\nCT achieved = 0.71 mg/L × 21.35 min = 15.16 mg·min/L\nRatio = 15.16 mg·min/L ÷ 48 mg·min/L = 0.32\n\nWhat the rejected records would have produced:\nCT = 1.12 mg/L × 70 min = 78.4 mg·min/L\nRatio = 78.4 mg·min/L ÷ 48 mg·min/L = 1.63\n\nThe two unsupported inputs would have turned a ratio of 0.32 into an apparent 1.63, a fivefold error. Correct outcome: record the ratio of 0.32, flag the interval, notify the overall responsible operator, retain the tracer report, the analyzer calibration record and the SCADA flow trend, and follow the plant's authorized response procedure. Do not amend the log to fit the favourable numbers.",
+      "assignment": "Using the Maple Hollow post-filter record for 07:00 to 08:00, calculate the valid achieved CT and comparison ratio, compare the result with the rejected worksheet, and write an action and uncertainty note. Explain which inputs must be re-verified before the next interval, and why an unchanged 0.71 mg/L residual does not establish an unchanged required CT. Include units and the limits of the supplied requirement of 48 mg.min/L.",
+      "rubric": [
+        "Calculates achieved CT 15.2 mg.min/L and ratio 0.32 from 410 m3, 96 L/s, factor 0.30 and 0.71 mg/L.",
+        "Rejects the 1.12 mg/L inlet residual and the 70 min nameplate T10.",
+        "Does not invent a cold-water requirement or claim compliance."
+      ],
+      "facilitatorGuide": "Nominal time is 410 m3 divided by 5.76 m3/min, which is 71.2 min. T10 is 71.2 min times 0.30, which is 21.4 min. CT is 0.71 mg/L times 21.35 min, which is 15.2 mg.min/L, and the ratio is 15.2 divided by 48, which is 0.32. The two rejected entries, a 70 min nameplate T10 and the 1.12 mg/L inlet residual, give 78.4 mg.min/L and a ratio of 1.63, about five times the supported result. At 14.6 °C and pH 7.9, the requirement must be looked up again for those conditions; do not carry the supplied 48 forward to another interval. Require the authorized response and escalation, not an unapproved dose change. Extra decimal places cannot repair an input mismatch.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "disinfection",
+        "roles",
+        "ct-table",
+        "spellman-handbook"
+      ],
+      "checks": [
+        {
+          "id": "ceu-disinfection-ct-ct-inputs-c1",
+          "objective": "ct-inputs",
+          "prompt": "Achieved CT is the product of a disinfectant residual in mg/L and a supported contact time in minutes. What units does that product carry?",
+          "choices": [
+            "L·min/mg",
+            "mg·h/L",
+            "mg·min/L",
+            "mg/L·s"
+          ],
+          "correctIndex": 2,
+          "explanation": "C in mg/L multiplied by T in minutes gives mg.min/L. Writing it as mg.h/L shrinks the number by 60 and does not match published tables. L.min/mg is the inverse combination of units, and mg/L.s mixes a seconds unit into a minutes product. None of the three is the CT unit."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-inputs-c2",
+          "objective": "ct-inputs",
+          "prompt": "In CT verification, what does T10 represent for a contact segment?",
+          "choices": [
+            "The time needed to fill the segment from empty to overflow level",
+            "The segment volume divided by flow with no reduction applied",
+            "The time in which 90 percent of a tracer input has passed the outlet",
+            "The time in which 10 percent of a tracer input has passed the outlet"
+          ],
+          "correctIndex": 3,
+          "explanation": "T10 is the time in which 10 percent of a tracer input reaches the outlet, which protects the fastest-moving water. The fill-time choice describes filling, not contact. The 90 percent choice describes the bulk of the flow, the wrong end of the curve. Volume divided by flow with no reduction is theoretical detention time, which overstates the contact actually supported."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-inputs-c3",
+          "objective": "ct-inputs",
+          "prompt": "Your approved basis names a specific residual sample point for a contact segment. Which reading should be used as C for that segment?",
+          "choices": [
+            "The residual measured at the sample point the governing method specifies",
+            "The arithmetic mean of the inlet and mid-chamber residual readings",
+            "The highest residual found anywhere along the chamber that shift",
+            "The residual measured at the segment inlet, since dosing occurs there"
+          ],
+          "correctIndex": 0,
+          "explanation": "The governing method fixes the representative residual point, commonly the outlet. The highest residual anywhere in the chamber is chosen to improve the ratio. The mean of inlet and mid-chamber readings mixes points that do not represent the water at the segment end. The inlet reading is real but is not the point the approved basis uses."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-inputs-c4",
+          "objective": "ct-inputs",
+          "prompt": "Teaching example with supplied case assumptions at a fictional plant: segment effective volume 300 m³, flow through the segment 50 L/s, approved baffling factor 0.60. What is the supported T10 in minutes?",
+          "choices": [
+            "100 min",
+            "60 min",
+            "167 min",
+            "36 min"
+          ],
+          "correctIndex": 1,
+          "explanation": "50 L/s is 3.0 m3/min; 300 divided by 3.0 gives 100 min of theoretical detention time, and 100 times 0.60 gives 60 min. The 100 min choice omits the baffling factor. The 36 min choice applies the factor twice (60 times 0.60). The 167 min choice divides 100 by 0.60, which inflates contact time instead of reducing it."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-inputs-c5",
+          "objective": "ct-inputs",
+          "prompt": "A verification sheet shows a comparison ratio of 1.45, but the T10 used came from a baffling basis that was never validated for the present configuration. How should this determination be characterised?",
+          "choices": [
+            "A passing determination, provided the residual reading was in tolerance",
+            "A passing determination, because the margin above 1.00 is comfortable",
+            "An unresolved determination, because validity is judged separately from the ratio",
+            "An acceptable determination once the ratio is rounded down to 1.40"
+          ],
+          "correctIndex": 2,
+          "explanation": "The ratio and the validity assessment are separate outputs, so an invalid T10 leaves the determination unresolved whatever the margin. The comfortable-margin choice treats 1.45 as a result despite the invalid basis. The residual-in-tolerance choice checks only the residual, not the hydraulic basis. Rounding 1.45 down to 1.40 changes the number and still leaves the basis unsupported."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-inputs-c6",
+          "objective": "ct-inputs",
+          "prompt": "A continuous chlorine analyzer and a verification grab sample disagree by more than the tolerance stated in your procedure. What is the correct handling for the CT calculation?",
+          "choices": [
+            "Use the lower of the two readings and note the difference on the sheet",
+            "Use the higher of the two readings because it is the safer record",
+            "Average the analyzer value and the grab value and use the mean as C",
+            "Suspend the calculation until the discrepancy is investigated and resolved"
+          ],
+          "correctIndex": 3,
+          "explanation": "A disagreement beyond tolerance means the true residual is not known, so the calculation is suspended until it is resolved. Using the lower reading understates CT and is a choice of convenience. Averaging produces a number that neither instrument supports. Using the higher reading selects a value because it looks safer, which is the same error as choosing the favourable result."
+        }
+      ]
+    },
+    {
+      "id": "segments",
+      "title": "Segment calculations and time alignment",
+      "objectives": [
+        "Combine segment ratios only under an explicitly allowed method.",
+        "Avoid pairing noncontemporaneous favourable inputs."
+      ],
+      "lesson": "### What a segment actually is\n\nA segment is a stretch of the disinfection train where one residual and one residence time can honestly describe the water. It starts at a disinfectant application or residual measurement and ends at the next measurement or change in hydraulic character. The method referenced in your approval decides which segments you may recognise and how their results combine, not operator preference or a SCADA screen. Redrawing a boundary mid-shift to capture more volume is a modelling change, and it needs authority.\n\nAll facilities and readings here are fictional.\n\n### Why segments cannot simply be added\n\nTwo failures recur: adding contact times and multiplying by the best residual, and adding achieved CT values to compare with one requirement. Each segment can have its own temperature, pH, residual and required CT. Where the method permits combination, the usual form is ratio summation: each segment is evaluated against its own requirement and the dimensionless ratios are added. The lesson uses a supplied fictional rule (a sum of at least 1.0). It is a teaching device only.\n\n### Worked example 1: two segments in series\n\nFictional Plant A, supplied case assumptions. Segment A is a baffled contact tank with an effective volume of 450 m3 and a supplied validated baffling factor of 0.5. Segment B is a transmission main to the first user with a credited volume of 210 m3 and a supplied baffling factor of 0.9. Instantaneous plant flow at the interval of interest is 6,800 m3/d. The residual measured at the outlet of segment A is 0.55 mg/L. The residual measured at the end of segment B is 0.42 mg/L. The supplied required CT values for the stated temperature, pH and residual conditions are 36 mg.min/L for segment A and 38 mg.min/L for segment B.\n\nStep 1, convert flow to volumetric units that match the tank volume.\n- Q = 6,800 m3/d divided by 1,440 min/d = 4.722 m3/min\n\nStep 2, theoretical detention time in segment A.\n- TDT(A) = 450 m3 divided by 4.722 m3/min = 95.30 min\n\nStep 3, contact time credited in segment A.\n- T10(A) = 95.30 min multiplied by 0.5 = 47.65 min\n\nStep 4, achieved CT in segment A.\n- CT(A) = 0.55 mg/L multiplied by 47.65 min = 26.21 mg.min/L\n\nStep 5, inactivation ratio for segment A.\n- R(A) = 26.21 mg.min/L divided by 36 mg.min/L = 0.73\n\nStep 6, theoretical detention time in segment B at the same flow.\n- TDT(B) = 210 m3 divided by 4.722 m3/min = 44.47 min\n\nStep 7, contact time credited in segment B.\n- T10(B) = 44.47 min multiplied by 0.9 = 40.02 min\n\nStep 8, achieved CT in segment B.\n- CT(B) = 0.42 mg/L multiplied by 40.02 min = 16.81 mg.min/L\n\nStep 9, inactivation ratio for segment B.\n- R(B) = 16.81 mg.min/L divided by 38 mg.min/L = 0.44\n\nStep 10, sum the ratios under the supplied rule.\n- Sum = 0.73 plus 0.44 = 1.17\n\nAnswer: the supplied ratio sum is 1.17, which meets the supplied acceptance value of 1.0 for this fictional example.\n\nNow the shortcut that operators reach for. Take the higher residual across the total credited time.\n- T total = 47.65 min plus 40.02 min = 87.67 min\n- CT shortcut = 0.55 mg/L multiplied by 87.67 min = 48.22 mg.min/L\n- Ratio shortcut = 48.22 mg.min/L divided by 36 mg.min/L = 1.34\n\nThe shortcut reports 1.34 against a true supplied value of 1.17. It applies a residual to water that never carried it and compares the total against a denominator that only applied to segment A. In a marginal case, the same error converts a fail into a pass.\n\n### Time alignment: inputs must have coexisted\n\nA CT result describes one moment. Every input must come from the same interval, normally the worst-case interval the method requires. The failure is quiet: a worksheet pairs the morning's best residual with the afternoon's lowest flow.\n\nFictional Plant A, supplied fifteen-minute SCADA record for one morning.\n\n| Time | Flow (m3/d) | Residual at A outlet (mg/L) | Residual at B end (mg/L) | Temp (C) | Note |\n|---|---|---|---|---|---|\n| 06:00 | 5,200 | 0.62 | 0.49 | 14 | steady |\n| 06:15 | 5,400 | 0.62 | 0.48 | 14 | steady |\n| 06:30 | 8,900 | 0.58 | 0.44 | 14 | pumps stepping up |\n| 06:45 | 11,400 | no data | 0.33 | 13 | analyzer in calibration |\n| 07:00 | 11,600 | 0.41 | 0.30 | 13 | peak |\n\nSupplied required CT values at 13 C for this example are 44 mg.min/L for segment A and 46 mg.min/L for segment B.\n\n### Worked example 2: the aligned interval against the mismatched one\n\nAligned calculation at 07:00, using only 07:00 inputs.\n- Q = 11,600 m3/d divided by 1,440 min/d = 8.056 m3/min\n- TDT(A) = 450 m3 divided by 8.056 m3/min = 55.86 min\n- T10(A) = 55.86 min multiplied by 0.5 = 27.93 min\n- CT(A) = 0.41 mg/L multiplied by 27.93 min = 11.45 mg.min/L\n- R(A) = 11.45 mg.min/L divided by 44 mg.min/L = 0.26\n- TDT(B) = 210 m3 divided by 8.056 m3/min = 26.07 min\n- T10(B) = 26.07 min multiplied by 0.9 = 23.46 min\n- CT(B) = 0.30 mg/L multiplied by 23.46 min = 7.04 mg.min/L\n- R(B) = 7.04 mg.min/L divided by 46 mg.min/L = 0.15\n- Sum = 0.26 plus 0.15 = 0.41\n\nAnswer: the aligned supplied ratio sum at 07:00 is 0.41, well short of the supplied acceptance value of 1.0.\n\nMismatched calculation, the one that appears on a careless sheet. It uses the daily average flow of 6,900 m3/d with the best residuals of the morning, recorded at 06:15.\n- Q = 6,900 m3/d divided by 1,440 min/d = 4.792 m3/min\n- TDT(A) = 450 m3 divided by 4.792 m3/min = 93.91 min\n- T10(A) = 93.91 min multiplied by 0.5 = 46.96 min\n- CT(A) = 0.62 mg/L multiplied by 46.96 min = 29.11 mg.min/L\n- R(A) = 29.11 mg.min/L divided by 44 mg.min/L = 0.66\n- TDT(B) = 210 m3 divided by 4.792 m3/min = 43.82 min\n- T10(B) = 43.82 min multiplied by 0.9 = 39.44 min\n- CT(B) = 0.48 mg/L multiplied by 39.44 min = 18.93 mg.min/L\n- R(B) = 18.93 mg.min/L divided by 46 mg.min/L = 0.41\n- Sum = 0.66 plus 0.41 = 1.07\n\nAnswer: the mismatched supplied ratio sum is 1.07, an apparent pass built from inputs that were forty-five minutes apart and from a flow that no pump was producing during the peak. The difference between 0.41 and 1.07 is mainly an alignment artifact.\n\nThe 06:45 gap is a second judgment point: a trend line across it is a drawing, not a measurement. Handle it under the approved gap rule and keep it visible. The US EPA turbidity guidance (EPA 815-B-19-010) is background only: it is US technical guidance, not Ontario law.\n\n### Input register and decision table\n\nInputs must declare timestamp and validity first.\n\n| Input | Source and tag | Timestamp | Value and units | Validity check | Retained record |\n|---|---|---|---|---|---|\n| Plant flow | FIT-101 instantaneous | 07:00 | 11,600 m3/d | within calibration, no alarm | SCADA historian export |\n| Segment A volume | approved method, tank 1 | static | 450 m3 | matches approved basis | approval document extract |\n| Segment A baffling factor | validated basis | static | 0.5 | configuration matches validation | tracer or approval record |\n| Segment A residual | AIT-210 | 07:00 | 0.41 mg/L | verified against grab sample | bench sheet plus historian |\n| Segment B residual | AIT-240 | 07:00 | 0.30 mg/L | last calibration in date | bench sheet plus historian |\n| Temperature | TIT-205 | 07:00 | 13 C | plausible versus seasonal trend | historian |\n| Required CT, each segment | approved lookup | 07:00 conditions | 44 and 46 mg.min/L | correct table, correct conditions | printed lookup page, initialled |\n\n| Situation | Permitted action under an authorized ratio method | Not permitted |\n|---|---|---|\n| Two segments in series, both measured | Evaluate each against its own required CT, sum the ratios | Add the contact times and use one residual |\n| Two parallel paths | Assess each path separately on its own hydraulics | Treat the paths as consecutive segments |\n| Residual gap in one interval | Apply the approved gap rule, flag the interval | Interpolate and present the result as measured |\n| Configuration changed, for example a bypass opened | Recalculate using the baffling basis for that configuration | Reuse the validated factor from the normal configuration |\n| Mixed timestamps available | Use the worst aligned interval the method requires | Pair the best residual with the lowest flow |\n\n### Common errors\n\n**Borrowing a residual across a segment boundary.** Applying the segment A outlet residual to the whole train assumes no demand or decay downstream. Example 1 shows the inflation.\n\n**Averaging the flow to soften a peak.** Contact time varies inversely with flow, so the peak interval normally controls. Example 2 shows the difference.\n\n**Promoting a baffling factor without authority.** Writing 1.0 because a tank looks like plug flow discards the validated basis.\n\n**Reading the wrong table row.** Required CT moves with temperature, pH and disinfectant, so a warm-weather row or a free-chlorine row on a chloramine plant changes every ratio.\n\n**Presenting an interpolated gap as data.** A filled value must be labelled as a substitution under the approved rule.\n\n### What to verify before you act\n\nBefore you combine anything, confirm the governing method, that a segment combination method is explicitly allowed, and its acceptance basis and pathogen target. Confirm segment definitions, credited volumes and baffling factors against the approval or validation record, and confirm the plant is in the configuration those factors describe. O. Reg. 128/04 sets operator designation and records duties. Retain the historian export, bench sheets, calibration records and initialled lookup page. A calculation you cannot reconstruct from retained inputs is not verification.\n\n",
+      "evidence": "### Fictional worked scenario: Kettle Bay Water Treatment Plant\n\nAll facility details, operators, records and readings below are fictional and are supplied only as teaching assumptions. They are not authorized values.\n\nSupplied facts. Kettle Bay operates free chlorine primary disinfection. Segment A is a clearwell with a credited volume of 380 m3 and a validated baffling factor of 0.3. Segment B is the main to the first user with a credited volume of 165 m3 and a baffling factor of 0.9. The facility method, for this exercise only, permits ratio summation across the two segments with an acceptance sum of 1.0. At the 09:45 peak interval the historian shows flow 9,400 m3/d, residual at the segment A outlet 0.71 mg/L, residual at the end of segment B 0.58 mg/L, and water temperature 9 C. Supplied required CT values for these conditions are 38 mg.min/L for segment A and 40 mg.min/L for segment B.\n\nRecords to reject. The daily CT sheet signed by a fictional operator shows \"Segment A T10 = 58 min\" with a margin note \"clearwell is plug flow, BF 1.0\". No tracer study, validation record or approval text supports a factor of 1.0, so that entry is unsupported and must be rejected. The same sheet uses a residual of 0.94 mg/L recorded at 06:10 for the 09:45 interval. That value is noncontemporaneous and must also be rejected.\n\nCorrect calculation.\n- Q = 9,400 m3/d divided by 1,440 min/d = 6.528 m3/min\n- TDT(A) = 380 m3 divided by 6.528 m3/min = 58.21 min\n- T10(A) = 58.21 min multiplied by 0.3 = 17.46 min\n- CT(A) = 0.71 mg/L multiplied by 17.46 min = 12.40 mg.min/L\n- R(A) = 12.40 divided by 38 = 0.33\n- TDT(B) = 165 m3 divided by 6.528 m3/min = 25.28 min\n- T10(B) = 25.28 min multiplied by 0.9 = 22.75 min\n- CT(B) = 0.58 mg/L multiplied by 22.75 min = 13.20 mg.min/L\n- R(B) = 13.20 divided by 40 = 0.33\n- Sum = 0.66\n\nThe rejected sheet produced 58.21 min multiplied by 0.94 mg/L = 54.72 mg.min/L, divided by 38 = 1.44, plus 0.33 for segment B, for a claimed sum of 1.77. Answer: the defensible supplied result is 0.66, a failed interval. Flag it, follow the facility procedure for a disinfection shortfall, and retain the historian export, the rejected sheet and the validation record for the 0.3 factor.",
+      "assignment": "Using the Kettle Bay record, show the segment ratios and the total for the 09:45 peak interval under the supplied ratio-summation rule. Calculate the rejected worksheet's result and explain why it overstates the case. Explain the limitation of an all-day label, and list the method-specific evidence needed before any interval between recorded points can be assessed. Name one prohibited shortcut and its numerical consequence.",
+      "rubric": [
+        "Calculates segment ratios 0.33 and 0.33 and a total of 0.66 at 09:45.",
+        "Rejects the baffling factor of 1.0 and the 06:10 residual of 0.94 mg/L as unsupported or noncontemporaneous.",
+        "Does not invent missing data or generalise the fictional method."
+      ],
+      "facilitatorGuide": "Segment A: 9,400 m3/d divided by 1,440 is 6.528 m3/min; nominal time 58.21 min; T10 17.46 min at factor 0.3; CT 12.40 mg.min/L; ratio 0.33. Segment B: nominal time 25.28 min; T10 22.75 min at factor 0.9; CT 13.20 mg.min/L; ratio 0.33. The sum is 0.66, below the supplied acceptance value of 1.0, so the interval is a failure to flag and escalate. The rejected sheet uses factor 1.0 (T10 58 min) and a 06:10 residual of 0.94 mg/L. Its segment A CT is 54.72 and its ratio is 1.44, and its claimed sum of 1.77 is about 2.7 times the supported 0.66. Do not accept interpolated or borrowed residuals presented as measured, and do not accept a factor of 1.0 without a validation record.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 15,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 10,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 10,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "disinfection",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "ceu-disinfection-ct-segments-c1",
+          "objective": "segments",
+          "prompt": "A clearwell has an outlet residual analyzer, and a transmission main runs from there to the first user. Under this module's teaching, where does the clearwell segment end?",
+          "choices": [
+            "At the outlet analyzer, where the next residual measurement is taken",
+            "At the far end of the distribution system, where demand is highest",
+            "At the point where the operator finds the arithmetic most favourable",
+            "At the raw water intake, where the applied dose is first recorded"
+          ],
+          "correctIndex": 0,
+          "explanation": "A segment runs from one measurement point to the next, or to a change in hydraulic character, so the outlet analyzer closes it. The far-end-of-distribution choice extends credited volume past the first consumer, which the approved method normally does not allow. The most-favourable-arithmetic choice selects a boundary by its result, which is not a method. The raw-water intake choice places the boundary at the dose, not at a measurement."
+        },
+        {
+          "id": "ceu-disinfection-ct-segments-c2",
+          "objective": "segments",
+          "prompt": "A worksheet adds the credited contact times of two segments and multiplies the total by the higher of the two measured residuals. What is the main defect in that result?",
+          "choices": [
+            "It reports the answer in mg.min/L rather than in dimensionless units",
+            "It applies a residual to water that did not carry it in the second segment",
+            "It uses minutes instead of seconds and so understates the contact time",
+            "It ignores the baffling factor that was already applied to each segment"
+          ],
+          "correctIndex": 1,
+          "explanation": "The shortcut credits downstream water with an upstream residual it never had, and compares a total against one segment's requirement. The units objection is wrong because achieved CT is correctly in mg.min/L. The minutes-versus-seconds choice is not the error, since the shortcut uses minutes throughout. The ignores-the-baffling-factor choice is wrong because each credited time already includes its segment's factor."
+        },
+        {
+          "id": "ceu-disinfection-ct-segments-c3",
+          "objective": "segments",
+          "prompt": "Under a method that explicitly permits ratio summation, what quantity is added across segments?",
+          "choices": [
+            "The credited contact times in minutes from each segment of the train",
+            "The measured disinfectant residuals in mg/L taken at each measuring point",
+            "The dimensionless ratio of achieved CT to required CT for each segment",
+            "The achieved CT values in mg.min/L measured in each separate segment"
+          ],
+          "correctIndex": 2,
+          "explanation": "Ratio summation evaluates each segment against its own requirement and adds the dimensionless ratios. Adding credited contact times is not a permitted combination. Adding measured residuals is meaningless because each segment carries different water. Adding achieved CT values and comparing the total with one requirement is the classic error, since each segment can have its own requirement."
+        },
+        {
+          "id": "ceu-disinfection-ct-segments-c4",
+          "objective": "segments",
+          "prompt": "Mid-shift, an operator redraws a credited contact segment to include extra main beyond the first user so the calculation passes. How should this be characterized?",
+          "choices": [
+            "A routine operational adjustment that needs just a logbook entry",
+            "An acceptable practice whenever flow is below the design maximum",
+            "A valid correction because the water does physically travel that far",
+            "A modelling change that requires authority under the approved method"
+          ],
+          "correctIndex": 3,
+          "explanation": "Segment boundaries and credited volumes come from the method referenced in the approval, so redrawing them is a modelling change that needs authority. A logbook entry does not supply that authority. Acceptance because flow is below the design maximum ignores that the credit still depends on the approved boundary. Calling the redrawn segment valid because the water physically travels that far confuses physical length with credited volume."
+        },
+        {
+          "id": "ceu-disinfection-ct-segments-c5",
+          "objective": "segments",
+          "prompt": "A CT worksheet pairs the highest residual recorded at 06:15 with the daily average flow and reports a passing result, although flow peaked sharply at 07:00. What best describes that reported result?",
+          "choices": [
+            "An alignment artifact describing a condition that did not actually exist",
+            "A conservative estimate because averaging flow smooths short-term noise",
+            "A valid result, since both numbers were recorded on the same operating day",
+            "An acceptable summary provided the daily average flow is documented"
+          ],
+          "correctIndex": 0,
+          "explanation": "Every input must come from the same interval, and the worst-case interval is normally the controlling one. Calling the averaged flow conservative is wrong because averaging hides the peak. The valid-result choice treats same-day records as same-interval records. The documented-average choice makes a documented but mismatched calculation acceptable."
+        },
+        {
+          "id": "ceu-disinfection-ct-segments-c6",
+          "objective": "segments",
+          "prompt": "For one fifteen-minute interval a residual analyzer was in calibration and logged no data. What is the appropriate handling under this module's teaching?",
+          "choices": [
+            "Drop the interval from the record so the day's average is not distorted",
+            "Apply the rule in the approved procedure and keep the gap visible in the record",
+            "Draw a trend line across the gap and read a value from the interpolated line",
+            "Copy the residual from the interval before, since conditions were steady"
+          ],
+          "correctIndex": 1,
+          "explanation": "The approved procedure governs data gaps, often with a conservative substitute or an unverified flag, and the gap must remain visible. Dropping the interval hides the gap. Interpolating a trend line presents a drawing as a measurement. Copying the earlier residual assumes steady conditions that the record does not show."
+        }
+      ]
+    },
+    {
+      "id": "ct-audit",
+      "title": "Disinfection verification dossier",
+      "objectives": [
+        "Audit a complete worksheet and its evidence.",
+        "Define response and closure evidence without overstating certainty."
+      ],
+      "lesson": "### What the dossier has to prove\n\nA disinfection verification dossier is the package a reviewer needs to reach your conclusion without asking you. Auditing one differs from calculating: you ask whether the ratio describes the water that left the chamber during the claimed interval. A complete dossier for one segment and interval holds seven things: the hydraulic configuration, the approved method and contact-time basis, the input register with a traceable source for each value, the arithmetic, the time coverage, exceptions and gaps, and the response record naming who owned each decision. If one is missing, the honest conclusion narrows: \"not demonstrated for this window\" is a useful finding. The facility values here are fictional teaching assumptions.\n\n### Three claims that must be separated\n\nEvery worksheet makes three claims. Claim one: the arithmetic is correct. Claim two: each input is supported by a record a reviewer can open, such as a level-to-volume table, a verified flow meter, a tracer study covering the level band and flow range, or an analyzer with a grab check. Claim three: the required CT is right for the disinfectant, temperature, pH, organism and log credit in the approval. Claim one does not support claim two, and claim two does not support claim three. Write findings in that order. Health Canada's Giardia CT tables in Appendix A are a technical lookup for teaching, not a facility authorization.\n\n### The input register: where each number comes from and how it fails\n\nBuild the register before you touch the arithmetic. The register is the audit.\n\n| Input | Typical source record | What makes it invalid | Audit action if unsupported |\n|---|---|---|---|\n| Active volume (m3) | Level-to-volume table for the recorded level; tracer study basin geometry | Structural or nameplate volume used; level reading outside the tabulated band; dead zones counted | Recalculate with the supported active volume; flag if no table exists for that level |\n| Flow (m3/h) | Calibrated meter with verification record, on the correct basis (peak hour or peak instantaneous as your procedure specifies) | Daily average flow used for a peak condition; meter past its verification interval; wrong meter tagged | Rerun on the authorized flow basis; note the difference in the correction log |\n| Baffling factor | Site tracer study covering that level band and flow range, or the factor assigned in your approved procedure | Generic textbook factor; factor from a different basin; factor outside the studied level or flow range | Use the supported factor; if none applies, mark the segment as not demonstrated |\n| Residual (mg/L) | Continuous analyser at the segment end, with grab check inside procedure tolerance | Upstream analyser used; total chlorine read where free chlorine is required; analyser drifted or in calibration mode | Substitute the supported value or mark the interval as a gap |\n| Temperature and pH | Recorded at the segment for the interval claimed | Monthly average used; value from raw water instead of the contact chamber | Re-look-up the required CT at the actual condition |\n| Required CT | The lookup method named in your approval and procedure | Wrong log credit, wrong organism, wrong temperature row, interpolation not permitted by the method | Correct the denominator before any ratio is reported |\n| Time coverage | Operating log, SCADA trend, shift record | One instantaneous snapshot claimed for a full day | State the interval the result actually covers |\n\nThe US EPA guidance on generating high-quality turbidity data, EPA 815-B-19-010, is United States technical guidance rather than Ontario law, but its treatment of the measurement chain applies directly here. An instrument reading is only as good as the sensor, the sample line, the calibration record, the data logger configuration and the averaging applied in SCADA. A one-minute spot value and a fifteen-minute average are different numbers. Your audit must say which one the worksheet used.\n\n### Worked example 1: reproducing the segment from the register\n\nSupplied case assumptions, fictional: chlorine contact segment at a fictional plant, active volume 600 m3 at the recorded level band, peak hourly flow 400 m3/h from a meter with a current verification record, baffling factor 0.40 from a site tracer study covering that level band, free chlorine at the segment end 0.70 mg/L on a calibrated analyser with a grab check of 0.72 mg/L, water temperature 15 degrees Celsius. Required CT supplied for this training example only: 30 mg.min/L.\n\nStep 1, theoretical detention time:\nT = 600 m3 / 400 m3/h = 1.50 h\nT = 1.50 h x 60 min/h = 90 min\n\nStep 2, apply the supported baffling factor:\nT10 = 90 min x 0.40 = 36 min\n\nStep 3, achieved CT:\nCT achieved = 0.70 mg/L x 36 min = 25.2 mg.min/L\n\nStep 4, ratio against the supplied requirement:\nRatio = 25.2 mg.min/L / 30 mg.min/L = 0.84\n\nAnswer: achieved CT 25.2 mg.min/L, ratio 0.84, below the supplied criterion of 1.0 for this training example.\n\nStep 5, residual target at this T10. The required value is fixed by the stated conditions, so one division gives the target:\nC required = 30 mg.min/L / 36 min = 0.83 mg/L\n\nStep 6, what changes if the water cools. Using a supplied colder-water requirement of 48 mg.min/L for this example only:\nRatio at the same operating point = 25.2 mg.min/L / 48 mg.min/L = 0.53\nC required = 48 mg.min/L / 36 min = 1.33 mg/L\n\nThe teaching point is not the number 1.33. It is that the same hydraulics and the same residual move from 0.84 to 0.53 on a seasonal temperature change alone. A dossier that never records temperature at the segment cannot support either ratio.\n\n### Worked example 2: auditing a worksheet with a correction log\n\nSame fictional segment and same interval. The original worksheet reported a ratio of 6.93 and a conclusion of \"compliant\". Its inputs were structural volume 1100 m3, flow 400 m3/h, baffling factor 0.90 taken from a laminated card with no tracer reference, and total chlorine 1.40 mg/L from an analyser upstream of the segment.\n\nOriginal arithmetic:\nT = 1100 m3 / 400 m3/h = 2.75 h = 165 min\nT10 = 165 min x 0.90 = 148.5 min\nCT = 1.40 mg/L x 148.5 min = 207.9 mg.min/L\nRatio = 207.9 mg.min/L / 30 mg.min/L = 6.93\n\nThe arithmetic is correct. Claim one passes. Now apply corrections one at a time and keep the original worksheet intact.\n\n| Step | Correction applied | T10 (min) | C used (mg/L) | CT (mg.min/L) | Ratio vs 30 |\n|---|---|---|---|---|---|\n| 0 | Original worksheet as submitted | 148.5 | 1.40 | 207.9 | 6.93 |\n| 1 | Structural 1100 m3 replaced with active 600 m3 | 81.0 | 1.40 | 113.4 | 3.78 |\n| 2 | Unsupported 0.90 replaced with tracer-supported 0.40 | 36.0 | 1.40 | 50.4 | 1.68 |\n| 3 | Upstream total chlorine replaced with segment-end free chlorine 0.70 mg/L | 36.0 | 0.70 | 25.2 | 0.84 |\n\nStep 1 arithmetic: 600 m3 / 400 m3/h = 1.50 h = 90 min; 90 min x 0.90 = 81 min; 1.40 mg/L x 81 min = 113.4 mg.min/L.\nStep 2 arithmetic: 90 min x 0.40 = 36 min; 1.40 mg/L x 36 min = 50.4 mg.min/L.\nStep 3 arithmetic: 0.70 mg/L x 36 min = 25.2 mg.min/L; 25.2 / 30 = 0.84.\n\nAnswer: the supported result for this interval is 25.2 mg.min/L, ratio 0.84. The reported 6.93 was inflated by a factor of roughly 8.25 by three input errors, none of which is visible in the arithmetic.\n\nOne more sensitivity check. If the worksheet had used daily average flow of 320 m3/h instead of the authorized peak hourly basis:\nT = 600 m3 / 320 m3/h = 1.875 h = 112.5 min\nT10 = 112.5 min x 0.40 = 45 min\nCT = 0.70 mg/L x 45 min = 31.5 mg.min/L\nRatio = 31.5 / 30 = 1.05\n\nThe flow basis alone flips the conclusion from fail to pass. That is why the audit finding must name the flow basis your procedure authorizes, not simply the number pulled from SCADA.\n\n### Common errors\n\n**Using structural volume instead of active volume.** Structural volume includes freeboard and dead zones and inflates T10 in direct proportion. In Example 2 it alone carried the ratio from 3.78 to 6.93.\n\n**Borrowing a baffling factor that no study supports.** A drawing, a textbook or a neighbouring plant is not evidence for your basin at your level and flow.\n\n**Reading the wrong residual, place or analyte.** Upstream total chlorine is not free chlorine at the segment end.\n\n**Claiming a whole day from one snapshot.** A 10:00 reading describes 10:00. State the coverage.\n\n**Editing the original worksheet.** Log corrections instead, so reviewers can see what was reported and when.\n\n### What to verify before you act\n\nBefore writing a finding, open the documents: your Environmental Compliance Approval and Drinking Water Works Permit for log credits and operating ranges; your approved procedures for the flow basis, residual point and grab tolerance; the Ontario disinfection procedure for the CT concept and T10; the tracer report with its level bands and flow range; and the calibration records covering the interval. Confirm who is the operator in charge for the interval and record their name and role. Reporting duties for adverse results follow the applicable regulation and your notification procedure.\n\n### Response, closure evidence and handover\n\nDo not prescribe a universal corrective action. A dose increase interacts with by-product formation, distribution residual limits and any dose constraints in your approval. Record the authorized action taken, the time, who authorized it and the condition at the time. A changed setpoint is not restoration: closure means verified performance under the affected condition, with supported inputs, for a stated interval. A usable handover names the supported result, the rejected inputs, the open items and each owner. In the worked example the supported result is achieved CT 25.2 mg.min/L (ratio 0.84 against the supplied 30); the original 6.93 does not represent this interval. Open items are the low-level factor, the colder-water requirement and the 02:00 to 06:00 residual coverage.\n\n",
+      "evidence": "### Fictional audit scenario: Northline Water Treatment Plant, Segment C\n\nAll facility names, operators, records and readings below are fictional teaching material. The required CT value is a supplied case assumption for this exercise only, not an authorized value for any plant.\n\n**Supplied records for the interval 16:00 to 17:00 on a fictional shift**\n\n- Active volume at the recorded level band: 420 m3, from the plant level-to-volume table.\n- Flow: 560 m3/h, peak hourly basis, from a meter with a verification record dated four months earlier.\n- Baffling factor: 0.30, from the site tracer study covering this level band and flow range.\n- Operator note attached to the worksheet: \"Use BF 0.70 per design drawing, basin is serpentine.\" No tracer reference, no study date, no level band.\n- Free chlorine at the segment end: 0.85 mg/L on the continuous analyser, grab check 0.83 mg/L, inside the procedure tolerance of plus or minus 0.10 mg/L.\n- Temperature at the segment: 14.5 degrees Celsius.\n- Required CT, supplied for this example only: 33 mg.min/L.\n\n**Record the learner must reject**\n\nThe note directing use of BF 0.70 from a design drawing is unsupported. A design drawing is not tracer evidence for this basin at this level and flow. The tracer-supported factor of 0.30 governs the audit.\n\n**Worked solution**\n\nStep 1, theoretical detention time:\nT = 420 m3 / 560 m3/h = 0.75 h\nT = 0.75 h x 60 min/h = 45 min\n\nStep 2, T10 using the supported factor:\nT10 = 45 min x 0.30 = 13.5 min\n\nStep 3, achieved CT:\nCT = 0.85 mg/L x 13.5 min = 11.475 mg.min/L\n\nStep 4, ratio:\nRatio = 11.475 mg.min/L / 33 mg.min/L = 0.348\n\nStep 5, what the rejected record would have produced:\nT10 = 45 min x 0.70 = 31.5 min\nCT = 0.85 mg/L x 31.5 min = 26.775 mg.min/L\nRatio = 26.775 / 33 = 0.81\n\n**Finding**\n\nBoth versions fall below the supplied criterion, but the supported version shows a far larger shortfall, which changes the urgency and the response owner. The audit conclusion is: arithmetic correct, residual input supported, baffling factor input rejected as unsupported, requirement not demonstrated for 16:00 to 17:00 at ratio 0.348. Escalate to the operator in charge under the facility response procedure, record the authorized action and its time, and treat closure as pending until verified performance is shown at comparable peak flow and level.",
+      "assignment": "Create a 600 to 900-word dossier for the Northline Segment C interval 16:00 to 17:00. Include the corrected calculation, a segment-method note, a timestamp coverage table, a correction log that keeps the original worksheet, and an action and closure register. Quantify the effect of the unsupported 0.70 factor, and identify the decisions that cannot yet be made. Then complete the module checks and the final assessment.",
+      "rubric": [
+        "Corrects the 16:00 to 17:00 result to CT 11.5 mg.min/L and ratio 0.35 using the supported factor 0.30.",
+        "Shows that the unsupported 0.70 factor would give ratio 0.81, and rejects it as unsupported.",
+        "Separates supported calculations from unresolved conditions, and preserves the original evidence with closure verification."
+      ],
+      "facilitatorGuide": "Supported basis: active volume 420 m3 divided by 560 m3/h gives 45 min nominal time; T10 at the tracer factor 0.30 is 13.5 min; CT is 0.85 mg/L times 13.5 min, which is 11.5 mg.min/L; the ratio against the supplied 33 mg.min/L is 0.35, so the requirement is not demonstrated. The design-drawing note of 0.70 gives T10 31.5 min, about 2.3 times the supported value, and a ratio of 0.81. It is unsupported and must be logged, not used. Require a 16:00 to 17:00 scope, escalation to the operator in charge, and closure evidence at comparable peak flow and level. Do not accept a changed setpoint as closure.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Read the source sections and note one application limit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 20,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "disinfection",
+        "roles",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "ceu-disinfection-ct-ct-audit-c1",
+          "objective": "ct-audit",
+          "prompt": "A verification dossier for one contact segment and one interval is being reviewed. Which item, if absent, leaves part of the dossier unreviewable rather than merely weaker?",
+          "choices": [
+            "The plant manager signature block on the cover page",
+            "A colour photograph of the contact basin exterior wall",
+            "The traceable source record for each input value used",
+            "A spreadsheet macro that formats the ratio cell output"
+          ],
+          "correctIndex": 2,
+          "explanation": "Without a traceable source for an input, that part of the dossier cannot be reviewed. A colour photograph of the basin wall and the plant manager's signature block are administrative items that trace no input. A spreadsheet macro that formats the ratio changes presentation, not the input record."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-audit-c2",
+          "objective": "ct-audit",
+          "prompt": "A CT worksheet is checked and every multiplication and division is flawless. What does that alone establish?",
+          "choices": [
+            "That the treatment requirement was met for the interval",
+            "That the required CT in the denominator is correct",
+            "That each input traces to a supporting record",
+            "Just that claim one, the arithmetic, is satisfied"
+          ],
+          "correctIndex": 3,
+          "explanation": "Correct arithmetic satisfies claim one only. Assuming the requirement was met collapses claim three into claim one. Each input tracing to a record is claim two, which the arithmetic cannot check. The required CT being correct is claim three, which the arithmetic also cannot show."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-audit-c3",
+          "objective": "ct-audit",
+          "prompt": "An audited worksheet uses a baffling factor of 0.70 taken from a laminated card with no tracer study reference. Which audit action fits the input register approach?",
+          "choices": [
+            "Use the supported factor, or mark the segment not demonstrated",
+            "Keep 0.70 and note the missing reference in the comments",
+            "Average 0.70 with the factor from the adjacent basin study",
+            "Accept 0.70 because textbook tables list it for similarly shaped basins"
+          ],
+          "correctIndex": 0,
+          "explanation": "The register requires a supported factor. Averaging 0.70 with the factor from an adjacent basin imports evidence from another basin. Keeping 0.70 with a comment still uses an unsupported input. Accepting a textbook value for similarly shaped basins is the generic-factor error, which is not evidence for this basin."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-audit-c4",
+          "objective": "ct-audit",
+          "prompt": "A worksheet records one instantaneous 10:00 residual reading and claims the resulting ratio for the full operating day. What is the best audit finding?",
+          "choices": [
+            "Accept the spot value since daily reports use single readings",
+            "State the interval the reading actually covers, not the day",
+            "Reject the dossier and declare the entire day non-compliant",
+            "Extend the reading across the day using a SCADA daily average"
+          ],
+          "correctIndex": 1,
+          "explanation": "Time coverage is a separate element: the result speaks only for the minutes the data support. Accepting the spot value as the day's result extends one reading to the day. Extending it with a SCADA daily average invents coverage the record does not contain. Declaring the whole day non-compliant overstates the finding in the other direction."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-audit-c5",
+          "objective": "ct-audit",
+          "prompt": "Fictional teaching assumptions: a segment has active volume 750 m3, peak hourly flow 500 m3/h and a tracer-supported baffling factor of 0.30. What is T10 in minutes?",
+          "choices": [
+            "45 min",
+            "90 min",
+            "27 min",
+            "22.5 min"
+          ],
+          "correctIndex": 2,
+          "explanation": "T is 750 divided by 500, which is 1.5 h or 90 min, and T10 is 90 times 0.30, which is 27 min. The 90 min choice is theoretical detention time with the factor left out. The 45 min choice halves the nominal time with no flow basis. The 22.5 min choice is 0.30 times 75 min, the nominal time at 600 m3/h rather than 500."
+        },
+        {
+          "id": "ceu-disinfection-ct-ct-audit-c6",
+          "objective": "ct-audit",
+          "prompt": "A worksheet uses total chlorine from an analyser upstream of the segment, while the approved procedure requires free chlorine at the segment end. Which claim is affected?",
+          "choices": [
+            "Claim three fails because the log credit is wrong",
+            "No claim fails because total chlorine usually exceeds free chlorine",
+            "Claim one fails because the multiplication is incorrect",
+            "Claim two fails; use a supported value or record a gap"
+          ],
+          "correctIndex": 3,
+          "explanation": "A total chlorine reading from upstream breaks input support, which is claim two, so the value must be replaced by a supported value or the interval marked as a gap. The claim-three choice moves the failure to the requirement, which has not changed. The claim-one choice says the multiplication is wrong, which it is not. The no-claim-fails choice ignores that a total reading is a different measurement and does not give the disinfectant the method requires."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-disinfection-ct-hydraulics-f1",
+      "objective": "hydraulics",
+      "prompt": "A fictional clearwell has an active volume of 1,200 m3. Peak flow during the evaluated hour is 100 L/s and the supported baffling factor is 0.40. Calculate T10 in minutes.",
+      "choices": [
+        "80 minutes",
+        "200 minutes",
+        "500 minutes",
+        "4.8 minutes"
+      ],
+      "correctIndex": 0,
+      "explanation": "100 L/s is 360 m3/h, so T is 1,200 divided by 360, which is 3.33 h or 200 min, and T10 is 200 times 0.40, which is 80 min. The 200 minute choice is nominal time with the factor left out. The 500 minute choice divides 200 by 0.40 instead of multiplying, which inflates contact time 2.5 times. The 4.8 minute choice divides 1,200 by 250, a flow that appears nowhere in the case."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-f2",
+      "objective": "hydraulics",
+      "prompt": "In a fictional step-dose tracer test, active volume is 750 m3 and steady test flow is 450 m3/h. The outlet reaches 10 percent of plateau concentration at 28.0 min. What baffling factor does this test support at that condition?",
+      "choices": [
+        "3.57",
+        "0.28",
+        "0.37",
+        "0.62"
+      ],
+      "correctIndex": 1,
+      "explanation": "T is 750 divided by 450, which is 1.667 h or 100 min, so BF is 28.0 divided by 100, which is 0.28. The 3.57 choice inverts the ratio (100 over 28), giving a value above 1.0 that no real configuration reaches. The 0.37 choice divides 28.0 by 75 min, the nominal time at 600 m3/h rather than the 450 m3/h tested. The 0.62 choice divides by 45 min, the nominal time at 1,000 m3/h."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-f3",
+      "objective": "hydraulics",
+      "prompt": "A fictional chamber has an active volume of 640 m3, an outlet free chlorine residual of 1.0 mg/L and a baffling factor of 0.30. Peak flow rises from 120 L/s to 150 L/s. By approximately what percentage does the CT achieved fall?",
+      "choices": [
+        "10 percent",
+        "30 percent",
+        "20 percent",
+        "25 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "At 432 m3/h (120 L/s), T10 is about 26.7 min and CT is 26.7. At 540 m3/h (150 L/s), T10 is about 21.3 min and CT is 21.3. The fall is 20 percent, which is 1 minus 120 over 150. The 25 percent choice is the flow increase itself (150 over 120), not the CT loss. The 10 and 30 percent choices do not match the inverse relationship between flow and contact time."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-f4",
+      "objective": "hydraulics",
+      "prompt": "A tracer study at a fictional plant was run only at 500 m3/h. Operations now intend to run the same unit at 750 m3/h. How should the derived baffling factor be treated at the higher flow?",
+      "choices": [
+        "Apply it directly, because a baffling factor is dimensionless and flow neutral",
+        "Increase it proportionally, since higher throughput improves mixing in the unit",
+        "Ignore the factor and use nominal time, which is conservative at higher flows",
+        "Treat it as unsupported at the higher flow until the approved method allows it"
+      ],
+      "correctIndex": 3,
+      "explanation": "A single tracer test supports only the condition it tested, so 750 m3/h is an extrapolation unless the study bracketed that range or the approved method allows it. Applying the factor directly ignores that the flow pattern changes with throughput. Increasing the factor because throughput is said to improve mixing has no basis in the case. Ignoring the factor and using nominal time is not conservative, because nominal time overstates contact."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-f5",
+      "objective": "hydraulics",
+      "prompt": "During an internal record review at a fictional water plant, a CT log shows a T10 value and a date and nothing else. Which record set is needed to make that T10 defensible?",
+      "choices": [
+        "Volume basis with operating level, flow basis and tag, and the factor source",
+        "Chlorine invoice records, bulk tank levels and monthly chemical usage totals",
+        "Plant staffing roster, shift handover notes and the annual training register",
+        "Distribution pressure logs, hydrant flushing dates and valve exercise records"
+      ],
+      "correctIndex": 0,
+      "explanation": "T10 depends on the active volume at the operating level, the flow basis and its meter, and a sourced factor. The chemical-invoice choice documents dosing, not hydraulics. The staffing-roster choice is a personnel record. The distribution-pressure choice covers water distribution, not the contact basis of the T10 claim."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-f1",
+      "objective": "ct-inputs",
+      "prompt": "Supplied case assumptions, fictional plant: contact chamber effective volume 900 m³, peak hourly flow through the segment 150 L/s, approved baffling factor 0.30, free chlorine at the approved outlet point 1.10 mg/L. What is achieved CT?",
+      "choices": [
+        "11.0 mg·min/L",
+        "33.0 mg·min/L",
+        "110.0 mg·min/L",
+        "55.0 mg·min/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "150 L/s is 9.00 m3/min, so theoretical detention time is 900 divided by 9.00, which is 100 min. T10 is 100 times 0.30, which is 30 min, and CT is 1.10 times 30, which is 33.0 mg.min/L. The 110.0 choice uses 100 min without the factor. The 55.0 choice uses a T10 of 50 min, which no step in the case produces. The 11.0 choice gives the residual times a 10 min value that no step produces."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-f2",
+      "objective": "ct-inputs",
+      "prompt": "Teaching lookup only. A chlorine table gives 104 mg.min/L as the CT for 3-log Giardia inactivation at 10 °C and pH 6 to 9. Supplied: achieved CT 90.0 mg.min/L, measured pH 7.4 and measured temperature 10 °C. What is the comparison ratio?",
+      "choices": [
+        "1.16",
+        "1.30",
+        "0.87",
+        "2.57"
+      ],
+      "correctIndex": 2,
+      "explanation": "The ratio is 90.0 divided by 104, which is 0.865 and rounds to 0.87. The 1.16 choice inverts the ratio to 104 divided by 90. The 1.30 choice divides by 69, the 2-log value in the same table, which is the wrong inactivation level. The 2.57 choice divides by 35, the 1-log value."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-f3",
+      "objective": "ct-inputs",
+      "prompt": "A segment shows a comparison ratio of 1.27 at a peak hourly flow of 118 L/s. The same interval is re-evaluated at a peak hourly flow of 160 L/s, with residual, effective volume and baffling factor unchanged. What is the new ratio?",
+      "choices": [
+        "1.27",
+        "1.72",
+        "1.10",
+        "0.94"
+      ],
+      "correctIndex": 3,
+      "explanation": "Contact time varies inversely with flow, so the ratio scales by 118 divided by 160, giving 1.27 times 0.7375, which is 0.94. The 1.27 choice assumes the margin does not depend on hydraulics. The 1.72 choice scales by 160 over 118, the inverse of the correct factor. The 1.10 choice scales by about 0.87, which matches neither flow ratio."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-f4",
+      "objective": "ct-inputs",
+      "prompt": "A tracer study validated a T10 basis for two contact chambers operating in series. One chamber is taken out of service for cleaning while the plant stays in production. How should contact time be treated for that interval?",
+      "choices": [
+        "The validated T10 no longer applies to the changed configuration",
+        "Keep the validated T10 and simply halve the segment volume used",
+        "Keep the validated T10 because the baffling factor is unchanged",
+        "Use the validated T10 and raise the residual to offset the loss"
+      ],
+      "correctIndex": 0,
+      "explanation": "A T10 validated for two chambers in series belongs to that configuration. Keeping the T10 and halving the volume assumes the flow pattern is unchanged, which the tracer never showed. Keeping the T10 because the factor is unchanged ignores that the configuration changed. Raising the residual to offset the lost contact time does not restore the contact the configuration no longer provides."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-f5",
+      "objective": "ct-inputs",
+      "prompt": "For a free chlorine segment, an operator divides the applicable required CT by the supported T10 to get a target residual and records that residual as sufficient. Why is that single step not enough?",
+      "choices": [
+        "The supported T10 should be doubled before any target residual is derived",
+        "The calculated residual is a target: it has to be checked against the residual measured at the approved point and against the required CT for the measured temperature, pH and organism",
+        "Dividing required CT by T10 produces a value in units that are not mg/L",
+        "The required CT changes with each new residual, so the division gives a misleading target"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dividing required CT by T10 is valid arithmetic, since mg.min/L divided by min gives mg/L. The step is not enough because a calculated residual is a target, not a result. The sources tie required CT to temperature, pH and organism, so the target must be checked against the residual the plant measures at the approved point and against the requirement for the conditions actually measured. The residual-indexed choice is not supported by the handbook; doubling the T10 and the units choice are both errors."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-f1",
+      "objective": "segments",
+      "prompt": "Fictional Plant C, supplied case assumptions. A clearwell has an effective volume of 620 m3 and a supplied validated baffling factor of 0.4. Instantaneous flow is 8,400 m3/d. What contact time is credited to this segment?",
+      "choices": [
+        "About 85.0 minutes of credited contact time",
+        "About 106.3 minutes of credited contact time",
+        "About 42.5 minutes of credited contact time",
+        "About 53.1 minutes of credited contact time"
+      ],
+      "correctIndex": 2,
+      "explanation": "Q is 8,400 divided by 1,440, which is 5.833 m3/min; theoretical detention time is 620 divided by 5.833, which is 106.3 min; and T10 is 106.3 times 0.4, which is 42.5 min. The 106.3 choice is theoretical detention time with the factor omitted. The 85.0 choice applies a factor of 0.80 and the 53.1 choice applies 0.50, neither of which is the validated 0.4."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-f2",
+      "objective": "segments",
+      "prompt": "Fictional Plant D, supplied case assumptions, under a method that permits ratio summation. Segment 1 achieved 26.4 mg.min/L against a supplied required 33 mg.min/L. Segment 2 achieved 14.0 mg.min/L against a supplied required 40 mg.min/L. What is the ratio sum?",
+      "choices": [
+        "A ratio sum of about 1.22 for the train",
+        "A ratio sum of about 1.01 for the train",
+        "A ratio sum of about 0.58 for the train",
+        "A ratio sum of about 1.15 for the train"
+      ],
+      "correctIndex": 3,
+      "explanation": "26.4 divided by 33 is 0.80 and 14.0 divided by 40 is 0.35, so the sum is 1.15. The 1.22 choice adds the achieved CT values to 40.4 and divides by segment 1's requirement alone, applying one denominator to water with another. The 1.01 choice matches neither segment's ratio nor the sum. The 0.58 choice mixes denominators and is not the sum of the two ratios."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-f3",
+      "objective": "segments",
+      "prompt": "Fictional Plant E, supplied case assumptions. Contact tank effective volume 300 m3, supplied baffling factor 0.7, flow 7,200 m3/d, outlet residual 0.48 mg/L, supplied required CT 30 mg.min/L. What is this segment's inactivation ratio?",
+      "choices": [
+        "A ratio of about 0.67 for the segment",
+        "A ratio of about 0.96 for the segment",
+        "A ratio of about 1.37 for the segment",
+        "A ratio of about 0.48 for the segment"
+      ],
+      "correctIndex": 0,
+      "explanation": "Q is 5.0 m3/min, theoretical detention time is 60 min and T10 is 42 min. CT is 0.48 times 42, which is 20.2 mg.min/L, and 20.2 divided by 30 is 0.67. The 0.96 choice credits the full 60 min without the factor. The 1.37 choice divides the nominal time by the factor (60 over 0.70). The 0.48 choice is the residual alone, with no contact time."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-f4",
+      "objective": "segments",
+      "prompt": "A fictional SCADA record shows 06:15 flow 5,400 m3/d with residual 0.62 mg/L, and 07:00 peak flow 11,600 m3/d with residual 0.41 mg/L. The approved method directs evaluation of the worst-case condition in the period. Which inputs should be used?",
+      "choices": [
+        "Average flow of the two intervals with the higher of the two residuals",
+        "Flow 11,600 m3/d with residual 0.41 mg/L, both from 07:00",
+        "Flow 5,400 m3/d with residual 0.62 mg/L, both from 06:15",
+        "Flow 11,600 m3/d from 07:00 with residual 0.62 mg/L from 06:15"
+      ],
+      "correctIndex": 1,
+      "explanation": "Inputs must coexist, and the worst-case interval the method requires here is 07:00, with its own 0.41 mg/L residual. The averaged-flow choice mixes two intervals. The steady 06:15 pair is contemporaneous but is not the worst case, so it misses the shortest contact time. The 07:00 flow paired with the 06:15 residual breaks coexistence."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-f5",
+      "objective": "segments",
+      "prompt": "A verification sheet for a fictional plant reports a ratio sum of 1.07 built from the daily average flow and residuals recorded forty-five minutes earlier, while the aligned peak-interval calculation gives 0.41. What should the reviewing operator conclude?",
+      "choices": [
+        "The two results should be averaged to about 0.74 for the period reported",
+        "The 0.41 result should be rejected as a single unrepresentative data point",
+        "The 1.07 figure is not defensible and the aligned 0.41 result governs review",
+        "The 1.07 figure stands because averaging flow is a recognized daily method"
+      ],
+      "correctIndex": 2,
+      "explanation": "The 1.07 figure pairs average flow with residuals recorded 45 minutes earlier, so its inputs never coexisted and it is not defensible. Averaging 1.07 and 0.41 to about 0.74 blends an invalid result into a valid one. Rejecting the 0.41 as unrepresentative is wrong, since it is the aligned peak-interval result. Accepting 1.07 because daily averaging is recognised misuses a daily statistic for a peak condition. The gap is mainly an alignment artifact, with the averaged flow adding to it."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-f1",
+      "objective": "ct-audit",
+      "prompt": "Fictional case assumptions: active volume 480 m3, peak hourly flow 320 m3/h, tracer-supported baffling factor 0.50, segment-end free chlorine 0.60 mg/L. Required CT supplied for this example only is 36 mg.min/L. What is the ratio?",
+      "choices": [
+        "1.50",
+        "0.42",
+        "0.90",
+        "0.75"
+      ],
+      "correctIndex": 3,
+      "explanation": "T is 480 divided by 320, which is 1.5 h or 90 min, and T10 is 45 min. CT is 0.60 times 45, which is 27.0, and 27.0 divided by 36 is 0.75. The 1.50 choice omits the factor and uses 90 min. The 0.90 choice uses a factor of 0.60 instead of the supported 0.50 (90 min times 0.60 is 54 min, and 0.60 times 54 is 32.4). The 0.42 choice matches no step of the calculation."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-f2",
+      "objective": "ct-audit",
+      "prompt": "Fictional case assumptions: an audited segment has a supported T10 of 30 min, and the required CT used in this training example is 45 mg.min/L. What segment-end free chlorine, in mg/L, would be needed to reach a ratio of 1.0?",
+      "choices": [
+        "1.50 mg/L",
+        "0.67 mg/L",
+        "1.35 mg/L",
+        "2.25 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "C is 45 divided by 30, which is 1.50 mg/L. The division holds because the required value is fixed for the stated conditions, and the result is a residual target to verify, not one the plant has achieved. The 0.67 choice inverts the division (30 over 45). The 1.35 choice multiplies the 1.50 target by 0.90, applying a ratio where a target is needed. The 2.25 choice squares the answer, which no step of the method does."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-f3",
+      "objective": "ct-audit",
+      "prompt": "An audit finds a worksheet used structural volume 900 m3, while the level-to-volume table gives active volume 540 m3 at the recorded level. Flow, baffling factor and residual are unchanged. What happens to the reported ratio after this single correction?",
+      "choices": [
+        "It stays the same because T10 is fixed by tracer",
+        "It falls to 60 percent of the original value",
+        "It falls by 360 mg.min/L regardless of flow",
+        "It rises to about 167 percent of the original"
+      ],
+      "correctIndex": 1,
+      "explanation": "Volume scales nominal time, T10 and CT in proportion, so 540 divided by 900 is 0.60 and the ratio falls to 60 percent. The stays-the-same choice treats T10 as fixed by the tracer, but T10 comes from the volume in the configuration tested. The falls-by-360 choice subtracts a volume difference from a CT value. The rises-to-167-percent choice inverts the volume ratio (900 over 540)."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-f4",
+      "objective": "ct-audit",
+      "prompt": "A residual analyser was in calibration mode from 02:00 to 06:00 and no grab samples exist for that window. Other intervals have complete supported records. Which audit conclusion is defensible?",
+      "choices": [
+        "Compliant for the day, since the analyser returned to normal service at 06:00",
+        "Compliant, using the 01:00 residual carried across the window",
+        "Not demonstrated for 02:00 to 06:00; assess other intervals separately",
+        "Non-compliant for the entire operating day by default"
+      ],
+      "correctIndex": 2,
+      "explanation": "A gap narrows the conclusion to the intervals the data cover, so not demonstrated for 02:00 to 06:00 is the defensible finding. The compliant-for-the-day choice assumes coverage the record lacks. The 01:00 carried-forward choice invents input support. The non-compliant-for-the-entire-day choice overstates the finding, since the other intervals have supported records."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-f5",
+      "objective": "ct-audit",
+      "prompt": "A dossier holds the hydraulic configuration, calculation method, input register, arithmetic and time coverage, but nothing showing who decided to keep the basin in service at a reduced ratio. What is the correct finding?",
+      "choices": [
+        "The dossier is complete because the arithmetic was verified",
+        "Claim three fails, so the required CT needs recalculating",
+        "The gap is minor and may be closed at the next annual inspection",
+        "Response record incomplete; decision ownership is not evidenced"
+      ],
+      "correctIndex": 3,
+      "explanation": "The response record, which names who owned each decision, is a required element, so its absence is a finding on its own. The dossier-complete choice confuses claim one, the arithmetic, with the whole dossier. The claim-three choice moves the finding to a requirement nobody has disputed. The defer-to-inspection choice postpones a required element without a basis."
+    }
+  ],
+  "sources": [
+    {
+      "id": "disinfection",
+      "title": "Ontario: Procedure for Disinfection of Drinking Water",
+      "url": "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario",
+      "section": "CT concept, T10 and disinfectant-specific treatment requirements",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "roles",
+      "title": "Ontario: O. Reg. 128/04",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "section": "Sections 23, 25–27: designation, duties and records",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "ct-table",
+      "title": "Health Canada: Giardia CT tables, Appendix A",
+      "url": "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidelines-canadian-drinking-water-quality-guideline-technical-document-enteric-protozoa-giardia-cryptosporidium/page-11-guidelines-canadian-drinking-water-quality-guideline-technical-document-enteric-protozoa-giardia-cryptosporidium.html",
+      "section": "Giardia CT tables, Appendix A; not verified against the supplied texts, so no values from it are used in this course",
+      "jurisdiction": "Canadian technical guidance; verify governing Ontario method",
+      "accessed": "2026-09-27"
+    },
+    {
+      "id": "spellman-handbook",
+      "title": "Spellman: Handbook of Water and Wastewater Treatment Plant Operations, 2nd ed. (2009), Table 18.15",
+      "section": "Section 18.10.10: CT values for inactivation of Giardia cysts; chlorine 3-log = 104 mg.min/L at 10 °C, pH 6 to 9 (p. 639)",
+      "jurisdiction": "Textbook teaching source; not Ontario law",
+      "accessed": "2026-11-27"
+    }
+  ],
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-disinfection-ct-hydraulics-a1",
+      "objective": "hydraulics",
+      "prompt": "A fictional contact tank holds an active volume of 840 m3 at the operating level. Peak flow is 100 L/s and the approved baffling factor is 0.35. Calculate T10 in minutes.",
+      "choices": [
+        "49 minutes",
+        "140 minutes",
+        "400 minutes",
+        "2.9 minutes"
+      ],
+      "correctIndex": 0,
+      "explanation": "T is 840 divided by 360, which is 2.333 h or 140 min, and T10 is 140 times 0.35, which is 49 min. The 140 minute choice omits the factor. The 400 minute choice divides by the factor instead of multiplying, which is about 8.2 times the correct 49 min. The 2.9 minute choice inverts the factor (1 over 0.35) and drops the volume and flow altogether."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-a2",
+      "objective": "hydraulics",
+      "prompt": "A fictional step-dose tracer test uses an active volume of 1,080 m3 at a steady flow of 600 m3/h. The outlet reaches 10 percent of plateau at 27.0 min. Rounded down for conservatism, what baffling factor does the test support?",
+      "choices": [
+        "4.00",
+        "0.25",
+        "0.40",
+        "0.60"
+      ],
+      "correctIndex": 1,
+      "explanation": "T is 1,080 divided by 600, which is 1.8 h or 108 min, so BF is 27.0 divided by 108, which is 0.25. The 4.00 choice inverts the ratio (108 over 27), giving a value above 1.0 that no real configuration reaches. The 0.40 choice divides 27.0 by 67.5 min, the nominal time at 960 m3/h. The 0.60 choice divides by 45 min, the nominal time at 1,440 m3/h."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-a3",
+      "objective": "hydraulics",
+      "prompt": "A fictional chamber holds 540 m3 of active volume. Peak flow is 150 L/s, the supported baffling factor is 0.30 and the outlet free chlorine residual is 0.90 mg/L. What CT is achieved, in mg.min/L?",
+      "choices": [
+        "5.4 mg.min/L",
+        "1.62 mg.min/L",
+        "16.2 mg.min/L",
+        "48.6 mg.min/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "540 m3 at 540 m3/h gives 60 min nominal time; T10 is 60 times 0.30, which is 18 min; CT is 0.90 times 18, which is 16.2 mg.min/L. The 48.6 choice uses 0.90 as the factor: 60 times 0.90 is 54 min, and 0.90 times 54 is 48.6. The 5.4 choice multiplies the residual by 6 minutes, a time no step produces. The 1.62 choice is 16.2 with a misplaced decimal point."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-a4",
+      "objective": "hydraulics",
+      "prompt": "A baffling factor of 0.50 appears in a daily CT logging spreadsheet at a fictional plant with no linked source document. What should the operator in charge do first?",
+      "choices": [
+        "Keep applying it, since the spreadsheet has been in service for several years",
+        "Replace it with 0.30 taken from a United States baffling classification table",
+        "Raise it toward 0.70 because the chamber has serpentine baffle walls installed",
+        "Trace the factor to a tracer report or the approved manual before relying on it"
+      ],
+      "correctIndex": 3,
+      "explanation": "An unsourced cell is not evidence. The operator in charge must trace the 0.50 factor to a dated tracer report or the approved manual before relying on it. Keeping it because the spreadsheet has run for years treats age as evidence. Replacing it with 0.30 from a United States table substitutes another source that is not Ontario authorization. Raising it toward 0.70 because serpentine walls exist is a guess, not evidence."
+    },
+    {
+      "id": "ceu-disinfection-ct-hydraulics-a5",
+      "objective": "hydraulics",
+      "prompt": "Which statement about units and the baffling factor in a T10 calculation is correct?",
+      "choices": [
+        "It is dimensionless, so hours still need converting to minutes separately",
+        "It converts cubic metres per hour directly into minutes of true contact time",
+        "It corrects an active volume that wrongly included isolated or drained cells",
+        "It changes litres per second into cubic metres per hour in a single step"
+      ],
+      "correctIndex": 0,
+      "explanation": "The baffling factor is a dimensionless ratio of T10 to nominal time, so the hour-to-minute conversion and the flow conversion are separate steps. The converts-m3/h-directly choice is wrong because the factor converts no units. The corrects-the-volume choice is wrong because the factor changes no volume, so a volume that includes isolated cells stays wrong. The one-step L/s conversion choice describes a flow conversion, which the factor does not perform."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-a1",
+      "objective": "ct-inputs",
+      "prompt": "Supplied case assumptions, fictional plant: segment effective volume 480 m³, peak hourly flow 80 L/s, approved baffling factor 0.70, free chlorine at the approved outlet point 0.85 mg/L. What is achieved CT?",
+      "choices": [
+        "29.8 mg·min/L",
+        "59.5 mg·min/L",
+        "85.0 mg·min/L",
+        "51.0 mg·min/L"
+      ],
+      "correctIndex": 1,
+      "explanation": "80 L/s is 4.80 m3/min, so theoretical detention time is 480 divided by 4.80, which is 100 min. T10 is 70.0 min and CT is 0.85 times 70.0, which is 59.5 mg.min/L. The 85.0 choice omits the factor and uses 100 min. The 29.8 choice halves the correct CT with no step that does so. The 51.0 choice uses a T10 of 60 min, which the 0.70 factor does not produce."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-a2",
+      "objective": "ct-inputs",
+      "prompt": "Teaching lookup only. A chlorine table gives 104 mg.min/L as the CT for 3-log Giardia inactivation at 10 °C and pH 6 to 9. Supplied: free chlorine 0.80 mg/L, supported T10 110 min, measured pH 7.75 and measured temperature 10 °C. What is the comparison ratio?",
+      "choices": [
+        "1.18",
+        "2.51",
+        "0.85",
+        "1.28"
+      ],
+      "correctIndex": 2,
+      "explanation": "Achieved CT is 0.80 times 110, which is 88.0 mg.min/L, and 88.0 divided by 104 is 0.846, which rounds to 0.85. The 1.18 choice inverts the ratio (104 over 88). The 1.28 choice divides by 69, the 2-log value in the same table, which is the wrong inactivation level. The 2.51 choice divides by 35, the 1-log value."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-a3",
+      "objective": "ct-inputs",
+      "prompt": "Supplied case assumptions: clearwell full structural volume 640 m³ but effective volume at the operating level 512 m³, flow 96 L/s, approved baffling factor 0.45, free chlorine at the approved point 0.70 mg/L. What is achieved CT?",
+      "choices": [
+        "35.0 mg·min/L",
+        "62.2 mg·min/L",
+        "17.8 mg·min/L",
+        "28.0 mg·min/L"
+      ],
+      "correctIndex": 3,
+      "explanation": "96 L/s is 5.76 m3/min; 512 divided by 5.76 is 88.9 min; T10 is 40.0 min; CT is 0.70 times 40.0, which is 28.0 mg.min/L. The 35.0 choice uses the structural volume of 640 m3, which gives a T10 of 50 min. The 62.2 choice omits the factor and uses 88.9 min. The 17.8 choice follows from no step of the calculation."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-a4",
+      "objective": "ct-inputs",
+      "prompt": "A segment basis requires free chlorine as C. The online analyzer is configured for total chlorine and reads 0.95 mg/L, while a verification grab for free chlorine reads 0.68 mg/L. How should C be handled?",
+      "choices": [
+        "The total chlorine reading is not a valid substitute for the free chlorine C",
+        "Average the two readings so the record reflects both measurement methods",
+        "Use the analyzer value of 0.95 mg/L because continuous data outrank grabs",
+        "Use 0.95 mg/L and note the combined chlorine fraction on the daily sheet"
+      ],
+      "correctIndex": 0,
+      "explanation": "A total reading is a different measurement from free chlorine, and the required CT is disinfectant specific, so 0.95 mg/L is not a valid C. Averaging the two mixes a valid and an invalid measurement. Using 0.95 because continuous data outrank grabs ignores the species mismatch. Using 0.95 with a note on the combined fraction records the wrong input with a footnote."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-inputs-a5",
+      "objective": "ct-inputs",
+      "prompt": "An operator reports a comparison ratio of 1.90 for a segment, but used the daily average flow of 62 L/s. The governing basis for this interval calls for the peak hourly flow of 118 L/s. What ratio results when the correct flow is used?",
+      "choices": [
+        "0.53",
+        "1.00",
+        "1.90",
+        "3.62"
+      ],
+      "correctIndex": 1,
+      "explanation": "Contact time varies inversely with flow, so 1.90 times 62 divided by 118 is 1.00. The 1.90 choice keeps the ratio computed at the average flow, which averages the peak away. The 0.53 choice applies the flow ratio twice, which the inverse relationship does not require. The 3.62 choice applies the flow ratio in the wrong direction (1.90 times 118 divided by 62)."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-a1",
+      "objective": "segments",
+      "prompt": "Fictional Plant F, supplied case assumptions. A contact tank has an effective volume of 540 m3 and a supplied validated baffling factor of 0.3. Instantaneous flow is 10,800 m3/d. What contact time is credited to this segment?",
+      "choices": [
+        "About 36.0 minutes of credited contact time",
+        "About 72.0 minutes of credited contact time",
+        "About 21.6 minutes of credited contact time",
+        "About 28.8 minutes of credited contact time"
+      ],
+      "correctIndex": 2,
+      "explanation": "Q is 10,800 divided by 1,440, which is 7.5 m3/min; theoretical detention time is 540 divided by 7.5, which is 72.0 min; and T10 is 72.0 times 0.3, which is 21.6 min. The 72.0 choice is theoretical detention time with the factor omitted. The 36.0 choice applies 0.5 instead of the validated 0.3. The 28.8 choice applies 0.4, a factor not in the case."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-a2",
+      "objective": "segments",
+      "prompt": "Fictional Plant G, supplied case assumptions, under a method that permits ratio summation with a supplied acceptance value of 1.0. Segment A achieved 21.0 mg.min/L against required 35 mg.min/L. Segment B achieved 16.2 mg.min/L against required 45 mg.min/L. What is the result?",
+      "choices": [
+        "Sum is about 1.06, which meets the supplied acceptance value",
+        "Sum is about 0.83, short of the supplied acceptance value",
+        "Sum is about 0.48, short of the supplied acceptance value",
+        "Sum is about 0.96, short of the supplied acceptance value"
+      ],
+      "correctIndex": 3,
+      "explanation": "21.0 divided by 35 is 0.60 and 16.2 divided by 45 is 0.36, so the sum is 0.96, below the supplied teaching acceptance value of 1.0. The 1.06 choice adds the achieved CT values to 37.2 and divides by 35, turning a shortfall into an apparent pass. The 0.83 choice divides the summed CT by segment B's requirement alone. The 0.48 choice matches neither segment's ratio nor their sum."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-a3",
+      "objective": "segments",
+      "prompt": "Fictional Plant H, supplied case assumptions. Transmission main credited volume 180 m3 to the first user, supplied baffling factor 0.9, flow 5,760 m3/d, end residual 0.35 mg/L, supplied required CT 24 mg.min/L. What is this segment's inactivation ratio?",
+      "choices": [
+        "A ratio of about 0.59 for the segment",
+        "A ratio of about 0.66 for the segment",
+        "A ratio of about 0.73 for the segment",
+        "A ratio of about 0.33 for the segment"
+      ],
+      "correctIndex": 0,
+      "explanation": "Q is 5,760 divided by 1,440, which is 4.0 m3/min; theoretical detention time is 180 divided by 4.0, which is 45 min; T10 is 40.5 min; CT is 0.35 times 40.5, which is 14.2; and 14.2 divided by 24 is 0.59. The 0.73 choice divides the detention time by the factor (45 over 0.9). The 0.66 choice omits the factor and credits 45 min. The 0.33 choice divides by a requirement of about 43, which the case does not give."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-a4",
+      "objective": "segments",
+      "prompt": "At a fictional plant the segment A analyzer logged no residual during the 06:45 interval while flow was climbing toward peak. The shift lead wants to report that interval as verified using the 06:30 reading. What is the sound response?",
+      "choices": [
+        "Leave the interval blank and report just the intervals with complete data",
+        "Follow the approved procedure's gap rule and flag the interval in the record",
+        "Accept the 06:30 reading because residual trends change slowly in mains",
+        "Report the interval using the daily average residual for segment A instead"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gap handling is governed by the approved procedure: a conservative substitute or an unverified flag, with the gap kept visible. Leaving the interval blank hides it. Accepting the 06:30 reading assumes a steady residual while flow rose, which is not conservative: the residual was falling as flow climbed. Using the daily average residual replaces the interval with a statistic that does not describe it."
+    },
+    {
+      "id": "ceu-disinfection-ct-segments-a5",
+      "objective": "segments",
+      "prompt": "A reviewer finds a segment credited from the clearwell outlet to a reservoir well past the first point of consumption, with no change to the approved method. What is the correct finding?",
+      "choices": [
+        "The credit is acceptable if the reviewer notes the extra volume in the log",
+        "The credit is valid whenever the reservoir residual is measured each shift",
+        "The credited volume exceeds what the approved method allows for the segment",
+        "The credit is acceptable because the extra volume adds real contact time"
+      ],
+      "correctIndex": 2,
+      "explanation": "Credited volume is what the approved method allows, normally to the first point of consumption. Logging the extra volume does not make it creditable. Measuring the reservoir residual each shift does not change the credited boundary. The argument that the extra volume adds real contact time confuses physical travel with credit the method allows."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-a1",
+      "objective": "ct-audit",
+      "prompt": "Fictional case assumptions: active volume 1000 m3, peak hourly flow 800 m3/h, tracer-supported baffling factor 0.60, segment-end free chlorine 0.80 mg/L. Required CT supplied for this example only is 40 mg.min/L. What is the ratio?",
+      "choices": [
+        "1.50",
+        "0.54",
+        "1.11",
+        "0.90"
+      ],
+      "correctIndex": 3,
+      "explanation": "T is 1000 divided by 800, which is 1.25 h or 75 min, and T10 is 45 min. CT is 0.80 times 45, which is 36 mg.min/L, and 36 divided by 40 is 0.90. The 1.50 choice omits the factor and uses 75 min. The 0.54 choice applies the 0.60 factor to the ratio instead of to the time. The 1.11 choice inverts the ratio (40 over 36)."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-a2",
+      "objective": "ct-audit",
+      "prompt": "Fictional case assumptions: an audited segment has a supported T10 of 24 min, and the required CT used in this training example is 42 mg.min/L. What segment-end free chlorine, in mg/L, is needed for a ratio of 1.0?",
+      "choices": [
+        "1.75 mg/L",
+        "0.57 mg/L",
+        "1.40 mg/L",
+        "2.10 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "C is 42 divided by 24, which is 1.75 mg/L. The division holds for the stated conditions, and the result is a target to verify. The 0.57 choice inverts the division (24 over 42). The 1.40 choice divides by 30 min, a T10 the case does not give. The 2.10 choice divides by 20 min, also not a T10 in the case."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-a3",
+      "objective": "ct-audit",
+      "prompt": "Fictional case assumptions: a segment achieves CT of 28.8 mg.min/L. The supplied warm-water requirement is 32 mg.min/L and the supplied colder-water requirement is 48 mg.min/L. What is the ratio at the colder condition?",
+      "choices": [
+        "0.67",
+        "0.60",
+        "0.90",
+        "1.35"
+      ],
+      "correctIndex": 1,
+      "explanation": "28.8 divided by 48 is 0.60 at the colder requirement. The 0.90 choice is the warm-water ratio (28.8 over 32), which does not apply at the colder condition. The 0.67 choice inverts the two requirements (32 over 48). The 1.35 choice has no step in the calculation."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-a4",
+      "objective": "ct-audit",
+      "prompt": "An audited worksheet used a daily average flow of 250 m3/h, while the approved procedure specifies peak hourly flow for this calculation. The recorded peak hourly flow for the interval is 500 m3/h. What is the effect and the action?",
+      "choices": [
+        "No effect, because flow cancels against the baffling factor",
+        "T10 is correct; just the required CT needs a new lookup",
+        "T10 is overstated twofold; rerun on the peak hourly basis",
+        "T10 is understated by half, so accept the conservative result"
+      ],
+      "correctIndex": 2,
+      "explanation": "A daily average flow of 250 m3/h is half the peak hourly 500 m3/h, so it doubles nominal time and T10, and the claim is overstated twofold. The no-effect choice wrongly cancels flow against the factor. The T10-is-correct choice ignores that flow sets the time. The understated-by-half choice reverses the direction of the error, since the error inflates the result and accepting it is wrong."
+    },
+    {
+      "id": "ceu-disinfection-ct-ct-audit-a5",
+      "objective": "ct-audit",
+      "prompt": "During an audit of the input register, which record supports the active volume entry for the basin level recorded during the claimed interval?",
+      "choices": [
+        "The structural volume shown on the original design drawings",
+        "The nameplate capacity stamped on the basin plate",
+        "The average of full and empty basin volumes",
+        "The level-to-volume table entry for the recorded level"
+      ],
+      "correctIndex": 3,
+      "explanation": "Active volume must come from the level-to-volume table for the level recorded in the interval. The design-drawing structural volume includes water the segment does not use. The nameplate capacity is a design figure. The average of full and empty volumes is not a level-based volume and ignores the level actually recorded."
+    }
+  ]
+}
