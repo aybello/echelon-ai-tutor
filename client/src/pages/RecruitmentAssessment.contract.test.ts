@@ -2,7 +2,10 @@ import * as React from "react";
 import { QueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { RecruitmentCandidateView } from "@shared/recruitmentAssessment";
+import {
+  RECRUITMENT_CONSENT_VERSION,
+  type RecruitmentCandidateView,
+} from "@shared/recruitmentAssessment";
 
 // Execute the actual component hooks and async handlers in Node; no server, DOM or network.
 const h = vi.hoisted(() => ({
@@ -11,6 +14,8 @@ const h = vi.hoisted(() => ({
   layoutEffects: [] as (() => void)[],
   effects: [] as (() => void)[],
   dirty: false,
+  mounted: true,
+  updatesAfterUnmount: 0,
   query: {} as any,
   client: null as any,
   utils: null as any,
@@ -39,6 +44,10 @@ vi.mock("react", async original => ({
     return [
       h.slots[i].value,
       (value: any) => {
+        if (!h.mounted) {
+          h.updatesAfterUnmount += 1;
+          return;
+        }
         const next =
           typeof value === "function" ? value(h.slots[i].value) : value;
         if (!Object.is(next, h.slots[i].value)) {
@@ -61,6 +70,7 @@ vi.mock("react", async original => ({
       h.slots[i] = { deps };
       h.effects.push(() => {
         old?.cleanup?.();
+        h.slots[i].setup = fn;
         h.slots[i].cleanup = fn();
       });
     }
@@ -72,6 +82,8 @@ vi.mock("react", async original => ({
       h.slots[i] = { deps };
       h.layoutEffects.push(() => {
         old?.cleanup?.();
+        h.slots[i].layout = true;
+        h.slots[i].setup = fn;
         h.slots[i].cleanup = fn();
       });
     }
@@ -205,10 +217,47 @@ function button(tree: any, label: string) {
 function emit(name: string, event?: any) {
   for (const listener of [...(h.listeners.get(name) ?? [])]) listener(event);
 }
+function unmount() {
+  if (!h.mounted) return;
+  h.mounted = false;
+  // React runs layout cleanup synchronously before passive effect cleanup.
+  for (const layout of [true, false]) {
+    for (const slot of h.slots) {
+      if (Boolean(slot?.layout) !== layout) continue;
+      slot?.cleanup?.();
+      if (slot) slot.cleanup = undefined;
+    }
+  }
+}
+function deferred<T>() {
+  let resolve!: (value: T) => void;
+  let reject!: (error: unknown) => void;
+  const promise = new Promise<T>((done, fail) => {
+    resolve = done;
+    reject = fail;
+  });
+  return { promise, resolve, reject };
+}
+function actionHandler(action: "start" | "save" | "submit") {
+  if (action === "start") {
+    ready({ ...fixture, status: "invited", questions: [], answers: {} });
+    nodes(render())
+      .find(n => n.type === "checkbox")
+      .props.onCheckedChange(true);
+    return button(render(), "Start assessment").props.onClick;
+  }
+  ready();
+  if (action === "save") {
+    const choices = nodes(render()).find(n => n.type === "radio-group");
+    return () => choices.props.onValueChange("0");
+  }
+  button(render(), "Review submission").props.onClick();
+  return button(render(), "Submit assessment").props.onClick;
+}
 async function settle() {
   for (let i = 0; i < 25; i++) {
     await Promise.resolve();
-    render();
+    if (h.mounted) render();
   }
 }
 function fail(code: string) {
@@ -234,6 +283,8 @@ beforeEach(() => {
   h.effects = [];
   h.cursor = 0;
   h.dirty = false;
+  h.mounted = true;
+  h.updatesAfterUnmount = 0;
   h.autoQuery = false;
   h.monotonicMs = 0;
   h.tick = null;
@@ -290,13 +341,15 @@ beforeEach(() => {
       h.tick = fn;
       return 1;
     },
-    clearInterval: () => {},
+    clearInterval: () => {
+      h.tick = null;
+    },
   });
   vi.stubGlobal("document", { ...events, visibilityState: "visible" });
   vi.stubGlobal("requestAnimationFrame", (fn: () => void) => fn());
 });
 afterEach(() => {
-  for (const slot of h.slots) slot?.cleanup?.();
+  unmount();
   h.client.clear();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
@@ -475,20 +528,124 @@ describe("candidate monotonic request clock contract", () => {
     expect(text(render())).toContain("Assessment submitted");
   });
 
-  it("checks an early conservative display deadline once, without locally completing or repeatedly refreshing", async () => {
+  it("rechecks an early advisory zero at the server-reported deadline and renders only the terminal server result", async () => {
+    const closeDeadline = {
+      ...fixture,
+      deadlineMs: fixture.serverNowMs + 20000,
+    };
+    h.fetch
+      .mockResolvedValueOnce({
+        ...closeDeadline,
+        serverNowMs: fixture.serverNowMs + 5000,
+      })
+      .mockResolvedValueOnce({
+        ...closeDeadline,
+        serverNowMs: closeDeadline.deadlineMs,
+        revision: 8,
+        status: "timed_out",
+      });
+    await freshTimedQuery(closeDeadline, 25000);
+    expect(timer()).toBe("00:00");
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+    expect(text(render())).toContain(fixture.questions[0].prompt);
+    expect(
+      nodes(render()).find(n => n.type === "radio-group").props.disabled
+    ).toBe(false);
+    for (let i = 0; i < 14; i++) {
+      advance(1000);
+      // Repeated DTO consumption is not a new request and must not keep
+      // pushing the scheduled server reconciliation into the future.
+      h.query = {
+        ...h.query,
+        data: { ...closeDeadline, serverNowMs: fixture.serverNowMs + 5000 },
+      };
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(text(render())).not.toContain("Assessment time has ended");
+    }
+    advance(1000);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(2);
+    expect(text(render())).toContain("Assessment time has ended");
+    expect(h.start).not.toHaveBeenCalled();
+    expect(h.save).not.toHaveBeenCalled();
+    expect(h.submit).not.toHaveBeenCalled();
+    advance(60000);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(2);
+  });
+
+  it("bounds near-deadline checks despite conservative latency and waits for the pending read", async () => {
     const closeDeadline = {
       ...fixture,
       deadlineMs: fixture.serverNowMs + 4000,
     };
-    h.fetch.mockResolvedValue(closeDeadline);
+    const pending = deferred<RecruitmentCandidateView>();
+    h.fetch
+      .mockResolvedValueOnce({
+        ...closeDeadline,
+        serverNowMs: fixture.serverNowMs + 3500,
+      })
+      .mockReturnValueOnce(pending.promise);
     await freshTimedQuery(closeDeadline, 5000);
-    expect(timer()).toBe("00:00");
-    expect(h.fetch).toHaveBeenCalledTimes(1);
-    expect(text(render())).toContain(fixture.questions[0].prompt);
-    advance(2000);
+    for (let i = 0; i < 4; i++) {
+      advance(1000);
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+    }
+    advance(1000);
     await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(2);
+    advance(60000);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(2);
+    pending.resolve({
+      ...closeDeadline,
+      status: "timed_out",
+      revision: 8,
+      serverNowMs: closeDeadline.deadlineMs,
+    });
+    await settle();
+    expect(text(render())).toContain("Assessment time has ended");
+  });
+
+  it("backs off failed deadline reads with three bounded retries, then requires an explicit refresh", async () => {
+    const closeDeadline = {
+      ...fixture,
+      deadlineMs: fixture.serverNowMs + 4000,
+    };
+    h.fetch.mockRejectedValue(new Error("Synthetic deadline read failure"));
+    await freshTimedQuery(closeDeadline, 5000);
     expect(h.fetch).toHaveBeenCalledTimes(1);
+    for (const [delay, count] of [
+      [5000, 2],
+      [10000, 3],
+      [20000, 4],
+    ]) {
+      advance(delay - 1000);
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(count - 1);
+      advance(1000);
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(count);
+    }
+    advance(120000);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(4);
+    expect(h.submit).not.toHaveBeenCalled();
     expect(text(render())).not.toContain("Assessment time has ended");
+    h.fetch.mockResolvedValue({
+      ...closeDeadline,
+      status: "timed_out",
+      revision: 8,
+      serverNowMs: closeDeadline.deadlineMs,
+    });
+    nodes(render())
+      .find(n => typeof n.type === "function" && n.type.name === "ErrorNotice")
+      .props.onRetry();
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(5);
+    expect(text(render())).toContain("Assessment time has ended");
   });
 
   it.each(["start", "save"] as const)(
@@ -640,6 +797,170 @@ describe("candidate monotonic request clock contract", () => {
 });
 
 describe("candidate assessment session and confirmation contract", () => {
+  it.each(["start", "save", "submit"] as const)(
+    "never dispatches an unsent %s after delayed cancellation resolves following unmount",
+    async action => {
+      const cancellation = deferred<void>();
+      h.cancel.mockReturnValueOnce(cancellation.promise);
+      const handler = actionHandler(action);
+      handler();
+      expect(h.cancel).toHaveBeenCalledTimes(1);
+      expect(h.cancel).toHaveBeenCalledWith({ assignmentId });
+      expect(h[action]).not.toHaveBeenCalled();
+      unmount();
+      cancellation.resolve();
+      await settle();
+      // Retained UI callbacks cannot start a new operation after navigation either.
+      handler();
+      await settle();
+      expect(h.cancel).toHaveBeenCalledTimes(1);
+      expect(h.start).not.toHaveBeenCalled();
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.submit).not.toHaveBeenCalled();
+      expect(h.fetch).not.toHaveBeenCalled();
+      expect(h.updatesAfterUnmount).toBe(0);
+      expect(h.client.getQueryData(key())).toEqual(
+        action === "start"
+          ? { ...fixture, status: "invited", questions: [], answers: {} }
+          : fixture
+      );
+    }
+  );
+
+  it.each(["start", "save", "submit"] as const)(
+    "invalidates captured %s scope during layout cleanup even if effects become live again",
+    async action => {
+      const cancellation = deferred<void>();
+      h.cancel.mockReturnValueOnce(cancellation.promise);
+      actionHandler(action)();
+      // Locate the lifetime effect by excluding the query subscription effect.
+      const effects = h.slots.filter(
+        slot => slot?.layout && slot?.cleanup && slot?.setup
+      );
+      expect(effects).toHaveLength(2);
+      const fence = effects.at(-1)!;
+      fence.cleanup();
+      fence.cleanup = fence.setup();
+      cancellation.resolve();
+      await settle();
+      expect(h.start).not.toHaveBeenCalled();
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.submit).not.toHaveBeenCalled();
+    }
+  );
+
+  it.each(["start", "save", "submit"] as const)(
+    "does not dispatch %s when the session changes while cancellation is pending",
+    async action => {
+      const cancellation = deferred<void>();
+      h.cancel.mockReturnValueOnce(cancellation.promise);
+      actionHandler(action)();
+      emit("storage", { key: "manus-runtime-user-info" });
+      render();
+      expect(text(render())).not.toContain(fixture.title);
+      h.fetch.mockRejectedValue(fail("FORBIDDEN"));
+      cancellation.resolve();
+      await settle();
+      expect(h.start).not.toHaveBeenCalled();
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.submit).not.toHaveBeenCalled();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(h.client.getQueryData(key())).toBeUndefined();
+    }
+  );
+
+  it.each(["start", "save", "submit"] as const)(
+    "ignores the completion of an already-dispatched %s after unmount without claiming request cancellation",
+    async action => {
+      const response = deferred<RecruitmentCandidateView>();
+      h[action].mockReturnValueOnce(response.promise);
+      actionHandler(action)();
+      await settle();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h[action].mock.calls[0][0]).toEqual(
+        action === "start"
+          ? {
+              assignmentId,
+              acceptedNotice: true,
+              consentVersion: RECRUITMENT_CONSENT_VERSION,
+            }
+          : action === "save"
+            ? { assignmentId, questionId: "q1", selectedIndex: 0, revision: 7 }
+            : { assignmentId, revision: 7 }
+      );
+      const cached = h.client.getQueryData(key());
+      unmount();
+      response.resolve({
+        ...fixture,
+        revision: 8,
+        status: action === "submit" ? "submitted" : "active",
+      });
+      await settle();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.cancel).toHaveBeenCalledTimes(1);
+      expect(h.fetch).not.toHaveBeenCalled();
+      expect(h.client.getQueryData(key())).toEqual(cached);
+      expect(h.updatesAfterUnmount).toBe(0);
+    }
+  );
+
+  it.each(["save", "submit"] as const)(
+    "does not dispatch a conflict refresh when an already-sent %s rejects after unmount",
+    async action => {
+      const response = deferred<RecruitmentCandidateView>();
+      h[action].mockReturnValueOnce(response.promise);
+      actionHandler(action)();
+      await settle();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      unmount();
+      response.reject(fail("CONFLICT"));
+      await settle();
+      expect(h.fetch).not.toHaveBeenCalled();
+      expect(h.updatesAfterUnmount).toBe(0);
+    }
+  );
+
+  it.each(["save", "submit"] as const)(
+    "ignores an already-dispatched %s conflict read that completes after unmount",
+    async action => {
+      const response = deferred<RecruitmentCandidateView>();
+      h[action].mockRejectedValueOnce(fail("CONFLICT"));
+      h.fetch.mockReturnValueOnce(response.promise);
+      actionHandler(action)();
+      await settle();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(h.fetch).toHaveBeenCalledWith({ assignmentId }, { staleTime: 0 });
+      const cached = h.client.getQueryData(key());
+      unmount();
+      response.resolve({ ...fixture, revision: 9, answers: { q1: 0 } });
+      await settle();
+      expect(h.client.getQueryData(key())).toEqual(cached);
+      expect(h.updatesAfterUnmount).toBe(0);
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it("does not dispatch a manual read after delayed cancellation and unmount", async () => {
+    ready();
+    h.save.mockRejectedValue(new Error("Synthetic save failure"));
+    nodes(render())
+      .find(n => n.type === "radio-group")
+      .props.onValueChange("0");
+    await settle();
+    const cancellation = deferred<void>();
+    h.cancel.mockReturnValueOnce(cancellation.promise);
+    nodes(render())
+      .find(n => typeof n.type === "function" && n.type.name === "ErrorNotice")
+      .props.onRetry();
+    unmount();
+    cancellation.resolve();
+    await settle();
+    expect(h.fetch).not.toHaveBeenCalled();
+    expect(h.updatesAfterUnmount).toBe(0);
+  });
+
   it.each([null, 5])(
     "explains the before-start scoring policy for time limit %s",
     timeLimitMinutes => {

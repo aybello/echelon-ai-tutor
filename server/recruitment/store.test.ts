@@ -16,19 +16,20 @@ const NOW = Date.parse("2026-11-27T19:00:00Z");
 const ID = "11111111-1111-4111-8111-111111111111";
 const context = { user: null, studentEmail: "candidate@example.test", req: {}, res: {} } as unknown as TrpcContext;
 const form = () => ({ id: "22222222-2222-4222-8222-222222222222", orgId: 7, title: "Synthetic assessment", courseKey: "class2-water", courseLabel: "Class 2 Water", modules: ["Treatment"], questionCount: 5, timeLimitMinutes: 5, expiresAtMs: NOW + 900_000,
-  questions: Array.from({ length: 5 }, (_, i) => ({ id: `q${i + 1}`, module: "Treatment", prompt: `Synthetic prompt ${i + 1}`, options: ["One", "Two"], correctIndex: 0 })),
+  questions: Array.from({ length: 5 }, (_, i) => ({ id: String(i + 1), module: "Treatment", prompt: `Synthetic prompt ${i + 1}`, options: ["One", "Two"], correctIndex: 0 })),
 } as RecruitmentAssessmentRow);
 const invitation = () => ({ id: ID, assessmentId: form().id, orgId: 7, memberId: 31, candidateEmail: "candidate@example.test", creatorEmail: "manager@example.test", status: "invited", startedAtMs: null, submittedAtMs: null, consentVersion: null, consentAcceptedAtMs: null, expiresAtMs: NOW + 900_000, updatedAtMs: NOW - 1000, answers: {}, score: null, revision: 0, revokedAtMs: null, revokedByEmail: null } as RecruitmentAssignmentRow);
 const started = () => ({ ...invitation(), status: "active" as const, startedAtMs: NOW, consentAcceptedAtMs: NOW, consentVersion: RECRUITMENT_CONSENT_VERSION, revision: 1 });
 const start: RecruitmentOperation = { kind: "start", input: { assignmentId: ID, acceptedNotice: true, consentVersion: RECRUITMENT_CONSENT_VERSION } };
-const answer = (revision = 1, questionId = "q1", selectedIndex = 0): RecruitmentOperation => ({ kind: "answer", input: { assignmentId: ID, revision, questionId, selectedIndex } });
+const answer = (revision = 1, questionId = "1", selectedIndex = 0): RecruitmentOperation => ({ kind: "answer", input: { assignmentId: ID, revision, questionId, selectedIndex } });
 const submit = (revision = 1): RecruitmentOperation => ({ kind: "submit", input: { assignmentId: ID, revision } });
 
 /** A deterministic test double: serial callbacks and rollback-on-throw model the
  * service contract only. It is NOT evidence of MySQL isolation or row locking. */
-function fakeTransactionalStore(initial = invitation()) {
+function fakeTransactionalStore(initial = invitation(), beforeSourceRead?: () => void) {
   let durable = structuredClone(initial);
   const assessment = form();
+  const sources = assessment.questions.map(q => ({ id: Number(q.id), bankKey: "class2-water", reviewStatus: "approved" }));
   const events: string[] = [];
   const writes: { table: string; fields: Record<string, unknown>; predicate: unknown }[] = [];
   const reads: { table: string; predicate: unknown; locked: boolean; tx: boolean }[] = [];
@@ -48,7 +49,7 @@ function fakeTransactionalStore(initial = invitation()) {
           if (tableName === "organizations") {
             if (!transactional || !read.locked) throw new Error("Organization must be SHARE locked in transaction");
             events.push("org-share");
-            return [{ id: 7, name: "Synthetic utility" }];
+            return [{ id: 7, name: "Synthetic utility", province: "ontario", tier: "all-access" }];
           }
           if (tableName === "recruitment_assignments") {
             const { params } = new MySqlDialect().sqlToQuery(predicate as never);
@@ -56,12 +57,19 @@ function fakeTransactionalStore(initial = invitation()) {
               && (params.length < 3 || row().orgId === params[2]) ? [structuredClone(row())] : [];
           }
           if (tableName === "recruitment_assessments") return [structuredClone(assessment)];
+          if (tableName === "questions") {
+            if (!transactional || !read.locked) throw new Error("Source governance must be SHARE locked in transaction");
+            beforeSourceRead?.();
+            const { params } = new MySqlDialect().sqlToQuery(predicate as never);
+            return sources.filter(source => source.id === params[0] && source.bankKey === params[1]
+              && !params.slice(2).includes(source.reviewStatus)).map(source => ({ id: source.id }));
+          }
           throw new Error(`Unexpected non-recruitment read: ${tableName}`);
         };
         const builder = {
           limit: (_limit: number) => builder,
           for: (mode: string) => {
-            const expected = tableName === "organizations" ? "share" : "update";
+            const expected = ["organizations", "questions"].includes(tableName) ? "share" : "update";
             if (!transactional || mode !== expected) throw new Error("Unexpected lock");
             read.locked = true; return builder;
           },
@@ -101,7 +109,7 @@ function fakeTransactionalStore(initial = invitation()) {
     }),
   };
   mocks.getDb.mockResolvedValue(db);
-  return { db, assessment, events, writes, reads, row: () => structuredClone(durable) };
+  return { db, assessment, sources, events, writes, reads, row: () => structuredClone(durable) };
 }
 
 beforeEach(() => {
@@ -170,24 +178,24 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     expect(store.writes).toHaveLength(1);
   });
   it("repeated submit is idempotent and writes no learner progress or practice attempts", async () => {
-    const store = fakeTransactionalStore({ ...started(), answers: { q1: 0 } });
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 0 } });
     const first = await operateRecruitmentCandidate(context, ID, submit(store.row().revision));
     vi.setSystemTime(NOW + 60_000);
     const second = await operateRecruitmentCandidate(context, ID, submit(1));
     expect(second).toMatchObject({ status: "submitted", submittedAtMs: first.submittedAtMs, revision: first.revision, answers: {} });
-    expect(store.row().answers).toEqual({ q1: 0 });
+    expect(store.row().answers).toEqual({ "1": 0 });
     expect(store.writes).toHaveLength(1);
     expect(store.writes.map(write => write.table)).toEqual(["recruitment_assignments"]);
     expect(JSON.stringify(second)).not.toContain('"score"'); expect(JSON.stringify(second)).not.toContain('"correctIndex"');
   });
   it("stale revision throws before writes and the fake transaction rolls back unchanged", async () => {
-    const store = fakeTransactionalStore({ ...started(), answers: { q1: 1 }, revision: 3 });
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 1 }, revision: 3 });
     const before = store.row();
     await expect(operateRecruitmentCandidate(context, ID, answer(1))).rejects.toMatchObject({ code: "CONFLICT" });
     expect(store.row()).toEqual(before); expect(store.writes).toEqual([]); expect(store.events.at(-1)).toBe("rollback");
   });
   it("stale first submit rolls back without finalizing the newer durable answers", async () => {
-    const store = fakeTransactionalStore({ ...started(), answers: { q1: 1 }, revision: 3 }), before = store.row();
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 1 }, revision: 3 }), before = store.row();
     await expect(operateRecruitmentCandidate(context, ID, submit(1))).rejects.toMatchObject({ code: "CONFLICT" });
     expect(store.row()).toEqual(before); expect(store.writes).toEqual([]); expect(store.events.at(-1)).toBe("rollback");
   });
@@ -195,13 +203,13 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     const store = fakeTransactionalStore(started());
     const outcomes = await Promise.allSettled([operateRecruitmentCandidate(context, ID, answer(1)), operateRecruitmentCandidate(context, ID, submit(1))]);
     expect(outcomes[0].status).toBe("fulfilled"); expect(outcomes[1].status).toBe("rejected");
-    expect(store.row()).toMatchObject({ status: "active", revision: 2, answers: { q1: 0 }, submittedAtMs: null });
+    expect(store.row()).toMatchObject({ status: "active", revision: 2, answers: { "1": 0 }, submittedAtMs: null });
     const view = await operateRecruitmentCandidate(context, ID, submit(2));
     expect(view).toMatchObject({ status: "submitted", revision: 3, answers: {} });
-    expect(store.row().answers).toEqual({ q1: 0 });
+    expect(store.row().answers).toEqual({ "1": 0 });
   });
   it("stale submission at the deadline commits timeout rather than rolling it back", async () => {
-    const store = fakeTransactionalStore({ ...started(), answers: { q1: 0 }, revision: 3 });
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 0 }, revision: 3 });
     vi.setSystemTime(NOW + 300_000);
     expect(await operateRecruitmentCandidate(context, ID, submit(1))).toMatchObject({ status: "timed_out", submittedAtMs: NOW + 300_000, revision: 4 });
     expect(store.row()).toMatchObject({ status: "timed_out", score: { correct: 1 } });
@@ -209,27 +217,27 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
   });
   it("serial fake competing answers with the same revision accept one and refuse stale overwrite", async () => {
     const store = fakeTransactionalStore(started());
-    const outcomes = await Promise.allSettled([operateRecruitmentCandidate(context, ID, answer(1, "q1", 0)), operateRecruitmentCandidate(context, ID, answer(1, "q1", 1))]);
+    const outcomes = await Promise.allSettled([operateRecruitmentCandidate(context, ID, answer(1, "1", 0)), operateRecruitmentCandidate(context, ID, answer(1, "1", 1))]);
     expect(outcomes.filter(item => item.status === "fulfilled")).toHaveLength(1);
     expect(outcomes.filter(item => item.status === "rejected")).toHaveLength(1);
-    expect(store.row()).toMatchObject({ revision: 2, answers: { q1: 0 } }); expect(store.writes).toHaveLength(1);
+    expect(store.row()).toMatchObject({ revision: 2, answers: { "1": 0 } }); expect(store.writes).toHaveLength(1);
   });
   it("late answer finalization commits timeout and does not throw a rollback-causing error", async () => {
-    const store = fakeTransactionalStore({ ...started(), answers: { q1: 0, q2: 1 } });
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 0, "2": 1 } });
     vi.setSystemTime(NOW + 300_000);
-    const result = await operateRecruitmentCandidate(context, ID, answer(1, "q2", 0));
+    const result = await operateRecruitmentCandidate(context, ID, answer(1, "2", 0));
     expect(result).toMatchObject({ status: "timed_out", answers: {}, submittedAtMs: NOW + 300_000, revision: 2, questions: [] });
-    expect(store.row()).toMatchObject({ status: "timed_out", answers: { q1: 0, q2: 1 }, score: { correct: 1, total: 5, answered: 2 } });
+    expect(store.row()).toMatchObject({ status: "timed_out", answers: { "1": 0, "2": 1 }, score: { correct: 1, total: 5, answered: 2 } });
     expect(store.events.at(-1)).toBe("commit"); expect(store.events).not.toContain("rollback");
   });
   it("computes acceptance time after permission checks rather than before the lock wait", async () => {
-    const store = fakeTransactionalStore({ ...started(), answers: { q1: 1 } });
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 1 } });
     vi.setSystemTime(NOW + 299_999);
     mocks.assertCandidate.mockResolvedValueOnce({ name: "Synthetic utility" }).mockImplementationOnce(async () => {
       vi.setSystemTime(NOW + 300_000); return { name: "Synthetic utility" };
     });
     const result = await operateRecruitmentCandidate(context, ID, answer());
-    expect(result.status).toBe("timed_out"); expect(store.row().answers).toEqual({ q1: 1 });
+    expect(result.status).toBe("timed_out"); expect(store.row().answers).toEqual({ "1": 1 });
   });
   it("candidateGet persists lazy timeout and repeated reads do not increment revision again", async () => {
     const store = fakeTransactionalStore(started());
@@ -240,17 +248,62 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     expect(store.row().submittedAtMs).toBe(NOW + 300_000);
   });
   it("revoked assignment never admits a start/save/submit mutation or snapshot disclosure", async () => {
-    const store = fakeTransactionalStore({ ...started(), status: "revoked", answers: { q1: 0 } });
+    const store = fakeTransactionalStore({ ...started(), status: "revoked", answers: { "1": 0 } });
     for (const operation of [start, answer(), submit(store.row().revision)]) {
       const view = await operateRecruitmentCandidate(context, ID, operation);
       expect(view.status).toBe("revoked"); expect(view.questions).toEqual([]); expect(view.answers).toEqual({});
     }
-    expect(store.writes).toEqual([]); expect(store.row().answers).toEqual({ q1: 0 });
+    expect(store.writes).toEqual([]); expect(store.row().answers).toEqual({ "1": 0 });
   });
   it("pre-start read is locked but neither writes nor exposes questions or answers", async () => {
-    const store = fakeTransactionalStore({ ...invitation(), answers: { q1: 0 } });
+    const store = fakeTransactionalStore({ ...invitation(), answers: { "1": 0 } });
     const view = await operateRecruitmentCandidate(context, ID, { kind: "get" });
     expect(view).toMatchObject({ status: "invited", questions: [], answers: {} }); expect(store.writes).toEqual([]);
+  });
+  it.each(["get", "start", "answer", "submit"] as const)("fails the entire %s form for missing, other-bank, in-review or rejected current sources", async kind => {
+    const operation = kind === "get" ? { kind: "get" } as const : kind === "start" ? start : kind === "answer" ? answer() : submit();
+    for (const unavailable of ["missing", "other-bank", "in_review", "rejected"]) {
+      const store = fakeTransactionalStore(kind === "start" ? invitation() : { ...started(), answers: { "1": 0 } });
+      const before = store.row(), frozen = structuredClone(store.assessment);
+      if (unavailable === "missing") store.sources.splice(2, 1);
+      else if (unavailable === "other-bank") store.sources[2].bankKey = "class2-water-dist";
+      else store.sources[2].reviewStatus = unavailable;
+      await expect(operateRecruitmentCandidate(context, ID, operation)).rejects.toMatchObject({
+        code: "CONFLICT", message: expect.stringMatching(/manager.*replacement assessment form/i),
+      });
+      expect(store.row()).toEqual(before); expect(store.assessment).toEqual(frozen); expect(store.writes).toEqual([]);
+      expect(store.reads.filter(read => read.table === "questions").map(read => new MySqlDialect().sqlToQuery(read.predicate as never).params[0])).toEqual([1, 2, 3]);
+      expect(store.events.at(-1)).toBe("rollback");
+    }
+  });
+  it("returns frozen content unchanged for currently visible legacy sources", async () => {
+    const store = fakeTransactionalStore(); store.sources[2].reviewStatus = "unreviewed";
+    const frozen = structuredClone(store.assessment.questions);
+    const view = await operateRecruitmentCandidate(context, ID, start);
+    expect(view.questions.map(q => q.prompt)).toEqual(frozen.map(q => q.prompt));
+    expect(store.assessment.questions).toEqual(frozen);
+  });
+  it.each(["submitted", "timed_out", "expired", "revoked"] as const)("never revalidates hidden sources or changes retained %s evidence on terminal get/submit", async status => {
+    const store = fakeTransactionalStore({ ...started(), status, answers: { "1": 0 }, submittedAtMs: NOW,
+      score: { correct: 1 } as RecruitmentAssignmentRow["score"] });
+    store.sources.splice(0); const before = store.row();
+    for (const operation of [{ kind: "get" } as const, submit()]) {
+      const view = await operateRecruitmentCandidate(context, ID, operation);
+      expect(view).toMatchObject({ status, questions: [], answers: {} });
+    }
+    expect(store.row()).toEqual(before); expect(store.writes).toEqual([]);
+    expect(store.reads.some(read => read.table === "questions")).toBe(false);
+  });
+  it("captures acceptance and rechecks seat terms after governance waits, never accepting a late choice", async () => {
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 1 } }, () => vi.setSystemTime(NOW + 300_000));
+    vi.setSystemTime(NOW + 299_999);
+    mocks.assertCandidate.mockImplementation(async (_ctx, _db, _assignment, _key, options) => {
+      if (options?.lock) expect(Date.now()).toBe(NOW + 300_000);
+      return { id: 7, name: "Synthetic utility" };
+    });
+    const result = await operateRecruitmentCandidate(context, ID, answer());
+    expect(result.status).toBe("timed_out"); expect(store.row().answers).toEqual({ "1": 1 });
+    expect(store.row().submittedAtMs).toBe(NOW + 300_000); expect(store.events.at(-1)).toBe("commit");
   });
   it("assessment lookup is explicitly scoped to the assignment's organization", async () => {
     const store = fakeTransactionalStore();

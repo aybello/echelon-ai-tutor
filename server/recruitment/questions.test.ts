@@ -1,7 +1,7 @@
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import type { SQL } from "drizzle-orm";
 import { describe, expect, it, vi } from "vitest";
-import { assertRecruitmentSnapshot, loadRecruitmentPool, usableRecruitmentQuestion, type RecruitmentBankRow } from "./questions";
+import { assertRecruitmentSnapshot, assertRecruitmentSourcesVisible, loadRecruitmentPool, usableRecruitmentQuestion, type RecruitmentBankRow } from "./questions";
 import type { RecruitmentReadDb } from "./types";
 import type { RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 
@@ -73,5 +73,49 @@ describe("recruitment usable question pool", () => {
     } catch (error) {
       expect(error).toMatchObject({ code: "INTERNAL_SERVER_ERROR", message: "Assessment content is unavailable. Contact the hiring team." });
     }
+  });
+});
+
+describe("current governed frozen source validation", () => {
+  function sourcesDb(unavailableId?: number) {
+    const reads: { params: unknown[]; sql: string; lock?: string }[] = [];
+    const db = { select: vi.fn(() => ({ from: () => ({ where: (filter: SQL) => {
+      const query = new MySqlDialect().sqlToQuery(filter), read = { ...query, lock: undefined as string | undefined };
+      reads.push(read);
+      return { limit: () => ({ for: async (lock: string) => {
+        read.lock = lock;
+        return query.params[0] === unavailableId ? [] : [{ id: query.params[0] }];
+      } }) };
+    } }) })) };
+    return { db: db as unknown as RecruitmentReadDb, reads };
+  }
+
+  it("locks exact authoritative IDs in numeric order with bank and governed predicates, not replacement content", async () => {
+    const frozen = [10, 2, 9, 1, 11].map(id => ({ ...snapshot[0], id: String(id) })), before = structuredClone(frozen);
+    const { db, reads } = sourcesDb();
+    await assertRecruitmentSourcesVisible(db, "synthetic-bank", frozen);
+    expect(reads.map(read => read.params[0])).toEqual([1, 2, 9, 10, 11]);
+    for (const read of reads) {
+      expect(read.lock).toBe("share");
+      expect(read.params.slice(1)).toEqual(["synthetic-bank", "in_review", "rejected"]);
+      expect(read.sql).toContain("`questions`.`id` = ?");
+      expect(read.sql).toContain("`questions`.`bankKey` = ?");
+      expect(read.sql).toContain("`questions`.`reviewStatus` not in");
+    }
+    expect(frozen).toEqual(before);
+  });
+
+  it("fails the whole frozen form on any unavailable source rather than shrinking or resampling", async () => {
+    const before = structuredClone(snapshot), { db, reads } = sourcesDb(3);
+    await expect(assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot)).rejects.toMatchObject({
+      code: "CONFLICT", message: expect.stringMatching(/manager.*replacement assessment form/i),
+    });
+    expect(reads.map(read => read.params[0])).toEqual([1, 2, 3]); expect(snapshot).toEqual(before);
+  });
+
+  it.each(["q1", "01", "1e0", "0", "-1", "1.5", "9007199254740992"])("rejects non-authoritative ID %s before any question lookup", async id => {
+    const { db, reads } = sourcesDb();
+    await expect(assertRecruitmentSourcesVisible(db, "synthetic-bank", [{ ...snapshot[0], id }, ...snapshot.slice(1)])).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(reads).toEqual([]);
   });
 });

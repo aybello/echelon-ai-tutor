@@ -159,11 +159,12 @@ export async function listRecruitmentAssessments(ctx: TrpcContext, orgId: number
   const db = await recruitmentDb();
   return db.transaction(async tx => {
     const currentOrg = await lockReportingOrganization(tx, org.id);
+    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     const definitions = await tx.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.orgId, org.id))
       .orderBy(desc(recruitmentAssessments.createdAtMs), recruitmentAssessments.id);
-    // Common reporting lock order: org SHARE -> assignments by ID UPDATE -> manager SHARE.
+    // Common reporting order: org SHARE -> manager SHARE -> assignments by ID UPDATE.
+    // Authority precedes all private reads, including missing/nonowned branches.
     const assignments = definitions.length ? await lockReportingAssignments(tx, org.id) : [];
-    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     const nowMs = Date.now(); // Only after every lock and authorization wait.
     const summaries: RecruitmentDefinitionSummary[] = [];
     for (const definition of definitions) {
@@ -181,9 +182,9 @@ export async function recruitmentResults(ctx: TrpcContext, orgId: number, assess
   const db = await recruitmentDb();
   return db.transaction(async tx => {
     const currentOrg = await lockReportingOrganization(tx, org.id);
+    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     const assessment = await readRecruitmentAssessment(tx, assessmentId, org.id);
     const rows = await lockReportingAssignments(tx, org.id, assessment.id);
-    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     const nowMs = Date.now();
     const finalized = await finalizeReportingAssignments(tx, assessment, rows, nowMs);
     // Preserve the existing display order independently of deterministic lock order.
@@ -232,10 +233,10 @@ export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: numbe
   const db = await recruitmentDb();
   return db.transaction(async tx => {
     const currentOrg = await lockReportingOrganization(tx, org.id);
+    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     const [assignment] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.orgId, org.id))).limit(1).for("update");
     if (!assignment) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment invitation not found." });
-    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     if (assignment.status === "revoked") return { success: true };
     const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, org.id);
     const nowMs = Date.now();

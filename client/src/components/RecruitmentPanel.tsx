@@ -26,6 +26,12 @@ import {
   recruitmentSelect,
 } from "@/components/recruitment/RecruitmentResults";
 
+type InvitationOutcome = {
+  assessmentId: string;
+  assignmentId: string;
+  message: string;
+};
+
 function useLifetime() {
   const live = useRef(true);
   useEffect(() => {
@@ -103,6 +109,10 @@ function RecruitmentPanelBody({
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // This parent survives ordinary refetches but is keyed by privacy epoch.
+  // Outcomes stay hidden until fresh authorization and vanish on session reset.
+  const [invitationOutcome, setInvitationOutcome] =
+    useState<InvitationOutcome | null>(null);
   const authorized =
     access.isCurrent() &&
     catalogFresh &&
@@ -508,6 +518,14 @@ function RecruitmentPanelBody({
           assessmentId={selectedId}
           catalog={catalog}
           access={access}
+          invitationOutcome={
+            invitationOutcome?.assessmentId === selectedId
+              ? invitationOutcome
+              : undefined
+          }
+          onInvitationOutcome={outcome => {
+            if (isCurrent()) setInvitationOutcome(outcome);
+          }}
         />
       ) : (
         <p className="text-sm text-slate-500">
@@ -523,11 +541,15 @@ function RecruitmentDetail({
   assessmentId,
   catalog,
   access,
+  invitationOutcome,
+  onInvitationOutcome,
 }: {
   orgId: number;
   assessmentId: string;
   catalog?: RecruitmentCatalog;
   access: RecruitmentManagerAccess;
+  invitationOutcome?: InvitationOutcome;
+  onInvitationOutcome: (outcome: InvitationOutcome | null) => void;
 }) {
   const live = useLifetime();
   const isCurrent = () => live.current && access.isCurrent();
@@ -544,8 +566,17 @@ function RecruitmentDetail({
   const revoke = trpc.recruitment.revoke.useMutation();
   const [memberId, setMemberId] = useState("");
   const [error, setError] = useState("");
-  const [link, setLink] = useState("");
-  const [copyMessage, setCopyMessage] = useState("");
+  const [link, setLink] = useState(() =>
+    invitationOutcome
+      ? new URL(
+          `/recruitment/${encodeURIComponent(invitationOutcome.assignmentId)}`,
+          window.location.origin
+        ).href
+      : ""
+  );
+  const [copyMessage, setCopyMessage] = useState(
+    invitationOutcome?.message ?? ""
+  );
   const [copying, setCopying] = useState(false);
   const [revokeTarget, setRevokeTarget] = useState<RecruitmentResult | null>(
     null
@@ -571,17 +602,26 @@ function RecruitmentDetail({
     setLink(href);
     setCopyMessage("");
     setCopying(true);
+    onInvitationOutcome({
+      assessmentId,
+      assignmentId,
+      message: "Select and copy the invitation link below. No email was sent.",
+    });
     try {
       await navigator.clipboard.writeText(href);
-      if (isCurrent())
-        setCopyMessage(
-          "Link copied. Share it directly with the invited candidate. No email was sent."
-        );
+      if (isCurrent()) {
+        const message =
+          "Link copied. Share it directly with the invited candidate. No email was sent.";
+        setCopyMessage(message);
+        onInvitationOutcome({ assessmentId, assignmentId, message });
+      }
     } catch {
-      if (isCurrent())
-        setCopyMessage(
-          "Clipboard access was unavailable. Select and copy the link below. No email was sent."
-        );
+      if (isCurrent()) {
+        const message =
+          "Clipboard access was unavailable. Select and copy the link below. No email was sent.";
+        setCopyMessage(message);
+        onInvitationOutcome({ assessmentId, assignmentId, message });
+      }
     } finally {
       if (isCurrent()) setCopying(false);
     }
@@ -609,6 +649,7 @@ function RecruitmentDetail({
     setError("");
     setLink("");
     setCopyMessage("");
+    onInvitationOutcome(null);
     try {
       const data = await invite.mutateAsync({
         orgId,
@@ -616,9 +657,10 @@ function RecruitmentDetail({
         memberId: Number(memberId),
       });
       if (!isCurrent()) return;
-      refreshSubmittedScope();
-      setMemberId("");
       await copyLink(data.assignmentId);
+      if (!isCurrent()) return;
+      setMemberId("");
+      refreshSubmittedScope();
     } catch (failure) {
       if (!isCurrent()) return;
       if (accessDenied(failure)) {
@@ -641,6 +683,7 @@ function RecruitmentDetail({
     try {
       await revoke.mutateAsync({ orgId, assignmentId });
       if (!isCurrent()) return;
+      onInvitationOutcome(null);
       refreshSubmittedScope();
       setRevokeTarget(null);
       setConfirmed(false);

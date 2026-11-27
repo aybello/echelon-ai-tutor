@@ -4,7 +4,8 @@ import { organizations, recruitmentAssessments, recruitmentAssignments, type Rec
 import type { RecruitmentCandidateView } from "../../shared/recruitmentAssessment";
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
-import { assertRecruitmentCandidate, verifiedRecruitmentEmail } from "./access";
+import { assertRecruitmentCandidate, recruitmentCourseForOrg, verifiedRecruitmentEmail } from "./access";
+import { assertRecruitmentSourcesVisible } from "./questions";
 import { recruitmentCandidateView, transitionRecruitment } from "./state";
 import type { RecruitmentDb, RecruitmentOperation, RecruitmentReadDb, RecruitmentTransaction } from "./types";
 
@@ -49,7 +50,9 @@ export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId
   const definition = await readRecruitmentAssessment(db, preflight.assessmentId, preflight.orgId);
   await assertRecruitmentCandidate(ctx, db, preflight, definition.courseKey);
   return db.transaction(async tx => {
-    // Global order for recruitment: org -> assignment -> member -> subscription.
+    // Candidate order: org -> assignment -> source IDs -> member -> subscription.
+    // Manager reporting: org -> manager SHARE -> assignments by ID UPDATE.
+    // Shared member locks are compatible; all lifecycle writers take org first.
     // Org SHARE serializes Annual lifecycle writes without serializing candidates.
     const [lockedOrg] = await tx.select().from(organizations).where(eq(organizations.id, preflight.orgId)).limit(1).for("share");
     if (!lockedOrg) throw new TRPCError({ code: "FORBIDDEN", message: "Team unavailable." });
@@ -61,6 +64,12 @@ export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId
       throw new TRPCError({ code: "CONFLICT", message: "The invitation scope changed. Reload the assessment." });
     }
     const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, assignment.orgId);
+    if (assignment.status === "invited" || assignment.status === "active") {
+      const course = recruitmentCourseForOrg(lockedOrg, assessment.courseKey);
+      await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions);
+    }
+    // Seat/subscription term checks run AFTER governance waits as well. Terminal
+    // views have no source delivery and retain the original completion evidence.
     const org = await assertRecruitmentCandidate(ctx, tx, assignment, assessment.courseKey, { centralPreflightDone: true, lock: true });
     // After the lock wait AND permission queries. The client's clock never controls acceptance.
     const nowMs = Date.now();

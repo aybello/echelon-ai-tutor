@@ -41,6 +41,29 @@ export async function loadRecruitmentPools(db: RecruitmentReadDb, bankKeys: stri
   return pools;
 }
 
+/** A snapshot freezes content, never permission to deliver a hidden source.
+ * Lock exact source IDs one at a time in numeric order (not SQL scan order).
+ * Current bank + governance predicates are reevaluated after UPDATE-lock waits
+ * under the caller's READ COMMITTED transaction; SHARE lasts through acceptance.
+ * Do not fetch replacement content or alter historical scored evidence. */
+export async function assertRecruitmentSourcesVisible(db: RecruitmentReadDb, bankKey: string,
+  snapshot: RecruitmentQuestion[]): Promise<void> {
+  assertRecruitmentSnapshot(snapshot);
+  const replacementNeeded = () => new TRPCError({ code: "CONFLICT",
+    message: "This assessment form is unavailable. The hiring manager needs to create a replacement assessment form." });
+  const ids = snapshot.map(q => {
+    const id = Number(q.id);
+    if (!/^[1-9]\d*$/.test(q.id) || !Number.isSafeInteger(id) || id <= 0) throw replacementNeeded();
+    return id;
+  }).sort((a, b) => a - b);
+  for (const id of ids) {
+    const [source] = await db.select({ id: questions.id }).from(questions)
+      .where(and(eq(questions.id, id), eq(questions.bankKey, bankKey), learnerVisibleQuestionFilter()))
+      .limit(1).for("share");
+    if (!source || source.id !== id) throw replacementNeeded();
+  }
+}
+
 export function assertRecruitmentSnapshot(value: RecruitmentQuestion[]): RecruitmentQuestion[] {
   if (!Array.isArray(value) || value.length < 5 || value.length > 100
     || value.some(q => !q || typeof q !== "object") || !validRecruitmentQuestions(value)) {

@@ -40,6 +40,9 @@ import {
 } from "@shared/recruitmentAssessment";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const DEADLINE_RECHECK_MIN_MS = 5000;
+const DEADLINE_RECHECK_MAX_MS = 30000;
+const DEADLINE_RECHECK_RETRIES = 3;
 const card =
   "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8";
 const isTerminal = (status: RecruitmentCandidateView["status"]) =>
@@ -214,13 +217,20 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const expectedRevision = useRef<number | null>(null);
   const entryConsumed = useRef(false);
   const [sessionRefreshPending, setSessionRefreshPending] = useState(false);
-  const deadlineChecked = useRef<number | null>(null);
+  const deadlineRecheck = useRef<{
+    deadlineMs: number;
+    afterMs: number;
+    failures: number;
+  } | null>(null);
   const questionHeading = useRef<HTMLHeadingElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     live.current = true;
     return () => {
+      // Invalidate captured handlers synchronously during teardown, including
+      // effect replay. A request already sent cannot be recalled; ignore its result.
       live.current = false;
+      sessionEpoch.current += 1;
     };
   }, []);
   useEffect(() => {
@@ -245,7 +255,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setSaveState("idle");
     expectedRevision.current = null;
     setSubmitOpen(false);
-    deadlineChecked.current = null;
+    deadlineRecheck.current = null;
     // Remove only this assignment, never another candidate's query cache.
     void utils.recruitment.candidateGet.cancel({ assignmentId });
     queryClient.removeQueries({
@@ -279,7 +289,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setSubmitOpen(open && expectedRevision.current !== null);
   }
   const mergeServerView = useCallback(
-    (next: RecruitmentCandidateView) => {
+    (next: RecruitmentCandidateView, requestCompleted = false) => {
       if (!live.current || next.assignmentId !== assignmentId) return;
       const current = viewRef.current;
       if (
@@ -303,10 +313,24 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       const monotonicMs = performance.now();
       clock.current.merge(next, monotonicMs);
       if (
-        !isTerminal(next.status) &&
-        clock.current.now(monotonicMs) < next.deadlineMs
-      )
-        deadlineChecked.current = null;
+        isTerminal(next.status) ||
+        deadlineRecheck.current?.deadlineMs !== next.deadlineMs
+      ) {
+        deadlineRecheck.current = null;
+      } else if (requestCompleted && deadlineRecheck.current) {
+        // Do not use the conservative display clock to schedule another read.
+        // Nor may a repeated cache merge postpone an already scheduled check.
+        deadlineRecheck.current = {
+          deadlineMs: next.deadlineMs,
+          afterMs:
+            monotonicMs +
+            Math.max(
+              DEADLINE_RECHECK_MIN_MS,
+              next.deadlineMs - next.serverNowMs
+            ),
+          failures: 0,
+        };
+      }
       viewRef.current = next;
       setView(next);
       setNow(monotonicMs);
@@ -351,7 +375,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     requestStartedMs: number
   ) {
     clock.current.record(next, requestStartedMs, performance.now());
-    mergeServerView(next);
+    mergeServerView(next, true);
     // The exact assignment cache receives only the server candidate DTO.
     utils.recruitment.candidateGet.setData({ assignmentId }, next);
   }
@@ -360,6 +384,13 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       if (operation.current || !live.current || !navigator.onLine) return;
       const epoch = sessionEpoch.current;
       operation.current = true;
+      if (reason === "deadline" && viewRef.current) {
+        deadlineRecheck.current = {
+          deadlineMs: viewRef.current.deadlineMs,
+          afterMs: Infinity,
+          failures: deadlineRecheck.current?.failures ?? 0,
+        };
+      }
       setBusy(true);
       setError("");
       try {
@@ -373,7 +404,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         if (!live.current || epoch !== sessionEpoch.current) return;
         entryConsumed.current = true;
         clock.current.record(next, requestStartedMs, performance.now());
-        mergeServerView(next);
+        mergeServerView(next, true);
         setNeedsRefresh(false);
         setAuthRequired(false);
         setForbidden(false);
@@ -389,6 +420,22 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       } catch (failure) {
         if (!live.current || epoch !== sessionEpoch.current) return;
         if (handleAccessFailure(failure)) return;
+        if (reason === "deadline" && deadlineRecheck.current) {
+          const failures = deadlineRecheck.current.failures + 1;
+          deadlineRecheck.current = {
+            ...deadlineRecheck.current,
+            failures,
+            // Exhausted automatic retries leave the explicit refresh available.
+            afterMs:
+              failures <= DEADLINE_RECHECK_RETRIES
+                ? performance.now() +
+                  Math.min(
+                    DEADLINE_RECHECK_MAX_MS,
+                    DEADLINE_RECHECK_MIN_MS * 2 ** (failures - 1)
+                  )
+                : Infinity,
+          };
+        }
         setError(errorMessage(failure));
         setNeedsRefresh(true);
       } finally {
@@ -463,15 +510,16 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       busy ||
       operation.current ||
       query.isFetching ||
-      deadlineChecked.current === view.deadlineMs
+      (deadlineRecheck.current !== null &&
+        now < deadlineRecheck.current.afterMs)
     )
       return;
-    deadlineChecked.current = view.deadlineMs;
     // Never score from a browser timer. candidateGet applies the server deadline.
     void refreshServer("deadline");
   }, [
     view,
     displayDeadlineReached,
+    now,
     online,
     busy,
     query.isFetching,
@@ -480,6 +528,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
 
   async function begin() {
     if (
+      !live.current ||
       !accepted ||
       operation.current ||
       query.isFetching ||
@@ -496,7 +545,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setMessage("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
-      if (epoch !== sessionEpoch.current) return;
+      if (!live.current || epoch !== sessionEpoch.current) return;
       const requestStartedMs = performance.now();
       const next = await start.mutateAsync({
         assignmentId,
@@ -524,6 +573,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   ) {
     const current = viewRef.current;
     if (
+      !live.current ||
       !current ||
       current.status !== "active" ||
       operation.current ||
@@ -540,7 +590,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setMessage("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
-      if (epoch !== sessionEpoch.current) return;
+      if (!live.current || epoch !== sessionEpoch.current) return;
       const requestStartedMs = performance.now();
       const next = await save.mutateAsync({
         assignmentId,
@@ -592,6 +642,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   async function finish() {
     const current = viewRef.current;
     if (
+      !live.current ||
       operation.current ||
       query.isFetching ||
       !online ||
@@ -611,7 +662,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
       // The server verifies exactly the revision reviewed in this confirmation.
-      if (epoch !== sessionEpoch.current) return;
+      if (!live.current || epoch !== sessionEpoch.current) return;
       const requestStartedMs = performance.now();
       const next = await submit.mutateAsync({ assignmentId, revision });
       if (live.current && epoch === sessionEpoch.current) {

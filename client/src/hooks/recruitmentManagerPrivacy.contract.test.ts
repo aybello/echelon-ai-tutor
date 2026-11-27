@@ -501,6 +501,52 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     expect(text(tree)).not.toContain("Candidate invitation link");
     expect(text(tree)).not.toContain(result.candidateEmail);
   });
+  it.each(["allowed", "denied"])(
+    "preserves the %s clipboard outcome through actual same-epoch query refetch and clears it on session reset",
+    async mode => {
+      await readyDetail();
+      input("recruitment-candidate", "31");
+      if (mode === "denied")
+        h.clipboard.mockRejectedValue(new Error("Synthetic clipboard denial"));
+      const refresh = deferred();
+      h.catalog.mockReturnValue(refresh.promise);
+      h.invalidates.mockImplementation((scope: any) => {
+        const names = scope.assessmentId ? ["results"] : ["catalog", "list"];
+        for (const name of names) {
+          const input =
+            name === "results" ? { orgId, assessmentId } : { orgId };
+          const queryKey = key(name, input);
+          void h.client.invalidateQueries({ queryKey });
+          void h.client.fetchQuery({
+            queryKey,
+            queryFn: h[name as "catalog" | "list" | "results"],
+            staleTime: 0,
+          });
+        }
+      });
+      await find(
+        n => n.type === "form" && text(n).includes("Create invitation link")
+      ).props.onSubmit({ preventDefault: vi.fn() });
+      render();
+      expect(text(tree)).not.toContain("Candidate invitation link");
+      refresh.resolve(catalog);
+      await settle();
+      expect(find(n => n.props.id === "recruitment-link").props.value).toBe(
+        `https://synthetic.example.test/recruitment/${result.assignmentId}`
+      );
+      expect(text(tree)).toContain(
+        mode === "denied"
+          ? "Clipboard access was unavailable. Select and copy the link below."
+          : "Link copied. Share it directly with the invited candidate."
+      );
+      dispatch("focus");
+      render();
+      await settle();
+      expect(text(tree)).not.toContain("Candidate invitation link");
+      expect(text(tree)).not.toContain("Link copied.");
+      expect(text(tree)).not.toContain("Clipboard access was unavailable.");
+    }
+  );
   it("does not authorize a pending mount from manual private cache writes", async () => {
     const pending = deferred();
     h.catalog.mockReturnValue(pending.promise);

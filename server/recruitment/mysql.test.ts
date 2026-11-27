@@ -4,7 +4,7 @@ import { and, eq } from "drizzle-orm";
 import { getDb } from "../db";
 import { organizations, organizationMembers, subscriptions, questions, recruitmentAssessments, recruitmentAssignments } from "../../drizzle/schema";
 import { operateRecruitmentCandidate } from "./store";
-import { createRecruitmentAssessment, inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentResults } from "./service";
+import { createRecruitmentAssessment, inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentResults, revokeRecruitmentAssignment } from "./service";
 import { RECRUITMENT_CONSENT_VERSION, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import type { TrpcContext } from "../_core/context";
@@ -28,6 +28,9 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
   beforeAll(async () => {
     const value = await getDb(); if (!value) throw new Error("Disposable database unavailable"); db = value;
     const now = Date.now();
+    await db.insert(questions).values(snapshot.map(q => ({ id: Number(q.id), bankKey: "class2-water", questionNum: 50_000 + Number(q.id),
+      module: q.module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex,
+      explanation: "Synthetic source", reviewStatus: "approved" as const })));
     const ids = await db.insert(organizations).values({ name: "Synthetic Utility", province: "ontario", tier: "all-access", seatsTotal: 5, managerEmail: "manager@example.test", billingType: "invoice", status: "active", termStart: new Date(now - 86_400_000), termEnd: new Date(now + 86_400_000) }).$returningId(); orgId = ids[0].id;
     const members = await db.insert(organizationMembers).values({ orgId, email, name: "Synthetic Candidate", role: "operator", status: "assigned", courseKey: "class2-water", courseKeys: '["class2-water","class2-water-dist"]' }).$returningId(); memberId = members[0].id;
     await db.insert(subscriptions).values({ orgId, email, tier: "class2", province: "ontario", stripeSubscriptionId: `org-${orgId}-${email}-class2-water`, stripeCustomerId: "", status: "active", currentPeriodStart: new Date(now - 86_400_000), currentPeriodEnd: new Date(now + 86_400_000) });
@@ -223,7 +226,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     const manager = { ...ctx, studentEmail: "manager@example.test" };
     await db.insert(questions).values(Array.from({ length: 8 }, (_, n) => ({ bankKey: "class2-water", questionNum: 51_000 + n, module: n < 4 ? "Treatment" : "Safety", question: `Synthetic bank question ${n + 1}`, options: JSON.stringify(["A", "B", "C", "D"]), correctIndex: n % 4, explanation: "Synthetic explanation", reviewStatus: "approved" as const })));
     const catalog = await recruitmentCatalog(manager, orgId);
-    expect(catalog.courses.find(c => c.courseKey === "class2-water")?.modules.reduce((sum, m) => sum + m.count, 0)).toBe(8);
+    expect(catalog.courses.find(c => c.courseKey === "class2-water")?.modules.reduce((sum, m) => sum + m.count, 0)).toBe(13);
     expect(catalog.candidates.find(c => c.memberId === memberId)?.courseKeys).toContain("class2-water");
     const membersBefore = await db.select().from(organizationMembers), subsBefore = await db.select().from(subscriptions);
     const created = await createRecruitmentAssessment(manager, { orgId, title: "Synthetic Manager Flow", courseKey: "class2-water", modules: ["Treatment", "Safety"], questionCount: 5, timeLimitMinutes: null, expiresInDays: 7 });
@@ -266,5 +269,182 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     expect((await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: saved.revision } })).status).toBe("submitted");
     const manager = { ...ctx, studentEmail: "manager@example.test" };
     await expect(inviteRecruitmentCandidate(manager, orgId, (await read(id)).assessmentId, memberId)).rejects.toMatchObject({ code: "CONFLICT" });
+  });
+
+  it.each(["in_review", "rejected", "other bank", "missing"] as const)("rejects the whole frozen form when one source becomes %s, preserving saved attempts and snapshot", async change => {
+    const activeId = await fixture(), view = await start(activeId), invitedId = await fixture();
+    await operateRecruitmentCandidate(ctx, activeId, { kind: "answer", input: { assignmentId: activeId, questionId: "1", selectedIndex: 0, revision: view.revision } });
+    const activeBefore = await read(activeId), invitedBefore = await read(invitedId);
+    const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, activeBefore.assessmentId));
+    const [source] = await db.select().from(questions).where(eq(questions.id, 3));
+    try {
+      if (change === "missing") await db.delete(questions).where(eq(questions.id, 3));
+      else await db.update(questions).set(change === "other bank" ? { bankKey: "class2-water-dist" } : { reviewStatus: change }).where(eq(questions.id, 3));
+      const operations = [
+        operateRecruitmentCandidate(ctx, invitedId, { kind: "get" }), start(invitedId),
+        operateRecruitmentCandidate(ctx, activeId, { kind: "get" }),
+        operateRecruitmentCandidate(ctx, activeId, { kind: "answer", input: { assignmentId: activeId, questionId: "1", selectedIndex: 1, revision: activeBefore.revision } }),
+        operateRecruitmentCandidate(ctx, activeId, { kind: "submit", input: { assignmentId: activeId, revision: activeBefore.revision } }),
+      ];
+      const outcomes = await Promise.allSettled(operations);
+      expect(outcomes.every(outcome => outcome.status === "rejected")).toBe(true);
+      for (const outcome of outcomes) if (outcome.status === "rejected") expect(outcome.reason).toMatchObject({ code: "CONFLICT", message: expect.stringMatching(/manager.*replacement assessment form/i) });
+      expect(await read(activeId)).toEqual(activeBefore); expect(await read(invitedId)).toEqual(invitedBefore);
+      expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
+    } finally {
+      if (change === "missing") await db.insert(questions).values(source);
+      else await db.update(questions).set({ bankKey: source.bankKey, reviewStatus: source.reviewStatus }).where(eq(questions.id, 3));
+    }
+  });
+
+  it("reevaluates governed visibility after a real source UPDATE wait under READ COMMITTED", async () => {
+    const id = await fixture(), before = await read(id);
+    let release!: () => void, ready!: () => void;
+    const held = new Promise<void>(resolve => { release = resolve; }), locked = new Promise<void>(resolve => { ready = resolve; });
+    const governance = db.transaction(async tx => {
+      await tx.select().from(questions).where(eq(questions.id, 3)).for("update");
+      await tx.update(questions).set({ reviewStatus: "in_review" }).where(eq(questions.id, 3)); ready(); await held;
+    });
+    await locked;
+    let returned = false;
+    const pending = start(id).then(value => { returned = true; return value; }, error => { returned = true; throw error; });
+    const outcome = pending.then(() => "unexpected success", error => error.code);
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
+      release(); await governance; expect(await outcome).toBe("CONFLICT"); expect(await read(id)).toEqual(before);
+    } finally {
+      release(); await Promise.allSettled([governance, pending]);
+      await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3));
+    }
+  });
+
+  it("keeps SHARE governance locks through candidate commit, blocking subsequent hiding writes", async () => {
+    const id = await fixture();
+    let release!: () => void, ready!: () => void;
+    const held = new Promise<void>(resolve => { release = resolve; }), accepted = new Promise<void>(resolve => { ready = resolve; });
+    const realTransaction = db.transaction.bind(db);
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => realTransaction(async tx => {
+      const result = await callback(tx); ready(); await held; return result;
+    }, config));
+    const pending = start(id); let hidden = false;
+    let hide: Promise<unknown> | undefined;
+    try {
+      await accepted;
+      hide = db.update(questions).set({ reviewStatus: "rejected" }).where(eq(questions.id, 3)).then(result => { hidden = true; return result; });
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(hidden).toBe(false);
+      release(); expect((await pending).questions).toHaveLength(5); await hide;
+      await expect(operateRecruitmentCandidate(ctx, id, { kind: "get" })).rejects.toMatchObject({ code: "CONFLICT" });
+      expect((await read(id)).revision).toBe(1);
+    } finally {
+      release(); await Promise.allSettled([pending, ...(hide ? [hide] : [])]); transaction.mockRestore();
+      await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3));
+    }
+  });
+
+  it("captures answer acceptance only after real source governance waits cross the deadline", async () => {
+    const id = await fixture(), view = await start(id), before = await read(id);
+    const deadline = Date.now() + 60_000;
+    await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, id));
+    let release!: () => void, ready!: () => void;
+    const held = new Promise<void>(resolve => { release = resolve; }), locked = new Promise<void>(resolve => { ready = resolve; });
+    const governance = db.transaction(async tx => { await tx.select().from(questions).where(eq(questions.id, 3)).for("update"); ready(); await held; });
+    await locked;
+    const clock = vi.spyOn(Date, "now").mockReturnValue(deadline - 1);
+    let returned = false;
+    const pending = operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } }).then(value => { returned = true; return value; });
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
+      clock.mockReturnValue(deadline); release(); await governance;
+      expect((await pending).status).toBe("timed_out");
+      expect(await read(id)).toMatchObject({ status: "timed_out", answers: before.answers, submittedAtMs: deadline, score: { correct: 0 }, revision: view.revision + 1 });
+    } finally { release(); await Promise.allSettled([governance, pending]); clock.mockRestore(); }
+  });
+
+  it("retains submitted and durable timeout evidence after source rejection, without candidate redelivery", async () => {
+    const submittedId = await fixture(), submittedView = await start(submittedId), timedId = await fixture(), timedView = await start(timedId);
+    const saved = await operateRecruitmentCandidate(ctx, submittedId, { kind: "answer", input: { assignmentId: submittedId, questionId: "1", selectedIndex: 0, revision: submittedView.revision } });
+    await operateRecruitmentCandidate(ctx, submittedId, { kind: "submit", input: { assignmentId: submittedId, revision: saved.revision } });
+    await operateRecruitmentCandidate(ctx, timedId, { kind: "answer", input: { assignmentId: timedId, questionId: "1", selectedIndex: 0, revision: timedView.revision } });
+    const deadline = Date.now() - 1;
+    await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, timedId));
+    await db.update(questions).set({ reviewStatus: "rejected" }).where(eq(questions.id, 3));
+    const manager = { ...ctx, studentEmail: "manager@example.test" };
+    try {
+      // Reporting finalizes accepted durable answers independently of current source delivery permission.
+      for (const id of [submittedId, timedId]) {
+        const original = await read(id), report = await recruitmentResults(manager, orgId, original.assessmentId), durable = await read(id);
+        expect(report.results[0]).toMatchObject({ answers: { "1": 0 }, score: { correct: 1, answered: 1 }, questions: snapshot });
+        expect(report.assessment.completed).toBe(1);
+        const candidate = await operateRecruitmentCandidate(ctx, id, { kind: "get" }); expect(candidate.questions).toEqual([]);
+        await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: 0 } });
+        expect(await read(id)).toEqual(durable);
+        await revokeRecruitmentAssignment(manager, orgId, id);
+        expect((await recruitmentResults(manager, orgId, original.assessmentId)).results[0]).toMatchObject({ status: "revoked", answers: { "1": 0 }, score: { correct: 1 }, questions: snapshot });
+      }
+    } finally { await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3)); }
+  });
+
+  it.each(["empty list", "populated list", "missing result", "nonowned result", "owned result",
+    "missing revoke", "nonowned revoke", "already revoked", "active revoke"] as const)("gates revoked delegation before real private %s branches", async branch => {
+    const delegateEmail = "boundary-delegate@example.test", now = Date.now();
+    const testOrg = (await db.insert(organizations).values({ name: "Synthetic Boundary Team", province: "ontario", tier: "all-access", seatsTotal: 1,
+      managerEmail: "boundary-owner@example.test", billingType: "invoice", status: "active", termStart: new Date(now - 86_400_000), termEnd: new Date(now + 86_400_000) }).$returningId())[0].id;
+    const delegateId = (await db.insert(organizationMembers).values({ orgId: testOrg, email: delegateEmail, name: "Synthetic Boundary Delegate",
+      role: DELEGATED_MANAGER_ROLE, status: "assigned", courseKey: null, courseKeys: null }).$returningId())[0].id;
+    const foreignId = await fixture(), foreign = await read(foreignId), ownedFormId = randomUUID(), ownedId = randomUUID();
+    if (branch !== "empty list") {
+      await db.insert(recruitmentAssessments).values({ id: ownedFormId, orgId: testOrg, title: "Synthetic private definition", courseKey: "class2-water",
+        courseLabel: "Class II Water Treatment", modules: ["Treatment", "Safety"], questionCount: 5, timeLimitMinutes: 30,
+        questions: snapshot, creatorEmail: "boundary-owner@example.test", createdAtMs: now, expiresAtMs: now + 86_400_000 });
+      await db.insert(recruitmentAssignments).values({ id: ownedId, assessmentId: ownedFormId, orgId: testOrg, memberId: delegateId,
+        candidateEmail: "synthetic-boundary-candidate@example.test", creatorEmail: "boundary-owner@example.test", createdAtMs: now,
+        updatedAtMs: now, expiresAtMs: now + 86_400_000, answers: {}, status: branch === "already revoked" ? "revoked" : "invited" });
+    }
+    let release!: () => void, entered!: () => void;
+    const held = new Promise<void>(resolve => { release = resolve; }), atTransaction = new Promise<void>(resolve => { entered = resolve; });
+    const realTransaction = db.transaction.bind(db), privateTables: string[] = [];
+    // Pause only after genuine global manager preflight. Once resumed, proxy
+    // delegates every query to real MySQL while recording attempted tables.
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => (async () => {
+      entered(); await held;
+      return realTransaction(tx => callback(new Proxy(tx, { get(target, property) {
+        if (property === "select") return (...args: Parameters<typeof tx.select>) => {
+          const builder = target.select(...args), originalFrom = builder.from.bind(builder);
+          builder.from = ((table: Parameters<typeof originalFrom>[0]) => {
+            if (table === recruitmentAssessments) privateTables.push("definitions");
+            if (table === recruitmentAssignments) privateTables.push("assignments");
+            return originalFrom(table);
+          }) as typeof builder.from;
+          return builder;
+        };
+        return Reflect.get(target, property, target);
+      } })), config);
+    })());
+    const manager = { ...ctx, studentEmail: delegateEmail };
+    const targetForm = branch === "missing result" ? randomUUID() : branch === "nonowned result" ? foreign.assessmentId : ownedFormId;
+    const targetAssignment = branch === "missing revoke" ? randomUUID() : branch === "nonowned revoke" ? foreignId : ownedId;
+    const pending = branch.includes("list") ? listRecruitmentAssessments(manager, testOrg)
+      : branch.includes("result") ? recruitmentResults(manager, testOrg, targetForm) : revokeRecruitmentAssignment(manager, testOrg, targetAssignment);
+    const outcome = pending.then(() => "unexpected success", error => error.code);
+    try {
+      await Promise.race([atTransaction, outcome.then(() => { throw new Error("Manager operation returned without locked reauthorization"); })]);
+      await db.update(organizationMembers).set({ status: "revoked" }).where(eq(organizationMembers.id, delegateId));
+      release(); expect(await outcome).toBe("FORBIDDEN"); expect(privateTables).toEqual([]);
+      expect(transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+      expect(await read(foreignId)).toEqual(foreign);
+      // Authorized ownership lookup still distinguishes missing/nonowned only
+      // after authority; a revoked delegate never receives those branches.
+      if (branch.includes("missing") || branch.includes("nonowned")) {
+        const owner = { ...ctx, studentEmail: "boundary-owner@example.test" };
+        if (branch.includes("result")) await expect(recruitmentResults(owner, testOrg, targetForm)).rejects.toMatchObject({ code: "NOT_FOUND" });
+        else await expect(revokeRecruitmentAssignment(owner, testOrg, targetAssignment)).rejects.toMatchObject({ code: "NOT_FOUND" });
+      }
+    } finally {
+      release(); await outcome; transaction.mockRestore();
+      await db.delete(recruitmentAssignments).where(eq(recruitmentAssignments.orgId, testOrg));
+      await db.delete(recruitmentAssessments).where(eq(recruitmentAssessments.orgId, testOrg));
+      await db.delete(organizationMembers).where(eq(organizationMembers.id, delegateId));
+      await db.delete(organizations).where(eq(organizations.id, testOrg));
+    }
   });
 });

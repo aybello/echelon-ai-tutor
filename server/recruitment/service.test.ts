@@ -318,15 +318,16 @@ describe("durable manager recruitment reporting", () => {
       } });
     const clock = vi.spyOn(Date, "now");
     const pending = recruitmentResults(context, 7, FORM_ID);
-    await assignmentEntered.promise;
+    await managerEntered.promise;
     expect(clock).not.toHaveBeenCalled(); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
-    assignmentWait.release(); await managerEntered.promise;
+    expect(mocks.readRecruitmentAssessment).not.toHaveBeenCalled();
+    managerWait.release(); await assignmentEntered.promise;
     expect(clock).not.toHaveBeenCalled(); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
-    vi.setSystemTime(NOW + 300_000); managerWait.release();
+    vi.setSystemTime(NOW + 300_000); assignmentWait.release();
     const report = await pending;
     expect(report.results[0].status).toBe("timed_out"); expect(report.assessment.completed).toBe(1);
     expect(db.reads.filter(read => read.lock).map(({ table, lock }) => ({ table, lock }))).toEqual([
-      { table: "organizations", lock: "share" }, { table: "recruitment_assignments", lock: "update" }, { table: "organization_members", lock: "share" },
+      { table: "organizations", lock: "share" }, { table: "organization_members", lock: "share" }, { table: "recruitment_assignments", lock: "update" },
     ]);
     clock.mockRestore();
   });
@@ -352,9 +353,12 @@ describe("durable manager recruitment reporting", () => {
     const db = fakeReportingDb({ org: { ...org(), managerEmail: "replacement@example.test" } });
     vi.setSystemTime(NOW + 300_000);
     await expect(report()).rejects.toMatchObject({ code: "FORBIDDEN" });
-    expect(db.reads.at(-1)).toMatchObject({ table: "organization_members", lock: "share" });
+    expect(db.reads.map(({ table, lock }) => ({ table, lock }))).toEqual([
+      { table: "organizations", lock: "share" }, { table: "organization_members", lock: "share" },
+    ]);
     expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled(); expect(db.events).not.toContain("commit");
   });
+
 
   it("preserves resolver-authorized historical Annual reporting and stable finalization across list/results", async () => {
     const db = fakeReportingDb({ org: { ...org(), status: "past_due", termEnd: new Date(NOW - 1) }, rows: [{ ...active(), answers: { q1: 0 } }, { ...invited(), id: "33333333-3333-4333-8333-333333333333", expiresAtMs: NOW }] });
@@ -375,5 +379,51 @@ describe("durable manager recruitment reporting", () => {
     mocks.persistRecruitmentTransition.mockRejectedValueOnce(new Error("synthetic write failure"));
     await expect(recruitmentResults(context, 7, FORM_ID)).rejects.toThrow("synthetic write failure");
     expect(db.events).not.toContain("commit");
+  });
+});
+
+describe("authority precedes every manager private lookup branch", () => {
+  const branches = ["empty list", "populated list", "missing result", "nonowned result", "owned result",
+    "missing revoke", "nonowned revoke", "already revoked", "active revoke"] as const;
+  it.each(branches)("denies revoked delegation before %s with no private lookup or not-found leak", async branch => {
+    const db = fakeReportingDb({ org: { ...org(), managerEmail: "owner@example.test" },
+      definitions: branch === "empty list" ? [] : [form()],
+      rows: branch === "missing revoke" ? [] : [{ ...active(), status: branch === "already revoked" ? "revoked" : "active" }] });
+    mocks.readRecruitmentAssessment.mockRejectedValue(new Error("Private definition lookup must not run"));
+    const target = branch.includes("missing") || branch.includes("nonowned") ? "99999999-9999-4999-8999-999999999999" : branch.includes("result") ? FORM_ID : ID;
+    const pending = branch.includes("list") ? listRecruitmentAssessments(context, 7)
+      : branch.includes("result") ? recruitmentResults(context, 7, target) : revokeRecruitmentAssignment(context, 7, target);
+    await expect(pending).rejects.toMatchObject({ code: "FORBIDDEN", message: "You are no longer a manager of this organization." });
+    expect(db.reads.map(({ table, lock }) => ({ table, lock }))).toEqual([
+      { table: "organizations", lock: "share" }, { table: "organization_members", lock: "share" },
+    ]);
+    expect(db.reads[1].params).toEqual([7, EMAIL, DELEGATED_MANAGER_ROLE, "assigned"]);
+    expect(mocks.readRecruitmentAssessment).not.toHaveBeenCalled(); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+    expect(db.events).not.toContain("commit");
+  });
+
+  it.each([{ courseKey: "class2-water", courseKeys: null }, { courseKey: null, courseKeys: "[]" }])("rejects course-bearing or malformed delegate (%j) before private reads", async override => {
+    const db = fakeReportingDb({ org: { ...org(), managerEmail: "owner@example.test" }, delegates: [
+      { ...member(), email: EMAIL, role: DELEGATED_MANAGER_ROLE, ...override },
+    ] });
+    await expect(listRecruitmentAssessments(context, 7)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.reads).toHaveLength(2); expect(mocks.readRecruitmentAssessment).not.toHaveBeenCalled();
+  });
+
+  it.each(["results", "revoke"] as const)("returns scoped NOT_FOUND for an authorized delegate's missing/nonowned %s only after its gate", async kind => {
+    const db = fakeReportingDb({ org: { ...org(), managerEmail: "owner@example.test" }, rows: [], delegates: [
+      { ...member(), email: EMAIL, role: DELEGATED_MANAGER_ROLE, courseKey: null, courseKeys: null },
+    ] });
+    mocks.readRecruitmentAssessment.mockImplementation(async (_tx, id, scope) => {
+      expect(db.reads.map(read => read.table)).toEqual(["organizations", "organization_members"]);
+      expect(scope).toBe(7); expect(id).toBe(FORM_ID);
+      throw new Error("scoped private not-found");
+    });
+    if (kind === "results") await expect(recruitmentResults(context, 7, FORM_ID)).rejects.toThrow("scoped private not-found");
+    else {
+      await expect(revokeRecruitmentAssignment(context, 7, ID)).rejects.toMatchObject({ code: "NOT_FOUND" });
+      expect(db.reads[2]).toMatchObject({ table: "recruitment_assignments", lock: "update", params: [ID, 7] });
+    }
+    expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
   });
 });
