@@ -54,3 +54,39 @@ Bank: `tx-wastewater-treatment-c`. Status: review-only draft. Not imported, not 
 6. Not compared with the official TCEQ exam. No weights or question counts are claimed.
 7. Dossier decision: section 7 of the dossier requires the owner to accept Narrow before a batch is written. That acceptance is not recorded.
 8. Single writer, no second writer. One reviewer model. Gemini unavailable.
+
+## Distractor fix pass
+
+Scope: `source/conceptual.txt` and `source/calculations.txt` only. Rebuilt with `build`; `lint` and `check` pass. Still review-only: not imported, not published, no learner access.
+
+Counts (compared with commit f4c11c0f):
+
+- Distractors rewritten: 284 conceptual wrong options in 152 of 284 rows, and 13 calculation wrong-value fields. The brief's test of "plausible mistake" was applied by one reviewer model (see below), not by a TCEQ-trained operator.
+- Stems reworded: 88 conceptual stems. Keys: wording changed in 16, 46, 96, 100 (lengthened) and 81, 152, 165 (length cue only). Row 283 changed in meaning: the keyed "common error" was a correct procedure (squaring the radius and converting cubic feet to gallons). It is now "Multiplying the diameter by the depth and leaving out pi", which is the actual error. This was a key error in the original commit.
+- Calculations: expressions and keys are unchanged. All 118 keys were recomputed with `python3 -I` from the stored expressions: 0 mismatches, and no wrong value equals its key. No arithmetic error was found in a calculation key.
+
+Overlaps fixed:
+
+- Stem and key sharing a word of 7 or more letters (generic domain words "operator" and "plant" are not counted): 69 stems (19 where the word appears only in the key) before; 0 after.
+- Shorter distinctive repeats that the reviewer found (for example "flow basis", "peak flow", "hot spot", "blower", "sag", "foam", "fecal", "inflow", "trend", "return rate"): 16 stems reworded.
+
+Longest and shortest correct answer (checker cue, conceptual rows):
+
+- Longest: before 27.8% (79 of 284), after 21.8% (62 of 284). Target was about 30%.
+- Shortest: before 10.6% (30 of 284), after 17.3% (49 of 284). The limit is 35%. Lengthening distractors moved some correct answers to the short end.
+
+Review: GPT `gpt-6.2-sol` through the proxy (model id confirmed with `GET /v1/models`). Chunks of about 25 items; each chunk had 2 planted distractor problems.
+
+- Round 1 (179 changed conceptual rows, 13 calculation rows): planted items caught 18 of 18 (blatant planted problems: a joke distractor and an absolute word). Real changed rows flagged: 164 of 192.
+- Round 2 (after round-1 fixes; 182 conceptual and 13 calculation rows): planted items caught 18 of 18 (subtler problems: an irrelevant option, and a stem repeating a key word). Real changed rows flagged: 166 of 195.
+- Round 3 (18 rows edited after round 2: absolute words, stem repeats, length cues): planted items caught 2 of 2. Real rows flagged: 15 of 18.
+- Catch rate overall: 38 of 38 planted items. The planted problems were deliberately obvious, so this shows the reviewer detects obvious faults. It does not show that the remaining distractors are plausible.
+
+What remains:
+
+1. Distractor plausibility. The reviewer flagged most changed rows in every round (about 85% of real rows), mainly as "irrelevant to the question" or "implausible", and some as absolute claims. These need a rewrite by someone who knows the TCEQ Class C material, not another mechanical pass. Calculation wrong values were kept when they trace to a real slip (a missing constant, a decimal shift, an inverted ratio), even where the reviewer called them absurd (for example 54,000 hp).
+2. Row 37: the stem and key share "basis" and "sizing". Not fixed.
+3. Words shared between stems and keys that are not 7 or more letters are only partly covered. The reviewer's findings for these are fixed in the rows listed above, not all rows.
+4. Difficulty mix, per-topic counts and answer-position counts were not changed in this pass. The "Final counts" section above still applies.
+5. Dossier gate: section 7 of `docs/us-launch/state-dossiers/tx-operator-certification.md` (on `claude/tx-dossier`) requires the owner to accept Narrow before any candidate batch. That acceptance is not recorded.
+6. Not compared with the official TCEQ exam. Reviewer is a model, not a human expert.

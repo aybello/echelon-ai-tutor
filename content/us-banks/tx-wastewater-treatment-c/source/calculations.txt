@@ -5,14 +5,14 @@ A plant had 27 compliant days out of 31 days in a month. What percent of the day
 @Permits|TCEQWW|Permit conditions and monitoring
 A permit limit is 15 mg/L of total suspended solids at a flow of 3.2 MGD. Assume 8.34 lb per gallon. What is the mass limit in pounds per day, rounded to the nearest pound?|Mass per day equals concentration times flow times 8.34|15*3.2*8.34|lb/day|0|48,4003,15|m
 A plant discharges 0.9 MGD with a BOD of 22 mg/L. Assume 8.34 lb per gallon. What is the BOD load in pounds per day, rounded to the nearest pound?|Mass per day equals concentration times flow times 8.34|0.9*22*8.34|lb/day|0|19.8,1651,198|m
-Out of 36 daily results, 2 exceed the daily maximum. What percent of results exceed the maximum? Round to one decimal place.|Exceedances divided by total results, times 100|2/36*100|%|1|94.4,1800.0,0.1|m
+Out of 36 daily results, 2 exceed the daily maximum. What percent of results exceed the maximum? Round to one decimal place.|Exceedances divided by total results, times 100|2/36*100|%|1|94.4,18.0,0.1|m
 @Permits|TCEQWW|Permit changes and flow basis
 The plant adds 0.5 MGD of flow at a constant BOD of 18 mg/L. Assume 8.34 lb per gallon. What extra BOD load in pounds per day does the added flow bring, rounded to one decimal place?|Added flow times concentration times 8.34|0.5*18*8.34|lb/day|1|9.0,750.6,150.1|m
 A stream carrying 18 MGD receives 2.0 MGD of plant effluent. What is the stream-to-effluent dilution ratio, rounded to one decimal place?|Stream flow divided by effluent flow|18/2|ratio|1|0.1,36.0,2.0|e
-A plant result of 12 mg/L is compared with a permit limit of 15 mg/L. What percent of the limit does the result reach? Round to one decimal place.|Result divided by limit, times 100|12/15*100|%|1|125.0,3.0,0.8|e
+A plant result of 12 mg/L is compared with a permit limit of 15 mg/L. What percent of the limit does the result reach? Round to one decimal place.|Result divided by limit, times 100|12/15*100|%|1|125.0,1.3,0.8|e
 The permit flow basis is 2.0 MGD and the plant now treats 2.6 MGD. What percent increase over the basis is this? Round to one decimal place.|Increase over basis divided by basis, times 100|(2.6-2.0)/2.0*100|%|1|130.0,0.6,23.1|m
 @Design Criteria|TCEQWW|Hydraulic and loading design
-A rectangular basin is 60 ft long, 20 ft wide and 10 ft deep. Use 7.48 gal per cubic foot. What is its volume in gallons, rounded to the nearest gallon?|Length times width times depth, times 7.48 gal per cubic foot|60*20*10*7.48|gal|0|179520,12000,8976|e
+A rectangular basin is 60 ft long, 20 ft wide and 10 ft deep. Use 7.48 gal per cubic foot. What is its volume in gallons, rounded to the nearest gallon?|Length times width times depth, times 7.48 gal per cubic foot|60*20*10*7.48|gal|0|100080,12000,8976|e
 A circular clarifier is 80 ft in diameter. Use pi = 3.14. What is its surface area in square feet, rounded to the nearest square foot?|Pi times radius squared, with radius equal to half the diameter|3.14*40*40|ft2|0|20096,2512,10048|m
 A clarifier receives 0.6 MGD. The design overflow rate is 800 gal per day per square foot. What surface area is needed in square feet?|Flow in gallons per day divided by overflow rate|0.6*1000000/800|ft2|0|480,7500,1200|m
 @Design Criteria|TCEQWW|Process sizing principles
@@ -21,8 +21,8 @@ A tank has a detention time of 4 hours at a flow of 0.30 MGD. What is its volume
 A chlorine contact basin is 40 ft by 20 ft by 6 ft and holds water at 7.48 gal per cubic foot. The flow is 1.2 MGD. What is the detention time in minutes, rounded to one decimal place?|Basin volume in gallons divided by flow in gallons per minute|40*20*6*7.48/(1.2*1000000/1440)|min|1|5.8,0.7,86.2|h
 @Safety|TCEQWW|Hazard recognition and confined spaces
 A pump room measures 10 ft wide, 12 ft long and 8 ft high. A fan moves 400 cubic feet per minute into the room. How many air changes per hour does the fan provide? Round to one decimal place.|Airflow per hour divided by room volume|400*60/(10*12*8)|changes/hour|1|0.4,2.5,16.7|m
-A room measures 30 ft by 20 ft by 10 ft and needs 6 air changes per hour. What fan rate in cubic feet per minute is needed? Round to the nearest whole number.|Room volume times changes per hour, divided by 60 minutes per hour|30*20*10*6/60|cfm|0|36000,720,10|m
-A closed room measures 12 ft by 15 ft by 9 ft. Air is supplied at 250 cubic feet per minute. How many air changes per hour does the room get? Round to one decimal place.|Airflow times 60 minutes per hour, divided by room volume|250*60/(12*15*9)|changes/hour|1|15000.0,0.2,154.3|h
+A room measures 30 ft by 20 ft by 10 ft and needs 6 air changes per hour. What fan rate in cubic feet per minute is needed? Round to the nearest whole number.|Room volume times changes per hour, divided by 60 minutes per hour|30*20*10*6/60|cfm|0|36000,6000,10|m
+A closed room measures 12 ft by 15 ft by 9 ft. Air is supplied at 250 cubic feet per minute. How many air changes per hour does the room get? Round to one decimal place.|Airflow times 60 minutes per hour, divided by room volume|250*60/(12*15*9)|changes/hour|1|15000.0,0.1,6.5|h
 @Safety|TCEQWW|Chemicals and electrical hazards
 A safety shower delivers 30 gallons per minute for 15 minutes. How many gallons does one full run deliver?|Flow rate times time|30*15|gal|0|30,300,4500|e
 A chlorine cylinder holds 150 lb of liquid chlorine and uses 6 lb each day. Assume the same use every day. How many whole days does the cylinder last?|Cylinder contents divided by daily use|150/6|days|0|900,24,156|e
@@ -30,10 +30,10 @@ A drum holds 55 gallons of sodium hypochlorite solution at 12 percent available 
 @Laboratory|TCEQCHART|Sampling and sample handling
 The instrument reads 3.6 mg/L of ammonia nitrogen for a sample diluted so that 1 part sample makes 10 parts total. What is the undiluted concentration in mg/L? Round to one decimal place.|Measured value times the dilution factor|3.6*10|mg/L|1|3.6,0.4,360.0|m
 A 50 mL sample is filtered, and the dried residue weighs 0.0125 g. Find the total suspended solids in mg/L, rounded to one decimal place.|Residue in mg divided by sample volume in liters|0.0125*1000/0.05|mg/L|1|12.5,25.0,2500.0|h
-A measured value of 6.5 mg/L comes from a sample diluted so that 1 part sample makes 20 parts total before analysis. What is the undiluted value in mg/L? Round to one decimal place.|Measured value times the dilution factor|6.5*20|mg/L|1|0.3,6.5,26.0|m
+A measured value of 6.5 mg/L comes from a sample diluted so that 1 part sample makes 20 parts total before analysis. What is the undiluted value in mg/L? Round to one decimal place.|Measured value times the dilution factor|6.5*20|mg/L|1|0.3,6.5,13.0|m
 @Laboratory|TCEQCHART|Analytical measurements and quality control
 A standard of 5.0 mg/L is run, and the instrument reads 4.6 mg/L. What is the percent recovery? Round to one decimal place.|Measured value divided by known value, times 100|4.6/5*100|%|1|108.7,8.0,0.9|e
-A stock solution of 500 mg/L is diluted by taking 10 mL and bringing it to a final volume of 250 mL. What is the new concentration in mg/L? Round to one decimal place.|Initial concentration times initial volume, divided by final volume|500*10/250|mg/L|1|25.0,12500.0,2.0|e
+A stock solution of 500 mg/L is diluted by taking 10 mL and bringing it to a final volume of 250 mL. What is the new concentration in mg/L? Round to one decimal place.|Initial concentration times initial volume, divided by final volume|500*10/250|mg/L|1|50.0,12500.0,2.0|e
 A duplicate pair reads 42.0 mg/L and 46.0 mg/L. The relative percent difference is the difference divided by the mean, times 100. Round to one decimal place.|Difference divided by the mean of the two results, times 100|(46-42)/((46+42)/2)*100|%|1|4.0,8.7,9.5|h
 @Management|TCEQWW|Staffing and training
 Four operators each work 40 hours a week for a 50-week year. How many operator hours are worked in the year?|Operators times hours per week times weeks per year|4*40*50|hours|0|160,1600,80000|e
@@ -48,8 +48,8 @@ A sewer main is 24 inches in diameter. Using pi = 3.14, what is its cross-sectio
 Inflow from a storm gives 0.18 MGD for 6 hours. How many gallons enter during the storm? Round to the nearest gallon.|Daily flow in gallons times hours divided by 24|0.18*1000000*6/24|gal|0|180000,1080000,7500|m
 A sewer pipe carries 2.0 MGD. What is this flow in cubic feet per second? Use 1 MGD = 1.547 cfs. Round to one decimal place.|Flow in MGD times 1.547 cfs per MGD|2.0*1.547|cfs|1|2.0,1.3,30.9|h
 @Collection|TCEQWW|Collection system operation
-A lift station pump delivers 800 gpm against a total head of 60 ft. Use hydraulic horsepower equals gpm times feet divided by 3960. Round to one decimal place.|Flow in gpm times head in feet, divided by 3960|800*60/3960|hp|1|0.2,48000.0,121.2|m
-A wet well has a 6 ft by 8 ft footprint and is filled 6 ft deep. Use 7.48 gal per cubic foot. How many gallons does it hold? Round to the nearest gallon.|Footprint area times depth, times 7.48 gal per cubic foot|6*8*6*7.48|gal|0|288,215,4308|m
+A lift station pump delivers 800 gpm against a total head of 60 ft. Use hydraulic horsepower equals gpm times feet divided by 3960. Round to one decimal place.|Flow in gpm times head in feet, divided by 3960|800*60/3960|hp|1|13.3,48000.0,121.2|m
+A wet well has a 6 ft by 8 ft footprint and is filled 6 ft deep. Use 7.48 gal per cubic foot. How many gallons does it hold? Round to the nearest gallon.|Footprint area times depth, times 7.48 gal per cubic foot|6*8*6*7.48|gal|0|288,4308,2402|m
 A 2,400 ft collection main has a manhole every 300 ft, including one at each end. How many manholes are on the main?|Length divided by spacing gives intervals, then add one for the end manhole|2400/300+1|manholes|0|8,10,2400|e
 @General Knowledge|TCEQWW|Water cycle and treatment purposes
 A plant treats 2.5 MGD. Using 1 MGD = 694.4 gpm, what is the flow in gallons per minute, rounded to the nearest gallon?|Flow in MGD times 694.4 gpm per MGD|2.5*694.4|gpm|0|694,173.6,17360|e
@@ -60,7 +60,7 @@ A design population of 4,500 generates 100 gallons of wastewater per person per 
 A plant receives 1.8 MGD. Using 1 MGD = 1.547 cfs, what is the flow in cubic feet per second? Round to one decimal place.|Flow in MGD times 1.547 cfs per MGD|1.8*1.547|cfs|1|1.2,18.0,0.9|m
 A plant has an average flow of 1.2 MGD and a peak factor of 2.5. Using 1 MGD = 694.4 gpm, what is the peak flow in gallons per minute? Round to the nearest gallon.|Average flow in MGD times 694.4 gpm per MGD, times the peak factor|1.2*694.4*2.5|gpm|0|833,1667,20832|h
 @Pumping|TCEQWW|Pump types and operation
-A pump delivers 1,200 gpm against a total head of 45 ft. Use hydraulic horsepower equals gpm times feet divided by 3960. Round to one decimal place.|Flow in gpm times head in feet, divided by 3960|1200*45/3960|hp|1|0.3,54000.0,136.4|m
+A pump delivers 1,200 gpm against a total head of 45 ft. Use hydraulic horsepower equals gpm times feet divided by 3960. Round to one decimal place.|Flow in gpm times head in feet, divided by 3960|1200*45/3960|hp|1|0.1,54000.0,136.4|m
 A pump has a flow of 500 gpm, a total dynamic head of 120 ft and an efficiency of 65 percent. Brake horsepower equals gpm times feet, divided by (3960 times efficiency). Round to one decimal place.|Hydraulic horsepower divided by efficiency as a fraction|500*120/(3960*0.65)|hp|1|15.2,9.8,233.1|m
 A wet well is 10 ft by 10 ft. Assume no inflow. A pump removes 300 gpm for 15 minutes. How many feet does the level drop? Use 7.48 gal per cubic foot. Round to one decimal place.|Gallons pumped divided by 7.48 gal per cubic foot, divided by the floor area|300*15/7.48/100|ft|1|0.6,60.2,4500.0|h
 @Pumping|TCEQWW|Pump controls and performance
@@ -136,11 +136,11 @@ Sludge flows at 6,000 gallons per day with 4 percent solids. Use 8.34 lb per gal
 Dewatered cake of 2,002 lb per day of dry solids is at 22 percent solids. How many pounds per day of wet cake are produced, rounded to the nearest pound?|Dry solids divided by cake solids fraction|2002/0.22|lb/day|0|440,4551,91000|e
 A press uses 12 lb of polymer per dry ton of solids. The plant processes 2.0 dry tons per day. How many pounds of polymer are used per day? Round to one decimal place.|Polymer per dry ton times dry tons per day|12*2.0|lb/day|1|6.0,240.0,12.0|e
 @Biosolids Disposal|TCEQWW|Disposal and beneficial use
-A cake load is 9,400 lb per day. How many wet tons per day is this, using 2,000 lb per ton? Round to one decimal place.|Pounds per day divided by 2,000 lb per ton|9400/2000|tons/day|1|9.4,0.5,4700.0|e
-A hauler truck carries 25 wet tons of cake at 22 percent solids. How many dry tons does one load hold? Round to one decimal place.|Wet tons times solids fraction|25*0.22|dry tons|1|113.6,0.6,2.5|m
+A cake load is 9,400 lb per day. How many wet tons per day is this, using 2,000 lb per ton? Round to one decimal place.|Pounds per day divided by 2,000 lb per ton|9400/2000|tons/day|1|9.4,0.2,4700.0|e
+A hauler truck carries 25 wet tons of cake at 22 percent solids. How many dry tons does one load hold? Round to one decimal place.|Wet tons times solids fraction|25*0.22|dry tons|1|113.6,0.2,2.5|m
 The plant sends three loads of 25 wet tons each week for 50 weeks. How many wet tons are hauled in the year?|Loads per week times tons per load times weeks|3*25*50|wet tons|0|75,375,37500|m
 @Effluent Disposal|TCEQWW|Discharge and dilution
-A plant discharges 3.0 MGD with 15 mg/L of BOD into a stream flowing 27 MGD with 2 mg/L of BOD. What is the mixed BOD in mg/L, assuming complete mixing? Round to one decimal place.|Flow-weighted average of the two concentrations|(3*15+27*2)/(3+27)|mg/L|1|8.5,2.0,15.0|h
+A plant discharges 3.0 MGD with 15 mg/L of BOD into a stream flowing 27 MGD with 2 mg/L of BOD. What is the mixed BOD in mg/L, assuming complete mixing? Round to one decimal place.|Flow-weighted average of the two concentrations|(3*15+27*2)/(3+27)|mg/L|1|3.7,2.0,15.0|h
 A dechlorination feed of sulfur dioxide must remove a residual of 0.5 mg/L at 4.0 MGD. Use 8.34 lb per gallon and a 1 to 1 ratio. How many pounds per day are needed? Round to one decimal place.|Residual times flow times 8.34 lb per gallon|0.5*4*8.34|lb/day|1|2.1,166.8,8.3|e
 A plant discharges 2 MGD, which is 3.094 cfs, into a stream of 5 cfs. What percent of the mixed flow is effluent? Round to one decimal place.|Effluent flow divided by total flow, times 100|2*1.547/(2*1.547+5)*100|%|1|61.8,161.5,3.1|h
 @Effluent Disposal|TCEQWW|Chlorine residual and dechlorination

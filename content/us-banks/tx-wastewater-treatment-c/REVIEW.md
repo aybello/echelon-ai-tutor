@@ -8,9 +8,9 @@ Correct answers are shown beneath each item. See README.md for scope, sources an
 
 A chlorine residual was below the permit minimum but was not written down during a busy shift. What should the operator do?
 
-- **A.** Enter the previous shift's reading so the monthly report shows no gap in the record.
-- **B.** Leave the entry blank and fill it in from memory later.
-- **C.** Average the other days' readings so the log stays in the normal range.
+- **A.** Enter the reading taken at the start of the shift, since the plant was in range then.
+- **B.** Write the entry from the shift notes at the end of the week, once the crew has time.
+- **C.** Average the readings from the two shifts on either side so the log stays in the normal range.
 - **D.** Record the reading as measured, with its time, and report it to the supervisor.
 
 **Answer: D. Record the reading as measured, with its time, and report it to the supervisor.**
@@ -21,8 +21,8 @@ Records must show what was measured and when. Substituting or estimating values 
 
 Why does an operator keep a current copy of the discharge permit at the plant?
 
-- **A.** So visitors can read it during a tour of the facility.
-- **B.** So the plant can stop keeping its own daily records.
+- **A.** So the operator can confirm the expiration date from the front-office file when filing the renewal.
+- **B.** So the plant can check lab results against the permit once a year instead of daily.
 - **C.** So daily operation can be checked against the permit's conditions.
 - **D.** So the operator knows when the permit expires and monitoring stops.
 
@@ -34,10 +34,10 @@ The permit is the working standard for daily operation. Keeping it at hand lets 
 
 An operator must sign a monthly report that includes a lab result the operator did not run. What should happen first?
 
-- **A.** Sign without reading it, since the lab carries full responsibility.
+- **A.** Sign now, since the lab's accreditation makes a second check unnecessary.
 - **B.** Confirm the result matches the lab data on file before signing.
-- **C.** Sign, since the signature covers just the operator's own tests.
-- **D.** Remove the lab result so the report reflects the operator's own work.
+- **C.** Sign, since the signature covers the operator's own tests.
+- **D.** Add a note that the operator did not run the test, then sign the report.
 
 **Answer: B. Confirm the result matches the lab data on file before signing.**
 
@@ -61,13 +61,13 @@ A monthly average is only as sound as the daily data behind it. Sample-level rec
 An error is found in a monthly report that was already sent to the agency. What is the best first step?
 
 - **A.** Notify the responsible person and follow the agency's correction procedure.
-- **B.** Delete the original report from the file so just the corrected version remains on record.
+- **B.** Resubmit the full report with the corrected figure and leave the original file as it was.
 - **C.** Leave it, since the error is small and did not change compliance.
 - **D.** Correct the number quietly in the next report.
 
 **Answer: A. Notify the responsible person and follow the agency's correction procedure.**
 
-A known error in a submitted report must be corrected through the proper channel. Quiet fixes and deleted files undermine the record.
+A known error in a submitted report must be corrected through the proper channel. Quiet fixes and silent replacements undermine the record.
 
 ### 6: Operator duties and records (hard)
 
@@ -97,23 +97,23 @@ Event records give context for unusual data and show the plant's response. Witho
 
 ### 8: Operator duties and records (hard)
 
-Which record would have shown a change in the blower schedule earliest, before an exceedance appeared?
+Which record would have shown a change in the aeration schedule earliest, before any limit was missed?
 
-- **A.** The monthly operator certificate file kept in the front office.
-- **B.** The annual equipment inventory listing the blower's make, model and installation details.
+- **A.** The equipment maintenance log, which lists work orders without run times.
+- **B.** The monthly summary of effluent results, which shows totals without daily detail.
 - **C.** The blower run-time log, compared day by day with the effluent results.
-- **D.** The plant's public tour schedule and the visitor sign-in sheet.
+- **D.** The annual equipment inventory listing the blower's make, model and installation details.
 
 **Answer: C. The blower run-time log, compared day by day with the effluent results.**
 
-Run-time logs record the process as it changed. Comparing them with effluent data shows the change before the exceedance appears.
+Run-time logs record the process as it changed. Comparing them with effluent data shows the change before results go out of range.
 
 ### 9: Permit conditions and reporting (easy)
 
 Which description of a permit condition is most accurate?
 
 - **A.** A recommendation from the consulting engineer about good practice.
-- **B.** A goal the plant sets for itself and may change at any time.
+- **B.** A goal the plant sets for itself and may revise later in the year.
 - **C.** An enforceable requirement in the facility's discharge permit.
 - **D.** A standard for drinking water systems, not wastewater plants.
 
@@ -123,12 +123,12 @@ Permit conditions are enforceable requirements in the discharge authorization. E
 
 ### 10: Permit conditions and reporting (medium)
 
-An inspector writes a finding because a monthly report was filed late. What response best fits good practice?
+What is the best way to handle an inspector's finding about a monthly report filed after its due date?
 
 - **A.** Find why the report was late, fix that step, and keep a copy of the response.
-- **B.** Ask the inspector to drop the finding because it was a paperwork issue.
+- **B.** Ask the inspector to accept a verbal explanation in place of a written response.
 - **C.** File the report now and close the finding without reviewing the cause.
-- **D.** Blame the staff member who filed it and move on to the next task without further review.
+- **D.** Retrain the staff member who filed it and treat the finding as closed without a review of the filing step.
 
 **Answer: A. Find why the report was late, fix that step, and keep a copy of the response.**
 
@@ -151,10 +151,10 @@ Consistent collection and handling make results comparable over time. A plan tha
 
 A permit changes next month. Which action best protects the plant during the transition?
 
-- **A.** Update the lab form alone, since the other sections are unchanged.
+- **A.** Update the lab form first, since the other sections are unchanged.
 - **B.** Update logs and forms and train staff before the change.
-- **C.** Wait for the first new result before reading the new permit.
-- **D.** Keep the old forms until a violation occurs, then update them.
+- **C.** Read the new permit once the change is in effect, then update the forms.
+- **D.** Start the new sampling schedule now, and update the forms once the first result is in.
 
 **Answer: B. Update logs and forms and train staff before the change.**
 
@@ -166,7 +166,7 @@ A log shows the pH in range on 29 of 30 days, but the lab sheet for the missing 
 
 - **A.** Leave the day out and report the monthly average without comment or a note about the gap.
 - **B.** Use the average of the surrounding days, since the pH was likely in range.
-- **C.** Copy the value from the same day of the previous month.
+- **C.** Enter the value from the nearest day on the logsheet, since the trend suggests a similar result.
 - **D.** Search for the original data, and if it is not found, record the gap openly.
 
 **Answer: D. Search for the original data, and if it is not found, record the gap openly.**
@@ -178,7 +178,7 @@ A gap is a data-quality issue that a reviewer needs to see. Filling it with a pl
 Which statement about a corrective action plan is most accurate?
 
 - **A.** It replaces daily records for as long as the plan is in place.
-- **B.** It is a document kept by plants that have had no problems.
+- **B.** It is a plan the agency prepares for the operator to follow during an inspection visit.
 - **C.** It sets out the steps, owners and target dates for returning to compliance.
 - **D.** It is a list of the permit's sampling methods and lab procedures, written by the lab staff.
 
@@ -201,25 +201,25 @@ A written explanation turns an exceedance into a traceable event with a cause an
 
 ### 16: Permit conditions and reporting (medium)
 
-A compliant result has drifted upward for six weeks. What is the best reason to act now?
+A result that was in range has drifted upward for six weeks. What is the best reason to act now?
 
 - **A.** Drift is normal for a plant of this type, so the plant should respond when a limit is exceeded.
-- **B.** A steady drift signals a process change, so early action prevents a later exceedance.
-- **C.** Drift is caused by the weather, so no operator action is needed until results change.
-- **D.** The drift shows the lab has failed, so the lab should be replaced now without a review.
+- **B.** A steady drift signals a process change, so early action on the trend prevents a later exceedance.
+- **C.** Drift is caused by seasonal weather, so the trend can be ignored until results are out of range.
+- **D.** The drift means the lab's calibration is off, so the lab should rerun the samples before any process change is made.
 
-**Answer: B. A steady drift signals a process change, so early action prevents a later exceedance.**
+**Answer: B. A steady drift signals a process change, so early action on the trend prevents a later exceedance.**
 
 A steady trend is a warning that the process has changed. Responding while results are still compliant gives time to find the cause.
 
 ### 17: Permit conditions and reporting (hard)
 
-Two permit conditions seem to conflict for the same sample point. What is the best step?
+Two permit requirements seem to conflict for the same sample point. What is the best step?
 
 - **A.** Report both results, leave the conflict open, and let the reviewer decide later on.
 - **B.** Choose the condition the operator finds easier and document that choice.
 - **C.** Ask the permitting staff to clarify in writing and follow their direction.
-- **D.** Follow the stricter condition for one week, then choose the cheaper one.
+- **D.** Follow the less strict condition, since it was the one written more recently in the file.
 
 **Answer: C. Ask the permitting staff to clarify in writing and follow their direction.**
 
@@ -229,10 +229,10 @@ Conflicting conditions need an authoritative answer. Documented clarification fr
 
 What does a discharge permit usually set out for the operator?
 
-- **A.** The chemical formulas the lab must use for each test method.
+- **A.** The lab's quality control limits for each analytical method.
 - **B.** The effluent limits, monitoring frequency and reporting conditions to be met.
-- **C.** The operator's training hours, the plant's annual budget and the staff's holiday schedule.
-- **D.** The design flow of pumps the plant may buy in later years.
+- **C.** The design criteria for each unit, such as tank sizes and pump capacities.
+- **D.** The design flow the plant may use for future expansion.
 
 **Answer: B. The effluent limits, monitoring frequency and reporting conditions to be met.**
 
@@ -243,9 +243,9 @@ The permit sets the enforceable limits, how often they are measured and how resu
 Why track effluent trends between sampling events, not just the compliance result?
 
 - **A.** A rising trend can warn of a process problem before a limit is exceeded.
-- **B.** The trend shows the permit's expiration date and the renewal fee paid at the last renewal.
-- **C.** Trend charts are required by law for plants above a set flow size.
-- **D.** The trend replaces the lab result, so fewer samples are needed.
+- **B.** The trend shows the plant's annual operating cost and the lab's billing rate.
+- **C.** The trend replaces the lab result, so fewer samples are needed.
+- **D.** Trend charts are required by the permit for plants above a set flow size.
 
 **Answer: A. A rising trend can warn of a process problem before a limit is exceeded.**
 
@@ -253,7 +253,7 @@ A trend shows direction between results. Watching it lets the operator act while
 
 ### 20: Permit conditions and monitoring (medium)
 
-Why can a low concentration still breach a mass limit?
+Why can a low reading still breach a mass limit?
 
 - **A.** Concentration limits are reported in pounds, so flow does not matter.
 - **B.** Concentration already includes flow, so a mass limit adds no information.
@@ -307,10 +307,10 @@ A poor sample location gives results that do not match the flow. A representativ
 
 What is the purpose of a reporting review before a monthly report is signed?
 
-- **A.** To check whether the operator's pay rate and overtime hours are listed in the report.
+- **A.** To check that each sample was collected on the correct shift by a certified operator.
 - **B.** To confirm reported values match source data and that exceedances are flagged.
 - **C.** To compare this month's report with the plant's budget forecast for the year.
-- **D.** To make the report easier to read by rounding the results.
+- **D.** To make the report easier to read by rounding the results to the nearest whole number.
 
 **Answer: B. To confirm reported values match source data and that exceedances are flagged.**
 
@@ -318,12 +318,12 @@ The review checks that the report matches the source data and that exceedances a
 
 ### 25: Permit conditions and monitoring (easy)
 
-Which observation suggests a monitoring plan may need review?
+Which observation suggests a sampling plan may need review?
 
 - **A.** A process unit changed, or the samples no longer represent the current flow.
-- **B.** The lab changed its coffee brand in the break room during the last month's audit visit.
-- **C.** The operator has worked at the plant for more than five years.
-- **D.** The sample bottles are a different color from last year's bottles.
+- **B.** The lab's sample bottles changed color, so the plan's container entry needs an update.
+- **C.** The operator has held the same license class for more than five years.
+- **D.** The lab's bottles were replaced by a supplier with a different preservative.
 
 **Answer: A. A process unit changed, or the samples no longer represent the current flow.**
 
@@ -331,9 +331,9 @@ A monitoring plan has to match the process. A changed unit or a flow that no lon
 
 ### 26: Permit conditions and monitoring (medium)
 
-A plant's flow rises above the flow basis in its permit. What is the best first step?
+A plant's flow rises above the design flow stated in its permit. What is the best first step?
 
-- **A.** Ask operators to reduce the pumping rate until the next inspection.
+- **A.** Reduce the flow to the basis value for the rest of the month, then report the change.
 - **B.** Check whether the flow basis still fits and tell the permitting staff early.
 - **C.** Add lab tests and wait for a result before taking any other action.
 - **D.** Keep operating as before, since the permit flow is an average and can be ignored.
@@ -344,7 +344,7 @@ A changed flow basis can change what the permit expects. Raising the issue early
 
 ### 27: Permit conditions and monitoring (easy)
 
-A permit has been reissued with a new limit. What should the operator do first?
+A permit has been renewed with a new limit. What should the operator do first?
 
 - **A.** Assume the new limit applies from the day the paperwork was mailed.
 - **B.** Skip the first month of new sampling while the lab adjusts to the change.
@@ -357,12 +357,12 @@ The reissued conditions and the effective date control what must be measured and
 
 ### 28: Permit conditions and monitoring (medium)
 
-Why would a process upgrade call for a sampling plan review?
+Why would an upgrade call for a sampling plan review?
 
-- **A.** The lab must buy new glassware after each upgrade.
-- **B.** Upgrades usually raise the permitted flow by law once the new unit is commissioned.
+- **A.** The lab must recalibrate its instruments before any new sample can be analyzed.
+- **B.** Upgrades raise the permitted flow once the new unit is commissioned, with no agency action.
 - **C.** Sample points and frequency may no longer represent the new process.
-- **D.** Upgrades remove the need for any further sampling of the effluent.
+- **D.** Upgrades can reduce sampling because the new process is assumed to meet the permit.
 
 **Answer: C. Sample points and frequency may no longer represent the new process.**
 
@@ -372,7 +372,7 @@ An upgrade can move flows, loads and mixing. A plan written for the old process 
 
 Which step best prepares a plant for a new monitoring requirement?
 
-- **A.** Wait for the first missed sample, then add the new requirement.
+- **A.** Add the new sampling after the next routine report, so the old schedule is still used.
 - **B.** Start sampling at the new frequency and sort out the method later.
 - **C.** Ask the lab to report the new results in a different unit and a different format.
 - **D.** Confirm the point, method, frequency and form, and train the sampling staff.
@@ -385,10 +385,10 @@ Setting up the point, method, frequency and form before the first sample avoids 
 
 What is the most useful basis for comparing effluent data before and after a plant change?
 
-- **A.** The name of the operator who wrote the first report, to check the handwriting.
+- **A.** The operator who ran the first set of tests, so the same person repeats the work.
 - **B.** The same sampling point, method and timing, with flow and process conditions noted.
-- **C.** The total number of pages in each lab report, to show how much data the lab produced overall.
-- **D.** The color of the chart used to present each set of results.
+- **C.** The lab's total test count for each month, since the count reflects how much work was done.
+- **D.** The chart scale used for each period, so the lines look the same on the page.
 
 **Answer: B. The same sampling point, method and timing, with flow and process conditions noted.**
 
@@ -396,12 +396,12 @@ Comparable data need the same point, method and timing. Recorded flow and proces
 
 ### 31: Permit conditions and monitoring (hard)
 
-A plant plans a second clarifier, and the permit's flow basis will not change. What is the key check before construction?
+A plant plans a second clarifier, and the permit's design flow will not change. What is the key check before construction?
 
 - **A.** Check the new unit's loading and whether the flow basis still applies.
 - **B.** Start construction now, since the flow basis is an average and will not matter.
 - **C.** Assume the permit covers it because the change is like-for-like.
-- **D.** Check the clarifier's cost against the plant's annual budget.
+- **D.** Check the construction schedule against the permit's effective date.
 
 **Answer: A. Check the new unit's loading and whether the flow basis still applies.**
 
@@ -409,12 +409,12 @@ A new unit can change how loads reach downstream processes. The permitting quest
 
 ### 32: Hydraulic and loading design (easy)
 
-Why do designers size a treatment unit for peak flow rather than average flow?
+Why do designers size a treatment unit for the highest expected load rather than the average load?
 
 - **A.** Peak flow is rare and short-lived, so designers can safely ignore it when sizing the tanks and pumps.
-- **B.** Peak flow affects the lab workload more than the size of the tanks does.
+- **B.** Peak flow sets the number of samples the lab must run each day, so it drives tank size less.
 - **C.** The unit must still perform at high flow, and peak flow sets the hydraulic capacity.
-- **D.** Designers use peak flow to choose the color and coating of the tanks.
+- **D.** Designers use peak flow to choose the pipe material that resists the chemicals in the flow.
 
 **Answer: C. The unit must still perform at high flow, and peak flow sets the hydraulic capacity.**
 
@@ -422,12 +422,12 @@ Average flow describes a typical day, but a unit that cannot handle peaks fails 
 
 ### 33: Hydraulic and loading design (medium)
 
-A designer must add capacity to an existing clarifier without new tankage. Which change most directly affects hydraulic loading?
+A designer must add capacity to an existing settling unit without new tankage. Which change most directly moves the load on each unit?
 
 - **A.** Lowering the influent temperature to slow the settling of solids.
 - **B.** Putting another clarifier in service to spread the flow over more surface area.
-- **C.** Adding a second lab technician to the shift schedule.
-- **D.** Increasing the depth of the sludge removal equipment in the existing clarifier tank.
+- **C.** Adding a second lab technician to the shift schedule to speed up the sample analysis.
+- **D.** Increasing the depth of the existing clarifier tank so more water is held per unit of area.
 
 **Answer: B. Putting another clarifier in service to spread the flow over more surface area.**
 
@@ -448,12 +448,12 @@ A safety factor gives margin for uncertainty in loads, flows and equipment. It d
 
 ### 35: Hydraulic and loading design (easy)
 
-Why do designers provide redundant pumps at a pump station?
+Why do designers provide redundant pumps at a lift site?
 
 - **A.** So the station keeps moving flow when one pump is out of service for repair.
-- **B.** So the station does not need a wet well or any level control.
-- **C.** So the pumps can serve as a backup water supply for the lab.
-- **D.** So the pumps can run faster than their motors are rated for during peak flow.
+- **B.** So the station does not need a wet well because flow goes straight to the pumps.
+- **C.** So each pump can run at full speed for long periods, which raises the station's efficiency.
+- **D.** So the station can run pumps above their motor ratings for a short time during peak flow.
 
 **Answer: A. So the station keeps moving flow when one pump is out of service for repair.**
 
@@ -461,11 +461,11 @@ Standby capacity keeps flow moving during maintenance and failures. It is not a 
 
 ### 36: Hydraulic and loading design (medium)
 
-A designer is sizing an aeration system. Which goal is most closely tied to oxygen transfer?
+Which goal is most closely tied to gas transfer into the liquid?
 
-- **A.** Matching the tank color to the landscaping around the entire site.
-- **B.** Reducing the number of sample ports installed on the tank walls and lids.
-- **C.** Keeping the tank walls free of algae growth through the whole summer season and into fall.
+- **A.** Holding the return sludge rate constant, whatever the sludge blanket depth in the clarifier.
+- **B.** Matching the number of diffusers to the number of sample ports on the tank walls.
+- **C.** Keeping the mixed liquor pH at the influent value across the day.
 - **D.** Supplying enough dissolved oxygen for the expected organic load in the mixed liquor.
 
 **Answer: D. Supplying enough dissolved oxygen for the expected organic load in the mixed liquor.**
@@ -474,11 +474,11 @@ Aeration design starts from the oxygen demand of the organic load and how well t
 
 ### 37: Hydraulic and loading design (hard)
 
-A design basis comes from an older flow study, and current flows are higher. What is the best action?
+A sizing basis comes from an older flow study, and today's flows are higher. What is the best action?
 
 - **A.** Revise the design basis with current flow and load data before sizing units.
-- **B.** Ask operators to run the existing plant harder during the design period.
-- **C.** Keep the old basis, since design flows are fixed once the permit is issued and do not change.
+- **B.** Ask operators to run the existing plant at a higher rate to test its new capacity.
+- **C.** Keep the old basis, since design flows are fixed once the permit is issued.
 - **D.** Add a fixed percentage to the old basis and assume that covers the change.
 
 **Answer: A. Revise the design basis with current flow and load data before sizing units.**
@@ -491,7 +491,7 @@ What is the main purpose of flow equalization ahead of a treatment process?
 
 - **A.** To mix chemical additives into the influent before screening.
 - **B.** To lower the water temperature before the primary clarifier.
-- **C.** To send raw wastewater straight to the effluent without treatment during repairs.
+- **C.** To bypass a unit during repairs so the influent flows straight to the next process.
 - **D.** To hold back flow peaks so downstream units run closer to design conditions.
 
 **Answer: D. To hold back flow peaks so downstream units run closer to design conditions.**
@@ -500,11 +500,11 @@ Equalization evens out flow and load so downstream units are not overwhelmed by 
 
 ### 39: Process sizing principles (hard)
 
-Why check solids loading as well as hydraulic loading for a clarifier?
+Why would a designer run a second check on a clarifier beyond the flow-per-area calculation?
 
-- **A.** Solids loading tells the designer the color of the effluent.
+- **A.** Solids loading gives the effluent turbidity directly, so a separate check is not needed.
 - **B.** Hydraulic loading alone does not show whether the solids can be removed.
-- **C.** Hydraulic loading applies just to sludge digesters, not clarifiers.
+- **C.** Hydraulic loading applies to digesters, while clarifiers are sized on solids loading.
 - **D.** Solids loading is the same number as hydraulic loading, so one check is enough.
 
 **Answer: B. Hydraulic loading alone does not show whether the solids can be removed.**
@@ -516,7 +516,7 @@ Clarifiers can pass the flow and still overload on solids. Both checks are neede
 What does a longer hydraulic detention time do in a settling basin?
 
 - **A.** It increases the settling velocity of the particles themselves, so less area is needed.
-- **B.** It makes the basin depth unimportant to the design of the tank.
+- **B.** It lets the basin be built shallower, since particles settle at the same rate at each depth.
 - **C.** It gives particles more time to settle, up to the limit set by other factors.
 - **D.** It reduces the surface area needed for the same flow.
 
@@ -528,10 +528,10 @@ Detention time sets how long water stays in the basin. Settling velocity is a pr
 
 Which factor most affects the oxygen a designer must supply in an activated sludge tank?
 
-- **A.** The distance from the plant to the nearest public road or highway.
+- **A.** The number of plant operators who share the aeration controls across the shift.
 - **B.** The organic load entering the tank and the biological growth it supports.
-- **C.** The number of visitors to the site each year.
-- **D.** The color of the tank's concrete walls and the paint used on the lid over several years.
+- **C.** The sludge scraper speed in the secondary clarifier downstream of the aeration tank.
+- **D.** The temperature of the influent during the coldest season of the year.
 
 **Answer: B. The organic load entering the tank and the biological growth it supports.**
 
@@ -552,12 +552,12 @@ A longer sludge age keeps more biomass and increases endogenous respiration. Net
 
 ### 43: Process sizing principles (medium)
 
-Why add a margin to the calculated detention time in a chlorine contact basin?
+Why add a margin to the calculated detention time in a chlorine basin?
 
 - **A.** Short-circuiting and variable flow can cut the real contact time.
 - **B.** Chlorine decays faster in a larger basin, so the extra time is wasted.
-- **C.** A longer contact time means the chlorine residual is no longer measured.
-- **D.** The tank must match the number of operators working on the shift.
+- **C.** A longer contact time means less chlorine is needed, so the dose can be cut.
+- **D.** The basin volume is set by the length of the shift, not by the flow.
 
 **Answer: A. Short-circuiting and variable flow can cut the real contact time.**
 
@@ -581,7 +581,7 @@ A standby unit provides continuity during maintenance or failure. It is not adde
 A basin must handle widely swinging day-to-night loads. Which sizing basis is better?
 
 - **A.** Size on a basis that covers the expected load range and check that controls can follow it.
-- **B.** Size on peak flow and disregard the organic load in the design.
+- **B.** Size on peak flow, since existing controls can absorb the organic load without a design check.
 - **C.** Size on the lowest flow measured in the last year.
 - **D.** Size on average flow, since peaks are short and the controls will cope with them during the day.
 
@@ -593,12 +593,12 @@ Wide load swings need a basis that covers the range, with controls that can foll
 
 Before anyone enters a closed tank or wet well that has been idle, what must be checked first?
 
-- **A.** A reading on a handheld radio to confirm the area is quiet.
-- **B.** A visual check that the lid is clean, the ladder is painted and the area around it is tidy.
-- **C.** A quick look from the top to confirm no parts are moving and the air seems fine.
-- **D.** The atmosphere, tested for oxygen, flammable gas and toxic gas, with results recorded.
+- **A.** A check that the hatch opens freely and a fan has run for a few minutes before entry.
+- **B.** A visual check that the ladder and lid are in good repair and the area is ventilated.
+- **C.** A quick look from the top to confirm no parts are moving and the air seems fine before anyone climbs down.
+- **D.** The atmosphere, tested for oxygen, flammable gas and toxic gas, with each reading recorded before entry.
 
-**Answer: D. The atmosphere, tested for oxygen, flammable gas and toxic gas, with results recorded.**
+**Answer: D. The atmosphere, tested for oxygen, flammable gas and toxic gas, with each reading recorded before entry.**
 
 Stored or stagnant spaces can hold an oxygen-deficient or toxic atmosphere that a visual check cannot detect. Testing comes before entry.
 
@@ -607,9 +607,9 @@ Stored or stagnant spaces can hold an oxygen-deficient or toxic atmosphere that 
 Which element best describes a permit-required confined space?
 
 - **A.** Any space deeper than five feet that holds water and is fully enclosed by solid walls.
-- **B.** Any space with a sign that warns of danger, even if it is open to the air.
+- **B.** An enclosed space that a worker enters for routine rounds, without a permit.
 - **C.** A hazard such as a harmful atmosphere, plus a layout that limits entry and exit.
-- **D.** A room where a worker sits at a desk for long periods and takes regular breaks.
+- **D.** A space with a fall hazard that is open at the top and has a fixed ladder.
 
 **Answer: C. A hazard such as a harmful atmosphere, plus a layout that limits entry and exit.**
 
@@ -621,8 +621,8 @@ A worker is found unconscious in a wet well after a single-person entry. What is
 
 - **A.** Wait for the atmosphere to clear on its own before calling anyone for assistance.
 - **B.** Call trained rescue help and do not enter without proper equipment and a standby person.
-- **C.** Enter at once, without any equipment, and carry the worker out before help arrives.
-- **D.** Lower a rope and pull the worker up while standing at the top of the wet well alone, without help.
+- **C.** Enter at once, with no tools, and carry the worker out before help arrives.
+- **D.** Lower a rope and pull the worker up, with one person at the top holding the line.
 
 **Answer: B. Call trained rescue help and do not enter without proper equipment and a standby person.**
 
@@ -633,8 +633,8 @@ Most rescuers are injured while trying to help without equipment or a standby pe
 Why does a typical lockout procedure have each worker place a personal lock on the energy source?
 
 - **A.** So no one can restart the equipment while another person is working on it.
-- **B.** So the machine's speed can be measured while it is locked out for the repair crew.
-- **C.** So the next shift can use the lock to mark the end of its work.
+- **B.** So the lock keeps the energy source at a set level while the repair crew measures the machine.
+- **C.** So the lock marks which crew owns the repair report for the shift.
 - **D.** So the lock can be shown to an inspector as proof the machine was stopped.
 
 **Answer: A. So no one can restart the equipment while another person is working on it.**
@@ -656,12 +656,12 @@ Oxidation and biological activity use up oxygen in an enclosed space. Ventilatio
 
 ### 51: Hazard recognition and confined spaces (medium)
 
-Why is a gas detector checked for calibration before use?
+Why is a gas monitor checked before each use?
 
-- **A.** Calibration keeps the detector's warranty valid for the coming year.
-- **B.** Calibration gives the detector a longer battery life for the shift.
+- **A.** Calibration resets the detector's data log so the shift readings start from zero.
+- **B.** Calibration sets the alarm's volume so workers hear it over the blower noise.
 - **C.** An out-of-calibration detector can read low or high, so a hazard may go unnoticed.
-- **D.** Calibration sets the detector's color so workers can see it in dim light and at night.
+- **D.** Calibration extends the sensor's service life, so the unit can go a full year between checks.
 
 **Answer: C. An out-of-calibration detector can read low or high, so a hazard may go unnoticed.**
 
@@ -682,9 +682,9 @@ Hydrogen sulfide is toxic, and a high level can deaden the sense of smell. The s
 
 ### 53: Chemicals and electrical hazards (easy)
 
-Why must chemicals that could react together be stored apart?
+Why must materials that could react together be stored apart?
 
-- **A.** Storing them together makes the labels easier to read in the store room.
+- **A.** Storing them together saves floor space and keeps the containers in one place.
 - **B.** Chemicals stored together lose their strength more slowly over time.
 - **C.** Separate storage is needed for solid chemicals, and liquids can share space.
 - **D.** Mixing incompatible chemicals can release heat, toxic gas or fire.
@@ -697,10 +697,10 @@ Incompatible chemicals can react when spilled or leaked together. Separate stora
 
 What is the main hazard when chlorine gas is released in an enclosed room?
 
-- **A.** It makes the floor slippery and the path uneven, so workers can fall while they move around the room.
-- **B.** It changes the color of the walls over a period of several months.
+- **A.** It reacts with the floor coating, which can leave a slippery film for several days.
+- **B.** It leaves a residue that stains the walls and must be wiped off within a week.
 - **C.** Breathing it can cause serious injury, and it can reach harmful levels quickly.
-- **D.** It cools the room quickly and can damage the lights in the ceiling.
+- **D.** It raises the room humidity, which can short out lights and other nearby electrical equipment.
 
 **Answer: C. Breathing it can cause serious injury, and it can reach harmful levels quickly.**
 
@@ -711,9 +711,9 @@ Chlorine gas is a toxic respiratory hazard. In a closed room it can build up qui
 Why must a worker keep a clear, dry path to an electrical panel?
 
 - **A.** Water, clutter and poor footing raise the risk of shock or a fall.
-- **B.** The panel must stay wet so it can cool down during operation.
-- **C.** A dry path keeps the panel's color bright for the next inspection.
-- **D.** Clutter prevents the panel from producing electricity at full load.
+- **B.** The panel must stay damp so the insulation can conduct heat away during operation.
+- **C.** A clear path lets the panel run at a cooler temperature, which extends its life.
+- **D.** Clutter raises the panel's voltage, so the breaker trips more often on each shift.
 
 **Answer: A. Water, clutter and poor footing raise the risk of shock or a fall.**
 
@@ -721,11 +721,11 @@ Wet floors and blocked access raise both shock and fall risks. Good access is a 
 
 ### 56: Chemicals and electrical hazards (medium)
 
-A pump is locked out for repair, but a hot spot is noticed on a nearby control box. What is the best action?
+A pump is locked out for repair, but a warm spot is noticed on a nearby control box. What is the best action?
 
-- **A.** Remove the lockout and start the pump, since the hot spot is in a different box.
+- **A.** Start the pump on manual, since the hot spot is in a separate box from the motor.
 - **B.** Keep the lockout, confirm stored energy is controlled and report the hot spot.
-- **C.** Cover the hot spot with a rag and continue the repair as planned.
+- **C.** Mark the hot spot for the next shift and finish the repair while the lockout stays in place.
 - **D.** Ignore the hot spot if the motor itself still feels cool to the touch.
 
 **Answer: B. Keep the lockout, confirm stored energy is controlled and report the hot spot.**
@@ -737,8 +737,8 @@ A hot spot is an unexplained hazard. The lockout stays in place, and the conditi
 Which practice best controls the hazard of a chemical splash to the eyes?
 
 - **A.** Wearing sunglasses while handling the chemical, since they block most splashes from the side.
-- **B.** Keeping the chemical in a clear container so splashes are visible.
-- **C.** Holding the chemical above head height while pouring it slowly.
+- **B.** Using a larger bottle so the chemical is poured less often and splashes are rare.
+- **C.** Pouring slowly from a low height, which keeps spray and splash from forming.
 - **D.** Suitable eye protection and an eyewash or shower within a short distance.
 
 **Answer: D. Suitable eye protection and an eyewash or shower within a short distance.**
@@ -765,7 +765,7 @@ After a chlorine leak alarm sounds and then stops, what is the best response?
 - **A.** Follow the facility procedure now, and do not enter until detection shows the area is safe.
 - **B.** Turn on the fan and enter at once, since the fan clears the gas quickly.
 - **C.** Enter quickly through the door, since the alarm stopped and the gas has probably cleared.
-- **D.** Open the room door and wait inside for the gas to settle.
+- **D.** Open the door, stand at the threshold for a moment, then return to the work area.
 
 **Answer: A. Follow the facility procedure now, and do not enter until detection shows the area is safe.**
 
@@ -773,9 +773,9 @@ An alarm that stops does not prove the gas is gone. Entry should wait for verifi
 
 ### 60: Sampling and sample handling (easy)
 
-Why is a composite sample built from several aliquots taken over the sampling period?
+Why is a composite sample built from several aliquots taken over the full collection window?
 
-- **A.** It shows the highest value reached at any moment during the day.
+- **A.** It shows the highest value reached during one moment of the day.
 - **B.** It makes the sample easier to store in a refrigerator at the lab.
 - **C.** It represents the average quality over the sampling period, not one moment.
 - **D.** It removes the need to record the time and flow of each aliquot taken.
@@ -786,12 +786,12 @@ A composite reflects the whole period when aliquots are combined in proportion t
 
 ### 61: Sampling and sample handling (hard)
 
-A sample for ammonia nitrogen is left warm for two days before analysis. What is the most likely effect?
+A sample for ammonia is left warm for two days before analysis. What is the most likely effect?
 
-- **A.** The sample becomes denser over time, so a mass reading taken from it rises by a fixed amount.
-- **B.** The lab's pH meter is damaged by the warm sample and must be replaced.
+- **A.** The warm sample raises the pH reading, so the lab must redo the pH calibration before the test.
+- **B.** Ammonia is removed from the sample when it is kept at room temperature.
 - **C.** Biological conversion of nitrogen forms can change the measured concentration.
-- **D.** Ammonia is removed from the sample when it is kept at room temperature.
+- **D.** Ammonia settles out as a solid, so the nitrogen reading drops by a fixed amount.
 
 **Answer: C. Biological conversion of nitrogen forms can change the measured concentration.**
 
@@ -801,10 +801,10 @@ Microorganisms can convert nitrogen forms during storage. Proper preservation an
 
 Why are sample bottles labeled with the time, place and collector's name?
 
-- **A.** So the bottle can be sold to a recycling company after the test.
+- **A.** So the lab can bill each label to the plant, which adds a fee per bottle.
 - **B.** So results can be traced to a specific sample and checked if a question arises.
-- **C.** So the bottle can be reused for the next sample without washing or extra cleaning steps.
-- **D.** So the lab can charge a higher fee for samples with labels.
+- **C.** So the bottle can be reused for the next sample once the old label is kept on.
+- **D.** So the bottle stays in the file as proof of the sampling date and the sampler's shift.
 
 **Answer: B. So results can be traced to a specific sample and checked if a question arises.**
 
@@ -812,7 +812,7 @@ Traceability links a result to its source. Without a label, a result cannot be v
 
 ### 63: Sampling and sample handling (easy)
 
-Which practice best prevents cross-contamination between samples?
+Which practice best prevents cross-contamination between bottles?
 
 - **A.** Using clean containers and gloves, changed between samples.
 - **B.** Labeling each bottle after the lab has finished the analysis.
@@ -827,9 +827,9 @@ Carry-over from one sample into the next can bias results. Clean containers and 
 
 A chain-of-custody form is completed for a set of samples. What does it document?
 
-- **A.** The names of the operators who attended the last training session and their scores on the test.
-- **B.** The brand of bottles used and the color of the caps on the bottles.
-- **C.** The price the lab charged for each test and the discount given.
+- **A.** The lot numbers of the bottles and the date of the lab's last accreditation visit.
+- **B.** The preservative added to each bottle and the bottle's volume in milliliters.
+- **C.** The fee schedule the lab used to bill the plant for each test.
 - **D.** Who handled each sample, when, and under what conditions, from collection to analysis.
 
 **Answer: D. Who handled each sample, when, and under what conditions, from collection to analysis.**
@@ -838,12 +838,12 @@ The form records who handled each sample, when, and under what conditions, which
 
 ### 65: Sampling and sample handling (medium)
 
-A sample is preserved with acid for a metals analysis. Why?
+A sample is preserved with a strong reagent for a metals analysis. Why?
 
 - **A.** Acid keeps dissolved metals in solution and inhibits biological change.
-- **B.** Acid raises the sample's temperature so the test runs faster in the lab.
-- **C.** Acid turns the sample into a solid so it can be shipped without leaks.
-- **D.** Acid makes the sample smell pleasant for the lab technicians working on it.
+- **B.** Acid speeds the metals reaction, so the analysis takes less time in the lab.
+- **C.** Acid thickens the sample so it can be shipped without leaks in the cooler.
+- **D.** Acid stops the sample from foaming, which keeps the bottle from overflowing in transit.
 
 **Answer: A. Acid keeps dissolved metals in solution and inhibits biological change.**
 
@@ -853,7 +853,7 @@ Preservation keeps the metals in the sample and slows changes that would alter t
 
 Why is a sample collected at a point that represents the flow important?
 
-- **A.** A point at the top of the tank makes the sample lighter in color.
+- **A.** A point close to the tank wall makes the sample easier to reach from the walkway.
 - **B.** A non-representative point gives results that do not reflect the actual discharge.
 - **C.** A point near the lab door is easier to reach for the sampling crew.
 - **D.** A point with the most visible foam on the surface makes the sample look more typical.
@@ -866,8 +866,8 @@ The result is only meaningful if the sample represents the flow being measured. 
 
 Why does a lab's QC plan often include a duplicate sample in each batch?
 
-- **A.** To double the lab's fee for the analysis performed that day.
-- **B.** To replace a missing sample that was lost in the transport van between the plant and the lab.
+- **A.** To verify the lab's invoice against a second analysis of the same bottle.
+- **B.** To replace a sample that failed the first analysis, so the result is not reported twice.
 - **C.** To use up the reagent before it expires in the storage room.
 - **D.** To check the precision of the method by comparing two results from the same sample.
 
@@ -880,7 +880,7 @@ Duplicates show how repeatable the method is. Large differences between duplicat
 A calibration curve for a lab test shows a poor fit. What is the best response?
 
 - **A.** Average the poor curve with last month's curve to smooth it out.
-- **B.** Remove the low standard from the curve so that it passes through the origin without a check.
+- **B.** Force the curve through zero so the slope looks linear, then report results.
 - **C.** Check the standards and instrument, then recalibrate before reporting results.
 - **D.** Report the results anyway, since the fit shows the trend correctly.
 
@@ -929,11 +929,11 @@ A control with a known value checks accuracy during the run. A failed control me
 
 ### 72: Analytical measurements and quality control (easy)
 
-Why does a lab record the temperature of a sample refrigerator daily?
+Why does a lab log the holding conditions of its sample refrigerator daily?
 
-- **A.** Refrigerators must be painted a different color each month for inspection.
-- **B.** The temperature log sets the price of each analysis for the month.
-- **C.** Temperature readings are used to pick the next lab technician to hire.
+- **A.** Refrigerator doors must be left closed for a set time each day to log the reading.
+- **B.** The temperature log sets the lab's billing rate for each sample shipped that month.
+- **C.** Temperature readings are used to schedule the next preventive maintenance visit.
 - **D.** Temperature drift can change sample stability and invalidate results.
 
 **Answer: D. Temperature drift can change sample stability and invalidate results.**
@@ -945,7 +945,7 @@ Holding temperature affects how stable samples remain. A drifting refrigerator c
 A lab result is much higher than the previous five results for the same point. What is the best first step?
 
 - **A.** Check the sample label, the chain of custody and the QC data before reporting.
-- **B.** Multiply the result by a fixed factor so that it fits the earlier range of values on the chart.
+- **B.** Average this result with the five earlier results to smooth out the chart.
 - **C.** Report the result as the new normal and adjust the trend chart.
 - **D.** Discard the result and take a new sample the next morning.
 
@@ -973,7 +973,7 @@ A new operator is assigned to a process unit. What is the best first step?
 - **A.** Assign the full unit to the new operator on the first day to build confidence.
 - **B.** Ask the new operator to read the manuals and sign the log without supervision.
 - **C.** Give a documented walk-through, with a trained operator supervising early tasks.
-- **D.** Hold the first week's training for the whole crew at once, without any hands-on time.
+- **D.** Hold the first week's training for the whole crew at once, with little hands-on time.
 
 **Answer: C. Give a documented walk-through, with a trained operator supervising early tasks.**
 
@@ -985,8 +985,8 @@ Why does a supervisor review operator logs each shift?
 
 - **A.** To decide which operator receives the largest bonus that quarter.
 - **B.** To catch changes or missing entries early, when a problem can still be corrected.
-- **C.** To check that the coffee supply in the break room is replenished before each shift starts.
-- **D.** To confirm the logs are printed in a uniform font for the files.
+- **C.** To check that the crew has enough consumables stocked for the week's sampling.
+- **D.** To confirm each entry was signed by the operator who made it, within the shift.
 
 **Answer: B. To catch changes or missing entries early, when a problem can still be corrected.**
 
@@ -997,8 +997,8 @@ Early review of logs allows problems to be corrected while they are still small.
 What does a good training record include?
 
 - **A.** Who was trained, on what task, when, and how competence was checked.
-- **B.** The trainee's favorite food, hobbies and preferred shift times.
-- **C.** A photograph of the trainee in the plant's safety vest.
+- **B.** The trainee's shift preferences and the names of the crew members on each team.
+- **C.** A signed copy of the trainee's license application and the course fee receipt.
 - **D.** The price paid for the training materials and the room rental.
 
 **Answer: A. Who was trained, on what task, when, and how competence was checked.**
@@ -1022,10 +1022,10 @@ A decision based on data and permit requirements, documented for the crew, resol
 
 What is the main purpose of a shift handover?
 
-- **A.** To give the outgoing crew extra time to finish reading the newspaper.
-- **B.** To let the incoming crew sign the logs before they have been read.
+- **A.** To let the outgoing crew leave early once the incoming crew has signed in.
+- **B.** To let the incoming crew sign the logs in advance, before the shift begins.
 - **C.** To pass on status, abnormal conditions and open tasks to the next crew.
-- **D.** To show the supervisor which operator arrived first in the morning.
+- **D.** To record which operator arrived first, so the overtime is split fairly.
 
 **Answer: C. To pass on status, abnormal conditions and open tasks to the next crew.**
 
@@ -1033,11 +1033,11 @@ A handover keeps operation continuous by sharing the facts the next crew needs t
 
 ### 80: Staffing and training (medium)
 
-Why should overtime be tracked alongside process problems?
+Why should overtime be tracked alongside equipment problems?
 
-- **A.** Overtime is required by the permit for any process change.
+- **A.** Overtime must be approved by the permit before the process changes take effect.
 - **B.** Fatigue from long hours can raise the risk of process errors.
-- **C.** Overtime changes the color of the logbook pages over time.
+- **C.** Overtime raises the cost of each shift, which can change the budget for spare parts.
 - **D.** Overtime is paid at a higher rate, so the plant should track it.
 
 **Answer: B. Fatigue from long hours can raise the risk of process errors.**
@@ -1046,14 +1046,14 @@ Tired crews make more errors. Looking at overtime with process problems can show
 
 ### 81: Budget, communication and planning (easy)
 
-Why plan spare parts for critical equipment?
+Why keep a stock of replacement parts for vital machinery?
 
-- **A.** So the spare parts can be sold to neighboring plants for profit.
-- **B.** So a failure can be repaired quickly and treatment continues.
-- **C.** So the vendor can invoice the plant at a higher rate later.
-- **D.** So the parts can be stored in the lab for display purposes.
+- **A.** So the plant can resell surplus parts once they are older than two years.
+- **B.** So a failure can be repaired quickly, so treatment continues with minimal interruption.
+- **C.** So the vendor can hold the parts until the next maintenance contract is signed.
+- **D.** So the parts can be checked out to nearby plants during planned outages.
 
-**Answer: B. So a failure can be repaired quickly and treatment continues.**
+**Answer: B. So a failure can be repaired quickly, so treatment continues with minimal interruption.**
 
 Critical parts on hand shorten repair time when equipment fails, which protects treatment performance.
 
@@ -1062,9 +1062,9 @@ Critical parts on hand shorten repair time when equipment fails, which protects 
 A supervisor must request a capital budget item. What information makes the request most convincing?
 
 - **A.** The problem, the options, the cost of each and the risk of delaying the work.
-- **B.** A request written in the longest possible sentence for the board.
+- **B.** A request that lists the vendor's full product catalog so the board can compare options.
 - **C.** A photo of the equipment and a general statement that it looks old.
-- **D.** The name of the vendor's sales representative, the color of the brochure and the date printed on it.
+- **D.** The vendor's brochure, which lists the warranty and the list price of each option.
 
 **Answer: A. The problem, the options, the cost of each and the risk of delaying the work.**
 
@@ -1074,10 +1074,10 @@ A budget request is judged on the need, the alternatives and the cost of delay. 
 
 Why does a maintenance backlog matter to process control?
 
-- **A.** A backlog means the work orders are printed in a smaller font.
+- **A.** A backlog means the work orders need a second signature before they can be closed.
 - **B.** A backlog gives the operators more time to review the permit and the training binder each day.
 - **C.** Deferred repairs increase the chance of equipment failure during critical operation.
-- **D.** A backlog of tasks makes the plant's name appear first on the list.
+- **D.** A backlog of tasks lowers the plant's rating on the state's annual scorecard.
 
 **Answer: C. Deferred repairs increase the chance of equipment failure during critical operation.**
 
@@ -1087,9 +1087,9 @@ Deferred maintenance leaves weak equipment in service. The failure risk lands on
 
 What is a good reason to tell the regulator about an upcoming process change?
 
-- **A.** It lets the operator skip the plan review for that process unit this year.
-- **B.** It lets the plant avoid future inspections for the rest of the year.
-- **C.** It turns the change into a public event that the press will attend.
+- **A.** It lets the plant skip the sampling plan review for the unit until the next permit cycle.
+- **B.** It lets the plant skip the next routine sampling event if the change is minor.
+- **C.** It starts a public comment period that the plant must answer before any work begins.
 - **D.** It allows the agency to review the change before it affects compliance.
 
 **Answer: D. It allows the agency to review the change before it affects compliance.**
@@ -1101,9 +1101,9 @@ Early notice lets the agency and the plant agree on the steps and records needed
 Why does a supervisor review monthly operating reports with the staff?
 
 - **A.** To find trends early and agree on actions with the people who run the plant.
-- **B.** To decide whose name goes on the cover page of the report.
-- **C.** To prove the staff are too busy to attend any other meetings.
-- **D.** To check which operator wrote the most words in the report and which pages were the longest.
+- **B.** To decide which supervisor's name appears on the monthly submittal to the agency.
+- **C.** To show the staff the plant's budget cuts, so they accept the reduced overtime.
+- **D.** To rank each operator's entries by length, so the shift schedule can be adjusted.
 
 **Answer: A. To find trends early and agree on actions with the people who run the plant.**
 
@@ -1113,7 +1113,7 @@ Reviewing reports together turns data into shared action. The crew knows the tre
 
 A process change lowers the energy use of the plant. Why should the operator still check the effluent?
 
-- **A.** Effluent checks are needed when the energy bill rises and not otherwise.
+- **A.** Effluent checks are needed when the energy bill rises sharply during the year.
 - **B.** Energy use and effluent quality are the same measurement.
 - **C.** Energy savings do not show whether treatment still meets the permit.
 - **D.** Lower energy use means the effluent is cleaner by definition.
@@ -1150,11 +1150,11 @@ Water leaves the land by evaporation from surfaces and by transpiration from pla
 
 ### 89: Water cycle and treatment purposes (easy)
 
-Why is a sewer system designed to carry flow by gravity where possible?
+Why is a sewer system designed to let flow run downhill where possible?
 
 - **A.** Gravity keeps air out of the pipes and stops odor from forming there.
 - **B.** Pipes laid level with the ground hold more flow than sloped pipes.
-- **C.** Gravity makes the water heavier so it can be sampled more easily.
+- **C.** Gravity raises the water pressure so the sample can be drawn at a higher flow.
 - **D.** Gravity moves flow without pumps, which lowers energy use and maintenance.
 
 **Answer: D. Gravity moves flow without pumps, which lowers energy use and maintenance.**
@@ -1189,12 +1189,12 @@ BOD measures the oxygen consumed by microbial breakdown over a standard period. 
 
 ### 92: Water cycle and treatment purposes (easy)
 
-Why do operators track the temperature of wastewater in a treatment plant?
+Why do operators monitor the heat of wastewater in a treatment plant?
 
-- **A.** Temperature changes the taste of the water that residents drink at home.
-- **B.** Temperature tells the operator how much power the pumps consume each day.
+- **A.** Heat changes the taste of the water that residents drink at home.
+- **B.** Heat tells the operator how much power the pumps consume each day.
 - **C.** Temperature affects biological rates, oxygen solubility and settling behavior.
-- **D.** Temperature sets the color of the chemical storage tanks on site.
+- **D.** Heat sets how long the chemical storage can be kept before reordering.
 
 **Answer: C. Temperature affects biological rates, oxygen solubility and settling behavior.**
 
@@ -1204,10 +1204,10 @@ Temperature changes microbial activity, the oxygen that water can hold and how s
 
 Which statement about flow units is correct?
 
-- **A.** About 6.9 gallons per minute, found by dividing by ten.
-- **B.** About 69,400 gallons per minute, after multiplying by 100.
+- **A.** About 6,944 gallons per minute, found by multiplying the daily flow by ten.
+- **B.** About 69.4 gallons per minute, found by dividing the daily flow by ten.
 - **C.** About 694 gallons per minute, or 1.55 cubic feet per second.
-- **D.** About 1,440 gallons per minute, the number of minutes in a day.
+- **D.** About 1,440 gallons per minute, using the day as 1,440 minutes.
 
 **Answer: C. About 694 gallons per minute, or 1.55 cubic feet per second.**
 
@@ -1215,7 +1215,7 @@ One million gallons per day is about 694 gallons per minute, and about 1.55 cubi
 
 ### 94: Water cycle and treatment purposes (hard)
 
-A community is growing. Which measure best shows whether treatment capacity will be enough in a few years?
+A community is growing. Which measure best shows whether the plant's design margin will hold in a few years?
 
 - **A.** Projected flow and load, compared with the capacity of each treatment unit.
 - **B.** The number of residents in the community at the most recent census.
@@ -1230,9 +1230,9 @@ Capacity planning compares projected loads with each unit's capacity. Population
 
 Why is the concentration of nutrients in a discharge a concern for a receiving stream?
 
-- **A.** Nutrients reduce the stream's flow by adding weight to the channel bed.
-- **B.** Nutrients make the stream water taste sweeter to people who drink it from the river.
-- **C.** Nutrients change the stream's name on the maps used by the state agency.
+- **A.** Nutrients slow the stream's flow by building sediment on the channel bed over time.
+- **B.** Nutrients raise the stream's dissolved salt content, so the water tastes saltier to anglers.
+- **C.** Nutrients change the stream's classification, so the permit must be reissued each year.
 - **D.** Excess nitrogen and phosphorus can drive algae growth that lowers dissolved oxygen.
 
 **Answer: D. Excess nitrogen and phosphorus can drive algae growth that lowers dissolved oxygen.**
@@ -1241,14 +1241,14 @@ Excess nutrients can fuel algae blooms, and their decay consumes oxygen that aqu
 
 ### 96: Public health and environment (easy)
 
-What does a fecal indicator organism such as E. coli indicate in a sample?
+What does an indicator organism such as E. coli indicate in a sample?
 
-- **A.** The exact number of pathogens living in the sample at that time.
-- **B.** Possible fecal contamination, so pathogens may be present.
-- **C.** The chemical hardness of the sample caused by dissolved minerals.
-- **D.** The temperature at which the sample was collected from the outfall.
+- **A.** The exact number of pathogens living in the sample at that time, counted under the lab's standard method.
+- **B.** Possible fecal contamination, so pathogens may be present and the sample needs a health review.
+- **C.** The chlorine demand of the sample, which sets how much disinfectant is needed.
+- **D.** The flow rate at the outfall when the sample was taken, which sets the dilution.
 
-**Answer: B. Possible fecal contamination, so pathogens may be present.**
+**Answer: B. Possible fecal contamination, so pathogens may be present and the sample needs a health review.**
 
 Indicators show that fecal contamination may be present. They do not count every pathogen, so they point to a possible health risk.
 
@@ -1257,8 +1257,8 @@ Indicators show that fecal contamination may be present. They do not count every
 Why is a sanitary sewer overflow a public health concern?
 
 - **A.** It increases the water pressure in the sewer for the next shift.
-- **B.** It gives the public a free sample of the influent for testing.
-- **C.** It changes the color of rain runoff in the storm drains briefly and does not affect people nearby.
+- **B.** It lets the public check the influent quality on the plant's public website.
+- **C.** The overflow is diluted by rain runoff, so it poses no health risk to people nearby.
 - **D.** It can carry untreated sewage to streets, yards or waterways where people can be exposed.
 
 **Answer: D. It can carry untreated sewage to streets, yards or waterways where people can be exposed.**
@@ -1267,12 +1267,12 @@ Untreated sewage carries pathogens. Overflows expose people and the environment 
 
 ### 98: Public health and environment (medium)
 
-Which factor most affects how quickly a contaminant spreads in groundwater?
+Which factor most affects how quickly a contaminant moves through an aquifer?
 
-- **A.** The color of the soil at the surface and the grass cover.
+- **A.** The color of the soil near the surface and the grass cover on top of it.
 - **B.** The number of wells drilled in the neighborhood last year.
 - **C.** Soil permeability and the groundwater flow gradient.
-- **D.** The height of the nearest water tower above the ground.
+- **D.** The pumping rate of the nearest supply well, measured at the tap closest to the well.
 
 **Answer: C. Soil permeability and the groundwater flow gradient.**
 
@@ -1283,9 +1283,9 @@ Permeability and the hydraulic gradient control how fast water and dissolved mat
 Why do operators keep records of public complaints about odor or noise?
 
 - **A.** They show patterns that point to a process or operating cause that needs attention.
-- **B.** They help the plant set prices for its services in the next budget.
-- **C.** They are used to rank the operators by how often they answer the phone during a shift.
-- **D.** They allow the plant to avoid answering the next complaint.
+- **B.** They help the plant decide which complaints can be closed without a site visit.
+- **C.** They are used to rank crews by the number of complaints received during each shift.
+- **D.** They help the plant set the odor-control budget for the coming year.
 
 **Answer: A. They show patterns that point to a process or operating cause that needs attention.**
 
@@ -1293,14 +1293,14 @@ Repeated complaints in one place or time point to a specific cause, such as a un
 
 ### 100: Public health and environment (easy)
 
-Why do operators watch the tank surface for foam and scum?
+Why do operators watch the tank surface for froth and scum?
 
-- **A.** Foam is a sign the tank's paint is starting to peel off.
-- **B.** Foam can signal a process change or a biological imbalance.
-- **C.** Scum is a sign the lab has made an error in the last result.
+- **A.** Foam shows the tank's coating is wearing, so the aeration diffusers need replacing.
+- **B.** Foam can signal a process change, a biological imbalance or a shift in the mix of organisms.
+- **C.** Scum shows the lab has made an error in the last result, so the entry should be checked.
 - **D.** Foam shows the tank is full, so the operator can stop the influent pump.
 
-**Answer: B. Foam can signal a process change or a biological imbalance.**
+**Answer: B. Foam can signal a process change, a biological imbalance or a shift in the mix of organisms.**
 
 Surface foam and scum reflect the biology and the chemistry of the process, so a change in them is a useful early signal.
 
@@ -1308,9 +1308,9 @@ Surface foam and scum reflect the biology and the chemistry of the process, so a
 
 A plant's effluent discharges to a river used for recreation. Which concern is most important?
 
-- **A.** The river's color changes after rain, so the plant must change its logo.
+- **A.** Storm runoff turns the river brown, which shows the plant's clarifiers are undersized.
 - **B.** Recreational users prefer clear water, so the plant should move its outfall.
-- **C.** Fishermen ask for a discount on their licenses when the river is clear.
+- **C.** Fishing groups want the plant to pay for stocking the river each spring.
 - **D.** Pathogens and low dissolved oxygen can threaten swimmers and aquatic life.
 
 **Answer: D. Pathogens and low dissolved oxygen can threaten swimmers and aquatic life.**
@@ -1337,7 +1337,7 @@ Why are sewer lines laid with a minimum slope?
 - **A.** To keep solids moving so they do not settle and block the line.
 - **B.** To increase the pressure at the lowest point in the collection system.
 - **C.** To reduce the number of manholes needed along a collector route.
-- **D.** To make the pipe easier to dig up for a future inspection later.
+- **D.** To let the pipe drain fully during dry weather so no cleaning is needed.
 
 **Answer: A. To keep solids moving so they do not settle and block the line.**
 
@@ -1358,9 +1358,9 @@ Infiltration is groundwater entering through defects. Exfiltration is the revers
 
 ### 105: Collection system components (medium)
 
-Why is inflow different from infiltration?
+Why is storm-water entry different from infiltration?
 
-- **A.** Inflow is water pumped from the plant back into the collection system.
+- **A.** Inflow is water pumped from the lift station into the main when the level is high.
 - **B.** Inflow and infiltration are two names for the same condition in sewers.
 - **C.** Inflow enters through direct connections such as roof drains.
 - **D.** Inflow is slow groundwater seepage that enters through joints over several months.
@@ -1375,7 +1375,7 @@ Which practice helps find blockages in a gravity sewer before an overflow occurs
 
 - **A.** Regular cleaning and closed-circuit television inspection of the line.
 - **B.** Installing a larger pump at the first manhole on the collector route.
-- **C.** Painting the manhole lids so the crew can see them in the dark.
+- **C.** Adding a flow meter at the first manhole so backups show up on the plant's display.
 - **D.** Waiting for residents to report a backup before sending a crew.
 
 **Answer: A. Regular cleaning and closed-circuit television inspection of the line.**
@@ -1386,7 +1386,7 @@ Scheduled cleaning and camera inspection find grease, roots and debris before th
 
 A sewer main surcharges during storms. What is the best first step to find the cause?
 
-- **A.** Raise the manhole lids so storm water is kept out of the sewer.
+- **A.** Seal the manhole lids with tape so storm water stays out of the sewer.
 - **B.** Review flow data and inspect for inflow sources and capacity limits.
 - **C.** Install a larger pump at the plant so the flow leaves the sewer faster.
 - **D.** Add more chlorine to the influent so the sewer pipe is cleaner.
@@ -1399,7 +1399,7 @@ Surcharging can come from inflow or from a capacity limit. Flow data and inspect
 
 Why do operators record the location and depth of each manhole?
 
-- **A.** So the manhole colors can be matched to the plant's paint specification.
+- **A.** So the manhole lids can be matched to the paint schedule each spring.
 - **B.** So the price of each manhole can be compared with the budget.
 - **C.** So the manholes can be counted for the annual report to the public.
 - **D.** So crews can find and access the line quickly for repairs and emergencies.
@@ -1451,8 +1451,8 @@ Grease solidifies in cool pipes and sticks to the walls. The buildup narrows the
 
 What is the purpose of a flow monitor installed in a sewer?
 
-- **A.** To control the color of the sewage before it reaches the plant.
-- **B.** To count the number of customers who connect to the main each day.
+- **A.** To set the chemical dose at the plant from the sewage color on the monitor.
+- **B.** To bill customers by the depth of sewage they send into the main each day.
 - **C.** To measure the temperature of the sewage in the main line.
 - **D.** To record flow and depth trends so changes can be found early.
 
@@ -1462,12 +1462,12 @@ Flow and depth records reveal rising levels, surcharge and inflow events, which 
 
 ### 113: Collection system operation (hard)
 
-A collector main has a sag where solids collect. Which action best addresses the problem?
+A collector main has a low point where solids collect. Which action best addresses the problem?
 
-- **A.** Replace the whole collection system at once, starting with the sag.
+- **A.** Replace the pipe through the sag, since the slope does not fix the problem.
 - **B.** Ignore the sag, since solids will eventually wash through on their own.
 - **C.** Schedule cleaning at the sag and review the slope and capacity of that reach.
-- **D.** Add more water to the line so the solids float out of the sag.
+- **D.** Flush the sag with extra water so the solids float out, then leave the reach as is.
 
 **Answer: C. Schedule cleaning at the sag and review the slope and capacity of that reach.**
 
@@ -1477,10 +1477,10 @@ A sag lowers velocity and lets solids settle. Cleaning restores flow, and the sl
 
 Why do operators coordinate with the plant when a sewer line is cleaned?
 
-- **A.** Cleaning makes the plant's tank walls easier to paint in spring.
+- **A.** Cleaning removes the need for plant monitoring that week.
 - **B.** Cleaning can send debris and surges to the plant for treatment.
 - **C.** Cleaning lowers the plant's electric bill for the same month.
-- **D.** Cleaning removes the need for plant monitoring that week.
+- **D.** Cleaning makes the plant's influent meter read higher for the rest of the week.
 
 **Answer: B. Cleaning can send debris and surges to the plant for treatment.**
 
@@ -1492,8 +1492,8 @@ What is the most common main cause of a sanitary sewer overflow in wet weather?
 
 - **A.** Inflow and infiltration adding flow beyond the capacity of the sewer line.
 - **B.** Too few manholes on the collector route, so the line is hard to drain.
-- **C.** Operators leaving the sewer lids open during routine rounds.
-- **D.** The sewer line being too clean, so solids stop moving through it.
+- **C.** Operators leaving lift station pumps in manual during routine rounds.
+- **D.** Lines cleaned too often, so the pipe walls lose the lining that carries flow.
 
 **Answer: A. Inflow and infiltration adding flow beyond the capacity of the sewer line.**
 
@@ -1501,11 +1501,11 @@ Wet-weather flow from inflow and infiltration can exceed the pipe's capacity and
 
 ### 116: Pump types and operation (medium)
 
-Why is the suction lift of a pump limited in practice?
+Why is the maximum height a pump can draw water from limited in practice?
 
-- **A.** The pump motor stalls when the suction lift is more than a foot.
+- **A.** The pump motor overloads when suction lift exceeds the motor's rated amperage.
 - **B.** Suction lift makes the water warmer, so the pump's seals fail.
-- **C.** Suction lift adds a visible color to the water that reaches the impeller housing near the motor.
+- **C.** Suction lift adds dissolved gas to the water, which lowers the pump's discharge rating.
 - **D.** Atmospheric pressure limits how high water can be lifted into the pump's suction.
 
 **Answer: D. Atmospheric pressure limits how high water can be lifted into the pump's suction.**
@@ -1518,8 +1518,8 @@ What happens when a centrifugal pump runs with its discharge valve closed for a 
 
 - **A.** It stops making noise and the bearings cool down quickly.
 - **B.** It overheats, because the water inside has no flow to carry heat away.
-- **C.** It pumps twice as much water to make up for the closed valve.
-- **D.** It lowers the water level in the wet well by a fixed amount.
+- **C.** It pumps extra flow through the bypass line, so the discharge pressure stays the same.
+- **D.** It raises the wet well level by a fixed amount, so the level alarm sounds.
 
 **Answer: B. It overheats, because the water inside has no flow to carry heat away.**
 
@@ -1555,10 +1555,10 @@ When pressure drops below the vapor pressure of the liquid, bubbles form and col
 
 Why do operators record pump run hours?
 
-- **A.** Run hours set the price of electricity paid by the plant each month.
+- **A.** Run hours set the utility's demand charge for the plant each billing period.
 - **B.** Run hours show how many operators were on shift at each time.
 - **C.** Run hours guide maintenance and show changes in pump use.
-- **D.** Run hours are used to choose the color of the pump's paint each year.
+- **D.** Run hours decide which pump needs a fresh coat of paint each season.
 
 **Answer: C. Run hours guide maintenance and show changes in pump use.**
 
@@ -1595,8 +1595,8 @@ Higher flow raises friction losses, so the combined flow rises less than double.
 Why use a wet well with a level control and a high-level alarm?
 
 - **A.** To start pumps as the level rises and warn the operator if the level passes a limit.
-- **B.** To keep the level constant at the top of the wet well so that it can be seen from the road.
-- **C.** To add chlorine whenever the level drops to the bottom of the well.
+- **B.** To keep the wet well full during most of the shift, so the pumps run without a restart.
+- **C.** To add chemical to the well when the level reaches the low alarm point.
 - **D.** To lower the level of the wet well at night to save energy.
 
 **Answer: A. To start pumps as the level rises and warn the operator if the level passes a limit.**
@@ -1608,7 +1608,7 @@ Level controls start and stop pumps, and the high-level alarm warns that the lev
 What is the purpose of a check valve on a pump discharge?
 
 - **A.** It allows the operator to measure flow through the discharge pipe easily.
-- **B.** It cools the pump motor by letting air flow through the discharge line.
+- **B.** It drains the discharge line to the wet well so the pump primes quickly.
 - **C.** It increases the pump speed when the discharge pressure falls below normal.
 - **D.** It stops backflow when the pump stops and protects the impeller.
 
@@ -1618,12 +1618,12 @@ A check valve keeps water from draining back through a stopped pump and reduces 
 
 ### 125: Pump controls and performance (medium)
 
-Why does a pump operate near its best efficiency point?
+Why does a pump operate near its best point on the curve?
 
-- **A.** It maximizes the vibration and noise to signal the operator.
-- **B.** It makes the discharge pressure exactly equal to the wet well level.
+- **A.** It maximizes the motor's current draw, which gives the operator an early warning.
+- **B.** It keeps the discharge pressure equal to the suction pressure across the flow range.
 - **C.** It uses less energy per unit of water moved and reduces wear.
-- **D.** It keeps the suction line full of air so the pump runs cooler.
+- **D.** It keeps the suction line partly full so the pump runs cooler at light loads.
 
 **Answer: C. It uses less energy per unit of water moved and reduces wear.**
 
@@ -1644,9 +1644,9 @@ Head is energy per unit weight of liquid, measured as the height a column of wat
 
 ### 127: Pump controls and performance (hard)
 
-A pump runs with more vibration after a bearing change. What is the best first check?
+A pump runs with more vibration after work on its shaft support. What is the best first check?
 
-- **A.** Replace the discharge pipe with a larger size without any other check.
+- **A.** Replace the discharge pipe with a larger size to reduce the line's vibration.
 - **B.** Check alignment and bearing installation against the manufacturer's data.
 - **C.** Turn the pump off and leave it until the vibration stops by itself.
 - **D.** Increase the pump speed to smooth out the vibration in the line.
@@ -1657,10 +1657,10 @@ Misalignment and a wrong bearing fit are common causes of vibration after work. 
 
 ### 128: Pump controls and performance (easy)
 
-Why does a pump's efficiency matter for energy cost?
+Why does pump performance matter for energy cost?
 
-- **A.** Efficiency sets the cost of the replacement motor paint each year.
-- **B.** Efficiency determines how many gallons of water the station stores.
+- **A.** Efficiency sets the replacement schedule for the motor's paint and coating each year.
+- **B.** Efficiency determines how many gallons the wet well can hold between level alarms.
 - **C.** Efficiency changes how the local electric utility sets its billing periods for the plant each year.
 - **D.** At the same head, energy use per unit of water moved depends inversely on pump efficiency.
 
@@ -1670,11 +1670,11 @@ A less efficient pump uses more energy to move the same water, so efficiency is 
 
 ### 129: Pump controls and performance (medium)
 
-Why measure the suction pressure of a pump?
+Why would an operator track the inlet side reading on a pump?
 
 - **A.** Suction pressure is the same as discharge pressure for a pump that is running steadily at full load.
 - **B.** Suction pressure sets the speed of the motor on its shaft.
-- **C.** Suction pressure controls the color of the water in the wet well.
+- **C.** Inlet pressure controls the water temperature at the inlet to the pump seal.
 - **D.** Low suction pressure can warn of cavitation or a blocked or closed suction valve.
 
 **Answer: D. Low suction pressure can warn of cavitation or a blocked or closed suction valve.**
@@ -1701,7 +1701,7 @@ What happens if screenings are not removed from a bar screen regularly?
 - **A.** The influent becomes more dilute and the BOD test result falls.
 - **B.** The screen clogs, head loss rises and the flow may back up or bypass.
 - **C.** The screen becomes lighter and floats to the top of the channel.
-- **D.** The screen's bars rust more slowly, so the screen lasts longer.
+- **D.** The screen's bars wear faster because the flow strikes the bars harder.
 
 **Answer: B. The screen clogs, head loss rises and the flow may back up or bypass.**
 
@@ -1724,9 +1724,9 @@ A comminutor shreds solids so they pass downstream instead of being removed as s
 
 Why are screenings washed and dewatered before disposal?
 
-- **A.** Dewatering adds water to the screenings so they can be pumped away.
+- **A.** Dewatering adds lime to the screenings so they can be pumped to the digester.
 - **B.** Washing removes organic material and dewatering reduces the weight and odor.
-- **C.** It turns the screenings into a liquid that can be discharged to the stream.
+- **C.** It turns the screenings into a slurry that can be discharged to the stream.
 - **D.** Washing makes the screenings heavier so they sink in the landfill.
 
 **Answer: B. Washing removes organic material and dewatering reduces the weight and odor.**
@@ -1738,9 +1738,9 @@ Washing and pressing reduce odor and weight, which makes handling and disposal e
 A bar screen's head loss rises quickly during a storm. What is the best response?
 
 - **A.** Clean the screen more often and check the level upstream for a blockage.
-- **B.** Raise the screen out of the channel so flow can pass beneath it.
+- **B.** Lift the screen partway out of the channel so the debris can pass over the top.
 - **C.** Turn off the influent pump and wait for the storm to pass by itself.
-- **D.** Bypass the screen for the rest of the storm without notifying anyone.
+- **D.** Bypass the screen for the rest of the storm and clean it once the flow drops.
 
 **Answer: A. Clean the screen more often and check the level upstream for a blockage.**
 
@@ -1750,8 +1750,8 @@ Rising head loss signals a blockage or a surge. Cleaning and checking the upstre
 
 Why is a fine screen used in some plants instead of a coarse screen?
 
-- **A.** Coarse screens remove the grit, so a fine screen is rarely needed.
-- **B.** Fine screens need no cleaning and so reduce labor for the crew.
+- **A.** Coarse screens remove the grit, so a fine screen adds a step with little benefit.
+- **B.** Fine screens need little cleaning and so reduce labor for the crew.
 - **C.** Fine screens increase the flow rate in the channel by letting more water through the bars.
 - **D.** Finer openings remove more small solids that would otherwise load later units.
 
@@ -1774,11 +1774,11 @@ Gaps and bent bars let debris pass. Bypassing the screen can damage downstream e
 
 ### 137: Grit removal (easy)
 
-Why is grit removed before primary treatment?
+Why is grit taken out before primary treatment?
 
 - **A.** Grit wears pumps and clogs digesters and channels, so it is removed early.
 - **B.** Grit cools the influent, which slows down the settling process badly.
-- **C.** Grit raises the influent BOD, so it must be removed to pass testing.
+- **C.** Grit raises the influent BOD reading, so removal is needed to meet the lab's method.
 - **D.** Grit adds nutrients that the primary units need for their biology.
 
 **Answer: A. Grit wears pumps and clogs digesters and channels, so it is removed early.**
@@ -1787,7 +1787,7 @@ Grit is abrasive and settles in equipment. Removing it early protects pumps, pip
 
 ### 138: Grit removal (medium)
 
-A grit chamber captures heavy particles while keeping lighter organics in flow. What controls this separation?
+A grit chamber captures heavy particles while keeping lighter material in flow. What controls this separation?
 
 - **A.** The temperature of the channel walls, which is measured monthly.
 - **B.** Flow velocity, held in a range that settles grit but keeps organics moving.
@@ -1800,11 +1800,11 @@ Grit settles when velocity is low enough. Too little velocity lets organics sett
 
 ### 139: Grit removal (easy)
 
-Why do operators check grit-removal performance?
+Why do operators check how well grit is being taken out?
 
 - **A.** Grit removal performance changes the number of screenings collected.
-- **B.** Grit removal performance changes the value of the plant's land.
-- **C.** Grit removal performance sets the color of the final effluent.
+- **B.** Grit removal performance changes the rate the hauler charges for each load.
+- **C.** Grit removal performance sets the odor level at the headworks building.
 - **D.** Poor grit removal leaves abrasive material in later units and equipment.
 
 **Answer: D. Poor grit removal leaves abrasive material in later units and equipment.**
@@ -1826,12 +1826,12 @@ Grit is inert and dense, so it settles in pipes and tanks. Returning it creates 
 
 ### 141: Grit removal (medium)
 
-Why is grit separated from organic material in a washer?
+Why is grit separated from its attached matter in a washer?
 
 - **A.** Organic material is valuable, so washers recover it for sale.
 - **B.** Washing removes organic material clinging to grit, which lowers odor.
 - **C.** Organic material clings to grit and makes the grit heavier to lift.
-- **D.** Grit washers remove the color from the wastewater before it is sampled.
+- **D.** Grit washers remove the odor from the wastewater before it is sampled.
 
 **Answer: B. Washing removes organic material clinging to grit, which lowers odor.**
 
@@ -1842,9 +1842,9 @@ Clean grit handles better and produces less odor. Organic material is removed an
 Which information should an operator consider when choosing a grit removal method?
 
 - **A.** Flow range, grit quantity and the characteristics of the grit being removed.
-- **B.** The brand of the grit bagging equipment and the color of the bags.
+- **B.** The brand of the grit bagging equipment and the vendor's delivery schedule.
 - **C.** The weather forecast for the next three months in the county.
-- **D.** The color of the grit hopper and the paint on the channel walls.
+- **D.** The cost of the grit hopper and the paint on the channel walls.
 
 **Answer: A. Flow range, grit quantity and the characteristics of the grit being removed.**
 
@@ -1854,9 +1854,9 @@ Flow range and grit quantity decide the equipment and its sizing. Grit character
 
 A grit channel's velocity is too high, and grit passes into the next process. What is the likely cause, and what is the response?
 
-- **A.** The grit is too heavy, so raise the channel to let it pass through.
+- **A.** The grit is too light, so the velocity is raised to push it out of the channel.
 - **B.** The channel is too clean, so the grit should be removed by hand each day.
-- **C.** The velocity is too low, so add more grit to the channel for weight.
+- **C.** The velocity is too low, so add water to the channel to lift the grit out.
 - **D.** Flow or control is outside the design range, so adjust control and review flow data.
 
 **Answer: D. Flow or control is outside the design range, so adjust control and review flow data.**
@@ -1893,7 +1893,7 @@ Scum skimmers remove the floating material that the clarifier traps at the surfa
 
 A primary clarifier has poor performance after a storm. What is the most likely cause?
 
-- **A.** A lack of color in the influent after the storm passes through.
+- **A.** A sudden drop in the influent pH, which often clears solids faster in the clarifier.
 - **B.** Hydraulic surges that carry solids over the weirs and reduce settling time.
 - **C.** Too much dissolved oxygen in the influent from the grit channel.
 - **D.** Lower temperature of the influent during the morning hours.
@@ -1904,7 +1904,7 @@ High flow shortens detention time and can carry settled solids out over the weir
 
 ### 147: Primary clarifiers (medium)
 
-Why is the weir of a primary clarifier kept level?
+Why is the weir of a primary settling unit kept level?
 
 - **A.** So flow spreads evenly across the weir and the clarifier surface.
 - **B.** So the sludge pump runs at a higher speed during the day.
@@ -1930,12 +1930,12 @@ A rising blanket means solids are accumulating faster than they are removed. Car
 
 ### 149: Primary clarifiers (easy)
 
-Why do operators measure primary sludge concentration?
+Why do operators measure how thick the primary sludge is?
 
 - **A.** It sets how much solids are pumped to the digester and how much water is removed.
 - **B.** It sets the price the hauler charges for the sludge load.
 - **C.** It sets the color of the sludge when it is sent to the digester tank for a visual check.
-- **D.** It sets the number of hours each operator works in the sludge room.
+- **D.** It sets the number of hours each crew spends in the sludge room during the week.
 
 **Answer: A. It sets how much solids are pumped to the digester and how much water is removed.**
 
@@ -1947,7 +1947,7 @@ Which result suggests that a primary clarifier needs a sludge removal adjustment
 
 - **A.** The clarifier's effluent is slightly warmer than the influent.
 - **B.** Sludge blanket depth keeps rising from one pumping cycle to the next.
-- **C.** The clarifier's weir is painted the same color as the tank wall.
+- **C.** The clarifier's weir is painted a lighter shade than the tank wall, which hides the level.
 - **D.** The influent flow is steady throughout the day and night.
 
 **Answer: B. Sludge blanket depth keeps rising from one pumping cycle to the next.**
@@ -1956,7 +1956,7 @@ A steadily rising blanket between pumping cycles means the sludge is being remov
 
 ### 151: Primary sludge and skimming (hard)
 
-Why does primary sludge have a higher solids content than secondary sludge?
+Why does sludge from the first settling step have a higher solids content than secondary sludge?
 
 - **A.** Primary sludge has been aerated, which dries the solids before removal.
 - **B.** Primary sludge is mostly dissolved salts that do not settle in the clarifier.
@@ -1971,12 +1971,12 @@ Primary solids settle directly from the raw flow, so they tend to be thicker tha
 
 A primary clarifier's sludge is pumped too long. What is the likely effect?
 
-- **A.** The clarifier's weir overflow rate drops to zero, and the weir stops passing any flow.
+- **A.** The clarifier's weir overflow rate rises, and more solids leave with the effluent.
 - **B.** The sludge becomes thicker and the solids concentration rises sharply.
-- **C.** More water is removed with the sludge, and the solids in the sludge fall in concentration.
+- **C.** More water leaves with the sludge, so the solids fall in concentration.
 - **D.** The clarifier's effluent BOD falls to a lower level than design.
 
-**Answer: C. More water is removed with the sludge, and the solids in the sludge fall in concentration.**
+**Answer: C. More water leaves with the sludge, so the solids fall in concentration.**
 
 Over-pumping draws in more water, which dilutes the sludge and can upset the digester.
 
@@ -1985,9 +1985,9 @@ Over-pumping draws in more water, which dilutes the sludge and can upset the dig
 What does a sludge pump's run time control in a primary clarifier?
 
 - **A.** The sludge removal rate, which sets the blanket depth and solids load.
-- **B.** The price of electricity charged to the plant that day.
-- **C.** How bright the clarifier's light is during the night shift and the weekend.
-- **D.** The color of the sludge when it reaches the digester tank.
+- **B.** The number of days between sludge hauler pickups at the plant.
+- **C.** The scum skimmer speed, which controls how much grease leaves the tank.
+- **D.** The sludge dewatering rate once the cake leaves the press.
 
 **Answer: A. The sludge removal rate, which sets the blanket depth and solids load.**
 
@@ -1995,7 +1995,7 @@ Pump run time sets the removal rate, and that controls the blanket depth and the
 
 ### 154: Primary sludge and skimming (medium)
 
-Why is skimmed grease usually kept out of the digester feed?
+Why is skimmed grease usually kept out of the anaerobic feed?
 
 - **A.** Grease speeds up the digestion process so the digester runs faster.
 - **B.** Grease is needed in the digester to make the gas burn cleaner.
@@ -2025,8 +2025,8 @@ A primary clarifier's sludge concentration drops suddenly. What should the opera
 
 - **A.** The number of people on the sludge crew that shift.
 - **B.** The sludge pump suction and draw-off line for blockage or a valve problem.
-- **C.** The color of the clarifier walls and the paint used on the weir.
-- **D.** The hours of sunlight that reach the clarifier that day.
+- **C.** The crest elevation of the weir, which was surveyed during the last outage.
+- **D.** The temperature of the sludge in the digester feed line at the start of the shift.
 
 **Answer: B. The sludge pump suction and draw-off line for blockage or a valve problem.**
 
@@ -2037,9 +2037,9 @@ A sudden drop often means a valve, line or pump problem changed the draw-off. Ch
 What is a reasonable check after a change in skimming frequency?
 
 - **A.** Confirm that skimmed grease is removed without carrying solids into the sludge line.
-- **B.** Confirm that the clarifier is covered to keep out the rain.
-- **C.** Confirm that the skimmer has been repainted in the plant's color.
-- **D.** Confirm that the skimmer runs at the same speed as the sludge pump, the scum pump and the lift station.
+- **B.** Confirm that the scum box is emptied by hand once a day and the grease is weighed.
+- **C.** Confirm that the skimmer has been logged in the maintenance system and the work order closed.
+- **D.** Confirm that the skimmer speed matches the sludge pump run time and the scum pump rate.
 
 **Answer: A. Confirm that skimmed grease is removed without carrying solids into the sludge line.**
 
@@ -2049,10 +2049,10 @@ A skimming change should be checked against both the grease removal and the slud
 
 What is the main purpose of a facultative pond?
 
-- **A.** To store sewage for a full year before it is sent to a treatment plant in another town.
+- **A.** To store sewage for several weeks so flows are balanced before the plant takes them.
 - **B.** To treat waste using aerobic zones near the surface and anaerobic action at the bottom.
 - **C.** To cool the wastewater to a set temperature before it reaches a filter.
-- **D.** To hold solids so the water can be pumped out without treatment.
+- **D.** To hold solids for digestion so the water can be pumped out to the stream.
 
 **Answer: B. To treat waste using aerobic zones near the surface and anaerobic action at the bottom.**
 
@@ -2062,8 +2062,8 @@ A facultative pond has aerobic, anoxic and anaerobic zones working together to r
 
 Why is algae important in a facultative pond?
 
-- **A.** Algae remove the solids by floating them to the pond's bottom layer.
-- **B.** Algae consume the BOD and make the pond water taste sweet to people.
+- **A.** Algae remove the solids by trapping them in filaments that sink to the bottom.
+- **B.** Algae consume the BOD but leave the pond water too cloudy for the lab to read.
 - **C.** Algae produce oxygen in daylight for the bacteria in the upper layer.
 - **D.** Algae raise the pond's temperature so the bacteria work more slowly.
 
@@ -2086,7 +2086,7 @@ Stratified ponds lose oxygen at depth, and anaerobic breakdown then releases odo
 
 ### 161: Pond types and operation (easy)
 
-Why do operators keep unwanted vegetation off the embankments and inlet?
+Why do operators keep weeds and shrubs off the slopes and at the inlet?
 
 - **A.** Vegetation removes the need for an inlet screen on the pond.
 - **B.** Vegetation lowers the pond's volume by adding weight to the bottom.
@@ -2115,7 +2115,7 @@ Detention time is volume divided by flow, the average time the liquid stays in t
 Why is a pond liner used?
 
 - **A.** To limit seepage that could contaminate groundwater beneath the pond.
-- **B.** To make the pond look blue to visitors and the public.
+- **B.** To keep the pond's water temperature steady through the winter months.
 - **C.** To increase the amount of algae growing on the pond bottom.
 - **D.** To reduce the evaporation of water into the atmosphere on hot days.
 
@@ -2138,14 +2138,14 @@ Poor inlet and outlet placement, or missing baffles, lets flow skip most of the 
 
 ### 165: Pond loading and performance (easy)
 
-Why do operators track pond loading in pounds of BOD per acre per day?
+Why do operators track pond BOD in pounds per acre per day?
 
-- **A.** Loading identifies the number of birds that will visit the pond later.
-- **B.** Loading sets the color that the pond's surface must show each day.
-- **C.** Loading sets the price of the land the pond is built on.
-- **D.** Loading shows whether the pond is in its design range.
+- **A.** Loading identifies the number of sampling events the lab must run each month.
+- **B.** Loading sets how often the pond must be drained, inspected and cleaned each season and after storms.
+- **C.** Loading sets the minimum depth of the pond for a given surface area and the permit class in force.
+- **D.** Loading shows whether the pond is in its design range for the organic load it receives each day.
 
-**Answer: D. Loading shows whether the pond is in its design range.**
+**Answer: D. Loading shows whether the pond is in its design range for the organic load it receives each day.**
 
 Organic loading per area is the main check on whether the biology can keep up with the load.
 
@@ -2168,8 +2168,8 @@ A pond loses treatment performance in cold weather. What is the common reason?
 
 - **A.** Biological activity slows at low temperature, so the BOD removal rate drops.
 - **B.** Cold water makes the pond bigger, so the design volume is exceeded.
-- **C.** Cold weather raises the pond's pH, which removes the BOD by itself.
-- **D.** Cold water is heavier, so it passes the outlet without any treatment.
+- **C.** Cold weather raises the pond's pH, which stops the algae from producing oxygen.
+- **D.** Cold water is heavier, so it passes the outlet with little treatment.
 
 **Answer: A. Biological activity slows at low temperature, so the BOD removal rate drops.**
 
@@ -2190,9 +2190,9 @@ Overload shows up in the loading and in the oxygen trend. Comparing them with de
 
 ### 169: Pond loading and performance (medium)
 
-Why is pond surface area important in design?
+Why does the size of the pond's open top matter in design?
 
-- **A.** Surface area sets how many days the pond can be used for swimming.
+- **A.** Surface area sets how many days the pond can stay open to public access.
 - **B.** Surface area sets the price of the pond liner for the contractor.
 - **C.** Surface area sets air contact and sunlight for the biology.
 - **D.** Surface area sets the number of pumps needed for the outlet line.
@@ -2206,7 +2206,7 @@ Surface area governs oxygen transfer from the air and the light available to alg
 Why does sludge accumulation matter in a lagoon?
 
 - **A.** Sludge adds oxygen to the bottom layer and speeds up the biology.
-- **B.** Sludge makes the lagoon water clearer for the discharge permit tests.
+- **B.** Sludge settles the lagoon water faster, so the discharge tests pass more often.
 - **C.** Sludge lowers the lagoon's dissolved solids and keeps the outlet clean.
 - **D.** Sludge takes up volume, which reduces detention time and treatment capacity.
 
@@ -2242,9 +2242,9 @@ Even distribution keeps all the media wetted and active. Uneven flow leaves dry 
 
 ### 173: Filter media and distribution (easy)
 
-Why is trickling filter media chosen with a high surface area?
+Why is trickling filter media chosen for its large exposed area?
 
-- **A.** A high surface area lowers the flow through the filter by friction alone.
+- **A.** A high surface area lowers the flow through the filter by friction.
 - **B.** A high surface area makes the filter lighter so it floats in the channel.
 - **C.** A high surface area makes the media cheaper to clean at the end of each year.
 - **D.** Biological growth attaches to the media, and more surface area supports more biomass.
@@ -2257,7 +2257,7 @@ Biofilm grows on the media. More surface gives the bed more treatment capacity p
 
 What is ponding on a trickling filter a sign of?
 
-- **A.** A filter that has too much sunlight and needs its media repainted.
+- **A.** A filter that has too much sunlight and needs its media replaced with a finer material.
 - **B.** Media plugging or poor distribution that is holding water on the surface.
 - **C.** A normal condition during a storm, and it needs no action.
 - **D.** A filter that is performing at its best because the bed is full.
@@ -2296,7 +2296,7 @@ Oxygen in the air supports aerobic biofilm. Poor ventilation can limit treatment
 
 Which change could help a filter that is slow to slough off excess biofilm?
 
-- **A.** Adding more paint to the media surface so the growth stays on it.
+- **A.** Adding a coating to the media surface so the growth sticks more firmly to it.
 - **B.** Stopping flow to the filter for the rest of the week until the biofilm settles on its own.
 - **C.** Adjusting the dosing or recirculation to increase the wetting and shear on the media.
 - **D.** Lowering the air temperature in the building for the sloughing season.
@@ -2310,7 +2310,7 @@ Hydraulic shear from higher wetting helps shed excess biofilm. Stopping flow rem
 What does a filter dosing siphon or pump do?
 
 - **A.** It removes the sludge from the bottom of the final clarifier at a set time.
-- **B.** It removes sludge from the bottom of the final clarifier on a set timer, one cycle at a time.
+- **B.** It adds disinfectant to the wastewater at each dosing cycle before the clarifier.
 - **C.** It measures the influent flow at the head of the plant for the report.
 - **D.** It delivers wastewater to the distribution arms at a controlled rate and in regular doses.
 
@@ -2336,7 +2336,7 @@ Organic loading compares the BOD applied with the volume of media, which governs
 A trickling filter's performance drops after a long rain. What is the most likely reason?
 
 - **A.** The hydraulic load rose, so less contact time is available between the biofilm and the flow.
-- **B.** The final clarifier was over-cleaned, which removed the solids from the filter and the trickling bed.
+- **B.** The final clarifier was drained overnight, which removed the solids and biofilm from the filter bed.
 - **C.** The influent had less BOD, so the biology had too little food.
 - **D.** The media became too warm, so the biofilm stopped working altogether.
 
@@ -2359,7 +2359,7 @@ Recirculation dilutes the strength of the flow and keeps the media wet. It does 
 
 ### 182: Loading and performance (medium)
 
-A filter is overloaded in organic terms. What is the best response?
+A filter is overloaded by BOD. What is the best response?
 
 - **A.** Increase the flow so the BOD is diluted to a safe level in the bed, and keep the flow steady.
 - **B.** Turn off the aeration and let the bed fill with sludge for a month.
@@ -2389,8 +2389,8 @@ What is the main reason to check the effluent after each change in the filter's 
 
 - **A.** To confirm the operator has completed the training on the new equipment.
 - **B.** To confirm that the change improved performance and did not harm the biology.
-- **C.** To confirm the filter's media can be sold to a supplier as scrap.
-- **D.** To confirm the color of the effluent matches the plant's signage.
+- **C.** To confirm the filter's media is still within its warranty period.
+- **D.** To confirm the effluent color matches the reference chart for the month.
 
 **Answer: B. To confirm that the change improved performance and did not harm the biology.**
 
@@ -2398,7 +2398,7 @@ Each change can help or hurt the process. Checking the effluent shows whether it
 
 ### 185: Loading and performance (hard)
 
-A filter's hydraulic loading is calculated from flow and media area. Which result would concern an operator most?
+A filter's hydraulic rate is calculated from flow and media area. Which result would concern an operator most?
 
 - **A.** A loading that is slightly higher in the morning than the afternoon.
 - **B.** A loading that is rising steadily while the effluent quality falls.
@@ -2437,10 +2437,10 @@ When demand exceeds the oxygen supplied, dissolved oxygen falls and the biology 
 
 ### 188: Aeration and oxygen (medium)
 
-What is a common result of an aeration tank with too much dissolved oxygen?
+What is a common result of running the tank with too much dissolved oxygen?
 
-- **A.** Better settling in the clarifier with no other effect on the process.
-- **B.** A lower BOD in the effluent with no energy cost.
+- **A.** Better settling in the clarifier with little change to the rest of the process.
+- **B.** A lower BOD in the effluent with a small energy cost.
 - **C.** Wasted energy from over-aeration, and possible loss of settling when floc is shredded.
 - **D.** A reduction in the number of biological organisms in the tank within a day.
 
@@ -2465,7 +2465,7 @@ Smaller bubbles give more surface area per unit of air, which improves oxygen tr
 
 An aeration basin has a rising oxygen demand after a plant change. What is the best first step?
 
-- **A.** Turn off the blowers to reduce the number of bubbles in the tank and save power for the shift.
+- **A.** Reduce the blower speed to cut power use until the oxygen demand drops.
 - **B.** Add more influent flow to dilute the oxygen demand in the basin.
 - **C.** Check the organic load and the air supply, then adjust the blowers to match the demand.
 - **D.** Wait for the oxygen demand to fall on its own, since demand often changes with the season.
@@ -2528,7 +2528,7 @@ Holding solids in the system raises the MLSS. Less waste means the solids stay l
 
 ### 195: Solids and sludge age (medium)
 
-What is a common cause of a rising sludge blanket in the secondary clarifier?
+What is a common cause of a rising sludge blanket in the secondary settling unit?
 
 - **A.** Solids are not being removed from the clarifier fast enough, or the return rate is too low.
 - **B.** The aeration tank is too cold, so the solids become dense and stay in place.
@@ -2567,11 +2567,11 @@ Pin floc and cloudy effluent point to a biology that is not forming strong floc,
 
 ### 198: Solids and sludge age (medium)
 
-What do operators do with the return activated sludge rate when a clarifier blanket rises?
+What do operators do with the sludge recycle when the blanket rises in the settling unit?
 
 - **A.** Reduce the return to zero so the solids leave in the effluent.
 - **B.** Stop the return so the clarifier can hold more solids for the rest of the shift.
-- **C.** Leave the rate alone, since the blanket will drop on its own when the flow is steady and the aeration is well balanced.
+- **C.** Hold the rate steady, since the blanket will drop on its own when the flow is steady and the aeration is well balanced.
 - **D.** Increase the return rate, within the limits of the clarifier, to pull solids back to the aeration tank.
 
 **Answer: D. Increase the return rate, within the limits of the clarifier, to pull solids back to the aeration tank.**
@@ -2606,7 +2606,7 @@ A rising SVI means the sludge is becoming less compact and settling more slowly.
 
 ### 201: Monitoring and response (easy)
 
-What is the first step when a process reading moves outside its normal range?
+What is the first step when a measured value moves outside its normal range?
 
 - **A.** Record the reading in the log and wait until the next scheduled check, which is later today.
 - **B.** Adjust the set point to the new reading and leave the process to run.
@@ -2623,8 +2623,8 @@ Why does a control loop need a set point?
 
 - **A.** It is the highest reading the sensor can display on its screen.
 - **B.** It is the target value the controller works to hold the process at.
-- **C.** It is the number of operators required to run the control room.
-- **D.** It is the cost of the chemical that the controller adds to the flow each hour.
+- **C.** It is the alarm level that triggers the controller to send an operator to the panel.
+- **D.** It is the maximum output the controller can send to the chemical pump.
 
 **Answer: B. It is the target value the controller works to hold the process at.**
 
@@ -2632,12 +2632,12 @@ The controller compares the measured value with the set point and adjusts its ou
 
 ### 203: Monitoring and response (easy)
 
-What does a manual control mode let an operator do?
+What does a manual mode let an operator do?
 
 - **A.** Set the output directly, overriding automatic control for a time.
 - **B.** Turn the sensor off so that the reading no longer appears on the display.
-- **C.** Send the process data to the regulator's website without review.
-- **D.** Change the color of the control panel to show that it is in manual.
+- **C.** Send the process data to the lab's shared drive for later review.
+- **D.** Lock the panel keys so the automatic loop is kept in place for the shift.
 
 **Answer: A. Set the output directly, overriding automatic control for a time.**
 
@@ -2645,12 +2645,12 @@ Manual mode lets the operator set the output by hand. Automatic control is suspe
 
 ### 204: Monitoring and response (medium)
 
-Why do operators check instrument calibration regularly?
+Why do operators check sensor accuracy regularly?
 
-- **A.** Calibration keeps the instrument's warranty current for its life and its color rating up to date.
-- **B.** Calibration makes the instrument heavier, which reduces vibration.
+- **A.** Calibration keeps the instrument's warranty current, which is the main reason to check it.
+- **B.** Calibration adds a damping layer to the sensor housing, which reduces vibration.
 - **C.** A drifting instrument can show a value that looks normal when the process is not.
-- **D.** Calibration sets the color of the readout on the panel each season.
+- **D.** Calibration sets the readout's display brightness for each season's lighting.
 
 **Answer: C. A drifting instrument can show a value that looks normal when the process is not.**
 
@@ -2660,10 +2660,10 @@ An instrument that has drifted can hide a real problem. Regular calibration chec
 
 A dissolved oxygen sensor reads low at the far end of the tank on one day. What should the operator check?
 
-- **A.** The color of the tank's walls, which changes the sensor's reading.
+- **A.** The tank's wall material, which can absorb heat and change the sensor's reading.
 - **B.** The sensor's location, its fouling and the aeration pattern near it.
-- **C.** The number of operators on the shift who are on break that day.
-- **D.** The lab's coffee supply, which affects the meter's power source.
+- **C.** The number of samples taken from the basin at the start of the shift.
+- **D.** The reagent lot used for the last calibration check at the lab.
 
 **Answer: B. The sensor's location, its fouling and the aeration pattern near it.**
 
@@ -2674,8 +2674,8 @@ A single low reading can come from fouling, placement or local aeration. The sen
 Why are alarm set points chosen with a margin from the normal operating range?
 
 - **A.** So operators have time to respond before the process reaches a harmful state.
-- **B.** So the alarm matches the color of the control panel's display.
-- **C.** So the alarm can sound often enough to keep staff awake through the night.
+- **B.** So the alarm sounds whenever the process moves, to show it is working.
+- **C.** So the alarm sounds often enough that staff can ignore it during the shift.
 - **D.** So the alarm sounds at the end of each shift for the record.
 
 **Answer: A. So operators have time to respond before the process reaches a harmful state.**
@@ -2684,7 +2684,7 @@ A margin gives time to act before the process reaches a limit that causes harm o
 
 ### 207: Monitoring and response (hard)
 
-A control loop oscillates strongly after a tuning change. What is the best response?
+A control loop oscillates strongly after a tuning change. What is the best course of action?
 
 - **A.** Remove the controller and run the process on manual for the rest of the year.
 - **B.** Ignore the oscillation, since the loop will settle down after a few months.
@@ -2697,7 +2697,7 @@ Changing one setting at a time shows which change caused the oscillation. Large 
 
 ### 208: Trend interpretation (hard)
 
-A process reading rises slowly over several weeks while the influent is steady. What does this suggest?
+A measured value rises slowly over several weeks while the influent is steady. What does this suggest?
 
 - **A.** The influent has become stronger for the first time in years, and the plant should add more chlorine at once.
 - **B.** The operators have changed shifts, and the readings are now more accurate.
@@ -2710,9 +2710,9 @@ A steady influent with a slow rise points to something inside the process or the
 
 ### 209: Trend interpretation (easy)
 
-Why does an operator plot a process trend rather than rely on single readings?
+Why does an operator plot a process curve instead of relying on one value?
 
-- **A.** Plots make the readings smaller so they fit on the logbook page.
+- **A.** Plots make the readings easier to store, since the chart replaces the logbook entry.
 - **B.** A plot is required once a month for the state's data archive files.
 - **C.** Single readings are more accurate, so plotting them adds error.
 - **D.** Trends show direction and rate of change, which single readings can hide.
@@ -2775,10 +2775,10 @@ Seasonal effects can look like process changes. A same-period comparison helps s
 
 ### 214: Trend interpretation (hard)
 
-Effluent quality is steady, but a process trend shows rising oxygen demand. What is the best next step?
+Effluent results are steady, but a process trend shows rising oxygen demand. What is the best next step?
 
 - **A.** Rising oxygen demand is a reason to reduce the air at once, since the basin will run better with less oxygen supplied.
-- **B.** Remove the trend chart, since the effluent is steady and fine.
+- **B.** Stop logging the trend, since the effluent is steady for the week.
 - **C.** Plan a load review and check whether aeration needs adjustment before quality changes.
 - **D.** Wait for the effluent to change, since the trend is probably noise.
 
@@ -2788,7 +2788,7 @@ A rising demand trend can lead to a quality problem later. Acting early on the l
 
 ### 215: Chlorine chemistry and dosing (easy)
 
-What is the chlorine demand of a wastewater?
+What does the demand of a wastewater for disinfectant describe?
 
 - **A.** The chlorine residual left in the water after the contact time ends.
 - **B.** The total chlorine in the tank measured each morning before the shift.
@@ -2801,12 +2801,12 @@ Demand is the chlorine used up by the wastewater before any residual is left. Do
 
 ### 216: Chlorine chemistry and dosing (easy)
 
-Why is a chlorine residual measured after the contact time?
+Why is the chlorine level checked after the mixing time?
 
 - **A.** It records the volume of chlorine used by the operators each week.
 - **B.** It shows whether enough disinfectant remains to meet the disinfection goal.
 - **C.** It checks the lab's calibration of the instrument used for the test.
-- **D.** It shows the chlorine tanks' level and the date the next delivery arrives.
+- **D.** It shows the chlorine tank's weight, which helps schedule the next order.
 
 **Answer: B. It shows whether enough disinfectant remains to meet the disinfection goal.**
 
@@ -2817,8 +2817,8 @@ The residual at the end of contact shows whether the disinfection goal was met.
 What is the main hazard of gaseous chlorine?
 
 - **A.** It is a liquid that freezes at room temperature and cracks the cylinder.
-- **B.** It is heavier than water and sinks in the wet well without any reaction for a long time.
-- **C.** It reacts with the paint on the storage room walls within a few days.
+- **B.** It is heavier than water and sinks in the wet well and reacts slowly for a long time.
+- **C.** It slowly dissolves the pipe fittings, so the feed lines need a new gasket each year.
 - **D.** It is toxic if released, so the cylinders and feed system need leak control.
 
 **Answer: D. It is toxic if released, so the cylinders and feed system need leak control.**
@@ -2840,7 +2840,7 @@ Liquid hypochlorite avoids the pressurized gas hazard. It still needs residual t
 
 ### 219: Chlorine chemistry and dosing (medium)
 
-What does a chlorine demand curve show?
+What does a demand curve for disinfectant show?
 
 - **A.** How the lab's test results change over the course of the year.
 - **B.** How the flow rate changes through the day at the plant's outfall and the lift station.
@@ -2866,12 +2866,12 @@ Start-up and shutdown are when feed problems and leaks often appear. Checks conf
 
 ### 221: Chlorine chemistry and dosing (hard)
 
-A chlorine residual falls while the feed rate and the flow are both unchanged. What is the most likely cause?
+A disinfectant reading falls while the feed rate and the flow are both unchanged. What is the most likely cause?
 
 - **A.** Demand has risen, so the same dose leaves less residual after the reactions.
-- **B.** The lab has changed the test method this month, so the residual has dropped on paper alone.
+- **B.** The lab has changed the test method this month, so the residual has dropped on paper.
 - **C.** The chlorine cylinders are full, so the residual should rise by itself.
-- **D.** The feeder is painted a darker color, which reduces the chlorine flow.
+- **D.** The feeder's dial reads a higher setting, so the true dose is lower than displayed.
 
 **Answer: A. Demand has risen, so the same dose leaves less residual after the reactions.**
 
@@ -2892,7 +2892,7 @@ CT is the concentration multiplied by the contact time. It is the usual measure 
 
 ### 223: Contact time and residual (medium)
 
-Why do short-circuiting and dead zones matter in a contact basin?
+Why do short-circuiting and dead zones matter in a basin?
 
 - **A.** They raise the water temperature and speed up the chlorine reaction.
 - **B.** They add solids to the effluent that must be removed later by the final clarifier.
@@ -2918,12 +2918,12 @@ Baffles reduce short-circuiting and improve plug flow, which gives the water mor
 
 ### 225: Contact time and residual (easy)
 
-Why is a residual check needed at the end of the contact basin?
+Why is a check needed at the outlet end of the contact basin?
 
 - **A.** To confirm the residual in the feed line matches the lab's sample.
 - **B.** To confirm the residual that actually reaches the outfall meets the goal.
-- **C.** To confirm the residual has no effect on the outfall's temperature.
-- **D.** To confirm the basin's color matches the surrounding landscape.
+- **C.** To confirm the residual matches the flow meter reading at the outfall.
+- **D.** To confirm the basin's depth matches the design drawing for the outfall.
 
 **Answer: B. To confirm the residual that actually reaches the outfall meets the goal.**
 
@@ -2931,9 +2931,9 @@ The residual at the outfall is what the disinfection goal depends on. Checking i
 
 ### 226: Contact time and residual (hard)
 
-Why does chlorine effectiveness fall at high pH?
+Why does disinfection power fall at high pH?
 
-- **A.** High pH turns the chlorine gas into a solid that sinks.
+- **A.** High pH turns the chlorine into a fine precipitate that settles out at once.
 - **B.** High pH removes the chlorine from the water within the first minute.
 - **C.** High pH makes the water heavier, so the chlorine reacts more slowly.
 - **D.** More of the chlorine is in the less active hypochlorite form at high pH.
@@ -2944,12 +2944,12 @@ At higher pH, a larger fraction of free chlorine is hypochlorite, which disinfec
 
 ### 227: Contact time and residual (medium)
 
-What is the effect of a lower water temperature on chlorine disinfection?
+What is the effect of a lower water temperature on chlorine kill rates?
 
-- **A.** Disinfection stops at low temperature, so no dose is needed.
-- **B.** Disinfection is unaffected, since temperature just changes the color.
+- **A.** Disinfection speeds up in cold water, so the contact time can be shortened by about a third.
+- **B.** Disinfection stops at low temperature, so the chlorine feed can be shut off until the water warms.
 - **C.** Disinfection slows, so a longer contact time or higher residual is needed.
-- **D.** Disinfection speeds up, so the contact time can be shortened.
+- **D.** Disinfection slows, so the plant can cut the dose because the chlorine lasts longer in cold water.
 
 **Answer: C. Disinfection slows, so a longer contact time or higher residual is needed.**
 
@@ -2970,7 +2970,7 @@ Losing residual between inlet and outlet points to short-circuiting or a dead zo
 
 ### 229: Digester operation (easy)
 
-Why is an anaerobic digester kept at a steady temperature?
+Why is an anaerobic digester held at an even heat?
 
 - **A.** Steady temperature keeps the gas meter reading the same throughout the day.
 - **B.** Methane-forming microorganisms work best when temperature stays steady.
@@ -2983,7 +2983,7 @@ Methane-forming organisms are sensitive to temperature swings. Stable heat keeps
 
 ### 230: Digester operation (medium)
 
-What does a rise in volatile acids in a digester usually signal?
+What does a rise in volatile acids in a tank usually signal?
 
 - **A.** The digester has been cleaned, so the sludge is lighter in color.
 - **B.** The gas meter has been replaced, so the reading is higher this month.
@@ -3022,7 +3022,7 @@ Foam carries solids up and can block gas and cause overflows. It needs prompt at
 
 ### 233: Digester operation (easy)
 
-Why must digester gas be handled with care?
+Why must gas from the tank be handled with care?
 
 - **A.** Digester gas is mostly carbon dioxide, so it does not burn, but the room can still be unsafe.
 - **B.** Digester gas is heavier than air and sinks to the floor of the room.
@@ -3100,7 +3100,7 @@ Gas output follows the breakdown of volatile solids, so the trend is a good chec
 
 ### 239: Gas and solids reduction (medium)
 
-Why measure the methane content of digester gas?
+Why measure the fraction of CH4 in gas from the tank?
 
 - **A.** Methane content shows how many people work at the plant each week.
 - **B.** Methane content shows the color of the gas flare at the plant.
@@ -3126,7 +3126,7 @@ If sludge leaves before it is digested, or the load exceeds capacity, the destru
 
 ### 241: Gas and solids reduction (easy)
 
-Why is a digester cover kept sealed?
+Why is the cover of a sludge tank kept sealed?
 
 - **A.** To keep rain out of the sludge so it stays dry for the hauler.
 - **B.** To keep the sludge cool so its color stays the same for the lab.
@@ -3142,8 +3142,8 @@ An anaerobic digester needs a sealed, gas-tight cover. Air entry upsets the meth
 A digester's solids reduction drops while feed rate and temperature are steady. What is the most likely cause?
 
 - **A.** Methane formers have declined from a toxin or a change in feed composition.
-- **B.** The feed pump runs too often, so it adds too much gas to the feed.
-- **C.** The temperature is too steady, so the bacteria become lazy and stop.
+- **B.** The feed pump runs too often, so it adds too much air to the feed.
+- **C.** The temperature is too steady, so the bacteria adapt and stop growing.
 - **D.** The gas meter is too old and reads the sludge volume incorrectly each day.
 
 **Answer: A. Methane formers have declined from a toxin or a change in feed composition.**
@@ -3206,7 +3206,7 @@ Underdosed polymer gives weak floc, so the cake is wet and solids escape with th
 
 Why does cake moisture matter for hauling?
 
-- **A.** Drier cake weighs more, so the hauler charges more per load.
+- **A.** Drier cake weighs more per cubic yard, so the hauler charges more per load.
 - **B.** Wetter cake adds weight, so it costs more to haul and dispose.
 - **C.** Moisture keeps the cake from freezing in the truck during winter months.
 - **D.** Moisture changes the cake's color in a way the lab must record.
@@ -3247,7 +3247,7 @@ Why is it important to keep a record of each sludge haul?
 
 - **A.** It sets the price for the hauler's fuel for the following month.
 - **B.** It shows the number of trucks in the company's fleet this year.
-- **C.** It counts the number of times the driver stopped for coffee.
+- **C.** It counts the number of times the driver logged a stop at the facility.
 - **D.** It ties each load to dates, quantities and destinations for the records.
 
 **Answer: D. It ties each load to dates, quantities and destinations for the records.**
@@ -3258,10 +3258,10 @@ Haul records link each load to its quantity, date and destination, which support
 
 What does a biosolids quality check verify?
 
-- **A.** That the lab has enough reagents on the shelf for the next month and the month after that.
-- **B.** That the trucks are painted in the plant's official colors.
+- **A.** That the lab's calibration log has been signed by the supervisor each month.
+- **B.** That the hauler's trucks carry the plant's current permit number on each door.
 - **C.** That the material meets the requirements for its use or disposal route.
-- **D.** That the cake is the same color as the day before the haul.
+- **D.** That the cake moisture matches the value on the previous haul ticket.
 
 **Answer: C. That the material meets the requirements for its use or disposal route.**
 
@@ -3284,7 +3284,7 @@ A contained pad limits runoff and stops the material from spreading, which prote
 
 What information should a land application plan include?
 
-- **A.** The color of the field's fence and the gate number.
+- **A.** The distance from the field to the nearest public road and the crop's harvest date.
 - **B.** Site, loading rate, crop or cover, and the monitoring that will be done.
 - **C.** The brand of the fertilizer the farmer used last year.
 - **D.** The names of the trucks and the drivers that will carry the load on each day of the haul.
@@ -3298,7 +3298,7 @@ A land application plan describes where the material goes, how much is applied a
 Why is odor control part of biosolids handling?
 
 - **A.** Odor is the best measure of how many solids are in the cake.
-- **B.** Odor changes the cake's color so that it can be sold at a higher price.
+- **B.** Odor raises the cake's weight, so the hauler bills more per load.
 - **C.** Odor complaints can lead to enforcement and neighbor concern.
 - **D.** Odor helps the operator tell the cake's moisture level by smell.
 
@@ -3365,7 +3365,7 @@ What does a mixing zone describe?
 - **A.** The area of the plant site set aside for storing spare pipes.
 - **B.** The distance a fish travels upstream from the outfall each day.
 - **C.** The limited area near the outfall where effluent is still mixing.
-- **D.** The area of the stream that stays clear of sediment at any time.
+- **D.** The area of the stream that stays clear of sediment during the season.
 
 **Answer: C. The limited area near the outfall where effluent is still mixing.**
 
@@ -3376,7 +3376,7 @@ A mixing zone is the limited area where the effluent has not yet fully mixed wit
 Why can a warm effluent be a concern for a receiving stream?
 
 - **A.** Warm water is lighter, so it floats on top and dries the bank out.
-- **B.** Warm water makes the stream longer by expanding the channel bed.
+- **B.** Warm water expands the channel bed, which narrows the stream for fish passage.
 - **C.** Warm water holds more dissolved oxygen and kills algae quickly.
 - **D.** Warm water holds less dissolved oxygen, which can stress aquatic life.
 
@@ -3401,8 +3401,8 @@ A single port in slow water gives a concentrated plume that is slow to disperse.
 
 What should be checked before a discharge change is made?
 
-- **A.** The number of birds that have been seen on the bank in the past month.
-- **B.** The color of the outfall pipe and the paint used on the headwall.
+- **A.** The number of inspections the regulator has logged at the outfall this year.
+- **B.** The depth of the outfall pipe and the material of the headwall.
 - **C.** The receiving water flow, the new effluent quality and the permit conditions.
 - **D.** The price of the pumps and the name of the contractor who installs them.
 
@@ -3425,7 +3425,7 @@ Lower stream flow means less dilution for the same discharge, which can lower th
 
 ### 264: Chlorine residual and dechlorination (easy)
 
-What is the effect of chlorine residual on aquatic life?
+What effect does leftover disinfectant have on fish and invertebrates?
 
 - **A.** Chlorine residual makes the water heavier, which helps the fish swim.
 - **B.** Chlorine residual is toxic to aquatic organisms even at low levels.
@@ -3438,7 +3438,7 @@ Residual chlorine is toxic to fish and invertebrates, so it must be controlled b
 
 ### 265: Chlorine residual and dechlorination (easy)
 
-Why is dechlorination used with a chlorinated effluent?
+Why is dechlorination used after disinfection?
 
 - **A.** It converts the effluent into a solid, which is then easier to haul.
 - **B.** It adds chlorine to the effluent so it keeps its color through the stream.
@@ -3466,8 +3466,8 @@ Sulfur dioxide reduces residual chlorine, forming chloride, and it is fed in a m
 
 Why must dechlorination be monitored?
 
-- **A.** Dechlorination makes the effluent darker so the operator can see it.
-- **B.** Dechlorination needs no monitoring once the feed pump is installed.
+- **A.** Dechlorination makes the effluent cloudy so the operator can track the feed.
+- **B.** Dechlorination needs monthly monitoring once the feed pump is installed.
 - **C.** Dechlorination monitoring is required by the lab, not by the plant.
 - **D.** Under- and overdosing both cause problems, so the dose is checked.
 
@@ -3477,7 +3477,7 @@ Too little leaves residual in the discharge, and too much wastes chemical and ca
 
 ### 268: Chlorine residual and dechlorination (easy)
 
-What is a residual check after dechlorination?
+What is a check of leftover chlorine after dechlorination?
 
 - **A.** It confirms residual removal reached the required level.
 - **B.** It confirms the tank's paint has dried and the coating is complete.
@@ -3490,7 +3490,7 @@ A post-dechlorination check verifies that the residual is removed before the wat
 
 ### 269: Chlorine residual and dechlorination (medium)
 
-Why is chlorine residual measured at the outfall?
+Why is chlorine residual checked at the final discharge point?
 
 - **A.** The plant reading is taken in the lab, which is not part of the process.
 - **B.** The plant reading is usually lower, so the outfall reading is not needed.
@@ -3506,7 +3506,7 @@ The outfall is where the discharge leaves the plant, so that is where the residu
 A dechlorination dose is adjusted, but the residual downstream drifts. What is the best first check?
 
 - **A.** Increase the dose by a large amount to remove any residual at once.
-- **B.** Change the outfall paint color and monitor the result over the next week.
+- **B.** Change the sample bottles and monitor the result over the next week.
 - **C.** Check the sulfite or SO2 feed and the sampling point, then review the mixing.
 - **D.** Stop the dechlorination feed for the day and wait for the stream to clear.
 
@@ -3516,7 +3516,7 @@ Drift can come from feed control, sample location or mixing. Checking the feed a
 
 ### 271: Unit conversion and flow (easy)
 
-Which expression converts 1 MGD into gallons per minute?
+Which expression converts 1 MGD into a per-minute flow?
 
 - **A.** 1,000 gallons divided by 1,440 minutes, or about 0.69 gpm.
 - **B.** 1,000,000 gallons divided by 1,440 minutes per day, or about 694 gpm.
@@ -3529,10 +3529,10 @@ One million gallons spread over 1,440 minutes gives about 694 gallons per minute
 
 ### 272: Unit conversion and flow (medium)
 
-Which statement about pressure and head is correct?
+Which statement about psi and head is correct?
 
 - **A.** Psi is a pressure unit, and 1 psi equals about 2.31 feet of water head.
-- **B.** Feet of head is a measure of time that a pump runs each hour.
+- **B.** Feet of head is a measure of how long a pump runs each hour.
 - **C.** Psi measures flow and feet of head measures volume in the pipe.
 - **D.** Psi and gallons per minute are interchangeable units for a pipe's length.
 
@@ -3542,9 +3542,9 @@ Pressure in psi and head in feet are related by 2.31 feet of water per psi.
 
 ### 273: Unit conversion and flow (easy)
 
-Why must units match before a calculation?
+Why must units agree before the arithmetic starts?
 
-- **A.** Units matter in the final answer alone, after the arithmetic is complete and checked.
+- **A.** Units matter in the final answer, after the arithmetic is complete and checked.
 - **B.** Matching units is needed for a lab report but not for field work.
 - **C.** Units are printed on the calculator and need no further checking.
 - **D.** Mixed units give wrong answers unless each is converted first.
@@ -3555,7 +3555,7 @@ A calculation with mixed units gives a wrong result, even when each step is done
 
 ### 274: Unit conversion and flow (easy)
 
-How many gallons are in one cubic foot of water?
+What is the liquid capacity of one cubic foot of water in the usual US unit?
 
 - **A.** About 1.0 gallon, since a cubic foot of water is the same volume as a standard gallon in use.
 - **B.** About 7.48 gallons, the value used to convert cubic feet of water to gallons.
@@ -3620,7 +3620,7 @@ Area is pi times the radius squared. The radius is half the diameter.
 
 ### 279: Area, volume and dosage (easy)
 
-What is the volume of a rectangular tank in gallons when its dimensions are in feet?
+What is the capacity of a rectangular tank, in the usual water unit, when its dimensions are in feet?
 
 - **A.** Length times width times depth, divided by 7.48 gallons per cubic foot.
 - **B.** Length times width, times 7.48, with the depth set to one foot.
@@ -3646,9 +3646,9 @@ Dose in lb/day equals flow in MGD times concentration in mg/L times 8.34.
 
 ### 281: Area, volume and dosage (medium)
 
-Why is a percent converted to a decimal before a dosage calculation?
+Why is a percentage rewritten in another form before a dosage calculation?
 
-- **A.** Decimals are required by the lab, not by any dosage calculation.
+- **A.** Decimals are required by the lab's report format, so the calculation uses them.
 - **B.** Percent means parts per thousand, so the decimal form is found by dividing the number by ten.
 - **C.** A decimal is needed for percentages above a hundred in any dose.
 - **D.** Percent means parts per hundred, so the decimal form multiplies correctly.
@@ -3672,16 +3672,16 @@ A rate describes an amount per unit of time, such as gallons per minute.
 
 ### 283: Area, volume and dosage (hard)
 
-Which conversion step is a common error when converting a circular tank's volume to gallons?
+Which step is a common error when working out a circular tank's volume in water units?
 
-- **A.** Dividing the diameter by two and then multiplying by the number of tanks in the battery.
-- **B.** Squaring the radius and converting the cubic feet to gallons at the end.
-- **C.** Multiplying the diameter by the depth and leaving out pi.
-- **D.** Using the circumference instead of the depth for the tank's height.
+- **A.** Converting the cubic feet to gallons by dividing by 7.48 instead of multiplying.
+- **B.** Multiplying the diameter by the depth and leaving out pi.
+- **C.** Squaring the diameter and leaving the result in cubic feet until the last step.
+- **D.** Using the diameter where the radius belongs, which makes the volume four times too large.
 
-**Answer: B. Squaring the radius and converting the cubic feet to gallons at the end.**
+**Answer: B. Multiplying the diameter by the depth and leaving out pi.**
 
-The volume of a cylinder uses the squared radius, and the cubic feet must still be converted to gallons.
+A cylinder's volume uses the squared radius and pi. Using the diameter in place of the radius, or leaving out pi, gives a wrong volume.
 
 ### 284: Area, volume and dosage (medium)
 
@@ -3767,7 +3767,7 @@ Out of 36 daily results, 2 exceed the daily maximum. What percent of results exc
 
 - **A.** 94.4 %
 - **B.** 5.6 %
-- **C.** 1,800.0 %
+- **C.** 18.0 %
 - **D.** 0.1 %
 
 **Answer: B. 5.6 %**
@@ -3805,7 +3805,7 @@ Stream flow divided by effluent flow. Substitute the stated values: 18 ÷ 2 = 9.
 A plant result of 12 mg/L is compared with a permit limit of 15 mg/L. What percent of the limit does the result reach? Round to one decimal place.
 
 - **A.** 125.0 %
-- **B.** 3.0 %
+- **B.** 1.3 %
 - **C.** 80.0 %
 - **D.** 0.8 %
 
@@ -3830,7 +3830,7 @@ Increase over basis divided by basis, times 100. Substitute the stated values: (
 
 A rectangular basin is 60 ft long, 20 ft wide and 10 ft deep. Use 7.48 gal per cubic foot. What is its volume in gallons, rounded to the nearest gallon?
 
-- **A.** 179,520 gal
+- **A.** 100,080 gal
 - **B.** 89,760 gal
 - **C.** 8,976 gal
 - **D.** 12,000 gal
@@ -3924,7 +3924,7 @@ A room measures 30 ft by 20 ft by 10 ft and needs 6 air changes per hour. What f
 - **A.** 10 cfm
 - **B.** 36,000 cfm
 - **C.** 600 cfm
-- **D.** 720 cfm
+- **D.** 6,000 cfm
 
 **Answer: C. 600 cfm**
 
@@ -3934,9 +3934,9 @@ Room volume times changes per hour, divided by 60 minutes per hour. Substitute t
 
 A closed room measures 12 ft by 15 ft by 9 ft. Air is supplied at 250 cubic feet per minute. How many air changes per hour does the room get? Round to one decimal place.
 
-- **A.** 0.2 changes/hour
+- **A.** 0.1 changes/hour
 - **B.** 9.3 changes/hour
-- **C.** 154.3 changes/hour
+- **C.** 6.5 changes/hour
 - **D.** 15,000.0 changes/hour
 
 **Answer: B. 9.3 changes/hour**
@@ -4012,7 +4012,7 @@ Residue in mg divided by sample volume in liters. Substitute the stated values: 
 
 A measured value of 6.5 mg/L comes from a sample diluted so that 1 part sample makes 20 parts total before analysis. What is the undiluted value in mg/L? Round to one decimal place.
 
-- **A.** 26.0 mg/L
+- **A.** 13.0 mg/L
 - **B.** 0.3 mg/L
 - **C.** 6.5 mg/L
 - **D.** 130.0 mg/L
@@ -4038,7 +4038,7 @@ Measured value divided by known value, times 100. Substitute the stated values: 
 
 A stock solution of 500 mg/L is diluted by taking 10 mL and bringing it to a final volume of 250 mL. What is the new concentration in mg/L? Round to one decimal place.
 
-- **A.** 25.0 mg/L
+- **A.** 50.0 mg/L
 - **B.** 20.0 mg/L
 - **C.** 2.0 mg/L
 - **D.** 12,500.0 mg/L
@@ -4184,7 +4184,7 @@ A lift station pump delivers 800 gpm against a total head of 60 ft. Use hydrauli
 - **A.** 48,000.0 hp
 - **B.** 121.2 hp
 - **C.** 12.1 hp
-- **D.** 0.2 hp
+- **D.** 13.3 hp
 
 **Answer: C. 12.1 hp**
 
@@ -4194,8 +4194,8 @@ Flow in gpm times head in feet, divided by 3960. Substitute the stated values: 8
 
 A wet well has a 6 ft by 8 ft footprint and is filled 6 ft deep. Use 7.48 gal per cubic foot. How many gallons does it hold? Round to the nearest gallon.
 
-- **A.** 215 gal
-- **B.** 4,308 gal
+- **A.** 4,308 gal
+- **B.** 2,402 gal
 - **C.** 288 gal
 - **D.** 2,154 gal
 
@@ -4298,7 +4298,7 @@ Average flow in MGD times 694.4 gpm per MGD, times the peak factor. Substitute t
 
 A pump delivers 1,200 gpm against a total head of 45 ft. Use hydraulic horsepower equals gpm times feet divided by 3960. Round to one decimal place.
 
-- **A.** 0.3 hp
+- **A.** 0.1 hp
 - **B.** 54,000.0 hp
 - **C.** 13.6 hp
 - **D.** 136.4 hp
@@ -5040,7 +5040,7 @@ Polymer per dry ton times dry tons per day. Substitute the stated values: 12 × 
 A cake load is 9,400 lb per day. How many wet tons per day is this, using 2,000 lb per ton? Round to one decimal place.
 
 - **A.** 4,700.0 tons/day
-- **B.** 0.5 tons/day
+- **B.** 0.2 tons/day
 - **C.** 4.7 tons/day
 - **D.** 9.4 tons/day
 
@@ -5055,7 +5055,7 @@ A hauler truck carries 25 wet tons of cake at 22 percent solids. How many dry to
 - **A.** 5.5 dry tons
 - **B.** 113.6 dry tons
 - **C.** 2.5 dry tons
-- **D.** 0.6 dry tons
+- **D.** 0.2 dry tons
 
 **Answer: A. 5.5 dry tons**
 
@@ -5079,7 +5079,7 @@ Loads per week times tons per load times weeks. Substitute the stated values: 3 
 A plant discharges 3.0 MGD with 15 mg/L of BOD into a stream flowing 27 MGD with 2 mg/L of BOD. What is the mixed BOD in mg/L, assuming complete mixing? Round to one decimal place.
 
 - **A.** 2.0 mg/L
-- **B.** 8.5 mg/L
+- **B.** 3.7 mg/L
 - **C.** 3.3 mg/L
 - **D.** 15.0 mg/L
 
