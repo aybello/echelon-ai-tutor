@@ -17,6 +17,7 @@ interface Formula {
   variables?: { sym: string; desc: string }[];
   example?: { problem: string; solution: string; answer: string };
   tip?: string;
+  useWhen?: string;
 }
 
 interface FormulaCategory {
@@ -230,7 +231,7 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Fluoride Dose",
-        formula: "Feed (L/d) = Q × Target ÷ (Strength × 1000)",
+        formula: "Feed (L/d) = Q (m³/d) × Target (mg/L) ÷ Strength (g/L)",
         units: "L/d",
         variables: [
           { sym: "Q", desc: "Flow rate (m³/d)" },
@@ -239,10 +240,11 @@ const CATEGORIES: FormulaCategory[] = [
         ],
         example: {
           problem: "A plant treats 5,000 m³/d. Target fluoride = 0.7 mg/L. Fluorosilicic acid solution = 20 g/L. What is the feed rate?",
-          solution: "Feed = 5,000 × 0.7 ÷ (20 × 1000) × 1,000,000\n= 3,500,000 ÷ 20,000 = 175 L/d",
+          solution: "Feed = 5,000 × 0.7 ÷ 20\n= 3,500 ÷ 20 = 175 L/d",
           answer: "175 L/d",
         },
-        tip: "Health Canada guideline: 0.7 mg/L fluoride. Ontario follows this guideline. Fluorosilicic acid (H₂SiF₆) is the most common fluoridation chemical.",
+        tip: "Keep the strength unit as g/L in this version of the equation. Confirm the supplier concentration basis before converting a chemical feed rate.",
+        useWhen: "Use when flow, target concentration, and solution strength are given and the required liquid feed rate is requested.",
       },
       {
         name: "Polymer Dose",
@@ -327,11 +329,12 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "η", desc: "Pump efficiency (decimal, e.g. 0.75)" },
         ],
         example: {
-          problem: "A pump delivers 0.05 m³/s against 20 m TDH at 75% efficiency. What is the power draw?",
+          problem: "A pump delivers 0.05 m³/s against 20 m TDH at 75% pump efficiency. What shaft power is required?",
           solution: "P = 1000 × 9.81 × 0.05 × 20 ÷ 0.75\n= 9,810 ÷ 0.75 = 13,080 W = 13.1 kW",
-          answer: "13.1 kW",
+          answer: "13.1 kW shaft power",
         },
-        tip: "Water power (WHP) = ρgQH. Shaft power = WHP ÷ η. Motor power = Shaft power ÷ motor efficiency.",
+        tip: "Water power (WHP) = ρgQH. Shaft power = WHP ÷ pump efficiency. Electrical input also depends on motor efficiency; do not label shaft power as motor power.",
+        useWhen: "Use when flow, total dynamic head, and pump efficiency are given and the required shaft power is requested.",
       },
       {
         name: "Net Positive Suction Head (NPSH)",
@@ -343,7 +346,8 @@ const CATEGORIES: FormulaCategory[] = [
           { sym: "Hvp", desc: "Vapour pressure head at water temperature" },
           { sym: "Hf", desc: "Friction losses in suction line" },
         ],
-        tip: "NPSHa must exceed NPSHr (required) by at least 0.5–1.0 m to prevent cavitation. Cavitation causes noise, vibration, and impeller damage.",
+        tip: "Compare NPSHa with NPSHr using the applicable equipment and design requirement. Do not treat one fixed safety margin as universal. Cavitation causes noise, vibration, and impeller damage.",
+        useWhen: "Use when the question asks whether suction conditions provide enough available head to avoid cavitation.",
       },
     ],
   },
@@ -424,11 +428,11 @@ const CATEGORIES: FormulaCategory[] = [
       },
       {
         name: "Organic Loading Rate (OLR)",
-        formula: "OLR = Q × BOD ÷ V",
+        formula: "OLR = Q × BOD ÷ (V × 1000)",
         units: "kg BOD/m³·d",
         variables: [
           { sym: "Q", desc: "Flow rate (m³/d)" },
-          { sym: "BOD", desc: "Influent BOD (g/m³ = mg/L)" },
+          { sym: "BOD", desc: "Influent BOD (mg/L; divide by 1000 to obtain kg/m³)" },
           { sym: "V", desc: "Reactor volume (m³)" },
         ],
         example: {
@@ -436,7 +440,8 @@ const CATEGORIES: FormulaCategory[] = [
           solution: "OLR = 5,000 × 250 ÷ (2,500 × 1000) = 1,250,000 ÷ 2,500,000 = 0.5 kg BOD/m³·d",
           answer: "0.5 kg BOD/m³·d",
         },
-        tip: "Typical OLR for activated sludge: 0.3–0.8 kg BOD/m³·d. Exceeding design OLR causes process upset.",
+        tip: "The ÷1000 in this equation converts BOD from mg/L to kg/m³. Typical OLR for activated sludge: 0.3–0.8 kg BOD/m³·d. Exceeding design OLR can cause process upset.",
+        useWhen: "Use when flow, influent BOD, and reactor volume are given and the organic loading on the reactor is requested.",
       },
     ],
   },
@@ -770,6 +775,8 @@ export default function Formulas() {
       return (
         f.name.toLowerCase().includes(q) ||
         f.formula.toLowerCase().includes(q) ||
+        cat.label.toLowerCase().includes(q) ||
+        (f.variables?.some(variable => `${variable.sym} ${variable.desc}`.toLowerCase().includes(q)) ?? false) ||
         (f.tip?.toLowerCase().includes(q) ?? false) ||
         (f.example?.problem.toLowerCase().includes(q) ?? false)
       );
@@ -828,6 +835,17 @@ export default function Formulas() {
           <p style={{ margin: "6px 0 0", fontSize: 15 }}>
             <Link href="/math-practice" style={{ color: "#1757B8", fontWeight: 700 }}>Practise calculation questions →</Link>
           </p>
+          <div style={{ marginTop: 18, padding: "16px 18px", borderRadius: 14, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+            <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", letterSpacing: "0.06em", textTransform: "uppercase" }}>Start with the common calculations</div>
+            <p style={{ margin: "5px 0 12px", color: "#475569", fontSize: 13, lineHeight: 1.5 }}>Search by a formula name, variable, category, or the wording of an exam question.</p>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {["CT Value", "Flow Rate", "Detention Time", "SVI", "Pump Power"].map(term => (
+                <button key={term} type="button" onClick={() => { setSearchQuery(term); setActiveCategory(null); window.scrollTo({ top: 230, behavior: "smooth" }); }} style={{ minHeight: 38, padding: "0 12px", borderRadius: 999, border: "1px solid #CBD5E1", background: "#fff", color: "#1757B8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+                  {term}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </header>
 
@@ -1004,6 +1022,7 @@ function FormulaCardWrapper({
 }) {
   const [localExpand, setLocalExpand] = useState(false);
   const isExpanded = forceExpand || localExpand;
+  const toggleExpanded = () => setLocalExpand(value => !value);
 
   return (
     <div className="learning-redesign-formula-card" style={{
@@ -1017,7 +1036,17 @@ function FormulaCardWrapper({
       {/* Header */}
       <div
         className="learning-redesign-formula-card__header"
-        onClick={() => setLocalExpand(!localExpand)}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        aria-controls={`formula-details-${formula.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`}
+        onKeyDown={event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleExpanded();
+          }
+        }}
+        onClick={toggleExpanded}
         style={{
           padding: "16px 20px",
           cursor: "pointer",
@@ -1058,6 +1087,11 @@ function FormulaCardWrapper({
               Units: {formula.units}
             </div>
           )}
+          {formula.useWhen && (
+            <div style={{ fontSize: 12, color: "#64748B", marginTop: 8, lineHeight: 1.45 }}>
+              <strong style={{ color: "#334155" }}>Use when:</strong> {formula.useWhen}
+            </div>
+          )}
         </div>
         <div style={{
           fontSize: 13,
@@ -1073,7 +1107,7 @@ function FormulaCardWrapper({
 
       {/* Expanded content */}
       {isExpanded && (
-        <div style={{ padding: "0 20px 20px", animation: "fadeDown 0.2s ease both" }}>
+        <div id={`formula-details-${formula.name.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`} style={{ padding: "0 20px 20px", animation: "fadeDown 0.2s ease both" }}>
           {/* Variables */}
           {formula.variables && formula.variables.length > 0 && (
             <div style={{ marginBottom: 14 }}>
@@ -1158,6 +1192,14 @@ function FormulaCardWrapper({
               {formula.tip}
             </div>
           )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 14 }}>
+            <Link href="/math-practice" className="formula-practice-link" style={{ display: "inline-flex", alignItems: "center", minHeight: 42, padding: "0 14px", borderRadius: 10, background: color, color: "#fff", fontSize: 13, fontWeight: 800, textDecoration: "none" }}>
+              Practise this formula →
+            </Link>
+            <button type="button" onClick={onToggleStar} aria-pressed={starred} style={{ minHeight: 42, padding: "0 14px", borderRadius: 10, border: `1.5px solid ${color}`, background: "#fff", color, fontSize: 13, fontWeight: 800, cursor: "pointer", fontFamily: "inherit" }}>
+              {starred ? "★ Saved for review" : "☆ Save for review"}
+            </button>
+          </div>
         </div>
       )}
     </div>
