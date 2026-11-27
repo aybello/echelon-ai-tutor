@@ -284,12 +284,12 @@ function CareerTimeline({ onSelect, selected, province, track }: {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-      <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
+      {mainLevels.length > 0 && <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Typical Career Timeline
         </div>
         <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 24 }}>
-          Water & Wastewater Track — {province.name} (years of experience)
+          {track === "wqa" ? "Water Quality Analyst Track" : track === "water" ? "Water Track" : track === "wastewater" ? "Wastewater Track" : "Water & Wastewater Track"} — {province.name} (years of experience)
         </div>
 
         <div style={{ position: "relative" }}>
@@ -356,7 +356,7 @@ function CareerTimeline({ onSelect, selected, province, track }: {
             );
           })}
         </div>}
-      </div>
+      </div>}
 
       {/* WQA specialist path — only for Ontario */}
       {wqaLevel && (track === "all" || track === "wqa") && (
@@ -611,7 +611,7 @@ export default function CareerMap() {
           .career-bar-row { flex-wrap: wrap !important; gap: 8px !important; }
           .career-bar-label { width: auto !important; text-align: left !important; min-width: 50px !important; }
           .career-bar-salary { width: auto !important; flex: 1 1 100% !important; }
-          .career-salary-scale { padding-left: 0 !important; padding-right: 0 !important; }
+          .career-salary-scale { padding-left: 58px !important; padding-right: 0 !important; }
         }
       `}</style>
 
