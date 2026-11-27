@@ -400,6 +400,271 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     expect(text(tree)).toContain(result.candidateEmail);
     expect(text(tree)).toContain("Download CSV");
   });
+  it("allows fresh server-authorized historical list/results, CSV and revoke after expired-term catalog FORBIDDEN", async () => {
+    h.catalog.mockRejectedValue({
+      message: "The current Annual term has expired.",
+      data: { code: "FORBIDDEN" },
+    });
+    h.client.setQueryData(key("catalog", { orgId }), catalog);
+    await readyDetail();
+    expect(h.list).toHaveBeenCalledWith({ orgId }, expect.anything());
+    expect(h.results).toHaveBeenCalledWith(
+      { orgId, assessmentId },
+      expect.anything()
+    );
+    expect(text(tree)).toContain(assessment.title);
+    expect(text(tree)).toContain(result.candidateEmail);
+    expect(text(tree)).toContain(
+      "Current-term recruitment creation and invitations are unavailable."
+    );
+    expect(text(tree)).toContain("Historical assessments and results");
+    expect(nodes(tree).some(n => n.props.id === "recruitment-title")).toBe(false);
+    expect(nodes(tree).some(n => n.props.id === "recruitment-candidate")).toBe(
+      false
+    );
+    expect(nodes(tree).some(n => String(n.props.href).includes("pricing"))).toBe(
+      false
+    );
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+    const csv = find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    );
+    expect(csv.props.disabled).toBe(false);
+    csv.props.onClick();
+    await settle();
+    expect(h.fetchResults).toHaveBeenCalledWith(
+      { orgId, assessmentId },
+      { staleTime: 0, retry: false }
+    );
+    expect(h.download).toHaveBeenCalledOnce();
+    const blob = vi.mocked(URL.createObjectURL).mock.calls[0][0] as Blob;
+    expect(await blob.text()).toContain(result.candidateEmail);
+    find(n =>
+      String(n.props["aria-label"]).startsWith("Revoke invitation")
+    ).props.onClick();
+    render();
+    const group = find(
+      n => n.props["aria-labelledby"] === "recruitment-revoke-title"
+    );
+    nodes(group)
+      .find(n => n.type === "checkbox")
+      .props.onCheckedChange(true);
+    render();
+    find(
+      n => n.type === "button" && text(n).includes("Confirm revoke")
+    ).props.onClick();
+    await settle();
+    expect(h.revoke).toHaveBeenCalledWith({
+      orgId,
+      assignmentId: result.assignmentId,
+    });
+    expect(text(tree)).toContain("Invitation revoked.");
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+  });
+  it.each(["FORBIDDEN", "network"])(
+    "does not infer reporting authority from catalog denial when the fresh list fails with %s",
+    async mode => {
+      h.catalog.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+      h.list.mockRejectedValue(
+        mode === "FORBIDDEN"
+          ? { data: { code: mode } }
+          : new Error("Synthetic list failure")
+      );
+      h.client.setQueryData(key("list", { orgId }), [assessment]);
+      h.client.setQueryData(key("results", { orgId, assessmentId }), {
+        assessment,
+        results: [result],
+      });
+      render();
+      await settle();
+      expect(text(tree)).toContain("could not be verified");
+      expect(text(tree)).not.toContain(assessment.title);
+      expect(text(tree)).not.toContain(result.candidateEmail);
+      expect(text(tree)).not.toContain(result.candidateName);
+      expect(text(tree)).not.toContain("Download CSV");
+      expect(text(tree)).not.toContain("Historical assessments and results");
+      expect(h.results).not.toHaveBeenCalled();
+      expect(h.create).not.toHaveBeenCalled();
+      expect(h.invite).not.toHaveBeenCalled();
+    }
+  );
+  it("hides seeded private results and all detail actions on failed historical results authorization", async () => {
+    h.catalog.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+    h.results.mockRejectedValue(new Error("Synthetic historical results failure"));
+    h.client.setQueryData(key("results", { orgId, assessmentId }), {
+      assessment,
+      results: [result],
+    });
+    await readyDetail();
+    expect(text(tree)).toContain("Synthetic historical results failure");
+    expect(text(tree)).not.toContain(result.candidateEmail);
+    expect(text(tree)).not.toContain(result.candidateName);
+    expect(text(tree)).not.toContain("Candidate results");
+    expect(text(tree)).not.toContain("Download CSV");
+    expect(text(tree)).not.toContain("Revoke invitation");
+    expect(h.download).not.toHaveBeenCalled();
+    expect(h.revoke).not.toHaveBeenCalled();
+  });
+  it("requires a nonmanual fresh catalog success even when list and results already authorize reporting", async () => {
+    const pending = deferred();
+    h.catalog.mockReturnValue(pending.promise);
+    await readyDetail();
+    expect(text(tree)).toContain(result.candidateEmail);
+    expect(text(tree)).toContain("Download CSV");
+    expect(nodes(tree).some(n => n.props.id === "recruitment-title")).toBe(false);
+    expect(nodes(tree).some(n => n.props.id === "recruitment-candidate")).toBe(
+      false
+    );
+    h.client.setQueryData(key("catalog", { orgId }), catalog);
+    render();
+    expect(nodes(tree).some(n => n.props.id === "recruitment-title")).toBe(false);
+    expect(nodes(tree).some(n => n.props.id === "recruitment-candidate")).toBe(
+      false
+    );
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+    pending.resolve(catalog);
+    await settle();
+    // A manual success consumes the pending freshness evidence. A new actual
+    // fetch must succeed before this catalog can authorize create/invite.
+    expect(nodes(tree).some(n => n.props.id === "recruitment-title")).toBe(false);
+    h.catalog.mockResolvedValue(catalog);
+    await h.client.fetchQuery({
+      queryKey: key("catalog", { orgId }),
+      queryFn: () => h.catalog({ orgId }),
+      staleTime: 0,
+      retry: false,
+    });
+    await settle();
+    expect(find(n => n.props.id === "recruitment-title")).toBeDefined();
+    expect(find(n => n.props.id === "recruitment-candidate")).toBeDefined();
+  });
+  it("refuses retained creation and invite handlers after current catalog refetch/denial while keeping reporting accessible", async () => {
+    await readyDetail();
+    input("recruitment-title", "Synthetic new assessment");
+    input("recruitment-course", "class2-water");
+    find(
+      n =>
+        n.type === "checkbox" && typeof n.props.onCheckedChange === "function"
+    ).props.onCheckedChange(true);
+    render();
+    input("recruitment-candidate", "31");
+    const createForm = find(
+      n => n.type === "form" && text(n).includes("Create assessment")
+    );
+    const inviteForm = find(
+      n => n.type === "form" && text(n).includes("Create invitation link")
+    );
+    const pending = deferred();
+    const refetch = h.client
+      .fetchQuery({
+        queryKey: key("catalog", { orgId }),
+        queryFn: () => pending.promise,
+        staleTime: 0,
+        retry: false,
+      })
+      .catch(() => undefined);
+    // QueryClient changes synchronously, before React delivers the new props.
+    await createForm.props.onSubmit({ preventDefault: vi.fn() });
+    await inviteForm.props.onSubmit({ preventDefault: vi.fn() });
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+    render();
+    await createForm.props.onSubmit({ preventDefault: vi.fn() });
+    await inviteForm.props.onSubmit({ preventDefault: vi.fn() });
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+    expect(text(tree)).toContain(result.candidateEmail);
+    expect(text(tree)).toContain("Download CSV");
+    expect(nodes(tree).some(n => n.props.id === "recruitment-candidate")).toBe(
+      false
+    );
+    pending.reject({ data: { code: "FORBIDDEN" } });
+    await refetch;
+    await settle();
+    await createForm.props.onSubmit({ preventDefault: vi.fn() });
+    await inviteForm.props.onSubmit({ preventDefault: vi.fn() });
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+    expect(text(tree)).toContain("Historical assessments and results");
+    expect(text(tree)).toContain(result.candidateEmail);
+    expect(text(tree)).toContain("Download CSV");
+    h.catalog.mockResolvedValue(catalog);
+    await h.client.fetchQuery({
+      queryKey: key("catalog", { orgId }),
+      queryFn: () => h.catalog({ orgId }),
+      staleTime: 0,
+      retry: false,
+    });
+    await settle();
+    expect(find(n => n.props.id === "recruitment-title")).toBeDefined();
+    expect(find(n => n.props.id === "recruitment-candidate")).toBeDefined();
+    await createForm.props.onSubmit({ preventDefault: vi.fn() });
+    await inviteForm.props.onSubmit({ preventDefault: vi.fn() });
+    expect(h.create).not.toHaveBeenCalled();
+    expect(h.invite).not.toHaveBeenCalled();
+  });
+  it.each(["list", "results", "revoke"] as const)(
+    "clears historical reporting and retained handlers on remote delegate %s denial even though catalog was already denied",
+    async endpoint => {
+      h.catalog.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+      await readyDetail();
+      const csv = find(
+        n => n.type === "button" && text(n).includes("Download CSV")
+      );
+      const copy = find(n =>
+        String(n.props["aria-label"]).startsWith("Copy invitation")
+      );
+      const revoke = find(n =>
+        String(n.props["aria-label"]).startsWith("Revoke invitation")
+      );
+      h.list.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+      h.results.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+      if (endpoint === "revoke") {
+        h.revoke.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+        revoke.props.onClick();
+        render();
+        const group = find(
+          n => n.props["aria-labelledby"] === "recruitment-revoke-title"
+        );
+        nodes(group)
+          .find(n => n.type === "checkbox")
+          .props.onCheckedChange(true);
+        render();
+        find(
+          n => n.type === "button" && text(n).includes("Confirm revoke")
+        ).props.onClick();
+      } else {
+        find(
+          n =>
+            n.type === "button" &&
+            text(n) === (endpoint === "list" ? "Refresh" : "Refresh results")
+        ).props.onClick();
+      }
+      await settle();
+      csv.props.onClick();
+      copy.props.onClick();
+      revoke.props.onClick();
+      render();
+      expect(text(tree)).toContain("could not be verified");
+      expect(text(tree)).not.toContain(assessment.title);
+      expect(text(tree)).not.toContain(result.candidateEmail);
+      expect(text(tree)).not.toContain(result.candidateName);
+      expect(text(tree)).not.toContain("Download CSV");
+      expect(text(tree)).not.toContain("I confirm");
+      expect(h.download).not.toHaveBeenCalled();
+      expect(h.fetchResults).not.toHaveBeenCalled();
+      expect(h.clipboard).not.toHaveBeenCalled();
+      expect(h.revoke).toHaveBeenCalledTimes(endpoint === "revoke" ? 1 : 0);
+      expect(h.client.getQueryData(key("catalog", { orgId }))).toBeUndefined();
+      expect(h.client.getQueryData(key("list", { orgId }))).toBeUndefined();
+      expect(
+        h.client.getQueryData(key("results", { orgId, assessmentId }))
+      ).toBeUndefined();
+    }
+  );
   it("reads the exact submitted org and assessment on every CSV click and exports only the fresh returned snapshot", async () => {
     await readyDetail();
     const pending = deferred();

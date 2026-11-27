@@ -540,51 +540,130 @@ describe("candidate monotonic request clock contract", () => {
     expect(text(render())).toContain("Assessment submitted");
   });
 
-  it("rechecks an early advisory zero at the server-reported deadline and renders only the terminal server result", async () => {
+  it("waits from actual receipt despite early advisory zero and repeated cached merges, then renders only the terminal server result", async () => {
     const closeDeadline = {
       ...fixture,
-      deadlineMs: fixture.serverNowMs + 20000,
+      deadlineMs: fixture.serverNowMs + 40000,
+      serverNowMs: fixture.serverNowMs + 24000,
     };
-    h.fetch
-      .mockResolvedValueOnce({
-        ...closeDeadline,
-        serverNowMs: fixture.serverNowMs + 5000,
-      })
-      .mockResolvedValueOnce({
-        ...closeDeadline,
-        serverNowMs: closeDeadline.deadlineMs,
-        revision: 8,
-        status: "timed_out",
-      });
+    h.fetch.mockResolvedValueOnce({
+      ...closeDeadline,
+      serverNowMs: closeDeadline.deadlineMs,
+      revision: 8,
+      status: "timed_out",
+    });
+    // The server samples at 24s during a 25s request. Its real deadline is
+    // still 15s away at receipt, but the conservative display is already zero.
     await freshTimedQuery(closeDeadline, 25000);
     expect(timer()).toBe("00:00");
-    expect(h.fetch).toHaveBeenCalledTimes(1);
+    expect(h.fetch).not.toHaveBeenCalled();
     expect(text(render())).toContain(fixture.questions[0].prompt);
     expect(
       nodes(render()).find(n => n.type === "radio-group").props.disabled
     ).toBe(false);
-    for (let i = 0; i < 14; i++) {
+    expect(button(render(), "Review submission").props.disabled).toBe(false);
+    for (let i = 0; i < 15; i++) {
       advance(1000);
-      // Repeated DTO consumption is not a new request and must not keep
-      // pushing the scheduled server reconciliation into the future.
-      h.query = {
-        ...h.query,
-        data: { ...closeDeadline, serverNowMs: fixture.serverNowMs + 5000 },
-      };
+      // Re-run admission with the very same authorized DTO. This is a cache
+      // consumption, not a new response receipt, and cannot postpone the read.
+      h.query = { ...h.query, isFetchedAfterMount: false };
+      render();
+      h.query = { ...h.query, isFetchedAfterMount: true };
       await settle();
-      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(h.fetch).not.toHaveBeenCalled();
       expect(text(render())).not.toContain("Assessment time has ended");
     }
-    advance(1000);
+    advance(999);
     await settle();
-    expect(h.fetch).toHaveBeenCalledTimes(2);
+    expect(h.fetch).not.toHaveBeenCalled();
+    advance(1);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(1);
     expect(text(render())).toContain("Assessment time has ended");
     expect(h.start).not.toHaveBeenCalled();
     expect(h.save).not.toHaveBeenCalled();
     expect(h.submit).not.toHaveBeenCalled();
     advance(60000);
     await settle();
-    expect(h.fetch).toHaveBeenCalledTimes(2);
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(["save", "submit"] as const)(
+    "keeps %s usable after a delayed initial response displays zero while the real server deadline is future",
+    async action => {
+      const closeDeadline = {
+        ...fixture,
+        deadlineMs: fixture.serverNowMs + 4000,
+        serverNowMs: fixture.serverNowMs + 2500,
+      };
+      h.fetch.mockRejectedValue(new Error("An early read would block actions"));
+      await freshTimedQuery(closeDeadline, 3000);
+      expect(timer()).toBe("00:00");
+      advance(500);
+      await settle();
+      expect(h.fetch).not.toHaveBeenCalled();
+      const latest = {
+        ...closeDeadline,
+        serverNowMs: fixture.serverNowMs + 3500,
+        revision: 8,
+        answers: { q1: 0 },
+      };
+      if (action === "save") {
+        h.save.mockResolvedValueOnce(latest);
+        const choices = nodes(render()).find(n => n.type === "radio-group");
+        expect(choices.props.disabled).toBe(false);
+        choices.props.onValueChange("0");
+      } else {
+        expect(button(render(), "Review submission").props.disabled).toBe(false);
+        button(render(), "Review submission").props.onClick();
+        expect(h.submit).not.toHaveBeenCalled();
+        expect(button(render(), "Submit assessment").props.disabled).toBe(false);
+        h.submit.mockResolvedValueOnce({ ...latest, status: "submitted" });
+        button(render(), "Submit assessment").props.onClick();
+      }
+      await settle();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h[action]).toHaveBeenCalledWith(
+        action === "save"
+          ? { assignmentId, questionId: "q1", selectedIndex: 0, revision: 7 }
+          : { assignmentId, revision: 7 }
+      );
+      expect(h.fetch).not.toHaveBeenCalled();
+      expect(text(render())).not.toContain("Refresh the server status");
+      expect(text(render())).toContain(
+        action === "save" ? fixture.questions[0].prompt : "Assessment submitted"
+      );
+    }
+  );
+
+  it("anchors initial scheduling at response receipt, not delayed effect admission", async () => {
+    const closeDeadline = {
+      ...fixture,
+      deadlineMs: fixture.serverNowMs + 4000,
+      serverNowMs: fixture.serverNowMs + 2500,
+    };
+    const pending = deferred<RecruitmentCandidateView>();
+    h.autoQuery = true;
+    h.initialQuery.mockReturnValueOnce(pending.promise);
+    h.fetch.mockResolvedValueOnce({
+      ...closeDeadline,
+      serverNowMs: closeDeadline.deadlineMs,
+      revision: 8,
+      status: "timed_out",
+    });
+    render();
+    advance(3000);
+    pending.resolve(closeDeadline);
+    // Let QueryClient record receipt without running the page's passive merge.
+    for (let i = 0; i < 25; i++) await Promise.resolve();
+    advance(1499);
+    await settle();
+    expect(timer()).toBe("00:00");
+    expect(h.fetch).not.toHaveBeenCalled();
+    advance(1);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+    expect(text(render())).toContain("Assessment time has ended");
   });
 
   it("bounds near-deadline checks despite conservative latency and waits for the pending read", async () => {
@@ -600,6 +679,13 @@ describe("candidate monotonic request clock contract", () => {
       })
       .mockReturnValueOnce(pending.promise);
     await freshTimedQuery(closeDeadline, 5000);
+    expect(h.fetch).not.toHaveBeenCalled();
+    advance(3999);
+    await settle();
+    expect(h.fetch).not.toHaveBeenCalled();
+    advance(1);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(1);
     for (let i = 0; i < 4; i++) {
       advance(1000);
       await settle();
@@ -628,6 +714,15 @@ describe("candidate monotonic request clock contract", () => {
     };
     h.fetch.mockRejectedValue(new Error("Synthetic deadline read failure"));
     await freshTimedQuery(closeDeadline, 5000);
+    expect(h.fetch).not.toHaveBeenCalled();
+    advance(3999);
+    await settle();
+    expect(h.fetch).not.toHaveBeenCalled();
+    expect(
+      nodes(render()).find(n => n.type === "radio-group").props.disabled
+    ).toBe(false);
+    advance(1);
+    await settle();
     expect(h.fetch).toHaveBeenCalledTimes(1);
     for (const [delay, count] of [
       [5000, 2],
@@ -635,6 +730,10 @@ describe("candidate monotonic request clock contract", () => {
       [20000, 4],
     ]) {
       advance(delay - 1000);
+      // Reconsuming the initial DTO must not reset failures or postpone retries.
+      h.query = { ...h.query, isFetchedAfterMount: false };
+      render();
+      h.query = { ...h.query, isFetchedAfterMount: true };
       await settle();
       expect(h.fetch).toHaveBeenCalledTimes(count - 1);
       advance(1000);
@@ -660,6 +759,48 @@ describe("candidate monotonic request clock contract", () => {
     expect(text(render())).toContain("Assessment time has ended");
   });
 
+  it.each(["UNAUTHORIZED", "FORBIDDEN", "PRECONDITION_FAILED"])(
+    "clears private candidate content on safe deadline %s without replaying writes or retrying automatically",
+    async code => {
+      const closeDeadline = {
+        ...fixture,
+        deadlineMs: fixture.serverNowMs + 4000,
+        serverNowMs: fixture.serverNowMs + 2500,
+      };
+      h.fetch.mockRejectedValueOnce(fail(code));
+      await freshTimedQuery(closeDeadline, 3000);
+      const oldChoice = nodes(render()).find(n => n.type === "radio-group");
+      button(render(), "Review submission").props.onClick();
+      const oldSubmit = button(render(), "Submit assessment");
+      const otherKey = ["unrelated", "candidate"];
+      h.client.setQueryData(otherKey, "Other candidate fixture");
+      advance(1499);
+      await settle();
+      expect(h.fetch).not.toHaveBeenCalled();
+      expect(oldChoice.props.disabled).toBe(false);
+      expect(oldSubmit.props.disabled).toBe(false);
+      advance(1);
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expectPrivateContentCleared();
+      if (code === "PRECONDITION_FAILED") replacementNotice();
+      else
+        expect(text(render())).toContain(
+          code === "UNAUTHORIZED"
+            ? "Sign in to open"
+            : "not available to this account"
+        );
+      expect(h.client.getQueryData(otherKey)).toBe("Other candidate fixture");
+      oldChoice.props.onValueChange("0");
+      oldSubmit.props.onClick();
+      advance(120000);
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.submit).not.toHaveBeenCalled();
+    }
+  );
+
   it.each(["start", "save"] as const)(
     "allows selected answers and manual confirmed submission after delayed active %s reaches display zero",
     async action => {
@@ -673,15 +814,12 @@ describe("candidate monotonic request clock contract", () => {
         serverNowMs: fixture.serverNowMs + 2500,
       };
       // The sample is taken late in the request; the full-duration charge
-      // conservatively overshoots while a fresh server read is still active.
+      // conservatively overshoots while the actual server deadline is future.
       h[action].mockImplementationOnce(async () => {
         advance(3000);
         return delayedActive;
       });
-      h.fetch.mockResolvedValue({
-        ...delayedActive,
-        serverNowMs: fixture.serverNowMs + 3000,
-      });
+      h.fetch.mockRejectedValue(new Error("An early read would block actions"));
       await freshTimedQuery(
         action === "start"
           ? { ...closeDeadline, status: "invited", questions: [], answers: {} }
@@ -700,10 +838,7 @@ describe("candidate monotonic request clock contract", () => {
       }
       await settle();
       expect(timer()).toBe("00:00");
-      expect(h.fetch).toHaveBeenCalledTimes(1);
-      expect(text(render())).toContain(
-        "The server says this assessment is still available"
-      );
+      expect(h.fetch).not.toHaveBeenCalled();
       expect(text(render())).toContain(
         "Display estimate; server deadline applies"
       );
@@ -715,6 +850,7 @@ describe("candidate monotonic request clock contract", () => {
         serverNowMs: fixture.serverNowMs + 3200,
         answers: { q1: 0 },
       };
+      advance(200);
       h.save.mockResolvedValue(saved);
       const choices = nodes(render()).find(n => n.type === "radio-group");
       expect(choices.props.disabled).toBe(false);
@@ -730,7 +866,7 @@ describe("candidate monotonic request clock contract", () => {
         nodes(render()).find(n => n.type === "radio-group").props.value
       ).toBe("0");
       expect(timer()).toBe("00:00");
-      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(h.fetch).not.toHaveBeenCalled();
       expect(button(render(), "Review submission").props.disabled).toBe(false);
       button(render(), "Review submission").props.onClick();
       expect(h.submit).not.toHaveBeenCalled();
@@ -748,20 +884,23 @@ describe("candidate monotonic request clock contract", () => {
         revision: 9,
       });
       expect(text(render())).toContain("Assessment submitted");
+      expect(h.fetch).not.toHaveBeenCalled();
     }
   );
 
-  it("permits a consented start after display expiry when fresh server status is invited", async () => {
+  it("permits a consented start after early display expiry without a blocking deadline read", async () => {
     const invited: RecruitmentCandidateView = {
       ...fixture,
       status: "invited",
       questions: [],
       answers: {},
       deadlineMs: fixture.serverNowMs + 4000,
+      serverNowMs: fixture.serverNowMs + 2500,
     };
-    h.fetch.mockResolvedValue(invited);
-    await freshTimedQuery(invited, 5000);
-    expect(h.fetch).toHaveBeenCalledTimes(1);
+    h.fetch.mockRejectedValue(new Error("An early read would block starting"));
+    await freshTimedQuery(invited, 3000);
+    expect(text(render())).toContain("The display estimate has reached");
+    expect(h.fetch).not.toHaveBeenCalled();
     nodes(render())
       .find(n => n.type === "checkbox")
       .props.onCheckedChange(true);
@@ -769,6 +908,7 @@ describe("candidate monotonic request clock contract", () => {
     button(render(), "Start assessment").props.onClick();
     await settle();
     expect(h.start).toHaveBeenCalledTimes(1);
+    expect(h.fetch).not.toHaveBeenCalled();
   });
 
   it.each(["expired", "timed_out"] as const)(

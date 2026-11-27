@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ClipboardList, Copy, Plus, ShieldCheck } from "lucide-react";
 import { getQueryKey } from "@trpc/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import {
@@ -82,8 +83,10 @@ function RecruitmentPanelBody({
   const live = useLifetime();
   const isCurrent = () => live.current && access.isCurrent();
   const utils = trpc.useUtils();
+  const queryClient = useQueryClient();
+  const catalogKey = getQueryKey(trpc.recruitment.catalog, { orgId }, "query");
   const catalogFresh = useFreshRecruitmentQuery(
-    getQueryKey(trpc.recruitment.catalog, { orgId }, "query"),
+    catalogKey,
     access
   );
   const listFresh = useFreshRecruitmentQuery(
@@ -116,17 +119,44 @@ function RecruitmentPanelBody({
     useState<InvitationOutcome | null>(null);
   const authorized =
     access.isCurrent() &&
-    catalogFresh &&
     listFresh &&
-    catalogQuery.isFetchedAfterMount &&
-    catalogQuery.isSuccess &&
-    !catalogQuery.isFetching &&
     listQuery.isFetchedAfterMount &&
     listQuery.isSuccess &&
     !listQuery.isFetching;
-  const catalog: RecruitmentCatalog | undefined = catalogQuery.isError
-    ? undefined
-    : catalogQuery.data;
+  // Reporting endpoints authorize historical access independently of the
+  // current Annual term enforced by the catalog. Never infer authority from a
+  // catalog denial, and never use cached catalog data to create or invite.
+  const catalogAuthorized =
+    authorized &&
+    catalogFresh &&
+    catalogQuery.isFetchedAfterMount &&
+    catalogQuery.isSuccess &&
+    !catalogQuery.isFetching;
+  const catalogAuthorization = catalogAuthorized
+    ? queryClient.getQueryState(catalogKey)
+    : undefined;
+  // Retained same-epoch form handlers must see a later catalog denial/refetch.
+  // State identity also fences cache writes/fetches before React re-renders.
+  const canUseCatalog = () =>
+    isCurrent() &&
+    !!catalogAuthorization &&
+    queryClient.getQueryState(catalogKey) === catalogAuthorization &&
+    catalogAuthorization.status === "success" &&
+    catalogAuthorization.fetchStatus === "idle";
+  const reportingVerified = useRef(false);
+  if (authorized) reportingVerified.current = true;
+  useEffect(() => {
+    if (
+      reportingVerified.current &&
+      listQuery.isError &&
+      accessDenied(listQuery.error) &&
+      access.isCurrent()
+    )
+      access.reset();
+  }, [listQuery.isError, listQuery.error, access]);
+  const catalog: RecruitmentCatalog | undefined = catalogAuthorized
+    ? catalogQuery.data
+    : undefined;
   const definitions: RecruitmentDefinitionSummary[] | undefined =
     listQuery.data;
   const course = catalog?.courses.find(item => item.courseKey === courseKey);
@@ -159,7 +189,7 @@ function RecruitmentPanelBody({
             : "";
   async function createAssessment(event: React.FormEvent) {
     event.preventDefault();
-    if (!isCurrent() || !authorized) return;
+    if (!isCurrent() || !authorized || !canUseCatalog()) return;
     setAttempted(true);
     setError("");
     setNotice("");
@@ -192,7 +222,7 @@ function RecruitmentPanelBody({
     }
   }
   if (!authorized) {
-    const failed = catalogQuery.isError || listQuery.isError;
+    const failed = listQuery.isError;
     return (
       <section className={recruitmentCard}>
         <h2 className="text-xl font-semibold">Recruitment assessments</h2>
@@ -200,7 +230,7 @@ function RecruitmentPanelBody({
           <RecruitmentError
             message="Recruitment access could not be verified. Your session may have changed."
             onRetry={access.reset}
-            pending={catalogQuery.isFetching || listQuery.isFetching}
+            pending={listQuery.isFetching}
           />
         ) : (
           <p role="status" className="mt-4 text-sm text-slate-500">
@@ -250,11 +280,17 @@ function RecruitmentPanelBody({
           <p className="mt-1 text-sm text-slate-600">
             Choose a course and topics from the available question pool.
           </p>
-          {catalogQuery.isLoading ? (
+          {!catalogAuthorized && !catalogQuery.isError ? (
             <p role="status" className="py-8 text-sm text-slate-500">
-              Loading courses and team-seat candidates…
+              Verifying current-term course and team-seat catalog access…
             </p>
-          ) : catalogQuery.isError || !catalog ? (
+          ) : catalogQuery.isError && accessDenied(catalogQuery.error) ? (
+            <p role="status" className="mt-4 text-sm text-slate-600">
+              Current-term recruitment creation and invitations are unavailable.
+              Historical assessments and results remain available while reporting
+              access is authorized.
+            </p>
+          ) : !catalog ? (
             <div className="mt-4">
               <RecruitmentError
                 message={"The assessment catalog could not load."}
@@ -518,6 +554,7 @@ function RecruitmentPanelBody({
           orgId={orgId}
           assessmentId={selectedId}
           catalog={catalog}
+          canUseCatalog={canUseCatalog}
           access={access}
           invitationOutcome={
             invitationOutcome?.assessmentId === selectedId
@@ -541,6 +578,7 @@ function RecruitmentDetail({
   orgId,
   assessmentId,
   catalog,
+  canUseCatalog,
   access,
   invitationOutcome,
   onInvitationOutcome,
@@ -548,6 +586,7 @@ function RecruitmentDetail({
   orgId: number;
   assessmentId: string;
   catalog?: RecruitmentCatalog;
+  canUseCatalog: () => boolean;
   access: RecruitmentManagerAccess;
   invitationOutcome?: InvitationOutcome;
   onInvitationOutcome: (outcome: InvitationOutcome | null) => void;
@@ -681,7 +720,16 @@ function RecruitmentDetail({
   }
   async function inviteCandidate(event: React.FormEvent) {
     event.preventDefault();
-    if (!isCurrent() || !authorized || !memberId || busy || !query.data) return;
+    if (
+      !isCurrent() ||
+      !authorized ||
+      !canUseCatalog() ||
+      !catalog ||
+      !memberId ||
+      busy ||
+      !query.data
+    )
+      return;
     const eligible = catalog?.candidates.some(
       item =>
         item.memberId === Number(memberId) &&
@@ -827,9 +875,10 @@ function RecruitmentDetail({
             This assessment has expired. Create a new assessment to invite
             candidates.
           </p>
-        ) : !catalog ? (
+        ) : !catalog || !canUseCatalog() ? (
           <p className="mt-4 text-sm text-slate-600">
-            Load the course and team-seat catalog above to invite a candidate.
+            Creating invitations is unavailable until current-term catalog access
+            is verified. Authorized results, CSV, and revocation remain available.
           </p>
         ) : !candidates.length ? (
           <p className="mt-4 text-sm text-slate-600">

@@ -83,6 +83,37 @@ describe("recruitment manager results presentation contract", () => {
     expect(html).toBe("");
   });
 
+  it("renders historical results, CSV and revocation with current reporting capability but no current-term catalog", () => {
+    // The presentation capability comes only from the fresh list/results parent;
+    // it must not depend on the creation/invitation catalog's Annual term.
+    const html = render([base]);
+    expect(assessment.expiresAtMs).toBeLessThan(Date.now());
+    expect(html).toContain(base.candidateEmail);
+    expect(html).toContain("Download CSV");
+    expect(html).toContain('aria-label="Revoke invitation');
+    expect(html).not.toContain("Team-seat candidate");
+    expect(html).not.toContain("Create invitation link");
+    expect(html).not.toContain("/pricing");
+  });
+
+  it("hides historical private results and every action when the reporting capability's epoch is no longer current", () => {
+    const html = renderToStaticMarkup(
+      createElement(
+        RecruitmentManagerPrivacyContext.Provider,
+        { value: { epoch: 4, isCurrent: () => false, reset: vi.fn() } },
+        createElement(RecruitmentResults, {
+          assessment,
+          results: [base],
+          onDownload: vi.fn(),
+          onCopy: vi.fn(),
+          onRevoke: vi.fn(),
+          busy: false,
+        })
+      )
+    );
+    expect(html).toBe("");
+  });
+
   it("explains the empty invited cohort and disables CSV instead of presenting zero scores", () => {
     const html = render([]);
     expect(html).toContain("No candidates invited yet");

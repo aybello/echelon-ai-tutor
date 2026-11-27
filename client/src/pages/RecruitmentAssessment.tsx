@@ -153,6 +153,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const authorizedFetch = useRef<{
     epoch: number;
     data: RecruitmentCandidateView;
+    receivedMs: number | undefined;
   } | null>(null);
   const [fetchVersion, setFetchVersion] = useState(0);
   // Registered before useQuery's layout subscription starts its initial fetch.
@@ -187,14 +188,16 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           request.epoch === sessionEpoch.current &&
           request.query === event.query
         ) {
+          const receivedMs = performance.now();
           authorizedFetch.current = {
             epoch: request.epoch,
             data: event.query.state.data as RecruitmentCandidateView,
+            receivedMs,
           };
           clock.current.record(
             event.query.state.data as RecruitmentCandidateView,
             request.startedMs,
-            performance.now()
+            receivedMs
           );
           setFetchVersion(version => version + 1);
         }
@@ -342,7 +345,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setSubmitOpen(open && expectedRevision.current !== null);
   }
   const mergeServerView = useCallback(
-    (next: RecruitmentCandidateView, requestCompleted = false) => {
+    (next: RecruitmentCandidateView, receivedMs?: number) => {
       if (!live.current || next.assignmentId !== assignmentId) return;
       const current = viewRef.current;
       if (
@@ -365,25 +368,30 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       }
       const monotonicMs = performance.now();
       clock.current.merge(next, monotonicMs);
-      if (
-        isTerminal(next.status) ||
-        deadlineRecheck.current?.deadlineMs !== next.deadlineMs
-      ) {
+      if (isTerminal(next.status)) {
         deadlineRecheck.current = null;
-      } else if (requestCompleted && deadlineRecheck.current) {
-        // Do not use the conservative display clock to schedule another read.
-        // Nor may a repeated cache merge postpone an already scheduled check.
+      } else if (receivedMs !== undefined) {
+        // The server sampled before receipt: waiting the entire remaining
+        // duration from receipt cannot trigger a blocking read early. The
+        // conservative display clock must never schedule operations.
+        const recheck = deadlineRecheck.current?.deadlineMs === next.deadlineMs;
         deadlineRecheck.current = {
           deadlineMs: next.deadlineMs,
           afterMs:
-            monotonicMs +
+            receivedMs +
             Math.max(
-              DEADLINE_RECHECK_MIN_MS,
+              recheck ? DEADLINE_RECHECK_MIN_MS : 0,
               next.deadlineMs - next.serverNowMs
             ),
           failures: 0,
         };
+      } else if (deadlineRecheck.current?.deadlineMs !== next.deadlineMs) {
+        deadlineRecheck.current = null;
       }
+      // A subsequent effect/cache merge of this response is not a new receipt
+      // and must not postpone the check or reset its failure backoff.
+      if (authorizedFetch.current?.data === next)
+        authorizedFetch.current.receivedMs = undefined;
       viewRef.current = next;
       setView(next);
       setNow(monotonicMs);
@@ -410,7 +418,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       query.data
     ) {
       entryConsumed.current = true;
-      mergeServerView(query.data);
+      mergeServerView(query.data, authorization.receivedMs);
     }
   }, [
     query.data,
@@ -431,8 +439,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     next: RecruitmentCandidateView,
     requestStartedMs: number
   ) {
-    clock.current.record(next, requestStartedMs, performance.now());
-    mergeServerView(next, true);
+    const receivedMs = performance.now();
+    clock.current.record(next, requestStartedMs, receivedMs);
+    mergeServerView(next, receivedMs);
     // The exact assignment cache receives only the server candidate DTO.
     utils.recruitment.candidateGet.setData({ assignmentId }, next);
   }
@@ -460,8 +469,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         );
         if (!live.current || epoch !== sessionEpoch.current) return;
         entryConsumed.current = true;
-        clock.current.record(next, requestStartedMs, performance.now());
-        mergeServerView(next, true);
+        const receivedMs = performance.now();
+        clock.current.record(next, requestStartedMs, receivedMs);
+        mergeServerView(next, receivedMs);
         setNeedsRefresh(false);
         setAuthRequired(false);
         setForbidden(false);
@@ -563,20 +573,18 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     if (
       !view ||
       isTerminal(view.status) ||
-      !displayDeadlineReached ||
       !online ||
       busy ||
       operation.current ||
       query.isFetching ||
-      (deadlineRecheck.current !== null &&
-        now < deadlineRecheck.current.afterMs)
+      deadlineRecheck.current === null ||
+      now < deadlineRecheck.current.afterMs
     )
       return;
     // Never score from a browser timer. candidateGet applies the server deadline.
     void refreshServer("deadline");
   }, [
     view,
-    displayDeadlineReached,
     now,
     online,
     busy,
