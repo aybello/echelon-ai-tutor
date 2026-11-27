@@ -1,0 +1,77 @@
+import { MySqlDialect } from "drizzle-orm/mysql-core";
+import type { SQL } from "drizzle-orm";
+import { describe, expect, it, vi } from "vitest";
+import { assertRecruitmentSnapshot, loadRecruitmentPool, usableRecruitmentQuestion, type RecruitmentBankRow } from "./questions";
+import type { RecruitmentReadDb } from "./types";
+import type { RecruitmentQuestion } from "../../shared/recruitmentAssessment";
+
+const row: RecruitmentBankRow = { id: 1, module: "Treatment", question: "Synthetic question", options: JSON.stringify(["Option one", "Option two"]), correctIndex: 1 };
+const snapshot: RecruitmentQuestion[] = Array.from({ length: 5 }, (_, i) => ({ id: String(i + 1), module: "Treatment", prompt: `Synthetic question ${i + 1}`, options: ["One", "Two"], correctIndex: 0 }));
+
+describe("recruitment usable question pool", () => {
+  it("projects only required snapshot fields from a valid authoritative row", () => {
+    expect(usableRecruitmentQuestion({ ...row, explanation: "not part of the recruitment snapshot" } as RecruitmentBankRow)).toEqual({ id: "1", module: "Treatment", prompt: "Synthetic question", options: ["Option one", "Option two"], correctIndex: 1 });
+  });
+
+  it.each([
+    ["unparseable options", { options: "{malformed-json}" }],
+    ["options object", { options: '{"0":"One","1":"Two"}' }],
+    ["null options", { options: "null" }],
+    ["one option", { options: '["One"]' }],
+    ["too many options", { options: JSON.stringify(Array.from({ length: 9 }, (_, i) => `Option ${i}`)) }],
+    ["blank option", { options: '["One"," "]' }],
+    ["non-string option", { options: '["One",2]' }],
+    ["negative key", { correctIndex: -1 }],
+    ["outside key", { correctIndex: 2 }],
+    ["fractional key", { correctIndex: 0.5 }],
+    ["string key", { correctIndex: "1" }],
+    ["missing module", { module: "" }],
+    ["blank prompt", { question: " \n " }],
+    ["zero ID", { id: 0 }],
+    ["fractional ID", { id: 1.5 }],
+    ["unsafe ID", { id: Number.MAX_SAFE_INTEGER + 1 }],
+  ])("withholds %s from usable catalog counts and selection", (_label, overrides) => {
+    expect(usableRecruitmentQuestion({ ...row, ...overrides } as RecruitmentBankRow)).toBeNull();
+  });
+
+  it("queries the requested bank with governed learner visibility and removes malformed rows", async () => {
+    const orderBy = vi.fn().mockResolvedValue([row, { ...row, id: 2, options: "{bad}" }]);
+    const where = vi.fn((_filter: SQL) => ({ orderBy }));
+    const from = vi.fn(() => ({ where }));
+    const db = { select: vi.fn(() => ({ from })) } as unknown as RecruitmentReadDb;
+    expect(await loadRecruitmentPool(db, "synthetic-bank")).toEqual([usableRecruitmentQuestion(row)]);
+    const predicate = new MySqlDialect().sqlToQuery(where.mock.calls[0][0]);
+    expect(predicate.sql).toContain("`questions`.`bankKey` = ?");
+    expect(predicate.sql).toContain("`questions`.`reviewStatus` not in");
+    expect(predicate.params[0]).toBe("synthetic-bank");
+    expect(predicate.params).toContain("in_review");
+    expect(predicate.params).toContain("rejected");
+    expect(orderBy).toHaveBeenCalledOnce();
+  });
+
+  it("does not substitute fixtures when an authoritative bank has no usable questions", async () => {
+    const db = { select: () => ({ from: () => ({ where: () => ({ orderBy: async () => [] }) }) }) } as unknown as RecruitmentReadDb;
+    expect(await loadRecruitmentPool(db, "synthetic-missing-bank")).toEqual([]);
+  });
+
+  it("accepts a valid frozen snapshot without mutating its questions", () => {
+    const before = structuredClone(snapshot);
+    expect(assertRecruitmentSnapshot(snapshot)).toBe(snapshot);
+    expect(snapshot).toEqual(before);
+  });
+
+  it.each([
+    ["null", null], ["object", {}], ["undersized", snapshot.slice(0, 4)],
+    ["oversized", Array.from({ length: 101 }, (_, i) => ({ ...snapshot[0], id: String(i) }))],
+    ["duplicate IDs", [...snapshot.slice(0, 4), snapshot[0]]],
+    ["null question", [...snapshot.slice(0, 4), null]],
+    ["invalid answer key", snapshot.map((q, i) => i ? q : { ...q, correctIndex: 100 })],
+  ])("refuses a corrupt %s snapshot with a safe content-unavailable error", (_label, value) => {
+    try {
+      assertRecruitmentSnapshot(value as RecruitmentQuestion[]);
+      expect.fail("Invalid snapshot was accepted");
+    } catch (error) {
+      expect(error).toMatchObject({ code: "INTERNAL_SERVER_ERROR", message: "Assessment content is unavailable. Contact the hiring team." });
+    }
+  });
+});

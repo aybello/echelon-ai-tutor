@@ -87,6 +87,7 @@ import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
 import LearnerAssessmentDetails, { FlexLearnerDrilldowns } from "@/components/LearnerAssessmentDetails";
 import ExamOutcomesPanel from "@/components/ExamOutcomesPanel";
 import { safeSupervisorCsvCell, supervisorNextAction } from "@shared/supervisorActionPlan";
+import RecruitmentPanel from "@/components/RecruitmentPanel";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -176,7 +177,7 @@ function MetricCard({
 export default function OrgDashboard() {
   const [, navigate] = useLocation();
   const search = useSearch();
-  const [managerView, setManagerView] = useState<"operators" | "reports">("operators");
+  const [managerView, setManagerView] = useState<"operators" | "reports" | "recruitment">("operators");
   const [rosterSearch, setRosterSearch] = useState("");
   const [rosterStage, setRosterStage] = useState<"all" | "assigned" | "studying">("all");
   const [assignOpen, setAssignOpen] = useState(false);
@@ -800,7 +801,9 @@ export default function OrgDashboard() {
         <nav className="workspace-view-tabs" aria-label="Manager dashboard views">
           <button type="button" aria-pressed={managerView === "operators"} onClick={() => setManagerView("operators")}>Operators and access</button>
           <button type="button" aria-pressed={managerView === "reports"} onClick={() => setManagerView("reports")}>Reports and outcomes</button>
+          <button type="button" aria-pressed={managerView === "recruitment"} onClick={() => setManagerView("recruitment")}>Recruitment assessments</button>
         </nav>
+        {managerView === "recruitment" && (hasAnnualContract ? <RecruitmentPanel key={overview.orgId} orgId={overview.orgId} /> : <section className="rounded-xl border border-slate-200 bg-white p-6"><h2 className="text-lg font-semibold text-slate-900">Recruitment assessments</h2><p className="mt-2 text-sm text-slate-600">This first version uses existing Annual team seats. Flex-only recruitment assessments are not available yet. Your current team access is unchanged.</p><a className="mt-3 inline-block text-sm font-semibold text-blue-700 underline" href="mailto:abello@echeloninstitute.ca">Contact team support</a></section>)}
         {managerView === "operators" && <section aria-label="Operator management" className="manager-operators">
         {hasAnnualContract && <>
         {/* Pass rate summary: same definition as the Exam results panel on the Reports tab */}

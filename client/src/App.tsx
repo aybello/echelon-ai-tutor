@@ -60,6 +60,7 @@ const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
 const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
+const RecruitmentAssessment = lazy(() => import("./pages/RecruitmentAssessment"));
 const TrainingHours = lazy(() => import("./pages/TrainingHours"));
 const TeamTrainingHours = lazy(() => import("./pages/TeamTrainingHours"));
 const AttestedTrainingRecord = lazy(() => import("./pages/AttestedTrainingRecord"));
@@ -479,6 +480,7 @@ function Router() {
         <Route path={"/team/login"}>{() => { window.location.replace("/account?next=/team"); return null; }}</Route>
         <Route path={"/team"} component={OrgDashboard} />
         <Route path={"/team/training-hours"} component={TeamTrainingHours} />
+        <Route path={"/recruitment/:assignmentId"} component={RecruitmentAssessment} />
         <Route path={"/course-pass/claim"} component={CoursePassClaim} />
         <Route path={"/activate/:courseKey"} component={LearnerActivation} />
         <Route path={"/blog/eocp-wastewater-operator-certification-ontario-guide"}>{() => { window.location.replace("/blog/owwco-wastewater-operator-certification-ontario-guide"); return null; }}</Route>

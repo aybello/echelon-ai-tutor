@@ -28,6 +28,7 @@ import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { adminRouter } from "./routers/admin";
 import { featureRequestsRouter } from "./routers/featureRequestsRouter";
 import { productPulseRouter } from "./routers/productPulseRouter";
+import { recruitmentRouter } from "./routers/recruitmentRouter";
 import { resolveEntitlementsByEmail } from "./_core/access";
 import {
   getAccessibleCoursesForIdentity,
@@ -98,6 +99,7 @@ export const studyPlanCaptureInput = z.object({
 export const appRouter = router({
   featureRequests: featureRequestsRouter,
   productPulse: productPulseRouter,
+  recruitment: recruitmentRouter,
   municipal: municipalProcurementRouter,
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,

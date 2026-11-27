@@ -1,5 +1,6 @@
-import { boolean, datetime, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, datetime, decimal, foreignKey, index, int, json, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
+import type { RecruitmentAnswers, RecruitmentQuestion, RecruitmentScore } from "../shared/recruitmentAssessment";
 
 /**
  * Core user table backing auth flow.
@@ -1901,3 +1902,50 @@ export const certificateAlerts = mysqlTable("certificate_alerts", {
 ]);
 export type CertificateAlert = typeof certificateAlerts.$inferSelect;
 export type InsertCertificateAlert = typeof certificateAlerts.$inferInsert;
+
+/** Immutable manager-created form; never an entitlement or learning-activity record. */
+export const recruitmentAssessments = mysqlTable("recruitment_assessments", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  orgId: int("orgId").notNull(),
+  title: varchar("title", { length: 160 }).notNull(),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  courseLabel: varchar("courseLabel", { length: 200 }).notNull(),
+  modules: json("modules").$type<string[]>().notNull(),
+  questionCount: int("questionCount").notNull(),
+  timeLimitMinutes: int("timeLimitMinutes"),
+  questions: json("questions").$type<RecruitmentQuestion[]>().notNull(),
+  creatorEmail: varchar("creatorEmail", { length: 320 }).notNull(),
+  createdAtMs: bigint("createdAtMs", { mode: "number" }).notNull(),
+  expiresAtMs: bigint("expiresAtMs", { mode: "number" }).notNull(),
+}, (t) => [index("recruitment_assessments_org_created_idx").on(t.orgId, t.createdAtMs)]);
+export type RecruitmentAssessmentRow = typeof recruitmentAssessments.$inferSelect;
+
+/** Identity-locked invitation and durable attempt. Revocation retains completed evidence. */
+export const recruitmentAssignments = mysqlTable("recruitment_assignments", {
+  id: varchar("id", { length: 36 }).primaryKey(),
+  assessmentId: varchar("assessmentId", { length: 36 }).notNull(),
+  orgId: int("orgId").notNull(),
+  memberId: int("memberId").notNull(),
+  candidateEmail: varchar("candidateEmail", { length: 320 }).notNull(),
+  candidateName: varchar("candidateName", { length: 200 }),
+  creatorEmail: varchar("creatorEmail", { length: 320 }).notNull(),
+  createdAtMs: bigint("createdAtMs", { mode: "number" }).notNull(),
+  updatedAtMs: bigint("updatedAtMs", { mode: "number" }).notNull(),
+  expiresAtMs: bigint("expiresAtMs", { mode: "number" }).notNull(),
+  startedAtMs: bigint("startedAtMs", { mode: "number" }),
+  submittedAtMs: bigint("submittedAtMs", { mode: "number" }),
+  consentVersion: varchar("consentVersion", { length: 64 }),
+  consentAcceptedAtMs: bigint("consentAcceptedAtMs", { mode: "number" }),
+  status: mysqlEnum("status", ["invited", "active", "submitted", "timed_out", "expired", "revoked"]).notNull().default("invited"),
+  answers: json("answers").$type<RecruitmentAnswers>().notNull(),
+  score: json("score").$type<RecruitmentScore>(),
+  revision: int("revision").notNull().default(0),
+  revokedAtMs: bigint("revokedAtMs", { mode: "number" }),
+  revokedByEmail: varchar("revokedByEmail", { length: 320 }),
+}, (t) => [
+  foreignKey({ name: "recruitment_assignment_assessment_fk", columns: [t.assessmentId], foreignColumns: [recruitmentAssessments.id] }),
+  uniqueIndex("recruitment_assignment_assessment_member_unique").on(t.assessmentId, t.memberId),
+  index("recruitment_assignments_org_assessment_idx").on(t.orgId, t.assessmentId),
+  index("recruitment_assignments_candidate_idx").on(t.candidateEmail, t.createdAtMs),
+]);
+export type RecruitmentAssignmentRow = typeof recruitmentAssignments.$inferSelect;

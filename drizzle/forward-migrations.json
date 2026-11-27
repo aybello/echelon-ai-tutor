@@ -607,6 +607,23 @@
           "rosterReviewStatus"
         ]
       }
+    },
+    {
+      "version": 87,
+      "tag": "0087_recruitment_assessments",
+      "file": "drizzle/0087_recruitment_assessments.sql",
+      "sha256": "fc8be23452d9005a31b65a22c62f7d209449fb95eb508152abc8a18ba4af982a",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "recruitment_assessments",
+          "recruitment_assignments"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "recruitment_assessments",
+        "recruitment_assignments"
+      ]
     }
   ]
 }
