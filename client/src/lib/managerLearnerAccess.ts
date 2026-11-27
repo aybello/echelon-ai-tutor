@@ -1,7 +1,7 @@
 import { getCourseByKey, type CourseEntry } from "@shared/courseRegistry";
 
 type AssignedMember = {
-  email: string;
+  email?: string | null;
   status: string;
   courseKey?: string | null;
   courseKeys?: string[] | null;
@@ -15,20 +15,26 @@ export function getManagerLearnerCourses(
   const normalizedEmail = email?.trim().toLowerCase();
   if (!normalizedEmail) return [];
 
-  const member = members.find(
+  const matchingMembers = members.filter(
     (candidate) =>
       candidate.status === "assigned" &&
-      candidate.email.trim().toLowerCase() === normalizedEmail,
+      candidate.email?.trim().toLowerCase() === normalizedEmail,
   );
-  if (!member) return [];
+  if (matchingMembers.length === 0) return [];
 
-  const keys = member.courseKeys?.length
-    ? member.courseKeys
-    : member.courseKey
-      ? [member.courseKey]
-      : [];
+  const uniqueKeys = new Set<string>();
+  for (const member of matchingMembers) {
+    const keys = member.courseKeys?.length
+      ? member.courseKeys
+      : member.courseKey
+        ? [member.courseKey]
+        : [];
+    for (const key of keys) {
+      if (key) uniqueKeys.add(key);
+    }
+  }
 
-  return keys
+  return Array.from(uniqueKeys)
     .map((key) => getCourseByKey(key))
     .filter(
       (course): course is CourseEntry =>

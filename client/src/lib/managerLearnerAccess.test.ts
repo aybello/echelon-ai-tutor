@@ -3,11 +3,16 @@ import { getManagerLearnerCourses } from "./managerLearnerAccess";
 
 describe("manager learner access", () => {
   it("returns canonical study courses for a manager's assigned operator seat", () => {
-    const courses = getManagerLearnerCourses(" AMY@QUINTEWEST.CA ", [
+    const courses = getManagerLearnerCourses(" AMY@EXAMPLE.TEST ", [
       {
-        email: "amy@quintewest.ca",
+        email: "amy@example.test",
         status: "assigned",
         courseKeys: ["class2-water", "class2-water-dist"],
+      },
+      {
+        email: "amy@example.test",
+        status: "assigned",
+        courseKeys: ["class2-water"],
       },
     ]);
 
@@ -33,6 +38,7 @@ describe("manager learner access", () => {
         status: "assigned",
         courseKeys: ["unknown-course", "electrician-309a"],
       },
+      { email: null, status: "assigned", courseKey: "class1-water" },
     ];
 
     expect(getManagerLearnerCourses("manager@example.test", members)).toEqual([]);

@@ -741,9 +741,9 @@ export default function OrgDashboard() {
             </div>
             <div className="flex flex-wrap gap-2">
               {selfStudyCourses.map(course => (
-                <Link key={course.courseKey} href={course.quizPath} className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-xs font-bold text-white hover:bg-blue-800">
+                <Link key={course.courseKey} href={course.quizPath} className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-xs font-bold text-white hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2">
                   Study {course.shortName}
-                  <ChevronRight className="ml-1 h-3.5 w-3.5" />
+                  <ChevronRight aria-hidden="true" className="ml-1 h-3.5 w-3.5" />
                 </Link>
               ))}
             </div>
