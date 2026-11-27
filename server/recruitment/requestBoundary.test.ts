@@ -33,7 +33,7 @@ describe("recruitment strict request boundaries", () => {
     ["create", recruitmentCreateInput, create],
     ["results", recruitmentAssessmentInput, { orgId: 7, assessmentId }],
     ["invite", recruitmentInviteInput, { orgId: 7, assessmentId, memberId: 31 }],
-    ["revoke", recruitmentRevokeInput, { orgId: 7, assignmentId }],
+    ["revoke", recruitmentRevokeInput, { orgId: 7, assignmentId, expectedRevision: 0 }],
     ["candidateGet", recruitmentAssignmentInput, { assignmentId }],
     ["submit", recruitmentSubmitInput, { assignmentId, revision: 0 }],
     ["start", recruitmentStartInput, { assignmentId, acceptedNotice: true, consentVersion: RECRUITMENT_CONSENT_VERSION }],
@@ -74,6 +74,17 @@ describe("recruitment strict request boundaries", () => {
   it("submit rejects missing revision and accepts zero or a later reviewed revision", () => {
     expect(recruitmentSubmitInput.safeParse({ assignmentId }).success).toBe(false);
     for (const revision of [0, 1, 100]) expect(recruitmentSubmitInput.parse({ assignmentId, revision })).toEqual({ assignmentId, revision });
+  });
+
+  it.each([-1, 0.5, "0", null, undefined, Number.NaN, Number.POSITIVE_INFINITY])("requires a nonnegative integer manager expectedRevision (%s)", expectedRevision => {
+    expect(recruitmentRevokeInput.safeParse({ orgId: 7, assignmentId, expectedRevision }).success).toBe(false);
+  });
+  it("revoke requires expectedRevision, not candidate revision, and accepts reviewed zero or later revision", () => {
+    expect(recruitmentRevokeInput.safeParse({ orgId: 7, assignmentId }).success).toBe(false);
+    expect(recruitmentRevokeInput.safeParse({ orgId: 7, assignmentId, revision: 0 }).success).toBe(false);
+    for (const expectedRevision of [0, 1, 100]) {
+      expect(recruitmentRevokeInput.parse({ orgId: 7, assignmentId, expectedRevision })).toEqual({ orgId: 7, assignmentId, expectedRevision });
+    }
   });
 
   it("accepts an explicit unanswered choice but not an absent choice or numeric coercion", () => {

@@ -950,6 +950,89 @@ describe("candidate monotonic request clock contract", () => {
 
 describe("candidate assessment session and confirmation contract", () => {
   it.each(["start", "save", "submit"] as const)(
+    "rejects a retained %s immediately after reset before rerender and after fresh reauthorization",
+    async action => {
+      const invited = { ...fixture, status: "invited" as const, questions: [], answers: {} };
+      const admitted = action === "start" ? invited : fixture;
+      await freshTimedQuery(admitted, 0);
+      let handler: () => void;
+      if (action === "start") {
+        nodes(render()).find(n => n.type === "checkbox").props.onCheckedChange(true);
+        handler = button(render(), "Start assessment").props.onClick;
+      } else if (action === "save") {
+        const choices = nodes(render()).find(n => n.type === "radio-group");
+        handler = () => choices.props.onValueChange("0");
+      } else {
+        button(render(), "Review submission").props.onClick();
+        handler = button(render(), "Submit assessment").props.onClick;
+      }
+      h.fetch.mockResolvedValueOnce(admitted); // Deliberately reuse the exact old DTO.
+      emit("focus");
+      handler(); // No render/effect/await between the reset and retained callback.
+      expect(h.cancel).not.toHaveBeenCalled();
+      expect(h[action]).not.toHaveBeenCalled();
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(text(render())).toContain(admitted.title);
+      if (action === "start")
+        nodes(render()).find(n => n.type === "checkbox").props.onCheckedChange(true);
+      else if (action === "submit")
+        button(render(), "Review submission").props.onClick();
+      render();
+      handler();
+      await settle();
+      expect(h[action]).not.toHaveBeenCalled();
+      expect(h.cancel).toHaveBeenCalledTimes(1); // Only the fresh authorization read.
+      const freshHandler = action === "start"
+        ? button(render(), "Start assessment").props.onClick
+        : action === "submit"
+          ? button(render(), "Submit assessment").props.onClick
+          : () => nodes(render()).find(n => n.type === "radio-group").props.onValueChange("0");
+      freshHandler();
+      await settle();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it("clears consent synchronously on uncheck while Start awaits cancellation, without rerender", async () => {
+    await freshTimedQuery({ ...fixture, status: "invited", questions: [], answers: {} }, 0);
+    nodes(render()).find(n => n.type === "checkbox").props.onCheckedChange(true);
+    const reviewedTree = render();
+    const handler = button(reviewedTree, "Start assessment").props.onClick;
+    const cancellation = deferred<void>();
+    h.cancel.mockReturnValueOnce(cancellation.promise);
+    handler();
+    nodes(reviewedTree).find(n => n.type === "checkbox").props.onCheckedChange(false);
+    cancellation.resolve();
+    for (let i = 0; i < 25; i++) await Promise.resolve();
+    expect(h.start).not.toHaveBeenCalled();
+    handler(); // Retained accepted=true render still cannot supply consent.
+    expect(h.cancel).toHaveBeenCalledTimes(1);
+    expect(h.start).not.toHaveBeenCalled();
+    expect(nodes(render()).find(n => n.type === "checkbox").props.checked).toBe(false);
+  });
+
+  it.each(["start", "save", "submit"] as const)(
+    "rejects unsent %s when the exact reviewed DTO changes while cancellation is pending",
+    async action => {
+      const cancellation = deferred<void>();
+      h.cancel.mockReturnValueOnce(cancellation.promise);
+      actionHandler(action)();
+      publishFetchSuccess({
+        ...fixture,
+        status: action === "start" ? "invited" : "active",
+        questions: action === "start" ? [] : fixture.questions,
+        answers: action === "start" ? {} : { q1: 0 },
+        revision: 8,
+      });
+      render();
+      cancellation.resolve();
+      await settle();
+      expect(h[action]).not.toHaveBeenCalled();
+    }
+  );
+
+  it.each(["start", "save", "submit"] as const)(
     "never dispatches an unsent %s after delayed cancellation resolves following unmount",
     async action => {
       const cancellation = deferred<void>();

@@ -216,10 +216,17 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     if (existing && !["invited", "active"].includes(existing.status)) {
       throw new TRPCError({ code: "CONFLICT", message: "This invitation is no longer usable. Create a new assessment form to invite this candidate again." });
     }
+    const assertOriginalBinding = (currentEmail: string) => {
+      if (existing && normalizeEmail(currentEmail) !== existing.candidateEmail) {
+        throw new TRPCError({ code: "CONFLICT", message: "This seat's email no longer matches the original invitation. Create a new assessment form to invite this candidate again." });
+      }
+    };
+    assertOriginalBinding(member.email);
     const course = recruitmentCourseForOrg(org, assessment.courseKey);
     await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions);
     // Seat and subscription time predicates can lapse during governance waits.
-    await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
+    const currentMember = await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
+    assertOriginalBinding(currentMember.email);
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
     if (existing) {
@@ -240,11 +247,15 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
   }, { isolationLevel: "read committed" });
 }
 
-export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: number, assignmentId: string): Promise<{ success: true }> {
+export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: number, assignmentId: string, expectedRevision: number): Promise<{ success: true }> {
+  if (!Number.isInteger(expectedRevision) || expectedRevision < 0) {
+    throw new TRPCError({ code: "BAD_REQUEST", message: "A nonnegative integer expectedRevision is required." });
+  }
+  const revisionConflict = () => new TRPCError({ code: "CONFLICT", message: "This assessment invitation has changed. Reload the results and review it again before revoking." });
   const org = await recruitmentManager(ctx, orgId, false);
   const actorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
-  return db.transaction(async tx => {
+  const outcome = await db.transaction<{ success: true } | { conflict: true }>(async tx => {
     const currentOrg = await lockReportingOrganization(tx, org.id);
     await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
     const [assignment] = await tx.select().from(recruitmentAssignments)
@@ -254,9 +265,18 @@ export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: numbe
     const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, org.id);
     const nowMs = Date.now();
     const finalized = finalizeRecruitmentDeadline(assessment, assignment, nowMs);
+    if (finalized !== assignment) {
+      // Commit the deadline's original scoring evidence, then require a fresh
+      // review. Throwing inside this callback would roll that finalization back.
+      await persistRecruitmentTransition(tx, assignment, finalized);
+      return { conflict: true };
+    }
+    if (assignment.revision !== expectedRevision) throw revisionConflict();
     const next: RecruitmentAssignmentRow = { ...finalized, status: "revoked", revokedAtMs: nowMs,
       revokedByEmail: actorEmail, updatedAtMs: nowMs, revision: finalized.revision + 1 };
     await persistRecruitmentTransition(tx, assignment, next);
     return { success: true };
   }, { isolationLevel: "read committed" });
+  if ("conflict" in outcome) throw revisionConflict();
+  return outcome;
 }

@@ -17,7 +17,7 @@ export const recruitmentAssignmentInput = z.object({ assignmentId: z.string().uu
 export const recruitmentStartInput = recruitmentAssignmentInput.extend({ acceptedNotice: z.literal(true), consentVersion: z.literal(RECRUITMENT_CONSENT_VERSION) }).strict();
 export const recruitmentAnswerInput = recruitmentAssignmentInput.extend({ questionId: z.string().min(1).max(100), selectedIndex: z.number().int().min(0).max(7).nullable(), revision: z.number().int().nonnegative() }).strict();
 export const recruitmentSubmitInput = recruitmentAssignmentInput.extend({ revision: z.number().int().nonnegative() }).strict();
-export const recruitmentRevokeInput = recruitmentOrgInput.extend({ assignmentId: z.string().uuid() }).strict();
+export const recruitmentRevokeInput = recruitmentOrgInput.extend({ assignmentId: z.string().uuid(), expectedRevision: z.number().int().nonnegative() }).strict();
 
 export type RecruitmentQuestion = { id: string; module: string; prompt: string; options: string[]; correctIndex: number };
 export type RecruitmentCandidateQuestion = Omit<RecruitmentQuestion, "correctIndex">;
@@ -50,10 +50,20 @@ export function validRecruitmentQuestions(questions: RecruitmentQuestion[]): boo
   return questions.length > 0 && new Set(questions.map(q => q.id)).size === questions.length && questions.every(q => typeof q.id === "string" && !!q.id && typeof q.module === "string" && !!q.module && typeof q.prompt === "string" && !!q.prompt.trim() && Array.isArray(q.options) && q.options.length >= 2 && q.options.length <= 8 && q.options.every(o => typeof o === "string" && !!o.trim()) && Number.isInteger(q.correctIndex) && q.correctIndex >= 0 && q.correctIndex < q.options.length);
 }
 
+/** New selections only: normal HTML whitespace collapses, Unicode composition
+ * matches display, but case, nonbreaking spaces and superscripts stay meaningful.
+ * Historical snapshot validation/scoring must retain the original option keys. */
+export function validRecruitmentSelectionQuestions(questions: RecruitmentQuestion[]): boolean {
+  return validRecruitmentQuestions(questions) && questions.every(q => {
+    const displayed = q.options.map(option => option.normalize("NFC").replace(/[\t\n\f\r ]+/g, " ").replace(/^ | $/g, ""));
+    return new Set(displayed).size === displayed.length;
+  });
+}
+
 /** Round-robin coverage after a server-side shuffle. Every chosen topic must appear. */
 export function selectRecruitmentQuestions(pool: RecruitmentQuestion[], modules: string[], count: number, random: () => number = Math.random): RecruitmentQuestion[] {
   if (count < modules.length) throw new Error("Use at least one question per selected topic.");
-  const shuffled = [...pool];
+  const shuffled = pool.filter(q => validRecruitmentSelectionQuestions([q]));
   for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
   const byModule = modules.map(module => shuffled.filter(q => q.module === module));
   if (byModule.some(rows => rows.length === 0)) throw new Error("A selected topic has no usable questions.");
@@ -62,7 +72,7 @@ export function selectRecruitmentQuestions(pool: RecruitmentQuestion[], modules:
   for (let index = 0; selected.length < count; index++) {
     for (const rows of byModule) { if (rows[index] && selected.length < count) selected.push(rows[index]); }
   }
-  if (!validRecruitmentQuestions(selected)) throw new Error("The selected questions are invalid.");
+  if (!validRecruitmentSelectionQuestions(selected)) throw new Error("The selected questions are invalid.");
   return selected;
 }
 

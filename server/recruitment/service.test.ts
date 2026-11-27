@@ -236,6 +236,7 @@ describe("manager immutable source acceptance", () => {
     ["module", { module: "Safety" }], ["options", { options: '["Two","One"]' }],
     ["invalid JSON options", { options: "{malformed}" }], ["invalid options object", { options: '{"0":"One","1":"Two"}' }],
     ["blank option", { options: '["One"," "]' }],
+    ["duplicate displayed options", { options: '["One"," One "]' }],
   ])("refuses selected %s edits after pool sampling without inserting or resampling", async (_label, change) => {
     const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => { Object.assign(db.sources[2], change); } });
     await expect(createRecruitmentAssessment(context, createInput)).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
@@ -315,6 +316,27 @@ describe("recruitment duplicate invitations", () => {
     expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
     expect(db.reads[0]).toEqual({ table: "organizations", lock: "update" });
   });
+  it.each(["invited", "active"] as const)("refuses usable %s duplicates when the current valid seat binds a different normalized email", async status => {
+    const row = status === "active" ? active() : invited(), before = structuredClone(row), db = fakeManagerDb(org(), row);
+    mocks.assertRecruitmentSeat.mockResolvedValue({ ...member(), email: " EDITED@example.test " });
+    await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringMatching(/new assessment form/i) });
+    expect(mocks.assertRecruitmentSeat).toHaveBeenCalledWith(expect.anything(), expect.anything(), 31, "class2-water", undefined, true);
+    expect(db.sourceIds).toEqual([]); expect(row).toEqual(before);
+    expect(db.insert).not.toHaveBeenCalled(); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+  });
+  it("rechecks the exact original email binding after source waits before returning a usable duplicate", async () => {
+    const row = active(), before = structuredClone(row), db = fakeManagerDb(org(), row);
+    mocks.assertRecruitmentSeat.mockResolvedValueOnce(member()).mockResolvedValueOnce({ ...member(), email: "edited@example.test" });
+    await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(db.sourceIds).toEqual([1, 2, 3, 4, 5]); expect(row).toEqual(before);
+    expect(db.insert).not.toHaveBeenCalled(); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+  });
+  it("accepts formatting-only normalized seat email changes without rebinding a duplicate", async () => {
+    const row = invited(), db = fakeManagerDb(org(), row);
+    mocks.assertRecruitmentSeat.mockResolvedValue({ ...member(), email: " CANDIDATE@EXAMPLE.TEST " });
+    expect(await inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).toEqual({ assignmentId: ID });
+    expect(row.candidateEmail).toBe(member().email); expect(db.insert).not.toHaveBeenCalled();
+  });
   it.each(["submitted", "timed_out", "expired", "revoked"] as const)("rejects duplicate terminal %s invitations with a new-form-required conflict", async status => {
     const row = { ...active(), status }, before = structuredClone(row), db = fakeManagerDb(org(), row);
     await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringMatching(/new assessment form/i) });
@@ -356,25 +378,60 @@ describe("recruitment duplicate invitations", () => {
 describe("recruitment revocation reporting boundary and retained evidence", () => {
   it.each([{ billingType: "course-pass" }, { tier: "course-pass" }])("rejects a locked organization that changed to Flex (%j)", async override => {
     const db = fakeManagerDb({ ...org(), ...override } as Organization, active());
-    await expect(revokeRecruitmentAssignment(context, 7, ID)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(revokeRecruitmentAssignment(context, 7, ID, 1)).rejects.toMatchObject({ code: "FORBIDDEN" });
     expect(db.reads).toEqual([{ table: "organizations", lock: "share" }]);
     expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
   });
   it("retains submitted evidence, completion count and recomputed review after revocation", async () => {
     const row = { ...active(), status: "submitted" as const, submittedAtMs: NOW - 100, answers: { "1": 0 }, score: { correct: 999 } as RecruitmentAssignmentRow["score"] };
     fakeManagerDb(org(), row);
-    expect(await revokeRecruitmentAssignment(context, 7, ID)).toEqual({ success: true });
+    expect(await revokeRecruitmentAssignment(context, 7, ID, row.revision)).toEqual({ success: true });
     const next = mocks.persistRecruitmentTransition.mock.calls[0][2] as RecruitmentAssignmentRow;
     expect(next).toMatchObject({ status: "revoked", submittedAtMs: NOW - 100, answers: { "1": 0 }, revokedAtMs: NOW, revokedByEmail: EMAIL });
+    expect(next.score).toEqual(row.score);
     expect(recruitmentDefinitionSummary(form(), [next]).completed).toBe(1);
     expect(recruitmentResult(form(), next, NOW)).toMatchObject({ status: "revoked", answers: { "1": 0 }, score: { correct: 1, answered: 1 } });
   });
-  it("finalizes an elapsed active timer before revoking and keeps that completion evidence", async () => {
-    fakeManagerDb(org(), { ...active(), answers: { "1": 0 } }); vi.setSystemTime(NOW + 300_000);
-    await revokeRecruitmentAssignment(context, 7, ID);
-    const next = mocks.persistRecruitmentTransition.mock.calls[0][2] as RecruitmentAssignmentRow;
-    expect(next).toMatchObject({ status: "revoked", submittedAtMs: NOW + 300_000, score: { correct: 1 }, revision: 3 });
-    expect(recruitmentDefinitionSummary(form(), [next]).completed).toBe(1);
+  it.each(["invited", "active", "submitted", "timed_out", "expired"] as const)("rejects a stale manager revision for nonrevoked %s before writing any revocation", async status => {
+    const row = { ...active(), status, revision: 3 }, before = structuredClone(row), db = fakeReportingDb({ rows: [row] });
+    await expect(revokeRecruitmentAssignment(context, 7, ID, 2)).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringMatching(/Reload.*review/i) });
+    expect(db.reads.at(-1)).toMatchObject({ table: "recruitment_assignments", lock: "update" });
+    expect(db.rows).toEqual([before]); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+    expect(db.events).not.toContain("commit");
+  });
+  it("retains idempotent already-revoked retries despite an older reviewed revision", async () => {
+    const row = { ...active(), status: "revoked" as const, revision: 3 }, db = fakeReportingDb({ rows: [row] });
+    await expect(revokeRecruitmentAssignment(context, 7, ID, 0)).resolves.toEqual({ success: true });
+    expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled(); expect(mocks.readRecruitmentAssessment).not.toHaveBeenCalled();
+    expect(db.events.at(-1)).toBe("commit");
+  });
+  it.each(["active", "invited", "untimed"] as const)("commits elapsed %s finalization before returning a stale revoke conflict, then allows freshly reviewed deliberate revoke", async mode => {
+    const frozen = { ...form(), timeLimitMinutes: mode === "untimed" ? null : 5 };
+    mocks.readRecruitmentAssessment.mockResolvedValue(frozen);
+    const row = mode === "invited" ? { ...invited(), expiresAtMs: NOW + 300_000 } : { ...active(), answers: { "1": 0 }, expiresAtMs: NOW + 300_000 };
+    const held = barrier(), atCommit = barrier(), db = fakeReportingDb({ rows: [row], beforeCommit: async () => { atCommit.release(); await held.promise; } });
+    vi.setSystemTime(NOW + 300_000);
+    let returned = false;
+    const pending = revokeRecruitmentAssignment(context, 7, ID, row.revision).then(() => { returned = true; return "unexpected success"; }, error => { returned = true; return error.code; });
+    await atCommit.promise;
+    expect(returned).toBe(false); expect(db.events).not.toContain("commit");
+    expect(db.rows[0]).toMatchObject({ status: mode === "active" ? "timed_out" : "expired", revision: row.revision + 1, revokedAtMs: null, revokedByEmail: null,
+      submittedAtMs: mode === "active" ? NOW + 300_000 : null, score: mode === "active" ? { correct: 1 } : null });
+    held.release(); expect(await pending).toBe("CONFLICT"); expect(db.events.at(-1)).toBe("commit");
+    const finalized = structuredClone(db.rows[0]);
+    await expect(revokeRecruitmentAssignment(context, 7, ID, finalized.revision)).resolves.toEqual({ success: true });
+    expect(db.rows[0]).toMatchObject({ status: "revoked", revision: finalized.revision + 1, score: finalized.score, submittedAtMs: finalized.submittedAtMs, answers: finalized.answers });
+    expect(recruitmentDefinitionSummary(frozen, db.rows).completed).toBe(mode === "active" ? 1 : 0);
+  });
+  it("does not return a post-commit conflict when deadline finalization persistence fails", async () => {
+    const db = fakeReportingDb(); vi.setSystemTime(NOW + 300_000);
+    mocks.persistRecruitmentTransition.mockRejectedValueOnce(new Error("synthetic finalize failure"));
+    await expect(revokeRecruitmentAssignment(context, 7, ID, 1)).rejects.toThrow("synthetic finalize failure");
+    expect(db.events).not.toContain("commit");
+  });
+  it.each([-1, 0.5, undefined, Number.NaN, Number.POSITIVE_INFINITY])("rejects invalid direct-service expectedRevision %s", async expectedRevision => {
+    await expect(revokeRecruitmentAssignment(context, 7, ID, expectedRevision as number)).rejects.toMatchObject({ code: "BAD_REQUEST" });
+    expect(mocks.recruitmentDb).not.toHaveBeenCalled();
   });
 });
 
@@ -504,7 +561,7 @@ describe("authority precedes every manager private lookup branch", () => {
     mocks.readRecruitmentAssessment.mockRejectedValue(new Error("Private definition lookup must not run"));
     const target = branch.includes("missing") || branch.includes("nonowned") ? "99999999-9999-4999-8999-999999999999" : branch.includes("result") ? FORM_ID : ID;
     const pending = branch.includes("list") ? listRecruitmentAssessments(context, 7)
-      : branch.includes("result") ? recruitmentResults(context, 7, target) : revokeRecruitmentAssignment(context, 7, target);
+      : branch.includes("result") ? recruitmentResults(context, 7, target) : revokeRecruitmentAssignment(context, 7, target, 1);
     await expect(pending).rejects.toMatchObject({ code: "FORBIDDEN", message: "You are no longer a manager of this organization." });
     expect(db.reads.map(({ table, lock }) => ({ table, lock }))).toEqual([
       { table: "organizations", lock: "share" }, { table: "organization_members", lock: "share" },
@@ -533,7 +590,7 @@ describe("authority precedes every manager private lookup branch", () => {
     });
     if (kind === "results") await expect(recruitmentResults(context, 7, FORM_ID)).rejects.toThrow("scoped private not-found");
     else {
-      await expect(revokeRecruitmentAssignment(context, 7, ID)).rejects.toMatchObject({ code: "NOT_FOUND" });
+      await expect(revokeRecruitmentAssignment(context, 7, ID, 1)).rejects.toMatchObject({ code: "NOT_FOUND" });
       expect(db.reads[2]).toMatchObject({ table: "recruitment_assignments", lock: "update", params: [ID, 7] });
     }
     expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();

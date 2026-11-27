@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ClipboardList, Copy, Plus, ShieldCheck } from "lucide-react";
 import { getQueryKey } from "@trpc/react-query";
 import { useQueryClient } from "@tanstack/react-query";
@@ -594,8 +594,14 @@ function RecruitmentDetail({
   const live = useLifetime();
   const isCurrent = () => live.current && access.isCurrent();
   const utils = trpc.useUtils();
+  const queryClient = useQueryClient();
+  const resultKey = getQueryKey(
+    trpc.recruitment.results,
+    { orgId, assessmentId },
+    "query"
+  );
   const resultFresh = useFreshRecruitmentQuery(
-    getQueryKey(trpc.recruitment.results, { orgId, assessmentId }, "query"),
+    resultKey,
     access
   );
   const query = trpc.recruitment.results.useQuery(
@@ -623,7 +629,13 @@ function RecruitmentDetail({
   const [revokeTarget, setRevokeTarget] = useState<RecruitmentResult | null>(
     null
   );
+  const revokeReview = useRef<{
+    target: RecruitmentResult;
+    confirmed: boolean;
+  } | null>(null);
+  const revokePending = useRef(false);
   const [confirmed, setConfirmed] = useState(false);
+  const renderingReview = revokeReview.current;
   const busy = invite.isPending || revoke.isPending || copying || downloading;
   const authorized =
     access.isCurrent() &&
@@ -631,6 +643,59 @@ function RecruitmentDetail({
     query.isFetchedAfterMount &&
     query.isSuccess &&
     !query.isFetching;
+  const resultAuthorization = authorized
+    ? queryClient.getQueryState(resultKey)
+    : undefined;
+  // Retained handlers cannot use a pre-refetch result, even before React updates.
+  const canReviewResults = () =>
+    isCurrent() &&
+    !!resultAuthorization &&
+    queryClient.getQueryState(resultKey) === resultAuthorization &&
+    resultAuthorization.status === "success" &&
+    resultAuthorization.fetchStatus === "idle" &&
+    resultAuthorization.data === query.data &&
+    query.data?.assessment.id === assessmentId;
+  function clearRevocation() {
+    revokeReview.current = null;
+    setRevokeTarget(null);
+    setConfirmed(false);
+  }
+  useLayoutEffect(() => {
+    const filters = { queryKey: resultKey, exact: true };
+    const unsubscribe = queryClient.getQueryCache().subscribe(event => {
+      const reviewed = revokeReview.current;
+      if (
+        !reviewed ||
+        JSON.stringify(event.query.queryKey) !== JSON.stringify(resultKey)
+      )
+        return;
+      if (event.type === "removed") {
+        clearRevocation();
+      } else if (event.type === "updated") {
+        const data = event.query.state.data as typeof query.data;
+        const target = data?.results.find(
+          item => item.assignmentId === reviewed.target.assignmentId
+        );
+        if (
+          event.query !== queryClient.getQueryCache().find(filters) ||
+          event.action.type === "fetch" ||
+          event.action.type === "error" ||
+          event.action.type === "invalidate" ||
+          (event.action.type === "success" &&
+            (event.action.manual ||
+              data?.assessment.id !== assessmentId ||
+              target !== reviewed.target ||
+              target.revision !== reviewed.target.revision ||
+              target.status !== reviewed.target.status))
+        )
+          clearRevocation();
+      }
+    });
+    return () => {
+      unsubscribe();
+      revokeReview.current = null;
+    };
+  }, [orgId, assessmentId, queryClient]);
   useEffect(() => {
     if (query.isError && accessDenied(query.error) && access.isCurrent())
       access.reset();
@@ -771,17 +836,32 @@ function RecruitmentDetail({
     }
   }
   async function revokeCandidate() {
-    if (!isCurrent() || !authorized || !confirmed || !revokeTarget || busy)
+    const reviewedTarget = revokeTarget;
+    const review = renderingReview;
+    const canRevoke = () =>
+      canReviewResults() &&
+      !!reviewedTarget &&
+      (reviewedTarget.status === "invited" || reviewedTarget.status === "active") &&
+      revokeReview.current === review &&
+      review?.target === reviewedTarget &&
+      review.confirmed &&
+      query.data?.results.find(
+        item => item.assignmentId === reviewedTarget.assignmentId
+      ) === reviewedTarget;
+    if (!canRevoke() || !confirmed || !reviewedTarget || busy || revokePending.current)
       return;
-    const assignmentId = revokeTarget.assignmentId;
+    revokePending.current = true;
     setError("");
     try {
-      await revoke.mutateAsync({ orgId, assignmentId });
-      if (!isCurrent()) return;
+      await revoke.mutateAsync({
+        orgId,
+        assignmentId: reviewedTarget.assignmentId,
+        expectedRevision: reviewedTarget.revision,
+      });
+      if (!canRevoke()) return;
       onInvitationOutcome(null);
+      clearRevocation();
       refreshSubmittedScope();
-      setRevokeTarget(null);
-      setConfirmed(false);
       setLink("");
       setCopyMessage(
         "Invitation revoked. The candidate can no longer use this link."
@@ -789,7 +869,17 @@ function RecruitmentDetail({
     } catch (failure) {
       if (!isCurrent()) return;
       if (accessDenied(failure)) {
+        clearRevocation();
         access.reset();
+        return;
+      }
+      if (!canRevoke()) return;
+      clearRevocation();
+      if ((failure as { data?: { code?: string } } | null)?.data?.code === "CONFLICT") {
+        setError(
+          "The candidate's assessment changed. Refresh results, review the latest status and confirm revocation again. Revocation was not retried."
+        );
+        void query.refetch();
         return;
       }
       if (isCurrent())
@@ -798,6 +888,8 @@ function RecruitmentDetail({
             ? failure.message
             : "The invitation could not be revoked. Try again."
         );
+    } finally {
+      revokePending.current = false;
     }
   }
   if (!authorized && !query.isError)
@@ -970,7 +1062,16 @@ function RecruitmentDetail({
           <label className="mt-3 flex min-h-11 cursor-pointer items-center gap-3 text-sm text-red-900">
             <Checkbox
               checked={confirmed}
-              onCheckedChange={checked => setConfirmed(checked === true)}
+              onCheckedChange={checked => {
+                if (
+                  !canReviewResults() ||
+                  !renderingReview ||
+                  revokeReview.current !== renderingReview ||
+                  renderingReview.target !== revokeTarget
+                ) return;
+                revokeReview.current.confirmed = checked === true;
+                setConfirmed(checked === true);
+              }}
               disabled={busy}
             />
             I confirm I want to revoke this assessment invitation.
@@ -982,8 +1083,7 @@ function RecruitmentDetail({
               className="min-h-11"
               disabled={busy}
               onClick={() => {
-                setRevokeTarget(null);
-                setConfirmed(false);
+                clearRevocation();
               }}
             >
               Cancel
@@ -1006,6 +1106,12 @@ function RecruitmentDetail({
           onDownload={() => void downloadResults()}
           onCopy={assignmentId => void copyLink(assignmentId)}
           onRevoke={result => {
+            if (
+              !canReviewResults() ||
+              (result.status !== "invited" && result.status !== "active") ||
+              query.data?.results.find(item => item.assignmentId === result.assignmentId) !== result
+            ) return;
+            revokeReview.current = { target: result, confirmed: false };
             setRevokeTarget(result);
             setConfirmed(false);
             setError("");

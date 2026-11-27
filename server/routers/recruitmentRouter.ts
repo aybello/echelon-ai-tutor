@@ -25,7 +25,7 @@ export const recruitmentRouter = router({
   invite: publicProcedure.input(recruitmentInviteInput).mutation(async ({ ctx, input }): Promise<{ assignmentId: string }> =>
     inviteRecruitmentCandidate(ctx, input.orgId, input.assessmentId, input.memberId)),
   revoke: publicProcedure.input(recruitmentRevokeInput).mutation(async ({ ctx, input }): Promise<{ success: true }> =>
-    revokeRecruitmentAssignment(ctx, input.orgId, input.assignmentId)),
+    revokeRecruitmentAssignment(ctx, input.orgId, input.assignmentId, input.expectedRevision)),
   candidateGet: publicProcedure.input(recruitmentAssignmentInput).query(async ({ ctx, input }): Promise<RecruitmentCandidateView> =>
     operateRecruitmentCandidate(ctx, input.assignmentId, { kind: "get" })),
   start: publicProcedure.input(recruitmentStartInput).mutation(async ({ ctx, input }): Promise<RecruitmentCandidateView> =>

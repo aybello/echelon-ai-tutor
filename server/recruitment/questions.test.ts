@@ -1,9 +1,9 @@
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import type { SQL } from "drizzle-orm";
 import { describe, expect, it, vi } from "vitest";
-import { assertRecruitmentSnapshot, assertRecruitmentSourcesVisible, loadRecruitmentPool, usableRecruitmentQuestion, type RecruitmentBankRow } from "./questions";
+import { assertRecruitmentSnapshot, assertRecruitmentSourcesVisible, loadRecruitmentPool, loadRecruitmentPools, usableRecruitmentQuestion, type RecruitmentBankRow } from "./questions";
 import type { RecruitmentReadDb } from "./types";
-import type { RecruitmentQuestion } from "../../shared/recruitmentAssessment";
+import { scoreRecruitment, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 
 const row: RecruitmentBankRow = { id: 1, module: "Treatment", question: "Synthetic question", options: JSON.stringify(["Option one", "Option two"]), correctIndex: 1 };
 const snapshot: RecruitmentQuestion[] = Array.from({ length: 5 }, (_, i) => ({ id: String(i + 1), module: "Treatment", prompt: `Synthetic question ${i + 1}`, options: ["One", "Two"], correctIndex: 0 }));
@@ -21,6 +21,9 @@ describe("recruitment usable question pool", () => {
     ["too many options", { options: JSON.stringify(Array.from({ length: 9 }, (_, i) => `Option ${i}`)) }],
     ["blank option", { options: '["One"," "]' }],
     ["non-string option", { options: '["One",2]' }],
+    ["exact duplicate choices", { options: '["One","One"]' }],
+    ["HTML whitespace duplicate choices", { options: JSON.stringify([" One\t\nchoice ", "One choice"]) }],
+    ["NFC duplicate choices", { options: JSON.stringify(["Caf\u00e9", "Cafe\u0301"]) }],
     ["negative key", { correctIndex: -1 }],
     ["outside key", { correctIndex: 2 }],
     ["fractional key", { correctIndex: 0.5 }],
@@ -47,6 +50,13 @@ describe("recruitment usable question pool", () => {
     expect(predicate.params).toContain("in_review");
     expect(predicate.params).toContain("rejected");
     expect(orderBy).toHaveBeenCalledOnce();
+  });
+
+  it("excludes ambiguous choices from both single-bank sampling and multi-bank catalog counts", async () => {
+    const rows = [row, { ...row, id: 2, options: '["One"," One "]' }, { ...row, id: 3, options: JSON.stringify(["\u00e9", "e\u0301"]) }];
+    const db = { select: () => ({ from: () => ({ where: () => ({ orderBy: async () => rows.map(q => ({ ...q, bankKey: "synthetic-bank" })) }) }) }) } as unknown as RecruitmentReadDb;
+    expect(await loadRecruitmentPool(db, "synthetic-bank")).toEqual([usableRecruitmentQuestion(row)]);
+    expect(await loadRecruitmentPools(db, ["synthetic-bank"])).toEqual(new Map([["synthetic-bank", [usableRecruitmentQuestion(row)]]]));
   });
 
   it("does not substitute fixtures when an authoritative bank has no usable questions", async () => {
@@ -130,6 +140,7 @@ describe("current governed frozen source validation", () => {
     ["option order", { options: '["Two","One"]' }], ["option count", { options: '["One","Two","Three"]' }],
     ["malformed JSON", { options: "{invalid}" }], ["options object", { options: '{"0":"One","1":"Two"}' }],
     ["blank option", { options: '["One"," "]' }], ["invalid key", { correctIndex: 2 }],
+    ["duplicate displayed options", { options: '["One"," One "]' }],
     ["blank prompt", { question: " " }], ["missing module", { module: "" }],
   ])("rejects changed or malformed locked creation %s without changing the snapshot", async (_label, override) => {
     const before = structuredClone(snapshot), { db, reads } = sourcesDb(undefined, override);
@@ -143,6 +154,16 @@ describe("current governed frozen source validation", () => {
       { correctIndex: 1, module: "Safety", question: "Edited prompt", options: "{invalid}" });
     await assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot);
     expect(reads.map(read => read.params[0])).toEqual([1, 2, 3, 4, 5]); expect(snapshot).toEqual(before);
+  });
+
+  it("retains historical indistinguishable options and their original correct index without rejecting delivery or scoring", async () => {
+    const historical = snapshot.map((q, i) => i ? q : { ...q, options: [" One ", "One"], correctIndex: 1 });
+    const before = structuredClone(historical), { db } = sourcesDb();
+    expect(assertRecruitmentSnapshot(historical)).toBe(historical);
+    await assertRecruitmentSourcesVisible(db, "synthetic-bank", historical);
+    expect(scoreRecruitment(historical, { "1": 1 })).toMatchObject({ correct: 1 });
+    expect(scoreRecruitment(historical, { "1": 0 })).toMatchObject({ correct: 0 });
+    expect(historical).toEqual(before);
   });
 
   it.each(["q1", "01", "1e0", "0", "-1", "1.5", "9007199254740992"])("rejects non-authoritative ID %s before any question lookup", async id => {

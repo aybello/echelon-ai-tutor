@@ -228,6 +228,72 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
       expect(await read(id)).toMatchObject({ status: "expired", submittedAtMs: null, score: null, answers: { "1": 0 } });
     } finally { clock.mockRestore(); }
   });
+  it.each(["invited", "active"] as const)("refuses duplicate %s links for an edited seat email even with a valid current same-team subscription", async status => {
+    const id = await fixture(); if (status === "active") await start(id);
+    const original = await read(id), editedEmail = `edited-${status}@example.test`, now = Date.now();
+    const [seat] = await db.select().from(organizationMembers).where(eq(organizationMembers.id, memberId));
+    const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId));
+    const manager = { ...ctx, studentEmail: "manager@example.test" };
+    await db.insert(subscriptions).values({ orgId, email: editedEmail, tier: "class2", province: "ontario",
+      stripeSubscriptionId: `org-${orgId}-${editedEmail}-class2-water`, stripeCustomerId: "", status: "active",
+      currentPeriodStart: new Date(now - 86_400_000), currentPeriodEnd: new Date(now + 86_400_000) });
+    const held = barrier(), updated = barrier();
+    const holder = db.transaction(async tx => {
+      await tx.update(organizationMembers).set({ email: ` ${editedEmail.toUpperCase()} ` }).where(eq(organizationMembers.id, memberId));
+      updated.release(); await held.promise;
+    });
+    await updated.promise;
+    let returned = false;
+    const outcome = inviteRecruitmentCandidate(manager, orgId, original.assessmentId, memberId)
+      .then(() => { returned = true; return { code: "unexpected success", message: "" }; }, error => { returned = true; return error; });
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
+      held.release(); await holder;
+      expect(await outcome).toMatchObject({ code: "CONFLICT", message: expect.stringMatching(/new assessment form/i) });
+      // Catalog independently proves this is an otherwise eligible, covered seat.
+      expect((await recruitmentCatalog(manager, orgId)).candidates.find(candidate => candidate.memberId === memberId))
+        .toMatchObject({ email: editedEmail, courseKeys: expect.arrayContaining(["class2-water"]) });
+      expect(await read(id)).toEqual(original);
+      expect(await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.assessmentId, original.assessmentId))).toEqual([original]);
+      expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
+    } finally {
+      held.release(); await Promise.allSettled([holder, outcome]);
+      await db.update(organizationMembers).set({ email: seat.email }).where(eq(organizationMembers.id, memberId));
+      await db.delete(subscriptions).where(eq(subscriptions.stripeSubscriptionId, `org-${orgId}-${editedEmail}-class2-water`));
+    }
+  });
+
+  it("excludes display-equivalent choices from catalog counts and new frozen sampling without collapsing case or superscripts", async () => {
+    const module = "Duplicate choice refusal", manager = { ...ctx, studentEmail: "manager@example.test" };
+    const choices = [["One", "One"], [" One\t\nchoice ", "One choice"], ["Caf\u00e9", "Cafe\u0301"], ["CO", "Co"], ["m2", "m\u00b2"]];
+    const rows = await db.insert(questions).values(choices.map((options, n) => ({ bankKey: "class2-water", questionNum: 72_000 + n,
+      module, question: `Synthetic duplicate choice ${n}`, options: JSON.stringify(options), correctIndex: 1,
+      explanation: "Synthetic choice validation", reviewStatus: "approved" as const }))).$returningId();
+    const before = await db.select().from(recruitmentAssessments);
+    try {
+      expect((await recruitmentCatalog(manager, orgId)).courses.find(course => course.courseKey === "class2-water")?.modules.find(topic => topic.name === module)?.count).toBe(2);
+      await expect(createRecruitmentAssessment(manager, { orgId, title: "Synthetic duplicate choice form", courseKey: "class2-water", modules: [module],
+        questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 })).rejects.toMatchObject({ code: "BAD_REQUEST", message: expect.stringMatching(/Not enough usable/) });
+      expect(await db.select().from(recruitmentAssessments)).toEqual(before);
+    } finally { for (const { id } of rows) await db.delete(questions).where(eq(questions.id, id)); }
+  });
+
+  it("retains historical indistinguishable choices and their original scoring keys through candidate completion and deliberate revoke", async () => {
+    const id = await fixture(), original = await read(id), historical = snapshot.map((q, n) => n ? q : { ...q, options: [" One ", "One"], correctIndex: 1 });
+    await db.update(recruitmentAssessments).set({ questions: historical }).where(eq(recruitmentAssessments.id, original.assessmentId));
+    const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId));
+    const view = await start(id);
+    expect(view.questions[0].options).toEqual([" One ", "One"]);
+    const saved = await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 1, revision: view.revision } });
+    await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: saved.revision } });
+    const manager = { ...ctx, studentEmail: "manager@example.test" }, completed = await read(id);
+    expect(completed.score).toMatchObject({ correct: 1, answered: 1 });
+    await revokeRecruitmentAssignment(manager, orgId, id, completed.revision);
+    expect((await recruitmentResults(manager, orgId, original.assessmentId)).results[0]).toMatchObject({ status: "revoked", score: { correct: 1 }, questions: historical, answers: { "1": 1 } });
+    expect((await read(id)).score).toEqual(completed.score);
+    expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId)))[0]).toEqual(definition);
+  });
+
   it("runs manager create/invite/results, freezes forms and deduplicates invitations without granting seats", async () => {
     const manager = { ...ctx, studentEmail: "manager@example.test" };
     await db.insert(questions).values(Array.from({ length: 8 }, (_, n) => ({ bankKey: "class2-water", questionNum: 51_000 + n, module: n < 4 ? "Treatment" : "Safety", question: `Synthetic bank question ${n + 1}`, options: JSON.stringify(["A", "B", "C", "D"]), correctIndex: n % 4, explanation: "Synthetic explanation", reviewStatus: "approved" as const })));
@@ -288,6 +354,76 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     expect((await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: saved.revision } })).status).toBe("submitted");
     const manager = { ...ctx, studentEmail: "manager@example.test" };
     await expect(inviteRecruitmentCandidate(manager, orgId, (await read(id)).assessmentId, memberId)).rejects.toMatchObject({ code: "CONFLICT" });
+  });
+
+  it.each(["save", "submit"] as const)("rejects stale save/submit/revoke after a newer %s commits behind a real assignment lock", async kind => {
+    const id = await fixture(), reviewed = await start(id), manager = { ...ctx, studentEmail: "manager@example.test" };
+    const held = barrier(), written = barrier(), realTransaction = db.transaction.bind(db);
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => realTransaction(async tx => {
+      const result = await callback(tx); written.release(); await held.promise; return result;
+    }, config));
+    const winner = operateRecruitmentCandidate(ctx, id, kind === "save"
+      ? { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: reviewed.revision } }
+      : { kind: "submit", input: { assignmentId: id, revision: reviewed.revision } });
+    let stale: Promise<unknown>[] = [];
+    try {
+      await written.promise;
+      let returned = 0;
+      stale = [
+        operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 1, revision: reviewed.revision } }),
+        operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: reviewed.revision } }),
+        revokeRecruitmentAssignment(manager, orgId, id, reviewed.revision),
+      ].map(pending => pending.then(value => { returned++; return { value, code: null }; }, error => { returned++; return { value: null, code: error.code }; }));
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(0);
+      expect((await read(id)).revision).toBe(reviewed.revision);
+      held.release(); const winningView = await winner;
+      const outcomes = await Promise.all(stale) as { value: unknown; code: string | null }[];
+      expect(outcomes[0].code).toBe("CONFLICT"); expect(outcomes[2].code).toBe("CONFLICT");
+      // Completed submit retries retain their existing idempotence; active stale submits conflict.
+      expect(outcomes[1].code).toBe(kind === "save" ? "CONFLICT" : null);
+      const durable = await read(id);
+      expect(durable).toMatchObject({ status: winningView.status, revision: winningView.revision, revokedAtMs: null, revokedByEmail: null });
+      expect(durable.answers).toEqual(kind === "save" ? { "1": 0 } : {});
+      await expect(revokeRecruitmentAssignment(manager, orgId, id, durable.revision)).resolves.toEqual({ success: true });
+      const revoked = await read(id);
+      expect(revoked).toMatchObject({ status: "revoked", revision: durable.revision + 1, answers: durable.answers, score: durable.score, submittedAtMs: durable.submittedAtMs });
+      await expect(revokeRecruitmentAssignment(manager, orgId, id, reviewed.revision)).resolves.toEqual({ success: true });
+      expect(await read(id)).toEqual(revoked);
+    } finally { held.release(); await Promise.allSettled([winner, ...stale]); transaction.mockRestore(); }
+  });
+
+  it.each(["active", "invited", "untimed"] as const)("commits lazy %s deadline finalization before stale revoke CONFLICT, retaining evidence for fresh review", async mode => {
+    const id = await fixture(), original = await read(id), manager = { ...ctx, studentEmail: "manager@example.test" };
+    if (mode === "untimed") await db.update(recruitmentAssessments).set({ timeLimitMinutes: null }).where(eq(recruitmentAssessments.id, original.assessmentId));
+    if (mode !== "invited") {
+      const view = await start(id);
+      await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
+    }
+    const reviewed = await read(id), deadline = Date.now() + 60_000;
+    await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, id));
+    const before = await read(id), [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId));
+    const members = await db.select().from(organizationMembers), subs = await db.select().from(subscriptions);
+    const held = barrier(), atCommit = barrier(), realTransaction = db.transaction.bind(db);
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => realTransaction(async tx => {
+      const result = await callback(tx); atCommit.release(); await held.promise; return result;
+    }, config));
+    const clock = vi.spyOn(Date, "now").mockReturnValue(deadline);
+    let returned = false;
+    const outcome = revokeRecruitmentAssignment(manager, orgId, id, reviewed.revision).then(() => { returned = true; return "unexpected success"; }, error => { returned = true; return error.code; });
+    try {
+      await Promise.race([atCommit.promise, outcome.then(() => { throw new Error("Revoke failed before committing deadline evidence"); })]);
+      expect(returned).toBe(false); expect(await read(id)).toEqual(before);
+      held.release(); expect(await outcome).toBe("CONFLICT");
+      const finalized = await read(id);
+      expect(finalized).toMatchObject({ status: mode === "active" ? "timed_out" : "expired", revision: reviewed.revision + 1,
+        submittedAtMs: mode === "active" ? deadline : null, score: mode === "active" ? { correct: 1, answered: 1 } : null, revokedAtMs: null, revokedByEmail: null });
+      await expect(revokeRecruitmentAssignment(manager, orgId, id, reviewed.revision)).rejects.toMatchObject({ code: "CONFLICT" });
+      expect(await read(id)).toEqual(finalized);
+      await expect(revokeRecruitmentAssignment(manager, orgId, id, finalized.revision)).resolves.toEqual({ success: true });
+      expect(await read(id)).toMatchObject({ status: "revoked", revision: finalized.revision + 1, score: finalized.score, answers: finalized.answers, submittedAtMs: finalized.submittedAtMs });
+      expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
+      expect(await db.select().from(organizationMembers)).toEqual(members); expect(await db.select().from(subscriptions)).toEqual(subs);
+    } finally { held.release(); await outcome; transaction.mockRestore(); clock.mockRestore(); }
   });
 
   it.each(["in_review", "rejected", "other bank", "missing"] as const)("rejects the whole frozen form when one source becomes %s, preserving saved attempts and snapshot", async change => {
@@ -397,7 +533,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
         const candidate = await operateRecruitmentCandidate(ctx, id, { kind: "get" }); expect(candidate.questions).toEqual([]);
         await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: 0 } });
         expect(await read(id)).toEqual(durable);
-        await revokeRecruitmentAssignment(manager, orgId, id);
+        await revokeRecruitmentAssignment(manager, orgId, id, durable.revision);
         expect((await recruitmentResults(manager, orgId, original.assessmentId)).results[0]).toMatchObject({ status: "revoked", answers: { "1": 0 }, score: { correct: 1 }, questions: snapshot });
       }
     } finally { await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3)); }
@@ -460,6 +596,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     { label: "options object", patch: { options: '{"0":"A","1":"B"}' }, unchanged: false },
     { label: "undersized options", patch: { options: '["A"]' }, unchanged: false },
     { label: "blank option", patch: { options: '["A"," ","C","D"]' }, unchanged: false },
+    { label: "duplicate displayed options", patch: { options: '["A"," A ","C","D"]' }, unchanged: false },
     { label: "unchanged parsed payload", patch: { options: '[ "A", "B", "C", "D" ]', explanation: "Unrelated authored explanation edit" }, unchanged: true },
   ].flatMap(change => (["before source lock", "actual UPDATE wait"] as const).map(phase => ({ ...change, phase }))))
     ("checks sampled $label during creation at $phase with no replacement sampling", async ({ label, patch, unchanged, phase }) => {
@@ -740,7 +877,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     const targetForm = branch === "missing result" ? randomUUID() : branch === "nonowned result" ? foreign.assessmentId : ownedFormId;
     const targetAssignment = branch === "missing revoke" ? randomUUID() : branch === "nonowned revoke" ? foreignId : ownedId;
     const pending = branch.includes("list") ? listRecruitmentAssessments(manager, testOrg)
-      : branch.includes("result") ? recruitmentResults(manager, testOrg, targetForm) : revokeRecruitmentAssignment(manager, testOrg, targetAssignment);
+      : branch.includes("result") ? recruitmentResults(manager, testOrg, targetForm) : revokeRecruitmentAssignment(manager, testOrg, targetAssignment, 0);
     const outcome = pending.then(() => "unexpected success", error => error.code);
     try {
       await Promise.race([atTransaction, outcome.then(() => { throw new Error("Manager operation returned without locked reauthorization"); })]);
@@ -753,7 +890,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
       if (branch.includes("missing") || branch.includes("nonowned")) {
         const owner = { ...ctx, studentEmail: "boundary-owner@example.test" };
         if (branch.includes("result")) await expect(recruitmentResults(owner, testOrg, targetForm)).rejects.toMatchObject({ code: "NOT_FOUND" });
-        else await expect(revokeRecruitmentAssignment(owner, testOrg, targetAssignment)).rejects.toMatchObject({ code: "NOT_FOUND" });
+        else await expect(revokeRecruitmentAssignment(owner, testOrg, targetAssignment, 0)).rejects.toMatchObject({ code: "NOT_FOUND" });
       }
     } finally {
       release(); await outcome; transaction.mockRestore();

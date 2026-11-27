@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { and, eq, inArray } from "drizzle-orm";
 import { questions } from "../../drizzle/schema";
-import { validRecruitmentQuestions, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
+import { validRecruitmentQuestions, validRecruitmentSelectionQuestions, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import type { RecruitmentReadDb } from "./types";
 
@@ -16,7 +16,7 @@ export function usableRecruitmentQuestion(row: RecruitmentBankRow): RecruitmentQ
     id: String(row.id), module: row.module, prompt: row.question,
     options: options as string[], correctIndex: row.correctIndex,
   };
-  return validRecruitmentQuestions([question]) ? question : null;
+  return validRecruitmentSelectionQuestions([question]) ? question : null;
 }
 
 /** getDb's authoritative question table; no fixtures, bundle fallback or preview content. */

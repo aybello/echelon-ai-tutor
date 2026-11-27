@@ -291,6 +291,18 @@ async function readyDetail() {
   render();
   await settle();
 }
+function reviewRevocation() {
+  find(n => String(n.props["aria-label"]).startsWith("Revoke invitation")).props.onClick();
+  render();
+  const group = find(n => n.props["aria-labelledby"] === "recruitment-revoke-title");
+  const checkbox = nodes(group).find(n => n.type === "checkbox");
+  checkbox.props.onCheckedChange(true);
+  render();
+  return {
+    checkbox,
+    handler: find(n => n.type === "button" && text(n).includes("Confirm revoke")).props.onClick,
+  };
+}
 function dispatch(name: string) {
   for (const fn of [...(h.listeners.get(name) ?? [])])
     fn({ key: "session-switch" });
@@ -360,6 +372,175 @@ afterEach(() => {
 });
 
 describe("recruitment manager privacy component lifecycle (Node, synthetic transport)", () => {
+  it.each(["submitted", "revision"] as const)(
+    "clears a reviewed active target synchronously on results refetch and fences refreshed %s before rerender",
+    async change => {
+      const active = { ...result, status: "active", revision: 7 };
+      h.results.mockResolvedValue({ assessment, results: [active] });
+      await readyDetail();
+      const oldReview = reviewRevocation();
+      const pending = deferred();
+      const read = h.client.fetchQuery({
+        queryKey: key("results", { orgId, assessmentId }),
+        queryFn: () => pending.promise,
+        staleTime: 0,
+        retry: false,
+      });
+      oldReview.handler(); // Fetch event ran, but React has not rerendered.
+      expect(h.revoke).not.toHaveBeenCalled();
+      const refreshed = {
+        ...active,
+        status: change === "submitted" ? "submitted" : "active",
+        revision: 8,
+      };
+      pending.resolve({ assessment, results: [refreshed] });
+      await read;
+      oldReview.handler(); // Fresh response, still before component rerender.
+      expect(h.revoke).not.toHaveBeenCalled();
+      await settle();
+      expect(text(tree)).not.toContain("I confirm I want to revoke");
+      oldReview.checkbox.props.onCheckedChange(true);
+      oldReview.handler();
+      await settle();
+      expect(h.revoke).not.toHaveBeenCalled();
+      if (change === "revision") {
+        const freshReview = reviewRevocation();
+        oldReview.handler(); // New explicit confirmation cannot authorize its predecessor.
+        expect(h.revoke).not.toHaveBeenCalled();
+        freshReview.handler();
+        await settle();
+        expect(h.revoke).toHaveBeenCalledTimes(1);
+        expect(h.revoke).toHaveBeenCalledWith({
+          orgId,
+          assignmentId: active.assignmentId,
+          expectedRevision: refreshed.revision,
+        });
+      } else {
+        expect(nodes(tree).some(n => String(n.props["aria-label"]).startsWith("Revoke invitation"))).toBe(false);
+      }
+    }
+  );
+  it("clears confirmation on a mismatched manual DTO revision before rerender and refuses manual freshness", async () => {
+    await readyDetail();
+    const oldReview = reviewRevocation();
+    h.client.setQueryData(key("results", { orgId, assessmentId }), {
+      assessment,
+      results: [{ ...result, revision: 9 }],
+    });
+    oldReview.handler();
+    expect(h.revoke).not.toHaveBeenCalled();
+    render();
+    expect(text(tree)).not.toContain("I confirm I want to revoke");
+    expect(text(tree)).not.toContain("Revoke invitation for");
+    expect(text(tree)).toContain("Loading assessment results");
+  });
+  it("unchecking confirmation synchronously rejects an accepted retained revoke handler", async () => {
+    await readyDetail();
+    reviewRevocation();
+    const checkbox = nodes(find(n => n.props["aria-labelledby"] === "recruitment-revoke-title"))
+      .find(n => n.type === "checkbox");
+    const handler = find(n => n.type === "button" && text(n).includes("Confirm revoke")).props.onClick;
+    checkbox.props.onCheckedChange(false);
+    handler();
+    expect(h.revoke).not.toHaveBeenCalled();
+  });
+  it("does not let a cancelled retained callback borrow a new confirmation for the exact same DTO", async () => {
+    await readyDetail();
+    const oldReview = reviewRevocation();
+    find(n => n.type === "button" && text(n) === "Cancel").props.onClick();
+    const freshReview = reviewRevocation();
+    oldReview.checkbox.props.onCheckedChange(true);
+    oldReview.handler();
+    expect(h.revoke).not.toHaveBeenCalled();
+    freshReview.handler();
+    await settle();
+    expect(h.revoke).toHaveBeenCalledTimes(1);
+    expect(h.revoke).toHaveBeenCalledWith({
+      orgId,
+      assignmentId: result.assignmentId,
+      expectedRevision: result.revision,
+    });
+  });
+  it.each(["session", "remote"] as const)(
+    "rejects retained confirmation on %s reset before rerender and after fresh authorization",
+    async mode => {
+      await readyDetail();
+      const oldReview = reviewRevocation();
+      if (mode === "session") dispatch("focus");
+      else {
+        await h.client.fetchQuery({
+          queryKey: key("results", { orgId, assessmentId }),
+          queryFn: async () => { throw { data: { code: "FORBIDDEN" } }; },
+          staleTime: 0,
+          retry: false,
+        }).catch(() => undefined);
+      }
+      oldReview.handler();
+      expect(h.revoke).not.toHaveBeenCalled();
+      await settle();
+      await readyDetail();
+      const freshReview = reviewRevocation();
+      oldReview.checkbox.props.onCheckedChange(true);
+      oldReview.handler();
+      expect(h.revoke).not.toHaveBeenCalled();
+      freshReview.handler();
+      await settle();
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(h.revoke).toHaveBeenCalledWith({
+        orgId,
+        assignmentId: result.assignmentId,
+        expectedRevision: result.revision,
+      });
+    }
+  );
+  it("CONFLICT clears review, refreshes changed revision, and requires new explicit confirmation without replay", async () => {
+    await readyDetail();
+    const oldReview = reviewRevocation();
+    h.revoke.mockRejectedValueOnce({ data: { code: "CONFLICT" } });
+    h.results.mockResolvedValue({ assessment, results: [{ ...result, revision: 4 }] });
+    oldReview.handler();
+    await settle();
+    expect(h.revoke).toHaveBeenCalledTimes(1);
+    expect(h.revoke).toHaveBeenCalledWith({
+      orgId,
+      assignmentId: result.assignmentId,
+      expectedRevision: 0,
+    });
+    expect(h.results).toHaveBeenCalledTimes(2);
+    expect(text(tree)).toContain("Revocation was not retried.");
+    expect(text(tree)).not.toContain("I confirm I want to revoke");
+    oldReview.checkbox.props.onCheckedChange(true);
+    oldReview.handler();
+    await settle();
+    expect(h.revoke).toHaveBeenCalledTimes(1);
+    reviewRevocation().handler();
+    await settle();
+    expect(h.revoke).toHaveBeenCalledTimes(2);
+    expect(h.revoke.mock.calls[1][0]).toEqual({
+      orgId,
+      assignmentId: result.assignmentId,
+      expectedRevision: 4,
+    });
+  });
+  it("discards a late revoke success after results change while awaiting the mutation", async () => {
+    await readyDetail();
+    const oldReview = reviewRevocation();
+    const pending = deferred();
+    h.revoke.mockReturnValueOnce(pending.promise);
+    oldReview.handler();
+    expect(h.revoke).toHaveBeenCalledOnce();
+    await h.client.fetchQuery({
+      queryKey: key("results", { orgId, assessmentId }),
+      queryFn: async () => ({ assessment, results: [{ ...result, status: "submitted", revision: 1 }] }),
+      staleTime: 0,
+      retry: false,
+    });
+    pending.resolve({ success: true });
+    await settle();
+    expect(h.invalidates).not.toHaveBeenCalled();
+    expect(text(tree)).not.toContain("Invitation revoked.");
+    expect(text(tree)).not.toContain("I confirm I want to revoke");
+  });
   it("does not render seeded roster/form/list/results before a fresh successful authorization, or after denial", async () => {
     h.client.setQueryData(key("catalog", { orgId }), catalog);
     h.client.setQueryData(key("list", { orgId }), [assessment]);
@@ -458,6 +639,7 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     expect(h.revoke).toHaveBeenCalledWith({
       orgId,
       assignmentId: result.assignmentId,
+      expectedRevision: result.revision,
     });
     expect(text(tree)).toContain("Invitation revoked.");
     expect(h.create).not.toHaveBeenCalled();

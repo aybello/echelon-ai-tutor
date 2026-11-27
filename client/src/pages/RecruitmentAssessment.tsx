@@ -227,6 +227,12 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const [view, setView] = useState<RecruitmentCandidateView | null>(null);
   const viewRef = useRef<RecruitmentCandidateView | null>(null);
   const live = useRef(true);
+  // Retained DOM handlers must not acquire a replacement session's epoch/DTO.
+  const renderingEpoch = sessionEpoch.current;
+  const consentRef = useRef<{
+    epoch: number;
+    data: RecruitmentCandidateView;
+  } | null>(null);
   // Includes manual reads and writes: a new action cannot overtake an in-flight save.
   const operation = useRef(false);
   const [busy, setBusy] = useState(false);
@@ -265,6 +271,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       live.current = false;
       sessionEpoch.current += 1;
       authorizedFetch.current = null;
+      consentRef.current = null;
       const filters = {
         queryKey: getQueryKey(
           trpc.recruitment.candidateGet,
@@ -292,6 +299,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const clearCandidate = useCallback(() => {
     viewRef.current = null;
     authorizedFetch.current = null;
+    consentRef.current = null;
     clock.current.clear();
     setView(null);
     setAccepted(false);
@@ -338,9 +346,22 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     },
     [clearCandidate]
   );
+  const isReviewedViewCurrent = () =>
+    live.current &&
+    renderingEpoch === sessionEpoch.current &&
+    view !== null &&
+    viewRef.current === view;
+  function changeAccepted(value: boolean | "indeterminate") {
+    if (!isReviewedViewCurrent() || view?.status !== "invited") return;
+    consentRef.current = value === true
+      ? { epoch: renderingEpoch, data: view }
+      : null;
+    setAccepted(value === true);
+  }
   function changeSubmitOpen(open: boolean) {
+    if (open && (!isReviewedViewCurrent() || view?.status !== "active")) return;
     expectedRevision.current = open
-      ? (viewRef.current?.revision ?? null)
+      ? (view?.revision ?? null)
       : null;
     setSubmitOpen(open && expectedRevision.current !== null);
   }
@@ -593,8 +614,12 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   ]);
 
   async function begin() {
+    const hasCurrentConsent = () =>
+      isReviewedViewCurrent() &&
+      consentRef.current?.epoch === renderingEpoch &&
+      consentRef.current.data === view;
     if (
-      !live.current ||
+      !hasCurrentConsent() ||
       !accepted ||
       operation.current ||
       query.isFetching ||
@@ -604,14 +629,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       needsRefresh
     )
       return;
-    const epoch = sessionEpoch.current;
+    const epoch = renderingEpoch;
     operation.current = true;
     setBusy(true);
     setError("");
     setMessage("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
-      if (!live.current || epoch !== sessionEpoch.current) return;
+      if (!hasCurrentConsent()) return;
       const requestStartedMs = performance.now();
       const next = await start.mutateAsync({
         assignmentId,
@@ -637,9 +662,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     questionId: string,
     selectedIndex: number | null
   ) {
-    const current = viewRef.current;
+    const current = view;
     if (
-      !live.current ||
+      !isReviewedViewCurrent() ||
       !current ||
       current.status !== "active" ||
       operation.current ||
@@ -648,7 +673,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       needsRefresh
     )
       return;
-    const epoch = sessionEpoch.current;
+    const epoch = renderingEpoch;
     operation.current = true;
     setBusy(true);
     setSaveState("saving");
@@ -656,7 +681,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setMessage("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
-      if (!live.current || epoch !== sessionEpoch.current) return;
+      if (!isReviewedViewCurrent()) return;
       const requestStartedMs = performance.now();
       const next = await save.mutateAsync({
         assignmentId,
@@ -706,9 +731,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     }
   }
   async function finish() {
-    const current = viewRef.current;
+    const current = view;
     if (
-      !live.current ||
+      !isReviewedViewCurrent() ||
       operation.current ||
       query.isFetching ||
       !online ||
@@ -721,14 +746,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     )
       return;
     const revision = expectedRevision.current;
-    const epoch = sessionEpoch.current;
+    const epoch = renderingEpoch;
     operation.current = true;
     setBusy(true);
     setError("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
       // The server verifies exactly the revision reviewed in this confirmation.
-      if (!live.current || epoch !== sessionEpoch.current) return;
+      if (!isReviewedViewCurrent() || expectedRevision.current !== revision) return;
       const requestStartedMs = performance.now();
       const next = await submit.mutateAsync({ assignmentId, revision });
       if (live.current && epoch === sessionEpoch.current) {
@@ -1043,7 +1068,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           <Checkbox
             className="mt-1"
             checked={accepted}
-            onCheckedChange={value => setAccepted(value === true)}
+            onCheckedChange={changeAccepted}
             disabled={busy}
           />
           <span>
