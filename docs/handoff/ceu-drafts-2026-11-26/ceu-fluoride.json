@@ -1,0 +1,1084 @@
+{
+ "key": "ceu-fluoride",
+ "version": "2026-11-26.1",
+ "title": "Fluoride in Drinking Water for Operators",
+ "shortTitle": "Fluoride",
+ "stream": "drinking_water",
+ "audience": "Operators, trainees and supervisors at drinking water plants that add, or may be asked to add, fluoride, and anyone preparing for a certification exam that covers fluoridation.",
+ "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: the target level and any limits are set by the applicable rule or permit and are not stated here as rules.",
+ "introduction": "Learn what community water fluoridation is and why it is done, how natural and adjusted fluoride combine, and why the applicable authority sets the target. Then meet the three common chemicals and the feed systems that deliver them, including the saturator, dry and solution feeders, day tanks and the anti-siphon and backflow protections. Work through the feed-rate arithmetic: percent fluoride ion, pounds per day, saturator gallons per day, pump settings, natural fluoride background and a check of feed against production. Finish with analysis methods, calibration, daily checks, overfeed causes and response at purpose level, records and chemical handling safety at recognition level. Each module has a fictional scenario, quick checks that explain the reasoning behind each answer and a short written assignment. The course gives general principles. Your own permit, rules and facility procedures govern.",
+ "plannedMinutes": 240,
+ "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+ "sources": [
+  {
+   "id": "spellman-hb",
+   "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press, 2009)",
+   "section": "Section 5.6.11 Fluoridation: Tables 5.5 to 5.7 (solubility, fluorosilicic acid properties, optimal level table), 5.6.11.2 (fluoride compounds), 5.6.11.4 (percent fluoride ion, feed rate, saturator feed rate, calculated dosage, Examples 5.176 to 5.186); 14.4.2.4 and 15.8.20 (fluoride and its analysis)",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "spellman-wf",
+   "title": "The Handbook for Waterworks Operator Certification, Volume 1: Fundamental Level (Frank R. Spellman, Technomic, 1996)",
+   "section": "Chapter 18 Fluoridation, pp. 223-225 (purpose, compounds, feeders, feed points, records); Chapter 14 Cross-Connection Control, sections 14.2.2.2.1 to 14.2.2.2.2 (air gaps and vacuum breakers, backsiphonage)",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "wtp2",
+   "title": "Water Treatment Plant Operation, Volume 2: A Field Study Training Program, revised (California State University, Sacramento, School of Engineering, with the National Environmental Training Association, 1988)",
+   "section": "Chapter 13 Fluoridation: 13.0 history, 13.1 programs, 13.2 compounds and Table 13.2, 13.3 feeders and saturators, 13.4 equipment review, 13.6 solution preparation and log sheets, 13.7 overfeed prevention, 13.8 underfeeding, 13.9 shutdown, 13.10 maintenance, 13.11 safety",
+   "jurisdiction": "US reference text, 1988 (older limits and doses in it are not used); verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "wqc",
+   "title": "Water Quality Control Handbook, 2nd edition (E. Roberts Alley, WEF Press)",
+   "section": "Section 3.3.2.16 (fluoride occurrence); Appendix D (properties of sodium fluoride and sodium silicofluoride); EPA Method 340.2, Fluoride, potentiometric ion-selective electrode (scope, interferences, standards, calibration curve)",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "cdc-about",
+   "title": "About Community Water Fluoridation (US Centers for Disease Control and Prevention)",
+   "url": "https://www.cdc.gov/fluoridation/about/index.html",
+   "section": "Key points and overview: fluoridation is adjusting fluoride to a recommended level; CDC does not mandate it; state and local governments decide",
+   "jurisdiction": "US federal public health agency; check your own state or provincial authority for your target",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "cdc-eng",
+   "title": "Fluoridation Engineering and Operations (US Centers for Disease Control and Prevention)",
+   "url": "https://www.cdc.gov/fluoridation/engineering/",
+   "section": "Index of CDC training and resources for water operators and engineers on fluoridation",
+   "jurisdiction": "US federal public health agency; no operating limits are taken from this page",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "modules": [
+  {
+   "id": "what-and-why",
+   "title": "Fluoridation: what it is and why it is done",
+   "objectives": [
+    "Explain what community water fluoridation is, why it is done, and the difference between natural and adjusted fluoride.",
+    "Describe the optimal-level concept, who sets the target, and the health effects and exposure ideas at concept level."
+   ],
+   "lesson": "### What community water fluoridation is\n\nCommunity water fluoridation is the practice of adjusting the fluoride level in a public water supply to a level chosen to protect teeth from decay. The word adjusting matters. Some source waters already contain fluoride, and the plant's job is to bring the finished water to the chosen level, not to add a fixed amount no matter what is already there. The chemical added is a salt or an acid that releases fluoride ions when it dissolves, and those ions are what do the work.\n\nThe purpose is public health. Dental caries, the technical name for tooth decay, is the disease that fluoride at the right level reduces. The Waterworks Operator Certification text reports that, at the right level, people get a large reduction in decay with no aesthetically significant dental fluorosis.\n\nFluoridation is a local decision. A governing body usually decides, often after a public vote, and the water department almost always chooses the chemical and equipment. Nothing in this course tells you whether your community should fluoridate. It teaches how the process works and how to run it carefully when it is part of your job.\n\n### Natural fluoride and adjusted fluoride\n\nFluoride, the ion of the element fluorine, occurs in some rocks and minerals. Water that touches those rocks can dissolve a little of it. The textbooks agree on the pattern: fluoride is seldom found in appreciable amounts in surface water, and it shows up in groundwater only in some regions. So one town's well may carry a noticeable natural level while a river-fed system a few counties away carries almost none.\n\nThat gives two ideas to keep straight. Natural fluoride is what the source already contains. Added fluoride is what the plant adds on top. The finished water contains the total of the two. A routine finished-water result reports that total and does not show which part came from the rock and which from the feeder. This is why the dose you add depends on the target and the background already present; the chemical chosen decides how much product that dose takes.\n\n<figure><svg viewBox=\"0 0 360 190\" role=\"img\" aria-label=\"Two stacked bars show natural plus added fluoride reaching the same target line\"><title>Natural plus added fluoride</title><text x=\"10\" y=\"18\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\" font-weight=\"bold\">Total fluoride at the tap</text>\n<text x=\"10\" y=\"52\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Plant A</text>\n<rect x=\"70\" y=\"36\" width=\"50\" height=\"24\" fill=\"#c9d1d9\" stroke=\"#1d2d40\"/><rect x=\"120\" y=\"36\" width=\"170\" height=\"24\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/>\n<text x=\"75\" y=\"52\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">nat.</text><text x=\"180\" y=\"52\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">added</text>\n<text x=\"10\" y=\"102\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Plant B</text>\n<rect x=\"70\" y=\"86\" width=\"140\" height=\"24\" fill=\"#c9d1d9\" stroke=\"#1d2d40\"/><rect x=\"210\" y=\"86\" width=\"80\" height=\"24\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/>\n<text x=\"110\" y=\"102\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">natural</text><text x=\"228\" y=\"102\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">added</text>\n<line x1=\"290\" y1=\"26\" x2=\"290\" y2=\"124\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/>\n<text x=\"196\" y=\"146\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">target set by the authority</text>\n<text x=\"10\" y=\"172\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Plant B adds less because more is already there.</text></svg><figcaption>Both plants aim at the same total. Plant B has more natural fluoride, so its feed system adds a smaller share.</figcaption></figure>\n\nSometimes the natural level is already too high. Spellman states that when untreated natural water carries too much fluoride, the system must use an alternate supply or treat the water to reduce it. Reducing excess fluoride is called defluoridation. It is a different job from fluoridation. The two options are an alternate supply or a treatment that removes fluoride. This course concentrates on adding fluoride, but you should know the opposite problem exists, because the same plant can face either one.\n\n### The optimal level: a target the authority sets\n\nFluoride has a useful range and two ways to miss it. If the level is too low, the community loses some of the protection. If it is too high while children's teeth are forming, dental fluorosis can result, which shows as mottling of the enamel. The goal is a level high enough to protect and low enough to avoid that cosmetic harm. The level that does this is called the optimal level.\n\nYour course will not give you a number as a rule, and for a good reason: the number is set by an authority, not by the operator. The Spellman handbook reprints an older table that varied the recommended level with the local climate, because people drink more water in hot weather and so take in more fluoride per day. The applicable authority sets the target for your system, and that target may differ between jurisdictions. The right habit is to look up the target that applies to your system, write it on the control sheet, and treat it as the number your plant works to. In this course, any target you see in an exercise is a made-up input for practice, not the rule.\n\nHandbooks also describe a control range around the target. The older Table 5.7 gives a historical control range of 0.1 ppm below and 0.5 ppm above the community level; it is a historical example, not a current requirement. The idea carries over: the plant should hold the finished water inside the band the authority sets. The Waterworks text notes that low levels result in increasing incidence of caries, which is why drifting low is a real problem and not a safe default.\n\nDo not confuse the fluoridation target with the contaminant rule. Drinking water regulations also set limits for fluoride. Spellman's Table 14.3 lists a secondary value associated with dental fluorosis. The values belong to the regulations in force where you work, and the applicable limits apply to the water a plant delivers.\n\n<figure><svg viewBox=\"0 0 360 170\" role=\"img\" aria-label=\"Three zones from too little to too much fluoride with the target zone in the middle\"><title>Too low, on target, too high</title><rect x=\"10\" y=\"30\" width=\"100\" height=\"40\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/>\n<rect x=\"110\" y=\"30\" width=\"140\" height=\"40\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/>\n<rect x=\"250\" y=\"30\" width=\"100\" height=\"40\" fill=\"#c9d1d9\" stroke=\"#1d2d40\"/>\n<text x=\"22\" y=\"54\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">too low</text><text x=\"150\" y=\"54\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">target zone</text><text x=\"266\" y=\"54\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">too high</text>\n<text x=\"10\" y=\"20\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Fluoride level, low to high</text>\n<text x=\"10\" y=\"94\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Too low: less decay protection</text>\n<text x=\"10\" y=\"114\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Target zone: set by the authority</text>\n<text x=\"10\" y=\"134\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Too high: tooth mottling risk grows</text>\n<text x=\"10\" y=\"156\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Small misses below the zone cost benefit.</text></svg><figcaption>The zone is set by the applicable authority. The plant's job is to hold the finished water inside it.</figcaption></figure>\n\n### Health effects and exposure, at concept level\n\nAt an appropriate level the textbooks report benefit for teeth, and excess fluoride while teeth are forming can cause dental fluorosis. Spellman notes that fluoride is toxic to humans in large quantities. That sentence points at a distinction operators need to carry in their heads: the finished water is dilute, and the chemicals in the plant are not.\n\nTwo kinds of exposure matter. Acute exposure is short-term, as from swallowing or breathing concentrated chemical. Chronic exposure is repeated or continuous over a long period. In drinking water the effect named is tooth mottling. The point of this course is to explain why the chemical room gets more care than the tap. Specific protective equipment and emergency steps belong to your facility's safety program and training, not to this lesson.\n\nYou may also hear questions about fluoridation itself. The handbooks acknowledge that some critics raise concerns, and they note that most authorities hold that a moderate quantity of fluoride is beneficial. An operator's role here is practical: follow the authority's target, run the system accurately, and keep honest records so that any question about what your plant did can be answered with data.\n\n### How the approach came about\n\nThe Waterworks text reports that the incidence of dental caries relative to the concentration of fluoride in drinking water is well established, and it describes adjusting the level as a public health measure. Federal and state rules on fluoride as a contaminant are a separate matter from the adjustment target, and your authority's current documents govern both.\n\n### Worked scenario: Pine Ridge Water Plant\n\nPine Ridge is a fictional groundwater system. Operator Dana Whitfield learns that Well 2 carries a measurable natural fluoride level while Well 1 carries almost none. The system's permit sets one target for finished water. Dana's supervisor asks why the feeder setting should differ depending on which well is running.\n\nDana works through it in plain language. The target is the same for both wells. Well 1 contributes almost nothing, so the feeder must add nearly the whole target. Well 2 already supplies part of it, so the feeder adds only the difference. If Dana kept the Well 1 feed setting while Well 2 runs at the same flow, the finished water would drift above the target, because the total is natural plus added. The reverse mistake, trusting Well 2's natural level when the pump is on Well 1, would leave the water below the target.\n\nSo Dana records the common target and, for each well, the measured natural level and the added dose the feeder must supply. The next module covers the chemicals and equipment that supply that difference, and Module 3 turns it into pounds and gallons.\n\n### Key points to carry forward\n\nFluoridation adjusts the level, it does not simply add a fixed amount. The finished-water result is natural plus added. The applicable authority sets the target, and you look it up rather than relying on memory. Too little loses benefit, and excess fluoride while children's teeth are forming can cause dental fluorosis. And concentrated chemicals deserve far more respect than the water at the tap.",
+   "evidence": "### Fictional scenario: Pine Ridge Water Plant\n\nPine Ridge is a fictional groundwater system with two wells. Well 1 carries almost no natural fluoride and Well 2 carries a measurable level. The permit sets one target for finished water. Operator Dana Whitfield is asked by her supervisor, Hector Bell, why the feeder setting should change when the plant switches wells.",
+   "assignment": "Write a half-page note to Hector Bell explaining, in your own words, why Well 2 needs a smaller feed than Well 1 for the same target. State where you would look up the target for your own system, explain total fluoride as natural plus added, and name one question your note cannot answer without the permit.",
+   "rubric": [
+    "Explains that finished-water fluoride is natural plus added.",
+    "States that the applicable authority sets the target and says where to look it up.",
+    "Explains why the feed differs between the two wells without using a number as a rule.",
+    "Names an open question instead of guessing."
+   ],
+   "facilitatorGuide": "Ask learners to say the idea out loud: total equals natural plus added. Check that nobody quotes a target as if it applied everywhere. Strong answers connect the feed rate to the source water, not to the chemical. Watch for learners who think fluoridation is the same as removing fluoride; that is defluoridation.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and write in your own words how total fluoride relates to natural and adjusted fluoride."
+    },
+    {
+     "kind": "reading",
+     "minutes": 10,
+     "instruction": "Find your own system's fluoride target in the permit or rule and note where it is written."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Pine Ridge scenario and say how the feed changes between wells."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 10,
+     "instruction": "Complete the module assignment against the rubric."
+    }
+   ],
+   "sourceIds": [
+    "spellman-hb",
+    "spellman-wf",
+    "wtp2"
+   ],
+   "checks": [
+    {
+     "id": "ceu-fluoride-what-and-why-c1",
+     "prompt": "In community water fluoridation, what does adjusting the fluoride level mean?",
+     "choices": [
+      "Bringing finished water to the target the authority sets, allowing for natural fluoride",
+      "Adding the same weight of chemical on each day of the month, whatever the source contains",
+      "Taking natural fluoride out of the source so the supply starts from a trace amount",
+      "Raising the level as high as the feeder can safely deliver at the current flow"
+     ],
+     "correctIndex": 0,
+     "explanation": "Adjusting means reaching a chosen total. A fixed daily weight ignores natural fluoride, removal is a different job, and the target is set by the authority, not by feeder capacity.",
+     "objective": "what-and-why"
+    },
+    {
+     "id": "ceu-fluoride-what-and-why-c2",
+     "prompt": "Where does natural fluoride in a water supply come from?",
+     "choices": [
+      "Chlorine reacts with organic matter in the source water and releases it as a by-product",
+      "Water dissolves small amounts from certain rocks and minerals it touches",
+      "Filter media gives it up slowly into the water as the media wears with use",
+      "Rain collects it from the air and carries it into the source in small amounts"
+     ],
+     "correctIndex": 1,
+     "explanation": "Spellman reports fluoride in some igneous and sedimentary rocks, and it is found in groundwater in some regions. The other choices are not sources these texts describe.",
+     "objective": "what-and-why"
+    },
+    {
+     "id": "ceu-fluoride-what-and-why-c3",
+     "prompt": "Who sets the fluoride target for a particular water system?",
+     "choices": [
+      "The chemical supplier, who prints a recommended level on the product label",
+      "The operator on shift, who adjusts the target from the previous day's reading",
+      "The applicable rule, permit or health authority for that system",
+      "The feeder manufacturer, who lists the level to hold in the equipment manual"
+     ],
+     "correctIndex": 2,
+     "explanation": "The target comes from the authority. Labels and manuals describe products and machines, and yesterday's reading is a result, not a target.",
+     "objective": "what-and-why"
+    },
+    {
+     "id": "ceu-fluoride-what-and-why-c4",
+     "prompt": "A lab reports 0.8 mg/L fluoride in finished water from a source that has some natural fluoride. What does that result represent?",
+     "choices": [
+      "Just the amount the feeder added",
+      "Just the natural fluoride in the source",
+      "The gap between the target and the measured value",
+      "The total of natural and added fluoride"
+     ],
+     "correctIndex": 3,
+     "explanation": "The routine result does not split natural from added fluoride, so it is a total. Treating it as the added part, the natural part or a gap misreads the number.",
+     "objective": "what-and-why"
+    },
+    {
+     "id": "ceu-fluoride-what-and-why-c5",
+     "prompt": "What can long-term fluoride intake well above the optimum cause in children whose teeth are still forming?",
+     "choices": [
+      "Dental fluorosis, seen as mottling of the enamel",
+      "Faster enamel decay because the mouth acids become stronger over the years",
+      "Loss of fluoride from the bones back into the blood as the dose rises",
+      "Brittle teeth that crack in adulthood because the enamel grew too thick"
+     ],
+     "correctIndex": 0,
+     "explanation": "The effect named in the handbooks is mottled enamel, not faster decay or cracking.",
+     "objective": "what-and-why"
+    },
+    {
+     "id": "ceu-fluoride-what-and-why-c6",
+     "prompt": "Why does the chemical room deserve more care than the finished water at the tap?",
+     "choices": [
+      "Fluoride turns toxic after it reaches the tap, and is harmless before that point",
+      "The dust and liquids there are far stronger than water at the target level",
+      "Operators drink much more of the tap water than customers do each day",
+      "Finished water holds a higher fluoride level than the stored chemical does"
+     ],
+     "correctIndex": 1,
+     "explanation": "Spellman notes fluoride is toxic in large quantities, and plant chemicals are concentrated. The tap is dilute; the stored chemical is not.",
+     "objective": "what-and-why"
+    }
+   ]
+  },
+  {
+   "id": "chemicals-feeders",
+   "title": "Chemicals and feed systems",
+   "objectives": [
+    "Recognize sodium fluoride, sodium silicofluoride and fluorosilicic acid, and explain how solubility and purity affect how each is fed.",
+    "Explain the purpose of saturators, dry feeders, solution feeders, day tanks and the anti-siphon and backflow protections."
+   ],
+   "lesson": "### Three chemicals, one job\n\nAny compound that releases fluoride ions in water could in theory adjust the level, but practical choices are limited by solubility, by what the other part of the compound does to the water, and by cost and availability. Three chemicals are in common use: sodium fluoride, sodium silicofluoride (also called sodium fluorosilicate) and fluorosilicic acid (also called hydrofluosilicic acid). The Spellman handbook says each should meet the American Water Works Association standard for its type, and operators should ask the supplier for proof of that. Whichever chemical a plant uses, it supplies fluoride ion to the water, and the ion is what the lab measures.\n\nFluoride usually reaches the water as a solution, made from a dry chemical or delivered as a liquid.\n\n### Sodium fluoride\n\nSodium fluoride is a white, odorless solid sold as powder or as crystals. It was the first compound used and is still the reference standard for measuring fluoride. Its special feature is its solubility. At the temperatures found in water plants, about 4 grams dissolve in each 100 milliliters of water, and that figure barely changes with temperature. A saturated solution therefore has a nearly constant strength, which is the idea behind the saturator described below. In the past it was made by adding sulfuric acid to fluorspar and then neutralizing the mixture with sodium carbonate; it is now made by neutralizing fluorosilicic acid with caustic soda.\n\nCrystals are easier to handle than fine powder because they make less dust, and dust is a major hazard with the dry chemicals. The WTP Operation text says only crystal-grade sodium fluoride should be used in a saturator, which is why this chemical is tied to saturators.\n\n### Sodium silicofluoride\n\nSodium silicofluoride is a powder made from fluorosilicic acid. It dissolves only a little, well under one percent, so it is not recommended for a saturator. Many plants feed it with a dry feeder into a dissolving tank where it dissolves in water.\n\n### Fluorosilicic acid\n\nFluorosilicic acid is a liquid solution, for example about 23 percent strength by weight, that is straw-colored, fuming and corrosive. It is largely a by-product of making phosphate fertilizer. Because it is liquid, it needs no dissolving equipment and is commonly fed by a metering pump. The Spellman text stresses its hazards: it can cause a delayed burn on skin, it can contain hydrofluoric acid from production or from intentional addition of a fortified acid, and at low concentrations it can slightly depress the pH of poorly buffered water. Handle it with the care the supplier and your facility procedure require.\n\n### Purity and strength, at concept level\n\nNo commercial product is pure fluoride compound. Each releases fluoride ion only in proportion to its chemical formula and its purity. Two numbers capture this. The available fluoride ion fraction, called AFI, is the share of the chemical's weight that is fluoride ion. The purity is the share of the product that is actual chemical, which for a liquid is the strength percent. Module 3 uses both. For now, keep the idea: a pound of product is not a pound of fluoride.\n\nPurity also covers unwanted contaminants. The training manual tells operators to insist on products that meet the AWWA specification for each chemical. Check each delivery against its product specification before feeding it.\n\n### Feeders: solution feeders and dry feeders\n\nFluoride feeders fall into two broad groups. Solution feeders deliver a measured volume of fluoride solution over time. The usual machine is a positive displacement metering pump, which moves a set volume on each stroke of a diaphragm or piston. Diaphragm designs are common, peristaltic pumps squeeze a tube and suit low feed rates, and electronic pumps deliver a fixed amount on each pulse. Do not let a positive displacement pump run against a closed valve, which can damage it or burst a line. Some pumps are adjusted by stroke length and stroke rate; check the manufacturer's accuracy range and size the pump so normal feed is not at the very ends of its range.\n\nDry feeders deliver a predetermined quantity of dry chemical in a given time, often into a dissolving tank. The operator watches the solution leaving that tank, since a cloudy or uneven solution is a symptom to investigate. Volumetric feeders deliver a set volume per unit of time; gravimetric feeders deliver a set weight per unit of time and are less affected by changes in how the powder packs.\n\n### Saturator operation\n\nA saturator is a tank holding a bed of sodium fluoride that water flows through. The water leaves as a clear, saturated solution of nearly constant strength, and a small metering pump sends that solution to the main. Because the strength is fixed by solubility, the operator does not weigh chemical to make a batch of solution, although the bed must still be charged. Two designs exist. In a downflow saturator, water trickles down through the bed and a sand and gravel layer clarifies it. In an upflow saturator the sand is omitted and water is forced up through the bed.\n\n<figure><svg viewBox=\"0 0 360 230\" role=\"img\" aria-label=\"Upflow saturator: water enters at the bottom through a backflow device and clear solution leaves at the top\"><title>Upflow saturator</title><rect x=\"120\" y=\"40\" width=\"110\" height=\"150\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"121\" y=\"140\" width=\"108\" height=\"49\" fill=\"#c9d1d9\"/>\n<text x=\"140\" y=\"168\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">NaF bed</text>\n<line x1=\"121\" y1=\"78\" x2=\"229\" y2=\"78\" stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/>\n<text x=\"124\" y=\"72\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">level</text>\n<text x=\"130\" y=\"108\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">saturated</text><text x=\"130\" y=\"124\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">solution</text>\n<rect x=\"10\" y=\"20\" width=\"76\" height=\"34\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"14\" y=\"34\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Water in</text><text x=\"14\" y=\"49\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">air gap</text>\n<path d=\"M48 54 V205 H120\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"52\" y=\"222\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">enters at bottom</text>\n<path d=\"M230 90 H290\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<rect x=\"290\" y=\"72\" width=\"60\" height=\"36\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"296\" y=\"94\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">To pump</text>\n<text x=\"236\" y=\"150\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">about 4 percent</text>\n<text x=\"236\" y=\"166\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">by weight</text></svg><figcaption>Water pushed up through the NaF bed leaves as a clear saturated solution. The air gap on the water line protects the potable supply.</figcaption></figure>\n\nUse crystal grade sodium fluoride, since powder can clog the bed. Three operating points matter. First, keep enough undissolved chemical in the bed that the outgoing solution reaches saturation. Second, watch the make-up water. Calcium and magnesium form poorly soluble fluoride compounds, so hard make-up water can deposit and clog the bed, pump or injection point; Chapter 13 gives hardness guidance for make-up water, and the vendor's limits apply too. Third, protect the potable supply. Water enters an upflow saturator at the bottom, which is a cross-connection, so the water line has an air gap or an approved backflow device.\n\n### Anti-siphon and backflow protection\n\nTwo protections keep solution where it belongs. Spellman's cross-connection material explains backsiphonage: when pressure in a line drops, liquid can be drawn back into the potable line through a connection. Two situations matter in fluoridation. Chemical solution must not be drawn back into the potable make-up line, which is what the air gap or backflow preventer on the water line is for. And solution must not siphon from a tank through an idle pump into the water main, which would overfeed fluoride with no pump running.\n\nAn anti-siphon valve at the pump discharge guards against that second case, and the Ch. 13 text illustrates an anti-siphon valve metering pump. An anti-siphon valve opens only when the pump builds enough pressure, so liquid cannot drift through when the pump is idle. Plants also place the injection point above the liquid level in the tank, because gravity then works against siphoning. The facility's design drawings show which devices your plant relies on.\n\n<figure><svg viewBox=\"0 0 360 200\" role=\"img\" aria-label=\"Day tank to metering pump to anti-siphon valve to injection point in the main\"><title>Feed line with protection</title><rect x=\"8\" y=\"30\" width=\"70\" height=\"46\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"16\" y=\"50\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Day</text><text x=\"16\" y=\"66\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">tank</text>\n<rect x=\"100\" y=\"30\" width=\"70\" height=\"46\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"108\" y=\"50\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Meter-</text><text x=\"108\" y=\"66\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">ing pump</text>\n<rect x=\"192\" y=\"30\" width=\"70\" height=\"46\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/><text x=\"198\" y=\"50\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">Anti-</text><text x=\"198\" y=\"66\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">siphon</text>\n<rect x=\"284\" y=\"30\" width=\"70\" height=\"46\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"290\" y=\"50\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Injection</text><text x=\"290\" y=\"66\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">point</text>\n<path d=\"M78 53 H100 M170 53 H192 M262 53 H284\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/>\n<line x1=\"8\" y1=\"120\" x2=\"354\" y2=\"120\" stroke=\"#5b6672\" stroke-width=\"3\"/>\n<text x=\"10\" y=\"140\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Water main</text>\n<path d=\"M319 76 V118\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/>\n<text x=\"10\" y=\"190\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Keep the injection point above the tank liquid level.</text></svg><figcaption>The valve opens only when pump pressure builds. A high injection point and the valve both work against siphoning.</figcaption></figure>\n\n### Day tanks and feed points\n\nA day tank usually holds enough chemical solution for at least one day. The amount used is compared with the water treated, so use can be checked against production. Feed points and mixing are chosen with the design and the authority in mind; this lesson does not set a feed point for your plant.\n\n### Worked scenario: a feeder choice\n\nLakeview Hollow, a fictional town, runs one small well that currently has no fluoridation. The council has voted to start, and operator Ravi Mendoza is asked to compare options. He first measures the well's natural fluoride, since a plant with no feed can still carry some. A saturator with sodium fluoride suits a small plant: it needs no weighing of each batch and the strength is fixed. A dry feeder with silicofluoride needs a solution tank and more floor space. Liquid acid with a metering pump needs the least equipment but the most careful storage and handling.\n\nRavi's recommendation names the chemical, the feeder, the backflow and anti-siphon devices, the day tank and the purity certificates, and lists what he cannot answer yet: make-up water hardness, the authority's target and the delivery schedule.",
+   "evidence": "### Fictional scenario: Lakeview Hollow\n\nLakeview Hollow is a fictional town with one small well. The council has voted to start adjusting fluoride. Operator Ravi Mendoza is asked by the town manager, Joyce Pham, to compare a saturator with sodium fluoride, a dry feeder with silicofluoride, and a metering pump with liquid acid.",
+   "assignment": "Write a one-page comparison for Joyce Pham of the three options for Lakeview Hollow. For each, name the chemical form, the feeder, the protective devices on the feed line, and one handling concern. Recommend one option and list two facts you would need to confirm, such as the hardness of the make-up water and the supplier's purity certificate.",
+   "rubric": [
+    "Names the feeder and the chemical form for each option.",
+    "Explains the purpose of the air gap, anti-siphon valve and day tank.",
+    "Links saturator use to the fixed solubility of sodium fluoride.",
+    "Lists facts that still need to be confirmed."
+   ],
+   "facilitatorGuide": "Have learners sketch a saturator and a metering pump line from memory and label each protective device with its purpose. Check that they say what each device prevents, not just its name. Watch for confusion between the air gap that protects the water supply and the anti-siphon valve that stops solution drifting into the main.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and sketch a saturator and a feed line with the protective devices labeled."
+    },
+    {
+     "kind": "reading",
+     "minutes": 10,
+     "instruction": "Read the delivery certificate or safety data sheet for one fluoride chemical, if your plant uses one."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Lakeview Hollow comparison and list the facts you would confirm."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 10,
+     "instruction": "Complete the module assignment against the rubric."
+    }
+   ],
+   "sourceIds": [
+    "spellman-hb",
+    "spellman-wf",
+    "wtp2",
+    "wqc"
+   ],
+   "checks": [
+    {
+     "id": "ceu-fluoride-chemicals-feeders-c1",
+     "prompt": "Which chemical makes a saturated solution of nearly constant strength, the idea behind a saturator?",
+     "choices": [
+      "Sodium silicofluoride",
+      "Fluorosilicic acid",
+      "Sodium fluoride",
+      "Calcium fluoride from fluorspar"
+     ],
+     "correctIndex": 2,
+     "explanation": "Sodium fluoride dissolves to about 4 g per 100 mL over the temperatures normally found in treatment. Silicofluoride dissolves only slightly; the acid is already a liquid.",
+     "objective": "chemicals-feeders"
+    },
+    {
+     "id": "ceu-fluoride-chemicals-feeders-c2",
+     "prompt": "How is fluorosilicic acid usually delivered to the water?",
+     "choices": [
+      "As a gas through a diffuser",
+      "As crystals through a dry feeder",
+      "As a bed solution from a saturator",
+      "As a liquid fed by a metering pump"
+     ],
+     "correctIndex": 3,
+     "explanation": "The acid arrives as a liquid and is pumped. The sources do not describe the acid as a gas or as crystals.",
+     "objective": "chemicals-feeders"
+    },
+    {
+     "id": "ceu-fluoride-chemicals-feeders-c3",
+     "prompt": "Why is sodium silicofluoride fed by a dry feeder into a solution tank?",
+     "choices": [
+      "It dissolves slightly, so it is made up in a large volume of water",
+      "It is a liquid supplied in drums, so a pump has to meter it into the main",
+      "It saturates at a fixed strength, so a saturator tank would be the better choice",
+      "It reacts with moisture in the air unless it is wetted right away in the hopper"
+     ],
+     "correctIndex": 0,
+     "explanation": "Its solubility is well below one percent, so a saturator is not recommended, and the chemical is made into solution in a dissolving tank with enough water and mixing.",
+     "objective": "chemicals-feeders"
+    },
+    {
+     "id": "ceu-fluoride-chemicals-feeders-c4",
+     "prompt": "What is the purpose of an anti-siphon valve at a metering pump discharge?",
+     "choices": [
+      "To keep potable water from flowing back into the day tank while the pump runs",
+      "To keep solution from drifting into the main when the pump is off",
+      "To improve the accuracy of the pump at low stroke settings during light flows",
+      "To help the fluoride chemical dissolve faster as it passes through the valve"
+     ],
+     "correctIndex": 1,
+     "explanation": "The valve stays closed until the pump builds pressure. The air gap on the make-up line protects the potable supply, and the valve has no role in accuracy or dissolving.",
+     "objective": "chemicals-feeders"
+    },
+    {
+     "id": "ceu-fluoride-chemicals-feeders-c5",
+     "prompt": "Why does the water line to an upflow saturator have an air gap or backflow device?",
+     "choices": [
+      "To warm the incoming water so that the sodium fluoride bed dissolves faster",
+      "To soften the make-up water before it reaches the sodium fluoride bed",
+      "To keep fluoride solution from flowing back into the drinking water supply",
+      "To keep the sodium fluoride bed from caking while the saturator sits idle"
+     ],
+     "correctIndex": 2,
+     "explanation": "Water enters at the bottom of the tank, which makes a cross-connection. The device protects the potable side; it does not heat, soften or loosen the bed.",
+     "objective": "chemicals-feeders"
+    },
+    {
+     "id": "ceu-fluoride-chemicals-feeders-c6",
+     "prompt": "What separates solution feeders from dry feeders?",
+     "choices": [
+      "Solution feeders use the acid form, and dry feeders use the salt forms of fluoride, in the same units",
+      "Dry feeders are rated in gallons per day, and solution feeders in pounds per day of chemical",
+      "Dry feeders add the solid straight into the main without dissolving it into a solution first",
+      "Solution feeders deliver a measured volume of solution, and dry feeders a set quantity of solid"
+     ],
+     "correctIndex": 3,
+     "explanation": "The WTP text defines the two types by what they meter: a volume of solution or a quantity of solid. Many dry-feed systems dissolve the solid before it is applied.",
+     "objective": "chemicals-feeders"
+    }
+   ]
+  },
+  {
+   "id": "feed-rate-math",
+   "title": "Feed-rate arithmetic",
+   "objectives": [
+    "Calculate the percent fluoride ion in a compound and pounds per day of a chemical from dose, flow, AFI and purity.",
+    "Calculate saturator solution gallons per day and a pump setting, allow for natural fluoride, and check feed against production."
+   ],
+   "lesson": "### The constants you need\n\nEvery calculation in this module uses a short list of constants, and each practice question in the course restates the ones it needs. Water weighs 8.34 pounds per gallon. For these dilute drinking-water calculations, 1 mg/L is treated as 1 ppm, and one million gallons of water weighs about 8.34 million pounds, which is why 1 mg/L is 8.34 pounds of substance per million gallons. A flow of one million gallons per day is written 1 MGD. There are 1,440 minutes in a day, 3,785 milliliters in a gallon and 454 grams in a pound.\n\nThree chemical constants come from the Spellman handbook. Sodium fluoride is about 45 percent fluoride ion, so its AFI is 0.45. Sodium silicofluoride is about 60.7 percent, AFI 0.607. Fluorosilicic acid is about 79 percent fluoride ion on a pure basis, AFI 0.792, and it is sold as a solution, often about 23 percent strength, weighing about 9.94 pounds per gallon. Treat these as typical values. Use the purity or strength stated for your product and the target the applicable authority sets. Target values in this module are practice inputs, not rules.\n\n### Percent fluoride ion in a compound\n\nThe AFI comes from the formula. Divide the weight of the fluoride in one formula unit by the weight of the whole formula unit. For sodium fluoride, NaF, use atomic weights of 22.99 for sodium and 19.00 for fluorine. The formula unit weighs 41.99, so the fluoride share is 19.00 divided by 41.99, or 45.2 percent. For sodium silicofluoride, Na2SiF6, the formula unit contains two sodium (45.98), one silicon (28.09) and six fluorine (114.00), for 188.07. The fluoride share is 114.00 divided by 188.07, or 60.6 percent (0.606), close to the 0.607 the handbook uses in its examples.\n\n### Pounds per day for a dry or liquid chemical\n\nThe feed-rate formula in the handbook, which does not apply to sodium fluoride fed from a saturator, is: pounds of chemical per day equals dose in mg/L times flow in MGD times 8.34, divided by the AFI times the purity. Think of it in two stages. The first stage, dose times flow times 8.34, is the weight of fluoride ion the water needs each day. The second stage divides by the AFI and the purity to convert that weight of fluoride ion into the weight of the real product you must feed.\n\n<figure><svg viewBox=\"0 0 360 230\" role=\"img\" aria-label=\"Steps from dose to pounds of product per day\"><title>Dose to pounds of product</title><rect x=\"10\" y=\"14\" width=\"150\" height=\"36\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"37\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">1. Dose, mg/L</text>\n<rect x=\"200\" y=\"14\" width=\"150\" height=\"36\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"208\" y=\"37\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">2. x flow, MGD</text>\n<rect x=\"10\" y=\"74\" width=\"150\" height=\"36\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"97\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">3. x 8.34 lb/gal</text>\n<rect x=\"200\" y=\"74\" width=\"150\" height=\"36\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/><text x=\"208\" y=\"97\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">lb fluoride ion/day</text>\n<rect x=\"10\" y=\"134\" width=\"150\" height=\"36\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"157\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">4. / AFI</text>\n<rect x=\"200\" y=\"134\" width=\"150\" height=\"36\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"208\" y=\"157\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">5. / purity</text>\n<path d=\"M160 32 H200 M280 50 V74 M200 92 H160 M85 110 V134 M160 152 H200\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/>\n<text x=\"10\" y=\"196\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Result: lb of product per day.</text>\n<text x=\"10\" y=\"216\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">AFI = share of the product that is F ion.</text></svg><figcaption>Follow the boxes in order. The first three steps give the fluoride ion needed. Steps 4 and 5 scale up to the real product.</figcaption></figure>\n\n**Dose is the shortfall, not the target.** When natural fluoride is below the target, the dose to feed is the target minus the natural fluoride already in the water. At or above the target, no fluoride is added. A test reports the total, so the arithmetic subtracts what the source already supplies.\n\n### Worked example: the Ridgeback Plant\n\nRidgeback is a fictional plant treating 1.8 MGD. For this exercise the target is 0.9 mg/L, and the source water already carries 0.2 mg/L natural fluoride.\n\nStep 1. Dose to add: 0.9 minus 0.2 equals 0.7 mg/L.\n\nStep 2. Fluoride ion needed: 0.7 mg/L times 1.8 MGD times 8.34 lb/gal equals 10.5 pounds of fluoride ion per day.\n\nStep 3. For sodium silicofluoride with AFI 0.607 and purity 0.98: the denominator is 0.607 times 0.98, which is 0.595. So 10.508 (10.5 rounded) divided by 0.595 equals 17.7 pounds of chemical per day.\n\nStep 4. For 23 percent fluorosilicic acid with AFI 0.792: the denominator is 0.792 times 0.23, which is 0.182. So 10.508 divided by 0.18216 equals 57.7 pounds of acid per day. Divide by 9.94 lb/gal and the volume is 5.8 gallons per day.\n\nThe same fluoride-ion need leads to very different weights of product. That is the reason you cannot swap one chemical for another without recalculating.\n\n### Converting to a pump setting\n\nIf the required pump setting is in milliliters per minute, convert the calculated feed rate this way. Convert gallons per day to milliliters per minute by multiplying by 3,785 and dividing by 1,440. In the Ridgeback example, 5.8 gal/day (rounded) times 3,785 divided by 1,440 is about 15.2 mL/min. If a data sheet lists grams per minute, divide pounds per day by 1,440 and multiply by 454.\n\n### Saturator arithmetic\n\nA sodium fluoride saturator makes the arithmetic shorter, because the strength is fixed. The handbook derives it like this: solubility of about 4 grams per 100 milliliters equals 40,000 mg/L of sodium fluoride, and 45 percent of that is fluoride ion, so a saturated solution contains about 18,000 mg/L of fluoride ion.\n\n<figure><svg viewBox=\"0 0 360 200\" role=\"img\" aria-label=\"Chain from solubility to the fixed 18,000 milligrams per litre strength of a saturator\"><title>Saturator strength chain</title><rect x=\"10\" y=\"12\" width=\"340\" height=\"30\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"32\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">4 g NaF per 100 mL of water</text>\n<rect x=\"10\" y=\"58\" width=\"340\" height=\"30\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"78\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">= 40,000 mg NaF per litre</text>\n<rect x=\"10\" y=\"104\" width=\"340\" height=\"30\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"124\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">x 0.45 fluoride ion share of NaF</text>\n<rect x=\"10\" y=\"150\" width=\"340\" height=\"34\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"172\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">= 18,000 mg/L fluoride ion in solution</text>\n<path d=\"M180 42 V58 M180 88 V104 M180 134 V150\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/></svg><figcaption>Because solubility is nearly constant, the saturated solution has a nearly fixed strength, so no weighing is needed.</figcaption></figure>\n\nWith that constant, the volume of solution to feed per day equals the flow times the dose, divided by 18,000 mg/L. The units of the answer match the units of the flow. If the flow is in gallons per day, the answer is gallons per day.\n\nBack at Ridgeback, suppose the plant ran a saturator instead. Flow is 1,800,000 gpd and the dose to add is 0.7 mg/L. The solution feed is 1,800,000 times 0.7 divided by 18,000, which is 70 gallons per day. That converts to 70 times 3,785 divided by 1,440, or about 184 mL/min. This is the calculated initial setting for the exercise; the setting is then confirmed by measurement.\n\nA solution's fluoride concentration is 18,000 mg/L times the strength percent divided by 4 percent, the saturated strength.\n\n### Natural fluoride background and checking against production\n\nYou can run the same arithmetic backward to estimate what the plant delivered from its records. Add up the pounds of chemical used in a day, multiply by the AFI and purity to get pounds of fluoride ion, and divide by the day's water production in million pounds (MG times 8.34). The result is the calculated dose. Add the natural fluoride to get the expected total, then compare it with the measured result.\n\nAt Ridgeback, suppose a day's records show 30 pounds of silicofluoride fed while 1.8 MG was produced. The fluoride ion is 30 times 0.607 times 0.98, which is 17.8 pounds. Divide by 1.8 times 8.34, or 15.0 million pounds of water, and the dose is 1.19 mg/L. Adding the 0.2 natural gives an expected total near 1.4 mg/L against the exercise target of 0.9. That is far above target. The arithmetic does not say why. It tells you to check the feeder setting, the production figure and the lab test promptly, and to follow the facility procedure. Calculating the expected value is a safety check and a troubleshooting aid, and a significant gap between calculated and measured should be investigated.\n\n### Estimating before you calculate\n\nA quick estimate catches large errors before they reach the feeder. For any chemical, the weight of product per million gallons per mg/L of dose is fixed for a given chemical at a given purity or strength. Using Spellman's formula, about 19 pounds of sodium fluoride and about 46 pounds of 23 percent acid to add 1 ppm to a million gallons; the same method at typical purity gives about 14 pounds of sodium silicofluoride. Multiply the right figure by the dose and by the flow in MG and compare it with your full calculation. At Ridgeback the estimate for silicofluoride is 14 times 0.7 times 1.8, or about 17.6 pounds, close to the 17.7 pounds worked out above. If the two disagree by a lot, check the dose, flow units, AFI and product strength before assuming an arithmetic slip. These rule-of-thumb figures assume typical purity, so use them to check, not to replace, the certificate-based calculation.\n\n### Common slips\n\nUsing the target instead of the shortfall is a common slip, because it ignores natural fluoride. Another is forgetting to divide by AFI and purity, which yields pounds of fluoride ion rather than pounds of product. Mixing MGD with gpd moves the decimal six places. And using a purity that belongs to a different chemical, for example the acid's strength with the dry chemical's AFI, gives answers that look reasonable and are wrong. State units at every step and keep one calculation per line.",
+   "evidence": "### Fictional scenario: Ridgeback Plant\n\nRidgeback is a fictional plant treating 1.8 MGD. For this exercise the target is 0.9 mg/L and the source carries 0.2 mg/L natural fluoride. Operator Mei Okafor must set up a new feeder and compare the plant's records with its expected result. Her supervisor, Tom Reyes, wants every step shown.",
+   "assignment": "Using 8.34 lb/gal, AFI 0.607 and purity 0.98, calculate pounds per day of sodium silicofluoride for 1.8 MGD with a dose to add of 0.7 mg/L. Then convert a saturator at 18,000 mg/L to gallons per day and mL/min for the same job. Show each step with units and say which chemical you would compare against production records.",
+   "rubric": [
+    "Subtracts natural fluoride to find the dose to add.",
+    "Shows the pounds per day steps with AFI and purity.",
+    "Converts the saturator volume to gpd and mL/min with units.",
+    "Explains what a gap between calculated and measured dose would mean."
+   ],
+   "facilitatorGuide": "Insist that every line carries units. Ask learners why the dose is the shortfall and not the target. Check that they divide by AFI times purity, and that they use gpd with gpd, not MGD. Strong answers state the constants they used. Watch for answers that confuse pounds of fluoride ion with pounds of product.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and rewrite the feed-rate formula in your own words with units."
+    },
+    {
+     "kind": "reading",
+     "minutes": 10,
+     "instruction": "Read the feeder data sheet or calibration record at your plant, or a sample one from your instructor."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work the Ridgeback example without looking, then compare each step."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 10,
+     "instruction": "Complete the module assignment against the rubric."
+    }
+   ],
+   "sourceIds": [
+    "spellman-hb",
+    "spellman-wf"
+   ],
+   "checks": [
+    {
+     "id": "ceu-fluoride-feed-rate-math-c1",
+     "prompt": "Use atomic weights Na 22.99 and F 19.00. What percent of sodium fluoride (NaF) by weight is fluoride ion?",
+     "choices": [
+      "45.2 percent",
+      "54.8 percent",
+      "82.6 percent",
+      "19.0 percent"
+     ],
+     "correctIndex": 0,
+     "explanation": "The formula unit weighs 41.99, so 19.00 / 41.99 = 45.2 percent. 54.8 is the sodium share, 82.6 divides by sodium alone, and 19.0 uses the atomic weight as a percent.",
+     "objective": "feed-rate-math"
+    },
+    {
+     "id": "ceu-fluoride-feed-rate-math-c2",
+     "prompt": "Why does the feed-rate formula divide by the AFI times the purity?",
+     "choices": [
+      "To change the flow from MGD to gpd before the dose is multiplied in as a factor",
+      "To convert the weight of fluoride ion needed into the weight of real product",
+      "To subtract the natural fluoride that the source water already carries into the plant",
+      "To turn pounds per day into milliliters per minute for setting the metering pump"
+     ],
+     "correctIndex": 1,
+     "explanation": "Dose times flow times 8.34 gives pounds of fluoride ion. Dividing by AFI and purity scales that up to the pounds of product to feed.",
+     "objective": "feed-rate-math"
+    },
+    {
+     "id": "ceu-fluoride-feed-rate-math-c3",
+     "prompt": "A plant treats 2.0 MGD and must add a dose of 0.8 mg/L. Use 8.34 lb/gal. How many pounds of fluoride ion are needed per day?",
+     "choices": [
+      "1.6 lb/day",
+      "6.7 lb/day",
+      "13.3 lb/day",
+      "20.9 lb/day"
+     ],
+     "correctIndex": 2,
+     "explanation": "0.8 x 2.0 x 8.34 = 13.3. 1.6 skips the 8.34, 6.7 skips the flow, and 20.9 divides by the dose.",
+     "objective": "feed-rate-math"
+    },
+    {
+     "id": "ceu-fluoride-feed-rate-math-c4",
+     "prompt": "A plant treats 3.0 MGD and must add 0.9 mg/L using sodium silicofluoride (AFI 0.607, purity 0.98). Use 8.34 lb/gal. How many pounds of chemical per day?",
+     "choices": [
+      "37.1 lb/day",
+      "22.5 lb/day",
+      "13.4 lb/day",
+      "37.9 lb/day"
+     ],
+     "correctIndex": 3,
+     "explanation": "0.9 x 3.0 x 8.34 = 22.5 lb/day of fluoride ion (22.518 unrounded); divided by (0.607 x 0.98) = 37.9. 37.1 forgets the purity, 22.5 forgets both, and 13.4 multiplies instead of dividing.",
+     "objective": "feed-rate-math"
+    },
+    {
+     "id": "ceu-fluoride-feed-rate-math-c5",
+     "prompt": "A plant treats 1.5 MGD. The target total is 0.9 mg/L and the source has 0.3 mg/L natural fluoride. Use 8.34 lb/gal. How many pounds of fluoride ion per day must be added?",
+     "choices": [
+      "7.5 lb/day",
+      "11.3 lb/day",
+      "15.0 lb/day",
+      "3.8 lb/day"
+     ],
+     "correctIndex": 0,
+     "explanation": "Dose to add is 0.9 - 0.3 = 0.6 mg/L, so 0.6 x 1.5 x 8.34 = 7.5. 11.3 ignores natural fluoride, 15.0 adds it, and 3.8 uses only the natural level.",
+     "objective": "feed-rate-math"
+    },
+    {
+     "id": "ceu-fluoride-feed-rate-math-c6",
+     "prompt": "Sodium fluoride dissolves to about 4.0 g per 100 mL, and 45 percent of it is fluoride ion. What is the fluoride ion concentration of a saturated solution?",
+     "choices": [
+      "40,000 mg/L",
+      "18,000 mg/L",
+      "22,000 mg/L",
+      "1,800 mg/L"
+     ],
+     "correctIndex": 1,
+     "explanation": "4.0 g per 100 mL is 40,000 mg/L of sodium fluoride; x 0.45 = 18,000 mg/L of fluoride ion. 40,000 forgets the AFI, 22,000 uses the sodium share, and 1,800 slips a decimal.",
+     "objective": "feed-rate-math"
+    }
+   ]
+  },
+  {
+   "id": "monitoring-safety",
+   "title": "Monitoring, safety and troubleshooting",
+   "objectives": [
+    "Describe the purpose of ion-selective electrode and colorimetric analysis, calibration, daily checks and records.",
+    "Explain overfeed causes, the purpose of the response and notification, and why chemical handling safety measures exist, at recognition level."
+   ],
+   "lesson": "### Why fluoride is measured\n\nControlling the fluoride level is the central task of the fluoridation process. If the level drifts low, the community loses benefit. If it stays high, the risk is to the teeth and, in a large error, to health. Because the level cannot be confirmed without measurement, the plant relies on two kinds of evidence that should agree: arithmetic from what was fed, and measurement from the laboratory or an online meter.\n\nTwo facts shape every test. First, the routine result is a total fluoride concentration and does not report natural and added parts separately, so you compare it with your expected total, natural plus calculated dose. Second, the amounts involved are small, so the method must be precise and the person running it careful.\n\n### Analysis methods at purpose level\n\nTwo methods are described in the standard analytical references. The ion-selective electrode method uses an electrode with a lanthanum fluoride crystal that develops an electrical potential that varies with the logarithm of fluoride ion activity. It is read on a meter, much like a pH probe. The EPA method in the Water Quality Control Handbook notes that aluminum, iron and silicon form complexes with fluoride and disturb the reading. A pH 5.0 buffer containing a chelating agent is added, and the chelating agent preferentially binds the interfering metals.\n\nThe colorimetric method relies on a color reaction. Fluoride ion reacts with a zirconium dye compound and bleaches the red color in proportion to the amount present. The color is compared with standards. Interferences can matter in this method. Your plant's approved method, listed by your authority, decides which one produces the records you keep.\n\n### Calibration and daily checks\n\nBoth methods depend on comparison with known standards. A series of working standards is diluted from a stock solution. For an electrometer, the readings of the standards build a calibration curve against which a sample is read; a direct-reading selective-ion meter is calibrated as its manufacturer directs. A meter that has not been calibrated, or standards that have gone stale or been mislabeled, produce numbers that look convincing and can be wrong. Calibrate at the interval the method and your procedure call for, and log it.\n\nFeeders need calibration too. A metering pump's output is checked by timing the volume that leaves the calibration column at several settings and comparing with the setting and the pump's stated output. A feeder that is out of calibration is a built-in error in any dose inferred from its setting.\n\nA simple daily routine ties these together. Read the production meter. Read the day tank level or the saturator meter. Compare chemical used with water treated and work out the calculated dose. Add the natural fluoride and compare the result with the test. Look at the feeder, the lines, the vent and the day tank for leaks or anything unusual. Write it all down.\n\n<figure><svg viewBox=\"0 0 360 220\" role=\"img\" aria-label=\"Compare expected fluoride with the measured result and decide whether to investigate\"><title>Expected versus measured</title><rect x=\"10\" y=\"10\" width=\"150\" height=\"46\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"18\" y=\"30\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Expected</text><text x=\"18\" y=\"46\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">feed + natural</text>\n<rect x=\"200\" y=\"10\" width=\"150\" height=\"46\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"208\" y=\"30\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Measured</text><text x=\"208\" y=\"46\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">lab or meter</text>\n<path d=\"M85 56 V80 H180 M275 56 V80 H180 M180 80 V96\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/>\n<polygon points=\"180,96 250,126 180,156 110,126\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"150\" y=\"130\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Close?</text>\n<path d=\"M110 126 H60 V176\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/><text x=\"76\" y=\"118\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">yes</text>\n<path d=\"M250 126 H300 V176\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/><text x=\"262\" y=\"118\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">no</text>\n<rect x=\"10\" y=\"176\" width=\"100\" height=\"34\" fill=\"#eef1f4\" stroke=\"#1d2d40\"/><text x=\"16\" y=\"197\" fill=\"#1d2d40\" font-family=\"sans-serif\" font-size=\"12\">Record it</text>\n<rect x=\"190\" y=\"176\" width=\"160\" height=\"34\" fill=\"#2f6db2\" stroke=\"#1d2d40\"/><text x=\"196\" y=\"197\" fill=\"#ffffff\" font-family=\"sans-serif\" font-size=\"12\">Recheck, report</text></svg><figcaption>A gap between expected and measured calls for investigation under the facility procedure.</figcaption></figure>\n\n### Overfeed: causes, response and notification\n\nAn overfeed is feeding more fluoride than the intended dose calls for. An overfeed should be investigated at once, because a large one can become serious. Causes include a pump set too high, a calibration or arithmetic error, solution made at the wrong strength, and siphoning of solution through an idle pump. A large day tank increases the amount that could be released in such an event.\n\nThe response is described here by purpose only. Your facility has a written procedure, and it governs. Its purposes are to stop adding fluoride as soon as an overfeed is suspected, to prevent affected water from going on to customers where that is possible, and to tell the right people quickly. Notification follows the applicable rule and the plant's chain of command. The facility's response plan and the applicable rule decide who is notified and what is announced to the public. Prompt, factual reporting is part of the response, and so is writing down what happened and when.\n\n### Preventing overfeed by design\n\nGood design makes an overfeed hard to cause. The training manual says a fluoridation system should include ways to prevent overfeeding and backsiphonage, and a way to monitor how much chemical is used. A continuous analyzer on the treated water, placed far enough downstream for adequate mixing, is recommended at larger plants. Alarms alert operators, and an alarm alone does not stop the feed unless an interlock is designed to act on it. A closed-loop system can raise the feed if an analyzer reads low, so a single instrument should not be trusted alone.\n\nUnderfeed matters too. Sustained underfeeding reduces the intended caries-prevention benefit, and the daily checks are there to catch it. Daily inspection, daily tests and the calculated-dose check are what keep both errors small. The manual's list of sanitary defects to prevent includes missing start-stop controls, poor feed control, no analyzer and weak backflow protection.\n\n### Records\n\nThe Ch. 13 log sheets record chemical fed and water treated, and the calculated-dose check needs both, along with the test results. Good records show the date, the chemical added, the amount fed, production and the lab result, as the log sheets do. The governing recordkeeping procedure says what else is required.\n\n### Chemical handling safety, at recognition and purpose\n\nThis lesson does not give procedures, because a written program and training from your facility do that. It does give the reasons behind the program.\n\nStorage and equipment follow from the same reasons. Liquid acid is stored in tanks and vented as the chemical documentation and facility design require. Leaks should be reported and repaired under the facility leak procedure, because hydrofluosilicic acid is highly corrosive. When equipment is taken out of service, it is cleaned as the shutdown procedure directs. Operators can be hurt opening a line that was not flushed.\n\nThe dry chemicals make dust, and dust inhalation is one of the major causes of overexposure, so the facility program specifies the respirator, coveralls and gloves to use while filling hoppers or cleaning up. The liquid acid can burn skin, sometimes with a delayed effect, and its fumes are harmful. Protective equipment and emergency washing go with the job, and their specifications come from the safety data sheet and the facility program. Symptoms of fluoride poisoning include vomiting, stomach cramps, diarrhea, weakness and thirst, and inhaled fluoride can irritate the nose. Anyone with such signs needs medical help immediately under the facility emergency procedure. Dry bags are stored in a dry place, preferably off the floor. Only trained people handle these chemicals, and operators should read the safety data sheet before using any chemical.\n\n### Worked scenario: Harbor Ridge Water Plant\n\nHarbor Ridge is a fictional plant. At the morning check, operator Lena Ortiz sees that the day tank dropped by about twice its usual daily amount while production was normal. She works out the calculated dose from the records and gets a figure well above what the plant targets. The morning lab test, run on a calibrated electrode meter, is also above the expected total.\n\nLena does not wait for a second opinion before acting on her facility's procedure. She stops the feed, tells her supervisor, and writes down the day tank readings, the pump setting and the test result. The supervisor follows the written notification steps. Lena then checks the likely causes in turn. The pump setting turns out to match the sheet. The anti-siphon valve is found stuck partly open, a plausible cause, which removes a safeguard against siphoning through the idle pump; the injection height is then checked against the design.\n\nThe valve is replaced under the plant's work-order process, the feeder is recalibrated and checked, and the supervisor reviews the check sheet so that the day tank trend is noticed sooner. Lena's notes show both measures, calculated and measured, pointed the same way, which is what made the problem clear.\n\n### Key points to carry forward\n\nExpected and measured values should agree within the facility's check limits, and a larger gap calls for investigation under your procedure. Calibrate both instruments and feeders. Know the causes of overfeed so that you check them in a sensible order. Notification is a chain, not a private decision. Records are the evidence. And the chemical room earns respect because the chemicals are concentrated, even though the finished water is dilute.",
+   "evidence": "### Fictional scenario: Harbor Ridge Water Plant\n\nHarbor Ridge is a fictional plant. At the morning check, operator Lena Ortiz notes that the day tank fell by about twice its usual amount while production was normal. Her calculated dose and the morning lab test are both above the expected total. Her supervisor is Paul Nguyen.",
+   "assignment": "Write a short incident note for Paul Nguyen that lists what Lena saw, the likely causes in the order you would check them, why calculated and measured values both matter, and who must be told under the facility procedure. Do not invent emergency steps; refer to the facility procedure.",
+   "rubric": [
+    "Lists observations with dates, values and units.",
+    "Names plausible overfeed causes in a sensible order.",
+    "Explains why records and calibration matter.",
+    "Refers to the facility procedure and the notification chain instead of inventing steps."
+   ],
+   "facilitatorGuide": "Ask learners to separate what the records show from what they assume. Check that the response is described by purpose and routed through the facility procedure. Watch for answers that decide on public notice themselves, and for answers that skip the comparison of calculated and measured values.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and list three overfeed causes and the purpose of each protective measure."
+    },
+    {
+     "kind": "reading",
+     "minutes": 10,
+     "instruction": "Read your facility's fluoride procedure and note who is notified in an overfeed."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Harbor Ridge scenario and order the checks."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 10,
+     "instruction": "Complete the module assignment, then begin the final assessment."
+    }
+   ],
+   "sourceIds": [
+    "spellman-hb",
+    "wtp2",
+    "wqc"
+   ],
+   "checks": [
+    {
+     "id": "ceu-fluoride-monitoring-safety-c1",
+     "prompt": "Which fluoride analysis method uses an electrode with a lanthanum fluoride crystal?",
+     "choices": [
+      "The zirconium dye colorimetric method",
+      "A silver nitrate titration",
+      "The ion-selective electrode method",
+      "A turbidimeter reading"
+     ],
+     "correctIndex": 2,
+     "explanation": "The crystal electrode develops a potential that varies with the logarithm of fluoride ion activity. Dye methods use color, and the other choices are not this electrode method.",
+     "objective": "monitoring-safety"
+    },
+    {
+     "id": "ceu-fluoride-monitoring-safety-c2",
+     "prompt": "In the colorimetric fluoride method, what happens as the fluoride concentration rises?",
+     "choices": [
+      "A blue color forms in proportion to the amount of fluoride",
+      "The red color grows more intense as more fluoride is present",
+      "A precipitate forms that is collected, dried and weighed",
+      "The red dye color fades in proportion to the fluoride"
+     ],
+     "correctIndex": 3,
+     "explanation": "Fluoride reacts with the zirconium-dye complex and bleaches its red color, so less color means more fluoride. The other results are not part of the method.",
+     "objective": "monitoring-safety"
+    },
+    {
+     "id": "ceu-fluoride-monitoring-safety-c3",
+     "prompt": "Why is a meter calibrated with standards before samples are read?",
+     "choices": [
+      "Readings of known standards build the curve used to read the sample",
+      "Standards cool the electrode so that the probe reaches a stable temperature",
+      "Calibration removes the natural fluoride from the sample before it is read",
+      "Calibration replaces the need for the daily test records and log sheets"
+     ],
+     "correctIndex": 0,
+     "explanation": "The standards are the reference for every sample result. They do not cool the probe, alter the sample or replace records.",
+     "objective": "monitoring-safety"
+    },
+    {
+     "id": "ceu-fluoride-monitoring-safety-c4",
+     "prompt": "Which is a common cause of fluoride overfeed?",
+     "choices": [
+      "Softening the make-up water that feeds the saturator bed",
+      "A siphon moving solution through an idle pump",
+      "A metering pump that is set near the middle of its range",
+      "A day tank that is sized to hold about one day of chemical"
+     ],
+     "correctIndex": 1,
+     "explanation": "Siphoning feeds chemical with no pump control, and a wrong setting or calculation feeds at the wrong rate. Softening, mid-range sizing and day tanks are protective practices.",
+     "objective": "monitoring-safety"
+    },
+    {
+     "id": "ceu-fluoride-monitoring-safety-c5",
+     "prompt": "At the purpose level, what is the aim of the response to a suspected overfeed?",
+     "choices": [
+      "Wait for the next scheduled lab test before taking any action on the feed rate",
+      "Raise the chlorine dose so that it neutralizes the extra fluoride in the water at the plant",
+      "Stop the feed, limit affected water reaching customers, and notify the right people",
+      "Fix the feeder quietly and report what happened at the end of the month"
+     ],
+     "correctIndex": 2,
+     "explanation": "The purposes are to stop the addition, limit exposure and notify promptly. Waiting, adding chlorine and delayed reporting do none of these.",
+     "objective": "monitoring-safety"
+    },
+    {
+     "id": "ceu-fluoride-monitoring-safety-c6",
+     "prompt": "Which records support a calculated-dose check?",
+     "choices": [
+      "Chemical fed each day, the pump brand, and the age of the day tank in service",
+      "Water treated each day, the outdoor weather, and the length of the operator's shift",
+      "Test results, the chemical price, and the date of the last delivery to the plant",
+      "Chemical fed each day, water treated each day, and test results"
+     ],
+     "correctIndex": 3,
+     "explanation": "Chemical fed and water treated support the calculated dose; the test result supports the comparison. The other items do not allow a dose to be computed or compared.",
+     "objective": "monitoring-safety"
+    }
+   ]
+  }
+ ],
+ "finalAssessment": [
+  {
+   "id": "ceu-fluoride-what-and-why-f1",
+   "prompt": "Both sources are below the common target. Plant B has more natural fluoride than Plant A. How does the fluoride each must add per gallon compare?",
+   "choices": [
+    "Plant B adds a smaller amount because part of the total is already there",
+    "Both plants add the same amount because they share the same target level",
+    "Plant B adds a larger amount to make up for the natural fluoride present",
+    "Plant A adds a smaller amount because its source water is cleaner overall"
+   ],
+   "correctIndex": 0,
+   "explanation": "Finished water is natural plus added, so the feeder supplies the shortfall. Matching feeds ignores background, and adding more at Plant B overshoots the target.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-f2",
+   "prompt": "Why did older guidance tie the recommended level to local climate?",
+   "choices": [
+    "Fluoride dissolves faster in warm water, so less has to be fed in summer",
+    "People drink more water in hot weather, so daily intake rises",
+    "Warm weather speeds up tooth decay, so a higher level is needed there",
+    "Feeders deliver less chemical in the heat, so the target is raised to offset it"
+   ],
+   "correctIndex": 1,
+   "explanation": "The handbook's older table was based on air temperature because intake of water changes with it. Dissolving speed, decay rate and feeder output were not the reason.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-f3",
+   "prompt": "How does fluoride help prevent tooth decay?",
+   "choices": [
+    "It sterilizes the mouth so that bacterial acids no longer form on the teeth",
+    "It coats the surface of the teeth in a layer that blocks sugar from reaching them",
+    "It makes enamel more resistant to acids and helps rebuild weakened enamel",
+    "It neutralizes acids in the stomach before they can reach the mouth and teeth"
+   ],
+   "correctIndex": 2,
+   "explanation": "Decay comes from acids made by bacteria. Fluoride strengthens enamel against them; it does not sterilize, coat or act on stomach acid.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-f4",
+   "prompt": "A well's natural fluoride is above what the authority allows. Which response fits?",
+   "choices": [
+    "Feed more of a fluoride chemical so the extra amount dilutes the natural level",
+    "Add chlorine at the intake so the extra fluoride becomes tied up and harmless",
+    "Leave the supply as it is, since natural fluoride does not count toward limits",
+    "Use another source, blend, or add treatment that removes fluoride"
+   ],
+   "correctIndex": 3,
+   "explanation": "Spellman says an alternate supply or treatment to reduce fluoride is needed. Feeding more chemical adds fluoride, and chlorine does not remove it.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-f5",
+   "prompt": "Which statement is a fair concept-level summary of exposure?",
+   "choices": [
+    "Water at the target is dilute, while concentrated plant chemicals can cause acute harm",
+    "Tap water carries more risk than the stored chemical because more people drink it daily",
+    "Chronic and acute exposure mean the same thing and differ just in the route taken",
+    "Acute poisoning is a routine event that most operators see during a career"
+   ],
+   "correctIndex": 0,
+   "explanation": "Acute exposure is short-term and chronic exposure is repeated or long-term. Finished water at the target is dilute; exposure to concentrated chemical can cause acute harm, and the risk depends on dose and route.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-f1",
+   "prompt": "Hard make-up water can cause a problem in a saturator. What happens?",
+   "choices": [
+    "The solution grows weaker than the saturated strength because the bed erodes faster",
+    "Calcium and magnesium form poorly soluble fluorides that clog the system",
+    "The bed dissolves quickly and the saturator tank runs dry well before the next fill",
+    "The metering pump absorbs fluoride from the solution and loses its prime over time"
+   ],
+   "correctIndex": 1,
+   "explanation": "Calcium and magnesium fluorides are poorly soluble, so they can deposit and plug the bed, pump and injection point. The other choices describe effects the sources do not support.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-f2",
+   "prompt": "Where should a continuous fluoride analyzer sit on a larger plant?",
+   "choices": [
+    "At the raw water intake, before any chemical is added",
+    "On the backwash line, where the filter discharges its spent water",
+    "On the treated water line, downstream of feed for mixing",
+    "Inside the chemical storage room, close to the bags"
+   ],
+   "correctIndex": 2,
+   "explanation": "The Ch. 13 text places the analyzer in the treated water line, downstream far enough that adequate mixing is assured. The other locations do not measure finished water.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-f3",
+   "prompt": "What is a day tank for?",
+   "choices": [
+    "It stores about a month of chemical in one place close to the feeder for convenience",
+    "It dilutes strong acid down to a safe working strength before the acid is fed",
+    "It softens the saturator make-up water ahead of the sodium fluoride bed in the tank",
+    "It holds about a day of chemical solution and lets use be checked against production"
+   ],
+   "correctIndex": 3,
+   "explanation": "A day tank holds about one day of chemical. Bulk storage, dilution and softening are different equipment and purposes.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-f4",
+   "prompt": "Why does fluorosilicic acid need extra care in handling and storage?",
+   "choices": [
+    "It is corrosive, can burn skin with a delay, and may hold traces of hydrofluoric acid",
+    "Its fumes are heavier than air and pool at floor level, as chlorine fumes do in a room",
+    "It freezes at normal room temperature and the ice cracks the chemical feed lines in the plant",
+    "It is a mild acid, so spills are easy to clean up with plain water from a hose or bucket"
+   ],
+   "correctIndex": 0,
+   "explanation": "The acid is corrosive, can cause a delayed burn, and can contain hydrofluoric acid. A freezing point near room temperature and mild acidity are not true.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-f5",
+   "prompt": "How do volumetric and gravimetric dry feeders differ?",
+   "choices": [
+    "Volumetric feeders deliver a set weight per time, and gravimetric feeders a set volume per time",
+    "Volumetric feeders deliver a set volume per time, and gravimetric feeders a set weight per time",
+    "Volumetric feeders handle liquid chemicals, and gravimetric feeders handle dry solid chemicals",
+    "Gravimetric feeders work without a hopper because they weigh the chemical in a pan below"
+   ],
+   "correctIndex": 1,
+   "explanation": "The names say what is controlled. Swapping them reverses the meaning, both types feed solids, and both use a hopper.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-f1",
+   "prompt": "A saturator plant treats 2.5 MGD (2,500,000 gpd) and must add 0.8 mg/L. The solution holds 18,000 mg/L fluoride ion. How many gallons of solution per day?",
+   "choices": [
+    "50 gpd",
+    "927 gpd",
+    "111 gpd",
+    "1,111 gpd"
+   ],
+   "correctIndex": 2,
+   "explanation": "2,500,000 x 0.8 / 18,000 = 111 gpd. 50 divides by 40,000, 927 adds an 8.34 factor that belongs to the pounds formula, and 1,111 slips a decimal.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-f2",
+   "prompt": "A metering pump must deliver 120 gal/day. Use 3,785 mL/gal and 1,440 min/day. What is the setting in mL/min?",
+   "choices": [
+    "45.7 mL/min",
+    "454,200 mL/min",
+    "7,570 mL/min",
+    "315 mL/min"
+   ],
+   "correctIndex": 3,
+   "explanation": "120 x 3,785 / 1,440 = 315. 45.7 inverts the factors, 454,200 mL per day skips the time conversion, and 7,570 treats the day as 60 minutes.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-f3",
+   "prompt": "A plant fed 41 lb of sodium silicofluoride (AFI 0.607, purity 0.98) while treating 2.6 MG. The source has 0.2 mg/L natural fluoride. Use 8.34 lb/gal. What is the expected total fluoride?",
+   "choices": [
+    "1.32 mg/L",
+    "1.12 mg/L",
+    "2.09 mg/L",
+    "0.92 mg/L"
+   ],
+   "correctIndex": 0,
+   "explanation": "41 x 0.607 x 0.98 = 24.4 lb of fluoride ion, divided by (2.6 MG x 8.34 lb/gal, which is 21.7 million lb of water) = 1.12 mg/L added; adding the 0.2 natural gives 1.32. 1.12 forgets the background, 2.09 skips AFI and purity, and 0.92 subtracts.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-f4",
+   "prompt": "A plant treats 1.2 MGD and must add 0.8 mg/L with 23 percent fluorosilicic acid (AFI 0.792, strength 0.23, weighing 9.94 lb/gal). Use 8.34 lb/gal for water. How many gallons of acid per day?",
+   "choices": [
+    "44.0 gal/day",
+    "4.4 gal/day",
+    "1.0 gal/day",
+    "5.3 gal/day"
+   ],
+   "correctIndex": 1,
+   "explanation": "0.8 x 1.2 x 8.34 / (0.792 x 0.23) = 44.0 lb/day, and 44.0 / 9.94 = 4.4 gal/day (the 8.34 lb/gal converts MG of water to pounds). 44.0 leaves the answer as pounds, not gallons, 1.0 forgets the strength, and 5.3 divides by the weight of water.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-f5",
+   "prompt": "8.0 lb of sodium fluoride are dissolved in 50 gal of water. Use 8.34 lb/gal. What is the percent strength by weight?",
+   "choices": [
+    "16 percent",
+    "0.19 percent",
+    "1.9 percent",
+    "4.0 percent"
+   ],
+   "correctIndex": 2,
+   "explanation": "50 x 8.34 = 417 lb of water, so the solution weighs 425 lb, and (8.0 / 425) x 100 = 1.9 percent. 16 divides by gallons, 0.19 slips a decimal, and 4.0 is the saturated strength, not this batch.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-f1",
+   "prompt": "Why compare expected fluoride with the measured result?",
+   "choices": [
+    "A gap means the lab test should be thrown out until it agrees with the calculation",
+    "The comparison replaces the need to calibrate the feeder and the meter",
+    "Differences are normal in daily work and need no follow-up from the operator",
+    "A gap calls for investigation of the feeder, the calculation or the sampling"
+   ],
+   "correctIndex": 3,
+   "explanation": "Spellman describes the calculated value as a safety check and a troubleshooting aid. Discarding results or skipping follow-up hides the problem.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-f2",
+   "prompt": "Which interference is named for the fluoride electrode method?",
+   "choices": [
+    "Aluminum, which ties up fluoride and disturbs the reading",
+    "Sodium, which raises the sample pH well above the working range",
+    "Dissolved oxygen, which coats the crystal and slows its response",
+    "Chlorine, which hardens the crystal and makes it read too low"
+   ],
+   "correctIndex": 0,
+   "explanation": "The EPA method names aluminum, iron and silicon, and a pH 5.0 buffer with a chelating agent reduces their interference. The other effects are invented.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-f3",
+   "prompt": "What governs public notification after an overfeed?",
+   "choices": [
+    "The operator who found the problem, since that person knows the details best",
+    "The facility's response plan and the applicable rule",
+    "The chemical supplier, since the product came from the supplier's plant",
+    "The laboratory technician, since that person ran the test that showed it"
+   ],
+   "correctIndex": 1,
+   "explanation": "Notification follows the response plan and the applicable rule. The operator reports promptly; the plan and rule say who announces.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-f4",
+   "prompt": "Why should bags of dry fluoride chemical be kept in a dry place, preferably off the floor?",
+   "choices": [
+    "So the powders stay warm enough to flow freely out of the bags",
+    "So the powders absorb moisture from the air and stay loose",
+    "So dry, raised storage keeps bags intact and the chemical usable",
+    "So the bags can share one ventilation system with other chemicals"
+   ],
+   "correctIndex": 2,
+   "explanation": "The text advises dry storage, preferably off the floor, and warns that bags stacked too high can fall and break open. Warmth and shared ventilation are not the reasons.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-f5",
+   "prompt": "At the fictional Harbor Ridge plant, the day tank fell by twice its usual amount while production was normal. Which reading fits?",
+   "choices": [
+    "The feeder is under-feeding, so the level in the main is probably low by now",
+    "The production meter is wrong, so the large tank drop can be set aside as noise",
+    "The tank was refilled early in the day, so no further action is needed",
+    "Chemical use is high for the water treated, a possible overfeed to check"
+   ],
+   "correctIndex": 3,
+   "explanation": "Twice the chemical for normal production is a possible overfeed to check. The other readings assume a cause without checking and delay action.",
+   "objective": "monitoring-safety"
+  }
+ ],
+ "alternateFinalAssessment": [
+  {
+   "id": "ceu-fluoride-what-and-why-a1",
+   "prompt": "Which effect do the handbooks link to fluoride above the optimum?",
+   "choices": [
+    "Mottled tooth enamel, which is dental fluorosis",
+    "Loss of taste and smell in the mouth and nose after long exposure",
+    "Yellowed gums from a gum disease in adults",
+    "Weaker teeth that decay faster than normal"
+   ],
+   "correctIndex": 0,
+   "explanation": "Excess fluoride while teeth form marks the enamel (dental fluorosis). The other choices are not linked to fluoride in these sources.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-a2",
+   "prompt": "Who decides whether a community fluoridates its water?",
+   "choices": [
+    "The chemical supplier, based on what product is available in the area",
+    "Local or state decision makers, with the operator carrying it out",
+    "The federal plant inspector, after reviewing the annual lab results",
+    "The operator on shift, based on the previous week's fluoride readings"
+   ],
+   "correctIndex": 1,
+   "explanation": "The sources treat it as a local or state decision. Suppliers and inspectors do not decide, and the operator runs the process once directed.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-a3",
+   "prompt": "Why is the goal a control range around the target and not a single point?",
+   "choices": [
+    "Feeders deliver the identical amount at each flow rate through the whole day",
+    "Natural fluoride stays fixed from day to day, so a single value is enough",
+    "Flow and feed vary, so the aim is to hold finished water within a band",
+    "Lab methods are too coarse to show a small change in the fluoride level"
+   ],
+   "correctIndex": 2,
+   "explanation": "Real systems drift, and the older table gave a band around the target for that reason. Options A and B assume constant feed or background; option D is not why the band exists.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-a4",
+   "prompt": "What does defluoridation mean?",
+   "choices": [
+    "Adding fluoride to a low-fluoride supply until it reaches the target level",
+    "Testing a water sample for fluoride with an electrode or colorimetric kit",
+    "Flushing the chemical feed lines after a new delivery of fluoride product",
+    "Reducing excess fluoride in water, for example by blending or treatment"
+   ],
+   "correctIndex": 3,
+   "explanation": "Defluoridation removes or lowers fluoride. Adding it is fluoridation, and testing and flushing are different tasks.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-what-and-why-a5",
+   "prompt": "A new operator sees the level drift below the control band for several days. What is the best response?",
+   "choices": [
+    "Low levels raise the incidence of decay, so a sustained drift below the band matters",
+    "Correct, because a lower level is the safe default for the community served",
+    "Correct, because the sole concern with fluoride is feeding too much of it",
+    "Wrong, because any drop below the target is a direct danger to the health of customers"
+   ],
+   "correctIndex": 0,
+   "explanation": "The sources tie low levels to more decay, so a sustained drift below the band is a problem to correct. Lower is not the safe default.",
+   "objective": "what-and-why"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-a1",
+   "prompt": "Why is crystalline sodium fluoride often preferred when handling is by hand?",
+   "choices": [
+    "It dissolves to a stronger solution",
+    "It makes less dust than fine powder",
+    "It costs less than powder",
+    "It has a higher fluoride share"
+   ],
+   "correctIndex": 1,
+   "explanation": "Dust is a major handling hazard with the dry chemicals, and crystals produce less of it. Crystals and powder have the same chemistry and solubility.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-a2",
+   "prompt": "What can injection-point height do to guard against siphoning?",
+   "choices": [
+    "Setting it below the tank level keeps the line primed and the feed steady",
+    "Height has no effect on siphoning once a metering pump has been installed",
+    "Setting it above the liquid level in the tank works against siphoning",
+    "A lower point lets gravity assist the pump and so reduces the risk of siphoning"
+   ],
+   "correctIndex": 2,
+   "explanation": "A higher point means gravity opposes flow from the tank. A lower point invites siphoning, and the pump does not remove the need for the layout.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-a3",
+   "prompt": "What can happen if a positive displacement pump runs against a closed valve?",
+   "choices": [
+    "Its output rises to match the higher pressure",
+    "It stops until the valve opens, then restarts unharmed",
+    "It switches to mid-range stroke on its own",
+    "It can damage itself or burst a line"
+   ],
+   "correctIndex": 3,
+   "explanation": "A positive displacement pump keeps pushing against a closed discharge, so pressure can rise enough to damage the pump or rupture the line. It does not self-adjust or idle safely.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-a4",
+   "prompt": "Why are metering pumps sized so normal feed sits near mid-range of stroke length and rate?",
+   "choices": [
+    "Accuracy is best near the middle of both settings",
+    "Mid-range removes the need to calibrate the pump against a calibration column",
+    "The diaphragm lasts longer when the pump runs near its full stroke length",
+    "Feed becomes proportional to flow at the lowest available setting on the dial"
+   ],
+   "correctIndex": 0,
+   "explanation": "Feeder accuracy is often best away from the ends of the adjustment range. Calibration is still needed, and the other claims are unsupported.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-chemicals-feeders-a5",
+   "prompt": "Why does a saturator remove the need to weigh chemical for each batch?",
+   "choices": [
+    "The feeder weighs the sodium fluoride bed automatically at each stroke of the pump",
+    "A saturated sodium fluoride solution has a strength nearly fixed by solubility",
+    "Sodium fluoride is bagged in pre-measured batches matched to each tank volume",
+    "The meter on the saturator inlet reads the pounds of chemical fed directly"
+   ],
+   "correctIndex": 1,
+   "explanation": "Solubility is nearly constant, so the solution strength is known. An inlet meter reads make-up water, and the solution feed is worked out from that volume and the known strength.",
+   "objective": "chemicals-feeders"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-a1",
+   "prompt": "Use atomic weights Na 22.99, Si 28.09 and F 19.00. What percent of sodium silicofluoride (Na2SiF6) by weight is fluoride ion?",
+   "choices": [
+    "10.1 percent",
+    "39.4 percent",
+    "60.6 percent",
+    "45.2 percent"
+   ],
+   "correctIndex": 2,
+   "explanation": "Six fluorines weigh 114.00 and the formula unit weighs 188.07, so 60.6 percent. 10.1 counts one fluorine, 39.4 is the rest of the formula unit, and 45.2 belongs to sodium fluoride.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-a2",
+   "prompt": "A plant treats 1.8 MGD and must add 1.1 mg/L with sodium silicofluoride (AFI 0.607, purity 0.985). Use 8.34 lb/gal. How many pounds of chemical per day?",
+   "choices": [
+    "27.2 lb/day",
+    "16.5 lb/day",
+    "9.9 lb/day",
+    "27.6 lb/day"
+   ],
+   "correctIndex": 3,
+   "explanation": "1.1 x 1.8 x 8.34 = 16.5 lb/day of fluoride ion; divided by (0.607 x 0.985) = 27.6. 27.2 forgets purity, 16.5 forgets both, and 9.9 multiplies by AFI and purity.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-a3",
+   "prompt": "A saturator plant treats 4.0 MGD (4,000,000 gpd) and must add 0.7 mg/L. The solution holds 18,000 mg/L fluoride ion. How many gallons of solution per day?",
+   "choices": [
+    "156 gpd",
+    "70 gpd",
+    "1,556 gpd",
+    "350 gpd"
+   ],
+   "correctIndex": 0,
+   "explanation": "4,000,000 x 0.7 / 18,000 = 156 gpd. 70 divides by 40,000, 1,556 slips a decimal, and 350 uses a made-up constant of 8,000.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-a4",
+   "prompt": "A calibration column shows 250 mL delivered in 2.0 min. Use 1,440 min/day and 3,785 mL/gal. What is the daily output in gallons?",
+   "choices": [
+    "95.1 gal/day",
+    "47.6 gal/day",
+    "1,440 gal/day",
+    "180,000 gal/day"
+   ],
+   "correctIndex": 1,
+   "explanation": "250 / 2.0 = 125 mL/min, x 1,440 = 180,000 mL/day, / 3,785 = 47.6 gal/day. 95.1 skips dividing by time, 1,440 is only the minutes per day, and 180,000 leaves the unit in milliliters.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-feed-rate-math-a5",
+   "prompt": "A saturator fed 14 gal of solution (18,000 mg/L fluoride ion) while 260,000 gal of water were treated. What dose was delivered?",
+   "choices": [
+    "9.7 mg/L",
+    "0.097 mg/L",
+    "0.97 mg/L",
+    "0.54 mg/L"
+   ],
+   "correctIndex": 2,
+   "explanation": "14 x 18,000 / 260,000 = 0.97. 9.7 and 0.097 slip a decimal, and 0.54 uses 10,000 mg/L instead of 18,000.",
+   "objective": "feed-rate-math"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-a1",
+   "prompt": "Why can an unattended closed-loop feed system that relies on one fluoride analyzer be risky?",
+   "choices": [
+    "A faulty high reading makes the system shut down for good, leaving the water unfluoridated",
+    "The analyzer reads correctly just while the feeder is idle",
+    "The system is unable to pace feed to plant flow without a person",
+    "A faulty low reading makes the system raise the feed and overfeed"
+   ],
+   "correctIndex": 3,
+   "explanation": "If the analyzer wrongly shows low fluoride, a closed-loop control raises the feed and can overfeed. The other statements describe effects that do not follow.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-a2",
+   "prompt": "Why is dust a major hazard with dry fluoride chemicals?",
+   "choices": [
+    "Handling and filling hoppers stir up fine powder that can be inhaled",
+    "Dry chemicals give off a toxic gas while they sit in storage bags",
+    "The powder burns bare skin on contact within a matter of seconds",
+    "Dust forms in the solution tank, not around the hopper where filling occurs"
+   ],
+   "correctIndex": 0,
+   "explanation": "Filling hoppers makes airborne powder. The other statements describe other chemicals or places.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-a3",
+   "prompt": "What does a calibration column check tell you about a metering pump?",
+   "choices": [
+    "The purity of the chemical in the tank as shown on the delivery certificate",
+    "How much solution it delivers at a setting compared with its stated output",
+    "The fluoride level in the main after the injection point mixes in the flow",
+    "The hardness of the make-up water used to feed the saturator bed"
+   ],
+   "correctIndex": 1,
+   "explanation": "The column measures volume over time at the pump. Purity, finished-water level and hardness need other checks.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-a4",
+   "prompt": "A fluoride meter was calibrated with mislabeled standards. What is the risk?",
+   "choices": [
+    "The meter will stop and show an error code until the standards are corrected",
+    "The sample will pick up fluoride from the standards and become contaminated",
+    "Readings that look reasonable but are wrong, so decisions rest on bad data",
+    "The result will carry an automatic warning flag showing it is unreliable"
+   ],
+   "correctIndex": 2,
+   "explanation": "A bad curve gives plausible wrong numbers. A meter may accept the calibration without flagging it.",
+   "objective": "monitoring-safety"
+  },
+  {
+   "id": "ceu-fluoride-monitoring-safety-a5",
+   "prompt": "What is a purpose of protective equipment and ventilation in the chemical room?",
+   "choices": [
+    "To keep the chemicals dry while they sit in the storage room",
+    "To raise the accuracy of the feeders during daily operation",
+    "To prevent siphoning of solution through an idle metering pump",
+    "To limit breathing dust or fumes and contact with skin or eyes"
+   ],
+   "correctIndex": 3,
+   "explanation": "The reasons are exposure control. Dryness, accuracy and siphon prevention are handled by storage, calibration and valves.",
+   "objective": "monitoring-safety"
+  }
+ ]
+}

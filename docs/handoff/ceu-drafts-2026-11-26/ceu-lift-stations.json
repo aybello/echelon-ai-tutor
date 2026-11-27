@@ -1,0 +1,1086 @@
+{
+ "key": "ceu-lift-stations",
+ "version": "2026-11-26.1",
+ "title": "Lift Stations for Wastewater Operators",
+ "shortTitle": "Lift Stations",
+ "stream": "drinking_water",
+ "audience": "Operators, trainees and supervisors who run or support wastewater lift stations and want a clear foundation before a collection system or pumping course.",
+ "prerequisites": "Basic arithmetic. Basic Math and Basic Hydraulics are helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+ "introduction": "Learn why wastewater is lifted and how a lift station fits into a gravity collection system. Then follow the pumps and drives, including pump curves, system head, speed control, valves and priming, with the arithmetic of wet well volume, fill and drain time and pump starts per hour. Next look at level control, alternation, alarms and telemetry, and how to estimate pump capacity and flow from drawdown and run time. Finish with rounds, records, grease, odour, corrosion, hydraulic and electrical clues, overflow prevention and recognition of confined space hazards. Each module has a worked scenario, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Your facility's procedures, manuals and the applicable rules govern, and confined space entry is covered at recognition and purpose level only.",
+ "plannedMinutes": 240,
+ "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+ "sources": [
+  {
+   "id": "wef-mop11",
+   "title": "Operation of Municipal Wastewater Treatment Plants, Manual of Practice No. 11, 6th edition (Water Environment Federation)",
+   "section": "Volume I, Chapter 8 Pumping of Wastewater and Sludge (system head, pump curves and affinity laws, NPSH, seals, liquids pumping, pumping stations, pumping-station maintenance); Chapter 5 Safety (confined spaces); Chapter 7 (telemetry); Chapter 10 (motor control center, motors, demand charges); sulfide control passage",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "spellman-ww1",
+   "title": "Spellman's Standard Handbook for Wastewater Operators, Volume I: Fundamental Level (Frank R. Spellman, CRC Press)",
+   "section": "Sections 10.3 (centrifugal and submersible pumps, pump control) and 11.4 (pumping stations and wet well calculations)",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "spellman-ww2",
+   "title": "Spellman's Standard Handbook for Wastewater Operators, Volume II: Intermediate Level (Frank R. Spellman, CRC Press)",
+   "section": "Section 5.2 (gravity and force main collection, pumping stations); safety chapter (confined space, engulfment in wet wells)",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "spellman-hb",
+   "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press)",
+   "section": "Section 9.3 (centrifugal pump features, priming, applications and float, bubbler, electrode and sonar controls)",
+   "jurisdiction": "US reference text; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "wi-adv-ww",
+   "title": "Wisconsin DNR Operator Certification: Advanced Wastewater Study Guide (February 2016)",
+   "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideAdvancedWastewater.pdf",
+   "section": "Section 22.1.1 (start-up of a positive displacement pump; used here only as a contrast with centrifugal pumps)",
+   "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+   "accessed": "2026-11-26"
+  },
+  {
+   "id": "ccohs-cs",
+   "title": "CCOHS OSH Answers: Confined Spaces, Introduction",
+   "url": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace_intro.html",
+   "section": "General introduction to confined spaces (pointer only; content not checked claim by claim)",
+   "jurisdiction": "Canada, federal occupational health and safety centre; verify your own jurisdiction's rules",
+   "accessed": "2026-11-26"
+  }
+ ],
+ "modules": [
+  {
+   "id": "why-lift-stations",
+   "title": "Why lift stations are used: gravity, pumping, station types and head",
+   "objectives": [
+    "Explain why wastewater is lifted and how a lift station, wet well and force main fit into a gravity collection system.",
+    "Compare wet pit and dry pit, submersible and nonsubmersible layouts, name the main station components, and work out total dynamic head and gauge-to-head conversions."
+   ],
+   "lesson": "### Why wastewater is lifted\n\nMost of a collection system works by gravity. Gravity sewers are laid on a slope so the wastewater runs downhill toward the plant without any energy being added. That stops being practical when the pipe gets too deep. A sewer that keeps dropping must be dug deeper and deeper, which becomes costly and hard to maintain. The WEF manual describes a lift station as the structure that moves wastewater from a lower elevation to a higher one so that gravity flow can start again. Spellman's handbook says the same thing in a different way: pump stations are placed at selected points so the flow can continue \"downhill\" to the plant.\n\nThe WEF manual makes the same point about pumping generally: pumping systems transfer fluid from one point or elevation to another, often so that it can then flow by gravity to the next step. The reason does not change: the station adds energy that the land did not supply.\n\n### Gravity, force mains and where the station fits\n\nThink of the system as alternating stretches. A gravity sewer runs downhill into the station's wet well, a collection space that stores wastewater briefly. Pumps lift it out through a discharge pipe called a force main. The force main is full and under pressure. It may rise to a high point, such as a manhole, where the flow discharges and gravity takes over again (Figure 1). Spellman notes that the discharge line from a pump station in a gravity system is considered a force main because its contents are under pressure. That is why work on a force main needs extra care.\n\n<figure><svg viewBox=\"0 0 360 176\" role=\"img\" aria-label=\"Side view of a sewer running downhill by gravity into a lift station, then a pressurised force main rising to a higher point where gravity flow starts again\"><title>Gravity sewer, lift station and force main</title><polyline points=\"10,50 120,105\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"3\"/><rect x=\"120\" y=\"100\" width=\"46\" height=\"55\" fill=\"#e8ecf1\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"122\" y=\"130\" width=\"42\" height=\"23\" fill=\"#2f6db2\" opacity=\"0.35\"/><polyline points=\"166,112 200,112 200,45 250,45\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\" stroke-dasharray=\"7 4\"/><polyline points=\"250,45 350,100\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"3\"/><text x=\"14\" y=\"38\" font-size=\"12\" fill=\"#1d2d40\">Gravity sewer</text><text x=\"212\" y=\"90\" font-size=\"12\" fill=\"#1d2d40\">Force main</text><text x=\"212\" y=\"105\" font-size=\"12\" fill=\"#1d2d40\">(under pressure)</text><text x=\"262\" y=\"30\" font-size=\"12\" fill=\"#1d2d40\">Gravity again</text><text x=\"100\" y=\"172\" font-size=\"12\" fill=\"#1d2d40\">Lift station</text></svg><figcaption>A lift station lets a gravity sewer continue from a lower point to a higher one. Solid lines flow by gravity; the dashed line is pumped under pressure.</figcaption></figure>\n\nA force main is also used when wastewater must travel a long way at the desired velocity without sloped lines. Whether a station sends flow a few hundred feet or several miles, the pump has to supply enough energy to overcome the lift and the friction in the pipe.\n\n### Station layouts you will meet\n\nThe WEF manual groups pumping stations by where the pumps sit relative to the liquid. Figure 2 shows the first two.\n\n<figure><svg viewBox=\"0 0 360 200\" role=\"img\" aria-label=\"Two station layouts side by side: a wet pit and dry pit station with pumps in a separate dry room, and a submersible station with the pumps inside the wet well\"><title>Wet pit and dry pit station compared with submersible station</title><rect x=\"10\" y=\"30\" width=\"70\" height=\"120\" fill=\"#e8ecf1\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"12\" y=\"95\" width=\"66\" height=\"53\" fill=\"#2f6db2\" opacity=\"0.35\"/><rect x=\"80\" y=\"30\" width=\"80\" height=\"120\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/><circle cx=\"120\" cy=\"125\" r=\"14\" fill=\"#c5ccd5\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"108\" y=\"50\" width=\"24\" height=\"22\" fill=\"#c5ccd5\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"120\" y1=\"72\" x2=\"120\" y2=\"111\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"80\" y1=\"125\" x2=\"106\" y2=\"125\" stroke=\"#1d2d40\" stroke-width=\"2\"/><polyline points=\"134,125 150,125 150,18 175,18\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\" stroke-dasharray=\"6 4\"/><text x=\"10\" y=\"20\" font-size=\"12\" fill=\"#1d2d40\">Wet well</text><text x=\"84\" y=\"168\" font-size=\"12\" fill=\"#1d2d40\">Dry well</text><text x=\"10\" y=\"185\" font-size=\"12\" fill=\"#1d2d40\">Wet pit and dry pit</text><rect x=\"215\" y=\"30\" width=\"80\" height=\"120\" fill=\"#e8ecf1\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"217\" y=\"85\" width=\"76\" height=\"63\" fill=\"#2f6db2\" opacity=\"0.35\"/><rect x=\"240\" y=\"108\" width=\"30\" height=\"30\" fill=\"#c5ccd5\" stroke=\"#1d2d40\" stroke-width=\"2\"/><polyline points=\"270,120 310,120 310,18 345,18\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\" stroke-dasharray=\"6 4\"/><text x=\"215\" y=\"20\" font-size=\"12\" fill=\"#1d2d40\">Wet well</text><text x=\"215\" y=\"185\" font-size=\"12\" fill=\"#1d2d40\">Submersible</text><text x=\"222\" y=\"170\" font-size=\"11\" fill=\"#1d2d40\">pump in the liquid</text></svg><figcaption>Left: the pump sits in a dry room beside the wet well. Right: the pump sits in the liquid. The dashed line is the discharge to the force main.</figcaption></figure>\n\n**Wet pit and dry pit.** Two separate spaces are used. One holds the wastewater. The other, the dry well, houses the pumps and valves. The manual says this layout suits large volumes of raw wastewater where flow must continue and solids could plug a long suction pipe. Construction costs may be higher and a below-grade dry well needs heating and ventilation, but the manual calls it the best arrangement for operation and maintenance because staff can see and touch the equipment. Spellman adds two reasons operators like it: pumps, motors and wiring stay out of the corrosive, sulfide-bearing atmosphere of the wet well, and workers can maintain equipment without entering the wet well.\n\n**Wet pit only, submersible pumps.** One pit holds both pumps and wastewater. The pump sits in the liquid, so no suction piping is needed. The WEF manual says this option is common worldwide and cost-effective. Spellman lists the advantages that the pump is less likely to lose its prime or develop suction-side air leaks, and that no dry well has to be built. The main disadvantage is access: major maintenance means draining the wet well or lifting the pump out (draining does not make the well safe to enter), and some work on sealed submersible motors is done by outside contractors.\n\n**Wet pit only, nonsubmersible pumps.** The pumps sit above the liquid and pull it through suction piping. The manual says this fits places where a shutdown is not immediately critical, such as a small package plant's raw wastewater lift station.\n\nSpellman also describes a **pneumatic station**, in which air pressure pushes wastewater out of a closed receiver. It appears less often, and the rest of this course concentrates on pumped stations.\n\n### What is inside a station\n\nAt recognition level, a typical station has these parts. The manual says pumping stations typically include at least two pumps and a basic wet well level control. One pump is regarded as the standby, though the controls usually take turns so both wear equally.\n\n- Wet well with a level control and, in some stations, a screen.\n- Isolation valves for each pump, so one pump can be taken out of service without shutting down the whole station.\n- A check valve on the discharge side of each pump.\n- Expansion joints where pumps connect to piping.\n- A flow meter on the force main to measure the total pumped flow.\n- Air-release valves at high points on the line and vacuum-relief valves where a draining line could develop very low pressure.\n- Drains, a flushing system, monitors and controls.\n\nPower arrives through its own equipment. In the WEF manual's description, a transformer feeds a motor control center (MCC), a set of steel cabinets holding motor starters and breakers. A starter with a built-in overload relay protects a motor when the load becomes too great, and an MCC can also house programmable logic controllers, adjustable-frequency drives and reduced-voltage starters. Standby power can come from an on-site generator or a separate utility line, with the switchover either manual or automatic. Some electricity tariffs include a demand charge based on peak metered demand over a set interval in the billing period, so the way several large pumps are started can affect cost. The lessons that follow look at pumps, valves and controls in turn.\n\n### Flow and head\n\nTwo numbers describe what a lift station does. Flow is how much wastewater moves, usually written in gallons per minute (gpm) or litres per second. Head is the energy the pump must add to each pound of water, written as feet of water (or metres). For water, one psi is about 2.31 feet of pressure head, so a discharge gauge reading of 30 psi corresponds to 69.3 feet.\n\nThe WEF manual breaks the head the pump must supply into parts. **Static head** is the difference in elevation between the liquid surface at the suction point and the discharge point; this holds when both ends are open to air at the same pressure. In a lift station the wet well level rises and falls, so static head is larger when the well is low and smaller when it is high. **Friction loss** is energy lost to resistance to flow along the pipe, which depends on roughness, diameter and flow. **Minor losses** occur wherever flow changes direction or speed, as in bends and valves; each is small but together they can be large. **Velocity head** is the energy of motion and is usually ignored because it is small beside the other terms. Add the pieces and you have the **total dynamic head** (TDH), also called total system head. For a fixed piping system, friction and minor losses are often approximated as increasing with the square of the flow, so doubling the flow can roughly quadruple them. Old or fouled pipe often has higher losses than new pipe.\n\n### Worked example: Pinecrest Hollow station\n\nPinecrest Hollow is a fictional small town. Its lift station discharges to a manhole 52 feet above the water level in the wet well at the moment the pump starts, and the pump shuts off when the water has been drawn down 6 feet. Treat the discharge level as constant. Friction and minor losses at normal flow total 13 feet, and velocity head is ignored.\n\nAt the start of a cycle the wet well is at its high level, so static head is 52 feet and TDH is 52 + 13 = 65 feet. By the end of the cycle the wet well is 6 feet lower, so static head is 58 feet and TDH is 71 feet. At the same reference flow, the system head is about 9 percent higher at the end of a cycle than at the start (6 divided by 65). For a fixed-speed pump, the actual flow falls a little as the well empties because the system curve moves, so a single capacity figure is only a reference value at one stated condition.\n\nA drawn-down wet well also explains the pressure gauge. If the discharge gauge reads 31 psi near the end of the cycle, the reading is 31 × 2.31 = 71.6 feet. That pressure head is not the pump's total head, so it cannot confirm the 71 feet calculated; use gauge readings to see trends, knowing that gauge height, losses and flow also matter. Operators use readings like these to spot change over time rather than to match a calculation to the foot.\n\n### Level range is a trade-off\n\nThe wet well is not just a tank. Holding it high lowers static head and so can reduce pumping energy, but the manual warns that holding flow in the collection system reduces reserve capacity for storms, lowers velocities so solids deposit, and gives wastewater more time to turn septic and produce odour. Holding it low leaves less margin above the pump's minimum submergence and suction limits. Any change to pumping levels should be investigated for these consequences before it is made.\n",
+   "evidence": "### Fictional scenario: Pinecrest Hollow station\n\nPinecrest Hollow is a fictional town with a small submersible lift station. A new supervisor, Rosa Delgado, asks the operator, Kenji Marsh, why the discharge gauge reading rises toward the end of each pumping cycle and why the town does not simply lay a deeper gravity sewer. Kenji has the layout sketch and a gauge log.",
+   "assignment": "Write a one-page note for Rosa Delgado. Explain in your own words why a lift station is used here instead of a deeper sewer, name four parts of a typical station, and use a static head of 52 ft, a 6 ft drawdown and 13 ft of losses to show how TDH changes during a cycle. State anything the numbers cannot tell you.",
+   "rubric": [
+    "Explains that a lift station restarts gravity flow by adding energy.",
+    "Names station parts correctly, including isolation and check valves.",
+    "Calculates TDH at the start and end of a cycle with units.",
+    "Names what could not be known from the scenario instead of guessing."
+   ],
+   "facilitatorGuide": "Ask learners to sketch the gravity-station-force main profile from memory. Check that static head is shown as larger when the well is low and that psi are converted with 2.31 ft per psi. Watch for learners who add velocity head, or who treat a force main as a gravity line.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and redraw the station layout with the force main and the wet well level."
+    },
+    {
+     "kind": "reading",
+     "minutes": 12,
+     "instruction": "Find your own station's layout or drawing and name each valve and the controls it shows."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Pinecrest Hollow scenario and calculate TDH at both ends of the cycle."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 8,
+     "instruction": "Write the one-page note for the supervisor."
+    }
+   ],
+   "sourceIds": [
+    "wef-mop11",
+    "spellman-ww1",
+    "spellman-ww2"
+   ],
+   "checks": [
+    {
+     "id": "ceu-lift-stations-why-lift-stations-c1",
+     "prompt": "What is the main reason a lift station is built in a collection system?",
+     "choices": [
+      "To treat the wastewater to a set quality before it reaches the plant inlet",
+      "To raise wastewater so gravity flow can restart at a higher point",
+      "To store wastewater in the sewer for days until the plant has spare capacity",
+      "To remove grit and rags from the flow so the plant needs no screening"
+     ],
+     "correctIndex": 1,
+     "explanation": "A lift station adds the energy the land did not supply so gravity flow can restart. It does not treat the flow, serve as long-term storage or replace screening; those choices confuse pumping with treatment.",
+     "objective": "why-lift-stations"
+    },
+    {
+     "id": "ceu-lift-stations-why-lift-stations-c2",
+     "prompt": "What is a force main?",
+     "choices": [
+      "The sloped sewer that brings wastewater by gravity into the wet well",
+      "The overflow pipe that spills extra flow to a creek when the well is full",
+      "The pressurised pipe that carries pumped wastewater from the station",
+      "The vent pipe that lets gas leave the wet well to the outside air"
+     ],
+     "correctIndex": 2,
+     "explanation": "A force main is the discharge line from the pumps and its contents are under pressure. The sloped inlet sewer is a gravity line, and overflow or vent pipes are not discharge lines.",
+     "objective": "why-lift-stations"
+    },
+    {
+     "id": "ceu-lift-stations-why-lift-stations-c3",
+     "prompt": "Which advantage is linked to a wet pit and dry pit station?",
+     "choices": [
+      "It costs less to build than a submersible station because one structure serves both uses",
+      "It removes the need for isolation and check valves because the pumps are above the liquid",
+      "Pumps and motors stay out of the wet well air and can be serviced from a dry room",
+      "It lets the pumps run dry for long periods without any damage to seals or bearings"
+     ],
+     "correctIndex": 2,
+     "explanation": "The dry well keeps equipment away from corrosive wet well air and lets staff see and touch it. It usually costs more to build, still needs valves, and does not protect pumps from running dry.",
+     "objective": "why-lift-stations"
+    },
+    {
+     "id": "ceu-lift-stations-why-lift-stations-c4",
+     "prompt": "A discharge gauge reads 18 psi. Using 1 psi = 2.31 ft of water, what head does the gauge reading represent?",
+     "choices": [
+      "7.8 ft",
+      "150.1 ft",
+      "20.3 ft",
+      "41.6 ft"
+     ],
+     "correctIndex": 3,
+     "explanation": "Head in feet = psi x 2.31 = 18 x 2.31 = 41.6 ft. Dividing by 2.31 gives 7.8, multiplying by 8.34 mixes in the weight of a gallon, and adding 2.31 treats the conversion as an offset.",
+     "objective": "why-lift-stations"
+    },
+    {
+     "id": "ceu-lift-stations-why-lift-stations-c5",
+     "prompt": "In a lift station with an open wet well that discharges to a fixed outlet open to air, what happens to static head as the wet well level falls during pumping?",
+     "choices": [
+      "It decreases because less liquid remains in the well to be lifted",
+      "It stays the same because the outlet height does not change during pumping",
+      "It becomes equal to the friction loss in the force main at that flow",
+      "It increases because the lift from the liquid surface to the outlet grows"
+     ],
+     "correctIndex": 3,
+     "explanation": "Static head is the height difference between the liquid surface at the suction and the discharge point. A lower surface means a larger difference. Volume in the well does not set static head, and friction is a separate term.",
+     "objective": "why-lift-stations"
+    },
+    {
+     "id": "ceu-lift-stations-why-lift-stations-c6",
+     "prompt": "A station has static head 47 ft, friction loss 9 ft and minor losses 4 ft. Velocity head is ignored. What is the total dynamic head?",
+     "choices": [
+      "56 ft",
+      "51 ft",
+      "60 ft",
+      "47 ft"
+     ],
+     "correctIndex": 2,
+     "explanation": "TDH = static + friction + minor = 47 + 9 + 4 = 60 ft. Leaving out minor losses gives 56, leaving out friction gives 51, and quoting static head alone gives 47.",
+     "objective": "why-lift-stations"
+    }
+   ]
+  },
+  {
+   "id": "pumps-and-drives",
+   "title": "Pumps and drives: curves, speed, valves, priming and wet well sizing",
+   "objectives": [
+    "Describe how a centrifugal pump, system curve and operating point work together, and why a low wet well moves the operating point.",
+    "Compare constant and variable speed, explain isolation valves, check valves and priming, and calculate wet well volume, fill and drain time and starts per hour."
+   ],
+   "lesson": "### The centrifugal pump in a lift station\n\nMost wastewater is pumped with kinetic pumps, and in practice that means centrifugal pumps; positive displacement pumps are mostly used for solids. Centrifugal pumps may stand vertically or horizontally, either in the fluid or in a dry pit. Spellman describes a centrifugal pump as having a single rotating element, an impeller turning inside a casing. The impeller is carried on a shaft held by bearings and connected to a drive, and seals limit leakage along the shaft. As the impeller spins it throws liquid outward and gives it speed; the casing then turns that speed into pressure. The pump does not push a fixed amount of liquid like a piston. The flow it delivers depends on the head it is working against, which is why the next two sections matter.\n\n### Nonclog impellers and rags\n\nPumps for raw wastewater use impellers designed to pass solids. The WEF manual says open nonclog impellers have large clearances and few blades, and that enclosed two-vane nonclog impellers handle most raw and settled wastewater of low solids concentration. The manual adds a warning that strings and rags may still wrap around the blades and clog the pump, so rags and very large solids should be removed upstream where possible. A double-suction pump is not automatically suited to raw sewage; check the specific pump's solids passage and service rating before using it.\n\n### System head and the pump curve\n\nLesson 1 gave you the parts of head. Plotted against flow, the total head the system demands is the **system curve**. It starts at the static head (flow zero) and rises as flow increases, because friction and minor losses grow with the square of the flow. A **pump curve**, supplied by the manufacturer, runs the other way: at low flow the pump can produce high head, and for a typical centrifugal pump, as flow increases the head it can produce falls.\n\nWhere the two lines cross is the **operating point**: the flow the pump will actually deliver in that system (Figure 3). The WEF manual states that the aim of design and operation is for this point to sit at or near the pump's **best efficiency point** (BEP), where efficiency is highest. Pump curves are usually shown with an efficiency curve and a curve of required suction head on the same graph.\n\n<figure><svg viewBox=\"0 0 360 220\" role=\"img\" aria-label=\"Graph of head against flow showing a falling pump curve and a rising system curve that cross at the operating point, with a second higher system curve for a low wet well level\"><title>Pump curve, system curves and operating point</title><line x1=\"40\" y1=\"190\" x2=\"340\" y2=\"190\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"40\" y1=\"190\" x2=\"40\" y2=\"15\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M40,35 Q180,45 310,170\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M40,110 Q200,115 310,50\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"2.5\"/><path d=\"M40,85 Q200,90 310,25\" fill=\"none\" stroke=\"#6b7785\" stroke-width=\"2.5\" stroke-dasharray=\"6 4\"/><circle cx=\"196\" cy=\"93\" r=\"6\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2.5\"/><line x1=\"196\" y1=\"99\" x2=\"196\" y2=\"190\" stroke=\"#6b7785\" stroke-width=\"1.5\" stroke-dasharray=\"3 3\"/><text x=\"10\" y=\"14\" font-size=\"12\" fill=\"#1d2d40\">Head</text><text x=\"290\" y=\"212\" font-size=\"12\" fill=\"#1d2d40\">Flow</text><text x=\"48\" y=\"30\" font-size=\"12\" fill=\"#2f6db2\">Pump curve</text><text x=\"50\" y=\"135\" font-size=\"12\" fill=\"#1d2d40\">High wet well</text><text x=\"50\" y=\"68\" font-size=\"12\" fill=\"#1d2d40\">Low wet well</text><text x=\"136\" y=\"208\" font-size=\"12\" fill=\"#1d2d40\">Operating flow</text></svg><figcaption>The two system curves are for a high and a low wet well level; the dashed one is the low level. The pump runs where its curve crosses the system curve (open circle). A low wet well raises static head, so the system curve sits higher and the flow is smaller.</figcaption></figure>\n\nIn a lift station the system curve is not fixed. Because static head is larger when the wet well is low, there is a band of system curves, one for each level. At a low well the curve is higher and the crossing moves toward smaller flow. Wear and rags at the impeller change the pump curve, while partly closed valves and scale in the force main change the system curve. The manual says that running far from the BEP shortens pump life: to the right of it, high velocities can cause scouring, recirculation and cavitation, and to the left separation and recirculation reduce efficiency. This is why a pump that has drifted far from its design flow deserves a look.\n\n### Constant speed, variable speed and the affinity laws\n\nMany stations run constant-speed pumps that start and stop with the level. The WEF manual says a drive can be constant-speed, variable-speed or variable-frequency, and that controls with variable-speed or variable-frequency drives change speed to match inflow rates. A variable frequency drive (VFD) changes the electrical frequency to the motor and therefore its speed. Spellman notes that, apart from a throttling valve on the discharge, changing speed is the main way to change a centrifugal pump's delivery.\n\nThe **affinity laws** from the manual describe what happens when speed changes: flow varies directly with speed, head varies with the square of speed, and power varies with the cube of speed. At the corresponding point on the new pump curve, a pump slowed to 80 percent has flow at 80 percent, head about 64 percent and brake power about 51 percent of the original; the actual flow is still set where that curve meets the system curve. The laws predict a new point on the pump curve; the pump will still run where the new pump curve crosses the system curve, and with a high static head the system curve does not pass through zero, so a pump can be slowed only so far before it delivers nothing.\n\nMatching pump speed to inflow can give the plant a steadier flow than start-stop pumping. The trade-off is upkeep: the WEF manual says variable-speed drives are often an enhancement but bring a continuing need for maintenance and servicing, and the maker's manual governs that work.\n\n### Seals and power\n\nA pump's shaft must be sealed where it leaves the casing. The common shaft-sealing arrangements are braided packing, which degrades and must be replaced, and mechanical seals; some packed glands also use seal water. Seal water is supplied at a higher pressure than the pumped liquid and keeps it from leaking out along the shaft; where a pump uses it, follow the maker's requirements for flow, pressure and drainage. A mechanical seal has a pair of flat faces, one rotating and one stationary.\n\nPower is the other half of the picture. The manual gives the water power the pump delivers as flow in gpm × 8.34 lb/gal × TDH in feet ÷ 33,000, where 8.34 lb/gal assumes water. The motor must supply more because the pump is not perfectly efficient: brake power is water power divided by pump efficiency, and the electrical power drawn is brake power divided by motor efficiency. For 400 gpm at 65 ft, water power is 400 × 8.34 × 65 ÷ 33,000 = 6.57 hp. At 70 percent pump efficiency the brake power is 9.39 hp, and at 90 percent motor efficiency the motor draws 10.4 hp. One horsepower is 0.7457 kW, so that is about 7.8 kW.\n\n### Valves that protect the pump\n\n**Isolation valves** on the suction and discharge piping of each pump let staff take that pump out of service while others run; an open-intake submersible pump has no suction line to valve off. The manual also says gate valves should be fully opened or closed, not used to throttle, because they can trap material and plug. The manual points out that without them removing a pump may require shutting down the entire station, and that a \"frozen\" valve that cannot be moved makes pump removal harder. Valves should be exercised on a schedule so they stay operable.\n\n**Check valves** on each discharge prevent backflow through a stopped pump. Spellman explains the reason: a centrifugal pump has nothing built in to stop reverse flow, so if the discharge is not closed and no check valve is fitted, liquid runs back to the wet well and may spin the pump backwards. The WEF manual adds that a check valve that leaks lets pumped flow return to the wet well, which increases the number of pumping cycles and the cost of operation.\n\n### Suction, priming and cavitation\n\nA centrifugal pump cannot pull water into an empty casing. Spellman notes that it must be primed, meaning the casing and impeller must be full of liquid, though it can be installed so that it is self-priming. Dry-pit pumps are therefore located so the wet well level keeps them primed, and a submersible pump, already in the liquid, is less likely to lose prime. Air leaking into the suction side reduces flow and head and can break the prime. The WEF manual lists turbulence in the suction well and air carried in the liquid among the hydraulic causes of vibration.\n\nCavitation happens when pressure inside the pump, often near the impeller eye, falls to the liquid's vapour pressure, so vapour cavities form and then collapse, damaging the pump. The rule at recognition level is that the available net positive suction head (NPSHA) must exceed the pump's required NPSH, with a margin set by the design.\n\nA short contrast helps. A centrifugal pump can run briefly against a closed discharge valve when the maker and station procedure allow it, because its shutoff pressure is limited, as Spellman notes. A positive displacement pump cannot, and the Wisconsin study guide warns that running one against a closed valve or without liquid can damage it. Never assume one pump type's rule applies to the other.\n\n### Worked example: sizing the working volume\n\nMillbrook Landing is a fictional station with a rectangular wet well 8 ft by 10 ft. The pump turns on when the level is 3.0 ft above the pump-off level. Use 7.48 gal per cubic foot. The inflow is 150 gpm and the pump delivers 400 gpm.\n\n<figure><svg viewBox=\"0 0 360 210\" role=\"img\" aria-label=\"Side view of a wet well with a pump-on level and a pump-off level, the volume between them shaded, and notes that inflow fills it and the pump minus inflow drains it\"><title>Wet well operating volume and cycle</title><rect x=\"20\" y=\"20\" width=\"110\" height=\"170\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"22\" y=\"70\" width=\"106\" height=\"60\" fill=\"#2f6db2\" opacity=\"0.35\"/><line x1=\"20\" y1=\"70\" x2=\"130\" y2=\"70\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"20\" y1=\"130\" x2=\"130\" y2=\"130\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><text x=\"140\" y=\"74\" font-size=\"12\" fill=\"#1d2d40\">Pump on level</text><text x=\"140\" y=\"134\" font-size=\"12\" fill=\"#1d2d40\">Pump off level</text><line x1=\"75\" y1=\"72\" x2=\"75\" y2=\"128\" stroke=\"#1d2d40\" stroke-width=\"1.5\"/><text x=\"140\" y=\"104\" font-size=\"12\" fill=\"#1d2d40\">Working depth</text><text x=\"140\" y=\"45\" font-size=\"12\" fill=\"#1d2d40\">Fill time = volume / inflow</text><text x=\"140\" y=\"165\" font-size=\"12\" fill=\"#1d2d40\">Drain time =</text><text x=\"140\" y=\"180\" font-size=\"12\" fill=\"#1d2d40\">volume / (pump - inflow)</text><text x=\"28\" y=\"205\" font-size=\"11\" fill=\"#1d2d40\">Shaded = working volume</text></svg><figcaption>One cycle is fill time plus drain time. The shaded block is the volume between the pump-off and pump-on levels.</figcaption></figure>\n\nWorking volume = 8 × 10 × 3.0 × 7.48 = 1,795 gal. With the pump off, the well fills at 150 gpm, so fill time = 1,795 ÷ 150 = 12.0 min. With the pump on, the level drops at the pump rate minus inflow, 400 − 150 = 250 gpm, so drain time = 1,795 ÷ 250 = 7.2 min. One cycle is about 19.1 min, which gives 60 ÷ 19.1 = 3.1 starts per hour.\n\nIf the inflow doubles to 300 gpm, fill time falls to 6.0 min and drain time rises to 18.0 min; the cycle becomes 23.9 min, or 2.5 starts per hour. In a simple wet well with steady inflow, the cycle is shortest, and starts per hour highest, when inflow is about half the pump rate, because fill and drain times trade off. The manual's motor guide lists frequent starting as a cause of motor overheating and says to reduce the number of starts. The allowed number comes from the motor maker, so check the nameplate and manual for the station.\n",
+   "evidence": "### Fictional scenario: Millbrook Landing station\n\nMillbrook Landing is a fictional two-pump station. The pumps start about four times an hour in the evening and the motor on pump 2 has been running warm. Operator Tessa Okoro has the well dimensions and the pump and inflow estimates, and her supervisor, Dev Raman, wants to know whether the well or the controls are the problem.",
+   "assignment": "Write a short memo to Dev Raman. Using a well of 8 ft by 10 ft, a working depth of 3.0 ft, an inflow of 150 gpm, a pump rate of 400 gpm and 7.48 gal per cubic foot, calculate fill time, drain time and starts per hour. Say what you would check next and what you could not conclude.",
+   "rubric": [
+    "Calculates volume, fill time, drain time and starts per hour with units.",
+    "Explains why inflow near half the pump rate gives the most starts.",
+    "Links frequent starts to motor heating without inventing a limit.",
+    "Names the next checks and the gaps in the data."
+   ],
+   "facilitatorGuide": "Check that learners subtract inflow from pump rate when finding drain time. Ask them to sketch a pump curve with two system curves and label the operating point. Watch for stating a starts-per-hour limit as a rule: the motor maker sets it.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and write the fill, drain and starts-per-hour formulas with units."
+    },
+    {
+     "kind": "reading",
+     "minutes": 12,
+     "instruction": "Find the pump curve or nameplate data for one of your pumps."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Millbrook Landing numbers and test a higher inflow."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 8,
+     "instruction": "Write the memo to the supervisor."
+    }
+   ],
+   "sourceIds": [
+    "wef-mop11",
+    "spellman-ww1",
+    "spellman-hb",
+    "wi-adv-ww"
+   ],
+   "checks": [
+    {
+     "id": "ceu-lift-stations-pumps-and-drives-c1",
+     "prompt": "Which problem can still affect a nonclog impeller in a raw wastewater pump?",
+     "choices": [
+      "Dissolved gas can fill the volute and stop the impeller from turning",
+      "Grit makes the impeller run backwards each time it starts",
+      "Warm wastewater makes the casing too soft to hold pressure",
+      "Strings and rags can wrap around the blades and plug the pump"
+     ],
+     "correctIndex": 3,
+     "explanation": "Open or two-vane impellers pass solids, but rags and strings can still wrap around them. The other options describe effects that are not linked to nonclog impellers.",
+     "objective": "pumps-and-drives"
+    },
+    {
+     "id": "ceu-lift-stations-pumps-and-drives-c2",
+     "prompt": "What is the operating point of a pump in a system?",
+     "choices": [
+      "The point where the pump curve meets the flow axis",
+      "Where the pump curve crosses the system curve",
+      "The point where the system curve crosses the head axis",
+      "The point at the highest head the pump can produce"
+     ],
+     "correctIndex": 1,
+     "explanation": "The pump delivers the flow where the head it can make equals the head the system needs, which is the crossing. The axis intercepts and the shutoff head are other points on the graph.",
+     "objective": "pumps-and-drives"
+    },
+    {
+     "id": "ceu-lift-stations-pumps-and-drives-c3",
+     "prompt": "A pump produces 48 ft of head at 1,200 rpm. Using the rule that head varies with the square of speed, what head is produced at the corresponding point on the 900 rpm pump curve?",
+     "choices": [
+      "36 ft",
+      "20 ft",
+      "27 ft",
+      "64 ft"
+     ],
+     "correctIndex": 2,
+     "explanation": "Head scales with speed squared: 48 x (900 / 1,200)^2 = 48 x 0.5625 = 27 ft. Using the plain speed ratio gives 36, cubing it gives 20, and inverting the ratio without squaring gives 64.",
+     "objective": "pumps-and-drives"
+    },
+    {
+     "id": "ceu-lift-stations-pumps-and-drives-c4",
+     "prompt": "What is the purpose of a check valve on a pump discharge?",
+     "choices": [
+      "To let the operator adjust the flow by closing the valve part way",
+      "To seal the pump so it can be removed without isolating the line",
+      "To relieve high pressure by venting wastewater to the wet well",
+      "To stop backflow through a stopped pump"
+     ],
+     "correctIndex": 3,
+     "explanation": "A check valve opens with forward flow and closes against reverse flow. Throttling and isolating are jobs for other valves, and a check valve is not a relief valve.",
+     "objective": "pumps-and-drives"
+    },
+    {
+     "id": "ceu-lift-stations-pumps-and-drives-c5",
+     "prompt": "What must be true before a centrifugal pump can move liquid?",
+     "choices": [
+      "The discharge valve has to be fully closed so pressure builds up",
+      "The casing and impeller are full of liquid (priming)",
+      "The wet well has to be empty so air can reach the suction",
+      "The motor has to run backwards briefly to clear the volute"
+     ],
+     "correctIndex": 1,
+     "explanation": "A centrifugal pump cannot pull liquid into an empty casing, so it must be primed. Submersible pumps sit in the liquid and are less likely to lose prime. A closed valve or reverse rotation does not prime a pump.",
+     "objective": "pumps-and-drives"
+    },
+    {
+     "id": "ceu-lift-stations-pumps-and-drives-c6",
+     "prompt": "A wet well is 6 ft by 9 ft. The working depth between pump-off and pump-on is 2.5 ft. Using 7.48 gal per cubic foot, what is the working volume in US gallons?",
+     "choices": [
+      "1,010 gal",
+      "135 cubic ft",
+      "18 gal",
+      "404 gal"
+     ],
+     "correctIndex": 0,
+     "explanation": "Volume = 6 x 9 x 2.5 x 7.48 = 1,010 gal. Leaving out 7.48 gives cubic feet (135), dividing by 7.48 inverts the conversion, and leaving out the depth gives 404.",
+     "objective": "pumps-and-drives"
+    }
+   ]
+  },
+  {
+   "id": "controls-and-monitoring",
+   "title": "Controls and monitoring: level sensing, alternation, alarms, telemetry and flow estimates",
+   "objectives": [
+    "Compare float, bubbler, electrode, transducer and ultrasonic level sensing, and explain staging, alternation and the hand-off-auto selector.",
+    "Explain alarms and telemetry at purpose level, and estimate pump capacity, inflow and daily flow from drawdown and run time."
+   ],
+   "lesson": "### What the controls have to do\n\nThe pumps in a lift station are rarely run by hand. A control system watches the wet well level and starts and stops pumps to keep the level inside a working range. The WEF manual lists the controls used on pumping systems: on-off switches driven by pressure, temperature or the depth of liquid in the wet well, measured by float switches, bubbler systems, pressure transducers or ultrasonic devices, and, where fitted, variable-speed or variable-frequency drives that change speed to match inflow. Spellman describes the same two-part idea: a sensor that decides when a pump should start or stop, and electrical controls that actually start and stop it.\n\n### Sensing level\n\nEach sensing method has its own strengths and its own failure mode. Figure 5 shows three of them.\n\n<figure><svg viewBox=\"0 0 360 200\" role=\"img\" aria-label=\"Three ways to sense wet well level: a float on a cable, a bubbler tube with air supply, and an ultrasonic sensor above the surface\"><title>Three level sensing methods</title><line x1=\"8\" y1=\"100\" x2=\"352\" y2=\"100\" stroke=\"#6b7785\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><line x1=\"60\" y1=\"20\" x2=\"60\" y2=\"85\" stroke=\"#1d2d40\" stroke-width=\"2\"/><ellipse cx=\"60\" cy=\"96\" rx=\"22\" ry=\"11\" fill=\"#c5ccd5\" stroke=\"#1d2d40\" stroke-width=\"2\"/><text x=\"28\" y=\"150\" font-size=\"12\" fill=\"#1d2d40\">Float</text><text x=\"12\" y=\"166\" font-size=\"11\" fill=\"#1d2d40\">tilts or rises</text><line x1=\"170\" y1=\"20\" x2=\"170\" y2=\"170\" stroke=\"#2f6db2\" stroke-width=\"3\"/><circle cx=\"170\" cy=\"172\" r=\"4\" fill=\"#ffffff\" stroke=\"#2f6db2\" stroke-width=\"2\"/><rect x=\"146\" y=\"8\" width=\"48\" height=\"16\" fill=\"#e8ecf1\" stroke=\"#1d2d40\" stroke-width=\"2\"/><text x=\"132\" y=\"196\" font-size=\"12\" fill=\"#1d2d40\">Bubbler</text><text x=\"200\" y=\"22\" font-size=\"11\" fill=\"#1d2d40\">air supply</text><rect x=\"268\" y=\"10\" width=\"42\" height=\"18\" fill=\"#e8ecf1\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M289,34 L289,92\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"3 3\"/><path d=\"M279,50 Q289,42 299,50\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"258\" y=\"150\" font-size=\"12\" fill=\"#1d2d40\">Ultrasonic</text><text x=\"248\" y=\"166\" font-size=\"11\" fill=\"#1d2d40\">echo from surface</text><text x=\"8\" y=\"94\" font-size=\"11\" fill=\"#6b7785\">level</text></svg><figcaption>A float follows the surface, a bubbler turns depth into air pressure, and an ultrasonic unit measures the echo time from above the liquid.</figcaption></figure>\n\n**Floats.** A float rides on the surface and moves a switch, either through a rod and collars, or by tilting a sealed switch on a cable. Spellman calls the float system the simplest control for centrifugal pumps. Its drawback is that it operates at one discharge rate, which can cause extreme variations in downstream hydraulic loading and long periods of not operating (Spellman, p. 369). Floats are exposed to the wet well atmosphere, and the WEF manual's maintenance list includes inspecting float balls and cables, removing debris, and untangling twisted cables that could disturb automatic operation.\n\n**Bubbler (pneumatic) systems.** A small compressor pushes air down a tube whose open end sits near the bottom of the well. The air pressure needed to release a bubble relates to the depth of liquid above the tube end, with 1 psi equal to 2.31 feet of water. Pressure switches on the air line start and stop pumps. The weakness is a plugged tube: Spellman warns that the pressure can then climb and run the pumps even when the well is low, wasting power and risking damage.\n\n**Electrodes.** Probes at different heights complete a circuit when the liquid touches them. Spellman notes they need to be kept clean and that, because two electrodes are used, a fault in one can lock the pumps on or off.\n\n**Pressure transducers and ultrasonic units.** A submerged transducer senses the pressure of the water above it; an ultrasonic or sonar unit above the surface times an echo, in the way radar does. Both produce a signal that a controller turns into a level reading. Because they give a continuous reading rather than a switch point, set points can be adjusted from the panel.\n\n### Staging, alternation and the switch positions\n\nLevel set points are arranged in order (Figure 6). The lowest turns pumps off, the lead pump starts at a higher level, a lag pump starts higher still if the lead cannot keep up, and a high level alarm sits above them. Spellman gives a bubbler example: the first pump starts at one depth, a second starts at a higher depth if the level keeps rising, and a third can follow. Each pump stops at its own preset depth lower down. The high level alarm is set so that the warning comes before the sewer backs up, which in many stations is below the incoming sewer.\n\n<figure><svg viewBox=\"0 0 360 215\" role=\"img\" aria-label=\"Vertical scale of wet well levels from bottom to top: low level alarm, pump off, lead pump on, lag pump on, high level alarm, and the invert of the incoming sewer\"><title>Wet well level set points</title><rect x=\"20\" y=\"10\" width=\"60\" height=\"195\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"22\" y=\"100\" width=\"56\" height=\"103\" fill=\"#2f6db2\" opacity=\"0.35\"/><line x1=\"20\" y1=\"20\" x2=\"80\" y2=\"20\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"20\" y1=\"48\" x2=\"80\" y2=\"48\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><line x1=\"20\" y1=\"78\" x2=\"80\" y2=\"78\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"20\" y1=\"108\" x2=\"80\" y2=\"108\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><line x1=\"20\" y1=\"138\" x2=\"80\" y2=\"138\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"20\" y1=\"180\" x2=\"80\" y2=\"180\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><text x=\"92\" y=\"24\" font-size=\"12\" fill=\"#1d2d40\">Invert of incoming sewer</text><text x=\"92\" y=\"52\" font-size=\"12\" fill=\"#1d2d40\">High level alarm</text><text x=\"92\" y=\"82\" font-size=\"12\" fill=\"#1d2d40\">Lag pump on</text><text x=\"92\" y=\"112\" font-size=\"12\" fill=\"#1d2d40\">Lead pump on</text><text x=\"92\" y=\"142\" font-size=\"12\" fill=\"#1d2d40\">Pumps off</text><text x=\"92\" y=\"184\" font-size=\"12\" fill=\"#1d2d40\">Low level alarm</text></svg><figcaption>Typical order of set points from top to bottom. Actual levels are chosen for each station. The high level alarm sits where a warning comes before the sewer backs up, which may be below the incoming sewer.</figcaption></figure>\n\n**Alternation.** The WEF manual says the controls typically cycle back and forth so the pumps receive equal wear, and that staff should check each pump's elapsed-time meter and compare run hours. When one pump is taken out of service, the lead selector is moved to the pump that remains, so the level set points apply to the pump that can run.\n\n**Hand-Off-Auto.** Each pump normally has a selector with positions for hand, off and automatic. Hand commands a manual run, subject to the station's protective interlocks, which is for checks. Off keeps it from starting, but Off is a control position, not an energy-isolating device. Auto lets the control system decide. The manual stresses that if a pump is isolated for service without changing the controls first, the results could be disastrous, so operators need to know how their controls work before working on a pump.\n\nMany newer stations use a programmable logic controller (PLC) as the brain of the control system. The WEF manual describes a PLC as a solid-state device that takes the place of hard-wired relays, with the advantage that it is readily changed. It takes input signals from devices such as floats and sensors, runs a stored program that handles tasks such as sequencing and timing, and drives outputs such as motor starters. In practice this means pump order, delay between starts and alarm points can be changed in software, so a change should be recorded and tested rather than made casually.\n\n### Alarms\n\nAlarms tell people about abnormal conditions. A high-level alarm can give warning before an overflow, while a pump-failure or power-loss alarm may report a failure that has already happened. Typical alarm points include high wet well level, low level, pump failure, and loss of power. The purpose of the high level alarm is early warning of a rising level when pumps are off, failed or overwhelmed. The WEF manual says periodic checks of the sequencing and alarm functions belong in a pumping station maintenance program. How an alarm reaches staff and who must be told is set by the owner's procedures and the applicable rule or permit.\n\n### Telemetry and SCADA\n\nMost small stations are unstaffed. The WEF manual says analog and digital telemetry link remote facilities such as lift stations with a central monitoring point, using radio, telephone or other media, and that the equipment needs the skills of an electronics technician for upkeep. Supervisory control and data acquisition (SCADA) systems monitor and control processes and give early warning of equipment problems. The manual adds that operators still need to know how to run equipment manually when the automated control system is offline.\n\nTypical signals sent from a station are wet well level, pump running status, alarms, and sometimes flow or amperage. Which ones a station sends depends on how it was built.\n\n### Measuring pump capacity from drawdown\n\nSpellman shows a simple test that needs only a tape and a watch. Close or stop the inflow for a short test, such as by closing the influent valve if the station allows it, and time how far the level falls while the pump runs. For a well of constant cross-section, the volume pumped is the well's surface area times the drop in feet times 7.48 gal per cubic foot. Divide by the minutes to get gpm.\n\nExample for the fictional Quarry Bend station: the well is 8 ft by 10 ft, and in a 4-minute test with no inflow the level falls 2.4 ft. Volume = 8 × 10 × 2.4 × 7.48 = 1,436 gal, so the pumping rate is 1,436 ÷ 4 = 359 gpm.\n\nIf the inflow cannot be stopped, Spellman gives a second form: influent = discharge + accumulation, where accumulation is the change in stored volume per minute. At Quarry Bend, suppose the pump runs for 4 minutes while the level rises 1.8 in. and the influent, measured upstream, is 410 gpm. The accumulated volume is 8 × 10 × (1.8 ÷ 12) × 7.48 = 89.8 gal, which is 22.4 gpm. Discharge = 410 − 22.4 = 387.6 gpm.\n\nThe same idea measures inflow. With the pumps off, the level rise in a timed interval gives accumulation, and with no discharge that equals the influent flow.\n\n### Run time and flow estimates\n\nEach pump has an elapsed-time meter. If you know a pump's tested capacity and its run time for the day, you can estimate the volume it moved: capacity in gpm × minutes run. At Quarry Bend a pump tested at 359 gpm that read 3.5 hours on the elapsed-time meter moved about 359 × 3.5 × 60 = 75,390 gal. Add the volume from each pump to estimate the station's daily flow, but only for time when that pump ran alone; when pumps run together on a common main, use measured station flow or a rate tested for that combination. The estimate is only as good as the capacity figure: pump output changes with the head, which changes as the well draws down, and it falls as the impeller wears. Retest capacity from time to time, and use the estimate to follow trends. Run hours also check alternation: with the controls set to alternate, the meters should climb at similar rates, and a big gap is a clue to check the lead selector, alternation and whether that pump is available. If one pump needs more hours than usual to handle the same inflow, its delivery may have fallen, which is a reason to test it. The WEF manual says that a pump failing to deliver its design flow is a first clue of trouble.\n",
+   "evidence": "### Fictional scenario: Quarry Bend station\n\nQuarry Bend is a fictional unstaffed station with a bubbler level system and telemetry. A high level alarm came in overnight and cleared. Operator Hana Sutter must check the station, estimate how much it pumped, and report to her supervisor, Luis Ferreira.",
+   "assignment": "Write a short report for Luis Ferreira. For a well of 8 ft by 10 ft, use a drawdown test (2.4 ft in 4 min with no inflow) to find the pumping rate, then estimate the volume for 3.5 hours of run time. List two possible reasons for the alarm and what you would check, and say what the estimate cannot tell you.",
+   "rubric": [
+    "Calculates pump rate and daily volume with units and stated constants.",
+    "Names plausible causes of the alarm without claiming a cause.",
+    "Describes how level sensing, alternation and telemetry relate to the event.",
+    "States the limits of the estimate."
+   ],
+   "facilitatorGuide": "Check the drawdown arithmetic and that the volume uses 7.48 and minutes. Ask which sensor could give a false level and why. Watch for treating a run-time estimate as exact: pump output changes with head and wear. Ask learners which alarm or telemetry signal they would want to see first.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and list one strength and one weakness for each level sensor."
+    },
+    {
+     "kind": "reading",
+     "minutes": 12,
+     "instruction": "Read your station's alarm list and note who receives each alarm."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Quarry Bend drawdown and run-time estimate."
+    },
+    {
+     "kind": "assignment",
+     "minutes": 8,
+     "instruction": "Write the short report."
+    }
+   ],
+   "sourceIds": [
+    "wef-mop11",
+    "spellman-ww1",
+    "spellman-hb"
+   ],
+   "checks": [
+    {
+     "id": "ceu-lift-stations-controls-and-monitoring-c1",
+     "prompt": "What is the main weakness of a bubbler level system?",
+     "choices": [
+      "A plugged tube can run pumps while the well is low",
+      "The compressor wets the pumps and so stops them from starting",
+      "The tube floats upward when the well is full, so it reads too low",
+      "The system needs the wet well to be empty to take a reading"
+     ],
+     "correctIndex": 0,
+     "explanation": "Spellman warns that a clogged bubbler tube raises pressure and can start all pumps when the level is low. The other options describe problems that bubblers do not have.",
+     "objective": "controls-and-monitoring"
+    },
+    {
+     "id": "ceu-lift-stations-controls-and-monitoring-c2",
+     "prompt": "A bubbler gauge reads 2.6 psi. Using 1 psi = 2.31 ft of water, how deep is the liquid above the tube end?",
+     "choices": [
+      "6.0 ft",
+      "1.1 ft",
+      "21.7 ft",
+      "4.9 ft"
+     ],
+     "correctIndex": 0,
+     "explanation": "Depth = psi x 2.31 = 2.6 x 2.31 = 6.0 ft. Dividing by 2.31 inverts the conversion, multiplying by 8.34 uses the weight of water, and adding 2.31 treats it as an offset.",
+     "objective": "controls-and-monitoring"
+    },
+    {
+     "id": "ceu-lift-stations-controls-and-monitoring-c3",
+     "prompt": "Why do lift station controls usually alternate the lead pump?",
+     "choices": [
+      "So the wet well level stays constant at the set point",
+      "So the pumps share wear and run hours stay close",
+      "So the second pump cools down while the first one starts",
+      "So the alarm sounds each time the lead pump changes"
+     ],
+     "correctIndex": 1,
+     "explanation": "The WEF manual says controls cycle the pumps so they receive equal wear. Alternation does not hold the level constant, cool a pump or trigger alarms.",
+     "objective": "controls-and-monitoring"
+    },
+    {
+     "id": "ceu-lift-stations-controls-and-monitoring-c4",
+     "prompt": "How does an ultrasonic level device find the level in a wet well?",
+     "choices": [
+      "It senses the weight of the liquid on a plate on the well floor",
+      "It measures the air pressure needed to release a bubble from a tube",
+      "It completes a circuit when liquid touches probes at set heights",
+      "It times an echo from the surface to a unit above the liquid"
+     ],
+     "correctIndex": 3,
+     "explanation": "An ultrasonic or sonar unit sends a pulse and times the echo from the surface, as radar does. The other options describe load, bubbler and electrode methods.",
+     "objective": "controls-and-monitoring"
+    },
+    {
+     "id": "ceu-lift-stations-controls-and-monitoring-c5",
+     "prompt": "What does the Auto position of a pump's hand-off-auto selector do?",
+     "choices": [
+      "It runs the pump continuously regardless of the wet well level",
+      "It locks the pump out so it will not start until reset",
+      "It sends the pump's run hours to the telemetry system",
+      "It lets the level control system start and stop the pump"
+     ],
+     "correctIndex": 3,
+     "explanation": "Auto hands control to the level system. Hand runs the pump directly, Off keeps it from starting, and telemetry is a separate link.",
+     "objective": "controls-and-monitoring"
+    },
+    {
+     "id": "ceu-lift-stations-controls-and-monitoring-c6",
+     "prompt": "A pump is tested with the influent stopped. The well is 7 ft by 9 ft, the level falls 1.6 ft in 3 min, and 1 cu ft holds 7.48 gal. What is the pumping rate?",
+     "choices": [
+      "33.6 gpm",
+      "251.3 gpm",
+      "754.0 gpm",
+      "20.9 gpm"
+     ],
+     "correctIndex": 1,
+     "explanation": "Volume = 7 x 9 x 1.6 x 7.48 = 754 gal; rate = 754 / 3 = 251.3 gpm. Skipping 7.48 gives 33.6, skipping the division by time gives 754.0, and treating 1.6 as inches gives 20.9.",
+     "objective": "controls-and-monitoring"
+    }
+   ]
+  },
+  {
+   "id": "operation-and-troubleshooting",
+   "title": "Operation, maintenance and troubleshooting: rounds, problems and hazard awareness",
+   "objectives": [
+    "Describe a useful round and record, and recognise grease, rag, odour, corrosion, hydraulic and electrical problems and what they suggest.",
+    "Explain the layers that prevent overflows and recognise confined space hazards and their purpose-level controls, without entry procedures."
+   ],
+   "lesson": "### Rounds and records\n\nA lift station is usually visited on a schedule. The WEF manual's basic maintenance list for pumping stations is a good outline of a round: check the wet well level (preferably daily, and more often when high flows are expected), record each pump's run-time hours and compare them, confirm that control-panel switches and valves are in their proper positions, listen for unusual noise, inspect floats and cables and remove debris, and periodically check the sequencing and alarm functions. The manual also recommends a quick \"look and feel\" inspection of each pump for unusual noise, vibration, heating or leakage, and a check of discharge lines for leaks. Each round should leave a record: date, wet well level, hours on each meter, amperage and pressure readings if available, and anything unusual. The manual says maintenance records, kept on cards or in a computerised system, help detect and diagnose problems early and support planning and budgets.\n\n### Grease, rags and debris\n\nWastewater carries more than water. Rags and stringy material can wrap around impeller blades, as the manual warns, and grease builds up on walls, floats and pipe. The manual says scum and grease deposits in pipelines are hard to remove and recommends source control, such as grease traps at restaurants and similar sources, with chemical washing or scraping as a response. At the station, WEF recommends a manual pump-down at least once a week under the station's safe operating procedure to check for and remove debris that could clog the pumps; a pump-down does not make entry safe, and floats should be inspected so they swing freely. Frequent clogging in one spot may justify a different style of valve or fitting there.\n\nSolids also settle in the wet well itself. The WEF manual notes that keeping wet well levels continuously higher can lower velocities in the collection system and encourages deposition of solids, and that holding wastewater in the system leads to more odours. Suction piping that is partly blocked by deposits can show up as low suction pressure.\n\n### Odour, sulfide and corrosion\n\nWastewater that sits too long loses its oxygen and turns septic. Septic wastewater can give off hydrogen sulfide, which may smell like rotten eggs. Smell is not a reliable warning, because the gas can dull the sense of smell. The WEF manual says hydrogen sulfide is associated with adverse health effects and with corrosion of sewer pipes and plant equipment, and that it is best controlled at its source. For lift stations the manual mentions commercially available products, and it names peroxide, permanganate and ferrous or ferric chloride as options. Holding the wet well high can increase detention and odour, which is another reason level changes need thought.\n\nWear shows itself in other ways. The manual says a gradual drop in flow or pressure suggests a worn impeller or wear rings, noise, vibration or hot spots suggest worn bearings, and heavy leakage at the shaft suggests a worn seal or packing. It adds that most bearings fail because of poor operating conditions rather than age. Vibration is tracked as a trend so the pump can be repaired before it fails.\n\nSubmersible pumps add a special case. Their seals keep wastewater out of the motor, and A failed seal can let liquid reach the motor and cause an electrical fault. Because the pump sits in the wet well, direct inspection of submerged parts generally needs isolation and retrieval under the station's procedures, which is why a submersible pump that trips deserves a proper investigation and not just a reset.\n\nCorrosion is a design and maintenance matter: wet well atmospheres are harsh on metals and electrical parts, so equipment in the wet well should be limited to what is needed and chosen for the environment.\n\n### Hydraulic problems: reading flow, pressure and amps\n\nA pump that does not deliver its design flow is telling you something. The WEF manual says hydraulic monitoring is often the best and simplest alert, because it shows that something is wrong, though not why. Gauges on both sides of the pump give clues (Figure 7). Low pressure in the suction piping can indicate a blockage or an unexpectedly low wet well level; high pressure in the discharge piping can indicate a blockage; low discharge pressure can signal cavitation or a broken line or major leak. The manual adds that if the motor needs more energy while the pump's water power stays the same, efficiency is falling, which can point to impeller, bearing or motor wear.\n\n<figure><svg viewBox=\"0 0 360 200\" role=\"img\" aria-label=\"A pump with a suction pressure gauge before it and a discharge pressure gauge after it, with notes on what low suction pressure, high discharge pressure and low discharge pressure can point to\"><title>Reading suction and discharge pressure</title><rect x=\"10\" y=\"80\" width=\"70\" height=\"26\" fill=\"#c5ccd5\" stroke=\"#1d2d40\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"93\" r=\"22\" fill=\"#e8ecf1\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"220\" y=\"80\" width=\"70\" height=\"26\" fill=\"#c5ccd5\" stroke=\"#1d2d40\" stroke-width=\"2\"/><line x1=\"80\" y1=\"93\" x2=\"128\" y2=\"93\" stroke=\"#1d2d40\" stroke-width=\"3\"/><line x1=\"172\" y1=\"93\" x2=\"220\" y2=\"93\" stroke=\"#1d2d40\" stroke-width=\"3\"/><circle cx=\"60\" cy=\"52\" r=\"12\" fill=\"#ffffff\" stroke=\"#2f6db2\" stroke-width=\"2.5\"/><line x1=\"60\" y1=\"64\" x2=\"60\" y2=\"80\" stroke=\"#2f6db2\" stroke-width=\"2\"/><circle cx=\"260\" cy=\"52\" r=\"12\" fill=\"#ffffff\" stroke=\"#2f6db2\" stroke-width=\"2.5\"/><line x1=\"260\" y1=\"64\" x2=\"260\" y2=\"80\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"10\" y=\"24\" font-size=\"12\" fill=\"#1d2d40\">Suction gauge</text><text x=\"205\" y=\"24\" font-size=\"12\" fill=\"#1d2d40\">Discharge gauge</text><text x=\"128\" y=\"130\" font-size=\"12\" fill=\"#1d2d40\">Pump</text><text x=\"10\" y=\"150\" font-size=\"11\" fill=\"#1d2d40\">Low suction: blockage or low wet well</text><text x=\"10\" y=\"168\" font-size=\"11\" fill=\"#1d2d40\">High discharge: blockage or closed valve</text><text x=\"10\" y=\"186\" font-size=\"11\" fill=\"#1d2d40\">Low discharge: wear, leak or break</text></svg><figcaption>Gauges on both sides of the pump give early clues. They point toward causes; the cause still has to be confirmed.</figcaption></figure>\n\nThe manual's troubleshooting table for a centrifugal pump that delivers no liquid lists: pump not primed, speed too low, air leak in the suction, plugged suction or discharge line, wrong direction of rotation, and a closed discharge valve. A gradual fall in flow or pressure points to a worn impeller or wear rings.\n\n### Electrical problems at recognition level\n\nMost pump motors are squirrel-cage induction motors, according to the WEF manual, protected by a starter with overload relays. An electric motor that trips or runs hot is giving warning. The manual's motor troubleshooting guide lists causes of overheating that include overload, impaired ventilation and frequent starts or stops, with remedies such as reducing the load, removing an obstruction or reducing the number of starts. A motor that does not start can have an incorrect power supply, an open fuse or connection, or a jammed driven machine. Electrical work belongs to qualified staff. The operator's job is to notice the symptom, record it, avoid repeatedly resetting a tripped pump without learning why, and report it. Pumps taken out of service for work are locked and tagged out under the owner's procedures.\n\n### Preventing overflows\n\nThe purpose of nearly everything in this course is to keep wastewater from backing up into homes or overflowing from the wet well or a manhole. Layers of protection include a standby pump, standby power or a plan for it, a high level alarm that warns early, telemetry that carries the alarm to staff, regular testing and rounds, and keeping debris and grease out. The WEF manual notes that holding flow in the collection system shrinks reserve capacity for storms and emergencies. If an overflow occurs or is likely, the operator reports it right away through the channels set by the owner and the applicable rule or permit; those documents decide who is notified and by when.\n\n### Hazardous atmospheres and confined spaces\n\nMost wet wells are confined spaces, and so can be a deep dry well. Spellman notes that most pumping station wet wells are confined spaces and that entry is governed by the OSHA confined space standard. Under the OSHA general-industry definition, a confined space must be large enough for entry and work, have limited or restricted entry or exit, and not be designed for continuous occupancy. Poor ventilation is a hazard within such spaces rather than part of the definition. The WEF manual lists the hazards: oxygen-deficient atmosphere, flammable gases such as methane, toxic gases such as hydrogen sulfide, engulfment, temperature extremes, noise and slippery surfaces. These conditions can be present with no warning, particularly in manholes and lift stations. Fatalities are often multiple, because a would-be rescuer enters without protection.\n\nThis course teaches recognition and purpose only. Entry, testing, ventilation, rescue and permit steps belong to the owner's confined space program and to trained, equipped people. Operators doing rounds stay out of wet wells, and out of any dry well classified as a confined space, unless they are part of that program.\n\n### Worked scenario\n\nAt the fictional Harrow Ridge station, the operator's round shows pump 1 logged 1,512 run-hours and pump 2 logged 1,160 run-hours over the same review period; the control panel has the lead selector fixed on pump 1. The operator also notices that pump 2's discharge pressure is lower than usual and that its amps are higher than last month.\n\nThe difference in hours (1,512 − 1,160 = 352) suggests pump 1 has carried more run time, which fits a lead selector left fixed on it. Setting alternation correctly is a control task. The low discharge pressure with higher amps on pump 2 may point to wear, so the operator records the readings, reports the trend, and asks that the pump be checked, rather than guessing at a cause. Neither finding alone shows an emergency, but both would be missed without records, and both need prompt checks under the station's procedures.\n",
+   "evidence": "### Fictional scenario: Harrow Ridge station\n\nHarrow Ridge is a fictional station. On a round, operator Mei-Lin Castro finds pump 1 at 1,512 run hours and pump 2 at 1,160, pump 2 with lower discharge pressure and higher amps than last month, and a float cable with grease and a rag on it. Her supervisor is Arjun Bell.",
+   "assignment": "Write a short note to Arjun Bell. Work out the difference in run hours, say what it could mean, explain what the pressure and amp change suggest, and list what you would record. Say which items are for electrical or confined space staff and not for you to do on a round.",
+   "rubric": [
+    "Calculates the run-hour difference and offers a plausible reason.",
+    "Interprets pressure and amps as clues, not proof.",
+    "Lists useful records and corrective follow-up.",
+    "Correctly leaves electrical work and confined space entry to trained staff."
+   ],
+   "facilitatorGuide": "Ask learners what each reading points toward and what else they would check. Reinforce that this course gives recognition and purpose only for electrical and confined space matters and that facility procedures govern. Watch for learners who suggest entering the wet well to look.",
+   "activities": [
+    {
+     "kind": "lesson",
+     "minutes": 25,
+     "instruction": "Study the lesson and list the records you would take on each round."
+    },
+    {
+     "kind": "reading",
+     "minutes": 12,
+     "instruction": "Read your facility's confined space and overflow notification procedures."
+    },
+    {
+     "kind": "exercise",
+     "minutes": 15,
+     "instruction": "Work through the Harrow Ridge scenario and rank the findings by urgency."
+    },
+    {
+     "kind": "final_assessment",
+     "minutes": 8,
+     "instruction": "Sit the final assessment for this course after the last module."
+    }
+   ],
+   "sourceIds": [
+    "wef-mop11",
+    "spellman-ww1",
+    "spellman-ww2",
+    "ccohs-cs"
+   ],
+   "checks": [
+    {
+     "id": "ceu-lift-stations-operation-and-troubleshooting-c1",
+     "prompt": "Which entry belongs in a lift station round record?",
+     "choices": [
+      "A date alone, so the record stays short and easy to file",
+      "The names of staff who visited, with no readings or notes",
+      "Level, run hours, readings and anything unusual",
+      "A summary of the plant's effluent results for the month"
+     ],
+     "correctIndex": 2,
+     "explanation": "A useful round record lists the level, run hours, readings and observations, so trends can be seen. A date alone, names alone or plant effluent data do not support troubleshooting.",
+     "objective": "operation-and-troubleshooting"
+    },
+    {
+     "id": "ceu-lift-stations-operation-and-troubleshooting-c2",
+     "prompt": "Low pressure on a pump's suction gauge can point to what?",
+     "choices": [
+      "A closed or blocked discharge line downstream of the pump",
+      "A suction blockage or a low wet well level",
+      "A suction line sized larger than the pump needs",
+      "A check valve that has been fitted backwards"
+     ],
+     "correctIndex": 1,
+     "explanation": "The WEF manual says low suction pressure can indicate blockage or a low wet well. A blocked discharge can raise discharge pressure instead, and a larger suction line lowers friction loss, so it does not cause low suction pressure.",
+     "objective": "operation-and-troubleshooting"
+    },
+    {
+     "id": "ceu-lift-stations-operation-and-troubleshooting-c3",
+     "prompt": "Pump 1 shows 2,340 run hours and pump 2 shows 1,905 run hours after the same period. What is the difference in hours?",
+     "choices": [
+      "435 h",
+      "4,245 h",
+      "2,123 h",
+      "2,340 h"
+     ],
+     "correctIndex": 0,
+     "explanation": "2,340 - 1,905 = 435 h. Adding the two gives combined pump-hours, not station run hours; averaging them gives 2,122.5, and quoting pump 1 alone ignores the gap.",
+     "objective": "operation-and-troubleshooting"
+    },
+    {
+     "id": "ceu-lift-stations-operation-and-troubleshooting-c4",
+     "prompt": "Where does the WEF manual say rags and debris are best controlled?",
+     "choices": [
+      "Upstream of the pump, before rags reach the impeller",
+      "Inside the impeller, by running the pump backwards often",
+      "At the discharge valve, by closing it between cycles",
+      "In the force main, by raising the discharge pressure"
+     ],
+     "correctIndex": 0,
+     "explanation": "Strings and rags may entangle the impeller, so they should be removed before the pump where practical. Routine reverse running, closing valves or raising pressure are not ways to keep rags off an impeller.",
+     "objective": "operation-and-troubleshooting"
+    },
+    {
+     "id": "ceu-lift-stations-operation-and-troubleshooting-c5",
+     "prompt": "What is the usual way to reduce hydrogen sulfide odour and corrosion in a collection system, according to the WEF manual?",
+     "choices": [
+      "At its source, using options such as peroxide or iron salts",
+      "Keep wastewater in the wet well longer so the gas settles out",
+      "Remove the vent so gas has no path to the equipment",
+      "Raise the pump-off level so the well stays full"
+     ],
+     "correctIndex": 0,
+     "explanation": "The manual says sulfide is best controlled at its source and names chemical options. Longer detention encourages septic conditions, and blocking vents or holding the well high does not fix the cause.",
+     "objective": "operation-and-troubleshooting"
+    },
+    {
+     "id": "ceu-lift-stations-operation-and-troubleshooting-c6",
+     "prompt": "An operator doing a round finds the wet well hatch open and wants to climb in to check the pump. What does this course teach?",
+     "choices": [
+      "It is safe to enter briefly once the pumps are turned off",
+      "It is safe when a coworker stays at the surface",
+      "It is a confined space; entry belongs to the owner's program",
+      "It is a confined space when the level is high, not otherwise"
+     ],
+     "correctIndex": 2,
+     "explanation": "Most wet wells are confined spaces whose atmosphere can change without warning. Entry is controlled by the owner's program. Switching off pumps, having a coworker nearby or waiting for a low level does not make entry safe.",
+     "objective": "operation-and-troubleshooting"
+    }
+   ]
+  }
+ ],
+ "finalAssessment": [
+  {
+   "id": "ceu-lift-stations-why-lift-stations-f1",
+   "prompt": "Which layout puts the pump in the liquid so that no suction piping is needed?",
+   "choices": [
+    "Pump in a separate dry well beside the wet well",
+    "Nonsubmersible pump set above the liquid in a wet pit",
+    "Submersible pump in a single wet well",
+    "Pneumatic station that pushes liquid out with air pressure"
+   ],
+   "correctIndex": 2,
+   "explanation": "A submersible pump sits in the wet well, so the impeller is in the liquid. Dry-pit and nonsubmersible pumps need suction piping, and a pneumatic station moves liquid with air rather than a pump.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-f2",
+   "prompt": "A station's average flow is 280 gpm. Using 1,440 min per day, how many gallons per day is that?",
+   "choices": [
+    "16,800 gal per day",
+    "403,200 gal per day",
+    "6,720 gal per day",
+    "4,032,000 gal per day"
+   ],
+   "correctIndex": 1,
+   "explanation": "280 x 1,440 = 403,200 gal per day. Multiplying by 60 gives gallons per hour, multiplying by 24 treats gpm as gallons per hour, and the last choice adds an extra zero.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-f3",
+   "prompt": "Why are isolation valves fitted on the suction and discharge of each pump?",
+   "choices": [
+    "So the pump can be throttled to match the flow instead of using a drive",
+    "So one pump can be taken out for work while the others keep running",
+    "So the force main drains back to the wet well when the pump stops",
+    "So the pump can run against a closed valve for long periods"
+   ],
+   "correctIndex": 1,
+   "explanation": "Isolation valves separate one pump from the wet well and force main. They are not for throttling, draining the line or long closed-valve operation, and a check valve handles backflow.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-f4",
+   "prompt": "The outlet is 44 ft above the pump-off level, and the pump-on level is 5 ft higher than pump-off. Friction and minor losses total 11 ft; velocity head is ignored. What is the TDH at the start of a cycle, when the well is at the pump-on level?",
+   "choices": [
+    "55 ft",
+    "60 ft",
+    "39 ft",
+    "50 ft"
+   ],
+   "correctIndex": 3,
+   "explanation": "At the pump-on level the lift is 44 - 5 = 39 ft, and 39 + 11 = 50 ft. Using 44 + 11 ignores the higher well, adding the 5 ft moves the surface the wrong way, and 39 ft alone leaves out the losses.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-f5",
+   "prompt": "According to the WEF manual, how do friction and minor losses change as flow through a pumping system increases?",
+   "choices": [
+    "They increase in direct proportion to the flow",
+    "They increase with the square of the flow",
+    "They stay constant at a fixed value for the system",
+    "They decrease because the water moves through the pipe faster"
+   ],
+   "correctIndex": 1,
+   "explanation": "Losses grow with the square of flow, so doubling flow roughly quadruples them. A straight-line or constant relationship underestimates them, and faster flow does not reduce friction.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-f1",
+   "prompt": "A wet well is 9 ft by 11 ft with a working depth of 2.0 ft between pump-off and pump-on. Use 7.48 gal per cubic foot. The inflow is 90 gpm and the pump delivers 360 gpm. With the pump off, how long does the well take to fill the working volume?",
+   "choices": [
+    "16.5 min",
+    "4.1 min",
+    "5.5 min",
+    "18.3 min"
+   ],
+   "correctIndex": 0,
+   "explanation": "Volume = 9 x 11 x 2.0 x 7.48 = 1,481 gal; fill time = 1,481 / 90 = 16.5 min. Dividing by the pump rate gives 4.1, dividing by pump minus inflow gives the drain time (5.5), and using 8.34 instead of 7.48 gives 18.3.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-f2",
+   "prompt": "A wet well is 7 ft by 12 ft with a working depth of 1.5 ft. Use 7.48 gal per cubic foot. The pump delivers 300 gpm while inflow is 85 gpm. How long does the pump take to drain the working volume?",
+   "choices": [
+    "3.1 min",
+    "11.1 min",
+    "4.4 min",
+    "0.6 min"
+   ],
+   "correctIndex": 2,
+   "explanation": "Volume = 7 x 12 x 1.5 x 7.48 = 942 gal; net drain rate = 300 - 85 = 215 gpm; time = 942 / 215 = 4.4 min. Using the pump rate alone gives 3.1, using inflow alone gives 11.1, and skipping 7.48 gives 0.6.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-f3",
+   "prompt": "A well takes 11.1 min to fill and 4.4 min to drain in one cycle. Using 60 min per hour, how many pump starts per hour does this make?",
+   "choices": [
+    "5.4 starts per hour",
+    "13.6 starts per hour",
+    "0.26 starts per hour",
+    "3.9 starts per hour"
+   ],
+   "correctIndex": 3,
+   "explanation": "Cycle = 11.1 + 4.4 = 15.5 min; starts per hour = 60 / 15.5 = 3.9. Using fill time alone gives 5.4, drain time alone gives 13.6, and dividing the cycle by 60 gives the fraction of an hour.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-f4",
+   "prompt": "What does a variable frequency drive change in order to alter a pump's flow?",
+   "choices": [
+    "The impeller diameter, which it trims while the pump is running",
+    "The static head, which it lowers by pumping at a lower level",
+    "The friction loss, which it reduces by smoothing the pipe wall",
+    "The frequency supplied to the motor, which sets its speed"
+   ],
+   "correctIndex": 3,
+   "explanation": "A VFD controls motor speed through frequency. Impeller diameter is fixed in service, and static head and pipe friction belong to the system rather than the drive.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-f5",
+   "prompt": "Why does the flow from a constant-speed pump fall a little as the wet well is drawn down?",
+   "choices": [
+    "The pump speed drops as the liquid level falls below the motor",
+    "The impeller grows lighter as the level falls, so it delivers less",
+    "Static head rises as the level falls, so flow drops on the curve",
+    "Friction loss disappears as the level falls, so less flow is needed"
+   ],
+   "correctIndex": 2,
+   "explanation": "A lower level raises the system curve, which moves the crossing toward lower flow. Speed is fixed by the supply, the impeller does not change, and friction does not vanish.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-f1",
+   "prompt": "Which task protects a float-based level control from failing?",
+   "choices": [
+    "Inspecting floats and cables and clearing debris",
+    "Raising the compressor pressure so the floats lift higher",
+    "Wiring the floats in series so one fault stops the station",
+    "Painting the cables so they resist grease and rags"
+   ],
+   "correctIndex": 0,
+   "explanation": "The WEF manual says to inspect float balls and cables, remove debris and untangle twisted cables. Compressor pressure applies to bubblers, series wiring adds a failure point, and paint does not stop fouling.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-f2",
+   "prompt": "With the pumps off, the level in an 8 ft by 9 ft wet well rises 0.9 ft in 4 min. Use 7.48 gal per cubic foot. What is the inflow rate?",
+   "choices": [
+    "484.7 gpm",
+    "16.2 gpm",
+    "121.2 gpm",
+    "10.1 gpm"
+   ],
+   "correctIndex": 2,
+   "explanation": "Volume = 8 x 9 x 0.9 x 7.48 = 484.7 gal; inflow = 484.7 / 4 = 121.2 gpm. Leaving out the division gives 484.7, skipping 7.48 gives 16.2, and reading 0.9 as inches gives 10.1.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-f3",
+   "prompt": "The influent is 350 gpm. While a pump runs, the level in an 8 ft by 10 ft well rises 1.2 in. in 4 min. Use influent = discharge + accumulation and 7.48 gal per cubic foot. What is the pump discharge?",
+   "choices": [
+    "335.0 gpm",
+    "365.0 gpm",
+    "15.0 gpm",
+    "170.5 gpm"
+   ],
+   "correctIndex": 0,
+   "explanation": "Accumulation = 8 x 10 x (1.2 / 12) x 7.48 / 4 = 15.0 gpm; discharge = 350 - 15.0 = 335.0 gpm. Adding the accumulation gives 365.0, quoting accumulation alone gives 15.0, and forgetting to convert inches to feet gives 170.5.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-f4",
+   "prompt": "A pump tested at 410 gpm shows 2.5 hours on its elapsed-time meter for the day. Assume it ran at 410 gpm throughout. Using 60 min per hour, how many gallons did it move?",
+   "choices": [
+    "61,500 gal",
+    "1,025 gal",
+    "2,460 gal",
+    "3,690,000 gal"
+   ],
+   "correctIndex": 0,
+   "explanation": "410 gpm x 2.5 h x 60 min per hour = 61,500 gal. Leaving out the 60 gives 1,025, multiplying the rate by 6 is arbitrary, and using 3,600 treats gpm as gallons per second.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-f5",
+   "prompt": "What is the main purpose of telemetry or SCADA at an unstaffed lift station?",
+   "choices": [
+    "To replace the pumps with a lower-cost control panel",
+    "To remove the need for a high level alarm in the wet well",
+    "To run the pumps from a distance so the level sensor can be removed",
+    "To monitor the station remotely and warn of problems"
+   ],
+   "correctIndex": 3,
+   "explanation": "The WEF manual describes telemetry as linking remote stations to a central point, and SCADA as giving early warning. It does not replace pumps, alarms or level sensing.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-f1",
+   "prompt": "A pump delivers less than its design flow. What does the WEF manual say this reading shows?",
+   "choices": [
+    "That the wet well is too small for the station",
+    "That an alert is warranted; the cause is unknown",
+    "That the impeller has worn through and needs replacing",
+    "That the force main has been fitted with a check valve"
+   ],
+   "correctIndex": 1,
+   "explanation": "Hydraulic monitoring is an alert: it shows a possible problem, but more checks are needed to find why. It does not on its own identify the well size, the impeller or the valves.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-f2",
+   "prompt": "Which item does the manual's troubleshooting table list as a cause of a centrifugal pump delivering no liquid?",
+   "choices": [
+    "Wrong rotation after electrical work",
+    "Too much liquid standing in the wet well",
+    "A discharge valve that has been opened fully",
+    "A check valve that closes at the end of a cycle"
+   ],
+   "correctIndex": 0,
+   "explanation": "Table 8.1 lists an unprimed pump, low speed, air leaks, plugged lines, wrong rotation and a closed discharge valve. The other items are not listed as causes of no flow.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-f3",
+   "prompt": "A pump's design flow is 380 gpm. A test gives 335 gpm. What is the percent drop from design?",
+   "choices": [
+    "13.4 percent",
+    "11.8 percent",
+    "45 percent",
+    "88.2 percent"
+   ],
+   "correctIndex": 1,
+   "explanation": "(380 - 335) / 380 x 100 = 11.8 percent. Dividing by the measured flow gives 13.4, treating the 45 gpm gap as a percentage gives 45, and 88.2 is the measured flow as a share of design.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-f4",
+   "prompt": "Which set of measures helps prevent a wet well overflow?",
+   "choices": [
+    "Raising the pump-off level so the well stays fuller between cycles",
+    "Muting the alarm during storms so staff are not disturbed",
+    "A high level alarm sent to staff, a standby pump and testing",
+    "Removing the standby pump to reduce maintenance workload"
+   ],
+   "correctIndex": 2,
+   "explanation": "Early warning, spare pumping capacity and testing are layers of protection. Holding the well fuller removes reserve, and muting alarms or removing spare equipment weakens protection.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-f5",
+   "prompt": "A motor runs hot and the records show many starts per hour. What is a sound first step?",
+   "choices": [
+    "Reset the overload and keep the pump running until the next round",
+    "Bypass the thermal protection so the motor can keep running",
+    "Raise the discharge pressure so the pump cycles less often",
+    "Reduce starts by reviewing set points and tell electrical staff"
+   ],
+   "correctIndex": 3,
+   "explanation": "The motor guide lists frequent starts as a cause of overheating, with the remedy of reducing the number of starts. Repeated resets or bypassing protection risk burnout, and raising discharge pressure is not a remedy for it.",
+   "objective": "operation-and-troubleshooting"
+  }
+ ],
+ "alternateFinalAssessment": [
+  {
+   "id": "ceu-lift-stations-why-lift-stations-a1",
+   "prompt": "For which situation does the WEF manual describe a wet pit station with pumps above the liquid as suitable?",
+   "choices": [
+    "A large station moving raw wastewater where flow has to stay continuous",
+    "A deep station where solids could plug a long suction pipe",
+    "A station where staff need to see and touch the pumps in a dry room",
+    "A package plant lift station where a short shutdown is tolerable"
+   ],
+   "correctIndex": 3,
+   "explanation": "Pumps above the liquid pull it through suction piping, so the layout suits sites where a shutdown is tolerable. The other choices describe reasons to choose a dry-pit layout instead.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-a2",
+   "prompt": "A pressure reading is 92.4 ft of head. Using 2.31 ft per psi, what pressure is that?",
+   "choices": [
+    "213.4 psi",
+    "90.1 psi",
+    "4.0 psi",
+    "40.0 psi"
+   ],
+   "correctIndex": 3,
+   "explanation": "psi = ft / 2.31 = 92.4 / 2.31 = 40.0. Multiplying by 2.31 inverts the conversion, subtracting 2.31 treats it as an offset, and 4.0 slips a decimal place.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-a3",
+   "prompt": "Why is velocity head often ignored when adding up total dynamic head?",
+   "choices": [
+    "It is small next to friction and minor losses",
+    "It is zero while the water is moving through a full pipe",
+    "It is already counted inside the static head term",
+    "It applies to the suction side of the pump alone"
+   ],
+   "correctIndex": 0,
+   "explanation": "The WEF manual says velocity head is typically ignored because it is inconsequential compared with losses. It is not zero in moving water, it is a separate term from static head, and it is not limited to the suction side.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-a4",
+   "prompt": "A force main carries 0.45 MGD on average. Using 1 MGD = 1,000,000 gal per day and 1,440 min per day, what is the flow in gpm?",
+   "choices": [
+    "18,750 gpm",
+    "450 gpm",
+    "312.5 gpm",
+    "648 gpm"
+   ],
+   "correctIndex": 2,
+   "explanation": "0.45 x 1,000,000 / 1,440 = 312.5 gpm. Dividing by 24 gives gallons per hour, dropping the time division leaves thousands of gallons per day, and multiplying 0.45 by 1,440 gives 648, which mixes the MGD unit with minutes.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-why-lift-stations-a5",
+   "prompt": "What is the benefit of a station having at least two pumps with controls that take turns?",
+   "choices": [
+    "One pump can act as standby, and turns spread wear",
+    "Both pumps run together at full speed to double the flow",
+    "The second pump removes the need for a wet well level control",
+    "The pumps can be sized for half the flow with no standby margin"
+   ],
+   "correctIndex": 0,
+   "explanation": "The WEF manual says one pump is the standby and controls typically alternate so both wear equally. Alternation does not run both pumps together, replace level control or remove the need for spare capacity.",
+   "objective": "why-lift-stations"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-a1",
+   "prompt": "At full speed the pump needs 20 brake hp. Using the rule that power varies with the cube of speed, how much brake horsepower does it need at the corresponding point on the 80 percent speed pump curve?",
+   "choices": [
+    "16.0 hp",
+    "10.2 hp",
+    "12.8 hp",
+    "4.0 hp"
+   ],
+   "correctIndex": 1,
+   "explanation": "Power scales with speed cubed: 20 x 0.8^3 = 20 x 0.512 = 10.2 hp. Using the plain ratio gives 16.0, squaring it gives 12.8, and using the 20 percent reduction as a multiplier gives 4.0.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-a2",
+   "prompt": "A centrifugal pump stops with its discharge valve open and no check valve fitted. What can happen?",
+   "choices": [
+    "Liquid runs back through the pump and may spin it backwards",
+    "The pump holds its prime and restarts faster the next time",
+    "The pump pushes air into the force main to prevent backflow",
+    "The motor builds up heat that closes the discharge valve"
+   ],
+   "correctIndex": 0,
+   "explanation": "Nothing in a centrifugal pump stops reverse flow, so the discharge column can drain back and turn the impeller the wrong way. The other options describe effects that do not occur.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-a3",
+   "prompt": "Assume the liquid weighs 8.34 lb per US gallon, as water does. Use water power = gpm x 8.34 lb/gal x TDH in feet / 33,000. What is the water power for 250 gpm at 80 ft of TDH, before any efficiency is applied?",
+   "choices": [
+    "5.1 hp",
+    "0.61 hp",
+    "303 hp",
+    "6.8 hp"
+   ],
+   "correctIndex": 0,
+   "explanation": "250 x 8.34 x 80 / 33,000 = 5.05, about 5.1 hp. Leaving out 8.34 gives 0.61, dividing by 550 instead of 33,000 mixes seconds with minutes (303), and dividing by 0.7457 applies the hp-to-kW factor backwards (6.8).",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-a4",
+   "prompt": "A pump's brake power is 12.0 hp and the motor efficiency is 88 percent. Using wire power = brake power / efficiency, what power does the motor draw?",
+   "choices": [
+    "10.6 hp",
+    "13.6 hp",
+    "12.9 hp",
+    "8.9 hp"
+   ],
+   "correctIndex": 1,
+   "explanation": "12.0 / 0.88 = 13.6 hp. Multiplying by 0.88 gives 10.6, adding 0.88 treats the efficiency as horsepower, and multiplying by 0.7457 applies a kilowatt conversion that is not needed.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-pumps-and-drives-a5",
+   "prompt": "Why should a gate valve be fully open or fully closed, not used to throttle flow?",
+   "choices": [
+    "Partly open gate valves raise the static head of the whole system",
+    "Partly open gate valves stop the pump from priming",
+    "Partly open gate valves can trap material and eventually plug",
+    "Partly open gate valves make the pump spin backwards"
+   ],
+   "correctIndex": 2,
+   "explanation": "The WEF manual warns that gate valves used as throttles trap material and plug. The other claims invent effects on static head, priming or rotation.",
+   "objective": "pumps-and-drives"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-a1",
+   "prompt": "What risk is associated with an electrode level control?",
+   "choices": [
+    "One faulty electrode can lock the pumps on or off",
+    "The electrodes make the wet well atmosphere less corrosive over time",
+    "The electrodes measure flow, so level readings drift with inflow",
+    "The electrodes need a compressor to keep them wet"
+   ],
+   "correctIndex": 0,
+   "explanation": "Spellman notes that two electrodes are used, so a problem with one can hold the control in an on or off state, and cleanliness matters. The other options invent effects.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-a2",
+   "prompt": "A bubbler staging example starts the lead pump when the liquid surface is 4.2 ft above the bubbler-tube outlet. Using 1 psi = 2.31 ft, what air pressure corresponds to that depth?",
+   "choices": [
+    "9.7 psi",
+    "6.5 psi",
+    "1.8 psi",
+    "0.55 psi"
+   ],
+   "correctIndex": 2,
+   "explanation": "psi = ft / 2.31 = 4.2 / 2.31 = 1.8. Multiplying gives 9.7, adding 2.31 gives 6.5, and inverting the ratio gives 0.55.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-a3",
+   "prompt": "Why check each pump's elapsed-time meter on a round?",
+   "choices": [
+    "To reset the meter to zero so the next round starts a fresh count",
+    "To tune the pump curve to match the readings taken on the meter",
+    "To confirm the level sensor is calibrated against the meter",
+    "To see whether pumps share run hours and spot one working harder"
+   ],
+   "correctIndex": 3,
+   "explanation": "Run hours should climb at similar rates when alternation works, and a pump that needs more hours for the same inflow may be delivering less. Meters are normally recorded, not reset, and they do not tune curves or calibrate sensors.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-a4",
+   "prompt": "Assume each pump averaged its tested rate while it ran. Pump A was tested at 300 gpm and ran 2.0 h. Pump B was tested at 280 gpm and ran 1.5 h. Using 60 min per hour, about how many gallons did the station pump?",
+   "choices": [
+    "36,000 gal",
+    "1,020 gal",
+    "61,200 gal",
+    "121,800 gal"
+   ],
+   "correctIndex": 2,
+   "explanation": "Volume = 300 x 2.0 x 60 + 280 x 1.5 x 60 = 36,000 + 25,200 = 61,200 gal. Counting one pump gives 36,000, skipping the 60 gives 1,020, and adding the rates then multiplying by the total hours gives 121,800.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-controls-and-monitoring-a5",
+   "prompt": "What should happen when a station's PLC settings, such as pump order or start delay, are changed?",
+   "choices": [
+    "The change should be made on the next shift without a record",
+    "The change should be recorded and tested",
+    "The change should be left for the pump maker to enter",
+    "The change should be hidden from staff so they do not interfere"
+   ],
+   "correctIndex": 1,
+   "explanation": "A PLC program can be changed easily, which is both its strength and a risk. Changes need a record and a test. Hiding a change, or letting it go unrecorded and untested, undermines operation; a maker or vendor may make an authorized change, but the station still records and tests it.",
+   "objective": "controls-and-monitoring"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-a1",
+   "prompt": "Pump 1's elapsed-time meter rose from 1,204.5 h to 1,209.0 h over 3 days. What is its average daily run time?",
+   "choices": [
+    "4.5 h per day",
+    "1.5 h per day",
+    "13.5 h per day",
+    "0.67 h per day"
+   ],
+   "correctIndex": 1,
+   "explanation": "(1,209.0 - 1,204.5) / 3 = 1.5 h per day. Quoting the rise alone gives 4.5, multiplying by days gives 13.5, and dividing days by hours gives 0.67.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-a2",
+   "prompt": "What does the WEF manual suggest for grease that builds up in lines?",
+   "choices": [
+    "Closing the isolation valves to let the grease settle in the wet well",
+    "Running the pump faster so the grease passes through the impeller",
+    "Grease traps at the source, with washing or scraping",
+    "Adding more air to the wet well to break the grease up"
+   ],
+   "correctIndex": 2,
+   "explanation": "Source control reduces the grease that arrives, and chemical washing or mechanical scraping removes deposits. Settling, speeding the pump or adding air do not address the cause.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-a3",
+   "prompt": "Why is a repeated trip on a submersible pump investigated rather than only reset?",
+   "choices": [
+    "A trip shows the wet well level sensor is out of calibration",
+    "A failed seal can let liquid reach the motor and damage it",
+    "A trip means the pump curve has moved to the left",
+    "A trip is a normal result of the alternation setting"
+   ],
+   "correctIndex": 1,
+   "explanation": "A failed seal can let liquid reach the motor and cause an electrical fault. A trip can have several causes, and a failed seal is one of the faults to check. A trip does not by itself show a calibration error, a curve shift or normal alternation.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-a4",
+   "prompt": "Which hazards does the WEF manual list for a confined space such as a wet well?",
+   "choices": [
+    "Low air pressure, slow pump starts and bright lighting in the well",
+    "Warm water, soft floors and a risk of slow leaks",
+    "Corrosion of hatches, rust on handrails and loose bolts",
+    "Oxygen-deficient air, flammable gas, toxic gas and engulfment"
+   ],
+   "correctIndex": 3,
+   "explanation": "The WEF manual (Chapter 5) lists oxygen deficiency, flammable and toxic atmospheres, engulfment, temperature extremes, noise and slippery surfaces. The other lists name things the manual does not list as confined-space hazards.",
+   "objective": "operation-and-troubleshooting"
+  },
+  {
+   "id": "ceu-lift-stations-operation-and-troubleshooting-a5",
+   "prompt": "Why keep equipment in a wet well to a minimum?",
+   "choices": [
+    "The equipment would stop the wastewater from flowing into the well",
+    "The wet well is too small to hold a float or a sensor",
+    "The equipment makes the wet well too warm for the pumps",
+    "Wet well air attacks equipment, and access for repair is hard"
+   ],
+   "correctIndex": 3,
+   "explanation": "Wet well air attacks metals and electrical parts, and servicing is hard. The other options invent flow, space or temperature effects.",
+   "objective": "operation-and-troubleshooting"
+  }
+ ]
+}
