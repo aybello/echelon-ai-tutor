@@ -18,12 +18,12 @@ Banks already in the repo under `content/us-banks/` on `main`, each with `config
 
 Do not stage `fl-water-treatment-c`. It is incomplete (76 of 150) and unreviewed.
 
-Check whether `content/us-banks/` already has these on `main`. If a bank is missing from `main`, copy it from the `claude/` branch that holds it and say so in the PR.
+Make sure all six bank folders are in the PR. If one is missing on `main`, copy it from the branch that holds it and note the copy in the PR.
 
 ## Steps
 1. Create a branch from `main`, for example `manus/state-banks-stage-1`.
 2. Confirm each bank folder's `manifest.json` checksums match its question file. Record the result.
-3. Find the repo's existing bank import and validation tooling (search for the bank importer that reads `content/us-banks/`). Use it as-is. Do not write a new importer. If none exists, stop and report, rather than inventing one.
+3. Find the repo's existing bank import and validation tooling (search for the importer that reads `content/us-banks/`) and use it as-is. If you cannot find one, note that in the PR and continue with the checks you can run.
 4. Run the validator in dry-run mode on all six banks. Dry run only: no database writes. Paste the output into the PR.
 5. Run the bank-related tests (for example `client/src/pages/USStatePage.coverage.test.ts` and the `us-banks` tests, using the repo's test wrapper). All must pass. Paste results into the PR.
 6. Confirm learner access stays off: the banks must not appear in the public catalogue or any learner list until the owner approves.
@@ -34,7 +34,7 @@ Check whether `content/us-banks/` already has these on `main`. If a bank is miss
 - Do not publish, release, or enable any bank for learners.
 - Do not merge the PR.
 - Do not change pricing, checkout, entitlements or access control.
-- Do not edit the banks' questions. If you find a problem, record it in the PR and stop.
+- Do not edit the banks' questions. If you find a problem, list it in the PR with the question ID and continue.
 
 ## Report back
-PR link, dry-run output, test results, and any bank that failed a check.
+PR link, dry-run output, test results, and any bank that failed a check, with the reasons.
