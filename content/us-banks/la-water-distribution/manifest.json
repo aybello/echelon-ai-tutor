@@ -1,0 +1,91 @@
+{
+  "version": "2026-11-27-v1",
+  "status": "validated-local-candidate-not-imported",
+  "bankKey": "la-water-distribution",
+  "state": "LA",
+  "stream": "water-distribution",
+  "label": "Louisiana Water Distribution Class 1-4 (practice)",
+  "numberRange": {
+    "start": 1,
+    "end": 250,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Practice questions for the Louisiana Water Distribution Class 1, 2, 3 and 4 operator examinations, scoped to the distribution-system objectives in the dossier. Original items in US units. Not an official LDH examination, blueprint or Need-to-Know. Each item is labelled to one class. Excludes the Certification Law and Rules Examination, eligibility, fees, registration, renewal, state rule and statute clauses, site-specific procedures, emergency response and chemical-handling instructions.",
+  "file": "questions/bank-250.json",
+  "count": 250,
+  "calculations": 75,
+  "sha256": "b4dea3f93aebb152a40cd416a569f37fd67fcea3663bd5113a3514cc864cf1f4",
+  "modules": {
+    "Class 1 - foundational distribution concepts": 48,
+    "Class 2 - distribution concepts": 44,
+    "Class 3 - system planning and operation concepts": 43,
+    "Class 4 - planning and program concepts": 40,
+    "Class 1 - foundational math": 12,
+    "Class 2 - applied calculations": 23,
+    "Class 3 - applied calculations": 23,
+    "Class 4 - advanced calculations": 17
+  },
+  "difficulty": {
+    "easy": 53,
+    "medium": 141,
+    "hard": 56
+  },
+  "topics": {
+    "Sources and characteristics of water": 8,
+    "Potable water quality concepts": 8,
+    "Pipe materials, joints and appurtenances": 8,
+    "Installation and construction methods": 8,
+    "Disinfection and residual chlorination": 8,
+    "Sampling, flushing and dead ends": 8,
+    "Bacteriological sampling and test meaning": 8,
+    "Cross-connections and corrective approaches": 8,
+    "Storage tank sanitation and maintenance": 8,
+    "Distribution hydraulics and meter error": 8,
+    "Pump types and components": 6,
+    "Construction material tradeoffs": 6,
+    "Storage and production adequacy": 8,
+    "Sampling and cross-connection program planning": 6,
+    "Service continuity and preventive maintenance": 8,
+    "Water-loss control and flow measurement": 7,
+    "Instrumentation and controls": 7,
+    "Pump curves and main carrying-capacity loss": 7,
+    "Pump performance testing and curve interpretation": 7,
+    "Pump replacement economics": 7,
+    "Cost reports and budgeting": 6,
+    "Meter-shop functions": 6,
+    "Safety program planning": 6,
+    "Public relations and customer communication": 8,
+    "Unit conversions and area": 12,
+    "Flow, volume and velocity": 7,
+    "Tank capacity and detention time": 6,
+    "Pressure, head and friction loss": 5,
+    "Chemical dosage": 5,
+    "Pump capacity and water horsepower": 8,
+    "Pump and motor efficiency": 6,
+    "Water loss": 5,
+    "Equipment capacity and chemical dosage": 4,
+    "Flow formula applications": 7,
+    "Complex friction loss": 5,
+    "Pump performance from test data": 5
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "count": 250,
+    "calculations": 75,
+    "answerPositions": [
+      62,
+      63,
+      63,
+      62
+    ],
+    "answerCues": {
+      "conceptualCount": 175,
+      "longestRate": 0.24571428571428572,
+      "shortestRate": 0.10857142857142857,
+      "longTells": [],
+      "shortTells": [],
+      "qualifierTells": []
+    }
+  }
+}

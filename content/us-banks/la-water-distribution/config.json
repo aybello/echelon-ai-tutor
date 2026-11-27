@@ -1,0 +1,38 @@
+{
+  "id": "la-water-distribution",
+  "bankKey": "la-water-distribution",
+  "itemPrefix": "LA-WD",
+  "version": "2026-11-27-v1",
+  "state": "LA",
+  "stream": "water-distribution",
+  "label": "Louisiana Water Distribution Class 1-4 (practice)",
+  "startNumber": 1,
+  "count": 250,
+  "calcCount": 75,
+  "purpose": "Practice questions for the Louisiana Water Distribution Class 1, 2, 3 and 4 operator examinations, scoped to the distribution-system objectives in the dossier. Original items in US units. Not an official LDH examination, blueprint or Need-to-Know. Each item is labelled to one class. Excludes the Certification Law and Rules Examination, eligibility, fees, registration, renewal, state rule and statute clauses, site-specific procedures, emergency response and chemical-handling instructions.",
+  "reviewIntro": "250 original practice questions: 175 conceptual and 75 calculations, in US customary units, labelled Class 1 (60), Class 2 (65), Class 3 (65) and Class 4 (60). Topic scope comes from the dossier's objective summary. The LDH Need-to-Know outline itself could not be retrieved on 2026-11-27 (HTTP 403 from the origin), so item-level scope has not been checked against it. This is a local content package, not proof of a production import.",
+  "sources": {
+    "LA-OBJ": [
+      "Louisiana Water Distribution Class 1-4 objectives, as summarised in the Louisiana Water Distribution readiness dossier (2026-10-29), which cites LDH Operator Need-to-Know: Water Distribution. Live outline not retrieved on 2026-11-27.",
+      "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterDistribution.pdf"
+    ],
+    "LA-DEF": [
+      "La. R.S. 40:1281.1 Definitions (water distribution system, water supply system, water treatment plant), retrieved 2026-11-27",
+      "https://legis.la.gov/legis/Law.aspx?d=964412"
+    ],
+    "LA-COM": [
+      "La. R.S. 40:1281.2 Committee of certification, retrieved 2026-11-27",
+      "https://legis.la.gov/legis/Law.aspx?d=964413"
+    ]
+  },
+  "moduleCounts": {
+    "Class 1 - foundational distribution concepts": 48,
+    "Class 1 - foundational math": 12,
+    "Class 2 - distribution concepts": 44,
+    "Class 2 - applied calculations": 23,
+    "Class 3 - system planning and operation concepts": 43,
+    "Class 3 - applied calculations": 23,
+    "Class 4 - planning and program concepts": 40,
+    "Class 4 - advanced calculations": 17
+  }
+}
