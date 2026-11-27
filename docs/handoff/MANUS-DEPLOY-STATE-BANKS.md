@@ -29,10 +29,20 @@ Make sure all six bank folders are in the PR. If one is missing on `main`, copy 
 6. Confirm learner access stays off: the banks must not appear in the public catalogue or any learner list until the owner approves.
 7. Open a PR against `main`. Title: "US state banks: stage six reviewed banks (not published)". The body must list, for each bank: question count, review record, and the dry-run result. Note the Florida water distribution bank's review did not compare against the dossier. Add that the Florida water treatment draft is excluded.
 
+
+## Owner approval (2026-11-27)
+The owner approves importing and publishing these three banks, once the dry run in step 4 passes:
+- `ca-wastewater-collection-csm1` (295 questions)
+- `ca-water-distribution-d1` (250 questions)
+- `ca-water-treatment-t1` (280 questions)
+
+Not yet approved: the Pennsylvania and Florida banks. Keep them staged only.
+
+Manus: run the existing guarded import for the three approved banks, then release them to learners using the repo's normal release step. Record the import output and the release in the PR. If a check fails, record it and do not release that bank.
+
 ## Do not
-- Do not write to any production or shared database.
-- Do not publish, release, or enable any bank for learners.
-- Do not merge the PR.
+- Do not publish, release or enable the Pennsylvania or Florida banks for learners.
+- Do not merge the PR without the owner's approval in the PR thread.
 - Do not change pricing, checkout, entitlements or access control.
 - Do not edit the banks' questions. If you find a problem, list it in the PR with the question ID and continue.
 
