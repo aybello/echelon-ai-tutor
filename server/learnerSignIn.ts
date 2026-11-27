@@ -15,6 +15,11 @@ export async function recordLearnerSignIn(req: Pick<Request, "headers">, identit
       identity = { userId: (await getUserByOpenId(identity.openId))?.id };
       if (!identity.userId) return;
     }
+    if (!identity.userId && identity.email) {
+      const { getUserByEmail } = await import("./db");
+      const account = await getUserByEmail(identity.email);
+      if (account?.id) identity = { ...identity, userId: account.id };
+    }
     await persistAnalyticsEvent({ event: "login", ts: new Date().toISOString(),
       userId: identity.userId ? String(identity.userId) : null,
       email: identity.email?.trim().toLowerCase() || null,

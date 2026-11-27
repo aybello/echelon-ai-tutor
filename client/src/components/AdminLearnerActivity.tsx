@@ -69,6 +69,17 @@ export default function AdminLearnerActivity() {
       {activity.data && <>
         {activity.data.partial && <p role="status">Partial history: at most 200 timeline observations are shown, with each source bounded to 200 records. Totals cover displayed observations only.</p>}
         <dl style={{ display: "flex", gap: 32, flexWrap: "wrap" }}><div><dt>Last activity in the timeline below</dt><dd>{activity.data.lastObservedAt ? date(activity.data.lastObservedAt) : "Not available"}</dd></div><div><dt>Recorded active study time (displayed records)</dt><dd>{activity.data.recordedStudySeconds.toLocaleString()} seconds</dd></div></dl>
+        <div aria-label="Learner engagement summary" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, margin: "16px 0" }}>
+          {[
+            ["Sign-ins", activity.data.metrics.signIns],
+            ["Practice runs", activity.data.metrics.practiceRuns],
+            ["Mock exams", activity.data.metrics.mockExams],
+            ["Tutor sessions", activity.data.metrics.tutorSessions],
+            ["Game answers", activity.data.metrics.gameAnswers],
+            ["Game rounds", activity.data.metrics.gameRoundsCompleted],
+          ].map(([label, value]) => <div key={label} className="admin-panel" style={{ padding: 12 }}><strong>{value}</strong><div style={{ fontSize: 12 }}>{label}</div></div>)}
+        </div>
+        <p style={{ fontSize: 13 }}>Recorded course coverage: {activity.data.metrics.courses.length ? activity.data.metrics.courses.map(course => getCourseByKey(course)?.displayName ?? course).join(", ") : "None in this window"}.</p>
         <p style={{ fontSize: 13 }}>Observed assessment sessions are listed separately and are not included in this timestamp.</p>
         {!activity.data.items.length ? <p>No supported timeline activity recorded in this window. Check observed assessment sessions separately below.</p> : <ol aria-label="Learner activity timeline" style={{ paddingLeft: 24 }}>
           {activity.data.items.map(item => <li key={item.key} style={{ padding: "16px 0", borderBottom: "1px solid var(--border, #e2e8f0)" }}>

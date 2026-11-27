@@ -2,10 +2,10 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "./_core/context";
 const state = vi.hoisted(() => ({
   persist: vi.fn(), verify: vi.fn(), magic: vi.fn(), cookie: vi.fn(), entitlements: vi.fn(),
-  exchange: vi.fn(), info: vi.fn(), session: vi.fn(), upsert: vi.fn(), lookup: vi.fn(), track: vi.fn(),
+  exchange: vi.fn(), info: vi.fn(), session: vi.fn(), upsert: vi.fn(), lookup: vi.fn(), emailLookup: vi.fn(), track: vi.fn(),
 }));
 vi.mock("./analytics", () => ({ persistAnalyticsEvent: state.persist, trackEvent: state.track }));
-vi.mock("./db", () => ({ getDb: async () => ({}), upsertUser: state.upsert, getUserByOpenId: state.lookup }));
+vi.mock("./db", () => ({ getDb: async () => ({}), upsertUser: state.upsert, getUserByOpenId: state.lookup, getUserByEmail: state.emailLookup }));
 vi.mock("./auth/atomicVerification", () => ({ verifyAndConsumeOtp: state.verify, consumeMagicLinkAtomically: state.magic }));
 vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: state.cookie, readVerifiedEmailFromRequest: vi.fn(), ECHELON_SESSION_COOKIE: "fixture" }));
 vi.mock("./_core/access", () => ({ normalizeEmail: (email: string) => email.trim().toLowerCase(), resolveEntitlementsByEmail: state.entitlements }));
@@ -30,6 +30,7 @@ beforeEach(() => {
   state.exchange.mockResolvedValue({ accessToken: "not-stored" });
   state.info.mockResolvedValue({ openId: "provider-verified-id", email: "not-trusted-for-association@example.test" });
   state.lookup.mockResolvedValue({ id: 17 });
+  state.emailLookup.mockResolvedValue(undefined);
   state.session.mockResolvedValue("not-stored");
 });
 async function oauth(query: Record<string, string> = { code: "code", state: "state" }) {
@@ -56,6 +57,12 @@ describe("genuine successful sign-ins", () => {
     expect(state.persist.mock.calls[0][0]).toMatchObject({ userId: "17", email: null, extra: { method: "oauth" } });
     expect(JSON.stringify(state.persist.mock.calls)).not.toContain("not-stored");
     expect(state.cookie.mock.invocationCallOrder[0]).toBeLessThan(state.persist.mock.invocationCallOrder[0]);
+  });
+  it("attaches a verified email sign-in to an existing account ID when one exists", async () => {
+    state.emailLookup.mockResolvedValue({ id: 23 });
+    await recordLearnerSignIn({ headers: { "x-echelon-activity": "allowed" } }, { email: "VERIFIED@example.test" }, "email_otp");
+    expect(state.emailLookup).toHaveBeenCalledWith("VERIFIED@example.test");
+    expect(state.persist.mock.calls[0][0]).toMatchObject({ userId: "23", email: "verified@example.test" });
   });
   it.each(["email", "dashboard", "magic", "oauth"])("does not record failed or already-consumed %s auth", async kind => {
     state.verify.mockResolvedValue({ valid: false, reason: "expired" });

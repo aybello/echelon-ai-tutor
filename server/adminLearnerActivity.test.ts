@@ -8,6 +8,7 @@ vi.mock("./_core/env", () => ({ ENV: { cookieSecret: "learner-discovery-test-onl
 import { adminRouter } from "./routers/admin";
 import { assessmentActivityEmailHash } from "./assessmentActivity";
 import { hashAnalyticsEmail } from "./analytics";
+import { gamePlayerHashForSelection } from "./gameAnalytics";
 import { finalizeLearnerFeed, signInMethod } from "./adminLearnerActivity";
 function caller(role: "admin" | "user" | null) {
   return adminRouter.createCaller({ user: role ? { id: 1, role } as never : null, studentEmail: "verified@example.test", req: { headers: {} } as never, res: {} as never });
@@ -140,13 +141,24 @@ describe("admin learner activity", () => {
     expect(practiceQuery.groups).toHaveLength(3);
     expect(dialect.sqlToQuery(practiceQuery.groups![0] as never).sql).toContain("concat('legacy:'");
   });
+  it("links identified game events to the selected email without exposing the player hash", async () => {
+    const at = new Date();
+    mockDatabase(new Map<unknown, unknown[]>([[productAnalyticsEvents, [
+      { id: 10, at, event: "game_answered", metadata: '{"mode":"rapid-swipe","playerKind":"identified"}', course: "oit", anonymousHash: gamePlayerHashForSelection({ email: "alice@example.test" }) },
+      { id: 11, at, event: "game_round_completed", metadata: '{"mode":"rapid-swipe","playerKind":"identified"}', course: "oit", anonymousHash: gamePlayerHashForSelection({ email: "alice@example.test" }) },
+    ]]]));
+    const result = await caller("admin").learnerActivity({ learner: { email: "alice@example.test" }, days: 30 });
+    expect(result.metrics).toMatchObject({ gameAnswers: 1, gameRoundsCompleted: 1, courses: ["oit"] });
+    expect(result.items.filter(item => item.kind === "game")).toHaveLength(2);
+    expect(JSON.stringify(result)).not.toContain(gamePlayerHashForSelection({ email: "alice@example.test" }));
+  });
   it("account queries use recorded user IDs only and never reverse game HMACs", async () => {
     const queries = mockDatabase();
     await caller("admin").learnerActivity({ learner: { userId: 42 }, days: 7 });
     for (const query of queries) {
       const compiled = dialect.sqlToQuery(query.conditions as never);
-      expect(compiled.params).toContain(query.table === productAnalyticsEvents ? "42" : 42);
-      expect(compiled.sql).not.toContain("anonymousHash");
+      if (query.table === productAnalyticsEvents && !compiled.sql.includes("anonymousHash")) expect(compiled.params).toContain("42");
+      if (query.table !== productAnalyticsEvents) expect(compiled.params).toContain(42);
       expect(compiled.sql).not.toContain("studentEmail");
     }
   });

@@ -3,6 +3,7 @@ import { TRPCError } from "@trpc/server";
 import { assessmentActivitySessions, diagnosticSessions as diagnostics, examResults as exams, learningActivitySessions as study, productAnalyticsEvents as events, questionAttempts as attempts, users } from "../drizzle/schema";
 import { getDb } from "./db";
 import { hashAnalyticsEmail } from "./analytics";
+import { gamePlayerHashForSelection } from "./gameAnalytics";
 import { adminAssessmentScope, assessmentReadPredicate } from "./assessmentActivityRead";
 import type { LearnerActivityFeed, LearnerActivityItem, LearnerOption, LearnerSelection } from "../shared/learnerActivity";
 
@@ -67,9 +68,22 @@ export function finalizeLearnerFeed(items: LearnerActivityItem[], partial: boole
   const sorted = items.filter(item => item.at >= since && item.at <= until)
     .sort((a, b) => b.at.getTime() - a.at.getTime() || a.key.localeCompare(b.key));
   const visible = sorted.slice(0, LIMIT);
+  const courses = [...new Set(visible.map(item => item.course).filter((course): course is string => Boolean(course)))].sort();
   return { items: visible, lastObservedAt: sorted[0]?.at ?? null,
     recordedStudySeconds: visible.reduce((sum, item) => sum + (item.activeSeconds ?? 0), 0),
-    partial: partial || sorted.length > LIMIT, since, until };
+    partial: partial || sorted.length > LIMIT, since, until,
+    metrics: {
+      signIns: visible.filter(item => item.kind === "signin").length,
+      studySessions: visible.filter(item => item.kind === "study").length,
+      practiceRuns: visible.filter(item => item.kind === "practice").length,
+      mockExams: visible.filter(item => item.kind === "mock").length,
+      diagnostics: visible.filter(item => item.kind === "diagnostic").length,
+      tutorSessions: visible.filter(item => item.kind === "tutor").length,
+      gameAnswers: visible.filter(item => item.kind === "game" && item.label === "Interactive game answer").length,
+      gameRoundsCompleted: visible.filter(item => item.kind === "game" && item.label === "Interactive game round completed").length,
+      courses,
+    },
+  };
 }
 export async function readLearnerActivity(selection: LearnerSelection, days: 7 | 30): Promise<LearnerActivityFeed> {
   const db = await database();
@@ -81,7 +95,8 @@ export async function readLearnerActivity(selection: LearnerSelection, days: 7 |
   const window = (time: typeof study.startedAt | typeof exams.createdAt | typeof diagnostics.completedAt | typeof events.occurredAt | typeof attempts.createdAt) => and(gte(time, since), lte(time, until));
   const eventIdentity = "userId" in selection ? eq(events.userId, String(selection.userId))
     : and(isNull(events.userId), eq(events.emailHash, hashAnalyticsEmail(selection.email)));
-  const [log, sessions, results, baselines, practice] = await Promise.all([
+  const gameIdentity = eq(events.anonymousHash, gamePlayerHashForSelection(selection));
+  const [log, sessions, results, baselines, practice, games] = await Promise.all([
     db.select({ id: events.id, at: events.occurredAt, event: events.eventName, metadata: events.metadata, course: events.examType }).from(events)
       .where(and(eventIdentity, inArray(events.eventName, ["login", "ai_tutor_session_saved"]), window(events.occurredAt)))
       .orderBy(desc(events.occurredAt), desc(events.id)).limit(LIMIT + 1),
@@ -95,6 +110,9 @@ export async function readLearnerActivity(selection: LearnerSelection, days: 7 |
       .where(and(identity(attempts), window(attempts.createdAt), or(isNull(attempts.quizMode), sql`${attempts.quizMode} <> 'mock'`)))
       .groupBy(sql`coalesce(${attempts.sessionId}, concat('legacy:', ${attempts.id}))`, attempts.examType, attempts.quizMode)
       .orderBy(sql`observed_at desc`, sql`run_key asc`, attempts.examType, attempts.quizMode).limit(LIMIT + 1),
+    db.select({ id: events.id, at: events.occurredAt, event: events.eventName, course: events.productKey, metadata: events.metadata }).from(events)
+      .where(and(gameIdentity, inArray(events.eventName, ["game_answered", "game_round_completed"]), window(events.occurredAt)))
+      .orderBy(desc(events.occurredAt), desc(events.id)).limit(LIMIT + 1),
   ]);
   const items: LearnerActivityItem[] = [];
   for (const row of log.slice(0, LIMIT)) {
@@ -108,5 +126,11 @@ export async function readLearnerActivity(selection: LearnerSelection, days: 7 |
   for (const row of results.slice(0, LIMIT)) items.push({ key: `result:${row.id}`, at: row.at, kind: row.calc === "yes" ? "math" : "mock", label: row.calc === "yes" ? "Math practice" : "Mock exam", course: row.course, correct: row.correct, total: row.total, detail: "Canonical saved result; timing status unavailable in historical result rows. Not a certification exam. Timestamp is when saved; historical interaction detail is unavailable." });
   for (const row of baselines.slice(0, LIMIT)) items.push({ key: `diagnostic:${row.id}`, at: row.at, kind: "diagnostic", label: "Diagnostic completed", course: row.course, correct: row.correct, total: row.total, detail: "Server-scored baseline" });
   for (const [index, row] of practice.slice(0, LIMIT).entries()) items.push({ key: `practice:${index}`, at: new Date(row.at), kind: "practice", label: "Practice activity", course: row.course, correct: Number(row.correct), total: Number(row.total), detail: `${["standard", "quick10", "missed", "qotd", "adaptive"].includes(row.mode ?? "") ? row.mode : "practice"} · recorded answers, not necessarily a completed quiz` });
-  return finalizeLearnerFeed(items, [log, sessions, results, baselines, practice].some(rows => rows.length > LIMIT), since, until);
+  for (const row of games.slice(0, LIMIT)) {
+    let mode: string | null = null;
+    try { const metadata = JSON.parse(row.metadata ?? "null"); mode = typeof metadata?.mode === "string" ? metadata.mode : null; } catch { /* malformed metadata stays undisclosed */ }
+    const completed = row.event === "game_round_completed";
+    items.push({ key: `game:${row.id}`, at: row.at, kind: "game", label: completed ? "Interactive game round completed" : "Interactive game answer", course: row.course, detail: `${mode ?? "interactive game"} · server-verified activity; correctness is not stored` });
+  }
+  return finalizeLearnerFeed(items, [log, sessions, results, baselines, practice, games].some(rows => rows.length > LIMIT), since, until);
 }

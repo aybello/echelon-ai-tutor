@@ -17,10 +17,13 @@ const capabilitySchema = z.object({
   kind: z.enum(["identified", "anonymous"]), expires: z.number().int(),
 }).strict();
 const hash = (value: string) => createHmac("sha256", ENV.cookieSecret).update(`game-activity:v1:${value}`).digest("hex");
+export function gamePlayerHashForSelection(selection: { userId: number } | { email: string }) {
+  return hash("userId" in selection ? `user:${selection.userId}` : `email:${selection.email.trim().toLowerCase()}`);
+}
 export function gameIdentity(ctx: Pick<TrpcContext, "user" | "studentEmail">, visitorId: string) {
   if (!ENV.cookieSecret || ctx.user?.role === "admin" || isInternalBuyerEmail(ctx.user?.email) || isInternalBuyerEmail(ctx.studentEmail)) return null;
-  const identity = ctx.user ? `user:${ctx.user.id}` : ctx.studentEmail ? `email:${ctx.studentEmail.trim().toLowerCase()}` : `browser:${visitorId}`;
-  return { player: hash(identity), kind: ctx.user || ctx.studentEmail ? "identified" as const : "anonymous" as const };
+  const identity = ctx.user ? { userId: ctx.user.id } : ctx.studentEmail ? { email: ctx.studentEmail } : null;
+  return { player: identity ? gamePlayerHashForSelection(identity) : hash(`browser:${visitorId}`), kind: identity ? "identified" as const : "anonymous" as const };
 }
 export function issueGameCapability(session: InteractiveSessionResponse, ctx: TrpcContext, visitorId?: string): string | undefined {
   if (!visitorId || !session.examples.length) return;
