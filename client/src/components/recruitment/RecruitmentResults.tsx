@@ -75,7 +75,7 @@ export function RecruitmentError({
     </div>
   );
 }
-function downloadCsv(
+export function downloadRecruitmentCsv(
   assessment: RecruitmentDefinitionSummary,
   results: RecruitmentResult[]
 ) {
@@ -152,12 +152,14 @@ function downloadCsv(
 export function RecruitmentResults({
   assessment,
   results,
+  onDownload,
   onCopy,
   onRevoke,
   busy,
 }: {
   assessment: RecruitmentDefinitionSummary;
   results: RecruitmentResult[];
+  onDownload: () => void;
   onCopy: (assignmentId: string) => void;
   onRevoke: (result: RecruitmentResult) => void;
   busy: boolean;
@@ -175,7 +177,7 @@ export function RecruitmentResults({
           variant="outline"
           className="min-h-11"
           onClick={() => {
-            if (access.isCurrent()) downloadCsv(assessment, results);
+            if (access.isCurrent() && !busy) onDownload();
           }}
           disabled={busy || !results.length}
         >
@@ -187,6 +189,12 @@ export function RecruitmentResults({
         Results support human review, not an automatic hiring decision. Pending
         assessments have no final score. CSV includes one row per topic for
         completed results.
+      </p>
+      <p className="text-sm leading-relaxed text-slate-600">
+        If a candidate loses team-seat or course access, revoke the assessment
+        invitation before its deadline to stop automatic scoring; timed-out
+        results are evidence of saved answers, not proof of uninterrupted
+        access.
       </p>
       {!results.length ? (
         <p className="rounded-xl bg-slate-50 p-4 text-sm text-slate-600">

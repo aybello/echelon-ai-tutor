@@ -142,8 +142,9 @@ export async function createRecruitmentAssessment(ctx: TrpcContext, input: Recru
       throw new TRPCError({ code: "BAD_REQUEST", message: error instanceof Error ? error.message : "Choose valid assessment topics and question count." });
     }
     // Pool sampling is unlocked. Revalidate the exact selected IDs with current
-    // bank/governance SHARE locks before freezing them; never resample silently.
-    await assertRecruitmentSourcesVisible(tx, course.questionBankKey, selected);
+    // bank/governance SHARE locks AND unchanged valid payloads before freezing
+    // them; never resample silently. Historical delivery remains visibility-only.
+    await assertRecruitmentSourcesVisible(tx, course.questionBankKey, selected, { requireUnchangedPayload: true });
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
     const assessmentId = randomUUID();

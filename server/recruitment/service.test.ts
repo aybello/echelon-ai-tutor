@@ -51,7 +51,7 @@ function fakeManagerDb(lockedOrg: Organization, existing?: RecruitmentAssignment
               const id = Number(params[0]); sourceIds.push(id);
               await options.beforeSourceRead?.(id);
               return sources.filter(source => source.id === id && source.bankKey === params[1]
-                && !params.slice(2).includes(source.reviewStatus)).map(source => ({ id: source.id }));
+                && !params.slice(2).includes(source.reviewStatus)).map(source => ({ ...source }));
             }
             const pool = structuredClone(sources.filter(source => source.bankKey === params[0]
               && !params.slice(1).includes(source.reviewStatus)));
@@ -231,13 +231,36 @@ describe("manager immutable source acceptance", () => {
     expect(db.reads[0]).toEqual({ table: "organizations", lock: "update" });
   });
 
-  it("freezes selected content only after locking exact sources in order, preserving the selected snapshot", async () => {
-    const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => { db.sources[2].question = "Later current text"; } });
+  it.each([
+    ["correctIndex", { correctIndex: 1 }], ["prompt", { question: "Later current text" }],
+    ["module", { module: "Safety" }], ["options", { options: '["Two","One"]' }],
+    ["invalid JSON options", { options: "{malformed}" }], ["invalid options object", { options: '{"0":"One","1":"Two"}' }],
+    ["blank option", { options: '["One"," "]' }],
+  ])("refuses selected %s edits after pool sampling without inserting or resampling", async (_label, change) => {
+    const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => { Object.assign(db.sources[2], change); } });
+    await expect(createRecruitmentAssessment(context, createInput)).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
+    expect(db.sourceIds).toEqual([1, 2, 3]); expect(db.insert).not.toHaveBeenCalled();
+    expect(db.reads.filter(read => read.table === "questions" && !read.lock)).toHaveLength(1);
+  });
+
+  it("freezes unchanged parsed payloads only after locking exact sources in order", async () => {
+    const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => { db.sources[2].options = '[ "One", "Two" ]'; } });
     const result = await createRecruitmentAssessment(context, createInput);
     expect(db.sourceIds).toEqual([1, 2, 3, 4, 5]);
     expect(db.insertValues).toHaveBeenCalledWith(expect.objectContaining({ id: result.assessmentId,
       questions: expect.arrayContaining([expect.objectContaining({ id: "3", prompt: "Synthetic prompt 3" })]) }));
     expect(db.db.transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+  });
+
+  it.each(["fresh", "invited", "active"] as const)("keeps historical payloads unchanged for %s invites despite newer authored edits", async mode => {
+    const frozen = form(), before = structuredClone(frozen);
+    mocks.readRecruitmentAssessment.mockResolvedValue(frozen);
+    const existing = mode === "fresh" ? undefined : mode === "active" ? active() : invited();
+    const db = fakeManagerDb(org(), existing);
+    Object.assign(db.sources[2], { module: "Later topic", question: "Later prompt", correctIndex: 1, options: "{invalid newer options}" });
+    await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).resolves.toHaveProperty("assignmentId");
+    expect(db.sourceIds).toEqual([1, 2, 3, 4, 5]); expect(frozen).toEqual(before);
+    expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
   });
 
   it.each(["fresh", "invited", "active"] as const)("rejects unavailable original sources before returning the %s link or inserting", async mode => {

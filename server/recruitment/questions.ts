@@ -45,9 +45,10 @@ export async function loadRecruitmentPools(db: RecruitmentReadDb, bankKeys: stri
  * Lock exact source IDs one at a time in numeric order (not SQL scan order).
  * Current bank + governance predicates are reevaluated after UPDATE-lock waits
  * under the caller's READ COMMITTED transaction; SHARE lasts through acceptance.
- * Do not fetch replacement content or alter historical scored evidence. */
+ * Creation additionally checks sampled payloads; later delivery checks visibility
+ * only. Never replace content or alter historical scored evidence. */
 export async function assertRecruitmentSourcesVisible(db: RecruitmentReadDb, bankKey: string,
-  snapshot: RecruitmentQuestion[]): Promise<void> {
+  snapshot: RecruitmentQuestion[], options: { requireUnchangedPayload?: boolean } = {}): Promise<void> {
   assertRecruitmentSnapshot(snapshot);
   const replacementNeeded = () => new TRPCError({ code: "PRECONDITION_FAILED",
     message: "This assessment form is unavailable. The hiring manager needs to create a replacement assessment form." });
@@ -56,11 +57,19 @@ export async function assertRecruitmentSourcesVisible(db: RecruitmentReadDb, ban
     if (!/^[1-9]\d*$/.test(q.id) || !Number.isSafeInteger(id) || id <= 0) throw replacementNeeded();
     return id;
   }).sort((a, b) => a - b);
+  const sampledById = new Map(snapshot.map(q => [Number(q.id), q]));
   for (const id of ids) {
-    const [source] = await db.select({ id: questions.id }).from(questions)
+    const [source] = await db.select({ id: questions.id, module: questions.module, question: questions.question,
+      options: questions.options, correctIndex: questions.correctIndex }).from(questions)
       .where(and(eq(questions.id, id), eq(questions.bankKey, bankKey), learnerVisibleQuestionFilter()))
       .limit(1).for("share");
     if (!source || source.id !== id) throw replacementNeeded();
+    if (options.requireUnchangedPayload) {
+      const current = usableRecruitmentQuestion(source), sampled = sampledById.get(id)!;
+      if (!current || current.module !== sampled.module || current.prompt !== sampled.prompt
+        || current.correctIndex !== sampled.correctIndex || current.options.length !== sampled.options.length
+        || current.options.some((option, index) => option !== sampled.options[index])) throw replacementNeeded();
+    }
   }
 }
 

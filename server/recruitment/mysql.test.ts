@@ -238,18 +238,31 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     const created = await createRecruitmentAssessment(manager, { orgId, title: "Synthetic Manager Flow", courseKey: "class2-water", modules: ["Treatment", "Safety"], questionCount: 5, timeLimitMinutes: null, expiresInDays: 7 });
     const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, created.assessmentId));
     expect(new Set(definition.questions.map(q => q.module))).toEqual(new Set(["Treatment", "Safety"]));
+    const sourcesBefore = await db.select().from(questions).where(eq(questions.bankKey, "class2-water"));
+    await db.update(questions).set({ question: "Edited synthetic content after assessment creation", module: "Later authored topic",
+      options: JSON.stringify(["Later A", "Later B", "Later C", "Later D"]), correctIndex: 3 }).where(eq(questions.bankKey, "class2-water"));
     const invitations = await Promise.all([inviteRecruitmentCandidate(manager, orgId, created.assessmentId, memberId), inviteRecruitmentCandidate(manager, orgId, created.assessmentId, memberId)]);
     expect(invitations[0].assignmentId).toBe(invitations[1].assignmentId);
     expect(await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.assessmentId, created.assessmentId))).toHaveLength(1);
-    await db.update(questions).set({ question: "Edited synthetic content after assessment creation" }).where(eq(questions.bankKey, "class2-water"));
     const view = await start(invitations[0].assignmentId);
-    expect(view.questions.map(q => q.prompt)).toEqual(definition.questions.map(q => q.prompt));
+    expect(view.questions).toEqual(definition.questions.map(({ correctIndex: _key, ...q }) => q));
+    expect((await inviteRecruitmentCandidate(manager, orgId, created.assessmentId, memberId)).assignmentId).toBe(invitations[0].assignmentId);
     const report = await recruitmentResults(manager, orgId, created.assessmentId);
     expect(report.results[0].score).toBeNull(); expect(report.assessment.completed).toBe(0);
     expect(report.results[0].answers).toEqual({}); expect(report.results[0].questions).toEqual([]);
+    const originalQuestion = definition.questions.find(q => q.correctIndex !== 3)!;
+    expect(originalQuestion).toBeDefined(); // Distinguish frozen scoring from every newer authored key.
+    const saved = await operateRecruitmentCandidate(ctx, invitations[0].assignmentId, { kind: "answer", input: {
+      assignmentId: invitations[0].assignmentId, questionId: originalQuestion.id, selectedIndex: originalQuestion.correctIndex, revision: view.revision } });
+    await operateRecruitmentCandidate(ctx, invitations[0].assignmentId, { kind: "submit", input: { assignmentId: invitations[0].assignmentId, revision: saved.revision } });
+    const completed = await recruitmentResults(manager, orgId, created.assessmentId);
+    expect(completed.results[0]).toMatchObject({ questions: definition.questions, score: { correct: 1, answered: 1 }, answers: { [originalQuestion.id]: originalQuestion.correctIndex } });
+    expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, created.assessmentId)))[0]).toEqual(definition);
     await expect(recruitmentResults({ ...manager, studentEmail: "intruder@example.test" }, orgId, created.assessmentId)).rejects.toMatchObject({ code: "FORBIDDEN" });
     expect(await db.select().from(organizationMembers)).toEqual(membersBefore);
     expect(await db.select().from(subscriptions)).toEqual(subsBefore);
+    for (const source of sourcesBefore) await db.update(questions).set({ module: source.module, question: source.question,
+      options: source.options, correctIndex: source.correctIndex }).where(eq(questions.id, source.id));
   });
   it("rechecks a concurrent seat revocation after waiting on the original member row lock", async () => {
     const id = await fixture(), view = await start(id);
@@ -437,6 +450,94 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
       for (const { id } of rows) await db.delete(questions).where(eq(questions.id, id));
     }
   });
+
+  it.each([
+    { label: "correctIndex", patch: { correctIndex: 3 }, unchanged: false },
+    { label: "prompt", patch: { question: "Later authored prompt" }, unchanged: false },
+    { label: "module", patch: { module: "Later authored topic" }, unchanged: false },
+    { label: "options", patch: { options: '["B","A","C","D"]' }, unchanged: false },
+    { label: "malformed JSON options", patch: { options: "{invalid}" }, unchanged: false },
+    { label: "options object", patch: { options: '{"0":"A","1":"B"}' }, unchanged: false },
+    { label: "undersized options", patch: { options: '["A"]' }, unchanged: false },
+    { label: "blank option", patch: { options: '["A"," ","C","D"]' }, unchanged: false },
+    { label: "unchanged parsed payload", patch: { options: '[ "A", "B", "C", "D" ]', explanation: "Unrelated authored explanation edit" }, unchanged: true },
+  ].flatMap(change => (["before source lock", "actual UPDATE wait"] as const).map(phase => ({ ...change, phase }))))
+    ("checks sampled $label during creation at $phase with no replacement sampling", async ({ label, patch, unchanged, phase }) => {
+      const manager = { ...ctx, studentEmail: "manager@example.test" }, module = `Payload race ${label} ${phase}`;
+      const rows = await db.insert(questions).values(snapshot.map((q, n) => ({ bankKey: "class2-water", questionNum: 71_000 + n,
+        module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex,
+        explanation: "Synthetic isolated payload race", reviewStatus: "approved" as const }))).$returningId();
+      const sourceId = rows[2].id, formsBefore = await db.select().from(recruitmentAssessments);
+      const poolGate = barrier(), sampled = barrier(), atSource = barrier(), updateGate = barrier(), updated = barrier();
+      const realTransaction = db.transaction.bind(db), sourceReads: number[] = [];
+      let poolReads = 0, returned = false, holder: Promise<unknown> | undefined;
+      // Every statement and lock is real MySQL. Materialize the unlocked pool,
+      // then let the authored edit commit before locking or hold its UPDATE lock
+      // until the exact source SHARE query has genuinely started waiting.
+      const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => realTransaction(tx => callback(new Proxy(tx, {
+        get(target, property) {
+          if (property === "select") return (...args: Parameters<typeof tx.select>) => {
+            const builder = target.select(...args), originalFrom = builder.from.bind(builder);
+            builder.from = ((table: Parameters<typeof originalFrom>[0]) => {
+              const query = originalFrom(table);
+              if (table === questions) {
+                const execute = query.execute.bind(query);
+                query.execute = (async (...executeArgs: Parameters<typeof execute>) => {
+                  const sql = query.toSQL();
+                  if (sql.sql.includes("for share")) {
+                    const id = Number(sql.params[0]); sourceReads.push(id);
+                    if (id === sourceId) atSource.release();
+                    return execute(...executeArgs);
+                  }
+                  const values = await execute(...executeArgs); poolReads++;
+                  sampled.release(); await poolGate.promise; return values;
+                }) as typeof query.execute;
+              }
+              return query;
+            }) as typeof builder.from;
+            return builder;
+          };
+          return Reflect.get(target, property, target);
+        },
+      })), config));
+      const pending = createRecruitmentAssessment(manager, { orgId, title: "Synthetic payload race", courseKey: "class2-water",
+        modules: [module], questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 });
+      const outcome = pending.then(value => { returned = true; return { value, code: null }; }, error => { returned = true; return { value: null, code: error.code }; });
+      try {
+        await Promise.race([sampled.promise, outcome.then(() => { throw new Error("Create skipped the unlocked sampling gate"); })]);
+        if (phase === "before source lock") {
+          await db.update(questions).set(patch).where(eq(questions.id, sourceId));
+          poolGate.release();
+        } else {
+          holder = realTransaction(async tx => {
+            await tx.update(questions).set(patch).where(eq(questions.id, sourceId));
+            updated.release(); await updateGate.promise;
+          });
+          await updated.promise; poolGate.release();
+          await Promise.race([atSource.promise, outcome.then(() => { throw new Error("Create skipped the exact source lock"); })]);
+          await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
+          updateGate.release(); await holder;
+        }
+        const result = await outcome;
+        expect(poolReads).toBe(1);
+        expect(sourceReads).toEqual(rows.slice(0, unchanged ? 5 : 3).map(row => row.id));
+        expect(transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+        if (unchanged) {
+          expect(result.code).toBeNull(); expect(result.value).not.toBeNull();
+          const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, result.value!.assessmentId));
+          expect([...definition.questions].sort((a, b) => Number(a.id) - Number(b.id)))
+            .toEqual(snapshot.map((q, n) => ({ ...q, id: String(rows[n].id), module })));
+          expect(await db.select().from(recruitmentAssessments)).toHaveLength(formsBefore.length + 1);
+        } else {
+          expect(result.code).toBe("PRECONDITION_FAILED"); expect(result.value).toBeNull();
+          expect(await db.select().from(recruitmentAssessments)).toEqual(formsBefore);
+        }
+      } finally {
+        poolGate.release(); updateGate.release();
+        await Promise.allSettled([outcome, ...(holder ? [holder] : [])]); transaction.mockRestore();
+        for (const { id } of rows) await db.delete(questions).where(eq(questions.id, id));
+      }
+    });
 
   it.each(["fresh", "invited", "active"] as const)("checks immutable original sources before a real %s invite INSERT or usable duplicate return", async mode => {
     for (const change of ["missing", "other bank", "in_review", "rejected"] as const) {

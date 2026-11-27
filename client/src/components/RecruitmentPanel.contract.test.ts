@@ -56,6 +56,7 @@ function render(results: RecruitmentResult[]) {
       createElement(RecruitmentResults, {
         assessment,
         results,
+        onDownload: vi.fn(),
         onCopy: vi.fn(),
         onRevoke: vi.fn(),
         busy: false,
@@ -73,6 +74,7 @@ describe("recruitment manager results presentation contract", () => {
       createElement(RecruitmentResults, {
         assessment,
         results: [base],
+        onDownload: vi.fn(),
         onCopy: vi.fn(),
         onRevoke: vi.fn(),
         busy: false,
@@ -86,6 +88,17 @@ describe("recruitment manager results presentation contract", () => {
     expect(html).toContain("No candidates invited yet");
     expect(html).toMatch(/<button[^>]*disabled=""[^>]*>[\s\S]*?Download CSV/);
     expect(html).not.toContain("0%");
+  });
+
+  it("instructs managers to revoke before the deadline after access loss without overstating timed-out evidence", () => {
+    const html = render([base]);
+    expect(html).toContain("loses team-seat or course access");
+    expect(html).toContain(
+      "invitation before its deadline to stop automatic scoring"
+    );
+    expect(html).toContain(
+      "results are evidence of saved answers, not proof of uninterrupted access"
+    );
   });
 
   it.each(["invited", "active", "expired", "revoked"] as const)(

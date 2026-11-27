@@ -1,5 +1,5 @@
 import * as React from "react";
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryObserver } from "@tanstack/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const h = vi.hoisted(() => ({
@@ -16,6 +16,8 @@ const h = vi.hoisted(() => ({
   catalog: vi.fn(),
   list: vi.fn(),
   results: vi.fn(),
+  fetchResults: vi.fn(),
+  cancelResults: vi.fn(),
   create: vi.fn(),
   invite: vi.fn(),
   revoke: vi.fn(),
@@ -84,55 +86,26 @@ vi.mock("@/lib/trpc", () => {
     _def: () => ({ path: ["recruitment", name] }),
     useQuery: (input: any, options: any) => {
       const key = [["recruitment", name], { input, type: "query" }];
-      const [result, setResult] = React.useState<any>(() => ({
-        data: h.client.getQueryData(key),
-        isFetchedAfterMount: false,
-        isFetching: true,
-      }));
-      React.useLayoutEffect(() => {
-        let live = true;
-        void h.client
-          .fetchQuery({
+      const observer = React.useMemo(
+        () =>
+          new QueryObserver(h.client, {
+            ...options,
             queryKey: key,
-            queryFn: h[name],
-            staleTime: 0,
-            retry: false,
-          })
-          .then(
-            (data: any) => {
-              if (live)
-                setResult({
-                  data,
-                  isFetchedAfterMount: true,
-                  isFetching: false,
-                  isSuccess: true,
-                  isError: false,
-                });
-            },
-            (error: any) => {
-              if (live)
-                setResult({
-                  data: h.client.getQueryData(key),
-                  error,
-                  isFetchedAfterMount: true,
-                  isFetching: false,
-                  isSuccess: false,
-                  isError: true,
-                });
-            }
-          );
-        return () => {
-          live = false;
-        };
+            queryFn: ({ signal }: any) => h[name](input, { signal }),
+          }),
+        []
+      );
+      const [result, setResult] = React.useState<any>(() =>
+        observer.getCurrentResult()
+      );
+      React.useLayoutEffect(() => {
+        const unsubscribe = observer.subscribe(next => setResult(next));
+        setResult(observer.getCurrentResult());
+        return unsubscribe;
       }, []);
       return {
         ...result,
-        refetch: () =>
-          h.client.fetchQuery({
-            queryKey: key,
-            queryFn: h[name],
-            staleTime: 0,
-          }),
+        refetch: () => observer.refetch(),
         options,
       };
     },
@@ -143,7 +116,11 @@ vi.mock("@/lib/trpc", () => {
         recruitment: {
           catalog: { invalidate: h.invalidates },
           list: { invalidate: h.invalidates },
-          results: { invalidate: h.invalidates },
+          results: {
+            invalidate: h.invalidates,
+            cancel: h.cancelResults,
+            fetch: h.fetchResults,
+          },
         },
       }),
       recruitment: {
@@ -222,6 +199,7 @@ const key = (name: string, input: any) => [
   { input, type: "query" },
 ];
 let tree: any;
+let panelMounted = true;
 function expand(node: any, path: string): any {
   if (Array.isArray(node)) return node.map((n, i) => expand(n, `${path}/${i}`));
   if (!node || typeof node !== "object") return node;
@@ -255,7 +233,9 @@ function render() {
   do {
     h.dirty = false;
     h.seen.clear();
-    tree = expand(React.createElement(RecruitmentPanel, { orgId }), "root");
+    tree = panelMounted
+      ? expand(React.createElement(RecruitmentPanel, { orgId }), "root")
+      : null;
     for (const [id, frame] of h.frames)
       if (!h.seen.has(id)) {
         frame.slots.forEach((slot: any) => slot?.cleanup?.());
@@ -316,6 +296,7 @@ function dispatch(name: string) {
     fn({ key: "session-switch" });
 }
 beforeEach(() => {
+  panelMounted = true;
   h.frames.clear();
   h.contexts.clear();
   h.effects = [];
@@ -349,6 +330,19 @@ beforeEach(() => {
   h.catalog.mockReset().mockResolvedValue(catalog);
   h.list.mockReset().mockResolvedValue([assessment]);
   h.results.mockReset().mockResolvedValue({ assessment, results: [result] });
+  h.cancelResults
+    .mockReset()
+    .mockImplementation((input: any) =>
+      h.client.cancelQueries({ queryKey: key("results", input), exact: true })
+    );
+  h.fetchResults.mockReset().mockImplementation((input: any, options: any) =>
+    h.client.fetchQuery({
+      ...options,
+      queryKey: key("results", input),
+      // Match tRPC utils.fetch: transport is invoked, not cached delivered props.
+      queryFn: () => h.results(input),
+    })
+  );
   h.create.mockReset().mockResolvedValue({ assessmentId });
   h.invite.mockReset().mockResolvedValue({ assignmentId: result.assignmentId });
   h.revoke.mockReset().mockResolvedValue({ success: true });
@@ -406,6 +400,194 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     expect(text(tree)).toContain(result.candidateEmail);
     expect(text(tree)).toContain("Download CSV");
   });
+  it("reads the exact submitted org and assessment on every CSV click and exports only the fresh returned snapshot", async () => {
+    await readyDetail();
+    const pending = deferred();
+    h.results.mockReturnValueOnce(pending.promise);
+    const csv = find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    );
+    csv.props.onClick();
+    csv.props.onClick();
+    await settle();
+    expect(h.cancelResults).toHaveBeenCalledOnce();
+    expect(h.cancelResults).toHaveBeenCalledWith({
+      orgId,
+      assessmentId,
+    });
+    expect(h.fetchResults).toHaveBeenCalledOnce();
+    expect(h.fetchResults).toHaveBeenCalledWith(
+      { orgId, assessmentId },
+      { staleTime: 0, retry: false }
+    );
+    expect(h.results).toHaveBeenCalledTimes(2);
+    expect(h.results.mock.calls[1]).toEqual([{ orgId, assessmentId }]);
+    expect(h.download).not.toHaveBeenCalled();
+    expect(URL.createObjectURL).not.toHaveBeenCalled();
+    // Real QueryObserver sees the utility fetch. The table is unmounted while
+    // the detail's same-epoch callback remains alive to complete the download.
+    expect(text(tree)).toContain("Loading assessment results");
+    expect(text(tree)).not.toContain("Download CSV");
+    csv.props.onClick();
+    expect(h.fetchResults).toHaveBeenCalledTimes(1);
+    pending.resolve({
+      assessment: { ...assessment, title: "Fresh server title" },
+      results: [{ ...result, candidateEmail: "fresh@example.test" }],
+    });
+    await settle();
+    expect(h.download).toHaveBeenCalledOnce();
+    const blob = vi.mocked(URL.createObjectURL).mock.calls[0][0] as Blob;
+    const content = await blob.text();
+    expect(content).toContain("Fresh server title");
+    expect(content).toContain("fresh@example.test");
+    expect(content).not.toContain(assessment.title);
+    expect(content).not.toContain(result.candidateEmail);
+    expect(h.download.mock.instances[0].download).toBe(
+      `recruitment-results-${assessmentId}.csv`
+    );
+    find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    ).props.onClick();
+    await settle();
+    expect(h.results).toHaveBeenCalledTimes(3);
+    expect(h.results.mock.calls[2]).toEqual([{ orgId, assessmentId }]);
+    expect(h.download).toHaveBeenCalledTimes(2);
+  });
+  it.each(["UNAUTHORIZED", "FORBIDDEN"])(
+    "clears already visible private data on remote CSV %s without creating a blob",
+    async code => {
+      await readyDetail();
+      input("recruitment-title", "Private manager draft");
+      expect(text(tree)).toContain(result.candidateEmail);
+      const pending = deferred();
+      h.results.mockReturnValueOnce(pending.promise);
+      find(
+        n => n.type === "button" && text(n).includes("Download CSV")
+      ).props.onClick();
+      await settle();
+      h.catalog.mockRejectedValue({ data: { code } });
+      h.list.mockRejectedValue({ data: { code } });
+      pending.reject({ data: { code } });
+      await settle();
+      expect(h.fetchResults).toHaveBeenCalledOnce();
+      expect(h.download).not.toHaveBeenCalled();
+      expect(URL.createObjectURL).not.toHaveBeenCalled();
+      expect(text(tree)).toContain("could not be verified");
+      expect(text(tree)).not.toContain(result.candidateEmail);
+      expect(text(tree)).not.toContain(result.candidateName);
+      expect(text(tree)).not.toContain(assessment.title);
+      expect(text(tree)).not.toContain("Private manager draft");
+      expect(text(tree)).not.toContain("Download CSV");
+      expect(
+        h.client.getQueryData(key("results", { orgId, assessmentId }))
+      ).toBeUndefined();
+      expect(h.client.getQueryData(key("catalog", { orgId }))).toBeUndefined();
+      expect(h.client.getQueryData(key("list", { orgId }))).toBeUndefined();
+    }
+  );
+  it("does not fall back to cached results when the CSV server read fails", async () => {
+    await readyDetail();
+    h.results.mockRejectedValueOnce(new Error("Synthetic network failure"));
+    find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    ).props.onClick();
+    await settle();
+    expect(h.results).toHaveBeenCalledTimes(2);
+    expect(text(tree)).toContain("Synthetic network failure");
+    expect(text(tree)).not.toContain(result.candidateEmail);
+    expect(h.download).not.toHaveBeenCalled();
+    expect(URL.createObjectURL).not.toHaveBeenCalled();
+  });
+  it("refuses to download a fresh response for a different assessment", async () => {
+    await readyDetail();
+    h.results.mockResolvedValueOnce({
+      assessment: {
+        ...assessment,
+        id: "33333333-3333-4333-8333-333333333333",
+      },
+      results: [result],
+    });
+    find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    ).props.onClick();
+    await settle();
+    expect(text(tree)).toContain("The returned assessment did not match");
+    expect(h.download).not.toHaveBeenCalled();
+    expect(URL.createObjectURL).not.toHaveBeenCalled();
+  });
+  it("does not start a CSV server read after session reset while cancellation is pending", async () => {
+    await readyDetail();
+    const cancelling = deferred();
+    h.cancelResults.mockReturnValueOnce(cancelling.promise);
+    find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    ).props.onClick();
+    dispatch("storage");
+    render();
+    cancelling.resolve(undefined);
+    await settle();
+    expect(h.fetchResults).not.toHaveBeenCalled();
+    expect(h.download).not.toHaveBeenCalled();
+    expect(URL.createObjectURL).not.toHaveBeenCalled();
+  });
+  it("cancels an older results read instead of joining it for CSV authorization", async () => {
+    await readyDetail();
+    const csv = find(
+      n => n.type === "button" && text(n).includes("Download CSV")
+    );
+    const old = deferred();
+    h.results.mockReturnValueOnce(old.promise);
+    const priorRead = h
+      .fetchResults({ orgId, assessmentId }, { staleTime: 0, retry: false })
+      .catch(() => undefined);
+    const fresh = {
+      assessment,
+      results: [{ ...result, candidateEmail: "post-click@example.test" }],
+    };
+    h.results.mockResolvedValueOnce(fresh);
+    csv.props.onClick();
+    await settle();
+    await priorRead;
+    old.resolve({ assessment, results: [result] });
+    await settle();
+    expect(h.results).toHaveBeenCalledTimes(3);
+    expect(h.download).toHaveBeenCalledOnce();
+    const blob = vi.mocked(URL.createObjectURL).mock.calls[0][0] as Blob;
+    expect(await blob.text()).toContain("post-click@example.test");
+    expect(await blob.text()).not.toContain(result.candidateEmail);
+    expect(
+      h.client.getQueryData(key("results", { orgId, assessmentId }))
+    ).toEqual(fresh);
+  });
+  it.each(["focus", "auth-cache", "unmount"])(
+    "discards a pending CSV completion after %s without a blob or restored private cache",
+    async mode => {
+      await readyDetail();
+      const pending = deferred();
+      h.results.mockReturnValueOnce(pending.promise);
+      find(
+        n => n.type === "button" && text(n).includes("Download CSV")
+      ).props.onClick();
+      await settle();
+      expect(h.fetchResults).toHaveBeenCalledOnce();
+      if (mode === "unmount") panelMounted = false;
+      else if (mode === "auth-cache")
+        h.client.setQueryData([["dashboardAuth", "me"], { type: "query" }], {
+          email: "replacement-manager@example.test",
+        });
+      else dispatch(mode);
+      render();
+      pending.resolve({ assessment, results: [result] });
+      await settle();
+      expect(h.download).not.toHaveBeenCalled();
+      expect(URL.createObjectURL).not.toHaveBeenCalled();
+      expect(text(tree)).not.toContain(result.candidateEmail);
+      expect(text(tree)).not.toContain("Download CSV");
+      expect(
+        h.client.getQueryData(key("results", { orgId, assessmentId }))
+      ).toBeUndefined();
+    }
+  );
   it.each(["focus", "visibilitychange", "storage"])(
     "clears private state on %s and retained CSV/copy/revoke handlers fail closed",
     async event => {
@@ -516,12 +698,14 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
           const input =
             name === "results" ? { orgId, assessmentId } : { orgId };
           const queryKey = key(name, input);
-          void h.client.invalidateQueries({ queryKey });
-          void h.client.fetchQuery({
-            queryKey,
-            queryFn: h[name as "catalog" | "list" | "results"],
-            staleTime: 0,
-          });
+          void h.client.invalidateQueries({ queryKey, refetchType: "none" });
+          void h.client
+            .fetchQuery({
+              queryKey,
+              queryFn: () => h[name as "catalog" | "list" | "results"](input),
+              staleTime: 0,
+            })
+            .catch(() => undefined);
         }
       });
       await find(

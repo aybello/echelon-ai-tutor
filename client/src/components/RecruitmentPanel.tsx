@@ -21,6 +21,7 @@ import {
 import {
   RecruitmentError,
   RecruitmentResults,
+  downloadRecruitmentCsv,
   recruitmentCard,
   recruitmentDate,
   recruitmentSelect,
@@ -578,11 +579,13 @@ function RecruitmentDetail({
     invitationOutcome?.message ?? ""
   );
   const [copying, setCopying] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const downloadPending = useRef(false);
   const [revokeTarget, setRevokeTarget] = useState<RecruitmentResult | null>(
     null
   );
   const [confirmed, setConfirmed] = useState(false);
-  const busy = invite.isPending || revoke.isPending || copying;
+  const busy = invite.isPending || revoke.isPending || copying || downloading;
   const authorized =
     access.isCurrent() &&
     resultFresh &&
@@ -593,6 +596,50 @@ function RecruitmentDetail({
     if (query.isError && accessDenied(query.error) && access.isCurrent())
       access.reset();
   }, [query.isError, query.error, access]);
+  async function downloadResults() {
+    if (!isCurrent() || !authorized || busy || downloadPending.current) return;
+    // This detail survives its own results refresh (only the results child is
+    // hidden). Never retain that child's delivered props for a later export.
+    const submittedScope = { orgId, assessmentId };
+    const capturedAccess = access;
+    const capturedEpoch = access.epoch;
+    const canDownload = () =>
+      live.current &&
+      capturedAccess.epoch === capturedEpoch &&
+      capturedAccess.isCurrent();
+    downloadPending.current = true;
+    setDownloading(true);
+    setError("");
+    try {
+      // Do not join a pre-click read or accept even recently cached results.
+      await utils.recruitment.results.cancel(submittedScope);
+      if (!canDownload()) return;
+      const fresh = await utils.recruitment.results.fetch(submittedScope, {
+        staleTime: 0,
+        retry: false,
+      });
+      if (!canDownload()) return;
+      if (fresh.assessment.id !== submittedScope.assessmentId)
+        throw new Error("The returned assessment did not match. Try again.");
+      downloadRecruitmentCsv(fresh.assessment, fresh.results);
+    } catch (failure) {
+      if (!canDownload()) return;
+      if (accessDenied(failure)) {
+        capturedAccess.reset();
+        return;
+      }
+      setError(
+        failure instanceof Error
+          ? failure.message
+          : "CSV could not be downloaded. Try again."
+      );
+    } finally {
+      if (canDownload()) {
+        downloadPending.current = false;
+        setDownloading(false);
+      }
+    }
+  }
   async function copyLink(assignmentId: string) {
     if (!isCurrent() || !authorized) return;
     const href = new URL(
@@ -907,6 +954,7 @@ function RecruitmentDetail({
         <RecruitmentResults
           assessment={assessment}
           results={query.data.results}
+          onDownload={() => void downloadResults()}
           onCopy={assignmentId => void copyLink(assignmentId)}
           onRevoke={result => {
             setRevokeTarget(result);

@@ -5,6 +5,8 @@ const org = { orgId: 1, title: "Operator recruitment", courseKey: "class2-water"
 describe("Recruitment assessment domain", () => {
   it("discloses automatic timed scoring and explicit untimed submission before consent", () => {
     expect(RECRUITMENT_NOTICE).toContain("Timed assessments automatically record and score your saved answers");
+    expect(RECRUITMENT_NOTICE).toContain("unless the assessment invitation is revoked before that deadline");
+    expect(RECRUITMENT_NOTICE).toContain("Losing your team seat or course access prevents further answers but does not cancel this automatic scoring");
     expect(RECRUITMENT_NOTICE).toContain("Untimed assessments require you to submit");
     expect(RECRUITMENT_NOTICE).toContain("unsubmitted untimed assessment expires without a score");
   });

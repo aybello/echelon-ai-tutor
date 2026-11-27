@@ -77,17 +77,19 @@ describe("recruitment usable question pool", () => {
 });
 
 describe("current governed frozen source validation", () => {
-  function sourcesDb(unavailableId?: number) {
+  function sourcesDb(unavailableId?: number, override: Partial<RecruitmentBankRow> = {}) {
     const reads: { params: unknown[]; sql: string; lock?: string }[] = [];
-    const db = { select: vi.fn(() => ({ from: () => ({ where: (filter: SQL) => {
+    const db = { select: vi.fn((_fields: unknown) => ({ from: () => ({ where: (filter: SQL) => {
       const query = new MySqlDialect().sqlToQuery(filter), read = { ...query, lock: undefined as string | undefined };
       reads.push(read);
       return { limit: () => ({ for: async (lock: string) => {
         read.lock = lock;
-        return query.params[0] === unavailableId ? [] : [{ id: query.params[0] }];
+        const id = Number(query.params[0]), sampled = snapshot.find(q => q.id === String(id)) ?? snapshot[0];
+        return id === unavailableId ? [] : [{ id, module: sampled.module, question: sampled.prompt,
+          options: JSON.stringify(sampled.options), correctIndex: sampled.correctIndex, ...(id === 3 ? override : {}) }];
       } }) };
     } }) })) };
-    return { db: db as unknown as RecruitmentReadDb, reads };
+    return { db: db as unknown as RecruitmentReadDb, reads, select: db.select };
   }
 
   it("locks exact authoritative IDs in numeric order with bank and governed predicates, not replacement content", async () => {
@@ -111,6 +113,36 @@ describe("current governed frozen source validation", () => {
       code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i),
     });
     expect(reads.map(read => read.params[0])).toEqual([1, 2, 3]); expect(snapshot).toEqual(before);
+  });
+
+  it("accepts unchanged creation payloads with parsed options equality and full source fields under ordered locks", async () => {
+    const before = structuredClone(snapshot), { db, reads, select } = sourcesDb(undefined, { options: '[ "One", "Two" ]' });
+    await assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot, { requireUnchangedPayload: true });
+    expect(reads.map(read => read.params[0])).toEqual([1, 2, 3, 4, 5]);
+    expect(reads.every(read => read.lock === "share")).toBe(true);
+    expect(Object.keys(select.mock.calls[0][0] as object)).toEqual(["id", "module", "question", "options", "correctIndex"]);
+    expect(snapshot).toEqual(before);
+  });
+
+  it.each([
+    ["answer key", { correctIndex: 1 }], ["prompt", { question: "Edited prompt" }],
+    ["module", { module: "Safety" }], ["option text", { options: '["One","Edited"]' }],
+    ["option order", { options: '["Two","One"]' }], ["option count", { options: '["One","Two","Three"]' }],
+    ["malformed JSON", { options: "{invalid}" }], ["options object", { options: '{"0":"One","1":"Two"}' }],
+    ["blank option", { options: '["One"," "]' }], ["invalid key", { correctIndex: 2 }],
+    ["blank prompt", { question: " " }], ["missing module", { module: "" }],
+  ])("rejects changed or malformed locked creation %s without changing the snapshot", async (_label, override) => {
+    const before = structuredClone(snapshot), { db, reads } = sourcesDb(undefined, override);
+    await expect(assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot, { requireUnchangedPayload: true }))
+      .rejects.toMatchObject({ code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i) });
+    expect(reads.map(read => read.params[0])).toEqual([1, 2, 3]); expect(snapshot).toEqual(before);
+  });
+
+  it("never compares an already frozen form against newer authored payloads, even malformed newer options", async () => {
+    const before = structuredClone(snapshot), { db, reads } = sourcesDb(undefined,
+      { correctIndex: 1, module: "Safety", question: "Edited prompt", options: "{invalid}" });
+    await assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot);
+    expect(reads.map(read => read.params[0])).toEqual([1, 2, 3, 4, 5]); expect(snapshot).toEqual(before);
   });
 
   it.each(["q1", "01", "1e0", "0", "-1", "1.5", "9007199254740992"])("rejects non-authoritative ID %s before any question lookup", async id => {
