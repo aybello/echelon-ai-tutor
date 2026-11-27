@@ -31,10 +31,11 @@ export interface CeuCourse {
   completionRequirements: readonly string[];
   publicDisclosure: string;
   ctaLabel: string;
+  isPublished?: boolean;
 }
 
 /** Public metadata only. Assessment keys and marking guides are server-owned. */
-export const CEU_COURSES: readonly CeuCourse[] = catalogue as CeuCourse[];
+export const CEU_COURSES: readonly CeuCourse[] = (catalogue as CeuCourse[]).filter(course => course.isPublished !== false);
 export function getCeuCourseByKey(key: string): CeuCourse | undefined {
   return CEU_COURSES.find(course => course.key === key);
 }

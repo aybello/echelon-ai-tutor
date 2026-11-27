@@ -11,7 +11,7 @@ const read = (path: string) => readFileSync(new URL(path, root), "utf8");
 const digest = (value: string) => createHash("sha256").update(value).digest("hex");
 const baselineBytes = read("server/ceu/fixtures/managed-media-baseline-7f604509.json");
 // URL-only migration baseline from main 7f604509; not a new content approval.
-expect(digest(baselineBytes)).toBe("add7672f8a64027ac770241d89e35c44f5e914d860ccdeb63a02e3bb0ad19eed");
+expect(digest(baselineBytes)).toBe("4f356066df84b004d8b42065d8b84109f07163246758eb9f12df992f0bbe0227");
 const baseline = JSON.parse(baselineBytes) as Record<string, string>;
 const assets = Object.entries(media);
 const runtimeFiles = Object.keys(baseline);
@@ -48,9 +48,9 @@ function normalizeWastewaterClassification(source: string): string {
 
 describe("verified CEU managed media migration", () => {
   it("maps exactly 34 original JPEGs to distinct durable storage paths with byte fingerprints", () => {
-    expect(assets).toHaveLength(34);
-    expect(new Set(assets.map(([, asset]) => asset.url)).size).toBe(34);
-    expect(assets.reduce((sum, [, asset]) => sum + asset.bytes, 0)).toBe(6_631_233);
+    expect(assets).toHaveLength(43);
+    expect(new Set(assets.map(([, asset]) => asset.url)).size).toBe(43);
+    expect(assets.reduce((sum, [, asset]) => sum + asset.bytes, 0)).toBe(7_651_395);
     for (const [oldPath, asset] of assets) {
       expect(oldPath).toMatch(/^\/ceu-covers\/ceu-[a-z-]+\.jpg$/);
       expect(asset.url).toMatch(/^\/manus-storage\/ceu-[a-z-]+_[a-f0-9]{8}\.jpg$/);
@@ -62,8 +62,8 @@ describe("verified CEU managed media migration", () => {
   });
 
   it("preserves every pre-migration byte except the exact approved image URL substitutions", () => {
-    expect(runtimeFiles).toHaveLength(17);
-    expect(runtimeFiles.filter(path => path.startsWith("server/ceu/courses/"))).toHaveLength(15);
+    expect(runtimeFiles).toHaveLength(30);
+    expect(runtimeFiles.filter(path => path.startsWith("server/ceu/courses/"))).toHaveLength(28);
     const used = new Set<string>();
     for (const [path, expectedHash] of Object.entries(baseline)) {
       let source = read(path);
@@ -82,7 +82,7 @@ describe("verified CEU managed media migration", () => {
   });
 
   it("registers the identical managed images in the offline browser fixture", () => {
-    expect(previewSources.filter(source => source.sha === "7f6045098c044aea234b3788dd2df8c73f591172")).toHaveLength(34);
+    expect(previewSources.filter(source => source.sha === "7f6045098c044aea234b3788dd2df8c73f591172")).toHaveLength(43);
     for (const [oldPath, asset] of assets) {
       expect(previewSources.find(source => source.storagePath === asset.url)).toEqual({
         sha: "7f6045098c044aea234b3788dd2df8c73f591172",

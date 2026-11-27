@@ -1,0 +1,1079 @@
+{
+  "key": "ceu-sludge-thickening",
+  "version": "2026-11-26.1",
+  "title": "Sludge Thickening for Wastewater Operators",
+  "shortTitle": "Sludge Thickening",
+  "stream": "wastewater",
+  "audience": "Operators, trainees and supervisors who run or support the solids handling at a municipal wastewater plant and want a clear foundation in thickening before a digestion or dewatering course.",
+  "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Learn why wastewater sludge is thickened and how the arithmetic of percent solids, volume and mass balance works. Then follow the main thickening methods: gravity thickening with its loading rates, blanket and septicity concerns, and mechanical thickening with polymer, capture rate and the recycle stream. Finish with how thickened sludge feeds digesters and dewatering, how side-stream loads are worked out, how to start a positive displacement pump safely and how to keep records that help with troubleshooting. Each module has a worked scenario, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "wi-adv-ww",
+      "title": "Wisconsin DNR Operator Certification: Advanced Wastewater Study Guide (February 2016)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideAdvancedWastewater.pdf",
+      "section": "Section 21.1.1 (polymers, cationic and anionic, floc charge, polymer vendor); Section 22.1.1 (start-up of a positive displacement pump); Section 22.2.1 and 22.2.3 (digester factors, sludge treatment purpose); Section 22.4.1 (bound and unbound water); Section 25.2.2 (polymer handling)",
+      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "wi-solids-sep",
+      "title": "Wisconsin DNR Operator Certification: Solids Separation Study Guide, Subclass B (February 2016)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideSolidsSeparation.pdf",
+      "section": "Sections 2.1.3 and 2.1.4 (sludge blanket depth, solids loading rate); Section 2.2.14 (operational significance of SLR and SOR); Section 2.4 (dissolved air flotation process and main components); Section 3.6.5 (DAF problems and corrective actions)",
+      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-25"
+    },
+    {
+      "id": "wef-mop11",
+      "title": "Operation of Municipal Wastewater Treatment Plants, Manual of Practice No. 11, 6th edition (Water Environment Federation)",
+      "section": "Volume III, Chapter 29 Thickening: Introduction (definition and purpose of thickening); Ancillary Equipment (pumps, polymer addition); Gravity Thickening (process description, equipment, start-up, shutdown, process control, sampling, troubleshooting, performance); Dissolved Air Flotation Thickening (process description, performance, process control, troubleshooting, safety); Gravity Belt Thickening (process control, polymer, start-up, shutdown, preventive maintenance); Thickening with a Centrifuge; Rotary Drum Thickening (performance, safety)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-ww2",
+      "title": "Spellman's Standard Handbook for Wastewater Operators, Volume II: Intermediate Level, 2nd edition (Frank R. Spellman, CRC Press)",
+      "section": "Section 10.5.4.5 (air-to-solids ratio) and 10.5.4.6 (recycle flow in percent)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-hb",
+      "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press)",
+      "section": "Section 5.6.5.4.6 (percent strength of solutions) and 5.7.8.21 (gravity and DAF thickener calculations)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "modules": [
+    {
+      "id": "sludge-thickening-why-thicken",
+      "title": "Why thicken sludge: solids, volume and the mass balance",
+      "objectives": [
+        "Explain how thickening changes the volume of sludge without removing the solids.",
+        "Use percent solids, specific gravity and the volume formula to work out the mass and volume of sludge, and read a simple mass balance."
+      ],
+      "lesson": "### Why sludge is thickened\n\nSludge that leaves a clarifier is mostly water. The solids make up a small share of what is pumped, so a plant that handles raw sludge spends its tanks, pumps, heat and chemicals on moving water. Thickening is the step that removes some of that water so the same solids sit in a smaller volume. It does not destroy the solids and it does not treat them. It prepares them for the steps that follow, such as digestion and dewatering.\n\n### Solids and water in sludge\n\nEvery sample of sludge is a mixture of water and solid particles. The solids include organic material, which can decay, and inorganic material such as grit. Water in sludge is not all alike. The Wisconsin study guide describes bound water, which is mostly inside cells, and unbound water, which is outside the cells. Thickening works on the unbound water that can be drained or separated. That is why a thickener can raise the solids concentration but cannot turn sludge into a dry material. Chapter 29 of the Water Environment Federation manual calls the water that can be separated free water, and the thickening methods it describes all work by settling, floating, filtering or spinning that free water away from the solids.\n\n### Percent solids\n\nPercent solids is the weight of dry solids as a share of the weight of the sludge. A sludge at 2 percent solids is 98 percent water by weight. Operators also see concentration in milligrams per litre. For sludge near the density of water, 1 percent solids is about 10,000 milligrams per litre, so 20,000 milligrams per litre is about 2 percent. Percent solids is the number used for sludge because the values are large and the arithmetic is quick. Whichever form you use, write the unit next to the number in every log entry, because a reading of 2 can mean 2 percent or 2,000 milligrams per litre depending on who wrote it.\n The WEF manual uses the same conversion on its thickener log sheet, where 4 percent total solids is recorded as 40,000 mg/L.\n\n### The mass of solids in a volume of sludge\n\nThe weight of solids in a tank of sludge follows from three numbers: the volume, the weight of water per gallon, and the percent solids. Water weighs 8.34 pounds per gallon. If the sludge is heavier than water, multiply by its specific gravity as well. Pounds of solids equal gallons times 8.34 times specific gravity times percent solids as a decimal. A 10,000 gallon tank at 2 percent solids and a specific gravity of 1.00 holds 10,000 times 8.34 times 0.02, which is 1,668 pounds of dry solids.\n\n### Finding the volume from the mass\n\nThe same relationship turns around when the mass is known. Volume in gallons equals pounds of solids divided by the product of 8.34, the specific gravity and the percent solids as a decimal. This is the formula to remember: volume equals mass divided by the product of 8.34, the specific gravity and the percent solids written as a decimal. If 1,668 pounds of solids are held at 4 percent solids, the volume is 1,668 divided by 8.34 times 0.04, which is 5,000 gallons. The tank has half the volume because the concentration doubled.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Two tanks holding the same solids: a large tank of thin sludge and a small tank of thickened sludge\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Same solids, less water: thickening shrinks the volume the plant must handle.</title>\n<rect x=\"20\" y=\"50\" width=\"130\" height=\"150\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"100\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"75\" cy=\"70\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"110\" cy=\"120\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"55\" cy=\"150\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"100\" cy=\"165\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"130\" cy=\"90\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"70\" cy=\"125\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"120\" cy=\"150\" r=\"4\" fill=\"#1d2d40\"/><rect x=\"225\" y=\"150\" width=\"90\" height=\"50\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><circle cx=\"245\" cy=\"168\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"262\" cy=\"160\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"280\" cy=\"170\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"298\" cy=\"160\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"252\" cy=\"178\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"270\" cy=\"183\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"288\" cy=\"178\" r=\"4\" fill=\"#1d2d40\"/><circle cx=\"305\" cy=\"184\" r=\"4\" fill=\"#1d2d40\"/><text x=\"85\" y=\"30\" text-anchor=\"middle\" font-weight=\"bold\">Feed sludge</text><text x=\"85\" y=\"44\" text-anchor=\"middle\" font-size=\"11\">thin, 1 percent</text><text x=\"270\" y=\"130\" text-anchor=\"middle\" font-weight=\"bold\">Thickened</text><text x=\"270\" y=\"144\" text-anchor=\"middle\" font-size=\"11\">4 percent</text><path d=\"M158 125 H215\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M215 119 L225 125 L215 131 Z\" fill=\"#2f6db2\"/><text x=\"187\" y=\"115\" text-anchor=\"middle\" font-size=\"11\">water out</text><text x=\"195\" y=\"230\" text-anchor=\"middle\" fill=\"#6b7a8c\">Illustrative: the same eight solids dots, about one quarter of the volume.</text>\n</svg>\n<figcaption>Same solids, less water: thickening shrinks the volume the plant must handle.</figcaption>\n</figure>\n\n### Specific gravity and when it matters\n\nSpecific gravity compares the density of the sludge with the density of water. Thin sludge is close to 1.00, so many plant calculations leave it out. A heavier sludge, or one with a large inorganic share, has a specific gravity above 1.00 and weighs more per gallon. The effect is small but not zero, and the formula carries it so that the answer is correct for the sludge in the tank. Practice values in this course are stated inside each question. Your plant records and laboratory results give the values for your own sludge.\n\n### Volume reduction in plain terms\n\nWhen the mass of solids stays the same and the percent solids rises, the volume falls in proportion. Moving from 1 percent to 4 percent solids cuts the volume to one quarter. Moving from 2 percent to 4 percent halves it. This inverse relationship is the reason a small gain in percent solids is worth chasing at the low end, where the volume is large. Near the top end, each extra percentage point removes less water than the one before. The WEF manual gives a digester example. A plant making 100,000 gal per day of 2.0 percent sludge, with a 20 day digester residence time, needs about 2 million gallons of digester volume. Thickened to 3 percent, the daily volume is about 66,000 gal and the volume needed is about 1.3 million gallons.\n\n### Capture and the mass balance\n\nA thickener splits its feed into two streams: thickened sludge and the water that leaves. The water is never completely free of solids. A mass balance counts the solids on both sides. Solids in the feed equal solids in the thickened sludge plus solids in the liquid stream that leaves. The share of the feed solids that ends up in the thickened sludge is the capture rate. A thickener with a low capture rate may make good thick sludge and still be a poor performer, because the missing solids go back to the plant. The WEF manual gives 90 to 95 percent as an anticipated solids capture for gravity thickeners, and notes that thickeners are often a major source of solids recycle within the plant. It says the cost of that recycle is, at a minimum, what the authority would charge a customer to send solids to the plant.\n\n### A worked mass balance\n\nSuppose a thickener receives 4,000 pounds of solids per day. The thickened sludge carries 3,600 pounds and the liquid stream carries the rest. The liquid stream holds 400 pounds per day, and the capture rate is 3,600 divided by 4,000, or 90 percent. The 400 pounds are not lost. They return to the liquid treatment train as added load, which the primary and secondary processes must deal with again. Recording this number alongside the percent solids gives a fuller picture than either value alone.\n\n### What thickening does for the steps after it\n\nThe purpose of sludge treatment, as the Wisconsin study guide puts it, is to reduce the organic content and the pathogens so that the material can be reused while protecting health and the environment. Digestion is one of the most common treatment processes. A thicker feed means a smaller volume to heat, mix and hold for a given amount of solids. Dewatering also benefits, because a steady, thicker feed means less water for the equipment to deal with. The benefit depends on how steady and how well conditioned the feed is. The WEF manual adds that thickening is most commonly done before stabilization or dewatering. It can also be done on digested sludge, for example before hauling it as a liquid, and in recuperative thickening sludge is drawn from a digester, thickened and returned.\n\n### The limits of thickening\n\nThickening has limits that come from the sludge itself. Some sludges settle or float well and some do not. Sludge that is held too long can turn septic and rise, which spoils thickening. Most mechanical units need conditioning chemicals and attention. A plant should not assume that a higher percent solids is always better. Thick sludge that is hard to pump, or that causes poor mixing in a digester, can create new problems. The goal is the percent solids that the whole solids train can handle. The WEF manual warns that belt, drum and centrifuge units can thicken sludge to too high a concentration, which can cause pump failure downstream, and that small increases in concentration above about 8 percent need much more pumping head.\n\n### What operators record\n\nOperators record the feed volume and percent solids, the thickened sludge volume and percent solids, and the solids in the water that leaves. From those numbers they work out the pounds of solids in and out, the capture rate and the volume reduction. A weekly trend of these values tells more than one day's sample. A fall in thickened percent solids with a steady feed points to the thickening step. If the feed has also become thinner, look upstream, for example at thin sludge being wasted. The feed record alone does not settle the question: on belt, drum and centrifuge units a thinner feed usually needs more polymer for the same pounds of solids, while the WEF manual reports little correlation between feed solids and underflow solids for gravity thickeners.\n\n### Checking the arithmetic\n\nBefore accepting a calculation, check that the answer is sensible. If the percent solids rises, the volume must fall. If the volume stays the same and the concentration doubles, the mass must have doubled. Check the units, and check that percent has been written as a decimal. A calculation that gives a volume larger than the feed tank, or a capture rate above 100 percent, needs checking for an error, a timing mismatch or a missing stream. These simple checks catch most slips before they reach a log sheet.",
+      "evidence": "### Fictional scenario: Larkspur Hollow Plant\n\nLarkspur Hollow Plant is a fictional wastewater plant. Waste sludge is pumped to a holding tank at about 1 percent solids and then to a digester. The digester operator, Ines Varga, says the tank is full again and asks why the plant hauls and heats so much water. A new thickener could bring the sludge to about 4 percent solids. The supervisor, Tomas Reilly, asks for a short estimate of what that would change.",
+      "assignment": "Write a one-page note for Tomas Reilly. Using 20,000 gal per day of sludge at 1.0 percent solids and a specific gravity of 1.00, work out the pounds of solids per day and the volume at 4.0 percent solids, showing each step. Explain what the thickener does to the volume and what it does not do to the solids. Describe what a capture rate below 100 percent would add to the plant. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the pounds of solids and the thickened volume with the stated constants and shows the steps.",
+        "Explains that thickening changes the volume but not the mass of the captured solids.",
+        "Describes the extra load that returns to the plant when the capture rate is below 100 percent.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to say in their own words why volume falls when percent solids rises. Check that each calculation carries units and that percent is written as a decimal. Strong answers connect the capture rate to the plant, not only to the thickener. Watch for learners who treat thickening as a treatment step that reduces the organic content; it only removes water.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and rewrite the volume formula in your own words, with the units for each term."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and note one day with the percent solids of the sludge you handle."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Larkspur Hollow scenario and calculate the volume at 1 percent and at 4 percent solids."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-adv-ww",
+        "wef-mop11"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-thickening-why-thicken-c1",
+          "prompt": "What is the main purpose of thickening sludge?",
+          "choices": [
+            "Remove water so the same solids occupy a smaller volume",
+            "Break down the organic solids so that less has to be hauled away",
+            "Kill the pathogens in the sludge before it leaves",
+            "Turn the solids into dissolved matter for discharge"
+          ],
+          "correctIndex": 0,
+          "explanation": "Thickening removes water, so the solids are held in a smaller volume; it does not destroy or treat them.",
+          "objective": "sludge-thickening-why-thicken"
+        },
+        {
+          "id": "ceu-sludge-thickening-why-thicken-c2",
+          "prompt": "A tank holds 30,000 gal of sludge at 2.0 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many pounds of dry solids does it hold?",
+          "choices": [
+            "50,040 lb",
+            "5,004 lb",
+            "2,502 lb",
+            "10,008 lb"
+          ],
+          "correctIndex": 1,
+          "explanation": "Pounds of solids = 30,000 gal x 8.34 x 1.00 x 0.02 = 5,004 lb.",
+          "objective": "sludge-thickening-why-thicken"
+        },
+        {
+          "id": "ceu-sludge-thickening-why-thicken-c3",
+          "prompt": "A thickener holds 3,000 lb of dry solids at 5.0 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, what volume of sludge is that?",
+          "choices": [
+            "About 71,942 gal",
+            "About 60,000 gal",
+            "About 7,194 gal",
+            "About 14,388 gal"
+          ],
+          "correctIndex": 2,
+          "explanation": "Volume = 3,000 / (8.34 x 1.00 x 0.05) = about 7,194 gal.",
+          "objective": "sludge-thickening-why-thicken"
+        },
+        {
+          "id": "ceu-sludge-thickening-why-thicken-c4",
+          "prompt": "A thickener takes sludge at 1 percent solids and makes sludge at 4 percent solids, and keeps the solids. What happens to the volume?",
+          "choices": [
+            "It falls to about half of the feed volume",
+            "It stays about the same because the mass is the same",
+            "It rises because the solids are more concentrated",
+            "It falls to about one quarter of the feed volume"
+          ],
+          "correctIndex": 3,
+          "explanation": "The same mass at four times the concentration needs one quarter of the volume.",
+          "objective": "sludge-thickening-why-thicken"
+        },
+        {
+          "id": "ceu-sludge-thickening-why-thicken-c5",
+          "prompt": "Why does a thicker feed help a digester or a dewatering step?",
+          "choices": [
+            "The same solids arrive in less water to heat or remove",
+            "The solids become biologically stable before they arrive",
+            "The organic share of the solids falls before the feed",
+            "The weight of water per gallon changes in the feed"
+          ],
+          "correctIndex": 0,
+          "explanation": "Thicker sludge carries the same solids in less water, so there is less volume to heat, hold or remove.",
+          "objective": "sludge-thickening-why-thicken"
+        },
+        {
+          "id": "ceu-sludge-thickening-why-thicken-c6",
+          "prompt": "A sludge sample is 4 percent solids by weight. About how much of its weight is water?",
+          "choices": [
+            "About 4 percent",
+            "About 96 percent",
+            "About 40 percent",
+            "About 60 percent"
+          ],
+          "correctIndex": 1,
+          "explanation": "If 4 percent of the weight is dry solids, the other 96 percent is water.",
+          "objective": "sludge-thickening-why-thicken"
+        }
+      ]
+    },
+    {
+      "id": "sludge-thickening-gravity-thickening",
+      "title": "Gravity thickening: loading, overflow, blanket and septicity",
+      "objectives": [
+        "Describe how a gravity thickener works and calculate the solids loading rate and the overflow rate.",
+        "Link blanket depth, holding time, septicity and odour to operating decisions."
+      ],
+      "lesson": "### What a gravity thickener is\n\nA gravity thickener looks like a clarifier. It is usually a round tank with a centre feed well, a gently sloped floor, slowly turning rakes (sometimes fitted with pickets), an overflow weir at the edge and an underflow draw-off at the bottom. Sludge enters at the centre. Solids settle by gravity and form a layer on the floor, and a clearer liquid leaves over the weir. Thick sludge is drawn from the bottom and pumped to the next step. The WEF manual describes typical units as circular tanks with side water depths of about 3 to 4 m (10 to 13 ft), with mechanisms built stronger than clarifier mechanisms because the torque is higher. Before nitrification requirements, gravity thickening was the main method for mixed sludges. Belt, drum and centrifuge units have since largely replaced it, and gravity thickeners are now mostly used for primary sludge.\n\n### How the separation works\n\nThe solids in sludge are heavier than water, so they sink when the flow is slow enough. In the thickener they settle and press on the layer below, which squeezes some of the water upward. Pickets on the rake arm help release trapped gas and prevent rat-holing or coning, and the rakes move the thick sludge toward the draw-off. The WEF manual describes the settling as zone settling, where solids settle together with a clear interface above them, followed by compression settling, where the weight of solids above squeezes water out of the layer below. The result is a clear zone near the top, a sludge blanket below it and a thick layer at the bottom. The thickener works best when the feed arrives steadily and the draw-off removes sludge at a rate that balances what settles. The WEF manual says feed should be pumped continuously where practical, because continuous feeding promotes a stable blanket and reduces gasification and floating sludge.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Cross-section of a gravity thickener: feed enters the centre, clear liquid leaves at the top overflow, a settled blanket sits above the thick underflow\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Gravity thickener: clear overflow at the top, a settled blanket above the thick underflow.</title>\n<rect x=\"20\" y=\"40\" width=\"40\" height=\"3\" fill=\"#2f6db2\"/><polygon points=\"90,50 300,50 300,170 215,200 175,200 90,170\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><polygon points=\"92,140 298,140 298,169 214,198 176,198 92,169\" fill=\"#5b6877\" opacity=\"0.75\"/><rect x=\"186\" y=\"50\" width=\"18\" height=\"46\" fill=\"#fff\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M60 42 H186 V60\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"/><text x=\"22\" y=\"34\" font-weight=\"bold\">Feed</text><path d=\"M300 56 H340\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M334 51 L344 56 L334 61 Z\" fill=\"#2f6db2\"/><text x=\"302\" y=\"44\" font-size=\"11\">Overflow</text><path d=\"M195 200 V228\" stroke=\"#1d2d40\" stroke-width=\"3\"/><path d=\"M190 222 L195 232 L200 222 Z\" fill=\"#1d2d40\"/><text x=\"205\" y=\"236\" font-size=\"11\">Underflow (thick sludge)</text><text x=\"240\" y=\"100\" font-size=\"11\" text-anchor=\"middle\">clear liquid</text><text x=\"244\" y=\"160\" font-size=\"11\" text-anchor=\"middle\" fill=\"#fff\" font-weight=\"bold\">sludge blanket</text><path d=\"M314 140 V198 M309 146 L314 140 L319 146 M309 192 L314 198 L319 192\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"1.5\"/><text x=\"322\" y=\"166\" font-size=\"11\">Blanket</text><text x=\"322\" y=\"180\" font-size=\"11\">depth</text><text x=\"195\" y=\"256\" text-anchor=\"middle\" fill=\"#6b7a8c\" font-size=\"11\">Illustrative section, not to scale.</text>\n</svg>\n<figcaption>Gravity thickener: clear overflow at the top, a settled blanket above the thick underflow.</figcaption>\n</figure>\n\n### Solids loading rate\n\nThe solids loading rate, or SLR, links the solids entering the unit to the surface area of the unit. The Wisconsin Solids Separation guide defines it as the suspended solids entering a clarifier divided by its surface area, and it is usually expressed in pounds per day per square foot. For clarifiers the Wisconsin guide says an SLR above what the unit can handle raises effluent solids, and the same idea is used for thickeners. A thickener that is loaded too lightly may hold sludge for too long, which brings its own problems. The right loading depends on the sludge and the plant, so use your own design and records. The WEF manual calls the solids loading rate the most useful loading parameter and gives typical gravity thickener values as a guide: about 20 to 30 lb/day/ft2 for primary sludge, 4 to 8 lb/day/ft2 for activated sludge, and overflow rates of about 390 to 780 gpd/ft2. It advises keeping loading at the low end of the range when the sludge is warmer than about 15 to 20 degrees C (59 to 68 degrees F). The practice numbers in this course's questions are chosen for easy arithmetic and are not design values.\n\n### Calculating the SLR\n\nFirst find the pounds of solids per day. Multiply the gallons per day of feed by 8.34, by the specific gravity and by the percent solids as a decimal. Then divide by the surface area in square feet. For a round tank the area is 3.14 times the diameter squared, divided by 4. A 20 foot tank has an area of 314 square feet. If it receives 6,280 pounds of solids per day, the SLR is 6,280 divided by 314, or 20 pounds per day per square foot. Always show the units so the answer can be compared with a design or record value.\n\n### Overflow rate\n\nThe surface overflow rate, or SOR, links the flow to the surface area. It is the daily flow in gallons divided by the surface area in square feet, giving gallons per day per square foot. The study guide notes that a rate that is too high carries solids out with the flow, and one that is too low may mean a long detention time and septicity. In a thickener, the flow includes the feed and any dilution water. The WEF manual's troubleshooting guide links a thickened sludge that is not thick enough to an overflow rate that is too high. It links septic odour and a rising blanket to an overflow rate that is too low, and one suggested fix is to bring the overflow rate up to about 400 to 600 gpd/ft2 by adding secondary effluent or mixed liquor to the feed. The overflow rate and the loading rate are read together.\n\n### Dilution water\n\nSome plants add dilution water, often plant effluent, to the feed of a gravity thickener. The WEF manual calls this makeup water or elutriation. The dissolved oxygen in it helps reduce the anaerobic activity that would make the sludge gasify, float and smell, and chlorinated effluent is sometimes used to sweeten the sludge. Elutriation also washes out some soluble material such as ammonia nitrogen and phosphates. Too much is harmful: it thins the sludge and recycles wastewater unnecessarily, so the manual says the key is moderate use. Where the sludge goes to an anaerobic digester, wide swings in underflow concentration caused by elutriation should be avoided. The added water also dilutes the overflow, so judge capture with the dilution in mind. Keep a note of the source and the flow of the dilution water, and record any change.\n\n### Blanket depth\n\nThe blanket depth is the thickness of the layer of settled solids at the bottom of the tank. The Wisconsin guide defines the sludge blanket for clarifiers, and the WEF manual applies the idea to thickeners. A blanket is needed because compaction thickening depends on the weight of solids resting on one another, and a blanket also reduces rat-holing and coning. The manual gives a typical blanket of about 0.3 to 1.5 m (1 to 5 ft) at the tank edge, deeper for cooler water and deeper tanks and shallower when it is warm, and says the blanket should never reach the bottom of the feed well. A blanket that is too shallow can mean the draw-off is pulling thin sludge, since the manual lists a thickened sludge pumping rate that is too high as a cause of thin underflow. A rising blanket can be a sign of bulking or septic sludge, and it can carry solids toward the overflow. The manual lists a sludge judge (coretaker), electronic, sonic or light path detectors and an airlift as ways to measure it, and stresses consistency: measure at the same point each time, often about two thirds of the way from the centre to the wall, and consider marking the railing. A log of readings shows the thickener moving before the effluent does.\n\n### Detention time and septicity\n\nSludge that is stored too long, in the thickener or in the clarifiers upstream, goes septic. Biological activity continues, the dissolved oxygen is used up and gas is produced, and the gas can lift sludge to the surface. The WEF manual describes septicity as floating solids, solids carried over in the overflow, foul odours and a reduced underflow concentration. It gives typical retention times of about 1 to 2 days for primary sludge and about 18 to 30 hours for mixed primary and secondary sludge, depending on temperature, and says longer times may cause upsets such as gasified sludge. Warm sludge is more prone to trouble, which is why loading is kept at the low end of its range above about 15 to 20 degrees C. At plants that nitrify, nitrate can also be broken down in the oxygen-free thickener, and the nitrogen gas released floats the sludge. The manual lists chlorine or hydrogen peroxide as temporary measures, and aeration of the feed or elutriation to supply some dissolved oxygen. It says overflow from a thickener with operating difficulties should go to the primary clarifiers because it can be a source of strong odours. Hydrogen sulfide and methane may be present around thickeners, so follow the plant's confined space procedures and never assume the air is safe.\n\n### Odour and what it tells you\n\nA strong odour from a thickener is more than a nuisance. It is often a sign that sludge is going septic, although septic feed or scum build-up can also be the source. The WEF manual's troubleshooting table for septic odour and rising sludge lists three likely causes: a thickened sludge pumping rate that is too low, an overflow rate that is too low, and septicity in the thickener. The checks are the pumping system and collection mechanism, the overflow rate and the dissolved oxygen. The remedies are to raise the thickened sludge pumping rate, repair or speed up the collection mechanism, raise the overflow rate with more feed or effluent, and add an oxidizing agent to the feed sludge, for which the table gives 0.5 to 1.0 mg/L. Frequent, thorough cleaning of surfaces and weirs, and chlorination, control slime growth. Thickeners in cold or odour-sensitive areas are usually covered, most often with a dome, and handling scum separately reduces odours. Take odour complaints seriously and log them.\n\n### Common operating problems\n\nSeveral problems appear again and again. Floating sludge or rising clumps point to gas, from septic sludge or, at plants that nitrify, from nitrate breaking down. Solids in the overflow and a cloudy overflow can come from septicity, from bulking, or from fine particles in waste activated sludge. A thin underflow can come from an overflow rate that is too high, a thickened sludge pumping rate that is too high, short-circuiting through the tank, or too much elutriation water. Rat-holing, where clear liquid is drawn through a channel in the blanket to the draw-off and the underflow is thin, comes from pumping at a high rate for short periods. A deeper blanket and longer, slower pumping reduce it. Heavy rake torque points to a heavy build-up of sludge, a foreign object jammed in the mechanism, or poor alignment. If the drive trips on overload, the WEF manual says to stop the feed, and not to jog the drive or wire around its overload protection. Each problem has more than one cause, so check the records before changing a setting.\n\n### Responding to a change\n\nChange one thing at a time. If rake torque is rising because sludge is building up, the WEF manual's remedy is to increase the sludge removal rate and, if needed, to agitate the blanket in front of the arms with water jets; watch the blanket and the underflow percent solids as you do. If the odour rises, check the thickened sludge pumping rate, the overflow rate and the dissolved oxygen, as in the manual's table. If a rising blanket is a sign of bulking, the manual says the cause lies elsewhere in the plant and that treatment at the thickener is short-term only. A thickener holds a large amount of material for a day or more, so allow time between changes. Write down what you changed, the time, and what you expect to see, so that the next shift can tell whether the response matches the plan.\n\n### Records for a gravity thickener\n\nKeep a daily record of the feed flow and percent solids, the underflow flow and percent solids, the blanket depth, the overflow appearance and the overflow solids if you test them. The WEF manual lists as a minimum sampling the influent (total suspended solids, total solids and flow, plus dissolved oxygen when thickening activated sludge), the effluent (total suspended solids, total solids and flow), the underflow (total solids and flow) and the blanket depth. From these you can calculate the SLR, the overflow rate and the capture. A short note about odour, weather and any change in settings turns the numbers into a story that the next operator can follow.",
+      "evidence": "### Fictional scenario: Quillon Bend Plant in warm weather\n\nQuillon Bend Plant is a fictional wastewater plant with one round gravity thickener, 30 ft in diameter. In the first hot week of summer the operator, Priya Anand, notices a strong odour at the tank, clumps of sludge on the surface and a cloudy overflow. The blanket reading has crept upward over four days, and the underflow looks thinner than usual. Dilution water was cut last week to save plant effluent.",
+      "assignment": "Write a one-page note for Priya Anand's supervisor. Calculate the surface area of the thickener with 3.14 for pi, and show how you would find the solids loading rate and the overflow rate from the daily records. Explain what the odour, the rising blanket and the clumps suggest, and why the change in dilution water may matter. List the changes you would make, in order, with the reason for each. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the surface area and shows how the loading and overflow rates are found.",
+        "Links the odour, clumps and rising blanket to long holding time and septic conditions.",
+        "Lists changes one at a time, with a reason and a way to check the result.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain the difference between the loading rate and the overflow rate, and why both are read together. Check that the list of changes is ordered and that each step has a measurement to confirm it. Strong answers mention measuring the blanket at the same point each time. Watch for learners who jump to a single cause; the symptoms have more than one possible cause.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and sketch a gravity thickener, labelling the feed, overflow, blanket and underflow."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and note one blanket or underflow reading and the date it was taken."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Quillon Bend scenario and list the first three checks you would make."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-solids-sep",
+        "wef-mop11"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-thickening-gravity-thickening-c1",
+          "prompt": "What mainly drives the separation in a gravity thickener?",
+          "choices": [
+            "Air bubbles attach to the solids and carry them up to a surface skimmer",
+            "A spinning drum throws the heavier solids out toward the drum wall",
+            "Solids settle by gravity and clear liquid leaves over the weir",
+            "A moving belt squeezes water out of the sludge"
+          ],
+          "correctIndex": 2,
+          "explanation": "A gravity thickener relies on settling, with a thick underflow at the bottom and clearer overflow at the top.",
+          "objective": "sludge-thickening-gravity-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-gravity-thickening-c2",
+          "prompt": "A thickener receives 18,000 lb of solids per day and has a surface area of 600 ft2. What is the solids loading rate?",
+          "choices": [
+            "0.033 lb/day/ft2",
+            "300 lb/day/ft2",
+            "3.0 lb/day/ft2",
+            "30 lb/day/ft2"
+          ],
+          "correctIndex": 3,
+          "explanation": "SLR = 18,000 / 600 = 30 lb/day/ft2.",
+          "objective": "sludge-thickening-gravity-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-gravity-thickening-c3",
+          "prompt": "A round gravity thickener is 30 ft in diameter. Using 3.14 for pi and area = pi x diameter squared / 4, what is its surface area?",
+          "choices": [
+            "About 707 ft2",
+            "About 2,826 ft2",
+            "About 94 ft2",
+            "About 1,413 ft2"
+          ],
+          "correctIndex": 0,
+          "explanation": "Area = 3.14 x 30 x 30 / 4 = 706.5, about 707 ft2.",
+          "objective": "sludge-thickening-gravity-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-gravity-thickening-c4",
+          "prompt": "A thickener has a surface area of 450 ft2 and a total flow of 90,000 gpd. What is the overflow rate?",
+          "choices": [
+            "20 gpd/ft2",
+            "200 gpd/ft2",
+            "2,000 gpd/ft2",
+            "0.005 gpd/ft2"
+          ],
+          "correctIndex": 1,
+          "explanation": "Overflow rate = 90,000 / 450 = 200 gpd/ft2.",
+          "objective": "sludge-thickening-gravity-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-gravity-thickening-c5",
+          "prompt": "What condition most often leads to septic sludge in a thickener?",
+          "choices": [
+            "Sludge drawn from the bottom at short intervals through the day",
+            "Overflow weirs kept clean and level",
+            "Sludge held a long time in a warm tank with little oxygen",
+            "A feed that stays steady through the day"
+          ],
+          "correctIndex": 2,
+          "explanation": "Long holding times in warm, oxygen-poor sludge let septic conditions start, with gas and odour.",
+          "objective": "sludge-thickening-gravity-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-gravity-thickening-c6",
+          "prompt": "The blanket depth in a gravity thickener keeps rising toward the weir. What is the likely concern?",
+          "choices": [
+            "The underflow will fall below the percent solids of the feed sludge",
+            "The dilution water will stop mixing in the feed well",
+            "The rakes will turn faster as the blanket grows",
+            "Solids may escape over the weir and appear in the overflow"
+          ],
+          "correctIndex": 3,
+          "explanation": "A rising blanket can reach the overflow zone and carry solids over the weir.",
+          "objective": "sludge-thickening-gravity-thickening"
+        }
+      ]
+    },
+    {
+      "id": "sludge-thickening-mechanical-thickening",
+      "title": "Mechanical thickening: polymer, units and capture",
+      "objectives": [
+        "Explain the role of cationic polymer and name the main mechanical thickening units in general terms.",
+        "Calculate capture rate and recycle load, and explain why the recycle stream matters to the plant.",
+        "Describe the main parts and adjustments of a gravity belt thickener, and calculate polymer solution strength."
+      ],
+      "lesson": "### Why plants use mechanical thickening\n\nSome sludge does not thicken well by gravity alone. The WEF manual says waste activated sludge settles slowly, resists compaction and tends to stratify and float as gas forms. Mechanical thickeners use added force, flotation or filtration to separate water in less time and space. They give the operator more control, but they bring chemicals and moving parts that need maintenance. The manual says belt, drum and centrifuge units have largely replaced gravity and DAF thickening because of low capital cost, ease of operation, low odour and small size. The manual warns that thickening too far can cause pump failure downstream.\n\n### The role of polymer\n\nMost mechanical units depend on a polymer, although the WEF manual notes that some centrifuges can thicken a homogeneous sludge such as waste activated sludge from a plant with primary clarifiers without one, and that polymer then raises floc size and capacity. The Wisconsin study guide describes polymers as long chains made of carbon and hydrogen that clump small sludge particles into larger ones, a process called flocculation. Polymers come in cationic and anionic forms, and cationic polymer is the most commonly used. Larger flocs drain, float or settle faster, and the water leaves with fewer solids. Polymer is a conditioning tool, not a replacement for good sludge handling. For gravity belt thickeners the WEF manual gives typical final solution strengths: dry polymers 0.05 to 0.2 percent by weight, emulsion polymers 0.1 to 0.5 percent by volume and Mannich polymers 1 to 3 percent by volume. It says solutions much stronger than these cannot be dispersed efficiently and raise cost.\n\n### Why cationic polymer is common\n\nThe Wisconsin guide says the normal floc particle carries a negative charge. A polymer with the opposite charge attracts the particles and pulls them together, so a cationic polymer, which is positive, is the usual first choice, although testing decides the product. A polymer with the wrong charge or strength gives weak flocs and a cloudy filtrate. The WEF manual adds that anionic or nonionic programs sometimes work best on high-ash or lime-stabilized sludges, so the product is tested rather than assumed.\n\n### Working with the polymer vendor\n\nThe study guide advises that the operator work with the facility's polymer vendor to choose the product and set up dilution and mixing. A vendor can bring jar tests, samples and experience with similar sludges. The WEF manual says polymer selection and dose are best found by jar tests and bench-scale tests, followed by a trial on the unit. Give the vendor good information: the sludge type, the percent solids, how it varies through the week and the equipment in use. Keep the safety data sheet at hand. The Wisconsin guide warns that polymers are extremely slippery, so wear the right protective equipment and use the safety data sheet to clean up spills. Record the product, the dose and the result, so that a change can be traced.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Flow diagram: feed sludge and cationic polymer enter a mechanical thickener; thickened sludge goes forward and the filtrate or overflow is recycled to the plant\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Mechanical thickening: polymer is added to the feed, and the water that leaves is a recycle stream to the plant.</title>\n<g fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"10\" y=\"90\" width=\"70\" height=\"44\" rx=\"4\"/><rect x=\"110\" y=\"90\" width=\"80\" height=\"44\" rx=\"4\"/><rect x=\"220\" y=\"90\" width=\"90\" height=\"44\" rx=\"4\"/></g><g fill=\"#c9d3de\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"318\" y=\"150\" width=\"66\" height=\"44\" rx=\"4\"/></g><g fill=\"#eef0f3\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"105\" y=\"20\" width=\"90\" height=\"36\" rx=\"4\"/></g><g fill=\"#e6e9ed\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"110\" y=\"190\" width=\"120\" height=\"44\" rx=\"4\"/><rect x=\"10\" y=\"190\" width=\"70\" height=\"44\" rx=\"4\"/></g><g font-size=\"11\" text-anchor=\"middle\"><text x=\"45\" y=\"110\">Feed</text><text x=\"45\" y=\"124\">sludge</text><text x=\"150\" y=\"110\">Mix with</text><text x=\"150\" y=\"124\">polymer</text><text x=\"265\" y=\"110\">Thickener</text><text x=\"265\" y=\"124\">belt, drum, DAF</text><text x=\"351\" y=\"170\">Thickened</text><text x=\"351\" y=\"184\">sludge</text><text x=\"150\" y=\"42\">Cationic polymer</text><text x=\"170\" y=\"210\">Filtrate or overflow</text><text x=\"170\" y=\"224\">recycle stream</text><text x=\"45\" y=\"210\">Plant</text><text x=\"45\" y=\"224\">liquid train</text></g><path fill=\"#2f6db2\" stroke=\"#2f6db2\" stroke-width=\"2\" d=\"M80 112 L101 112 M110 112 L101 117 L101 107 Z M190 112 L211 112 M220 112 L211 117 L211 107 Z M150 56 L150 81 M150 90 L145 81 L155 81 Z M300 134 L331 146 M340 150 L329 151 L333 142 Z M265 134 L234 182 M230 190 L230 179 L239 185 Z M110 212 L89 212 M80 212 L89 207 L89 217 Z\"/><text x=\"196\" y=\"254\" text-anchor=\"middle\" fill=\"#6b7a8c\" font-size=\"11\">Illustrative. A centrifuge returns centrate in the same way.</text>\n</svg>\n<figcaption>Mechanical thickening: polymer is added to the feed, and the water that leaves is a recycle stream to the plant.</figcaption>\n</figure>\n\n### Dissolved air flotation\n\nIn dissolved air flotation, or DAF, air is dissolved in water under pressure. When the pressure is released through a reducing valve into the sludge feed, tiny bubbles form, attach to the solids and make them lighter than water, so that they rise as a float that a skimmer removes. The WEF manual lists the saturation system as a recycle pressurization pump, an air compressor, an air saturation tank and a pressure release valve, and says the tank has surface skimmers for the float and floor rakes for the heavier solids that settle. The Wisconsin Solids Separation guide lists the main parts as the air tank, the DAF tank, the top and bottom skimmers, the effluent baffle and the discharge chamber. The WEF manual gives about 4 percent total solids as a typical minimum float for thickening secondary sludge without primary sludge, with 5 to 6 percent expected under optimum conditions, and about 6 percent as a typical minimum for a 50:50 mix of primary and secondary sludge. \n\n### DAF problems and the guide's table\n\nThe WEF manual's troubleshooting table for flotation thickening, which agrees with the Wisconsin guide's list, gives the following. A float that is too thin can come from a skimmer that runs too fast, an overloaded unit, too little polymer or too much air for the solids, which gives a frothy float. Effluent solids that are too high can come from an overloaded unit, too little polymer, a skimmer that is off or too slow, too little air for the solids, or septic sludge left on the bottom of the tank. Low dissolved air can come from a stopped or clogged reaeration pump, a clogged eductor or a faulty air supply. These are starting points. Your own manual gives the corrective actions for your equipment.\n\n### Belt, drum and centrifuge in general terms\n\nA gravity belt thickener spreads polymer-conditioned sludge on a moving porous belt, and water drains through while the solids are carried along. A rotary drum thickener turns conditioned sludge in a screened drum, and water leaves through the screen while the thicker sludge moves out of the end. A centrifuge spins the sludge so that the force pushes solids outward from the liquid. All three give a thicker sludge and a stream of water. Each has its own wash and maintenance needs: the WEF manual describes a high-pressure belt wash on gravity belt thickeners, periodic spray washing of drum screens, and centrifuges that can generate about 2,000 times the force of gravity at the bowl wall. Study the manual for the unit you run.\n\n### Parts of a gravity belt thickener\n\nThe WEF manual describes the usual layout. Polymer is injected through a multiport ring and mixed in an inline mixer. The sludge then slows in a flocculation tank so that flocs can form before it overflows onto the moving belt, which is usually woven polyester. Plows called chicanes clear paths so that filtrate can drain, and later turn the thickening sludge over like furrows so that more water is exposed; some also roll the solids backward, which adds shear. Near the discharge many units have an adjustable ramp or dam that makes the sludge pond briefly, so that it stays on the belt longer. A doctor blade scrapes off solids that stick, and a high-pressure wash tube cleans the belt on its return. The belt drive has variable speed, and a tracking device, often a hydraulic or pneumatic cylinder, keeps the belt centred. Unlike a belt filter press, the belt needs only enough tension to grip the drive roller, and extra tension shortens belt life. Filtrate and wash water are collected and leave separately from the thickened sludge.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 240\" role=\"img\" aria-label=\"Side view of a gravity belt thickener showing four zones along the belt: feed and flocculation, gravity drainage with plows, the ramp, and the discharge, with the filtrate pan below and the wash spray on the return run\" font-family=\"Arial,sans-serif\" font-size=\"11\" fill=\"#1d2d40\">\n<title>Gravity belt thickener zones: sludge is flocculated, drains over the plows, ponds at the ramp and leaves as thickened sludge.</title>\n<g text-anchor=\"middle\"><text x=\"55\" y=\"24\">1 Feed and</text><text x=\"55\" y=\"38\">floc tank</text><text x=\"170\" y=\"24\">2 Gravity drainage</text><text x=\"170\" y=\"38\">with plows</text><text x=\"275\" y=\"24\">3 Ramp</text><text x=\"275\" y=\"38\">ponds sludge</text><text x=\"345\" y=\"24\">4 Cake</text><text x=\"345\" y=\"38\">leaves</text></g>\n<g stroke=\"#8a95a3\" stroke-width=\"1\" stroke-dasharray=\"4 3\"><path d=\"M100 46V120M240 46V120M310 46V120\"/></g>\n<path d=\"M10 100H380\" stroke=\"#1d2d40\" stroke-width=\"5\"/>\n<path fill=\"#c9d3de\" stroke=\"#1d2d40\" stroke-width=\"1.5\" d=\"M12 98V80H98V84L238 92V98ZM240 98V82L300 76V98Z\"/>\n<path d=\"M130 98L146 86M180 98L196 86M215 98L231 88\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<path d=\"M300 76L318 98\" stroke=\"#1d2d40\" stroke-width=\"4\"/>\n<path fill=\"#e6e9ed\" stroke=\"#1d2d40\" stroke-width=\"1.5\" d=\"M10 124H238V146H10Z\"/>\n<text x=\"124\" y=\"139\" text-anchor=\"middle\">Filtrate pan to plant</text>\n<g stroke=\"#2f6db2\" stroke-width=\"2\" fill=\"#2f6db2\"><path d=\"M60 104V120M170 104V120M120 104V120\"/><path d=\"M55 116L60 123L65 116ZM165 116L170 123L175 116ZM115 116L120 123L125 116Z\" stroke=\"none\"/></g>\n<path d=\"M380 172H20\" stroke=\"#1d2d40\" stroke-width=\"3\" stroke-dasharray=\"10 4\"/>\n<path d=\"M300 200V178\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M294 184L300 175L306 184Z\" fill=\"#2f6db2\"/>\n<text x=\"300\" y=\"216\" text-anchor=\"middle\">Wash spray cleans belt</text>\n<text x=\"150\" y=\"190\" text-anchor=\"middle\">Belt returns underneath</text>\n<path d=\"M345 100V126\" stroke=\"#8a95a3\" stroke-width=\"2\"/>\n<text x=\"345\" y=\"140\" text-anchor=\"middle\">Doctor</text><text x=\"345\" y=\"153\" text-anchor=\"middle\">blade</text>\n<text x=\"195\" y=\"234\" text-anchor=\"middle\" fill=\"#5b6877\">Illustrative. Layout differs by manufacturer.</text>\n</svg>\n<figcaption>Zones of a gravity belt thickener, side view: floc forms, water drains between the plows, the ramp ponds the sludge, and the thickened sludge drops off at the discharge.</figcaption>\n</figure>\n\n### Adjusting a gravity belt thickener\n\nSeveral settings work together, and the WEF manual advises changing one at a time and allowing time for each change to show. Mixing energy, set at the mixer, matters in both directions: too little or too much gives poor floc and weaker thickening. Flocs also need enough retention time to finish forming; too little leaves them small and too much makes them large and clumpy, and large uniform flocs are the goal. A slower belt gives water more time to drain and a thicker product, while a faster belt raises throughput if the feed rate rises with it, so belt speed is a balance. A steeper ramp gives a drier sludge. If the feed solids rise noticeably, the polymer dose, belt speed or feed rate has to change to keep the unit stable. Filamentous growth in the aeration basin raises the polymer dose because water is held inside the cells. Wash water matters too: if it is dirty or its pressure falls, solids stay in the belt and the belt blinds, so keep the spray nozzles clean. The WEF troubleshooting table links a sludge that does not drain on the gravity deck to a blinded belt, poor floc, the wrong polymer or too high a loading rate, and solids sticking to the belt to too much polymer or too little mixing. It also names poor mixing, activation and aging of the polymer among the most common causes of excess polymer use.\n\n### Capture rate\n\nThe capture rate shows how much of the feed solids end up in the thickened sludge. Divide the pounds of solids in the thickened sludge by the pounds in the feed, then multiply by 100. A feed of 5,000 pounds per day with 4,500 pounds in the thickened sludge gives 90 percent. A lower rate means more solids leave in the filtrate, overflow or centrate. Polymer dose, feed rate, belt or drum speed and sludge quality all influence capture, so track it daily. The WEF manual's table of rotary drum thickener performance shows solids recovery of about 90 to 99 percent for the municipal sludges listed.\n\n### The recycle stream\n\nEvery mechanical thickener makes a water stream, called filtrate, subnatant, overflow or centrate depending on the unit. It goes back to the plant, usually to the head of the plant. The WEF manual says gravity thickener overflow can go to the secondary process when it is clean, but to the primary clarifiers when the thickener is having difficulties. The stream carries uncaptured solids and often dissolved material, so a thickener that loses solids here feeds them back into the plant. The manual says the cost of this recycle is, at a minimum, what the authority charges a customer to send solids to the plant.\n\n### Polymer dose and cost\n\nOperators often express dose as pounds of active polymer per ton of dry solids, as on the WEF manual's log sheet. A ton is 2,000 pounds, so divide the pounds of polymer used per day by the tons of dry solids fed per day. A higher dose can improve capture and, on a centrifuge, cake solids. But the manual says polymer should be injected at the minimum amount needed, because excess is wasted and goes out with the filtrate, and on a belt thickener too much can make solids stick to the belt. For a given sludge, the lower the feed solids, the higher the dose needed. Make changes in steps, record each result and compare them on the same sludge.\n\n### Polymer solution strength\n\nPolymer is made down to a working strength before it is fed. Spellman gives percent strength by weight as the pounds of polymer divided by the pounds of water plus polymer, times 100. Water weighs 8.34 lb per gal. For example, 5 lb of dry polymer in 200 gal of water: the water weighs 200 x 8.34 = 1,668 lb, the solution weighs 1,673 lb, and the strength is 5 / 1,673 x 100 = 0.30 percent. For a liquid polymer, the pounds of liquid times its percent strength equal the pounds of solution times the solution's percent strength, and that balance is solved for the pounds of liquid to use. \n\n### Choosing between the units\n\nNo single unit suits every plant. DAF has been used for light, diffuse secondary sludges, and the WEF manual notes that most of its energy goes to the pressurization pumps. A decanter centrifuge can both thicken and dewater, which can simplify operation, and the manual says it can produce whatever solids the operator needs, from about 4 percent up to 25 to 30 percent. These statements are general. Ask the vendor and read the manual before drawing conclusions for your own plant, and weigh capture, polymer use, energy, labour and odour together.\n\n### Feed quality and consistency\n\nAll mechanical units perform best with a steady feed. Large swings in percent solids or flow upset the polymer dose and the thickened sludge quality. Mixing the sludge in the feed tank or blending sources before the thickener helps. Old sludge that has gone septic is harder to condition, and the WEF manual calls holding feed in storage tanks under uncontrolled conditions poor practice. If the feed changes, adjust the polymer, check the unit and tell the people upstream.\n\n### Routine checks and maintenance\n\nWalk around the unit regularly. Look at the polymer mix and feed, belt or drum condition, wash water, spray nozzles, drive noise and leaks. For gravity belt thickeners the WEF manual's daily list includes cleaning the belt by running the belt drive and wash together without sludge or polymer for a minimum of 45 minutes, cleaning the wash nozzles and checking oil levels and alarms. Take a sample of the thickened sludge and the filtrate and look at both.\n\n### Start-up and shutdown in outline\n\nThe WEF manual gives each unit a basic sequence and says to follow the manufacturer's instructions. For a gravity belt thickener, start-up is: check the belt is clear, start the hydraulic unit, start the belt drive, start the wash water, start the polymer pump, then the sludge pump and the thickened sludge pump, adjusting one item at a time. Shutdown is: stop the sludge feed and polymer, drain the flocculation tank, wash the machine and belt until clean, then stop the wash water and the drive. For a centrifuge, start the feed and polymer at about one third of the normal rate, and at shutdown flush with water until clear water leaves both ends.\n\n",
+      "evidence": "### Fictional scenario: Marrow Creek Plant and the belt thickener\n\nMarrow Creek Plant is a fictional wastewater plant. A gravity belt thickener handles waste sludge. Over two weeks the thickened sludge has fallen from about 5 percent to about 3.5 percent solids, and the filtrate looks cloudy. The operator, Dev Okafor, learns that a new batch of polymer was delivered. The vendor representative, Marta Lindqvist, offers to run jar tests.",
+      "assignment": "Write a one-page note for Dev Okafor's supervisor. Explain why the polymer must suit the negative charge of the floc, and what the vendor can add. Show how you would calculate the capture rate and the recycle load from daily solids records. Describe the checks you would make on the thickener and the polymer before changing the dose. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Explains the role of cationic polymer and why charge matters, citing the vendor.",
+        "Shows how capture rate and recycle load are calculated from the records.",
+        "Lists checks on the unit and the polymer before changing the dose.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to describe what happens to a floc when the polymer does not match its charge. Check that the capture rate and the recycle load are worked from pounds of solids, not from percent solids. Strong answers keep the dose change small and tie it to a result. Watch for learners who raise the polymer dose first; the new batch is only one of several possible causes.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and make a table of the units, how each separates water and one wear point to ask about."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records or the polymer label and note the product name, the dose and the dilution."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Marrow Creek scenario and calculate the capture rate from a set of records."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-adv-ww",
+        "wi-solids-sep",
+        "wef-mop11",
+        "spellman-hb"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-thickening-mechanical-thickening-c1",
+          "prompt": "What does a polymer do in sludge thickening?",
+          "choices": [
+            "Clumps small particles into larger flocs that separate faster",
+            "Dissolves the fine solids so that they leave with the water stream",
+            "Warms the sludge so that it settles quickly",
+            "Adds air to the sludge so that the solids float"
+          ],
+          "correctIndex": 0,
+          "explanation": "Polymer flocculates small particles into larger ones, which drain, float or settle faster.",
+          "objective": "sludge-thickening-mechanical-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-mechanical-thickening-c2",
+          "prompt": "The normal floc particle carries a negative charge. Which polymer is the usual first choice?",
+          "choices": [
+            "An anionic polymer, which has a matching charge",
+            "A cationic polymer, which has the opposite charge",
+            "A non-ionic oil that coats the particles",
+            "No polymer, because floc charge is fixed by the sludge"
+          ],
+          "correctIndex": 1,
+          "explanation": "A polymer with the opposite charge attracts the floc, which is why cationic polymer is the most commonly used, although testing decides the product.",
+          "objective": "sludge-thickening-mechanical-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-mechanical-thickening-c3",
+          "prompt": "An operator slows the belt on a gravity belt thickener and leaves the feed rate unchanged. What is the usual effect?",
+          "choices": [
+            "Throughput rises because water leaves the belt much faster than before",
+            "The belt blinds at once and has to be replaced soon after the change",
+            "Water drains for longer, so the thickened sludge is usually drier",
+            "The mixer opens wider to make up for the change in speed"
+          ],
+          "correctIndex": 2,
+          "explanation": "A slower belt keeps the sludge on the drainage section longer, which usually gives a thicker product, while a faster belt raises throughput if the feed rate rises with it.",
+          "objective": "sludge-thickening-mechanical-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-mechanical-thickening-c4",
+          "prompt": "A thickener is fed 10,000 lb of solids per day and the thickened sludge carries 9,200 lb per day. What is the capture rate?",
+          "choices": [
+            "8 percent",
+            "109 percent",
+            "88 percent",
+            "92 percent"
+          ],
+          "correctIndex": 3,
+          "explanation": "Capture rate = 9,200 / 10,000 x 100 = 92 percent.",
+          "objective": "sludge-thickening-mechanical-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-mechanical-thickening-c5",
+          "prompt": "In dissolved air flotation, how do the solids reach the surface?",
+          "choices": [
+            "Tiny air bubbles attach to the solids and carry them up",
+            "A belt carries them out of the tank",
+            "The rotating bowl throws them to the outside",
+            "Rakes push the solids up the sloped floor toward the draw-off"
+          ],
+          "correctIndex": 0,
+          "explanation": "Air released from the pressurised water forms tiny bubbles that attach to solids and float them to the skimmer.",
+          "objective": "sludge-thickening-mechanical-thickening"
+        },
+        {
+          "id": "ceu-sludge-thickening-mechanical-thickening-c6",
+          "prompt": "What does the WEF manual say about the mixing energy used to blend polymer with sludge on a gravity belt thickener?",
+          "choices": [
+            "The more energy applied, the larger and stronger the flocs become",
+            "Too little or too much mixing energy gives poor floc and weaker thickening",
+            "Mixing energy matters for dry polymer but not for emulsion polymer products",
+            "Mixing energy has no effect on floc once a cationic polymer is chosen"
+          ],
+          "correctIndex": 1,
+          "explanation": "The manual says too little or too much mixing energy gives less than optimum floc formation, which hurts thickening.",
+          "objective": "sludge-thickening-mechanical-thickening"
+        }
+      ]
+    },
+    {
+      "id": "sludge-thickening-operation-and-records",
+      "title": "Operation and records: feeds, side streams and pumps",
+      "objectives": [
+        "Describe how thickened sludge feeds the digester and dewatering, and calculate side-stream return loads.",
+        "Start a positive displacement pump safely, keep useful records and work through a thickener problem.",
+        "Calculate the DAF air-to-solids ratio and recycle percent, and describe the main DAF controls."
+      ],
+      "lesson": "### Thickening as part of the solids train\n\nThickening sits in the middle of the solids train. It receives sludge from the clarifiers and sends two streams on: a thickened sludge forward and a water stream back. The thickened sludge may go to a digester or to dewatering. The water stream goes to the plant. Because every stage feeds the next, the way the thickener is run affects the digester, the dewatering equipment, the liquid train and the operating records.\n\n### Feed to the digester\n\nThe Wisconsin study guide lists key factors in digester operation, including organic loading rate, volatile acid and alkalinity ratio, temperature, mixing, solids retention time, pH and toxicity. Thickening changes several of these. A thicker feed raises the organic load for the same volume of feed, so a swing in thickened percent solids can shock a digester. The goal is a steady feed of the right strength, not the highest possible number. Tell the digester operator about any change in the thickener's output. The WEF manual also says wide fluctuations in underflow concentration should be avoided to keep a digester stable.\n\n### Feed to dewatering\n\nA dewatering unit works best with a feed that is steady in percent solids and well mixed. Thinner feed brings more water for the unit to remove, and a feed that varies makes it hard to set the polymer dose. The study guide explains that most dewatering techniques do not release bound water, which sits mostly inside the cells, and that it is difficult to get biosolids above 25 percent solids unless the cells are ruptured, although the WEF manual notes that centrifuges can reach 25 to 30 percent solids, so treat 25 percent as a rule of thumb. For the operator this means that dewatering has a practical limit, so make sure the thickener is doing its share.\n\n### Side-stream returns\n\nWater leaving a thickener, a digester or a dewatering unit returns to the plant as a side stream. These flows are small in volume but can be strong in solids, ammonia and organic matter. They add to the load where they re-enter the plant, often the head of the plant. The load can vary through the day with how the units are run. The WEF manual says the effects of recycle streams on a gravity thickener can be reduced by metering them in slowly or by introducing them at another point. It adds that hot digester supernatant can cause thermal stratification, and that recycled centrate or filtrate can carry biologically active solids that gasify the thickener.\n\n### Calculating the return load\n\nThe pounds per day returning to the plant equal the flow in million gallons per day times the concentration in milligrams per litre times 8.34. A side stream of 0.10 million gallons per day at 600 milligrams per litre carries 0.10 times 600 times 8.34, or 500 pounds per day. This is the number to compare with the total plant load. A return of this size may be small beside the raw load, or it may be large for a small plant, so use your own records.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Diagram: thickener, then a positive displacement pump with the discharge valve open, then digester or dewatering; a side stream returns to the plant\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Thickened sludge goes to the digester or dewatering through a pump with an open valve; the side stream returns to the plant.</title>\n<g fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"10\" y=\"40\" width=\"80\" height=\"46\" rx=\"4\"/><rect x=\"10\" y=\"150\" width=\"120\" height=\"44\" rx=\"4\"/></g><g fill=\"#c9d3de\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"290\" y=\"20\" width=\"90\" height=\"36\" rx=\"4\"/><rect x=\"290\" y=\"70\" width=\"90\" height=\"36\" rx=\"4\"/></g><g fill=\"#e6e9ed\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"200\" y=\"150\" width=\"120\" height=\"44\" rx=\"4\"/></g><g font-size=\"11\" text-anchor=\"middle\"><text x=\"50\" y=\"67\">Thickener</text><text x=\"335\" y=\"42\">Digester</text><text x=\"335\" y=\"92\">Dewatering</text><text x=\"70\" y=\"170\">Side stream</text><text x=\"70\" y=\"184\">filtrate, overflow</text><text x=\"260\" y=\"170\">Plant liquid train</text><text x=\"260\" y=\"184\">receives the load</text></g><circle cx=\"150\" cy=\"63\" r=\"22\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"150\" y=\"60\" text-anchor=\"middle\" font-size=\"11\">PD</text><text x=\"150\" y=\"74\" text-anchor=\"middle\" font-size=\"11\">pump</text><path fill=\"#1d2d40\" d=\"M205 53 L225 63 L205 73 Z M245 53 L225 63 L245 73 Z\"/><text x=\"225\" y=\"92\" text-anchor=\"middle\" font-size=\"11\">valve open</text><path fill=\"#2f6db2\" stroke=\"#2f6db2\" stroke-width=\"2\" d=\"M90 63 L119 63 M128 63 L119 68 L119 58 Z M172 63 L194 63 M203 63 L194 68 L194 58 Z M247 63 L280 44 M288 40 L282 48 L277 40 Z M247 63 L280 83 M288 88 L277 87 L282 79 Z M50 86 L50 141 M50 150 L45 141 L55 141 Z M130 172 L191 172 M200 172 L191 177 L191 167 Z\"/><text x=\"195\" y=\"226\" text-anchor=\"middle\" fill=\"#6b7a8c\" font-size=\"11\">Start-up: valve open, liquid in the line, then start the pump.</text>\n</svg>\n<figcaption>Thickened sludge goes to the digester or dewatering through a pump with an open valve; the side stream returns to the plant.</figcaption>\n</figure>\n\n### Pumping thickened sludge\n\nThickened sludge is heavy and often pumped with positive displacement pumps. The Wisconsin guide warns that these pumps can be damaged if flow is blocked by a closed line valve or by a lack of liquid in the system. A pump that runs against a closed valve has nowhere to push the sludge, so the pressure can rise past the pipe rating and damage the pipe or the pump. Before starting, walk the line, open the valves on the path and confirm that there is liquid in the system. The WEF manual says positive displacement pumps are preferred for thickened sludge, that progressing cavity and rotary lobe pumps pulse less than diaphragm and plunger pumps, and that pulsing feed makes the polymer dose vary when the polymer flow is held constant. It also says pump speed becomes a poor substitute for a flow meter as the pump wears, pumps wear quickly in thickened sludge service, and for gravity thickeners it suggests an underflow velocity of at least about 0.75 m/s (2.5 ft/sec) to stop solids settling in the line.\n\n### Controlling a DAF unit\n\nA DAF unit has a few settings that the operator controls. The air-to-solids ratio is the pounds of air released per pound of solids fed. Spellman gives it as air flow in cubic feet per minute times 0.075 lb per ft3, divided by sludge flow in gpm times decimal percent solids times 8.34. The WEF manual says the ratio needed depends mostly on the sludge, and that it affects the rise rate and the total depth of float more than the percent solids in the float. The saturator feed rate is the control for it. Recycle flow, the pressurized flow that carries the air, is stated as a percent of sludge flow: recycle gpm divided by sludge gpm, times 100. Hydraulic loading counts the feed plus the recycle flow over the surface area, and solids loading is the pounds of feed solids per day over the same area. The skimmer should remove float from above the water line, and its speed and on-off times are set to give a thick float without letting the depth build up. The manual advises the lowest pressure that gives good operation and not less than the minimum it names, because much lower pressure deepens the float. Bottom sludge must be removed on a schedule: left on the floor it turns septic, gasifies and lowers float density and efficiency. For routine start-up the manual fills the tank with plant non-potable water, starts the float and underflow collectors, engages the recycle system, tests the float and underflow pumps with water, prepares the polymer,\n and only then switches to sludge. At shutdown the polymer and sludge feed stop together, and the recycle can keep running for a short stop. Sample the influent, effluent and float, and measure blanket depth near where the float is raked into the trough.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Side view of a dissolved air flotation unit: sludge feed and pressurised recycle with air enter at the left, float rises to the top and is skimmed off, bottom sludge is scraped to a hopper, and clarified effluent leaves under a baffle, part of it returning as recycle\" font-family=\"Arial,sans-serif\" font-size=\"11\" fill=\"#1d2d40\">\n<title>DAF unit: air from the recycle lifts solids into a float blanket that the skimmer removes, while bottom sludge is scraped off on a schedule.</title>\n<text x=\"195\" y=\"16\" text-anchor=\"middle\">Air-to-solids = lb of air released</text>\n<text x=\"195\" y=\"30\" text-anchor=\"middle\">divided by lb of solids fed</text>\n<path fill=\"#eef0f3\" stroke=\"#1d2d40\" stroke-width=\"2\" d=\"M115 70H285V190H115Z\"/>\n<path fill=\"#c9d3de\" stroke=\"#1d2d40\" stroke-width=\"1.5\" d=\"M117 72H283V92H117Z\"/>\n<text x=\"200\" y=\"86\" text-anchor=\"middle\">3 Float blanket</text>\n<g fill=\"#2f6db2\"><circle cx=\"140\" cy=\"140\" r=\"3\"/><circle cx=\"155\" cy=\"120\" r=\"3\"/><circle cx=\"175\" cy=\"145\" r=\"3\"/><circle cx=\"190\" cy=\"115\" r=\"3\"/><circle cx=\"210\" cy=\"130\" r=\"3\"/></g>\n<path d=\"M245 100V165\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<text x=\"245\" y=\"178\" text-anchor=\"middle\">baffle</text>\n<path d=\"M285 82H330\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M324 76L334 82L324 88Z\" fill=\"#2f6db2\"/>\n<text x=\"385\" y=\"62\" text-anchor=\"end\">4 Skimmer moves</text><text x=\"385\" y=\"76\" text-anchor=\"end\">float out</text>\n<path d=\"M5 110H108\" stroke=\"#1d2d40\" stroke-width=\"3\"/><path d=\"M102 104L112 110L102 116Z\" fill=\"#1d2d40\"/>\n<text x=\"5\" y=\"100\">1 Sludge feed</text>\n<path d=\"M5 150H108\" stroke=\"#2f6db2\" stroke-width=\"3\" stroke-dasharray=\"8 4\"/><path d=\"M102 144L112 150L102 156Z\" fill=\"#2f6db2\"/>\n<text x=\"5\" y=\"140\">2 Recycle with air</text><text x=\"5\" y=\"168\">from saturator</text>\n<path d=\"M117 186H283\" stroke=\"#1d2d40\" stroke-width=\"4\" stroke-dasharray=\"14 5\"/>\n<text x=\"200\" y=\"208\" text-anchor=\"middle\">5 Bottom scraper: remove on schedule</text>\n<path d=\"M285 150H340\" stroke=\"#1d2d40\" stroke-width=\"3\"/><path d=\"M334 144L344 150L334 156Z\" fill=\"#1d2d40\"/>\n<text x=\"385\" y=\"104\" text-anchor=\"end\">6 Effluent leaves</text><text x=\"385\" y=\"118\" text-anchor=\"end\">under baffle;</text><text x=\"385\" y=\"132\" text-anchor=\"end\">part is recycled</text>\n<text x=\"195\" y=\"236\" text-anchor=\"middle\" fill=\"#5b6877\">Illustrative. Real units vary in layout.</text>\n</svg>\n<figcaption>A dissolved air flotation unit, side view: air from the recycle lifts solids into a float blanket, and the bottom scraper removes the settled sludge on a schedule.</figcaption>\n</figure>\n\n### A start-up routine\n\nA simple routine helps. Check that the suction and discharge valves are open and that the discharge path leads to the correct tank. Confirm that the pump and the line contain liquid. Start the pump and watch the pressure and flow for the first minutes. Be ready to stop it if the pressure climbs. After maintenance, check that valves are back in their running positions. Your plant procedure and the pump manual set the details, and they take precedence over a general rule. For a gravity thickener the WEF manual adds: check the tank for obstructions under confined space rules, do not start a thickener that holds accumulated solids or ice, and start with fresh dilution water before applying sludge flow.\n\n### Monitoring the whole system\n\nGood monitoring turns a thickener into a process that can be steered. Record the feed and thickened sludge percent solids, the volumes, the capture rate, the polymer dose, the blanket depth if the unit is a gravity thickener, and the volume and strength of the side stream. A weekly summary of the pounds of solids in and out, with the trend of percent solids and capture, shows slow drift. Compare each day with the last week before deciding that a value is unusual.\n\n### Troubleshooting with the records\n\nWhen a problem appears, work from the records. Ask what changed: the feed, the polymer, the equipment or the weather. If the thickened sludge is thin and the side stream is strong, look at the polymer, the feed rate and the equipment settings. If the thickened sludge is thin and the feed is also thin, look upstream at the sludge being wasted, and remember that on a belt or drum a thinner feed needs more polymer for the same pounds of solids. If the odour is strong, look at the time the sludge has been held. Make one change, wait, and record the result.\n\n### Working with others\n\nThe thickener operator depends on others and others depend on the thickener. Tell the digester operator when the feed changes. Tell the lab when the sludge looks different. Ask the person running the liquid train how the side stream affects the plant. Share the logs so that a change can be tied to its cause. A shift handover that includes the thickener's state, settings and any open concern reduces mistakes.\n\n### A short scenario in outline\n\nPicture a plant where the thickened percent solids has slipped from its usual value and the filtrate looks cloudy. The first step is to look at the records: has the feed percent solids changed, was the polymer drum changed, and did anyone adjust the feed rate? Suppose the feed is thinner because more waste sludge was pulled over the weekend. The WEF manual says that, for a given sludge, the lower the feed solids, the higher the polymer dose needed, so a polymer setting that suited the thicker feed may now be too low. The fix is upstream and in the polymer setting, not in the thickener itself. This is why records of the feed and the dose belong next to the records of the thickened sludge.\n\n### Feed rate, percent solids and the digester\n\nOperators sometimes face a trade between percent solids and feed volume. If the thickened sludge becomes thinner, the digester receives more gallons to carry the same pounds of solids, and the retention time shortens. If it becomes thicker, the feed volume falls and the pounds per day can stay the same. Work in pounds of solids per day when you talk with the digester operator, and give the volume and percent solids as supporting numbers. That keeps the conversation about the load, which is what the digester responds to, and not only about the volume.\n\n### Safety and procedure\n\nFollow the plant's safety procedures for confined spaces, moving equipment, polymer handling, odour and gas hazards. The WEF manual notes that hydrogen sulfide and methane may be present, that spilled polymer and sludge are extremely slippery and should be cleaned up at once, and that two people should be present when working where there are no handrails. Lock out equipment before maintenance, and keep guards in place. This course gives general principles. Plant procedures, manuals and your regulator's requirements always take precedence over general principles. If you are unsure, stop and ask.\n\n### Putting the records to work\n\nThe records are most useful when you review them. Plot percent solids and capture across a month. Mark each change in polymer or settings on the chart. Over time, the chart shows what works for your sludge and where the process tends to fail. Keep it simple, keep it current and share it with the team.",
+      "evidence": "### Fictional scenario: Fennick Ridge Plant after a pump repair\n\nFennick Ridge Plant is a fictional wastewater plant with a belt thickener, a positive displacement feed pump and an anaerobic digester. After a pump repair, the operator, Hana Kowalczyk, finds that thickened sludge has been thin for three days and the digester operator, Luca Moretti, reports a drop in gas. The side stream from the thickener is 0.10 MGD at 700 mg/L. The pump discharge valve was found closed during the repair.",
+      "assignment": "Write a one-page note for Hana Kowalczyk's supervisor. Calculate the pounds per day in the side stream with 8.34 as the constant. Describe how a thin thickened sludge changes the feed to the digester. Give the start-up checks for the positive displacement pump after the repair. List the records you would pull and the order you would work through the problem. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the side-stream load with the stated constant and units.",
+        "Explains how thin thickened sludge changes the volume and loading to the digester.",
+        "Gives the pump start-up checks and the reason for each.",
+        "Lists records and an ordered set of checks, and names unanswered questions."
+      ],
+      "facilitatorGuide": "Ask learners to walk through the pump start-up checks out loud and say what each check protects. Check that the side-stream load uses flow in million gallons per day and that units are written. Strong answers talk to the digester operator before changing the thickener. Watch for learners who blame the pump for the thin sludge; the repair history is only one clue.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write a short start-up checklist for a positive displacement pump."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and find the thickened percent solids for the last week."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Fennick Ridge scenario and list the records you would pull first."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "wi-adv-ww",
+        "wi-solids-sep",
+        "wef-mop11",
+        "spellman-ww2"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-thickening-operation-and-records-c1",
+          "prompt": "A DAF unit receives 70 gpm of sludge at 1.2 percent solids, and 1.5 cfm of air is released into it. Using 0.075 lb of air per ft3 and 8.34 lb per gal, what is the air-to-solids ratio (pounds of air per pound of solids)?",
+          "choices": [
+            "0.16",
+            "1.6",
+            "0.016",
+            "0.0016"
+          ],
+          "correctIndex": 2,
+          "explanation": "Air = 1.5 x 0.075 = 0.1125 lb per min and solids = 70 x 0.012 x 8.34 = 7.006 lb per min, so the ratio is about 0.016.",
+          "objective": "sludge-thickening-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-thickening-operation-and-records-c2",
+          "prompt": "Why is running a positive displacement pump against a closed valve a problem?",
+          "choices": [
+            "The pump loses its prime and the motor cools too quickly during the run",
+            "The sludge thickens and the percent solids drops",
+            "The suction line fills with air and the pump floats",
+            "Pressure can climb past the pipe rating and damage the pipe or pump"
+          ],
+          "correctIndex": 3,
+          "explanation": "The guide says pipe damage can occur if discharge pressure exceeds the pipe's rated pressure.",
+          "objective": "sludge-thickening-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-thickening-operation-and-records-c3",
+          "prompt": "The float blanket on a DAF thickener is deeper than usual and the skimmer is set to run less often. What is a sensible response?",
+          "choices": [
+            "Skim more often or faster, then watch the float solids",
+            "Stop the saturator and let the float drain down on its own",
+            "Double the sludge feed so that new sludge pushes the float out",
+            "Close the effluent baffle to hold more water in the tank"
+          ],
+          "correctIndex": 0,
+          "explanation": "The WEF manual says skimmer speed and on-off times should be set for a thick float without letting excessive float depth build up.",
+          "objective": "sludge-thickening-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-thickening-operation-and-records-c4",
+          "prompt": "A side stream of 0.20 MGD has a concentration of 500 mg/L. Using 8.34 as the conversion constant, how many pounds per day does it carry?",
+          "choices": [
+            "83.4 lb/day",
+            "834 lb/day",
+            "8,340 lb/day",
+            "100 lb/day"
+          ],
+          "correctIndex": 1,
+          "explanation": "Load = 0.20 x 500 x 8.34 = 834 lb/day.",
+          "objective": "sludge-thickening-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-thickening-operation-and-records-c5",
+          "prompt": "Why should the thickener keep a steady feed to the digester?",
+          "choices": [
+            "A steady feed keeps the digester tank empty so that operators can sample it",
+            "A steady feed removes the need for mixing",
+            "A swing in strength or volume can shock the digester's organic load",
+            "A steady feed raises the pH of the digester"
+          ],
+          "correctIndex": 2,
+          "explanation": "Organic loading rate is a key digester factor, so swings in feed strength or volume can upset it; the WEF manual also advises avoiding wide swings in underflow concentration.",
+          "objective": "sludge-thickening-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-thickening-operation-and-records-c6",
+          "prompt": "Which pair of records best shows how a thickener is performing over time?",
+          "choices": [
+            "Operator names and shift times on a calendar",
+            "Polymer invoice totals for the month",
+            "Total sludge hauled away by the contractor in the last year",
+            "Thickened percent solids and capture rate, trended daily"
+          ],
+          "correctIndex": 3,
+          "explanation": "Trends in percent solids and capture show slow drift that a single reading would hide.",
+          "objective": "sludge-thickening-operation-and-records"
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-sludge-thickening-why-thicken-f1",
+      "prompt": "A tank holds 12,000 gal of sludge at 3.0 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many pounds of dry solids are in the tank?",
+      "choices": [
+        "3,002 lb",
+        "30,024 lb",
+        "1,501 lb",
+        "36,000 lb"
+      ],
+      "correctIndex": 0,
+      "explanation": "Pounds of solids = 12,000 x 8.34 x 1.00 x 0.03 = about 3,002 lb.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-f2",
+      "prompt": "A thickener must hold 6,000 lb of dry solids at 4.0 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, what volume of sludge results?",
+      "choices": [
+        "About 179,856 gal",
+        "About 17,986 gal",
+        "About 150,000 gal",
+        "About 8,993 gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "Volume = 6,000 / (8.34 x 1.00 x 0.04) = about 17,986 gal.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-f3",
+      "prompt": "A plant thickens 20,000 gal of sludge at 1.0 percent solids to 5.0 percent solids and keeps the solids. Using a specific gravity of 1.00 for both, how many gallons of water are removed?",
+      "choices": [
+        "4,000 gal",
+        "19,000 gal",
+        "16,000 gal",
+        "12,000 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "With the solids kept and the same specific gravity, the thickened sludge is one fifth of the feed volume, 4,000 gal, so 16,000 gal of water is removed.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-f4",
+      "prompt": "A thickener holds 5,000 lb of dry solids at 3.5 percent solids and a specific gravity of 1.02. Using 8.34 lb per gal, what volume is that?",
+      "choices": [
+        "About 17,129 gal",
+        "About 167,933 gal",
+        "About 17,472 gal",
+        "About 16,793 gal"
+      ],
+      "correctIndex": 3,
+      "explanation": "Volume = 5,000 / (8.34 x 1.02 x 0.035) = about 16,793 gal; leaving out the specific gravity gives a slightly larger answer.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-f5",
+      "prompt": "A thickener makes good thick sludge but its capture rate is low. Why does this matter?",
+      "choices": [
+        "Solids that were missed return in the water stream as extra load",
+        "Thick sludge at that level harms the digester",
+        "The sludge is too thin to be pumped on to the digester or the press",
+        "The thickened sludge holds more bound water than usual"
+      ],
+      "correctIndex": 0,
+      "explanation": "Solids that are not captured leave in the water stream and add load to the liquid train when that water is recycled there.\n",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-f1",
+      "prompt": "A gravity thickener receives 25,000 gal per day of sludge at 1.2 percent solids with a specific gravity of 1.00. It has a surface area of 500 ft2. Using 8.34 lb per gal, what is the solids loading rate?",
+      "choices": [
+        "About 0.6 lb/day/ft2",
+        "About 5.0 lb/day/ft2",
+        "About 50 lb/day/ft2",
+        "About 2.5 lb/day/ft2"
+      ],
+      "correctIndex": 1,
+      "explanation": "Solids = 25,000 x 8.34 x 0.012 = 2,502 lb/day, and 2,502 / 500 = about 5.0 lb/day/ft2.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-f2",
+      "prompt": "A thickener is 40 ft in diameter and receives 12,560 lb of solids per day. Using 3.14 for pi and area = pi x diameter squared / 4, what is the loading rate?",
+      "choices": [
+        "2.5 lb/day/ft2",
+        "100 lb/day/ft2",
+        "10 lb/day/ft2",
+        "314 lb/day/ft2"
+      ],
+      "correctIndex": 2,
+      "explanation": "Area = 3.14 x 1,600 / 4 = 1,256 ft2, and 12,560 / 1,256 = 10 lb/day/ft2.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-f3",
+      "prompt": "A thickener has a surface area of 900 ft2 and a total flow of 135,000 gpd including dilution water. What is the overflow rate?",
+      "choices": [
+        "15 gpd/ft2",
+        "1,500 gpd/ft2",
+        "600 gpd/ft2",
+        "150 gpd/ft2"
+      ],
+      "correctIndex": 3,
+      "explanation": "Overflow rate = 135,000 / 900 = 150 gpd/ft2.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-f4",
+      "prompt": "A gravity thickener gives off a strong odour in warm weather. Which first step fits best?",
+      "choices": [
+        "Check the blanket depth and shorten the time sludge sits in the tank",
+        "Raise the feed rate so the tank holds more sludge for longer each day",
+        "Stop the rakes so the blanket is left undisturbed",
+        "Stop the dilution water and let the tank rest"
+      ],
+      "correctIndex": 0,
+      "explanation": "Odour points to sludge going septic, which a shorter holding time and a lower blanket help to reduce.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-f5",
+      "prompt": "Gas bubbles are lifting clumps of sludge to the surface of a thickener. What does this suggest?",
+      "choices": [
+        "The polymer dose is too high for the belt speed and the wash water flow",
+        "Sludge has been held long enough for gas-producing activity to start",
+        "The sludge is very fresh and holds plenty of dissolved oxygen",
+        "The underflow is being drawn too fast for the feed"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rising clumps and gas are a sign of septic conditions from a long holding time, or of nitrate breaking down in an oxygen-free thickener.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-f1",
+      "prompt": "A thickener receives 4,800 lb of solids per day and 360 lb per day leave in the filtrate. What is the capture rate?",
+      "choices": [
+        "7.5 percent",
+        "8.1 percent",
+        "92.5 percent",
+        "95.0 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Captured solids = 4,800 - 360 = 4,440 lb/day, and 4,440 / 4,800 x 100 = 92.5 percent.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-f2",
+      "prompt": "A thickener receives 15,000 lb of solids per day and captures 94 percent. How many pounds per day are in the thickened sludge?",
+      "choices": [
+        "900 lb/day",
+        "15,957 lb/day",
+        "13,500 lb/day",
+        "14,100 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Thickened solids = 15,000 x 0.94 = 14,100 lb/day.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-f3",
+      "prompt": "A belt thickener uses 24 lb of active polymer per day on 6,000 lb of dry solids per day. Using 2,000 lb per ton, what is the dose in lb of polymer per ton of dry solids?",
+      "choices": [
+        "8 lb per ton",
+        "4 lb per ton",
+        "72 lb per ton",
+        "0.004 lb per ton"
+      ],
+      "correctIndex": 0,
+      "explanation": "Solids = 6,000 / 2,000 = 3 tons per day, and 24 / 3 = 8 lb per ton.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-f4",
+      "prompt": "The float from a dissolved air flotation unit is too thin. Which causes do the Wisconsin guide and the WEF manual list?",
+      "choices": [
+        "A skimmer running too slowly, or too much polymer",
+        "A skimmer running too fast, or too little polymer",
+        "Bottom sludge removed from the tank too often",
+        "A bottom collector that runs too slowly"
+      ],
+      "correctIndex": 1,
+      "explanation": "Both sources list a skimmer running too fast and too little polymer among the causes of a thin float; the WEF manual also lists an overloaded unit and too much air for the solids.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-f5",
+      "prompt": "A crew mixes 6.0 lb of dry polymer into 300 gal of water. Using 8.34 lb per gal for water, what is the solution strength by weight (polymer divided by the weight of polymer plus water, times 100)?",
+      "choices": [
+        "2.0 percent",
+        "0.024 percent",
+        "0.24 percent",
+        "24 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Water weighs 300 x 8.34 = 2,502 lb, the solution weighs 2,508 lb, and 6.0 / 2,508 x 100 = about 0.24 percent.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-f1",
+      "prompt": "A side stream of 0.08 MGD has a concentration of 1,200 mg/L. Using 8.34 as the conversion constant, how many pounds per day does it return to the plant?",
+      "choices": [
+        "About 96 lb/day",
+        "About 8,006 lb/day",
+        "About 80 lb/day",
+        "About 801 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Load = 0.08 x 1,200 x 8.34 = about 801 lb/day.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-f2",
+      "prompt": "A digester receives 6,000 gal per day of thickened sludge at 4.5 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many pounds of solids per day is that?",
+      "choices": [
+        "About 2,252 lb/day",
+        "About 22,518 lb/day",
+        "About 1,126 lb/day",
+        "About 270 lb/day"
+      ],
+      "correctIndex": 0,
+      "explanation": "Solids = 6,000 x 8.34 x 1.00 x 0.045 = about 2,252 lb/day.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-f3",
+      "prompt": "A digester needs 2,000 lb of dry solids per day. The thickened sludge is 2.5 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many gallons per day must be fed?",
+      "choices": [
+        "About 4,796 gal/day",
+        "About 9,592 gal/day",
+        "About 95,923 gal/day",
+        "About 80,000 gal/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Volume = 2,000 / (8.34 x 1.00 x 0.025) = about 9,592 gal/day.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-f4",
+      "prompt": "Bottom sludge has been left on the floor of a DAF tank for several days. What does the WEF manual say this leads to?",
+      "choices": [
+        "A thicker float because the extra solids compact and rise",
+        "Cleaner effluent because the settled sludge acts as a filter",
+        "Septicity and gasification, which lower float density",
+        "A lower air demand in the saturator and a deeper float blanket"
+      ],
+      "correctIndex": 2,
+      "explanation": "The manual says bottom sludge must be removed periodically to prevent septicity, gasification and a decline in float density and DAF efficiency.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-f5",
+      "prompt": "A thickener's sludge is thin and its filtrate is cloudy after a polymer drum ran empty. What is the first check?",
+      "choices": [
+        "Raise the digester temperature to speed digestion",
+        "Close the thickener discharge valve to hold the sludge",
+        "Cut the wash water flow to the unit",
+        "Confirm that polymer is feeding at the expected dose"
+      ],
+      "correctIndex": 3,
+      "explanation": "A recent polymer supply problem fits the symptoms, so the dose is checked before other changes.",
+      "objective": "sludge-thickening-operation-and-records"
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-sludge-thickening-why-thicken-a1",
+      "prompt": "A tank holds 8,000 gal of sludge at 1.5 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many pounds of dry solids does it hold?",
+      "choices": [
+        "10,008 lb",
+        "1,001 lb",
+        "500 lb",
+        "1,200 lb"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pounds of solids = 8,000 x 8.34 x 1.00 x 0.015 = about 1,001 lb.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-a2",
+      "prompt": "A thickener holds 2,500 lb of dry solids at 2.5 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, what volume of sludge is that?",
+      "choices": [
+        "About 119,904 gal",
+        "About 100,000 gal",
+        "About 11,990 gal",
+        "About 5,995 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume = 2,500 / (8.34 x 1.00 x 0.025) = about 11,990 gal.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-a3",
+      "prompt": "A sludge tank holds 1,670 lb of dry solids in 5,000 gal, with a specific gravity of 1.00. Using 8.34 lb per gal, what is the percent solids?",
+      "choices": [
+        "About 33.4 percent",
+        "About 0.4 percent",
+        "About 8.0 percent",
+        "About 4.0 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Percent solids = 1,670 / (5,000 x 8.34) x 100 = about 4.0 percent.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-a4",
+      "prompt": "Take 1 percent solids as 10,000 mg/L for sludge with a specific gravity of 1.00. A sludge tests at 20,000 mg/L. What is its percent solids?",
+      "choices": [
+        "2.0 percent",
+        "0.2 percent",
+        "20.0 percent",
+        "1.0 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "20,000 mg/L is twice 10,000 mg/L, so the sludge is 2.0 percent solids.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-why-thicken-a5",
+      "prompt": "According to the Wisconsin guide, why is it hard to push sludge solids past a practical limit with thickening or dewatering alone?",
+      "choices": [
+        "The solids start to dissolve once the percent solids rises too far",
+        "Much water is bound inside cells and most methods do not free it",
+        "The specific gravity fixes the percent solids at one value",
+        "Polymer reacts with the water and returns it to the sludge"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Wisconsin guide says most of the bound water is inside the cells and most dewatering techniques do not release it.",
+      "objective": "sludge-thickening-why-thicken"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-a1",
+      "prompt": "A gravity thickener receives 30,000 gal per day of sludge at 2.0 percent solids with a specific gravity of 1.00. It has a surface area of 400 ft2. Using 8.34 lb per gal, what is the solids loading rate?",
+      "choices": [
+        "About 125 lb/day/ft2",
+        "About 1.5 lb/day/ft2",
+        "About 12.5 lb/day/ft2",
+        "About 6.25 lb/day/ft2"
+      ],
+      "correctIndex": 2,
+      "explanation": "Solids = 30,000 x 8.34 x 0.02 = 5,004 lb/day, and 5,004 / 400 = about 12.5 lb/day/ft2.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-a2",
+      "prompt": "A thickener has a surface area of 400 ft2. Its flow rises from 80,000 gpd to 120,000 gpd. What is the new overflow rate?",
+      "choices": [
+        "200 gpd/ft2",
+        "500 gpd/ft2",
+        "3,000 gpd/ft2",
+        "300 gpd/ft2"
+      ],
+      "correctIndex": 3,
+      "explanation": "Overflow rate = 120,000 / 400 = 300 gpd/ft2.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-a3",
+      "prompt": "A round thickener is 20 ft in diameter and receives 62,800 gpd. Using 3.14 for pi and area = pi x diameter squared / 4, what is the overflow rate?",
+      "choices": [
+        "200 gpd/ft2",
+        "20,000 gpd/ft2",
+        "2,000 gpd/ft2",
+        "800 gpd/ft2"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area = 3.14 x 400 / 4 = 314 ft2, and 62,800 / 314 = 200 gpd/ft2.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-a4",
+      "prompt": "Sludge is drawn from a gravity thickener faster than it settles. What is the likely result?",
+      "choices": [
+        "The blanket rises and the overflow turns cloudy",
+        "The blanket falls and the underflow becomes thinner",
+        "The tank turns septic because of the long holding time",
+        "The underflow solids concentration rises"
+      ],
+      "correctIndex": 1,
+      "explanation": "Drawing off more than settles pulls the blanket down and thin sludge reaches the draw-off.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-gravity-thickening-a5",
+      "prompt": "What is a likely effect when the solids loading rate rises above what the thickener can handle?",
+      "choices": [
+        "The underflow percent solids rises steadily over the next day",
+        "The blanket depth falls toward the floor",
+        "More solids reach the overflow and return to the plant",
+        "The overflow becomes clearer than before"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Wisconsin guide says that for clarifiers a loading rate above the design limit increases effluent solids, and the same idea is used for thickeners.",
+      "objective": "sludge-thickening-gravity-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-a1",
+      "prompt": "A thickener receives 8,000 lb of solids per day and the thickened sludge carries 7,000 lb per day. What is the capture rate?",
+      "choices": [
+        "12.5 percent",
+        "114.3 percent",
+        "75.0 percent",
+        "87.5 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Capture rate = 7,000 / 8,000 x 100 = 87.5 percent.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-a2",
+      "prompt": "A thickener receives 5,000 lb of solids per day and captures 90 percent. How many pounds of solids per day return to the plant in the water stream?",
+      "choices": [
+        "500 lb/day",
+        "4,500 lb/day",
+        "50 lb/day",
+        "5,500 lb/day"
+      ],
+      "correctIndex": 0,
+      "explanation": "Solids returned = 5,000 x (1 - 0.90) = 500 lb/day.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-a3",
+      "prompt": "A plant needs 12 lb of active polymer per day. The polymer solution is 0.2 percent active by weight with a specific gravity of 1.00. Using 8.34 lb per gal, how many gallons of solution are needed per day?",
+      "choices": [
+        "About 7,194 gal/day",
+        "About 719 gal/day",
+        "About 72 gal/day",
+        "About 50,040 gal/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Gallons = 12 / (8.34 x 1.00 x 0.002) = about 719 gal/day.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-a4",
+      "prompt": "The wash water supplied to a gravity belt thickener is dirty and its pressure has dropped. What is the likely result?",
+      "choices": [
+        "The doctor blade clears the extra solids, so the belt stays cleaner",
+        "The polymer solution becomes weaker",
+        "Solids stay in the belt and the belt blinds over time",
+        "The belt speed increases on its own"
+      ],
+      "correctIndex": 2,
+      "explanation": "The WEF manual says low wash pressure leaves solids embedded in the belt, which causes blinding after a period of time.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-mechanical-thickening-a5",
+      "prompt": "A crew mixes 4.5 lb of dry polymer into 250 gal of water. Using 8.34 lb per gal for water, what is the solution strength by weight (polymer divided by the weight of polymer plus water, times 100)?",
+      "choices": [
+        "1.8 percent",
+        "0.022 percent",
+        "2.2 percent",
+        "0.22 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Water weighs 250 x 8.34 = 2,085 lb, the solution weighs 2,089.5 lb, and 4.5 / 2,089.5 x 100 = about 0.22 percent.",
+      "objective": "sludge-thickening-mechanical-thickening"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-a1",
+      "prompt": "The sludge flow to a DAF thickener is 45 gpm and the recycle flow is 99 gpm. What is the recycle flow as a percent of the sludge flow?",
+      "choices": [
+        "220 percent",
+        "45 percent",
+        "120 percent",
+        "144 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "Recycle percent = 99 / 45 x 100 = 220 percent.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-a2",
+      "prompt": "A dewatering unit is fed 3,000 gal per day of thickened sludge at 5.5 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many pounds of solids per day is that?",
+      "choices": [
+        "About 13,761 lb/day",
+        "About 1,376 lb/day",
+        "About 688 lb/day",
+        "About 165 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Solids = 3,000 x 8.34 x 1.00 x 0.055 = about 1,376 lb/day.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-a3",
+      "prompt": "A plant's records show 2,600 lb of solids per day fed to the thickener and 2,400 lb per day in the thickened sludge. What is the capture rate?",
+      "choices": [
+        "About 7.7 percent",
+        "About 108.3 percent",
+        "About 92.3 percent",
+        "About 88.5 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Capture rate = 2,400 / 2,600 x 100 = about 92.3 percent.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-a4",
+      "prompt": "A digester is fed the same pounds of solids but the thickened sludge becomes thinner. What follows?",
+      "choices": [
+        "Fewer gallons arrive and the retention time lengthens",
+        "The same gallons arrive and the retention time is longer",
+        "The pounds of solids fall to match the percent solids",
+        "More gallons arrive and the retention time shortens"
+      ],
+      "correctIndex": 3,
+      "explanation": "Thinner sludge means more volume for the same mass, which shortens the time spent in the digester.",
+      "objective": "sludge-thickening-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-thickening-operation-and-records-a5",
+      "prompt": "Why record the polymer dose next to percent solids and capture?",
+      "choices": [
+        "So a change in results can be linked to a change in dose",
+        "So the vendor can set the chemical price for the coming year",
+        "So the dose can be raised by a set step each day",
+        "So the laboratory can stop testing the filtrate"
+      ],
+      "correctIndex": 0,
+      "explanation": "Side-by-side records show whether a change in performance followed a change in polymer dose.",
+      "objective": "sludge-thickening-operation-and-records"
+    }
+  ]
+}

@@ -12,6 +12,15 @@ import c6 from "./courses/ceu-instrumentation-scada.json" with { type: "json" };
 import c7 from "./courses/ceu-sampling-data-quality.json" with { type: "json" };
 import c8 from "./courses/ceu-wastewater-treatment-process-control.json" with { type: "json" };
 import c9 from "./courses/ceu-water-treatment-process-control.json" with { type: "json" };
+import n4 from "./courses/ceu-sludge-thickening.json" with { type: "json" };
+import n5 from "./courses/ceu-sludge-digestion.json" with { type: "json" };
+import n6 from "./courses/ceu-sludge-dewatering.json" with { type: "json" };
+import n7 from "./courses/ceu-lift-stations.json" with { type: "json" };
+import n8 from "./courses/ceu-effluent-filtration.json" with { type: "json" };
+import n9 from "./courses/ceu-reverse-osmosis.json" with { type: "json" };
+import n10 from "./courses/ceu-lime-softening.json" with { type: "json" };
+import n11 from "./courses/ceu-fluoride.json" with { type: "json" };
+import n12 from "./courses/ceu-chloramines.json" with { type: "json" };
 import type { CeuCurriculum } from "../../shared/ceuLearning";
 import safety from "./courses/ceu-basic-safety.json" with { type: "json" };
 import hydraulics from "./courses/ceu-basic-hydraulics.json" with { type: "json" };
@@ -30,6 +39,15 @@ export const ceuCurricula = [
   c7,
   c8,
   c9,
+  n4,
+  n5,
+  n6,
+  n7,
+  n8,
+  n9,
+  n10,
+  n11,
+  n12,
 ] as CeuCurriculum[];
 export function ceuCourse(key: string) {
   return ceuCurricula.find(c => c.key === key);

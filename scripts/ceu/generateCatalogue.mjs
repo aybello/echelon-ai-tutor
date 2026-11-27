@@ -20,7 +20,16 @@ const order = [
   "collection-wet-weather",
   "activated-sludge-troubleshooting",
   "water-treatment-concepts",
-  "wastewater-treatment-concepts"
+  "wastewater-treatment-concepts",
+  "sludge-thickening",
+  "sludge-digestion",
+  "sludge-dewatering",
+  "lift-stations",
+  "effluent-filtration",
+  "reverse-osmosis",
+  "lime-softening",
+  "fluoride",
+  "chloramines"
 ];
 const codes = [
   "ceu-basic-safety",
@@ -41,7 +50,16 @@ const codes = [
   "ceu-collection",
   "ceu-activated-sludge",
   "ceu-water-treatment-concepts",
-  "ceu-wastewater-concepts"
+  "ceu-wastewater-concepts",
+  "ceu-sludge-thickening",
+  "ceu-sludge-digestion",
+  "ceu-sludge-dewatering",
+  "ceu-lift-stations",
+  "ceu-effluent-filtration",
+  "ceu-reverse-osmosis",
+  "ceu-lime-softening",
+  "ceu-fluoride",
+  "ceu-chloramines"
 ];
 const curricula = order.map(k =>
   JSON.parse(
@@ -130,7 +148,16 @@ const covers = {
   "ceu-wastewater-treatment-concepts": {
     "src": "/manus-storage/ceu-wastewater-treatment-concepts-cover_abf712eb.png",
     "alt": "Wastewater treatment concepts course cover"
-  }
+  },
+  "ceu-sludge-thickening": {"src":"/manus-storage/ceu-sludge-thickening-cover_49d477d1.jpg","alt":"Sludge Thickening for Wastewater Operators: illustrative operator training scene"},
+  "ceu-sludge-digestion": {"src":"/manus-storage/ceu-sludge-digestion-cover_e063766d.jpg","alt":"Sludge Digestion for Wastewater Operators: illustrative operator training scene"},
+  "ceu-sludge-dewatering": {"src":"/manus-storage/ceu-sludge-dewatering-cover_a96cc290.jpg","alt":"Sludge Dewatering for Wastewater Operators: illustrative operator training scene"},
+  "ceu-lift-stations": {"src":"/manus-storage/ceu-lift-stations-cover_9448a07d.jpg","alt":"Lift Stations for Wastewater Operators: illustrative operator training scene"},
+  "ceu-effluent-filtration": {"src":"/manus-storage/ceu-effluent-filtration-cover_8e2ad7ac.jpg","alt":"Effluent Filtration for Wastewater Operators: illustrative operator training scene"},
+  "ceu-reverse-osmosis": {"src":"/manus-storage/ceu-reverse-osmosis-cover_eefba436.jpg","alt":"Reverse Osmosis for Water Operators: illustrative operator training scene"},
+  "ceu-lime-softening": {"src":"/manus-storage/ceu-lime-softening-cover_9d02a735.jpg","alt":"Lime Softening for Water Operators: illustrative operator training scene"},
+  "ceu-fluoride": {"src":"/manus-storage/ceu-fluoride-cover_e8719c88.jpg","alt":"Fluoride in Drinking Water for Operators: illustrative operator training scene"},
+  "ceu-chloramines": {"src":"/manus-storage/ceu-chloramines-cover_04e38866.jpg","alt":"Chloramines in Drinking Water for Operators: illustrative operator training scene"}
 };
 const foundations = new Set(["ceu-water-treatment-concepts", "ceu-wastewater-treatment-concepts", "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math", "ceu-chlorination-principles", "ceu-basic-instrumentation", "ceu-water-distribution-overview", "ceu-supervisor-essentials"]);
 const data = curricula.map((c, i) => ({

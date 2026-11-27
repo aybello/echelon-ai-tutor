@@ -1,0 +1,1082 @@
+{
+  "key": "ceu-effluent-filtration",
+  "version": "2026-11-26.1",
+  "title": "Effluent Filtration for Wastewater Operators",
+  "shortTitle": "Effluent Filtration",
+  "stream": "wastewater",
+  "audience": "Operators, trainees and supervisors at a municipal wastewater plant who run or support tertiary effluent filters, or want a clear foundation before taking on a plant with granular media, cloth disc or other polishing filters.",
+  "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Learn why secondary effluent is filtered and what suspended solids and turbidity tell you. Then follow granular media filters from the layers of media and the flow path to loading rates, head loss, run length and the role of coagulant and polymer filter aids. Study backwashing and cleaning, including backwash triggers and rates, bed expansion, air scour and surface wash, washwater recycle, cloth disc cleaning, mudballs and media loss. Finish with daily monitoring, breakthrough, short runs, clogging, algae, upstream causes such as clarifier carry-over, records and a performance trend scenario. Each module has a worked scenario, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "wef-mop11",
+      "title": "Operation of Municipal Wastewater Treatment Plants, Manual of Practice No. 11, 6th edition (Water Environment Federation)",
+      "section": "Volume II, Chapter 24 Physical-Chemical Treatment: Filtration (description, process equipment, filter control methods, filter aids, backwash methods, filter appurtenances, turbidity and TSS correlation, recycle of backwash flows, troubleshooting Table 24.3)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wi-solids-sep",
+      "title": "Wisconsin DNR Operator Certification: Solids Separation Study Guide, Subclass B (February 2016)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideSolidsSeparation.pdf",
+      "section": "Section 1 tertiary treatment; Sections 2.3.1 to 2.3.16 (granular filtration, backwashing, upstream effects, surface binding, disc filters); Section 2.5.5 (membrane fouling); Sections 3.6.2 to 3.6.4 (media fouling, troubleshooting, chlorine in filters)",
+      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-hb",
+      "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press)",
+      "section": "Section 5.6.8 filtration calculations: filtration rate, unit filter run volume, backwash rate, rise rate, backwash volume, percent product water used for backwashing, percent mud ball volume, filter bed expansion",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-ww3",
+      "title": "Spellman's Standard Handbook for Wastewater Operators, Volume III: Advanced Level (Frank R. Spellman, CRC Press)",
+      "section": "Chapter 4 Advanced Wastewater Treatment: tertiary versus advanced treatment note, 4.4 Filtration (process description and operational problems, symptoms 1 to 12)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wqc-handbook",
+      "title": "Water Quality Control Handbook, 2nd edition (Alley, WEF Press)",
+      "section": "Chapter 8 Physical Treatment: granular media filter difficulties (mud balls), membrane filtration types and tertiary use",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "modules": [
+    {
+      "id": "effluent-filtration-why-filter",
+      "title": "Why filter secondary effluent: solids, turbidity and the filter family",
+      "objectives": [
+        "Explain why secondary effluent carries suspended solids and turbidity and what a tertiary filter is meant to remove.",
+        "Calculate percent removal and pounds of solids removed, and recognise the main filter types: granular depth, cloth disc and membrane."
+      ],
+      "lesson": "### Why filter secondary effluent\n\nA secondary clarifier is meant to leave clear water behind, but it does not catch everything. Light pin floc, pieces of broken floc, a sludge blanket that has crept upward, and algae grown in an open clarifier can all pass over the weir. That material is measured as suspended solids and seen as cloudiness. A tertiary filter is a polishing step placed after the clarifier to catch what slipped through. The Wisconsin study guide says the purpose of tertiary treatment is \"to provide advanced wastewater treatment beyond secondary biological treatment\" and lists sand or mixed media filters, cloth discs and membranes as common units. WEF MOP 11 adds that filtration is \"typically a tertiary treatment step located downstream of secondary processes\" and that its primary goal is removing suspended solids. Spellman notes that \"tertiary\" and \"advanced\" are often used as synonyms but do not mean exactly the same thing: tertiary simply means a step applied after primary and secondary treatment.\n\n<figure><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Flow from secondary clarifier through a tertiary filter to disinfection, with sample points and a backwash return\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><title>Where the filter sits in the plant and where it is sampled</title><rect x=\"20\" y=\"10\" width=\"150\" height=\"38\" rx=\"4\" fill=\"#eef3f9\" stroke=\"#2f6db2\" stroke-width=\"1.5\"/><text x=\"95\" y=\"33\" text-anchor=\"middle\" font-weight=\"bold\">Secondary clarifier</text><rect x=\"20\" y=\"76\" width=\"150\" height=\"38\" rx=\"4\" fill=\"#eef3f9\" stroke=\"#2f6db2\" stroke-width=\"1.5\"/><text x=\"95\" y=\"99\" text-anchor=\"middle\" font-weight=\"bold\">Tertiary filter</text><rect x=\"20\" y=\"142\" width=\"150\" height=\"38\" rx=\"4\" fill=\"#eef3f9\" stroke=\"#2f6db2\" stroke-width=\"1.5\"/><text x=\"95\" y=\"165\" text-anchor=\"middle\" font-weight=\"bold\">Disinfection</text><rect x=\"20\" y=\"208\" width=\"150\" height=\"32\" rx=\"4\" fill=\"#eef3f9\" stroke=\"#2f6db2\" stroke-width=\"1.5\"/><text x=\"95\" y=\"228\" text-anchor=\"middle\" font-weight=\"bold\">Discharge</text><path d=\"M95 48 V76\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M89 70 L95 76 L101 70 Z\" fill=\"#1d2d40\"/><path d=\"M95 114 V142\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M89 136 L95 142 L101 136 Z\" fill=\"#1d2d40\"/><path d=\"M95 180 V208\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M89 202 L95 208 L101 202 Z\" fill=\"#1d2d40\"/><text x=\"108\" y=\"66\" font-size=\"11\">A: TSS in</text><text x=\"110\" y=\"132\" font-size=\"11\">B: turbidity out</text><rect x=\"215\" y=\"76\" width=\"155\" height=\"38\" rx=\"4\" fill=\"#f4f4f4\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"292\" y=\"92\" text-anchor=\"middle\" font-weight=\"bold\">Filter aid</text><text x=\"292\" y=\"106\" text-anchor=\"middle\" font-size=\"11\">optional, before bed</text><path d=\"M215 104 H172\" stroke=\"#6b7a8c\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><path d=\"M178 98 L170 104 L178 110 Z\" fill=\"#6b7a8c\"/><rect x=\"215\" y=\"10\" width=\"155\" height=\"38\" rx=\"4\" fill=\"#f4f4f4\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"292\" y=\"26\" text-anchor=\"middle\" font-weight=\"bold\">Headworks</text><text x=\"292\" y=\"40\" text-anchor=\"middle\" font-size=\"11\">or holding tank</text><path d=\"M170 86 H195 V30 H213\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"3 3\"/><path d=\"M207 24 L215 30 L207 36 Z\" fill=\"#2f6db2\"/><text x=\"201\" y=\"62\" font-size=\"11\" fill=\"#2f6db2\">backwash</text></svg><figcaption>Figure 1. The filter polishes clarifier effluent. Sample point A shows what the clarifier delivers and B shows what the filter lets through. In a conventional backwashed filter, the solids it removes return with the backwash water.</figcaption></figure>\n\n### Suspended solids, turbidity and why they matter\n\nTotal suspended solids (TSS) is a weighed result in milligrams per litre (mg/L): solids caught on a glass-fiber filter from a measured sample, then dried and weighed. Turbidity is a light reading in nephelometric turbidity units (NTU): how much light the sample scatters. Fine particles scatter light even when they weigh little, so turbidity reacts fast and an analyzer can read it all day. WEF MOP 11 calls effluent turbidity \"an indirect measure of suspended solids\" and the best filter control parameter because it can be measured rapidly and automatically. Neither number replaces the other. Your permit says which parameters you report and which limits apply.\n\nSolids matter downstream for several reasons. Particles carry organic matter and phosphorus out with the effluent. MOP 11 gives an example in which filtering the effluent of a coagulation and settling step takes suspended solids from a few mg/L toward virtually zero and phosphorus down to about a tenth of a mg/L or less. Solids also matter for disinfection and reuse: MOP 11 notes that coagulation, sedimentation and filtration substantially reduce bacteria and viruses, and that viruses can break through a filter at the first sign of a turbidity rise. Treat these as examples from the book, not as limits for your plant.\n\n### What happens inside a filter\n\nThe word filter suggests simple straining, but MOP 11 says several mechanisms act at once: straining, sedimentation of particles onto the media grains, flocculation inside the pore spaces, and physical and chemical adsorption onto the media. The Wisconsin guide says the overall removal of suspended solids and phosphorus by filtration could exceed 95 percent, and Spellman gives 95 to 99 percent of the suspended matter as typical. Those are the book figures for well-run filters, and your own sampling decides what your filters achieve.\n\nFiltering wastewater is harder than filtering drinking water. MOP 11 explains that wastewater solids are sticky from biological activity and more concentrated, and that thin single-sand beds of the drinking-water type tend to blind quickly. Dual-media and multimedia beds use more of their depth to capture solids, which is why they are common in wastewater.\n\n### What a tertiary filter does not do\n\nA conventional granular filter is built to remove particles, not dissolved material. Ammonia, dissolved organic matter and dissolved salts pass through a granular bed, so the filter does not replace biological nitrification or other advanced steps. Spellman describes nitrification as its own advanced process that converts ammonia to nitrate in a separate tank, trickling filter or biodisc. The filter also depends on what it is given. MOP 11 says filtration alone, without coagulation upstream, is occasionally used on activated sludge effluent, and is less effective on trickling filter and rotating biological contactor effluents because their solids are less naturally flocculent. Where effluent is reused, MOP 11 says regulators tend to require coagulation, flocculation and settling ahead of the filter, or direct filtration with alum and a polymer. Spellman adds that advanced treatment is not cost free, and a plan for it needs careful study because the benefit is not always large enough to justify the added expense. Those points explain why the chain of units is designed together and why operators look at the clarifier when the filter struggles.\n\n### The filter family at recognition level\n\nGranular media filters are the most common. The Wisconsin guide separates shallow-bed filters, with fine sand less than about 18 inches deep that collect most solids near the top, from deep-bed filters, with layered media 30 to 48 inches deep of anthracite, sand or garnet. Filters that stop for backwashing are called semicontinuous by MOP 11, and continuous backwash filters clean sand as it moves, so they filter and wash at the same time. Granular filters can be built for gravity or pressure flow.\n\nCloth disc filters use nylon or polyester cloth on discs; the Wisconsin guide gives a typical pore size of about 10 micrometres. In a fully submerged disc, water passes from outside to inside by gravity and the cloth is cleaned by suction, one or two discs at a time, so the others keep filtering. A partially submerged disc works inside to outside and is cleaned by spray nozzles into a trough. The guide lists a smaller footprint, lower head requirement and ease of retrofit as reasons to choose discs over a granular bed.\n\nMembrane filters are recognised by their very fine pores. The Water Quality Control Handbook says microfiltration separates suspended and colloidal solids too small for a conventional media filter, and that membranes have high capital and operating cost. This course concentrates on granular media and mentions membranes for recognition only.\n\n<figure><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 172\" role=\"img\" aria-label=\"Granular bed, cloth disc and membrane compared\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><title>Three ways to stop suspended solids</title><rect x=\"8\" y=\"8\" width=\"114\" height=\"150\" fill=\"#fff\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"65\" y=\"26\" text-anchor=\"middle\" font-weight=\"bold\">Granular bed</text><rect x=\"138\" y=\"8\" width=\"114\" height=\"150\" fill=\"#fff\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"195\" y=\"26\" text-anchor=\"middle\" font-weight=\"bold\">Cloth disc</text><rect x=\"268\" y=\"8\" width=\"114\" height=\"150\" fill=\"#fff\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"325\" y=\"26\" text-anchor=\"middle\" font-weight=\"bold\">Membrane</text><rect x=\"30\" y=\"44\" width=\"70\" height=\"30\" fill=\"#d9d9d9\" stroke=\"#6b7a8c\"/><rect x=\"30\" y=\"74\" width=\"70\" height=\"30\" fill=\"#bdbdbd\" stroke=\"#6b7a8c\"/><rect x=\"30\" y=\"104\" width=\"70\" height=\"14\" fill=\"#f4f4f4\" stroke=\"#6b7a8c\"/><path d=\"M36 54 H94\" stroke=\"#6b7a8c\" stroke-width=\"9\" stroke-linecap=\"round\" stroke-dasharray=\"1 15\"/><path d=\"M36 66 H94\" stroke=\"#6b7a8c\" stroke-width=\"9\" stroke-linecap=\"round\" stroke-dasharray=\"1 15\"/><path d=\"M34 82 H96\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M34 92 H96\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M34 102 H96\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M34 112 H96\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M65 34 V118\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M60 112 L65 120 L70 112 Z\" fill=\"#2f6db2\"/><text x=\"65\" y=\"136\" text-anchor=\"middle\" font-size=\"11\">solids held</text><text x=\"65\" y=\"150\" text-anchor=\"middle\" font-size=\"11\">through depth</text><rect x=\"175\" y=\"44\" width=\"10\" height=\"74\" fill=\"#e6eef7\" stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"4 2\"/><path d=\"M167 50 V114\" stroke=\"#6b7a8c\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-dasharray=\"1 12\"/><path d=\"M146 80 H172\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M168 74 L176 80 L168 86 Z\" fill=\"#2f6db2\"/><path d=\"M188 80 H222\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M216 74 L224 80 L216 86 Z\" fill=\"#2f6db2\"/><text x=\"195\" y=\"136\" text-anchor=\"middle\" font-size=\"11\">solids stop on</text><text x=\"195\" y=\"150\" text-anchor=\"middle\" font-size=\"11\">the cloth face</text><path d=\"M325 44 V118\" stroke=\"#1d2d40\" stroke-width=\"3\" stroke-dasharray=\"10 4\"/><path d=\"M317 48 V112\" stroke=\"#6b7a8c\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-dasharray=\"1 16\"/><path d=\"M278 80 H312\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M308 74 L316 80 L308 86 Z\" fill=\"#2f6db2\"/><path d=\"M332 80 H358\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M352 74 L360 80 L352 86 Z\" fill=\"#2f6db2\"/><text x=\"325\" y=\"136\" text-anchor=\"middle\" font-size=\"11\">solids rejected</text><text x=\"325\" y=\"150\" text-anchor=\"middle\" font-size=\"11\">at the pores</text></svg><figcaption>Figure 2. Deep multimedia beds store solids through their depth, shallow sand beds hold most near the top, cloth discs hold them on the cloth surface, and membranes reject them at fine pores.</figcaption></figure>\n\n### Two sample points tell most of the story\n\nFig. 1 marks a sample point before the filter and one after it. Comparing the two gives the concentration reduction; mass removal also needs flow. Comparing each of them with its own history shows trends. If the point before the filter climbs at the same flow, more solids are reaching the filter, which usually points upstream and means a harder load. If only the point after the filter climbs, the filter, its chemical aid or upstream coagulation are the likelier causes. Because removal is a ratio, it can look fine even when the filter effluent is poor, for example when the applied solids rise and the filter catches a larger share but still passes more in total. Always read the effluent number itself against the permit as well as the percent removal.\n\n### Worked example: what is the filter removing?\n\nAt the fictional Ashgrove Bend plant the flow is 4.0 MGD. Clarifier effluent measures 12 mg/L TSS and filter effluent measures 3 mg/L. Use 8.34 lb per gallon of water.\n\nStep 1, percent removal: (12 minus 3) divided by 12, times 100, is 75 percent.\n\nStep 2, pounds in: 12 mg/L times 4.0 MGD times 8.34 is about 400 lb per day. Pounds out: 3 times 4.0 times 8.34 is about 100 lb per day.\n\nStep 3, pounds removed: 400 minus 100 is about 300 lb per day.\n\nThe filter captures about 300 pounds a day under these conditions. Those solids stay in the bed until the next backwash, then leave in the washwater and return to the plant. That recycle stream is part of the filter's real cost, and it comes back in the next modules. Always write the units beside every number, and check that percent removal and pounds removed tell the same story. The course gives general principles, and your plant procedures and permit take precedence.\n",
+      "evidence": "### Fictional scenario: Ashgrove Bend Plant\n\nAshgrove Bend Plant is a fictional wastewater plant with a secondary clarifier followed by disinfection. After a wet spring the operators notice a hazy edge on the clarifier weir and a rising turbidity trend. Operator Nadia Brennan asks why the plant is adding a tertiary filter and what it will and will not do. The lead operator, Colm Reyes, wants a short briefing for the crew on filter types and a worked estimate of what a filter would remove on an average day.",
+      "assignment": "Write a one-page briefing for Colm Reyes. Using 3.0 MGD, clarifier effluent at 12 mg/L TSS, filter effluent at 4 mg/L TSS and 8.34 lb per gallon, work out the percent removal and the pounds per day removed, showing each step with units. Explain where those pounds go afterwards. Name the filter type you would expect at a site with little space and why. State what the filter will not remove, and list anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates percent removal and pounds removed per day with the stated constants and units.",
+        "Explains that removed solids leave in the backwash water and return to the plant.",
+        "Names a suitable filter type and gives a reason from the lesson, and states what a filter does not remove.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain in their own words why turbidity and TSS are not the same measurement and why a plant needs both. Check that every calculation carries units and that percent removal and pounds removed agree in direction. Strong answers connect the filter back to the clarifier and the washwater recycle. Watch for learners who think a filter removes dissolved ammonia or BOD, and for those who forget that removed solids are not destroyed.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and make a table of the three filter families, how each stops solids and one question to ask about each."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and note one day of applied and effluent turbidity or TSS, with the units."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Ashgrove Bend scenario and calculate percent removal and pounds removed from the figures given."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wef-mop11",
+        "wi-solids-sep",
+        "spellman-hb",
+        "spellman-ww3",
+        "wqc-handbook"
+      ],
+      "checks": [
+        {
+          "id": "ceu-effluent-filtration-why-filter-c1",
+          "prompt": "What is the main job of a tertiary effluent filter at a wastewater plant?",
+          "choices": [
+            "Convert ammonia to nitrate in a separate aeration stage before discharge",
+            "Polish secondary effluent by catching solids the clarifier misses",
+            "Remove dissolved BOD with a layer of attached biomass on the media",
+            "Thicken waste sludge before it goes to digestion or dewatering"
+          ],
+          "correctIndex": 1,
+          "explanation": "A tertiary filter catches particles that pass the secondary clarifier. Converting ammonia is a separate biological step, a polishing filter does not catch dissolved BOD, and thickening belongs to solids handling.",
+          "objective": "effluent-filtration-why-filter"
+        },
+        {
+          "id": "ceu-effluent-filtration-why-filter-c2",
+          "prompt": "Which statement best describes turbidity compared with total suspended solids?",
+          "choices": [
+            "Turbidity is the weight of solids per litre, found by drying and weighing a sample",
+            "Turbidity is a measure of dissolved salts that pass through the filter bed",
+            "Turbidity is a count of coliform bacteria found by lab culture of the effluent",
+            "Turbidity is an indirect light reading that reacts fast and runs continuously"
+          ],
+          "correctIndex": 3,
+          "explanation": "Turbidity measures scattered light and is an indirect measure of solids. Weighing dried solids describes TSS, dissolved salts are not what scatters light, and bacteria are counted by separate lab methods.",
+          "objective": "effluent-filtration-why-filter"
+        },
+        {
+          "id": "ceu-effluent-filtration-why-filter-c3",
+          "prompt": "A filter receives clarifier effluent at 14 mg/L TSS and produces filtered effluent at 3.5 mg/L TSS. What percent of the suspended solids did the filter remove?",
+          "choices": [
+            "75 percent",
+            "25 percent",
+            "10.5 percent",
+            "400 percent"
+          ],
+          "correctIndex": 0,
+          "explanation": "Removal = (14 - 3.5) / 14 x 100 = 75 percent. 25 percent is the share left in the effluent, 10.5 is the mg/L difference written as a percent, and 400 comes from dividing the influent by the effluent value.",
+          "objective": "effluent-filtration-why-filter"
+        },
+        {
+          "id": "ceu-effluent-filtration-why-filter-c4",
+          "prompt": "A plant filters 2.5 MGD. Filter influent is 10 mg/L TSS and effluent is 2 mg/L TSS. Use the factor 8.34 (lb/day per MGD and mg/L). How many pounds of TSS per day does the filter remove?",
+          "choices": [
+            "209 lb/day",
+            "20 lb/day",
+            "42 lb/day",
+            "167 lb/day"
+          ],
+          "correctIndex": 3,
+          "explanation": "Removed = (10 - 2) x 2.5 x 8.34 = 166.8, about 167 lb/day. 209 uses the influent mass only, 20 forgets 8.34, and 42 uses the effluent mass.",
+          "objective": "effluent-filtration-why-filter"
+        },
+        {
+          "id": "ceu-effluent-filtration-why-filter-c5",
+          "prompt": "How is the cloth cleaned in a fully submerged cloth disc filter while the other discs keep filtering?",
+          "choices": [
+            "A strong upward flow expands a sand bed that sits above the discs",
+            "The discs are replaced with fresh cloth after each run of the filter",
+            "Suction heads pull solids off one or two discs at a time",
+            "Air is blown through a gravel layer that supports the cloth under the discs"
+          ],
+          "correctIndex": 2,
+          "explanation": "Submerged discs are cleaned by liquid suction on both faces, one or two discs at a time. Bed expansion belongs to granular filters, cloth is cleaned in place and panels are replaced as needed under the manufacturer's guidance, and gravel with air scour belongs to sand beds.",
+          "objective": "effluent-filtration-why-filter"
+        },
+        {
+          "id": "ceu-effluent-filtration-why-filter-c6",
+          "prompt": "At recognition level, what does a microfiltration membrane do in tertiary treatment?",
+          "choices": [
+            "Separates fine suspended and colloidal solids through tiny pores",
+            "Removes dissolved salts by reversing osmosis under high pressure",
+            "Settles solids in a tank fitted with sloped plates and weirs",
+            "Digests organic solids with bacteria in a closed heated tank"
+          ],
+          "correctIndex": 0,
+          "explanation": "Microfiltration uses microporous membranes to separate suspended and colloidal solids. Reversing osmosis describes reverse osmosis, sloped plates describe settling, and closed-tank digestion is a solids process.",
+          "objective": "effluent-filtration-why-filter"
+        }
+      ]
+    },
+    {
+      "id": "effluent-filtration-granular-media",
+      "title": "Granular media filters: media, flow, loading rates, head loss and filter aids",
+      "objectives": [
+        "Describe the layers of a dual or multimedia bed, the flow path through it and the three ways its flow rate is controlled.",
+        "Calculate hydraulic loading, solids loading and unit filter run volume, and explain head loss, run length and the role of a filter aid."
+      ],
+      "lesson": "### Layers of media and how they are arranged\n\nIn a dual- or multimedia bed the water travels downward through grains that are coarse at the top and finer toward the bottom. WEF MOP 11 describes a downflow bed 10 to 36 inches deep of grains between about 0.014 and 0.059 inches (0.35 to 1.5 mm). Larger particles are caught near the surface where the grains are coarse, and smaller particles travel deeper until the finer grains stop them. A dual-media bed puts a layer of light, coarse anthracite on a layer of dense, fine sand. Multimedia beds often add garnet, which MOP 11 lists at specific gravities of coal 1.4, sand 2.65 and garnet 4.5. Backwash sorts the grains by size and density, so the light coarse grains settle on top and the heavy fine grains settle beneath. MOP 11 says this coarse-to-fine layout stores solids \"throughout the depth of the bed rather than only at the surface, greatly extending the length of filter runs.\"\n\n<figure><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Cross-section of a dual-media bed with water above, coarse anthracite over fine sand, and an underdrain below\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><title>Coarse to fine: dual-media bed</title><rect x=\"20\" y=\"20\" width=\"200\" height=\"40\" fill=\"#e6eef7\" stroke=\"#2f6db2\" stroke-width=\"1.5\"/><rect x=\"20\" y=\"60\" width=\"200\" height=\"70\" fill=\"#d9d9d9\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><rect x=\"20\" y=\"130\" width=\"200\" height=\"60\" fill=\"#f1ede4\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><rect x=\"20\" y=\"190\" width=\"200\" height=\"22\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"6 3\"/><path d=\"M30 74 H210\" stroke=\"#6b7a8c\" stroke-width=\"10\" stroke-linecap=\"round\" stroke-dasharray=\"1 17\"/><path d=\"M30 92 H210\" stroke=\"#6b7a8c\" stroke-width=\"10\" stroke-linecap=\"round\" stroke-dasharray=\"1 17\"/><path d=\"M30 110 H210\" stroke=\"#6b7a8c\" stroke-width=\"10\" stroke-linecap=\"round\" stroke-dasharray=\"1 17\"/><path d=\"M30 124 H210\" stroke=\"#6b7a8c\" stroke-width=\"10\" stroke-linecap=\"round\" stroke-dasharray=\"1 17\"/><path d=\"M26 140 H214\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M26 150 H214\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M26 160 H214\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M26 170 H214\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M26 180 H214\" stroke=\"#6b7a8c\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"1 8\"/><path d=\"M50 24 V52\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M46 46 L50 54 L54 46 Z\" fill=\"#2f6db2\"/><path d=\"M100 24 V52\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M96 46 L100 54 L104 46 Z\" fill=\"#2f6db2\"/><path d=\"M150 24 V52\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M146 46 L150 54 L154 46 Z\" fill=\"#2f6db2\"/><path d=\"M200 24 V52\" stroke=\"#2f6db2\" stroke-width=\"2\"/><path d=\"M196 46 L200 54 L204 46 Z\" fill=\"#2f6db2\"/><text x=\"232\" y=\"44\" font-size=\"12\">Water above bed</text><text x=\"232\" y=\"86\" font-size=\"12\" font-weight=\"bold\">Anthracite</text><text x=\"232\" y=\"100\" font-size=\"11\">coarse, light grains</text><text x=\"232\" y=\"152\" font-size=\"12\" font-weight=\"bold\">Sand</text><text x=\"232\" y=\"166\" font-size=\"11\">fine, dense grains</text><text x=\"232\" y=\"204\" font-size=\"12\" font-weight=\"bold\">Underdrain</text><text x=\"20\" y=\"236\" font-size=\"11\">Large solids stop near the top; fine solids reach deeper.</text><text x=\"20\" y=\"252\" font-size=\"11\">Illustrative, not to scale.</text></svg><figcaption>Figure 3. In a dual-media bed the open coarse layer sits on top, so captured solids spread through more of the depth before the bed clogs.</figcaption></figure>\n\nDiatomaceous earth filters, which the Water Quality Control Handbook describes, are a different design: a porous septum carries a precoat of filter aid, and MOP 11 notes that shallow diatomite filters of the drinking water type tend to blind quickly on wastewater. The media rest on a support and an underdrain. The Wisconsin guide names the components: media, underdrain, washwater troughs and media support. The underdrain collects filtered water and, in backwash, spreads the wash water evenly. The troughs carry backwash water away, and the media support, whether gravel, strainers or porous plates, keeps grains out of the underdrain.\n\n### Flow path and rate control\n\nSettled or conditioned effluent enters above the bed, passes down through the media and underdrain, and leaves to a clearwell or the next process. MOP 11 describes three ways to control the rate through a conventional downflow filter. In constant rate with fixed head, an effluent rate control valve is nearly closed at the start of a run and slowly opens as the bed clogs, and the run ends when the valve is fully open. In constant rate with variable head, an influent weir box sets the rate, and the water level rises as head loss builds until the run reaches its design terminal head loss. In variable (declining) rate, the flow is allowed to drop as head loss builds. Whatever the design, uniform flow across the surface matters, because local high velocities push solids through the bed.\n\n### Loading arithmetic\n\nHydraulic loading rate, also called filtration rate, is the flow applied to each square foot of surface. Spellman's formula is flow in gallons per minute divided by filter area in square feet, giving gpm/ft2. Plant flow is often given in MGD, so convert first: 1 MGD is 1,000,000 gal per day, and a day has 1,440 minutes, so 1 MGD is about 694.4 gpm.\n\nScenario at the fictional Ashgrove Bend plant. Four identical filters, each 24 ft long by 12 ft wide, share a flow of 3.6 MGD equally.\n\nStep 1: 3.6 MGD times 694.4 is about 2,500 gpm in total.\n\nStep 2: each filter receives 2,500 divided by 4, which is 625 gpm.\n\nStep 3: each filter has 24 times 12, or 288 ft2, so the rate is 625 divided by 288, about 2.2 gpm/ft2.\n\nNow one filter goes offline for backwash with the total flow unchanged. Three filters share 2,500 gpm, so each receives about 833 gpm, and the rate is 833 divided by 288, about 2.9 gpm/ft2. Taking one of four filters out raises the load on the others by about one third. That is why plants compare rates at different flows and with different numbers of filters in service. The design and any permit conditions set acceptable rates, so this course does not give any.\n\nSolids loading rate adds the concentration. Pounds of solids per day equal mg/L times MGD times 8.34, and dividing by the filter area in service gives lb/day/ft2. With 10 mg/L of TSS at 3.6 MGD, the load is 10 times 3.6 times 8.34, about 300 lb per day. Spread over four filters of 288 ft2 each, which is 1,152 ft2, that is about 0.26 lb/day/ft2. A rise in clarifier solids raises this number just as surely as a rise in flow does.\n\nUnit filter run volume (UFRV) is the gallons filtered in a run divided by the filter area, in gal/ft2. Spellman says UFRV is used to compare runs and begins to decline as performance deteriorates. At 2.2 gpm/ft2 for 24 hours, a run filters about 2.2 times 24 times 60, roughly 3,200 gal/ft2.\n\n### Reading run records\n\nThree simple records make a filter easy to judge. The first is the initial head loss after each wash at a fixed flow. The second is run length. The third is UFRV, which folds rate and time into one comparison. Suppose an Ashgrove Bend filter logs clean-bed head loss after each wash of 1.2, 1.2, 1.3, 1.5 and 1.8 ft. The readings climb over the week, which suggests the bed is coming back dirtier, so the operator looks at the backwash and surface wash, as MOP 11 advises, before blaming the feed. Now compare two runs on the same filter. Run A averaged 2.4 gpm/ft2 for 22 hours, a UFRV of 2.4 times 22 times 60, about 3,170 gal/ft2. Run B averaged 2.4 gpm/ft2 for 16 hours, or about 2,300 gal/ft2. The runs lost about 27 percent of their volume at the same rate, which may signal that more solids arrived, more filter aid was fed, or the wash is not cleaning. The records say that something changed, and the next step is to find out what.\n\n### Head loss and run length\n\nHead loss is the pressure lost as water passes through the bed. It is read as the difference in water level between piezometers above and below the media, or from differential-pressure instruments corrected for tap elevation. A clean bed has a low head loss, and it rises as solids collect. MOP 11 says that at a given flow the head loss through a clean filter should be about the same after each backwash, and that a gradual rise in this initial head loss may mean the backwash is too short or a surface wash arm is not working. The Wisconsin guide says a backwash can be scheduled by head loss, time in service or total flow through the filter.\n\n<figure><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Graph over one filter run: head loss climbs toward a terminal value while effluent turbidity stays low then breaks through if the run is too long\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><title>Head loss and turbidity during a run</title><path d=\"M50 20 V190 H370\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"2\"/><text x=\"50\" y=\"14\" font-size=\"11\">Head loss, turbidity</text><text x=\"370\" y=\"212\" text-anchor=\"end\" font-size=\"11\">Time since backwash</text><path d=\"M50 170 C140 160 220 120 300 60\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M50 176 H250 C275 176 290 150 310 100 C318 80 322 70 326 62\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"6 3\"/><path d=\"M50 50 H370\" stroke=\"#6b7a8c\" stroke-width=\"1.5\" stroke-dasharray=\"2 3\"/><text x=\"372\" y=\"40\" text-anchor=\"end\" font-size=\"11\">Terminal head loss</text><path d=\"M250 190 V30\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"246\" y=\"226\" text-anchor=\"end\" font-size=\"11\">Backwash here</text><text x=\"62\" y=\"136\" font-size=\"11\" fill=\"#2f6db2\">Head loss (solid line)</text><text x=\"56\" y=\"208\" font-size=\"11\">Turbidity (dashed)</text><text x=\"372\" y=\"150\" text-anchor=\"end\" font-size=\"11\">Breakthrough</text><path d=\"M340 140 L318 100\" stroke=\"#1d2d40\" stroke-width=\"1.5\"/></svg><figcaption>Figure 4. A well-timed backwash comes before turbidity breaks through; the plant's turbidity action limit is the backstop.</figcaption></figure>\n\nA run can end three ways: head loss reaches its terminal value, effluent turbidity reaches its action limit, or a timer or volume setting triggers a wash. The best run ends by choice, before breakthrough, as the figure shows. Sudden flow changes can shorten runs because, MOP 11 says hydraulic surges tend to push particles deeper into the bed. Change rates gradually.\n\n### Coagulant and polymer aids\n\nA chemical filter aid, usually a polymer or alum, helps the bed hold solids. MOP 11 lists four benefits: it strengthens the floc, controls how deep the floc penetrates, improves clarity and allows a higher flow rate. The need rises as water temperature falls, as flow rises and as applied turbidity rises. The ideal dose makes the maximum desired head loss arrive just as turbidity breakthrough is about to start. The aid coats the media. A new bed may take three or four runs to coat, and after a dose reduction the old coating may take three or four backwashes to reduce. Too much aid clogs the surface and shortens runs, and too little lets solids through, so the dose is usually checked by jar tests and by watching turbidity and head loss together. Where a plant uses direct filtration, MOP 11 describes adding alum in a rapid mix and a nonionic polymer at the filters in place of a settling step. Follow your plant's chemical handling procedures.\n",
+      "evidence": "### Fictional scenario: Ashgrove Bend Plant\n\nAt the fictional Ashgrove Bend Plant, four dual-media filters share the clarifier flow equally. During spring storm flows the operators remove one filter at a time for backwash and notice that the remaining filters run closer to their head loss limit. Operator Priya Anand asks how much the loading rate really changes when one filter is out and why runs seem shorter on those days. Colm Reyes asks for a short worked check he can post in the control room.",
+      "assignment": "Write a short worksheet for Colm Reyes. Four filters, each 24 ft by 12 ft, share 4.5 MGD equally. Use 1 MGD = 694.4 gpm. Work out the hydraulic loading rate with all four filters in service and with one out, and the solids loading with 10 mg/L TSS and 8.34 lb per gallon. Show each step with units. Explain what happens to head loss and run length on the storm days and what records you would check. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the loading rates with four and with three filters using the stated constants and units.",
+        "Calculates the solids loading rate with the pounds formula and the filter area in service.",
+        "Explains head loss, run length and the effect of a higher rate and added solids.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain why the loading rate on the remaining filters rises when one is removed and to estimate the size of the change before calculating. Check that they convert MGD to gpm before dividing by area and that area is in ft2. Strong answers link rate and solids load to head loss and run length. Watch for learners who divide by one filter's area when the flow is shared, or who forget the 8.34 factor in the solids loading.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and sketch a dual-media bed, labelling the layers, the underdrain and the troughs."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and find the filter area, the number of filters in service and one day of flow."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Ashgrove Bend scenario and calculate the loading rate with four and with three filters."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wef-mop11",
+        "wi-solids-sep",
+        "spellman-hb",
+        "wqc-handbook"
+      ],
+      "checks": [
+        {
+          "id": "ceu-effluent-filtration-granular-media-c1",
+          "prompt": "In a dual-media filter, what is the filtration benefit of coarse, light anthracite sitting above fine, dense sand?",
+          "choices": [
+            "Large particles stop in the open top layer and fine ones deeper, using more depth",
+            "The sand is protected from fast water that would slowly wear its grains away to dust",
+            "The heavier layer presses down on the lighter layer and squeezes out the water between them",
+            "Backwash water has less distance to travel through the bed above"
+          ],
+          "correctIndex": 0,
+          "explanation": "A coarse-to-fine layout stores solids through the depth. Protecting the sand, squeezing water and shortening the backwash path are not the reasons for the layering.",
+          "objective": "effluent-filtration-granular-media"
+        },
+        {
+          "id": "ceu-effluent-filtration-granular-media-c2",
+          "prompt": "A filter cell is 18 ft long and 10 ft wide and receives 450 gpm. What is the hydraulic loading rate?",
+          "choices": [
+            "0.4 gpm/ft2",
+            "25 gpm/ft2",
+            "8.0 gpm/ft2",
+            "2.5 gpm/ft2"
+          ],
+          "correctIndex": 3,
+          "explanation": "Area = 18 x 10 = 180 ft2, and 450 / 180 = 2.5 gpm/ft2. 0.4 turns the ratio upside down, 25 divides by the length only, and 8.0 divides by the perimeter.",
+          "objective": "effluent-filtration-granular-media"
+        },
+        {
+          "id": "ceu-effluent-filtration-granular-media-c3",
+          "prompt": "Four equal filters share a constant total flow equally. One leaves service for backwash. What happens to the loading rate on the other three?",
+          "choices": [
+            "It rises by about one third",
+            "It falls by about one quarter",
+            "It stays the same because the flow is unchanged",
+            "It doubles"
+          ],
+          "correctIndex": 0,
+          "explanation": "The same flow is spread over three filters instead of four, so each carries 4/3 of its earlier load. The rate does not fall or stay put, and it doubles only if two of four filters are removed.",
+          "objective": "effluent-filtration-granular-media"
+        },
+        {
+          "id": "ceu-effluent-filtration-granular-media-c4",
+          "prompt": "At a steady filtration rate, what does a rising head loss across a filter bed usually tell an operator?",
+          "choices": [
+            "The media grains are wearing away and the bed is thinning out",
+            "The effluent turbidity has already passed its permitted limit",
+            "The backwash water was too warm at the last wash cycle",
+            "Solids are collecting and the bed is moving toward a backwash"
+          ],
+          "correctIndex": 3,
+          "explanation": "Head loss rises as solids fill the pore spaces. Grain wear is not what raises it, head loss and turbidity are separate signals, and water temperature affects how well a wash expands the bed.",
+          "objective": "effluent-filtration-granular-media"
+        },
+        {
+          "id": "ceu-effluent-filtration-granular-media-c5",
+          "prompt": "At concept level, what does a coagulant or polymer filter aid do in a filter?",
+          "choices": [
+            "Dissolves the solids so that they pass on through the media and out of the bed",
+            "Strengthens floc and controls how deep it penetrates the bed",
+            "Warms the water so that straining works faster in the bed",
+            "Replaces the need for backwashing during normal operation"
+          ],
+          "correctIndex": 1,
+          "explanation": "MOP 11 says a filter aid strengthens floc and controls its penetration. It does not dissolve solids, change temperature or remove the need to backwash.",
+          "objective": "effluent-filtration-granular-media"
+        },
+        {
+          "id": "ceu-effluent-filtration-granular-media-c6",
+          "prompt": "Average filtration rate for a run was 2.5 gpm/ft2 and the run lasted 20 hours. Use 60 min per hour. What is the unit filter run volume?",
+          "choices": [
+            "50 gal/ft2",
+            "150 gal/ft2",
+            "3,000 gal/ft2",
+            "1,200 gal/ft2"
+          ],
+          "correctIndex": 2,
+          "explanation": "UFRV = 2.5 x 20 x 60 = 3,000 gal/ft2. 50 forgets to convert hours to minutes, 150 leaves out the run time, and 1,200 leaves out the rate.",
+          "objective": "effluent-filtration-granular-media"
+        }
+      ]
+    },
+    {
+      "id": "effluent-filtration-backwash-cleaning",
+      "title": "Backwashing and cleaning: triggers, rates, scour, washwater and media care",
+      "objectives": [
+        "Explain what triggers a backwash, how the bed is expanded and cleaned, and how surface wash and air scour help.",
+        "Calculate backwash volume, percent of throughput used for backwash and bed expansion, and describe the effect of washwater recycle, mudballs and media loss."
+      ],
+      "lesson": "### When to backwash\n\nA filter does not announce that it is full. The Wisconsin guide says a backwash is scheduled by head loss, time in service or total flow through the filter, and that without backwashing the buildup of trapped solids raises head loss and eventually solids break through. MOP 11 adds that if effluent turbidity exceeds a predetermined maximum, the filter should be taken out of service and backwashed. Many plants use more than one trigger, with head loss as the usual main one and time or volume as the backup so a lightly loaded filter is still washed. Waiting for breakthrough defeats the purpose.\n\n### How a backwash works\n\nThe sequence in a conventional filter is simple. The influent valve closes, the filter is isolated, and clean water from the backwash supply is pushed up through the underdrain, by a pump or from an elevated tank. The upward flow lifts the bed and expands it, which loosens the grains so the washwater releases trapped solids, which rise to the troughs and leave with the washwater. Spellman describes the backwash rate as flow in gpm divided by filter area, giving gpm/ft2. Engineers also express it as a rise rate in inches per minute: multiply gpm/ft2 by about 1.6.\n\n<figure><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 280\" role=\"img\" aria-label=\"Backwash flow: clean water enters the underdrain, flows up through an expanded bed, and carries solids into troughs and then to a holding tank\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><title>Upward flow during a backwash</title><rect x=\"20\" y=\"30\" width=\"180\" height=\"190\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/><rect x=\"20\" y=\"96\" width=\"180\" height=\"76\" fill=\"#d9d9d9\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"110\" y=\"132\" text-anchor=\"middle\" font-size=\"11\">expanded media bed</text><path d=\"M20 190 H200\" stroke=\"#6b7a8c\" stroke-width=\"1.5\" stroke-dasharray=\"4 3\"/><text x=\"110\" y=\"208\" text-anchor=\"middle\" font-size=\"11\">underdrain</text><path d=\"M50 186 V104\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M45 110 L50 98 L55 110 Z\" fill=\"#2f6db2\"/><path d=\"M110 186 V104\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M105 110 L110 98 L115 110 Z\" fill=\"#2f6db2\"/><path d=\"M170 186 V104\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M165 110 L170 98 L175 110 Z\" fill=\"#2f6db2\"/><path d=\"M110 270 V224\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M105 232 L110 222 L115 232 Z\" fill=\"#2f6db2\"/><text x=\"118\" y=\"262\" font-size=\"11\">backwash water in</text><rect x=\"12\" y=\"52\" width=\"34\" height=\"14\" fill=\"#f4f4f4\" stroke=\"#1d2d40\"/><rect x=\"174\" y=\"52\" width=\"34\" height=\"14\" fill=\"#f4f4f4\" stroke=\"#1d2d40\"/><text x=\"110\" y=\"62\" text-anchor=\"middle\" font-size=\"11\">level troughs</text><path d=\"M64 80 H156\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"2 3\"/><text x=\"110\" y=\"91\" text-anchor=\"middle\" font-size=\"11\">surface wash or air scour</text><path d=\"M208 59 H262\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M256 53 L266 59 L256 65 Z\" fill=\"#1d2d40\"/><rect x=\"268\" y=\"40\" width=\"112\" height=\"38\" rx=\"4\" fill=\"#f4f4f4\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"324\" y=\"56\" text-anchor=\"middle\" font-weight=\"bold\">Holding tank</text><text x=\"324\" y=\"70\" text-anchor=\"middle\" font-size=\"11\">spent washwater</text><path d=\"M324 78 V120\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M318 114 L324 124 L330 114 Z\" fill=\"#1d2d40\"/><rect x=\"268\" y=\"126\" width=\"112\" height=\"38\" rx=\"4\" fill=\"#f4f4f4\" stroke=\"#6b7a8c\" stroke-width=\"1.5\"/><text x=\"324\" y=\"142\" text-anchor=\"middle\" font-weight=\"bold\">Plant headworks</text><text x=\"324\" y=\"156\" text-anchor=\"middle\" font-size=\"11\">controlled rate</text><text x=\"274\" y=\"190\" font-size=\"11\">Solids leave the filter</text><text x=\"274\" y=\"204\" font-size=\"11\">and return to the plant.</text></svg><figcaption>Figure 5. A backwash lifts and expands the bed so washwater can loosen and carry trapped solids. Spent washwater is often held and returned to the plant at a controlled rate.</figcaption></figure>\n\nThe wash has to be strong enough but not too strong. Spellman says a proper backwash rate should expand the bed by about 20 to 25 percent; other texts give wider ranges for different media, so use your design and manual. Percent expansion is the rise of the media surface divided by the expandable media depth, times 100. Too low a rate leaves solids behind and invites mudballs. Too high a rate carries media into the troughs. MOP 11 and Spellman's advanced handbook both note that warm water is less viscous, so a rate that cleaned well in winter may under-expand the bed in summer, and the fix is to increase the rate until the required expansion is reached.\n\n### Surface wash and air scour\n\nA surface layer of solids is easier to clean if it is broken up first. MOP 11 lists three common methods: water backwash with surface or subsurface washers, water backwash with an air scour that runs for about 3 to 4 minutes before the wash, and simultaneous air and water, which is typical for unstratified single-media beds. In dual- or multimedia beds with coal, air and backwash water should not be applied at the same time unless the filter is designed for it, because the air tends to float the coal out. Spellman's advanced handbook advises ending any auxiliary air scour several minutes before the backwash ends when scour is excessive or air is attached to the media so air bubbles do not stay attached to the grains and float media away. MOP 11 says a mechanical surface wash typically stops about 60 seconds before the end of backwash so the bed can reclassify. A surface wash arm that no longer turns, or an air scour blower that has failed, shows up as short runs, high clean-bed head loss and mudballs.\n\n### Washwater and its effects on the plant\n\nBackwash uses a lot of water over a short time. MOP 11 and Spellman use about 5 percent of throughput or less as a screening benchmark for backwash use, and that more than that calls for a look at the causes: too many solids applied, too much filter aid, a failed surface wash or too long a wash. Some small plants with big daily flow swings may run higher, up to 8 to 10 percent according to MOP 11.\n\nScenario at the fictional Ashgrove Bend plant. Four filters, each 24 ft by 12 ft (288 ft2), backwash once a day at 15 gpm/ft2 for 8 minutes. The plant filters 3.6 MGD.\n\nStep 1: one backwash uses 15 times 288 times 8, which is 34,560 gal.\n\nStep 2: four filters use 4 times 34,560, or 138,240 gal per day.\n\nStep 3: percent of throughput is 138,240 divided by 3,600,000, times 100, about 3.8 percent.\n\nStep 4: the rise rate is 15 times 1.6, which is 24 inches per minute.\n\nThat is inside the book's rule of thumb, but 138,000 gal still returns to the plant. If it arrives as a slug it loads the clarifier, and solids can come back around as carry-over. For that reason MOP 11 says most plants collect washwater in a holding tank and return it at a controlled rate, sometimes mixed with other flows to equalize them, and sometimes to the rapid mix to reduce chemicals.\n\n### Cleaning cloth and disc filters\n\nCloth disc filters use a different cleaning cycle, though the purpose is the same. Submerged discs are cleaned by suction heads on both faces, usually one or two discs at a time while the rest keep filtering. Partially submerged discs start a cleaning cycle when the level in the centre drum rises with solids buildup, and spray nozzles wash solids into a trough. Settled solids on the tank floor are pumped to the headworks or solids handling. The Wisconsin guide says the cloth is typically cleaned chemically every few months depending on use, with stronger chemicals for deep cleaning, and panels may need replacing. The manufacturer's manual sets the schedule and chemicals, and the chemical safety training and procedures of your plant apply.\n\n### What to see during a backwash\n\nWatching one wash tells you more than an hour of reading charts. Look at the spent washwater: it should start dirty and clear as the wash proceeds, and a sample in a clear beaker should show no media grains. Look at the surface of the bed during expansion: even boiling across the surface is a sign of even distribution, while dead spots or heavy boils can point to uneven flow or underdrain problems. Check that the troughs are level and that water leaves them evenly, because uneven troughs carry media away. Listen for blowers and pumps that sound different from normal. After the wash, note the initial head loss at the same filtration rate and compare it with earlier values. These checks take a few minutes and make small problems visible before they turn into media loss or mudballs.\n\nA worked expansion check helps fix the idea. At the fictional Ashgrove Bend plant the media is 24 inches deep, the top of the resting bed is 38 inches below a fixed reference mark, and with the wash at full rate the top of the expanded bed is 33.5 inches below the mark. The rise is 38 minus 33.5, or 4.5 inches, so the expansion is 4.5 divided by 24, times 100, which is about 19 percent. That is a little below the 20 to 25 percent Spellman cites, so the operator would compare the rate with the manual, check the water temperature and look at the pump. The check does not prove the wash is poor, but it shows where to look next.\n\n### Media loss and mudballs\n\nMudballs are lumps of grains stuck together by organic matter, from the size of peas to more than 2 inches according to the Water Quality Control Handbook. They cause uneven filtering and backwashing, can open cracks, and, as Spellman says, they diminish the effective filter area. Adequate surface wash and backwash prevent them. A simple check is percent mudball volume: mudballs from a media sample are placed in water in a graduated cylinder, the rise in volume divided by the sample volume, times 100, gives the percent. For instance, 25 mL of rise in a 3,350 mL sample is about 0.75 percent.\n\nMedia washing out during backwash shows up as grains in the spent washwater. Table 24.3 in MOP 11 lists the causes: backwash rate too high, troughs not level, surface wash running too long, or uneven distribution of wash water. Watching the spent washwater during a backwash is the quickest check.\n",
+      "evidence": "### Fictional scenario: Ashgrove Bend Plant\n\nAt the fictional Ashgrove Bend Plant the operators have noticed that, after the filters were backwashed together one afternoon, the clarifier effluent turned hazy within an hour. Operator Wen Hartley also found a few grains of anthracite in a beaker of spent washwater. Colm Reyes asks for a review of how much washwater the filters use, whether it should be returned differently, and what the media in the washwater means.",
+      "assignment": "Write a short review for Colm Reyes. Three filters, each 20 ft by 12 ft, backwash once a day at 16 gpm/ft2 for 7 minutes. The plant filters 2.0 MGD. Work out the gallons per backwash, the total per day, the percent of throughput and the rise rate in inches per minute using 1.6 in./min per gpm/ft2. Explain why the washwater should be returned at a controlled rate, and name two causes of media in the washwater and one check for each. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the backwash volume, the daily total, the percent of throughput and the rise rate with units.",
+        "Explains why washwater is held and returned at a controlled rate.",
+        "Names two causes of media loss and one check for each.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to describe, step by step, what the water and the grains do during a backwash. Check that each volume carries gallons and that percent of throughput uses daily washwater over daily flow in the same units. Strong answers link the washwater slug to clarifier carry-over and back to the filters. Watch for learners who think a stronger wash is always better, and for those who forget that media in the washwater means a problem to investigate.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and draw the backwash flow path, labelling the underdrain, the bed, the troughs and the washwater destination."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant manual or log and note the backwash rate, duration and what triggers a wash."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Ashgrove Bend scenario and calculate the washwater percent from the figures given."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wef-mop11",
+        "wi-solids-sep",
+        "spellman-hb",
+        "spellman-ww3",
+        "wqc-handbook"
+      ],
+      "checks": [
+        {
+          "id": "ceu-effluent-filtration-backwash-cleaning-c1",
+          "prompt": "Which signals commonly start a backwash?",
+          "choices": [
+            "High head loss, turbidity over its limit, or a set time or volume since last wash",
+            "Low head loss, falling turbidity, or a drop in the influent flow",
+            "Clarifier blanket depth, return rate, or wasting rate set at the plant by operators",
+            "Chlorine residual, pH, or effluent temperature at the discharge"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sources list head loss, turbidity, time in service and total flow. The other sets are either the opposite of a clogged bed or clarifier and disinfection measurements.",
+          "objective": "effluent-filtration-backwash-cleaning"
+        },
+        {
+          "id": "ceu-effluent-filtration-backwash-cleaning-c2",
+          "prompt": "A filter 20 ft by 12 ft is backwashed at 14 gpm/ft2 for 8 minutes. How many gallons does one backwash use?",
+          "choices": [
+            "3,360 gal",
+            "26,880 gal",
+            "1,920 gal",
+            "224,179 gal"
+          ],
+          "correctIndex": 1,
+          "explanation": "Area 240 ft2 x 14 gpm/ft2 x 8 min = 26,880 gal. 3,360 forgets the time, 1,920 forgets the rate, and 224,179 multiplies by 8.34 as if converting to pounds.",
+          "objective": "effluent-filtration-backwash-cleaning"
+        },
+        {
+          "id": "ceu-effluent-filtration-backwash-cleaning-c3",
+          "prompt": "Why is the media bed expanded during a backwash?",
+          "choices": [
+            "So the grains pack tighter and hold more solids in the next run",
+            "So support gravel is added back to the bed from the underdrain",
+            "So washwater can release trapped solids to the troughs",
+            "So head loss climbs quickly to its terminal value after the wash"
+          ],
+          "correctIndex": 2,
+          "explanation": "Expansion loosens the bed so washwater can lift solids out. Packing, adding gravel and raising head loss are not the purpose.",
+          "objective": "effluent-filtration-backwash-cleaning"
+        },
+        {
+          "id": "ceu-effluent-filtration-backwash-cleaning-c4",
+          "prompt": "Media is found in the spent washwater. Which cause fits?",
+          "choices": [
+            "The backwash rate is too low to expand the bed and clean the media",
+            "The surface wash is too short to break up the surface mat",
+            "The filter aid dose is too low to hold the solids in the bed",
+            "The backwash rate is too high or the troughs are not level"
+          ],
+          "correctIndex": 3,
+          "explanation": "MOP 11 Table 24.3 lists a high rate, unlevel troughs, a long surface wash and uneven distribution as causes of media loss. A low rate, a short surface wash or a low aid dose lead to dirty beds and breakthrough instead.",
+          "objective": "effluent-filtration-backwash-cleaning"
+        },
+        {
+          "id": "ceu-effluent-filtration-backwash-cleaning-c5",
+          "prompt": "Which routine job is typical for cloth disc filters, besides their automatic cleaning cycle?",
+          "choices": [
+            "Replacing a cloth panel on one disc at the end of each working day",
+            "Periodic chemical cleaning of the cloth as the manual directs",
+            "Topping up sand to restore the media depth lost after each cleaning cycle",
+            "Regrading the support gravel once a year during shutdown"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Wisconsin guide describes chemical cleaning at intervals and occasional panel replacement. Daily replacement, sand and gravel belong to other filters or overstate the need.",
+          "objective": "effluent-filtration-backwash-cleaning"
+        },
+        {
+          "id": "ceu-effluent-filtration-backwash-cleaning-c6",
+          "prompt": "Why is backwash water often held in a tank and returned to the plant at a controlled rate?",
+          "choices": [
+            "To let media in it settle so it can be reused in the filter bed again",
+            "To cool it before it reaches the headworks of the plant",
+            "To avoid a flow and solids surge that upsets upstream processes",
+            "To raise its chlorine residual before it returns to the plant"
+          ],
+          "correctIndex": 2,
+          "explanation": "MOP 11 says washwater is held and returned at a controlled rate to avoid hydraulic surges. It is not a media reuse, cooling or disinfection step.",
+          "objective": "effluent-filtration-backwash-cleaning"
+        }
+      ]
+    },
+    {
+      "id": "effluent-filtration-operation-troubleshooting",
+      "title": "Operation and troubleshooting: monitoring, breakthrough, short runs and records",
+      "objectives": [
+        "Describe the daily monitoring of a filter and explain turbidity breakthrough, short runs, clogging and algae growth.",
+        "Trace filter symptoms to upstream causes such as clarifier carry-over, and use records and a trend to decide what to check first."
+      ],
+      "lesson": "### What to watch each day\n\nA filter is easy to run when the trends are in front of you. The Wisconsin guide lists the daily observations: head loss, effluent turbidity, effluent suspended solids, lost media in the effluent, underdrains or backwash basins, all gauges and flow meters, the quality of the filter influent, and any floating solids. MOP 11 names effluent turbidity and head loss as the primary control parameters, usually read by instruments. Add the number and length of runs, the washwater volume as a percent of throughput, the filter aid dose and the quality of spent washwater during a wash.\n\nTurbidity can be turned into a TSS estimate with a plant-specific factor. MOP 11 gives typical factors of 2.0 to 2.4 for settled secondary effluent and 1.3 to 1.5 for filter effluent, where TSS in mg/L equals the factor times turbidity in NTU. Those values show the idea. Build your own factor by pairing lab TSS results with turbidity readings from the same samples, because the relationship changes with the nature of the solids. Example: a reading of 2.0 NTU times a plant factor of 1.4 gives an estimated 2.8 mg/L of TSS.\n\n### Breakthrough\n\nBreakthrough means solids start to pass through the bed and appear in the filtrate. It usually shows as a late-run rise in effluent turbidity, sometimes while head loss is still below its limit. MOP 11 lists the probable causes of high effluent turbidity: the filter needs backwashing, improper upstream coagulation, an improper filter aid dose or a failure of the coagulation system. Add fluctuating flows and damaged beds or underdrains. MOP 11 also warns that viruses are extremely small and can break through at the first sign of turbidity breakthrough, a rise that can be 0.5 NTU or less. Treat any upward turn in a turbidity trend as a signal to act, not wait.\n\n### Short runs, clogging and algae\n\nWhen head loss climbs quickly and runs get short, surface clogging is the usual cause. MOP 11 Table 24.3 and the Wisconsin guide list overlapping causes: too many solids applied because of poor upstream treatment, too much filter aid, an inadequate surface wash or backwash, and, in thin beds, a surface that blinds. Gas or air bound in the bed can also raise head loss, so MOP 11 lists bumping the filter with a short backwash among the responses, and flow and head loss instruments need regular checks and calibration.\n\nAlgae and slime grow where sunlight, warm water and nutrients meet, on walls, troughs and in the media. A rough wall surface holds growth, and filters become hard to clean. Where plant procedures authorize it, chlorine can be added to the filter influent or backwash water to control growth. The Wisconsin guide says chlorine controls algae and slime growth and also helps control bacterial growth in the filter. Take care with the chemical: use your plant's procedures and protective equipment, and ask your supervisor if you are not sure.\n\n### Upstream causes: clarifier carry-over\n\nThe first place to look when several filters get worse together is upstream. The Wisconsin guide says that suspended solids loading to the filter depends on good secondary system operation and, most importantly, the final clarifier, and that a well-operated final clarifier should minimize solids loading to the filter and extend filter run times. Its troubleshooting tables for final clarifiers point to floating solids from a high sludge age or a weak return rate, settling problems from filamentous organisms, and too many solids in the system. Backwash recycle matters too: a slug of washwater returned too fast can load the clarifier, whose carry-over then loads the filters again. When clarifier carry-over drives the problem, correcting it upstream is more effective than compensating at the filters.\n\n### Records and a trend scenario\n\nKeep these: applied and effluent turbidity or TSS, head loss, flow and rate, run length, backwash volume and percent, filter aid dose, initial head loss after each backwash at the same flow, spent washwater condition and media checks. Write units next to every entry.\n\nScenario at the fictional Ashgrove Bend plant. Operator Wen Hartley sees this week: applied TSS from the clarifier at steady flow was 8, 8, 9, 11, 14, 17 and 18 mg/L on days 1 to 7, and run length fell from 30 to 29, 26, 21, 15, 11 and 10 hours. Effluent turbidity edged up on days 6 and 7, and washwater volume climbed with the shorter runs.\n\n<figure><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 290\" role=\"img\" aria-label=\"Seven-day trend: applied TSS from the clarifier rises each day from day 3 while filter run length falls\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><title>Seven-day filter trend</title><text x=\"20\" y=\"16\" font-size=\"12\" font-weight=\"bold\">Applied TSS (mg/L)</text><path d=\"M50 24 V110 H370\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"2\"/><polyline points=\"70,78 116,78 162,74 208,66 254,54 300,42 346,38\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"/><text x=\"70\" y=\"71\" text-anchor=\"middle\" font-size=\"11\">8</text><text x=\"116\" y=\"71\" text-anchor=\"middle\" font-size=\"11\">8</text><text x=\"162\" y=\"67\" text-anchor=\"middle\" font-size=\"11\">9</text><text x=\"208\" y=\"59\" text-anchor=\"middle\" font-size=\"11\">11</text><text x=\"254\" y=\"47\" text-anchor=\"middle\" font-size=\"11\">14</text><text x=\"300\" y=\"35\" text-anchor=\"middle\" font-size=\"11\">17</text><text x=\"346\" y=\"31\" text-anchor=\"middle\" font-size=\"11\">18</text><circle cx=\"70\" cy=\"78\" r=\"3\" fill=\"#2f6db2\"/><circle cx=\"116\" cy=\"78\" r=\"3\" fill=\"#2f6db2\"/><circle cx=\"162\" cy=\"74\" r=\"3\" fill=\"#2f6db2\"/><circle cx=\"208\" cy=\"66\" r=\"3\" fill=\"#2f6db2\"/><circle cx=\"254\" cy=\"54\" r=\"3\" fill=\"#2f6db2\"/><circle cx=\"300\" cy=\"42\" r=\"3\" fill=\"#2f6db2\"/><circle cx=\"346\" cy=\"38\" r=\"3\" fill=\"#2f6db2\"/><text x=\"20\" y=\"144\" font-size=\"12\" font-weight=\"bold\">Run length (hours)</text><path d=\"M50 152 V252 H370\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M70 252V162\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"70\" y=\"158\" text-anchor=\"middle\" font-size=\"11\">30</text><text x=\"70\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D1</text><path d=\"M116 252V165\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"116\" y=\"161\" text-anchor=\"middle\" font-size=\"11\">29</text><text x=\"116\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D2</text><path d=\"M162 252V174\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"162\" y=\"170\" text-anchor=\"middle\" font-size=\"11\">26</text><text x=\"162\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D3</text><path d=\"M208 252V189\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"208\" y=\"185\" text-anchor=\"middle\" font-size=\"11\">21</text><text x=\"208\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D4</text><path d=\"M254 252V207\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"254\" y=\"203\" text-anchor=\"middle\" font-size=\"11\">15</text><text x=\"254\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D5</text><path d=\"M300 252V219\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"300\" y=\"215\" text-anchor=\"middle\" font-size=\"11\">11</text><text x=\"300\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D6</text><path d=\"M346 252V222\" stroke=\"#8a8a8a\" stroke-width=\"28\"/><text x=\"346\" y=\"218\" text-anchor=\"middle\" font-size=\"11\">10</text><text x=\"346\" y=\"268\" text-anchor=\"middle\" font-size=\"11\">D7</text><text x=\"370\" y=\"286\" text-anchor=\"end\" font-size=\"11\">Day of the week (D1 to D7)</text></svg><figcaption>Figure 6. As clarifier carry-over rises, filter runs shorten. The filter symptom follows the upstream cause.</figcaption></figure>\n\nStep 1: the symptom is short runs and rising effluent turbidity, but the filter aid dose, backwash rate and surface wash were logged as unchanged.\n\nStep 2: applied TSS rose from day 3 while runs kept shortening, so the pattern points upstream.\n\nStep 3: Wen checks the final clarifier and finds a blanket creeping up after a change in return flow, and reports it to the lead operator.\n\nStep 4: once the clarifier is back in balance, runs lengthen and the trend returns to normal. Adjusting the filters first could have treated the symptom and hidden the cause. As always, follow your plant procedures and report abnormal conditions to your supervisor.\n\n### Responding to a turbidity rise\n\nIf effluent turbidity is above the plant's maximum allowable value, take the filter out of service and backwash it, as MOP 11 directs; the plant's system may do this automatically. Otherwise, a good habit is a fixed order of checks. First confirm the reading: MOP 11 says to check turbidimeter calibration at least weekly, so rule out a dirty cell or a drifting instrument. Next look at the run: has head loss reached the plant's backwash limit, or has the run reached its scheduled time or volume? If so, backwash. Then look at the aid: jar tests help show whether the dose is still right as solids, alkalinity and temperature change (Spellman advises one when aid needs change), and MOP 11 notes the need for aid increases as water cools. Then look at flow: were there surges or a filter returned to service quickly? Finally look upstream at the coagulation system and the clarifier. Changing one thing at a time and logging it makes the cause clear.\n\nThe MOP 11 troubleshooting chart pairs each symptom with a first move. Short runs from high head loss point to surface clogging, so check the surface wash and lengthen it, or reduce the solids applied. A filter that cleans poorly can call for a longer or stronger backwash, if the wash equipment is working. Excess washwater, above a benchmark of about 5 percent of throughput, points to too many solids applied, too much aid, a failed surface wash or too long a wash. Mudballs can mean the wash and surface wash were inadequate, and media washing out can mean the rate is too high or the troughs are uneven. Use the chart as a prompt for questions, not as an automatic answer.\n\n### Taking a filter out of service and back\n\nAt recognition level, the sources agree on the purpose of care. For a filter that will be out for a long time, the Wisconsin guide lists backwashing, chlorinating to kill growth, washing again, draining, and storing it wet or remembering the dry start-up procedure. For filling, MOP 11 says to fill a drained or new filter slowly from the bottom through the underdrain so trapped air is pushed out, because air trapped in the media can overturn the gravel during backwash and wash media away. If a filter was filled from the top, it should be drained completely before a slow bottom refill. Dry media must complete the soak the manual prescribes before a normal backwash (MOP 11 gives 8 hours). Your plant's O&M manual gives the actual steps and valve positions.\n\n### Safety at the filter, recognition only\n\nAutomatic equipment can start without warning, blowers and pumps are noisy, steps and walkways are slippery, and filter chemicals need training. Follow lockout and tagout, confined space and chemical handling rules from your own plant procedures and training, because this course covers recognition and purpose only.\n",
+      "evidence": "### Fictional scenario: Ashgrove Bend Plant\n\nAt the fictional Ashgrove Bend Plant, the filters ran well for months. This week the run lengths fell day by day while applied TSS from the clarifier rose, and filter effluent turbidity edged up. Operator Wen Hartley has the logs open and asks where to start. Colm Reyes wants a short written plan for the next shift that lists what to check, in what order and what to record.",
+      "assignment": "Write a one-page plan for Colm Reyes. Use these logged values: applied TSS 8, 8, 9, 11, 14, 17, 18 mg/L and run lengths 30, 29, 26, 21, 15, 11, 10 hours on days 1 to 7, at a steady 3.0 MGD. Work out the extra pounds per day of solids to the filters between day 1 and day 7 using 8.34 lb per gallon. List the first four checks in order and say what each would show. Say which records you would keep and what would tell you the cause is upstream. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the increase in solids load with the stated constants and units.",
+        "Lists checks in a sensible order starting with the instruments and the filter and including the clarifier.",
+        "Explains why the trend points upstream and which records support that.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to read the trend aloud and say which number moved first. Check that they write the solids load calculation with units and that they separate the symptom on the filter from the cause upstream. Strong answers make one change at a time and log it, and include the clarifier and the washwater return in the review. Watch for learners who adjust the filter aid or the backwash first and so hide the real cause.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write your own fixed order of checks for a rise in filter effluent turbidity."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and list the filter values you already log and one you do not."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Ashgrove Bend scenario and calculate the solids load on day 1 and day 7."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "wef-mop11",
+        "wi-solids-sep",
+        "spellman-ww3",
+        "wqc-handbook"
+      ],
+      "checks": [
+        {
+          "id": "ceu-effluent-filtration-operation-troubleshooting-c1",
+          "prompt": "Filter effluent reads 1.8 NTU. The plant's paired data give TSS = 1.4 x NTU. What is the estimated TSS?",
+          "choices": [
+            "1.3 mg/L",
+            "3.2 mg/L",
+            "2.5 mg/L",
+            "0.78 mg/L"
+          ],
+          "correctIndex": 2,
+          "explanation": "TSS = 1.4 x 1.8 = 2.52, about 2.5 mg/L. 1.3 divides by the factor, 3.2 adds the two numbers, and 0.78 inverts the ratio.",
+          "objective": "effluent-filtration-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-effluent-filtration-operation-troubleshooting-c2",
+          "prompt": "What is turbidity breakthrough in a filter run?",
+          "choices": [
+            "Solids begin to pass through the bed and appear in the effluent",
+            "Head loss returns to its clean-bed value right after a wash and stays there",
+            "Media is carried over the troughs during a backwash cycle",
+            "The filter aid coats the media grains for the first time"
+          ],
+          "correctIndex": 0,
+          "explanation": "Breakthrough is the passage of solids into the filtrate. A clean-bed head loss, media loss and aid coating are different events.",
+          "objective": "effluent-filtration-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-effluent-filtration-operation-troubleshooting-c3",
+          "prompt": "Which response to algae and slime growth do the sources describe?",
+          "choices": [
+            "Raise the filter aid dose so it binds the growth on the walls and troughs of the filter",
+            "Add chlorine to the influent or backwash water as the plant procedure directs",
+            "Lower the backwash rate so the growth is not scoured off the media and troughs of the bed",
+            "Shut the filter down and leave it drained until the growth dies"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Wisconsin guide says chlorine controls algae and slime. A higher aid dose does not treat growth, a lower backwash rate does not remove it, and draining is not the prescribed response. Chemical handling follows plant procedures.",
+          "objective": "effluent-filtration-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-effluent-filtration-operation-troubleshooting-c4",
+          "prompt": "Runs have become short because head loss climbs fast. Which upstream finding fits best?",
+          "choices": [
+            "Clarifier effluent turbidity has fallen below its usual range",
+            "Backwash water volume has dropped below the normal daily amount",
+            "Filter effluent chlorine residual has risen above its usual value",
+            "Clarifier effluent solids have risen because of carry-over"
+          ],
+          "correctIndex": 3,
+          "explanation": "More solids applied fill the bed sooner. Cleaner feed and a higher residual would not shorten runs, and daily washwater volume alone does not show an upstream cause.",
+          "objective": "effluent-filtration-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-effluent-filtration-operation-troubleshooting-c5",
+          "prompt": "Which record best shows a slow decline in how well backwashes clean a filter?",
+          "choices": [
+            "The number of operators scheduled on each shift of the working week at the plant",
+            "Clean-bed head loss logged after each backwash at the same flow",
+            "The daily rainfall total recorded at the plant weather station for the month",
+            "The chlorine cylinder weight recorded at the end of each week at the plant"
+          ],
+          "correctIndex": 1,
+          "explanation": "A rising initial head loss means the wash is leaving solids behind. Staffing, rainfall and cylinder weight do not track bed condition.",
+          "objective": "effluent-filtration-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-effluent-filtration-operation-troubleshooting-c6",
+          "prompt": "Several filters show shorter runs in the same week. Where should the investigation start?",
+          "choices": [
+            "At each filter's underdrain nozzles and support gravel",
+            "At the grain size of the media in one filter cell",
+            "At the secondary clarifier and its recycle flows",
+            "At the disinfection contact tank after the filters"
+          ],
+          "correctIndex": 2,
+          "explanation": "Common symptoms across filters point to the shared feed. Underdrains and grain size are local to one filter, and contact tanks come after the filters.",
+          "objective": "effluent-filtration-operation-troubleshooting"
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-effluent-filtration-why-filter-f1",
+      "prompt": "Why is filtering wastewater harder than filtering drinking water through the same kind of bed?",
+      "choices": [
+        "Wastewater solids are denser and pack the bed under their own weight",
+        "Wastewater carries dissolved salts that coat the media grains in a film",
+        "Wastewater solids are stickier and more concentrated, so thin sand beds blind",
+        "Wastewater is warmer, so the media grains swell and close the pores of the bed"
+      ],
+      "correctIndex": 2,
+      "explanation": "MOP 11 says wastewater solids are sticky from biological activity and more concentrated. Dense packing, salt coating and swelling grains are not the reasons it gives.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-f2",
+      "prompt": "A plant filters 3.2 MGD. Filter influent is 15 mg/L TSS and effluent is 4 mg/L TSS. Use the factor 8.34 (lb/day per MGD and mg/L). How many pounds of TSS per day does the filter remove?",
+      "choices": [
+        "294 lb/day",
+        "400 lb/day",
+        "107 lb/day",
+        "35 lb/day"
+      ],
+      "correctIndex": 0,
+      "explanation": "Removed = (15 - 4) x 3.2 x 8.34 = 293.6, about 294 lb/day. 400 is the influent load, 107 is the effluent load, and 35 leaves out the 8.34 factor.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-f3",
+      "prompt": "A filter removes 82 percent of the TSS applied to it. The applied TSS is 11 mg/L. What is the filter effluent TSS?",
+      "choices": [
+        "2.0 mg/L",
+        "9.0 mg/L",
+        "11.8 mg/L",
+        "0.2 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "Effluent = 11 x (1 - 0.82) = 1.98, about 2.0 mg/L. 9.0 is the amount removed, 11.8 adds 0.82 to 11 instead of taking 82 percent off, and 0.2 moves the decimal point.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-f4",
+      "prompt": "A small plant with little floor space and low available head wants to add a tertiary filter inside an existing tank. Which reason do the sources list for considering a disc filter over a granular bed?",
+      "choices": [
+        "Deeper media that stores more solids in each filter run than shallow beds",
+        "Smaller footprint, lower head requirement and easier retrofit",
+        "Higher chemical use that improves floc strength in the bed",
+        "Longer backwash that produces much more washwater for the plant to treat"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Wisconsin guide lists retrofit, smaller footprint and lower head. Deeper media, higher chemical use and more washwater are not advantages of discs.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-f5",
+      "prompt": "Compared with a thin single-sand bed, where does a deep dual-media bed hold the solids it captures?",
+      "choices": [
+        "In a thin mat on the top surface, which shortens runs between washes",
+        "In the underdrain below the media, which keeps the bed clean for longer",
+        "Through much of the bed depth, which lengthens runs between washes",
+        "In the troughs above the bed until the next scheduled backwash"
+      ],
+      "correctIndex": 2,
+      "explanation": "A coarse-to-fine bed stores solids through its depth. A surface mat is the single-sand pattern, and troughs carry washwater away.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-f1",
+      "prompt": "Four identical filters, each 24 ft by 12 ft, share a flow of 5.0 MGD equally. Use 1 MGD = 694.4 gpm. What is the loading rate on each filter?",
+      "choices": [
+        "12.1 gpm/ft2",
+        "72.3 gpm/ft2",
+        "3.0 gpm/ft2",
+        "1.5 gpm/ft2"
+      ],
+      "correctIndex": 2,
+      "explanation": "Total = 5.0 x 694.4 = 3,472 gpm; per filter = 868 gpm; area = 288 ft2; rate = 3.0. 12.1 forgets to divide by four, 72.3 divides by the width only, and 1.5 divides by eight.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-f2",
+      "prompt": "Three filters of 300 ft2 each share 2,700 gpm. One filter is taken out of service and the flow stays the same. If the flow splits equally, what is the loading rate on each filter still in service?",
+      "choices": [
+        "3.0 gpm/ft2",
+        "4.5 gpm/ft2",
+        "9.0 gpm/ft2",
+        "1.5 gpm/ft2"
+      ],
+      "correctIndex": 1,
+      "explanation": "Two filters remain: 2,700 / (2 x 300) = 4.5 gpm/ft2. 3.0 is the rate before the change, 9.0 uses one filter's area, and 1.5 halves the earlier rate.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-f3",
+      "prompt": "Clarifier effluent has 9 mg/L TSS at 3.0 MGD. Use the factor 8.34 (lb/day per MGD and mg/L). The filters in service total 600 ft2. What is the solids loading rate?",
+      "choices": [
+        "225 lb/day/ft2",
+        "0.045 lb/day/ft2",
+        "0.75 lb/day/ft2",
+        "0.38 lb/day/ft2"
+      ],
+      "correctIndex": 3,
+      "explanation": "Load = 9 x 3.0 x 8.34 = 225 lb/day; 225 / 600 = 0.38. 225 forgets the area, 0.045 forgets the 8.34, and 0.75 uses half the area.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-f4",
+      "prompt": "A filter's clean-bed head loss, logged at the same flow after each backwash, has crept from 1.4 ft to 2.3 ft over several weeks. What is the most likely cause?",
+      "choices": [
+        "The media has been cleaned so well that it has packed tighter in the cell and slowed flow",
+        "The effluent turbidity analyzer is out of calibration and reading high after a cell fouled",
+        "The filter aid dose is too low for the water being applied, so solids pass the bed",
+        "The washes leave solids behind, as with a short wash or a stalled surface wash arm"
+      ],
+      "correctIndex": 3,
+      "explanation": "MOP 11 links a gradual rise in initial head loss to a wash that is too short or an inoperative surface wash. A turbidity analyzer does not affect head loss, and a low aid dose shows up as breakthrough.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-f5",
+      "prompt": "What does MOP 11 say the optimum filter aid dose achieves?",
+      "choices": [
+        "Head loss stays at its clean-bed value through the whole filter run, so no wash is due",
+        "Maximum desired head loss is reached just as breakthrough is about to start",
+        "Turbidity breaks through early so that the filter cleans itself out during the run",
+        "No backwash is needed until the media is replaced after some years"
+      ],
+      "correctIndex": 1,
+      "explanation": "A well-chosen dose lets terminal head loss arrive just as turbidity starts to break through. A flat head loss, early breakthrough and no backwash are not outcomes of a good dose.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-f1",
+      "prompt": "A filtration system produced 2,400,000 gal of product water in a day. The backwashes used 76,800 gal of that product water. What percent of the product water was used for backwash?",
+      "choices": [
+        "31 percent",
+        "0.32 percent",
+        "97 percent",
+        "3.2 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "76,800 / 2,400,000 x 100 = 3.2 percent. 31 is the inverted ratio without the percent step, 0.32 moves the decimal, and 97 is the share not used for backwash.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-f2",
+      "prompt": "A backwash rate is 15 gpm/ft2. Use 7.48 gal per ft3 and 12 in. per ft. What is the rise rate in inches per minute?",
+      "choices": [
+        "2.0 in./min",
+        "1,346 in./min",
+        "24 in./min",
+        "0.62 in./min"
+      ],
+      "correctIndex": 2,
+      "explanation": "15 x 12 / 7.48 = 24.1 in./min. 2.0 leaves out the 12 in. per ft, 1,346 multiplies by 7.48 instead of dividing, and 0.62 is the bare factor 7.48 divided by 12, with the rate left out.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-f3",
+      "prompt": "Media depth is 28 in. At rest the top of the media is 40 in. below a reference mark. During backwash it is 33 in. below the mark. What is the percent bed expansion?",
+      "choices": [
+        "25 percent",
+        "17.5 percent",
+        "21 percent",
+        "4 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "Rise = 40 - 33 = 7 in.; 7 / 28 x 100 = 25 percent. 17.5 divides by the resting distance, 21 divides the rise by the 33 in. backwash gap, and 4 is the inverted ratio without the percent step.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-f4",
+      "prompt": "Five media samples total 3,400 mL. Mudballs placed in 500 mL of water raise the level to 538 mL. What is the percent mudball volume?",
+      "choices": [
+        "7.6 percent",
+        "1.1 percent",
+        "0.11 percent",
+        "38 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Mudball volume = 538 - 500 = 38 mL; 38 / 3,400 x 100 = 1.1 percent. 7.6 divides by the water volume, 0.11 moves the decimal, and 38 reports the volume as a percent.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-f5",
+      "prompt": "Which practice during air scour helps prevent media loss?",
+      "choices": [
+        "Run air and water together at a high rate for the whole wash of a dual-media bed",
+        "Start the air scour after the backwash so grains stay settled in place",
+        "Lengthen the scour whenever media shows in the washwater sample",
+        "End the auxiliary scour before the wash ends so bubbles clear from the grains"
+      ],
+      "correctIndex": 3,
+      "explanation": "Spellman advises stopping the scour before the wash ends so attached air does not float media away, and MOP 11 notes that simultaneous air and water can float coal out. Excessive scour can add to media loss.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-f1",
+      "prompt": "Clarifier effluent TSS rises from 8 to 20 mg/L while the flow stays at 3.0 MGD. Use the factor 8.34 (lb/day per MGD and mg/L). By how many lb/day does the solids load to the filters increase?",
+      "choices": [
+        "500 lb/day",
+        "300 lb/day",
+        "200 lb/day",
+        "36 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Increase = (20 - 8) x 3.0 x 8.34 = 300 lb/day. 500 is the new load alone, 200 is the old load alone, and 36 forgets the 8.34 factor.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-f2",
+      "prompt": "Classroom assumption, flow held constant: run length is inversely proportional to influent TSS concentration. A filter ran 30 hours when applied TSS was 8 mg/L. What run length would the assumption give at 20 mg/L?",
+      "choices": [
+        "75 hours",
+        "22 hours",
+        "12 hours",
+        "3.8 hours"
+      ],
+      "correctIndex": 2,
+      "explanation": "30 x 8 / 20 = 12 hours. 75 multiplies by the ratio the wrong way, 22 subtracts 8 from 30 and mixes units, and 3.8 divides the old run by the old concentration alone.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-f3",
+      "prompt": "Filter effluent turbidity is 2.2 NTU. MOP 11 gives typical factors of 1.3 to 1.5 for filter effluent and 2.0 to 2.4 for settled secondary effluent. Using the MOP 11 filter-effluent factors, what TSS range is estimated?",
+      "choices": [
+        "About 2.9 to 3.3 mg/L",
+        "About 1.5 to 1.7 mg/L",
+        "About 4.4 to 5.3 mg/L",
+        "About 3.5 to 3.7 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "2.2 x 1.3 = 2.9 and 2.2 x 1.5 = 3.3. 1.5 to 1.7 divides by the factors, 4.4 to 5.3 uses the settled-secondary factors, and 3.5 to 3.7 adds the factors.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-f4",
+      "prompt": "After a cold snap, filter effluent turbidity rises late in each run while head loss is still low. The filter aid pump output is unchanged. What is the most likely explanation and response?",
+      "choices": [
+        "The media is too clean, so skip a day of backwashing to let a mat form",
+        "The surface wash is too long, so shorten it by some minutes each cycle",
+        "Cold water makes the media sticky, so lengthen the backwash by several minutes",
+        "Colder water raises aid demand, so run a jar test and adjust the dose"
+      ],
+      "correctIndex": 3,
+      "explanation": "MOP 11 says the amount of aid needed rises as water temperature falls. Skipping washes and a long surface wash do not explain late-run breakthrough.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-f5",
+      "prompt": "A filter shows high head loss right after backwash. Which first checks fit best?",
+      "choices": [
+        "Check for a short backwash or a failed surface wash, and look for mudballs",
+        "Increase the filter aid dose to build a stronger floc in the bed and slow the head loss",
+        "Raise the influent flow so it scours the bed clean as the water passes through it",
+        "Lower the backwash rate so that the media is protected from further rubbing and wear"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sources link high head loss after a wash to an insufficient wash or an inoperative surface wash, and mudballs are evidence of inadequate cleaning. Adding aid, raising flow or lowering the backwash rate are not first checks for this symptom.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-effluent-filtration-why-filter-a1",
+      "prompt": "A plant filters 6.0 MGD. Filter influent is 9 mg/L TSS and effluent is 2.5 mg/L TSS. Use the factor 8.34 (lb/day per MGD and mg/L). How many pounds of TSS per day does the filter remove?",
+      "choices": [
+        "450 lb/day",
+        "125 lb/day",
+        "39 lb/day",
+        "325 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Removed = (9 - 2.5) x 6.0 x 8.34 = 325.3, about 325 lb/day. 450 is the influent load, 125 is the effluent load, and 39 omits the 8.34 factor.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-a2",
+      "prompt": "Filter influent is 20 mg/L TSS and filter effluent is 3 mg/L TSS. What percent of the TSS did the filter remove?",
+      "choices": [
+        "85 percent",
+        "15 percent",
+        "17 percent",
+        "567 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "Removal = (20 - 3) / 20 x 100 = 85 percent. 15 percent is what remains, 17 is the mg/L difference written as a percent, and 567 divides by the effluent value.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-a3",
+      "prompt": "A plant has an online turbidimeter on each filter. Why does it still run TSS samples now and then?",
+      "choices": [
+        "Turbidity analyzers read dissolved salts, so TSS is needed to confirm them",
+        "Turbidity is indirect, so paired TSS samples show how the two relate",
+        "TSS gives a faster result than turbidity, so it is used for control",
+        "Turbidity and TSS are the same number, so one confirms the other"
+      ],
+      "correctIndex": 1,
+      "explanation": "The turbidity-to-TSS factor is plant specific, so paired samples are used to check it. Turbidity responds to particles, not salts, it is the faster measurement, and the two numbers are different quantities.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-a4",
+      "prompt": "Which description matches a partially submerged cloth disc filter?",
+      "choices": [
+        "Flow passes from outside to inside through a fully covered disc and suction heads clean it",
+        "Flow passes down through layered anthracite and sand and leaves through an underdrain",
+        "Flow enters the centre drum, passes outward through the cloth, and spray nozzles clean it",
+        "Flow is forced through membrane pores by pressure and cleaned by a chemical soak"
+      ],
+      "correctIndex": 2,
+      "explanation": "A partially submerged disc works inside to outside with spray cleaning. Outside-to-inside with suction describes the fully submerged type, layered media describe a granular bed, and pressure through pores describes a membrane.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-why-filter-a5",
+      "prompt": "What happens to the solids a conventional backwashed granular filter removes from secondary effluent?",
+      "choices": [
+        "They are destroyed inside the media by biological action",
+        "They are turned into dissolved matter that passes into the effluent",
+        "They stay in the media until the media is replaced after some years",
+        "They leave in the backwash water and return to the plant"
+      ],
+      "correctIndex": 3,
+      "explanation": "The solids are washed out in backwash and sent back to the plant. They are not destroyed or dissolved by the filter, and media are cleaned by each wash rather than replaced to dispose of them.",
+      "objective": "effluent-filtration-why-filter"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-a1",
+      "prompt": "A filter 22 ft long by 14 ft wide receives 1,078 gpm. What is the hydraulic loading rate?",
+      "choices": [
+        "3.5 gpm/ft2",
+        "0.29 gpm/ft2",
+        "49 gpm/ft2",
+        "77 gpm/ft2"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area = 22 x 14 = 308 ft2; 1,078 / 308 = 3.5. 0.29 inverts the ratio, 49 divides by the length, and 77 divides by the width.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-a2",
+      "prompt": "A single filter 30 ft by 20 ft treats 1.2 MGD. Use 1 MGD = 694.4 gpm. What is the loading rate?",
+      "choices": [
+        "2,000 gpm/ft2",
+        "1.4 gpm/ft2",
+        "0.72 gpm/ft2",
+        "42 gpm/ft2"
+      ],
+      "correctIndex": 1,
+      "explanation": "1.2 x 694.4 = 833 gpm; area 600 ft2; 833 / 600 = 1.4. 2,000 skips the conversion to minutes, 0.72 inverts the ratio, and 42 divides by the width only.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-a3",
+      "prompt": "A filter ran for 36 hours at an average of 2.0 gpm/ft2. Use 60 min per hour. What was the unit filter run volume?",
+      "choices": [
+        "72 gal/ft2",
+        "2,160 gal/ft2",
+        "259,200 gal/ft2",
+        "4,320 gal/ft2"
+      ],
+      "correctIndex": 3,
+      "explanation": "UFRV = 2.0 x 36 x 60 = 4,320 gal/ft2. 72 skips the minutes, 2,160 leaves out the rate, and 259,200 multiplies by seconds instead of minutes.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-a4",
+      "prompt": "In a constant-rate downflow filter with an effluent rate control valve, how does the valve behave during a run?",
+      "choices": [
+        "Nearly closed at the start, then opening gradually as the bed clogs",
+        "Fully open at the start, then closing gradually as the bed clogs with solids",
+        "Held in one position while the influent weir sets the filter rate for the whole run",
+        "Shut during filtration, then opened during each backwash cycle"
+      ],
+      "correctIndex": 0,
+      "explanation": "MOP 11 describes the valve opening slowly to hold the rate as head loss builds. The other choices reverse the motion, describe a different control method, or confuse it with the backwash valves.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-granular-media-a5",
+      "prompt": "Why should flow changes to a filter be gradual rather than abrupt?",
+      "choices": [
+        "Rapid changes wear the underdrain nozzles and loosen their fittings",
+        "Surges push captured particles deeper and can cause breakthrough",
+        "Fast changes make the media settle into a hard cemented layer",
+        "A faster rate dissolves the filter aid coating on the grains"
+      ],
+      "correctIndex": 1,
+      "explanation": "MOP 11 says surges tend to make particles penetrate the bed. Nozzle wear, hardening and dissolving of the aid coating are not described.",
+      "objective": "effluent-filtration-granular-media"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-a1",
+      "prompt": "A filter 25 ft by 12 ft is backwashed at 16 gpm/ft2 for 6 minutes. How many gallons does one backwash use?",
+      "choices": [
+        "4,800 gal",
+        "1,800 gal",
+        "28,800 gal",
+        "115,200 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "Area 300 ft2 x 16 x 6 = 28,800 gal. 4,800 forgets the time, 1,800 forgets the rate, and 115,200 multiplies by four filters though one backwash was asked.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-a2",
+      "prompt": "The desired backwash rate is 18 gpm/ft2 and the filter is 20 ft by 14 ft. What pumping rate is needed?",
+      "choices": [
+        "15.6 gpm",
+        "360 gpm",
+        "5,040 gpm",
+        "90,720 gpm"
+      ],
+      "correctIndex": 2,
+      "explanation": "Area 280 ft2 x 18 = 5,040 gpm. 15.6 divides instead of multiplies, 360 uses the length only, and 90,720 multiplies by the rate twice.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-a3",
+      "prompt": "Three filters each backwash once a day using 11,000 gal. The plant filters 1.5 MG a day. What percent of throughput is used for backwash?",
+      "choices": [
+        "0.73 percent",
+        "2.2 percent",
+        "22 percent",
+        "4.4 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "3 x 11,000 = 33,000 gal; 33,000 / 1,500,000 x 100 = 2.2 percent. 0.73 counts one filter only, 22 moves the decimal, and 4.4 doubles the volume.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-a4",
+      "prompt": "In warm weather the same backwash rate cleans a filter poorly. Why, and what is the usual response?",
+      "choices": [
+        "Warm water is less viscous, so the rate is raised until the bed expands enough",
+        "Warm water is denser, so the rate is lowered to avoid media loss in the troughs",
+        "Warm water dissolves the filter aid, so more polymer is added to the feed",
+        "Warm water carries more solids, so the wash is shortened to save water"
+      ],
+      "correctIndex": 0,
+      "explanation": "MOP 11 and Spellman say lower viscosity gives less expansion at the same rate. Denser water, dissolving aid and shorter washes are not the cause or the fix.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-backwash-cleaning-a5",
+      "prompt": "Why are mudballs a problem in a filter?",
+      "choices": [
+        "They add weight that bends the underdrain and its support plates over time in use",
+        "They leach organic color into the filtered effluent over the weeks after a wash",
+        "They reduce the effective filter area and cause uneven flow and cracks",
+        "They lower head loss, so filter runs get longer between washes in service"
+      ],
+      "correctIndex": 2,
+      "explanation": "Spellman and the Water Quality Control Handbook describe lost effective area, uneven filtering and cracking. Underdrain bending and color leaching are not described, and mudballs can shorten runs.",
+      "objective": "effluent-filtration-backwash-cleaning"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-a1",
+      "prompt": "Clarifier effluent TSS rises from 6 to 15 mg/L while the flow stays at 2.4 MGD. Use the factor 8.34 (lb/day per MGD and mg/L). By how many lb/day does the solids load to the filters increase?",
+      "choices": [
+        "300 lb/day",
+        "120 lb/day",
+        "22 lb/day",
+        "180 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Increase = (15 - 6) x 2.4 x 8.34 = 180 lb/day. 300 is the new load alone, 120 is the old load alone, and 22 forgets the 8.34 factor.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-a2",
+      "prompt": "A plant normally uses a small share of throughput for backwash, but it has risen well above 5 percent. Which causes should be checked?",
+      "choices": [
+        "Excess clarifier solids, high aid dose, failed surface wash, or a long wash",
+        "Low clarifier solids, low filter aid dose, and a wash that is too short",
+        "High effluent chlorine residual, high pH, and low water temperature at the plant",
+        "A backwash rate that is too low and troughs that are level across the filter"
+      ],
+      "correctIndex": 0,
+      "explanation": "MOP 11 and Spellman list these four causes of excess washwater. The other sets describe opposite conditions, unrelated measurements, or problems that shorten runs without the washwater signal.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-a3",
+      "prompt": "Filter effluent turbidity is 1.6 NTU. MOP 11 gives a typical factor of 1.3 to 1.5 for filter effluent. Using that factor, what TSS range would you estimate?",
+      "choices": [
+        "About 1.1 to 1.2 mg/L",
+        "About 3.2 to 3.8 mg/L",
+        "About 2.9 to 3.1 mg/L",
+        "About 2.1 to 2.4 mg/L"
+      ],
+      "correctIndex": 3,
+      "explanation": "1.6 x 1.3 = 2.1 and 1.6 x 1.5 = 2.4. 1.1 to 1.2 divides, 3.2 to 3.8 uses the settled-secondary factors, and 2.9 to 3.1 adds.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-a4",
+      "prompt": "Which trend would best show clarifier carry-over affecting the filters?",
+      "choices": [
+        "Backwash pump hours with chlorine cylinder weights over the month",
+        "Applied TSS or turbidity with run length and backwash percent",
+        "Effluent temperature with the rainfall total for each day",
+        "Trough elevation with the color of the media in the cell"
+      ],
+      "correctIndex": 1,
+      "explanation": "Carry-over raises the applied solids, shortens runs and raises washwater. The other pairs do not follow the feed to the filters.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-effluent-filtration-operation-troubleshooting-a5",
+      "prompt": "Why do operators treat a small rise in filter effluent turbidity as a warning?",
+      "choices": [
+        "A small rise shows the media is being cleaned properly by the flow and wash cycle",
+        "Turbidity analyzers drift upward when head loss is low at the end of a wash cycle",
+        "Very small particles such as viruses can break through when a small rise begins",
+        "A small rise shows the permit limit is already exceeded at the plant outfall now"
+      ],
+      "correctIndex": 2,
+      "explanation": "MOP 11 warns that viruses can break through at the first sign of a rise. A rise is not a sign of good cleaning, analyzers do not drift with head loss, and a small rise does not mean a limit was exceeded.",
+      "objective": "effluent-filtration-operation-troubleshooting"
+    }
+  ]
+}

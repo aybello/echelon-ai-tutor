@@ -1142,5 +1142,527 @@
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval in any jurisdiction. Use current facility procedures and applicable requirements for operational decisions.",
     "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-sludge-thickening",
+    "interestCode": "ceu-sludge-thickening",
+    "title": "Sludge Thickening for Wastewater Operators",
+    "shortTitle": "Sludge Thickening",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-sludge-thickening-cover_49d477d1.jpg",
+      "alt": "Sludge Thickening for Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support the solids handling at a municipal wastewater plant and want a clear foundation in thickening before a digestion or dewatering course.",
+    "outcomes": [
+      "Explain how thickening changes the volume of sludge without removing the solids.",
+      "Describe how a gravity thickener works and calculate the solids loading rate and the overflow rate.",
+      "Explain the role of cationic polymer and name the main mechanical thickening units in general terms.",
+      "Describe how thickened sludge feeds the digester and dewatering, and calculate side-stream return loads."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Why thicken sludge: solids, volume and the mass balance",
+        "durationMinutes": 60,
+        "summary": "Explain how thickening changes the volume of sludge without removing the solids. Use percent solids, specific gravity and the volume formula to work out the mass and volume of sludge, and read a simple mass balance."
+      },
+      {
+        "number": 2,
+        "title": "Gravity thickening: loading, overflow, blanket and septicity",
+        "durationMinutes": 60,
+        "summary": "Describe how a gravity thickener works and calculate the solids loading rate and the overflow rate. Link blanket depth, holding time, septicity and odour to operating decisions."
+      },
+      {
+        "number": 3,
+        "title": "Mechanical thickening: polymer, units and capture",
+        "durationMinutes": 60,
+        "summary": "Explain the role of cationic polymer and name the main mechanical thickening units in general terms. Calculate capture rate and recycle load, and explain why the recycle stream matters to the plant. Describe the main parts and adjustments of a gravity belt thickener, and calculate polymer solution strength."
+      },
+      {
+        "number": 4,
+        "title": "Operation and records: feeds, side streams and pumps",
+        "durationMinutes": 60,
+        "summary": "Describe how thickened sludge feeds the digester and dewatering, and calculate side-stream return loads. Start a positive displacement pump safely, keep useful records and work through a thickener problem. Calculate the DAF air-to-solids ratio and recycle percent, and describe the main DAF controls."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-sludge-digestion",
+    "interestCode": "ceu-sludge-digestion",
+    "title": "Sludge Digestion for Wastewater Operators",
+    "shortTitle": "Sludge Digestion",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-sludge-digestion-cover_e063766d.jpg",
+      "alt": "Sludge Digestion for Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support the solids handling at a municipal wastewater plant and want a clear foundation in sludge stabilisation and digestion, ideally after a thickening course.",
+    "outcomes": [
+      "Explain why sludge is stabilised and how volatile solids, pathogens, odour and vector attraction are linked to it.",
+      "Describe the stages of anaerobic digestion and how temperature, mixing, feeding and retention time keep the methane formers healthy.",
+      "Explain how oxygen, mixing, pH, alkalinity and temperature control an aerobic digester, and how prethickening changes its retention time.",
+      "Choose what to sample and record for an anaerobic or aerobic digester, take representative samples, and read trends rather than single readings."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Why stabilise sludge: volatile solids, pathogens and odour",
+        "durationMinutes": 60,
+        "summary": "Explain why sludge is stabilised and how volatile solids, pathogens, odour and vector attraction are linked to it. Use the volatile solids reduction formula and the mass of volatile solids to read a simple digestion mass balance, and compare aerobic and anaerobic digestion at overview level."
+      },
+      {
+        "number": 2,
+        "title": "Anaerobic digestion: stages, control and gas",
+        "durationMinutes": 60,
+        "summary": "Describe the stages of anaerobic digestion and how temperature, mixing, feeding and retention time keep the methane formers healthy. Use the volatile acids to alkalinity ratio, retention time and gas production to judge digester health, and recognise a sour digester and the main digester gas hazards."
+      },
+      {
+        "number": 3,
+        "title": "Aerobic digestion and additional stabilisation",
+        "durationMinutes": 60,
+        "summary": "Explain how oxygen, mixing, pH, alkalinity and temperature control an aerobic digester, and how prethickening changes its retention time. Describe ATAD, lime stabilisation and composting at overview level and compare the options by advantages and disadvantages."
+      },
+      {
+        "number": 4,
+        "title": "Operation and records: monitoring, loading and the thickener link",
+        "durationMinutes": 60,
+        "summary": "Choose what to sample and record for an anaerobic or aerobic digester, take representative samples, and read trends rather than single readings. Calculate digester loading and detention time, and explain how the output of the thickener changes the feed, retention time and recycle load of the digester."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-sludge-dewatering",
+    "interestCode": "ceu-sludge-dewatering",
+    "title": "Sludge Dewatering for Wastewater Operators",
+    "shortTitle": "Sludge Dewatering",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-sludge-dewatering-cover_a96cc290.jpg",
+      "alt": "Sludge Dewatering for Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support the solids handling at a municipal wastewater plant and want a clear foundation in dewatering after a thickening or digestion course.",
+    "outcomes": [
+      "Explain what dewatering does, why bound water limits cake solids, and how cake solids set the wet tons and hauling cost.",
+      "Describe the zones of a belt filter press and the trade-off among cake dryness, loading and polymer dose, and place a screw press in general terms.",
+      "Describe in general terms how a centrifuge, a recessed-plate or plate-and-frame press, and the main drying beds remove water.",
+      "Measure dewatering performance with cake solids, capture and polymer dose in pounds per ton, and work out the load that the recycle returns to the plant."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Why dewater: cake solids, hauling cost and conditioning",
+        "durationMinutes": 60,
+        "summary": "Explain what dewatering does, why bound water limits cake solids, and how cake solids set the wet tons and hauling cost. Describe why polymer is added, why more polymer is not always better, and work through the cake and hauling arithmetic."
+      },
+      {
+        "number": 2,
+        "title": "Belt filter presses and screw presses: operation, wash water and tracking",
+        "durationMinutes": 60,
+        "summary": "Describe the zones of a belt filter press and the trade-off among cake dryness, loading and polymer dose, and place a screw press in general terms. Use the wash water correction, and link belt wear, tracking, wash water and feed distribution to troubleshooting steps taken one at a time."
+      },
+      {
+        "number": 3,
+        "title": "Centrifuges, filter presses and drying beds: how each works and where it fits",
+        "durationMinutes": 60,
+        "summary": "Describe in general terms how a centrifuge, a recessed-plate or plate-and-frame press, and the main drying beds remove water. Compare the methods by what each is suited to and what it costs in land, labour, noise, odour and polymer, and calculate g force."
+      },
+      {
+        "number": 4,
+        "title": "Operation and records: performance, recycle, odour and housekeeping",
+        "durationMinutes": 60,
+        "summary": "Measure dewatering performance with cake solids, capture and polymer dose in pounds per ton, and work out the load that the recycle returns to the plant. Link odour, housekeeping and feed changes to dewatering, work through a troubleshooting problem and keep records that help."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-lift-stations",
+    "interestCode": "ceu-lift-stations",
+    "title": "Lift Stations for Wastewater Operators",
+    "shortTitle": "Lift Stations",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-lift-stations-cover_9448a07d.jpg",
+      "alt": "Lift Stations for Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors who run or support wastewater lift stations and want a clear foundation before a collection system or pumping course.",
+    "outcomes": [
+      "Explain why wastewater is lifted and how a lift station, wet well and force main fit into a gravity collection system.",
+      "Describe how a centrifugal pump, system curve and operating point work together, and why a low wet well moves the operating point.",
+      "Compare float, bubbler, electrode, transducer and ultrasonic level sensing, and explain staging, alternation and the hand-off-auto selector.",
+      "Describe a useful round and record, and recognise grease, rag, odour, corrosion, hydraulic and electrical problems and what they suggest."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Why lift stations are used: gravity, pumping, station types and head",
+        "durationMinutes": 60,
+        "summary": "Explain why wastewater is lifted and how a lift station, wet well and force main fit into a gravity collection system. Compare wet pit and dry pit, submersible and nonsubmersible layouts, name the main station components, and work out total dynamic head and gauge-to-head conversions."
+      },
+      {
+        "number": 2,
+        "title": "Pumps and drives: curves, speed, valves, priming and wet well sizing",
+        "durationMinutes": 60,
+        "summary": "Describe how a centrifugal pump, system curve and operating point work together, and why a low wet well moves the operating point. Compare constant and variable speed, explain isolation valves, check valves and priming, and calculate wet well volume, fill and drain time and starts per hour."
+      },
+      {
+        "number": 3,
+        "title": "Controls and monitoring: level sensing, alternation, alarms, telemetry and flow estimates",
+        "durationMinutes": 60,
+        "summary": "Compare float, bubbler, electrode, transducer and ultrasonic level sensing, and explain staging, alternation and the hand-off-auto selector. Explain alarms and telemetry at purpose level, and estimate pump capacity, inflow and daily flow from drawdown and run time."
+      },
+      {
+        "number": 4,
+        "title": "Operation, maintenance and troubleshooting: rounds, problems and hazard awareness",
+        "durationMinutes": 60,
+        "summary": "Describe a useful round and record, and recognise grease, rag, odour, corrosion, hydraulic and electrical problems and what they suggest. Explain the layers that prevent overflows and recognise confined space hazards and their purpose-level controls, without entry procedures."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-effluent-filtration",
+    "interestCode": "ceu-effluent-filtration",
+    "title": "Effluent Filtration for Wastewater Operators",
+    "shortTitle": "Effluent Filtration",
+    "stream": "wastewater",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater",
+    "cover": {
+      "src": "/manus-storage/ceu-effluent-filtration-cover_8e2ad7ac.jpg",
+      "alt": "Effluent Filtration for Wastewater Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "ceu_value_review_required",
+    "statusLabel": "OWWCO course-value review required",
+    "statusDescription": "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors at a municipal wastewater plant who run or support tertiary effluent filters, or want a clear foundation before taking on a plant with granular media, cloth disc or other polishing filters.",
+    "outcomes": [
+      "Explain why secondary effluent carries suspended solids and turbidity and what a tertiary filter is meant to remove.",
+      "Describe the layers of a dual or multimedia bed, the flow path through it and the three ways its flow rate is controlled.",
+      "Explain what triggers a backwash, how the bed is expanded and cleaned, and how surface wash and air scour help.",
+      "Describe the daily monitoring of a filter and explain turbidity breakthrough, short runs, clogging and algae growth."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Why filter secondary effluent: solids, turbidity and the filter family",
+        "durationMinutes": 60,
+        "summary": "Explain why secondary effluent carries suspended solids and turbidity and what a tertiary filter is meant to remove. Calculate percent removal and pounds of solids removed, and recognise the main filter types: granular depth, cloth disc and membrane."
+      },
+      {
+        "number": 2,
+        "title": "Granular media filters: media, flow, loading rates, head loss and filter aids",
+        "durationMinutes": 60,
+        "summary": "Describe the layers of a dual or multimedia bed, the flow path through it and the three ways its flow rate is controlled. Calculate hydraulic loading, solids loading and unit filter run volume, and explain head loss, run length and the role of a filter aid."
+      },
+      {
+        "number": 3,
+        "title": "Backwashing and cleaning: triggers, rates, scour, washwater and media care",
+        "durationMinutes": 60,
+        "summary": "Explain what triggers a backwash, how the bed is expanded and cleaned, and how surface wash and air scour help. Calculate backwash volume, percent of throughput used for backwash and bed expansion, and describe the effect of washwater recycle, mudballs and media loss."
+      },
+      {
+        "number": 4,
+        "title": "Operation and troubleshooting: monitoring, breakthrough, short runs and records",
+        "durationMinutes": 60,
+        "summary": "Describe the daily monitoring of a filter and explain turbidity breakthrough, short runs, clogging and algae growth. Trace filter symptoms to upstream causes such as clarifier carry-over, and use records and a trend to decide what to check first."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater-only courses are not Director approved for drinking-water renewal. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-reverse-osmosis",
+    "interestCode": "ceu-reverse-osmosis",
+    "title": "Reverse Osmosis for Water Operators",
+    "shortTitle": "Reverse Osmosis",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-reverse-osmosis-cover_eefba436.jpg",
+      "alt": "Reverse Osmosis for Water Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors at drinking water plants and wastewater reuse plants who run or support reverse osmosis systems and want a clear foundation in how RO works, how its performance is calculated, how pretreatment protects it and how to trend and troubleshoot it.",
+    "outcomes": [
+      "Explain osmosis and reverse osmosis, and why applied pressure must exceed the osmotic pressure of the feed.",
+      "Calculate recovery, rejection, salt passage, flux and concentration factor from stated flows and concentrations, with units.",
+      "Explain why pretreatment is needed and match particles, oxidants and scale-forming salts to the pretreatment step that controls each.",
+      "Normalise and trend permeate flow, salt passage and pressure drop, and read the pattern to separate temperature, particles, scale and leaks."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "How reverse osmosis works: osmosis, streams and membranes",
+        "durationMinutes": 60,
+        "summary": "Explain osmosis and reverse osmosis, and why applied pressure must exceed the osmotic pressure of the feed. Name the feed, permeate and concentrate streams, place RO within the membrane family, and recognise spiral wound and hollow fibre modules and the main membrane materials."
+      },
+      {
+        "number": 2,
+        "title": "Performance arithmetic: recovery, rejection, flux and pressure",
+        "durationMinutes": 60,
+        "summary": "Calculate recovery, rejection, salt passage, flux and concentration factor from stated flows and concentrations, with units. Explain how pressure, osmotic pressure, temperature and recovery affect permeate flow, and estimate pump power and specific energy from stated constants."
+      },
+      {
+        "number": 3,
+        "title": "Pretreatment and fouling: protecting the membranes",
+        "durationMinutes": 60,
+        "summary": "Explain why pretreatment is needed and match particles, oxidants and scale-forming salts to the pretreatment step that controls each. Tell particulate fouling, scaling and biofouling apart by where and how they show up, and describe the purpose of clean-in-place, cleaning triggers and membrane integrity checks."
+      },
+      {
+        "number": 4,
+        "title": "Operation and troubleshooting: trends, concentrate and records",
+        "durationMinutes": 60,
+        "summary": "Normalise and trend permeate flow, salt passage and pressure drop, and read the pattern to separate temperature, particles, scale and leaks. Describe concentrate disposal, post-treatment of permeate, the records that support troubleshooting, and the hazards to recognise in an RO room."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-lime-softening",
+    "interestCode": "ceu-lime-softening",
+    "title": "Lime Softening for Water Operators",
+    "shortTitle": "Lime Softening",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-lime-softening-cover_9d02a735.jpg",
+      "alt": "Lime Softening for Water Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Water operators, trainees and supervisors at drinking water plants who run or support a lime softening process, or who are preparing for certification questions on hardness, lime and soda ash dose arithmetic and softening plant operation.",
+    "outcomes": [
+      "Express calcium, magnesium, carbonate and non-carbonate hardness and alkalinity in mg/L as CaCO3 and convert between them.",
+      "Write the main softening reactions at concept level and state the constant used for each term of a lime and soda ash dose.",
+      "Describe the purpose of rapid mix, flocculation, conventional settling, solids-contact clarifiers, recarbonation, stabilization and filtration in a softening train.",
+      "Describe a jar test, the monitoring of pH, hardness and alkalinity, and how post-precipitation and scale show up."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Hardness and why we soften",
+        "durationMinutes": 60,
+        "summary": "Express calcium, magnesium, carbonate and non-carbonate hardness and alkalinity in mg/L as CaCO3 and convert between them. Explain why water is softened and describe at concept level the lime, soda ash, excess-lime and split treatment approaches."
+      },
+      {
+        "number": 2,
+        "title": "Chemistry and dose arithmetic",
+        "durationMinutes": 60,
+        "summary": "Write the main softening reactions at concept level and state the constant used for each term of a lime and soda ash dose. Calculate lime and soda ash doses, correct for purity, convert a dose to a feed rate and estimate sludge mass."
+      },
+      {
+        "number": 3,
+        "title": "Process units",
+        "durationMinutes": 60,
+        "summary": "Describe the purpose of rapid mix, flocculation, conventional settling, solids-contact clarifiers, recarbonation, stabilization and filtration in a softening train. Estimate a recarbonation dose and read a percent settled solids test."
+      },
+      {
+        "number": 4,
+        "title": "Operation and troubleshooting",
+        "durationMinutes": 60,
+        "summary": "Describe a jar test, the monitoring of pH, hardness and alkalinity, and how post-precipitation and scale show up. Recognize feed equipment and lime hazards and their purpose, and work through a troubleshooting scenario."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-fluoride",
+    "interestCode": "ceu-fluoride",
+    "title": "Fluoride in Drinking Water for Operators",
+    "shortTitle": "Fluoride",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-fluoride-cover_e8719c88.jpg",
+      "alt": "Fluoride in Drinking Water for Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Operators, trainees and supervisors at drinking water plants that add, or may be asked to add, fluoride, and anyone preparing for a certification exam that covers fluoridation.",
+    "outcomes": [
+      "Explain what community water fluoridation is, why it is done, and the difference between natural and adjusted fluoride.",
+      "Recognize sodium fluoride, sodium silicofluoride and fluorosilicic acid, and explain how solubility and purity affect how each is fed.",
+      "Calculate the percent fluoride ion in a compound and pounds per day of a chemical from dose, flow, AFI and purity.",
+      "Describe the purpose of ion-selective electrode and colorimetric analysis, calibration, daily checks and records."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Fluoridation: what it is and why it is done",
+        "durationMinutes": 60,
+        "summary": "Explain what community water fluoridation is, why it is done, and the difference between natural and adjusted fluoride. Describe the optimal-level concept, who sets the target, and the health effects and exposure ideas at concept level."
+      },
+      {
+        "number": 2,
+        "title": "Chemicals and feed systems",
+        "durationMinutes": 60,
+        "summary": "Recognize sodium fluoride, sodium silicofluoride and fluorosilicic acid, and explain how solubility and purity affect how each is fed. Explain the purpose of saturators, dry feeders, solution feeders, day tanks and the anti-siphon and backflow protections."
+      },
+      {
+        "number": 3,
+        "title": "Feed-rate arithmetic",
+        "durationMinutes": 60,
+        "summary": "Calculate the percent fluoride ion in a compound and pounds per day of a chemical from dose, flow, AFI and purity. Calculate saturator solution gallons per day and a pump setting, allow for natural fluoride, and check feed against production."
+      },
+      {
+        "number": 4,
+        "title": "Monitoring, safety and troubleshooting",
+        "durationMinutes": 60,
+        "summary": "Describe the purpose of ion-selective electrode and colorimetric analysis, calibration, daily checks and records. Explain overfeed causes, the purpose of the response and notification, and why chemical handling safety measures exist, at recognition level."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-chloramines",
+    "interestCode": "ceu-chloramines",
+    "title": "Chloramines in Drinking Water for Operators",
+    "shortTitle": "Chloramines",
+    "stream": "drinking_water",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water",
+    "cover": {
+      "src": "/manus-storage/ceu-chloramines-cover_04e38866.jpg",
+      "alt": "Chloramines in Drinking Water for Operators: illustrative operator training scene"
+    },
+    "approvalStatus": "director_approval_required",
+    "statusLabel": "Director approval required",
+    "statusDescription": "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs.",
+    "plannedContactHours": 4,
+    "audience": "Water operators, trainees and supervisors who run or support a chloraminated distribution system, or who are preparing for a system that is about to switch, and who already know the basics of chlorination.",
+    "outcomes": [
+      "Explain the roles of primary and secondary disinfection and why chloramine is used as a secondary disinfectant.",
+      "Convert between ammonia as nitrogen and ammonia as NH3 and explain why the Cl2 to NH3-N weight ratio is used.",
+      "Explain the purpose of total chlorine, free chlorine, monochloramine, free ammonia and nitrite tests and read residual trends against a baseline.",
+      "Recognise the parts of a chloramination feed train and explain flow pacing, residual trim and mixing."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Why and how chloramines are used",
+        "durationMinutes": 60,
+        "summary": "Explain the roles of primary and secondary disinfection and why chloramine is used as a secondary disinfectant. Describe how monochloramine, dichloramine and trichloramine form and how the chlorine-to-ammonia ratio, pH and feed sequence steer them. Compare chloramine with free chlorine for strength, stability, by-products and customer concerns."
+      },
+      {
+        "number": 2,
+        "title": "Dosing and ratio arithmetic",
+        "durationMinutes": 60,
+        "summary": "Convert between ammonia as nitrogen and ammonia as NH3 and explain why the Cl2 to NH3-N weight ratio is used. Calculate ammonia-N dose, chlorine residual and feed rates in mg/L and lb/day from stated constants. Recognise anhydrous ammonia, aqua ammonia and ammonium sulfate solution and convert a solution strength to pounds of nitrogen per gallon."
+      },
+      {
+        "number": 3,
+        "title": "Monitoring, nitrification and control",
+        "durationMinutes": 60,
+        "summary": "Explain the purpose of total chlorine, free chlorine, monochloramine, free ammonia and nitrite tests and read residual trends against a baseline. Describe nitrification, its causes, early warning signs and the response options at concept level. Explain water age, booster stations and temporary free chlorine conversion and what each is for."
+      },
+      {
+        "number": 4,
+        "title": "Operation, troubleshooting and safety",
+        "durationMinutes": 60,
+        "summary": "Recognise the parts of a chloramination feed train and explain flow pacing, residual trim and mixing. Work through a taste and odour complaint and a nitrification scenario using records and baselines. Describe the purpose of customer notification for dialysis and fish keeping and the recognition-level hazards of ammonia and chlorine."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
   }
 ]

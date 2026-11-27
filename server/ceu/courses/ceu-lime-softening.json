@@ -1,0 +1,1072 @@
+{
+  "key": "ceu-lime-softening",
+  "version": "2026-11-26.1",
+  "title": "Lime Softening for Water Operators",
+  "shortTitle": "Lime Softening",
+  "stream": "drinking_water",
+  "audience": "Water operators, trainees and supervisors at drinking water plants who run or support a lime softening process, or who are preparing for certification questions on hardness, lime and soda ash dose arithmetic and softening plant operation.",
+  "prerequisites": "Basic arithmetic and percent. Basic Math and Basic Chemistry are helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Learn why hard water is softened and how hardness is described as calcium, magnesium, carbonate and non-carbonate hardness in mg/L as CaCO3. Then work through the chemistry and the dose arithmetic for lime and soda ash, with every constant stated, and a concept-level view of sludge. Follow the process units from rapid mix and flocculation to settling, recarbonation, stabilization and filtration. Finish with jar tests, monitoring, post-precipitation, sludge handling, feed equipment, lime hazards at recognition level and a troubleshooting scenario. Each module has a worked scenario, quick checks that explain the reasoning behind each answer and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "spellman-hb",
+      "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press, 2009)",
+      "section": "Section 5.6.12 (hardness, carbonate and non-carbonate hardness, alkalinity titration, soda ash and recarbonation calculations, feed rate; pp. 137-141); 5.6.7.6 (percent settled solids, p. 116); 11.6.4 to 11.6.6 (chemical precipitation, recarbonation, scale and corrosion; p. 437); 18.5.3.8 to 18.5.3.10 (hardness classes, Langelier index, corrosion control; pp. 611-614); 18.6 to 18.7 (jar test, flocculation; pp. 616-617); 18.11.2.1.5 (lime softening; p. 655); 15.8 (hardness, pH and alkalinity sampling; pp. 559-560)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-wwo1",
+      "title": "The Handbook for Waterworks Operator Certification, Volume 1 Fundamental Level (Frank R. Spellman, Technomic)",
+      "section": "Section 15.2.3 (hardness, calculation from calcium and magnesium, treatment methods; p. 185-186)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-wwo2",
+      "title": "The Handbook for Waterworks Operator Certification, Volume 2 Intermediate Level (Frank R. Spellman, Technomic)",
+      "section": "Jar test (Section 5); Langelier saturation index and corrosion control (pp. 87-89); glossary entry for softening",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wtp-gibson-reynolds",
+      "title": "Water Treatment Plant Operation, Volumes I and II (Don Gibson and Marty Reynolds; Hornet Foundation, California State University, Sacramento, 1988)",
+      "section": "Lime-Soda Ash Softening chapter (recarbonation definition and CO2 feed equation; softening dose and soda ash 106/100 examples); total alkalinity titration example (formula with 50,000 factor); removal of carbon dioxide section; grains per gallon and Langelier index definitions",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wqc-handbook",
+      "title": "Water Quality Control Handbook, 2nd edition (Alley, WEF Press)",
+      "section": "Chemical feed (Chapter 7: dry chemical feed, lime slurry, dust collectors); Appendix D-13 (chemicals used in softening); conversion table (grains per gallon)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "niosh-ca-hydroxide",
+      "title": "NIOSH Pocket Guide to Chemical Hazards: Calcium hydroxide",
+      "url": "https://www.cdc.gov/niosh/npg/npgd0092.html",
+      "section": "Entry for calcium hydroxide (hydrated lime): molecular weight, symptoms, protection and sanitation",
+      "jurisdiction": "US federal agency (NIOSH); recognition of hazards only",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "niosh-ca-oxide",
+      "title": "NIOSH Pocket Guide to Chemical Hazards: Calcium oxide",
+      "url": "https://www.cdc.gov/niosh/npg/npgd0093.html",
+      "section": "Entry for calcium oxide (quicklime): molecular weight, reaction with water, symptoms, protection and sanitation",
+      "jurisdiction": "US federal agency (NIOSH); recognition of hazards only",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "modules": [
+    {
+      "id": "lime-softening-hardness-basics",
+      "title": "Hardness and why we soften",
+      "objectives": [
+        "Express calcium, magnesium, carbonate and non-carbonate hardness and alkalinity in mg/L as CaCO3 and convert between them.",
+        "Explain why water is softened and describe at concept level the lime, soda ash, excess-lime and split treatment approaches."
+      ],
+      "lesson": "### Why hardness matters to a plant and its customers\n\nHardness is a property of water that comes mostly from dissolved calcium and magnesium. Other metals such as iron, strontium and barium can add to it, but calcium and magnesium are the two that count in practice. Water picks them up as it moves through limestone and similar rock, so groundwater, which stays in contact with rock for a long time, is usually harder than surface water. Spellman's handbook states the general rule that groundwaters are harder than surface waters, and the same book describes how soil carbon dioxide forms carbonic acid that dissolves the minerals.\n\nCustomers notice hardness in three ways. It makes soap and detergent less effective and leaves a scum in sinks and tubs. It leaves a chalky scale on heating elements and inside hot-water pipes, which reduces heat transfer and, over time, the flow capacity of the pipe. In industry the same scale builds up in boilers and damages equipment. The handbook also points out that hardness is not considered a health hazard. The concern is cost, convenience and equipment life, not safety. Very soft water has its own problem: low hardness contributes to the corrosive tendency of water, so a softening plant aims to reduce hardness, not remove it.\n\nBecause customers judge hardness by what they are used to, a utility sets its own softening goal. The classes in the textbooks, soft, moderately hard, hard and very hard, are only a common vocabulary. Spellman's table in its water-treatment chapter, which we treat here as typical, runs from soft below about 75 mg/L, through moderately hard and hard, to very hard above about 300 mg/L, always as calcium carbonate.\n\n### Calcium hardness, magnesium hardness and mg/L as CaCO3\n\nCalcium and magnesium are different elements with different atomic weights, so a milligram of each does not contribute the same hardness. Operators avoid this by converting each ion to the amount of calcium carbonate that would give the same effect, written mg/L as CaCO3. The conversion multiplies by the ratio of the equivalent weight of calcium carbonate to the equivalent weight of the ion. With the equivalent weights printed in the handbook (calcium carbonate 50.045, calcium 20.04, magnesium 12.15, as printed in Spellman), the factors come out at about 2.50 for calcium and 4.12 for magnesium. Total hardness is then the sum:\n\ntotal hardness (mg/L as CaCO3) = 2.50 x calcium (mg/L) + 4.12 x magnesium (mg/L)\n\nConfirm the reporting basis of a hardness value before comparing it with another value or using it in a dose calculation. Some laboratories and old equipment report grains per gallon. One grain per gallon is about 17.1 mg/L as CaCO3 (the handbook conversion table gives 0.01712 g/L), so you divide a mg/L value by 17.1 to change units.\n\n### Carbonate and non-carbonate hardness, and alkalinity\n\nHardness is also split by what the calcium and magnesium are paired with. Hardness paired with bicarbonate and carbonate is called carbonate hardness, or temporary hardness, because boiling can drive it out of solution as scale. Hardness paired with sulfate, chloride and nitrate is non-carbonate hardness, or permanent hardness. The two add up to the total:\n\ntotal hardness = carbonate hardness + non-carbonate hardness\n\nAlkalinity is the capacity of water to neutralize acid, caused mostly by bicarbonate, carbonate and hydroxide. It is measured by titrating with acid, and results are also written as mg/L as CaCO3, which is what lets us compare it directly with hardness. The link between the two numbers is simple. If alkalinity is greater than or equal to total hardness, all of the hardness is carbonate hardness and there is no non-carbonate hardness. If alkalinity is less than total hardness, the alkalinity equals the carbonate hardness and the difference is non-carbonate hardness. In typical natural water, most of the alkalinity below about pH 8.3 is bicarbonate.\n\nThis split decides the treatment, which is why it matters so much. Carbonate hardness can be removed with lime alone. In lime-soda softening, lime raises the pH to precipitate magnesium as magnesium hydroxide, and soda ash supplies the carbonate that precipitates non-carbonate calcium. We will build that into dose arithmetic in the next module.\n\n<figure>\n<svg viewBox=\"0 0 390 236\" role=\"img\" aria-label=\"Two bars of equal length for one water: total hardness split into calcium and magnesium, and into carbonate and non-carbonate hardness with alkalinity marked\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>One water, two ways to split the same total hardness</title>\n<text x=\"20\" y=\"22\" font-weight=\"bold\">By metal ion, mg/L as CaCO3</text>\n<rect x=\"20\" y=\"30\" width=\"176\" height=\"36\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<rect x=\"196\" y=\"30\" width=\"82\" height=\"36\" fill=\"#c9d3df\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"108\" y=\"53\" text-anchor=\"middle\">Calcium 160</text>\n<text x=\"237\" y=\"53\" text-anchor=\"middle\">Mg 74</text>\n<text x=\"149\" y=\"86\" text-anchor=\"middle\" font-size=\"11\">Total hardness 234</text>\n<text x=\"20\" y=\"122\" font-weight=\"bold\">By what the metals pair with</text>\n<rect x=\"20\" y=\"130\" width=\"165\" height=\"36\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<rect x=\"185\" y=\"130\" width=\"93\" height=\"36\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/>\n<text x=\"102\" y=\"153\" text-anchor=\"middle\">Carbonate 150</text>\n<text x=\"231\" y=\"153\" text-anchor=\"middle\">Non-carb. 84</text>\n<path d=\"M20 182 H185\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<path d=\"M20 176 V188 M185 176 V188\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<text x=\"102\" y=\"204\" text-anchor=\"middle\" font-size=\"11\">Alkalinity 150 sets carbonate</text>\n<text x=\"102\" y=\"219\" text-anchor=\"middle\" font-size=\"11\">hardness; the rest is non-carbonate</text>\n</svg>\n<figcaption>The same 234 mg/L as CaCO3 of total hardness counted two ways. Alkalinity of 150 mg/L as CaCO3 caps the carbonate part, and the 84 left over needs soda ash.</figcaption>\n</figure>\n\n### Worked example: the Marrow Creek well\n\nMarrow Creek Water Plant is fictional. Its operator, Dana Ostrow, has a well-water analysis: calcium 64 mg/L, magnesium 18 mg/L, total alkalinity 150 mg/L as CaCO3. Her supervisor, Ellis Quade, asks for the hardness picture before a softening pilot.\n\n1. Calcium hardness = 2.50 x 64 = 160 mg/L as CaCO3.\n2. Magnesium hardness = 4.12 x 18 = 74 mg/L as CaCO3 (74.16 before rounding).\n3. Total hardness = 160 + 74 = about 234 mg/L as CaCO3. In grains per gallon, 234 / 17.1 = about 13.7. By the textbook table this is hard water, above the 150 mg/L class boundary and below the very hard class.\n4. Alkalinity is 150, which is less than 234, so carbonate hardness = 150 mg/L and non-carbonate hardness = 234 - 150 = 84 mg/L.\n\nDana now knows that most of the hardness can be handled with lime, that about a third needs soda ash as well, and that magnesium is a meaningful share. That last point matters because magnesium needs more lime and a higher pH than calcium.\n\n### What a softening plant is trying to do\n\nLime softening removes hardness by turning dissolved calcium and magnesium into solids that settle out. Lime, calcium hydroxide, raises the pH. As the pH rises, bicarbonate is converted to carbonate and calcium comes out as calcium carbonate. Spellman describes calcium removal at a pH of roughly 9 to 9.5, and magnesium removal needing excess lime beyond the point where calcium carbonate has formed, because magnesium hydroxide precipitates at pH levels above about 10.5, and Spellman gives about 10.6 as the operating pH for magnesium. If there is too little bicarbonate to remove the calcium that is present, soda ash, sodium carbonate, supplies the carbonate.\n\nSpellman lists lime softening, excess lime treatment, split lime treatment and lime-soda softening as common arrangements. At concept level, excess lime means adding enough lime to push the pH high enough to precipitate magnesium. Lime-soda adds soda ash for non-carbonate hardness. Split treatment sends part of the flow through the high-pH treatment and blends it with water that bypassed it, so the blended water ends with some hardness left and a pH closer to stable. This course does not give a split ratio; the plant's jar test and water data set one. Ion exchange is the main alternative to precipitation softening. It swaps calcium and magnesium for sodium and makes brine instead of sludge.\n\nThe goal is a chosen leftover hardness, not zero. The utility decides the target from customer expectations, scale and corrosion control, and cost. A textbook example shows why zero is not the target. In its ion exchange discussion, Spellman notes that water with hardness near zero is very corrosive, so normal practice bypasses part of the flow around the softener and blends to a total hardness of about 50 to 75 mg/L as CaCO3 (Spellman, ion exchange section). That example is for ion exchange, not lime, but the principle carries over: the utility picks a residual hardness that balances scale against corrosion, and the same book says calcium carbonate stability is the most effective way to control corrosion.\n\nIts main drawback is the large quantity of sludge, as Spellman notes for lime-soda softening. It also needs careful operation, and water left at a high pH can deposit scale downstream if it is not adjusted afterward.\n\n### Checking what you read\n\nBefore using a hardness number, check three things: the unit says \"as CaCO3\", calcium and magnesium were each converted before adding, and carbonate hardness is never larger than either total hardness or alkalinity. If a lab sheet shows carbonate hardness above total hardness, one of the numbers is wrong.",
+      "evidence": "### Fictional scenario: Marrow Creek Water Plant\n\nMarrow Creek Water Plant is a fictional groundwater system. Customers complain of scale in water heaters and heavy soap use. Operator Dana Ostrow has a new well analysis with calcium, magnesium and alkalinity values, and supervisor Ellis Quade asks her to explain what kind of hardness the plant faces and whether lime alone would be enough before a softening pilot is proposed.",
+      "assignment": "Write a one-page note for Ellis Quade. Using calcium 64 mg/L, magnesium 18 mg/L and alkalinity 150 mg/L as CaCO3, with factors 2.50 and 4.12, work out total, carbonate and non-carbonate hardness, showing each step and unit. Say what the split means for the choice between lime and soda ash, name one benefit and one drawback of softening, and list two things you could not tell from the data.",
+      "rubric": [
+        "Converts calcium and magnesium to mg/L as CaCO3 and sums them correctly with units.",
+        "Splits hardness into carbonate and non-carbonate using alkalinity.",
+        "Links non-carbonate hardness to the need for soda ash.",
+        "Names a benefit, a drawback and open questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to say why hardness is reported as CaCO3 and not as the ions. Check that each calculation carries units and that the alkalinity rule is applied in the right order. Strong answers connect the split to the chemical choice and mention that the goal is a chosen leftover hardness, not zero. Watch for learners who treat hardness as a health hazard or who subtract alkalinity from hardness the wrong way round.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write the hardness split in your own words, with units."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Find a recent hardness and alkalinity result for a water you know and say what type of hardness it shows."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Marrow Creek analysis and find total, carbonate and non-carbonate hardness."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hb",
+        "spellman-wwo1",
+        "wqc-handbook",
+        "wtp-gibson-reynolds"
+      ],
+      "checks": [
+        {
+          "id": "ceu-lime-softening-hardness-basics-c1",
+          "prompt": "Which two dissolved ions cause most of the hardness in natural water?",
+          "choices": [
+            "Calcium and magnesium",
+            "Sodium and potassium salts",
+            "Chloride and sulfate ions",
+            "Iron and manganese ions"
+          ],
+          "correctIndex": 0,
+          "explanation": "Calcium and magnesium cause most hardness. Chloride and sulfate are the anions that pair with them in non-carbonate hardness, sodium and potassium do not cause hardness, and iron and manganese add only a small share."
+        },
+        {
+          "id": "ceu-lime-softening-hardness-basics-c2",
+          "prompt": "A water has calcium 40 mg/L and magnesium 12 mg/L. Using 2.50 for calcium and 4.12 for magnesium, what is the total hardness as CaCO3?",
+          "choices": [
+            "52 mg/L as CaCO3",
+            "149 mg/L as CaCO3",
+            "195 mg/L as CaCO3",
+            "100 mg/L as CaCO3"
+          ],
+          "correctIndex": 1,
+          "explanation": "Total hardness = 2.50 x 40 + 4.12 x 12 = 100 + 49.44 = 149.44, which rounds to 149 mg/L. Adding the raw ions gives 52, which skips the conversion. Swapping the factors gives 195. Using calcium alone gives 100 and leaves out magnesium."
+        },
+        {
+          "id": "ceu-lime-softening-hardness-basics-c3",
+          "prompt": "Total hardness is 210 mg/L as CaCO3 and total alkalinity is 140 mg/L as CaCO3. What is the non-carbonate hardness?",
+          "choices": [
+            "350 mg/L as CaCO3",
+            "140 mg/L as CaCO3",
+            "70 mg/L as CaCO3",
+            "30 mg/L as CaCO3"
+          ],
+          "correctIndex": 2,
+          "explanation": "Alkalinity is less than hardness, so it equals the carbonate hardness and the rest is non-carbonate: 210 - 140 = 70. Adding the two gives 350, and 140 is the carbonate part, not the non-carbonate part."
+        },
+        {
+          "id": "ceu-lime-softening-hardness-basics-c4",
+          "prompt": "Which kind of hardness is removed by adding soda ash as well as lime?",
+          "choices": [
+            "Carbonate hardness, paired with bicarbonate",
+            "Magnesium hardness found at low pH",
+            "Hardness caused by dissolved carbon dioxide",
+            "Non-carbonate hardness, with sulfate"
+          ],
+          "correctIndex": 3,
+          "explanation": "Soda ash supplies the carbonate that precipitates non-carbonate calcium, so non-carbonate hardness needs it. Carbonate hardness is handled by lime alone. Magnesium is removed at high pH, not low pH, and carbon dioxide uses lime but is not hardness."
+        },
+        {
+          "id": "ceu-lime-softening-hardness-basics-c5",
+          "prompt": "A lab reports 205 mg/L as CaCO3. Using 1 grain per gallon = 17.1 mg/L, what is that in grains per gallon?",
+          "choices": [
+            "12.0 gr/gal",
+            "3,506 gr/gal",
+            "188 gr/gal",
+            "1.20 gr/gal"
+          ],
+          "correctIndex": 0,
+          "explanation": "Divide by 17.1: 205 / 17.1 = about 12.0. Multiplying gives 3,506, subtracting the factor gives 188, and misplacing the decimal gives 1.20."
+        },
+        {
+          "id": "ceu-lime-softening-hardness-basics-c6",
+          "prompt": "A water has total hardness 120 mg/L as CaCO3 and total alkalinity 160 mg/L as CaCO3. Which statement is true?",
+          "choices": [
+            "Non-carbonate hardness is 40 mg/L as CaCO3",
+            "Non-carbonate hardness is zero",
+            "Carbonate hardness is 160 mg/L as CaCO3",
+            "Non-carbonate hardness is 280 mg/L as CaCO3"
+          ],
+          "correctIndex": 1,
+          "explanation": "When alkalinity is greater than or equal to hardness, the hardness is entirely carbonate hardness. Subtracting hardness from alkalinity gives a number that is not hardness, carbonate hardness cannot exceed total hardness, and adding the values has no meaning."
+        }
+      ]
+    },
+    {
+      "id": "lime-softening-chemistry-and-dose",
+      "title": "Chemistry and dose arithmetic",
+      "objectives": [
+        "Write the main softening reactions at concept level and state the constant used for each term of a lime and soda ash dose.",
+        "Calculate lime and soda ash doses, correct for purity, convert a dose to a feed rate and estimate sludge mass."
+      ],
+      "lesson": "### From reactions to a dose\n\nA softening dose is a bookkeeping exercise. Every milligram per litre of something that uses up lime has to be counted, and each one is converted to the lime needed with a stoichiometric constant. The constants come from molecular weights: calcium oxide (quicklime, CaO) is 56.1, calcium hydroxide (hydrated lime) is 74.1 (both from the NIOSH chemical guides), calcium carbonate is 100 and carbon dioxide is 44. Every question in this course states its constants, and you should write them next to the number in your own work.\n\nThe reactions behind the constants, at concept level, are these:\n\n- Carbon dioxide in the raw water reacts with lime first: CO2 + Ca(OH)2 gives CaCO3 + H2O. It adds no hardness, but it uses lime, so it is counted.\n- Calcium bicarbonate (carbonate hardness) reacts with lime: Ca(HCO3)2 + Ca(OH)2 gives 2 CaCO3 + 2 H2O. Lime raises the pH, converts bicarbonate to carbonate, and calcium carbonate drops out.\n- Magnesium needs excess lime so that the pH goes high enough for magnesium hydroxide to form, Mg(OH)2. This takes an extra amount of lime on top of the carbonate hardness amount.\n- Non-carbonate hardness, such as calcium sulfate, has no bicarbonate partner. Soda ash supplies the carbonate: CaSO4 + Na2CO3 gives CaCO3 + Na2SO4.\n\n### The conversion constants\n\nExpressed as mg/L of lime as CaO per mg/L of the item removed, the constants used in this course are:\n\n- carbon dioxide, as CO2: 1.27 (that is 56 / 44)\n- bicarbonate alkalinity, as CaCO3: 0.56 (that is 56 / 100)\n- magnesium, as Mg: 2.31 (that is 56.1 / 24.3)\n\nFor soda ash, the water treatment text gives the rule as non-carbonate hardness times 106 / 100, so the constant is 1.06 mg/L of Na2CO3 per mg/L of non-carbonate hardness as CaCO3. The usual U.S. conversion to a feeder setting is feed rate (lb/day) = flow (MGD) x dose (mg/L) x 8.34, where 8.34 lb is the chemical weight for a 1 mg/L dose in one million gallons. Chemicals are not pure, so the dose from the table is divided by the purity as a decimal, on the same chemical basis, to get the dose of the product. Commercial lime purity varies, so use the purity on your own delivery ticket, not a textbook number.\n\nThese are estimates of a theoretical dose to remove the items counted. Real plants confirm and trim the dose by jar test and by watching the finished water, because the dose depends on the pH target, the amount of residual hardness left on purpose and the water temperature.\n\n### Worked example: a dose for the Marrow Creek well\n\nDana Ostrow's raw water, from the last lesson, has these values: carbon dioxide 12 mg/L as CO2, bicarbonate alkalinity 150 mg/L as CaCO3, magnesium 18 mg/L as Mg and non-carbonate hardness 84 mg/L as CaCO3. Flow is 2.5 MGD. Quicklime is 90 percent CaO and soda ash is 99 percent Na2CO3. She plans no extra excess lime for the first estimate.\n\n1. Lime for CO2: 12 x 1.27 = 15.2 mg/L as CaO.\n2. Lime for carbonate hardness: 150 x 0.56 = 84.0 mg/L.\n3. Lime for magnesium: 18 x 2.31 = 41.6 mg/L.\n4. Total as CaO: 15.24 + 84.00 + 41.58 = 140.82 mg/L, shown as 140.8.\n5. Correct for purity: 140.82 / 0.90 = 156.5 mg/L of product.\n6. Soda ash: 84 x 1.06 = 89.0 mg/L as Na2CO3, divided by 0.99 gives about 89.9 mg/L of product.\n7. Lime feed: 2.5 x 156.47 x 8.34 = about 3,262 lb/day, or about 136 lb/hr.\n\n<figure>\n<svg viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Flow chart: raw water data pass through three checks that lead either to lime, to soda ash, or to both, then to the product dose after purity\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>How raw water data become a lime dose and a soda ash dose</title>\n<rect x=\"10\" y=\"10\" width=\"370\" height=\"34\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"195\" y=\"32\" text-anchor=\"middle\">Lab data: CO2, alkalinity, Mg, hardness</text>\n<path d=\"M195 44 V60\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"10\" y=\"60\" width=\"175\" height=\"62\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"97\" y=\"80\" text-anchor=\"middle\" font-weight=\"bold\">Lime, as CaO</text>\n<text x=\"97\" y=\"97\" text-anchor=\"middle\" font-size=\"11\">CO2 x 1.27</text>\n<text x=\"97\" y=\"111\" text-anchor=\"middle\" font-size=\"11\">Alk x 0.56 + Mg x 2.31</text>\n<rect x=\"205\" y=\"60\" width=\"175\" height=\"62\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/>\n<text x=\"292\" y=\"80\" text-anchor=\"middle\" font-weight=\"bold\">Soda ash</text>\n<text x=\"292\" y=\"97\" text-anchor=\"middle\" font-size=\"11\">Non-carbonate</text>\n<text x=\"292\" y=\"111\" text-anchor=\"middle\" font-size=\"11\">hardness x 1.06</text>\n<path d=\"M97 122 V150 M292 122 V150\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"10\" y=\"150\" width=\"370\" height=\"34\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"195\" y=\"172\" text-anchor=\"middle\">Divide each by purity (decimal)</text>\n<path d=\"M195 184 V200\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"10\" y=\"200\" width=\"370\" height=\"34\" fill=\"#f2f4f7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"195\" y=\"222\" text-anchor=\"middle\">lb/day = MGD x mg/L x 8.34</text>\n</svg>\n<figcaption>Each item that uses lime is converted with its constant. Soda ash is counted separately and only for non-carbonate hardness.</figcaption>\n</figure>\n\n### What if the numbers say no soda ash?\n\nIf alkalinity is greater than or equal to total hardness, non-carbonate hardness is zero and the soda ash dose is zero. Do not enter a negative number. Suppose a second fictional well at the Marrow Creek plant has total hardness 130 mg/L as CaCO3 and alkalinity 190 mg/L as CaCO3. All 130 mg/L is carbonate hardness, non-carbonate hardness is 0, and soda ash is not part of the dose. A common slip is to subtract in the wrong order, 130 minus 190, and report a negative hardness that cannot exist. Check against the carbonate rule from Module 1 before multiplying anything.\n\nA related slip is to use the alkalinity titration result without checking its unit. The water treatment text gives total alkalinity as the titrant used to the total-alkalinity end point (commonly pH 4.5, as the test method specifies), times the acid normality times 50,000, divided by the sample volume in mL. For a 100 mL sample that took 6.2 mL of 0.02 N acid, alkalinity = 6.2 x 0.02 x 50,000 / 100 = 62 mg/L as CaCO3. The 50,000 is what converts the result into the CaCO3 basis that the dose constants expect.\n\n### Hydrated lime versus quicklime in the dose\n\nBecause Ca(OH)2 is 74.1 and CaO is 56.1, on a pure-chemical basis the same lime effect needs 74.1 / 56.1 = about 1.32 times as much mass if it is supplied as hydrated lime, before adjusting for each product's strength. Comparing deliveries without converting to a common basis, either as CaO or as Ca(OH)2, is a frequent purchasing and feed error. Always ask whether a number is \"as CaO\", \"as Ca(OH)2\" or \"as product\".\n\n### Forms of lime, and removing carbon dioxide first\n\nThe Water Quality Control Handbook notes that lime solids can be bought in powder or granular form, in bags or in bulk. It also notes that lime slurries settle in low-velocity sections, which makes pumping and handling harder. The texts do not say which form suits which plant size, so that choice is left to cost and equipment at your plant.\n\nThe water treatment text has a section on removing carbon dioxide. Because carbon dioxide uses lime in the dose, removing it before liming would lower the carbon dioxide term, 1.27 times the CO2 concentration. That link is our inference from the dose arithmetic, not a statement in the text. The texts used here do not name a source of carbon dioxide for recarbonation, so we do not name one.\n\n### Sludge at concept level\n\nThe precipitate is the sludge. When calcium bicarbonate is removed by the reaction above, two parts of calcium carbonate form for each part of carbonate hardness removed: one part from the calcium that was in the water and one from the calcium that came with the lime. Magnesium removal adds magnesium hydroxide as well. So a softening plant makes much more solid than the hardness removed alone would suggest. Spellman notes that lime-soda softening produces a large quantity of sludge.\n\nA quick estimate for dry calcium carbonate from calcium bicarbonate hardness removal, ignoring the lime used for carbon dioxide and magnesium, is: lb/day = calcium bicarbonate hardness removed (mg/L as CaCO3) x 2 x flow (MGD) x 8.34. If all 150 mg/L as CaCO3 of Dana's alkalinity is calcium bicarbonate hardness and all of it is removed at 2.5 MGD, the calcium carbonate it produces is 150 x 2 x 2.5 x 8.34 = about 6,255 lb/day of dry CaCO3, not total dry solids. This is a planning figure that must be checked against measured sludge production before any hauling or lagoon design is based on it. Wet volume then depends on the percent solids the sludge reaches.\n\n### Checking your own dose arithmetic\n\nThree quick checks catch most slips. The bicarbonate term, 0.56 times bicarbonate alkalinity, should match its own input, and the carbon dioxide and magnesium terms are checked separately. A feed rate in lb/day must scale up with flow. And the product dose is at least the CaO dose, and larger when the product is less than 100 percent CaO.\n\n### A second example: from a lab sheet to a feeder setting\n\nAt fictional Lantern Ford, operator Priya Nandakar has a lab sheet showing carbon dioxide 8 mg/L as CO2, bicarbonate alkalinity 110 mg/L as CaCO3, magnesium 6 mg/L as Mg and no non-carbonate hardness. Flow is 1.2 MGD and the lime is 88 percent CaO.\n\n1. CO2 term: 8 x 1.27 = 10.2 mg/L as CaO.\n2. Bicarbonate alkalinity term: 110 x 0.56 = 61.6 mg/L.\n3. Magnesium term: 6 x 2.31 = 13.9 mg/L.\n4. Sum: 10.16 + 61.60 + 13.86 = 85.62, shown as 85.6 mg/L as CaO.\n5. Product dose: 85.6 / 0.88 = 97.3 mg/L.\n6. Feeder: 1.2 x 97.3 x 8.34 = about 974 lb/day, which is about 40.6 lb/hr.\n\nPriya then writes down what the number does not tell her: it assumes a target of removing the items counted, it ignores any excess lime for a higher pH, and it must be confirmed by jar test. Writing the assumptions beside the answer is the habit that lets the next operator trust the figure.\n\n### Units to watch\n\nThree unit habits prevent most errors. Keep CaO, Ca(OH)2 and product separate in your notes. Keep mg/L as CaCO3 separate from mg/L of the ion, because 64 mg/L as calcium is about 160 mg/L as CaCO3 of calcium hardness. And keep lb/day separate from lb/hr by dividing by 24 when a feeder is set per hour.",
+      "evidence": "### Fictional scenario: Lantern Ford Water Plant\n\nLantern Ford Water Plant is fictional. Operator Priya Nandakar has a lab sheet with carbon dioxide, bicarbonate alkalinity, magnesium and hardness values. Her supervisor, Omar Seidel, wants a starting lime feeder setting and a rough sludge estimate before the jar test is scheduled, and asks her to write down every assumption.",
+      "assignment": "Write a worksheet for Omar Seidel. Using carbon dioxide 8 mg/L, bicarbonate alkalinity 110 mg/L as CaCO3, magnesium 6 mg/L, flow 1.2 MGD and quicklime 88 percent CaO, with constants 1.27, 0.56, 2.31 and 8.34, calculate the CaO dose, the product dose and the feeder setting in lb/day and lb/hr. State what the number assumes and why the jar test is still needed.",
+      "rubric": [
+        "Uses each constant with units and sums the terms correctly.",
+        "Corrects for purity by dividing and converts to lb/day and lb/hr.",
+        "Explains why the dose is an estimate to be confirmed by jar test.",
+        "States assumptions such as no excess lime and the target hardness."
+      ],
+      "facilitatorGuide": "Have learners explain where each constant comes from using molecular weights. Check that the purity is divided and not multiplied and that CaO, Ca(OH)2 and product are kept apart. Strong answers write assumptions beside the result. Watch for learners who add raw lab values or who report a negative soda ash dose.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and list each constant with the item it multiplies."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read a delivery ticket or specification for lime and note the purity and the form."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Lantern Ford dose and feeder setting step by step."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hb",
+        "niosh-ca-hydroxide",
+        "niosh-ca-oxide",
+        "wtp-gibson-reynolds"
+      ],
+      "checks": [
+        {
+          "id": "ceu-lime-softening-chemistry-and-dose-c1",
+          "prompt": "What does carbon dioxide in the raw water do during lime softening?",
+          "choices": [
+            "It adds hardness that needs soda ash",
+            "It raises the pH and reduces the lime needed",
+            "It uses lime but adds no hardness",
+            "It removes magnesium before lime is added"
+          ],
+          "correctIndex": 2,
+          "explanation": "Carbon dioxide reacts with lime first, so it raises the lime demand without being hardness. It does not need soda ash, does not lower the dose and does not remove magnesium."
+        },
+        {
+          "id": "ceu-lime-softening-chemistry-and-dose-c2",
+          "prompt": "The raw water has 20 mg/L carbon dioxide as CO2. Using 1.27 mg/L CaO per mg/L CO2, how much lime as CaO does the carbon dioxide use?",
+          "choices": [
+            "15.7 mg/L as CaO",
+            "11.2 mg/L as CaO",
+            "44.0 mg/L as CaO",
+            "25.4 mg/L as CaO"
+          ],
+          "correctIndex": 3,
+          "explanation": "20 x 1.27 = 25.4. Dividing by the constant gives 15.7, using the alkalinity constant 0.56 gives 11.2, and 44 is the molecular weight of CO2, not a dose."
+        },
+        {
+          "id": "ceu-lime-softening-chemistry-and-dose-c3",
+          "prompt": "Bicarbonate alkalinity is 130 mg/L as CaCO3. Using 0.56 mg/L CaO per mg/L alkalinity as CaCO3, what theoretical lime dose as CaO reacts with this bicarbonate alkalinity?",
+          "choices": [
+            "72.8 mg/L as CaO",
+            "232.1 mg/L as CaO",
+            "130.0 mg/L as CaO",
+            "165.1 mg/L as CaO"
+          ],
+          "correctIndex": 0,
+          "explanation": "130 x 0.56 = 72.8. Dividing gives 232, copying the alkalinity gives 130, and using the CO2 constant 1.27 gives 165."
+        },
+        {
+          "id": "ceu-lime-softening-chemistry-and-dose-c4",
+          "prompt": "Non-carbonate hardness is 72 mg/L as CaCO3. Using 1.06 mg/L Na2CO3 per mg/L of non-carbonate hardness, what soda ash dose is needed?",
+          "choices": [
+            "67.9 mg/L as Na2CO3",
+            "76.3 mg/L as Na2CO3",
+            "72.0 mg/L as Na2CO3",
+            "91.4 mg/L as Na2CO3"
+          ],
+          "correctIndex": 1,
+          "explanation": "72 x 1.06 = 76.3. Dividing gives 67.9, assuming a one-to-one dose gives 72.0, and the lime CO2 constant 1.27 gives 91.4."
+        },
+        {
+          "id": "ceu-lime-softening-chemistry-and-dose-c5",
+          "prompt": "The lime dose calculated as CaO is 150 mg/L and the quicklime delivered is 80 percent CaO. What dose of product is fed?",
+          "choices": [
+            "120.0 mg/L of product",
+            "230.0 mg/L of product",
+            "187.5 mg/L of product",
+            "12.0 mg/L of product"
+          ],
+          "correctIndex": 2,
+          "explanation": "Divide by purity as a decimal: 150 / 0.80 = 187.5. Multiplying by purity gives 120, which under-feeds. The other values come from arithmetic slips."
+        },
+        {
+          "id": "ceu-lime-softening-chemistry-and-dose-c6",
+          "prompt": "Why is a calculated softening dose confirmed with a jar test?",
+          "choices": [
+            "The constants shift from one day to the next",
+            "The calculation ignores the sign of the alkalinity",
+            "Lime purity is not known until the jar test is run",
+            "It is an estimate that real water can shift"
+          ],
+          "correctIndex": 3,
+          "explanation": "The dose assumes simple reactions and a stated target. The constants are fixed, the sign issue is a calculation error, and purity comes from the delivery paperwork."
+        }
+      ]
+    },
+    {
+      "id": "lime-softening-process-units",
+      "title": "Process units",
+      "objectives": [
+        "Describe the purpose of rapid mix, flocculation, conventional settling, solids-contact clarifiers, recarbonation, stabilization and filtration in a softening train.",
+        "Estimate a recarbonation dose and read a percent settled solids test."
+      ],
+      "lesson": "### The treatment train at a glance\n\nA conventional lime softening plant is a series of steps, each with a purpose. Chemicals are mixed in quickly. The water then moves into slow mixing so that the particles meet and grow. The solids settle in a basin. The high pH water is then brought back toward a stable pH, and the water goes to filters. Many plants combine the first three steps in one tank called a solids-contact clarifier. Plants with high sludge costs sometimes add equipment to recover and reuse lime from the sludge, which is called recalcination.\n\n<figure>\n<svg viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Five boxes in order: rapid mix, flocculation, settling, recarbonation, filters, with a sludge line leaving settling\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Conventional lime softening train in order</title>\n<rect x=\"10\" y=\"20\" width=\"110\" height=\"44\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"65\" y=\"40\" text-anchor=\"middle\">1 Rapid mix</text><text x=\"65\" y=\"55\" text-anchor=\"middle\" font-size=\"11\">disperse lime</text>\n<path d=\"M120 42 H140\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M140 36 L150 42 L140 48 Z\" fill=\"#1d2d40\"/>\n<rect x=\"150\" y=\"20\" width=\"110\" height=\"44\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"205\" y=\"40\" text-anchor=\"middle\">2 Flocculation</text><text x=\"205\" y=\"55\" text-anchor=\"middle\" font-size=\"11\">gentle mixing</text>\n<path d=\"M260 42 H280\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M280 36 L290 42 L280 48 Z\" fill=\"#1d2d40\"/>\n<rect x=\"290\" y=\"20\" width=\"90\" height=\"44\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"335\" y=\"40\" text-anchor=\"middle\">3 Settling</text><text x=\"335\" y=\"55\" text-anchor=\"middle\" font-size=\"11\">solids out</text>\n<path d=\"M360 64 V98\" stroke=\"#1d2d40\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/>\n<text x=\"352\" y=\"92\" text-anchor=\"end\" font-size=\"11\">sludge</text><text x=\"385\" y=\"113\" text-anchor=\"end\" font-size=\"11\">to handling</text>\n<path d=\"M305 64 V120\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M299 112 L305 122 L311 112 Z\" fill=\"#2f6db2\"/>\n<rect x=\"200\" y=\"125\" width=\"130\" height=\"44\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"265\" y=\"145\" text-anchor=\"middle\">4 Recarbonate</text><text x=\"265\" y=\"160\" text-anchor=\"middle\" font-size=\"11\">lower the pH</text>\n<path d=\"M200 147 H180\" stroke=\"#1d2d40\" stroke-width=\"2\"/><path d=\"M180 141 L170 147 L180 153 Z\" fill=\"#1d2d40\"/>\n<rect x=\"60\" y=\"125\" width=\"110\" height=\"44\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"115\" y=\"145\" text-anchor=\"middle\">5 Filters</text><text x=\"115\" y=\"160\" text-anchor=\"middle\" font-size=\"11\">remove carryover</text>\n<text x=\"195\" y=\"205\" text-anchor=\"middle\" font-size=\"11\">Settled water flows on to recarbonation</text>\n<text x=\"195\" y=\"222\" text-anchor=\"middle\" font-size=\"11\">Sludge goes to handling, not to the filters</text>\n</svg>\n<figcaption>The order of units. Recarbonation sits before the filters so that unstable, high pH water does not deposit calcium carbonate on the media.</figcaption>\n</figure>\n\n### Rapid mix and flocculation\n\nThe rapid mix has one job: spread lime and any soda ash through the water within seconds so that the chemistry starts evenly. Poor mixing makes a local zone of very high pH and wasted lime. In flocculation, mixing slows so that particles collide and stick instead of being sheared apart. Spellman's handbook describes flocculation as the slow mixing of the coagulated water to raise the chance of particle collision so that unstable particles form fewer, larger flocs. A jar test imitates the same two stages, a short fast mix and a longer slow mix followed by settling.\n\n### Settling in conventional basins and in a solids-contact clarifier\n\nCalcium carbonate and magnesium hydroxide settle as solids, and a basin gives them time and quiet water to drop out. In a conventional train, rapid mix, flocculation and settling occur in separate tanks. In a solids-contact (upflow) clarifier, all three usually occur in one tank. Chemicals are mixed with a circulating blanket of previously formed solids, the water rises through the slurry, and clear water leaves over weirs into launders. Contact with existing solids gives the new precipitate something to grow on, so less lime escapes unreacted and the floc forms faster. The textbooks used here do not describe the recirculation rate, so none is given.\n\nOperators track the blanket with a percent settled solids test: percent settled solids = settled volume (mL) / sample volume (mL) x 100, read after the settling time in the plant's procedure.\n\n<figure>\n<svg viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Cross section of a solids-contact clarifier with a mixing zone in the center, a slurry blanket, clear water rising to launders at the top, and a sludge draw-off at the bottom\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Solids-contact clarifier, simplified cross section</title>\n<rect x=\"70\" y=\"40\" width=\"250\" height=\"180\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"70\" y=\"140\" width=\"250\" height=\"80\" fill=\"#c9d3df\"/>\n<rect x=\"150\" y=\"70\" width=\"90\" height=\"100\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"195\" y=\"115\" text-anchor=\"middle\" font-size=\"11\">Mixing and</text><text x=\"195\" y=\"130\" text-anchor=\"middle\" font-size=\"11\">reaction zone</text>\n<path d=\"M10 100 H150\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M142 94 L152 100 L142 106 Z\" fill=\"#2f6db2\"/>\n<text x=\"10\" y=\"82\" font-size=\"11\">Raw water</text><text x=\"10\" y=\"94\" font-size=\"11\">+ lime</text>\n<text x=\"195\" y=\"190\" text-anchor=\"middle\" font-size=\"11\">Slurry blanket (settled solids)</text>\n<path d=\"M110 70 V55 M280 70 V55\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<path d=\"M104 62 L110 52 L116 62 Z M274 62 L280 52 L286 62 Z\" fill=\"#2f6db2\"/>\n<text x=\"195\" y=\"32\" text-anchor=\"middle\" font-size=\"11\">Clear water over weirs to launders</text>\n<path d=\"M195 220 V240\" stroke=\"#1d2d40\" stroke-width=\"3\" stroke-dasharray=\"5 3\"/>\n<text x=\"205\" y=\"240\" font-size=\"11\">Sludge draw-off</text>\n</svg>\n<figcaption>All three steps happen in one tank. The blanket is trended with a settled-solids sample, and sludge is drawn off to keep it steady.</figcaption>\n</figure>\n\n### Recarbonation, pH adjustment and stabilization\n\nSoftened water leaves settling at a high pH and oversaturated with calcium carbonate. If it went straight to filters, the calcium carbonate would keep depositing on the media and in downstream pipe. Recarbonation brings carbon dioxide back into the water to lower the pH and convert excess carbonate. Spellman says the process adjusts the ionic condition of water so that it will neither corrode pipes nor deposit calcium carbonate, that carbon dioxide is the most common pH adjustment in softening plants, and that it also removes the bitter taste of a very high pH. Some plants use acid instead of carbon dioxide. The water treatment text notes that pH may also be lowered by adding acid, so we mention it as an alternative that exists.\n\nStabilization means ending with water that is balanced between scaling and corrosion. The Langelier saturation index is a number that indicates whether calcium carbonate will be deposited or dissolved in a distribution system. A positive value means calcium carbonate tends to deposit, a negative value means the water is undersaturated and tends to dissolve it, and a value near zero means approximate saturation. The index does not by itself establish whether pipe will corrode. The index describes calcium carbonate only and does not by itself predict corrosion of a particular pipe material. Over-treating with carbon dioxide can redissolve calcium carbonate and raise hardness again. This point is general chemistry and is not covered in the textbooks used here.\n\nA worked recarbonation estimate uses the recarbonation equation in the water treatment text. If the excess lime is 28 mg/L as Ca(OH)2 and the residual magnesium is 4 mg/L as Mg, with constants 44/74 for carbon dioxide per Ca(OH)2 and 44/24.3 for carbon dioxide per magnesium, the CO2 dose is 28 x 44/74 + 4 x 44/24.3 = 16.65 + 7.24 = 23.89, about 23.9 mg/L.\n\n### Recalcination and filtration afterward\n\nLime sludge is mostly calcium carbonate. Heating it recovers calcium oxide that can be slaked and reused. The handbook mentions recalcination as an option for large plants because it can recover and reuse lime and reduce disposal problems. It is an overview topic here: it needs high-temperature equipment and is an economic decision.\n\nFilters after softening remove the small carry-over of precipitate that escapes settling. Spellman notes that lime floc carry-over can make it hard for some softening plants to meet turbidity performance targets, and that EPA allows such systems to acidify turbidity samples using a protocol approved by states. If recarbonation leaves the water supersaturated with calcium carbonate, deposits can build up on the filter media. The handbook also says scale can cement filter grains together, called encrustation.\n\n### Worked scenario: Ferry Hollow\n\nAt fictional Ferry Hollow, operator Joel Tamsin runs the percent settled solids test on four mornings. The readings are 12, 13, 12 and 21 percent. The fourth morning shows a jump of nine percentage points while the flow and lime feed did not change. He does not change the lime. He confirms the sample, checks the blanket level and reviews the sludge draw-off schedule before deciding anything, because a blanket that builds when sludge is not drawn can carry over to the weirs and filters.\n\n### Reading the plant from the units\n\nEach unit leaves clues. If the rapid mix fails, you see poor floc and unused lime in the sludge. If flocculation is too violent, flocs break up and carry over. If the solids-contact blanket is too thin, new precipitate has little to grow on and the water leaving may be cloudy. If the blanket is too thick, solids spill over the weirs. Water that leaves the basins at a high pH and then deposits a white crust on the filter walls suggests checking recarbonation and the pH at the filter inlet before assigning a cause.\n\nHydraulics matter too. A tank whose outlet weirs are not level can concentrate withdrawal and contribute to short-circuiting. The handbook does not cover this for softening basins, so treat it as a general operating idea: check that weirs and launders are level and that flow divides evenly between units.\n\n### Choosing between one tank and separate basins\n\nA solids-contact clarifier takes less space and recycles its own solids. Separate basins let each step be run and adjusted on its own and are easier to understand for a trainee. Which a plant uses is a design choice made long before the operator arrives. What you control are the chemical feed, the mixing energy where it can be changed, the sludge removal schedule and the pH set point ahead of the filters.\n\n### Worked check: recarbonation target\n\nAt fictional Cedar Flats, settled water leaves the basin at a high pH and the operator, Mia Torvald, is told to estimate carbon dioxide demand. Using the handbook equation with excess lime of 20 mg/L as Ca(OH)2 and residual magnesium of 3 mg/L as Mg, and the constants 44/74 and 44/24.3, the dose is 20 x 0.5946 + 3 x 1.811 = 11.9 + 5.4 = about 17.3 mg/L of CO2. She notes it is an estimate for the starting feed, to be trimmed against a measured pH ahead of the filters. Over-feeding is not harmless: extra carbon dioxide wastes money and, in strongly softened water, can push calcium carbonate back into solution.",
+      "evidence": "### Fictional scenario: Ferry Hollow Water Plant\n\nFerry Hollow Water Plant is fictional and runs a solids-contact clarifier followed by recarbonation and filters. Operator Joel Tamsin sees the percent settled solids reading jump from the usual range on one morning while flow and feed did not change. His supervisor, Nina Brandt, asks him to explain what might be happening and what he would check first.",
+      "assignment": "Write a short briefing for Nina Brandt. Explain what each unit in the train does in one sentence, say what the jump in settled solids could mean and what you would check before touching the lime feed, and estimate a recarbonation CO2 dose using excess lime 20 mg/L as Ca(OH)2 and magnesium 3 mg/L with constants 44/74 and 44/24.3. Say what the estimate assumes.",
+      "rubric": [
+        "Describes the purpose of each unit in the train in order.",
+        "Reads the settled solids reading and names sludge draw-off as an early check.",
+        "Calculates a recarbonation estimate with constants and units.",
+        "States assumptions and what would be measured next."
+      ],
+      "facilitatorGuide": "Ask learners to trace water through the plant and say what each unit protects. Check that recarbonation is placed before filters for the right reason. Strong answers keep the settled solids check separate from the lime dose. Watch for learners who think recarbonation raises pH or that a thick blanket is always good.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and draw the treatment train from memory."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Find a flow diagram of a treatment plant and mark where recarbonation would sit."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Ferry Hollow settled solids scenario and the recarbonation estimate."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hb",
+        "spellman-wwo2",
+        "wqc-handbook",
+        "wtp-gibson-reynolds"
+      ],
+      "checks": [
+        {
+          "id": "ceu-lime-softening-process-units-c1",
+          "prompt": "What is the purpose of the rapid mix?",
+          "choices": [
+            "To spread chemicals through the water within seconds",
+            "To let flocs grow large and strong before settling",
+            "To settle the precipitate out of the water in a basin",
+            "To lower the pH of the water ahead of the filters"
+          ],
+          "correctIndex": 0,
+          "explanation": "Rapid mix disperses the chemical. Floc growth belongs to flocculation, settling to the basin and pH lowering to recarbonation."
+        },
+        {
+          "id": "ceu-lime-softening-process-units-c2",
+          "prompt": "Why is the mixing gentle in the flocculation stage?",
+          "choices": [
+            "So the lime dissolves more slowly in the basin",
+            "So particles collide without being sheared apart",
+            "So the water stays at a high pH",
+            "So carbon dioxide can escape from the water as gas"
+          ],
+          "correctIndex": 1,
+          "explanation": "Gentle mixing raises the chance of collisions while keeping flocs intact. It is not about dissolving lime, gas release or pH."
+        },
+        {
+          "id": "ceu-lime-softening-process-units-c3",
+          "prompt": "What is distinctive about a solids-contact clarifier?",
+          "choices": [
+            "It uses carbon dioxide in place of lime to soften water",
+            "It removes hardness by ion exchange on a resin bed",
+            "Three steps occur in one tank around a solids blanket",
+            "It has no sludge to remove from the tank"
+          ],
+          "correctIndex": 2,
+          "explanation": "The unit combines the three steps in one tank. It still uses chemicals, it precipitates rather than exchanges ions, and it still produces sludge."
+        },
+        {
+          "id": "ceu-lime-softening-process-units-c4",
+          "prompt": "A 250 mL slurry sample settles to 40 mL after 10 minutes. What is the percent settled solids?",
+          "choices": [
+            "6.3 percent",
+            "84 percent",
+            "0.16 percent",
+            "16 percent"
+          ],
+          "correctIndex": 3,
+          "explanation": "40 / 250 x 100 = 16. Reversing the ratio without the x 100 gives 6.25, about 6.3, using the clear water volume gives 84, and leaving out the x 100 gives 0.16."
+        },
+        {
+          "id": "ceu-lime-softening-process-units-c5",
+          "prompt": "Why is recarbonation placed ahead of the filters?",
+          "choices": [
+            "It lowers pH so less calcium carbonate deposits",
+            "It raises the pH so more calcium will precipitate out",
+            "It removes the sludge before the filters",
+            "It adds hardness back to protect the filters"
+          ],
+          "correctIndex": 0,
+          "explanation": "Recarbonation lowers the pH of oversaturated water so less calcium carbonate deposits on the media. It does not raise pH or remove sludge. Its purpose is not to add hardness, even though an overdose can redissolve carbonate and raise hardness."
+        },
+        {
+          "id": "ceu-lime-softening-process-units-c6",
+          "prompt": "What is recalcination at overview level?",
+          "choices": [
+            "Adding carbon dioxide to lower the pH again",
+            "Heating lime sludge to recover calcium oxide",
+            "Mixing sludge back into the rapid mix to raise pH",
+            "Replacing lime with soda ash"
+          ],
+          "correctIndex": 1,
+          "explanation": "Recalcination recovers lime from calcium carbonate sludge. The other choices describe recarbonation, recycling or a chemical change."
+        }
+      ]
+    },
+    {
+      "id": "lime-softening-operation-troubleshooting",
+      "title": "Operation and troubleshooting",
+      "objectives": [
+        "Describe a jar test, the monitoring of pH, hardness and alkalinity, and how post-precipitation and scale show up.",
+        "Recognize feed equipment and lime hazards and their purpose, and work through a troubleshooting scenario."
+      ],
+      "lesson": "### Jar tests: finding the working dose\n\nThe calculated dose is a starting point. A jar test is how operators confirm it on the actual water. Spellman describes the test as a series of jars filled with the water, each given a different amount of chemical, mixed fast, then mixed gently for a longer period, then left to settle. You watch floc formation, how well the floc holds together, how fast and how cleanly it settles and the clarity of the water above it. The handbook adds that jar testing is only an attempt to reach a ballpark approximation, and that after the first range is found you repeat with a narrower range around the best result. Use your plant's own written procedure for speeds and times.\n\nFor softening, the jar test is paired with measurements of the settled water, such as pH, alkalinity and hardness, because the best jar is the one that meets the settled-water targets and not only the one that looks clear. Where the test is meant to predict finished water, account for recarbonation and filtration afterward. Record the dose of each jar, the mixing conditions and every measurement so that the next test can be compared with this one.\n\n<figure>\n<svg viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Timeline of a jar test in three stages: fast mix, slow mix, settle, with what to observe in each\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Jar test sequence and what to watch</title>\n<rect x=\"10\" y=\"30\" width=\"90\" height=\"50\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"55\" y=\"52\" text-anchor=\"middle\">Fast mix</text><text x=\"55\" y=\"68\" text-anchor=\"middle\" font-size=\"11\">short</text>\n<rect x=\"100\" y=\"30\" width=\"170\" height=\"50\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"185\" y=\"52\" text-anchor=\"middle\">Slow mix</text><text x=\"185\" y=\"68\" text-anchor=\"middle\" font-size=\"11\">longer, gentle</text>\n<rect x=\"270\" y=\"30\" width=\"110\" height=\"50\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"325\" y=\"52\" text-anchor=\"middle\">Settle</text><text x=\"325\" y=\"68\" text-anchor=\"middle\" font-size=\"11\">no mixing</text>\n<path d=\"M10 100 H380\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"10\" y=\"125\" font-size=\"11\">Observe: how floc forms and holds together</text>\n<text x=\"10\" y=\"145\" font-size=\"11\">Observe: settling speed and clear water above</text>\n<text x=\"10\" y=\"165\" font-size=\"11\">Measure: pH, alkalinity and hardness after settling</text>\n<text x=\"10\" y=\"195\" font-size=\"11\">Then repeat with a narrower range of doses</text>\n<text x=\"10\" y=\"212\" font-size=\"11\">around the best jar.</text>\n</svg>\n<figcaption>Three stages mimic the plant. Times and speeds come from your plant procedure.</figcaption>\n</figure>\n\n### Monitoring pH, hardness and alkalinity\n\nThe main raw-water inputs to the dose are hardness, alkalinity, pH and temperature. Free carbon dioxide and the calcium-to-magnesium split also set lime demand. If a well stays steady, these change slowly, and groundwater is a good fit for softening. A change in source, or the arrival of a different well, means the dose must be recalculated. Hardness is measured by an EDTA titration, in which a color change shows when the calcium and magnesium have been bound. Alkalinity is measured by an acid titration with end points near pH 8.3 and pH 4.5. Spellman notes that pH should be measured within about two hours of sampling in the lab, because carbon dioxide from the air moves the pH toward 7, and that a pH meter must be calibrated and the reading accurate for pH to be useful as a control.\n\nAlkalinity is measured against two defined end points. A sample already at or below pH 8.3 needs no phenolphthalein titration, and total alkalinity uses the cumulative acid volume to pH 4.5. Spellman defines phenolphthalein alkalinity by the acid used to reach pH 8.3 and total alkalinity by the acid used to reach pH 4.5, each times the acid normality times 50,000 over the sample volume. In a worked example, a 100 mL sample took no acid to pH 8.3, so its phenolphthalein alkalinity was zero, and 7.6 mL of 0.02 N acid to pH 4.5 gave a total alkalinity of 7.6 x 0.02 x 50,000 / 100 = 76 mg/L as CaCO3. The two numbers together tell you whether the alkalinity is mostly bicarbonate or includes carbonate and hydroxide, but the water treatment text refers to an alkalinity relationship table that is not reproduced here, so we do not print one.\n\nChemicals change alkalinity, and the dose depends on it. Spellman shows that alum uses alkalinity (1 mg/L of alum reacts with 0.45 mg/L of alkalinity), while lime, soda ash and caustic soda add alkalinity and raise pH when used for corrosion control. If you add a coagulant ahead of or with lime, count its alkalinity use when you check the settled water.\n\n<figure>\n<svg viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"A vertical pH scale from low to high with zones for calcium carbonate formation, magnesium hydroxide formation, and the need to bring pH back down before filters\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>pH zones in lime softening, typical textbook values</title>\n<path d=\"M60 20 V200\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<text x=\"20\" y=\"30\" font-size=\"11\">High</text><text x=\"20\" y=\"200\" font-size=\"11\">Low</text>\n<rect x=\"60\" y=\"20\" width=\"20\" height=\"50\" fill=\"#2f6db2\"/>\n<rect x=\"60\" y=\"70\" width=\"20\" height=\"50\" fill=\"#a9c3e3\"/>\n<rect x=\"60\" y=\"120\" width=\"20\" height=\"80\" fill=\"#f2f4f7\" stroke=\"#1d2d40\" stroke-width=\"1\"/>\n<text x=\"95\" y=\"40\" font-size=\"12\">Above about 10.5: Mg(OH)2 forms</text>\n<text x=\"95\" y=\"58\" font-size=\"11\">needs excess lime</text>\n<text x=\"95\" y=\"92\" font-size=\"12\">About 9 to 9.5: CaCO3 forms</text>\n<text x=\"95\" y=\"110\" font-size=\"11\">softening for calcium</text>\n<text x=\"95\" y=\"150\" font-size=\"12\">Below that: hardness stays dissolved</text>\n<text x=\"95\" y=\"168\" font-size=\"11\">Raw water is here before lime</text>\n<text x=\"95\" y=\"215\" font-size=\"11\">After settling, recarbonation lowers the pH</text>\n</svg>\n<figcaption>Typical textbook zones from Spellman. A plant sets its own pH target by jar test and control data.</figcaption>\n</figure>\n\n### Scale, post-precipitation and stability\n\nPrecipitation can continue downstream of the basin if settled water remains supersaturated with calcium carbonate. If water leaves settling still oversaturated with calcium carbonate, it can keep depositing solids on filter media, in the filter underdrain, in the clearwell and in the distribution main. This late deposition is called post-precipitation. It shows up as crusts on filter walls, media grains stuck together, rising head loss or a water that is cloudy after filtration. The cure is stabilization: recarbonation to bring the pH down toward a stable level, then a check of the Langelier index and the filtered water. Because these steps depend on each other, a change in one place, for example lime overfeed, shows up downstream.\n\n### Sludge handling and disposal at overview\n\nLime sludge is mostly calcium carbonate, with magnesium hydroxide where magnesium was removed. It can be thickened, dewatered, stored in a lagoon, hauled to landfill, applied to land where regulations allow, or, in some large plants, recalcined to recover lime. Spellman notes that recalcination can recover lime and reduce disposal problems for large plants. The textbooks used here give no solids concentrations, lagoon depths or beneficial-use rules, so none are stated. What matters for the operator is steady removal, because a blanket that is not drawn off can rise and carry over to the filters.\n\nChoices about where the sludge goes are set by the plant's plan and permit. The texts used here do not say which of these a lime plant should choose or what solids percentages to expect.\n\n### Feed equipment at recognition level\n\nQuicklime is slaked, that is, reacted with water to form hydrated lime, before it is fed as a slurry. The Water Quality Control Handbook notes that lime slurries settle in low-velocity sections, so a slurry loop must keep moving to keep solids from settling and plugging lines, and that dust collectors may be needed at loading. Spellman describes two kinds of dry feeders, volumetric and gravimetric. Volumetric feeders measure by volume, are simpler and less expensive, and are less accurate. Gravimetric feeders measure by weight, are more accurate and cost more. Spellman's dry chemical feeder calibration section is why a feeder setting should be checked against the amount actually fed. The texts do not describe slaker paddles, so we describe only the purpose: a slaker reacts quicklime with water, and that reaction gives off heat.\n\nThe handling table in the Water Quality Control Handbook lists materials that suit lime service, such as asphalt, cement, iron, rubber and steel. The purpose of those listings is to choose compatible storage and piping and to keep quicklime away from uncontrolled water; the safety data sheet and plant procedures govern the details.\n\nRecognition goal: know a feeder, a slaker, a slurry loop and a dust collector by sight and know why each exists. Operating and repairing them is done under your plant's procedures.\n\n### Safety: recognition and purpose only\n\nLime dust and wet lime are caustic. They can irritate the eyes, skin and respiratory system and can burn the eyes and skin, and quicklime reacts with water and gives off heat. Those facts explain the purpose of the usual controls: dust collection and covers keep lime out of the air, protective equipment keeps it off the eyes, skin and lungs, eyewash and drench stations are there for contact, and the safety data sheet and your plant's procedures state what to do. This course teaches you to recognize these hazards and the purpose of the controls. It does not give procedures, limits or emergency steps.\n\n### Troubleshooting scenario: Cedar Flats\n\nFictional Cedar Flats plant, operator Mia Torvald. After a heavy rain week, the settled water hardness is above the plant goal, filter head loss is climbing faster than usual, and there is a white crust at the waterline of the filters. The percent settled solids reading is steady and the lime feeder reading is as set.\n\nThink in order. First, what changed? The rain may have changed raw-water hardness, alkalinity or turbidity, so retest the raw water, because a dose set for yesterday's water may now be wrong. Second, the crust and the head loss point to post-precipitation, so check the recarbonation feed and the pH ahead of the filters. Third, a steady feeder reading does not prove the right amount of lime reaches the water: check that the feed is the amount the controller shows, that the slaker and slurry lines are not plugged, and run a jar test on the new water. Last, record what you found and what you changed. Feed problems and raw-water changes are the first suspects here. That is general operating experience, not textbook text.\n\n### Sampling points and records\n\nSample the raw water (it sets the dose), the settled water (it shows whether the chemistry worked) and the filtered water (it confirms filter performance and pH at that point; check finished-water pH at the designated point after any later treatment). A side-by-side log of the three, with feeder setting, flow and sludge draw-off times, shows trends early.\n\n### Monitoring rules\n\nWho sets the monitoring list is the regulator, not this course. Spellman notes that lime floc carry-over can make turbidity targets hard to meet, and that EPA allows such systems to acidify turbidity samples using a protocol approved by states. Your permit and rule state what to sample and how often.\n\n### Putting the dose and the jar test together\n\nSuppose the Cedar Flats jar test, run on the rain-affected water, shows that a dose 10 mg/L higher than the calculated dose gives the best settled water. Mia does not change the whole plant at once. She changes the feeder in a small step, waits long enough for the effect to reach the settled water sample, then checks pH, alkalinity and hardness again. One change at a time, with a record of each, is how she keeps the plant under control and learns what each adjustment does.",
+      "evidence": "### Fictional scenario: Cedar Flats Water Plant\n\nCedar Flats Water Plant is fictional. After a heavy rain week, settled hardness is above the goal, filter head loss climbs faster than normal and a white crust appears at the filter waterline. Operator Mia Torvald is asked by her supervisor, Raoul Pettit, for a plan for the next shift that lists what to retest, what to check and what to record.",
+      "assignment": "Write a plan for Raoul Pettit with five numbered actions in order, each with the reason. Include retesting the raw water, a jar test, a check on pH ahead of the filters and the feeder and slurry equipment, and one line on lime safety at recognition level. Calculate the alkalinity for a 100 mL sample that used 6.2 mL of 0.02 N acid with the 50,000 constant.",
+      "rubric": [
+        "Orders the actions logically and gives a reason for each.",
+        "Links the crust and head loss to post-precipitation and recarbonation.",
+        "Calculates alkalinity correctly with units.",
+        "Mentions lime safety at recognition level without giving procedures."
+      ],
+      "facilitatorGuide": "Ask learners to separate what changed from what is merely noticed. Check that the plan begins with retesting and does not change several settings at once. Strong answers record what was changed. Watch for learners who give emergency or first aid steps, which are outside this course and belong to site procedures.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write a five-point troubleshooting order for a softening plant."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and find a day when raw water quality changed."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Cedar Flats scenario and list the retests and checks in order."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hb",
+        "wqc-handbook",
+        "niosh-ca-hydroxide",
+        "niosh-ca-oxide",
+        "wtp-gibson-reynolds"
+      ],
+      "checks": [
+        {
+          "id": "ceu-lime-softening-operation-troubleshooting-c1",
+          "prompt": "What is the main purpose of a jar test in a softening plant?",
+          "choices": [
+            "To measure the plant flow through the basins",
+            "To replace the laboratory hardness test",
+            "To confirm and refine the dose on the real water",
+            "To set the sludge hauling schedule for the month"
+          ],
+          "correctIndex": 2,
+          "explanation": "Jar tests confirm and refine dose. They do not measure flow, replace lab tests or schedule hauling."
+        },
+        {
+          "id": "ceu-lime-softening-operation-troubleshooting-c2",
+          "prompt": "A 100 mL sample takes 8.4 mL of 0.02 N acid to reach pH 4.5. Using alkalinity = mL x N x 50,000 / sample mL, what is the total alkalinity?",
+          "choices": [
+            "8,400 mg/L as CaCO3",
+            "168 mg/L as CaCO3",
+            "0.17 mg/L as CaCO3",
+            "84 mg/L as CaCO3"
+          ],
+          "correctIndex": 3,
+          "explanation": "8.4 x 0.02 x 50,000 / 100 = 84. Leaving out the sample volume gives 8,400, using a 50 mL sample volume gives 168, and leaving out both 50,000 and the sample volume gives 0.17."
+        },
+        {
+          "id": "ceu-lime-softening-operation-troubleshooting-c3",
+          "prompt": "Why is a lime slurry kept moving in the feed lines?",
+          "choices": [
+            "Lime is relatively insoluble and settles in lines",
+            "Lime reacts with the pipe wall when it sits there",
+            "Moving slurry lowers the pH",
+            "Flow keeps the lime at a low temperature"
+          ],
+          "correctIndex": 0,
+          "explanation": "Lime settles in slow sections, so circulation keeps solids suspended and reduces plugging. Reaction with the pipe wall, a pH drop from movement and cold temperature are not the reason."
+        },
+        {
+          "id": "ceu-lime-softening-operation-troubleshooting-c4",
+          "prompt": "Which pair of signs points to post-precipitation after softening?",
+          "choices": [
+            "Lower raw-water hardness and clearer water overall",
+            "White crust at the waterline and rising head loss",
+            "Steady head loss with a slowly falling pH value",
+            "A thin sludge blanket with low settled turbidity"
+          ],
+          "correctIndex": 1,
+          "explanation": "Deposits of calcium carbonate cause crusts and head loss. The other pairs describe a normal or unrelated condition."
+        },
+        {
+          "id": "ceu-lime-softening-operation-troubleshooting-c5",
+          "prompt": "What is the purpose of protective equipment when handling lime?",
+          "choices": [
+            "To keep the lime dry while it is in storage",
+            "To raise the purity of the lime in the hopper",
+            "To keep lime dust and wet lime off eyes, skin and lungs",
+            "To stop the lime reacting inside the hopper bin during feed"
+          ],
+          "correctIndex": 2,
+          "explanation": "Lime dust and wet lime irritate the eyes, skin and respiratory tract and can burn the eyes and skin. Protective equipment keeps lime off the person. It does not keep lime dry in storage, raise purity or stop reactions in the hopper."
+        },
+        {
+          "id": "ceu-lime-softening-operation-troubleshooting-c6",
+          "prompt": "Which measurements are taken on settled water during a jar test?",
+          "choices": [
+            "A look at the color of the jar",
+            "Flow, head loss and pressure",
+            "Sludge volume and haul distance",
+            "pH, alkalinity and hardness"
+          ],
+          "correctIndex": 3,
+          "explanation": "The settled water confirms whether the dose meets the goal. Flow, head loss and hauling are not jar measurements."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-lime-softening-hardness-basics-f1",
+      "prompt": "Why is groundwater often harder than surface water?",
+      "choices": [
+        "It contacts limestone and other rock for longer",
+        "It holds more dissolved oxygen, which turns into hardness",
+        "It is dosed with lime before it reaches the well",
+        "It has a lower pH, which makes sodium into a hardness ion"
+      ],
+      "correctIndex": 0,
+      "explanation": "Long contact with rock dissolves calcium and magnesium. Oxygen does not become hardness, lime dosing happens at the plant rather than at the well, and sodium does not cause hardness.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-f2",
+      "prompt": "A well sample has calcium 56 mg/L and magnesium 15 mg/L. Using 2.50 for calcium and 4.12 for magnesium, what is the total hardness as CaCO3?",
+      "choices": [
+        "71 mg/L as CaCO3",
+        "202 mg/L as CaCO3",
+        "268 mg/L as CaCO3",
+        "140 mg/L as CaCO3"
+      ],
+      "correctIndex": 1,
+      "explanation": "2.50 x 56 + 4.12 x 15 = 140 + 61.8 = 202. Adding raw ions gives 71, swapping the factors gives 268, and using calcium alone gives 140.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-f3",
+      "prompt": "A water has total hardness 244 mg/L as CaCO3 and total alkalinity 96 mg/L as CaCO3, with pH below 8.3. What is the non-carbonate hardness?",
+      "choices": [
+        "340 mg/L as CaCO3",
+        "244 mg/L as CaCO3",
+        "148 mg/L as CaCO3",
+        "52 mg/L as CaCO3"
+      ],
+      "correctIndex": 2,
+      "explanation": "Alkalinity is less than hardness, so non-carbonate hardness = 244 - 96 = 148. Adding the values gives 340, quoting total hardness ignores the split, and 52 comes from a wrong subtraction.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-f4",
+      "prompt": "Why are calcium and magnesium both reported as mg/L as CaCO3?",
+      "choices": [
+        "It shows how much calcium carbonate the plant buys",
+        "It removes the effect of pH from the result",
+        "It converts the result to grains per gallon",
+        "It puts them on one basis so values can be added"
+      ],
+      "correctIndex": 3,
+      "explanation": "Each ion is converted to the calcium carbonate that would give the same hardness, so the numbers add. The basis says nothing about purchasing, pH or grains per gallon.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-f5",
+      "prompt": "What do the textbooks used here say about hardness and health?",
+      "choices": [
+        "Hardness is not considered a health hazard",
+        "Hardness harms health at any level, so the goal is removal to near zero",
+        "Hardness is harmless, so a softening goal is not needed",
+        "Hardness causes corrosion of the body unless it is neutralized"
+      ],
+      "correctIndex": 0,
+      "explanation": "The handbook states hardness is not considered a health hazard, and the practical concerns are cost and equipment. Treating it as a hazard or as irrelevant are both errors; very soft water also adds corrosion concern.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-f1",
+      "prompt": "The dose is 120 mg/L and the flow is 3.0 MGD. Using 8.34 lb per million gallons for each mg/L of dose, what is the feed rate?",
+      "choices": [
+        "360 lb/day",
+        "3,002 lb/day",
+        "125 lb/day",
+        "72,058 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Feed rate = 3.0 x 120 x 8.34 = 3,002 lb/day (3,002.4 unrounded). Leaving out 8.34 gives 360, dividing by 24 gives 125, an hourly rate labeled as daily, and multiplying by 24 gives 72,058.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-f2",
+      "prompt": "Raw water has CO2 10 mg/L, bicarbonate alkalinity 120 mg/L as CaCO3 and magnesium 5 mg/L. Using 1.27 for CO2, 0.56 for alkalinity and 2.31 for magnesium, with 100 percent pure CaO and no excess lime, what is the lime dose as CaO?",
+      "choices": [
+        "135 mg/L as CaO",
+        "79.9 mg/L as CaO",
+        "91.5 mg/L as CaO",
+        "100.5 mg/L as CaO"
+      ],
+      "correctIndex": 2,
+      "explanation": "10 x 1.27 + 120 x 0.56 + 5 x 2.31 = 12.7 + 67.2 + 11.55 = 91.45, about 91.5. Adding the raw values gives 135, leaving out magnesium gives 79.9, and using 4.12 for magnesium gives 100.5.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-f3",
+      "prompt": "A dose is 90 mg/L as CaO. Using 56.1 for CaO and 74.1 for Ca(OH)2, what is the same lime effect as Ca(OH)2?",
+      "choices": [
+        "68 mg/L as Ca(OH)2",
+        "164 mg/L as Ca(OH)2",
+        "74 mg/L as Ca(OH)2",
+        "119 mg/L as Ca(OH)2"
+      ],
+      "correctIndex": 3,
+      "explanation": "Multiply by 74.1 / 56.1 = 1.32: 90 x 1.3209 = 118.9, about 119. Inverting the ratio gives 68, copying the molecular weight gives 74, and adding it to the dose gives 164.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-f4",
+      "prompt": "A water has total hardness 140 mg/L as CaCO3 and total alkalinity 175 mg/L as CaCO3. What soda ash dose does the non-carbonate hardness call for?",
+      "choices": [
+        "Zero, as there is no non-carbonate hardness",
+        "37.1 mg/L, from 35 multiplied by 1.06",
+        "175 mg/L, equal to the alkalinity value",
+        "315 mg/L, from adding the two values together"
+      ],
+      "correctIndex": 0,
+      "explanation": "Alkalinity above hardness leaves no non-carbonate hardness, so no soda ash is counted. The other answers come from subtracting in the wrong order, copying alkalinity or adding the values.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-f5",
+      "prompt": "Calcium bicarbonate hardness of 80 mg/L as CaCO3 is removed at 1.5 MGD. Assume 2 parts CaCO3 form per part of hardness removed and use 8.34 as the pounds-per-million-gallons factor for each mg/L of dose. About how many pounds per day of dry CaCO3 form?",
+      "choices": [
+        "1,001 lb/day",
+        "2,002 lb/day",
+        "83 lb/day",
+        "4,003 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "80 x 2 x 1.5 x 8.34 = 2,002. Forgetting the factor of 2 gives 1,001, dividing by 24 gives 83, and doubling twice gives 4,003.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-f1",
+      "prompt": "Excess lime is 24 mg/L as Ca(OH)2 and residual magnesium is 6 mg/L. Using 44/74 for CO2 per Ca(OH)2 and 44/24.3 for CO2 per magnesium, what is the CO2 dose for recarbonation?",
+      "choices": [
+        "30.0 mg/L as CO2",
+        "14.3 mg/L as CO2",
+        "25.1 mg/L as CO2",
+        "47.0 mg/L as CO2"
+      ],
+      "correctIndex": 2,
+      "explanation": "24 x 44/74 + 6 x 44/24.3 = 14.27 + 10.86 = 25.13, about 25.1. Adding raw values gives 30, leaving out magnesium gives 14.3, and swapping the factors gives 47.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-f2",
+      "prompt": "What is the likely result if the solids blanket in a solids-contact clarifier becomes too thick?",
+      "choices": [
+        "Hardness is removed faster in the clarifier",
+        "The pH falls and the filters run longer",
+        "The sludge becomes thinner and dewaters easily",
+        "Solids spill over the weirs into the filters"
+      ],
+      "correctIndex": 3,
+      "explanation": "A deep blanket carries solids out of the unit. It does not improve removal, lower pH or thin the sludge.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-f3",
+      "prompt": "The Langelier saturation index of treated water is positive. What does that suggest?",
+      "choices": [
+        "Calcium carbonate tends to deposit, giving scale",
+        "The water is corrosive and dissolves calcium carbonate",
+        "The water is exactly balanced",
+        "The hardness is zero"
+      ],
+      "correctIndex": 0,
+      "explanation": "A positive index means calcium carbonate tends to deposit, giving scale. A negative index means the water tends to dissolve calcium carbonate, which is usually the corrosive direction; it does not by itself predict pipe corrosion. Near zero is balanced.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-f4",
+      "prompt": "Why is excess carbon dioxide avoided in recarbonation?",
+      "choices": [
+        "It raises the pH of the water leaving the unit",
+        "It can redissolve calcium carbonate and raise hardness",
+        "It adds magnesium to the filters and basin",
+        "It reacts with the sludge blanket to make quicklime again"
+      ],
+      "correctIndex": 1,
+      "explanation": "Over-feeding pushes calcium carbonate back into solution. Carbon dioxide lowers pH and does not add magnesium or make lime.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-f5",
+      "prompt": "A 100 mL slurry sample settled to 14 mL on Monday and to 35 mL on Thursday with no feed change. What is the best first response?",
+      "choices": [
+        "Raise the lime dose to use up the extra solids",
+        "Stop recarbonation so the solids can settle",
+        "Check sludge draw-off and blanket depth first",
+        "Shorten flocculation to release the slurry"
+      ],
+      "correctIndex": 2,
+      "explanation": "A rising settled volume with a steady feed is a reason to check blanket depth and sludge draw-off first, before changing chemical feed. Raising lime, stopping recarbonation and shortening flocculation would not address it and could worsen carryover.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-f1",
+      "prompt": "The product dose is 135 mg/L and the flow is 1.8 MGD. Using 8.34 lb per million gallons for each mg/L of dose, what is the feeder setting in lb/hr, rounded to one decimal place?",
+      "choices": [
+        "2,027 lb/hr",
+        "243 lb/hr",
+        "3.5 lb/hr",
+        "84.4 lb/hr"
+      ],
+      "correctIndex": 3,
+      "explanation": "135 x 1.8 x 8.34 = 2,026.6 lb/day, divided by 24 = 84.4 lb/hr. Skipping the division by 24 gives 2,027 lb/day, leaving out 8.34 and the division by 24 gives 243, and dividing by 24 twice gives 3.5.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-f2",
+      "prompt": "A 50 mL sample takes 3.1 mL of 0.02 N acid to reach pH 4.5. Using alkalinity = mL x N x 50,000 / sample mL, what is the total alkalinity?",
+      "choices": [
+        "62 mg/L as CaCO3",
+        "3,100 mg/L as CaCO3",
+        "6.2 mg/L as CaCO3",
+        "124 mg/L as CaCO3"
+      ],
+      "correctIndex": 0,
+      "explanation": "3.1 x 0.02 x 50,000 / 50 = 62. Leaving out the sample volume gives 3,100, a factor-ten slip gives 6.2, and using 25 mL gives 124.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-f3",
+      "prompt": "After a source change, settled hardness is above the plant goal. What is the best first action?",
+      "choices": [
+        "Raise the carbon dioxide feed to the basin",
+        "Retest raw water and run a jar test",
+        "Reduce the sludge draw-off",
+        "Replace the filter media"
+      ],
+      "correctIndex": 1,
+      "explanation": "The dose was set for the old water, so retest and recheck. Carbon dioxide, sludge draw-off and media do not address the changed raw water.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-f4",
+      "prompt": "Why should the pH of a softened water sample be measured soon after collection?",
+      "choices": [
+        "Lime in the sample dissolves over time",
+        "The sample color changes the meter reading",
+        "Carbon dioxide in air moves the pH toward 7",
+        "The sample becomes harder while in the bottle"
+      ],
+      "correctIndex": 2,
+      "explanation": "Carbon dioxide exchange with the air moves the sample pH toward 7, so the reading drifts. Lime dissolving over time, color and hardness do not explain the drift.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-f5",
+      "prompt": "Which property of quicklime explains why it is slaked in a controlled slaker?",
+      "choices": [
+        "It dissolves into an acid vapor at once",
+        "It freezes at storage temperature",
+        "It forms chlorine gas when stored dry",
+        "It reacts with water and gives off heat"
+      ],
+      "correctIndex": 3,
+      "explanation": "Quicklime and water release heat, which is why slaking is done in equipment designed for it. The other statements are not properties of quicklime.",
+      "objective": "lime-softening-operation-troubleshooting"
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-lime-softening-hardness-basics-a1",
+      "prompt": "In the usual operator calculation, how is total hardness defined?",
+      "choices": [
+        "Alkalinity plus carbonate hardness",
+        "Calcium plus magnesium hardness, each as CaCO3",
+        "Calcium concentration plus magnesium concentration in mg/L",
+        "Carbonate hardness minus non-carbonate hardness"
+      ],
+      "correctIndex": 1,
+      "explanation": "Total hardness is the sum of calcium and magnesium hardness on a CaCO3 basis. Adding raw concentrations skips the conversion, and the other two choices mix up alkalinity and the two hardness types.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-a2",
+      "prompt": "A water has calcium 80 mg/L and magnesium 6 mg/L. Using 2.50 for calcium and 4.12 for magnesium, what is the total hardness as CaCO3?",
+      "choices": [
+        "86 mg/L as CaCO3",
+        "345 mg/L as CaCO3",
+        "225 mg/L as CaCO3",
+        "200 mg/L as CaCO3"
+      ],
+      "correctIndex": 2,
+      "explanation": "2.50 x 80 + 4.12 x 6 = 200 + 24.72 = 224.72, about 225. Adding raw ions gives 86, swapping the factors gives 345, and calcium alone gives 200.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-a3",
+      "prompt": "A water has 310 mg/L hardness as CaCO3. Using 1 grain per gallon = 17.1 mg/L, what is the hardness in grains per gallon?",
+      "choices": [
+        "5,301 gr/gal",
+        "293 gr/gal",
+        "1.81 gr/gal",
+        "18.1 gr/gal"
+      ],
+      "correctIndex": 3,
+      "explanation": "310 / 17.1 = about 18.1. Multiplying gives 5,301, subtracting gives 293, and a decimal slip gives 1.81.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-a4",
+      "prompt": "Total hardness is 175 mg/L as CaCO3 and total alkalinity is 205 mg/L as CaCO3. What is the non-carbonate hardness?",
+      "choices": [
+        "Zero, because the whole hardness is carbonate hardness",
+        "30 mg/L, found by subtracting hardness from alkalinity",
+        "380 mg/L, found by adding the two values",
+        "205 mg/L, taken from the alkalinity"
+      ],
+      "correctIndex": 0,
+      "explanation": "Alkalinity above hardness means no non-carbonate hardness. Subtracting in the wrong order gives a number that is not hardness, adding the values has no meaning, and alkalinity is not hardness.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-hardness-basics-a5",
+      "prompt": "What problem does hard water cause when it is heated?",
+      "choices": [
+        "Carbon dioxide is released and corrodes the steel",
+        "Calcium and magnesium scale on heating surfaces",
+        "Alkalinity is lost by evaporation",
+        "The pH falls and dissolves the pipe"
+      ],
+      "correctIndex": 1,
+      "explanation": "Heated hard water deposits a scale of calcium and magnesium minerals. The other effects are not what the handbook describes.",
+      "objective": "lime-softening-hardness-basics"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-a1",
+      "prompt": "In lime-soda ash softening, what does non-carbonate hardness need that carbonate hardness does not?",
+      "choices": [
+        "Extra lime to raise the pH",
+        "Carbon dioxide to form more bicarbonate in water",
+        "A source of carbonate, supplied as soda ash",
+        "Acid to lower the alkalinity"
+      ],
+      "correctIndex": 2,
+      "explanation": "Non-carbonate hardness has no bicarbonate partner, so soda ash supplies carbonate. More lime, carbon dioxide or acid do not address that shortage.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-a2",
+      "prompt": "Raw water has CO2 15 mg/L, bicarbonate alkalinity 95 mg/L as CaCO3 and magnesium 8 mg/L. Using 1.27, 0.56 and 2.31, with 100 percent pure CaO and no excess lime, what is the theoretical lime dose as CaO?",
+      "choices": [
+        "118 mg/L as CaO",
+        "72.3 mg/L as CaO",
+        "105.2 mg/L as CaO",
+        "90.7 mg/L as CaO"
+      ],
+      "correctIndex": 3,
+      "explanation": "15 x 1.27 + 95 x 0.56 + 8 x 2.31 = 19.05 + 53.20 + 18.48 = 90.73, about 90.7. Adding raw values gives 118, leaving out magnesium gives 72.3, and using 4.12 gives 105.2.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-a3",
+      "prompt": "A plant feeds 150 mg/L of product at 2.0 MGD. Using 8.34 lb per million gallons for each mg/L of dose, what is the feed rate in lb/hr?",
+      "choices": [
+        "104 lb/hr",
+        "2,502 lb/hr",
+        "300 lb/hr",
+        "52 lb/hr"
+      ],
+      "correctIndex": 0,
+      "explanation": "150 x 2.0 x 8.34 = 2,502 lb/day, divided by 24 = 104 lb/hr. Skipping the division gives 2,502, leaving out 8.34 and the division gives 300, and dividing by the flow a second time gives 52.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-a4",
+      "prompt": "Total hardness is 215 mg/L as CaCO3, alkalinity is 140 mg/L as CaCO3, soda ash is 99 percent pure and the constant is 1.06. What soda ash product dose is needed?",
+      "choices": [
+        "78.7 mg/L of product",
+        "80.3 mg/L of product",
+        "75.0 mg/L of product",
+        "145 mg/L of product"
+      ],
+      "correctIndex": 1,
+      "explanation": "Non-carbonate hardness = 215 - 140 = 75. 75 x 1.06 = 79.5, divided by 0.99 = 80.3. Multiplying by purity gives 78.7, and 75.0 skips both the constant and the purity.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-chemistry-and-dose-a5",
+      "prompt": "Why does a softening plant make more solid than the hardness removed alone would suggest?",
+      "choices": [
+        "The lime dissolves into the sludge as a salt",
+        "Soda ash turns into calcium carbonate by volume in the basin",
+        "Calcium from lime precipitates with the water's calcium",
+        "Water in the sludge adds to the dry mass"
+      ],
+      "correctIndex": 2,
+      "explanation": "In the calcium bicarbonate reaction, two parts of CaCO3 form, one from the calcium in the water and one from the lime. Lime does not simply dissolve into sludge, and wet water is not dry mass.",
+      "objective": "lime-softening-chemistry-and-dose"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-a1",
+      "prompt": "Why is the flocculation stage mixed more gently than the rapid mix?",
+      "choices": [
+        "Fast mixing grows large flocs and gentle mixing breaks them",
+        "Gentle mixing raises the pH of the water",
+        "Gentle mixing dissolves the lime slowly",
+        "Gentle mixing lets particles meet without breaking flocs"
+      ],
+      "correctIndex": 3,
+      "explanation": "Flocs form with gentle energy and break under high energy. Mixing speed does not set pH and the rapid mix is for dispersing chemical.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-a2",
+      "prompt": "A 200 mL slurry sample settles to 38 mL. What is the settled volume as a percent of the sample volume?",
+      "choices": [
+        "19 percent",
+        "5.3 percent",
+        "81 percent",
+        "1.9 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "38 / 200 x 100 = 19. Reversing the ratio without the x 100 gives 5.3, using the clear volume gives 81, and a decimal slip gives 1.9.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-a3",
+      "prompt": "Excess lime is 30 mg/L as Ca(OH)2 and residual magnesium is 2 mg/L. Using 44/74 and 44/24.3, what is the CO2 dose for recarbonation?",
+      "choices": [
+        "32.0 mg/L as CO2",
+        "21.5 mg/L as CO2",
+        "17.8 mg/L as CO2",
+        "55.5 mg/L as CO2"
+      ],
+      "correctIndex": 1,
+      "explanation": "30 x 44/74 + 2 x 44/24.3 = 17.84 + 3.62 = 21.46, about 21.5. Adding raw values gives 32, leaving out magnesium gives 17.8, and swapping the factors gives 55.5.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-a4",
+      "prompt": "Which unit is placed before the filters to avoid post-precipitation in a softening train?",
+      "choices": [
+        "Rapid mix",
+        "Recalcination",
+        "Recarbonation",
+        "Flocculation"
+      ],
+      "correctIndex": 2,
+      "explanation": "Recarbonation lowers the pH ahead of the filters. Rapid mix and flocculation come earlier, and recalcination recovers lime from sludge.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-process-units-a5",
+      "prompt": "Why can a solids-contact clarifier help reduce the lime wasted?",
+      "choices": [
+        "It removes the carbon dioxide before liming starts",
+        "It raises the water temperature",
+        "It converts calcium to magnesium",
+        "Existing solids give new precipitate a surface"
+      ],
+      "correctIndex": 3,
+      "explanation": "Precipitate grows on existing solids. The other effects do not occur in the unit.",
+      "objective": "lime-softening-process-units"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-a1",
+      "prompt": "Why compare raw, settled and filtered water samples in one log?",
+      "choices": [
+        "To see where chemistry changes and spot trends",
+        "To avoid running jar tests on the plant water",
+        "To replace the feeder record and the lab sheet",
+        "To reduce the number of samples taken each week"
+      ],
+      "correctIndex": 0,
+      "explanation": "A combined log shows how each stage performs. It does not replace jar tests or feeder records.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-a2",
+      "prompt": "The product dose is 110 mg/L and the flow is 0.9 MGD. Using 8.34 lb per million gallons for each mg/L of dose, what is the feed rate?",
+      "choices": [
+        "99 lb/day",
+        "826 lb/day",
+        "19,816 lb/day",
+        "34 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "110 x 0.9 x 8.34 = 826. Leaving out 8.34 gives 99, multiplying by 24 gives 19,816, and dividing by 24 gives 34.4 lb/hr, so 34 is an hourly rate labeled as daily.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-a3",
+      "prompt": "A 100 mL sample takes 7.5 mL of 0.02 N acid to reach pH 4.5. Using alkalinity = mL x N x 50,000 / sample mL, what is the total alkalinity?",
+      "choices": [
+        "7,500 mg/L as CaCO3",
+        "37.5 mg/L as CaCO3",
+        "75 mg/L as CaCO3",
+        "0.15 mg/L as CaCO3"
+      ],
+      "correctIndex": 2,
+      "explanation": "7.5 x 0.02 x 50,000 / 100 = 75. Leaving out the sample volume gives 7,500, leaving out both 50,000 and the sample volume gives 0.15, and using a 200 mL sample gives 37.5.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-a4",
+      "prompt": "Which change calls for recalculating the lime dose?",
+      "choices": [
+        "A change in flow alone, since mg/L follows flow",
+        "A change in the number of jars in the tester",
+        "A change in the sludge hauler schedule",
+        "A change in raw-water hardness or alkalinity"
+      ],
+      "correctIndex": 3,
+      "explanation": "The mg/L dose depends on water chemistry. Flow changes the pounds per day but not the mg/L dose.",
+      "objective": "lime-softening-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-lime-softening-operation-troubleshooting-a5",
+      "prompt": "A white crust at the filter waterline and rising head loss suggest checking what first?",
+      "choices": [
+        "The recarbonation feed and filter-influent pH",
+        "The raw-water pump speed throughout the shift",
+        "The sludge hauler schedule for the week",
+        "The color and texture of the delivered lime"
+      ],
+      "correctIndex": 0,
+      "explanation": "Crusts and rising head loss point to post-precipitation, so check the recarbonation feed and filter-influent pH first. Raw-water pump speed, sludge hauling and lime color are less direct first checks.",
+      "objective": "lime-softening-operation-troubleshooting"
+    }
+  ]
+}

@@ -168,5 +168,50 @@
     "url": "/manus-storage/ceu-water-treatment-process-control-cover_b42f020f.jpg",
     "bytes": 226603,
     "sha256": "333bcdfa4e03315d6db8fdd7a07d547d84101f15b21915be2be222b7aad1ea0d"
+  },
+  "/ceu-covers/ceu-chloramines-cover.jpg": {
+    "url": "/manus-storage/ceu-chloramines-cover_04e38866.jpg",
+    "bytes": 111308,
+    "sha256": "a040c0391b2c807daf31f9c3926ce0fb62e75be64fe558f92d505f3cd842ea53"
+  },
+  "/ceu-covers/ceu-effluent-filtration-cover.jpg": {
+    "url": "/manus-storage/ceu-effluent-filtration-cover_8e2ad7ac.jpg",
+    "bytes": 113893,
+    "sha256": "b852fc96b94cba79364ad20b8aefba1ab3a611098866e0ff7c6df55c04462a74"
+  },
+  "/ceu-covers/ceu-fluoride-cover.jpg": {
+    "url": "/manus-storage/ceu-fluoride-cover_e8719c88.jpg",
+    "bytes": 107283,
+    "sha256": "00beaba39f0557a034f28f27034a375983b4a9f8a11add4335d9c5acbdbac57e"
+  },
+  "/ceu-covers/ceu-lift-stations-cover.jpg": {
+    "url": "/manus-storage/ceu-lift-stations-cover_9448a07d.jpg",
+    "bytes": 109933,
+    "sha256": "d2f0fd941fc92b99337fd626237e0311fad9951fbc275bc5406d9e1762d351ba"
+  },
+  "/ceu-covers/ceu-lime-softening-cover.jpg": {
+    "url": "/manus-storage/ceu-lime-softening-cover_9d02a735.jpg",
+    "bytes": 113264,
+    "sha256": "0685ea72bcb93471a29a6ca0fbb8fb53d04448398ac0d5e586ab00ba4dfddabe"
+  },
+  "/ceu-covers/ceu-reverse-osmosis-cover.jpg": {
+    "url": "/manus-storage/ceu-reverse-osmosis-cover_eefba436.jpg",
+    "bytes": 116781,
+    "sha256": "208988d19f15a1cacb4f1a382c95f0d84398a59249c2dc4f2cc7603723f84ea0"
+  },
+  "/ceu-covers/ceu-sludge-dewatering-cover.jpg": {
+    "url": "/manus-storage/ceu-sludge-dewatering-cover_a96cc290.jpg",
+    "bytes": 117108,
+    "sha256": "7f49375d7f362401a650625c99d6c8e4aa3e739def3f225ac3c69b8123fe2c21"
+  },
+  "/ceu-covers/ceu-sludge-digestion-cover.jpg": {
+    "url": "/manus-storage/ceu-sludge-digestion-cover_e063766d.jpg",
+    "bytes": 115118,
+    "sha256": "dc5b870ad8d2bb5d496d6f3145279628f804f20ed75755a805eb3dae902aa7a0"
+  },
+  "/ceu-covers/ceu-sludge-thickening-cover.jpg": {
+    "url": "/manus-storage/ceu-sludge-thickening-cover_49d477d1.jpg",
+    "bytes": 115474,
+    "sha256": "067ba5547be8a74f99889c7a8d385e8c865f16c1187b9bfc4e4569c8701a3755"
   }
 }

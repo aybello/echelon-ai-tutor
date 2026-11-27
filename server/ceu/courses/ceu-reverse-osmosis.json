@@ -1,0 +1,1068 @@
+{
+  "key": "ceu-reverse-osmosis",
+  "version": "2026-11-26.1",
+  "title": "Reverse Osmosis for Water Operators",
+  "shortTitle": "Reverse Osmosis",
+  "stream": "drinking_water",
+  "audience": "Operators, trainees and supervisors at drinking water plants and wastewater reuse plants who run or support reverse osmosis systems and want a clear foundation in how RO works, how its performance is calculated, how pretreatment protects it and how to trend and troubleshoot it.",
+  "prerequisites": "Basic arithmetic. Basic Math is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Learn how reverse osmosis removes dissolved material: osmosis and reverse osmosis, the feed, permeate and concentrate streams, membrane types and the spiral wound and hollow fibre modules. Then work the performance arithmetic of recovery, rejection, salt passage, flux and concentration factor, and see how pressure, temperature and pump energy fit in. Follow why pretreatment matters, how fouling, scaling and biofouling differ, and what cleaning and integrity checks are for. Finish with normalised data trending, a troubleshooting scenario, concentrate disposal, post-treatment, records and the hazards to recognise. Each module has a worked scenario, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant, manufacturer and regulator.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "wqc-alley",
+      "title": "Water Quality Control Handbook, 2nd edition (James Alley, WEF Press, McGraw-Hill)",
+      "section": "Chapter 8, Section 8.8 Membrane Filtration: 8.8.1 categories and pore sizes (Table 8.7), reverse osmosis and osmotic pressure; 8.8.2 applications and fouling types, concentration polarization; 8.8.3 pretreatment (Table 8.8), membrane materials (Table 8.9), configurations (Table 8.10), pressures (Table 8.11), flux (Table 8.12, equations 8.60 to 8.62); 8.8.4 sizing, recovery, equipment; 8.8.6 operation; 8.7.2.1 cartridge filter; 3.3 conductivity",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-hb",
+      "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press)",
+      "section": "Section 18.9 (membrane filtration systems: types, one input and two outputs); Table 18.21 (typical pressure ranges for membrane processes); Section 18.10.8 (membranes and DBP precursors, brine disposal and fouling as limitations); Section 9.2.8 (water and brake horsepower); Section 19.10.1.6.5 (dechlorination chemicals)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wef-mop11",
+      "title": "Operation of Municipal Wastewater Treatment Plants, Manual of Practice No. 11, 6th edition (Water Environment Federation)",
+      "section": "Volume I, Chapter 2 glossary (reverse osmosis definition); Chapter on advanced wastewater treatment (membrane filtration used to remove organics, nutrients and pathogens)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "epa-reuse",
+      "title": "U.S. EPA: Water Reuse (program overview and resources)",
+      "url": "https://www.epa.gov/waterreuse",
+      "section": "Overview page: potable and non-potable water reuse context for treated wastewater",
+      "jurisdiction": "US federal agency page; used for reuse context only, not for any RO claim",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "modules": [
+    {
+      "id": "reverse-osmosis-how-ro-works",
+      "title": "How reverse osmosis works: osmosis, streams and membranes",
+      "objectives": [
+        "Explain osmosis and reverse osmosis, and why applied pressure must exceed the osmotic pressure of the feed.",
+        "Name the feed, permeate and concentrate streams, place RO within the membrane family, and recognise spiral wound and hollow fibre modules and the main membrane materials."
+      ],
+      "lesson": "### Why plants use reverse osmosis\n\nMost treatment steps in a water or wastewater plant remove particles: screens, settling basins, filters. Reverse osmosis, usually shortened to RO, does something different. It removes dissolved material. That includes salts, many dissolved organics and a share of other small molecules that pass through conventional particle filters. A drinking water plant may use RO on brackish groundwater or seawater, or to remove a specific dissolved contaminant. A wastewater reuse plant may use it to polish treated effluent that will go to irrigation, groundwater recharge or further treatment for drinking water. The Water Quality Control Handbook notes that membrane filtration lets a plant reach a level of treatment that classic processes cannot, and that it is common where clean water is scarce. The WEF manual of practice for wastewater plants likewise lists microfiltration, ultrafiltration, nanofiltration and reverse osmosis among the advanced steps that remove organics, nutrients and pathogens. The Water Quality Control Handbook is just as clear about the price: capital and operating costs are high, so the process is chosen when the water quality target needs it.\n\n### Osmosis and reverse osmosis\n\nStart with natural osmosis. Put fresh water on one side of a semipermeable membrane and salty water on the other. The membrane lets water molecules through but holds back most dissolved ions. Water drifts toward the side with the higher dissolved concentration, and it keeps drifting until some opposing force balances it. The pressure that would be needed on the salty side to stop that drift is the osmotic pressure.\n\nReverse osmosis forces the flow the other way. A pump pressurises the salty side, and when the applied pressure is greater than the osmotic pressure, water is pushed out of the salty solution and through the membrane to the fresh side. The handbook states the rule plainly: for RO to happen, the applied pressure must be greater than the naturally occurring osmotic pressure.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Two panels: in osmosis water moves toward the salty side; in reverse osmosis applied pressure pushes water from the salty side to the fresh side\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Osmosis moves water toward the salty side; reverse osmosis uses pressure to move it the other way.</title>\n<text x=\"95\" y=\"20\" text-anchor=\"middle\" font-weight=\"bold\">Osmosis</text>\n<text x=\"215\" y=\"20\" font-weight=\"bold\">Reverse osmosis</text><text x=\"332\" y=\"20\" font-size=\"11\">pressure</text>\n<rect x=\"15\" y=\"35\" width=\"160\" height=\"100\" fill=\"#eef2f6\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"95\" y=\"35\" width=\"80\" height=\"100\" fill=\"#dbe3ec\"/>\n<rect x=\"215\" y=\"35\" width=\"160\" height=\"100\" fill=\"#eef2f6\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"295\" y=\"35\" width=\"80\" height=\"100\" fill=\"#dbe3ec\"/>\n<path d=\"M95 35V135M295 35V135\" stroke=\"#1d2d40\" stroke-width=\"3\" stroke-dasharray=\"6 4\"/>\n<g fill=\"#1d2d40\"><circle cx=\"115\" cy=\"55\" r=\"3\"/><circle cx=\"145\" cy=\"70\" r=\"3\"/><circle cx=\"125\" cy=\"95\" r=\"3\"/><circle cx=\"155\" cy=\"115\" r=\"3\"/><circle cx=\"110\" cy=\"120\" r=\"3\"/><circle cx=\"315\" cy=\"55\" r=\"3\"/><circle cx=\"345\" cy=\"70\" r=\"3\"/><circle cx=\"325\" cy=\"95\" r=\"3\"/><circle cx=\"355\" cy=\"115\" r=\"3\"/><circle cx=\"310\" cy=\"120\" r=\"3\"/></g>\n<path d=\"M60 90H130\" stroke=\"#2f6db2\" stroke-width=\"4\"/><path d=\"M128 82L142 90L128 98Z\" fill=\"#2f6db2\"/>\n<path d=\"M340 90H260\" stroke=\"#2f6db2\" stroke-width=\"4\"/><path d=\"M262 82L248 90L262 98Z\" fill=\"#2f6db2\"/>\n<path d=\"M318 4V30M310 24L318 34L326 24\" stroke=\"#1d2d40\" stroke-width=\"3\" fill=\"none\"/>\n<text x=\"55\" y=\"152\" text-anchor=\"middle\" font-size=\"11\">fresh side</text>\n<text x=\"135\" y=\"152\" text-anchor=\"middle\" font-size=\"11\">salty side</text>\n<text x=\"255\" y=\"152\" text-anchor=\"middle\" font-size=\"11\">fresh side</text>\n<text x=\"335\" y=\"152\" text-anchor=\"middle\" font-size=\"11\">salty side</text>\n<text x=\"95\" y=\"185\" text-anchor=\"middle\" font-size=\"11\">Water drifts toward</text>\n<text x=\"95\" y=\"199\" text-anchor=\"middle\" font-size=\"11\">the more salty side.</text>\n<text x=\"295\" y=\"185\" text-anchor=\"middle\" font-size=\"11\">Pressure above the osmotic</text>\n<text x=\"295\" y=\"199\" text-anchor=\"middle\" font-size=\"11\">pressure pushes water to</text>\n<text x=\"295\" y=\"213\" text-anchor=\"middle\" font-size=\"11\">the fresh side.</text>\n</svg>\n<figcaption>Osmosis moves water toward the salty side; reverse osmosis uses pressure to move it the other way.</figcaption>\n</figure>\n\nOsmotic pressure is not a fixed number for a plant. The handbook describes it as depending on the molar concentration of the dissolved material, on the number of ions each dissolved unit splits into, and on the temperature. For dilute solutions it gives the van't Hoff relation: osmotic pressure equals the number of ions times the molar concentration times the gas constant times the absolute temperature. Absolute temperature means kelvin, which is degrees Celsius plus about 273 (273.15 for exact work). The gas constant is 8.314 kPa L per mol K when pressure is in kilopascals.\n\n### The three streams: feed, permeate and concentrate\n\nA typical RO unit has one input and two outputs. The Spellman handbook describes a typical membrane filtration process this way. The input is the feed water. The water that crosses the membrane is the permeate, also called product water. The water that stays on the feed side and leaves the unit carrying the rejected salts is the concentrate, also called reject or brine. Because the permeate leaves and most salts stay, the concentrate is saltier than the feed whenever salt is rejected.\n\nThis is why RO is a cross-flow process. The feed moves along the membrane surface rather than straight through it, so rejected material is swept toward the concentrate outlet instead of piling up on the surface. Even so, the handbook describes a boundary layer of more concentrated solution that forms right at the membrane surface. This is called concentration polarization. It raises the osmotic pressure at the surface, which reduces flow and can reduce observed rejection. Good velocity across the membrane keeps the effect small.\n\n### Where RO sits in the membrane family\n\nRO is the tightest member of a family of pressure-driven membranes. The handbook groups them by effective pore size. Microfiltration has the largest openings and removes fine suspended and colloidal solids. Ultrafiltration removes colloids and large organic molecules. Nanofiltration removes smaller organics and part of the dissolved solids. Reverse osmosis has the smallest openings, on the order of a nanometre or less, and is the one used to remove dissolved solids. As openings get smaller the pressure needed rises. The handbook's Table 8.11 gives RO inlet pressure requirements in pounds per square inch (psi), with a minimum of 200 and a maximum of 1,200 listed. Typical ranges differ between sources and between waters, so treat the table as orientation only and use your own unit's data.\n\nAnother way to describe the same ladder is the molecular weight cutoff: the molecular mass at which a membrane holds back a stated share of solutes under test conditions. The lower the cutoff, the tighter the membrane. Nanofiltration works on the same principle as RO with looser membranes, so it rejects less of the dissolved ions. All of these are pressure-driven. Electrodialysis reversal is different: it moves ions through ion-exchange membranes under an electric field, and it is outside this course.\n\n### Membrane materials and configurations\n\nTwo material families matter to operators. Cellulose acetate is one of the oldest membrane materials. The handbook's Table 8.9 rates its chlorine resistance as good, its solvent resistance as poor, and its pH range as narrow (4.5 to 9). Polyamide and other synthetic membranes tolerate a much wider pH range but the handbook rates polyamide's chlorine resistance as poor. That one fact drives a lot of pretreatment design, as the third lesson explains.\n\nMembranes are packaged into modules. The handbook lists four designs: hollow fibre, spiral wound, tubular, and plate and frame. Spiral wound and hollow fibre designs pack a large membrane area into a small volume. The trade-off is narrow flow passages that foul readily when particles are present, which is why they need good pretreatment.\n\nIn a spiral wound element, flat membrane sheets and spacers are wound around a central perforated tube. Feed travels along the spacer channels, part of it crosses the membrane into a permeate carrier, and that permeate spirals inward to the central tube. The rest of the feed continues along the element and leaves as concentrate.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Side view of a spiral wound element: feed enters one end between wound membrane layers, permeate spirals in to the central tube, concentrate leaves the far end\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Spiral wound element: feed passes along the layers, permeate spirals inward to the centre tube.</title>\n<rect x=\"70\" y=\"40\" width=\"230\" height=\"120\" rx=\"6\" fill=\"#eef2f6\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<path d=\"M70 58H300M70 72H300M70 86H300M70 114H300M70 128H300M70 142H300\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"50\" y=\"92\" width=\"290\" height=\"16\" fill=\"#2f6db2\"/>\n<text x=\"195\" y=\"104\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\" font-weight=\"bold\">central permeate tube</text>\n<path d=\"M10 65H60M10 135H60\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<path d=\"M52 59L64 65L52 71ZM52 129L64 135L52 141Z\" fill=\"#1d2d40\"/>\n<text x=\"10\" y=\"50\" font-weight=\"bold\">Feed</text>\n<path d=\"M300 65H350M300 135H350\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<path d=\"M342 59L354 65L342 71ZM342 129L354 135L342 141Z\" fill=\"#1d2d40\"/>\n<text x=\"380\" y=\"50\" text-anchor=\"end\" font-weight=\"bold\">Concentrate</text>\n<path d=\"M340 100H376\" stroke=\"#2f6db2\" stroke-width=\"4\"/>\n<path d=\"M370 92L384 100L370 108Z\" fill=\"#2f6db2\"/>\n<text x=\"380\" y=\"124\" text-anchor=\"end\" font-weight=\"bold\" fill=\"#2f6db2\">Permeate</text>\n<text x=\"195\" y=\"182\" text-anchor=\"middle\" font-size=\"11\">Grey lines: membrane leaves and spacers wound</text>\n<text x=\"195\" y=\"196\" text-anchor=\"middle\" font-size=\"11\">around the tube. Part of the feed crosses the</text>\n<text x=\"195\" y=\"210\" text-anchor=\"middle\" font-size=\"11\">membrane and spirals in to the tube.</text>\n</svg>\n<figcaption>Spiral wound element: feed passes along the layers, permeate spirals inward to the centre tube.</figcaption>\n</figure>\n\nHollow fibre modules use bundles of hair-thin tubes. In the RO version the feed surrounds the fibres and the permeate is collected from their hollow centres. Both designs sit in pressure vessels that are arranged in racks, called skids or trains. Some low-pressure membranes are instead submerged in a tank, with a vacuum pulling permeate through; membrane bioreactors described in the WEF manual work this way. Flow pattern also differs. In cross-flow, as in RO, feed moves along the surface and a concentrate stream carries rejects away. In dead-end flow all the feed passes through the membrane, solids collect on it, and it is usually backwashed. Spiral wound RO elements are not backwashed, so they depend on pretreatment, flow across the membrane and chemical cleaning.\n\n### Worked example: is the pump big enough in principle?\n\nThe fictional Marlow Creek Plant treats brackish well water. A lab report shows the dissolved salt behaves like a salt that splits into two ions, at a molar concentration of 0.05 mol/L. The well water is at 293 K. What osmotic pressure must the feed pump overcome, at the very least?\n\nStep 1: ions per unit, i = 2. Step 2: concentration c = 0.05 mol/L. Step 3: R = 8.314 kPa L/(mol K), T = 293 K. Step 4: osmotic pressure = 2 x 0.05 x 8.314 x 293 = about 243.6 kPa.\n\nConvert with 6.895 kPa per psi: 243.6 / 6.895 = about 35 psi. So the feed pressure must exceed about 35 psi before any net water flow crosses the membrane, and useful production needs more. Real feed water has many dissolved species, so the real figure comes from a water analysis and the manufacturer's projection, and the concentrate end of the unit is saltier, so its osmotic pressure is higher still. The next lesson shows how that reduces the driving pressure along the unit.\n\nThe practical point for an operator is that RO needs a pressure pump that turns electrical energy into pressure, a membrane that stays intact and clean, and three streams that are measured and logged. Recognise the streams on a flow sheet, know what each one carries, and the arithmetic in the next module becomes natural.",
+      "evidence": "### Fictional scenario: Marlow Creek Plant\n\nMarlow Creek Plant is a fictional drinking water plant that wants to treat a brackish well with reverse osmosis. A new operator, Dena Okafor, is shown a flow sheet with a feed pump, two vessels in series and three pipes leaving the skid. Her supervisor, Lucas Brandt, asks her to name each stream, say which one carries the salts, and estimate the least pressure the feed pump must overcome for a salt that splits into two ions at 0.05 mol/L and 293 K.",
+      "assignment": "Write a short note for Lucas Brandt. Label the feed, permeate and concentrate on a simple sketch and say what each carries. Using 0.05 mol/L, two ions per unit, 293 K and R = 8.314 kPa L/(mol K), work out the osmotic pressure in kPa and psi (6.895 kPa per psi), showing each step. Explain in your own words why applied pressure has to be higher than that figure, and name one thing the real feed analysis would add.",
+      "rubric": [
+        "Names feed, permeate and concentrate correctly and says the concentrate carries the rejected salts.",
+        "Calculates the osmotic pressure with the stated constants and converts it to psi with units shown.",
+        "Explains that applied pressure must exceed osmotic pressure for water to cross toward the fresh side.",
+        "Names what a full water analysis or manufacturer projection would add instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain osmosis and reverse osmosis without using the word pressure in the first sentence, then add it. Check that kelvin is used, not degrees Celsius, and that the two ions are counted. Strong answers say the concentrate end is saltier, so the osmotic pressure there is higher. Watch for learners who think the membrane filters salt like a screen or who call the concentrate waste water with no salt in it.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and redraw the three streams on a simple flow sheet, labelling what each carries."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Look at your own plant or a training diagram and locate the feed, permeate and concentrate lines."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Marlow Creek scenario and calculate the osmotic pressure in kPa and psi."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wqc-alley",
+        "spellman-hb",
+        "wef-mop11",
+        "epa-reuse"
+      ],
+      "checks": [
+        {
+          "id": "ceu-reverse-osmosis-how-ro-works-c1",
+          "prompt": "Which description fits reverse osmosis?",
+          "choices": [
+            "Pressure forces water through a membrane from the salty side to the fresh side",
+            "Water drifts through a membrane toward the saltier side until pressures balance",
+            "Dissolved ions stick to a resin bed and are later washed off with a regenerant",
+            "Particles settle out of the water in a quiet basin under gravity"
+          ],
+          "correctIndex": 0,
+          "explanation": "RO uses applied pressure to push water against its natural direction. Drifting toward the salty side is plain osmosis, resin beds are ion exchange, and settling is sedimentation.",
+          "objective": "reverse-osmosis-how-ro-works"
+        },
+        {
+          "id": "ceu-reverse-osmosis-how-ro-works-c2",
+          "prompt": "In an RO unit, what is the permeate?",
+          "choices": [
+            "The water that enters the unit",
+            "The water that has crossed the membrane",
+            "The water that leaves carrying the rejected salts",
+            "The water used to rinse the cartridge filter"
+          ],
+          "correctIndex": 1,
+          "explanation": "Permeate is the product water that crosses the membrane. The water entering is the feed and the salty stream leaving is the concentrate.",
+          "objective": "reverse-osmosis-how-ro-works"
+        },
+        {
+          "id": "ceu-reverse-osmosis-how-ro-works-c3",
+          "prompt": "What must be true of the applied pressure for reverse osmosis to take place?",
+          "choices": [
+            "It equals the osmotic pressure so the two flows balance",
+            "It is lower than the osmotic pressure because osmosis supplies the rest",
+            "It is greater than the osmotic pressure of the feed-side solution",
+            "It is unrelated to osmotic pressure because membrane area sets the flow"
+          ],
+          "correctIndex": 2,
+          "explanation": "Water only crosses toward the fresh side when the applied pressure exceeds the osmotic pressure. Equal pressure gives no net flow, and lower pressure lets natural osmosis win.",
+          "objective": "reverse-osmosis-how-ro-works"
+        },
+        {
+          "id": "ceu-reverse-osmosis-how-ro-works-c4",
+          "prompt": "A feed contains 0.04 mol/L of a salt that splits into 2 ions per formula unit, at 300 K. Using osmotic pressure = i x c x R x T with R = 8.314 kPa L/(mol K), what is the osmotic pressure?",
+          "choices": [
+            "About 100 kPa",
+            "About 18 kPa",
+            "About 299 kPa",
+            "About 200 kPa"
+          ],
+          "correctIndex": 3,
+          "explanation": "2 x 0.04 x 8.314 x 300 = about 199.5 kPa. About 100 kPa forgets the two ions, about 18 kPa uses degrees Celsius instead of kelvin, and about 299 kPa assumes three ions.",
+          "objective": "reverse-osmosis-how-ro-works"
+        },
+        {
+          "id": "ceu-reverse-osmosis-how-ro-works-c5",
+          "prompt": "According to the handbook pore-size table, which membrane type has the smallest effective pores?",
+          "choices": [
+            "Reverse osmosis",
+            "Nanofiltration",
+            "Ultrafiltration",
+            "Microfiltration"
+          ],
+          "correctIndex": 0,
+          "explanation": "Reverse osmosis has the smallest openings and is used to remove dissolved solids. Nanofiltration is next smallest, and ultrafiltration and microfiltration have progressively larger pores.",
+          "objective": "reverse-osmosis-how-ro-works"
+        },
+        {
+          "id": "ceu-reverse-osmosis-how-ro-works-c6",
+          "prompt": "In a spiral wound element, where does the permeate travel before it leaves?",
+          "choices": [
+            "Straight along the feed spacer out of the concentrate end",
+            "Spirally inward in a permeate carrier to the centre tube",
+            "Outward through the wall of the pressure vessel",
+            "Back out through the feed inlet end of the element again"
+          ],
+          "correctIndex": 1,
+          "explanation": "Permeate crosses the membrane into a permeate carrier and spirals in to the central collector tube. Water staying in the feed spacer becomes concentrate.",
+          "objective": "reverse-osmosis-how-ro-works"
+        }
+      ]
+    },
+    {
+      "id": "reverse-osmosis-performance-arithmetic",
+      "title": "Performance arithmetic: recovery, rejection, flux and pressure",
+      "objectives": [
+        "Calculate recovery, rejection, salt passage, flux and concentration factor from stated flows and concentrations, with units.",
+        "Explain how pressure, osmotic pressure, temperature and recovery affect permeate flow, and estimate pump power and specific energy from stated constants."
+      ],
+      "lesson": "### The numbers an RO operator watches\n\nFour ratios describe how an RO unit is doing: recovery, rejection, salt passage and flux. Each is a simple calculation, and each is only meaningful when the units and the constants are written down. The handbook equations come from the Water Quality Control Handbook, section 8.8. Where a relation is plain mass balance, the lesson says so.\n\n### Recovery\n\nRecovery is the share of the feed that leaves as permeate.\n\nRecovery (percent) = permeate flow / feed flow x 100.\n\nThe handbook calls the related quantity recovery efficiency. Because the concentrate carries whatever the membrane rejected, recovery is a trade-off. A higher recovery gives more product from the same feed and a smaller concentrate stream to dispose of, but it also concentrates the salts in the concentrate more strongly. The handbook says the chosen recovery comes from an economic comparison of concentrate disposal cost against the cost of a larger membrane installation. Later in this lesson you will see a second limit: as the concentrate gets saltier, its dissolved salts can exceed their solubility and precipitate on the membrane surface.\n\nFlow balance is simple: feed = permeate + concentrate. If a unit takes 100 gpm and makes 75 gpm of permeate, the concentrate is 25 gpm and the recovery is 75 percent. Always divide by the feed flow. Dividing by the concentrate flow is a common slip and gives a number that is not a recovery at all.\n\n### Rejection and salt passage\n\nRejection is the percentage reduction in a constituent's concentration from feed to permeate. The handbook gives the relation as one minus the permeate concentration divided by the feed concentration, times 100.\n\nRejection (percent) = (1 - Cp / Cf) x 100, with Cp the permeate concentration and Cf the feed concentration, both in the same unit such as mg/L.\n\nSalt passage is the permeate concentration as a percentage of the feed concentration.\n\nSalt passage (percent) = Cp / Cf x 100 = 100 - rejection.\n\nIf the feed is 1,000 mg/L and the permeate is 10 mg/L, rejection is 99 percent and salt passage is 1 percent. A small change in rejection looks tiny, while the same change in salt passage can be a visible jump. A unit that slides from 99 to 98 percent rejection has doubled its salt passage from 1 to 2 percent. Conductivity is often used as a stand-in for dissolved solids, so a conductivity ratio estimates the salt ratio rather than measuring it directly.\n\n### Flux and membrane area\n\nFlux is the permeate flow per unit of membrane area, written in gallons per day per square foot, gfd. The handbook table of typical flux for RO shows a low range, from 2 to 62 gfd, with an average of 23. That is typical, not a target: a unit's design flux comes from its design documents.\n\nFlux (gfd) = permeate flow (gpd) / membrane area (ft2).\n\nThe same relation sizes a system. The required membrane area is the permeate flow wanted divided by the design flux. For RO, permeate flow equals feed flow times recovery as a decimal, so a given permeate need requires a larger feed flow. Check the units whenever you read this relation: gpd divided by gfd leaves square feet, so the area must be the flow divided by the flux, not multiplied by it. The handbook's printed equation 8.63 shows a multiplication, which does not balance the units, so use the division.\n\n### Concentration factor and the salt balance\n\nThe concentrate is saltier than the feed. If rejection were perfect, all the salt in the feed would leave in the concentrate, which is a smaller flow. The ratio of concentrate to feed concentration is the concentration factor, CF.\n\nCF = 1 / (1 - recovery as a decimal), for near-complete rejection.\n\nAt 50 percent recovery CF is 2. At 75 percent it is 4. At 90 percent it is 10. The handbook says RO typically concentrates dissolved salts by a factor of 2 to 4 and that when feed salts are already high, the solubility limit may be exceeded in the concentrate and scale forms. That is why recovery and scaling are linked, the topic of lesson three.\n\nWhen the permeate carries some salt, use a mass balance: salt in = salt out. Feed flow x Cf = permeate flow x Cp + concentrate flow x Cc. This is the figure's worked example. With 100 gpm of feed at 1,000 mg/L, 75 gpm of permeate at 10 mg/L and 25 gpm of concentrate, the concentrate concentration is (100 x 1,000 - 75 x 10) / 25 = 3,970 mg/L.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 220\" role=\"img\" aria-label=\"Flow and salt balance across an RO unit: feed 100 gpm at 1000 mg/L splits into permeate 75 gpm at 10 mg/L and concentrate 25 gpm at 3970 mg/L\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Worked balance: 100 gpm of feed becomes 75 gpm of permeate and 25 gpm of concentrate.</title>\n<rect x=\"130\" y=\"60\" width=\"130\" height=\"100\" rx=\"8\" fill=\"#eef2f6\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<text x=\"195\" y=\"115\" text-anchor=\"middle\" font-weight=\"bold\">RO unit</text>\n<path d=\"M20 110H126\" stroke=\"#1d2d40\" stroke-width=\"4\"/><path d=\"M118 102L130 110L118 118Z\" fill=\"#1d2d40\"/>\n<text x=\"20\" y=\"84\" font-weight=\"bold\">Feed</text>\n<text x=\"20\" y=\"98\" font-size=\"11\">100 gpm</text>\n<text x=\"20\" y=\"140\" font-size=\"11\">1,000 mg/L</text>\n<path d=\"M260 80H360\" stroke=\"#2f6db2\" stroke-width=\"4\"/><path d=\"M352 72L364 80L352 88Z\" fill=\"#2f6db2\"/>\n<text x=\"270\" y=\"40\" font-weight=\"bold\" fill=\"#2f6db2\">Permeate</text>\n<text x=\"270\" y=\"54\" font-size=\"11\">75 gpm</text>\n<text x=\"270\" y=\"100\" font-size=\"11\">10 mg/L</text>\n<path d=\"M260 140H360\" stroke=\"#1d2d40\" stroke-width=\"4\"/><path d=\"M352 132L364 140L352 148Z\" fill=\"#1d2d40\"/>\n<text x=\"270\" y=\"166\" font-weight=\"bold\">Concentrate</text>\n<text x=\"270\" y=\"182\" font-size=\"11\">25 gpm</text>\n<text x=\"270\" y=\"198\" font-size=\"11\">3,970 mg/L</text>\n<text x=\"20\" y=\"190\" font-size=\"11\">Recovery = 75 / 100 = 75 percent</text>\n<text x=\"20\" y=\"206\" font-size=\"11\">Salt in = 100,000; out = 750 + 99,250</text>\n</svg>\n<figcaption>Worked balance: 100 gpm of feed becomes 75 gpm of permeate and 25 gpm of concentrate.</figcaption>\n</figure>\n\n### Staging and transmembrane pressure\n\nWhen a single pass cannot reach the recovery wanted, vessels are arranged in stages. The handbook explains that in a staged system the concentrate or the permeate of one stage becomes the feed of another unit. In the common concentrate-staged layout, each stage has fewer vessels than the one before, so feed velocity across the membranes stays up as water is removed. On many units the concentrate valve sets recovery, so it is adjusted only within the designer's or manufacturer's limits. Pressure across a membrane is often summarised as transmembrane pressure, the average of the inlet and outlet feed-side pressures minus the permeate-side pressure. With inlet 410 psi, outlet 380 psi and permeate 10 psi, that is (410 + 380) / 2 - 10 = 385 psi. This is the pressure term that drives flow before osmotic pressure is subtracted.\n\n### Pressure: what the pump has to beat\n\nThe handbook describes the flow of permeate across an RO membrane by an equation in which flow is proportional to the membrane area and to the hydraulic pressure difference minus the osmotic pressure difference. In plain terms:\n\nPermeate flow rises with net driving pressure, which is the hydraulic pressure difference across the membrane minus the osmotic pressure difference.\n\nRaise the feed pressure with everything else fixed and permeate flow rises. Raise the salt concentration with everything else fixed and flow falls, because osmotic pressure rises. The same relation explains why a unit loses driving pressure along its length. At the feed end the osmotic pressure is that of the feed. At the concentrate end it is that of the concentrate. Assuming negligible permeate-side pressure, near-complete salt rejection and osmotic pressure proportional to concentration, if the feed is 100 psi osmotic pressure and recovery is 50 percent, the concentrate end is about 200 psi, so with 400 psi applied (ignoring pressure drop) the net driving pressure is 300 psi at the feed end and only 200 psi at the concentrate end.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 210\" role=\"img\" aria-label=\"Two bars showing a 400 psi applied pressure; osmotic pressure is 100 psi at the feed end leaving 300 net, and 200 psi at the concentrate end leaving 200 net\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Net driving pressure shrinks along the unit because the concentrate becomes saltier.</title>\n<text x=\"20\" y=\"22\" font-weight=\"bold\">Feed end</text>\n<rect x=\"20\" y=\"30\" width=\"320\" height=\"34\" fill=\"#dbe3ec\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"20\" y=\"30\" width=\"80\" height=\"34\" fill=\"#6b7a8c\"/>\n<text x=\"60\" y=\"52\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">osmotic 100</text>\n<text x=\"220\" y=\"52\" text-anchor=\"middle\" fill=\"#1d2d40\" font-weight=\"bold\">net driving 300</text>\n<text x=\"20\" y=\"100\" font-weight=\"bold\">Concentrate end</text>\n<rect x=\"20\" y=\"108\" width=\"320\" height=\"34\" fill=\"#dbe3ec\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"20\" y=\"108\" width=\"160\" height=\"34\" fill=\"#6b7a8c\"/>\n<text x=\"100\" y=\"130\" text-anchor=\"middle\" font-size=\"11\" fill=\"#fff\">osmotic 200</text>\n<text x=\"260\" y=\"130\" text-anchor=\"middle\" fill=\"#1d2d40\" font-weight=\"bold\">net 200</text>\n<path d=\"M20 160H340M20 154V166M340 154V166\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"180\" y=\"182\" text-anchor=\"middle\" font-size=\"11\">Applied pressure 400 psi (illustrative, pressure drop ignored)</text>\n<text x=\"180\" y=\"198\" text-anchor=\"middle\" font-size=\"11\">at 50 percent recovery the concentrate is about twice as salty</text>\n</svg>\n<figcaption>Net driving pressure shrinks along the unit because the concentrate becomes saltier.</figcaption>\n</figure>\n\nPressure has costs. The handbook says membranes compact over time, a creep deformation that is proportional to pressure and temperature and that lowers flux.\n\n### Pump energy\n\nThe Spellman handbook gives brake horsepower as flow in gpm times head in feet times specific gravity, divided by 3,960 times the efficiency. Pressure converts to head with 2.31 ft per psi. For water, specific gravity is about 1.\n\nBrake horsepower = gpm x psi x 2.31 / (3,960 x efficiency).\n\nA 200 gpm feed against a 450 psi pressure rise across the pump, with a pump efficiency of 0.70, needs 200 x 450 x 2.31 / (3,960 x 0.70) = 75 brake horsepower at the pump shaft. Multiply by 0.746 to get about 56 kW of shaft power. Dividing shaft kW by permeate flow in thousands of gallons per hour gives specific energy, in kWh per 1,000 gal, a good number to log. Electrical input is higher than shaft power by the motor losses. Two operating choices change it: pressure, which the pump must supply, and recovery, which sets how much of the pumped feed becomes product. At fixed feed flow, head and efficiency, recovery changes energy per gallon of permeate rather than pump power.\n\n### Temperature and normalising\n\nColder water is more viscous, so a unit at constant pressure makes less permeate in winter. Warmer water raises flux. The handbook notes that membranes have temperature limits and that osmotic pressure depends on temperature. Manufacturers publish a temperature correction factor that converts measured flow to what it would be at a reference temperature. Always use your manufacturer's factor, because it depends on the membrane. A flow that falls in January and recovers in April may be temperature, not fouling. Lesson four shows how normalising accounts for temperature before other causes are considered.\n\n### Worked example: Harbor Pines reuse plant\n\nThe fictional Harbor Pines plant feeds 1,200 gpm to a skid with 60,000 ft2 of membrane. Permeate is 900 gpm. Feed conductivity is 2,000 microsiemens per cm and permeate is 60.\n\nRecovery = 900 / 1,200 = 75 percent. Concentrate = 300 gpm. Conductivity passage = 60 / 2,000 = 3 percent, so conductivity rejection is 97 percent. Flux = 900 gpm x 1,440 min/day / 60,000 ft2 = 1,296,000 / 60,000 = 21.6 gfd, inside the typical range quoted above. If the answer had landed far outside it, the first move would be to check the area figure and the design sheet, not the textbook.",
+      "evidence": "### Fictional scenario: Harbor Pines Reuse Plant\n\nHarbor Pines Reuse Plant is a fictional water reuse facility. Its RO skid has 60,000 ft2 of membrane and takes 1,200 gpm of feed, making 900 gpm of permeate. Feed conductivity is 2,000 microsiemens per cm and permeate is 60. The plant manager, Rosa Delgado, asks the new operator, Ivan Petrov, whether the numbers look sensible and what happens to the salt balance if the plant raises recovery.",
+      "assignment": "Write a one-page note for Rosa Delgado. With the numbers given, calculate recovery, concentrate flow, salt passage, rejection and flux, showing each step and unit. Then estimate the concentration factor if recovery were raised to 85 percent, and explain in plain language why a higher recovery makes scale more likely. State one measurement you would want before agreeing to the change.",
+      "rubric": [
+        "Calculates recovery, concentrate flow, salt passage, rejection and flux correctly, with units.",
+        "Divides recovery by the feed flow and flux by the membrane area, not the reverse.",
+        "Estimates the concentration factor and links it to scale risk at the concentrate end.",
+        "Names a measurement or record to check before changing recovery."
+      ],
+      "facilitatorGuide": "Ask learners to read each formula aloud with its units before using it. Check that percent is written as a decimal in the concentration factor formula and that the unit of flux is gfd. Strong answers connect recovery, concentration factor and osmotic pressure in one sentence. Watch for learners who divide permeate by concentrate, who multiply flow by flux to get area, or who use degrees Celsius in the osmotic pressure formula.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write each formula in your own words with the unit of each term."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Find the recovery, flux and permeate conductivity values in a plant or training data sheet."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Harbor Pines scenario and calculate recovery, salt passage and flux."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wqc-alley",
+        "spellman-hb"
+      ],
+      "checks": [
+        {
+          "id": "ceu-reverse-osmosis-performance-arithmetic-c1",
+          "prompt": "A plant sends 800 gpm of feed to an RO unit and collects 600 gpm of permeate. What is the recovery?",
+          "choices": [
+            "25 percent",
+            "133 percent",
+            "75 percent",
+            "43 percent"
+          ],
+          "correctIndex": 2,
+          "explanation": "Recovery = permeate / feed x 100 = 600 / 800 x 100 = 75 percent. 25 percent is the concentrate share, 133 percent inverts the ratio, and 43 percent divides by permeate plus feed.",
+          "objective": "reverse-osmosis-performance-arithmetic"
+        },
+        {
+          "id": "ceu-reverse-osmosis-performance-arithmetic-c2",
+          "prompt": "A unit's feed is 500 mg/L of dissolved salt and its permeate is 20 mg/L. Using rejection = (1 - Cp / Cf) x 100, what is the rejection?",
+          "choices": [
+            "4 percent",
+            "25 percent",
+            "104 percent",
+            "96 percent"
+          ],
+          "correctIndex": 3,
+          "explanation": "Rejection = (1 - 20 / 500) x 100 = 96 percent. 4 percent is the salt passage, 25 percent reads the feed to permeate ratio as a percentage, and 104 percent adds instead of subtracting.",
+          "objective": "reverse-osmosis-performance-arithmetic"
+        },
+        {
+          "id": "ceu-reverse-osmosis-performance-arithmetic-c3",
+          "prompt": "The flux relation for RO says permeate flow rises with the hydraulic pressure difference across the membrane minus the osmotic pressure difference. If the hydraulic pressure difference rises while the osmotic pressure difference stays the same, what happens to permeate flow?",
+          "choices": [
+            "It rises because the net driving pressure is larger",
+            "It falls because the membrane compacts at once",
+            "It stays the same because osmotic pressure sets the flow",
+            "It falls because rejection rises with pressure"
+          ],
+          "correctIndex": 0,
+          "explanation": "A larger net driving pressure pushes more water through. Compaction is a slow creep over time, osmotic pressure alone does not fix flow, and rejection is not a term in the flow relation.",
+          "objective": "reverse-osmosis-performance-arithmetic"
+        },
+        {
+          "id": "ceu-reverse-osmosis-performance-arithmetic-c4",
+          "prompt": "A skid has 40 elements of 400 ft2 each and makes 300,000 gpd of permeate. What is the flux?",
+          "choices": [
+            "About 750 gfd",
+            "About 18.8 gfd",
+            "About 0.05 gfd",
+            "About 37.5 gfd"
+          ],
+          "correctIndex": 1,
+          "explanation": "Area = 40 x 400 = 16,000 ft2, and flux = 300,000 / 16,000 = 18.75 gfd. 750 gfd uses one element's area, 0.05 is the reciprocal of the flux, mislabelled as gfd, and 37.5 gfd halves the area.",
+          "objective": "reverse-osmosis-performance-arithmetic"
+        },
+        {
+          "id": "ceu-reverse-osmosis-performance-arithmetic-c5",
+          "prompt": "An RO unit runs at 80 percent recovery with near-complete rejection. Using CF = 1 / (1 - recovery as a decimal), about how many times saltier is the concentrate than the feed?",
+          "choices": [
+            "About 4 times",
+            "About 1.25 times",
+            "About 5 times",
+            "About 80 times"
+          ],
+          "correctIndex": 2,
+          "explanation": "CF = 1 / (1 - 0.8) = 5. About 4 times divides recovery by the concentrate fraction, 1.25 times leaves out the subtraction, and 80 times treats the percentage as the factor.",
+          "objective": "reverse-osmosis-performance-arithmetic"
+        },
+        {
+          "id": "ceu-reverse-osmosis-performance-arithmetic-c6",
+          "prompt": "In winter the raw permeate flow of an RO unit falls at constant feed pressure. Which response is best supported?",
+          "choices": [
+            "Clean the membranes at once because a falling flow means fouling",
+            "Replace the feed pump because colder water lowers pump output",
+            "Raise the recovery setpoint to bring the flow back up",
+            "Compare normalised flow before judging the drop"
+          ],
+          "correctIndex": 3,
+          "explanation": "Colder water makes less permeate, so raw flow alone can mislead. Normalised flow helps separate temperature effects from fouling. Cleaning, pump replacement or higher recovery treat a cause that may not exist.",
+          "objective": "reverse-osmosis-performance-arithmetic"
+        }
+      ]
+    },
+    {
+      "id": "reverse-osmosis-pretreatment-fouling",
+      "title": "Pretreatment and fouling: protecting the membranes",
+      "objectives": [
+        "Explain why pretreatment is needed and match particles, oxidants and scale-forming salts to the pretreatment step that controls each.",
+        "Tell particulate fouling, scaling and biofouling apart by where and how they show up, and describe the purpose of clean-in-place, cleaning triggers and membrane integrity checks."
+      ],
+      "lesson": "### Why pretreatment decides how the unit performs\n\nAn RO membrane is a very fine barrier, and the channels on its feed side are narrow. Material the membrane does not pass stays on the feed side. It can leave in the concentrate, build up at the surface, or deposit in the flow channels. The Water Quality Control Handbook calls fouling one of the largest problems in applying membranes to wastewater treatment. It adds that most fouling can be eliminated by pretreatment of the feed and cleaning of the membranes. For an operator, that means the pretreatment train is part of the membrane system. If it drifts, the membranes pay for it.\n\nThe handbook's pretreatment table matches a problem in the feed to a technology. Suspended solids go to gravity settling, media filtration or cartridge filtration. Organics and chlorine go to activated carbon. Scalants such as calcium, magnesium and metal hydroxides go to precipitation, filtration, chemical addition or ion exchange. Fats, oils and grease go to gravity separation, emulsion breaking or ultrafiltration. High or low pH goes to pH adjustment. The table is a menu, and a pilot or treatability study decides which items a given plant needs.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 340\" role=\"img\" aria-label=\"Pretreatment train in order: particle removal, oxidant removal, scale control, cartridge filter, high-pressure pump, membranes\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Typical pretreatment order ahead of the membranes, with the job of each step.</title>\n<g fill=\"#eef2f6\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"10\" y=\"8\" width=\"150\" height=\"38\" rx=\"5\"/><rect x=\"10\" y=\"64\" width=\"150\" height=\"38\" rx=\"5\"/><rect x=\"10\" y=\"120\" width=\"150\" height=\"38\" rx=\"5\"/><rect x=\"10\" y=\"176\" width=\"150\" height=\"38\" rx=\"5\"/><rect x=\"10\" y=\"232\" width=\"150\" height=\"38\" rx=\"5\"/><rect x=\"10\" y=\"288\" width=\"150\" height=\"38\" rx=\"5\"/></g>\n<g stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"><path d=\"M85 46V64M85 102V120M85 158V176M85 214V232M85 270V288\"/></g>\n<g fill=\"#1d2d40\"><path d=\"M79 58L85 66L91 58ZM79 114L85 122L91 114ZM79 170L85 178L91 170ZM79 226L85 234L91 226ZM79 282L85 290L91 282Z\"/></g>\n<g text-anchor=\"middle\" font-weight=\"bold\"><text x=\"85\" y=\"32\">Particle removal</text><text x=\"85\" y=\"88\">Oxidant removal</text><text x=\"85\" y=\"144\">Scale control</text><text x=\"85\" y=\"200\">Cartridge filter</text><text x=\"85\" y=\"256\">High-pressure pump</text><text x=\"85\" y=\"312\">Membranes</text></g>\n<g font-size=\"11\"><text x=\"172\" y=\"22\">Media filter or screen:</text><text x=\"172\" y=\"36\">keeps silt and floc out</text>\n<text x=\"172\" y=\"78\">Carbon or a reducing agent:</text><text x=\"172\" y=\"92\">protects polyamide</text>\n<text x=\"172\" y=\"134\">Antiscalant or acid:</text><text x=\"172\" y=\"148\">keeps salts dissolved</text>\n<text x=\"172\" y=\"190\">Last guard against</text><text x=\"172\" y=\"204\">particles and debris</text>\n<text x=\"172\" y=\"246\">Adds the pressure to</text><text x=\"172\" y=\"260\">overcome osmotic pressure</text>\n<text x=\"172\" y=\"302\">Permeate and concentrate</text><text x=\"172\" y=\"316\">leave here</text></g>\n</svg>\n<figcaption>Typical pretreatment order ahead of the membranes, with the job of each step.</figcaption>\n</figure>\n\n### Particles: turbidity, SDI and cartridge filters\n\nParticles are a common cause of trouble, and they are tracked with turbidity and with the silt density index, SDI. SDI is a test in which feed water passes through a small-pore filter under constant pressure, and the time needed to collect a fixed volume is compared at the start and after a set interval. A higher number means the water plugs the test filter faster and has greater fouling potential. The handbook says feed to an RO system should have an SDI of less than 3.5 to protect the membrane. Treat that figure as typical guidance: your manufacturer's warranty conditions and your design sheet give the value for your unit.\n\nIn a typical layout a cartridge filter sits just ahead of the high-pressure pump. Its job is to catch particles and debris that slip past upstream steps, so fewer reach the pump and membranes. Cartridges are normally replaced when their pressure loss reaches the limit set by the plant or manufacturer. A rising pressure drop across the cartridge is therefore a message about the upstream steps. Changing cartridges more and more often, with a rising SDI, may mean particle removal upstream is slipping. The cartridge filter is not a substitute for fixing that.\n\n### Oxidants: protecting the membrane from chlorine\n\nChlorine is a useful disinfectant, and many feed waters carry a residual. The handbook rates the chlorine resistance of cellulose acetate as good and of polyamide as poor, and polyamide is a common modern RO membrane. A polyamide membrane that sees chlorine can be damaged, and the damage can be permanent, letting more salt through. The handbook's table lists activated carbon adsorption as pretreatment for chlorine. Plants also use a reducing agent such as sodium bisulfite to chemically remove the residual, a family of chemicals the Spellman handbook describes for dechlorinating wastewater. Where a membrane cannot tolerate oxidants at all, the manufacturer may specify a non-oxidising biocide for slime control instead. Whichever method is used, plants check the feed for residual oxidant, because a failed dechlorination step is a fast route to membrane damage. The manufacturer states what the membrane tolerates.\n\n### Scale: salts that come out of solution\n\nThe concentrate is several times saltier than the feed. If a sparingly soluble salt exceeds its solubility limit at the membrane surface, it can precipitate there. That is scale. The handbook says RO typically concentrates salts by a factor of 2 to 4, and that when the feed is already high in dissolved salts the solubility limits may be exceeded. The scalants met most often are calcium carbonate and calcium sulfate. Scale tends to show first at the tail end, where the concentrate is saltiest. It raises the osmotic pressure at the surface and reduces flux and rejection.\n\nOperators have three levers. The first is lower recovery, which lowers the concentration factor. The second is chemistry: acid to adjust pH, or an antiscalant, a chemical that interferes with crystal growth so salts are less likely to precipitate at the concentration reached. Antiscalant dose and acid dose are set by the designer from the water analysis. The third is flow: enough flow across the membrane keeps the boundary layer thin. Closing the concentrate valve to squeeze out more permeate raises recovery and pushes the unit toward scale, so recovery changes are made against the design limits and not on a hunch.\n\n### Fouling, scaling and biofouling: telling them apart\n\nThe handbook lists five kinds of fouling: scaling, metal oxide fouling, plugging, colloidal fouling and biological fouling, plus concentration polarization at the surface. Three matter most in daily work, and each pattern is a clue, not a diagnosis.\n\nParticulate and colloidal fouling comes from silt, colloids and debris. It typically shows up first at the lead end of the array, as a rising pressure drop across the first stage and a falling flow. Metal oxide fouling comes from soluble iron or manganese that oxidises inside the system and deposits as insoluble compounds. The handbook says iron is the most common.\n\nScaling comes from salts crossing their solubility limit. It typically shows up at the tail end first: the pressure drop of the last stage rises, flow falls and salt passage rises because the membrane surface is saltier.\n\nBiofouling is microbial growth. The handbook says it decreases flux, increases pressure drop and also decreases rejection. It can show up at the lead end with a rising pressure drop and a slimy deposit, and a fast return after cleaning points to a continuing source. Nutrients in the feed fuel it, so removing organics upstream is part of the control.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"A two-stage array: stage 1 shows particle and slime fouling first, stage 2 where concentrate is saltiest shows scale and rising salt passage\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Where trouble shows first: particles and slime at the lead end, scale at the tail end.</title>\n<rect x=\"20\" y=\"40\" width=\"130\" height=\"60\" rx=\"6\" fill=\"#eef2f6\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<rect x=\"240\" y=\"40\" width=\"130\" height=\"60\" rx=\"6\" fill=\"#eef2f6\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<text x=\"85\" y=\"76\" text-anchor=\"middle\" font-weight=\"bold\">Stage 1</text>\n<text x=\"305\" y=\"76\" text-anchor=\"middle\" font-weight=\"bold\">Stage 2</text>\n<path d=\"M2 70H20\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<path d=\"M150 70H240\" stroke=\"#1d2d40\" stroke-width=\"3\"/><path d=\"M230 63L242 70L230 77Z\" fill=\"#1d2d40\"/>\n<text x=\"195\" y=\"60\" text-anchor=\"middle\" font-size=\"11\">concentrate</text>\n<path d=\"M370 70H388\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<text x=\"20\" y=\"28\" font-size=\"11\">Feed</text>\n<text x=\"370\" y=\"28\" text-anchor=\"end\" font-size=\"11\">Concentrate out</text>\n<path d=\"M85 100V120M305 100V120\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"85\" y=\"138\" text-anchor=\"middle\" font-weight=\"bold\">Lead end</text>\n<text x=\"85\" y=\"154\" text-anchor=\"middle\" font-size=\"11\">particles, slime:</text>\n<text x=\"85\" y=\"168\" text-anchor=\"middle\" font-size=\"11\">stage 1 pressure</text>\n<text x=\"85\" y=\"182\" text-anchor=\"middle\" font-size=\"11\">drop climbs first</text>\n<text x=\"305\" y=\"138\" text-anchor=\"middle\" font-weight=\"bold\">Tail end</text>\n<text x=\"305\" y=\"154\" text-anchor=\"middle\" font-size=\"11\">scale: salts most</text>\n<text x=\"305\" y=\"168\" text-anchor=\"middle\" font-size=\"11\">concentrated, salt</text>\n<text x=\"305\" y=\"182\" text-anchor=\"middle\" font-size=\"11\">passage climbs</text>\n<text x=\"195\" y=\"216\" text-anchor=\"middle\" font-size=\"11\">Illustrative: real arrays and signatures vary.</text>\n</svg>\n<figcaption>Where trouble shows first: particles and slime at the lead end, scale at the tail end.</figcaption>\n</figure>\n\n### Cleaning triggers and clean-in-place at purpose level\n\nCleaning is part of normal operation. The handbook says routine cleaning is needed on any size of unit, and that cleaning is done by flushing clean water or a chemical cleaning solution through the membranes. Clean-in-place, usually shortened to CIP, means cleaning the elements while they stay in their housings, by recirculating a cleaning solution through the unit. Its purpose is to dissolve or loosen deposits and restore flow. Different foulants call for different cleaners: broadly, acid-type cleaners target mineral scale and alkaline or detergent-type cleaners target organic and biological deposits. The manufacturer specifies the chemicals, strengths, temperatures and contact times for your membranes, and the facility procedure covers how it is done safely. This course does not give a cleaning recipe.\n\nThe point at which to clean is set by the data, not the calendar. Typical triggers are a fall in normalised permeate flow, a rise in normalised pressure drop and a rise in normalised salt passage past a set amount that the manufacturer specifies. The next lesson shows how to calculate them. Fouling is reversible when cleaning removes it and irreversible when it does not. Over years a membrane can lose some performance that cleaning does not recover, and membranes are then replaced. Delayed cleaning can let some foulants harden and become harder to remove.\n\n### Membrane integrity\n\nOxidant exposure can chemically degrade a membrane and let more salt through it. Particles can cut the surface, and a failed seal can let feed bypass the membrane. The handbook notes that membrane materials have defined limits for pH, temperature and chemical exposure, and that prolonged operation outside them shortens membrane life. A sudden rise in permeate conductivity with steady flow is a clue to a leak, a bypass or a damaged element, and it should be checked before blaming fouling. Checking permeate conductivity vessel by vessel is a common way to narrow it down, and an integrity test named in the manufacturer's procedure can confirm a breach.\n\n### Worked example: Cedar Basin plant\n\nAt the fictional Cedar Basin plant the feed has a hardness that was stable for years. After the supplier changes the antiscalant batch, the operator notices the pressure drop in stage 2, the last stage in this layout, rising while stage 1 is steady, salt passage rising from 1.4 to 2.1 percent, a rise of 0.7 percentage points, and flow falling. That pattern is a tail-end signature, so scale is more likely than particles. The operator checks the antiscalant feed rate and the feed pH before cleaning, because cleaning without fixing the cause only resets the clock.",
+      "evidence": "### Fictional scenario: Cedar Basin Plant\n\nCedar Basin Plant is a fictional reuse and drinking water plant. After a change of antiscalant supplier the operator, Maya Lindqvist, sees the stage 2 pressure drop rising while stage 1 is steady, flow falling and salt passage climbing from 1.4 to 2.1 percent. Her supervisor, Tomas Reid, asks whether to clean the unit now or check something else first.",
+      "assignment": "Write a one-page note for Tomas Reid. Say whether the pattern points to particles, scale, biological growth or a leak, and explain why, using where in the array the change appears. List two things you would check before cleaning and say what clean-in-place is meant to do. Explain why cleaning alone, without fixing the cause, is not enough. Do not give a cleaning recipe.",
+      "rubric": [
+        "Reads the tail-end pattern and identifies scale as the most likely cause with a reason.",
+        "Lists checks such as antiscalant feed, feed pH or recovery before cleaning.",
+        "States the purpose of clean-in-place without giving chemical recipes.",
+        "Explains that cleaning without fixing the cause only resets the clock."
+      ],
+      "facilitatorGuide": "Ask learners to draw the two-stage array and mark where each kind of fouling shows first. Check they distinguish scale (tail end, salt passage rises) from particles and slime (lead end, pressure drop climbs). Strong answers mention checking instruments and records before acting. Watch for learners who treat any loss of flow as a reason to clean at once, or who want to raise pressure or recovery to compensate.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and make a three-column table of particles, scale and biofouling: where seen, why, first checks."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Look at a pretreatment diagram for your plant or a training example and mark each step's purpose."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Cedar Basin scenario and decide what to check before any cleaning."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wqc-alley",
+        "spellman-hb"
+      ],
+      "checks": [
+        {
+          "id": "ceu-reverse-osmosis-pretreatment-fouling-c1",
+          "prompt": "What is the main purpose of pretreatment ahead of an RO unit?",
+          "choices": [
+            "Protect the membranes from fouling, scale and damage",
+            "Raise the osmotic pressure so the pump needs less power",
+            "Remove the need for cleaning at the membranes later",
+            "Make the concentrate stream larger than the permeate flow"
+          ],
+          "correctIndex": 0,
+          "explanation": "Pretreatment helps protect the membranes and preserve flux and rejection by removing what harms them. Raising osmotic pressure is not how it helps, and it reduces the need for cleaning without removing it.",
+          "objective": "reverse-osmosis-pretreatment-fouling"
+        },
+        {
+          "id": "ceu-reverse-osmosis-pretreatment-fouling-c2",
+          "prompt": "What does the silt density index (SDI) indicate about a feed water?",
+          "choices": [
+            "How much dissolved salt the feed carries in it",
+            "How fast it plugs a small-pore test filter",
+            "How much chlorine residual the feed still holds",
+            "How hard the feed is, as calcium carbonate"
+          ],
+          "correctIndex": 1,
+          "explanation": "SDI is a plugging test used to judge particle fouling potential. It does not measure salinity, chlorine or hardness.",
+          "objective": "reverse-osmosis-pretreatment-fouling"
+        },
+        {
+          "id": "ceu-reverse-osmosis-pretreatment-fouling-c3",
+          "prompt": "A polyamide RO unit is fed water that carries a chlorine residual. What should pretreatment do?",
+          "choices": [
+            "Add more chlorine so the membrane stays clean and slime free",
+            "Leave it in because polyamide tolerates oxidants well enough",
+            "Remove the residual, such as with carbon or a reducing agent",
+            "Raise the pH so the residual is neutralised"
+          ],
+          "correctIndex": 2,
+          "explanation": "The handbook rates polyamide chlorine resistance as poor, so the oxidant is removed ahead of the membranes. Adding chlorine or leaving it risks permanent damage, and pH change does not remove it.",
+          "objective": "reverse-osmosis-pretreatment-fouling"
+        },
+        {
+          "id": "ceu-reverse-osmosis-pretreatment-fouling-c4",
+          "prompt": "Which change lowers scaling risk by lowering the concentration factor at the tail end?",
+          "choices": [
+            "Raise the recovery setpoint",
+            "Close the concentrate valve further",
+            "Stop the antiscalant feed while the feed looks clear",
+            "Lower the recovery setpoint"
+          ],
+          "correctIndex": 3,
+          "explanation": "Lower recovery means a smaller concentration factor, so salts stay below their solubility limits. Closing the concentrate valve raises recovery, and clear water can still scale.",
+          "objective": "reverse-osmosis-pretreatment-fouling"
+        },
+        {
+          "id": "ceu-reverse-osmosis-pretreatment-fouling-c5",
+          "prompt": "Soluble iron in the feed oxidises inside the system and forms deposits on the membrane. Which fouling type does the handbook call this?",
+          "choices": [
+            "Metal oxide fouling",
+            "Biological fouling",
+            "Colloidal fouling",
+            "Concentration polarization"
+          ],
+          "correctIndex": 0,
+          "explanation": "Oxidised iron and manganese form insoluble deposits, which the handbook calls metal oxide fouling. Biological fouling is microbial growth, colloidal fouling is entrapped colloids, and polarization is a boundary layer.",
+          "objective": "reverse-osmosis-pretreatment-fouling"
+        },
+        {
+          "id": "ceu-reverse-osmosis-pretreatment-fouling-c6",
+          "prompt": "What is the main job of the cartridge filter just ahead of the high-pressure pump?",
+          "choices": [
+            "Remove dissolved salts from the feed before the pump",
+            "Catch particles that slip past upstream steps",
+            "Take out the chlorine residual before the pump",
+            "Soften the feed by removing hardness before the pump"
+          ],
+          "correctIndex": 1,
+          "explanation": "The cartridge filter is the last guard against particles and debris. Salts, chlorine and hardness need other steps.",
+          "objective": "reverse-osmosis-pretreatment-fouling"
+        }
+      ]
+    },
+    {
+      "id": "reverse-osmosis-operation-troubleshooting",
+      "title": "Operation and troubleshooting: trends, concentrate and records",
+      "objectives": [
+        "Normalise and trend permeate flow, salt passage and pressure drop, and read the pattern to separate temperature, particles, scale and leaks.",
+        "Describe concentrate disposal, post-treatment of permeate, the records that support troubleshooting, and the hazards to recognise in an RO room."
+      ],
+      "lesson": "### Running an RO unit by the data\n\nThe Water Quality Control Handbook says a membrane system can run continuously without operator attention if it has the right controls and instruments, and in the same paragraph says that cleaning and routine maintenance are needed with any size of unit. In practice the operator's main job is to read the data and act before small drifts become damage. The data are a short list: feed, permeate and concentrate flows; feed, interstage and concentrate pressures; permeate and feed conductivity; temperature; feed pH; chemical feed rates; cartridge filter pressure drop; and the SDI or turbidity of the feed. The handbook adds that pressure gauges are needed on the pretreatment filters and on the membrane feed pump, and that level controls are needed on feed, permeate and concentrate tanks.\n\nMost RO units are run by a programmable controller. It trips the unit on conditions such as very high or low pump pressure, out-of-range pH, high feed turbidity or high permeate conductivity, to protect expensive membranes. Operators check the trip settings and test the alarms on a schedule, because an alarm that has never been tested is a guess.\n\n### Normalised performance data\n\nRaw numbers move for reasons that are not the membrane. Colder water makes less permeate. A higher feed salinity cuts net driving pressure. A change in feed pressure changes flow. If you plot raw permeate flow you cannot tell which of these you are looking at. Normalising converts each day's readings to a standard set of conditions, using the manufacturer's correction method, so the trend that remains is easier to attribute to the membrane.\n\nThree normalised values are trended: normalised permeate flow, normalised salt passage and normalised pressure drop across each stage. For temperature, a simple form is:\n\nTemperature-corrected permeate flow = measured permeate flow x the manufacturer's temperature factor.\n\nThe factor comes from the manufacturer's table and is above 1 when the water is colder than the reference temperature. Suppose a unit makes 190 gpm at a cold temperature and the factor is 1.18. Temperature-corrected flow is 190 x 1.18 = 224 gpm. If last summer's normalised flow was 230 gpm at the same pressure and salinity, the corrected flow is about 2.5 percent below it. That small gap is not by itself a fouling diagnosis; check the trend and the instruments before assigning a cause. Software normalisation also corrects for pressure and salinity, but the idea is the same. Use the manufacturer's method and keep the reference conditions fixed so comparisons stay valid.\n\nPercent decline is the useful summary: (baseline - current) / baseline x 100. If normalised flow was 240 gpm at start-up and is now 204 gpm, the decline is 36 / 240 = 15 percent. Compare it with the cleaning trigger set by the manufacturer.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Line chart of normalised permeate flow over twelve weeks falling from 100 to 84 percent of baseline, crossing a dashed cleaning trigger at 85 percent, then recovering after cleaning\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Normalised flow trend: it falls below the dashed trigger line, the unit is cleaned, and flow recovers.</title>\n<path d=\"M50 20V180H370\" stroke=\"#1d2d40\" stroke-width=\"2\" fill=\"none\"/>\n<text x=\"46\" y=\"30\" text-anchor=\"end\" font-size=\"11\">100</text>\n<text x=\"46\" y=\"104\" text-anchor=\"end\" font-size=\"11\">90</text>\n<text x=\"46\" y=\"178\" text-anchor=\"end\" font-size=\"11\">80</text>\n<text x=\"210\" y=\"208\" text-anchor=\"middle\" font-size=\"11\">Weeks of operation (0 to 14)</text>\n<text x=\"14\" y=\"14\" font-size=\"11\">Normalised flow, percent of baseline</text>\n<path d=\"M50 141H370\" stroke=\"#6b7a8c\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/>\n<text x=\"56\" y=\"157\" font-size=\"11\">cleaning trigger (85)</text>\n<polyline points=\"50,28 90,34 130,44 170,58 210,80 250,110 290,148 290,40 330,46 370,52\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<g fill=\"#2f6db2\"><circle cx=\"50\" cy=\"28\" r=\"4\"/><circle cx=\"290\" cy=\"148\" r=\"4\"/><circle cx=\"290\" cy=\"40\" r=\"4\"/><circle cx=\"370\" cy=\"52\" r=\"4\"/></g>\n<text x=\"296\" y=\"168\" font-size=\"11\" font-weight=\"bold\">clean here</text>\n</svg>\n<figcaption>Normalised flow trend: it falls below the dashed trigger line, the unit is cleaned, and flow recovers.</figcaption>\n</figure>\n\nA trend line is a better tool than a single reading. A slow fall followed by recovery after cleaning is normal. A fall that returns quickly after each clean points to an upstream problem, for example biological growth or poor particle removal. A recovery that gets smaller after each clean suggests foulants that are no longer fully removable.\n\n### Reading the pattern\n\nTwo or three trends together usually point to a cause. Falling normalised flow with a rising pressure drop in stage 1 and steady salt passage points to particles or slime at the lead end, so check the pretreatment, SDI and cartridge filter records. Falling flow with a rising pressure drop in the last stage and a rising salt passage points to scale, so check the antiscalant feed, feed pH and recovery. Steady flow with a sudden rise in salt passage points to a leak: a damaged element or a failed seal. If raw permeate flow falls as the water cools while normalised flow stays steady, the drop is consistent with a temperature effect that normalising removes. If normalised flow also falls, check the inputs and investigate other causes. Always check the instruments too, because a drifting flow meter or conductivity probe produces a trend that is not real.\n\n### Concentrate disposal\n\nThe concentrate is a stream of rejected salts and other contaminants at a higher concentration than the feed. The handbook says the part of the raw flow that does not pass the membranes contains high levels of dissolved solids and must be disposed of or further treated. Spellman lists disposal of waste brine, along with fouling, membrane replacement cost and energy, as a significant limitation of membranes. At a drinking water plant the concentrate may be discharged to surface water, to a sewer, or handled by another approved route, depending on the location. At a reuse plant the concentrate often goes back to the sewer or to another part of the treatment works, where its salt load matters to the plant that receives it. In every case the applicable rule or permit sets the requirements, and the plant should know what the concentrate carries before choosing the route. Raising recovery reduces the volume to dispose of but raises its concentration. Discharge to surface water or to the ground is controlled by permit programs, so the permitting authority is consulted early.\n\n### Post-treatment: finishing the permeate\n\nPermeate is very low in dissolved minerals, and at a drinking water plant it is often too aggressive for pipes. Post-treatment prepares it for use. Typical steps are pH adjustment, stabilisation by adding alkalinity or hardness, or blending with another source, and disinfection. Carbon dioxide passes through RO membranes, so a degasification step may be included. The Langelier saturation index, defined in the Spellman handbook as a numerical index, shows whether water is supersaturated or undersaturated with respect to calcium carbonate. Corrosion control chemicals may be added as a final step. The goal is a stable finished water. For reuse the permeate is used or further treated according to the end use, and the applicable rule sets the quality required.\n\n### Shutdowns and standby\n\nAn idle unit still needs attention. Standing water in the vessels can grow slime, and salts left in the concentrate can scale the membranes. For short or long shutdowns the manufacturer specifies how to preserve the elements, and the unit is flushed to waste before it returns to service so that any preservative leaves the system before permeate is used.\n\n### Records that answer the manufacturer's questions\n\nRecords are what turn a bad week into an explanation. A good log includes dated normalised trends, pretreatment chemical doses and residuals, cartridge filter pressure drop, feed SDI or turbidity, cleaning events with the date, the cleaner used and the before and after performance, and any alarm or shutdown. Manufacturers commonly ask for records like these when performance declines. A single reading says very little, a trend with the events marked says a lot.\n\n### Safety at recognition level\n\nAn RO room has hazards worth recognising. The unit runs at high pressure, so piping and vessels hold stored energy. The room has chemicals: acid for pH control, antiscalant, cleaning chemicals that may be strong acids or bases, and sometimes oxidants or reducing agents for pretreatment. Some of these chemicals react dangerously if they are mixed. Operators work with safety data sheets, personal protective equipment, labelling and locked-out equipment according to the facility's own procedures and training. This course does not provide procedures. The purpose of those procedures is to control the hazard before the work starts, so know the hazards and follow the plant's written rules.\n\n### Troubleshooting scenario: Alder Point plant\n\nAt the fictional Alder Point reuse plant the operators log these normalised values. Baseline normalised permeate flow is 260 gpm. Six weeks later it is 221 gpm. Stage 1 pressure drop has risen steadily while stage 2 is flat, and normalised salt passage is unchanged. Cartridge filters are changed twice as often as last quarter and the feed SDI has been climbing since the secondary filters were taken out for repair.\n\nStep 1: decline = (260 - 221) / 260 = 15 percent. Step 2: compare with the manufacturer's trigger, which for this fictional unit is a decline of 15 percent, so the unit has reached it. Step 3: read the pattern: the lead stage and the cartridge filters are loaded, salt passage is steady, so the pattern is most consistent with particulate loading rather than scale or a leak. Step 4: the right fix is to restore the upstream filtration, then clean the unit under the manufacturer's procedure and note the result in the log. Cleaning alone is likely to be followed by the same loss.",
+      "evidence": "### Fictional scenario: Alder Point Plant\n\nAlder Point Plant is a fictional reuse plant. Baseline normalised permeate flow is 260 gpm. Six weeks after the secondary filters are taken out for repair it is 221 gpm. Stage 1 pressure drop has climbed while stage 2 is flat, normalised salt passage is unchanged, cartridge filters are being changed twice as often and feed SDI is rising. The operator, Priya Haldane, must report to her supervisor, Owen Castellan.",
+      "assignment": "Write a one-page report for Owen Castellan. Calculate the percent decline in normalised flow, read the pattern and name the most likely cause, and say what you would fix first and why. List the records you would attach for the membrane manufacturer, say where the concentrate goes and why that route matters, and name the hazards you would recognise in the room, without writing any safety procedure.",
+      "rubric": [
+        "Calculates the percent decline correctly and compares it with a trigger set by the manufacturer.",
+        "Reads the lead-stage pattern and names particulate loading as the likely cause, with reasons.",
+        "Lists useful records such as normalised trends, SDI, cartridge pressure drop and cleaning events.",
+        "Names concentrate and permeate handling and the recognised hazards without inventing procedures."
+      ],
+      "facilitatorGuide": "Ask learners to say what normalising removes from a trend and why that matters in winter. Check that the percent decline is divided by the baseline, not the current value. Strong answers fix the upstream cause and then clean, and say the facility procedures and the manufacturer govern the details. Watch for learners who want to raise pressure to restore flow or who write step-by-step chemical handling instructions.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write the pattern table: flow, stage pressure drop and salt passage for each cause."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Look at a log sheet from your plant or a training example and mark which readings would be normalised."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Alder Point scenario and decide the likely cause and the first fix."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "wqc-alley",
+        "spellman-hb",
+        "wef-mop11"
+      ],
+      "checks": [
+        {
+          "id": "ceu-reverse-osmosis-operation-troubleshooting-c1",
+          "prompt": "Why are RO readings normalised before trends are compared?",
+          "choices": [
+            "To convert pressure units from psi to kPa in the log",
+            "To make the permeate flow equal the feed flow on paper",
+            "To remove temperature and pressure effects",
+            "To average the readings across the cartridge filters daily"
+          ],
+          "correctIndex": 2,
+          "explanation": "Normalising converts readings to standard conditions so the remaining trend is easier to attribute to the membrane. It is not a unit conversion, a flow balance or a filter average.",
+          "objective": "reverse-osmosis-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-reverse-osmosis-operation-troubleshooting-c2",
+          "prompt": "A unit makes 175 gpm of permeate in cold water. The manufacturer's temperature correction factor to the reference temperature is 1.22. Using normalised flow = measured flow x factor, what is the normalised flow?",
+          "choices": [
+            "About 143 gpm",
+            "About 176 gpm",
+            "About 39 gpm",
+            "About 214 gpm"
+          ],
+          "correctIndex": 3,
+          "explanation": "175 x 1.22 = 213.5 gpm. About 143 gpm divides by the factor, 176 gpm adds the factor to the flow, and 39 gpm multiplies by the 0.22 excess only.",
+          "objective": "reverse-osmosis-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-reverse-osmosis-operation-troubleshooting-c3",
+          "prompt": "Which statement about RO concentrate is right?",
+          "choices": [
+            "It is saltier than the feed, so its disposal is planned under the permit",
+            "It is cleaner than the feed, so it can go to a creek",
+            "It is pure water that is fed back to the permeate tank for blending",
+            "It consists of spent cleaning chemicals and carries no feed contaminants"
+          ],
+          "correctIndex": 0,
+          "explanation": "The concentrate carries the rejected material in a smaller flow, so its route is planned against the rule or permit. It is saltier than the feed and is not pure water or cleaning waste.",
+          "objective": "reverse-osmosis-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-reverse-osmosis-operation-troubleshooting-c4",
+          "prompt": "Why is RO permeate often stabilised before it goes to the distribution system?",
+          "choices": [
+            "It carries high turbidity shed from the membranes",
+            "It has few minerals and can be aggressive to pipes",
+            "It has been raised above the feed pH by the membrane itself",
+            "It holds the full salt load of the feed water"
+          ],
+          "correctIndex": 1,
+          "explanation": "Permeate is low in minerals and alkalinity, so stabilisation protects the pipes. It is not turbid, the membrane does not raise pH on its own, and most feed salts are rejected into the concentrate.",
+          "objective": "reverse-osmosis-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-reverse-osmosis-operation-troubleshooting-c5",
+          "prompt": "Which record helps most when a manufacturer is asked to review a decline in performance?",
+          "choices": [
+            "A single reading taken at the last site visit by staff",
+            "The monthly chemical purchase totals from the stores office",
+            "Dated normalised trends with cleanings marked on them",
+            "A list of the membrane serial numbers from the vendor sheet"
+          ],
+          "correctIndex": 2,
+          "explanation": "A trend with events marked shows when and how the decline began. One reading, purchase totals and serial numbers do not.",
+          "objective": "reverse-osmosis-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-reverse-osmosis-operation-troubleshooting-c6",
+          "prompt": "Why do operators read the safety data sheet and follow the facility procedure before handling an RO cleaning or pH chemical?",
+          "choices": [
+            "To pick a stronger chemical than the one specified for the job",
+            "To skip protective equipment for short tasks at the skid",
+            "To change the cleaning recipe on the spot",
+            "To recognise the hazard and use the facility's controls"
+          ],
+          "correctIndex": 3,
+          "explanation": "The purpose is to recognise the hazard and apply the facility's controls before work starts. Changing chemicals, skipping protection or improvising a recipe adds risk.",
+          "objective": "reverse-osmosis-operation-troubleshooting"
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-f1",
+      "prompt": "Moving from microfiltration to reverse osmosis, how do pore size and the pressure needed change?",
+      "choices": [
+        "Pores get smaller and the pressure needed rises",
+        "Pores get smaller and the pressure needed falls",
+        "Pores get larger and the pressure needed rises",
+        "Pores stay similar and the pressure follows the water source"
+      ],
+      "correctIndex": 0,
+      "explanation": "Tighter membranes need more pressure to push water through, so the pressure rises as pores shrink. Falling pressure or larger pores reverse the relationship.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-f2",
+      "prompt": "Why is the feed passed across the RO membrane surface rather than straight through it?",
+      "choices": [
+        "It lets the membrane be backwashed with permeate often",
+        "Feed sweeps rejected material out",
+        "It removes the need for pretreatment upstream",
+        "It lowers the osmotic pressure by diluting the feed"
+      ],
+      "correctIndex": 1,
+      "explanation": "Cross-flow keeps rejected material and the concentrated boundary layer from building up. Spiral wound elements are not backwashed, pretreatment is still needed, and the feed is not diluted.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-f3",
+      "prompt": "Brackish well water has 0.03 mol/L of a salt giving 2 ions per formula unit, at 293 K. Use osmotic pressure = i x c x R x T with R = 8.314 kPa L/(mol K), then convert at 6.895 kPa per psi. What is the osmotic pressure in psi?",
+      "choices": [
+        "About 146 psi",
+        "About 1,008 psi",
+        "About 21.2 psi",
+        "About 11 psi"
+      ],
+      "correctIndex": 2,
+      "explanation": "2 x 0.03 x 8.314 x 293 = 146.2 kPa, and 146.2 / 6.895 = about 21.2 psi. About 146 psi forgets the conversion, about 1,008 psi multiplies instead of dividing, and about 11 psi forgets the two ions.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-f4",
+      "prompt": "A plant plans to keep a chlorine residual in the RO feed. In WQC Table 8.9, which membrane material is rated poor for chlorine resistance?",
+      "choices": [
+        "Cellulose acetate",
+        "Polysulfone",
+        "Polyacrylonitrile",
+        "Polyamide"
+      ],
+      "correctIndex": 3,
+      "explanation": "In Table 8.9, polyamide is rated poor for chlorine resistance. Cellulose acetate, polysulfone and polyacrylonitrile are rated good for chlorine resistance.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-f5",
+      "prompt": "In a wastewater reuse plant, where does RO most often sit?",
+      "choices": [
+        "After secondary treatment, to polish dissolved solids",
+        "Ahead of the primary clarifier to remove grit and rags",
+        "In place of the aeration basin to oxidise ammonia",
+        "On the sludge line to thicken the waste solids"
+      ],
+      "correctIndex": 0,
+      "explanation": "Membrane filtration is used as a tertiary step after secondary clarification, and RO removes dissolved solids. It does not replace grit removal, biological oxidation or thickening.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-f1",
+      "prompt": "An RO unit receives 1,500 gpm of feed and sends 400 gpm to the concentrate line. What is the recovery?",
+      "choices": [
+        "About 27 percent",
+        "About 73 percent",
+        "About 375 percent",
+        "About 79 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Permeate = 1,500 - 400 = 1,100 gpm, and recovery = 1,100 / 1,500 x 100 = 73 percent. 27 percent is the concentrate share, 375 percent divides feed by concentrate, and 79 percent divides feed by feed plus concentrate, counting the concentrate twice.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-f2",
+      "prompt": "A feed carries 1,800 mg/L of dissolved salt and the unit gives 99 percent rejection. What is the permeate concentration?",
+      "choices": [
+        "1,782 mg/L",
+        "180 mg/L",
+        "18 mg/L",
+        "1.8 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "Salt passage is 1 percent, so permeate = 1,800 x 0.01 = 18 mg/L. 1,782 mg/L is the feed-to-permeate concentration difference, 180 mg/L uses 10 percent passage, and 1.8 mg/L slips a decimal.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-f3",
+      "prompt": "A design calls for 900,000 gpd of permeate at a design flux of 15 gfd. How much membrane area is needed, using area = flow / flux?",
+      "choices": [
+        "13,500,000 ft2",
+        "6,000 ft2",
+        "600,000 ft2",
+        "60,000 ft2"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 900,000 / 15 = 60,000 ft2. 13,500,000 ft2 multiplies instead of dividing, which does not balance the units, and the other two slip a decimal place.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-f4",
+      "prompt": "A unit takes 200 gpm of feed at 2,000 mg/L. It makes 150 gpm of permeate at 200 mg/L and 50 gpm of concentrate. By a salt balance, what is the concentrate concentration?",
+      "choices": [
+        "7,400 mg/L",
+        "8,000 mg/L",
+        "3,700 mg/L",
+        "1,100 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "(200 x 2,000 - 150 x 200) / 50 = 7,400 mg/L. 8,000 mg/L ignores the salt in the permeate, 3,700 mg/L divides by 100 gpm, and 1,100 mg/L averages the feed and permeate.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-f5",
+      "prompt": "A feed pump moves 500 gpm against a 600 psi pressure rise with a pump efficiency of 0.75. Using BHP = gpm x psi x 2.31 / (3,960 x efficiency), what is the brake horsepower?",
+      "choices": [
+        "About 101 hp",
+        "About 233 hp",
+        "About 175 hp",
+        "About 131 hp"
+      ],
+      "correctIndex": 1,
+      "explanation": "500 x 600 x 2.31 / (3,960 x 0.75) = about 233 hp. 101 hp leaves out the 2.31 head factor, 175 hp leaves out efficiency, and 131 hp multiplies by efficiency instead of dividing.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-f1",
+      "prompt": "What is the purpose of clean-in-place on an RO unit?",
+      "choices": [
+        "Backwash the elements with permeate until the concentrate runs clear",
+        "Disinfect the permeate before it goes to the distribution system",
+        "Recirculate cleaner through installed elements to loosen deposits",
+        "Pull the elements out and wash them by hand each week at the sink"
+      ],
+      "correctIndex": 2,
+      "explanation": "Clean-in-place cleans the elements inside their housings by recirculating a cleaning solution. Spiral wound elements are not backwashed, and disinfection or hand washing is a different task.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-f2",
+      "prompt": "A fictional unit's baseline normalised permeate flow is 220 gpm and its cleaning trigger is a 15 percent decline. At what normalised flow is the trigger reached?",
+      "choices": [
+        "205 gpm",
+        "253 gpm",
+        "33 gpm",
+        "187 gpm"
+      ],
+      "correctIndex": 3,
+      "explanation": "A 15 percent decline leaves 220 x 0.85 = 187 gpm. 205 gpm subtracts 15 gpm, 253 gpm adds 15 percent, and 33 gpm is the size of the decline, not the level.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-f3",
+      "prompt": "Normalised flow falls, the stage 1 pressure drop rises, a slimy deposit is found at the feed end, and salt passage barely changes. Which cause is most likely?",
+      "choices": [
+        "Biological fouling at the lead end",
+        "Calcium carbonate scaling in the final stage",
+        "Membrane compaction from normal ageing",
+        "A faulty tank-level sensor"
+      ],
+      "correctIndex": 0,
+      "explanation": "Slime with a rising lead-stage pressure drop points to biofouling. Scale shows at the tail end with rising salt passage, compaction is slow and smooth, and a level sensor does not cause slime.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-f4",
+      "prompt": "What does an antiscalant do?",
+      "choices": [
+        "Kills the microbes that form slime on the membrane surface",
+        "Slows crystal growth so salts stay dissolved",
+        "Removes calcium from the feed by ion exchange resin beds",
+        "Raises recovery by loosening the membrane surface layer"
+      ],
+      "correctIndex": 1,
+      "explanation": "An antiscalant slows or blocks crystal formation. It is not a biocide, it does not remove calcium from the water, and it does not change the membrane.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-f5",
+      "prompt": "Permeate conductivity from one vessel rises while normalised flow stays steady. Which cause should be investigated first?",
+      "choices": [
+        "A plugged cartridge filter ahead of the pump",
+        "Colder feed water in the vessel",
+        "A leak at a failed seal or damaged element",
+        "A lower pump speed at the feed pump"
+      ],
+      "correctIndex": 2,
+      "explanation": "Rising salt passage with steady flow suggests feed bypassing the membrane. A plugged cartridge, colder feed or lower pump speed would show up as a change in flow or pressure, and normalised flow is steady here.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-f1",
+      "prompt": "Normalised permeate flow has fallen from 240 gpm at start-up to 204 gpm. What is the percent decline from baseline?",
+      "choices": [
+        "18 percent",
+        "85 percent",
+        "36 percent",
+        "15 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "(240 - 204) / 240 x 100 = 15 percent. 18 percent divides by the current flow, 85 percent is the flow remaining, and 36 percent reads the 36 gpm drop as a percentage.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-f2",
+      "prompt": "Normalised salt passage was 0.8 percent at start-up and is now 2.0 percent. By what factor has it risen?",
+      "choices": [
+        "2.5 times",
+        "1.2 times",
+        "0.4 times",
+        "3.5 times"
+      ],
+      "correctIndex": 0,
+      "explanation": "2.0 / 0.8 = 2.5 times. 1.2 is the difference in percentage points, 0.4 inverts the ratio, and 3.5 adds the two values before dividing.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-f3",
+      "prompt": "After a storm, feed SDI rises, cartridge filters load twice as fast, the stage 1 pressure drop climbs and salt passage is steady. What is the likely cause?",
+      "choices": [
+        "Scale forming in the last stage",
+        "Particle loading in the feed",
+        "Oxidant damage from chlorine in the feed",
+        "A leaking O-ring at one vessel"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rising SDI and cartridge loading with a rising lead-stage pressure drop point to particulate loading. Scale typically shows at the tail end, and oxidant damage or leaks raise salt passage.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-f4",
+      "prompt": "A reuse plant sends RO concentrate to the sewer. What should the operator expect at the receiving plant?",
+      "choices": [
+        "Lower salinity because the concentrate is mostly water",
+        "No change because the concentrate matches the feed quality",
+        "More dissolved salts entering the receiving plant's flow",
+        "A drop in conductivity at the receiving plant inlet"
+      ],
+      "correctIndex": 2,
+      "explanation": "Concentrate carries the rejected salts in a smaller flow, so the receiving system sees an added dissolved-solids load compared with the same flow without the concentrate. It is not cleaner than, or equal to, the feed.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-f5",
+      "prompt": "Permeate pH is low because carbon dioxide passes through the membranes. Which step addresses it?",
+      "choices": [
+        "More antiscalant dosing at the feed",
+        "A finer cartridge filter ahead of the pump",
+        "A higher recovery setpoint on the unit",
+        "Degasification and pH control"
+      ],
+      "correctIndex": 3,
+      "explanation": "Dissolved gases pass through RO, so post-treatment adjusts pH, may remove the gas, and stabilises the water. Antiscalant, a finer cartridge or higher recovery does not.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-a1",
+      "prompt": "Which statement about osmosis is correct?",
+      "choices": [
+        "Water moves to the side with more dissolved salt",
+        "Water moves to the side with less dissolved salt",
+        "Salt moves through the membrane while the water stays put",
+        "Osmosis needs a pump to push on the fresh side"
+      ],
+      "correctIndex": 0,
+      "explanation": "Osmosis is a natural drift of water toward the more concentrated side. Salt is held back, and no pump is involved.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-a2",
+      "prompt": "Which RO stream leaves carrying the rejected salts at a higher concentration than the feed?",
+      "choices": [
+        "The permeate",
+        "The concentrate",
+        "The feed",
+        "The cartridge filter effluent"
+      ],
+      "correctIndex": 1,
+      "explanation": "The rejected salts stay on the feed side and leave in the concentrate. The permeate is low in salt, the feed is the input, and the cartridge effluent is still feed.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-a3",
+      "prompt": "A solution has 0.02 mol/L of a salt that gives 3 ions per formula unit, at 280 K. Using osmotic pressure = i x c x R x T with R = 8.314 kPa L/(mol K), what is the osmotic pressure?",
+      "choices": [
+        "About 46.6 kPa",
+        "About 93.1 kPa",
+        "About 140 kPa",
+        "About 14.0 kPa"
+      ],
+      "correctIndex": 2,
+      "explanation": "3 x 0.02 x 8.314 x 280 = about 139.7 kPa. 47 kPa uses one ion, 93 kPa uses two, and 14 kPa slips a decimal in the temperature.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-a4",
+      "prompt": "Why do spiral wound and hollow fibre modules need good pretreatment?",
+      "choices": [
+        "Their membranes dissolve in untreated water quickly",
+        "They make more concentrate when the feed is clean enough",
+        "Their pumps fail when the feed holds dissolved gases",
+        "Narrow flow openings that foul with suspended particles"
+      ],
+      "correctIndex": 3,
+      "explanation": "The handbook says the large area per volume comes with small openings that foul when particles are present. The other reasons are not real behaviour.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-how-ro-works-a5",
+      "prompt": "Which membrane category is used mainly to remove dissolved solids rather than suspended solids?",
+      "choices": [
+        "Reverse osmosis",
+        "Microfiltration",
+        "Ultrafiltration",
+        "Gravity media filtration"
+      ],
+      "correctIndex": 0,
+      "explanation": "RO is the dissolved-solids member of the family. Microfiltration and ultrafiltration remove suspended and colloidal material, and media filters remove particles.",
+      "objective": "reverse-osmosis-how-ro-works"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-a1",
+      "prompt": "A unit receives 5.0 MGD of feed and makes 3.5 MGD of permeate. What is the recovery?",
+      "choices": [
+        "30 percent",
+        "70 percent",
+        "143 percent",
+        "41 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Recovery = 3.5 / 5.0 x 100 = 70 percent. 30 percent is the concentrate share, 143 percent inverts the ratio, and 41 percent divides by feed plus permeate.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-a2",
+      "prompt": "A feed has 1,200 mg/L of dissolved salt and the permeate has 36 mg/L. What is the salt passage?",
+      "choices": [
+        "97 percent",
+        "33 percent",
+        "3 percent",
+        "0.3 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Salt passage = 36 / 1,200 x 100 = 3 percent. 97 percent is the rejection, 33 percent inverts the ratio and reads it as a percent, and 0.3 percent slips a decimal.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-a3",
+      "prompt": "A skid has 24 elements of 365 ft2 each and makes 150,000 gpd of permeate. What is the flux?",
+      "choices": [
+        "About 411 gfd",
+        "About 0.058 gfd",
+        "About 34 gfd",
+        "About 17.1 gfd"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 24 x 365 = 8,760 ft2, and flux = 150,000 / 8,760 = 17.1 gfd. 411 gfd uses one element, 0.058 is the reciprocal of the flux, mislabelled as gfd, and 34 gfd halves the area.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-a4",
+      "prompt": "An RO unit runs at 85 percent recovery with near-complete rejection. Using CF = 1 / (1 - recovery as a decimal), what is the concentration factor?",
+      "choices": [
+        "About 6.7 times",
+        "About 5.7 times",
+        "About 1.18 times",
+        "About 85 times"
+      ],
+      "correctIndex": 0,
+      "explanation": "CF = 1 / 0.15 = 6.7. About 5.7 divides recovery by the concentrate fraction, 1.18 leaves out the subtraction, and 85 times treats the percentage as the factor.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-performance-arithmetic-a5",
+      "prompt": "A feed pump motor draws 150 kW while the unit makes 400 gpm of permeate. Using specific energy = kW / (permeate gpm x 60 / 1,000), what is the feed-pump motor energy per 1,000 gal of permeate?",
+      "choices": [
+        "0.16 kWh per 1,000 gal",
+        "6.25 kWh per 1,000 gal",
+        "375 kWh per 1,000 gal",
+        "62.5 kWh per 1,000 gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "400 gpm x 60 = 24,000 gal per hour, or 24 thousand gallons per hour, so 150 / 24 = 6.25 kWh per 1,000 gal. 0.16 inverts the ratio, 375 divides by 0.4 thousand gallons per minute and skips the hours conversion, and 62.5 slips a decimal.",
+      "objective": "reverse-osmosis-performance-arithmetic"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-a1",
+      "prompt": "What is concentration polarization?",
+      "choices": [
+        "A coating of antiscalant on the membrane",
+        "A charge difference between feed and permeate",
+        "A salty layer at the membrane surface",
+        "A pressure difference between two stages"
+      ],
+      "correctIndex": 2,
+      "explanation": "The handbook describes a boundary layer of more concentrated solute at the surface. It lowers flux and rejection. It is not a chemical coating, a charge difference or a stage pressure difference.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-a2",
+      "prompt": "In the handbook membrane selection table, which material is rated good for chlorine resistance but has the narrowest pH range listed?",
+      "choices": [
+        "Polyamide",
+        "Polysulfone",
+        "Polyacrylonitrile",
+        "Cellulose acetate"
+      ],
+      "correctIndex": 3,
+      "explanation": "Cellulose acetate is rated good for chlorine with a pH range of about 4.5 to 9. Polyamide is rated poor for chlorine, and polysulfone and polyacrylonitrile have wider ranges.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-a3",
+      "prompt": "A fictional unit's baseline normalised salt passage is 1.5 percent and its cleaning trigger is a rise of 25 percent of the baseline value. At what salt passage is the trigger reached?",
+      "choices": [
+        "About 1.88 percent",
+        "About 26.5 percent",
+        "About 1.1 percent",
+        "About 0.375 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "A 25 percent rise gives 1.5 x 1.25 = 1.875 percent, which is 1.88 percent to two decimals. 26.5 percent adds 25 points, 1.1 percent subtracts instead of adds, and 0.375 percentage points is the size of the rise, not the level.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-a4",
+      "prompt": "Fats, oils and grease in an RO feed call for which pretreatment, per the handbook table?",
+      "choices": [
+        "Activated carbon adsorption or pH control",
+        "Gravity separation or ultrafiltration",
+        "Precipitation or ion exchange softening",
+        "Chlorination or reducing agent dosing"
+      ],
+      "correctIndex": 1,
+      "explanation": "The handbook table pairs grease with gravity separation, emulsion breaking or ultrafiltration. The other options address organics, scalants or oxidants.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-pretreatment-fouling-a5",
+      "prompt": "Which practice helps limit biological fouling in an RO train?",
+      "choices": [
+        "Leaving the unit idle and wet with no flushing",
+        "Raising recovery to concentrate the slime on the membrane",
+        "Removing organics upstream",
+        "Skipping cartridge changes to save cost and labour"
+      ],
+      "correctIndex": 2,
+      "explanation": "Organic matter in the feed supports growth, so removing it and cleaning on the trend limit biofouling. Idle wet units, higher recovery and skipped cartridges make it worse.",
+      "objective": "reverse-osmosis-pretreatment-fouling"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-a1",
+      "prompt": "Which set of trends together suggests developing fouling rather than a seasonal temperature change?",
+      "choices": [
+        "Falling raw flow with steady normalised flow and steady pressure drop",
+        "Rising permeate flow with falling salt passage",
+        "Steady normalised flow with rising feed temperature",
+        "Falling normalised flow with rising pressure drop"
+      ],
+      "correctIndex": 3,
+      "explanation": "Normalised trends that fall while pressure drop rises point to fouling. The other sets are consistent with a temperature effect or with no change in fouling.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-a2",
+      "prompt": "A unit makes 250 gpm of permeate in warm water. The manufacturer's temperature correction factor to the reference temperature is 0.88. What is the temperature-corrected flow?",
+      "choices": [
+        "220 gpm",
+        "284 gpm",
+        "249 gpm",
+        "30 gpm"
+      ],
+      "correctIndex": 0,
+      "explanation": "250 x 0.88 = 220 gpm. 284 gpm divides by the factor, 249 gpm subtracts the factor from the flow, and 30 gpm is the amount of the correction.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-a3",
+      "prompt": "Normalised salt passage rises sharply while normalised flow is steady. What is a sensible first response?",
+      "choices": [
+        "Clean at once with the strongest chemical available on site",
+        "Check conductivity vessel by vessel for a leak",
+        "Raise feed pressure to push out more water",
+        "Raise recovery to dilute the permeate"
+      ],
+      "correctIndex": 1,
+      "explanation": "A sharp salt passage rise with steady flow suggests a leak or damaged element, so locate it before acting. Cleaning, pressure or recovery changes would treat the wrong problem before the leak is found.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-a4",
+      "prompt": "A reuse plant wants to raise recovery to cut the concentrate volume. Which trade-off should be weighed?",
+      "choices": [
+        "Higher recovery lowers osmotic pressure so energy cost falls",
+        "Higher recovery lowers the need for antiscalant",
+        "Higher recovery raises the concentration factor",
+        "Higher recovery improves the rejection of the membrane"
+      ],
+      "correctIndex": 2,
+      "explanation": "More recovery concentrates the salts further, which raises scale risk and concentrate strength. It raises osmotic pressure and does not improve rejection.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    },
+    {
+      "id": "ceu-reverse-osmosis-operation-troubleshooting-a5",
+      "prompt": "Which statement names hazards worth recognising in an RO room?",
+      "choices": [
+        "Ionising radiation from the membrane polymer",
+        "Methane in the permeate line",
+        "A pump curve that shifts with temperature",
+        "Pressurised piping and corrosive chemicals"
+      ],
+      "correctIndex": 3,
+      "explanation": "High pressure and chemicals are the recognition-level hazards, controlled by the facility's own procedures. Radiation and methane are not typical RO hazards, and a pump curve is not a hazard at all.",
+      "objective": "reverse-osmosis-operation-troubleshooting"
+    }
+  ]
+}

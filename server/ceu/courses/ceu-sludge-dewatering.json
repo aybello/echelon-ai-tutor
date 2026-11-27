@@ -1,0 +1,1058 @@
+{
+  "key": "ceu-sludge-dewatering",
+  "version": "2026-11-26.1",
+  "title": "Sludge Dewatering for Wastewater Operators",
+  "shortTitle": "Sludge Dewatering",
+  "stream": "wastewater",
+  "audience": "Operators, trainees and supervisors who run or support the solids handling at a municipal wastewater plant and want a clear foundation in dewatering after a thickening or digestion course.",
+  "prerequisites": "Basic arithmetic. Sludge Thickening for Wastewater Operators is helpful but not required. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Learn why wastewater sludge is dewatered and how cake solids, wet tons and hauling cost are worked out, why bound water sets a limit, and how polymer conditioning works. Then follow the main machines: belt filter presses with their wash water, tracking and troubleshooting, centrifuges, recessed-plate and plate-and-frame presses, and drying beds and lagoons at overview level. Finish with how to monitor cake solids, capture and polymer dose, what the filtrate and centrate recycle does to the plant, how to manage odour and housekeeping and how to keep records that help with troubleshooting. Each module has a worked scenario, quick checks that explain the reasoning behind each answer, and a short written assignment. The course gives general principles. Plant-specific limits and procedures come from your own plant and regulator.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "wi-adv-ww",
+      "title": "Wisconsin DNR Operator Certification: Advanced Wastewater Study Guide (February 2016)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideAdvancedWastewater.pdf",
+      "section": "Section 21.1.1 (polymers, cationic and anionic, floc charge, polymer vendor); Section 22.4.1 (bound and unbound water); Section 24.3.6 (mechanical dewatering compared with liquid hauling); Section 25.2.2 (polymer handling and cleanup); Section 26.2.1 (sidestream load calculation); Section 26.3.1 (hauling cost at different concentrations)",
+      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wef-mop11",
+      "title": "Operation of Municipal Wastewater Treatment Plants, Manual of Practice No. 11, 6th edition (Water Environment Federation)",
+      "section": "Volume III, Chapter 33 Dewatering: Introduction; What Makes Biosolids Difficult to Dewater? (free, bound, vicinal, interstitial and capillary water; improving the quality of biosolids; tracking down the cause of a change); Inorganic Chemical Addition; Organic Flocculants (polymer characteristics, forms, make-down, solids conditioning, performance optimization); Operating Principles for Dewatering (management of information, changing values); Air-Drying Biosolids (reed, sand, vacuum-assisted, wedge-wire and paved beds); Mechanical Dewatering Equipment (installation considerations, feed pumps, general calculations); Belt Filter Press; Dewatering Centrifuges; Vacuum and Pressure Filters; Data Collection and Laboratory Control; Safety and Housekeeping",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-ww2",
+      "title": "Spellman's Standard Handbook for Wastewater Operators, Volume II: Intermediate Level, 2nd edition (CRC Press, 2011)",
+      "section": "Section 10.7.3 Pressure Filtration (plate-and-frame and belt filter presses); Section 10.7.3.1 Operational Considerations (belt press symptoms 10 to 14); Section 10.7.3.2.1 Belt Filter Press Hydraulic Loading Rate",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "modules": [
+    {
+      "id": "sludge-dewatering-why-dewater",
+      "title": "Why dewater: cake solids, hauling cost and conditioning",
+      "objectives": [
+        "Explain what dewatering does, why bound water limits cake solids, and how cake solids set the wet tons and hauling cost.",
+        "Describe why polymer is added, why more polymer is not always better, and work through the cake and hauling arithmetic."
+      ],
+      "lesson": "### Why sludge is dewatered\n\nThickened sludge is still mostly water. Dewatering removes much more of it, so the solids can be stored, trucked or processed as a damp cake instead of a liquid. The Wisconsin study guide lists the main advantages of mechanical dewatering: less volume to haul, less storage, and cake that can be moved with mechanical equipment instead of being pumped as a liquid. It also lists the costs: higher capital and operating costs, a return sidestream, the cost of conditioning chemicals, and more equipment maintenance. Liquid hauling has the opposite profile and, with short haul distances, can be cost effective. The WEF manual says that every dewatering method has advantages and disadvantages, that economics should drive the choice, and that the top three costs, capital, operating and disposal, typically decide it.\n\n### What cake solids means\n\nCake solids is the percent of the dewatered cake that is dry solids by weight. A cake at 20 percent solids is 80 percent water. The percent figure can mislead, and the WEF manual says so: writing cake solids as a percent suggests that 100 percent dryness is possible, when mechanical dewatering cannot remove all of the water, and each further gain is harder to win than the last. The target is the cake solids that the equipment, the sludge and the disposal route can deliver at a sensible cost, not the highest number on the data sheet.\n\n### Dry tons and wet tons\n\nIn these examples the dry solids recovered in the cake stay the same as the water goes. The tons of wet cake that leave the plant follow from the dry tons and the cake solids: wet tons equal dry tons divided by cake solids as a decimal. A plant that presses 30 dry tons per week to 20 percent cake solids hauls 30 divided by 0.20, which is 150 wet tons. At 25 percent it hauls 30 divided by 0.25, which is 120 wet tons, or 30 fewer. At 15 percent it hauls 200. The same solids, a drier cake, a smaller truck load.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 220\" role=\"img\" aria-label=\"Bar chart: wet tons of cake hauled for 30 dry tons per week at 15, 20 and 25 percent cake solids\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>The same 30 dry tons make fewer wet tons as cake solids rise.</title>\n<text x=\"195\" y=\"22\" text-anchor=\"middle\" font-weight=\"bold\">Wet tons hauled per week</text>\n<text x=\"195\" y=\"38\" text-anchor=\"middle\" font-size=\"11\">same 30 dry tons of solids</text>\n<g fill=\"#e6eaef\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"95\" y=\"56\" width=\"200\" height=\"30\"/><rect x=\"95\" y=\"106\" width=\"150\" height=\"30\"/><rect x=\"95\" y=\"156\" width=\"120\" height=\"30\"/></g>\n<g font-size=\"11\" text-anchor=\"end\"><text x=\"86\" y=\"76\">15 percent</text><text x=\"86\" y=\"126\">20 percent</text><text x=\"86\" y=\"176\">25 percent</text></g>\n<g font-weight=\"bold\"><text x=\"303\" y=\"76\">200</text><text x=\"253\" y=\"126\">150</text><text x=\"223\" y=\"176\">120</text></g>\n<text x=\"195\" y=\"212\" text-anchor=\"middle\" font-size=\"11\" fill=\"#5a6675\">Illustrative: wet tons = dry tons divided by cake solids.</text>\n</svg>\n<figcaption>The same 30 dry tons make fewer wet tons as cake solids rise.</figcaption>\n</figure>\n\n### Pounds of solids in liquid sludge\n\nFor liquid sludge the mass of dry solids comes from the volume, the weight of water per gallon, the specific gravity and the percent solids as a decimal. Pounds of dry solids equal gallons times 8.34 times specific gravity times the decimal percent. A 10,000 gallon tank at 2 percent solids and a specific gravity of 1.00 holds 10,000 times 8.34 times 0.02, which is 1,668 pounds. \n\n### Hauling cost arithmetic\n\nHauling cost is the number of loads times the cost per load, or the wet tons times the cost per wet ton. The Wisconsin guide works the same idea for liquid sludge. A volume of 72,000 gallons at 2 percent solids holds the same solids as 18,000 gallons at 8 percent, found by multiplying the volume by the ratio of the two concentrations. This assumes the sludge density is about the same before and after. At 6,000 gallons per load and $100 per load, that is 12 loads and $1,200 against 3 loads and $300, a saving of $900. For cake, 150 wet tons at $60 per wet ton costs $9,000 and 120 wet tons costs $7,200, a weekly saving of $1,800. That saving must be set against what it cost to win the extra dryness. The WEF manual notes that drier cake needs more polymer, but simply adding more without more cake depth makes little difference, and the saving from drier cake is partly offset by higher polymer cost.\n\n### Bound and unbound water\n\nWater in sludge is not all alike. The Wisconsin guide says most bound water is inside the cells and unbound water is outside them, that most dewatering techniques do not release bound water, and that it is difficult to get waste activated sludge above about 25 percent solids unless the cells are ruptured. The WEF manual describes several kinds of water. Free water is not connected to the solids and is the easiest to remove, and it is normally removed in clarifiers. Bound water is held by chemical bonds or inside a membrane, and mechanical dewatering cannot break the membrane of a cell. Vicinal water clings to the surface of particles and is very difficult or impossible to remove mechanically. Interstitial water sits in the spaces between particles and can be squeezed out by pressure. \n\n### Why some sludges dewater better\n\nThe kind of sludge sets a ceiling on cake solids. The WEF manual reports that primary solids can be dewatered to 35 to 40 percent solids, while activated sludge in the same plant rarely exceeds about 25 percent. Bacteria are mostly fluid inside a membrane, and waste activated sludge has far more particle surface area than primary sludge, which means more vicinal water. A plant without primary clarifiers sends more bacterial solids to dewatering, and WEF gives an anecdotal figure of about 5 percentage points wetter cake for the same conditions. Chemical choice matters too: WEF says ferric salts result in drier cakes, while alum gives either no change or more difficult sludge. \n\n### Keep the wet end steady\n\nThe quality of the sludge sent to dewatering largely sets the cost of dewatering it. WEF advises avoiding the holding or storage of sludge in the plant, because dewaterability changes if sludge turns septic, and says gravity thickeners are often a problem. WEF makes an exception for anaerobic digesters, where longer residence times typically reduce the polymer dosage. Changes in the feed upset dewatering. WEF gives the example of a sudden change in the wasting rate that moves the primary to secondary blend from 50:50 to 30:70, causing a major upset, then another upset when the rate returns. Its example advice is to raise the wasting rate moderately and bring the mixed liquor to target over about 24 hours, and to tell the dewatering operators when a change is coming.\n\n### Conditioning: why polymer is added\n\nSludge particles are small and carry a negative charge. Polymers are long chain molecules that clump small particles into larger ones, and the Wisconsin guide notes that cationic polymers are the most commonly used, because floc particles are negative and cationic polymers are positive. WEF reports that cationic polyacrylamides make up 95 to 100 percent of the organic flocculants used on wastewater sludge before dewatering. Conditioning is a two stage action. The first stage, charge neutralisation, happens very quickly. The second, flocculation or bridging, follows within a few seconds and ties many particles together with coiled polymer strands. That is why WEF calls for short, intense mixing to disperse the polymer and then gentler mixing to build the floc, and says to avoid excessive shear once flocs have formed. A belt press or centrifuge does not perform effectively on biological sludge unless it has been conditioned.\n\n### Polymer forms and make-down\n\nWEF describes three common forms of cationic polymer: dry, emulsion and solution. As typical figures it gives 88 to 96 percent active polymer for dry products, 25 to 60 percent for emulsions and about 3 to 8 percent for solution products, so the active content, not total solids, is what counts. Dry polymer must be wetted particle by particle, because gels or fish eyes that do not dissolve are wasted, and WEF typically makes it down to about 0.2 percent, mixed gently for at least 30 minutes so the polymer uncoils, an aging step that also applies to emulsions. WEF gives typical shelf lives of about a year for dry product kept free of moisture, 6 months for emulsions and a month or less in storage for solution products. Intense mixing, pumping or shearing of the dilute solution reduces the molecular weight and raises the dose. Product choice, dilution and mixing are worked out with the polymer vendor, as the Wisconsin guide says.\n\n### More polymer is not always better\n\nCake dryness generally rises with dose, but not without limit. WEF says some polymers become less effective at higher dosages, shown in a jar test or by finding that more polymer gives the same or poorer operation, and that dose response curves are bell shaped, levelling off and sometimes declining past a maximum. On a belt press, excess polymer can slime the belts and halt dewatering until they are cleaned. \n\n### Inorganic conditioners\n\nBefore organic polymers, lime and ferric chloride were the usual conditioners. WEF says they are now rarely used, apart from remaining vacuum filter and recessed plate filter operations. The reason is mass: inorganic conditioning greatly increases the solids to be discarded, with about 1 pound of added chemical solids for each pound of lime and ferric chloride added, along with more attendant water. \n\n### Polymer handling: recognition only\n\nPolymers used in dewatering are not particularly toxic, but spilled or leaked polymer is very slippery once wet, and dry polymer dust becomes slippery when it meets a wet shoe or skin. The Wisconsin guide calls for the correct protective equipment and the Safety Data Sheet for cleanup. WEF adds that water on a spill outside a contained, drained area makes a larger slippery mass, that prevention is easier than cleanup, and that the manufacturer gives specific advice. Your plant procedures and the product sheet govern how polymer is handled and cleaned up.\n\n### Checking the arithmetic\n\nBefore accepting a calculation, check that it makes sense. A drier cake means fewer wet tons, not more. Cake solids must be a decimal in the formula, so 20 percent becomes 0.20. Wet tons can never be less than the dry tons, and a result smaller than the dry tons means a mistake, most often a percent multiplied instead of divided, or 20 used in place of 0.20. Write the unit next to every number in the log, because a 20 can mean percent, tons or pounds depending on who wrote it.",
+      "evidence": "### Fictional scenario: Heron Mill Plant\n\nHeron Mill Plant is a fictional wastewater plant. A belt filter press dewaters digested sludge and the cake is hauled to a farm site at $60 per wet ton. The press makes about 20 dry tons of solids per week at about 18 percent cake solids. A trial with a different polymer gave about 22 percent cake solids at a higher polymer cost. The supervisor, Gareth Lindqvist, asks the operator, Tamsin Okoro, to estimate what the trial would change and what else should be checked before the new polymer is bought.",
+      "assignment": "Write a one-page note for Gareth Lindqvist. Using wet tons = dry tons divided by cake solids as a decimal, work out the wet tons per week and the weekly hauling cost at 18 percent and at 22 percent cake solids, showing each step. Say what the saving is and what it must be compared with. Explain why cake solids cannot be raised without limit, using the idea of bound water. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates the wet tons and hauling cost at both cake solids with the stated formula and shows the steps.",
+        "Compares the hauling saving with the extra polymer cost instead of treating cake solids as the only goal.",
+        "Explains the limit on cake solids using bound water and the type of sludge.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to say in their own words why a drier cake means fewer wet tons even though the dry solids do not change. Check that cake solids are written as a decimal in the formula and that each answer carries units. Strong answers set the hauling saving against the polymer cost and mention that the sludge changes through the year. Watch for learners who treat a higher cake solids as always better; the polymer cost and the limit set by bound water both push back. Plant procedures and the polymer sheet take precedence over anything in the lesson.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and rewrite the wet tons formula in your own words, with the units for each term."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and note one week of cake solids, dry tons and the hauling cost per wet ton."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Heron Mill scenario and calculate the wet tons at 18 percent and at 22 percent cake solids."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wi-adv-ww",
+        "wef-mop11"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-dewatering-why-dewater-c1",
+          "prompt": "What is the main reason a plant dewaters sludge after it has been thickened?",
+          "choices": [
+            "To destroy the organic solids so little is left to haul away",
+            "To cut the volume and weight to be stored and hauled",
+            "To disinfect the sludge so that it is safe to release freely",
+            "To raise the pH of the sludge so that no polymer is needed"
+          ],
+          "correctIndex": 1,
+          "explanation": "Dewatering cuts the volume and weight to haul and store; it does not destroy solids, disinfect, or adjust pH to avoid polymer.",
+          "objective": "sludge-dewatering-why-dewater"
+        },
+        {
+          "id": "ceu-sludge-dewatering-why-dewater-c2",
+          "prompt": "A press makes 40 dry tons of solids per week at 20 percent cake solids. Using wet tons = dry tons divided by cake solids as a decimal, how many wet tons of cake are hauled per week?",
+          "choices": [
+            "8 wet tons",
+            "160 wet tons",
+            "800 wet tons",
+            "200 wet tons"
+          ],
+          "correctIndex": 3,
+          "explanation": "Wet tons = 40 / 0.20 = 200; 8 multiplies instead of divides, 160 subtracts the dry tons, and 800 divides by 0.05.",
+          "objective": "sludge-dewatering-why-dewater"
+        },
+        {
+          "id": "ceu-sludge-dewatering-why-dewater-c3",
+          "prompt": "According to the Wisconsin study guide, where is most bound water found in sludge?",
+          "choices": [
+            "In the clear water between the flocs",
+            "Inside the cells of the sludge",
+            "In the water above the settled solids",
+            "In the polymer solution that is fed"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Wisconsin guide puts most bound water inside the cells; water between flocs, above the blanket or in polymer solution is unbound or not sludge water.",
+          "objective": "sludge-dewatering-why-dewater"
+        },
+        {
+          "id": "ceu-sludge-dewatering-why-dewater-c4",
+          "prompt": "A plant hauls 60,000 gal of sludge at 2 percent solids. If dewatering raises the same solids to 8 percent, assuming the sludge density stays the same, using volume 2 = volume 1 x (percent 1 / percent 2), what volume must be hauled?",
+          "choices": [
+            "240,000 gal",
+            "30,000 gal",
+            "15,000 gal",
+            "52,000 gal"
+          ],
+          "correctIndex": 2,
+          "explanation": "Volume 2 = 60,000 x (2 / 8) = 15,000 gal; 240,000 flips the ratio, 30,000 halves the volume, and 52,000 subtracts 8,000.",
+          "objective": "sludge-dewatering-why-dewater"
+        },
+        {
+          "id": "ceu-sludge-dewatering-why-dewater-c5",
+          "prompt": "Why is polymer fed to sludge ahead of a belt press or centrifuge?",
+          "choices": [
+            "To dissolve the solids so that they pass through the belts",
+            "To bind small particles into flocs so water separates easily",
+            "To raise the density of the water so the solids settle faster",
+            "To kill the odour-forming bacteria before the sludge is pressed"
+          ],
+          "correctIndex": 1,
+          "explanation": "Polymer binds fine particles into flocs so water drains; it does not dissolve solids, raise the density of the water, or kill bacteria.",
+          "objective": "sludge-dewatering-why-dewater"
+        },
+        {
+          "id": "ceu-sludge-dewatering-why-dewater-c6",
+          "prompt": "Sludge floc particles normally carry a negative charge. Which type of polymer is most commonly used to condition them?",
+          "choices": [
+            "Cationic polymer, with a positive charge",
+            "Anionic polymer, with a negative charge",
+            "Nonionic polymer, with no electrical charge",
+            "Amphoteric polymer, with both charges"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sludge floc is negative, so a positive, cationic polymer is the usual choice; WEF reports that virtually all organic flocculants used on these residuals are cationic; nonionic and amphoteric products are not the usual choice.",
+          "objective": "sludge-dewatering-why-dewater"
+        }
+      ]
+    },
+    {
+      "id": "sludge-dewatering-belt-and-screw-presses",
+      "title": "Belt filter presses and screw presses: operation, wash water and tracking",
+      "objectives": [
+        "Describe the zones of a belt filter press and the trade-off among cake dryness, loading and polymer dose, and place a screw press in general terms.",
+        "Use the wash water correction, and link belt wear, tracking, wash water and feed distribution to troubleshooting steps taken one at a time."
+      ],
+      "lesson": "### How a belt filter press works\n\nA belt filter press dewaters conditioned sludge by filtration. Sludge that has met the polymer flows onto a porous belt, drains, and is then squeezed between belts until it leaves as cake. The WEF manual describes three zones. In the gravity drainage zone most of the free water drains through the belt and the feed is thickened. In the low-pressure zone the thickened feed is pressed gently to remove more water and form a viscous matrix. In the high-pressure zone the matrix is sandwiched between belts that pass over a series of rollers of decreasing diameter, so the pressure rises step by step and more water is filtered out. \n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Side view of a belt filter press with a gravity zone, a low-pressure zone and a high-pressure roller zone, wash sprays and a filtrate tray\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Belt filter press: gravity drainage, low pressure, then rollers of decreasing diameter.</title>\n<g fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"><path d=\"M20 120 H150 L215 112 H365\"/><path d=\"M150 96 L215 106 H365\"/></g>\n<g fill=\"#e6eaef\" stroke=\"#2f6db2\" stroke-width=\"2\"><circle cx=\"250\" cy=\"87\" r=\"20\"/><circle cx=\"250\" cy=\"131\" r=\"20\"/><circle cx=\"296\" cy=\"91\" r=\"14\"/><circle cx=\"296\" cy=\"127\" r=\"14\"/><circle cx=\"332\" cy=\"95\" r=\"9\"/><circle cx=\"332\" cy=\"123\" r=\"9\"/></g>\n<path d=\"M20 70 H60 M60 64 L70 70 L60 76 Z\" fill=\"#2f6db2\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"20\" y=\"56\" font-size=\"11\">Conditioned feed</text>\n<g stroke=\"#1d2d40\" stroke-width=\"2\"><path d=\"M45 124 V145 M75 124 V145 M105 124 V145 M135 124 V145\"/></g>\n<rect x=\"20\" y=\"170\" width=\"140\" height=\"22\" fill=\"#f1f3f6\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"90\" y=\"185\" text-anchor=\"middle\" font-size=\"11\">Filtrate tray</text>\n<g font-size=\"11\" font-weight=\"bold\" text-anchor=\"middle\"><text x=\"85\" y=\"104\">Gravity zone</text><text x=\"185\" y=\"60\">Low</text><text x=\"185\" y=\"73\">pressure</text><text x=\"305\" y=\"64\">High pressure</text></g>\n<g fill=\"#1d2d40\"><rect x=\"365\" y=\"108\" width=\"14\" height=\"10\"/></g>\n<text x=\"366\" y=\"134\" font-size=\"11\" text-anchor=\"middle\">Cake</text>\n<g stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"3 3\"><path d=\"M270 160 V176 M300 160 V176\"/></g>\n<text x=\"285\" y=\"192\" font-size=\"11\" text-anchor=\"middle\">Wash sprays</text>\n<text x=\"195\" y=\"228\" text-anchor=\"middle\" font-size=\"11\" fill=\"#5a6675\">Illustrative: free water drains first, then pressure rises along the rollers.</text>\n</svg>\n<figcaption>Belt filter press: gravity drainage, low pressure, then rollers of decreasing diameter.</figcaption>\n</figure>\n\n### What operators like and dislike\n\nBecause an operator can see into the press, it is easy to tell what is happening, and WEF calls the press easy to operate. Belt presses are quiet with low power use, mechanical failures are easy to recognise, and many parts can be bought or made locally. On the negative side, WEF says they are messy, odorous, need significant operator attention and are not very versatile. WEF notes that an experienced operator can judge the cake and the filtrate quite well by eye, and uses the laboratory to confirm it.\n\n### Conditioning and the injection ring\n\nBelt presses depend on good conditioning. WEF describes a polymer injection ring, a spool piece with six or eight hoses that add polymer around the circumference of the feed pipe, followed by a weighted check valve that gives an adjustable amount of turbulence. The hoses occasionally plug with solids. When some plug, the polymer is poorly distributed and, if this is not corrected, excess polymer is needed. The best setting of the mixing device is found by trial and error and changes with the sludge, the polymer and the goals. WEF adds that thicker feed generally dewaters better than thinner feed, and that more polymer can sometimes make up for a thin feed.\n\n### Dryness, loading and polymer: the trade-off\n\nWEF says dewatering devices generally must run at 95 percent capture or better, so capture is not really an operating variable, and it is typically fixed by plant management. Of the remaining three, cake dryness, loading and polymer dose, the operator can take from one to give to another. Within limits, for a drier cake, reduce the loading or raise the polymer dose, noting that some polymers become less effective at higher dosages. A belt press is limited by the volume of water that can go through the belts, so a thinner feed means fewer dry solids produced, all else equal. With all else equal, more solids per hour means less time in the press and a wetter cake. Increased cake dryness comes at the price of lower capacity or more polymer, and the ability to reach a drier cake depends largely on press design, such as an extended gravity zone and extra pressure rollers.\n\n### Start-up sequence and alarms\n\nWEF gives a typical start-up order: open the wash water valve, start the wash water pump, start the belt tension system, start the belt drive and cake conveyor, start the polymer solution pump, and finally start the sludge feed pump. Modern presses often have a one-button start, leaving the operator to start the polymer and feed pumps. The press shuts down on alarms such as belt breakage, belt misalignment, a hydraulic or pneumatic fault, low wash water pressure, a pulled emergency cord, polymer or feed pump failure, cake conveyor shutdown or storage-bin overfilling, and loss of dilution water. Follow your own press manual for the exact sequence.\n\n### Belt wash water\n\nThe belts are washed by sprays while the press runs, and WEF lists the wash water flow and pressure and the suspended solids in the wash water among the variables that affect press performance. Wash water also affects the numbers you record. If the belt wash water gets into the filtrate sample, the filtrate looks cleaner than it is, and the capture is overstated when the wash water carries few solids. WEF corrects for this: the corrected filtrate concentration equals the measured concentration times (E + W) divided by E, where E is the filtrate flow without wash water and W is the wash water flow. In its example, a filtrate flow of 106 gpm, not counting 100 gpm of wash water, turns a measured 0.15 percent into 0.29 percent, and the capture falls from 95 to 90 percent. Clean the wash water nozzles as often as the water quality requires, because WEF ties clean nozzles to proper cleaning of the belts.\n\n### Belt tracking and alignment\n\nThe belts must run true between their rollers. WEF lists belt misalignment among the alarms that stop the press. The Spellman handbook links tracking problems to causes and fixes. Excessive wear along the belt edges points to roller misalignment, improper belt tension, or a fault in the tension or alignment control system, and the fixes are to correct the roller alignment and tension and repair the tracking and alignment controls. A belt that shifts or seizes points to uneven sludge distribution across the belt or to inadequate or uneven belt washing, and the fixes are to adjust the feed for even distribution and to clean and adjust the wash sprays. In other words, tracking depends on the feed and the washing as well as on the mechanical alignment. Belt tension is held by a hydraulic or pneumatic system, and WEF lists a fault in that unit among the shutdown alarms, so its settings and care come from the press manual.\n\n### Raising cake solids\n\nWhen the cake is wetter than the target, WEF lists adjustments to try, one at a time. Slow the belt in small steps, about 10 percent each, which makes a thicker cake and raises the shear on it as it passes the pressure rollers. A small increase in polymer can speed drainage in the gravity zone, though it adds cost and too much polymer can slime the belts. Raise the belt tension in steps of 10 to 15 percent, remembering that at some point the pressure forces sludge into the belt weave and blinds the belts and that higher tension can shorten belt life. Adjust the inline mixer, since floc size is important. After each change let the press settle for 15 to 20 minutes, take a cake sample and compare it with the last one. These figures are typical values from the manual, so your own press manual governs.\n\n### Capture: when cake squeezes from the sides\n\nLow capture is typically caused by cake squeezing out from the sides of the belts in the high-pressure zone. WEF lists three steps: increase the belt speed gradually until the cake stops squeezing out, adjust the polymer slightly, up or sometimes down, and decrease the belt tension gradually until the squeeze-out stops. As before, wait 15 to 20 minutes and sample the filtrate and cake. Spellman lists sludge leaking from the belt edges with the causes of excessive belt tension, belt speed too low and excessive sludge feed rate, and the fixes are the matching opposites. Notice that raising the tension for a drier cake and lowering it to stop squeeze-out pull in opposite directions, so the settings are a balance.\n\n### Blinding and low solids loading\n\nIf less dry solids go through the press than expected, WEF suggests three checks. Make sure the gravity section support structure is clean, because solids built up on the wiper bars lower the drainage rate. Look for a drop in feed solids or flow, by taking a sample of the feed and checking the feed pump for wear or a blockage. Then consider gradual blinding of the belts, from inadequate washing or from chemical blinding, and clean them by hand with a high-pressure hose, which may restore at least some of the drainage. Spellman also lists poor cake discharge as a conditioning symptom: the wrong chemical, the wrong dose, changing sludge or the wrong application point. Spellman gives the hydraulic loading on a belt press as the flow divided by the belt width, in gallons per minute per foot of belt width.\n\n### Screw presses in general terms\n\nA screw press is another way of squeezing conditioned sludge. A slowly turning screw carries the sludge along a screen while the space narrows, so water is pressed out through the screen and the cake leaves at the far end. None of the reference texts used for this course describes screw presses, so this lesson stays at that general level and does not give settings or troubleshooting. What does carry over, from WEF's remarks on dewatering devices in general, is the trade-off among cake dryness, loading and polymer dose, and the need for steady feed and good conditioning. The manufacturer's manual describes the controls and cleaning for your unit.\n\n### Housekeeping, maintenance and hazards\n\nWEF lists these maintenance practices for a belt press: wash it down every day after the dewatering shift so cake does not dry and build up, check that all rollers turn freely, check for damaged bearings weekly, follow the manufacturer's lubrication schedule, clean the doctor blades and the wash nozzles, and clean the plows in the gravity section after shutdown. Hazards named by WEF include slippery spills of water, sludge and polymer, objects on the belts in the roller section, reaching into a running press, hydrogen sulfide build-up and aerosols from the belt spray. WEF says to keep the covers in place and the ventilation working. Recognise these hazards here, and follow your own lock-out and safe work procedures for everything you do at the press.",
+      "evidence": "### Fictional scenario: Pinewick Plant and the drifting belt\n\nPinewick Plant is a fictional wastewater plant with one belt filter press. Over three days the belt has drifted toward one side, the edge of the belt is starting to fray and the filtrate looks cloudier. The operator, Rafael Quist, finds two wash spray nozzles plugged on that side and sees that the cake is thicker on the other side of the belt. The supervisor, Mei-Ling Aberg, asks for a short list of checks and a corrected filtrate figure from a sample taken with the wash water running.",
+      "assignment": "Write a one-page note for Mei-Ling Aberg. List the checks you would make in order, one change at a time, and say how you would confirm each. Explain how plugged nozzles, uneven feed and belt alignment can be linked. Using corrected concentration = measured x (filtrate flow + wash water flow) / filtrate flow, work out the corrected filtrate solids for a measured 0.15 percent with a filtrate flow of 100 gpm and a wash water flow of 80 gpm. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Lists checks in order, changes one thing at a time and says how each result is confirmed.",
+        "Links plugged nozzles, uneven sludge distribution and alignment to belt drift and edge wear.",
+        "Calculates the corrected filtrate solids with the stated formula and explains why it is higher than the measured value.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to describe what happens to the sludge in each of the three zones and where wash water enters the picture. Check that the wash water correction is applied to the filtrate figure, not the cake. Strong answers look at the nozzles and the feed distribution before changing belt tension or speed, and wait for the press to settle between changes. Watch for learners who treat the drifting belt as only a mechanical alignment problem; the feed and washing can cause it too. The press manual and your own safe work procedures govern all work at the press.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and sketch a belt filter press, labelling the three zones, the wash sprays and the filtrate tray."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your press manual or plant log and note the start-up order, the alarms and the wash water pressure."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Pinewick scenario and list the first three checks you would make."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wef-mop11",
+        "spellman-ww2"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-dewatering-belt-and-screw-presses-c1",
+          "prompt": "In which zone of a belt filter press does most of the free water drain through the belt?",
+          "choices": [
+            "The high-pressure roller zone",
+            "The belt wash spray zone",
+            "The cake discharge zone",
+            "The gravity drainage zone"
+          ],
+          "correctIndex": 3,
+          "explanation": "Most free water leaves in the gravity zone; the roller zone, wash sprays and discharge zone come later or do not drain the feed.",
+          "objective": "sludge-dewatering-belt-and-screw-presses"
+        },
+        {
+          "id": "ceu-sludge-dewatering-belt-and-screw-presses-c2",
+          "prompt": "In the typical WEF start-up sequence for a belt filter press, which step comes first?",
+          "choices": [
+            "Start the sludge feed pump",
+            "Open the wash water valve",
+            "Start the polymer solution feed pump",
+            "Start the belt drive and cake conveyor"
+          ],
+          "correctIndex": 1,
+          "explanation": "WEF's typical order opens the wash water valve first; starting feed, polymer or the drive before the wash water is out of sequence.",
+          "objective": "sludge-dewatering-belt-and-screw-presses"
+        },
+        {
+          "id": "ceu-sludge-dewatering-belt-and-screw-presses-c3",
+          "prompt": "A belt press has 100 gpm of filtrate before wash water is added, and 50 gpm of belt wash water. The filtrate sample, which includes the wash water, measures 0.20 percent solids. Using corrected concentration = measured x (filtrate flow + wash water flow) / filtrate flow, what is the corrected concentration?",
+          "choices": [
+            "0.13 percent",
+            "0.10 percent",
+            "0.40 percent",
+            "0.30 percent"
+          ],
+          "correctIndex": 3,
+          "explanation": "Corrected = 0.20 x 150 / 100 = 0.30 percent; 0.13 and 0.10 invert or misuse the flows, and 0.40 doubles the reading.",
+          "objective": "sludge-dewatering-belt-and-screw-presses"
+        },
+        {
+          "id": "ceu-sludge-dewatering-belt-and-screw-presses-c4",
+          "prompt": "Which is a cause that Spellman lists for excessive belt wear along the edges of a belt press?",
+          "choices": [
+            "Feed solids that are slightly thicker than usual",
+            "Roller misalignment or faulty alignment controls",
+            "Wash water sprays aimed at the centre of the belt",
+            "A cake conveyor that runs a little too fast"
+          ],
+          "correctIndex": 1,
+          "explanation": "Spellman lists roller misalignment, wrong tension and control faults for edge wear; thicker feed, spray aim and conveyor speed are not listed.",
+          "objective": "sludge-dewatering-belt-and-screw-presses"
+        },
+        {
+          "id": "ceu-sludge-dewatering-belt-and-screw-presses-c5",
+          "prompt": "A belt press makes a wetter cake than the target. What does WEF suggest as an early adjustment?",
+          "choices": [
+            "Slow the belt in steps of about 10 percent",
+            "Speed the belt up by half to push the cake out faster",
+            "Raise the belt tension by half in one large step",
+            "Shut off the belt wash water for the shift"
+          ],
+          "correctIndex": 0,
+          "explanation": "WEF slows the belt in steps of about 10 percent to thicken the cake; speeding up or one large tension change goes the wrong way or too far, and inadequate belt washing can lead to gradual belt blinding.",
+          "objective": "sludge-dewatering-belt-and-screw-presses"
+        },
+        {
+          "id": "ceu-sludge-dewatering-belt-and-screw-presses-c6",
+          "prompt": "What can happen on a belt press if too much polymer is fed?",
+          "choices": [
+            "The belts dry out and crack within a few minutes of running",
+            "The cake gets drier in proportion to the extra polymer fed",
+            "The belts can slime over and halt dewatering until cleaned",
+            "The filtrate clears up so the wash water is no longer needed"
+          ],
+          "correctIndex": 2,
+          "explanation": "WEF says excess polymer slimes belts and halts dewatering; cake dryness does not rise with every pound, and wash water is still needed.",
+          "objective": "sludge-dewatering-belt-and-screw-presses"
+        }
+      ]
+    },
+    {
+      "id": "sludge-dewatering-other-dewatering-methods",
+      "title": "Centrifuges, filter presses and drying beds: how each works and where it fits",
+      "objectives": [
+        "Describe in general terms how a centrifuge, a recessed-plate or plate-and-frame press, and the main drying beds remove water.",
+        "Compare the methods by what each is suited to and what it costs in land, labour, noise, odour and polymer, and calculate g force."
+      ],
+      "lesson": "### Choosing a method: needs, wants and economics\n\nBelt presses are not the only way to dewater sludge. WEF says each method has advantages and disadvantages and that economics should drive the choice. It suggests listing the needs of the plant, which are fixed, and the wants, which are negotiable. If space is severely limited, a method that needs little land is a need. WEF adds that belt presses and centrifuges have largely replaced vacuum and pressure filters, which are now considered for peculiar plant requirements.\n\n### How a centrifuge works\n\nA dewatering centrifuge separates solids from water by sedimentation, helped by centrifugal force. The centrifuge is a cylindrical drum, the bowl, that spins at high speed. Solids settle outward against the bowl wall, and a screw conveyor, the scroll, turns at a slightly different speed from the bowl and scrapes the solids along the wall, up a conical section and out as cake. Clarified water, the centrate, flows over discharge weirs. WEF stresses that in wastewater centrifuges the only separating mechanism is sedimentation, not filtration.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Cutaway of a decanter centrifuge: feed tube, rotating bowl with scroll, centrate over weirs, cake out of the cone end\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Decanter centrifuge: solids settle to the bowl wall and the scroll moves them to the cone end.</title>\n<g fill=\"#e6eaef\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"60\" y=\"70\" width=\"170\" height=\"70\"/><path d=\"M230 70 L320 92 V118 L230 140 Z\"/></g>\n<path d=\"M10 105 H100\" stroke=\"#2f6db2\" stroke-width=\"5\"/><path d=\"M100 97 L114 105 L100 113 Z\" fill=\"#2f6db2\"/>\n<path d=\"M85 112 L105 128 L125 112 L145 128 L165 112 L185 128 L205 112 L225 124 L260 118 L295 110\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<path d=\"M85 70 V42 M70 56 L85 42 L100 56\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<g fill=\"#c9d0d8\" stroke=\"none\"><rect x=\"62\" y=\"130\" width=\"166\" height=\"8\"/><path d=\"M230 130 L320 112 V118 L230 138 Z\"/></g>\n<path d=\"M320 105 H360 M352 99 L362 105 L352 111 Z\" fill=\"#1d2d40\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<g font-size=\"11\"><text x=\"8\" y=\"86\">Feed and</text><text x=\"8\" y=\"99\" dy=\"-1\">polymer</text><text x=\"110\" y=\"38\">Centrate over weirs</text><text x=\"335\" y=\"98\" text-anchor=\"middle\">Cake</text><text x=\"145\" y=\"160\" text-anchor=\"middle\">Bowl and scroll turn</text><text x=\"145\" y=\"173\" text-anchor=\"middle\">at slightly different speeds</text><text x=\"145\" y=\"102\" text-anchor=\"middle\" fill=\"#5a6675\">Pool</text></g>\n<text x=\"195\" y=\"222\" text-anchor=\"middle\" font-size=\"11\" fill=\"#5a6675\">Illustrative: sedimentation by centrifugal force, no filter medium.</text>\n</svg>\n<figcaption>Decanter centrifuge: solids settle to the bowl wall and the scroll moves them to the cone end.</figcaption>\n</figure>\n\n### Differential speed, torque and pond depth\n\nThe difference in speed between bowl and scroll is the differential speed. It sets the cake removal rate and so the depth of the solids blanket inside the machine, much as the underflow pump does in a clarifier. At a low differential the blanket rises and the cake gets drier, but solids may carry over into the centrate; the operator can raise the polymer rate or raise the differential. A higher differential lowers the blanket, giving wetter cake and cleaner centrate, which may allow less polymer. Most centrifuges have a torque controller that holds the scroll load constant by adjusting the differential. WEF calls the centrifuge a very expensive viscometer: a drier cake is more viscous and raises the torque, so torque can guide the cake dryness, and the operator watches the centrate and adjusts polymer. The weir or pond setting matters too. A deeper pond gives cleaner centrate and the same or drier cake, but liquid pours out at start-up and it takes longer for the machine to make seal, so WEF suggests trying the pond up and down by about 4 mm every year or two.\n\n### Speed, g force, temperature and thin feed\n\nCentrifugal force rises with the square of the bowl speed. WEF gives the g force at the bowl wall as 0.0000142 times the speed in revolutions per minute squared times the bowl diameter in inches. For a 29-inch bowl at 2,600 r/min, that is about 2,784 g. Warmer sludge helps because water gets less dense: tests show every 5 degrees C rise adds about 2 percentage points to cake solids, up to about 60 to 65 degrees C when polymer begins to break down. A centrifuge is less limited than filtration devices by the volume of water passing through, so a thin feed has less effect on it than on a press.\n\n### Polymer points and centrifuge operation\n\nWEF says most manufacturers recommend at least four polymer addition points, from far upstream of the machine to inside it. If the polymer makes a weak floc, a point closer to the centrifuge is better, and the stronger the reaction, the farther upstream the polymer can go. The machine has a reputation for noise and vibration, so a vibration meter is more useful than a switch that only trips it. The centrifuge is a naturally sealed unit that is easy to connect to an odour control system. \n\n### Recessed-plate and plate-and-frame filter presses\n\nA filter press works in batches. A recessed-plate press has a series of plates, each with a recess, and when the plates are closed the recesses form chambers that receive the feed. A filter cloth on each plate wall keeps the cake solids in while the filtrate passes through and out through ports in the plate. Before it is pumped in, the feed must be conditioned to flocculate it, with inorganic chemicals, with polymers, or both. A pump forces the feed in, pressure rises as the chambers fill, and pumping continues up to a set pressure until the void is full and the filtrate flow slows to a minimum. The press then opens, and the cake is removed one chamber at a time. A diaphragm press adds a step: after the chambers are full, diaphragms are pressurised with air or water to squeeze out more water. The Spellman handbook describes the same idea for a plate-and-frame press, in which sludge is pumped between plates and the solids drop out when the plates separate.\n\n### Conditioning and cycle on a pressure filter\n\nPressure filters are the home of inorganic conditioning. Lime raises porosity and helps the cake release, usually along with ferric chloride, and polymers need only a quick mix before injection. WEF notes polymers have a narrow effective dose: too low or too high gives wet cake, while lime and ferric chloride have a broader range. A thin feed means a longer filtration time and a wetter cake, and a thick feed gives a drier cake in less time. WEF puts ideal capture near 99 percent, and a torn cloth shows up at once as a dirty, heavy filtrate. Its troubleshooting table links plates that fail to seal to low hydraulic pressure or rags on the seal surfaces, long cycle times to low feed solids, and wet cake to improper conditioning or a short cycle.\n\n### Where air-drying beds fit\n\nAir-drying relies on drainage and evaporation rather than machines; some designs add decanting, vacuum assistance or reed transpiration. WEF says it is simpler to operate and may be more energy efficient than mechanical systems, but it needs large areas of land, some systems need much more labour for cake removal, and weather has a large effect. It considers air-drying for rural plants with design flows below about 2 mgd in warm, dry areas, and says that in cold or wet climates the beds are less efficient and should be covered or the plant needs an alternate disposal method. Beds are fed sludge that has been stabilised, generally by digestion, to limit odour. Every bed needs a membrane liner so that drainage does not reach groundwater, and because each bed is out of service for cleaning, several small beds are better than one large one. Liquid from the underdrains carries solids and goes back to the plant influent, and the beds need freeboard so that they do not overflow in wet weather. \n\n### Sand beds and paved beds\n\nA sand bed has a liner, underdrains in gravel and graded sand above. Dewatering runs in three steps: free water drains through the sand over several days, any surface water is decanted and returned to the plant influent, and evaporation removes much of what is left. Modern secondary sludges drain poorly without polymer, so beds that rely on drainage need generous amounts. WEF gives typical filling depths of about 150 to 300 mm (6 to 12 in.), then several weeks of drying, with a harrow or tractor mixer to break the crust. Sludge that dries too far turns dusty and crumbly, so WEF suggests removing it at about 40 to 60 percent moisture. A paved bed has a liner topped by concrete or asphalt and drains poorly, so it needs more area. WEF calls it the least efficient air-drying system, well suited to desert conditions, with the advantage that heavy equipment can work on it.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Cross-section of a sand drying bed: sludge layer, sand, gravel with underdrain pipe, liner, with decant, drainage and evaporation arrows\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Sand drying bed: water leaves by decanting, drainage and evaporation.</title>\n<rect x=\"30\" y=\"70\" width=\"270\" height=\"30\" fill=\"#c9d0d8\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"30\" y=\"100\" width=\"270\" height=\"30\" fill=\"#f1f3f6\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<rect x=\"30\" y=\"130\" width=\"270\" height=\"36\" fill=\"#e6eaef\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<path d=\"M30 170 H300\" stroke=\"#1d2d40\" stroke-width=\"4\"/>\n<circle cx=\"165\" cy=\"152\" r=\"8\" fill=\"#ffffff\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<g font-size=\"11\"><text x=\"165\" y=\"89\" text-anchor=\"middle\">Sludge layer</text><text x=\"165\" y=\"119\" text-anchor=\"middle\">Graded sand</text><text x=\"95\" y=\"150\" text-anchor=\"middle\">Gravel</text><text x=\"165\" y=\"185\" text-anchor=\"middle\">Liner beneath the bed</text><text x=\"313\" y=\"156\">Underdrain</text><text x=\"313\" y=\"169\">to plant influent</text></g>\n<g stroke=\"#2f6db2\" stroke-width=\"2\" fill=\"none\"><path d=\"M80 62 V30 M72 40 L80 30 L88 40\"/><path d=\"M210 62 V30 M202 40 L210 30 L218 40\"/><path d=\"M330 85 H350 M342 79 L350 85 L342 91\"/><path d=\"M165 134 V143 M160 138 L165 143 L170 138\"/></g>\n<g font-size=\"11\"><text x=\"80\" y=\"22\" text-anchor=\"middle\">Evaporation</text><text x=\"210\" y=\"22\" text-anchor=\"middle\">Evaporation</text><text x=\"313\" y=\"82\">Decant</text></g>\n<text x=\"195\" y=\"222\" text-anchor=\"middle\" font-size=\"11\" fill=\"#5a6675\">Illustrative: free water drains down, surface water is decanted.</text>\n</svg>\n<figcaption>Sand drying bed: water leaves by decanting, drainage and evaporation.</figcaption>\n</figure>\n\n### Reed beds and vacuum-assisted beds\n\nReed beds copy a natural marsh. The reeds draw water through their roots and release it to the air, and WEF says sludge can stay in a reed bed for 6 to 10 years before the top layer is removed. WEF says reed beds typically need less capital, less land and have much lower operating costs than the other beds, although harvesting and cold or wet weather have their own limits. Vacuum-assisted and wedge-wire beds drain on porous plates or slotted septums, with a weak vacuum or a small suction; WEF says the vacuum-assisted design is mostly of historical interest, and the wedge-wire design needs more capital, more labour and about as much polymer as a belt press or centrifuge.\n\n### Drying lagoons in general terms\n\nA lagoon is a large basin in which sludge is held for a long time while water separates and evaporates. The reference texts used here do not describe lagoons as a dewatering method, so treat this paragraph as general background, not a source claim. The WEF manual mentions a lagoon only in a case history, where it served as a buffer for fluctuations in sludge generation, and it warns that sludge stored for days may turn septic and change how it dewaters. \n\n### Comparing the methods\n\nA belt press is visible, quiet and low in power use but messy, odorous and needs attention. A centrifuge is enclosed, can thicken or dewater by changing the pond setting and is less sensitive to a thin feed, but is noisy, vibrates and has wear parts. A filter press works in batches, can reach high pressure and high capture, but uses cloths and often lime or ferric chloride, and WEF says it suits unusual circumstances. Drying beds are simple and can be more energy efficient but need land, suitable weather and good odour control. \n\n### Recognising the hazards\n\nWEF names hazards that are easy to recognise. Many filter presses are very noisy, and objects must not be put between plates being discharged without first shutting the unit down; your plant lock-out procedure governs any entry. Lime treatment releases ammonia fumes at cake discharge, acid washing releases acid fumes, and lime powder is caustic on moist tissue. Biosolids often release hydrogen sulfide, a serious health hazard that also corrodes copper wiring. These notes are for recognition only. Your plant's written safe work procedures say how to work near each of these machines.",
+      "evidence": "### Fictional scenario: Saltmere Plant and its ageing press\n\nSaltmere Plant is a fictional rural wastewater plant that dewaters digested sludge about two days a week and hauls it to nearby farm land. Its old belt press is near the end of its life. The options are a centrifuge, a recessed-plate filter press or drying beds on spare land at the edge of the site, where winters are wet. The supervisor, Piers Calloway, asks the operator, Noor Haddad, for a short comparison that separates the plant's needs from its wants. A centrifuge maker's sheet lists a 28 in. bowl at 2,500 r/min.",
+      "assignment": "Write a one-page note for Piers Calloway. Sort the plant's needs and wants as you read them from the scenario. For each of the three options give one thing it does well and one problem it brings, using the lesson. Using g force = 0.0000142 x (r/min squared) x bowl diameter in inches, work out the g force on the maker's sheet. Say what extra information you would ask for before a choice is made. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Separates needs from wants using the facts in the scenario.",
+        "Gives a suitable benefit and a problem for each of the three options, drawn from the lesson.",
+        "Calculates the g force with the stated formula and shows the steps.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain how a centrifuge separates solids and what the differential speed does. Check that the comparison is built on the plant's own needs, such as land, weather, hours of operation and hauling, and not on a favourite machine. Strong answers note that the beds depend on weather and land, that a filter press works in batches, and that the choice follows cost over the life of the equipment. Watch for learners who rank the methods as simply better or worse; the lesson says economics and local needs decide. Treat the paragraph on lagoons as general background, since the course sources do not cover them.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and make a table of the four method groups, how each removes water and one problem to ask about."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant description or maker sheet and note which dewatering method you have and its main controls."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Saltmere scenario and list the needs and wants you can see."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "wef-mop11",
+        "spellman-ww2"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-dewatering-other-dewatering-methods-c1",
+          "prompt": "What does a dewatering centrifuge use to separate solids from water?",
+          "choices": [
+            "Sedimentation enhanced by centrifugal force",
+            "Filtration through a cloth under vacuum",
+            "Squeezing between belts over a set of rollers",
+            "Drainage and evaporation on a layer of sand"
+          ],
+          "correctIndex": 0,
+          "explanation": "A centrifuge separates by sedimentation under centrifugal force; vacuum cloth filtration, belts over rollers and sand drainage belong to other devices.",
+          "objective": "sludge-dewatering-other-dewatering-methods"
+        },
+        {
+          "id": "ceu-sludge-dewatering-other-dewatering-methods-c2",
+          "prompt": "What does the differential speed between the bowl and the scroll control?",
+          "choices": [
+            "The temperature of the polymer solution as it is made down",
+            "The pressure in the discharge line of the sludge feed pump",
+            "The cake removal rate, and so the solids blanket depth",
+            "The flow of wash water across the cake in the bowl"
+          ],
+          "correctIndex": 2,
+          "explanation": "Differential speed sets the cake removal rate and so the blanket depth; it does not set polymer temperature, pump pressure or wash water flow.",
+          "objective": "sludge-dewatering-other-dewatering-methods"
+        },
+        {
+          "id": "ceu-sludge-dewatering-other-dewatering-methods-c3",
+          "prompt": "Which method does WEF consider for rural plants with design flows under about 2 mgd in warm, dry areas?",
+          "choices": [
+            "High-speed dewatering centrifuges",
+            "Recessed-plate filter presses",
+            "Belt filter presses with covers",
+            "Air-drying beds on open land"
+          ],
+          "correctIndex": 3,
+          "explanation": "WEF considers air-drying beds for small rural plants in warm dry areas; centrifuges, filter presses and belt presses are machines chosen on other grounds.",
+          "objective": "sludge-dewatering-other-dewatering-methods"
+        },
+        {
+          "id": "ceu-sludge-dewatering-other-dewatering-methods-c4",
+          "prompt": "In a recessed-plate filter press, when does pumping of feed stop for the cycle?",
+          "choices": [
+            "When the chambers fill and filtrate flow slows to a minimum",
+            "When the cake peels away from the plates and drops by itself",
+            "When the feed pump slows to half of its rated speed",
+            "When the polymer day tank has run out of solution"
+          ],
+          "correctIndex": 0,
+          "explanation": "A recessed-plate press stops when the chambers are full and filtrate flow has slowed; cake release, pump speed and a polymer tank are not the signal.",
+          "objective": "sludge-dewatering-other-dewatering-methods"
+        },
+        {
+          "id": "ceu-sludge-dewatering-other-dewatering-methods-c5",
+          "prompt": "WEF reports that each 5 degrees C rise in sludge temperature raises centrifuge cake solids by about 2 percentage points, up to about 60 degrees C. A centrifuge gives 22 percent cake solids with sludge at 25 degrees C. What cake solids would you expect at 40 degrees C?",
+          "choices": [
+            "About 24 percent",
+            "About 30 percent",
+            "About 28 percent",
+            "About 52 percent"
+          ],
+          "correctIndex": 2,
+          "explanation": "15 degrees C is three steps of 5, so 22 + 3 x 2 = 28; 24 counts one step, 30 counts four, and 52 adds 2 points per degree.",
+          "objective": "sludge-dewatering-other-dewatering-methods"
+        },
+        {
+          "id": "ceu-sludge-dewatering-other-dewatering-methods-c6",
+          "prompt": "Which water-removal steps do sand drying beds rely on?",
+          "choices": [
+            "Drainage through the sand, decanting and evaporation",
+            "Hydraulic rams squeezing sludge between cloth plates",
+            "Centrifugal force in a rotating bowl and scroll",
+            "A vacuum drawn through a rotating drum"
+          ],
+          "correctIndex": 0,
+          "explanation": "Sand beds use drainage, decanting and evaporation; rams on cloth plates, a spinning bowl and a vacuum drum are other machines.",
+          "objective": "sludge-dewatering-other-dewatering-methods"
+        }
+      ]
+    },
+    {
+      "id": "sludge-dewatering-operation-and-records",
+      "title": "Operation and records: performance, recycle, odour and housekeeping",
+      "objectives": [
+        "Measure dewatering performance with cake solids, capture and polymer dose in pounds per ton, and work out the load that the recycle returns to the plant.",
+        "Link odour, housekeeping and feed changes to dewatering, work through a troubleshooting problem and keep records that help."
+      ],
+      "lesson": "### What to measure\n\nWEF names four economic factors that make up dewatering performance: the cost of polymer, the cost of sludge disposal or downstream processing, the cost of recycle, and throughput. They tie to four numbers the operator should have in near real time: the feed solids, the cake solids, the capture, and the polymer dose. Laboratory results that arrive a day later are too slow for adjusting the machine, so WEF wants sample points that are convenient and quick tests, such as a microwave oven for solids, to back up the lab. Polymer cost is the dose times the unit price. The disposal cost depends on the tons hauled and the unit price, per wet ton or per dry ton, so check which basis the contract uses. Throughput is best tracked as dry tons of solids per hour.\n\n### Capture from three samples\n\nCapture, which WEF also calls recovery, is the share of the feed solids that ends up in the cake. With f as the feed solids, s as the cake solids and e as the solids in the filtrate or centrate, all in percent (filtrate is usually measured as TSS, so the result is an approximation), WEF gives recovery as s times (f minus e), divided by f times (s minus e), times 100. With feed at 2.5 percent, cake at 20 percent and filtrate at 0.15 percent, that is 20 times 2.35 divided by 2.5 times 19.85, or about 95 percent. The formula needs no flow measurements. If no solids are in the filtrate the result is 100 percent, and if the filtrate is as strong as the feed it is zero. WEF notes that polymer or rinse water under about 10 percent of the feed is commonly ignored, and that wash water in a belt press filtrate sample dilutes it and should be corrected for, as in the previous module.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Flow diagram around a dewatering unit: feed, polymer, wash water in; cake and filtrate out; filtrate recycles to the plant; sample points marked\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Sample feed before polymer, then cake and filtrate; the filtrate goes back to the plant.</title>\n<g fill=\"#e6eaef\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"140\" y=\"90\" width=\"110\" height=\"60\" rx=\"4\"/></g>\n<g fill=\"#f1f3f6\" stroke=\"#2f6db2\" stroke-width=\"2\"><rect x=\"130\" y=\"196\" width=\"130\" height=\"40\" rx=\"4\"/></g>\n<g font-size=\"11\" text-anchor=\"middle\"><text x=\"195\" y=\"116\">Dewatering</text><text x=\"195\" y=\"130\">unit</text><text x=\"195\" y=\"212\">Plant liquid train</text><text x=\"195\" y=\"226\">receives the recycle</text></g>\n<g fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\"><path d=\"M20 120 H138\"/><path d=\"M110 50 V118\"/><path d=\"M225 50 V88\"/><path d=\"M250 120 H340\"/><path d=\"M195 150 V194\"/></g>\n<g fill=\"#2f6db2\"><path d=\"M138 120 L128 115 L128 125 Z\"/><path d=\"M110 118 L105 108 L115 108 Z\"/><path d=\"M225 90 L220 80 L230 80 Z\"/><path d=\"M342 120 L332 115 L332 125 Z\"/><path d=\"M195 196 L190 186 L200 186 Z\"/></g>\n<g font-size=\"11\"><text x=\"20\" y=\"106\">Feed</text><text x=\"110\" y=\"40\" text-anchor=\"middle\">Polymer</text><text x=\"245\" y=\"40\" text-anchor=\"middle\">Wash water</text><text x=\"295\" y=\"106\" text-anchor=\"middle\">Cake</text><text x=\"206\" y=\"174\">Filtrate or centrate</text></g>\n<g fill=\"#1d2d40\"><circle cx=\"55\" cy=\"120\" r=\"6\"/><circle cx=\"295\" cy=\"120\" r=\"6\"/><circle cx=\"195\" cy=\"168\" r=\"6\"/></g>\n<g font-size=\"11\" fill=\"#5a6675\"><text x=\"20\" y=\"138\">Sample feed before</text><text x=\"20\" y=\"151\">the polymer point</text><text x=\"262\" y=\"150\">Sample the cake</text><text x=\"20\" y=\"182\">Sample the</text><text x=\"20\" y=\"195\">filtrate</text></g>\n<text x=\"195\" y=\"252\" text-anchor=\"middle\" font-size=\"11\" fill=\"#5a6675\">Illustrative: brown dots mark sample points.</text>\n</svg>\n<figcaption>Sample the feed before polymer, then the cake and the filtrate; the filtrate goes back to the plant.</figcaption>\n</figure>\n\n### Polymer dose in pounds per ton\n\nPolymer dose is the pounds of polymer, as supplied, per ton of dry feed solids. The simplest way is to divide the polymer used by the dry tons processed over the same period: 240 pounds of polymer on 12 dry tons is 20 pounds per ton. WEF also gives a formula that works from the flows: polymer concentration divided by feed concentration, times polymer rate divided by feed rate, times 2,000 pounds per ton. It assumes the polymer solution and the sludge have about the same density. WEF notes the same formula serves for jar tests, with sample volumes in place of the rates. Polymer is usually fed as a dilute solution, so the plant must also work out the solution flow. The Wisconsin guide gives the pattern: the diluted flow in gallons per day is the undiluted polymer used per day divided by the feed concentration as a decimal, and dividing by 1,440 minutes per day gives gallons per minute. For example, 12 gpd of neat polymer fed as a 0.5 percent solution by volume is 12 divided by 0.005, or 2,400 gpd, which is about 1.7 gpm. A dose figure only means something alongside cake solids and capture, because, as WEF says for belt presses, the operator can take from one of dryness, loading and dose to give to another.\n\n### Cost per dry ton\n\nWEF says that the total cost is the polymer cost plus the disposal cost, and that its sample data sheets calculate the cost in dollars per dry ton so that everyone knows the goal of the operation. Polymer cost per dry ton is the dose in pounds per ton times the price per pound. Hauling cost per dry ton is the wet tons per dry ton, which is one divided by the cake solids as a decimal, times the price per wet ton. Before adding them, put both on one basis: the hauling cost per dry ton of feed is the hauling cost per dry ton of cake multiplied by the capture fraction. Maximum cake solids is not automatically the lowest cost, because WEF notes the saving from drier cake is partly offset by higher polymer cost, and it says that without the cost figures in front of them operators cannot tell whether they are running at the minimum cost per ton.\n\n### What the recycle does to the plant\n\nSolids that do not leave in the cake go back to the plant when filtrate or centrate is returned to it. The Wisconsin guide lists the return sidestream as a disadvantage of mechanical dewatering and works out how much it adds. With 10 MGD at 150 mg/L suspended solids, the influent carries 12,510 pounds per day. A sidestream of 200,000 gallons per day at 1,000 mg/L returns 1,668 pounds per day, a 13.3 percent increase. The pounds per day are the flow in MGD times the concentration in mg/L times 8.34. WEF notes that most plants do not put a cost on the recycle and treat it as pass or fail, often with an arbitrary 95 percent capture, though a gross cost can be set by charging recycled solids what an industrial customer with excess solids would be charged. WEF also says drainage from drying beds returns to the influent, that the drainage from reed beds is better quality than that from the other beds, and that centrate lines can foam, so they should be oversized and free of traps.\n\n### Odour and housekeeping\n\nDewatering is where sludge is open to the room. WEF calls belt presses messy and odorous and says that sludge often releases hydrogen sulfide, a serious health hazard that also corrodes copper wiring and controls. Oxidants such as potassium permanganate or hydrogen peroxide react with hydrogen sulfide and reduce odour, so follow the product sheet and plant procedures for feed point and contact time. Basic housekeeping matters as well: wash the equipment down after the shift, keep covers in place, sweep up dry polymer dust, and contain polymer spills with absorbent, since water makes a slippery gel. Follow your plant's procedures for each of these.\n\n### Changes in the feed\n\nNo dewatering operation works well if its biosolids change without warning. WEF lists what to look for when performance moves: feed total solids, volatile solids, pH and temperature, alkalinity, conductivity, the polymer type and delivery, plant load, the blend of primary and secondary sludge, weather, bypasses, mixed liquor and sludge age, and in the digesters the residence time, volatile acids and temperature. Some changes can be predicted, such as a digester coming back on line. Others come from the wet end. The wasting example from the first module shows why the wet end should tell the dry end about a change, and make it gradually. A change in iron or alum dose in the wet end shifts dewaterability in proportion to the amount, so WEF says the dewatering operation needs to be told about it.\n\n### A troubleshooting approach\n\nWork from the records. First compare the computed values with those the machine achieved before. Then ask what changed upstream, in the feed, the polymer and the machine. WEF's advice for a belt press is to change one variable at a time, wait for the press to settle and compare, and that is possible only if the data are taken often. A single number can mislead, so read the trend and the rate of change. WEF's example is a conveyor torque of 15 Nm, which means little until you know that the trip is at 17 Nm, and which reads better as 88 percent load. A rising torque calls for a different response from a falling one. Think before raising the polymer dose, because WEF lists several causes of high polymer use: poor feed, plugged polymer hoses, a poor addition point, too little aging time, or a polymer that no longer reacts well with the sludge.\n\n### A routine walk-round\n\nWEF's lists suggest what to look at on a round of the dewatering area. Look at the cake and at the filtrate or centrate, check the polymer hoses and the flow meters on the feed and polymer lines, and on a belt press check that the rollers turn freely and the wash nozzles are clean. On a centrifuge WEF lists oil level and flow, vibration, the bowl motor ammeter, bearing noise and temperature, leaks, centrate quality and scroll torque, usually checked once per shift. Writing anything unusual in the log is good practice, and your plant procedures set who else must be told.\n\n### Keeping records\n\nWEF says the operator needs to keep records of all dewatering performance parameters, with at least two samples per shift of feed, cake and filtrate or centrate. Composite samples give a better picture than grabs. Total solids are measured on the feed and cake and total suspended solids on the filtrate. The feed sample comes from upstream of polymer addition, because a sample with polymer in it is very hard to subsample. WEF notes that operators often write results on scrap paper or in logbooks that disappear into storage, and that entering them into a database lets the system calculate capture, dose and cost, show trends by shift, and hold the history for the next operator. Record the units and the conditions, such as the polymer product and the belt speed, along with the numbers.\n\n### Safety and housekeeping\n\nWEF says the best safety precaution before operating any conditioning or dewatering equipment is for everyone involved to read and understand the manufacturers' operation and maintenance manuals. It also says good housekeeping prevents many accidents, equipment should be kept in first-class condition, and unsafe actions and conditions should be corrected. Cutting corners is not advisable. The hazards in this course, slips, moving belts and presses, noise, hydrogen sulfide, lime and ammonia, are for recognition. How to work around them is in your safe work procedures.",
+      "evidence": "### Fictional scenario: Cedar Holloway Plant and the wet cake\n\nCedar Holloway Plant is a fictional wastewater plant with a belt filter press that dewaters digested sludge. Over a week the cake solids have fallen from about 18 to about 15 percent while polymer use has risen from about 22 to about 30 lb per dry ton. Feed solids dropped from about 3.0 to about 2.4 percent after the wasting rate was raised sharply four days ago to bring the mixed liquor down in a single day. Several wash nozzles are partly plugged and the filtrate has gone from about 0.20 to about 0.45 percent solids. The operator, Bronwen Achterberg, has the logs. The supervisor, Isidore Pell, asks for a plan.",
+      "assignment": "Write a one-page note for Isidore Pell. Using WEF's recovery formula, percent recovery = s x (f - e) / [f x (s - e)] x 100, work out the capture before the changes (feed 3.0, cake 18, filtrate 0.20 percent) and after (feed 2.4, cake 15, filtrate 0.45 percent), and say what the change adds to the plant. List the records you would pull and the order in which you would check the feed, the nozzles, the belt settings and the polymer, changing one thing at a time. Say what you would tell the wet-end operators. Name anything you could not tell from the scenario.",
+      "rubric": [
+        "Calculates capture before and after with the stated formula and explains the extra load that returns to the plant.",
+        "Lists records and an ordered set of checks, changing one thing at a time, and does not raise the polymer first.",
+        "Links the wasting-rate change to the feed and says what the wet end should do and tell the dewatering operator.",
+        "Names unanswered questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain why feed, cake and filtrate are sampled together and why the feed sample is taken before the polymer point. Check that the capture calculation uses the percent values in the formula and that the answer is a percent. Strong answers connect the sudden wasting-rate change to the thinner feed and talk to the wet-end operators before touching the press settings. Watch for learners who raise the polymer dose first; WEF lists several other causes of high polymer use. Safety content is for recognition only, and your own procedures govern all work around the press.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write down the formulas for capture, polymer dose and cost per dry ton, with the units for each term."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant records and find the cake solids, capture and polymer dose for the last week."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Cedar Holloway scenario and list the records you would pull first."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "wi-adv-ww",
+        "wef-mop11"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sludge-dewatering-operation-and-records-c1",
+          "prompt": "WEF gives percent recovery = s x (f - e) / [f x (s - e)] x 100, with f, s and e as the feed, cake and filtrate solids in percent. For f = 2.0, s = 18 and e = 0.10, what is the recovery?",
+          "choices": [
+            "About 91.5 percent",
+            "About 98.0 percent",
+            "About 89.0 percent",
+            "About 95.5 percent"
+          ],
+          "correctIndex": 3,
+          "explanation": "Recovery = 18 x 1.9 / (2.0 x 17.9) x 100 = about 95.5; the other values are not what the formula gives for these inputs.",
+          "objective": "sludge-dewatering-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-dewatering-operation-and-records-c2",
+          "prompt": "A press uses 240 lb of polymer, as supplied, while dewatering 12 dry tons of solids. What is the polymer dose in pounds per dry ton?",
+          "choices": [
+            "2,880 lb per dry ton",
+            "20 lb per dry ton",
+            "0.05 lb per dry ton",
+            "252 lb per dry ton"
+          ],
+          "correctIndex": 1,
+          "explanation": "Dose = 240 / 12 = 20 lb per dry ton; 2,880 multiplies, 0.05 inverts, and 252 adds the two numbers.",
+          "objective": "sludge-dewatering-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-dewatering-operation-and-records-c3",
+          "prompt": "WEF gives polymer dose = (polymer concentration / feed concentration) x (polymer rate / feed rate) x 2,000 lb per ton, assuming similar densities. With polymer solution at 0.2 percent, feed at 2.5 percent, polymer rate 24 gpm and feed rate 120 gpm, what is the dose?",
+          "choices": [
+            "3.2 lb per ton",
+            "800 lb per ton",
+            "32 lb per ton",
+            "5,000 lb per ton"
+          ],
+          "correctIndex": 2,
+          "explanation": "Dose = (0.2 / 2.5) x (24 / 120) x 2,000 = 32; 3.2 slips a decimal, 800 inverts the rate ratio, and 5,000 inverts the concentration ratio.",
+          "objective": "sludge-dewatering-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-dewatering-operation-and-records-c4",
+          "prompt": "Where should the feed sample for solids testing be taken?",
+          "choices": [
+            "Just downstream of the polymer injection ring",
+            "From the hopper at the end of the cake conveyor",
+            "From the polymer day tank after it is mixed",
+            "Upstream of the point where polymer is added"
+          ],
+          "correctIndex": 3,
+          "explanation": "WEF says to sample the feed upstream of polymer because a polymer and sludge mix is hard to sample; after the ring, the conveyor or the day tank do not show the feed.",
+          "objective": "sludge-dewatering-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-dewatering-operation-and-records-c5",
+          "prompt": "Which three streams does WEF say should be sampled at least twice per shift on a mechanical dewatering system?",
+          "choices": [
+            "Feed biosolids, polymer solution and final plant effluent",
+            "Cake discharge, wash water and digester supernatant",
+            "Feed biosolids, cake discharge, and filtrate or centrate",
+            "Polymer solution, wash water and cake discharge"
+          ],
+          "correctIndex": 2,
+          "explanation": "WEF names feed, cake and filtrate or centrate; polymer, wash water, effluent or digester samples do not close the solids balance.",
+          "objective": "sludge-dewatering-operation-and-records"
+        },
+        {
+          "id": "ceu-sludge-dewatering-operation-and-records-c6",
+          "prompt": "Why should an operator track capture as well as cake solids?",
+          "choices": [
+            "Uncaptured solids add load when recycle returns to the plant",
+            "Capture sets the price per drum of polymer that is bought",
+            "Capture tells the operator which belt speed to set for the shift",
+            "Capture shows when the cake conveyor is getting full"
+          ],
+          "correctIndex": 0,
+          "explanation": "Solids missing the cake return to the plant as added load when filtrate or centrate is sent back; capture does not set polymer price, belt speed or conveyor level.",
+          "objective": "sludge-dewatering-operation-and-records"
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-f1",
+      "prompt": "A press makes 12 dry tons per week at 22 percent cake solids. Using wet tons = dry tons divided by cake solids as a decimal, how many wet tons of cake result?",
+      "choices": [
+        "About 2.6 wet tons",
+        "About 9.4 wet tons",
+        "About 15.4 wet tons",
+        "About 54.5 wet tons"
+      ],
+      "correctIndex": 3,
+      "explanation": "Wet tons = 12 / 0.22 = about 54.5; 2.6 multiplies, 9.4 uses the water fraction as a multiplier, and 15.4 divides by the water fraction.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-f2",
+      "prompt": "A plant presses 36 dry tons per week and pays $55 per wet ton to haul cake. Using wet tons = dry tons divided by cake solids as a decimal, how much does the weekly hauling bill fall if cake solids rise from 18 percent to 24 percent?",
+      "choices": [
+        "$11,000 per week",
+        "$8,250 per week",
+        "$2,750 per week",
+        "$330 per week"
+      ],
+      "correctIndex": 2,
+      "explanation": "Wet tons fall from 200 to 150, and 50 x $55 = $2,750; $11,000 and $8,250 are the two full bills, and $330 uses the 6 point rise in cake solids.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-f3",
+      "prompt": "A plant stops using alum for phosphorus removal and switches to ferric chloride. What does the WEF manual say usually happens to the cake?",
+      "choices": [
+        "Usually drier, since ferric salts dewater better than alum",
+        "It is usually wetter, since iron adds more bound water to the sludge",
+        "It is unchanged, since the iron leaves in the filtrate",
+        "It needs more polymer, in proportion to the iron dose"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF says ferric salts give drier cake and alum gives no change or harder sludge, so a wetter cake from iron, no change, or a rising polymer dose is wrong.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-f4",
+      "prompt": "Why is a sludge with more secondary (biological) solids harder to dewater than one with more primary solids?",
+      "choices": [
+        "Secondary solids are heavier, so they settle before the press",
+        "Bacteria hold fluid inside membranes and add binding surface",
+        "Secondary solids carry more grit, which blinds the belts",
+        "Secondary solids carry a positive charge that repels the polymer"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bacterial membranes hold fluid and the surface area binds water; secondary solids are not valued for grit or settling and carry a negative, not positive, charge.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-f5",
+      "prompt": "Which statement about polymer dose agrees with the WEF manual?",
+      "choices": [
+        "Past a certain dose, extra polymer can stop helping or do harm",
+        "Doubling the dose roughly doubles the cake solids on a belt press",
+        "A dose chosen in the laboratory stays right as the sludge changes",
+        "Extra polymer cuts hauling cost with no effect on operation"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF says some polymers lose effectiveness at higher doses and response curves level off; doubling dose does not double dryness, lab doses can drift as sludge changes, and excess polymer has costs.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-f1",
+      "prompt": "A belt press has 60 gpm of filtrate before wash water is added, and 90 gpm of belt wash water. The filtrate sample, which includes the wash water, measures 0.10 percent solids. Using corrected concentration = measured x (filtrate flow + wash water flow) / filtrate flow, what is the corrected concentration?",
+      "choices": [
+        "0.15 percent",
+        "0.04 percent",
+        "0.17 percent",
+        "0.25 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Corrected = 0.10 x 150 / 60 = 0.25 percent; 0.15 leaves out the filtrate flow, 0.04 inverts the ratio, and 0.17 divides by the wash flow.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-f2",
+      "prompt": "WEF gives percent recovery = s x (f - e) / [f x (s - e)] x 100, where f is the feed solids, s the cake solids and e the filtrate solids, all in percent. For f = 3.0, s = 20 and e = 0.20, what is the recovery?",
+      "choices": [
+        "About 85.0 percent",
+        "About 98.0 percent",
+        "About 94.3 percent",
+        "About 89.5 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Recovery = 20 x 2.8 / (3.0 x 19.8) x 100 = about 94.3; the other values are not what the formula gives for these inputs, so recheck each subtraction and product.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-f3",
+      "prompt": "A belt press leaks cake from the edges of the belts in the high-pressure zone and the filtrate is dirty. Which adjustments do WEF and Spellman suggest?",
+      "choices": [
+        "Slow the belt and raise the belt tension in one large step",
+        "Raise the belt speed gradually and ease the belt tension",
+        "Raise both the belt speed and the belt tension together",
+        "Slow the belt and double the polymer dose at once"
+      ],
+      "correctIndex": 1,
+      "explanation": "WEF raises belt speed gradually and eases tension until squeeze-out stops; slowing the belt or raising tension makes it worse, and doubling polymer is not a step it gives.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-f4",
+      "prompt": "A belt press loses drainage gradually and the belts look clogged. Which cause does WEF list?",
+      "choices": [
+        "Inadequate belt washing or chemical blinding",
+        "Too little ventilation in the press room",
+        "A cake conveyor that is set to run too slowly",
+        "A feed sludge that is thicker than it was before"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF ties gradual blinding to inadequate belt washing or chemical blinding; ventilation, conveyor speed and thicker feed are not listed causes.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-f5",
+      "prompt": "Which hazard does WEF list for belt filter presses?",
+      "choices": [
+        "Steam released from the wash water pump on cold winter mornings",
+        "Static shocks from the dry polymer feeder hopper",
+        "Slippery spills of water, sludge and polymer on the floor",
+        "Belt fragments thrown out during normal running"
+      ],
+      "correctIndex": 2,
+      "explanation": "WEF names slippery spills of water, sludge and polymer; the steam, static and belt fragment hazards are not listed.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-f1",
+      "prompt": "WEF gives the g force at the bowl wall of a centrifuge as 0.0000142 x (r/min squared) x bowl diameter in inches. What is the g force for a 30 in. bowl at 2,400 r/min?",
+      "choices": [
+        "About 1,227 g",
+        "About 2,454 g",
+        "About 82 g",
+        "About 4,907 g"
+      ],
+      "correctIndex": 1,
+      "explanation": "g = 0.0000142 x 2,400 x 2,400 x 30 = about 2,454; 1,227 halves it, 82 omits the diameter, and 4,907 doubles it.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-f2",
+      "prompt": "At a centrifuge the differential speed is lowered. What does WEF say usually happens?",
+      "choices": [
+        "The cake gets wetter, but the centrate usually gets cleaner",
+        "The cake gets drier, and the centrate gets cleaner",
+        "The cake stays the same, but less polymer is needed",
+        "The cake gets drier, but solids may carry into the centrate"
+      ],
+      "correctIndex": 3,
+      "explanation": "A low differential raises the blanket so the cake dries but solids may reach the centrate; the other options pair the effects wrongly.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-f3",
+      "prompt": "A filter press produces a dirty filtrate that is heavy with solids. Which cause does WEF list in its troubleshooting guide?",
+      "choices": [
+        "A filter cycle that has been run for too long a time",
+        "A feed pump pressure that is set too low for the plates",
+        "A ripped cloth, or a cloth with too high a porosity",
+        "Plates that are washed with too little water"
+      ],
+      "correctIndex": 2,
+      "explanation": "WEF lists a ripped cloth or too porous cloth for dirty filtrate; a long cycle, low feed pressure and a light wash are not listed for it.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-f4",
+      "prompt": "Why does conditioning with lime and ferric chloride add to the amount of material hauled?",
+      "choices": [
+        "The chemicals dissolve into the filtrate and add just more water",
+        "They add about a pound of solids per pound used, plus water",
+        "The chemicals form gas that swells the volume of the cake",
+        "The chemicals raise the specific gravity of the filtrate"
+      ],
+      "correctIndex": 1,
+      "explanation": "WEF says about a pound of chemical solids per pound of lime and ferric chloride plus water; the chemicals do not simply dissolve into the filtrate.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-f5",
+      "prompt": "Why are drying beds usually fed digested or otherwise stabilised sludge?",
+      "choices": [
+        "Stabilised sludge gives less odour on open beds",
+        "Stabilised sludge has lost its water so it dries in a day",
+        "Raw sludge drains too fast through the sand layer",
+        "Digestion removes the need for polymer on a sand bed"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF feeds stabilised sludge to beds to limit odour; it still holds water, and polymer may still be needed for drainage.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-f1",
+      "prompt": "Plant flow is 10 MGD at 180 mg/L suspended solids. A dewatering sidestream of 250,000 gpd (0.25 MGD) carries 800 mg/L. Using lb per day = MGD x mg/L x 8.34, by what percent does the sidestream raise the suspended solids load?",
+      "choices": [
+        "About 22.2 percent",
+        "About 1.1 percent",
+        "About 111 percent",
+        "About 11.1 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Influent is 15,012 and sidestream 1,668 lb per day, so the rise is about 11.1 percent; 22.2 doubles it, 1.1 slips a decimal, and 111 slips the other way.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-f2",
+      "prompt": "A press uses 22 lb of polymer per dry ton at $1.60 per lb and makes 20 percent cake. Hauling costs $45 per wet ton. Using wet tons per dry ton = 1 / cake solids as a decimal, what is the polymer plus hauling cost per dry ton?",
+      "choices": [
+        "$80.20",
+        "$260.20",
+        "$225.00",
+        "$35.20"
+      ],
+      "correctIndex": 1,
+      "explanation": "Polymer $35.20 plus hauling 5 x $45 = $225 gives $260.20; $80.20 hauls 1 wet ton, and $225.00 and $35.20 are one cost only.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-f3",
+      "prompt": "Which effect of filtrate or centrate recycle does the Wisconsin guide point to?",
+      "choices": [
+        "Solids settle out of the recycle before it reaches the plant",
+        "The recycle lowers the solids load on the primary clarifiers",
+        "The recycle needs no treatment because it has no solids",
+        "More suspended solids return to the liquid treatment train"
+      ],
+      "correctIndex": 3,
+      "explanation": "The Wisconsin guide lists the return sidestream as added solids load; the guide does not describe the recycle settling out, lowering primary loading or arriving free of solids.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-f4",
+      "prompt": "At a belt press the cake solids fall and polymer use rises. Feed solids dropped after a large wasting-rate change, and several wash nozzles are plugged. What is a sound first step?",
+      "choices": [
+        "Check feed solids and nozzles, then change one setting at a time",
+        "Double the polymer dose at once to win the cake back quickly",
+        "Raise the belt tension in one large step to squeeze the cake harder",
+        "Stop sampling the feed because its solids keep changing a lot"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF checks the feed change and cleans the nozzles, then changes one setting at a time; doubling polymer, a big tension step or dropping the feed sample hides the cause.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-f5",
+      "prompt": "What does WEF advise for a spill of liquid polymer?",
+      "choices": [
+        "Hose it to the nearest floor drain right away",
+        "Leave it to dry, since dry polymer is harmless when wetted",
+        "Contain and absorb it, since water makes it a slippery gel",
+        "Sweep it into the filtrate line for the plant to treat"
+      ],
+      "correctIndex": 2,
+      "explanation": "WEF says to contain and absorb polymer spills because water makes a slippery gel; hosing, leaving it to rewet, or sweeping it into a line spreads the hazard.",
+      "objective": "sludge-dewatering-operation-and-records"
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-a1",
+      "prompt": "A press makes 25 dry tons per week at 20 percent cake solids. Using wet tons = dry tons divided by cake solids as a decimal, how many wet tons of cake are hauled?",
+      "choices": [
+        "125 wet tons",
+        "5 wet tons",
+        "20 wet tons",
+        "312.5 wet tons"
+      ],
+      "correctIndex": 0,
+      "explanation": "Wet tons = 25 / 0.20 = 125; 5 multiplies, 20 repeats the cake percent, and 312.5 divides by 0.08 by mistake.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-a2",
+      "prompt": "A tank holds 15,000 gal of sludge at 3.0 percent solids with a specific gravity of 1.00. Using 8.34 lb per gal, how many pounds of dry solids does it hold?",
+      "choices": [
+        "450 lb",
+        "37,530 lb",
+        "3,753 lb",
+        "125,100 lb"
+      ],
+      "correctIndex": 2,
+      "explanation": "Pounds = 15,000 x 8.34 x 0.03 = 3,753; 450 drops the 8.34, 37,530 slips a decimal, and 125,100 leaves out the percent.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-a3",
+      "prompt": "A plant hauls 120,000 gal of sludge at 2 percent solids in 6,000 gal loads at $100 per load. If it dewaters the same solids to 8 percent first, assuming the sludge density stays the same, using volume 2 = volume 1 x (percent 1 / percent 2), how much does the hauling bill fall?",
+      "choices": [
+        "$500",
+        "$2,000",
+        "$1,000",
+        "$1,500"
+      ],
+      "correctIndex": 3,
+      "explanation": "The volume falls to 30,000 gal, so 20 loads ($2,000) become 5 loads ($500) and the bill falls $1,500; $500 and $2,000 are single bills, and $1,000 is a guess.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-a4",
+      "prompt": "Which water in sludge is the hardest to remove by mechanical dewatering?",
+      "choices": [
+        "Free water that is not connected to the solids",
+        "Water bound in cells or held on particle surfaces",
+        "Water in the spaces between loosely packed solids",
+        "Water that has already drained through the belts"
+      ],
+      "correctIndex": 1,
+      "explanation": "Bound water in cells and vicinal water on surfaces resist mechanical dewatering; free water and water between loose solids are easier to remove, and drained water is already gone.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-why-dewater-a5",
+      "prompt": "In the two-stage conditioning described by WEF, what happens first?",
+      "choices": [
+        "The charge on the particles is neutralised, very quickly",
+        "Strands of polymer bridge the particles into a strong floc",
+        "The floc is sheared apart so the polymer can spread",
+        "Free water drains from the floc through the belt"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF puts quick charge neutralisation first and bridging a few seconds later; excessive shear should be avoided once flocs form, and drainage happens during dewatering rather than conditioning.",
+      "objective": "sludge-dewatering-why-dewater"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-a1",
+      "prompt": "A press is fed 100 gpm of sludge at 3.0 percent solids. Using solids loading = (percent solids / 100) x gpm x 60 min per hr x 8.34 lb per gal, how many pounds of dry solids per hour is that?",
+      "choices": [
+        "About 25 lb per hour",
+        "About 1,501 lb per hour",
+        "About 15,012 lb per hour",
+        "About 180 lb per hour"
+      ],
+      "correctIndex": 1,
+      "explanation": "Loading = 0.03 x 100 x 60 x 8.34 = about 1,501 lb per hour; 25 drops the 60, 15,012 uses 0.30 in place of 0.03, and 180 drops the 8.34.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-a2",
+      "prompt": "A belt press receives 80 gpm of sludge on a belt that is 4 ft wide. Using hydraulic loading = flow divided by belt width, what is the loading in gpm per foot of belt width?",
+      "choices": [
+        "320 gpm per ft",
+        "84 gpm per ft",
+        "0.05 gpm per ft",
+        "20 gpm per ft"
+      ],
+      "correctIndex": 3,
+      "explanation": "Loading = 80 / 4 = 20 gpm per ft; 320 multiplies, 84 adds, and 0.05 inverts.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-a3",
+      "prompt": "What does the polymer injection ring on a belt press do?",
+      "choices": [
+        "Spreads polymer around the feed pipe so it mixes evenly",
+        "Holds the belts at the set tension as they pass the rollers",
+        "Collects the filtrate that drains from the gravity zone",
+        "Sprays wash water onto the belts as they return"
+      ],
+      "correctIndex": 0,
+      "explanation": "The ring spreads polymer around the feed pipe for even mixing; it does not hold tension, collect filtrate or spray wash water.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-a4",
+      "prompt": "Which cause does Spellman list for a belt press cake with excessive moisture?",
+      "choices": [
+        "A cake conveyor that is too short",
+        "Feed sludge that is thicker than usual",
+        "Inadequate belt washing",
+        "Polymer aged for a full 30 minutes"
+      ],
+      "correctIndex": 2,
+      "explanation": "Spellman lists inadequate belt washing for wet cake; a short conveyor and thicker feed are not listed, and a full aging time is good practice.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-belt-and-screw-presses-a5",
+      "prompt": "After changing one setting on a belt press, what does WEF suggest before sampling the cake?",
+      "choices": [
+        "Take the sample within the first minute or two",
+        "Let the press settle for 15 to 20 minutes",
+        "Wait until the start of the next shift",
+        "Restart the press to clear the belts"
+      ],
+      "correctIndex": 1,
+      "explanation": "WEF waits 15 to 20 minutes for the press to settle before sampling; sampling at once, at the next shift or after a restart can miss the settled result.",
+      "objective": "sludge-dewatering-belt-and-screw-presses"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-a1",
+      "prompt": "A dried sludge sample from a sand bed has 45 percent moisture. What is its percent solids?",
+      "choices": [
+        "55 percent",
+        "45 percent",
+        "65 percent",
+        "5.5 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "Solids = 100 - 45 = 55 percent; 45 is the moisture, 65 is the solids share at 35 percent moisture, and 5.5 slips a decimal.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-a2",
+      "prompt": "WEF gives the g force at the bowl wall of a centrifuge as 0.0000142 x (r/min squared) x bowl diameter in inches. What is the g force for a 40 in. bowl at 2,000 r/min?",
+      "choices": [
+        "About 1,136 g",
+        "About 2,272 g",
+        "About 114 g",
+        "About 4,544 g"
+      ],
+      "correctIndex": 1,
+      "explanation": "g = 0.0000142 x 2,000 x 2,000 x 40 = about 2,272; 1,136 halves it, 114 drops a factor of 20, and 4,544 doubles it.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-a3",
+      "prompt": "Which device is less limited by the volume of water passing through it when the feed is thin?",
+      "choices": [
+        "A belt filter press, because the belts hold thin sludge back",
+        "A recessed-plate press, because it has a long fill time",
+        "A centrifuge, because no filter medium has to pass the water",
+        "A sand bed, because thin sludge drains faster than thick"
+      ],
+      "correctIndex": 2,
+      "explanation": "A centrifuge has no filter medium to pass water, so a thin feed hurts it less; belt presses, recessed-plate presses and sand beds all slow with thin feed.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-a4",
+      "prompt": "Which drying bed floods heavily polymer-treated sludge onto porous plates and draws water through them with a weak vacuum?",
+      "choices": [
+        "A reed bed planted with marsh reeds",
+        "A paved bed with a harrowed crust",
+        "A sand bed with graded sand",
+        "A vacuum-assisted drainage bed"
+      ],
+      "correctIndex": 3,
+      "explanation": "The vacuum-assisted drainage bed floods polymer-treated sludge on porous plates with a weak vacuum; reed, paved and sand beds do not use this plate-and-vacuum method.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-other-dewatering-methods-a5",
+      "prompt": "Why does WEF say several small drying beds are better than one large bed?",
+      "choices": [
+        "Small beds need no membrane liner under the sludge layer",
+        "Small beds make polymer unnecessary for drainage",
+        "Beds go out of service for cleaning while others work",
+        "Small beds avoid the need to decant surface water"
+      ],
+      "correctIndex": 2,
+      "explanation": "Beds go out of service for cleaning, so several small ones keep working; small beds still need a liner, and polymer and decanting depend on the design.",
+      "objective": "sludge-dewatering-other-dewatering-methods"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-a1",
+      "prompt": "WEF gives percent recovery = s x (f - e) / [f x (s - e)] x 100, with f, s and e as the feed, cake and filtrate solids in percent. For f = 2.0, s = 20 and e = 0.30, what is the recovery?",
+      "choices": [
+        "About 91.4 percent",
+        "About 95.0 percent",
+        "About 81.0 percent",
+        "About 86.3 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Recovery = 20 x 1.7 / (2.0 x 19.7) x 100 = about 86.3; the other values are not what the formula gives for these inputs, so recheck each subtraction and product.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-a2",
+      "prompt": "A press uses 15 gpd of neat polymer fed as a 0.5 percent solution by volume. Using diluted flow (gpd) = neat polymer (gpd) divided by the concentration as a decimal, and 1,440 minutes per day, what is the diluted polymer flow in gpm?",
+      "choices": [
+        "About 0.01 gpm",
+        "About 2.1 gpm",
+        "About 4.2 gpm",
+        "About 3,000 gpm"
+      ],
+      "correctIndex": 1,
+      "explanation": "Diluted flow = 15 / 0.005 = 3,000 gpd, and 3,000 / 1,440 is about 2.1 gpm; 0.01 skips the dilution, 4.2 divides by 720, and 3,000 leaves out the minutes.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-a3",
+      "prompt": "Plant flow is 5 MGD at 220 mg/L suspended solids. A dewatering sidestream of 100,000 gpd (0.1 MGD) carries 1,500 mg/L. Using lb per day = MGD x mg/L x 8.34, by what percent does the sidestream raise the suspended solids load?",
+      "choices": [
+        "About 1.4 percent",
+        "About 136 percent",
+        "About 27.3 percent",
+        "About 13.6 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Influent is 9,174 and sidestream 1,251 lb per day, so the rise is about 13.6 percent; 1.4 and 136 slip a decimal, and 27.3 doubles it.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-a4",
+      "prompt": "How often does WEF suggest a centrifuge data sheet be filled in?",
+      "choices": [
+        "Once per operating shift",
+        "Once a week at the supervisor's visit",
+        "Once a month for the trend file",
+        "Once a year when the polymer is chosen"
+      ],
+      "correctIndex": 0,
+      "explanation": "WEF suggests filling in the centrifuge data sheet once per shift; weekly, monthly or yearly records are too sparse to catch change.",
+      "objective": "sludge-dewatering-operation-and-records"
+    },
+    {
+      "id": "ceu-sludge-dewatering-operation-and-records-a5",
+      "prompt": "Where should an odour-control oxidant be fed relative to the polymer point, according to WEF?",
+      "choices": [
+        "Downstream of the polymer point so the floc is not disturbed",
+        "Directly into the polymer day tank to save a feed point",
+        "Upstream of the polymer point, giving a minute or more",
+        "Into the cake conveyor after it leaves the press"
+      ],
+      "correctIndex": 2,
+      "explanation": "WEF feeds oxidant upstream of polymer with a minute or more of contact; feeding after polymer, into the day tank or at the conveyor misses that contact.",
+      "objective": "sludge-dewatering-operation-and-records"
+    }
+  ]
+}

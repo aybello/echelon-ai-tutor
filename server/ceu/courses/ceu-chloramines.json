@@ -1,0 +1,1096 @@
+{
+  "key": "ceu-chloramines",
+  "version": "2026-11-26.1",
+  "title": "Chloramines in Drinking Water for Operators",
+  "shortTitle": "Chloramines",
+  "stream": "drinking_water",
+  "audience": "Water operators, trainees and supervisors who run or support a chloraminated distribution system, or who are preparing for a system that is about to switch, and who already know the basics of chlorination.",
+  "prerequisites": "Basic arithmetic and the ideas in Chlorination Principles: free, combined and total chlorine, demand, residual and the breakpoint curve. Jurisdiction-neutral: no regulatory limits are stated in this course.",
+  "introduction": "Go beyond the first look at chloramines in Chlorination Principles. Learn why and how a utility uses chloramine as a secondary disinfectant and how monochloramine, dichloramine and trichloramine form. Work the ratio and dosing arithmetic with every constant stated, including ammonia as nitrogen versus NH3 and solution strengths for aqua ammonia and ammonium sulfate. Then follow monitoring and control: residual trends, water age, nitrification and its early warning signs, booster stations and temporary free chlorine conversion. Finish with feed equipment at recognition level, taste and odour complaints, special customers, records, a nitrification scenario and recognition-level safety. Each module has a worked scenario, quick checks that explain the reasoning behind each answer and a short written assignment. The course gives general principles. Plant-specific targets, limits and procedures come from your own plant and regulator.",
+  "plannedMinutes": 240,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "epa-chloramines",
+      "title": "US EPA: Chloramines in Drinking Water",
+      "url": "https://www.epa.gov/dwreginfo/chloramines-drinking-water",
+      "section": "Chloramines as secondary disinfectant formed when ammonia is added to chlorine; longer-lasting disinfection; use by water systems",
+      "jurisdiction": "US technical guidance; verify your own state or provincial rules",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "epa-basic",
+      "title": "US EPA: Basic Information about Chloramines and Drinking Water Disinfection (question and answer set)",
+      "url": "https://www.epa.gov/dwreginfo/basic-information-about-chloramines-and-drinking-water-disinfection",
+      "section": "Questions 3, 5 and 6 (primary and secondary disinfection, effectiveness of monochloramine against chlorine as primary and secondary disinfectant)",
+      "jurisdiction": "US technical guidance; verify your own state or provincial rules",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "epa-pws",
+      "title": "US EPA: Public Water Systems, Disinfection Byproducts, and the Use of Monochloramine (question and answer set)",
+      "url": "https://www.epa.gov/dwreginfo/public-water-systems-disinfection-byproducts-and-use-monochloramine",
+      "section": "Questions 9, 10 and 12 (by-products compared with chlorine, why utilities switch, who decides)",
+      "jurisdiction": "US technical guidance; verify your own state or provincial rules",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-hbk",
+      "title": "Handbook of Water and Wastewater Treatment Plant Operations, 2nd edition (Frank R. Spellman, CRC Press, 2009)",
+      "section": "Chapter 18: 18.10.5.4 Prevention of Regrowth in the Distribution System; 18.10.8 Disinfection Byproduct Control; Tables 18.10, 18.14 and 18.15; 18.10.14 chlorination, breakpoint chlorination curve; Chapter 16 (Stage 1 D/DBP rule)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "spellman-wwo",
+      "title": "The Handbook for Waterworks Operator Certification, Volumes 1 and 2 (Frank R. Spellman, Technomic, fundamental and intermediate levels)",
+      "section": "Volume 2 section 4.5.1 (chlorine-nitrogen reactions), odour table (dichloramine, trichloramine), 9.3 distribution corrective actions; Volume 1 chapter 16 (chlorine demand, residual, breakpoint, leak detection with ammonia)",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    },
+    {
+      "id": "wqc-handbook",
+      "title": "Water Quality Control Handbook, 2nd edition (Alley, WEF Press)",
+      "section": "Chapter 9: chloramines, monochloramine, dichloramine, trichloramine and breakpoint chlorination (Eqs. 9.29 to 9.31 and Figure 9.17b); 9.6.4 dechlorination theory",
+      "jurisdiction": "US reference text; verify your own certifying agency reference list",
+      "accessed": "2026-11-26"
+    }
+  ],
+  "modules": [
+    {
+      "id": "chloramines-why-and-how",
+      "title": "Why and how chloramines are used",
+      "objectives": [
+        "Explain the roles of primary and secondary disinfection and why chloramine is used as a secondary disinfectant.",
+        "Describe how monochloramine, dichloramine and trichloramine form and how the chlorine-to-ammonia ratio, pH and feed sequence steer them.",
+        "Compare chloramine with free chlorine for strength, stability, by-products and customer concerns."
+      ],
+      "lesson": "### Where this course picks up\n\nIn *Chlorination Principles* you met free, combined and total chlorine, the breakpoint curve and a short introduction to chloramines. This course assumes those ideas and goes deeper into one daily question for a chloraminated utility: how do we make, measure and keep a monochloramine residual that reaches the last customer?\n\nTwo terms frame the course. **Primary disinfection** is the step whose job is to inactivate organisms in the plant, where contact time is controlled. **Secondary disinfection** keeps a residual travelling with the water through pipes and tanks. EPA describes chloramines as most commonly formed when ammonia is added to chlorine, and as giving longer-lasting disinfection as water moves through the pipes.\n\n### Why a utility chooses chloramine\n\nChloramine is a weaker disinfectant than free chlorine. The published CT tables (concentration times contact time) ask for a far larger CT for chloramine than for free chlorine to reach the same inactivation of *Giardia* cysts, and EPA notes that monochloramine takes much longer than chlorine to kill most organisms. That is why chloramine is usually the secondary step, not the primary one. Neither chlorine nor chloramine is an effective barrier against *Cryptosporidium* at drinking-water doses, so surface water plants need other barriers for it.\n\nWhat chloramine offers in return:\n\n- **A steadier residual.** Monochloramine is more chemically stable than free chlorine, so the residual lasts farther into the system, including dead ends and storage tanks.\n- **Lower regulated by-products.** Chloramine reacts less readily with natural organic matter, so utilities that switch generally see lower levels of the regulated trihalomethane and haloacetic acid groups. EPA also notes that some unregulated by-products may be higher and are still being studied, so this is a trade, not a free gain.\n- **Fewer taste and odour complaints.** Utilities that switch report fewer concerns about taste and odour, although customers may still notice a chlorine smell.\n\nEPA does not require any utility to use chloramine. The utility chooses it within state requirements, weighing source water, treatment train, operating skill and the rules that apply.\n\n### How chloramine forms\n\nChlorine in water forms hypochlorous acid, HOCl, which is one form of free chlorine. When ammonia (NH3) is present, HOCl swaps onto the nitrogen one chlorine at a time:\n\n- HOCl + NH3 gives **monochloramine** (NH2Cl) and water.\n- More HOCl reacts with monochloramine to give **dichloramine** (NHCl2) and water.\n- Still more HOCl gives **trichloramine** (NCl3, also called nitrogen trichloride) and water.\n\nThe name counts the chlorine atoms on each nitrogen. Operators target monochloramine because it is the useful, stable residual. The odour tables in the operator handbook describe dichloramine as swimming-pool or chlorinous, so a customer who describes a pool smell may be describing chemistry that has drifted past monochloramine.\n\nThree things steer the reaction, and the handbook says the type formed depends on the pH, the ammonia concentration and the temperature. The first and strongest is the **weight ratio of chlorine to ammonia-nitrogen**. With ammonia in excess, each chlorine finds a free nitrogen and monochloramine forms. As the ratio rises, chlorine begins to attack the monochloramine itself. Far enough along, the nitrogen is oxidized away and a free chlorine residual appears at the breakpoint. The Water Quality Control Handbook gives 7.6 parts chlorine per part ammonia-nitrogen as the stoichiometric breakpoint, and 8 to 10 parts in practice. The second is **pH**: lower pH favours dichloramine and trichloramine even when the ratio is good, which is why textbooks treat higher pH as safer for monochloramine. The handbook puts monochloramine above about pH 8.5 and dichloramine between about 4.8 and 8.5; this course uses only the direction. The third is **mixing and temperature**: the reaction slows in cold water, and chlorine gas solution lowers pH and alkalinity right at the injector, so a poorly mixed pocket can briefly make the wrong chloramine.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Bar showing which chloramine dominates as the chlorine to ammonia-nitrogen weight ratio rises\">\n<title>Which chloramine forms depends on the ratio of chlorine to ammonia-nitrogen</title>\n<text x=\"195\" y=\"22\" text-anchor=\"middle\" font-weight=\"bold\">Chlorine to ammonia-nitrogen weight ratio</text>\n<rect x=\"20\" y=\"40\" width=\"170\" height=\"44\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<rect x=\"190\" y=\"40\" width=\"90\" height=\"44\" fill=\"#f1e6c9\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"280\" y=\"40\" width=\"90\" height=\"44\" fill=\"#e6e6e6\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<text x=\"105\" y=\"60\" text-anchor=\"middle\" font-weight=\"bold\">Monochloramine</text><text x=\"105\" y=\"76\" text-anchor=\"middle\" font-size=\"11\">ammonia in excess</text>\n<text x=\"235\" y=\"58\" text-anchor=\"middle\" font-size=\"11\">Dichloramine</text><text x=\"235\" y=\"74\" text-anchor=\"middle\" font-size=\"11\">then NCl3</text>\n<text x=\"325\" y=\"58\" text-anchor=\"middle\" font-size=\"11\">Breakpoint</text><text x=\"325\" y=\"74\" text-anchor=\"middle\" font-size=\"11\">free chlorine</text>\n<path d=\"M190 88V100M280 88V100\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"190\" y=\"116\" text-anchor=\"middle\">5.07</text><text x=\"280\" y=\"116\" text-anchor=\"middle\">about 7.6</text>\n<text x=\"20\" y=\"116\" font-size=\"11\">low</text><text x=\"370\" y=\"116\" text-anchor=\"end\" font-size=\"11\">high</text>\n<text x=\"195\" y=\"152\" text-anchor=\"middle\" font-weight=\"bold\">Lower pH moves the first boundary left:</text>\n<text x=\"195\" y=\"170\" text-anchor=\"middle\" font-size=\"11\">dichloramine can form even at a good ratio.</text>\n<text x=\"195\" y=\"204\" text-anchor=\"middle\" fill=\"#6b7a8c\" font-size=\"11\">Concept only. Plant procedure sets the working ratio.</text>\n</svg>\n<figcaption>Concept chart: ideal ratios of 5.07 (monochloramine, as Cl2 to N) and about 7.6 (breakpoint). Lower pH can bring dichloramine in earlier.</figcaption>\n</figure>\n\n### Three feed sequences\n\nWhere ammonia goes relative to chlorine decides how much free chlorine the water sees.\n\n1. **Ammonia first.** Chlorine meets water that already holds ammonia and goes straight to chloramine. Free chlorine contact is smallest, so by-product formation is expected to be lower, but there is little free chlorine kill in the plant.\n2. **Close together.** Chlorine and ammonia go in a short distance apart. A brief free chlorine contact gives some kill, then ammonia takes over.\n3. **Chlorine first.** Free chlorine works for a planned contact period, then ammonia converts the residual to chloramine. Kill is strongest, and by-product formation tends to be highest, because organics react with free chlorine for longer.\n\nMoving chlorine application to a later point in the plant can reduce by-product formation, because more organic precursors have been removed first. The same logic applies here. Which sequence a plant uses depends on where its approved disinfection plan earns primary credit. A change in sequence is a treatment change, so it goes through the plant's procedure and regulator, not a quick adjustment at the feeder.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\" viewBox=\"0 0 390 260\" role=\"img\" aria-label=\"Three places to feed ammonia relative to chlorine along the flow\">\n<title>Three feed sequences: ammonia first, together, chlorine first</title>\n<text x=\"195\" y=\"18\" text-anchor=\"middle\" font-weight=\"bold\">Flow through the plant, left to right</text>\n<path d=\"M20 64H370M20 140H370M20 216H370\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<circle cx=\"70\" cy=\"64\" r=\"9\" fill=\"#1d2d40\"/><text x=\"70\" y=\"48\" text-anchor=\"middle\" font-size=\"11\">NH3</text>\n<circle cx=\"150\" cy=\"64\" r=\"9\" fill=\"#2f6db2\"/><text x=\"150\" y=\"48\" text-anchor=\"middle\" font-size=\"11\">Cl2</text>\n<text x=\"195\" y=\"90\" text-anchor=\"middle\" font-size=\"11\">1 Ammonia first: least free chlorine contact</text>\n<circle cx=\"140\" cy=\"140\" r=\"9\" fill=\"#2f6db2\"/><text x=\"140\" y=\"124\" text-anchor=\"middle\" font-size=\"11\">Cl2</text>\n<circle cx=\"190\" cy=\"140\" r=\"9\" fill=\"#1d2d40\"/><text x=\"190\" y=\"124\" text-anchor=\"middle\" font-size=\"11\">NH3</text>\n<text x=\"195\" y=\"166\" text-anchor=\"middle\" font-size=\"11\">2 Close together: short free chlorine contact</text>\n<circle cx=\"70\" cy=\"216\" r=\"9\" fill=\"#2f6db2\"/><text x=\"70\" y=\"200\" text-anchor=\"middle\" font-size=\"11\">Cl2</text>\n<circle cx=\"300\" cy=\"216\" r=\"9\" fill=\"#1d2d40\"/><text x=\"300\" y=\"200\" text-anchor=\"middle\" font-size=\"11\">NH3</text>\n<text x=\"195\" y=\"242\" text-anchor=\"middle\" font-size=\"11\">3 Chlorine first: long free chlorine contact</text>\n</svg>\n<figcaption>Free chlorine contact grows from row 1 to row 3, and so does by-product formation.</figcaption>\n</figure>\n\n### Reading the curve and the contact time\n\nThe breakpoint curve you know from the earlier course has a lesson for a chloraminating plant: on the pre-breakpoint rise after initial demand the residual is predominantly combined, then it dips as extra chlorine destroys the nitrogen compounds, and beyond the breakpoint it is predominantly free. A plant that sees its total residual fall and answers by adding chlorine may be on the dip, and more chlorine can deepen it. Contact time still counts too: CT is the residual in mg/L times the contact time in minutes, and the tables ask far more of chloramine than of free chlorine.\n\n### A little history and the rules behind the choice\n\nThe breakpoint concept emerged in 1939. Today by-product rules limit the by-products and the disinfectant residuals, including chloramine, and conventional plants are expected to control organic precursors. EPA lists source water, volume to be treated and operating complexity among the factors a utility weighs. Rules and permits set the limits; the plant procedure sets the operating targets.\n\n### Limits to keep in view\n\nChloramine solves some problems and brings others. It usually needs a second chemical feed, unless natural ammonia is enough, and a ratio that must be controlled. A free ammonia surplus feeds nitrifying bacteria, a topic for Module 3. EPA points out that water chemistry changes can shift biofilm and nitrification. The handbook warns that long-term combined-residual systems can develop higher bacterial counts, a lower combined residual, more taste and odour complaints and reduced main carrying capacity. A change of disinfectant can also shift corrosion behaviour, so utilities should study this before switching. Customers who must remove chloramine from their water, such as dialysis centres and fish keepers, benefit from advance notice.\n\n### What happens to the residual in the main\n\nPicture two residuals leaving the same plant at the same strength. Free chlorine reacts with pipe wall, biofilm, sediment and organic matter, so it falls quickly with distance and time. Monochloramine reacts far more slowly and falls more gently. At a dead end, the free chlorine residual may be gone while a chloramine residual remains. That is the practical meaning of \"more stable\". The same slow reactivity is also why a chloramine residual does not rescue a system with serious contamination or sediment: it holds quality steady, but it does not clean up a problem.\n\nThe residual does decay, though, and decay of monochloramine can release ammonia back into the water. That single fact explains most of Module 3. Warmer water speeds the rate of decay, and long detention time gives decay more time to act. Good water-age control keeps more residual in the main, but it does not by itself set free ammonia.\n\n### Why the ratio can drift\n\nThree common reasons the working ratio drifts away from the plant's intent:\n\n1. **Demand changes.** A storm raises organic matter, demand rises, the chlorine residual falls, but the ammonia pump still feeds against the old residual. Ammonia is then in surplus.\n2. **Feed equipment drift.** A pump slips, a flow signal is wrong or a tank level reading is off, so the real feed differs from the setpoint.\n3. **Source water changes.** Natural ammonia in the source rises, or a seasonal shift alters demand.\n\nEach can show up in the plant effluent tests: total chlorine, free chlorine and free ammonia. Regular bench tests at the plant help catch them even when online analyzers are in service.\n\n### Worked scenario: Marrow Creek Water\n\n*Marrow Creek Water is a fictional utility with a surface source high in organic matter. A quarterly distribution sample shows a by-product group at 74 micrograms per litre while the utility ran free chlorine through the system. After trial operation with chloramine as the secondary disinfectant, the same group measures 41 micrograms per litre at the same site.*\n\nPercent reduction is (before minus after) divided by before, times 100. Here, (74 minus 41) divided by 74 is 0.446, so the group fell by about **44.6 percent**. The lead operator, Kofi Adair, also notes what the figure does not say: it is one site and one season, so staff keep sampling across seasons before treating it as typical, and they keep checking unregulated by-products.\n\nKofi also records why the utility did not move chloramine into the primary role. Its plant still earns disinfection credit with free chlorine ahead of the ammonia point. Chloramine does the secondary job: holding a residual down the long main to the northern tanks.\n\n### Common mistakes to avoid\n\n- Calling chloramine a stronger disinfectant because its residual lasts longer. Lasting and strong are different properties.\n- Assuming a lower by-product reading proves chloramine is better everywhere. Source water, season and site matter.\n- Treating pH as irrelevant once the ratio is right. Low pH can still push the mix toward dichloramine.\n- Changing the feed sequence at the feeder to chase a complaint, instead of using the plant's procedure.\n- Assuming chloramine removes the need for other barriers against *Cryptosporidium*.\n",
+      "evidence": "### Fictional scenario: Marrow Creek Water\n\nMarrow Creek Water is a fictional utility with a surface source high in organic matter. Its distribution by-product results have crept up under free chlorine, and the northern tanks lose their residual in summer. The general manager, Dana Whitlock, asks the lead operator, Kofi Adair, whether switching the secondary disinfectant to chloramine would help, and what it would not fix.",
+      "assignment": "Write a one-page note for Dana Whitlock. Explain in plain words the difference between primary and secondary disinfection, why chloramine is usually secondary, what chloramine might improve at Marrow Creek and what it will not fix. Name which of the three feed sequences you would study first and why, and list two things you would want to know before recommending the switch.",
+      "rubric": [
+        "Distinguishes primary from secondary disinfection correctly.",
+        "States that chloramine is weaker but more stable, and ties that to by-products and residual persistence.",
+        "Explains that chloramine does not address Cryptosporidium or remove the need for other barriers.",
+        "Names a feed sequence with a reason and lists open questions instead of guessing."
+      ],
+      "facilitatorGuide": "Ask learners to explain, without notes, why a weaker disinfectant can still be the right residual. Watch for the common slip of equating long-lasting with strong. Check that percent reduction is calculated against the before value, and that learners say what one site and one season cannot show. Strong answers connect feed sequence to where primary credit is earned.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and draw your own version of the ratio chart, labelling the three chloramines and the breakpoint."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant disinfection summary and note where primary disinfection credit is earned and where ammonia is or would be added."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Marrow Creek scenario and calculate the percent reduction in the by-product group."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "epa-chloramines",
+        "epa-basic",
+        "epa-pws",
+        "spellman-hbk",
+        "spellman-wwo",
+        "wqc-handbook"
+      ],
+      "checks": [
+        {
+          "id": "ceu-chloramines-why-and-how-c1",
+          "prompt": "A plant earns primary disinfection credit from free chlorine contact. Where should ammonia be added so that chloramine carries the residual into the main?",
+          "choices": [
+            "After the credited contact period, so chloramine carries the residual into the main",
+            "Before the first chlorine dose, so that free chlorine is kept out of the contact basin and clearwell",
+            "At the intake, so that the water is pre-treated for taste, odour and colour before any chlorine",
+            "In the clearwell, so that the primary contact time is counted twice in the compliance report"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ammonia added after the credited contact period lets free chlorine do the primary job and lets chloramine carry the secondary residual. Adding ammonia before the first chlorine dose removes the free chlorine contact that earns credit. The clearwell choice would count the same contact time twice, and the intake choice has no link to the credit.",
+          "objective": "chloramines-why-and-how"
+        },
+        {
+          "id": "ceu-chloramines-why-and-how-c2",
+          "prompt": "A fictional operator asks why the plant does not use monochloramine for its primary disinfection. The best answer is that monochloramine:",
+          "choices": [
+            "It forms too slowly to build a residual in the main, so the plant waits for the chemistry to settle",
+            "At the same residual concentration, it generally needs more contact time for the same kill",
+            "It is approved as a primary disinfectant and not as a residual, which the plant rules require",
+            "It kills faster than free chlorine but breaks down early in the distribution system at most sites"
+          ],
+          "correctIndex": 1,
+          "explanation": "At the same residual concentration, chloramine generally needs more contact time for the same inactivation under comparable conditions (published CT tables), so it is rarely the primary step. The \"forms too slowly\" choice mixes up formation speed with disinfection strength. The \"kills faster\" choice reverses the comparison and gets stability backwards. The \"approved as a primary disinfectant\" choice invents a rule.",
+          "objective": "chloramines-why-and-how"
+        },
+        {
+          "id": "ceu-chloramines-why-and-how-c3",
+          "prompt": "A fictional plant with normal pH has a chlorine to ammonia-N ratio of 4.0 to 1 by weight (as Cl2 to N), below the ideal 5.07 for monochloramine. The chloramine that dominates is:",
+          "choices": [
+            "Dichloramine, because the ratio is above 2 to 1, so chlorine is in clear excess of the ammonia",
+            "Trichloramine, because the water is below pH 4.8 at the injector",
+            "Monochloramine, because the ratio is below the ideal 5.07 and ammonia is in excess",
+            "Dichloramine and trichloramine together, because the pH is above 8.5 and ammonia is scarce"
+          ],
+          "correctIndex": 2,
+          "explanation": "At a ratio of 4.0 to 1, below the ideal 5.07, ammonia is in excess and monochloramine forms. The dichloramine choice treats 2 as a threshold, which it is not. The trichloramine choice assumes the water is below pH 4.8, but the stem says normal pH. The last choice reverses the pH direction: monochloramine is favoured above about pH 8.5, not dichloramine.",
+          "objective": "chloramines-why-and-how"
+        },
+        {
+          "id": "ceu-chloramines-why-and-how-c4",
+          "prompt": "At a fictional plant the ratio of chlorine to ammonia-nitrogen is on target, but the pH drops sharply in the mixing zone at the injector. Which result is most likely?",
+          "choices": [
+            "More monochloramine, because acid speeds the reaction",
+            "No change, because the ratio steers the chloramine type alone",
+            "A free ammonia reading that rises in the main water",
+            "More dichloramine than the ratio alone would predict"
+          ],
+          "correctIndex": 3,
+          "explanation": "Lower pH favours dichloramine and trichloramine even at a good ratio. The \"more monochloramine\" choice reverses the pH direction. The \"no change\" choice treats the ratio as the one factor, but pH matters too. The \"free ammonia reading that rises in the main\" choice does not follow from a local pH drop alone.",
+          "objective": "chloramines-why-and-how"
+        },
+        {
+          "id": "ceu-chloramines-why-and-how-c5",
+          "prompt": "A fictional utility measures a by-product group at 74 micrograms per litre under free chlorine and 41 micrograms per litre under chloramine at the same site. The percent reduction is about:",
+          "choices": [
+            "44.6 percent",
+            "55.4 percent",
+            "80.5 percent",
+            "33.0 percent"
+          ],
+          "correctIndex": 0,
+          "explanation": "Percent reduction = (74 minus 41) divided by 74 = 0.446, or 44.6 percent. The \"55.4 percent\" choice reports the share remaining, after over before. The \"80.5 percent\" choice divides the drop by the after value, 41, instead of the before value, 74. The \"33.0 percent\" choice reports the raw drop in micrograms per litre as if it were a percent.",
+          "objective": "chloramines-why-and-how"
+        },
+        {
+          "id": "ceu-chloramines-why-and-how-c6",
+          "prompt": "Ammonia is fed first and chlorine downstream. Compared with chlorine first, ammonia first gives:",
+          "choices": [
+            "More free chlorine contact and higher by-product formation in the plant before any ammonia is added",
+            "Less free chlorine contact before chloramine forms than a chlorine-first sequence gives",
+            "A stronger kill in the plant and the same by-products",
+            "The same free chlorine contact but a higher finished pH"
+          ],
+          "correctIndex": 1,
+          "explanation": "Ammonia first turns chlorine into chloramine quickly, which cuts free chlorine contact and, with it, by-product formation and kill, under the stated conditions. The \"More free chlorine contact and higher by-product formation in the plant\" choice describes chlorine first. The \"A stronger kill in the plant and the same by-products\" choice breaks the link between contact and by-products. The \"The same free chlorine contact but a higher finished pH\" choice ignores that feed order changes contact.",
+          "objective": "chloramines-why-and-how"
+        }
+      ]
+    },
+    {
+      "id": "chloramines-dosing-arithmetic",
+      "title": "Dosing and ratio arithmetic",
+      "objectives": [
+        "Convert between ammonia as nitrogen and ammonia as NH3 and explain why the Cl2 to NH3-N weight ratio is used.",
+        "Calculate ammonia-N dose, chlorine residual and feed rates in mg/L and lb/day from stated constants.",
+        "Recognise anhydrous ammonia, aqua ammonia and ammonium sulfate solution and convert a solution strength to pounds of nitrogen per gallon."
+      ],
+      "lesson": "### Why the ratio is by weight\n\nChemical equations count molecules, but feeders and analyzers work in pounds and milligrams per litre. For monochloramine the ideal reaction takes one mole of available chlorine, expressed as Cl2, for each mole of ammonia, because each NH3 carries one nitrogen (WQC equation 9.29). To turn that into weights we use atomic weights. This course uses rounded values: chlorine 35.5, so Cl2 is **71**; nitrogen **14**; hydrogen 1, so NH3 is **17**.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\" viewBox=\"0 0 390 220\" role=\"img\" aria-label=\"Bars drawn to scale for the atomic weights of chlorine, ammonia-nitrogen and ammonia\">\n<title>Weights behind the ratio: Cl2 71, nitrogen 14, ammonia 17</title>\n<text x=\"195\" y=\"20\" text-anchor=\"middle\" font-weight=\"bold\">One chlorine molecule per ammonia, by weight</text>\n<rect x=\"20\" y=\"40\" width=\"248\" height=\"28\" fill=\"#2f6db2\"/><text x=\"276\" y=\"59\" font-size=\"12\">Cl2 = 71</text>\n<rect x=\"20\" y=\"82\" width=\"49\" height=\"28\" fill=\"#1d2d40\"/><text x=\"77\" y=\"101\" font-size=\"12\">N = 14</text>\n<rect x=\"20\" y=\"124\" width=\"60\" height=\"28\" fill=\"#6b7a8c\"/><text x=\"88\" y=\"143\" font-size=\"12\">NH3 = 17</text>\n<text x=\"195\" y=\"182\" text-anchor=\"middle\">71 / 14 = 5.07 as nitrogen</text>\n<text x=\"195\" y=\"202\" text-anchor=\"middle\">71 / 17 = 4.18 as NH3</text>\n</svg>\n<figcaption>Bars are to scale. The same chemistry gives two ratios, so always say whether the ammonia is counted as N or as NH3.</figcaption>\n</figure>\n\nCounting the ammonia as nitrogen, the stoichiometric weight ratio is 71 divided by 14, or **5.07 to 1**. Counting the ammonia as NH3 it is 71 divided by 17, or **4.18 to 1**. The chemistry did not change; only the way the ammonia is written did. Operators in chloramination programs usually speak in **ammonia-nitrogen** (NH3-N), so this course uses the Cl2 to NH3-N ratio unless a question says otherwise. Always check which basis a procedure, a label or a lab report uses before comparing numbers.\n\nThe stoichiometric figure is a landmark, not a target. Above it, chlorine is in excess of the ideal monochloramine reaction, and dichloramine can form, depending on pH and temperature. Plants therefore usually choose a working ratio below it, found by testing and written in the plant procedure. That leaves ammonia in excess for monochloramine formation. In this course every question states the ratio it uses.\n\n### Dose on the residual, not the dose\n\nChlorine **dose** is what the feeder adds. **Residual** is what is left after demand is satisfied. The two differ because iron, nitrite, hydrogen sulfide, organics and other substances use chlorine before it can form chloramine. Ammonia is dosed against the chlorine residual that is actually available for the reaction, because that is the chlorine that will react with it.\n\n> Ammonia-N dose (mg/L) = free chlorine residual (mg/L) ÷ working ratio.\n\n### Worked example: ammonia dose in mg/L\n\n*A fictional plant feeds chlorine at 3.2 mg/L. Demand takes 0.8 mg/L. The working ratio is 4.8 Cl2 to 1 NH3-N.*\n\n1. Residual = dose minus demand = 3.2 minus 0.8 = 2.4 mg/L.\n2. Ammonia-N dose = 2.4 divided by 4.8 = **0.50 mg/L** as N.\n\nDividing the 3.2 dose by 4.8 instead would give 0.67 mg/L and overfeed ammonia, leaving a surplus that nitrifying bacteria can use.\n\n### Converting between N and NH3\n\nAmmonia-N is the nitrogen only. To express it as NH3, multiply by 17 divided by 14, which is 1.214. To go the other way, multiply by 14 divided by 17. For example, 0.62 mg/L as N is 0.62 times 1.214, about 0.75 mg/L as NH3. Mixing bases inflates or shrinks a dose by about a fifth, which is a real feed error.\n\n### From mg/L to pounds per day\n\nThe pounds formula you know from chlorination carries over: **lb/day = dose (mg/L) × flow (MGD) × 8.34**.\n\n*A fictional plant treats 2.0 MGD. Chlorine residual after demand is 2.6 mg/L and the working ratio is 4.9.*\n\n1. Ammonia-N dose = 2.6 ÷ 4.9 = 0.531 mg/L (carry the full value).\n2. Ammonia-N feed = (2.6 ÷ 4.9) × 2.0 × 8.34 = **8.85 lb/day** as N.\n\n### Ammonia sources at recognition level\n\nThree sources are common. Know what each is and what the label means.\n\n| Source | What it is | Notes |\n|---|---|---|\n| Anhydrous ammonia | Pure NH3, a compressed liquefied gas | Fed as a gas through dedicated gas-handling equipment; 14/17, or 82.4 percent, of its weight is nitrogen |\n| Aqua (aqueous) ammonia | NH3 dissolved in water, sold at a stated percent by weight | Liquid; fed by metering pump; strength and density come from the label or lab |\n| Ammonium sulfate solution | Dissolved (NH4)2SO4, sold at a stated percent by weight | Liquid; less than a quarter of the dissolved salt is nitrogen |\n\nFor ammonium sulfate, atomic weights N 14, H 1, S 32 and O 16 give (NH4)2SO4 a weight of 28 + 8 + 32 + 64 = 132, of which 28 is nitrogen, 21.2 percent. A solution's nitrogen content is **lb of solution per gal × fraction of salt by weight × nitrogen fraction of the salt**.\n\n### Worked example: gallons per day of aqua ammonia\n\n*A fictional aqua ammonia is 20 percent NH3 by weight and weighs 7.6 lb per gal. The plant needs 12.0 lb/day of ammonia as N.*\n\n1. NH3 per gallon = 7.6 × 0.20 = 1.52 lb.\n2. Nitrogen per gallon = 1.52 × 14/17 = 1.2518 lb N.\n3. Gallons per day = 12.0 ÷ 1.2518 = **9.59 gal/day**.\n\nSkipping step 2 gives 7.89 gal/day and underfeeds nitrogen by almost a fifth.\n\n### Finding the working ratio at the bench\n\nOne approach, which the plant's approved procedure should confirm, is bench testing: dose samples of plant water with the same chlorine and progressively more ammonia, then measure total chlorine, free chlorine and free ammonia. The plant procedure, not this course, sets the ratio and how often the test is repeated.\n\n### Credit for natural ammonia\n\nSome source waters contain ammonia already. That ammonia reacts with chlorine like any other, so the plant adds only the difference between the total ammonia-N it needs and the natural ammonia-N still available at the feed point. If the target is 0.46 mg/L as N and the source carries 0.12 mg/L of ammonia-N still available at the feed point, the feed is 0.34 mg/L as N. A plant that ignores natural ammonia overfeeds, and a source that changes season to season needs fresh checks. Plants that chlorinate through the breakpoint before adding ammonia oxidize much of the ammonia first, so little credit then applies.\n\n### Worked example: both feeds from one residual\n\n*A fictional plant treats 3.5 MGD. The target chlorine residual after demand is 2.2 mg/L. The working ratio is 4.6 Cl2 to 1 NH3-N. The chlorine dose is 2.9 mg/L, so demand is 0.7 mg/L.*\n\n1. Residual = 2.9 minus 0.7 = 2.2 mg/L, which matches the target.\n2. Chlorine feed = 2.9 × 3.5 × 8.34 = 84.65 lb/day.\n3. Ammonia-N dose = 2.2 ÷ 4.6 = 0.478 mg/L, so the ammonia-N feed = (2.2 ÷ 4.6) × 3.5 × 8.34 = 13.96 lb/day.\n4. Check the ratio fed: chlorine feed divided by ammonia-N feed counts the whole chlorine dose, 84.65 ÷ 13.96 = 6.06. That is not the working ratio, because the plant fed ammonia against the residual, not the dose.\n\nStep 4 is a warning for how to read a feed-rate ratio. The ratio that matters in the water is chlorine residual to ammonia-N. A feed-rate ratio uses the dose, so it runs higher than the residual ratio whenever demand is present. Know which one your procedure uses.\n\n### What demand does to the arithmetic\n\nWhen demand rises, the residual falls, so the correct ammonia dose falls with it. If the ammonia setpoint stays the same, the working ratio in the water quietly drops, the plant ends up with free ammonia in surplus and the system has more ammonia that nitrifiers can use. When demand falls, the residual rises, and the same fixed ammonia feed can leave the water chlorine-heavy. This is why the ammonia feed is checked against the residual after every demand change.\n\n### Checking the ratio actually fed\n\nAfter the feed rates are set, calculate the ratio from the real feed rates: chlorine feed in lb/day divided by ammonia-N feed in lb/day. *A fictional plant feeds 54 lb/day of chlorine and 9.6 lb/day of ammonia as N: 54 ÷ 9.6 = 5.625, which rounds half up to **5.63 to 1**.* That is above the stoichiometric 5.07, so on a feed basis chlorine exceeds the ideal monochloramine ratio. This is a feed-rate check only, because demand is not included, so it should prompt a free ammonia and residual check rather than prove a cause. Before changing feeds, confirm with a free ammonia test and follow the plant procedure.\n\n### Common mistakes to avoid\n\n- Mixing N and NH3 bases between the procedure, the label and the lab report.\n- Dosing ammonia from the chlorine dose instead of the residual.\n- Forgetting the nitrogen fraction when converting solution strength to nitrogen.\n- Ignoring natural ammonia in the source water.\n- Treating the stoichiometric ratio as a target instead of an upper landmark.\n",
+      "evidence": "### Fictional scenario: Pinewick Water Plant\n\nPinewick Water Plant is fictional and treats 2.4 MGD. After a heavy rain, chlorine demand rose and the residual fell. The ammonia metering pump was still set from the week before. The operator, Rosa Tillman, wants to know whether the water now carries a free ammonia surplus and what the pump should feed for the new residual.",
+      "assignment": "Write a short calculation sheet for Rosa Tillman. Using a chlorine dose of 3.0 mg/L, a demand of 0.9 mg/L before the rain and 1.3 mg/L after, a working ratio of 4.8 Cl2 to 1 NH3-N, 2.4 MGD and 8.34 lb per gal, calculate the ammonia-N dose and feed rate before and after the rain. Say which basis (N or NH3) you used. Explain what a pump that stayed at the old setting would do to the free ammonia, and name what you would check next.",
+      "rubric": [
+        "Calculates residual as dose minus demand before and after the rain.",
+        "Divides the residual by the ratio to get the ammonia-N dose and converts to lb/day with units shown.",
+        "States the basis (N or NH3) and does not mix bases.",
+        "Explains that an unchanged pump raises free ammonia after demand rises and names a follow-up test."
+      ],
+      "facilitatorGuide": "Have learners write the formula chain on one line with units before touching numbers. Check that the ammonia dose is based on the residual rather than the dose, and that the basis is stated every time. Common slips are dividing by the wrong number, forgetting 8.34, skipping the nitrogen fraction for solutions, and ignoring natural ammonia. Ask each learner to say what each number means in the water.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and write the ammonia dose and feed-rate formulas in your own words, with units."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work the 2.0 MGD and aqua ammonia examples again with different numbers of your own."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Find the ammonia source, strength and basis (N or NH3) on your own plant's chemical label or procedure."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hbk",
+        "spellman-wwo",
+        "wqc-handbook",
+        "epa-basic"
+      ],
+      "checks": [
+        {
+          "id": "ceu-chloramines-dosing-arithmetic-c1",
+          "prompt": "The weight ratio of about 5 to 1 used for monochloramine comes from:",
+          "choices": [
+            "Two chlorine molecules per ammonia, weights 71 and 17",
+            "The pH range in which monochloramine can form",
+            "One Cl2 per nitrogen atom, weights 71 and 14",
+            "The strength of the ammonia solution on its label"
+          ],
+          "correctIndex": 2,
+          "explanation": "The ratio is the weight of one Cl2 (71) over the weight of one nitrogen (14). The \"two chlorine molecules\" choice describes the second reaction step toward dichloramine, not monochloramine. The \"pH range\" and \"The strength of the ammonia solution on its label\" choices have nothing to do with where the ratio comes from.",
+          "objective": "chloramines-dosing-arithmetic"
+        },
+        {
+          "id": "ceu-chloramines-dosing-arithmetic-c2",
+          "prompt": "Using Cl2 = 71 and N = 14, the stoichiometric Cl2 to NH3-N weight ratio for monochloramine is:",
+          "choices": [
+            "0.20 to 1",
+            "4.18 to 1",
+            "85.0 to 1",
+            "5.07 to 1"
+          ],
+          "correctIndex": 3,
+          "explanation": "71 divided by 14 = 5.07. The \"0.20 to 1\" choice inverts the division. The \"4.18 to 1\" choice divides by 17, which counts the ammonia as NH3 rather than as N. The \"85.0 to 1\" choice adds 71 and 14 instead of dividing.",
+          "objective": "chloramines-dosing-arithmetic"
+        },
+        {
+          "id": "ceu-chloramines-dosing-arithmetic-c3",
+          "prompt": "A fictional plant has 2.4 mg/L of free chlorine available at the ammonia addition point, as Cl2. The working ratio is 4.8 Cl2 to 1 NH3-N, and ammonia is dosed on that residual. The ammonia-N dose is:",
+          "choices": [
+            "0.50 mg/L",
+            "2.00 mg/L",
+            "11.5 mg/L",
+            "0.48 mg/L"
+          ],
+          "correctIndex": 0,
+          "explanation": "Ammonia-N dose = 2.4 divided by 4.8 = 0.50 mg/L as N. The \"2.00 mg/L\" choice inverts the division. The \"11.5 mg/L\" choice multiplies the residual by the ratio. The \"0.48 mg/L\" choice uses 5.0 in place of the 4.8 ratio.",
+          "objective": "chloramines-dosing-arithmetic"
+        },
+        {
+          "id": "ceu-chloramines-dosing-arithmetic-c4",
+          "prompt": "A fictional procedure calls for 0.62 mg/L of ammonia as N. Using N = 14 and NH3 = 17, the same dose expressed as NH3 is:",
+          "choices": [
+            "0.51 mg/L",
+            "0.75 mg/L",
+            "10.5 mg/L",
+            "0.62 mg/L"
+          ],
+          "correctIndex": 1,
+          "explanation": "Multiply nitrogen by 17 over 14: 0.62 times 1.214 = 0.75 mg/L as NH3. The \"0.51 mg/L\" choice converts the wrong way, using 14 over 17. The \"10.5 mg/L\" choice multiplies by 17 and forgets to divide by 14. The \"0.62 mg/L\" choice skips the conversion between bases.",
+          "objective": "chloramines-dosing-arithmetic"
+        },
+        {
+          "id": "ceu-chloramines-dosing-arithmetic-c5",
+          "prompt": "A fictional plant treats 2.5 MGD. The free chlorine residual after demand is 2.75 mg/L as Cl2, and the working ratio is 5.0 Cl2 to 1 NH3-N. Using the factor 8.34 (mg/L × MGD × 8.34 = lb/day), the ammonia-N feed rate is:",
+          "choices": [
+            "1.83 lb/day",
+            "13.9 lb/day",
+            "11.5 lb/day",
+            "57.3 lb/day"
+          ],
+          "correctIndex": 2,
+          "explanation": "Ammonia-N dose = 2.75 ÷ 5.0 = 0.55 mg/L as N, and 0.55 × 2.5 × 8.34 = 11.5 lb/day. The 1.83 choice divides by the flow instead of multiplying. The 13.9 choice converts to an NH3 basis, multiplying by 17/14, but the question asks for N. The 57.3 choice uses the residual as the dose and skips the ratio.",
+          "objective": "chloramines-dosing-arithmetic"
+        },
+        {
+          "id": "ceu-chloramines-dosing-arithmetic-c6",
+          "prompt": "Which ammonia source is a pure, compressed liquefied gas fed through gas-handling equipment?",
+          "choices": [
+            "Aqua ammonia",
+            "Ammonium sulfate solution",
+            "Ammonium sulfate dry powder",
+            "Anhydrous ammonia"
+          ],
+          "correctIndex": 3,
+          "explanation": "Anhydrous ammonia is pure NH3 supplied as a liquefied gas. Aqua ammonia is NH3 dissolved in water. Ammonium sulfate is a salt supplied as a solution or solid.",
+          "objective": "chloramines-dosing-arithmetic"
+        }
+      ]
+    },
+    {
+      "id": "chloramines-monitoring-control",
+      "title": "Monitoring, nitrification and control",
+      "objectives": [
+        "Explain the purpose of total chlorine, free chlorine, monochloramine, free ammonia and nitrite tests and read residual trends against a baseline.",
+        "Describe nitrification, its causes, early warning signs and the response options at concept level.",
+        "Explain water age, booster stations and temporary free chlorine conversion and what each is for."
+      ],
+      "lesson": "### What the tests are for\n\nA chloraminated system is run on a handful of measurements. Each has a purpose, not just a number.\n\n- **Total chlorine** is the main residual measure in the distribution system, because most of the chlorine there is combined.\n- **Free chlorine** tells you whether chlorine is in excess at the plant or after a temporary conversion.\n- **Monochloramine** can be measured with a method specific to it. Total minus free estimates combined chlorine, which is mostly monochloramine here; it is a rough shortcut, because free chlorine tests can be fooled by chloramine.\n- **Free ammonia** shows which side of the ratio the plant is on. A small, steady, measurable surplus at the plant effluent is consistent with ammonia-rich operation. A reading that stays at zero may mean chlorine has overtaken ammonia, so check the method and reporting limit first.\n- **Nitrite**, **heterotrophic plate count (HPC)**, **pH**, **alkalinity** and **temperature** are trend indicators for nitrification and decay.\n\nThe DPD free chlorine test deserves special care. Monochloramine at ordinary residual levels can produce a faint pink colour with the free chlorine reagent. True free chlorine develops colour at once, so a colour that keeps deepening after the reading time is a warning of chloramine interference, which biases the free chlorine result high. Methods, reagents, instrument calibration and sample handling follow the procedure. The purpose to remember is that a result is only as good as its method.\n\nMethods vary. The handbook lists DPD colorimetric, iodometric, amperometric electrode and polarographic sensor methods for chlorine, and the procedure names the one in use and how samples are handled and dechlorinated for other tests. A target residual is a balance: it must hold disinfection to the far end of the system, yet stay as low as possible to limit by-products, and the rule and procedure give the number.\n\n### Trends beat single readings\n\nEach system has its own baseline: the normal residual, free ammonia and nitrite at each site, in each season. A single low reading can be a sampling slip, a flushed line or a real problem. A **trend** away from baseline at the same site, confirmed by a second indicator, is much stronger evidence. Establish baselines at the plant effluent and at fixed distribution sites: dead ends, low-flow zones, tank outlets and places where pressure zones meet.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Line chart of total chlorine residual against water age with a baseline band and a faster falling line\">\n<title>Residual against water age: baseline versus a nitrifying zone</title>\n<path d=\"M50 20V190H360\" fill=\"none\" stroke=\"#6b7a8c\" stroke-width=\"2\"/>\n<rect x=\"50\" y=\"52\" width=\"310\" height=\"34\" fill=\"#e3ecf7\"/>\n<path d=\"M50 40L360 82\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<path d=\"M50 40L150 70L250 140L360 184\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"3\" stroke-dasharray=\"8 5\"/>\n<text x=\"355\" y=\"46\" text-anchor=\"end\" font-size=\"11\">baseline band</text>\n<text x=\"355\" y=\"120\" text-anchor=\"end\" font-size=\"11\">drifting zone</text>\n<text x=\"14\" y=\"110\" font-size=\"11\" transform=\"rotate(-90 14 110)\">Total chlorine (mg/L)</text>\n<text x=\"205\" y=\"212\" text-anchor=\"middle\" font-size=\"11\">Water age (days) increases to the right</text>\n<text x=\"205\" y=\"236\" text-anchor=\"middle\" font-size=\"11\" fill=\"#6b7a8c\">Fictional trends. The plant sets its own trigger.</text>\n</svg>\n<figcaption>Solid line stays in the site's baseline band; the dashed line leaves it, which calls for a cause check.</figcaption>\n</figure>\n\n### Why nitrogen control matters for health\n\nBacteria in an infant's gut can turn nitrate into nitrite, which can impair the blood's ability to carry oxygen and cause the bluish colour of blue-baby syndrome. The end products of nitrification are therefore a health matter as well as a residual matter, and the rule, not this course, sets the numbers.\n\n### Water age\n\n**Water age** is how long water has been in the system since it left the plant. Chloramine decays with time, and decay releases ammonia. Older water tends to have a weaker residual, and decay can release ammonia that nitrifiers use.\n\nA rough nominal tank residence time is volume divided by average daily throughput. It measures time in the tank, not time since leaving the plant. *A fictional tank holds 450,000 gal and passes 90,000 gal/day: 450,000 ÷ 90,000 = 5.0 days.* Poor mixing and temperature layers make parts of a tank older than this average.\n\n*A fictional main shows total chlorine falling from 2.6 mg/L at the plant to 1.4 mg/L at a remote site where the water is 6.0 days old. The average fall is (2.6 minus 1.4) ÷ 6.0 = 0.20 mg/L per day.* Tracking this apparent average loss rate site by site shows where the residual falls fastest. It does not by itself prove the cause.\n\n### Nitrification: what it is and why it happens\n\n**Nitrification** is the bacterial conversion of ammonia to nitrite and then nitrate. In a chloraminated system the first step, ammonia to nitrite, can occur on its own, and nitrite uses chlorine rapidly.\n\nCauses and favouring conditions:\n\n- **Excess free ammonia** from an overfed ammonia pump, a feed adjustment, natural ammonia in the source or chloramine decay.\n- **Warm water.** Episodes are often reported in warm months.\n- **Old water, sediment and poor tank mixing**, which also lower the residual.\n- **Low residuals** that no longer hold the bacteria back.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Four boxes in a loop showing how nitrification feeds on itself\">\n<title>Nitrification loop: free ammonia, bacteria, nitrite, lower residual</title>\n<rect x=\"20\" y=\"30\" width=\"150\" height=\"56\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"95\" y=\"54\" text-anchor=\"middle\" font-size=\"12\">1 Free ammonia</text><text x=\"95\" y=\"72\" text-anchor=\"middle\" font-size=\"11\">present in the water</text>\n<rect x=\"220\" y=\"30\" width=\"150\" height=\"56\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"295\" y=\"54\" text-anchor=\"middle\" font-size=\"12\">2 Nitrifiers grow</text><text x=\"295\" y=\"72\" text-anchor=\"middle\" font-size=\"11\">warm, old, low residual</text>\n<rect x=\"220\" y=\"150\" width=\"150\" height=\"56\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"295\" y=\"174\" text-anchor=\"middle\" font-size=\"12\">3 Nitrite forms</text><text x=\"295\" y=\"192\" text-anchor=\"middle\" font-size=\"11\">and uses up chlorine</text>\n<rect x=\"20\" y=\"150\" width=\"150\" height=\"56\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"95\" y=\"174\" text-anchor=\"middle\" font-size=\"12\">4 Residual falls</text><text x=\"95\" y=\"192\" text-anchor=\"middle\" font-size=\"11\">chloramine decays</text>\n<path d=\"M172 58H212\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M212 52L220 58L212 64Z\" fill=\"#2f6db2\"/>\n<path d=\"M295 88V142\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M289 142L295 150L301 142Z\" fill=\"#2f6db2\"/>\n<path d=\"M218 178H178\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M178 172L170 178L178 184Z\" fill=\"#2f6db2\"/>\n<path d=\"M95 148V94\" stroke=\"#2f6db2\" stroke-width=\"3\"/><path d=\"M89 94L95 86L101 94Z\" fill=\"#2f6db2\"/>\n<text x=\"195\" y=\"236\" text-anchor=\"middle\" font-size=\"11\" fill=\"#6b7a8c\">Decay releases more ammonia, so the loop repeats.</text>\n</svg>\n<figcaption>Nitrification is a loop: each turn can lower the residual and release ammonia for the next.</figcaption>\n</figure>\n\nEarly warning signs, usually seen together at the same site: total chlorine falling faster than age explains, free ammonia dropping below the plant value as bacteria use it, nitrite rising above baseline, HPC rising and sometimes a pH or alkalinity drift. Rising nitrite is a strong early cue. Later signs include total coliform detections and customer complaints. The longer action waits, the harder recovery is.\n\nA compliance note: nitrate and nitrite compliance sampling is set by the rule at the entry point to the distribution system, so nitrification inside the system does not show up in that sampling. That is why trend monitoring in the distribution system matters, and why regulatory values are set by the rule, not by this course.\n\n### Sampling sites and tank management\n\nChoose sites for what they tell you. The plant effluent is the reference point. Dead ends, low-demand areas, tank outlets and places where two pressure zones meet are common places where water ages, so they often give early warning. Sample the same sites on the same schedule, so changes mean something. Many utilities increase sampling in warm weather, when nitrification risk is higher.\n\nStorage tanks deserve special attention. A tank that is kept full for emergencies but drawn down only slightly each day holds old water. Poor mixing, short-circuiting between inlet and outlet and temperature layers, which are common in tall tanks, can leave pockets of old water with a low residual. Typical remedies are changing the operating level range to raise turnover, adding mixing or baffles, and cleaning out sediment. Any change to tank levels must leave water for fire protection and emergencies.\n\n### Flush, boost or convert?\n\nMatch the tool to the stage:\n\n- **Prevention and mild drift:** flushing, looping and tank turnover reduce water age, and sediment removal helps where sediment is using residual. These are usually the lowest-cost first steps.\n- **Chronic low residual in a far zone:** a booster station with proper ratio control may be justified, after looping and flushing have been tried.\n- **An established episode that is not recovering:** a temporary free chlorine conversion, with notice, flushing and a plan for discharges.\n\nEach tool has costs. Flushing uses water and staff time. A booster adds equipment and chemicals. Conversion can change taste and by-product levels and needs customer notice. Whatever you choose, keep sampling to see whether the indicators return to baseline.\n\nOrganic matter also uses disinfectant, which is one more reason older water loses residual. In old mains with tuberculation the handbook advises cleaning with a pig to remove deposits, and looping dead-end mains avoids stagnation at the source.\n\n### Response at concept level\n\nResponses match the cause.\n\n- **Reduce water age.** Flush dead ends and low-flow zones, cycle tank levels, add mixing or baffling, loop dead-end mains and clean sediment.\n- **Raise the residual and reduce free ammonia.** Adjust the plant ratio or feed in line with the procedure, or add a booster.\n- **Convert temporarily to free chlorine.** Described below.\n\nOnce nitrification is established, flushing and ratio changes alone may not restore the residual, so prevention is the cheaper course. Tank level changes must protect the water needed for fire flow and emergencies.\n\n### Booster stations\n\nA booster station adds disinfectant partway through a long system to restore a falling residual. In a chloraminated system the booster normally adds chlorine and ammonia in the planned ratio. Chlorine added without ammonia can push the local water toward breakpoint and lose the residual it was meant to raise. Looping and flushing are usually tried first, since a booster is another place to maintain, monitor and test.\n\n*A fictional booster treats 400 gpm and adds 0.6 mg/L of chlorine at a 4.8 to 1 ratio by mass, chlorine as Cl2 to ammonia as N. Flow is 400 × 1,440 = 576,000 gal/day, or 0.576 MGD. Chlorine feed = 0.6 × 0.576 × 8.34 = 2.88 lb/day. Ammonia-N dose = 0.6 ÷ 4.8 = 0.125 mg/L, so ammonia-N feed = 0.125 × 0.576 × 8.34 = 0.60 lb/day.*\n\n### Temporary free chlorine conversion\n\nSome utilities periodically stop ammonia and run a free chlorine residual through part or all of the system for a set period. The purpose is to oxidize nitrite, suppress nitrifying bacteria and clear excess ammonia. Operators commonly report that converting a combined-residual system to free chlorine brings an initial rise in taste and odour complaints as accumulated organic material is oxidized, and that free chlorine is harder to hold at the ends of the system. Utilities therefore warn customers, coordinate flushing, watch by-products and manage discharges so that chloramine or free chlorine does not reach streams. Water drained from tanks or flushed to a stream may need dechlorination, for example with sulfur dioxide, which the Water Quality Control Handbook describes as a reducing gas used to minimize chlorine residual. The state or other authority sets when and how.\n",
+      "evidence": "### Fictional scenario: Hollin Bay Water\n\nHollin Bay Water is a fictional utility with a long, thin main and a tall northern standpipe. In late summer, total chlorine at the Tern Road dead end falls over three weeks while the plant effluent reading is steady. Free ammonia at Tern Road reads lower than at the plant, and nitrite is higher than the same week last year. The operator, Idris Calloway, must decide what to check and what to do first.",
+      "assignment": "Write a one-page plan for Idris Calloway. List the indicators you would check and what each would show if nitrification were present, the first two actions you would take, the one action you would hold in reserve and why, and the people you would tell. Include a water age calculation for the standpipe using a volume of 600,000 gal and an average draw of 80,000 gal/day.",
+      "rubric": [
+        "Names at least four indicators and says what each would show.",
+        "Calculates the standpipe water age (7.5 days) with units.",
+        "Proposes actions that match the cause and protects fire reserve.",
+        "Names a reserve action, its purpose and who must be told."
+      ],
+      "facilitatorGuide": "Ask learners to describe the nitrification loop from memory and to explain why a single reading is not a diagnosis. Check that they say free ammonia falls downstream in nitrification, not rises, and that nitrite is a rising early cue. Listen for water age ideas: decay releases ammonia, sediment and poor mixing help bacteria. Watch for plans that skip notification or fire reserve.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and redraw the nitrification loop and the residual trend chart in your own words."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Find your plant's baseline residual, free ammonia and nitrite values for last summer and this one."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work the tank water age, residual loss per day and booster feed examples with numbers of your own."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 8,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hbk",
+        "spellman-wwo",
+        "wqc-handbook",
+        "epa-chloramines",
+        "epa-basic"
+      ],
+      "checks": [
+        {
+          "id": "ceu-chloramines-monitoring-control-c1",
+          "prompt": "At a plant effluent, a small, steady, measurable free ammonia reading is most consistent with:",
+          "choices": [
+            "Ammonia-rich operation on the intended side of the ratio",
+            "Chlorine has overtaken ammonia, so the ammonia feed is too low",
+            "The analyzer has failed, so the reading should be discarded without a check",
+            "Trichloramine forming in the main at a high ratio"
+          ],
+          "correctIndex": 0,
+          "explanation": "A small free ammonia surplus means ammonia is in excess of the chlorine available for monochloramine. The \"analyzer has failed\" choice discards a reading that fits the expected pattern; a check comes first. The \"chlorine has overtaken\" choice reverses the reading. The trichloramine choice assumes a high ratio, where ammonia is used up.",
+          "objective": "chloramines-monitoring-control"
+        },
+        {
+          "id": "ceu-chloramines-monitoring-control-c2",
+          "prompt": "At a fictional dead end, total chlorine is falling, free ammonia is below the plant value, nitrite is rising and HPC is rising in warm weather. The plant effluent reading is unchanged. The pattern most strongly suggests:",
+          "choices": [
+            "A failed chlorine feeder at the plant",
+            "Nitrification in old water",
+            "Cooler source water",
+            "A free chlorine residual in the main"
+          ],
+          "correctIndex": 1,
+          "explanation": "Falling total chlorine with lower free ammonia, rising nitrite and HPC in warm old water is the nitrification pattern. The failed-feeder choice would also show at the plant, where the reading is unchanged. The cooler-water choice runs against the warm trend. A free chlorine residual would not explain rising nitrite, so that choice does not fit.",
+          "objective": "chloramines-monitoring-control"
+        },
+        {
+          "id": "ceu-chloramines-monitoring-control-c3",
+          "prompt": "A single low residual reading appears at a fictional hydrant that was flushed an hour earlier. The best interpretation is:",
+          "choices": [
+            "Proof of nitrification at that site and at no other site",
+            "Proof that the plant feed failed during the overnight shift",
+            "Weak evidence alone; compare the site trend with baseline",
+            "A reason to raise the plant ammonia feed at once, before retesting"
+          ],
+          "correctIndex": 2,
+          "explanation": "One reading near a flushing event is weak evidence. A trend away from baseline, backed by a second indicator, is strong. The \"proof of nitrification\" and \"proof that the plant feed failed\" choices treat one reading as a diagnosis, and the feed-change choice acts before retesting.",
+          "objective": "chloramines-monitoring-control"
+        },
+        {
+          "id": "ceu-chloramines-monitoring-control-c4",
+          "prompt": "A fictional tank holds 450,000 gal and passes an average of 90,000 gal/day. Treating it as well mixed, the nominal tank residence time is:",
+          "choices": [
+            "0.20 days",
+            "5.0 hours",
+            "120 days",
+            "5.0 days"
+          ],
+          "correctIndex": 3,
+          "explanation": "450,000 divided by 90,000 = 5.0 days. The \"0.20 days\" choice inverts the division and gives 0.20 per day, not days. The \"5.0 hours\" choice slips the unit from days to hours. The \"120 days\" choice converts 5.0 days to 120 hours and labels the result days.",
+          "objective": "chloramines-monitoring-control"
+        },
+        {
+          "id": "ceu-chloramines-monitoring-control-c5",
+          "prompt": "A fictional main shows total chlorine of 2.6 mg/L at the plant and 1.4 mg/L at a remote site where the water is 6.0 days old. The average loss per day of age is:",
+          "choices": [
+            "0.20 mg/L per day",
+            "0.54 mg/L per day",
+            "0.43 mg/L per day",
+            "7.2 mg/L per day"
+          ],
+          "correctIndex": 0,
+          "explanation": "(2.6 minus 1.4) divided by 6.0 = 0.20 mg/L per day. The \"0.54\" choice divides the remote reading by the plant reading, giving a dimensionless ratio. The \"0.43\" choice divides the starting residual, not the loss, by the days. The \"7.2\" choice multiplies the loss by the days, giving mg·day/L.",
+          "objective": "chloramines-monitoring-control"
+        },
+        {
+          "id": "ceu-chloramines-monitoring-control-c6",
+          "prompt": "In the DPD free chlorine test on chloraminated water, a pink colour that keeps deepening after the specified reading time is a sign of:",
+          "choices": [
+            "True free chlorine at a high level, which would colour the sample at once",
+            "Chloramine interference that biases the free chlorine result high",
+            "A calibration standard of the wrong strength in the kit, read on a dull day",
+            "A nitrite-free sample that skews the colour of the reagent in the cell"
+          ],
+          "correctIndex": 1,
+          "explanation": "True free chlorine colours at once; a colour that keeps deepening after the reading time suggests chloramine interference, which biases the free chlorine result high. The \"true free chlorine\" choice mistakes the cause. The \"calibration standard\" choice blames the instrument. The \"nitrite-free sample\" choice has no link to the colour.",
+          "objective": "chloramines-monitoring-control"
+        }
+      ]
+    },
+    {
+      "id": "chloramines-operation-troubleshooting",
+      "title": "Operation, troubleshooting and safety",
+      "objectives": [
+        "Recognise the parts of a chloramination feed train and explain flow pacing, residual trim and mixing.",
+        "Work through a taste and odour complaint and a nitrification scenario using records and baselines.",
+        "Describe the purpose of customer notification for dialysis and fish keeping and the recognition-level hazards of ammonia and chlorine."
+      ],
+      "lesson": "### Feed equipment and control, recognition level\n\nA plant that adds chlorine and ammonia separately has two feed systems: one for chlorine and one for ammonia. Chlorine equipment is familiar from the earlier course. Ammonia equipment depends on the source.\n\n- **Anhydrous ammonia** is a compressed liquefied gas, fed as a gas through dedicated pressure-reducing and metering equipment, often with a water injector.\n- **Aqua ammonia and ammonium sulfate solution** are liquids fed by metering pumps from a tank, with a pressure relief device, a backpressure valve, a flow check and a mixer.\n\nWhatever the source, the points to recognise are the same: flow pacing sets the feed in proportion to flow; a residual analyzer can trim the feed; and mixing right after the feed point matters because pockets of the wrong ratio can favour the wrong chloramine.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Block diagram of an ammonia feed train with flow pacing and residual trim\">\n<title>Ammonia feed train: tank, pump, injector, mixer, sample point</title>\n<rect x=\"12\" y=\"60\" width=\"62\" height=\"40\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"43\" y=\"85\" text-anchor=\"middle\" font-size=\"11\">Tank</text>\n<rect x=\"96\" y=\"60\" width=\"62\" height=\"40\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"127\" y=\"85\" text-anchor=\"middle\" font-size=\"11\">Pump</text>\n<rect x=\"180\" y=\"60\" width=\"62\" height=\"40\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"211\" y=\"85\" text-anchor=\"middle\" font-size=\"11\">Inject</text>\n<rect x=\"264\" y=\"60\" width=\"52\" height=\"40\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"290\" y=\"85\" text-anchor=\"middle\" font-size=\"11\">Mixer</text>\n<rect x=\"334\" y=\"60\" width=\"48\" height=\"40\" fill=\"#e3ecf7\" stroke=\"#2f6db2\" stroke-width=\"2\"/><text x=\"358\" y=\"85\" text-anchor=\"middle\" font-size=\"11\">Sample</text>\n<path d=\"M74 80H96M158 80H180M242 80H264M316 80H334\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<rect x=\"20\" y=\"150\" width=\"110\" height=\"36\" fill=\"#ffffff\" stroke=\"#6b7a8c\" stroke-width=\"2\"/><text x=\"75\" y=\"173\" text-anchor=\"middle\" font-size=\"11\">Flow meter</text>\n<rect x=\"250\" y=\"150\" width=\"130\" height=\"36\" fill=\"#ffffff\" stroke=\"#6b7a8c\" stroke-width=\"2\"/><text x=\"315\" y=\"173\" text-anchor=\"middle\" font-size=\"11\">Residual analyzer</text>\n<path d=\"M75 150V125H112V102\" fill=\"none\" stroke=\"#6b7a8c\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><path d=\"M250 168H190V125H142V102\" fill=\"none\" stroke=\"#6b7a8c\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/>\n<path d=\"M358 150V102\" fill=\"none\" stroke=\"#6b7a8c\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/>\n<text x=\"195\" y=\"30\" text-anchor=\"middle\" font-weight=\"bold\">Ammonia feed train</text>\n<text x=\"195\" y=\"212\" text-anchor=\"middle\" font-size=\"11\" fill=\"#6b7a8c\">Dashed lines carry signals, solid lines carry chemical.</text>\n</svg>\n<figcaption>Flow sets the pump pace; the analyzer reading from the sample point trims it.</figcaption>\n</figure>\n\nControl is a loop. Flow pacing follows the flow signal. Trim from a configured plant signal, such as the plant residual, corrects for demand changes; the design sets which signals are used. An operator confirms the result with bench tests at the plant effluent, because an analyzer that drifts can steer the loop wrong.\n\n### Taste and odour complaints\n\nComplaints are data. Work through them in order:\n\n1. **Where and when.** One street, a whole zone, or all customers? After a main break, flushing or a feed change?\n2. **What is described.** A pool or strong chlorine smell matches dichloramine or trichloramine, so check whether the ratio has drifted. It is a clue, not a diagnosis. A musty or earthy smell is more often source water or stagnation. A smell only at one tap may be the building's plumbing, a water heater or an old filter.\n3. **What the records show.** Compare feed rates, plant free ammonia and total chlorine, and the sample-site readings for the same period with baseline.\n4. **Confirm before changing.** Run bench tests, then adjust in line with the procedure, one variable at a time.\n\nQuick response and a complaint log help, because the history lets you compare later events.\n\n### Special customers\n\nSome customers need to know the water is chloraminated because the chemistry changes what is safe for them. **Dialysis centres** need chloramine removed from the water they use, since it can harm patients if it reaches the blood side. **Fish keepers and aquarium shops** need to know because chloramine is toxic to fish, and a household product that removes only free chlorine may leave chloramine behind. The utility's role is purpose and notification: tell these customers before a switch, tell them before temporary free chlorine conversions, and keep the contact list current. Many utilities notify customers before they switch to monochloramine. The customer's own treatment, and any health authority guidance, handle the removal.\n\n### Keeping the equipment honest\n\nChloramination can fail slowly and quietly when equipment drifts. Preventive checks keep the loop honest: calibrate analyzers against standards and log the result; compare online readings with a bench test at the plant on a schedule; check feed pumps for prime and output with a calibration column or drawdown; inspect injection points, check valves and relief devices; check mixers; and test leak detectors and alarms. A drawdown check compares what the pump claims to have fed with the actual volume drawn from the day tank, converted from level using the tank calibration.\n\n*A fictional day tank level falls 18 gal in 6 hours. That is 18 ÷ 6 = 3 gal per hour, or 72 gal/day. A pump setting that calls for 60 gal/day is feeding 20 percent above its setpoint, so the setting or the calibration needs correcting.*\n\n### Starting up after an outage\n\nAfter a long shutdown, residuals in the system may have dropped and the first water from the plant meets older water. Staff restart feeds in the order the procedure sets, confirm chlorine and ammonia against bench tests at the plant effluent before trusting the analyzers, then sample the distribution sites more often until baselines return. The feed ratio can drift during a restart, because flow, demand and residuals are all changing at once.\n\n### Communicating during an event\n\nDuring a nitrification response or a temporary free chlorine conversion, communication is part of the job. Tell the regulator when required, tell dialysis and fish-keeping customers in advance, give the call centre a short script so complaints are logged and not guessed at, and warn crews flushing hydrants about discharges that must be dechlorinated or dechloraminated before reaching a stream. Record who was told, when and how.\n\n### Records that pay off\n\nKeep daily records of chlorine and ammonia feed rates with flow, plant effluent total chlorine, free chlorine and free ammonia, sample-site residuals, nitrite and HPC results, water temperature, tank levels, flushing events, and complaints. When feeds are recorded as chemical mass rates on a common basis, they help you calculate the ratio actually fed. They also let you compare with baseline and spot trends such as slow residual loss in one zone.\n\n### A nitrification scenario\n\n*Ashgrove Water is a fictional utility with a long northern main. In July, staff notice total chlorine at the Tern Road dead end sliding over three weeks while the plant effluent reading is unchanged. Free ammonia at Tern Road is below the plant value, nitrite has crept up and HPC is higher than baseline. Water temperature is at its seasonal high, and the northern tank has been drawn down only a little each day.*\n\nReading it: falling total chlorine, low free ammonia, rising nitrite, higher HPC and warm water point together to nitrification at the north end, with high water age as a possible contributor, since the northern tank is drawn down only a little each day. The operator, Mina Okafor, does not guess. She repeats the tests at Tern Road and the tank outlet to confirm, compares with last July's records, then follows the plan: flush the dead end, increase tank turnover while keeping fire reserve, and review the plant free ammonia and ratio. If the indicators do not recover, the plan calls for notifying the regulator and customers and considering a temporary free chlorine conversion. She logs every step.\n\n### Quick troubleshooting guide\n\n| What you see | Likely cause to check first |\n|---|---|\n| Plant free ammonia reads zero for days and total chlorine falls | Chlorine excess or ammonia shortfall: check feed records and the ammonia test |\n| Plant free ammonia high and nitrite rising downstream | Possible ammonia overfeed at the plant; check the feed records, then downstream nitrite and water age separately |\n| Analyzer and bench test disagree | Analyzer drift, reagent or sample-handling error |\n| Complaints in one zone only | Water age, stagnation or a local flushing event |\n| Residual drops after a feed change | Demand change or a ratio shift |\n\nThe table is a starting point. It points where to look, and the bench test and the records decide.\n\n### Safety: recognition and purpose\n\nThis section names hazards and the purpose of controls. The safety data sheets, the emergency plan and facility procedures give the actions.\n\n- **Ammonia** is an irritant gas or vapour with a sharp odour. Ammonia gas is lighter than air, so detectors for it are placed differently from chlorine detectors, which sit low because chlorine is heavier than air. Final placement follows the approved design.\n- **Chlorine and ammonia products react with each other**, so they are stored and fed apart to prevent accidental contact. Never use a visible cloud to find a leak; use alarms and the facility emergency plan.\n- **Storage and containment** exist to keep releases small and away from people.\n- **Chlorine** gas is a highly toxic lung irritant that needs special housing, and many gas feeders are vacuum operated, so loss of vacuum shuts feed off. A leak on the pressurized supply side is a separate hazard. **Hypochlorite** does not need gas handling but irritates skin, nose and eyes and is corrosive.\n- **Safety data sheets** exist so that employees can find hazards and handling for each chemical, and training covers them.\n- **Risk and process safety rules** put elemental chlorine and other listed chemicals under scrutiny, which is one reason some plants choose hypochlorite; the reasons are facility-specific.\n- **Facility emergency plans** sit within risk-management programs, because some chemicals above certain quantities need written hazard assessment, prevention and response programs.\n\n### Common mistakes to avoid\n\n- Reading a pool smell as source water and not checking the ratio.\n- Trusting one analyzer reading without a bench check.\n- Changing several things after a complaint, so the cause is lost.\n- Forgetting to notify dialysis and fish-keeping customers before a change.\n- Skipping the log, which removes the baseline.\n",
+      "evidence": "### Fictional scenario: Ashgrove Water\n\nAshgrove Water is a fictional utility with a long northern main. In July, total chlorine at the Tern Road dead end slides over three weeks while the plant effluent is unchanged. Free ammonia there is below the plant value, nitrite has crept up and HPC is above baseline. The operator, Mina Okafor, also has two customer calls about a pool-like smell in the south zone.",
+      "assignment": "Write an investigation log for Mina Okafor covering both problems. For each, list what you would ask, which records and tests you would pull, what each result would suggest and the first action. Note which special customers you would notify before any temporary free chlorine conversion and why. State one recognition-level hazard of ammonia and one control that exists for it, and say where the actual response steps come from.",
+      "rubric": [
+        "Separates the north-end and south-zone problems and does not assume one cause.",
+        "Lists specific records and tests and says what each result would suggest.",
+        "Names dialysis and fish-keeping customers and the purpose of notifying them.",
+        "States a hazard and a control at recognition level and points to the SDS and emergency plan for actions."
+      ],
+      "facilitatorGuide": "Ask learners to talk through each problem in order: where, when, what, records, confirm, then act. Check that they change one thing at a time and keep fire reserve in mind. Look for a clear separation between recognition-level safety statements and procedures; learners should not invent response steps. Strong answers include a communication plan and a log.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and rebuild the quick troubleshooting table from memory."
+        },
+        {
+          "kind": "reading",
+          "minutes": 12,
+          "instruction": "Read your plant's chemical safety data sheet for the ammonia source, or for chlorine if you have no ammonia, and note the hazards named."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the Ashgrove scenario and list the records you would pull first."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 8,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "spellman-hbk",
+        "spellman-wwo",
+        "epa-chloramines",
+        "epa-basic"
+      ],
+      "checks": [
+        {
+          "id": "ceu-chloramines-operation-troubleshooting-c1",
+          "prompt": "The purpose of a static mixer right after the ammonia injection is to:",
+          "choices": [
+            "Raise the ammonia concentration so more chlorine is used up",
+            "Slow the pipe flow to add contact time for the ammonia",
+            "Spread the ammonia to reduce local wrong-ratio pockets",
+            "Measure the free ammonia reaching the sample point"
+          ],
+          "correctIndex": 2,
+          "explanation": "Mixing reduces the pockets where the chlorine-to-ammonia ratio is wrong. The \"raise the ammonia concentration\" choice reverses the aim. The \"slow the pipe flow\" choice misses the purpose. The \"measure the free ammonia\" choice confuses a mixer with an analyzer.",
+          "objective": "chloramines-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-chloramines-operation-troubleshooting-c2",
+          "prompt": "Why should a chloramination analyzer used to trim the ammonia feed be checked against a bench test?",
+          "choices": [
+            "The bench test replaces the analyzer for setting the pump, so the analyzer can be removed",
+            "The bench test matters when the flow meter has failed and pacing is lost",
+            "The analyzer reads free ammonia correctly at any dose, so no bench check is ever needed",
+            "An analyzer that drifts can steer the trim wrong, so a bench check confirms it"
+          ],
+          "correctIndex": 3,
+          "explanation": "An analyzer can drift, and a drifting analyzer steers the trim the wrong way. A bench test at the plant effluent helps confirm the reading. The other choices misstate the role of the bench test or assume the analyzer is perfect.",
+          "objective": "chloramines-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-chloramines-operation-troubleshooting-c3",
+          "prompt": "Customers in a fictional zone near the plant describe a pool-like smell. Their complaint timing and extent are already confirmed. The next step is to:",
+          "choices": [
+            "Check feed records and plant free ammonia",
+            "Increase the chlorine feed at the plant at once",
+            "Flush the whole system before any checks",
+            "Switch off the ammonia pump until it clears"
+          ],
+          "correctIndex": 0,
+          "explanation": "A pool smell matches dichloramine, so the ratio records come first. The \"increase the chlorine\" choice acts before the ratio is checked. The \"flush the whole system\" choice acts before the cause is known. The \"switch off the ammonia\" choice changes the ratio without evidence.",
+          "objective": "chloramines-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-chloramines-operation-troubleshooting-c4",
+          "prompt": "Why does a utility notify dialysis centres of a switch to chloramine?",
+          "choices": [
+            "Chloramine makes the water unsafe for drinking by anyone",
+            "The centre has to remove it with its own treatment",
+            "The centre has to stop using utility water altogether",
+            "The utility removes the chloramine for the centre"
+          ],
+          "correctIndex": 1,
+          "explanation": "The notice lets the centre check its removal step. The \"unsafe for drinking\" choice overstates the issue. The \"stop using utility water\" choice is not the purpose. The \"The utility removes the chloramine for the centre\" choice puts the removal on the wrong party.",
+          "objective": "chloramines-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-chloramines-operation-troubleshooting-c5",
+          "prompt": "A fictional pump is set to feed 6.0 gal/day. Using 3,785 mL per U.S. gal and 1,440 min per day, the feed in mL/min is:",
+          "choices": [
+            "22,710 mL/min",
+            "946 mL/min",
+            "15.8 mL/min",
+            "0.016 mL/min"
+          ],
+          "correctIndex": 2,
+          "explanation": "6.0 times 3,785 divided by 1,440 = 15.8 mL/min. The \"22,710 mL/min\" choice forgets to divide by the minutes in a day. The \"946 mL/min\" choice divides by 24 hours instead of 1,440 minutes. The \"0.016 mL/min\" choice uses litres per gallon instead of millilitres.",
+          "objective": "chloramines-operation-troubleshooting"
+        },
+        {
+          "id": "ceu-chloramines-operation-troubleshooting-c6",
+          "prompt": "Which records most help an operator investigate a nitrification event?",
+          "choices": [
+            "The chemical delivery invoices and the quarterly budget",
+            "The customer complaint count without dates or locations",
+            "The payroll hours for the operating staff each week",
+            "Feed rates, flows, residuals and site results"
+          ],
+          "correctIndex": 3,
+          "explanation": "The listed records help you compute the ratio fed and compare with baseline. The other choices cover cost, a single indicator or unrelated data.",
+          "objective": "chloramines-operation-troubleshooting"
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-chloramines-why-and-how-f1",
+      "objective": "chloramines-why-and-how",
+      "prompt": "A surface water plant uses chloramine as its secondary disinfectant. Which organism is not controlled well by ordinary chlorine or chloramine doses, so the plant needs another barrier for it?",
+      "choices": [
+        "Legionella bacteria",
+        "Cryptosporidium",
+        "Typhoid-causing bacteria",
+        "Coliform bacteria"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ordinary chlorine and chloramine doses do not control Cryptosporidium well, so a surface water plant needs other barriers such as filtration. The typhoid, Legionella and coliform choices are bacteria that chlorine or chloramine treatment does control at practical doses."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-f2",
+      "objective": "chloramines-why-and-how",
+      "prompt": "Customers on a fictional main describe a swimming-pool smell after a feed change. The first thing to suspect is:",
+      "choices": [
+        "A switch of the analyzer to a different range, which changes the sample colour and odour",
+        "A rise in pH at the intake, forming more monochloramine and less dichloramine in the main",
+        "A chlorine-to-ammonia ratio that drifted high, which can favour dichloramine",
+        "Too much free ammonia building up in the water after the feed change and the storm"
+      ],
+      "correctIndex": 2,
+      "explanation": "A pool smell matches dichloramine, which can form when the chlorine-to-ammonia ratio is high or the pH is low. It is a clue to check, not a species measurement. The \"too much free ammonia\" choice points the wrong way, since surplus ammonia favours monochloramine. The pH rise choice moves the chemistry toward monochloramine. The analyzer range choice has no link to the smell."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-f3",
+      "objective": "chloramines-why-and-how",
+      "prompt": "A fictional utility reports before and after by-product values of 52 and 30 micrograms per litre at one site. The percent reduction is about:",
+      "choices": [
+        "57.7 percent",
+        "22.0 percent",
+        "42.3 percent",
+        "73.3 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Percent reduction = (52 minus 30) divided by 52 = 0.423, or 42.3 percent. The \"57.7 percent\" choice reports the share remaining, after over before. The \"73.3 percent\" choice divides the drop by the after value, 30, instead of the before value, 52. The \"22.0 percent\" choice reports the raw drop in micrograms per litre as if it were a percent."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-f4",
+      "objective": "chloramines-why-and-how",
+      "prompt": "Monochloramine carries a residual farther into the system than free chlorine mainly because it:",
+      "choices": [
+        "Is more stable and reacts less with organic matter",
+        "Kills organisms before they can reach the pipes",
+        "Is made at a higher pH than any free chlorine form",
+        "Is a stronger disinfectant that is used up more slowly"
+      ],
+      "correctIndex": 0,
+      "explanation": "Monochloramine is more stable and less reactive, so it decays more slowly. The \"stronger disinfectant\" choice mistakes lasting for strong. The \"higher pH\" choice invents a pH link. The \"Kills organisms before they can reach the pipes\" choice describes primary disinfection, not residual persistence."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-f5",
+      "objective": "chloramines-why-and-how",
+      "prompt": "A fictional plant wants the least free chlorine contact before chloramine forms, and it earns its primary disinfection credit with another process. Which feed sequence fits?",
+      "choices": [
+        "Ammonia fed after the water has left the system",
+        "Ammonia first, then chlorine",
+        "Chlorine and ammonia fed in two separate plants",
+        "Chlorine first, then ammonia after a long contact period"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ammonia first limits free chlorine contact before chloramine forms, which is the goal in the stem. The \"chlorine first\" choice gives the longest free chlorine contact before ammonia. The other two choices are not feed orders a plant would use: two separate plants are not a feed order, and feeding after the water has left the system is not possible."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-f1",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional plant treats 1.8 MGD. The free chlorine residual after demand, available just before ammonia addition, is 2.6 mg/L as Cl2. The working ratio is 4.9 Cl2 to 1 NH3-N. Using the factor 8.34 (mg/L × MGD × 8.34 = lb/day), the ammonia-N feed rate is:",
+      "choices": [
+        "191 lb/day",
+        "39.0 lb/day",
+        "7.97 lb/day",
+        "0.96 lb/day"
+      ],
+      "correctIndex": 2,
+      "explanation": "Dose = 2.6 ÷ 4.9 = 0.531 mg/L as N, and (2.6 ÷ 4.9) × 1.8 × 8.34 = 7.97 lb/day. The 191 lb/day choice multiplies the residual by the ratio. The 39.0 lb/day choice feeds the chlorine residual itself as if it were the ammonia dose. The 0.96 lb/day choice drops the 8.34."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-f2",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional aqua ammonia is 20 percent NH3 by weight and weighs 7.6 lb per gal. Use N = 14 and NH3 = 17. A plant needs 15.0 lb/day of ammonia as N. The gallons per day to feed are:",
+      "choices": [
+        "1.97 gal/day",
+        "8.13 gal/day",
+        "9.87 gal/day",
+        "12.0 gal/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "NH3 per gallon = 7.6 times 0.20 = 1.52 lb, nitrogen = 1.52 times 14/17 = 1.2518 lb, and 15.0 divided by 1.2518 = 11.98, or 12.0 gal/day. The \"9.87 gal/day\" choice skips the nitrogen fraction. The \"8.13 gal/day\" choice applies the nitrogen fraction the wrong way, multiplying by 17/14 instead of 14/17. The \"1.97 gal/day\" choice treats a gallon as 7.6 lb of nitrogen."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-f3",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional plant feeds 54 lb/day of chlorine as Cl2 and 9.6 lb/day of ammonia as N. The Cl2 to NH3-N ratio fed is (round to two decimal places, half up):",
+      "choices": [
+        "44.4 to 1",
+        "5.63 to 1",
+        "63.6 to 1",
+        "0.18 to 1"
+      ],
+      "correctIndex": 1,
+      "explanation": "54 divided by 9.6 = 5.625, which rounds half up to 5.63. That is above the stoichiometric 5.07 for the ideal monochloramine reaction (one mole of available chlorine as Cl2 per mole of ammonia-N), so on a feed basis chlorine is in excess of that reaction. The \"0.18 to 1\" choice inverts the division. The \"44.4 to 1\" choice subtracts instead of dividing. The \"63.6 to 1\" choice adds instead of dividing."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-f4",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional plant needs 0.46 mg/L ammonia-N at the contact point. The source water carries 0.12 mg/L of natural ammonia-N that remains available at the contact point. The plant treats 2.0 MGD. Using the factor 8.34 (mg/L × MGD × 8.34 = lb/day), the ammonia-N to feed is:",
+      "choices": [
+        "0.68 lb/day",
+        "9.67 lb/day",
+        "7.67 lb/day",
+        "5.67 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Feed dose = 0.46 minus 0.12 = 0.34 mg/L, and 0.34 times 2.0 times 8.34 = 5.67 lb/day. The \"7.67 lb/day\" choice feeds the full 0.46 and ignores the natural ammonia. The \"9.67 lb/day\" choice adds the natural ammonia to the target instead of subtracting. The \"0.68 lb/day\" choice drops the 8.34."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-f5",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional plant doses ammonia from the chlorine dose instead of the residual. A storm then raises chlorine demand upstream of the ammonia point, while both feed rates stay unchanged. The most likely result is:",
+      "choices": [
+        "A higher chlorine residual, because ammonia shields chlorine from demand",
+        "A free ammonia surplus, since the feed stayed put",
+        "No change, because the ratio matters at the breakpoint alone",
+        "A free ammonia reading that drops to zero at the plant"
+      ],
+      "correctIndex": 1,
+      "explanation": "With higher demand the residual falls, but the ammonia feed stays set to the larger dose, so free ammonia rises. The \"higher chlorine residual\" choice assumes ammonia shields chlorine from demand. The \"free ammonia drops to zero\" choice reverses the effect. The \"no change\" choice ignores that the ratio sets the chloramine type."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-f1",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "Chloramine decay in old water raises the nitrification risk mainly because it:",
+      "choices": [
+        "Removes the nitrite from the water in the main",
+        "Raises pH until the bacteria die off in the main",
+        "Releases free chlorine that nitrifiers do not use",
+        "Releases free ammonia that nitrifiers can use"
+      ],
+      "correctIndex": 3,
+      "explanation": "Decay releases ammonia, which nitrifiers can use. The \"free chlorine\" choice reverses what is released. The pH choice invents an effect. The nitrite choice describes a removal that does not feed nitrifiers."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-f2",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "Flushing dead ends and low-flow zones helps control nitrification because it:",
+      "choices": [
+        "Raises the temperature of the water in the main, which slows the decay of chloramine and the growth of bacteria",
+        "Replaces old water with fresher water that arrives with a higher residual, if the supply allows",
+        "Adds ammonia to feed the residual in the main, so the water holds more chloramine for longer in the far zones",
+        "Replaces the need for any routine monitoring, so the sampling schedule and the lab bench tests can be dropped at once"
+      ],
+      "correctIndex": 1,
+      "explanation": "Flushing replaces old water with fresher water that arrives with a higher residual, if the upstream supply is good. The \"adds ammonia\" choice runs against the goal. The temperature choice has no link. The \"replaces routine monitoring\" choice treats a tool as a substitute for checks."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-f3",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "A fictional booster treats 400 gpm and adds 0.6 mg/L of chlorine at a 4.8 to 1 Cl2 to NH3-N ratio. Use 1,440 min per day, 1 MGD = 1,000,000 gal/day and the factor 8.34 (mg/L × MGD × 8.34 = lb/day). The ammonia-N feed is:",
+      "choices": [
+        "1.04 lb/day",
+        "0.60 lb/day",
+        "0.30 lb/day",
+        "2.88 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ammonia-N dose = 0.6 ÷ 4.8 = 0.125 mg/L as N. Flow = 400 × 1,440 = 576,000 gal/day = 0.576 MGD. Feed = 0.125 × 0.576 × 8.34 = 0.60 lb/day as N. The 0.30 choice uses 720 min per day instead of 1,440. The 1.04 choice uses 1.0 MGD instead of the converted flow. The 2.88 choice is the chlorine feed, not the ammonia-N feed."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-f4",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "The purpose of a temporary free chlorine conversion in a nitrifying system is to:",
+      "choices": [
+        "Remove the need for flushing during the event",
+        "Add more ammonia to the zones that nitrify",
+        "Raise the monochloramine residual in the far zones",
+        "Oxidize nitrite and suppress nitrifiers"
+      ],
+      "correctIndex": 3,
+      "explanation": "Free chlorine oxidizes nitrite and reduces the nitrifying bacteria. The \"raise the monochloramine residual\" choice is the reverse, since ammonia feed stops during the conversion. The \"add more ammonia\" choice runs against the plan. The \"remove the need for flushing\" choice is wrong because flushing is usually part of the conversion plan."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-f5",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "A fictional tank holds 800,000 gal. Operators exchange 160,000 gal per day by raising the daily level swing. The nominal percent of the stated tank volume exchanged per day is:",
+      "choices": [
+        "5 percent",
+        "16.7 percent",
+        "80 percent",
+        "20 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "160,000 divided by 800,000 = 0.20, or 20 percent. The \"5 percent\" choice inverts the division, giving 5, and labels it a percent. The \"80 percent\" choice reports one minus the turnover, which is not the water remaining. The \"16.7 percent\" choice divides by 960,000 gal, which adds the exchange to the tank volume."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-f1",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "Which statement about detector placement is the best match for recognition-level safety?",
+      "choices": [
+        "Both gases sink, so both detectors sit low on the wall near the floor drain",
+        "Ammonia is heavier than chlorine, so its detector sits lowest of the sensors in the room",
+        "Detectors are not needed where ventilation exists, since the air carries any release away",
+        "Ammonia is lighter than air, so its detector is usually mounted high"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chlorine is heavier than air and ammonia is lighter, so placement differs, and final siting follows the approved design. The \"both gases sink\" choice treats them alike. The \"ammonia is heavier\" choice reverses the densities. The \"not needed\" choice drops a protective device."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-f2",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "Why are chlorine and ammonia products stored apart at a fictional plant?",
+      "choices": [
+        "They corrode the same pipework and fittings in the building they share",
+        "They lose strength if they are stored together in the same storage room",
+        "They react with each other, so accidental contact is prevented",
+        "They dissolve into each other in the storage room, which makes the mix unsafe"
+      ],
+      "correctIndex": 2,
+      "explanation": "Chlorine and ammonia react, so they are kept apart to prevent accidental contact. The \"lose strength\" choice invents an effect. The corrosion choice is not the reason. The dissolve choice gives the wrong mechanism: the hazard is the reaction, not dissolving."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-f3",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "A fictional day tank level falls 18 gal in 6 hours at a steady rate. Treating the rate as constant for 24 hours, a 360 gal supply lasts about:",
+      "choices": [
+        "0.2 days",
+        "120 days",
+        "5.0 days",
+        "20 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "18 divided by 6 = 3 gal per hour, 72 gal per day, and 360 divided by 72 = 5.0 days. The \"20 days\" choice divides the supply by the 18 gal drop. The \"0.2 days\" choice inverts the division. The \"120 days\" choice uses 3 gal per hour as if it were per day."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-f4",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "A fictional aqua ammonia drum holds 55 gal and the plant feeds 15 gal/day. A drum lasts about:",
+      "choices": [
+        "825 days",
+        "40 days",
+        "3.7 days",
+        "0.27 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "55 divided by 15 = 3.7 days. The \"0.27 days\" choice inverts the division. The \"825 days\" choice multiplies instead of dividing. The \"40 days\" choice subtracts instead of dividing."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-f5",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "At a fictional plant, total chlorine at a dead end has dropped, nitrite has risen and HPC is up in warm weather. The best first step is to:",
+      "choices": [
+        "Repeat the tests and compare them with baseline before any change",
+        "Switch the analyzers off to stop the alarms sounding while the crew checks",
+        "Wait until customers complain before taking any action at the plant",
+        "Turn the ammonia feed up at once to hold the residual in the dead-end zone"
+      ],
+      "correctIndex": 0,
+      "explanation": "Confirm first, then act with the plan. The \"Turn the ammonia feed up at once to hold the residual\" choice would feed nitrifiers. The \"wait until customers complain\" choice waits until the problem is harder to fix. The \"switch the analyzers off\" choice removes data."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-chloramines-why-and-how-a1",
+      "objective": "chloramines-why-and-how",
+      "prompt": "Compared with free chlorine, which benefit of monochloramine in the pipes is described in this course?",
+      "choices": [
+        "It lasts longer than chlorine in the pipes",
+        "It strips the biofilm off pipe walls at once",
+        "It kills the organisms within seconds of contact",
+        "It raises the pH so the organisms stop growing"
+      ],
+      "correctIndex": 0,
+      "explanation": "The lesson ties the benefit to monochloramine lasting farther in the pipes. The \"within seconds\" choice reverses the speed, since chloramine acts slowly. The \"strips the biofilm\" choice overstates the effect. The \"raises the pH\" choice invents a mechanism."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-a2",
+      "objective": "chloramines-why-and-how",
+      "prompt": "A customer reports a sharp chlorinous, geranium-like smell. Which of these is most associated with that odour?",
+      "choices": [
+        "Monochloramine",
+        "Ammonium sulfate",
+        "Free ammonia",
+        "Trichloramine"
+      ],
+      "correctIndex": 3,
+      "explanation": "The odour table in the operator handbook lists trichloramine as chlorinous and geranium-like, while ammonia is listed as sharp and pungent. The geranium-like note is the distinguishing clue. Monochloramine is the target, not the odour in question. Ammonium sulfate is a feed chemical, not an odour compound."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-a3",
+      "objective": "chloramines-why-and-how",
+      "prompt": "A fictional utility reports before and after by-product values of 88 and 49 micrograms per litre. The percent reduction is about:",
+      "choices": [
+        "55.7 percent",
+        "44.3 percent",
+        "79.6 percent",
+        "39.0 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Percent reduction = (88 minus 49) divided by 88 = 0.443, or 44.3 percent. The \"55.7 percent\" choice reports the share remaining, after over before. The \"79.6 percent\" choice divides the drop by the after value, 49, instead of the before value, 88. The \"39.0 percent\" choice reports the raw drop in micrograms per litre as if it were a percent."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-a4",
+      "objective": "chloramines-why-and-how",
+      "prompt": "Before a utility changes its disinfectant to chloramine, which step comes first?",
+      "choices": [
+        "EPA, which sets chloramine as the required choice for each public system in the country, without state input",
+        "Accept the chemical supplier’s delivery schedule and its routes, then plan the feed around them",
+        "Evaluate the change and check the applicable regulatory and approval requirements",
+        "Ask customers to vote in each service area before any change, with the vote counted by zone"
+      ],
+      "correctIndex": 2,
+      "explanation": "Switching disinfectant is a treatment change: the utility evaluates it and checks the state and other requirements that apply. The EPA-required choice contradicts EPA's statement that it does not require any utility to use chloramine. The customer-vote and supplier choices name parties who do not make the treatment decision."
+    },
+    {
+      "id": "ceu-chloramines-why-and-how-a5",
+      "objective": "chloramines-why-and-how",
+      "prompt": "In a chloraminated plant, why is total minus free only a rough estimate of monochloramine?",
+      "choices": [
+        "Because total chlorine is lower than free chlorine in chloraminated water, so the subtraction goes negative",
+        "Because chloramine can fool free chlorine tests, so the difference is not monochloramine alone",
+        "Because monochloramine is measured by the DPD test, which reads it directly and needs no separate method",
+        "Because free ammonia reacts with the total chlorine test and changes the reading in each sample taken"
+      ],
+      "correctIndex": 1,
+      "explanation": "Free chlorine tests can read high when chloramine is present, and total minus free gives combined chlorine, which includes other chloramines. The first choice reverses the totals, since total chlorine includes free chlorine. The second choice misstates what the total test measures. The fourth choice confuses a free and total chlorine method with a monochloramine method."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-a1",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional plant treats 3.2 MGD. The free chlorine residual after demand, available for chloramine formation, is 2.1 mg/L as Cl2. The working ratio is 4.7 Cl2 to 1 NH3-N. Using the factor 8.34 (mg/L × MGD × 8.34 = lb/day), the ammonia-N feed rate is:",
+      "choices": [
+        "3.73 lb/day",
+        "11.9 lb/day",
+        "263 lb/day",
+        "1.43 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dose = 2.1 ÷ 4.7 = 0.447 mg/L as N, and 0.447 × 3.2 × 8.34 = 11.9 lb/day. The 263 lb/day choice multiplies the residual by the ratio. The 1.43 lb/day choice drops the 8.34. The 3.73 lb/day choice drops the flow."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-a2",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional aqua ammonia is 19 percent NH3 by weight and weighs 7.5 lb per gal. Use N = 14 and NH3 = 17. A plant needs 8.0 lb/day of ammonia as N. The gallons per day to feed are:",
+      "choices": [
+        "1.07 gal/day",
+        "6.82 gal/day",
+        "4.62 gal/day",
+        "5.61 gal/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "NH3 per gallon = 7.5 times 0.19 = 1.425 lb, nitrogen = 1.425 times 14/17 = 1.1735 lb, and 8.0 divided by 1.1735 = 6.82 gal/day. The \"5.61 gal/day\" choice skips the nitrogen fraction. The \"4.62 gal/day\" choice applies the nitrogen fraction the wrong way, to the gallons instead of the pounds. The \"1.07 gal/day\" choice treats a gallon as 7.5 lb of nitrogen."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-a3",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional plant feeds 60 lb/day of chlorine as Cl2 and 14.2 lb/day of ammonia as N. The Cl2 to NH3-N ratio fed is:",
+      "choices": [
+        "45.8 to 1",
+        "0.24 to 1",
+        "4.23 to 1",
+        "74.2 to 1"
+      ],
+      "correctIndex": 2,
+      "explanation": "60 divided by 14.2 = 4.23, below the ideal 5.07 (71 divided by 14 on the Cl2 to N basis), so ammonia is in excess on the ideal basis. A feed ratio alone does not measure the free ammonia in the water. The \"0.24 to 1\" choice inverts the division. The \"45.8 to 1\" choice subtracts instead of dividing. The \"74.2 to 1\" choice adds instead of dividing."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-a4",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A new source well brings in natural ammonia-N, less than the target ammonia-N dose. The target ratio and the chlorine available for chloramine formation stay unchanged. The correct adjustment is to:",
+      "choices": [
+        "Trim the fed ammonia by the natural amount, then test",
+        "Raise the chlorine feed to oxidize it ahead of the ammonia point",
+        "Leave the feed as set, because natural ammonia is inert",
+        "Raise the ammonia feed to match the new total in the water"
+      ],
+      "correctIndex": 0,
+      "explanation": "Natural ammonia reacts like fed ammonia, so the fed amount is reduced by the natural ammonia-N that remains available, then verified by test. The \"leave the feed\" choice treats natural ammonia as harmless. The \"raise the chlorine\" choice changes the chlorine condition that the stem holds fixed. The \"raise the ammonia\" choice adds to a surplus."
+    },
+    {
+      "id": "ceu-chloramines-dosing-arithmetic-a5",
+      "objective": "chloramines-dosing-arithmetic",
+      "prompt": "A fictional ammonium sulfate solution is 35 percent by weight and weighs 10.0 lb per gal. Use N = 14, H = 1, S = 32 and O = 16 for (NH4)2SO4. The pounds of nitrogen per gallon are about:",
+      "choices": [
+        "3.50 lb N per gal",
+        "0.742 lb N per gal",
+        "16.5 lb N per gal",
+        "0.371 lb N per gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "(NH4)2SO4 = 132, nitrogen = 28/132 = 0.212, and 10.0 times 0.35 times 0.212 = 0.742 lb N per gal. The \"3.50 lb N per gal\" choice stops at the salt per gallon and skips the nitrogen fraction. The \"16.5 lb N per gal\" choice inverts the nitrogen fraction, using 132 over 28. The \"0.371 lb N per gal\" choice uses 14 over 132, counting one nitrogen instead of two."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-a1",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "A rising nitrite reading at a fictional remote site, compared with baseline, most strongly indicates that:",
+      "choices": [
+        "Free chlorine is present at that site now",
+        "Ammonia-oxidizing bacteria are active",
+        "The sample came from a flushed hydrant, which reads nitrite high",
+        "The plant has overfed chlorine to the main"
+      ],
+      "correctIndex": 1,
+      "explanation": "A rising nitrite reading is consistent with ammonia-oxidizing activity. The free chlorine choice would tend to lower nitrite, since chlorine oxidizes it. The overfed chlorine choice would show at the plant first. A single flushed-hydrant sample is weak evidence; a trend against baseline is the stronger signal."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-a2",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "Nitrification risk is often higher in warm months, mainly because warm water:",
+      "choices": [
+        "Raises chlorine solubility, so the residual rises",
+        "Lowers the HPC by killing the bacteria present",
+        "Speeds both nitrifier growth and chloramine decay",
+        "Slows decay, so ammonia builds up in the main"
+      ],
+      "correctIndex": 2,
+      "explanation": "Warm water speeds bacterial growth and decay. The \"slows decay\" choice reverses temperature effects. The \"raises chlorine solubility\" choice is not the issue. The \"lowers the HPC\" choice has no basis in the warm-water pattern."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-a3",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "A fictional booster treats 250 gpm and adds 0.5 mg/L of chlorine as Cl2 at a 4.5 to 1 mass ratio of added Cl2 to added NH3-N. Use 1,440 min per day, 1 MGD = 1,000,000 gal/day and the factor 8.34 (mg/L × MGD × 8.34 = lb/day). The ammonia-N feed is:",
+      "choices": [
+        "6.76 lb/day",
+        "0.667 lb/day",
+        "1.50 lb/day",
+        "0.334 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Flow = 250 × 1,440 = 360,000 gal/day = 0.360 MGD. Ammonia-N dose = 0.5 ÷ 4.5 = 0.1111 mg/L (carried unrounded). Feed = 0.1111 × 0.360 × 8.34 = 0.334 lb/day. The 1.50 lb/day choice gives the chlorine feed instead of the ammonia feed. The 0.667 lb/day choice doubles the unrounded result. The 6.76 lb/day choice multiplies the chlorine dose by the ratio."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-a4",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "Before a booster adds chlorine to a chloraminated main, which check is most useful for guarding against losing the residual?",
+      "choices": [
+        "The colour of the storage tank and the age of its paint coating",
+        "The pump nameplate rating and the manufacturer label on the motor",
+        "The free ammonia and total residual at the booster site",
+        "The customer complaint count from last month, with no dates or locations recorded"
+      ],
+      "correctIndex": 2,
+      "explanation": "Free ammonia and total residual at the booster are the right first check, though they do not by themselves predict the residual loss. The nameplate and the tank colour say nothing about the chemistry. Last month's complaint count is history, not the current ratio."
+    },
+    {
+      "id": "ceu-chloramines-monitoring-control-a5",
+      "objective": "chloramines-monitoring-control",
+      "prompt": "A fictional tank holds 270,000 gal and passes 45,000 gal/day. The nominal water age is:",
+      "choices": [
+        "0.17 days",
+        "6.0 hours",
+        "144 days",
+        "6.0 days"
+      ],
+      "correctIndex": 3,
+      "explanation": "270,000 divided by 45,000 = 6.0 days. The \"0.17 days\" choice inverts the division. The \"6.0 hours\" choice slips the unit from days to hours. The \"144 days\" choice converts 6.0 days to 144 hours and labels the result days."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-a1",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "After a temporary free chlorine conversion, in which ammonia feed was stopped, some customers report stronger taste and odour for a time. The best explanation is that:",
+      "choices": [
+        "Free chlorine oxidizes built-up organic material",
+        "Ammonia is being added in excess to the water",
+        "The pH of the water has fallen to near zero",
+        "Chloramine has stopped decaying in the main water"
+      ],
+      "correctIndex": 0,
+      "explanation": "Operators commonly see this when free chlorine returns and oxidizes accumulated organic material; the cause should be confirmed before it is assumed. The \"ammonia in excess\" choice is wrong because ammonia feed stopped during the conversion. The \"stopped decaying\" choice is unrelated. The \"pH near zero\" choice overstates."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-a2",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "Why do fish keepers need notice of a chloramine switch?",
+      "choices": [
+        "The utility will treat each aquarium itself on request",
+        "Chloramine makes the water cloudy for the fish tank",
+        "It is toxic to fish and some products leave it",
+        "Chloramine adds the nitrate that fish need to thrive"
+      ],
+      "correctIndex": 2,
+      "explanation": "The notice protects fish, since a product aimed at free chlorine alone may not remove chloramine. The \"Chloramine adds the nitrate that fish need to thrive\" choice is wrong. The \"utility will treat each aquarium\" choice puts the duty on the wrong party. The \"cloudy\" choice is not the concern."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-a3",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "A fictional pump is set to feed 9.0 gal/day. Using 3,785 mL per U.S. gal and 1,440 min per day, the feed in mL/min is:",
+      "choices": [
+        "1,419 mL/min",
+        "34,065 mL/min",
+        "0.024 mL/min",
+        "23.7 mL/min"
+      ],
+      "correctIndex": 3,
+      "explanation": "9.0 times 3,785 divided by 1,440 = 23.7 mL/min. The \"34,065 mL/min\" choice forgets to divide by the minutes in a day. The \"1,419 mL/min\" choice divides by 24 hours instead of 1,440 minutes. The \"0.024 mL/min\" choice uses litres per gallon instead of millilitres."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-a4",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "A fictional aqua ammonia drum holds 55 gal and the plant feeds 12 gal/day. A drum lasts about:",
+      "choices": [
+        "660 days",
+        "0.22 days",
+        "43 days",
+        "4.6 days"
+      ],
+      "correctIndex": 3,
+      "explanation": "55 divided by 12 = 4.6 days. The \"0.22 days\" choice inverts the division. The \"660 days\" choice multiplies instead of dividing. The \"43 days\" choice subtracts instead of dividing."
+    },
+    {
+      "id": "ceu-chloramines-operation-troubleshooting-a5",
+      "objective": "chloramines-operation-troubleshooting",
+      "prompt": "What information does the safety data sheet for an ammonia product provide?",
+      "choices": [
+        "The regulatory residual limit for the system",
+        "The ammonia dose to be fed at the plant each day",
+        "A replacement for the facility emergency plan",
+        "Hazard and handling information for procedures"
+      ],
+      "correctIndex": 3,
+      "explanation": "An SDS gives hazard and handling information; procedures build on it. The \"ammonia dose\" choice is a process question. The \"replacement for the emergency plan\" choice is wrong, since the plan governs actions. An SDS does not set the system residual limit; the applicable rules do."
+    }
+  ]
+}

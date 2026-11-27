@@ -14,7 +14,7 @@ export interface CeuQuestionKey extends CeuQuestion {
 export interface CeuSource {
   id: string;
   title: string;
-  url: string;
+  url?: string;
   section: string;
   jurisdiction: string;
   accessed: string;
