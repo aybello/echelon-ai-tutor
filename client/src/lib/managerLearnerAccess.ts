@@ -7,18 +7,32 @@ type AssignedMember = {
   courseKeys?: string[] | null;
 };
 
+function normalizeLearnerEmail(email: string | null | undefined): string {
+  const normalized = (email ?? "").trim().toLowerCase();
+  const separator = normalized.lastIndexOf("@");
+  if (separator <= 0 || separator === normalized.length - 1) return normalized;
+
+  const localPart = normalized.slice(0, separator);
+  const domain = normalized.slice(separator + 1);
+  if (domain !== "gmail.com" && domain !== "googlemail.com") return normalized;
+
+  const plusIndex = localPart.indexOf("+");
+  return plusIndex < 0 ? normalized : `${localPart.slice(0, plusIndex)}@${domain}`;
+}
+
 /** Return canonical learner courses for a manager who assigned their own seat. */
 export function getManagerLearnerCourses(
   email: string | null | undefined,
   members: readonly AssignedMember[],
+  allowedCourseKeys?: readonly string[] | null,
 ): CourseEntry[] {
-  const normalizedEmail = email?.trim().toLowerCase();
+  const normalizedEmail = normalizeLearnerEmail(email);
   if (!normalizedEmail) return [];
 
   const matchingMembers = members.filter(
     (candidate) =>
       candidate.status === "assigned" &&
-      candidate.email?.trim().toLowerCase() === normalizedEmail,
+      normalizeLearnerEmail(candidate.email) === normalizedEmail,
   );
   if (matchingMembers.length === 0) return [];
 
@@ -34,10 +48,15 @@ export function getManagerLearnerCourses(
     }
   }
 
+  const allowed = allowedCourseKeys ? new Set(allowedCourseKeys) : null;
   return Array.from(uniqueKeys)
     .map((key) => resolveCourseKey(key))
     .filter(
       (course): course is CourseEntry =>
-        Boolean(course?.isActive && course.teamAssignable),
+        Boolean(
+          course?.isActive
+          && course.teamAssignable
+          && (!allowed || allowed.has(course.courseKey)),
+        ),
     );
 }

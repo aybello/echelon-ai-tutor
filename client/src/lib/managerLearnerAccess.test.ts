@@ -39,6 +39,28 @@ describe("manager learner access", () => {
     expect(courses[0]?.quizPath).toBe("/class1-water");
   });
 
+  it("matches Gmail plus-addresses using the server identity rule", () => {
+    const courses = getManagerLearnerCourses("manager+team@gmail.com", [
+      {
+        email: "manager@gmail.com",
+        status: "assigned",
+        courseKey: "class1-water",
+      },
+    ]);
+
+    expect(courses.map((course) => course.courseKey)).toEqual(["class1-water"]);
+  });
+
+  it("fails closed when a resolved course is outside the organization allow-list", () => {
+    const courses = getManagerLearnerCourses(
+      "manager@example.test",
+      [{ email: "manager@example.test", status: "assigned", courseKey: "class1-water" }],
+      ["class2-water"],
+    );
+
+    expect(courses).toEqual([]);
+  });
+
   it("fails closed for another user, revoked seats, and unknown or non-team courses", () => {
     const members = [
       {

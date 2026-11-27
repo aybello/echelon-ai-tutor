@@ -559,7 +559,7 @@ export default function OrgDashboard() {
   const displayedMembers = filterRosterMembers(activeMembers, rosterSearch, rosterStage);
   const revokedMembers = members.filter(m => m.status === "revoked");
   const selfStudyCourses = hasActiveAnnualLearnerAccess
-    ? getManagerLearnerCourses(overview.managerEmail, activeMembers)
+    ? getManagerLearnerCourses(overview.managerEmail, activeMembers, overview.allowedCourseKeys)
     : [];
   const needsFocusMembers = activeMembers.filter(m =>
     m.operatorStatus === "needs_focus" || m.operatorStatus === "behind"
