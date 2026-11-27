@@ -1,0 +1,80 @@
+{
+  "version": "2026-11-27-v1",
+  "status": "validated-local-candidate-not-imported",
+  "bankKey": "nm-cs1-wastewater-collection",
+  "state": "NM",
+  "stream": "wastewater-collection",
+  "label": "New Mexico Wastewater Collection System Level 1 (CS1)",
+  "numberRange": {
+    "start": 1,
+    "end": 250,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Practice questions for the New Mexico Wastewater Collection System Level 1 (CS1) written certification examination, technical outline only. Original items in US units. Not an official NMED examination or blueprint. Contains no population-band, certification-level, regulatory, permit, reporting, site-specific or emergency-response content.",
+  "file": "questions/bank-250.json",
+  "count": 250,
+  "calculations": 72,
+  "sha256": "1ed14c28eeec680228777470d145283b4421993c79ac05038d2835351bb53fdc",
+  "modules": {
+    "Collection system": 53,
+    "Lift stations and mechanical systems": 38,
+    "Wastewater characteristics": 24,
+    "Sampling and measurement": 18,
+    "Cross-connection control": 12,
+    "Safety awareness": 22,
+    "Units and flow concepts": 11,
+    "Flow and hydraulics math": 24,
+    "Collection system math": 20,
+    "Removal and loading calculations": 20,
+    "Units and conversions": 8
+  },
+  "difficulty": {
+    "medium": 141,
+    "hard": 56,
+    "easy": 53
+  },
+  "topics": {
+    "Layout, components and service connections": 15,
+    "Gravity sewers, force mains and manhole concepts": 14,
+    "Cleaning and stoppage response concepts": 12,
+    "Preventive maintenance and inspection concepts": 12,
+    "Lift station concepts: wet wells, pumps, controls and alarms": 14,
+    "Chemical feeders and metering equipment": 10,
+    "Motors, pumps and valves: operation and maintenance": 14,
+    "Wastewater characteristics: strength, solids, pH and temperature": 14,
+    "Removal efficiency concepts": 10,
+    "Grab and composite sampling": 10,
+    "Gas and toxicity topics named in the outline": 8,
+    "Cross-connection control concepts": 12,
+    "Hazard categories in the CS1 outline": 14,
+    "SDS and PPE concepts": 8,
+    "Units of measure and flow terms": 11,
+    "Flow, velocity and area in sewers": 14,
+    "Slope, invert and fall": 10,
+    "Pipe and manhole volumes": 10,
+    "Wet well volume and pump run time": 10,
+    "Removal efficiency percent": 10,
+    "Pounds per day loading from concentration and flow": 10,
+    "Unit conversions for flow and length": 8
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "count": 250,
+    "calculations": 72,
+    "answerPositions": [
+      62,
+      62,
+      63,
+      63
+    ],
+    "answerCues": {
+      "conceptualCount": 178,
+      "longestRate": 0.30337078651685395,
+      "shortestRate": 0.2696629213483146,
+      "longTells": [],
+      "shortTells": [],
+      "qualifierTells": []
+    }
+  }
+}

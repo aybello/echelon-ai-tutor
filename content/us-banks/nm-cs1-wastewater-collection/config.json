@@ -1,0 +1,24 @@
+{
+  "id": "nm-cs1-wastewater-collection",
+  "bankKey": "nm-cs1-wastewater-collection",
+  "itemPrefix": "NM-CS1-COLL",
+  "version": "2026-11-27-v1",
+  "state": "NM",
+  "stream": "wastewater-collection",
+  "label": "New Mexico Wastewater Collection System Level 1 (CS1)",
+  "startNumber": 1,
+  "count": 250,
+  "calcCount": 72,
+  "purpose": "Practice questions for the New Mexico Wastewater Collection System Level 1 (CS1) written certification examination, technical outline only. Original items in US units. Not an official NMED examination or blueprint. Contains no population-band, certification-level, regulatory, permit, reporting, site-specific or emergency-response content.",
+  "reviewIntro": "250 original practice questions: 178 conceptual and 72 calculations, in US customary units. Scope is the technical content of the March 2026 CS1 Operator Guidebook as summarised in the readiness dossier. This is a local content package, not proof of a production import.",
+  "sources": {
+    "NMGB": [
+      "NMED Utility Operator Certification Program, Wastewater Collection System Level 1 (CS1) Operator Guidebook with Need-to-Know Criteria, March 2026 (topic structure)",
+      "https://service.web.env.nm.gov/urls/vBzFrpJV"
+    ],
+    "NMCERT": [
+      "NMED Drinking Water Bureau, Utility Operator Certification: Certification Exams, Renewal and Equivalencies (CS1 credential identity)",
+      "https://www.env.nm.gov/drinking_water/certification-renewal-requirements/"
+    ]
+  }
+}
