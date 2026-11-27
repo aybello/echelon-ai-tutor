@@ -35,8 +35,9 @@ The owner approves importing and publishing these three banks, once the dry run 
 - `ca-wastewater-collection-csm1` (295 questions)
 - `ca-water-distribution-d1` (250 questions)
 - `ca-water-treatment-t1` (280 questions)
+- `fl-water-treatment-c` (150 questions), from branch `claude/us-bank-fl-treatment-c` at commit `d6888463f` or later. Owner approved release on 2026-11-27 after a random-sample review.
 
-Not yet approved: the Pennsylvania and Florida banks. Keep them staged only.
+Not yet approved: the Pennsylvania banks and `fl-water-distribution-l3`. Keep them staged only.
 
 Manus: run the existing guarded import for the three approved banks, then release them to learners using the repo's normal release step. Record the import output and the release in the PR. If a check fails, record it and do not release that bank.
 
