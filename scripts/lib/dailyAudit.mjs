@@ -3,7 +3,7 @@ import { createWriteStream } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { dirname, isAbsolute, resolve } from "node:path";
 
-export const AUDIT_STATUSES = ["pass", "fail", "warn", "blocked", "skipped"];
+export const AUDIT_STATUSES = ["pass", "expected_auth_gate", "fail", "warn", "blocked", "skipped"];
 
 /** Leave time for process-group cleanup and the final report; use a monotonic clock. */
 export function createAuditBudget(maxMs, now = () => performance.now(), reserveMs = 5000) {

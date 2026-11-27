@@ -107,6 +107,10 @@ class Blocked(Exception):
     """Cannot verify this behavior without authentication, unsafe actions or data."""
 
 
+class ExpectedAuthGate(Exception):
+    """Signed-out access state observed where authentication is required."""
+
+
 @dataclass
 class Task:
     name: str
@@ -239,7 +243,7 @@ class Audit:
         async def check(page: Any) -> dict[str, Any]:
             await self.goto(page, path)
             if await self.await_surface(page, "quiz") == "gate":
-                raise Blocked("Correct signed-out gate; anonymous answer flow cannot be exercised")
+                raise ExpectedAuthGate("Signed-out authentication gate is expected; anonymous answer flow requires authentication")
             q = page.get_by_test_id("practice-question")
             before = await q.inner_text()
             before_id = await q.get_attribute("data-question-id")
@@ -302,7 +306,7 @@ class Audit:
         async def check(page: Any) -> dict[str, Any]:
             await self.goto(page, path + ("&" if "?" in path else "?") + "panel=tutor")
             if await self.await_surface(page, "quiz") == "gate":
-                raise Blocked("Signed-out gate prevents tutor UI inspection")
+                raise ExpectedAuthGate("Signed-out authentication gate is expected; tutor UI requires authentication")
             panel = page.get_by_role("complementary", name="AI Tutor", exact=True)
             await self.in_view(page, panel, "Tutor panel")
             prompts = panel.locator(".ai-tutor-prompts button")
@@ -335,7 +339,7 @@ class Audit:
         async def check(page: Any) -> dict[str, Any]:
             await self.goto(page, path)
             if await self.await_surface(page, "flashcards") == "gate":
-                raise Blocked("Signed-out gate prevents a representative card flip")
+                raise ExpectedAuthGate("Signed-out authentication gate is expected; flashcard interaction requires authentication")
             card = page.get_by_test_id("flashcard-study-card")
             prompt = await page.get_by_test_id("flashcard-prompt").inner_text()
             await card.click()
@@ -703,6 +707,8 @@ class Audit:
                 result["status"] = "pass"
             except Blocked as error:
                 result.update(status="blocked", detail=clean(error))
+            except ExpectedAuthGate as error:
+                result.update(status="expected_auth_gate", detail=clean(error))
             except asyncio.CancelledError:
                 cancelled = True
                 result.update(status="blocked", detail="Overall audit deadline reached; check not completed")
@@ -760,7 +766,7 @@ class Audit:
                        "firstPartyWritesDeniedExceptAnonymousPracticeScoring": True, "tutorLlmInvoked": False,
                        "mockExamsStarted": False, "formsSubmitted": False,
                        "note": "Only quiz.logAttempt is allowed: its source-verified guest branch scores without saving learner history. All other first-party writes, including background telemetry/training, are denied and enumerated. No success response is fabricated. Screenshots contain public anonymous UI with inputs masked."},
-            "summary": {status: counts[status] for status in ["pass", "fail", "warn", "blocked", "skipped"]},
+            "summary": {status: counts[status] for status in ["pass", "expected_auth_gate", "fail", "warn", "blocked", "skipped"]},
             "results": self.results}
         temporary = self.output / "product-journeys.json.tmp"
         temporary.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")

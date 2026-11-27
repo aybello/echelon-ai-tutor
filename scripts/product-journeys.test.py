@@ -110,6 +110,32 @@ class CoverageTests(unittest.IsolatedAsyncioTestCase):
             report = json.loads((Path(output) / "product-journeys.json").read_text())
             self.assertFalse(report["coverage"]["completedAllPlannedChecks"])
 
+    async def test_expected_auth_gate_is_terminal_expected_state(self):
+        with tempfile.TemporaryDirectory() as output:
+            audit, _ = self.make_audit(output)
+
+            async def gated(_page):
+                raise module.ExpectedAuthGate("Signed-out authentication gate is expected")
+
+            await audit.run_task(module.Task("journey/desktop/answer/paid", "/paid", gated), asyncio.Semaphore(1))
+            report = json.loads((Path(output) / "product-journeys.json").read_text())
+            self.assertTrue(report["results"][0]["completed"])
+            self.assertEqual(report["results"][0]["status"], "expected_auth_gate")
+            self.assertEqual(report["summary"]["expected_auth_gate"], 1)
+            self.assertEqual(report["summary"]["blocked"], 0)
+
+    async def test_public_page_assertion_remains_a_failure(self):
+        with tempfile.TemporaryDirectory() as output:
+            audit, _ = self.make_audit(output)
+
+            async def public_failure(_page):
+                raise AssertionError("Required public control is missing")
+
+            await audit.run_task(module.Task("journey/desktop/public", "/public", public_failure), asyncio.Semaphore(1))
+            report = json.loads((Path(output) / "product-journeys.json").read_text())
+            self.assertEqual(report["results"][0]["status"], "fail")
+            self.assertEqual(report["summary"]["fail"], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
