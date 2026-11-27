@@ -55,6 +55,7 @@ function LevelCard({ level, active, onClick }: {
   return (
     <button
       type="button"
+      className="career-level-card"
       aria-pressed={isActive}
       onClick={() => onClick(isActive ? null : level)}
       style={{
@@ -396,7 +397,7 @@ function CareerTimeline({ onSelect, selected, province, track }: {
       )}
 
       {/* Lifetime earnings */}
-      <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
+      {mainLevels.length > 0 && <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Lifetime Earnings Potential
         </div>
@@ -421,7 +422,7 @@ function CareerTimeline({ onSelect, selected, province, track }: {
             );
           })}
         </div>
-      </div>
+      </div>}
     </div>
   );
 }
@@ -590,7 +591,7 @@ export default function CareerMap() {
         .fade { animation: fadeUp 0.4s ease both; }
         .career-pop-in { animation: popIn 0.3s ease both; }
         button:focus-visible, a:focus-visible { outline: 3px solid #F59E0B; outline-offset: 3px; }
-        @media (prefers-reduced-motion: reduce) { .fade, .career-pop-in { animation: none; } *, *::before, *::after { transition-duration: 0.01ms !important; } }
+        @media (prefers-reduced-motion: reduce) { .fade, .career-pop-in { animation: none; } .career-level-card:hover { transform: none !important; } *, *::before, *::after { transition-duration: 0.01ms !important; } }
         @media (max-width: 768px) {
           .career-salary-jumps { grid-template-columns: repeat(2,1fr) !important; }
           .career-timeline-nodes { grid-template-columns: repeat(3,1fr) !important; }
@@ -609,7 +610,7 @@ export default function CareerMap() {
           .career-detail-info { grid-template-columns: 1fr !important; }
           .career-view-toggles { padding: 10px 14px !important; }
           .career-bar-row { flex-wrap: wrap !important; gap: 8px !important; }
-          .career-bar-label { width: auto !important; text-align: left !important; min-width: 50px !important; }
+          .career-bar-label { width: 50px !important; text-align: left !important; min-width: 50px !important; }
           .career-bar-salary { width: auto !important; flex: 1 1 100% !important; }
           .career-salary-scale { padding-left: 58px !important; padding-right: 0 !important; }
         }

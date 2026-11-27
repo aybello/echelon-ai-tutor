@@ -44,6 +44,9 @@ describe("Career Map release contracts", () => {
     expect(careerMap).toContain('padding-left: 58px !important');
     expect(careerMap).toContain('mainLevels.length > 0 && <div');
     expect(careerMap).toContain('"Water Quality Analyst Track"');
+    expect(careerMap).toContain('className="career-level-card"');
+    expect(careerMap).toContain('.career-level-card:hover { transform: none !important; }');
+    expect(careerMap).toContain('width: 50px !important; text-align: left !important; min-width: 50px !important;');
     expect(careerMap).toContain("TRACKS.filter(t => t.id !== \"wqa\" || specialistLevel)");
     expect(careerMap).toContain('t.id === "wqa" ? "WQA"');
   });
