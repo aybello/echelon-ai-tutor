@@ -1,0 +1,67 @@
+{
+  "version": "2026-11-27-v1",
+  "status": "validated-local-candidate-not-imported",
+  "bankKey": "pa-wastewater-treatment-part1-general",
+  "state": "PA",
+  "stream": "wastewater-treatment",
+  "label": "Pennsylvania Wastewater Treatment: Part I General Examination component only",
+  "numberRange": {
+    "start": 1,
+    "end": 122,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Practice questions for the common Part I General Examination of the Pennsylvania wastewater treatment certification route only. Not a complete preparation for any Part II treatment-technology examination (activated sludge, fixed film, treatment ponds and lagoons), the wastewater master examination, the Class E / Subclass 4 collection examination, or the laboratory supervisor examination. Not a certificate. Original items in US units. Not an official exam blueprint.",
+  "file": "questions/bank-122.json",
+  "count": 122,
+  "calculations": 29,
+  "sha256": "566f63bc68e54294b59ec5ad01791151389b9b6bebb5d2fae43e5c0b04e2ea61",
+  "modules": {
+    "Treatment fundamentals": 24,
+    "Disinfection and chlorination": 18,
+    "Solids handling and disposal": 15,
+    "Chemical feed systems": 7,
+    "Pumps, hydraulics and maintenance": 10,
+    "Flow measurement": 6,
+    "Laboratory and administration": 8,
+    "General chemistry for wastewater": 5,
+    "Basic math": 29
+  },
+  "difficulty": {
+    "easy": 29,
+    "medium": 69,
+    "hard": 24
+  },
+  "topics": {
+    "Purpose and stages of wastewater treatment": 16,
+    "Disinfection and chlorination": 18,
+    "Solids handling and disposal": 15,
+    "Biological treatment concepts": 8,
+    "Chemical feed systems": 7,
+    "Pumps and hydraulics": 10,
+    "Flow measurement": 6,
+    "Laboratory overview": 4,
+    "Plant administration": 4,
+    "General chemistry for wastewater": 5,
+    "Basic math for plant operations": 29
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "count": 122,
+    "calculations": 29,
+    "answerPositions": [
+      31,
+      30,
+      30,
+      31
+    ],
+    "answerCues": {
+      "conceptualCount": 93,
+      "longestRate": 0.2903225806451613,
+      "shortestRate": 0.3225806451612903,
+      "longTells": [],
+      "shortTells": [],
+      "qualifierTells": []
+    }
+  }
+}
