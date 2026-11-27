@@ -1,0 +1,79 @@
+{
+  "version": "2026-11-27-v1",
+  "status": "validated-local-candidate-not-imported",
+  "bankKey": "ut-water-distribution-d1",
+  "state": "UT",
+  "stream": "water-distribution",
+  "label": "Utah Drinking Water Operator Certification: Water Distribution Grade I (D1)",
+  "numberRange": {
+    "start": 1,
+    "end": 250,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Practice questions for the Utah Drinking Water Operator Certification examination, Water Distribution Grade I (D1), in the six categories the Division of Drinking Water publishes. Original items in US units. Not an official DDW examination, study guide or blueprint. Contains no Utah rule-number, state-law, monitoring, reporting or compliance claims, and no site-specific, system-classification or emergency-response content.",
+  "file": "questions/bank-250.json",
+  "count": 250,
+  "calculations": 75,
+  "sha256": "d7aa5b230904e352eb079a1cd68c609e7b0c7434676699a25f87c480e74b5b7c",
+  "modules": {
+    "Math": 37,
+    "Operation and maintenance": 62,
+    "Pumps": 35,
+    "Chemical feed": 42,
+    "Safety and security": 50,
+    "Rules": 24
+  },
+  "difficulty": {
+    "medium": 141,
+    "easy": 52,
+    "hard": 57
+  },
+  "topics": {
+    "Units and conversions": 9,
+    "Pipe area, velocity and flow": 10,
+    "Pressure and head": 10,
+    "Layout and components": 10,
+    "Main breaks, repairs and flushing": 12,
+    "Valves and isolation": 10,
+    "Hydrants and flushing": 12,
+    "Water quality in the distribution system": 10,
+    "Meters and water loss": 8,
+    "Centrifugal pumps and curves": 10,
+    "Motors and power": 8,
+    "Booster stations and pressure zones": 9,
+    "Pump maintenance and troubleshooting": 8,
+    "Disinfectants and residuals": 9,
+    "Feed rate and dose math": 8,
+    "Feeders and calibration": 9,
+    "Corrosion control": 8,
+    "pH and alkalinity": 8,
+    "Chemical hazards": 10,
+    "Confined spaces and trenches": 10,
+    "Cross-connections and backflow": 10,
+    "Physical and water security": 10,
+    "Pathogen exposure and hygiene": 10,
+    "Certification framework": 12,
+    "Distribution records": 12,
+    "Tank volume and storage": 8
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "count": 250,
+    "calculations": 75,
+    "answerPositions": [
+      63,
+      63,
+      62,
+      62
+    ],
+    "answerCues": {
+      "conceptualCount": 175,
+      "longestRate": 0,
+      "shortestRate": 0.06857142857142857,
+      "longTells": [],
+      "shortTells": [],
+      "qualifierTells": []
+    }
+  }
+}

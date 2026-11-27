@@ -1,0 +1,41 @@
+{
+  "id": "ut-water-distribution-d1",
+  "bankKey": "ut-water-distribution-d1",
+  "itemPrefix": "UT-WD-D1",
+  "version": "2026-11-27-v1",
+  "state": "UT",
+  "stream": "water-distribution",
+  "label": "Utah Drinking Water Operator Certification: Water Distribution Grade I (D1)",
+  "startNumber": 1,
+  "count": 250,
+  "calcCount": 75,
+  "purpose": "Practice questions for the Utah Drinking Water Operator Certification examination, Water Distribution Grade I (D1), in the six categories the Division of Drinking Water publishes. Original items in US units. Not an official DDW examination, study guide or blueprint. Contains no Utah rule-number, state-law, monitoring, reporting or compliance claims, and no site-specific, system-classification or emergency-response content.",
+  "reviewIntro": "250 original practice questions: 175 conceptual and 75 calculations, in US customary units. Scope is the six DDW exam categories (Math, Operation and Maintenance, Pumps, Chemical Feed, Rules, Safety and Security) with the D1 category allocation, which is adjusted; see allocationNote. Rules items use only the DDW study-help and certification-page facts, plus general distribution recordkeeping practice. The R309-300 rule text could not be retrieved, so no item cites it. This is a local content package, not proof of a production import.",
+  "allocationNote": "Published D1 allocation (DDW study-help page, of 100): Math 15, O&M 22, Rules 19, Pumps 13, Chemical Feed 15, Safety and Security 16. This bank (of 250): Math 37, O&M 62, Rules 24, Pumps 35, Chemical Feed 42, Safety and Security 50. Rules is 24 rather than about 47 because the rule text was not retrievable, and the 23 missing Rules items were added to the other categories. The bank is not proportional to the published D1 allocation.",
+  "sources": {
+    "UTOUT": [
+      "Utah DDW, Study Help: Division of Drinking Water (six exam categories, 100 questions, 70% pass, D1 category allocation), retrieved 2026-11-27",
+      "https://deq.utah.gov/ddw/study-help"
+    ],
+    "UTCERT": [
+      "Utah DDW, Become a Certified Water Operator (distribution grades, proctored three-hour exam, restricted status until experience), retrieved 2026-11-27",
+      "https://deq.utah.gov/ddw/become-certified"
+    ],
+    "UTCOMM": [
+      "Utah DDW, Operator Certification Commission and Rules (commission sets exam topics), retrieved 2026-11-27",
+      "https://deq.utah.gov/ddw/operator-certification-commission-rules"
+    ],
+    "UTRULE": [
+      "R309-300, Certification Rules for Water Supply Operators (dossier link returned 404 on 2026-11-27; text not retrieved; no item cites this key)",
+      "https://adminrules.utah.gov/public/rule/R309-300/Current%20Rules"
+    ]
+  },
+  "moduleCounts": {
+    "Math": 37,
+    "Operation and maintenance": 62,
+    "Pumps": 35,
+    "Chemical feed": 42,
+    "Safety and security": 50,
+    "Rules": 24
+  }
+}
