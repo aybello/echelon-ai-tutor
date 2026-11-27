@@ -201,7 +201,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             const retained = authorizedFetch.current?.epoch === sessionEpoch.current
               ? authorizedFetch.current.data
               : viewRef.current;
-            if (retained) queryClient.setQueryData(queryKey, retained);
+            // Preserve exact receipt identity. setQueryData structural sharing
+            // can clone the retained root and strand a pending passive merge.
+            if (retained) event.query.setState({ data: retained });
             request = null;
             return;
           }

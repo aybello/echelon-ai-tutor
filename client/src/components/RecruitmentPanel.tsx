@@ -36,7 +36,7 @@ type InvitationOutcome = {
 
 function useLifetime() {
   const live = useRef(true);
-  useEffect(() => {
+  useLayoutEffect(() => {
     live.current = true;
     return () => {
       live.current = false;

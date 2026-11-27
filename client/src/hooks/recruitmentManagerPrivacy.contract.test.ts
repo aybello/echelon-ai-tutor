@@ -9,6 +9,7 @@ const h = vi.hoisted(() => ({
   dirty: false,
   effects: [] as (() => void)[],
   layouts: [] as (() => void)[],
+  passiveCleanups: [] as (() => void)[],
   seen: new Set<string>(),
   contexts: new Map<any, any>(),
   client: null as any,
@@ -36,7 +37,7 @@ vi.mock("react", async original => {
     const slots = h.frame.slots;
     if (!slots[i] || changed(slots[i].deps, deps)) {
       const old = slots[i];
-      slots[i] = { deps };
+      slots[i] = { deps, layout: queue === h.layouts };
       queue.push(() => {
         old?.cleanup?.();
         slots[i].cleanup = fn();
@@ -228,7 +229,7 @@ function expand(node: any, path: string): any {
     },
   };
 }
-function render() {
+function render(deferPassiveCleanups = false) {
   let loops = 0;
   do {
     h.dirty = false;
@@ -238,7 +239,11 @@ function render() {
       : null;
     for (const [id, frame] of h.frames)
       if (!h.seen.has(id)) {
-        frame.slots.forEach((slot: any) => slot?.cleanup?.());
+        frame.slots.forEach((slot: any) => {
+          if (deferPassiveCleanups && slot?.layout === false)
+            h.passiveCleanups.push(() => slot.cleanup?.());
+          else slot?.cleanup?.();
+        });
         h.frames.delete(id);
       }
     h.layouts.splice(0).forEach(fn => fn());
@@ -313,6 +318,7 @@ beforeEach(() => {
   h.contexts.clear();
   h.effects = [];
   h.layouts = [];
+  h.passiveCleanups = [];
   h.listeners.clear();
   h.dirty = false;
   h.client = new QueryClient({
@@ -363,6 +369,7 @@ beforeEach(() => {
   h.download.mockReset();
 });
 afterEach(() => {
+  h.passiveCleanups.splice(0).forEach(fn => fn());
   h.frames.forEach(frame =>
     frame.slots.forEach((slot: any) => slot?.cleanup?.())
   );
@@ -693,6 +700,81 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
         expect(h.revoke).toHaveBeenCalledTimes(2);
         expect(h.revoke.mock.calls[1][0].expectedRevision).toBe(4);
       }
+    }
+  );
+  it.each(["success", "conflict"] as const)(
+    "ignores sent revoke %s after assessment-switch layout teardown before passive cleanup with the parent epoch alive",
+    async outcome => {
+      const otherAssessment = {
+        ...assessment,
+        id: "33333333-3333-4333-8333-333333333333",
+        title: "Other synthetic assessment",
+      };
+      h.list.mockResolvedValue([assessment, otherAssessment]);
+      h.results.mockImplementation((input: any) => Promise.resolve({
+        assessment: input.assessmentId === otherAssessment.id ? otherAssessment : assessment,
+        results: [result],
+      }));
+      await readyDetail();
+      find(n => String(n.props["aria-label"]).startsWith("Copy invitation")).props.onClick();
+      await settle();
+      const parentEntry = [...h.frames.entries()].find(([id]) => id.includes(":RecruitmentPanelBody:"))!;
+      const parent = parentEntry[1];
+      const outcomeSlot = parent.slots.find((slot: any) => slot?.value?.assignmentId === result.assignmentId);
+      const savedOutcome = outcomeSlot.value;
+      const detail = [...h.frames.entries()].find(([id]) => id.includes(":RecruitmentDetail:"))![1];
+      const oldReview = reviewRevocation();
+      const mutation = deferred();
+      h.revoke.mockReturnValueOnce(mutation.promise);
+      oldReview.handler();
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(h.revoke).toHaveBeenCalledWith({
+        orgId,
+        assignmentId: result.assignmentId,
+        expectedRevision: result.revision,
+      });
+
+      find(n => n.type === "button" && text(n).includes(otherAssessment.title)).props.onClick();
+      render(true); // Commit old detail's layout teardown, withholding its passive cleanups.
+      expect(h.passiveCleanups.length).toBeGreaterThan(0);
+      expect(h.frames.get(parentEntry[0])).toBe(parent);
+      expect(outcomeSlot.value).toBe(savedOutcome);
+      const detailState = detail.slots.map((slot: any) => slot?.value);
+      const clipboardCalls = h.clipboard.mock.calls.length;
+      const reads = h.results.mock.calls.length;
+      if (outcome === "success") mutation.resolve({ success: true });
+      else mutation.reject({ data: { code: "CONFLICT" } });
+      // Do not call settle/render: the old detail's passive cleanup must not run.
+      for (let i = 0; i < 12; i++) await Promise.resolve();
+      oldReview.checkbox.props.onCheckedChange(true);
+      oldReview.handler();
+      expect.soft(h.invalidates).not.toHaveBeenCalled();
+      expect.soft(outcomeSlot.value).toBe(savedOutcome);
+      expect.soft(detail.slots.map((slot: any) => slot?.value)).toEqual(detailState);
+      expect(h.frames.get(parentEntry[0])).toBe(parent);
+      expect(h.results).toHaveBeenCalledTimes(reads);
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(h.clipboard).toHaveBeenCalledTimes(clipboardCalls);
+      expect(h.download).not.toHaveBeenCalled();
+      expect(h.passiveCleanups.length).toBeGreaterThan(0);
+
+      h.passiveCleanups.splice(0).forEach(fn => fn());
+      await settle();
+      find(n => n.type === "button" && text(n).includes(assessment.title)).props.onClick();
+      await settle();
+      // The surviving parent still owns its prior outcome; old sent-write
+      // settlement cannot erase it or lend a new confirmation to old handlers.
+      expect(find(n => n.props.id === "recruitment-link").props.value).toContain(result.assignmentId);
+      expect(text(tree)).toContain("Link copied.");
+      expect(text(tree)).not.toContain("Invitation revoked.");
+      expect(text(tree)).not.toContain("Revocation was not retried.");
+      expect(text(tree)).not.toContain("I confirm I want to revoke");
+      reviewRevocation();
+      oldReview.checkbox.props.onCheckedChange(true);
+      oldReview.handler();
+      await settle();
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(h.invalidates).not.toHaveBeenCalled();
     }
   );
   it.each([

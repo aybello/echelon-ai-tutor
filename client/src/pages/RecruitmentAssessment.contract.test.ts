@@ -1942,3 +1942,23 @@ describe("candidate receipt ordering before authorization publication", () => {
     }
   );
 });
+
+
+describe("candidate exact receipt identity during rejected cache restoration", () => {
+  it("admits the newer pending receipt after an older automatic query overwrites cache before passive merge", async () => {
+    await freshTimedQuery(fixture, 0);
+    const newer = { ...fixture, revision: 9, serverNowMs: fixture.serverNowMs + 2000, answers: { q1: 0 } };
+    publishFetchSuccess(newer);
+    const accepted = h.client.getQueryData(key()) as RecruitmentCandidateView;
+    // Do not render or consume the newer receipt before this older query.
+    publishFetchSuccess({ ...fixture, revision: 8, answers: { q1: 1 } });
+    expect(h.client.getQueryData(key())).toBe(accepted);
+    await settle();
+    expect(nodes(render()).find(n => n.type === "radio-group").props.value).toBe("0");
+    button(render(), "Review submission").props.onClick();
+    h.submit.mockResolvedValueOnce({ ...newer, status: "submitted", revision: 10 });
+    button(render(), "Submit assessment").props.onClick();
+    await settle();
+    expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: 9 });
+  });
+});
