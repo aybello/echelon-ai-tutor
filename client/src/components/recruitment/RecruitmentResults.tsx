@@ -21,6 +21,11 @@ export const recruitmentStatus: Record<RecruitmentStatus, string> = {
   expired: "Expired",
   revoked: "Revoked",
 };
+function resultStatus(result: RecruitmentResult) {
+  return result.status === "revoked" && result.score
+    ? "Revoked after completion"
+    : recruitmentStatus[result.status];
+}
 export function recruitmentDate(ms: number | null) {
   return ms === null
     ? "—"
@@ -102,7 +107,7 @@ function downloadCsv(
       assessment.courseLabel,
       result.candidateName,
       result.candidateEmail,
-      recruitmentStatus[result.status],
+      resultStatus(result),
       result.startedAtMs === null
         ? null
         : new Date(result.startedAtMs).toISOString(),
@@ -225,7 +230,7 @@ export function RecruitmentResults({
                       <span
                         className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${result.score ? "bg-teal-50 text-teal-800" : "bg-slate-100 text-slate-700"}`}
                       >
-                        {recruitmentStatus[result.status]}
+                        {resultStatus(result)}
                       </span>
                     </td>
                     <td className="p-4 tabular-nums">

@@ -9,6 +9,7 @@ import {
   recruitmentOrgInput,
   recruitmentRevokeInput,
   recruitmentStartInput,
+  recruitmentSubmitInput,
 } from "../../shared/recruitmentAssessment";
 
 const assignmentId = "11111111-1111-4111-8111-111111111111";
@@ -33,7 +34,8 @@ describe("recruitment strict request boundaries", () => {
     ["results", recruitmentAssessmentInput, { orgId: 7, assessmentId }],
     ["invite", recruitmentInviteInput, { orgId: 7, assessmentId, memberId: 31 }],
     ["revoke", recruitmentRevokeInput, { orgId: 7, assignmentId }],
-    ["candidateGet/submit", recruitmentAssignmentInput, { assignmentId }],
+    ["candidateGet", recruitmentAssignmentInput, { assignmentId }],
+    ["submit", recruitmentSubmitInput, { assignmentId, revision: 0 }],
     ["start", recruitmentStartInput, { assignmentId, acceptedNotice: true, consentVersion: RECRUITMENT_CONSENT_VERSION }],
     ["saveAnswer", recruitmentAnswerInput, answer],
   ])("%s refuses client-supplied identity, entitlement, or answer-key fields", (_label, schema, valid) => {
@@ -66,6 +68,14 @@ describe("recruitment strict request boundaries", () => {
     expect(recruitmentAnswerInput.safeParse({ ...answer, revision }).success).toBe(false);
   });
 
+  it.each([-1, 0.5, "0", null, undefined, Number.NaN, Number.POSITIVE_INFINITY])("requires a nonnegative integer submit revision (%s)", revision => {
+    expect(recruitmentSubmitInput.safeParse({ assignmentId, revision }).success).toBe(false);
+  });
+  it("submit rejects missing revision and accepts zero or a later reviewed revision", () => {
+    expect(recruitmentSubmitInput.safeParse({ assignmentId }).success).toBe(false);
+    for (const revision of [0, 1, 100]) expect(recruitmentSubmitInput.parse({ assignmentId, revision })).toEqual({ assignmentId, revision });
+  });
+
   it("accepts an explicit unanswered choice but not an absent choice or numeric coercion", () => {
     expect(recruitmentAnswerInput.safeParse({ ...answer, selectedIndex: null }).success).toBe(true);
     expect(recruitmentAnswerInput.safeParse({ assignmentId, questionId: answer.questionId, revision: 0 }).success).toBe(false);
@@ -75,10 +85,10 @@ describe("recruitment strict request boundaries", () => {
   });
 
   it("candidate inputs cannot select another organization or assessment", () => {
-    for (const schema of [recruitmentAssignmentInput, recruitmentStartInput, recruitmentAnswerInput]) {
+    for (const schema of [recruitmentAssignmentInput, recruitmentStartInput, recruitmentAnswerInput, recruitmentSubmitInput]) {
       const valid = schema === recruitmentStartInput
         ? { assignmentId, acceptedNotice: true, consentVersion: RECRUITMENT_CONSENT_VERSION }
-        : schema === recruitmentAnswerInput ? answer : { assignmentId };
+        : schema === recruitmentAnswerInput ? answer : schema === recruitmentSubmitInput ? { assignmentId, revision: 0 } : { assignmentId };
       expect(schema.safeParse({ ...valid, orgId: 99 }).success).toBe(false);
       expect(schema.safeParse({ ...valid, assessmentId }).success).toBe(false);
     }

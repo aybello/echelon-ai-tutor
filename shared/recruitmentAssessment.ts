@@ -16,6 +16,7 @@ export const recruitmentInviteInput = recruitmentAssessmentInput.extend({ member
 export const recruitmentAssignmentInput = z.object({ assignmentId: z.string().uuid() }).strict();
 export const recruitmentStartInput = recruitmentAssignmentInput.extend({ acceptedNotice: z.literal(true), consentVersion: z.literal(RECRUITMENT_CONSENT_VERSION) }).strict();
 export const recruitmentAnswerInput = recruitmentAssignmentInput.extend({ questionId: z.string().min(1).max(100), selectedIndex: z.number().int().min(0).max(7).nullable(), revision: z.number().int().nonnegative() }).strict();
+export const recruitmentSubmitInput = recruitmentAssignmentInput.extend({ revision: z.number().int().nonnegative() }).strict();
 export const recruitmentRevokeInput = recruitmentOrgInput.extend({ assignmentId: z.string().uuid() }).strict();
 
 export type RecruitmentQuestion = { id: string; module: string; prompt: string; options: string[]; correctIndex: number };

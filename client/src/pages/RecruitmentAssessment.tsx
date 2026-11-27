@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { getQueryKey } from "@trpc/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRoute } from "wouter";
 import {
   ArrowLeft,
@@ -132,6 +134,7 @@ export default function RecruitmentAssessment({
 
 function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const utils = trpc.useUtils();
+  const queryClient = useQueryClient();
   const query = trpc.recruitment.candidateGet.useQuery(
     { assignmentId },
     {
@@ -164,8 +167,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   >("idle");
   const [error, setError] = useState("");
   const [authRequired, setAuthRequired] = useState(false);
+  const [forbidden, setForbidden] = useState(false);
   const [needsRefresh, setNeedsRefresh] = useState(false);
   const [submitOpen, setSubmitOpen] = useState(false);
+  const expectedRevision = useRef<number | null>(null);
+  const entryConsumed = useRef(false);
+  // Responses from an earlier session must not restore its candidate data.
+  const sessionEpoch = useRef(0);
+  const [sessionRefreshPending, setSessionRefreshPending] = useState(false);
   const deadlineChecked = useRef<number | null>(null);
   const questionHeading = useRef<HTMLHeadingElement | null>(null);
 
@@ -187,6 +196,48 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       window.clearInterval(tick);
     };
   }, []);
+  const clearCandidate = useCallback(() => {
+    viewRef.current = null;
+    setView(null);
+    setAccepted(false);
+    setIndex(0);
+    setMessage("");
+    setSaveState("idle");
+    expectedRevision.current = null;
+    setSubmitOpen(false);
+    deadlineChecked.current = null;
+    // Remove only this assignment, never another candidate's query cache.
+    void utils.recruitment.candidateGet.cancel({ assignmentId });
+    queryClient.removeQueries({
+      queryKey: getQueryKey(
+        trpc.recruitment.candidateGet,
+        { assignmentId },
+        "query"
+      ),
+      exact: true,
+    });
+  }, [assignmentId, queryClient, utils]);
+  const handleAccessFailure = useCallback(
+    (failure: unknown) => {
+      const code = errorCode(failure);
+      if (code !== "UNAUTHORIZED" && code !== "FORBIDDEN") return false;
+      entryConsumed.current = true;
+      sessionEpoch.current += 1;
+      clearCandidate();
+      setNeedsRefresh(true);
+      setAuthRequired(code === "UNAUTHORIZED");
+      setForbidden(code === "FORBIDDEN");
+      setError(errorMessage(failure));
+      return true;
+    },
+    [clearCandidate]
+  );
+  function changeSubmitOpen(open: boolean) {
+    expectedRevision.current = open
+      ? (viewRef.current?.revision ?? null)
+      : null;
+    setSubmitOpen(open && expectedRevision.current !== null);
+  }
   const mergeServerView = useCallback(
     (next: RecruitmentCandidateView) => {
       if (!live.current || next.assignmentId !== assignmentId) return;
@@ -199,6 +250,16 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           (isTerminal(current.status) && !isTerminal(next.status)))
       )
         return;
+      if (
+        expectedRevision.current !== null &&
+        expectedRevision.current !== next.revision
+      ) {
+        expectedRevision.current = null;
+        setSubmitOpen(false);
+        setMessage(
+          "Saved answers changed. Review the latest answers and open submission confirmation again."
+        );
+      }
       if (!isTerminal(next.status) && next.serverNowMs < next.deadlineMs)
         deadlineChecked.current = null;
       clockOffset.current = next.serverNowMs - Date.now();
@@ -209,29 +270,63 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     [assignmentId]
   );
   useEffect(() => {
-    if (query.data) mergeServerView(query.data);
-  }, [query.data, mergeServerView]);
+    // Cached success is not proof that the current session owns this invitation.
+    if (query.isError) {
+      handleAccessFailure(query.error);
+      return;
+    }
+    const mayConsume =
+      !entryConsumed.current ||
+      (!needsRefresh && !sessionRefreshPending && !authRequired && !forbidden);
+    if (
+      mayConsume &&
+      query.isFetchedAfterMount &&
+      !query.isFetching &&
+      query.isSuccess &&
+      query.data
+    ) {
+      entryConsumed.current = true;
+      mergeServerView(query.data);
+    }
+  }, [
+    query.data,
+    query.error,
+    query.isError,
+    query.isSuccess,
+    query.isFetchedAfterMount,
+    query.isFetching,
+    needsRefresh,
+    sessionRefreshPending,
+    authRequired,
+    forbidden,
+    mergeServerView,
+    handleAccessFailure,
+  ]);
   function commitServerView(next: RecruitmentCandidateView) {
     mergeServerView(next);
     // The exact assignment cache receives only the server candidate DTO.
     utils.recruitment.candidateGet.setData({ assignmentId }, next);
   }
   const refreshServer = useCallback(
-    async (reason: "retry" | "deadline" = "retry") => {
+    async (reason: "retry" | "deadline" | "session" = "retry") => {
       if (operation.current || !live.current || !navigator.onLine) return;
+      const epoch = sessionEpoch.current;
       operation.current = true;
       setBusy(true);
       setError("");
       try {
         await utils.recruitment.candidateGet.cancel({ assignmentId });
+        if (!live.current || epoch !== sessionEpoch.current) return;
         const next = await utils.recruitment.candidateGet.fetch(
           { assignmentId },
           { staleTime: 0 }
         );
-        if (!live.current) return;
+        if (!live.current || epoch !== sessionEpoch.current) return;
+        entryConsumed.current = true;
         mergeServerView(next);
         setNeedsRefresh(false);
         setAuthRequired(false);
+        setForbidden(false);
         setSaveState("idle");
         if (reason === "retry")
           setMessage(
@@ -242,17 +337,67 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             "The server is checking your assessment deadline. Refresh status before continuing."
           );
       } catch (failure) {
-        if (!live.current) return;
+        if (!live.current || epoch !== sessionEpoch.current) return;
+        if (handleAccessFailure(failure)) return;
         setError(errorMessage(failure));
         setNeedsRefresh(true);
-        setAuthRequired(errorCode(failure) === "UNAUTHORIZED");
       } finally {
         operation.current = false;
         if (live.current) setBusy(false);
       }
     },
-    [assignmentId, mergeServerView, utils]
+    [assignmentId, handleAccessFailure, mergeServerView, utils]
   );
+  useEffect(() => {
+    const revalidate = () => {
+      if (!live.current) return;
+      entryConsumed.current = true;
+      sessionEpoch.current += 1;
+      clearCandidate();
+      setNeedsRefresh(true);
+      setSessionRefreshPending(true);
+    };
+    const visibility = () => {
+      // Clear even while hidden, before an account-switched tab becomes visible.
+      revalidate();
+    };
+    const storage = (event: StorageEvent) => {
+      if (event.key === null || event.key === "manus-runtime-user-info")
+        revalidate();
+    };
+    const unsubscribe = queryClient.getQueryCache().subscribe(event => {
+      const path = event.query.queryKey[0];
+      const identity = Array.isArray(path) ? path.join(".") : "";
+      if (
+        (identity === "auth.me" || identity === "dashboardAuth.me") &&
+        (event.type === "removed" ||
+          (event.type === "updated" && event.action.type === "success"))
+      )
+        revalidate();
+    });
+    window.addEventListener("focus", revalidate);
+    window.addEventListener("storage", storage);
+    document.addEventListener("visibilitychange", visibility);
+    return () => {
+      unsubscribe();
+      window.removeEventListener("focus", revalidate);
+      window.removeEventListener("storage", storage);
+      document.removeEventListener("visibilitychange", visibility);
+    };
+  }, [clearCandidate, queryClient]);
+  useEffect(() => {
+    if (
+      !sessionRefreshPending ||
+      busy ||
+      operation.current ||
+      !online ||
+      document.visibilityState === "hidden"
+    )
+      return;
+    setSessionRefreshPending(false);
+    // Reads wait for any in-flight write, but old saves are never replayed.
+    void refreshServer("session");
+  }, [sessionRefreshPending, busy, online, refreshServer]);
 
   const serverNow = now + clockOffset.current;
   const deadlineReached = !!view && serverNow >= view.deadlineMs;
@@ -285,26 +430,28 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       needsRefresh
     )
       return;
+    const epoch = sessionEpoch.current;
     operation.current = true;
     setBusy(true);
     setError("");
     setMessage("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
+      if (epoch !== sessionEpoch.current) return;
       const next = await start.mutateAsync({
         assignmentId,
         acceptedNotice: true,
         consentVersion: RECRUITMENT_CONSENT_VERSION,
       });
-      if (live.current) {
+      if (live.current && epoch === sessionEpoch.current) {
         commitServerView(next);
         setIndex(0);
       }
     } catch (failure) {
-      if (live.current) {
+      if (live.current && epoch === sessionEpoch.current) {
+        if (handleAccessFailure(failure)) return;
         setError(errorMessage(failure));
         setNeedsRefresh(true);
-        setAuthRequired(errorCode(failure) === "UNAUTHORIZED");
       }
     } finally {
       operation.current = false;
@@ -326,6 +473,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       deadlineReached
     )
       return;
+    const epoch = sessionEpoch.current;
     operation.current = true;
     setBusy(true);
     setSaveState("saving");
@@ -333,21 +481,23 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setMessage("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
+      if (epoch !== sessionEpoch.current) return;
       const next = await save.mutateAsync({
         assignmentId,
         questionId,
         selectedIndex,
         revision: current.revision,
       });
-      if (live.current) {
+      if (live.current && epoch === sessionEpoch.current) {
         commitServerView(next);
         setSaveState("saved");
       }
     } catch (failure) {
-      if (!live.current) return;
+      if (!live.current || epoch !== sessionEpoch.current) return;
+      if (handleAccessFailure(failure)) return;
       setSaveState("error");
-      setAuthRequired(errorCode(failure) === "UNAUTHORIZED");
       if (errorCode(failure) === "CONFLICT") {
+        changeSubmitOpen(false);
         setMessage(
           "Another session changed your answers. Loading the latest saved answers; choose your answer again after the refresh. Your last choice was not replayed."
         );
@@ -356,12 +506,13 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             { assignmentId },
             { staleTime: 0 }
           );
-          if (live.current) {
+          if (live.current && epoch === sessionEpoch.current) {
             commitServerView(latest);
             setNeedsRefresh(false);
           }
         } catch (refreshFailure) {
-          if (live.current) {
+          if (live.current && epoch === sessionEpoch.current) {
+            if (handleAccessFailure(refreshFailure)) return;
             setError(errorMessage(refreshFailure));
             setNeedsRefresh(true);
           }
@@ -378,32 +529,61 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     }
   }
   async function finish() {
+    const current = viewRef.current;
     if (
       operation.current ||
       query.isFetching ||
       !online ||
-      !view ||
-      view.status !== "active" ||
+      !current ||
+      current.status !== "active" ||
+      !submitOpen ||
+      expectedRevision.current === null ||
+      expectedRevision.current !== current.revision ||
       needsRefresh ||
       deadlineReached
     )
       return;
+    const revision = expectedRevision.current;
+    const epoch = sessionEpoch.current;
     operation.current = true;
     setBusy(true);
     setError("");
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
-      const next = await submit.mutateAsync({ assignmentId });
-      if (live.current) {
+      // The server verifies exactly the revision reviewed in this confirmation.
+      if (epoch !== sessionEpoch.current) return;
+      const next = await submit.mutateAsync({ assignmentId, revision });
+      if (live.current && epoch === sessionEpoch.current) {
         commitServerView(next);
-        setSubmitOpen(false);
+        changeSubmitOpen(false);
       }
     } catch (failure) {
-      if (live.current) {
+      if (!live.current || epoch !== sessionEpoch.current) return;
+      changeSubmitOpen(false);
+      if (handleAccessFailure(failure)) return;
+      if (errorCode(failure) === "CONFLICT") {
+        setNeedsRefresh(true);
+        setMessage(
+          "Another session changed your answers. Loading the latest saved answers; review them and confirm submission again. Submission was not retried."
+        );
+        try {
+          const latest = await utils.recruitment.candidateGet.fetch(
+            { assignmentId },
+            { staleTime: 0 }
+          );
+          if (live.current && epoch === sessionEpoch.current) {
+            commitServerView(latest);
+            setNeedsRefresh(false);
+          }
+        } catch (refreshFailure) {
+          if (live.current && epoch === sessionEpoch.current) {
+            if (handleAccessFailure(refreshFailure)) return;
+            setError(errorMessage(refreshFailure));
+          }
+        }
+      } else {
         setError(errorMessage(failure));
         setNeedsRefresh(true);
-        setAuthRequired(errorCode(failure) === "UNAUTHORIZED");
-        setSubmitOpen(false);
       }
     } finally {
       operation.current = false;
@@ -419,6 +599,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   }
   const loginLink = signInHref(`/recruitment/${assignmentId}`);
   const signedOut = authRequired || query.error?.data?.code === "UNAUTHORIZED";
+  const accessDenied = forbidden || query.error?.data?.code === "FORBIDDEN";
   const blocked =
     busy || query.isFetching || !online || needsRefresh || deadlineReached;
   const networkNotice = !online ? (
@@ -458,6 +639,29 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         </p>
       </div>
     );
+  if (accessDenied)
+    return (
+      <div className={`${card} space-y-4`}>
+        <h1 className="text-2xl font-bold">
+          This invitation is not available to this account
+        </h1>
+        <p className="text-sm leading-relaxed text-slate-600">
+          Sign in with the verified email address the hiring team invited, or
+          contact the hiring team for help.
+        </p>
+        <Button
+          asChild
+          className="min-h-11 bg-blue-700 text-white hover:bg-blue-800"
+        >
+          <a href={loginLink}>Sign in with your invited email</a>
+        </Button>
+        <ErrorNotice
+          message={error || "Your account cannot open this invitation."}
+          onRetry={() => void refreshServer()}
+          pending={busy || query.isFetching}
+        />
+      </div>
+    );
   if (!view) {
     if (query.isError)
       return (
@@ -487,7 +691,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       <div className={`${card} space-y-4`}>
         {networkNotice}
         <p role="status" className="text-sm text-slate-600">
-          {busy || query.isLoading
+          {busy || query.isLoading || query.isFetching || sessionRefreshPending
             ? "Loading your assessment…"
             : "Waiting for a connection…"}
         </p>
@@ -841,7 +1045,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
                 type="button"
                 className="min-h-11 bg-blue-700 text-white hover:bg-blue-800"
                 disabled={blocked}
-                onClick={() => setSubmitOpen(true)}
+                onClick={() => changeSubmitOpen(true)}
               >
                 Review submission
               </Button>
@@ -886,7 +1090,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             type="button"
             className="min-h-11 w-full bg-blue-700 text-white hover:bg-blue-800"
             disabled={blocked}
-            onClick={() => setSubmitOpen(true)}
+            onClick={() => changeSubmitOpen(true)}
           >
             Review submission
           </Button>
@@ -899,7 +1103,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       <Dialog
         open={submitOpen && view.status === "active"}
         onOpenChange={open => {
-          if (!busy) setSubmitOpen(open);
+          if (!busy) changeSubmitOpen(open);
         }}
       >
         <DialogContent className="motion-reduce:animate-none">
@@ -920,14 +1124,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
               variant="outline"
               className="min-h-11"
               disabled={busy}
-              onClick={() => setSubmitOpen(false)}
+              onClick={() => changeSubmitOpen(false)}
             >
               Return to questions
             </Button>
             <Button
               type="button"
               className="min-h-11 bg-blue-700 text-white hover:bg-blue-800"
-              disabled={blocked}
+              disabled={blocked || expectedRevision.current !== view.revision}
               onClick={() => void finish()}
             >
               {submit.isPending ? "Submitting…" : "Submit assessment"}

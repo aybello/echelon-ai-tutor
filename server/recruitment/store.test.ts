@@ -22,6 +22,7 @@ const invitation = () => ({ id: ID, assessmentId: form().id, orgId: 7, memberId:
 const started = () => ({ ...invitation(), status: "active" as const, startedAtMs: NOW, consentAcceptedAtMs: NOW, consentVersion: RECRUITMENT_CONSENT_VERSION, revision: 1 });
 const start: RecruitmentOperation = { kind: "start", input: { assignmentId: ID, acceptedNotice: true, consentVersion: RECRUITMENT_CONSENT_VERSION } };
 const answer = (revision = 1, questionId = "q1", selectedIndex = 0): RecruitmentOperation => ({ kind: "answer", input: { assignmentId: ID, revision, questionId, selectedIndex } });
+const submit = (revision = 1): RecruitmentOperation => ({ kind: "submit", input: { assignmentId: ID, revision } });
 
 /** A deterministic test double: serial callbacks and rollback-on-throw model the
  * service contract only. It is NOT evidence of MySQL isolation or row locking. */
@@ -155,9 +156,9 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
   });
   it("repeated submit is idempotent and writes no learner progress or practice attempts", async () => {
     const store = fakeTransactionalStore({ ...started(), answers: { q1: 0 } });
-    const first = await operateRecruitmentCandidate(context, ID, { kind: "submit" });
+    const first = await operateRecruitmentCandidate(context, ID, submit(store.row().revision));
     vi.setSystemTime(NOW + 60_000);
-    const second = await operateRecruitmentCandidate(context, ID, { kind: "submit" });
+    const second = await operateRecruitmentCandidate(context, ID, submit(1));
     expect(second).toMatchObject({ status: "submitted", submittedAtMs: first.submittedAtMs, revision: first.revision, answers: { q1: 0 } });
     expect(store.writes).toHaveLength(1);
     expect(store.writes.map(write => write.table)).toEqual(["recruitment_assignments"]);
@@ -168,6 +169,26 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     const before = store.row();
     await expect(operateRecruitmentCandidate(context, ID, answer(1))).rejects.toMatchObject({ code: "CONFLICT" });
     expect(store.row()).toEqual(before); expect(store.writes).toEqual([]); expect(store.events.at(-1)).toBe("rollback");
+  });
+  it("stale first submit rolls back without finalizing the newer durable answers", async () => {
+    const store = fakeTransactionalStore({ ...started(), answers: { q1: 1 }, revision: 3 }), before = store.row();
+    await expect(operateRecruitmentCandidate(context, ID, submit(1))).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(store.row()).toEqual(before); expect(store.writes).toEqual([]); expect(store.events.at(-1)).toBe("rollback");
+  });
+  it("a save winning ahead of a stale submit is preserved and requires a fresh submission revision", async () => {
+    const store = fakeTransactionalStore(started());
+    const outcomes = await Promise.allSettled([operateRecruitmentCandidate(context, ID, answer(1)), operateRecruitmentCandidate(context, ID, submit(1))]);
+    expect(outcomes[0].status).toBe("fulfilled"); expect(outcomes[1].status).toBe("rejected");
+    expect(store.row()).toMatchObject({ status: "active", revision: 2, answers: { q1: 0 }, submittedAtMs: null });
+    const view = await operateRecruitmentCandidate(context, ID, submit(2));
+    expect(view).toMatchObject({ status: "submitted", revision: 3, answers: { q1: 0 } });
+  });
+  it("stale submission at the deadline commits timeout rather than rolling it back", async () => {
+    const store = fakeTransactionalStore({ ...started(), answers: { q1: 0 }, revision: 3 });
+    vi.setSystemTime(NOW + 300_000);
+    expect(await operateRecruitmentCandidate(context, ID, submit(1))).toMatchObject({ status: "timed_out", submittedAtMs: NOW + 300_000, revision: 4 });
+    expect(store.row()).toMatchObject({ status: "timed_out", score: { correct: 1 } });
+    expect(store.events.at(-1)).toBe("commit"); expect(store.writes).toHaveLength(1);
   });
   it("serial fake competing answers with the same revision accept one and refuse stale overwrite", async () => {
     const store = fakeTransactionalStore(started());
@@ -203,7 +224,7 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
   });
   it("revoked assignment never admits a start/save/submit mutation or snapshot disclosure", async () => {
     const store = fakeTransactionalStore({ ...started(), status: "revoked" });
-    for (const operation of [start, answer(), { kind: "submit" } as const]) {
+    for (const operation of [start, answer(), submit(store.row().revision)]) {
       const view = await operateRecruitmentCandidate(context, ID, operation);
       expect(view.status).toBe("revoked"); expect(view.questions).toEqual([]);
     }

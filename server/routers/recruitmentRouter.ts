@@ -1,7 +1,7 @@
 import { publicProcedure, router } from "../_core/trpc";
 import {
   recruitmentOrgInput, recruitmentCreateInput, recruitmentAssessmentInput, recruitmentInviteInput,
-  recruitmentRevokeInput, recruitmentAssignmentInput, recruitmentStartInput, recruitmentAnswerInput,
+  recruitmentRevokeInput, recruitmentAssignmentInput, recruitmentStartInput, recruitmentAnswerInput, recruitmentSubmitInput,
   type RecruitmentCatalog, type RecruitmentDefinitionSummary, type RecruitmentResult, type RecruitmentCandidateView,
 } from "../../shared/recruitmentAssessment";
 import {
@@ -32,6 +32,6 @@ export const recruitmentRouter = router({
     operateRecruitmentCandidate(ctx, input.assignmentId, { kind: "start", input })),
   saveAnswer: publicProcedure.input(recruitmentAnswerInput).mutation(async ({ ctx, input }): Promise<RecruitmentCandidateView> =>
     operateRecruitmentCandidate(ctx, input.assignmentId, { kind: "answer", input })),
-  submit: publicProcedure.input(recruitmentAssignmentInput).mutation(async ({ ctx, input }): Promise<RecruitmentCandidateView> =>
-    operateRecruitmentCandidate(ctx, input.assignmentId, { kind: "submit" })),
+  submit: publicProcedure.input(recruitmentSubmitInput).mutation(async ({ ctx, input }): Promise<RecruitmentCandidateView> =>
+    operateRecruitmentCandidate(ctx, input.assignmentId, { kind: "submit", input })),
 });

@@ -19,6 +19,7 @@ export function verifiedRecruitmentEmail(ctx: TrpcContext): string {
 
 export function assertCurrentAnnualOrganization(org: Organization, nowMs: number): void {
   if (!["active", "past_due"].includes(org.status) || org.billingType === "course-pass" || org.tier === "course-pass"
+    || (org.termStart !== null && org.termStart.getTime() > nowMs)
     || !org.termEnd || org.termEnd.getTime() <= nowMs || !allowedCourseKeysForOrg(org.tier, org.province).length) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Recruitment assessments require a current Annual team contract." });
   }
@@ -40,6 +41,10 @@ export async function recruitmentManager(ctx: TrpcContext, orgId: number, annual
   verifiedRecruitmentEmail(ctx);
   const org = await resolveManagedOrganization(ctx, { orgId, purpose: "dashboard" });
   if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "Team reporting is unavailable." });
+  // Historical Annual reporting remains resolver-authorized; Flex-only teams never qualify.
+  if (org.billingType === "course-pass" || org.tier === "course-pass") {
+    throw new TRPCError({ code: "FORBIDDEN", message: "Recruitment reporting requires an Annual team organization." });
+  }
   if (annual) assertCurrentAnnualOrganization(org, Date.now());
   return org;
 }

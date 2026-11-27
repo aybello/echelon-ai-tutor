@@ -55,8 +55,8 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
   });
   it("submits once under concurrent requests, recomputes server score and returns no candidate answer key", async () => {
     const id = await fixture(), view = await start(id);
-    await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
-    const completed = await Promise.all([operateRecruitmentCandidate(ctx, id, { kind: "submit" }), operateRecruitmentCandidate(ctx, id, { kind: "submit" })]);
+    const saved = await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
+    const completed = await Promise.all([operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: saved.revision } }), operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: saved.revision } })]);
     expect(completed.every(v => v.status === "submitted")).toBe(true);
     expect(new Set(completed.map(v => v.revision)).size).toBe(1);
     expect(JSON.stringify(completed)).not.toMatch(/correctIndex|explanation|"score"/);
@@ -116,6 +116,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     expect(view.questions.map(q => q.prompt)).toEqual(definition.questions.map(q => q.prompt));
     const report = await recruitmentResults(manager, orgId, created.assessmentId);
     expect(report.results[0].score).toBeNull(); expect(report.assessment.completed).toBe(0);
+    expect(report.results[0].answers).toEqual({}); expect(report.results[0].questions).toEqual([]);
     await expect(recruitmentResults({ ...manager, studentEmail: "intruder@example.test" }, orgId, created.assessmentId)).rejects.toMatchObject({ code: "FORBIDDEN" });
     expect(await db.select().from(organizationMembers)).toEqual(membersBefore);
     expect(await db.select().from(subscriptions)).toEqual(subsBefore);
@@ -135,5 +136,14 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     await new Promise(r => setTimeout(r, 150)); release(); await revoker;
     try { expect(await outcome).toBe("FORBIDDEN"); expect((await read(id)).answers).toEqual({}); }
     finally { await db.update(organizationMembers).set({ status: "assigned" }).where(eq(organizationMembers.id, memberId)); }
+  });
+  it("refuses a stale irreversible submit and requires confirmation of the current durable revision", async () => {
+    const id = await fixture(), original = await start(id);
+    const saved = await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: original.revision } });
+    await expect(operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: original.revision } })).rejects.toMatchObject({ code: "CONFLICT" });
+    expect((await read(id)).status).toBe("active"); expect((await read(id)).revision).toBe(saved.revision);
+    expect((await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: saved.revision } })).status).toBe("submitted");
+    const manager = { ...ctx, studentEmail: "manager@example.test" };
+    await expect(inviteRecruitmentCandidate(manager, orgId, (await read(id)).assessmentId, memberId)).rejects.toMatchObject({ code: "CONFLICT" });
   });
 });

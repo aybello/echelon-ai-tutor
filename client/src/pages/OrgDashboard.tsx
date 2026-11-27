@@ -504,6 +504,7 @@ export default function OrgDashboard() {
   const hasAnnualContract = overview.tier !== "course-pass" && overview.billingType !== "course-pass";
   const hasActiveAnnualLearnerAccess = hasAnnualContract
     && (overview.status === "active" || overview.status === "past_due")
+    && (!overview.termStart || new Date(overview.termStart).getTime() <= Date.now())
     && !!overview.termEnd
     && new Date(overview.termEnd).getTime() > Date.now();
 

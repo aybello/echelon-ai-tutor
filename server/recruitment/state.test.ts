@@ -13,6 +13,7 @@ const invited = () => ({ id: ID, assessmentId: assessment().id, orgId: 7, member
 const active = () => ({ ...invited(), status: "active" as const, startedAtMs: NOW, consentVersion: RECRUITMENT_CONSENT_VERSION, consentAcceptedAtMs: NOW, revision: 1 });
 const start: RecruitmentOperation = { kind: "start", input: { assignmentId: ID, acceptedNotice: true, consentVersion: RECRUITMENT_CONSENT_VERSION } };
 const answer = (revision = 1, questionId = "q1", selectedIndex: number | null = 0): RecruitmentOperation => ({ kind: "answer", input: { assignmentId: ID, revision, questionId, selectedIndex } });
+const submit = (revision = 1): RecruitmentOperation => ({ kind: "submit", input: { assignmentId: ID, revision } });
 
 function assertCandidatePrivacy(dto: unknown) {
   const json = JSON.stringify(dto);
@@ -33,7 +34,7 @@ describe("recruitment durable state transitions", () => {
   it.each([{ acceptedNotice: false, consentVersion: RECRUITMENT_CONSENT_VERSION }, { acceptedNotice: true, consentVersion: "recruitment-v0" }])("rejects missing/refused or obsolete consent even at the reducer boundary", input => {
     expect(() => transitionRecruitment(assessment(), invited(), { kind: "start", input: { assignmentId: ID, ...input } } as RecruitmentOperation, NOW)).toThrowError(expect.objectContaining({ code: "BAD_REQUEST" }));
   });
-  it.each([answer(0), { kind: "submit" } as RecruitmentOperation])("requires start before answers or submission", operation => {
+  it.each([answer(0), submit(0)])("requires start before answers or submission", operation => {
     expect(() => transitionRecruitment(assessment(), invited(), operation, NOW)).toThrowError(expect.objectContaining({ code: "CONFLICT" }));
   });
   it("persists just the selected choice with the next revision; null explicitly clears it", () => {
@@ -57,16 +58,30 @@ describe("recruitment durable state transitions", () => {
   });
   it("submits only durable answers, recomputes score, and makes repeat submit idempotent", () => {
     const row = { ...active(), answers: { q1: 0, q2: 0 }, score: { correct: 999 } as RecruitmentAssignmentRow["score"] };
-    const next = transitionRecruitment(assessment(), row, { kind: "submit" }, NOW + 1000);
+    const next = transitionRecruitment(assessment(), row, submit(row.revision), NOW + 1000);
     expect(next).toMatchObject({ status: "submitted", submittedAtMs: NOW + 1000, revision: 2, score: { correct: 1, total: 5, answered: 2, unanswered: 3, percent: 20 } });
-    expect(transitionRecruitment(assessment(), next, { kind: "submit" }, NOW + 2000)).toBe(next);
+    expect(transitionRecruitment(assessment(), next, submit(row.revision), NOW + 2000)).toBe(next);
     expect(() => transitionRecruitment(assessment(), next, answer(2), NOW + 2000)).toThrowError(expect.objectContaining({ code: "CONFLICT" }));
+  });
+  it.each([0, 2, 100])("refuses first active submission with stale or future revision %s without changing the row", revision => {
+    const row = { ...active(), answers: { q1: 0 } }, before = structuredClone(row);
+    expect(() => transitionRecruitment(assessment(), row, submit(revision), NOW + 1000)).toThrowError(expect.objectContaining({ code: "CONFLICT" }));
+    expect(row).toEqual(before);
+  });
+  it("deadline finalization wins over a stale submission revision", () => {
+    const row = { ...active(), answers: { q1: 0 }, revision: 3 };
+    const next = transitionRecruitment(assessment(), row, submit(1), NOW + 300_000);
+    expect(next).toMatchObject({ status: "timed_out", submittedAtMs: NOW + 300_000, revision: 4, answers: { q1: 0 }, score: { correct: 1 } });
+  });
+  it.each(["submitted", "timed_out", "expired", "revoked"] as const)("terminal %s submit retries ignore outdated expected revisions", status => {
+    const row = { ...active(), status, revision: 10 };
+    expect(transitionRecruitment(assessment(), row, submit(1), NOW + 1000)).toBe(row);
   });
   it("at the exact deadline a late answer is not saved and last saved answers become the final score", () => {
     const row = { ...active(), answers: { q1: 0, q2: 0 } };
     const next = transitionRecruitment(assessment(), row, answer(1, "q2", 1), NOW + 300_000);
     expect(next).toMatchObject({ status: "timed_out", answers: { q1: 0, q2: 0 }, submittedAtMs: NOW + 300_000, revision: 2, score: { correct: 1, answered: 2, total: 5, percent: 20 } });
-    expect(transitionRecruitment(assessment(), next, { kind: "submit" }, NOW + 400_000)).toBe(next);
+    expect(transitionRecruitment(assessment(), next, submit(row.revision), NOW + 400_000)).toBe(next);
   });
   it("late lazy timeout records the deadline, not the eventual read time", () => {
     const next = finalizeRecruitmentDeadline(assessment(), active(), NOW + 600_000);
@@ -83,7 +98,7 @@ describe("recruitment durable state transitions", () => {
   });
   it("revoked state cannot be restarted, answered, or submitted", () => {
     const row = { ...active(), status: "revoked" as const, revokedAtMs: NOW + 1000 };
-    for (const operation of [start, answer(), { kind: "submit" } as const]) expect(transitionRecruitment(assessment(), row, operation, NOW + 2000)).toBe(row);
+    for (const operation of [start, answer(), submit(row.revision)]) expect(transitionRecruitment(assessment(), row, operation, NOW + 2000)).toBe(row);
   });
   it("uses the earliest original form expiry, assignment expiry or timer deadline", () => {
     expect(assignmentDeadline(assessment(), active())).toBe(NOW + 300_000);
@@ -127,5 +142,22 @@ describe("recruitment candidate and manager projections", () => {
     const result = recruitmentResult(assessment(), { ...row, status: "submitted", submittedAtMs: NOW + 1000 }, NOW + 2000);
     expect(result.score).toMatchObject({ correct: 1, total: 5, answered: 1, percent: 20 });
     expect(result.questions[0].correctIndex).toBe(0);
+  });
+  it.each(["invited", "active", "expired", "revoked"] as const)("manager unscored %s results contain metadata but no prompts, key or saved choices", status => {
+    const result = recruitmentResult(assessment(), { ...active(), status, answers: { q1: 0 } }, NOW + 1000);
+    expect(result).toMatchObject({ status, assignmentId: ID, memberId: 31, candidateEmail: "candidate@example.test", score: null, questions: [], answers: {} });
+    expect(JSON.stringify(result)).not.toContain("Synthetic prompt");
+    expect(JSON.stringify(result)).not.toContain("correctIndex");
+    expect(JSON.stringify(result)).not.toContain('"q1"');
+  });
+  it("manager scored revocation retains the completed review and recomputed score", () => {
+    const result = recruitmentResult(assessment(), { ...active(), status: "revoked", submittedAtMs: NOW + 1000, answers: { q1: 0 }, score: { correct: 999 } as RecruitmentAssignmentRow["score"] }, NOW + 2000);
+    expect(result).toMatchObject({ status: "revoked", submittedAtMs: NOW + 1000, answers: { q1: 0 }, score: { correct: 1, answered: 1 } });
+    expect(result.questions).toHaveLength(5); expect(result.questions[0].correctIndex).toBe(0);
+  });
+  it("manager overdue active result releases review only after lazy deadline scoring", () => {
+    const result = recruitmentResult(assessment(), { ...active(), answers: { q1: 0 } }, NOW + 300_000);
+    expect(result).toMatchObject({ status: "timed_out", submittedAtMs: NOW + 300_000, answers: { q1: 0 }, score: { correct: 1 } });
+    expect(result.questions).toHaveLength(5);
   });
 });

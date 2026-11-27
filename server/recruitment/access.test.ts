@@ -53,9 +53,23 @@ describe("recruitment verified identity and manager scope", () => {
     await expect(recruitmentManager(ctx(null), 7, true)).rejects.toMatchObject({ code: "UNAUTHORIZED" });
     expect(mocks.resolveManagedOrganization).not.toHaveBeenCalled();
   });
-  it("rejects a Flex reporting organization even when the manager resolver grants reporting access", async () => {
-    mocks.resolveManagedOrganization.mockResolvedValue({ ...org(), billingType: "course-pass", termEnd: new Date(NOW + 86400000) });
+  it.each([
+    { billingType: "course-pass" }, { tier: "course-pass" },
+  ])("rejects a Flex reporting organization for current and historical operations (%j)", async override => {
+    mocks.resolveManagedOrganization.mockResolvedValue({ ...org(), ...override });
+    for (const annual of [true, false]) {
+      await expect(recruitmentManager(ctx("manager@example.test"), 7, annual)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    }
+  });
+  it("preserves resolver-authorized historical Annual reporting after the term ends", async () => {
+    const historical = { ...org(), termEnd: new Date(NOW - 1) };
+    mocks.resolveManagedOrganization.mockResolvedValue(historical);
+    expect(await recruitmentManager(ctx("manager@example.test"), 7, false)).toEqual(historical);
     await expect(recruitmentManager(ctx("manager@example.test"), 7, true)).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
+  it("does not bypass the manager resolver when historical reporting is denied", async () => {
+    mocks.resolveManagedOrganization.mockRejectedValue(new TRPCError({ code: "FORBIDDEN", message: "Reporting window ended" }));
+    await expect(recruitmentManager(ctx("manager@example.test"), 7, false)).rejects.toMatchObject({ code: "FORBIDDEN" });
   });
 });
 
@@ -65,11 +79,15 @@ describe("recruitment Annual contract and course seat", () => {
     ["missing term", { termEnd: null }], ["cancelled", { status: "cancelled" }],
     ["pending", { status: "pending" }], ["Flex billing", { billingType: "course-pass" }],
     ["Flex tier", { tier: "course-pass" }],
+    ["future term start", { termStart: new Date(NOW + 1) }],
   ])("requires a current Annual contract (%s)", (_label, override) => {
     expect(() => assertCurrentAnnualOrganization({ ...org(), ...override } as Organization, NOW)).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
   });
   it.each(["active", "past_due"])("permits a current %s Annual contract", status => {
     expect(() => assertCurrentAnnualOrganization({ ...org(), status }, NOW)).not.toThrow();
+  });
+  it.each([null, new Date(NOW)])("preserves the null-start convention and accepts the exact start boundary (%s)", termStart => {
+    expect(() => assertCurrentAnnualOrganization({ ...org(), termStart }, NOW)).not.toThrow();
   });
   it.each([
     ["other org", { orgId: 99 }], ["revoked", { status: "revoked" }],

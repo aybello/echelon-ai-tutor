@@ -57,11 +57,12 @@ export function transitionRecruitment(assessment: RecruitmentAssessmentRow, assi
   if (current.status !== "active" || current.startedAtMs === null) {
     throw new TRPCError({ code: "CONFLICT", message: "Start the assessment before answering or submitting. Completed assessments cannot be changed." });
   }
+  // Deadline finalization and terminal retries above must win over stale revisions.
+  if (operation.input.revision !== current.revision) {
+    throw new TRPCError({ code: "CONFLICT", message: "A newer answer has been saved. Reload the assessment before trying again." });
+  }
   const answers = snapshotAnswers(assessment, current);
   if (operation.kind === "answer") {
-    if (operation.input.revision !== current.revision) {
-      throw new TRPCError({ code: "CONFLICT", message: "A newer answer has been saved. Reload the assessment before trying again." });
-    }
     const q = assessment.questions.find(q => q.id === operation.input.questionId);
     const choice = operation.input.selectedIndex;
     if (!q || (choice !== null && (!Number.isInteger(choice) || choice < 0 || choice >= q.options.length))) {
@@ -91,13 +92,14 @@ export function recruitmentCandidateView(assessment: RecruitmentAssessmentRow, a
 /** Reporting score is recomputed from snapshot and durable answers, not a client or cached score. */
 export function recruitmentResult(assessment: RecruitmentAssessmentRow, stored: RecruitmentAssignmentRow, nowMs: number): RecruitmentResult {
   const assignment = finalizeRecruitmentDeadline(assessment, stored, nowMs);
-  const answers = snapshotAnswers(assessment, assignment);
+  const scored = assignment.submittedAtMs !== null;
+  const answers = scored ? snapshotAnswers(assessment, assignment) : {};
   return {
     assignmentId: assignment.id, memberId: assignment.memberId, candidateEmail: assignment.candidateEmail,
     candidateName: assignment.candidateName, status: assignment.status, startedAtMs: assignment.startedAtMs,
     submittedAtMs: assignment.submittedAtMs, expiresAtMs: Math.min(assignment.expiresAtMs, assessment.expiresAtMs),
-    score: assignment.submittedAtMs !== null ? scoreRecruitment(assessment.questions, answers) : null,
-    answers, questions: assertRecruitmentSnapshot(assessment.questions).map(q => ({ id: q.id, module: q.module, prompt: q.prompt, options: [...q.options], correctIndex: q.correctIndex })),
+    score: scored ? scoreRecruitment(assessment.questions, answers) : null,
+    answers, questions: scored ? assertRecruitmentSnapshot(assessment.questions).map(q => ({ id: q.id, module: q.module, prompt: q.prompt, options: [...q.options], correctIndex: q.correctIndex })) : [],
     revision: assignment.revision,
   };
 }

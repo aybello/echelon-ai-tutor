@@ -17,7 +17,7 @@ import {
 import { normalizeEmail } from "../_core/accessService";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import { loadRecruitmentPool, loadRecruitmentPools } from "./questions";
-import { finalizeRecruitmentDeadline, recruitmentResult } from "./state";
+import { assignmentDeadline, finalizeRecruitmentDeadline, recruitmentResult } from "./state";
 import { persistRecruitmentTransition, readRecruitmentAssessment, recruitmentDb } from "./store";
 import type { RecruitmentCreate, RecruitmentReadDb } from "./types";
 
@@ -139,9 +139,14 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     const member = await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
     const [existing] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.assessmentId, assessment.id), eq(recruitmentAssignments.memberId, member.id), eq(recruitmentAssignments.orgId, org.id))).limit(1);
-    if (existing) return { assignmentId: existing.id }; // Never reset a revoked/expired/completed invite.
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
+    if (existing) {
+      if (["invited", "active"].includes(existing.status) && nowMs < assignmentDeadline(assessment, existing)) {
+        return { assignmentId: existing.id }; // Preserve the original usable invitation and timer.
+      }
+      throw new TRPCError({ code: "CONFLICT", message: "This invitation is no longer usable. Create a new assessment form to invite this candidate again." });
+    }
     if (nowMs >= assessment.expiresAtMs) throw new TRPCError({ code: "CONFLICT", message: "This assessment has expired. Create a new form instead." });
     const assignmentId = randomUUID();
     await tx.insert(recruitmentAssignments).values({
@@ -160,7 +165,8 @@ export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: numbe
   const db = await recruitmentDb();
   return db.transaction(async tx => {
     const [currentOrg] = await tx.select().from(organizations).where(eq(organizations.id, org.id)).limit(1).for("share");
-    if (!currentOrg || !["active", "past_due"].includes(currentOrg.status)) {
+    if (!currentOrg || !["active", "past_due"].includes(currentOrg.status)
+      || currentOrg.billingType === "course-pass" || currentOrg.tier === "course-pass") {
       throw new TRPCError({ code: "FORBIDDEN", message: "Team reporting is no longer available." });
     }
     const [assignment] = await tx.select().from(recruitmentAssignments)
