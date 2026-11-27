@@ -37,7 +37,9 @@ The owner approves importing and publishing these three banks, once the dry run 
 - `ca-water-treatment-t1` (280 questions)
 - `fl-water-treatment-c` (150 questions), from branch `claude/us-bank-fl-treatment-c` at commit `d6888463f` or later. Owner approved release on 2026-11-27 after a random-sample review.
 
-Not yet approved: the Pennsylvania banks and `fl-water-distribution-l3`. Keep them staged only.
+- `pa-wastewater-treatment` (122 questions, Narrow dossier), from branch `claude/us-bank-pa-wastewater-treatment` at commit `5a2f24353` or later. Owner approved release on 2026-11-27 after reviewing the sample. Owner decision recorded: the Narrow dossier does not block this release.
+
+Not yet approved: the other Pennsylvania banks and `fl-water-distribution-l3`. Keep them staged only.
 
 Manus: run the existing guarded import for the three approved banks, then release them to learners using the repo's normal release step. Record the import output and the release in the PR. If a check fails, record it and do not release that bank.
 
