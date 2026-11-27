@@ -1,0 +1,88 @@
+{
+  "version": "2026-11-27-v1",
+  "status": "validated-local-candidate-not-imported",
+  "bankKey": "wi-wastewater-ss-basic",
+  "state": "WI",
+  "stream": "wastewater-collection",
+  "label": "Wisconsin DNR Wastewater Subclass SS: Sanitary Sewer Collection System (basic)",
+  "numberRange": {
+    "start": 1,
+    "end": 250,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Practice questions for the Wisconsin DNR Wastewater Operator Certification, Subclass SS (Sanitary Sewer Collection System), basic certification examination. Original items in US units. Not an official DNR examination, blueprint or answer key. Scope is limited to the key knowledges of the DNR SS study guide (August 2018 edition). No general wastewater, treatment-subclass, advanced, eligibility, reporting-deadline, numeric regulatory limit, site procedure or safety-critical procedure items.",
+  "file": "questions/bank-250.json",
+  "count": 250,
+  "calculations": 75,
+  "sha256": "deae74e4fc3861143ad60b367d241f4d778505613e60301d89368eda27a8f3e5",
+  "modules": {
+    "Terminology": 16,
+    "Safety": 44,
+    "System components": 44,
+    "Operation and maintenance": 42,
+    "Rehabilitation and replacement": 9,
+    "Data and records": 8,
+    "Ordinances and regulations": 12,
+    "Sampling": 8,
+    "Flow conversions": 12,
+    "Tank areas and volumes": 12,
+    "Pounds formula": 10,
+    "Pump rate": 12,
+    "Detention time": 10,
+    "Sewer grading": 11
+  },
+  "difficulty": {
+    "easy": 92,
+    "medium": 120,
+    "hard": 38
+  },
+  "topics": {
+    "Conditions and wastewater terms": 8,
+    "Flow, strength and treatment terms": 8,
+    "Hazard recognition": 9,
+    "Confined space and gas monitoring": 9,
+    "Electrical and hazardous energy": 9,
+    "Excavation, traffic and PPE": 9,
+    "Hazardous materials and pathogens": 8,
+    "Pipes and materials": 9,
+    "Manholes": 9,
+    "Lift stations and pumps": 9,
+    "Valves, level devices and flow measurement": 9,
+    "SCADA and sampling": 8,
+    "Conveyance, I/I and overflows": 9,
+    "Cleaning methods": 9,
+    "Fats, oils and grease control": 8,
+    "Inspections": 8,
+    "Lift station maintenance": 8,
+    "Rehabilitation methods": 9,
+    "Maps, GIS and records": 8,
+    "Programs, ordinances and definitions": 12,
+    "Flow-proportional and composite sampling": 8,
+    "Flow conversions and flow rate": 12,
+    "Tank areas and volumes": 12,
+    "Pounds formula": 10,
+    "Wet well pump rate": 12,
+    "Detention time": 10,
+    "Sewer grading": 11
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "count": 250,
+    "calculations": 75,
+    "answerPositions": [
+      62,
+      63,
+      63,
+      62
+    ],
+    "answerCues": {
+      "conceptualCount": 175,
+      "longestRate": 0.16,
+      "shortestRate": 0.10285714285714286,
+      "longTells": [],
+      "shortTells": [],
+      "qualifierTells": []
+    }
+  }
+}

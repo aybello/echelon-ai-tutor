@@ -1,0 +1,28 @@
+{
+  "id": "wi-wastewater-ss-basic",
+  "bankKey": "wi-wastewater-ss-basic",
+  "itemPrefix": "WI-SS",
+  "version": "2026-11-27-v1",
+  "state": "WI",
+  "stream": "wastewater-collection",
+  "label": "Wisconsin DNR Wastewater Subclass SS: Sanitary Sewer Collection System (basic)",
+  "startNumber": 1,
+  "count": 250,
+  "calcCount": 75,
+  "purpose": "Practice questions for the Wisconsin DNR Wastewater Operator Certification, Subclass SS (Sanitary Sewer Collection System), basic certification examination. Original items in US units. Not an official DNR examination, blueprint or answer key. Scope is limited to the key knowledges of the DNR SS study guide (August 2018 edition). No general wastewater, treatment-subclass, advanced, eligibility, reporting-deadline, numeric regulatory limit, site procedure or safety-critical procedure items.",
+  "reviewIntro": "250 original practice questions: 175 conceptual and 75 calculations, in US customary units, drawn from the chapters of the DNR Sanitary Sewage Collection System Study Guide (August 2018 edition). Calculation categories follow the guide's chapter 8: sampling, flow conversions and flow rate, tank areas and volumes, pounds formula, pump rate, detention time and sewer grading. Items avoid the guide's regulatory deadlines, numeric thresholds and step-by-step safety procedures, because the dossier excludes them. This is a local content package, not proof of a production import.",
+  "sources": {
+    "WIGUIDE": [
+      "Wisconsin DNR, Sanitary Sewage Collection System Study Guide, August 2018 Edition (SS key knowledges; the only content source for items)",
+      "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideSanitarySewer.pdf"
+    ],
+    "WIPROG": [
+      "Wisconsin DNR Operator Certification Program, Wastewater operator certification (defines the SS subclass and its basic-level scope)",
+      "https://dnr.wisconsin.gov/topic/opcert/wastewater.html"
+    ],
+    "WIEXAM": [
+      "Wisconsin DNR Operator Certification Program, Wastewater examinations (SS examination: 50 multiple-choice questions, closed book)",
+      "https://dnr.wisconsin.gov/topic/opcert/exams.html"
+    ]
+  }
+}
