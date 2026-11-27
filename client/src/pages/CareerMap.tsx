@@ -571,6 +571,7 @@ export default function CareerMap() {
   const mainLevels    = province.levels.filter(l => l.id !== "wqa");
   const visibleLevels = mainLevels.filter(level => track === "all" || level.tracks.includes(track));
   const specialistLevel = province.levels.find(l => l.id === "wqa");
+  const selectedVisible = selected && (track === "all" || selected.tracks.includes(track)) ? selected : null;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -659,7 +660,7 @@ export default function CareerMap() {
                 FILTER BY TRACK
               </span>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {([["all", "All Tracks", "#374151"], ...TRACKS.filter(t => t.id !== "wqa" || specialistLevel).map(t => [t.id, `${t.icon} ${t.id === "water" ? "Water" : "Wastewater"}`, t.color])] as [string, string, string][]).map(([id, label, color]) => (
+                {([["all", "All Tracks", "#374151"], ...TRACKS.filter(t => t.id !== "wqa" || specialistLevel).map(t => [t.id, `${t.icon} ${t.id === "wqa" ? "WQA" : t.id === "water" ? "Water" : "Wastewater"}`, t.color])] as [string, string, string][]).map(([id, label, color]) => (
                   <button key={id} type="button" aria-pressed={track === id} onClick={() => handleTrackChange(id)} style={{
                     padding: "6px 14px", borderRadius: 20,
                     border: `1.5px solid ${track === id ? color : "#E5E7EB"}`,
@@ -681,7 +682,7 @@ export default function CareerMap() {
                 {/* Main ladder */}
                 {visibleLevels.map((l, i, arr) => (
                   <div key={l.id}>
-                    <LevelCard level={l} active={selected} onClick={setSelected} />
+                    <LevelCard level={l} active={selectedVisible} onClick={setSelected} />
                     {i < arr.length - 1 && (
                       <div style={{ display: "flex", justifyContent: "center", padding: "4px 0" }}>
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
@@ -708,7 +709,7 @@ export default function CareerMap() {
 
               {/* Right — detail panel */}
               <div>
-                <DetailPanel level={selected} province={province} />
+                <DetailPanel level={selectedVisible} province={province} />
               </div>
             </div>
           </div>

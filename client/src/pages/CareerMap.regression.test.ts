@@ -32,8 +32,11 @@ describe("Career Map release contracts", () => {
 
   it("filters the ladder instead of fading incompatible levels", () => {
     expect(careerMap).toContain("const visibleLevels = mainLevels.filter");
+    expect(careerMap).toContain("const selectedVisible = selected &&");
+    expect(careerMap).toContain("DetailPanel level={selectedVisible}");
     expect(careerMap).toContain("visibleLevels.map");
     expect(careerMap).toContain("TRACKS.filter(t => t.id !== \"wqa\" || specialistLevel)");
+    expect(careerMap).toContain('t.id === "wqa" ? "WQA"');
   });
 
   it("keeps interactive controls keyboard-semantic and labels timeline nodes", () => {
