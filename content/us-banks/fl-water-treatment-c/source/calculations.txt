@@ -26,3 +26,31 @@ A plant treats 2.0 MGD and must remove 120 mg/L of carbonate hardness. Assume pu
 @Corrosion Control|FLHB|Inhibitor dose and feed rate
 A plant treats 4.0 MGD and feeds a corrosion inhibitor at 1.2 mg/L. Use 8.34 lb/gal. How many pounds of inhibitor per day are fed?|Pounds per day = flow in MGD times dose in mg/L times 8.34|4*1.2*8.34|lb/day|1|4.8,27.8,2.5|m
 A plant treats 2.5 MGD and feeds a liquid inhibitor at 1.8 mg/L. The liquid is fed as supplied (100 percent product) and weighs 11.2 lb/gal. Use 8.34 lb/gal for water. How many gallons of liquid are fed per day?|Gallons per day = flow times dose times 8.34 to get pounds per day, divided by the product weight in lb/gal|2.5*1.8*8.34/11.2|gal/day|1|37.5,6,0.4|h
+@Distribution|FLHB|Distribution system water quality and hydraulics
+A 12 in main is modeled with a 1 ft diameter for a velocity estimate. It carries 2.5 MGD. Use 1 MGD = 1.547 cfs and area = 0.785 x D x D, with D in ft. What is the velocity in ft/s?|Velocity = flow in cfs divided by area in ft2|2.5*1.547/(0.785*1*1)|ft/s|2|1.23,3.87,19.7|h
+@Equipment Evaluation and Operation|FLHB|Pump and equipment performance
+A pump delivers 800 gpm against a total head of 150 ft. Use water horsepower = gpm x ft / 3,960. What is the water horsepower?|Water horsepower = gpm times head in ft divided by 3,960|800*150/3960|hp|1|303,120000,15.2|m
+The same pump draws 45 brake horsepower while it delivers 800 gpm against 150 ft. Use water horsepower = gpm x ft / 3,960. What is the pump efficiency in percent?|Efficiency = water horsepower divided by brake horsepower, times 100|800*150/3960/45*100|%|1|30.3,148.5,6.7|h
+@Facility Operation and Maintenance|FLHB|Preventive maintenance and chemical feed reliability
+A storage tank holds 6,000 gal of a chemical solution, and the plant uses 250 gal per day. How many days of supply does the tank hold?|Days = tank volume divided by daily use|6000/250|days|0|0.04,2.4,25|m
+A chlorine cylinder holds 150 lb of chlorine. Keep a 10% reserve in the cylinder, and the plant draws 6 lb/day. How many days will the usable chlorine last?|Days = usable chlorine (90% of 150 lb) divided by daily draw|150*0.9/6|days|1|25,135,2.5|h
+@Iron and Manganese Control|FLHB|Oxidation, filtration and sequestering of metals
+A well has 1.2 mg/L of iron, and the plant flow is 0.8 MGD. Use 8.34 lb/gal. How many pounds of iron per day must be removed?|Pounds per day = iron in mg/L times flow in MGD times 8.34|1.2*0.8*8.34|lb/day|1|0.96,80,10.0|m
+@Laboratory Sampling, Analysis and Interpretation|FLHB|Sampling, quality control and data review
+A sample reads 0.30 mg/L before spiking. A spike of 0.50 mg/L is added, and the spiked sample then reads 0.78 mg/L. What is the percent recovery of the spike?|Recovery = (spiked result minus original result) divided by spike added, times 100|(0.78-0.30)/0.50*100|%|0|48,156,0.96|h
+@Mathematics|FLHB|Units, flow, dose and ratios
+Convert a flow of 1,500 gpm to MGD. Use 1,440 min per day and 1 MGD = 1,000,000 gal per day.|MGD = gpm times 1,440 divided by 1,000,000|1500*1440/1000000|MGD|2|1.04,2160,21.6|m
+A cylindrical tank is 10 ft in diameter and holds water 8 ft deep. Use gallons = 0.785 x D x D x H x 7.48, with D and H in ft. How many gallons does the tank hold?|Gallons = 0.785 times diameter squared times depth times 7.48|0.785*10*10*8*7.48|gal|0|628,470,4.7|h
+@Reservoir and Well-Field Management|FLHB|Source protection, drawdown and well yield
+A well yields 600 gpm with 40 ft of drawdown at the pumping level. What is its specific capacity in gpm per ft of drawdown?|Specific capacity = yield divided by drawdown|600/40|gpm/ft|0|640,24000,0.07|m
+@Taste and Odor Control|FLHB|Sources of taste and odor and their treatment
+A plant feeds powdered activated carbon at 12 mg/L while treating 2.0 MGD. Use 8.34 lb/gal. How many pounds of carbon are fed per day?|Pounds per day = dose in mg/L times flow in MGD times 8.34|12*2*8.34|lb/day|0|24,2001.6,100|m
+@Waste Handling and Disposal|FLHB|Backwash, sludge and residuals management
+Sludge from a clarifier contains 1,200 mg/L of solids and is pumped at 0.6 MGD. Use 8.34 lb/gal. How many pounds of solids per day are sent to sludge handling?|Pounds per day = solids in mg/L times flow in MGD times 8.34|1200*0.6*8.34|lb/day|0|720,600.5,60048|m
+@Water Process|FLHB|Process selection and treatment sequence
+A liquid feed product is 25% active ingredient. The plant needs 40 lb/day of active ingredient. How many pounds per day of product must be fed?|Product = active ingredient divided by its strength as a fraction|40/0.25|lb/day|0|10,1600,400|m
+A feed pump delivers 0.25 gal/min and runs 16 hours per day. How many gallons of solution does it feed per day?|Gallons per day = gallons per minute times minutes per day|0.25*16*60|gal/day|0|4,15,2400|h
+@Coagulation and Flocculation|FLHB|Coagulant feed and jar test calculations
+A 3.0 L jar receives 15 mL of a stock holding 4 mg of alum per mL. What is the jar dose in mg/L?|Dose in mg/L = mass of alum in mg divided by jar volume in L|15*4/3|mg/L|0|5,60,0.05|m
+@Disinfection and Disinfection Byproducts|FLHB|Chlorine dose, contact time and CT
+A plant treats 0.8 MGD and feeds 2.5 mg/L of chlorine. The water leaves with a 0.7 mg/L residual. Use 8.34 lb/gal. How many pounds of chlorine per day are used by demand?|Demand in mg/L is dose minus residual; pounds per day = demand times flow in MGD times 8.34|(2.5-0.7)*0.8*8.34|lb/day|1|4.7,1.4,21.4|h
