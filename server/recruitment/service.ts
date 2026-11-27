@@ -86,33 +86,42 @@ export function recruitmentDefinitionSummary(assessment: RecruitmentAssessmentRo
 }
 
 export async function recruitmentCatalog(ctx: TrpcContext, orgId: number): Promise<RecruitmentCatalog> {
-  const org = await recruitmentManager(ctx, orgId, true);
+  await recruitmentManager(ctx, orgId, true);
+  const actorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
-  const eligibleCourses = allowedCourseKeysForOrg(org.tier, org.province).flatMap(key => {
-    try { return [recruitmentCourseForOrg(org, key)]; } catch { return []; }
-  });
-  const pools = await loadRecruitmentPools(db, eligibleCourses.map(course => course.questionBankKey));
-  const courses = eligibleCourses.flatMap(course => {
-    const pool = pools.get(course.questionBankKey) ?? [];
-    if (!pool.length) return [];
-    const modules = new Map<string, number>();
-    for (const q of pool) modules.set(q.module, (modules.get(q.module) ?? 0) + 1);
-    return [{ courseKey: course.courseKey, label: course.displayName,
-      modules: [...modules].map(([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name)) }];
-  });
-  const members = await db.select().from(organizationMembers).where(and(eq(organizationMembers.orgId, org.id), eq(organizationMembers.status, "assigned"))).orderBy(organizationMembers.id);
-  const now = new Date();
-  const subs = await db.select().from(subscriptions).where(and(eq(subscriptions.orgId, org.id),
-    inArray(subscriptions.status, ["active", "past_due"]), lte(subscriptions.currentPeriodStart, now), gt(subscriptions.currentPeriodEnd, now)));
-  const available = new Set(courses.map(course => course.courseKey));
-  const candidates = members.flatMap(member => {
-    const email = normalizeEmail(member.email);
-    const courseKeys = recruitmentSeatCourses(org, member).filter(key => available.has(key)
-      && subs.some(sub => recruitmentSubscriptionCovers(sub, org, email, key, Date.now())));
-    return email && courseKeys.length ? [{ memberId: member.id, email, name: member.name, courseKeys }] : [];
-  });
-  assertCurrentAnnualOrganization(org, Date.now());
-  return { orgName: org.name, courses, candidates };
+  return db.transaction(async tx => {
+    // Keep org and delegated-manager SHARE locks through the roster reads and
+    // final clock check; no global resolver runs while holding this connection.
+    const [org] = await tx.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).for("share");
+    if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "Team unavailable." });
+    assertCurrentAnnualOrganization(org, Date.now());
+    await assertManagerStillAuthorized(tx, org, actorEmail);
+    const eligibleCourses = allowedCourseKeysForOrg(org.tier, org.province).flatMap(key => {
+      try { return [recruitmentCourseForOrg(org, key)]; } catch { return []; }
+    });
+    const pools = await loadRecruitmentPools(tx, eligibleCourses.map(course => course.questionBankKey));
+    const courses = eligibleCourses.flatMap(course => {
+      const pool = pools.get(course.questionBankKey) ?? [];
+      if (!pool.length) return [];
+      const modules = new Map<string, number>();
+      for (const q of pool) modules.set(q.module, (modules.get(q.module) ?? 0) + 1);
+      return [{ courseKey: course.courseKey, label: course.displayName,
+        modules: [...modules].map(([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name)) }];
+    });
+    const members = await tx.select().from(organizationMembers).where(and(eq(organizationMembers.orgId, org.id), eq(organizationMembers.status, "assigned"))).orderBy(organizationMembers.id);
+    const now = new Date();
+    const subs = await tx.select().from(subscriptions).where(and(eq(subscriptions.orgId, org.id),
+      inArray(subscriptions.status, ["active", "past_due"]), lte(subscriptions.currentPeriodStart, now), gt(subscriptions.currentPeriodEnd, now)));
+    const available = new Set(courses.map(course => course.courseKey));
+    const candidates = members.flatMap(member => {
+      const email = normalizeEmail(member.email);
+      const courseKeys = recruitmentSeatCourses(org, member).filter(key => available.has(key)
+        && subs.some(sub => recruitmentSubscriptionCovers(sub, org, email, key, Date.now())));
+      return email && courseKeys.length ? [{ memberId: member.id, email, name: member.name, courseKeys }] : [];
+    });
+    assertCurrentAnnualOrganization(org, Date.now());
+    return { orgName: org.name, courses, candidates };
+  }, { isolationLevel: "read committed" });
 }
 
 export async function createRecruitmentAssessment(ctx: TrpcContext, input: RecruitmentCreate): Promise<{ assessmentId: string }> {

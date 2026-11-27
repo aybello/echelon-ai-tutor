@@ -86,6 +86,12 @@ Both OAuth and verified email-OTP operators receive server-owned run history, le
 
 Echelon Command is an educational simulator. It is not a live plant-control system and does not replace approved facility procedures, an emergency response plan, operator judgment or governing requirements.
 
+### Recruitment catalog authorization
+
+Recruitment catalog access requires a current Annual organization and a verified owner or approved delegated manager. After the external manager preflight, a READ COMMITTED transaction re-reads the organization under a SHARE lock, validates its current term and region/course eligibility, and locks any delegated-manager membership before reading roster names or emails. Question pools, members, and subscriptions are read through that transaction; authorization locks remain held through the final Annual clock check and commit. No global resolver is called while holding the transaction connection, and the catalog does not write seats, subscriptions, or billing records.
+
+Credential-free recruitment tests use the safety preload (`node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run server/recruitment`). The MySQL suite is opt-in for a fresh disposable database only; verification must use a network-isolated local instance with a clean environment and synthetic fixtures, never production credentials or connectivity. Catalog regressions cover cancellation and delegated-manager revocation between preflight and transaction, scoped authorized results, and final term expiry. An untimed assessment that expires without manual submission retains saved choices in storage but exposes neither a score nor completion evidence; timed automatic scoring remains separate.
+
 ## Build Week track
 
 Education

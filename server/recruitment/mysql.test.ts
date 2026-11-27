@@ -6,6 +6,7 @@ import { organizations, organizationMembers, subscriptions, questions, recruitme
 import { operateRecruitmentCandidate } from "./store";
 import { createRecruitmentAssessment, inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentResults } from "./service";
 import { RECRUITMENT_CONSENT_VERSION, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
+import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import type { TrpcContext } from "../_core/context";
 
 const enabled = process.env.ECHELON_TEST_DATABASE === "I_UNDERSTAND_THIS_IS_A_DISPOSABLE_LOCAL_DATABASE";
@@ -167,6 +168,56 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     const id = await fixture(), view = await start(id);
     await expect(operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 7, revision: view.revision } })).rejects.toMatchObject({ code: "BAD_REQUEST" });
     const row = await read(id); expect(row.answers).toEqual({}); expect(row.revision).toBe(view.revision);
+  });
+  it.each(["delegate revoked", "organization cancelled"] as const)("rejects catalog when %s after accepted preflight but before the real transaction", async change => {
+    const delegateEmail = "delegate@example.test";
+    const inserted = await db.insert(organizationMembers).values({ orgId, email: delegateEmail, name: "Synthetic Delegate",
+      role: DELEGATED_MANAGER_ROLE, status: "assigned", courseKey: null, courseKeys: null }).$returningId();
+    const delegateId = inserted[0].id;
+    let release!: () => void, entered!: () => void;
+    const held = new Promise<void>(resolve => { release = resolve; });
+    const atTransaction = new Promise<void>(resolve => { entered = resolve; });
+    const realTransaction = db.transaction.bind(db);
+    // Pause before opening the transaction: the real global preflight already
+    // accepted, but no org/member locks have been acquired yet.
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => (async () => {
+      entered(); await held; return realTransaction(callback, config);
+    })());
+    const manager = { ...ctx, studentEmail: change === "delegate revoked" ? delegateEmail : "manager@example.test" };
+    const pending = recruitmentCatalog(manager, orgId);
+    const outcome = pending.then(() => "unexpected success", error => error.code);
+    try {
+      await Promise.race([atTransaction, outcome.then(() => { throw new Error("Catalog returned without its authorization transaction"); })]);
+      if (change === "delegate revoked") await db.update(organizationMembers).set({ status: "revoked" }).where(eq(organizationMembers.id, delegateId));
+      else await db.update(organizations).set({ status: "cancelled" }).where(eq(organizations.id, orgId));
+      release();
+      expect(await outcome).toBe("FORBIDDEN");
+      expect(transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+    } finally {
+      release(); await outcome; transaction.mockRestore();
+      await db.update(organizations).set({ status: "active" }).where(eq(organizations.id, orgId));
+      await db.delete(organizationMembers).where(eq(organizationMembers.id, delegateId));
+    }
+  });
+  it("expires an untimed started assessment without scoring or completion while retaining saved choices", async () => {
+    const id = await fixture(), original = await read(id);
+    await db.update(recruitmentAssessments).set({ timeLimitMinutes: null }).where(eq(recruitmentAssessments.id, original.assessmentId));
+    const view = await start(id);
+    await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
+    const deadline = Date.now() + 60_000;
+    await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, id));
+    const clock = vi.spyOn(Date, "now").mockReturnValue(deadline);
+    try {
+      const manager = { ...ctx, studentEmail: "manager@example.test" };
+      const report = await recruitmentResults(manager, orgId, original.assessmentId);
+      expect(report.assessment.completed).toBe(0);
+      expect(report.results[0]).toMatchObject({ status: "expired", submittedAtMs: null, score: null, answers: {}, questions: [] });
+      expect((await listRecruitmentAssessments(manager, orgId)).find(row => row.id === original.assessmentId)?.completed).toBe(0);
+      const candidate = await operateRecruitmentCandidate(ctx, id, { kind: "get" });
+      expect(candidate).toMatchObject({ status: "expired", questions: [], answers: {} });
+      expect(JSON.stringify(candidate)).not.toMatch(/correctIndex|explanation|"score"/);
+      expect(await read(id)).toMatchObject({ status: "expired", submittedAtMs: null, score: null, answers: { "1": 0 } });
+    } finally { clock.mockRestore(); }
   });
   it("runs manager create/invite/results, freezes forms and deduplicates invitations without granting seats", async () => {
     const manager = { ...ctx, studentEmail: "manager@example.test" };

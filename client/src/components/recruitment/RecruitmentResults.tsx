@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Download } from "lucide-react";
+import { RecruitmentManagerPrivacyContext } from "@/hooks/recruitmentManagerPrivacy";
 import { safeSupervisorCsvCell } from "@shared/supervisorActionPlan";
 import type {
   RecruitmentDefinitionSummary,
@@ -161,6 +162,8 @@ export function RecruitmentResults({
   onRevoke: (result: RecruitmentResult) => void;
   busy: boolean;
 }) {
+  const access = useContext(RecruitmentManagerPrivacyContext);
+  if (!access?.isCurrent()) return null;
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -171,8 +174,10 @@ export function RecruitmentResults({
           type="button"
           variant="outline"
           className="min-h-11"
-          onClick={() => downloadCsv(assessment, results)}
-          disabled={!results.length}
+          onClick={() => {
+            if (access.isCurrent()) downloadCsv(assessment, results);
+          }}
+          disabled={busy || !results.length}
         >
           <Download className="mr-2 h-4 w-4" aria-hidden="true" />
           Download CSV
@@ -258,7 +263,10 @@ export function RecruitmentResults({
                               size="sm"
                               className="min-h-11"
                               disabled={busy}
-                              onClick={() => onCopy(result.assignmentId)}
+                              onClick={() => {
+                                if (access.isCurrent())
+                                  onCopy(result.assignmentId);
+                              }}
                               aria-label={`Copy invitation link for ${result.candidateEmail}`}
                             >
                               Copy link
@@ -269,7 +277,9 @@ export function RecruitmentResults({
                               size="sm"
                               className="min-h-11 text-red-700"
                               disabled={busy}
-                              onClick={() => onRevoke(result)}
+                              onClick={() => {
+                                if (access.isCurrent()) onRevoke(result);
+                              }}
                               aria-label={`Revoke invitation for ${result.candidateEmail}`}
                             >
                               Revoke
@@ -390,8 +400,11 @@ export function RecruitmentResults({
                             </>
                           ) : (
                             <p className="text-sm text-slate-600">
-                              Final scores and response review will be available
-                              after submission or when the assessment time ends.
+                              {result.status === "expired"
+                                ? "This assessment expired without a submission. No final score is available."
+                                : result.status === "revoked"
+                                  ? "This invitation was revoked before completion. No final score is available."
+                                  : "Final scores and response review will be available after submission. Timed assessments automatically score saved answers when their deadline ends; untimed assessments require submission before expiry."}
                             </p>
                           )}
                         </div>

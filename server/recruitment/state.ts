@@ -32,6 +32,10 @@ export function finalizeRecruitmentDeadline(assessment: RecruitmentAssessmentRow
   }
   if (assignment.status === "active" && nowMs >= assignmentDeadline(assessment, assignment)) {
     const answers = snapshotAnswers(assessment, assignment);
+    if (assessment.timeLimitMinutes === null) {
+      return { ...assignment, answers, status: "expired", submittedAtMs: null, score: null,
+        updatedAtMs: nowMs, revision: assignment.revision + 1 };
+    }
     return { ...assignment, answers, status: "timed_out", submittedAtMs: assignmentDeadline(assessment, assignment),
       score: scoreRecruitment(assessment.questions, answers), updatedAtMs: nowMs, revision: assignment.revision + 1 };
   }

@@ -1,6 +1,7 @@
 import React, { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
+import { RecruitmentManagerPrivacyContext } from "@/hooks/recruitmentManagerPrivacy";
 import {
   RecruitmentResults,
   recruitmentDuration,
@@ -47,13 +48,19 @@ const base: RecruitmentResult = {
 };
 function render(results: RecruitmentResult[]) {
   return renderToStaticMarkup(
-    createElement(RecruitmentResults, {
-      assessment,
-      results,
-      onCopy: vi.fn(),
-      onRevoke: vi.fn(),
-      busy: false,
-    })
+    createElement(
+      RecruitmentManagerPrivacyContext.Provider,
+      {
+        value: { epoch: 0, isCurrent: () => true, reset: vi.fn() },
+      },
+      createElement(RecruitmentResults, {
+        assessment,
+        results,
+        onCopy: vi.fn(),
+        onRevoke: vi.fn(),
+        busy: false,
+      })
+    )
   );
 }
 
@@ -61,6 +68,19 @@ beforeAll(() => vi.stubGlobal("React", React));
 afterAll(() => vi.unstubAllGlobals());
 
 describe("recruitment manager results presentation contract", () => {
+  it("fails closed when used without the freshly authorized manager parent", () => {
+    const html = renderToStaticMarkup(
+      createElement(RecruitmentResults, {
+        assessment,
+        results: [base],
+        onCopy: vi.fn(),
+        onRevoke: vi.fn(),
+        busy: false,
+      })
+    );
+    expect(html).toBe("");
+  });
+
   it("explains the empty invited cohort and disables CSV instead of presenting zero scores", () => {
     const html = render([]);
     expect(html).toContain("No candidates invited yet");
@@ -72,9 +92,17 @@ describe("recruitment manager results presentation contract", () => {
     "does not disclose snapshot responses or manufacture a final score for an unscored %s result",
     status => {
       const html = render([{ ...base, status }]);
-      expect(html).toContain(
-        "Final scores and response review will be available after submission"
-      );
+      if (status === "expired" || status === "revoked") {
+        expect(html).toContain("No final score is available.");
+        expect(html).not.toContain("will be available after submission");
+      } else {
+        expect(html).toContain(
+          "Final scores and response review will be available after submission"
+        );
+        expect(html).toContain(
+          "untimed assessments require submission before expiry"
+        );
+      }
       expect(html).not.toContain(base.questions[0].prompt);
       expect(html).not.toContain(base.questions[0].options[0]);
       expect(html).not.toContain(base.questions[0].options[1]);

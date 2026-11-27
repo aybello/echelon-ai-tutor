@@ -490,9 +490,176 @@ describe("candidate monotonic request clock contract", () => {
     expect(h.fetch).toHaveBeenCalledTimes(1);
     expect(text(render())).not.toContain("Assessment time has ended");
   });
+
+  it.each(["start", "save"] as const)(
+    "allows selected answers and manual confirmed submission after delayed active %s reaches display zero",
+    async action => {
+      const closeDeadline = {
+        ...fixture,
+        deadlineMs: fixture.serverNowMs + 4000,
+      };
+      const delayedActive = {
+        ...closeDeadline,
+        revision: 8,
+        serverNowMs: fixture.serverNowMs + 2500,
+      };
+      // The sample is taken late in the request; the full-duration charge
+      // conservatively overshoots while a fresh server read is still active.
+      h[action].mockImplementationOnce(async () => {
+        advance(3000);
+        return delayedActive;
+      });
+      h.fetch.mockResolvedValue({
+        ...delayedActive,
+        serverNowMs: fixture.serverNowMs + 3000,
+      });
+      await freshTimedQuery(
+        action === "start"
+          ? { ...closeDeadline, status: "invited", questions: [], answers: {} }
+          : closeDeadline,
+        0
+      );
+      if (action === "start") {
+        nodes(render())
+          .find(n => n.type === "checkbox")
+          .props.onCheckedChange(true);
+        button(render(), "Start assessment").props.onClick();
+      } else {
+        nodes(render())
+          .find(n => n.type === "radio-group")
+          .props.onValueChange("0");
+      }
+      await settle();
+      expect(timer()).toBe("00:00");
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(text(render())).toContain(
+        "The server says this assessment is still available"
+      );
+      expect(text(render())).toContain(
+        "Display estimate; server deadline applies"
+      );
+      expect(h.submit).not.toHaveBeenCalled();
+
+      const saved = {
+        ...delayedActive,
+        revision: 9,
+        serverNowMs: fixture.serverNowMs + 3200,
+        answers: { q1: 0 },
+      };
+      h.save.mockResolvedValue(saved);
+      const choices = nodes(render()).find(n => n.type === "radio-group");
+      expect(choices.props.disabled).toBe(false);
+      choices.props.onValueChange("0");
+      await settle();
+      expect(h.save.mock.calls.at(-1)?.[0]).toEqual({
+        assignmentId,
+        questionId: "q1",
+        selectedIndex: 0,
+        revision: 8,
+      });
+      expect(
+        nodes(render()).find(n => n.type === "radio-group").props.value
+      ).toBe("0");
+      expect(timer()).toBe("00:00");
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(button(render(), "Review submission").props.disabled).toBe(false);
+      button(render(), "Review submission").props.onClick();
+      expect(h.submit).not.toHaveBeenCalled();
+      expect(button(render(), "Submit assessment").props.disabled).toBe(false);
+      h.submit.mockResolvedValue({
+        ...saved,
+        status: "submitted",
+        revision: 10,
+      });
+      button(render(), "Submit assessment").props.onClick();
+      await settle();
+      expect(h.submit).toHaveBeenCalledTimes(1);
+      expect(h.submit).toHaveBeenCalledWith({
+        assignmentId,
+        revision: 9,
+      });
+      expect(text(render())).toContain("Assessment submitted");
+    }
+  );
+
+  it("permits a consented start after display expiry when fresh server status is invited", async () => {
+    const invited: RecruitmentCandidateView = {
+      ...fixture,
+      status: "invited",
+      questions: [],
+      answers: {},
+      deadlineMs: fixture.serverNowMs + 4000,
+    };
+    h.fetch.mockResolvedValue(invited);
+    await freshTimedQuery(invited, 5000);
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+    nodes(render())
+      .find(n => n.type === "checkbox")
+      .props.onCheckedChange(true);
+    expect(button(render(), "Start assessment").props.disabled).toBe(false);
+    button(render(), "Start assessment").props.onClick();
+    await settle();
+    expect(h.start).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(["expired", "timed_out"] as const)(
+    "does not allow actions when the deadline check returns genuinely terminal %s",
+    async status => {
+      const closeDeadline = {
+        ...fixture,
+        deadlineMs: fixture.serverNowMs + 4000,
+      };
+      await freshTimedQuery(closeDeadline, 0);
+      const oldChoice = nodes(render()).find(n => n.type === "radio-group");
+      button(render(), "Review submission").props.onClick();
+      const oldSubmit = button(render(), "Submit assessment");
+      h.fetch.mockResolvedValue({
+        ...closeDeadline,
+        status,
+        revision: 8,
+        serverNowMs: closeDeadline.deadlineMs,
+      });
+      advance(5000);
+      await settle();
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(text(render())).toContain(
+        status === "expired"
+          ? "This invitation has expired"
+          : "Assessment time has ended"
+      );
+      expect(nodes(render()).some(n => n.type === "radio-group")).toBe(false);
+      expect(button(render(), "Start assessment")).toBeUndefined();
+      expect(button(render(), "Review submission")).toBeUndefined();
+      oldChoice.props.onValueChange("0");
+      oldSubmit.props.onClick();
+      await settle();
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.submit).not.toHaveBeenCalled();
+    }
+  );
 });
 
 describe("candidate assessment session and confirmation contract", () => {
+  it.each([null, 5])(
+    "explains the before-start scoring policy for time limit %s",
+    timeLimitMinutes => {
+      const copy = text(
+        ready({
+          ...fixture,
+          status: "invited",
+          timeLimitMinutes,
+          questions: [],
+          answers: {},
+        })
+      );
+      expect(copy).toContain(
+        timeLimitMinutes === null
+          ? "this untimed assessment expires without a score"
+          : "At the server deadline, your saved answers are automatically recorded and scored"
+      );
+    }
+  );
+
   it("never hydrates cached entry data before the fresh successful response has finished", () => {
     expect(text(render())).not.toContain(fixture.title);
     h.query.isFetchedAfterMount = true;

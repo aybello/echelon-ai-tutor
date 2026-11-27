@@ -1,8 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { candidateQuestions, recruitmentAnswerInput, recruitmentCreateInput, recruitmentDeadline, recruitmentStartInput, scoreRecruitment, selectRecruitmentQuestions, validRecruitmentQuestions, type RecruitmentQuestion } from "./recruitmentAssessment";
+import { RECRUITMENT_NOTICE, candidateQuestions, recruitmentAnswerInput, recruitmentCreateInput, recruitmentDeadline, recruitmentStartInput, scoreRecruitment, selectRecruitmentQuestions, validRecruitmentQuestions, type RecruitmentQuestion } from "./recruitmentAssessment";
 const pool: RecruitmentQuestion[] = Array.from({ length: 12 }, (_, n) => ({ id: String(n), module: n < 8 ? "Treatment" : "Distribution", prompt: `Question ${n}`, options: ["A", "B", "C", "D"], correctIndex: n % 4 }));
 const org = { orgId: 1, title: "Operator recruitment", courseKey: "class2-water", modules: ["Treatment", "Distribution"], questionCount: 5, timeLimitMinutes: 30, expiresInDays: 7 };
 describe("Recruitment assessment domain", () => {
+  it("discloses automatic timed scoring and explicit untimed submission before consent", () => {
+    expect(RECRUITMENT_NOTICE).toContain("Timed assessments automatically record and score your saved answers");
+    expect(RECRUITMENT_NOTICE).toContain("Untimed assessments require you to submit");
+    expect(RECRUITMENT_NOTICE).toContain("unsubmitted untimed assessment expires without a score");
+  });
   it("balances topics without duplicates, leaves the bank untouched and freezes a complete form", () => {
     const before = JSON.stringify(pool);
     const selected = selectRecruitmentQuestions(pool, org.modules, 7, () => 0.3);

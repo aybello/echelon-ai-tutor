@@ -1,14 +1,15 @@
 import { getTableName, type SQL } from "drizzle-orm";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { Organization, OrganizationMember, RecruitmentAssessmentRow, RecruitmentAssignmentRow } from "../../drizzle/schema";
+import type { Organization, OrganizationMember, RecruitmentAssessmentRow, RecruitmentAssignmentRow, Subscription } from "../../drizzle/schema";
 import type { TrpcContext } from "../_core/context";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 
-const mocks = vi.hoisted(() => ({ recruitmentManager: vi.fn(), assertRecruitmentSeat: vi.fn(), recruitmentDb: vi.fn(), readRecruitmentAssessment: vi.fn(), persistRecruitmentTransition: vi.fn() }));
+const mocks = vi.hoisted(() => ({ recruitmentManager: vi.fn(), assertRecruitmentSeat: vi.fn(), recruitmentDb: vi.fn(), readRecruitmentAssessment: vi.fn(), persistRecruitmentTransition: vi.fn(), loadRecruitmentPools: vi.fn() }));
 vi.mock("./access", async original => ({ ...await original<typeof import("./access")>(), recruitmentManager: mocks.recruitmentManager, assertRecruitmentSeat: mocks.assertRecruitmentSeat }));
 vi.mock("./store", () => ({ recruitmentDb: mocks.recruitmentDb, readRecruitmentAssessment: mocks.readRecruitmentAssessment, persistRecruitmentTransition: mocks.persistRecruitmentTransition }));
-import { inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentDefinitionSummary, recruitmentResults, revokeRecruitmentAssignment } from "./service";
+vi.mock("./questions", async original => ({ ...await original<typeof import("./questions")>(), loadRecruitmentPools: mocks.loadRecruitmentPools }));
+import { inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentDefinitionSummary, recruitmentResults, revokeRecruitmentAssignment } from "./service";
 import { recruitmentResult } from "./state";
 
 const NOW = Date.parse("2026-11-27T19:00:00Z");
@@ -57,6 +58,7 @@ function barrier() {
 /** Explicit mocked lock/commit boundaries; the MySQL suite proves actual isolation. */
 function fakeReportingDb(options: {
   org?: Organization | null; rows?: RecruitmentAssignmentRow[]; definitions?: RecruitmentAssessmentRow[];
+  members?: OrganizationMember[]; subscriptions?: Subscription[];
   delegates?: OrganizationMember[]; waitForRead?: (table: string) => Promise<void>; beforeCommit?: () => Promise<void>;
 } = {}) {
   const reads: { table: string; lock: string | null; order: string[]; sql: string; params: unknown[] }[] = [];
@@ -77,7 +79,8 @@ function fakeReportingDb(options: {
           const values = name === "organizations" ? (options.org === null ? [] : [options.org ?? org()])
             : name === "recruitment_assignments" ? (read.lock ? rows.filter(row => query.params.includes(row.id)) : rows)
             : name === "recruitment_assessments" ? options.definitions ?? [form()]
-            : name === "organization_members" ? options.delegates ?? [] : [];
+            : name === "organization_members" ? (read.lock ? options.delegates ?? [] : options.members ?? options.delegates ?? [])
+            : name === "subscriptions" ? options.subscriptions ?? [] : [];
           return structuredClone(selection ? (values as RecruitmentAssignmentRow[]).map(row => ({ id: row.id })) : values);
         })().then(resolve, reject),
       };
@@ -109,6 +112,87 @@ beforeEach(() => {
   mocks.persistRecruitmentTransition.mockResolvedValue(undefined);
 });
 afterEach(() => vi.useRealTimers());
+
+describe("transaction-authorized recruitment catalog", () => {
+  it.each([
+    ["missing", null],
+    ["cancelled", { ...org(), status: "cancelled" }],
+    ["future term", { ...org(), termStart: new Date(NOW + 1) }],
+    ["old term", { ...org(), termEnd: new Date(NOW) }],
+    ["Flex", { ...org(), billingType: "course-pass" }],
+  ] as const)("rejects accepted preflight but locked %s organization before roster reads", async (_label, lockedOrg) => {
+    const db = fakeReportingDb({ org: lockedOrg as Organization | null });
+    await expect(recruitmentCatalog(context, 7)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(mocks.recruitmentManager).toHaveBeenCalledWith(context, 7, true);
+    expect(db.reads).toEqual([expect.objectContaining({ table: "organizations", lock: "share", params: [7] })]);
+    expect(mocks.loadRecruitmentPools).not.toHaveBeenCalled(); expect(db.events).not.toContain("commit");
+  });
+
+  it("rejects a revoked delegate after accepted preflight before any sensitive roster read", async () => {
+    const db = fakeReportingDb({ org: { ...org(), managerEmail: "owner@example.test" }, members: [member()] });
+    await expect(recruitmentCatalog(context, 7)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.reads.map(({ table, lock }) => ({ table, lock }))).toEqual([
+      { table: "organizations", lock: "share" }, { table: "organization_members", lock: "share" },
+    ]);
+    expect(db.reads[1].params).toEqual([7, EMAIL, DELEGATED_MANAGER_ROLE, "assigned"]);
+    expect(mocks.loadRecruitmentPools).not.toHaveBeenCalled(); expect(db.events).not.toContain("commit");
+  });
+
+  it.each(["owner", "delegate"] as const)("returns only scoped eligible candidates for an authorized %s after lock checks and commit", async actor => {
+    const delegatedOrg = { ...org(), name: "Locked current team", managerEmail: actor === "owner" ? EMAIL : "owner@example.test" };
+    const delegate = { ...member(), id: 32, email: EMAIL, role: DELEGATED_MANAGER_ROLE, courseKey: null, courseKeys: null };
+    const beforeCommit = barrier(), atCommit = barrier(), managerWait = barrier(), managerEntered = barrier();
+    const candidate = { ...member(), courseKeys: '["class2-water","class2-water-dist","western-class2-water"]' };
+    const sub = { orgId: 7, email: candidate.email, tier: "class2", province: "ontario", status: "active",
+      stripeSubscriptionId: `org-7-${candidate.email}-class2-water`, currentPeriodStart: new Date(NOW - 1000), currentPeriodEnd: new Date(NOW + 86_400_000) } as Subscription;
+    const db = fakeReportingDb({ org: delegatedOrg, delegates: [delegate],
+      members: [candidate, delegate, { ...candidate, id: 33, orgId: 8 }, { ...candidate, id: 34, email: "uncovered@example.test" }],
+      subscriptions: [sub, { ...sub, orgId: 8, email: "uncovered@example.test" }],
+      waitForRead: async table => {
+        if (actor === "delegate" && table === "organization_members" && db.reads.at(-1)?.lock) {
+          managerEntered.release(); await managerWait.promise;
+        }
+      }, beforeCommit: async () => { atCommit.release(); await beforeCommit.promise; } });
+    mocks.recruitmentManager.mockImplementation(async () => { expect(db.events).toEqual([]); return org(); });
+    mocks.loadRecruitmentPools.mockResolvedValue(new Map([
+      ["class2-water", form().questions], ["class2-water-dist", form().questions], ["western-class2-water", form().questions],
+    ]));
+    let returned = false;
+    const pending = recruitmentCatalog(context, 7).then(value => { returned = true; return value; });
+    if (actor === "delegate") {
+      await managerEntered.promise;
+      expect(mocks.loadRecruitmentPools).not.toHaveBeenCalled();
+      expect(db.reads.every(read => read.lock === "share")).toBe(true);
+      managerWait.release();
+    }
+    await atCommit.promise;
+    expect(returned).toBe(false);
+    expect(mocks.recruitmentManager).toHaveBeenCalledOnce();
+    expect(mocks.loadRecruitmentPools.mock.calls[0][0]).toBe(db.tx);
+    expect(mocks.loadRecruitmentPools.mock.calls[0][1]).not.toContain("western-class2-water");
+    expect(db.db.transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+    expect(db.reads.filter(read => read.lock).map(({ table, lock }) => ({ table, lock }))).toEqual([
+      { table: "organizations", lock: "share" }, ...(actor === "delegate" ? [{ table: "organization_members", lock: "share" }] : []),
+    ]);
+    for (const read of db.reads.filter(read => !read.lock)) {
+      expect(read.sql).toContain(`\`${read.table}\`.\`orgId\` = ?`); expect(read.params).toContain(7);
+    }
+    beforeCommit.release();
+    const catalog = await pending;
+    expect(db.events.at(-1)).toBe("commit"); expect(catalog.orgName).toBe("Locked current team");
+    expect(catalog.courses.map(course => course.courseKey)).toEqual(["class2-water", "class2-water-dist"]);
+    expect(catalog.candidates).toEqual([{ memberId: 31, email: candidate.email, name: candidate.name, courseKeys: ["class2-water"] }]);
+    expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+  });
+
+  it("rejects term expiry during transaction reads at the final clock check without committing a catalog", async () => {
+    const db = fakeReportingDb({ waitForRead: async table => { if (table === "subscriptions") vi.setSystemTime(NOW + 86_400_000); } });
+    mocks.loadRecruitmentPools.mockResolvedValue(new Map());
+    await expect(recruitmentCatalog(context, 7)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.reads[0]).toMatchObject({ table: "organizations", lock: "share" });
+    expect(db.events).not.toContain("commit");
+  });
+});
 
 describe("recruitment duplicate invitations", () => {
   it.each(["invited", "active"] as const)("returns the original usable %s invitation without inserting or resetting it", async status => {

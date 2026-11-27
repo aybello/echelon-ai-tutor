@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { ClipboardList, Copy, Plus, ShieldCheck } from "lucide-react";
+import { getQueryKey } from "@trpc/react-query";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
+import {
+  RecruitmentManagerPrivacyContext,
+  useRecruitmentManagerPrivacy,
+  useFreshRecruitmentQuery,
+  type RecruitmentManagerAccess,
+} from "@/hooks/recruitmentManagerPrivacy";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -32,18 +39,58 @@ function useLifetime() {
 
 /** A keyed body also protects drafts if the caller does not key the panel. */
 export default function RecruitmentPanel({ orgId }: { orgId: number }) {
-  return <RecruitmentPanelBody key={orgId} orgId={orgId} />;
+  return <RecruitmentManagerScope key={orgId} orgId={orgId} />;
 }
 export { RecruitmentPanel };
 
-function RecruitmentPanelBody({ orgId }: { orgId: number }) {
+function RecruitmentManagerScope({ orgId }: { orgId: number }) {
+  const access = useRecruitmentManagerPrivacy(orgId);
+  if (!access.ready) return <p role="status">Verifying recruitment access…</p>;
+  return (
+    <RecruitmentPanelBody key={access.epoch} orgId={orgId} access={access} />
+  );
+}
+
+const privateQueryOptions = {
+  retry: false,
+  staleTime: 0,
+  refetchOnMount: "always" as const,
+  refetchOnWindowFocus: false,
+  refetchOnReconnect: false,
+  trpc: { abortOnUnmount: true },
+};
+
+function accessDenied(error: unknown) {
+  const code = (error as { data?: { code?: string } } | null)?.data?.code;
+  return code === "UNAUTHORIZED" || code === "FORBIDDEN";
+}
+
+function RecruitmentPanelBody({
+  orgId,
+  access,
+}: {
+  orgId: number;
+  access: RecruitmentManagerAccess;
+}) {
   const live = useLifetime();
+  const isCurrent = () => live.current && access.isCurrent();
   const utils = trpc.useUtils();
+  const catalogFresh = useFreshRecruitmentQuery(
+    getQueryKey(trpc.recruitment.catalog, { orgId }, "query"),
+    access
+  );
+  const listFresh = useFreshRecruitmentQuery(
+    getQueryKey(trpc.recruitment.list, { orgId }, "query"),
+    access
+  );
   const catalogQuery = trpc.recruitment.catalog.useQuery(
     { orgId },
-    { retry: false }
+    privateQueryOptions
   );
-  const listQuery = trpc.recruitment.list.useQuery({ orgId }, { retry: false });
+  const listQuery = trpc.recruitment.list.useQuery(
+    { orgId },
+    privateQueryOptions
+  );
   const create = trpc.recruitment.create.useMutation();
   const [title, setTitle] = useState("");
   const [courseKey, setCourseKey] = useState("");
@@ -56,6 +103,16 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const authorized =
+    access.isCurrent() &&
+    catalogFresh &&
+    listFresh &&
+    catalogQuery.isFetchedAfterMount &&
+    catalogQuery.isSuccess &&
+    !catalogQuery.isFetching &&
+    listQuery.isFetchedAfterMount &&
+    listQuery.isSuccess &&
+    !listQuery.isFetching;
   const catalog: RecruitmentCatalog | undefined = catalogQuery.isError
     ? undefined
     : catalogQuery.data;
@@ -91,6 +148,7 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
             : "";
   async function createAssessment(event: React.FormEvent) {
     event.preventDefault();
+    if (!isCurrent() || !authorized) return;
     setAttempted(true);
     setError("");
     setNotice("");
@@ -98,8 +156,8 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
     const submittedOrg = orgId;
     try {
       const data = await create.mutateAsync(parsed.data);
+      if (!isCurrent()) return;
       void utils.recruitment.list.invalidate({ orgId: submittedOrg });
-      if (!live.current) return;
       setSelectedId(data.assessmentId);
       setNotice(
         "Assessment created. Invite candidates with an eligible team seat below."
@@ -109,13 +167,37 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
       setModules([]);
       setAttempted(false);
     } catch (failure) {
-      if (live.current)
+      if (!isCurrent()) return;
+      if (accessDenied(failure)) {
+        access.reset();
+        return;
+      }
+      if (isCurrent())
         setError(
           failure instanceof Error
             ? failure.message
             : "The assessment could not be created. Try again."
         );
     }
+  }
+  if (!authorized) {
+    const failed = catalogQuery.isError || listQuery.isError;
+    return (
+      <section className={recruitmentCard}>
+        <h2 className="text-xl font-semibold">Recruitment assessments</h2>
+        {failed ? (
+          <RecruitmentError
+            message="Recruitment access could not be verified. Your session may have changed."
+            onRetry={access.reset}
+            pending={catalogQuery.isFetching || listQuery.isFetching}
+          />
+        ) : (
+          <p role="status" className="mt-4 text-sm text-slate-500">
+            Verifying recruitment access…
+          </p>
+        )}
+      </section>
+    );
   }
   return (
     <section
@@ -164,10 +246,7 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
           ) : catalogQuery.isError || !catalog ? (
             <div className="mt-4">
               <RecruitmentError
-                message={
-                  catalogQuery.error?.message ||
-                  "The assessment catalog could not load."
-                }
+                message={"The assessment catalog could not load."}
                 onRetry={() => void catalogQuery.refetch()}
                 pending={catalogQuery.isFetching}
               />
@@ -370,9 +449,7 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
           ) : listQuery.isError || !definitions ? (
             <div className="mt-4">
               <RecruitmentError
-                message={
-                  listQuery.error?.message || "Assessments could not load."
-                }
+                message={"Assessments could not load."}
                 onRetry={() => void listQuery.refetch()}
                 pending={listQuery.isFetching}
               />
@@ -430,6 +507,7 @@ function RecruitmentPanelBody({ orgId }: { orgId: number }) {
           orgId={orgId}
           assessmentId={selectedId}
           catalog={catalog}
+          access={access}
         />
       ) : (
         <p className="text-sm text-slate-500">
@@ -444,16 +522,23 @@ function RecruitmentDetail({
   orgId,
   assessmentId,
   catalog,
+  access,
 }: {
   orgId: number;
   assessmentId: string;
   catalog?: RecruitmentCatalog;
+  access: RecruitmentManagerAccess;
 }) {
   const live = useLifetime();
+  const isCurrent = () => live.current && access.isCurrent();
   const utils = trpc.useUtils();
+  const resultFresh = useFreshRecruitmentQuery(
+    getQueryKey(trpc.recruitment.results, { orgId, assessmentId }, "query"),
+    access
+  );
   const query = trpc.recruitment.results.useQuery(
     { orgId, assessmentId },
-    { retry: false }
+    privateQueryOptions
   );
   const invite = trpc.recruitment.invite.useMutation();
   const revoke = trpc.recruitment.revoke.useMutation();
@@ -467,8 +552,18 @@ function RecruitmentDetail({
   );
   const [confirmed, setConfirmed] = useState(false);
   const busy = invite.isPending || revoke.isPending || copying;
+  const authorized =
+    access.isCurrent() &&
+    resultFresh &&
+    query.isFetchedAfterMount &&
+    query.isSuccess &&
+    !query.isFetching;
+  useEffect(() => {
+    if (query.isError && accessDenied(query.error) && access.isCurrent())
+      access.reset();
+  }, [query.isError, query.error, access]);
   async function copyLink(assignmentId: string) {
-    if (!live.current) return;
+    if (!isCurrent() || !authorized) return;
     const href = new URL(
       `/recruitment/${encodeURIComponent(assignmentId)}`,
       window.location.origin
@@ -478,27 +573,28 @@ function RecruitmentDetail({
     setCopying(true);
     try {
       await navigator.clipboard.writeText(href);
-      if (live.current)
+      if (isCurrent())
         setCopyMessage(
           "Link copied. Share it directly with the invited candidate. No email was sent."
         );
     } catch {
-      if (live.current)
+      if (isCurrent())
         setCopyMessage(
           "Clipboard access was unavailable. Select and copy the link below. No email was sent."
         );
     } finally {
-      if (live.current) setCopying(false);
+      if (isCurrent()) setCopying(false);
     }
   }
   function refreshSubmittedScope() {
+    if (!isCurrent()) return;
     void utils.recruitment.results.invalidate({ orgId, assessmentId });
     void utils.recruitment.list.invalidate({ orgId });
     void utils.recruitment.catalog.invalidate({ orgId });
   }
   async function inviteCandidate(event: React.FormEvent) {
     event.preventDefault();
-    if (!memberId || busy || !query.data) return;
+    if (!isCurrent() || !authorized || !memberId || busy || !query.data) return;
     const eligible = catalog?.candidates.some(
       item =>
         item.memberId === Number(memberId) &&
@@ -519,12 +615,17 @@ function RecruitmentDetail({
         assessmentId,
         memberId: Number(memberId),
       });
+      if (!isCurrent()) return;
       refreshSubmittedScope();
-      if (!live.current) return;
       setMemberId("");
       await copyLink(data.assignmentId);
     } catch (failure) {
-      if (live.current)
+      if (!isCurrent()) return;
+      if (accessDenied(failure)) {
+        access.reset();
+        return;
+      }
+      if (isCurrent())
         setError(
           failure instanceof Error
             ? failure.message
@@ -533,13 +634,14 @@ function RecruitmentDetail({
     }
   }
   async function revokeCandidate() {
-    if (!confirmed || !revokeTarget || busy) return;
+    if (!isCurrent() || !authorized || !confirmed || !revokeTarget || busy)
+      return;
     const assignmentId = revokeTarget.assignmentId;
     setError("");
     try {
       await revoke.mutateAsync({ orgId, assignmentId });
+      if (!isCurrent()) return;
       refreshSubmittedScope();
-      if (!live.current) return;
       setRevokeTarget(null);
       setConfirmed(false);
       setLink("");
@@ -547,7 +649,12 @@ function RecruitmentDetail({
         "Invitation revoked. The candidate can no longer use this link."
       );
     } catch (failure) {
-      if (live.current)
+      if (!isCurrent()) return;
+      if (accessDenied(failure)) {
+        access.reset();
+        return;
+      }
+      if (isCurrent())
         setError(
           failure instanceof Error
             ? failure.message
@@ -555,7 +662,7 @@ function RecruitmentDetail({
         );
     }
   }
-  if (query.isLoading)
+  if (!authorized && !query.isError)
     return (
       <div className={recruitmentCard}>
         <p role="status" className="text-sm text-slate-500">
@@ -753,17 +860,19 @@ function RecruitmentDetail({
           </div>
         </div>
       )}
-      <RecruitmentResults
-        assessment={assessment}
-        results={query.data.results}
-        onCopy={assignmentId => void copyLink(assignmentId)}
-        onRevoke={result => {
-          setRevokeTarget(result);
-          setConfirmed(false);
-          setError("");
-        }}
-        busy={busy}
-      />
+      <RecruitmentManagerPrivacyContext.Provider value={access}>
+        <RecruitmentResults
+          assessment={assessment}
+          results={query.data.results}
+          onCopy={assignmentId => void copyLink(assignmentId)}
+          onRevoke={result => {
+            setRevokeTarget(result);
+            setConfirmed(false);
+            setError("");
+          }}
+          busy={busy}
+        />
+      </RecruitmentManagerPrivacyContext.Provider>
     </div>
   );
 }

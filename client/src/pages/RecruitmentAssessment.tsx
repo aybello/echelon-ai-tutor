@@ -384,7 +384,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           );
         if (reason === "deadline" && !isTerminal(next.status))
           setMessage(
-            "The server is checking your assessment deadline. Refresh status before continuing."
+            "The server says this assessment is still available. You can continue; the server deadline applies."
           );
       } catch (failure) {
         if (!live.current || epoch !== sessionEpoch.current) return;
@@ -449,13 +449,16 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     void refreshServer("session");
   }, [sessionRefreshPending, busy, online, refreshServer]);
 
-  const serverNow = clock.current.now(now);
-  const deadlineReached = !!view && serverNow >= view.deadlineMs;
+  const estimatedServerNow = clock.current.now(now);
+  // Advisory only: conservative request charges may reach zero before the
+  // actual deadline. Only the server can authorize or finalize an action.
+  const displayDeadlineReached =
+    !!view && estimatedServerNow >= view.deadlineMs;
   useEffect(() => {
     if (
       !view ||
       isTerminal(view.status) ||
-      !deadlineReached ||
+      !displayDeadlineReached ||
       !online ||
       busy ||
       operation.current ||
@@ -466,7 +469,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     deadlineChecked.current = view.deadlineMs;
     // Never score from a browser timer. candidateGet applies the server deadline.
     void refreshServer("deadline");
-  }, [view, deadlineReached, online, busy, query.isFetching, refreshServer]);
+  }, [
+    view,
+    displayDeadlineReached,
+    online,
+    busy,
+    query.isFetching,
+    refreshServer,
+  ]);
 
   async function begin() {
     if (
@@ -476,7 +486,6 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       !view ||
       view.status !== "invited" ||
       !online ||
-      deadlineReached ||
       needsRefresh
     )
       return;
@@ -520,8 +529,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       operation.current ||
       query.isFetching ||
       !online ||
-      needsRefresh ||
-      deadlineReached
+      needsRefresh
     )
       return;
     const epoch = sessionEpoch.current;
@@ -592,8 +600,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       !submitOpen ||
       expectedRevision.current === null ||
       expectedRevision.current !== current.revision ||
-      needsRefresh ||
-      deadlineReached
+      needsRefresh
     )
       return;
     const revision = expectedRevision.current;
@@ -655,8 +662,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const loginLink = signInHref(`/recruitment/${assignmentId}`);
   const signedOut = authRequired || query.error?.data?.code === "UNAUTHORIZED";
   const accessDenied = forbidden || query.error?.data?.code === "FORBIDDEN";
-  const blocked =
-    busy || query.isFetching || !online || needsRefresh || deadlineReached;
+  const blocked = busy || query.isFetching || !online || needsRefresh;
   const networkNotice = !online ? (
     <div
       role="alert"
@@ -878,8 +884,8 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           An internet connection is required to save answers. You can return to
           this link to resume saved answers before the server deadline.{" "}
           {view.timeLimitMinutes === null
-            ? "You must submit before the invitation expires."
-            : "The timer starts when you select Start assessment and does not pause if you leave the page."}{" "}
+            ? "You must submit before the invitation expires; otherwise, this untimed assessment expires without a score."
+            : "The timer starts when you select Start assessment and does not pause if you leave the page. At the server deadline, your saved answers are automatically recorded and scored."}{" "}
           Request any accommodation from the hiring team before starting.
         </p>
         {networkNotice}
@@ -890,16 +896,18 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             pending={busy}
           />
         )}
-        {(needsRefresh || deadlineReached) && !error && (
+        {needsRefresh && !error && (
           <ErrorNotice
-            message={
-              deadlineReached
-                ? "The invitation deadline has been reached. Check the server status."
-                : "Refresh the server status before continuing."
-            }
+            message="Refresh the server status before continuing."
             onRetry={() => void refreshServer()}
             pending={busy}
           />
+        )}
+        {displayDeadlineReached && (
+          <p className="text-sm text-slate-600">
+            The display estimate has reached the invitation deadline. The server
+            decides whether you can still start.
+          </p>
         )}
         <label className="flex min-h-11 cursor-pointer items-start gap-3 rounded-xl border border-slate-200 p-4 text-sm leading-relaxed">
           <Checkbox
@@ -968,13 +976,15 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
                 ? `Invitation expires ${date(view.deadlineMs)}`
                 : "Time remaining"
             }
-            className={`mt-1 text-lg font-semibold tabular-nums ${deadlineReached ? "text-amber-800" : "text-slate-900"}`}
+            className={`mt-1 text-lg font-semibold tabular-nums ${displayDeadlineReached ? "text-amber-800" : "text-slate-900"}`}
           >
             {view.timeLimitMinutes === null
               ? date(view.deadlineMs)
-              : timeRemaining(view.deadlineMs - serverNow)}
+              : timeRemaining(view.deadlineMs - estimatedServerNow)}
           </p>
-          <p className="mt-1 text-xs text-slate-500">Server deadline applies</p>
+          <p className="mt-1 text-xs text-slate-500">
+            Display estimate; server deadline applies
+          </p>
         </div>
       </div>
       {networkNotice}
@@ -993,16 +1003,18 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           {message}
         </p>
       )}
-      {(needsRefresh || deadlineReached) && !error && (
+      {needsRefresh && !error && (
         <ErrorNotice
-          message={
-            deadlineReached
-              ? "Time has ended on this display. Checking the server determines the final assessment state."
-              : "Refresh your saved answers before continuing."
-          }
+          message="Refresh your saved answers before continuing."
           onRetry={() => void refreshServer()}
           pending={busy}
         />
+      )}
+      {displayDeadlineReached && (
+        <p role="status" className="text-sm text-slate-600">
+          The display estimate has reached zero. The server decides whether you
+          can still save or submit.
+        </p>
       )}
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
         <section

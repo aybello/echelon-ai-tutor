@@ -87,6 +87,20 @@ describe("recruitment durable state transitions", () => {
     const next = finalizeRecruitmentDeadline(assessment(), active(), NOW + 600_000);
     expect(next.submittedAtMs).toBe(NOW + 300_000); expect(next.updatedAtMs).toBe(NOW + 600_000);
   });
+  it.each([{}, { q1: 0 }] as RecruitmentAssignmentRow["answers"][])("untimed active expiry retains durable choices but has no score or completion (%j)", answers => {
+    const form = { ...assessment(), timeLimitMinutes: null }, row = { ...active(), answers };
+    const next = transitionRecruitment(form, row, submit(0), NOW + 900_000);
+    expect(next).toMatchObject({ status: "expired", answers, score: null, submittedAtMs: null, revision: 2 });
+    expect(recruitmentResult(form, next, NOW + 900_001)).toMatchObject({ status: "expired", score: null, answers: {}, questions: [] });
+    expect(recruitmentCandidateView(form, next, "Synthetic utility", NOW + 900_001)).toMatchObject({ status: "expired", answers: {}, questions: [] });
+    expect(transitionRecruitment(form, next, submit(1), NOW + 900_002)).toBe(next);
+  });
+  it("untimed explicit submission just before expiry records the durable score and survives later expiry", () => {
+    const form = { ...assessment(), timeLimitMinutes: null }, row = { ...active(), answers: { q1: 0 } };
+    const next = transitionRecruitment(form, row, submit(1), NOW + 899_999);
+    expect(next).toMatchObject({ status: "submitted", submittedAtMs: NOW + 899_999, score: { correct: 1, total: 5 }, revision: 2 });
+    expect(finalizeRecruitmentDeadline(form, next, NOW + 900_001)).toBe(next);
+  });
   it("unstarted invitation expires without a score, consent or start timestamp", () => {
     const row = invited();
     const next = transitionRecruitment(assessment(), row, start, row.expiresAtMs);
