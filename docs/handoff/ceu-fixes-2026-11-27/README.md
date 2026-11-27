@@ -13,3 +13,5 @@ Each `-CHANGELOG.md` lists every change with its reason and evidence.
 Drinking Water Compliance is not included: it is waiting on the owner's decision (Ontario-only or jurisdiction-neutral).
 
 Source list: textbook sources are cited inline only, because the catalogue requires a web link for each source. Owner decision pending. Do not block on it.
+
+- Drinking Water Compliance: rebuilt as jurisdiction-neutral (owner decision 2026-11-27). Still open: the 24-hour written-notice wording is not verified against the regulation text; the bulletin cited does not state the interval. Confirm before publishing.
