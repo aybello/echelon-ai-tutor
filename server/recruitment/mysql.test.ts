@@ -24,6 +24,12 @@ async function fixture() {
   return assignmentId;
 }
 
+function barrier() {
+  let release!: () => void;
+  const promise = new Promise<void>(resolve => { release = resolve; });
+  return { promise, release };
+}
+
 describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated MySQL database", () => {
   beforeAll(async () => {
     const value = await getDb(); if (!value) throw new Error("Disposable database unavailable"); db = value;
@@ -288,7 +294,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
       ];
       const outcomes = await Promise.allSettled(operations);
       expect(outcomes.every(outcome => outcome.status === "rejected")).toBe(true);
-      for (const outcome of outcomes) if (outcome.status === "rejected") expect(outcome.reason).toMatchObject({ code: "CONFLICT", message: expect.stringMatching(/manager.*replacement assessment form/i) });
+      for (const outcome of outcomes) if (outcome.status === "rejected") expect(outcome.reason).toMatchObject({ code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i) });
       expect(await read(activeId)).toEqual(activeBefore); expect(await read(invitedId)).toEqual(invitedBefore);
       expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
     } finally {
@@ -311,7 +317,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     const outcome = pending.then(() => "unexpected success", error => error.code);
     try {
       await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
-      release(); await governance; expect(await outcome).toBe("CONFLICT"); expect(await read(id)).toEqual(before);
+      release(); await governance; expect(await outcome).toBe("PRECONDITION_FAILED"); expect(await read(id)).toEqual(before);
     } finally {
       release(); await Promise.allSettled([governance, pending]);
       await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3));
@@ -333,7 +339,7 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
       hide = db.update(questions).set({ reviewStatus: "rejected" }).where(eq(questions.id, 3)).then(result => { hidden = true; return result; });
       await new Promise(resolve => setTimeout(resolve, 100)); expect(hidden).toBe(false);
       release(); expect((await pending).questions).toHaveLength(5); await hide;
-      await expect(operateRecruitmentCandidate(ctx, id, { kind: "get" })).rejects.toMatchObject({ code: "CONFLICT" });
+      await expect(operateRecruitmentCandidate(ctx, id, { kind: "get" })).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
       expect((await read(id)).revision).toBe(1);
     } finally {
       release(); await Promise.allSettled([pending, ...(hide ? [hide] : [])]); transaction.mockRestore();
@@ -382,6 +388,215 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
         expect((await recruitmentResults(manager, orgId, original.assessmentId)).results[0]).toMatchObject({ status: "revoked", answers: { "1": 0 }, score: { correct: 1 }, questions: snapshot });
       }
     } finally { await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3)); }
+  });
+
+  it.each(["missing", "other bank", "in_review", "rejected"] as const)("revalidates selected create sources changed to %s after the real unlocked pool query", async change => {
+    const manager = { ...ctx, studentEmail: "manager@example.test" }, module = `Create race ${change}`;
+    const rows = await db.insert(questions).values(snapshot.map((q, n) => ({ bankKey: "class2-water", questionNum: 70_000 + n,
+      module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex,
+      explanation: "Synthetic isolated create race", reviewStatus: "approved" as const }))).$returningId();
+    const sourceId = rows[2].id, [source] = await db.select().from(questions).where(eq(questions.id, sourceId));
+    const formsBefore = await db.select().from(recruitmentAssessments), held = barrier(), sampled = barrier();
+    const realTransaction = db.transaction.bind(db);
+    // Queries remain real MySQL. Pause the pool query only AFTER its unlocked
+    // results have materialized, so selection cannot rely on stale visibility.
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => realTransaction(tx => callback(new Proxy(tx, {
+      get(target, property) {
+        if (property === "select") return (...args: Parameters<typeof tx.select>) => {
+          const builder = target.select(...args), originalFrom = builder.from.bind(builder);
+          builder.from = ((table: Parameters<typeof originalFrom>[0]) => {
+            const query = originalFrom(table);
+            if (table === questions) {
+              const execute = query.execute.bind(query);
+              query.execute = (async (...executeArgs: Parameters<typeof execute>) => {
+                const values = await execute(...executeArgs);
+                if (!query.toSQL().sql.includes("for share")) { sampled.release(); await held.promise; }
+                return values;
+              }) as typeof query.execute;
+            }
+            return query;
+          }) as typeof builder.from;
+          return builder;
+        };
+        return Reflect.get(target, property, target);
+      },
+    })), config));
+    const pending = createRecruitmentAssessment(manager, { orgId, title: "Synthetic create race", courseKey: "class2-water",
+      modules: [module], questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 });
+    const outcome = pending.then(() => "unexpected success", error => error.code);
+    try {
+      await Promise.race([sampled.promise, outcome.then(() => { throw new Error("Create returned before post-pool governance validation"); })]);
+      if (change === "missing") await db.delete(questions).where(eq(questions.id, sourceId));
+      else await db.update(questions).set(change === "other bank" ? { bankKey: "class2-water-dist" } : { reviewStatus: change }).where(eq(questions.id, sourceId));
+      held.release(); expect(await outcome).toBe("PRECONDITION_FAILED");
+      expect(await db.select().from(recruitmentAssessments)).toEqual(formsBefore);
+      expect(transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+    } finally {
+      held.release(); await outcome; transaction.mockRestore();
+      if (change === "missing") await db.insert(questions).values(source);
+      for (const { id } of rows) await db.delete(questions).where(eq(questions.id, id));
+    }
+  });
+
+  it.each(["fresh", "invited", "active"] as const)("checks immutable original sources before a real %s invite INSERT or usable duplicate return", async mode => {
+    for (const change of ["missing", "other bank", "in_review", "rejected"] as const) {
+      const id = await fixture(); if (mode === "active") await start(id);
+      const before = await read(id);
+      if (mode === "fresh") await db.delete(recruitmentAssignments).where(eq(recruitmentAssignments.id, id));
+      const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, before.assessmentId));
+      const [source] = await db.select().from(questions).where(eq(questions.id, 3));
+      const manager = { ...ctx, studentEmail: "manager@example.test" };
+      try {
+        if (change === "missing") await db.delete(questions).where(eq(questions.id, 3));
+        else await db.update(questions).set(change === "other bank" ? { bankKey: "class2-water-dist" } : { reviewStatus: change }).where(eq(questions.id, 3));
+        await expect(inviteRecruitmentCandidate(manager, orgId, definition.id, memberId)).rejects.toMatchObject({
+          code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i),
+        });
+        const assignments = await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.assessmentId, definition.id));
+        expect(assignments).toEqual(mode === "fresh" ? [] : [before]);
+        expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
+      } finally {
+        if (change === "missing") await db.insert(questions).values(source);
+        else await db.update(questions).set({ bankKey: source.bankKey, reviewStatus: source.reviewStatus }).where(eq(questions.id, 3));
+      }
+    }
+  });
+
+  it.each(["fresh", "invited", "active"] as const)("denies the %s invite path after a concurrent source withdrawal commits during a real governance wait", async mode => {
+    const id = await fixture(); if (mode === "active") await start(id);
+    const original = await read(id);
+    if (mode === "fresh") await db.delete(recruitmentAssignments).where(eq(recruitmentAssignments.id, id));
+    const held = barrier(), locked = barrier();
+    const governance = db.transaction(async tx => {
+      await tx.select().from(questions).where(eq(questions.id, 3)).for("update");
+      await tx.update(questions).set({ reviewStatus: "in_review" }).where(eq(questions.id, 3));
+      locked.release(); await held.promise;
+    });
+    await locked.promise;
+    const manager = { ...ctx, studentEmail: "manager@example.test" };
+    let returned = false;
+    const pending = inviteRecruitmentCandidate(manager, orgId, original.assessmentId, memberId);
+    const outcome = pending.then(() => { returned = true; return "unexpected success"; }, error => { returned = true; return error.code; });
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
+      held.release(); await governance; expect(await outcome).toBe("PRECONDITION_FAILED");
+      expect(await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.assessmentId, original.assessmentId))).toEqual(mode === "fresh" ? [] : [original]);
+    } finally {
+      held.release(); await Promise.allSettled([governance, outcome]);
+      await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3));
+    }
+  });
+
+  it.each(["invited", "active", "untimed"] as const)("durably finalizes real overdue %s attempts with withdrawn sources without manager reporting", async mode => {
+    for (const kind of ["get", "start", "answer", "submit"] as const) {
+      const id = await fixture(), original = await read(id);
+      if (mode === "untimed") await db.update(recruitmentAssessments).set({ timeLimitMinutes: null }).where(eq(recruitmentAssessments.id, original.assessmentId));
+      if (mode !== "invited") {
+        const view = await start(id);
+        await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
+      }
+      const deadline = Date.now() - 1;
+      await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, id));
+      const before = await read(id), [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId));
+      await db.update(questions).set({ reviewStatus: "rejected" }).where(eq(questions.id, 3));
+      try {
+        const view = kind === "start" ? await start(id) : await operateRecruitmentCandidate(ctx, id,
+          kind === "get" ? { kind: "get" } : kind === "answer" ? { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 1, revision: 0 } }
+            : { kind: "submit", input: { assignmentId: id, revision: 0 } });
+        const status = mode === "active" ? "timed_out" : "expired";
+        expect(view).toMatchObject({ status, questions: [], answers: {}, revision: before.revision + 1 });
+        expect(JSON.stringify(view)).not.toMatch(/correctIndex|explanation|"score"/);
+        const durable = await read(id);
+        expect(durable).toMatchObject({ status, answers: before.answers,
+          submittedAtMs: mode === "active" ? deadline : null, score: mode === "active" ? { correct: 1, answered: 1 } : null });
+        await operateRecruitmentCandidate(ctx, id, { kind: "get" });
+        await operateRecruitmentCandidate(ctx, id, { kind: "submit", input: { assignmentId: id, revision: 0 } });
+        expect(await read(id)).toEqual(durable);
+        expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, definition.id)))[0]).toEqual(definition);
+      } finally { await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3)); }
+    }
+  });
+
+  it.each([
+    ["active", "approved"], ["active", "rejected"], ["invited", "approved"], ["invited", "rejected"],
+  ] as const)("commits a redacted %s deadline receipt when an actual clock crosses a %s source lock wait", async (mode, visibility) => {
+    const id = await fixture();
+    if (mode === "active") {
+      const view = await start(id);
+      await operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
+    }
+    const before = await read(id), deadline = Date.now() + 1500;
+    await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, id));
+    const held = barrier(), locked = barrier(), atSource = barrier();
+    const realTransaction = db.transaction.bind(db);
+    const governance = realTransaction(async tx => {
+      await tx.select().from(questions).where(eq(questions.id, 3)).for("update");
+      await tx.update(questions).set({ reviewStatus: visibility }).where(eq(questions.id, 3));
+      locked.release(); await held.promise;
+    });
+    await locked.promise;
+    let beforeWaitMs = 0, returned = false;
+    const transaction = vi.spyOn(db, "transaction").mockImplementationOnce((callback, config) => realTransaction(tx => callback(new Proxy(tx, {
+      get(target, property) {
+        if (property === "select") return (...args: Parameters<typeof tx.select>) => {
+          const builder = target.select(...args), originalFrom = builder.from.bind(builder);
+          builder.from = ((table: Parameters<typeof originalFrom>[0]) => {
+            const query = originalFrom(table);
+            if (table === questions) {
+              const execute = query.execute.bind(query);
+              query.execute = ((...executeArgs: Parameters<typeof execute>) => {
+                if (query.toSQL().params[0] === 3) { beforeWaitMs = Date.now(); atSource.release(); }
+                return execute(...executeArgs);
+              }) as typeof query.execute;
+            }
+            return query;
+          }) as typeof builder.from;
+          return builder;
+        };
+        return Reflect.get(target, property, target);
+      },
+    })), config));
+    const pending = mode === "active"
+      ? operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 1, revision: 0 } })
+      : start(id);
+    const outcome = pending.then(value => { returned = true; return value; }, error => { returned = true; throw error; });
+    try {
+      await Promise.race([atSource.promise, outcome.then(() => { throw new Error("Candidate skipped governance before the actual deadline"); })]);
+      expect(beforeWaitMs).toBeLessThan(deadline);
+      await new Promise(resolve => setTimeout(resolve, Math.max(0, deadline - Date.now()) + 100));
+      expect(Date.now()).toBeGreaterThanOrEqual(deadline); expect(returned).toBe(false);
+      held.release(); await governance;
+      const view = await outcome, status = mode === "active" ? "timed_out" : "expired";
+      expect(view).toMatchObject({ status, questions: [], answers: {}, revision: before.revision + 1 });
+      expect(view.serverNowMs).toBeGreaterThanOrEqual(deadline);
+      expect(JSON.stringify(view)).not.toMatch(/correctIndex|explanation|"score"/);
+      expect(await read(id)).toMatchObject({ status, answers: before.answers,
+        submittedAtMs: mode === "active" ? deadline : null,
+        score: mode === "active" ? { correct: 1, answered: 1 } : null, revision: before.revision + 1 });
+    } finally {
+      held.release(); await Promise.allSettled([governance, outcome]); transaction.mockRestore();
+      await db.update(questions).set({ reviewStatus: "approved" }).where(eq(questions.id, 3));
+    }
+  });
+
+  it.each(["fresh", "duplicate"] as const)("rejects real %s invitations whose deadline lapses during governance waits", async mode => {
+    const id = await fixture(), original = await read(id), deadline = Date.now() + 60_000;
+    await db.update(recruitmentAssessments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssessments.id, original.assessmentId));
+    if (mode === "fresh") await db.delete(recruitmentAssignments).where(eq(recruitmentAssignments.id, id));
+    const held = barrier(), locked = barrier();
+    const governance = db.transaction(async tx => { await tx.select().from(questions).where(eq(questions.id, 3)).for("update"); locked.release(); await held.promise; });
+    await locked.promise;
+    const clock = vi.spyOn(Date, "now").mockReturnValue(deadline - 1);
+    const manager = { ...ctx, studentEmail: "manager@example.test" };
+    let returned = false;
+    const pending = inviteRecruitmentCandidate(manager, orgId, original.assessmentId, memberId);
+    const outcome = pending.then(() => { returned = true; return "unexpected success"; }, error => { returned = true; return error.code; });
+    try {
+      await new Promise(resolve => setTimeout(resolve, 100)); expect(returned).toBe(false);
+      clock.mockReturnValue(deadline); held.release(); await governance;
+      expect(await outcome).toBe("CONFLICT");
+      expect(await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.assessmentId, original.assessmentId))).toEqual(mode === "fresh" ? [] : [original]);
+    } finally { held.release(); await Promise.allSettled([governance, outcome]); clock.mockRestore(); }
   });
 
   it.each(["empty list", "populated list", "missing result", "nonowned result", "owned result",

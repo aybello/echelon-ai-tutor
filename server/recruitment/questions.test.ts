@@ -108,14 +108,14 @@ describe("current governed frozen source validation", () => {
   it("fails the whole frozen form on any unavailable source rather than shrinking or resampling", async () => {
     const before = structuredClone(snapshot), { db, reads } = sourcesDb(3);
     await expect(assertRecruitmentSourcesVisible(db, "synthetic-bank", snapshot)).rejects.toMatchObject({
-      code: "CONFLICT", message: expect.stringMatching(/manager.*replacement assessment form/i),
+      code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i),
     });
     expect(reads.map(read => read.params[0])).toEqual([1, 2, 3]); expect(snapshot).toEqual(before);
   });
 
   it.each(["q1", "01", "1e0", "0", "-1", "1.5", "9007199254740992"])("rejects non-authoritative ID %s before any question lookup", async id => {
     const { db, reads } = sourcesDb();
-    await expect(assertRecruitmentSourcesVisible(db, "synthetic-bank", [{ ...snapshot[0], id }, ...snapshot.slice(1)])).rejects.toMatchObject({ code: "CONFLICT" });
+    await expect(assertRecruitmentSourcesVisible(db, "synthetic-bank", [{ ...snapshot[0], id }, ...snapshot.slice(1)])).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
     expect(reads).toEqual([]);
   });
 });

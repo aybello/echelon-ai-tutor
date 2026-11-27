@@ -154,7 +154,7 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     expect(result).toMatchObject({ status: "active", startedAtMs: NOW, revision: 1 });
     expect(store.events).toEqual(["begin", "org-share", "locked-read", "write", "commit"]);
     expect(store.db.transaction.mock.calls[0][1]).toEqual({ isolationLevel: "read committed" });
-    expect(mocks.assertCandidate).toHaveBeenCalledTimes(2);
+    expect(mocks.assertCandidate).toHaveBeenCalledTimes(3);
     const locked = store.reads.find(read => read.tx && read.table === "recruitment_assignments")!;
     expect(locked.locked).toBe(true);
     const dialect = new MySqlDialect();
@@ -269,7 +269,7 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
       else if (unavailable === "other-bank") store.sources[2].bankKey = "class2-water-dist";
       else store.sources[2].reviewStatus = unavailable;
       await expect(operateRecruitmentCandidate(context, ID, operation)).rejects.toMatchObject({
-        code: "CONFLICT", message: expect.stringMatching(/manager.*replacement assessment form/i),
+        code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i),
       });
       expect(store.row()).toEqual(before); expect(store.assessment).toEqual(frozen); expect(store.writes).toEqual([]);
       expect(store.reads.filter(read => read.table === "questions").map(read => new MySqlDialect().sqlToQuery(read.predicate as never).params[0])).toEqual([1, 2, 3]);
@@ -298,12 +298,70 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     const store = fakeTransactionalStore({ ...started(), answers: { "1": 1 } }, () => vi.setSystemTime(NOW + 300_000));
     vi.setSystemTime(NOW + 299_999);
     mocks.assertCandidate.mockImplementation(async (_ctx, _db, _assignment, _key, options) => {
-      if (options?.lock) expect(Date.now()).toBe(NOW + 300_000);
+      if (options?.lock) expect([NOW + 299_999, NOW + 300_000]).toContain(Date.now());
       return { id: 7, name: "Synthetic utility" };
     });
     const result = await operateRecruitmentCandidate(context, ID, answer());
     expect(result.status).toBe("timed_out"); expect(store.row().answers).toEqual({ "1": 1 });
     expect(store.row().submittedAtMs).toBe(NOW + 300_000); expect(store.events.at(-1)).toBe("commit");
+  });
+  it.each(["invited", "active", "untimed"] as const)("durably finalizes elapsed %s attempts before looking up hidden sources", async mode => {
+    for (const kind of ["get", "start", "answer", "submit"] as const) {
+      const initial = mode === "invited" ? invitation() : { ...started(), answers: { "1": 0, "2": 1 } };
+      const store = fakeTransactionalStore({ ...initial, expiresAtMs: NOW });
+      if (mode === "untimed") store.assessment.timeLimitMinutes = null;
+      store.sources.splice(0);
+      const frozen = structuredClone(store.assessment);
+      const operation = kind === "get" ? { kind: "get" } as const : kind === "start" ? start
+        : kind === "answer" ? answer(0) : submit(0);
+      const result = await operateRecruitmentCandidate(context, ID, operation);
+      const status = mode === "active" ? "timed_out" : "expired";
+      expect(result).toMatchObject({ status, questions: [], answers: {}, revision: initial.revision + 1 });
+      expect(JSON.stringify(result)).not.toMatch(/correctIndex|explanation|"score"/);
+      expect(store.row()).toMatchObject({ status, answers: initial.answers,
+        score: mode === "active" ? { correct: 1, answered: 2 } : null,
+        submittedAtMs: mode === "active" ? NOW : null });
+      expect(store.assessment).toEqual(frozen); expect(store.writes).toHaveLength(1);
+      expect(store.reads.some(read => read.table === "questions")).toBe(false);
+      expect(store.events.at(-1)).toBe("commit"); expect(mocks.assertCandidate).toHaveBeenLastCalledWith(
+        context, expect.anything(), expect.objectContaining({ memberId: 31 }), "class2-water", { centralPreflightDone: true, lock: true });
+    }
+  });
+  it.each(["active", "invited"] as const)("deadline finalization wins over source denial during a %s governance wait", async mode => {
+    const initial = mode === "active" ? { ...started(), answers: { "1": 1 } } : invitation();
+    const deadline = NOW + 1000;
+    const store = fakeTransactionalStore({ ...initial, expiresAtMs: deadline }, () => vi.setSystemTime(deadline));
+    store.sources[2].reviewStatus = "rejected";
+    vi.setSystemTime(deadline - 1);
+    const result = await operateRecruitmentCandidate(context, ID, mode === "active" ? answer(999) : start);
+    expect(result).toMatchObject({ status: mode === "active" ? "timed_out" : "expired", answers: {}, questions: [], serverNowMs: deadline });
+    expect(store.row().answers).toEqual(initial.answers); expect(store.writes).toHaveLength(1);
+    expect(store.events.at(-1)).toBe("commit"); expect(store.row().revision).toBe(initial.revision + 1);
+  });
+  it("an open withdrawn form cannot strand the later overdue attempt indefinitely", async () => {
+    const store = fakeTransactionalStore({ ...started(), answers: { "1": 0 } }); store.sources[2].reviewStatus = "in_review";
+    vi.setSystemTime(NOW + 299_999);
+    await expect(operateRecruitmentCandidate(context, ID, answer())).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
+    expect(store.writes).toHaveLength(0);
+    vi.setSystemTime(NOW + 300_000);
+    const view = await operateRecruitmentCandidate(context, ID, { kind: "get" });
+    expect(view).toMatchObject({ status: "timed_out", questions: [], answers: {} });
+    expect(store.row()).toMatchObject({ status: "timed_out", score: { correct: 1 }, answers: { "1": 0 } });
+    expect(store.writes).toHaveLength(1);
+  });
+  it("does not finalize an overdue hidden form without the locked exact seat authorization", async () => {
+    const store = fakeTransactionalStore({ ...started(), expiresAtMs: NOW }); store.sources.splice(0);
+    mocks.assertCandidate.mockResolvedValueOnce({ name: "Synthetic utility" }).mockRejectedValueOnce(new TRPCError({ code: "FORBIDDEN" }));
+    await expect(operateRecruitmentCandidate(context, ID, { kind: "get" })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(store.writes).toHaveLength(0); expect(store.row().status).toBe("active");
+  });
+  it("denies a post-governance exact term/access lapse rather than accepting or finalizing without valid seat locks", async () => {
+    const store = fakeTransactionalStore(started(), () => vi.setSystemTime(NOW + 300_000));
+    store.sources[2].reviewStatus = "rejected"; vi.setSystemTime(NOW + 299_999);
+    mocks.assertCandidate.mockResolvedValueOnce({ name: "Synthetic utility" }).mockResolvedValueOnce({ name: "Synthetic utility" })
+      .mockRejectedValueOnce(new TRPCError({ code: "FORBIDDEN" }));
+    await expect(operateRecruitmentCandidate(context, ID, answer())).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(store.writes).toHaveLength(0); expect(store.row().status).toBe("active");
   });
   it("assessment lookup is explicitly scoped to the assignment's organization", async () => {
     const store = fakeTransactionalStore();

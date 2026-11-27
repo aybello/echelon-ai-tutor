@@ -43,6 +43,8 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const DEADLINE_RECHECK_MIN_MS = 5000;
 const DEADLINE_RECHECK_MAX_MS = 30000;
 const DEADLINE_RECHECK_RETRIES = 3;
+const FORM_WITHDRAWN_MESSAGE =
+  "This assessment form is no longer available. Ask the hiring team to replace the assessment invitation.";
 const card =
   "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8";
 const isTerminal = (status: RecruitmentCandidateView["status"]) =>
@@ -148,10 +150,19 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const clock = useRef(new RecruitmentClock());
   // Responses from an earlier session must not restore its candidate data.
   const sessionEpoch = useRef(0);
+  const authorizedFetch = useRef<{
+    epoch: number;
+    data: RecruitmentCandidateView;
+  } | null>(null);
+  const [fetchVersion, setFetchVersion] = useState(0);
   // Registered before useQuery's layout subscription starts its initial fetch.
   // Observe the real query fetch event, not render time or wall-clock updatedAt.
   useLayoutEffect(() => {
-    let request: { startedMs: number; epoch: number } | null = null;
+    let request: {
+      startedMs: number;
+      epoch: number;
+      query: object;
+    } | null = null;
     const queryKey = getQueryKey(
       trpc.recruitment.candidateGet,
       { assignmentId },
@@ -165,18 +176,34 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       )
         return;
       if (event.action.type === "fetch") {
-        request = { startedMs: performance.now(), epoch: sessionEpoch.current };
+        request = {
+          startedMs: performance.now(),
+          epoch: sessionEpoch.current,
+          query: event.query,
+        };
       } else if (event.action.type === "success" && !event.action.manual) {
-        if (request && request.epoch === sessionEpoch.current) {
+        if (
+          request &&
+          request.epoch === sessionEpoch.current &&
+          request.query === event.query
+        ) {
+          authorizedFetch.current = {
+            epoch: request.epoch,
+            data: event.query.state.data as RecruitmentCandidateView,
+          };
           clock.current.record(
             event.query.state.data as RecruitmentCandidateView,
             request.startedMs,
             performance.now()
           );
+          setFetchVersion(version => version + 1);
         }
         request = null;
       } else if (event.action.type === "error") {
         request = null;
+        // Withdrawal/access denial must clear already delivered content as soon
+        // as the server failure is known, not wait for a passive query effect.
+        if (live.current) handleAccessFailure(event.action.error);
       }
     });
   }, [assignmentId, queryClient]);
@@ -188,6 +215,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
       refetchOnMount: "always",
+      trpc: { abortOnUnmount: true },
     }
   );
   const start = trpc.recruitment.start.useMutation();
@@ -212,6 +240,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const [error, setError] = useState("");
   const [authRequired, setAuthRequired] = useState(false);
   const [forbidden, setForbidden] = useState(false);
+  const [formWithdrawn, setFormWithdrawn] = useState(false);
   const [needsRefresh, setNeedsRefresh] = useState(false);
   const [submitOpen, setSubmitOpen] = useState(false);
   const expectedRevision = useRef<number | null>(null);
@@ -228,11 +257,23 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     live.current = true;
     return () => {
       // Invalidate captured handlers synchronously during teardown, including
-      // effect replay. A request already sent cannot be recalled; ignore its result.
+      // effect replay. Cancel AND evict so a same-assignment remount cannot join
+      // an earlier session's read, even when its transport ignores abort.
       live.current = false;
       sessionEpoch.current += 1;
+      authorizedFetch.current = null;
+      const filters = {
+        queryKey: getQueryKey(
+          trpc.recruitment.candidateGet,
+          { assignmentId },
+          "query"
+        ),
+        exact: true,
+      };
+      void queryClient.cancelQueries(filters);
+      queryClient.removeQueries(filters);
     };
-  }, []);
+  }, [assignmentId, queryClient]);
   useEffect(() => {
     const connected = () => setOnline(true),
       disconnected = () => setOnline(false);
@@ -247,6 +288,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   }, []);
   const clearCandidate = useCallback(() => {
     viewRef.current = null;
+    authorizedFetch.current = null;
     clock.current.clear();
     setView(null);
     setAccepted(false);
@@ -257,27 +299,38 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setSubmitOpen(false);
     deadlineRecheck.current = null;
     // Remove only this assignment, never another candidate's query cache.
-    void utils.recruitment.candidateGet.cancel({ assignmentId });
-    queryClient.removeQueries({
+    const filters = {
       queryKey: getQueryKey(
         trpc.recruitment.candidateGet,
         { assignmentId },
         "query"
       ),
       exact: true,
-    });
-  }, [assignmentId, queryClient, utils]);
+    };
+    void queryClient.cancelQueries(filters);
+    queryClient.removeQueries(filters);
+  }, [assignmentId, queryClient]);
   const handleAccessFailure = useCallback(
     (failure: unknown) => {
       const code = errorCode(failure);
-      if (code !== "UNAUTHORIZED" && code !== "FORBIDDEN") return false;
+      if (
+        code !== "UNAUTHORIZED" &&
+        code !== "FORBIDDEN" &&
+        code !== "PRECONDITION_FAILED"
+      )
+        return false;
       entryConsumed.current = true;
       sessionEpoch.current += 1;
       clearCandidate();
       setNeedsRefresh(true);
       setAuthRequired(code === "UNAUTHORIZED");
       setForbidden(code === "FORBIDDEN");
-      setError(errorMessage(failure));
+      setFormWithdrawn(code === "PRECONDITION_FAILED");
+      setError(
+        code === "PRECONDITION_FAILED"
+          ? FORM_WITHDRAWN_MESSAGE
+          : errorMessage(failure)
+      );
       return true;
     },
     [clearCandidate]
@@ -346,8 +399,11 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     const mayConsume =
       !entryConsumed.current ||
       (!needsRefresh && !sessionRefreshPending && !authRequired && !forbidden);
+    const authorization = authorizedFetch.current;
     if (
       mayConsume &&
+      authorization?.epoch === sessionEpoch.current &&
+      authorization.data === query.data &&
       query.isFetchedAfterMount &&
       !query.isFetching &&
       query.isSuccess &&
@@ -363,6 +419,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     query.isSuccess,
     query.isFetchedAfterMount,
     query.isFetching,
+    fetchVersion,
     needsRefresh,
     sessionRefreshPending,
     authRequired,
@@ -408,6 +465,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         setNeedsRefresh(false);
         setAuthRequired(false);
         setForbidden(false);
+        setFormWithdrawn(false);
         setSaveState("idle");
         if (reason === "retry")
           setMessage(
@@ -769,6 +827,19 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         </Button>
         <ErrorNotice
           message={error || "Your account cannot open this invitation."}
+          onRetry={() => void refreshServer()}
+          pending={busy || query.isFetching}
+        />
+      </div>
+    );
+  if (formWithdrawn || query.error?.data?.code === "PRECONDITION_FAILED")
+    return (
+      <div className={`${card} space-y-4`}>
+        <h1 className="text-2xl font-bold">
+          This assessment form is unavailable
+        </h1>
+        <ErrorNotice
+          message={FORM_WITHDRAWN_MESSAGE}
           onRetry={() => void refreshServer()}
           pending={busy || query.isFetching}
         />

@@ -16,7 +16,7 @@ import {
 } from "./access";
 import { normalizeEmail } from "../_core/accessService";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
-import { loadRecruitmentPool, loadRecruitmentPools } from "./questions";
+import { assertRecruitmentSourcesVisible, loadRecruitmentPool, loadRecruitmentPools } from "./questions";
 import { assignmentDeadline, finalizeRecruitmentDeadline, recruitmentResult } from "./state";
 import { persistRecruitmentTransition, readRecruitmentAssessment, recruitmentDb } from "./store";
 import type { RecruitmentCreate, RecruitmentReadDb, RecruitmentTransaction } from "./types";
@@ -141,6 +141,9 @@ export async function createRecruitmentAssessment(ctx: TrpcContext, input: Recru
     } catch (error) {
       throw new TRPCError({ code: "BAD_REQUEST", message: error instanceof Error ? error.message : "Choose valid assessment topics and question count." });
     }
+    // Pool sampling is unlocked. Revalidate the exact selected IDs with current
+    // bank/governance SHARE locks before freezing them; never resample silently.
+    await assertRecruitmentSourcesVisible(tx, course.questionBankKey, selected);
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
     const assessmentId = randomUUID();
@@ -207,6 +210,15 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     const member = await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
     const [existing] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.assessmentId, assessment.id), eq(recruitmentAssignments.memberId, member.id), eq(recruitmentAssignments.orgId, org.id))).limit(1);
+    // Terminal duplicates retain their ordinary lifecycle conflict; every usable
+    // link and every fresh INSERT needs the immutable original sources locked.
+    if (existing && !["invited", "active"].includes(existing.status)) {
+      throw new TRPCError({ code: "CONFLICT", message: "This invitation is no longer usable. Create a new assessment form to invite this candidate again." });
+    }
+    const course = recruitmentCourseForOrg(org, assessment.courseKey);
+    await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions);
+    // Seat and subscription time predicates can lapse during governance waits.
+    await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
     if (existing) {

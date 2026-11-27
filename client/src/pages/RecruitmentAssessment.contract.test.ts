@@ -1,5 +1,5 @@
 import * as React from "react";
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryObserver } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
@@ -99,28 +99,26 @@ vi.mock("@/lib/trpc", () => ({
     recruitment: {
       candidateGet: {
         _def: () => ({ path: ["recruitment", "candidateGet"] }),
-        useQuery: () => {
+        useQuery: (_input: unknown, options: any) => {
+          const observer = React.useRef<QueryObserver | null>(null);
+          if (h.autoQuery && !observer.current) {
+            observer.current = new QueryObserver(h.client, {
+              ...options,
+              queryKey: key(),
+              queryFn: h.initialQuery,
+            });
+          }
           React.useLayoutEffect(() => {
             if (!h.autoQuery) return;
-            h.query.isFetching = true;
-            // Use real QueryClient fetch/success events, in the hook's layout
-            // subscription phase, rather than inventing a render-time start.
-            void h.client
-              .fetchQuery({
-                queryKey: key(),
-                queryFn: h.initialQuery,
-                staleTime: 0,
-              })
-              .then((data: RecruitmentCandidateView) => {
-                h.query = {
-                  ...h.query,
-                  data,
-                  isFetching: false,
-                  isFetchedAfterMount: true,
-                  isSuccess: true,
-                };
-                h.dirty = true;
-              });
+            // Exercise actual QueryClient + QueryObserver fetch, cancellation,
+            // remount and replay, not hand-authored isFetchedAfterMount flags.
+            const unsubscribe = observer.current!.subscribe(result => {
+              h.query = result;
+              h.dirty = true;
+            });
+            h.query = observer.current!.getCurrentResult();
+            h.dirty = true;
+            return unsubscribe;
           }, []);
           return h.query;
         },
@@ -265,16 +263,30 @@ function fail(code: string) {
 }
 const key = () =>
   getQueryKey(trpc.recruitment.candidateGet, { assignmentId }, "query");
-function ready(view = fixture) {
+function publishFetchSuccess(view: RecruitmentCandidateView) {
+  // Synchronous fixtures for handler-only tests; real QueryObserver tests below
+  // exercise transport/lifecycle provenance instead of these synthetic events.
+  const cache = h.client.getQueryCache();
+  const query = cache.build(h.client, { queryKey: key() });
+  cache.notify({ type: "updated", query, action: { type: "fetch" } });
+  h.client.setQueryData(key(), view);
+  cache.notify({
+    type: "updated",
+    query,
+    action: { type: "success", data: view },
+  });
   h.query = {
-    data: view,
+    data: query.state.data,
     isFetching: false,
     isFetchedAfterMount: true,
     isSuccess: true,
     isError: false,
     isLoading: false,
   };
-  h.client.setQueryData(key(), view);
+}
+function ready(view = fixture) {
+  render(); // Install the before-useQuery subscription before publishing a fetch.
+  publishFetchSuccess(view);
   return render();
 }
 beforeEach(() => {
@@ -819,11 +831,7 @@ describe("candidate assessment session and confirmation contract", () => {
       expect(h.submit).not.toHaveBeenCalled();
       expect(h.fetch).not.toHaveBeenCalled();
       expect(h.updatesAfterUnmount).toBe(0);
-      expect(h.client.getQueryData(key())).toEqual(
-        action === "start"
-          ? { ...fixture, status: "invited", questions: [], answers: {} }
-          : fixture
-      );
+      expect(h.client.getQueryData(key())).toBeUndefined();
     }
   );
 
@@ -888,7 +896,6 @@ describe("candidate assessment session and confirmation contract", () => {
             ? { assignmentId, questionId: "q1", selectedIndex: 0, revision: 7 }
             : { assignmentId, revision: 7 }
       );
-      const cached = h.client.getQueryData(key());
       unmount();
       response.resolve({
         ...fixture,
@@ -899,7 +906,7 @@ describe("candidate assessment session and confirmation contract", () => {
       expect(h[action]).toHaveBeenCalledTimes(1);
       expect(h.cancel).toHaveBeenCalledTimes(1);
       expect(h.fetch).not.toHaveBeenCalled();
-      expect(h.client.getQueryData(key())).toEqual(cached);
+      expect(h.client.getQueryData(key())).toBeUndefined();
       expect(h.updatesAfterUnmount).toBe(0);
     }
   );
@@ -931,11 +938,10 @@ describe("candidate assessment session and confirmation contract", () => {
       expect(h[action]).toHaveBeenCalledTimes(1);
       expect(h.fetch).toHaveBeenCalledTimes(1);
       expect(h.fetch).toHaveBeenCalledWith({ assignmentId }, { staleTime: 0 });
-      const cached = h.client.getQueryData(key());
       unmount();
       response.resolve({ ...fixture, revision: 9, answers: { q1: 0 } });
       await settle();
-      expect(h.client.getQueryData(key())).toEqual(cached);
+      expect(h.client.getQueryData(key())).toBeUndefined();
       expect(h.updatesAfterUnmount).toBe(0);
       expect(h[action]).toHaveBeenCalledTimes(1);
       expect(h.fetch).toHaveBeenCalledTimes(1);
@@ -987,6 +993,8 @@ describe("candidate assessment session and confirmation contract", () => {
     h.query.isFetching = true;
     expect(text(render())).not.toContain(fixture.questions[0].prompt);
     h.query.isFetching = false;
+    expect(text(render())).not.toContain(fixture.questions[0].prompt);
+    publishFetchSuccess(fixture);
     expect(text(render())).toContain(fixture.questions[0].prompt);
   });
 
@@ -1077,10 +1085,7 @@ describe("candidate assessment session and confirmation contract", () => {
     button(tree, "Review submission").props.onClick();
     tree = render();
     const oldSubmit = button(tree, "Submit assessment");
-    h.query = {
-      ...h.query,
-      data: { ...fixture, revision: 8, answers: { q1: 0 } },
-    };
+    publishFetchSuccess({ ...fixture, revision: 8, answers: { q1: 0 } });
     tree = render();
     expect(nodes(tree).find(n => n.type === "dialog").props.open).toBe(false);
     oldSubmit.props.onClick();
@@ -1189,4 +1194,349 @@ describe("candidate assessment session and confirmation contract", () => {
     expect(text(render())).not.toContain(fixture.questions[0].prompt);
     expect(h.client.getQueryData(key())).toBeUndefined();
   });
+});
+
+function remount() {
+  unmount();
+  h.slots = [];
+  h.layoutEffects = [];
+  h.effects = [];
+  h.mounted = true;
+  h.query = { data: undefined, isSuccess: false, isLoading: true };
+  return render();
+}
+function replayEffects() {
+  // Match StrictMode's synchronous layout cleanup/setup, followed by passive
+  // cleanup/setup, preserving the hook state and actual QueryObserver instance.
+  for (const layout of [true, false]) {
+    const effects = h.slots.filter(
+      slot => Boolean(slot?.layout) === layout && slot?.setup
+    );
+    for (const effect of effects) effect.cleanup?.();
+    for (const effect of effects) effect.cleanup = effect.setup();
+  }
+}
+function expectPrivateContentCleared(tree = render()) {
+  expect(text(tree)).not.toContain(fixture.title);
+  expect(text(tree)).not.toContain(fixture.questions[0].prompt);
+  for (const option of fixture.questions[0].options)
+    expect(text(tree)).not.toContain(option);
+  expect(nodes(tree).some(n => n.type === "radio-group")).toBe(false);
+  expect(nodes(tree).some(n => n.type === "dialog")).toBe(false);
+  expect(h.client.getQueryData(key())).toBeUndefined();
+}
+function replacementNotice(tree = render()) {
+  const notice = nodes(tree).find(
+    n => typeof n.type === "function" && n.type.name === "ErrorNotice"
+  );
+  expect(text(tree)).toContain("This assessment form is unavailable");
+  expect(notice.props.message).toContain("hiring team to replace");
+  return notice;
+}
+
+describe("candidate current-session QueryClient read admission", () => {
+  it.each(["success", "UNAUTHORIZED", "FORBIDDEN"])(
+    "cancels and evicts an old pending read on remount; requires the new %s response",
+    async outcome => {
+      const old = deferred<RecruitmentCandidateView>();
+      const fresh = deferred<RecruitmentCandidateView>();
+      const other = deferred<string>();
+      const otherKey = getQueryKey(
+        trpc.recruitment.candidateGet,
+        { assignmentId: "22222222-2222-4222-8222-222222222222" },
+        "query"
+      );
+      const otherRead = h.client.fetchQuery({
+        queryKey: otherKey,
+        queryFn: () => other.promise,
+      });
+      let oldSignal!: AbortSignal;
+      h.autoQuery = true;
+      h.initialQuery
+        .mockImplementationOnce(({ signal }: { signal: AbortSignal }) => {
+          oldSignal = signal;
+          return old.promise; // Transport intentionally ignores abort.
+        })
+        .mockReturnValueOnce(fresh.promise);
+      render();
+      const oldQuery = h.client
+        .getQueryCache()
+        .find({ queryKey: key(), exact: true });
+      expect(h.initialQuery).toHaveBeenCalledTimes(1);
+      unmount();
+      expect(oldSignal.aborted).toBe(true);
+      expect(
+        h.client.getQueryCache().find({ queryKey: key(), exact: true })
+      ).toBeUndefined();
+      expect(h.client.getQueryState(otherKey)?.fetchStatus).toBe("fetching");
+      remount();
+      expect(h.initialQuery).toHaveBeenCalledTimes(2);
+      expect(
+        h.client.getQueryCache().find({ queryKey: key(), exact: true })
+      ).not.toBe(oldQuery);
+      old.resolve(fixture);
+      await settle();
+      expectPrivateContentCleared();
+      if (outcome === "success") {
+        const next = {
+          ...fixture,
+          title: "Current session assessment",
+          revision: 9,
+          answers: {},
+          questions: [
+            {
+              ...fixture.questions[0],
+              prompt: "Current session prompt",
+              options: ["New first", "New second"],
+            },
+          ],
+        };
+        fresh.resolve(next);
+        await settle();
+        expect(text(render())).toContain("Current session prompt");
+        expect(text(render())).not.toContain(fixture.questions[0].prompt);
+        expect(
+          nodes(render()).find(n => n.type === "radio-group").props.value
+        ).toBe("");
+        expect(h.client.getQueryData(key())).toEqual(next);
+      } else {
+        fresh.reject(fail(outcome));
+        await settle();
+        expectPrivateContentCleared();
+        expect(text(render())).toContain(
+          outcome === "UNAUTHORIZED"
+            ? "Sign in to open"
+            : "not available to this account"
+        );
+      }
+      other.resolve("Other candidate data");
+      await otherRead;
+      expect(h.client.getQueryData(otherKey)).toBe("Other candidate data");
+      expect(h.updatesAfterUnmount).toBe(0);
+      expect(h.save).not.toHaveBeenCalled();
+    }
+  );
+
+  it("never admits a pre-session pending fetch that the observer joins", async () => {
+    const old = deferred<RecruitmentCandidateView>();
+    const oldRead = h.client.fetchQuery({
+      queryKey: key(),
+      queryFn: () => old.promise,
+    });
+    h.autoQuery = true;
+    render();
+    old.resolve(fixture);
+    await oldRead;
+    await settle();
+    expect(h.query.isFetchedAfterMount).toBe(true);
+    expect(text(render())).not.toContain(fixture.questions[0].prompt);
+    expect(h.initialQuery).not.toHaveBeenCalled();
+    // A real fresh fetch started under the page's current subscription authorizes.
+    await h.client.fetchQuery({
+      queryKey: key(),
+      queryFn: async () => fixture,
+      staleTime: 0,
+    });
+    await settle();
+    expect(text(render())).toContain(fixture.questions[0].prompt);
+  });
+
+  it("does not authorize manual setQueryData even if isFetchedAfterMount becomes true", async () => {
+    const fresh = deferred<RecruitmentCandidateView>();
+    h.autoQuery = true;
+    h.initialQuery.mockReturnValue(fresh.promise);
+    render();
+    await h.client.cancelQueries({ queryKey: key(), exact: true });
+    h.client.setQueryData(key(), fixture);
+    await settle();
+    expect(h.query.isFetchedAfterMount).toBe(true);
+    expect(text(render())).not.toContain(fixture.questions[0].prompt);
+    fresh.resolve(fixture);
+    await settle();
+    expect(text(render())).not.toContain(fixture.questions[0].prompt);
+  });
+
+  it.each(["success", "FORBIDDEN"])(
+    "StrictMode-style effect replay cancels the earlier read and requires the current %s",
+    async outcome => {
+      const old = deferred<RecruitmentCandidateView>();
+      const fresh = deferred<RecruitmentCandidateView>();
+      h.autoQuery = true;
+      h.initialQuery
+        .mockReturnValueOnce(old.promise)
+        .mockReturnValueOnce(fresh.promise);
+      render();
+      replayEffects();
+      await settle();
+      expect(h.initialQuery).toHaveBeenCalledTimes(2);
+      old.resolve(fixture);
+      await settle();
+      expectPrivateContentCleared();
+      if (outcome === "success") {
+        fresh.resolve({ ...fixture, revision: 9, answers: {} });
+        await settle();
+        expect(text(render())).toContain(fixture.questions[0].prompt);
+        expect(
+          nodes(render()).find(n => n.type === "radio-group").props.value
+        ).toBe("");
+      } else {
+        fresh.reject(fail("FORBIDDEN"));
+        await settle();
+        expectPrivateContentCleared();
+      }
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.updatesAfterUnmount).toBe(0);
+    }
+  );
+});
+
+describe("candidate explicit frozen-form withdrawal contract", () => {
+  it("initial QueryClient PRECONDITION_FAILED never restores seeded content", async () => {
+    h.client.setQueryData(key(), fixture);
+    h.autoQuery = true;
+    h.initialQuery.mockRejectedValue(fail("PRECONDITION_FAILED"));
+    render();
+    await settle();
+    expectPrivateContentCleared();
+    replacementNotice();
+    expect(h.fetch).not.toHaveBeenCalled();
+  });
+
+  it("clears an open prompt, saved answer, confirmation and exact cache synchronously on query withdrawal", async () => {
+    await freshTimedQuery(fixture, 0);
+    button(render(), "Review submission").props.onClick();
+    expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(
+      true
+    );
+    expect(
+      nodes(render()).find(n => n.type === "radio-group").props.value
+    ).toBe("1");
+    const oldSubmit = button(render(), "Submit assessment");
+    const oldChoice = nodes(render()).find(n => n.type === "radio-group");
+    const otherKey = ["unrelated", "candidate"];
+    h.client.setQueryData(otherKey, "Other candidate fixture");
+    await h.client
+      .fetchQuery({
+        queryKey: key(),
+        queryFn: async () => {
+          throw fail("PRECONDITION_FAILED");
+        },
+        staleTime: 0,
+      })
+      .catch(() => undefined);
+    // Before running passive query effects, the cache-event failure handler has
+    // cleared local DTO refs, saved choices and the confirmation revision.
+    const tree = rawRender();
+    expectPrivateContentCleared(tree);
+    replacementNotice(tree);
+    expect(h.client.getQueryData(otherKey)).toBe("Other candidate fixture");
+    oldSubmit.props.onClick();
+    oldChoice.props.onValueChange("0");
+    await settle();
+    expect(h.submit).not.toHaveBeenCalled();
+    expect(h.save).not.toHaveBeenCalled();
+  });
+
+  it.each(["start", "save", "submit"] as const)(
+    "%s withdrawal removes candidate content without replay or conflict recovery",
+    async action => {
+      h[action].mockRejectedValue(fail("PRECONDITION_FAILED"));
+      actionHandler(action)();
+      await settle();
+      expectPrivateContentCleared();
+      replacementNotice();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.fetch).not.toHaveBeenCalled();
+      // Stale query flags and manual cache data cannot restore the withdrawn DTO.
+      h.client.setQueryData(key(), fixture);
+      h.query = { ...h.query, data: fixture, isSuccess: true };
+      expect(text(render())).not.toContain(fixture.questions[0].prompt);
+      expect(h[action]).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it("manual refresh withdrawal clears saved answers and an open confirmation; explicit fresh recovery never replays", async () => {
+    ready();
+    button(render(), "Review submission").props.onClick();
+    h.save.mockRejectedValue(new Error("Synthetic save failure"));
+    nodes(render())
+      .find(n => n.type === "radio-group")
+      .props.onValueChange("0");
+    await settle();
+    expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(
+      true
+    );
+    h.fetch.mockRejectedValueOnce(fail("PRECONDITION_FAILED"));
+    nodes(render())
+      .find(n => typeof n.type === "function" && n.type.name === "ErrorNotice")
+      .props.onRetry();
+    await settle();
+    expectPrivateContentCleared();
+    const notice = replacementNotice();
+    h.fetch.mockResolvedValueOnce({ ...fixture, revision: 9, answers: {} });
+    notice.props.onRetry();
+    await settle();
+    expect(
+      nodes(render()).find(n => n.type === "radio-group").props.value
+    ).toBe("");
+    expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(
+      false
+    );
+    expect(h.save).toHaveBeenCalledTimes(1);
+    expect(h.submit).not.toHaveBeenCalled();
+    expect(h.fetch).toHaveBeenCalledTimes(2);
+  });
+
+  it.each(["save", "submit"] as const)(
+    "%s conflict-recovery withdrawal removes the frozen form and never retries the write",
+    async action => {
+      h[action].mockRejectedValueOnce(fail("CONFLICT"));
+      h.fetch.mockRejectedValueOnce(fail("PRECONDITION_FAILED"));
+      actionHandler(action)();
+      await settle();
+      expectPrivateContentCleared();
+      replacementNotice();
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it.each(["save", "submit"] as const)(
+    "ordinary %s revision conflict retains the form and requires manual refresh after recovery failure",
+    async action => {
+      h[action].mockRejectedValueOnce(fail("CONFLICT"));
+      h.fetch.mockRejectedValueOnce(
+        new Error("Synthetic recovery read failure")
+      );
+      actionHandler(action)();
+      await settle();
+      expect(text(render())).toContain(fixture.questions[0].prompt);
+      expect(
+        nodes(render()).find(n => n.type === "radio-group").props.value
+      ).toBe("1");
+      expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(
+        false
+      );
+      expect(text(render())).not.toContain("form is unavailable");
+      const notice = nodes(render()).find(
+        n => typeof n.type === "function" && n.type.name === "ErrorNotice"
+      );
+      expect(notice.props.message).toContain("Synthetic recovery read failure");
+      h.fetch.mockResolvedValueOnce({
+        ...fixture,
+        revision: 9,
+        answers: { q1: 0 },
+      });
+      notice.props.onRetry();
+      await settle();
+      expect(
+        nodes(render()).find(n => n.type === "radio-group").props.value
+      ).toBe("0");
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.fetch).toHaveBeenCalledTimes(2);
+      expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(
+        false
+      );
+    }
+  );
 });

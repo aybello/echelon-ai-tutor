@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({ recruitmentManager: vi.fn(), assertRecruitment
 vi.mock("./access", async original => ({ ...await original<typeof import("./access")>(), recruitmentManager: mocks.recruitmentManager, assertRecruitmentSeat: mocks.assertRecruitmentSeat }));
 vi.mock("./store", () => ({ recruitmentDb: mocks.recruitmentDb, readRecruitmentAssessment: mocks.readRecruitmentAssessment, persistRecruitmentTransition: mocks.persistRecruitmentTransition }));
 vi.mock("./questions", async original => ({ ...await original<typeof import("./questions")>(), loadRecruitmentPools: mocks.loadRecruitmentPools }));
-import { inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentDefinitionSummary, recruitmentResults, revokeRecruitmentAssignment } from "./service";
+import { createRecruitmentAssessment, inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentDefinitionSummary, recruitmentResults, revokeRecruitmentAssignment } from "./service";
 import { recruitmentResult } from "./state";
 
 const NOW = Date.parse("2026-11-27T19:00:00Z");
@@ -20,25 +20,45 @@ const context = { user: null, studentEmail: EMAIL, req: {}, res: {} } as unknown
 const org = () => ({ id: 7, name: "Synthetic utility", province: "ontario", tier: "all-access", billingType: "stripe", status: "active", termStart: new Date(NOW - 1000), termEnd: new Date(NOW + 86_400_000), managerEmail: EMAIL } as Organization);
 const member = () => ({ id: 31, orgId: 7, email: "candidate@example.test", name: "Synthetic candidate", role: "operator", status: "assigned", courseKey: "class2-water", courseKeys: null } as OrganizationMember);
 const form = () => ({ id: FORM_ID, orgId: 7, title: "Synthetic assessment", courseKey: "class2-water", courseLabel: "Class 2 Water", modules: ["Treatment"], questionCount: 5, timeLimitMinutes: 5, createdAtMs: NOW - 1000, expiresAtMs: NOW + 900_000,
-  questions: Array.from({ length: 5 }, (_, i) => ({ id: `q${i + 1}`, module: "Treatment", prompt: `Synthetic prompt ${i + 1}`, options: ["One", "Two"], correctIndex: 0 })),
+  questions: Array.from({ length: 5 }, (_, i) => ({ id: String(i + 1), module: "Treatment", prompt: `Synthetic prompt ${i + 1}`, options: ["One", "Two"], correctIndex: 0 })),
 } as RecruitmentAssessmentRow);
 const invited = () => ({ id: ID, assessmentId: FORM_ID, orgId: 7, memberId: 31, candidateEmail: member().email, candidateName: member().name, creatorEmail: EMAIL, status: "invited", startedAtMs: null, submittedAtMs: null, consentVersion: null, consentAcceptedAtMs: null, expiresAtMs: NOW + 900_000, createdAtMs: NOW - 1000, updatedAtMs: NOW - 1000, answers: {}, score: null, revision: 0, revokedAtMs: null, revokedByEmail: null } as RecruitmentAssignmentRow);
 const active = () => ({ ...invited(), status: "active" as const, startedAtMs: NOW, revision: 1 });
 
 /** Read/write spy only: no assertion of real MySQL transaction isolation. */
-function fakeManagerDb(lockedOrg: Organization, existing?: RecruitmentAssignmentRow) {
+function fakeManagerDb(lockedOrg: Organization, existing?: RecruitmentAssignmentRow, options: {
+  afterPoolRead?: () => void; beforeSourceRead?: (id: number) => void | Promise<void>;
+} = {}) {
   const reads: { table: string; lock: string | null }[] = [];
+  const sourceIds: number[] = [];
+  const sources = form().questions.map(q => ({ id: Number(q.id), bankKey: "class2-water", reviewStatus: "approved",
+    module: q.module, question: q.prompt, options: JSON.stringify(q.options), correctIndex: q.correctIndex }));
   const insertValues = vi.fn(async () => undefined);
   const insert = vi.fn(() => ({ values: insertValues }));
   const tx = {
-    select: vi.fn(() => ({ from: (table: Parameters<typeof getTableName>[0]) => ({ where: () => {
+    select: vi.fn(() => ({ from: (table: Parameters<typeof getTableName>[0]) => ({ where: (predicate: SQL) => {
       const name = getTableName(table), read = { table: name, lock: null as string | null };
       reads.push(read);
-      const rows = name === "organizations" ? [lockedOrg] : name === "recruitment_assignments" ? (existing ? [existing] : []) : [];
+      const { params } = new MySqlDialect().sqlToQuery(predicate);
       const builder = {
         limit: () => builder,
+        orderBy: () => builder,
         for: (lock: string) => { read.lock = lock; return builder; },
-        then: (resolve: (value: unknown[]) => unknown, reject?: (reason: unknown) => unknown) => Promise.resolve(rows).then(resolve, reject),
+        then: (resolve: (value: unknown[]) => unknown, reject?: (reason: unknown) => unknown) => (async () => {
+          if (name === "questions") {
+            if (read.lock) {
+              expect(read.lock).toBe("share");
+              const id = Number(params[0]); sourceIds.push(id);
+              await options.beforeSourceRead?.(id);
+              return sources.filter(source => source.id === id && source.bankKey === params[1]
+                && !params.slice(2).includes(source.reviewStatus)).map(source => ({ id: source.id }));
+            }
+            const pool = structuredClone(sources.filter(source => source.bankKey === params[0]
+              && !params.slice(1).includes(source.reviewStatus)));
+            options.afterPoolRead?.(); return pool;
+          }
+          return name === "organizations" ? [lockedOrg] : name === "recruitment_assignments" ? (existing ? [existing] : []) : [];
+        })().then(resolve, reject),
       };
       return builder;
     } }) })),
@@ -46,7 +66,7 @@ function fakeManagerDb(lockedOrg: Organization, existing?: RecruitmentAssignment
   };
   const db = { transaction: vi.fn(async (callback: (tx: unknown) => unknown) => callback(tx)) };
   mocks.recruitmentDb.mockResolvedValue(db);
-  return { db, reads, insert, insertValues };
+  return { db, reads, insert, insertValues, sources, sourceIds };
 }
 
 function barrier() {
@@ -194,6 +214,75 @@ describe("transaction-authorized recruitment catalog", () => {
   });
 });
 
+describe("manager immutable source acceptance", () => {
+  const createInput = { orgId: 7, title: "Synthetic new form", courseKey: "class2-water", modules: ["Treatment"],
+    questionCount: 5, timeLimitMinutes: 5, expiresInDays: 7 };
+
+  it.each(["missing", "other-bank", "in_review", "rejected"])("refuses to freeze selected sources changed to %s after the unlocked pool read", async change => {
+    const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => {
+      if (change === "missing") db.sources.splice(2, 1);
+      else if (change === "other-bank") db.sources[2].bankKey = "class2-water-dist";
+      else db.sources[2].reviewStatus = change;
+    } });
+    await expect(createRecruitmentAssessment(context, createInput)).rejects.toMatchObject({
+      code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i),
+    });
+    expect(db.sourceIds).toEqual([1, 2, 3]); expect(db.insert).not.toHaveBeenCalled();
+    expect(db.reads[0]).toEqual({ table: "organizations", lock: "update" });
+  });
+
+  it("freezes selected content only after locking exact sources in order, preserving the selected snapshot", async () => {
+    const db = fakeManagerDb(org(), undefined, { afterPoolRead: () => { db.sources[2].question = "Later current text"; } });
+    const result = await createRecruitmentAssessment(context, createInput);
+    expect(db.sourceIds).toEqual([1, 2, 3, 4, 5]);
+    expect(db.insertValues).toHaveBeenCalledWith(expect.objectContaining({ id: result.assessmentId,
+      questions: expect.arrayContaining([expect.objectContaining({ id: "3", prompt: "Synthetic prompt 3" })]) }));
+    expect(db.db.transaction).toHaveBeenCalledWith(expect.any(Function), { isolationLevel: "read committed" });
+  });
+
+  it.each(["fresh", "invited", "active"] as const)("rejects unavailable original sources before returning the %s link or inserting", async mode => {
+    for (const change of ["missing", "other-bank", "in_review", "rejected"]) {
+      const existing = mode === "fresh" ? undefined : mode === "active" ? active() : invited();
+      const before = structuredClone(existing), frozen = form();
+      const db = fakeManagerDb(org(), existing);
+      if (change === "missing") db.sources.splice(2, 1);
+      else if (change === "other-bank") db.sources[2].bankKey = "class2-water-dist";
+      else db.sources[2].reviewStatus = change;
+      await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({
+        code: "PRECONDITION_FAILED", message: expect.stringMatching(/manager.*replacement assessment form/i),
+      });
+      expect(db.sourceIds).toEqual([1, 2, 3]); expect(db.insert).not.toHaveBeenCalled();
+      expect(existing).toEqual(before); expect(form()).toEqual(frozen);
+      expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+    }
+  });
+
+  it.each(["create", "fresh", "duplicate"])("rejects current Annual term lapse during source waits for %s", async mode => {
+    const lockedOrg = { ...org(), termEnd: new Date(NOW + 1) };
+    const db = fakeManagerDb(lockedOrg, mode === "duplicate" ? active() : undefined,
+      { beforeSourceRead: () => { vi.setSystemTime(NOW + 1); } });
+    const operation = mode === "create" ? createRecruitmentAssessment(context, createInput)
+      : inviteRecruitmentCandidate(context, 7, FORM_ID, 31);
+    await expect(operation).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.insert).not.toHaveBeenCalled();
+  });
+
+  it.each(["fresh", "duplicate"])("rejects %s invitation deadline crossing during governance waits", async mode => {
+    mocks.readRecruitmentAssessment.mockResolvedValue({ ...form(), expiresAtMs: NOW + 1 });
+    const db = fakeManagerDb(org(), mode === "duplicate" ? active() : undefined,
+      { beforeSourceRead: () => { vi.setSystemTime(NOW + 1); } });
+    await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(db.insert).not.toHaveBeenCalled(); expect(mocks.assertRecruitmentSeat).toHaveBeenCalledTimes(2);
+  });
+
+  it("rechecks exact seat/subscription after source waits before returning a duplicate usable link", async () => {
+    const db = fakeManagerDb(org(), active());
+    mocks.assertRecruitmentSeat.mockResolvedValueOnce(member()).mockRejectedValueOnce({ code: "FORBIDDEN" });
+    await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.sourceIds).toEqual([1, 2, 3, 4, 5]); expect(db.insert).not.toHaveBeenCalled();
+  });
+});
+
 describe("recruitment duplicate invitations", () => {
   it.each(["invited", "active"] as const)("returns the original usable %s invitation without inserting or resetting it", async status => {
     const row = status === "active" ? active() : invited(), before = structuredClone(row);
@@ -249,16 +338,16 @@ describe("recruitment revocation reporting boundary and retained evidence", () =
     expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
   });
   it("retains submitted evidence, completion count and recomputed review after revocation", async () => {
-    const row = { ...active(), status: "submitted" as const, submittedAtMs: NOW - 100, answers: { q1: 0 }, score: { correct: 999 } as RecruitmentAssignmentRow["score"] };
+    const row = { ...active(), status: "submitted" as const, submittedAtMs: NOW - 100, answers: { "1": 0 }, score: { correct: 999 } as RecruitmentAssignmentRow["score"] };
     fakeManagerDb(org(), row);
     expect(await revokeRecruitmentAssignment(context, 7, ID)).toEqual({ success: true });
     const next = mocks.persistRecruitmentTransition.mock.calls[0][2] as RecruitmentAssignmentRow;
-    expect(next).toMatchObject({ status: "revoked", submittedAtMs: NOW - 100, answers: { q1: 0 }, revokedAtMs: NOW, revokedByEmail: EMAIL });
+    expect(next).toMatchObject({ status: "revoked", submittedAtMs: NOW - 100, answers: { "1": 0 }, revokedAtMs: NOW, revokedByEmail: EMAIL });
     expect(recruitmentDefinitionSummary(form(), [next]).completed).toBe(1);
-    expect(recruitmentResult(form(), next, NOW)).toMatchObject({ status: "revoked", answers: { q1: 0 }, score: { correct: 1, answered: 1 } });
+    expect(recruitmentResult(form(), next, NOW)).toMatchObject({ status: "revoked", answers: { "1": 0 }, score: { correct: 1, answered: 1 } });
   });
   it("finalizes an elapsed active timer before revoking and keeps that completion evidence", async () => {
-    fakeManagerDb(org(), { ...active(), answers: { q1: 0 } }); vi.setSystemTime(NOW + 300_000);
+    fakeManagerDb(org(), { ...active(), answers: { "1": 0 } }); vi.setSystemTime(NOW + 300_000);
     await revokeRecruitmentAssignment(context, 7, ID);
     const next = mocks.persistRecruitmentTransition.mock.calls[0][2] as RecruitmentAssignmentRow;
     expect(next).toMatchObject({ status: "revoked", submittedAtMs: NOW + 300_000, score: { correct: 1 }, revision: 3 });
@@ -275,7 +364,7 @@ describe("durable manager recruitment reporting", () => {
 
   it.each(["results", "list"] as const)("waits for %s finalization and transaction commit before returning durable completion", async kind => {
     const beforeCommit = barrier(), atCommit = barrier();
-    const db = fakeReportingDb({ rows: [{ ...active(), answers: { q1: 0 } }], beforeCommit: async () => { atCommit.release(); await beforeCommit.promise; } });
+    const db = fakeReportingDb({ rows: [{ ...active(), answers: { "1": 0 } }], beforeCommit: async () => { atCommit.release(); await beforeCommit.promise; } });
     mocks.recruitmentManager.mockImplementation(async () => { expect(db.events).toEqual([]); return org(); });
     vi.setSystemTime(NOW + 300_000);
     let returned = false;
@@ -283,7 +372,7 @@ describe("durable manager recruitment reporting", () => {
       .then(value => { returned = true; return value; });
     await atCommit.promise;
     expect(returned).toBe(false);
-    expect(db.rows[0]).toMatchObject({ status: "timed_out", answers: { q1: 0 }, submittedAtMs: NOW + 300_000, revision: 2, score: { correct: 1, answered: 1 } });
+    expect(db.rows[0]).toMatchObject({ status: "timed_out", answers: { "1": 0 }, submittedAtMs: NOW + 300_000, revision: 2, score: { correct: 1, answered: 1 } });
     expect(mocks.persistRecruitmentTransition).toHaveBeenCalledOnce();
     expect(mocks.persistRecruitmentTransition.mock.calls[0][0]).toBe(db.tx);
     expect(db.reads.filter(read => read.lock).map(({ table, lock }) => ({ table, lock }))).toEqual([
@@ -303,7 +392,7 @@ describe("durable manager recruitment reporting", () => {
     if (Array.isArray(result)) expect(result[0].completed).toBe(1);
     else {
       expect(result.assessment.completed).toBe(1);
-      expect(result.results[0]).toMatchObject({ status: "timed_out", answers: { q1: 0 }, score: { correct: 1 }, revision: 2 });
+      expect(result.results[0]).toMatchObject({ status: "timed_out", answers: { "1": 0 }, score: { correct: 1 }, revision: 2 });
       expect(result.results[0].questions).toHaveLength(5);
     }
   });
@@ -361,7 +450,7 @@ describe("durable manager recruitment reporting", () => {
 
 
   it("preserves resolver-authorized historical Annual reporting and stable finalization across list/results", async () => {
-    const db = fakeReportingDb({ org: { ...org(), status: "past_due", termEnd: new Date(NOW - 1) }, rows: [{ ...active(), answers: { q1: 0 } }, { ...invited(), id: "33333333-3333-4333-8333-333333333333", expiresAtMs: NOW }] });
+    const db = fakeReportingDb({ org: { ...org(), status: "past_due", termEnd: new Date(NOW - 1) }, rows: [{ ...active(), answers: { "1": 0 } }, { ...invited(), id: "33333333-3333-4333-8333-333333333333", expiresAtMs: NOW }] });
     vi.setSystemTime(NOW + 300_000);
     expect((await listRecruitmentAssessments(context, 7))[0]).toMatchObject({ candidates: 2, completed: 1 });
     expect(db.rows[1]).toMatchObject({ status: "expired", submittedAtMs: null, score: null });

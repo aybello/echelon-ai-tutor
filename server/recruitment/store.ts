@@ -6,7 +6,7 @@ import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
 import { assertRecruitmentCandidate, recruitmentCourseForOrg, verifiedRecruitmentEmail } from "./access";
 import { assertRecruitmentSourcesVisible } from "./questions";
-import { recruitmentCandidateView, transitionRecruitment } from "./state";
+import { finalizeRecruitmentDeadline, recruitmentCandidateView, transitionRecruitment } from "./state";
 import type { RecruitmentDb, RecruitmentOperation, RecruitmentReadDb, RecruitmentTransaction } from "./types";
 
 export async function recruitmentDb(): Promise<RecruitmentDb> {
@@ -50,7 +50,7 @@ export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId
   const definition = await readRecruitmentAssessment(db, preflight.assessmentId, preflight.orgId);
   await assertRecruitmentCandidate(ctx, db, preflight, definition.courseKey);
   return db.transaction(async tx => {
-    // Candidate order: org -> assignment -> source IDs -> member -> subscription.
+    // Candidate order: org -> assignment -> member -> subscription -> source IDs.
     // Manager reporting: org -> manager SHARE -> assignments by ID UPDATE.
     // Shared member locks are compatible; all lifecycle writers take org first.
     // Org SHARE serializes Annual lifecycle writes without serializing candidates.
@@ -64,15 +64,36 @@ export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId
       throw new TRPCError({ code: "CONFLICT", message: "The invitation scope changed. Reload the assessment." });
     }
     const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, assignment.orgId);
+    // Identity and exact original seat/subscription SHARE locks precede durable
+    // finalization. Elapsed attempts need no delivery permission from sources.
+    let org = await assertRecruitmentCandidate(ctx, tx, assignment, assessment.courseKey, { centralPreflightDone: true, lock: true });
+    let nowMs = Date.now();
+    let finalized = finalizeRecruitmentDeadline(assessment, assignment, nowMs);
+    if (finalized !== assignment) {
+      await persistRecruitmentTransition(tx, assignment, finalized);
+      return recruitmentCandidateView(assessment, finalized, org.name, nowMs);
+    }
     if (assignment.status === "invited" || assignment.status === "active") {
       const course = recruitmentCourseForOrg(lockedOrg, assessment.courseKey);
-      await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions);
+      let withdrawal: TRPCError | undefined;
+      try { await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions); }
+      catch (error) {
+        if (!(error instanceof TRPCError) || error.code !== "PRECONDITION_FAILED") throw error;
+        withdrawal = error;
+      }
+      // Governance may wait across the deadline, including a wait that ends in
+      // source withdrawal. Recheck exact current access/term while holding the
+      // same seat locks, then read server time. Timeout wins over withdrawal and
+      // stale revisions; returning it (not throwing) commits original evidence.
+      org = await assertRecruitmentCandidate(ctx, tx, assignment, assessment.courseKey, { centralPreflightDone: true, lock: true });
+      nowMs = Date.now();
+      finalized = finalizeRecruitmentDeadline(assessment, assignment, nowMs);
+      if (finalized !== assignment) {
+        await persistRecruitmentTransition(tx, assignment, finalized);
+        return recruitmentCandidateView(assessment, finalized, org.name, nowMs);
+      }
+      if (withdrawal) throw withdrawal;
     }
-    // Seat/subscription term checks run AFTER governance waits as well. Terminal
-    // views have no source delivery and retain the original completion evidence.
-    const org = await assertRecruitmentCandidate(ctx, tx, assignment, assessment.courseKey, { centralPreflightDone: true, lock: true });
-    // After the lock wait AND permission queries. The client's clock never controls acceptance.
-    const nowMs = Date.now();
     const next = transitionRecruitment(assessment, assignment, operation, nowMs);
     await persistRecruitmentTransition(tx, assignment, next);
     return recruitmentCandidateView(assessment, next, org.name, nowMs);

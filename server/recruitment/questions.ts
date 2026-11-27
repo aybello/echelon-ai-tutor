@@ -49,7 +49,7 @@ export async function loadRecruitmentPools(db: RecruitmentReadDb, bankKeys: stri
 export async function assertRecruitmentSourcesVisible(db: RecruitmentReadDb, bankKey: string,
   snapshot: RecruitmentQuestion[]): Promise<void> {
   assertRecruitmentSnapshot(snapshot);
-  const replacementNeeded = () => new TRPCError({ code: "CONFLICT",
+  const replacementNeeded = () => new TRPCError({ code: "PRECONDITION_FAILED",
     message: "This assessment form is unavailable. The hiring manager needs to create a replacement assessment form." });
   const ids = snapshot.map(q => {
     const id = Number(q.id);
