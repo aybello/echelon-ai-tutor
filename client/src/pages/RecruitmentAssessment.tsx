@@ -49,6 +49,11 @@ const card =
   "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-8";
 const isTerminal = (status: RecruitmentCandidateView["status"]) =>
   ["submitted", "timed_out", "expired", "revoked"].includes(status);
+type SubmissionConfirmation = {
+  data: RecruitmentCandidateView;
+  epoch: number;
+  revision: number;
+};
 const date = (ms: number) =>
   new Date(ms).toLocaleString(undefined, {
     year: "numeric",
@@ -194,6 +199,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             data: event.query.state.data as RecruitmentCandidateView,
             receivedMs,
           };
+          invalidateCandidateReview(authorizedFetch.current.data);
           clock.current.record(
             event.query.state.data as RecruitmentCandidateView,
             request.startedMs,
@@ -251,8 +257,10 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const [forbidden, setForbidden] = useState(false);
   const [formWithdrawn, setFormWithdrawn] = useState(false);
   const [needsRefresh, setNeedsRefresh] = useState(false);
-  const [submitOpen, setSubmitOpen] = useState(false);
-  const expectedRevision = useRef<number | null>(null);
+  const [renderingConfirmation, setRenderingConfirmation] =
+    useState<SubmissionConfirmation | null>(null);
+  const confirmationRef = useRef<SubmissionConfirmation | null>(null);
+  const submitOpen = renderingConfirmation !== null;
   const entryConsumed = useRef(false);
   const [sessionRefreshPending, setSessionRefreshPending] = useState(false);
   const deadlineRecheck = useRef<{
@@ -272,6 +280,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       sessionEpoch.current += 1;
       authorizedFetch.current = null;
       consentRef.current = null;
+      confirmationRef.current = null;
       const filters = {
         queryKey: getQueryKey(
           trpc.recruitment.candidateGet,
@@ -306,8 +315,8 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     setIndex(0);
     setMessage("");
     setSaveState("idle");
-    expectedRevision.current = null;
-    setSubmitOpen(false);
+    confirmationRef.current = null;
+    setRenderingConfirmation(null);
     deadlineRecheck.current = null;
     // Remove only this assignment, never another candidate's query cache.
     const filters = {
@@ -350,7 +359,30 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     live.current &&
     renderingEpoch === sessionEpoch.current &&
     view !== null &&
-    viewRef.current === view;
+    viewRef.current === view &&
+    authorizedFetch.current?.epoch === renderingEpoch &&
+    authorizedFetch.current.data === view;
+  const isConfirmationCurrent = () =>
+    isReviewedViewCurrent() &&
+    renderingConfirmation !== null &&
+    confirmationRef.current === renderingConfirmation &&
+    renderingConfirmation.data === view &&
+    renderingConfirmation.epoch === renderingEpoch &&
+    renderingConfirmation.revision === view?.revision;
+  function invalidateCandidateReview(next: RecruitmentCandidateView) {
+    // Fence receipt before any render/passive merge can replace the visible DTO.
+    if (viewRef.current && viewRef.current !== next) {
+      consentRef.current = null;
+      setAccepted(false);
+    }
+    if (confirmationRef.current && confirmationRef.current.data !== next) {
+      confirmationRef.current = null;
+      setRenderingConfirmation(null);
+      setMessage(
+        "Saved answers changed. Review the latest answers and open submission confirmation again."
+      );
+    }
+  }
   function changeAccepted(value: boolean | "indeterminate") {
     if (!isReviewedViewCurrent() || view?.status !== "invited") return;
     consentRef.current = value === true
@@ -360,10 +392,11 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   }
   function changeSubmitOpen(open: boolean) {
     if (open && (!isReviewedViewCurrent() || view?.status !== "active")) return;
-    expectedRevision.current = open
-      ? (view?.revision ?? null)
+    const confirmation = open && view
+      ? { data: view, epoch: renderingEpoch, revision: view.revision }
       : null;
-    setSubmitOpen(open && expectedRevision.current !== null);
+    confirmationRef.current = confirmation;
+    setRenderingConfirmation(confirmation);
   }
   const mergeServerView = useCallback(
     (next: RecruitmentCandidateView, receivedMs?: number) => {
@@ -377,16 +410,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           (isTerminal(current.status) && !isTerminal(next.status)))
       )
         return;
-      if (
-        expectedRevision.current !== null &&
-        expectedRevision.current !== next.revision
-      ) {
-        expectedRevision.current = null;
-        setSubmitOpen(false);
-        setMessage(
-          "Saved answers changed. Review the latest answers and open submission confirmation again."
-        );
-      }
+      invalidateCandidateReview(next);
       const monotonicMs = performance.now();
       clock.current.merge(next, monotonicMs);
       if (isTerminal(next.status)) {
@@ -461,6 +485,9 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     requestStartedMs: number
   ) {
     const receivedMs = performance.now();
+    // Own mutation responses are current receipts too. A manual setData below
+    // must not leave the preceding fetch DTO as the action capability.
+    authorizedFetch.current = { epoch: sessionEpoch.current, data: next, receivedMs };
     clock.current.record(next, requestStartedMs, receivedMs);
     mergeServerView(next, receivedMs);
     // The exact assignment cache receives only the server candidate DTO.
@@ -491,6 +518,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         if (!live.current || epoch !== sessionEpoch.current) return;
         entryConsumed.current = true;
         const receivedMs = performance.now();
+        authorizedFetch.current = { epoch, data: next, receivedMs };
         clock.current.record(next, requestStartedMs, receivedMs);
         mergeServerView(next, receivedMs);
         setNeedsRefresh(false);
@@ -733,19 +761,18 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   async function finish() {
     const current = view;
     if (
-      !isReviewedViewCurrent() ||
+      !isConfirmationCurrent() ||
       operation.current ||
       query.isFetching ||
       !online ||
       !current ||
       current.status !== "active" ||
       !submitOpen ||
-      expectedRevision.current === null ||
-      expectedRevision.current !== current.revision ||
+      !renderingConfirmation ||
       needsRefresh
     )
       return;
-    const revision = expectedRevision.current;
+    const revision = renderingConfirmation.revision;
     const epoch = renderingEpoch;
     operation.current = true;
     setBusy(true);
@@ -753,7 +780,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
       // The server verifies exactly the revision reviewed in this confirmation.
-      if (!isReviewedViewCurrent() || expectedRevision.current !== revision) return;
+      if (!isConfirmationCurrent()) return;
       const requestStartedMs = performance.now();
       const next = await submit.mutateAsync({ assignmentId, revision });
       if (live.current && epoch === sessionEpoch.current) {
@@ -1353,7 +1380,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             <Button
               type="button"
               className="min-h-11 bg-blue-700 text-white hover:bg-blue-800"
-              disabled={blocked || expectedRevision.current !== view.revision}
+              disabled={blocked || !isConfirmationCurrent()}
               onClick={() => void finish()}
             >
               {submit.isPending ? "Submitting…" : "Submit assessment"}

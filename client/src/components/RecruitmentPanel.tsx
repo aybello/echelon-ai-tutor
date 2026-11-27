@@ -858,14 +858,19 @@ function RecruitmentDetail({
         assignmentId: reviewedTarget.assignmentId,
         expectedRevision: reviewedTarget.revision,
       });
-      if (!canRevoke()) return;
+      // Review authority fences dispatch, not reconciliation of a sent write.
+      // A same-session refetch may have delivered a pre-revocation snapshot.
+      if (!isCurrent()) return;
+      const stillReviewed = canRevoke();
       onInvitationOutcome(null);
       clearRevocation();
-      refreshSubmittedScope();
       setLink("");
       setCopyMessage(
-        "Invitation revoked. The candidate can no longer use this link."
+        stillReviewed
+          ? "Invitation revoked. The candidate can no longer use this link."
+          : ""
       );
+      refreshSubmittedScope();
     } catch (failure) {
       if (!isCurrent()) return;
       if (accessDenied(failure)) {
@@ -873,16 +878,18 @@ function RecruitmentDetail({
         access.reset();
         return;
       }
-      if (!canRevoke()) return;
+      const stillReviewed = canRevoke();
       clearRevocation();
       if ((failure as { data?: { code?: string } } | null)?.data?.code === "CONFLICT") {
-        setError(
-          "The candidate's assessment changed. Refresh results, review the latest status and confirm revocation again. Revocation was not retried."
-        );
+        if (stillReviewed)
+          setError(
+            "The candidate's assessment changed. Refresh results, review the latest status and confirm revocation again. Revocation was not retried."
+          );
+        // Reconcile even when a pending results read already cleared review.
         void query.refetch();
         return;
       }
-      if (isCurrent())
+      if (stillReviewed)
         setError(
           failure instanceof Error
             ? failure.message

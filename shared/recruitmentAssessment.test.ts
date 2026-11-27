@@ -49,6 +49,7 @@ describe("Recruitment assessment domain", () => {
   });
   it.each([
     ["Same", "Same"], [" Same ", "Same"], ["One\t\n\f\r  choice", "One choice"], ["Caf\u00e9", "Cafe\u0301"],
+    ["Yes", "Yes\u200B"], ["Yes", "Yes\u2060"], ["Yes", "Yes\uFEFF"], ["Yes", "Yes\u034F"],
   ])("excludes display-equivalent options %j before new frozen sampling, not historical scoring", (...options) => {
     const historical = { ...pool[0], options, correctIndex: 1 }, before = structuredClone(historical);
     expect(validRecruitmentSelectionQuestions([historical])).toBe(false);

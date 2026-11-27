@@ -1013,24 +1013,112 @@ describe("candidate assessment session and confirmation contract", () => {
   });
 
   it.each(["start", "save", "submit"] as const)(
-    "rejects unsent %s when the exact reviewed DTO changes while cancellation is pending",
+    "rejects unsent %s on replacement cache success while cancellation waits without a render",
     async action => {
       const cancellation = deferred<void>();
       h.cancel.mockReturnValueOnce(cancellation.promise);
-      actionHandler(action)();
-      publishFetchSuccess({
+      await freshTimedQuery(
+        action === "start"
+          ? { ...fixture, status: "invited", questions: [], answers: {} }
+          : fixture,
+        0
+      );
+      if (action === "start") {
+        nodes(render()).find(n => n.type === "checkbox").props.onCheckedChange(true);
+        button(render(), "Start assessment").props.onClick();
+      } else if (action === "save") {
+        nodes(render()).find(n => n.type === "radio-group").props.onValueChange("0");
+      } else {
+        button(render(), "Review submission").props.onClick();
+        button(render(), "Submit assessment").props.onClick();
+      }
+      const replacement: RecruitmentCandidateView = {
         ...fixture,
+        title: "Replacement authorized DTO",
         status: action === "start" ? "invited" : "active",
         questions: action === "start" ? [] : fixture.questions,
         answers: action === "start" ? {} : { q1: 0 },
-        revision: 8,
+        revision: fixture.revision, // DTO replacement is not only a revision fence.
+      };
+      await h.client.fetchQuery({
+        queryKey: key(),
+        queryFn: async () => replacement,
+        staleTime: 0,
+        retry: false,
       });
-      render();
+      // The actual query-cache success and observer update have run, but no
+      // component render/passive merge is allowed before cancellation resolves.
       cancellation.resolve();
+      for (let i = 0; i < 25; i++) await Promise.resolve();
+      expect(h.start).not.toHaveBeenCalled();
+      expect(h.save).not.toHaveBeenCalled();
+      expect(h.submit).not.toHaveBeenCalled();
       await settle();
       expect(h[action]).not.toHaveBeenCalled();
+      expect(text(render())).toContain("Replacement authorized DTO");
+      if (action === "start") {
+        expect(nodes(render()).find(n => n.type === "checkbox").props.checked).toBe(false);
+        expect(button(render(), "Start assessment").props.disabled).toBe(true);
+        nodes(render()).find(n => n.type === "checkbox").props.onCheckedChange(true);
+        button(render(), "Start assessment").props.onClick();
+        await settle();
+        expect(h.start).toHaveBeenCalledTimes(1);
+      } else if (action === "submit") {
+        expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(false);
+      }
     }
   );
+
+  it.each(["entry", "pending cancellation"] as const)(
+    "a retained Submit cannot borrow a reopened same-DTO same-revision confirmation at %s",
+    async phase => {
+      ready();
+      button(render(), "Review submission").props.onClick();
+      const reviewedTree = render();
+      const oldSubmit = button(reviewedTree, "Submit assessment").props.onClick;
+      const cancellation = deferred<void>();
+      if (phase === "pending cancellation") {
+        h.cancel.mockReturnValueOnce(cancellation.promise);
+        oldSubmit();
+      }
+      button(reviewedTree, "Return to questions").props.onClick();
+      // No render is needed to invalidate the first token and create another.
+      button(reviewedTree, "Review submission").props.onClick();
+      if (phase === "entry") oldSubmit();
+      else cancellation.resolve();
+      for (let i = 0; i < 25; i++) await Promise.resolve();
+      expect(h.submit).not.toHaveBeenCalled();
+      expect(h.cancel).toHaveBeenCalledTimes(phase === "entry" ? 0 : 1);
+      expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(true);
+      oldSubmit();
+      await settle();
+      expect(h.submit).not.toHaveBeenCalled();
+      button(render(), "Submit assessment").props.onClick();
+      await settle();
+      expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: fixture.revision });
+      expect(h.submit).toHaveBeenCalledTimes(1);
+    }
+  );
+
+  it("replacement DTO with the same revision closes confirmation and requires a new exact-token review", async () => {
+    ready();
+    button(render(), "Review submission").props.onClick();
+    const oldSubmit = button(render(), "Submit assessment").props.onClick;
+    publishFetchSuccess({ ...fixture, title: "Replacement same-revision assessment" });
+    oldSubmit(); // No render: response receipt already invalidated the token.
+    expect(h.cancel).not.toHaveBeenCalled();
+    expect(h.submit).not.toHaveBeenCalled();
+    expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(false);
+    expect(text(render())).toContain("open submission confirmation again");
+    button(render(), "Review submission").props.onClick();
+    render();
+    oldSubmit();
+    expect(h.cancel).not.toHaveBeenCalled();
+    button(render(), "Submit assessment").props.onClick();
+    await settle();
+    expect(h.submit).toHaveBeenCalledTimes(1);
+    expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: fixture.revision });
+  });
 
   it.each(["start", "save", "submit"] as const)(
     "never dispatches an unsent %s after delayed cancellation resolves following unmount",

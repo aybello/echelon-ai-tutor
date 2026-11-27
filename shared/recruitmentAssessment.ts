@@ -55,6 +55,9 @@ export function validRecruitmentQuestions(questions: RecruitmentQuestion[]): boo
  * Historical snapshot validation/scoring must retain the original option keys. */
 export function validRecruitmentSelectionQuestions(questions: RecruitmentQuestion[]): boolean {
   return validRecruitmentQuestions(questions) && questions.every(q => {
+    // New answer labels must not carry invisible formatting characters. This
+    // avoids indistinguishable indexed choices without editing stored evidence.
+    if (q.options.some(option => /\p{Default_Ignorable_Code_Point}/u.test(option))) return false;
     const displayed = q.options.map(option => option.normalize("NFC").replace(/[\t\n\f\r ]+/g, " ").replace(/^ | $/g, ""));
     return new Set(displayed).size === displayed.length;
   });

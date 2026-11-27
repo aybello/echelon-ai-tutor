@@ -114,10 +114,10 @@ vi.mock("@/lib/trpc", () => {
     trpc: {
       useUtils: () => ({
         recruitment: {
-          catalog: { invalidate: h.invalidates },
-          list: { invalidate: h.invalidates },
+          catalog: { invalidate: (input: any) => h.invalidates(input, "catalog") },
+          list: { invalidate: (input: any) => h.invalidates(input, "list") },
           results: {
-            invalidate: h.invalidates,
+            invalidate: (input: any) => h.invalidates(input, "results"),
             cancel: h.cancelResults,
             fetch: h.fetchResults,
           },
@@ -522,7 +522,7 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
       expectedRevision: 4,
     });
   });
-  it("discards a late revoke success after results change while awaiting the mutation", async () => {
+  it("reconciles late revoke success after results change while suppressing a stale success notice", async () => {
     await readyDetail();
     const oldReview = reviewRevocation();
     const pending = deferred();
@@ -537,10 +537,137 @@ describe("recruitment manager privacy component lifecycle (Node, synthetic trans
     });
     pending.resolve({ success: true });
     await settle();
-    expect(h.invalidates).not.toHaveBeenCalled();
+    expect(h.invalidates).toHaveBeenCalledWith({ orgId, assessmentId }, "results");
+    expect(h.invalidates).toHaveBeenCalledWith({ orgId }, "list");
     expect(text(tree)).not.toContain("Invitation revoked.");
     expect(text(tree)).not.toContain("I confirm I want to revoke");
   });
+  it.each(["success", "conflict"] as const)(
+    "reconciles a settled revoke %s after an actual results refetch returned a pre-revoke row",
+    async outcome => {
+      const otherAssessment = {
+        ...assessment,
+        id: "33333333-3333-4333-8333-333333333333",
+        title: "Other synthetic assessment",
+      };
+      h.list.mockResolvedValue([assessment, otherAssessment]);
+      await readyDetail();
+      find(n => String(n.props["aria-label"]).startsWith("Copy invitation")).props.onClick();
+      await settle();
+      expect(find(n => n.props.id === "recruitment-link").props.value).toContain(result.assignmentId);
+      const oldReview = reviewRevocation();
+      const mutation = deferred();
+      h.revoke.mockReturnValueOnce(mutation.promise);
+      oldReview.handler();
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(h.revoke).toHaveBeenCalledWith({
+        orgId,
+        assignmentId: result.assignmentId,
+        expectedRevision: result.revision,
+      });
+      const prerevoke = deferred();
+      h.results.mockReturnValueOnce(prerevoke.promise);
+      const read = h.client.fetchQuery({
+        queryKey: key("results", { orgId, assessmentId }),
+        queryFn: () => h.results({ orgId, assessmentId }),
+        staleTime: 0,
+        retry: false,
+      });
+      oldReview.handler(); // A retained confirmation cannot dispatch twice.
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      prerevoke.resolve({ assessment, results: [{ ...result }] });
+      await read;
+      await settle();
+      expect(h.results).toHaveBeenCalledTimes(2);
+      expect(text(tree)).not.toContain("I confirm I want to revoke");
+      // Use actual QueryClient invalidation + active QueryObservers, not a spy
+      // asserting a refresh that never reaches the transport or retained props.
+      h.invalidates.mockImplementation((input: any, name: string) =>
+        h.client.invalidateQueries({ queryKey: key(name, input), exact: true })
+      );
+      const latest = {
+        ...result,
+        status: outcome === "success" ? "revoked" : "active",
+        revision: 4,
+      };
+      h.results.mockResolvedValue({ assessment, results: [latest] });
+      if (outcome === "success") mutation.resolve({ success: true });
+      else mutation.reject({ data: { code: "CONFLICT" } });
+      await settle();
+      expect(h.results.mock.calls.length).toBeGreaterThanOrEqual(3);
+      expect(h.client.getQueryData(key("results", { orgId, assessmentId })).results[0]).toMatchObject(latest);
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      expect(text(tree)).not.toContain("I confirm I want to revoke");
+      expect(text(tree)).not.toContain("Invitation revoked.");
+      expect(text(tree)).not.toContain("Revocation was not retried."); // Stale review notices stay suppressed.
+      oldReview.checkbox.props.onCheckedChange(true);
+      oldReview.handler();
+      expect(h.revoke).toHaveBeenCalledTimes(1);
+      if (outcome === "success") {
+        expect(h.invalidates).toHaveBeenCalledWith({ orgId, assessmentId }, "results");
+        expect(h.invalidates).toHaveBeenCalledWith({ orgId }, "list");
+        expect(h.list.mock.calls.length).toBeGreaterThanOrEqual(2);
+        expect(text(tree)).not.toContain("Candidate invitation link");
+        expect(text(tree)).not.toContain("Link copied.");
+        // A real detail remount must not restore the parent's revoked outcome.
+        h.results.mockImplementation((input: any) => Promise.resolve({
+          assessment: input.assessmentId === otherAssessment.id ? otherAssessment : assessment,
+          results: [latest],
+        }));
+        find(n => n.type === "button" && text(n).includes(otherAssessment.title)).props.onClick();
+        await settle();
+        find(n => n.type === "button" && text(n).includes(assessment.title)).props.onClick();
+        await settle();
+        expect(text(tree)).not.toContain("Candidate invitation link");
+      } else {
+        expect(text(tree)).toContain("Candidate invitation link"); // Conflict did not revoke it.
+        reviewRevocation().handler();
+        await settle();
+        expect(h.revoke).toHaveBeenCalledTimes(2);
+        expect(h.revoke.mock.calls[1][0].expectedRevision).toBe(4);
+      }
+    }
+  );
+  it.each([
+    ["session reset", "success"],
+    ["session reset", "conflict"],
+    ["unmount", "success"],
+    ["unmount", "conflict"],
+  ] as const)(
+    "never reconciles or restores private props after %s when a pending revoke settles as %s",
+    async (boundary, outcome) => {
+      await readyDetail();
+      find(n => String(n.props["aria-label"]).startsWith("Copy invitation")).props.onClick();
+      await settle();
+      const mutation = deferred();
+      h.revoke.mockReturnValueOnce(mutation.promise);
+      reviewRevocation().handler();
+      await h.client.fetchQuery({
+        queryKey: key("results", { orgId, assessmentId }),
+        queryFn: () => h.results({ orgId, assessmentId }),
+        staleTime: 0,
+        retry: false,
+      });
+      await settle();
+      if (boundary === "session reset") {
+        h.list.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+        h.catalog.mockRejectedValue({ data: { code: "FORBIDDEN" } });
+        dispatch("focus");
+      } else panelMounted = false;
+      await settle();
+      const reads = h.results.mock.calls.length;
+      if (outcome === "success") mutation.resolve({ success: true });
+      else mutation.reject({ data: { code: "CONFLICT" } });
+      await settle();
+      expect(h.results).toHaveBeenCalledTimes(reads);
+      expect(h.invalidates).not.toHaveBeenCalled();
+      expect(h.client.getQueryData(key("results", { orgId, assessmentId }))).toBeUndefined();
+      expect(text(tree)).not.toContain(result.candidateEmail);
+      expect(text(tree)).not.toContain("Candidate invitation link");
+      expect(text(tree)).not.toContain("Invitation revoked.");
+      expect(text(tree)).not.toContain("I confirm");
+    }
+  );
   it("does not render seeded roster/form/list/results before a fresh successful authorization, or after denial", async () => {
     h.client.setQueryData(key("catalog", { orgId }), catalog);
     h.client.setQueryData(key("list", { orgId }), [assessment]);
