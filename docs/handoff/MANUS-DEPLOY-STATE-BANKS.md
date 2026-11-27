@@ -45,6 +45,15 @@ Not yet approved: `pa-wastewater-collection-e4` (250 questions). Keep it staged 
 
 Manus: run the existing guarded import for the three approved banks, then release them to learners using the repo's normal release step. Record the import output and the release in the PR. If a check fails, record it and do not release that bank.
 
+## Owner approval: release (2026-11-27, second batch)
+The owner approves release of these banks once the dry run passes. All are labelled practice questions aligned to the state's published topics, rated Narrow where noted. Review is by AI reviewers only (GPT gpt-6.2-sol, and Gemini where recorded); no human review is required.
+- `pa-wastewater-collection-e4` (250 questions), from the `main` bank folder.
+- `tx-wastewater-treatment-c` (Texas Class C, Narrow), from branch `claude/us-bank-tx-wastewater-c-v2` at commit `09c214eec` or the later commit that includes the giveaway rewrite. Manus must use the latest commit on that branch.
+- `tx-wastewater-d` (Texas Class D, Narrow), from branch `claude/us-bank-tx-wastewater-d` at commit `73f2ada7` or later.
+- `nm-cs1-wastewater-collection` (250 questions, New Mexico Suitable per owner decision), from branch `claude/us-bank-nm-wastewater-collection` at commit `2d70c9d27` or later. The 8 Regulations questions were added in the latest commit and have GPT review only.
+
+Manus: after the dry run, run the existing guarded import for each approved bank and release it. Record results in the PR. Do not change question content.
+
 ## Do not
 - Do not publish, release or enable the Pennsylvania or Florida banks for learners.
 - Do not merge the PR without the owner's approval in the PR thread.
