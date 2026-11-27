@@ -273,12 +273,13 @@ function SalaryChart({ province }: { province: ProvinceData }) {
 }
 
 // ── CAREER TIMELINE ──────────────────────────────────────────────────────────
-function CareerTimeline({ onSelect, selected, province }: {
+function CareerTimeline({ onSelect, selected, province, track }: {
   onSelect: (l: CertLevel | null) => void;
   selected: CertLevel | null;
   province: ProvinceData;
+  track: string;
 }) {
-  const mainLevels = province.levels.filter(l => l.id !== "wqa");
+  const mainLevels = province.levels.filter(l => l.id !== "wqa" && (track === "all" || l.tracks.includes(track)));
   const wqaLevel   = province.levels.find(l => l.id === "wqa");
 
   return (
@@ -358,7 +359,7 @@ function CareerTimeline({ onSelect, selected, province }: {
       </div>
 
       {/* WQA specialist path — only for Ontario */}
-      {wqaLevel && (
+      {wqaLevel && (track === "all" || track === "wqa") && (
         <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
           <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
           <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
@@ -725,7 +726,7 @@ export default function CareerMap() {
         {/* ── TIMELINE ── */}
         {view === "timeline" && (
           <div className="fade">
-            <CareerTimeline onSelect={setSelected} selected={selected} province={province} />
+            <CareerTimeline onSelect={setSelected} selected={selectedVisible} province={province} track={track} />
           </div>
         )}
 

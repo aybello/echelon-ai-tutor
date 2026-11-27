@@ -35,6 +35,8 @@ describe("Career Map release contracts", () => {
     expect(careerMap).toContain("const selectedVisible = selected &&");
     expect(careerMap).toContain("DetailPanel level={selectedVisible}");
     expect(careerMap).toContain("visibleLevels.map");
+    expect(careerMap).toContain("track === \"all\" || l.tracks.includes(track)");
+    expect(careerMap).toContain("selected={selectedVisible} province={province} track={track}");
     expect(careerMap).toContain("TRACKS.filter(t => t.id !== \"wqa\" || specialistLevel)");
     expect(careerMap).toContain('t.id === "wqa" ? "WQA"');
   });
