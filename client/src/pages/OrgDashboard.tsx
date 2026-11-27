@@ -77,6 +77,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
 import { isTeamRegion, TEAM_REGION_LABELS } from "@shared/teamPricing";
+import { getManagerLearnerCourses } from "@/lib/managerLearnerAccess";
 import { ProductEmptyState, ProductErrorState, ProductLoadingState } from "@/components/ProductState";
 import { FlexLicencePanel } from "@/components/FlexLicencePanel";
 import { CertificatesPanel } from "@/components/CertificatesPanel";
@@ -206,6 +207,7 @@ export default function OrgDashboard() {
   const [selectedOrgId, setSelectedOrgId] = useState<number | undefined>();
   const [assessmentMember, setAssessmentMember] = useState<{ orgId: number; memberId: number; label: string } | null>(null);
   const organizationQuery = trpc.org.listManagedOrganizations.useQuery(undefined, { retry: false });
+  const dashboardIdentityQuery = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
   const orgInput = { orgId: selectedOrgId };
   function handleOrganizationChange(value: string) {
     const nextOrgId = Number(value);
@@ -553,6 +555,7 @@ export default function OrgDashboard() {
   const activeMembers = members.filter(m => m.status === "assigned");
   const displayedMembers = filterRosterMembers(activeMembers, rosterSearch, rosterStage);
   const revokedMembers = members.filter(m => m.status === "revoked");
+  const selfStudyCourses = getManagerLearnerCourses(dashboardIdentityQuery.data?.email, activeMembers);
   const needsFocusMembers = activeMembers.filter(m =>
     m.operatorStatus === "needs_focus" || m.operatorStatus === "behind"
   );
@@ -728,6 +731,25 @@ export default function OrgDashboard() {
           </div>
         </div>
       </header>
+
+      {selfStudyCourses.length > 0 && (
+        <section aria-label="Your learner access" className="border-b border-blue-100 bg-blue-50 px-4 py-4 sm:px-6">
+          <div className="max-w-6xl mx-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-sm font-bold text-blue-950">Your learner seat is ready</h2>
+              <p className="mt-1 text-sm text-blue-800">Open your assigned course material from the learner workspace. Your manager dashboard remains available here.</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {selfStudyCourses.map(course => (
+                <Link key={course.courseKey} href={course.quizPath} className="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-xs font-bold text-white hover:bg-blue-800">
+                  Study {course.shortName}
+                  <ChevronRight className="ml-1 h-3.5 w-3.5" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <main className="teams-dashboard-main max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
 
