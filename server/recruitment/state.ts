@@ -84,15 +84,15 @@ export function recruitmentCandidateView(assessment: RecruitmentAssessmentRow, a
     expiresAtMs: Math.min(assessment.expiresAtMs, assignment.expiresAtMs), deadlineMs: assignmentDeadline(assessment, assignment),
     serverNowMs: nowMs, startedAtMs: assignment.startedAtMs, submittedAtMs: assignment.submittedAtMs, status: assignment.status,
     questions: active ? candidateQuestions(assertRecruitmentSnapshot(assessment.questions)) : [],
-    answers: assignment.startedAtMs !== null ? snapshotAnswers(assessment, assignment) : {},
+    answers: active ? snapshotAnswers(assessment, assignment) : {},
     revision: assignment.revision, notice: RECRUITMENT_NOTICE,
   };
 }
 
-/** Reporting score is recomputed from snapshot and durable answers, not a client or cached score. */
-export function recruitmentResult(assessment: RecruitmentAssessmentRow, stored: RecruitmentAssignmentRow, nowMs: number): RecruitmentResult {
-  const assignment = finalizeRecruitmentDeadline(assessment, stored, nowMs);
-  const scored = assignment.submittedAtMs !== null;
+/** Reporting is a projection of durable completion only. The service serializes
+ * and persists deadline finalization before calling this function. */
+export function recruitmentResult(assessment: RecruitmentAssessmentRow, assignment: RecruitmentAssignmentRow, _nowMs: number): RecruitmentResult {
+  const scored = assignment.submittedAtMs !== null && ["submitted", "timed_out", "revoked"].includes(assignment.status);
   const answers = scored ? snapshotAnswers(assessment, assignment) : {};
   return {
     assignmentId: assignment.id, memberId: assignment.memberId, candidateEmail: assignment.candidateEmail,

@@ -8,6 +8,7 @@ import type { RecruitmentCandidateView } from "@shared/recruitmentAssessment";
 const h = vi.hoisted(() => ({
   slots: [] as any[],
   cursor: 0,
+  layoutEffects: [] as (() => void)[],
   effects: [] as (() => void)[],
   dirty: false,
   query: {} as any,
@@ -18,6 +19,10 @@ const h = vi.hoisted(() => ({
   start: vi.fn(),
   save: vi.fn(),
   submit: vi.fn(),
+  initialQuery: vi.fn(),
+  autoQuery: false,
+  monotonicMs: 0,
+  tick: null as null | (() => void),
   listeners: new Map<string, Set<(...args: any[]) => void>>(),
 }));
 vi.mock("react", async original => ({
@@ -60,6 +65,17 @@ vi.mock("react", async original => ({
       });
     }
   },
+  useLayoutEffect: (fn: () => void | (() => void), deps: unknown[]) => {
+    const i = h.cursor++;
+    if (!h.slots[i] || deps.some((v, n) => !Object.is(v, h.slots[i].deps[n]))) {
+      const old = h.slots[i];
+      h.slots[i] = { deps };
+      h.layoutEffects.push(() => {
+        old?.cleanup?.();
+        h.slots[i].cleanup = fn();
+      });
+    }
+  },
 }));
 vi.mock("@tanstack/react-query", async original => ({
   ...(await original<typeof import("@tanstack/react-query")>()),
@@ -71,7 +87,31 @@ vi.mock("@/lib/trpc", () => ({
     recruitment: {
       candidateGet: {
         _def: () => ({ path: ["recruitment", "candidateGet"] }),
-        useQuery: () => h.query,
+        useQuery: () => {
+          React.useLayoutEffect(() => {
+            if (!h.autoQuery) return;
+            h.query.isFetching = true;
+            // Use real QueryClient fetch/success events, in the hook's layout
+            // subscription phase, rather than inventing a render-time start.
+            void h.client
+              .fetchQuery({
+                queryKey: key(),
+                queryFn: h.initialQuery,
+                staleTime: 0,
+              })
+              .then((data: RecruitmentCandidateView) => {
+                h.query = {
+                  ...h.query,
+                  data,
+                  isFetching: false,
+                  isFetchedAfterMount: true,
+                  isSuccess: true,
+                };
+                h.dirty = true;
+              });
+          }, []);
+          return h.query;
+        },
       },
       start: { useMutation: () => ({ mutateAsync: h.start }) },
       saveAnswer: { useMutation: () => ({ mutateAsync: h.save }) },
@@ -153,6 +193,7 @@ function render() {
   for (let i = 0; i < 20; i++) {
     h.dirty = false;
     tree = rawRender();
+    for (const effect of h.layoutEffects.splice(0)) effect();
     for (const effect of h.effects.splice(0)) effect();
     if (!h.dirty) return tree;
   }
@@ -189,11 +230,22 @@ function ready(view = fixture) {
 }
 beforeEach(() => {
   h.slots = [];
+  h.layoutEffects = [];
   h.effects = [];
   h.cursor = 0;
   h.dirty = false;
+  h.autoQuery = false;
+  h.monotonicMs = 0;
+  h.tick = null;
   h.listeners.clear();
-  for (const mock of [h.fetch, h.cancel, h.start, h.save, h.submit])
+  for (const mock of [
+    h.fetch,
+    h.cancel,
+    h.start,
+    h.save,
+    h.submit,
+    h.initialQuery,
+  ])
     mock.mockReset();
   h.cancel.mockResolvedValue(undefined);
   h.fetch.mockResolvedValue(fixture);
@@ -231,9 +283,13 @@ beforeEach(() => {
   };
   vi.stubGlobal("React", React);
   vi.stubGlobal("navigator", { onLine: true });
+  vi.stubGlobal("performance", { now: () => h.monotonicMs });
   vi.stubGlobal("window", {
     ...events,
-    setInterval: () => 1,
+    setInterval: (fn: () => void) => {
+      h.tick = fn;
+      return 1;
+    },
     clearInterval: () => {},
   });
   vi.stubGlobal("document", { ...events, visibilityState: "visible" });
@@ -242,7 +298,198 @@ beforeEach(() => {
 afterEach(() => {
   for (const slot of h.slots) slot?.cleanup?.();
   h.client.clear();
+  vi.restoreAllMocks();
   vi.unstubAllGlobals();
+});
+
+function timer() {
+  return text(nodes(render()).find(n => n.props?.role === "timer"));
+}
+function advance(ms: number) {
+  h.monotonicMs += ms;
+  h.tick?.();
+}
+async function freshTimedQuery(view = fixture, delayMs = 5000) {
+  h.autoQuery = true;
+  h.query = { ...h.query, data: undefined, isSuccess: false, isLoading: true };
+  h.initialQuery.mockImplementation(async () => {
+    advance(delayMs);
+    return view;
+  });
+  render();
+  await settle();
+}
+
+describe("candidate monotonic request clock contract", () => {
+  it("charges a delayed initial hook request from the actual fetch, not component render", async () => {
+    // Time spent before the actual request is not request latency.
+    h.monotonicMs = 120000;
+    await freshTimedQuery();
+    expect(h.initialQuery).toHaveBeenCalledTimes(1);
+    expect(timer()).toBe("04:55");
+    advance(2000);
+    expect(timer()).toBe("04:53");
+  });
+
+  it("ticks from performance.now despite backwards and forwards wall-clock changes", async () => {
+    await freshTimedQuery();
+    const wallClock = vi
+      .spyOn(Date, "now")
+      .mockReturnValue(fixture.serverNowMs - 86400000);
+    advance(3000);
+    expect(timer()).toBe("04:52");
+    wallClock.mockReturnValue(fixture.serverNowMs + 86400000);
+    advance(2000);
+    expect(timer()).toBe("04:50");
+  });
+
+  it("charges delayed start once and ignores cancellation wait before the actual request", async () => {
+    await freshTimedQuery(
+      { ...fixture, status: "invited", questions: [], answers: {} },
+      0
+    );
+    h.cancel.mockImplementation(async () => {
+      advance(20000);
+    });
+    h.start.mockImplementation(async () => {
+      advance(7000);
+      return { ...fixture, serverNowMs: fixture.serverNowMs + 20000 };
+    });
+    nodes(render())
+      .find(n => n.type === "checkbox")
+      .props.onCheckedChange(true);
+    button(render(), "Start assessment").props.onClick();
+    await settle();
+    expect(timer()).toBe("04:33");
+    // Cache effects consume the same DTO again, without subtracting the whole
+    // assessment age or adding the already-accounted request delay again.
+    h.query = { ...h.query, data: h.client.getQueryData(key()) };
+    expect(timer()).toBe("04:33");
+    advance(3000);
+    h.query = { ...h.query, data: { ...h.query.data } };
+    expect(timer()).toBe("04:30");
+    expect(h.start).toHaveBeenCalledTimes(1);
+  });
+
+  it("charges delayed save and repeated setData/effect merges never increase or double-charge time", async () => {
+    await freshTimedQuery(fixture, 0);
+    advance(40000);
+    h.save.mockImplementation(async () => {
+      advance(6000);
+      return {
+        ...fixture,
+        revision: 8,
+        serverNowMs: fixture.serverNowMs + 40000,
+      };
+    });
+    nodes(render())
+      .find(n => n.type === "radio-group")
+      .props.onValueChange("0");
+    await settle();
+    expect(timer()).toBe("04:14");
+    h.query = { ...h.query, data: h.client.getQueryData(key()) };
+    expect(timer()).toBe("04:14");
+    advance(1000);
+    h.query = { ...h.query, data: { ...h.query.data } };
+    expect(timer()).toBe("04:13");
+    // An old equal-revision server sample must not rewind the display clock.
+    h.query = {
+      ...h.query,
+      data: { ...h.query.data, serverNowMs: fixture.serverNowMs + 40000 },
+    };
+    expect(timer()).toBe("04:13");
+  });
+
+  it("measures a delayed manual candidateGet from its own request start", async () => {
+    await freshTimedQuery(fixture, 0);
+    h.save.mockRejectedValue(new Error("Temporary connection failure"));
+    nodes(render())
+      .find(n => n.type === "radio-group")
+      .props.onValueChange("0");
+    await settle();
+    h.cancel.mockImplementation(async () => {
+      advance(20000);
+    });
+    h.fetch.mockImplementation(async () => {
+      advance(8000);
+      return { ...fixture, serverNowMs: fixture.serverNowMs + 20000 };
+    });
+    nodes(render())
+      .find(n => typeof n.type === "function" && n.type.name === "ErrorNotice")
+      .props.onRetry();
+    await settle();
+    expect(timer()).toBe("04:32");
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+    expect(h.save).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(["save", "submit"] as const)(
+    "measures %s conflict refresh separately and preserves manual reconfirmation",
+    async action => {
+      await freshTimedQuery(fixture, 0);
+      h[action].mockImplementation(async () => {
+        advance(10000);
+        throw fail("CONFLICT");
+      });
+      h.fetch.mockImplementation(async () => {
+        advance(4000);
+        return {
+          ...fixture,
+          revision: 9,
+          serverNowMs: fixture.serverNowMs + 10000,
+        };
+      });
+      if (action === "save") {
+        nodes(render())
+          .find(n => n.type === "radio-group")
+          .props.onValueChange("0");
+      } else {
+        button(render(), "Review submission").props.onClick();
+        button(render(), "Submit assessment").props.onClick();
+      }
+      await settle();
+      expect(timer()).toBe("04:46");
+      expect(h[action]).toHaveBeenCalledTimes(1);
+      expect(h.fetch).toHaveBeenCalledTimes(1);
+      expect(nodes(render()).find(n => n.type === "dialog").props.open).toBe(
+        false
+      );
+    }
+  );
+
+  it("retains server submission authority after a delayed submit", async () => {
+    await freshTimedQuery(fixture, 0);
+    h.submit.mockImplementation(async () => {
+      advance(6000);
+      return {
+        ...fixture,
+        serverNowMs: fixture.serverNowMs + 6000,
+        revision: 8,
+        status: "submitted",
+      };
+    });
+    button(render(), "Review submission").props.onClick();
+    button(render(), "Submit assessment").props.onClick();
+    await settle();
+    expect(h.submit).toHaveBeenCalledWith({ assignmentId, revision: 7 });
+    expect(text(render())).toContain("Assessment submitted");
+  });
+
+  it("checks an early conservative display deadline once, without locally completing or repeatedly refreshing", async () => {
+    const closeDeadline = {
+      ...fixture,
+      deadlineMs: fixture.serverNowMs + 4000,
+    };
+    h.fetch.mockResolvedValue(closeDeadline);
+    await freshTimedQuery(closeDeadline, 5000);
+    expect(timer()).toBe("00:00");
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+    expect(text(render())).toContain(fixture.questions[0].prompt);
+    advance(2000);
+    await settle();
+    expect(h.fetch).toHaveBeenCalledTimes(1);
+    expect(text(render())).not.toContain("Assessment time has ended");
+  });
 });
 
 describe("candidate assessment session and confirmation contract", () => {

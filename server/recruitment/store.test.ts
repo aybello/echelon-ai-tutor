@@ -50,7 +50,11 @@ function fakeTransactionalStore(initial = invitation()) {
             events.push("org-share");
             return [{ id: 7, name: "Synthetic utility" }];
           }
-          if (tableName === "recruitment_assignments") return row().id === ID ? [structuredClone(row())] : [];
+          if (tableName === "recruitment_assignments") {
+            const { params } = new MySqlDialect().sqlToQuery(predicate as never);
+            return row().id === params[0] && row().candidateEmail === params[1]
+              && (params.length < 3 || row().orgId === params[2]) ? [structuredClone(row())] : [];
+          }
           if (tableName === "recruitment_assessments") return [structuredClone(assessment)];
           throw new Error(`Unexpected non-recruitment read: ${tableName}`);
         };
@@ -115,6 +119,14 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     mocks.getDb.mockResolvedValue(null);
     await expect(operateRecruitmentCandidate(context, ID, { kind: "get" })).rejects.toMatchObject({ code: "INTERNAL_SERVER_ERROR" });
   });
+  it("nonexistent and non-owned invitations return the same denial before reading a form or opening a transaction", async () => {
+    const store = fakeTransactionalStore();
+    const error = { code: "FORBIDDEN", message: "This invitation is not available to this account." };
+    await expect(operateRecruitmentCandidate({ ...context, studentEmail: "other@example.test" }, ID, { kind: "get" })).rejects.toMatchObject(error);
+    await expect(operateRecruitmentCandidate(context, "99999999-9999-4999-8999-999999999999", { kind: "get" })).rejects.toMatchObject(error);
+    expect(store.reads.map(read => read.table)).toEqual(["recruitment_assignments", "recruitment_assignments"]);
+    expect(store.db.transaction).not.toHaveBeenCalled(); expect(mocks.assertCandidate).not.toHaveBeenCalled();
+  });
   it("preflight denial cannot open a transaction or mutate answers", async () => {
     const store = fakeTransactionalStore();
     mocks.assertCandidate.mockRejectedValue(new TRPCError({ code: "FORBIDDEN", message: "Original org seat denied" }));
@@ -138,7 +150,10 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     const locked = store.reads.find(read => read.tx && read.table === "recruitment_assignments")!;
     expect(locked.locked).toBe(true);
     const dialect = new MySqlDialect();
-    expect(dialect.sqlToQuery(locked.predicate as Parameters<typeof dialect.sqlToQuery>[0]).params).toEqual([ID]);
+    expect(dialect.sqlToQuery(locked.predicate as Parameters<typeof dialect.sqlToQuery>[0]).params).toEqual([ID, "candidate@example.test", 7]);
+    const firstRead = dialect.sqlToQuery(store.reads[0].predicate as never);
+    expect(firstRead.params).toEqual([ID, "candidate@example.test"]);
+    expect(firstRead.sql).toContain("`recruitment_assignments`.`candidateEmail` = ?");
     const write = store.writes[0];
     expect(write.table).toBe("recruitment_assignments");
     for (const field of ["candidateEmail", "memberId", "assessmentId", "orgId", "expiresAtMs", "creatorEmail", "questions"]) expect(write.fields).not.toHaveProperty(field);
@@ -159,7 +174,8 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     const first = await operateRecruitmentCandidate(context, ID, submit(store.row().revision));
     vi.setSystemTime(NOW + 60_000);
     const second = await operateRecruitmentCandidate(context, ID, submit(1));
-    expect(second).toMatchObject({ status: "submitted", submittedAtMs: first.submittedAtMs, revision: first.revision, answers: { q1: 0 } });
+    expect(second).toMatchObject({ status: "submitted", submittedAtMs: first.submittedAtMs, revision: first.revision, answers: {} });
+    expect(store.row().answers).toEqual({ q1: 0 });
     expect(store.writes).toHaveLength(1);
     expect(store.writes.map(write => write.table)).toEqual(["recruitment_assignments"]);
     expect(JSON.stringify(second)).not.toContain('"score"'); expect(JSON.stringify(second)).not.toContain('"correctIndex"');
@@ -181,7 +197,8 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     expect(outcomes[0].status).toBe("fulfilled"); expect(outcomes[1].status).toBe("rejected");
     expect(store.row()).toMatchObject({ status: "active", revision: 2, answers: { q1: 0 }, submittedAtMs: null });
     const view = await operateRecruitmentCandidate(context, ID, submit(2));
-    expect(view).toMatchObject({ status: "submitted", revision: 3, answers: { q1: 0 } });
+    expect(view).toMatchObject({ status: "submitted", revision: 3, answers: {} });
+    expect(store.row().answers).toEqual({ q1: 0 });
   });
   it("stale submission at the deadline commits timeout rather than rolling it back", async () => {
     const store = fakeTransactionalStore({ ...started(), answers: { q1: 0 }, revision: 3 });
@@ -201,7 +218,7 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     const store = fakeTransactionalStore({ ...started(), answers: { q1: 0, q2: 1 } });
     vi.setSystemTime(NOW + 300_000);
     const result = await operateRecruitmentCandidate(context, ID, answer(1, "q2", 0));
-    expect(result).toMatchObject({ status: "timed_out", answers: { q1: 0, q2: 1 }, submittedAtMs: NOW + 300_000, revision: 2, questions: [] });
+    expect(result).toMatchObject({ status: "timed_out", answers: {}, submittedAtMs: NOW + 300_000, revision: 2, questions: [] });
     expect(store.row()).toMatchObject({ status: "timed_out", answers: { q1: 0, q2: 1 }, score: { correct: 1, total: 5, answered: 2 } });
     expect(store.events.at(-1)).toBe("commit"); expect(store.events).not.toContain("rollback");
   });
@@ -223,12 +240,12 @@ describe("recruitment candidate locked service contract (mocked transactions)", 
     expect(store.row().submittedAtMs).toBe(NOW + 300_000);
   });
   it("revoked assignment never admits a start/save/submit mutation or snapshot disclosure", async () => {
-    const store = fakeTransactionalStore({ ...started(), status: "revoked" });
+    const store = fakeTransactionalStore({ ...started(), status: "revoked", answers: { q1: 0 } });
     for (const operation of [start, answer(), submit(store.row().revision)]) {
       const view = await operateRecruitmentCandidate(context, ID, operation);
-      expect(view.status).toBe("revoked"); expect(view.questions).toEqual([]);
+      expect(view.status).toBe("revoked"); expect(view.questions).toEqual([]); expect(view.answers).toEqual({});
     }
-    expect(store.writes).toEqual([]);
+    expect(store.writes).toEqual([]); expect(store.row().answers).toEqual({ q1: 0 });
   });
   it("pre-start read is locked but neither writes nor exposes questions or answers", async () => {
     const store = fakeTransactionalStore({ ...invitation(), answers: { q1: 0 } });

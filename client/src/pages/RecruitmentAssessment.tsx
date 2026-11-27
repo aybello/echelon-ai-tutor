@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { getQueryKey } from "@trpc/react-query";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRoute } from "wouter";
@@ -11,6 +17,7 @@ import {
   WifiOff,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { RecruitmentClock } from "@/lib/recruitmentClock";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -135,6 +142,41 @@ export default function RecruitmentAssessment({
 function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const utils = trpc.useUtils();
   const queryClient = useQueryClient();
+  const clock = useRef(new RecruitmentClock());
+  // Responses from an earlier session must not restore its candidate data.
+  const sessionEpoch = useRef(0);
+  // Registered before useQuery's layout subscription starts its initial fetch.
+  // Observe the real query fetch event, not render time or wall-clock updatedAt.
+  useLayoutEffect(() => {
+    let request: { startedMs: number; epoch: number } | null = null;
+    const queryKey = getQueryKey(
+      trpc.recruitment.candidateGet,
+      { assignmentId },
+      "query"
+    );
+    return queryClient.getQueryCache().subscribe(event => {
+      if (
+        event.type !== "updated" ||
+        event.query !==
+          queryClient.getQueryCache().find({ queryKey, exact: true })
+      )
+        return;
+      if (event.action.type === "fetch") {
+        request = { startedMs: performance.now(), epoch: sessionEpoch.current };
+      } else if (event.action.type === "success" && !event.action.manual) {
+        if (request && request.epoch === sessionEpoch.current) {
+          clock.current.record(
+            event.query.state.data as RecruitmentCandidateView,
+            request.startedMs,
+            performance.now()
+          );
+        }
+        request = null;
+      } else if (event.action.type === "error") {
+        request = null;
+      }
+    });
+  }, [assignmentId, queryClient]);
   const query = trpc.recruitment.candidateGet.useQuery(
     { assignmentId },
     {
@@ -157,8 +199,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const [online, setOnline] = useState(
     () => typeof navigator === "undefined" || navigator.onLine
   );
-  const [now, setNow] = useState(Date.now());
-  const clockOffset = useRef(0);
+  const [now, setNow] = useState(() => performance.now());
   const [accepted, setAccepted] = useState(false);
   const [index, setIndex] = useState(0);
   const [message, setMessage] = useState("");
@@ -172,8 +213,6 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const [submitOpen, setSubmitOpen] = useState(false);
   const expectedRevision = useRef<number | null>(null);
   const entryConsumed = useRef(false);
-  // Responses from an earlier session must not restore its candidate data.
-  const sessionEpoch = useRef(0);
   const [sessionRefreshPending, setSessionRefreshPending] = useState(false);
   const deadlineChecked = useRef<number | null>(null);
   const questionHeading = useRef<HTMLHeadingElement | null>(null);
@@ -189,7 +228,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       disconnected = () => setOnline(false);
     window.addEventListener("online", connected);
     window.addEventListener("offline", disconnected);
-    const tick = window.setInterval(() => setNow(Date.now()), 1000);
+    const tick = window.setInterval(() => setNow(performance.now()), 1000);
     return () => {
       window.removeEventListener("online", connected);
       window.removeEventListener("offline", disconnected);
@@ -198,6 +237,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   }, []);
   const clearCandidate = useCallback(() => {
     viewRef.current = null;
+    clock.current.clear();
     setView(null);
     setAccepted(false);
     setIndex(0);
@@ -260,12 +300,16 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           "Saved answers changed. Review the latest answers and open submission confirmation again."
         );
       }
-      if (!isTerminal(next.status) && next.serverNowMs < next.deadlineMs)
+      const monotonicMs = performance.now();
+      clock.current.merge(next, monotonicMs);
+      if (
+        !isTerminal(next.status) &&
+        clock.current.now(monotonicMs) < next.deadlineMs
+      )
         deadlineChecked.current = null;
-      clockOffset.current = next.serverNowMs - Date.now();
       viewRef.current = next;
       setView(next);
-      setNow(Date.now());
+      setNow(monotonicMs);
     },
     [assignmentId]
   );
@@ -302,7 +346,11 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     mergeServerView,
     handleAccessFailure,
   ]);
-  function commitServerView(next: RecruitmentCandidateView) {
+  function commitServerView(
+    next: RecruitmentCandidateView,
+    requestStartedMs: number
+  ) {
+    clock.current.record(next, requestStartedMs, performance.now());
     mergeServerView(next);
     // The exact assignment cache receives only the server candidate DTO.
     utils.recruitment.candidateGet.setData({ assignmentId }, next);
@@ -317,12 +365,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       try {
         await utils.recruitment.candidateGet.cancel({ assignmentId });
         if (!live.current || epoch !== sessionEpoch.current) return;
+        const requestStartedMs = performance.now();
         const next = await utils.recruitment.candidateGet.fetch(
           { assignmentId },
           { staleTime: 0 }
         );
         if (!live.current || epoch !== sessionEpoch.current) return;
         entryConsumed.current = true;
+        clock.current.record(next, requestStartedMs, performance.now());
         mergeServerView(next);
         setNeedsRefresh(false);
         setAuthRequired(false);
@@ -399,7 +449,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     void refreshServer("session");
   }, [sessionRefreshPending, busy, online, refreshServer]);
 
-  const serverNow = now + clockOffset.current;
+  const serverNow = clock.current.now(now);
   const deadlineReached = !!view && serverNow >= view.deadlineMs;
   useEffect(() => {
     if (
@@ -438,13 +488,14 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
       if (epoch !== sessionEpoch.current) return;
+      const requestStartedMs = performance.now();
       const next = await start.mutateAsync({
         assignmentId,
         acceptedNotice: true,
         consentVersion: RECRUITMENT_CONSENT_VERSION,
       });
       if (live.current && epoch === sessionEpoch.current) {
-        commitServerView(next);
+        commitServerView(next, requestStartedMs);
         setIndex(0);
       }
     } catch (failure) {
@@ -482,6 +533,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
     try {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
       if (epoch !== sessionEpoch.current) return;
+      const requestStartedMs = performance.now();
       const next = await save.mutateAsync({
         assignmentId,
         questionId,
@@ -489,7 +541,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
         revision: current.revision,
       });
       if (live.current && epoch === sessionEpoch.current) {
-        commitServerView(next);
+        commitServerView(next, requestStartedMs);
         setSaveState("saved");
       }
     } catch (failure) {
@@ -502,12 +554,13 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           "Another session changed your answers. Loading the latest saved answers; choose your answer again after the refresh. Your last choice was not replayed."
         );
         try {
+          const requestStartedMs = performance.now();
           const latest = await utils.recruitment.candidateGet.fetch(
             { assignmentId },
             { staleTime: 0 }
           );
           if (live.current && epoch === sessionEpoch.current) {
-            commitServerView(latest);
+            commitServerView(latest, requestStartedMs);
             setNeedsRefresh(false);
           }
         } catch (refreshFailure) {
@@ -552,9 +605,10 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
       await utils.recruitment.candidateGet.cancel({ assignmentId });
       // The server verifies exactly the revision reviewed in this confirmation.
       if (epoch !== sessionEpoch.current) return;
+      const requestStartedMs = performance.now();
       const next = await submit.mutateAsync({ assignmentId, revision });
       if (live.current && epoch === sessionEpoch.current) {
-        commitServerView(next);
+        commitServerView(next, requestStartedMs);
         changeSubmitOpen(false);
       }
     } catch (failure) {
@@ -567,12 +621,13 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
           "Another session changed your answers. Loading the latest saved answers; review them and confirm submission again. Submission was not retried."
         );
         try {
+          const requestStartedMs = performance.now();
           const latest = await utils.recruitment.candidateGet.fetch(
             { assignmentId },
             { staleTime: 0 }
           );
           if (live.current && epoch === sessionEpoch.current) {
-            commitServerView(latest);
+            commitServerView(latest, requestStartedMs);
             setNeedsRefresh(false);
           }
         } catch (refreshFailure) {

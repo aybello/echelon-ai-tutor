@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { and, eq } from "drizzle-orm";
 import { getDb } from "../db";
 import { organizations, organizationMembers, subscriptions, questions, recruitmentAssessments, recruitmentAssignments } from "../../drizzle/schema";
 import { operateRecruitmentCandidate } from "./store";
-import { createRecruitmentAssessment, inviteRecruitmentCandidate, recruitmentCatalog, recruitmentResults } from "./service";
+import { createRecruitmentAssessment, inviteRecruitmentCandidate, listRecruitmentAssessments, recruitmentCatalog, recruitmentResults } from "./service";
 import { RECRUITMENT_CONSENT_VERSION, type RecruitmentQuestion } from "../../shared/recruitmentAssessment";
 import type { TrpcContext } from "../_core/context";
 
@@ -75,6 +75,76 @@ describe.skipIf(!enabled)("Recruitment transactions on a fresh network-isolated 
     await new Promise(r => setTimeout(r, 400)); release(); await holder;
     expect((await late).status).toBe("timed_out");
     const row = await read(id); expect(row.status).toBe("timed_out"); expect(row.answers).toEqual({}); expect(row.submittedAtMs).toBe(deadline); expect(row.score?.correct).toBe(0);
+  });
+  it("waits for an accepted pre-deadline save to commit before durable results/list timeout finalization", async () => {
+    const id = await fixture(), view = await start(id), original = await read(id);
+    const [definition] = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId));
+    const membersBefore = await db.select().from(organizationMembers), subscriptionsBefore = await db.select().from(subscriptions);
+    const orgsBefore = await db.select().from(organizations);
+    const beforeDeadline = Date.now(), deadline = beforeDeadline + 60_000;
+    await db.update(recruitmentAssignments).set({ expiresAtMs: deadline }).where(eq(recruitmentAssignments.id, id));
+    let release!: () => void, saved!: () => void, reportsEntered!: () => void;
+    const held = new Promise<void>(resolve => { release = resolve; });
+    const saveWritten = new Promise<void>(resolve => { saved = resolve; });
+    const reporting = new Promise<void>(resolve => { reportsEntered = resolve; });
+    const realTransaction = db.transaction.bind(db);
+    let transactionNumber = 0, reportTransactions = 0;
+    // Every query/lock/write/commit is real MySQL. The hook only pauses the
+    // accepted candidate operation between its durable UPDATE and COMMIT.
+    const transaction = vi.spyOn(db, "transaction").mockImplementation((callback, config) => {
+      const isSave = transactionNumber++ === 0;
+      return realTransaction(async tx => {
+        if (!isSave && ++reportTransactions === 2) reportsEntered();
+        const result = await callback(tx);
+        if (isSave) { saved(); await held; }
+        return result;
+      }, config);
+    });
+    // Advance only the server clock, not timers: the deadline crossing does
+    // not depend on CI speed, sleeps or scheduling the accepted save in time.
+    const clock = vi.spyOn(Date, "now").mockReturnValue(beforeDeadline);
+    const save = operateRecruitmentCandidate(ctx, id, { kind: "answer", input: { assignmentId: id, questionId: "1", selectedIndex: 0, revision: view.revision } });
+    const manager = { ...ctx, studentEmail: "manager@example.test" };
+    let resultsReturned = false, listReturned = false;
+    let results: ReturnType<typeof recruitmentResults> | undefined, list: ReturnType<typeof listRecruitmentAssessments> | undefined;
+    try {
+      await saveWritten;
+      clock.mockReturnValue(deadline);
+      results = recruitmentResults(manager, orgId, original.assessmentId).then(report => { resultsReturned = true; return report; });
+      list = listRecruitmentAssessments(manager, orgId).then(report => { listReturned = true; return report; });
+      // The broken unlocked implementation returns here instead of entering
+      // reporting transactions; race against it rather than hanging on a gate.
+      await Promise.race([
+        reporting.then(() => new Promise(resolve => setTimeout(resolve, 100))),
+        results.then(() => { throw new Error("Results exposed uncommitted deadline finalization"); }),
+        list.then(() => { throw new Error("List exposed uncommitted completion"); }),
+      ]);
+      expect(resultsReturned).toBe(false); expect(listReturned).toBe(false);
+      const uncommitted = await read(id);
+      expect(uncommitted).toMatchObject({ status: "active", answers: {}, score: null, submittedAtMs: null, revision: view.revision });
+      release();
+      const [savedView, report, summaries] = await Promise.all([save, results, list]);
+      expect(savedView.answers).toEqual({ "1": 0 });
+      expect(report.results[0]).toMatchObject({ status: "timed_out", answers: { "1": 0 }, submittedAtMs: deadline, revision: view.revision + 2, score: { correct: 1, answered: 1, total: 5, percent: 20 } });
+      expect(report.results[0].questions).toHaveLength(5);
+      expect(report.assessment.completed).toBe(1);
+      expect(summaries.find(summary => summary.id === original.assessmentId)?.completed).toBe(1);
+      const durable = await read(id);
+      expect(durable).toMatchObject({ status: "timed_out", answers: { "1": 0 }, submittedAtMs: deadline, revision: view.revision + 2, score: report.results[0].score });
+      expect(await recruitmentResults(manager, orgId, original.assessmentId)).toEqual(report);
+      expect((await listRecruitmentAssessments(manager, orgId)).find(summary => summary.id === original.assessmentId)?.completed).toBe(1);
+      expect(await read(id)).toEqual(durable);
+      expect((await operateRecruitmentCandidate(ctx, id, { kind: "get" })).answers).toEqual({});
+      expect((await read(id)).answers).toEqual({ "1": 0 });
+      expect((await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.id, original.assessmentId)))[0]).toEqual(definition);
+      expect(await db.select().from(organizationMembers)).toEqual(membersBefore);
+      expect(await db.select().from(subscriptions)).toEqual(subscriptionsBefore);
+      expect(await db.select().from(organizations)).toEqual(orgsBefore);
+    } finally {
+      release();
+      await Promise.allSettled([save, ...(results ? [results] : []), ...(list ? [list] : [])]);
+      transaction.mockRestore(); clock.mockRestore();
+    }
   });
   it("cannot resurrect a manager-revoked assignment after waiting on its lock", async () => {
     const id = await fixture(); await start(id);

@@ -19,9 +19,9 @@ import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import { loadRecruitmentPool, loadRecruitmentPools } from "./questions";
 import { assignmentDeadline, finalizeRecruitmentDeadline, recruitmentResult } from "./state";
 import { persistRecruitmentTransition, readRecruitmentAssessment, recruitmentDb } from "./store";
-import type { RecruitmentCreate, RecruitmentReadDb } from "./types";
+import type { RecruitmentCreate, RecruitmentReadDb, RecruitmentTransaction } from "./types";
 
-/** Recheck manager membership inside mutations without invoking a global resolver
+/** Recheck manager membership inside transactions without invoking a global resolver
  * while a pool connection is held. The existing resolver remains the preflight. */
 async function assertManagerStillAuthorized(db: RecruitmentReadDb, org: Organization, email: string): Promise<void> {
   if (normalizeEmail(org.managerEmail) === email) return;
@@ -34,14 +34,54 @@ async function assertManagerStillAuthorized(db: RecruitmentReadDb, org: Organiza
   }
 }
 
-export function recruitmentDefinitionSummary(assessment: RecruitmentAssessmentRow, assignments: RecruitmentAssignmentRow[], nowMs: number): RecruitmentDefinitionSummary {
+/** Historical Annual reporting needs current reporting authorization, not a current term. */
+async function lockReportingOrganization(tx: RecruitmentTransaction, orgId: number): Promise<Organization> {
+  const [org] = await tx.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).for("share");
+  if (!org || !["active", "past_due"].includes(org.status)
+    || org.billingType === "course-pass" || org.tier === "course-pass") {
+    throw new TRPCError({ code: "FORBIDDEN", message: "Team reporting is no longer available." });
+  }
+  return org;
+}
+
+/** The org SHARE lock excludes invitation insertion. Identity is immutable, so
+ * discover IDs only, then acquire single-row locks in one common order. SQL
+ * ORDER BY alone can sort after an index scan has already acquired row locks. */
+async function lockReportingAssignments(tx: RecruitmentTransaction, orgId: number,
+  assessmentId?: string): Promise<RecruitmentAssignmentRow[]> {
+  const scope = assessmentId === undefined ? eq(recruitmentAssignments.orgId, orgId)
+    : and(eq(recruitmentAssignments.orgId, orgId), eq(recruitmentAssignments.assessmentId, assessmentId));
+  const ids = await tx.select({ id: recruitmentAssignments.id }).from(recruitmentAssignments).where(scope)
+    .orderBy(recruitmentAssignments.id);
+  const rows: RecruitmentAssignmentRow[] = [];
+  for (const { id } of ids.sort((a, b) => a.id.localeCompare(b.id))) {
+    const [row] = await tx.select().from(recruitmentAssignments)
+      .where(and(eq(recruitmentAssignments.id, id), scope)).limit(1).for("update");
+    if (!row) throw new TRPCError({ code: "CONFLICT", message: "The invitation scope changed. Reload the report." });
+    rows.push(row);
+  }
+  return rows;
+}
+
+async function finalizeReportingAssignments(tx: RecruitmentTransaction, assessment: RecruitmentAssessmentRow,
+  rows: RecruitmentAssignmentRow[], nowMs: number): Promise<RecruitmentAssignmentRow[]> {
+  const finalized: RecruitmentAssignmentRow[] = [];
+  for (const row of rows) {
+    const next = finalizeRecruitmentDeadline(assessment, row, nowMs);
+    if (next !== row) await persistRecruitmentTransition(tx, row, next);
+    finalized.push(next);
+  }
+  return finalized;
+}
+
+export function recruitmentDefinitionSummary(assessment: RecruitmentAssessmentRow, assignments: RecruitmentAssignmentRow[]): RecruitmentDefinitionSummary {
   const rows = assignments.filter(row => row.assessmentId === assessment.id && row.orgId === assessment.orgId);
   return {
     id: assessment.id, title: assessment.title, courseKey: assessment.courseKey, courseLabel: assessment.courseLabel,
     modules: [...assessment.modules], questionCount: assessment.questionCount, timeLimitMinutes: assessment.timeLimitMinutes,
     createdAtMs: assessment.createdAtMs, expiresAtMs: assessment.expiresAtMs,
     candidates: rows.length,
-    completed: rows.filter(row => finalizeRecruitmentDeadline(assessment, row, nowMs).submittedAtMs !== null).length,
+    completed: rows.filter(row => row.submittedAtMs !== null).length,
   };
 }
 
@@ -106,23 +146,41 @@ export async function createRecruitmentAssessment(ctx: TrpcContext, input: Recru
 
 export async function listRecruitmentAssessments(ctx: TrpcContext, orgId: number): Promise<RecruitmentDefinitionSummary[]> {
   const org = await recruitmentManager(ctx, orgId, false);
+  const actorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
-  const definitions = await db.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.orgId, org.id))
-    .orderBy(desc(recruitmentAssessments.createdAtMs), recruitmentAssessments.id);
-  const assignments = definitions.length ? await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.orgId, org.id)) : [];
-  const nowMs = Date.now();
-  return definitions.map(definition => recruitmentDefinitionSummary(definition, assignments, nowMs));
+  return db.transaction(async tx => {
+    const currentOrg = await lockReportingOrganization(tx, org.id);
+    const definitions = await tx.select().from(recruitmentAssessments).where(eq(recruitmentAssessments.orgId, org.id))
+      .orderBy(desc(recruitmentAssessments.createdAtMs), recruitmentAssessments.id);
+    // Common reporting lock order: org SHARE -> assignments by ID UPDATE -> manager SHARE.
+    const assignments = definitions.length ? await lockReportingAssignments(tx, org.id) : [];
+    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
+    const nowMs = Date.now(); // Only after every lock and authorization wait.
+    const summaries: RecruitmentDefinitionSummary[] = [];
+    for (const definition of definitions) {
+      const rows = assignments.filter(row => row.assessmentId === definition.id);
+      const finalized = await finalizeReportingAssignments(tx, definition, rows, nowMs);
+      summaries.push(recruitmentDefinitionSummary(definition, finalized));
+    }
+    return summaries;
+  }, { isolationLevel: "read committed" });
 }
 
 export async function recruitmentResults(ctx: TrpcContext, orgId: number, assessmentId: string): Promise<{ assessment: RecruitmentDefinitionSummary; results: RecruitmentResult[] }> {
   const org = await recruitmentManager(ctx, orgId, false);
+  const actorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
-  const assessment = await readRecruitmentAssessment(db, assessmentId, org.id);
-  const rows = await db.select().from(recruitmentAssignments)
-    .where(and(eq(recruitmentAssignments.orgId, org.id), eq(recruitmentAssignments.assessmentId, assessment.id)))
-    .orderBy(recruitmentAssignments.createdAtMs, recruitmentAssignments.id);
-  const nowMs = Date.now();
-  return { assessment: recruitmentDefinitionSummary(assessment, rows, nowMs), results: rows.map(row => recruitmentResult(assessment, row, nowMs)) };
+  return db.transaction(async tx => {
+    const currentOrg = await lockReportingOrganization(tx, org.id);
+    const assessment = await readRecruitmentAssessment(tx, assessmentId, org.id);
+    const rows = await lockReportingAssignments(tx, org.id, assessment.id);
+    await assertManagerStillAuthorized(tx, currentOrg, actorEmail);
+    const nowMs = Date.now();
+    const finalized = await finalizeReportingAssignments(tx, assessment, rows, nowMs);
+    // Preserve the existing display order independently of deterministic lock order.
+    finalized.sort((a, b) => a.createdAtMs - b.createdAtMs || a.id.localeCompare(b.id));
+    return { assessment: recruitmentDefinitionSummary(assessment, finalized), results: finalized.map(row => recruitmentResult(assessment, row, nowMs)) };
+  }, { isolationLevel: "read committed" });
 }
 
 export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number, assessmentId: string, memberId: number): Promise<{ assignmentId: string }> {
@@ -164,11 +222,7 @@ export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: numbe
   const actorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
   return db.transaction(async tx => {
-    const [currentOrg] = await tx.select().from(organizations).where(eq(organizations.id, org.id)).limit(1).for("share");
-    if (!currentOrg || !["active", "past_due"].includes(currentOrg.status)
-      || currentOrg.billingType === "course-pass" || currentOrg.tier === "course-pass") {
-      throw new TRPCError({ code: "FORBIDDEN", message: "Team reporting is no longer available." });
-    }
+    const currentOrg = await lockReportingOrganization(tx, org.id);
     const [assignment] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.orgId, org.id))).limit(1).for("update");
     if (!assignment) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment invitation not found." });

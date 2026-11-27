@@ -114,7 +114,7 @@ describe("recruitment candidate and manager projections", () => {
     form.questions[0] = { ...form.questions[0], explanation: "secret explanation", score: 100 } as typeof form.questions[number];
     const row = { ...active(), status, answers: { q1: 0, q2: 1, foreign: 0, q3: 999 }, score: { correct: 100, percent: 100 } as RecruitmentAssignmentRow["score"] };
     const dto = recruitmentCandidateView(form, row, "Synthetic utility", NOW + 1000);
-    assertCandidatePrivacy(dto); expect(dto.answers).toEqual({ q1: 0, q2: 1 });
+    assertCandidatePrivacy(dto); expect(dto.answers).toEqual(status === "active" ? { q1: 0, q2: 1 } : {});
     expect(dto.questions).toHaveLength(status === "active" ? 5 : 0);
     if (status === "active") expect(Object.keys(dto.questions[0]).sort()).toEqual(["id", "module", "options", "prompt"]);
   });
@@ -155,9 +155,18 @@ describe("recruitment candidate and manager projections", () => {
     expect(result).toMatchObject({ status: "revoked", submittedAtMs: NOW + 1000, answers: { q1: 0 }, score: { correct: 1, answered: 1 } });
     expect(result.questions).toHaveLength(5); expect(result.questions[0].correctIndex).toBe(0);
   });
-  it("manager overdue active result releases review only after lazy deadline scoring", () => {
-    const result = recruitmentResult(assessment(), { ...active(), answers: { q1: 0 } }, NOW + 300_000);
-    expect(result).toMatchObject({ status: "timed_out", submittedAtMs: NOW + 300_000, answers: { q1: 0 }, score: { correct: 1 } });
-    expect(result.questions).toHaveLength(5);
+  it("manager overdue active projection cannot invent a final score or release the key from an unlocked snapshot", () => {
+    const row = { ...active(), answers: { q1: 0 } }, before = structuredClone(row);
+    const result = recruitmentResult(assessment(), row, NOW + 300_000);
+    expect(result).toMatchObject({ status: "active", submittedAtMs: null, answers: {}, score: null, questions: [] });
+    expect(row).toEqual(before);
+    const finalized = finalizeRecruitmentDeadline(assessment(), row, NOW + 300_000);
+    expect(recruitmentResult(assessment(), finalized, NOW + 300_001)).toMatchObject({ status: "timed_out", score: { correct: 1 }, answers: { q1: 0 } });
+  });
+  it("a revoked completed candidate receives only a receipt while employer evidence remains intact", () => {
+    const row = { ...active(), status: "revoked" as const, submittedAtMs: NOW + 1000, answers: { q1: 0 } }, before = structuredClone(row);
+    expect(recruitmentCandidateView(assessment(), row, "Synthetic utility", NOW + 2000)).toMatchObject({ status: "revoked", submittedAtMs: NOW + 1000, questions: [], answers: {} });
+    expect(row).toEqual(before);
+    expect(recruitmentResult(assessment(), row, NOW + 2000).answers).toEqual({ q1: 0 });
   });
 });

@@ -21,9 +21,10 @@ export async function readRecruitmentAssessment(db: RecruitmentReadDb, assessmen
   return row;
 }
 
-export async function readRecruitmentAssignment(db: RecruitmentReadDb, assignmentId: string): Promise<RecruitmentAssignmentRow> {
-  const [row] = await db.select().from(recruitmentAssignments).where(eq(recruitmentAssignments.id, assignmentId)).limit(1);
-  if (!row) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment invitation not found." });
+export async function readRecruitmentAssignment(db: RecruitmentReadDb, assignmentId: string, email: string): Promise<RecruitmentAssignmentRow> {
+  const [row] = await db.select().from(recruitmentAssignments)
+    .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.candidateEmail, email))).limit(1);
+  if (!row) throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is not available to this account." });
   return row;
 }
 
@@ -42,9 +43,9 @@ export async function persistRecruitmentTransition(tx: RecruitmentTransaction, b
  * Exact original-org seat/subscription is then rechecked inside READ COMMITTED.
  * candidateGet locks as well because lazy deadline finalization is a durable write. */
 export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId: string, operation: RecruitmentOperation): Promise<RecruitmentCandidateView> {
-  verifiedRecruitmentEmail(ctx);
+  const email = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
-  const preflight = await readRecruitmentAssignment(db, assignmentId);
+  const preflight = await readRecruitmentAssignment(db, assignmentId, email);
   const definition = await readRecruitmentAssessment(db, preflight.assessmentId, preflight.orgId);
   await assertRecruitmentCandidate(ctx, db, preflight, definition.courseKey);
   return db.transaction(async tx => {
@@ -53,8 +54,9 @@ export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId
     const [lockedOrg] = await tx.select().from(organizations).where(eq(organizations.id, preflight.orgId)).limit(1).for("share");
     if (!lockedOrg) throw new TRPCError({ code: "FORBIDDEN", message: "Team unavailable." });
     const [assignment] = await tx.select().from(recruitmentAssignments)
-      .where(eq(recruitmentAssignments.id, assignmentId)).limit(1).for("update");
-    if (!assignment) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment invitation not found." });
+      .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.orgId, preflight.orgId)))
+      .limit(1).for("update");
+    if (!assignment) throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is not available to this account." });
     if (assignment.orgId !== preflight.orgId || assignment.assessmentId !== preflight.assessmentId || assignment.memberId !== preflight.memberId) {
       throw new TRPCError({ code: "CONFLICT", message: "The invitation scope changed. Reload the assessment." });
     }
