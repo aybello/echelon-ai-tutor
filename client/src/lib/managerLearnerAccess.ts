@@ -49,14 +49,16 @@ export function getManagerLearnerCourses(
   }
 
   const allowed = allowedCourseKeys ? new Set(allowedCourseKeys) : null;
-  return Array.from(uniqueKeys)
-    .map((key) => resolveCourseKey(key))
-    .filter(
-      (course): course is CourseEntry =>
-        Boolean(
-          course?.isActive
-          && course.teamAssignable
-          && (!allowed || allowed.has(course.courseKey)),
-        ),
-    );
+  const canonicalCourses = new Map<string, CourseEntry>();
+  for (const key of uniqueKeys) {
+    const course = resolveCourseKey(key);
+    if (
+      course?.isActive
+      && course.teamAssignable
+      && (!allowed || allowed.has(course.courseKey))
+    ) {
+      canonicalCourses.set(course.courseKey, course);
+    }
+  }
+  return Array.from(canonicalCourses.values());
 }

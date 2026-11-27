@@ -51,6 +51,18 @@ describe("manager learner access", () => {
     expect(courses.map((course) => course.courseKey)).toEqual(["class1-water"]);
   });
 
+  it("deduplicates aliases after resolving to canonical course keys", () => {
+    const courses = getManagerLearnerCourses("manager@example.test", [
+      {
+        email: "manager@example.test",
+        status: "assigned",
+        courseKeys: ["class1", "class1-water"],
+      },
+    ]);
+
+    expect(courses.map((course) => course.courseKey)).toEqual(["class1-water"]);
+  });
+
   it("fails closed when a resolved course is outside the organization allow-list", () => {
     const courses = getManagerLearnerCourses(
       "manager@example.test",

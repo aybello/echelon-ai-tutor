@@ -292,6 +292,7 @@ export default function OrgDashboard() {
     onSuccess: () => {
       toast.success("Course updated");
       utils.org.listMembers.invalidate();
+      utils.org.getAttention.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -1773,7 +1774,7 @@ export default function OrgDashboard() {
               <div className="space-y-2">
                 <Label className="text-slate-700">Paste emails (one per line, or comma-separated)</Label>
                 <Textarea
-                  placeholder={"operator1@example.com\noperator2@example.com"}
+                  placeholder={"first.operator@municipality.ca\nsecond.operator@municipality.ca"}
                   value={bulkEmails}
                   onChange={e => setBulkEmails(e.target.value)}
                   rows={6}
