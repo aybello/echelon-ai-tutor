@@ -37,6 +37,10 @@ describe("Career Map release contracts", () => {
     expect(careerMap).toContain("visibleLevels.map");
     expect(careerMap).toContain("track === \"all\" || l.tracks.includes(track)");
     expect(careerMap).toContain("selected={selectedVisible} province={province} track={track}");
+    expect(careerMap).toContain("mainLevels.length > 1");
+    expect(careerMap).toContain("province.salaryJumps.slice(0, mainLevels.length - 1)");
+    expect(careerMap).toContain('aria-label="Select Water Quality Analyst (WQA) specialist path"');
+    expect(careerMap).toContain('className="career-salary-scale"');
     expect(careerMap).toContain("TRACKS.filter(t => t.id !== \"wqa\" || specialistLevel)");
     expect(careerMap).toContain('t.id === "wqa" ? "WQA"');
   });

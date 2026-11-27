@@ -251,7 +251,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
           )}
         </div>
         {/* Scale */}
-        <div style={{
+        <div className="career-salary-scale" style={{
           display: "flex", justifyContent: "space-between", marginTop: 12,
           paddingTop: 8, borderTop: "1px solid #F1F5F9", paddingLeft: 84, paddingRight: 174,
         }}>
@@ -337,8 +337,8 @@ function CareerTimeline({ onSelect, selected, province, track }: {
         </div>
 
         {/* Salary jump callouts */}
-        <div className="career-salary-jumps" style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
-          {province.salaryJumps.map((j, i) => {
+        {mainLevels.length > 1 && <div className="career-salary-jumps" style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
+          {province.salaryJumps.slice(0, mainLevels.length - 1).map((j, i) => {
             const fromLevel = mainLevels[i];
             const toLevel = mainLevels[i + 1];
             const fromMid = fromLevel ? (fromLevel.annual.min + fromLevel.annual.max) / 2 : 0;
@@ -355,13 +355,21 @@ function CareerTimeline({ onSelect, selected, province, track }: {
             </div>
             );
           })}
-        </div>
+        </div>}
       </div>
 
       {/* WQA specialist path — only for Ontario */}
       {wqaLevel && (track === "all" || track === "wqa") && (
         <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
-          <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
+          <button
+            type="button"
+            aria-pressed={selected?.id === wqaLevel.id}
+            aria-label="Select Water Quality Analyst (WQA) specialist path"
+            onClick={() => onSelect(selected?.id === wqaLevel.id ? null : wqaLevel)}
+            style={{ display: "block", width: "100%", textAlign: "left", border: 0, padding: 0, background: "transparent", color: "inherit", cursor: "pointer", fontFamily: "inherit" }}
+          >
+            <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
+          </button>
           <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
           <div className="career-salary-details" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
             {[
@@ -603,6 +611,7 @@ export default function CareerMap() {
           .career-bar-row { flex-wrap: wrap !important; gap: 8px !important; }
           .career-bar-label { width: auto !important; text-align: left !important; min-width: 50px !important; }
           .career-bar-salary { width: auto !important; flex: 1 1 100% !important; }
+          .career-salary-scale { padding-left: 0 !important; padding-right: 0 !important; }
         }
       `}</style>
 
