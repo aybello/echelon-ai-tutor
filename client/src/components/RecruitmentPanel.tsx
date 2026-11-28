@@ -758,6 +758,7 @@ function RecruitmentDetail({
   const invite = trpc.recruitment.invite.useMutation();
   const hiring = trpc.hiring.status.useQuery({ orgId }, { retry: false, staleTime: 0 });
   const hiringCheckout = trpc.hiring.createCheckout.useMutation();
+  const cancelHiring = trpc.hiring.cancelAtPeriodEnd.useMutation();
   const revoke = trpc.recruitment.revoke.useMutation();
   const [memberId, setMemberId] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
@@ -788,7 +789,7 @@ function RecruitmentDetail({
   const revokePending = useRef(false);
   const [confirmed, setConfirmed] = useState(false);
   const renderingReview = revokeReview.current;
-  const busy = invite.isPending || revoke.isPending || copying || downloading;
+  const busy = invite.isPending || revoke.isPending || cancelHiring.isPending || copying || downloading;
   const authorized =
     access.isCurrent() &&
     resultFresh &&
@@ -811,6 +812,16 @@ function RecruitmentDetail({
     revokeReview.current = null;
     setRevokeTarget(null);
     setConfirmed(false);
+  }
+  async function cancelHiringRenewal() {
+    if (!isCurrent() || !hiring.data?.active || !hiring.data.owner || hiring.data.basis !== "stripe" || hiring.data.state === "cancel_at_period_end") return;
+    if (!window.confirm("Cancel only the Hiring add-on renewal? Normal Teams training will remain unchanged.")) return;
+    try {
+      await cancelHiring.mutateAsync({ orgId });
+      if (isCurrent()) await hiring.refetch();
+    } catch (failure) {
+      if (isCurrent()) setError(failure instanceof Error ? failure.message : "Hiring renewal could not be cancelled.");
+    }
   }
   useLayoutEffect(() => {
     const filters = { queryKey: resultKey, exact: true };
@@ -1118,12 +1129,9 @@ function RecruitmentDetail({
       </div>
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h4 className="font-semibold">Invite a candidate</h4>
-        {hiring.data?.active ? <p className="mt-2 text-sm text-slate-700">Hiring allowance: <strong>{hiring.data.remaining}</strong> of {hiring.data.quota} remaining · expires {new Date(hiring.data.endsAtMs!).toLocaleDateString()}. Renews annually unless the organization owner cancels renewal before the term ends.</p> : <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">No active Hiring allowance is available for applicant invitations. The organization owner can purchase the optional Hiring add-on.</p><Button type="button" variant="outline" disabled={hiringCheckout.isPending} onClick={async () => { try { const result = await hiringCheckout.mutateAsync({ orgId }); if (result.url) window.location.assign(result.url); } catch { setError("Only the verified organization owner can purchase Hiring."); } }}>{hiringCheckout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button></div>}
+        {hiring.data?.active ? <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">Hiring allowance: <strong>{hiring.data.remaining}</strong> of {hiring.data.quota} remaining · expires {new Date(hiring.data.endsAtMs!).toLocaleDateString()}. {hiring.data.state === "cancel_at_period_end" ? "Renewal is cancelled; access remains available through the current term." : "Renews annually unless the organization owner cancels renewal before the term ends."}</p>{hiring.data.owner && hiring.data.basis === "stripe" && hiring.data.state !== "cancel_at_period_end" ? <Button type="button" variant="outline" disabled={cancelHiring.isPending} onClick={() => void cancelHiringRenewal()}>{cancelHiring.isPending ? "Cancelling renewal…" : "Cancel Hiring renewal"}</Button> : null}</div> : <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">No active Hiring allowance is available for applicant invitations. The organization owner can purchase the optional Hiring add-on.</p><Button type="button" variant="outline" disabled={hiringCheckout.isPending} onClick={async () => { if (!isCurrent()) return; try { const result = await hiringCheckout.mutateAsync({ orgId }); if (isCurrent() && result.url) window.location.assign(result.url); } catch { if (isCurrent()) setError("Only the verified organization owner can purchase Hiring."); } }}>{hiringCheckout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button></div>}
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          A current team seat with this course is required. To add someone, use
-          the Operators tab first; this action does not grant a seat. The link
-          only works for the invited candidate's verified email. No automatic
-          invitation email is sent.
+          {inviteMode === "applicant" ? "Each applicant invitation allocates one assessment from the annual allowance. Revocation or expiry does not restore that allowance. " : "A current team seat with this course is required. To add someone, use the Operators tab first; this action does not grant a seat. "}The link only works for the invited candidate's verified email. No automatic invitation email is sent.
         </p>
         {invitationClosed ? (
           <p className="mt-4 text-sm text-amber-800">

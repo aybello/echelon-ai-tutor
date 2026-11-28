@@ -140,9 +140,12 @@ vi.mock("@/lib/trpc", () => {
       },
       hiring: {
         status: {
-          useQuery: () => ({ data: { active: true, remaining: 100, quota: 100, endsAtMs: Date.now() + 86400000 }, isLoading: false, isError: false }),
+          useQuery: () => ({ data: { active: true, owner: false, state: "active", basis: "pilot", remaining: 100, quota: 100, endsAtMs: Date.now() + 86400000 }, isLoading: false, isError: false, refetch: vi.fn() }),
         },
         createCheckout: {
+          useMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+        },
+        cancelAtPeriodEnd: {
           useMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
         },
       },

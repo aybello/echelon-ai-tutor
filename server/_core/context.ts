@@ -3,6 +3,7 @@ import type { User } from "../../drizzle/schema";
 import { sdk } from "./sdk";
 import { readVerifiedEmailFromRequest } from "./emailSession";
 import { readAssessmentOnlySession, type AssessmentOnlyCapability } from "./assessmentOnlySession";
+import { resolveEntitlementsByEmail } from "./access";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
@@ -14,6 +15,8 @@ export type TrpcContext = {
   studentEmail: string | null;
   /** Server-verified, purpose-bound assessment-only capability. */
   assessmentOnlySession?: AssessmentOnlyCapability | null;
+  /** Computed only when an assessment-only capability is present. */
+  assessmentOnlyHasLearnerAccess?: boolean;
 };
 
 export async function createContext(
@@ -32,6 +35,10 @@ export async function createContext(
   // Fails closed: returns null when JWT_SECRET is missing or cookie is invalid/expired.
   studentEmail = await readVerifiedEmailFromRequest(opts.req);
   const assessmentOnlySession = await readAssessmentOnlySession(opts.req);
+  const identityEmail = user?.email ?? studentEmail;
+  const assessmentOnlyHasLearnerAccess = assessmentOnlySession
+    ? (await resolveEntitlementsByEmail(identityEmail)).hasAnyAccess
+    : undefined;
 
   return {
     req: opts.req,
@@ -39,5 +46,6 @@ export async function createContext(
     user,
     studentEmail,
     assessmentOnlySession,
+    assessmentOnlyHasLearnerAccess,
   };
 }

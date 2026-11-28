@@ -57,7 +57,7 @@ describe("assessment-only session boundary", () => {
     expect(await readAssessmentOnlySession(request("not-a-session"))).toBeNull();
   });
 
-  it("denies learner state only when the server-recognized capability is present", () => {
+  it("denies learner state for an assessment-only identity without learner entitlement", () => {
     expect(() => assertLearnerStateAllowed({ assessmentOnlySession: null })).not.toThrow();
     expect(() => assertLearnerStateAllowed({})).not.toThrow();
     expect(() => assertLearnerStateAllowed({ assessmentOnlySession: {
@@ -66,6 +66,7 @@ describe("assessment-only session boundary", () => {
       candidateEmail: "candidate@example.test",
       courseKey: "oit",
       exp: Date.now() + 60_000,
-    } })).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
+    }, assessmentOnlyHasLearnerAccess: false })).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
+    expect(() => assertLearnerStateAllowed({ assessmentOnlySession: {}, user: { id: 1 }, assessmentOnlyHasLearnerAccess: true })).not.toThrow();
   });
 });

@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { stripe } from "../stripe/stripe";
 import { hiringEvents, hiringOrders, hiringTerms } from "../../drizzle/schema";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq, inArray } from "drizzle-orm";
 import { getDb } from "../db";
 import { HIRING_POLICY, HIRING_QUOTA, HIRING_TYPE, InvalidHiringPayment, hiringMetadata, hiringPaymentState, invoicePaymentEvidence, invoiceSubscriptionId, validateHiringInvoice, validateHiringSubscription } from "./policy";
 
@@ -65,7 +65,7 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
   // one unique hiring_terms row; no event metadata or active-sub status alone
   // can create quota.
   if (event.type === "invoice.paid" || event.type === "invoice.payment_succeeded") {
-    const invoice = await stripe.invoices.retrieve(object.id, { expand: ["lines.data.price.product", "subscription", "payments.data.payment.payment_intent.latest_charge", "payments.data.payment.charge"] }) as any;
+    const invoice = await stripe.invoices.retrieve(object.id, { expand: ["payments.data.payment.payment_intent.latest_charge", "payments.data.payment.charge"] }) as any;
     const subscriptionId = invoiceSubscriptionId(invoice);
     if (!subscriptionId) return { handled: true, reviewRequired: true };
     const subscription = await stripe.subscriptions.retrieve(subscriptionId, { expand: ["items.data.price.product", "latest_invoice"] }) as any;
@@ -104,11 +104,15 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
   }
   if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
     await db.transaction(async tx => {
-      const [term] = await tx.select().from(hiringTerms).where(eq(hiringTerms.sourceSubscriptionId, object.id))
-        .orderBy(hiringTerms.endsAtMs).limit(1).for("update");
+      const [term] = await tx.select().from(hiringTerms).where(and(
+        eq(hiringTerms.sourceSubscriptionId, object.id),
+        eq(hiringTerms.paymentState, "active"),
+        inArray(hiringTerms.state, ["active", "cancel_at_period_end"]),
+      )).orderBy(desc(hiringTerms.endsAtMs)).limit(1).for("update");
       if (!term) return;
       await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.orgId, term.orgId)).limit(1).for("update");
-      if (event.type === "customer.subscription.deleted") {
+      const terminated = event.type === "customer.subscription.deleted" || ["canceled", "unpaid", "incomplete_expired"].includes(object.status);
+      if (terminated) {
         await tx.update(hiringTerms).set({ state: "suspended" }).where(eq(hiringTerms.id, term.id));
       } else {
         await tx.update(hiringTerms).set({ state: object.cancel_at_period_end ? "cancel_at_period_end" : "active" }).where(eq(hiringTerms.id, term.id));

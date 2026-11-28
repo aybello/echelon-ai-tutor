@@ -319,7 +319,7 @@ export function RecruitmentResults({
                     </td>
                   </tr>
                   <tr className="border-t border-slate-100">
-                    <td colSpan={7} className="px-4 pb-4 pt-2">
+                    <td colSpan={8} className="px-4 pb-4 pt-2">
                       <details>
                         <summary className="min-h-11 cursor-pointer py-3 text-sm font-medium text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
                           {result.score
