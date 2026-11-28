@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, eq, gt, lte } from "drizzle-orm";
+import { and, eq, gt, inArray, lt, lte, sql } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { hiringEvents, hiringOrders, hiringTerms, organizations } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/accessService";
@@ -22,18 +22,34 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
   if (!priceId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Hiring checkout is not configured yet." });
   const db = await getDb();
   if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+  const { stripe } = await import("../stripe/stripe");
+  const configuredPrice = await stripe.prices.retrieve(priceId, { expand: ["product"] }) as any;
+  if (configuredPrice.currency !== "cad" || configuredPrice.unit_amount !== HIRING_AMOUNT
+    || configuredPrice.type !== "recurring" || configuredPrice.recurring?.interval !== "year"
+    || configuredPrice.recurring?.interval_count !== 1 || configuredPrice.tax_behavior !== "exclusive"
+    || configuredPrice.product?.metadata?.type !== HIRING_TYPE || configuredPrice.product?.metadata?.policy !== HIRING_POLICY) {
+    throw new TRPCError({ code: "PRECONDITION_FAILED", message: "The configured Hiring Stripe price does not match the approved annual CAD policy." });
+  }
+  let stripeCustomerId = org.stripeCustomerId ?? null;
+  if (!stripeCustomerId) {
+    const customer = await stripe.customers.create({ email, metadata: { orgId: String(org.id), type: HIRING_TYPE, policy: HIRING_POLICY } });
+    stripeCustomerId = customer.id;
+    await db.update(organizations).set({ stripeCustomerId }).where(eq(organizations.id, org.id));
+  }
   const orderId = randomUUID();
+  const staleBefore = Date.now() - 30 * 60 * 1000;
+  await db.update(hiringOrders).set({ status: "checkout_expired" }).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.status, "pending"), lt(hiringOrders.createdAtMs, staleBefore)));
   const existing = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.status, "pending"))).limit(1);
   if (existing[0]) throw new TRPCError({ code: "CONFLICT", message: "A Hiring checkout is already in progress." });
-  await db.insert(hiringOrders).values({ id: orderId, orgId: org.id, amountCents: HIRING_AMOUNT, currency: "cad", ownerEmail: email, status: "pending", createdAtMs: Date.now(), stripeCustomerId: org.stripeCustomerId ?? null });
+  await db.insert(hiringOrders).values({ id: orderId, orgId: org.id, amountCents: HIRING_AMOUNT, currency: "cad", ownerEmail: email, status: "pending", createdAtMs: Date.now(), stripeCustomerId });
   try {
-    const { stripe } = await import("../stripe/stripe");
     const base = ENV.appBaseUrl.replace(/\/$/, "");
     const metadata = { type: HIRING_TYPE, policy: HIRING_POLICY, orderId, orgId: String(org.id), ownerEmail: email };
     const session = await stripe.checkout.sessions.create({
       mode: "subscription", line_items: [{ price: priceId, quantity: 1 }],
-      ...(org.stripeCustomerId ? { customer: org.stripeCustomerId } : { customer_email: email }),
+      customer: stripeCustomerId,
       metadata, subscription_data: { metadata }, allow_promotion_codes: false,
+      automatic_tax: { enabled: true },
       success_url: `${base}/team?view=hiring&hiring_session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${base}/team?view=hiring&hiring_cancelled=1`,
     }, { idempotencyKey: `hiring-checkout:${orderId}` });
@@ -68,13 +84,13 @@ export async function activateHiringPilot(ctx: TrpcContext, input: { orgId: numb
 
 export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   const email = ownerEmail(ctx); const org = await resolveManagedOrganization(ctx, { orgId }); if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." }); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const now = Date.now();
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now), sql`${hiringTerms.used} < ${hiringTerms.quota}`)).orderBy(hiringTerms.endsAtMs).limit(1);
   return term ? { active: true, termId: term.id, basis: term.basis, used: term.used, quota: term.quota, remaining: Math.max(0, term.quota - term.used), startsAtMs: term.startsAtMs, endsAtMs: term.endsAtMs, sourceSubscriptionId: term.sourceSubscriptionId } : { active: false, termId: null, basis: null, used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null, sourceSubscriptionId: null };
 }
 
 export async function cancelHiringAtPeriodEnd(ctx: TrpcContext, orgId: number) {
   const { org } = await hiringOwner(ctx, orgId); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.state, "active"), eq(hiringTerms.basis, "stripe"))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.basis, "stripe"))).orderBy(hiringTerms.endsAtMs).limit(1);
   if (!term?.sourceSubscriptionId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No separate active Hiring subscription is available to cancel." });
   const [order] = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.stripeSubscriptionId, term.sourceSubscriptionId))).limit(1);
   if (!order?.stripeSubscriptionId) throw new TRPCError({ code: "CONFLICT", message: "Hiring subscription binding could not be verified." });

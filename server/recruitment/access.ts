@@ -112,7 +112,7 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
     if (!assignment.grantId) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation has no active Hiring grant." });
     const grantQuery = db.select().from(hiringTerms).where(and(
       eq(hiringTerms.id, assignment.grantId), eq(hiringTerms.orgId, assignment.orgId),
-      eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"),
+      inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"),
       lte(hiringTerms.startsAtMs, Date.now()), gt(hiringTerms.endsAtMs, Date.now()),
     )).limit(1);
     const [grant] = await (options.lock ? grantQuery.for("share") : grantQuery);

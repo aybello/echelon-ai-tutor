@@ -227,6 +227,9 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     await assertManagerStillAuthorized(tx, org, creatorEmail);
     const assessment = await readRecruitmentAssessment(tx, assessmentId, org.id);
     if ("candidateEmail" in invite) {
+      assertCurrentAnnualOrganization(org, Date.now());
+      const course = recruitmentCourseForOrg(org, assessment.courseKey);
+      await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions);
       const candidateEmail = normalizeEmail(invite.candidateEmail);
       if (!candidateEmail || !invite.candidateName.trim()) throw new TRPCError({ code: "BAD_REQUEST", message: "A valid applicant email and name are required." });
       const [existing] = await tx.select().from(recruitmentAssignments).where(and(
@@ -242,10 +245,11 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
       }
       if (nowMs >= assessment.expiresAtMs) throw new TRPCError({ code: "CONFLICT", message: "This assessment has expired. Create a new form instead." });
       const [term] = await tx.select().from(hiringTerms).where(and(
-        eq(hiringTerms.orgId, org.id), eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"),
+        eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"),
         lte(hiringTerms.startsAtMs, nowMs), gt(hiringTerms.endsAtMs, nowMs),
+        sql`${hiringTerms.used} < ${hiringTerms.quota}`,
       )).orderBy(hiringTerms.endsAtMs).limit(1).for("update");
-      if (!term || term.used >= term.quota) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No active Hiring invitation allowance is available." });
+      if (!term) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No active Hiring invitation allowance is available." });
       await tx.update(hiringTerms).set({ used: sql`${hiringTerms.used} + 1` }).where(and(eq(hiringTerms.id, term.id), sql`${hiringTerms.used} < ${hiringTerms.quota}`));
       const assignmentId = randomUUID();
       await tx.insert(recruitmentAssignments).values({

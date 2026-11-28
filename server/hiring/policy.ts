@@ -17,6 +17,15 @@ export function validatePilotBounds(startsAtMs: number, endsAtMs: number, quota:
 }
 export const stripeId = (value: unknown): string | null => typeof value === "string" ? value :
   value && typeof value === "object" && "id" in value && typeof value.id === "string" ? value.id : null;
+export function hiringMetadata(object: any): Record<string, string> {
+  const candidates = [
+    object?.metadata,
+    object?.subscription_details?.metadata,
+    object?.parent?.subscription_details?.metadata,
+    object?.parent?.invoice_details?.metadata,
+  ];
+  return candidates.find((metadata) => metadata?.type === HIRING_TYPE || metadata?.hiring_type === HIRING_TYPE) ?? {};
+}
 export const invoiceSubscriptionId = (invoice: any): string | null =>
   stripeId(invoice.parent?.subscription_details?.subscription) ?? stripeId(invoice.subscription);
 export class InvalidHiringPayment extends Error {}
@@ -79,7 +88,7 @@ export function hiringPaymentState(charge: any, disputes: any[]): HiringPaymentS
 }
 export function assertHiringGrant(grant: { state: string; startsAtMs: number; endsAtMs: number; used: number; quota: number } | undefined,
   nowMs: number, needsAllowance = false): asserts grant {
-  if (!grant || grant.state !== "active" || grant.startsAtMs > nowMs || grant.endsAtMs <= nowMs) {
+  if (!grant || !["active", "cancel_at_period_end"].includes(grant.state) || grant.startsAtMs > nowMs || grant.endsAtMs <= nowMs) {
     throw new TRPCError({ code: "FORBIDDEN", message: "An active Annual Teams Hiring add-on or admin-approved pilot is required." });
   }
   if (needsAllowance && grant.used >= grant.quota) {

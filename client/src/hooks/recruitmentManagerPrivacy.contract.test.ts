@@ -138,6 +138,14 @@ vi.mock("@/lib/trpc", () => {
           useMutation: () => ({ mutateAsync: h.revoke, isPending: false }),
         },
       },
+      hiring: {
+        status: {
+          useQuery: () => ({ data: { active: true, remaining: 100, quota: 100, endsAtMs: Date.now() + 86400000 }, isLoading: false, isError: false }),
+        },
+        createCheckout: {
+          useMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+        },
+      },
     },
   };
 });
@@ -1612,6 +1620,7 @@ describe("difficulty-first recruitment creation (Node, synthetic transport)", ()
       questionCount: 5,
       timeLimitMinutes: null,
       expiresInDays: 7,
+      passingScore: 70,
     });
   });
 

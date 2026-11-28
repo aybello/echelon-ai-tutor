@@ -38,6 +38,7 @@ export default function AdminLearnerActivity() {
   const learners = trpc.admin.learnerSearch.useQuery({ query: search }, { enabled: search.length >= 3, retry: false });
   const activity = trpc.admin.learnerActivity.useQuery({ learner: selected?.selection ?? { userId: 1 }, days }, { enabled: selected !== null, retry: false });
   const comparison = trpc.admin.learnerCohortComparison.useQuery({ learner: selected?.selection ?? { userId: 1 }, days }, { enabled: selected !== null, retry: false });
+  const metrics = activity.data?.metrics ?? { signIns: 0, practiceRuns: 0, mockExams: 0, tutorSessions: 0, gameAnswers: 0, gameRoundsCompleted: 0, courses: [] as string[] };
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const date = (value: Date) => new Date(value).toLocaleString();
   const button = "admin-text-action";
@@ -74,21 +75,21 @@ export default function AdminLearnerActivity() {
         <dl style={{ display: "flex", gap: 32, flexWrap: "wrap" }}><div><dt>Last activity in the timeline below</dt><dd>{activity.data.lastObservedAt ? date(activity.data.lastObservedAt) : "Not available"}</dd></div><div><dt>Recorded active study time (displayed records)</dt><dd>{activity.data.recordedStudySeconds.toLocaleString()} seconds</dd></div></dl>
         <div aria-label="Learner engagement summary" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 12, margin: "16px 0" }}>
           {[
-            ["Sign-ins", activity.data.metrics.signIns],
-            ["Practice runs", activity.data.metrics.practiceRuns],
-            ["Mock exams", activity.data.metrics.mockExams],
-            ["Tutor sessions", activity.data.metrics.tutorSessions],
-            ["Game answers", activity.data.metrics.gameAnswers],
-            ["Game rounds", activity.data.metrics.gameRoundsCompleted],
+            ["Sign-ins", metrics.signIns],
+            ["Practice runs", metrics.practiceRuns],
+            ["Mock exams", metrics.mockExams],
+            ["Tutor sessions", metrics.tutorSessions],
+            ["Game answers", metrics.gameAnswers],
+            ["Game rounds", metrics.gameRoundsCompleted],
           ].map(([label, value]) => <div key={label} className="admin-panel" style={{ padding: 12 }}><strong>{value}</strong><div style={{ fontSize: 12 }}>{label}</div></div>)}
         </div>
-        <p style={{ fontSize: 13 }}>Recorded course coverage: {activity.data.metrics.courses.length ? activity.data.metrics.courses.map(course => getCourseByKey(course)?.displayName ?? course).join(", ") : "None in this window"}.</p>
+        <p style={{ fontSize: 13 }}>Recorded course coverage: {metrics.courses.length ? metrics.courses.map(course => getCourseByKey(course)?.displayName ?? course).join(", ") : "None in this window"}.</p>
         {comparison.isError && <p role="alert">Learner comparison could not load. <button className={button} onClick={() => void comparison.refetch()}>Retry comparison</button></p>}
         {comparison.data && <section aria-labelledby="learner-cohort-title" className="admin-panel" style={{ padding: 16, margin: "16px 0" }}>
           <h4 id="learner-cohort-title">Compared with supported learners</h4>
           <p style={{ fontSize: 13 }}>Average recorded activity for {comparison.data.cohortSize} other identified learners in this window. The selected learner is excluded. Anonymous game activity is not assigned to this cohort.</p>
           {!comparison.data.cohortSize ? <p>No other supported identified learners were active in this window.</p> : <div aria-label="Learner versus cohort comparison" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12 }}>
-            {[['Practice runs', activity.data.metrics.practiceRuns, comparison.data.average.practiceRuns], ['Mock exams', activity.data.metrics.mockExams, comparison.data.average.mockExams], ['AI Tutor sessions', activity.data.metrics.tutorSessions, comparison.data.average.tutorSessions]].map(([label, learner, average]) => <div key={label as string}><strong>{learner as number}</strong><div style={{ fontSize: 12 }}>{label as string}</div><div style={{ fontSize: 12, color: "var(--muted-foreground, #64748b)" }}>Cohort average: {average as number}</div></div>)}
+            {[['Practice runs', metrics.practiceRuns, comparison.data.average.practiceRuns], ['Mock exams', metrics.mockExams, comparison.data.average.mockExams], ['AI Tutor sessions', metrics.tutorSessions, comparison.data.average.tutorSessions]].map(([label, learner, average]) => <div key={label as string}><strong>{learner as number}</strong><div style={{ fontSize: 12 }}>{label as string}</div><div style={{ fontSize: 12, color: "var(--muted-foreground, #64748b)" }}>Cohort average: {average as number}</div></div>)}
           </div>}
           <p style={{ fontSize: 12, marginBottom: 0 }}>Game comparisons remain aggregate-only until the privacy-safe identity model supports a defensible cohort denominator.</p>
         </section>}

@@ -91,7 +91,7 @@ describe("bounded learner-view manual refresh", () => {
     for (const query of current) expect(query.queryFn).toHaveBeenCalled();
     for (const query of untouched) expect(query.queryFn).not.toHaveBeenCalled();
     expect(h.states[2]).toBe(learner);
-    expect(current[3].queryKey).toEqual(getQueryKey(trpc.admin.learnerAssessmentDetails, detailInput, "query"));
+    expect(current[4].queryKey).toEqual(getQueryKey(trpc.admin.learnerAssessmentDetails, detailInput, "query"));
   });
   it("shares an in-flight read instead of cancelling/restarting it", async () => {
     let release!: (value: { fresh: boolean }) => void;
