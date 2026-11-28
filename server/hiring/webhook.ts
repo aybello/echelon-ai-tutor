@@ -3,7 +3,7 @@ import { stripe } from "../stripe/stripe";
 import { hiringEvents, hiringOrders, hiringTerms } from "../../drizzle/schema";
 import { and, eq } from "drizzle-orm";
 import { getDb } from "../db";
-import { HIRING_POLICY, HIRING_QUOTA, HIRING_TYPE, InvalidHiringPayment, hiringMetadata, hiringPaymentState, invoiceSubscriptionId, validateHiringInvoice, validateHiringSubscription } from "./policy";
+import { HIRING_POLICY, HIRING_QUOTA, HIRING_TYPE, InvalidHiringPayment, hiringMetadata, hiringPaymentState, invoicePaymentEvidence, invoiceSubscriptionId, validateHiringInvoice, validateHiringSubscription } from "./policy";
 
 /** Returns true only for events explicitly owned by Hiring. Legacy handlers must
  * never see these events, even when the payload is malformed or unpaid. */
@@ -34,10 +34,15 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
       const charge = await stripe.charges.retrieve(chargeId) as any;
       const disputes = await stripe.disputes.list({ charge: chargeId, limit: 100 });
       const state = hiringPaymentState(charge, disputes.data ?? []);
-      await db.update(hiringTerms).set({
-        paymentState: state,
-        state: state === "active" ? (reversalTerm.state === "cancel_at_period_end" ? "cancel_at_period_end" : "active") : "suspended",
-      }).where(eq(hiringTerms.id, reversalTerm.id));
+      await db.transaction(async tx => {
+        await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.orgId, reversalTerm.orgId)).limit(1).for("update");
+        const [current] = await tx.select().from(hiringTerms).where(eq(hiringTerms.id, reversalTerm.id)).limit(1).for("update");
+        if (!current) return;
+        await tx.update(hiringTerms).set({
+          paymentState: state,
+          state: state === "active" ? (current.state === "cancel_at_period_end" ? "cancel_at_period_end" : "active") : "suspended",
+        }).where(eq(hiringTerms.id, current.id));
+      });
       return { handled: true };
     }
   } else if (!isHiringEvent(event)) return { handled: false };
@@ -60,7 +65,7 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
   // one unique hiring_terms row; no event metadata or active-sub status alone
   // can create quota.
   if (event.type === "invoice.paid" || event.type === "invoice.payment_succeeded") {
-    const invoice = await stripe.invoices.retrieve(object.id, { expand: ["lines.data.price.product", "subscription", "payment_intent.latest_charge"] }) as any;
+    const invoice = await stripe.invoices.retrieve(object.id, { expand: ["lines.data.price.product", "subscription", "payments.data.payment.payment_intent.latest_charge", "payments.data.payment.charge"] }) as any;
     const subscriptionId = invoiceSubscriptionId(invoice);
     if (!subscriptionId) return { handled: true, reviewRequired: true };
     const subscription = await stripe.subscriptions.retrieve(subscriptionId, { expand: ["items.data.price.product", "latest_invoice"] }) as any;
@@ -70,15 +75,16 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
         id: order.id, orgId: order.orgId, customerId: order.stripeCustomerId, subscriptionId: order.stripeSubscriptionId,
       });
       const period = validateHiringInvoice(invoice, subscription, priceId);
-      const paymentIntentId = typeof invoice.payment_intent === "string" ? invoice.payment_intent : invoice.payment_intent?.id ?? null;
-      const chargeId = typeof invoice.charge === "string" ? invoice.charge : invoice.charge?.id
-        ?? (typeof invoice.payment_intent?.latest_charge === "string" ? invoice.payment_intent.latest_charge : invoice.payment_intent?.latest_charge?.id);
+      const evidence = invoicePaymentEvidence(invoice);
+      const paymentIntentId = evidence.paymentIntentId;
+      const chargeId = evidence.chargeId;
       const charge = chargeId ? await stripe.charges.retrieve(chargeId, { expand: ["payment_intent"] }) as any : null;
       if (!charge || charge.status !== "succeeded" || charge.paid !== true) throw new InvalidHiringPayment("Successful charge evidence is required");
       const disputes = charge?.disputed ? await stripe.disputes.list({ charge: chargeId!, limit: 100 }) : null;
       const paymentState = hiringPaymentState(charge, disputes?.data ?? []);
       if (paymentState !== "active") return { handled: true, reviewRequired: true };
       await db.transaction(async tx => {
+        await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.id, order.id)).limit(1).for("update");
         const [claim] = await tx.select({ id: hiringEvents.id }).from(hiringEvents).where(eq(hiringEvents.id, event.id)).limit(1).for("update");
         const [existingTerm] = await tx.select({ id: hiringTerms.id }).from(hiringTerms).where(eq(hiringTerms.sourceInvoiceId, invoice.id)).limit(1).for("update");
         if (!claim) {
@@ -97,11 +103,17 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
     return { handled: true };
   }
   if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
-    const [term] = await db.select().from(hiringTerms).where(eq(hiringTerms.sourceSubscriptionId, object.id)).limit(1);
-    if (term && (object.cancel_at_period_end || event.type === "customer.subscription.deleted")) {
-      if (event.type === "customer.subscription.deleted") await db.update(hiringTerms).set({ state: "suspended" }).where(eq(hiringTerms.id, term.id));
-      else await db.update(hiringTerms).set({ state: "cancel_at_period_end" }).where(eq(hiringTerms.id, term.id));
-    }
+    await db.transaction(async tx => {
+      const [term] = await tx.select().from(hiringTerms).where(eq(hiringTerms.sourceSubscriptionId, object.id))
+        .orderBy(hiringTerms.endsAtMs).limit(1).for("update");
+      if (!term) return;
+      await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.orgId, term.orgId)).limit(1).for("update");
+      if (event.type === "customer.subscription.deleted") {
+        await tx.update(hiringTerms).set({ state: "suspended" }).where(eq(hiringTerms.id, term.id));
+      } else {
+        await tx.update(hiringTerms).set({ state: object.cancel_at_period_end ? "cancel_at_period_end" : "active" }).where(eq(hiringTerms.id, term.id));
+      }
+    });
   }
   return { handled: true };
 }

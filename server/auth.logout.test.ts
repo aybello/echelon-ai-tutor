@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { appRouter } from "./routers";
 import { ECHELON_SESSION_COOKIE } from "./_core/emailSession";
+import { ASSESSMENT_ONLY_COOKIE } from "./_core/assessmentOnlySession";
 import { COOKIE_NAME } from "../shared/const";
 import type { TrpcContext } from "./_core/context";
 
@@ -54,8 +55,8 @@ describe("auth.logout", () => {
     const result = await caller[route].logout();
 
     expect(result).toEqual({ success: true });
-    expect(clearedCookies).toHaveLength(2);
-    expect(clearedCookies.map(c => c.name)).toEqual([COOKIE_NAME, ECHELON_SESSION_COOKIE]);
+    expect(clearedCookies).toHaveLength(3);
+    expect(clearedCookies.map(c => c.name)).toEqual([COOKIE_NAME, ECHELON_SESSION_COOKIE, ASSESSMENT_ONLY_COOKIE]);
     expect(clearedCookies[0]?.options).toMatchObject({
       secure: true,
       sameSite: "lax",

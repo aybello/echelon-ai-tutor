@@ -87,6 +87,8 @@ export function downloadRecruitmentCsv(
     "Candidate name",
     "Candidate email",
     "Status",
+    "Passing score",
+    "Pass / Fail",
     "Started at",
     "Completed at",
     "Expires at",
@@ -112,6 +114,8 @@ export function downloadRecruitmentCsv(
       result.candidateName,
       result.candidateEmail,
       resultStatus(result),
+      assessment.passingScore ?? null,
+      score?.passed === null || score?.passed === undefined ? "Unknown" : score.passed ? "Pass" : "Fail",
       result.startedAtMs === null
         ? null
         : new Date(result.startedAtMs).toISOString(),
@@ -178,6 +182,7 @@ export function RecruitmentResults({
           </h3>
           <p className="mt-1 text-sm font-medium text-blue-700">
             Difficulty: {recruitmentDifficultyLabel(assessment.difficultyMode)}
+            {" · "}Passing score: {assessment.passingScore === null || assessment.passingScore === undefined ? "Unknown" : `${assessment.passingScore}%`}
           </p>
         </div>
         <Button
@@ -224,6 +229,7 @@ export function RecruitmentResults({
                   "Candidate",
                   "Status",
                   "Correct / total",
+                  "Pass / Fail",
                   "Answered",
                   "Unanswered",
                   "Time",
@@ -260,6 +266,11 @@ export function RecruitmentResults({
                       {result.score
                         ? `${result.score.correct} / ${result.score.total} (${result.score.percent}%)`
                         : "—"}
+                    </td>
+                    <td className="p-4">
+                      {result.score?.passed === null || result.score?.passed === undefined
+                        ? "Unknown"
+                        : result.score.passed ? "Pass" : "Fail"}
                     </td>
                     <td className="p-4 tabular-nums">
                       {result.score?.answered ?? "—"}

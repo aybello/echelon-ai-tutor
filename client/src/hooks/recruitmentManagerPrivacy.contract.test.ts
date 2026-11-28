@@ -1812,7 +1812,7 @@ describe("difficulty-first recruitment creation (Node, synthetic transport)", ()
     h.results.mockResolvedValue({ assessment: saved, results: [result] });
     await readyDetail();
     const labels = nodes(tree).filter(n => (n.type === "p" || n.type === "span") && difficultyText(n) === `Difficulty: ${label}`);
-    expect(labels).toHaveLength(3);
+    expect(labels).toHaveLength(2);
     expect(difficultyText(tree)).toContain("Scores across different difficulty modes are not equivalent");
     find(n => n.type === "button" && difficultyText(n).includes("Download CSV")).props.onClick();
     await settle();

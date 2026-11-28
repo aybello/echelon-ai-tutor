@@ -28,6 +28,18 @@ export function hiringMetadata(object: any): Record<string, string> {
 }
 export const invoiceSubscriptionId = (invoice: any): string | null =>
   stripeId(invoice.parent?.subscription_details?.subscription) ?? stripeId(invoice.subscription);
+export function invoicePaymentEvidence(invoice: any): { paymentIntentId: string | null; chargeId: string | null; paymentRecordId: string | null } {
+  const payments = Array.isArray(invoice?.payments?.data) ? invoice.payments.data : [];
+  const paid = payments.find((payment: any) => payment?.status === "paid") ?? payments[0];
+  const payment = paid?.payment ?? {};
+  const paymentIntent = payment.payment_intent ?? invoice.payment_intent;
+  const charge = payment.charge ?? invoice.charge ?? paymentIntent?.latest_charge;
+  return {
+    paymentIntentId: stripeId(paymentIntent),
+    chargeId: stripeId(charge),
+    paymentRecordId: stripeId(payment.payment_record),
+  };
+}
 export class InvalidHiringPayment extends Error {}
 function requirePayment(ok: unknown, message: string): asserts ok {
   if (!ok) throw new InvalidHiringPayment(message);

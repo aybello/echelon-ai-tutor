@@ -109,6 +109,7 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
   const [org] = await (options.lock ? orgQuery.for("share") : orgQuery);
   if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "This team is unavailable." });
   if (assignment.accessKind === "applicant" || assignment.memberId === null) {
+    assertCurrentAnnualOrganization(org, Date.now());
     if (!assignment.grantId) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation has no active Hiring grant." });
     const grantQuery = db.select().from(hiringTerms).where(and(
       eq(hiringTerms.id, assignment.grantId), eq(hiringTerms.orgId, assignment.orgId),

@@ -81,6 +81,7 @@ export function recruitmentDefinitionSummary(assessment: RecruitmentAssessmentRo
   return {
     id: assessment.id, title: assessment.title, courseKey: assessment.courseKey, courseLabel: assessment.courseLabel,
     difficultyMode: assessment.difficultyMode ?? null,
+    passingScore: assessment.passingScore ?? null,
     modules: [...assessment.modules], questionCount: assessment.questionCount, timeLimitMinutes: assessment.timeLimitMinutes,
     createdAtMs: assessment.createdAtMs, expiresAtMs: assessment.expiresAtMs,
     candidates: rows.length,
@@ -311,9 +312,12 @@ export async function issueApplicantCapability(ctx: TrpcContext, assignmentId: s
       throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation is not available." });
     }
     const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, assignment.orgId);
+    const [org] = await tx.select().from(organizations).where(eq(organizations.id, assignment.orgId)).limit(1).for("share");
+    if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "This team is unavailable." });
+    assertCurrentAnnualOrganization(org, Date.now());
     const [grant] = await tx.select().from(hiringTerms).where(and(
       eq(hiringTerms.id, assignment.grantId), eq(hiringTerms.orgId, assignment.orgId),
-      eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"),
+      inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"),
       lte(hiringTerms.startsAtMs, Date.now()), gt(hiringTerms.endsAtMs, Date.now()),
     )).limit(1).for("share");
     if (!grant) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });

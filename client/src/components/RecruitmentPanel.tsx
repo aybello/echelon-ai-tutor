@@ -123,6 +123,7 @@ function RecruitmentPanelBody({
   const [specificTopics, setSpecificTopics] = useState(false);
   const [modules, setModules] = useState<string[]>([]);
   const [count, setCount] = useState("20");
+  const [passingScore, setPassingScore] = useState("70");
   const [timed, setTimed] = useState(false);
   const [minutes, setMinutes] = useState("30");
   const [expiry, setExpiry] = useState("7");
@@ -208,6 +209,7 @@ function RecruitmentPanelBody({
     questionCount: Number(count),
     timeLimitMinutes: timed ? Number(minutes) : null,
     expiresInDays: Number(expiry),
+    passingScore: Number(passingScore),
   });
   const validation = !parsed.success
     ? (parsed.error.issues[0]?.message ?? "Check the assessment details.")
@@ -243,6 +245,7 @@ function RecruitmentPanelBody({
       setTitle("");
       setCourseKey("");
       setDifficultyMode("mixed");
+      setPassingScore("70");
       setSpecificTopics(false);
       setModules([]);
       setAttempted(false);
@@ -522,6 +525,21 @@ function RecruitmentPanelBody({
                     />
                   </div>
                   <div className="space-y-2">
+                    <Label htmlFor="recruitment-passing-score">Passing score (%)</Label>
+                    <Input
+                      id="recruitment-passing-score"
+                      type="number"
+                      className="min-h-11"
+                      min={0}
+                      max={100}
+                      step={1}
+                      required
+                      value={passingScore}
+                      onChange={event => setPassingScore(event.target.value)}
+                    />
+                    <p className="text-xs text-slate-500">Pass/Fail uses exact correct answers against this threshold, not the rounded display percentage.</p>
+                  </div>
+                  <div className="space-y-2">
                     <Label htmlFor="recruitment-expiry">
                       Invitation expires in (days)
                     </Label>
@@ -654,9 +672,10 @@ function RecruitmentPanelBody({
                         ? "No time limit"
                         : `${assessment.timeLimitMinutes} minutes`}
                     </span>
-                    <span className="mt-2 block text-xs font-medium text-blue-700">
-                      Difficulty: {recruitmentDifficultyLabel(assessment.difficultyMode)}
-                    </span>
+            <span className="mt-2 block text-xs font-medium text-blue-700">
+              Difficulty: {recruitmentDifficultyLabel(assessment.difficultyMode)}
+            </span>
+            <span className="mt-1 block text-xs text-slate-500">Passing score: {assessment.passingScore === null || assessment.passingScore === undefined ? "Unknown" : `${assessment.passingScore}%`}</span>
                     <span className="mt-3 flex flex-wrap justify-between gap-2 text-xs text-slate-600">
                       <span>
                         {assessment.completed} completed /{" "}
@@ -1099,7 +1118,7 @@ function RecruitmentDetail({
       </div>
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h4 className="font-semibold">Invite a candidate</h4>
-        {hiring.data?.active ? <p className="mt-2 text-sm text-slate-700">Hiring allowance: <strong>{hiring.data.remaining}</strong> of {hiring.data.quota} remaining · expires {new Date(hiring.data.endsAtMs!).toLocaleDateString()}</p> : <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">No active Hiring allowance is available for applicant invitations. The organization owner can purchase the optional Hiring add-on.</p><Button type="button" variant="outline" disabled={hiringCheckout.isPending} onClick={async () => { try { const result = await hiringCheckout.mutateAsync({ orgId }); if (result.url) window.location.assign(result.url); } catch { setError("Only the verified organization owner can purchase Hiring."); } }}>{hiringCheckout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button></div>}
+        {hiring.data?.active ? <p className="mt-2 text-sm text-slate-700">Hiring allowance: <strong>{hiring.data.remaining}</strong> of {hiring.data.quota} remaining · expires {new Date(hiring.data.endsAtMs!).toLocaleDateString()}. Renews annually unless the organization owner cancels renewal before the term ends.</p> : <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">No active Hiring allowance is available for applicant invitations. The organization owner can purchase the optional Hiring add-on.</p><Button type="button" variant="outline" disabled={hiringCheckout.isPending} onClick={async () => { try { const result = await hiringCheckout.mutateAsync({ orgId }); if (result.url) window.location.assign(result.url); } catch { setError("Only the verified organization owner can purchase Hiring."); } }}>{hiringCheckout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button></div>}
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
           A current team seat with this course is required. To add someone, use
           the Operators tab first; this action does not grant a seat. The link
@@ -1116,17 +1135,13 @@ function RecruitmentDetail({
             Creating invitations is unavailable until current-term catalog access
             is verified. Authorized results, CSV, and revocation remain available.
           </p>
-        ) : !candidates.length && inviteMode === "seat" ? (
-          <p className="mt-4 text-sm text-slate-600">
-            No eligible candidates for this course. Assign a current team seat
-            and course access in Operators first.
-          </p>
         ) : (
           <form
             onSubmit={inviteCandidate}
             className="mt-4 space-y-3"
           >
             <div className="flex gap-2"><Button type="button" variant={inviteMode === "seat" ? "default" : "outline"} onClick={() => setInviteMode("seat")}>Team seat</Button><Button type="button" variant={inviteMode === "applicant" ? "default" : "outline"} onClick={() => setInviteMode("applicant")}>Applicant add-on</Button></div>
+            {!candidates.length && inviteMode === "seat" ? <p className="text-sm text-slate-600">No eligible candidates for this course. Assign a current team seat and course access in Operators first, or choose Applicant add-on.</p> : null}
             {inviteMode === "applicant" ? <div className="grid gap-3 sm:grid-cols-2"><div className="space-y-2"><Label htmlFor="recruitment-applicant-name">Applicant name</Label><Input id="recruitment-applicant-name" value={applicantName} onChange={e => setApplicantName(e.target.value)} disabled={busy} required /></div><div className="space-y-2"><Label htmlFor="recruitment-applicant-email">Applicant email</Label><Input id="recruitment-applicant-email" type="email" value={applicantEmail} onChange={e => setApplicantEmail(e.target.value)} disabled={busy} required /></div></div> : null}
             <div className="flex-1 space-y-2">
               <Label htmlFor="recruitment-candidate">Team-seat candidate</Label>

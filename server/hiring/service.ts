@@ -90,12 +90,13 @@ export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
 
 export async function cancelHiringAtPeriodEnd(ctx: TrpcContext, orgId: number) {
   const { org } = await hiringOwner(ctx, orgId); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.basis, "stripe"))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const now = Date.now();
+  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.basis, "stripe"), lte(hiringTerms.startsAtMs, now), gt(hiringTerms.endsAtMs, now), eq(hiringTerms.paymentState, "active"))).orderBy(hiringTerms.endsAtMs).limit(1);
   if (!term?.sourceSubscriptionId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No separate active Hiring subscription is available to cancel." });
   const [order] = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.stripeSubscriptionId, term.sourceSubscriptionId))).limit(1);
   if (!order?.stripeSubscriptionId) throw new TRPCError({ code: "CONFLICT", message: "Hiring subscription binding could not be verified." });
   const { stripe } = await import("../stripe/stripe");
-  const sub = await stripe.subscriptions.retrieve(order.stripeSubscriptionId);
+  const sub = await stripe.subscriptions.retrieve(order.stripeSubscriptionId, { expand: ["items.data.price.product"] });
   validateHiringSubscription(sub, { id: order.id, orgId: org.id, customerId: order.stripeCustomerId, subscriptionId: order.stripeSubscriptionId });
   await stripe.subscriptions.update(order.stripeSubscriptionId, { cancel_at_period_end: true }); await db.update(hiringTerms).set({ state: "cancel_at_period_end" }).where(eq(hiringTerms.id, term.id));
   return { success: true as const, endsAtMs: term.endsAtMs };

@@ -63,6 +63,7 @@ export function clearRecruitmentManagerQueries(
         "recruitment.catalog",
         "recruitment.list",
         "recruitment.results",
+        "hiring.status",
       ].includes(name) &&
       (options as { input?: { orgId?: number } } | undefined)?.input?.orgId ===
         orgId

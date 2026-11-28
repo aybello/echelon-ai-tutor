@@ -2,6 +2,7 @@ import type { Request, Response } from "express";
 import { COOKIE_NAME } from "../../shared/const";
 import { getSessionCookieOptions } from "./cookies";
 import { clearVerifiedEmailSessionCookie } from "./emailSession";
+import { ASSESSMENT_ONLY_COOKIE } from "./assessmentOnlySession";
 
 /** End both supported identities, regardless of which login screen was used. */
 export function clearIdentityCookies(req: Request, res: Response): void {
@@ -9,4 +10,5 @@ export function clearIdentityCookies(req: Request, res: Response): void {
   // HTTP, where browsers reject SameSite=None without Secure.
   res.clearCookie(COOKIE_NAME, { ...getSessionCookieOptions(req), sameSite: "lax" });
   clearVerifiedEmailSessionCookie(res);
+  res.clearCookie(ASSESSMENT_ONLY_COOKIE, { path: "/" });
 }

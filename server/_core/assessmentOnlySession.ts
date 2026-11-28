@@ -59,8 +59,10 @@ export async function readAssessmentOnlySession(req: Request): Promise<Assessmen
   } catch { return null; }
 }
 
-export function assertLearnerStateAllowed(ctx: { assessmentOnlySession?: unknown }): void {
-  if (ctx.assessmentOnlySession) {
+export function assertLearnerStateAllowed(ctx: { assessmentOnlySession?: unknown; user?: unknown; studentEmail?: string | null }): void {
+  // The capability is an additional applicant guard. It must not globally
+  // override a real OAuth or verified-email learner session in the same browser.
+  if (ctx.assessmentOnlySession && !ctx.user && !ctx.studentEmail) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Assessment-only sessions cannot access learner state." });
   }
 }
