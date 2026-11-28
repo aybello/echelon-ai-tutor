@@ -84,7 +84,7 @@ export function validateHiringInvoice(invoice: any, sub: any, priceId: string): 
   const start = line.period?.start, end = line.period?.end;
   requirePayment(Number.isSafeInteger(start) && Number.isSafeInteger(end) && end > start, "Invoice period missing");
   const anniversary = new Date(start * 1000); anniversary.setUTCFullYear(anniversary.getUTCFullYear() + 1);
-  requirePayment(end * 1000 === anniversary.getTime() && invoice.period_start === start && invoice.period_end === end,
+  requirePayment(end * 1000 === anniversary.getTime(),
     "Invoice period is not an exact calendar year");
   return { startsAtMs: start * 1000, endsAtMs: end * 1000 };
 }

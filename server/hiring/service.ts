@@ -36,15 +36,27 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
     stripeCustomerId = customer.id;
     await db.update(organizations).set({ stripeCustomerId }).where(eq(organizations.id, org.id));
   }
-  const orderId = randomUUID();
+  let orderId: string = randomUUID();
+  let existingCheckoutSessionId: string | null = null;
   await db.transaction(async tx => {
     await tx.select({ id: organizations.id }).from(organizations).where(eq(organizations.id, org.id)).limit(1).for("update");
-    const existing = await tx.select({ id: hiringOrders.id }).from(hiringOrders)
+    const existing = await tx.select({ id: hiringOrders.id, status: hiringOrders.status, stripeCheckoutSessionId: hiringOrders.stripeCheckoutSessionId }).from(hiringOrders)
       .where(and(eq(hiringOrders.orgId, org.id), inArray(hiringOrders.status, ["pending", "active"]))).limit(1);
-    if (existing[0]) throw new TRPCError({ code: "CONFLICT", message: "A Hiring checkout or subscription already exists." });
-    await tx.insert(hiringOrders).values({ id: orderId, orgId: org.id, amountCents: HIRING_AMOUNT, currency: "cad", ownerEmail: email, status: "pending", createdAtMs: Date.now(), stripeCustomerId });
+    if (existing[0]?.status === "active") throw new TRPCError({ code: "CONFLICT", message: "A Hiring subscription already exists." });
+    if (existing[0]?.stripeCheckoutSessionId) {
+      orderId = existing[0].id;
+      existingCheckoutSessionId = existing[0].stripeCheckoutSessionId;
+      return;
+    }
+    if (existing[0]) orderId = existing[0].id;
+    else await tx.insert(hiringOrders).values({ id: orderId, orgId: org.id, amountCents: HIRING_AMOUNT, currency: "cad", ownerEmail: email, status: "pending", createdAtMs: Date.now(), stripeCustomerId });
   });
   try {
+    if (existingCheckoutSessionId) {
+      const existingSession = await stripe.checkout.sessions.retrieve(existingCheckoutSessionId);
+      if (existingSession.status === "open") return { url: existingSession.url, orderId };
+      throw new TRPCError({ code: "PRECONDITION_FAILED", message: "The previous Hiring checkout is no longer open. Wait for its expiry before starting a new checkout." });
+    }
     const base = ENV.appBaseUrl.replace(/\/$/, "");
     const metadata = { type: HIRING_TYPE, policy: HIRING_POLICY, orderId, orgId: String(org.id), ownerEmail: email };
     const session = await stripe.checkout.sessions.create({

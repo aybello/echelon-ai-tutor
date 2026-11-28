@@ -22,6 +22,7 @@ import { assignmentDeadline, finalizeRecruitmentDeadline, recruitmentResult } fr
 import { persistRecruitmentTransition, readRecruitmentAssessment, recruitmentDb } from "./store";
 import type { RecruitmentCreate, RecruitmentReadDb, RecruitmentTransaction } from "./types";
 import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
+import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
 
 /** Recheck manager membership inside transactions without invoking a global resolver
  * while a pool connection is held. The existing resolver remains the preflight. */
@@ -323,6 +324,7 @@ export async function issueApplicantCapability(ctx: TrpcContext, assignmentId: s
     if (!grant) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });
     return { assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey: assessment.courseKey };
   }, { isolationLevel: "read committed" });
+  clearVerifiedEmailSessionCookie(ctx.res);
   return issueAssessmentOnlySession(ctx.res, committed);
 }
 

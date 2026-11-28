@@ -28,19 +28,34 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
       reversalTerm = term ?? null;
     }
     if (!reversalTerm && !isHiringEvent(event)) return { handled: false };
+    if (!reversalTerm) {
+      const pendingOrderId = metadata.orderId;
+      if (typeof pendingOrderId !== "string") return { handled: true, reviewRequired: true };
+      await db.transaction(async tx => {
+        await tx.select({ id: hiringOrders.id }).from(hiringOrders)
+          .where(eq(hiringOrders.id, pendingOrderId)).limit(1).for("update");
+        await tx.update(hiringOrders).set({ status: "checkout_failed" })
+          .where(and(eq(hiringOrders.id, pendingOrderId), eq(hiringOrders.status, "pending")));
+      });
+      return { handled: true, reviewRequired: true };
+    }
     if (reversalTerm) {
       const chargeId = event.type.startsWith("charge.dispute") ? object.charge : object.id;
       if (typeof chargeId !== "string") return { handled: true, reviewRequired: true };
       const charge = await stripe.charges.retrieve(chargeId) as any;
       const disputes = await stripe.disputes.list({ charge: chargeId, limit: 100 });
       const state = hiringPaymentState(charge, disputes.data ?? []);
+      const subscription = reversalTerm.sourceSubscriptionId
+        ? await stripe.subscriptions.retrieve(reversalTerm.sourceSubscriptionId) as any
+        : null;
+      const subscriptionActive = subscription && ["active", "past_due"].includes(subscription.status);
       await db.transaction(async tx => {
         await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.orgId, reversalTerm.orgId)).limit(1).for("update");
         const [current] = await tx.select().from(hiringTerms).where(eq(hiringTerms.id, reversalTerm.id)).limit(1).for("update");
         if (!current) return;
         await tx.update(hiringTerms).set({
           paymentState: state,
-          state: state === "active" && current.paymentState !== "needs_review"
+          state: state === "active" && subscriptionActive && current.paymentState !== "needs_review"
             ? (current.state === "cancel_at_period_end" ? "cancel_at_period_end" : "active")
             : (state === "active" ? current.state : "suspended"),
         }).where(eq(hiringTerms.id, current.id));
@@ -55,6 +70,7 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
   if (typeof orderId !== "string") return { handled: true, reviewRequired: true };
   const rows = await db.select().from(hiringOrders).where(eq(hiringOrders.id, orderId)).limit(1);
   if (!rows[0]) return { handled: true, reviewRequired: true };
+  if (!["pending", "active"].includes(rows[0].status)) return { handled: true, reviewRequired: true };
   // Checkout completion only records the pending Stripe binding. It never
   // grants a term; paid invoice evidence is mandatory for fulfilment.
   if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {

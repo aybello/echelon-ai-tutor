@@ -15,7 +15,7 @@ export type TrpcContext = {
   studentEmail: string | null;
   /** Server-verified, purpose-bound assessment-only capability. */
   assessmentOnlySession?: AssessmentOnlyCapability | null;
-  /** Computed only when an assessment-only capability is present. */
+  /** Computed for verified learner identities so applicant OTP sessions fail closed. */
   assessmentOnlyHasLearnerAccess?: boolean;
 };
 
@@ -36,7 +36,7 @@ export async function createContext(
   studentEmail = await readVerifiedEmailFromRequest(opts.req);
   const assessmentOnlySession = await readAssessmentOnlySession(opts.req);
   const identityEmail = user?.email ?? studentEmail;
-  const assessmentOnlyHasLearnerAccess = assessmentOnlySession
+  const assessmentOnlyHasLearnerAccess = identityEmail
     ? (await resolveEntitlementsByEmail(identityEmail)).hasAnyAccess
     : undefined;
 
