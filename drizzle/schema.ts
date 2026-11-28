@@ -1976,6 +1976,17 @@ export const hiringTerms = mysqlTable("hiring_terms", {
   quota: int("quota").notNull(), used: int("used").notNull().default(0), state: varchar("state", { length: 32 }).notNull().default("active"),
   paymentState: varchar("paymentState", { length: 32 }).notNull().default("active"), createdByEmail: varchar("createdByEmail", { length: 320 }).notNull(),
 }, (t) => [uniqueIndex("hiring_terms_subscription_period_unique").on(t.sourceSubscriptionId, t.startsAtMs, t.endsAtMs)]);
+/** Each annual charge keeps its own immutable binding and adverse evidence. */
+export const hiringPayments = mysqlTable("hiring_payments", {
+  id: varchar("id", { length: 128 }).primaryKey(),
+  orgId: int("orgId").notNull(), orderId: varchar("orderId", { length: 36 }).notNull(),
+  invoiceId: varchar("invoiceId", { length: 128 }).notNull().unique(),
+  subscriptionId: varchar("subscriptionId", { length: 128 }).notNull(),
+  paymentIntentId: varchar("paymentIntentId", { length: 128 }).notNull(),
+  paymentState: varchar("paymentState", { length: 32 }).notNull(),
+  disputeIds: json("disputeIds").$type<string[]>().notNull(),
+  updatedAtMs: bigint("updatedAtMs", { mode: "number" }).notNull(),
+}, (t) => [index("hiring_payments_order_idx").on(t.orderId)]);
 /** Stripe event claims are isolated from the generic payment/event handlers. */
 export const hiringEvents = mysqlTable("hiring_events", {
   id: varchar("id", { length: 128 }).primaryKey(),
@@ -1988,3 +1999,4 @@ export const hiringEvents = mysqlTable("hiring_events", {
 });
 export type HiringOrder = typeof hiringOrders.$inferSelect;
 export type HiringTerm = typeof hiringTerms.$inferSelect;
+export type HiringPayment = typeof hiringPayments.$inferSelect;

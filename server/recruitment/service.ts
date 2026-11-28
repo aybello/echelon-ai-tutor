@@ -12,7 +12,7 @@ import {
 import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
 import type { TrpcContext } from "../_core/context";
 import {
-  assertApplicantGrant, assertApplicantIssuance, assertCurrentAnnualOrganization, assertRecruitmentSeat, recruitmentCourseForOrg, recruitmentManager,
+  assertApplicantGrant, assertApplicantIssuance, assertCurrentAnnualOrganization, assertRecruitmentAssignmentShape, assertRecruitmentSeat, independentlyVerifiedRecruitmentEmail, recruitmentCourseForOrg, recruitmentManager,
   recruitmentSeatCourses, recruitmentSubscriptionCovers, verifiedRecruitmentEmail,
 } from "./access";
 import { normalizeEmail } from "../_core/accessService";
@@ -71,6 +71,7 @@ async function finalizeReportingAssignments(tx: RecruitmentTransaction, assessme
   rows: RecruitmentAssignmentRow[], nowMs: number): Promise<RecruitmentAssignmentRow[]> {
   const finalized: RecruitmentAssignmentRow[] = [];
   for (const row of rows) {
+    assertRecruitmentAssignmentShape(row);
     const next = finalizeRecruitmentDeadline(assessment, row, nowMs);
     if (next !== row) await persistRecruitmentTransition(tx, row, next);
     finalized.push(next);
@@ -241,6 +242,7 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
       )).limit(1).for("update");
       const nowMs = Date.now();
       if (existing) {
+        assertRecruitmentAssignmentShape(existing);
         if (["invited", "active"].includes(existing.status) && nowMs < assignmentDeadline(assessment, existing) && existing.grantId) {
           const [grant] = await tx.select().from(hiringTerms).where(and(
             eq(hiringTerms.id, existing.grantId), eq(hiringTerms.orgId, org.id),
@@ -286,6 +288,10 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     const member = await assertRecruitmentSeat(tx, org, invite.memberId, assessment.courseKey, undefined, true);
     const [existing] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.assessmentId, assessment.id), eq(recruitmentAssignments.memberId, member.id), eq(recruitmentAssignments.orgId, org.id))).limit(1);
+    if (existing) {
+      assertRecruitmentAssignmentShape(existing);
+      if (existing.accessKind !== "training-seat") throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is not bound to a training seat." });
+    }
     // Terminal duplicates retain their ordinary lifecycle conflict; every usable
     // link and every fresh INSERT needs the immutable original sources locked.
     if (existing && !["invited", "active"].includes(existing.status)) {
@@ -314,6 +320,7 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     const assignmentId = randomUUID();
     await tx.insert(recruitmentAssignments).values({
       id: assignmentId, assessmentId: assessment.id, orgId: org.id, memberId: member.id,
+      accessKind: "training-seat", grantId: null,
       candidateEmail: normalizeEmail(member.email), candidateName: member.name, creatorEmail,
       createdAtMs: nowMs, updatedAtMs: nowMs, expiresAtMs: assessment.expiresAtMs,
       status: "invited", answers: {}, revision: 0,
@@ -323,8 +330,45 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
   return result;
 }
 
+/** OTP proves the inbox independently. Unbound login prefers the newest usable
+ * invitation, not merely the newest row. Discovery is only a rejection filter:
+ * the common issuer must still authorize under locks, and ANY issuer/commit
+ * failure aborts login rather than falling back after a possibly queued cookie. */
+export async function issueApplicantCapabilityForOtp(ctx: TrpcContext, assignmentId?: string): Promise<void> {
+  const email = independentlyVerifiedRecruitmentEmail(ctx);
+  if (assignmentId) {
+    await issueApplicantCapability(ctx, assignmentId);
+    return;
+  }
+  const db = await recruitmentDb();
+  const candidates = await db.select().from(recruitmentAssignments).where(and(
+    eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"),
+    inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now()),
+  )).orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id));
+  for (const candidate of candidates) {
+    const [org] = await db.select().from(organizations).where(eq(organizations.id, candidate.orgId)).limit(1);
+    const [assessment] = await db.select().from(recruitmentAssessments).where(and(
+      eq(recruitmentAssessments.id, candidate.assessmentId), eq(recruitmentAssessments.orgId, candidate.orgId),
+    )).limit(1);
+    const [grant] = candidate.grantId ? await db.select().from(hiringTerms).where(and(
+      eq(hiringTerms.id, candidate.grantId), eq(hiringTerms.orgId, candidate.orgId),
+    )).limit(1) : [];
+    if (!org || !assessment) continue;
+    try { assertApplicantIssuance(candidate, assessment, org, grant, email, Date.now()); }
+    catch (error) {
+      if (error instanceof TRPCError && error.code === "FORBIDDEN") continue;
+      throw error;
+    }
+    await issueApplicantCapability(ctx, candidate.id);
+    return;
+  }
+  throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available." });
+}
+
 export async function issueApplicantCapability(ctx: TrpcContext, assignmentId: string): Promise<{ assignmentId: string; candidateEmail: string; courseKey: string }> {
-  const email = verifiedRecruitmentEmail(ctx);
+  // Issuance is a new authority grant, not capability renewal. Existing exact
+  // capabilities can still deliver/finalize their own attempt through access.ts.
+  const email = independentlyVerifiedRecruitmentEmail(ctx);
   // Global entitlement resolution must finish before reserving a connection.
   const hasLearnerAccess = (await resolveEntitlementsByEmail(email)).hasAnyAccess;
   const db = await recruitmentDb();
@@ -340,6 +384,7 @@ export async function issueApplicantCapability(ctx: TrpcContext, assignmentId: s
     const [assignment] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.candidateEmail, email),
         eq(recruitmentAssignments.orgId, discovered.orgId))).limit(1).for("update");
+    if (assignment) assertRecruitmentAssignmentShape(assignment);
     if (!assignment || assignment.accessKind !== "applicant" || assignment.memberId !== null || !assignment.grantId) {
       throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation is not available." });
     }
@@ -381,6 +426,7 @@ export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: numbe
     const [assignment] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.orgId, org.id))).limit(1).for("update");
     if (!assignment) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment invitation not found." });
+    assertRecruitmentAssignmentShape(assignment);
     if (assignment.status === "revoked") return { success: true };
     const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, org.id);
     const nowMs = Date.now();

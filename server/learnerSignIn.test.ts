@@ -7,7 +7,7 @@ const state = vi.hoisted(() => ({
 vi.mock("./analytics", () => ({ persistAnalyticsEvent: state.persist, trackEvent: state.track }));
 vi.mock("./db", () => ({ getDb: async () => ({}), upsertUser: state.upsert, getUserByOpenId: state.lookup, getUserByEmail: state.emailLookup }));
 vi.mock("./auth/atomicVerification", () => ({ verifyAndConsumeOtp: state.verify, consumeMagicLinkAtomically: state.magic }));
-vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: state.cookie, readVerifiedEmailFromRequest: vi.fn(), ECHELON_SESSION_COOKIE: "fixture" }));
+vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: state.cookie, clearVerifiedEmailSessionCookie: (res: TrpcContext["res"]) => res.clearCookie("fixture", { path: "/" }), readVerifiedEmailFromRequest: vi.fn(), ECHELON_SESSION_COOKIE: "fixture" }));
 vi.mock("./_core/access", () => ({ normalizeEmail: (email: string) => email.trim().toLowerCase(), resolveEntitlementsByEmail: state.entitlements }));
 vi.mock("./_core/subscriptionToken", () => ({ issueSubscriptionToken: async () => "fixture-only" }));
 vi.mock("./_core/sdk", () => ({ sdk: { exchangeCodeForToken: state.exchange, getUserInfo: state.info, createSessionToken: state.session } }));
@@ -20,13 +20,14 @@ import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { registerOAuthRoutes } from "./_core/oauth";
 function context(headers: Record<string, string> = { "x-echelon-activity": "allowed" }): TrpcContext {
-  return { user: { id: 999 } as never, studentEmail: "unrelated@example.test", req: { headers, protocol: "https" } as never, res: { cookie: state.cookie } as never };
+  return { user: { id: 999 } as never, studentEmail: "unrelated@example.test", req: { headers, protocol: "https" } as never, res: { cookie: state.cookie, clearCookie: vi.fn() } as never };
 }
 beforeEach(() => {
   vi.resetAllMocks();
   state.verify.mockResolvedValue({ valid: true });
   state.magic.mockResolvedValue({ email: "verified@example.test" });
-  state.entitlements.mockResolvedValue({ unlockedExamTypes: [], purchasedProductKeys: [], isManager: false });
+  // Explicit learner entitlement; absent hasAnyAccess is not authorization.
+  state.entitlements.mockResolvedValue({ hasAnyAccess: true, unlockedExamTypes: [], purchasedProductKeys: [], isManager: false });
   state.exchange.mockResolvedValue({ accessToken: "not-stored" });
   state.info.mockResolvedValue({ openId: "provider-verified-id", email: "not-trusted-for-association@example.test" });
   state.lookup.mockResolvedValue({ id: 17 });

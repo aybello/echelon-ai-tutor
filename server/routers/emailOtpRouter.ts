@@ -31,7 +31,7 @@ import { normalizeEmail } from "../_core/access";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { clearVerifiedEmailSessionCookie, issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { clearAssessmentOnlySessionCookie } from "../_core/assessmentOnlySession";
-import { issueApplicantCapability } from "../recruitment/service";
+import { issueApplicantCapabilityForOtp } from "../recruitment/service";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
@@ -45,8 +45,10 @@ function generateOtpCode(): string {
   return num.toString().padStart(6, "0");
 }
 
-function hashCode(code: string): string {
-  return crypto.createHash("sha256").update(code).digest("hex");
+function hashCode(code: string, assignmentId?: string): string {
+  // Bind the stored verifier too: the same code cannot be presented for a
+  // different invitation or downgraded into an unbound general login.
+  return crypto.createHash("sha256").update(assignmentId ? `recruitment:${assignmentId}:${code}` : code).digest("hex");
 }
 
 export const emailOtpRouter = router({
@@ -56,7 +58,7 @@ export const emailOtpRouter = router({
    * entitled email, success means the SMTP provider accepted the message.
    */
   requestOtp: publicProcedure
-    .input(z.object({ email: z.string().email() }))
+    .input(z.object({ email: z.string().email(), assignmentId: z.string().uuid().optional() }))
     .mutation(async ({ input }) => {
       const email = normalizeEmail(input.email);
 
@@ -69,6 +71,7 @@ export const emailOtpRouter = router({
           eq(recruitmentAssignments.accessKind, "applicant"),
           inArray(recruitmentAssignments.status, ["invited", "active"]),
           gt(recruitmentAssignments.expiresAtMs, Date.now()),
+          input.assignmentId ? eq(recruitmentAssignments.id, input.assignmentId) : undefined,
         )).orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
         : [];
       if (!entitlements.hasAnyAccess && !entitlements.isManager && !applicantInvitation && !(await hasRecoverableTeamBilling(email))) {
@@ -80,7 +83,7 @@ export const emailOtpRouter = router({
 
       // Generate code and store hash
       const code = generateOtpCode();
-      const codeHash = hashCode(code);
+      const codeHash = hashCode(code, input.assignmentId);
       const expiresAt = new Date(Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000);
 
       // A resend replaces every older unused code. This prevents the verifier
@@ -127,65 +130,67 @@ export const emailOtpRouter = router({
     .input(z.object({
       email: z.string().email(),
       code: z.string().length(6).regex(/^\d{6}$/),
+      assignmentId: z.string().uuid().optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const email = normalizeEmail(input.email);
-      const db = await getDb();
-      if (!db) return { valid: false as const, reason: "server_error" as const };
+      // Failed verification must never leave an older identity/capability on
+      // the response. Success below replaces only the intended cookie.
+      clearVerifiedEmailSessionCookie(ctx.res);
+      clearAssessmentOnlySessionCookie(ctx.res);
+      try {
+        const db = await getDb();
+        if (!db) return { valid: false as const, reason: "server_error" as const };
 
-      const verification = await verifyAndConsumeOtp(db, emailOtpCodes, email, hashCode(input.code));
-      if (!verification.valid) return verification;
+        const verification = await verifyAndConsumeOtp(db, emailOtpCodes, email, hashCode(input.code, input.assignmentId));
+        if (!verification.valid) return verification;
 
-      // Resolve live entitlements
-      const entitlements = await resolveEntitlementsByEmail(email);
-      const [applicant] = !entitlements.hasAnyAccess && !entitlements.isManager
-        ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
-          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now())))
-          .orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
-        : [];
+        // Resolve live entitlements
+        const entitlements = await resolveEntitlementsByEmail(email);
+        const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
+        // Independently entitled learners/managers keep ordinary login (including
+        // training-seat links); their verified identity can bootstrap the exact
+        // requested applicant invitation on arrival without a capability switch.
+        const applicantOnly = !entitlements.hasAnyAccess && !isManager;
+        if (applicantOnly) {
+          try {
+            // The consumed OTP proves this email, not any older OAuth/cookie identity.
+            // The issuer rechecks live scope and deadlines while holding its locks.
+            clearVerifiedEmailSessionCookie(ctx.res);
+            await issueApplicantCapabilityForOtp({
+              req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
+            }, input.assignmentId);
+          } catch (error) {
+            // Signing happens inside the transaction, so even commit failure must
+            // remove a capability already queued on the response.
+            clearVerifiedEmailSessionCookie(ctx.res);
+            clearAssessmentOnlySessionCookie(ctx.res);
+            throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available.", cause: error });
+          }
+        } else {
+          clearAssessmentOnlySessionCookie(ctx.res);
+          await issueVerifiedEmailSessionCookie(ctx.res, email);
+        }
 
-      // Issue access token if there are course entitlements
-      const accessToken =
-        entitlements.unlockedExamTypes.length > 0
-          ? await issueSubscriptionToken({ email, examTypes: entitlements.unlockedExamTypes })
-          : "";
+        const examTypes = applicantOnly ? [] : entitlements.unlockedExamTypes;
+        const accessToken = examTypes.length > 0 ? await issueSubscriptionToken({ email, examTypes }) : "";
+        if (!applicantOnly) {
+          await trackEvent("otp_verified", { email });
+          await recordLearnerSignIn(ctx.req, { email }, "email_otp");
+        }
 
-      const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
-      if (!applicant && !entitlements.hasAnyAccess && !isManager) {
+        return {
+          valid: true as const,
+          email,
+          examTypes,
+          accessToken,
+          // This directs billing owners to their team page; course access stays live-only.
+          isManager,
+        };
+      } catch (error) {
         clearVerifiedEmailSessionCookie(ctx.res);
         clearAssessmentOnlySessionCookie(ctx.res);
-        throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available." });
+        throw error;
       }
-      if (applicant) {
-        try {
-          // The consumed OTP proves this email, not any older OAuth/cookie identity.
-          // The issuer rechecks live scope and deadlines while holding its locks.
-          clearVerifiedEmailSessionCookie(ctx.res);
-          await issueApplicantCapability({
-            req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
-          }, applicant.id);
-        } catch (error) {
-          // Signing happens inside the transaction, so even commit failure must
-          // remove a capability already queued on the response.
-          clearVerifiedEmailSessionCookie(ctx.res);
-          clearAssessmentOnlySessionCookie(ctx.res);
-          throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available.", cause: error });
-        }
-      } else {
-        clearAssessmentOnlySessionCookie(ctx.res);
-        await issueVerifiedEmailSessionCookie(ctx.res, email);
-      }
-
-      await trackEvent("otp_verified", { email });
-      await recordLearnerSignIn(ctx.req, { email }, "email_otp");
-
-      return {
-        valid: true as const,
-        email,
-        examTypes: entitlements.unlockedExamTypes,
-        accessToken,
-        // This directs billing owners to their team page; course access stays live-only.
-        isManager,
-      };
     }),
 });

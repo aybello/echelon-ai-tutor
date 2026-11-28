@@ -650,13 +650,14 @@
       "version": 89,
       "tag": "0089_team_hiring_addon",
       "file": "drizzle/0089_team_hiring_addon.sql",
-      "sha256": "492cf738fd8f4ab03572968257240db9b0d931ac2a71a5106dfbc32f47d667e7",
+      "sha256": "85c07d98a8f63f8d9f5012413094691cf1e87619b989a50f89052523abb68a71",
       "proposedOnly": true,
       "standaloneApply": {
         "tables": [
           "hiring_orders",
           "hiring_terms",
           "hiring_events",
+          "hiring_payments",
           "recruitment_assessments",
           "recruitment_assignments"
         ]
@@ -664,7 +665,8 @@
       "verifierAllowMissingTables": [
         "hiring_orders",
         "hiring_terms",
-        "hiring_events"
+        "hiring_events",
+        "hiring_payments"
       ],
       "verifierAllowMissingColumns": [
         {

@@ -23,7 +23,8 @@ const member = () => ({ id: 31, orgId: 7, email: "candidate@example.test", name:
 const form = () => ({ id: FORM_ID, orgId: 7, title: "Synthetic assessment", courseKey: "class2-water", courseLabel: "Class 2 Water", modules: ["Treatment"], questionCount: 5, timeLimitMinutes: 5, createdAtMs: NOW - 1000, expiresAtMs: NOW + 900_000,
   questions: Array.from({ length: 5 }, (_, i) => ({ id: String(i + 1), module: "Treatment", prompt: `Synthetic prompt ${i + 1}`, options: ["One", "Two"], correctIndex: 0 })),
 } as RecruitmentAssessmentRow);
-const invited = () => ({ id: ID, assessmentId: FORM_ID, orgId: 7, memberId: 31, candidateEmail: member().email, candidateName: member().name, creatorEmail: EMAIL, status: "invited", startedAtMs: null, submittedAtMs: null, consentVersion: null, consentAcceptedAtMs: null, expiresAtMs: NOW + 900_000, createdAtMs: NOW - 1000, updatedAtMs: NOW - 1000, answers: {}, score: null, revision: 0, revokedAtMs: null, revokedByEmail: null } as RecruitmentAssignmentRow);
+// Historical rows are read after migration with explicit default kind + SQL NULL.
+const invited = () => ({ id: ID, assessmentId: FORM_ID, orgId: 7, memberId: 31, accessKind: "training-seat", grantId: null, candidateEmail: member().email, candidateName: member().name, creatorEmail: EMAIL, status: "invited", startedAtMs: null, submittedAtMs: null, consentVersion: null, consentAcceptedAtMs: null, expiresAtMs: NOW + 900_000, createdAtMs: NOW - 1000, updatedAtMs: NOW - 1000, answers: {}, score: null, revision: 0, revokedAtMs: null, revokedByEmail: null } as RecruitmentAssignmentRow);
 const active = () => ({ ...invited(), status: "active" as const, startedAtMs: NOW, revision: 1 });
 
 /** Read/write spy only: no assertion of real MySQL transaction isolation. */
@@ -386,6 +387,16 @@ describe("manager immutable source acceptance", () => {
 });
 
 describe("recruitment duplicate invitations", () => {
+  it.each([
+    { accessKind: "unknown", grantId: null },
+    { accessKind: "training-seat", grantId: "stray-hiring-grant" },
+    { accessKind: "applicant", grantId: "stray-hiring-grant" },
+  ])("rejects malformed $accessKind/$grantId duplicate instead of recovering it as a seat", async override => {
+    const row = { ...invited(), ...override }, db = fakeManagerDb(org(), row);
+    await expect(inviteRecruitmentCandidate(context, 7, FORM_ID, 31)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(db.insert).not.toHaveBeenCalled(); expect(mocks.persistRecruitmentTransition).not.toHaveBeenCalled();
+  });
+
   it.each(["invited", "active"] as const)("returns the original usable %s invitation without inserting or resetting it", async status => {
     const row = status === "active" ? active() : invited(), before = structuredClone(row);
     const db = fakeManagerDb(org(), row);

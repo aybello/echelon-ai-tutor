@@ -34,6 +34,9 @@ const {
   mockFlexUnallocatedRefund,
   mockFlexDisputeCreated,
   mockFlexDisputeClosed,
+  mockInvoiceAllocations,
+  mockReversalInvoice,
+  mockReversalCharge,
 } = vi.hoisted(() => ({
   mockConstructEvent: vi.fn(),
   mockRetrieveSubscription: vi.fn(),
@@ -46,6 +49,9 @@ const {
   mockFlexUnallocatedRefund: vi.fn(),
   mockFlexDisputeCreated: vi.fn(),
   mockFlexDisputeClosed: vi.fn(),
+  mockInvoiceAllocations: vi.fn(),
+  mockReversalInvoice: vi.fn(),
+  mockReversalCharge: vi.fn(),
 }));
 
 vi.mock("./stripe", () => ({
@@ -56,7 +62,9 @@ vi.mock("./stripe", () => ({
     subscriptions: {
       retrieve: mockRetrieveSubscription,
     },
-    invoicePayments: { list: vi.fn(async () => ({ data: [], has_more: false })) },
+    invoicePayments: { list: mockInvoiceAllocations },
+    invoices: { retrieve: mockReversalInvoice },
+    charges: { retrieve: mockReversalCharge },
     disputes: { retrieve: vi.fn(async (id: string) => ({ id, status: "needs_response" })) },
     paymentIntents: {
       retrieve: mockRetrievePaymentIntent,
@@ -207,6 +215,9 @@ beforeEach(() => {
   mockFlexUnallocatedRefund.mockResolvedValue(false);
   mockFlexDisputeCreated.mockResolvedValue({ handled: false });
   mockFlexDisputeClosed.mockResolvedValue(false);
+  mockInvoiceAllocations.mockReset().mockResolvedValue({ data: [], has_more: false });
+  mockReversalInvoice.mockReset().mockImplementation(async (id: string) => ({ id, metadata: {}, customer: "cus_flex" }));
+  mockReversalCharge.mockReset().mockImplementation(async (id: string) => ({ id, payment_intent: "pi_flex", customer: "cus_flex", metadata: {} }));
   mockRetrievePaymentIntent.mockResolvedValue({
     status: "succeeded",
     latest_charge: { created: 1_789_684_600, paid: true, status: "succeeded" },
@@ -241,6 +252,37 @@ describe("Stripe webhook handler — Course Pass refunds and disputes", () => {
     expect(mockFlexFullRefund).toHaveBeenCalledWith("pi_flex");
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({ received: true });
+  });
+
+  it.each(["charge.refunded", "charge.dispute.created"])("routes all-legacy multi-invoice %s after complete ownership classification", async type => {
+    const handler = captureWebhookHandler(); const response = makeResponse();
+    mockInvoiceAllocations.mockResolvedValue({ data: [{ id: "ip_1", invoice: "in_legacy_1" }, { id: "ip_2", invoice: "in_legacy_2" }], has_more: false });
+    mockConstructEvent.mockReturnValue({ id: `evt_multiple_${type}`, type, data: { object: type === "charge.refunded"
+      ? { id: "ch_flex", payment_intent: "pi_flex", amount: 5000, amount_refunded: 5000 }
+      : { id: "dp_flex", charge: "ch_flex", payment_intent: "pi_flex", status: "needs_response" } } });
+    mockFlexFullRefund.mockResolvedValue(true); mockFlexDisputeCreated.mockResolvedValue({ handled: true, action: "suspended" });
+    await handler(makeRequest(), response);
+    expect(type === "charge.refunded" ? mockFlexFullRefund : mockFlexDisputeCreated).toHaveBeenCalled();
+    expect(mockReversalInvoice).toHaveBeenCalledWith("in_legacy_1", expect.objectContaining({ expand: expect.any(Array) }));
+    expect(mockReversalInvoice).toHaveBeenCalledWith("in_legacy_2", expect.objectContaining({ expand: expect.any(Array) }));
+    expect(response.statusCode).toBe(200); expect(response.body).toEqual({ received: true });
+  });
+
+  it("continues paginated all-legacy ownership discovery before the refund handler", async () => {
+    const handler = captureWebhookHandler(); const response = makeResponse();
+    mockInvoiceAllocations.mockResolvedValueOnce({ data: [{ id: "ip_1", invoice: "in_legacy_1" }], has_more: true })
+      .mockResolvedValueOnce({ data: [{ id: "ip_2", invoice: "in_legacy_2" }], has_more: false });
+    mockConstructEvent.mockReturnValue({ id: "evt_paginated_legacy", type: "charge.refunded", data: { object: { id: "ch_flex", payment_intent: "pi_flex", amount: 5000, amount_refunded: 5000 } } });
+    mockFlexFullRefund.mockResolvedValue(true); await handler(makeRequest(), response);
+    expect(mockInvoiceAllocations).toHaveBeenNthCalledWith(2, expect.objectContaining({ starting_after: "ip_1" }));
+    expect(mockFlexFullRefund).toHaveBeenCalledWith("pi_flex"); expect(response.statusCode).toBe(200);
+  });
+
+  it("returns a retryable failure instead of acknowledging incomplete unknown reversal ownership", async () => {
+    const handler = captureWebhookHandler(); const response = makeResponse();
+    mockInvoiceAllocations.mockResolvedValue({ data: [], has_more: true });
+    mockConstructEvent.mockReturnValue({ id: "evt_incomplete_ownership", type: "charge.refunded", data: { object: { id: "ch_flex", payment_intent: "pi_flex", amount: 5000, amount_refunded: 5000 } } });
+    await handler(makeRequest(), response); expect(response.statusCode).toBe(503); expect(mockFlexFullRefund).not.toHaveBeenCalled();
   });
 
   it("routes a partial refund with licence metadata to the scoped handler", async () => {

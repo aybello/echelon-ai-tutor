@@ -16,7 +16,8 @@ const KEY = "class2-water";
 const org = () => ({ id: 7, name: "Synthetic utility", province: "ontario", tier: "all-access", billingType: "stripe", status: "active", termStart: new Date(NOW - 1000), termEnd: new Date(NOW + 86400000), managerEmail: "manager@example.test" } as Organization);
 const member = () => ({ id: 31, orgId: 7, email: EMAIL, role: "operator", status: "assigned", courseKey: KEY, courseKeys: null } as OrganizationMember);
 const sub = () => ({ orgId: 7, email: EMAIL, tier: "class2", province: "ontario", status: "active", currentPeriodStart: new Date(NOW - 1000), currentPeriodEnd: new Date(NOW + 86400000), stripeSubscriptionId: `org-7-${EMAIL}-${KEY}` } as RecruitmentSubscription);
-const assignment = () => ({ id: "11111111-1111-4111-8111-111111111111", orgId: 7, memberId: 31, candidateEmail: EMAIL, status: "active" } as RecruitmentAssignmentRow);
+// Model the persisted migration defaults, not a partial pre-migration object.
+const assignment = () => ({ id: "11111111-1111-4111-8111-111111111111", orgId: 7, memberId: 31, accessKind: "training-seat", grantId: null, candidateEmail: EMAIL, status: "active" } as RecruitmentAssignmentRow);
 const ctx = (email: string | null = EMAIL, userEmail?: string | null) => ({ user: userEmail !== undefined ? { id: 101, email: userEmail } : null, studentEmail: email, req: {}, res: {} } as unknown as TrpcContext);
 
 function queuedReadDb(rows: unknown[][]) {

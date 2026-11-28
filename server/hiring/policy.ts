@@ -24,7 +24,8 @@ export function hiringMetadata(object: any): Record<string, string> {
     object?.parent?.subscription_details?.metadata,
     object?.parent?.invoice_details?.metadata,
   ];
-  return candidates.find((metadata) => metadata?.type === HIRING_TYPE || metadata?.hiring_type === HIRING_TYPE) ?? {};
+  const found = candidates.find((metadata) => metadata?.type === HIRING_TYPE || metadata?.hiring_type === HIRING_TYPE);
+  return found ? { ...found, type: HIRING_TYPE } : {};
 }
 export const invoiceSubscriptionId = (invoice: any): string | null =>
   stripeId(invoice.parent?.subscription_details?.subscription) ?? stripeId(invoice.subscription);
@@ -74,10 +75,14 @@ export function validateHiringCancellationSubscription(sub: any, order: HiringBi
   requirePayment(order.customerId && stripeId(sub.customer) === order.customerId,
     "Hiring cancellation customer binding mismatch");
 }
-export function validateHiringSubscription(sub: any, order: HiringBinding): { priceId: string; productId: string } {
+export function validateHiringSubscription(sub: any, order: HiringBinding, options: { settledInvoice?: boolean } = {}): { priceId: string; productId: string } {
   requirePayment(sub && !sub.deleted && sub.metadata?.type === HIRING_TYPE && sub.metadata?.policy === HIRING_POLICY
     && sub.metadata?.orderId === order.id && sub.metadata?.orgId === String(order.orgId), "Subscription policy/order mismatch");
-  requirePayment(sub.status === "active", "Subscription is not active");
+  // A settled invoice remains accounting evidence after a later cancellation or
+  // delinquency. It creates a suspended term, never current subscription access.
+  requirePayment(options.settledInvoice
+    ? ["active", "past_due", "unpaid", "canceled", "incomplete_expired"].includes(sub.status)
+    : sub.status === "active", "Subscription is not active");
   requirePayment(!order.subscriptionId || sub.id === order.subscriptionId, "Subscription binding mismatch");
   requirePayment(order.customerId && stripeId(sub.customer) === order.customerId, "Customer binding mismatch");
   requirePayment(!sub.trial_start && !sub.trial_end && !sub.discounts?.length && !sub.discount
@@ -125,8 +130,8 @@ export type HiringPaymentState = "active" | "refunded" | "disputed" | "needs_rev
  * are read under the same lock as fulfilment; refunds always dominate. */
 export function hiringPaymentState(charge: any, disputes: any[]): HiringPaymentState {
   if (charge.refunded || (charge.amount_refunded > 0 && charge.amount_refunded >= charge.amount)) return "refunded";
-  if (charge.amount_refunded > 0) return "needs_review";
   if (disputes.some(d => d.status === "lost")) return "dispute_lost";
+  if (charge.amount_refunded > 0) return "needs_review";
   if (charge.disputed && !disputes.length) return "needs_review";
   if (disputes.some(d => !["won", "warning_closed"].includes(d.status))) return "disputed";
   return "active";

@@ -36,14 +36,14 @@ import {
 } from "../_core/emailSession";
 import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { clearAssessmentOnlySessionCookie } from "../_core/assessmentOnlySession";
-import { issueApplicantCapability } from "../recruitment/service";
+import { issueApplicantCapabilityForOtp } from "../recruitment/service";
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
 import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
 const OTP_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
-function hashCode(code: string): string {
-  return createHash("sha256").update(code).digest("hex");
+function hashCode(code: string, assignmentId?: string): string {
+  return createHash("sha256").update(assignmentId ? `recruitment:${assignmentId}:${code}` : code).digest("hex");
 }
 
 function createTransporter() {
@@ -93,7 +93,7 @@ export const dashboardAuthRouter = router({
    * Always returns { sent: true } to prevent email enumeration.
    */
   sendOtp: publicProcedure
-    .input(z.object({ email: z.string().email() }))
+    .input(z.object({ email: z.string().email(), assignmentId: z.string().uuid().optional() }))
     .mutation(async ({ input }) => {
       const email = normalizeEmail(input.email);
 
@@ -110,6 +110,7 @@ export const dashboardAuthRouter = router({
           eq(recruitmentAssignments.accessKind, "applicant"),
           inArray(recruitmentAssignments.status, ["invited", "active"]),
           gt(recruitmentAssignments.expiresAtMs, Date.now()),
+          input.assignmentId ? eq(recruitmentAssignments.id, input.assignmentId) : undefined,
         )).orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
         : [];
       if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords && !applicantInvitation && !(await hasRecoverableTeamBilling(email))) {
@@ -121,7 +122,7 @@ export const dashboardAuthRouter = router({
 
       // Generate 6-digit code
       const code = String(randomInt(100000, 999999));
-      const codeHash = hashCode(code);
+      const codeHash = hashCode(code, input.assignmentId);
       const expiresAt = new Date(Date.now() + OTP_TTL_MS);
 
       // Invalidate any previous unused OTPs for this email
@@ -157,70 +158,70 @@ export const dashboardAuthRouter = router({
    * - Managers get a session even without course entitlements.
    */
   verifyOtp: publicProcedure
-    .input(z.object({ email: z.string().email(), code: z.string().length(6) }))
+    .input(z.object({ email: z.string().email(), code: z.string().length(6), assignmentId: z.string().uuid().optional() }))
     .mutation(async ({ input, ctx }) => {
       const email = normalizeEmail(input.email);
-      const db = await getDb();
-      if (!db) throw new Error("Database unavailable");
+      clearVerifiedEmailSessionCookie(ctx.res);
+      clearAssessmentOnlySessionCookie(ctx.res);
+      try {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
 
-      const verification = await verifyAndConsumeOtp(db, dashboardOtps, email, hashCode(input.code));
-      if (!verification.valid) {
-        if (verification.reason === "too_many_attempts") {
-          throw new Error("Too many incorrect attempts. Please request a new code.");
+        const verification = await verifyAndConsumeOtp(db, dashboardOtps, email, hashCode(input.code, input.assignmentId));
+        if (!verification.valid) {
+          if (verification.reason === "too_many_attempts") {
+            throw new Error("Too many incorrect attempts. Please request a new code.");
+          }
+          if (verification.reason === "wrong_code") {
+            const remaining = verification.attemptsRemaining;
+            throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
+          }
+          throw new Error("Code expired or not found. Please request a new code.");
         }
-        if (verification.reason === "wrong_code") {
-          const remaining = verification.attemptsRemaining;
-          throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
-        }
-        throw new Error("Code expired or not found. Please request a new code.");
-      }
 
-      // Re-resolve live entitlements — do not use stale purchase/subscription queries.
-      // This is the authoritative access check: a refunded or cancelled customer
-      // who still has a valid OTP code will not receive course access here.
-      const entitlements = await resolveEntitlementsByEmail(email);
-      const [applicant] = !entitlements.hasAnyAccess && !entitlements.isManager
-        ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
-          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now())))
-          .orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
-        : [];
-      const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
-      if (!applicant && !entitlements.hasAnyAccess && !isManager && !(await hasTrainingRecord(email))) {
+        // Re-resolve live entitlements — do not use stale purchase/subscription queries.
+        // This is the authoritative access check: a refunded or cancelled customer
+        // who still has a valid OTP code will not receive course access here.
+        const entitlements = await resolveEntitlementsByEmail(email);
+        const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
+        const applicantOnly = !entitlements.hasAnyAccess && !isManager && !(await hasTrainingRecord(email));
+        if (applicantOnly) {
+          try {
+            // Use only the consumed OTP's verified email, never an older identity.
+            clearVerifiedEmailSessionCookie(ctx.res);
+            await issueApplicantCapabilityForOtp({
+              req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
+            }, input.assignmentId);
+          } catch (error) {
+            // Includes transaction commit failures after a cookie was signed.
+            clearVerifiedEmailSessionCookie(ctx.res);
+            clearAssessmentOnlySessionCookie(ctx.res);
+            throw new Error("This invitation is no longer available.", { cause: error });
+          }
+        } else {
+          clearAssessmentOnlySessionCookie(ctx.res);
+          await issueVerifiedEmailSessionCookie(ctx.res, email);
+        }
+
+        // Only issue an access token if there are actual course entitlements
+        const unlockedExamTypes = applicantOnly ? [] : entitlements.unlockedExamTypes;
+        const accessToken = unlockedExamTypes.length > 0
+          ? await issueSubscriptionToken({ email, examTypes: unlockedExamTypes })
+          : null;
+
+        if (!applicantOnly) await recordLearnerSignIn(ctx.req, { email }, "dashboard_otp");
+        return {
+          success: true,
+          email,
+          accessToken,
+          unlockedExamTypes,
+          purchasedProductKeys: applicantOnly ? [] : entitlements.purchasedProductKeys,
+        };
+      } catch (error) {
         clearVerifiedEmailSessionCookie(ctx.res);
         clearAssessmentOnlySessionCookie(ctx.res);
-        throw new Error("This invitation is no longer available.");
+        throw error;
       }
-      if (applicant) {
-        try {
-          // Use only the consumed OTP's verified email, never an older identity.
-          clearVerifiedEmailSessionCookie(ctx.res);
-          await issueApplicantCapability({
-            req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
-          }, applicant.id);
-        } catch (error) {
-          // Includes transaction commit failures after a cookie was signed.
-          clearVerifiedEmailSessionCookie(ctx.res);
-          clearAssessmentOnlySessionCookie(ctx.res);
-          throw new Error("This invitation is no longer available.", { cause: error });
-        }
-      } else {
-        clearAssessmentOnlySessionCookie(ctx.res);
-        await issueVerifiedEmailSessionCookie(ctx.res, email);
-      }
-
-      // Only issue an access token if there are actual course entitlements
-      const accessToken = entitlements.unlockedExamTypes.length > 0
-        ? await issueSubscriptionToken({ email, examTypes: entitlements.unlockedExamTypes })
-        : null;
-
-      await recordLearnerSignIn(ctx.req, { email }, "dashboard_otp");
-      return {
-        success: true,
-        email,
-        accessToken,
-        unlockedExamTypes: entitlements.unlockedExamTypes,
-        purchasedProductKeys: entitlements.purchasedProductKeys,
-      };
     }),
 
   /**

@@ -19,6 +19,22 @@ export function verifiedRecruitmentEmail(ctx: TrpcContext): string {
   return email;
 }
 
+/** Capabilities identify one attempt, never independently authenticate an inbox. */
+export function independentlyVerifiedRecruitmentEmail(ctx: TrpcContext): string {
+  const email = identityEmail(resolveVerifiedIdentity(ctx));
+  if (!email) throw new TRPCError({ code: "FORBIDDEN", message: "Verify your email to authorize this applicant invitation." });
+  return email;
+}
+
+/** Accept the two durable shapes only, including migrated historical seat rows. */
+export function assertRecruitmentAssignmentShape(assignment: RecruitmentAssignmentRow): void {
+  const applicant = assignment.accessKind === "applicant" && assignment.memberId === null
+    && typeof assignment.grantId === "string" && assignment.grantId.trim().length > 0;
+  const seat = assignment.accessKind === "training-seat" && Number.isSafeInteger(assignment.memberId)
+    && assignment.memberId! > 0 && assignment.grantId === null;
+  if (!applicant && !seat) throw new TRPCError({ code: "FORBIDDEN", message: "This assessment invitation has an invalid access binding." });
+}
+
 /** Recheck row values with a clock captured AFTER all lock waits. */
 export function assertApplicantGrant(org: Organization, grant: HiringTerm | undefined, nowMs: number): asserts grant is HiringTerm {
   assertCurrentAnnualOrganization(org, nowMs);
@@ -32,6 +48,7 @@ export function assertApplicantGrant(org: Organization, grant: HiringTerm | unde
 /** New capabilities are only for a live, exactly bound unfinished attempt. */
 export function assertApplicantIssuance(assignment: RecruitmentAssignmentRow, assessment: RecruitmentAssessmentRow,
   org: Organization, grant: HiringTerm | undefined, email: string, nowMs: number): number {
+  assertRecruitmentAssignmentShape(assignment);
   assertApplicantGrant(org, grant, nowMs);
   const deadline = assignmentDeadline(assessment, assignment);
   if (assignment.accessKind !== "applicant" || assignment.memberId !== null || !assignment.grantId
@@ -128,6 +145,7 @@ export async function assertRecruitmentSeat(db: RecruitmentReadDb, org: Organiza
 
 /** Called for EVERY candidate procedure, including reads, repeats and terminal views. */
 export async function assertRecruitmentCandidate(ctx: TrpcContext, db: RecruitmentReadDb, assignment: RecruitmentAssignmentRow, courseKey: string, options: { centralPreflightDone?: boolean; lock?: boolean; bootstrapApplicantCapability?: boolean } = {}): Promise<Organization> {
+  assertRecruitmentAssignmentShape(assignment);
   const email = verifiedRecruitmentEmail(ctx);
   if (email !== normalizeEmail(assignment.candidateEmail)) {
     throw new TRPCError({ code: "FORBIDDEN", message: "This invitation belongs to a different verified email." });
@@ -135,7 +153,7 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
   const orgQuery = db.select().from(organizations).where(eq(organizations.id, assignment.orgId)).limit(1);
   const [org] = await (options.lock ? orgQuery.for("share") : orgQuery);
   if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "This team is unavailable." });
-  if (assignment.accessKind === "applicant" || assignment.memberId === null) {
+  if (assignment.accessKind === "applicant") {
     assertCurrentAnnualOrganization(org, Date.now());
     if (assignment.accessKind !== "applicant" || assignment.memberId !== null || !assignment.grantId
       || ["revoked", "expired"].includes(assignment.status)) {
@@ -155,6 +173,7 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
       if (!options.bootstrapApplicantCapability || options.lock) {
         throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation requires its matching assessment capability." });
       }
+      independentlyVerifiedRecruitmentEmail(ctx);
       // Bootstrap has no pool locks. Discovery here is not authorization:
       // issuance rereads exact scope under org -> assignment -> grant locks.
       const { issueApplicantCapability } = await import("./service");
@@ -168,7 +187,9 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
     // assignment UPDATE lock. No new capability is issued for elapsed attempts.
     return org;
   }
-  await assertRecruitmentSeat(db, org, assignment.memberId, courseKey, email, options.lock);
+  // A capability's email must never authenticate even a same-email training seat.
+  independentlyVerifiedRecruitmentEmail(ctx);
+  await assertRecruitmentSeat(db, org, assignment.memberId!, courseKey, email, options.lock);
   // Central preflight runs before acquiring a transaction connection. Calling
   // the global resolver while every pool connection is locked can starve it.
   if (!options.centralPreflightDone) await assertAccess(ctx, courseKey);

@@ -10,6 +10,7 @@ const state = vi.hoisted(() => ({
   slots: [] as unknown[], cursor: 0, search: "", oauth: false, otp: null as string | null,
   courses: [] as string[], manager: false, subscriptions: [] as any[],
   options: {} as Record<string, any>, serverLogout: vi.fn(), toastError: vi.fn(),
+  mutations: {} as Record<string, ReturnType<typeof vi.fn>>,
   notify: vi.fn(), queryClient: { cancelQueries: vi.fn(), clear: vi.fn() },
 }));
 vi.mock("react", async importOriginal => ({
@@ -21,7 +22,7 @@ vi.mock("react", async importOriginal => ({
       state.slots[index] = typeof value === "function" ? value(state.slots[index]) : value;
     }];
   },
-  useEffect: vi.fn(), useLayoutEffect: vi.fn(), useRef: () => ({ current: null }),
+  useEffect: vi.fn(), useLayoutEffect: vi.fn(), useRef: (initial: unknown) => ({ current: initial }),
 }));
 vi.mock("wouter", () => ({
   Link: ({ children, ...props }: any) => React.createElement("a", props, children),
@@ -57,8 +58,10 @@ vi.mock("@/lib/trpc", () => ({
       return { data, isFetching: false };
     },
     useMutation: (options: unknown) => {
-      state.options[`${String(namespace)}.${String(procedure)}`] = options;
-      return { mutate: vi.fn(), mutateAsync: state.serverLogout, isPending: false };
+      const key = `${String(namespace)}.${String(procedure)}`;
+      state.options[key] = options;
+      const mutate = state.mutations[key] ??= vi.fn();
+      return { mutate, mutateAsync: state.serverLogout, isPending: false };
     },
   }) }) }),
 }));
@@ -100,7 +103,7 @@ function verifiedPurchase(overrides = {}) {
 beforeEach(() => {
   vi.resetAllMocks(); vi.useFakeTimers();
   state.slots = []; state.cursor = 0; state.search = ""; state.oauth = false; state.otp = null;
-  state.courses = []; state.manager = false; state.subscriptions = []; state.options = {};
+  state.courses = []; state.manager = false; state.subscriptions = []; state.options = {}; state.mutations = {};
   const local = storage({ echelon_trial_email: "learner@example.test", echelon_access_token: "old", theme: "light" });
   const session = storage({ "echelon.session": "old" });
   vi.stubGlobal("React", React); vi.stubGlobal("localStorage", local);
@@ -165,6 +168,26 @@ describe("canonical purchased-course destinations", () => {
 });
 
 describe("verified OTP destinations and neutral inbox instructions", () => {
+  it.each(["/recruitment/11111111-1111-4111-8111-111111111111", "/account", "/recruitment/not-an-id"])(
+    "binds canonical recruitment destination only through request, verification and resend (%s)", next => {
+      window.location.search = `?email=applicant%40example.test&next=${encodeURIComponent(next)}`;
+      let tree = render(OtpLogin);
+      elements(tree).find(element => element.type === "form")!.props.onSubmit({ preventDefault: vi.fn() });
+      const scope = next.endsWith("11111111-1111-4111-8111-111111111111") ? { assignmentId: "11111111-1111-4111-8111-111111111111" } : {};
+      expect(state.mutations["emailOtp.requestOtp"]).toHaveBeenLastCalledWith({ email: "applicant@example.test", ...scope });
+      state.options["emailOtp.requestOtp"].onSuccess({ sent: true });
+      tree = render(OtpLogin);
+      const pasteTarget = elements(tree).find(element => element.props.onPaste)!;
+      pasteTarget.props.onPaste({ preventDefault: vi.fn(), clipboardData: { getData: () => "314159" } });
+      expect(state.mutations["emailOtp.verifyOtp"]).toHaveBeenLastCalledWith({ email: "applicant@example.test", code: "314159", ...scope });
+      tree = render(OtpLogin);
+      elements(tree).find(element => element.type === "form")!.props.onSubmit({ preventDefault: vi.fn() });
+      expect(state.mutations["emailOtp.verifyOtp"]).toHaveBeenLastCalledWith({ email: "applicant@example.test", code: "314159", ...scope });
+      elements(tree).find(element => element.type === "button" && String(element.props.children).startsWith("Resend"))!.props.onClick();
+      expect(state.mutations["emailOtp.requestOtp"]).toHaveBeenLastCalledWith({ email: "applicant@example.test", ...scope });
+    },
+  );
+
   it("defaults learners to account and managers to team while keeping explicit destinations", () => {
     expect(otpSuccessDestination("", false)).toBe("/account");
     expect(otpSuccessDestination("", true)).toBe("/team");

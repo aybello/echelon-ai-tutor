@@ -87,10 +87,8 @@ import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
 import LearnerAssessmentDetails, { FlexLearnerDrilldowns } from "@/components/LearnerAssessmentDetails";
 import ExamOutcomesPanel from "@/components/ExamOutcomesPanel";
 import { safeSupervisorCsvCell, supervisorNextAction } from "@shared/supervisorActionPlan";
-import RecruitmentPanel from "@/components/RecruitmentPanel";
-
+import RecruitmentPanel, { HiringManagerPanel } from "@/components/RecruitmentPanel";
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
 function formatDate(d: Date | null | undefined): string {
   if (!d) return "—";
   return new Date(d).toLocaleDateString("en-CA", {
@@ -177,7 +175,9 @@ function MetricCard({
 export default function OrgDashboard() {
   const [, navigate] = useLocation();
   const search = useSearch();
-  const [managerView, setManagerView] = useState<"operators" | "reports" | "recruitment">("operators");
+  const [managerView, setManagerView] = useState<"operators" | "reports" | "recruitment">(() =>
+    new URLSearchParams(search).get("view") === "hiring" ? "recruitment" : "operators"
+  );
   const [rosterSearch, setRosterSearch] = useState("");
   const [rosterStage, setRosterStage] = useState<"all" | "assigned" | "studying">("all");
   const [assignOpen, setAssignOpen] = useState(false);
@@ -468,6 +468,9 @@ export default function OrgDashboard() {
     // P2b: if we arrived post-purchase and still can't load after retries, show a
     // more helpful message rather than a generic sign-in prompt.
     const isPostPurchaseTimeout = isPostPurchase && isUnauth;
+    // Owned lapsed organizations remain discoverable for billing-only recovery.
+    const billingOrgId = selectedOrgId ??
+      (organizationQuery.data?.length === 1 ? organizationQuery.data[0].id : undefined);
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-4 px-6 text-center">
         <Building2 className="w-12 h-12 text-slate-300" />
@@ -480,6 +483,7 @@ export default function OrgDashboard() {
             : msg}
         </p>
         {orgChooser}
+        {!isUnauth && billingOrgId && <div className="w-full max-w-3xl text-left"><HiringManagerPanel key={billingOrgId} orgId={billingOrgId} /></div>}
         {!isUnauth && <Button className="bg-blue-600 text-white" onClick={() => billingPortal.mutate({ ...orgInput, scope: "team" })} disabled={billingPortal.isPending}>Manage team billing</Button>}
         {!isUnauth && <a href="mailto:abello@echeloninstitute.ca" className="text-sm text-blue-700 underline">Contact team support</a>}
         <Link href="/account">

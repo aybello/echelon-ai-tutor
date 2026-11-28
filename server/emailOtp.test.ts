@@ -14,7 +14,7 @@ vi.mock("./_core/access", () => ({
     hasAnyAccess: true, isManager: false, unlockedExamTypes: ["wwt-1"], purchasedProductKeys: [],
   })),
 }));
-vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: state.issueSession }));
+vi.mock("./_core/emailSession", () => ({ issueVerifiedEmailSessionCookie: state.issueSession, clearVerifiedEmailSessionCookie: (res: TrpcContext["res"]) => res.clearCookie("echelon_dashboard_session", { path: "/" }) }));
 vi.mock("./_core/subscriptionToken", () => ({ issueSubscriptionToken: state.issueToken }));
 vi.mock("./email", () => ({ sendOtpEmail: vi.fn(), sendMagicLinkEmail: vi.fn() }));
 vi.mock("./analytics", () => ({ trackEvent: vi.fn() }));
@@ -75,7 +75,7 @@ function fixture(initial: Row | null, options: {
 function context() {
   return {
     user: null, studentEmail: null,
-    req: { headers: {}, protocol: "https" }, res: { cookie: vi.fn() },
+    req: { headers: {}, protocol: "https" }, res: { cookie: vi.fn(), clearCookie: vi.fn() },
   } as unknown as TrpcContext;
 }
 afterEach(() => {
@@ -164,6 +164,10 @@ describe("routers gate sessions on a committed claim", () => {
     expect(state.issueSession).not.toHaveBeenCalled();
     expect(state.issueToken).not.toHaveBeenCalled();
     expect(ctx.res.cookie).not.toHaveBeenCalled();
+    if (kind !== "magicLink") {
+      expect(ctx.res.clearCookie).toHaveBeenCalledWith("echelon_dashboard_session", { path: "/" });
+      expect(ctx.res.clearCookie).toHaveBeenCalledWith("echelon_assessment_only", { path: "/" });
+    }
   });
   it("both OTP routes and legacy links fail closed when the database is unavailable", async () => {
     state.db = null;

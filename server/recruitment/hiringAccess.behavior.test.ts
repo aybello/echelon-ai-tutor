@@ -11,8 +11,8 @@ vi.mock("../_core/sdk", () => ({ sdk: { authenticateRequest: mocks.authenticate 
 vi.mock("../teams/resolveManagerOrganization", () => ({ resolveManagedOrganization: mocks.manager }));
 vi.mock("./questions", async original => ({ ...await original<typeof import("./questions")>(), assertRecruitmentSourcesVisible: mocks.visible }));
 
-import { issueApplicantCapability, inviteRecruitmentCandidate, recruitmentResults } from "./service";
-import { assertRecruitmentCandidate, verifiedRecruitmentEmail } from "./access";
+import { issueApplicantCapability, inviteRecruitmentCandidate, recruitmentResults, revokeRecruitmentAssignment } from "./service";
+import { assertRecruitmentAssignmentShape, assertRecruitmentCandidate, verifiedRecruitmentEmail } from "./access";
 import { operateRecruitmentCandidate } from "./store";
 import { createContext } from "../_core/context";
 import { ASSESSMENT_ONLY_COOKIE, assertLearnerStateAllowed, issueAssessmentOnlySession, readAssessmentOnlySession } from "../_core/assessmentOnlySession";
@@ -199,19 +199,88 @@ describe("live applicant capability issuance", () => {
     expect(client.ctx.assessmentOnlySession?.exp).toBe(Math.floor(deadline / 1000)); expect(result.assignmentId).toBe(ID);
   });
 
-  it("uses the requested invitation for two invitations sharing one email", async () => {
+  // Spec correction: a capability's email is not independent email verification.
+  // The previous test explicitly blessed minting Y from only X's capability.
+  it.each(["invited", "revoked"] as const)("never mints a different same-email invitation from capability-only %s X", async status => {
     const second = { ...assignment(), id: OTHER_ID, expiresAtMs: NOW + 45_000 };
-    database({ rows: [assignment(), second] }); const client = browser({}, null);
+    const db = database({ rows: [{ ...assignment(), status }, second] }); const client = browser({}, null);
     await issueAssessmentOnlySession(client.ctx.res, { assignmentId: ID, candidateEmail: EMAIL, courseKey: KEY });
     client.ctx.assessmentOnlySession = await readAssessmentOnlySession(client.ctx.req);
+    client.res.cookie.mockClear();
     expect(verifiedRecruitmentEmail(client.ctx)).toBe(EMAIL);
+    await expect(issueApplicantCapability(client.ctx, OTHER_ID)).rejects.toMatchObject(forbidden);
+    await expect(operateRecruitmentCandidate(client.ctx, OTHER_ID, { kind: "get" })).rejects.toMatchObject(forbidden);
+    expect(client.ctx.assessmentOnlySession).toMatchObject({ assignmentId: ID });
+    expect(client.res.cookie).not.toHaveBeenCalled(); expect(db.writes).toEqual([]);
+  });
+
+  it("does not renew even the same capability without independent verification", async () => {
+    database(); const client = browser({}, null);
+    await issueAssessmentOnlySession(client.ctx.res, { assignmentId: ID, candidateEmail: EMAIL, courseKey: KEY });
+    client.ctx.assessmentOnlySession = await readAssessmentOnlySession(client.ctx.req);
+    client.res.cookie.mockClear();
+    await expect(issueApplicantCapability(client.ctx, ID)).rejects.toMatchObject(forbidden);
+    expect(client.res.cookie).not.toHaveBeenCalled();
+    await expect(operateRecruitmentCandidate(client.ctx, ID, { kind: "get" })).resolves.toMatchObject({ assignmentId: ID });
+  });
+
+  it("requires the exact course even when a capability has the right assignment and email", async () => {
+    database(); const client = browser({}, null);
+    client.ctx.assessmentOnlySession = { typ: "assessment-only", assignmentId: ID, candidateEmail: EMAIL, courseKey: "class1-water", exp: Math.floor((NOW + 60_000) / 1000) };
+    await expect(operateRecruitmentCandidate(client.ctx, ID, { kind: "get" })).rejects.toMatchObject(forbidden);
+    expect(client.res.cookie).not.toHaveBeenCalled();
+  });
+
+  it("can authorize Y using independent verification despite an old revoked X capability", async () => {
+    database({ rows: [{ ...assignment(), status: "revoked" }, { ...assignment(), id: OTHER_ID }] });
+    const client = browser();
+    client.ctx.assessmentOnlySession = { typ: "assessment-only", assignmentId: ID, candidateEmail: EMAIL, courseKey: KEY, exp: Math.floor((NOW + 60_000) / 1000) };
     await issueApplicantCapability(client.ctx, OTHER_ID);
-    expect(client.ctx.assessmentOnlySession).toMatchObject({ assignmentId: OTHER_ID, exp: Math.floor((NOW + 45_000) / 1000) });
+    expect(client.ctx.assessmentOnlySession).toMatchObject({ assignmentId: OTHER_ID });
+  });
+});
+
+describe("exact durable assignment access shapes", () => {
+  const malformed = [
+    { accessKind: "unknown", memberId: 31, grantId: null },
+    { accessKind: "training-seat", memberId: 31, grantId: GRANT },
+    { accessKind: "training-seat", memberId: null, grantId: null },
+    { accessKind: "training-seat", memberId: 0, grantId: null },
+    { accessKind: "training-seat", memberId: 31 },
+    { accessKind: "applicant", memberId: 31, grantId: GRANT },
+    { accessKind: "applicant", memberId: null, grantId: null },
+    { accessKind: "applicant", memberId: null, grantId: "" },
+  ];
+  it.each(malformed)("rejects malformed $accessKind/$memberId/$grantId before delivery or transition", async override => {
+    const row = { ...assignment(), ...override } as RecruitmentAssignmentRow;
+    // Missing grant is distinct from the explicit SQL NULL used for seat rows.
+    if (!("grantId" in override)) delete (row as any).grantId;
+    const db = database({ rows: [row] }), client = browser();
+    expect(() => assertRecruitmentAssignmentShape(row)).toThrowError(expect.objectContaining(forbidden));
+    for (const operation of [{ kind: "get" }, { kind: "submit", input: { assignmentId: ID, revision: 0 } }] as const) {
+      await expect(operateRecruitmentCandidate(client.ctx, ID, operation)).rejects.toMatchObject(forbidden);
+    }
+    await expect(recruitmentResults(browser({}, MANAGER).ctx, 7, FORM)).rejects.toMatchObject(forbidden);
+    await expect(revokeRecruitmentAssignment(browser({}, MANAGER).ctx, 7, ID, 0)).rejects.toMatchObject(forbidden);
+    expect(db.writes).toEqual([]); expect(client.res.cookie).not.toHaveBeenCalled();
+  });
+
+  it("accepts the migrated historical training-seat default and exact applicant shape", () => {
+    expect(() => assertRecruitmentAssignmentShape({ ...assignment(), accessKind: "training-seat", memberId: 31, grantId: null })).not.toThrow();
+    expect(() => assertRecruitmentAssignmentShape(assignment())).not.toThrow();
   });
 });
 
 describe("applicant invitation quota and duplicate recovery", () => {
   const request = { candidateEmail: EMAIL, candidateName: "Synthetic applicant" };
+  it.each([
+    { memberId: 31, grantId: GRANT }, { memberId: null, grantId: null }, { memberId: null, grantId: "" },
+  ])("does not recover malformed applicant $memberId/$grantId or consume allowance", async override => {
+    const db = database({ rows: [{ ...assignment(), ...override }] });
+    await expect(inviteRecruitmentCandidate(browser({}, MANAGER).ctx, 7, FORM, request)).rejects.toMatchObject(forbidden);
+    expect(db.writes).toEqual([]); expect(db.state.grants[0].used).toBe(99);
+  });
+
   it("increments exactly one Hiring counter and inserts exactly one applicant, without customer or seat writes", async () => {
     const db = database({ rows: [], beforeRead: (table, lock) => { if (table === "hiring_terms" && lock) vi.setSystemTime(NOW + 1000); } });
     const result = await inviteRecruitmentCandidate(browser({}, MANAGER).ctx, 7, FORM, request);

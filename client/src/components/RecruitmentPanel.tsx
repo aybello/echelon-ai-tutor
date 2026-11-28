@@ -66,11 +66,19 @@ export default function RecruitmentPanel({ orgId }: { orgId: number }) {
 }
 export { RecruitmentPanel };
 
-function RecruitmentManagerScope({ orgId }: { orgId: number }) {
+/** Billing recovery does not require current assessment or reporting access. */
+export function HiringManagerPanel({ orgId }: { orgId: number }) {
+  return <RecruitmentManagerScope key={orgId} orgId={orgId} billingOnly />;
+}
+
+function RecruitmentManagerScope({ orgId, billingOnly = false }: { orgId: number; billingOnly?: boolean }) {
   const access = useRecruitmentManagerPrivacy(orgId);
   if (!access.ready) return <p role="status">Verifying recruitment access…</p>;
   return (
-    <RecruitmentPanelBody key={access.epoch} orgId={orgId} access={access} />
+    <div key={access.epoch} className="space-y-6">
+      <HiringBillingBody orgId={orgId} access={access} purchaseEnabled={!billingOnly} />
+      {!billingOnly && <RecruitmentPanelBody orgId={orgId} access={access} />}
+    </div>
   );
 }
 
@@ -86,6 +94,110 @@ const privateQueryOptions = {
 function accessDenied(error: unknown) {
   const code = (error as { data?: { code?: string } } | null)?.data?.code;
   return code === "UNAUTHORIZED" || code === "FORBIDDEN";
+}
+
+function HiringBillingBody({ orgId, access, purchaseEnabled }: { orgId: number; access: RecruitmentManagerAccess; purchaseEnabled: boolean }) {
+  const live = useLifetime();
+  const isCurrent = () => live.current && access.isCurrent();
+  const client = useQueryClient();
+  const statusKey = getQueryKey(trpc.hiring.status, { orgId }, "query");
+  const fresh = useFreshRecruitmentQuery(statusKey, access);
+  const hiring = trpc.hiring.status.useQuery({ orgId }, privateQueryOptions);
+  const checkout = trpc.hiring.createCheckout.useMutation({ retry: false });
+  const cancel = trpc.hiring.cancelAtPeriodEnd.useMutation({ retry: false });
+  const pending = useRef(false);
+  const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const verified = isCurrent() && fresh && hiring.isFetchedAfterMount &&
+    hiring.isSuccess && !hiring.isFetching;
+  const status = verified ? hiring.data : undefined;
+  const authorization = status ? client.getQueryState(statusKey) : undefined;
+  // Capture the actual successful read, not just rendered owner/basis flags.
+  // Refetch, invalidation, cache writes and privacy resets fence retained clicks.
+  const canManage = () => isCurrent() && !!authorization &&
+    client.getQueryState(statusKey) === authorization &&
+    authorization.status === "success" && authorization.fetchStatus === "idle" &&
+    !authorization.isInvalidated && authorization.data === status && status?.owner === true;
+  const busy = checkout.isPending || cancel.isPending;
+  // Newer servers can distinguish purchase eligibility from allowance activity.
+  // The legacy contract still authorizes checkout again on the server.
+  const billing = status as (typeof status & {
+    canPurchase?: boolean;
+    billingOrderId?: string | null;
+    hasBillingSubscription?: boolean;
+    billingRenewalCancelled?: boolean;
+  });
+  const purchaseAllowed = purchaseEnabled && !!status?.owner &&
+    !billing?.hasBillingSubscription && !billing?.billingOrderId &&
+    (billing?.canPurchase ??
+      (!status.active && !status.canCancelRenewal));
+  async function purchaseHiring() {
+    if (!canManage() || !purchaseAllowed || busy || pending.current) return;
+    pending.current = true;
+    setError(""); setNotice("");
+    try {
+      const result = await checkout.mutateAsync({ orgId });
+      if (!isCurrent()) return;
+      // Do not redirect a replaced session or a revoked owner to old checkout.
+      if (result.url && canManage()) window.location.assign(result.url);
+      else if (!result.url) setError("Hiring checkout did not return a link. Refresh Hiring status and try again.");
+    } catch (failure) {
+      if (isCurrent()) setError(failure instanceof Error ? failure.message : "Hiring checkout could not be started.");
+    } finally {
+      pending.current = false;
+    }
+  }
+  async function cancelHiringRenewal() {
+    if (!canManage() || !status?.canCancelRenewal || busy || pending.current) return;
+    if (!window.confirm("Cancel only the Hiring add-on renewal? Normal Teams training will remain unchanged.")) return;
+    // Confirmation itself may outlive the read/session that authorized it.
+    if (!canManage() || pending.current) return;
+    pending.current = true;
+    setError(""); setNotice("");
+    try {
+      await cancel.mutateAsync({ orgId });
+      if (!isCurrent()) return;
+      setNotice("Hiring renewal is cancelled. Normal Teams training is unchanged.");
+      await hiring.refetch();
+    } catch (failure) {
+      if (isCurrent()) setError(failure instanceof Error ? failure.message : "Hiring renewal could not be cancelled.");
+    } finally {
+      pending.current = false;
+    }
+  }
+  return (
+    <section aria-label="Hiring allowance and billing" className={`${recruitmentCard} space-y-4`}>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold">Hiring allowance and billing</h2>
+        <Button type="button" variant="outline" disabled={hiring.isFetching || busy}
+          onClick={() => { if (isCurrent()) void hiring.refetch(); }}>
+          {hiring.isFetching ? "Refreshing Hiring status…" : "Refresh Hiring status"}
+        </Button>
+      </div>
+      <p className="text-sm text-slate-600">Hiring applicant access is separate from team training seats. Manage the organization’s allowance and renewal here; no assessment selection is needed.</p>
+      {hiring.isError ? <RecruitmentError message={hiring.error?.message || "Hiring status could not be verified."}
+        onRetry={() => void hiring.refetch()} pending={hiring.isFetching} /> : !status ?
+        <p role="status" className="text-sm text-slate-500">Verifying Hiring status and billing permissions…</p> : <>
+        <p className="text-sm text-slate-700">
+          {status.active ? <>Hiring allowance: <strong>{status.remaining}</strong> of {status.quota} remaining{status.endsAtMs ? ` · ends ${recruitmentDate(status.endsAtMs)}` : ""}.</> :
+            "No active Hiring allowance is available for applicant invitations. Billing management remains separate from assessment access."}
+        </p>
+        {status.canCancelRenewal ? <p className="text-sm text-slate-600">A paid Hiring renewal is connected. The organization owner can cancel it to prevent the next renewal charge, even when the current allowance or team access is unavailable.</p> :
+          billing?.hasBillingSubscription ? <p className="text-sm text-slate-600">{billing.billingRenewalCancelled ? "Paid Hiring renewal is cancelled. This does not restore unavailable allowance or team access." : "A paid Hiring subscription is connected. Only the verified organization owner can manage its renewal."}</p> :
+          status.active && status.basis !== "stripe" ? <p className="text-sm text-slate-600">This complimentary allowance ends on its stated date and does not itself renew or create a charge.</p> :
+          <p className="text-sm text-slate-600">Allowance availability does not confirm paid renewal status. Refresh Hiring status before managing billing.</p>}
+        {!status.owner && <p className="text-sm text-slate-600">Only the verified organization owner can purchase Hiring or cancel its renewal.</p>}
+        <div className="flex flex-wrap gap-3">
+          {status.owner && status.canCancelRenewal && <Button type="button" variant="outline" disabled={busy}
+            onClick={() => void cancelHiringRenewal()}>{cancel.isPending ? "Cancelling renewal…" : "Cancel Hiring renewal"}</Button>}
+          {purchaseAllowed && <Button type="button" variant="outline" disabled={busy}
+            onClick={() => void purchaseHiring()}>{checkout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button>}
+        </div>
+      </>}
+      {error && <RecruitmentError message={error} />}
+      {notice && <p role="status" className="text-sm text-teal-900">{notice}</p>}
+    </section>
+  );
 }
 
 function RecruitmentPanelBody({
@@ -240,7 +352,7 @@ function RecruitmentPanelBody({
       void utils.recruitment.list.invalidate({ orgId: submittedOrg });
       setSelectedId(data.assessmentId);
       setNotice(
-        "Assessment created. Invite candidates with an eligible team seat below."
+        "Assessment created. Invite applicants using the Hiring allowance, or use the existing team-seat workflow below."
       );
       setTitle("");
       setCourseKey("");
@@ -300,8 +412,9 @@ function RecruitmentPanelBody({
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
             Build a knowledge assessment for a human-led recruitment process.
-            Candidates need a current team seat and access to the assessment
-            course. Assign that seat first in the existing Operators tab.
+            Applicants invited through the Hiring allowance do not need a paid
+            training seat. The legacy team-seat workflow remains available for
+            existing operators with a current seat and access to the course.
           </p>
         </div>
       </header>
@@ -756,9 +869,7 @@ function RecruitmentDetail({
     privateQueryOptions
   );
   const invite = trpc.recruitment.invite.useMutation();
-  const hiring = trpc.hiring.status.useQuery({ orgId }, { retry: false, staleTime: 0 });
-  const hiringCheckout = trpc.hiring.createCheckout.useMutation();
-  const cancelHiring = trpc.hiring.cancelAtPeriodEnd.useMutation();
+  const hiring = trpc.hiring.status.useQuery({ orgId }, privateQueryOptions);
   const revoke = trpc.recruitment.revoke.useMutation();
   const [memberId, setMemberId] = useState("");
   const [applicantEmail, setApplicantEmail] = useState("");
@@ -789,7 +900,7 @@ function RecruitmentDetail({
   const revokePending = useRef(false);
   const [confirmed, setConfirmed] = useState(false);
   const renderingReview = revokeReview.current;
-  const busy = invite.isPending || revoke.isPending || cancelHiring.isPending || copying || downloading;
+  const busy = invite.isPending || revoke.isPending || copying || downloading;
   const authorized =
     access.isCurrent() &&
     resultFresh &&
@@ -812,16 +923,6 @@ function RecruitmentDetail({
     revokeReview.current = null;
     setRevokeTarget(null);
     setConfirmed(false);
-  }
-  async function cancelHiringRenewal() {
-    if (!isCurrent() || !hiring.data?.canCancelRenewal || !hiring.data.owner || hiring.data.basis !== "stripe" || hiring.data.state === "cancel_at_period_end") return;
-    if (!window.confirm("Cancel only the Hiring add-on renewal? Normal Teams training will remain unchanged.")) return;
-    try {
-      await cancelHiring.mutateAsync({ orgId });
-      if (isCurrent()) await hiring.refetch();
-    } catch (failure) {
-      if (isCurrent()) setError(failure instanceof Error ? failure.message : "Hiring renewal could not be cancelled.");
-    }
   }
   useLayoutEffect(() => {
     const filters = { queryKey: resultKey, exact: true };
@@ -1129,9 +1230,8 @@ function RecruitmentDetail({
       </div>
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h4 className="font-semibold">Invite a candidate</h4>
-        {hiring.data?.active ? <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">Hiring allowance: <strong>{hiring.data.remaining}</strong> of {hiring.data.quota} remaining · expires {new Date(hiring.data.endsAtMs!).toLocaleDateString()}. {hiring.data.state === "cancel_at_period_end" ? "Renewal is cancelled; access remains available through the current term." : "Renews annually unless the organization owner cancels renewal before the term ends."}</p>{hiring.data.canCancelRenewal ? <Button type="button" variant="outline" disabled={cancelHiring.isPending} onClick={() => void cancelHiringRenewal()}>{cancelHiring.isPending ? "Cancelling renewal…" : "Cancel Hiring renewal"}</Button> : null}</div> : hiring.data?.canCancelRenewal ? <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">Hiring renewal is still connected, but access is currently unavailable. Cancel renewal to prevent the next charge.</p><Button type="button" variant="outline" disabled={cancelHiring.isPending} onClick={() => void cancelHiringRenewal()}>{cancelHiring.isPending ? "Cancelling renewal…" : "Cancel Hiring renewal"}</Button></div> : <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">No active Hiring allowance is available for applicant invitations. The organization owner can purchase the optional Hiring add-on.</p><Button type="button" variant="outline" disabled={hiringCheckout.isPending} onClick={async () => { if (!isCurrent()) return; try { const result = await hiringCheckout.mutateAsync({ orgId }); if (isCurrent() && result.url) window.location.assign(result.url); } catch { if (isCurrent()) setError("Only the verified organization owner can purchase Hiring."); } }}>{hiringCheckout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button></div>}
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          {inviteMode === "applicant" ? "Each applicant invitation allocates one assessment from the annual allowance. Revocation or expiry does not restore that allowance. " : "A current team seat with this course is required. To add someone, use the Operators tab first; this action does not grant a seat. "}The link only works for the invited candidate's verified email. No automatic invitation email is sent.
+          {inviteMode === "applicant" ? "Each applicant invitation allocates one assessment from the Hiring allowance, without a paid training seat. Revocation or expiry does not restore that allowance. " : "Legacy team-seat workflow: use an existing operator’s current seat and course access managed in Operators. This action does not grant a seat. Applicants can instead use the Hiring allowance without a training seat. "}The link only works for the invited candidate's verified email. No automatic invitation email is sent.
         </p>
         {invitationClosed ? (
           <p className="mt-4 text-sm text-amber-800">

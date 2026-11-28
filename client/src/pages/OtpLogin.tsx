@@ -26,6 +26,10 @@ export default function OtpLogin() {
     return sanitizeAccountNext(raw);
   })();
 
+  // Canonical recruitment links carry the intended invitation through request,
+  // verification and resend; other learner/manager login stays unbound.
+  const assignmentId = /^\/recruitment\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$/i.exec(nextParam)?.[1];
+  const invitationScope = assignmentId ? { assignmentId } : {};
   const [email, setEmail] = useState(() => {
     if (typeof window === "undefined") return "";
     return new URLSearchParams(window.location.search).get("email") ?? "";
@@ -123,7 +127,7 @@ export default function OtpLogin() {
     e.preventDefault();
     if (!email.trim()) return;
     setErrorMsg("");
-    requestOtp.mutate({ email: email.trim().toLowerCase() });
+    requestOtp.mutate({ email: email.trim().toLowerCase(), ...invitationScope });
   }
 
   function handleCodeInput(index: number, value: string) {
@@ -143,7 +147,7 @@ export default function OtpLogin() {
     if (digit && index === 5) {
       const fullCode = [...newCode].join("");
       if (fullCode.length === 6) {
-        verifyOtp.mutate({ email, code: fullCode });
+        verifyOtp.mutate({ email, code: fullCode, ...invitationScope });
       }
     }
   }
@@ -162,7 +166,7 @@ export default function OtpLogin() {
       setCode(newCode);
       setErrorMsg("");
       inputRefs.current[5]?.focus();
-      verifyOtp.mutate({ email, code: pasted });
+      verifyOtp.mutate({ email, code: pasted, ...invitationScope });
     }
   }
 
@@ -170,7 +174,7 @@ export default function OtpLogin() {
     e.preventDefault();
     const fullCode = code.join("");
     if (fullCode.length < 6) return;
-    verifyOtp.mutate({ email, code: fullCode });
+    verifyOtp.mutate({ email, code: fullCode, ...invitationScope });
   }
 
   const successDestination = otpSuccessDestination(nextParam, isManager);
@@ -368,7 +372,7 @@ export default function OtpLogin() {
                 onClick={() => {
                   setCode(["", "", "", "", "", ""]);
                   setErrorMsg("");
-                  requestOtp.mutate({ email });
+                  requestOtp.mutate({ email, ...invitationScope });
                 }}
                 disabled={requestOtp.isPending || resendCooldown > 0}
                 style={{

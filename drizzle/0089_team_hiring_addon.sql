@@ -52,3 +52,16 @@ CREATE TABLE `hiring_events` (
   `createdAtMs` bigint NOT NULL,
   PRIMARY KEY (`id`), KEY `hiring_events_org_idx` (`orgId`), KEY `hiring_events_invoice_idx` (`invoiceId`)
 ) ENGINE=InnoDB;
+CREATE TABLE `hiring_payments` (
+  `id` varchar(128) NOT NULL,
+  `orgId` int NOT NULL,
+  `orderId` varchar(36) NOT NULL,
+  `invoiceId` varchar(128) NOT NULL,
+  `subscriptionId` varchar(128) NOT NULL,
+  `paymentIntentId` varchar(128) NOT NULL,
+  `paymentState` varchar(32) NOT NULL,
+  `disputeIds` json NOT NULL,
+  `updatedAtMs` bigint NOT NULL,
+  PRIMARY KEY (`id`), UNIQUE KEY `hiring_payments_invoice_unique` (`invoiceId`),
+  KEY `hiring_payments_order_idx` (`orderId`)
+) ENGINE=InnoDB;

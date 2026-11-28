@@ -13,6 +13,9 @@ import { createContext, type TrpcContext } from "./context";
 import { ENV } from "./env";
 import { ECHELON_SESSION_COOKIE, issueVerifiedEmailSessionCookie, readVerifiedEmailFromRequest } from "./emailSession";
 import { ASSESSMENT_ONLY_COOKIE, assertLearnerStateAllowed, issueAssessmentOnlySession, readAssessmentOnlySession } from "./assessmentOnlySession";
+import { issueApplicantCapability } from "../recruitment/service";
+import { recordLearnerSignIn } from "../learnerSignIn";
+import { trackEvent } from "../analytics";
 
 const state = vi.hoisted(() => ({
   user: null as User | null,
@@ -135,6 +138,13 @@ function seedOtp(table: OtpTable, email = APPLICANT) {
   sqlite.prepare(`INSERT INTO \`${getTableName(table)}\` (id, email, codeHash, expiresAt, usedAt, attempts, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?)`)
     .run(1, email, createHash("sha256").update(CODE).digest("hex"), "2040-01-01 12:10:00.000", null, 0, TIMESTAMP);
 }
+const OTHER_ASSIGNMENT = "44444444-4444-4444-8444-444444444444";
+function addNewerInvitation(id = OTHER_ASSIGNMENT) {
+  const columns = Object.values(getTableColumns(recruitmentAssignments)).map(column => `\`${column.name}\``);
+  const values = columns.map(column => column === "`id`" || column === "`createdAtMs`" ? "?" : column);
+  sqlite.prepare(`INSERT INTO recruitment_assignments (${columns.join(",")}) SELECT ${values.join(",")} FROM recruitment_assignments WHERE id = ?`)
+    .run(id, NOW.getTime() + 1, ASSIGNMENT_ID);
+}
 function otpWasConsumed(table: OtpTable) {
   return sqlite.prepare(`SELECT usedAt FROM \`${getTableName(table)}\` WHERE id = 1`).get()?.usedAt !== null;
 }
@@ -199,15 +209,15 @@ afterEach(() => {
 const routes = [
   {
     name: "emailOtpRouter", table: emailOtpCodes,
-    request: (ctx: TrpcContext) => emailOtpRouter.createCaller(ctx).requestOtp({ email: APPLICANT }),
+    request: (ctx: TrpcContext, assignmentId?: string) => emailOtpRouter.createCaller(ctx).requestOtp({ email: APPLICANT, assignmentId }),
     deliveredCode: () => state.sendEmail.mock.calls[0][0].code as string,
-    verify: (ctx: TrpcContext, email = APPLICANT, code = CODE) => emailOtpRouter.createCaller(ctx).verifyOtp({ email, code }),
+    verify: (ctx: TrpcContext, email = APPLICANT, code = CODE, assignmentId?: string) => emailOtpRouter.createCaller(ctx).verifyOtp({ email, code, assignmentId }),
   },
   {
     name: "dashboardAuthRouter", table: dashboardOtps,
-    request: (ctx: TrpcContext) => dashboardAuthRouter.createCaller(ctx).sendOtp({ email: APPLICANT }),
+    request: (ctx: TrpcContext, assignmentId?: string) => dashboardAuthRouter.createCaller(ctx).sendOtp({ email: APPLICANT, assignmentId }),
     deliveredCode: () => (state.sendMail.mock.calls[0][0].subject as string).split(": ")[1],
-    verify: (ctx: TrpcContext, email = APPLICANT, code = CODE) => dashboardAuthRouter.createCaller(ctx).verifyOtp({ email, code }),
+    verify: (ctx: TrpcContext, email = APPLICANT, code = CODE, assignmentId?: string) => dashboardAuthRouter.createCaller(ctx).verifyOtp({ email, code, assignmentId }),
   },
 ];
 
@@ -365,6 +375,103 @@ for (const route of routes) {
       });
     });
 
+    it("uses the requested older invitation rather than the newest same-email row", async () => {
+      addNewerInvitation();
+      const client = browser({ [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() });
+      const ctx = await contextFor(client);
+      await route.request(ctx, ASSIGNMENT_ID);
+      await route.verify(ctx, APPLICANT, route.deliveredCode(), ASSIGNMENT_ID);
+      expect(await readAssessmentOnlySession(browser(client.jar).req)).toMatchObject({ assignmentId: ASSIGNMENT_ID });
+      expect(recordLearnerSignIn).not.toHaveBeenCalled(); expect(trackEvent).not.toHaveBeenCalled();
+    });
+
+    it.each(["elapsed timer", "suspended grant", "expired assessment", "expired organization"])(
+      "unbound login skips a newer invitation with %s and issues the valid older invitation", async invalid => {
+        addNewerInvitation();
+        if (invalid === "elapsed timer") {
+          sqlite.prepare("UPDATE recruitment_assignments SET status = 'active', startedAtMs = ? WHERE id = ?")
+            .run(NOW.getTime() - 45 * 60_000, OTHER_ASSIGNMENT);
+        } else if (invalid === "suspended grant") {
+          sqlite.exec("INSERT INTO hiring_terms SELECT * FROM hiring_terms");
+          // The memory adapter intentionally has no production constraints.
+          sqlite.prepare("UPDATE hiring_terms SET id = ?, state = 'suspended' WHERE rowid = (SELECT MAX(rowid) FROM hiring_terms)")
+            .run("55555555-5555-4555-8555-555555555555");
+          sqlite.prepare("UPDATE recruitment_assignments SET grantId = ? WHERE id = ?")
+            .run("55555555-5555-4555-8555-555555555555", OTHER_ASSIGNMENT);
+        } else if (invalid === "expired assessment") {
+          sqlite.exec("INSERT INTO recruitment_assessments SELECT * FROM recruitment_assessments");
+          sqlite.prepare("UPDATE recruitment_assessments SET id = ?, expiresAtMs = ? WHERE rowid = (SELECT MAX(rowid) FROM recruitment_assessments)")
+            .run("66666666-6666-4666-8666-666666666666", NOW.getTime());
+          sqlite.prepare("UPDATE recruitment_assignments SET assessmentId = ? WHERE id = ?")
+            .run("66666666-6666-4666-8666-666666666666", OTHER_ASSIGNMENT);
+        } else {
+          sqlite.exec("INSERT INTO organizations SELECT * FROM organizations");
+          sqlite.prepare("UPDATE organizations SET id = 2, termEnd = ? WHERE rowid = (SELECT MAX(rowid) FROM organizations)").run(TIMESTAMP);
+          sqlite.prepare("UPDATE recruitment_assignments SET orgId = 2 WHERE id = ?").run(OTHER_ASSIGNMENT);
+        }
+        const client = browser();
+        const ctx = await contextFor(client);
+        await route.request(ctx);
+        await route.verify(ctx, APPLICANT, route.deliveredCode());
+        expect(await readAssessmentOnlySession(browser(client.jar).req)).toMatchObject({ assignmentId: ASSIGNMENT_ID });
+        expect(client.res.cookie).toHaveBeenCalledTimes(1);
+        expect(recordLearnerSignIn).not.toHaveBeenCalled(); expect(trackEvent).not.toHaveBeenCalled();
+      },
+    );
+
+    it.each([undefined, OTHER_ASSIGNMENT])("cannot verify an invitation-bound code as scope %s", async wrongScope => {
+      addNewerInvitation();
+      const client = browser({
+        [ASSESSMENT_ONLY_COOKIE]: await applicantCookie(), [ECHELON_SESSION_COOKIE]: await verifiedCookie(APPLICANT),
+      });
+      const ctx = await contextFor(client);
+      await route.request(ctx, ASSIGNMENT_ID);
+      const code = route.deliveredCode();
+      if (route.name === "emailOtpRouter") {
+        await expect(route.verify(ctx, APPLICANT, code, wrongScope)).resolves.toMatchObject({ valid: false, reason: "wrong_code" });
+      } else {
+        await expect(route.verify(ctx, APPLICANT, code, wrongScope)).rejects.toThrow("Incorrect code.");
+      }
+      expect(otpWasConsumed(route.table)).toBe(false); expect(client.jar).toEqual({});
+      expect(client.res.cookie).not.toHaveBeenCalled(); expect(recordLearnerSignIn).not.toHaveBeenCalled();
+      await route.verify(ctx, APPLICANT, code, ASSIGNMENT_ID);
+      expect(await readAssessmentOnlySession(browser(client.jar).req)).toMatchObject({ assignmentId: ASSIGNMENT_ID });
+    });
+
+    it("fresh bound OTP authorizes Y but revoked X capability alone cannot", async () => {
+      addNewerInvitation();
+      sqlite.prepare("UPDATE recruitment_assignments SET status = 'revoked' WHERE id = ?").run(ASSIGNMENT_ID);
+      const client = browser({ [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() });
+      const ctx = await contextFor(client);
+      await expect(issueApplicantCapability(ctx, OTHER_ASSIGNMENT)).rejects.toMatchObject({ code: "FORBIDDEN" });
+      await route.request(ctx, OTHER_ASSIGNMENT);
+      await route.verify(ctx, APPLICANT, route.deliveredCode(), OTHER_ASSIGNMENT);
+      expect(await readAssessmentOnlySession(browser(client.jar).req)).toMatchObject({ assignmentId: OTHER_ASSIGNMENT });
+      expect(ctx.studentEmail).toBeNull();
+      expect(recordLearnerSignIn).not.toHaveBeenCalled(); expect(trackEvent).not.toHaveBeenCalled();
+    });
+
+    it("never falls back from a requested invalid invitation to another valid one", async () => {
+      addNewerInvitation();
+      const client = browser(), ctx = await contextFor(client);
+      await route.request(ctx, OTHER_ASSIGNMENT);
+      sqlite.prepare("UPDATE recruitment_assignments SET status = 'revoked' WHERE id = ?").run(OTHER_ASSIGNMENT);
+      await expect(route.verify(ctx, APPLICANT, route.deliveredCode(), OTHER_ASSIGNMENT)).rejects.toThrow("This invitation is no longer available.");
+      expect(otpWasConsumed(route.table)).toBe(true); expect(client.jar).toEqual({});
+      expect(client.res.cookie).not.toHaveBeenCalled();
+    });
+
+    it.each([false, true])("does not retry issuer commit failure (bound invitation %s)", async bound => {
+      addNewerInvitation();
+      const client = browser(), ctx = await contextFor(client);
+      const assignmentId = bound ? ASSIGNMENT_ID : undefined;
+      await route.request(ctx, assignmentId);
+      state.failCapabilityCommit = true;
+      await expect(route.verify(ctx, APPLICANT, route.deliveredCode(), assignmentId)).rejects.toThrow("This invitation is no longer available.");
+      expect(client.res.cookie).toHaveBeenCalledTimes(1); expect(client.jar).toEqual({});
+      expect(recordLearnerSignIn).not.toHaveBeenCalled(); expect(trackEvent).not.toHaveBeenCalled();
+    });
+
     it.each(["invited", "active"])("authenticates a valid %s applicant only for their assessment", async status => {
       sqlite.prepare("UPDATE recruitment_assignments SET status = ? WHERE id = ?").run(status, ASSIGNMENT_ID);
       seedOtp(route.table);
@@ -377,6 +484,8 @@ for (const route of routes) {
       expect(result.accessToken).toBeFalsy();
       expect(state.issueToken).not.toHaveBeenCalled();
       expect(otpWasConsumed(route.table)).toBe(true);
+      expect(recordLearnerSignIn).not.toHaveBeenCalled();
+      expect(trackEvent).not.toHaveBeenCalled();
       expect(client.res.clearCookie).toHaveBeenCalledWith(ECHELON_SESSION_COOKIE, { path: "/" });
       expect(client.res.cookie).toHaveBeenCalledTimes(1);
       expect(client.res.cookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, expect.any(String), expect.objectContaining({ httpOnly: true, path: "/" }));
@@ -409,6 +518,7 @@ for (const route of routes) {
       expect(client.res.clearCookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, { path: "/" });
       expect(state.issueToken).toHaveBeenCalledOnce();
       expect(state.issueToken).toHaveBeenCalledWith({ email: PURCHASER, examTypes: ["oit"] });
+      expect(recordLearnerSignIn).toHaveBeenCalledWith(client.req, { email: PURCHASER }, route.name === "emailOtpRouter" ? "email_otp" : "dashboard_otp");
       expect(client.jar[ASSESSMENT_ONLY_COOKIE]).toBeUndefined();
       expect(client.res.cookie).toHaveBeenCalledOnce();
       expect(client.res.cookie).toHaveBeenCalledWith(ECHELON_SESSION_COOKIE, expect.any(String), expect.objectContaining({ httpOnly: true, path: "/" }));
@@ -429,6 +539,16 @@ for (const route of routes) {
       expect(result.accessToken).toBe("synthetic-learner-token");
       expect(await readVerifiedEmailFromRequest(browser(client.jar).req)).toBe(APPLICANT);
       expect(client.jar[ASSESSMENT_ONLY_COOKIE]).toBeUndefined();
+    });
+
+    it("clears a queued ordinary identity cookie if access-token issuance fails", async () => {
+      seedOtp(route.table, PURCHASER);
+      state.resolveEntitlements.mockImplementation(async (email: string) => learnerAccess(email));
+      state.issueToken.mockRejectedValueOnce(new Error("Synthetic token-signing failure"));
+      const client = browser();
+      await expect(route.verify(await contextFor(client), PURCHASER)).rejects.toThrow("Synthetic token-signing failure");
+      expect(client.res.cookie).toHaveBeenCalledWith(ECHELON_SESSION_COOKIE, expect.any(String), expect.any(Object));
+      expect(client.jar).toEqual({}); expect(recordLearnerSignIn).not.toHaveBeenCalled();
     });
 
     it("does not block independent manager entitlement because their old invitation expired", async () => {

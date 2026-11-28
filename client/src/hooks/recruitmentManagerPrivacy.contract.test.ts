@@ -140,6 +140,7 @@ vi.mock("@/lib/trpc", () => {
       },
       hiring: {
         status: {
+          _def: () => ({ path: ["hiring", "status"] }),
           useQuery: () => ({ data: { active: true, owner: false, state: "active", basis: "pilot", remaining: 100, quota: 100, endsAtMs: Date.now() + 86400000 }, isLoading: false, isError: false, refetch: vi.fn() }),
         },
         createCheckout: {
