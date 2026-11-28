@@ -3,7 +3,7 @@ import type { User } from "../../drizzle/schema";
 import { sdk } from "./sdk";
 import { readVerifiedEmailFromRequest } from "./emailSession";
 import { readAssessmentOnlySession, type AssessmentOnlyCapability } from "./assessmentOnlySession";
-import { resolveEntitlementsByEmail } from "./access";
+import { normalizeEmail, resolveEntitlementsByEmail } from "./access";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
@@ -34,8 +34,15 @@ export async function createContext(
   // Read the verified Echelon email session cookie.
   // Fails closed: returns null when JWT_SECRET is missing or cookie is invalid/expired.
   studentEmail = await readVerifiedEmailFromRequest(opts.req);
-  const assessmentOnlySession = await readAssessmentOnlySession(opts.req);
+  let assessmentOnlySession = await readAssessmentOnlySession(opts.req);
   const identityEmail = user?.email ?? studentEmail;
+  // A capability belongs to one applicant identity. Once a different verified
+  // learner identity is established, the old cookie must not affect context or
+  // learner guards for that learner.
+  if (assessmentOnlySession && identityEmail && normalizeEmail(identityEmail) !== assessmentOnlySession.candidateEmail) {
+    opts.res.clearCookie("echelon_assessment_only", { path: "/" });
+    assessmentOnlySession = null;
+  }
   const entitlementEmail = assessmentOnlySession?.candidateEmail ?? (assessmentOnlySession ? identityEmail : null);
   const assessmentOnlyHasLearnerAccess = entitlementEmail
     ? (await resolveEntitlementsByEmail(entitlementEmail)).hasAnyAccess

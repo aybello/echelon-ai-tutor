@@ -1963,7 +1963,7 @@ export const hiringOrders = mysqlTable("hiring_orders", {
   stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }).unique(),
   stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 128 }), amountCents: int("amountCents").notNull(),
-  currency: varchar("currency", { length: 3 }).notNull(), status: varchar("status", { length: 32 }).notNull().default("pending"),
+  currency: varchar("currency", { length: 3 }).notNull(), status: varchar("status", { length: 32 }).notNull().default("pending"), paymentState: varchar("paymentState", { length: 32 }).notNull().default("active"),
   ownerEmail: varchar("ownerEmail", { length: 320 }).notNull(), createdAtMs: bigint("createdAtMs", { mode: "number" }).notNull(),
 });
 export const hiringTerms = mysqlTable("hiring_terms", {

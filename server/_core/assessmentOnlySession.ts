@@ -35,6 +35,11 @@ export async function issueAssessmentOnlySession(
   res.cookie(ASSESSMENT_ONLY_COOKIE, token, { httpOnly: true, secure: ENV.isProduction, sameSite: "lax", maxAge: Math.max(0, exp * 1000 - Date.now()), path: "/" });
   return claims;
 }
+
+export function clearAssessmentOnlySessionCookie(res: Response): void {
+  res.clearCookie(ASSESSMENT_ONLY_COOKIE, { path: "/" });
+}
+
 export function assessmentOnlyCapabilityMatches(capability: AssessmentOnlyCapability | null | undefined, input: { assignmentId: string; candidateEmail: string; courseKey: string }): boolean {
   return !!capability && capability.assignmentId === input.assignmentId
     && capability.candidateEmail === normalizeEmail(input.candidateEmail)

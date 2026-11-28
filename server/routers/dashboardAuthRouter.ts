@@ -36,6 +36,7 @@ import {
 } from "../_core/emailSession";
 import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
+import { clearAssessmentOnlySessionCookie } from "../_core/assessmentOnlySession";
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
 import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
@@ -182,6 +183,12 @@ export const dashboardAuthRouter = router({
         ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
           .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now()))).limit(1)
         : [];
+      const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
+      if (!applicant && !entitlements.hasAnyAccess && !isManager && !(await hasTrainingRecord(email))) {
+        clearVerifiedEmailSessionCookie(ctx.res);
+        clearAssessmentOnlySessionCookie(ctx.res);
+        throw new Error("This invitation is no longer available.");
+      }
       if (applicant) {
         const [assessment] = await db.select({ courseKey: recruitmentAssessments.courseKey, timeLimitMinutes: recruitmentAssessments.timeLimitMinutes })
           .from(recruitmentAssessments).where(eq(recruitmentAssessments.id, applicant.assessmentId)).limit(1);
@@ -190,6 +197,7 @@ export const dashboardAuthRouter = router({
           await issueAssessmentOnlySession(ctx.res, { assignmentId: applicant.id, candidateEmail: applicant.candidateEmail, courseKey: assessment.courseKey, ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) });
         }
       } else {
+        clearAssessmentOnlySessionCookie(ctx.res);
         await issueVerifiedEmailSessionCookie(ctx.res, email);
       }
 

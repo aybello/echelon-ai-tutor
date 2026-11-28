@@ -650,7 +650,7 @@
       "version": 89,
       "tag": "0089_team_hiring_addon",
       "file": "drizzle/0089_team_hiring_addon.sql",
-      "sha256": "728dba6f8f7822c64a6d35fbab53fbc6bbb263222e23d21dd2be785bcbcafd98",
+      "sha256": "bda732d012273835ad1c2a7345ebc0b5c90ff879049ec7e9d4a8da133515454f",
       "proposedOnly": true,
       "standaloneApply": {
         "tables": [

@@ -13,6 +13,7 @@ CREATE TABLE `hiring_orders` (
   `amountCents` int NOT NULL,
   `currency` varchar(3) NOT NULL,
   `status` varchar(32) NOT NULL DEFAULT 'pending',
+  `paymentState` varchar(32) NOT NULL DEFAULT 'active',
   `ownerEmail` varchar(320) NOT NULL,
   `createdAtMs` bigint NOT NULL,
   PRIMARY KEY (`id`), UNIQUE KEY `hiring_orders_checkout_unique` (`stripeCheckoutSessionId`),

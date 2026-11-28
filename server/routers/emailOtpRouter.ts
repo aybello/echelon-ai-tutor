@@ -30,7 +30,7 @@ import { resolveEntitlementsByEmail } from "../_core/access";
 import { normalizeEmail } from "../_core/access";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { clearVerifiedEmailSessionCookie, issueVerifiedEmailSessionCookie } from "../_core/emailSession";
-import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
+import { clearAssessmentOnlySessionCookie, issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
@@ -149,6 +149,11 @@ export const emailOtpRouter = router({
           : "";
 
       const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
+      if (!applicant && !entitlements.hasAnyAccess && !isManager) {
+        clearVerifiedEmailSessionCookie(ctx.res);
+        clearAssessmentOnlySessionCookie(ctx.res);
+        throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available." });
+      }
       if (applicant) {
         const [assessment] = await db.select({ courseKey: recruitmentAssessments.courseKey, timeLimitMinutes: recruitmentAssessments.timeLimitMinutes })
           .from(recruitmentAssessments).where(eq(recruitmentAssessments.id, applicant.assessmentId)).limit(1);
@@ -157,6 +162,7 @@ export const emailOtpRouter = router({
           await issueAssessmentOnlySession(ctx.res, { assignmentId: applicant.id, candidateEmail: applicant.candidateEmail, courseKey: assessment.courseKey, ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) });
         }
       } else {
+        clearAssessmentOnlySessionCookie(ctx.res);
         await issueVerifiedEmailSessionCookie(ctx.res, email);
       }
 

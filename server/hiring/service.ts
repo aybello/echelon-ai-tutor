@@ -100,14 +100,21 @@ export async function activateHiringPilot(ctx: TrpcContext, input: { orgId: numb
 
 export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   const email = ownerEmail(ctx); const org = await resolveManagedOrganization(ctx, { orgId }); if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." }); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const now = Date.now();
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
-  return term ? { active: true, owner: normalizeEmail(org.managerEmail) === email, state: term.state, termId: term.id, basis: term.basis, used: term.used, quota: term.quota, remaining: Math.max(0, term.quota - term.used), startsAtMs: term.startsAtMs, endsAtMs: term.endsAtMs, sourceSubscriptionId: term.sourceSubscriptionId } : { active: false, owner: normalizeEmail(org.managerEmail) === email, state: null, termId: null, basis: null, used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null, sourceSubscriptionId: null };
+  const [activeTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [order] = billingTerm?.sourceSubscriptionId
+    ? await db.select({ stripeSubscriptionId: hiringOrders.stripeSubscriptionId }).from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.stripeSubscriptionId, billingTerm.sourceSubscriptionId))).limit(1)
+    : [];
+  const owner = normalizeEmail(org.managerEmail) === email;
+  const term = activeTerm ?? billingTerm;
+  const active = !!activeTerm;
+  return term ? { active, owner, state: term.state, termId: term.id, basis: term.basis, used: term.used, quota: term.quota, remaining: Math.max(0, term.quota - term.used), startsAtMs: term.startsAtMs, endsAtMs: term.endsAtMs, sourceSubscriptionId: term.sourceSubscriptionId, canCancelRenewal: owner && !!order?.stripeSubscriptionId && billingTerm?.state !== "cancel_at_period_end" } : { active: false, owner, state: null, termId: null, basis: null, used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null, sourceSubscriptionId: null, canCancelRenewal: false };
 }
 
 export async function cancelHiringAtPeriodEnd(ctx: TrpcContext, orgId: number) {
   const { org } = await hiringOwner(ctx, orgId); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
   const now = Date.now();
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), lte(hiringTerms.startsAtMs, now), gt(hiringTerms.endsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(hiringTerms.endsAtMs).limit(1);
   if (!term?.sourceSubscriptionId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No separate active Hiring subscription is available to cancel." });
   const [order] = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.stripeSubscriptionId, term.sourceSubscriptionId))).limit(1);
   if (!order?.stripeSubscriptionId) throw new TRPCError({ code: "CONFLICT", message: "Hiring subscription binding could not be verified." });
