@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, eq, gt, inArray, lt, lte, sql } from "drizzle-orm";
+import { and, eq, gt, inArray, lt, lte } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { hiringEvents, hiringOrders, hiringTerms, organizations } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/accessService";
@@ -38,10 +38,14 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
   }
   const orderId = randomUUID();
   const staleBefore = Date.now() - 30 * 60 * 1000;
-  await db.update(hiringOrders).set({ status: "checkout_expired" }).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.status, "pending"), lt(hiringOrders.createdAtMs, staleBefore)));
-  const existing = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.status, "pending"))).limit(1);
-  if (existing[0]) throw new TRPCError({ code: "CONFLICT", message: "A Hiring checkout is already in progress." });
-  await db.insert(hiringOrders).values({ id: orderId, orgId: org.id, amountCents: HIRING_AMOUNT, currency: "cad", ownerEmail: email, status: "pending", createdAtMs: Date.now(), stripeCustomerId });
+  await db.transaction(async tx => {
+    await tx.select({ id: organizations.id }).from(organizations).where(eq(organizations.id, org.id)).limit(1).for("update");
+    await tx.update(hiringOrders).set({ status: "checkout_expired" }).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.status, "pending"), lt(hiringOrders.createdAtMs, staleBefore)));
+    const existing = await tx.select({ id: hiringOrders.id }).from(hiringOrders)
+      .where(and(eq(hiringOrders.orgId, org.id), inArray(hiringOrders.status, ["pending", "active"]))).limit(1);
+    if (existing[0]) throw new TRPCError({ code: "CONFLICT", message: "A Hiring checkout or subscription already exists." });
+    await tx.insert(hiringOrders).values({ id: orderId, orgId: org.id, amountCents: HIRING_AMOUNT, currency: "cad", ownerEmail: email, status: "pending", createdAtMs: Date.now(), stripeCustomerId });
+  });
   try {
     const base = ENV.appBaseUrl.replace(/\/$/, "");
     const metadata = { type: HIRING_TYPE, policy: HIRING_POLICY, orderId, orgId: String(org.id), ownerEmail: email };
@@ -84,7 +88,7 @@ export async function activateHiringPilot(ctx: TrpcContext, input: { orgId: numb
 
 export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   const email = ownerEmail(ctx); const org = await resolveManagedOrganization(ctx, { orgId }); if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." }); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const now = Date.now();
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now), sql`${hiringTerms.used} < ${hiringTerms.quota}`)).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
   return term ? { active: true, owner: normalizeEmail(org.managerEmail) === email, state: term.state, termId: term.id, basis: term.basis, used: term.used, quota: term.quota, remaining: Math.max(0, term.quota - term.used), startsAtMs: term.startsAtMs, endsAtMs: term.endsAtMs, sourceSubscriptionId: term.sourceSubscriptionId } : { active: false, owner: normalizeEmail(org.managerEmail) === email, state: null, termId: null, basis: null, used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null, sourceSubscriptionId: null };
 }
 

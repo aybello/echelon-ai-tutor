@@ -48,6 +48,7 @@ export type HiringBinding = { id: string; orgId: number; customerId: string | nu
 export function validateHiringSubscription(sub: any, order: HiringBinding): { priceId: string; productId: string } {
   requirePayment(sub && !sub.deleted && sub.metadata?.type === HIRING_TYPE && sub.metadata?.policy === HIRING_POLICY
     && sub.metadata?.orderId === order.id && sub.metadata?.orgId === String(order.orgId), "Subscription policy/order mismatch");
+  requirePayment(sub.status === "active", "Subscription is not active");
   requirePayment(!order.subscriptionId || sub.id === order.subscriptionId, "Subscription binding mismatch");
   requirePayment(order.customerId && stripeId(sub.customer) === order.customerId, "Customer binding mismatch");
   requirePayment(!sub.trial_start && !sub.trial_end && !sub.discounts?.length && !sub.discount

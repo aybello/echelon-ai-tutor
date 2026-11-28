@@ -230,6 +230,7 @@ async function questionWorkingSet({ input, ctx }: {
   input: z.infer<typeof questionWorkingSetInput>;
   ctx: import("../_core/context").TrpcContext;
 }, privilegedInteractiveAccess = false) {
+  assertLearnerStateAllowed(ctx);
   const db = await getDb();
   if (!db) {
     throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -334,6 +335,7 @@ export const quizRouter = router({
       activityTimed: z.boolean().optional(),
     }))
     .query(async ({ input, ctx }) => {
+      assertLearnerStateAllowed(ctx);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const { course, keys } = courseActivityScope(input.bankKey, { requireActive: true });
@@ -402,7 +404,8 @@ export const quizRouter = router({
    */
   getBankMeta: publicProcedure
     .input(z.object({ bankKey: z.string().min(1).max(64) }))
-    .query(async ({ input }) => {
+    .query(async ({ input, ctx }) => {
+      assertLearnerStateAllowed(ctx);
       const db = await getDb();
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -488,7 +491,8 @@ export const quizRouter = router({
    */
   getModuleOverviews: publicProcedure
     .input(z.object({ bankKey: z.string().min(1).max(64) }))
-    .query(async ({ input }) => {
+    .query(async ({ input, ctx }) => {
+      assertLearnerStateAllowed(ctx);
       const db = await getDb();
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });

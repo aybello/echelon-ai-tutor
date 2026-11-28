@@ -40,7 +40,9 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
         if (!current) return;
         await tx.update(hiringTerms).set({
           paymentState: state,
-          state: state === "active" ? (current.state === "cancel_at_period_end" ? "cancel_at_period_end" : "active") : "suspended",
+          state: state === "active" && current.paymentState !== "needs_review"
+            ? (current.state === "cancel_at_period_end" ? "cancel_at_period_end" : "active")
+            : (state === "active" ? current.state : "suspended"),
         }).where(eq(hiringTerms.id, current.id));
       });
       return { handled: true };
@@ -65,7 +67,7 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
   // one unique hiring_terms row; no event metadata or active-sub status alone
   // can create quota.
   if (event.type === "invoice.paid" || event.type === "invoice.payment_succeeded") {
-    const invoice = await stripe.invoices.retrieve(object.id, { expand: ["payments.data.payment.payment_intent.latest_charge", "payments.data.payment.charge"] }) as any;
+    const invoice = await stripe.invoices.retrieve(object.id, { expand: ["payments.data.payment.payment_intent", "payments.data.payment.charge"] }) as any;
     const subscriptionId = invoiceSubscriptionId(invoice);
     if (!subscriptionId) return { handled: true, reviewRequired: true };
     const subscription = await stripe.subscriptions.retrieve(subscriptionId, { expand: ["items.data.price.product", "latest_invoice"] }) as any;
@@ -113,7 +115,7 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
       await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.orgId, term.orgId)).limit(1).for("update");
       const terminated = event.type === "customer.subscription.deleted" || ["canceled", "unpaid", "incomplete_expired"].includes(object.status);
       if (terminated) {
-        await tx.update(hiringTerms).set({ state: "suspended" }).where(eq(hiringTerms.id, term.id));
+        await tx.update(hiringTerms).set({ state: "suspended", paymentState: "needs_review" }).where(eq(hiringTerms.id, term.id));
       } else {
         await tx.update(hiringTerms).set({ state: object.cancel_at_period_end ? "cancel_at_period_end" : "active" }).where(eq(hiringTerms.id, term.id));
       }
