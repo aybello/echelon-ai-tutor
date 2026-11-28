@@ -23,9 +23,22 @@ export const recruitmentCreateInput = recruitmentOrgInput.extend({
   questionCount: z.number().int().min(5).max(100),
   timeLimitMinutes: z.number().int().min(5).max(180).nullable(),
   expiresInDays: z.number().int().min(1).max(30),
+  passingScore: z.number().int().min(0).max(100).default(70),
 }).strict();
 export const recruitmentAssessmentInput = recruitmentOrgInput.extend({ assessmentId: z.string().uuid() }).strict();
-export const recruitmentInviteInput = recruitmentAssessmentInput.extend({ memberId: z.number().int().positive() }).strict();
+const applicantInviteInput = z.object({
+  candidateEmail: z.string().trim().email().transform(value => value.toLowerCase()),
+  candidateName: z.string().trim().min(1).max(200),
+}).strict();
+export const recruitmentInviteInput = recruitmentAssessmentInput.extend({
+  memberId: z.number().int().positive().optional(),
+  candidateEmail: applicantInviteInput.shape.candidateEmail.optional(),
+  candidateName: applicantInviteInput.shape.candidateName.optional(),
+}).strict().superRefine((value, ctx) => {
+  const legacy = value.memberId !== undefined;
+  const applicant = value.candidateEmail !== undefined && value.candidateName !== undefined;
+  if (legacy === applicant) ctx.addIssue({ code: "custom", message: "Use either memberId or candidateEmail and candidateName." });
+});
 export const recruitmentAssignmentInput = z.object({ assignmentId: z.string().uuid() }).strict();
 export const recruitmentStartInput = recruitmentAssignmentInput.extend({ acceptedNotice: z.literal(true), consentVersion: z.literal(RECRUITMENT_CONSENT_VERSION) }).strict();
 export const recruitmentAnswerInput = recruitmentAssignmentInput.extend({ questionId: z.string().min(1).max(100), selectedIndex: z.number().int().min(0).max(7).nullable(), revision: z.number().int().nonnegative() }).strict();
@@ -37,12 +50,12 @@ export type RecruitmentCandidateQuestion = Omit<RecruitmentQuestion, "correctInd
 export type RecruitmentAnswers = Record<string, number>;
 export type RecruitmentStatus = "invited" | "active" | "submitted" | "timed_out" | "expired" | "revoked";
 export type RecruitmentTopicScore = { module: string; correct: number; total: number; answered: number; percent: number };
-export type RecruitmentScore = { correct: number; total: number; answered: number; unanswered: number; percent: number; topics: RecruitmentTopicScore[] };
+export type RecruitmentScore = { correct: number; total: number; answered: number; unanswered: number; percent: number; topics: RecruitmentTopicScore[]; passingScore?: number | null; passed?: boolean | null };
 
 export function candidateQuestions(questions: RecruitmentQuestion[]): RecruitmentCandidateQuestion[] {
   return questions.map(q => ({ id: q.id, module: q.module, prompt: q.prompt, options: [...q.options] }));
 }
-export function scoreRecruitment(questions: RecruitmentQuestion[], answers: RecruitmentAnswers): RecruitmentScore {
+export function scoreRecruitment(questions: RecruitmentQuestion[], answers: RecruitmentAnswers, passingScore: number | null = null): RecruitmentScore {
   const groups = new Map<string, { correct: number; total: number; answered: number }>();
   let correct = 0, answered = 0;
   for (const q of questions) {
@@ -54,7 +67,7 @@ export function scoreRecruitment(questions: RecruitmentQuestion[], answers: Recr
     g.total++; g.correct += Number(isCorrect); g.answered += Number(hasAnswer); groups.set(q.module, g);
   }
   const percent = (n: number, d: number) => d ? Math.round(n / d * 100) : 0;
-  return { correct, total: questions.length, answered, unanswered: questions.length - answered, percent: percent(correct, questions.length), topics: Array.from(groups, ([module, g]) => ({ module, ...g, percent: percent(g.correct, g.total) })) };
+  return { correct, total: questions.length, answered, unanswered: questions.length - answered, percent: percent(correct, questions.length), topics: Array.from(groups, ([module, g]) => ({ module, ...g, percent: percent(g.correct, g.total) })), passingScore, passed: passingScore === null ? null : correct * 100 >= passingScore * questions.length };
 }
 export function recruitmentDeadline(startedAtMs: number | null, minutes: number | null, expiresAtMs: number): number {
   return startedAtMs !== null && minutes !== null ? Math.min(expiresAtMs, startedAtMs + minutes * 60_000) : expiresAtMs;
@@ -100,5 +113,5 @@ export function selectRecruitmentQuestions(pool: RecruitmentQuestion[], modules:
 
 export type RecruitmentCatalog = { orgName: string; courses: { courseKey: string; label: string; difficultyCounts?: RecruitmentDifficultyCounts; unlabelledCount?: number; modules: { name: string; count: number; difficultyCounts?: RecruitmentDifficultyCounts }[] }[]; candidates: { memberId: number; email: string; name: string | null; courseKeys: string[] }[] };
 export type RecruitmentDefinitionSummary = { id: string; title: string; courseKey: string; courseLabel: string; difficultyMode?: RecruitmentDifficultyMode | null; modules: string[]; questionCount: number; timeLimitMinutes: number | null; createdAtMs: number; expiresAtMs: number; candidates: number; completed: number };
-export type RecruitmentResult = { assignmentId: string; memberId: number; candidateEmail: string; candidateName: string | null; status: RecruitmentStatus; startedAtMs: number | null; submittedAtMs: number | null; expiresAtMs: number; score: RecruitmentScore | null; answers: RecruitmentAnswers; questions: RecruitmentQuestion[]; revision: number };
+export type RecruitmentResult = { assignmentId: string; memberId: number | null; candidateEmail: string; candidateName: string | null; status: RecruitmentStatus; startedAtMs: number | null; submittedAtMs: number | null; expiresAtMs: number; score: RecruitmentScore | null; answers: RecruitmentAnswers; questions: RecruitmentQuestion[]; revision: number };
 export type RecruitmentCandidateView = { assignmentId: string; title: string; orgName: string; courseLabel: string; difficultyMode?: RecruitmentDifficultyMode | null; modules: string[]; questionCount: number; timeLimitMinutes: number | null; expiresAtMs: number; deadlineMs: number; serverNowMs: number; startedAtMs: number | null; submittedAtMs: number | null; status: RecruitmentStatus; questions: RecruitmentCandidateQuestion[]; answers: RecruitmentAnswers; revision: number; notice: string };

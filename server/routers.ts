@@ -29,6 +29,7 @@ import { adminRouter } from "./routers/admin";
 import { featureRequestsRouter } from "./routers/featureRequestsRouter";
 import { productPulseRouter } from "./routers/productPulseRouter";
 import { recruitmentRouter } from "./routers/recruitmentRouter";
+import { hiringRouter } from "./routers/hiringRouter";
 import { resolveEntitlementsByEmail } from "./_core/access";
 import {
   getAccessibleCoursesForIdentity,
@@ -69,6 +70,7 @@ import { resolveQuizGateOffer } from "../shared/checkoutOffer";
 import { sendPreviewStudyPlanEmail } from "./previewStudyPlanEmail";
 import { ELECTRICIAN_309A_PROGRAM_KEY } from "../shared/certificationPrograms";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
+import { assertLearnerStateAllowed } from "./_core/assessmentOnlySession";
 
 /**
  * Study plan capture contract, shared by both offer placements: the early,
@@ -100,6 +102,7 @@ export const appRouter = router({
   featureRequests: featureRequestsRouter,
   productPulse: productPulseRouter,
   recruitment: recruitmentRouter,
+  hiring: hiringRouter,
   municipal: municipalProcurementRouter,
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -825,6 +828,7 @@ export const appRouter = router({
     get: publicProcedure
       .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64) }))
       .query(async ({ input, ctx }) => {
+        assertLearnerStateAllowed(ctx);
         // Identity check: caller must be the owner of this email record.
         // Accept either an OAuth user or a student OTP session cookie.
         const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
@@ -845,6 +849,7 @@ export const appRouter = router({
     set: publicProcedure
       .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64), examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }))
       .mutation(async ({ input, ctx }) => {
+        assertLearnerStateAllowed(ctx);
         // Identity check: caller must own this email.
         const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
         if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
@@ -862,6 +867,7 @@ export const appRouter = router({
     remove: publicProcedure
       .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64) }))
       .mutation(async ({ input, ctx }) => {
+        assertLearnerStateAllowed(ctx);
         // Identity check: caller must own this email.
         const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
         if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
@@ -906,7 +912,7 @@ export const appRouter = router({
           rating: z.number().int().min(1).max(5),
           comment: z.string().max(1000).optional(),
           email: z.string().email().optional(), // for guest users
-          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score", "dashboard", "quick10"]),
+          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score", "dashboard", "quick10", "recruitment_completion"]),
           province: z.string().max(32).optional(),
         })
       )
@@ -976,6 +982,7 @@ export const appRouter = router({
         }),
       )
       .mutation(async ({ input, ctx }) => {
+        assertLearnerStateAllowed(ctx);
         const course = resolveCourseKey(input.examType);
         if (!course?.isActive) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
@@ -1262,6 +1269,7 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input, ctx }) => {
+        assertLearnerStateAllowed(ctx);
         const course = resolveCourseKey(input.examType);
         if (!course?.isActive) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });

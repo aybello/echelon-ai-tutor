@@ -40,16 +40,17 @@ describe("recruitment strict request boundaries", () => {
     ["saveAnswer", recruitmentAnswerInput, answer],
   ])("%s refuses client-supplied identity, entitlement, or answer-key fields", (_label, schema, valid) => {
     expect(schema.safeParse(valid).success).toBe(true);
-    for (const field of [
+    const fields: Array<Record<string, unknown>> = [
       { email: "candidate@example.test" },
-      { candidateEmail: "candidate@example.test" },
       { userId: 31 },
       { token: "synthetic-not-a-token" },
       { isManager: true },
       { correctIndex: 0 },
       { score: 100 },
       { unlockedExamTypes: ["class2-water"] },
-    ]) {
+    ];
+    if (_label !== "invite") fields.push({ candidateEmail: "candidate@example.test" });
+    for (const field of fields) {
       expect(schema.safeParse({ ...valid, ...field }).success).toBe(false);
     }
   });

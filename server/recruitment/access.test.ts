@@ -179,4 +179,17 @@ describe("recruitment candidate access recheck", () => {
     const { db } = queuedReadDb([[org()], [member()], [sub()]]);
     await expect(assertRecruitmentCandidate(ctx(), db, assignment(), KEY)).rejects.toMatchObject({ code: "FORBIDDEN" });
   });
+  it("requires the purpose-bound capability for applicant assignments even when the email matches", async () => {
+    const applicant = { ...assignment(), accessKind: "applicant", memberId: null, grantId: "grant-42" } as RecruitmentAssignmentRow;
+    const { db } = queuedReadDb([[org()]]);
+    await expect(assertRecruitmentCandidate(ctx(), db, applicant, KEY)).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
+  it("accepts an applicant only with the matching capability and active Hiring grant", async () => {
+    const applicant = { ...assignment(), accessKind: "applicant", memberId: null, grantId: "grant-42" } as RecruitmentAssignmentRow;
+    const context = { ...ctx(), assessmentOnlySession: {
+      typ: "assessment-only", assignmentId: applicant.id, candidateEmail: EMAIL, courseKey: KEY, exp: Math.floor((NOW + 60_000) / 1000),
+    } } as TrpcContext;
+    const { db } = queuedReadDb([[org()], [{ id: "grant-42", orgId: 7, state: "active", paymentState: "active", startsAtMs: NOW - 1, endsAtMs: NOW + 60_000 }]]);
+    await expect(assertRecruitmentCandidate(context, db, applicant, KEY)).resolves.toEqual(org());
+  });
 });

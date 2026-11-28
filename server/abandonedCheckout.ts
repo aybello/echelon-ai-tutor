@@ -46,6 +46,7 @@ export function extractAbandonedCheckout(
   const metadata = (s.metadata ?? {}) as Record<string, unknown>;
 
   // Team purchases are recovered by their own job and must not be duplicated.
+  if (metadata.type === "team_hiring_addon" || metadata.hiring_type === "team_hiring_addon") return null;
   if (metadata.type === "team_flex_extension") return null;
   if (metadata.teamFlexOrderId) return null;
   if (metadata.type === "team_flex") return null;

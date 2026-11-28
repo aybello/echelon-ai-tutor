@@ -737,8 +737,13 @@ function RecruitmentDetail({
     privateQueryOptions
   );
   const invite = trpc.recruitment.invite.useMutation();
+  const hiring = trpc.hiring.status.useQuery({ orgId }, { retry: false, staleTime: 0 });
+  const hiringCheckout = trpc.hiring.createCheckout.useMutation();
   const revoke = trpc.recruitment.revoke.useMutation();
   const [memberId, setMemberId] = useState("");
+  const [applicantEmail, setApplicantEmail] = useState("");
+  const [applicantName, setApplicantName] = useState("");
+  const [inviteMode, setInviteMode] = useState<"seat" | "applicant">("seat");
   const [error, setError] = useState("");
   const [link, setLink] = useState(() =>
     invitationOutcome
@@ -918,12 +923,12 @@ function RecruitmentDetail({
       !authorized ||
       !canUseCatalog() ||
       !catalog ||
-      !memberId ||
+      (inviteMode === "seat" ? !memberId : !applicantEmail || !applicantName.trim()) ||
       busy ||
       !query.data
     )
       return;
-    const eligible = catalog?.candidates.some(
+    const eligible = inviteMode === "applicant" || catalog?.candidates.some(
       item =>
         item.memberId === Number(memberId) &&
         item.courseKeys.includes(query.data.assessment.courseKey)
@@ -939,15 +944,14 @@ function RecruitmentDetail({
     setCopyMessage("");
     onInvitationOutcome(null);
     try {
-      const data = await invite.mutateAsync({
-        orgId,
-        assessmentId,
-        memberId: Number(memberId),
-      });
+      const data = await invite.mutateAsync(inviteMode === "applicant"
+        ? { orgId, assessmentId, candidateEmail: applicantEmail, candidateName: applicantName }
+        : { orgId, assessmentId, memberId: Number(memberId) });
       if (!isCurrent()) return;
       await copyLink(data.assignmentId);
       if (!isCurrent()) return;
       setMemberId("");
+      setApplicantEmail(""); setApplicantName("");
       refreshSubmittedScope();
     } catch (failure) {
       if (!isCurrent()) return;
@@ -1095,6 +1099,7 @@ function RecruitmentDetail({
       </div>
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h4 className="font-semibold">Invite a candidate</h4>
+        {hiring.data?.active ? <p className="mt-2 text-sm text-slate-700">Hiring allowance: <strong>{hiring.data.remaining}</strong> of {hiring.data.quota} remaining · expires {new Date(hiring.data.endsAtMs!).toLocaleDateString()}</p> : <div className="mt-2 flex flex-wrap items-center gap-3"><p className="text-sm text-slate-700">No active Hiring allowance is available for applicant invitations. The organization owner can purchase the optional Hiring add-on.</p><Button type="button" variant="outline" disabled={hiringCheckout.isPending} onClick={async () => { try { const result = await hiringCheckout.mutateAsync({ orgId }); if (result.url) window.location.assign(result.url); } catch { setError("Only the verified organization owner can purchase Hiring."); } }}>{hiringCheckout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button></div>}
         <p className="mt-2 text-sm leading-relaxed text-slate-600">
           A current team seat with this course is required. To add someone, use
           the Operators tab first; this action does not grant a seat. The link
@@ -1111,7 +1116,7 @@ function RecruitmentDetail({
             Creating invitations is unavailable until current-term catalog access
             is verified. Authorized results, CSV, and revocation remain available.
           </p>
-        ) : !candidates.length ? (
+        ) : !candidates.length && inviteMode === "seat" ? (
           <p className="mt-4 text-sm text-slate-600">
             No eligible candidates for this course. Assign a current team seat
             and course access in Operators first.
@@ -1119,8 +1124,10 @@ function RecruitmentDetail({
         ) : (
           <form
             onSubmit={inviteCandidate}
-            className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:items-end"
+            className="mt-4 space-y-3"
           >
+            <div className="flex gap-2"><Button type="button" variant={inviteMode === "seat" ? "default" : "outline"} onClick={() => setInviteMode("seat")}>Team seat</Button><Button type="button" variant={inviteMode === "applicant" ? "default" : "outline"} onClick={() => setInviteMode("applicant")}>Applicant add-on</Button></div>
+            {inviteMode === "applicant" ? <div className="grid gap-3 sm:grid-cols-2"><div className="space-y-2"><Label htmlFor="recruitment-applicant-name">Applicant name</Label><Input id="recruitment-applicant-name" value={applicantName} onChange={e => setApplicantName(e.target.value)} disabled={busy} required /></div><div className="space-y-2"><Label htmlFor="recruitment-applicant-email">Applicant email</Label><Input id="recruitment-applicant-email" type="email" value={applicantEmail} onChange={e => setApplicantEmail(e.target.value)} disabled={busy} required /></div></div> : null}
             <div className="flex-1 space-y-2">
               <Label htmlFor="recruitment-candidate">Team-seat candidate</Label>
               <select
@@ -1128,8 +1135,8 @@ function RecruitmentDetail({
                 value={memberId}
                 onChange={event => setMemberId(event.target.value)}
                 className={recruitmentSelect}
-                disabled={busy}
-                required
+                disabled={busy || inviteMode !== "seat"}
+                required={inviteMode === "seat"}
               >
                 <option value="">Choose a candidate</option>
                 {candidates.map(candidate => (
@@ -1143,7 +1150,7 @@ function RecruitmentDetail({
             <Button
               type="submit"
               className="min-h-11 bg-blue-700 text-white hover:bg-blue-800"
-              disabled={!memberId || busy}
+              disabled={(inviteMode === "seat" ? !memberId : !applicantEmail || !applicantName.trim()) || busy || (inviteMode === "applicant" && !hiring.data?.active)}
             >
               {invite.isPending ? "Creating link…" : "Create invitation link"}
             </Button>

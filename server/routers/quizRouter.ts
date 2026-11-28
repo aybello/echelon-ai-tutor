@@ -11,6 +11,7 @@ import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK }
  * Powers: Missed Question Quiz, Quick 10 mode, and the Agentic Learning Engine
  */
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { assertLearnerStateAllowed } from "../_core/assessmentOnlySession";
 import { TRPCError } from "@trpc/server";
 import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { resolveAccessForRequest } from "../_core/accessService";
@@ -572,6 +573,7 @@ export const quizRouter = router({
     )
     .mutation(async ({ input, ctx }) => {
       try {
+        assertLearnerStateAllowed(ctx);
         const { course } = courseActivityScope(input.bankKey);
         // Mock results have a separate server-issued session and atomic submission.
         if (input.quizMode === "mock") return { success: false };
@@ -667,6 +669,7 @@ export const quizRouter = router({
     )
     .query(async ({ input, ctx }) => {
       try {
+        assertLearnerStateAllowed(ctx);
         const db = await getDb();
         if (!db) return { questionIds: [], total: 0 };
         const userId = ctx.user?.id ?? null;
@@ -727,6 +730,7 @@ export const quizRouter = router({
     )
     .query(async ({ input, ctx }) => {
       try {
+        assertLearnerStateAllowed(ctx);
         const db = await getDb();
         if (!db) return { count: 0 };
         const userId = ctx.user?.id ?? null;
@@ -759,6 +763,7 @@ export const quizRouter = router({
     .input(z.object({ examType: z.string().min(1).max(64) }))
     .query(async ({ input, ctx }) => {
       try {
+        assertLearnerStateAllowed(ctx);
         const db = await getDb();
         if (!db) return { topicAccuracy: {} as Record<string, { correct: number; total: number }>, weakTopics: [] as string[], strongTopics: [] as string[], totalAttempts: 0, totalSessions: 0, currentStreak: 0 };
         const identity = { userId: ctx.user.id, email: ctx.user.email ?? null };
@@ -792,6 +797,7 @@ export const quizRouter = router({
     )
     .query(async ({ input, ctx }) => {
       try {
+        assertLearnerStateAllowed(ctx);
         const db = await getDb();
         if (!db) return { seenIds: [] as number[], missedIds: [] as number[] };
         const userId = ctx.user?.id ?? null;

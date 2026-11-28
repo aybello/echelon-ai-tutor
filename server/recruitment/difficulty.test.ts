@@ -31,7 +31,7 @@ describe("difficulty-first recruitment contract and selection", () => {
   });
 
   it("defaults legacy creation to Mixed with optional automatic topics without weakening strict settings", () => {
-    expect(recruitmentCreateInput.parse(input)).toEqual({ ...input, difficultyMode: "mixed", modules: [] });
+    expect(recruitmentCreateInput.parse(input)).toEqual({ ...input, difficultyMode: "mixed", modules: [], passingScore: 70 });
     expect(recruitmentCreateInput.parse({ ...input, modules: ["Treatment"] }).difficultyMode).toBe("mixed");
     for (const difficultyMode of ["easy", "HARD", "unknown", null, 1]) {
       expect(recruitmentCreateInput.safeParse({ ...input, difficultyMode }).success).toBe(false);

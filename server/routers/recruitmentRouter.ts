@@ -6,7 +6,7 @@ import {
 } from "../../shared/recruitmentAssessment";
 import {
   recruitmentCatalog, createRecruitmentAssessment, listRecruitmentAssessments, recruitmentResults,
-  inviteRecruitmentCandidate, revokeRecruitmentAssignment,
+  inviteRecruitmentCandidate, issueApplicantCapability, revokeRecruitmentAssignment,
 } from "../recruitment/service";
 import { operateRecruitmentCandidate } from "../recruitment/store";
 
@@ -22,8 +22,12 @@ export const recruitmentRouter = router({
     listRecruitmentAssessments(ctx, input.orgId)),
   results: publicProcedure.input(recruitmentAssessmentInput).query(async ({ ctx, input }): Promise<{ assessment: RecruitmentDefinitionSummary; results: RecruitmentResult[] }> =>
     recruitmentResults(ctx, input.orgId, input.assessmentId)),
-  invite: publicProcedure.input(recruitmentInviteInput).mutation(async ({ ctx, input }): Promise<{ assignmentId: string }> =>
-    inviteRecruitmentCandidate(ctx, input.orgId, input.assessmentId, input.memberId)),
+  invite: publicProcedure.input(recruitmentInviteInput).mutation(async ({ ctx, input }) =>
+    inviteRecruitmentCandidate(ctx, input.orgId, input.assessmentId, input.memberId !== undefined
+      ? { memberId: input.memberId }
+      : { candidateEmail: input.candidateEmail!, candidateName: input.candidateName! })),
+  applicantCapability: publicProcedure.input(recruitmentAssignmentInput).mutation(async ({ ctx, input }) =>
+    issueApplicantCapability(ctx, input.assignmentId)),
   revoke: publicProcedure.input(recruitmentRevokeInput).mutation(async ({ ctx, input }): Promise<{ success: true }> =>
     revokeRecruitmentAssignment(ctx, input.orgId, input.assignmentId, input.expectedRevision)),
   candidateGet: publicProcedure.input(recruitmentAssignmentInput).query(async ({ ctx, input }): Promise<RecruitmentCandidateView> =>

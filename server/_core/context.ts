@@ -2,6 +2,7 @@ import type { CreateExpressContextOptions } from "@trpc/server/adapters/express"
 import type { User } from "../../drizzle/schema";
 import { sdk } from "./sdk";
 import { readVerifiedEmailFromRequest } from "./emailSession";
+import { readAssessmentOnlySession, type AssessmentOnlyCapability } from "./assessmentOnlySession";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
@@ -11,6 +12,8 @@ export type TrpcContext = {
    *  Set when a student has completed OTP login or paid via Stripe.
    *  Never trusts client-provided input. */
   studentEmail: string | null;
+  /** Server-verified, purpose-bound assessment-only capability. */
+  assessmentOnlySession?: AssessmentOnlyCapability | null;
 };
 
 export async function createContext(
@@ -28,11 +31,13 @@ export async function createContext(
   // Read the verified Echelon email session cookie.
   // Fails closed: returns null when JWT_SECRET is missing or cookie is invalid/expired.
   studentEmail = await readVerifiedEmailFromRequest(opts.req);
+  const assessmentOnlySession = await readAssessmentOnlySession(opts.req);
 
   return {
     req: opts.req,
     res: opts.res,
     user,
     studentEmail,
+    assessmentOnlySession,
   };
 }

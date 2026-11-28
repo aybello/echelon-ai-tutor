@@ -57,6 +57,11 @@ describe("abandoned checkout extraction", () => {
         })
       )
     ).toBeNull();
+    expect(
+      extractAbandonedCheckout(
+        expiredSession({ metadata: { type: "team_hiring_addon", product_key: "x" } })
+      )
+    ).toBeNull();
   });
 
   it("drops sessions we cannot act on", () => {

@@ -37,7 +37,7 @@ export function finalizeRecruitmentDeadline(assessment: RecruitmentAssessmentRow
         updatedAtMs: nowMs, revision: assignment.revision + 1 };
     }
     return { ...assignment, answers, status: "timed_out", submittedAtMs: assignmentDeadline(assessment, assignment),
-      score: scoreRecruitment(assessment.questions, answers), updatedAtMs: nowMs, revision: assignment.revision + 1 };
+      score: scoreRecruitment(assessment.questions, answers, assessment.passingScore ?? null), updatedAtMs: nowMs, revision: assignment.revision + 1 };
   }
   return assignment;
 }
@@ -76,7 +76,7 @@ export function transitionRecruitment(assessment: RecruitmentAssessmentRow, assi
     return { ...current, answers, updatedAtMs: nowMs, revision: current.revision + 1 };
   }
   return { ...current, answers, status: "submitted", submittedAtMs: nowMs,
-    score: scoreRecruitment(assessment.questions, answers), updatedAtMs: nowMs, revision: current.revision + 1 };
+    score: scoreRecruitment(assessment.questions, answers, assessment.passingScore ?? null), updatedAtMs: nowMs, revision: current.revision + 1 };
 }
 
 /** Explicit allowlist: no spread of database rows, answer key, explanations, score or other candidates. */
@@ -103,7 +103,7 @@ export function recruitmentResult(assessment: RecruitmentAssessmentRow, assignme
     assignmentId: assignment.id, memberId: assignment.memberId, candidateEmail: assignment.candidateEmail,
     candidateName: assignment.candidateName, status: assignment.status, startedAtMs: assignment.startedAtMs,
     submittedAtMs: assignment.submittedAtMs, expiresAtMs: Math.min(assignment.expiresAtMs, assessment.expiresAtMs),
-    score: scored ? scoreRecruitment(assessment.questions, answers) : null,
+    score: scored ? scoreRecruitment(assessment.questions, answers, assessment.passingScore ?? null) : null,
     answers, questions: scored ? assertRecruitmentSnapshot(assessment.questions).map(q => ({ id: q.id, module: q.module, prompt: q.prompt, options: [...q.options], correctIndex: q.correctIndex,
       ...(Object.hasOwn(q, "difficulty") ? { difficulty: q.difficulty } : {}) })) : [],
     revision: assignment.revision,

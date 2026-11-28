@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { and, eq, gt, inArray, lte } from "drizzle-orm";
-import { organizationMembers, organizations, subscriptions, type Organization, type OrganizationMember, type RecruitmentAssignmentRow } from "../../drizzle/schema";
+import { hiringTerms, organizationMembers, organizations, subscriptions, type Organization, type OrganizationMember, type RecruitmentAssignmentRow } from "../../drizzle/schema";
 import { getCourseByKey, type CourseEntry } from "../../shared/courseRegistry";
 import { courseKeyToTierStrict } from "../../shared/products";
 import { assertAccess, identityEmail, normalizeEmail, resolveVerifiedIdentity } from "../_core/accessService";
@@ -10,6 +10,7 @@ import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import { resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { assignedAnnualCourseKeys } from "../trainingRecords";
 import type { RecruitmentReadDb } from "./types";
+import { assessmentOnlyCapabilityMatches, issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 
 export function verifiedRecruitmentEmail(ctx: TrpcContext): string {
   const email = identityEmail(resolveVerifiedIdentity(ctx));
@@ -99,7 +100,7 @@ export async function assertRecruitmentSeat(db: RecruitmentReadDb, org: Organiza
 }
 
 /** Called for EVERY candidate procedure, including reads, repeats and terminal views. */
-export async function assertRecruitmentCandidate(ctx: TrpcContext, db: RecruitmentReadDb, assignment: RecruitmentAssignmentRow, courseKey: string, options: { centralPreflightDone?: boolean; lock?: boolean } = {}): Promise<Organization> {
+export async function assertRecruitmentCandidate(ctx: TrpcContext, db: RecruitmentReadDb, assignment: RecruitmentAssignmentRow, courseKey: string, options: { centralPreflightDone?: boolean; lock?: boolean; bootstrapApplicantCapability?: boolean } = {}): Promise<Organization> {
   const email = verifiedRecruitmentEmail(ctx);
   if (email !== normalizeEmail(assignment.candidateEmail)) {
     throw new TRPCError({ code: "FORBIDDEN", message: "This invitation belongs to a different verified email." });
@@ -107,6 +108,28 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
   const orgQuery = db.select().from(organizations).where(eq(organizations.id, assignment.orgId)).limit(1);
   const [org] = await (options.lock ? orgQuery.for("share") : orgQuery);
   if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "This team is unavailable." });
+  if (assignment.accessKind === "applicant" || assignment.memberId === null) {
+    if (!assignment.grantId) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation has no active Hiring grant." });
+    const grantQuery = db.select().from(hiringTerms).where(and(
+      eq(hiringTerms.id, assignment.grantId), eq(hiringTerms.orgId, assignment.orgId),
+      eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"),
+      lte(hiringTerms.startsAtMs, Date.now()), gt(hiringTerms.endsAtMs, Date.now()),
+    )).limit(1);
+    const [grant] = await (options.lock ? grantQuery.for("share") : grantQuery);
+    if (!grant) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });
+    const capabilityMatches = assessmentOnlyCapabilityMatches(ctx.assessmentOnlySession, {
+      assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey,
+    });
+    if (!capabilityMatches) {
+      if (!options.bootstrapApplicantCapability) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation requires its matching assessment capability." });
+      }
+      ctx.assessmentOnlySession = await issueAssessmentOnlySession(ctx.res, {
+        assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey,
+      });
+    }
+    return org;
+  }
   await assertRecruitmentSeat(db, org, assignment.memberId, courseKey, email, options.lock);
   // Central preflight runs before acquiring a transaction connection. Calling
   // the global resolver while every pool connection is locked can starve it.

@@ -37,6 +37,7 @@ import {
   handleFlexUnallocatedRefund,
   flexDisputeOutcome,
 } from "../teams/flexRefundDisputeHandlers";
+import { dispatchHiringEvent } from "../hiring/webhook";
 
 export function parseRefundLicenceIds(metadata: Record<string, string> | null | undefined): number[] {
   const raw = metadata?.licenceIds ?? metadata?.licence_ids;
@@ -86,6 +87,14 @@ export function registerStripeWebhook(app: Express) {
       }
 
       console.log(`[Stripe Webhook] Event: ${event.type} | ID: ${event.id}`);
+      // Hiring owns its event namespace and must short-circuit before legacy handlers.
+      try {
+        const hiring = await dispatchHiringEvent(event);
+        if (hiring.handled) return res.json({ received: true, reviewRequired: hiring.reviewRequired === true });
+      } catch (error) {
+        console.error("[Stripe Webhook] Hiring dispatch failed:", error);
+        return res.status(503).json({ error: "Hiring payment processing is temporarily unavailable" });
+      }
 
       if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
         const session = event.data.object as any;

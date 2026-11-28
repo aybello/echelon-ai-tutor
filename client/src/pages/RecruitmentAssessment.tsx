@@ -31,6 +31,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
+import FeedbackModal from "@/components/FeedbackModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { signInHref } from "@shared/funnelNavigation";
 import {
@@ -277,6 +278,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
   const submitOpen = renderingConfirmation !== null;
   const entryConsumed = useRef(false);
   const [sessionRefreshPending, setSessionRefreshPending] = useState(false);
+  const [showCompletionFeedback, setShowCompletionFeedback] = useState(false);
   const deadlineRecheck = useRef<{
     deadlineMs: number;
     afterMs: number;
@@ -1004,10 +1006,7 @@ function CandidateAssessment({ assignmentId }: { assignmentId: string }) {
             : "You can no longer start or continue this assessment. Contact the hiring team if you need a new invitation."}
         </p>
         {completed && (
-          <p className="text-sm text-slate-600">
-            Scores and the answer key are not shown here. This knowledge
-            assessment does not make an automatic hiring decision.
-          </p>
+          <><p className="text-sm text-slate-600">Scores and the answer key are not shown here. This knowledge assessment does not make an automatic hiring decision.</p><div className="rounded-xl border border-slate-200 bg-slate-50 p-4"><p className="text-sm text-slate-700">Your assessment is complete. Would you like to share optional private feedback about the experience?</p><Button type="button" variant="outline" className="mt-3 min-h-11" onClick={() => setShowCompletionFeedback(true)}>Leave optional feedback</Button></div>{showCompletionFeedback && <FeedbackModal examType="recruitment" feedbackType="recruitment_completion" onClose={() => setShowCompletionFeedback(false)} />}</>
         )}
       </div>
     );

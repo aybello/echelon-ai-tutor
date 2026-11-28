@@ -645,6 +645,51 @@
           "sqlType": "enum('mixed','medium','hard')"
         }
       ]
+    },
+    {
+      "version": 89,
+      "tag": "0089_team_hiring_addon",
+      "file": "drizzle/0089_team_hiring_addon.sql",
+      "sha256": "728dba6f8f7822c64a6d35fbab53fbc6bbb263222e23d21dd2be785bcbcafd98",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "hiring_orders",
+          "hiring_terms",
+          "hiring_events",
+          "recruitment_assessments",
+          "recruitment_assignments"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "hiring_orders",
+        "hiring_terms",
+        "hiring_events"
+      ],
+      "verifierAllowMissingColumns": [
+        {
+          "table": "recruitment_assessments",
+          "column": "passingScore",
+          "targetType": "int",
+          "targetNullable": true,
+          "sqlType": "int"
+        },
+        {
+          "table": "recruitment_assignments",
+          "column": "accessKind",
+          "targetType": "varchar(32)",
+          "targetNullable": false,
+          "sqlType": "varchar(32)",
+          "defaultSql": "default 'training-seat'"
+        },
+        {
+          "table": "recruitment_assignments",
+          "column": "grantId",
+          "targetType": "varchar(36)",
+          "targetNullable": true,
+          "sqlType": "varchar(36)"
+        }
+      ]
     }
   ]
 }

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 
-export type FeedbackType = "quiz_gate" | "session_complete" | "mock_exam" | "first_high_score" | "dashboard" | "quick10";
+export type FeedbackType = "quiz_gate" | "session_complete" | "mock_exam" | "first_high_score" | "dashboard" | "quick10" | "recruitment_completion";
 interface FeedbackModalProps {
   examType: string;
   feedbackType: FeedbackType;

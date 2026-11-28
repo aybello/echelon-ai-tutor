@@ -48,7 +48,7 @@ export async function operateRecruitmentCandidate(ctx: TrpcContext, assignmentId
   const db = await recruitmentDb();
   const preflight = await readRecruitmentAssignment(db, assignmentId, email);
   const definition = await readRecruitmentAssessment(db, preflight.assessmentId, preflight.orgId);
-  await assertRecruitmentCandidate(ctx, db, preflight, definition.courseKey);
+  await assertRecruitmentCandidate(ctx, db, preflight, definition.courseKey, { bootstrapApplicantCapability: operation.kind === "get" });
   return db.transaction(async tx => {
     // Candidate order: org -> assignment -> member -> subscription -> source IDs.
     // Manager reporting: org -> manager SHARE -> assignments by ID UPDATE.

@@ -25,6 +25,7 @@ import { attemptCourseFilter, examCourseFilter } from "../courseActivityScope";
 import { assertAccess } from "../_core/accessService";
 import { gatherNextStepInput } from "../nextStepData";
 import { suggestNextStep, type NextStepInput } from "../../shared/nextStep";
+import { assertLearnerStateAllowed } from "../_core/assessmentOnlySession";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -39,7 +40,8 @@ import { suggestNextStep, type NextStepInput } from "../../shared/nextStep";
  * Returns { userId, email } — at least one will be non-null.
  * Throws UNAUTHORIZED if neither is present.
  */
-function resolveDashboardIdentity(ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null }) {
+function resolveDashboardIdentity(ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null; assessmentOnlySession?: unknown }) {
+  assertLearnerStateAllowed(ctx);
   // 1. OAuth user (admin / owner)
   if (ctx.user) {
     return { userId: ctx.user.id, email: ctx.user.email ?? null };

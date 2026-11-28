@@ -38,6 +38,7 @@ import { savePurchaseExamDate } from "../purchaseExamDate";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
 import { funnelProvince } from "../../shared/funnelNavigation";
 import { isNovaScotiaCheckoutAllowed } from "../../shared/novaScotiaPreparation";
+import { createHiringCheckout } from "../hiring/service";
 import {
   getCommercialAvailability,
   ORGANIZATION_COMMERCE_ENABLED,
@@ -45,6 +46,9 @@ import {
 } from "../commercialAvailability";
 
 export const stripeRouter = router({
+  createHiringCheckout: publicProcedure
+    .input(z.object({ orgId: z.number().int().positive() }).strict())
+    .mutation(async ({ ctx, input }) => createHiringCheckout(ctx, input.orgId)),
   /** Return all products with prices for the Pricing page */
   getProducts: publicProcedure.query(() => {
     return ALL_PRODUCTS.map(p => ({

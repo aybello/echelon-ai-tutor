@@ -1912,6 +1912,8 @@ export const recruitmentAssessments = mysqlTable("recruitment_assessments", {
   courseLabel: varchar("courseLabel", { length: 200 }).notNull(),
   // No default or backfill: historical forms did not record a difficulty mode.
   difficultyMode: mysqlEnum("difficultyMode", ["mixed", "medium", "hard"]),
+  // Null is intentionally preserved for historical forms; only new forms freeze this threshold.
+  passingScore: int("passingScore"),
   modules: json("modules").$type<string[]>().notNull(),
   questionCount: int("questionCount").notNull(),
   timeLimitMinutes: int("timeLimitMinutes"),
@@ -1927,7 +1929,10 @@ export const recruitmentAssignments = mysqlTable("recruitment_assignments", {
   id: varchar("id", { length: 36 }).primaryKey(),
   assessmentId: varchar("assessmentId", { length: 36 }).notNull(),
   orgId: int("orgId").notNull(),
-  memberId: int("memberId").notNull(),
+  // Existing seat invitations retain their member binding. Applicant-only invitations use null.
+  memberId: int("memberId"),
+  accessKind: varchar("accessKind", { length: 32 }).notNull().default("training-seat"),
+  grantId: varchar("grantId", { length: 36 }),
   candidateEmail: varchar("candidateEmail", { length: 320 }).notNull(),
   candidateName: varchar("candidateName", { length: 200 }),
   creatorEmail: varchar("creatorEmail", { length: 320 }).notNull(),
@@ -1951,3 +1956,33 @@ export const recruitmentAssignments = mysqlTable("recruitment_assignments", {
   index("recruitment_assignments_candidate_idx").on(t.candidateEmail, t.createdAtMs),
 ]);
 export type RecruitmentAssignmentRow = typeof recruitmentAssignments.$inferSelect;
+
+/** Hiring is deliberately separate from organizations, subscriptions and learner records. */
+export const hiringOrders = mysqlTable("hiring_orders", {
+  id: varchar("id", { length: 36 }).primaryKey(), orgId: int("orgId").notNull(),
+  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }).unique(),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }), amountCents: int("amountCents").notNull(),
+  currency: varchar("currency", { length: 3 }).notNull(), status: varchar("status", { length: 32 }).notNull().default("pending"),
+  ownerEmail: varchar("ownerEmail", { length: 320 }).notNull(), createdAtMs: bigint("createdAtMs", { mode: "number" }).notNull(),
+});
+export const hiringTerms = mysqlTable("hiring_terms", {
+  id: varchar("id", { length: 36 }).primaryKey(), orgId: int("orgId").notNull(), basis: varchar("basis", { length: 16 }).notNull(),
+  sourceInvoiceId: varchar("sourceInvoiceId", { length: 128 }).unique(), sourcePilotId: varchar("sourcePilotId", { length: 128 }).unique(),
+  sourceSubscriptionId: varchar("sourceSubscriptionId", { length: 128 }), sourcePaymentIntentId: varchar("sourcePaymentIntentId", { length: 128 }),
+  startsAtMs: bigint("startsAtMs", { mode: "number" }).notNull(), endsAtMs: bigint("endsAtMs", { mode: "number" }).notNull(),
+  quota: int("quota").notNull(), used: int("used").notNull().default(0), state: varchar("state", { length: 32 }).notNull().default("active"),
+  paymentState: varchar("paymentState", { length: 32 }).notNull().default("active"), createdByEmail: varchar("createdByEmail", { length: 320 }).notNull(),
+});
+/** Stripe event claims are isolated from the generic payment/event handlers. */
+export const hiringEvents = mysqlTable("hiring_events", {
+  id: varchar("id", { length: 128 }).primaryKey(),
+  orgId: int("orgId").notNull(),
+  orderId: varchar("orderId", { length: 36 }),
+  invoiceId: varchar("invoiceId", { length: 128 }),
+  eventType: varchar("eventType", { length: 64 }).notNull(),
+  state: varchar("state", { length: 32 }).notNull().default("claimed"),
+  createdAtMs: bigint("createdAtMs", { mode: "number" }).notNull(),
+});
+export type HiringOrder = typeof hiringOrders.$inferSelect;
+export type HiringTerm = typeof hiringTerms.$inferSelect;

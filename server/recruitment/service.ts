@@ -1,8 +1,8 @@
 import { randomInt, randomUUID } from "node:crypto";
 import { TRPCError } from "@trpc/server";
-import { and, desc, eq, gt, inArray, lte } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, lte, sql } from "drizzle-orm";
 import {
-  organizationMembers, organizations, recruitmentAssessments, recruitmentAssignments, subscriptions,
+  hiringTerms, organizationMembers, organizations, recruitmentAssessments, recruitmentAssignments, subscriptions,
   type Organization, type RecruitmentAssessmentRow, type RecruitmentAssignmentRow,
 } from "../../drizzle/schema";
 import {
@@ -21,6 +21,7 @@ import { assertRecruitmentSourcesVisible, loadRecruitmentPool, loadRecruitmentPo
 import { assignmentDeadline, finalizeRecruitmentDeadline, recruitmentResult } from "./state";
 import { persistRecruitmentTransition, readRecruitmentAssessment, recruitmentDb } from "./store";
 import type { RecruitmentCreate, RecruitmentReadDb, RecruitmentTransaction } from "./types";
+import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 
 /** Recheck manager membership inside transactions without invoking a global resolver
  * while a pool connection is held. The existing resolver remains the preflight. */
@@ -161,10 +162,10 @@ export async function createRecruitmentAssessment(ctx: TrpcContext, rawInput: Re
     await assertRecruitmentSourcesVisible(tx, course.questionBankKey, selected, { requireUnchangedPayload: true });
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
-    const assessmentId = randomUUID();
+      const assessmentId = randomUUID();
     await tx.insert(recruitmentAssessments).values({
       id: assessmentId, orgId: org.id, title: input.title, courseKey: course.courseKey, courseLabel: course.displayName,
-      difficultyMode: input.difficultyMode, modules: [...new Set(selected.map(q => q.module))], questionCount: selected.length, timeLimitMinutes: input.timeLimitMinutes,
+      difficultyMode: input.difficultyMode, passingScore: input.passingScore, modules: [...new Set(selected.map(q => q.module))], questionCount: selected.length, timeLimitMinutes: input.timeLimitMinutes,
       questions: selected, creatorEmail, createdAtMs: nowMs, expiresAtMs: nowMs + input.expiresInDays * 86_400_000,
     });
     return { assessmentId };
@@ -211,18 +212,52 @@ export async function recruitmentResults(ctx: TrpcContext, orgId: number, assess
   }, { isolationLevel: "read committed" });
 }
 
-export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number, assessmentId: string, memberId: number): Promise<{ assignmentId: string }> {
+export type RecruitmentInviteRequest = { memberId: number } | { candidateEmail: string; candidateName: string };
+export type RecruitmentInviteResponse = { assignmentId: string; accessKind?: "training-seat" | "applicant"; inviteUrl?: string; status?: "created" | "recovered" };
+
+export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number, assessmentId: string, request: RecruitmentInviteRequest | number): Promise<RecruitmentInviteResponse> {
   await recruitmentManager(ctx, orgId, true);
   const creatorEmail = verifiedRecruitmentEmail(ctx);
   const db = await recruitmentDb();
-  return db.transaction(async tx => {
+  const invite = typeof request === "number" ? { memberId: request } : request;
+  const result = await db.transaction<RecruitmentInviteResponse>(async tx => {
     // Existing Annual seat writers lock this org too; no seat/billing writes here.
     const [org] = await tx.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).for("update");
     if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "Team unavailable." });
     await assertManagerStillAuthorized(tx, org, creatorEmail);
-    assertCurrentAnnualOrganization(org, Date.now());
     const assessment = await readRecruitmentAssessment(tx, assessmentId, org.id);
-    const member = await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
+    if ("candidateEmail" in invite) {
+      const candidateEmail = normalizeEmail(invite.candidateEmail);
+      if (!candidateEmail || !invite.candidateName.trim()) throw new TRPCError({ code: "BAD_REQUEST", message: "A valid applicant email and name are required." });
+      const [existing] = await tx.select().from(recruitmentAssignments).where(and(
+        eq(recruitmentAssignments.assessmentId, assessment.id), eq(recruitmentAssignments.orgId, org.id),
+        eq(recruitmentAssignments.candidateEmail, candidateEmail), eq(recruitmentAssignments.accessKind, "applicant"),
+      )).limit(1).for("update");
+      const nowMs = Date.now();
+      if (existing) {
+        if (["invited", "active"].includes(existing.status) && nowMs < assignmentDeadline(assessment, existing)) {
+          return { assignmentId: existing.id, accessKind: "applicant", inviteUrl: `/recruitment/${existing.id}`, status: "recovered" };
+        }
+        throw new TRPCError({ code: "CONFLICT", message: "This applicant invitation is no longer usable. Create a new assessment form to invite this candidate again." });
+      }
+      if (nowMs >= assessment.expiresAtMs) throw new TRPCError({ code: "CONFLICT", message: "This assessment has expired. Create a new form instead." });
+      const [term] = await tx.select().from(hiringTerms).where(and(
+        eq(hiringTerms.orgId, org.id), eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"),
+        lte(hiringTerms.startsAtMs, nowMs), gt(hiringTerms.endsAtMs, nowMs),
+      )).orderBy(hiringTerms.endsAtMs).limit(1).for("update");
+      if (!term || term.used >= term.quota) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No active Hiring invitation allowance is available." });
+      await tx.update(hiringTerms).set({ used: sql`${hiringTerms.used} + 1` }).where(and(eq(hiringTerms.id, term.id), sql`${hiringTerms.used} < ${hiringTerms.quota}`));
+      const assignmentId = randomUUID();
+      await tx.insert(recruitmentAssignments).values({
+        id: assignmentId, assessmentId: assessment.id, orgId: org.id, memberId: null,
+        accessKind: "applicant", grantId: term.id, candidateEmail, candidateName: invite.candidateName.trim(), creatorEmail,
+        createdAtMs: nowMs, updatedAtMs: nowMs, expiresAtMs: assessment.expiresAtMs,
+        status: "invited", answers: {}, revision: 0,
+      });
+      return { assignmentId, accessKind: "applicant", inviteUrl: `/recruitment/${assignmentId}`, status: "created" };
+    }
+    assertCurrentAnnualOrganization(org, Date.now());
+    const member = await assertRecruitmentSeat(tx, org, invite.memberId, assessment.courseKey, undefined, true);
     const [existing] = await tx.select().from(recruitmentAssignments)
       .where(and(eq(recruitmentAssignments.assessmentId, assessment.id), eq(recruitmentAssignments.memberId, member.id), eq(recruitmentAssignments.orgId, org.id))).limit(1);
     // Terminal duplicates retain their ordinary lifecycle conflict; every usable
@@ -239,7 +274,7 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
     const course = recruitmentCourseForOrg(org, assessment.courseKey);
     await assertRecruitmentSourcesVisible(tx, course.questionBankKey, assessment.questions);
     // Seat and subscription time predicates can lapse during governance waits.
-    const currentMember = await assertRecruitmentSeat(tx, org, memberId, assessment.courseKey, undefined, true);
+    const currentMember = await assertRecruitmentSeat(tx, org, invite.memberId, assessment.courseKey, undefined, true);
     assertOriginalBinding(currentMember.email);
     const nowMs = Date.now();
     assertCurrentAnnualOrganization(org, nowMs);
@@ -257,8 +292,30 @@ export async function inviteRecruitmentCandidate(ctx: TrpcContext, orgId: number
       createdAtMs: nowMs, updatedAtMs: nowMs, expiresAtMs: assessment.expiresAtMs,
       status: "invited", answers: {}, revision: 0,
     });
-    return { assignmentId };
+    return { assignmentId, accessKind: "training-seat", status: "created" };
   }, { isolationLevel: "read committed" });
+  return result;
+}
+
+export async function issueApplicantCapability(ctx: TrpcContext, assignmentId: string): Promise<{ assignmentId: string; candidateEmail: string; courseKey: string }> {
+  const email = verifiedRecruitmentEmail(ctx);
+  const db = await recruitmentDb();
+  const committed = await db.transaction(async tx => {
+    const [assignment] = await tx.select().from(recruitmentAssignments)
+      .where(and(eq(recruitmentAssignments.id, assignmentId), eq(recruitmentAssignments.candidateEmail, email))).limit(1).for("update");
+    if (!assignment || assignment.accessKind !== "applicant" || assignment.memberId !== null || !assignment.grantId) {
+      throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation is not available." });
+    }
+    const assessment = await readRecruitmentAssessment(tx, assignment.assessmentId, assignment.orgId);
+    const [grant] = await tx.select().from(hiringTerms).where(and(
+      eq(hiringTerms.id, assignment.grantId), eq(hiringTerms.orgId, assignment.orgId),
+      eq(hiringTerms.state, "active"), eq(hiringTerms.paymentState, "active"),
+      lte(hiringTerms.startsAtMs, Date.now()), gt(hiringTerms.endsAtMs, Date.now()),
+    )).limit(1).for("share");
+    if (!grant) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });
+    return { assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey: assessment.courseKey };
+  }, { isolationLevel: "read committed" });
+  return issueAssessmentOnlySession(ctx.res, committed);
 }
 
 export async function revokeRecruitmentAssignment(ctx: TrpcContext, orgId: number, assignmentId: string, expectedRevision: number): Promise<{ success: true }> {

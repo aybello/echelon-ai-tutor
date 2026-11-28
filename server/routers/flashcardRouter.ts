@@ -3,6 +3,7 @@ import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { and, eq, sql } from "drizzle-orm";
 import { publicProcedure, router } from "../_core/trpc";
+import { assertLearnerStateAllowed } from "../_core/assessmentOnlySession";
 import { getDb } from "../db";
 import {
   flashcardProgress,
@@ -54,6 +55,7 @@ export const flashcardRouter = router({
   getProgress: publicProcedure
     .input(courseInput)
     .query(async ({ input, ctx }) => {
+      assertLearnerStateAllowed(ctx);
       const email = identity(ctx),
         db = await database();
       const [state] = await db
@@ -96,6 +98,7 @@ export const flashcardRouter = router({
   updateProgress: publicProcedure
     .input(updateInput)
     .mutation(async ({ input, ctx }) => {
+      assertLearnerStateAllowed(ctx);
       const email = identity(ctx),
         db = await database();
       const payloadHash = createHash("sha256")
@@ -197,6 +200,7 @@ export const flashcardRouter = router({
       });
     }),
   getAllProgress: publicProcedure.query(async ({ ctx }) => {
+    assertLearnerStateAllowed(ctx);
     const email = (ctx.user?.email ?? ctx.studentEmail)?.trim().toLowerCase();
     const progress: Record<string, { knownCount: number; totalCards: number }> =
       {};

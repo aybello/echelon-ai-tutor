@@ -57,6 +57,10 @@ export async function runReconciliation(hoursBack: number = 48, assertOwned: () 
       await assertOwned();
       try {
         const productKey = session.metadata?.product_key;
+        if (session.metadata?.type === "team_hiring_addon" || session.metadata?.hiring_type === "team_hiring_addon") {
+          skipped.push(`${session.id}: Hiring checkout handled by dedicated reconciler`);
+          continue;
+        }
         const email =
           (session as any).customer_details?.email ??
           session.customer_email ??
@@ -163,6 +167,10 @@ export async function runSubscriptionReconciliation(): Promise<SubscriptionRecon
 
     for (const sub of page.data) {
       try {
+        if (sub.metadata?.type === "team_hiring_addon" || sub.metadata?.hiring_type === "team_hiring_addon") {
+          skipped.push(`${sub.id}: Hiring subscription handled by dedicated reconciler`);
+          continue;
+        }
         const tierMetadata = sub.metadata?.subscription_tier;
         const provinceMetadata = sub.metadata?.subscription_province;
         const tier = isSubscriptionTier(tierMetadata) ? tierMetadata : undefined;
