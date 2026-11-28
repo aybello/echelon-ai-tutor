@@ -3,18 +3,21 @@ import { MySqlDialect } from "drizzle-orm/mysql-core";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "../_core/context";
 
-const external = vi.hoisted(() => ({ getDb: vi.fn(), retrieve: vi.fn(), update: vi.fn(), priceRetrieve: vi.fn(), customerCreate: vi.fn(), sessionCreate: vi.fn(), sessionRetrieve: vi.fn() }));
+const external = vi.hoisted(() => ({ getDb: vi.fn(), retrieve: vi.fn(), update: vi.fn(), priceRetrieve: vi.fn(), customerCreate: vi.fn(), sessionCreate: vi.fn(), sessionRetrieve: vi.fn(), invoice: vi.fn(), charge: vi.fn(), disputes: vi.fn(), invoicePayments: vi.fn() }));
 vi.mock("../db", () => ({ getDb: external.getDb }));
 vi.mock("../stripe/stripe", () => ({ stripe: {
   subscriptions: { retrieve: external.retrieve, update: external.update },
   prices: { retrieve: external.priceRetrieve }, customers: { create: external.customerCreate },
   checkout: { sessions: { create: external.sessionCreate, retrieve: external.sessionRetrieve } },
+  invoices: { retrieve: external.invoice }, charges: { retrieve: external.charge },
+  disputes: { list: external.disputes }, invoicePayments: { list: external.invoicePayments },
 } }));
 vi.mock("../_core/env", () => ({ ENV: { appBaseUrl: "http://127.0.0.1:3000" } }));
 // Avoid importing unrelated access-token services. Use canonical, real normalization.
 vi.mock("../_core/accessService", async () => ({ normalizeEmail: (await import("../_core/access")).normalizeEmail }));
 import { cancelHiringAtPeriodEnd, createHiringCheckout, getHiringStatus } from "./service";
 import { HIRING_AMOUNT, HIRING_POLICY, HIRING_TYPE } from "./policy";
+import { dispatchHiringEvent } from "./webhook";
 
 type Row = Record<string, any>;
 const NOW = Date.parse("2026-11-28T05:00:00Z");
@@ -31,12 +34,15 @@ const subscription = (changes: Row = {}) => ({
 const price = () => ({ ...subscription().items.data[0].price, active: true, product: { ...subscription().items.data[0].price.product, active: true } });
 const pendingOrder = (changes: Row = {}) => ({ ...order(), status: "pending", stripeSubscriptionId: null, stripeCheckoutSessionId: null, renewalCancelled: false, ...changes });
 const session = (changes: Row = {}) => ({ id: "cs_hiring", mode: "subscription", customer: "cus_hiring", metadata: { type: HIRING_TYPE, policy: HIRING_POLICY, orderId: "order_current", orgId: "7", ownerEmail: EMAIL }, status: "open", subscription: null, url: "https://checkout.stripe.test/synthetic", ...changes });
+const LOCKED_REQUEST = { timeout: 2_000, maxNetworkRetries: 0 };
+const CHECKOUT_REQUEST = { timeout: 10_000, maxNetworkRetries: 0 };
+const event = (type: string, object: Row) => ({ id: `evt_${type}`, type, data: { object } });
 
 /** Evaluate the actual Drizzle SQL predicates, rather than queueing predetermined rows.
  * This is a query/read-write spy, not an assertion of real MySQL isolation. */
 function memoryDb(terms: Row[] = [], org: Row = organization(), orders: Row[] = [order(), order("order_old", "sub_old")]) {
   const dialect = new MySqlDialect();
-  const tables: Record<string, Row[]> = { organizations: [org], hiring_terms: structuredClone(terms), hiring_orders: structuredClone(orders), organization_members: [], team_flex_licences: [] };
+  const tables: Record<string, Row[]> = { organizations: [org], hiring_terms: structuredClone(terms), hiring_orders: structuredClone(orders), hiring_events: [], hiring_payments: [], organization_members: [], team_flex_licences: [] };
   const reads: { table: string; predicate: string; params: unknown[]; order: string[] }[] = [];
   const writes: { table: string; values: Row }[] = [];
   function matches(condition: SQL, row: Row) {
@@ -84,7 +90,7 @@ function memoryDb(terms: Row[] = [], org: Row = organization(), orders: Row[] = 
           for (const expression of [...ordering].reverse()) {
             const column = expression.match(/`[^`]+`\.`([^`]+)`/)?.[1];
             if (!column) throw new Error(`Unsupported order: ${expression}`);
-            rows = [...rows].sort((a, b) => (a[column] - b[column]) * (/\bdesc\b/i.test(expression) ? -1 : 1));
+            rows = [...rows].sort((a, b) => (a[column] < b[column] ? -1 : a[column] > b[column] ? 1 : 0) * (/\bdesc\b/i.test(expression) ? -1 : 1));
           }
           return rows.slice(0, count).map(row => selection ? Object.fromEntries(Object.entries(selection).map(([key, column]) => [key, row[(column as any).name]])) : structuredClone(row));
         }).then(resolve, reject),
@@ -93,14 +99,14 @@ function memoryDb(terms: Row[] = [], org: Row = organization(), orders: Row[] = 
     } })),
     update: vi.fn((table: any) => ({ set: (values: Row) => ({ where: async (predicate: SQL) => {
       const name = getTableName(table); writes.push({ table: name, values: structuredClone(values) });
-      if (!["hiring_terms", "hiring_orders"].includes(name) && !(name === "organizations" && Object.keys(values).join() === "stripeCustomerId")) throw new Error(`Forbidden learner/organization write: ${name}`);
+      if (!["hiring_terms", "hiring_orders", "hiring_events", "hiring_payments"].includes(name) && !(name === "organizations" && Object.keys(values).join() === "stripeCustomerId")) throw new Error(`Forbidden learner/organization write: ${name}`);
       tables[name].filter(row => matches(predicate, row)).forEach(row => Object.assign(row, values));
     } }) })),
     insert: vi.fn((table: any) => ({ values: async (values: Row) => {
       const name = getTableName(table);
-      if (name !== "hiring_orders") throw new Error(`Unexpected insert: ${name}`);
+      if (!["hiring_orders", "hiring_terms", "hiring_events", "hiring_payments"].includes(name)) throw new Error(`Unexpected insert: ${name}`);
       writes.push({ table: name, values: structuredClone(values) });
-      tables[name].push({ stripeSubscriptionId: null, stripeCheckoutSessionId: null, renewalCancelled: false, ...structuredClone(values) });
+      tables[name].push({ ...(name === "hiring_orders" ? { stripeSubscriptionId: null, stripeCheckoutSessionId: null, renewalCancelled: false } : {}), ...structuredClone(values) });
     } })),
     delete: vi.fn(() => { throw new Error("Unexpected delete in status/cancellation"); }),
   };
@@ -122,6 +128,8 @@ beforeEach(() => {
   external.priceRetrieve.mockResolvedValue(price()); external.customerCreate.mockResolvedValue({ id: "cus_hiring" });
   external.sessionCreate.mockImplementation(async parameters => session({ metadata: parameters.metadata, customer: parameters.customer }));
   external.sessionRetrieve.mockResolvedValue(session());
+  external.disputes.mockResolvedValue({ data: [], has_more: false });
+  external.invoicePayments.mockResolvedValue({ data: [], has_more: false });
 });
 afterEach(() => { vi.useRealTimers(); vi.unstubAllEnvs(); });
 
@@ -138,8 +146,8 @@ describe("real Hiring status and owner cancellation", () => {
   it.each(["disputed", "needs_review", "refunded"])("allows verified owner cancellation of the latest inaccessible %s Hiring term without restoring access", async paymentState => {
     const store = memoryDb([oldTerm(), term({ state: "suspended", paymentState })]);
     await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toEqual({ success: true, endsAtMs: term().endsAtMs });
-    expect(external.retrieve).toHaveBeenCalledWith("sub_hiring", { expand: ["items.data.price.product"] });
-    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true });
+    expect(external.retrieve).toHaveBeenCalledWith("sub_hiring", { expand: ["items.data.price.product"] }, LOCKED_REQUEST);
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.hiring_terms[0]).toEqual(oldTerm());
     expect(store.tables.hiring_terms[1]).toMatchObject({ paymentState });
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false });
@@ -191,7 +199,7 @@ describe("real Hiring status and owner cancellation", () => {
     const store = memoryDb([term({ state: "suspended", paymentState: "needs_review" })], lapsed);
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, canCancelRenewal: true });
     await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
-    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true });
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.organizations[0]).toEqual(lapsed);
   });
 
@@ -199,7 +207,7 @@ describe("real Hiring status and owner cancellation", () => {
     memoryDb([term({ state: "suspended", paymentState: "needs_review" })]);
     external.retrieve.mockResolvedValue(subscription({ status: "past_due" }));
     await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
-    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true });
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
   });
 
   it("cancels a verified bound pending subscription before any invoice term exists", async () => {
@@ -231,7 +239,7 @@ describe("real Hiring checkout with synthetic Stripe", () => {
       return { id: "cus_hiring" };
     });
     await expect(createHiringCheckout(context, 7)).resolves.toMatchObject({ url: session().url });
-    expect(external.customerCreate).toHaveBeenCalledWith({ email: EMAIL, metadata: { orgId: "7", type: HIRING_TYPE, policy: HIRING_POLICY } }, { idempotencyKey: "hiring-customer:7" });
+    expect(external.customerCreate).toHaveBeenCalledWith({ email: EMAIL, metadata: { orgId: "7", type: HIRING_TYPE, policy: HIRING_POLICY } }, { ...CHECKOUT_REQUEST, idempotencyKey: "hiring-customer:7" });
     expect(store.tables.organizations[0].stripeCustomerId).toBe("cus_hiring");
     expect(store.tables.hiring_orders).toHaveLength(1);
     expect(store.tables.hiring_orders[0]).toMatchObject({ status: "pending", stripeCheckoutSessionId: "cs_hiring", stripeCustomerId: "cus_hiring" });
@@ -269,7 +277,7 @@ describe("real Hiring checkout with synthetic Stripe", () => {
     const store = memoryDb([], { ...organization(), stripeCustomerId: null }, [pendingOrder({ stripeCheckoutSessionId: "cs_hiring" })]);
     await expect(createHiringCheckout(context, 7)).resolves.toEqual({ url: session().url, orderId: "order_current" });
     expect(external.customerCreate).not.toHaveBeenCalled(); expect(external.sessionCreate).not.toHaveBeenCalled();
-    expect(external.sessionRetrieve).toHaveBeenCalledWith("cs_hiring");
+    expect(external.sessionRetrieve).toHaveBeenCalledWith("cs_hiring", {}, CHECKOUT_REQUEST);
     expect(store.tables.organizations[0].stripeCustomerId).toBe("cus_hiring");
     expect(store.tables.hiring_orders).toHaveLength(1);
   });
@@ -281,7 +289,7 @@ describe("real Hiring checkout with synthetic Stripe", () => {
     expect(store.tables.hiring_orders).toHaveLength(1);
     const id = store.tables.hiring_orders[0].id;
     await expect(createHiringCheckout(context, 7)).resolves.toMatchObject({ orderId: id });
-    expect(external.sessionCreate.mock.calls.map(call => call[1])).toEqual([{ idempotencyKey: `hiring-checkout:${id}` }, { idempotencyKey: `hiring-checkout:${id}` }]);
+    expect(external.sessionCreate.mock.calls.map(call => call[1])).toEqual([{ ...CHECKOUT_REQUEST, idempotencyKey: `hiring-checkout:${id}` }, { ...CHECKOUT_REQUEST, idempotencyKey: `hiring-checkout:${id}` }]);
     expect(external.customerCreate).not.toHaveBeenCalled(); expect(store.tables.hiring_orders).toHaveLength(1);
   });
 
@@ -377,7 +385,7 @@ describe("independent Hiring billing status", () => {
     const store = memoryDb([], organization(), [{ ...order(), status }]);
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, termId: null, canCancelRenewal: true, billingOrderId: "order_current", billingSubscriptionId: "sub_hiring", billingRenewalCancelled: false, hasBillingSubscription: true });
     await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
-    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true });
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.hiring_orders[0]).toMatchObject({ status, renewalCancelled: true });
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, billingRenewalCancelled: true, canCancelRenewal: false });
   });
@@ -450,5 +458,199 @@ describe("Hiring checkout conservative retry boundaries", () => {
     });
     await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "FORBIDDEN", message: "Organization ownership changed. Reload billing." });
     expect(store.tables.hiring_orders[0]).toMatchObject({ status: "pending", stripeCheckoutSessionId: null }); expect(store.writes).toEqual([]);
+  });
+});
+
+describe("verified ended billing operations versus immutable history", () => {
+  it.each(["canceled", "incomplete_expired"])("permits repurchase only after live validated %s termination, preserving the original binding", async status => {
+    const historical = { ...order(), status: "cancelled", renewalCancelled: true };
+    const store = memoryDb([term({ endsAtMs: NOW - 1, state: "subscription_suspended" })], organization(), [historical]);
+    external.retrieve.mockImplementation(async () => {
+      expect(store.transactionDepth).toBe(0);
+      return subscription({ status });
+    });
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, canPurchase: true, hasBillingSubscription: false, billingOrderId: null, canCancelRenewal: false });
+    const replacement = await createHiringCheckout(context, 7);
+    expect(replacement.orderId).not.toBe(historical.id);
+    expect(store.tables.hiring_orders).toHaveLength(2);
+    expect(store.tables.hiring_orders[0]).toEqual(historical);
+    expect(external.retrieve).toHaveBeenCalledWith("sub_hiring", {}, LOCKED_REQUEST);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ canPurchase: true, hasBillingSubscription: false });
+    external.sessionRetrieve.mockResolvedValue(session({ metadata: { ...session().metadata, orderId: replacement.orderId } }));
+    await expect(createHiringCheckout(context, 7)).resolves.toMatchObject({ orderId: replacement.orderId });
+    expect(store.tables.hiring_orders).toHaveLength(2);
+  });
+
+  it.each([
+    { status: "active" },
+    { status: "active", cancel_at_period_end: true },
+    { status: "past_due" },
+    { status: "unpaid" },
+    { status: "canceled", customer: "cus_unrelated" },
+    { status: "canceled", id: "sub_unrelated" },
+    { id: "sub_hiring", deleted: true },
+  ])("does not trust local cancellation with nonterminal or invalid live evidence: %j", async live => {
+    const historical = { ...order(), status: "cancelled", renewalCancelled: true };
+    const store = memoryDb([], organization(), [historical]);
+    external.retrieve.mockResolvedValue(subscription(live));
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ canPurchase: false, hasBillingSubscription: true });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(store.tables.hiring_orders).toEqual([historical]);
+    expect(store.writes).toEqual([]); expect(external.sessionCreate).not.toHaveBeenCalled();
+  });
+
+  it.each([new Error("synthetic timeout"), Object.assign(new Error("resource missing is not verified termination"), { code: "resource_missing" })])("fails closed when terminal live verification is unavailable: %s", async failure => {
+    const historical = { ...order(), status: "cancelled", renewalCancelled: true };
+    const store = memoryDb([], organization(), [historical]); external.retrieve.mockRejectedValue(failure);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ canPurchase: false, hasBillingSubscription: true });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(store.tables.hiring_orders).toEqual([historical]); expect(store.writes).toEqual([]);
+  });
+
+  it.each(["pending", "checkout_failed", "checkout_expired", "cancelled"])("keeps ambiguous %s binding reserved even after every access term has expired", async status => {
+    const store = memoryDb([term({ endsAtMs: NOW - 1 })], organization(), [{ ...order(), status, renewalCancelled: false }]);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, canPurchase: false, hasBillingSubscription: true, canCancelRenewal: true });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(external.retrieve).not.toHaveBeenCalled(); expect(external.sessionCreate).not.toHaveBeenCalled(); expect(store.writes).toEqual([]);
+  });
+
+  it("does not mistake a review-required deletion claim for definitive noncollectible evidence", async () => {
+    const store = memoryDb([], organization(), [{ ...order(), status: "cancelled", renewalCancelled: true }]);
+    store.tables.hiring_events.push({ id: "evt_review", orgId: 7, orderId: "order_current", eventType: "customer.subscription.deleted", state: "review_required" });
+    external.retrieve.mockRejectedValue(new Error("no authoritative live evidence"));
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ canPurchase: false, hasBillingSubscription: true });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(external.sessionCreate).not.toHaveBeenCalled();
+  });
+
+  it("permits withdrawal of the durably bound bill despite mutable metadata drift, never a different live ID or customer", async () => {
+    const store = memoryDb([term()], organization(), [order()]);
+    external.retrieve.mockResolvedValue(subscription({ metadata: {} }));
+    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
+    expect(store.tables.hiring_terms[0]).toMatchObject({ state: "cancel_at_period_end", used: 9, quota: 100 });
+    external.update.mockClear();
+    for (const changes of [{ id: "sub_unrelated" }, { customer: "cus_unrelated" }]) {
+      external.retrieve.mockResolvedValue(subscription({ metadata: {}, ...changes }));
+      await expect(cancelHiringAtPeriodEnd(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    }
+    expect(external.update).not.toHaveBeenCalled();
+  });
+
+  it("keeps paid renewable cancellation accessible and blocks replacement through the paid term and ambiguous expiry", async () => {
+    const store = memoryDb([term()], organization(), [order()]);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, canCancelRenewal: true, canPurchase: false, hasBillingSubscription: true });
+    external.retrieve.mockImplementation(async (_id, _params, options) => {
+      expect(store.transactionDepth).toBe(1); expect(options).toEqual(LOCKED_REQUEST);
+      return subscription();
+    });
+    external.update.mockImplementation(async (_id, _params, options) => {
+      expect(store.transactionDepth).toBe(1); expect(options).toEqual(LOCKED_REQUEST);
+      return subscription({ cancel_at_period_end: true });
+    });
+    await cancelHiringAtPeriodEnd(context, 7);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, canCancelRenewal: false, canPurchase: false, hasBillingSubscription: true });
+    expect(store.tables.hiring_terms[0]).toMatchObject({ state: "cancel_at_period_end", used: 9, quota: 100 });
+    store.tables.hiring_terms[0].endsAtMs = NOW - 1;
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, canPurchase: false, hasBillingSubscription: true });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(external.sessionCreate).not.toHaveBeenCalled();
+  });
+
+  it("retries bounded cancellation safely after remote success followed by local rollback without resetting usage", async () => {
+    const store = memoryDb([term()], organization(), [order()]);
+    const transaction = store.db.transaction.getMockImplementation()!;
+    store.db.transaction.mockImplementationOnce(work => transaction(async tx => {
+      await work(tx); throw new Error("synthetic local commit failure");
+    }));
+    external.update.mockImplementation(async () => {
+      external.retrieve.mockResolvedValue(subscription({ cancel_at_period_end: true }));
+      return subscription({ cancel_at_period_end: true });
+    });
+    await expect(cancelHiringAtPeriodEnd(context, 7)).rejects.toThrow("synthetic local commit failure");
+    expect(store.tables.hiring_orders).toEqual([order()]); expect(store.tables.hiring_terms).toEqual([term()]);
+    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    expect(external.update).toHaveBeenCalledTimes(1);
+    expect(store.tables.hiring_terms[0]).toMatchObject({ used: 9, quota: 100, state: "cancel_at_period_end" });
+  });
+
+  it("preserves old bindings after authoritative deletion, repurchase, and delayed old paid/refund events", async () => {
+    const old = { ...order(), stripeCheckoutSessionId: "cs_old" };
+    const store = memoryDb([], organization(), [old]);
+    const cancelledSub = subscription({ status: "canceled" });
+    await expect(dispatchHiringEvent(event("customer.subscription.deleted", cancelledSub))).resolves.toEqual({ handled: true });
+    expect(store.tables.hiring_orders[0]).toMatchObject({ id: old.id, status: "cancelled", stripeSubscriptionId: "sub_hiring" });
+    external.retrieve.mockRejectedValue(new Error("durable verified deletion needs no live request"));
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ canPurchase: true, hasBillingSubscription: false });
+    const replacement = await createHiringCheckout(context, 7);
+    expect(replacement.orderId).not.toBe(old.id); expect(store.tables.hiring_orders).toHaveLength(2);
+    expect(external.retrieve).not.toHaveBeenCalled();
+    const newMetadata = { ...subscription().metadata, orderId: replacement.orderId };
+    const newSub = subscription({ id: "sub_replacement", metadata: newMetadata });
+    const annualInvoice = (id: string, subId: string, metadata: Row, chargeId: string, intentId: string) => ({
+      id, metadata, subscription: subId, customer: "cus_hiring", currency: "cad", status: "paid", paid: true,
+      collection_method: "charge_automatically", billing_reason: "subscription_create", subtotal: HIRING_AMOUNT,
+      total: 113000, amount_paid: 113000, amount_remaining: 0,
+      lines: { has_more: false, data: [{ type: "subscription", proration: false, quantity: 1, amount: HIRING_AMOUNT, currency: "cad", price: "price_hiring", period: { start: term().startsAtMs / 1000, end: term().endsAtMs / 1000 } }] },
+      payments: { has_more: false, data: [{ status: "paid", amount_paid: 113000, payment: { payment_intent: { id: intentId, latest_charge: { id: chargeId } }, charge: { id: chargeId } } }] },
+    });
+    const oldInvoice = annualInvoice("in_old", old.stripeSubscriptionId, cancelledSub.metadata, "ch_old", "pi_old");
+    const newInvoice = annualInvoice("in_new", newSub.id, newMetadata, "ch_new", "pi_new");
+    const charge = (id: string) => ({ id, customer: "cus_hiring", payment_intent: id === "ch_old" ? "pi_old" : "pi_new", status: "succeeded", paid: true, captured: true, currency: "cad", amount: 113000, amount_captured: 113000, refunded: false, amount_refunded: 0 });
+    external.retrieve.mockImplementation(async id => id === "sub_hiring" ? cancelledSub : newSub);
+    external.invoice.mockImplementation(async id => id === "in_old" ? oldInvoice : newInvoice);
+    external.charge.mockImplementation(async id => charge(id));
+    await expect(dispatchHiringEvent(event("invoice.paid", newInvoice))).resolves.toEqual({ handled: true });
+    const newTerm = store.tables.hiring_terms.find(row => row.sourceSubscriptionId === newSub.id)!;
+    newTerm.used = 17;
+    const savedNewTerm = structuredClone(newTerm);
+    const savedNewOrder = structuredClone(store.tables.hiring_orders.find(row => row.id === replacement.orderId));
+    await expect(dispatchHiringEvent({ ...event("invoice.paid", oldInvoice), id: "evt_late_old_paid" })).resolves.toEqual({ handled: true });
+    external.charge.mockImplementation(async id => ({ ...charge(id), ...(id === "ch_old" ? { refunded: true, amount_refunded: 113000 } : {}) }));
+    await expect(dispatchHiringEvent(event("charge.refunded", { id: "ch_old" }))).resolves.toEqual({ handled: true });
+    expect(store.tables.hiring_orders.find(row => row.id === old.id)).toMatchObject({ stripeSubscriptionId: "sub_hiring", stripeCheckoutSessionId: "cs_old", paymentState: "refunded" });
+    expect(store.tables.hiring_orders.find(row => row.id === replacement.orderId)).toEqual(savedNewOrder);
+    expect(store.tables.hiring_terms.find(row => row.sourceSubscriptionId === newSub.id)).toEqual(savedNewTerm);
+    expect(store.tables.hiring_terms.find(row => row.sourceSubscriptionId === "sub_hiring")).toMatchObject({ paymentState: "refunded", state: "suspended" });
+    expect(store.tables.hiring_payments.find(row => row.id === "ch_old")).toMatchObject({ orderId: old.id, subscriptionId: "sub_hiring", paymentState: "refunded" });
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, used: 17, remaining: 83, billingOrderId: replacement.orderId, billingSubscriptionId: newSub.id, hasBillingSubscription: true, canCancelRenewal: true, canPurchase: false });
+    expect(store.tables.organizations).toEqual([organization()]); expect(store.db.delete).not.toHaveBeenCalled();
+  });
+});
+
+describe("ended-binding proof cannot authorize another billing operation", () => {
+  it.each(["subscription", "customer", "new operation"])("rechecks the exact immutable binding after live verification when %s changes", async change => {
+    const store = memoryDb([], organization(), [{ ...order(), status: "cancelled", renewalCancelled: true }]);
+    external.retrieve.mockImplementation(async () => {
+      expect(store.transactionDepth).toBe(0);
+      if (change === "subscription") store.tables.hiring_orders[0].stripeSubscriptionId = "sub_other";
+      else if (change === "customer") store.tables.hiring_orders[0].stripeCustomerId = "cus_other";
+      else store.tables.hiring_orders.push(pendingOrder({ id: "order_competing", stripeSubscriptionId: "sub_competing", createdAtMs: NOW + 1 }));
+      return subscription({ status: "canceled" });
+    });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(external.sessionCreate).not.toHaveBeenCalled(); expect(store.writes).toEqual([]);
+  });
+
+  it("keeps cancellation pointed at the collectible binding when a newer historical order is definitively ended", async () => {
+    const collectible = order();
+    const historical = { ...order("order_ended", "sub_ended"), createdAtMs: NOW + 1, status: "cancelled", renewalCancelled: true };
+    const store = memoryDb([term()], organization(), [collectible, historical]);
+    store.tables.hiring_events.push({ id: "evt_ended", orgId: 7, orderId: historical.id, eventType: "customer.subscription.deleted", state: "claimed" });
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ billingOrderId: collectible.id, canCancelRenewal: true, canPurchase: false });
+    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    expect(external.retrieve).toHaveBeenCalledTimes(1);
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
+    expect(store.tables.hiring_orders[1]).toEqual(historical);
+    expect(store.tables.hiring_orders[0]).toMatchObject({ renewalCancelled: true });
+  });
+
+  it("uses explicit no-retry, bounded request options for every checkout transport", async () => {
+    const store = memoryDb([], { ...organization(), stripeCustomerId: null }, []);
+    const result = await createHiringCheckout(context, 7);
+    expect(external.priceRetrieve).toHaveBeenCalledWith("price_hiring", { expand: ["product"] }, CHECKOUT_REQUEST);
+    expect(external.customerCreate.mock.calls[0][1]).toEqual({ ...CHECKOUT_REQUEST, idempotencyKey: "hiring-customer:7" });
+    expect(external.sessionCreate.mock.calls[0][1]).toEqual({ ...CHECKOUT_REQUEST, idempotencyKey: `hiring-checkout:${result.orderId}` });
+    expect(store.tables.hiring_orders).toHaveLength(1);
   });
 });

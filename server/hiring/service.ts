@@ -1,14 +1,57 @@
 import { randomUUID } from "node:crypto";
 import { and, desc, eq, gt, inArray, isNotNull, lte, or } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
-import { hiringEvents, hiringOrders, hiringTerms, organizations } from "../../drizzle/schema";
+import { hiringEvents, hiringOrders, hiringTerms, organizations, type HiringOrder } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/accessService";
 import type { TrpcContext } from "../_core/context";
 import { resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { getDb } from "../db";
 import { ENV } from "../_core/env";
-import { HIRING_AMOUNT, HIRING_POLICY, HIRING_TYPE, stripeId, validateHiringCancellationSubscription, validatePilotBounds } from "./policy";
+import { HIRING_AMOUNT, HIRING_POLICY, HIRING_TYPE, stripeId, validatePilotBounds } from "./policy";
 import { assertCurrentAnnualOrganization } from "../recruitment/access";
+
+// Cancellation keeps its order lock to serialize against invoice renewal. Bound
+// its two HTTP calls (including disabling SDK retries), not just the SQL wait.
+const lockedStripeRequest = { timeout: 2_000, maxNetworkRetries: 0 };
+const checkoutStripeRequest = { timeout: 10_000, maxNetworkRetries: 0 };
+const billingCandidates = (orgId: number) => and(eq(hiringOrders.orgId, orgId),
+  or(inArray(hiringOrders.status, ["pending", "active"]), isNotNull(hiringOrders.stripeSubscriptionId)));
+// Proof belongs to the immutable customer/subscription binding, never merely an
+// order ID or mutable status. Recheck this key after acquiring reservation locks.
+const billingBindingKey = (order: HiringOrder) => JSON.stringify([order.id, order.orgId, order.stripeCustomerId, order.stripeSubscriptionId]);
+function validateBoundBillingSubscription(sub: any, order: HiringOrder) {
+  // This is withdrawal/termination authority only, never entitlement authority.
+  // Mutable Stripe metadata must not stop the owner cancelling a known bill.
+  if (!sub || sub.deleted || !order.stripeSubscriptionId || sub.id !== order.stripeSubscriptionId) {
+    throw new TRPCError({ code: "CONFLICT", message: "Hiring cancellation subscription binding mismatch" });
+  }
+  if (!order.stripeCustomerId || stripeId(sub.customer) !== order.stripeCustomerId) {
+    throw new TRPCError({ code: "CONFLICT", message: "Hiring cancellation customer binding mismatch" });
+  }
+}
+async function verifiedEndedBindings(db: NonNullable<Awaited<ReturnType<typeof getDb>>>, orders: HiringOrder[]) {
+  const ended = new Set<string>();
+  for (const order of orders) {
+    if (!order.stripeSubscriptionId) continue;
+    const [deletion] = await db.select({ id: hiringEvents.id }).from(hiringEvents).where(and(
+      eq(hiringEvents.orgId, order.orgId), eq(hiringEvents.orderId, order.id),
+      eq(hiringEvents.eventType, "customer.subscription.deleted"), eq(hiringEvents.state, "claimed"))).limit(1);
+    if (deletion) { ended.add(billingBindingKey(order)); continue; }
+    // Checkout failure/expiry and scheduled cancellation are NOT termination.
+    // A local cancelled flag is only a reason to seek authoritative live proof.
+    if (order.status !== "cancelled" || !order.renewalCancelled) continue;
+    try {
+      const { stripe } = await import("../stripe/stripe");
+      const sub = await stripe.subscriptions.retrieve(order.stripeSubscriptionId, {}, lockedStripeRequest);
+      validateBoundBillingSubscription(sub, order);
+      if (["canceled", "incomplete_expired"].includes(sub.status)) ended.add(billingBindingKey(order));
+    } catch {
+      // Unavailable/mismatched evidence, including resource_missing, fails closed.
+      // Never detach the historical binding needed by delayed invoices/refunds.
+    }
+  }
+  return ended;
+}
 
 function ownerEmail(ctx: TrpcContext): string {
   const email = normalizeEmail(ctx.user?.email ?? ctx.studentEmail ?? "");
@@ -25,7 +68,7 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
   const db = await getDb();
   if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
   const { stripe } = await import("../stripe/stripe");
-  const configuredPrice = await stripe.prices.retrieve(priceId, { expand: ["product"] }) as any;
+  const configuredPrice = await stripe.prices.retrieve(priceId, { expand: ["product"] }, checkoutStripeRequest) as any;
   if (!configuredPrice.active || !configuredPrice.product?.active || configuredPrice.currency !== "cad" || configuredPrice.unit_amount !== HIRING_AMOUNT
     || configuredPrice.type !== "recurring" || configuredPrice.recurring?.interval !== "year"
     || configuredPrice.recurring?.interval_count !== 1 || configuredPrice.recurring?.usage_type !== "licensed"
@@ -37,15 +80,18 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
   let orderId: string = randomUUID();
   let orderOwnerEmail = email;
   let existingCheckoutSessionId: string | null = null;
+  const candidates = await db.select().from(hiringOrders).where(billingCandidates(org.id));
+  const endedBindings = await verifiedEndedBindings(db, candidates);
   // No Stripe requests while holding the organization lock: candidate operations
   // also need this row. A second short transaction rechecks all mutable authority.
   const reserveOrder = (createdCustomerId: string | null = null) => db.transaction(async tx => {
     const [currentOrg] = await tx.select().from(organizations).where(eq(organizations.id, org.id)).limit(1).for("update");
     if (!currentOrg || normalizeEmail(currentOrg.managerEmail) !== email) throw new TRPCError({ code: "FORBIDDEN", message: "Organization ownership changed. Reload billing." });
     assertCurrentAnnualOrganization(currentOrg, Date.now());
-    const existing = await tx.select().from(hiringOrders)
-      .where(and(eq(hiringOrders.orgId, org.id), or(inArray(hiringOrders.status, ["pending", "active"]), isNotNull(hiringOrders.stripeSubscriptionId))))
+    const locked = await tx.select().from(hiringOrders)
+      .where(billingCandidates(org.id))
       .orderBy(desc(hiringOrders.createdAtMs)).for("update");
+    const existing = locked.filter(order => !endedBindings.has(billingBindingKey(order)));
     if (existing.some(order => order.status === "active")) throw new TRPCError({ code: "CONFLICT", message: "A Hiring subscription already exists." });
     // A terminal Checkout message is not proof that a bound subscription cannot
     // collect. Keep all bound orders visible to billing until reconciled.
@@ -73,7 +119,7 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
   });
   try {
     if (!await reserveOrder()) {
-      const customer = await stripe.customers.create({ email, metadata: { orgId: String(org.id), type: HIRING_TYPE, policy: HIRING_POLICY } }, { idempotencyKey: `hiring-customer:${org.id}` });
+      const customer = await stripe.customers.create({ email, metadata: { orgId: String(org.id), type: HIRING_TYPE, policy: HIRING_POLICY } }, { ...checkoutStripeRequest, idempotencyKey: `hiring-customer:${org.id}` });
       if (!customer.id) throw new TRPCError({ code: "CONFLICT", message: "Hiring customer binding is unavailable. Reconcile billing before retrying." });
       await reserveOrder(customer.id);
     }
@@ -81,7 +127,7 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
     const base = ENV.appBaseUrl.replace(/\/$/, "");
     const metadata = { type: HIRING_TYPE, policy: HIRING_POLICY, orderId, orgId: String(org.id), ownerEmail: orderOwnerEmail };
     const session = existingCheckoutSessionId
-      ? await stripe.checkout.sessions.retrieve(existingCheckoutSessionId)
+      ? await stripe.checkout.sessions.retrieve(existingCheckoutSessionId, {}, checkoutStripeRequest)
       : await stripe.checkout.sessions.create({
         mode: "subscription", line_items: [{ price: priceId, quantity: 1 }],
         customer: stripeCustomerId,
@@ -89,7 +135,7 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
         automatic_tax: { enabled: true },
         success_url: `${base}/team?view=hiring&hiring_session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${base}/team?view=hiring&hiring_cancelled=1`,
-      }, { idempotencyKey: `hiring-checkout:${orderId}` });
+      }, { ...checkoutStripeRequest, idempotencyKey: `hiring-checkout:${orderId}` });
     if (!session.id || (existingCheckoutSessionId && session.id !== existingCheckoutSessionId)
       || stripeId(session.customer) !== stripeCustomerId || session.mode !== "subscription"
       || Object.entries(metadata).some(([key, value]) => session.metadata?.[key] !== value)
@@ -161,39 +207,46 @@ export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   let currentAnnual = true;
   try { assertCurrentAnnualOrganization(org, now); } catch { currentAnnual = false; }
   const [activeTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
-  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(desc(hiringTerms.endsAtMs)).limit(1);
-  const [order] = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id),
-    isNotNull(hiringOrders.stripeSubscriptionId))).orderBy(desc(hiringOrders.createdAtMs)).limit(1);
+  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended", "subscription_suspended"]))).orderBy(desc(hiringTerms.endsAtMs)).limit(1);
+  const candidates = await db.select().from(hiringOrders).where(billingCandidates(org.id)).orderBy(desc(hiringOrders.createdAtMs));
+  const endedBindings = await verifiedEndedBindings(db, candidates);
+  const currentOrders = candidates.filter(order => !endedBindings.has(billingBindingKey(order)));
+  const order = currentOrders.find(order => order.stripeSubscriptionId);
   const owner = normalizeEmail(org.managerEmail) === email;
   const term = activeTerm ?? billingTerm;
   const active = currentAnnual && !!activeTerm;
   const canCancelRenewal = owner && !!order?.stripeSubscriptionId && !order.renewalCancelled;
+  const canPurchase = owner && currentAnnual && !Boolean(activeTerm) && !currentOrders.some(order => order.stripeSubscriptionId || order.status === "active");
   // Access can come from a pilot while a separate Stripe operation still bills.
   // Keep the original access fields, with independent billing facts for the UI.
   const billing = { billingOrderId: order?.id ?? null, billingSubscriptionId: order?.stripeSubscriptionId ?? null,
-    billingRenewalCancelled: !!order?.renewalCancelled, hasBillingSubscription: !!order?.stripeSubscriptionId };
+    billingRenewalCancelled: !!order?.renewalCancelled, hasBillingSubscription: !!order?.stripeSubscriptionId, canPurchase };
   return term ? { active, owner, state: term.state, termId: term.id, basis: term.basis, used: term.used, quota: term.quota, remaining: Math.max(0, term.quota - term.used), startsAtMs: term.startsAtMs, endsAtMs: term.endsAtMs, sourceSubscriptionId: term.sourceSubscriptionId, canCancelRenewal, ...billing } : { active: false, owner, state: null, termId: null, basis: order ? "stripe" : null, used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null, sourceSubscriptionId: order?.stripeSubscriptionId ?? null, canCancelRenewal, ...billing };
 }
 
 export async function cancelHiringAtPeriodEnd(ctx: TrpcContext, orgId: number) {
   const { org, email } = await hiringOwner(ctx, orgId); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
   const { stripe } = await import("../stripe/stripe");
+  const candidates = await db.select().from(hiringOrders).where(billingCandidates(org.id));
+  const endedBindings = await verifiedEndedBindings(db, candidates);
   const endsAtMs = await db.transaction(async tx => {
     const [currentOrg] = await tx.select().from(organizations).where(eq(organizations.id, org.id)).limit(1).for("share");
     if (!currentOrg || normalizeEmail(currentOrg.managerEmail) !== email) throw new TRPCError({ code: "FORBIDDEN", message: "Organization ownership changed. Reload billing." });
-    const [lockedOrder] = await tx.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id),
-      isNotNull(hiringOrders.stripeSubscriptionId))).orderBy(desc(hiringOrders.createdAtMs)).limit(1).for("update");
+    const lockedOrders = await tx.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id),
+      isNotNull(hiringOrders.stripeSubscriptionId))).orderBy(desc(hiringOrders.createdAtMs)).for("update");
+    const lockedOrder = lockedOrders.find(order => !endedBindings.has(billingBindingKey(order)));
     if (!lockedOrder?.stripeSubscriptionId) throw new TRPCError({ code: "CONFLICT", message: "Hiring subscription binding could not be verified." });
     const subscriptionId = lockedOrder.stripeSubscriptionId;
-    const sub = await stripe.subscriptions.retrieve(subscriptionId, { expand: ["items.data.price.product"] });
-    validateHiringCancellationSubscription(sub, { id: lockedOrder.id, orgId: org.id, customerId: lockedOrder.stripeCustomerId, subscriptionId });
+    const sub = await stripe.subscriptions.retrieve(subscriptionId, { expand: ["items.data.price.product"] }, lockedStripeRequest);
+    validateBoundBillingSubscription(sub, lockedOrder);
     let cancelled = sub;
-    if (sub.status !== "canceled" && !sub.cancel_at_period_end) cancelled = await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true });
-    await tx.update(hiringOrders).set({ renewalCancelled: true }).where(eq(hiringOrders.id, lockedOrder.id));
+    const terminated = ["canceled", "incomplete_expired"].includes(sub.status);
+    if (!terminated && !sub.cancel_at_period_end) cancelled = await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true }, lockedStripeRequest);
+    await tx.update(hiringOrders).set({ renewalCancelled: true, ...(terminated ? { status: "cancelled" } : {}) }).where(eq(hiringOrders.id, lockedOrder.id));
     const [latest] = await tx.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.sourceSubscriptionId, subscriptionId))).orderBy(desc(hiringTerms.endsAtMs)).limit(1).for("update");
     if (latest && latest.paymentState === "active"
       && ["active", "cancel_at_period_end"].includes(latest.state)) {
-      await tx.update(hiringTerms).set({ state: "cancel_at_period_end" }).where(eq(hiringTerms.id, latest.id));
+      await tx.update(hiringTerms).set({ state: terminated ? "subscription_suspended" : "cancel_at_period_end" }).where(eq(hiringTerms.id, latest.id));
     }
     const stripeEnd = cancelled.items.data[0]?.current_period_end;
     return Number.isSafeInteger(stripeEnd) ? stripeEnd! * 1000 : latest?.endsAtMs ?? null;

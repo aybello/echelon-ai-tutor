@@ -30,7 +30,13 @@ export async function reconcileHiringPayment(tx: any, input: {
     || current.sourcePaymentIntentId !== paymentIntentId)) throw new InvalidHiringPayment("Immutable Hiring term binding mismatch");
   const previous = stored?.paymentState ?? current?.paymentState
     ?? (order.paymentChargeId === chargeId ? order.paymentState : "active");
-  const observed = input.incomplete ? "needs_review" : hiringPaymentState(input.charge, input.disputes);
+  const evidence = hiringPaymentState(input.charge, input.disputes);
+  // Positive terminal facts do not require an exhaustive dispute list. A partial
+  // refund requires manual review; a truncated/missing dispute list is instead
+  // a retryable dispute hold, never a sticky manual-review decision.
+  const observed: HiringPaymentState = evidence === "refunded" || evidence === "dispute_lost"
+    || input.charge.amount_refunded > 0 ? evidence
+    : input.incomplete || evidence === "needs_review" ? "disputed" : evidence;
   const knownDisputeIds = stored?.disputeIds ?? [];
   const disputeIds = [...new Set([...knownDisputeIds, ...input.disputes.map(d => d.id).filter((id): id is string => typeof id === "string")])].sort();
   // Stronger adverse evidence can advance a hold. No replay may weaken one.
@@ -57,6 +63,6 @@ export async function closeHiringInvoiceReviews(tx: any, orderId: string, invoic
 
 export function hiringTermState(paymentState: string, subscription: any): string {
   if (paymentState !== "active") return "suspended";
-  if (!["active", "past_due"].includes(subscription.status)) return "subscription_suspended";
+  if (subscription.status !== "active") return "subscription_suspended";
   return subscription.cancel_at_period_end ? "cancel_at_period_end" : "active";
 }

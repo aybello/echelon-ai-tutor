@@ -8,7 +8,10 @@ vi.mock("./_core/access", async importOriginal => ({
   ...await importOriginal<typeof import("./_core/access")>(),
   resolveAccess: vi.fn(), resolveAccessByEmail: vi.fn(),
 }));
-vi.mock("./_core/accessService", () => ({ verifyAccessTokenAndRecheckDb: vi.fn() }));
+vi.mock("./_core/accessService", async importOriginal => ({
+  ...await importOriginal<typeof import("./_core/accessService")>(),
+  verifyAccessTokenAndRecheckDb: vi.fn(),
+}));
 vi.mock("./db", () => ({ getDb: vi.fn() }));
 
 describe("checkAccess identity boundary", () => {
@@ -42,6 +45,16 @@ describe("checkAccess identity boundary", () => {
     vi.mocked(resolveAccessByEmail).mockResolvedValue({ hasAccess: false } as any);
     vi.mocked(verifyAccessTokenAndRecheckDb).mockResolvedValue({ hasAccess: true } as any);
     expect((await caller("second@example.com").checkAccess({ examType: "oit", accessToken: "first-user-token" })).hasAccess).toBe(false);
+    expect(verifyAccessTokenAndRecheckDb).not.toHaveBeenCalled();
+  });
+
+  it.each([undefined, false, true])("denies applicant token status before legacy fallbacks even with learner flag %s", async flag => {
+    vi.mocked(verifyAccessTokenAndRecheckDb).mockResolvedValue({ hasAccess: true } as any);
+    const applicant = stripeRouter.createCaller({ user: null, studentEmail: null,
+      assessmentOnlySession: { assignmentId: "11111111-1111-4111-8111-111111111111", candidateEmail: "applicant@example.test", courseKey: "oit" },
+      assessmentOnlyHasLearnerAccess: flag, req: {}, res: {} } as TrpcContext);
+    await expect(applicant.checkAccess({ examType: "oit", accessToken: "previous-learner-valid-token" })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(resolveAccess).not.toHaveBeenCalled(); expect(resolveAccessByEmail).not.toHaveBeenCalled();
     expect(verifyAccessTokenAndRecheckDb).not.toHaveBeenCalled();
   });
 });

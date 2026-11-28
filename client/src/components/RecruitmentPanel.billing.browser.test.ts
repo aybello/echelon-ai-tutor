@@ -8,7 +8,7 @@ const orgId = 7;
 const status = {
   active: false, owner: true, state: null, termId: null, basis: null,
   used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null,
-  sourceSubscriptionId: null, canCancelRenewal: false,
+  sourceSubscriptionId: null, canCancelRenewal: false, canPurchase: true,
 };
 
 beforeAll(async () => {
@@ -44,8 +44,13 @@ beforeAll(async () => {
           return {endsAtMs:1900000000000};
         }
         if (op.path === 'hiring.createCheckout') return {url:null,orderId:'synthetic-order'};
-        if (op.path === 'recruitment.list') return [];
-        if (op.path === 'recruitment.catalog') return {courses:[],candidates:[]};
+        if (op.path === 'recruitment.list') return fixture.assessment ? [fixture.assessment] : [];
+        if (op.path === 'recruitment.catalog') return fixture.catalog || {courses:[],candidates:[]};
+        if (op.path === 'recruitment.results') return {assessment:fixture.assessment,results:[]};
+        if (op.path === 'recruitment.invite') {
+          if (op.input.candidateEmail) fixture.status = {...fixture.status,used:fixture.status.used+1,remaining:fixture.status.remaining-1};
+          return {assignmentId:'11111111-1111-4111-8111-111111111111'};
+        }
         throw new Error('Unexpected synthetic RPC: '+op.path);
       };
       const rpc = trpc.createClient({links:[() => ({op}) => observable(observer => {
@@ -72,6 +77,8 @@ type Fixture = {
   holdStatus?: boolean;
   holdMutation?: boolean;
   failures?: Record<string, { message: string; code?: string }>;
+  assessment?: Record<string, unknown>;
+  catalog?: Record<string, unknown>;
 };
 async function withPanel(fixture: Fixture, run: (page: Page) => Promise<void>) {
   const page = await browser.newPage();
@@ -146,7 +153,7 @@ describe("independent organization Hiring billing (actual React/QueryClient)", (
   });
 
   it("does not offer another purchase when a cancelled paid billing subscription remains connected to a free allowance",async()=>{
-    await withPanel({status:{active:true,basis:"pilot",state:"active",hasBillingSubscription:true,billingOrderId:"synthetic-paid-order",billingRenewalCancelled:true}},async page=>{
+    await withPanel({status:{active:true,basis:"pilot",state:"active",hasBillingSubscription:true,billingOrderId:"synthetic-paid-order",billingRenewalCancelled:true,canPurchase:false}},async page=>{
       await page.getByText("Paid Hiring renewal is cancelled. This does not restore unavailable allowance or team access.",{exact:true}).waitFor();
       expect(await button(page,"Add Hiring allowance").count()).toBe(0);
       expect(await button(page,"Cancel Hiring renewal").count()).toBe(0);
@@ -261,6 +268,49 @@ describe("independent organization Hiring billing (actual React/QueryClient)", (
       await page.getByText("Only the verified organization owner can purchase Hiring or cancel its renewal.",{exact:true}).waitFor();
       await page.evaluate(()=>(window as any).__oldPurchase());
       expect(await purchaseCalls(page)).toEqual([]);
+    });
+  });
+});
+
+describe("authoritative repurchase and invitation quota visibility", () => {
+  it("honors explicit server repurchase permission even when immutable historical billing IDs remain in the response", async () => {
+    await withPanel({ status: { active: false, state: "subscription_suspended", hasBillingSubscription: true, billingOrderId: "historical-order", billingSubscriptionId: "historical-subscription", billingRenewalCancelled: true, canPurchase: true } }, async page => {
+      await button(page, "Add Hiring allowance").click();
+      await expect.poll(() => purchaseCalls(page)).toEqual([{ path: "hiring.createCheckout", input: { orgId }, type: "mutation" }]);
+      expect(await cancelCalls(page)).toEqual([]);
+      expect(await page.locator('a[href*="pricing"],a[href*="billing=personal"]').count()).toBe(0);
+      expect(await page.locator("#root").innerText()).not.toMatch(/pilot/i);
+    });
+  });
+
+  it.each([false, null, undefined])("never infers purchase authority when the server canPurchase decision is %s", async canPurchase => {
+    await withPanel({ status: { active: false, canCancelRenewal: false, canPurchase } }, async page => {
+      await page.getByText("No assessments yet", { exact: true }).waitFor();
+      expect(await button(page, "Add Hiring allowance").count()).toBe(0);
+      expect(await purchaseCalls(page)).toEqual([]);
+    });
+  });
+
+  it("refetches the independent Hiring quota badge immediately after a successful applicant invitation", async () => {
+    const assessmentId = "22222222-2222-4222-8222-222222222222";
+    await withPanel({
+      status: { active: true, basis: "stripe", state: "active", quota: 100, used: 9, remaining: 91, canPurchase: false, canCancelRenewal: true },
+      assessment: { id: assessmentId, title: "Synthetic applicant assessment", courseKey: "class2-water", courseLabel: "Class 2 Water", modules: ["Treatment"], questionCount: 5, timeLimitMinutes: null, difficultyMode: "mixed", passingScore: 70, createdAtMs: 1000, expiresAtMs: 4102444800000, candidates: 0, completed: 0 },
+      catalog: { courses: [{ courseKey: "class2-water", label: "Class 2 Water", count: 5, modules: [{ name: "Treatment", count: 5 }] }], candidates: [] },
+    }, async page => {
+      const badge = page.getByRole("region", { name: "Hiring allowance and billing" });
+      await expect.poll(() => badge.innerText()).toContain("91 of 100 remaining");
+      await page.getByRole("button", { name: /Synthetic applicant assessment/ }).click();
+      await button(page, "Applicant add-on").click();
+      await page.getByLabel("Applicant name", { exact: true }).fill("Synthetic applicant");
+      await page.getByLabel("Applicant email", { exact: true }).fill("applicant@example.test");
+      const readsBefore = (await calls(page, "hiring.status")).length;
+      await button(page, "Create invitation link").click();
+      await expect.poll(() => calls(page, "recruitment.invite")).toEqual([{ path: "recruitment.invite", input: { orgId, assessmentId, candidateEmail: "applicant@example.test", candidateName: "Synthetic applicant" }, type: "mutation" }]);
+      await expect.poll(async () => (await calls(page, "hiring.status")).length).toBeGreaterThan(readsBefore);
+      await expect.poll(() => badge.innerText()).toContain("90 of 100 remaining");
+      expect(await purchaseCalls(page)).toEqual([]);
+      expect(await page.locator('a[href*="pricing"]').count()).toBe(0);
     });
   });
 });

@@ -119,8 +119,8 @@ function HiringBillingBody({ orgId, access, purchaseEnabled }: { orgId: number; 
     authorization.status === "success" && authorization.fetchStatus === "idle" &&
     !authorization.isInvalidated && authorization.data === status && status?.owner === true;
   const busy = checkout.isPending || cancel.isPending;
-  // Newer servers can distinguish purchase eligibility from allowance activity.
-  // The legacy contract still authorizes checkout again on the server.
+  // Only a fresh server decision can distinguish historical immutable billing
+  // bindings from a current collectible operation. Missing evidence fails closed.
   const billing = status as (typeof status & {
     canPurchase?: boolean;
     billingOrderId?: string | null;
@@ -128,9 +128,7 @@ function HiringBillingBody({ orgId, access, purchaseEnabled }: { orgId: number; 
     billingRenewalCancelled?: boolean;
   });
   const purchaseAllowed = purchaseEnabled && !!status?.owner &&
-    !billing?.hasBillingSubscription && !billing?.billingOrderId &&
-    (billing?.canPurchase ??
-      (!status.active && !status.canCancelRenewal));
+    billing?.canPurchase === true;
   async function purchaseHiring() {
     if (!canManage() || !purchaseAllowed || busy || pending.current) return;
     pending.current = true;
@@ -1079,6 +1077,9 @@ function RecruitmentDetail({
         ? { orgId, assessmentId, candidateEmail: applicantEmail, candidateName: applicantName }
         : { orgId, assessmentId, memberId: Number(memberId) });
       if (!isCurrent()) return;
+      // Refresh immediately after the committed write, before clipboard work:
+      // the independent billing badge must not retain the old invitation quota.
+      if (inviteMode === "applicant") void utils.hiring.status.invalidate({ orgId });
       await copyLink(data.assignmentId);
       if (!isCurrent()) return;
       setMemberId("");

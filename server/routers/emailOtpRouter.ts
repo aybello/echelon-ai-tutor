@@ -181,6 +181,7 @@ export const emailOtpRouter = router({
 
         return {
           valid: true as const,
+          sessionKind: applicantOnly ? "assessment-only" as const : "verified-email" as const,
           email,
           examTypes,
           accessToken,

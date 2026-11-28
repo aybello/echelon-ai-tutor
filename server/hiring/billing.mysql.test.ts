@@ -480,4 +480,22 @@ describe.skipIf(!enabled)("Hiring billing on fresh disposable real MySQL/InnoDB 
     expect(await payments(f)).toHaveLength(1);
     expect(await db.select().from(hiringEvents).where(eq(hiringEvents.orderId, f.orderId))).toHaveLength(1);
   }, 10_000);
+
+  it("persists a known refund despite mutable metadata loss and preserves the other year's immutable payment and usage", async () => {
+    const f = await fixture(), older = annual(f, 2026), newer = annual(f, 2027);
+    await dispatchHiringEvent(paid(f, older)); await dispatchHiringEvent(paid(f, newer));
+    await db.update(hiringTerms).set({ used: 41 }).where(eq(hiringTerms.sourceInvoiceId, older.invoiceId));
+    const beforeNewer = (await terms(f)).find(row => row.sourceInvoiceId === newer.invoiceId);
+    Object.assign(live.subscriptions.get(f.subId)!, { metadata: {} });
+    Object.assign(live.invoices.get(older.invoiceId)!, { metadata: {}, payments: { has_more: true, data: [] } });
+    Object.assign(live.charges.get(older.chargeId)!, { refunded: true, amount_refunded: 113_000 });
+    await dispatchHiringEvent(reversal(older));
+    const rows = await terms(f);
+    expect(rows.find(row => row.sourceInvoiceId === older.invoiceId)).toMatchObject({ state: "suspended", paymentState: "refunded", used: 41, quota: 100 });
+    expect(rows.find(row => row.sourceInvoiceId === newer.invoiceId)).toEqual(beforeNewer);
+    expect((await payments(f)).find(row => row.id === older.chargeId)).toMatchObject({ paymentState: "refunded" });
+    expect((await payments(f)).find(row => row.id === newer.chargeId)).toMatchObject({ paymentState: "active" });
+    await dispatchHiringEvent(event("customer.subscription.updated", required(live.subscriptions, f.subId, "metadata drift")));
+    expect((await terms(f)).find(row => row.sourceInvoiceId === older.invoiceId)).toMatchObject({ state: "suspended", paymentState: "refunded", used: 41 });
+  }, 10_000);
 });

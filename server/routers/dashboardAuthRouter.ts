@@ -212,6 +212,7 @@ export const dashboardAuthRouter = router({
         if (!applicantOnly) await recordLearnerSignIn(ctx.req, { email }, "dashboard_otp");
         return {
           success: true,
+          sessionKind: applicantOnly ? "assessment-only" as const : "verified-email" as const,
           email,
           accessToken,
           unlockedExamTypes,

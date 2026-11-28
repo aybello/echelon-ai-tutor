@@ -47,6 +47,7 @@ import {
 import { verifySubscriptionToken } from "./subscriptionToken";
 import { getCourseByKey, getAllCourses } from "../../shared/courseRegistry";
 import type { CourseEntry } from "../../shared/courseRegistry";
+import { assertLearnerStateAllowed } from "./assessmentOnlySession";
 
 // ---------------------------------------------------------------------------
 // Identity
@@ -162,6 +163,10 @@ export async function assertAccess(
     accessToken?: string | null;
   },
 ): Promise<void> {
+  // An applicant capability is not a learner login. In particular, an old
+  // learner's signed browser token must not upgrade an assessment-only session.
+  assertLearnerStateAllowed(ctx);
+
   // Free exam types are always accessible
   if (FREE_EXAM_TYPES.has(examType)) return;
 
@@ -281,6 +286,16 @@ export async function resolveAccessForRequest(
     privilegedInteractiveAccess?: boolean;
   },
 ): Promise<boolean> {
+  // Preserve this soft guard's boolean contract while applying the same
+  // assessment-only boundary as learner-state writes and the strict guard.
+  // This must precede free access and every identity/token fallback.
+  try {
+    assertLearnerStateAllowed(ctx);
+  } catch (error) {
+    if (error instanceof TRPCError && error.code === "FORBIDDEN") return false;
+    throw error;
+  }
+
   // 1. Free exam types
   if (FREE_EXAM_TYPES.has(examType)) return true;
 

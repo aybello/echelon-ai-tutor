@@ -10,6 +10,8 @@ import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
 import { notifyIdentityChange } from "@shared/identityChange";
 import { otpSuccessDestination, sanitizeAccountNext } from "./accountAccess";
+import { useQueryClient } from "@tanstack/react-query";
+import { clearBrowserIdentity } from "@/lib/logout";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -17,6 +19,7 @@ const LOGO_URL =
 type Step = "email" | "code" | "success" | "error";
 
 export default function OtpLogin() {
+  const queryClient = useQueryClient();
   const [step, setStep] = useState<Step>("email");
   // Pre-fill email from ?email= URL param (set by /account redirect)
   // Read ?next= param — safe same-application relative paths only
@@ -78,21 +81,29 @@ export default function OtpLogin() {
   });
 
   const verifyOtp = trpc.emailOtp.verifyOtp.useMutation({
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       if (data.valid) {
-        // Store access in localStorage — same pattern as magic link
-        try {
-          if (data.accessToken) {
-            localStorage.setItem("echelon_access_token", data.accessToken);
-          }
-          localStorage.setItem("echelon_subscription_email", data.email);
-          localStorage.setItem("echelon_trial_email", data.email);
-          localStorage.setItem("echelon_trial_unlocked", "true");
-          if (data.examTypes.length > 0) {
+        if (data.sessionKind === "assessment-only") {
+          // The HttpOnly invitation cookie is the applicant's entire access.
+          // Do not relabel a previous learner's token, products or cached data
+          // as this applicant's identity on a shared browser.
+          try { await clearBrowserIdentity(queryClient); } catch { /* best effort; server guards remain authoritative */ }
+        } else {
+          try {
+            if (data.accessToken) {
+              localStorage.setItem("echelon_access_token", data.accessToken);
+            } else {
+              localStorage.removeItem("echelon_access_token");
+            }
+            localStorage.setItem("echelon_subscription_email", data.email);
+            localStorage.setItem("echelon_trial_email", data.email);
+            localStorage.setItem("echelon_trial_unlocked", "true");
+            // Replace, rather than retain, a prior learner's course lists even
+            // for manager/billing recovery sessions without course access.
             localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
             localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
-          }
-        } catch { /* session cookie remains valid without local storage */ }
+          } catch { /* session cookie remains valid without local storage */ }
+        }
         notifyIdentityChange();
         setIsManager(!!data.isManager);
         setStep("success");

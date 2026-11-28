@@ -36,6 +36,7 @@ import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadi
 import { hashAnalyticsAnonymousId, trackEvent } from "../analytics";
 import { savePurchaseExamDate } from "../purchaseExamDate";
 import { buildTeamSubscriptionBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import { assertLearnerStateAllowed } from "../_core/assessmentOnlySession";
 import { funnelProvince } from "../../shared/funnelNavigation";
 import { isNovaScotiaCheckoutAllowed } from "../../shared/novaScotiaPreparation";
 import { createHiringCheckout } from "../hiring/service";
@@ -466,6 +467,7 @@ export const stripeRouter = router({
   checkAccess: publicProcedure
     .input(z.object({ examType: z.string(), email: z.string().email().optional(), accessToken: z.string().optional() }))
     .query(async ({ input, ctx }) => {
+      assertLearnerStateAllowed(ctx);
       let { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
       // Fallback 1: verify signed access token + live DB re-check (PATCH 1: was JWT-only, now also re-checks DB)
       if (!hasAccess && !ctx.user && !ctx.studentEmail && input.accessToken) {

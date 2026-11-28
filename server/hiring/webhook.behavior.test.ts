@@ -127,7 +127,7 @@ describe("real Hiring paid invoice fulfilment", () => {
     expect(store.state.hiring_orders[0]).toMatchObject({ status: "active" });
     expect(store.state.hiring_payments).toEqual([expect.objectContaining({ ...payment(), updatedAtMs: expect.any(Number) })]);
     expect(store.effects.map(effect => effect.table)).toEqual(["hiring_payments", "hiring_terms", "hiring_orders", "hiring_events", "hiring_events"]);
-    expect(external.invoice).toHaveBeenCalledWith("in_hiring", { expand: ["payments.data.payment.payment_intent", "payments.data.payment.charge"] });
+    expect(external.invoice).toHaveBeenCalledWith("in_hiring", { expand: ["payments.data.payment.payment_intent", "payments.data.payment.charge"] }, { timeout: 5_000, maxNetworkRetries: 0 });
   });
 
   it("deduplicates both identical event delivery and another paid event for the same invoice", async () => {
@@ -157,6 +157,7 @@ describe("real Hiring paid invoice fulfilment", () => {
     const store = memoryDb(); external.charge.mockResolvedValue(charge(change)); external.disputes.mockResolvedValue({ data: disputes });
     await expect(dispatchHiringEvent(paidEvent())).resolves.toEqual({ handled: true, reviewRequired: true });
     expect(store.state.hiring_terms).toEqual([]);
+    expect(store.state.hiring_orders[0]).toMatchObject({ status: "pending", paymentState });
     expect(store.state.hiring_payments).toEqual([expect.objectContaining({ id: "ch_hiring", paymentState })]);
     expect(store.state.hiring_events).toEqual([expect.objectContaining({ id: "evt_invoice_paid", state: "review_required" })]);
     expect(store.effects.map(effect => effect.table)).toEqual(["hiring_payments", "hiring_orders", "hiring_events"]);
@@ -358,7 +359,7 @@ describe("real Hiring refund/dispute ordering", () => {
     const store = memoryDb(); external.invoice.mockResolvedValue(invoice({ metadata, customer: "cus_other" }));
     external.charge.mockResolvedValue(charge({ refunded: true, amount_refunded: 113000 }));
     await expect(dispatchHiringEvent(reversalEvent("charge.refunded"))).resolves.toEqual({ handled: true, reviewRequired: true });
-    expectReviewOnly(store, "evt_charge.refunded", null);
+    expectReviewOnly(store, "evt_charge.refunded", "in_hiring");
   });
 });
 
@@ -444,7 +445,7 @@ describe("real Hiring transaction failure and locks", () => {
       expect(store.state.hiring_terms).toEqual([]);
     } else {
       await dispatchHiringEvent(reversalEvent("charge.dispute.closed", { status: "won" }));
-      expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "needs_review" });
+      expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "disputed" });
     }
   });
 
@@ -478,7 +479,7 @@ describe("Hiring review regression traces", () => {
     expect(store.state.hiring_payments[0]).toMatchObject({ id: "ch_hiring", paymentState: "refunded" });
     if (existing) expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "refunded", used: 100 });
     else expect(store.state.hiring_terms).toEqual([]);
-    expect(external.invoice).toHaveBeenCalledWith("in_hiring", { expand: ["payments.data.payment.payment_intent", "payments.data.payment.charge"] });
+    expect(external.invoice).toHaveBeenCalledWith("in_hiring", { expand: ["payments.data.payment.payment_intent", "payments.data.payment.charge"] }, { timeout: 5_000, maxNetworkRetries: 0 });
   });
 
   it("closes earlier adverse review records when an existing term's recorded dispute is positively resolved", async () => {
@@ -547,7 +548,7 @@ describe("Hiring review regression traces", () => {
     { label: "one known ID absent", known: ["dp_hiring", "dp_second"], live: [{ id: "dp_hiring", status: "won" }], incomplete: false, type: "charge.dispute.closed", expected: "disputed" },
     { label: "unrelated win", known: ["dp_hiring"], live: [{ id: "dp_other", status: "won" }], incomplete: false, type: "charge.dispute.closed", expected: "disputed" },
     { label: "one known ID still open", known: ["dp_hiring", "dp_second"], live: [{ id: "dp_hiring", status: "won" }, { id: "dp_second", status: "needs_response" }], incomplete: false, type: "charge.dispute.closed", expected: "disputed" },
-    { label: "incomplete win listing", known: ["dp_hiring"], live: [{ id: "dp_hiring", status: "won" }], incomplete: true, type: "charge.dispute.closed", expected: "needs_review" },
+    { label: "incomplete win listing", known: ["dp_hiring"], live: [{ id: "dp_hiring", status: "won" }], incomplete: true, type: "charge.dispute.closed", expected: "disputed" },
     { label: "no previously known dispute ID", known: [], live: [{ id: "dp_hiring", status: "won" }], incomplete: false, type: "charge.dispute.closed", expected: "disputed" },
     { label: "paid event despite all known wins", known: ["dp_hiring", "dp_second"], live: [{ id: "dp_hiring", status: "won" }, { id: "dp_second", status: "won" }], incomplete: false, type: "invoice.paid", expected: "disputed" },
     { label: "closed with every known ID won", known: ["dp_hiring", "dp_second"], live: [{ id: "dp_second", status: "won" }, { id: "dp_hiring", status: "won" }], incomplete: false, type: "charge.dispute.closed", expected: "active" },
@@ -643,8 +644,8 @@ describe("Hiring review regression traces", () => {
       : { data: [{ id: "inpay_one", invoice: "in_legacy_one" }], has_more: true });
     external.invoice.mockImplementation(async (id: string) => ({ id, customer: "cus_hiring", metadata: { type: "course_pass" } }));
     await expect(dispatchHiringEvent(reversalEvent("charge.refunded", { metadata: {} }))).resolves.toEqual({ handled: false });
-    expect(external.invoice).toHaveBeenCalledWith("in_legacy_one", expect.objectContaining({ expand: expect.any(Array) }));
-    expect(external.invoice).toHaveBeenCalledWith("in_legacy_two", expect.objectContaining({ expand: expect.any(Array) }));
+    expect(external.invoice).toHaveBeenCalledWith("in_legacy_one", expect.objectContaining({ expand: expect.any(Array) }), { timeout: 5_000, maxNetworkRetries: 0 });
+    expect(external.invoice).toHaveBeenCalledWith("in_legacy_two", expect.objectContaining({ expand: expect.any(Array) }), { timeout: 5_000, maxNetworkRetries: 0 });
     expect(external.invoicePayments.mock.calls[1][0]).toMatchObject({ starting_after: "inpay_one" });
     expect(store.effects).toEqual([]);
   });
@@ -686,7 +687,7 @@ describe("Hiring review regression traces", () => {
   it.each(["webhook-before-http-binding", "http-binding-before-webhook"])("checkout expiration releases an unbound reservation: %s", async ordering => {
     const store = memoryDb({ orders: [order({ stripeSubscriptionId: null, stripeCheckoutSessionId: ordering === "http-binding-before-webhook" ? "cs_hiring" : null })] });
     await expect(dispatchHiringEvent(event("checkout.session.expired", checkout()))).resolves.toEqual({ handled: true });
-    expect(external.checkout).toHaveBeenCalledWith("cs_hiring");
+    expect(external.checkout).toHaveBeenCalledWith("cs_hiring", {}, { timeout: 5_000, maxNetworkRetries: 0 });
     expect(store.state.hiring_orders[0]).toMatchObject({ stripeCheckoutSessionId: "cs_hiring", stripeSubscriptionId: null, status: "checkout_expired" });
     // These two initial states cover delivery before/after the HTTP session-ID
     // write. Actual HTTP writer atomicity belongs to the service behavior suite.
@@ -728,5 +729,95 @@ describe("Hiring review regression traces", () => {
     await expect(dispatchHiringEvent(event(type, object, "evt_alias"))).resolves.toEqual({ handled: true });
     if (type === "invoice.paid") expect(store.state.hiring_terms).toHaveLength(1);
     else expect(store.state.hiring_terms).toEqual([]);
+  });
+});
+
+
+describe("exact adverse-evidence and durable ownership boundaries", () => {
+  it.each(["subscription metadata", "invoice evidence", "invoice unavailable", "subscription unavailable"])("withdraws a known refunded term despite %s drift", async drift => {
+    const store = memoryDb(); await dispatchHiringEvent(paidEvent()); store.state.hiring_terms[0].used = 100;
+    if (drift === "subscription metadata") external.subscription.mockResolvedValue(subscription({ metadata: {} }));
+    if (drift === "invoice evidence") external.invoice.mockResolvedValue(invoice({ payments: { has_more: true, data: [] } }));
+    if (drift === "invoice unavailable") external.invoice.mockRejectedValue(new Error("invoice unavailable"));
+    if (drift === "subscription unavailable") external.subscription.mockRejectedValue(new Error("subscription unavailable"));
+    external.charge.mockResolvedValue(charge({ refunded: true, amount_refunded: 113000, metadata: {} }));
+    external.disputes.mockRejectedValue(new Error("not needed for proven full refund"));
+    await dispatchHiringEvent(reversalEvent("charge.refunded", { metadata: {} }));
+    expect(store.state.hiring_payments[0]).toMatchObject({ paymentState: "refunded" });
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "refunded", used: 100, quota: 100 });
+    expect(() => assertHiringGrant(store.state.hiring_terms[0] as any, START + 1)).toThrow();
+  });
+
+  it("withdraws a known refunded term on paid replay even after subscription metadata changes", async () => {
+    const store = memoryDb(); await dispatchHiringEvent(paidEvent()); store.state.hiring_terms[0].used = 23;
+    external.subscription.mockResolvedValue(subscription({ metadata: {} }));
+    external.charge.mockResolvedValue(charge({ refunded: true, amount_refunded: 113000 }));
+    await dispatchHiringEvent(paidEvent());
+    expect(store.state.hiring_payments[0]).toMatchObject({ paymentState: "refunded" });
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "refunded", used: 23 });
+  });
+
+  it.each([
+    { label: "short allocation", payments: { has_more: false, data: [{ status: "paid", amount_paid: 112999, payment: { charge: "ch_hiring", payment_intent: "pi_hiring" } }] } },
+    { label: "truncated allocations", payments: { has_more: true, data: invoice().payments.data } },
+    { label: "non-paid allocation", payments: { has_more: false, data: [{ ...invoice().payments.data[0], status: "open" }] } },
+  ])("does not restore a won dispute from $label", async ({ payments }) => {
+    const store = memoryDb({ orders: [order({ status: "active" })], terms: [term({ state: "suspended", paymentState: "disputed", used: 99 })],
+      payments: [payment({ paymentState: "disputed", disputeIds: ["dp_hiring"] })] });
+    external.invoice.mockResolvedValue(invoice({ payments }));
+    external.disputes.mockResolvedValue({ data: [{ id: "dp_hiring", status: "won" }], has_more: false });
+    await dispatchHiringEvent(reversalEvent("charge.dispute.closed", { status: "won" }));
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "disputed", used: 99 });
+    expect(store.state.hiring_payments[0]).toMatchObject({ paymentState: "disputed" });
+    expect(store.state.hiring_events.every(row => row.state === "review_required")).toBe(true);
+  });
+
+  it("does not poison immutable payment ownership with an unsuccessful allocation before a different charge succeeds", async () => {
+    const store = memoryDb();
+    external.invoice.mockResolvedValue(invoice({ payments: { has_more: false, data: [{ ...invoice().payments.data[0], status: "open" }] } }));
+    await dispatchHiringEvent(reversalEvent("charge.dispute.created"));
+    expect(store.state.hiring_payments).toEqual([]);
+    external.invoice.mockResolvedValue(invoice({ payments: { has_more: false, data: [{ status: "paid", amount_paid: 113000,
+      payment: { payment_intent: "pi_success", charge: "ch_success" } }] } }));
+    external.charge.mockResolvedValue(charge({ id: "ch_success", payment_intent: "pi_success" }));
+    await dispatchHiringEvent(paidEvent());
+    expect(store.state.hiring_payments).toEqual([expect.objectContaining({ id: "ch_success", invoiceId: "in_hiring", paymentState: "active" })]);
+    expect(store.state.hiring_terms).toHaveLength(1);
+  });
+
+  it("reviews tagged malformed pre-term ownership without a TypeError or legacy fallthrough", async () => {
+    const store = memoryDb({ orders: [] });
+    external.invoice.mockResolvedValue(invoice({ subscription: null, metadata: { type: HIRING_TYPE, policy: HIRING_POLICY } }));
+    await expect(dispatchHiringEvent(reversalEvent("charge.refunded", { metadata: {} }))).resolves.toEqual({ handled: true, reviewRequired: true });
+    expect(store.effects).toEqual([]);
+  });
+
+  it.each(["customer.subscription.updated", "customer.subscription.deleted"])("owns untagged bound %s and suspends access without mutable metadata", async type => {
+    const store = memoryDb({ orders: [order({ status: "active" })], terms: [term()] });
+    external.subscription.mockResolvedValue(subscription({ metadata: {}, status: type.endsWith("deleted") ? "canceled" : "unpaid" }));
+    await expect(dispatchHiringEvent(event(type, subscription({ metadata: {}, status: type.endsWith("deleted") ? "canceled" : "unpaid" })))).resolves.toEqual({ handled: true });
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "subscription_suspended", used: 6 });
+    if (type.endsWith("deleted")) expect(store.state.hiring_orders[0]).toMatchObject({ status: "cancelled", renewalCancelled: true });
+  });
+
+  it("owns an untagged paid invoice by its durable subscription and fully validates before granting", async () => {
+    const store = memoryDb(); external.invoice.mockResolvedValue(invoice({ metadata: {} }));
+    await expect(dispatchHiringEvent(event("invoice.paid", { id: "in_hiring", subscription: "sub_hiring", metadata: {} }))).resolves.toEqual({ handled: true });
+    expect(store.state.hiring_terms[0]).toMatchObject({ sourceSubscriptionId: "sub_hiring", quota: 100 });
+  });
+
+  it("owns an untagged pre-term reversal by durable subscription even when invoice metadata is absent", async () => {
+    const store = memoryDb(); external.invoice.mockResolvedValue(invoice({ metadata: {} }));
+    external.charge.mockResolvedValue(charge({ refunded: true, amount_refunded: 113000, metadata: {} }));
+    await dispatchHiringEvent(reversalEvent("charge.refunded", { metadata: {} }));
+    expect(store.state.hiring_payments[0]).toMatchObject({ paymentState: "refunded", orderId: "order_hiring" });
+    expect(store.state.hiring_terms).toEqual([]);
+  });
+
+  it.each(["past_due", "unpaid"])("keeps a settled %s invoice as unusable accounting evidence", async status => {
+    const store = memoryDb(); external.subscription.mockResolvedValue(subscription({ status }));
+    await dispatchHiringEvent(paidEvent());
+    expect(store.state.hiring_terms[0]).toMatchObject({ paymentState: "active", state: "subscription_suspended", used: 0, quota: 100 });
+    expect(() => assertHiringGrant(store.state.hiring_terms[0] as any, START + 1)).toThrow();
   });
 });

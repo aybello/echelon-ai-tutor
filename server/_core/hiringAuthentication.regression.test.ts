@@ -478,7 +478,7 @@ for (const route of routes) {
       const client = browser({ [ECHELON_SESSION_COOKIE]: await verifiedCookie(APPLICANT) });
       const result = await route.verify(await contextFor(client));
       if ("valid" in result && !result.valid) throw new Error(`Unexpected OTP rejection: ${result.reason}`);
-      expect(result).toMatchObject({ email: APPLICANT });
+      expect(result).toMatchObject({ email: APPLICANT, sessionKind: "assessment-only" });
       expect("valid" in result ? result.valid : result.success).toBe(true);
       expect("examTypes" in result ? result.examTypes : result.unlockedExamTypes).toEqual([]);
       expect(result.accessToken).toBeFalsy();
@@ -513,7 +513,7 @@ for (const route of routes) {
       const client = browser({ [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() });
       const result = await route.verify(await contextFor(client), PURCHASER);
       if ("valid" in result && !result.valid) throw new Error(`Unexpected OTP rejection: ${result.reason}`);
-      expect(result).toMatchObject({ email: PURCHASER, accessToken: "synthetic-learner-token" });
+      expect(result).toMatchObject({ email: PURCHASER, accessToken: "synthetic-learner-token", sessionKind: "verified-email" });
       expect("examTypes" in result ? result.examTypes : result.unlockedExamTypes).toEqual(["oit"]);
       expect(client.res.clearCookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, { path: "/" });
       expect(state.issueToken).toHaveBeenCalledOnce();
@@ -559,6 +559,7 @@ for (const route of routes) {
       const result = await route.verify(await contextFor(client));
       if ("valid" in result && !result.valid) throw new Error(`Unexpected OTP rejection: ${result.reason}`);
       expect(result.accessToken).toBeFalsy();
+      expect(result.sessionKind).toBe("verified-email");
       expect(await readVerifiedEmailFromRequest(browser(client.jar).req)).toBe(APPLICANT);
       expect(client.jar[ASSESSMENT_ONLY_COOKIE]).toBeUndefined();
       expect(state.issueToken).not.toHaveBeenCalled();
