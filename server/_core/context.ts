@@ -36,8 +36,9 @@ export async function createContext(
   studentEmail = await readVerifiedEmailFromRequest(opts.req);
   const assessmentOnlySession = await readAssessmentOnlySession(opts.req);
   const identityEmail = user?.email ?? studentEmail;
-  const assessmentOnlyHasLearnerAccess = identityEmail
-    ? (await resolveEntitlementsByEmail(identityEmail)).hasAnyAccess
+  const entitlementEmail = assessmentOnlySession?.candidateEmail ?? (assessmentOnlySession ? identityEmail : null);
+  const assessmentOnlyHasLearnerAccess = entitlementEmail
+    ? (await resolveEntitlementsByEmail(entitlementEmail)).hasAnyAccess
     : undefined;
 
   return {

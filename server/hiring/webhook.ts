@@ -128,6 +128,9 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
     return { handled: true };
   }
   if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
+    const liveSubscription = event.type === "customer.subscription.deleted"
+      ? object
+      : await stripe.subscriptions.retrieve(object.id) as any;
     await db.transaction(async tx => {
       const [term] = await tx.select().from(hiringTerms).where(and(
         eq(hiringTerms.sourceSubscriptionId, object.id),
@@ -136,12 +139,12 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
       )).orderBy(desc(hiringTerms.endsAtMs)).limit(1).for("update");
       if (!term) return;
       await tx.select({ id: hiringOrders.id }).from(hiringOrders).where(eq(hiringOrders.orgId, term.orgId)).limit(1).for("update");
-      const terminated = event.type === "customer.subscription.deleted" || ["canceled", "unpaid", "incomplete_expired"].includes(object.status);
+      const terminated = event.type === "customer.subscription.deleted" || ["canceled", "unpaid", "incomplete_expired"].includes(liveSubscription.status);
       if (terminated) {
         await tx.update(hiringTerms).set({ state: "suspended", paymentState: "needs_review" }).where(eq(hiringTerms.id, term.id));
         await tx.update(hiringOrders).set({ status: "cancelled" }).where(and(eq(hiringOrders.orgId, term.orgId), eq(hiringOrders.stripeSubscriptionId, object.id)));
       } else {
-        await tx.update(hiringTerms).set({ state: object.cancel_at_period_end ? "cancel_at_period_end" : "active" }).where(eq(hiringTerms.id, term.id));
+        await tx.update(hiringTerms).set({ state: liveSubscription.cancel_at_period_end ? "cancel_at_period_end" : "active" }).where(eq(hiringTerms.id, term.id));
       }
     });
   }

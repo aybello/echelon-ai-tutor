@@ -23,6 +23,7 @@ import { persistRecruitmentTransition, readRecruitmentAssessment, recruitmentDb 
 import type { RecruitmentCreate, RecruitmentReadDb, RecruitmentTransaction } from "./types";
 import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { resolveEntitlementsByEmail } from "../_core/access";
 
 /** Recheck manager membership inside transactions without invoking a global resolver
  * while a pool connection is held. The existing resolver remains the preflight. */
@@ -322,9 +323,12 @@ export async function issueApplicantCapability(ctx: TrpcContext, assignmentId: s
       lte(hiringTerms.startsAtMs, Date.now()), gt(hiringTerms.endsAtMs, Date.now()),
     )).limit(1).for("share");
     if (!grant) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });
-    return { assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey: assessment.courseKey };
+    return { assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey: assessment.courseKey,
+      ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) };
   }, { isolationLevel: "read committed" });
-  clearVerifiedEmailSessionCookie(ctx.res);
+  if (!(await resolveEntitlementsByEmail(committed.candidateEmail)).hasAnyAccess) {
+    clearVerifiedEmailSessionCookie(ctx.res);
+  }
   return issueAssessmentOnlySession(ctx.res, committed);
 }
 

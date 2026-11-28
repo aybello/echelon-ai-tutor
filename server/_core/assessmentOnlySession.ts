@@ -63,7 +63,7 @@ export function assertLearnerStateAllowed(ctx: { assessmentOnlySession?: unknown
   // A real identity does not itself prove learning entitlement. The request
   // context computes this only for assessment-only sessions, preserving normal
   // authenticated learners while isolating applicants from learner state.
-  if ((ctx.assessmentOnlySession || ctx.studentEmail) && ctx.assessmentOnlyHasLearnerAccess === false) {
+  if (ctx.assessmentOnlySession && ctx.assessmentOnlyHasLearnerAccess !== true) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Assessment-only sessions cannot access learner state." });
   }
 }
