@@ -62,6 +62,11 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
     await db.update(hiringOrders).set({ stripeCheckoutSessionId: object.id, stripeSubscriptionId: typeof object.subscription === "string" ? object.subscription : null }).where(and(eq(hiringOrders.id, orderId), eq(hiringOrders.status, "pending")));
     return { handled: true };
   }
+  if (event.type === "checkout.session.expired" || event.type === "checkout.session.async_payment_failed") {
+    await db.update(hiringOrders).set({ status: event.type === "checkout.session.expired" ? "checkout_expired" : "checkout_failed" })
+      .where(and(eq(hiringOrders.id, orderId), eq(hiringOrders.status, "pending")));
+    return { handled: true };
+  }
   // Paid invoice fulfilment is intentionally a narrow hook. The implementation
   // must retrieve the subscription/product/invoice/charge live before creating
   // one unique hiring_terms row; no event metadata or active-sub status alone
@@ -91,9 +96,11 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
         const [existingTerm] = await tx.select({ id: hiringTerms.id }).from(hiringTerms).where(eq(hiringTerms.sourceInvoiceId, invoice.id)).limit(1).for("update");
         if (!claim) {
           await tx.insert(hiringEvents).values({ id: event.id, orgId: order.orgId, orderId: order.id, invoiceId: invoice.id, eventType: event.type, createdAtMs: Date.now() });
-          if (!existingTerm) await tx.insert(hiringTerms).values({ id: randomUUID(), orgId: order.orgId, basis: "stripe", sourceInvoiceId: invoice.id, sourceSubscriptionId: subscription.id, sourcePaymentIntentId: paymentIntentId, startsAtMs: period.startsAtMs, endsAtMs: period.endsAtMs, quota: HIRING_QUOTA, used: 0, state: "active", paymentState: "active", createdByEmail: order.ownerEmail });
+          if (!existingTerm) {
+            await tx.insert(hiringTerms).values({ id: randomUUID(), orgId: order.orgId, basis: "stripe", sourceInvoiceId: invoice.id, sourceSubscriptionId: subscription.id, sourcePaymentIntentId: paymentIntentId, startsAtMs: period.startsAtMs, endsAtMs: period.endsAtMs, quota: HIRING_QUOTA, used: 0, state: "active", paymentState: "active", createdByEmail: order.ownerEmail });
+            await tx.update(hiringOrders).set({ status: "active", stripeSubscriptionId: subscription.id }).where(eq(hiringOrders.id, order.id));
+          }
         }
-        await tx.update(hiringOrders).set({ status: "active", stripeSubscriptionId: subscription.id }).where(eq(hiringOrders.id, order.id));
       });
       return { handled: true };
     } catch (error) {
@@ -116,6 +123,7 @@ export async function dispatchHiringEvent(event: any): Promise<{ handled: boolea
       const terminated = event.type === "customer.subscription.deleted" || ["canceled", "unpaid", "incomplete_expired"].includes(object.status);
       if (terminated) {
         await tx.update(hiringTerms).set({ state: "suspended", paymentState: "needs_review" }).where(eq(hiringTerms.id, term.id));
+        await tx.update(hiringOrders).set({ status: "cancelled" }).where(and(eq(hiringOrders.orgId, term.orgId), eq(hiringOrders.stripeSubscriptionId, object.id)));
       } else {
         await tx.update(hiringTerms).set({ state: object.cancel_at_period_end ? "cancel_at_period_end" : "active" }).where(eq(hiringTerms.id, term.id));
       }

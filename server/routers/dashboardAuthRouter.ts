@@ -20,11 +20,11 @@ import { recordLearnerSignIn } from "../learnerSignIn";
 import { clearIdentityCookies } from "../_core/logout";
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
-import { eq } from "drizzle-orm";
+import { and, eq, gt, inArray } from "drizzle-orm";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps } from "../../drizzle/schema";
+import { dashboardOtps, recruitmentAssignments } from "../../drizzle/schema";
 import { normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
@@ -100,12 +100,20 @@ export const dashboardAuthRouter = router({
       // A signed training record remains available to its learner after paid
       // course access ends; identity verification alone restores that record.
       const canRestoreRecords = await hasTrainingRecord(email);
-      if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords && !(await hasRecoverableTeamBilling(email))) {
+      const db = await getDb();
+      const [applicantInvitation] = db
+        ? await db.select({ id: recruitmentAssignments.id }).from(recruitmentAssignments).where(and(
+          eq(recruitmentAssignments.candidateEmail, email),
+          eq(recruitmentAssignments.accessKind, "applicant"),
+          inArray(recruitmentAssignments.status, ["invited", "active"]),
+          gt(recruitmentAssignments.expiresAtMs, Date.now()),
+        )).limit(1)
+        : [];
+      if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords && !applicantInvitation && !(await hasRecoverableTeamBilling(email))) {
         // Return success anyway to avoid email enumeration — just don't send
         return { sent: true };
       }
 
-      const db = await getDb();
       if (!db) return { sent: true };
 
       // Generate 6-digit code

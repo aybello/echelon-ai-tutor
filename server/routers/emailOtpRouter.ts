@@ -21,11 +21,11 @@ import { recordLearnerSignIn } from "../learnerSignIn";
 
 import crypto from "crypto";
 import { TRPCError } from "@trpc/server";
-import { and, eq, isNull } from "drizzle-orm";
+import { and, eq, gt, inArray, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { emailOtpCodes } from "../../drizzle/schema";
+import { emailOtpCodes, recruitmentAssignments } from "../../drizzle/schema";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { normalizeEmail } from "../_core/access";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
@@ -60,12 +60,20 @@ export const emailOtpRouter = router({
 
       // Billing identity survives paid-content expiry, but grants no learner access.
       const entitlements = await resolveEntitlementsByEmail(email);
-      if (!entitlements.hasAnyAccess && !entitlements.isManager && !(await hasRecoverableTeamBilling(email))) {
+      const db = await getDb();
+      const [applicantInvitation] = db
+        ? await db.select({ id: recruitmentAssignments.id }).from(recruitmentAssignments).where(and(
+          eq(recruitmentAssignments.candidateEmail, email),
+          eq(recruitmentAssignments.accessKind, "applicant"),
+          inArray(recruitmentAssignments.status, ["invited", "active"]),
+          gt(recruitmentAssignments.expiresAtMs, Date.now()),
+        )).limit(1)
+        : [];
+      if (!entitlements.hasAnyAccess && !entitlements.isManager && !applicantInvitation && !(await hasRecoverableTeamBilling(email))) {
         console.log(`[OTP] No entitlements for ${email.replace(/(^.{3}).+@/, "$1***@")}`);
         return { sent: true };
       }
 
-      const db = await getDb();
       if (!db) return { sent: true };
 
       // Generate code and store hash
