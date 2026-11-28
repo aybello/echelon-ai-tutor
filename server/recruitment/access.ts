@@ -3,7 +3,8 @@ import { and, eq, gt, inArray, lte } from "drizzle-orm";
 import { hiringTerms, organizationMembers, organizations, subscriptions, type Organization, type OrganizationMember, type RecruitmentAssignmentRow } from "../../drizzle/schema";
 import { getCourseByKey, type CourseEntry } from "../../shared/courseRegistry";
 import { courseKeyToTierStrict } from "../../shared/products";
-import { assertAccess, identityEmail, normalizeEmail, resolveVerifiedIdentity } from "../_core/accessService";
+import { assertAccess, identityEmail, normalizeEmail, resolveEntitlementsByEmail, resolveVerifiedIdentity } from "../_core/accessService";
+import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
 import type { TrpcContext } from "../_core/context";
 import { allowedCourseKeysForOrg, getSubscriptionExamTypes, isSubscriptionProvince, isSubscriptionTier, subscriptionProvinceForOrg } from "../stripe/subscriptionProducts";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
@@ -13,7 +14,7 @@ import type { RecruitmentReadDb } from "./types";
 import { assessmentOnlyCapabilityMatches, issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 
 export function verifiedRecruitmentEmail(ctx: TrpcContext): string {
-  const email = identityEmail(resolveVerifiedIdentity(ctx));
+  const email = identityEmail(resolveVerifiedIdentity(ctx)) ?? ctx.assessmentOnlySession?.candidateEmail ?? null;
   if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in with your verified email to access this assessment." });
   return email;
 }
@@ -128,6 +129,9 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
       ctx.assessmentOnlySession = await issueAssessmentOnlySession(ctx.res, {
         assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey,
       });
+      if (!(await resolveEntitlementsByEmail(assignment.candidateEmail)).hasAnyAccess) {
+        clearVerifiedEmailSessionCookie(ctx.res);
+      }
     }
     return org;
   }

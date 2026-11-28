@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, eq, gt, inArray, lt, lte } from "drizzle-orm";
+import { and, eq, gt, inArray, lte } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { hiringEvents, hiringOrders, hiringTerms, organizations } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/accessService";
@@ -37,10 +37,8 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
     await db.update(organizations).set({ stripeCustomerId }).where(eq(organizations.id, org.id));
   }
   const orderId = randomUUID();
-  const staleBefore = Date.now() - 30 * 60 * 1000;
   await db.transaction(async tx => {
     await tx.select({ id: organizations.id }).from(organizations).where(eq(organizations.id, org.id)).limit(1).for("update");
-    await tx.update(hiringOrders).set({ status: "checkout_expired" }).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.status, "pending"), lt(hiringOrders.createdAtMs, staleBefore)));
     const existing = await tx.select({ id: hiringOrders.id }).from(hiringOrders)
       .where(and(eq(hiringOrders.orgId, org.id), inArray(hiringOrders.status, ["pending", "active"]))).limit(1);
     if (existing[0]) throw new TRPCError({ code: "CONFLICT", message: "A Hiring checkout or subscription already exists." });
@@ -60,7 +58,9 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
     await db.update(hiringOrders).set({ stripeCheckoutSessionId: session.id, stripeSubscriptionId: typeof session.subscription === "string" ? session.subscription : null }).where(eq(hiringOrders.id, orderId));
     return { url: session.url, orderId };
   } catch (error) {
-    await db.update(hiringOrders).set({ status: "checkout_failed" }).where(eq(hiringOrders.id, orderId));
+    // Keep the durable pending operation. An ambiguous Stripe failure must not
+    // create a replacement order with a new idempotency key and a second
+    // potentially payable recurring subscription.
     throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Hiring checkout could not be created. No subscription was activated." });
   }
 }
