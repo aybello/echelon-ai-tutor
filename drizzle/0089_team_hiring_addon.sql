@@ -14,6 +14,8 @@ CREATE TABLE `hiring_orders` (
   `currency` varchar(3) NOT NULL,
   `status` varchar(32) NOT NULL DEFAULT 'pending',
   `paymentState` varchar(32) NOT NULL DEFAULT 'active',
+  `paymentChargeId` varchar(128) NULL,
+  `renewalCancelled` boolean NOT NULL DEFAULT false,
   `ownerEmail` varchar(320) NOT NULL,
   `createdAtMs` bigint NOT NULL,
   PRIMARY KEY (`id`), UNIQUE KEY `hiring_orders_checkout_unique` (`stripeCheckoutSessionId`),
@@ -27,6 +29,7 @@ CREATE TABLE `hiring_terms` (
   `sourcePilotId` varchar(128) NULL,
   `sourceSubscriptionId` varchar(128) NULL,
   `sourcePaymentIntentId` varchar(128) NULL,
+  `sourceChargeId` varchar(128) NULL,
   `startsAtMs` bigint NOT NULL,
   `endsAtMs` bigint NOT NULL,
   `quota` int NOT NULL,
@@ -35,6 +38,8 @@ CREATE TABLE `hiring_terms` (
   `paymentState` varchar(32) NOT NULL DEFAULT 'active',
   `createdByEmail` varchar(320) NOT NULL,
   PRIMARY KEY (`id`), UNIQUE KEY `hiring_terms_invoice_unique` (`sourceInvoiceId`),
+  UNIQUE KEY `hiring_terms_charge_unique` (`sourceChargeId`),
+  UNIQUE KEY `hiring_terms_subscription_period_unique` (`sourceSubscriptionId`, `startsAtMs`, `endsAtMs`),
   UNIQUE KEY `hiring_terms_pilot_unique` (`sourcePilotId`), KEY `hiring_terms_subscription_idx` (`sourceSubscriptionId`), KEY `hiring_terms_payment_intent_idx` (`sourcePaymentIntentId`), KEY `hiring_terms_org_period_idx` (`orgId`, `startsAtMs`, `endsAtMs`)
 ) ENGINE=InnoDB;
 CREATE TABLE `hiring_events` (

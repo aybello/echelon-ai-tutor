@@ -67,6 +67,13 @@ describe("assessment-only session boundary", () => {
       courseKey: "oit",
       exp: Date.now() + 60_000,
     }, assessmentOnlyHasLearnerAccess: false })).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
-    expect(() => assertLearnerStateAllowed({ assessmentOnlySession: {}, user: { id: 1 }, assessmentOnlyHasLearnerAccess: true })).not.toThrow();
+    const capability = {
+      typ: "assessment-only", assignmentId: "33333333-3333-4333-8333-333333333333",
+      candidateEmail: "candidate@example.test", courseKey: "oit", exp: Date.now() + 60_000,
+    };
+    expect(() => assertLearnerStateAllowed({ assessmentOnlySession: capability, user: { id: 1, email: "candidate@example.test" }, assessmentOnlyHasLearnerAccess: true })).not.toThrow();
+    expect(() => assertLearnerStateAllowed({ assessmentOnlySession: capability, studentEmail: "candidate@example.test", assessmentOnlyHasLearnerAccess: true })).not.toThrow();
+    expect(() => assertLearnerStateAllowed({ assessmentOnlySession: capability, assessmentOnlyHasLearnerAccess: true })).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
+    expect(() => assertLearnerStateAllowed({ assessmentOnlySession: {}, user: { id: 1, email: "candidate@example.test" }, assessmentOnlyHasLearnerAccess: true })).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
   });
 });

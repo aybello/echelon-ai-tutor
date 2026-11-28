@@ -56,6 +56,7 @@ vi.mock("./stripe", () => ({
     subscriptions: {
       retrieve: mockRetrieveSubscription,
     },
+    invoicePayments: { list: vi.fn(async () => ({ data: [], has_more: false })) },
     disputes: { retrieve: vi.fn(async (id: string) => ({ id, status: "needs_response" })) },
     paymentIntents: {
       retrieve: mockRetrievePaymentIntent,
@@ -215,6 +216,11 @@ beforeEach(() => {
 });
 
 describe("Stripe webhook handler — Course Pass refunds and disputes", () => {
+  beforeEach(() => {
+    // Real Hiring dispatch checks its isolated grants before legacy routing.
+    // These Course Pass fixtures have no Hiring grants; no database is contacted.
+    mockGetDb.mockResolvedValue({ select: () => ({ from: () => ({ where: () => ({ limit: async () => [] }) }) }) });
+  });
   it("parses only positive integer licence IDs", () => {
     expect(parseRefundLicenceIds({ licenceIds: "[12, 13, -1, 2.5]" })).toEqual([12, 13]);
     expect(parseRefundLicenceIds({ licence_ids: "21, 22" })).toEqual([21, 22]);

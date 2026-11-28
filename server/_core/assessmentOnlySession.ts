@@ -5,6 +5,7 @@ import { ENV } from "./env";
 import { normalizeEmail } from "./access";
 import type { TrpcContext } from "./context";
 import { TRPCError } from "@trpc/server";
+import { identityEmail, resolveVerifiedIdentity } from "./accessService";
 
 export const ASSESSMENT_ONLY_COOKIE = "echelon_assessment_only";
 const PURPOSE = "assessment-only";
@@ -25,13 +26,16 @@ function key(): Uint8Array {
 
 export async function issueAssessmentOnlySession(
   res: Response,
-  input: { assignmentId: string; candidateEmail: string; courseKey: string; ttlMs?: number },
+  input: { assignmentId: string; candidateEmail: string; courseKey: string; ttlMs?: number; expiresAtMs?: number },
 ): Promise<AssessmentOnlyCapability> {
   const candidateEmail = normalizeEmail(input.candidateEmail);
-  const exp = Math.floor((Date.now() + (input.ttlMs ?? DEFAULT_TTL_MS)) / 1000);
+  const exp = Math.floor(Math.min(Date.now() + (input.ttlMs ?? DEFAULT_TTL_MS), input.expiresAtMs ?? Infinity) / 1000);
   const claims = claimsSchema.parse({ typ: PURPOSE, assignmentId: input.assignmentId, candidateEmail, courseKey: input.courseKey, exp });
   const token = await new SignJWT(claims).setProtectedHeader({ alg: "HS256" })
     .setIssuedAt().setExpirationTime(exp).sign(key());
+  if (input.expiresAtMs !== undefined && exp * 1000 <= Date.now()) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation has expired." });
+  }
   res.cookie(ASSESSMENT_ONLY_COOKIE, token, { httpOnly: true, secure: ENV.isProduction, sameSite: "lax", maxAge: Math.max(0, exp * 1000 - Date.now()), path: "/" });
   return claims;
 }
@@ -65,10 +69,12 @@ export async function readAssessmentOnlySession(req: Request): Promise<Assessmen
 }
 
 export function assertLearnerStateAllowed(ctx: { assessmentOnlySession?: unknown; assessmentOnlyHasLearnerAccess?: boolean; user?: unknown; studentEmail?: string | null }): void {
-  // A real identity does not itself prove learning entitlement. The request
-  // context computes this only for assessment-only sessions, preserving normal
-  // authenticated learners while isolating applicants from learner state.
-  if (ctx.assessmentOnlySession && ctx.assessmentOnlyHasLearnerAccess !== true) {
+  // Neither capability possession nor an entitlement flag authenticates a
+  // learner. Use the same OAuth-before-OTP identity precedence as course access.
+  const email = identityEmail(resolveVerifiedIdentity(ctx as TrpcContext));
+  const applicantEmail = (ctx.assessmentOnlySession as Partial<AssessmentOnlyCapability> | null | undefined)?.candidateEmail;
+  if (ctx.assessmentOnlySession && (!email || !applicantEmail || normalizeEmail(email) !== normalizeEmail(applicantEmail)
+    || ctx.assessmentOnlyHasLearnerAccess !== true)) {
     throw new TRPCError({ code: "FORBIDDEN", message: "Assessment-only sessions cannot access learner state." });
   }
 }

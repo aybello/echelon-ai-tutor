@@ -1964,16 +1964,18 @@ export const hiringOrders = mysqlTable("hiring_orders", {
   stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
   stripeCustomerId: varchar("stripeCustomerId", { length: 128 }), amountCents: int("amountCents").notNull(),
   currency: varchar("currency", { length: 3 }).notNull(), status: varchar("status", { length: 32 }).notNull().default("pending"), paymentState: varchar("paymentState", { length: 32 }).notNull().default("active"),
+  paymentChargeId: varchar("paymentChargeId", { length: 128 }), renewalCancelled: boolean("renewalCancelled").notNull().default(false),
   ownerEmail: varchar("ownerEmail", { length: 320 }).notNull(), createdAtMs: bigint("createdAtMs", { mode: "number" }).notNull(),
 });
 export const hiringTerms = mysqlTable("hiring_terms", {
   id: varchar("id", { length: 36 }).primaryKey(), orgId: int("orgId").notNull(), basis: varchar("basis", { length: 16 }).notNull(),
   sourceInvoiceId: varchar("sourceInvoiceId", { length: 128 }).unique(), sourcePilotId: varchar("sourcePilotId", { length: 128 }).unique(),
   sourceSubscriptionId: varchar("sourceSubscriptionId", { length: 128 }), sourcePaymentIntentId: varchar("sourcePaymentIntentId", { length: 128 }),
+  sourceChargeId: varchar("sourceChargeId", { length: 128 }).unique(),
   startsAtMs: bigint("startsAtMs", { mode: "number" }).notNull(), endsAtMs: bigint("endsAtMs", { mode: "number" }).notNull(),
   quota: int("quota").notNull(), used: int("used").notNull().default(0), state: varchar("state", { length: 32 }).notNull().default("active"),
   paymentState: varchar("paymentState", { length: 32 }).notNull().default("active"), createdByEmail: varchar("createdByEmail", { length: 320 }).notNull(),
-});
+}, (t) => [uniqueIndex("hiring_terms_subscription_period_unique").on(t.sourceSubscriptionId, t.startsAtMs, t.endsAtMs)]);
 /** Stripe event claims are isolated from the generic payment/event handlers. */
 export const hiringEvents = mysqlTable("hiring_events", {
   id: varchar("id", { length: 128 }).primaryKey(),

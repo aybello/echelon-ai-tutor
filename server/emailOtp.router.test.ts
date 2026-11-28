@@ -1,6 +1,7 @@
 import { createHash } from "crypto";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "./_core/context";
+import { emailOtpCodes } from "../drizzle/schema";
 
 type OtpRow = {
   id: number;
@@ -74,7 +75,11 @@ function createMockDb() {
       },
     }),
     select: () => ({
-      from: () => ({
+      from: (table: unknown) => table !== emailOtpCodes ? ({
+        // This delivery fixture has no hiring invitations. Applicant behavior
+        // is exercised with real SQL in _core/hiringAuthentication.regression.test.ts.
+        where: () => ({ orderBy: () => ({ limit: async () => [] }), limit: async () => [] }),
+      }) : ({
         where: () => ({
           orderBy: () => ({
             limit: () => ({
@@ -123,6 +128,7 @@ vi.mock("./_core/subscriptionToken", () => ({
 
 vi.mock("./_core/emailSession", () => ({
   issueVerifiedEmailSessionCookie: state.issueSession,
+  clearVerifiedEmailSessionCookie: (res: TrpcContext["res"]) => res.clearCookie("echelon_dashboard_session", { path: "/" }),
 }));
 
 vi.mock("./analytics", () => ({

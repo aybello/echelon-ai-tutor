@@ -20,11 +20,11 @@ import { recordLearnerSignIn } from "../learnerSignIn";
 import { clearIdentityCookies } from "../_core/logout";
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
-import { and, eq, gt, inArray } from "drizzle-orm";
+import { and, desc, eq, gt, inArray } from "drizzle-orm";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps, recruitmentAssignments, recruitmentAssessments } from "../../drizzle/schema";
+import { dashboardOtps, recruitmentAssignments } from "../../drizzle/schema";
 import { normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
@@ -35,8 +35,8 @@ import {
   ECHELON_SESSION_COOKIE,
 } from "../_core/emailSession";
 import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
-import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 import { clearAssessmentOnlySessionCookie } from "../_core/assessmentOnlySession";
+import { issueApplicantCapability } from "../recruitment/service";
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
 import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
@@ -110,7 +110,7 @@ export const dashboardAuthRouter = router({
           eq(recruitmentAssignments.accessKind, "applicant"),
           inArray(recruitmentAssignments.status, ["invited", "active"]),
           gt(recruitmentAssignments.expiresAtMs, Date.now()),
-        )).limit(1)
+        )).orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
         : [];
       if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords && !applicantInvitation && !(await hasRecoverableTeamBilling(email))) {
         // Return success anyway to avoid email enumeration — just don't send
@@ -181,7 +181,8 @@ export const dashboardAuthRouter = router({
       const entitlements = await resolveEntitlementsByEmail(email);
       const [applicant] = !entitlements.hasAnyAccess && !entitlements.isManager
         ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
-          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now()))).limit(1)
+          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now())))
+          .orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
         : [];
       const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
       if (!applicant && !entitlements.hasAnyAccess && !isManager && !(await hasTrainingRecord(email))) {
@@ -190,11 +191,17 @@ export const dashboardAuthRouter = router({
         throw new Error("This invitation is no longer available.");
       }
       if (applicant) {
-        const [assessment] = await db.select({ courseKey: recruitmentAssessments.courseKey, timeLimitMinutes: recruitmentAssessments.timeLimitMinutes })
-          .from(recruitmentAssessments).where(eq(recruitmentAssessments.id, applicant.assessmentId)).limit(1);
-        if (assessment) {
+        try {
+          // Use only the consumed OTP's verified email, never an older identity.
           clearVerifiedEmailSessionCookie(ctx.res);
-          await issueAssessmentOnlySession(ctx.res, { assignmentId: applicant.id, candidateEmail: applicant.candidateEmail, courseKey: assessment.courseKey, ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) });
+          await issueApplicantCapability({
+            req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
+          }, applicant.id);
+        } catch (error) {
+          // Includes transaction commit failures after a cookie was signed.
+          clearVerifiedEmailSessionCookie(ctx.res);
+          clearAssessmentOnlySessionCookie(ctx.res);
+          throw new Error("This invitation is no longer available.", { cause: error });
         }
       } else {
         clearAssessmentOnlySessionCookie(ctx.res);

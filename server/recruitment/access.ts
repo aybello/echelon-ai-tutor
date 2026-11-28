@@ -1,22 +1,48 @@
 import { TRPCError } from "@trpc/server";
 import { and, eq, gt, inArray, lte } from "drizzle-orm";
-import { hiringTerms, organizationMembers, organizations, subscriptions, type Organization, type OrganizationMember, type RecruitmentAssignmentRow } from "../../drizzle/schema";
+import { hiringTerms, organizationMembers, organizations, subscriptions, type HiringTerm, type Organization, type OrganizationMember, type RecruitmentAssessmentRow, type RecruitmentAssignmentRow } from "../../drizzle/schema";
 import { getCourseByKey, type CourseEntry } from "../../shared/courseRegistry";
 import { courseKeyToTierStrict } from "../../shared/products";
-import { assertAccess, identityEmail, normalizeEmail, resolveEntitlementsByEmail, resolveVerifiedIdentity } from "../_core/accessService";
-import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { assertAccess, identityEmail, normalizeEmail, resolveVerifiedIdentity } from "../_core/accessService";
 import type { TrpcContext } from "../_core/context";
 import { allowedCourseKeysForOrg, getSubscriptionExamTypes, isSubscriptionProvince, isSubscriptionTier, subscriptionProvinceForOrg } from "../stripe/subscriptionProducts";
 import { DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 import { resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { assignedAnnualCourseKeys } from "../trainingRecords";
 import type { RecruitmentReadDb } from "./types";
-import { assessmentOnlyCapabilityMatches, issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
+import { assessmentOnlyCapabilityMatches } from "../_core/assessmentOnlySession";
+import { assignmentDeadline } from "./state";
 
 export function verifiedRecruitmentEmail(ctx: TrpcContext): string {
   const email = identityEmail(resolveVerifiedIdentity(ctx)) ?? ctx.assessmentOnlySession?.candidateEmail ?? null;
   if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in with your verified email to access this assessment." });
   return email;
+}
+
+/** Recheck row values with a clock captured AFTER all lock waits. */
+export function assertApplicantGrant(org: Organization, grant: HiringTerm | undefined, nowMs: number): asserts grant is HiringTerm {
+  assertCurrentAnnualOrganization(org, nowMs);
+  if (!grant || grant.orgId !== org.id || !["active", "cancel_at_period_end"].includes(grant.state)
+    || grant.paymentState !== "active" || !Number.isFinite(grant.startsAtMs) || !Number.isFinite(grant.endsAtMs)
+    || grant.startsAtMs > nowMs || grant.endsAtMs <= nowMs) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });
+  }
+}
+
+/** New capabilities are only for a live, exactly bound unfinished attempt. */
+export function assertApplicantIssuance(assignment: RecruitmentAssignmentRow, assessment: RecruitmentAssessmentRow,
+  org: Organization, grant: HiringTerm | undefined, email: string, nowMs: number): number {
+  assertApplicantGrant(org, grant, nowMs);
+  const deadline = assignmentDeadline(assessment, assignment);
+  if (assignment.accessKind !== "applicant" || assignment.memberId !== null || !assignment.grantId
+    || assignment.orgId !== org.id || assignment.grantId !== grant.id
+    || assessment.id !== assignment.assessmentId || assessment.orgId !== assignment.orgId
+    || normalizeEmail(assignment.candidateEmail) !== email || !["invited", "active"].includes(assignment.status)
+    || !Number.isFinite(deadline) || nowMs >= deadline) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation is not available." });
+  }
+  recruitmentCourseForOrg(org, assessment.courseKey);
+  return Math.min(deadline, grant.endsAtMs, org.termEnd!.getTime());
 }
 
 export function assertCurrentAnnualOrganization(org: Organization, nowMs: number): void {
@@ -111,28 +137,35 @@ export async function assertRecruitmentCandidate(ctx: TrpcContext, db: Recruitme
   if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "This team is unavailable." });
   if (assignment.accessKind === "applicant" || assignment.memberId === null) {
     assertCurrentAnnualOrganization(org, Date.now());
-    if (!assignment.grantId) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation has no active Hiring grant." });
+    if (assignment.accessKind !== "applicant" || assignment.memberId !== null || !assignment.grantId
+      || ["revoked", "expired"].includes(assignment.status)) {
+      throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation is not available." });
+    }
     const grantQuery = db.select().from(hiringTerms).where(and(
       eq(hiringTerms.id, assignment.grantId), eq(hiringTerms.orgId, assignment.orgId),
       inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"),
       lte(hiringTerms.startsAtMs, Date.now()), gt(hiringTerms.endsAtMs, Date.now()),
     )).limit(1);
     const [grant] = await (options.lock ? grantQuery.for("share") : grantQuery);
-    if (!grant) throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation's Hiring term is no longer active." });
+    assertApplicantGrant(org, grant, Date.now());
     const capabilityMatches = assessmentOnlyCapabilityMatches(ctx.assessmentOnlySession, {
       assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey,
     });
     if (!capabilityMatches) {
-      if (!options.bootstrapApplicantCapability) {
+      if (!options.bootstrapApplicantCapability || options.lock) {
         throw new TRPCError({ code: "FORBIDDEN", message: "This applicant invitation requires its matching assessment capability." });
       }
-      ctx.assessmentOnlySession = await issueAssessmentOnlySession(ctx.res, {
-        assignmentId: assignment.id, candidateEmail: assignment.candidateEmail, courseKey,
-      });
-      if (!(await resolveEntitlementsByEmail(assignment.candidateEmail)).hasAnyAccess) {
-        clearVerifiedEmailSessionCookie(ctx.res);
+      // Bootstrap has no pool locks. Discovery here is not authorization:
+      // issuance rereads exact scope under org -> assignment -> grant locks.
+      const { issueApplicantCapability } = await import("./service");
+      await issueApplicantCapability(ctx, assignment.id);
+      if (!assessmentOnlyCapabilityMatches(ctx.assessmentOnlySession, { assignmentId: assignment.id,
+        candidateEmail: assignment.candidateEmail, courseKey })) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "The applicant invitation scope changed." });
       }
     }
+    // An existing capability may finish lazy timed-out scoring under the caller's
+    // assignment UPDATE lock. No new capability is issued for elapsed attempts.
     return org;
   }
   await assertRecruitmentSeat(db, org, assignment.memberId, courseKey, email, options.lock);

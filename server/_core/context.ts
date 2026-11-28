@@ -4,6 +4,7 @@ import { sdk } from "./sdk";
 import { readVerifiedEmailFromRequest } from "./emailSession";
 import { readAssessmentOnlySession, type AssessmentOnlyCapability } from "./assessmentOnlySession";
 import { normalizeEmail, resolveEntitlementsByEmail } from "./access";
+import { identityEmail, resolveVerifiedIdentity } from "./accessService";
 
 export type TrpcContext = {
   req: CreateExpressContextOptions["req"];
@@ -35,17 +36,19 @@ export async function createContext(
   // Fails closed: returns null when JWT_SECRET is missing or cookie is invalid/expired.
   studentEmail = await readVerifiedEmailFromRequest(opts.req);
   let assessmentOnlySession = await readAssessmentOnlySession(opts.req);
-  const identityEmail = user?.email ?? studentEmail;
+  const verifiedEmail = identityEmail(resolveVerifiedIdentity({ user, studentEmail } as TrpcContext));
   // A capability belongs to one applicant identity. Once a different verified
   // learner identity is established, the old cookie must not affect context or
   // learner guards for that learner.
-  if (assessmentOnlySession && identityEmail && normalizeEmail(identityEmail) !== assessmentOnlySession.candidateEmail) {
+  if (assessmentOnlySession && verifiedEmail && normalizeEmail(verifiedEmail) !== assessmentOnlySession.candidateEmail) {
     opts.res.clearCookie("echelon_assessment_only", { path: "/" });
     assessmentOnlySession = null;
   }
-  const entitlementEmail = assessmentOnlySession?.candidateEmail ?? (assessmentOnlySession ? identityEmail : null);
-  const assessmentOnlyHasLearnerAccess = entitlementEmail
-    ? (await resolveEntitlementsByEmail(entitlementEmail)).hasAnyAccess
+  // Applicant possession is not a learner login, even if this email later buys
+  // access. Manager-only access also does not authorize learner state.
+  const assessmentOnlyHasLearnerAccess = assessmentOnlySession
+    ? !!verifiedEmail && normalizeEmail(verifiedEmail) === assessmentOnlySession.candidateEmail
+      && (await resolveEntitlementsByEmail(verifiedEmail)).unlockedExamTypes.length > 0
     : undefined;
 
   return {

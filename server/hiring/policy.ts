@@ -8,10 +8,10 @@ export const HIRING_PILOT_MAX_QUOTA = 25;
 export const HIRING_PILOT_MAX_DURATION_MS = 31 * 24 * 60 * 60 * 1000;
 export function validatePilotBounds(startsAtMs: number, endsAtMs: number, quota: number, nowMs = Date.now()) {
   if (!Number.isSafeInteger(startsAtMs) || !Number.isSafeInteger(endsAtMs) || startsAtMs < nowMs || endsAtMs <= startsAtMs || endsAtMs - startsAtMs > HIRING_PILOT_MAX_DURATION_MS) {
-    throw new TRPCError({ code: "BAD_REQUEST", message: "Pilot dates must be future, ordered, and no longer than 31 days." });
+    throw new TRPCError({ code: "BAD_REQUEST", message: "Free access dates must be future, ordered, and no longer than 31 days." });
   }
   if (!Number.isSafeInteger(quota) || quota < 1 || quota > HIRING_PILOT_MAX_QUOTA) {
-    throw new TRPCError({ code: "BAD_REQUEST", message: `Pilot allowance must be between 1 and ${HIRING_PILOT_MAX_QUOTA}.` });
+    throw new TRPCError({ code: "BAD_REQUEST", message: `Free assessment allowance must be between 1 and ${HIRING_PILOT_MAX_QUOTA}.` });
   }
   return { startsAtMs, endsAtMs, quota };
 }
@@ -44,7 +44,36 @@ export class InvalidHiringPayment extends Error {}
 function requirePayment(ok: unknown, message: string): asserts ok {
   if (!ok) throw new InvalidHiringPayment(message);
 }
+export function validateHiringCharge(invoice: any, charge: any,
+  evidence: { paymentIntentId: string | null; chargeId: string | null }): void {
+  requirePayment(evidence.paymentIntentId, "A reconcilable invoice payment intent is required");
+  const payments = invoice.payments;
+  if (payments !== undefined) {
+    requirePayment(payments?.has_more !== true && Array.isArray(payments?.data) && payments.data.length === 1,
+      "Exactly one complete invoice payment is required");
+    const payment = payments.data[0];
+    requirePayment(payment.status === "paid" && payment.amount_paid === invoice.total,
+      "Invoice payment allocation must cover the full total");
+  }
+  requirePayment(charge && evidence.chargeId && stripeId(charge) === evidence.chargeId
+    && charge.status === "succeeded" && charge.paid === true && charge.captured === true
+    && charge.currency === "cad" && stripeId(charge.customer) === stripeId(invoice.customer)
+    && charge.amount === invoice.total && charge.amount_captured === invoice.total,
+  "Full captured CAD charge and customer binding required");
+  requirePayment(stripeId(charge.payment_intent) === evidence.paymentIntentId,
+    "Invoice charge/payment intent mismatch");
+}
 export type HiringBinding = { id: string; orgId: number; customerId: string | null; subscriptionId: string | null };
+/** Cancellation proves ownership, not paid entitlement. Overdue subscriptions
+ * must remain cancellable without relaxing invoice fulfilment validation. */
+export function validateHiringCancellationSubscription(sub: any, order: HiringBinding): void {
+  requirePayment(sub && !sub.deleted && order.subscriptionId && sub.id === order.subscriptionId
+    && sub.metadata?.type === HIRING_TYPE && sub.metadata?.policy === HIRING_POLICY
+    && sub.metadata?.orderId === order.id && sub.metadata?.orgId === String(order.orgId),
+  "Hiring cancellation subscription binding mismatch");
+  requirePayment(order.customerId && stripeId(sub.customer) === order.customerId,
+    "Hiring cancellation customer binding mismatch");
+}
 export function validateHiringSubscription(sub: any, order: HiringBinding): { priceId: string; productId: string } {
   requirePayment(sub && !sub.deleted && sub.metadata?.type === HIRING_TYPE && sub.metadata?.policy === HIRING_POLICY
     && sub.metadata?.orderId === order.id && sub.metadata?.orgId === String(order.orgId), "Subscription policy/order mismatch");
@@ -83,7 +112,10 @@ export function validateHiringInvoice(invoice: any, sub: any, priceId: string): 
     && !line.discount_amounts?.some((d: any) => d.amount !== 0), "Invoice annual line mismatch");
   const start = line.period?.start, end = line.period?.end;
   requirePayment(Number.isSafeInteger(start) && Number.isSafeInteger(end) && end > start, "Invoice period missing");
-  const anniversary = new Date(start * 1000); anniversary.setUTCFullYear(anniversary.getUTCFullYear() + 1);
+  const anniversary = new Date(start * 1000);
+  const month = anniversary.getUTCMonth();
+  anniversary.setUTCFullYear(anniversary.getUTCFullYear() + 1);
+  if (anniversary.getUTCMonth() !== month) anniversary.setUTCDate(0);
   requirePayment(end * 1000 === anniversary.getTime(),
     "Invoice period is not an exact calendar year");
   return { startsAtMs: start * 1000, endsAtMs: end * 1000 };
@@ -102,7 +134,7 @@ export function hiringPaymentState(charge: any, disputes: any[]): HiringPaymentS
 export function assertHiringGrant(grant: { state: string; startsAtMs: number; endsAtMs: number; used: number; quota: number } | undefined,
   nowMs: number, needsAllowance = false): asserts grant {
   if (!grant || !["active", "cancel_at_period_end"].includes(grant.state) || grant.startsAtMs > nowMs || grant.endsAtMs <= nowMs) {
-    throw new TRPCError({ code: "FORBIDDEN", message: "An active Annual Teams Hiring add-on or admin-approved pilot is required." });
+    throw new TRPCError({ code: "FORBIDDEN", message: "Active Hiring access is required." });
   }
   if (needsAllowance && grant.used >= grant.quota) {
     throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This Hiring term's assessment invitation allowance is fully used. Revocation and expiry do not restore allowance." });

@@ -9,6 +9,16 @@ describe("Hiring payment policy", () => {
   it("accepts only the fixed annual CAD quantity-one price", () => expect(validateHiringSubscription(subscription(), order)).toEqual({ priceId: "price_hiring", productId: "prod_hiring" }));
   it.each([{ quantity: 2 }, { price: { ...price, unit_amount: 99_999 } }, { price: { ...price, currency: "usd" } }])("rejects mispriced subscription %j", change => expect(() => validateHiringSubscription({ ...subscription(), items: { data: [{ ...subscription().items.data[0], ...change }] } }, order)).toThrow());
   it("accepts exact paid annual invoice evidence", () => expect(validateHiringInvoice(invoice(), subscription(), "price_hiring")).toEqual({ startsAtMs: Date.parse("2027-01-01T00:00:00Z"), endsAtMs: Date.parse("2028-01-01T00:00:00Z") }));
+  it("accepts a leap-day year ending on the last day of February", () => {
+    const value = invoice();
+    value.lines.data[0].period = { start: Date.parse("2024-02-29T10:00:00Z") / 1000, end: Date.parse("2025-02-28T10:00:00Z") / 1000 };
+    expect(validateHiringInvoice(value, subscription(), "price_hiring")).toEqual({ startsAtMs: Date.parse("2024-02-29T10:00:00Z"), endsAtMs: Date.parse("2025-02-28T10:00:00Z") });
+  });
+  it("rejects a leap-day annual period rolled into March", () => {
+    const value = invoice();
+    value.lines.data[0].period = { start: Date.parse("2024-02-29T10:00:00Z") / 1000, end: Date.parse("2025-03-01T10:00:00Z") / 1000 };
+    expect(() => validateHiringInvoice(value, subscription(), "price_hiring")).toThrow(/calendar year/);
+  });
   it("extracts modern expanded invoice payment evidence", () => expect(invoicePaymentEvidence({ payments: { data: [{ status: "paid", payment: { payment_intent: { id: "pi_modern", latest_charge: { id: "ch_modern" } }, charge: null, payment_record: { id: "pr_modern" } } }] } })).toEqual({ paymentIntentId: "pi_modern", chargeId: "ch_modern", paymentRecordId: "pr_modern" }));
   it("retains legacy invoice payment evidence compatibility", () => expect(invoicePaymentEvidence({ payment_intent: { id: "pi_legacy", latest_charge: "ch_legacy" }, charge: "ch_legacy" })).toEqual({ paymentIntentId: "pi_legacy", chargeId: "ch_legacy", paymentRecordId: null }));
   it("does not let refund or dispute replay revive a term", () => { expect(hiringPaymentState({ refunded: true, amount_refunded: HIRING_AMOUNT, amount: HIRING_AMOUNT }, [])).toBe("refunded"); expect(hiringPaymentState({ refunded: false, amount_refunded: 0, amount: HIRING_AMOUNT, disputed: true }, [])).toBe("needs_review"); expect(hiringPaymentState({ refunded: false, amount_refunded: 0, amount: HIRING_AMOUNT, disputed: false }, [{ status: "lost" }])).toBe("dispute_lost"); });

@@ -21,16 +21,17 @@ import { recordLearnerSignIn } from "../learnerSignIn";
 
 import crypto from "crypto";
 import { TRPCError } from "@trpc/server";
-import { and, eq, gt, inArray, isNull } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { emailOtpCodes, recruitmentAssignments, recruitmentAssessments } from "../../drizzle/schema";
+import { emailOtpCodes, recruitmentAssignments } from "../../drizzle/schema";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { normalizeEmail } from "../_core/access";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { clearVerifiedEmailSessionCookie, issueVerifiedEmailSessionCookie } from "../_core/emailSession";
-import { clearAssessmentOnlySessionCookie, issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
+import { clearAssessmentOnlySessionCookie } from "../_core/assessmentOnlySession";
+import { issueApplicantCapability } from "../recruitment/service";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
@@ -68,7 +69,7 @@ export const emailOtpRouter = router({
           eq(recruitmentAssignments.accessKind, "applicant"),
           inArray(recruitmentAssignments.status, ["invited", "active"]),
           gt(recruitmentAssignments.expiresAtMs, Date.now()),
-        )).limit(1)
+        )).orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
         : [];
       if (!entitlements.hasAnyAccess && !entitlements.isManager && !applicantInvitation && !(await hasRecoverableTeamBilling(email))) {
         console.log(`[OTP] No entitlements for ${email.replace(/(^.{3}).+@/, "$1***@")}`);
@@ -139,7 +140,8 @@ export const emailOtpRouter = router({
       const entitlements = await resolveEntitlementsByEmail(email);
       const [applicant] = !entitlements.hasAnyAccess && !entitlements.isManager
         ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
-          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now()))).limit(1)
+          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now())))
+          .orderBy(desc(recruitmentAssignments.createdAtMs), desc(recruitmentAssignments.id)).limit(1)
         : [];
 
       // Issue access token if there are course entitlements
@@ -155,11 +157,19 @@ export const emailOtpRouter = router({
         throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available." });
       }
       if (applicant) {
-        const [assessment] = await db.select({ courseKey: recruitmentAssessments.courseKey, timeLimitMinutes: recruitmentAssessments.timeLimitMinutes })
-          .from(recruitmentAssessments).where(eq(recruitmentAssessments.id, applicant.assessmentId)).limit(1);
-        if (assessment) {
+        try {
+          // The consumed OTP proves this email, not any older OAuth/cookie identity.
+          // The issuer rechecks live scope and deadlines while holding its locks.
           clearVerifiedEmailSessionCookie(ctx.res);
-          await issueAssessmentOnlySession(ctx.res, { assignmentId: applicant.id, candidateEmail: applicant.candidateEmail, courseKey: assessment.courseKey, ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) });
+          await issueApplicantCapability({
+            req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
+          }, applicant.id);
+        } catch (error) {
+          // Signing happens inside the transaction, so even commit failure must
+          // remove a capability already queued on the response.
+          clearVerifiedEmailSessionCookie(ctx.res);
+          clearAssessmentOnlySessionCookie(ctx.res);
+          throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available.", cause: error });
         }
       } else {
         clearAssessmentOnlySessionCookie(ctx.res);
