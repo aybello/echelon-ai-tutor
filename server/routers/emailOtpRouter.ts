@@ -25,11 +25,12 @@ import { and, eq, gt, inArray, isNull } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { emailOtpCodes, recruitmentAssignments } from "../../drizzle/schema";
+import { emailOtpCodes, recruitmentAssignments, recruitmentAssessments } from "../../drizzle/schema";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { normalizeEmail } from "../_core/access";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
-import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { clearVerifiedEmailSessionCookie, issueVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
@@ -136,6 +137,10 @@ export const emailOtpRouter = router({
 
       // Resolve live entitlements
       const entitlements = await resolveEntitlementsByEmail(email);
+      const [applicant] = !entitlements.hasAnyAccess && !entitlements.isManager
+        ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
+          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now()))).limit(1)
+        : [];
 
       // Issue access token if there are course entitlements
       const accessToken =
@@ -144,8 +149,16 @@ export const emailOtpRouter = router({
           : "";
 
       const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
-      // Issue verified email session cookie (same as magic link flow)
-      await issueVerifiedEmailSessionCookie(ctx.res, email);
+      if (applicant) {
+        const [assessment] = await db.select({ courseKey: recruitmentAssessments.courseKey, timeLimitMinutes: recruitmentAssessments.timeLimitMinutes })
+          .from(recruitmentAssessments).where(eq(recruitmentAssessments.id, applicant.assessmentId)).limit(1);
+        if (assessment) {
+          clearVerifiedEmailSessionCookie(ctx.res);
+          await issueAssessmentOnlySession(ctx.res, { assignmentId: applicant.id, candidateEmail: applicant.candidateEmail, courseKey: assessment.courseKey, ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) });
+        }
+      } else {
+        await issueVerifiedEmailSessionCookie(ctx.res, email);
+      }
 
       await trackEvent("otp_verified", { email });
       await recordLearnerSignIn(ctx.req, { email }, "email_otp");

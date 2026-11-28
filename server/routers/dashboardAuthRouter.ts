@@ -24,7 +24,7 @@ import { and, eq, gt, inArray } from "drizzle-orm";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps, recruitmentAssignments } from "../../drizzle/schema";
+import { dashboardOtps, recruitmentAssignments, recruitmentAssessments } from "../../drizzle/schema";
 import { normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
@@ -34,6 +34,8 @@ import {
   readVerifiedEmailFromRequest,
   ECHELON_SESSION_COOKIE,
 } from "../_core/emailSession";
+import { clearVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { issueAssessmentOnlySession } from "../_core/assessmentOnlySession";
 import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
 import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
@@ -172,13 +174,24 @@ export const dashboardAuthRouter = router({
         throw new Error("Code expired or not found. Please request a new code.");
       }
 
-      // Issue the shared verified Echelon session cookie (24 hours)
-      await issueVerifiedEmailSessionCookie(ctx.res, email);
-
       // Re-resolve live entitlements — do not use stale purchase/subscription queries.
       // This is the authoritative access check: a refunded or cancelled customer
       // who still has a valid OTP code will not receive course access here.
       const entitlements = await resolveEntitlementsByEmail(email);
+      const [applicant] = !entitlements.hasAnyAccess && !entitlements.isManager
+        ? await db.select({ id: recruitmentAssignments.id, assessmentId: recruitmentAssignments.assessmentId, candidateEmail: recruitmentAssignments.candidateEmail })
+          .from(recruitmentAssignments).where(and(eq(recruitmentAssignments.candidateEmail, email), eq(recruitmentAssignments.accessKind, "applicant"), inArray(recruitmentAssignments.status, ["invited", "active"]), gt(recruitmentAssignments.expiresAtMs, Date.now()))).limit(1)
+        : [];
+      if (applicant) {
+        const [assessment] = await db.select({ courseKey: recruitmentAssessments.courseKey, timeLimitMinutes: recruitmentAssessments.timeLimitMinutes })
+          .from(recruitmentAssessments).where(eq(recruitmentAssessments.id, applicant.assessmentId)).limit(1);
+        if (assessment) {
+          clearVerifiedEmailSessionCookie(ctx.res);
+          await issueAssessmentOnlySession(ctx.res, { assignmentId: applicant.id, candidateEmail: applicant.candidateEmail, courseKey: assessment.courseKey, ttlMs: Math.max(30 * 60 * 1000, (assessment.timeLimitMinutes ?? 0) * 60 * 1000 + 10 * 60 * 1000) });
+        }
+      } else {
+        await issueVerifiedEmailSessionCookie(ctx.res, email);
+      }
 
       // Only issue an access token if there are actual course entitlements
       const accessToken = entitlements.unlockedExamTypes.length > 0
