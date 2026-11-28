@@ -25,6 +25,7 @@ const EMPLOYER_SURFACE_FILES = [
   "client/src/pages/Teams.tsx",
   "client/src/components/FlexOrderBuilder.tsx",
   "client/src/pages/OrgDashboard.tsx",
+  "client/src/components/RecruitmentPanel.tsx",
 ];
 
 function read(file: string): string {

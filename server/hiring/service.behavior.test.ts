@@ -15,9 +15,12 @@ vi.mock("../stripe/stripe", () => ({ stripe: {
 vi.mock("../_core/env", () => ({ ENV: { appBaseUrl: "http://127.0.0.1:3000" } }));
 // Avoid importing unrelated access-token services. Use canonical, real normalization.
 vi.mock("../_core/accessService", async () => ({ normalizeEmail: (await import("../_core/access")).normalizeEmail }));
-import { cancelHiringAtPeriodEnd, createHiringCheckout, getHiringStatus } from "./service";
+import { activateHiringPilot, cancelHiringAtPeriodEnd, createHiringCheckout, getHiringStatus } from "./service";
 import { HIRING_AMOUNT, HIRING_POLICY, HIRING_TYPE } from "./policy";
 import { dispatchHiringEvent } from "./webhook";
+import { assertApplicantGrant } from "../recruitment/access";
+import { hiringRouter } from "../routers/hiringRouter";
+import { stripeRouter } from "../routers/stripeRouter";
 
 type Row = Record<string, any>;
 const NOW = Date.parse("2026-11-28T05:00:00Z");
@@ -34,6 +37,7 @@ const subscription = (changes: Row = {}) => ({
 const price = () => ({ ...subscription().items.data[0].price, active: true, product: { ...subscription().items.data[0].price.product, active: true } });
 const pendingOrder = (changes: Row = {}) => ({ ...order(), status: "pending", stripeSubscriptionId: null, stripeCheckoutSessionId: null, renewalCancelled: false, ...changes });
 const session = (changes: Row = {}) => ({ id: "cs_hiring", mode: "subscription", customer: "cus_hiring", metadata: { type: HIRING_TYPE, policy: HIRING_POLICY, orderId: "order_current", orgId: "7", ownerEmail: EMAIL }, status: "open", subscription: null, url: "https://checkout.stripe.test/synthetic", ...changes });
+const cancellation = () => ({ orgId: 7, expectedBillingOrderId: "order_current", expectedBillingSubscriptionId: "sub_hiring" });
 const LOCKED_REQUEST = { timeout: 2_000, maxNetworkRetries: 0 };
 const CHECKOUT_REQUEST = { timeout: 10_000, maxNetworkRetries: 0 };
 const event = (type: string, object: Row) => ({ id: `evt_${type}`, type, data: { object } });
@@ -43,7 +47,7 @@ const event = (type: string, object: Row) => ({ id: `evt_${type}`, type, data: {
 function memoryDb(terms: Row[] = [], org: Row = organization(), orders: Row[] = [order(), order("order_old", "sub_old")]) {
   const dialect = new MySqlDialect();
   const tables: Record<string, Row[]> = { organizations: [org], hiring_terms: structuredClone(terms), hiring_orders: structuredClone(orders), hiring_events: [], hiring_payments: [], organization_members: [], team_flex_licences: [] };
-  const reads: { table: string; predicate: string; params: unknown[]; order: string[] }[] = [];
+  const reads: { table: string; predicate: string; params: unknown[]; order: string[]; lock?: string }[] = [];
   const writes: { table: string; values: Row }[] = [];
   function matches(condition: SQL, row: Row) {
     const query = dialect.sqlToQuery(condition);
@@ -77,13 +81,13 @@ function memoryDb(terms: Row[] = [], org: Row = organization(), orders: Row[] = 
       if (!tables[name]) throw new Error(`Unexpected read: ${name}`);
       let condition: SQL | undefined, count = Infinity;
       const ordering: string[] = [];
-      const read = { table: name, predicate: "", params: [] as unknown[], order: ordering };
+      const read = { table: name, predicate: "", params: [] as unknown[], order: ordering, lock: undefined as string | undefined };
       const builder: any = {
         innerJoin: () => builder,
         where: (predicate: SQL) => { condition = predicate; const q = dialect.sqlToQuery(predicate); read.predicate = q.sql; read.params = q.params; return builder; },
         orderBy: (...columns: any[]) => { ordering.push(...columns.map(column => dialect.sqlToQuery(sql`${column}`).sql)); return builder; },
         limit: (value: number) => { count = value; return builder; },
-        for: () => builder,
+        for: (lock: string) => { read.lock = lock; return builder; },
         then: (resolve: any, reject: any) => Promise.resolve().then(() => {
           reads.push(read);
           let rows = tables[name].filter(row => !condition || matches(condition, row));
@@ -134,6 +138,89 @@ beforeEach(() => {
 afterEach(() => { vi.useRealTimers(); vi.unstubAllEnvs(); });
 
 describe("real Hiring status and owner cancellation", () => {
+  it.each(["past_due", "unpaid", "canceled", "incomplete_expired"])("withdraws ALL current/future eligible terms on confirmed %s before lifecycle delivery, preserving payment and quota holds", async status => {
+    const future = term({ id: "term_future", startsAtMs: NOW + 86_400_000, endsAtMs: NOW + 400 * 86_400_000, used: 37 });
+    const held = ["disputed", "needs_review", "refunded", "dispute_lost"].map(paymentState => term({ id: `hold_${paymentState}`, paymentState, state: "suspended", used: 100 }));
+    const manual = term({ id: "manual_hold", state: "suspended" });
+    const pilot = term({ id: "complimentary", basis: "pilot", sourceSubscriptionId: null });
+    const store = memoryDb([term(), future, ...held, manual, pilot]);
+    const before = structuredClone(store.tables.hiring_terms);
+    external.retrieve.mockResolvedValue(subscription({ status }));
+    external.update.mockResolvedValue(subscription({ status, cancel_at_period_end: true }));
+    await cancelHiringAtPeriodEnd(context, cancellation());
+    for (const id of ["term_current", "term_future"]) {
+      const updated = store.tables.hiring_terms.find(row => row.id === id)!;
+      expect(updated).toEqual({ ...before.find(row => row.id === id), state: "subscription_suspended" });
+      expect(() => assertApplicantGrant(organization() as any, updated as any, Math.max(NOW, updated.startsAtMs))).toThrow(/no longer active/);
+    }
+    expect(store.tables.hiring_terms.slice(2)).toEqual(before.slice(2));
+    expect(store.tables.hiring_orders[0]).toMatchObject({ renewalCancelled: true, ...(["canceled", "incomplete_expired"].includes(status) ? { status: "cancelled" } : {}) });
+    expect(external.update).toHaveBeenCalledTimes(["canceled", "incomplete_expired"].includes(status) ? 0 : 1);
+    expect(store.db.insert).not.toHaveBeenCalled();
+  });
+
+  it("keeps active paid current and future scheduled-cancellation terms usable without clearing subscription or manual holds", async () => {
+    const future = term({ id: "term_future", startsAtMs: NOW + 86_400_000, endsAtMs: NOW + 400 * 86_400_000, used: 17 });
+    const held = [term({ id: "subscription_hold", state: "subscription_suspended" }), term({ id: "manual_hold", state: "suspended" })];
+    const store = memoryDb([term(), future, ...held]);
+    await cancelHiringAtPeriodEnd(context, cancellation());
+    expect(store.tables.hiring_terms).toEqual([{ ...term(), state: "cancel_at_period_end" }, { ...future, state: "cancel_at_period_end" }, ...held]);
+    for (const row of store.tables.hiring_terms.slice(0, 2)) expect(() => assertApplicantGrant(organization() as any, row as any, Math.max(NOW, row.startsAtMs))).not.toThrow();
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, canCancelRenewal: false, canPurchase: false });
+  });
+
+  it.each(["past_due", "unpaid"])("does not use cancellation as positive recovery after observing %s even when the update reply is active", async status => {
+    const store = memoryDb([term()]);
+    external.retrieve.mockResolvedValue(subscription({ status }));
+    // An independently changing remote lifecycle needs validated reconciliation;
+    // cancellation alone cannot use it as proof to keep/restore usable access.
+    await cancelHiringAtPeriodEnd(context, cancellation());
+    expect(store.tables.hiring_terms).toEqual([{ ...term(), state: "subscription_suspended" }]);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false });
+  });
+
+  it("dispatches the exact displayed identity through the real cancellation RPC", async () => {
+    const store = memoryDb([term()], organization(), [order()]);
+    await expect(hiringRouter.createCaller(context).cancelAtPeriodEnd(cancellation())).resolves.toMatchObject({ success: true });
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
+    expect(store.tables.hiring_terms).toEqual([{ ...term(), state: "cancel_at_period_end" }]);
+  });
+
+  it.each(["replacement", "same order rebound", "same subscription different order"])("requires refetch and reconfirmation when displayed billing is replaced: %s", async change => {
+    const store = memoryDb([term()], organization(), [order()]);
+    const displayed = await getHiringStatus(context, 7);
+    const transaction = store.db.transaction.getMockImplementation()!;
+    store.db.transaction.mockImplementationOnce(work => {
+      if (change === "replacement") {
+        store.tables.hiring_events.push({ id: "evt_deleted", orgId: 7, orderId: "order_current", eventType: "customer.subscription.deleted", state: "claimed" });
+        Object.assign(store.tables.hiring_orders[0], { status: "cancelled", renewalCancelled: true });
+        store.tables.hiring_orders.push({ ...order("order_replacement", "sub_replacement"), createdAtMs: NOW + 1 });
+      } else if (change === "same order rebound") store.tables.hiring_orders[0].stripeSubscriptionId = "sub_replacement";
+      else store.tables.hiring_orders[0].id = "order_replacement";
+      return transaction(work);
+    });
+    await expect(cancelHiringAtPeriodEnd(context, { orgId: 7, expectedBillingOrderId: displayed.billingOrderId!, expectedBillingSubscriptionId: displayed.billingSubscriptionId! })).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringContaining("confirm cancellation again") });
+    expect(external.retrieve).not.toHaveBeenCalled(); expect(external.update).not.toHaveBeenCalled(); expect(store.writes).toEqual([]);
+    const fresh = await getHiringStatus(context, 7);
+    external.retrieve.mockResolvedValue(subscription({ id: fresh.billingSubscriptionId }));
+    external.update.mockResolvedValue(subscription({ id: fresh.billingSubscriptionId, cancel_at_period_end: true }));
+    await expect(cancelHiringAtPeriodEnd(context, { orgId: 7, expectedBillingOrderId: fresh.billingOrderId!, expectedBillingSubscriptionId: fresh.billingSubscriptionId! })).resolves.toMatchObject({ success: true });
+    expect(external.update).toHaveBeenCalledWith(fresh.billingSubscriptionId, { cancel_at_period_end: true }, LOCKED_REQUEST);
+  });
+
+  it.each([{ orgId: 7 }, { ...cancellation(), expectedBillingOrderId: "" }, { ...cancellation(), expectedBillingSubscriptionId: "" }])("rejects missing displayed billing identity at the real RPC boundary: %j", async input => {
+    const store = memoryDb([term()]);
+    await expect(hiringRouter.createCaller(context).cancelAtPeriodEnd(input as any)).rejects.toMatchObject({ code: "BAD_REQUEST" });
+    expect(store.db.select).not.toHaveBeenCalled(); expect(external.update).not.toHaveBeenCalled();
+  });
+
+  it.each([{ customer: "cus_unrelated" }, { id: "sub_unrelated" }, { cancel_at_period_end: false }])("rejects unconfirmed or mismatched cancellation responses without local writes: %j", async changes => {
+    const store = memoryDb([term()]);
+    external.update.mockResolvedValue(subscription({ cancel_at_period_end: true, ...changes }));
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(store.writes).toEqual([]); expect(store.tables.hiring_terms).toEqual([term()]);
+  });
+
   it.each(["active", "suspended"])("selects latest %s billing term instead of an old expired active term", async state => {
     const current = term({ state, paymentState: state === "suspended" ? "disputed" : "active" });
     const store = memoryDb([oldTerm(), current]);
@@ -145,7 +232,7 @@ describe("real Hiring status and owner cancellation", () => {
 
   it.each(["disputed", "needs_review", "refunded"])("allows verified owner cancellation of the latest inaccessible %s Hiring term without restoring access", async paymentState => {
     const store = memoryDb([oldTerm(), term({ state: "suspended", paymentState })]);
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toEqual({ success: true, endsAtMs: term().endsAtMs });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toEqual({ success: true, endsAtMs: term().endsAtMs });
     expect(external.retrieve).toHaveBeenCalledWith("sub_hiring", { expand: ["items.data.price.product"] }, LOCKED_REQUEST);
     expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.hiring_terms[0]).toEqual(oldTerm());
@@ -160,7 +247,7 @@ describe("real Hiring status and owner cancellation", () => {
     const future = term({ startsAtMs: Date.parse("2027-01-01T00:00:00Z"), endsAtMs: Date.parse("2028-01-01T00:00:00Z") });
     memoryDb([oldTerm(), future]);
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, termId: future.id, canCancelRenewal: true });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toEqual({ success: true, endsAtMs: future.endsAtMs });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toEqual({ success: true, endsAtMs: future.endsAtMs });
   });
 
   it("does not leak an expired term into active Hiring access", async () => {
@@ -171,25 +258,25 @@ describe("real Hiring status and owner cancellation", () => {
   it("denies an unverified identity before reading or writing billing", async () => {
     const store = memoryDb([term()]);
     const anonymous = { ...context, studentEmail: null };
-    await expect(cancelHiringAtPeriodEnd(anonymous, 7)).rejects.toMatchObject({ code: "UNAUTHORIZED" });
+    await expect(cancelHiringAtPeriodEnd(anonymous, cancellation())).rejects.toMatchObject({ code: "UNAUTHORIZED" });
     expect(store.db.select).not.toHaveBeenCalled(); expect(store.writes).toEqual([]); expect(external.update).not.toHaveBeenCalled();
   });
 
   it("denies a different verified email using the real organization resolver", async () => {
     const store = memoryDb([term()]);
-    await expect(cancelHiringAtPeriodEnd({ ...context, studentEmail: "intruder@example.test" }, 7)).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(cancelHiringAtPeriodEnd({ ...context, studentEmail: "intruder@example.test" }, cancellation())).rejects.toMatchObject({ code: "FORBIDDEN" });
     expect(store.writes).toEqual([]); expect(external.retrieve).not.toHaveBeenCalled(); expect(external.update).not.toHaveBeenCalled();
   });
 
   it("rejects a mismatched live subscription/customer before cancellation or local writes", async () => {
     const store = memoryDb([term()]); external.retrieve.mockResolvedValue(subscription({ customer: "cus_unrelated" }));
-    await expect(cancelHiringAtPeriodEnd(context, 7)).rejects.toThrow(/customer binding mismatch/i);
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).rejects.toThrow(/customer binding mismatch/i);
     expect(external.update).not.toHaveBeenCalled(); expect(store.writes).toEqual([]);
   });
 
   it("does not write local cancellation when Stripe update fails", async () => {
     const store = memoryDb([term()]); external.update.mockRejectedValue(new Error("mock Stripe cancellation failure"));
-    await expect(cancelHiringAtPeriodEnd(context, 7)).rejects.toThrow("mock Stripe cancellation failure");
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).rejects.toThrow("mock Stripe cancellation failure");
     expect(store.writes).toEqual([]); expect(store.tables.hiring_terms).toEqual([term()]);
   });
 
@@ -198,7 +285,7 @@ describe("real Hiring status and owner cancellation", () => {
     const lapsed = { ...organization(), status: "cancelled", termEnd: new Date("2026-01-01T00:00:00Z") };
     const store = memoryDb([term({ state: "suspended", paymentState: "needs_review" })], lapsed);
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, canCancelRenewal: true });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.organizations[0]).toEqual(lapsed);
   });
@@ -206,14 +293,14 @@ describe("real Hiring status and owner cancellation", () => {
   it("permits cancellation of a valid bound past-due Hiring subscription even though fulfilment must reject it", async () => {
     memoryDb([term({ state: "suspended", paymentState: "needs_review" })]);
     external.retrieve.mockResolvedValue(subscription({ status: "past_due" }));
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
   });
 
   it("cancels a verified bound pending subscription before any invoice term exists", async () => {
     const store = memoryDb([]); store.tables.hiring_orders[0].status = "pending";
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, termId: null, sourceSubscriptionId: "sub_hiring", canCancelRenewal: true });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toEqual({ success: true, endsAtMs: null });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toEqual({ success: true, endsAtMs: null });
     expect(store.tables.hiring_orders[0]).toMatchObject({ status: "pending", renewalCancelled: true });
     expect(store.tables.hiring_terms).toEqual([]);
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, canCancelRenewal: false });
@@ -224,12 +311,41 @@ describe("real Hiring status and owner cancellation", () => {
     store.tables.hiring_orders[0].renewalCancelled = true;
     external.retrieve.mockResolvedValue(subscription({ cancel_at_period_end: true }));
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, canCancelRenewal: false });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.update).not.toHaveBeenCalled(); expect(store.tables.organizations[0]).toEqual(organization());
   });
 });
 
 describe("real Hiring checkout with synthetic Stripe", () => {
+  it.each(["hiring", "stripe"] as const)("rejects active complimentary allowance at the actual %s checkout alias consistently with status", async alias => {
+    const pilot = term({ basis: "pilot", sourceSubscriptionId: null, used: 100 });
+    const store = memoryDb([pilot], organization(), []);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, canPurchase: false, hasBillingSubscription: false });
+    const purchase = alias === "hiring" ? hiringRouter.createCaller(context).createCheckout({ orgId: 7 }) : stripeRouter.createCaller(context).createHiringCheckout({ orgId: 7 });
+    await expect(purchase).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringContaining("active Hiring allowance") });
+    expect(store.writes).toEqual([]); expect(external.customerCreate).not.toHaveBeenCalled(); expect(external.sessionCreate).not.toHaveBeenCalled();
+    expect(store.reads.find(read => read.table === "organizations" && read.lock)).toMatchObject({ lock: "update" });
+  });
+
+  it("rechecks an allowance activated by the real admin helper between status and reservation", async () => {
+    const store = memoryDb([], organization(), []);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ canPurchase: true });
+    await activateHiringPilot({ ...context, user: { role: "admin", email: "admin@example.test" } } as any, { orgId: 7, startsAtMs: NOW, endsAtMs: NOW + 86_400_000, quota: 25, sourcePilotId: "synthetic-pilot" });
+    expect(store.reads.find(read => read.table === "organizations" && read.lock)).toMatchObject({ lock: "update" });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringContaining("active Hiring allowance") });
+    expect(external.customerCreate).not.toHaveBeenCalled(); expect(external.sessionCreate).not.toHaveBeenCalled(); expect(store.tables.hiring_orders).toEqual([]);
+  });
+
+  it("rechecks active complimentary access on the second reservation after creating a customer outside locks", async () => {
+    const store = memoryDb([], { ...organization(), stripeCustomerId: null }, []);
+    external.customerCreate.mockImplementation(async () => {
+      await activateHiringPilot({ ...context, user: { role: "admin", email: "admin@example.test" } } as any, { orgId: 7, startsAtMs: NOW, endsAtMs: NOW + 86_400_000, quota: 25, sourcePilotId: "synthetic-pilot" });
+      return { id: "cus_hiring" };
+    });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringContaining("active Hiring allowance") });
+    expect(store.tables.organizations[0].stripeCustomerId).toBeNull(); expect(store.tables.hiring_orders).toEqual([]); expect(external.sessionCreate).not.toHaveBeenCalled();
+  });
+
   it("creates a customer outside every transaction and persists it only after a fresh authority check", async () => {
     const store = memoryDb([], { ...organization(), stripeCustomerId: null }, []);
     external.customerCreate.mockImplementation(async () => {
@@ -384,7 +500,7 @@ describe("independent Hiring billing status", () => {
   it.each(["pending", "checkout_failed", "checkout_expired", "needs_review", "cancelled"])("keeps a bound %s subscription discoverable and cancellable without granting access", async status => {
     const store = memoryDb([], organization(), [{ ...order(), status }]);
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, termId: null, canCancelRenewal: true, billingOrderId: "order_current", billingSubscriptionId: "sub_hiring", billingRenewalCancelled: false, hasBillingSubscription: true });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.hiring_orders[0]).toMatchObject({ status, renewalCancelled: true });
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: false, billingRenewalCancelled: true, canCancelRenewal: false });
@@ -392,8 +508,13 @@ describe("independent Hiring billing status", () => {
 
   it("reports a pilot's access independently from a separate collectible subscription", async () => {
     const pilot = term({ id: "pilot_term", basis: "pilot", sourceSubscriptionId: null, quota: 25 });
-    memoryDb([pilot], organization(), [{ ...order(), status: "checkout_failed" }]);
-    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, basis: "pilot", termId: "pilot_term", sourceSubscriptionId: null, billingOrderId: "order_current", billingSubscriptionId: "sub_hiring", hasBillingSubscription: true, canCancelRenewal: true });
+    const store = memoryDb([pilot], organization(), [{ ...order(), status: "checkout_failed" }]);
+    await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, basis: "pilot", termId: "pilot_term", sourceSubscriptionId: null, billingOrderId: "order_current", billingSubscriptionId: "sub_hiring", hasBillingSubscription: true, canCancelRenewal: true, canPurchase: false });
+    await expect(createHiringCheckout(context, 7)).rejects.toMatchObject({ code: "CONFLICT", message: expect.stringContaining("active Hiring allowance") });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
+    expect(store.tables.hiring_terms).toEqual([pilot]);
+    expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
+    expect(external.sessionCreate).not.toHaveBeenCalled();
   });
 
   it("reports absence of billing without changing active pilot access", async () => {
@@ -526,13 +647,13 @@ describe("verified ended billing operations versus immutable history", () => {
   it("permits withdrawal of the durably bound bill despite mutable metadata drift, never a different live ID or customer", async () => {
     const store = memoryDb([term()], organization(), [order()]);
     external.retrieve.mockResolvedValue(subscription({ metadata: {} }));
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.hiring_terms[0]).toMatchObject({ state: "cancel_at_period_end", used: 9, quota: 100 });
     external.update.mockClear();
     for (const changes of [{ id: "sub_unrelated" }, { customer: "cus_unrelated" }]) {
       external.retrieve.mockResolvedValue(subscription({ metadata: {}, ...changes }));
-      await expect(cancelHiringAtPeriodEnd(context, 7)).rejects.toMatchObject({ code: "CONFLICT" });
+      await expect(cancelHiringAtPeriodEnd(context, cancellation())).rejects.toMatchObject({ code: "CONFLICT" });
     }
     expect(external.update).not.toHaveBeenCalled();
   });
@@ -548,7 +669,7 @@ describe("verified ended billing operations versus immutable history", () => {
       expect(store.transactionDepth).toBe(1); expect(options).toEqual(LOCKED_REQUEST);
       return subscription({ cancel_at_period_end: true });
     });
-    await cancelHiringAtPeriodEnd(context, 7);
+    await cancelHiringAtPeriodEnd(context, cancellation());
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ active: true, canCancelRenewal: false, canPurchase: false, hasBillingSubscription: true });
     expect(store.tables.hiring_terms[0]).toMatchObject({ state: "cancel_at_period_end", used: 9, quota: 100 });
     store.tables.hiring_terms[0].endsAtMs = NOW - 1;
@@ -567,9 +688,9 @@ describe("verified ended billing operations versus immutable history", () => {
       external.retrieve.mockResolvedValue(subscription({ cancel_at_period_end: true }));
       return subscription({ cancel_at_period_end: true });
     });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).rejects.toThrow("synthetic local commit failure");
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).rejects.toThrow("synthetic local commit failure");
     expect(store.tables.hiring_orders).toEqual([order()]); expect(store.tables.hiring_terms).toEqual([term()]);
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.update).toHaveBeenCalledTimes(1);
     expect(store.tables.hiring_terms[0]).toMatchObject({ used: 9, quota: 100, state: "cancel_at_period_end" });
   });
@@ -607,7 +728,8 @@ describe("verified ended billing operations versus immutable history", () => {
     const savedNewOrder = structuredClone(store.tables.hiring_orders.find(row => row.id === replacement.orderId));
     await expect(dispatchHiringEvent({ ...event("invoice.paid", oldInvoice), id: "evt_late_old_paid" })).resolves.toEqual({ handled: true });
     external.charge.mockImplementation(async id => ({ ...charge(id), ...(id === "ch_old" ? { refunded: true, amount_refunded: 113000 } : {}) }));
-    await expect(dispatchHiringEvent(event("charge.refunded", { id: "ch_old" }))).resolves.toEqual({ handled: true });
+    await expect(dispatchHiringEvent(event("charge.refunded", { id: "ch_old" }))).resolves.toEqual({ handled: true, reviewRequired: true });
+    expect(store.tables.hiring_events.find(row => row.id === "evt_charge.refunded")).toMatchObject({ orderId: old.id, invoiceId: "in_old", state: "review_required" });
     expect(store.tables.hiring_orders.find(row => row.id === old.id)).toMatchObject({ stripeSubscriptionId: "sub_hiring", stripeCheckoutSessionId: "cs_old", paymentState: "refunded" });
     expect(store.tables.hiring_orders.find(row => row.id === replacement.orderId)).toEqual(savedNewOrder);
     expect(store.tables.hiring_terms.find(row => row.sourceSubscriptionId === newSub.id)).toEqual(savedNewTerm);
@@ -638,7 +760,7 @@ describe("ended-binding proof cannot authorize another billing operation", () =>
     const store = memoryDb([term()], organization(), [collectible, historical]);
     store.tables.hiring_events.push({ id: "evt_ended", orgId: 7, orderId: historical.id, eventType: "customer.subscription.deleted", state: "claimed" });
     await expect(getHiringStatus(context, 7)).resolves.toMatchObject({ billingOrderId: collectible.id, canCancelRenewal: true, canPurchase: false });
-    await expect(cancelHiringAtPeriodEnd(context, 7)).resolves.toMatchObject({ success: true });
+    await expect(cancelHiringAtPeriodEnd(context, cancellation())).resolves.toMatchObject({ success: true });
     expect(external.retrieve).toHaveBeenCalledTimes(1);
     expect(external.update).toHaveBeenCalledWith("sub_hiring", { cancel_at_period_end: true }, LOCKED_REQUEST);
     expect(store.tables.hiring_orders[1]).toEqual(historical);

@@ -9,6 +9,7 @@ const status = {
   active: false, owner: true, state: null, termId: null, basis: null,
   used: 0, quota: 0, remaining: 0, startsAtMs: null, endsAtMs: null,
   sourceSubscriptionId: null, canCancelRenewal: false, canPurchase: true,
+  billingOrderId: "synthetic-paid-order", billingSubscriptionId: "sub_synthetic_paid",
 };
 
 beforeAll(async () => {
@@ -40,6 +41,9 @@ beforeAll(async () => {
         if (op.path === 'org.getOrgOverview') throw TRPCClientError.from({error:{message:'This team has no current contract, activation, or reporting window. Manage team billing to renew; learner access is unchanged.',code:-32003,data:{code:'FORBIDDEN'}}});
         if (op.path === 'hiring.status') return fixture.status;
         if (op.path === 'hiring.cancelAtPeriodEnd') {
+          if (op.input.expectedBillingOrderId !== fixture.status.billingOrderId || op.input.expectedBillingSubscriptionId !== fixture.status.billingSubscriptionId) {
+            throw TRPCClientError.from({error:{message:'Hiring billing changed. Refresh Hiring status and confirm cancellation again.',code:-32009,data:{code:'CONFLICT'}}});
+          }
           fixture.status = {...fixture.status,canCancelRenewal:false};
           return {endsAtMs:1900000000000};
         }
@@ -103,11 +107,48 @@ const purchaseCalls = (page: Page) => calls(page, "hiring.createCheckout");
 // Real React DOM, tRPC hooks/providers, QueryClient, useQuery/useMutation and
 // privacy lifecycle. Only the final RPC link is synthetic; no server/DB/Stripe.
 describe("independent organization Hiring billing (actual React/QueryClient)", () => {
+  it.each([
+    { billingOrderId: null }, { billingSubscriptionId: null }, { billingOrderId: "" }, { billingSubscriptionId: "" },
+  ])("fails closed on cancellation without the displayed exact billing identity: %j", async missing => {
+    await withPanel({ status: { canCancelRenewal: true, ...missing } }, async page => {
+      await page.getByText("No assessments yet", { exact: true }).waitFor();
+      expect(await button(page, "Cancel Hiring renewal").count()).toBe(0);
+      expect(await cancelCalls(page)).toEqual([]);
+    });
+  });
+
+  it("requires a fresh confirmation after server-side bill replacement without any cache invalidation", async () => {
+    await withPanel({ holdMutation: true, status: { canCancelRenewal: true, canPurchase: false } }, async page => {
+      let confirmations = 0;
+      page.on("dialog", () => { confirmations++; });
+      await button(page, "Cancel Hiring renewal").click();
+      await expect.poll(() => cancelCalls(page)).toEqual([{ path: "hiring.cancelAtPeriodEnd", input: { orgId, expectedBillingOrderId: "synthetic-paid-order", expectedBillingSubscriptionId: "sub_synthetic_paid" }, type: "mutation" }]);
+      await page.evaluate(() => {
+        const w = window as any;
+        // Only server state changes: the displayed QueryClient read remains the
+        // old bill until the mutation rejects and the component refetches it.
+        w.__fixture.status = { ...w.__fixture.status, billingOrderId: "replacement-order", billingSubscriptionId: "sub_replacement" };
+        w.__fixture.holdMutation = false;
+        w.__held.splice(0).forEach((resolve: () => void) => resolve());
+      });
+      await page.getByRole("alert").filter({ hasText: "confirm cancellation again" }).waitFor();
+      await button(page, "Cancel Hiring renewal").waitFor();
+      expect(await cancelCalls(page)).toHaveLength(1);
+      expect(confirmations).toBe(1);
+      expect(await page.getByText("Hiring renewal is cancelled. Normal Teams training is unchanged.", { exact: true }).count()).toBe(0);
+      await button(page, "Cancel Hiring renewal").click();
+      await expect.poll(() => cancelCalls(page)).toHaveLength(2);
+      expect((await cancelCalls(page))[1].input).toEqual({ orgId, expectedBillingOrderId: "replacement-order", expectedBillingSubscriptionId: "sub_replacement" });
+      await page.getByText("Hiring renewal is cancelled. Normal Teams training is unchanged.", { exact: true }).waitFor();
+      expect(confirmations).toBe(2);
+    });
+  });
+
   it.each(["active", "cancel_at_period_end"])("dispatches cancellation with a complimentary %s allowance plus a separate paid renewable order", async state => {
     await withPanel({ status: { active: true, owner: true, basis: "pilot", state, quota: 100, remaining: 93, endsAtMs: 1900000000000, canCancelRenewal: true } }, async page => {
       await page.getByText("No assessments yet", { exact: true }).waitFor();
       await button(page, "Cancel Hiring renewal").click();
-      await expect.poll(() => cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId},type:"mutation"}]);
+      await expect.poll(() => cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId,expectedBillingOrderId:"synthetic-paid-order",expectedBillingSubscriptionId:"sub_synthetic_paid"},type:"mutation"}]);
       await page.getByText("Hiring renewal is cancelled. Normal Teams training is unchanged.", { exact: true }).waitFor();
       expect(await purchaseCalls(page)).toEqual([]);
     });
@@ -117,7 +158,7 @@ describe("independent organization Hiring billing (actual React/QueryClient)", (
     await withPanel({ status: { basis: "stripe", canCancelRenewal: true } }, async page => {
       await page.getByText("No assessments yet", { exact: true }).waitFor();
       await button(page, "Cancel Hiring renewal").click();
-      await expect.poll(() => cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId},type:"mutation"}]);
+      await expect.poll(() => cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId,expectedBillingOrderId:"synthetic-paid-order",expectedBillingSubscriptionId:"sub_synthetic_paid"},type:"mutation"}]);
     });
   });
 
@@ -135,7 +176,7 @@ describe("independent organization Hiring billing (actual React/QueryClient)", (
   it("allows a lapsed owner to cancel on the billing-only recovery surface without any assessment read", async () => {
     await withPanel({ billingOnly: true, status: { active: false, basis: "stripe", canCancelRenewal: true, canPurchase: false } }, async page => {
       await button(page, "Cancel Hiring renewal").click();
-      await expect.poll(() => cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId},type:"mutation"}]);
+      await expect.poll(() => cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId,expectedBillingOrderId:"synthetic-paid-order",expectedBillingSubscriptionId:"sub_synthetic_paid"},type:"mutation"}]);
       expect(await calls(page, "recruitment.list")).toEqual([]);
       expect(await calls(page, "recruitment.catalog")).toEqual([]);
       expect(await button(page, "Add Hiring allowance").count()).toBe(0);
@@ -146,7 +187,7 @@ describe("independent organization Hiring billing (actual React/QueryClient)", (
     await withPanel({dashboard:true,status:{canCancelRenewal:true,hasBillingSubscription:true,billingOrderId:"synthetic-paid-order"}},async page=>{
       await page.getByRole("heading",{name:"Manager Dashboard",exact:true}).waitFor();
       await button(page,"Cancel Hiring renewal").click();
-      await expect.poll(()=>cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId},type:"mutation"}]);
+      await expect.poll(()=>cancelCalls(page)).toEqual([{path:"hiring.cancelAtPeriodEnd",input:{orgId,expectedBillingOrderId:"synthetic-paid-order",expectedBillingSubscriptionId:"sub_synthetic_paid"},type:"mutation"}]);
       expect(await calls(page,"recruitment.list")).toEqual([]);
       expect(await calls(page,"recruitment.catalog")).toEqual([]);
     });
@@ -162,13 +203,15 @@ describe("independent organization Hiring billing (actual React/QueryClient)", (
   });
 
   it("does not describe a free-only allowance as automatically renewing or display internal naming", async () => {
-    await withPanel({ status: {active:true,basis:"pilot",state:"active",quota:100,remaining:100,endsAtMs:1900000000000} }, async page => {
+    await withPanel({ status: {active:true,basis:"pilot",state:"active",quota:100,remaining:100,endsAtMs:1900000000000,canPurchase:false,billingOrderId:null,billingSubscriptionId:null} }, async page => {
       await page.getByText("This complimentary allowance ends on its stated date and does not itself renew or create a charge.", { exact: true }).waitFor();
       const text = await page.locator("#root").innerText();
       expect(text).not.toMatch(/pilot|renews annually|candidates need a current team seat/i);
       expect(text).toContain("Applicants invited through the Hiring allowance do not need a paid training seat.");
       expect(text).toContain("legacy team-seat workflow");
       expect(await button(page, "Cancel Hiring renewal").count()).toBe(0);
+      expect(await button(page, "Add Hiring allowance").count()).toBe(0);
+      expect(await purchaseCalls(page)).toEqual([]);
       expect(await page.locator('a[href*="pricing"],a[href*="billing=personal"]').count()).toBe(0);
     });
   });

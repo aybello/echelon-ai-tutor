@@ -124,9 +124,12 @@ function HiringBillingBody({ orgId, access, purchaseEnabled }: { orgId: number; 
   const billing = status as (typeof status & {
     canPurchase?: boolean;
     billingOrderId?: string | null;
+    billingSubscriptionId?: string | null;
     hasBillingSubscription?: boolean;
     billingRenewalCancelled?: boolean;
   });
+  const cancellationAllowed = !!status?.owner && status.canCancelRenewal &&
+    !!billing?.billingOrderId && !!billing.billingSubscriptionId;
   const purchaseAllowed = purchaseEnabled && !!status?.owner &&
     billing?.canPurchase === true;
   async function purchaseHiring() {
@@ -146,19 +149,25 @@ function HiringBillingBody({ orgId, access, purchaseEnabled }: { orgId: number; 
     }
   }
   async function cancelHiringRenewal() {
-    if (!canManage() || !status?.canCancelRenewal || busy || pending.current) return;
+    if (!canManage() || !cancellationAllowed || !billing?.billingOrderId || !billing.billingSubscriptionId || busy || pending.current) return;
+    const expected = { orgId, expectedBillingOrderId: billing.billingOrderId, expectedBillingSubscriptionId: billing.billingSubscriptionId };
     if (!window.confirm("Cancel only the Hiring add-on renewal? Normal Teams training will remain unchanged.")) return;
     // Confirmation itself may outlive the read/session that authorized it.
     if (!canManage() || pending.current) return;
     pending.current = true;
     setError(""); setNotice("");
     try {
-      await cancel.mutateAsync({ orgId });
+      await cancel.mutateAsync(expected);
       if (!isCurrent()) return;
       setNotice("Hiring renewal is cancelled. Normal Teams training is unchanged.");
       await hiring.refetch();
     } catch (failure) {
-      if (isCurrent()) setError(failure instanceof Error ? failure.message : "Hiring renewal could not be cancelled.");
+      if (isCurrent()) {
+        const conflict = (failure as { data?: { code?: string } } | null)?.data?.code === "CONFLICT";
+        setError(conflict ? "Hiring billing changed or cancellation could not be confirmed. Refresh Hiring status and confirm cancellation again." : failure instanceof Error ? failure.message : "Hiring renewal could not be cancelled.");
+        // Never retry against replacement billing using the old confirmation.
+        if (conflict) await hiring.refetch();
+      }
     } finally {
       pending.current = false;
     }
@@ -186,7 +195,7 @@ function HiringBillingBody({ orgId, access, purchaseEnabled }: { orgId: number; 
           <p className="text-sm text-slate-600">Allowance availability does not confirm paid renewal status. Refresh Hiring status before managing billing.</p>}
         {!status.owner && <p className="text-sm text-slate-600">Only the verified organization owner can purchase Hiring or cancel its renewal.</p>}
         <div className="flex flex-wrap gap-3">
-          {status.owner && status.canCancelRenewal && <Button type="button" variant="outline" disabled={busy}
+          {cancellationAllowed && <Button type="button" variant="outline" disabled={busy}
             onClick={() => void cancelHiringRenewal()}>{cancel.isPending ? "Cancelling renewal…" : "Cancel Hiring renewal"}</Button>}
           {purchaseAllowed && <Button type="button" variant="outline" disabled={busy}
             onClick={() => void purchaseHiring()}>{checkout.isPending ? "Opening checkout…" : "Add Hiring allowance"}</Button>}

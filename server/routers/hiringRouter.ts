@@ -8,5 +8,7 @@ export const hiringRouter = router({
   }).strict()).mutation(({ ctx, input }) => activateHiringPilot(ctx, input)),
   status: publicProcedure.input(z.object({ orgId: z.number().int().positive() }).strict()).query(({ ctx, input }) => getHiringStatus(ctx, input.orgId)),
   createCheckout: publicProcedure.input(z.object({ orgId: z.number().int().positive() }).strict()).mutation(({ ctx, input }) => createHiringCheckout(ctx, input.orgId)),
-  cancelAtPeriodEnd: publicProcedure.input(z.object({ orgId: z.number().int().positive() }).strict()).mutation(({ ctx, input }) => cancelHiringAtPeriodEnd(ctx, input.orgId)),
+  cancelAtPeriodEnd: publicProcedure.input(z.object({
+    orgId: z.number().int().positive(), expectedBillingOrderId: z.string().min(1).max(128), expectedBillingSubscriptionId: z.string().min(1).max(255),
+  }).strict()).mutation(({ ctx, input }) => cancelHiringAtPeriodEnd(ctx, input)),
 });

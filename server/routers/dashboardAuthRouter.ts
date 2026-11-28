@@ -185,10 +185,14 @@ export const dashboardAuthRouter = router({
         const entitlements = await resolveEntitlementsByEmail(email);
         const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
         const applicantOnly = !entitlements.hasAnyAccess && !isManager && !(await hasTrainingRecord(email));
+        // Verified OTP is an intentional account switch. Clear the prior OAuth
+        // session before replacing it, so the next context cannot silently
+        // discard this applicant's capability in favor of the previous user.
+        // A genuinely later independent login still wins normal context priority.
+        clearIdentityCookies(ctx.req, ctx.res);
         if (applicantOnly) {
           try {
             // Use only the consumed OTP's verified email, never an older identity.
-            clearVerifiedEmailSessionCookie(ctx.res);
             await issueApplicantCapabilityForOtp({
               req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
             }, input.assignmentId);

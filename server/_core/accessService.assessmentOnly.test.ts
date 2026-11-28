@@ -137,6 +137,37 @@ describe("assessment-only central study boundary", () => {
     await expect(resolveAccessForRequest(ctx, COURSE)).resolves.toBe(true);
   });
 
+  it.each(["otp", "oauth"] as const)("does not authorize verified B with entitled C's signed token after discarding stale A (%s)", async kind => {
+    const tokenOwner = "learner-c@example.test";
+    const ownCourse = "class2-water";
+    state.resolveAccessByEmail.mockImplementation(async (email, course) => ({
+      hasAccess: (email === tokenOwner && course === COURSE) || (email === LEARNER && course === ownCourse),
+    }));
+    state.resolveAccess.mockImplementation(async (user, course) => ({
+      hasAccess: user?.email === LEARNER && course === ownCourse,
+    }));
+    state.entitlements.mockImplementation(async email => entitlements(email, email === LEARNER ? [ownCourse] : [COURSE]));
+    const token = await issueSubscriptionToken({ email: tokenOwner, examTypes: [COURSE] });
+    expect(await verifySubscriptionToken(token)).toEqual({ email: tokenOwner, examTypes: [COURSE] });
+    expect(await verifyAccessTokenAndRecheckDb(token, COURSE)).toEqual({ hasAccess: true, email: tokenOwner });
+    state.resolveAccessByEmail.mockClear();
+    if (kind === "oauth") state.user = { id: 42, email: LEARNER, role: "user", openId: "synthetic-b" } as User;
+
+    const { ctx, res } = await context(kind === "otp" ? { email: LEARNER } : {});
+    expect(ctx.assessmentOnlySession).toBeNull();
+    expect(res.clearCookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, { path: "/" });
+    await expectDenied(ctx, COURSE, token);
+    expect(state.resolveAccessByEmail).not.toHaveBeenCalledWith(tokenOwner, COURSE);
+    await expect(assertAccess(ctx, ownCourse, { accessToken: token })).resolves.toBeUndefined();
+    await expect(resolveAccessForRequest(ctx, ownCourse, { accessToken: token })).resolves.toBe(true);
+
+    // The same valid token remains usable only when there is no verified identity.
+    state.user = null;
+    const anonymous = await context({ applicant: false });
+    await expect(assertAccess(anonymous.ctx, COURSE, { accessToken: token })).resolves.toBeUndefined();
+    await expect(resolveAccessForRequest(anonymous.ctx, COURSE, { accessToken: token })).resolves.toBe(true);
+  });
+
   it.each(["otp", "oauth"] as const)("allows the same applicant after independent %s learner authentication and entitlement", async kind => {
     state.entitlements.mockImplementation(async email => entitlements(email, [COURSE]));
     state.resolveAccessByEmail.mockResolvedValue({ hasAccess: true }); state.resolveAccess.mockResolvedValue({ hasAccess: true });

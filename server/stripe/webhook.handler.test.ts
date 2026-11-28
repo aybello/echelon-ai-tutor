@@ -42,6 +42,7 @@ const {
   mockReversalInvoice,
   mockReversalCharge,
   mockListDisputes,
+  mockRetrieveCheckout,
 } = vi.hoisted(() => ({
   mockConstructEvent: vi.fn(),
   mockRetrieveSubscription: vi.fn(),
@@ -58,6 +59,7 @@ const {
   mockReversalInvoice: vi.fn(),
   mockReversalCharge: vi.fn(),
   mockListDisputes: vi.fn(),
+  mockRetrieveCheckout: vi.fn(),
 }));
 
 vi.mock("./stripe", () => ({
@@ -68,6 +70,7 @@ vi.mock("./stripe", () => ({
     subscriptions: {
       retrieve: mockRetrieveSubscription,
     },
+    checkout: { sessions: { retrieve: mockRetrieveCheckout } },
     invoicePayments: { list: mockInvoiceAllocations },
     invoices: { retrieve: mockReversalInvoice },
     charges: { retrieve: mockReversalCharge },
@@ -391,6 +394,13 @@ beforeEach(() => {
   mockReversalCharge.mockReset().mockImplementation(async (id: string) => ({ id, payment_intent: "pi_flex", customer: "cus_flex", metadata: {} }));
   mockListDisputes.mockReset().mockResolvedValue({ data: [], has_more: false });
   mockRetrieveSubscription.mockReset().mockResolvedValue({ metadata: {} });
+  // Synthetic authoritative transport returns this test's Checkout resource.
+  // Classification still runs before any legacy table or writer is touched.
+  mockRetrieveCheckout.mockReset().mockImplementation(async (id: string) => {
+    const session = mockConstructEvent.mock.results.at(-1)?.value?.data?.object;
+    if (!session || session.id !== id) throw new Error("Missing synthetic authoritative Checkout fixture");
+    return structuredClone(session);
+  });
   mockRetrievePaymentIntent.mockResolvedValue({
     status: "succeeded",
     latest_charge: { created: 1_789_684_600, paid: true, status: "succeeded" },
@@ -435,6 +445,57 @@ describe("Stripe registered handler — durable Hiring isolation (real dispatche
     hiringTerm({ id: "term_refunded", paymentState: "refunded", state: "suspended" }),
   ];
 
+  it.each([false, true])("subscription.created is Hiring-only before fulfilment (durable=%s)", async durable => {
+    const store = hiringDatabase({ orders: [hiringOrder({ status: "pending", stripeSubscriptionId: durable ? "sub_hiring" : null })] });
+    mockRetrieveSubscription.mockResolvedValue(hiringSubscription());
+    mockConstructEvent.mockReturnValue({ id: "evt_hiring_created", type: "customer.subscription.created",
+      data: { object: hiringSubscription(durable ? { metadata: {} } : {}) } });
+    const response = makeResponse();
+    await captureWebhookHandler()(makeRequest(), response);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ received: true, reviewRequired: false });
+    expect(store.state.hiring_orders[0]).toMatchObject({ status: "pending", stripeSubscriptionId: "sub_hiring" });
+    expect(store.state.hiring_terms).toEqual([]); expect(store.state.hiring_payments).toEqual([]);
+    expect(store.state.hiring_events[0]).toMatchObject({ id: "evt_hiring_created", eventType: "customer.subscription.created", state: "claimed" });
+    expectHiringIsolation(store);
+  });
+
+  it.each([false, true])("invoice.payment_failed never reaches legacy notifications or subscriptions (durable=%s)", async durable => {
+    const original = hiringTerm({ used: 17 });
+    const store = hiringDatabase({ orders: [hiringOrder({ stripeSubscriptionId: durable ? "sub_hiring" : null })], terms: [original] });
+    mockReversalInvoice.mockResolvedValue(hiringInvoice());
+    mockRetrieveSubscription.mockResolvedValue(hiringSubscription({ status: "past_due" }));
+    mockConstructEvent.mockReturnValue({ id: "evt_hiring_failed", type: "invoice.payment_failed",
+      data: { object: hiringInvoice(durable ? { metadata: {} } : {}) } });
+    const response = makeResponse();
+    await captureWebhookHandler()(makeRequest(), response);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ received: true, reviewRequired: false });
+    expect(store.state.hiring_terms).toEqual([{ ...original, state: "subscription_suspended" }]);
+    expect(store.state.hiring_payments).toEqual([]);
+    expect(store.state.hiring_events[0]).toMatchObject({ id: "evt_hiring_failed", eventType: "invoice.payment_failed", state: "claimed" });
+    expectHiringIsolation(store);
+  });
+
+  it.each([false, true])("refund.created cannot invoke Flex or legacy reversal handling (durable=%s)", async durable => {
+    const original = hiringTerm({ used: 17 });
+    const store = hiringDatabase({ terms: [original] });
+    mockReversalInvoice.mockResolvedValue(hiringInvoice()); mockRetrieveSubscription.mockResolvedValue(hiringSubscription());
+    mockReversalCharge.mockResolvedValue(hiringCharge({ refunded: true, amount_refunded: 113_000 }));
+    mockConstructEvent.mockReturnValue({ id: "evt_hiring_refund_created", type: "refund.created", data: { object: {
+      id: "re_hiring", charge: "ch_hiring", payment_intent: "pi_hiring", amount: 113_000,
+      metadata: durable ? {} : { type: HIRING_TYPE, policy: HIRING_POLICY, orderId: "order_hiring", orgId: "7" },
+    } } });
+    const response = makeResponse();
+    await captureWebhookHandler()(makeRequest(), response);
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ received: true, reviewRequired: true });
+    expect(store.state.hiring_terms).toEqual([{ ...original, state: "suspended", paymentState: "refunded" }]);
+    expect(store.state.hiring_payments[0]).toMatchObject({ id: "ch_hiring", paymentState: "refunded" });
+    expect(store.state.hiring_events[0]).toMatchObject({ id: "evt_hiring_refund_created", eventType: "refund.created", state: "review_required" });
+    expectHiringIsolation(store);
+  });
+
   it.each([{}, { type: "org" }, { type: "individual" }])(
     "deletion with mutable metadata %j suspends every durably bound term, never learner/Teams records",
     async metadata => {
@@ -478,14 +539,14 @@ describe("Stripe registered handler — durable Hiring isolation (real dispatche
     await captureWebhookHandler()(makeRequest(), response);
 
     expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual({ received: true, reviewRequired: false });
-    expect(mockRetrieveSubscription.mock.calls).toEqual([["sub_hiring", {}, HIRING_READ_OPTIONS]]);
+    expect(response.body).toEqual({ received: true, reviewRequired: status === "active" });
+    expect(mockRetrieveSubscription.mock.calls).toEqual([["sub_hiring", { expand: ["items.data.price.product", "latest_invoice"] }, HIRING_READ_OPTIONS]]);
     expect(store.state.hiring_orders[0]).toMatchObject({ status: terminated ? "cancelled" : "active", renewalCancelled: terminated });
     expect(store.state.hiring_terms).toEqual(terms.map(term => ["term_current", "term_future", "term_held"].includes(term.id)
       ? { ...term, state: "subscription_suspended" } : term));
     expect(store.writes.filter(write => write.table === "hiring_terms").map(write => write.ids[0]).sort())
       .toEqual(["term_current", "term_future", "term_held"]);
-    expect(store.state.hiring_events[0]).toMatchObject({ id: "evt_hiring_updated", state: terminated ? "claimed" : "review_required" });
+    expect(store.state.hiring_events[0]).toMatchObject({ id: "evt_hiring_updated", state: status === "active" ? "review_required" : "claimed" });
     expectHiringIsolation(store);
   });
 
@@ -563,7 +624,7 @@ describe("Stripe registered handler — durable Hiring isolation (real dispatche
     expect(mockInvoiceAllocations.mock.calls).toEqual([[{
       payment: { type: "payment_intent", payment_intent: "pi_hiring" }, limit: 100,
     }, HIRING_READ_OPTIONS]]);
-    expect(mockReversalInvoice.mock.calls).toEqual([["in_hiring", HIRING_INVOICE_EXPAND, HIRING_READ_OPTIONS]]);
+    expect(mockReversalInvoice.mock.calls).toEqual(Array.from({ length: 2 }, () => ["in_hiring", HIRING_INVOICE_EXPAND, HIRING_READ_OPTIONS]));
     expect(mockReversalCharge.mock.calls).toEqual([
       ["ch_hiring", {}, HIRING_READ_OPTIONS], ["ch_hiring", {}, HIRING_READ_OPTIONS],
     ]);

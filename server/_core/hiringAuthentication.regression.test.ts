@@ -5,21 +5,30 @@ import { getTableColumns, getTableName } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql-proxy";
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import type { User } from "../../drizzle/schema";
-import { dashboardOtps, emailOtpCodes, hiringTerms, organizations, recruitmentAssignments, recruitmentAssessments } from "../../drizzle/schema";
+import { COOKIE_NAME } from "../../shared/const";
+import { dashboardOtps, emailOtpCodes, hiringTerms, organizations, questions, recruitmentAssignments, recruitmentAssessments } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { emailOtpRouter } from "../routers/emailOtpRouter";
 import { dashboardAuthRouter } from "../routers/dashboardAuthRouter";
+import { recruitmentRouter } from "../routers/recruitmentRouter";
 import { createContext, type TrpcContext } from "./context";
 import { ENV } from "./env";
+import { sdk } from "./sdk";
+import { getSessionCookieOptions } from "./cookies";
+import { assertAccess, identityEmail, resolveAccessForRequest, resolveVerifiedIdentity, verifyAccessTokenAndRecheckDb } from "./accessService";
 import { ECHELON_SESSION_COOKIE, issueVerifiedEmailSessionCookie, readVerifiedEmailFromRequest } from "./emailSession";
 import { ASSESSMENT_ONLY_COOKIE, assertLearnerStateAllowed, issueAssessmentOnlySession, readAssessmentOnlySession } from "./assessmentOnlySession";
 import { issueApplicantCapability } from "../recruitment/service";
+import { verifiedRecruitmentEmail } from "../recruitment/access";
+import { readRecruitmentAssignment } from "../recruitment/store";
 import { recordLearnerSignIn } from "../learnerSignIn";
 import { trackEvent } from "../analytics";
 
 const state = vi.hoisted(() => ({
-  user: null as User | null,
+  oauthUsers: new Map<string, User>(),
   resolveEntitlements: vi.fn(),
+  resolveAccess: vi.fn(),
+  resolveAccessByEmail: vi.fn(),
   issueToken: vi.fn(async () => "synthetic-learner-token"),
   sendEmail: vi.fn(),
   sendMail: vi.fn(),
@@ -27,13 +36,24 @@ const state = vi.hoisted(() => ({
   inTransaction: false,
   queries: [] as string[],
 }));
-vi.mock("../db", () => ({ getDb: vi.fn() }));
-vi.mock("./sdk", () => ({ sdk: { authenticateRequest: async () => state.user } }));
+// OAuth JWT verification and cookie parsing are real; replace only the local
+// user lookup/write so no OAuth network request or production database is used.
+vi.mock("../db", () => ({
+  getDb: vi.fn(),
+  getUserByOpenId: vi.fn(async (openId: string) => state.oauthUsers.get(openId)),
+  upsertUser: vi.fn(async () => undefined),
+}));
 vi.mock("./access", () => ({
   normalizeEmail: (email: string) => email.trim().toLowerCase(),
+  FREE_EXAM_TYPES: new Set(["electrician-309a"]),
   resolveEntitlementsByEmail: state.resolveEntitlements,
+  resolveAccess: state.resolveAccess,
+  resolveAccessByEmail: state.resolveAccessByEmail,
 }));
-vi.mock("./subscriptionToken", () => ({ issueSubscriptionToken: state.issueToken }));
+vi.mock("./subscriptionToken", async importOriginal => ({
+  ...await importOriginal<typeof import("./subscriptionToken")>(),
+  issueSubscriptionToken: state.issueToken,
+}));
 vi.mock("../teams/billingIdentity", () => ({ hasRecoverableTeamBilling: async () => false }));
 vi.mock("../routers/trainingRouter", () => ({ hasTrainingRecord: async () => false }));
 vi.mock("../email", () => ({ sendOtpEmail: state.sendEmail }));
@@ -70,7 +90,10 @@ function learnerAccess(email: string) {
 // SQLite memory, not prefiltered rows or source-text assertions. Row locking is
 // omitted only for this single-threaded adapter; concurrency is not under test.
 function memoryDatabase(): Database {
-  for (const table of [emailOtpCodes, dashboardOtps, recruitmentAssignments, recruitmentAssessments, organizations, hiringTerms]) {
+  const jsonColumns = new Map<string, Set<string>>();
+  for (const table of [emailOtpCodes, dashboardOtps, recruitmentAssignments, recruitmentAssessments, organizations, hiringTerms, questions]) {
+    jsonColumns.set(getTableName(table), new Set(Object.values(getTableColumns(table))
+      .filter(column => column.dataType === "json").map(column => column.name)));
     sqlite.exec(`CREATE TABLE \`${getTableName(table)}\` (${Object.values(getTableColumns(table))
       .map(column => {
         const type = column.dataType === "number" ? "INTEGER" : "TEXT";
@@ -88,7 +111,10 @@ function memoryDatabase(): Database {
     state.queries.push(query);
     const statement = sqlite.prepare(query.replace(/\s+for (?:share|update)\s*$/i, "").replaceAll("default", "null"));
     if (method === "all") {
-      return { rows: statement.all(...params).map(row => Object.values(row)) };
+      // mysql2 returns JSON columns already decoded; SQLite stores their text.
+      const json = jsonColumns.get(/ from `([^`]+)`/i.exec(query)?.[1] ?? "");
+      return { rows: statement.all(...params).map(row => Object.entries(row)
+        .map(([name, value]) => json?.has(name) && typeof value === "string" ? JSON.parse(value) : value)) };
     }
     const result = statement.run(...params);
     if (query.startsWith("insert into")) {
@@ -123,12 +149,20 @@ function memoryDatabase(): Database {
 }
 
 function seedInvitation() {
+  const snapshot = Array.from({ length: 5 }, (_, index) => ({
+    id: String(index + 1), module: "Treatment", prompt: `Synthetic question ${index + 1}`,
+    options: ["One", "Two"], correctIndex: 0,
+  }));
+  for (const question of snapshot) {
+    sqlite.prepare("INSERT INTO questions (id, bankKey, module, question, options, correctIndex, reviewStatus) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .run(Number(question.id), COURSE, question.module, question.prompt, JSON.stringify(question.options), question.correctIndex, "unreviewed");
+  }
   sqlite.prepare("INSERT INTO organizations (id, name, province, tier, seatsTotal, managerEmail, termStart, termEnd, billingType, status, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
     .run(ORG_ID, "Test Annual team", "ontario", "all-access", 5, "manager@example.test", "2039-12-01 00:00:00.000", "2040-12-01 00:00:00.000", "stripe", "active", TIMESTAMP);
   sqlite.prepare("INSERT INTO hiring_terms (id, orgId, basis, sourceInvoiceId, startsAtMs, endsAtMs, quota, used, state, paymentState, createdByEmail) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
     .run(GRANT_ID, ORG_ID, "paid", "in_test_hiring", NOW.getTime() - 86_400_000, NOW.getTime() + 86_400_000, 100, 1, "active", "active", "manager@example.test");
   sqlite.prepare("INSERT INTO recruitment_assessments (id, orgId, title, courseKey, courseLabel, modules, questionCount, questions, creatorEmail, createdAtMs, expiresAtMs, timeLimitMinutes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
-    .run(ASSESSMENT_ID, ORG_ID, "Applicant assessment", COURSE, "Class 2 Water", "[]", 0, "[]", "manager@example.test", NOW.getTime(), NOW.getTime() + 3_600_000, 45);
+    .run(ASSESSMENT_ID, ORG_ID, "Applicant assessment", COURSE, "Class 2 Water", '["Treatment"]', snapshot.length, JSON.stringify(snapshot), "manager@example.test", NOW.getTime(), NOW.getTime() + 3_600_000, 45);
   sqlite.prepare("INSERT INTO recruitment_assignments (id, assessmentId, orgId, memberId, grantId, candidateEmail, accessKind, status, expiresAtMs, creatorEmail, createdAtMs, updatedAtMs, answers, revision) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
     .run(ASSIGNMENT_ID, ASSESSMENT_ID, ORG_ID, null, GRANT_ID, APPLICANT, "applicant", "invited", NOW.getTime() + 3_600_000, "manager@example.test", NOW.getTime(), NOW.getTime(), "{}", 0);
 }
@@ -153,7 +187,8 @@ function otpWasConsumed(table: OtpTable) {
 // the current request's immutable cookies until the next request.
 function browser(initial: Record<string, string> = {}) {
   const jar = { ...initial };
-  const req = { headers: {}, protocol: "https", cookies: { ...jar } } as TrpcContext["req"];
+  const cookie = Object.entries(jar).map(([name, value]) => `${name}=${encodeURIComponent(value)}`).join("; ");
+  const req = { headers: { cookie }, protocol: "https", cookies: { ...jar } } as TrpcContext["req"];
   const res = {
     cookie: vi.fn((name: string, value: string) => { jar[name] = value; }),
     clearCookie: vi.fn((name: string) => { delete jar[name]; }),
@@ -176,6 +211,26 @@ async function verifiedCookie(email: string) {
   return client.jar[ECHELON_SESSION_COOKIE];
 }
 
+async function oauthCookie(email: string, id = 7) {
+  const openId = `synthetic-user-${id}`;
+  state.oauthUsers.set(openId, { id, openId, email, name: "Test user", role: "user" } as User);
+  return sdk.signSession({ openId, appId: "synthetic-test-app", name: "Test user" });
+}
+async function expectApplicantDestination(ctx: TrpcContext, email: string) {
+  expect(ctx.user).toBeNull();
+  expect(ctx.studentEmail).toBeNull();
+  expect(identityEmail(resolveVerifiedIdentity(ctx))).toBeNull();
+  expect(verifiedRecruitmentEmail(ctx)).toBe(email);
+  expect(ctx.assessmentOnlySession).toMatchObject({ candidateEmail: email, assignmentId: ASSIGNMENT_ID });
+  expect(ctx.assessmentOnlyHasLearnerAccess).toBe(false);
+  await expect(recruitmentRouter.createCaller(ctx).candidateGet({ assignmentId: ASSIGNMENT_ID })).resolves.toMatchObject({
+    assignmentId: ASSIGNMENT_ID, title: "Applicant assessment", status: "invited", questions: [], answers: {},
+  });
+  expect(() => assertLearnerStateAllowed(ctx)).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
+  await expect(assertAccess(ctx, COURSE)).rejects.toMatchObject({ code: "FORBIDDEN" });
+  await expect(resolveAccessForRequest(ctx, COURSE)).resolves.toBe(false);
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   vi.useFakeTimers({ toFake: ["Date"] });
@@ -184,7 +239,7 @@ beforeEach(() => {
   ENV.cookieSecret = "test-only-not-for-production";
   previousSmtp = { smtpHost: ENV.smtpHost, smtpUser: ENV.smtpUser, smtpPass: ENV.smtpPass };
   Object.assign(ENV, { smtpHost: "smtp.example.test", smtpUser: "mailer@example.test", smtpPass: "test-only-placeholder" });
-  state.user = null;
+  state.oauthUsers.clear();
   state.failCapabilityCommit = false;
   state.inTransaction = false;
   state.queries = [];
@@ -192,6 +247,10 @@ beforeEach(() => {
     if (state.inTransaction) throw new Error("Global entitlement resolution attempted under transaction locks");
     return noAccess(email);
   });
+  state.resolveAccessByEmail.mockReset().mockImplementation(async (email: string, course: string) => ({
+    hasAccess: (await state.resolveEntitlements(email)).unlockedExamTypes.includes(course),
+  }));
+  state.resolveAccess.mockReset().mockImplementation(async (user: User, course: string) => state.resolveAccessByEmail(user.email, course));
   state.issueToken.mockReset().mockResolvedValue("synthetic-learner-token");
   state.sendEmail.mockReset().mockResolvedValue(undefined);
   state.sendMail.mockReset().mockResolvedValue(undefined);
@@ -337,26 +396,93 @@ for (const route of routes) {
         sqlite.prepare("UPDATE recruitment_assignments SET candidateEmail = ? WHERE id = ?").run(PURCHASER, ASSIGNMENT_ID);
         seedOtp(route.table, PURCHASER);
         const cookies: Record<string, string> = {};
-        if (identity === "OAuth user") state.user = { id: 7, email: APPLICANT, role: "user" } as User;
+        if (identity === "OAuth user") cookies[COOKIE_NAME] = await oauthCookie(APPLICANT);
         else if (identity === "verified email cookie") cookies[ECHELON_SESSION_COOKIE] = await verifiedCookie(APPLICANT);
         else cookies[ASSESSMENT_ONLY_COOKIE] = await applicantCookie();
         const client = browser(cookies);
         const ctx = await contextFor(client);
+        if (identity === "OAuth user") expect(ctx.user?.email).toBe(APPLICANT);
         const result = await route.verify(ctx, PURCHASER);
         if ("valid" in result && !result.valid) throw new Error(`Unexpected OTP rejection: ${result.reason}`);
-        expect(result).toMatchObject({ email: PURCHASER });
+        expect(result).toMatchObject({ email: PURCHASER, sessionKind: "assessment-only" });
         expect(result.accessToken).toBeFalsy();
         expect(otpWasConsumed(route.table)).toBe(true);
         expect(await readAssessmentOnlySession(browser(client.jar).req)).toMatchObject({
           candidateEmail: PURCHASER, assignmentId: ASSIGNMENT_ID, courseKey: COURSE,
         });
         expect(client.jar[ECHELON_SESSION_COOKIE]).toBeUndefined();
+        expect(client.jar[COOKIE_NAME]).toBeUndefined();
+        if (identity === "OAuth user") {
+          expect(client.res.clearCookie).toHaveBeenCalledWith(COOKIE_NAME, {
+            ...getSessionCookieOptions(client.req), sameSite: "lax",
+          });
+        }
         // Issuance must not overwrite the current request's previously resolved identity.
-        expect(ctx.user).toBe(state.user);
+        expect(ctx.user?.email ?? null).toBe(identity === "OAuth user" ? APPLICANT : null);
         expect(ctx.studentEmail).toBe(identity === "verified email cookie" ? APPLICANT : null);
         expect(state.issueToken).not.toHaveBeenCalled();
+        expect(recordLearnerSignIn).not.toHaveBeenCalled();
+        expect(trackEvent).not.toHaveBeenCalled();
+        expect(client.res.cookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, expect.any(String), expect.objectContaining({ httpOnly: true }));
+
+        const destination = browser(client.jar);
+        await expectApplicantDestination(await contextFor(destination), PURCHASER);
+        await expectApplicantDestination(await contextFor(browser(destination.jar)), PURCHASER);
       },
     );
+
+    it("clears the previous OAuth identity on local HTTP as well as secure requests", async () => {
+      seedOtp(route.table);
+      const client = browser({ [COOKIE_NAME]: await oauthCookie(PURCHASER) });
+      Object.assign(client.req, { protocol: "http" });
+      const ctx = await contextFor(client);
+      expect(ctx.user?.email).toBe(PURCHASER);
+      await route.verify(ctx);
+      expect(client.res.clearCookie).toHaveBeenCalledWith(COOKIE_NAME, {
+        ...getSessionCookieOptions(client.req), sameSite: "lax", secure: false,
+      });
+      await expectApplicantDestination(await contextFor(browser(client.jar)), APPLICANT);
+    });
+
+    it("does not sign out an OAuth user for an unverified switch attempt", async () => {
+      seedOtp(route.table);
+      const token = await oauthCookie(PURCHASER);
+      const client = browser({ [COOKIE_NAME]: token });
+      const ctx = await contextFor(client);
+      if (route.name === "emailOtpRouter") {
+        await expect(route.verify(ctx, APPLICANT, "000000")).resolves.toMatchObject({ valid: false, reason: "wrong_code" });
+      } else {
+        await expect(route.verify(ctx, APPLICANT, "000000")).rejects.toThrow("Incorrect code.");
+      }
+      expect(client.jar[COOKIE_NAME]).toBe(token);
+      expect((await contextFor(browser(client.jar))).user?.email).toBe(PURCHASER);
+    });
+
+    it("lets a genuinely later independent OAuth login replace the fresh applicant, not vice versa", async () => {
+      seedOtp(route.table);
+      const login = browser({ [COOKIE_NAME]: await oauthCookie(PURCHASER, 42) });
+      await route.verify(await contextFor(login));
+      const applicant = browser(login.jar);
+      await expectApplicantDestination(await contextFor(applicant), APPLICANT);
+
+      // An independent login occurs AFTER OTP success. Context must still give
+      // that new verified identity priority over the now-stale applicant cookie.
+      state.resolveEntitlements.mockImplementation(async email => email === PURCHASER ? learnerAccess(email) : noAccess(email));
+      const laterLogin = browser({ ...applicant.jar, [COOKIE_NAME]: await oauthCookie(PURCHASER, 43) });
+      const learner = await contextFor(laterLogin);
+      expect(learner.user?.email).toBe(PURCHASER);
+      expect(verifiedRecruitmentEmail(learner)).toBe(PURCHASER);
+      expect(learner.assessmentOnlySession).toBeNull();
+      expect(laterLogin.jar[ASSESSMENT_ONLY_COOKIE]).toBeUndefined();
+      await expect(assertAccess(learner, "oit")).resolves.toBeUndefined();
+      await expect(resolveAccessForRequest(learner, "oit")).resolves.toBe(true);
+      await expect(readRecruitmentAssignment((await getDb())!, ASSIGNMENT_ID, verifiedRecruitmentEmail(learner)))
+        .rejects.toMatchObject({ code: "FORBIDDEN" });
+      const following = await contextFor(browser(laterLogin.jar));
+      expect(following.user?.email).toBe(PURCHASER);
+      expect(following.assessmentOnlySession).toBeNull();
+      await expect(assertAccess(following, "oit")).resolves.toBeUndefined();
+    });
 
     it.each(["creation time", "ID tie-breaker"] as const)("selects the latest applicant invitation by %s", async ordering => {
       const latestId = "44444444-4444-4444-8444-444444444444";
@@ -507,11 +633,15 @@ for (const route of routes) {
       expect(() => assertLearnerStateAllowed(ctx)).toThrowError(expect.objectContaining({ code: "FORBIDDEN" }));
     });
 
-    it("clears an applicant cookie when an independently entitled learner logs in", async () => {
+    it.each([false, true])("clears an applicant cookie when an independently entitled learner logs in (old OAuth: %s)", async oldOAuth => {
       seedOtp(route.table, PURCHASER);
       state.resolveEntitlements.mockImplementation(async (email: string) => email === PURCHASER ? learnerAccess(email) : noAccess(email));
-      const client = browser({ [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() });
-      const result = await route.verify(await contextFor(client), PURCHASER);
+      const cookies: Record<string, string> = { [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() };
+      if (oldOAuth) cookies[COOKIE_NAME] = await oauthCookie(APPLICANT);
+      const client = browser(cookies);
+      const before = await contextFor(client);
+      expect(verifiedRecruitmentEmail(before)).toBe(APPLICANT);
+      const result = await route.verify(before, PURCHASER);
       if ("valid" in result && !result.valid) throw new Error(`Unexpected OTP rejection: ${result.reason}`);
       expect(result).toMatchObject({ email: PURCHASER, accessToken: "synthetic-learner-token", sessionKind: "verified-email" });
       expect("examTypes" in result ? result.examTypes : result.unlockedExamTypes).toEqual(["oit"]);
@@ -524,9 +654,17 @@ for (const route of routes) {
       expect(client.res.cookie).toHaveBeenCalledWith(ECHELON_SESSION_COOKIE, expect.any(String), expect.objectContaining({ httpOnly: true, path: "/" }));
       const next = browser(client.jar);
       const ctx = await contextFor(next);
+      expect(ctx.user).toBeNull();
       expect(ctx.studentEmail).toBe(PURCHASER);
       expect(ctx.assessmentOnlySession).toBeNull();
       expect(() => assertLearnerStateAllowed(ctx)).not.toThrow();
+      await expect(assertAccess(ctx, "oit")).resolves.toBeUndefined();
+      await expect(resolveAccessForRequest(ctx, "oit")).resolves.toBe(true);
+      const following = await contextFor(browser(next.jar));
+      expect(verifiedRecruitmentEmail(following)).toBe(PURCHASER);
+      await expect(assertAccess(following, "oit")).resolves.toBeUndefined();
+      await expect(readRecruitmentAssignment((await getDb())!, ASSIGNMENT_ID, verifiedRecruitmentEmail(following)))
+        .rejects.toMatchObject({ code: "FORBIDDEN" });
     });
 
     it("does not block independent learner entitlement because their old invitation was revoked", async () => {
@@ -578,17 +716,40 @@ for (const route of routes) {
 }
 
 describe("createContext applicant cookie identity isolation", () => {
+  it.each(["otp", "oauth"] as const)("denies verified B borrowing entitled C's signed token after stale A is cleared (%s)", async identity => {
+    const tokenOwner = "learner-c@example.test";
+    state.resolveEntitlements.mockImplementation(async email => email === tokenOwner ? learnerAccess(email) : noAccess(email));
+    const { issueSubscriptionToken } = await vi.importActual<typeof import("./subscriptionToken")>("./subscriptionToken");
+    const token = await issueSubscriptionToken({ email: tokenOwner, examTypes: ["oit"] });
+    expect(await verifyAccessTokenAndRecheckDb(token, "oit")).toEqual({ hasAccess: true, email: tokenOwner });
+    const cookies: Record<string, string> = { [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() };
+    if (identity === "otp") cookies[ECHELON_SESSION_COOKIE] = await verifiedCookie(PURCHASER);
+    else cookies[COOKIE_NAME] = await oauthCookie(PURCHASER, 42);
+    const client = browser(cookies);
+    const ctx = await contextFor(client);
+    expect(identityEmail(resolveVerifiedIdentity(ctx))).toBe(PURCHASER);
+    expect(ctx.assessmentOnlySession).toBeNull();
+    expect(client.jar[ASSESSMENT_ONLY_COOKIE]).toBeUndefined();
+    state.resolveAccessByEmail.mockClear();
+    await expect(assertAccess(ctx, "oit", { accessToken: token })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(resolveAccessForRequest(ctx, "oit", { accessToken: token })).resolves.toBe(false);
+    expect(state.resolveAccessByEmail).not.toHaveBeenCalledWith(tokenOwner, "oit");
+    const following = await contextFor(browser(client.jar));
+    expect(identityEmail(resolveVerifiedIdentity(following))).toBe(PURCHASER);
+    await expect(assertAccess(following, "oit", { accessToken: token })).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
+
   it.each(["verified purchaser cookie", "authenticated purchaser user"] as const)(
     "clears applicant A's cookie without blocking B via %s", async identity => {
       state.resolveEntitlements.mockImplementation(async (email: string) => email === PURCHASER ? learnerAccess(email) : noAccess(email));
       const cookies: Record<string, string> = { [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() };
       if (identity === "verified purchaser cookie") cookies[ECHELON_SESSION_COOKIE] = await verifiedCookie(PURCHASER);
-      else state.user = { id: 42, email: " Purchaser-B@Example.TEST ", role: "user" } as User;
+      else cookies[COOKIE_NAME] = await oauthCookie(" Purchaser-B@Example.TEST ", 42);
       const client = browser(cookies);
       const ctx = await contextFor(client);
 
       expect(ctx.studentEmail).toBe(identity === "verified purchaser cookie" ? PURCHASER : null);
-      expect(ctx.user).toBe(state.user);
+      expect(ctx.user?.email ?? null).toBe(identity === "authenticated purchaser user" ? " Purchaser-B@Example.TEST " : null);
       expect(ctx.assessmentOnlySession).toBeNull();
       expect(ctx.assessmentOnlyHasLearnerAccess).toBeUndefined();
       expect(client.res.clearCookie).toHaveBeenCalledOnce();
@@ -652,7 +813,7 @@ describe("createContext applicant cookie identity isolation", () => {
     state.resolveEntitlements.mockImplementation(async (email: string) => learnerAccess(email));
     const cookies: Record<string, string> = { [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() };
     if (identity === "otp") cookies[ECHELON_SESSION_COOKIE] = await verifiedCookie(APPLICANT);
-    else state.user = { id: 7, email: APPLICANT, role: "user" } as User;
+    else cookies[COOKIE_NAME] = await oauthCookie(APPLICANT);
     const ctx = await contextFor(browser(cookies));
     expect(ctx.assessmentOnlySession).toMatchObject({ candidateEmail: APPLICANT });
     expect(ctx.assessmentOnlyHasLearnerAccess).toBe(true);
@@ -660,8 +821,7 @@ describe("createContext applicant cookie identity isolation", () => {
   });
 
   it("does not clear the same applicant's capability merely because identity is verified", async () => {
-    state.user = { id: 7, email: " Applicant-A@Example.TEST ", role: "user" } as User;
-    const client = browser({ [ASSESSMENT_ONLY_COOKIE]: await applicantCookie() });
+    const client = browser({ [ASSESSMENT_ONLY_COOKIE]: await applicantCookie(), [COOKIE_NAME]: await oauthCookie(" Applicant-A@Example.TEST ") });
     const ctx = await contextFor(client);
     expect(ctx.assessmentOnlySession).toMatchObject({ candidateEmail: APPLICANT });
     expect(ctx.assessmentOnlyHasLearnerAccess).toBe(false);

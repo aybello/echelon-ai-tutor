@@ -142,13 +142,13 @@ export async function hasAccessToExam(
  * Throws TRPCError FORBIDDEN if not.
  *
  * This is the primary guard for protected quiz/mock/flashcard procedures.
- * It checks all identity layers in priority order.
+ * It uses the highest-priority verified identity, never another token's subject.
  *
  * Valid access paths:
  * 1. Free exam type
  * 2. Verified OAuth session (ctx.user)
  * 3. Verified OTP session (ctx.studentEmail)
- * 4. Signed access token with live DB re-check
+ * 4. Anonymous only: signed access token with live DB re-check
  *
  * Client-supplied email is NOT an accepted access path.
  *
@@ -176,13 +176,11 @@ export async function assertAccess(
   if (identity.type !== "anonymous") {
     const ok = await hasAccessToExam(identity, examType);
     if (ok) return;
-  }
-
-  // 2. Verify signed subscription token WITH live DB re-check.
-  // We intentionally do not trust the token alone — a refunded or cancelled user
-  // could still have a valid signed token in localStorage. The DB re-check ensures
-  // that revoked entitlements are enforced on the next access attempt.
-  if (opts?.accessToken) {
+  } else if (opts?.accessToken) {
+    // 2. Only anonymous requests may use a signed token as their identity.
+    // A verified identity's denial is final, just as in the soft guard: an old
+    // browser token must not authorize another learner's data operation.
+    // Recheck live entitlement so refunds/cancellations invalidate access now.
     const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
     if (recheckResult.hasAccess) return;
   }
@@ -196,8 +194,8 @@ export async function assertAccess(
 /**
  * Verify a signed subscription access token AND re-check DB entitlement.
  *
- * Unlike the fast-path token check in assertAccess, this performs a full
- * DB re-check to ensure the token has not been invalidated by cancellation,
+ * Performs a full DB re-check, including when called by assertAccess, to ensure
+ * the token has not been invalidated by cancellation,
  * refund, or revocation since it was issued.
  *
  * Use this for high-value operations (e.g. mock exam start, bulk question fetch).

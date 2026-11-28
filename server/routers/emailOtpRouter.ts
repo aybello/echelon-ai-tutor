@@ -31,6 +31,7 @@ import { normalizeEmail } from "../_core/access";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { clearVerifiedEmailSessionCookie, issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { clearAssessmentOnlySessionCookie } from "../_core/assessmentOnlySession";
+import { clearIdentityCookies } from "../_core/logout";
 import { issueApplicantCapabilityForOtp } from "../recruitment/service";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
@@ -152,11 +153,15 @@ export const emailOtpRouter = router({
         // training-seat links); their verified identity can bootstrap the exact
         // requested applicant invitation on arrival without a capability switch.
         const applicantOnly = !entitlements.hasAnyAccess && !isManager;
+        // Consuming this OTP deliberately switches the browser's identity.
+        // End the old OAuth session too, or createContext would prefer it and
+        // discard the newly issued applicant capability on the next request.
+        // Keep normal context precedence for genuinely later independent logins.
+        clearIdentityCookies(ctx.req, ctx.res);
         if (applicantOnly) {
           try {
             // The consumed OTP proves this email, not any older OAuth/cookie identity.
             // The issuer rechecks live scope and deadlines while holding its locks.
-            clearVerifiedEmailSessionCookie(ctx.res);
             await issueApplicantCapabilityForOtp({
               req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
             }, input.assignmentId);

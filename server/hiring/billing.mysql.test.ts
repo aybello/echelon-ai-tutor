@@ -248,7 +248,8 @@ describe.skipIf(!enabled)("Hiring billing on fresh disposable real MySQL/InnoDB 
       entered.release(); await release.promise; return required(live.invoices, id, "held paid renewal invoice");
     });
     observe = (label, query) => { if (label === "contender" && lockTable(query) === "hiring_orders") contender.release(); };
-    const cancel = () => cancelHiringAtPeriodEnd(f.ctx, f.orgId);
+    const cancel = () => cancelHiringAtPeriodEnd(f.ctx, { orgId: f.orgId,
+      expectedBillingOrderId: f.orderId, expectedBillingSubscriptionId: f.subId });
     const renew = () => dispatchHiringEvent(paid(f, renewal));
     const first = run<unknown>("holder", ordering === "cancellation-first" ? cancel : renew);
     let second: Promise<unknown> | undefined;
@@ -497,5 +498,72 @@ describe.skipIf(!enabled)("Hiring billing on fresh disposable real MySQL/InnoDB 
     expect((await payments(f)).find(row => row.id === newer.chargeId)).toMatchObject({ paymentState: "active" });
     await dispatchHiringEvent(event("customer.subscription.updated", required(live.subscriptions, f.subId, "metadata drift")));
     expect((await terms(f)).find(row => row.sourceInvoiceId === older.invoiceId)).toMatchObject({ state: "suspended", paymentState: "refunded", used: 41 });
+  }, 10_000);
+
+  it.each(["quantity", "monthly", "product-policy"])("does not restore a delinquent paid term after %s policy drift, and valid repair preserves used quota", async mutation => {
+    const f = await fixture(), a = annual(f, 2026);
+    await dispatchHiringEvent(paid(f, a));
+    await db.update(hiringTerms).set({ used: 37 }).where(eq(hiringTerms.sourceInvoiceId, a.invoiceId));
+    const ledger = await payments(f), valid = required(live.subscriptions, f.subId, "valid original subscription");
+    Object.assign(live.subscriptions.get(f.subId)!, { status: "unpaid" });
+    await dispatchHiringEvent(event("customer.subscription.updated", required(live.subscriptions, f.subId, "unpaid")));
+    const bad = structuredClone(valid);
+    if (mutation === "quantity") bad.items.data[0].quantity = 2;
+    else if (mutation === "monthly") bad.items.data[0].price.recurring.interval = "month";
+    else bad.items.data[0].price.product.metadata.policy = "unapproved";
+    live.subscriptions.set(f.subId, bad);
+    await expect(dispatchHiringEvent(event("customer.subscription.updated", bad))).resolves.toMatchObject({ handled: true, reviewRequired: true });
+    expect(await terms(f)).toMatchObject([{ state: "subscription_suspended", paymentState: "active", used: 37, quota: 100 }]);
+    expect(await payments(f)).toEqual(ledger);
+    expect(await getHiringStatus(f.ctx, f.orgId)).toMatchObject({ active: false });
+    live.subscriptions.set(f.subId, valid);
+    await dispatchHiringEvent(event("customer.subscription.updated", valid));
+    expect(await terms(f)).toHaveLength(1);
+    expect(await terms(f)).toMatchObject([{ state: "active", paymentState: "active", used: 37, quota: 100 }]);
+    expect(await payments(f)).toEqual(ledger);
+  }, 10_000);
+
+  it.each(["active", "past_due", "unpaid", "canceled", "incomplete_expired"])("owner cancellation observes %s and reconciles all current/future periods without changing payments or usage", async status => {
+    const f = await fixture(), current = annual(f, 2026), future = annual(f, 2027);
+    await dispatchHiringEvent(paid(f, current)); await dispatchHiringEvent(paid(f, future));
+    await db.update(hiringTerms).set({ used: 53 }).where(eq(hiringTerms.sourceInvoiceId, current.invoiceId));
+    const ledger = await payments(f), assertLearners = await unchangedLearners();
+    Object.assign(live.subscriptions.get(f.subId)!, { status });
+    await cancelHiringAtPeriodEnd(f.ctx, { orgId: f.orgId,
+      expectedBillingOrderId: f.orderId, expectedBillingSubscriptionId: f.subId });
+    const rows = await terms(f);
+    expect(rows).toHaveLength(2);
+    expect(rows.every(row => row.state === (status === "active" ? "cancel_at_period_end" : "subscription_suspended")
+      && row.paymentState === "active" && row.quota === 100)).toBe(true);
+    expect(rows.find(row => row.sourceInvoiceId === current.invoiceId)?.used).toBe(53);
+    expect(rows.find(row => row.sourceInvoiceId === future.invoiceId)?.used).toBe(0);
+    expect(await payments(f)).toEqual(ledger);
+    expect(await orders(f)).toMatchObject([{ id: f.orderId, renewalCancelled: true,
+      status: ["canceled", "incomplete_expired"].includes(status) ? "cancelled" : "active" }]);
+    expect(transport.updateSubscription).toHaveBeenCalledTimes(["canceled", "incomplete_expired"].includes(status) ? 0 : 1);
+    expect(await getHiringStatus(f.ctx, f.orgId)).toMatchObject({ active: status === "active" });
+    await assertLearners();
+  }, 10_000);
+
+  it("commits the known dispute hold on transient closure evidence failure and recovers by retrying the same delivery", async () => {
+    const f = await fixture(), a = annual(f, 2026), disputeId = `dp_${randomUUID()}`;
+    await dispatchHiringEvent(paid(f, a));
+    await db.update(hiringTerms).set({ used: 43 }).where(eq(hiringTerms.sourceInvoiceId, a.invoiceId));
+    Object.assign(live.charges.get(a.chargeId)!, { disputed: true });
+    live.disputes.set(a.chargeId, [{ id: disputeId, charge: a.chargeId, status: "needs_response" }]);
+    await dispatchHiringEvent(reversal(a, "charge.dispute.created", disputeId));
+    Object.assign(live.charges.get(a.chargeId)!, { disputed: false });
+    live.disputes.set(a.chargeId, [{ id: disputeId, charge: a.chargeId, status: "won" }]);
+    const closure = reversal(a, "charge.dispute.closed", disputeId);
+    transport.invoice.mockRejectedValueOnce(new Error("Synthetic one-off positive evidence timeout"));
+    await expect(dispatchHiringEvent(closure)).rejects.toThrow();
+    expect(await terms(f)).toMatchObject([{ state: "suspended", paymentState: "disputed", used: 43, quota: 100 }]);
+    expect(await payments(f)).toMatchObject([{ id: a.chargeId, paymentState: "disputed", disputeIds: [disputeId] }]);
+    await dispatchHiringEvent(closure);
+    expect(await terms(f)).toHaveLength(1);
+    expect(await terms(f)).toMatchObject([{ state: "active", paymentState: "active", used: 43, quota: 100 }]);
+    expect(await payments(f)).toMatchObject([{ id: a.chargeId, paymentState: "active", disputeIds: [disputeId] }]);
+    const [receipt] = await db.select().from(hiringEvents).where(eq(hiringEvents.id, closure.id));
+    expect(receipt).toMatchObject({ state: "claimed" });
   }, 10_000);
 });
