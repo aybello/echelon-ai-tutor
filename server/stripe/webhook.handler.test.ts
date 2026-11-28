@@ -1312,3 +1312,38 @@ describe("Individual Exam Pass fulfillment", () => {
     expect(response.body).toEqual({ received: true });
   });
 });
+
+describe("registered handler closing Hiring findings", () => {
+  it.each([true, false])("PI-only Hiring open/close stays isolated with fulfilled term=%s", async fulfilled => {
+    const store = hiringDatabase({ terms: fulfilled ? [hiringTerm({ used: 88 })] : [], payments: fulfilled ? [] : [{
+      id: "ch_hiring", orgId: 7, orderId: "order_hiring", invoiceId: "in_hiring", subscriptionId: "sub_hiring",
+      paymentIntentId: "pi_hiring", paymentState: "active", disputeIds: [], updatedAtMs: 1,
+    }] });
+    mockReversalInvoice.mockResolvedValue(hiringInvoice()); mockRetrieveSubscription.mockResolvedValue(hiringSubscription());
+    mockReversalCharge.mockResolvedValue(hiringCharge({ disputed: true }));
+    mockListDisputes.mockResolvedValue({ data: [{ id: "dp_hiring", status: "needs_response" }], has_more: false });
+    const handler = captureWebhookHandler();
+    mockConstructEvent.mockReturnValue({ id: "evt_pi_open", type: "charge.dispute.created", data: { object: { id: "dp_hiring", payment_intent: "pi_hiring", metadata: {} } } });
+    const opened = makeResponse(); await handler(makeRequest(), opened);
+    expect(opened.statusCode).toBe(200);
+    expect(store.state.hiring_payments[0]).toMatchObject({ paymentState: "disputed", disputeIds: ["dp_hiring"] });
+    if (fulfilled) expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "disputed", used: 88 });
+    mockReversalCharge.mockResolvedValue(hiringCharge());
+    mockListDisputes.mockResolvedValue({ data: [{ id: "dp_hiring", status: "won" }], has_more: false });
+    mockConstructEvent.mockReturnValue({ id: "evt_pi_closed", type: "charge.dispute.closed", data: { object: { id: "dp_hiring", payment_intent: "pi_hiring", metadata: {}, status: "won" } } });
+    const closed = makeResponse(); await handler(makeRequest(), closed);
+    expect(closed.statusCode).toBe(200);
+    expect(store.state.hiring_terms).toHaveLength(1);
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "active", paymentState: "active", used: fulfilled ? 88 : 0 });
+    expectHiringIsolation(store);
+  });
+  it.each(["invoice.paid", "charge.dispute.created"])("unassigned tagged %s returns retryable 503 without legacy effects", async type => {
+    const store = hiringDatabase({ orders: [] });
+    mockConstructEvent.mockReturnValue({ id: "evt_orphan", type, data: { object: { id: "orphan", metadata: { type: HIRING_TYPE } } } });
+    const handler = captureWebhookHandler();
+    for (let i = 0; i < 2; i++) {
+      const response = makeResponse(); await handler(makeRequest(), response); expect(response.statusCode).toBe(503);
+    }
+    expect(store.writes).toEqual([]); expectHiringIsolation(store);
+  });
+});

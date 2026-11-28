@@ -9,7 +9,7 @@ import {
 import type { TrpcContext } from "../_core/context";
 import { getDb } from "../db";
 import { HIRING_AMOUNT, HIRING_POLICY, HIRING_TYPE } from "./policy";
-import { cancelHiringAtPeriodEnd, createHiringCheckout, getHiringStatus } from "./service";
+import { activateHiringPilot, cancelHiringAtPeriodEnd, createHiringCheckout, getHiringStatus } from "./service";
 import { dispatchHiringEvent } from "./webhook";
 
 // The ONLY mocked module is Stripe's transport boundary. Production getDb,
@@ -566,4 +566,98 @@ describe.skipIf(!enabled)("Hiring billing on fresh disposable real MySQL/InnoDB 
     const [receipt] = await db.select().from(hiringEvents).where(eq(hiringEvents.id, closure.id));
     expect(receipt).toMatchObject({ state: "claimed" });
   }, 10_000);
+  it.each([false, true])("historical no-term credit-note drift cannot suspend a clean year, reverseYears=%s", async reverseYears => {
+    const f = await fixture(), held = annual(f, reverseYears ? 2027 : 2025), clean = annual(f, 2026);
+    Object.assign(live.charges.get(held.chargeId)!, { amount_refunded: 1000 });
+    await dispatchHiringEvent(reversal(held));
+    expect(await terms(f)).toEqual([]);
+    Object.assign(live.invoices.get(held.invoiceId)!, { post_payment_credit_notes_amount: 1000 });
+    await expect(dispatchHiringEvent(paid(f, clean))).resolves.toEqual({ handled: true });
+    expect(await terms(f)).toMatchObject([{ sourceInvoiceId: clean.invoiceId, state: "active", paymentState: "active", used: 0 }]);
+    expect(await orders(f)).toMatchObject([{ paymentChargeId: reverseYears ? held.chargeId : clean.chargeId }]);
+    await db.update(hiringTerms).set({ used: 71 }).where(eq(hiringTerms.sourceInvoiceId, clean.invoiceId));
+    await dispatchHiringEvent(paid(f, clean));
+    expect(await terms(f)).toHaveLength(1);
+    expect(await terms(f)).toMatchObject([{ state: "active", used: 71 }]);
+    expect((await payments(f)).find(row => row.id === held.chargeId)).toMatchObject({ paymentState: "needs_review" });
+  }, 10_000);
+
+  it.each(["invoice", "reversal"])("commits exact partial-refund denial before disputes timeout returns from %s", async path => {
+    const f = await fixture(), a = annual(f, 2026);
+    await dispatchHiringEvent(paid(f, a));
+    await db.update(hiringTerms).set({ used: 89 }).where(eq(hiringTerms.sourceInvoiceId, a.invoiceId));
+    Object.assign(live.charges.get(a.chargeId)!, { amount_refunded: 1000 });
+    transport.disputes.mockRejectedValueOnce(new Error("synthetic partial refund disputes timeout"));
+    const delivery = path === "invoice" ? paid(f, a) : reversal(a);
+    await expect(dispatchHiringEvent(delivery)).rejects.toThrow("synthetic partial refund disputes timeout");
+    expect(await terms(f)).toMatchObject([{ state: "suspended", paymentState: "needs_review", used: 89 }]);
+    expect(await payments(f)).toMatchObject([{ paymentState: "needs_review" }]);
+    expect(await getHiringStatus(f.ctx, f.orgId)).toMatchObject({ active: false });
+    expect(await db.select().from(hiringEvents).where(eq(hiringEvents.id, delivery.id))).toMatchObject([{ state: "review_required" }]);
+    live.disputes.set(a.chargeId, [{ id: "dp_lost", status: "lost" }]);
+    await dispatchHiringEvent(delivery);
+    expect(await terms(f)).toMatchObject([{ state: "suspended", paymentState: "dispute_lost", used: 89 }]);
+  }, 10_000);
+
+  it.each(["subscription-first", "paid-first"])("subscription-only invalid quantity and paid replay recover in either order: %s", async ordering => {
+    const f = await fixture(), a = annual(f, 2026);
+    await dispatchHiringEvent(paid(f, a));
+    await db.update(hiringTerms).set({ used: 67 }).where(eq(hiringTerms.sourceInvoiceId, a.invoiceId));
+    const valid = required(live.subscriptions, f.subId, "valid");
+    live.subscriptions.get(f.subId)!.items.data[0].quantity = 2;
+    const invalid = required(live.subscriptions, f.subId, "invalid");
+    const update = () => dispatchHiringEvent(event("customer.subscription.updated", invalid));
+    if (ordering === "subscription-first") { await update(); await dispatchHiringEvent(paid(f, a)); }
+    else { await dispatchHiringEvent(paid(f, a)); await update(); }
+    expect(await terms(f)).toMatchObject([{ state: "subscription_suspended", paymentState: "active", used: 67 }]);
+    live.subscriptions.set(f.subId, valid);
+    await dispatchHiringEvent(event("customer.subscription.updated", valid));
+    expect(await terms(f)).toMatchObject([{ state: "active", paymentState: "active", used: 67 }]);
+  }, 10_000);
+
+  it("retains an independent manual hold across paid replay and dispute open/win", async () => {
+    const f = await fixture(), a = annual(f, 2026), disputeId = `dp_${randomUUID()}`;
+    await dispatchHiringEvent(paid(f, a));
+    await db.update(hiringTerms).set({ state: "suspended", used: 83 }).where(eq(hiringTerms.sourceInvoiceId, a.invoiceId));
+    await dispatchHiringEvent(paid(f, a));
+    expect(await terms(f)).toMatchObject([{ state: "suspended", used: 83 }]);
+    Object.assign(live.charges.get(a.chargeId)!, { disputed: true });
+    live.disputes.set(a.chargeId, [{ id: disputeId, status: "needs_response" }]);
+    await dispatchHiringEvent(reversal(a, "charge.dispute.created", disputeId));
+    Object.assign(live.charges.get(a.chargeId)!, { disputed: false });
+    live.disputes.set(a.chargeId, [{ id: disputeId, status: "won" }]);
+    await dispatchHiringEvent(reversal(a, "charge.dispute.closed", disputeId));
+    expect(await terms(f)).toMatchObject([{ state: "manual_suspended", paymentState: "active", used: 83 }]);
+    expect(await getHiringStatus(f.ctx, f.orgId)).toMatchObject({ active: false });
+  }, 10_000);
+
+  it("blocks complimentary activation while the final real checkout reservation awaits Stripe, and after its URL returns", async () => {
+    const f = await fixture({ order: false }), entered = gate(), release = gate();
+    const admin = { ...f.ctx, user: { role: "admin", email: "admin@example.test" } } as TrpcContext;
+    const input = { orgId: f.orgId, startsAtMs: Date.now() + DAY, endsAtMs: Date.now() + 2 * DAY, quota: 10, sourcePilotId: `free-${randomUUID()}` };
+    const original = transport.checkout.getMockImplementation()!;
+    transport.checkout.mockImplementation(async (...args: any[]) => { entered.release(); await release.promise; return original(...args); });
+    const purchase = run("reserved-checkout", () => createHiringCheckout(f.ctx, f.orgId));
+    try {
+      await bounded(entered.promise, "remote checkout after final reservation");
+      expect(await orders(f)).toHaveLength(1);
+      await expect(activateHiringPilot(admin, input)).rejects.toMatchObject({ code: "CONFLICT" });
+      expect(await terms(f)).toEqual([]);
+      release.release();
+      expect(await bounded(purchase, "checkout return")).toMatchObject({ url: "https://checkout.example.test/synthetic" });
+      await expect(activateHiringPilot(admin, input)).rejects.toMatchObject({ code: "CONFLICT" });
+      expect(await terms(f)).toEqual([]);
+    } finally { release.release(); await Promise.allSettled([purchase]); }
+  }, 15_000);
+
+  it("scheduled complimentary activation committed first prevents a new payable checkout", async () => {
+    const f = await fixture({ order: false });
+    const admin = { ...f.ctx, user: { role: "admin", email: "admin@example.test" } } as TrpcContext;
+    await activateHiringPilot(admin, { orgId: f.orgId, startsAtMs: Date.now() + DAY, endsAtMs: Date.now() + 2 * DAY, quota: 10, sourcePilotId: `free-${randomUUID()}` });
+    await expect(createHiringCheckout(f.ctx, f.orgId)).rejects.toMatchObject({ code: "CONFLICT" });
+    expect(transport.checkout).not.toHaveBeenCalled();
+    expect(await orders(f)).toEqual([]);
+    expect(await getHiringStatus(f.ctx, f.orgId)).toMatchObject({ active: false, canPurchase: false });
+  }, 10_000);
+
 });

@@ -164,10 +164,9 @@ describe("routers gate sessions on a committed claim", () => {
     expect(state.issueSession).not.toHaveBeenCalled();
     expect(state.issueToken).not.toHaveBeenCalled();
     expect(ctx.res.cookie).not.toHaveBeenCalled();
-    if (kind !== "magicLink") {
-      expect(ctx.res.clearCookie).toHaveBeenCalledWith("echelon_dashboard_session", { path: "/" });
-      expect(ctx.res.clearCookie).toHaveBeenCalledWith("echelon_assessment_only", { path: "/" });
-    }
+    // A rolled-back claim never verifies a new identity. Keep the prior browser
+    // identity/capability rather than making its next request anonymous.
+    if (kind !== "magicLink") expect(ctx.res.clearCookie).not.toHaveBeenCalled();
   });
   it("both OTP routes and legacy links fail closed when the database is unavailable", async () => {
     state.db = null;

@@ -10,6 +10,13 @@ import { closeHiringInvoiceReviews, hiringTermState, reconcileHiringPayment, rec
 const READ_OPTIONS = { timeout: 5_000, maxNetworkRetries: 0 };
 const INVOICE_EXPAND = { expand: ["payments.data.payment.payment_intent", "payments.data.payment.charge"] };
 type Result = { handled: boolean; reviewRequired?: boolean };
+type DisputeEvidence = { data: any[]; has_more?: boolean; readError?: unknown };
+function reconciledTermState(current: any, paymentState: string, subscription: any, positiveEvidence = true): string {
+  if (current?.state === "manual_suspended") return "manual_suspended";
+  if (current?.state === "suspended" && current.paymentState === "active") return paymentState === "active" ? "suspended" : "manual_suspended";
+  if (paymentState === "active" && !positiveEvidence) return "policy_suspended";
+  return hiringTermState(paymentState, subscription);
+}
 export function isHiringEvent(event: any): boolean {
   return hiringMetadata(event?.data?.object).type === HIRING_TYPE;
 }
@@ -63,9 +70,15 @@ async function reconcileSubscription(tx: any, event: any, order: HiringOrder, li
   return { handled: true, ...(invalidPositivePolicy ? { reviewRequired: true } : {}) };
 }
 
-async function liveDisputes(chargeId: string, charge: any) {
+async function liveDisputes(chargeId: string, charge: any): Promise<DisputeEvidence> {
   if (charge.refunded || (charge.amount_refunded > 0 && charge.amount_refunded >= charge.amount)) return { data: [], has_more: false };
-  return stripe.disputes.list({ charge: chargeId, limit: 100 }, READ_OPTIONS);
+  try { return await stripe.disputes.list({ charge: chargeId, limit: 100 }, READ_OPTIONS); }
+  catch (error) {
+    // Partial refund independently proves a hold. Commit it before retrying
+    // unavailable evidence that could establish a stronger dispute loss.
+    if (charge.amount_refunded > 0) return { data: [], has_more: true, readError: error };
+    throw error;
+  }
 }
 async function invoiceOwnership(db: any, invoice: any) {
   const subscriptionId = invoiceSubscriptionId(invoice);
@@ -116,7 +129,7 @@ async function dispatchReversal(db: any, event: any): Promise<Result> {
   let found: Awaited<ReturnType<typeof discoverReversalInvoice>> = null;
   // Refund deliveries may contain only a PI. Resolve a stored binding first,
   // then exhaust authoritative invoice allocations before genuine legacy fallback.
-  if (!discoveredChargeId && event.type === "refund.created" && stripeId(object.payment_intent)) {
+  if (!discoveredChargeId && stripeId(object.payment_intent)) {
     const pi = stripeId(object.payment_intent)!;
     const [stored] = await db.select().from(hiringPayments).where(eq(hiringPayments.paymentIntentId, pi)).limit(1);
     const [term] = await db.select().from(hiringTerms).where(eq(hiringTerms.sourcePaymentIntentId, pi)).limit(1);
@@ -125,7 +138,10 @@ async function dispatchReversal(db: any, event: any): Promise<Result> {
     if (!discoveredChargeId && found?.owned) throw new Error("Hiring refund charge binding unavailable; retry reconciliation");
   }
   const chargeId = discoveredChargeId;
-  if (!chargeId) return isHiringEvent(event) ? { handled: true, reviewRequired: true } : { handled: false };
+  if (!chargeId) {
+    if (isHiringEvent(event)) throw new Error("Hiring reversal has no reconcilable charge; retry intake");
+    return { handled: false };
+  }
   const [discoveredTerm] = await db.select().from(hiringTerms).where(eq(hiringTerms.sourceChargeId, chargeId)).limit(1);
   const [discoveredPayment] = await db.select().from(hiringPayments).where(eq(hiringPayments.id, chargeId)).limit(1);
   const charge = await stripe.charges.retrieve(chargeId, {}, READ_OPTIONS) as any;
@@ -138,7 +154,7 @@ async function dispatchReversal(db: any, event: any): Promise<Result> {
     if (isHiringEvent(event)) throw new Error("Tagged Hiring reversal has no authoritative invoice ownership");
     return { handled: false };
   }
-  if (!orderId) return { handled: true, reviewRequired: true };
+  if (!orderId) throw new Error("Hiring reversal has no durable review owner; retry intake");
   const result = await db.transaction(async (tx: any) => {
     const [order]: HiringOrder[] = await tx.select().from(hiringOrders).where(eq(hiringOrders.id, orderId)).limit(1).for("update");
     if (!order) throw new Error("Hiring reversal order is unavailable for reconciliation");
@@ -187,7 +203,7 @@ async function dispatchReversal(db: any, event: any): Promise<Result> {
       if (current) {
         await tx.select().from(hiringTerms).where(eq(hiringTerms.id, current.id)).limit(1).for("update");
         await tx.update(hiringTerms).set({ paymentState: state,
-          state: state === "active" && !positiveEvidence ? "suspended" : hiringTermState(state, subscription) }).where(eq(hiringTerms.id, current.id));
+          state: reconciledTermState(current, state, subscription, positiveEvidence) }).where(eq(hiringTerms.id, current.id));
       }
       await tx.update(hiringOrders).set({ stripeSubscriptionId: order.stripeSubscriptionId ?? subscriptionId,
         ...(!order.paymentChargeId || order.paymentChargeId === chargeId ? { paymentState: state, paymentChargeId: chargeId } : {})
@@ -199,8 +215,8 @@ async function dispatchReversal(db: any, event: any): Promise<Result> {
         : { handled: true, reviewRequired: true },
         // Commit the adverse hold and review before asking Stripe to retry. A
         // thrown error inside this transaction would roll back that safety write.
-        retryError: positiveReadError && event.type === "charge.dispute.closed" && ["active", "disputed"].includes(state)
-          ? positiveReadError : null,
+        retryError: disputes.readError || (positiveReadError && event.type === "charge.dispute.closed" && ["active", "disputed"].includes(state)
+          ? positiveReadError : null),
         reconcile: !unresolved && !current ? { invoiceId: resolvedInvoiceId, order } : null };
     } catch (error) {
       if (error instanceof InvalidHiringPayment) {
@@ -251,8 +267,8 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
   }
   if (!durable && metadata.type !== HIRING_TYPE) return { handled: false };
   const orderId = durable?.id ?? metadata.orderId;
-  if (!orderId) return { handled: true, reviewRequired: true };
-  return db.transaction(async tx => {
+  if (!orderId) throw new Error("Hiring event has no durable review owner; retry intake");
+  const outcome: Result & { retryError?: unknown } = await db.transaction(async tx => {
     const [order] = await tx.select().from(hiringOrders).where(eq(hiringOrders.id, orderId)).limit(1).for("update");
     if (!order) throw new Error("Hiring order is unavailable for reconciliation");
     if (!durable && (metadata.policy !== HIRING_POLICY || metadata.orgId !== String(order.orgId))) {
@@ -296,10 +312,12 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
       const invoiceSubId = invoiceSubscriptionId(invoice);
       if (!invoiceSubId) return review(tx, event, order, invoice.id);
       const subscription = await stripe.subscriptions.retrieve(invoiceSubId, { expand: ["items.data.price.product", "latest_invoice"] }, READ_OPTIONS) as any;
+      let subscriptionPolicyValid = false;
       try {
         if (!["pending", "active", "cancelled"].includes(order.status)) return review(tx, event, order, invoice.id);
         const { priceId } = validateHiringSubscription(subscription, { id: order.id, orgId: order.orgId,
           customerId: order.stripeCustomerId, subscriptionId: order.stripeSubscriptionId }, { settledInvoice: true });
+        subscriptionPolicyValid = true;
         const period = validateHiringInvoice(invoice, subscription, priceId);
         const evidence = invoicePaymentEvidence(invoice);
         const charge = evidence.chargeId ? await stripe.charges.retrieve(evidence.chargeId, { expand: ["payment_intent"] }, READ_OPTIONS) as any : null;
@@ -314,7 +332,7 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
           incomplete: !!disputes.has_more, allowDisputeRecovery: false, currentTerm: existing });
         if (existing) {
           await tx.select().from(hiringTerms).where(eq(hiringTerms.id, existing.id)).limit(1).for("update");
-          await tx.update(hiringTerms).set({ paymentState, state: hiringTermState(paymentState, subscription) }).where(eq(hiringTerms.id, existing.id));
+          await tx.update(hiringTerms).set({ paymentState, state: reconciledTermState(existing, paymentState, subscription) }).where(eq(hiringTerms.id, existing.id));
         } else if (paymentState === "active") {
           await tx.insert(hiringTerms).values({ id: randomUUID(), orgId: order.orgId, basis: "stripe", sourceInvoiceId: invoice.id,
             sourceSubscriptionId: subscription.id, sourcePaymentIntentId: evidence.paymentIntentId, sourceChargeId: evidence.chargeId,
@@ -330,10 +348,25 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
           // lock rather than assuming an absent term is an older payment year.
           const [pointerPayment] = await tx.select().from(hiringPayments).where(eq(hiringPayments.id, order.paymentChargeId)).limit(1);
           if (pointerPayment?.orderId === order.id && pointerPayment.subscriptionId === subscription.id) {
-            const pointerInvoice = await stripe.invoices.retrieve(pointerPayment.invoiceId, INVOICE_EXPAND, READ_OPTIONS);
-            if (pointerInvoice.id === pointerPayment.invoiceId) {
-              pointerStartsAtMs = validateHiringInvoice(pointerInvoice, subscription, priceId).startsAtMs;
-            }
+            // Historical ordering is diagnostic, not current entitlement proof.
+            // Old credits, prices or outages cannot invalidate this paid renewal.
+            try {
+              const historical = await stripe.invoices.retrieve(pointerPayment.invoiceId, INVOICE_EXPAND, READ_OPTIONS) as any;
+              const line = historical.lines?.has_more !== true && historical.lines?.data?.length === 1 ? historical.lines.data[0] : null;
+              const evidence = invoicePaymentEvidence(historical);
+              const start = line?.period?.start, end = line?.period?.end;
+              const anniversary = new Date(start * 1000), month = anniversary.getUTCMonth();
+              anniversary.setUTCFullYear(anniversary.getUTCFullYear() + 1);
+              if (anniversary.getUTCMonth() !== month) anniversary.setUTCDate(0);
+              const parent = line?.parent?.subscription_item_details;
+              if (historical.id === pointerPayment.invoiceId && invoiceSubscriptionId(historical) === subscription.id
+                && stripeId(historical.customer) === order.stripeCustomerId && evidence.chargeId === pointerPayment.id
+                && evidence.paymentIntentId === pointerPayment.paymentIntentId
+                && (parent ? parent.proration === false && stripeId(parent.subscription) === subscription.id : line?.type === "subscription" && line.proration === false)
+                && Number.isSafeInteger(start) && Number.isSafeInteger(end) && end > start
+                && end * 1000 === anniversary.getTime()
+                && Number.isSafeInteger(start * 1000) && Number.isFinite(new Date(start * 1000).getTime())) pointerStartsAtMs = start * 1000;
+            } catch { /* Unavailable diagnostic evidence cannot block fulfillment. */ }
           }
         }
         const advancePointer = !order.paymentChargeId || order.paymentChargeId === evidence.chargeId
@@ -346,7 +379,7 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
         }).where(eq(hiringOrders.id, order.id));
         await recordHiringEvent(tx, event, order, invoice.id, paymentState !== "active");
         if (paymentState === "active") await closeHiringInvoiceReviews(tx, order.id, invoice.id);
-        return paymentState === "active" ? { handled: true } : { handled: true, reviewRequired: true };
+        return { handled: true, ...(paymentState !== "active" ? { reviewRequired: true } : {}), ...(disputes.readError ? { retryError: disputes.readError } : {}) };
       } catch (error) {
         if (error instanceof InvalidHiringPayment) {
           // A positive-policy failure must not leave a previously fulfilled invoice usable.
@@ -361,8 +394,19 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
               const paymentState = await reconcileHiringPayment(tx, { order, invoiceId: invoice.id, subscriptionId: known.sourceSubscriptionId!,
                 paymentIntentId: known.sourcePaymentIntentId, chargeId: known.sourceChargeId, charge,
                 disputes: disputes.data ?? [], incomplete: !!disputes.has_more, allowDisputeRecovery: false, currentTerm: known });
+              let invoicePolicyValid = false;
+              try {
+                validateHiringInvoice(invoice, subscription, subscription.items?.data?.[0]?.price?.id);
+                const evidence = invoicePaymentEvidence(invoice);
+                validateHiringCharge(invoice, charge, evidence);
+                invoicePolicyValid = evidence.chargeId === known.sourceChargeId && evidence.paymentIntentId === known.sourcePaymentIntentId;
+              } catch (validationError) { if (!(validationError instanceof InvalidHiringPayment)) throw validationError; }
               await tx.select().from(hiringTerms).where(eq(hiringTerms.id, known.id)).limit(1).for("update");
-              await tx.update(hiringTerms).set({ state: "suspended", paymentState }).where(eq(hiringTerms.id, known.id));
+              const independentHold = known.state === "manual_suspended" || (known.state === "suspended" && known.paymentState === "active");
+              const state = independentHold ? reconciledTermState(known, paymentState, subscription) : paymentState !== "active" ? "suspended"
+                : subscriptionPolicyValid || !invoicePolicyValid ? "policy_suspended" : "subscription_suspended";
+              await tx.update(hiringTerms).set({ state, paymentState }).where(eq(hiringTerms.id, known.id));
+              if (disputes.readError) return { ...(await review(tx, event, order, invoice.id)), retryError: disputes.readError };
             } else await tx.update(hiringTerms).set({ state: "suspended" }).where(eq(hiringTerms.id, known.id));
           }
           return review(tx, event, order, invoice.id);
@@ -379,4 +423,6 @@ export async function dispatchHiringEvent(event: any): Promise<Result> {
     }
     return { handled: true };
   });
+  if (outcome.retryError) throw outcome.retryError;
+  return { handled: outcome.handled, ...(outcome.reviewRequired ? { reviewRequired: true } : {}) };
 }

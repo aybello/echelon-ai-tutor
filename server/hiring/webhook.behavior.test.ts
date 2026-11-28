@@ -785,10 +785,10 @@ describe("exact adverse-evidence and durable ownership boundaries", () => {
     expect(store.state.hiring_terms).toHaveLength(1);
   });
 
-  it("reviews tagged malformed pre-term ownership without a TypeError or legacy fallthrough", async () => {
+  it("retries tagged malformed pre-term ownership instead of acknowledging an undurable review", async () => {
     const store = memoryDb({ orders: [] });
     external.invoice.mockResolvedValue(invoice({ subscription: null, metadata: { type: HIRING_TYPE, policy: HIRING_POLICY } }));
-    await expect(dispatchHiringEvent(reversalEvent("charge.refunded", { metadata: {} }))).resolves.toEqual({ handled: true, reviewRequired: true });
+    await expect(dispatchHiringEvent(reversalEvent("charge.refunded", { metadata: {} }))).rejects.toThrow("durable review owner");
     expect(store.effects).toEqual([]);
   });
 
@@ -1011,5 +1011,81 @@ describe("absent-term payment summary period ordering", () => {
     expect(store.state.hiring_payments).toEqual([expect.objectContaining({ id: "ch_future", paymentState: "needs_review" }), expect.objectContaining({ id: "ch_hiring", paymentState: "active" })]);
     expect(store.state.hiring_orders[0]).toMatchObject({ paymentChargeId: "ch_future", paymentState: "needs_review" });
     expect(external.invoice.mock.calls.filter(([id]) => id === "in_future")).toHaveLength(3);
+  });
+});
+
+describe("closing existing review findings", () => {
+  it.each(["invoice", "reversal"])("commits a known partial-refund hold before dispute timeout retry on %s", async path => {
+    const store = memoryDb({ orders: [order({ status: "active", paymentChargeId: "ch_hiring" })], terms: [term({ used: 91 })], payments: [payment()] });
+    external.charge.mockResolvedValue(charge({ amount_refunded: 1000 }));
+    external.disputes.mockRejectedValueOnce(new Error("synthetic dispute timeout"));
+    const delivery = path === "invoice" ? paidEvent() : reversalEvent("charge.refunded");
+    await expect(dispatchHiringEvent(delivery)).rejects.toThrow("synthetic dispute timeout");
+    expect(store.history.at(-1)).toBe("commit");
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "needs_review", used: 91 });
+    expect(store.state.hiring_payments[0].paymentState).toBe("needs_review");
+    expect(store.state.hiring_events[0].state).toBe("review_required");
+    expect(() => assertHiringGrant(store.state.hiring_terms[0] as any, START + 1)).toThrow();
+    external.disputes.mockResolvedValue({ data: [{ id: "dp_hiring", status: "lost" }], has_more: false });
+    await dispatchHiringEvent(delivery);
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "suspended", paymentState: "dispute_lost", used: 91 });
+  });
+  it.each(["subscription-first", "paid-first"])("subscription-only policy repair converges after paid replay: %s", async ordering => {
+    const store = memoryDb({ orders: [order({ status: "active" })], terms: [term({ used: 93 })], payments: [payment()] });
+    const invalid = subscription(); invalid.items.data[0].quantity = 2;
+    external.subscription.mockResolvedValue(invalid);
+    const update = () => dispatchHiringEvent(event("customer.subscription.updated", invalid));
+    if (ordering === "subscription-first") { await update(); await dispatchHiringEvent(paidEvent()); }
+    else { await dispatchHiringEvent(paidEvent()); await update(); }
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "subscription_suspended", paymentState: "active", used: 93 });
+    external.subscription.mockResolvedValue(subscription());
+    await dispatchHiringEvent(event("customer.subscription.updated", subscription(), "evt_repaired"));
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "active", paymentState: "active", used: 93 });
+  });
+  it("does not clear simultaneous invoice-policy drift through subscription recovery alone", async () => {
+    const store = memoryDb({ orders: [order({ status: "active" })], terms: [term()], payments: [payment()] });
+    const invalid = subscription(); invalid.items.data[0].quantity = 2;
+    external.subscription.mockResolvedValue(invalid);
+    external.invoice.mockResolvedValue(invoice({ post_payment_credit_notes_amount: 1000 }));
+    await dispatchHiringEvent(paidEvent());
+    external.subscription.mockResolvedValue(subscription());
+    await dispatchHiringEvent(event("customer.subscription.updated", subscription()));
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "policy_suspended", used: 6 });
+  });
+  it("preserves an independent manual hold across clean paid replay and a dispute open/win", async () => {
+    const store = memoryDb({ orders: [order({ status: "active" })], terms: [term({ state: "suspended", used: 97 })], payments: [payment()] });
+    await dispatchHiringEvent(paidEvent());
+    expect(store.state.hiring_terms[0].state).toBe("suspended");
+    external.charge.mockResolvedValue(charge({ disputed: true }));
+    external.disputes.mockResolvedValue({ data: [{ id: "dp_hiring", status: "needs_response" }] });
+    await dispatchHiringEvent(reversalEvent("charge.dispute.created"));
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "manual_suspended", paymentState: "disputed" });
+    external.charge.mockResolvedValue(charge()); external.disputes.mockResolvedValue({ data: [{ id: "dp_hiring", status: "won" }] });
+    await dispatchHiringEvent(reversalEvent("charge.dispute.closed"));
+    expect(store.state.hiring_terms[0]).toMatchObject({ state: "manual_suspended", paymentState: "active", used: 97 });
+    expect(() => assertHiringGrant(store.state.hiring_terms[0] as any, START + 1)).toThrow();
+  });
+  it.each(["invoice.paid", "charge.dispute.created"])("tagged %s without durable intake remains retryable on duplicate delivery", async type => {
+    const store = memoryDb({ orders: [] });
+    const delivery = event(type, { id: "object_orphan", metadata: { type: HIRING_TYPE } });
+    for (let i = 0; i < 2; i++) await expect(dispatchHiringEvent(delivery)).rejects.toThrow(/retry intake/);
+    expect(store.effects).toEqual([]);
+  });
+  it.each(["credit", "old-price", "timeout"])("old absent-term pointer %s cannot suspend a clean annual settlement", async drift => {
+    const store = memoryDb({ orders: [order({ paymentChargeId: "ch_old", paymentState: "refunded" })], payments: [payment({ id: "ch_old", invoiceId: "in_old", paymentIntentId: "pi_old", paymentState: "refunded" })] });
+    const old = invoice({ id: "in_old", post_payment_credit_notes_amount: drift === "credit" ? 1000 : 0,
+      lines: { has_more: false, data: [{ ...invoice().lines.data[0], price: drift === "old-price" ? "price_old" : "price_hiring", period: { start: Date.parse("2025-01-01T00:00:00Z") / 1000, end: START / 1000 } }] },
+      payments: { data: [{ status: "paid", payment: { charge: "ch_old", payment_intent: "pi_old" } }], has_more: false } });
+    external.invoice.mockImplementation(async (id: string) => {
+      if (id === "in_old" && drift === "timeout") throw new Error("synthetic old diagnostic timeout");
+      return id === "in_old" ? old : invoice();
+    });
+    await expect(dispatchHiringEvent(paidEvent())).resolves.toEqual({ handled: true });
+    expect(store.state.hiring_terms[0]).toMatchObject({ sourceInvoiceId: "in_hiring", state: "active", used: 0 });
+    expect(store.state.hiring_orders[0].paymentChargeId).toBe(drift === "timeout" ? "ch_old" : "ch_hiring");
+    store.state.hiring_terms[0].used = 79;
+    await dispatchHiringEvent(paidEvent());
+    expect(store.state.hiring_terms).toHaveLength(1); expect(store.state.hiring_terms[0]).toMatchObject({ state: "active", used: 79 });
+    expect(store.state.hiring_payments.find(row => row.id === "ch_old")?.paymentState).toBe("refunded");
   });
 });

@@ -161,24 +161,24 @@ export const dashboardAuthRouter = router({
     .input(z.object({ email: z.string().email(), code: z.string().length(6), assignmentId: z.string().uuid().optional() }))
     .mutation(async ({ input, ctx }) => {
       const email = normalizeEmail(input.email);
-      clearVerifiedEmailSessionCookie(ctx.res);
-      clearAssessmentOnlySessionCookie(ctx.res);
-      try {
-        const db = await getDb();
-        if (!db) throw new Error("Database unavailable");
+      // Preserve the current verified identity/capability until the OTP claim
+      // commits; an anonymous next request could accept a stale learner token.
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
 
-        const verification = await verifyAndConsumeOtp(db, dashboardOtps, email, hashCode(input.code, input.assignmentId));
-        if (!verification.valid) {
-          if (verification.reason === "too_many_attempts") {
-            throw new Error("Too many incorrect attempts. Please request a new code.");
-          }
-          if (verification.reason === "wrong_code") {
-            const remaining = verification.attemptsRemaining;
-            throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
-          }
-          throw new Error("Code expired or not found. Please request a new code.");
+      const verification = await verifyAndConsumeOtp(db, dashboardOtps, email, hashCode(input.code, input.assignmentId));
+      if (!verification.valid) {
+        if (verification.reason === "too_many_attempts") {
+          throw new Error("Too many incorrect attempts. Please request a new code.");
         }
+        if (verification.reason === "wrong_code") {
+          const remaining = verification.attemptsRemaining;
+          throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
+        }
+        throw new Error("Code expired or not found. Please request a new code.");
+      }
 
+      try {
         // Re-resolve live entitlements — do not use stale purchase/subscription queries.
         // This is the authoritative access check: a refunded or cancelled customer
         // who still has a valid OTP code will not receive course access here.
@@ -192,12 +192,28 @@ export const dashboardAuthRouter = router({
         clearIdentityCookies(ctx.req, ctx.res);
         if (applicantOnly) {
           try {
+            // Signing/clearing happens inside the issuer's transaction. Do not
+            // emit its cookie headers until the transaction commits, including
+            // when a failure follows successful signing.
+            const cookieWrites: Array<() => void> = [];
+            const stagedResponse = {
+              cookie: (...args: Parameters<typeof ctx.res.cookie>) => {
+                cookieWrites.push(() => ctx.res.cookie(...args));
+                return stagedResponse;
+              },
+              clearCookie: (...args: Parameters<typeof ctx.res.clearCookie>) => {
+                cookieWrites.push(() => ctx.res.clearCookie(...args));
+                return stagedResponse;
+              },
+            } as typeof ctx.res;
             // Use only the consumed OTP's verified email, never an older identity.
             await issueApplicantCapabilityForOtp({
-              req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
+              req: ctx.req, res: stagedResponse, user: null, studentEmail: email, assessmentOnlySession: null,
             }, input.assignmentId);
+            for (const writeCookie of cookieWrites) writeCookie();
           } catch (error) {
-            // Includes transaction commit failures after a cookie was signed.
+            // Consumed OTP failures still clear the old applicant state without
+            // leaking the uncommitted replacement capability in response headers.
             clearVerifiedEmailSessionCookie(ctx.res);
             clearAssessmentOnlySessionCookie(ctx.res);
             throw new Error("This invitation is no longer available.", { cause: error });

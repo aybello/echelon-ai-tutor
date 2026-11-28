@@ -32,6 +32,7 @@ const state = vi.hoisted(() => ({
   issueToken: vi.fn(async () => "synthetic-learner-token"),
   sendEmail: vi.fn(),
   sendMail: vi.fn(),
+  failOtpCommit: false,
   failCapabilityCommit: false,
   inTransaction: false,
   queries: [] as string[],
@@ -60,6 +61,10 @@ vi.mock("../email", () => ({ sendOtpEmail: state.sendEmail }));
 vi.mock("nodemailer", () => ({ default: { createTransport: () => ({ sendMail: state.sendMail }) } }));
 vi.mock("../analytics", () => ({ trackEvent: vi.fn(async () => undefined) }));
 vi.mock("../learnerSignIn", () => ({ recordLearnerSignIn: vi.fn(async () => undefined) }));
+vi.mock("./assessmentOnlySession", async importOriginal => {
+  const actual = await importOriginal<typeof import("./assessmentOnlySession")>();
+  return { ...actual, issueAssessmentOnlySession: vi.fn(actual.issueAssessmentOnlySession) };
+});
 
 const { DatabaseSync } = createRequire(import.meta.url)("node:sqlite") as typeof import("node:sqlite");
 const NOW = new Date("2040-01-01T12:00:00Z");
@@ -133,6 +138,9 @@ function memoryDatabase(): Database {
     const firstQuery = state.queries.length;
     try {
       const result = await run(db);
+      if (state.failOtpCommit && state.queries.slice(firstQuery).some(query => /from `(?:email_otp_codes|dashboard_otps)`/i.test(query))) {
+        throw new Error("Synthetic OTP transaction commit failure");
+      }
       if (state.failCapabilityCommit && state.queries.slice(firstQuery).some(query => query.includes("`hiring_terms`"))) {
         throw new Error("Synthetic capability transaction commit failure");
       }
@@ -240,6 +248,7 @@ beforeEach(() => {
   previousSmtp = { smtpHost: ENV.smtpHost, smtpUser: ENV.smtpUser, smtpPass: ENV.smtpPass };
   Object.assign(ENV, { smtpHost: "smtp.example.test", smtpUser: "mailer@example.test", smtpPass: "test-only-placeholder" });
   state.oauthUsers.clear();
+  state.failOtpCommit = false;
   state.failCapabilityCommit = false;
   state.inTransaction = false;
   state.queries = [];
@@ -382,9 +391,11 @@ for (const route of routes) {
         [ECHELON_SESSION_COOKIE]: await verifiedCookie(APPLICANT),
       });
 
+      vi.mocked(issueAssessmentOnlySession).mockClear();
       await expect(route.verify(await contextFor(client))).rejects.toThrow("This invitation is no longer available.");
       expect(otpWasConsumed(route.table)).toBe(true);
-      expect(client.res.cookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, expect.any(String), expect.any(Object));
+      expect(issueAssessmentOnlySession).toHaveBeenCalledOnce();
+      expect(client.res.cookie).not.toHaveBeenCalled();
       expect(client.res.clearCookie).toHaveBeenCalledWith(ASSESSMENT_ONLY_COOKIE, { path: "/" });
       expect(client.res.clearCookie).toHaveBeenCalledWith(ECHELON_SESSION_COOKIE, { path: "/" });
       expect(client.jar).toEqual({});
@@ -457,6 +468,99 @@ for (const route of routes) {
       expect(client.jar[COOKIE_NAME]).toBe(token);
       expect((await contextFor(browser(client.jar))).user?.email).toBe(PURCHASER);
     });
+
+    it.each(["wrong", "expired", "used", "missing", "exhausted", "claim commit failure", "database unavailable"] as const)(
+      "preserves verified B's denial of entitled C's valid token after an unverified %s attempt", async failure => {
+        seedOtp(route.table);
+        if (failure === "expired") sqlite.prepare(`UPDATE \`${getTableName(route.table)}\` SET expiresAt = ?`).run(TIMESTAMP);
+        if (failure === "used") sqlite.prepare(`UPDATE \`${getTableName(route.table)}\` SET usedAt = ?`).run(TIMESTAMP);
+        if (failure === "missing") sqlite.prepare(`DELETE FROM \`${getTableName(route.table)}\``).run();
+        if (failure === "exhausted") sqlite.prepare(`UPDATE \`${getTableName(route.table)}\` SET attempts = 5`).run();
+        state.failOtpCommit = failure === "claim commit failure";
+        const tokenOwner = "learner-c@example.test";
+        state.resolveEntitlements.mockImplementation(async email => email === tokenOwner ? learnerAccess(email) : noAccess(email));
+        const { issueSubscriptionToken } = await vi.importActual<typeof import("./subscriptionToken")>("./subscriptionToken");
+        const tokenB = await issueSubscriptionToken({ email: PURCHASER, examTypes: ["oit"] });
+        const tokenC = await issueSubscriptionToken({ email: tokenOwner, examTypes: ["oit"] });
+        expect(await verifyAccessTokenAndRecheckDb(tokenB, "oit")).toEqual({ hasAccess: false, email: PURCHASER });
+        expect(await verifyAccessTokenAndRecheckDb(tokenC, "oit")).toEqual({ hasAccess: true, email: tokenOwner });
+        const cookie = await verifiedCookie(PURCHASER);
+        const client = browser({ [ECHELON_SESSION_COOKIE]: cookie });
+        const ctx = await contextFor(client);
+        for (const accessToken of [tokenB, tokenC]) {
+          await expect(assertAccess(ctx, "oit", { accessToken })).rejects.toMatchObject({ code: "FORBIDDEN" });
+          await expect(resolveAccessForRequest(ctx, "oit", { accessToken })).resolves.toBe(false);
+        }
+        if (failure === "database unavailable") vi.mocked(getDb).mockResolvedValueOnce(null);
+        const attempt = route.verify(ctx, APPLICANT, failure === "wrong" ? "000000" : CODE);
+        if (route.name === "emailOtpRouter" && failure !== "claim commit failure") {
+          await expect(attempt).resolves.toMatchObject({ valid: false });
+        } else {
+          await expect(attempt).rejects.toThrow();
+        }
+        expect(client.res.cookie).not.toHaveBeenCalled();
+        expect(client.res.clearCookie).not.toHaveBeenCalled();
+        expect(client.jar).toEqual({ [ECHELON_SESSION_COOKIE]: cookie });
+        if (failure === "claim commit failure") expect(otpWasConsumed(route.table)).toBe(false);
+        expect(state.issueToken).not.toHaveBeenCalled();
+        expect(recordLearnerSignIn).not.toHaveBeenCalled();
+        expect(trackEvent).not.toHaveBeenCalled();
+        state.resolveAccessByEmail.mockClear();
+        let next = client;
+        for (let request = 0; request < 2; request++) {
+          next = browser(next.jar);
+          const following = await contextFor(next);
+          expect(identityEmail(resolveVerifiedIdentity(following))).toBe(PURCHASER);
+          for (const accessToken of [tokenB, tokenC]) {
+            await expect(assertAccess(following, "oit", { accessToken })).rejects.toMatchObject({ code: "FORBIDDEN" });
+            await expect(resolveAccessForRequest(following, "oit", { accessToken })).resolves.toBe(false);
+          }
+        }
+        expect(state.resolveAccessByEmail).not.toHaveBeenCalledWith(tokenOwner, "oit");
+      },
+    );
+
+    it.each(["wrong", "expired", "exhausted", "claim commit failure", "database unavailable"] as const)(
+      "retains an assessment-only applicant and their learner guard after an unverified %s attempt", async failure => {
+        seedOtp(route.table, PURCHASER);
+        if (failure === "expired") sqlite.prepare(`UPDATE \`${getTableName(route.table)}\` SET expiresAt = ?`).run(TIMESTAMP);
+        if (failure === "exhausted") sqlite.prepare(`UPDATE \`${getTableName(route.table)}\` SET attempts = 5`).run();
+        state.failOtpCommit = failure === "claim commit failure";
+        const tokenOwner = "learner-c@example.test";
+        state.resolveEntitlements.mockImplementation(async email => email === tokenOwner ? learnerAccess(email) : noAccess(email));
+        const { issueSubscriptionToken } = await vi.importActual<typeof import("./subscriptionToken")>("./subscriptionToken");
+        const tokenC = await issueSubscriptionToken({ email: tokenOwner, examTypes: ["oit"] });
+        expect(await verifyAccessTokenAndRecheckDb(tokenC, "oit")).toEqual({ hasAccess: true, email: tokenOwner });
+        const capability = await applicantCookie();
+        const client = browser({ [ASSESSMENT_ONLY_COOKIE]: capability });
+        const ctx = await contextFor(client);
+        await expectApplicantDestination(ctx, APPLICANT);
+        await expect(assertAccess(ctx, "oit", { accessToken: tokenC })).rejects.toMatchObject({ code: "FORBIDDEN" });
+        if (failure === "database unavailable") vi.mocked(getDb).mockResolvedValueOnce(null);
+        const attempt = route.verify(ctx, PURCHASER, failure === "wrong" ? "000000" : CODE);
+        if (route.name === "emailOtpRouter" && failure !== "claim commit failure") {
+          await expect(attempt).resolves.toMatchObject({ valid: false });
+        } else {
+          await expect(attempt).rejects.toThrow();
+        }
+        expect(client.res.cookie).not.toHaveBeenCalled();
+        expect(client.res.clearCookie).not.toHaveBeenCalled();
+        expect(client.jar).toEqual({ [ASSESSMENT_ONLY_COOKIE]: capability });
+        state.resolveAccessByEmail.mockClear();
+        let next = client;
+        for (let request = 0; request < 2; request++) {
+          next = browser(next.jar);
+          const following = await contextFor(next);
+          await expectApplicantDestination(following, APPLICANT);
+          await expect(assertAccess(following, "oit", { accessToken: tokenC })).rejects.toMatchObject({ code: "FORBIDDEN" });
+          await expect(resolveAccessForRequest(following, "oit", { accessToken: tokenC })).resolves.toBe(false);
+        }
+        expect(state.resolveAccessByEmail).not.toHaveBeenCalledWith(tokenOwner, "oit");
+        expect(state.issueToken).not.toHaveBeenCalled();
+        expect(recordLearnerSignIn).not.toHaveBeenCalled();
+        expect(trackEvent).not.toHaveBeenCalled();
+      },
+    );
 
     it("lets a genuinely later independent OAuth login replace the fresh applicant, not vice versa", async () => {
       seedOtp(route.table);
@@ -558,7 +662,9 @@ for (const route of routes) {
       } else {
         await expect(route.verify(ctx, APPLICANT, code, wrongScope)).rejects.toThrow("Incorrect code.");
       }
-      expect(otpWasConsumed(route.table)).toBe(false); expect(client.jar).toEqual({});
+      expect(otpWasConsumed(route.table)).toBe(false);
+      expect(client.jar).toEqual(client.req.cookies);
+      expect(client.res.clearCookie).not.toHaveBeenCalled();
       expect(client.res.cookie).not.toHaveBeenCalled(); expect(recordLearnerSignIn).not.toHaveBeenCalled();
       await route.verify(ctx, APPLICANT, code, ASSIGNMENT_ID);
       expect(await readAssessmentOnlySession(browser(client.jar).req)).toMatchObject({ assignmentId: ASSIGNMENT_ID });
@@ -594,7 +700,8 @@ for (const route of routes) {
       await route.request(ctx, assignmentId);
       state.failCapabilityCommit = true;
       await expect(route.verify(ctx, APPLICANT, route.deliveredCode(), assignmentId)).rejects.toThrow("This invitation is no longer available.");
-      expect(client.res.cookie).toHaveBeenCalledTimes(1); expect(client.jar).toEqual({});
+      expect(issueAssessmentOnlySession).toHaveBeenCalledOnce();
+      expect(client.res.cookie).not.toHaveBeenCalled(); expect(client.jar).toEqual({});
       expect(recordLearnerSignIn).not.toHaveBeenCalled(); expect(trackEvent).not.toHaveBeenCalled();
     });
 

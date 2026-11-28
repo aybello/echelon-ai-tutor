@@ -135,17 +135,15 @@ export const emailOtpRouter = router({
     }))
     .mutation(async ({ input, ctx }) => {
       const email = normalizeEmail(input.email);
-      // Failed verification must never leave an older identity/capability on
-      // the response. Success below replaces only the intended cookie.
-      clearVerifiedEmailSessionCookie(ctx.res);
-      clearAssessmentOnlySessionCookie(ctx.res);
+      // An unverified attempt must not erase the current identity/capability:
+      // making the next request anonymous could enable another learner's token.
+      const db = await getDb();
+      if (!db) return { valid: false as const, reason: "server_error" as const };
+
+      const verification = await verifyAndConsumeOtp(db, emailOtpCodes, email, hashCode(input.code, input.assignmentId));
+      if (!verification.valid) return verification;
+
       try {
-        const db = await getDb();
-        if (!db) return { valid: false as const, reason: "server_error" as const };
-
-        const verification = await verifyAndConsumeOtp(db, emailOtpCodes, email, hashCode(input.code, input.assignmentId));
-        if (!verification.valid) return verification;
-
         // Resolve live entitlements
         const entitlements = await resolveEntitlementsByEmail(email);
         const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
@@ -160,14 +158,29 @@ export const emailOtpRouter = router({
         clearIdentityCookies(ctx.req, ctx.res);
         if (applicantOnly) {
           try {
+            // The issuer signs and clears cookies inside its transaction. Buffer
+            // both operations so a failed commit cannot expose a signed cookie,
+            // even alongside a later deletion in the same response headers.
+            const cookieWrites: Array<() => void> = [];
+            const stagedResponse = {
+              cookie: (...args: Parameters<typeof ctx.res.cookie>) => {
+                cookieWrites.push(() => ctx.res.cookie(...args));
+                return stagedResponse;
+              },
+              clearCookie: (...args: Parameters<typeof ctx.res.clearCookie>) => {
+                cookieWrites.push(() => ctx.res.clearCookie(...args));
+                return stagedResponse;
+              },
+            } as typeof ctx.res;
             // The consumed OTP proves this email, not any older OAuth/cookie identity.
             // The issuer rechecks live scope and deadlines while holding its locks.
             await issueApplicantCapabilityForOtp({
-              req: ctx.req, res: ctx.res, user: null, studentEmail: email, assessmentOnlySession: null,
+              req: ctx.req, res: stagedResponse, user: null, studentEmail: email, assessmentOnlySession: null,
             }, input.assignmentId);
+            for (const writeCookie of cookieWrites) writeCookie();
           } catch (error) {
-            // Signing happens inside the transaction, so even commit failure must
-            // remove a capability already queued on the response.
+            // This OTP was consumed: failed authorization still invalidates the
+            // old applicant state, but no uncommitted new capability is emitted.
             clearVerifiedEmailSessionCookie(ctx.res);
             clearAssessmentOnlySessionCookie(ctx.res);
             throw new TRPCError({ code: "FORBIDDEN", message: "This invitation is no longer available.", cause: error });

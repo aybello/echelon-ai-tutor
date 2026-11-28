@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, desc, eq, gt, inArray, isNotNull, lte, or } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNotNull, lt, lte, or } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { hiringEvents, hiringOrders, hiringTerms, organizations, type HiringOrder } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/accessService";
@@ -10,6 +10,7 @@ import { ENV } from "../_core/env";
 import { HIRING_AMOUNT, HIRING_POLICY, HIRING_TYPE, stripeId, validatePilotBounds } from "./policy";
 import { assertCurrentAnnualOrganization } from "../recruitment/access";
 import { hiringTermState } from "./paymentLedger";
+import { ORGANIZATION_COMMERCE_ENABLED, ORGANIZATION_COMMERCE_HOLD_MESSAGE } from "../commercialAvailability";
 
 // Cancellation keeps its order lock to serialize against invoice renewal. Bound
 // its two HTTP calls (including disabling SDK retries), not just the SQL wait.
@@ -20,8 +21,18 @@ const billingCandidates = (orgId: number) => and(eq(hiringOrders.orgId, orgId),
 const activeAllowance = (orgId: number, now: number) => and(eq(hiringTerms.orgId, orgId),
   inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"),
   gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now));
+function purchaseAllowance(orgId: number, now: number) {
+  // Checkout starts an annual term now. A scheduled complimentary window must
+  // not become a second allowance inside that same paid year.
+  const anniversary = new Date(now), month = anniversary.getUTCMonth();
+  anniversary.setUTCFullYear(anniversary.getUTCFullYear() + 1);
+  if (anniversary.getUTCMonth() !== month) anniversary.setUTCDate(0);
+  return or(activeAllowance(orgId, now), and(eq(hiringTerms.orgId, orgId), eq(hiringTerms.basis, "pilot"),
+    inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"),
+    gt(hiringTerms.endsAtMs, now), lt(hiringTerms.startsAtMs, anniversary.getTime())));
+}
 function purchaseBlockReason(hasAllowance: boolean, orders: HiringOrder[]): string | null {
-  if (hasAllowance) return "An active Hiring allowance already exists. Refresh Hiring status before purchasing.";
+  if (hasAllowance) return "An active Hiring allowance or overlapping complimentary window already exists. Refresh Hiring status before purchasing.";
   if (orders.some(order => order.status === "active")) return "A Hiring subscription already exists.";
   // A terminal Checkout message is not proof that a bound subscription cannot
   // collect. Keep all bound orders visible to billing until reconciled.
@@ -71,6 +82,7 @@ function ownerEmail(ctx: TrpcContext): string {
   return email;
 }
 export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Promise<{ url: string | null; orderId: string }> {
+  if (!ORGANIZATION_COMMERCE_ENABLED) throw new TRPCError({ code: "PRECONDITION_FAILED", message: ORGANIZATION_COMMERCE_HOLD_MESSAGE });
   const email = ownerEmail(ctx);
   const org = await resolveManagedOrganization(ctx, { orgId, ownerOnly: true });
   if (!org || normalizeEmail(org.managerEmail) !== email) throw new TRPCError({ code: "FORBIDDEN", message: "Only the verified organization owner can purchase Hiring." });
@@ -107,7 +119,7 @@ export async function createHiringCheckout(ctx: TrpcContext, orgId: number): Pro
     // The org UPDATE lock also fences complimentary activation. Recheck on
     // both reservation attempts, including after out-of-transaction Stripe I/O.
     // Preserve order-before-term locking used by lifecycle/payment writers.
-    const [allowance] = await tx.select().from(hiringTerms).where(activeAllowance(org.id, Date.now())).limit(1).for("share");
+    const [allowance] = await tx.select().from(hiringTerms).where(purchaseAllowance(org.id, Date.now())).limit(1).for("share");
     const blocked = purchaseBlockReason(!!allowance, existing);
     if (blocked) throw new TRPCError({ code: "CONFLICT", message: blocked });
     const pending = existing[0];
@@ -199,9 +211,20 @@ export async function activateHiringPilot(ctx: TrpcContext, input: { orgId: numb
   const bounds = validatePilotBounds(input.startsAtMs, input.endsAtMs, input.quota);
   const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
   const termId = randomUUID();
+  const candidates = await db.select().from(hiringOrders).where(billingCandidates(input.orgId));
+  // Keep any live termination verification outside the organization lock, then
+  // recheck the exact bindings under org -> order locks, just like checkout.
+  const endedBindings = await verifiedEndedBindings(db, candidates);
   await db.transaction(async tx => {
     const [org] = await tx.select({ id: organizations.id }).from(organizations).where(eq(organizations.id, input.orgId)).limit(1).for("update");
     if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found." });
+    const locked = await tx.select().from(hiringOrders).where(billingCandidates(input.orgId))
+      .orderBy(desc(hiringOrders.createdAtMs)).for("update");
+    // A reservation remains payable while Stripe is in flight, even before a
+    // session/subscription ID returns. Never layer a new free grant over it.
+    if (locked.some(order => !endedBindings.has(billingBindingKey(order)))) {
+      throw new TRPCError({ code: "CONFLICT", message: "Hiring billing is pending or still connected. Cancel or reconcile it before activating a complimentary allowance." });
+    }
     await tx.insert(hiringTerms).values({ id: termId, orgId: input.orgId, basis: "pilot", sourcePilotId: input.sourcePilotId, startsAtMs: bounds.startsAtMs, endsAtMs: bounds.endsAtMs, quota: bounds.quota, used: 0, state: "active", paymentState: "active", createdByEmail: normalizeEmail(ctx.user?.email ?? "admin") });
     await tx.insert(hiringEvents).values({ id: `pilot:${input.sourcePilotId}`, orgId: input.orgId, eventType: "pilot_activated", state: "claimed", createdAtMs: Date.now() });
   });
@@ -221,7 +244,8 @@ export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   let currentAnnual = true;
   try { assertCurrentAnnualOrganization(org, now); } catch { currentAnnual = false; }
   const [activeTerm] = await db.select().from(hiringTerms).where(activeAllowance(org.id, now)).orderBy(hiringTerms.endsAtMs).limit(1);
-  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended", "subscription_suspended"]))).orderBy(desc(hiringTerms.endsAtMs)).limit(1);
+  const [allowance] = await db.select().from(hiringTerms).where(purchaseAllowance(org.id, now)).limit(1);
+  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended", "subscription_suspended", "policy_suspended", "manual_suspended"]))).orderBy(desc(hiringTerms.endsAtMs)).limit(1);
   const candidates = await db.select().from(hiringOrders).where(billingCandidates(org.id)).orderBy(desc(hiringOrders.createdAtMs));
   const endedBindings = await verifiedEndedBindings(db, candidates);
   const currentOrders = candidates.filter(order => !endedBindings.has(billingBindingKey(order)));
@@ -230,7 +254,7 @@ export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   const term = activeTerm ?? billingTerm;
   const active = currentAnnual && !!activeTerm;
   const canCancelRenewal = owner && !!order?.stripeSubscriptionId && !order.renewalCancelled;
-  const canPurchase = owner && currentAnnual && purchaseBlockReason(!!activeTerm, currentOrders) === null;
+  const canPurchase = ORGANIZATION_COMMERCE_ENABLED && owner && currentAnnual && purchaseBlockReason(!!allowance, currentOrders) === null;
   // Access can come from a pilot while a separate Stripe operation still bills.
   // Keep the original access fields, with independent billing facts for the UI.
   const billing = { billingOrderId: order?.id ?? null, billingSubscriptionId: order?.stripeSubscriptionId ?? null,
