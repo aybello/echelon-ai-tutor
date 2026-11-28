@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, eq, gt, inArray, lte } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, lte } from "drizzle-orm";
 import { TRPCError } from "@trpc/server";
 import { hiringEvents, hiringOrders, hiringTerms, organizations } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/accessService";
@@ -101,7 +101,7 @@ export async function activateHiringPilot(ctx: TrpcContext, input: { orgId: numb
 export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
   const email = ownerEmail(ctx); const org = await resolveManagedOrganization(ctx, { orgId }); if (!org) throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." }); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" }); const now = Date.now();
   const [activeTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), inArray(hiringTerms.state, ["active", "cancel_at_period_end"]), eq(hiringTerms.paymentState, "active"), gt(hiringTerms.endsAtMs, now), lte(hiringTerms.startsAtMs, now))).orderBy(hiringTerms.endsAtMs).limit(1);
-  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [billingTerm] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(desc(hiringTerms.endsAtMs)).limit(1);
   const [order] = billingTerm?.sourceSubscriptionId
     ? await db.select({ stripeSubscriptionId: hiringOrders.stripeSubscriptionId }).from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.stripeSubscriptionId, billingTerm.sourceSubscriptionId))).limit(1)
     : [];
@@ -114,7 +114,7 @@ export async function getHiringStatus(ctx: TrpcContext, orgId: number) {
 export async function cancelHiringAtPeriodEnd(ctx: TrpcContext, orgId: number) {
   const { org } = await hiringOwner(ctx, orgId); const db = await getDb(); if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
   const now = Date.now();
-  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(hiringTerms.endsAtMs).limit(1);
+  const [term] = await db.select().from(hiringTerms).where(and(eq(hiringTerms.orgId, org.id), eq(hiringTerms.basis, "stripe"), inArray(hiringTerms.state, ["active", "cancel_at_period_end", "suspended"]))).orderBy(desc(hiringTerms.endsAtMs)).limit(1);
   if (!term?.sourceSubscriptionId) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "No separate active Hiring subscription is available to cancel." });
   const [order] = await db.select().from(hiringOrders).where(and(eq(hiringOrders.orgId, org.id), eq(hiringOrders.stripeSubscriptionId, term.sourceSubscriptionId))).limit(1);
   if (!order?.stripeSubscriptionId) throw new TRPCError({ code: "CONFLICT", message: "Hiring subscription binding could not be verified." });
